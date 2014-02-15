@@ -15,7 +15,7 @@ package common.steamcraft.mod.client.gui;
 
 import common.steamcraft.mod.common.block.tile.TileEntityChemicalFurnace;
 import common.steamcraft.mod.common.block.tile.container.ContainerChemicalFurnace;
-import common.steamcraft.mod.common.lib.SC2_Info;
+import common.steamcraft.mod.common.lib.LibInfo;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
@@ -29,7 +29,7 @@ import org.lwjgl.opengl.GL11;
  */
 public class GuiChemicalFurnace extends GuiContainer 
 {
-	private static final ResourceLocation chemGuiTextures = new ResourceLocation(SC2_Info.MOD_ID.toLowerCase(), "textures/gui/chemicalfurnace.png");
+	private static final ResourceLocation chemGuiTextures = new ResourceLocation(LibInfo.MOD_ID.toLowerCase(), "textures/gui/chemicalfurnace.png");
 	private TileEntityChemicalFurnace furnaceInventory;
 	
 	public GuiChemicalFurnace(InventoryPlayer inventoryplayer, TileEntityChemicalFurnace furnace)

@@ -13,7 +13,8 @@
  */
 package common.steamcraft.mod.common.block;
 
-import common.steamcraft.mod.client.lib.SC2_RenderIDs;
+import common.steamcraft.mod.client.lib.RenderIDs;
+import common.steamcraft.mod.common.block.machines.BlockContainerMod;
 import common.steamcraft.mod.common.block.tile.TileEntityChimney;
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 import net.minecraft.block.Block;
@@ -31,7 +32,7 @@ import org.lwjgl.opengl.GL11;
  * @author MrArcane111
  *
  */
-public class BlockChimney extends BlockSC2Container implements ISimpleBlockRenderingHandler
+public class BlockChimney extends BlockContainerMod implements ISimpleBlockRenderingHandler
 {
 	public static int[] sides = new int[3];
 	
@@ -160,7 +161,7 @@ public class BlockChimney extends BlockSC2Container implements ISimpleBlockRende
 	@Override
 	public int getRenderId() 
 	{
-		return SC2_RenderIDs.chimneyID;
+		return RenderIDs.chimneyID;
 	}
 
 	private void renderInvBox(RenderBlocks renderer, Block block, int modelID)

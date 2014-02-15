@@ -3,7 +3,7 @@ package common.steamcraft.mod.common.block.tile;
 import common.steamcraft.mod.client.model.ModelLampSide;
 import common.steamcraft.mod.client.model.ModelLampUp;
 import common.steamcraft.mod.common.block.ModBlocks;
-import common.steamcraft.mod.common.lib.SC2_Info;
+import common.steamcraft.mod.common.lib.LibInfo;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
@@ -77,8 +77,8 @@ public class TileEntityLampRenderer extends TileEntitySpecialRenderer
 		}
 
 		// Renders the textures based on torch state
-		ResourceLocation lampOn = (new ResourceLocation(SC2_Info.SC2_PREFIX + "textures/models/lampon.png"));
-		ResourceLocation lampOff = (new ResourceLocation(SC2_Info.SC2_PREFIX + "textures/models/lampoff.png"));
+		ResourceLocation lampOn = (new ResourceLocation(LibInfo.SC2_PREFIX + "textures/models/lampon.png"));
+		ResourceLocation lampOff = (new ResourceLocation(LibInfo.SC2_PREFIX + "textures/models/lampoff.png"));
 
 		if(block == ModBlocks.castIronLampActive)
 		{

@@ -11,7 +11,7 @@ import net.minecraft.world.World;
 
 import java.util.Random;
 
-public class ItemChisel extends ItemSC2
+public class ItemChisel extends ItemMod
 {
 	private Random random = new Random();
 

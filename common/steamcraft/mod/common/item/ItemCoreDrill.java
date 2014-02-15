@@ -4,7 +4,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-public class ItemCoreDrill extends ItemSC2
+public class ItemCoreDrill extends ItemMod
 {
 	protected ItemCoreDrill(int id)
 	{

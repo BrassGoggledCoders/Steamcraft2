@@ -7,7 +7,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-public class ItemCopperWire extends ItemSC2
+public class ItemCopperWire extends ItemMod
 {
 	public ItemCopperWire(int id)
 	{

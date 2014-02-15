@@ -38,7 +38,7 @@ import universalelectricity.core.item.ElectricItemHelper;
 import universalelectricity.core.item.IItemElectric;
 import cofh.api.energy.IEnergyContainerItem;
 
-import common.steamcraft.mod.common.core.helper.SC2_CompatibilityChecker;
+import common.steamcraft.mod.common.core.helper.CompatHelper;
 
 /**
  * @author Decebaldecebal
@@ -60,17 +60,17 @@ public abstract class TileEntityElectricMachine extends TileEntity implements IE
 		{
 			tile.energy.modifyEnergyStored((long) ElectricItemHelper.dischargeItem(tile.inventory[slotID], ((IItemElectric)tile.inventory[slotID].getItem()).getTransfer(tile.inventory[slotID])));
 		}
-		else if(SC2_CompatibilityChecker.IC2Loaded && tile.inventory[slotID].getItem() instanceof IElectricItem)
+		else if(CompatHelper.IC2Loaded && tile.inventory[slotID].getItem() instanceof IElectricItem)
 		{
 			IElectricItem item = (IElectricItem)tile.inventory[slotID].getItem();
 
 			if(item.canProvideEnergy(tile.inventory[slotID]))
 			{
-				long gain = (long) (ElectricItem.manager.discharge(tile.inventory[slotID], (int)(tile.energy.getEmptySpace()*SC2_CompatibilityChecker.UE_TO_IC2), 1, false, false)/SC2_CompatibilityChecker.UE_TO_IC2);
+				long gain = (long) (ElectricItem.manager.discharge(tile.inventory[slotID], (int)(tile.energy.getEmptySpace()*CompatHelper.UE_TO_IC2), 1, false, false)/CompatHelper.UE_TO_IC2);
 				tile.energy.modifyEnergyStored(gain);
 			}
 		}
-		else if(SC2_CompatibilityChecker.TELoaded && tile.inventory[slotID].getItem() instanceof IEnergyContainerItem)
+		else if(CompatHelper.TELoaded && tile.inventory[slotID].getItem() instanceof IEnergyContainerItem)
 		{
 			ItemStack itemStack = tile.inventory[slotID];
 			IEnergyContainerItem item = (IEnergyContainerItem)tile.inventory[slotID].getItem();
@@ -97,9 +97,9 @@ public abstract class TileEntityElectricMachine extends TileEntity implements IE
 		{
 			tile.energy.modifyEnergyStored((long) -ElectricItemHelper.chargeItem(tile.inventory[slotID], (float)(tile.energy.getEnergy())));
 		}
-		else if(SC2_CompatibilityChecker.IC2Loaded && tile.inventory[slotID].getItem() instanceof IElectricItem)
+		else if(CompatHelper.IC2Loaded && tile.inventory[slotID].getItem() instanceof IElectricItem)
 		{
-			long sent = (long) (ElectricItem.manager.charge(tile.inventory[slotID], (int)(tile.energy.getEnergy()*SC2_CompatibilityChecker.UE_TO_IC2), 2, false, false)/SC2_CompatibilityChecker.UE_TO_IC2);
+			long sent = (long) (ElectricItem.manager.charge(tile.inventory[slotID], (int)(tile.energy.getEnergy()*CompatHelper.UE_TO_IC2), 2, false, false)/CompatHelper.UE_TO_IC2);
 			tile.energy.modifyEnergyStored(-sent);
 		}
 		else if(tile.inventory[slotID].getItem() instanceof IEnergyContainerItem)

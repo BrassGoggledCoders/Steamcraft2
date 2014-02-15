@@ -1,6 +1,6 @@
 package common.steamcraft.mod.common.item;
 
-import common.steamcraft.mod.common.lib.SC2_Info;
+import common.steamcraft.mod.common.lib.LibInfo;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -24,7 +24,7 @@ public class ItemKettle extends Item
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister icon)
 	{
-		this.itemIcon = icon.registerIcon(SC2_Info.MOD_ID + ":" + (this.getUnlocalizedName().substring(5)));
+		this.itemIcon = icon.registerIcon(LibInfo.MOD_ID + ":" + (this.getUnlocalizedName().substring(5)));
 	}
 
 	@Override

@@ -8,11 +8,11 @@ import org.lwjgl.opengl.GL11;
 
 import common.steamcraft.mod.common.block.tile.TileEntityCompressor;
 import common.steamcraft.mod.common.block.tile.container.ContainerCompressor;
-import common.steamcraft.mod.common.lib.SC2_Info;
+import common.steamcraft.mod.common.lib.LibInfo;
 
 public class GuiCompressor extends GuiContainer
 {
-	private static final ResourceLocation guitexture = new ResourceLocation(SC2_Info.SC2_PREFIX + "textures/gui/compressor.png");
+	private static final ResourceLocation guitexture = new ResourceLocation(LibInfo.SC2_PREFIX + "textures/gui/compressor.png");
 	private TileEntityCompressor furnaceInventory;
 
 	public GuiCompressor(InventoryPlayer player, TileEntityCompressor tile)

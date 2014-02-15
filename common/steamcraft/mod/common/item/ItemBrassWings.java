@@ -14,7 +14,7 @@
 package common.steamcraft.mod.common.item;
 
 import common.steamcraft.mod.common.SC2;
-import common.steamcraft.mod.common.lib.SC2_CreativeTabs;
+import common.steamcraft.mod.common.lib.CreativeTabsMod;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.Minecraft;
@@ -33,7 +33,7 @@ import org.lwjgl.input.Keyboard;
  * @author MrArcane111 & general3214
  *
  */
-public class ItemBrassWings extends ItemSC2Armor
+public class ItemBrassWings extends ItemArmorMod
 {
     public ItemStack canister;
 	public ItemBrassWings(int id, EnumArmorMaterial mat, int renderIndex, int armorType, String texture)
@@ -41,7 +41,7 @@ public class ItemBrassWings extends ItemSC2Armor
 		super(id, mat, renderIndex, armorType, texture);
 		mat = material;
 		this.setMaxStackSize(1);
-		this.setCreativeTab(SC2_CreativeTabs.tabSCItems);
+		this.setCreativeTab(CreativeTabsMod.tabSCItems);
 		this.setUnlocalizedName("brasswings");
 	}
 

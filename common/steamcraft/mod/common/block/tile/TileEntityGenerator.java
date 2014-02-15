@@ -10,9 +10,7 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraftforge.common.ForgeDirection;
 import universalelectricity.api.energy.EnergyStorageHandler;
-
-import common.steamcraft.mod.common.block.BlockCompressor;
-
+import common.steamcraft.mod.common.block.machines.BlockCompressor;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 

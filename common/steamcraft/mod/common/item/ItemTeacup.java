@@ -1,6 +1,6 @@
 package common.steamcraft.mod.common.item;
 
-import common.steamcraft.mod.common.lib.SC2_CreativeTabs;
+import common.steamcraft.mod.common.lib.CreativeTabsMod;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemFood;
@@ -15,7 +15,7 @@ public class ItemTeacup extends ItemFood
 	{
 		super(id, amount, saturation, flag);
 		this.healAmount = amount;
-		this.setCreativeTab(SC2_CreativeTabs.tabSCItems);
+		this.setCreativeTab(CreativeTabsMod.tabSCItems);
 	}
 
 	public ItemTeacup(int id, int amount, boolean flag)

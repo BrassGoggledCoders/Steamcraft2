@@ -30,7 +30,7 @@ import net.minecraft.world.World;
  * @author MrArcane111 & EntireCraft
  *
  */
-public class ItemGun extends ItemSC2
+public class ItemGun extends ItemMod
 {
 	private int damage; // damage in half-hearts
 	private int ammoID;

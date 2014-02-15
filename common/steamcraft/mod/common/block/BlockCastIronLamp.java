@@ -1,7 +1,7 @@
 package common.steamcraft.mod.common.block;
 
 import common.steamcraft.mod.common.block.tile.TileEntityLamp;
-import common.steamcraft.mod.common.lib.SC2_Info;
+import common.steamcraft.mod.common.lib.LibInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
@@ -45,7 +45,7 @@ public class BlockCastIronLamp extends BlockContainer
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister icon)
 	{
-		this.blockIcon = icon.registerIcon(SC2_Info.SC2_PREFIX + "ironlamp");
+		this.blockIcon = icon.registerIcon(LibInfo.SC2_PREFIX + "ironlamp");
 	}
 
 	@Override

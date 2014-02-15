@@ -1,7 +1,6 @@
 package common.steamcraft.mod.common.block.tile;
 
-import common.steamcraft.mod.common.block.BlockSteamFurnace;
-
+import common.steamcraft.mod.common.block.machines.BlockSteamFurnace;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;

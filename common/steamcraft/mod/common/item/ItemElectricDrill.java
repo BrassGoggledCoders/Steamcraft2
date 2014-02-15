@@ -27,8 +27,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 
-import common.steamcraft.mod.client.core.helper.SC2_IconHelper;
-import common.steamcraft.mod.common.lib.SC2_CreativeTabs;
+import common.steamcraft.mod.client.core.helper.IconHelper;
+import common.steamcraft.mod.common.lib.CreativeTabsMod;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -37,7 +37,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  * @author MrArcane111
  *
  */
-public class ItemElectricDrill extends ItemSC2Electric {
+public class ItemElectricDrill extends ItemElectricMod {
 
 	/** An array of blocks the drill can mine. */
 	public static final Block[] blocksEffectiveAgainst = new Block[] {
@@ -48,12 +48,12 @@ public class ItemElectricDrill extends ItemSC2Electric {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister icon) {
-		itemIcon = SC2_IconHelper.forItem(icon, this);
+		itemIcon = IconHelper.forItem(icon, this);
 	}
 
 	public ItemElectricDrill(int id, int maxEnergy, int voltage, int toolTier) {
 		super(id, maxEnergy, voltage, toolTier);
-		this.setCreativeTab(SC2_CreativeTabs.tabSCItems);
+		this.setCreativeTab(CreativeTabsMod.tabSCItems);
 	}
 
 	@Override

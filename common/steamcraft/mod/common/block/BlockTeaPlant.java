@@ -1,7 +1,7 @@
 package common.steamcraft.mod.common.block;
 
 import common.steamcraft.mod.common.item.ModItems;
-import common.steamcraft.mod.common.lib.SC2_Info;
+import common.steamcraft.mod.common.lib.LibInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
@@ -216,7 +216,7 @@ public class BlockTeaPlant extends BlockFlower
 
         for(int i = 0; i < this.iconArray.length; ++i)
         {
-            this.iconArray[i] = icon.registerIcon(SC2_Info.SC2_PREFIX + this.getUnlocalizedName().substring(5) + "_stage_" + i);
+            this.iconArray[i] = icon.registerIcon(LibInfo.SC2_PREFIX + this.getUnlocalizedName().substring(5) + "_stage_" + i);
         }
     }
 }

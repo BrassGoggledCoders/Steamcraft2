@@ -10,7 +10,7 @@ import net.minecraft.world.World;
 
 import java.util.Random;
 
-public class BlockUranium extends BlockSC2
+public class BlockUranium extends BlockMod
 {
 	private boolean glowing;
 

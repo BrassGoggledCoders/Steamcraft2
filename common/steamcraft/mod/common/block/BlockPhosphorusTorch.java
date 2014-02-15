@@ -23,8 +23,8 @@ import net.minecraft.block.BlockTorch;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.world.World;
 
-import common.steamcraft.mod.common.lib.SC2_CreativeTabs;
-import common.steamcraft.mod.common.lib.SC2_Info;
+import common.steamcraft.mod.common.lib.CreativeTabsMod;
+import common.steamcraft.mod.common.lib.LibInfo;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -39,12 +39,12 @@ public class BlockPhosphorusTorch extends BlockTorch {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister icon) {
-		this.blockIcon = icon.registerIcon(SC2_Info.SC2_PREFIX + (getUnlocalizedName().substring(5))); // Cannot do a 'this' reflection!
+		this.blockIcon = icon.registerIcon(LibInfo.SC2_PREFIX + (getUnlocalizedName().substring(5))); // Cannot do a 'this' reflection!
 	}
 	
 	public BlockPhosphorusTorch(int id) {
 		super(id);
-		this.setCreativeTab(SC2_CreativeTabs.tabSCBlocks);
+		this.setCreativeTab(CreativeTabsMod.tabSCBlocks);
 		this.setTickRandomly(true);
 	}
 	

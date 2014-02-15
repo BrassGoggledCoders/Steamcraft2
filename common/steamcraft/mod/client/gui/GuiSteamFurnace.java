@@ -15,7 +15,7 @@ package common.steamcraft.mod.client.gui;
 
 import common.steamcraft.mod.common.block.tile.TileEntitySteamFurnace;
 import common.steamcraft.mod.common.block.tile.container.ContainerSteamFurnace;
-import common.steamcraft.mod.common.lib.SC2_Info;
+import common.steamcraft.mod.common.lib.LibInfo;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
@@ -29,7 +29,7 @@ import org.lwjgl.opengl.GL11;
  */
 public class GuiSteamFurnace extends GuiContainer
 {
-	private static final ResourceLocation steamGuiTextures = new ResourceLocation(SC2_Info.MOD_ID.toLowerCase(), "textures/gui/steamfurnace.png");
+	private static final ResourceLocation steamGuiTextures = new ResourceLocation(LibInfo.MOD_ID.toLowerCase(), "textures/gui/steamfurnace.png");
 	private TileEntitySteamFurnace furnaceInventory;
 
 	public GuiSteamFurnace(InventoryPlayer inventoryplayer, TileEntitySteamFurnace furnace)

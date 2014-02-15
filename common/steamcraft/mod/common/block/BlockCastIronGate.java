@@ -1,6 +1,6 @@
 package common.steamcraft.mod.common.block;
 
-import common.steamcraft.mod.common.lib.SC2_CreativeTabs;
+import common.steamcraft.mod.common.lib.CreativeTabsMod;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -19,7 +19,7 @@ public class BlockCastIronGate extends BlockFenceGate
         this.setResistance(20F);
         this.setStepSound(Block.soundMetalFootstep);
         this.setUnlocalizedName("castirongate");
-        this.setCreativeTab(SC2_CreativeTabs.tabSCBlocks);
+        this.setCreativeTab(CreativeTabsMod.tabSCBlocks);
     }
 
     @Override

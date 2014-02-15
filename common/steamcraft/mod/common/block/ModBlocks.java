@@ -13,10 +13,10 @@
  */
 package common.steamcraft.mod.common.block;
 
-import common.steamcraft.mod.common.lib.SC2_BlockIDs;
-import common.steamcraft.mod.common.lib.SC2_CreativeTabs;
-import common.steamcraft.mod.common.lib.SC2_Info;
-
+import common.steamcraft.mod.common.block.machines.ModMachines;
+import common.steamcraft.mod.common.lib.BlockIDs;
+import common.steamcraft.mod.common.lib.CreativeTabsMod;
+import common.steamcraft.mod.common.lib.LibInfo;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import net.minecraft.block.Block;
@@ -60,33 +60,33 @@ public class ModBlocks
 	
 	public static void initBlocks()
 	{
-		blockCastIron = new BlockSC2(SC2_BlockIDs.blockCastIronID, Material.iron).setHardness(7F).setResistance(20F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("castironblock");
-		blockVolucite = new BlockSC2(SC2_BlockIDs.blockVoluciteID, Material.rock).setHardness(50F).setResistance(6000000F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("voluciteblock");
-		blockBrass = new BlockSC2(SC2_BlockIDs.blockBrassID, Material.iron).setHardness(5F).setResistance(10F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("brassblock");
-		blockUranium = new BlockUranium(SC2_BlockIDs.blockUraniumID);
-		blockSlateTile = new BlockSC2(SC2_BlockIDs.blockSlateTileID, Material.rock).setUnlocalizedName("slatetiles");
+		blockCastIron = new BlockMod(BlockIDs.blockCastIronID, Material.iron).setHardness(7F).setResistance(20F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("castironblock");
+		blockVolucite = new BlockMod(BlockIDs.blockVoluciteID, Material.rock).setHardness(50F).setResistance(6000000F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("voluciteblock");
+		blockBrass = new BlockMod(BlockIDs.blockBrassID, Material.iron).setHardness(5F).setResistance(10F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("brassblock");
+		blockUranium = new BlockUranium(BlockIDs.blockUraniumID);
+		blockSlateTile = new BlockMod(BlockIDs.blockSlateTileID, Material.rock).setUnlocalizedName("slatetiles");
 		
 		//stairsSlateTile = new (BlockStairs) BlockSC(SC2_BlockIDs.stairsSlateTileID, blockSlateTile, 0);
 		
-		decorIron = new BlockSC2(SC2_BlockIDs.decorIronID, Material.iron).setHardness(5F).setResistance(10F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("engriron");
-		decorGold = new BlockSC2(SC2_BlockIDs.decorGoldID, Material.iron).setHardness(3F).setResistance(10F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("engrgold");
-		decorDiamond = new BlockSC2(SC2_BlockIDs.decorDiamondID, Material.rock).setHardness(5F).setResistance(10F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("engrdiamond");
-		decorCastIron = new BlockSC2(SC2_BlockIDs.decorCastIronID, Material.iron).setHardness(7F).setResistance(20F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("engrcastiron");
-		decorVolucite = new BlockSC2(SC2_BlockIDs.decorVoluciteID, Material.rock).setHardness(50F).setResistance(6000000F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("engrvolucite");
-		decorBrass = new BlockSC2(SC2_BlockIDs.decorBrassID, Material.iron).setHardness(5F).setResistance(10F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("engrbrass");
-		decorLapis = new BlockSC2(SC2_BlockIDs.decorLapisID, Material.rock).setHardness(3F).setResistance(5F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("engrlapis");
-		decorStone = new BlockSC2(SC2_BlockIDs.decorStoneID, Material.rock).setHardness(2F).setResistance(10F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("carvedstone");
-		decorUranium = new BlockUranium(SC2_BlockIDs.decorUraniumID).setHardness(10F).setResistance(6F).setLightValue(0.625F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("engruranium");
+		decorIron = new BlockMod(BlockIDs.decorIronID, Material.iron).setHardness(5F).setResistance(10F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("engriron");
+		decorGold = new BlockMod(BlockIDs.decorGoldID, Material.iron).setHardness(3F).setResistance(10F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("engrgold");
+		decorDiamond = new BlockMod(BlockIDs.decorDiamondID, Material.rock).setHardness(5F).setResistance(10F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("engrdiamond");
+		decorCastIron = new BlockMod(BlockIDs.decorCastIronID, Material.iron).setHardness(7F).setResistance(20F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("engrcastiron");
+		decorVolucite = new BlockMod(BlockIDs.decorVoluciteID, Material.rock).setHardness(50F).setResistance(6000000F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("engrvolucite");
+		decorBrass = new BlockMod(BlockIDs.decorBrassID, Material.iron).setHardness(5F).setResistance(10F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("engrbrass");
+		decorLapis = new BlockMod(BlockIDs.decorLapisID, Material.rock).setHardness(3F).setResistance(5F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("engrlapis");
+		decorStone = new BlockMod(BlockIDs.decorStoneID, Material.rock).setHardness(2F).setResistance(10F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("carvedstone");
+		decorUranium = new BlockUranium(BlockIDs.decorUraniumID).setHardness(10F).setResistance(6F).setLightValue(0.625F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("engruranium");
 		
-		gateCastIron = new BlockCastIronGate(SC2_BlockIDs.gateCastIronID, Material.iron);
-		railingCastIron = new BlockFence(SC2_BlockIDs.railingCastIronID, SC2_Info.SC2_PREFIX + "castironblock", Material.iron).setHardness(7F).setResistance(20F).setStepSound(Block.soundMetalFootstep).setCreativeTab(SC2_CreativeTabs.tabSCBlocks);//.setUnlocalizedName("castironblock");
-		lampOn = new BlockLamp(SC2_BlockIDs.lampOnID, true).setUnlocalizedName("lampblockon").setCreativeTab(null);
-		lampOff = new BlockLamp(SC2_BlockIDs.lampOffID, false).setUnlocalizedName("lampblockoff");
-		brassWood = new BlockBrassLog(SC2_BlockIDs.woodBrassID);
-		brassLeaves = new BlockSC2(SC2_BlockIDs.leavesLampID, Material.wood).setHardness(2F).setLightOpacity(1).setLightValue(0.9375F).setStepSound(Block.soundGlassFootstep).setUnlocalizedName("brassleaves");
-		teaPlant = new BlockTeaPlant(SC2_BlockIDs.teaPlantID);
-		castIronLampIdle = new BlockCastIronLamp(SC2_BlockIDs.castIronLampIdleID, false).setCreativeTab(SC2_CreativeTabs.tabSCBlocks);
-		castIronLampActive = new BlockCastIronLamp(SC2_BlockIDs.castIronLampActiveID, true);
+		gateCastIron = new BlockCastIronGate(BlockIDs.gateCastIronID, Material.iron);
+		railingCastIron = new BlockFence(BlockIDs.railingCastIronID, LibInfo.SC2_PREFIX + "castironblock", Material.iron).setHardness(7F).setResistance(20F).setStepSound(Block.soundMetalFootstep).setCreativeTab(CreativeTabsMod.tabSCBlocks);//.setUnlocalizedName("castironblock");
+		lampOn = new BlockLamp(BlockIDs.lampOnID, true).setUnlocalizedName("lampblockon").setCreativeTab(null);
+		lampOff = new BlockLamp(BlockIDs.lampOffID, false).setUnlocalizedName("lampblockoff");
+		brassWood = new BlockBrassLog(BlockIDs.woodBrassID);
+		brassLeaves = new BlockMod(BlockIDs.leavesLampID, Material.wood).setHardness(2F).setLightOpacity(1).setLightValue(0.9375F).setStepSound(Block.soundGlassFootstep).setUnlocalizedName("brassleaves");
+		teaPlant = new BlockTeaPlant(BlockIDs.teaPlantID);
+		castIronLampIdle = new BlockCastIronLamp(BlockIDs.castIronLampIdleID, false).setCreativeTab(CreativeTabsMod.tabSCBlocks);
+		castIronLampActive = new BlockCastIronLamp(BlockIDs.castIronLampActiveID, true);
 
 		ModMachines.initMachines();
 		ModOres.initOres();

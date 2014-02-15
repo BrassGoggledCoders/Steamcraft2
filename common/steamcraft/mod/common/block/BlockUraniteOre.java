@@ -13,7 +13,7 @@
  */
 package common.steamcraft.mod.common.block;
 
-import common.steamcraft.mod.client.core.helper.SC2_IconHelper;
+import common.steamcraft.mod.client.core.helper.IconHelper;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -29,7 +29,7 @@ import java.util.Random;
  * @author MrArcane111 & Proloe
  *
  */
-public class BlockUraniteOre extends BlockSC2
+public class BlockUraniteOre extends BlockMod
 {
 	private boolean glowing;
 
@@ -46,7 +46,7 @@ public class BlockUraniteOre extends BlockSC2
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister icon)
 	{
-		blockIcon = SC2_IconHelper.forBlock(icon, this);
+		blockIcon = IconHelper.forBlock(icon, this);
 	}
 
 	@Override

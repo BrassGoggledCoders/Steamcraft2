@@ -1,6 +1,6 @@
 package common.steamcraft.mod.common.block.tile;
 
-import common.steamcraft.mod.common.block.BlockChemicalFurnace;
+import common.steamcraft.mod.common.block.machines.BlockChemicalFurnace;
 import common.steamcraft.mod.common.item.ModItems;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;

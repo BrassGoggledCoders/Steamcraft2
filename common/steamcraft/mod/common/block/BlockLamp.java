@@ -8,7 +8,7 @@ import net.minecraft.world.World;
 
 import java.util.Random;
 
-public class BlockLamp extends BlockSC2
+public class BlockLamp extends BlockMod
 {
 	private boolean powered;
 	

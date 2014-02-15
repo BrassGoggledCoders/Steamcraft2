@@ -17,8 +17,9 @@
  */
 package common.steamcraft.mod.common;
 
-import common.steamcraft.mod.common.core.proxy.SC2_CommonProxy;
-import common.steamcraft.mod.common.lib.SC2_Info;
+import common.steamcraft.mod.common.core.proxy.CommonProxy;
+import common.steamcraft.mod.common.lib.LibInfo;
+import common.steamcraft.mod.common.network.PacketHandler;
 
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -29,20 +30,18 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 
-@Mod(modid = SC2_Info.MOD_ID, name = SC2_Info.MOD_NAME, version = SC2_Info.VERSION)
-@NetworkMod(clientSideRequired = true)//, serverSideRequired = false, channels = {SC2_Info.NETWORK_CHANNEL}, packetHandler = SC2_PacketHandler.class)
+@Mod(modid = LibInfo.MOD_ID, name = LibInfo.MOD_NAME, version = LibInfo.VERSION)
+@NetworkMod(clientSideRequired = true, serverSideRequired = false, channels = {LibInfo.NETWORK_CHANNEL}, packetHandler = PacketHandler.class)
 /**
- * It's a main mod class just in case you couldn't tell.
- * 
  * @author MrArcane111
  *
  */
 public class SC2 {
-	@Instance(SC2_Info.MOD_ID)
+	@Instance(LibInfo.MOD_ID)
 	public static SC2 instance;
 	
-	@SidedProxy(clientSide = SC2_Info.CLIENT_PROXY, serverSide = SC2_Info.COMMON_PROXY)
-    public static SC2_CommonProxy proxy;
+	@SidedProxy(clientSide = LibInfo.CLIENT_PROXY, serverSide = LibInfo.COMMON_PROXY)
+    public static CommonProxy proxy;
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {

@@ -13,7 +13,7 @@
  */
 package common.steamcraft.mod.client.render;
 
-import common.steamcraft.mod.client.lib.SC2_ClientResources;
+import common.steamcraft.mod.client.lib.ClientResources;
 import common.steamcraft.mod.common.entity.EntityBullet;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -33,7 +33,7 @@ import org.lwjgl.opengl.GL11;
  */
 public class RenderBullet extends Render
 {
-	private static final ResourceLocation gunTexture = new ResourceLocation(SC2_ClientResources.PREFIX_MOD + "textures/projectiles/musketball.png");
+	private static final ResourceLocation gunTexture = new ResourceLocation(ClientResources.PREFIX_MOD + "textures/projectiles/musketball.png");
 
     public void renderBullet(EntityBullet bullet, double d1, double d2, double d3, float f, float f1)
     {

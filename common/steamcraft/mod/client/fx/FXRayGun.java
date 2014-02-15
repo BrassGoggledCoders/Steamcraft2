@@ -13,7 +13,7 @@
  */
 package common.steamcraft.mod.client.fx;
 
-import common.steamcraft.mod.common.lib.SC2_Info;
+import common.steamcraft.mod.common.lib.LibInfo;
 
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.relauncher.Side;
@@ -61,7 +61,7 @@ public class FXRayGun extends EntityFX
 	private int rotationspeed = 5;
 	private float prevSize = 0.0F;
 	public int impact;
-	private static final ResourceLocation rayTex = new ResourceLocation(SC2_Info.MOD_ID.toLowerCase(), "textures/misc/ray.png");
+	private static final ResourceLocation rayTex = new ResourceLocation(LibInfo.MOD_ID.toLowerCase(), "textures/misc/ray.png");
 	public static boolean amITooLazyToLearnTheUntiCircle = true;
 
 	public FXRayGun(World world, EntityPlayer player, double tx, double ty, double tz, float red, float green, float blue, int age)

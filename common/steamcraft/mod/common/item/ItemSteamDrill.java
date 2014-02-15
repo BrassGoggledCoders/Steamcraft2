@@ -14,15 +14,15 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 
-import common.steamcraft.mod.client.core.helper.SC2_ClientHelper;
-import common.steamcraft.mod.common.core.helper.SC2_CommonHelper;
-import common.steamcraft.mod.common.lib.SC2_Info;
-import common.steamcraft.mod.common.lib.SC2_Material;
+import common.steamcraft.mod.client.core.helper.ClientHelper;
+import common.steamcraft.mod.common.core.helper.CommonHelper;
+import common.steamcraft.mod.common.lib.LibInfo;
+import common.steamcraft.mod.common.lib.MaterialMod;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemSteamDrill extends ItemSC2
+public class ItemSteamDrill extends ItemMod
 {
 	private Random random = new Random();
 	public static final Block[] blocksEffectiveAgainst = new Block[] {
@@ -40,9 +40,9 @@ public class ItemSteamDrill extends ItemSC2
 	@Override
 	public void addInformation(ItemStack itemStack, EntityPlayer entityPlayer, List list, boolean bool) 
 	{
-		if(!SC2_ClientHelper.isShiftKeyDown())
+		if(!ClientHelper.isShiftKeyDown())
 		{
-			list.add(SC2_ClientHelper.shiftForInfo);
+			list.add(ClientHelper.shiftForInfo);
 			return;
 		}
 		
@@ -73,7 +73,7 @@ public class ItemSteamDrill extends ItemSC2
 		{
 			World world = player.worldObj;
 			
-			MovingObjectPosition mop = SC2_CommonHelper.raytraceFromEntity(world, player, true, 5.0D);
+			MovingObjectPosition mop = CommonHelper.raytraceFromEntity(world, player, true, 5.0D);
 			
 	        if (mop == null)
 	            return super.onBlockStartBreak(itemStack, x, y, z, player);
@@ -165,7 +165,7 @@ public class ItemSteamDrill extends ItemSC2
 	public boolean onBlockDestroyed(ItemStack stack, World world, int i, int j, int k, int l, EntityLivingBase living)
     {
 		stack.damageItem(1, living);
-		world.playSoundAtEntity((EntityPlayer)living, SC2_Info.SC2_PREFIX + "drill", 1.0F, 1.0F);
+		world.playSoundAtEntity((EntityPlayer)living, LibInfo.SC2_PREFIX + "drill", 1.0F, 1.0F);
 		world.spawnParticle("smoke", i + 0.5, j + 0.5, k + 0.5, random.nextGaussian(), random.nextGaussian(), random.nextGaussian());
         return true;
     }

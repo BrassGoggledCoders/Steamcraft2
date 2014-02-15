@@ -13,7 +13,7 @@
  */
 package common.steamcraft.mod.common.block;
 
-import common.steamcraft.mod.common.lib.SC2_Info;
+import common.steamcraft.mod.common.lib.LibInfo;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFence;
@@ -24,11 +24,11 @@ import net.minecraft.world.IBlockAccess;
  * @author MrArcane111
  *
  */
-public class BlockCastIronFence <B extends BlockSC2> extends BlockFence
+public class BlockCastIronFence <B extends BlockMod> extends BlockFence
 {
 	public BlockCastIronFence(int id)
 	{
-		super(id, SC2_Info.SC2_PREFIX + "castirongate", Material.iron);
+		super(id, LibInfo.SC2_PREFIX + "castirongate", Material.iron);
 	}
 
 	@Override

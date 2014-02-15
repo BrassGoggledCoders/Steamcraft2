@@ -23,11 +23,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import universalelectricity.api.energy.EnergyStorageHandler;
-
-import common.steamcraft.mod.common.block.BlockCompressor;
+import common.steamcraft.mod.common.block.machines.BlockCompressor;
 import common.steamcraft.mod.common.core.handler.recipe.SC2_RecipeHandlerCompressor;
 import common.steamcraft.mod.common.item.ModItems;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 

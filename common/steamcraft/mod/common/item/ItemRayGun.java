@@ -1,8 +1,8 @@
 package common.steamcraft.mod.common.item;
 
 import common.steamcraft.mod.common.SC2;
-import common.steamcraft.mod.common.lib.SC2_CreativeTabs;
-import common.steamcraft.mod.common.lib.SC2_Info;
+import common.steamcraft.mod.common.lib.CreativeTabsMod;
+import common.steamcraft.mod.common.lib.LibInfo;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -16,7 +16,7 @@ import net.minecraft.world.World;
 import java.util.HashMap;
 import java.util.Random;
 
-public class ItemRayGun extends ItemSC2
+public class ItemRayGun extends ItemMod
 {
 	String raySound;
 	private Random random = new Random();
@@ -27,7 +27,7 @@ public class ItemRayGun extends ItemSC2
 	{
 		super(id);
 		this.raySound = raySound;
-		this.setCreativeTab(SC2_CreativeTabs.tabSCItems);
+		this.setCreativeTab(CreativeTabsMod.tabSCItems);
 		this.setMaxDamage(300);
 		this.setMaxStackSize(1);
 		this.setUnlocalizedName("raygun");
@@ -58,7 +58,7 @@ public class ItemRayGun extends ItemSC2
 		}
 		if((!world.isRemote) && (((Long)soundDelay.get(player.username)).longValue() < System.currentTimeMillis()))
 		{
-			world.playSoundEffect(tx, ty, tz, SC2_Info.SC2_PREFIX + "raygun", 0.35F, 1.0F);
+			world.playSoundEffect(tx, ty, tz, LibInfo.SC2_PREFIX + "raygun", 0.35F, 1.0F);
 			soundDelay.put(player.username, Long.valueOf(System.currentTimeMillis() + 1200L));
 		} else 
 		{

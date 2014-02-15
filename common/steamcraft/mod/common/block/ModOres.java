@@ -13,8 +13,8 @@
  */
 package common.steamcraft.mod.common.block;
 
-import common.steamcraft.mod.common.lib.SC2_BlockIDs;
-import common.steamcraft.mod.common.lib.SC2_BlockNames;
+import common.steamcraft.mod.common.lib.BlockIDs;
+import common.steamcraft.mod.common.lib.BlockNames;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
@@ -36,11 +36,11 @@ public class ModOres
 	
 	public static void initOres()
 	{
-		oreBornite = new BlockSC2Ore(SC2_BlockIDs.oreBorniteID, "bornite").setUnlocalizedName(SC2_BlockNames.ORE_BORNITE);
-		oreBrimstone = new BlockSC2Ore(SC2_BlockIDs.oreBrimstoneID, "brimstone").setUnlocalizedName(SC2_BlockNames.ORE_BRIMSTONE);
-		orePhosphate = new BlockSC2Ore(SC2_BlockIDs.orePhosphateID, "phosphate").setUnlocalizedName(SC2_BlockNames.ORE_PHOSPHATE);
-		oreUranite = new BlockUraniteOre(SC2_BlockIDs.oreUraniteID).setUnlocalizedName(SC2_BlockNames.ORE_URANITE);
-		oreVolucite = new BlockSC2Ore(SC2_BlockIDs.oreVoluciteID, "volucite").setUnlocalizedName(SC2_BlockNames.ORE_VOLUCITE);
+		oreBornite = new BlockOreMod(BlockIDs.oreBorniteID, "bornite").setUnlocalizedName(BlockNames.ORE_BORNITE);
+		oreBrimstone = new BlockOreMod(BlockIDs.oreBrimstoneID, "brimstone").setUnlocalizedName(BlockNames.ORE_BRIMSTONE);
+		orePhosphate = new BlockOreMod(BlockIDs.orePhosphateID, "phosphate").setUnlocalizedName(BlockNames.ORE_PHOSPHATE);
+		oreUranite = new BlockUraniteOre(BlockIDs.oreUraniteID).setUnlocalizedName(BlockNames.ORE_URANITE);
+		oreVolucite = new BlockOreMod(BlockIDs.oreVoluciteID, "volucite").setUnlocalizedName(BlockNames.ORE_VOLUCITE);
 		
 		registerOres();
 		initOreNames();
@@ -50,11 +50,11 @@ public class ModOres
 	
 	public static void registerOres()
 	{
-		GameRegistry.registerBlock(oreBornite, SC2_BlockNames.ORE_BORNITE);
-		GameRegistry.registerBlock(oreBrimstone, SC2_BlockNames.ORE_BRIMSTONE);
-		GameRegistry.registerBlock(orePhosphate, SC2_BlockNames.ORE_PHOSPHATE);
-		GameRegistry.registerBlock(oreUranite, SC2_BlockNames.ORE_URANITE);
-		GameRegistry.registerBlock(oreVolucite, SC2_BlockNames.ORE_VOLUCITE);
+		GameRegistry.registerBlock(oreBornite, BlockNames.ORE_BORNITE);
+		GameRegistry.registerBlock(oreBrimstone, BlockNames.ORE_BRIMSTONE);
+		GameRegistry.registerBlock(orePhosphate, BlockNames.ORE_PHOSPHATE);
+		GameRegistry.registerBlock(oreUranite, BlockNames.ORE_URANITE);
+		GameRegistry.registerBlock(oreVolucite, BlockNames.ORE_VOLUCITE);
 	}
 	
 	public static void initOreNames()

@@ -1,7 +1,7 @@
 package common.steamcraft.mod.common.block;
 
-import common.steamcraft.mod.common.lib.SC2_CreativeTabs;
-import common.steamcraft.mod.common.lib.SC2_Info;
+import common.steamcraft.mod.common.lib.CreativeTabsMod;
+import common.steamcraft.mod.common.lib.LibInfo;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -27,7 +27,7 @@ public class BlockBrassLog extends BlockRotatedPillar
 		this.setHardness(5.0F);
 		this.setStepSound(Block.soundMetalFootstep);
 		this.setUnlocalizedName("brasslog");
-		this.setCreativeTab(SC2_CreativeTabs.tabSCBlocks);
+		this.setCreativeTab(CreativeTabsMod.tabSCBlocks);
 	}
 
 	@Override
@@ -80,8 +80,8 @@ public class BlockBrassLog extends BlockRotatedPillar
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister icon)
 	{
-		this.tree_side = icon.registerIcon(SC2_Info.SC2_PREFIX + this.getUnlocalizedName().substring(5) + "side");
-		this.tree_top = icon.registerIcon(SC2_Info.SC2_PREFIX + this.getUnlocalizedName().substring(5) + "top");
+		this.tree_side = icon.registerIcon(LibInfo.SC2_PREFIX + this.getUnlocalizedName().substring(5) + "side");
+		this.tree_top = icon.registerIcon(LibInfo.SC2_PREFIX + this.getUnlocalizedName().substring(5) + "top");
 	}
 
 	@Override

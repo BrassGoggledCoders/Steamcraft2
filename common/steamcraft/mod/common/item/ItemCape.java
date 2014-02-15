@@ -14,8 +14,8 @@
 package common.steamcraft.mod.common.item;
 
 import common.steamcraft.mod.common.SC2;
-import common.steamcraft.mod.common.lib.SC2_CreativeTabs;
-import common.steamcraft.mod.common.lib.SC2_ItemNames;
+import common.steamcraft.mod.common.lib.CreativeTabsMod;
+import common.steamcraft.mod.common.lib.ItemNames;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.model.ModelBiped;
@@ -29,15 +29,15 @@ import net.minecraft.item.ItemStack;
  * @author MrArcane111 & general3214
  *
  */
-public class ItemCape extends ItemSC2Armor 
+public class ItemCape extends ItemArmorMod 
 {
 	public ItemCape(int id, EnumArmorMaterial mat, int renderIndex, int armorType, String texture)
 	{
 		super(id, mat, renderIndex, armorType, texture);
 		mat = this.material;
 		this.setMaxStackSize(1);
-		this.setCreativeTab(SC2_CreativeTabs.tabSCItems);
-		this.setUnlocalizedName(SC2_ItemNames.LEATHER_CAPE);
+		this.setCreativeTab(CreativeTabsMod.tabSCItems);
+		this.setUnlocalizedName(ItemNames.LEATHER_CAPE);
 	}
 
 	@Override

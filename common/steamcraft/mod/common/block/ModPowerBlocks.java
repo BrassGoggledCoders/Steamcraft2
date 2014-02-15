@@ -13,8 +13,8 @@
  */
 package common.steamcraft.mod.common.block;
 
-import common.steamcraft.mod.common.lib.SC2_BlockIDs;
-
+import common.steamcraft.mod.common.block.machines.BlockLightningRod;
+import common.steamcraft.mod.common.lib.BlockIDs;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import net.minecraft.block.Block;
@@ -31,8 +31,8 @@ public class ModPowerBlocks
 	
 	public static void initPowerBlocks()
 	{
-		copperWire = (BlockCopperWire) new BlockCopperWire(SC2_BlockIDs.copperWireID);
-		lightningRod = new BlockLightningRod(SC2_BlockIDs.lightningRodID);
+		copperWire = (BlockCopperWire) new BlockCopperWire(BlockIDs.copperWireID);
+		lightningRod = new BlockLightningRod(BlockIDs.lightningRodID);
 		
 		registerBlocks();
 		addBlockNames();

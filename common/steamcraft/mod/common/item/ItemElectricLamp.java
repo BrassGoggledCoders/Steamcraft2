@@ -5,7 +5,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-public class ItemElectricLamp extends ItemSC2
+public class ItemElectricLamp extends ItemMod
 {
 	private int spawnID;
 

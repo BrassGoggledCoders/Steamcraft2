@@ -17,7 +17,7 @@
  */
 package common.steamcraft.mod.common.item;
 
-import common.steamcraft.mod.client.core.helper.SC2_ClientHelper;
+import common.steamcraft.mod.client.core.helper.ClientHelper;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -33,7 +33,7 @@ import java.util.List;
  * @author MrArcane111 & EntireCraft
  *
  */
-public class ItemBrassWatch extends ItemSC2
+public class ItemBrassWatch extends ItemMod
 {
 	public ItemBrassWatch(int id)
 	{
@@ -45,9 +45,9 @@ public class ItemBrassWatch extends ItemSC2
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean flag)
 	{
-		if(!SC2_ClientHelper.isShiftKeyDown())
+		if(!ClientHelper.isShiftKeyDown())
 		{
-			list.add(SC2_ClientHelper.shiftForInfo);
+			list.add(ClientHelper.shiftForInfo);
 			return;
 		}
 		

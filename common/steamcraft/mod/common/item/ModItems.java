@@ -20,7 +20,7 @@ package common.steamcraft.mod.common.item;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import common.steamcraft.mod.common.block.ModBlocks;
-import common.steamcraft.mod.common.lib.SC2_ItemIDs;
+import common.steamcraft.mod.common.lib.ItemIDs;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
 /**
@@ -58,31 +58,31 @@ public class ModItems
 	
 	public static void initItems()
 	{
-		etherium = new ItemSC2(SC2_ItemIDs.etheriumID).setUnlocalizedName("etherium");
-		chemicSalt = new ItemSC2(SC2_ItemIDs.chemicSaltID).setUnlocalizedName("sulphur");
-		bornite = new ItemSC2(SC2_ItemIDs.borniteID).setUnlocalizedName("copper");
-		obsidianSlate = new ItemSC2(SC2_ItemIDs.obsidianSlateID).setUnlocalizedName("obsidianslate");
-		ingotBrass = new ItemSC2(SC2_ItemIDs.ingotBrassID).setUnlocalizedName("ingotbrass");
-		ingotCastIron = new ItemSC2(SC2_ItemIDs.ingotCastIronID).setUnlocalizedName("ingotcastiron");
-		lightBulb = new ItemSC2(SC2_ItemIDs.lightBulbID).setUnlocalizedName("lightbulb");
-		phosphorus = new ItemSC2(SC2_ItemIDs.phosphorusID).setUnlocalizedName("phosphorus");
-		uraniumOre = new ItemSC2(SC2_ItemIDs.uraniumStoneID).setUnlocalizedName("uraniumstone");
-		uraniumPellet = new ItemSC2(SC2_ItemIDs.uraniumID).setUnlocalizedName("uraniumpellet");
-		reactorCore = new ItemSC2(SC2_ItemIDs.reactorCoreID).setUnlocalizedName("reactorcore");
-		teaSeed = new ItemTeaSeeds(SC2_ItemIDs.teaSeedID, ModBlocks.teaPlant.blockID, Block.tilledField.blockID).setUnlocalizedName("teaseed"); 
-		teaLeaves = new ItemSC2(SC2_ItemIDs.teaLeavesID).setUnlocalizedName("tealeaves");
+		etherium = new ItemMod(ItemIDs.etheriumID).setUnlocalizedName("etherium");
+		chemicSalt = new ItemMod(ItemIDs.chemicSaltID).setUnlocalizedName("sulphur");
+		bornite = new ItemMod(ItemIDs.borniteID).setUnlocalizedName("copper");
+		obsidianSlate = new ItemMod(ItemIDs.obsidianSlateID).setUnlocalizedName("obsidianslate");
+		ingotBrass = new ItemMod(ItemIDs.ingotBrassID).setUnlocalizedName("ingotbrass");
+		ingotCastIron = new ItemMod(ItemIDs.ingotCastIronID).setUnlocalizedName("ingotcastiron");
+		lightBulb = new ItemMod(ItemIDs.lightBulbID).setUnlocalizedName("lightbulb");
+		phosphorus = new ItemMod(ItemIDs.phosphorusID).setUnlocalizedName("phosphorus");
+		uraniumOre = new ItemMod(ItemIDs.uraniumStoneID).setUnlocalizedName("uraniumstone");
+		uraniumPellet = new ItemMod(ItemIDs.uraniumID).setUnlocalizedName("uraniumpellet");
+		reactorCore = new ItemMod(ItemIDs.reactorCoreID).setUnlocalizedName("reactorcore");
+		teaSeed = new ItemTeaSeeds(ItemIDs.teaSeedID, ModBlocks.teaPlant.blockID, Block.tilledField.blockID).setUnlocalizedName("teaseed"); 
+		teaLeaves = new ItemMod(ItemIDs.teaLeavesID).setUnlocalizedName("tealeaves");
 		//coldKettle = new ItemKettle(SC_ItemIDs.coldKettleID, 300).setUnlocalizedName("kettle");
 		//hotKettle = new ItemKettle(SC_ItemIDs.hotKettleID, 300).setUnlocalizedName("kettle");
 		//emptyKettle = new ItemKettle(SC_ItemIDs.emptyKettleID, 300).setUnlocalizedName("kettle");
 		//fullTeacup = new ItemTeacup(SC_ItemIDs.fullTeacupID, 4, 0.6F, false).setUnlocalizedName("teacupfull");
 		//emptyTeacup = new ItemTeacup(SC_ItemIDs.emptyTeacupID, 0, 0.0F, false).setUnlocalizedName("teacupempty");
-		copperWire = new ItemCopperWire(SC2_ItemIDs.copperWireID).setUnlocalizedName("copperwire");
-		brassWatch = new ItemBrassWatch(SC2_ItemIDs.brassWatchID);
-		canisterSteam = new ItemCanister(SC2_ItemIDs.steamCanisterID, 500, "").setUnlocalizedName("steamcanister");
-		canisterGas = new ItemCanister(SC2_ItemIDs.gasCanisterID, 1000, "").setUnlocalizedName("gascanister");
-		steamCanister = new ItemCanister(SC2_ItemIDs.steamCanisterID, 500, "steam").setUnlocalizedName("steamcanister");
-		gasCanister = new ItemCanister(SC2_ItemIDs.gasCanisterID, 1000, "compressed gas").setUnlocalizedName("gascanister");
-		emptyCanister = new ItemSC2(SC2_ItemIDs.emptyCanisterID).setUnlocalizedName("emptycanister");
+		copperWire = new ItemCopperWire(ItemIDs.copperWireID).setUnlocalizedName("copperwire");
+		brassWatch = new ItemBrassWatch(ItemIDs.brassWatchID);
+		canisterSteam = new ItemCanister(ItemIDs.steamCanisterID, 500, "").setUnlocalizedName("steamcanister");
+		canisterGas = new ItemCanister(ItemIDs.gasCanisterID, 1000, "").setUnlocalizedName("gascanister");
+		steamCanister = new ItemCanister(ItemIDs.steamCanisterID, 500, "steam").setUnlocalizedName("steamcanister");
+		gasCanister = new ItemCanister(ItemIDs.gasCanisterID, 1000, "compressed gas").setUnlocalizedName("gascanister");
+		emptyCanister = new ItemMod(ItemIDs.emptyCanisterID).setUnlocalizedName("emptycanister");
 		
 		initNames();
 		ModTools.initTools();

@@ -1,8 +1,8 @@
 package common.steamcraft.mod.common.entity;
 
 import common.steamcraft.mod.common.item.ModGuns;
-import common.steamcraft.mod.common.lib.SC2_EntityIDs;
-import common.steamcraft.mod.common.lib.SC2_Info;
+import common.steamcraft.mod.common.lib.EntityIDs;
+import common.steamcraft.mod.common.lib.LibInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
@@ -109,7 +109,7 @@ public class EntityBullet extends Entity implements IProjectile
 	@Override
 	protected void entityInit() 
 	{
-		this.dataWatcher.addObject(SC2_EntityIDs.BULLET_ID, Byte.valueOf((byte)0));
+		this.dataWatcher.addObject(EntityIDs.BULLET_ID, Byte.valueOf((byte)0));
 	}
 	
 	@Override
@@ -257,7 +257,7 @@ public class EntityBullet extends Entity implements IProjectile
 			{
 				if(movingobjectposition.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, this), damage))
 				{
-					worldObj.playSoundAtEntity(this, SC2_Info.SC2_PREFIX + "hitflesh", 1.0F, 1.2F / (rand.nextFloat() * 0.2F + 0.9F));
+					worldObj.playSoundAtEntity(this, LibInfo.SC2_PREFIX + "hitflesh", 1.0F, 1.2F / (rand.nextFloat() * 0.2F + 0.9F));
 					this.setDead();
 				} else
 				{
@@ -288,7 +288,7 @@ public class EntityBullet extends Entity implements IProjectile
 					posX -= (motionX / (double)f1) * 0.05000000074505806D;
 					posY -= (motionY / (double)f1) * 0.05000000074505806D;
 					posZ -= (motionZ / (double)f1) * 0.05000000074505806D;
-					worldObj.playSoundAtEntity(this, SC2_Info.SC2_PREFIX + "hitblock", 1.0F, 1.0F);
+					worldObj.playSoundAtEntity(this, LibInfo.SC2_PREFIX + "hitblock", 1.0F, 1.0F);
 					this.setDead();
 				}
 			}

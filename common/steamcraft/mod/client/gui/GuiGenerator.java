@@ -8,11 +8,11 @@ import org.lwjgl.opengl.GL11;
 
 import common.steamcraft.mod.common.block.tile.TileEntityGenerator;
 import common.steamcraft.mod.common.block.tile.container.ContainerGenerator;
-import common.steamcraft.mod.common.lib.SC2_Info;
+import common.steamcraft.mod.common.lib.LibInfo;
 
 public class GuiGenerator extends GuiContainer
 {
-	private static final ResourceLocation guitexture = new ResourceLocation(SC2_Info.SC2_PREFIX + "textures/gui/coalgenerator.png");
+	private static final ResourceLocation guitexture = new ResourceLocation(LibInfo.SC2_PREFIX + "textures/gui/coalgenerator.png");
 	private TileEntityGenerator furnaceInventory;
 
 	public GuiGenerator(InventoryPlayer player, TileEntityGenerator tile)

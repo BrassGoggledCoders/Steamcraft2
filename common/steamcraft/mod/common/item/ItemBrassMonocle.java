@@ -18,7 +18,7 @@
 package common.steamcraft.mod.common.item;
 
 import common.steamcraft.mod.common.SC2;
-import common.steamcraft.mod.common.lib.SC2_CreativeTabs;
+import common.steamcraft.mod.common.lib.CreativeTabsMod;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.model.ModelBiped;
@@ -34,14 +34,14 @@ import net.minecraft.item.ItemStack;
  *
  */
 
-public class ItemBrassMonocle extends ItemSC2Armor
+public class ItemBrassMonocle extends ItemArmorMod
 {
 	public ItemBrassMonocle(int id, EnumArmorMaterial mat, int renderIndex, int armorType, String texture)
 	{
 		super(id, mat, renderIndex, armorType, texture);
 		mat = material;
 		this.setMaxStackSize(1);
-		this.setCreativeTab(SC2_CreativeTabs.tabSCItems);
+		this.setCreativeTab(CreativeTabsMod.tabSCItems);
 		this.setUnlocalizedName("brassmonocle");
 	}
 

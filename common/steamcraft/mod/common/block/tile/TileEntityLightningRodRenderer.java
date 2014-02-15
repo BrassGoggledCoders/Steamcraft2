@@ -1,7 +1,7 @@
 package common.steamcraft.mod.common.block.tile;
 
 import common.steamcraft.mod.client.model.ModelLightningRod;
-import common.steamcraft.mod.common.lib.SC2_Info;
+import common.steamcraft.mod.common.lib.LibInfo;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.entity.Entity;
@@ -24,7 +24,7 @@ public class TileEntityLightningRodRenderer extends TileEntitySpecialRenderer
 	{
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float) x + 0.5F, (float) y + 1.5F, (float) z + 0.5F);
-		ResourceLocation lightningRod = (new ResourceLocation(SC2_Info.SC2_PREFIX + "textures/models/lightningrod.png"));
+		ResourceLocation lightningRod = (new ResourceLocation(LibInfo.SC2_PREFIX + "textures/models/lightningrod.png"));
 		Minecraft.getMinecraft().renderEngine.bindTexture(lightningRod);                     
 		GL11.glPushMatrix();
 		GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
