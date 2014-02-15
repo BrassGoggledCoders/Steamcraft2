@@ -1,0 +1,23 @@
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+/cpw
+/ibxm
+/paulscode
+/net
+/assets/forge
+*.cfg
+fmlversion.properties
+mcpmod.info
+mcp.png
+Start.java
+forge_logo.png
+deobfuscation_data-1.6.4.lzma
+.DS_Store
+*.cfg~
+
+/com/asm
