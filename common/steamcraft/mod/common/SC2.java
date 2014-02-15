@@ -58,4 +58,10 @@ public class SC2 {
 	public void postInit(FMLPostInitializationEvent event) {
 		proxy.postInit(event);
 	}
+	
+	// TODO: 
+	// 1. Conveyor stuff: run the code; you'll see what I mean.
+	// 2. Fix the Steam-Powered Furnace, Chemical Furnace, and Nuclear Furnace
+	// 3. Make sure all the items/blocks use the "SC2_PREFIX" instead of MOD_ID for textures (it's located in the ClientResources)
+	// 4. Ummm...
 }
