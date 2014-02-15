@@ -27,3 +27,4 @@ Credits:
 - moldywings: for his Minecraft mod models
 - ALinkToTheFuture: for use of his sprites
 - Papertazer: for coding support
+- warlordjones: Coding ;)
