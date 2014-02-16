@@ -62,5 +62,11 @@ public class SC2 {
 	// 1. Conveyor stuff: run the code; you'll see what I mean.
 	// 2. Fix the Steam-Powered Furnace, Chemical Furnace, and Nuclear Furnace
 	// 3. Make sure all the items/blocks use the "SC2_PREFIX" instead of MOD_ID for textures (it's located in the ClientResources)
-	// 4. Ummm...
+	// 4. TileEntityCompressor needs a new Recipe handler
+	// 5. There's a TileEntity extension class I made called NetworkTile that utilizes some helpful things relating to packets, so 
+	// feel free to check it out and maybe make the TileEntityElectricMachine extend it
+	// Send me a message for model/texture requests so I can forward the info through the proper channels.
+	// 6. Post this kind of info here, so the developers can read it easily.
+	// 7. Please use the nightly branch for all experimental, incomplete, and WIP stuff; only use the master and maindir branches for
+	// finalized components!
 }
