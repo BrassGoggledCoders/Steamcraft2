@@ -19,5 +19,12 @@ forge_logo.png
 deobfuscation_data-1.6.4.lzma
 .DS_Store
 *.cfg~
+#Warlordjones’ stuff#
+/assets/steampunkery
+/com/
+/buildcraft/
+/thaumcraft
+lib/
+morph/
 
 /com/asm
