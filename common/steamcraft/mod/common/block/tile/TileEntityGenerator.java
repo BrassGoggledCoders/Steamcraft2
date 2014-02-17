@@ -190,12 +190,12 @@ public class TileEntityGenerator extends TileEntityElectricMachine implements IS
 		if (!worldObj.isRemote)
 		{
 			if(inventory[2]!=null && energy.getEmptySpace() > 0)
-				this.discharge(2, this);
+				this.discharge(inventory[2]);
 			
 			if(this.getEnergy(null)!=0)
 			{
 				if(inventory[1]!=null)
-					this.charge(1, this);
+					this.recharge(inventory[1]);
 				this.energy.modifyEnergyStored(-this.produce(this.energy.getMaxExtract()));
 			}
 			
