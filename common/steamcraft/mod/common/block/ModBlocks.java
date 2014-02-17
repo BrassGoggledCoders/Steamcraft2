@@ -35,6 +35,8 @@ public class ModBlocks
 	public static Block blockBrass;
 	public static Block blockUranium;
 	public static Block blockSlateTile;
+	public static Block blockAluminum, blockCopper, blockTin, blockZinc;
+	public static Block blockBronze, blockSteel;
 	
 	public static BlockStairs stairsSlateTile;
 	
@@ -64,6 +66,12 @@ public class ModBlocks
 		blockVolucite = new BlockMod(BlockIDs.blockVoluciteID, Material.rock).setHardness(50F).setResistance(6000000F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("voluciteblock");
 		blockBrass = new BlockMod(BlockIDs.blockBrassID, Material.iron).setHardness(5F).setResistance(10F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("brassblock");
 		blockUranium = new BlockUranium(BlockIDs.blockUraniumID);
+		blockAluminum = new BlockMod(BlockIDs.blockAluminumID, Material.iron).setHardness(5F).setResistance(10F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("aluminumblock");
+		blockCopper = new BlockMod(BlockIDs.blockCopperID, Material.iron).setHardness(5F).setResistance(10F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("copperblock");
+		blockTin = new BlockMod(BlockIDs.blockTinID, Material.iron).setHardness(5F).setResistance(10F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("tinblock");
+		blockZinc = new BlockMod(BlockIDs.blockZincID, Material.iron).setHardness(5F).setResistance(10F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("zincblock");
+		blockBronze = new BlockMod(BlockIDs.blockBronzeID, Material.iron).setHardness(5F).setResistance(10F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("bronzeblock");
+		blockSteel = new BlockMod(BlockIDs.blockSteelID, Material.iron).setHardness(5F).setResistance(10F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("steelblock");
 		blockSlateTile = new BlockMod(BlockIDs.blockSlateTileID, Material.rock).setUnlocalizedName("slatetiles");
 		
 		//stairsSlateTile = new (BlockStairs) BlockSC(SC2_BlockIDs.stairsSlateTileID, blockSlateTile, 0);
@@ -120,6 +128,12 @@ public class ModBlocks
 		GameRegistry.registerBlock(castIronLampIdle, "castironlampidle");
 		GameRegistry.registerBlock(castIronLampActive, "castironlampactive");
 		GameRegistry.registerBlock(blockSlateTile, "slatetiles");
+		GameRegistry.registerBlock(blockAluminum, "aluminumblock");
+		GameRegistry.registerBlock(blockCopper, "copperblock");
+		GameRegistry.registerBlock(blockTin, "tinblock");
+		GameRegistry.registerBlock(blockZinc, "zincblock");
+		GameRegistry.registerBlock(blockBronze, "bronzeblock");
+		GameRegistry.registerBlock(blockSteel, "steelblock");
 	}
 	
 	public static void addNames()
