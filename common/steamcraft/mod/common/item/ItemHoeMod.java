@@ -1,5 +1,8 @@
 package common.steamcraft.mod.common.item;
 
+import java.util.List;
+
+import common.steamcraft.mod.client.core.helper.ClientHelper;
 import common.steamcraft.mod.common.lib.MaterialMod;
 
 import cpw.mods.fml.relauncher.Side;
@@ -90,6 +93,21 @@ public class ItemHoeMod extends ItemMod
 		}
 
 		return stack;
+	}
+	
+	@Override
+	public void addInformation(ItemStack itemStack, EntityPlayer entityPlayer, List list, boolean bool) 
+	{
+		if(toolMaterial==MaterialMod.INSTANCE.STEAM_TOOL)
+		{
+			if(!ClientHelper.isShiftKeyDown())
+			{
+				list.add(ClientHelper.shiftForInfo);
+				return;
+			}
+
+			list.add("\u00A77"+ (this.getMaxDamage() - itemStack.getItemDamage()) + "/" + this.getMaxDamage() + " steam");
+		}
 	}
 	
 	@Override

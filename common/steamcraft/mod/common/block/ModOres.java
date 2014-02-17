@@ -15,11 +15,11 @@ package common.steamcraft.mod.common.block;
 
 import common.steamcraft.mod.common.lib.BlockIDs;
 import common.steamcraft.mod.common.lib.BlockNames;
-
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import net.minecraft.block.Block;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.oredict.OreDictionary;
 
 /**
  * 
@@ -33,6 +33,7 @@ public class ModOres
 	public static Block orePhosphate;
 	public static Block oreUranite;
 	public static Block oreVolucite;
+	public static Block oreAluminum, oreCopper, oreTin, oreZinc;
 	
 	public static void initOres()
 	{
@@ -41,7 +42,10 @@ public class ModOres
 		orePhosphate = new BlockOreMod(BlockIDs.orePhosphateID, "phosphate").setUnlocalizedName(BlockNames.ORE_PHOSPHATE);
 		oreUranite = new BlockUraniteOre(BlockIDs.oreUraniteID).setUnlocalizedName(BlockNames.ORE_URANITE);
 		oreVolucite = new BlockOreMod(BlockIDs.oreVoluciteID, "volucite").setUnlocalizedName(BlockNames.ORE_VOLUCITE);
-		
+		oreAluminum = new BlockOreMod(BlockIDs.oreAluminumID, "aluminum").setUnlocalizedName(BlockNames.ORE_ALUMINUM);
+		oreCopper = new BlockOreMod(BlockIDs.oreCopperID, "copper").setUnlocalizedName(BlockNames.ORE_COPPER);
+		oreTin = new BlockOreMod(BlockIDs.oreTinID, "tin").setUnlocalizedName(BlockNames.ORE_TIN);
+		oreZinc = new BlockOreMod(BlockIDs.oreZincID, "zinc").setUnlocalizedName(BlockNames.ORE_ZINC);
 		registerOres();
 		initOreNames();
 		initOreHarvestLevels();
@@ -55,6 +59,10 @@ public class ModOres
 		GameRegistry.registerBlock(orePhosphate, BlockNames.ORE_PHOSPHATE);
 		GameRegistry.registerBlock(oreUranite, BlockNames.ORE_URANITE);
 		GameRegistry.registerBlock(oreVolucite, BlockNames.ORE_VOLUCITE);
+		GameRegistry.registerBlock(oreAluminum, BlockNames.ORE_ALUMINUM);
+		GameRegistry.registerBlock(oreCopper, BlockNames.ORE_COPPER);
+		GameRegistry.registerBlock(oreTin, BlockNames.ORE_TIN);
+		GameRegistry.registerBlock(oreZinc, BlockNames.ORE_ZINC);
 	}
 	
 	public static void initOreNames()
@@ -73,10 +81,22 @@ public class ModOres
 		MinecraftForge.setBlockHarvestLevel(orePhosphate, 0, "pickaxe", 2); 
 		MinecraftForge.setBlockHarvestLevel(oreUranite, 0, "pickaxe", 2); 
 		MinecraftForge.setBlockHarvestLevel(oreVolucite, 0, "pickaxe", 4);
+		MinecraftForge.setBlockHarvestLevel(oreAluminum, 0, "pickaxe", 1);
+		MinecraftForge.setBlockHarvestLevel(oreCopper, 0, "pickaxe", 1);
+		MinecraftForge.setBlockHarvestLevel(oreTin, 0, "pickaxe", 1);
+		MinecraftForge.setBlockHarvestLevel(oreZinc, 0, "pickaxe", 1);
 	}
 	
 	public static void registerOreDictionary()
 	{
-		// TODO: 
+		OreDictionary.registerOre("oreBornite", oreBornite); 
+		OreDictionary.registerOre("oreBrimstone", oreBrimstone); 
+		OreDictionary.registerOre("orePhosphate", orePhosphate); 
+		OreDictionary.registerOre("oreUranium", oreUranite); 
+		OreDictionary.registerOre("oreVolucite", oreVolucite);
+		OreDictionary.registerOre("oreAluminum", oreAluminum);
+		OreDictionary.registerOre("oreCopper", oreCopper);
+		OreDictionary.registerOre("oreTin", oreTin);
+		OreDictionary.registerOre("oreZinc", oreZinc);
 	}
 }

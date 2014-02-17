@@ -47,7 +47,7 @@ public class WorldGenerator implements IWorldGenerator {
 		}
 	}
 
-	// TODO: Change ores' spawning rarity
+	// TODO: Change ores' spawning characteristics
 	private void generateSurface(World world, Random random, int i, int j) {
 		for (int chance = 0; chance < 1; chance++) {
 			int etheriumXCoord = i + random.nextInt(16);
@@ -83,6 +83,34 @@ public class WorldGenerator implements IWorldGenerator {
 			int phosphateZCoord = j + random.nextInt(16);
 
 			new WorldGenMinable(ModOres.orePhosphate.blockID, 13).generate(world, random, phosphateXCoord, phosphateYCoord, phosphateZCoord);
+		}
+		for (int chance = 0; chance < 10; chance++) {
+			int aluminumXCoord = i + random.nextInt(16);
+			int aluminumYCoord = random.nextInt(36);
+			int aluminumZCoord = j + random.nextInt(16);
+
+			new WorldGenMinable(ModOres.oreAluminum.blockID, 13).generate(world, random, aluminumXCoord, aluminumYCoord, aluminumZCoord);
+		}
+		for (int chance = 0; chance < 10; chance++) {
+			int copperXCoord = i + random.nextInt(16);
+			int copperYCoord = random.nextInt(36);
+			int copperZCoord = j + random.nextInt(16);
+
+			new WorldGenMinable(ModOres.oreCopper.blockID, 13).generate(world, random, copperXCoord, copperYCoord, copperZCoord);
+		}
+		for (int chance = 0; chance < 10; chance++) {
+			int tinXCoord = i + random.nextInt(16);
+			int tinYCoord = random.nextInt(36);
+			int tinZCoord = j + random.nextInt(16);
+
+			new WorldGenMinable(ModOres.oreTin.blockID, 13).generate(world, random, tinXCoord, tinYCoord, tinZCoord);
+		}
+		for (int chance = 0; chance < 10; chance++) {
+			int zincXCoord = i + random.nextInt(16);
+			int zincYCoord = random.nextInt(36);
+			int zincZCoord = j + random.nextInt(16);
+
+			new WorldGenMinable(ModOres.oreZinc.blockID, 13).generate(world, random, zincXCoord, zincYCoord, zincZCoord);
 		}
 	}
 

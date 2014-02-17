@@ -105,6 +105,46 @@ public class ItemRayGun extends ItemMod
 								world.setBlock(i, j, k, Block.fire.blockID);
 								stack.damageItem(1, player);
 							}
+							if(world.getBlockId(i, j, k) == Block.sand.blockID)
+							{
+								world.setBlock(i, j, k, Block.glass.blockID);
+								stack.damageItem(1, player);
+							}
+							if(world.getBlockId(i, j, k) == Block.netherrack.blockID)
+							{
+								world.setBlock(i, j, k, Block.lavaMoving.blockID, 3, 2);
+								stack.damageItem(1, player);
+							}
+							if(world.getBlockId(i, j, k) == Block.blockClay.blockID)
+							{
+								world.setBlock(i, j, k, Block.hardenedClay.blockID);
+								stack.damageItem(1, player);
+							}
+							if(world.getBlockId(i, j, k) == Block.blockSnow.blockID)
+							{
+								world.setBlock(i, j, k, Block.waterMoving.blockID, 3, 2);
+								stack.damageItem(1, player);
+							}
+							if(world.getBlockId(i, j, k) == Block.snow.blockID)
+							{
+								world.setBlock(i, j, k, Block.waterMoving.blockID, 3, 2);
+								stack.damageItem(1, player);
+							}
+							if(world.getBlockId(i, j, k) == Block.waterMoving.blockID)
+							{
+								world.setBlock(i, j, k, 0);
+								stack.damageItem(1, player);
+							}
+							if(world.getBlockId(i, j, k) == Block.waterStill.blockID)
+							{
+								world.setBlock(i, j, k, 0);
+								stack.damageItem(1, player);
+							}
+							if(world.getBlockId(i, j, k) == Block.ice.blockID)
+							{
+								world.setBlock(i, j, k, Block.waterStill.blockID);
+								stack.damageItem(1, player);
+							}
 						}
 					}
 				}

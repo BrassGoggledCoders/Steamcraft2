@@ -28,8 +28,8 @@ public final class LibInfo {
 
     public static final String NETWORK_CHANNEL = MOD_ID;
 
-    public static final String COMMON_PROXY = "common.steamcraft.mod.common.core.proxy.SC2_CommonProxy";
-    public static final String CLIENT_PROXY = "common.steamcraft.mod.client.core.proxy.SC2_ClientProxy";
+    public static final String COMMON_PROXY = "common.steamcraft.mod.common.core.proxy.CommonProxy";
+    public static final String CLIENT_PROXY = "common.steamcraft.mod.client.core.proxy.ClientProxy";
 
     public static final String SC2_PREFIX = "steamcraft:";
 }

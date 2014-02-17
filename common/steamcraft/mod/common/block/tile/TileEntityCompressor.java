@@ -23,9 +23,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import universalelectricity.api.energy.EnergyStorageHandler;
+
 import common.steamcraft.mod.common.block.machines.BlockCompressor;
-import common.steamcraft.mod.common.core.handler.recipe.SC2_RecipeHandlerCompressor;
+import common.steamcraft.mod.common.core.handler.recipe.CompressorHandler;
 import common.steamcraft.mod.common.item.ModItems;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -199,7 +201,7 @@ public class TileEntityCompressor extends TileEntityElectricMachine implements I
 		if (!worldObj.isRemote)
 		{
 			if(inventory[2]!=null && energy.getEmptySpace() > 0)
-				this.discharge(2, this);
+				this.discharge(inventory[2]);
 			
 			if (this.canSmelt())
 			{		
@@ -236,12 +238,12 @@ public class TileEntityCompressor extends TileEntityElectricMachine implements I
 			return false;
 		if(inventory[1] == null)
 			return false;
-		if(SC2_RecipeHandlerCompressor.recipe().getResult(inventory[1])==null)
+		if(CompressorHandler.recipe().getResult(inventory[1])==null)
 			return false;
 		
-		if(SC2_RecipeHandlerCompressor.recipe().getResult(inventory[1]).itemID==inventory[0].itemID)
+		if(CompressorHandler.recipe().getResult(inventory[1]).itemID==inventory[0].itemID)
 		{
-			int chargeLevel = SC2_RecipeHandlerCompressor.recipe().getChargeLevel(inventory[1]);
+			int chargeLevel = CompressorHandler.recipe().getChargeLevel(inventory[1]);
 			
 			if(inventory[0].getItemDamage()-chargeLevel>=0)
 					return true;
@@ -254,7 +256,7 @@ public class TileEntityCompressor extends TileEntityElectricMachine implements I
 	{
 		if (this.canSmelt())
 		{
-			int chargeLevel = SC2_RecipeHandlerCompressor.recipe().getChargeLevel(inventory[1]);
+			int chargeLevel = CompressorHandler.recipe().getChargeLevel(inventory[1]);
 			
 			inventory[0].setItemDamage(inventory[0].getItemDamage()-chargeLevel);
 			

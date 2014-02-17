@@ -50,14 +50,14 @@ public class ModTools {
 		drillBase = new ItemMod(ItemIDs.drillBaseID).setUnlocalizedName("coredrillbase");
 		// int id, double maxEnergy, float voltage, int toolTier
 		// TODO: FIX THESE GOD DAMN NUMBERS!!!
-		drillWood = new ItemElectricDrill(ItemIDs.drillWoodID, 3333, 120, 1).setUnlocalizedName("wooddrill");
+		drillWood = new ItemElectricDrill(ItemIDs.drillWoodID, 3000, 120, 0).setUnlocalizedName("wooddrill");
 		drillStone = new ItemElectricDrill(ItemIDs.drillStoneID, 5000, 120, 1).setUnlocalizedName("stonedrill");
-		drillIron = new ItemElectricDrill(ItemIDs.drillIronID, 6666, 120, 2).setUnlocalizedName("irondrill");
-		drillDiamond = new ItemElectricDrill(ItemIDs.drillDiamondID, 8333, 120, 3).setUnlocalizedName("diamonddrill");
-		drillGold = new ItemElectricDrill(ItemIDs.drillGoldID, 8000, 120, 1).setUnlocalizedName("golddrill");
+		drillIron = new ItemElectricDrill(ItemIDs.drillIronID, 8000, 120, 2).setUnlocalizedName("irondrill");
+		drillDiamond = new ItemElectricDrill(ItemIDs.drillDiamondID, 12000, 120, 3).setUnlocalizedName("diamonddrill");
+		drillGold = new ItemElectricDrill(ItemIDs.drillGoldID, 8000, 120, 3).setUnlocalizedName("golddrill");
 		drillSteam = new ItemSteamDrill(ItemIDs.drillSteamID).setUnlocalizedName("steamdrill");
-		drillEtherium = new ItemElectricDrill(ItemIDs.drillEtheriumID, 10000, 120, 3).setUnlocalizedName("etheriumdrill");
-		drillObsidian = new ItemElectricDrill(ItemIDs.drillObsidianID, 9000, 120, 2).setUnlocalizedName("obsidiandrill");
+		drillEtherium = new ItemElectricDrill(ItemIDs.drillEtheriumID, 14000, 120, 4).setUnlocalizedName("etheriumdrill");
+		drillObsidian = new ItemElectricDrill(ItemIDs.drillObsidianID, 10000, 120, 2).setUnlocalizedName("obsidiandrill");
 		
 		pickaxeSteam = new ItemModPickaxe(ItemIDs.pickaxeSteamID, MaterialMod.STEAM_TOOL).setUnlocalizedName("steampick");
 		swordSteam = new ItemModSword(ItemIDs.swordSteamID, MaterialMod.STEAM_TOOL).setUnlocalizedName("steamsword");

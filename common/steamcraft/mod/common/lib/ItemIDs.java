@@ -10,6 +10,12 @@ public class ItemIDs
     public static int obsidianSlateID = SC2.proxy.cfgHandler.loadItem("obsidianSlateID");
     public static int ingotBrassID = SC2.proxy.cfgHandler.loadItem("ingotBrassID");
     public static int ingotCastIronID = SC2.proxy.cfgHandler.loadItem("ingotCastIronID");
+	public static int ingotAluminumID = SC2.proxy.cfgHandler.loadItem("ingotAluminumID");
+	public static int ingotCopperID = SC2.proxy.cfgHandler.loadItem("ingotCopperID");
+	public static int ingotTinID = SC2.proxy.cfgHandler.loadItem("ingotTinID");
+	public static int ingotZincID = SC2.proxy.cfgHandler.loadItem("ingotZincID");
+	public static int ingotBronzeID = SC2.proxy.cfgHandler.loadItem("ingotBronzeID");
+	public static int ingotSteelID = SC2.proxy.cfgHandler.loadItem("ingotSteelID");
     public static int lightBulbID = SC2.proxy.cfgHandler.loadItem("lightBulbID");
     public static int phosphorusID = SC2.proxy.cfgHandler.loadItem("phosphorusID");
     public static int uraniumStoneID = SC2.proxy.cfgHandler.loadItem("uraniumStoneID");
