@@ -62,4 +62,5 @@ public class BlockIDs {
 	public static int compressorID = SC2.proxy.cfgHandler.loadBlock("compressorID");
 	public static int coveyorID = SC2.proxy.cfgHandler.loadBlock("conveyorID");
 	public static int generatorID = SC2.proxy.cfgHandler.loadBlock("generatorID");
+	public static int smogID = SC2.proxy.cfgHandler.loadBlock("smogID");
 }

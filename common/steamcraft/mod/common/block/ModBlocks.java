@@ -59,6 +59,7 @@ public class ModBlocks
 	public static Block teaPlant;
 	public static Block castIronLampIdle;
 	public static Block castIronLampActive;
+	public static Block smog;
 	
 	public static void initBlocks()
 	{
@@ -95,6 +96,7 @@ public class ModBlocks
 		teaPlant = new BlockTeaPlant(BlockIDs.teaPlantID);
 		castIronLampIdle = new BlockCastIronLamp(BlockIDs.castIronLampIdleID, false).setCreativeTab(CreativeTabsMod.tabSCBlocks);
 		castIronLampActive = new BlockCastIronLamp(BlockIDs.castIronLampActiveID, true);
+		smog = new BlockSmog(BlockIDs.smogID, Material.air).setUnlocalizedName("smog");
 
 		ModMachines.initMachines();
 		ModOres.initOres();
@@ -134,6 +136,7 @@ public class ModBlocks
 		GameRegistry.registerBlock(blockZinc, "zincblock");
 		GameRegistry.registerBlock(blockBronze, "bronzeblock");
 		GameRegistry.registerBlock(blockSteel, "steelblock");
+		GameRegistry.registerBlock(smog, "smog");
 	}
 	
 	public static void addNames()
