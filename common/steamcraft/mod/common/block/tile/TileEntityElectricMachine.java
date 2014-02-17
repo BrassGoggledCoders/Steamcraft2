@@ -17,12 +17,8 @@
  */
 package common.steamcraft.mod.common.block.tile;
 
-import ic2.api.item.ElectricItem;
-import ic2.api.item.IElectricItem;
-
 import java.util.EnumSet;
 
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -33,12 +29,6 @@ import universalelectricity.api.energy.EnergyStorageHandler;
 import universalelectricity.api.energy.IEnergyContainer;
 import universalelectricity.api.energy.IEnergyInterface;
 import universalelectricity.api.vector.Vector3;
-import universalelectricity.compatibility.Compatibility;
-import universalelectricity.core.item.ElectricItemHelper;
-import universalelectricity.core.item.IItemElectric;
-import cofh.api.energy.IEnergyContainerItem;
-
-import common.steamcraft.mod.common.core.helper.CompatHelper;
 
 /**
  * @author Decebaldecebal
@@ -51,92 +41,32 @@ public abstract class TileEntityElectricMachine extends TileEntity implements IE
 	protected ItemStack[] inventory;
 
 	/**
-	 * Universally discharges an item, and updates the TileEntity's energy level.
-	 * @param slotID - ID of the slot of which to charge
+	 * Recharges electric item.
 	 */
-	public static void discharge(int slotID, TileEntityElectricMachine tile)
+	public void recharge(ItemStack itemStack)
 	{
-		if(tile.inventory[slotID].getItem() instanceof IItemElectric)
+		this.energy.extractEnergy(CompatibilityModule.chargeItem(itemStack, this.energy.getEnergy(), true), true);
+	}
+	
+	/**
+	 * Discharges electric item.
+	 */
+	public void discharge(ItemStack itemStack)
+	{
+		/*
+		if(CompatHelper.IC2Loaded && itemStack.getItem() instanceof IElectricItem)
 		{
-			tile.energy.modifyEnergyStored((long) ElectricItemHelper.dischargeItem(tile.inventory[slotID], ((IItemElectric)tile.inventory[slotID].getItem()).getTransfer(tile.inventory[slotID])));
-		}
-		else if(CompatHelper.IC2Loaded && tile.inventory[slotID].getItem() instanceof IElectricItem)
-		{
-			IElectricItem item = (IElectricItem)tile.inventory[slotID].getItem();
+			IElectricItem item = (IElectricItem)itemStack.getItem();
 
-			if(item.canProvideEnergy(tile.inventory[slotID]))
+			if(item.canProvideEnergy(itemStack))
 			{
-				long gain = (long) (ElectricItem.manager.discharge(tile.inventory[slotID], (int)(tile.energy.getEmptySpace()*CompatHelper.UE_TO_IC2), 1, false, false)/CompatHelper.UE_TO_IC2);
-				tile.energy.modifyEnergyStored(gain);
+				long gain = (long) (ElectricItem.manager.discharge(itemStack, (int)(this.energy.getEmptySpace()*CompatHelper.UE_TO_IC2), 1, false, false)/CompatHelper.UE_TO_IC2);
+				this.energy.modifyEnergyStored(gain);
 			}
 		}
-		else if(CompatHelper.TELoaded && tile.inventory[slotID].getItem() instanceof IEnergyContainerItem)
-		{
-			ItemStack itemStack = tile.inventory[slotID];
-			IEnergyContainerItem item = (IEnergyContainerItem)tile.inventory[slotID].getItem();
-
-			int itemEnergy = (int)Math.round(Math.min(Math.sqrt(item.getMaxEnergyStored(itemStack)), item.getEnergyStored(itemStack)));
-			int toTransfer = (int)Math.round(Math.min(itemEnergy, (tile.energy.getEmptySpace()*Compatibility.TO_TE_RATIO)));
-
-			tile.energy.modifyEnergyStored((long) (item.extractEnergy(itemStack, toTransfer, false)*Compatibility.TE_RATIO));
-		}
-
-        if(tile.inventory[slotID].stackSize <= 0)
-        {
-            tile.inventory[slotID] = null;
-        }
-	}
-
-	 /**
-	 * Universally charges an item, and updates the TileEntity's energy level.
-	 * @param slotID - ID of the slot of which to discharge
-	 */
-	public static void charge(int slotID, TileEntityElectricMachine tile)
-	{
-		if(tile.inventory[slotID].getItem() instanceof IItemElectric)
-		{
-			tile.energy.modifyEnergyStored((long) -ElectricItemHelper.chargeItem(tile.inventory[slotID], (float)(tile.energy.getEnergy())));
-		}
-		else if(CompatHelper.IC2Loaded && tile.inventory[slotID].getItem() instanceof IElectricItem)
-		{
-			long sent = (long) (ElectricItem.manager.charge(tile.inventory[slotID], (int)(tile.energy.getEnergy()*CompatHelper.UE_TO_IC2), 2, false, false)/CompatHelper.UE_TO_IC2);
-			tile.energy.modifyEnergyStored(-sent);
-		}
-		else if(tile.inventory[slotID].getItem() instanceof IEnergyContainerItem)
-		{
-			ItemStack itemStack = tile.inventory[slotID];
-			IEnergyContainerItem item = (IEnergyContainerItem)tile.inventory[slotID].getItem();
-
-			int itemEnergy = (int)Math.round(Math.min(Math.sqrt(item.getMaxEnergyStored(itemStack)), item.getMaxEnergyStored(itemStack) - item.getEnergyStored(itemStack)));
-			int toTransfer = (int)Math.round(Math.min(itemEnergy, (tile.energy.getEnergy()*Compatibility.TO_TE_RATIO)));
-
-			tile.energy.modifyEnergyStored((long) (-item.extractEnergy(itemStack, toTransfer, false)*Compatibility.TE_RATIO));
-		}
-	}
-
-	 /**
-	 * Whether or not a defined ItemStack can be discharged for energy in some way.
-	 * @param itemstack - ItemStack to check
-	 * @return if the ItemStack can be discharged
-	 */
-	public static boolean canBeDischarged(ItemStack itemstack)
-	{
-		return (itemstack.getItem() instanceof IElectricItem && ((IElectricItem)itemstack.getItem()).canProvideEnergy(itemstack)) || 
-				(itemstack.getItem() instanceof IItemElectric && ((IItemElectric)itemstack.getItem()).discharge(itemstack, 1, false) != 0) || 
-				(itemstack.getItem() instanceof IEnergyContainerItem && ((IEnergyContainerItem)itemstack.getItem()).extractEnergy(itemstack, 1, true) != 0) ||
-				itemstack.itemID == Item.redstone.itemID;
-	}
-
-	/**
-	 * Whether or not a defined ItemStack can be charged with energy in some way.
-	 * @param itemstack - ItemStack to check
-	 * @return if the ItemStack can be discharged
-	 */
-	public static boolean canBeCharged(ItemStack itemstack)
-	{
-		return itemstack.getItem() instanceof IElectricItem || 
-				(itemstack.getItem() instanceof IItemElectric && ((IItemElectric)itemstack.getItem()).recharge(itemstack, 1, false) != 0) ||
-				(itemstack.getItem() instanceof IEnergyContainerItem && ((IEnergyContainerItem)itemstack.getItem()).receiveEnergy(itemstack, 1, true) != 0);
+		*/
+		
+		this.energy.receiveEnergy(CompatibilityModule.dischargeItem(itemStack, this.energy.getEmptySpace(), true), true);
 	}
 	
 	/**

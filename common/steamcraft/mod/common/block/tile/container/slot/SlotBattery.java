@@ -23,8 +23,7 @@ public class SlotBattery extends Slot
 	
 	public static boolean isValidBatteryItem(ItemStack stack)
 	{
-		if(TileEntityElectricMachine.canBeCharged(stack) || TileEntityElectricMachine.canBeDischarged(stack))
+
 			return true;
-		return false;
 	}
 }

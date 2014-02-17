@@ -37,12 +37,14 @@ import cpw.mods.fml.relauncher.SideOnly;
  * @author MrArcane111
  *
  */
-public class ItemElectricDrill extends ItemElectricMod {
-
+public class ItemElectricDrill extends ItemElectricMod 
+{
+	int toolTier;
+	
 	/** An array of blocks the drill can mine. */
 	public static final Block[] blocksEffectiveAgainst = new Block[] {
 		Block.cobblestone, Block.dirt, Block.stone, Block.sand, Block.blockClay, Block.ice,
-		Block.snow, Block.netherrack, Block.grass
+		Block.snow, Block.netherrack, Block.grass, Block.gravel
 	}; 
 
 	@Override
@@ -52,8 +54,9 @@ public class ItemElectricDrill extends ItemElectricMod {
 	}
 
 	public ItemElectricDrill(int id, int maxEnergy, int voltage, int toolTier) {
-		super(id, maxEnergy, voltage, toolTier);
+		super(id, maxEnergy, voltage);
 		this.setCreativeTab(CreativeTabsMod.tabSCItems);
+		this.toolTier = toolTier;
 	}
 
 	@Override
@@ -77,7 +80,7 @@ public class ItemElectricDrill extends ItemElectricMod {
 	public boolean hitEntity(ItemStack stack, EntityLivingBase hitEntity, EntityLivingBase player) {
 		if(this.getEnergy(stack) > 0) {
 			hitEntity.attackEntityFrom(DamageSource.causePlayerDamage((EntityPlayer)player), (this.toolTier + 1) * 2);
-			this.setEnergy(stack, getEnergy(stack) - this.toolTier);
+			this.setEnergy(stack, getEnergy(stack) - 30);
 		} else {
 			hitEntity.attackEntityFrom(DamageSource.causePlayerDamage((EntityPlayer)player), 1);
 		}
@@ -94,9 +97,9 @@ public class ItemElectricDrill extends ItemElectricMod {
 	public boolean onBlockDestroyed(ItemStack stack, World world, int id, int i, int j, int k, EntityLivingBase living)
 	{
 		if(Block.blocksList[id].getBlockHardness(world, i, j, k) != 0.0D) {
-			this.setEnergy(stack, getEnergy(stack) - this.getEfficiency());
+			this.setEnergy(stack, (long) (getEnergy(stack) - 15));
 		} else {
-			this.setEnergy(stack, getEnergy(stack) - (this.getEfficiency() / 2));
+			this.setEnergy(stack, (long) (getEnergy(stack) - 10));
 		}
 
 		return true;

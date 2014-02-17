@@ -1,7 +1,6 @@
 package universalelectricity.api.energy;
 
 import net.minecraft.nbt.NBTTagCompound;
-import universalelectricity.api.UniversalClass;
 
 /**
  * Can be used internally for IEnergyInterface blocks. This is optional and should be used for
