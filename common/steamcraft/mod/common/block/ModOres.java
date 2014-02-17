@@ -33,8 +33,7 @@ public class ModOres
 	public static Block orePhosphate;
 	public static Block oreUranite;
 	public static Block oreVolucite;
-	public static Block oreAlumium, oreCopper, oreTin, oreZinc;
-	private static Block oreAluminum;
+	public static Block oreAluminum, oreCopper, oreTin, oreZinc;
 	
 	public static void initOres()
 	{
