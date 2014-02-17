@@ -36,6 +36,8 @@ public class ModItems
 	public static Item obsidianSlate;
 	public static Item ingotBrass;
 	public static Item ingotCastIron;
+	public static Item ingotAluminum, ingotCopper, ingotTin, ingotZinc;
+	public static Item ingotBronze, ingotSteel;
 	public static Item lightBulb;
 	public static Item phosphorus;
 	public static Item uraniumOre;
@@ -64,6 +66,12 @@ public class ModItems
 		obsidianSlate = new ItemMod(ItemIDs.obsidianSlateID).setUnlocalizedName("obsidianslate");
 		ingotBrass = new ItemMod(ItemIDs.ingotBrassID).setUnlocalizedName("ingotbrass");
 		ingotCastIron = new ItemMod(ItemIDs.ingotCastIronID).setUnlocalizedName("ingotcastiron");
+		ingotAluminum = new ItemMod(ItemIDs.ingotAluminumID).setUnlocalizedName("ingotaluminum");
+		ingotCopper = new ItemMod(ItemIDs.ingotCopperID).setUnlocalizedName("ingotcopper");
+		ingotTin = new ItemMod(ItemIDs.ingotTinID).setUnlocalizedName("ingottin");
+		ingotZinc = new ItemMod(ItemIDs.ingotZincID).setUnlocalizedName("ingotzinc");
+		ingotBronze = new ItemMod(ItemIDs.ingotBronzeID).setUnlocalizedName("ingotbronze");
+		ingotSteel = new ItemMod(ItemIDs.ingotSteelID).setUnlocalizedName("ingotsteel");
 		lightBulb = new ItemMod(ItemIDs.lightBulbID).setUnlocalizedName("lightbulb");
 		phosphorus = new ItemMod(ItemIDs.phosphorusID).setUnlocalizedName("phosphorus");
 		uraniumOre = new ItemMod(ItemIDs.uraniumStoneID).setUnlocalizedName("uraniumstone");
