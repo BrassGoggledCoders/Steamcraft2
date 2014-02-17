@@ -33,6 +33,8 @@ public class BlockIDs {
     public static int blockCopperID = SC2.proxy.cfgHandler.loadBlock("blockCopperID");
     public static int blockTinID = SC2.proxy.cfgHandler.loadBlock("blockTinID");
     public static int blockZincID = SC2.proxy.cfgHandler.loadBlock("blockZincID");
+    public static int blockBronzeID = SC2.proxy.cfgHandler.loadBlock("blockBronzeID");
+    public static int blockSteelID = SC2.proxy.cfgHandler.loadBlock("blockSteelID");
     public static int decorIronID = SC2.proxy.cfgHandler.loadBlock("decorIronID");
     public static int decorGoldID = SC2.proxy.cfgHandler.loadBlock("decorGoldID");
     public static int decorDiamondID = SC2.proxy.cfgHandler.loadBlock("decorDiamondID");

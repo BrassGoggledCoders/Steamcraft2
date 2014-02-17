@@ -43,10 +43,10 @@ public class ModOres
 		orePhosphate = new BlockOreMod(BlockIDs.orePhosphateID, "phosphate").setUnlocalizedName(BlockNames.ORE_PHOSPHATE);
 		oreUranite = new BlockUraniteOre(BlockIDs.oreUraniteID).setUnlocalizedName(BlockNames.ORE_URANITE);
 		oreVolucite = new BlockOreMod(BlockIDs.oreVoluciteID, "volucite").setUnlocalizedName(BlockNames.ORE_VOLUCITE);
-		oreAluminum = new BlockOreMod(BlockIDs.oreCopperID, "aluminum").setUnlocalizedName(BlockNames.ORE_ALUMINUM);
+		oreAluminum = new BlockOreMod(BlockIDs.oreAluminumID, "aluminum").setUnlocalizedName(BlockNames.ORE_ALUMINUM);
 		oreCopper = new BlockOreMod(BlockIDs.oreCopperID, "copper").setUnlocalizedName(BlockNames.ORE_COPPER);
-		oreTin = new BlockOreMod(BlockIDs.oreCopperID, "tin").setUnlocalizedName(BlockNames.ORE_TIN);
-		oreZinc = new BlockOreMod(BlockIDs.oreCopperID, "zinc").setUnlocalizedName(BlockNames.ORE_ZINC);
+		oreTin = new BlockOreMod(BlockIDs.oreTinID, "tin").setUnlocalizedName(BlockNames.ORE_TIN);
+		oreZinc = new BlockOreMod(BlockIDs.oreZincID, "zinc").setUnlocalizedName(BlockNames.ORE_ZINC);
 		registerOres();
 		initOreNames();
 		initOreHarvestLevels();
