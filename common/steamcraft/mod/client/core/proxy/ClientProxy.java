@@ -148,7 +148,7 @@ public class ClientProxy extends CommonProxy
 	{
 		FXRayGun ray = null;
 		//Color c = new Color(color);
-		Color color = Color.RED; // Change le color here
+		Color color = Color.GREEN; // Change le color here
 
 		if((input instanceof FXRayGun))
 			ray = (FXRayGun)input;
