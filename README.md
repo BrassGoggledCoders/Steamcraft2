@@ -8,16 +8,18 @@ These conventions can be located here: <http://www.oracle.com/technetwork/java/c
 
 My Skype: johnny.eatmon <br/>
 My Email: <jmaeatmon@gmail.com>
+warlordjones' Skype: arona.jones
+warlordjones' Email: warlordjones@gmail.com
 
 <hr/>
 
-Universal Electricity or Buildcraft Merge?
+Power system update!
 ==========================================
+We are planning to make this mod compatible with RF (ThermalExpansion), EU (Industrialcraft2) and MJ (Buildcraft) but not UE power - similar to MFR. Stay tuned for more updates on our progress :)
 
-I was wondering...what if I were to merge this mod with a power system such as UE? I really wanted to
-create my own power system, but I realized it would be an enormous hassle and would possibly conflict
-with other mods (which is NOT acceptable). So, in order to make things simpler, I am considering using
-either UE's power system or Buildcraft's. Your feedback is appreciated: 
+
+PlanetMinecraft
+==========================================
 <http://www.planetminecraft.com/mod/164forge-steamcraft-2---the-rebirth-in-progress-night-vision-googles-guns-drills-steam/>
     
 <hr/>
@@ -27,3 +29,4 @@ Credits:
 - moldywings: for his Minecraft mod models
 - ALinkToTheFuture: for use of his sprites
 - Papertazer: for coding support
+- warlordjones: Coder

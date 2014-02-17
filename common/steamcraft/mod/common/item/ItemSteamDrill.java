@@ -27,7 +27,7 @@ public class ItemSteamDrill extends ItemMod
 	private Random random = new Random();
 	public static final Block[] blocksEffectiveAgainst = new Block[] {
 		Block.cobblestone, Block.dirt, Block.stone, Block.sand, Block.blockClay, Block.ice,
-		Block.snow, Block.netherrack, Block.grass
+		Block.snow, Block.netherrack, Block.grass, Block.gravel
 	}; 
 	protected EnumToolMaterial toolMaterial;
 
