@@ -19,18 +19,18 @@ import net.minecraft.world.World;
 
 import common.steamcraft.mod.client.gui.GuiChemicalFurnace;
 import common.steamcraft.mod.client.gui.GuiCompressor;
-import common.steamcraft.mod.client.gui.GuiGenerator;
+import common.steamcraft.mod.client.gui.GuiCoalGenerator;
 import common.steamcraft.mod.client.gui.GuiNukeFurnace;
 import common.steamcraft.mod.client.gui.GuiSteamFurnace;
 import common.steamcraft.mod.client.lib.GuiIDs;
 import common.steamcraft.mod.common.block.tile.TileEntityChemicalFurnace;
 import common.steamcraft.mod.common.block.tile.TileEntityCompressor;
-import common.steamcraft.mod.common.block.tile.TileEntityGenerator;
+import common.steamcraft.mod.common.block.tile.TileEntityCoalGenerator;
 import common.steamcraft.mod.common.block.tile.TileEntityNukeFurnace;
 import common.steamcraft.mod.common.block.tile.TileEntitySteamFurnace;
 import common.steamcraft.mod.common.block.tile.container.ContainerChemicalFurnace;
 import common.steamcraft.mod.common.block.tile.container.ContainerCompressor;
-import common.steamcraft.mod.common.block.tile.container.ContainerGenerator;
+import common.steamcraft.mod.common.block.tile.container.ContaineCoalGenerator;
 import common.steamcraft.mod.common.block.tile.container.ContainerNukeFurnace;
 import common.steamcraft.mod.common.block.tile.container.ContainerSteamFurnace;
 
@@ -62,7 +62,7 @@ public class GuiHandler implements IGuiHandler
 			return new ContainerCompressor(player.inventory, (TileEntityCompressor) tile);
 			
 		case GuiIDs.GUI_ID_GENERATOR:
-			return new ContainerGenerator(player.inventory, (TileEntityGenerator) tile);
+			return new ContaineCoalGenerator(player.inventory, (TileEntityCoalGenerator) tile);
 		}
 		
 		return null;
@@ -88,7 +88,7 @@ public class GuiHandler implements IGuiHandler
 			return new GuiCompressor(player.inventory, (TileEntityCompressor) tile);
 			
 		case GuiIDs.GUI_ID_GENERATOR:
-			return new GuiGenerator(player.inventory, (TileEntityGenerator) tile);
+			return new GuiCoalGenerator(player.inventory, (TileEntityCoalGenerator) tile);
 		}
 		
 		return null;

@@ -13,78 +13,176 @@
  */
 package common.steamcraft.mod.common.block.tile;
 
-//import com.steamcraft.mod.common.api.power.IPowerGenerator;
-//import com.steamcraft.mod.common.api.power.IPowerReceptor;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.ISidedInventory;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.world.World;
-import net.minecraftforge.common.ForgeDirection;
 
 /**
- * @author MrArcane111
+ * Basic machine class that includes a lot of functions widely used
+ * 
+ * @author Decebaldecebal
  *
  */
-public class TileEntityMachine extends TileEntity// implements IPowerGenerator, IPowerReceptor
+public class TileEntityMachine extends TileEntity implements ISidedInventory
 {
-	protected boolean isRedstonePowered;
-	protected boolean isReceivingPower;
-	ForgeDirection orientation = ForgeDirection.UP;
-
-	/*@Override
-	public void updateEntity()
+	protected ItemStack[] inventory;
+	
+	@Override
+	public void readFromNBT(NBTTagCompound par1NBTTagCompound)
 	{
-		if(this instanceof IPowerGenerator)
+		super.readFromNBT(par1NBTTagCompound);
+		NBTTagList nbttaglist = par1NBTTagCompound.getTagList("Items");
+		inventory = new ItemStack[this.getSizeInventory()];
+
+		for (int i = 0; i < nbttaglist.tagCount(); ++i)
 		{
-			this.generatePower(this.orientation); // Cats
-		} else if(this instanceof IPowerReceptor)
-		{
-			this.receievePower(this.orientation);
+			NBTTagCompound nbttagcompound1 = (NBTTagCompound) nbttaglist.tagAt(i);
+			byte b0 = nbttagcompound1.getByte("Slot");
+
+			if (b0 >= 0 && b0 < inventory.length)
+				inventory[b0] = ItemStack.loadItemStackFromNBT(nbttagcompound1);
 		}
 	}
 
 	@Override
-	public void receievePower(ForgeDirection side)
+	public void writeToNBT(NBTTagCompound par1NBTTagCompound)
 	{
-		if(this.isRedstonePowered = true)
-		{
-			this.checkForRedstonePower();
-		} else
-		{
+		super.writeToNBT(par1NBTTagCompound);
 
+		NBTTagList nbttaglist = new NBTTagList();
+
+		for (int i = 0; i < inventory.length; ++i)
+			if (inventory[i] != null)
+			{
+				NBTTagCompound nbttagcompound1 = new NBTTagCompound();
+				nbttagcompound1.setByte("Slot", (byte) i);
+				inventory[i].writeToNBT(nbttagcompound1);
+				nbttaglist.appendTag(nbttagcompound1);
+			}
+
+		par1NBTTagCompound.setTag("Items", nbttaglist);
+	}
+	
+	@Override
+	public int getSizeInventory()
+	{
+		return inventory.length;
+	}
+
+	@Override
+	public ItemStack getStackInSlot(int par1)
+	{
+		return inventory[par1];
+	}
+
+	@Override
+	public ItemStack decrStackSize(int par1, int par2)
+	{
+		if (inventory[par1] != null)
+		{
+			ItemStack var3;
+
+			if (inventory[par1].stackSize <= par2)
+			{
+				var3 = inventory[par1];
+				inventory[par1] = null;
+				return var3;
+			}
+			else
+			{
+				var3 = inventory[par1].splitStack(par2);
+
+				if (inventory[par1].stackSize == 0)
+					inventory[par1] = null;
+
+				return var3;
+			}
 		}
+		else
+			return null;
 	}
 
 	@Override
-	public boolean isReceivingPower()
+	public ItemStack getStackInSlotOnClosing(int par1)
 	{
-		return this.isReceivingPower;
+		if (inventory[par1] != null)
+		{
+			ItemStack var2 = inventory[par1];
+			inventory[par1] = null;
+			return var2;
+		}
+		else
+			return null;
 	}
 
 	@Override
-	public void doWork()
+	public void setInventorySlotContents(int par1, ItemStack par2ItemStack)
 	{
+		inventory[par1] = par2ItemStack;
 
+		if (par2ItemStack != null && par2ItemStack.stackSize > this.getInventoryStackLimit())
+			par2ItemStack.stackSize = this.getInventoryStackLimit();
 	}
 
 	@Override
-	public World getWorld()
+	public int getInventoryStackLimit()
 	{
-		return this.worldObj;
+		return 64;
+	}
+	
+	@Override
+	public boolean isInvNameLocalized()
+	{
+		return false;
+	}
+	
+	@Override
+	public boolean isUseableByPlayer(EntityPlayer par1EntityPlayer)
+	{
+		return worldObj.getBlockTileEntity(xCoord, yCoord, zCoord) != this ? false : par1EntityPlayer.getDistanceSq(xCoord + 0.5D, yCoord + 0.5D,
+				zCoord + 0.5D) <= 64.0D;
+	}
+	
+	@Override
+	public void openChest()
+	{
 	}
 
 	@Override
-	public int powerEmitionLimit()
+	public void closeChest()
 	{
-		return 0;
 	}
 
 	@Override
-	public boolean generatePower(ForgeDirection side)
-	{
-		return side == this.orientation;
+	public String getInvName() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
-	public void checkForRedstonePower()
+	@Override
+	public boolean isItemValidForSlot(int i, ItemStack itemstack) 
 	{
-		this.isRedstonePowered = this.worldObj.isBlockIndirectlyGettingPowered(this.xCoord, this.yCoord, this.zCoord);
-	}*/
+		return false;
+	}
+
+	@Override
+	public int[] getAccessibleSlotsFromSide(int var1)
+	{
+		return null;
+	}
+
+	@Override
+	public boolean canInsertItem(int i, ItemStack itemstack, int j) 
+	{
+		return false;
+	}
+
+	@Override
+	public boolean canExtractItem(int i, ItemStack itemstack, int j)
+	{
+		return false;
+	}
 }

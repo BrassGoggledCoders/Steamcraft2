@@ -6,18 +6,18 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
-import common.steamcraft.mod.common.block.tile.TileEntityGenerator;
-import common.steamcraft.mod.common.block.tile.container.ContainerGenerator;
+import common.steamcraft.mod.common.block.tile.TileEntityCoalGenerator;
+import common.steamcraft.mod.common.block.tile.container.ContaineCoalGenerator;
 import common.steamcraft.mod.common.lib.LibInfo;
 
-public class GuiGenerator extends GuiContainer
+public class GuiCoalGenerator extends GuiContainer
 {
 	private static final ResourceLocation guitexture = new ResourceLocation(LibInfo.SC2_PREFIX + "textures/gui/coalgenerator.png");
-	private TileEntityGenerator furnaceInventory;
+	private TileEntityCoalGenerator furnaceInventory;
 
-	public GuiGenerator(InventoryPlayer player, TileEntityGenerator tile)
+	public GuiCoalGenerator(InventoryPlayer player, TileEntityCoalGenerator tile)
 	{
-		super(new ContainerGenerator(player, tile));
+		super(new ContaineCoalGenerator(player, tile));
 		furnaceInventory = tile;
 	}
 
@@ -44,7 +44,7 @@ public class GuiGenerator extends GuiContainer
 		}
 		if(furnaceInventory.hasEnergy())
 		{
-			int var8 = furnaceInventory.getEnergyScaled(310);
+			int var8 = furnaceInventory.getEnergyScaled(31);
 			this.drawTexturedModalRect(var5 + 32, var6 + 49 - var8, 176, 54 - var8, 16, var8 + 1);
 		}
 		

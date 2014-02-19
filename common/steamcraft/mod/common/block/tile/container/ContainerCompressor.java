@@ -42,7 +42,7 @@ public class ContainerCompressor extends Container
 	{
 		super.addCraftingToCrafters(par1ICrafting);
 		par1ICrafting.sendProgressBarUpdate(this, 0, Tile_E.furnaceBurnTime);
-		par1ICrafting.sendProgressBarUpdate(this, 1, (int)Tile_E.getEnergy(null));
+		par1ICrafting.sendProgressBarUpdate(this, 1, (int)Tile_E.getEnergy());
 	}
 
 	@Override
@@ -58,11 +58,11 @@ public class ContainerCompressor extends Container
 				var2.sendProgressBarUpdate(this, 0, Tile_E.furnaceBurnTime);
 			
 			if (lastEnergy != Tile_E.getEnergyScaled(1))
-				var2.sendProgressBarUpdate(this, 1, (int)Tile_E.getEnergy(null));
+				var2.sendProgressBarUpdate(this, 1, (int)Tile_E.getEnergy());
 		}
 
 		lastBurnTime = Tile_E.furnaceBurnTime;
-		lastEnergy = (int)Tile_E.getEnergy(null);
+		lastEnergy = (int)Tile_E.getEnergy();
 	}
 
 	@Override
@@ -72,7 +72,7 @@ public class ContainerCompressor extends Container
 		if (par1 == 0)
 			Tile_E.furnaceBurnTime = par2;
 		else if(par1 == 1)
-			Tile_E.setEnergy(null, par2);
+			Tile_E.setEnergy(par2);
 	}
 
 	@Override

@@ -27,6 +27,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class BlockCompressor extends BlockContainerMod
 {
 	@SideOnly(Side.CLIENT)
+	private Icon iconBottom;
+	@SideOnly(Side.CLIENT)
 	private Icon iconTop;
 	@SideOnly(Side.CLIENT)
 	private Icon iconFront;
@@ -55,7 +57,7 @@ public class BlockCompressor extends BlockContainerMod
 		switch (side)
 		{
 			case 0:
-				return iconTop; // bottom
+				return iconBottom; // bottom
 
 			case 1:
 				return iconTop; // top
@@ -69,10 +71,11 @@ public class BlockCompressor extends BlockContainerMod
 	@Override
 	public void registerIcons(IconRegister par1IconRegister)
 	{
-		blockIcon = par1IconRegister.registerIcon(LibInfo.SC2_PREFIX + "compressorside");
-		iconFront = par1IconRegister.registerIcon(LibInfo.SC2_PREFIX + "compressorfrontinactive");
-		iconFrontA = par1IconRegister.registerIcon(LibInfo.SC2_PREFIX + "compressorfrontinactive");
-		iconTop = par1IconRegister.registerIcon(LibInfo.SC2_PREFIX + "compressortop");
+		blockIcon = par1IconRegister.registerIcon(LibInfo.SC2_PREFIX + "compressor_sides");
+		iconFront = par1IconRegister.registerIcon(LibInfo.SC2_PREFIX + "compressor_front");
+		iconFrontA = par1IconRegister.registerIcon(LibInfo.SC2_PREFIX + "compressor_front");
+		iconTop = par1IconRegister.registerIcon(LibInfo.SC2_PREFIX + "compressor_top");
+		iconBottom = par1IconRegister.registerIcon(LibInfo.SC2_PREFIX + "compressor_bottom");
 	}
 
 	@Override
