@@ -8,7 +8,7 @@ import cofh.api.energy.IEnergyContainerItem;
 
 /**
  * 
- * This class hold utilities related to power management and interaction.
+ * This class holds utilities related to power management and interaction.
  * Use this class to store and interact with energy.
  * 
  * @author Decebaldecebal
