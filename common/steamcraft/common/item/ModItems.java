@@ -24,12 +24,10 @@ import common.steamcraft.common.lib.ItemIDs;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
 /**
- * 
- * @author MrArcane111, general3214, EntireCraft
+ * @author MrArcane111, general3214, decebaldecebal
  *
  */
-public class ModItems 
-{
+public class ModItems {
 	public static Item etherium;
 	public static Item chemicSalt;
 	public static Item bornite;
@@ -55,9 +53,9 @@ public class ModItems
 	public static Item steamCanister;
 	public static Item gasCanister;
     public static Item emptyCanister;
+    public static Item guideBook;
 	
-	public static void initItems()
-	{
+	public static void initItems() {
 		etherium = new ItemMod(ItemIDs.etheriumID).setUnlocalizedName("etherium");
 		chemicSalt = new ItemMod(ItemIDs.chemicSaltID).setUnlocalizedName("sulphur");
 		bornite = new ItemMod(ItemIDs.borniteID).setUnlocalizedName("copper");
@@ -83,6 +81,7 @@ public class ModItems
 		steamCanister = new ItemCanister(ItemIDs.steamCanisterID, 500, "steam").setUnlocalizedName("steamcanister");
 		gasCanister = new ItemCanister(ItemIDs.gasCanisterID, 1000, "compressed gas").setUnlocalizedName("gascanister");
 		emptyCanister = new ItemMod(ItemIDs.emptyCanisterID).setUnlocalizedName("emptycanister");
+		guideBook = new ItemGuideBook(ItemIDs.guideBookID).setUnlocalizedName("guidebook");
 		
 		initNames();
 		ModTools.initTools();
@@ -90,8 +89,7 @@ public class ModItems
 		ModGuns.initGuns();
 	}
 	
-	public static void initNames()
-	{
+	public static void initNames() {
 		LanguageRegistry.addName(etherium, "Etherium Crystal");
 		LanguageRegistry.addName(chemicSalt, "Sulfur");
 		LanguageRegistry.addName(bornite, "Purified Copper");
@@ -112,5 +110,6 @@ public class ModItems
 		LanguageRegistry.addName(steamCanister, "Steam Canister");
 		LanguageRegistry.addName(gasCanister, "Compressed Gas Canister");
         LanguageRegistry.addName(emptyCanister, "Empty Canister");
+        LanguageRegistry.addName(guideBook, "SC2 Guide Book");
 	}
 }

@@ -55,6 +55,7 @@ import common.steamcraft.common.util.EffectUtil;
  * @author MrArcane111
  *
  */
+/*
 public class TileEntityBasicSteamBoiler extends TileEntityMachine implements ISidedInventory, IInventory, IFluidTank, ISteamProvider {
 	public static final int MAX_CAPACITY = 10000;
 	public static final float STEAM_PRODUCED = 60.0F;
@@ -536,3 +537,4 @@ public class TileEntityBasicSteamBoiler extends TileEntityMachine implements ISi
 		return 1;
 	}
 }
+*/
