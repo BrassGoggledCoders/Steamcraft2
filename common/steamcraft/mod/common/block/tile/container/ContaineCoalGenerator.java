@@ -7,20 +7,20 @@ import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 
-import common.steamcraft.mod.common.block.tile.TileEntityGenerator;
+import common.steamcraft.mod.common.block.tile.TileEntityCoalGenerator;
 import common.steamcraft.mod.common.block.tile.container.slot.SlotBattery;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ContainerGenerator extends Container
+public class ContaineCoalGenerator extends Container
 {
-	protected TileEntityGenerator Tile_E;
+	protected TileEntityCoalGenerator Tile_E;
 	private int lastBurnTime = 0;
 	private int lastEnergy = 0;
 	private int lastItemBurnTime = 0;
 
-	public ContainerGenerator(InventoryPlayer player, TileEntityGenerator tile)
+	public ContaineCoalGenerator(InventoryPlayer player, TileEntityCoalGenerator tile)
 	{
 		Tile_E = tile;
 		this.addSlotToContainer(new Slot(tile, 0, 80, 54));
@@ -42,7 +42,7 @@ public class ContainerGenerator extends Container
 	{
 		super.addCraftingToCrafters(par1ICrafting);
 		par1ICrafting.sendProgressBarUpdate(this, 0, Tile_E.furnaceBurnTime);
-		par1ICrafting.sendProgressBarUpdate(this, 1, (int)Tile_E.getEnergy(null));
+		par1ICrafting.sendProgressBarUpdate(this, 1, (int)Tile_E.getEnergy());
 		par1ICrafting.sendProgressBarUpdate(this, 2, Tile_E.currentItemBurnTime);
 	}
 
@@ -59,14 +59,14 @@ public class ContainerGenerator extends Container
 				var2.sendProgressBarUpdate(this, 0, Tile_E.furnaceBurnTime);
 			
 			if (lastEnergy != Tile_E.getEnergyScaled(1))
-				var2.sendProgressBarUpdate(this, 1, (int)Tile_E.getEnergy(null));
+				var2.sendProgressBarUpdate(this, 1, (int)Tile_E.getEnergy());
 			
 			if (lastItemBurnTime != Tile_E.currentItemBurnTime)
 				var2.sendProgressBarUpdate(this, 2, Tile_E.currentItemBurnTime);
 		}
 
 		lastBurnTime = Tile_E.furnaceBurnTime;
-		lastEnergy = (int)Tile_E.getEnergy(null);
+		lastEnergy = (int)Tile_E.getEnergy();
 		lastItemBurnTime = Tile_E.currentItemBurnTime;
 	}
 
@@ -77,7 +77,7 @@ public class ContainerGenerator extends Container
 		if (par1 == 0)
 			Tile_E.furnaceBurnTime = par2;
 		else if(par1 == 1)
-			Tile_E.setEnergy(null, par2);
+			Tile_E.setEnergy(par2);
 		else if(par1 == 2)
 			Tile_E.currentItemBurnTime = par2;
 	}

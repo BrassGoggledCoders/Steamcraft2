@@ -22,7 +22,6 @@ import java.util.List;
 import mekanism.api.EnumColor;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import universalelectricity.api.UniversalClass;
 import universalelectricity.api.energy.UnitDisplay;
 import universalelectricity.api.item.ItemElectric;
 
@@ -31,7 +30,6 @@ import universalelectricity.api.item.ItemElectric;
  * @author Someone else
  *
  */
-@UniversalClass
 public class ItemElectricMod extends ItemElectric
 {
 	public int MAX_ELECTRICITY;
