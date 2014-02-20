@@ -17,11 +17,8 @@
  */
 package common.steamcraft.mod.common.block.tile;
 
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
 
 import common.steamcraft.mod.common.block.machines.BlockCompressor;
 import common.steamcraft.mod.common.core.handler.recipe.CompressorHandler;
@@ -85,6 +82,8 @@ public class TileEntityCompressor extends TileEntityElectricMachine
 	@Override
 	public void updateEntity()
 	{
+		super.updateEntity();
+		
 		boolean var1 = furnaceBurnTime > 0;
 		boolean var2 = false;
 
@@ -98,7 +97,7 @@ public class TileEntityCompressor extends TileEntityElectricMachine
 				if(this.getEnergy()==0)
 					furnaceBurnTime = 0;
 				
-				if(this.energy.extractEnergy(this.energyPerTick)==this.energyPerTick)
+				if(this.energy.extractEnergy(this.energyPerTick, true)==this.energyPerTick)
 					++furnaceBurnTime;
 				
 				if (furnaceBurnTime == 250)

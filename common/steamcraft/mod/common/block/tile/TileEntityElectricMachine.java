@@ -17,6 +17,10 @@
  */
 package common.steamcraft.mod.common.block.tile;
 
+import ic2.api.energy.event.EnergyTileLoadEvent;
+import ic2.api.energy.event.EnergyTileUnloadEvent;
+import ic2.api.energy.tile.IEnergySink;
+import ic2.api.info.Info;
 import ic2.api.item.ElectricItem;
 import ic2.api.item.IElectricItem;
 
@@ -24,8 +28,10 @@ import java.util.EnumSet;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeDirection;
+import net.minecraftforge.common.MinecraftForge;
 import buildcraft.api.power.IPowerReceptor;
 import buildcraft.api.power.PowerHandler;
 import buildcraft.api.power.PowerHandler.Type;
@@ -44,10 +50,11 @@ import cpw.mods.fml.relauncher.SideOnly;
  * @author Decebaldecebal
  *
  */
-public abstract class TileEntityElectricMachine extends TileEntityMachine implements IPowerReceptor, IEnergyHandler //, IEnergySink
+public abstract class TileEntityElectricMachine extends TileEntityMachine implements IPowerReceptor, IEnergyHandler, IEnergySink
 {
 	protected EnergyUtils energy;
-	protected static PowerHandler powerHandler;
+	protected PowerHandler powerHandler;
+	private boolean addedToEnet = false;
 	
 	protected TileEntityElectricMachine()
 	{		
@@ -56,19 +63,9 @@ public abstract class TileEntityElectricMachine extends TileEntityMachine implem
 		powerHandler.configure(10, 300, 0.1F, 1000);
 	}
 
-	public static void discharge(int slotID, TileEntityElectricMachine tile)
+	public void discharge(int slotID, TileEntityElectricMachine tile)
 	{
-		if(CompatHelper.IC2Loaded && tile.inventory[slotID].getItem() instanceof IElectricItem)
-		{
-			IElectricItem item = (IElectricItem)tile.inventory[slotID].getItem();
-
-			if(item.canProvideEnergy(tile.inventory[slotID]))
-			{
-				int gain = EnergyUtils.fromIC2((ElectricItem.manager.discharge(tile.inventory[slotID], EnergyUtils.toIC2(tile.energy.getEmptySpace()), 1, false, false)));
-				tile.energy.modifyStoredEnergy(gain);
-			}
-		}
-		else if(CompatHelper.TELoaded && tile.inventory[slotID].getItem() instanceof IEnergyContainerItem)
+		if(tile.inventory[slotID].getItem() instanceof IEnergyContainerItem)
 		{
 			ItemStack itemStack = tile.inventory[slotID];
 			IEnergyContainerItem item = (IEnergyContainerItem)tile.inventory[slotID].getItem();
@@ -78,6 +75,16 @@ public abstract class TileEntityElectricMachine extends TileEntityMachine implem
 
 			tile.energy.modifyStoredEnergy(item.extractEnergy(itemStack, toTransfer, false));
 		}
+		else if(CompatHelper.IC2Loaded && tile.inventory[slotID].getItem() instanceof IElectricItem)
+		{
+			IElectricItem item = (IElectricItem)tile.inventory[slotID].getItem();
+
+			if(item.canProvideEnergy(tile.inventory[slotID]))
+			{
+				int gain = EnergyUtils.fromIC2((ElectricItem.manager.discharge(tile.inventory[slotID], EnergyUtils.toIC2(tile.energy.getEmptySpace()), 1, false, false)));
+				tile.energy.modifyStoredEnergy(gain);
+			}
+		}
 
         if(tile.inventory[slotID].stackSize <= 0)
         {
@@ -86,14 +93,9 @@ public abstract class TileEntityElectricMachine extends TileEntityMachine implem
 	}
 
 
-	public static void charge(int slotID, TileEntityElectricMachine tile)
+	public void charge(int slotID, TileEntityElectricMachine tile)
 	{
-		if(CompatHelper.IC2Loaded && tile.inventory[slotID].getItem() instanceof IElectricItem)
-		{
-			int sent = EnergyUtils.fromIC2(ElectricItem.manager.charge(tile.inventory[slotID], EnergyUtils.toIC2(tile.energy.getStoredEnergy()), 2, false, false));
-			tile.energy.modifyStoredEnergy(-sent);
-		}
-		else if(CompatHelper.TELoaded && tile.inventory[slotID].getItem() instanceof IEnergyContainerItem)
+		if(tile.inventory[slotID].getItem() instanceof IEnergyContainerItem)
 		{
 			ItemStack itemStack = tile.inventory[slotID];
 			IEnergyContainerItem item = (IEnergyContainerItem)tile.inventory[slotID].getItem();
@@ -102,6 +104,11 @@ public abstract class TileEntityElectricMachine extends TileEntityMachine implem
 			int toTransfer = Math.round(Math.min(itemEnergy, tile.energy.getStoredEnergy()));
 
 			tile.energy.modifyStoredEnergy(-item.receiveEnergy(itemStack, toTransfer, false));
+		}
+		else if(CompatHelper.IC2Loaded && tile.inventory[slotID].getItem() instanceof IElectricItem)
+		{
+			int sent = EnergyUtils.fromIC2(ElectricItem.manager.charge(tile.inventory[slotID], EnergyUtils.toIC2(tile.energy.getStoredEnergy()), 2, false, false));
+			tile.energy.modifyStoredEnergy(-sent);
 		}
 	}
 	
@@ -139,6 +146,16 @@ public abstract class TileEntityElectricMachine extends TileEntityMachine implem
 		this.energy.writeToNBT(nbt);
 	}
 	
+	@Override
+	public void updateEntity()
+	{
+		super.updateEntity();
+		
+		//IC2
+		if (!addedToEnet) 
+			onLoaded();
+	}
+	
 	//Gets the currently stored energy
 	public int getEnergy()
 	{
@@ -154,6 +171,17 @@ public abstract class TileEntityElectricMachine extends TileEntityMachine implem
 	private int getEnergyRequested()
 	{
 		return Math.min(this.energy.getEmptySpace(), this.energy.getTransferRate());
+	}
+	
+	public boolean hasEnergy()
+	{
+		return this.getEnergy() > 0;
+	}
+	
+	@SideOnly(Side.CLIENT)
+	public int getEnergyScaled(int par1)
+	{
+		return (int) (this.getEnergy()*1000 / this.energy.getMaxEnergy() / par1);
 	}
 	
 	/**
@@ -185,10 +213,17 @@ public abstract class TileEntityElectricMachine extends TileEntityMachine implem
 		{
 			if(handler.useEnergy(0, EnergyUtils.toBC(getEnergyRequested()), false) > 0)
 			{	
-				int energyToReceive = EnergyUtils.fromBC(Math.round(handler.useEnergy(0, EnergyUtils.toBC(getEnergyRequested()), true)));
+				int energyToReceive = EnergyUtils.fromBC((int)(handler.useEnergy(0, EnergyUtils.toBC(getEnergyRequested()), true)));
 				this.energy.receiveEnergy(energyToReceive, true);
 			}
 		}
+	}
+	
+	
+	@Override
+	public World getWorld()
+	{
+		return this.worldObj;
 	}
 
 	/**
@@ -205,20 +240,89 @@ public abstract class TileEntityElectricMachine extends TileEntityMachine implem
 		return 0;
 	}
 	
+	//Should never use this function to extract energy
 	@Override
-	public World getWorld()
+	public int extractEnergy(ForgeDirection from, int maxExtract, boolean simulate)
 	{
-		return this.worldObj;
+		return 0;
 	}
 	
-	public boolean hasEnergy()
+	@Override
+	public boolean canInterface(ForgeDirection from) 
 	{
-		return this.getEnergy() > 0;
+		return true;
 	}
 	
-	@SideOnly(Side.CLIENT)
-	public int getEnergyScaled(int par1)
+	@Override
+	public int getEnergyStored(ForgeDirection from)
 	{
-		return (int) (this.getEnergy()*1000 / this.energy.getMaxEnergy() / par1);
+		return this.energy.getStoredEnergy();
+	}
+	
+	@Override
+	public int getMaxEnergyStored(ForgeDirection from)
+	{
+		return this.energy.getMaxEnergy();
+	}
+	
+	/**
+	 * 
+	 * IC2 Compatibility
+	 * 
+	 */
+	
+	@Override
+	public double demandedEnergyUnits()
+	{
+		return EnergyUtils.toIC2(this.energy.getEmptySpace());
+	}
+	
+	@Override
+	public double injectEnergyUnits(ForgeDirection from, double amount)
+	{
+		if(this.getInputDirections().contains(from) )
+			return amount - EnergyUtils.toIC2(this.energy.receiveEnergy(EnergyUtils.fromIC2((int)amount), true));
+		return amount;
+	}
+	
+	@Override
+	public int getMaxSafeInput()
+	{
+		return EnergyUtils.toIC2(this.energy.getTransferRate());
+	}
+	
+	@Override
+	public boolean acceptsEnergyFrom(TileEntity emitter, ForgeDirection from)
+	{
+		return this.getInputDirections().contains(from);
+	}
+	
+	public void onLoaded() 
+	{
+		if (!addedToEnet && !worldObj.isRemote && Info.isIc2Available()) 
+		{
+			MinecraftForge.EVENT_BUS.post(new EnergyTileLoadEvent(this));
+
+			addedToEnet = true;
+		}
+	}
+	
+	@Override
+	public void invalidate() 
+	{
+		super.invalidate();
+
+		onChunkUnload();
+	}
+	
+	@Override
+	public void onChunkUnload() 
+	{
+		if (addedToEnet && Info.isIc2Available()) 
+		{
+			MinecraftForge.EVENT_BUS.post(new EnergyTileUnloadEvent(this));
+
+			addedToEnet = false;
+		}
 	}
 }
