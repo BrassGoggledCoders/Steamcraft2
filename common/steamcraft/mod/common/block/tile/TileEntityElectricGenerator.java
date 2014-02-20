@@ -39,12 +39,6 @@ public class TileEntityElectricGenerator extends TileEntityElectricMachine imple
 	}
 	
 	@Override
-	public boolean canEmitPowerFrom(ForgeDirection side)
-	{
-		return true;
-	}
-
-	@Override
 	public void updateEntity()
 	{
 		if (!worldObj.isRemote)
@@ -56,7 +50,7 @@ public class TileEntityElectricGenerator extends TileEntityElectricMachine imple
 			{
 				if(inventory[1]!=null)
 					this.charge(1, this);
-				//this.energy.modifyStoredEnergy(-this.produce(this.energy.getTransferRate()));
+				this.energy.modifyStoredEnergy(-this.produce(this.energy.getTransferRate()));
 			}
 		}
 	}
@@ -73,6 +67,7 @@ public class TileEntityElectricGenerator extends TileEntityElectricMachine imple
 
 				if (tileEntity != null)
 				{
+					//BC
 					if(tileEntity instanceof IPowerReceptor)
 					{	
 						IPowerReceptor tile = (IPowerReceptor)tileEntity;
@@ -90,5 +85,16 @@ public class TileEntityElectricGenerator extends TileEntityElectricMachine imple
 		}
 
 		return usedEnergy;
+	}
+	
+	/**
+	 * 
+	 * BuildCraft
+	 * 
+	 */
+	@Override
+	public boolean canEmitPowerFrom(ForgeDirection side)
+	{
+		return true;
 	}
 }

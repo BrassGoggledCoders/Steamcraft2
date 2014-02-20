@@ -22,19 +22,19 @@ import ic2.api.item.IElectricItem;
 
 import java.util.EnumSet;
 
-import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeDirection;
 import buildcraft.api.power.IPowerReceptor;
 import buildcraft.api.power.PowerHandler;
 import buildcraft.api.power.PowerHandler.Type;
 import cofh.api.energy.IEnergyContainerItem;
+import cofh.api.energy.IEnergyHandler;
 
 import common.steamcraft.mod.common.core.helper.CompatHelper;
 import common.steamcraft.mod.common.util.EnergyUtils;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -44,7 +44,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  * @author Decebaldecebal
  *
  */
-public abstract class TileEntityElectricMachine extends TileEntityMachine implements IPowerReceptor //, IEnergyHandler, IEnergySink
+public abstract class TileEntityElectricMachine extends TileEntityMachine implements IPowerReceptor, IEnergyHandler //, IEnergySink
 {
 	protected EnergyUtils energy;
 	protected static PowerHandler powerHandler;
@@ -101,7 +101,7 @@ public abstract class TileEntityElectricMachine extends TileEntityMachine implem
 			int itemEnergy = (int)Math.round(Math.min(Math.sqrt(item.getMaxEnergyStored(itemStack)), item.getMaxEnergyStored(itemStack) - item.getEnergyStored(itemStack)));
 			int toTransfer = Math.round(Math.min(itemEnergy, tile.energy.getStoredEnergy()));
 
-			tile.energy.modifyStoredEnergy(-item.extractEnergy(itemStack, toTransfer, false));
+			tile.energy.modifyStoredEnergy(-item.receiveEnergy(itemStack, toTransfer, false));
 		}
 	}
 	
@@ -186,11 +186,25 @@ public abstract class TileEntityElectricMachine extends TileEntityMachine implem
 			if(handler.useEnergy(0, EnergyUtils.toBC(getEnergyRequested()), false) > 0)
 			{	
 				int energyToReceive = EnergyUtils.fromBC(Math.round(handler.useEnergy(0, EnergyUtils.toBC(getEnergyRequested()), true)));
-				this.energy.receiveEnergy(energyToReceive);
+				this.energy.receiveEnergy(energyToReceive, true);
 			}
 		}
 	}
 
+	/**
+	 * 
+	 * TE Compatibility
+	 * 
+	 */
+	
+	@Override
+	public int receiveEnergy(ForgeDirection from, int maxReceive, boolean simulate)
+	{
+		if(this.getInputDirections().contains(from))
+				return this.energy.receiveEnergy(maxReceive, !simulate);
+		return 0;
+	}
+	
 	@Override
 	public World getWorld()
 	{
