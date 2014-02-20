@@ -8,6 +8,13 @@ import net.minecraft.tileentity.TileEntityFurnace;
 import common.steamcraft.mod.common.block.machines.BlockCoalGenerator;
 import common.steamcraft.mod.common.util.EnergyUtils;
 
+
+/**
+ * A basic generator that produces power from coal.Produces the same amont of power as the IC2 Generator.
+ * 
+ * @author Decebaldecebal
+ *
+ */
 public class TileEntityCoalGenerator extends TileEntityElectricGenerator implements ISidedInventory
 {
 	public int furnaceBurnTime = 0;

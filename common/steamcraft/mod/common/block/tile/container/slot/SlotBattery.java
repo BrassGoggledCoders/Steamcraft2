@@ -4,7 +4,7 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 
-import common.steamcraft.mod.common.block.tile.TileEntityElectricMachine;
+import common.steamcraft.mod.common.util.EnergyUtils;
 
 public class SlotBattery extends Slot
 {
@@ -23,7 +23,6 @@ public class SlotBattery extends Slot
 	
 	public static boolean isValidBatteryItem(ItemStack stack)
 	{
-
-			return true;
+		return EnergyUtils.canBeCharged(stack) || EnergyUtils.canBeDischarged(stack);
 	}
 }

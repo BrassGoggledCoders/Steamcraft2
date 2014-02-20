@@ -34,11 +34,14 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 /**
- * @author MrArcane111
+ * Base class for electric drills.
+ * 
+ * @author Decebaldecebal
  *
  */
 public class ItemElectricDrill extends ItemElectricMod 
 {
+	int energyPerBlock = 200; //same as IC2 drill(50 EU per block)
 	int toolTier;
 	
 	/** An array of blocks the drill can mine. */
@@ -53,8 +56,9 @@ public class ItemElectricDrill extends ItemElectricMod
 		itemIcon = IconHelper.forItem(icon, this);
 	}
 
-	public ItemElectricDrill(int id, int maxEnergy, int voltage, int toolTier) {
-		super(id, maxEnergy, voltage);
+	public ItemElectricDrill(int id, int maxEnergy, int toolTier) 
+	{
+		super(id, maxEnergy);
 		this.setCreativeTab(CreativeTabsMod.tabSCItems);
 		this.toolTier = toolTier;
 	}
@@ -79,8 +83,8 @@ public class ItemElectricDrill extends ItemElectricMod
 	@Override
 	public boolean hitEntity(ItemStack stack, EntityLivingBase hitEntity, EntityLivingBase player) {
 		if(this.getEnergy(stack) > 0) {
-			hitEntity.attackEntityFrom(DamageSource.causePlayerDamage((EntityPlayer)player), (this.toolTier + 1) * 2);
-			this.setEnergy(stack, getEnergy(stack) - 30);
+			hitEntity.attackEntityFrom(DamageSource.causePlayerDamage((EntityPlayer)player), (this.toolTier + 1));
+			this.setEnergy(stack, getEnergy(stack) - this.energyPerBlock * 2);
 		} else {
 			hitEntity.attackEntityFrom(DamageSource.causePlayerDamage((EntityPlayer)player), 1);
 		}
@@ -96,11 +100,10 @@ public class ItemElectricDrill extends ItemElectricMod
 	@Override
 	public boolean onBlockDestroyed(ItemStack stack, World world, int id, int i, int j, int k, EntityLivingBase living)
 	{
-		if(Block.blocksList[id].getBlockHardness(world, i, j, k) != 0.0D) {
-			this.setEnergy(stack, (long) (getEnergy(stack) - 15));
-		} else {
-			this.setEnergy(stack, (long) (getEnergy(stack) - 10));
-		}
+		if(Block.blocksList[id].getBlockHardness(world, i, j, k) != 0.0D) 
+			this.setEnergy(stack, getEnergy(stack) - this.energyPerBlock);
+		else
+			this.setEnergy(stack, getEnergy(stack) - this.energyPerBlock/2);
 
 		return true;
 	}

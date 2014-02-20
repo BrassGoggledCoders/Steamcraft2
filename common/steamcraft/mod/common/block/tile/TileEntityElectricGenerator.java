@@ -17,7 +17,7 @@ import common.steamcraft.mod.common.core.helper.CompatHelper;
 import common.steamcraft.mod.common.util.EnergyUtils;
 
 /** 
- * Base class for power generator compatible with different power systems
+ * Base class for power generators compatible with different power systems.
  * 
  * @author Decebaldecebal
  * 

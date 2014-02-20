@@ -107,7 +107,7 @@ public abstract class TileEntityElectricMachine extends TileEntityMachine implem
 		}
 		else if(CompatHelper.IC2Loaded && tile.inventory[slotID].getItem() instanceof IElectricItem)
 		{
-			int sent = EnergyUtils.fromIC2(ElectricItem.manager.charge(tile.inventory[slotID], EnergyUtils.toIC2(tile.energy.getStoredEnergy()), 2, false, false));
+			int sent = EnergyUtils.fromIC2(ElectricItem.manager.charge(tile.inventory[slotID], EnergyUtils.toIC2(tile.energy.getStoredEnergy()), 1, false, false));
 			tile.energy.modifyStoredEnergy(-sent);
 		}
 	}

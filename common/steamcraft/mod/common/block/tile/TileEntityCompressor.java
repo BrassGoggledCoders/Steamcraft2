@@ -29,9 +29,9 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 /**
- * The TileEntity class for the CompresorBlock
+ * The TileEntity for the compressor.
  * 
- * @author MrArcane111
+ * @author Decebaldecebal
  *
  */
 public class TileEntityCompressor extends TileEntityElectricMachine
