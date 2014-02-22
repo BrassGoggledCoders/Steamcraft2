@@ -47,7 +47,6 @@ public class ModOres
 		oreTin = new BlockOreMod(BlockIDs.oreTinID, "tin").setUnlocalizedName(BlockNames.ORE_TIN);
 		oreZinc = new BlockOreMod(BlockIDs.oreZincID, "zinc").setUnlocalizedName(BlockNames.ORE_ZINC);
 		registerOres();
-		initOreNames();
 		initOreHarvestLevels();
 		registerOreDictionary();
 	}
@@ -63,15 +62,6 @@ public class ModOres
 		GameRegistry.registerBlock(oreCopper, BlockNames.ORE_COPPER);
 		GameRegistry.registerBlock(oreTin, BlockNames.ORE_TIN);
 		GameRegistry.registerBlock(oreZinc, BlockNames.ORE_ZINC);
-	}
-	
-	public static void initOreNames()
-	{
-		LanguageRegistry.addName(oreBornite, "Bornite Ore");
-		LanguageRegistry.addName(oreBrimstone, "Brimstone Ore");
-		LanguageRegistry.addName(orePhosphate, "Phosphate Ore");
-		LanguageRegistry.addName(oreUranite, "Uranite Ore");
-		LanguageRegistry.addName(oreVolucite, "Volucite Ore");
 	}
 	
 	public static void initOreHarvestLevels()

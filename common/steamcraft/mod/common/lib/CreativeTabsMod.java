@@ -22,12 +22,6 @@ public class CreativeTabsMod extends CreativeTabs
 		{
 			return new ItemStack(ModBlocks.decorBrass); 
 		}
-		
-		@Override
-		public String getTranslatedTabLabel()
-		{
-			return "Steamcraft 2 Blocks";
-		}
 	};
 
 	public static CreativeTabs tabSCItems = new CreativeTabsMod(CreativeTabs.getNextID(), "SC2Items")
@@ -37,12 +31,6 @@ public class CreativeTabsMod extends CreativeTabs
 		public ItemStack getIconItemStack() 
 		{
 			return new ItemStack(ModTools.drillCore);
-		}
-		
-		@Override
-		public String getTranslatedTabLabel()
-		{
-			return "Steamcraft 2 Items";
 		}
 	};
 }

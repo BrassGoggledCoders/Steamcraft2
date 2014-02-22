@@ -43,25 +43,5 @@ public class ModGuns
 		
 		// Highly experimental!!
 		rayGun = new ItemRayGun(ItemIDs.rayGunID, LibInfo.SC2_PREFIX + "raygun");
-		
-		initGunNames();
-	}
-	
-	public static void initGunNames()
-	{
-		LanguageRegistry.addName(smoothBarrel, "Smooth Barrel");
-		LanguageRegistry.addName(rifledBarrel, "Rifled Barrel");
-		LanguageRegistry.addName(woodenStock, "Wooden Stock");
-		LanguageRegistry.addName(percussionLock, "Percussion Lock");
-		LanguageRegistry.addName(flintlockMusket, "Flintlock Musket");
-		LanguageRegistry.addName(matchlockMusket, "Matchlock Musket");
-		LanguageRegistry.addName(percussionCapMusket, "Percussion-Cap Musket");
-		LanguageRegistry.addName(flintlockRifle, "Flintlock Rifle");
-		LanguageRegistry.addName(matchlockRifle, "Matchlock Rifle");
-		LanguageRegistry.addName(percussionCapRifle, "Percussion-Cap Rifle");
-		LanguageRegistry.addName(musketRound, "Musket Round");
-		LanguageRegistry.addName(percussionRound, "Percussion Cap");
-		LanguageRegistry.addName(rifleRound, "Rifle Round");
-		LanguageRegistry.addName(rayGun, "Ray Gun");
 	}
 }
