@@ -49,7 +49,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 @SideOnly(Side.CLIENT)
 public class GuiGuideBook extends GuiScreen {
-	private static final ResourceLocation bookTexture = new ResourceLocation(LibInfo.SC2_PREFIX + "/textures/gui/parchment.png");
+	private static final ResourceLocation bookTexture = new ResourceLocation(LibInfo.SC2_PREFIX + "/textures/gui/book.png");
 
 	/** The player editing the book. */
 	private final EntityPlayer player;
@@ -58,8 +58,8 @@ public class GuiGuideBook extends GuiScreen {
 	/** The amount of ticks since the gui was opened. */
 	private int updateCount;
 
-	private int bookImageWidth = 192;
-	private int bookImageHeight = 192;
+	private int WIDTH = 90;
+	private int HEIGHT = 90;
 
 	//private int bookTotalPages = 1;
 	private int currPage;
@@ -115,8 +115,8 @@ public class GuiGuideBook extends GuiScreen {
 		this.buttonList.clear();
 		Keyboard.enableRepeatEvents(true);
 		// Adds the done button to exit the book GUI
-		this.buttonList.add(this.buttonDone = new GuiButton(0, this.width / 2 - 100, 4 + this.bookImageHeight, 200, 20, I18n.getString("gui.done"))); // XXX Localization parameters
-		int averageWidth = (this.width - this.bookImageWidth) / 2;
+		this.buttonList.add(this.buttonDone = new GuiButton(0, this.width / 2 - 100, 4 + this.HEIGHT, 200, 20, I18n.getString("gui.done"))); // XXX Localization parameters
+		int averageWidth = (this.width - this.WIDTH) / 2;
 		byte byte0 = 2;
 		this.buttonList.add(this.buttonNextPage = new GuiNextButton(1, averageWidth + 120, byte0 + 154, true));
 		this.buttonList.add(this.buttonPreviousPage = new GuiNextButton(2, averageWidth + 38, byte0 + 154, false));
@@ -132,7 +132,7 @@ public class GuiGuideBook extends GuiScreen {
 	private void updateButtons() {
 		this.buttonNextPage.drawButton = this.currPage < this.bookTotalPages - 1;
 		this.buttonPreviousPage.drawButton = this.currPage > 0;
-		//this.buttonDone.drawButton = !this.bookIsUnsigned || !this.editingTitle;
+		this.buttonDone.drawButton = this.currPage > 0;
 	}
 
 	private void sendBookToServer(boolean flag) {
@@ -204,41 +204,6 @@ public class GuiGuideBook extends GuiScreen {
 		}
 	}
 
-	@Override
-	/** Fired when a key is typed. This is the equivalent of KeyListener.keyTyped(KeyEvent e). */
-	protected void keyTyped(char char1, int char2) {
-		super.keyTyped(char1, char2);
-		this.keyTypedInBook(char1, char2);
-	}
-
-	/** Processes keystrokes when editing the text of a book. */
-	private void keyTypedInBook(char char1, int char2) {
-		switch (char1) {
-		case 22:
-			this.func_74160_b(GuiScreen.getClipboardString());
-			return;
-		default:
-			switch (char2) {
-			case 14:
-				String s = this.func_74158_i();
-
-				if (s.length() > 0) {
-					this.func_74159_a(s.substring(0, s.length() - 1));
-				}
-
-				return;
-			case 28:
-			case 156:
-				this.func_74160_b("\n");
-				return;
-			default:
-				if (ChatAllowedCharacters.isAllowedCharacter(char1)) {
-					this.func_74160_b(Character.toString(char1));
-				}
-			}
-		}
-	}
-
 	private void func_74162_c(char char1, int char2) {
 		switch (char2) {
 		case 14:
@@ -281,8 +246,7 @@ public class GuiGuideBook extends GuiScreen {
 		}
 	}
 
-	private void func_74160_b(String par1Str)
-	{
+	private void func_74160_b(String par1Str) {
 		String s1 = this.func_74158_i();
 		String s2 = s1 + par1Str;
 		int i = this.fontRenderer.splitStringWidth(s2 + "" + EnumChatFormatting.BLACK + "_", 118);
@@ -300,9 +264,9 @@ public class GuiGuideBook extends GuiScreen {
 	{
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 		this.mc.getTextureManager().bindTexture(bookTexture);
-		int k = (this.width - this.bookImageWidth) / 2;
+		int k = (this.width - this.WIDTH) / 2;
 		byte b0 = 2;
-		this.drawTexturedModalRect(k, b0, 0, 0, this.bookImageWidth, this.bookImageHeight);
+		this.drawTexturedModalRect(k, b0, 0, 0, this.WIDTH, this.HEIGHT);
 		String s;
 		String s1;
 		int l;
@@ -316,7 +280,7 @@ public class GuiGuideBook extends GuiScreen {
 		}
 
 		l = this.fontRenderer.getStringWidth(s);
-		this.fontRenderer.drawString(s, k - l + this.bookImageWidth - 44, b0 + 16, 0);
+		this.fontRenderer.drawString(s, k - l + this.WIDTH - 44, b0 + 16, 0);
 		this.fontRenderer.drawSplitString(s1, k + 36, b0 + 16 + 16, 116, 0);
 
 
