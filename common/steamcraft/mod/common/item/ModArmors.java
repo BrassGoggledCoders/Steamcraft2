@@ -53,30 +53,5 @@ public class ModArmors
 		brassMonocle = new ItemBrassMonocle(ItemIDs.brassMonocleID, MaterialMod.STEAM_ARMOR, 0, 0, "brassmonocle");
 		brassWings = new ItemBrassWings(ItemIDs.brassWingsID, MaterialMod.STEAM_ARMOR, 0, 1, "brasswings");
 		//cape = new ItemCape(SC2_ItemIDs.capeID, EnumArmorMaterial.CLOTH, 0, 1, "capebelt");
-	
-		
-		initArmorNames();
-	}
-
-	public static void initArmorNames()
-	{
-		LanguageRegistry.addName(brassGoggles, "Brass Goggles");
-		LanguageRegistry.addName(aqualung, "Aqualung");
-		LanguageRegistry.addName(legBraces, "Pneumatic Leg Braces");
-		LanguageRegistry.addName(rollerSkates, "Roller Skates");
-		
-		LanguageRegistry.addName(helmetEtherium, "Etherium Helmet");
-		LanguageRegistry.addName(plateEtherium, "Etherium Chestplate");
-		LanguageRegistry.addName(legsEtherium, "Etherium Leggings");
-		LanguageRegistry.addName(bootsEtherium, "Etherium Boots");
-		
-		LanguageRegistry.addName(helmetObsidian, "Obsidian Helmet");
-		LanguageRegistry.addName(plateObsidian, "Obsidian Chestplate");
-		LanguageRegistry.addName(legsObsidian, "Obsidian Leggings");
-		LanguageRegistry.addName(bootsObsidian, "Obsidian Boots");
-		
-		LanguageRegistry.addName(brassMonocle, "Brass Monocle");
-		LanguageRegistry.addName(brassWings, "Brass Wings");
-		//LanguageRegistry.addName(cape, "Leather Cloak");
 	}
 }

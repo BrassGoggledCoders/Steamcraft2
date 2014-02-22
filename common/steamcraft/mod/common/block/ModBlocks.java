@@ -102,7 +102,6 @@ public class ModBlocks
 		ModOres.initOres();
 		ModPowerBlocks.initPowerBlocks();
 		registerBlocks();
-		addNames();
 	}
 	
 	public static void registerBlocks()
@@ -137,32 +136,5 @@ public class ModBlocks
 		GameRegistry.registerBlock(blockBronze, "bronzeblock");
 		GameRegistry.registerBlock(blockSteel, "steelblock");
 		GameRegistry.registerBlock(smog, "smog");
-	}
-	
-	public static void addNames()
-	{
-		
-		LanguageRegistry.addName(blockCastIron, "Cast Iron Block");
-		LanguageRegistry.addName(blockVolucite, "Volucite Block");
-		LanguageRegistry.addName(blockBrass, "Brass Block");
-		LanguageRegistry.addName(lampOff, "Lamp");
-		LanguageRegistry.addName(brassWood, "Brasswood");
-		LanguageRegistry.addName(brassLeaves, "Brassleaves");
-		LanguageRegistry.addName(railingCastIron, "Cast Iron Railing");
-		LanguageRegistry.addName(gateCastIron, "Cast Iron Gate");
-		LanguageRegistry.addName(decorIron, "Carved Iron");
-		LanguageRegistry.addName(decorGold, "Carved Gold");
-		LanguageRegistry.addName(decorDiamond, "Carved Diamond");
-		LanguageRegistry.addName(decorCastIron, "Carved Cast Iron");
-		LanguageRegistry.addName(decorVolucite, "Carved Volucite");
-		LanguageRegistry.addName(decorBrass, "Carved Brass");
-		LanguageRegistry.addName(decorLapis, "Carved Lapis");
-		LanguageRegistry.addName(decorStone, "Carved Stone");
-		LanguageRegistry.addName(blockUranium, "Uranium Block");
-		LanguageRegistry.addName(decorUranium, "Carved Uranium");
-		LanguageRegistry.addName(teaPlant, "Tea Plant");
-		LanguageRegistry.addName(blockSlateTile, "Obsidian Slate Tiles");
-		LanguageRegistry.addName(castIronLampIdle, "Cast Iron Lamp");
-		LanguageRegistry.addName(castIronLampActive, "Cast Iron Lamp");
 	}
 }

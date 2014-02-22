@@ -81,40 +81,5 @@ public class ModTools {
 		
 		chisel = new ItemChisel(ItemIDs.chiselID, 64).setUnlocalizedName("chisel"); // TODO: Change from crafting to right-click
 		spanner = new ItemChisel(ItemIDs.spannerID, 3).setUnlocalizedName("spanner");	
-		
-		initToolNames();
-	}
-
-	public static void initToolNames() {
-		LanguageRegistry.addName(drillCore, "Drill Core");
-		LanguageRegistry.addName(drillBase, "Drill Base");
-		/*
-		LanguageRegistry.addName(drillWood, "Wooden Drill");
-		LanguageRegistry.addName(drillStone, "Stone Drill");
-		LanguageRegistry.addName(drillIron, "Iron Drill");
-		LanguageRegistry.addName(drillDiamond, "Diamond Drill");
-		LanguageRegistry.addName(drillGold, "Golden Drill");
-		LanguageRegistry.addName(drillSteam, "Steam-Powered Drill");
-		LanguageRegistry.addName(drillEtherium, "Etherium Drill");
-		LanguageRegistry.addName(drillObsidian, "Obsidian Drill");
-		*/
-		
-		LanguageRegistry.addName(pickaxeSteam, "Steam-Powered Pickaxe");
-		LanguageRegistry.addName(swordSteam, "Stean-Powered Sword");
-		LanguageRegistry.addName(axeSteam, "Steam-Powered Axe");
-		LanguageRegistry.addName(hoeSteam, "Steam-Powered Hoe");
-		
-		LanguageRegistry.addName(pickaxeEtherium, "Etherium Pickaxe");
-		LanguageRegistry.addName(swordEtherium, "Etherium Sword");
-		LanguageRegistry.addName(axeEtherium, "Etherium Axe");
-		LanguageRegistry.addName(hoeEtherium, "Etherium Hoe");
-		
-		LanguageRegistry.addName(pickaxeObsidian, "Obsidian Pickaxe");
-		LanguageRegistry.addName(swordObsidian, "Obsidian Sword");
-		LanguageRegistry.addName(axeObsidian, "Obsidian Axe");
-		LanguageRegistry.addName(hoeObsidian, "Obsidian Hoe");
-		
-		LanguageRegistry.addName(chisel, "Chisel");
-		LanguageRegistry.addName(spanner, "Spanner");
 	}
 }
