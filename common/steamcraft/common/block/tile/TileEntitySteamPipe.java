@@ -184,6 +184,7 @@ public class TileEntitySteamPipe extends NetworkTile {
 			for (Iterator iterator = possibleDirections.iterator(); iterator.hasNext();) {
 				posDir1 = (Integer)iterator.next();
 
+				/* XXX
 				for (Integer posDir2 : possibleDirections) {
 					if ((posDir1 != posDir2) && ((forcedDirection == -1) || (posDir1.intValue() == forcedDirection) || (posDir2.intValue() == forcedDirection))) {
 						int newConnection = getConnectionCode(posDir1.intValue(), posDir2.intValue());
@@ -192,7 +193,7 @@ public class TileEntitySteamPipe extends NetworkTile {
 							availableConnection.add(Integer.valueOf(newConnection));
 						}
 					}
-				}
+				}*/
 			}
 			
 			//Integer posDir1;
