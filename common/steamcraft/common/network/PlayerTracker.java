@@ -17,7 +17,7 @@
  */
 package common.steamcraft.common.network;
 
-import common.steamcraft.common.lib.LibInfo;
+import common.steamcraft.common.lib2.LibInfo;
 import cpw.mods.fml.common.IPlayerTracker;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ChatMessageComponent;

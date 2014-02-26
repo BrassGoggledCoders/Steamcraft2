@@ -1,8 +1,8 @@
 package common.steamcraft.common.entity;
 
 import common.steamcraft.common.item.ModGuns;
-import common.steamcraft.common.lib.EntityIDs;
-import common.steamcraft.common.lib.LibInfo;
+import common.steamcraft.common.lib2.EntityIDs;
+import common.steamcraft.common.lib2.LibInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;

@@ -13,7 +13,7 @@
  */
 package common.steamcraft.client.render;
 
-import common.steamcraft.client.lib.ClientResources;
+import common.steamcraft.client.lib2.ClientResources;
 import common.steamcraft.common.entity.EntityBullet;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

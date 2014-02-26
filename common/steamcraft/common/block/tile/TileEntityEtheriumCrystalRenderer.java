@@ -27,7 +27,7 @@ import org.lwjgl.opengl.GL11;
 
 import common.steamcraft.client.model.ModelEtheriumCrystal;
 import common.steamcraft.client.model.ModelLightningRod;
-import common.steamcraft.common.lib.LibInfo;
+import common.steamcraft.common.lib2.LibInfo;
 
 /**
  * @author MrArcane111

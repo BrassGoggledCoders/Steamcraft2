@@ -27,7 +27,7 @@ import net.minecraft.world.World;
 import common.steamcraft.common.block.machines.BlockContainerMod;
 import common.steamcraft.common.block.tile.TileEntityEtheriumCrystal;
 import common.steamcraft.common.item.ModItems;
-import common.steamcraft.common.lib.CreativeTabsMod;
+import common.steamcraft.common.lib2.CreativeTabsMod;
 
 /**
  * @author MrArcane111

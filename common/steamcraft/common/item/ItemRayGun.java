@@ -1,8 +1,8 @@
 package common.steamcraft.common.item;
 
 import common.steamcraft.common.SC2;
-import common.steamcraft.common.lib.CreativeTabsMod;
-import common.steamcraft.common.lib.LibInfo;
+import common.steamcraft.common.lib2.CreativeTabsMod;
+import common.steamcraft.common.lib2.LibInfo;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;

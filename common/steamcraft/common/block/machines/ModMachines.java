@@ -24,8 +24,8 @@ import common.steamcraft.common.block.tile.TileEntityCoalGenerator;
 import common.steamcraft.common.block.tile.TileEntityCompressor;
 import common.steamcraft.common.block.tile.TileEntityNukeFurnace;
 import common.steamcraft.common.block.tile.TileEntitySteamFurnace;
-import common.steamcraft.common.lib.BlockIDs;
-import common.steamcraft.common.lib.CreativeTabsMod;
+import common.steamcraft.common.lib2.BlockIDs;
+import common.steamcraft.common.lib2.CreativeTabsMod;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 
