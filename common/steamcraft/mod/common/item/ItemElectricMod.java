@@ -29,6 +29,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
+import cofh.api.energy.IEnergyContainerItem;
 
 import common.steamcraft.mod.common.util.EnergyUtils;
 
@@ -38,14 +39,19 @@ import common.steamcraft.mod.common.util.EnergyUtils;
  * @author Decebaldecebal
  *
  */
-public class ItemElectricMod extends ItemMod implements ISpecialElectricItem, IElectricItemManager
+public class ItemElectricMod extends ItemMod implements ISpecialElectricItem, IElectricItemManager, IEnergyContainerItem
 {
 	protected int maxEnergy;
+	protected byte tier;
 	
-	public ItemElectricMod(int id, int maxEnergy) 
+	public ItemElectricMod(int id, int maxEnergy, byte tier) 
 	{
 		super(id);
+		this.tier = tier;
 		this.maxEnergy = maxEnergy;
+		this.setMaxStackSize(1);
+		this.setMaxDamage(20);
+		this.setHasSubtypes(false);
 	}
 
 	@Override
@@ -58,6 +64,8 @@ public class ItemElectricMod extends ItemMod implements ISpecialElectricItem, IE
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer entityplayer, List list, boolean flag) 
 	{
+		list.add(EnumColor.GREY + "Power Tier: " + this.getTier(stack));
+		list.add("");
 		list.add(EnumColor.AQUA + "Energy: " + EnumColor.GREY + this.getEnergy(stack) + " / " + this.maxEnergy);
 	}
 
@@ -93,7 +101,12 @@ public class ItemElectricMod extends ItemMod implements ISpecialElectricItem, IE
 	public ItemStack getUnchargedItem() 
 	{
 		ItemStack charged = new ItemStack(this.itemID, 1, 20);
-		charged.setTagCompound(new NBTTagCompound());
+		
+		NBTTagCompound tag = new NBTTagCompound();
+		tag.setInteger("energy", 0);
+		tag.setByte("energyTier", this.tier);
+		
+		charged.setTagCompound(tag);
 		return charged.copy();
 	}
 	
@@ -103,11 +116,51 @@ public class ItemElectricMod extends ItemMod implements ISpecialElectricItem, IE
 		
 		NBTTagCompound tag = new NBTTagCompound();
 		tag.setInteger("energy", this.maxEnergy);
+		tag.setInteger("energyTier", this.tier);
 		
 		uncharged.setTagCompound(tag);
 		
 		return uncharged.copy();
 	}
+	
+	/**
+	 * 
+	 * TE Compatibility
+	 * 
+	 */
+	
+	@Override
+	public int receiveEnergy(ItemStack itemStack, int maxReceive, boolean simulate)
+	{
+		/*
+		int received = Math.min(this.maxEnergy - this.getEnergy(itemStack), maxReceive);
+		received = Math.min(received, this.getTransferLimit(itemStack));
+		
+		if(!simulate)
+			this.setEnergy(itemStack, this.getEnergy(itemStack) + received);
+		*/
+		
+		return EnergyUtils.fromIC2(this.charge(itemStack, EnergyUtils.toIC2(maxReceive), this.getTier(itemStack), false, simulate));
+	}
+	
+	@Override
+	public int extractEnergy(ItemStack itemStack, int maxExtract, boolean simulate)
+	{
+		return EnergyUtils.fromIC2(this.discharge(itemStack, EnergyUtils.toIC2(maxExtract), this.getTier(itemStack), false, simulate));
+	}
+	
+	@Override
+	public int getEnergyStored(ItemStack itemStack)
+	{
+		return this.getEnergy(itemStack);
+	}
+	
+	@Override
+	public int getMaxEnergyStored(ItemStack container)
+	{
+		return this.maxEnergy;
+	}
+	
 	
 	/**
 	 * 
@@ -142,7 +195,7 @@ public class ItemElectricMod extends ItemMod implements ISpecialElectricItem, IE
 	@Override
 	public int getTier(ItemStack itemStack)
 	{
-		return 1;
+		return itemStack.getTagCompound().getByte("energyTier");
 	}
 	
 	@Override

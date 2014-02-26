@@ -56,9 +56,9 @@ public class ItemElectricDrill extends ItemElectricMod
 		itemIcon = IconHelper.forItem(icon, this);
 	}
 
-	public ItemElectricDrill(int id, int maxEnergy, int toolTier) 
+	public ItemElectricDrill(int id, int maxEnergy, int toolTier, int energyTier) 
 	{
-		super(id, maxEnergy);
+		super(id, maxEnergy, (byte)energyTier);
 		this.setCreativeTab(CreativeTabsMod.tabSCItems);
 		this.toolTier = toolTier;
 	}

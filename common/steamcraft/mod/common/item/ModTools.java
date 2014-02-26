@@ -48,15 +48,15 @@ public class ModTools {
 	public static void initTools() { 
 		drillCore = new ItemCoreDrill(ItemIDs.coreDrillID).setUnlocalizedName("coredrill");
 		drillBase = new ItemMod(ItemIDs.drillBaseID).setUnlocalizedName("coredrillbase");
-		// int id, int maxEnergy, int toolTier
-		drillWood = new ItemElectricDrill(ItemIDs.drillWoodID, 20000, 0).setUnlocalizedName("wooddrill");
-		drillStone = new ItemElectricDrill(ItemIDs.drillStoneID, 40000, 1).setUnlocalizedName("stonedrill");
-		drillIron = new ItemElectricDrill(ItemIDs.drillIronID, 80000, 2).setUnlocalizedName("irondrill");
-		drillDiamond = new ItemElectricDrill(ItemIDs.drillDiamondID, 200000, 3).setUnlocalizedName("diamonddrill");
-		drillGold = new ItemElectricDrill(ItemIDs.drillGoldID, 100000, 3).setUnlocalizedName("golddrill");
+		// int id, int maxEnergy, int toolTier, int energyTier(mostly for IC2)
+		drillWood = new ItemElectricDrill(ItemIDs.drillWoodID, 20000, 0, 1).setUnlocalizedName("wooddrill");
+		drillStone = new ItemElectricDrill(ItemIDs.drillStoneID, 40000, 1, 1).setUnlocalizedName("stonedrill");
+		drillIron = new ItemElectricDrill(ItemIDs.drillIronID, 80000, 2, 1).setUnlocalizedName("irondrill");
+		drillDiamond = new ItemElectricDrill(ItemIDs.drillDiamondID, 200000, 3, 2).setUnlocalizedName("diamonddrill");
+		drillGold = new ItemElectricDrill(ItemIDs.drillGoldID, 100000, 3, 1).setUnlocalizedName("golddrill");
 		drillSteam = new ItemSteamDrill(ItemIDs.drillSteamID).setUnlocalizedName("steamdrill");
-		drillEtherium = new ItemElectricDrill(ItemIDs.drillEtheriumID, 300000, 4).setUnlocalizedName("etheriumdrill");
-		drillObsidian = new ItemElectricDrill(ItemIDs.drillObsidianID, 200000, 2).setUnlocalizedName("obsidiandrill");
+		drillEtherium = new ItemElectricDrill(ItemIDs.drillEtheriumID, 300000, 4, 2).setUnlocalizedName("etheriumdrill");
+		drillObsidian = new ItemElectricDrill(ItemIDs.drillObsidianID, 200000, 2, 2).setUnlocalizedName("obsidiandrill");
 		
 		pickaxeSteam = new ItemModPickaxe(ItemIDs.pickaxeSteamID, MaterialMod.STEAM_TOOL).setUnlocalizedName("steampick");
 		swordSteam = new ItemModSword(ItemIDs.swordSteamID, MaterialMod.STEAM_TOOL).setUnlocalizedName("steamsword");
