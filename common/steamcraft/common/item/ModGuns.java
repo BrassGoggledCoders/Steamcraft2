@@ -1,7 +1,7 @@
 package common.steamcraft.common.item;
 
-import common.steamcraft.common.lib.ItemIDs;
-import common.steamcraft.common.lib.LibInfo;
+import common.steamcraft.common.lib2.ItemIDs;
+import common.steamcraft.common.lib2.LibInfo;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import net.minecraft.item.Item;
 

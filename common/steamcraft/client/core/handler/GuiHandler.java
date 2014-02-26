@@ -23,7 +23,7 @@ import common.steamcraft.client.gui.GuiCompressor;
 import common.steamcraft.client.gui.GuiGuideBook;
 import common.steamcraft.client.gui.GuiNukeFurnace;
 import common.steamcraft.client.gui.GuiSteamFurnace;
-import common.steamcraft.client.lib.GuiIDs;
+import common.steamcraft.client.lib2.GuiIDs;
 import common.steamcraft.common.block.tile.TileEntityChemicalFurnace;
 import common.steamcraft.common.block.tile.TileEntityCoalGenerator;
 import common.steamcraft.common.block.tile.TileEntityCompressor;

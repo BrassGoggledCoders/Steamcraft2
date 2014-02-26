@@ -1,6 +1,6 @@
 package common.steamcraft.client.core.handler;
 
-import common.steamcraft.client.lib.ClientResources;
+import common.steamcraft.client.lib2.ClientResources;
 import common.steamcraft.common.item.ModArmors;
 import cpw.mods.fml.common.ITickHandler;
 import cpw.mods.fml.common.TickType;

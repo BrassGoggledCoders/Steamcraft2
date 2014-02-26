@@ -8,7 +8,7 @@ import org.lwjgl.opengl.GL11;
 
 import common.steamcraft.common.block.tile.TileEntityCompressor;
 import common.steamcraft.common.block.tile.container.ContainerCompressor;
-import common.steamcraft.common.lib.LibInfo;
+import common.steamcraft.common.lib2.LibInfo;
 
 public class GuiCompressor extends GuiContainer
 {

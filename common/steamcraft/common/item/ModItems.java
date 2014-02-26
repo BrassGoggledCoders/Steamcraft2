@@ -20,7 +20,7 @@ package common.steamcraft.common.item;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import common.steamcraft.common.block.ModBlocks;
-import common.steamcraft.common.lib.ItemIDs;
+import common.steamcraft.common.lib2.ItemIDs;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
 /**

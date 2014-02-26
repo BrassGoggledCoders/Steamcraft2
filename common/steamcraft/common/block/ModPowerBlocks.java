@@ -14,7 +14,7 @@
 package common.steamcraft.common.block;
 
 import common.steamcraft.common.block.machines.BlockLightningRod;
-import common.steamcraft.common.lib.BlockIDs;
+import common.steamcraft.common.lib2.BlockIDs;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import net.minecraft.block.Block;
