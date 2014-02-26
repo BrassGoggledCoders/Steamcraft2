@@ -13,7 +13,7 @@
  */
 package common.steamcraft.common.block;
 
-import common.steamcraft.common.lib2.LibInfo;
+import common.steamcraft.common.lib.LibInfo;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFence;
 import net.minecraft.block.material.Material;

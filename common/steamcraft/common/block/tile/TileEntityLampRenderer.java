@@ -3,7 +3,7 @@ package common.steamcraft.common.block.tile;
 import common.steamcraft.client.model.ModelLampSide;
 import common.steamcraft.client.model.ModelLampUp;
 import common.steamcraft.common.block.ModBlocks;
-import common.steamcraft.common.lib2.LibInfo;
+import common.steamcraft.common.lib.LibInfo;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;

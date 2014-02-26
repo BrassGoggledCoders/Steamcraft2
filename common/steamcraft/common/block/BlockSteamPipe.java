@@ -31,7 +31,7 @@ import net.minecraftforge.common.ForgeDirection;
 
 import common.steamcraft.common.block.machines.BlockContainerMod;
 import common.steamcraft.common.block.tile.TileEntitySteamPipe;
-import common.steamcraft.common.lib2.CreativeTabsMod;
+import common.steamcraft.common.lib.CreativeTabsMod;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

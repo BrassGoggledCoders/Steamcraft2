@@ -14,7 +14,7 @@
 package common.steamcraft.common.block.machines;
 
 import common.steamcraft.common.block.tile.TileEntityMachine;
-import common.steamcraft.common.lib2.CreativeTabsMod;
+import common.steamcraft.common.lib.CreativeTabsMod;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;

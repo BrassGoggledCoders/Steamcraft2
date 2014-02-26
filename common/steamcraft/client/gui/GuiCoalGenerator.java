@@ -8,7 +8,7 @@ import org.lwjgl.opengl.GL11;
 
 import common.steamcraft.common.block.tile.TileEntityCoalGenerator;
 import common.steamcraft.common.block.tile.container.ContaineCoalGenerator;
-import common.steamcraft.common.lib2.LibInfo;
+import common.steamcraft.common.lib.LibInfo;
 
 public class GuiCoalGenerator extends GuiContainer
 {

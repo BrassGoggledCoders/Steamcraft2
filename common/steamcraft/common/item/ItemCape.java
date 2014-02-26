@@ -21,8 +21,8 @@ import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 
 import common.steamcraft.common.SC2;
-import common.steamcraft.common.lib2.CreativeTabsMod;
-import common.steamcraft.common.lib2.ItemNames;
+import common.steamcraft.common.lib.CreativeTabsMod;
+import common.steamcraft.common.lib.ItemNames;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

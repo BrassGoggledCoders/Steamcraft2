@@ -13,7 +13,7 @@
  */
 package common.steamcraft.common.block;
 
-import common.steamcraft.client.lib2.RenderIDs;
+import common.steamcraft.client.lib.RenderIDs;
 import common.steamcraft.common.block.machines.BlockContainerMod;
 import common.steamcraft.common.block.tile.TileEntityChimney;
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;

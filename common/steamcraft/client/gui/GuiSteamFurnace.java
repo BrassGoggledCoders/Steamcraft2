@@ -15,7 +15,7 @@ package common.steamcraft.client.gui;
 
 import common.steamcraft.common.block.tile.TileEntitySteamFurnace;
 import common.steamcraft.common.block.tile.container.ContainerSteamFurnace;
-import common.steamcraft.common.lib2.LibInfo;
+import common.steamcraft.common.lib.LibInfo;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;

@@ -6,7 +6,7 @@ import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-import common.steamcraft.common.lib2.MaterialMod;
+import common.steamcraft.common.lib.MaterialMod;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

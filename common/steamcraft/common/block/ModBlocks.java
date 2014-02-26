@@ -18,9 +18,9 @@
 package common.steamcraft.common.block;
 
 import common.steamcraft.common.block.machines.ModMachines;
-import common.steamcraft.common.lib2.BlockIDs;
-import common.steamcraft.common.lib2.CreativeTabsMod;
-import common.steamcraft.common.lib2.LibInfo;
+import common.steamcraft.common.lib.BlockIDs;
+import common.steamcraft.common.lib.CreativeTabsMod;
+import common.steamcraft.common.lib.LibInfo;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import net.minecraft.block.Block;

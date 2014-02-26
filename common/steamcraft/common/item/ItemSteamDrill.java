@@ -15,8 +15,8 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import common.steamcraft.client.core.helper.ClientHelper;
 import common.steamcraft.common.core.helper.CommonHelper;
-import common.steamcraft.common.lib2.LibInfo;
-import common.steamcraft.common.lib2.MaterialMod;
+import common.steamcraft.common.lib.LibInfo;
+import common.steamcraft.common.lib.MaterialMod;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 

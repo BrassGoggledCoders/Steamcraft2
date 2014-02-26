@@ -19,7 +19,7 @@ package common.steamcraft.common.block;
 
 import common.steamcraft.client.core.helper.IconHelper;
 import common.steamcraft.common.item.ModItems;
-import common.steamcraft.common.lib2.CreativeTabsMod;
+import common.steamcraft.common.lib.CreativeTabsMod;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;

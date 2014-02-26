@@ -1,6 +1,6 @@
 package common.steamcraft.common.item;
 
-import common.steamcraft.common.lib2.MaterialMod;
+import common.steamcraft.common.lib.MaterialMod;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.EnumToolMaterial;

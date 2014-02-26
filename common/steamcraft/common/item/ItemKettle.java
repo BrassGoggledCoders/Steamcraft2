@@ -1,6 +1,6 @@
 package common.steamcraft.common.item;
 
-import common.steamcraft.common.lib2.LibInfo;
+import common.steamcraft.common.lib.LibInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IconRegister;

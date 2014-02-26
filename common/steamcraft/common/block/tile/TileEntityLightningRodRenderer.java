@@ -1,7 +1,7 @@
 package common.steamcraft.common.block.tile;
 
 import common.steamcraft.client.model.ModelLightningRod;
-import common.steamcraft.common.lib2.LibInfo;
+import common.steamcraft.common.lib.LibInfo;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.entity.Entity;

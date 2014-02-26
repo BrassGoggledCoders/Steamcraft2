@@ -2,8 +2,8 @@ package common.steamcraft.common.item;
 
 import net.minecraft.item.Item;
 
-import common.steamcraft.common.lib2.ItemIDs;
-import common.steamcraft.common.lib2.MaterialMod;
+import common.steamcraft.common.lib.ItemIDs;
+import common.steamcraft.common.lib.MaterialMod;
 
 public class ModTools {
 	// Drills

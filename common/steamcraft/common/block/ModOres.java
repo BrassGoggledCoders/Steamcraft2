@@ -17,8 +17,8 @@ import net.minecraft.block.Block;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.oredict.OreDictionary;
 
-import common.steamcraft.common.lib2.BlockIDs;
-import common.steamcraft.common.lib2.BlockNames;
+import common.steamcraft.common.lib.BlockIDs;
+import common.steamcraft.common.lib.BlockNames;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 
