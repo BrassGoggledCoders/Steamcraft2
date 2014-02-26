@@ -115,21 +115,23 @@ public class EnergyUtils
 	}
 	
 	//Should be called when receiving energy.Checks transfer limits.
-	public int receiveEnergy(int energy)
+	public int receiveEnergy(int energy, boolean doReceive)
 	{
 		int receivedEnergy = Math.min(this.getEmptySpace(), Math.min(this.transferRate, energy));
 		
-		this.storedEnergy += receivedEnergy;
+		if(doReceive)
+			this.storedEnergy += receivedEnergy;
 		
 		return receivedEnergy;
 	}
 	
 	//Should be called when extracting energy.Checks transfer limits.
-	public int extractEnergy(int energy)
+	public int extractEnergy(int energy, boolean doExtract)
 	{
 		int receivedEnergy = Math.min(this.storedEnergy, Math.min(this.transferRate, energy));
 		
-		this.storedEnergy -= receivedEnergy;
+		if(doExtract)
+			this.storedEnergy -= receivedEnergy;
 		
 		return receivedEnergy;
 	}

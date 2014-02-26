@@ -34,15 +34,20 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 /**
- * @author MrArcane111
+ * Base class for electric drills.
+ * 
+ * @author Decebaldecebal
  *
  */
-public class ItemElectricDrill extends ItemElectricMod {
-
+public class ItemElectricDrill extends ItemElectricMod 
+{
+	int energyPerBlock = 200; //same as IC2 drill(50 EU per block)
+	int toolTier;
+	
 	/** An array of blocks the drill can mine. */
 	public static final Block[] blocksEffectiveAgainst = new Block[] {
 		Block.cobblestone, Block.dirt, Block.stone, Block.sand, Block.blockClay, Block.ice,
-		Block.snow, Block.netherrack, Block.grass
+		Block.snow, Block.netherrack, Block.grass, Block.gravel
 	}; 
 
 	@Override
@@ -51,9 +56,11 @@ public class ItemElectricDrill extends ItemElectricMod {
 		itemIcon = IconHelper.forItem(icon, this);
 	}
 
-	public ItemElectricDrill(int id, int maxEnergy, int voltage, int toolTier) {
-		super(id, maxEnergy, voltage, toolTier);
+	public ItemElectricDrill(int id, int maxEnergy, int toolTier, int energyTier) 
+	{
+		super(id, maxEnergy, (byte)energyTier);
 		this.setCreativeTab(CreativeTabsMod.tabSCItems);
+		this.toolTier = toolTier;
 	}
 
 	@Override
@@ -76,8 +83,8 @@ public class ItemElectricDrill extends ItemElectricMod {
 	@Override
 	public boolean hitEntity(ItemStack stack, EntityLivingBase hitEntity, EntityLivingBase player) {
 		if(this.getEnergy(stack) > 0) {
-			hitEntity.attackEntityFrom(DamageSource.causePlayerDamage((EntityPlayer)player), (this.toolTier + 1) * 2);
-			this.setEnergy(stack, getEnergy(stack) - this.toolTier);
+			hitEntity.attackEntityFrom(DamageSource.causePlayerDamage((EntityPlayer)player), (this.toolTier + 1));
+			this.setEnergy(stack, getEnergy(stack) - this.energyPerBlock * 2);
 		} else {
 			hitEntity.attackEntityFrom(DamageSource.causePlayerDamage((EntityPlayer)player), 1);
 		}
@@ -93,11 +100,10 @@ public class ItemElectricDrill extends ItemElectricMod {
 	@Override
 	public boolean onBlockDestroyed(ItemStack stack, World world, int id, int i, int j, int k, EntityLivingBase living)
 	{
-		if(Block.blocksList[id].getBlockHardness(world, i, j, k) != 0.0D) {
-			this.setEnergy(stack, getEnergy(stack) - this.getEfficiency());
-		} else {
-			this.setEnergy(stack, getEnergy(stack) - (this.getEfficiency() / 2));
-		}
+		if(Block.blocksList[id].getBlockHardness(world, i, j, k) != 0.0D) 
+			this.setEnergy(stack, getEnergy(stack) - this.energyPerBlock);
+		else
+			this.setEnergy(stack, getEnergy(stack) - this.energyPerBlock/2);
 
 		return true;
 	}

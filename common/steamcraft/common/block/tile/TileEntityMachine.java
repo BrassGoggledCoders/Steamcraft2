@@ -17,23 +17,12 @@
  */
 package common.steamcraft.common.block.tile;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.util.ArrayList;
-
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.world.World;
-import net.minecraftforge.common.ForgeDirection;
-import common.steamcraft.api.IMachine;
-import common.steamcraft.common.block.machines.MachineConstants;
-import common.steamcraft.common.network.NetworkTile;
 
 /**
  * Basic machine class that includes a lot of functions widely used

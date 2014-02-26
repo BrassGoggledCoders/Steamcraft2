@@ -1,5 +1,7 @@
 package common.steamcraft.common.block.tile;
 
+import ic2.api.energy.tile.IEnergySource;
+
 import java.util.EnumSet;
 
 import net.minecraft.item.ItemStack;
@@ -9,17 +11,19 @@ import buildcraft.api.power.IPowerEmitter;
 import buildcraft.api.power.IPowerReceptor;
 import buildcraft.api.power.PowerHandler.PowerReceiver;
 import buildcraft.api.power.PowerHandler.Type;
+import cofh.api.energy.IEnergyHandler;
 
+import common.steamcraft.common.core.helper.CompatHelper;
 import common.steamcraft.common.util.EnergyUtils;
 
 /** 
- * Base class for power generator compatible with different power systems
+ * Base class for power generators compatible with different power systems.
  * 
  * @author Decebaldecebal
  * 
  */
-public class TileEntityElectricGenerator extends TileEntityElectricMachine implements IPowerEmitter
-{
+public class TileEntityElectricGenerator extends TileEntityElectricMachine implements IPowerEmitter, IEnergySource
+{	
 	public TileEntityElectricGenerator()
 	{
 		super();
@@ -39,14 +43,10 @@ public class TileEntityElectricGenerator extends TileEntityElectricMachine imple
 	}
 	
 	@Override
-	public boolean canEmitPowerFrom(ForgeDirection side)
-	{
-		return true;
-	}
-
-	@Override
 	public void updateEntity()
 	{
+		super.updateEntity();
+		
 		if (!worldObj.isRemote)
 		{			
 			if(inventory[2]!=null && energy.getEmptySpace() > 0)
@@ -73,7 +73,13 @@ public class TileEntityElectricGenerator extends TileEntityElectricMachine imple
 
 				if (tileEntity != null)
 				{
-					if(tileEntity instanceof IPowerReceptor)
+					//TE
+					if(tileEntity instanceof IEnergyHandler)
+					{
+						usedEnergy += ((IEnergyHandler) tileEntity).receiveEnergy(direction.getOpposite(), outputEnergy, false);
+					}
+					//BC
+					else if(CompatHelper.BuildCraftLoaded && tileEntity instanceof IPowerReceptor)
 					{	
 						IPowerReceptor tile = (IPowerReceptor)tileEntity;
 						if(tile!=null)
@@ -90,5 +96,54 @@ public class TileEntityElectricGenerator extends TileEntityElectricMachine imple
 		}
 
 		return usedEnergy;
+	}
+	
+	/**
+	 * 
+	 * BuildCraft
+	 * 
+	 */
+	@Override
+	public boolean canEmitPowerFrom(ForgeDirection side)
+	{
+		return true;
+	}
+
+	/**
+	 * 
+	 * IC2
+	 * 
+	 */
+	
+	@Override
+	public boolean emitsEnergyTo(TileEntity receiver, ForgeDirection from) 
+	{
+		return this.getOutputDirections().contains(from);
+	}
+
+	@Override
+	public double getOfferedEnergy() 
+	{
+		if(this.energy.getStoredEnergy() >= this.energy.getTransferRate())
+			return EnergyUtils.toIC2(this.energy.getTransferRate());
+		return 0;
+	}
+
+	@Override
+	public void drawEnergy(double amount) 
+	{
+		this.energy.modifyStoredEnergy(-EnergyUtils.fromIC2((int)amount));
+	}
+	
+	@Override
+	public double demandedEnergyUnits()
+	{
+		return 0;
+	}
+	
+	@Override
+	public int getMaxSafeInput()
+	{
+		return 0;
 	}
 }
