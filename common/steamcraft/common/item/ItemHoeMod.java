@@ -1,13 +1,15 @@
 package common.steamcraft.common.item;
 
-import common.steamcraft.common.lib.MaterialMod;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+
+import common.steamcraft.common.lib.MaterialMod;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemHoeMod extends ItemMod
 {

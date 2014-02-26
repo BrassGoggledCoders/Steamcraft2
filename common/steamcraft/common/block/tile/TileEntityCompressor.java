@@ -17,126 +17,45 @@
  */
 package common.steamcraft.common.block.tile;
 
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
-import universalelectricity.api.energy.EnergyStorageHandler;
+
 import common.steamcraft.common.block.machines.BlockCompressor;
+import common.steamcraft.common.core.handler.recipe.CompressorHandler;
 import common.steamcraft.common.item.ModItems;
+import common.steamcraft.common.util.EnergyUtils;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * The TileEntity class for the CompresorBlock
  * 
- * @author MrArcane111 & decabeldecabel
+ * @author decebaldecebal
  *
  */
-public class TileEntityCompressor extends TileEntityElectricMachine implements ISidedInventory
+public class TileEntityCompressor extends TileEntityElectricMachine
 {	
-	private long energyPerTick = 4;
-
+	private int energyPerTick = 20;
 	public int furnaceBurnTime = 0;
 	
 	public TileEntityCompressor()
 	{
 		super();
-		this.energy = new EnergyStorageHandler();
-		this.energy.setCapacity(1000);
-		this.energy.setMaxTransfer(10);
+		this.energy = new EnergyUtils(10000, 128);
 		inventory = new ItemStack[3];
-	}
-	
-	@Override
-	public int getSizeInventory()
-	{
-		return inventory.length;
-	}
-
-	@Override
-	public ItemStack getStackInSlot(int par1)
-	{
-		return inventory[par1];
-	}
-
-	@Override
-	public ItemStack decrStackSize(int par1, int par2)
-	{
-		if (inventory[par1] != null)
-		{
-			ItemStack var3;
-
-			if (inventory[par1].stackSize <= par2)
-			{
-				var3 = inventory[par1];
-				inventory[par1] = null;
-				return var3;
-			}
-			else
-			{
-				var3 = inventory[par1].splitStack(par2);
-
-				if (inventory[par1].stackSize == 0)
-					inventory[par1] = null;
-
-				return var3;
-			}
-		}
-		else
-			return null;
-	}
-
-	@Override
-	public ItemStack getStackInSlotOnClosing(int par1)
-	{
-		if (inventory[par1] != null)
-		{
-			ItemStack var2 = inventory[par1];
-			inventory[par1] = null;
-			return var2;
-		}
-		else
-			return null;
-	}
-
-	@Override
-	public void setInventorySlotContents(int par1, ItemStack par2ItemStack)
-	{
-		inventory[par1] = par2ItemStack;
-
-		if (par2ItemStack != null && par2ItemStack.stackSize > this.getInventoryStackLimit())
-			par2ItemStack.stackSize = this.getInventoryStackLimit();
 	}
 	
 	@Override
 	public String getInvName()
 	{
-		return "CompressorMachine";
-	}
-
-	@Override
-	public boolean isInvNameLocalized()
-	{
-		return false;
+		return "Compressor Machine";
 	}
 	
 	@Override
 	public void readFromNBT(NBTTagCompound par1NBTTagCompound)
 	{
 		super.readFromNBT(par1NBTTagCompound);
-		NBTTagList nbttaglist = par1NBTTagCompound.getTagList("Items");
-		inventory = new ItemStack[this.getSizeInventory()];
-
-		for (int i = 0; i < nbttaglist.tagCount(); ++i)
-		{
-			NBTTagCompound nbttagcompound1 = (NBTTagCompound) nbttaglist.tagAt(i);
-			byte b0 = nbttagcompound1.getByte("Slot");
-
-			if (b0 >= 0 && b0 < inventory.length)
-				inventory[b0] = ItemStack.loadItemStackFromNBT(nbttagcompound1);
-		}
 
 		furnaceBurnTime = par1NBTTagCompound.getShort("BurnTime");
 	}
@@ -145,43 +64,14 @@ public class TileEntityCompressor extends TileEntityElectricMachine implements I
 	public void writeToNBT(NBTTagCompound par1NBTTagCompound)
 	{
 		super.writeToNBT(par1NBTTagCompound);
+		
 		par1NBTTagCompound.setShort("BurnTime", (short) furnaceBurnTime);
-
-		NBTTagList nbttaglist = new NBTTagList();
-
-		for (int i = 0; i < inventory.length; ++i)
-			if (inventory[i] != null)
-			{
-				NBTTagCompound nbttagcompound1 = new NBTTagCompound();
-				nbttagcompound1.setByte("Slot", (byte) i);
-				inventory[i].writeToNBT(nbttagcompound1);
-				nbttaglist.appendTag(nbttagcompound1);
-			}
-
-		par1NBTTagCompound.setTag("Items", nbttaglist);
-	}
-	
-	@Override
-	public int getInventoryStackLimit()
-	{
-		return 64;
 	}
 
 	@SideOnly(Side.CLIENT)
 	public int getBurnTimeRemainingScaled(int par1)
 	{
 		return furnaceBurnTime / par1;
-	}
-	
-	@SideOnly(Side.CLIENT)
-	public int getEnergyScaled(int par1)
-	{
-		return (int) (this.energy.getEnergy() / par1);
-	}
-	
-	public boolean hasEnergy()
-	{
-		return this.energy.getEnergy() > 0;
 	}
 	
 	public boolean isBurning()
@@ -199,13 +89,13 @@ public class TileEntityCompressor extends TileEntityElectricMachine implements I
 		{
 			if(inventory[2]!=null && energy.getEmptySpace() > 0)
 				this.discharge(2, this);
-			/*
+			
 			if (this.canSmelt())
 			{		
-				if(this.getEnergy(null)==0)
+				if(this.getEnergy()==0)
 					furnaceBurnTime = 0;
 				
-				if(this.energy.extractEnergy(this.energyPerTick, true)==this.energyPerTick)
+				if(this.energy.extractEnergy(this.energyPerTick)==this.energyPerTick)
 					++furnaceBurnTime;
 				
 				if (furnaceBurnTime == 250)
@@ -217,7 +107,7 @@ public class TileEntityCompressor extends TileEntityElectricMachine implements I
 			}
 			else
 				furnaceBurnTime = 0;
-			*/
+
 			if (var1 != furnaceBurnTime > 0)
 			{
 				var2 = true;
@@ -228,19 +118,19 @@ public class TileEntityCompressor extends TileEntityElectricMachine implements I
 		if (var2)
 			this.onInventoryChanged();
 	}
-	/*	
+		
 	private boolean canSmelt()
 	{
 		if (inventory[0] == null)
 			return false;
 		if(inventory[1] == null)
 			return false;
-		if(SC2_RecipeHandlerCompressor.recipe().getResult(inventory[1])==null)
+		if(CompressorHandler.recipe().getResult(inventory[1])==null)
 			return false;
 		
-		if(SC2_RecipeHandlerCompressor.recipe().getResult(inventory[1]).itemID==inventory[0].itemID)
+		if(CompressorHandler.recipe().getResult(inventory[1]).itemID==inventory[0].itemID)
 		{
-			int chargeLevel = SC2_RecipeHandlerCompressor.recipe().getChargeLevel(inventory[1]);
+			int chargeLevel = CompressorHandler.recipe().getChargeLevel(inventory[1]);
 			
 			if(inventory[0].getItemDamage()-chargeLevel>=0)
 					return true;
@@ -253,7 +143,7 @@ public class TileEntityCompressor extends TileEntityElectricMachine implements I
 	{
 		if (this.canSmelt())
 		{
-			int chargeLevel = SC2_RecipeHandlerCompressor.recipe().getChargeLevel(inventory[1]);
+			int chargeLevel = CompressorHandler.recipe().getChargeLevel(inventory[1]);
 			
 			inventory[0].setItemDamage(inventory[0].getItemDamage()-chargeLevel);
 			
@@ -262,23 +152,6 @@ public class TileEntityCompressor extends TileEntityElectricMachine implements I
 			else
 				--inventory[1].stackSize;
 		}
-	}*/
-	
-	@Override
-	public boolean isUseableByPlayer(EntityPlayer par1EntityPlayer)
-	{
-		return worldObj.getBlockTileEntity(xCoord, yCoord, zCoord) != this ? false : par1EntityPlayer.getDistanceSq(xCoord + 0.5D, yCoord + 0.5D,
-				zCoord + 0.5D) <= 64.0D;
-	}
-	
-	@Override
-	public void openChest()
-	{
-	}
-
-	@Override
-	public void closeChest()
-	{
 	}
 
 	@Override

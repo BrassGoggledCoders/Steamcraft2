@@ -83,33 +83,8 @@ public class ModItems {
 		emptyCanister = new ItemMod(ItemIDs.emptyCanisterID).setUnlocalizedName("emptycanister");
 		guideBook = new ItemGuideBook(ItemIDs.guideBookID).setUnlocalizedName("guidebook");
 		
-		initNames();
 		ModTools.initTools();
 		ModArmors.initArmors();
 		ModGuns.initGuns();
-	}
-	
-	public static void initNames() {
-		LanguageRegistry.addName(etherium, "Etherium Crystal");
-		LanguageRegistry.addName(chemicSalt, "Sulfur");
-		LanguageRegistry.addName(bornite, "Purified Copper");
-		LanguageRegistry.addName(obsidianSlate, "Obsidian Slate");
-		LanguageRegistry.addName(ingotBrass, "Brass Ingot");
-		LanguageRegistry.addName(ingotCastIron, "Cast Iron Ingot");
-		LanguageRegistry.addName(lightBulb, "Lightbulb");
-		LanguageRegistry.addName(phosphorus, "Phosphorus");
-		LanguageRegistry.addName(uraniumOre, "Uranium");
-		LanguageRegistry.addName(uraniumPellet, "Uranium Pellets");
-		LanguageRegistry.addName(reactorCore, "Reactor Core");
-		LanguageRegistry.addName(teaSeed, "Tea Seeds");
-		LanguageRegistry.addName(teaLeaves, "Tea Leaves");
-		LanguageRegistry.addName(copperWire, "Copper Wire");
-		LanguageRegistry.addName(brassWatch, "Brass Pocket-Watch");
-		LanguageRegistry.addName(canisterSteam, "Steam Canister");
-		LanguageRegistry.addName(canisterGas, "Compressed Gas Canister");
-		LanguageRegistry.addName(steamCanister, "Steam Canister");
-		LanguageRegistry.addName(gasCanister, "Compressed Gas Canister");
-        LanguageRegistry.addName(emptyCanister, "Empty Canister");
-        LanguageRegistry.addName(guideBook, "SC2 Guide Book");
 	}
 }

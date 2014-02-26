@@ -1,12 +1,12 @@
-package common.steamcraft.mod.common.block.tile;
+package common.steamcraft.common.block.tile;
 
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntityFurnace;
 
-import common.steamcraft.mod.common.block.machines.BlockCoalGenerator;
-import common.steamcraft.mod.common.util.EnergyUtils;
+import common.steamcraft.common.block.machines.BlockCoalGenerator;
+import common.steamcraft.common.util.EnergyUtils;
 
 public class TileEntityCoalGenerator extends TileEntityElectricGenerator implements ISidedInventory
 {

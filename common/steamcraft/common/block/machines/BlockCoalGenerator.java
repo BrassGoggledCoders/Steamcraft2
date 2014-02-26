@@ -15,14 +15,16 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Icon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
+
 import common.steamcraft.client.lib.GuiIDs;
 import common.steamcraft.common.SC2;
-import common.steamcraft.common.block.tile.TileEntityGenerator;
+import common.steamcraft.common.block.tile.TileEntityCoalGenerator;
 import common.steamcraft.common.lib.LibInfo;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockGenerator extends BlockContainerMod
+public class BlockCoalGenerator extends BlockContainerMod
 {
 	@SideOnly(Side.CLIENT)
 	private Icon iconTop;
@@ -31,7 +33,7 @@ public class BlockGenerator extends BlockContainerMod
 	@SideOnly(Side.CLIENT)
 	private Icon iconFrontA;
 
-	public BlockGenerator(int par1)
+	public BlockCoalGenerator(int par1)
 	{
 		super(par1, Material.iron);
 	}
@@ -81,10 +83,10 @@ public class BlockGenerator extends BlockContainerMod
 			return true;
 		else
 		{
-			TileEntityGenerator tile_entity = (TileEntityGenerator) par1World.getBlockTileEntity(par2, par3, par4);
+			TileEntityCoalGenerator tile_entity = (TileEntityCoalGenerator) par1World.getBlockTileEntity(par2, par3, par4);
 			if (tile_entity == null || par5EntityPlayer.isSneaking())
 				return false;
-			par5EntityPlayer.openGui(SC2.instance, GuiIDs.GUI_ID_GENERATOR, par1World, par2, par3, par4);
+			par5EntityPlayer.openGui(SC2.instance, GuiIDs.GUI_ID_COAL_GENERATOR, par1World, par2, par3, par4);
 			return true;
 		}
 	}
@@ -151,7 +153,7 @@ public class BlockGenerator extends BlockContainerMod
 	@Override
 	public TileEntity createNewTileEntity(World par1World)
 	{
-		return new TileEntityGenerator();
+		return new TileEntityCoalGenerator();
 	}
 
 	 /**
@@ -189,7 +191,7 @@ public class BlockGenerator extends BlockContainerMod
 	{
 		if (!keepInventory)
 		{
-			TileEntityGenerator var7 = (TileEntityGenerator) par1World.getBlockTileEntity(par2, par3, par4);
+			TileEntityCoalGenerator var7 = (TileEntityCoalGenerator) par1World.getBlockTileEntity(par2, par3, par4);
 
 			if (var7 != null)
 				for (int var8 = 0; var8 < var7.getSizeInventory(); ++var8)

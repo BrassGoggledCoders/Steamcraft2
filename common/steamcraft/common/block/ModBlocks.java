@@ -63,6 +63,8 @@ public class ModBlocks {
 	
 	public static Block etheriumCrystal;
 	
+	public static Block smog;
+	
 	public static void initBlocks() {
 		blockCastIron = new BlockMod(BlockIDs.blockCastIronID, Material.iron).setHardness(7F).setResistance(20F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("castironblock");
 		blockVolucite = new BlockMod(BlockIDs.blockVoluciteID, Material.rock).setHardness(50F).setResistance(6000000F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("voluciteblock");
@@ -93,6 +95,8 @@ public class ModBlocks {
 		castIronLampActive = new BlockCastIronLamp(BlockIDs.castIronLampActiveID, true);
 		
 		etheriumCrystal = new BlockEtheriumCrystal(BlockIDs.etheriumCrystalID);
+		
+		smog = new BlockSmog(BlockIDs.smogID, Material.air).setUnlocalizedName("smog");
 
 		ModMachines.initMachines();
 		ModOres.initOres();

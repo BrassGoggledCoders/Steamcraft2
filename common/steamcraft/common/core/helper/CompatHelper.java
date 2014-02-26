@@ -55,6 +55,4 @@ public class CompatHelper {
 				MetallurgyBaseLoaded = true;
 		}
 	}
-	
-	public static float UE_TO_IC2 = 3.2F; //there is something weird with UE ratios
 }

@@ -35,18 +35,11 @@ public class ModPowerBlocks
 		lightningRod = new BlockLightningRod(BlockIDs.lightningRodID);
 		
 		registerBlocks();
-		addBlockNames();
 	}
 	
 	public static void registerBlocks()
 	{
 		GameRegistry.registerBlock(copperWire, "copperwire");
 		GameRegistry.registerBlock(lightningRod, "lightningrod");
-	}
-	
-	public static void addBlockNames()
-	{
-		LanguageRegistry.addName(copperWire, "Copper Wire");
-		LanguageRegistry.addName(lightningRod, "Lightning Rod");
 	}
 }	

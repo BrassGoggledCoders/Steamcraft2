@@ -1,8 +1,6 @@
-package common.steamcraft.mod.common.block.tile;
+package common.steamcraft.common.block.tile;
 
 import java.util.EnumSet;
-
-import common.steamcraft.mod.common.util.EnergyUtils;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -11,6 +9,8 @@ import buildcraft.api.power.IPowerEmitter;
 import buildcraft.api.power.IPowerReceptor;
 import buildcraft.api.power.PowerHandler.PowerReceiver;
 import buildcraft.api.power.PowerHandler.Type;
+
+import common.steamcraft.common.util.EnergyUtils;
 
 /** 
  * Base class for power generator compatible with different power systems

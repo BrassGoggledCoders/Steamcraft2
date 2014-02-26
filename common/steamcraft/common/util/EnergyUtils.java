@@ -1,4 +1,4 @@
-package common.steamcraft.mod.common.util;
+package common.steamcraft.common.util;
 
 import ic2.api.item.IElectricItem;
 import net.minecraft.item.ItemStack;

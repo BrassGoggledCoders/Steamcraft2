@@ -1,4 +1,4 @@
-package common.steamcraft.mod.common.block.tile.container;
+package common.steamcraft.common.block.tile.container;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -7,24 +7,24 @@ import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 
-import common.steamcraft.mod.common.block.tile.TileEntityCompressor;
-import common.steamcraft.mod.common.block.tile.container.slot.SlotBattery;
-import common.steamcraft.mod.common.item.ModItems;
+import common.steamcraft.common.block.tile.TileEntityCoalGenerator;
+import common.steamcraft.common.block.tile.container.slot.SlotBattery;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ContainerCompressor extends Container
+public class ContaineCoalGenerator extends Container
 {
-	protected TileEntityCompressor Tile_E;
+	protected TileEntityCoalGenerator Tile_E;
 	private int lastBurnTime = 0;
 	private int lastEnergy = 0;
+	private int lastItemBurnTime = 0;
 
-	public ContainerCompressor(InventoryPlayer player, TileEntityCompressor tile)
+	public ContaineCoalGenerator(InventoryPlayer player, TileEntityCoalGenerator tile)
 	{
 		Tile_E = tile;
-		this.addSlotToContainer(new Slot(tile, 0, 80, 11));
-		this.addSlotToContainer(new Slot(tile, 1, 80, 54));
+		this.addSlotToContainer(new Slot(tile, 0, 80, 54));
+		this.addSlotToContainer(new SlotBattery(tile, 1, 80, 18));
 		this.addSlotToContainer(new SlotBattery(tile, 2, 28, 54));
 
 		int var3;
@@ -43,6 +43,7 @@ public class ContainerCompressor extends Container
 		super.addCraftingToCrafters(par1ICrafting);
 		par1ICrafting.sendProgressBarUpdate(this, 0, Tile_E.furnaceBurnTime);
 		par1ICrafting.sendProgressBarUpdate(this, 1, (int)Tile_E.getEnergy());
+		par1ICrafting.sendProgressBarUpdate(this, 2, Tile_E.currentItemBurnTime);
 	}
 
 	@Override
@@ -59,10 +60,14 @@ public class ContainerCompressor extends Container
 			
 			if (lastEnergy != Tile_E.getEnergyScaled(1))
 				var2.sendProgressBarUpdate(this, 1, (int)Tile_E.getEnergy());
+			
+			if (lastItemBurnTime != Tile_E.currentItemBurnTime)
+				var2.sendProgressBarUpdate(this, 2, Tile_E.currentItemBurnTime);
 		}
 
 		lastBurnTime = Tile_E.furnaceBurnTime;
 		lastEnergy = (int)Tile_E.getEnergy();
+		lastItemBurnTime = Tile_E.currentItemBurnTime;
 	}
 
 	@Override
@@ -73,6 +78,8 @@ public class ContainerCompressor extends Container
 			Tile_E.furnaceBurnTime = par2;
 		else if(par1 == 1)
 			Tile_E.setEnergy(par2);
+		else if(par1 == 2)
+			Tile_E.currentItemBurnTime = par2;
 	}
 
 	@Override
@@ -92,26 +99,23 @@ public class ContainerCompressor extends Container
 			ItemStack var5 = var4.getStack();
 			var3 = var5.copy();
 
-			if (par2 != 0 && par2 != 1 && par2 != 2)
+			if (par2 != 0 && par2!=1 && par2!=2)
 			{
 				if(SlotBattery.isValidBatteryItem(var5))
 				{
-					if(!this.mergeItemStack(var5, 2, 3, false))
+					if(!this.mergeItemStack(var5, 1, 3, false))
 						return null;
 				}
-				else if (var5.itemID == ModItems.canisterSteam.itemID)
+				else if (!this.mergeItemStack(var5, 0, 1, false))
 				{
-					if (!this.mergeItemStack(var5, 0, 1, false))
-						 return null;
-				}
-				else if (par2 >= 3 && par2 < 30)
-				{
-					if(!this.mergeItemStack(var5, 1, 2, false))
+					if (par2 >= 3 && par2 < 30)
+					{
 						if (!this.mergeItemStack(var5, 30, 39, false))
 							return null;
+					}
+					else if (par2 >= 30 && par2 < 39 && !this.mergeItemStack(var5, 3, 30, false))
+						return null;
 				}
-				else if (par2 >= 30 && par2 < 39 && !this.mergeItemStack(var5, 3, 30, false))
-					return null;
 			}
 			else if (!this.mergeItemStack(var5, 3, 39, false))
 				return null;
@@ -129,4 +133,5 @@ public class ContainerCompressor extends Container
 
 		return var3;
 	}
+
 }

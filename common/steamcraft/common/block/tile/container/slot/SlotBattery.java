@@ -3,6 +3,7 @@ package common.steamcraft.common.block.tile.container.slot;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
+
 import common.steamcraft.common.block.tile.TileEntityElectricMachine;
 
 public class SlotBattery extends Slot

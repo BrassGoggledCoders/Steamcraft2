@@ -17,10 +17,11 @@
  */
 package common.steamcraft.common.item;
 
-import common.steamcraft.common.core.helper.CompatHelper;
 import ic2.api.item.IElectricItemManager;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
+
+import common.steamcraft.common.core.helper.CompatHelper;
 
 /**
  * @author Someone else

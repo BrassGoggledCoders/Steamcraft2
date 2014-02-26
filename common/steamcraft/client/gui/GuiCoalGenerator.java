@@ -1,4 +1,4 @@
-package common.steamcraft.mod.client.gui;
+package common.steamcraft.client.gui;
 
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -6,9 +6,9 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
-import common.steamcraft.mod.common.block.tile.TileEntityCoalGenerator;
-import common.steamcraft.mod.common.block.tile.container.ContaineCoalGenerator;
-import common.steamcraft.mod.common.lib.LibInfo;
+import common.steamcraft.common.block.tile.TileEntityCoalGenerator;
+import common.steamcraft.common.block.tile.container.ContaineCoalGenerator;
+import common.steamcraft.common.lib.LibInfo;
 
 public class GuiCoalGenerator extends GuiContainer
 {

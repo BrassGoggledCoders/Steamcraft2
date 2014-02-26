@@ -15,7 +15,7 @@
  *
  * File created @ [17 Feb 2014, 23:08:00]
  */
-package common.steamcraft.mod.common.block;
+package common.steamcraft.common.block;
 
 import java.util.ArrayList;
 import java.util.Random;
