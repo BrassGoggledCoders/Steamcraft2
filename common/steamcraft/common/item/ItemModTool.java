@@ -3,7 +3,7 @@ package common.steamcraft.common.item;
 import com.google.common.collect.Multimap;
 
 import common.steamcraft.client.core.helper.ClientHelper;
-import common.steamcraft.common.lib.MaterialMod;
+import common.steamcraft.common.lib2.MaterialMod;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;

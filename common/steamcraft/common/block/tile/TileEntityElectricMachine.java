@@ -17,47 +17,63 @@
  */
 package common.steamcraft.common.block.tile;
 
+import ic2.api.energy.event.EnergyTileLoadEvent;
+import ic2.api.energy.event.EnergyTileUnloadEvent;
+import ic2.api.energy.tile.IEnergySink;
+import ic2.api.info.Info;
 import ic2.api.item.ElectricItem;
 import ic2.api.item.IElectricItem;
 
 import java.util.EnumSet;
 
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeDirection;
-import universalelectricity.api.CompatibilityModule;
-import universalelectricity.api.UniversalClass;
-import universalelectricity.api.energy.EnergyStorageHandler;
-import universalelectricity.api.energy.IEnergyContainer;
-import universalelectricity.api.energy.IEnergyInterface;
-import universalelectricity.api.vector.Vector3;
-import universalelectricity.compatibility.Compatibility;
-import universalelectricity.core.item.ElectricItemHelper;
-import universalelectricity.core.item.IItemElectric;
+import net.minecraftforge.common.MinecraftForge;
+import buildcraft.api.power.IPowerReceptor;
+import buildcraft.api.power.PowerHandler;
+import buildcraft.api.power.PowerHandler.Type;
 import cofh.api.energy.IEnergyContainerItem;
+import cofh.api.energy.IEnergyHandler;
+
 import common.steamcraft.common.core.helper.CompatHelper;
+import common.steamcraft.common.util.EnergyUtils;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 /**
+ * Base class for tile entities compatible with different power systems.
+ * 
  * @author Decebaldecebal
  *
  */
-@UniversalClass
-public abstract class TileEntityElectricMachine extends TileEntity implements IEnergyContainer, IEnergyInterface
+public abstract class TileEntityElectricMachine extends TileEntityMachine implements IPowerReceptor, IEnergyHandler, IEnergySink
 {
-	protected EnergyStorageHandler energy;
-	protected ItemStack[] inventory;
+	protected EnergyUtils energy;
+	protected PowerHandler powerHandler;
+	private boolean addedToEnet = false;
+	
+	protected TileEntityElectricMachine()
+	{		
+		//BC
+		powerHandler = new PowerHandler(this, Type.MACHINE);
+		powerHandler.configure(10, 300, 0.1F, 1000);
+	}
 
-	/**
-	 * Universally discharges an item, and updates the TileEntity's energy level.
-	 * @param slotID - ID of the slot of which to charge
-	 */
-	public static void discharge(int slotID, TileEntityElectricMachine tile)
+	public void discharge(int slotID, TileEntityElectricMachine tile)
 	{
-		if(tile.inventory[slotID].getItem() instanceof IItemElectric)
+		if(tile.inventory[slotID].getItem() instanceof IEnergyContainerItem)
 		{
-			tile.energy.modifyEnergyStored((long) ElectricItemHelper.dischargeItem(tile.inventory[slotID], ((IItemElectric)tile.inventory[slotID].getItem()).getTransfer(tile.inventory[slotID])));
+			ItemStack itemStack = tile.inventory[slotID];
+			IEnergyContainerItem item = (IEnergyContainerItem)tile.inventory[slotID].getItem();
+
+			int itemEnergy = (int)Math.round(Math.min(Math.sqrt(item.getMaxEnergyStored(itemStack)), item.getEnergyStored(itemStack)));
+			int toTransfer = Math.round(Math.min(itemEnergy, tile.energy.getEmptySpace()));
+
+			tile.energy.modifyStoredEnergy(item.extractEnergy(itemStack, toTransfer, false));
 		}
 		else if(CompatHelper.IC2Loaded && tile.inventory[slotID].getItem() instanceof IElectricItem)
 		{
@@ -65,19 +81,9 @@ public abstract class TileEntityElectricMachine extends TileEntity implements IE
 
 			if(item.canProvideEnergy(tile.inventory[slotID]))
 			{
-				long gain = (long) (ElectricItem.manager.discharge(tile.inventory[slotID], (int)(tile.energy.getEmptySpace()*CompatHelper.UE_TO_IC2), 1, false, false)/CompatHelper.UE_TO_IC2);
-				tile.energy.modifyEnergyStored(gain);
+				int gain = EnergyUtils.fromIC2((ElectricItem.manager.discharge(tile.inventory[slotID], EnergyUtils.toIC2(tile.energy.getEmptySpace()), 1, false, false)));
+				tile.energy.modifyStoredEnergy(gain);
 			}
-		}
-		else if(CompatHelper.TELoaded && tile.inventory[slotID].getItem() instanceof IEnergyContainerItem)
-		{
-			ItemStack itemStack = tile.inventory[slotID];
-			IEnergyContainerItem item = (IEnergyContainerItem)tile.inventory[slotID].getItem();
-
-			int itemEnergy = (int)Math.round(Math.min(Math.sqrt(item.getMaxEnergyStored(itemStack)), item.getEnergyStored(itemStack)));
-			int toTransfer = (int)Math.round(Math.min(itemEnergy, (tile.energy.getEmptySpace()*Compatibility.TO_TE_RATIO)));
-
-			tile.energy.modifyEnergyStored((long) (item.extractEnergy(itemStack, toTransfer, false)*Compatibility.TE_RATIO));
 		}
 
         if(tile.inventory[slotID].stackSize <= 0)
@@ -86,81 +92,36 @@ public abstract class TileEntityElectricMachine extends TileEntity implements IE
         }
 	}
 
-	 /**
-	 * Universally charges an item, and updates the TileEntity's energy level.
-	 * @param slotID - ID of the slot of which to discharge
-	 */
-	public static void charge(int slotID, TileEntityElectricMachine tile)
+
+	public void charge(int slotID, TileEntityElectricMachine tile)
 	{
-		if(tile.inventory[slotID].getItem() instanceof IItemElectric)
-		{
-			tile.energy.modifyEnergyStored((long) -ElectricItemHelper.chargeItem(tile.inventory[slotID], (float)(tile.energy.getEnergy())));
-		}
-		else if(CompatHelper.IC2Loaded && tile.inventory[slotID].getItem() instanceof IElectricItem)
-		{
-			long sent = (long) (ElectricItem.manager.charge(tile.inventory[slotID], (int)(tile.energy.getEnergy()*CompatHelper.UE_TO_IC2), 2, false, false)/CompatHelper.UE_TO_IC2);
-			tile.energy.modifyEnergyStored(-sent);
-		}
-		else if(tile.inventory[slotID].getItem() instanceof IEnergyContainerItem)
+		if(tile.inventory[slotID].getItem() instanceof IEnergyContainerItem)
 		{
 			ItemStack itemStack = tile.inventory[slotID];
 			IEnergyContainerItem item = (IEnergyContainerItem)tile.inventory[slotID].getItem();
 
 			int itemEnergy = (int)Math.round(Math.min(Math.sqrt(item.getMaxEnergyStored(itemStack)), item.getMaxEnergyStored(itemStack) - item.getEnergyStored(itemStack)));
-			int toTransfer = (int)Math.round(Math.min(itemEnergy, (tile.energy.getEnergy()*Compatibility.TO_TE_RATIO)));
+			int toTransfer = Math.round(Math.min(itemEnergy, tile.energy.getStoredEnergy()));
 
-			tile.energy.modifyEnergyStored((long) (-item.extractEnergy(itemStack, toTransfer, false)*Compatibility.TE_RATIO));
+			tile.energy.modifyStoredEnergy(-item.receiveEnergy(itemStack, toTransfer, false));
+		}
+		else if(CompatHelper.IC2Loaded && tile.inventory[slotID].getItem() instanceof IElectricItem)
+		{
+			int sent = EnergyUtils.fromIC2(ElectricItem.manager.charge(tile.inventory[slotID], EnergyUtils.toIC2(tile.energy.getStoredEnergy()), 1, false, false));
+			tile.energy.modifyStoredEnergy(-sent);
 		}
 	}
-
-	 /**
-	 * Whether or not a defined ItemStack can be discharged for energy in some way.
-	 * @param itemstack - ItemStack to check
-	 * @return if the ItemStack can be discharged
-	 */
-	public static boolean canBeDischarged(ItemStack itemstack)
-	{
-		return (itemstack.getItem() instanceof IElectricItem && ((IElectricItem)itemstack.getItem()).canProvideEnergy(itemstack)) || 
-				(itemstack.getItem() instanceof IItemElectric && ((IItemElectric)itemstack.getItem()).discharge(itemstack, 1, false) != 0) || 
-				(itemstack.getItem() instanceof IEnergyContainerItem && ((IEnergyContainerItem)itemstack.getItem()).extractEnergy(itemstack, 1, true) != 0) ||
-				itemstack.itemID == Item.redstone.itemID;
-	}
-
-	/**
-	 * Whether or not a defined ItemStack can be charged with energy in some way.
-	 * @param itemstack - ItemStack to check
-	 * @return if the ItemStack can be discharged
-	 */
-	public static boolean canBeCharged(ItemStack itemstack)
-	{
-		return itemstack.getItem() instanceof IElectricItem || 
-				(itemstack.getItem() instanceof IItemElectric && ((IItemElectric)itemstack.getItem()).recharge(itemstack, 1, false) != 0) ||
-				(itemstack.getItem() instanceof IEnergyContainerItem && ((IEnergyContainerItem)itemstack.getItem()).receiveEnergy(itemstack, 1, true) != 0);
-	}
 	
-	/**
-	 * The electrical input direction.
-	 * 
-	 * @return The direction that electricity is entered into the tile. Return null for no input. By
-	 * default you can accept power from all sides.
-	 */
 	public EnumSet<ForgeDirection> getInputDirections()
 	{
 		return EnumSet.allOf(ForgeDirection.class);
 	}
 
-	/**
-	 * The electrical output direction.
-	 * 
-	 * @return The direction that electricity is output from the tile. Return null for no output. By
-	 * default it will return an empty EnumSet.
-	 */
 	public EnumSet<ForgeDirection> getOutputDirections()
 	{
 		return EnumSet.noneOf(ForgeDirection.class);
 	}
 
-	@Override
 	public boolean canConnect(ForgeDirection direction)
 	{
 		if (direction == null || direction.equals(ForgeDirection.UNKNOWN))
@@ -184,94 +145,184 @@ public abstract class TileEntityElectricMachine extends TileEntity implements IE
 		super.writeToNBT(nbt);
 		this.energy.writeToNBT(nbt);
 	}
-
-
-	/**
-	 * * @return Get the amount of energy currently stored in the block.
-	 */
 	
 	@Override
-	public long getEnergy(ForgeDirection from)
+	public void updateEntity()
 	{
-		return this.energy.getEnergy();
+		super.updateEntity();
+		
+		//IC2
+		if (!addedToEnet) 
+			onLoaded();
 	}
-
-
-
-	/**
-	 * @return Get the max amount of energy that can be stored in the block.
-	 */
 	
-	@Override
-	public long getEnergyCapacity(ForgeDirection from)
+	//Gets the currently stored energy
+	public int getEnergy()
 	{
-		return this.energy.getEnergyCapacity();
+		return this.energy.getStoredEnergy();
 	}
-
+	
+	public void setEnergy(int energy)
+	{
+		this.energy.setStoredEnergy(energy);
+	}
+	
+	//Gets the requested energy per tick
+	private int getEnergyRequested()
+	{
+		return Math.min(this.energy.getEmptySpace(), this.energy.getTransferRate());
+	}
+	
+	public boolean hasEnergy()
+	{
+		return this.getEnergy() > 0;
+	}
+	
+	@SideOnly(Side.CLIENT)
+	public int getEnergyScaled(int par1)
+	{
+		return (int) (this.getEnergy()*1000 / this.energy.getMaxEnergy() / par1);
+	}
+	
 	/**
-	 * Adds energy to a block. Returns the quantity of energy that was accepted. This should always
-	 * return 0 if the block cannot be externally charged.
 	 * 
-	 * @param from Orientation the energy is sent in from.
-	 * @param receive Maximum amount of energy (joules) to be sent into the block.
-	 * @param doReceive If false, the charge will only be simulated.
-	 * @return Amount of energy that was accepted by the block.
-	 */
-	
-	@Override
-	public long onReceiveEnergy(ForgeDirection from, long receive, boolean doReceive)
-	{
-		return this.energy.receiveEnergy(receive, doReceive);
-	}
-
-	/**
-	 * Removes energy from a block. Returns the quantity of energy that was extracted. This should
-	 * always return 0 if the block cannot be externally discharged.
+	 * BuildCraft compatibility
 	 * 
-	 * @param from Orientation the energy is requested from. This direction MAY be passed as
-	 * "Unknown" if it is wrapped from another energy system that has no clear way to find
-	 * direction. (e.g BuildCraft 4)
-	 * @param energy Maximum amount of energy to be sent into the block.
-	 * @param doExtract If false, the charge will only be simulated.
-	 * @return Amount of energy that was given out by the block.
 	 */
 	
-	@Override
-	public long onExtractEnergy(ForgeDirection from, long extract, boolean doExtract)
+	public PowerHandler.PowerReceiver getPowerReceiver(ForgeDirection side)
 	{
-		//return this.energy.extractEnergy(extract, doExtract);
-		return 0;
-	}
-
-	/**
-	 * Sets the amount of energy this unit stored.
-	 * 
-	 * This function is NOT recommended for calling.
-	 */
-	
-	@Override
-	public void setEnergy(ForgeDirection from, long energy)
-	{
-		this.energy.setEnergy(energy);
-	}
-	
-	protected long produce(long outputEnergy)
-	{
-		long usedEnergy = 0;
-
-		for (ForgeDirection direction : this.getOutputDirections())
+		if(this.getInputDirections().contains(side)) //If it can receive energy
 		{
-			if (outputEnergy > 0)
+			if(getEnergyRequested() > 0)
 			{
-				TileEntity tileEntity = new Vector3(this).modifyPositionFromSide(direction).getTileEntity(this.worldObj);
-
-				if (tileEntity != null)
-				{
-					usedEnergy += CompatibilityModule.receiveEnergy(tileEntity, direction.getOpposite(), outputEnergy, true);
-				}
+				this.powerHandler.configure(10, EnergyUtils.toBC(getEnergyRequested()), 0.1F, 1000);
+				return this.powerHandler.getPowerReceiver(); 
+			}
+		    this.powerHandler.configure(0.0F, 0.0F, 1.0F, 1000.0F);
+		    return null;
+		}
+	    this.powerHandler.configure(0.0F, 0.0F, 0F, 0F);
+		return null;
+	}
+	
+	@Override
+	public void doWork(PowerHandler handler)
+	{
+		if(handler != null)
+		{
+			if(handler.useEnergy(0, EnergyUtils.toBC(getEnergyRequested()), false) > 0)
+			{	
+				int energyToReceive = EnergyUtils.fromBC((int)(handler.useEnergy(0, EnergyUtils.toBC(getEnergyRequested()), true)));
+				this.energy.receiveEnergy(energyToReceive, true);
 			}
 		}
+	}
+	
+	
+	@Override
+	public World getWorld()
+	{
+		return this.worldObj;
+	}
 
-		return usedEnergy;
+	/**
+	 * 
+	 * TE Compatibility
+	 * 
+	 */
+	
+	@Override
+	public int receiveEnergy(ForgeDirection from, int maxReceive, boolean simulate)
+	{
+		if(this.getInputDirections().contains(from))
+				return this.energy.receiveEnergy(maxReceive, !simulate);
+		return 0;
+	}
+	
+	//Should never use this function to extract energy
+	@Override
+	public int extractEnergy(ForgeDirection from, int maxExtract, boolean simulate)
+	{
+		return 0;
+	}
+	
+	@Override
+	public boolean canInterface(ForgeDirection from) 
+	{
+		return true;
+	}
+	
+	@Override
+	public int getEnergyStored(ForgeDirection from)
+	{
+		return this.energy.getStoredEnergy();
+	}
+	
+	@Override
+	public int getMaxEnergyStored(ForgeDirection from)
+	{
+		return this.energy.getMaxEnergy();
+	}
+	
+	/**
+	 * 
+	 * IC2 Compatibility
+	 * 
+	 */
+	
+	@Override
+	public double demandedEnergyUnits()
+	{
+		return EnergyUtils.toIC2(this.energy.getEmptySpace());
+	}
+	
+	@Override
+	public double injectEnergyUnits(ForgeDirection from, double amount)
+	{
+		if(this.getInputDirections().contains(from) )
+			return amount - EnergyUtils.toIC2(this.energy.receiveEnergy(EnergyUtils.fromIC2((int)amount), true));
+		return amount;
+	}
+	
+	@Override
+	public int getMaxSafeInput()
+	{
+		return EnergyUtils.toIC2(this.energy.getTransferRate());
+	}
+	
+	@Override
+	public boolean acceptsEnergyFrom(TileEntity emitter, ForgeDirection from)
+	{
+		return this.getInputDirections().contains(from);
+	}
+	
+	public void onLoaded() 
+	{
+		if (!addedToEnet && !worldObj.isRemote && Info.isIc2Available()) 
+		{
+			MinecraftForge.EVENT_BUS.post(new EnergyTileLoadEvent(this));
+
+			addedToEnet = true;
+		}
+	}
+	
+	@Override
+	public void invalidate() 
+	{
+		super.invalidate();
+
+		onChunkUnload();
+	}
+	
+	@Override
+	public void onChunkUnload() 
+	{
+		if (addedToEnet && Info.isIc2Available()) 
+		{
+			MinecraftForge.EVENT_BUS.post(new EnergyTileUnloadEvent(this));
+
+			addedToEnet = false;
+		}
 	}
 }

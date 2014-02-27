@@ -15,15 +15,19 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Icon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import common.steamcraft.client.lib.GuiIDs;
+
+import common.steamcraft.client.lib2.GuiIDs;
 import common.steamcraft.common.SC2;
 import common.steamcraft.common.block.tile.TileEntityCompressor;
-import common.steamcraft.common.lib.LibInfo;
+import common.steamcraft.common.lib2.LibInfo;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockCompressor extends BlockContainerMod
 {
+	@SideOnly(Side.CLIENT)
+	private Icon iconBottom;
 	@SideOnly(Side.CLIENT)
 	private Icon iconTop;
 	@SideOnly(Side.CLIENT)
@@ -53,7 +57,7 @@ public class BlockCompressor extends BlockContainerMod
 		switch (side)
 		{
 			case 0:
-				return iconTop; // bottom
+				return iconBottom; // bottom
 
 			case 1:
 				return iconTop; // top
@@ -67,10 +71,11 @@ public class BlockCompressor extends BlockContainerMod
 	@Override
 	public void registerIcons(IconRegister par1IconRegister)
 	{
-		blockIcon = par1IconRegister.registerIcon(LibInfo.SC2_PREFIX + "compressorside");
-		iconFront = par1IconRegister.registerIcon(LibInfo.SC2_PREFIX + "compressorfrontinactive");
-		iconFrontA = par1IconRegister.registerIcon(LibInfo.SC2_PREFIX + "compressorfrontinactive");
-		iconTop = par1IconRegister.registerIcon(LibInfo.SC2_PREFIX + "compressortop");
+		blockIcon = par1IconRegister.registerIcon(LibInfo.SC2_PREFIX + "compressor_sides");
+		iconFront = par1IconRegister.registerIcon(LibInfo.SC2_PREFIX + "compressor_front");
+		iconFrontA = par1IconRegister.registerIcon(LibInfo.SC2_PREFIX + "compressor_front");
+		iconTop = par1IconRegister.registerIcon(LibInfo.SC2_PREFIX + "compressor_top");
+		iconBottom = par1IconRegister.registerIcon(LibInfo.SC2_PREFIX + "compressor_bottom");
 	}
 
 	@Override

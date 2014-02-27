@@ -1,9 +1,9 @@
 package common.steamcraft.common.item;
 
-import common.steamcraft.common.lib.ItemIDs;
-import common.steamcraft.common.lib.MaterialMod;
-import cpw.mods.fml.common.registry.LanguageRegistry;
 import net.minecraft.item.Item;
+
+import common.steamcraft.common.lib2.ItemIDs;
+import common.steamcraft.common.lib2.MaterialMod;
 
 public class ModTools {
 	// Drills
@@ -47,16 +47,15 @@ public class ModTools {
 	public static void initTools() { 
 		drillCore = new ItemCoreDrill(ItemIDs.coreDrillID).setUnlocalizedName("coredrill");
 		drillBase = new ItemMod(ItemIDs.drillBaseID).setUnlocalizedName("coredrillbase");
-		// int id, double maxEnergy, float voltage, int toolTier
-		// TODO: FIX THESE GOD DAMN NUMBERS!!!
-		drillWood = new ItemElectricDrill(ItemIDs.drillWoodID, 3333, 120, 1).setUnlocalizedName("wooddrill");
-		drillStone = new ItemElectricDrill(ItemIDs.drillStoneID, 5000, 120, 1).setUnlocalizedName("stonedrill");
-		drillIron = new ItemElectricDrill(ItemIDs.drillIronID, 6666, 120, 2).setUnlocalizedName("irondrill");
-		drillDiamond = new ItemElectricDrill(ItemIDs.drillDiamondID, 8333, 120, 3).setUnlocalizedName("diamonddrill");
-		drillGold = new ItemElectricDrill(ItemIDs.drillGoldID, 8000, 120, 1).setUnlocalizedName("golddrill");
+		// int id, int maxEnergy, int toolTier, int energyTier(mostly for IC2)
+		drillWood = new ItemElectricDrill(ItemIDs.drillWoodID, 20000, 0, 1).setUnlocalizedName("wooddrill");
+		drillStone = new ItemElectricDrill(ItemIDs.drillStoneID, 40000, 1, 1).setUnlocalizedName("stonedrill");
+		drillIron = new ItemElectricDrill(ItemIDs.drillIronID, 80000, 2, 1).setUnlocalizedName("irondrill");
+		drillDiamond = new ItemElectricDrill(ItemIDs.drillDiamondID, 200000, 3, 2).setUnlocalizedName("diamonddrill");
+		drillGold = new ItemElectricDrill(ItemIDs.drillGoldID, 100000, 3, 1).setUnlocalizedName("golddrill");
 		drillSteam = new ItemSteamDrill(ItemIDs.drillSteamID).setUnlocalizedName("steamdrill");
-		drillEtherium = new ItemElectricDrill(ItemIDs.drillEtheriumID, 10000, 120, 3).setUnlocalizedName("etheriumdrill");
-		drillObsidian = new ItemElectricDrill(ItemIDs.drillObsidianID, 9000, 120, 2).setUnlocalizedName("obsidiandrill");
+		drillEtherium = new ItemElectricDrill(ItemIDs.drillEtheriumID, 300000, 4, 2).setUnlocalizedName("etheriumdrill");
+		drillObsidian = new ItemElectricDrill(ItemIDs.drillObsidianID, 200000, 2, 2).setUnlocalizedName("obsidiandrill");
 		
 		pickaxeSteam = new ItemModPickaxe(ItemIDs.pickaxeSteamID, MaterialMod.STEAM_TOOL).setUnlocalizedName("steampick");
 		swordSteam = new ItemModSword(ItemIDs.swordSteamID, MaterialMod.STEAM_TOOL).setUnlocalizedName("steamsword");
@@ -78,38 +77,5 @@ public class ModTools {
 		
 		chisel = new ItemChisel(ItemIDs.chiselID, 64).setUnlocalizedName("chisel"); // TODO: Change from crafting to right-click
 		spanner = new ItemChisel(ItemIDs.spannerID, 3).setUnlocalizedName("spanner");	
-		
-		initToolNames();
-	}
-
-	public static void initToolNames() {
-		LanguageRegistry.addName(drillCore, "Drill Core");
-		LanguageRegistry.addName(drillBase, "Drill Base");
-		LanguageRegistry.addName(drillWood, "Wooden Drill");
-		LanguageRegistry.addName(drillStone, "Stone Drill");
-		LanguageRegistry.addName(drillIron, "Iron Drill");
-		LanguageRegistry.addName(drillDiamond, "Diamond Drill");
-		LanguageRegistry.addName(drillGold, "Golden Drill");
-		LanguageRegistry.addName(drillSteam, "Steam-Powered Drill");
-		LanguageRegistry.addName(drillEtherium, "Etherium Drill");
-		LanguageRegistry.addName(drillObsidian, "Obsidian Drill");
-		
-		LanguageRegistry.addName(pickaxeSteam, "Steam-Powered Pickaxe");
-		LanguageRegistry.addName(swordSteam, "Stean-Powered Sword");
-		LanguageRegistry.addName(axeSteam, "Steam-Powered Axe");
-		LanguageRegistry.addName(hoeSteam, "Steam-Powered Hoe");
-		
-		LanguageRegistry.addName(pickaxeEtherium, "Etherium Pickaxe");
-		LanguageRegistry.addName(swordEtherium, "Etherium Sword");
-		LanguageRegistry.addName(axeEtherium, "Etherium Axe");
-		LanguageRegistry.addName(hoeEtherium, "Etherium Hoe");
-		
-		LanguageRegistry.addName(pickaxeObsidian, "Obsidian Pickaxe");
-		LanguageRegistry.addName(swordObsidian, "Obsidian Sword");
-		LanguageRegistry.addName(axeObsidian, "Obsidian Axe");
-		LanguageRegistry.addName(hoeObsidian, "Obsidian Hoe");
-		
-		LanguageRegistry.addName(chisel, "Chisel");
-		LanguageRegistry.addName(spanner, "Spanner");
 	}
 }

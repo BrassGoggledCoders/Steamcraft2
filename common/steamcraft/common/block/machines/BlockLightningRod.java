@@ -2,7 +2,7 @@ package common.steamcraft.common.block.machines;
 
 import common.steamcraft.common.block.ModBlocks;
 import common.steamcraft.common.block.tile.TileEntityLightningRod;
-import common.steamcraft.common.lib.CreativeTabsMod;
+import common.steamcraft.common.lib2.CreativeTabsMod;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;

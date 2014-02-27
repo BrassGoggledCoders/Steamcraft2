@@ -42,8 +42,8 @@ import common.steamcraft.common.core.handler.WorldGenerator;
 import common.steamcraft.common.core.helper.CompatHelper;
 import common.steamcraft.common.entity.EntityBullet;
 import common.steamcraft.common.item.ModItems;
-import common.steamcraft.common.lib.EntityIDs;
-import common.steamcraft.common.lib.LibInfo;
+import common.steamcraft.common.lib2.EntityIDs;
+import common.steamcraft.common.lib2.LibInfo;
 import common.steamcraft.common.network.PlayerTracker;
 
 import cpw.mods.fml.client.registry.KeyBindingRegistry;

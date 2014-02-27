@@ -17,192 +17,176 @@
  */
 package common.steamcraft.common.block.tile;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.util.ArrayList;
-
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.ISidedInventory;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.world.World;
-import net.minecraftforge.common.ForgeDirection;
-import common.steamcraft.api.IMachine;
-import common.steamcraft.common.block.machines.MachineConstants;
-import common.steamcraft.common.network.NetworkTile;
+import net.minecraft.nbt.NBTTagList;
+import net.minecraft.tileentity.TileEntity;
 
 /**
- * @author MrArcane111
+ * Basic machine class that includes a lot of functions widely used
+ * 
+ * @author Decebaldecebal
  *
  */
-public class TileEntityMachine extends NetworkTile implements IMachine {
-	protected int machineType;
-	protected int facingDirection;
-	private boolean markedForDeletion;
-
-	public int getMachineType() {
-		return this.machineType;
-	}
-
-	public void setMachineType(int machineType) {
-		this.machineType = machineType;
-	}
-
-	public boolean isMarkedForDeletion() {
-		return this.markedForDeletion;
-	}
-
-	public void setMarkedForDeletion(boolean markedForDeletion) {
-		this.markedForDeletion = markedForDeletion;
-	}
-
+public class TileEntityMachine extends TileEntity implements ISidedInventory
+{
+	protected ItemStack[] inventory;
+	
 	@Override
-	public void readFromNBT(NBTTagCompound nbtTagCompound) {
-		super.readFromNBT(nbtTagCompound);
-		int machineType = nbtTagCompound.getInteger("machineType");
-
-		if (machineType != 0) {
-			if (getMachineType() != machineType) {
-				TileEntityMachine newMachine;
-				//TileEntityMachine newMachine;
-
-				if (MachineConstants.MachineTypes.values()[machineType].getInstanceClass().isInstance(this)) {
-					setMachineType(machineType);
-					newMachine = this;
-				} else {
-					newMachine = initMachine(machineType);
-					newMachine.readFromNBT(nbtTagCompound);
-				}
-
-				newMachine.setFacingDirection(nbtTagCompound.getByte("direction"));
-			}
-		} else {
-			setMarkedForDeletion(true);
-		}
-	}
-
-	@Override
-	public void writeToNBT(NBTTagCompound nbtTagCompound) {
-		super.writeToNBT(nbtTagCompound);
-		nbtTagCompound.setInteger("machineType", this.machineType);
-		nbtTagCompound.setByte("direction", (byte)this.facingDirection);
-	}
-
-	@Override
-	public void writePacket(DataOutputStream dataStream) throws IOException {
-		dataStream.writeInt(this.machineType);
-		dataStream.writeByte(this.facingDirection);
-	}
-
-	@Override
-	public void readPacket(DataInputStream dataStream) throws IOException {
-		int readType = dataStream.readInt();
-		TileEntityMachine machine;
-		//TileEntityMachine machine;
-		
-		if (readType != getMachineType()) {
-			machine = initMachine(readType);
-		} else
-		{
-			machine = this;
-		}
-
-		machine.setFacingDirection(dataStream.readByte());
-		machine.readPartialPacket(dataStream);
-	}
-
-	public void readPartialPacket(DataInputStream dataStream) throws IOException {}
-
-	public TileEntityMachine initMachine(int machineType)
+	public void readFromNBT(NBTTagCompound par1NBTTagCompound)
 	{
-		setMachineType(machineType);
-		TileEntityMachine machine = null;
-		
-		if (machineType != 0) {
-			try {
-				machine = (TileEntityMachine)MachineConstants.MachineTypes.values()[machineType].instanceClass.getConstructors()[0].newInstance(new Object[0]);
-				this.worldObj.setBlockTileEntity(this.xCoord, this.yCoord, this.zCoord, machine);
-				machine.setMachineType(machineType);
-			} catch (Exception e) {
-				e.printStackTrace();
-				return null;
+		super.readFromNBT(par1NBTTagCompound);
+		NBTTagList nbttaglist = par1NBTTagCompound.getTagList("Items");
+		inventory = new ItemStack[this.getSizeInventory()];
+
+		for (int i = 0; i < nbttaglist.tagCount(); ++i)
+		{
+			NBTTagCompound nbttagcompound1 = (NBTTagCompound) nbttaglist.tagAt(i);
+			byte b0 = nbttagcompound1.getByte("Slot");
+
+			if (b0 >= 0 && b0 < inventory.length)
+				inventory[b0] = ItemStack.loadItemStackFromNBT(nbttagcompound1);
+		}
+	}
+
+	@Override
+	public void writeToNBT(NBTTagCompound par1NBTTagCompound)
+	{
+		super.writeToNBT(par1NBTTagCompound);
+
+		NBTTagList nbttaglist = new NBTTagList();
+
+		for (int i = 0; i < inventory.length; ++i)
+			if (inventory[i] != null)
+			{
+				NBTTagCompound nbttagcompound1 = new NBTTagCompound();
+				nbttagcompound1.setByte("Slot", (byte) i);
+				inventory[i].writeToNBT(nbttagcompound1);
+				nbttaglist.appendTag(nbttagcompound1);
+			}
+
+		par1NBTTagCompound.setTag("Items", nbttaglist);
+	}
+	
+	@Override
+	public int getSizeInventory()
+	{
+		return inventory.length;
+	}
+
+	@Override
+	public ItemStack getStackInSlot(int par1)
+	{
+		return inventory[par1];
+	}
+
+	@Override
+	public ItemStack decrStackSize(int par1, int par2)
+	{
+		if (inventory[par1] != null)
+		{
+			ItemStack var3;
+
+			if (inventory[par1].stackSize <= par2)
+			{
+				var3 = inventory[par1];
+				inventory[par1] = null;
+				return var3;
+			}
+			else
+			{
+				var3 = inventory[par1].splitStack(par2);
+
+				if (inventory[par1].stackSize == 0)
+					inventory[par1] = null;
+
+				return var3;
 			}
 		}
-
-		return machine;
+		else
+			return null;
 	}
 
-	public void manageDeletion() {
-		if (this.markedForDeletion) {
-			this.worldObj.removeBlockTileEntity(this.xCoord, this.yCoord, this.zCoord);
-			return;
+	@Override
+	public ItemStack getStackInSlotOnClosing(int par1)
+	{
+		if (inventory[par1] != null)
+		{
+			ItemStack var2 = inventory[par1];
+			inventory[par1] = null;
+			return var2;
 		}
-	}
-
-	public double[] getBounds() {
-		return new double[] { 0.0D, 0.0D, 0.0D, 1.0D, 1.0D, 1.0D };
-	}
-
-	public boolean isNormalCube() {
-		return true;
+		else
+			return null;
 	}
 
 	@Override
-	public void updateEntity() {
-		manageDeletion();
-		super.updateEntity();
+	public void setInventorySlotContents(int par1, ItemStack par2ItemStack)
+	{
+		inventory[par1] = par2ItemStack;
+
+		if (par2ItemStack != null && par2ItemStack.stackSize > this.getInventoryStackLimit())
+			par2ItemStack.stackSize = this.getInventoryStackLimit();
 	}
 
 	@Override
-	public int getFacingDirection() {
-		return this.facingDirection;
+	public int getInventoryStackLimit()
+	{
+		return 64;
+	}
+	
+	@Override
+	public boolean isInvNameLocalized()
+	{
+		return false;
+	}
+	
+	@Override
+	public boolean isUseableByPlayer(EntityPlayer par1EntityPlayer)
+	{
+		return worldObj.getBlockTileEntity(xCoord, yCoord, zCoord) != this ? false : par1EntityPlayer.getDistanceSq(xCoord + 0.5D, yCoord + 0.5D,
+				zCoord + 0.5D) <= 64.0D;
+	}
+	
+	@Override
+	public void openChest()
+	{
 	}
 
 	@Override
-	public void setFacingDirection(int facingDirection) {
-		this.facingDirection = facingDirection;
+	public void closeChest()
+	{
 	}
 
 	@Override
-	public boolean isSolidOnSide(ForgeDirection side) {
-		return true;
+	public String getInvName() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
-	public void onBreak() {}
-
-	@Override
-	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLiving entityLiving) {}
-
-	@Override
-	public boolean onActivated(EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
+	public boolean isItemValidForSlot(int i, ItemStack itemstack) 
+	{
 		return false;
 	}
 
 	@Override
-	public ArrayList getBlockDropped() {
-		ArrayList result = new ArrayList();
-		//result.add(new ItemStack(ModMachines.blockMachine, 1, getMachineType()));
-
-		return result;
+	public int[] getAccessibleSlotsFromSide(int var1)
+	{
+		return null;
 	}
 
 	@Override
-	public float getHardness() {
-		return 1.0F;
-	}
-
-	@Override
-	public boolean isActive() {
+	public boolean canInsertItem(int i, ItemStack itemstack, int j) 
+	{
 		return false;
 	}
 
 	@Override
-	public void a(NBTTagCompound paramNBTTagCompound) {}
-
-	@Override
-	public void b(NBTTagCompound paramNBTTagCompound) {}
-
-	@Override
-	public void readPacketFromClient(DataInputStream dataStream) throws IOException {}
+	public boolean canExtractItem(int i, ItemStack itemstack, int j)
+	{
+		return false;
+	}
 }

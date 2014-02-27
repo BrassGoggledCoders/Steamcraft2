@@ -1,9 +1,9 @@
 package common.steamcraft.common.block.machines;
 
-import common.steamcraft.client.lib.GuiIDs;
+import common.steamcraft.client.lib2.GuiIDs;
 import common.steamcraft.common.SC2;
 import common.steamcraft.common.block.tile.TileEntityChemicalFurnace;
-import common.steamcraft.common.lib.LibInfo;
+import common.steamcraft.common.lib2.LibInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;

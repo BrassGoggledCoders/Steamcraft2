@@ -20,7 +20,7 @@ package common.steamcraft.common.block.machines;
 import java.util.Random;
 
 import common.steamcraft.common.block.BlockMod;
-import common.steamcraft.common.lib.LibInfo;
+import common.steamcraft.common.lib2.LibInfo;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.tileentity.TileEntityChest;

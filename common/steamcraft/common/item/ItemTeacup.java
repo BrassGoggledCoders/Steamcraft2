@@ -1,6 +1,6 @@
 package common.steamcraft.common.item;
 
-import common.steamcraft.common.lib.CreativeTabsMod;
+import common.steamcraft.common.lib2.CreativeTabsMod;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;

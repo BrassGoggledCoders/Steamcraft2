@@ -1,6 +1,6 @@
 package common.steamcraft.client.core.handler;
 
-import common.steamcraft.common.lib.LibInfo;
+import common.steamcraft.common.lib2.LibInfo;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.renderer.Tessellator;

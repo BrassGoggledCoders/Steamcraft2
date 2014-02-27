@@ -22,134 +22,161 @@ import ic2.api.item.ISpecialElectricItem;
 
 import java.util.List;
 
-import common.steamcraft.common.core.helper.CompatHelper;
 import mekanism.api.EnumColor;
-import mekanism.api.energy.IEnergizedItem;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
-import universalelectricity.compatibility.Compatibility;
-import universalelectricity.core.electricity.ElectricityDisplay;
-import universalelectricity.core.item.IItemElectric;
 import cofh.api.energy.IEnergyContainerItem;
 
+import common.steamcraft.common.util.EnergyUtils;
+
 /**
+ * Base class for electric items
  * 
- * @author Someone else
+ * @author Decebaldecebal
  *
  */
-public class ItemElectricMod extends ItemMod implements IEnergizedItem, IItemElectric, ISpecialElectricItem, IEnergyContainerItem {
-	public int MAX_ELECTRICITY;
-	public int VOLTAGE;
-	public static double ENERGY_PER_REDSTONE = 10000.0D;	
-	int toolTier;
-
-	public ItemElectricMod(int id, int maxEnergy, int voltage, int tier) {
-		super(id);
-		this.MAX_ELECTRICITY = maxEnergy;
-		this.VOLTAGE = voltage;
-		this.toolTier = tier;
-		this.setMaxStackSize(1);
-		this.setMaxDamage(100);
-		this.setNoRepair();
-	}
-
-	@Override
-	public void addInformation(ItemStack stack, EntityPlayer entityplayer, List list, boolean flag) {
-		list.add(EnumColor.AQUA + "Energy: " + EnumColor.GREY + getEnergyDisplay(getEnergy(stack)));
-		list.add(EnumColor.AQUA + "Voltage: " + EnumColor.GREY + getVoltage(stack) + "V");
-	}
-
-	@Override
-	public void onCreated(ItemStack itemstack, World world, EntityPlayer entityplayer) {
-		itemstack = getUnchargedItem();
-	}
-
-	public ItemStack getUnchargedItem() {
-		ItemStack charged = new ItemStack(this);
-		charged.setItemDamage(100);
-		return charged;
-	}
-
-	@Override
-	public void getSubItems(int i, CreativeTabs tabs, List list) {
-		ItemStack discharged = new ItemStack(this);
-		discharged.setItemDamage(100);
-		list.add(discharged);
-		ItemStack charged = new ItemStack(this);
-		this.setEnergy(charged, this.getMaxEnergy(charged));
-		list.add(charged);
-	}
+public class ItemElectricMod extends ItemMod implements ISpecialElectricItem, IElectricItemManager, IEnergyContainerItem
+{
+	protected int maxEnergy;
+	protected byte tier;
 	
-	//UE
-	@Override
-	public float getVoltage(ItemStack itemStack) {
-		return this.VOLTAGE;
-	}
-	
-	@Override
-	public float recharge(ItemStack itemStack, float energy, boolean doRecharge)
+	public ItemElectricMod(int id, int maxEnergy, byte tier) 
 	{
-		if (canReceive(itemStack)) {
-			double energyNeeded = getMaxEnergy(itemStack) - getEnergy(itemStack);
-			double toReceive = Math.min(energy, energyNeeded);
-
-			if (doRecharge) {
-				setEnergy(itemStack, getEnergy(itemStack) + toReceive);
-			}
-
-			return (float)(toReceive);
-		}
-
-		return 0.0F;
+		super(id);
+		this.tier = tier;
+		this.maxEnergy = maxEnergy;
+		this.setMaxStackSize(1);
+		this.setMaxDamage(20);
+		this.setHasSubtypes(false);
 	}
 
 	@Override
-	public float discharge(ItemStack itemStack, float energy, boolean doDischarge) {
-		if (canSend(itemStack)) {
-			double energyRemaining = getEnergy(itemStack);
-			double toSend = Math.min(energy, energyRemaining);
-
-			if (doDischarge) {
-				setEnergy(itemStack, getEnergy(itemStack) - toSend);
-			}
-
-			return (float)(toSend);
-		}
-
-		return 0.0F;
+    public void getSubItems(int par1, CreativeTabs par2CreativeTabs, List par3List)
+    {
+        par3List.add(getChargedItem());
+		par3List.add(getUnchargedItem());
+    }
+	
+	@Override
+	public void addInformation(ItemStack stack, EntityPlayer entityplayer, List list, boolean flag) 
+	{
+		list.add(EnumColor.GREY + "Power Tier: " + this.getTier(stack));
+		list.add("");
+		list.add(EnumColor.AQUA + "Energy: " + EnumColor.GREY + this.getEnergy(stack) + " / " + this.maxEnergy);
 	}
 
-	@Override
-	public float getElectricityStored(ItemStack theItem) {
-		return (float)(getEnergy(theItem));
+	public int getEnergy(ItemStack stack)
+	{
+		return stack.getTagCompound().getInteger("energy");
 	}
-
-	@Override
-	public float getMaxElectricityStored(ItemStack theItem) {
-		return (float)(getMaxEnergy(theItem));
+	
+	public void setEnergy(ItemStack stack, int energy)
+	{
+		NBTTagCompound tag = stack.getTagCompound();
+		
+		int realEn = energy;
+		
+		if(realEn < 0)
+			realEn = 0;
+		
+		if(realEn > this.maxEnergy)
+			realEn = this.maxEnergy;
+		
+		stack.setItemDamage(20 - (realEn*20 / this.maxEnergy));
+		
+		tag.setInteger("energy", realEn);
+		
+		stack.setTagCompound(tag);
 	}
-
-	@Override
-	public void setElectricity(ItemStack itemStack, float joules) {
-		setEnergy(itemStack, joules);
+	
+    public void onCreated(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
+    {
+    	par1ItemStack = this.getUnchargedItem();
+    }
+	
+	public ItemStack getUnchargedItem() 
+	{
+		ItemStack charged = new ItemStack(this.itemID, 1, 20);
+		
+		NBTTagCompound tag = new NBTTagCompound();
+		tag.setInteger("energy", 0);
+		tag.setByte("energyTier", this.tier);
+		
+		charged.setTagCompound(tag);
+		return charged.copy();
 	}
-
-	@Override
-	public float getTransfer(ItemStack itemStack) {
-		return (float)(getMaxTransfer(itemStack));
+	
+	public ItemStack getChargedItem() 
+	{
+		ItemStack uncharged = new ItemStack(this.itemID, 1, 0);
+		
+		NBTTagCompound tag = new NBTTagCompound();
+		tag.setInteger("energy", this.maxEnergy);
+		tag.setInteger("energyTier", this.tier);
+		
+		uncharged.setTagCompound(tag);
+		
+		return uncharged.copy();
 	}
-
-	//IC2
+	
+	/**
+	 * 
+	 * TE Compatibility
+	 * 
+	 */
+	
 	@Override
-	public boolean canProvideEnergy(ItemStack itemStack) {
-		return canSend(itemStack);
+	public int receiveEnergy(ItemStack itemStack, int maxReceive, boolean simulate)
+	{
+		/*
+		int received = Math.min(this.maxEnergy - this.getEnergy(itemStack), maxReceive);
+		received = Math.min(received, this.getTransferLimit(itemStack));
+		
+		if(!simulate)
+			this.setEnergy(itemStack, this.getEnergy(itemStack) + received);
+		*/
+		
+		return EnergyUtils.fromIC2(this.charge(itemStack, EnergyUtils.toIC2(maxReceive), this.getTier(itemStack), false, simulate));
 	}
-
+	
 	@Override
-	public int getChargedItemId(ItemStack itemStack) {
+	public int extractEnergy(ItemStack itemStack, int maxExtract, boolean simulate)
+	{
+		return EnergyUtils.fromIC2(this.discharge(itemStack, EnergyUtils.toIC2(maxExtract), this.getTier(itemStack), false, simulate));
+	}
+	
+	@Override
+	public int getEnergyStored(ItemStack itemStack)
+	{
+		return this.getEnergy(itemStack);
+	}
+	
+	@Override
+	public int getMaxEnergyStored(ItemStack container)
+	{
+		return this.maxEnergy;
+	}
+	
+	
+	/**
+	 * 
+	 * IC2 Compatibility
+	 * 
+	 */
+	
+	@Override
+	public boolean canProvideEnergy(ItemStack itemStack)
+	{
+		return true;
+	}
+	
+	@Override
+	public	int getChargedItemId(ItemStack itemStack)
+	{
 		return this.itemID;
 	}
 
@@ -158,128 +185,93 @@ public class ItemElectricMod extends ItemMod implements IEnergizedItem, IItemEle
 	{
 		return this.itemID;
 	}
-
+	
 	@Override
-	public int getMaxCharge(ItemStack itemStack) {
-		return (int) (this.getEnergy(itemStack)*CompatHelper.UE_TO_IC2);
-	}
-
-	@Override
-	public int getTier(ItemStack itemStack) {
-		return this.toolTier;
-	}
-
-	@Override
-	public int getTransferLimit(ItemStack itemStack) {
-		return 32*this.toolTier;
+	public int getMaxCharge(ItemStack itemStack)
+	{
+		return EnergyUtils.toIC2(this.maxEnergy);
 	}
 	
-
-	public IElectricItemManager getManager(ItemStack itemStack) {
-		return ItemManagerIC2.getManager(this);
-	}
-
-	//Mekanism
 	@Override
-	public double getEnergy(ItemStack stack) {
-		if (stack.stackTagCompound == null) {
-			return 0;
-		}
-
-		int electricityStored = stack.stackTagCompound.getInteger("electricity");
-		stack.setItemDamage((int)Math.max(1.0D, Math.abs(electricityStored / getMaxEnergy(stack) * 100.0D - 100.0D)));
-
-		return electricityStored;
+	public int getTier(ItemStack itemStack)
+	{
+		return itemStack.getTagCompound().getByte("energyTier");
+	}
+	
+	@Override
+	public int getTransferLimit(ItemStack itemStack)
+	{
+		return 32;
 	}
 
 	@Override
-	public void setEnergy(ItemStack itemStack, double amount) {
-		if (itemStack.stackTagCompound == null) {
-			itemStack.setTagCompound(new NBTTagCompound());
-		}
+	public IElectricItemManager getManager(ItemStack itemStack) 
+	{
+		return this;
+	}
 
-		int electricityStored = (int) Math.max(Math.min(amount, getMaxEnergy(itemStack)), 0.0D);
-		itemStack.stackTagCompound.setInteger("electricity", electricityStored);
-		itemStack.setItemDamage((int)Math.max(1.0D, Math.abs(electricityStored / getMaxEnergy(itemStack) * 100.0D - 100.0D)));
+	/**
+	 * 
+	 * IC2 Custom Item Manager 
+	 * 
+	 */
+	
+	@Override
+	public int charge(ItemStack itemStack, int amount, int tier,
+			boolean ignoreTransferLimit, boolean simulate) 
+	{
+		int received = Math.min(this.maxEnergy - this.getEnergy(itemStack), EnergyUtils.fromIC2(amount));
+		
+		if(!ignoreTransferLimit)
+			received = Math.min(received, EnergyUtils.fromIC2(this.getTransferLimit(itemStack)));
+		
+		if(!simulate)
+			this.setEnergy(itemStack, this.getEnergy(itemStack) + received);
+		
+		return EnergyUtils.toIC2(received);
 	}
 
 	@Override
-	public double getMaxEnergy(ItemStack itemStack) {
-		return this.MAX_ELECTRICITY;
+	public int discharge(ItemStack itemStack, int amount, int tier,
+			boolean ignoreTransferLimit, boolean simulate) 
+	{
+		int received = Math.min(this.getEnergy(itemStack), EnergyUtils.fromIC2(amount));
+		
+		if(!ignoreTransferLimit)
+			received = Math.min(received, EnergyUtils.fromIC2(this.getTransferLimit(itemStack)));
+		
+		if(!simulate)
+			this.setEnergy(itemStack, this.getEnergy(itemStack) - received);
+		
+		return EnergyUtils.toIC2(received);
 	}
 
 	@Override
-	public double getMaxTransfer(ItemStack itemStack) {
-		return getMaxEnergy(itemStack) * 0.005D;
+	public int getCharge(ItemStack itemStack) 
+	{
+		return this.getEnergy(itemStack);
 	}
 
 	@Override
-	public boolean canReceive(ItemStack itemStack) {
-		return true;
-	}
-
-	@Override
-	public boolean canSend(ItemStack itemStack) {
-		return true;
-	}
-
-	@Override
-	public int receiveEnergy(ItemStack theItem, int energy, boolean simulate) {
-		if (canReceive(theItem)) {
-			double energyNeeded = getMaxEnergy(theItem) - getEnergy(theItem);
-			double toReceive = Math.min(energy * Compatibility.TE_RATIO, energyNeeded);
-
-			if (!simulate) {
-				setEnergy(theItem, getEnergy(theItem) + toReceive);
-			}
-
-			return (int)Math.round(toReceive * Compatibility.TO_TE_RATIO);
-		}
-
-		return 0;
-	}
-
-	@Override
-	public int extractEnergy(ItemStack theItem, int energy, boolean simulate) {
-		if (canSend(theItem)) {
-			double energyRemaining = getEnergy(theItem);
-			double toSend = Math.min(energy * Compatibility.TE_RATIO, energyRemaining);
-
-			if (!simulate) {
-				setEnergy(theItem, getEnergy(theItem) - toSend);
-			}
-
-			return (int)Math.round(toSend * Compatibility.TO_TE_RATIO);
-		}
-
-		return 0;
-	}
-
-	@Override
-	public boolean isMetadataSpecific()
+	public boolean canUse(ItemStack itemStack, int amount) 
 	{
 		return false;
 	}
 
-	//TE
 	@Override
-	public int getEnergyStored(ItemStack theItem) {
-		return (int)Math.round(getEnergy(theItem) * Compatibility.TO_TE_RATIO);
-	}
-
-	@Override
-	public int getMaxEnergyStored(ItemStack theItem)
+	public boolean use(ItemStack itemStack, int amount, EntityLivingBase entity) 
 	{
-		return (int)Math.round(getMaxEnergy(theItem) * Compatibility.TO_TE_RATIO);
+		return false;
 	}
 
-	public static String getEnergyDisplay(double energy) {
-		return ElectricityDisplay.getDisplayShort((float)(energy), ElectricityDisplay.ElectricUnit.JOULES);
+	@Override
+	public void chargeFromArmor(ItemStack itemStack, EntityLivingBase entity) 
+	{		
 	}
 
-	public ItemStack getChargedItem() {
-		ItemStack charged = new ItemStack(this);
-		charged.setItemDamage(0);
-		return charged;
+	@Override
+	public String getToolTip(ItemStack itemStack) 
+	{
+		return null;
 	}
 }

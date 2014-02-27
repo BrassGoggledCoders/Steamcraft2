@@ -18,15 +18,16 @@
 package common.steamcraft.common.block.machines;
 
 import net.minecraft.block.Block;
+
 import common.steamcraft.common.block.tile.TileEntityChemicalFurnace;
+import common.steamcraft.common.block.tile.TileEntityCoalGenerator;
 import common.steamcraft.common.block.tile.TileEntityCompressor;
-import common.steamcraft.common.block.tile.TileEntityGenerator;
 import common.steamcraft.common.block.tile.TileEntityNukeFurnace;
 import common.steamcraft.common.block.tile.TileEntitySteamFurnace;
-import common.steamcraft.common.lib.BlockIDs;
-import common.steamcraft.common.lib.CreativeTabsMod;
+import common.steamcraft.common.lib2.BlockIDs;
+import common.steamcraft.common.lib2.CreativeTabsMod;
+
 import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.common.registry.LanguageRegistry;
 
 public class ModMachines {
 	public static Block steamOvenIdle;
@@ -37,7 +38,7 @@ public class ModMachines {
 	public static Block nukeOvenActive;
 	public static Block compressor;
 	public static Block conveyor;
-	public static Block generator;
+	public static Block coalGenerator;
 
 	public static void initMachines() {
 		steamOvenIdle = new BlockSteamFurnace(BlockIDs.steamOvenIdleID, false).setCreativeTab(CreativeTabsMod.tabSCBlocks);
@@ -48,10 +49,9 @@ public class ModMachines {
 		nukeOvenActive = new BlockNukeFurnace(BlockIDs.nukeOvenActiveID, true);
 		compressor = new BlockCompressor(BlockIDs.compressorID).setCreativeTab(CreativeTabsMod.tabSCBlocks).setUnlocalizedName("compressorMachine");
 		conveyor = new BlockConveyorBelt(BlockIDs.coveyorID);
-		generator = new BlockGenerator(BlockIDs.generatorID).setCreativeTab(CreativeTabsMod.tabSCBlocks).setUnlocalizedName("simpleCoalGenerator");
+		coalGenerator = new BlockCoalGenerator(BlockIDs.generatorID).setCreativeTab(CreativeTabsMod.tabSCBlocks).setUnlocalizedName("simpleCoalGenerator");
 
 		registerMachines();
-		initMachineNames();
 		initMachineTileEntities();
 	}
 
@@ -64,16 +64,7 @@ public class ModMachines {
 		GameRegistry.registerBlock(nukeOvenActive, "nukeovenactive");
 		GameRegistry.registerBlock(compressor, "compressorMachine");
 		GameRegistry.registerBlock(conveyor, "conveyor");
-		GameRegistry.registerBlock(generator, "simpleCoalGenerator");
-	}
-
-	public static void initMachineNames() {
-		LanguageRegistry.addName(steamOvenIdle, "Steam Furnace");
-		LanguageRegistry.addName(chemOvenIdle, "Chemical Furnace");
-		LanguageRegistry.addName(nukeOvenIdle, "Nuke Furnace");
-		LanguageRegistry.addName(compressor, "Compressor");
-		LanguageRegistry.addName(conveyor, "Conveyor Belt");
-		LanguageRegistry.addName(generator, "Simple Coal Generator");
+		GameRegistry.registerBlock(coalGenerator, "simpleCoalGenerator");
 	}
 	
 	public static void initMachineTileEntities() {
@@ -81,6 +72,6 @@ public class ModMachines {
 		GameRegistry.registerTileEntity(TileEntityChemicalFurnace.class, "TileEntityChemicalFurnace");
 		GameRegistry.registerTileEntity(TileEntitySteamFurnace.class, "TileEntitySteamFurnace");
 		GameRegistry.registerTileEntity(TileEntityCompressor.class, "TileEntityCompressor");
-		GameRegistry.registerTileEntity(TileEntityGenerator.class, "TileEntityGenerator");
+		GameRegistry.registerTileEntity(TileEntityCoalGenerator.class, "TileEntityCoalGenerator");
 	}
 }

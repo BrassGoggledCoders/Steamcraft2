@@ -19,7 +19,7 @@ package common.steamcraft.common.item;
 
 import java.util.List;
 
-import common.steamcraft.client.lib.GuiIDs;
+import common.steamcraft.client.lib2.GuiIDs;
 import common.steamcraft.common.SC2;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;

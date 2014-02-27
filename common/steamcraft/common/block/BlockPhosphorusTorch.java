@@ -22,8 +22,8 @@ import java.util.Random;
 import net.minecraft.block.BlockTorch;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.world.World;
-import common.steamcraft.common.lib.CreativeTabsMod;
-import common.steamcraft.common.lib.LibInfo;
+import common.steamcraft.common.lib2.CreativeTabsMod;
+import common.steamcraft.common.lib2.LibInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 

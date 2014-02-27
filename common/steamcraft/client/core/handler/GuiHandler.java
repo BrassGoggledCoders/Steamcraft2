@@ -18,20 +18,20 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
 import common.steamcraft.client.gui.GuiChemicalFurnace;
+import common.steamcraft.client.gui.GuiCoalGenerator;
 import common.steamcraft.client.gui.GuiCompressor;
-import common.steamcraft.client.gui.GuiGenerator;
 import common.steamcraft.client.gui.GuiGuideBook;
 import common.steamcraft.client.gui.GuiNukeFurnace;
 import common.steamcraft.client.gui.GuiSteamFurnace;
-import common.steamcraft.client.lib.GuiIDs;
+import common.steamcraft.client.lib2.GuiIDs;
 import common.steamcraft.common.block.tile.TileEntityChemicalFurnace;
+import common.steamcraft.common.block.tile.TileEntityCoalGenerator;
 import common.steamcraft.common.block.tile.TileEntityCompressor;
-import common.steamcraft.common.block.tile.TileEntityGenerator;
 import common.steamcraft.common.block.tile.TileEntityNukeFurnace;
 import common.steamcraft.common.block.tile.TileEntitySteamFurnace;
+import common.steamcraft.common.block.tile.container.ContaineCoalGenerator;
 import common.steamcraft.common.block.tile.container.ContainerChemicalFurnace;
 import common.steamcraft.common.block.tile.container.ContainerCompressor;
-import common.steamcraft.common.block.tile.container.ContainerGenerator;
 import common.steamcraft.common.block.tile.container.ContainerNukeFurnace;
 import common.steamcraft.common.block.tile.container.ContainerSteamFurnace;
 
@@ -62,8 +62,8 @@ public class GuiHandler implements IGuiHandler
 		case GuiIDs.GUI_ID_COMPRESSOR:
 			return new ContainerCompressor(player.inventory, (TileEntityCompressor) tile);
 			
-		case GuiIDs.GUI_ID_GENERATOR:
-			return new ContainerGenerator(player.inventory, (TileEntityGenerator) tile);
+		case GuiIDs.GUI_ID_COAL_GENERATOR:
+			return new ContaineCoalGenerator(player.inventory, (TileEntityCoalGenerator) tile);
 		}
 		
 		return null;
@@ -87,8 +87,9 @@ public class GuiHandler implements IGuiHandler
 		case GuiIDs.GUI_ID_COMPRESSOR:
 			return new GuiCompressor(player.inventory, (TileEntityCompressor) tile);
 			
-		case GuiIDs.GUI_ID_GENERATOR:
-			return new GuiGenerator(player.inventory, (TileEntityGenerator) tile);
+		case GuiIDs.GUI_ID_COAL_GENERATOR:
+			return new GuiCoalGenerator(player.inventory, (TileEntityCoalGenerator) tile);
+			
 		case GuiIDs.GUI_ID_GUIDE_BOOK:
 			return new GuiGuideBook(player, player.inventory.getItemStack());
 		}
