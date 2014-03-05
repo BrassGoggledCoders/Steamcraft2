@@ -37,6 +37,12 @@ public class ModBlocks {
 	public static Block blockVolucite;
 	public static Block blockBrass;
 	public static Block blockUranium;
+	public static Block blockAluminum;
+	public static Block blockCopper;
+	public static Block blockTin;
+	public static Block blockZinc;
+	public static Block blockBronze;
+	public static Block blockSteel;
 	public static Block blockSlateTile;
 	
 	public static BlockStairs stairsSlateTile;
@@ -70,6 +76,12 @@ public class ModBlocks {
 		blockVolucite = new BlockMod(BlockIDs.blockVoluciteID, Material.rock).setHardness(50F).setResistance(6000000F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("voluciteblock");
 		blockBrass = new BlockMod(BlockIDs.blockBrassID, Material.iron).setHardness(5F).setResistance(10F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("brassblock");
 		blockUranium = new BlockUranium(BlockIDs.blockUraniumID);
+		blockAluminum = new BlockMod(BlockIDs.blockAluminumID, Material.iron).setUnlocalizedName("aluminumblock");
+		blockCopper = new BlockMod(BlockIDs.blockCopperID, Material.iron).setUnlocalizedName("copperblock");
+		blockTin = new BlockMod(BlockIDs.blockTinID, Material.iron).setUnlocalizedName("tinblock");
+		blockZinc = new BlockMod(BlockIDs.blockZincID, Material.iron).setUnlocalizedName("zincblock");
+		blockBronze = new BlockMod(BlockIDs.blockBronzeID, Material.iron).setUnlocalizedName("bronzeblock");
+		blockSteel = new BlockMod(BlockIDs.blockSteelID, Material.iron).setUnlocalizedName("steelblock");
 		blockSlateTile = new BlockMod(BlockIDs.blockSlateTileID, Material.rock).setUnlocalizedName("slatetiles");
 		
 		//stairsSlateTile = new (BlockStairs) BlockSC(SC2_BlockIDs.stairsSlateTileID, blockSlateTile, 0);
@@ -124,6 +136,12 @@ public class ModBlocks {
 		GameRegistry.registerBlock(decorLapis, "decorlapis");
 		GameRegistry.registerBlock(decorStone, "decorstone");
 		GameRegistry.registerBlock(blockUranium, "blockuranium");
+		GameRegistry.registerBlock(blockAluminum, "blockaluminum");
+		GameRegistry.registerBlock(blockCopper, "blockcopper");
+		GameRegistry.registerBlock(blockTin, "blocktin");
+		GameRegistry.registerBlock(blockZinc, "blockzinc");
+		GameRegistry.registerBlock(blockBronze, "blockbronze");
+		GameRegistry.registerBlock(blockSteel, "blocksteel");
 		GameRegistry.registerBlock(decorUranium, "decoruranium");
 		GameRegistry.registerBlock(teaPlant, "teaplant");
 		GameRegistry.registerBlock(castIronLampIdle, "castironlampidle");
