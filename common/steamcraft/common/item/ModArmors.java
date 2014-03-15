@@ -12,6 +12,10 @@ public class ModArmors
 	public static Item aqualung;
 	public static Item legBraces;
 	public static Item rollerSkates;
+	public static Item pnematicBoots;
+	public static Item jetpack, jetBoots;
+	public static Item stilts;
+	public static Item reactivePistonPlate;
 	
 	// Etherium
 	public static Item helmetEtherium;
@@ -27,30 +31,38 @@ public class ModArmors
 	
 	// ==== Experimental! ==== //
 	public static Item brassMonocle;
-	public static Item brassWings;
+	public static Item brassWings, steamWings;
 	//public static Item cape;
 	//public static Item utilityBelt;
 	
 	public static void initArmors()
 	{
 		// 0 = Helm, 1 = Chest, 2 = Leggings, 3 = Boots
-		brassGoggles = new ItemArmorMod(ItemIDs.brassGogglesID, MaterialMod.STEAM_ARMOR, 0, 0, "brass_1").setUnlocalizedName("brassgoggles");
-		aqualung = new ItemArmorMod(ItemIDs.aqualungID, MaterialMod.STEAM_ARMOR, 0, 1, "brass_1").setUnlocalizedName("aqualung");
-		legBraces = new ItemArmorMod(ItemIDs.legBracesID, MaterialMod.STEAM_ARMOR, 0, 2, "brass_2").setUnlocalizedName("pneumaticbraces");
-		rollerSkates = new ItemArmorMod(ItemIDs.rollerSkatesID, MaterialMod.STEAM_ARMOR, 0, 3, "brass_1").setUnlocalizedName("rollerskates");
+		//No more Magic Numbers!!
+		int helmetSlot = 0;
+		int chestSlot = 1;
+		int legSlot = 2;
+		int bootSlot = 3;
+
+		brassGoggles = new ItemArmorMod(ItemIDs.brassGogglesID, MaterialMod.STEAM_ARMOR, 0, helmetSlot, "brass_1").setUnlocalizedName("brassGoggles");
+		aqualung = new ItemArmorMod(ItemIDs.aqualungID, MaterialMod.STEAM_ARMOR, 0, chestSlot, "brass_1").setUnlocalizedName("aqualung");
+		rollerSkates = new ItemArmorMod(ItemIDs.rollerSkatesID, MaterialMod.STEAM_ARMOR, 0, bootSlot, "brass_1").setUnlocalizedName("rollerSkates");
+		legBraces = new ItemArmorMod(ItemIDs.legBracesID, MaterialMod.STEAM_ARMOR, 0, legSlot, "brass_2").setUnlocalizedName("legBraces");
+		pnematicBoots = new ItemArmorMod(ItemIDs.pnematicBootsID, MaterialMod.STEAM_ARMOR, 0, bootSlot, "brass_2").setUnlocalizedName("pnematicBoots");
+		jetpack = new ItemArmorMod(ItemIDs.jetpackID, MaterialMod.STEAM_ARMOR, 0, chestSlot, "brass_2").setUnlocalizedName("jetpack");
 		
-		helmetEtherium = new ItemArmorMod(ItemIDs.helmetEtheriumID, MaterialMod.ETHERIUM_ARMOR, 0, 0, "etherium_1").setUnlocalizedName("etheriumhelmet");
-		plateEtherium = new ItemArmorMod(ItemIDs.plateEtheriumID, MaterialMod.ETHERIUM_ARMOR, 0, 1, "etherium_1").setUnlocalizedName("etheriumplate");
-		legsEtherium = new ItemArmorMod(ItemIDs.legsEtheriumID, MaterialMod.ETHERIUM_ARMOR, 0, 2, "etherium_2").setUnlocalizedName("etheriumlegs");
-		bootsEtherium = new ItemArmorMod(ItemIDs.bootsEtheriumID, MaterialMod.ETHERIUM_ARMOR, 0, 3, "etherium_1").setUnlocalizedName("etheriumboots");
+		helmetEtherium = new ItemArmorMod(ItemIDs.helmetEtheriumID, MaterialMod.ETHERIUM_ARMOR, 0, helmetSlot, "etherium_1").setUnlocalizedName("helmetEtherium");
+		plateEtherium = new ItemArmorMod(ItemIDs.plateEtheriumID, MaterialMod.ETHERIUM_ARMOR, 0, chestSlot, "etherium_1").setUnlocalizedName("plateEtherium");
+		legsEtherium = new ItemArmorMod(ItemIDs.legsEtheriumID, MaterialMod.ETHERIUM_ARMOR, 0, legSlot, "etherium_2").setUnlocalizedName("legsEtherium");
+		bootsEtherium = new ItemArmorMod(ItemIDs.bootsEtheriumID, MaterialMod.ETHERIUM_ARMOR, 0, bootSlot, "etherium_1").setUnlocalizedName("bootsEtherium");
 		
-		helmetObsidian = new ItemArmorMod(ItemIDs.helmetObsidianID, MaterialMod.OBSIDIAN_ARMOR, 0, 0, "obsidian_1").setUnlocalizedName("obsidianhelmet");
-		plateObsidian = new ItemArmorMod(ItemIDs.plateObsidianID, MaterialMod.OBSIDIAN_ARMOR, 0, 1, "obsidian_1").setUnlocalizedName("obsidianplate");
-		legsObsidian = new ItemArmorMod(ItemIDs.legsObsidianID, MaterialMod.OBSIDIAN_ARMOR, 0, 2, "obsidian_2").setUnlocalizedName("obsidianlegs");
-		bootsObsidian = new ItemArmorMod(ItemIDs.bootsObsidianID, MaterialMod.OBSIDIAN_ARMOR, 0, 3, "obsidian_1").setUnlocalizedName("obsidianboots");
+		helmetObsidian = new ItemArmorMod(ItemIDs.helmetObsidianID, MaterialMod.OBSIDIAN_ARMOR, 0, helmetSlot, "obsidian_1").setUnlocalizedName("helmetObsidian");
+		plateObsidian = new ItemArmorMod(ItemIDs.plateObsidianID, MaterialMod.OBSIDIAN_ARMOR, 0, chestSlot, "obsidian_1").setUnlocalizedName("plateObsidian");
+		legsObsidian = new ItemArmorMod(ItemIDs.legsObsidianID, MaterialMod.OBSIDIAN_ARMOR, 0, legSlot, "obsidian_2").setUnlocalizedName("legsObsidian");
+		bootsObsidian = new ItemArmorMod(ItemIDs.bootsObsidianID, MaterialMod.OBSIDIAN_ARMOR, 0, bootSlot, "obsidian_1").setUnlocalizedName("bootsObsidian");
 		
-		brassMonocle = new ItemBrassMonocle(ItemIDs.brassMonocleID, MaterialMod.STEAM_ARMOR, 0, 0, "brassmonocle");
-		brassWings = new ItemBrassWings(ItemIDs.brassWingsID, MaterialMod.STEAM_ARMOR, 0, 1, "brasswings");
-		//cape = new ItemCape(SC2_ItemIDs.capeID, EnumArmorMaterial.CLOTH, 0, 1, "capebelt");
+		brassMonocle = new ItemBrassMonocle(ItemIDs.brassMonocleID, MaterialMod.STEAM_ARMOR, 0, helmetSlot, "brassMonocle");
+		brassWings = new ItemBrassWings(ItemIDs.brassWingsID, MaterialMod.STEAM_ARMOR, 0, chestSlot, "brassWings");
+		//cape = new ItemCape(SC2_ItemIDs.capeID, EnumArmorMaterial.CLOTH, 0, chestSlot, "capebelt");
 	}
 }

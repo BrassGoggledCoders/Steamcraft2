@@ -32,8 +32,7 @@ public class ModItems {
 	public static Item chemicSalt;
 	public static Item bornite;
 	public static Item obsidianSlate;
-	public static Item ingotBrass;
-	public static Item ingotCastIron;
+	public static Item ingotsMetal, nuggetsMetal, dustsMetal, platesMetal; 
 	public static Item lightBulb;
 	public static Item phosphorus;
 	public static Item uraniumOre;
@@ -60,8 +59,11 @@ public class ModItems {
 		chemicSalt = new ItemMod(ItemIDs.chemicSaltID).setUnlocalizedName("sulphur");
 		bornite = new ItemMod(ItemIDs.borniteID).setUnlocalizedName("copper");
 		obsidianSlate = new ItemMod(ItemIDs.obsidianSlateID).setUnlocalizedName("obsidianslate");
-		ingotBrass = new ItemMod(ItemIDs.ingotBrassID).setUnlocalizedName("ingotbrass");
-		ingotCastIron = new ItemMod(ItemIDs.ingotCastIronID).setUnlocalizedName("ingotcastiron");
+		/*ingotsMetals 
+		 * nuggetsMetals
+		 * dustsMetals
+		 * platesMetals
+		 */
 		lightBulb = new ItemMod(ItemIDs.lightBulbID).setUnlocalizedName("lightbulb");
 		phosphorus = new ItemMod(ItemIDs.phosphorusID).setUnlocalizedName("phosphorus");
 		uraniumOre = new ItemMod(ItemIDs.uraniumStoneID).setUnlocalizedName("uraniumstone");

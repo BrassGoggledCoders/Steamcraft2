@@ -75,8 +75,7 @@ public class BlockSmog extends BlockMod{
     {
         return false;
     }
-    //Will be readded once I figure out how to limit it
-/*
+    //Should be a 60% chance to dissipate, 40% chance to spread
     @Override
     public void updateTick(final World par1World, final int par2,
 	    final int par3, final int par4, final Random par5Random) {
@@ -86,33 +85,28 @@ public class BlockSmog extends BlockMod{
 		final int wy = par3 + par5Random.nextInt(5) - 3;
 		final int wz = par4 + par5Random.nextInt(3) - 1;
 		par1World.getBlockId(wx, wy + 1, wz);
-		// Kodehawa code: Tested and fully working c: | Arona: If you
-		// need to add
-		// another ID just do the same than in the bottom of this text
-		final ArrayList<Integer> blocksToDestroy = new ArrayList<Integer>();
-		blocksToDestroy.add(Block.crops.blockID);
-		blocksToDestroy.add(Block.leaves.blockID);
-		blocksToDestroy.add(Block.mushroomBrown.blockID);
-		blocksToDestroy.add(Block.mushroomRed.blockID);
-		blocksToDestroy.add(Block.plantRed.blockID);
-		blocksToDestroy.add(Block.plantYellow.blockID);
-		blocksToDestroy.add(Block.reed.blockID);
-		blocksToDestroy.add(Block.tallGrass.blockID);
-		for (final Integer blockid : blocksToDestroy) {
-		    if (par1World.getBlockId(wx, wy, wz) == blockid)
-			par1World.setBlock(wx, wy, wz, blockID);
-		    if (par1World.getBlockId(wx, wy, wz) == 0)
+		if (par1World.getBlockId(wx, wy, wz) == 0)
+		if(Math.random() > 0.4)
 			par1World.setBlock(wx, wy, wz, blockID);
 		}
+		else
+		{
+			par1World.setBlockToAir(par2, par3, par4);
+		}
 	    }
-	*/
-//To poison or not to poison - that is the question
-  /*  @Override
+  @Override
     public void onEntityCollidedWithBlock(final World par1World,
 	    final int par2, final int par3, final int par4,
-	    final Entity par5Entity) {
+	    final Entity par5Entity) 
+    {
 	par5Entity.setInWeb();
-	par5Entity.attackEntityFrom(DamageSource.wither, 1);
+	if(Math.random() < 0.7)
+	{
+	par5Entity.attackEntityFrom(DamageSource.wither, 10);
+	}
+	else
+	{
+		par5Entity.attackEntityFrom(DamageSource.drown, 10);
+	}
     }
-    */
 }
