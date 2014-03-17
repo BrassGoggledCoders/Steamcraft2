@@ -44,9 +44,9 @@ tile.steamcraft:zinc.name=Zinc Ore
 	#Machines
 tile.copperWire.name=Copper Wire
 tile.lightningRod.name=Lightning Rod
-tile.steamfurnace.name=Steam Furnace
+tile.steamfurnace.name=Steam Oven
 tile.chemfurnace.name=Chemical Furnace
-tile.nukefurnace.name=Nuke Furnace
+tile.nukefurnace.name=Nuclear Furnace
 tile.compressorMachine.name=Compressor
 tile.conveyor.name=Conveyor Belt
 tile.simpleCoalGenerator.name=Simple Coal Generator
