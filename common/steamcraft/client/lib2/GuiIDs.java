@@ -8,4 +8,5 @@ public final class GuiIDs
 	public static final int GUI_ID_COMPRESSOR = 8;
 	public static final int GUI_ID_COAL_GENERATOR = 9;
 	public static final int GUI_ID_GUIDE_BOOK = 10;
+	public static final int GUI_ID_DROP_HAMMER = 11;
 }
