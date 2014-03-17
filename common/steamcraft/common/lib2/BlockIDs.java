@@ -50,11 +50,11 @@ public class BlockIDs {
     public static int lampOffID = SC2.proxy.cfgHandler.loadBlock("lampOffID");
     public static int woodBrassID = SC2.proxy.cfgHandler.loadBlock("woodBrassID");
     public static int leavesLampID = SC2.proxy.cfgHandler.loadBlock("leavesLampID");
-    public static int ironLampIdleID = SC2.proxy.cfgHandler.loadBlock("ironLampIdleID");
-    public static int ironLampActiveID = SC2.proxy.cfgHandler.loadBlock("ironLampActiveID");
+    public static int ironLampOffID = SC2.proxy.cfgHandler.loadBlock("ironLampOffID");
+    public static int ironLampOnID = SC2.proxy.cfgHandler.loadBlock("ironLampOnID");
     public static int teaPlantID = SC2.proxy.cfgHandler.loadBlock("teaPlantID");
-    public static int castIronLampIdleID = SC2.proxy.cfgHandler.loadBlock("castIronLampIdleID");
-    public static int castIronLampActiveID = SC2.proxy.cfgHandler.loadBlock("castIronLampActiveID");
+    public static int castIronLampOffID = SC2.proxy.cfgHandler.loadBlock("castIronLampOffID");
+    public static int castIronLampOnID = SC2.proxy.cfgHandler.loadBlock("castIronLampOnID");
     public static int copperWireID = SC2.proxy.cfgHandler.loadBlock("copperWireID");
     public static int blockSlateTileID = SC2.proxy.cfgHandler.loadBlock("blockSlateTileID");
     public static int stairsSlateTileID = SC2.proxy.cfgHandler.loadBlock("stairsSlateTileID");
@@ -64,5 +64,6 @@ public class BlockIDs {
 	public static int generatorID = SC2.proxy.cfgHandler.loadBlock("generatorID");
 	public static int smogID = SC2.proxy.cfgHandler.loadBlock("smogID");
 	public static int etheriumCrystalID = SC2.proxy.cfgHandler.loadBlock("etheriumCrystalID");
-	public static int dropHammerID = SC2.proxy.cfgHandler.loadBlock("dropHammer");
+	public static int hammerHeadID = SC2.proxy.cfgHandler.loadBlock("hammerHeadID");
+	public static int blockObsidianTileID = SC2.proxy.cfgHandler.loadBlock("blockObsidianTileID");
 }

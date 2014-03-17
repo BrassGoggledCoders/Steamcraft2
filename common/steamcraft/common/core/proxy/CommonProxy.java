@@ -23,6 +23,7 @@ import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.item.ItemStack;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
@@ -39,6 +40,7 @@ import common.steamcraft.common.core.handler.ConfigHandler;
 import common.steamcraft.common.core.handler.ModEventHandler;
 import common.steamcraft.common.core.handler.TickHandler;
 import common.steamcraft.common.core.handler.WorldGenerator;
+import common.steamcraft.common.core.handler.recipe.ModRecipes;
 import common.steamcraft.common.core.helper.CompatHelper;
 import common.steamcraft.common.entity.EntityBullet;
 import common.steamcraft.common.item.ModItems;
@@ -71,6 +73,7 @@ public class CommonProxy {
 		ModBlocks.initBlocks();
 		ModItems.initItems();
 		this.initEntities();
+		MinecraftForge.addGrassSeed(new ItemStack(ModItems.teaSeed,1,0), 1);
 	}
 
 	public void init(FMLInitializationEvent event) {
@@ -87,7 +90,7 @@ public class CommonProxy {
 	public void postInit(FMLPostInitializationEvent event) {
 		cfgHandler.saveConfig();
 		CompatHelper.postinit();
-		//ModRecipes.initRecipes();
+		ModRecipes.initRecipes();
 	}
 
 	@EventHandler
@@ -106,7 +109,7 @@ public class CommonProxy {
 		GameRegistry.registerTileEntity(common.steamcraft.common.block.tile.TileEntityLamp.class, LibInfo.MOD_ID + "TELamp");
 		// Lightning Rod
 		GameRegistry.registerTileEntity(common.steamcraft.common.block.tile.TileEntityLightningRod.class, LibInfo.MOD_ID + "TELightningRod");
-		// Ehterium Crystal
+		// Etherium Crystal
 		GameRegistry.registerTileEntity(common.steamcraft.common.block.tile.TileEntityEtheriumCrystal.class, LibInfo.MOD_ID + "TECrystal");
 	}
 

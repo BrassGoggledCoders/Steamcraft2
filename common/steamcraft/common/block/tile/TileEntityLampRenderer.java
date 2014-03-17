@@ -80,10 +80,10 @@ public class TileEntityLampRenderer extends TileEntitySpecialRenderer
 		ResourceLocation lampOn = (new ResourceLocation(LibInfo.SC2_PREFIX + "textures/models/lampon.png"));
 		ResourceLocation lampOff = (new ResourceLocation(LibInfo.SC2_PREFIX + "textures/models/lampoff.png"));
 
-		if(block == ModBlocks.castIronLampActive)
+		if(block == ModBlocks.castIronLampOn)
 		{
 			Minecraft.getMinecraft().renderEngine.bindTexture(lampOn);		
-		} else if(block == ModBlocks.castIronLampIdle)
+		} else if(block == ModBlocks.castIronLampOn)
 		{
 			Minecraft.getMinecraft().renderEngine.bindTexture(lampOff);		
 		}

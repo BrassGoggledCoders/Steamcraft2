@@ -205,7 +205,7 @@ public class BlockCastIronLamp extends BlockContainer
 				world.scheduleBlockUpdate(i, j, k, this.blockID, 4);
 			} else if(!this.powered && world.isBlockIndirectlyGettingPowered(i, j, k))
 			{
-				world.setBlock(i, j, k, ModBlocks.castIronLampActive.blockID, 0, 2);
+				world.setBlock(i, j, k, ModBlocks.castIronLampOn.blockID, 0, 2);
 			}
 			if(world.getBlockMetadata(i, j, k) == 0)
 			{
@@ -274,7 +274,7 @@ public class BlockCastIronLamp extends BlockContainer
 		}
 		if(!world.isRemote && this.powered && !world.isBlockIndirectlyGettingPowered(i, j, k))
 		{
-			world.setBlock(i, j, k, ModBlocks.castIronLampIdle.blockID, 0, 2);
+			world.setBlock(i, j, k, ModBlocks.castIronLampOff.blockID, 0, 2);
 		}
 	}
 
@@ -288,7 +288,7 @@ public class BlockCastIronLamp extends BlockContainer
 				world.scheduleBlockUpdate(i, j, k, this.blockID, tickRate(world));
 			} else if(!this.powered && world.isBlockIndirectlyGettingPowered(i, j, k))
 			{
-				world.setBlock(i, j, k, ModBlocks.castIronLampActive.blockID, 0, 2);
+				world.setBlock(i, j, k, ModBlocks.castIronLampOn.blockID, 0, 2);
 			}
 			if(dropIfCantStay(world, i, j, k))
 			{
@@ -342,7 +342,7 @@ public class BlockCastIronLamp extends BlockContainer
 	@Override
 	public int idDropped(int i, Random random, int j)
 	{
-		return ModBlocks.castIronLampIdle.blockID;
+		return ModBlocks.castIronLampOff.blockID;
 	}
 
 	@Override
