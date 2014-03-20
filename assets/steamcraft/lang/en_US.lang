@@ -173,10 +173,10 @@ item.partsSteel.6.name=Steel Washer
 item.partsSteel.7.name=Steel Bearing
 item.partsSteel.8.name=Steel Screw
 item.partsSteel.9.name=Steel Nail
-item.pileParts.0.name=Pile of Parts
-item.pileParts.1.name=Pile of Parts
-item.pileParts.2.name=Pile of Parts
-item.pileParts.3.name=Pile of Parts
+item.pileParts.0.name=Pile of Brass Parts
+item.pileParts.1.name=Pile of Steel Parts
+item.pileParts.2.name=Pile of Iron Parts
+item.pileParts.3.name=Pile of Copper Parts
 #Tabs
 itemGroup.tabSCBlocks.name=Steamcraft 2 Blocks
 itemGroup.tabSCItems.name=Steamcraft 2 Items
