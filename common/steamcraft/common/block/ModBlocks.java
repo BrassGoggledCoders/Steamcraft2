@@ -66,6 +66,7 @@ public class ModBlocks {
 	public static Block teaPlant;
 	public static Block castIronLampOff;
 	public static Block castIronLampOn;
+	public static Block cryoIce;
 	
 	public static Block etheriumCrystal;
 	
@@ -107,12 +108,12 @@ public class ModBlocks {
 		teaPlant = new BlockTeaPlant(BlockIDs.teaPlantID).setUnlocalizedName("teaPlant");
 		castIronLampOff = new BlockCastIronLamp(BlockIDs.castIronLampOffID, false).setCreativeTab(CreativeTabsMod.tabSCBlocks).setUnlocalizedName("castIronLampOff");
 		castIronLampOn = new BlockCastIronLamp(BlockIDs.castIronLampOnID, true).setUnlocalizedName("castIronLampOn");
+		cryoIce = new BlockCryoIce(BlockIDs.cryoIceID, Material.ice).setUnlocalizedName("cryoIce");
 		
 		etheriumCrystal = new BlockEtheriumCrystal(BlockIDs.etheriumCrystalID).setUnlocalizedName("etheriumCrystal");
 		
 		smog = new BlockSmog(BlockIDs.smogID, Material.air).setUnlocalizedName("smog");
 		
-		hammerHead = new BlockHammerHead(BlockIDs.hammerHeadID, Material.iron).setUnlocalizedName("hammerHead");
 
 		ModMachines.initMachines();
 		ModOres.initOres();
@@ -145,7 +146,7 @@ public class ModBlocks {
 		GameRegistry.registerBlock(castIronLampOn, "castironlampactive");
 		GameRegistry.registerBlock(blockObsidianTile, "slatetiles");
 		GameRegistry.registerBlock(etheriumCrystal, "etheriumCrystal");
-		GameRegistry.registerBlock(hammerHead, "hammerHead");
 		GameRegistry.registerBlock(smog, "smog");
+		GameRegistry.registerBlock(cryoIce, "cryoIce");
 	}
 }

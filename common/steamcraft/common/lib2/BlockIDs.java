@@ -64,6 +64,7 @@ public class BlockIDs {
 	public static int generatorID = SC2.proxy.cfgHandler.loadBlock("generatorID");
 	public static int smogID = SC2.proxy.cfgHandler.loadBlock("smogID");
 	public static int etheriumCrystalID = SC2.proxy.cfgHandler.loadBlock("etheriumCrystalID");
-	public static int hammerHeadID = SC2.proxy.cfgHandler.loadBlock("hammerHeadID");
+	public static int dropHammerID = SC2.proxy.cfgHandler.loadBlock("dropHammerID");
 	public static int blockObsidianTileID = SC2.proxy.cfgHandler.loadBlock("blockObsidianTileID");
+	public static int cryoIceID = SC2.proxy.cfgHandler.loadBlock("cryoIce");
 }
