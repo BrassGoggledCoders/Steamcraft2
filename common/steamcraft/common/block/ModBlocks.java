@@ -85,7 +85,7 @@ public class ModBlocks {
 		blockBronze = new BlockMod(BlockIDs.blockBronzeID, Material.iron).setHardness(7F).setResistance(20F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("blockBronze");
 		blockSteel = new BlockMod(BlockIDs.blockSteelID, Material.iron).setHardness(7F).setResistance(20F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("blockSteel");
 		blockUranium = new BlockUranium(BlockIDs.blockUraniumID);
-		blockObsidianTile = new BlockMod(BlockIDs.blockObsidianTileID, Material.rock).setUnlocalizedName("blockObsdianTile");
+		blockObsidianTile = new BlockMod(BlockIDs.blockObsidianTileID, Material.rock).setUnlocalizedName("blockObsidianTile");
 		
 		//stairsSlateTile = new (BlockStairs) BlockSC(SC2_BlockIDs.stairsSlateTileID, blockSlateTile, 0);
 		
@@ -104,7 +104,7 @@ public class ModBlocks {
 		lampOn = new BlockLamp(BlockIDs.lampOnID, true).setUnlocalizedName("lampOn").setCreativeTab(null);
 		lampOff = new BlockLamp(BlockIDs.lampOffID, false).setUnlocalizedName("lampOff");
 		woodBrass = new BlockBrassLog(BlockIDs.woodBrassID);
-		leavesBrass = new BlockMod(BlockIDs.leavesLampID, Material.wood).setHardness(2F).setLightOpacity(1).setLightValue(0.9375F).setStepSound(Block.soundGlassFootstep).setUnlocalizedName("brassleaves");
+		leavesBrass = new BlockMod(BlockIDs.leavesLampID, Material.wood).setHardness(2F).setLightOpacity(1).setLightValue(0.9375F).setStepSound(Block.soundGlassFootstep).setUnlocalizedName("leavesBrass");
 		teaPlant = new BlockTeaPlant(BlockIDs.teaPlantID).setUnlocalizedName("teaPlant");
 		castIronLampOff = new BlockCastIronLamp(BlockIDs.castIronLampOffID, false).setCreativeTab(CreativeTabsMod.tabSCBlocks).setUnlocalizedName("castIronLampOff");
 		castIronLampOn = new BlockCastIronLamp(BlockIDs.castIronLampOnID, true).setUnlocalizedName("castIronLampOn");
@@ -125,6 +125,11 @@ public class ModBlocks {
 		GameRegistry.registerBlock(blockCastIron, "blockCastIron");
 		GameRegistry.registerBlock(blockVolucite, "blockVolucite");
 		GameRegistry.registerBlock(blockBrass, "blockBrass");
+		GameRegistry.registerBlock(blockSteel, "blockSteel");
+		GameRegistry.registerBlock(blockAluminum, "blockAluminum");
+		GameRegistry.registerBlock(blockCopper, "blockCopper");
+		GameRegistry.registerBlock(blockTin, "blockTin");
+		GameRegistry.registerBlock(blockZinc, "blockZinc");
 		GameRegistry.registerBlock(lampOn, "lampOn");
 		GameRegistry.registerBlock(lampOff, "lampOff");
 		GameRegistry.registerBlock(woodBrass, "woodBrass");

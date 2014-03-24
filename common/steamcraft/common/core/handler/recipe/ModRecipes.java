@@ -18,7 +18,7 @@ public class ModRecipes {
 	public static void initRecipes() 
 	{
 		//Blocks
-		GameRegistry.addShapelessRecipe(new ItemStack(ModBlocks.blockObsidianTile), new Object[] {new ItemStack(Block.obsidian, 4)});
+		GameRegistry.addShapelessRecipe(new ItemStack(ModBlocks.blockObsidianTile), new Object[] {new ItemStack(Block.obsidian), new ItemStack(Block.obsidian), new ItemStack(Block.obsidian), new ItemStack(Block.obsidian)});
 		GameRegistry.addShapedRecipe(new ItemStack(ModBlocks.castIronLampOff), new Object[] {"ccc", "flf", " f ", 'c', ModBlocks.blockCastIron, 'f', ModBlocks.railingCastIron, 'l', ModItems.lightBulb});
 		//Items
 		GameRegistry.addShapedRecipe(new ItemStack(ModItems.lightBulb), new Object[] {"ppp", "p p", "pcp", 'p', Block.thinGlass, 'c', ModItems.copperWire});
