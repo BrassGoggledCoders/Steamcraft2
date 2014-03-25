@@ -53,14 +53,15 @@ public class ModItems {
 	public static Item gasCanister;
     public static Item emptyCanister;
     public static Item guideBook;
+    public static Item partsBrass, partsSteel, partsCopper, partsIron, pileParts;
 	
 	public static void initItems() {
 		etherium = new ItemMod(ItemIDs.etheriumID).setUnlocalizedName("etherium");
 		chemicSalt = new ItemMod(ItemIDs.chemicSaltID).setUnlocalizedName("sulphur");
 		bornite = new ItemMod(ItemIDs.borniteID).setUnlocalizedName("copper");
 		obsidianSlate = new ItemMod(ItemIDs.obsidianSlateID).setUnlocalizedName("obsidianslate");
-		/*ingotsMetals 
-		 * nuggetsMetals
+		ingotsMetal = new ItemMetalIngots(ItemIDs.ingotsMetalID).setUnlocalizedName("ingotsMetal");  
+		 /* nuggetsMetals
 		 * dustsMetals
 		 * platesMetals
 		 */
@@ -84,6 +85,11 @@ public class ModItems {
 		gasCanister = new ItemCanister(ItemIDs.gasCanisterID, 1000, "compressed gas").setUnlocalizedName("gascanister");
 		emptyCanister = new ItemMod(ItemIDs.emptyCanisterID).setUnlocalizedName("emptycanister");
 		guideBook = new ItemGuideBook(ItemIDs.guideBookID).setUnlocalizedName("guidebook");
+		partsBrass = new ItemBrassParts(ItemIDs.partsBrassID);
+		partsSteel = new ItemSteelParts(ItemIDs.partsSteelID);
+		partsCopper = new ItemCopperParts(ItemIDs.partsCopperID);
+		partsIron = new ItemIronParts(ItemIDs.partsIronID);
+		pileParts = new ItemPartsPile(ItemIDs.pilePartsID);
 		
 		ModTools.initTools();
 		ModArmors.initArmors();

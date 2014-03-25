@@ -62,16 +62,10 @@ public class BlockOreMod extends BlockMod
 
 	@Override
 	public int idDropped(int i, Random random, int j) {
-		if (this.blockID == ModOres.oreBornite.blockID) {
-			return ModOres.oreBornite.blockID;
-		} else if (this.blockID == ModOres.oreBrimstone.blockID) {
-			return ModOres.oreBrimstone.blockID;
-		} else if (this.blockID == ModOres.orePhosphate.blockID) {
-			return ModOres.orePhosphate.blockID;
-		} else if (this.blockID == ModOres.oreVolucite.blockID) {
+		if (this.blockID == ModOres.oreVolucite.blockID) {
 			return ModItems.etherium.itemID;
 		} else {
-			return 0;
+			return this.blockID;
 		}
 	}
 

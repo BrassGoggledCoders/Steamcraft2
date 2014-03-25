@@ -25,7 +25,7 @@ public class BlockBrassLog extends BlockRotatedPillar
 		super(i, Material.iron);
 		this.setHardness(5.0F);
 		this.setStepSound(Block.soundMetalFootstep);
-		this.setUnlocalizedName("brasslog");
+		this.setUnlocalizedName("logBrass");
 		this.setCreativeTab(CreativeTabsMod.tabSCBlocks);
 	}
 

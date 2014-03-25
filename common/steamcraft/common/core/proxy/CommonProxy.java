@@ -34,6 +34,7 @@ import common.steamcraft.client.core.handler.GuiHandler;
 import common.steamcraft.client.core.handler.KeyHandlerMod;
 import common.steamcraft.common.SC2;
 import common.steamcraft.common.block.ModBlocks;
+import common.steamcraft.common.core.compat.ModCompatLayer;
 import common.steamcraft.common.core.handler.ChestLootGenerator;
 import common.steamcraft.common.core.handler.CommandHandler;
 import common.steamcraft.common.core.handler.ConfigHandler;
@@ -85,12 +86,16 @@ public class CommonProxy {
 		ChestLootGenerator.addChestLoot();
 		//this.registerKeyBinds();
 		this.initTileEntities();
+		ModCompatLayer.registerOreDictionary();
 	}
 
 	public void postInit(FMLPostInitializationEvent event) {
 		cfgHandler.saveConfig();
 		CompatHelper.postinit();
+		//Does nothing yet.
+		ModCompatLayer.loadModCompat();
 		ModRecipes.initRecipes();
+		ModRecipes.initSmelting();
 	}
 
 	@EventHandler

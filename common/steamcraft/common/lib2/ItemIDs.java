@@ -4,6 +4,10 @@ import common.steamcraft.common.SC2;
 
 public class ItemIDs
 {
+	public static int partsBrassID = SC2.proxy.cfgHandler.loadItem("partsBrass");
+	public static int partsSteelID = SC2.proxy.cfgHandler.loadItem("partsSteel");
+	public static int partsCopperID = SC2.proxy.cfgHandler.loadItem("partsCopper");
+	public static int partsIronID = SC2.proxy.cfgHandler.loadItem("partsIron");
 	public static int etheriumID = SC2.proxy.cfgHandler.loadItem("etheriumID");
     public static int chemicSaltID = SC2.proxy.cfgHandler.loadItem("chemicSaltID");
     public static int borniteID = SC2.proxy.cfgHandler.loadItem("borniteID");
@@ -94,4 +98,6 @@ public class ItemIDs
 	public static int emptyCanisterID = SC2.proxy.cfgHandler.loadItem("emptyCanisterID");
     public static int guideBookID = SC2.proxy.cfgHandler.loadItem("guideBookID");
 	public static int jetpackID = SC2.proxy.cfgHandler.loadItem("jetpackID");
+	public static int pilePartsID = SC2.proxy.cfgHandler.loadItem("partsPileID");
+	public static int ingotsMetalID = SC2.proxy.cfgHandler.loadItem("ingotsMetalID");
 }

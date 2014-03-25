@@ -8,9 +8,11 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
+import ic2.api.item.IBoxable;
+
 import java.util.Random;
 
-public class ItemChisel extends ItemMod
+public class ItemChisel extends ItemMod implements IBoxable
 {
 	private Random random = new Random();
 
@@ -83,6 +85,11 @@ public class ItemChisel extends ItemMod
 	@SideOnly(Side.CLIENT)
 	public boolean isFull3D()
 	{
+		return true;
+	}
+
+	@Override
+	public boolean canBeStoredInToolbox(ItemStack itemstack) {
 		return true;
 	}
 }
