@@ -86,6 +86,7 @@ public class CommonProxy {
 		ChestLootGenerator.addChestLoot();
 		//this.registerKeyBinds();
 		this.initTileEntities();
+		ModCompatLayer.registerOreDictionary();
 	}
 
 	public void postInit(FMLPostInitializationEvent event) {

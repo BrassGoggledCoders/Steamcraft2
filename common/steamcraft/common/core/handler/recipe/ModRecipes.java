@@ -49,7 +49,7 @@ public class ModRecipes {
 		GameRegistry.addShapedRecipe(new ItemStack(ModItems.brassWatch), new Object[] {"bgb", "gcg", "bgb", 'b', new ItemStack(ModItems.ingotsMetal, 1, 5), 'g', Block.thinGlass, 'c', new ItemStack(ModItems.pileParts, 1, 2)});
 		GameRegistry.addShapedRecipe(new ItemStack(ModItems.brassWatch), new Object[] {"bgb", "gcg", "bgb", 'b', new ItemStack(ModItems.ingotsMetal, 1, 5), 'g', Block.thinGlass, 'c', new ItemStack(ModItems.pileParts, 1, 2)});
 		GameRegistry.addShapedRecipe(new ItemStack(ModItems.emptyCanister), new Object[]{" a ", "a a", " a ", 'a', new ItemStack(ModItems.ingotsMetal, 1, 0)});
-		//ModItems.reactorCore
+		GameRegistry.addShapedRecipe(new ItemStack(ModTools.drillBase), new Object[]{"   ", "ccc", " c ", 'c', new ItemStack(ModItems.ingotsMetal, 1, 4)});
 		GameRegistry.addShapelessRecipe(new ItemStack(ModItems.guideBook), new Object[] {Item.book, ModItems.lightBulb});
 		GameRegistry.addRecipe(new ItemStack(ModTools.chisel), new Object[] {"   ", " i ", " s ", 'i', new ItemStack(Item.ingotIron), 's', new ItemStack(Item.stick)});
 			//Parts
