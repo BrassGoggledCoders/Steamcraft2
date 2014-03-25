@@ -105,7 +105,7 @@ public class BlockDropHammer extends BlockContainerMod
 			return true;
 		else
 		{
-			TileEntityCoalGenerator tile_entity = (TileEntityCoalGenerator) par1World.getBlockTileEntity(par2, par3, par4);
+			TileEntityDropHammer tile_entity = (TileEntityDropHammer) par1World.getBlockTileEntity(par2, par3, par4);
 			if (tile_entity == null || par5EntityPlayer.isSneaking())
 				return false;
 			par5EntityPlayer.openGui(SC2.instance, GuiIDs.GUI_ID_DROP_HAMMER, par1World, par2, par3, par4);
