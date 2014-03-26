@@ -21,7 +21,7 @@ public class BlockUranium extends BlockMod
 		this.setResistance(6F);
 		this.setLightValue(0.625F);
 		this.setStepSound(Block.soundMetalFootstep);
-		this.setUnlocalizedName("uraniumblock");
+		this.setUnlocalizedName("blockUranium");
 	}
 
 	@Override

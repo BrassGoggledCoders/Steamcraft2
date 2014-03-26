@@ -4,7 +4,11 @@ import common.steamcraft.common.SC2;
 
 public class ItemIDs
 {
-    public static int etheriumID = SC2.proxy.cfgHandler.loadItem("etheriumID");
+	public static int partsBrassID = SC2.proxy.cfgHandler.loadItem("partsBrass");
+	public static int partsSteelID = SC2.proxy.cfgHandler.loadItem("partsSteel");
+	public static int partsCopperID = SC2.proxy.cfgHandler.loadItem("partsCopper");
+	public static int partsIronID = SC2.proxy.cfgHandler.loadItem("partsIron");
+	public static int etheriumID = SC2.proxy.cfgHandler.loadItem("etheriumID");
     public static int chemicSaltID = SC2.proxy.cfgHandler.loadItem("chemicSaltID");
     public static int borniteID = SC2.proxy.cfgHandler.loadItem("borniteID");
     public static int obsidianSlateID = SC2.proxy.cfgHandler.loadItem("obsidianSlateID");
@@ -76,6 +80,7 @@ public class ItemIDs
     public static int aqualungID = SC2.proxy.cfgHandler.loadItem("aqualungID");
     public static int legBracesID = SC2.proxy.cfgHandler.loadItem("legBracesID");
     public static int rollerSkatesID = SC2.proxy.cfgHandler.loadItem("rollerSkatesID");
+    public static int pnematicBootsID = SC2.proxy.cfgHandler.loadBlock("pnematicBootsID");
     public static int helmetEtheriumID = SC2.proxy.cfgHandler.loadItem("helmetEtheriumID");
     public static int plateEtheriumID = SC2.proxy.cfgHandler.loadItem("plateEtheriumID");
     public static int legsEtheriumID = SC2.proxy.cfgHandler.loadItem("legsEtheriumID");
@@ -92,4 +97,7 @@ public class ItemIDs
 	public static int utilityBeltID = SC2.proxy.cfgHandler.loadItem("utilityBeltID");
 	public static int emptyCanisterID = SC2.proxy.cfgHandler.loadItem("emptyCanisterID");
     public static int guideBookID = SC2.proxy.cfgHandler.loadItem("guideBookID");
+	public static int jetpackID = SC2.proxy.cfgHandler.loadItem("jetpackID");
+	public static int pilePartsID = SC2.proxy.cfgHandler.loadItem("partsPileID");
+	public static int ingotsMetalID = SC2.proxy.cfgHandler.loadItem("ingotsMetalID");
 }

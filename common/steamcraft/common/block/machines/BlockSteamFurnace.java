@@ -21,7 +21,7 @@ import net.minecraft.world.World;
 
 import java.util.Random;
 
-public class BlockSteamFurnace extends BlockContainer
+public class BlockSteamFurnace extends BlockContainer //Should be: extends BlockContainerMod ?
 {
 	private Random furnaceRand;
 	private final boolean isActive;

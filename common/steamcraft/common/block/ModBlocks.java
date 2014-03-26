@@ -33,13 +33,19 @@ import net.minecraft.block.material.Material;
  *
  */
 public class ModBlocks {
+	public static Block blockAluminum;
+	public static Block blockCopper;
+	public static Block blockTin;
+	public static Block blockZinc;
+	public static Block blockBronze;
+	public static Block blockSteel;
 	public static Block blockCastIron;
 	public static Block blockVolucite;
 	public static Block blockBrass;
 	public static Block blockUranium;
-	public static Block blockSlateTile;
+	public static Block blockObsidianTile;
 	
-	public static BlockStairs stairsSlateTile;
+	public static BlockStairs stairsObsidianTile;
 	
 	public static Block decorIron;
 	public static Block decorGold;
@@ -55,106 +61,97 @@ public class ModBlocks {
 	public static Block gateCastIron;
 	public static Block lampOn;
 	public static Block lampOff;
-	public static Block brassWood;
-	public static Block brassLeaves;
+	public static Block woodBrass;
+	public static Block leavesBrass;
 	public static Block teaPlant;
-	public static Block castIronLampIdle;
-	public static Block castIronLampActive;
+	public static Block castIronLampOff;
+	public static Block castIronLampOn;
+	public static Block cryoIce;
 	
 	public static Block etheriumCrystal;
 	
 	public static Block smog;
 	
+	public static Block hammerHead;
+	
 	public static void initBlocks() {
-		blockCastIron = new BlockMod(BlockIDs.blockCastIronID, Material.iron).setHardness(7F).setResistance(20F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("castironblock");
-		blockVolucite = new BlockMod(BlockIDs.blockVoluciteID, Material.rock).setHardness(50F).setResistance(6000000F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("voluciteblock");
-		blockBrass = new BlockMod(BlockIDs.blockBrassID, Material.iron).setHardness(5F).setResistance(10F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("brassblock");
+		blockCastIron = new BlockMod(BlockIDs.blockCastIronID, Material.iron).setHardness(7F).setResistance(20F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("blockCastIron");
+		blockVolucite = new BlockMod(BlockIDs.blockVoluciteID, Material.rock).setHardness(50F).setResistance(6000000F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("blockVolucite");
+		blockBrass = new BlockMod(BlockIDs.blockBrassID, Material.iron).setHardness(5F).setResistance(10F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("blockBrass");
+		blockAluminum = new BlockMod(BlockIDs.blockAluminumID, Material.iron).setHardness(7F).setResistance(20F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("blockAluminum");
+		blockCopper = new BlockMod(BlockIDs.blockCopperID, Material.iron).setHardness(7F).setResistance(20F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("blockCopper");
+		blockTin = new BlockMod(BlockIDs.blockTinID, Material.iron).setHardness(7F).setResistance(20F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("blockTin");
+		blockZinc = new BlockMod(BlockIDs.blockZincID, Material.iron).setHardness(7F).setResistance(20F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("blockZinc");
+		blockBronze = new BlockMod(BlockIDs.blockBronzeID, Material.iron).setHardness(7F).setResistance(20F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("blockBronze");
+		blockSteel = new BlockMod(BlockIDs.blockSteelID, Material.iron).setHardness(7F).setResistance(20F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("blockSteel");
 		blockUranium = new BlockUranium(BlockIDs.blockUraniumID);
-		blockSlateTile = new BlockMod(BlockIDs.blockSlateTileID, Material.rock).setUnlocalizedName("slatetiles");
+		blockObsidianTile = new BlockMod(BlockIDs.blockObsidianTileID, Material.rock).setUnlocalizedName("blockObsidianTile");
 		
 		//stairsSlateTile = new (BlockStairs) BlockSC(SC2_BlockIDs.stairsSlateTileID, blockSlateTile, 0);
 		
-		decorIron = new BlockMod(BlockIDs.decorIronID, Material.iron).setHardness(5F).setResistance(10F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("engriron");
-		decorGold = new BlockMod(BlockIDs.decorGoldID, Material.iron).setHardness(3F).setResistance(10F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("engrgold");
-		decorDiamond = new BlockMod(BlockIDs.decorDiamondID, Material.rock).setHardness(5F).setResistance(10F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("engrdiamond");
-		decorCastIron = new BlockMod(BlockIDs.decorCastIronID, Material.iron).setHardness(7F).setResistance(20F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("engrcastiron");
-		decorVolucite = new BlockMod(BlockIDs.decorVoluciteID, Material.rock).setHardness(50F).setResistance(6000000F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("engrvolucite");
-		decorBrass = new BlockMod(BlockIDs.decorBrassID, Material.iron).setHardness(5F).setResistance(10F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("engrbrass");
-		decorLapis = new BlockMod(BlockIDs.decorLapisID, Material.rock).setHardness(3F).setResistance(5F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("engrlapis");
-		decorStone = new BlockMod(BlockIDs.decorStoneID, Material.rock).setHardness(2F).setResistance(10F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("carvedstone");
-		decorUranium = new BlockUranium(BlockIDs.decorUraniumID).setHardness(10F).setResistance(6F).setLightValue(0.625F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("engruranium");
+		decorIron = new BlockMod(BlockIDs.decorIronID, Material.iron).setHardness(5F).setResistance(10F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("decorIron");
+		decorGold = new BlockMod(BlockIDs.decorGoldID, Material.iron).setHardness(3F).setResistance(10F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("decorGold");
+		decorDiamond = new BlockMod(BlockIDs.decorDiamondID, Material.rock).setHardness(5F).setResistance(10F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("decorDiamond");
+		decorCastIron = new BlockMod(BlockIDs.decorCastIronID, Material.iron).setHardness(7F).setResistance(20F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("decorCastIron");
+		decorVolucite = new BlockMod(BlockIDs.decorVoluciteID, Material.rock).setHardness(50F).setResistance(6000000F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("decorVolucite");
+		decorBrass = new BlockMod(BlockIDs.decorBrassID, Material.iron).setHardness(5F).setResistance(10F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("decorBrass");
+		decorLapis = new BlockMod(BlockIDs.decorLapisID, Material.rock).setHardness(3F).setResistance(5F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("decorLapis");
+		decorStone = new BlockMod(BlockIDs.decorStoneID, Material.rock).setHardness(2F).setResistance(10F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("decorStone");
+		decorUranium = new BlockUranium(BlockIDs.decorUraniumID).setHardness(10F).setResistance(6F).setLightValue(0.625F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("decorUranium");
 		
-		gateCastIron = new BlockCastIronGate(BlockIDs.gateCastIronID, Material.iron);
-		railingCastIron = new BlockFence(BlockIDs.railingCastIronID, LibInfo.SC2_PREFIX + "castironblock", Material.iron).setHardness(7F).setResistance(20F).setStepSound(Block.soundMetalFootstep).setCreativeTab(CreativeTabsMod.tabSCBlocks);//.setUnlocalizedName("castironblock");
-		lampOn = new BlockLamp(BlockIDs.lampOnID, true).setUnlocalizedName("lampblockon").setCreativeTab(null);
-		lampOff = new BlockLamp(BlockIDs.lampOffID, false).setUnlocalizedName("lampblockoff");
-		brassWood = new BlockBrassLog(BlockIDs.woodBrassID);
-		brassLeaves = new BlockMod(BlockIDs.leavesLampID, Material.wood).setHardness(2F).setLightOpacity(1).setLightValue(0.9375F).setStepSound(Block.soundGlassFootstep).setUnlocalizedName("brassleaves");
-		teaPlant = new BlockTeaPlant(BlockIDs.teaPlantID);
-		castIronLampIdle = new BlockCastIronLamp(BlockIDs.castIronLampIdleID, false).setCreativeTab(CreativeTabsMod.tabSCBlocks);
-		castIronLampActive = new BlockCastIronLamp(BlockIDs.castIronLampActiveID, true);
+		gateCastIron = new BlockCastIronGate(BlockIDs.gateCastIronID, Material.iron).setUnlocalizedName("gateCastIron");
+		railingCastIron = new BlockFence(BlockIDs.railingCastIronID, LibInfo.SC2_PREFIX + "blockCastIron", Material.iron).setHardness(7F).setResistance(20F).setStepSound(Block.soundMetalFootstep).setCreativeTab(CreativeTabsMod.tabSCBlocks).setUnlocalizedName("fenceCastIron");
+		lampOn = new BlockLamp(BlockIDs.lampOnID, true).setUnlocalizedName("lampOn").setCreativeTab(null);
+		lampOff = new BlockLamp(BlockIDs.lampOffID, false).setUnlocalizedName("lampOff");
+		woodBrass = new BlockBrassLog(BlockIDs.woodBrassID);
+		leavesBrass = new BlockMod(BlockIDs.leavesLampID, Material.wood).setHardness(2F).setLightOpacity(1).setLightValue(0.9375F).setStepSound(Block.soundGlassFootstep).setUnlocalizedName("leavesBrass");
+		teaPlant = new BlockTeaPlant(BlockIDs.teaPlantID).setUnlocalizedName("teaPlant");
+		castIronLampOff = new BlockCastIronLamp(BlockIDs.castIronLampOffID, false).setCreativeTab(CreativeTabsMod.tabSCBlocks).setUnlocalizedName("castIronLampOff");
+		castIronLampOn = new BlockCastIronLamp(BlockIDs.castIronLampOnID, true).setUnlocalizedName("castIronLampOn");
+		cryoIce = new BlockCryoIce(BlockIDs.cryoIceID, Material.ice).setUnlocalizedName("cryoIce");
 		
-		etheriumCrystal = new BlockEtheriumCrystal(BlockIDs.etheriumCrystalID);
+		etheriumCrystal = new BlockEtheriumCrystal(BlockIDs.etheriumCrystalID).setUnlocalizedName("etheriumCrystal");
 		
 		smog = new BlockSmog(BlockIDs.smogID, Material.air).setUnlocalizedName("smog");
+		
 
 		ModMachines.initMachines();
 		ModOres.initOres();
 		ModPowerBlocks.initPowerBlocks();
 		registerBlocks();
-		addNames();
 	}
 	
 	public static void registerBlocks() {	
-		GameRegistry.registerBlock(blockCastIron, "blockcastiron");
-		GameRegistry.registerBlock(blockVolucite, "blockvolucite");
-		GameRegistry.registerBlock(blockBrass, "blockbrass");
-		GameRegistry.registerBlock(lampOn, "lampon");
-		GameRegistry.registerBlock(lampOff, "lampoff");
-		GameRegistry.registerBlock(brassWood, "woodbrass");
-		GameRegistry.registerBlock(brassLeaves, "leaveslamp");
-		GameRegistry.registerBlock(railingCastIron, "railingcastiron");
-		GameRegistry.registerBlock(gateCastIron, "gatecastiron");
-		GameRegistry.registerBlock(decorIron, "decoriron");
-		GameRegistry.registerBlock(decorGold, "decorgold");
-		GameRegistry.registerBlock(decorDiamond, "decordiamond");
-		GameRegistry.registerBlock(decorCastIron, "decorcastiron");
-		GameRegistry.registerBlock(decorVolucite, "decorvolucite");
-		GameRegistry.registerBlock(decorBrass, "decorbrass");
-		GameRegistry.registerBlock(decorLapis, "decorlapis");
-		GameRegistry.registerBlock(decorStone, "decorstone");
-		GameRegistry.registerBlock(blockUranium, "blockuranium");
-		GameRegistry.registerBlock(decorUranium, "decoruranium");
-		GameRegistry.registerBlock(teaPlant, "teaplant");
-		GameRegistry.registerBlock(castIronLampIdle, "castironlampidle");
-		GameRegistry.registerBlock(castIronLampActive, "castironlampactive");
-		GameRegistry.registerBlock(blockSlateTile, "slatetiles");
+		GameRegistry.registerBlock(blockCastIron, "blockCastIron");
+		GameRegistry.registerBlock(blockVolucite, "blockVolucite");
+		GameRegistry.registerBlock(blockBrass, "blockBrass");
+		GameRegistry.registerBlock(blockSteel, "blockSteel");
+		GameRegistry.registerBlock(blockAluminum, "blockAluminum");
+		GameRegistry.registerBlock(blockCopper, "blockCopper");
+		GameRegistry.registerBlock(blockTin, "blockTin");
+		GameRegistry.registerBlock(blockZinc, "blockZinc");
+		GameRegistry.registerBlock(lampOn, "lampOn");
+		GameRegistry.registerBlock(lampOff, "lampOff");
+		GameRegistry.registerBlock(woodBrass, "woodBrass");
+		GameRegistry.registerBlock(leavesBrass, "leavesBrass");
+		GameRegistry.registerBlock(railingCastIron, "railingCastIron");
+		GameRegistry.registerBlock(gateCastIron, "gateCastIron");
+		GameRegistry.registerBlock(decorIron, "decorIron");
+		GameRegistry.registerBlock(decorGold, "decorGold");
+		GameRegistry.registerBlock(decorDiamond, "decorDiamond");
+		GameRegistry.registerBlock(decorCastIron, "decorCastIron");
+		GameRegistry.registerBlock(decorVolucite, "decorVolucite");
+		GameRegistry.registerBlock(decorBrass, "decorBrass");
+		GameRegistry.registerBlock(decorLapis, "decorLapis");
+		GameRegistry.registerBlock(decorStone, "decorStone");
+		GameRegistry.registerBlock(blockUranium, "blockUranium");
+		GameRegistry.registerBlock(decorUranium, "decorUranium");
+		GameRegistry.registerBlock(teaPlant, "teaPlant");
+		GameRegistry.registerBlock(castIronLampOff, "castironlampidle");
+		GameRegistry.registerBlock(castIronLampOn, "castironlampactive");
+		GameRegistry.registerBlock(blockObsidianTile, "slatetiles");
 		GameRegistry.registerBlock(etheriumCrystal, "etheriumCrystal");
-	}
-	
-	public static void addNames() {	
-		LanguageRegistry.addName(blockCastIron, "Cast Iron Block");
-		LanguageRegistry.addName(blockVolucite, "Volucite Block");
-		LanguageRegistry.addName(blockBrass, "Brass Block");
-		LanguageRegistry.addName(lampOff, "Lamp");
-		LanguageRegistry.addName(brassWood, "Brasswood");
-		LanguageRegistry.addName(brassLeaves, "Brassleaves");
-		LanguageRegistry.addName(railingCastIron, "Cast Iron Railing");
-		LanguageRegistry.addName(gateCastIron, "Cast Iron Gate");
-		LanguageRegistry.addName(decorIron, "Carved Iron");
-		LanguageRegistry.addName(decorGold, "Carved Gold");
-		LanguageRegistry.addName(decorDiamond, "Carved Diamond");
-		LanguageRegistry.addName(decorCastIron, "Carved Cast Iron");
-		LanguageRegistry.addName(decorVolucite, "Carved Volucite");
-		LanguageRegistry.addName(decorBrass, "Carved Brass");
-		LanguageRegistry.addName(decorLapis, "Carved Lapis");
-		LanguageRegistry.addName(decorStone, "Carved Stone");
-		LanguageRegistry.addName(blockUranium, "Uranium Block");
-		LanguageRegistry.addName(decorUranium, "Carved Uranium");
-		LanguageRegistry.addName(teaPlant, "Tea Plant");
-		LanguageRegistry.addName(blockSlateTile, "Obsidian Slate Tiles");
-		LanguageRegistry.addName(castIronLampIdle, "Cast Iron Lamp");
-		LanguageRegistry.addName(castIronLampActive, "Cast Iron Lamp");
-		LanguageRegistry.addName(etheriumCrystal, "Etherium Crystal");
+		GameRegistry.registerBlock(smog, "smog");
+		GameRegistry.registerBlock(cryoIce, "cryoIce");
 	}
 }

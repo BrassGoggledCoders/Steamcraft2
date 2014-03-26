@@ -18,6 +18,8 @@
 package common.steamcraft.common.core.handler;
 
 import common.steamcraft.common.item.ItemBrassWings;
+import common.steamcraft.common.item.ItemJetpack;
+import common.steamcraft.common.item.ItemSteamWings;
 import common.steamcraft.common.item.ModArmors;
 import common.steamcraft.common.item.ModItems;
 import net.minecraft.block.Block;
@@ -34,13 +36,13 @@ import net.minecraftforge.event.world.BlockEvent.HarvestDropsEvent;
  *
  */
 public class ModEventHandler {
-	@ForgeSubscribe
+	/*No no no! Don't do it like this... I have added the proper method in teh common proxy for now.
 	public void onHarvestDrops(HarvestDropsEvent event) {
 		if (event.block.blockID == Block.tallGrass.blockID) {
 			event.drops.add(new ItemStack(ModItems.teaSeed, 1));
 			event.dropChance = 0.16F; // Should be 16% chance for tea seeds to drop
 		}
-	}
+	}*/
 
 	@ForgeSubscribe
 	public void updatePlayer(LivingEvent.LivingUpdateEvent event) {
@@ -79,7 +81,13 @@ public class ModEventHandler {
 					player.jumpMovementFactor = 0.03F;
 					player.stepHeight = 0.0F;
 				}
-			} else if (bootsSlot == null || bootsSlot.itemID != ModArmors.rollerSkates.itemID) {
+				if (!player.isInWater() && bootsSlot.itemID == ModArmors.pnematicBoots.itemID)
+				{
+					//player.jumpMovementFactor = 1F;
+					player.stepHeight = 1F;
+				}
+			} 
+			else if (bootsSlot == null || bootsSlot.itemID != ModArmors.rollerSkates.itemID) {
 				player.stepHeight = 0.5F;
 			}
 		}
@@ -93,14 +101,24 @@ public class ModEventHandler {
             ItemStack chestSlot = player.inventory.armorItemInSlot(2); // le chest
 
             if (chestSlot != null) {
-                if (chestSlot.itemID == ModArmors.brassWings.itemID) { // && chestSlot.getItemDamage() > 0)
-                    ItemBrassWings jetpack = (ItemBrassWings)chestSlot.getItem();
-                   
+                if (chestSlot.itemID == ModArmors.brassWings.itemID) 
+                {
+                    ItemBrassWings wings = (ItemBrassWings)chestSlot.getItem();
+                    event.distance = 0;
+                }   
+                if (chestSlot.itemID == ModArmors.jetpack.itemID) 
+                {
+                    ItemJetpack jetpack = (ItemJetpack)chestSlot.getItem();
                     if (jetpack.canister != null) {
-                        jetpack.canister.damageItem((int)(event.distance / Math.PI), player);
-                        event.distance = 0;
-                    }
+                       jetpack.canister.damageItem((int)(event.distance / Math.PI), player);
+                       event.distance = 0;
+                       }    
                 }
+                /*if(chestSlot.itemID == ModArmors.steamWings.itemID)
+                {
+                	ItemSteamWings wings = (ItemSteamWings)chestSlot.getItem();
+                	event.distance = 0;
+                }*/
             }
         }
     }
