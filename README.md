@@ -19,5 +19,5 @@ Credits:
 - Proloe: for creating the first Steamcraft
 - Falkok15: for his amazing models
 - wierdude1999: for his amazing textures
-- decabeldecabel: for his programming and work with TileEntities
+- decebaldecebal: for his programming and work with TileEntities
 - warlordjones: for his programming and allowing Steampunkery mod merge
