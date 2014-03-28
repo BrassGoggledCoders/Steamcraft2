@@ -30,7 +30,7 @@ import org.lwjgl.input.Keyboard;
 
 /**
  * 
- * @authors MrArcane111 & general3214 Edited by warlordjones.
+ * @authors MrArcane111 & general3214 Edited by warlordjones & decebaldecebal.
  *
  */
 public class ItemBrassWings extends ItemArmorMod
@@ -45,21 +45,31 @@ public class ItemBrassWings extends ItemArmorMod
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT) // Thank-you Forge for this method. Otherwise, I would have to use TickHandlers...
+	@SideOnly(Side.CLIENT) // Thank-you Forge for this method. Otherwise, I would have to use TickHandlers... (somebody DID use them...)
 	public void onArmorTickUpdate(World world, EntityPlayer player, ItemStack stack)
 	{
-		if(!player.capabilities.isCreativeMode && Minecraft.getMinecraft().currentScreen == null && Keyboard.isKeyDown(Minecraft.getMinecraft().gameSettings.keyBindJump.keyCode))
+		if(player.fallDistance > 0)
+		{
+			player.motionY += 0.06D; //the gliding effect
+			player.fallDistance = 0;
+		}
+		
+		if(!player.capabilities.allowFlying && Minecraft.getMinecraft().currentScreen == null && Keyboard.isKeyDown(Minecraft.getMinecraft().gameSettings.keyBindJump.keyCode))
     	{
-			int i = 0;
-			while(i < 36)
-			{
-				if(player.motionY > 0)
-				{
-				player.setJumping(false);
-				player.getFoodStats().addExhaustion(0.003F);
-				}
+            if(player.motionY > 0.0D)
+            {
+                player.motionY += 0.08499999910593033D;
+            } 
+            else
+            {
+                player.motionY += 0.11699999910593033D;
             }
-			i++;
+            
+			if(player.motionY > 0)
+			{
+				player.setJumping(false);
+				player.addExhaustion(0.2F); //Tweak this number a little (0.2F seems pretty good and not OP)
+			}
         }
 	}
 	@Override

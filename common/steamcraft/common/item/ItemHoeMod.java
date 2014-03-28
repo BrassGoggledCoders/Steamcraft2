@@ -61,6 +61,7 @@ public class ItemHoeMod extends ItemMod
 		}
 	}
 
+	@SuppressWarnings("all")
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
 	{

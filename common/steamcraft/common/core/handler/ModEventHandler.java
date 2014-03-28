@@ -17,19 +17,13 @@
  */
 package common.steamcraft.common.core.handler;
 
-import common.steamcraft.common.item.ItemBrassWings;
-import common.steamcraft.common.item.ItemJetpack;
-import common.steamcraft.common.item.ItemSteamWings;
-import common.steamcraft.common.item.ModArmors;
-import common.steamcraft.common.item.ModItems;
-import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
-import net.minecraftforge.event.world.BlockEvent.HarvestDropsEvent;
+
+import common.steamcraft.common.item.ModArmors;
 
 /**
  * @author MrArcane111 & general3214
@@ -49,6 +43,9 @@ public class ModEventHandler {
 		if (event.entityLiving instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) event.entityLiving;
 			
+			/*
+			 * Moved these to the ItemArmorMod class, onArmorTickUpdate function
+			 * 
 			ItemStack chestSlot = player.inventory.armorItemInSlot(2); // le chest
 
 			if (chestSlot != null) {
@@ -72,7 +69,9 @@ public class ModEventHandler {
                     }
                 }
             }
+            */
 
+			//I do not know if these can be moved since they change the step height
 			ItemStack bootsSlot = player.inventory.armorItemInSlot(0); // le boots
 
 			if (bootsSlot != null) {
@@ -101,6 +100,10 @@ public class ModEventHandler {
             ItemStack chestSlot = player.inventory.armorItemInSlot(2); // le chest
 
             if (chestSlot != null) {
+            	
+            	/*
+            	 * Code moved to the appropriate item classes onArmorTickUpdate function
+            	 * 
                 if (chestSlot.itemID == ModArmors.brassWings.itemID) 
                 {
                     ItemBrassWings wings = (ItemBrassWings)chestSlot.getItem();
@@ -114,11 +117,17 @@ public class ModEventHandler {
                        event.distance = 0;
                        }    
                 }
-                /*if(chestSlot.itemID == ModArmors.steamWings.itemID)
+                */
+            	
+                /*
+                 * I will start working on this afterwards
+                 * 
+                if(chestSlot.itemID == ModArmors.steamWings.itemID)
                 {
                 	ItemSteamWings wings = (ItemSteamWings)chestSlot.getItem();
                 	event.distance = 0;
-                }*/
+                }
+                */
             }
         }
     }

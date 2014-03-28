@@ -63,6 +63,7 @@ public class ItemElectricDrill extends ItemElectricMod
 		this.toolTier = toolTier;
 	}
 
+	@SuppressWarnings("all")
 	@Override
 	public boolean canHarvestBlock(Block block) {
 		for (int i = 0; i < this.blocksEffectiveAgainst.length; ++i) {
@@ -74,6 +75,7 @@ public class ItemElectricDrill extends ItemElectricMod
 		return false;
 	}
 
+	@SuppressWarnings("all")
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean flag) {
 		super.addInformation(stack, player, list, flag);

@@ -23,7 +23,8 @@ public class ItemModTool extends ItemMod
 	public float efficiencyOnProperMaterial = 4.0F;
 	public float damageVsEntity;
 	protected EnumToolMaterial toolMaterial;
-
+	
+	@SuppressWarnings("all")
 	protected ItemModTool(int id, float damage, EnumToolMaterial toolMat, Block[] blockArray)
 	{
 		super(id);
@@ -90,6 +91,7 @@ public class ItemModTool extends ItemMod
 		return this.toolMaterial.getToolCraftingMaterial() == stack2.itemID ? true : super.getIsRepairable(stack1, stack2);
 	}
 
+	@SuppressWarnings("all")
 	@Override
 	public Multimap getItemAttributeModifiers()
 	{
@@ -104,13 +106,14 @@ public class ItemModTool extends ItemMod
 		if(toolMaterial == MaterialMod.STEAM_TOOL)
 		{
 			System.out.println(efficiencyOnProperMaterial - (((float) stack.getItemDamage()) * 11 / 320));
-			int itemDamage = stack.getItemDamage();
+			//int itemDamage = stack.getItemDamage();
 		}
 
 		stack.damageItem(1, living);
 		return true;
 	}
 
+	@SuppressWarnings("all")
 	@Override
 	public void addInformation(ItemStack itemStack, EntityPlayer entityPlayer, List list, boolean bool) 
 	{
@@ -126,6 +129,7 @@ public class ItemModTool extends ItemMod
 		}
 	}
 
+	@SuppressWarnings("all")
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
 	{

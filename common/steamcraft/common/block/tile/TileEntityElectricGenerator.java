@@ -31,6 +31,7 @@ public class TileEntityElectricGenerator extends TileEntityElectricMachine imple
 		inventory = new ItemStack[3];
 	}
 	
+	@Override
 	public EnumSet<ForgeDirection> getInputDirections()
 	{
 		return EnumSet.noneOf(ForgeDirection.class);
@@ -56,6 +57,7 @@ public class TileEntityElectricGenerator extends TileEntityElectricMachine imple
 			{
 				if(inventory[1]!=null)
 					this.charge(1, this);
+				
 				produce(Math.min(this.getEnergy(), this.energy.getTransferRate()));
 			}
 		}

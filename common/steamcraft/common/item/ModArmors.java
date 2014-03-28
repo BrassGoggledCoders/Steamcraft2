@@ -49,7 +49,7 @@ public class ModArmors
 		rollerSkates = new ItemArmorMod(ItemIDs.rollerSkatesID, MaterialMod.STEAM_ARMOR, 0, bootSlot, "brass_1").setUnlocalizedName("rollerSkates");
 		legBraces = new ItemArmorMod(ItemIDs.legBracesID, MaterialMod.STEAM_ARMOR, 0, legSlot, "brass_2").setUnlocalizedName("legBraces");
 		pnematicBoots = new ItemArmorMod(ItemIDs.pnematicBootsID, MaterialMod.STEAM_ARMOR, 0, bootSlot, "brass_2").setUnlocalizedName("pnematicBoots");
-		jetpack = new ItemArmorMod(ItemIDs.jetpackID, MaterialMod.STEAM_ARMOR, 0, chestSlot, "brass_2").setUnlocalizedName("jetpack");
+		jetpack = new ItemJetpack(ItemIDs.jetpackID, MaterialMod.STEAM_ARMOR, 0, chestSlot, "brass_2").setUnlocalizedName("jetpack");
 		
 		helmetEtherium = new ItemArmorMod(ItemIDs.helmetEtheriumID, MaterialMod.ETHERIUM_ARMOR, 0, helmetSlot, "etherium_1").setUnlocalizedName("helmetEtherium");
 		plateEtherium = new ItemArmorMod(ItemIDs.plateEtheriumID, MaterialMod.ETHERIUM_ARMOR, 0, chestSlot, "etherium_1").setUnlocalizedName("plateEtherium");

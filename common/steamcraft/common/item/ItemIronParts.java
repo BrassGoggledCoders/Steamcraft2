@@ -37,6 +37,7 @@ public class ItemIronParts extends ItemMod {
 	return icons[par1];
     }
 
+    @SuppressWarnings("all")
     @Override
     @SideOnly(Side.CLIENT)
     public void getSubItems(final int par1,

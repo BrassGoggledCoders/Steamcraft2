@@ -13,10 +13,6 @@
  */
 package common.steamcraft.common.item;
 
-import common.steamcraft.common.SC2;
-import common.steamcraft.common.lib2.CreativeTabsMod;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.entity.EntityLivingBase;
@@ -28,14 +24,19 @@ import net.minecraft.world.World;
 
 import org.lwjgl.input.Keyboard;
 
+import common.steamcraft.common.SC2;
+import common.steamcraft.common.lib2.CreativeTabsMod;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 /**
  * 
- * @author MrArcane111 & general3214
+ * @author MrArcane111 & general3214  Edited by decebaldecebal
  *
  */
 public class ItemJetpack extends ItemArmorMod
 {
-    public ItemStack canister;
 	public ItemJetpack(int id, EnumArmorMaterial mat, int renderIndex, int armorType, String texture)
 	{
 		super(id, mat, renderIndex, armorType, texture);
@@ -46,16 +47,15 @@ public class ItemJetpack extends ItemArmorMod
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT) // Thank-you Forge for this method. Otherwise, I would have to use TickHandlers...
+	@SideOnly(Side.CLIENT)
 	public void onArmorTickUpdate(World world, EntityPlayer player, ItemStack stack)
-	{
+	{		
         int i = 0;
         while(i < 36)
         {
             ItemStack[] mainInv = player.inventory.mainInventory;
-            if(mainInv[i] != null && mainInv[i].itemID == ModItems.steamCanister.itemID)
+            if(mainInv[i] != null && mainInv[i].getItem() == ModItems.steamCanister)
             {
-                canister = mainInv[i];
                 if(!player.capabilities.allowFlying)
                 {
                     if(Minecraft.getMinecraft().currentScreen == null && Keyboard.isKeyDown(Minecraft.getMinecraft().gameSettings.keyBindJump.keyCode))
@@ -63,29 +63,37 @@ public class ItemJetpack extends ItemArmorMod
                         if(player.motionY > 0.0D)
                         {
                             player.motionY += 0.08499999910593033D;
-                        } else
+                        } 
+                        else
                         {
                             player.motionY += 0.11699999910593033D;
                         }
 
-                        if(canister.getItemDamage() < 499) canister.damageItem(1, player);
-                        else if(canister.getItemDamage() >= 499)
-                        {
-                            player.inventory.consumeInventoryItem(canister.itemID);
+                        if(mainInv[i].getItemDamage() < 499)
+                        	mainInv[i].damageItem(1, player);
+                        else if(mainInv[i].getItemDamage() >= 499)
                             mainInv[i] = new ItemStack(ModItems.emptyCanister);
-                        }
+                        
                         world.spawnParticle("smoke", player.posX, player.posY - 0.25D, player.posZ, 0.0D, 0.0D, 0.0D);
                         break;
                     }
+                    
                     if(player.motionY < 0.0D && !player.isSneaking())
                     {
                         player.motionY /= 1.149999976158142D;
                     }
+                    
                     if(!player.onGround)
                     {
                         player.motionX *= 1.0399999618530273D;
                         player.motionZ *= 1.0399999618530273D;
                     }
+                    
+            		if(player.fallDistance > 0)
+            		{
+        	        	mainInv[i].damageItem((int)(player.fallDistance / Math.PI), player);
+        	        	player.fallDistance = 0;
+            		}
                 }
             }
             i++;
