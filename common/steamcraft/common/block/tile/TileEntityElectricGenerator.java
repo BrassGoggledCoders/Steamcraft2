@@ -56,7 +56,7 @@ public class TileEntityElectricGenerator extends TileEntityElectricMachine imple
 			{
 				if(inventory[1]!=null)
 					this.charge(1, this);
-				//this.energy.modifyStoredEnergy(-this.produce(this.energy.getTransferRate()));
+				produce(Math.min(this.getEnergy(), this.energy.getTransferRate()));
 			}
 		}
 	}
