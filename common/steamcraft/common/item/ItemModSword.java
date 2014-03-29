@@ -105,6 +105,7 @@ public class ItemModSword extends ItemModTool
 		return this.toolMaterial.getToolCraftingMaterial() == stack2.itemID ? true : super.getIsRepairable(stack1, stack2);
 	}
 
+	@SuppressWarnings("all")
 	@Override
 	public Multimap getItemAttributeModifiers()
 	{

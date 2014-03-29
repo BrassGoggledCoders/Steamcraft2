@@ -1,34 +1,32 @@
 package common.steamcraft.common.core.handler.recipe;
 
-import java.util.Random;
+import net.minecraft.block.Block;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.OreDictionary;
 
 import common.steamcraft.common.block.ModBlocks;
 import common.steamcraft.common.block.ModOres;
 import common.steamcraft.common.item.ModItems;
 import common.steamcraft.common.item.ModTools;
-import cpw.mods.fml.common.registry.GameRegistry;
 
-import net.minecraft.block.Block;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.oredict.OreDictionary;
+import cpw.mods.fml.common.registry.GameRegistry;
 
 public class ModRecipes {
 
 	public static void initRecipes() 
 	{
 		//Blocks
-		GameRegistry.addRecipe(new ItemStack(ModBlocks.blockAluminum), new Object[] {"III", "III", "III", "I", new ItemStack(ModItems.ingotsMetal, 1, 0)});
-		GameRegistry.addRecipe(new ItemStack(ModBlocks.blockCopper), new Object[] {"III", "III", "III", "I", new ItemStack(ModItems.ingotsMetal, 1, 1)});
-		GameRegistry.addRecipe(new ItemStack(ModBlocks.blockTin), new Object[] {"III", "III", "III", "I", new ItemStack(ModItems.ingotsMetal, 1, 2)});
-		GameRegistry.addRecipe(new ItemStack(ModBlocks.blockZinc), new Object[] {"III", "III", "III", "I", new ItemStack(ModItems.ingotsMetal, 1, 3)});
-		GameRegistry.addRecipe(new ItemStack(ModBlocks.blockCastIron), new Object[] {"III", "III", "III", "I", new ItemStack(ModItems.ingotsMetal, 1, 4)});
-		GameRegistry.addRecipe(new ItemStack(ModBlocks.blockBrass), new Object[] {"III", "III", "III", "I", new ItemStack(ModItems.ingotsMetal, 1, 5)});
-		GameRegistry.addRecipe(new ItemStack(ModBlocks.blockBronze), new Object[] {"III", "III", "III", "I", new ItemStack(ModItems.ingotsMetal, 1, 6)});
-		GameRegistry.addRecipe(new ItemStack(ModBlocks.blockSteel), new Object[] {"III", "III", "III", "I", new ItemStack(ModItems.ingotsMetal, 1, 7)});
-		GameRegistry.addRecipe(new ItemStack(ModBlocks.blockUranium), new Object[] {"III", "III", "III", "I", new ItemStack(ModItems.uraniumOre)});
-		GameRegistry.addRecipe(new ItemStack(ModBlocks.blockVolucite), new Object[] {"III", "III", "III", "I", new ItemStack(ModItems.etherium)});
+		GameRegistry.addRecipe(new ItemStack(ModBlocks.blockAluminum), new Object[] {"III", "III", "III", 'I', new ItemStack(ModItems.ingotsMetal, 1, 0)});
+		GameRegistry.addRecipe(new ItemStack(ModBlocks.blockCopper), new Object[] {"III", "III", "III", 'I', new ItemStack(ModItems.ingotsMetal, 1, 1)});
+		GameRegistry.addRecipe(new ItemStack(ModBlocks.blockTin), new Object[] {"III", "III", "III", 'I', new ItemStack(ModItems.ingotsMetal, 1, 2)});
+		GameRegistry.addRecipe(new ItemStack(ModBlocks.blockZinc), new Object[] {"III", "III", "III", 'I', new ItemStack(ModItems.ingotsMetal, 1, 3)});
+		GameRegistry.addRecipe(new ItemStack(ModBlocks.blockCastIron), new Object[] {"III", "III", "III", 'I', new ItemStack(ModItems.ingotsMetal, 1, 4)});
+		GameRegistry.addRecipe(new ItemStack(ModBlocks.blockBrass), new Object[] {"III", "III", "III", 'I', new ItemStack(ModItems.ingotsMetal, 1, 5)});
+		GameRegistry.addRecipe(new ItemStack(ModBlocks.blockBronze), new Object[] {"III", "III", "III", 'I', new ItemStack(ModItems.ingotsMetal, 1, 6)});
+		GameRegistry.addRecipe(new ItemStack(ModBlocks.blockSteel), new Object[] {"III", "III", "III", 'I', new ItemStack(ModItems.ingotsMetal, 1, 7)});
+		GameRegistry.addRecipe(new ItemStack(ModBlocks.blockUranium), new Object[] {"III", "III", "III", 'I', new ItemStack(ModItems.uraniumOre)});
+		GameRegistry.addRecipe(new ItemStack(ModBlocks.blockVolucite), new Object[] {"III", "III", "III", 'I', new ItemStack(ModItems.etherium)});
 
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.blockObsidianTile), new Object[] {"XX", "XX", 'X', new ItemStack(Block.obsidian)});
 		GameRegistry.addShapedRecipe(new ItemStack(ModBlocks.castIronLampOff), new Object[] {"ccc", "flf", " f ", 'c', new ItemStack(ModItems.ingotsMetal, 1, 4), 'f', ModBlocks.railingCastIron, 'l', ModItems.lightBulb});

@@ -13,9 +13,8 @@
  */
 package common.steamcraft.common.block.tile;
 
-import common.steamcraft.common.block.BlockChimney;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.EntitySmokeFX;
@@ -23,7 +22,10 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
-import java.util.Random;
+import common.steamcraft.common.block.BlockChimney;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author MrArcane111

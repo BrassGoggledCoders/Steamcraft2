@@ -41,6 +41,7 @@ public class ItemBrassWatch extends ItemMod
 		this.setUnlocalizedName("clock");
 	}
 	
+	@SuppressWarnings("all")
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean flag)
 	{
@@ -50,7 +51,6 @@ public class ItemBrassWatch extends ItemMod
 			return;
 		}
 		
-		// I thought there was some shortcut using the backslash to carry to the next line...oh well
 		list.add("On right-click, this item"); 
 		list.add("will display the MC time");
 		list.add("and the real-world time");
@@ -64,8 +64,8 @@ public class ItemBrassWatch extends ItemMod
 			long mcTime = world.getTotalWorldTime();
 			Calendar cal = Calendar.getInstance();
 	    	cal.getTime();
-	    	SimpleDateFormat sdf = new SimpleDateFormat("HH:mm"); // hours and minutes, subtract twelve, ya pussy!
-	    	// System.out.println(sdf.format(cal.getTime()));
+	    	SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+	    	
 	    	String message = "MC Time: " + mcTime;
 	    	player.sendChatToPlayer(ChatMessageComponent.createFromText(message).setColor(EnumChatFormatting.GOLD));
             message = "Real-World Time: " + sdf.format(cal.getTime());
