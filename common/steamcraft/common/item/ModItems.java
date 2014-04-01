@@ -17,11 +17,18 @@
  */
 package common.steamcraft.common.item;
 
+import ic2.api.item.Items;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemBucket;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.FluidContainerRegistry;
+import net.minecraftforge.fluids.FluidRegistry;
+
 import common.steamcraft.common.block.ModBlocks;
 import common.steamcraft.common.lib2.ItemIDs;
-import cpw.mods.fml.common.registry.LanguageRegistry;
+
+import cpw.mods.fml.common.registry.GameRegistry;
 
 /**
  * @author MrArcane111, general3214, decebaldecebal
@@ -54,6 +61,7 @@ public class ModItems {
     public static Item emptyCanister;
     public static Item guideBook;
     public static Item partsBrass, partsSteel, partsCopper, partsIron, pileParts;
+    public static Item steamBucket;
 	
 	public static void initItems() {
 		etherium = new ItemMod(ItemIDs.etheriumID).setUnlocalizedName("etherium");
@@ -94,5 +102,10 @@ public class ModItems {
 		ModTools.initTools();
 		ModArmors.initArmors();
 		ModGuns.initGuns();
+		
+		steamBucket = new ItemBucket(ItemIDs.steamBucketID, 1000);
+		steamBucket.setUnlocalizedName("steamBucket").setContainerItem(Item.bucketEmpty);
+		GameRegistry.registerItem(steamBucket, "steamBucket");
+		FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("steam", FluidContainerRegistry.BUCKET_VOLUME), new ItemStack(steamBucket), new ItemStack(Item.bucketEmpty));
 	}
 }

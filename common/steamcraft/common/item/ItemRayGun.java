@@ -20,7 +20,10 @@ public class ItemRayGun extends ItemMod
 {
 	String raySound;
 	private Random random = new Random();
+	
+	@SuppressWarnings("all")
 	static HashMap<String, Object> ray = new HashMap();
+	@SuppressWarnings("all")
 	static HashMap<String, Long> soundDelay = new HashMap();
 
 	public ItemRayGun(int id, String raySound)
@@ -33,6 +36,7 @@ public class ItemRayGun extends ItemMod
 		this.setUnlocalizedName("raygun");
 	}
 
+	@SuppressWarnings("all")
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
 	{	

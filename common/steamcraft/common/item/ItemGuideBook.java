@@ -40,6 +40,7 @@ public class ItemGuideBook extends ItemMod {
 		this.setMaxStackSize(1);
 	}
 	
+	@SuppressWarnings("all")
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean flag) {

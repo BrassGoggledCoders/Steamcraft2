@@ -13,10 +13,11 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
+
 import common.steamcraft.client.core.helper.ClientHelper;
 import common.steamcraft.common.core.helper.CommonHelper;
 import common.steamcraft.common.lib2.LibInfo;
-import common.steamcraft.common.lib2.MaterialMod;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -35,6 +36,7 @@ public class ItemSteamDrill extends ItemMod
 		this.setMaxDamage(321);
 	}
 	
+	@SuppressWarnings("all")
 	@Override
 	public void addInformation(ItemStack itemStack, EntityPlayer entityPlayer, List list, boolean bool) 
 	{
@@ -210,6 +212,7 @@ public class ItemSteamDrill extends ItemMod
 		return itemStack;
 	}
 
+	@SuppressWarnings("all")
 	@Override
 	public boolean canHarvestBlock(Block block) 
 	{

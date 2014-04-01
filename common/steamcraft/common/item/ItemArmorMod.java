@@ -2,18 +2,26 @@ package common.steamcraft.common.item;
 
 import java.util.List;
 
-import common.steamcraft.client.core.helper.ClientHelper;
-import common.steamcraft.common.lib2.CreativeTabsMod;
-import common.steamcraft.common.lib2.LibInfo;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumArmorMaterial;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
+
+import common.steamcraft.client.core.helper.ClientHelper;
+import common.steamcraft.common.lib2.CreativeTabsMod;
+import common.steamcraft.common.lib2.LibInfo;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
+/**
+ * 
+ * @authors someone Edited by decebaldecebal.
+ *
+ */
 
 public class ItemArmorMod extends ItemArmor
 {
@@ -42,6 +50,8 @@ public class ItemArmorMod extends ItemArmor
 	{
 		return textureFile != null ? LibInfo.SC2_PREFIX + "textures/armor/" + textureFile + ".png" : null;
 	}
+	
+	@SuppressWarnings("all")
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean flag)
 	{
@@ -89,6 +99,11 @@ public class ItemArmorMod extends ItemArmor
 				//TODO: Implement this!
 				list.add("Can also be used to glide - without using power");
 			}
+			else if(stack.getItem() == ModArmors.jetpack)
+			{
+				list.add("Steam-powered Flight!");
+				list.add("Uses power from canisters");
+			}
 			/*
 			 * else if(stack.getItem() == ModArmors.steamWings)
 			 * {
@@ -106,11 +121,6 @@ public class ItemArmorMod extends ItemArmor
 				list.add("It's really a very large jump");
 				list.add("Uses power from canisters");
 			}
-			else if(stack.getItem() == ModArmors.jetpack)
-			{
-				list.add("Steam-powered Flight!")
-				list.add("Uses power from canisters")
-			}
 			else if(stack.getItem() == ModArmors.stilts)
 			{
 				list.add("Be three blocks tall!");
@@ -126,8 +136,29 @@ public class ItemArmorMod extends ItemArmor
 			 */
 			else
 			{
-			list.add("This armour has no documented abilities.");
+				list.add("This armour has no documented abilities.");
 			}
 		}
 	}
+	
+	@Override
+    public void onArmorTickUpdate(World world, EntityPlayer player, ItemStack stack)
+    {
+		if(stack.getItem() == ModArmors.aqualung)
+		{
+			if(player.getAir() <= 0)
+			{
+				player.setAir(300);
+				stack.damageItem(4, player); //tweak the damage taken a bit
+			}
+		}
+		else if (stack.getItem() == ModArmors.legBraces) 
+        {
+            if (player.fallDistance > 3.0F) 
+            {
+                player.fallDistance *= 0.888F;
+                stack.damageItem(1, player);
+            }
+        }
+    }
 }

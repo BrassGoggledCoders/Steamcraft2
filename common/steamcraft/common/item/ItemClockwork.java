@@ -21,7 +21,6 @@ import java.util.List;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -76,7 +75,8 @@ public class ItemClockwork extends ItemMod {
 	public int getDamageVsEntity(Entity entity) {
 		return this.damage;
 	}
-
+	
+	@SuppressWarnings("all")
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean flag) {
 		if (stack.getItemDamage() > 0) {

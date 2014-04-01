@@ -28,7 +28,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  *
- * @author MrArcane111, EntireCraft & general3214
+ * @author MrArcane111, decebaldecebal & general3214
  *
  */
 public class ItemCanister extends ItemMod
@@ -45,9 +45,11 @@ public class ItemCanister extends ItemMod
 		//gas = energy;
 	}
 
+	@SuppressWarnings("all")
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void getSubItems(int itemID, CreativeTabs tab, List list) {
+	public void getSubItems(int itemID, CreativeTabs tab, List list) 
+	{
 		list.add(new ItemStack(itemID, 1, getMaxDamage()));
 		list.add(new ItemStack(itemID, 1, 1));
 	}
@@ -83,6 +85,7 @@ public class ItemCanister extends ItemMod
 		return compound.getFloat("Steam") <= 0.0F;
 	}
 
+	@SuppressWarnings("all")
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack itemStack, EntityPlayer player, List list, boolean flag) {

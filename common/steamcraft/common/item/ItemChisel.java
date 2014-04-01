@@ -69,7 +69,7 @@ public class ItemChisel extends ItemMod implements IBoxable
 		int i1 = i + world.rand.nextInt(16) - world.rand.nextInt(16);
 		int j1 = j + world.rand.nextInt(8) - world.rand.nextInt(8);
 		int k1 = k + world.rand.nextInt(16) - world.rand.nextInt(16);
-		float f6 = (world.rand.nextFloat() - 0.5F) * 0.2F;
+		//float f6 = (world.rand.nextFloat() - 0.5F) * 0.2F;
 		float f4 = (world.rand.nextFloat() - 0.5F) * 0.2F;
 		float f5 = (world.rand.nextFloat() - 0.5F) * 0.2F;
 		double d1 = (double)i1 + (double)(i - i1) * d0 + (world.rand.nextDouble() - 0.5D) * 1.0D + 0.5D;

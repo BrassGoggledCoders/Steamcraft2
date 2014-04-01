@@ -32,6 +32,7 @@ tile.smog.name=Smog
 tile.hammerHead.name=Drop Hammer Head
 tile.blockObsidianTile.name=Obsidian Tiles
 tile.cryoIce.name=Cryogenic Ice
+tile.steamFluidBlock.name=Steam
 	#Ores
 tile.steamcraft:bornite.name=Bornite Ore
 tile.steamcraft:brimstone.name=Brimstone Ore
@@ -81,6 +82,7 @@ item.steamcanister.name=Steam Canister
 item.gascanister.name=Compressed Gas Canister
 item.emptycanister.name=Empty Canister
 item.guidebook.name=SteamCraft2 Guidebook
+item.steamBucket.name=Steam Bucket
 	#Guns
 item.smoothbarrel.name=Smooth Barrel
 item.rifledbarrel.name=Rifled Barrel

@@ -54,6 +54,7 @@ public class ItemElectricMod extends ItemMod implements ISpecialElectricItem, IE
 		this.setHasSubtypes(false);
 	}
 
+	@SuppressWarnings("all")
 	@Override
     public void getSubItems(int par1, CreativeTabs par2CreativeTabs, List par3List)
     {
@@ -61,6 +62,7 @@ public class ItemElectricMod extends ItemMod implements ISpecialElectricItem, IE
 		par3List.add(getUnchargedItem());
     }
 	
+	@SuppressWarnings("all")
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer entityplayer, List list, boolean flag) 
 	{

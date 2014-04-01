@@ -149,7 +149,7 @@ public class CommonProxy {
 			maxDistance = Integer.valueOf(128);
 		}
 
-		Iterator i$;
+		Iterator<?> i$;
 
 		if (packet != null) {
 			for (i$ = world.playerEntities.iterator(); i$.hasNext(); ) { 

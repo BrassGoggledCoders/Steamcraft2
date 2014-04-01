@@ -17,23 +17,19 @@
  */
 package common.steamcraft.common.block.machines;
 
-import common.steamcraft.api.IMachine;
-import common.steamcraft.client.core.helper.IconHelper;
-import common.steamcraft.common.lib2.CreativeTabsMod;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import java.util.Random;
+
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-import java.util.Random;
+import common.steamcraft.api.IMachine;
+import common.steamcraft.common.lib2.CreativeTabsMod;
 
 /**
  * @author MrArcane111

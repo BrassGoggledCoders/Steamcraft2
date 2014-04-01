@@ -140,7 +140,7 @@ public class TileEntityMachine extends TileEntity implements ISidedInventory
 	@Override
 	public boolean isInvNameLocalized()
 	{
-		return false;
+		return true;
 	}
 	
 	@Override
@@ -161,9 +161,9 @@ public class TileEntityMachine extends TileEntity implements ISidedInventory
 	}
 
 	@Override
-	public String getInvName() {
-		// TODO Auto-generated method stub
-		return null;
+	public String getInvName() 
+	{
+		return "SteamCraft 2 Inventory";
 	}
 
 	@Override
