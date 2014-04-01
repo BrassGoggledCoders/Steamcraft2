@@ -27,6 +27,8 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockFence;
 import net.minecraft.block.BlockStairs;
 import net.minecraft.block.material.Material;
+import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidRegistry;
 
 /**
  * @author MrArcane111
@@ -74,6 +76,8 @@ public class ModBlocks {
 	
 	public static Block hammerHead;
 	
+	public static Block steamBlock;
+	
 	public static void initBlocks() {
 		blockCastIron = new BlockMod(BlockIDs.blockCastIronID, Material.iron).setHardness(7F).setResistance(20F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("blockCastIron");
 		blockVolucite = new BlockMod(BlockIDs.blockVoluciteID, Material.rock).setHardness(50F).setResistance(6000000F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("blockVolucite");
@@ -113,12 +117,18 @@ public class ModBlocks {
 		etheriumCrystal = new BlockEtheriumCrystal(BlockIDs.etheriumCrystalID).setUnlocalizedName("etheriumCrystal");
 		
 		smog = new BlockSmog(BlockIDs.smogID, Material.air).setUnlocalizedName("smog");
-		
-
+				
 		ModMachines.initMachines();
 		ModOres.initOres();
 		ModPowerBlocks.initPowerBlocks();
 		registerBlocks();
+		
+		Fluid steamFluid = new Fluid("steam").setGaseous(true);
+		FluidRegistry.registerFluid(steamFluid);
+		steamBlock = new BlockFluidSteam(steamFluid, Material.water);
+		GameRegistry.registerBlock(steamBlock, "steamFluidBlock");
+		steamFluid.setUnlocalizedName(steamBlock.getUnlocalizedName());
+		steamFluid.setBlockID(steamBlock);
 	}
 	
 	public static void registerBlocks() {	
