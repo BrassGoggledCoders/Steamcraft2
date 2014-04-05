@@ -95,7 +95,7 @@ public class PacketHandler implements IPacketHandler {
 	 */
 	private void handleOpenServerGui(Packet250CustomPayload packet,
 			EntityPlayer player, DataInputStream dataStream) {
-		int guiID = GuiIDs.GUI_ID_VANITY;
+		int guiID;
 		
 		try {
 		guiID = dataStream.readInt();
