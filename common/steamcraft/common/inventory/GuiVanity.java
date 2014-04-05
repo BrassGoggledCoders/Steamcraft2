@@ -70,11 +70,9 @@ public class GuiVanity extends GuiContainer{
 	protected void drawGuiContainerForegroundLayer(int par1, int par2)
 	{
 
-	//String s = this.inventory.isInvNameLocalized() ? this.inventory.getInvName() : I18n.getString(this.inventory.getInvName());
-	// with the name "Custom Inventory", the 'Cu' will be drawn in the first slot
-	//this.fontRenderer.drawString(s, this.xSize - this.fontRenderer.getStringWidth(s), 12, 4210752);
-	// this just adds "Inventory" above the player's inventory below
-	//this.fontRenderer.drawString(I18n.getString("container.inventory"), 80, this.ySize - 96, 4210752);
+	String s = this.inventory.isInvNameLocalized() ? this.inventory.getInvName() : I18n.getString(this.inventory.getInvName());
+	this.fontRenderer.drawString(s, this.xSize - this.fontRenderer.getStringWidth(s), 12, 4210752);
+	this.fontRenderer.drawString(I18n.getString("container.inventory"), 80, this.ySize - 96, 4210752);
 	}
 
 	/**

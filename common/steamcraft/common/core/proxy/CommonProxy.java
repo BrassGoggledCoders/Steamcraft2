@@ -31,7 +31,6 @@ import net.minecraftforge.common.MinecraftForge;
 import org.lwjgl.input.Keyboard;
 
 import common.steamcraft.client.core.handler.GuiHandler;
-import common.steamcraft.client.core.handler.KeyHandlerMod;
 import common.steamcraft.common.SC2;
 import common.steamcraft.common.block.ModBlocks;
 import common.steamcraft.common.core.compat.ModCompatLayer;
@@ -116,12 +115,6 @@ public class CommonProxy {
 		GameRegistry.registerTileEntity(common.steamcraft.common.block.tile.TileEntityLightningRod.class, LibInfo.MOD_ID + "TELightningRod");
 		// Etherium Crystal
 		GameRegistry.registerTileEntity(common.steamcraft.common.block.tile.TileEntityEtheriumCrystal.class, LibInfo.MOD_ID + "TECrystal");
-	}
-
-	public void registerKeyBinds() {
-		KeyBinding[] key = { new KeyBinding("FKey", Keyboard.KEY_F) };
-		boolean[] repeat = { false };
-		KeyBindingRegistry.registerKeyBinding(new KeyHandlerMod(key, repeat));
 	}
 
 	public boolean isClient() {

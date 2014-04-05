@@ -20,15 +20,17 @@ package common.steamcraft.common.network;
 import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
 import java.io.IOException;
+import java.util.logging.Level;
 
+import common.steamcraft.client.lib2.GuiIDs;
 import common.steamcraft.common.SC2;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.INetworkManager;
 import net.minecraft.network.packet.Packet250CustomPayload;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.network.IPacketHandler;
 import cpw.mods.fml.common.network.Player;
 
@@ -52,6 +54,9 @@ public class PacketHandler implements IPacketHandler {
 	/** */
 	public static final int PACKET_GUI_INFO = 40;
 	
+	/** */
+	public static final int PACKET_OPEN_SERVER_GUI = 50;
+	
 	@Override
 	public void onPacketData(INetworkManager manager, Packet250CustomPayload packet, Player player) {
 		try{
@@ -61,14 +66,21 @@ public class PacketHandler implements IPacketHandler {
 			{
 				case 10:
 					handleUpdatePacket("server", dataStream, player);
+					break;
 				case 20:
 					handleUpdatePacket("request", dataStream, player);
+					break;
 				case 30:
 					handleUpdatePacket("client", dataStream, player);
+					break;
 				case 40:
 					handleGUIInfoPacket(dataStream);
+					break;
+				case 50:
+					handleOpenServerGui(packet, (EntityPlayer) player, dataStream);
+					break;
 				default:
-					
+					FMLLog.log(Level.WARNING, "", "[SC2] Unknown Packet Type:" + packetType);
 			}
 			}
 		catch(Exception e)
@@ -76,6 +88,25 @@ public class PacketHandler implements IPacketHandler {
 			e.printStackTrace();
 		}
 			}
+	/**
+	 * @param packet
+	 * @param player
+	 * @param dataStream
+	 */
+	private void handleOpenServerGui(Packet250CustomPayload packet,
+			EntityPlayer player, DataInputStream dataStream) {
+		int guiID = GuiIDs.GUI_ID_VANITY;
+		
+		try {
+		guiID = dataStream.readInt();
+		} catch (IOException e) {
+		e.printStackTrace();
+		return;
+		}
+
+		player.openGui(SC2.instance, guiID, player.worldObj, (int) player.posX, (int) player.posY, (int) player.posZ);
+		
+	}
 	/**
 	 * @throws IOException 
 	 * @param type

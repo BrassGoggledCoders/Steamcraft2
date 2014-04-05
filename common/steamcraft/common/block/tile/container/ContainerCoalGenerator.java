@@ -13,14 +13,14 @@ import common.steamcraft.common.block.tile.container.slot.SlotBattery;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ContaineCoalGenerator extends Container
+public class ContainerCoalGenerator extends Container
 {
 	protected TileEntityCoalGenerator Tile_E;
 	private int lastBurnTime = 0;
 	private int lastEnergy = 0;
 	private int lastItemBurnTime = 0;
 
-	public ContaineCoalGenerator(InventoryPlayer player, TileEntityCoalGenerator tile)
+	public ContainerCoalGenerator(InventoryPlayer player, TileEntityCoalGenerator tile)
 	{
 		Tile_E = tile;
 		this.addSlotToContainer(new Slot(tile, 0, 80, 54));
