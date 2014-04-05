@@ -19,10 +19,12 @@ package common.steamcraft.common.network;
 
 import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
+import java.io.IOException;
+
+import common.steamcraft.common.SC2;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.Container;
 import net.minecraft.network.INetworkManager;
 import net.minecraft.network.packet.Packet250CustomPayload;
 import net.minecraft.tileentity.TileEntity;
@@ -52,43 +54,69 @@ public class PacketHandler implements IPacketHandler {
 	
 	@Override
 	public void onPacketData(INetworkManager manager, Packet250CustomPayload packet, Player player) {
+		try{
 		DataInputStream dataStream = new DataInputStream(new ByteArrayInputStream(packet.data));
-		
-		try {
 			int packetType = dataStream.read();
-			
-			if ((packetType == 10) || (packetType == 20) || (packetType == 30)) {
-				int x = dataStream.readInt();
-				int y = dataStream.readInt();
-				int z = dataStream.readInt();
-				
-				World world = ((EntityPlayer) player).worldObj;
-				TileEntity te = world.getBlockTileEntity(x, y, z);
-				
-				if (te instanceof NetworkTile) {
-					NetworkTile netTE = (NetworkTile)te;
+			switch(packetType)
+			{
+				case 10:
+					handleUpdatePacket("server", dataStream, player);
+				case 20:
+					handleUpdatePacket("request", dataStream, player);
+				case 30:
+					handleUpdatePacket("client", dataStream, player);
+				case 40:
+					handleGUIInfoPacket(dataStream);
+				default:
 					
-					if (packetType == 10) {
-						netTE.readPacket(dataStream);
-					} else if (packetType == 20) {
-						netTE.sendPacket();
-					} else if (packetType == 30) {
-						netTE.readPacketFromClient(dataStream);
-					}
-				}
-			} else if (packetType == 40) {
-				int windowID = dataStream.readByte();
-				int barID = dataStream.readShort();
-				int content = dataStream.readInt();
-				
-				Container container = Minecraft.getMinecraft().thePlayer.openContainer;
-				
-				if ((container != null) && (container.windowId == windowID)) {
-					container.updateProgressBar(barID, content);
-				}
 			}
-		} catch (Exception e) {
+			}
+		catch(Exception e)
+		{
 			e.printStackTrace();
 		}
+			}
+	/**
+	 * @throws IOException 
+	 * @param type
+	 * @param dataStream
+	 * @param player
+	 */
+	private void handleGUIInfoPacket(DataInputStream dataStream) throws IOException {
+		int windowID = dataStream.readByte();
+		int barID = dataStream.readShort();
+		int content = dataStream.readInt();
+		
+		net.minecraft.inventory.Container container = Minecraft.getMinecraft().thePlayer.openContainer;
+		
+		if ((container != null) && (container.windowId == windowID)) {
+			container.updateProgressBar(barID, content);
+		}
 	}
+	/**
+	 * @throws IOException 
+	 * @param type
+	 * @param dataStream
+	 * @param player
+	 */
+	private void handleUpdatePacket(String type, DataInputStream dataStream, Player player) throws IOException {
+		int x = dataStream.readInt();
+		int y = dataStream.readInt();
+		int z = dataStream.readInt();
+		
+		World world = ((EntityPlayer) player).worldObj;
+		TileEntity te = world.getBlockTileEntity(x, y, z);
+		
+		if (te instanceof NetworkTile) {
+			NetworkTile netTE = (NetworkTile)te;
+			
+			if (type == "server") {
+				netTE.readPacket(dataStream);
+			} else if (type == "request") {
+				netTE.sendPacket();
+			} else if (type == "client") {
+				netTE.readPacketFromClient(dataStream);
+			}
+	}
+}
 }
