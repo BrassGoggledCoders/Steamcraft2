@@ -21,7 +21,8 @@ public class BlockCryoIce extends BlockMod {
 		blockResistance = 0.01F;
 		stepSound = Block.soundSnowFootstep;
 	}
-    @SideOnly(Side.CLIENT)
+    @Override
+	@SideOnly(Side.CLIENT)
 
     /**
      * Returns which pass should this block be rendered on. 0 for solids and 1 for alpha
@@ -34,7 +35,8 @@ public class BlockCryoIce extends BlockMod {
     /**
      * Returns the quantity of items to drop on block destruction.
      */
-    public int quantityDropped(Random par1Random)
+    @Override
+	public int quantityDropped(Random par1Random)
     {
         return 0;
     }
@@ -43,7 +45,8 @@ public class BlockCryoIce extends BlockMod {
      * Is this block (a) opaque and (b) a full 1m cube?  This determines whether or not to render the shared face of two
      * adjacent blocks and also whether the player can attach torches, redstone wire, etc to this block.
      */
-    public boolean isOpaqueCube()
+    @Override
+	public boolean isOpaqueCube()
     {
         return false;
     }
@@ -51,14 +54,16 @@ public class BlockCryoIce extends BlockMod {
     /**
      * If this block doesn't render as an ordinary block it will return False (examples: signs, buttons, stairs, etc)
      */
-    public boolean renderAsNormalBlock()
+    @Override
+	public boolean renderAsNormalBlock()
     {
         return false;
     }
     /**
      * Triggered whenever an entity collides with this block (enters into the block). Args: world, x, y, z, entity 
      */
-    public void onEntityCollidedWithBlock(World par1World, int par2, int par3, int par4, Entity par5Entity) 
+    @Override
+	public void onEntityCollidedWithBlock(World par1World, int par2, int par3, int par4, Entity par5Entity) 
     {
     	this.applyDeepFreeze(par5Entity);
     }

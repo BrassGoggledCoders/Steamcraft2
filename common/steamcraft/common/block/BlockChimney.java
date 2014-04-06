@@ -47,9 +47,9 @@ public class BlockChimney extends BlockContainerMod implements ISimpleBlockRende
 	{
 		meta &= 7;
 		if(meta >  2)
-			return this.sides[2];
+			return BlockChimney.sides[2];
 		else
-			return this.sides[meta & 7];
+			return BlockChimney.sides[meta & 7];
 	}
 
 	@Override

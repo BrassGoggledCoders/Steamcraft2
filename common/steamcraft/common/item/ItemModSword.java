@@ -47,7 +47,7 @@ public class ItemModSword extends ItemModTool
 	public boolean hitEntity(ItemStack stack, EntityLivingBase living1, EntityLivingBase living2)
 	{	
 		int itemDamage = stack.getItemDamage();
-		System.out.println(weaponDamage - (int) Math.round(itemDamage * 10 / 320));
+		System.out.println(weaponDamage - Math.round(itemDamage * 10 / 320));
 		stack.damageItem(1, living2);
 		return true;
 	}
@@ -55,7 +55,7 @@ public class ItemModSword extends ItemModTool
 	@Override
 	public boolean onBlockDestroyed(ItemStack stack, World world, int i, int j, int k, int l, EntityLivingBase living)
 	{
-		if((double)Block.blocksList[l].getBlockHardness(world, i, j, k) != 0.0D)
+		if(Block.blocksList[l].getBlockHardness(world, i, j, k) != 0.0D)
 		{
 			stack.damageItem(2, living);
 		}
@@ -112,7 +112,7 @@ public class ItemModSword extends ItemModTool
 	public Multimap getItemAttributeModifiers()
 	{
 		Multimap multimap = super.getItemAttributeModifiers();
-		multimap.put(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName(), new AttributeModifier(field_111210_e, "Weapon modifier", (double)this.weaponDamage, 0));
+		multimap.put(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName(), new AttributeModifier(field_111210_e, "Weapon modifier", this.weaponDamage, 0));
 		return multimap;
 	}
 }

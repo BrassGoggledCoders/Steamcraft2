@@ -48,11 +48,13 @@ return itemstack.getItem() instanceof IHat;
 * Returns the maximum stack size for a given slot (usually the same as getInventoryStackLimit(), but 1 in the case
 * of armor slots)
 */
+@Override
 public int getSlotStackLimit()
 {
 return 1;
 }
 
+@Override
 public void onSlotChange(ItemStack par1ItemStack, ItemStack par2ItemStack)
 {
     if (par1ItemStack.getItem() instanceof IHat)

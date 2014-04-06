@@ -178,7 +178,7 @@ public abstract class TileEntityElectricMachine extends TileEntityMachine implem
 	@SideOnly(Side.CLIENT)
 	public int getEnergyScaled(int par1)
 	{
-		return (int) (this.getEnergy()*1000 / this.energy.getMaxEnergy() / par1);
+		return this.getEnergy()*1000 / this.energy.getMaxEnergy() / par1;
 	}
 	
 	/**

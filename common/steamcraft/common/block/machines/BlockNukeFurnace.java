@@ -125,9 +125,9 @@ public class BlockNukeFurnace extends BlockContainerMod
 		}
 
 		int l = world.getBlockMetadata(i, j, k);
-		float f = (float)i + 0.5F;
-		float f1 = (float)j + 0.0F + (random.nextFloat() * 6F) / 16F;
-		float f2 = (float)k + 0.5F;
+		float f = i + 0.5F;
+		float f1 = j + 0.0F + (random.nextFloat() * 6F) / 16F;
+		float f2 = k + 0.5F;
 		float f3 = 0.52F;
 		float f4 = random.nextFloat() * 0.6F - 0.3F;
 
@@ -176,13 +176,13 @@ public class BlockNukeFurnace extends BlockContainerMod
 		
 		if(flag)
 		{
-			world.playSoundEffect((float)i + 0.5F, (float)j + 0.5F, (float)k + 0.5F, "mob.ghast.fireball", 1.0F, 0.8F + (world.rand.nextFloat() - world.rand.nextFloat()) * 0.7F);
-			world.playSoundEffect((float)i + 0.5F, (float)j + 0.5F, (float)k + 0.5F, "mob.zombiepig.zpigdeath", 0.1F, 0.1F + (world.rand.nextFloat() - world.rand.nextFloat()) * 0.6F);
-			world.playSoundEffect((float)i + 0.5F, (float)j + 0.5F, (float)k + 0.5F, "fire.ignite", 1.5F, 1.0F + (world.rand.nextFloat() - world.rand.nextFloat()) * 0.8F);
+			world.playSoundEffect(i + 0.5F, j + 0.5F, k + 0.5F, "mob.ghast.fireball", 1.0F, 0.8F + (world.rand.nextFloat() - world.rand.nextFloat()) * 0.7F);
+			world.playSoundEffect(i + 0.5F, j + 0.5F, k + 0.5F, "mob.zombiepig.zpigdeath", 0.1F, 0.1F + (world.rand.nextFloat() - world.rand.nextFloat()) * 0.6F);
+			world.playSoundEffect(i + 0.5F, j + 0.5F, k + 0.5F, "fire.ignite", 1.5F, 1.0F + (world.rand.nextFloat() - world.rand.nextFloat()) * 0.8F);
 			world.setBlock(i, j, k, ModMachines.nukeOvenActive.blockID);
 		} else
 		{
-			world.playSoundEffect((float)i + 0.5F, (float)j + 0.5F, (float)k + 0.5F, "ambient.cave.cave", 0.1F, 0.1F + (world.rand.nextFloat() - world.rand.nextFloat()) * 0.8F);
+			world.playSoundEffect(i + 0.5F, j + 0.5F, k + 0.5F, "ambient.cave.cave", 0.1F, 0.1F + (world.rand.nextFloat() - world.rand.nextFloat()) * 0.8F);
 			world.setBlock(i, j, k, ModMachines.nukeOvenIdle.blockID);
 		}
 		
@@ -205,7 +205,7 @@ public class BlockNukeFurnace extends BlockContainerMod
 	@Override
 	public void onBlockPlacedBy(World world, int i, int j, int k, EntityLivingBase living, ItemStack stack)
 	{
-		int l = MathHelper.floor_double((double)((living.rotationYaw * 4F) / 360F) + 0.5D) & 3;
+		int l = MathHelper.floor_double((living.rotationYaw * 4F) / 360F + 0.5D) & 3;
 
 		if(l == 0)
 		{
@@ -230,17 +230,17 @@ public class BlockNukeFurnace extends BlockContainerMod
 		//world.playSoundEffect((float)i, (float)j, (float)k, "ambient.weather.thunder", 0.5F, 2.6F + (world.rand.nextFloat() - world.rand.nextFloat()) * 0.9F);
 		//ModLoader.getMinecraftInstance().thePlayer.triggerAchievement(mod_Steamcraft.ach_RuinedEverything);
 		world.createExplosion(null, i, j, k, 25F, true);
-		double d = (double)((float)i + 0.5F) + (double)(0.5F) * 2.0000000000000001D;
-		double d1 = (double)((float)j + 0.7F) + (double)(0.5F) * 2.0000000000000001D;
-		double d2 = (double)((float)k + 0.5F) + (double)(0.5F) * 2.0000000000000001D;
+		double d = i + 0.5F + (0.5F) * 2.0000000000000001D;
+		double d1 = j + 0.7F + (0.5F) * 2.0000000000000001D;
+		double d2 = k + 0.5F + (0.5F) * 2.0000000000000001D;
 		world.spawnParticle("reddust", d, d1, d2, -1.0D, 1.0D, 0.0D);
 	}
 
 	public void spawnSmoke(World world, int i, int j, int k, Random random)
 	{
-		double d = (double)((float)i + 0.5F) + (double)(random.nextFloat() - 0.5F);
-		double d1 = (double)((float)j + 0.7F) + (double)(random.nextFloat() - 0.3F);
-		double d2 = (double)((float)k + 0.5F) + (double)(random.nextFloat() - 0.5F);
+		double d = (double)(i + 0.5F) + (double)(random.nextFloat() - 0.5F);
+		double d1 = (double)(j + 0.7F) + (double)(random.nextFloat() - 0.3F);
+		double d2 = (double)(k + 0.5F) + (double)(random.nextFloat() - 0.5F);
 		world.spawnParticle("smoke", d, d1, d2, 0.0D, 0.0D, 0.0D);
 	}
 
@@ -261,7 +261,7 @@ public class BlockNukeFurnace extends BlockContainerMod
 			{
 				furnace.addHeat(-10);
 				world.setBlockMetadataWithNotify(i + 1, j, k, 0, world.getBlockMetadata(i + 1, j, k));
-				world.playSoundEffect((float)i + 0.5F, (float)j + 0.5F, (float)k + 0.5F, "random.fizz", 0.5F, 2.6F + (world.rand.nextFloat() - world.rand.nextFloat()) * 0.8F);
+				world.playSoundEffect(i + 0.5F, j + 0.5F, k + 0.5F, "random.fizz", 0.5F, 2.6F + (world.rand.nextFloat() - world.rand.nextFloat()) * 0.8F);
 				spawnSmoke(world, i + 1, j, k, random);
 				spawnSmoke(world, i + 1, j, k, random);
 				spawnSmoke(world, i + 1, j, k, random);
@@ -271,7 +271,7 @@ public class BlockNukeFurnace extends BlockContainerMod
 			{
 				furnace.addHeat(-10);
 				world.setBlockMetadataWithNotify(i - 1, j, k, 0, world.getBlockMetadata(i - 1, j, k));
-				world.playSoundEffect((float)i + 0.5F, (float)j + 0.5F, (float)k + 0.5F, "random.fizz", 0.5F, 2.6F + (world.rand.nextFloat() - world.rand.nextFloat()) * 0.8F);
+				world.playSoundEffect(i + 0.5F, j + 0.5F, k + 0.5F, "random.fizz", 0.5F, 2.6F + (world.rand.nextFloat() - world.rand.nextFloat()) * 0.8F);
 				spawnSmoke(world, i - 1, j, k, random);
 				spawnSmoke(world, i - 1, j, k, random);
 				spawnSmoke(world, i - 1, j, k, random);
@@ -281,7 +281,7 @@ public class BlockNukeFurnace extends BlockContainerMod
 			{
 				furnace.addHeat(-10);
 				world.setBlockMetadataWithNotify(i, j + 1, k, 0, world.getBlockMetadata(i, j + 1, k));
-				world.playSoundEffect((float)i + 0.5F, (float)j + 0.5F, (float)k + 0.5F, "random.fizz", 0.5F, 2.6F + (world.rand.nextFloat() - world.rand.nextFloat()) * 0.8F);
+				world.playSoundEffect(i + 0.5F, j + 0.5F, k + 0.5F, "random.fizz", 0.5F, 2.6F + (world.rand.nextFloat() - world.rand.nextFloat()) * 0.8F);
 				spawnSmoke(world, i, j + 1, k, random);
 				spawnSmoke(world, i, j + 1, k, random);
 				spawnSmoke(world, i, j + 1, k, random);
@@ -291,7 +291,7 @@ public class BlockNukeFurnace extends BlockContainerMod
 			{
 				furnace.addHeat(-10);
 				world.setBlockMetadataWithNotify(i, j, k + 1, 0, world.getBlockMetadata(i, j, k + 1));
-				world.playSoundEffect((float)i + 0.5F, (float)j + 0.5F, (float)k + 0.5F, "random.fizz", 0.5F, 2.6F + (world.rand.nextFloat() - world.rand.nextFloat()) * 0.8F);
+				world.playSoundEffect(i + 0.5F, j + 0.5F, k + 0.5F, "random.fizz", 0.5F, 2.6F + (world.rand.nextFloat() - world.rand.nextFloat()) * 0.8F);
 				spawnSmoke(world, i, j, k + 1, random);
 				spawnSmoke(world, i, j, k + 1, random);
 				spawnSmoke(world, i, j, k + 1, random);
@@ -301,7 +301,7 @@ public class BlockNukeFurnace extends BlockContainerMod
 			{
 				furnace.addHeat(-10);
 				world.setBlockMetadataWithNotify(i, j, k - 1, 0, world.getBlockMetadata(i, j, k - 1));
-				world.playSoundEffect((float)i + 0.5F, (float)j + 0.5F, (float)k + 0.5F, "random.fizz", 0.5F, 2.6F + (world.rand.nextFloat() - world.rand.nextFloat()) * 0.8F);
+				world.playSoundEffect(i + 0.5F, j + 0.5F, k + 0.5F, "random.fizz", 0.5F, 2.6F + (world.rand.nextFloat() - world.rand.nextFloat()) * 0.8F);
 				spawnSmoke(world, i, j, k - 1, random);
 				spawnSmoke(world, i, j, k - 1, random);
 				spawnSmoke(world, i, j, k - 1, random);
@@ -311,7 +311,7 @@ public class BlockNukeFurnace extends BlockContainerMod
 			{
 				furnace.addHeat(-5);
 				world.setBlockMetadataWithNotify(i + 1, j, k, 0, world.getBlockMetadata(i + 1, j, k));
-				world.playSoundEffect((float)i + 0.5F, (float)j + 0.5F, (float)k + 0.5F, "random.fizz", 0.5F, 2.6F + (world.rand.nextFloat() - world.rand.nextFloat()) * 0.8F);
+				world.playSoundEffect(i + 0.5F, j + 0.5F, k + 0.5F, "random.fizz", 0.5F, 2.6F + (world.rand.nextFloat() - world.rand.nextFloat()) * 0.8F);
 				spawnSmoke(world, i + 1, j, k, random);
 				spawnSmoke(world, i + 1, j, k, random);
 				spawnSmoke(world, i + 1, j, k, random);
@@ -321,7 +321,7 @@ public class BlockNukeFurnace extends BlockContainerMod
 			{
 				furnace.addHeat(-5);
 				world.setBlockMetadataWithNotify(i - 1, j, k, 0, world.getBlockMetadata(i - 1, j, k));
-				world.playSoundEffect((float)i + 0.5F, (float)j + 0.5F, (float)k + 0.5F, "random.fizz", 0.5F, 2.6F + (world.rand.nextFloat() - world.rand.nextFloat()) * 0.8F);
+				world.playSoundEffect(i + 0.5F, j + 0.5F, k + 0.5F, "random.fizz", 0.5F, 2.6F + (world.rand.nextFloat() - world.rand.nextFloat()) * 0.8F);
 				spawnSmoke(world, i - 1, j, k, random);
 				spawnSmoke(world, i - 1, j, k, random);
 				spawnSmoke(world, i - 1, j, k, random);
@@ -331,7 +331,7 @@ public class BlockNukeFurnace extends BlockContainerMod
 			{
 				furnace.addHeat(-5);
 				world.setBlockMetadataWithNotify(i, j + 1, k, 0, world.getBlockMetadata(i, j + 1, k));
-				world.playSoundEffect((float)i + 0.5F, (float)j + 0.5F, (float)k + 0.5F, "random.fizz", 0.5F, 2.6F + (world.rand.nextFloat() - world.rand.nextFloat()) * 0.8F);
+				world.playSoundEffect(i + 0.5F, j + 0.5F, k + 0.5F, "random.fizz", 0.5F, 2.6F + (world.rand.nextFloat() - world.rand.nextFloat()) * 0.8F);
 				spawnSmoke(world, i, j + 1, k, random);
 				spawnSmoke(world, i, j + 1, k, random);
 				spawnSmoke(world, i, j + 1, k, random);
@@ -341,7 +341,7 @@ public class BlockNukeFurnace extends BlockContainerMod
 			{
 				furnace.addHeat(-5);
 				world.setBlockMetadataWithNotify(i, j, k + 1, 0, world.getBlockMetadata(i, j, k + 1));
-				world.playSoundEffect((float)i + 0.5F, (float)j + 0.5F, (float)k + 0.5F, "random.fizz", 0.5F, 2.6F + (world.rand.nextFloat() - world.rand.nextFloat()) * 0.8F);
+				world.playSoundEffect(i + 0.5F, j + 0.5F, k + 0.5F, "random.fizz", 0.5F, 2.6F + (world.rand.nextFloat() - world.rand.nextFloat()) * 0.8F);
 				spawnSmoke(world, i, j, k + 1, random);
 				spawnSmoke(world, i, j, k + 1, random);
 				spawnSmoke(world, i, j, k + 1, random);
@@ -351,7 +351,7 @@ public class BlockNukeFurnace extends BlockContainerMod
 			{
 				furnace.addHeat(-5);
 				world.setBlockMetadataWithNotify(i, j, k - 1, 0, world.getBlockMetadata(i, j, k - 1));
-				world.playSoundEffect((float)i + 0.5F, (float)j + 0.5F, (float)k + 0.5F, "random.fizz", 0.5F, 2.6F + (world.rand.nextFloat() - world.rand.nextFloat()) * 0.8F);
+				world.playSoundEffect(i + 0.5F, j + 0.5F, k + 0.5F, "random.fizz", 0.5F, 2.6F + (world.rand.nextFloat() - world.rand.nextFloat()) * 0.8F);
 				spawnSmoke(world, i, j, k - 1, random);
 				spawnSmoke(world, i, j, k - 1, random);
 				spawnSmoke(world, i, j, k - 1, random);
@@ -416,7 +416,7 @@ public class BlockNukeFurnace extends BlockContainerMod
 							}
 							
 							stack.stackSize -= i1;
-							EntityItem item = new EntityItem(world, (float)i + f, (float)j + f1, (float)k + f2, new ItemStack(stack.itemID, i1, stack.getItemDamage()));
+							EntityItem item = new EntityItem(world, i + f, j + f1, k + f2, new ItemStack(stack.itemID, i1, stack.getItemDamage()));
 							float f3 = 0.05F;
 							item.motionX = (float)furnaceRand.nextGaussian() * f3;
 							item.motionY = (float)furnaceRand.nextGaussian() * f3 + 0.2F;

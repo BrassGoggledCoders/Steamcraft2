@@ -30,7 +30,7 @@ public class ItemModTool extends ItemMod
 	{
 		super(id);
 		this.toolMaterial = toolMat;
-		this.blocksEffectiveAgainst = blockArray;
+		ItemModTool.blocksEffectiveAgainst = blockArray;
 		this.maxStackSize = 1;
 		this.setMaxDamage(toolMat.getMaxUses());
 		this.efficiencyOnProperMaterial = toolMat.getEfficiencyOnProperMaterial();
@@ -97,7 +97,7 @@ public class ItemModTool extends ItemMod
 	public Multimap getItemAttributeModifiers()
 	{
 		Multimap multimap = super.getItemAttributeModifiers();
-		multimap.put(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName(), new AttributeModifier(field_111210_e, "Tool modifier", (double)this.damageVsEntity, 0));
+		multimap.put(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName(), new AttributeModifier(field_111210_e, "Tool modifier", this.damageVsEntity, 0));
 		return multimap;
 	}
 
@@ -118,7 +118,7 @@ public class ItemModTool extends ItemMod
 	@Override
 	public void addInformation(ItemStack itemStack, EntityPlayer entityPlayer, List list, boolean bool) 
 	{
-		if(toolMaterial==MaterialMod.INSTANCE.STEAM_TOOL)
+		if(toolMaterial==MaterialMod.STEAM_TOOL)
 		{
 			if(!ClientHelper.isShiftKeyDown())
 			{
@@ -136,7 +136,7 @@ public class ItemModTool extends ItemMod
 	{
 		if(!world.isRemote)
 		{
-			if(toolMaterial==MaterialMod.INSTANCE.STEAM_TOOL)
+			if(toolMaterial==MaterialMod.STEAM_TOOL)
 			{
 				if(player.inventory.hasItem(ModItems.canisterSteam.itemID))
 				{

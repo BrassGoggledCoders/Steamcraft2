@@ -32,7 +32,7 @@ public class ModPowerBlocks
 	
 	public static void initPowerBlocks()
 	{
-		copperWire = (BlockCopperWire) new BlockCopperWire(BlockIDs.copperWireID);
+		copperWire = new BlockCopperWire(BlockIDs.copperWireID);
 		lightningRod = new BlockLightningRod(BlockIDs.lightningRodID);
 		
 		registerBlocks();
