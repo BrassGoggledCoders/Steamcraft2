@@ -31,7 +31,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 
 @Mod(modid = LibInfo.MOD_ID, name = LibInfo.MOD_NAME, version = LibInfo.VERSION)
-@NetworkMod(clientSideRequired = true, serverSideRequired = true, channels = {PacketHandler.SC2_CHANNEL}, packetHandler = PacketHandler.class)
+@NetworkMod(clientSideRequired = false, serverSideRequired = true, channels = {PacketHandler.SC2_CHANNEL}, packetHandler = PacketHandler.class)
 /**
  * @author MrArcane111
  *
