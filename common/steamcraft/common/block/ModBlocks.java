@@ -23,12 +23,11 @@ import net.minecraft.block.BlockStairs;
 import net.minecraft.block.material.Material;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
-
+import common.steamcraft.common.SC2;
 import common.steamcraft.common.block.machines.ModMachines;
 import common.steamcraft.common.lib2.BlockIDs;
 import common.steamcraft.common.lib2.CreativeTabsMod;
 import common.steamcraft.common.lib2.LibInfo;
-
 import cpw.mods.fml.common.registry.GameRegistry;
 
 /**
@@ -132,18 +131,30 @@ public class ModBlocks {
 		steamFluid.setBlockID(steamBlock);
 	}
 	
-	public static void registerBlocks() {	
+	public static void registerBlocks() {
+		if(BlockIDs.blockCastIronID < 0)
 		GameRegistry.registerBlock(blockCastIron, "blockCastIron");
+		if(BlockIDs.blockVoluciteID < 0)
 		GameRegistry.registerBlock(blockVolucite, "blockVolucite");
+		if(BlockIDs.blockBrassID < 0)
 		GameRegistry.registerBlock(blockBrass, "blockBrass");
+		if(BlockIDs.blockSteelID < 0)
 		GameRegistry.registerBlock(blockSteel, "blockSteel");
+		if(BlockIDs.blockAluminumID < 0)
 		GameRegistry.registerBlock(blockAluminum, "blockAluminum");
+		if(BlockIDs.blockCopperID < 0)
 		GameRegistry.registerBlock(blockCopper, "blockCopper");
+		if(BlockIDs.blockTinID < 0)
 		GameRegistry.registerBlock(blockTin, "blockTin");
+		if(BlockIDs.blockZincID < 0)
 		GameRegistry.registerBlock(blockZinc, "blockZinc");
+		if(BlockIDs.lampOnID < 0)
 		GameRegistry.registerBlock(lampOn, "lampOn");
+		if(BlockIDs.lampOffID < 0)
 		GameRegistry.registerBlock(lampOff, "lampOff");
+		if(BlockIDs.woodBrassID < 0)
 		GameRegistry.registerBlock(woodBrass, "woodBrass");
+		if(BlockIDs.leavesLampID < 0)
 		GameRegistry.registerBlock(leavesBrass, "leavesBrass");
 		GameRegistry.registerBlock(railingCastIron, "railingCastIron");
 		GameRegistry.registerBlock(gateCastIron, "gateCastIron");
