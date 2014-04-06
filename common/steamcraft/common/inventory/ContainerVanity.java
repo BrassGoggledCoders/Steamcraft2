@@ -74,6 +74,7 @@ return true;
 * Called when a player shift-clicks on a slot. You must override this or you will crash when someone does that.
 * Basically the same as every other container I make, since I define the same constant indices for all of them
 */
+@Override
 public ItemStack transferStackInSlot(EntityPlayer player, int par2)
 {
 ItemStack itemstack = null;

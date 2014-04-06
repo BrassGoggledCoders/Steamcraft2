@@ -260,6 +260,7 @@ public class GuiGuideBook extends GuiScreen {
 	/**
 	 * Draws the screen and all the components in it.
 	 */
+	@Override
 	public void drawScreen(int par1, int par2, float par3)
 	{
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);

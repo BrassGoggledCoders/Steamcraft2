@@ -34,6 +34,7 @@ public class TileEntitySteamFurnace extends TileEntityMachine
 		return "Steam Furnace";
 	}
 
+	@Override
 	public void readFromNBT(NBTTagCompound nbt)
 	{
 		super.readFromNBT(nbt);
@@ -44,6 +45,7 @@ public class TileEntitySteamFurnace extends TileEntityMachine
 		waterLevel = nbt.getShort("WaterLevel");
 	}
 
+	@Override
 	public void writeToNBT(NBTTagCompound nbt)
 	{
 		super.writeToNBT(nbt);
@@ -60,7 +62,7 @@ public class TileEntitySteamFurnace extends TileEntityMachine
 	public int getWaterScaled(int i)
 	{
 		if(waterLevel > 0){
-			return (int)(Math.ceil((double)((waterLevel * i) / 4096)));
+			return (int)(Math.ceil((waterLevel * i) / 4096));
 		}else{
 			return -2;
 		}

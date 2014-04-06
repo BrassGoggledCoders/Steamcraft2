@@ -42,7 +42,7 @@ public class ContainerCoalGenerator extends Container
 	{
 		super.addCraftingToCrafters(par1ICrafting);
 		par1ICrafting.sendProgressBarUpdate(this, 0, Tile_E.furnaceBurnTime);
-		par1ICrafting.sendProgressBarUpdate(this, 1, (int)Tile_E.getEnergy());
+		par1ICrafting.sendProgressBarUpdate(this, 1, Tile_E.getEnergy());
 		par1ICrafting.sendProgressBarUpdate(this, 2, Tile_E.currentItemBurnTime);
 	}
 
@@ -59,14 +59,14 @@ public class ContainerCoalGenerator extends Container
 				var2.sendProgressBarUpdate(this, 0, Tile_E.furnaceBurnTime);
 			
 			if (lastEnergy != Tile_E.getEnergyScaled(1))
-				var2.sendProgressBarUpdate(this, 1, (int)Tile_E.getEnergy());
+				var2.sendProgressBarUpdate(this, 1, Tile_E.getEnergy());
 			
 			if (lastItemBurnTime != Tile_E.currentItemBurnTime)
 				var2.sendProgressBarUpdate(this, 2, Tile_E.currentItemBurnTime);
 		}
 
 		lastBurnTime = Tile_E.furnaceBurnTime;
-		lastEnergy = (int)Tile_E.getEnergy();
+		lastEnergy = Tile_E.getEnergy();
 		lastItemBurnTime = Tile_E.currentItemBurnTime;
 	}
 

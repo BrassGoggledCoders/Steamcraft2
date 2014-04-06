@@ -95,7 +95,8 @@ public class ItemElectricMod extends ItemMod implements ISpecialElectricItem, IE
 		stack.setTagCompound(tag);
 	}
 	
-    public void onCreated(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
+    @Override
+	public void onCreated(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
     {
     	par1ItemStack = this.getUnchargedItem();
     }

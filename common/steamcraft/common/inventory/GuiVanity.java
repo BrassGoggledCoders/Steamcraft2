@@ -52,16 +52,18 @@ public class GuiVanity extends GuiContainer{
 	/**
 	* Draws the screen and all the components in it.
 	*/
+	@Override
 	public void drawScreen(int par1, int par2, float par3)
 	{
 	super.drawScreen(par1, par2, par3);
-	this.xSize_lo = (float)par1;
-	this.ySize_lo = (float)par2;
+	this.xSize_lo = par1;
+	this.ySize_lo = par2;
 	}
 
 	/**
 	* Draw the foreground layer for the GuiContainer (everything in front of the items)
 	*/
+	@Override
 	protected void drawGuiContainerForegroundLayer(int par1, int par2)
 	{
 
@@ -74,6 +76,7 @@ public class GuiVanity extends GuiContainer{
 	/**
 	* Draw the background layer for the GuiContainer (everything behind the items)
 	*/
+	@Override
 	protected void drawGuiContainerBackgroundLayer(float par1, int par2, int par3)
 	{
 	GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);

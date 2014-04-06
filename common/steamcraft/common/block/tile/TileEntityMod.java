@@ -107,22 +107,22 @@ public class TileEntityMod extends TileEntity implements IPowerReceptor, ISidedI
 	public void readFromNBT(NBTTagCompound tag) {
 		super.readFromNBT(tag);
 		NBTTagList tagList = tag.getTagList("Items");
-		this.inventory = new ItemStack[this.getSizeInventory()];
+		TileEntityMod.inventory = new ItemStack[this.getSizeInventory()];
 
 		for (int invLength = 0; invLength < tagList.tagCount(); ++invLength) {
 			NBTTagCompound tagCompound = (NBTTagCompound)tagList.tagAt(invLength);
 			byte byte0 = tagCompound.getByte("Slot");
 
-			if (byte0 >= 0 && byte0 < this.inventory.length) {
-				this.inventory[byte0] = ItemStack.loadItemStackFromNBT(tagCompound);
+			if (byte0 >= 0 && byte0 < TileEntityMod.inventory.length) {
+				TileEntityMod.inventory[byte0] = ItemStack.loadItemStackFromNBT(tagCompound);
 			}
 		}
 
-		this.powerHandler.setEnergy(tag.getFloat("Energy"));
-		this.timer = tag.getShort("Time");
+		TileEntityMod.powerHandler.setEnergy(tag.getFloat("Energy"));
+		TileEntityMod.timer = tag.getShort("Time");
 
 		if (tag.hasKey("CustomName")) {
-			this.displayName = tag.getString("CustomName");
+			TileEntityMod.displayName = tag.getString("CustomName");
 		}
 	}
 
@@ -132,15 +132,15 @@ public class TileEntityMod extends TileEntity implements IPowerReceptor, ISidedI
 	@Override 
 	public void writeToNBT(NBTTagCompound tag) {
 		super.writeToNBT(tag);
-		tag.setFloat("Energy", this.powerHandler.getEnergyStored());
+		tag.setFloat("Energy", TileEntityMod.powerHandler.getEnergyStored());
 		tag.setShort("Time", (short)timer);
 		NBTTagList tagList = new NBTTagList();
 
-		for (int invLength = 0; invLength < this.inventory.length; ++invLength) {
-			if (this.inventory[invLength] != null) {
+		for (int invLength = 0; invLength < TileEntityMod.inventory.length; ++invLength) {
+			if (TileEntityMod.inventory[invLength] != null) {
 				NBTTagCompound tagCompound = new NBTTagCompound();
 				tagCompound.setByte("Slot", (byte)invLength);
-				this.inventory[invLength].writeToNBT(tagCompound);
+				TileEntityMod.inventory[invLength].writeToNBT(tagCompound);
 				tagList.appendTag(tagCompound);
 			}
 		}
@@ -148,7 +148,7 @@ public class TileEntityMod extends TileEntity implements IPowerReceptor, ISidedI
 		tag.setTag("Items", tagList);
 
 		if (this.isInvNameLocalized()) {
-			tag.setString("CustomName", this.displayName);
+			tag.setString("CustomName", TileEntityMod.displayName);
 		}
 	}
 
@@ -195,18 +195,18 @@ public class TileEntityMod extends TileEntity implements IPowerReceptor, ISidedI
 	 */
 	@Override 
 	public ItemStack decrStackSize(int slot, int increment) {
-		if (this.inventory[slot] != null) {
+		if (TileEntityMod.inventory[slot] != null) {
 			ItemStack stack;
 
-			if (this.inventory[slot].stackSize <= increment) {
-				stack = this.inventory[slot];
-				this.inventory[slot] = null;
+			if (TileEntityMod.inventory[slot].stackSize <= increment) {
+				stack = TileEntityMod.inventory[slot];
+				TileEntityMod.inventory[slot] = null;
 				return stack;
 			} else {
-				stack = this.inventory[slot].splitStack(increment);
+				stack = TileEntityMod.inventory[slot].splitStack(increment);
 
-				if (this.inventory[slot].stackSize == 0) {
-					this.inventory[slot] = null;
+				if (TileEntityMod.inventory[slot].stackSize == 0) {
+					TileEntityMod.inventory[slot] = null;
 				}
 
 				return stack;
@@ -230,7 +230,7 @@ public class TileEntityMod extends TileEntity implements IPowerReceptor, ISidedI
 	 */
 	@Override 
 	public int[] getAccessibleSlotsFromSide(int slot) {
-		return this.EMPTY_INVENTORY;
+		return TileEntityMod.EMPTY_INVENTORY;
 	}
 
 	/**
@@ -267,9 +267,9 @@ public class TileEntityMod extends TileEntity implements IPowerReceptor, ISidedI
 	 */
 	@Override 
 	public ItemStack getStackInSlotOnClosing(int slot) {
-		if (this.inventory[slot] != null) {
-			ItemStack itemstack = this.inventory[slot];
-			this.inventory[slot] = null;
+		if (TileEntityMod.inventory[slot] != null) {
+			ItemStack itemstack = TileEntityMod.inventory[slot];
+			TileEntityMod.inventory[slot] = null;
 			return itemstack;
 		} else {
 			return null;
@@ -281,7 +281,7 @@ public class TileEntityMod extends TileEntity implements IPowerReceptor, ISidedI
 	 */
 	@Override 
 	public void setInventorySlotContents(int slot, ItemStack item) {
-		this.inventory[slot] = item;
+		TileEntityMod.inventory[slot] = item;
 
 		if (item != null && item.stackSize > this.getInventoryStackLimit()) {
 			item.stackSize = this.getInventoryStackLimit();
@@ -321,7 +321,7 @@ public class TileEntityMod extends TileEntity implements IPowerReceptor, ISidedI
 
 	@Override
 	public boolean isUseableByPlayer(EntityPlayer par1EntityPlayer) {
-		return getWorld().getBlockTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false : par1EntityPlayer.getDistanceSq((double)this.xCoord + 0.5D, (double)this.yCoord + 0.5D, (double)this.zCoord + 0.5D) <= 64.0D;
+		return getWorld().getBlockTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false : par1EntityPlayer.getDistanceSq(this.xCoord + 0.5D, this.yCoord + 0.5D, this.zCoord + 0.5D) <= 64.0D;
 	}
 
 	@Override

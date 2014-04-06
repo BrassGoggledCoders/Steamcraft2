@@ -50,7 +50,7 @@ public class GuiChemicalFurnace extends GuiContainer
 	protected void drawGuiContainerBackgroundLayer(float f, int i, int j)
 	{
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-		this.mc.getTextureManager().bindTexture(this.chemGuiTextures);
+		this.mc.getTextureManager().bindTexture(GuiChemicalFurnace.chemGuiTextures);
 		int size1 = (this.width - this.xSize) / 2;
 		int size2 = (this.height - this.ySize) / 2;
 		this.drawTexturedModalRect(size1, size2, 0, 0, this.xSize, this.ySize);

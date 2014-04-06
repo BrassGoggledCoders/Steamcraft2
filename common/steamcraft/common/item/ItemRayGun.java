@@ -41,7 +41,7 @@ public class ItemRayGun extends ItemMod
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
 	{	
-		MovingObjectPosition mop = this.getTargetBlock(world, player, false); // Grabs vector
+		MovingObjectPosition mop = ItemRayGun.getTargetBlock(world, player, false); // Grabs vector
 		Vec3 vec3 = player.getLookVec();
 		double tx = player.posX + vec3.xCoord * 10.0D;
 		double ty = player.posY + vec3.yCoord * 10.0D;
@@ -61,7 +61,7 @@ public class ItemRayGun extends ItemMod
 		{
 			soundDelay.put(player.username, Long.valueOf(0L));
 		}
-		if((!world.isRemote) && (((Long)soundDelay.get(player.username)).longValue() < System.currentTimeMillis()))
+		if((!world.isRemote) && (soundDelay.get(player.username).longValue() < System.currentTimeMillis()))
 		{
 			world.playSoundEffect(tx, ty, tz, LibInfo.SC2_PREFIX + "raygun", 0.35F, 1.0F);
 			soundDelay.put(player.username, Long.valueOf(System.currentTimeMillis() + 1200L));
@@ -164,9 +164,9 @@ public class ItemRayGun extends ItemMod
 	{
 		for(int l = 0; l < 4; ++l)
 		{
-			double d1 = (double)((float)x + random.nextFloat());
-			double d2 = (double)((float)y + random.nextFloat());
-			double d3 = (double)((float)z + random.nextFloat());
+			double d1 = x + random.nextFloat();
+			double d2 = y + random.nextFloat();
+			double d3 = z + random.nextFloat();
 			world.spawnParticle("smoke", d1, d2, d3, 0.0D, 0.0D, 0.0D);
 		}
 	}

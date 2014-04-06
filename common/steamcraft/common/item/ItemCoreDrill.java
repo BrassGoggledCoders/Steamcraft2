@@ -17,9 +17,9 @@ public class ItemCoreDrill extends ItemMod
 	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int i, int j, int k, int l, float f1, float f2, float f3)
 	{
 		world.createExplosion(player, i, j, k, 2F, true);
-		double d = (double)((float)i + 0.5F) + (double)(0.5F) * 2.0000000000000001D;
-		double d1 = (double)((float)j + 0.7F) + (double)(0.5F) * 2.0000000000000001D;
-		double d2 = (double)((float)k + 0.5F) + (double)(0.5F) * 2.0000000000000001D;
+		double d = i + 0.5F + (0.5F) * 2.0000000000000001D;
+		double d1 = j + 0.7F + (0.5F) * 2.0000000000000001D;
+		double d2 = k + 0.5F + (0.5F) * 2.0000000000000001D;
 		world.spawnParticle("smoke", d, d1, d2, 0.0D, 10.0D, 0.0D);
 		stack.damageItem(1, player);
 		return true;

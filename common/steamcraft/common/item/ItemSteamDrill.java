@@ -113,7 +113,7 @@ public class ItemSteamDrill extends ItemMod
 		                		
 		                		ItemStack result = new ItemStack(nblock.idDropped(meta, random, 0), nblock.quantityDropped(meta, 0, random), nblock.damageDropped(meta));
 
-		                		if ((double)nblock.getBlockHardness(world, xPos, yPos, zPos) != 0.0D)
+		                		if (nblock.getBlockHardness(world, xPos, yPos, zPos) != 0.0D)
 		                			itemStack.damageItem(1, player);
 		                					                		
 		                		if(!world.isRemote && result!=null)
@@ -165,7 +165,7 @@ public class ItemSteamDrill extends ItemMod
 	public boolean onBlockDestroyed(ItemStack stack, World world, int i, int j, int k, int l, EntityLivingBase living)
     {
 		stack.damageItem(1, living);
-		world.playSoundAtEntity((EntityPlayer)living, LibInfo.SC2_PREFIX + "drill", 1.0F, 1.0F);
+		world.playSoundAtEntity(living, LibInfo.SC2_PREFIX + "drill", 1.0F, 1.0F);
 		world.spawnParticle("smoke", i + 0.5, j + 0.5, k + 0.5, random.nextGaussian(), random.nextGaussian(), random.nextGaussian());
         return true;
     }
@@ -216,9 +216,9 @@ public class ItemSteamDrill extends ItemMod
 	@Override
 	public boolean canHarvestBlock(Block block) 
 	{
-		for (int i = 0; i < this.blocksEffectiveAgainst.length; ++i) 
+		for (int i = 0; i < ItemSteamDrill.blocksEffectiveAgainst.length; ++i) 
 		{
-            if (this.blocksEffectiveAgainst[i] == block)
+            if (ItemSteamDrill.blocksEffectiveAgainst[i] == block)
             {
                 return true;
             }

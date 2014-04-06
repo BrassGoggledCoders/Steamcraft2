@@ -76,6 +76,7 @@ public class ItemClockwork extends ItemMod {
 		return this.damage;
 	}
 	
+	@Override
 	@SuppressWarnings("all")
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean flag) {

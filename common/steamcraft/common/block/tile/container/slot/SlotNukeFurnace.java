@@ -70,9 +70,9 @@ public class SlotNukeFurnace extends Slot
                 i = 0;
             } else if(exp < 1.0F)
             {
-                j = MathHelper.floor_float((float)i * exp);
+                j = MathHelper.floor_float(i * exp);
 
-                if(j < MathHelper.ceiling_float_int((float)i * exp) && (float)Math.random() < (float)i * exp - (float)j)
+                if(j < MathHelper.ceiling_float_int(i * exp) && (float)Math.random() < i * exp - j)
                 {
                     ++j;
                 }

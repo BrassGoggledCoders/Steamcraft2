@@ -131,6 +131,7 @@ public class TileEntityCoalGenerator extends TileEntityElectricGenerator impleme
 		return false;
 	}
 
+	@Override
 	public boolean isItemValidForSlot(int i, ItemStack itemstack)
 	{
 		if(i == 0)

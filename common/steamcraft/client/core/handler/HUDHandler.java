@@ -38,7 +38,7 @@ public class HUDHandler implements ITickHandler
 
 		if(mc.gameSettings.thirdPersonView == 0 && helmet != null && helmet.itemID == ModArmors.brassGoggles.itemID)// && SC_KeyHandler.keyPressed)
 		{
-			mc.getTextureManager().bindTexture(this.overlay);
+			mc.getTextureManager().bindTexture(HUDHandler.overlay);
 			GL11.glPushAttrib(GL11.GL_ALL_ATTRIB_BITS);
 			Tessellator tessellator = Tessellator.instance;
 			ScaledResolution scale = new ScaledResolution(mc.gameSettings, mc.displayWidth, mc.displayHeight);
@@ -52,9 +52,9 @@ public class HUDHandler implements ITickHandler
 			GL11.glEnable(GL11.GL_BLEND);
 			GL11.glClearDepth(1.0);
 			tessellator.startDrawingQuads();
-			tessellator.addVertexWithUV(0.0D, (double)height, 90.0D, 0.0D, 1.0D);
-			tessellator.addVertexWithUV((double)width, (double)height, 90.0D, 1.0D, 1.0D);
-			tessellator.addVertexWithUV((double)width, 0.0D, 90.0D, 1.0D, 0.0D);
+			tessellator.addVertexWithUV(0.0D, height, 90.0D, 0.0D, 1.0D);
+			tessellator.addVertexWithUV(width, height, 90.0D, 1.0D, 1.0D);
+			tessellator.addVertexWithUV(width, 0.0D, 90.0D, 1.0D, 0.0D);
 			tessellator.addVertexWithUV(0.0D, 0.0D, 90.0D, 0.0D, 0.0D);
 			tessellator.draw();
 			GL11.glDepthMask(true);

@@ -42,7 +42,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 public class BlockSteamPipe extends BlockContainerMod {
 	public BlockSteamPipe(int id, Material mat) {
-		super(id, mat.iron);
+		super(id, Material.iron);
 		this.setCreativeTab(CreativeTabsMod.tabSCBlocks);
 	}
 
