@@ -63,8 +63,9 @@ return (ExtendedPlayer) player.getExtendedProperties(EXT_PROP_NAME);
 public void saveNBTData(NBTTagCompound compound)
 {
 NBTTagCompound properties = new NBTTagCompound();
-this.inventory.writeToNBT(properties);
 compound.setTag(EXT_PROP_NAME, properties);
+this.inventory.writeToNBT(properties);
+
 }
 @Override
 public void loadNBTData(NBTTagCompound compound)
@@ -83,7 +84,7 @@ ByteArrayOutputStream bos = new ByteArrayOutputStream(8);
 DataOutputStream outputStream = new DataOutputStream(bos);
 try {
 outputStream.writeInt(PacketHandler.PACKET_EXTENDED_PROPERTIES);
-//outputStream.writeInt(arg0);
+
 } catch (Exception ex) {
 ex.printStackTrace();
 }

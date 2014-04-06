@@ -47,7 +47,6 @@ public class KeyHandlerVanity extends KeyHandler
 	@Override
 	public void keyUp(EnumSet<TickType> types, KeyBinding kb, boolean tickEnd)
 	{
-		// What to do when key is released/up
 		keyPressed = false;
 	}
 	

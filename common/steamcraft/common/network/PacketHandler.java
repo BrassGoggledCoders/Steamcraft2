@@ -101,7 +101,6 @@ public class PacketHandler implements IPacketHandler {
 	private void handleExtendedProperties(Packet250CustomPayload packet,
 			Player player, DataInputStream dataStream) {
 		
-		
 	}
 	/**
 	 * @param packet

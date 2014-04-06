@@ -37,6 +37,8 @@ import common.steamcraft.common.inventory.ContainerVanity;
 import common.steamcraft.common.inventory.ExtendedPlayer;
 import common.steamcraft.common.inventory.GuiVanity;
 import cpw.mods.fml.common.network.IGuiHandler;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author MrArcane111
@@ -71,7 +73,6 @@ public class GuiHandler implements IGuiHandler
 		
 		return null;
 	}
-
 	@Override
 	public Object getClientGuiElement(int id, EntityPlayer player, World world, int x, int y, int z) {
 		TileEntity tile = world.getBlockTileEntity(x, y, z);

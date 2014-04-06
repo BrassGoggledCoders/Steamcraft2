@@ -44,7 +44,7 @@ public class PlayerInventoryVanity implements IInventory {
 
 	public PlayerInventoryVanity()
 	{
-	//Empty Method
+	
 	}
 
 	@Override
