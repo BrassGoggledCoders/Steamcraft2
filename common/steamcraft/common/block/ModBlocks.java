@@ -123,7 +123,7 @@ public class ModBlocks {
 		ModPowerBlocks.initPowerBlocks();
 		registerBlocks();
 		
-		Fluid steamFluid = new Fluid("steam").setGaseous(true);
+		Fluid steamFluid = new Fluid("steam").setGaseous(true).setTemperature(700).setDensity(-100).setViscosity(500).setLuminosity(1);
 		FluidRegistry.registerFluid(steamFluid);
 		steamBlock = new BlockFluidSteam(steamFluid, Material.water);
 		GameRegistry.registerBlock(steamBlock, "steamFluidBlock");

@@ -100,5 +100,6 @@ public class ItemIDs
 	public static int jetpackID = SC2.proxy.cfgHandler.loadItem("jetpackID");
 	public static int pilePartsID = SC2.proxy.cfgHandler.loadItem("partsPileID");
 	public static int ingotsMetalID = SC2.proxy.cfgHandler.loadItem("ingotsMetalID");
-	public static int steamBucketID = SC2.proxy.cfgHandler.loadItem("steamBucketID");;
+	public static int steamBucketID = SC2.proxy.cfgHandler.loadItem("steamBucketID");
+	public static int topHatID = SC2.proxy.cfgHandler.loadItem("topHatID");
 }

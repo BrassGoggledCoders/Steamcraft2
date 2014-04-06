@@ -17,6 +17,8 @@
  */
 package common.steamcraft.common.inventory;
 
+import common.steamcraft.api.IHat;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
@@ -46,8 +48,7 @@ super(inventory, par2, par3, par4);
 @Override
 public boolean isItemValid(ItemStack itemstack)
 {
-
-return itemstack.getItem() instanceof Item;//instanceof ItemHat;
+return itemstack.getItem() instanceof IHat;
 }
 /**
 * Returns the maximum stack size for a given slot (usually the same as getInventoryStackLimit(), but 1 in the case
