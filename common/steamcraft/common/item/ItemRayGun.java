@@ -1,8 +1,8 @@
 package common.steamcraft.common.item;
 
-import common.steamcraft.common.SC2;
-import common.steamcraft.common.lib2.CreativeTabsMod;
-import common.steamcraft.common.lib2.LibInfo;
+import java.util.HashMap;
+import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -13,8 +13,9 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 
-import java.util.HashMap;
-import java.util.Random;
+import common.steamcraft.common.SC2;
+import common.steamcraft.common.lib2.CreativeTabsMod;
+import common.steamcraft.common.lib2.LibInfo;
 
 public class ItemRayGun extends ItemMod
 {

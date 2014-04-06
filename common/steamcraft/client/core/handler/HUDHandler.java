@@ -1,9 +1,7 @@
 package common.steamcraft.client.core.handler;
 
-import common.steamcraft.client.lib2.ClientResources;
-import common.steamcraft.common.item.ModArmors;
-import cpw.mods.fml.common.ITickHandler;
-import cpw.mods.fml.common.TickType;
+import java.util.EnumSet;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.Tessellator;
@@ -13,7 +11,11 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
 
-import java.util.EnumSet;
+import common.steamcraft.client.lib2.ClientResources;
+import common.steamcraft.common.item.ModArmors;
+
+import cpw.mods.fml.common.ITickHandler;
+import cpw.mods.fml.common.TickType;
 
 public class HUDHandler implements ITickHandler
 {

@@ -17,7 +17,6 @@
  */
 package common.steamcraft.common.item;
 
-import ic2.api.item.Items;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBucket;

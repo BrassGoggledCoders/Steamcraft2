@@ -17,18 +17,19 @@
  */
 package common.steamcraft.common.block;
 
-import common.steamcraft.common.block.machines.ModMachines;
-import common.steamcraft.common.lib2.BlockIDs;
-import common.steamcraft.common.lib2.CreativeTabsMod;
-import common.steamcraft.common.lib2.LibInfo;
-import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.common.registry.LanguageRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFence;
 import net.minecraft.block.BlockStairs;
 import net.minecraft.block.material.Material;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
+
+import common.steamcraft.common.block.machines.ModMachines;
+import common.steamcraft.common.lib2.BlockIDs;
+import common.steamcraft.common.lib2.CreativeTabsMod;
+import common.steamcraft.common.lib2.LibInfo;
+
+import cpw.mods.fml.common.registry.GameRegistry;
 
 /**
  * @author MrArcane111

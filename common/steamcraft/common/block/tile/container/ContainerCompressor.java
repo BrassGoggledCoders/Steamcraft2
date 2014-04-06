@@ -6,9 +6,11 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
+
 import common.steamcraft.common.block.tile.TileEntityCompressor;
 import common.steamcraft.common.block.tile.container.slot.SlotBattery;
 import common.steamcraft.common.item.ModItems;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 

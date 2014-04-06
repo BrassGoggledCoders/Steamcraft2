@@ -17,16 +17,18 @@
  */
 package common.steamcraft.common.network;
 
-import common.steamcraft.common.lib2.LibInfo;
-import cpw.mods.fml.common.IPlayerTracker;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.ChatMessageComponent;
-import net.minecraft.util.EnumChatFormatting;
-
 import java.io.InputStream;
 import java.net.URL;
 import java.util.Properties;
 import java.util.logging.Level;
+
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.ChatMessageComponent;
+import net.minecraft.util.EnumChatFormatting;
+
+import common.steamcraft.common.lib2.LibInfo;
+
+import cpw.mods.fml.common.IPlayerTracker;
 
 public class PlayerTracker implements IPlayerTracker {	
 	/** Should the game check for a new SC2 update? */

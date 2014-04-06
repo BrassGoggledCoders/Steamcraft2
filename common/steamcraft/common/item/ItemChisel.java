@@ -1,16 +1,18 @@
 package common.steamcraft.common.item;
 
-import common.steamcraft.common.block.ModBlocks;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import ic2.api.item.IBoxable;
+
+import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-import ic2.api.item.IBoxable;
+import common.steamcraft.common.block.ModBlocks;
 
-import java.util.Random;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemChisel extends ItemMod implements IBoxable
 {

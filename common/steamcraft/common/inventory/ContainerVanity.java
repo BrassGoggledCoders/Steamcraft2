@@ -25,8 +25,6 @@ import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemBucket;
 import net.minecraft.item.ItemStack;
 
-import com.warlordjones.steampunkery.gui.player.SlotArmor;
-
 /**
  * @author warlordjones
  *

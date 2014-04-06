@@ -21,9 +21,10 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemSword;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
+
+import common.steamcraft.api.IHat;
 
 /**
  * @author warlordjones
@@ -136,6 +137,10 @@ public class PlayerInventoryVanity implements IInventory {
 	{
 	if (this.getStackInSlot(i) != null && this.getStackInSlot(i).stackSize == 0)
 	this.setInventorySlotContents(i, null);
+	if(this.getStackInSlot(i).getItem() instanceof IHat)
+		{
+			
+		}
 	}
 	}
 

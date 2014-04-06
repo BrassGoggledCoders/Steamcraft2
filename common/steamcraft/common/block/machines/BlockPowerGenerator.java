@@ -13,8 +13,8 @@
  */
 package common.steamcraft.common.block.machines;
 
-import common.steamcraft.common.block.tile.TileEntityMachine;
-import common.steamcraft.common.lib2.CreativeTabsMod;
+import java.util.Random;
+
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
@@ -22,7 +22,8 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-import java.util.Random;
+import common.steamcraft.common.block.tile.TileEntityMachine;
+import common.steamcraft.common.lib2.CreativeTabsMod;
 
 /**
  * @author MrArcane111, based off the Buildcraft power system

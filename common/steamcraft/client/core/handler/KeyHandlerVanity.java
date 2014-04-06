@@ -5,10 +5,11 @@ import java.util.EnumSet;
 import net.minecraft.client.entity.EntityClientPlayerMP;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.player.EntityPlayer;
+
 import common.steamcraft.client.lib2.GuiIDs;
-import common.steamcraft.common.SC2;
 import common.steamcraft.common.inventory.ContainerVanity;
 import common.steamcraft.common.network.PacketOpenServerGui;
+
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.client.registry.KeyBindingRegistry.KeyHandler;
 import cpw.mods.fml.common.TickType;

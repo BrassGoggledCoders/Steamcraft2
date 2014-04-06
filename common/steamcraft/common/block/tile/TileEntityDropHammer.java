@@ -17,16 +17,15 @@
  */
 package common.steamcraft.common.block.tile;
 
-import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.tileentity.TileEntityFurnace;
-import common.steamcraft.common.block.machines.BlockCoalGenerator;
+
 import common.steamcraft.common.block.machines.BlockCompressor;
 import common.steamcraft.common.core.handler.recipe.CompressorHandler;
 import common.steamcraft.common.core.handler.recipe.CrushingHandler;
 import common.steamcraft.common.item.ModItems;
 import common.steamcraft.common.util.EnergyUtils;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 

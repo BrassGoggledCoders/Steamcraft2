@@ -16,6 +16,7 @@ package common.steamcraft.client.core.handler;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+
 import common.steamcraft.client.gui.GuiChemicalFurnace;
 import common.steamcraft.client.gui.GuiCoalGenerator;
 import common.steamcraft.client.gui.GuiCompressor;
@@ -36,9 +37,8 @@ import common.steamcraft.common.block.tile.container.ContainerSteamFurnace;
 import common.steamcraft.common.inventory.ContainerVanity;
 import common.steamcraft.common.inventory.ExtendedPlayer;
 import common.steamcraft.common.inventory.GuiVanity;
+
 import cpw.mods.fml.common.network.IGuiHandler;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author MrArcane111

@@ -1,6 +1,5 @@
 package common.steamcraft.client.core.handler;
 
-import common.steamcraft.common.lib2.LibInfo;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.renderer.Tessellator;
@@ -10,6 +9,8 @@ import net.minecraft.util.Icon;
 import net.minecraftforge.client.IItemRenderer;
 
 import org.lwjgl.opengl.GL11;
+
+import common.steamcraft.common.lib2.LibInfo;
 
 public class ItemRenderer implements IItemRenderer
 {

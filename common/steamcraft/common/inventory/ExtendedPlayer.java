@@ -20,8 +20,6 @@ package common.steamcraft.common.inventory;
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 
-import common.steamcraft.common.network.PacketHandler;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -29,6 +27,9 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.packet.Packet250CustomPayload;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IExtendedEntityProperties;
+
+import common.steamcraft.common.network.PacketHandler;
+
 import cpw.mods.fml.common.network.PacketDispatcher;
 import cpw.mods.fml.common.network.Player;
 

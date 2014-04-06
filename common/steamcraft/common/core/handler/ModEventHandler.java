@@ -17,12 +17,7 @@
  */
 package common.steamcraft.common.core.handler;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
@@ -32,6 +27,7 @@ import net.minecraftforge.event.entity.EntityEvent.EntityConstructing;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
 import net.minecraftforge.event.entity.player.FillBucketEvent;
+
 import common.steamcraft.common.block.ModBlocks;
 import common.steamcraft.common.inventory.ExtendedPlayer;
 import common.steamcraft.common.item.ModArmors;

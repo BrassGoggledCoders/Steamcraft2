@@ -20,6 +20,7 @@ package common.steamcraft.common;
 import common.steamcraft.common.core.proxy.CommonProxy;
 import common.steamcraft.common.lib2.LibInfo;
 import common.steamcraft.common.network.PacketHandler;
+
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;

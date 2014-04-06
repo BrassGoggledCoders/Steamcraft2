@@ -1,11 +1,7 @@
 package common.steamcraft.common.item;
 
-import com.google.common.collect.Multimap;
+import java.util.List;
 
-import common.steamcraft.client.core.helper.ClientHelper;
-import common.steamcraft.common.lib2.MaterialMod;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -15,7 +11,12 @@ import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-import java.util.List;
+import com.google.common.collect.Multimap;
+import common.steamcraft.client.core.helper.ClientHelper;
+import common.steamcraft.common.lib2.MaterialMod;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemModTool extends ItemMod
 {

@@ -17,17 +17,12 @@
  */
 package common.steamcraft.common.inventory;
 
-import common.steamcraft.api.IHat;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+
+import common.steamcraft.api.IHat;
 
 /**
  * @author warlordjones
@@ -57,5 +52,13 @@ return itemstack.getItem() instanceof IHat;
 public int getSlotStackLimit()
 {
 return 1;
+}
+
+public void onSlotChange(ItemStack par1ItemStack, ItemStack par2ItemStack)
+{
+    if (par1ItemStack.getItem() instanceof IHat)
+    {
+        EntityPlayer player;
+    }
 }
 }

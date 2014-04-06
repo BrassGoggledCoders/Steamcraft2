@@ -17,39 +17,6 @@
  */
 package common.steamcraft.common.block.tile;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Random;
-
-import net.minecraft.block.Block;
-import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.ISidedInventory;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
-import net.minecraft.tileentity.TileEntityFurnace;
-import net.minecraft.util.MathHelper;
-import net.minecraft.world.World;
-import net.minecraftforge.common.ForgeDirection;
-import net.minecraftforge.fluids.FluidContainerRegistry;
-import net.minecraftforge.fluids.FluidRegistry;
-import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.FluidTank;
-import net.minecraftforge.fluids.IFluidTank;
-
-import common.steamcraft.api.CoupleUtil;
-import common.steamcraft.api.ISteamConsumer;
-import common.steamcraft.api.ISteamProvider;
-import common.steamcraft.api.ISteamStorage;
-import common.steamcraft.common.SC2;
-import common.steamcraft.common.item.ItemCanister;
-import common.steamcraft.common.item.ModItems;
-import common.steamcraft.common.util.EffectUtil;
 
 
 /**

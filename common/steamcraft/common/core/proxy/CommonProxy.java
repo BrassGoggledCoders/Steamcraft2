@@ -20,15 +20,12 @@ package common.steamcraft.common.core.proxy;
 import java.util.Iterator;
 
 import net.minecraft.client.model.ModelBiped;
-import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
-
-import org.lwjgl.input.Keyboard;
 
 import common.steamcraft.client.core.handler.GuiHandler;
 import common.steamcraft.common.SC2;
@@ -48,7 +45,6 @@ import common.steamcraft.common.lib2.EntityIDs;
 import common.steamcraft.common.lib2.LibInfo;
 import common.steamcraft.common.network.PlayerTracker;
 
-import cpw.mods.fml.client.registry.KeyBindingRegistry;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;

@@ -33,5 +33,4 @@ public class ItemHat extends ItemMod implements IHat {
 		super(id);
 		
 	}
-
 }

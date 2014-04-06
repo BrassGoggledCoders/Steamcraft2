@@ -1,6 +1,5 @@
 package common.steamcraft.common.block.tile.container.slot;
 
-import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
@@ -10,6 +9,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.stats.AchievementList;
 import net.minecraft.util.MathHelper;
+import cpw.mods.fml.common.registry.GameRegistry;
 
 public class SlotNukeFurnace extends Slot
 {	
