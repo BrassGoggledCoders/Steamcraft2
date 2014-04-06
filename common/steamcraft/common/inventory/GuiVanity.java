@@ -71,8 +71,9 @@ public class GuiVanity extends GuiContainer{
 	{
 
 	String s = this.inventory.isInvNameLocalized() ? this.inventory.getInvName() : I18n.getString(this.inventory.getInvName());
-	this.fontRenderer.drawString(s, this.xSize - this.fontRenderer.getStringWidth(s), 12, 4210752);
+	this.fontRenderer.drawString(s, this.xSize - this.fontRenderer.getStringWidth(s), 1, 4210752);
 	this.fontRenderer.drawString(I18n.getString("container.inventory"), 80, this.ySize - 96, 4210752);
+	this.fontRenderer.drawString("Many thanks to coolAlias", this.xSize + 10, this.ySize - 40, 2000);
 	}
 
 	/**
