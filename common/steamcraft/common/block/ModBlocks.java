@@ -69,6 +69,7 @@ public class ModBlocks {
 	public static Block castIronLampOff;
 	public static Block castIronLampOn;
 	public static Block cryoIce;
+	public static Block blackSlate, blueSlate;
 	
 	public static Block etheriumCrystal;
 	
@@ -117,6 +118,9 @@ public class ModBlocks {
 		etheriumCrystal = new BlockEtheriumCrystal(BlockIDs.etheriumCrystalID).setUnlocalizedName("etheriumCrystal");
 		
 		smog = new BlockSmog(BlockIDs.smogID, Material.air).setUnlocalizedName("smog");
+		
+		blackSlate = new BlockSlate(BlockIDs.blackSlateID, Material.rock).setUnlocalizedName("blackSlate");
+		blueSlate = new BlockSlate(BlockIDs.blueSlateID, Material.rock).setUnlocalizedName("blueSlate");
 				
 		ModMachines.initMachines();
 		ModOres.initOres();
@@ -194,5 +198,9 @@ public class ModBlocks {
 		GameRegistry.registerBlock(smog, "smog");
 		if(BlockIDs.cryoIceID < 0)
 		GameRegistry.registerBlock(cryoIce, "cryoIce");
+		if(BlockIDs.blueSlateID < 0)
+		GameRegistry.registerBlock(blueSlate, "blueSlate");
+		if(BlockIDs.blackSlateID < 0)
+		GameRegistry.registerBlock(blackSlate, "blackSlate");
 	}
 }
