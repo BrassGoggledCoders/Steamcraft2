@@ -64,19 +64,19 @@ public class PacketHandler implements IPacketHandler {
 			int packetType = dataStream.read();
 			switch(packetType)
 			{
-				case 10:
+				case PACKET_UPDATE:
 					handleUpdatePacket("server", dataStream, player);
 					break;
-				case 20:
+				case PACKET_REQUEST_UPDATE:
 					handleUpdatePacket("request", dataStream, player);
 					break;
-				case 30:
+				case PACKET_CLIENT_UPDATE:
 					handleUpdatePacket("client", dataStream, player);
 					break;
-				case 40:
+				case PACKET_GUI_INFO:
 					handleGUIInfoPacket(dataStream);
 					break;
-				case 50:
+				case PACKET_OPEN_SERVER_GUI:
 					handleOpenServerGui(packet, (EntityPlayer) player, dataStream);
 					break;
 				default:
