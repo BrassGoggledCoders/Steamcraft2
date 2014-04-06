@@ -13,15 +13,15 @@
  * under the MMPL v1.0.
  * PowerCraft (c) MightyPork 2012
  *
- * File created @ [6 Apr 2014, 13:49:15]
+ * File created @ [6 Apr 2014, 15:34:28]
  */
-package common.steamcraft.api;
+package common.steamcraft.api.vanity;
 
 /**
  * @author warlordjones
  *
- * 6 Apr 201413:49:15
+ * 6 Apr 201415:34:28
  */
-public interface IHat {
-//Anything that Implements this interface will be equipable in the hat slot of the vanity GUI
+public interface ILeggings {
+
 }

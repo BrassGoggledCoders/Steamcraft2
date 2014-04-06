@@ -19,8 +19,9 @@ package common.steamcraft.common.inventory;
 
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+
+import common.steamcraft.common.item.ItemHat;
 
 /**
  * @author warlordjones
@@ -41,7 +42,7 @@ public class SlotFace extends Slot {
 	public boolean isItemValid(ItemStack itemstack)
 	{
 
-	return itemstack.getItem() instanceof Item;//instanceof ItemHat;
+	return itemstack.getItem() instanceof ItemHat;
 	}
 	/**
 	* Returns the maximum stack size for a given slot (usually the same as getInventoryStackLimit(), but 1 in the case

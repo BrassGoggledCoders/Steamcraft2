@@ -13,24 +13,15 @@
  * under the MMPL v1.0.
  * PowerCraft (c) MightyPork 2012
  *
- * File created @ [6 Apr 2014, 14:08:20]
+ * File created @ [6 Apr 2014, 13:49:15]
  */
-package common.steamcraft.common.item;
-
-import common.steamcraft.api.vanity.IHat;
+package common.steamcraft.api.vanity;
 
 /**
  * @author warlordjones
  *
- * 6 Apr 201414:08:20
+ * 6 Apr 201413:49:15
  */
-public class ItemHat extends ItemMod implements IHat {
-
-	/**
-	 * @param id
-	 */
-	public ItemHat(int id) {
-		super(id);
-		
-	}
+public interface IHat {
+//Anything that Implements this interface will be equipable in the hat slot of the vanity GUI
 }

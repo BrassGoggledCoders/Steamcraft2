@@ -23,8 +23,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-
-import common.steamcraft.api.IHat;
+import common.steamcraft.api.vanity.IHat;
 
 /**
  * @author warlordjones
@@ -137,10 +136,6 @@ public class PlayerInventoryVanity implements IInventory {
 	{
 	if (this.getStackInSlot(i) != null && this.getStackInSlot(i).stackSize == 0)
 	this.setInventorySlotContents(i, null);
-	if(this.getStackInSlot(i).getItem() instanceof IHat)
-		{
-			
-		}
 	}
 	}
 
