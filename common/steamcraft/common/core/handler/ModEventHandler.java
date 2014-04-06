@@ -28,11 +28,12 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import net.minecraftforge.event.Event.Result;
 import net.minecraftforge.event.ForgeSubscribe;
+import net.minecraftforge.event.entity.EntityEvent.EntityConstructing;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
 import net.minecraftforge.event.entity.player.FillBucketEvent;
-
 import common.steamcraft.common.block.ModBlocks;
+import common.steamcraft.common.inventory.ExtendedPlayer;
 import common.steamcraft.common.item.ModArmors;
 import common.steamcraft.common.item.ModItems;
 
@@ -113,5 +114,11 @@ public class ModEventHandler
         } else
                 return null;
 
+    }
+    @ForgeSubscribe
+    public void onEntityConstructing(EntityConstructing event)
+    {
+    	if(event.entity instanceof EntityPlayer)
+    	ExtendedPlayer.register((EntityPlayer) event.entity);
     }
 }

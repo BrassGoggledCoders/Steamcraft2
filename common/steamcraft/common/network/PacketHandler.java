@@ -117,7 +117,7 @@ public class PacketHandler implements IPacketHandler {
 		e.printStackTrace();
 		return;
 		}
-
+		//player.displayGUIWorkbench((int)player.posX, (int)player.posY, (int)player.posZ);
 		player.openGui(SC2.instance, guiID, player.worldObj, (int) player.posX, (int) player.posY, (int) player.posZ);
 		
 	}
