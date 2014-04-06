@@ -1,30 +1,34 @@
 package common.steamcraft.common.block.tile;
 
-import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntityFurnace;
+import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.FluidTank;
 
 import common.steamcraft.common.block.machines.BlockCoalGenerator;
-import common.steamcraft.common.util.EnergyUtils;
 
 
 /**
- * A basic generator that produces power from coal.Produces the same amont of power as the IC2 Generator.
+ * A basic generator that produces steam from coal.Requires water.
  * 
  * @author Decebaldecebal
  *
  */
-public class TileEntityCoalGenerator extends TileEntityElectricGenerator implements ISidedInventory
+public class TileEntityCoalGenerator extends TileEntityMachine
 {
 	public int furnaceBurnTime = 0;
 	public int currentItemBurnTime = 0;
+	public FluidTank waterTank;
+	public FluidTank steamTank;
 	
 	public TileEntityCoalGenerator()
 	{
 		super();
-		this.energy = new EnergyUtils(40000, 128);
 		inventory = new ItemStack[3];
+		waterTank = new FluidTank(new FluidStack(FluidRegistry.WATER, 1000), 10000);
+		steamTank = new FluidTank(new FluidStack(FluidRegistry.getFluid("steam"), 0), 10000);
 	}
 	
 	@Override
@@ -76,7 +80,8 @@ public class TileEntityCoalGenerator extends TileEntityElectricGenerator impleme
 
 		if (!worldObj.isRemote)
 		{			
-			if (this.getItemBurnTime()>0 && furnaceBurnTime==0 && this.energy.getEmptySpace() > 0)
+			if (this.getItemBurnTime()>0 && furnaceBurnTime==0 && this.waterTank.getFluidAmount()>=10 &&
+					this.steamTank.fill(new FluidStack(FluidRegistry.getFluid("steam"), 5), false)>0)
 			{	
 				currentItemBurnTime = furnaceBurnTime = this.getItemBurnTime()/4;
 				
@@ -86,11 +91,14 @@ public class TileEntityCoalGenerator extends TileEntityElectricGenerator impleme
 					--inventory[0].stackSize;
 			}
 			
-			if(furnaceBurnTime > 0)
+			if(furnaceBurnTime > 0 && this.waterTank.getFluidAmount()>=10)
 			{
-				this.energy.modifyStoredEnergy(this.currentItemBurnTime/10);
+				this.steamTank.fill(new FluidStack(FluidRegistry.getFluid("steam"), 5), true);
 				furnaceBurnTime--;
+				this.waterTank.drain(10, true);
 			}
+			else
+				furnaceBurnTime=0;
 
 			if (var1 != furnaceBurnTime > 0)
 			{

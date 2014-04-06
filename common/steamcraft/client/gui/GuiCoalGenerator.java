@@ -3,6 +3,7 @@ package common.steamcraft.client.gui;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fluids.FluidRegistry;
 
 import org.lwjgl.opengl.GL11;
 
@@ -36,18 +37,19 @@ public class GuiCoalGenerator extends GuiContainer
 		int var5 = (width - xSize) / 2;
 		int var6 = (height - ySize) / 2;
 		this.drawTexturedModalRect(var5, var6, 0, 0, xSize, ySize);
-
+		
 		if (furnaceInventory.isBurning())
 		{
 			int burnTime = furnaceInventory.getBurnTimeRemainingScaled(12);
 			this.drawTexturedModalRect(var5 + 80, var6 + 50 - burnTime, 176, 12 - burnTime, 14, burnTime + 2);
 		}
+		/*
 		if(furnaceInventory.hasEnergy())
 		{
 			int var8 = furnaceInventory.getEnergyScaled(31);
 			this.drawTexturedModalRect(var5 + 32, var6 + 49 - var8, 176, 54 - var8, 16, var8 + 1);
 		}
-		
+		*/
 	}
 
 }
