@@ -13,29 +13,15 @@
  * under the MMPL v1.0.
  * PowerCraft (c) MightyPork 2012
  *
- * File created @ [Feb 15, 2014, 1:57:22 PM]
+ * File created @ [6 Apr 2014, 13:49:15]
  */
-package common.steamcraft.common.network;
-
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-import cpw.mods.fml.common.FMLLog;
+package common.steamcraft.api;
 
 /**
- * A basic logger class to handle SC2 console messages.
- * 
- * @author MrArcane111
+ * @author warlordjones
  *
+ * 6 Apr 201413:49:15
  */
-public class LoggerMod {
-	private static Logger logger = Logger.getLogger("SC2");
-
-	public static void init() {
-		logger.setParent(FMLLog.getLogger());
-	}
-
-	public static void log(Level level, String message) {
-		logger.log(level, message);
-	}
+public interface IHat {
+//Anything that Implements this interface will be equipable in the hat slot of the vanity GUI
 }

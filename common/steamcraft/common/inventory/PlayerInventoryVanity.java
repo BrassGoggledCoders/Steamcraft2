@@ -24,6 +24,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 
+import common.steamcraft.api.IHat;
+
 /**
  * @author warlordjones
  *
@@ -34,10 +36,10 @@ public class PlayerInventoryVanity implements IInventory {
 	private final String name = "Vanity Items";
 
 	/** In case your inventory name is too generic, define a name to store the NBT tag in as well */
-	private final String tagName = "steamcraft:vanityitems";
+	private final String tagName = "tagVanityInventory";
 
 	/** Define the inventory size here for easy reference */
-	public static final int INV_SIZE = 5;
+	public static final int INV_SIZE = 6;
 
 	/** Inventory's size must be same as number of slots you add to the Container class */
 	ItemStack[] inventory = new ItemStack[INV_SIZE];
@@ -135,6 +137,10 @@ public class PlayerInventoryVanity implements IInventory {
 	{
 	if (this.getStackInSlot(i) != null && this.getStackInSlot(i).stackSize == 0)
 	this.setInventorySlotContents(i, null);
+	if(this.getStackInSlot(i).getItem() instanceof IHat)
+		{
+			
+		}
 	}
 	}
 

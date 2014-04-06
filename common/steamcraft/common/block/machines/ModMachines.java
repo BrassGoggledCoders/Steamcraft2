@@ -18,6 +18,7 @@
 package common.steamcraft.common.block.machines;
 
 import net.minecraft.block.Block;
+
 import common.steamcraft.common.block.tile.TileEntityChemicalFurnace;
 import common.steamcraft.common.block.tile.TileEntityCoalGenerator;
 import common.steamcraft.common.block.tile.TileEntityCompressor;
@@ -26,6 +27,7 @@ import common.steamcraft.common.block.tile.TileEntityNukeFurnace;
 import common.steamcraft.common.block.tile.TileEntitySteamFurnace;
 import common.steamcraft.common.lib2.BlockIDs;
 import common.steamcraft.common.lib2.CreativeTabsMod;
+
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class ModMachines {

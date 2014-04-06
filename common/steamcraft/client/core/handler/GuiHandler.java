@@ -29,11 +29,14 @@ import common.steamcraft.common.block.tile.TileEntityCoalGenerator;
 import common.steamcraft.common.block.tile.TileEntityCompressor;
 import common.steamcraft.common.block.tile.TileEntityNukeFurnace;
 import common.steamcraft.common.block.tile.TileEntitySteamFurnace;
-import common.steamcraft.common.block.tile.container.ContaineCoalGenerator;
 import common.steamcraft.common.block.tile.container.ContainerChemicalFurnace;
+import common.steamcraft.common.block.tile.container.ContainerCoalGenerator;
 import common.steamcraft.common.block.tile.container.ContainerCompressor;
 import common.steamcraft.common.block.tile.container.ContainerNukeFurnace;
 import common.steamcraft.common.block.tile.container.ContainerSteamFurnace;
+import common.steamcraft.common.inventory.ContainerVanity;
+import common.steamcraft.common.inventory.ExtendedPlayer;
+import common.steamcraft.common.inventory.GuiVanity;
 
 import cpw.mods.fml.common.network.IGuiHandler;
 
@@ -63,12 +66,13 @@ public class GuiHandler implements IGuiHandler
 			return new ContainerCompressor(player.inventory, (TileEntityCompressor) tile);
 			
 		case GuiIDs.GUI_ID_COAL_GENERATOR:
-			return new ContaineCoalGenerator(player.inventory, (TileEntityCoalGenerator) tile);
+			return new ContainerCoalGenerator(player.inventory, (TileEntityCoalGenerator) tile);
+		case GuiIDs.GUI_ID_VANITY:
+			return new ContainerVanity(player, player.inventory, ExtendedPlayer.get(player).inventory);
 		}
 		
 		return null;
 	}
-
 	@Override
 	public Object getClientGuiElement(int id, EntityPlayer player, World world, int x, int y, int z) {
 		TileEntity tile = world.getBlockTileEntity(x, y, z);
@@ -92,6 +96,8 @@ public class GuiHandler implements IGuiHandler
 			
 		case GuiIDs.GUI_ID_GUIDE_BOOK:
 			return new GuiGuideBook(player, player.inventory.getItemStack());
+		case GuiIDs.GUI_ID_VANITY:
+			return new GuiVanity(player, player.inventory, ExtendedPlayer.get(player).inventory);
 		}
 		
 		return null;

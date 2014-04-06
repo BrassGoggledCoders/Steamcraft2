@@ -17,9 +17,9 @@
  */
 package common.steamcraft.common.core.handler;
 
-import net.minecraftforge.common.Configuration;
-
 import java.io.File;
+
+import net.minecraftforge.common.Configuration;
 
 /**
  * @author MrArcane111, EntireCraft & general3214

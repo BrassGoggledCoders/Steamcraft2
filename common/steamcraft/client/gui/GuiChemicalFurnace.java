@@ -13,14 +13,15 @@
  */
 package common.steamcraft.client.gui;
 
-import common.steamcraft.common.block.tile.TileEntityChemicalFurnace;
-import common.steamcraft.common.block.tile.container.ContainerChemicalFurnace;
-import common.steamcraft.common.lib2.LibInfo;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
+
+import common.steamcraft.common.block.tile.TileEntityChemicalFurnace;
+import common.steamcraft.common.block.tile.container.ContainerChemicalFurnace;
+import common.steamcraft.common.lib2.LibInfo;
 
 /**
  * 

@@ -17,7 +17,6 @@
  */
 package common.steamcraft.common.item;
 
-import ic2.api.item.Items;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBucket;
@@ -62,6 +61,7 @@ public class ModItems {
     public static Item guideBook;
     public static Item partsBrass, partsSteel, partsCopper, partsIron, pileParts;
     public static Item steamBucket;
+    public static Item topHat;
 	
 	public static void initItems() {
 		etherium = new ItemMod(ItemIDs.etheriumID).setUnlocalizedName("etherium");
@@ -98,6 +98,7 @@ public class ModItems {
 		partsCopper = new ItemCopperParts(ItemIDs.partsCopperID);
 		partsIron = new ItemIronParts(ItemIDs.partsIronID);
 		pileParts = new ItemPartsPile(ItemIDs.pilePartsID);
+		topHat = new ItemHat(ItemIDs.topHatID).setUnlocalizedName("topHat");
 		
 		ModTools.initTools();
 		ModArmors.initArmors();

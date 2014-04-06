@@ -22,6 +22,7 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemArmor;
+import net.minecraft.item.ItemBucket;
 import net.minecraft.item.ItemStack;
 
 /**
@@ -39,11 +40,12 @@ public ContainerVanity(EntityPlayer player, InventoryPlayer inventoryPlayer, Pla
 {
 int i;
 //Custom Slots
-this.addSlotToContainer(new SlotHat(inventoryCustom, 0, 80, 8));
-this.addSlotToContainer(new SlotTunic(inventoryCustom, 1, 80, 26));
-this.addSlotToContainer(new SlotLeggings(inventoryCustom, 1, 80, 26));
-this.addSlotToContainer(new SlotBoots(inventoryCustom, 1, 80, 26));
-this.addSlotToContainer(new SlotCape(inventoryCustom, 1, 80, 26));
+this.addSlotToContainer(new SlotFace(inventoryCustom, 0, 25, 8));
+this.addSlotToContainer(new SlotTunic(inventoryCustom, 1, 25, 26));
+this.addSlotToContainer(new SlotLeggings(inventoryCustom, 2, 25, 44));
+this.addSlotToContainer(new SlotBoots(inventoryCustom, 3, 25, 62));
+this.addSlotToContainer(new SlotHat(inventoryCustom, 5, 45, 8));
+this.addSlotToContainer(new SlotCape(inventoryCustom, 4, 45, 26));
 //Inventory
 for (i = 0; i < 3; ++i)
 {
@@ -52,7 +54,7 @@ for (int j = 0; j < 9; ++j)
 this.addSlotToContainer(new Slot(inventoryPlayer, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
 }
 }
-//HotbarBar
+//Hotbar
 for (i = 0; i < 9; ++i)
 {
 this.addSlotToContainer(new Slot(inventoryPlayer, i, 8 + i * 18, 142));
@@ -74,83 +76,81 @@ return true;
 */
 public ItemStack transferStackInSlot(EntityPlayer player, int par2)
 {
-	ItemStack itemstack = null;
-	Slot slot = (Slot) this.inventorySlots.get(par2);
-	
-	if (slot != null && slot.getHasStack())
-	{
-		ItemStack itemstack1 = slot.getStack();
-		itemstack = itemstack1.copy();
-	
-		// Either armor slot or custom item slot was clicked
-		if (par2 < INV_START)
-		{
-			// try to place in player inventory / action bar
-			if (!this.mergeItemStack(itemstack1, INV_START, HOTBAR_END + 1, true))
-			{
-				return null;
-			}
-		
-			slot.onSlotChange(itemstack1, itemstack);
-		}
-		// Item is in inventory / hotbar, try to place either in custom or armor slots
-		else
-		{
-			// if item is our custom item
-			/*
-			if (itemstack1.getItem() instanceof ItemUseMana)
-			{
-				if (!this.mergeItemStack(itemstack1, 0, InventoryCustomPlayer.INV_SIZE, false))
-				{
-					return null;
-				}
-			}
-			*/
-			// if item is armor
-			if (itemstack1.getItem() instanceof ItemArmor)
-			{
-				int type = ((ItemArmor) itemstack1.getItem()).armorType;
-				if (!this.mergeItemStack(itemstack1, ARMOR_START + type, ARMOR_START + type + 1, false))
-				{
-				return null;
-				}
-			}
-				// item in player's inventory, but not in action bar
-			else if (par2 >= INV_START && par2 < HOTBAR_START)
-			{
-				// place in action bar
-				if (!this.mergeItemStack(itemstack1, HOTBAR_START, HOTBAR_START + 1, false))
-				{
-					return null;
-				}
-			}
-			// item in action bar - place in player inventory
-			else if (par2 >= HOTBAR_START && par2 < HOTBAR_END + 1)
-			{
-				if (!this.mergeItemStack(itemstack1, INV_START, INV_END + 1, false))
-				{
-					return null;
-				}
-			}
-		}
-	
-	if (itemstack1.stackSize == 0)
-	{
-	slot.putStack((ItemStack) null);
-	}
-	else
-	{
-	slot.onSlotChanged();
-	}
-	
-	if (itemstack1.stackSize == itemstack.stackSize)
-	{
-	return null;
-	}
-	
-	slot.onPickupFromSlot(player, itemstack1);
-	}
-	
-	return itemstack;
-	}
+ItemStack itemstack = null;
+Slot slot = (Slot) this.inventorySlots.get(par2);
+
+if (slot != null && slot.getHasStack())
+{
+ItemStack itemstack1 = slot.getStack();
+itemstack = itemstack1.copy();
+
+// Either armor slot or custom item slot was clicked
+if (par2 < INV_START)
+{
+// try to place in player inventory / action bar
+if (!this.mergeItemStack(itemstack1, INV_START, HOTBAR_END + 1, true))
+{
+return null;
+}
+
+slot.onSlotChange(itemstack1, itemstack);
+}
+// Item is in inventory / hotbar, try to place either in custom or armor slots
+else
+{
+// if item is our custom item
+if (itemstack1.getItem() instanceof ItemBucket)
+{
+if (!this.mergeItemStack(itemstack1, 0, PlayerInventoryVanity.INV_SIZE, false))
+{
+return null;
+}
+}
+// if item is armor
+else if (itemstack1.getItem() instanceof ItemArmor)
+{
+int type = ((ItemArmor) itemstack1.getItem()).armorType;
+if (!this.mergeItemStack(itemstack1, ARMOR_START + type, ARMOR_START + type + 1, false))
+{
+return null;
+}
+}
+// item in player's inventory, but not in action bar
+else if (par2 >= INV_START && par2 < HOTBAR_START)
+{
+// place in action bar
+if (!this.mergeItemStack(itemstack1, HOTBAR_START, HOTBAR_START + 1, false))
+{
+return null;
+}
+}
+// item in action bar - place in player inventory
+else if (par2 >= HOTBAR_START && par2 < HOTBAR_END + 1)
+{
+if (!this.mergeItemStack(itemstack1, INV_START, INV_END + 1, false))
+{
+return null;
+}
+}
+}
+
+if (itemstack1.stackSize == 0)
+{
+slot.putStack((ItemStack) null);
+}
+else
+{
+slot.onSlotChanged();
+}
+
+if (itemstack1.stackSize == itemstack.stackSize)
+{
+return null;
+}
+
+slot.onPickupFromSlot(player, itemstack1);
+}
+
+return itemstack;
+}
 }

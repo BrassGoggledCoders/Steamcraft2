@@ -25,6 +25,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 
 import common.steamcraft.client.core.handler.HUDHandler;
+import common.steamcraft.client.core.handler.RegisterKeyBindings;
 import common.steamcraft.client.core.handler.SoundHandler;
 import common.steamcraft.client.fx.FXRayGun;
 import common.steamcraft.client.model.ModelBrassMonocle;
@@ -61,6 +62,7 @@ public class ClientProxy extends CommonProxy {
 		// MinecraftForge.EVENT_BUS.register(new SC_GuiOpenEventHandler());
 		TickRegistry.registerTickHandler(new HUDHandler(), Side.CLIENT);
 		MinecraftForge.EVENT_BUS.register(new SoundHandler());
+		RegisterKeyBindings.init();
 		//MinecraftForgeClient.registerItemRenderer(ModTools.drillSteam.itemID, new SC2_ItemRenderer());
 	}
 

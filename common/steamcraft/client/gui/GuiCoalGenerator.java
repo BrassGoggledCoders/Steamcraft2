@@ -7,7 +7,7 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
 import common.steamcraft.common.block.tile.TileEntityCoalGenerator;
-import common.steamcraft.common.block.tile.container.ContaineCoalGenerator;
+import common.steamcraft.common.block.tile.container.ContainerCoalGenerator;
 import common.steamcraft.common.lib2.LibInfo;
 
 public class GuiCoalGenerator extends GuiContainer
@@ -17,7 +17,7 @@ public class GuiCoalGenerator extends GuiContainer
 
 	public GuiCoalGenerator(InventoryPlayer player, TileEntityCoalGenerator tile)
 	{
-		super(new ContaineCoalGenerator(player, tile));
+		super(new ContainerCoalGenerator(player, tile));
 		furnaceInventory = tile;
 	}
 

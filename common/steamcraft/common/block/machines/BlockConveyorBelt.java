@@ -19,12 +19,8 @@ package common.steamcraft.common.block.machines;
 
 import java.util.Random;
 
-import common.steamcraft.common.block.BlockMod;
-import common.steamcraft.common.util.ConveyorUtil;
-import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -33,6 +29,9 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+
+import common.steamcraft.common.block.BlockMod;
+import common.steamcraft.common.util.ConveyorUtil;
 
 /**
  * @author MrArcane111

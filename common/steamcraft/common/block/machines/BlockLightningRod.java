@@ -1,19 +1,20 @@
 package common.steamcraft.common.block.machines;
 
-import common.steamcraft.common.block.ModBlocks;
-import common.steamcraft.common.block.tile.TileEntityLightningRod;
-import common.steamcraft.common.lib2.CreativeTabsMod;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import java.util.Random;
+
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 
-import java.util.Random;
+import common.steamcraft.common.block.ModBlocks;
+import common.steamcraft.common.block.tile.TileEntityLightningRod;
+import common.steamcraft.common.lib2.CreativeTabsMod;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockLightningRod extends BlockContainerMod //implements ISimpleBlockRenderingHandler
 {	

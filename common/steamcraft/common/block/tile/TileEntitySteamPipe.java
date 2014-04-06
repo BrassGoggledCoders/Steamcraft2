@@ -30,11 +30,13 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeDirection;
+
 import common.steamcraft.api.CoupleUtil;
 import common.steamcraft.api.ISteamConsumer;
 import common.steamcraft.api.ISteamProvider;
 import common.steamcraft.api.ISteamStorage;
 import common.steamcraft.common.network.NetworkTile;
+
 import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

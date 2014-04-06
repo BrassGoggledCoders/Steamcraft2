@@ -13,7 +13,7 @@
  * under the MMPL v1.0.
  * PowerCraft (c) MightyPork 2012
  *
- * File created @ [3 Mar 2014, 07:16:41]
+ * File created @ [6 Apr 2014, 12:24:12]
  */
 package common.steamcraft.common.inventory;
 
@@ -25,31 +25,30 @@ import net.minecraft.item.ItemStack;
 /**
  * @author warlordjones
  *
- * 3 Mar 201407:16:41
+ * 6 Apr 201412:24:12
  */
-public class SlotTunic extends Slot
-{
-public SlotTunic(IInventory inventory, int par2, int par3, int par4)
-{
-super(inventory, par2, par3, par4);
-}
+public class SlotFace extends Slot {
+	public SlotFace(IInventory inventory, int par2, int par3, int par4)
+	{
+	super(inventory, par2, par3, par4);
+	}
 
-/**
-* Check if the stack is a valid item for this slot. Always true beside for the armor slots
-* (and now also not always true for our custom inventory slots)
-*/
-@Override
-public boolean isItemValid(ItemStack itemstack)
-{
+	/**
+	* Check if the stack is a valid item for this slot. Always true beside for the armor slots
+	* (and now also not always true for our custom inventory slots)
+	*/
+	@Override
+	public boolean isItemValid(ItemStack itemstack)
+	{
 
-return itemstack.getItem() instanceof Item;//instanceof ItemTunic;
-}
-/**
-* Returns the maximum stack size for a given slot (usually the same as getInventoryStackLimit(), but 1 in the case
-* of armor slots)
-*/
-public int getSlotStackLimit()
-{
-return 1;
-}
+	return itemstack.getItem() instanceof Item;//instanceof ItemHat;
+	}
+	/**
+	* Returns the maximum stack size for a given slot (usually the same as getInventoryStackLimit(), but 1 in the case
+	* of armor slots)
+	*/
+	public int getSlotStackLimit()
+	{
+	return 1;
+	}
 }

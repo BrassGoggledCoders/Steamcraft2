@@ -13,29 +13,33 @@
  * under the MMPL v1.0.
  * PowerCraft (c) MightyPork 2012
  *
- * File created @ [Feb 15, 2014, 1:57:22 PM]
+ * File created @ [5 Apr 2014, 20:57:54]
  */
 package common.steamcraft.common.network;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
 
-import cpw.mods.fml.common.FMLLog;
+import net.minecraft.network.packet.Packet250CustomPayload;
 
 /**
- * A basic logger class to handle SC2 console messages.
- * 
- * @author MrArcane111
+ * @author warlordjones
  *
+ * 5 Apr 201420:57:54
  */
-public class LoggerMod {
-	private static Logger logger = Logger.getLogger("SC2");
+public class PacketOpenServerGui {
+	public static Packet250CustomPayload getPacket(int guiID)
+	{
+	ByteArrayOutputStream bos = new ByteArrayOutputStream(5);
+	DataOutputStream outputStream = new DataOutputStream(bos);
 
-	public static void init() {
-		logger.setParent(FMLLog.getLogger());
+	try {
+	outputStream.writeByte(PacketHandler.PACKET_OPEN_SERVER_GUI);
+	outputStream.writeInt(guiID);
+	} catch (Exception ex) {
+	ex.printStackTrace();
 	}
 
-	public static void log(Level level, String message) {
-		logger.log(level, message);
+	return new Packet250CustomPayload(PacketHandler.SC2_CHANNEL, bos.toByteArray());
 	}
 }

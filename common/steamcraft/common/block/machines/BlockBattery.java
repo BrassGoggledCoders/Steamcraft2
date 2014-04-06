@@ -19,16 +19,17 @@ package common.steamcraft.common.block.machines;
 
 import java.util.Random;
 
-import common.steamcraft.common.block.BlockMod;
-import common.steamcraft.common.lib2.LibInfo;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.Icon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+
+import common.steamcraft.common.block.BlockMod;
+import common.steamcraft.common.lib2.LibInfo;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 

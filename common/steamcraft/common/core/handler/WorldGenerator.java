@@ -17,13 +17,15 @@
  */
 package common.steamcraft.common.core.handler;
 
-import common.steamcraft.common.block.ModOres;
-import cpw.mods.fml.common.IWorldGenerator;
+import java.util.Random;
+
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenMinable;
 
-import java.util.Random;
+import common.steamcraft.common.block.ModOres;
+
+import cpw.mods.fml.common.IWorldGenerator;
 
 /**
  * @author MrArcane111

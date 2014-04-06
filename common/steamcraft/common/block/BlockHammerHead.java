@@ -1,13 +1,12 @@
 package common.steamcraft.common.block;
 
-import common.steamcraft.common.SC2;
-import common.steamcraft.common.block.tile.TileEntityHammerHead;
-import common.steamcraft.common.lib2.CreativeTabsMod;
-
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+
+import common.steamcraft.common.block.tile.TileEntityHammerHead;
+import common.steamcraft.common.lib2.CreativeTabsMod;
 
 public class BlockHammerHead extends BlockContainer{
 
