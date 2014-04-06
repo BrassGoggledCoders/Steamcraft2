@@ -108,7 +108,7 @@ public class ModBlocks {
 		lampOn = new BlockLamp(BlockIDs.lampOnID, true).setUnlocalizedName("lampOn").setCreativeTab(null);
 		lampOff = new BlockLamp(BlockIDs.lampOffID, false).setUnlocalizedName("lampOff");
 		woodBrass = new BlockBrassLog(BlockIDs.woodBrassID);
-		leavesBrass = new BlockMod(BlockIDs.leavesLampID, Material.wood).setHardness(2F).setLightOpacity(1).setLightValue(0.9375F).setStepSound(Block.soundGlassFootstep).setUnlocalizedName("leavesBrass");
+		leavesBrass = new BlockMod(BlockIDs.leavesBrassID, Material.wood).setHardness(2F).setLightOpacity(1).setLightValue(0.9375F).setStepSound(Block.soundGlassFootstep).setUnlocalizedName("leavesBrass");
 		teaPlant = new BlockTeaPlant(BlockIDs.teaPlantID).setUnlocalizedName("teaPlant");
 		castIronLampOff = new BlockCastIronLamp(BlockIDs.castIronLampOffID, false).setCreativeTab(CreativeTabsMod.tabSCBlocks).setUnlocalizedName("castIronLampOff");
 		castIronLampOn = new BlockCastIronLamp(BlockIDs.castIronLampOnID, true).setUnlocalizedName("castIronLampOn");
@@ -154,26 +154,45 @@ public class ModBlocks {
 		GameRegistry.registerBlock(lampOff, "lampOff");
 		if(BlockIDs.woodBrassID < 0)
 		GameRegistry.registerBlock(woodBrass, "woodBrass");
-		if(BlockIDs.leavesLampID < 0)
+		if(BlockIDs.leavesBrassID < 0)
 		GameRegistry.registerBlock(leavesBrass, "leavesBrass");
+		if(BlockIDs.railingCastIronID < 0)
 		GameRegistry.registerBlock(railingCastIron, "railingCastIron");
+		if(BlockIDs.gateCastIronID < 0)
 		GameRegistry.registerBlock(gateCastIron, "gateCastIron");
+		if(BlockIDs.decorIronID < 0)
 		GameRegistry.registerBlock(decorIron, "decorIron");
+		if(BlockIDs.decorGoldID < 0)
 		GameRegistry.registerBlock(decorGold, "decorGold");
+		if(BlockIDs.decorDiamondID < 0)
 		GameRegistry.registerBlock(decorDiamond, "decorDiamond");
+		if(BlockIDs.decorCastIronID < 0)
 		GameRegistry.registerBlock(decorCastIron, "decorCastIron");
+		if(BlockIDs.decorVoluciteID < 0)
 		GameRegistry.registerBlock(decorVolucite, "decorVolucite");
+		if(BlockIDs.decorBrassID < 0)
 		GameRegistry.registerBlock(decorBrass, "decorBrass");
+		if(BlockIDs.decorLapisID < 0)
 		GameRegistry.registerBlock(decorLapis, "decorLapis");
+		if(BlockIDs.decorStoneID < 0)
 		GameRegistry.registerBlock(decorStone, "decorStone");
+		if(BlockIDs.blockUraniumID < 0)
 		GameRegistry.registerBlock(blockUranium, "blockUranium");
+		if(BlockIDs.decorUraniumID < 0)
 		GameRegistry.registerBlock(decorUranium, "decorUranium");
+		if(BlockIDs.teaPlantID < 0)
 		GameRegistry.registerBlock(teaPlant, "teaPlant");
+		if(BlockIDs.castIronLampOffID < 0)
 		GameRegistry.registerBlock(castIronLampOff, "castironlampidle");
+		if(BlockIDs.castIronLampOnID < 0)
 		GameRegistry.registerBlock(castIronLampOn, "castironlampactive");
+		if(BlockIDs.blockObsidianTileID < 0)
 		GameRegistry.registerBlock(blockObsidianTile, "slatetiles");
+		//if(BlockIDs.etheriumCrystalID < 0)
 		GameRegistry.registerBlock(etheriumCrystal, "etheriumCrystal");
+		if(BlockIDs.smogID < 0)
 		GameRegistry.registerBlock(smog, "smog");
+		if(BlockIDs.cryoIceID < 0)
 		GameRegistry.registerBlock(cryoIce, "cryoIce");
 	}
 }
