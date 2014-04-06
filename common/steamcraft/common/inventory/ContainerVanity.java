@@ -42,11 +42,11 @@ public ContainerVanity(EntityPlayer player, InventoryPlayer inventoryPlayer, Pla
 {
 int i;
 //Custom Slots
-this.addSlotToContainer(new SlotHat(inventoryCustom, -65, 80, 8));
-this.addSlotToContainer(new SlotTunic(inventoryCustom, -66, 80, 26));
-this.addSlotToContainer(new SlotLeggings(inventoryCustom, -67, 80, 30));
-this.addSlotToContainer(new SlotBoots(inventoryCustom, 3, -68, 34));
-this.addSlotToContainer(new SlotCape(inventoryCustom, 4, -69, 40));
+this.addSlotToContainer(new SlotHat(inventoryCustom, 0, 80, 8));
+this.addSlotToContainer(new SlotTunic(inventoryCustom, 1, 80, 26));
+this.addSlotToContainer(new SlotLeggings(inventoryCustom, 2, 80, 30));
+this.addSlotToContainer(new SlotBoots(inventoryCustom, 3, 203, 34));
+this.addSlotToContainer(new SlotCape(inventoryCustom, 4, 204, 40));
 //Inventory
 for (i = 0; i < 3; ++i)
 {

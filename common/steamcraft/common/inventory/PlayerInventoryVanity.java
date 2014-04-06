@@ -32,29 +32,34 @@ import net.minecraft.nbt.NBTTagList;
  */
 public class PlayerInventoryVanity implements IInventory {
 	/** The name for your custom inventory, possibly just "Inventory" */
-	private final String name = "VanityInventory";
+	private final String name = "Vanity Items";
+
 	/** In case your inventory name is too generic, define a name to store the NBT tag in as well */
-	private final String tagName = "tag" + name;
+	private final String tagName = "steamcraft:vanityitems";
+
 	/** Define the inventory size here for easy reference */
-	// This is also the place to define which slot is which if you have different types,
-	// for example SLOT_SHIELD = 0, SLOT_AMULET = 1;
-	public static final int INV_SIZE = 2;
+	public static final int INV_SIZE = 5;
+
 	/** Inventory's size must be same as number of slots you add to the Container class */
 	ItemStack[] inventory = new ItemStack[INV_SIZE];
+
 	public PlayerInventoryVanity()
 	{
-	// don't need anything here!
+	//Empty Method
 	}
+
 	@Override
 	public int getSizeInventory()
 	{
 	return inventory.length;
 	}
+
 	@Override
 	public ItemStack getStackInSlot(int slot)
 	{
 	return inventory[slot];
 	}
+
 	@Override
 	public ItemStack decrStackSize(int slot, int amount)
 	{
@@ -73,10 +78,12 @@ public class PlayerInventoryVanity implements IInventory {
 	{
 	setInventorySlotContents(slot, null);
 	}
+
 	this.onInventoryChanged();
 	}
 	return stack;
 	}
+
 	@Override
 	public ItemStack getStackInSlotOnClosing(int slot)
 	{
@@ -87,26 +94,32 @@ public class PlayerInventoryVanity implements IInventory {
 	}
 	return stack;
 	}
+
 	@Override
 	public void setInventorySlotContents(int slot, ItemStack itemstack)
 	{
 	this.inventory[slot] = itemstack;
+
 	if (itemstack != null && itemstack.stackSize > this.getInventoryStackLimit())
 	{
 	itemstack.stackSize = this.getInventoryStackLimit();
 	}
+
 	this.onInventoryChanged();
 	}
+
 	@Override
 	public String getInvName()
 	{
 	return name;
 	}
+
 	@Override
 	public boolean isInvNameLocalized()
 	{
 	return name.length() > 0;
 	}
+
 	/**
 	* Our custom slots are similar to armor - only one item per slot
 	*/
@@ -115,6 +128,7 @@ public class PlayerInventoryVanity implements IInventory {
 	{
 	return 1;
 	}
+
 	@Override
 	public void onInventoryChanged()
 	{
@@ -124,15 +138,19 @@ public class PlayerInventoryVanity implements IInventory {
 	this.setInventorySlotContents(i, null);
 	}
 	}
+
 	@Override
 	public boolean isUseableByPlayer(EntityPlayer entityplayer)
 	{
 	return true;
 	}
+
 	@Override
 	public void openChest() {}
+
 	@Override
 	public void closeChest() {}
+
 	/**
 	* This method doesn't seem to do what it claims to do, as
 	* items can still be left-clicked and placed in the inventory
@@ -141,14 +159,13 @@ public class PlayerInventoryVanity implements IInventory {
 	@Override
 	public boolean isItemValidForSlot(int slot, ItemStack itemstack)
 	{
-	// If you have different kinds of slots, then check them here:
-	// if (slot == SLOT_SHIELD &amp;&amp; itemstack.getItem() instanceof ItemShield) return true;
-	// For now, only ItemUseMana items can be stored in these slots
-	return itemstack.getItem() instanceof ItemSword;
+	return itemstack.getItem() instanceof Item;
 	}
+
 	public void writeToNBT(NBTTagCompound tagcompound)
 	{
 	NBTTagList nbttaglist = new NBTTagList();
+
 	for (int i = 0; i < this.getSizeInventory(); ++i)
 	{
 	if (this.getStackInSlot(i) != null)
@@ -159,17 +176,21 @@ public class PlayerInventoryVanity implements IInventory {
 	nbttaglist.appendTag(nbttagcompound1);
 	}
 	}
+
 	// We're storing our items in a custom tag list using our 'tagName' from above
 	// to prevent potential conflicts
 	tagcompound.setTag(tagName, nbttaglist);
 	}
+
 	public void readFromNBT(NBTTagCompound tagcompound)
 	{
 	NBTTagList nbttaglist = tagcompound.getTagList(tagName);
+
 	for (int i = 0; i < nbttaglist.tagCount(); ++i)
 	{
 	NBTTagCompound nbttagcompound1 = (NBTTagCompound)nbttaglist.tagAt(i);
 	byte b0 = nbttagcompound1.getByte("Slot");
+
 	if (b0 >= 0 && b0 < this.getSizeInventory())
 	{
 	this.setInventorySlotContents(b0, ItemStack.loadItemStackFromNBT(nbttagcompound1));
