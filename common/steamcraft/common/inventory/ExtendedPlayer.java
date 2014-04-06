@@ -82,8 +82,8 @@ public final void sync()
 ByteArrayOutputStream bos = new ByteArrayOutputStream(8);
 DataOutputStream outputStream = new DataOutputStream(bos);
 try {
-outputStream.writeChars(EXT_PROP_NAME);
-outputStream.writeByte(PacketHandler.PACKET_OPEN_SERVER_GUI + 1);
+outputStream.writeInt(PacketHandler.PACKET_EXTENDED_PROPERTIES);
+//outputStream.writeInt(arg0);
 } catch (Exception ex) {
 ex.printStackTrace();
 }

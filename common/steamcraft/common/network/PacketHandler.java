@@ -57,6 +57,9 @@ public class PacketHandler implements IPacketHandler {
 	/** */
 	public static final int PACKET_OPEN_SERVER_GUI = 50;
 	
+	/** */
+	public static final int PACKET_EXTENDED_PROPERTIES = 60;
+	
 	@Override
 	public void onPacketData(INetworkManager manager, Packet250CustomPayload packet, Player player) {
 		try{
@@ -79,6 +82,8 @@ public class PacketHandler implements IPacketHandler {
 				case PACKET_OPEN_SERVER_GUI:
 					handleOpenServerGui(packet, (EntityPlayer) player, dataStream);
 					break;
+				case PACKET_EXTENDED_PROPERTIES:
+					handleExtendedProperties(packet, player, dataStream);
 				default:
 					FMLLog.log(Level.WARNING, "", "[SC2] Unknown Packet Type:" + packetType);
 			}
@@ -88,6 +93,16 @@ public class PacketHandler implements IPacketHandler {
 			e.printStackTrace();
 		}
 			}
+	/**
+	 * @param packet
+	 * @param player
+	 * @param dataStream
+	 */
+	private void handleExtendedProperties(Packet250CustomPayload packet,
+			Player player, DataInputStream dataStream) {
+		
+		
+	}
 	/**
 	 * @param packet
 	 * @param player

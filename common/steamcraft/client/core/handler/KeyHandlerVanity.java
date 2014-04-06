@@ -40,7 +40,6 @@ public class KeyHandlerVanity extends KeyHandler
 		else if (FMLClientHandler.instance().getClient().inGameHasFocus)
 		{
 		((EntityClientPlayerMP) player).sendQueue.addToSendQueue(PacketOpenServerGui.getPacket(GuiIDs.GUI_ID_VANITY));
-		player.openGui(SC2.instance, GuiIDs.GUI_ID_VANITY, player.worldObj, (int) player.posX, (int) player.posY, (int) player.posZ);
 		}
 		}
 	}
