@@ -165,7 +165,7 @@ public class TileEntityDropHammer extends TileEntityElectricMachine
 	@Override
 	public boolean canInsertItem(int par1, ItemStack itemstack, int par3)
 	{
-		if(itemstack.itemID==ModItems.steamCanister.itemID && par1==0)
+		if(itemstack.getItem() == ModItems.canisterSteam && par1==0)
 			return true;
 		else if(par1==1)
 			return true;

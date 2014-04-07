@@ -56,7 +56,7 @@ public class ItemElectricMod extends ItemMod implements ISpecialElectricItem, IE
 
 	@SuppressWarnings("all")
 	@Override
-    public void getSubItems(int par1, CreativeTabs par2CreativeTabs, List par3List)
+    public void getSubItems(int id, CreativeTabs par2CreativeTabs, List par3List)
     {
         par3List.add(getChargedItem());
 		par3List.add(getUnchargedItem());
@@ -95,35 +95,33 @@ public class ItemElectricMod extends ItemMod implements ISpecialElectricItem, IE
 		stack.setTagCompound(tag);
 	}
 	
-    @Override
-	public void onCreated(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
+    public void onCreated(ItemStack stack, World par2World, EntityPlayer par3EntityPlayer)
     {
-    	par1ItemStack = this.getUnchargedItem();
+    	stack = this.getUnchargedItem();
     }
 	
 	public ItemStack getUnchargedItem() 
 	{
-		ItemStack charged = new ItemStack(this.itemID, 1, 20);
+		ItemStack uncharged = new ItemStack(this, 1, 20);
 		
 		NBTTagCompound tag = new NBTTagCompound();
 		tag.setInteger("energy", 0);
-		tag.setByte("energyTier", this.tier);
-		
-		charged.setTagCompound(tag);
-		return charged.copy();
-	}
-	
-	public ItemStack getChargedItem() 
-	{
-		ItemStack uncharged = new ItemStack(this.itemID, 1, 0);
-		
-		NBTTagCompound tag = new NBTTagCompound();
-		tag.setInteger("energy", this.maxEnergy);
-		tag.setInteger("energyTier", this.tier);
 		
 		uncharged.setTagCompound(tag);
 		
 		return uncharged.copy();
+	}
+	
+	public ItemStack getChargedItem() 
+	{
+		ItemStack charged = new ItemStack(this, 1, 0);
+		
+		NBTTagCompound tag = new NBTTagCompound();
+		tag.setInteger("energy", this.maxEnergy);
+		
+		charged.setTagCompound(tag);
+		
+		return charged.copy();
 	}
 	
 	/**
@@ -198,7 +196,7 @@ public class ItemElectricMod extends ItemMod implements ISpecialElectricItem, IE
 	@Override
 	public int getTier(ItemStack itemStack)
 	{
-		return itemStack.getTagCompound().getByte("energyTier");
+		return this.tier;
 	}
 	
 	@Override

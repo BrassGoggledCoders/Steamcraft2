@@ -55,7 +55,7 @@ public class ItemSteamWings extends ItemArmorMod
         while(i < 36)
         {
             ItemStack[] mainInv = player.inventory.mainInventory;
-            if(mainInv[i] != null && mainInv[i].itemID == ModItems.steamCanister.itemID)
+            if(mainInv[i] != null && mainInv[i].getItem() == ModItems.canisterSteam)
             {
                 canister = mainInv[i];
                 if(!player.capabilities.allowFlying)
@@ -65,17 +65,17 @@ public class ItemSteamWings extends ItemArmorMod
                         if(player.motionY > 0.0D)
                         {
                             player.motionY += 0.08499999910593033D;
-                        } else
+                        } 
+                        else
                         {
                             player.motionY += 0.11699999910593033D;
                         }
 
-                        if(canister.getItemDamage() < 499) canister.damageItem(1, player);
-                        else if(canister.getItemDamage() >= 499)
-                        {
-                            player.inventory.consumeInventoryItem(canister.itemID);
-                            mainInv[i] = new ItemStack(ModItems.emptyCanister);
-                        }
+                        if(mainInv[i].getItemDamage() < mainInv[i].getMaxDamage())
+                        	ItemCanister.addSteam(mainInv[i], -1);
+                        else if(mainInv[i].getItemDamage() >= mainInv[i].getMaxDamage())
+                            mainInv[i] = new ItemStack(ModItems.canisterEmpty);
+                        
                         world.spawnParticle("smoke", player.posX, player.posY - 0.25D, player.posZ, 0.0D, 0.0D, 0.0D);
                         world.spawnParticle("smoke", player.posX, player.posY - 0.25D, player.posZ, 0.0D, 0.0D, 0.0D);
                         world.spawnParticle("smoke", player.posX, player.posY - 0.25D, player.posZ, 0.0D, 0.0D, 0.0D);

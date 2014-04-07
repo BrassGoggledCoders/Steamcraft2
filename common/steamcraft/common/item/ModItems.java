@@ -55,9 +55,7 @@ public class ModItems {
 	public static Item brassWatch;
 	public static Item canisterSteam;
 	public static Item canisterGas;
-	public static Item steamCanister;
-	public static Item gasCanister;
-    public static Item emptyCanister;
+    public static Item canisterEmpty;
     public static Item guideBook;
     public static Item partsBrass, partsSteel, partsCopper, partsIron, pileParts;
     public static Item steamBucket;
@@ -87,11 +85,9 @@ public class ModItems {
 		//emptyTeacup = new ItemTeacup(SC_ItemIDs.emptyTeacupID, 0, 0.0F, false).setUnlocalizedName("teacupempty");
 		copperWire = new ItemCopperWire(ItemIDs.copperWireID).setUnlocalizedName("copperwire");
 		brassWatch = new ItemBrassWatch(ItemIDs.brassWatchID);
-		canisterSteam = new ItemCanister(ItemIDs.steamCanisterID, 500, "").setUnlocalizedName("steamcanister");
-		canisterGas = new ItemCanister(ItemIDs.gasCanisterID, 1000, "").setUnlocalizedName("gascanister");
-		steamCanister = new ItemCanister(ItemIDs.steamCanisterID, 500, "steam").setUnlocalizedName("steamcanister");
-		gasCanister = new ItemCanister(ItemIDs.gasCanisterID, 1000, "compressed gas").setUnlocalizedName("gascanister");
-		emptyCanister = new ItemMod(ItemIDs.emptyCanisterID).setUnlocalizedName("emptycanister");
+		canisterSteam = new ItemCanister(ItemIDs.canisterSteamID, "steam").setUnlocalizedName("canisterSteam");
+		canisterGas = new ItemCanister(ItemIDs.canisterGasID, "compressedgas").setUnlocalizedName("canisterGas");
+		canisterEmpty = new ItemMod(ItemIDs.canisterEmptyID).setUnlocalizedName("canisterEmpty");
 		guideBook = new ItemGuideBook(ItemIDs.guideBookID).setUnlocalizedName("guidebook");
 		partsBrass = new ItemBrassParts(ItemIDs.partsBrassID);
 		partsSteel = new ItemSteelParts(ItemIDs.partsSteelID);

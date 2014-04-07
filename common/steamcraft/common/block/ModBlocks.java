@@ -30,6 +30,13 @@ import common.steamcraft.common.lib2.CreativeTabsMod;
 import common.steamcraft.common.lib2.LibInfo;
 import cpw.mods.fml.common.registry.GameRegistry;
 
+import common.steamcraft.common.block.machines.ModMachines;
+import common.steamcraft.common.lib2.BlockIDs;
+import common.steamcraft.common.lib2.CreativeTabsMod;
+import common.steamcraft.common.lib2.LibInfo;
+
+import cpw.mods.fml.common.registry.GameRegistry;
+
 /**
  * @author MrArcane111
  *
@@ -79,6 +86,8 @@ public class ModBlocks {
 	
 	public static Block steamBlock;
 	
+	public static Fluid steamFluid;
+	
 	public static void initBlocks() {
 		blockCastIron = new BlockMod(BlockIDs.blockCastIronID, Material.iron).setHardness(7F).setResistance(20F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("blockCastIron");
 		blockVolucite = new BlockMod(BlockIDs.blockVoluciteID, Material.rock).setHardness(50F).setResistance(6000000F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("blockVolucite");
@@ -127,12 +136,20 @@ public class ModBlocks {
 		ModPowerBlocks.initPowerBlocks();
 		registerBlocks();
 		
+<<<<<<< HEAD
 		Fluid steamFluid = new Fluid("steam").setGaseous(true).setTemperature(700).setDensity(-100).setViscosity(500).setLuminosity(1);
+=======
+		steamFluid = new Fluid("steam").setGaseous(true);
+>>>>>>> refs/heads/master
 		FluidRegistry.registerFluid(steamFluid);
+		
 		steamBlock = new BlockFluidSteam(steamFluid, Material.water);
 		GameRegistry.registerBlock(steamBlock, "steamFluidBlock");
 		steamFluid.setUnlocalizedName(steamBlock.getUnlocalizedName());
 		steamFluid.setBlockID(steamBlock);
+		
+		//For some weird reason, our version of steam has NULL icons, so the GUISteamBoiler function drawCutIcon will crash
+		steamFluid.setIcons(steamBlock.getIcon(0, 0), steamBlock.getIcon(1, 0));
 	}
 	
 	public static void registerBlocks() {

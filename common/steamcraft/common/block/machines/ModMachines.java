@@ -20,7 +20,7 @@ package common.steamcraft.common.block.machines;
 import net.minecraft.block.Block;
 
 import common.steamcraft.common.block.tile.TileEntityChemicalFurnace;
-import common.steamcraft.common.block.tile.TileEntityCoalGenerator;
+import common.steamcraft.common.block.tile.TileEntitySteamBoiler;
 import common.steamcraft.common.block.tile.TileEntityCompressor;
 import common.steamcraft.common.block.tile.TileEntityDropHammer;
 import common.steamcraft.common.block.tile.TileEntityNukeFurnace;
@@ -51,7 +51,7 @@ public class ModMachines {
 		nukeOvenActive = new BlockNukeFurnace(BlockIDs.nukeOvenActiveID, true);
 		compressor = new BlockCompressor(BlockIDs.compressorID).setCreativeTab(CreativeTabsMod.tabSCBlocks).setUnlocalizedName("compressorMachine");
 		conveyor = new BlockConveyorBelt(BlockIDs.coveyorID);
-		coalGenerator = new BlockCoalGenerator(BlockIDs.generatorID).setCreativeTab(CreativeTabsMod.tabSCBlocks).setUnlocalizedName("simpleCoalGenerator");
+		coalGenerator = new BlockSteamBoiler(BlockIDs.boilerID).setCreativeTab(CreativeTabsMod.tabSCBlocks).setUnlocalizedName("steamBoiler");
 		dropHammer = new BlockDropHammer(BlockIDs.dropHammerID).setCreativeTab(CreativeTabsMod.tabSCBlocks).setUnlocalizedName("dropHammer");
 		
 		registerMachines();
@@ -67,7 +67,7 @@ public class ModMachines {
 		GameRegistry.registerBlock(nukeOvenActive, "nukeovenactive");
 		GameRegistry.registerBlock(compressor, "compressorMachine");
 		GameRegistry.registerBlock(conveyor, "conveyor");
-		GameRegistry.registerBlock(coalGenerator, "simpleCoalGenerator");
+		GameRegistry.registerBlock(coalGenerator, "steamBoiler");
 		GameRegistry.registerBlock(dropHammer, "dropHammer");
 	}
 	
@@ -76,7 +76,7 @@ public class ModMachines {
 		GameRegistry.registerTileEntity(TileEntityChemicalFurnace.class, "TileEntityChemicalFurnace");
 		GameRegistry.registerTileEntity(TileEntitySteamFurnace.class, "TileEntitySteamFurnace");
 		GameRegistry.registerTileEntity(TileEntityCompressor.class, "TileEntityCompressor");
-		GameRegistry.registerTileEntity(TileEntityCoalGenerator.class, "TileEntityCoalGenerator");
+		GameRegistry.registerTileEntity(TileEntitySteamBoiler.class, "TileEntitySteamBoiler");
 		GameRegistry.registerTileEntity(TileEntityDropHammer.class, "TileEntityDropHammer");
 	}
 }

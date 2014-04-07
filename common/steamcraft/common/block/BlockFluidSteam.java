@@ -5,7 +5,7 @@ import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.util.Icon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.fluids.BlockFluidClassic;
+import net.minecraftforge.fluids.BlockFluidFinite;
 import net.minecraftforge.fluids.Fluid;
 
 import common.steamcraft.common.lib2.CreativeTabsMod;
@@ -14,7 +14,7 @@ import common.steamcraft.common.lib2.LibInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockFluidSteam extends BlockFluidClassic 
+public class BlockFluidSteam extends BlockFluidFinite
 {
 
     @SideOnly(Side.CLIENT)
@@ -32,7 +32,7 @@ public class BlockFluidSteam extends BlockFluidClassic
     @Override
     public Icon getIcon(int side, int meta) 
     {
-            return (side == 0 || side == 1)? stillIcon : flowingIcon;
+            return (side == 0 || side == 1) ? stillIcon : flowingIcon;
     }
     
     @SideOnly(Side.CLIENT)
@@ -40,7 +40,7 @@ public class BlockFluidSteam extends BlockFluidClassic
     public void registerIcons(IconRegister register) 
     {
             stillIcon = register.registerIcon(LibInfo.SC2_PREFIX + "steamStill");
-            flowingIcon = register.registerIcon(LibInfo.SC2_PREFIX + "steamFlowing");
+            flowingIcon = register.registerIcon(LibInfo.SC2_PREFIX + "flowingIcon");
     }
     
     @Override
