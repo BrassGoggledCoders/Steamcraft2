@@ -34,61 +34,158 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class ItemCanister extends ItemMod
 {
 	public String gas;
-	public static final float MAX_STEAM = 150000.0F;
-	public static final int MAX_STEAM_VISIBLE = 2500;
+	public static final int MAX_VISIBLE = 2500; //Visual represntation of gas/steam through item damage
+	
+	public static final int MAX_STEAM = 150000; //Isn't this an excesivly large number?
+	public static final int MAX_STEAM_RATE = 20; //Maximum amount of steam that can be inserted into this canister per tick
+	
+	public static final int MAX_GAS = 150000; //Isn't this an excesivly large number?
+	public static final int MAX_GAS_RATE = 20; //Maximum amount of gas that can be inserted into this canister per tick
 
-	public ItemCanister(int id, int durability, String energy) {
+	public ItemCanister(int id, String gas) 
+	{
 		super(id);
 		this.maxStackSize = 1;
 		this.setNoRepair();
-		this.setMaxDamage(2501);
-		//gas = energy;
+		this.gas = gas;
+		
+		this.setMaxDamage(MAX_VISIBLE);
 	}
 
 	@SuppressWarnings("all")
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(int itemID, CreativeTabs tab, List list) 
-	{
-		list.add(new ItemStack(itemID, 1, getMaxDamage()));
-		list.add(new ItemStack(itemID, 1, 1));
-	}
-	
-	private static NBTTagCompound getOrCreateNBT(ItemStack stack) {
-		if (stack.getTagCompound() == null) {
-			stack.setTagCompound(new NBTTagCompound());
-			stack.getTagCompound().setFloat("Steam", (ModItems.canisterSteam.getMaxDamage() - stack.getItemDamage()) * 60.0F);
-		}
-
-		return stack.getTagCompound();
-	}
-
-	public static float getSteam(ItemStack stack) {
-		NBTTagCompound compound = getOrCreateNBT(stack);
-		return compound.getFloat("Steam");
-	}
-
-	public static void setSteam(ItemStack stack, float steam) {
-		NBTTagCompound compound = getOrCreateNBT(stack);
-		float steamToAdd = Math.max(Math.min(steam, 150000.0F), 0.0F);
-		compound.setFloat("Steam", steamToAdd);
-		stack.setItemDamage(ModItems.canisterSteam.getMaxDamage() - Math.round(steamToAdd / 60.0F));
-	}
-
-	public static boolean isFull(ItemStack stack) {
-		NBTTagCompound compound = getOrCreateNBT(stack);
-		return compound.getFloat("Steam") >= 150000.0F;
-	}
-
-	public static boolean isEmpty(ItemStack stack) {
-		NBTTagCompound compound = getOrCreateNBT(stack);
-		return compound.getFloat("Steam") <= 0.0F;
+	{	
+		list.add(getChargedItem());
+		list.add(new ItemStack(itemID, 1, this.getMaxDamage()));
 	}
 
 	@SuppressWarnings("all")
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack itemStack, EntityPlayer player, List list, boolean flag) {
-		list.add(String.format("%d/%d", new Object[] { Integer.valueOf(getMaxDamage() - itemStack.getItemDamage()), Integer.valueOf(2500) }));
+	public void addInformation(ItemStack itemStack, EntityPlayer player, List list, boolean flag) 
+	{
+		if(itemStack.getItem() == ModItems.canisterSteam)
+			list.add(String.format("%d/%d", new Object[] {getSteam(itemStack), MAX_STEAM}));
+		else
+			list.add(String.format("%d/%d", new Object[] {getGas(itemStack), MAX_GAS}));
+	}
+	
+	private ItemStack getChargedItem()
+	{
+		ItemStack charged = new ItemStack(this, 1, 0);
+		NBTTagCompound tag = new NBTTagCompound();
+		
+		if(charged.getItem() == ModItems.canisterSteam)
+			tag.setInteger("steam", MAX_STEAM);
+		else
+			tag.setInteger("gas", MAX_GAS);
+		
+		charged.setTagCompound(tag);
+		
+		return charged.copy();
+	}
+	
+	private static NBTTagCompound getOrCreateNBT(ItemStack stack) 
+	{
+		if (stack.getTagCompound() == null)
+		{
+			NBTTagCompound tag = new NBTTagCompound();
+			
+			if(stack.getItem() == ModItems.canisterSteam)
+				tag.setInteger("steam", (MAX_VISIBLE - stack.getItemDamage()) * MAX_STEAM / MAX_VISIBLE);
+			else
+				tag.setInteger("gas", (MAX_VISIBLE - stack.getItemDamage()) * MAX_GAS / MAX_VISIBLE);
+			
+			stack.setTagCompound(new NBTTagCompound());
+		}
+
+		return stack.getTagCompound();
+	}
+	
+	/*
+	 * For steam canisters 
+	 */
+	
+	public static int getSteam(ItemStack stack) 
+	{
+		NBTTagCompound compound = getOrCreateNBT(stack);
+		return compound.getInteger("steam");
+	}
+
+	public static int getEmptySpaceSteam(ItemStack stack)
+	{
+		NBTTagCompound compound = getOrCreateNBT(stack);
+		return MAX_STEAM - compound.getInteger("steam");
+	}
+	
+	public static int addSteam(ItemStack stack, int steam)
+	{
+		int steamToAdd = Math.min(getEmptySpaceSteam(stack), Math.min(steam, MAX_STEAM_RATE));
+		setSteam(stack, getSteam(stack)+steamToAdd);
+		return steamToAdd;
+	}
+	
+	public static void setSteam(ItemStack stack, int steam)
+	{
+		NBTTagCompound compound = getOrCreateNBT(stack);
+		int steamToAdd = Math.min(steam, MAX_STEAM);
+		compound.setInteger("steam", steamToAdd);
+		stack.setItemDamage(MAX_VISIBLE - steamToAdd * MAX_VISIBLE / MAX_STEAM);
+	}
+
+	public static boolean isFullSteam(ItemStack stack) 
+	{
+		NBTTagCompound compound = getOrCreateNBT(stack);
+		return compound.getInteger("steam") >= MAX_STEAM;
+	}
+
+	public static boolean isEmptySteam(ItemStack stack) {
+		NBTTagCompound compound = getOrCreateNBT(stack);
+		return compound.getInteger("steam") <= 0;
+	}
+
+	/*
+	 * For gas canisters 
+	 */
+	
+	public static int getGas(ItemStack stack) 
+	{
+		NBTTagCompound compound = getOrCreateNBT(stack);
+		return compound.getInteger("gas");
+	}
+
+	public static int getEmptySpaceGas(ItemStack stack)
+	{
+		NBTTagCompound compound = getOrCreateNBT(stack);
+		return MAX_STEAM - compound.getInteger("gas");
+	}
+	
+	public static int addGas(ItemStack stack, int gas)
+	{
+		int gasToAdd = Math.min(getEmptySpaceGas(stack), Math.min(gas, MAX_GAS_RATE));
+		setGas(stack, getGas(stack)+gasToAdd);
+		return gasToAdd;
+	}
+	
+	public static void setGas(ItemStack stack, int gas)
+	{
+		NBTTagCompound compound = getOrCreateNBT(stack);
+		int gasToAdd = Math.min(gas, MAX_STEAM);
+		compound.setInteger("gas", gasToAdd);
+		stack.setItemDamage(MAX_VISIBLE - gasToAdd * MAX_VISIBLE / MAX_GAS);
+	}
+
+	public static boolean isFullGas(ItemStack stack) 
+	{
+		NBTTagCompound compound = getOrCreateNBT(stack);
+		return compound.getInteger("gas") >= MAX_GAS;
+	}
+
+	public static boolean isEmptyGas(ItemStack stack) 
+	{
+		NBTTagCompound compound = getOrCreateNBT(stack);
+		return compound.getInteger("gas") <= 0;
 	}
 }
