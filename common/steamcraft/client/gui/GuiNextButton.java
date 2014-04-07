@@ -19,7 +19,6 @@ package common.steamcraft.client.gui;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiScreenBook;
 
 import org.lwjgl.opengl.GL11;
 

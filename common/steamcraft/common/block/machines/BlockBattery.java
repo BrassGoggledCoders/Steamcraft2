@@ -19,16 +19,17 @@ package common.steamcraft.common.block.machines;
 
 import java.util.Random;
 
-import common.steamcraft.common.block.BlockMod;
-import common.steamcraft.common.lib2.LibInfo;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.Icon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+
+import common.steamcraft.common.block.BlockMod;
+import common.steamcraft.common.lib2.LibInfo;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -129,10 +130,11 @@ public class BlockBattery extends BlockMod
 		return true;
 	}
 
+	@Override
 	public void randomDisplayTick(World world, int i, int j, int k, Random random) {
-		double d = (double)((float)i + 0.5F) + (double)(random.nextFloat() - 0.5F) * 0.20000000000000001D;
-		double d1 = (double)((float)j + 0.2F) + (double)(random.nextFloat() - 0.5F) * 0.20000000000000001D;
-		double d2 = (double)((float)k + 0.5F) + (double)(random.nextFloat() - 0.5F) * 0.20000000000000001D;
+		double d = i + 0.5F + (random.nextFloat() - 0.5F) * 0.20000000000000001D;
+		double d1 = j + 0.2F + (random.nextFloat() - 0.5F) * 0.20000000000000001D;
+		double d2 = k + 0.5F + (random.nextFloat() - 0.5F) * 0.20000000000000001D;
 		double d4 = 0.5D;
 		world.spawnParticle("reddust", d - d4, d1, d2, -1.0D, 0.7D, 1.0D);
 		world.spawnParticle("reddust", d + d4, d1, d2, -1.0D, 0.7D, 1.0D);

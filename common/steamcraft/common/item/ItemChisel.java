@@ -1,16 +1,18 @@
 package common.steamcraft.common.item;
 
-import common.steamcraft.common.block.ModBlocks;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import ic2.api.item.IBoxable;
+
+import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-import ic2.api.item.IBoxable;
+import common.steamcraft.common.block.ModBlocks;
 
-import java.util.Random;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemChisel extends ItemMod implements IBoxable
 {
@@ -72,10 +74,10 @@ public class ItemChisel extends ItemMod implements IBoxable
 		//float f6 = (world.rand.nextFloat() - 0.5F) * 0.2F;
 		float f4 = (world.rand.nextFloat() - 0.5F) * 0.2F;
 		float f5 = (world.rand.nextFloat() - 0.5F) * 0.2F;
-		double d1 = (double)i1 + (double)(i - i1) * d0 + (world.rand.nextDouble() - 0.5D) * 1.0D + 0.5D;
-		double d2 = (double)j1 + (double)(j - j1) * d0 + world.rand.nextDouble() * 1.0D - 0.5D;
-		double d3 = (double)k1 + (double)(k - k1) * d0 + (world.rand.nextDouble() - 0.5D) * 1.0D + 0.5D;
-		world.spawnParticle("portal", d1, d2, d3, (double)f3, (double)f4, (double)f5);
+		double d1 = i1 + (i - i1) * d0 + (world.rand.nextDouble() - 0.5D) * 1.0D + 0.5D;
+		double d2 = j1 + (j - j1) * d0 + world.rand.nextDouble() * 1.0D - 0.5D;
+		double d3 = k1 + (k - k1) * d0 + (world.rand.nextDouble() - 0.5D) * 1.0D + 0.5D;
+		world.spawnParticle("portal", d1, d2, d3, f3, f4, f5);
 		world.spawnParticle("smoke", i, j, k, random.nextGaussian(), random.nextGaussian(), random.nextGaussian());
 		stack.damageItem(1, player);
 		return true;

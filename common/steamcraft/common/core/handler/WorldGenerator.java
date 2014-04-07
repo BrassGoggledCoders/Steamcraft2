@@ -17,13 +17,14 @@
  */
 package common.steamcraft.common.core.handler;
 
-import common.steamcraft.common.block.ModOres;
-import cpw.mods.fml.common.IWorldGenerator;
+import java.util.Random;
+
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenMinable;
-
-import java.util.Random;
+import common.steamcraft.common.block.ModBlocks;
+import common.steamcraft.common.block.ModOres;
+import cpw.mods.fml.common.IWorldGenerator;
 
 /**
  * @author MrArcane111
@@ -78,15 +79,59 @@ public class WorldGenerator implements IWorldGenerator {
 			new WorldGenMinable(ModOres.oreBornite.blockID, random.nextInt(12)).generate(world, random, borniteXCoord, borniteYCoord, borniteZCoord);
 		}
 		for (int chance = 0; chance < 3; chance++) {
+			int zincXCoord = chunkX + random.nextInt(16);
+			int zincYCoord = random.nextInt(36);
+			int zincZCoord = chunkZ + random.nextInt(16);
+
+			new WorldGenMinable(ModOres.orePhosphate.blockID, random.nextInt(6)).generate(world, random, zincXCoord, zincYCoord, zincZCoord);
+		}
+		for (int chance = 0; chance < 3; chance++) {
+			int aluminumXCoord = chunkX + random.nextInt(16);
+			int aluminumYCoord = random.nextInt(36);
+			int aluminumZCoord = chunkZ + random.nextInt(16);
+
+			new WorldGenMinable(ModOres.oreAluminum.blockID, random.nextInt(6)).generate(world, random, aluminumXCoord, aluminumYCoord, aluminumZCoord);
+		}
+		for (int chance = 0; chance < 3; chance++) {
+			int copperXCoord = chunkX + random.nextInt(16);
+			int copperYCoord = random.nextInt(36);
+			int copperZCoord = chunkZ + random.nextInt(16);
+
+			new WorldGenMinable(ModOres.oreCopper.blockID, random.nextInt(6)).generate(world, random, copperXCoord, copperYCoord, copperZCoord);
+		}
+		for (int chance = 0; chance < 3; chance++) {
+			int tinXCoord = chunkX + random.nextInt(16);
+			int tinYCoord = random.nextInt(36);
+			int tinZCoord = chunkZ + random.nextInt(16);
+
+			new WorldGenMinable(ModOres.oreTin.blockID, random.nextInt(6)).generate(world, random, tinXCoord, tinYCoord, tinZCoord);
+		}
+		for (int chance = 0; chance < 3; chance++) {
+			int zincXCoord = chunkX + random.nextInt(16);
+			int zincYCoord = random.nextInt(36);
+			int zincZCoord = chunkZ + random.nextInt(16);
+
+			new WorldGenMinable(ModOres.oreZinc.blockID, random.nextInt(6)).generate(world, random, zincXCoord, zincYCoord, zincZCoord);
+		}
+	}
+
+	private void generateEnd(World world, Random random, int chunkX, int chunkZ) {
+		for (int chance = 0; chance < 3; chance++) {
+			int etheriumXCoord = chunkX + random.nextInt(16);
+			int etheriumYCoord = random.nextInt(36);
+			int etheriumZCoord = chunkZ + random.nextInt(16);
+
+			new WorldGenMinable(ModBlocks.etheriumCrystal.blockID, random.nextInt(6)).generate(world, random, etheriumXCoord, etheriumYCoord, etheriumZCoord);
+		}
+	}
+
+	private void generateNether(World world, Random random, int chunkX, int chunkZ) {
+		for (int chance = 0; chance < 3; chance++) {
 			int phosphateXCoord = chunkX + random.nextInt(16);
 			int phosphateYCoord = random.nextInt(36);
 			int phosphateZCoord = chunkZ + random.nextInt(16);
 
-			new WorldGenMinable(ModOres.orePhosphate.blockID, random.nextInt(6)).generate(world, random, phosphateXCoord, phosphateYCoord, phosphateZCoord);
+			new WorldGenMinable(ModBlocks.etheriumCrystal.blockID, random.nextInt(6)).generate(world, random, phosphateXCoord, phosphateYCoord, phosphateZCoord);
 		}
 	}
-
-	private void generateEnd(World world, Random random, int i, int j) {}
-
-	private void generateNether(World world, Random random, int i, int j) {}
 }

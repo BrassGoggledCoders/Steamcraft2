@@ -1,10 +1,7 @@
 package common.steamcraft.common.entity;
 
-import common.steamcraft.common.item.ModGuns;
-import common.steamcraft.common.lib2.EntityIDs;
-import common.steamcraft.common.lib2.LibInfo;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import java.util.List;
+
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -12,10 +9,19 @@ import net.minecraft.entity.IProjectile;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.*;
+import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.DamageSource;
+import net.minecraft.util.MathHelper;
+import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 
-import java.util.List;
+import common.steamcraft.common.item.ModGuns;
+import common.steamcraft.common.lib2.EntityIDs;
+import common.steamcraft.common.lib2.LibInfo;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class EntityBullet extends Entity implements IProjectile
 {
@@ -61,11 +67,11 @@ public class EntityBullet extends Entity implements IProjectile
             this.canBePickedUp = 1;
         }
 
-        this.posY = living1.posY + (double)living1.getEyeHeight() - 0.10000000149011612D;
+        this.posY = living1.posY + living1.getEyeHeight() - 0.10000000149011612D;
         double d0 = living2.posX - living1.posX;
-        double d1 = living2.boundingBox.minY + (double)(living2.height / 3.0F) - this.posY;
+        double d1 = living2.boundingBox.minY + living2.height / 3.0F - this.posY;
         double d2 = living2.posZ - living1.posZ;
-        double d3 = (double) MathHelper.sqrt_double(d0 * d0 + d2 * d2);
+        double d3 = MathHelper.sqrt_double(d0 * d0 + d2 * d2);
 
         if(d3 >= 1.0E-7D)
         {
@@ -76,7 +82,7 @@ public class EntityBullet extends Entity implements IProjectile
             this.setLocationAndAngles(living1.posX + d4, this.posY, living1.posZ + d5, f2, f3);
             this.yOffset = 0.0F;
             float f4 = (float)d3 * 0.2F;
-            this.setThrowableHeading(d0, d1 + (double)f4, d2, par4, par5);
+            this.setThrowableHeading(d0, d1 + f4, d2, par4, par5);
         }
     }
 
@@ -92,15 +98,15 @@ public class EntityBullet extends Entity implements IProjectile
         }
 
         this.setSize(0.5F, 0.5F);
-        this.setLocationAndAngles(living.posX, living.posY + (double)living.getEyeHeight(), living.posZ, living.rotationYaw, living.rotationPitch);
-        this.posX -= (double)(MathHelper.cos(this.rotationYaw / 180.0F * (float)Math.PI) * 0.16F);
+        this.setLocationAndAngles(living.posX, living.posY + living.getEyeHeight(), living.posZ, living.rotationYaw, living.rotationPitch);
+        this.posX -= MathHelper.cos(this.rotationYaw / 180.0F * (float)Math.PI) * 0.16F;
         this.posY -= 0.10000000149011612D;
-        this.posZ -= (double)(MathHelper.sin(this.rotationYaw / 180.0F * (float)Math.PI) * 0.16F);
+        this.posZ -= MathHelper.sin(this.rotationYaw / 180.0F * (float)Math.PI) * 0.16F;
         this.setPosition(this.posX, this.posY, this.posZ);
         this.yOffset = 0.0F;
-        this.motionX = (double)(-MathHelper.sin(this.rotationYaw / 180.0F * (float)Math.PI) * MathHelper.cos(this.rotationPitch / 180.0F * (float)Math.PI));
-        this.motionZ = (double)(MathHelper.cos(this.rotationYaw / 180.0F * (float)Math.PI) * MathHelper.cos(this.rotationPitch / 180.0F * (float)Math.PI));
-        this.motionY = (double)(-MathHelper.sin(this.rotationPitch / 180.0F * (float)Math.PI));
+        this.motionX = -MathHelper.sin(this.rotationYaw / 180.0F * (float)Math.PI) * MathHelper.cos(this.rotationPitch / 180.0F * (float)Math.PI);
+        this.motionZ = MathHelper.cos(this.rotationYaw / 180.0F * (float)Math.PI) * MathHelper.cos(this.rotationPitch / 180.0F * (float)Math.PI);
+        this.motionY = (-MathHelper.sin(this.rotationPitch / 180.0F * (float)Math.PI));
         this.setThrowableHeading(this.motionX, this.motionY, this.motionZ, 1.5F, accuracy);
         this.accuracy = accuracy;
         this.damage = damage;
@@ -120,9 +126,9 @@ public class EntityBullet extends Entity implements IProjectile
 		d /= f2;
 		d1 /= f2;
 		d2 /= f2;
-		d += rand.nextGaussian() * 0.0034999998323619365D * (double)f1 * (double)i / 5;
-		d1 += rand.nextGaussian() * 0.0034999998323619365D * (double)f1 * (double)i / 5;
-		d2 += rand.nextGaussian() * 0.0034999998323619365D * (double)f1 * (double)i / 5;
+		d += rand.nextGaussian() * 0.0034999998323619365D * f1 * i / 5;
+		d1 += rand.nextGaussian() * 0.0034999998323619365D * f1 * i / 5;
+		d2 += rand.nextGaussian() * 0.0034999998323619365D * f1 * i / 5;
 		d *= f;
 		d1 *= f;
 		d2 *= f;
@@ -277,7 +283,7 @@ public class EntityBullet extends Entity implements IProjectile
 				if(inTile == Block.glass.blockID || inTile == Block.glowStone.blockID || inTile == Block.leaves.blockID)
 				{
 					Block block = Block.blocksList[inTile];
-					worldObj.playSoundEffect((double)xTile + 0.5D, (double)yTile + 0.5D, (double)zTile + 0.5D, block.stepSound.getBreakSound(), 1.0F, 1.0F);
+					worldObj.playSoundEffect(xTile + 0.5D, yTile + 0.5D, zTile + 0.5D, block.stepSound.getBreakSound(), 1.0F, 1.0F);
 					worldObj.setBlockToAir(xTile, yTile, zTile);
 				} else
 				{
@@ -285,9 +291,9 @@ public class EntityBullet extends Entity implements IProjectile
 					motionY = (float)(movingobjectposition.hitVec.yCoord - posY);
 					motionZ = (float)(movingobjectposition.hitVec.zCoord - posZ);
 					float f1 = MathHelper.sqrt_double(motionX * motionX + motionY * motionY + motionZ * motionZ);
-					posX -= (motionX / (double)f1) * 0.05000000074505806D;
-					posY -= (motionY / (double)f1) * 0.05000000074505806D;
-					posZ -= (motionZ / (double)f1) * 0.05000000074505806D;
+					posX -= (motionX / f1) * 0.05000000074505806D;
+					posY -= (motionY / f1) * 0.05000000074505806D;
+					posZ -= (motionZ / f1) * 0.05000000074505806D;
 					worldObj.playSoundAtEntity(this, LibInfo.SC2_PREFIX + "hitblock", 1.0F, 1.0F);
 					this.setDead();
 				}

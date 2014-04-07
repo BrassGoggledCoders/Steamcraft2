@@ -17,9 +17,9 @@
  */
 package common.steamcraft.common.core.handler;
 
-import net.minecraftforge.common.Configuration;
-
 import java.io.File;
+
+import net.minecraftforge.common.Configuration;
 
 /**
  * @author MrArcane111, EntireCraft & general3214
@@ -40,6 +40,7 @@ public final class ConfigHandler {
 
     public ConfigHandler(File file) {
         config = new Configuration(file);
+        config.addCustomCategoryComment(Configuration.CATEGORY_BLOCK, "Set Block IDs to 0 to disable");
     }
 
 	public void loadConfig() {

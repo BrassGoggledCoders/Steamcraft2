@@ -17,11 +17,12 @@
  */
 package common.steamcraft.client.core.helper;
 
-import common.steamcraft.client.lib2.ClientResources;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.item.Item;
 import net.minecraft.util.Icon;
+
+import common.steamcraft.client.lib2.ClientResources;
 
 /**
  * @author Vazkii from Thaumic Tinkerer

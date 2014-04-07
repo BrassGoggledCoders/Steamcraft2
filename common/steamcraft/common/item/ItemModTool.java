@@ -1,11 +1,7 @@
 package common.steamcraft.common.item;
 
-import com.google.common.collect.Multimap;
+import java.util.List;
 
-import common.steamcraft.client.core.helper.ClientHelper;
-import common.steamcraft.common.lib2.MaterialMod;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -15,7 +11,12 @@ import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-import java.util.List;
+import com.google.common.collect.Multimap;
+import common.steamcraft.client.core.helper.ClientHelper;
+import common.steamcraft.common.lib2.MaterialMod;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemModTool extends ItemMod
 {
@@ -29,7 +30,7 @@ public class ItemModTool extends ItemMod
 	{
 		super(id);
 		this.toolMaterial = toolMat;
-		this.blocksEffectiveAgainst = blockArray;
+		ItemModTool.blocksEffectiveAgainst = blockArray;
 		this.maxStackSize = 1;
 		this.setMaxDamage(toolMat.getMaxUses());
 		this.efficiencyOnProperMaterial = toolMat.getEfficiencyOnProperMaterial();
@@ -96,7 +97,7 @@ public class ItemModTool extends ItemMod
 	public Multimap getItemAttributeModifiers()
 	{
 		Multimap multimap = super.getItemAttributeModifiers();
-		multimap.put(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName(), new AttributeModifier(field_111210_e, "Tool modifier", (double)this.damageVsEntity, 0));
+		multimap.put(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName(), new AttributeModifier(field_111210_e, "Tool modifier", this.damageVsEntity, 0));
 		return multimap;
 	}
 
@@ -117,7 +118,7 @@ public class ItemModTool extends ItemMod
 	@Override
 	public void addInformation(ItemStack itemStack, EntityPlayer entityPlayer, List list, boolean bool) 
 	{
-		if(toolMaterial==MaterialMod.INSTANCE.STEAM_TOOL)
+		if(toolMaterial==MaterialMod.STEAM_TOOL)
 		{
 			if(!ClientHelper.isShiftKeyDown())
 			{
@@ -135,7 +136,7 @@ public class ItemModTool extends ItemMod
 	{
 		if(!world.isRemote)
 		{
-			if(toolMaterial==MaterialMod.INSTANCE.STEAM_TOOL)
+			if(toolMaterial==MaterialMod.STEAM_TOOL)
 			{
 				if(player.inventory.hasItem(ModItems.canisterSteam.itemID))
 				{

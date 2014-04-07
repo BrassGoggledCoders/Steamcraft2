@@ -9,15 +9,16 @@ package common.steamcraft.common.item;
 
 import java.util.List;
 
-import common.steamcraft.common.lib2.LibInfo;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
 import net.minecraft.util.MathHelper;
+
+import common.steamcraft.common.lib2.LibInfo;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemBrassParts extends ItemMod {
     public static final String[] names = new String[] { "0", "1", "2", "3",

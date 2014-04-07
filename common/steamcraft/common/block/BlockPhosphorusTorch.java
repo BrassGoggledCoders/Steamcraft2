@@ -22,8 +22,10 @@ import java.util.Random;
 import net.minecraft.block.BlockTorch;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.world.World;
+
 import common.steamcraft.common.lib2.CreativeTabsMod;
 import common.steamcraft.common.lib2.LibInfo;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -50,9 +52,9 @@ public class BlockPhosphorusTorch extends BlockTorch {
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(World world, int i, int j, int k, Random random) {
 		int meta = world.getBlockMetadata(i, j, k);
-        double d = (double)((float)i + 0.5F) + (double)(random.nextFloat() - 0.5F) * 0.20000000000000001D;
-        double d1 = (double)((float)j + 0.7F) + (double)(random.nextFloat() - 0.5F) * 0.20000000000000001D;
-        double d2 = (double)((float)k + 0.5F) + (double)(random.nextFloat() - 0.5F) * 0.20000000000000001D;
+        double d = i + 0.5F + (random.nextFloat() - 0.5F) * 0.20000000000000001D;
+        double d1 = j + 0.7F + (random.nextFloat() - 0.5F) * 0.20000000000000001D;
+        double d2 = k + 0.5F + (random.nextFloat() - 0.5F) * 0.20000000000000001D;
         double d3 = 0.2199999988079071D;
         double d4 = 0.27000001072883606D;
        

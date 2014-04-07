@@ -1,11 +1,7 @@
 package common.steamcraft.common.block.machines;
 
-import common.steamcraft.client.lib2.GuiIDs;
-import common.steamcraft.common.SC2;
-import common.steamcraft.common.block.tile.TileEntityChemicalFurnace;
-import common.steamcraft.common.lib2.LibInfo;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -18,7 +14,13 @@ import net.minecraft.util.Icon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
-import java.util.Random;
+import common.steamcraft.client.lib2.GuiIDs;
+import common.steamcraft.common.SC2;
+import common.steamcraft.common.block.tile.TileEntityChemicalFurnace;
+import common.steamcraft.common.lib2.LibInfo;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockChemicalFurnace extends BlockContainerMod
 {
@@ -112,9 +114,9 @@ public class BlockChemicalFurnace extends BlockContainerMod
 		}
 
 		int l = world.getBlockMetadata(i, j, k);
-		float f = (float)i + 0.5F;
-		float f1 = (float)j + 0.0F + (random.nextFloat() * 6F) / 16F;
-		float f2 = (float)k + 0.5F;
+		float f = i + 0.5F;
+		float f1 = j + 0.0F + (random.nextFloat() * 6F) / 16F;
+		float f2 = k + 0.5F;
 		float f3 = 0.52F;
 		float f4 = random.nextFloat() * 0.6F - 0.3F;
 
@@ -188,7 +190,7 @@ public class BlockChemicalFurnace extends BlockContainerMod
 	@Override
 	public void onBlockPlacedBy(World world, int i, int j, int k, EntityLivingBase living, ItemStack stack)
 	{
-		int l = MathHelper.floor_double((double)((living.rotationYaw * 4F) / 360F) + 0.5D) & 3;
+		int l = MathHelper.floor_double((living.rotationYaw * 4F) / 360F + 0.5D) & 3;
 
 		if(l == 0)
 		{
@@ -246,7 +248,7 @@ public class BlockChemicalFurnace extends BlockContainerMod
 							}
 							
 							stack.stackSize -= i1;
-							EntityItem item = new EntityItem(world, (float)i + f, (float)j + f1, (float)k + f2, new ItemStack(stack.itemID, i1, stack.getItemDamage()));
+							EntityItem item = new EntityItem(world, i + f, j + f1, k + f2, new ItemStack(stack.itemID, i1, stack.getItemDamage()));
 							float f3 = 0.05F;
 							item.motionX = (float)random.nextGaussian() * f3;
 							item.motionY = (float)random.nextGaussian() * f3 + 0.2F;

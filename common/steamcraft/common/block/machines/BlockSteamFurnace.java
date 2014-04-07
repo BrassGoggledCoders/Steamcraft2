@@ -1,11 +1,7 @@
 package common.steamcraft.common.block.machines;
 
-import common.steamcraft.client.lib2.GuiIDs;
-import common.steamcraft.common.SC2;
-import common.steamcraft.common.block.tile.TileEntitySteamFurnace;
-import common.steamcraft.common.lib2.LibInfo;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
@@ -19,7 +15,13 @@ import net.minecraft.util.Icon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
-import java.util.Random;
+import common.steamcraft.client.lib2.GuiIDs;
+import common.steamcraft.common.SC2;
+import common.steamcraft.common.block.tile.TileEntitySteamFurnace;
+import common.steamcraft.common.lib2.LibInfo;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockSteamFurnace extends BlockContainer //Should be: extends BlockContainerMod ?
 {
@@ -117,9 +119,9 @@ public class BlockSteamFurnace extends BlockContainer //Should be: extends Block
 
 		TileEntitySteamFurnace furnace = (TileEntitySteamFurnace) world.getBlockTileEntity(i, j, k);
 		int meta = world.getBlockMetadata(i, j, k);
-		float f = (float)i + 0.5F;
-		float f1 = (float)j + 0.0F + (random.nextFloat() * 6F) / 16F;
-		float f2 = (float)k + 0.5F;
+		float f = i + 0.5F;
+		float f1 = j + 0.0F + (random.nextFloat() * 6F) / 16F;
+		float f2 = k + 0.5F;
 		float f3 = 0.52F;
 		float f4 = random.nextFloat() * 0.6F - 0.3F;
 
@@ -149,7 +151,7 @@ public class BlockSteamFurnace extends BlockContainer //Should be: extends Block
 
 	public static void playSound(World world, int i, int j, int k, String s)
 	{
-		world.playSoundEffect((float)i + 0.5F, (float)j + 0.5F, (float)k + 0.5F, s, 0.5F, 2.6F * 0.8F);
+		world.playSoundEffect(i + 0.5F, j + 0.5F, k + 0.5F, s, 0.5F, 2.6F * 0.8F);
 	}
 
 	@Override
@@ -245,7 +247,7 @@ public class BlockSteamFurnace extends BlockContainer //Should be: extends Block
 	@Override
 	public void onBlockPlacedBy(World world, int i, int j, int k, EntityLivingBase living, ItemStack stack)
 	{
-		int l = MathHelper.floor_double((double)((living.rotationYaw * 4F) / 360F) + 0.5D) & 3;
+		int l = MathHelper.floor_double((living.rotationYaw * 4F) / 360F + 0.5D) & 3;
 
 		if(l == 0)
 		{
@@ -303,7 +305,7 @@ public class BlockSteamFurnace extends BlockContainer //Should be: extends Block
 							}
 
 							stack.stackSize -= num;
-							EntityItem item = new EntityItem(world, (float)i + f, (float)j + f1, (float)k + f2, new ItemStack(stack.itemID, num, stack.getItemDamage()));
+							EntityItem item = new EntityItem(world, i + f, j + f1, k + f2, new ItemStack(stack.itemID, num, stack.getItemDamage()));
 							float f3 = 0.05F;
 							item.motionX = (float)furnaceRand.nextGaussian() * f3;
 							item.motionY = (float)furnaceRand.nextGaussian() * f3 + 0.2F;

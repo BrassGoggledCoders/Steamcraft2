@@ -1,10 +1,11 @@
 package common.steamcraft.common.item;
 
-import common.steamcraft.common.block.ModPowerBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+
+import common.steamcraft.common.block.ModPowerBlocks;
 
 public class ItemCopperWire extends ItemMod
 {

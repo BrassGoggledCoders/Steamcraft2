@@ -13,10 +13,6 @@
  */
 package common.steamcraft.common.item;
 
-import common.steamcraft.common.SC2;
-import common.steamcraft.common.lib2.CreativeTabsMod;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.entity.EntityLivingBase;
@@ -27,6 +23,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
 import org.lwjgl.input.Keyboard;
+
+import common.steamcraft.common.SC2;
+import common.steamcraft.common.lib2.CreativeTabsMod;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * 

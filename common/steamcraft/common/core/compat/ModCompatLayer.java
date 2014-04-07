@@ -2,7 +2,7 @@ package common.steamcraft.common.core.compat;
 
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
-import common.steamcraft.common.core.helper.CompatHelper;
+
 import common.steamcraft.common.item.ModItems;
 
 public class ModCompatLayer {

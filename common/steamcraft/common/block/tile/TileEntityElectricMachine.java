@@ -32,9 +32,6 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeDirection;
 import net.minecraftforge.common.MinecraftForge;
-import buildcraft.api.power.IPowerReceptor;
-import buildcraft.api.power.PowerHandler;
-import buildcraft.api.power.PowerHandler.Type;
 import cofh.api.energy.IEnergyContainerItem;
 import cofh.api.energy.IEnergyHandler;
 
@@ -181,7 +178,7 @@ public abstract class TileEntityElectricMachine extends TileEntityMachine implem
 	@SideOnly(Side.CLIENT)
 	public int getEnergyScaled(int par1)
 	{
-		return (int) (this.getEnergy()*1000 / this.energy.getMaxEnergy() / par1);
+		return this.getEnergy()*1000 / this.energy.getMaxEnergy() / par1;
 	}
 	
 	/**

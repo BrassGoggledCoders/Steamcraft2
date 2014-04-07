@@ -17,10 +17,10 @@
  */
 package common.steamcraft.common.network;
 
-import cpw.mods.fml.common.FMLLog;
-
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import cpw.mods.fml.common.FMLLog;
 
 /**
  * A basic logger class to handle SC2 console messages.

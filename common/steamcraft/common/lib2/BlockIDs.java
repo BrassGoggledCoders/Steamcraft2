@@ -49,7 +49,7 @@ public class BlockIDs {
     public static int lampOnID = SC2.proxy.cfgHandler.loadBlock("lampOnID");
     public static int lampOffID = SC2.proxy.cfgHandler.loadBlock("lampOffID");
     public static int woodBrassID = SC2.proxy.cfgHandler.loadBlock("woodBrassID");
-    public static int leavesLampID = SC2.proxy.cfgHandler.loadBlock("leavesLampID");
+    public static int leavesBrassID = SC2.proxy.cfgHandler.loadBlock("leavesBrassID");
     public static int ironLampOffID = SC2.proxy.cfgHandler.loadBlock("ironLampOffID");
     public static int ironLampOnID = SC2.proxy.cfgHandler.loadBlock("ironLampOnID");
     public static int teaPlantID = SC2.proxy.cfgHandler.loadBlock("teaPlantID");
@@ -67,4 +67,6 @@ public class BlockIDs {
 	public static int dropHammerID = SC2.proxy.cfgHandler.loadBlock("dropHammerID");
 	public static int blockObsidianTileID = SC2.proxy.cfgHandler.loadBlock("blockObsidianTileID");
 	public static int cryoIceID = SC2.proxy.cfgHandler.loadBlock("cryoIce");
+	public static int blackSlateID = SC2.proxy.cfgHandler.loadBlock("blackSlateID");
+	public static int blueSlateID = SC2.proxy.cfgHandler.loadBlock("blueSlateID");
 }

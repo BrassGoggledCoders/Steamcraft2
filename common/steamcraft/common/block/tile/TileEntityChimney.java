@@ -37,7 +37,7 @@ public class TileEntityChimney extends TileEntity
 
 	public TileEntityChimney()
 	{
-		this.random = new Random();
+		TileEntityChimney.random = new Random();
 	}
 
 	@Override
@@ -57,7 +57,7 @@ public class TileEntityChimney extends TileEntity
 	{
 		if(random.nextInt(6) == 0)
 		{
-			this.smoke(this.worldObj, this.xCoord, this.yCoord, this.zCoord, this.random);
+			this.smoke(this.worldObj, this.xCoord, this.yCoord, this.zCoord, TileEntityChimney.random);
 		}
 	}
 
@@ -66,9 +66,9 @@ public class TileEntityChimney extends TileEntity
 	{
 		for(int num = 0; num < 12; num++)
 		{
-			float smI = (float) i + random.nextFloat() * 0.4F + 0.2F;
-			float smJ = (float) j + 0.4F + random.nextFloat() * 0.6F;
-			float smK = (float) k + random.nextFloat() * 0.4F + 0.2F;
+			float smI = i + random.nextFloat() * 0.4F + 0.2F;
+			float smJ = j + 0.4F + random.nextFloat() * 0.6F;
+			float smK = k + random.nextFloat() * 0.4F + 0.2F;
 
 			Minecraft.getMinecraft().effectRenderer.addEffect(new EntitySmokeFX(world, smI, smJ, smK, 0, 0, 0, 2.0F));
 		}

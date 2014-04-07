@@ -32,11 +32,13 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Icon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
+
 import common.steamcraft.client.lib2.GuiIDs;
 import common.steamcraft.common.SC2;
 import common.steamcraft.common.block.tile.TileEntitySteamBoiler;
 import common.steamcraft.common.block.tile.TileEntityDropHammer;
 import common.steamcraft.common.lib2.LibInfo;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -181,9 +183,10 @@ public class BlockDropHammer extends BlockContainerMod
 	 /**
      * Called when the block is placed in the world.
      */
-    public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase living, ItemStack stack)
+    @Override
+	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase living, ItemStack stack)
     {    	
-        int l = MathHelper.floor_double((double)(living.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
+        int l = MathHelper.floor_double(living.rotationYaw * 4.0F / 360.0F + 0.5D) & 3;
 
         if (l == 0)
         {

@@ -1,5 +1,5 @@
 /**
- * This class was created by <MrArcane111> or his SC2 development team. 
+ * This class was created by !=MrArcane111> or his SC2 development team. 
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -23,6 +23,12 @@ import net.minecraft.block.BlockStairs;
 import net.minecraft.block.material.Material;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
+import common.steamcraft.common.SC2;
+import common.steamcraft.common.block.machines.ModMachines;
+import common.steamcraft.common.lib2.BlockIDs;
+import common.steamcraft.common.lib2.CreativeTabsMod;
+import common.steamcraft.common.lib2.LibInfo;
+import cpw.mods.fml.common.registry.GameRegistry;
 
 import common.steamcraft.common.block.machines.ModMachines;
 import common.steamcraft.common.lib2.BlockIDs;
@@ -70,6 +76,7 @@ public class ModBlocks {
 	public static Block castIronLampOff;
 	public static Block castIronLampOn;
 	public static Block cryoIce;
+	public static Block blackSlate, blueSlate;
 	
 	public static Block etheriumCrystal;
 	
@@ -111,7 +118,7 @@ public class ModBlocks {
 		lampOn = new BlockLamp(BlockIDs.lampOnID, true).setUnlocalizedName("lampOn").setCreativeTab(null);
 		lampOff = new BlockLamp(BlockIDs.lampOffID, false).setUnlocalizedName("lampOff");
 		woodBrass = new BlockBrassLog(BlockIDs.woodBrassID);
-		leavesBrass = new BlockMod(BlockIDs.leavesLampID, Material.wood).setHardness(2F).setLightOpacity(1).setLightValue(0.9375F).setStepSound(Block.soundGlassFootstep).setUnlocalizedName("leavesBrass");
+		leavesBrass = new BlockMod(BlockIDs.leavesBrassID, Material.wood).setHardness(2F).setLightOpacity(1).setLightValue(0.9375F).setStepSound(Block.soundGlassFootstep).setUnlocalizedName("leavesBrass");
 		teaPlant = new BlockTeaPlant(BlockIDs.teaPlantID).setUnlocalizedName("teaPlant");
 		castIronLampOff = new BlockCastIronLamp(BlockIDs.castIronLampOffID, false).setCreativeTab(CreativeTabsMod.tabSCBlocks).setUnlocalizedName("castIronLampOff");
 		castIronLampOn = new BlockCastIronLamp(BlockIDs.castIronLampOnID, true).setUnlocalizedName("castIronLampOn");
@@ -120,13 +127,20 @@ public class ModBlocks {
 		etheriumCrystal = new BlockEtheriumCrystal(BlockIDs.etheriumCrystalID).setUnlocalizedName("etheriumCrystal");
 		
 		smog = new BlockSmog(BlockIDs.smogID, Material.air).setUnlocalizedName("smog");
+		
+		blackSlate = new BlockSlate(BlockIDs.blackSlateID, Material.rock).setUnlocalizedName("blackSlate");
+		blueSlate = new BlockSlate(BlockIDs.blueSlateID, Material.rock).setUnlocalizedName("blueSlate");
 				
 		ModMachines.initMachines();
 		ModOres.initOres();
 		ModPowerBlocks.initPowerBlocks();
 		registerBlocks();
 		
+<<<<<<< HEAD
+		Fluid steamFluid = new Fluid("steam").setGaseous(true).setTemperature(700).setDensity(-100).setViscosity(500).setLuminosity(1);
+=======
 		steamFluid = new Fluid("steam").setGaseous(true);
+>>>>>>> refs/heads/master
 		FluidRegistry.registerFluid(steamFluid);
 		
 		steamBlock = new BlockFluidSteam(steamFluid, Material.water);
@@ -138,37 +152,72 @@ public class ModBlocks {
 		steamFluid.setIcons(steamBlock.getIcon(0, 0), steamBlock.getIcon(1, 0));
 	}
 	
-	public static void registerBlocks() {	
+	public static void registerBlocks() {
+		if(BlockIDs.blockCastIronID != 0)
 		GameRegistry.registerBlock(blockCastIron, "blockCastIron");
+		if(BlockIDs.blockVoluciteID != 0)
 		GameRegistry.registerBlock(blockVolucite, "blockVolucite");
+		if(BlockIDs.blockBrassID != 0)
 		GameRegistry.registerBlock(blockBrass, "blockBrass");
+		if(BlockIDs.blockSteelID != 0)
 		GameRegistry.registerBlock(blockSteel, "blockSteel");
+		if(BlockIDs.blockAluminumID != 0)
 		GameRegistry.registerBlock(blockAluminum, "blockAluminum");
+		if(BlockIDs.blockCopperID != 0)
 		GameRegistry.registerBlock(blockCopper, "blockCopper");
+		if(BlockIDs.blockTinID != 0)
 		GameRegistry.registerBlock(blockTin, "blockTin");
+		if(BlockIDs.blockZincID != 0)
 		GameRegistry.registerBlock(blockZinc, "blockZinc");
+		if(BlockIDs.lampOnID != 0)
 		GameRegistry.registerBlock(lampOn, "lampOn");
+		if(BlockIDs.lampOffID != 0)
 		GameRegistry.registerBlock(lampOff, "lampOff");
+		if(BlockIDs.woodBrassID != 0)
 		GameRegistry.registerBlock(woodBrass, "woodBrass");
+		if(BlockIDs.leavesBrassID != 0)
 		GameRegistry.registerBlock(leavesBrass, "leavesBrass");
+		if(BlockIDs.railingCastIronID != 0)
 		GameRegistry.registerBlock(railingCastIron, "railingCastIron");
+		if(BlockIDs.gateCastIronID != 0)
 		GameRegistry.registerBlock(gateCastIron, "gateCastIron");
+		if(BlockIDs.decorIronID != 0)
 		GameRegistry.registerBlock(decorIron, "decorIron");
+		if(BlockIDs.decorGoldID != 0)
 		GameRegistry.registerBlock(decorGold, "decorGold");
+		if(BlockIDs.decorDiamondID != 0)
 		GameRegistry.registerBlock(decorDiamond, "decorDiamond");
+		if(BlockIDs.decorCastIronID != 0)
 		GameRegistry.registerBlock(decorCastIron, "decorCastIron");
+		if(BlockIDs.decorVoluciteID != 0)
 		GameRegistry.registerBlock(decorVolucite, "decorVolucite");
+		if(BlockIDs.decorBrassID != 0)
 		GameRegistry.registerBlock(decorBrass, "decorBrass");
+		if(BlockIDs.decorLapisID != 0)
 		GameRegistry.registerBlock(decorLapis, "decorLapis");
+		if(BlockIDs.decorStoneID != 0)
 		GameRegistry.registerBlock(decorStone, "decorStone");
+		if(BlockIDs.blockUraniumID != 0)
 		GameRegistry.registerBlock(blockUranium, "blockUranium");
+		if(BlockIDs.decorUraniumID != 0)
 		GameRegistry.registerBlock(decorUranium, "decorUranium");
+		if(BlockIDs.teaPlantID != 0)
 		GameRegistry.registerBlock(teaPlant, "teaPlant");
+		if(BlockIDs.castIronLampOffID != 0)
 		GameRegistry.registerBlock(castIronLampOff, "castironlampidle");
+		if(BlockIDs.castIronLampOnID != 0)
 		GameRegistry.registerBlock(castIronLampOn, "castironlampactive");
+		if(BlockIDs.blockObsidianTileID != 0)
 		GameRegistry.registerBlock(blockObsidianTile, "slatetiles");
+		if(BlockIDs.etheriumCrystalID != 0)
 		GameRegistry.registerBlock(etheriumCrystal, "etheriumCrystal");
+		if(BlockIDs.smogID != 0)
 		GameRegistry.registerBlock(smog, "smog");
+		if(BlockIDs.cryoIceID != 0)
 		GameRegistry.registerBlock(cryoIce, "cryoIce");
+		if(BlockIDs.blueSlateID != 0)
+		GameRegistry.registerBlock(blueSlate, "blueSlate");
+		if(BlockIDs.blackSlateID != 0)
+		GameRegistry.registerBlock(blackSlate, "blackSlate");
 	}
 }
