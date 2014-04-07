@@ -52,10 +52,9 @@ public class GuiSteamBoiler extends GuiContainer
 		drawFluid(new FluidStack(FluidRegistry.getFluid("water"), 0), tile.getScaledWaterLevel(60), var5 + 8, var6 + 18, 20, 60);
 		drawFluid(new FluidStack(FluidRegistry.getFluid("steam"), 0), tile.getScaledSteamLevel(60), var5 + 74, var6 + 18, 32, 60);
 		
-		//Somebody get the scale thing to render on top of the liquid
-		//They should be in the correct position
+		mc.renderEngine.bindTexture(guitexture);
 		this.drawTexturedModalRect(var5 + 8, var6 + 26, 176, 14, 20, 49);
-		this.drawTexturedModalRect(var5 + 74, var6 + 26, 176, 14, 20, 49);
+		this.drawTexturedModalRect(var5 + 74, var6 + 24, 176, 14, 20, 49);
 	}
 	
 	/*
