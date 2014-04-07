@@ -37,6 +37,8 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 public class ItemJetpack extends ItemArmorMod
 {
+	private static final int steamPerTick = 20; //how much steam is uses per tick
+	
 	public ItemJetpack(int id, EnumArmorMaterial mat, int renderIndex, int armorType, String texture)
 	{
 		super(id, mat, renderIndex, armorType, texture);
@@ -54,7 +56,7 @@ public class ItemJetpack extends ItemArmorMod
         while(i < 36)
         {
             ItemStack[] mainInv = player.inventory.mainInventory;
-            if(mainInv[i] != null && mainInv[i].getItem() == ModItems.steamCanister)
+            if(mainInv[i] != null && mainInv[i].getItem() == ModItems.canisterSteam)
             {
                 if(!player.capabilities.allowFlying)
                 {
@@ -69,12 +71,13 @@ public class ItemJetpack extends ItemArmorMod
                             player.motionY += 0.11699999910593033D;
                         }
 
-                        if(mainInv[i].getItemDamage() < 499)
-                        	mainInv[i].damageItem(1, player);
-                        else if(mainInv[i].getItemDamage() >= 499)
-                            mainInv[i] = new ItemStack(ModItems.emptyCanister);
+                        if(!ItemCanister.isEmptySteam(mainInv[i]))
+                        	ItemCanister.addSteam(mainInv[i], -steamPerTick);
+                        else
+                            mainInv[i] = new ItemStack(ModItems.canisterEmpty);
                         
                         world.spawnParticle("smoke", player.posX, player.posY - 0.25D, player.posZ, 0.0D, 0.0D, 0.0D);
+                        
                         break;
                     }
                     
@@ -91,7 +94,7 @@ public class ItemJetpack extends ItemArmorMod
                     
             		if(player.fallDistance > 0)
             		{
-        	        	mainInv[i].damageItem((int)(player.fallDistance / Math.PI), player);
+            			ItemCanister.addSteam(mainInv[i], -(int) (player.fallDistance / Math.PI));
         	        	player.fallDistance = 0;
             		}
                 }
