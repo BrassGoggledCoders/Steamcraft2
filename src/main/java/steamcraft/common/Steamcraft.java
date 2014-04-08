@@ -19,6 +19,7 @@ import java.util.logging.Level;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.MinecraftForge;
+import steamcraft.client.RegisterKeyBindings;
 import steamcraft.client.lib.RenderEventHandler;
 import steamcraft.common.config.Config;
 import steamcraft.common.config.ConfigBlocks;
@@ -107,6 +108,7 @@ public class Steamcraft
 		Config.save();
 		ConfigBlocks.init();
 		ConfigItems.init();
+		RegisterKeyBindings.init();
 	
 		proxy.registerDisplayInformation();
 
