@@ -16,7 +16,7 @@ Anyone is welcome to make changes to this mod, but it must be said that we will 
 every change if we deem that it does not fit the theme of the mod. Though the mod is open-source,
 we still possess the power of discretion. Yes, there is an API, but its details are not fully
 fleshed out/documented. Please give us some time before we make it suitable. Additionally, you must clone
-the joint repository, not this one. The joint repo can be found here: https://github.com/BrassGoggledCoders/SteamCraft2
+the joint repository, not this one. The joint repo can be found here: <https://github.com/BrassGoggledCoders/SteamCraft2>
 
 Also, before you commit any changes, you must contact me first to discuss details and such.
 
@@ -37,6 +37,6 @@ _Testers/Other:_
 * Rongmario: support, possible alpha/beta tester (I had no time to commit, come on :P)
 * seanvanpelt2: alpha/beta tester
 
-Email: jmaeatmon@gmail.com [br/]
-Twitter: www.twitter.com/surseance [br/]
-Skype: johnny.eatmon [br/]
+Email: jmaeatmon@gmail.com <br/>
+Twitter: <www.twitter.com/surseance> <br/>
+Skype: johnny.eatmon <br/>
