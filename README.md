@@ -37,6 +37,8 @@ _Testers/Other:_
 * Rongmario: support, possible alpha/beta tester (I had no time to commit, come on :P)
 * seanvanpelt2: alpha/beta tester
 
+***
+
 Email: jmaeatmon@gmail.com <br/>
 Twitter: www.twitter.com/surseance <br/>
 Skype: johnny.eatmon <br/>
