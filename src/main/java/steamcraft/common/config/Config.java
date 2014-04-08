@@ -15,6 +15,8 @@ package steamcraft.common.config;
 
 import java.io.File;
 
+import net.minecraft.block.Block;
+import net.minecraft.item.Item;
 import net.minecraftforge.common.Configuration;
 
 /**
@@ -25,9 +27,43 @@ public class Config
 {
 	public static Configuration config;
 
+	public static int blockCustomOreId;
+	public static int blockCosmeticId;
+	public static int blockEngravedId;
+	public static int blockCastIronFenceId;
+	public static int blockCastIronGateId;
+	public static int blockCrystalId;
+	public static int blockCastIronLampIId;
+	public static int blockCastIronLampAId;
+	
+	public static int itemMechanicalId;
+    public static int itemResourceId;
+    public static int itemWatchId;
+    public static int itemTeaSeedId;
+    public static int itemChiselId;
+    public static int itemGogglesId;
+
 	public static void initialize(File file)
 	{
 		config = new Configuration(file);
+		
+		int bIdx = 2600;
+		blockCustomOreId = config.getBlock("BlockCustomOre", bIdx++).getInt();
+		blockCosmeticId = config.getBlock("BlockCosmeticSolid", bIdx++).getInt();
+		blockEngravedId = config.getBlock("BlockEngravedSolid", bIdx++).getInt();
+		blockCastIronFenceId = config.getBlock("BlockCastIronFence", bIdx++).getInt();
+		blockCastIronGateId = config.getBlock("BlockCastIronGate", bIdx++).getInt();
+		blockCrystalId = config.getBlock("BlockCrystal", bIdx++).getInt();
+		blockCastIronLampIId = config.getBlock("BlockCastIronLamp (OFF)", bIdx++).getInt();
+		blockCastIronLampAId = config.getBlock("BlockCastIronLamp (ON)", bIdx++).getInt();
+		
+		int iIdx = 27000;
+		itemMechanicalId = config.getItem("ItemMechanical", iIdx++).getInt();
+		itemResourceId = config.getItem("ItemResource", iIdx++).getInt();
+		itemWatchId = config.getItem("ItemWatch", iIdx++).getInt();
+		itemTeaSeedId = config.getItem("ItemTeaSeed", iIdx++).getInt();
+		itemChiselId = config.getItem("ItemChisel", iIdx++).getInt();
+		itemGogglesId = config.getItem("ItemCustomArmor", iIdx++).getInt();
 	}
 
 	public static void save()
@@ -35,18 +71,9 @@ public class Config
 		config.save();
 	}
 
-	public static void initLoot()
-	{
+	public static void initLoot() {}
 
-	}
+	public static void initModCompatibility() {}
 
-	public static void initModCompatibility()
-	{
-
-	}
-
-	public static void registerBiomes()
-	{
-
-	}
+	public static void registerBiomes() {}
 }

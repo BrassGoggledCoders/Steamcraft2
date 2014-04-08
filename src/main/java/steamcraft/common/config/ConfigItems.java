@@ -13,8 +13,8 @@
  */
 package steamcraft.common.config;
 
+import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemArmor;
 import steamcraft.common.items.ItemChisel;
 import steamcraft.common.items.ItemMechanical;
 import steamcraft.common.items.ItemResource;
@@ -53,26 +53,23 @@ public class ConfigItems
 		initializeItems();
 	}
     
-    public static void postInit()
-    {
-
-    }
+    public static void postInit() {}
 	
 	public static void initializeItems()
 	{
-		itemMechanical = new ItemMechanical().setUnlocalizedName("ItemMechanical");
+		itemMechanical = new ItemMechanical(Config.itemMechanicalId).setUnlocalizedName("ItemMechanical");
 		GameRegistry.registerItem(itemMechanical, "ItemMechanical", "Steamcraft");
-		itemResource = new ItemResource().setUnlocalizedName("ItemResource");
+		itemResource = new ItemResource(Config.itemResourceId).setUnlocalizedName("ItemResource");
 		GameRegistry.registerItem(itemResource, "ItemResource", "Steamcraft");
-		itemWatch = new ItemWatch().setUnlocalizedName("ItemWatch");
+		itemWatch = new ItemWatch(Config.itemWatchId).setUnlocalizedName("ItemWatch");
 		GameRegistry.registerItem(itemWatch, "ItemWatch", "Steamcraft");
 		
-		itemTeaSeed = new ItemTeaSeed().setUnlocalizedName("ItemTeaSeed");
+		itemTeaSeed = new ItemTeaSeed(Config.itemTeaSeedId).setUnlocalizedName("ItemTeaSeed");
 		GameRegistry.registerItem(itemTeaSeed, "ItemTeaSeed", "Steamcraft");
-		itemChisel = new ItemChisel().setUnlocalizedName("ItemChisel");
+		itemChisel = new ItemChisel(Config.itemChiselId).setUnlocalizedName("ItemChisel");
 		GameRegistry.registerItem(itemChisel, "ItemChisel", "Steamcraft");
 		
-		itemBrassGoggles = new ItemCustomArmor(ItemArmor.ArmorMaterial.CHAIN, 0, 0).setUnlocalizedName("ItemCustomArmor");
+		itemBrassGoggles = new ItemCustomArmor(Config.itemGogglesId, EnumArmorMaterial.CHAIN, 0, 0).setUnlocalizedName("ItemCustomArmor");
 		GameRegistry.registerItem(itemBrassGoggles, "ItemCustomArmor", "Steamcraft");
 	}
 }

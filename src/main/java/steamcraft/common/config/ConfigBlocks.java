@@ -41,13 +41,12 @@ public class ConfigBlocks
     public static Block blockCastIronFence;
     public static Block blockCastIronGate;
     public static Block blockCrystal;
-    public static Block blockCastIronLamp;
+    public static Block blockCastIronLampI;
+	public static Block blockCastIronLampA;
 
 	public static Block blockLampI;
 	public static Block blockLampA;
 	public static Block blockTeaPlant;
-	public static Block blockCastIronLampI;
-	public static Block blockCastIronLampA;
 	public static Block blockSmog;
 
     public static BlockStairs blockSlateTileStairs;
@@ -64,13 +63,14 @@ public class ConfigBlocks
 	
 	public static void initializeBlocks()
 	{
-        blockCustomOre = new BlockCustomOre();
-        blockCosmetic = new BlockCosmeticSolid();
-        blockEngraved = new BlockEngravedSolid();
-        blockCastIronFence = new BlockCastIronFence();
-        blockCastIronGate = new BlockCastIronGate();
-        blockCrystal = new BlockCrystal();
-        blockCastIronLamp = new BlockCastIronLamp();
+        blockCustomOre = new BlockCustomOre(Config.blockCustomOreId);
+        blockCosmetic = new BlockCosmeticSolid(Config.blockCosmeticId);
+        blockEngraved = new BlockEngravedSolid(Config.blockEngravedId);
+        blockCastIronFence = new BlockCastIronFence(Config.blockCastIronFenceId);
+        blockCastIronGate = new BlockCastIronGate(Config.blockCastIronGateId);
+        blockCrystal = new BlockCrystal(Config.blockCrystalId);
+        blockCastIronLampI = new BlockCastIronLamp(Config.blockCastIronLampIId, false);
+        blockCastIronLampA = new BlockCastIronLamp(Config.blockCastIronLampAId, true);
 	}
 	
 	public static void registerBlocks()
@@ -81,6 +81,8 @@ public class ConfigBlocks
         GameRegistry.registerBlock(blockCastIronFence, "BlockCastIronFence");
         GameRegistry.registerBlock(blockCastIronGate, "BlockCastIronGate");
         GameRegistry.registerBlock(blockCrystal, "BlockCrystal");
+        GameRegistry.registerBlock(blockCastIronLampI, "BlockCastIronLampI");
+        GameRegistry.registerBlock(blockCastIronLampA, "BlockCastIronLampA");
     }
 	
 	private static void registerTileEntities()
