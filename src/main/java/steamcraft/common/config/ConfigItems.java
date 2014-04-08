@@ -46,6 +46,9 @@ public class ConfigItems
     public static Item itemSteamCanister;
     public static Item itemCanisterGas;
     public static Item itemEmptyCanister;
+    
+    public static Item itemMusketRound;
+    public static Item itemBucketSteam;
 
     public static void init()
 	{

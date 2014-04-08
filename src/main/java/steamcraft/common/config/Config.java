@@ -26,6 +26,7 @@ import net.minecraftforge.common.Configuration;
 public class Config
 {
 	public static Configuration config;
+	public static final String CATEGORY_ENTITIES = "Entities";
 
 	public static int blockCustomOreId;
 	public static int blockCosmeticId;
@@ -42,10 +43,16 @@ public class Config
     public static int itemTeaSeedId;
     public static int itemChiselId;
     public static int itemGogglesId;
+    
+    public static int entBulletId;
 
 	public static void initialize(File file)
 	{
 		config = new Configuration(file);
+		config.addCustomCategoryComment("Entities", "Entity Ids");
+		
+		int eIdx = 300;
+		entBulletId = config.get("Entities", "bullet", eIdx++).getInt();
 		
 		int bIdx = 2600;
 		blockCustomOreId = config.getBlock("BlockCustomOre", bIdx++).getInt();

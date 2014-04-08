@@ -13,10 +13,12 @@
  */
 package steamcraft.common.lib.events;
 
+import steamcraft.common.entities.EntityPlayerExtended;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.event.ForgeSubscribe;
+import net.minecraftforge.event.entity.EntityEvent.EntityConstructing;
 import net.minecraftforge.event.entity.item.ItemTossEvent;
-import net.minecraftforge.event.entity.player.PlayerEvent;
 
 /**
  * @author Surseance (Johnny Eatmon)
@@ -40,4 +42,13 @@ public class EventHandlerEntity
 			event.player.addExperience(10000);
 		}
     }*/
+
+	@ForgeSubscribe
+	public void entityConstructing(EntityConstructing event)
+	{
+		if (event.entity instanceof EntityPlayer)
+		{
+			EntityPlayerExtended.register((EntityPlayer)event.entity);
+		}
+	}
 }

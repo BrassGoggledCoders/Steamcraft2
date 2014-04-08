@@ -4,35 +4,30 @@
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
  * (http://www.mod-buildcraft.com/MMPL-1.0.txt)
- * 
+ *
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- * 
- * File created @ [Mar 14, 2014, 10:56:24 AM]
+ *
+ * File created @ [Apr 8, 2014, 2:18:47 PM]
  */
-package steamcraft.common.lib;
+package steamcraft.common.config;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-import cpw.mods.fml.common.FMLLog;
+import steamcraft.common.Steamcraft;
+import steamcraft.common.entities.projectile.EntityBullet;
+import cpw.mods.fml.common.registry.EntityRegistry;
 
 /**
  * @author Surseance (Johnny Eatmon)
  *
  */
-public class LoggerSteamcraft
+public class ConfigEntities
 {
-	private static Logger logger = Logger.getLogger("SC2");
-	
 	public static void init()
 	{
-		logger.setParent((Logger) FMLLog.getLogger());;
+		EntityRegistry.registerGlobalEntityID(EntityBullet.class, "Bullet", EntityRegistry.findGlobalUniqueEntityId());
+		EntityRegistry.registerModEntity(EntityBullet.class, "Bullet", Config.entBulletId, Steamcraft.instance, 64, 20, true);
 	}
 	
-	public static void log(Level level, String message)
-	{
-		logger.log(level, "[Steamcraft] " + message);
-	}
+	public static void initEntitySpawns() {}
 }

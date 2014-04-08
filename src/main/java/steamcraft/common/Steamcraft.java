@@ -21,23 +21,25 @@ import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.MinecraftForge;
 import steamcraft.common.config.Config;
 import steamcraft.common.config.ConfigBlocks;
+import steamcraft.common.config.ConfigEntities;
 import steamcraft.common.config.ConfigItems;
 import steamcraft.common.lib.CommandSteamcraft;
 import steamcraft.common.lib.CreativeTabSteamcraft;
 import steamcraft.common.lib.LibInfo;
-import steamcraft.common.lib.LoggerSteamcraft;
 import steamcraft.common.lib.events.EventHandlerDrawHighlight;
 import steamcraft.common.lib.events.EventHandlerEntity;
 import steamcraft.common.lib.events.EventHandlerHUD;
 import steamcraft.common.lib.events.EventHandlerTick;
 import steamcraft.common.lib.events.EventHandlerWorld;
-import cpw.mods.fml.common.FMLCommonHandler;
+import steamcraft.common.lib.network.LoggerSteamcraft;
+import steamcraft.common.lib.network.PacketHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
+import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
 /**
@@ -45,6 +47,7 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
  *
  */
 @Mod(modid = LibInfo.ID, name = LibInfo.NAME, version = LibInfo.VERSION)
+@NetworkMod(clientSideRequired = false, serverSideRequired = true, channels = {PacketHandler.SC2_CHANNEL}, packetHandler = PacketHandler.class)
 public class Steamcraft
 {
 	@SidedProxy(clientSide = LibInfo.CLIENT_PROXY, serverSide = LibInfo.COMMON_PROXY)
@@ -62,7 +65,7 @@ public class Steamcraft
 	//public RenderEventHandler renderEventHandler;
 	public File directory;
 
-	public static CreativeTabs tabSC2 = new CreativeTabSteamcraft(CreativeTabs.getNextID(), LibInfo.NAME.toLowerCase()); //XXX Needs an item icon
+	public static CreativeTabs tabSC2 = new CreativeTabSteamcraft(CreativeTabs.getNextID(), LibInfo.NAME.toLowerCase()); // Needs an item icon
 
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event)
@@ -113,9 +116,8 @@ public class Steamcraft
 	@Mod.EventHandler
 	public void init(FMLInitializationEvent event)
 	{
-
 		Config.registerBiomes();
-		//ConfigEntities.init();
+		ConfigEntities.init();
 		
 		//proxy.registerKeyBindinds();
 	}
@@ -124,6 +126,7 @@ public class Steamcraft
 	public void postInit(FMLPostInitializationEvent event)
 	{
 		BiomeDictionary.registerAllBiomes();
+		ConfigEntities.initEntitySpawns();
 		Config.initModCompatibility();
 		ConfigItems.postInit();
 		//ConfigRecipes.init();
