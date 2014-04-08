@@ -27,6 +27,69 @@ import net.minecraftforge.fluids.Fluid;
 public class Config
 {
 	public static Configuration config;
+	public static final String CATEGORY_ENTITIES = "Entities";
+
+	public static String CATEGORY_GEN_OPTIONS = "generation options";
+	
+	public static int blockCustomOreId;
+	public static int blockCosmeticId;
+	public static int blockEngravedId;
+	public static int blockCastIronFenceId;
+	public static int blockCastIronGateId;
+	public static int blockCrystalId;
+	public static int blockCastIronLampIId;
+	public static int blockCastIronLampAId;
+	public static int blockSteamFluidId;
+	
+	public static int itemMechanicalId;
+    public static int itemResourceId;
+    public static int itemWatchId;
+    public static int itemTeaSeedId;
+    public static int itemChiselId;
+    public static int itemGogglesId;
+    
+    public static int entBulletId;
+
+    /*POWER TO THE END USER!*/
+    public static int etheriumChance;
+    public static int uraniumChance;
+    public static int brimstoneChance;
+    public static int borniteChance;
+    public static int phosphateChance;
+    public static int aluminumChance;
+    public static int copperChance;
+    public static int tinChance;
+    public static int zincChance;
+    public static int netherEtheriumCrystalChance;
+    public static int endEtheriumCrystalChance;
+    public static int etheriumHeight;
+    public static int uraniumHeight;
+    public static int brimstoneHeight;
+    public static int borniteHeight;
+    public static int phosphateHeight;
+    public static int aluminumHeight;
+    public static int copperHeight;
+    public static int tinHeight;
+    public static int zincHeight;
+    public static int netherEtheriumCrystalHeight;
+    public static int endEtheriumCrystalHeight;
+
+    public static boolean generationEnabled;
+	public static boolean overworldGenerationEnabled;
+	public static boolean netherGenerationEnabled;
+	public static boolean endGenerationEnabled;
+	public static boolean oreGenerationEnabled;
+	public static boolean etheriumOreGenEnabled;
+	public static boolean uraniumOreGenEnabled;
+	public static boolean brimstoneOreGenEnabled;
+	public static boolean borniteOreGenEnabled;
+	public static boolean phosphateOreGenEnabled;
+	public static boolean aluminumOreGenEnabled;
+	public static boolean copperOreGenEnabled;
+	public static boolean tinOreGenEnabled;
+	public static boolean zincOreGenEnabled;
+	public static boolean netherEtheriumCrystalGenEnabled;
+	public static boolean endEtheriumCrystalGenEnabled;
 
 	public static String CATEGORY_GEN_OPTIONS = "generation options";
 	
@@ -91,6 +154,10 @@ public class Config
 	public static void initialize(File file)
 	{
 		config = new Configuration(file);
+		config.addCustomCategoryComment("Entities", "Entity Ids");
+		
+		int eIdx = 300;
+		entBulletId = config.get("Entities", "bullet", eIdx++).getInt();
 		
 		int bIdx = 2600;
 		blockCustomOreId = config.getBlock("BlockCustomOre", bIdx++).getInt();

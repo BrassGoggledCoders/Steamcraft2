@@ -13,11 +13,59 @@
  */
 package steamcraft.api.machines;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.util.ArrayList;
+
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.world.World;
+import net.minecraftforge.common.ForgeDirection;
+
 /**
  * @author Surseance (Johnny Eatmon)
  *
  */
 public interface IMachine
 {
-	// Will store flags for electrical machines
+	/** */
+	public abstract boolean isActive();
+
+	/** */
+	public abstract int getFacingDirection();
+
+	/** */
+	public abstract void setFacingDirection(int paramInt);
+
+	/** */
+	public abstract void a(NBTTagCompound paramNBTTagCompound);
+
+	/** */
+	public abstract void b(NBTTagCompound paramNBTTagCompound);
+
+	/** */
+	public abstract void writePacket(DataOutputStream paramDataOutputStream) throws IOException;
+
+	/** */
+	public abstract void readPacket(DataInputStream paramDataInputStream) throws IOException;
+
+	/** */
+	public abstract boolean isSolidOnSide(ForgeDirection paramForgeDirection);
+
+	/** */
+	public abstract void onBreak();
+
+	/** */
+	public abstract void onBlockPlacedBy(World paramWorld, int paramInt1, int paramInt2, int paramInt3, EntityLiving paramEntityLiving);
+
+	/** */
+	public abstract boolean onActivated(EntityPlayer paramEntityPlayer, int paramInt, float paramFloat1, float paramFloat2, float paramFloat3);
+
+	/** */
+	public abstract ArrayList getBlockDropped();
+
+	/** */
+	public abstract float getHardness();
 }

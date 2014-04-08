@@ -56,9 +56,15 @@ public class ConfigBlocks
 	
 	public static Fluid steamFluid;
 
+	public static Block blockSteam;
+
+	public static Fluid steamFluid;
+
     public static BlockStairs blockSlateTileStairs;
 
     public static int blockCrystalRI = -1;
+    public static int blockCastIronLampRI = -1;
+    public static int blockLightningRodRI = -1;
     public static int blockSmogRI = 1;
 
 	public static void init()

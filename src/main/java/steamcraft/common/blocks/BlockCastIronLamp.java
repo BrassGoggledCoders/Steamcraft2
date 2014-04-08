@@ -41,13 +41,6 @@ public class BlockCastIronLamp extends BlockContainer
 	public boolean powered;
 	private static List torchUpdates = new ArrayList();
 	public static Block instance;
-	
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister ir)
-	{
-		this.blockIcon = ir.registerIcon(LibInfo.PREFIX + "itemCastIronLamp");
-	}
  
 	public BlockCastIronLamp(int id, boolean flag)
 	{
@@ -99,7 +92,7 @@ public class BlockCastIronLamp extends BlockContainer
 	@Override
 	public int getRenderType()
 	{
-		return -1;
+		return ConfigBlocks.blockCastIronLampRI;
 	}
 
 	@Override
