@@ -66,7 +66,7 @@ public class Steamcraft
 	public RenderEventHandler renderEventHandler;
 	public File directory;
 
-	public static CreativeTabs tabSC2 = new CreativeTabSteamcraft(CreativeTabs.getNextID(), LibInfo.NAME.toLowerCase()); // Needs an item icon
+	public static CreativeTabs tabSC2 = new CreativeTabSteamcraft(CreativeTabs.getNextID(), LibInfo.NAME.toLowerCase()); //TODO: Needs Icon
 
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event)
@@ -86,7 +86,6 @@ public class Steamcraft
 			if (Config.config != null) 
 				Config.save();
 		}
-
 		this.worldEventHandler = new EventHandlerWorld();
 		this.entityEventHandler = new EventHandlerEntity();
 		this.tickEventHandler = new EventHandlerTick();
@@ -104,7 +103,7 @@ public class Steamcraft
 		//GameRegistry.registerFuelHandler(this.worldEventHandler);
 		//GameRegistry.registerCraftingHandler(this.worldEventHandler);
 		//GameRegistry.registerWorldGenerator(this.worldGen = new SteamcraftWorldGenerator());
-
+		
 		Config.save();
 		ConfigBlocks.init();
 		ConfigItems.init();

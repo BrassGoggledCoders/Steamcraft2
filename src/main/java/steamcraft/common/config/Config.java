@@ -18,6 +18,7 @@ import java.io.File;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.Configuration;
+import net.minecraftforge.fluids.Fluid;
 
 /**
  * @author Surseance (Johnny Eatmon)
@@ -38,6 +39,7 @@ public class Config
 	public static int blockCrystalId;
 	public static int blockCastIronLampIId;
 	public static int blockCastIronLampAId;
+	public static int blockSteamFluidId;
 	
 	public static int itemMechanicalId;
     public static int itemResourceId;
@@ -106,6 +108,7 @@ public class Config
 		blockCrystalId = config.getBlock("BlockCrystal", bIdx++).getInt();
 		blockCastIronLampIId = config.getBlock("BlockCastIronLamp (OFF)", bIdx++).getInt();
 		blockCastIronLampAId = config.getBlock("BlockCastIronLamp (ON)", bIdx++).getInt();
+		blockSteamFluidId = config.getBlock("BlockSteamFluid", bIdx++).getInt();
 		
 		int iIdx = 27000;
 		itemMechanicalId = config.getItem("ItemMechanical", iIdx++).getInt();
