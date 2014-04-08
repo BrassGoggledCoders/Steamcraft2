@@ -52,6 +52,9 @@ public class ConfigBlocks
 	public static Block blockLampA;
 	public static Block blockTeaPlant;
 	public static Block blockSmog;
+	public static Block blockFluidSteam;
+	
+	public static Fluid steamFluid;
 
 	public static Block blockSteam;
 

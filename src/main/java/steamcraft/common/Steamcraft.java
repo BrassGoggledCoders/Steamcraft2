@@ -98,7 +98,11 @@ public class Steamcraft
 		//MinecraftForge.EVENT_BUS.register(this.tickEventHandler);
 		//MinecraftForge.EVENT_BUS.register(this.hudEventHandler);
 		//MinecraftForge.EVENT_BUS.register(this.drawEventHandler);
+<<<<<<< HEAD
+		//MinecraftForge.EVENT_BUS.register(this.renderEventHandler);
+=======
 		MinecraftForge.EVENT_BUS.register(this.renderEventHandler);
+>>>>>>> FETCH_HEAD
 
 		//GameRegistry.registerFuelHandler(this.worldEventHandler);
 		//GameRegistry.registerCraftingHandler(this.worldEventHandler);
