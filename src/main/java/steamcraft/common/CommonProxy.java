@@ -13,8 +13,12 @@
  */
 package steamcraft.common;
 
+import java.util.Iterator;
+
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.network.packet.Packet;
 import net.minecraft.world.World;
 import cpw.mods.fml.common.network.IGuiHandler;
 
@@ -42,6 +46,32 @@ public class CommonProxy implements IGuiHandler
 		
 		return null;
 	}
+	
+	public void sendToPlayers(Packet packet, World world, int x, int y, int z, Integer maxDistance) 
+	{
+		if (maxDistance == null) 
+		{
+			maxDistance = Integer.valueOf(128);
+		}
+
+		Iterator iterator;
+
+		if (packet != null)
+		{
+			for (iterator = world.playerEntities.iterator(); iterator.hasNext();) 
+			{ 
+				Object player = iterator.next();
+				EntityPlayerMP playerMP = (EntityPlayerMP)player;
+
+				if ((Math.abs(playerMP.posX - x) <= maxDistance.intValue()) && (Math.abs(playerMP.posY - y) <= maxDistance.intValue()) && (Math.abs(playerMP.posZ - z) <= maxDistance.intValue())) 
+				{
+					playerMP.playerNetServerHandler.sendPacketToPlayer(packet);
+				}	
+			}
+		}
+	}
+	
+	// ====================== WARNING: CLIENT-SIDE ====================== //
 	
 	public World getClientWorld()
 	{

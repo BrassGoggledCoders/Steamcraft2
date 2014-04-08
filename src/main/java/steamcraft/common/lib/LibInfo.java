@@ -28,7 +28,7 @@ public class LibInfo
     public static final String CLIENT_PROXY = "steamcraft.client.ClientProxy";
     public static final String COMMON_PROXY = "steamcraft.common.CommonProxy";
 
-    public static final String PREFIX = ID.toLowerCase() + ":";
+    public static final String PREFIX = "steamcraft:";
 
     public static final boolean DEBUG = false;
 
