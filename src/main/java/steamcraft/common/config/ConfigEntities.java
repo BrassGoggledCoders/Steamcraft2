@@ -26,7 +26,7 @@ public class ConfigEntities
 	public static void init()
 	{
 		EntityRegistry.registerGlobalEntityID(EntityBullet.class, "Bullet", EntityRegistry.findGlobalUniqueEntityId());
-		EntityRegistry.registerModEntity(EntityBullet.class, "Bullet", Config.entBulletId, Steamcraft.instance, 64, 20, true);
+		//EntityRegistry.registerModEntity(EntityBullet.class, "Bullet", Config.entBulletId, Steamcraft.instance, 64, 20, true);
 	}
 	
 	public static void initEntitySpawns() {}
