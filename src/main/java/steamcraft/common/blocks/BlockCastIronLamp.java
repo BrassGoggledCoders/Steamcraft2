@@ -162,7 +162,7 @@ public class BlockCastIronLamp extends BlockContainer
 			} 
 			else if (!this.powered && world.isBlockIndirectlyGettingPowered(x, y, z))
 			{
-				world.setBlock(x, y, z, ConfigBlocks.blockCastIronLamp.blockID, 0, 2);
+				world.setBlock(x, y, z, ConfigBlocks.blockCastIronLampA.blockID, 0, 2);
 			}
 			if (world.getBlockMetadata(x, y, z) == 0)
 			{

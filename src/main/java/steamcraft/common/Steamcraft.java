@@ -62,7 +62,7 @@ public class Steamcraft
 	//public RenderEventHandler renderEventHandler;
 	public File directory;
 
-	public static CreativeTabs tabSC2 = new CreativeTabSteamcraft(CreativeTabs.getNextID(), LibInfo.NAME.toLowerCase()); //XXX
+	public static CreativeTabs tabSC2 = new CreativeTabSteamcraft(CreativeTabs.getNextID(), LibInfo.NAME.toLowerCase()); //XXX Needs an item icon
 
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event)
@@ -92,9 +92,9 @@ public class Steamcraft
 
 		MinecraftForge.EVENT_BUS.register(this.worldEventHandler);
 		MinecraftForge.EVENT_BUS.register(this.entityEventHandler);
-		MinecraftForge.EVENT_BUS.register(this.tickEventHandler);
-		MinecraftForge.EVENT_BUS.register(this.hudEventHandler);
-		MinecraftForge.EVENT_BUS.register(this.drawEventHandler);
+		//MinecraftForge.EVENT_BUS.register(this.tickEventHandler);
+		//MinecraftForge.EVENT_BUS.register(this.hudEventHandler);
+		//MinecraftForge.EVENT_BUS.register(this.drawEventHandler);
 		//MinecraftForge.EVENT_BUS.register(this.renderEventHandler);
 
 		//GameRegistry.registerFuelHandler(this.worldEventHandler);
