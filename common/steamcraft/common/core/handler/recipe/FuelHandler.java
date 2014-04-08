@@ -17,8 +17,10 @@
  */
 package common.steamcraft.common.core.handler.recipe;
 
-import common.steamcraft.common.item.ModItems;
 import net.minecraft.item.ItemStack;
+
+import common.steamcraft.common.item.ModItems;
+
 import cpw.mods.fml.common.IFuelHandler;
 
 /**

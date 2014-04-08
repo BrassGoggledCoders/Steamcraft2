@@ -17,16 +17,15 @@
  */
 package common.steamcraft.common.block.tile;
 
-import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.tileentity.TileEntityFurnace;
-import common.steamcraft.common.block.machines.BlockCoalGenerator;
+
 import common.steamcraft.common.block.machines.BlockCompressor;
 import common.steamcraft.common.core.handler.recipe.CompressorHandler;
 import common.steamcraft.common.core.handler.recipe.CrushingHandler;
 import common.steamcraft.common.item.ModItems;
 import common.steamcraft.common.util.EnergyUtils;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -166,7 +165,7 @@ public class TileEntityDropHammer extends TileEntityElectricMachine
 	@Override
 	public boolean canInsertItem(int par1, ItemStack itemstack, int par3)
 	{
-		if(itemstack.itemID==ModItems.steamCanister.itemID && par1==0)
+		if(itemstack.getItem() == ModItems.canisterSteam && par1==0)
 			return true;
 		else if(par1==1)
 			return true;
@@ -181,6 +180,7 @@ public class TileEntityDropHammer extends TileEntityElectricMachine
 		return false;
 	}
 
+	@Override
 	public boolean isItemValidForSlot(int i, ItemStack itemstack)
 	{
 		if(i==0 || i==1)

@@ -1,9 +1,9 @@
 package common.steamcraft.common.block;
 
-import common.steamcraft.common.block.tile.TileEntityLamp;
-import common.steamcraft.common.lib2.LibInfo;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
@@ -14,9 +14,11 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import common.steamcraft.common.block.tile.TileEntityLamp;
+import common.steamcraft.common.lib2.LibInfo;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockCastIronLamp extends BlockContainer
 {
@@ -361,9 +363,9 @@ public class BlockCastIronLamp extends BlockContainer
 		} else
 		{
 			int l = world.getBlockMetadata(i, j, k);
-			double d = (double)((float)i + 0.5F) + (double)(random.nextFloat() - 0.5F) * 0.20000000000000001D;
-			double d1 = (double)((float)j + 1.0F) + (double)(random.nextFloat() - 0.5F) * 0.20000000000000001D;
-			double d2 = (double)((float)k + 0.5F) + (double)(random.nextFloat() - 0.5F) * 0.20000000000000001D;
+			double d = i + 0.5F + (random.nextFloat() - 0.5F) * 0.20000000000000001D;
+			double d1 = j + 1.0F + (random.nextFloat() - 0.5F) * 0.20000000000000001D;
+			double d2 = k + 0.5F + (random.nextFloat() - 0.5F) * 0.20000000000000001D;
 			double d3 = 0.2199999988079071D;
 			double d4 = 0.27000001072883606D;
 

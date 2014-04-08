@@ -17,12 +17,13 @@
  */
 package common.steamcraft.client.core.handler;
 
-import common.steamcraft.client.lib2.ClientResources;
-import common.steamcraft.common.network.LoggerMod;
+import java.util.logging.Level;
+
 import net.minecraftforge.client.event.sound.SoundLoadEvent;
 import net.minecraftforge.event.ForgeSubscribe;
 
-import java.util.logging.Level;
+import common.steamcraft.client.lib2.ClientResources;
+import common.steamcraft.common.network.LoggerMod;
 
 /**
  * @author MrArcane111

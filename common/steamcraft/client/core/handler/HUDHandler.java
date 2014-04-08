@@ -1,9 +1,7 @@
 package common.steamcraft.client.core.handler;
 
-import common.steamcraft.client.lib2.ClientResources;
-import common.steamcraft.common.item.ModArmors;
-import cpw.mods.fml.common.ITickHandler;
-import cpw.mods.fml.common.TickType;
+import java.util.EnumSet;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.Tessellator;
@@ -13,7 +11,11 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
 
-import java.util.EnumSet;
+import common.steamcraft.client.lib2.ClientResources;
+import common.steamcraft.common.item.ModArmors;
+
+import cpw.mods.fml.common.ITickHandler;
+import cpw.mods.fml.common.TickType;
 
 public class HUDHandler implements ITickHandler
 {
@@ -36,7 +38,7 @@ public class HUDHandler implements ITickHandler
 
 		if(mc.gameSettings.thirdPersonView == 0 && helmet != null && helmet.itemID == ModArmors.brassGoggles.itemID)// && SC_KeyHandler.keyPressed)
 		{
-			mc.getTextureManager().bindTexture(this.overlay);
+			mc.getTextureManager().bindTexture(HUDHandler.overlay);
 			GL11.glPushAttrib(GL11.GL_ALL_ATTRIB_BITS);
 			Tessellator tessellator = Tessellator.instance;
 			ScaledResolution scale = new ScaledResolution(mc.gameSettings, mc.displayWidth, mc.displayHeight);
@@ -50,9 +52,9 @@ public class HUDHandler implements ITickHandler
 			GL11.glEnable(GL11.GL_BLEND);
 			GL11.glClearDepth(1.0);
 			tessellator.startDrawingQuads();
-			tessellator.addVertexWithUV(0.0D, (double)height, 90.0D, 0.0D, 1.0D);
-			tessellator.addVertexWithUV((double)width, (double)height, 90.0D, 1.0D, 1.0D);
-			tessellator.addVertexWithUV((double)width, 0.0D, 90.0D, 1.0D, 0.0D);
+			tessellator.addVertexWithUV(0.0D, height, 90.0D, 0.0D, 1.0D);
+			tessellator.addVertexWithUV(width, height, 90.0D, 1.0D, 1.0D);
+			tessellator.addVertexWithUV(width, 0.0D, 90.0D, 1.0D, 0.0D);
 			tessellator.addVertexWithUV(0.0D, 0.0D, 90.0D, 0.0D, 0.0D);
 			tessellator.draw();
 			GL11.glDepthMask(true);

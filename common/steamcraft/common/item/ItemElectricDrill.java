@@ -66,8 +66,8 @@ public class ItemElectricDrill extends ItemElectricMod
 	@SuppressWarnings("all")
 	@Override
 	public boolean canHarvestBlock(Block block) {
-		for (int i = 0; i < this.blocksEffectiveAgainst.length; ++i) {
-            if (this.blocksEffectiveAgainst[i] == block) {
+		for (int i = 0; i < ItemElectricDrill.blocksEffectiveAgainst.length; ++i) {
+            if (ItemElectricDrill.blocksEffectiveAgainst[i] == block) {
                 return true;
             }
         } 

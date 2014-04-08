@@ -19,12 +19,9 @@ package common.steamcraft.common.block.machines;
 
 import java.util.Random;
 
-import common.steamcraft.common.block.BlockMod;
-import common.steamcraft.common.util.ConveyorUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -33,6 +30,8 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import common.steamcraft.common.block.BlockMod;
+import common.steamcraft.common.util.ConveyorUtil;
 
 /**
  * @author MrArcane111
@@ -48,7 +47,7 @@ public class BlockConveyorBelt extends BlockMod {
 		this.setUnlocalizedName("conveyor");
 		this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, ConveyorUtil.HEIGHT, 1.0F);
 		//this.timePeriod = 0;
-		this.setStepSound(this.soundClothFootstep);
+		this.setStepSound(Block.soundClothFootstep);
 	}
 
 	@Override
@@ -73,7 +72,7 @@ public class BlockConveyorBelt extends BlockMod {
 
 	@Override
 	public void onBlockPlacedBy(World world, int i, int j, int k, EntityLivingBase living, ItemStack stack) {
-		int l = ((MathHelper.floor_double((double)(living.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3) + 2) % 4;
+		int l = ((MathHelper.floor_double(living.rotationYaw * 4.0F / 360.0F + 0.5D) & 3) + 2) % 4;
         world.setBlockMetadataWithNotify(i, j, k, l, 3);
         //return true;
 		//int metadata = this.getPlacedMeta(living);
@@ -115,6 +114,7 @@ public class BlockConveyorBelt extends BlockMod {
 		return 0;
 	}
 
+	@Override
 	public int isProvidingStrongPower(IBlockAccess iBlockAccess, int i, int j, int k, int side) {
 		return 0;
 	}

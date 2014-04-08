@@ -18,13 +18,13 @@ import net.minecraft.world.World;
 
 import common.steamcraft.client.lib2.GuiIDs;
 import common.steamcraft.common.SC2;
-import common.steamcraft.common.block.tile.TileEntityCoalGenerator;
+import common.steamcraft.common.block.tile.TileEntitySteamBoiler;
 import common.steamcraft.common.lib2.LibInfo;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockCoalGenerator extends BlockContainerMod
+public class BlockSteamBoiler extends BlockContainerMod
 {
 	@SideOnly(Side.CLIENT)
 	private Icon iconTop;
@@ -33,7 +33,7 @@ public class BlockCoalGenerator extends BlockContainerMod
 	@SideOnly(Side.CLIENT)
 	private Icon iconFrontA;
 
-	public BlockCoalGenerator(int par1)
+	public BlockSteamBoiler(int par1)
 	{
 		super(par1, Material.iron);
 	}
@@ -83,7 +83,7 @@ public class BlockCoalGenerator extends BlockContainerMod
 			return true;
 		else
 		{
-			TileEntityCoalGenerator tile_entity = (TileEntityCoalGenerator) par1World.getBlockTileEntity(par2, par3, par4);
+			TileEntitySteamBoiler tile_entity = (TileEntitySteamBoiler) par1World.getBlockTileEntity(par2, par3, par4);
 			if (tile_entity == null || par5EntityPlayer.isSneaking())
 				return false;
 			par5EntityPlayer.openGui(SC2.instance, GuiIDs.GUI_ID_COAL_GENERATOR, par1World, par2, par3, par4);
@@ -153,15 +153,16 @@ public class BlockCoalGenerator extends BlockContainerMod
 	@Override
 	public TileEntity createNewTileEntity(World par1World)
 	{
-		return new TileEntityCoalGenerator();
+		return new TileEntitySteamBoiler();
 	}
 
 	 /**
      * Called when the block is placed in the world.
      */
-    public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase living, ItemStack stack)
+    @Override
+	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase living, ItemStack stack)
     {    	
-        int l = MathHelper.floor_double((double)(living.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
+        int l = MathHelper.floor_double(living.rotationYaw * 4.0F / 360.0F + 0.5D) & 3;
 
         if (l == 0)
         {
@@ -191,7 +192,7 @@ public class BlockCoalGenerator extends BlockContainerMod
 	{
 		if (!keepInventory)
 		{
-			TileEntityCoalGenerator var7 = (TileEntityCoalGenerator) par1World.getBlockTileEntity(par2, par3, par4);
+			TileEntitySteamBoiler var7 = (TileEntitySteamBoiler) par1World.getBlockTileEntity(par2, par3, par4);
 
 			if (var7 != null)
 				for (int var8 = 0; var8 < var7.getSizeInventory(); ++var8)

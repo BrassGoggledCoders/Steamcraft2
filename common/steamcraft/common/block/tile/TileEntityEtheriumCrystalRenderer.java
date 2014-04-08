@@ -26,7 +26,6 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
 import common.steamcraft.client.model.ModelEtheriumCrystal;
-import common.steamcraft.client.model.ModelLightningRod;
 import common.steamcraft.common.lib2.LibInfo;
 
 /**

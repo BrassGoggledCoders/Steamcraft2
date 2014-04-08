@@ -69,7 +69,7 @@ public class ItemElectricLamp extends ItemMod
 					Block.blocksList[spawnID].onBlockPlacedBy(world, i, j, k, player, stack);
 				}
 
-				world.playSoundEffect((float)i + 0.5F, (float)j + 0.5F, (float)k + 0.5F, block.stepSound.getPlaceSound(), (block.stepSound.getVolume() + 1.0F) / 2.0F, block.stepSound.getPitch() * 0.8F);
+				world.playSoundEffect(i + 0.5F, j + 0.5F, k + 0.5F, block.stepSound.getPlaceSound(), (block.stepSound.getVolume() + 1.0F) / 2.0F, block.stepSound.getPitch() * 0.8F);
 				stack.stackSize--;
 			}
 		}

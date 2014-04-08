@@ -17,9 +17,10 @@
  */
 package common.steamcraft.common.inventory;
 
+import common.steamcraft.api.vanity.IBoots;
+
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 /**
@@ -42,12 +43,13 @@ super(inventory, par2, par3, par4);
 public boolean isItemValid(ItemStack itemstack)
 {
 
-return itemstack.getItem() instanceof Item;//instanceof ItemBoots;
+return itemstack.getItem() instanceof IBoots;
 }
 /**
 * Returns the maximum stack size for a given slot (usually the same as getInventoryStackLimit(), but 1 in the case
 * of armor slots)
 */
+@Override
 public int getSlotStackLimit()
 {
 return 1;

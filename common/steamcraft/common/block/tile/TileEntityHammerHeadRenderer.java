@@ -1,16 +1,15 @@
 package common.steamcraft.common.block.tile;
 
-import org.lwjgl.opengl.GL11;
-
-import common.steamcraft.client.model.ModelLightningRod;
-import common.steamcraft.common.lib2.LibInfo;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelPig;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
+
+import org.lwjgl.opengl.GL11;
+
+import common.steamcraft.common.lib2.LibInfo;
 
 public class TileEntityHammerHeadRenderer extends TileEntitySpecialRenderer {
 	private final ModelPig model;

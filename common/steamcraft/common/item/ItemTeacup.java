@@ -1,10 +1,11 @@
 package common.steamcraft.common.item;
 
-import common.steamcraft.common.lib2.CreativeTabsMod;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+
+import common.steamcraft.common.lib2.CreativeTabsMod;
 
 public class ItemTeacup extends ItemFood
 {

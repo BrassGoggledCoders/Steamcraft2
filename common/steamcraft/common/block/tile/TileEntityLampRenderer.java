@@ -1,9 +1,5 @@
 package common.steamcraft.common.block.tile;
 
-import common.steamcraft.client.model.ModelLampSide;
-import common.steamcraft.client.model.ModelLampUp;
-import common.steamcraft.common.block.ModBlocks;
-import common.steamcraft.common.lib2.LibInfo;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
@@ -11,6 +7,11 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
+
+import common.steamcraft.client.model.ModelLampSide;
+import common.steamcraft.client.model.ModelLampUp;
+import common.steamcraft.common.block.ModBlocks;
+import common.steamcraft.common.lib2.LibInfo;
 
 public class TileEntityLampRenderer extends TileEntitySpecialRenderer
 {

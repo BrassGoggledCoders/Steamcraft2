@@ -13,14 +13,15 @@
  */
 package common.steamcraft.client.gui;
 
-import common.steamcraft.common.block.tile.TileEntityNukeFurnace;
-import common.steamcraft.common.block.tile.container.ContainerNukeFurnace;
-import common.steamcraft.common.lib2.LibInfo;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
+
+import common.steamcraft.common.block.tile.TileEntityNukeFurnace;
+import common.steamcraft.common.block.tile.container.ContainerNukeFurnace;
+import common.steamcraft.common.lib2.LibInfo;
 
 /**
  * 
@@ -49,7 +50,7 @@ public class GuiNukeFurnace extends GuiContainer
 	protected void drawGuiContainerBackgroundLayer(float f, int i, int j)
 	{
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-		this.mc.getTextureManager().bindTexture(this.nukeGuiTextures);
+		this.mc.getTextureManager().bindTexture(GuiNukeFurnace.nukeGuiTextures);
 		int size1 = (this.width - this.xSize) / 2;
 		int size2 = (this.height - this.ySize) / 2;
 		this.drawTexturedModalRect(size1, size2, 0, 0, this.xSize, this.ySize);

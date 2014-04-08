@@ -24,7 +24,6 @@ import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
@@ -40,6 +39,7 @@ import org.lwjgl.opengl.GL11;
 
 import common.steamcraft.common.item.ModItems;
 import common.steamcraft.common.lib2.LibInfo;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -260,6 +260,7 @@ public class GuiGuideBook extends GuiScreen {
 	/**
 	 * Draws the screen and all the components in it.
 	 */
+	@Override
 	public void drawScreen(int par1, int par2, float par3)
 	{
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);

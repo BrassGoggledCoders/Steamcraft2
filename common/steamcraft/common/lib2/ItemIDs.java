@@ -2,6 +2,7 @@ package common.steamcraft.common.lib2;
 
 import common.steamcraft.common.SC2;
 
+@SuppressWarnings("static-access")
 public class ItemIDs
 {
 	public static int partsBrassID = SC2.proxy.cfgHandler.loadItem("partsBrass");
@@ -91,14 +92,15 @@ public class ItemIDs
     public static int brassWatchID = SC2.proxy.cfgHandler.loadItem("brassWatchID");
     public static int brassWingsID = SC2.proxy.cfgHandler.loadItem("brassWingsID");
     public static int brassMonocleID = SC2.proxy.cfgHandler.loadItem("brassMonocleID");
-	public static int steamCanisterID = SC2.proxy.cfgHandler.loadItem("steamCanisterID");
-	public static int gasCanisterID = SC2.proxy.cfgHandler.loadItem("gasCanisterID");
+	public static int canisterSteamID = SC2.proxy.cfgHandler.loadItem("canisterSteamID");
+	public static int canisterGasID = SC2.proxy.cfgHandler.loadItem("canisterGasID");
+	public static int canisterEmptyID = SC2.proxy.cfgHandler.loadItem("canisterEmptyID");
 	public static int capeID = SC2.proxy.cfgHandler.loadItem("capeID");
 	public static int utilityBeltID = SC2.proxy.cfgHandler.loadItem("utilityBeltID");
-	public static int emptyCanisterID = SC2.proxy.cfgHandler.loadItem("emptyCanisterID");
     public static int guideBookID = SC2.proxy.cfgHandler.loadItem("guideBookID");
 	public static int jetpackID = SC2.proxy.cfgHandler.loadItem("jetpackID");
 	public static int pilePartsID = SC2.proxy.cfgHandler.loadItem("partsPileID");
 	public static int ingotsMetalID = SC2.proxy.cfgHandler.loadItem("ingotsMetalID");
-	public static int steamBucketID = SC2.proxy.cfgHandler.loadItem("steamBucketID");;
+	public static int steamBucketID = SC2.proxy.cfgHandler.loadItem("steamBucketID");
+	public static int topHatID = SC2.proxy.cfgHandler.loadItem("topHatID");
 }

@@ -19,14 +19,16 @@ package common.steamcraft.common.item;
 
 import java.util.List;
 
-import common.steamcraft.client.lib2.GuiIDs;
-import common.steamcraft.common.SC2;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.nbt.NBTTagString;
 import net.minecraft.world.World;
+
+import common.steamcraft.client.lib2.GuiIDs;
+import common.steamcraft.common.SC2;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 

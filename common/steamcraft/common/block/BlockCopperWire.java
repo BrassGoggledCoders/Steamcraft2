@@ -1,7 +1,10 @@
 package common.steamcraft.common.block;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Random;
+import java.util.Set;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -13,11 +16,8 @@ import net.minecraft.util.Icon;
 import net.minecraft.world.ChunkPosition;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Random;
-import java.util.Set;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockCopperWire extends Block
 {
@@ -41,7 +41,7 @@ public class BlockCopperWire extends Block
         super(id, Material.circuits);
         this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.0625F, 1.0F);
         this.setHardness(0.0F);
-        this.setStepSound(this.soundPowderFootstep);
+        this.setStepSound(Block.soundPowderFootstep);
         this.setUnlocalizedName("redstoneDust");
         this.disableStats();
         this.setTextureName("redstone_dust");
@@ -69,7 +69,8 @@ public class BlockCopperWire extends Block
      * Returns a bounding box from the pool of bounding boxes (this means this box can change after the pool has been
      * cleared to be reused)
      */
-    public AxisAlignedBB getCollisionBoundingBoxFromPool(World par1World, int par2, int par3, int par4)
+    @Override
+	public AxisAlignedBB getCollisionBoundingBoxFromPool(World par1World, int par2, int par3, int par4)
     {
         return null;
     }
@@ -78,7 +79,8 @@ public class BlockCopperWire extends Block
      * Is this block (a) opaque and (b) a full 1m cube?  This determines whether or not to render the shared face of two
      * adjacent blocks and also whether the player can attach torches, redstone wire, etc to this block.
      */
-    public boolean isOpaqueCube()
+    @Override
+	public boolean isOpaqueCube()
     {
         return false;
     }
@@ -86,7 +88,8 @@ public class BlockCopperWire extends Block
     /**
      * If this block doesn't render as an ordinary block it will return False (examples: signs, buttons, stairs, etc)
      */
-    public boolean renderAsNormalBlock()
+    @Override
+	public boolean renderAsNormalBlock()
     {
         return false;
     }
@@ -94,7 +97,8 @@ public class BlockCopperWire extends Block
     /**
      * The type of render function that is called for this block
      */
-    public int getRenderType()
+    @Override
+	public int getRenderType()
     {
         return 5;
     }
@@ -240,7 +244,8 @@ public class BlockCopperWire extends Block
     /**
      * Called whenever the block is added into the world. Args: world, x, y, z
      */
-    public void onBlockAdded(World par1World, int par2, int par3, int par4)
+    @Override
+	public void onBlockAdded(World par1World, int par2, int par3, int par4)
     {
         super.onBlockAdded(par1World, par2, par3, par4);
 
@@ -297,7 +302,8 @@ public class BlockCopperWire extends Block
      * different metadata value, but before the new metadata value is set. Args: World, x, y, z, old block ID, old
      * metadata
      */
-    public void breakBlock(World par1World, int par2, int par3, int par4, int par5, int par6)
+    @Override
+	public void breakBlock(World par1World, int par2, int par3, int par4, int par5, int par6)
     {
         super.breakBlock(par1World, par2, par3, par4, par5, par6);
 
@@ -374,7 +380,8 @@ public class BlockCopperWire extends Block
      * Lets the block know when one of its neighbor changes. Doesn't know which neighbor changed (coordinates passed are
      * their own) Args: x, y, z, neighbor blockID
      */
-    public void onNeighborBlockChange(World par1World, int par2, int par3, int par4, int par5)
+    @Override
+	public void onNeighborBlockChange(World par1World, int par2, int par3, int par4, int par5)
     {
         if (!par1World.isRemote)
         {
@@ -397,7 +404,8 @@ public class BlockCopperWire extends Block
     /**
      * Returns the ID of the items to drop on destruction.
      */
-    public int idDropped(int par1, Random par2Random, int par3) // TODO:
+    @Override
+	public int idDropped(int par1, Random par2Random, int par3) // TODO:
     {
         return Item.redstone.itemID;
     }
@@ -406,7 +414,8 @@ public class BlockCopperWire extends Block
      * Returns true if the block is emitting direct/strong redstone power on the specified side. Args: World, X, Y, Z,
      * side. Note that the side is reversed - eg it is 1 (up) when checking the bottom of the block.
      */
-    public int isProvidingStrongPower(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5)
+    @Override
+	public int isProvidingStrongPower(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5)
     {
         return !this.wiresProvidePower ? 0 : this.isProvidingWeakPower(par1IBlockAccess, par2, par3, par4, par5);
     }
@@ -416,7 +425,8 @@ public class BlockCopperWire extends Block
      * returns true, standard redstone propagation rules will apply instead and this will not be called. Args: World, X,
      * Y, Z, side. Note that the side is reversed - eg it is 1 (up) when checking the bottom of the block.
      */
-    public int isProvidingWeakPower(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5)
+    @Override
+	public int isProvidingWeakPower(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5)
     {
         if (!this.wiresProvidePower)
         {
@@ -472,7 +482,8 @@ public class BlockCopperWire extends Block
     /**
      * Can this block provide power. Only wire currently seems to have this change based on its state.
      */
-    public boolean canProvidePower()
+    @Override
+	public boolean canProvidePower()
     {
         return this.wiresProvidePower;
     }
@@ -536,9 +547,9 @@ public class BlockCopperWire extends Block
             world.spawnParticle("reddust", d0, d1, d2, (double)f1, (double)f2, (double)f3);
             */
         	
-        	double d = (double)i + 0.5D + ((double)random.nextFloat() - 0.5D) * 0.20000000000000001D;
-            double d1 = (float)j + 0.0625F;
-            double d2 = (double)k + 0.5D + ((double)random.nextFloat() - 0.5D) * 0.20000000000000001D;
+        	double d = i + 0.5D + (random.nextFloat() - 0.5D) * 0.20000000000000001D;
+            double d1 = j + 0.0625F;
+            double d2 = k + 0.5D + (random.nextFloat() - 0.5D) * 0.20000000000000001D;
             float f = 1 / 15F;
             float f1 = -1;
             float f2 = f * f * 0.7F - 0.5F;

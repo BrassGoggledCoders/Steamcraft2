@@ -13,14 +13,14 @@ import common.steamcraft.common.block.tile.container.slot.SlotBattery;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ContaineCoalGenerator extends Container
+public class ContainerCoalGenerator extends Container
 {
 	protected TileEntityCoalGenerator Tile_E;
 	private int lastBurnTime = 0;
 	private int lastEnergy = 0;
 	private int lastItemBurnTime = 0;
 
-	public ContaineCoalGenerator(InventoryPlayer player, TileEntityCoalGenerator tile)
+	public ContainerCoalGenerator(InventoryPlayer player, TileEntityCoalGenerator tile)
 	{
 		Tile_E = tile;
 		this.addSlotToContainer(new Slot(tile, 0, 80, 54));
@@ -42,7 +42,7 @@ public class ContaineCoalGenerator extends Container
 	{
 		super.addCraftingToCrafters(par1ICrafting);
 		par1ICrafting.sendProgressBarUpdate(this, 0, Tile_E.furnaceBurnTime);
-		par1ICrafting.sendProgressBarUpdate(this, 1, (int)Tile_E.getEnergy());
+		par1ICrafting.sendProgressBarUpdate(this, 1, Tile_E.getEnergy());
 		par1ICrafting.sendProgressBarUpdate(this, 2, Tile_E.currentItemBurnTime);
 	}
 
@@ -59,14 +59,14 @@ public class ContaineCoalGenerator extends Container
 				var2.sendProgressBarUpdate(this, 0, Tile_E.furnaceBurnTime);
 			
 			if (lastEnergy != Tile_E.getEnergyScaled(1))
-				var2.sendProgressBarUpdate(this, 1, (int)Tile_E.getEnergy());
+				var2.sendProgressBarUpdate(this, 1, Tile_E.getEnergy());
 			
 			if (lastItemBurnTime != Tile_E.currentItemBurnTime)
 				var2.sendProgressBarUpdate(this, 2, Tile_E.currentItemBurnTime);
 		}
 
 		lastBurnTime = Tile_E.furnaceBurnTime;
-		lastEnergy = (int)Tile_E.getEnergy();
+		lastEnergy = Tile_E.getEnergy();
 		lastItemBurnTime = Tile_E.currentItemBurnTime;
 	}
 

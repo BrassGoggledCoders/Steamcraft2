@@ -17,15 +17,11 @@
  */
 package common.steamcraft.common.inventory;
 
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+
+import common.steamcraft.api.vanity.ILeggings;
 
 /**
  * @author warlordjones
@@ -47,12 +43,13 @@ super(inventory, par2, par3, par4);
 public boolean isItemValid(ItemStack itemstack)
 {
 
-return itemstack.getItem() instanceof Item;//instanceof ItemLeggings;
+return itemstack.getItem() instanceof ILeggings;
 }
 /**
 * Returns the maximum stack size for a given slot (usually the same as getInventoryStackLimit(), but 1 in the case
 * of armor slots)
 */
+@Override
 public int getSlotStackLimit()
 {
 return 1;

@@ -13,10 +13,6 @@
  */
 package common.steamcraft.client.render;
 
-import common.steamcraft.client.lib2.ClientResources;
-import common.steamcraft.common.entity.EntityBullet;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.entity.Entity;
@@ -24,6 +20,12 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
+
+import common.steamcraft.client.lib2.ClientResources;
+import common.steamcraft.common.entity.EntityBullet;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 /**
@@ -52,15 +54,15 @@ public class RenderBullet extends Render
         int i = 0;
         float f2 = 0.0F;
         float f3 = 0.5F;
-        float f4 = (float)(0 + i * 10) / 32F;
-        float f5 = (float)(5 + i * 10) / 32F;
+        float f4 = (0 + i * 10) / 32F;
+        float f5 = (5 + i * 10) / 32F;
         float f6 = 0.0F;
         float f7 = 0.15625F;
-        float f8 = (float)(5 + i * 10) / 32F;
-        float f9 = (float)(10 + i * 10) / 32F;
+        float f8 = (5 + i * 10) / 32F;
+        float f9 = (10 + i * 10) / 32F;
         float f10 = 0.05625F;
         GL11.glEnable(32826 /*GL_RESCALE_NORMAL_EXT*/);
-        float f11 = (float)1.0F - f1;
+        float f11 = 1.0F - f1;
         
         if(f11 > 0.0F)
         {

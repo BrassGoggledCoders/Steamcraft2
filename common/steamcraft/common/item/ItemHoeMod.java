@@ -37,7 +37,7 @@ public class ItemHoeMod extends ItemMod
 		if(l != 0 && j1 == 0 && i1 == Block.grass.blockID || i1 == Block.dirt.blockID)
 		{
 			Block block = Block.tilledField;
-			world.playSoundEffect((double)((float)i + 0.5F), (double)((float)j + 0.5F), (double)((float)k + 0.5F), block.stepSound.getStepSound(), (block.stepSound.getVolume() + 1.0F) / 2.0F, block.stepSound.getPitch() * 0.8F);
+			world.playSoundEffect(i + 0.5F, j + 0.5F, k + 0.5F, block.stepSound.getStepSound(), (block.stepSound.getVolume() + 1.0F) / 2.0F, block.stepSound.getPitch() * 0.8F);
 			
 			if(world.isRemote)
 			{
@@ -48,7 +48,7 @@ public class ItemHoeMod extends ItemMod
 				
 				if(this.toolMaterial == MaterialMod.STEAM_TOOL)
 				{
-					stack.damageItem(1 + (int)Math.round(stack.getItemDamage() * 5 / 320), player);
+					stack.damageItem(1 + Math.round(stack.getItemDamage() * 5 / 320), player);
 					return true;
 				}
 				
@@ -67,7 +67,7 @@ public class ItemHoeMod extends ItemMod
 	{
 		if(!world.isRemote)
 		{
-			if(toolMaterial==MaterialMod.INSTANCE.STEAM_TOOL)
+			if(toolMaterial==MaterialMod.STEAM_TOOL)
 			{
 				if(player.inventory.hasItem(ModItems.canisterSteam.itemID))
 				{

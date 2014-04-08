@@ -20,6 +20,7 @@ package common.steamcraft.common;
 import common.steamcraft.common.core.proxy.CommonProxy;
 import common.steamcraft.common.lib2.LibInfo;
 import common.steamcraft.common.network.PacketHandler;
+
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -30,7 +31,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 
 @Mod(modid = LibInfo.MOD_ID, name = LibInfo.MOD_NAME, version = LibInfo.VERSION)
-@NetworkMod(clientSideRequired = false, serverSideRequired = true, channels = {LibInfo.NETWORK_CHANNEL}, packetHandler = PacketHandler.class)
+@NetworkMod(clientSideRequired = false, serverSideRequired = true, channels = {PacketHandler.SC2_CHANNEL}, packetHandler = PacketHandler.class)
 /**
  * @author MrArcane111
  *
@@ -79,7 +80,7 @@ public class SC2 {
 	 * 07. Tesla Coils: can send EU, MJ, or redstone power wirelessly to a Tesla Receiver within a certain distance; does NOT have an internal storage buffer
 	 * 08. Chemical Furnace: uses interesting chemical compounds (i.e. gunpowder, sulphur, or glowstone) to provide a faster way to smelt things; Tier 2 Furnace
 	 * 09. Steam-Powered Furnace: uses steam to provide a faster way to smelt things; Tier 3 Furnace
-	 * 10. Nuclear Furnace: uses MJ or EU to provide the fastest way to smelt things; must have �exhaust� routed through smoke stacks, otherwise the nuclear furnace will explode; smoke stacks pollute nearby area (change grass color, excessive rain, etc.); Tier 4 Furnace
+	 * 10. Nuclear Furnace: uses MJ or EU to provide the fastest way to smelt things; must have exhaust routed through smoke stacks, otherwise the nuclear furnace will explode; smoke stacks pollute nearby area (change grass color, excessive rain, etc.); Tier 4 Furnace
 	 * 11. Clockwork machines: run off of a mechanical energy, much like steam-power; highest order of tools and armor; recharges via winding machine
 	 * 12. Winding Machine: uses EU, MJ, or Steam-Power to rewind clockwork tools; does NOT have an internal buffer
 	 */

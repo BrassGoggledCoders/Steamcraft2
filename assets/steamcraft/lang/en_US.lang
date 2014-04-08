@@ -52,7 +52,7 @@ tile.chemfurnace.name=Chemical Furnace
 tile.nukefurnace.name=Nuclear Furnace
 tile.compressorMachine.name=Compressor
 tile.conveyor.name=Conveyor Belt
-tile.simpleCoalGenerator.name=Simple Coal Generator
+tile.steamBoiler.name=Steam Boiler
 tile.dropHammer.name=Drop Hammer Head
 #Items
 item.etherium.name=Etherium Crystal
@@ -76,11 +76,9 @@ item.teaseed.name=Tea Seeds
 item.tealeaves.name=Tea Leaves
 item.copperwire.name=Copper Wire
 item.brasswatch.name=Brass Pocket-Watch
-item.steamcanister.name=Steam Canister
-item.gascanister.name=Compressed Gas Canister
-item.steamcanister.name=Steam Canister
-item.gascanister.name=Compressed Gas Canister
-item.emptycanister.name=Empty Canister
+item.canisterSteam.name=Steam Canister
+item.canisterGas.name=Compressed Gas Canister
+item.canisterEmpty.name=Empty Canister
 item.guidebook.name=SteamCraft2 Guidebook
 item.steamBucket.name=Steam Bucket
 	#Guns
