@@ -19,6 +19,7 @@ import java.util.logging.Level;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.MinecraftForge;
+import steamcraft.client.lib.RenderEventHandler;
 import steamcraft.common.config.Config;
 import steamcraft.common.config.ConfigBlocks;
 import steamcraft.common.config.ConfigEntities;
@@ -62,7 +63,7 @@ public class Steamcraft
 	public EventHandlerTick tickEventHandler;
 	public EventHandlerHUD hudEventHandler;
 	public EventHandlerDrawHighlight drawEventHandler;
-	//public RenderEventHandler renderEventHandler;
+	public RenderEventHandler renderEventHandler;
 	public File directory;
 
 	public static CreativeTabs tabSC2 = new CreativeTabSteamcraft(CreativeTabs.getNextID(), LibInfo.NAME.toLowerCase()); // Needs an item icon
@@ -91,14 +92,14 @@ public class Steamcraft
 		this.tickEventHandler = new EventHandlerTick();
 		this.hudEventHandler = new EventHandlerHUD();
 		this.drawEventHandler = new EventHandlerDrawHighlight();
-		//this.renderEventHandler = new RenderEventHandler();
+		this.renderEventHandler = new RenderEventHandler();
 
 		MinecraftForge.EVENT_BUS.register(this.worldEventHandler);
 		MinecraftForge.EVENT_BUS.register(this.entityEventHandler);
 		//MinecraftForge.EVENT_BUS.register(this.tickEventHandler);
 		//MinecraftForge.EVENT_BUS.register(this.hudEventHandler);
 		//MinecraftForge.EVENT_BUS.register(this.drawEventHandler);
-		//MinecraftForge.EVENT_BUS.register(this.renderEventHandler);
+		MinecraftForge.EVENT_BUS.register(this.renderEventHandler);
 
 		//GameRegistry.registerFuelHandler(this.worldEventHandler);
 		//GameRegistry.registerCraftingHandler(this.worldEventHandler);

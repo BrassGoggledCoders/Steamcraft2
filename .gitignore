@@ -1,22 +1,50 @@
 *.class
+dist
+download
+push.sh
+remotebuild.py
 
-# Package Files #
-*.jar
-*.war
-*.ear
-
-# Forge/Gradle Files #
-/.git
-/.classpath
-/.DS_Store
-/.settings
-/.project
+## Gradle
 /.gradle
-/bin
 /build
-/CREDITS-fml.txt
 /eclipse
-/forge-1.6.4-9.11.1.964-changelog.txt
+/gradlew.bat
+
+## ForgeGradle
+/run
+/out
+
+## Idea
+*.iml
+*.ipr
+*.iws
+
+## Eclipse
+/.settings
+/.metadata
+/.classpath
+/.project
+/bin
+/.idea
+/client/
+/Server/
+/classes/
+## misc
+TCDEOBF.jar*
+
+## Ignore OS cache files
+*.DS_Store
+_MACOSX
+Thumbs.db
+
+## Ignore unnecessary files
+*.log
+*.lck
+
+## Forge
+/CREDITS-fml.txt
 /LICENSE-fml.txt
 /MinecraftForge-Credits.txt
 /MinecraftForge-License.txt
+/forge-1.6.4-9.11.1.964-changelog.txt
+
