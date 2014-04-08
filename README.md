@@ -38,5 +38,5 @@ _Testers/Other:_
 * seanvanpelt2: alpha/beta tester
 
 Email: jmaeatmon@gmail.com <br/>
-Twitter: <www.twitter.com/surseance> <br/>
+Twitter: www.twitter.com/surseance <br/>
 Skype: johnny.eatmon <br/>
