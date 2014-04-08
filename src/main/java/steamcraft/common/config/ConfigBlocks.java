@@ -58,8 +58,6 @@ public class ConfigBlocks
 
 	public static Block blockSteam;
 
-	public static Fluid steamFluid;
-
     public static BlockStairs blockSlateTileStairs;
 
     public static int blockCrystalRI = -1;
