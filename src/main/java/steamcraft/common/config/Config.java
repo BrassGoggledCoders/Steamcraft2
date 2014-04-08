@@ -40,6 +40,7 @@ public class Config
 	public static int blockCastIronLampIId;
 	public static int blockCastIronLampAId;
 	public static int blockSteamFluidId;
+	public static int blockSteamBoilerId;
 	
 	public static int itemMechanicalId;
     public static int itemResourceId;
@@ -109,6 +110,7 @@ public class Config
 		blockCastIronLampIId = config.getBlock("BlockCastIronLamp (OFF)", bIdx++).getInt();
 		blockCastIronLampAId = config.getBlock("BlockCastIronLamp (ON)", bIdx++).getInt();
 		blockSteamFluidId = config.getBlock("BlockSteamFluid", bIdx++).getInt();
+		blockSteamBoilerId = config.getBlock("BlockSteamBoiler", bIdx++).getInt();
 		
 		int iIdx = 27000;
 		itemMechanicalId = config.getItem("ItemMechanical", iIdx++).getInt();

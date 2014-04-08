@@ -34,7 +34,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class ItemCanister extends Item
 {
 	public String gas;
-	public static final float MAX_STEAM = 150000.0F;
+	public static final float MAX_STEAM = 160000.0F;
 	public static final int MAX_STEAM_VISIBLE = 2500;
 	
 	@Override

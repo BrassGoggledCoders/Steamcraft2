@@ -29,7 +29,9 @@ import steamcraft.common.blocks.BlockCustomOreItem;
 import steamcraft.common.blocks.BlockEngravedSolid;
 import steamcraft.common.blocks.BlockEngravedSolidItem;
 import steamcraft.common.blocks.BlockFluidSteam;
+import steamcraft.common.blocks.machine.BlockSteamBoiler;
 import steamcraft.common.lib.LibInfo;
+import steamcraft.common.tileentities.TileEntitySteamBoiler;
 import steamcraft.common.tiles.TileCrystal;
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -53,6 +55,8 @@ public class ConfigBlocks
 	public static Block blockTeaPlant;
 	public static Block blockSmog;
 	public static Block blockFluidSteam;
+	
+	public static Block blockSteamBoiler;
 	
 	public static Fluid steamFluid;
 
@@ -82,6 +86,7 @@ public class ConfigBlocks
         blockCrystal = new BlockCrystal(Config.blockCrystalId);
         blockCastIronLampI = new BlockCastIronLamp(Config.blockCastIronLampIId, false);
         blockCastIronLampA = new BlockCastIronLamp(Config.blockCastIronLampAId, true);
+        blockSteamBoiler = new BlockSteamBoiler(Config.blockSteamBoilerId);
         
 		Fluid steamFluid = new Fluid("steam").setGaseous(true).setTemperature(700).setDensity(-100).setViscosity(500).setLuminosity(1);
 		FluidRegistry.registerFluid(steamFluid);
@@ -99,10 +104,12 @@ public class ConfigBlocks
         GameRegistry.registerBlock(blockCastIronLampI, "BlockCastIronLampI");
         GameRegistry.registerBlock(blockCastIronLampA, "BlockCastIronLampA");
         GameRegistry.registerBlock(blockFluidSteam, "BlockFluidSteam");
+        GameRegistry.registerBlock(blockSteamBoiler, "BlockSteamBoiler");
     }
 	
 	private static void registerTileEntities()
 	{
         GameRegistry.registerTileEntity(TileCrystal.class, LibInfo.ID + "TECrystal");
+        GameRegistry.registerTileEntity(TileEntitySteamBoiler.class, LibInfo.ID + "TESteamBoiler");
 	}
 }
