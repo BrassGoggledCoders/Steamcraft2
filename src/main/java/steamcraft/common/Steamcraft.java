@@ -31,7 +31,6 @@ import steamcraft.common.lib.events.EventHandlerEntity;
 import steamcraft.common.lib.events.EventHandlerHUD;
 import steamcraft.common.lib.events.EventHandlerTick;
 import steamcraft.common.lib.events.EventHandlerWorld;
-import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -62,7 +61,7 @@ public class Steamcraft
 	//public RenderEventHandler renderEventHandler;
 	public File directory;
 
-	public static CreativeTabs tabSC2 = new CreativeTabSteamcraft(CreativeTabs.getNextID(), LibInfo.NAME.toLowerCase()); //XXX
+	public static CreativeTabs tabSC2 = new CreativeTabSteamcraft(CreativeTabs.getNextID(), LibInfo.NAME.toLowerCase()); //TODO: Needs Icon
 
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event)
@@ -82,7 +81,6 @@ public class Steamcraft
 			if (Config.config != null) 
 				Config.save();
 		}
-
 		this.worldEventHandler = new EventHandlerWorld();
 		this.entityEventHandler = new EventHandlerEntity();
 		this.tickEventHandler = new EventHandlerTick();
@@ -92,15 +90,15 @@ public class Steamcraft
 
 		MinecraftForge.EVENT_BUS.register(this.worldEventHandler);
 		MinecraftForge.EVENT_BUS.register(this.entityEventHandler);
-		MinecraftForge.EVENT_BUS.register(this.tickEventHandler);
-		MinecraftForge.EVENT_BUS.register(this.hudEventHandler);
-		MinecraftForge.EVENT_BUS.register(this.drawEventHandler);
+		//MinecraftForge.EVENT_BUS.register(this.tickEventHandler);
+		//MinecraftForge.EVENT_BUS.register(this.hudEventHandler);
+		//MinecraftForge.EVENT_BUS.register(this.drawEventHandler);
 		//MinecraftForge.EVENT_BUS.register(this.renderEventHandler);
 
 		//GameRegistry.registerFuelHandler(this.worldEventHandler);
 		//GameRegistry.registerCraftingHandler(this.worldEventHandler);
 		//GameRegistry.registerWorldGenerator(this.worldGen = new SteamcraftWorldGenerator());
-
+		
 		Config.save();
 		ConfigBlocks.init();
 		ConfigItems.init();

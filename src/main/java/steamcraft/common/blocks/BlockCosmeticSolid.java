@@ -48,7 +48,7 @@ public class BlockCosmeticSolid extends Block
 	@SideOnly(Side.CLIENT)
 	public Icon getIcon(int side, int metadata)
 	{
-		if (metadata == 8)
+		if (metadata == 8) // This is for the brass wood. It's kinda messed up. Maybe a separate file would do?
 		{
 			int i = metadata & 12;
 			int j = metadata & 3;
@@ -148,7 +148,6 @@ public class BlockCosmeticSolid extends Block
 			drop.add(new ItemStack(ConfigBlocks.blockCosmetic, 1, 11));
 		case 12:
 			drop.add(new ItemStack(ConfigBlocks.blockCosmetic, 1, 12));
-
 		}
 
 		return drop;
@@ -259,6 +258,10 @@ public class BlockCosmeticSolid extends Block
 			return false;
 	}
 
+	// I don't know why it says blockCastIronLamp, it's just supposed to be that lamp block.
+	// Make sure you do a metadata check before implementing this.
+	
+	/*
 	@Override
 	public void onBlockAdded(World world, int x, int y, int z)
 	{
@@ -300,5 +303,5 @@ public class BlockCosmeticSolid extends Block
 		{
 			world.setBlock(x, y, z, ConfigBlocks.blockCastIronLamp.blockID, 1, 12);
 		}
-	}
+	}*/
 }

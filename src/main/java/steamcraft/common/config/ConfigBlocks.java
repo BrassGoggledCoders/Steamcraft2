@@ -15,6 +15,9 @@ package steamcraft.common.config;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockStairs;
+import net.minecraft.block.material.Material;
+import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidRegistry;
 import steamcraft.common.blocks.BlockCastIronFence;
 import steamcraft.common.blocks.BlockCastIronGate;
 import steamcraft.common.blocks.BlockCastIronLamp;
@@ -25,6 +28,7 @@ import steamcraft.common.blocks.BlockCustomOre;
 import steamcraft.common.blocks.BlockCustomOreItem;
 import steamcraft.common.blocks.BlockEngravedSolid;
 import steamcraft.common.blocks.BlockEngravedSolidItem;
+import steamcraft.common.blocks.BlockFluidSteam;
 import steamcraft.common.lib.LibInfo;
 import steamcraft.common.tiles.TileCrystal;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -41,14 +45,16 @@ public class ConfigBlocks
     public static Block blockCastIronFence;
     public static Block blockCastIronGate;
     public static Block blockCrystal;
-    public static Block blockCastIronLamp;
+    public static Block blockCastIronLampI;
+	public static Block blockCastIronLampA;
 
 	public static Block blockLampI;
 	public static Block blockLampA;
 	public static Block blockTeaPlant;
-	public static Block blockCastIronLampI;
-	public static Block blockCastIronLampA;
 	public static Block blockSmog;
+	public static Block blockFluidSteam;
+	
+	public static Fluid steamFluid;
 
     public static BlockStairs blockSlateTileStairs;
 
@@ -64,13 +70,18 @@ public class ConfigBlocks
 	
 	public static void initializeBlocks()
 	{
-        blockCustomOre = new BlockCustomOre();
-        blockCosmetic = new BlockCosmeticSolid();
-        blockEngraved = new BlockEngravedSolid();
-        blockCastIronFence = new BlockCastIronFence();
-        blockCastIronGate = new BlockCastIronGate();
-        blockCrystal = new BlockCrystal();
-        blockCastIronLamp = new BlockCastIronLamp();
+        blockCustomOre = new BlockCustomOre(Config.blockCustomOreId);
+        blockCosmetic = new BlockCosmeticSolid(Config.blockCosmeticId);
+        blockEngraved = new BlockEngravedSolid(Config.blockEngravedId);
+        blockCastIronFence = new BlockCastIronFence(Config.blockCastIronFenceId);
+        blockCastIronGate = new BlockCastIronGate(Config.blockCastIronGateId);
+        blockCrystal = new BlockCrystal(Config.blockCrystalId);
+        blockCastIronLampI = new BlockCastIronLamp(Config.blockCastIronLampIId, false);
+        blockCastIronLampA = new BlockCastIronLamp(Config.blockCastIronLampAId, true);
+        
+		Fluid steamFluid = new Fluid("steam").setGaseous(true).setTemperature(700).setDensity(-100).setViscosity(500).setLuminosity(1);
+		FluidRegistry.registerFluid(steamFluid);
+        blockFluidSteam = new BlockFluidSteam(steamFluid, Material.water);
 	}
 	
 	public static void registerBlocks()
@@ -81,6 +92,9 @@ public class ConfigBlocks
         GameRegistry.registerBlock(blockCastIronFence, "BlockCastIronFence");
         GameRegistry.registerBlock(blockCastIronGate, "BlockCastIronGate");
         GameRegistry.registerBlock(blockCrystal, "BlockCrystal");
+        GameRegistry.registerBlock(blockCastIronLampI, "BlockCastIronLampI");
+        GameRegistry.registerBlock(blockCastIronLampA, "BlockCastIronLampA");
+        GameRegistry.registerBlock(blockFluidSteam, "BlockFluidSteam");
     }
 	
 	private static void registerTileEntities()
