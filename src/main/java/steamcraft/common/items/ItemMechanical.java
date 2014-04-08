@@ -13,10 +13,12 @@
  */
 package steamcraft.common.items;
 
-import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.item.Item;
-import net.minecraft.util.IIcon;
+import net.minecraft.util.Icon;
 import steamcraft.common.Steamcraft;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author Surseance (Johnny Eatmon)
@@ -31,25 +33,27 @@ public class ItemMechanical extends Item
 	public static Item steamCanister;
 	public static Item gasCanister;
     public static Item emptyCanister;
-   
 	 */
 	
-    public IIcon[] icon = new IIcon[6];
+    public Icon[] icon = new Icon[6];
 
     @Override
-    public IIcon getIconFromDamage(int itemDamage)
+    @SideOnly(Side.CLIENT)
+    public Icon getIconFromDamage(int itemDamage)
     {
         return this.icon[itemDamage];
     }
 
     @Override
-    public void registerIcons(IIconRegister ir)
+    @SideOnly(Side.CLIENT)
+    public void registerIcons(IconRegister ir)
     {
 
     }
 
-    public ItemMechanical()
+    public ItemMechanical(int id)
     {
+    	super(id);
         this.setMaxStackSize(64);
         this.setHasSubtypes(true);
         this.setMaxDamage(0);

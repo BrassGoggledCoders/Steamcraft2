@@ -15,8 +15,7 @@ package steamcraft.common.items;
 
 import java.util.Random;
 
-import net.minecraft.block.Block;
-import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -24,6 +23,8 @@ import net.minecraft.world.World;
 import steamcraft.client.fx.FXSmoke;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.LibInfo;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author Surseance (Johnny Eatmon)
@@ -31,13 +32,16 @@ import steamcraft.common.lib.LibInfo;
  */
 public class ItemChisel extends Item
 {
-	public void registerIcons(IIconRegister ir)
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void registerIcons(IconRegister ir)
 	{
 		this.itemIcon = ir.registerIcon(LibInfo.PREFIX + "itemChisel");
 	}
 	
-	public ItemChisel()
+	public ItemChisel(int id)
 	{
+		super(id);
 		this.setMaxStackSize(1);
 		this.setMaxDamage(21);
 		this.bFull3D = true;
@@ -47,7 +51,7 @@ public class ItemChisel extends Item
 	@Override
 	public boolean onItemUse(ItemStack is, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ)
 	{
-		Block block = world.getBlock(x, y, z);
+		int bid = world.getBlockId(x, y, z);
 
 		/*
 		if(bid == Block.blockIron.blockID)

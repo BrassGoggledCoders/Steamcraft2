@@ -13,27 +13,31 @@
  */
 package steamcraft.common.items;
 
-import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.item.Item;
-import net.minecraft.util.IIcon;
+import net.minecraft.util.Icon;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.LibInfo;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author Surseance (Johnny Eatmon)
  */
 public class ItemResource extends Item
 {
-    public IIcon[] icon = new IIcon[12];
+    public Icon[] icon = new Icon[12];
 
     @Override
-    public IIcon getIconFromDamage(int itemDamage)
+    @SideOnly(Side.CLIENT)
+    public Icon getIconFromDamage(int itemDamage)
     {
         return this.icon[itemDamage];
     }
 
     @Override
-    public void registerIcons(IIconRegister ir)
+    @SideOnly(Side.CLIENT)
+    public void registerIcons(IconRegister ir)
     {
         this.icon[0] = ir.registerIcon(LibInfo.PREFIX + "itemCrystal");
         this.icon[1] = ir.registerIcon(LibInfo.PREFIX + "itemChemSalt");
@@ -49,8 +53,9 @@ public class ItemResource extends Item
         this.icon[11] = ir.registerIcon(LibInfo.PREFIX + "itemTeaLeaves");
     }
 
-    public ItemResource()
+    public ItemResource(int id)
     {
+    	super(id);
         this.setMaxStackSize(64);
         this.setHasSubtypes(true);
         this.setMaxDamage(0);

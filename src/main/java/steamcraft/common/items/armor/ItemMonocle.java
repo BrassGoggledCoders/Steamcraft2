@@ -13,14 +13,9 @@
  */
 package steamcraft.common.items.armor;
 
-import net.minecraft.client.model.ModelBiped;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.ItemArmor;
-import net.minecraft.item.ItemStack;
 import steamcraft.common.Steamcraft;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author Surseance (Johnny Eatmon)
@@ -28,9 +23,9 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 public class ItemMonocle extends ItemArmor
 {
-	public ItemMonocle(ItemArmor.ArmorMaterial armorMat, int armorType, int renderIndex)
+	public ItemMonocle(int id, EnumArmorMaterial armorMat, int armorType, int renderIndex)
 	{
-		super(armorMat, armorType, renderIndex);
+		super(id, armorMat, armorType, renderIndex);
 		this.setMaxStackSize(1);
 		this.setCreativeTab(Steamcraft.tabSC2);
 	}
