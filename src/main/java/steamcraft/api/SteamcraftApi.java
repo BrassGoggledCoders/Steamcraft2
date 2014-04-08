@@ -21,7 +21,7 @@ import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.EnumHelper;
-import steamcraft.common.lib.LoggerSteamcraft;
+import steamcraft.common.lib.network.LoggerSteamcraft;
 
 /**
  * @author Surseance (Johnny Eatmon)

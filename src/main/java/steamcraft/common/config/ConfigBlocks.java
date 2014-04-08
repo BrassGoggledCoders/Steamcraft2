@@ -48,6 +48,7 @@ public class ConfigBlocks
 	public static Block blockLampA;
 	public static Block blockTeaPlant;
 	public static Block blockSmog;
+	public static Block blockSteam;
 
     public static BlockStairs blockSlateTileStairs;
 
