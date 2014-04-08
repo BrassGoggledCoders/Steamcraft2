@@ -5,6 +5,7 @@
 *.war
 *.ear
 
+# Forge/Gradle Files #
 /.git
 /.classpath
 /.DS_Store
@@ -13,12 +14,9 @@
 /.gradle
 /bin
 /build
-/build.gradle
 /CREDITS-fml.txt
 /eclipse
 /forge-1.6.4-9.11.1.964-changelog.txt
-/gradlew
-/gradlew.bat
 /LICENSE-fml.txt
 /MinecraftForge-Credits.txt
 /MinecraftForge-License.txt
