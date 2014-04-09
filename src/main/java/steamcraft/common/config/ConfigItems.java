@@ -13,14 +13,18 @@
  */
 package steamcraft.common.config;
 
+import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemArmor;
 import steamcraft.common.items.ItemChisel;
+import steamcraft.common.items.ItemGunParts;
+import steamcraft.common.items.ItemKettle;
 import steamcraft.common.items.ItemMechanical;
 import steamcraft.common.items.ItemResource;
 import steamcraft.common.items.ItemTeaSeed;
+import steamcraft.common.items.ItemTeacup;
 import steamcraft.common.items.ItemWatch;
 import steamcraft.common.items.armor.ItemCustomArmor;
+import steamcraft.common.lib.LibInfo;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 /**
@@ -34,45 +38,57 @@ public class ConfigItems
     public static Item itemWatch;
     public static Item itemTeaSeed;
     public static Item itemChisel;
+    
     public static Item itemBrassGoggles;
-
-    public static Item coldKettle;
-    public static Item hotKettle;
-    public static Item emptyTeacup;
-    public static Item fullTeacup;
-    public static Item emptyKettle;
-
+    
+    public static Item itemTeacupEmpty;
+    public static Item itemTeacupFull;
+    public static Item itemKettleEmpty;
+    public static Item itemKettleHot;
+    public static Item itemKettleCold;
+    public static Item itemGunParts;
+    
     public static Item itemSteamCanister;
-    public static Item canisterGas;
-    public static Item steamCanister;
-    public static Item gasCanister;
-    public static Item emptyCanister;
+    public static Item itemCanisterGas;
+    public static Item itemEmptyCanister;
+    
+    public static Item itemMusketRound;
+    public static Item itemBucketSteam;
 
     public static void init()
 	{
 		initializeItems();
 	}
     
-    public static void postInit()
-    {
-
-    }
+    public static void postInit() {}
 	
 	public static void initializeItems()
 	{
-		itemMechanical = new ItemMechanical().setUnlocalizedName("ItemMechanical");
-		GameRegistry.registerItem(itemMechanical, "ItemMechanical", "Steamcraft");
-		itemResource = new ItemResource().setUnlocalizedName("ItemResource");
-		GameRegistry.registerItem(itemResource, "ItemResource", "Steamcraft");
-		itemWatch = new ItemWatch().setUnlocalizedName("ItemWatch");
-		GameRegistry.registerItem(itemWatch, "ItemWatch", "Steamcraft");
+		itemMechanical = new ItemMechanical(Config.itemMechanicalId).setUnlocalizedName("ItemMechanical");
+		GameRegistry.registerItem(itemMechanical, "ItemMechanical", LibInfo.ID);
+		itemResource = new ItemResource(Config.itemResourceId).setUnlocalizedName("ItemResource");
+		GameRegistry.registerItem(itemResource, "ItemResource", LibInfo.ID);
+		itemWatch = new ItemWatch(Config.itemWatchId).setUnlocalizedName("ItemWatch");
+		GameRegistry.registerItem(itemWatch, "ItemWatch", LibInfo.ID);
+		itemTeaSeed = new ItemTeaSeed(Config.itemTeaSeedId).setUnlocalizedName("ItemTeaSeed");
+		GameRegistry.registerItem(itemTeaSeed, "ItemTeaSeed", LibInfo.ID);
+		itemChisel = new ItemChisel(Config.itemChiselId).setUnlocalizedName("ItemChisel");
+		GameRegistry.registerItem(itemChisel, "ItemChisel", LibInfo.ID);
 		
-		itemTeaSeed = new ItemTeaSeed().setUnlocalizedName("ItemTeaSeed");
-		GameRegistry.registerItem(itemTeaSeed, "ItemTeaSeed", "Steamcraft");
-		itemChisel = new ItemChisel().setUnlocalizedName("ItemChisel");
-		GameRegistry.registerItem(itemChisel, "ItemChisel", "Steamcraft");
+		itemBrassGoggles = new ItemCustomArmor(Config.itemGogglesId, EnumArmorMaterial.CHAIN, 0, 0).setUnlocalizedName("ItemCustomArmor");
+		GameRegistry.registerItem(itemBrassGoggles, "ItemCustomArmor", LibInfo.ID);
 		
-		itemBrassGoggles = new ItemCustomArmor(ItemArmor.ArmorMaterial.CHAIN, 0, 0).setUnlocalizedName("ItemCustomArmor");
-		GameRegistry.registerItem(itemBrassGoggles, "ItemCustomArmor", "Steamcraft");
+		itemTeacupEmpty = new ItemTeacup(Config.itemTeacupEmptyId, 0, 0.0F, false).setUnlocalizedName("ItemTeacupEmpty");
+		GameRegistry.registerItem(itemTeacupEmpty, "ItemTeacupEmpty", LibInfo.ID);
+		itemTeacupFull = new ItemTeacup(Config.itemTeacupFullId, 4, 0.9F, false).setUnlocalizedName("ItemTeacupFull");
+		GameRegistry.registerItem(itemTeacupFull, "ItemTeacupFull", LibInfo.ID);
+		itemKettleEmpty = new ItemKettle(Config.itemKettleEmptyId, 300).setUnlocalizedName("ItemKettleEmpty");
+		GameRegistry.registerItem(itemTeacupFull, "ItemKettleEmpty", LibInfo.ID);
+		itemKettleHot = new ItemKettle(Config.itemKettleHotId, 300).setUnlocalizedName("ItemKettleHot");
+		GameRegistry.registerItem(itemTeacupFull, "ItemKettleHot", LibInfo.ID);
+		itemKettleCold = new ItemKettle(Config.itemKettleColdId, 300).setUnlocalizedName("ItemKettleCold");
+		GameRegistry.registerItem(itemTeacupFull, "ItemKettleCold", LibInfo.ID);
+		itemGunParts = new ItemGunParts(Config.itemGunPartsId).setUnlocalizedName("ItemGunParts");
+		GameRegistry.registerItem(itemGunParts, "ItemGunParts", LibInfo.ID);
 	}
 }

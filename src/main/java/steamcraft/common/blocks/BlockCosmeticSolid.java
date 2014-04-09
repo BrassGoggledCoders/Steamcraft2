@@ -41,14 +41,14 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 public class BlockCosmeticSolid extends Block
 {
-	private Icon[] icon = new Icon[13];
+	private Icon[] icon = new Icon[14];
 	private boolean powered;
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public Icon getIcon(int side, int metadata)
 	{
-		if (metadata == 8)
+		if (metadata == 8) // This is for the brass wood. It's kinda messed up. Maybe a separate file would do?
 		{
 			int i = metadata & 12;
 			int j = metadata & 3;
@@ -75,6 +75,7 @@ public class BlockCosmeticSolid extends Block
 		this.icon[10] = ir.registerIcon(LibInfo.PREFIX + "blockBrassLeaves");
 		this.icon[11] = ir.registerIcon(LibInfo.PREFIX + "blockLampOff");
 		this.icon[12] = ir.registerIcon(LibInfo.PREFIX + "blockLampOn");
+		this.icon[13] = ir.registerIcon(LibInfo.PREFIX + "blockVolucite");
 	}
 
 	public BlockCosmeticSolid(int id)
@@ -148,7 +149,8 @@ public class BlockCosmeticSolid extends Block
 			drop.add(new ItemStack(ConfigBlocks.blockCosmetic, 1, 11));
 		case 12:
 			drop.add(new ItemStack(ConfigBlocks.blockCosmetic, 1, 12));
-
+		case 13:
+			drop.add(new ItemStack(ConfigBlocks.blockCosmetic, 1, 13));
 		}
 
 		return drop;
@@ -259,6 +261,10 @@ public class BlockCosmeticSolid extends Block
 			return false;
 	}
 
+	// I don't know why it says blockCastIronLamp, it's just supposed to be that lamp block.
+	// Make sure you do a metadata check before implementing this.
+	
+	/*
 	@Override
 	public void onBlockAdded(World world, int x, int y, int z)
 	{
@@ -300,5 +306,5 @@ public class BlockCosmeticSolid extends Block
 		{
 			world.setBlock(x, y, z, ConfigBlocks.blockCastIronLamp.blockID, 1, 12);
 		}
-	}
+	}*/
 }

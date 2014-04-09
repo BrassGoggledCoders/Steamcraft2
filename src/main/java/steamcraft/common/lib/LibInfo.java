@@ -21,7 +21,7 @@ package steamcraft.common.lib;
  */
 public class LibInfo
 {
-    public static final String ID = "SC2";
+    public static final String ID = "Steamcraft";
     public static final String NAME = "Steamcraft 2";
     public static final String VERSION = "0.1.0"; // major, minor, build
 

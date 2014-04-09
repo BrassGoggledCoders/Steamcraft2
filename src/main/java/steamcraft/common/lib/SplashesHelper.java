@@ -16,6 +16,7 @@ package steamcraft.common.lib;
 import java.util.Random;
 import java.util.logging.Level;
 
+import steamcraft.common.lib.network.LoggerSteamcraft;
 import net.minecraft.client.gui.GuiMainMenu;
 import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.relauncher.ReflectionHelper;
@@ -56,6 +57,7 @@ public class SplashesHelper
 		"SC2 by Surseance & Team!",
 		"SC2 by Surseance & Team!",
 		"Modded by Steampunk Masters!",
+		"Broken by The Codebreaker himself!",
 		// The Mod
 		"Steamcraft 2 v" + LibInfo.VERSION,
 		"Steamcraft 2 v" + LibInfo.VERSION,
@@ -76,7 +78,7 @@ public class SplashesHelper
 		"Press the button!",
 		"Ssssssssssssssss!",
 		"#selfie",
-		"Who's that POKEŽMON?",
+		"Who's that POKEMON?",
 		// Advice
 		"Kick out the funk!",
 		"Read the README!",
@@ -84,11 +86,11 @@ public class SplashesHelper
 		// Also Try...
 		"Also try Thaumcraft 4!",
 		"Also try Ars Magica 2!",
-		"Also try Pixelmon",
+		"Also try Pixelmon, if you like remote hacking of your server",
 		"Also try taking a break once in a while!",
 		// Pieces of Code
 		"while(true) {}",
-		"Integer.toString()"
+		"Integer.toString()",
 	};
 	
 	private static Random random = new Random();

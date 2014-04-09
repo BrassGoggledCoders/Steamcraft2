@@ -22,7 +22,7 @@ import net.minecraft.item.Item;
  */
 public class CreativeTabSteamcraft extends CreativeTabs
 {
-	public CreativeTabSteamcraft(int id, String name)
+	public CreativeTabSteamcraft(int id, String name) 
 	{
 		super(id, name);
 	}
