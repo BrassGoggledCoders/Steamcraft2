@@ -35,6 +35,7 @@ import steamcraft.common.lib.events.EventHandlerTick;
 import steamcraft.common.lib.events.EventHandlerWorld;
 import steamcraft.common.lib.network.LoggerSteamcraft;
 import steamcraft.common.lib.network.PacketHandler;
+import steamcraft.common.lib.world.SteamcraftWorldGenerator;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -42,6 +43,7 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.network.NetworkMod;
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
 /**
@@ -58,7 +60,7 @@ public class Steamcraft
 	@Mod.Instance(LibInfo.NAME)
 	public static Steamcraft instance;
 
-	//public SteamcraftWorldGenerator worldGen;
+	public SteamcraftWorldGenerator worldGen;
 	public EventHandlerWorld worldEventHandler;
 	public EventHandlerEntity entityEventHandler;
 	public EventHandlerTick tickEventHandler;
@@ -103,7 +105,7 @@ public class Steamcraft
 
 		//GameRegistry.registerFuelHandler(this.worldEventHandler);
 		//GameRegistry.registerCraftingHandler(this.worldEventHandler);
-		//GameRegistry.registerWorldGenerator(this.worldGen = new SteamcraftWorldGenerator());
+		GameRegistry.registerWorldGenerator(this.worldGen = new SteamcraftWorldGenerator());
 		
 		Config.save();
 		ConfigBlocks.init();

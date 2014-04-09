@@ -29,7 +29,7 @@ public class Config
 	public static Configuration config;
 	public static final String CATEGORY_ENTITIES = "Entities";
 
-	public static String CATEGORY_GEN_OPTIONS = "generation options";
+	public static String CATEGORY_GEN_OPTIONS = "Generation";
 	
 	public static int blockCustomOreId;
 	public static int blockCosmeticId;
@@ -48,10 +48,16 @@ public class Config
     public static int itemTeaSeedId;
     public static int itemChiselId;
     public static int itemGogglesId;
+    public static int itemTeacupEmptyId;
+    public static int itemTeacupFullId;
+    public static int itemKettleEmptyId;
+    public static int itemKettleHotId;
+    public static int itemKettleColdId;
+    public static int itemGunPartsId;
     
     public static int entBulletId;
 
-    /*POWER TO THE END USER!*/
+    /* POWER TO THE END USER! Good heaves... */
     public static int etheriumChance;
     public static int uraniumChance;
     public static int brimstoneChance;
@@ -119,6 +125,8 @@ public class Config
 		itemTeaSeedId = config.getItem("ItemTeaSeed", iIdx++).getInt();
 		itemChiselId = config.getItem("ItemChisel", iIdx++).getInt();
 		itemGogglesId = config.getItem("ItemCustomArmor", iIdx++).getInt();
+		itemTeacupEmptyId = config.getItem("ItemLiquidFood", iIdx++).getInt();
+		
 		etheriumChance = config.get(CATEGORY_GEN_OPTIONS, "Chance of Etherium Ore Generation. (Higher value = more ore. 0 disables.)", 1).getInt();
         uraniumChance = config.get(CATEGORY_GEN_OPTIONS, "Chance of Uranium Ore Generation", 3).getInt();
         brimstoneChance = config.get(CATEGORY_GEN_OPTIONS, "Chance of Brimstone Ore Generation", 10).getInt();
@@ -157,7 +165,6 @@ public class Config
         zincOreGenEnabled = config.get(CATEGORY_GEN_OPTIONS, "Will disable Zinc Ore Generation", true).getBoolean(true);
         netherEtheriumCrystalGenEnabled = config.get(CATEGORY_GEN_OPTIONS, "Will disable Etherium Crystal Generation in the Nether", true).getBoolean(true);
         endEtheriumCrystalGenEnabled = config.get(CATEGORY_GEN_OPTIONS, "Will disable Etherium Crystal Generation in the End", true).getBoolean(true);
-
 	}
 
 	public static void save()

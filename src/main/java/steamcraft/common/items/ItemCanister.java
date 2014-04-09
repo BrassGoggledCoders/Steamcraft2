@@ -58,7 +58,7 @@ public class ItemCanister extends Item
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(int id, CreativeTabs tabs, List list) 
 	{
-		list.add(new ItemStack(id, 1, getMaxDamage()));
+		list.add(new ItemStack(id, 1, this.getMaxDamage()));
 		list.add(new ItemStack(id, 1, 1));
 	}
 

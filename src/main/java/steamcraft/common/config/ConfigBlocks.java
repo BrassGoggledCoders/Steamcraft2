@@ -29,7 +29,7 @@ import steamcraft.common.blocks.BlockCustomOreItem;
 import steamcraft.common.blocks.BlockEngravedSolid;
 import steamcraft.common.blocks.BlockEngravedSolidItem;
 import steamcraft.common.blocks.BlockFluidSteam;
-import steamcraft.common.blocks.machine.BlockSteamBoiler;
+import steamcraft.common.blocks.BlockSteamBoiler;
 import steamcraft.common.lib.LibInfo;
 import steamcraft.common.tileentities.TileEntitySteamBoiler;
 import steamcraft.common.tiles.TileCrystal;
