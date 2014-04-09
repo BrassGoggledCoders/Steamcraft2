@@ -9,21 +9,30 @@
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
  * 
- * File created @ [Mar 12, 2014, 4:23:41 PM]
+ * File created @ [Mar 14, 2014, 10:56:24 AM]
  */
 package steamcraft.common.lib;
 
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import cpw.mods.fml.common.FMLLog;
 
 /**
  * @author Surseance (Johnny Eatmon)
  *
  */
-public class CreativeTabSteamcraft extends CreativeTabs
+public class LoggerSteamcraft
 {
-	public CreativeTabSteamcraft(int id, String name) 
+	private static Logger logger = Logger.getLogger("SC2");
+	
+	public static void init()
 	{
-		super(id, name);
+		logger.setParent((Logger) FMLLog.getLogger());;
+	}
+	
+	public static void log(Level level, String message)
+	{
+		logger.log(level, "[Steamcraft] " + message);
 	}
 }

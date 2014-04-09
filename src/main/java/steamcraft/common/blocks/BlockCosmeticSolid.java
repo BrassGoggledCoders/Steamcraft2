@@ -41,7 +41,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 public class BlockCosmeticSolid extends Block
 {
-	private Icon[] icon = new Icon[13];
+	private Icon[] icon = new Icon[14];
 	private boolean powered;
 
 	@Override
@@ -75,6 +75,7 @@ public class BlockCosmeticSolid extends Block
 		this.icon[10] = ir.registerIcon(LibInfo.PREFIX + "blockBrassLeaves");
 		this.icon[11] = ir.registerIcon(LibInfo.PREFIX + "blockLampOff");
 		this.icon[12] = ir.registerIcon(LibInfo.PREFIX + "blockLampOn");
+		this.icon[13] = ir.registerIcon(LibInfo.PREFIX + "blockVolucite");
 	}
 
 	public BlockCosmeticSolid(int id)
@@ -148,6 +149,8 @@ public class BlockCosmeticSolid extends Block
 			drop.add(new ItemStack(ConfigBlocks.blockCosmetic, 1, 11));
 		case 12:
 			drop.add(new ItemStack(ConfigBlocks.blockCosmetic, 1, 12));
+		case 13:
+			drop.add(new ItemStack(ConfigBlocks.blockCosmetic, 1, 13));
 		}
 
 		return drop;
