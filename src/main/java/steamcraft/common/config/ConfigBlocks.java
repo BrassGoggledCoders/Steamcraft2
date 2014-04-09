@@ -88,7 +88,7 @@ public class ConfigBlocks
         blockCastIronLampA = new BlockCastIronLamp(Config.blockCastIronLampAId, true);
         blockSteamBoiler = new BlockSteamBoiler(Config.blockSteamBoilerId);
         
-		Fluid steamFluid = new Fluid("steam").setGaseous(true).setTemperature(700).setDensity(-100).setViscosity(500).setLuminosity(1);
+		Fluid steamFluid = new Fluid("steam").setGaseous(true).setTemperature(700).setDensity(-100).setViscosity(500).setLuminosity(1);;
 		FluidRegistry.registerFluid(steamFluid);
         blockFluidSteam = new BlockFluidSteam(steamFluid, Material.water);
 	}

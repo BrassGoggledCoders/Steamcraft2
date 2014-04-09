@@ -49,14 +49,14 @@ public class BlockCustomOre extends Block
     @SideOnly(Side.CLIENT)
     public void registerIcons(IconRegister ir)
     {
-        this.icon[0] = ir.registerIcon(LibInfo.PREFIX + "blockOreBornite");
-        this.icon[1] = ir.registerIcon(LibInfo.PREFIX + "blockOreBrimstone");
-        this.icon[2] = ir.registerIcon(LibInfo.PREFIX + "blockOrePhosphate");
-        this.icon[3] = ir.registerIcon(LibInfo.PREFIX + "blockOreUranite");
-        this.icon[4] = ir.registerIcon(LibInfo.PREFIX + "blockOreAluminum");
-        this.icon[5] = ir.registerIcon(LibInfo.PREFIX + "blockOreCopper");
-        this.icon[6] = ir.registerIcon(LibInfo.PREFIX + "blockOreTin");
-        this.icon[7] = ir.registerIcon(LibInfo.PREFIX + "blockOreZinc");
+        this.icon[0] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "blockOreBornite");
+        this.icon[1] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "blockOreBrimstone");
+        this.icon[2] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "blockOrePhosphate");
+        this.icon[3] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "blockOreUranite");
+        this.icon[4] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "blockOreAluminum");
+        this.icon[5] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "blockOreCopper");
+        this.icon[6] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "blockOreTin");
+        this.icon[7] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "blockOreZinc");
     }
 
     public BlockCustomOre(int id)
@@ -65,7 +65,7 @@ public class BlockCustomOre extends Block
         this.setHardness(3.0F);
         this.setResistance(6.0F);
         this.setStepSound(Block.soundStoneFootstep);
-        this.setUnlocalizedName("blockCustomOre");
+        this.setUnlocalizedName("blockOre");
         this.setTickRandomly(true);
         this.setCreativeTab(Steamcraft.tabSC2);
     }
