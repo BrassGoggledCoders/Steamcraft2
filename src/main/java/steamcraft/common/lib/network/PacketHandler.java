@@ -112,7 +112,6 @@ public class PacketHandler implements IPacketHandler {
 			return;
 		}
 		
-		//player.displayGUIWorkbench((int)player.posX, (int)player.posY, (int)player.posZ);
 		player.openGui(Steamcraft.instance, guiID, player.worldObj, (int) player.posX, (int) player.posY, (int) player.posZ);
 
 	}

@@ -39,7 +39,7 @@ public class BlockFluidSteam extends BlockFluidClassic
     public void registerIcons(IconRegister register) 
     {
             stillIcon = register.registerIcon(LibInfo.PREFIX + "steamStill");
-            flowingIcon = register.registerIcon(LibInfo.PREFIX + "flowingIcon");
+            flowingIcon = register.registerIcon(LibInfo.PREFIX + "steamFlowing");
     }
     
     @Override

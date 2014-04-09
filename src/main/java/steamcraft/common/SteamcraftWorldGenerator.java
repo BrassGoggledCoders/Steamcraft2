@@ -6,15 +6,16 @@ import java.util.Random;
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
+import net.minecraft.world.gen.feature.WorldGenMinable;
 import steamcraft.common.config.Config;
 import steamcraft.common.config.ConfigBlocks;
 import cpw.mods.fml.common.IWorldGenerator;
 
 /**
- * @author MrArcane111
+ * @author Surseance
  *
  */
-public class WorldGenerator implements IWorldGenerator {
+public class SteamcraftWorldGenerator implements IWorldGenerator {
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider generator, IChunkProvider chunk) {
 		int blockChunkX = chunkX * 16;
@@ -37,25 +38,14 @@ public class WorldGenerator implements IWorldGenerator {
 	}
 	//TODO: Add Config Options for ore vein size
 	private void generateSurface(World world, Random random, int chunkX, int chunkZ) {
-		if(Config.etheriumOreGenEnabled)
+		if(Config.borniteOreGenEnabled)
 		{
-		for (int chance = 0; chance < Config.etheriumChance; chance++) {
-			int etheriumXCoord = chunkX + random.nextInt(16);
-			int etheriumYCoord = 8 + random.nextInt(Config.etheriumHeight);
-			int etheriumZCoord = chunkZ + random.nextInt(16);
+		for (int chance = 0; chance < Config.borniteChance; chance++) {
+			int borniteXCoord = chunkX + random.nextInt(16);
+			int borniteYCoord = random.nextInt(Config.borniteHeight);
+			int borniteZCoord = chunkZ + random.nextInt(16);
 
-			new SmartOreGeneration(ConfigBlocks.blockCustomOre.blockID, 0, random.nextInt(3), Block.stone.blockID).generate(world, random, etheriumXCoord, etheriumYCoord, etheriumZCoord);
-		}
-		}
-		if(Config.uraniumOreGenEnabled)
-		{
-		for (int chance = 0; chance < Config.uraniumChance; chance++) {
-			int uraniteXCoord = chunkX + random.nextInt(16);
-			int uraniteYCoord = random.nextInt(Config.uraniumHeight);
-			int uraniteZCoord = chunkZ + random.nextInt(16);
-
-			new SmartOreGeneration(ConfigBlocks.blockCustomOre.blockID, 1, random.nextInt(3), Block.stone.blockID).generate(world, random, uraniteXCoord, uraniteYCoord, uraniteZCoord);
-		}
+			new WorldGenMinable(ConfigBlocks.blockCustomOre.blockID, 0, random.nextInt(3), Block.stone.blockID).generate(world, random, borniteXCoord, borniteYCoord, borniteZCoord);
 		}
 		if(Config.brimstoneOreGenEnabled)
 		{
@@ -64,17 +54,8 @@ public class WorldGenerator implements IWorldGenerator {
 			int brimstoneYCoord = random.nextInt(Config.brimstoneHeight);
 			int brimstoneZCoord = chunkZ + random.nextInt(16);
 
-			new SmartOreGeneration(ConfigBlocks.blockCustomOre.blockID, 2, random.nextInt(3), Block.stone.blockID).generate(world, random, brimstoneXCoord, brimstoneYCoord, brimstoneZCoord);
+			new WorldGenMinable(ConfigBlocks.blockCustomOre.blockID, 1, random.nextInt(3), Block.stone.blockID).generate(world, random, brimstoneXCoord, brimstoneYCoord, brimstoneZCoord);
 		}
-		}
-		if(Config.borniteOreGenEnabled)
-		{
-		for (int chance = 0; chance < Config.borniteChance; chance++) {
-			int borniteXCoord = chunkX + random.nextInt(16);
-			int borniteYCoord = random.nextInt(Config.borniteHeight);
-			int borniteZCoord = chunkZ + random.nextInt(16);
-
-			new SmartOreGeneration(ConfigBlocks.blockCustomOre.blockID, 3, random.nextInt(3), Block.stone.blockID).generate(world, random, borniteXCoord, borniteYCoord, borniteZCoord);
 		}
 		}
 		if(Config.phosphateOreGenEnabled)
@@ -84,7 +65,17 @@ public class WorldGenerator implements IWorldGenerator {
 			int zincYCoord = random.nextInt(Config.phosphateHeight);
 			int zincZCoord = chunkZ + random.nextInt(16);
 
-			new SmartOreGeneration(ConfigBlocks.blockCustomOre.blockID, 4, random.nextInt(3), Block.stone.blockID).generate(world, random, zincXCoord, zincYCoord, zincZCoord);
+			new WorldGenMinable(ConfigBlocks.blockCustomOre.blockID, 2, random.nextInt(3), Block.stone.blockID).generate(world, random, zincXCoord, zincYCoord, zincZCoord);
+		}
+		if(Config.uraniumOreGenEnabled)
+		{
+		for (int chance = 0; chance < Config.uraniumChance; chance++) {
+			int uraniteXCoord = chunkX + random.nextInt(16);
+			int uraniteYCoord = random.nextInt(Config.uraniumHeight);
+			int uraniteZCoord = chunkZ + random.nextInt(16);
+
+			new WorldGenMinable(ConfigBlocks.blockCustomOre.blockID, 3, random.nextInt(3), Block.stone.blockID).generate(world, random, uraniteXCoord, uraniteYCoord, uraniteZCoord);
+		}
 		}
 		}
 		if(Config.aluminumOreGenEnabled)
@@ -94,7 +85,7 @@ public class WorldGenerator implements IWorldGenerator {
 			int aluminumYCoord = random.nextInt(Config.aluminumHeight);
 			int aluminumZCoord = chunkZ + random.nextInt(16);
 
-			new SmartOreGeneration(ConfigBlocks.blockCustomOre.blockID, 5, random.nextInt(3), Block.stone.blockID).generate(world, random, aluminumXCoord, aluminumYCoord, aluminumZCoord);
+			new WorldGenMinable(ConfigBlocks.blockCustomOre.blockID, 4, random.nextInt(3), Block.stone.blockID).generate(world, random, aluminumXCoord, aluminumYCoord, aluminumZCoord);
 		}
 		}
 		if(Config.copperOreGenEnabled)
@@ -104,7 +95,7 @@ public class WorldGenerator implements IWorldGenerator {
 			int copperYCoord = random.nextInt(Config.copperHeight);
 			int copperZCoord = chunkZ + random.nextInt(16);
 
-			new SmartOreGeneration(ConfigBlocks.blockCustomOre.blockID, 6, random.nextInt(3), Block.stone.blockID).generate(world, random, copperXCoord, copperYCoord, copperZCoord);
+			new WorldGenMinable(ConfigBlocks.blockCustomOre.blockID, 5, random.nextInt(3), Block.stone.blockID).generate(world, random, copperXCoord, copperYCoord, copperZCoord);
 		}
 		}
 		if(Config.tinOreGenEnabled)
@@ -114,7 +105,7 @@ public class WorldGenerator implements IWorldGenerator {
 			int tinYCoord = random.nextInt(Config.tinHeight);
 			int tinZCoord = chunkZ + random.nextInt(16);
 
-			new SmartOreGeneration(ConfigBlocks.blockCustomOre.blockID, 7, random.nextInt(3), Block.stone.blockID).generate(world, random, tinXCoord, tinYCoord, tinZCoord);
+			new WorldGenMinable(ConfigBlocks.blockCustomOre.blockID, 6, random.nextInt(3), Block.stone.blockID).generate(world, random, tinXCoord, tinYCoord, tinZCoord);
 		}
 		}
 		if(Config.zincOreGenEnabled)
@@ -124,7 +115,17 @@ public class WorldGenerator implements IWorldGenerator {
 			int zincYCoord = random.nextInt(Config.zincHeight);
 			int zincZCoord = chunkZ + random.nextInt(16);
 
-			new SmartOreGeneration(ConfigBlocks.blockCustomOre.blockID, 0, random.nextInt(3), Block.stone.blockID).generate(world, random, zincXCoord, zincYCoord, zincZCoord);
+			new WorldGenMinable(ConfigBlocks.blockCustomOre.blockID, 7, random.nextInt(3), Block.stone.blockID).generate(world, random, zincXCoord, zincYCoord, zincZCoord);
+		}
+		}
+		if(Config.etheriumOreGenEnabled)
+		{
+		for (int chance = 0; chance < Config.etheriumChance; chance++) {
+			int etheriumXCoord = chunkX + random.nextInt(16);
+			int etheriumYCoord = 8 + random.nextInt(Config.etheriumHeight);
+			int etheriumZCoord = chunkZ + random.nextInt(16);
+
+			//new WorldGenMinable(ConfigBlocks.blockCustomOre.blockID, 8, random.nextInt(3), Block.stone.blockID).generate(world, random, etheriumXCoord, etheriumYCoord, etheriumZCoord);
 		}
 		}
 	}
@@ -136,8 +137,8 @@ public class WorldGenerator implements IWorldGenerator {
 			int etheriumXCoord = chunkX + random.nextInt(16);
 			int etheriumYCoord = random.nextInt(Config.netherEtheriumCrystalHeight);
 			int etheriumZCoord = chunkZ + random.nextInt(16);
-
-			new SmartOreGeneration(ConfigBlocks.blockCrystal.blockID, 0, random.nextInt(3), Block.stone.blockID).generate(world, random, etheriumXCoord, etheriumYCoord, etheriumZCoord);
+			//TODO: FIX THIS
+			//new WorldGenMinable(ConfigBlocks.blockCrystal.blockID, 0, random.nextInt(3), Block.stone.blockID).generate(world, random, etheriumXCoord, etheriumYCoord, etheriumZCoord);
 		}
 		}
 	}
@@ -149,8 +150,8 @@ public class WorldGenerator implements IWorldGenerator {
 			int phosphateXCoord = chunkX + random.nextInt(16);
 			int phosphateYCoord = random.nextInt(Config.endEtheriumCrystalHeight);
 			int phosphateZCoord = chunkZ + random.nextInt(16);
-
-			new SmartOreGeneration(ConfigBlocks.blockCrystal.blockID, 0, random.nextInt(3), Block.stone.blockID).generate(world, random, phosphateXCoord, phosphateYCoord, phosphateZCoord);
+			//TODO: FIX THIS
+			//new WorldGenMinable(ConfigBlocks.blockCrystal.blockID, 0, random.nextInt(3), Block.stone.blockID).generate(world, random, phosphateXCoord, phosphateYCoord, phosphateZCoord);
 		}
 		}
 	}

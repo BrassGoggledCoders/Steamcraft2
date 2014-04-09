@@ -20,6 +20,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.MinecraftForge;
 import steamcraft.client.RegisterKeyBindings;
+import steamcraft.client.gui.GuiHandler;
 import steamcraft.client.lib.RenderEventHandler;
 import steamcraft.common.config.Config;
 import steamcraft.common.config.ConfigBlocks;
@@ -42,6 +43,8 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.network.NetworkMod;
+import cpw.mods.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
 /**
@@ -58,7 +61,7 @@ public class Steamcraft
 	@Mod.Instance(LibInfo.NAME)
 	public static Steamcraft instance;
 
-	//public SteamcraftWorldGenerator worldGen;
+	public SteamcraftWorldGenerator worldGen;
 	public EventHandlerWorld worldEventHandler;
 	public EventHandlerEntity entityEventHandler;
 	public EventHandlerTick tickEventHandler;
@@ -103,16 +106,14 @@ public class Steamcraft
 
 		//GameRegistry.registerFuelHandler(this.worldEventHandler);
 		//GameRegistry.registerCraftingHandler(this.worldEventHandler);
-		//GameRegistry.registerWorldGenerator(this.worldGen = new SteamcraftWorldGenerator());
+		GameRegistry.registerWorldGenerator(this.worldGen = new SteamcraftWorldGenerator());
 		
 		Config.save();
 		ConfigBlocks.init();
 		ConfigItems.init();
-		RegisterKeyBindings.init();
 	
 		proxy.registerDisplayInformation();
 
-		//this.worldGen.initialize();
 	}
 
 	@Mod.EventHandler
@@ -121,19 +122,21 @@ public class Steamcraft
 		Config.registerBiomes();
 		ConfigEntities.init();
 		
-		//proxy.registerKeyBindinds();
+		RegisterKeyBindings.init();
+		NetworkRegistry.instance().registerGuiHandler(this.instance, new GuiHandler());
 	}
 
 	@Mod.EventHandler
 	public void postInit(FMLPostInitializationEvent event)
 	{
-		BiomeDictionary.registerAllBiomes();
+		//Dosn't work! >> BiomeDictionary.registerAllBiomes();
 		ConfigEntities.initEntitySpawns();
 		Config.initModCompatibility();
 		ConfigItems.postInit();
 		//ConfigRecipes.init();
 		Config.initLoot();
 		//LoggerSteamcraft.log(Level.INFO, "SC2 is " + event.getModState());
+		LanguageRegistry.instance().loadLocalization("assets/steamcraft/lang/en_US.lang", "en_US", false);
 	}
 
 	@Mod.EventHandler
