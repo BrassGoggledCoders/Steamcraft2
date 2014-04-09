@@ -41,7 +41,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 public class BlockCosmeticSolid extends Block
 {
-	private Icon[] icon = new Icon[13];
+	private Icon[] icon = new Icon[14];
 	private boolean powered;
 
 	@Override

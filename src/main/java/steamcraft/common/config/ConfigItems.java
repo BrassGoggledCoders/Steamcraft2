@@ -83,11 +83,12 @@ public class ConfigItems
 		itemTeacupFull = new ItemTeacup(Config.itemTeacupFullId, 4, 0.9F, false).setUnlocalizedName("ItemTeacupFull");
 		GameRegistry.registerItem(itemTeacupFull, "ItemTeacupFull", LibInfo.ID);
 		itemKettleEmpty = new ItemKettle(Config.itemKettleEmptyId, 300).setUnlocalizedName("ItemKettleEmpty");
-		GameRegistry.registerItem(itemTeacupFull, "ItemTeacupFull", LibInfo.ID);
+		GameRegistry.registerItem(itemTeacupFull, "ItemKettleEmpty", LibInfo.ID);
 		itemKettleHot = new ItemKettle(Config.itemKettleHotId, 300).setUnlocalizedName("ItemKettleHot");
-		GameRegistry.registerItem(itemTeacupFull, "ItemTeacupFull", LibInfo.ID);
+		GameRegistry.registerItem(itemTeacupFull, "ItemKettleHot", LibInfo.ID);
 		itemKettleCold = new ItemKettle(Config.itemKettleColdId, 300).setUnlocalizedName("ItemKettleCold");
-		GameRegistry.registerItem(itemTeacupFull, "ItemTeacupFull", LibInfo.ID);
+		GameRegistry.registerItem(itemTeacupFull, "ItemKettleCold", LibInfo.ID);
 		itemGunParts = new ItemGunParts(Config.itemGunPartsId).setUnlocalizedName("ItemGunParts");
+		GameRegistry.registerItem(itemGunParts, "ItemGunParts", LibInfo.ID);
 	}
 }

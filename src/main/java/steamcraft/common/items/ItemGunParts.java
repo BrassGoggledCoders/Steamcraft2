@@ -13,8 +13,12 @@
  */
 package steamcraft.common.items;
 
+import java.util.List;
+
 import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.LibInfo;
@@ -53,5 +57,18 @@ public class ItemGunParts extends Item
 	{
 		super(id);
 		this.setCreativeTab(Steamcraft.tabSC2);
+	}
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void getSubItems(int id, CreativeTabs tabs, List list)
+	{
+		list.add(new ItemStack(this.itemID, 1, 0));
+		list.add(new ItemStack(this.itemID, 1, 1));
+		list.add(new ItemStack(this.itemID, 1, 2));
+		list.add(new ItemStack(this.itemID, 1, 3));
+		list.add(new ItemStack(this.itemID, 1, 4));
+		list.add(new ItemStack(this.itemID, 1, 5));
+		list.add(new ItemStack(this.itemID, 1, 6));
 	}
 }
