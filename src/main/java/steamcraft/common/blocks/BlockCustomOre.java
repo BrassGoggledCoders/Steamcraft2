@@ -49,14 +49,14 @@ public class BlockCustomOre extends Block
     @SideOnly(Side.CLIENT)
     public void registerIcons(IconRegister ir)
     {
-        this.icon[0] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "blockOreBornite");
-        this.icon[1] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "blockOreBrimstone");
-        this.icon[2] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "blockOrePhosphate");
-        this.icon[3] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "blockOreUranite");
-        this.icon[4] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "blockOreAluminum");
-        this.icon[5] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "blockOreCopper");
-        this.icon[6] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "blockOreTin");
-        this.icon[7] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "blockOreZinc");
+        this.icon[0] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "oreBornite");
+        this.icon[1] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "oreBrimstone");
+        this.icon[2] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "orePhosphate");
+        this.icon[3] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "oreUranite");
+        this.icon[4] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "oreAluminum");
+        this.icon[5] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "oreCopper");
+        this.icon[6] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "oreTin");
+        this.icon[7] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "oreZinc");
     }
 
     public BlockCustomOre(int id)
