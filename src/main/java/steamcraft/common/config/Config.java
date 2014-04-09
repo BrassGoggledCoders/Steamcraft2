@@ -40,7 +40,8 @@ public class Config
 	public static int blockCastIronLampIId;
 	public static int blockCastIronLampAId;
 	public static int blockSteamFluidId;
-	public static int blockSteamBoilerId;
+	public static int blockSteamBoilerId;	
+	public static int blockMetalId;
 	
 	public static int itemMechanicalId;
     public static int itemResourceId;
@@ -111,6 +112,7 @@ public class Config
 		blockCastIronLampAId = config.getBlock("BlockCastIronLamp (ON)", bIdx++).getInt();
 		blockSteamFluidId = config.getBlock("BlockSteamFluid", bIdx++).getInt();
 		blockSteamBoilerId = config.getBlock("BlockSteamBoiler", bIdx++).getInt();
+		blockMetalId = config.getBlock("BlockMetal", bIdx++).getInt();
 		
 		int iIdx = 27000;
 		itemMechanicalId = config.getItem("ItemMechanical", iIdx++).getInt();
@@ -119,6 +121,7 @@ public class Config
 		itemTeaSeedId = config.getItem("ItemTeaSeed", iIdx++).getInt();
 		itemChiselId = config.getItem("ItemChisel", iIdx++).getInt();
 		itemGogglesId = config.getItem("ItemCustomArmor", iIdx++).getInt();
+		
 		etheriumChance = config.get(CATEGORY_GEN_OPTIONS, "Chance of Etherium Ore Generation. (Higher value = more ore. 0 disables.)", 1).getInt();
         uraniumChance = config.get(CATEGORY_GEN_OPTIONS, "Chance of Uranium Ore Generation", 3).getInt();
         brimstoneChance = config.get(CATEGORY_GEN_OPTIONS, "Chance of Brimstone Ore Generation", 10).getInt();
