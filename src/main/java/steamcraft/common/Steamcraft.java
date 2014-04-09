@@ -129,13 +129,14 @@ public class Steamcraft
 	@Mod.EventHandler
 	public void postInit(FMLPostInitializationEvent event)
 	{
-		BiomeDictionary.registerAllBiomes();
+		//Dosn't work! >> BiomeDictionary.registerAllBiomes();
 		ConfigEntities.initEntitySpawns();
 		Config.initModCompatibility();
 		ConfigItems.postInit();
 		//ConfigRecipes.init();
 		Config.initLoot();
 		//LoggerSteamcraft.log(Level.INFO, "SC2 is " + event.getModState());
+		LanguageRegistry.instance().loadLocalization("assets/steamcraft/lang/en_US.lang", "en_US", false);
 	}
 
 	@Mod.EventHandler
