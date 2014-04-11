@@ -1,18 +1,16 @@
 [
 {
-"modid": "Steamcraft",
-"name": "Steamcraft 2",
-"description": "Extends Minecraft by adding many post-apocalyptic, retro-futuristic blocks & items!",
-"version": "0.8-a",
-"credits": "Created by Proloe, further development by MrArcane111",
-"logoFile": "/assets/steamcraft/textures/logo/mclogo.png",
-"mcversion": "1.6.4",
-"url": "http://steamcraft.wikia.com/wiki/Steamcraft_Wiki",
-"updateUrl": "",
-"authorList": [ "Surseance", "decebaldecebal", "warlordjones", "Falkok15", "wierdude1999", "seanvanpelt2 & others" ],
-"credits": "Proloe, for the original Steamcraft",
-"parent": "",
-"screenshots": "/assets/steamcraft/textures/screenshots/screenshot_1.png",
-"dependencies": []
+  "modid": "examplemod",
+  "name": "Example Mod",
+  "description": "Example placeholder mod.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authors": ["ExampleDude"],
+  "credits": "The Forge and FML guys, for making this example",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
 }
 ]
