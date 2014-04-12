@@ -15,11 +15,10 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockFluidSteam extends BlockFluidClassic 
 {
-
-    @SideOnly(Side.CLIENT)
-    protected Icon stillIcon;
-    @SideOnly(Side.CLIENT)
-    protected Icon flowingIcon;
+	@SideOnly(Side.CLIENT)
+	protected Icon stillIcon;
+	@SideOnly(Side.CLIENT)
+	protected Icon flowingIcon;
     
     public BlockFluidSteam(Fluid fluid, Material material) 
     {

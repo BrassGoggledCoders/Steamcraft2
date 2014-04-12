@@ -42,6 +42,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class BlockCosmeticSolid extends Block
 {
 	private Icon[] icon = new Icon[11];
+
 	private boolean powered;
 
 	@Override
@@ -145,6 +146,8 @@ public class BlockCosmeticSolid extends Block
 			drop.add(new ItemStack(ConfigBlocks.blockCosmetic, 1, 11));
 		case 12:
 			drop.add(new ItemStack(ConfigBlocks.blockCosmetic, 1, 12));
+		case 13:
+			drop.add(new ItemStack(ConfigBlocks.blockCosmetic, 1, 13));
 		}
 
 		return drop;

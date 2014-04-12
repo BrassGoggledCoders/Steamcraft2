@@ -1,4 +1,4 @@
-package steamcraft.common.blocks.machine;
+package steamcraft.common.blocks;
 
 import java.util.Random;
 
@@ -22,11 +22,12 @@ import steamcraft.common.tileentities.TileEntitySteamBoiler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockSteamBoiler extends BlockContainerMod{
+public class BlockSteamBoiler extends BlockContainerMod
+{
 	@SideOnly(Side.CLIENT)
 	private Icon iconTop;
 	@SideOnly(Side.CLIENT)
-	private Icon iconFront;
+	private Icon iconFrontI;
 	@SideOnly(Side.CLIENT)
 	private Icon iconFrontA;
 
@@ -49,7 +50,8 @@ public class BlockSteamBoiler extends BlockContainerMod{
 		if(side == meta-7) //active icon in world
 			return iconFrontA;
 		if (meta == 0 && side == 3 || side == meta) //icon in the world and in the inventory
-			return iconFront;
+			return iconFrontI;
+		
 		switch (side)
 		{
 			case 0:
@@ -65,26 +67,27 @@ public class BlockSteamBoiler extends BlockContainerMod{
 
 	@SideOnly(Side.CLIENT)
 	@Override
-	public void registerIcons(IconRegister par1IconRegister)
+	public void registerIcons(IconRegister ir)
 	{
-		blockIcon = par1IconRegister.registerIcon(LibInfo.PREFIX + "generatorside");
-		iconFront = par1IconRegister.registerIcon(LibInfo.PREFIX + "generatorfrontinactive");
-		iconFrontA = par1IconRegister.registerIcon(LibInfo.PREFIX + "generatorfrontinactive");
-		iconTop = par1IconRegister.registerIcon(LibInfo.PREFIX + "generatortop");
+		blockIcon = ir.registerIcon(LibInfo.PREFIX + "generatorside");
+		iconFrontI = ir.registerIcon(LibInfo.PREFIX + "generatorfrontinactive");
+		iconFrontA = ir.registerIcon(LibInfo.PREFIX + "generatorfrontinactive");
+		iconTop = ir.registerIcon(LibInfo.PREFIX + "generatortop");
 	}
 
 	@Override
-	public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8,
-			float par9)
+	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ)
 	{
-		if (par1World.isRemote)
+		if (world.isRemote)
 			return true;
 		else
 		{
-			TileEntitySteamBoiler tile_entity = (TileEntitySteamBoiler) par1World.getBlockTileEntity(par2, par3, par4);
-			if (tile_entity == null || par5EntityPlayer.isSneaking())
+			TileEntitySteamBoiler te = (TileEntitySteamBoiler) world.getBlockTileEntity(x, y, z);
+			
+			if (te == null || player.isSneaking())
 				return false;
-			par5EntityPlayer.openGui(Steamcraft.instance, GuiIDs.GUI_ID_COAL_GENERATOR, par1World, par2, par3, par4);
+			
+			player.openGui(Steamcraft.instance, GuiIDs.GUI_ID_COAL_GENERATOR, world, x, y, z);
 			return true;
 		}
 	}

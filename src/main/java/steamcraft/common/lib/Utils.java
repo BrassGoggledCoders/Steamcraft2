@@ -42,7 +42,7 @@ import cpw.mods.fml.client.FMLClientHandler;
  */
 public class Utils
 {
-	public Random random = new Random();
+	public static Random random = new Random();
 	static String newestVersion;
 
 	public static boolean checkForUpdatedVersion(String name, String version)

@@ -11,7 +11,7 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTank;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
-import steamcraft.common.blocks.machine.BlockSteamBoiler;
+import steamcraft.common.blocks.BlockSteamBoiler;
 import steamcraft.common.config.ConfigItems;
 import steamcraft.common.items.ItemCanister;
 

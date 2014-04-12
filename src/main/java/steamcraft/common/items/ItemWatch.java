@@ -36,16 +36,9 @@ public class ItemWatch extends Item
 {
 	@Override
 	@SideOnly(Side.CLIENT)
-	public Icon getIconFromDamage(int damage)
-	{
-		return this.itemIcon;
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister ir)
 	{
-		this.itemIcon = ir.registerIcon(LibInfo.PREFIX + "itemWatch");
+		this.itemIcon = ir.registerIcon(LibInfo.PREFIX + "clock");
 	}
 
 	public ItemWatch(int id)

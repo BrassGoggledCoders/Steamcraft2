@@ -25,15 +25,12 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 public class ItemMechanical extends Item
 {
-	/*
-	 * 
-	public static Item brassWatch;
-	public static Item canisterSteam;
-	public static Item canisterGas;
-	public static Item steamCanister;
-	public static Item gasCanister;
-    public static Item emptyCanister;
-	 */
+	//public static Item brassWatch;
+	//public static Item canisterSteam;
+	//public static Item canisterGas;
+	//public static Item steamCanister;
+	//public static Item gasCanister;
+    //public static Item emptyCanister;
 	
     public Icon[] icon = new Icon[6];
 
