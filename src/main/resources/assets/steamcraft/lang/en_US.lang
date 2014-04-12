@@ -1,14 +1,12 @@
 #Blocks
-tile.blockCastIron.name=Cast Iron Block
-tile.blockVolucite.name=Volucite Block
-tile.blockBrass.name=Brass Block
-tile.blockAluminum.name=Aluminum Block
-tile.blockCopper.name=Copper Block
-tile.blockTin.name=Tin Block
-tile.blockZinc.name=Zinc Block
-tile.blockBronze.name=Bronze Block
-tile.blockSteel.name=Steel Block
-tile.blockUranium.name=Uranium Block
+tile.blockMetal.0.name=Brass Block
+tile.blockMetal.1.name=Bronze Block
+tile.blockMetal.2.name=Steel Block
+tile.blockMetal.3.name=Uranium Block
+tile.blockMetal.4.name=Aluminum Block
+tile.blockMetal.5.name=Copper Block
+tile.blockMetal.6.name=Tin Block
+tile.blockMetal.7.name=Zinc Block
 tile.lampOff.name=Lamp
 tile.lampOn.name=Lamp (Lit)
 tile.logBrass.name=Brass Log
@@ -34,15 +32,14 @@ tile.blockObsidianTile.name=Obsidian Tiles
 tile.cryoIce.name=Cryogenic Ice
 tile.steamFluidBlock.name=Steam
 	#Ores
-tile.steamcraft:bornite.name=Bornite Ore
-tile.steamcraft:brimstone.name=Brimstone Ore
-tile.steamcraft:phosphate.name=Phosphate Ore
-tile.steamcraft:uranite.name=Uranite Ore
-tile.steamcraft:volucite.name=Volucite Ore
-tile.steamcraft:aluminum.name=Aluminum Ore
-tile.steamcraft:copper.name=Copper Ore
-tile.steamcraft:tin.name=Tin Ore
-tile.steamcraft:zinc.name=Zinc Ore
+tile.blockOre.0.name=Bornite Ore
+tile.blockOre.1.name=Brimstone Ore
+tile.blockOre.2.name=Phosphate Ore
+tile.blockOre.3.name=Uranite Ore
+tile.blockOre.4.name=Aluminum Ore
+tile.blockOre.5.name=Copper Ore
+tile.blockOre.6.name=Tin Ore
+tile.blockOre.7.name=Zinc Ore
 tile.etheriumCrystal.name=Etherium Crystal Block
 	#Machines
 tile.copperWire.name=Copper Wire
