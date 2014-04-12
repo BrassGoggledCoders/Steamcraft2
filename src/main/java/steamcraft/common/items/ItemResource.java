@@ -82,6 +82,5 @@ public class ItemResource extends Item
 		list.add(new ItemStack(id, 1, 9));
 		list.add(new ItemStack(id, 1, 10));
 		list.add(new ItemStack(id, 1, 11));
-		list.add(new ItemStack(id, 1, 12));
 	}
 }

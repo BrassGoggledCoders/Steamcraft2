@@ -144,10 +144,6 @@ public class BlockCosmeticSolid extends Block
 			drop.add(new ItemStack(ConfigBlocks.blockCosmetic, 1, 10));
 		case 11:
 			drop.add(new ItemStack(ConfigBlocks.blockCosmetic, 1, 11));
-		case 12:
-			drop.add(new ItemStack(ConfigBlocks.blockCosmetic, 1, 12));
-		case 13:
-			drop.add(new ItemStack(ConfigBlocks.blockCosmetic, 1, 13));
 		}
 
 		return drop;
