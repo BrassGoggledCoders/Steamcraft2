@@ -31,10 +31,12 @@ import steamcraft.common.blocks.BlockEngravedSolidItem;
 import steamcraft.common.blocks.BlockFluidSteam;
 import steamcraft.common.blocks.BlockMetal;
 import steamcraft.common.blocks.BlockMetalItem;
+import steamcraft.common.blocks.BlockSteamPipe;
 import steamcraft.common.blocks.machine.BlockSteamBoiler;
 import steamcraft.common.lib.LibInfo;
 import steamcraft.common.tileentities.TileEntitySteamBoiler;
 import steamcraft.common.tiles.TileCrystal;
+import steamcraft.common.tiles.TileSteamPipe;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 /**
@@ -52,6 +54,7 @@ public class ConfigBlocks
     public static Block blockCastIronLampI;
 	public static Block blockCastIronLampA;
 	public static Block blockMetal;
+	public static Block blockSteamPipe;
 
 	public static Block blockLampI;
 	public static Block blockLampA;
@@ -92,9 +95,10 @@ public class ConfigBlocks
         blockSteamBoiler = new BlockSteamBoiler(Config.blockSteamBoilerId);
         blockMetal = new BlockMetal(Config.blockMetalId);
         
-		Fluid steamFluid = new Fluid("steam").setGaseous(true).setTemperature(700).setDensity(-100).setViscosity(500).setLuminosity(1);;
+		Fluid steamFluid = new Fluid("steam").setGaseous(true).setTemperature(700).setDensity(-100).setViscosity(500).setLuminosity(1);
 		FluidRegistry.registerFluid(steamFluid);
         blockFluidSteam = new BlockFluidSteam(steamFluid, Material.water);
+        blockSteamPipe = new BlockSteamPipe(Config.blockSteamPipeId);
 	}
 	
 	public static void registerBlocks()
@@ -110,11 +114,13 @@ public class ConfigBlocks
         GameRegistry.registerBlock(blockFluidSteam, "BlockFluidSteam");
         GameRegistry.registerBlock(blockSteamBoiler, "BlockSteamBoiler");
         GameRegistry.registerBlock(blockMetal, BlockMetalItem.class,"BlockMetal");
+        GameRegistry.registerBlock(blockSteamPipe, "BlockSteamPipe");
     }
 	
 	private static void registerTileEntities()
 	{
         GameRegistry.registerTileEntity(TileCrystal.class, LibInfo.ID + "TECrystal");
         GameRegistry.registerTileEntity(TileEntitySteamBoiler.class, LibInfo.ID + "TESteamBoiler");
+        GameRegistry.registerTileEntity(TileSteamPipe.class, LibInfo.ID + "TESteamPipe");
 	}
 }

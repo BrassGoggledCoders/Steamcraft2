@@ -31,8 +31,8 @@ import steamcraft.common.entities.EntityPlayerExtended;
  */
 public class EventHandlerEntity
 {
-	private int timer = 20;
-	
+	private int timer = 400;
+
 	@ForgeSubscribe
 	public void onItemDrop(ItemTossEvent event)
 	{
@@ -58,7 +58,7 @@ public class EventHandlerEntity
 			EntityPlayerExtended.register((EntityPlayer)event.entity);
 		}
 	}
-	
+
 	@ForgeSubscribe
 	public void livingUpdate(LivingUpdateEvent event)
 	{
@@ -66,12 +66,15 @@ public class EventHandlerEntity
 		{
 			EntityPlayer player = (EntityPlayer)event.entityLiving;
 			ItemStack is = player.inventory.armorItemInSlot(3);
-			
+
 			if ((is != null) && is.getItem() == ConfigItems.itemBrassGoggles)
 			{
+				player.addPotionEffect(new PotionEffect(Potion.nightVision.id, this.timer, 0));
 				
-					player.addPotionEffect(new PotionEffect(Potion.nightVision.id, timer, 1));
-					timer = 20;
+				if (this.timer <= 220)
+				{
+					this.timer = 400;
+				}
 			}
 			else if ((is == null) || (is.getItem() != ConfigItems.itemBrassGoggles))
 			{
