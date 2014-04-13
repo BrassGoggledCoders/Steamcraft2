@@ -13,23 +13,22 @@
  * under the MMPL v1.0.
  * PowerCraft (c) MightyPork 2012
  *
- * File created @ [Feb 15, 2014, 2:24:28 PM]
+ * File created @ [Feb 4, 2014, 5:19:04 PM]
  */
-package common.steamcraft.common.lib2;
+package steamcraft.client.lib;
 
 /**
- * @author MrArcane111
+ * @author MrArcane111 & general3214
  *
  */
-public final class LibInfo {
-    public static final String MOD_ID = "Steamcraft";
-    public static final String MOD_NAME = "Steamcraft 2";
-    public static final String VERSION = "0.1"; 
+public class ClientResources { // TODO: Please move this to ClientHelper.java
+	public static final String PREFIX_MOD = "steamcraft:";
 
-    public static final String NETWORK_CHANNEL = MOD_ID;
+    //public static final String PREFIX_LANG = "/assets/steamcraft/lang/";
 
-    public static final String COMMON_PROXY = "common.steamcraft.common.core.proxy.CommonProxy";
-    public static final String CLIENT_PROXY = "common.steamcraft.client.core.proxy.ClientProxy";
+    public static final String PREFIX_GUI = PREFIX_MOD + "textures/gui/";
+    public static final String PREFIX_MISC = PREFIX_MOD + "textures/misc/";
+    public static final String PREFIX_MODEL = PREFIX_MOD + "textures/model/";
 
-    public static final String SC2_PREFIX = "steamcraft:";
+    public static final String EMPTY_TEXTURE = "emptyTexture";
 }

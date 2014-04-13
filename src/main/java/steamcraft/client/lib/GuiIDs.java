@@ -1,4 +1,4 @@
-package common.steamcraft.client.lib2;
+package steamcraft.client.lib;
 
 public final class GuiIDs
 {

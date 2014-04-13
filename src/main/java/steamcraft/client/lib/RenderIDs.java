@@ -11,9 +11,10 @@
  * 
  * File created @ [Jan 30, 2014, 5:33:43 PM]
  */
-package common.steamcraft.client.lib2;
+package steamcraft.client.lib;
 
-import common.steamcraft.common.SC2;
+import steamcraft.common.Steamcraft;
+
 
 /**
  * @author MrArcane111 & general3214
@@ -21,5 +22,5 @@ import common.steamcraft.common.SC2;
  */
 public class RenderIDs 
 {
-	public static int chimneyID = SC2.proxy.cfgHandler.loadRender("chimneyID");
+	//public static int chimneyID = Steamcraft.proxy.cfgHandler.loadRender("chimneyID");
 }

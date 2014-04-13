@@ -1,4 +1,4 @@
-package common.steamcraft.common.lib2;
+package steamcraft.common.lib;
 
 import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.EnumToolMaterial;
