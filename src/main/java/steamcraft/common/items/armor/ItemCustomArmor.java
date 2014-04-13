@@ -56,7 +56,9 @@ public class ItemCustomArmor extends ItemArmor
 	@SideOnly(Side.CLIENT)
 	public String getArmorTexture(ItemStack is, Entity entity, int slot, String type)
 	{
-		return type != null ? LibInfo.PREFIX + "textures/armor/" + type + ".png" : null;
+		//This is only for brass armor(first four armors), the other stuff should return their file somehow...
+		//Maybe based on material
+		return slot==2 ? LibInfo.PREFIX + "textures/armor/brass_2.png" :  LibInfo.PREFIX + "textures/armor/brass_1.png";
 	}
 
 	public ItemCustomArmor(int id, EnumArmorMaterial armorMat, int renderIndex, int armorType)
@@ -68,7 +70,7 @@ public class ItemCustomArmor extends ItemArmor
 
 	@SuppressWarnings("all")
 	@Override
-	public void addInformation(ItemStack is, EntityPlayer player, List list, boolean flag)
+	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean flag)
 	{
 		//if(!ClientHelper.isShiftKeyDown())
 		//{
@@ -76,9 +78,9 @@ public class ItemCustomArmor extends ItemArmor
 		//	return;
 		//}
 
-		if (is != null)
+		if (stack != null)
 		{
-			if (is.getItem() == ConfigItems.itemBrassGoggles)
+			if (stack.getItem() == ConfigItems.itemBrassGoggles)
 			{
 				list.add("It is a violation of ");
 				list.add("the law of steampunk");
@@ -86,22 +88,22 @@ public class ItemCustomArmor extends ItemArmor
 				//TODO: Make this work to help seeing underwater + at night
 				list.add("Helps with seeing things");
 			}
-			/*
-			else if(stack.getItem() == ModArmors.aqualung)
+			else if(stack.getItem() == ConfigItems.itemAqualung)
 			{
 				list.add("This allows underwater breathing");
 				list.add("for as long as the durability lasts");
 			}
-			else if(stack.getItem() == ModArmors.legBraces)
+			else if(stack.getItem() == ConfigItems.itemLegBraces)
 			{
 				list.add("A set of mechanical pistons");
 				list.add("and rods to help reduce damage");
 				list.add("substained from falling");
 			}
-			else if(stack.getItem() == ModArmors.rollerSkates)
+			else if(stack.getItem() == ConfigItems.itemRollerSkates)
 			{
 				list.add("Increases movement speed");
 			}
+			/*
 			else if(stack.getItem() == ModArmors.pnematicBoots)
 			{
 				list.add("A set of pistons strapped");
@@ -159,10 +161,9 @@ public class ItemCustomArmor extends ItemArmor
 	}
 
 	@Override
-	public void onArmorTickUpdate(World world, EntityPlayer player, ItemStack is)
+	public void onArmorTickUpdate(World world, EntityPlayer player, ItemStack stack)
 	{
-		/*
-		if(stack.getItem() == ModArmors.aqualung)
+		if(stack.getItem() == ConfigItems.itemAqualung)
 		{
 			if(player.getAir() <= 0)
 			{
@@ -170,13 +171,13 @@ public class ItemCustomArmor extends ItemArmor
 				stack.damageItem(4, player); //tweak the damage taken a bit
 			}
 		}
-		else if (stack.getItem() == ModArmors.legBraces) 
+		else if (stack.getItem() == ConfigItems.itemLegBraces) 
 		{
 			if (player.fallDistance > 3.0F) 
 			{
 				player.fallDistance *= 0.888F;
 				stack.damageItem(1, player);
 			}
-		}*/
+		}
 	}
 }
