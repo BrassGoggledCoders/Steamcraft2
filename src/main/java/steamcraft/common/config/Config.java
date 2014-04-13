@@ -50,7 +50,12 @@ public class Config
     public static int itemWatchId;
     public static int itemTeaSeedId;
     public static int itemChiselId;
+    
     public static int itemGogglesId;
+    public static int itemAqualungId;
+    public static int itemLegBracesId;
+    public static int itemRollerSkatesId;
+    
     public static int itemTeacupEmptyId;
     public static int itemTeacupFullId;
     public static int itemKettleEmptyId;
@@ -130,7 +135,12 @@ public class Config
 		itemWatchId = config.getItem("ItemWatch", iIdx++).getInt();
 		itemTeaSeedId = config.getItem("ItemTeaSeed", iIdx++).getInt();
 		itemChiselId = config.getItem("ItemChisel", iIdx++).getInt();
-		itemGogglesId = config.getItem("ItemCustomArmor", iIdx++).getInt();
+		
+		itemGogglesId = config.getItem("ItemBrassGoggles", iIdx++).getInt();
+		itemAqualungId = config.getItem("ItemAqualung", iIdx++).getInt();
+		itemLegBracesId = config.getItem("ItemLegBraces", iIdx++).getInt();
+		itemRollerSkatesId = config.getItem("ItemRollerSkates", iIdx++).getInt();
+		
 		itemTeacupEmptyId = config.getItem("ItemLiquidFood", iIdx++).getInt();
 		
 		etheriumChance = config.get(CATEGORY_GEN_OPTIONS, "Chance of Etherium Ore Generation. (Higher value = more ore. 0 disables.)", 1).getInt();

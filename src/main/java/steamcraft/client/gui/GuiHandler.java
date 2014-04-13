@@ -5,8 +5,8 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import steamcraft.common.container.ContainerVanity;
 import steamcraft.common.entities.EntityPlayerExtended;
-import steamcraft.common.tileentities.TileEntitySteamBoiler;
-import steamcraft.common.tileentities.container.ContainerSteamBoiler;
+import steamcraft.common.tiles.TileEntitySteamBoiler;
+import steamcraft.common.tiles.container.ContainerSteamBoiler;
 import cpw.mods.fml.common.network.IGuiHandler;
 
 public class GuiHandler implements IGuiHandler{
