@@ -15,10 +15,7 @@ package steamcraft.common.config;
 
 import java.io.File;
 
-import net.minecraft.block.Block;
-import net.minecraft.item.Item;
 import net.minecraftforge.common.Configuration;
-import net.minecraftforge.fluids.Fluid;
 
 /**
  * @author Surseance (Johnny Eatmon)
@@ -55,6 +52,11 @@ public class Config
     public static int itemAqualungId;
     public static int itemLegBracesId;
     public static int itemRollerSkatesId;
+    
+	public static int itemHelmetEtheriumId;
+	public static int itemPlateEtheriumId;
+	public static int itemLegsEtheriumId;
+	public static int itemBootsEtheriumId;
     
     public static int itemTeacupEmptyId;
     public static int itemTeacupFullId;
@@ -140,6 +142,11 @@ public class Config
 		itemAqualungId = config.getItem("ItemAqualung", iIdx++).getInt();
 		itemLegBracesId = config.getItem("ItemLegBraces", iIdx++).getInt();
 		itemRollerSkatesId = config.getItem("ItemRollerSkates", iIdx++).getInt();
+		
+		itemHelmetEtheriumId = config.getItem("ItemHelmetEtherium", iIdx++).getInt();;
+		itemPlateEtheriumId = config.getItem("ItemPlateEtherium", iIdx++).getInt();;
+		itemLegsEtheriumId = config.getItem("ItemLegsEtherium", iIdx++).getInt();;
+		itemBootsEtheriumId = config.getItem("ItemBootsEtherium", iIdx++).getInt();;
 		
 		itemTeacupEmptyId = config.getItem("ItemLiquidFood", iIdx++).getInt();
 		

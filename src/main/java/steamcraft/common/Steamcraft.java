@@ -106,7 +106,7 @@ public class Steamcraft
 		ConfigEntities.init();
 		
 		RegisterKeyBindings.init();
-		NetworkRegistry.instance().registerGuiHandler(this.instance, new GuiHandler());
+		NetworkRegistry.instance().registerGuiHandler(instance, new GuiHandler());
 	}
 
 	@Mod.EventHandler

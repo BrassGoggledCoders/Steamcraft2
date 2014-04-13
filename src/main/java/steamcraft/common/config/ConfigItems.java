@@ -23,6 +23,7 @@ import steamcraft.common.items.ItemTeaSeed;
 import steamcraft.common.items.ItemTeacup;
 import steamcraft.common.items.ItemWatch;
 import steamcraft.common.items.armor.ItemCustomArmor;
+import steamcraft.common.items.armor.ItemNormalArmor;
 import steamcraft.common.lib.LibInfo;
 import steamcraft.common.lib.MaterialHelper;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -43,6 +44,11 @@ public class ConfigItems
     public static Item itemAqualung;
     public static Item itemLegBraces;
     public static Item itemRollerSkates;
+    
+    public static Item itemHelmetEtherium;
+    public static Item itemPlateEtherium;
+    public static Item itemLegsEtherium;
+    public static Item itemBootsEtherium;
     
     public static Item itemTeacupEmpty;
     public static Item itemTeacupFull;
@@ -68,6 +74,7 @@ public class ConfigItems
 	
 	public static void initializeItems()
 	{
+		//Items
 		itemMechanical = new ItemMechanical(Config.itemMechanicalId).setUnlocalizedName("itemMechanical");
 		GameRegistry.registerItem(itemMechanical, "ItemMechanical", LibInfo.ID);
 		itemResource = new ItemResource(Config.itemResourceId).setUnlocalizedName("itemResource");
@@ -79,6 +86,7 @@ public class ConfigItems
 		itemChisel = new ItemChisel(Config.itemChiselId).setUnlocalizedName("itemChisel");
 		GameRegistry.registerItem(itemChisel, "ItemChisel", LibInfo.ID);
 		
+		//Armor
 		itemBrassGoggles = new ItemCustomArmor(Config.itemGogglesId, MaterialHelper.STEAM_ARMOR, 0, 0).setUnlocalizedName("itemGoggles");
 		GameRegistry.registerItem(itemBrassGoggles, "ItemBrassGoggles", LibInfo.ID);
 		itemAqualung = new ItemCustomArmor(Config.itemAqualungId, MaterialHelper.STEAM_ARMOR, 0, 1).setUnlocalizedName("itemAqualung");
@@ -88,6 +96,16 @@ public class ConfigItems
 		itemRollerSkates = new ItemCustomArmor(Config.itemRollerSkatesId, MaterialHelper.STEAM_ARMOR, 0, 3).setUnlocalizedName("itemRollerSkates");
 		GameRegistry.registerItem(itemRollerSkates, "ItemRollerSkates", LibInfo.ID);
 		
+		itemHelmetEtherium = new ItemNormalArmor(Config.itemHelmetEtheriumId, MaterialHelper.ETHERIUM_ARMOR, 0, 0).setUnlocalizedName("itemHelmetEtherium");
+		GameRegistry.registerItem(itemRollerSkates, "ItemRollerSkates", LibInfo.ID);
+		itemPlateEtherium = new ItemNormalArmor(Config.itemPlateEtheriumId, MaterialHelper.ETHERIUM_ARMOR, 0, 1).setUnlocalizedName("itemPlateEtherium");
+		GameRegistry.registerItem(itemRollerSkates, "ItemRollerSkates", LibInfo.ID);
+		itemLegsEtherium = new ItemNormalArmor(Config.itemLegsEtheriumId, MaterialHelper.ETHERIUM_ARMOR, 0, 2).setUnlocalizedName("itemLegsEtherium");
+		GameRegistry.registerItem(itemRollerSkates, "ItemRollerSkates", LibInfo.ID);
+		itemBootsEtherium = new ItemNormalArmor(Config.itemBootsEtheriumId, MaterialHelper.ETHERIUM_ARMOR, 0, 3).setUnlocalizedName("itemBootsEtherium");
+		GameRegistry.registerItem(itemRollerSkates, "ItemRollerSkates", LibInfo.ID);
+		
+		//More Items
 		itemTeacupEmpty = new ItemTeacup(Config.itemTeacupEmptyId, 0, 0.0F, false).setUnlocalizedName("itemTeacupEmpty");
 		GameRegistry.registerItem(itemTeacupEmpty, "ItemTeacupEmpty", LibInfo.ID);
 		itemTeacupFull = new ItemTeacup(Config.itemTeacupFullId, 4, 0.9F, false).setUnlocalizedName("itemTeacupFull");

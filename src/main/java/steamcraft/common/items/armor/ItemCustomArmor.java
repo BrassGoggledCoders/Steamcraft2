@@ -56,7 +56,9 @@ public class ItemCustomArmor extends ItemArmor
 	@SideOnly(Side.CLIENT)
 	public String getArmorTexture(ItemStack is, Entity entity, int slot, String type)
 	{
-		return type != null ? LibInfo.PREFIX + "textures/armor/" + type + ".png" : null;
+		//This is only for brass armor(first four armors), the other stuff should return their file somehow...
+		//Maybe based on material
+		return slot==2 ? LibInfo.PREFIX + "textures/armor/brass_2.png" :  LibInfo.PREFIX + "textures/armor/brass_1.png";
 	}
 
 	public ItemCustomArmor(int id, EnumArmorMaterial armorMat, int renderIndex, int armorType)
