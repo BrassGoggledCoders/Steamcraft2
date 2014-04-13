@@ -15,10 +15,7 @@ package steamcraft.common.config;
 
 import java.io.File;
 
-import net.minecraft.block.Block;
-import net.minecraft.item.Item;
 import net.minecraftforge.common.Configuration;
-import net.minecraftforge.fluids.Fluid;
 
 /**
  * @author Surseance (Johnny Eatmon)
@@ -50,7 +47,22 @@ public class Config
     public static int itemWatchId;
     public static int itemTeaSeedId;
     public static int itemChiselId;
+    
     public static int itemGogglesId;
+    public static int itemAqualungId;
+    public static int itemLegBracesId;
+    public static int itemRollerSkatesId;
+    
+    public static int itemHelmetEtheriumId;
+    public static int itemPlateEtheriumId;
+    public static int itemLegsEtheriumId;
+    public static int itemBootsEtheriumId;
+    
+	public static int itemHelmetObsidianId;
+	public static int itemPlateObsidianId;
+	public static int itemLegsObsidianId;
+	public static int itemBootsObsidianId;
+    
     public static int itemTeacupEmptyId;
     public static int itemTeacupFullId;
     public static int itemKettleEmptyId;
@@ -130,7 +142,22 @@ public class Config
 		itemWatchId = config.getItem("ItemWatch", iIdx++).getInt();
 		itemTeaSeedId = config.getItem("ItemTeaSeed", iIdx++).getInt();
 		itemChiselId = config.getItem("ItemChisel", iIdx++).getInt();
-		itemGogglesId = config.getItem("ItemCustomArmor", iIdx++).getInt();
+		
+		itemGogglesId = config.getItem("ItemBrassGoggles", iIdx++).getInt();
+		itemAqualungId = config.getItem("ItemAqualung", iIdx++).getInt();
+		itemLegBracesId = config.getItem("ItemLegBraces", iIdx++).getInt();
+		itemRollerSkatesId = config.getItem("ItemRollerSkates", iIdx++).getInt();
+		
+		itemHelmetEtheriumId = config.getItem("ItemHelmetEtherium", iIdx++).getInt();
+		itemPlateEtheriumId = config.getItem("ItemPlateEtherium", iIdx++).getInt();
+		itemLegsEtheriumId = config.getItem("ItemLegsEtherium", iIdx++).getInt();
+		itemBootsEtheriumId = config.getItem("ItemBootsEtherium", iIdx++).getInt();
+		
+		itemHelmetObsidianId = config.getItem("ItemHelmetObsidian", iIdx++).getInt();
+		itemPlateObsidianId = config.getItem("ItemPlateObsidian", iIdx++).getInt();
+		itemLegsObsidianId = config.getItem("ItemLegsObsidian", iIdx++).getInt();
+		itemBootsObsidianId = config.getItem("ItemBootsObsidian", iIdx++).getInt();
+		
 		itemTeacupEmptyId = config.getItem("ItemLiquidFood", iIdx++).getInt();
 		
 		etheriumChance = config.get(CATEGORY_GEN_OPTIONS, "Chance of Etherium Ore Generation. (Higher value = more ore. 0 disables.)", 1).getInt();

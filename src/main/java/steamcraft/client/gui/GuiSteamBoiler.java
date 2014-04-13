@@ -13,8 +13,8 @@ import net.minecraftforge.fluids.FluidStack;
 import org.lwjgl.opengl.GL11;
 
 import steamcraft.common.lib.LibInfo;
-import steamcraft.common.tileentities.TileEntitySteamBoiler;
-import steamcraft.common.tileentities.container.ContainerSteamBoiler;
+import steamcraft.common.tiles.TileEntitySteamBoiler;
+import steamcraft.common.tiles.container.ContainerSteamBoiler;
 
 public class GuiSteamBoiler extends GuiContainer{
 	private static final ResourceLocation guitexture = new ResourceLocation(LibInfo.PREFIX + "textures/gui/steamboiler.png");

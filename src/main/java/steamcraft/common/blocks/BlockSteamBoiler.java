@@ -18,7 +18,7 @@ import net.minecraft.world.World;
 import steamcraft.client.gui.GuiIDs;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.LibInfo;
-import steamcraft.common.tileentities.TileEntitySteamBoiler;
+import steamcraft.common.tiles.TileEntitySteamBoiler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
