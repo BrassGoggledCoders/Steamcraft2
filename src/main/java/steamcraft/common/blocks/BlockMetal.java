@@ -40,7 +40,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  *
  */
 public class BlockMetal extends Block{
-	private Icon[] icon = new Icon[8];
+	private Icon[] icon = new Icon[9];
 	private boolean powered;
 
 	@Override
@@ -55,6 +55,7 @@ public class BlockMetal extends Block{
         this.icon[5] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockCopper");
         this.icon[6] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockTin");
         this.icon[7] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockZinc");
+        this.icon[8] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockEtherium");
 	}
 
 	public BlockMetal(int id)
@@ -91,6 +92,7 @@ public class BlockMetal extends Block{
 		list.add(new ItemStack(id, 1, 5));
 		list.add(new ItemStack(id, 1, 6));
 		list.add(new ItemStack(id, 1, 7));
+		list.add(new ItemStack(id, 1, 8));
 	}
 
 	@Override
