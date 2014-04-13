@@ -18,7 +18,7 @@ import net.minecraft.world.World;
 import steamcraft.client.gui.GuiIDs;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.LibInfo;
-import steamcraft.common.tiles.TileEntitySteamBoiler;
+import steamcraft.common.tiles.TileSteamBoiler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -82,7 +82,7 @@ public class BlockSteamBoiler extends BlockContainerMod
 			return true;
 		else
 		{
-			TileEntitySteamBoiler te = (TileEntitySteamBoiler) world.getBlockTileEntity(x, y, z);
+			TileSteamBoiler te = (TileSteamBoiler) world.getBlockTileEntity(x, y, z);
 			
 			if (te == null || player.isSneaking())
 				return false;
@@ -154,7 +154,7 @@ public class BlockSteamBoiler extends BlockContainerMod
 	@Override
 	public TileEntity createNewTileEntity(World par1World)
 	{
-		return new TileEntitySteamBoiler();
+		return new TileSteamBoiler();
 	}
 
 	 /**
@@ -193,7 +193,7 @@ public class BlockSteamBoiler extends BlockContainerMod
 	{
 		if (!keepInventory)
 		{
-			TileEntitySteamBoiler var7 = (TileEntitySteamBoiler) par1World.getBlockTileEntity(par2, par3, par4);
+			TileSteamBoiler var7 = (TileSteamBoiler) par1World.getBlockTileEntity(par2, par3, par4);
 
 			if (var7 != null)
 				for (int var8 = 0; var8 < var7.getSizeInventory(); ++var8)

@@ -28,7 +28,10 @@ import steamcraft.common.lib.CommandSteamcraft;
 import steamcraft.common.lib.CreativeTabSteamcraft;
 import steamcraft.common.lib.LibInfo;
 import steamcraft.common.lib.events.EventHandlerDrawHighlight;
-import steamcraft.common.lib.events.EventHandlerSC2;
+import steamcraft.common.lib.events.EventHandlerEntity;
+import steamcraft.common.lib.events.EventHandlerHUD;
+import steamcraft.common.lib.events.EventHandlerTick;
+import steamcraft.common.lib.events.EventHandlerWorld;
 import steamcraft.common.lib.network.LoggerSteamcraft;
 import steamcraft.common.lib.network.PacketHandler;
 import steamcraft.common.lib.world.SteamcraftWorldGenerator;
@@ -84,7 +87,11 @@ public class Steamcraft
 		 * Do we really need more than one event handler?
 		 */
 		MinecraftForge.EVENT_BUS.register(EventHandlerDrawHighlight.class);
-		MinecraftForge.EVENT_BUS.register(EventHandlerSC2.class);
+		MinecraftForge.EVENT_BUS.register(EventHandlerEntity.class);
+		MinecraftForge.EVENT_BUS.register(EventHandlerHUD.class);
+		MinecraftForge.EVENT_BUS.register(EventHandlerEntity.class);
+		MinecraftForge.EVENT_BUS.register(EventHandlerTick.class);
+		MinecraftForge.EVENT_BUS.register(EventHandlerWorld.class);
 
 		//GameRegistry.registerFuelHandler(this.worldEventHandler);
 		//GameRegistry.registerCraftingHandler(this.worldEventHandler);
