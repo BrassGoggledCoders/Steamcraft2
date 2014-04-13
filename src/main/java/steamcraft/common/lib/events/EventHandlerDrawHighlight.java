@@ -14,11 +14,9 @@
 package steamcraft.common.lib.events;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.ScaledResolution;
-import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -32,6 +30,7 @@ import net.minecraftforge.event.EventPriority;
 import net.minecraftforge.event.ForgeSubscribe;
 
 import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL13;
 
 import steamcraft.common.config.ConfigItems;
 
@@ -69,6 +68,29 @@ public class EventHandlerDrawHighlight
 			this.drawSelectionBox(event.player, event.target, 0, event.currentItem, event.partialTicks);
 			event.setCanceled(true);
 		}
+		
+		Minecraft mc = Minecraft.getMinecraft();
+		GL13.glActiveTexture(GL13.GL_TEXTURE1);
+		GL13.glActiveTexture(GL13.GL_TEXTURE2);
+		GL13.glActiveTexture(GL13.GL_TEXTURE0);
+		GL11.glMatrixMode(GL11.GL_PROJECTION);
+		GL11.glLoadIdentity();
+		GL11.glOrtho(-1D, 1.0D, -1D, 1.0D, 1.0D, 40D);
+		GL11.glMatrixMode(GL11.GL_MODELVIEW);
+		GL11.glLoadIdentity();
+		GL11.glViewport(0, 0, mc.displayWidth, mc.displayHeight);
+		GL11.glClear(17664);
+		GL11.glColor3f(1.0F, 1.0F, 1.0F);
+		GL11.glBegin(GL11.GL_QUADS);
+		GL11.glTexCoord2f(0.0F, 1.0F);
+		GL11.glVertex3f(-1F, 1.0F, -1F);
+		GL11.glTexCoord2f(0.0F, 0.0F);
+		GL11.glVertex3f(-1F, -1F, -1F);
+		GL11.glTexCoord2f(1.0F, 0.0F);
+		GL11.glVertex3f(1.0F, -1F, -1F);
+		GL11.glTexCoord2f(1.0F, 1.0F);
+		GL11.glVertex3f(1.0F, 1.0F, -1F);
+		GL11.glEnd();
 		
 		this.blockID = event.player.worldObj.getBlockId(event.target.blockX, event.target.blockY, event.target.blockZ);
 	}

@@ -13,12 +13,17 @@
  */
 package steamcraft.common.lib.events;
 
-import steamcraft.common.entities.EntityPlayerExtended;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
 import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.EntityEvent.EntityConstructing;
 import net.minecraftforge.event.entity.item.ItemTossEvent;
+import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
+import steamcraft.common.config.ConfigItems;
+import steamcraft.common.entities.EntityPlayerExtended;
 
 /**
  * @author Surseance (Johnny Eatmon)
@@ -26,6 +31,8 @@ import net.minecraftforge.event.entity.item.ItemTossEvent;
  */
 public class EventHandlerEntity
 {
+	private int timer = 20;
+	
 	@ForgeSubscribe
 	public void onItemDrop(ItemTossEvent event)
 	{
@@ -49,6 +56,31 @@ public class EventHandlerEntity
 		if (event.entity instanceof EntityPlayer)
 		{
 			EntityPlayerExtended.register((EntityPlayer)event.entity);
+		}
+	}
+	
+	@ForgeSubscribe
+	public void livingUpdate(LivingUpdateEvent event)
+	{
+		if (event.entityLiving instanceof EntityPlayer)
+		{
+			EntityPlayer player = (EntityPlayer)event.entityLiving;
+			ItemStack is = player.inventory.armorItemInSlot(3);
+			
+			if ((is != null) && is.getItem() == ConfigItems.itemBrassGoggles)
+			{
+				
+					player.addPotionEffect(new PotionEffect(Potion.nightVision.id, timer, 1));
+					timer = 20;
+			}
+			else if ((is == null) || (is.getItem() != ConfigItems.itemBrassGoggles))
+			{
+				player.removePotionEffect(Potion.nightVision.id);
+			}
+		}
+		else if (!(event.entityLiving instanceof EntityPlayer))
+		{
+			event.entityLiving.removePotionEffect(Potion.nightVision.id);
 		}
 	}
 }

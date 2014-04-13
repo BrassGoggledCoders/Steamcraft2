@@ -1,5 +1,5 @@
 
-package steamcraft.common;
+package steamcraft.common.lib.world;
 
 import java.util.Random;
 

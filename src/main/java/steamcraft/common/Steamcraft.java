@@ -36,6 +36,7 @@ import steamcraft.common.lib.events.EventHandlerTick;
 import steamcraft.common.lib.events.EventHandlerWorld;
 import steamcraft.common.lib.network.LoggerSteamcraft;
 import steamcraft.common.lib.network.PacketHandler;
+import steamcraft.common.lib.world.SteamcraftWorldGenerator;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -100,8 +101,8 @@ public class Steamcraft
 		MinecraftForge.EVENT_BUS.register(this.worldEventHandler);
 		MinecraftForge.EVENT_BUS.register(this.entityEventHandler);
 		//MinecraftForge.EVENT_BUS.register(this.tickEventHandler);
-		//MinecraftForge.EVENT_BUS.register(this.hudEventHandler);
-		//MinecraftForge.EVENT_BUS.register(this.drawEventHandler);=
+		MinecraftForge.EVENT_BUS.register(this.hudEventHandler);
+		//MinecraftForge.EVENT_BUS.register(this.drawEventHandler);
 		MinecraftForge.EVENT_BUS.register(this.renderEventHandler);
 
 		//GameRegistry.registerFuelHandler(this.worldEventHandler);
@@ -122,7 +123,7 @@ public class Steamcraft
 		Config.registerBiomes();
 		ConfigEntities.init();
 		
-		RegisterKeyBindings.init();
+		//RegisterKeyBindings.init();
 		NetworkRegistry.instance().registerGuiHandler(this.instance, new GuiHandler());
 	}
 
