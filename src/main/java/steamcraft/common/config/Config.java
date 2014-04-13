@@ -43,6 +43,7 @@ public class Config
 	public static int blockSteamBoilerId;	
 	public static int blockMetalId;
 	public static int blockHatchId;
+	public static int blockSlateId;
 	
 	public static int itemMechanicalId;
     public static int itemResourceId;
@@ -121,6 +122,7 @@ public class Config
 		blockSteamBoilerId = config.getBlock("BlockSteamBoiler", bIdx++).getInt();
 		blockMetalId = config.getBlock("BlockMetal", bIdx++).getInt();
 		blockHatchId = config.getBlock("BlockHatch", bIdx++).getInt();
+		blockSlateId = config.getBlock("BlockSlate", bIdx++).getInt();
 		
 		int iIdx = 27000;
 		itemMechanicalId = config.getItem("ItemMechanical", iIdx++).getInt();
