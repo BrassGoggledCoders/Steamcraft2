@@ -25,6 +25,7 @@ import steamcraft.common.items.ItemWatch;
 import steamcraft.common.items.armor.ItemCustomArmor;
 import steamcraft.common.items.armor.ItemNormalArmor;
 import steamcraft.common.lib.LibInfo;
+import steamcraft.common.lib.MaterialHelper;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 /**

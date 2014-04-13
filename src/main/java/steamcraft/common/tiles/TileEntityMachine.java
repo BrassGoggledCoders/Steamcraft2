@@ -30,7 +30,7 @@ import net.minecraft.tileentity.TileEntity;
  * @author Decebaldecebal
  *
  */
-public class TileMachine extends TileEntity implements ISidedInventory
+public class TileEntityMachine extends TileEntity implements ISidedInventory
 {
 	protected ItemStack[] inventory;
 	

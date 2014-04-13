@@ -9,14 +9,51 @@
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
  *
- * File created @ [13 Apr 2014, 19:58:45]
+ * File created @ [Apr 13, 2014, 7:31:28 PM]
  */
 package steamcraft.common.items.armor;
 
+import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.entity.Entity;
+import net.minecraft.item.EnumArmorMaterial;
+import net.minecraft.item.ItemArmor;
+import net.minecraft.item.ItemStack;
+import steamcraft.common.Steamcraft;
+import steamcraft.common.lib.LibInfo;
+import steamcraft.common.lib.MaterialHelper;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 /**
- * @author warlordjones 
+ * @author Decebaldecebal
  *
  */
-public class ItemNormalArmor {
+public class ItemNormalArmor extends ItemArmor
+{
+	EnumArmorMaterial material;
 
+	public ItemNormalArmor(int id, EnumArmorMaterial mat, int renderIndex, int armorType)
+	{
+		super(id, mat, renderIndex, armorType);
+		mat = material;
+		this.setMaxStackSize(1);
+		this.setCreativeTab(Steamcraft.tabSC2);
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void registerIcons(IconRegister icon)
+	{
+		this.itemIcon = icon.registerIcon(LibInfo.PREFIX + this.getUnlocalizedName().substring(5));
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public String getArmorTexture(ItemStack armor, Entity entity, int slot, int layer)
+	{
+		if(material == MaterialHelper.ETHERIUM_ARMOR)
+			return slot==2 ? LibInfo.PREFIX + "textures/armor/etherium_2.png" :  LibInfo.PREFIX + "textures/armor/etherium_1.png";
+		else
+			return slot==2 ? LibInfo.PREFIX + "textures/armor/obsidian_2.png" :  LibInfo.PREFIX + "textures/armor/obsidian_1.png";
+	}
 }

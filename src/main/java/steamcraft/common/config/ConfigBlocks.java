@@ -36,7 +36,9 @@ import steamcraft.common.blocks.BlockSlate;
 import steamcraft.common.blocks.BlockSlateItem;
 import steamcraft.common.blocks.BlockSteamBoiler;
 import steamcraft.common.lib.LibInfo;
-import steamcraft.common.tiles.*;
+import steamcraft.common.tiles.TileCrystal;
+import steamcraft.common.tiles.TileEntitySteamBoiler;
+import steamcraft.common.tiles.TileHatch;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -127,6 +129,6 @@ public class ConfigBlocks
 	{
         GameRegistry.registerTileEntity(TileCrystal.class, LibInfo.ID + "TECrystal");
         GameRegistry.registerTileEntity(TileHatch.class, LibInfo.ID + "TEHatch");
-        GameRegistry.registerTileEntity(TileSteamBoiler.class, LibInfo.ID + "TESteamBoiler");
+        GameRegistry.registerTileEntity(TileEntitySteamBoiler.class, LibInfo.ID + "TESteamBoiler");
 	}
 }

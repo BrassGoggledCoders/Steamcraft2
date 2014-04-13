@@ -5,7 +5,8 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import steamcraft.common.container.ContainerVanity;
 import steamcraft.common.entities.EntityPlayerExtended;
-import steamcraft.common.tiles.ContainerSteamBoiler;
+import steamcraft.common.tiles.TileEntitySteamBoiler;
+import steamcraft.common.tiles.container.ContainerSteamBoiler;
 import cpw.mods.fml.common.network.IGuiHandler;
 
 public class GuiHandler implements IGuiHandler{
@@ -29,7 +30,7 @@ public class GuiHandler implements IGuiHandler{
 			return new ContainerCompressor(player.inventory, (TileEntityCompressor) tile);
 			*/
 		case GuiIDs.GUI_ID_COAL_GENERATOR:
-			return new ContainerSteamBoiler(player.inventory, (steamcraft.common.tiles.TileSteamBoiler) tile);
+			return new ContainerSteamBoiler(player.inventory, (TileEntitySteamBoiler) tile);
 		case GuiIDs.GUI_ID_VANITY:
 			return new ContainerVanity(player, player.inventory, EntityPlayerExtended.get(player).inventory);
 		}
@@ -58,7 +59,7 @@ public class GuiHandler implements IGuiHandler{
 			return new GuiGuideBook(player, player.inventory.getItemStack());
 		*/	
 		case GuiIDs.GUI_ID_COAL_GENERATOR:
-			return new GuiSteamBoiler(player.inventory, (steamcraft.common.tiles.TileSteamBoiler) tile);
+			return new GuiSteamBoiler(player.inventory, (TileEntitySteamBoiler) tile);
 			
 		case GuiIDs.GUI_ID_VANITY:
 			return new GuiVanity(player, player.inventory, EntityPlayerExtended.get(player).inventory);

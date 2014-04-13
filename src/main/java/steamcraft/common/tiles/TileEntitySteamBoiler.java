@@ -12,8 +12,10 @@ import net.minecraftforge.fluids.FluidTank;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
 import steamcraft.common.blocks.BlockSteamBoiler;
+import steamcraft.common.config.ConfigItems;
+import steamcraft.common.items.ItemCanister;
 
-public class TileSteamBoiler extends TileMachine implements IFluidHandler{
+public class TileEntitySteamBoiler extends TileEntityMachine implements IFluidHandler{
 	/*
 	 * 20 steam/tick is basically 4 MJ/t if we use RailCraft ratios
 	 * I also calculated that for a piece of coal that burns 400 ticks in this, we get 1600 MJ/t
@@ -30,7 +32,7 @@ public class TileSteamBoiler extends TileMachine implements IFluidHandler{
 	public FluidTank waterTank;
 	public FluidTank steamTank;
 	
-	public TileSteamBoiler()
+	public TileEntitySteamBoiler()
 	{
 		super();
 		inventory = new ItemStack[3];
@@ -41,7 +43,7 @@ public class TileSteamBoiler extends TileMachine implements IFluidHandler{
 	@Override
 	public String getInvName()
 	{
-		return "Steam Boiler";
+		return "Coal Generator";
 	}
 	
 	@Override

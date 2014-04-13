@@ -1,4 +1,4 @@
-package steamcraft.common.tiles;
+package steamcraft.common.tiles.container;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -11,18 +11,18 @@ import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import steamcraft.common.config.ConfigItems;
+import steamcraft.common.tiles.TileEntitySteamBoiler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ContainerSteamBoiler extends Container
-{
-	protected TileSteamBoiler Tile_E;
+public class ContainerSteamBoiler extends Container{
+	protected TileEntitySteamBoiler Tile_E;
 	private int lastBurnTime = 0;
 	private int lastItemBurnTime = 0;
 	private int lastSteamLevel = 0;
 	private int lastWaterLevel = 0;
 
-	public ContainerSteamBoiler(InventoryPlayer player, TileSteamBoiler tile)
+	public ContainerSteamBoiler(InventoryPlayer player, TileEntitySteamBoiler tile)
 	{
 		Tile_E = tile;
 		this.addSlotToContainer(new Slot(tile, 0, 42, 52));
@@ -180,5 +180,4 @@ public class ContainerSteamBoiler extends Container
 
 		return var3;
 	}
-
 }
