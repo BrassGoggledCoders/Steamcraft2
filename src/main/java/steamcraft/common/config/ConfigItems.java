@@ -64,31 +64,31 @@ public class ConfigItems
 	
 	public static void initializeItems()
 	{
-		itemMechanical = new ItemMechanical(Config.itemMechanicalId).setUnlocalizedName("ItemMechanical");
+		itemMechanical = new ItemMechanical(Config.itemMechanicalId).setUnlocalizedName("itemMechanical");
 		GameRegistry.registerItem(itemMechanical, "ItemMechanical", LibInfo.ID);
-		itemResource = new ItemResource(Config.itemResourceId).setUnlocalizedName("ItemResource");
+		itemResource = new ItemResource(Config.itemResourceId).setUnlocalizedName("itemResource");
 		GameRegistry.registerItem(itemResource, "ItemResource", LibInfo.ID);
-		itemWatch = new ItemWatch(Config.itemWatchId).setUnlocalizedName("ItemWatch");
+		itemWatch = new ItemWatch(Config.itemWatchId).setUnlocalizedName("itemWatch");
 		GameRegistry.registerItem(itemWatch, "ItemWatch", LibInfo.ID);
-		itemTeaSeed = new ItemTeaSeed(Config.itemTeaSeedId).setUnlocalizedName("ItemTeaSeed");
+		itemTeaSeed = new ItemTeaSeed(Config.itemTeaSeedId).setUnlocalizedName("itemTeaSeed");
 		GameRegistry.registerItem(itemTeaSeed, "ItemTeaSeed", LibInfo.ID);
-		itemChisel = new ItemChisel(Config.itemChiselId).setUnlocalizedName("ItemChisel");
+		itemChisel = new ItemChisel(Config.itemChiselId).setUnlocalizedName("itemChisel");
 		GameRegistry.registerItem(itemChisel, "ItemChisel", LibInfo.ID);
 		
-		itemBrassGoggles = new ItemCustomArmor(Config.itemGogglesId, EnumArmorMaterial.CHAIN, 0, 0).setUnlocalizedName("ItemCustomArmor");
+		itemBrassGoggles = new ItemCustomArmor(Config.itemGogglesId, EnumArmorMaterial.CHAIN, 0, 0).setUnlocalizedName("itemGoggles");
 		GameRegistry.registerItem(itemBrassGoggles, "ItemCustomArmor", LibInfo.ID);
 		
-		itemTeacupEmpty = new ItemTeacup(Config.itemTeacupEmptyId, 0, 0.0F, false).setUnlocalizedName("ItemTeacupEmpty");
+		itemTeacupEmpty = new ItemTeacup(Config.itemTeacupEmptyId, 0, 0.0F, false).setUnlocalizedName("itemTeacupEmpty");
 		GameRegistry.registerItem(itemTeacupEmpty, "ItemTeacupEmpty", LibInfo.ID);
-		itemTeacupFull = new ItemTeacup(Config.itemTeacupFullId, 4, 0.9F, false).setUnlocalizedName("ItemTeacupFull");
+		itemTeacupFull = new ItemTeacup(Config.itemTeacupFullId, 4, 0.9F, false).setUnlocalizedName("itemTeacupFull");
 		GameRegistry.registerItem(itemTeacupFull, "ItemTeacupFull", LibInfo.ID);
-		itemKettleEmpty = new ItemKettle(Config.itemKettleEmptyId, 300).setUnlocalizedName("ItemKettleEmpty");
+		itemKettleEmpty = new ItemKettle(Config.itemKettleEmptyId, 300).setUnlocalizedName("itemKettleEmpty");
 		GameRegistry.registerItem(itemTeacupFull, "ItemKettleEmpty", LibInfo.ID);
-		itemKettleHot = new ItemKettle(Config.itemKettleHotId, 300).setUnlocalizedName("ItemKettleHot");
+		itemKettleHot = new ItemKettle(Config.itemKettleHotId, 300).setUnlocalizedName("itemKettleHot");
 		GameRegistry.registerItem(itemTeacupFull, "ItemKettleHot", LibInfo.ID);
-		itemKettleCold = new ItemKettle(Config.itemKettleColdId, 300).setUnlocalizedName("ItemKettleCold");
+		itemKettleCold = new ItemKettle(Config.itemKettleColdId, 300).setUnlocalizedName("itemKettleCold");
 		GameRegistry.registerItem(itemTeacupFull, "ItemKettleCold", LibInfo.ID);
-		itemGunParts = new ItemGunParts(Config.itemGunPartsId).setUnlocalizedName("ItemGunParts");
+		itemGunParts = new ItemGunParts(Config.itemGunPartsId).setUnlocalizedName("itemGunParts");
 		GameRegistry.registerItem(itemGunParts, "ItemGunParts", LibInfo.ID);
 	}
 }
