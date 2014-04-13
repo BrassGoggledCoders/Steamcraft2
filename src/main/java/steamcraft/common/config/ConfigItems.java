@@ -50,6 +50,11 @@ public class ConfigItems
     public static Item itemLegsEtherium;
     public static Item itemBootsEtherium;
     
+    public static Item itemHelmetObsidian;
+    public static Item itemPlateObsidian;
+    public static Item itemLegsObsidian;
+    public static Item itemBootsObsidian;
+    
     public static Item itemTeacupEmpty;
     public static Item itemTeacupFull;
     public static Item itemKettleEmpty;
@@ -97,13 +102,22 @@ public class ConfigItems
 		GameRegistry.registerItem(itemRollerSkates, "ItemRollerSkates", LibInfo.ID);
 		
 		itemHelmetEtherium = new ItemNormalArmor(Config.itemHelmetEtheriumId, MaterialHelper.ETHERIUM_ARMOR, 0, 0).setUnlocalizedName("itemHelmetEtherium");
-		GameRegistry.registerItem(itemRollerSkates, "ItemRollerSkates", LibInfo.ID);
+		GameRegistry.registerItem(itemRollerSkates, "ItemHelmetEtherium", LibInfo.ID);
 		itemPlateEtherium = new ItemNormalArmor(Config.itemPlateEtheriumId, MaterialHelper.ETHERIUM_ARMOR, 0, 1).setUnlocalizedName("itemPlateEtherium");
-		GameRegistry.registerItem(itemRollerSkates, "ItemRollerSkates", LibInfo.ID);
+		GameRegistry.registerItem(itemRollerSkates, "ItemPlateEtherium", LibInfo.ID);
 		itemLegsEtherium = new ItemNormalArmor(Config.itemLegsEtheriumId, MaterialHelper.ETHERIUM_ARMOR, 0, 2).setUnlocalizedName("itemLegsEtherium");
-		GameRegistry.registerItem(itemRollerSkates, "ItemRollerSkates", LibInfo.ID);
+		GameRegistry.registerItem(itemRollerSkates, "ItemLegsEtherium", LibInfo.ID);
 		itemBootsEtherium = new ItemNormalArmor(Config.itemBootsEtheriumId, MaterialHelper.ETHERIUM_ARMOR, 0, 3).setUnlocalizedName("itemBootsEtherium");
-		GameRegistry.registerItem(itemRollerSkates, "ItemRollerSkates", LibInfo.ID);
+		GameRegistry.registerItem(itemRollerSkates, "ItemBootsEtherium", LibInfo.ID);
+		
+		itemHelmetObsidian = new ItemNormalArmor(Config.itemHelmetObsidianId, MaterialHelper.OBSIDIAN_ARMOR, 0, 0).setUnlocalizedName("itemHelmetObsidian");
+		GameRegistry.registerItem(itemRollerSkates, "ItemHelmetObsidian", LibInfo.ID);
+		itemPlateObsidian = new ItemNormalArmor(Config.itemPlateObsidianId, MaterialHelper.OBSIDIAN_ARMOR, 0, 1).setUnlocalizedName("itemPlateObsidian");
+		GameRegistry.registerItem(itemRollerSkates, "ItemPlateObsidian", LibInfo.ID);
+		itemLegsObsidian = new ItemNormalArmor(Config.itemLegsObsidianId, MaterialHelper.OBSIDIAN_ARMOR, 0, 2).setUnlocalizedName("itemLegsObsidian");
+		GameRegistry.registerItem(itemRollerSkates, "ItemLegsObsidian", LibInfo.ID);
+		itemBootsObsidian = new ItemNormalArmor(Config.itemBootsObsidianId, MaterialHelper.OBSIDIAN_ARMOR, 0, 3).setUnlocalizedName("itemBootsObsidian");
+		GameRegistry.registerItem(itemRollerSkates, "ItemBootsObsidian", LibInfo.ID);
 		
 		//More Items
 		itemTeacupEmpty = new ItemTeacup(Config.itemTeacupEmptyId, 0, 0.0F, false).setUnlocalizedName("itemTeacupEmpty");

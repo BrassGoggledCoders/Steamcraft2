@@ -53,10 +53,15 @@ public class Config
     public static int itemLegBracesId;
     public static int itemRollerSkatesId;
     
-	public static int itemHelmetEtheriumId;
-	public static int itemPlateEtheriumId;
-	public static int itemLegsEtheriumId;
-	public static int itemBootsEtheriumId;
+    public static int itemHelmetEtheriumId;
+    public static int itemPlateEtheriumId;
+    public static int itemLegsEtheriumId;
+    public static int itemBootsEtheriumId;
+    
+	public static int itemHelmetObsidianId;
+	public static int itemPlateObsidianId;
+	public static int itemLegsObsidianId;
+	public static int itemBootsObsidianId;
     
     public static int itemTeacupEmptyId;
     public static int itemTeacupFullId;
@@ -143,10 +148,15 @@ public class Config
 		itemLegBracesId = config.getItem("ItemLegBraces", iIdx++).getInt();
 		itemRollerSkatesId = config.getItem("ItemRollerSkates", iIdx++).getInt();
 		
-		itemHelmetEtheriumId = config.getItem("ItemHelmetEtherium", iIdx++).getInt();;
-		itemPlateEtheriumId = config.getItem("ItemPlateEtherium", iIdx++).getInt();;
-		itemLegsEtheriumId = config.getItem("ItemLegsEtherium", iIdx++).getInt();;
-		itemBootsEtheriumId = config.getItem("ItemBootsEtherium", iIdx++).getInt();;
+		itemHelmetEtheriumId = config.getItem("ItemHelmetEtherium", iIdx++).getInt();
+		itemPlateEtheriumId = config.getItem("ItemPlateEtherium", iIdx++).getInt();
+		itemLegsEtheriumId = config.getItem("ItemLegsEtherium", iIdx++).getInt();
+		itemBootsEtheriumId = config.getItem("ItemBootsEtherium", iIdx++).getInt();
+		
+		itemHelmetObsidianId = config.getItem("ItemHelmetObsidian", iIdx++).getInt();
+		itemPlateObsidianId = config.getItem("ItemPlateObsidian", iIdx++).getInt();
+		itemLegsObsidianId = config.getItem("ItemLegsObsidian", iIdx++).getInt();
+		itemBootsObsidianId = config.getItem("ItemBootsObsidian", iIdx++).getInt();
 		
 		itemTeacupEmptyId = config.getItem("ItemLiquidFood", iIdx++).getInt();
 		
