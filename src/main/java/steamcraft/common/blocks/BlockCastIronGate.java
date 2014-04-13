@@ -40,5 +40,6 @@ public class BlockCastIronGate extends BlockFenceGate
         this.setResistance(20.0F);
         this.setStepSound(Block.soundMetalFootstep);
         this.setCreativeTab(Steamcraft.tabSC2);
+        setUnlocalizedName("blockCastIronGate");
     }
 }

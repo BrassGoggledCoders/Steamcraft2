@@ -9,12 +9,11 @@
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
  *
- * File created @ [9 Apr 2014, 09:43:13]
+ * File created @ [13 Apr 2014, 09:36:19]
  */
 package steamcraft.common.blocks;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Random;
 
@@ -39,39 +38,45 @@ import cpw.mods.fml.relauncher.SideOnly;
  * @author warlordjones
  *
  */
-public class BlockMetal extends Block{
-	private Icon[] icon = new Icon[9];
-	private boolean powered;
+public class BlockSlate extends Block
+{
+	private Icon[] icon = new Icon[11];
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public Icon getIcon(int side, int metadata)
+	{
+		return this.icon[metadata];
+	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister ir)
 	{
-        this.icon[0] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockBrass");
-        this.icon[1] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockBronze");
-        this.icon[2] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockSteel");
-        this.icon[3] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockUranite");
-        this.icon[4] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockAluminum");
-        this.icon[5] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockCopper");
-        this.icon[6] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockTin");
-        this.icon[7] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockZinc");
-        this.icon[8] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockEtherium");
+		//Raw
+		this.icon[0] = ir.registerIcon(LibInfo.PREFIX + "blockSlateRawBlue");
+		this.icon[1] = ir.registerIcon(LibInfo.PREFIX + "blockSlateRawBlack");
+		this.icon[2] = ir.registerIcon(LibInfo.PREFIX + "blockSlateRawRed");
+		//Cobble
+		this.icon[3] = ir.registerIcon(LibInfo.PREFIX + "blockSlateCobbleBlue");
+		this.icon[4] = ir.registerIcon(LibInfo.PREFIX + "blockSlateCobbleBlack");
+		this.icon[5] = ir.registerIcon(LibInfo.PREFIX + "blockSlateCobbleRed");
+		//Brick
+		this.icon[6] = ir.registerIcon(LibInfo.PREFIX + "blockSlateBrickBlue");
+		this.icon[7] = ir.registerIcon(LibInfo.PREFIX + "blockSlateBrickBlack");
+		this.icon[8] = ir.registerIcon(LibInfo.PREFIX + "blockSlateBrickRed");
+		//Polished
 	}
 
-	public BlockMetal(int id)
+	public BlockSlate(int id)
 	{
-		super(id, Material.iron);
+		super(id, Material.rock);
 		this.setHardness(3.0F);
 		this.setResistance(10.0F);
-		this.setStepSound(Block.soundMetalFootstep);
-		this.setUnlocalizedName("blockMetal");
+		this.setStepSound(Block.soundStoneFootstep);
+		this.setUnlocalizedName("blockSlate");
 		this.setTickRandomly(true);
 		this.setCreativeTab(Steamcraft.tabSC2);
-
-		if (this.powered)
-		{
-			this.setLightValue(0.98F);
-		}
 	}
 
 	@Override
@@ -96,21 +101,31 @@ public class BlockMetal extends Block{
 	}
 
 	@Override
-	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)
+	public ArrayList<ItemStack> getBlockDropped(World world, int x, int y, int z, int metadata, int fortune)
 	{
-		if ((world.getBlockId(x, y, z) == this.blockID) && (world.getBlockMetadata(x, y, z) == 4))
-		{
-			entity.attackEntityFrom(DamageSource.magic, 1);
-		}
-	}
+		ArrayList drop = new ArrayList();
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void randomDisplayTick(World world, int x, int y, int z, Random random)
-	{
-		if ((world.getBlockId(x, y, z) == this.blockID) && (world.getBlockMetadata(x, y, z) == 4))
-		{
-			Utils.sparkle(world, x, y, z, "reddust");
+		switch (metadata) {
+		case 0:
+			drop.add(new ItemStack(ConfigBlocks.blockSlate, 1, 0));
+		case 1:
+			drop.add(new ItemStack(ConfigBlocks.blockSlate, 1, 1));
+		case 2:
+			drop.add(new ItemStack(ConfigBlocks.blockSlate, 1, 2));
+		case 3:
+			drop.add(new ItemStack(ConfigBlocks.blockSlate, 1, 3));
+		case 4:
+			drop.add(new ItemStack(ConfigBlocks.blockSlate, 1, 4));
+		case 5:
+			drop.add(new ItemStack(ConfigBlocks.blockSlate, 1, 5));
+		case 6:
+			drop.add(new ItemStack(ConfigBlocks.blockSlate, 1, 6));
+		case 7:
+			drop.add(new ItemStack(ConfigBlocks.blockSlate, 1, 7));
+		case 8:
+			drop.add(new ItemStack(ConfigBlocks.blockSlate, 1, 8));
 		}
+
+		return drop;
 	}
 }

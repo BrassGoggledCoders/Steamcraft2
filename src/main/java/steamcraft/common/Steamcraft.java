@@ -114,6 +114,7 @@ public class Steamcraft
 		ConfigItems.init();
 	
 		proxy.registerDisplayInformation();
+		proxy.registerRenderers();
 
 	}
 

@@ -42,6 +42,8 @@ public class Config
 	public static int blockSteamFluidId;
 	public static int blockSteamBoilerId;	
 	public static int blockMetalId;
+	public static int blockHatchId;
+	public static int blockSlateId;
 	
 	public static int itemMechanicalId;
     public static int itemResourceId;
@@ -119,6 +121,8 @@ public class Config
 		blockSteamFluidId = config.getBlock("BlockSteamFluid", bIdx++).getInt();
 		blockSteamBoilerId = config.getBlock("BlockSteamBoiler", bIdx++).getInt();
 		blockMetalId = config.getBlock("BlockMetal", bIdx++).getInt();
+		blockHatchId = config.getBlock("BlockHatch", bIdx++).getInt();
+		blockSlateId = config.getBlock("BlockSlate", bIdx++).getInt();
 		
 		int iIdx = 27000;
 		itemMechanicalId = config.getItem("ItemMechanical", iIdx++).getInt();
@@ -151,24 +155,6 @@ public class Config
         zincHeight = config.get(CATEGORY_GEN_OPTIONS, "Height of Zinc Ore Generation", 36).getInt();
         netherEtheriumCrystalHeight = config.get(CATEGORY_GEN_OPTIONS, "Height of Etherium Crystal Generation in the Nether", 36).getInt();
         endEtheriumCrystalHeight = config.get(CATEGORY_GEN_OPTIONS, "Height of Etherium Crystal Generation in the End", 36).getInt();
-<<<<<<< HEAD
-        generationEnabled = config.get(CATEGORY_GEN_OPTIONS, "Will disable ALL SC2 World Gen completly", true).getBoolean(true);
-        overworldGenerationEnabled = config.get(CATEGORY_GEN_OPTIONS, "Will disable all SC2 World Gen in the Overworld", true).getBoolean(true);
-        netherGenerationEnabled = config.get(CATEGORY_GEN_OPTIONS, "Will disable all SC2 World Gen in the Nether", true).getBoolean(true);
-        endGenerationEnabled = config.get(CATEGORY_GEN_OPTIONS, "Will disable all SC2 World Gen in the End", true).getBoolean(true);
-        oreGenerationEnabled = config.get(CATEGORY_GEN_OPTIONS, "Will disable all SC2 Ore Gen", true).getBoolean(true);
-        etheriumOreGenEnabled = config.get(CATEGORY_GEN_OPTIONS, "Will disable Etherium Ore Generation", true).getBoolean(true);
-        uraniumOreGenEnabled = config.get(CATEGORY_GEN_OPTIONS, "Will disable Uranium Ore Generation", true).getBoolean(true);
-        brimstoneOreGenEnabled = config.get(CATEGORY_GEN_OPTIONS, "Will disable Brimstone Ore Generation", true).getBoolean(true);
-        borniteOreGenEnabled = config.get(CATEGORY_GEN_OPTIONS, "Will disable Bornite Ore Generation", true).getBoolean(true);
-        phosphateOreGenEnabled = config.get(CATEGORY_GEN_OPTIONS, "Will disable Phosphate Ore Generation", true).getBoolean(true);
-        aluminumOreGenEnabled = config.get(CATEGORY_GEN_OPTIONS, "Will disable Aluminum Ore Generation", true).getBoolean(true);
-        copperOreGenEnabled = config.get(CATEGORY_GEN_OPTIONS, "Will disable Copper Ore Generation", true).getBoolean(true);
-        tinOreGenEnabled = config.get(CATEGORY_GEN_OPTIONS, "Will disable Tin Ore Generation", true).getBoolean(true);
-        zincOreGenEnabled = config.get(CATEGORY_GEN_OPTIONS, "Will disable Zinc Ore Generation", true).getBoolean(true);
-        netherEtheriumCrystalGenEnabled = config.get(CATEGORY_GEN_OPTIONS, "Will disable Etherium Crystal Generation in the Nether", true).getBoolean(true);
-        endEtheriumCrystalGenEnabled = config.get(CATEGORY_GEN_OPTIONS, "Will disable Etherium Crystal Generation in the End", true).getBoolean(true);
-=======
         generationEnabled = config.get(CATEGORY_GEN_OPTIONS, " ALL SC2 World Gen, everywhere", true).getBoolean(true);
         overworldGenerationEnabled = config.get(CATEGORY_GEN_OPTIONS, "SC2 World Gen in the Overworld", true).getBoolean(true);
         netherGenerationEnabled = config.get(CATEGORY_GEN_OPTIONS, "SC2 World Gen in the Nether", true).getBoolean(true);
