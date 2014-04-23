@@ -42,16 +42,20 @@ public class Config
 	public static int blockHatchId;
 	public static int blockSlateId;
 	
+	//Item Tools(sort of)
 	public static int itemMechanicalId;
     public static int itemResourceId;
     public static int itemWatchId;
     public static int itemTeaSeedId;
     public static int itemChiselId;
     
+    //Armor
     public static int itemGogglesId;
     public static int itemAqualungId;
     public static int itemLegBracesId;
     public static int itemRollerSkatesId;
+    
+    public static int itemSteamJetpackId;
     
     public static int itemHelmetEtheriumId;
     public static int itemPlateEtheriumId;
@@ -63,6 +67,7 @@ public class Config
 	public static int itemLegsObsidianId;
 	public static int itemBootsObsidianId;
     
+	//Items
     public static int itemTeacupEmptyId;
     public static int itemTeacupFullId;
     public static int itemKettleEmptyId;
@@ -70,6 +75,12 @@ public class Config
     public static int itemKettleColdId;
     public static int itemGunPartsId;
     
+    //Canisters
+    public static int itemCanisterEmptyId;
+    public static int itemCanisterSteamId;
+    public static int itemCanisterGasId;
+    
+    //Entities
     public static int entBulletId;
 
     /* POWER TO THE END USER! Good heaves... */
@@ -137,16 +148,20 @@ public class Config
 		blockSlateId = config.getBlock("BlockSlate", bIdx++).getInt();
 		
 		int iIdx = 27000;
+		//Item Tools(sort of)
 		itemMechanicalId = config.getItem("ItemMechanical", iIdx++).getInt();
 		itemResourceId = config.getItem("ItemResource", iIdx++).getInt();
 		itemWatchId = config.getItem("ItemWatch", iIdx++).getInt();
 		itemTeaSeedId = config.getItem("ItemTeaSeed", iIdx++).getInt();
 		itemChiselId = config.getItem("ItemChisel", iIdx++).getInt();
 		
+		//Armor
 		itemGogglesId = config.getItem("ItemBrassGoggles", iIdx++).getInt();
 		itemAqualungId = config.getItem("ItemAqualung", iIdx++).getInt();
 		itemLegBracesId = config.getItem("ItemLegBraces", iIdx++).getInt();
 		itemRollerSkatesId = config.getItem("ItemRollerSkates", iIdx++).getInt();
+		
+		itemSteamJetpackId = config.getItem("ItemBrassJetpack", iIdx++).getInt();
 		
 		itemHelmetEtheriumId = config.getItem("ItemHelmetEtherium", iIdx++).getInt();
 		itemPlateEtheriumId = config.getItem("ItemPlateEtherium", iIdx++).getInt();
@@ -158,7 +173,11 @@ public class Config
 		itemLegsObsidianId = config.getItem("ItemLegsObsidian", iIdx++).getInt();
 		itemBootsObsidianId = config.getItem("ItemBootsObsidian", iIdx++).getInt();
 		
+		//Items
 		itemTeacupEmptyId = config.getItem("ItemLiquidFood", iIdx++).getInt();
+		itemCanisterEmptyId = config.getItem("ItemCanisterEmpty", iIdx++).getInt();
+		itemCanisterSteamId = config.getItem("ItemCanisterSteam", iIdx++).getInt();
+		itemCanisterGasId = config.getItem("ItemCanisterGas", iIdx++).getInt();
 		
 		etheriumChance = config.get(CATEGORY_GEN_OPTIONS, "Chance of Etherium Ore Generation. (Higher value = more ore. 0 disables.)", 1).getInt();
         uraniumChance = config.get(CATEGORY_GEN_OPTIONS, "Chance of Uranium Ore Generation", 3).getInt();

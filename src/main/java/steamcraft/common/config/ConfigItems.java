@@ -14,14 +14,17 @@
 package steamcraft.common.config;
 
 import net.minecraft.item.Item;
+import steamcraft.common.items.ItemCanister;
 import steamcraft.common.items.ItemChisel;
 import steamcraft.common.items.ItemGunParts;
 import steamcraft.common.items.ItemKettle;
 import steamcraft.common.items.ItemMechanical;
+import steamcraft.common.items.ItemMisc;
 import steamcraft.common.items.ItemResource;
 import steamcraft.common.items.ItemTeaSeed;
 import steamcraft.common.items.ItemTeacup;
 import steamcraft.common.items.ItemWatch;
+import steamcraft.common.items.armor.ItemSteamJetpack;
 import steamcraft.common.items.armor.ItemCustomArmor;
 import steamcraft.common.items.armor.ItemNormalArmor;
 import steamcraft.common.lib.LibInfo;
@@ -34,16 +37,20 @@ import cpw.mods.fml.common.registry.GameRegistry;
  */
 public class ConfigItems
 {
+	//Item Tools(sort of)
     public static Item itemMechanical;
     public static Item itemResource;
     public static Item itemWatch;
     public static Item itemTeaSeed;
     public static Item itemChisel;
     
+    //Armor
     public static Item itemBrassGoggles;
     public static Item itemAqualung;
     public static Item itemLegBraces;
     public static Item itemRollerSkates;
+    
+    public static Item itemSteamJetpack;
     
     public static Item itemHelmetEtherium;
     public static Item itemPlateEtherium;
@@ -55,6 +62,7 @@ public class ConfigItems
     public static Item itemLegsObsidian;
     public static Item itemBootsObsidian;
     
+    //Items
     public static Item itemTeacupEmpty;
     public static Item itemTeacupFull;
     public static Item itemKettleEmpty;
@@ -62,9 +70,10 @@ public class ConfigItems
     public static Item itemKettleCold;
     public static Item itemGunParts;
     
-    public static Item itemSteamCanister;
+    //Canisters
+    public static Item itemCanisterSteam;
     public static Item itemCanisterGas;
-    public static Item itemEmptyCanister;
+    public static Item itemCanisterEmpty;
     
     public static Item itemMusketRound;
     public static Item itemBucketSteam;
@@ -100,6 +109,8 @@ public class ConfigItems
 		GameRegistry.registerItem(itemLegBraces, "ItemLegBraces", LibInfo.ID);
 		itemRollerSkates = new ItemCustomArmor(Config.itemRollerSkatesId, MaterialHelper.STEAM_ARMOR, 0, 3).setUnlocalizedName("itemRollerSkates");
 		GameRegistry.registerItem(itemRollerSkates, "ItemRollerSkates", LibInfo.ID);
+		itemSteamJetpack = new ItemSteamJetpack(Config.itemSteamJetpackId,  MaterialHelper.STEAM_ARMOR, 0, 1).setUnlocalizedName("itemSteamJetpack");
+		GameRegistry.registerItem(itemSteamJetpack, "ItemSteamJetpack", LibInfo.ID);
 		
 		itemHelmetEtherium = new ItemNormalArmor(Config.itemHelmetEtheriumId, MaterialHelper.ETHERIUM_ARMOR, 0, 0).setUnlocalizedName("itemHelmetEtherium");
 		GameRegistry.registerItem(itemRollerSkates, "ItemHelmetEtherium", LibInfo.ID);
@@ -132,5 +143,13 @@ public class ConfigItems
 		GameRegistry.registerItem(itemTeacupFull, "ItemKettleCold", LibInfo.ID);
 		itemGunParts = new ItemGunParts(Config.itemGunPartsId).setUnlocalizedName("itemGunParts");
 		GameRegistry.registerItem(itemGunParts, "ItemGunParts", LibInfo.ID);
+		
+		//Canisters
+		itemCanisterEmpty = new ItemMisc(Config.itemCanisterEmptyId).setUnlocalizedName("itemCanisterEmpty");
+		GameRegistry.registerItem(itemCanisterEmpty, "ItemCanisterEmpty", LibInfo.ID);
+		itemCanisterSteam = new ItemCanister(Config.itemCanisterSteamId, "steam").setUnlocalizedName("itemCanisterSteam");
+		GameRegistry.registerItem(itemCanisterSteam, "ItemCanisterSteam", LibInfo.ID);
+		itemCanisterGas = new ItemCanister(Config.itemCanisterGasId, "compressedgas").setUnlocalizedName("itemCanisterGas");
+		GameRegistry.registerItem(itemCanisterGas, "ItemCanisterGas", LibInfo.ID);
 	}
 }
