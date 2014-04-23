@@ -60,7 +60,6 @@ public class GuiHandler implements IGuiHandler{
 		*/	
 		case GuiIDs.GUI_ID_COAL_GENERATOR:
 			return new GuiSteamBoiler(player.inventory, (TileEntitySteamBoiler) tile);
-			
 		case GuiIDs.GUI_ID_VANITY:
 			return new GuiVanity(player, player.inventory, EntityPlayerExtended.get(player).inventory);
 		}
