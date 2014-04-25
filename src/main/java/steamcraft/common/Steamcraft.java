@@ -17,9 +17,9 @@ import java.io.File;
 import java.util.logging.Level;
 
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.MinecraftForge;
-import steamcraft.client.lib.RenderEventHandler;
+import steamcraft.client.RegisterKeyBindings;
+import steamcraft.client.gui.GuiHandler;
 import steamcraft.common.config.Config;
 import steamcraft.common.config.ConfigBlocks;
 import steamcraft.common.config.ConfigEntities;
@@ -28,12 +28,10 @@ import steamcraft.common.lib.CommandSteamcraft;
 import steamcraft.common.lib.CreativeTabSteamcraft;
 import steamcraft.common.lib.LibInfo;
 import steamcraft.common.lib.events.EventHandlerDrawHighlight;
-import steamcraft.common.lib.events.EventHandlerEntity;
-import steamcraft.common.lib.events.EventHandlerHUD;
-import steamcraft.common.lib.events.EventHandlerTick;
-import steamcraft.common.lib.events.EventHandlerWorld;
+import steamcraft.common.lib.events.EventHandlerSC2;
 import steamcraft.common.lib.network.LoggerSteamcraft;
 import steamcraft.common.lib.network.PacketHandler;
+import steamcraft.common.lib.world.SteamcraftWorldGenerator;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -41,6 +39,8 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.network.NetworkMod;
+import cpw.mods.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
 /**
@@ -57,13 +57,7 @@ public class Steamcraft
 	@Mod.Instance(LibInfo.NAME)
 	public static Steamcraft instance;
 
-	//public SteamcraftWorldGenerator worldGen;
-	public EventHandlerWorld worldEventHandler;
-	public EventHandlerEntity entityEventHandler;
-	public EventHandlerTick tickEventHandler;
-	public EventHandlerHUD hudEventHandler;
-	public EventHandlerDrawHighlight drawEventHandler;
-	public RenderEventHandler renderEventHandler;
+	public SteamcraftWorldGenerator worldGen;
 	public File directory;
 
 	public static CreativeTabs tabSC2 = new CreativeTabSteamcraft(CreativeTabs.getNextID(), LibInfo.NAME.toLowerCase()); //TODO: Needs Icon
@@ -86,31 +80,23 @@ public class Steamcraft
 			if (Config.config != null) 
 				Config.save();
 		}
-		this.worldEventHandler = new EventHandlerWorld();
-		this.entityEventHandler = new EventHandlerEntity();
-		this.tickEventHandler = new EventHandlerTick();
-		this.hudEventHandler = new EventHandlerHUD();
-		this.drawEventHandler = new EventHandlerDrawHighlight();
-		this.renderEventHandler = new RenderEventHandler();
-
-		MinecraftForge.EVENT_BUS.register(this.worldEventHandler);
-		MinecraftForge.EVENT_BUS.register(this.entityEventHandler);
-		//MinecraftForge.EVENT_BUS.register(this.tickEventHandler);
-		//MinecraftForge.EVENT_BUS.register(this.hudEventHandler);
-		//MinecraftForge.EVENT_BUS.register(this.drawEventHandler);
-		MinecraftForge.EVENT_BUS.register(this.renderEventHandler);
+		/*
+		 * Do we really need more than one event handler?
+		 */
+		MinecraftForge.EVENT_BUS.register(EventHandlerDrawHighlight.class);
+		MinecraftForge.EVENT_BUS.register(EventHandlerSC2.class);
 
 		//GameRegistry.registerFuelHandler(this.worldEventHandler);
 		//GameRegistry.registerCraftingHandler(this.worldEventHandler);
-		//GameRegistry.registerWorldGenerator(this.worldGen = new SteamcraftWorldGenerator());
+		GameRegistry.registerWorldGenerator(this.worldGen = new SteamcraftWorldGenerator());
 		
 		Config.save();
 		ConfigBlocks.init();
 		ConfigItems.init();
 	
 		proxy.registerDisplayInformation();
+		proxy.registerRenderers();
 
-		//this.worldGen.initialize();
 	}
 
 	@Mod.EventHandler
@@ -119,19 +105,21 @@ public class Steamcraft
 		Config.registerBiomes();
 		ConfigEntities.init();
 		
-		//proxy.registerKeyBindinds();
+		RegisterKeyBindings.init();
+		NetworkRegistry.instance().registerGuiHandler(instance, new GuiHandler());
 	}
 
 	@Mod.EventHandler
 	public void postInit(FMLPostInitializationEvent event)
 	{
-		BiomeDictionary.registerAllBiomes();
+		//Dosn't work! >> BiomeDictionary.registerAllBiomes();
 		ConfigEntities.initEntitySpawns();
 		Config.initModCompatibility();
 		ConfigItems.postInit();
 		//ConfigRecipes.init();
 		Config.initLoot();
 		//LoggerSteamcraft.log(Level.INFO, "SC2 is " + event.getModState());
+		LanguageRegistry.instance().loadLocalization("assets/steamcraft/lang/en_US.lang", "en_US", false);
 	}
 
 	@Mod.EventHandler

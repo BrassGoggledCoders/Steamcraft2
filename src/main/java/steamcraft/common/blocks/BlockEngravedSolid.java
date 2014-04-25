@@ -61,6 +61,7 @@ public class BlockEngravedSolid extends Block
         this.icon[6] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedStone");
         this.icon[7] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedUranium");
         this.icon[8] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedVolucite");
+        //TODO: Add engravings of aluminum, copper, zinc, tin...
     }
 
     public BlockEngravedSolid(int id)

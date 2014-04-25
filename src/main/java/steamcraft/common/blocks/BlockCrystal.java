@@ -41,6 +41,7 @@ public class BlockCrystal extends BlockContainer implements ITileEntityProvider
         this.setResistance(6000000.0F);
         this.setStepSound(Block.soundGlassFootstep);
         this.setCreativeTab(Steamcraft.tabSC2);
+        setUnlocalizedName("blockCrystal");
     }
 
     @Override

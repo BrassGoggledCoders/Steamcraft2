@@ -41,7 +41,8 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 public class BlockCosmeticSolid extends Block
 {
-	private Icon[] icon = new Icon[13];
+	private Icon[] icon = new Icon[5];
+
 	private boolean powered;
 
 	@Override
@@ -50,9 +51,9 @@ public class BlockCosmeticSolid extends Block
 	{
 		if (metadata == 8) // This is for the brass wood. It's kinda messed up. Maybe a separate file would do?
 		{
-			int i = metadata & 12;
+			int i = metadata & 11;
 			int j = metadata & 3;
-			return i == 0 && (side == 1 || side == 0) ? this.icon[9] : (i == 4 && (side == 5 || side == 4) ? this.icon[9] : (i == 8 && (side == 2 || side == 3) ? this.icon[9] : this.icon[8]));
+			return i == 0 && (side == 1 || side == 0) ? this.icon[0] : (i == 4 && (side == 5 || side == 4) ? this.icon[0] : (i == 8 && (side == 2 || side == 3) ? this.icon[0] : this.icon[0]));
 		}
 
 		return this.icon[metadata];
@@ -62,19 +63,11 @@ public class BlockCosmeticSolid extends Block
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister ir)
 	{
-		this.icon[0] = ir.registerIcon(LibInfo.PREFIX + "blockBrass");
-		this.icon[1] = ir.registerIcon(LibInfo.PREFIX + "blockCastIron");
-		this.icon[2] = ir.registerIcon(LibInfo.PREFIX + "blockSlateBricks");
-		this.icon[3] = ir.registerIcon(LibInfo.PREFIX + "blockSlateCobble");
-		this.icon[4] = ir.registerIcon(LibInfo.PREFIX + "blockSlateStone");
-		this.icon[5] = ir.registerIcon(LibInfo.PREFIX + "blockSlateTiles");
-		this.icon[6] = ir.registerIcon(LibInfo.PREFIX + "blockUranium");
-		this.icon[7] = ir.registerIcon(LibInfo.PREFIX + "blockOreZinc");
-		this.icon[8] = ir.registerIcon(LibInfo.PREFIX + "blockBrassLog");
-		this.icon[9] = ir.registerIcon(LibInfo.PREFIX + "blockBrassLogTop");
-		this.icon[10] = ir.registerIcon(LibInfo.PREFIX + "blockBrassLeaves");
-		this.icon[11] = ir.registerIcon(LibInfo.PREFIX + "blockLampOff");
-		this.icon[12] = ir.registerIcon(LibInfo.PREFIX + "blockLampOn");
+		this.icon[0] = ir.registerIcon(LibInfo.PREFIX + "blockBrassLog");
+		this.icon[1] = ir.registerIcon(LibInfo.PREFIX + "blockBrassLogTop");
+		this.icon[2] = ir.registerIcon(LibInfo.PREFIX + "blockBrassLeaves");
+		this.icon[3] = ir.registerIcon(LibInfo.PREFIX + "blockLampOff");
+		this.icon[4] = ir.registerIcon(LibInfo.PREFIX + "blockLampOn");
 	}
 
 	public BlockCosmeticSolid(int id)
@@ -108,12 +101,6 @@ public class BlockCosmeticSolid extends Block
 		list.add(new ItemStack(id, 1, 2));
 		list.add(new ItemStack(id, 1, 3));
 		list.add(new ItemStack(id, 1, 4));
-		list.add(new ItemStack(id, 1, 5));
-		list.add(new ItemStack(id, 1, 6));
-		list.add(new ItemStack(id, 1, 7));
-		list.add(new ItemStack(id, 1, 8));
-		list.add(new ItemStack(id, 1, 10));
-		list.add(new ItemStack(id, 1, 12));
 	}
 
 	@Override
@@ -134,20 +121,6 @@ public class BlockCosmeticSolid extends Block
 			drop.add(new ItemStack(ConfigBlocks.blockCosmetic, 1, 4));
 		case 5:
 			drop.add(new ItemStack(ConfigBlocks.blockCosmetic, 1, 5));
-		case 6:
-			drop.add(new ItemStack(ConfigBlocks.blockCosmetic, 1, 6));
-		case 7:
-			drop.add(new ItemStack(ConfigBlocks.blockCosmetic, 1, 7));
-		case 8:
-			drop.add(new ItemStack(ConfigBlocks.blockCosmetic, 1, 8));
-		case 9:
-			break; // Skips 9 because 9 is just a texture for the Brass Log
-		case 10:
-			drop.add(new ItemStack(ConfigBlocks.blockCosmetic, 1, 10));
-		case 11:
-			drop.add(new ItemStack(ConfigBlocks.blockCosmetic, 1, 11));
-		case 12:
-			drop.add(new ItemStack(ConfigBlocks.blockCosmetic, 1, 12));
 		}
 
 		return drop;

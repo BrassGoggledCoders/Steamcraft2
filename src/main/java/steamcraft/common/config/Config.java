@@ -15,10 +15,7 @@ package steamcraft.common.config;
 
 import java.io.File;
 
-import net.minecraft.block.Block;
-import net.minecraft.item.Item;
 import net.minecraftforge.common.Configuration;
-import net.minecraftforge.fluids.Fluid;
 
 /**
  * @author Surseance (Johnny Eatmon)
@@ -29,7 +26,7 @@ public class Config
 	public static Configuration config;
 	public static final String CATEGORY_ENTITIES = "Entities";
 
-	public static String CATEGORY_GEN_OPTIONS = "generation options";
+	public static String CATEGORY_GEN_OPTIONS = "Generation";
 	
 	public static int blockCustomOreId;
 	public static int blockCosmeticId;
@@ -40,17 +37,53 @@ public class Config
 	public static int blockCastIronLampIId;
 	public static int blockCastIronLampAId;
 	public static int blockSteamFluidId;
+	public static int blockSteamBoilerId;	
+	public static int blockMetalId;
+	public static int blockHatchId;
+	public static int blockSlateId;
 	
+	//Item Tools(sort of)
 	public static int itemMechanicalId;
     public static int itemResourceId;
     public static int itemWatchId;
     public static int itemTeaSeedId;
     public static int itemChiselId;
-    public static int itemGogglesId;
     
+    //Armor
+    public static int itemGogglesId;
+    public static int itemAqualungId;
+    public static int itemLegBracesId;
+    public static int itemRollerSkatesId;
+    
+    public static int itemSteamJetpackId;
+    
+    public static int itemHelmetEtheriumId;
+    public static int itemPlateEtheriumId;
+    public static int itemLegsEtheriumId;
+    public static int itemBootsEtheriumId;
+    
+	public static int itemHelmetObsidianId;
+	public static int itemPlateObsidianId;
+	public static int itemLegsObsidianId;
+	public static int itemBootsObsidianId;
+    
+	//Items
+    public static int itemTeacupEmptyId;
+    public static int itemTeacupFullId;
+    public static int itemKettleEmptyId;
+    public static int itemKettleHotId;
+    public static int itemKettleColdId;
+    public static int itemGunPartsId;
+    
+    //Canisters
+    public static int itemCanisterEmptyId;
+    public static int itemCanisterSteamId;
+    public static int itemCanisterGasId;
+    
+    //Entities
     public static int entBulletId;
 
-    /*POWER TO THE END USER!*/
+    /* POWER TO THE END USER! Good heaves... */
     public static int etheriumChance;
     public static int uraniumChance;
     public static int brimstoneChance;
@@ -109,14 +142,43 @@ public class Config
 		blockCastIronLampIId = config.getBlock("BlockCastIronLamp (OFF)", bIdx++).getInt();
 		blockCastIronLampAId = config.getBlock("BlockCastIronLamp (ON)", bIdx++).getInt();
 		blockSteamFluidId = config.getBlock("BlockSteamFluid", bIdx++).getInt();
+		blockSteamBoilerId = config.getBlock("BlockSteamBoiler", bIdx++).getInt();
+		blockMetalId = config.getBlock("BlockMetal", bIdx++).getInt();
+		blockHatchId = config.getBlock("BlockHatch", bIdx++).getInt();
+		blockSlateId = config.getBlock("BlockSlate", bIdx++).getInt();
 		
 		int iIdx = 27000;
+		//Item Tools(sort of)
 		itemMechanicalId = config.getItem("ItemMechanical", iIdx++).getInt();
 		itemResourceId = config.getItem("ItemResource", iIdx++).getInt();
 		itemWatchId = config.getItem("ItemWatch", iIdx++).getInt();
 		itemTeaSeedId = config.getItem("ItemTeaSeed", iIdx++).getInt();
 		itemChiselId = config.getItem("ItemChisel", iIdx++).getInt();
-		itemGogglesId = config.getItem("ItemCustomArmor", iIdx++).getInt();
+		
+		//Armor
+		itemGogglesId = config.getItem("ItemBrassGoggles", iIdx++).getInt();
+		itemAqualungId = config.getItem("ItemAqualung", iIdx++).getInt();
+		itemLegBracesId = config.getItem("ItemLegBraces", iIdx++).getInt();
+		itemRollerSkatesId = config.getItem("ItemRollerSkates", iIdx++).getInt();
+		
+		itemSteamJetpackId = config.getItem("ItemBrassJetpack", iIdx++).getInt();
+		
+		itemHelmetEtheriumId = config.getItem("ItemHelmetEtherium", iIdx++).getInt();
+		itemPlateEtheriumId = config.getItem("ItemPlateEtherium", iIdx++).getInt();
+		itemLegsEtheriumId = config.getItem("ItemLegsEtherium", iIdx++).getInt();
+		itemBootsEtheriumId = config.getItem("ItemBootsEtherium", iIdx++).getInt();
+		
+		itemHelmetObsidianId = config.getItem("ItemHelmetObsidian", iIdx++).getInt();
+		itemPlateObsidianId = config.getItem("ItemPlateObsidian", iIdx++).getInt();
+		itemLegsObsidianId = config.getItem("ItemLegsObsidian", iIdx++).getInt();
+		itemBootsObsidianId = config.getItem("ItemBootsObsidian", iIdx++).getInt();
+		
+		//Items
+		itemTeacupEmptyId = config.getItem("ItemLiquidFood", iIdx++).getInt();
+		itemCanisterEmptyId = config.getItem("ItemCanisterEmpty", iIdx++).getInt();
+		itemCanisterSteamId = config.getItem("ItemCanisterSteam", iIdx++).getInt();
+		itemCanisterGasId = config.getItem("ItemCanisterGas", iIdx++).getInt();
+		
 		etheriumChance = config.get(CATEGORY_GEN_OPTIONS, "Chance of Etherium Ore Generation. (Higher value = more ore. 0 disables.)", 1).getInt();
         uraniumChance = config.get(CATEGORY_GEN_OPTIONS, "Chance of Uranium Ore Generation", 3).getInt();
         brimstoneChance = config.get(CATEGORY_GEN_OPTIONS, "Chance of Brimstone Ore Generation", 10).getInt();
@@ -139,22 +201,22 @@ public class Config
         zincHeight = config.get(CATEGORY_GEN_OPTIONS, "Height of Zinc Ore Generation", 36).getInt();
         netherEtheriumCrystalHeight = config.get(CATEGORY_GEN_OPTIONS, "Height of Etherium Crystal Generation in the Nether", 36).getInt();
         endEtheriumCrystalHeight = config.get(CATEGORY_GEN_OPTIONS, "Height of Etherium Crystal Generation in the End", 36).getInt();
-        generationEnabled = config.get(CATEGORY_GEN_OPTIONS, "Will disable ALL SC2 World Gen completly", true).getBoolean(true);
-        overworldGenerationEnabled = config.get(CATEGORY_GEN_OPTIONS, "Will disable all SC2 World Gen in the Overworld", true).getBoolean(true);
-        netherGenerationEnabled = config.get(CATEGORY_GEN_OPTIONS, "Will disable all SC2 World Gen in the Nether", true).getBoolean(true);
-        endGenerationEnabled = config.get(CATEGORY_GEN_OPTIONS, "Will disable all SC2 World Gen in the End", true).getBoolean(true);
-        oreGenerationEnabled = config.get(CATEGORY_GEN_OPTIONS, "Will disable all SC2 Ore Gen", true).getBoolean(true);
-        etheriumOreGenEnabled = config.get(CATEGORY_GEN_OPTIONS, "Will disable Etherium Ore Generation", true).getBoolean(true);
-        uraniumOreGenEnabled = config.get(CATEGORY_GEN_OPTIONS, "Will disable Uranium Ore Generation", true).getBoolean(true);
-        brimstoneOreGenEnabled = config.get(CATEGORY_GEN_OPTIONS, "Will disable Brimstone Ore Generation", true).getBoolean(true);
-        borniteOreGenEnabled = config.get(CATEGORY_GEN_OPTIONS, "Will disable Bornite Ore Generation", true).getBoolean(true);
-        phosphateOreGenEnabled = config.get(CATEGORY_GEN_OPTIONS, "Will disable Phosphate Ore Generation", true).getBoolean(true);
-        aluminumOreGenEnabled = config.get(CATEGORY_GEN_OPTIONS, "Will disable Aluminum Ore Generation", true).getBoolean(true);
-        copperOreGenEnabled = config.get(CATEGORY_GEN_OPTIONS, "Will disable Copper Ore Generation", true).getBoolean(true);
-        tinOreGenEnabled = config.get(CATEGORY_GEN_OPTIONS, "Will disable Tin Ore Generation", true).getBoolean(true);
-        zincOreGenEnabled = config.get(CATEGORY_GEN_OPTIONS, "Will disable Zinc Ore Generation", true).getBoolean(true);
-        netherEtheriumCrystalGenEnabled = config.get(CATEGORY_GEN_OPTIONS, "Will disable Etherium Crystal Generation in the Nether", true).getBoolean(true);
-        endEtheriumCrystalGenEnabled = config.get(CATEGORY_GEN_OPTIONS, "Will disable Etherium Crystal Generation in the End", true).getBoolean(true);
+        generationEnabled = config.get(CATEGORY_GEN_OPTIONS, " ALL SC2 World Gen, everywhere", true).getBoolean(true);
+        overworldGenerationEnabled = config.get(CATEGORY_GEN_OPTIONS, "SC2 World Gen in the Overworld", true).getBoolean(true);
+        netherGenerationEnabled = config.get(CATEGORY_GEN_OPTIONS, "SC2 World Gen in the Nether", true).getBoolean(true);
+        endGenerationEnabled = config.get(CATEGORY_GEN_OPTIONS, "SC2 World Gen in the End", true).getBoolean(true);
+        oreGenerationEnabled = config.get(CATEGORY_GEN_OPTIONS, "SC2 Ore Gen", true).getBoolean(true);
+        etheriumOreGenEnabled = config.get(CATEGORY_GEN_OPTIONS, "Etherium Ore Generation", true).getBoolean(true);
+        uraniumOreGenEnabled = config.get(CATEGORY_GEN_OPTIONS, "Uranium Ore Generation", true).getBoolean(true);
+        brimstoneOreGenEnabled = config.get(CATEGORY_GEN_OPTIONS, "Brimstone Ore Generation", true).getBoolean(true);
+        borniteOreGenEnabled = config.get(CATEGORY_GEN_OPTIONS, "Bornite Ore Generation", true).getBoolean(true);
+        phosphateOreGenEnabled = config.get(CATEGORY_GEN_OPTIONS, "Phosphate Ore Generation", true).getBoolean(true);
+        aluminumOreGenEnabled = config.get(CATEGORY_GEN_OPTIONS, "Aluminum Ore Generation", true).getBoolean(true);
+        copperOreGenEnabled = config.get(CATEGORY_GEN_OPTIONS, "Copper Ore Generation", true).getBoolean(true);
+        tinOreGenEnabled = config.get(CATEGORY_GEN_OPTIONS, "Tin Ore Generation", true).getBoolean(true);
+        zincOreGenEnabled = config.get(CATEGORY_GEN_OPTIONS, "Zinc Ore Generation", true).getBoolean(true);
+        netherEtheriumCrystalGenEnabled = config.get(CATEGORY_GEN_OPTIONS, "Etherium Crystal Generation in the Nether", true).getBoolean(true);
+        endEtheriumCrystalGenEnabled = config.get(CATEGORY_GEN_OPTIONS, "Etherium Crystal Generation in the End", true).getBoolean(true);
 
 	}
 

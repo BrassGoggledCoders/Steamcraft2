@@ -5,6 +5,7 @@ import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.util.Icon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.fluids.BlockFluidClassic;
 import net.minecraftforge.fluids.BlockFluidFinite;
 import net.minecraftforge.fluids.Fluid;
 import steamcraft.common.Steamcraft;
@@ -12,13 +13,12 @@ import steamcraft.common.lib.LibInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockFluidSteam extends BlockFluidFinite
+public class BlockFluidSteam extends BlockFluidClassic 
 {
-
-    @SideOnly(Side.CLIENT)
-    protected Icon stillIcon;
-    @SideOnly(Side.CLIENT)
-    protected Icon flowingIcon;
+	@SideOnly(Side.CLIENT)
+	protected Icon stillIcon;
+	@SideOnly(Side.CLIENT)
+	protected Icon flowingIcon;
     
     public BlockFluidSteam(Fluid fluid, Material material) 
     {
@@ -38,7 +38,7 @@ public class BlockFluidSteam extends BlockFluidFinite
     public void registerIcons(IconRegister register) 
     {
             stillIcon = register.registerIcon(LibInfo.PREFIX + "steamStill");
-            flowingIcon = register.registerIcon(LibInfo.PREFIX + "flowingIcon");
+            flowingIcon = register.registerIcon(LibInfo.PREFIX + "steamFlowing");
     }
     
     @Override
