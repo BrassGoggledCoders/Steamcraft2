@@ -83,4 +83,9 @@ public class ItemResource extends Item
 		list.add(new ItemStack(id, 1, 10));
 		list.add(new ItemStack(id, 1, 11));
 	}
+    @Override
+    public String getUnlocalizedName(ItemStack is)
+    {
+        return super.getUnlocalizedName() + "." + is.getItemDamage();
+    }
 }
