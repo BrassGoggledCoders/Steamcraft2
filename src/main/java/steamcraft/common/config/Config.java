@@ -113,8 +113,6 @@ public class Config
 	public static boolean zincOreGenEnabled;
 	public static boolean netherEtheriumCrystalGenEnabled;
 	public static boolean endEtheriumCrystalGenEnabled;
-	
-	public static boolean warn;
 
 	public static void initialize(File file)
 	{
@@ -202,9 +200,6 @@ public class Config
         zincOreGenEnabled = config.get(CATEGORY_GEN_OPTIONS, "Zinc Ore Generation", true).getBoolean(true);
         netherEtheriumCrystalGenEnabled = config.get(CATEGORY_GEN_OPTIONS, "Etherium Crystal Generation in the Nether", true).getBoolean(true);
         endEtheriumCrystalGenEnabled = config.get(CATEGORY_GEN_OPTIONS, "Etherium Crystal Generation in the End", true).getBoolean(true);
-        
-        warn = config.get("general", "Wether to warn the user on startup.", true).getBoolean(true);
-
 	}
 
 	public static void save()
