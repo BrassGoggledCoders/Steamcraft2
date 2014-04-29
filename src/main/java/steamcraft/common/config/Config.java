@@ -44,6 +44,7 @@ public class Config
 	
 	public static int itemMechanicalId;
     public static int itemResourceId;
+	public static int itemIngotId;
     public static int itemWatchId;
     public static int itemTeaSeedId;
     public static int itemChiselId;
@@ -72,7 +73,7 @@ public class Config
     
     public static int entBulletId;
 
-    /* POWER TO THE END USER! Good heaves... */
+    /* POWER TO THE END USER! Good heavens... */
     public static int etheriumChance;
     public static int uraniumChance;
     public static int brimstoneChance;
@@ -139,6 +140,7 @@ public class Config
 		int iIdx = 27000;
 		itemMechanicalId = config.getItem("ItemMechanical", iIdx++).getInt();
 		itemResourceId = config.getItem("ItemResource", iIdx++).getInt();
+		itemIngotId = config.getItem("ItemIngot", iIdx++).getInt();
 		itemWatchId = config.getItem("ItemWatch", iIdx++).getInt();
 		itemTeaSeedId = config.getItem("ItemTeaSeed", iIdx++).getInt();
 		itemChiselId = config.getItem("ItemChisel", iIdx++).getInt();

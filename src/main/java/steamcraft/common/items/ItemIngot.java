@@ -26,11 +26,11 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 /**
- * @author Surseance (Johnny Eatmon)
+ * @author warlordjones
  */
-public class ItemResource extends Item
+public class ItemIngot extends Item
 {
-    public Icon[] icon = new Icon[12];
+    public Icon[] icon = new Icon[8];
 
     @Override
     @SideOnly(Side.CLIENT)
@@ -43,19 +43,17 @@ public class ItemResource extends Item
     @SideOnly(Side.CLIENT)
     public void registerIcons(IconRegister ir)
     {
-        this.icon[0] = ir.registerIcon(LibInfo.PREFIX + "itemCrystal");
-        this.icon[1] = ir.registerIcon(LibInfo.PREFIX + "itemChemSalt");
-        this.icon[2] = ir.registerIcon(LibInfo.PREFIX + "itemBornite");
-        this.icon[3] = ir.registerIcon(LibInfo.PREFIX + "itemSlate");
-        this.icon[6] = ir.registerIcon(LibInfo.PREFIX + "itemBulb");
-        this.icon[7] = ir.registerIcon(LibInfo.PREFIX + "itemPhosphorus");
-        this.icon[8] = ir.registerIcon(LibInfo.PREFIX + "itemUranium");
-        this.icon[9] = ir.registerIcon(LibInfo.PREFIX + "itemPellet");
-        this.icon[10] = ir.registerIcon(LibInfo.PREFIX + "itemReactorCore");
-        this.icon[11] = ir.registerIcon(LibInfo.PREFIX + "itemTeaLeaves");
+        this.icon[0] = ir.registerIcon(LibInfo.PREFIX + "itemIngotAluminum");
+        this.icon[1] = ir.registerIcon(LibInfo.PREFIX + "itemIngotCopper");
+        this.icon[2] = ir.registerIcon(LibInfo.PREFIX + "itemIngotTin");
+        this.icon[3] = ir.registerIcon(LibInfo.PREFIX + "itemIngotZinc");
+        this.icon[4] = ir.registerIcon(LibInfo.PREFIX + "itemIngotBrass");
+        this.icon[5] = ir.registerIcon(LibInfo.PREFIX + "itemIngotBronze");
+        this.icon[6] = ir.registerIcon(LibInfo.PREFIX + "itemIngotSteel");
+        this.icon[7] = ir.registerIcon(LibInfo.PREFIX + "itemIngotCastIron");
     }
 
-    public ItemResource(int id)
+    public ItemIngot(int id)
     {
     	super(id);
         this.setMaxStackSize(64);
@@ -76,10 +74,6 @@ public class ItemResource extends Item
 		list.add(new ItemStack(id, 1, 5));
 		list.add(new ItemStack(id, 1, 6));
 		list.add(new ItemStack(id, 1, 7));
-		list.add(new ItemStack(id, 1, 8));
-		list.add(new ItemStack(id, 1, 9));
-		list.add(new ItemStack(id, 1, 10));
-		list.add(new ItemStack(id, 1, 11));
 	}
     @Override
     public String getUnlocalizedName(ItemStack is)
