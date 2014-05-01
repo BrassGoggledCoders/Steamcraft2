@@ -161,6 +161,10 @@ public class Config
 		itemBootsObsidianId = config.getItem("ItemBootsObsidian", iIdx++).getInt();
 		
 		itemTeacupEmptyId = config.getItem("ItemTeacup", iIdx++).getInt();
+		itemTeacupFullId = config.getItem("ItemTeacupFull", iIdx++).getInt();
+		itemKettleEmptyId = config.getItem("ItemKettle", iIdx++).getInt();
+		itemKettleColdId = config.getItem("ItemKettleCold", iIdx++).getInt();
+		itemKettleHotId = config.getItem("ItemKettleHot", iIdx++).getInt();
 		
 		etheriumChance = config.get(CATEGORY_GEN_OPTIONS, "Chance of Etherium Ore Generation. (Higher value = more ore. 0 disables.)", 1).getInt();
         uraniumChance = config.get(CATEGORY_GEN_OPTIONS, "Chance of Uranium Ore Generation", 3).getInt();
