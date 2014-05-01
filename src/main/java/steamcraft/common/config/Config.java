@@ -140,6 +140,7 @@ public class Config
 		int iIdx = 27000;
 		itemMechanicalId = config.getItem("ItemMechanical", iIdx++).getInt();
 		itemResourceId = config.getItem("ItemResource", iIdx++).getInt();
+		itemGunPartsId = config.getItem("ItemGunParts", iIdx++).getInt();
 		itemIngotId = config.getItem("ItemIngot", iIdx++).getInt();
 		itemWatchId = config.getItem("ItemWatch", iIdx++).getInt();
 		itemTeaSeedId = config.getItem("ItemTeaSeed", iIdx++).getInt();
