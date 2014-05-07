@@ -50,7 +50,7 @@ public class BlockMetal extends Block{
         this.icon[0] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockBrass");
         this.icon[1] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockBronze");
         this.icon[2] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockSteel");
-        this.icon[3] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockUranite");
+        this.icon[3] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockUranium");
         this.icon[4] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockAluminum");
         this.icon[5] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockCopper");
         this.icon[6] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockTin");

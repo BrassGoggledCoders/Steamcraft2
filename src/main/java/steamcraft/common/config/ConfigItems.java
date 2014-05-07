@@ -14,17 +14,7 @@
 package steamcraft.common.config;
 
 import net.minecraft.item.Item;
-import steamcraft.common.items.ItemCanister;
-import steamcraft.common.items.ItemChisel;
-import steamcraft.common.items.ItemGunParts;
-import steamcraft.common.items.ItemKettle;
-import steamcraft.common.items.ItemMechanical;
-import steamcraft.common.items.ItemMisc;
-import steamcraft.common.items.ItemResource;
-import steamcraft.common.items.ItemTeaSeed;
-import steamcraft.common.items.ItemTeacup;
-import steamcraft.common.items.ItemWatch;
-import steamcraft.common.items.armor.ItemSteamJetpack;
+import steamcraft.common.items.*;
 import steamcraft.common.items.armor.ItemCustomArmor;
 import steamcraft.common.items.armor.ItemNormalArmor;
 import steamcraft.common.lib.LibInfo;
@@ -39,7 +29,7 @@ public class ConfigItems
 {
 	//Item Tools(sort of)
     public static Item itemMechanical;
-    public static Item itemResource;
+    public static Item itemResource, itemIngot;
     public static Item itemWatch;
     public static Item itemTeaSeed;
     public static Item itemChisel;
@@ -93,6 +83,7 @@ public class ConfigItems
 		GameRegistry.registerItem(itemMechanical, "ItemMechanical", LibInfo.ID);
 		itemResource = new ItemResource(Config.itemResourceId).setUnlocalizedName("itemResource");
 		GameRegistry.registerItem(itemResource, "ItemResource", LibInfo.ID);
+		itemIngot = new ItemIngot(Config.itemIngotId).setUnlocalizedName("itemIngot");
 		itemWatch = new ItemWatch(Config.itemWatchId).setUnlocalizedName("itemWatch");
 		GameRegistry.registerItem(itemWatch, "ItemWatch", LibInfo.ID);
 		itemTeaSeed = new ItemTeaSeed(Config.itemTeaSeedId).setUnlocalizedName("itemTeaSeed");

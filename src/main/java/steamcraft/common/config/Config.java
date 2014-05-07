@@ -45,6 +45,7 @@ public class Config
 	//Item Tools(sort of)
 	public static int itemMechanicalId;
     public static int itemResourceId;
+	public static int itemIngotId;
     public static int itemWatchId;
     public static int itemTeaSeedId;
     public static int itemChiselId;
@@ -83,7 +84,7 @@ public class Config
     //Entities
     public static int entBulletId;
 
-    /* POWER TO THE END USER! Good heaves... */
+    /* POWER TO THE END USER! Good heavens... */
     public static int etheriumChance;
     public static int uraniumChance;
     public static int brimstoneChance;
@@ -151,6 +152,8 @@ public class Config
 		//Item Tools(sort of)
 		itemMechanicalId = config.getItem("ItemMechanical", iIdx++).getInt();
 		itemResourceId = config.getItem("ItemResource", iIdx++).getInt();
+		itemGunPartsId = config.getItem("ItemGunParts", iIdx++).getInt();
+		itemIngotId = config.getItem("ItemIngot", iIdx++).getInt();
 		itemWatchId = config.getItem("ItemWatch", iIdx++).getInt();
 		itemTeaSeedId = config.getItem("ItemTeaSeed", iIdx++).getInt();
 		itemChiselId = config.getItem("ItemChisel", iIdx++).getInt();
@@ -172,12 +175,17 @@ public class Config
 		itemPlateObsidianId = config.getItem("ItemPlateObsidian", iIdx++).getInt();
 		itemLegsObsidianId = config.getItem("ItemLegsObsidian", iIdx++).getInt();
 		itemBootsObsidianId = config.getItem("ItemBootsObsidian", iIdx++).getInt();
-		
+        
 		//Items
 		itemTeacupEmptyId = config.getItem("ItemLiquidFood", iIdx++).getInt();
 		itemCanisterEmptyId = config.getItem("ItemCanisterEmpty", iIdx++).getInt();
 		itemCanisterSteamId = config.getItem("ItemCanisterSteam", iIdx++).getInt();
 		itemCanisterGasId = config.getItem("ItemCanisterGas", iIdx++).getInt();
+		itemTeacupEmptyId = config.getItem("ItemTeacup", iIdx++).getInt();
+		itemTeacupFullId = config.getItem("ItemTeacupFull", iIdx++).getInt();
+		itemKettleEmptyId = config.getItem("ItemKettle", iIdx++).getInt();
+		itemKettleColdId = config.getItem("ItemKettleCold", iIdx++).getInt();
+		itemKettleHotId = config.getItem("ItemKettleHot", iIdx++).getInt();
 		
 		etheriumChance = config.get(CATEGORY_GEN_OPTIONS, "Chance of Etherium Ore Generation. (Higher value = more ore. 0 disables.)", 1).getInt();
         uraniumChance = config.get(CATEGORY_GEN_OPTIONS, "Chance of Uranium Ore Generation", 3).getInt();
@@ -217,7 +225,6 @@ public class Config
         zincOreGenEnabled = config.get(CATEGORY_GEN_OPTIONS, "Zinc Ore Generation", true).getBoolean(true);
         netherEtheriumCrystalGenEnabled = config.get(CATEGORY_GEN_OPTIONS, "Etherium Crystal Generation in the Nether", true).getBoolean(true);
         endEtheriumCrystalGenEnabled = config.get(CATEGORY_GEN_OPTIONS, "Etherium Crystal Generation in the End", true).getBoolean(true);
-
 	}
 
 	public static void save()

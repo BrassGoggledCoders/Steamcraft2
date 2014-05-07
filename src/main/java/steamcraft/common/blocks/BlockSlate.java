@@ -40,7 +40,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 public class BlockSlate extends Block
 {
-	private Icon[] icon = new Icon[11];
+	private Icon[] icon = new Icon[9];
 
 	@Override
 	@SideOnly(Side.CLIENT)
