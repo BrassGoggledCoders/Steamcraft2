@@ -16,6 +16,7 @@ package steamcraft.client.renderers.tile;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
+import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 
@@ -79,7 +80,7 @@ public class TileCastIronLampRenderer extends TileEntitySpecialRenderer
 
 		GL11.glTranslatef(0.0F, -0.3125F, -0.4375F);
 
-		if ((block == Block.torchRedstoneActive) || (block == Block.torchRedstoneIdle))
+		if ((block == Blocks.redstone_torch))
 		{
 			lampModelTop.bracketWide.showModel = false;
 			lampModelTop.crossbarLeft.showModel = false;
@@ -87,7 +88,7 @@ public class TileCastIronLampRenderer extends TileEntitySpecialRenderer
 			lampModelSide.crossbarLeft.showModel = false;
 			lampModelSide.crossbarRight.showModel = false;
 		} 
-		else if (block == Block.torchWood)
+		else if (block == Blocks.torch)
 		{
 			lampModelTop.bracketWide.showModel = true;
 			lampModelTop.crossbarLeft.showModel = true;

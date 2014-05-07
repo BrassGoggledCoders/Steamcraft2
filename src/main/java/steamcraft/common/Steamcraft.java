@@ -17,9 +17,7 @@ import java.io.File;
 import java.util.logging.Level;
 
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.MinecraftForge;
-import steamcraft.client.RegisterKeyBindings;
 import steamcraft.client.gui.GuiHandler;
 import steamcraft.client.lib.RenderEventHandler;
 import steamcraft.common.config.Config;
@@ -35,7 +33,6 @@ import steamcraft.common.lib.events.EventHandlerHUD;
 import steamcraft.common.lib.events.EventHandlerTick;
 import steamcraft.common.lib.events.EventHandlerWorld;
 import steamcraft.common.lib.network.LoggerSteamcraft;
-import steamcraft.common.lib.network.PacketHandler;
 import steamcraft.common.lib.world.SteamcraftWorldGenerator;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
@@ -43,7 +40,6 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
-import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
@@ -53,7 +49,6 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
  *
  */
 @Mod(modid = LibInfo.ID, name = LibInfo.NAME, version = LibInfo.VERSION)
-@NetworkMod(clientSideRequired = false, serverSideRequired = true, channels = {PacketHandler.SC2_CHANNEL}, packetHandler = PacketHandler.class)
 public class Steamcraft
 {
 	@SidedProxy(clientSide = LibInfo.CLIENT_PROXY, serverSide = LibInfo.COMMON_PROXY)
@@ -107,7 +102,7 @@ public class Steamcraft
 
 		//GameRegistry.registerFuelHandler(this.worldEventHandler);
 		//GameRegistry.registerCraftingHandler(this.worldEventHandler);
-		GameRegistry.registerWorldGenerator(this.worldGen = new SteamcraftWorldGenerator());
+		GameRegistry.registerWorldGenerator(this.worldGen = new SteamcraftWorldGenerator(), 0);
 		
 		Config.save();
 		ConfigBlocks.init();
@@ -124,7 +119,7 @@ public class Steamcraft
 		ConfigEntities.init();
 		
 		//RegisterKeyBindings.init();
-		NetworkRegistry.instance().registerGuiHandler(this.instance, new GuiHandler());
+		//NetworkRegistry.instance().registerGuiHandler(this.instance, new GuiHandler());
 	}
 
 	@Mod.EventHandler

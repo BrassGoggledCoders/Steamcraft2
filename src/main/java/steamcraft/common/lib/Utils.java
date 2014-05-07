@@ -22,19 +22,19 @@ import java.util.Properties;
 import java.util.Random;
 import java.util.logging.Level;
 
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ThreadDownloadImageData;
-import net.minecraft.client.renderer.texture.TextureObject;
+import net.minecraft.client.renderer.texture.ITextureObject;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import steamcraft.api.coord.Coord;
-import steamcraft.client.fx.FXLaser;
 import steamcraft.common.config.ConfigBlocks;
 import steamcraft.common.config.ConfigItems;
 import steamcraft.common.lib.network.LoggerSteamcraft;
-import cpw.mods.fml.client.FMLClientHandler;
 
 /**
  * @author Surseance (Johnny Eatmon)
@@ -121,7 +121,7 @@ public class Utils
 		{
 			try {	
 				ThreadDownloadImageData imageData = new ThreadDownloadImageData("https://www.dropbox.com/s/cicvp1u0kq9xtbp/steamcraft_cape_1.png", null, null);
-				Minecraft.getMinecraft().getTextureManager().loadTexture((new ResourceLocation("cloaks/" + username)), (TextureObject)imageData);
+				Minecraft.getMinecraft().getTextureManager().loadTexture((new ResourceLocation("cloaks/" + username)), (ITextureObject)imageData);
 			} catch (Exception e) {
 				LoggerSteamcraft.log(Level.INFO, "Unable to load capes");
 			}
@@ -163,49 +163,11 @@ public class Utils
 		}
 	}
 
-	private void spawnParticles(Coord cnt, Coord move, World world, int half, double r, double g, double b)
-	{
-		double shift = 0;
-		
-		if (half == 0) 
-			shift = -0.5D + this.random.nextFloat() * 1.0D;
-		if (half == 1)
-			shift = -this.random.nextFloat() * 0.5D;
-		if (half == 2) 
-			shift = this.random.nextFloat() * 0.5D;
-
-		double dx = cnt.x + 0.5D;
-		double dy = cnt.y + 0.5D;
-		double dz = cnt.z + 0.5D;
-
-		double dmx, dmy, dmz;
-
-		dmx = dx;
-		dmy = dy;
-		dmz = dz;
-
-		if (move.x > 0) 
-			dmx = dx + shift;
-		if (move.y > 0)
-			dmy = dy + shift;
-		if (move.z > 0) 
-			dmz = dz + shift;
-
-		if (move.x < 0)
-			dmx = dx - shift;
-		if (move.y < 0)
-			dmy = dy - shift;
-		if (move.z < 0)
-			dmz = dz - shift;
-
-		FMLClientHandler.instance().getClient().effectRenderer.addEffect(new FXLaser(world, dmx, dmy, dmz, (float) r, (float) g, (float) b, move.x, move.y, move.z, half));
-	}
-
 	private ItemStack fillBucket(World world, MovingObjectPosition mop) 
 	{
-		int bid = world.getBlockId(mop.blockX, mop.blockY, mop.blockZ);
+		Block block = world.getBlock(mop.blockX, mop.blockY, mop.blockZ);
 
-		if ((bid == ConfigBlocks.blockSteam.blockID) && (world.getBlockMetadata(mop.blockX, mop.blockY, mop.blockZ) == 0)) 
+		if ((block == ConfigBlocks.blockSteam) && (world.getBlockMetadata(mop.blockX, mop.blockY, mop.blockZ) == 0)) 
 		{
 			world.setBlockToAir(mop.blockX, mop.blockY, mop.blockZ);
 			return new ItemStack(ConfigItems.itemBucketSteam);
@@ -214,5 +176,13 @@ public class Utils
 		{
 			return null;
 		}
+	}
+	
+	public static Material getBlockMaterial(IBlockAccess world, int x, int y, int z)
+	{
+		if (world.getBlock(x, y, z) != null)
+			return world.getBlock(x, y, z).getMaterial();
+		
+		return Material.air;
 	}
 }

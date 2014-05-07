@@ -15,7 +15,8 @@ package steamcraft.common.items;
 
 import java.util.Random;
 
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.block.Block;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -34,14 +35,13 @@ public class ItemChisel extends Item
 {
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister ir)
+	public void registerIcons(IIconRegister ir)
 	{
 		this.itemIcon = ir.registerIcon(LibInfo.PREFIX + "itemChisel");
 	}
 	
-	public ItemChisel(int id)
+	public ItemChisel()
 	{
-		super(id);
 		this.setMaxStackSize(1);
 		this.setMaxDamage(21);
 		this.bFull3D = true;
@@ -51,7 +51,7 @@ public class ItemChisel extends Item
 	@Override
 	public boolean onItemUse(ItemStack is, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ)
 	{
-		int bid = world.getBlockId(x, y, z);
+		Block block = world.getBlock(x, y, z);
 
 		/*
 		if(bid == Block.blockIron.blockID)

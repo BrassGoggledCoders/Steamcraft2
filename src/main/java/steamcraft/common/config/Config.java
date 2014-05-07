@@ -15,10 +15,7 @@ package steamcraft.common.config;
 
 import java.io.File;
 
-import net.minecraft.block.Block;
-import net.minecraft.item.Item;
-import net.minecraftforge.common.Configuration;
-import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.common.config.Configuration;
 
 /**
  * @author Surseance (Johnny Eatmon)
@@ -28,28 +25,7 @@ public class Config
 {
 	public static Configuration config;
 	public static final String CATEGORY_ENTITIES = "Entities";
-
-	public static String CATEGORY_GEN_OPTIONS = "generation options";
-	
-	public static int blockCustomOreId;
-	public static int blockCosmeticId;
-	public static int blockEngravedId;
-	public static int blockCastIronFenceId;
-	public static int blockCastIronGateId;
-	public static int blockCrystalId;
-	public static int blockCastIronLampIId;
-	public static int blockCastIronLampAId;
-	public static int blockSteamFluidId;
-	public static int blockSteamBoilerId;	
-	public static int blockMetalId;
-	public static int blockSteamPipeId;
-	
-	public static int itemMechanicalId;
-    public static int itemResourceId;
-    public static int itemWatchId;
-    public static int itemTeaSeedId;
-    public static int itemChiselId;
-    public static int itemGogglesId;
+	public static final String CATEGORY_GEN_OPTIONS = "generation options";
     
     public static int entBulletId;
 
@@ -102,28 +78,6 @@ public class Config
 		int eIdx = 300;
 		entBulletId = config.get("Entities", "bullet", eIdx++).getInt();
 		
-		int bIdx = 2600;
-		blockCustomOreId = config.getBlock("BlockCustomOre", bIdx++).getInt();
-		blockCosmeticId = config.getBlock("BlockCosmeticSolid", bIdx++).getInt();
-		blockEngravedId = config.getBlock("BlockEngravedSolid", bIdx++).getInt();
-		blockCastIronFenceId = config.getBlock("BlockCastIronFence", bIdx++).getInt();
-		blockCastIronGateId = config.getBlock("BlockCastIronGate", bIdx++).getInt();
-		blockCrystalId = config.getBlock("BlockCrystal", bIdx++).getInt();
-		blockCastIronLampIId = config.getBlock("BlockCastIronLamp (OFF)", bIdx++).getInt();
-		blockCastIronLampAId = config.getBlock("BlockCastIronLamp (ON)", bIdx++).getInt();
-		blockSteamFluidId = config.getBlock("BlockSteamFluid", bIdx++).getInt();
-		blockSteamBoilerId = config.getBlock("BlockSteamBoiler", bIdx++).getInt();
-		blockMetalId = config.getBlock("BlockMetal", bIdx++).getInt();
-		blockSteamPipeId = config.getBlock("BlockSteamPipe", bIdx++).getInt();
-		
-		int iIdx = 27000;
-		itemMechanicalId = config.getItem("ItemMechanical", iIdx++).getInt();
-		itemResourceId = config.getItem("ItemResource", iIdx++).getInt();
-		itemWatchId = config.getItem("ItemWatch", iIdx++).getInt();
-		itemTeaSeedId = config.getItem("ItemTeaSeed", iIdx++).getInt();
-		itemChiselId = config.getItem("ItemChisel", iIdx++).getInt();
-		itemGogglesId = config.getItem("ItemCustomArmor", iIdx++).getInt();
-		
 		etheriumChance = config.get(CATEGORY_GEN_OPTIONS, "Chance of Etherium Ore Generation. (Higher value = more ore. 0 disables.)", 1).getInt();
         uraniumChance = config.get(CATEGORY_GEN_OPTIONS, "Chance of Uranium Ore Generation", 3).getInt();
         brimstoneChance = config.get(CATEGORY_GEN_OPTIONS, "Chance of Brimstone Ore Generation", 10).getInt();
@@ -162,7 +116,6 @@ public class Config
         zincOreGenEnabled = config.get(CATEGORY_GEN_OPTIONS, "Zinc Ore Generation", true).getBoolean(true);
         netherEtheriumCrystalGenEnabled = config.get(CATEGORY_GEN_OPTIONS, "Etherium Crystal Generation in the Nether", true).getBoolean(true);
         endEtheriumCrystalGenEnabled = config.get(CATEGORY_GEN_OPTIONS, "Etherium Crystal Generation in the End", true).getBoolean(true);
-
 	}
 
 	public static void save()

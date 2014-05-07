@@ -15,13 +15,13 @@ package steamcraft.common.items.armor;
 
 import java.util.List;
 
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.EnumArmorMaterial;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.config.ConfigItems;
@@ -35,19 +35,19 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 public class ItemCustomArmor extends ItemArmor
 {
-	private Icon[] icon = new Icon[10];
-	EnumArmorMaterial mat;
+	private IIcon[] icon = new IIcon[10];
+	ItemArmor.ArmorMaterial mat;
 	
 	@Override
 	@SideOnly(Side.CLIENT)
-	public Icon getIconFromDamage(int damage)
+	public IIcon getIconFromDamage(int damage)
 	{
 		return this.icon[damage];
 	}
 	
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister ir)
+	public void registerIcons(IIconRegister ir)
 	{
 		this.itemIcon = ir.registerIcon(LibInfo.PREFIX + this.getUnlocalizedName().substring(5));
 	}
@@ -59,9 +59,9 @@ public class ItemCustomArmor extends ItemArmor
 		return type != null ? LibInfo.PREFIX + "textures/armor/" + type + ".png" : null;
 	}
 
-	public ItemCustomArmor(int id, EnumArmorMaterial armorMat, int renderIndex, int armorType)
+	public ItemCustomArmor(ItemArmor.ArmorMaterial armorMat, int renderIndex, int armorType)
 	{
-		super(id, armorMat, renderIndex, armorType);
+		super(armorMat, renderIndex, armorType);
 		this.mat = armorMat;
 		this.setCreativeTab(Steamcraft.tabSC2);
 	}
@@ -159,7 +159,7 @@ public class ItemCustomArmor extends ItemArmor
 	}
 
 	@Override
-	public void onArmorTickUpdate(World world, EntityPlayer player, ItemStack is)
+	public void onArmorTick(World world, EntityPlayer player, ItemStack is)
 	{
 		/*
 		if(stack.getItem() == ModArmors.aqualung)

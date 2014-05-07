@@ -2,8 +2,9 @@ package steamcraft.common.blocks.machine;
 
 import java.util.Random;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -12,7 +13,7 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import steamcraft.client.gui.GuiIDs;
@@ -22,18 +23,19 @@ import steamcraft.common.tileentities.TileEntitySteamBoiler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockSteamBoiler extends BlockContainerMod{
+public class BlockSteamBoiler extends BlockContainerMod
+{
 	@SideOnly(Side.CLIENT)
-	private Icon iconTop;
+	private IIcon iconTop;
 	@SideOnly(Side.CLIENT)
-	private Icon iconFront;
+	private IIcon iconFront;
 	@SideOnly(Side.CLIENT)
-	private Icon iconFrontA;
+	private IIcon iconFrontA;
 
-	public BlockSteamBoiler(int par1)
+	public BlockSteamBoiler() // TODO: This class needs cleanup; consolidate the icons to an array of icons
 	{
-		super(par1, Material.iron);
-		this.setUnlocalizedName("steamBoiler");
+		super(Material.iron);
+		//this.setUnlocalizedName("steamBoiler");
 	}
 
 	@Override
@@ -41,10 +43,10 @@ public class BlockSteamBoiler extends BlockContainerMod{
 	{
 		return 0;
 	}
-	
+
 	@SideOnly(Side.CLIENT)
 	@Override
-	public Icon getIcon(int side, int meta)
+	public IIcon getIcon(int side, int meta)
 	{
 		if(side == meta-7) //active icon in world
 			return iconFrontA;
@@ -52,20 +54,20 @@ public class BlockSteamBoiler extends BlockContainerMod{
 			return iconFront;
 		switch (side)
 		{
-			case 0:
-				return iconTop; // bottom
+		case 0:
+			return iconTop; // bottom
 
-			case 1:
-				return iconTop; // top
+		case 1:
+			return iconTop; // top
 
-			default:
-				return blockIcon; // sides
+		default:
+			return blockIcon; // sides
 		}
 	}
 
 	@SideOnly(Side.CLIENT)
 	@Override
-	public void registerIcons(IconRegister par1IconRegister)
+	public void registerBlockIcons(IIconRegister par1IconRegister)
 	{
 		blockIcon = par1IconRegister.registerIcon(LibInfo.PREFIX + "generatorside");
 		iconFront = par1IconRegister.registerIcon(LibInfo.PREFIX + "generatorfrontinactive");
@@ -81,7 +83,7 @@ public class BlockSteamBoiler extends BlockContainerMod{
 			return true;
 		else
 		{
-			TileEntitySteamBoiler tile_entity = (TileEntitySteamBoiler) par1World.getBlockTileEntity(par2, par3, par4);
+			TileEntitySteamBoiler tile_entity = (TileEntitySteamBoiler) par1World.getTileEntity(par2, par3, par4);
 			if (tile_entity == null || par5EntityPlayer.isSneaking())
 				return false;
 			par5EntityPlayer.openGui(Steamcraft.instance, GuiIDs.GUI_ID_COAL_GENERATOR, par1World, par2, par3, par4);
@@ -92,7 +94,7 @@ public class BlockSteamBoiler extends BlockContainerMod{
 	public static void updateFurnaceBlockState(boolean par0, World par1World, int par2, int par3, int par4)
 	{
 		int var5 = par1World.getBlockMetadata(par2, par3, par4);
-		TileEntity tileentity = par1World.getBlockTileEntity(par2, par3, par4);
+		TileEntity tileentity = par1World.getTileEntity(par2, par3, par4);
 		keepInventory = true;
 
 		if (par0)
@@ -105,7 +107,7 @@ public class BlockSteamBoiler extends BlockContainerMod{
 		if (tileentity != null)
 		{
 			tileentity.validate();
-			par1World.setBlockTileEntity(par2, par3, par4, tileentity);
+			par1World.setTileEntity(par2, par3, par4, tileentity);
 		}
 	}
 
@@ -149,48 +151,48 @@ public class BlockSteamBoiler extends BlockContainerMod{
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World par1World)
+	public TileEntity createNewTileEntity(World par1World, int metadata)
 	{
 		return new TileEntitySteamBoiler();
 	}
 
-	 /**
-     * Called when the block is placed in the world.
-     */
-    @Override
+	/**
+	 * Called when the block is placed in the world.
+	 */
+	@Override
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase living, ItemStack stack)
-    {    	
-        int l = MathHelper.floor_double(living.rotationYaw * 4.0F / 360.0F + 0.5D) & 3;
+	{    	
+		int l = MathHelper.floor_double(living.rotationYaw * 4.0F / 360.0F + 0.5D) & 3;
 
-        if (l == 0)
-        {
-        	world.setBlockMetadataWithNotify(x, y, z, 2, 2);
-        }
+		if (l == 0)
+		{
+			world.setBlockMetadataWithNotify(x, y, z, 2, 2);
+		}
 
-        if (l == 1)
-        {
-        	world.setBlockMetadataWithNotify(x, y, z, 5, 2);
-        }
+		if (l == 1)
+		{
+			world.setBlockMetadataWithNotify(x, y, z, 5, 2);
+		}
 
-        if (l == 2)
-        {
-        	world.setBlockMetadataWithNotify(x, y, z, 3, 2);
-        }
+		if (l == 2)
+		{
+			world.setBlockMetadataWithNotify(x, y, z, 3, 2);
+		}
 
-        if (l == 3)
-        {
-        	world.setBlockMetadataWithNotify(x, y, z, 4, 2);
-        }
-        
-    	super.onBlockPlacedBy(world, x, y, z, living, stack);
-    }
+		if (l == 3)
+		{
+			world.setBlockMetadataWithNotify(x, y, z, 4, 2);
+		}
+
+		super.onBlockPlacedBy(world, x, y, z, living, stack);
+	}
 
 	@Override
-	public void breakBlock(World par1World, int par2, int par3, int par4, int par5, int par6)
+	public void breakBlock(World par1World, int par2, int par3, int par4, Block block, int par6)
 	{
 		if (!keepInventory)
 		{
-			TileEntitySteamBoiler var7 = (TileEntitySteamBoiler) par1World.getBlockTileEntity(par2, par3, par4);
+			TileEntitySteamBoiler var7 = (TileEntitySteamBoiler) par1World.getTileEntity(par2, par3, par4);
 
 			if (var7 != null)
 				for (int var8 = 0; var8 < var7.getSizeInventory(); ++var8)
@@ -211,7 +213,7 @@ public class BlockSteamBoiler extends BlockContainerMod{
 								var13 = var9.stackSize;
 
 							var9.stackSize -= var13;
-							EntityItem var14 = new EntityItem(par1World, par2 + var10, par3 + var11, par4 + var12, new ItemStack(var9.itemID, var13,
+							EntityItem var14 = new EntityItem(par1World, par2 + var10, par3 + var11, par4 + var12, new ItemStack(var9.getItem(), var13,
 									var9.getItemDamage()));
 
 							if (var9.hasTagCompound())
@@ -227,7 +229,7 @@ public class BlockSteamBoiler extends BlockContainerMod{
 				}
 		}
 
-		super.breakBlock(par1World, par2, par3, par4, par5, par6);
+		super.breakBlock(par1World, par2, par3, par4, block, par6);
 	}
 
 	@Override
@@ -239,6 +241,6 @@ public class BlockSteamBoiler extends BlockContainerMod{
 	@Override
 	public int getComparatorInputOverride(World par1World, int par2, int par3, int par4, int par5)
 	{
-		return Container.calcRedstoneFromInventory((IInventory) par1World.getBlockTileEntity(par2, par3, par4));
+		return Container.calcRedstoneFromInventory((IInventory) par1World.getTileEntity(par2, par3, par4));
 	}
 }

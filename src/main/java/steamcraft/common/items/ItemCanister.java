@@ -15,7 +15,7 @@ package steamcraft.common.items;
 
 import java.util.List;
 
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -39,14 +39,13 @@ public class ItemCanister extends Item
 	
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister ir)
+	public void registerIcons(IIconRegister ir)
 	{
 		this.itemIcon = ir.registerIcon(LibInfo.PREFIX + "itemCanister");
 	}
 
 	public ItemCanister(int id, int durability, String energy) 
 	{
-		super(id);
 		this.setMaxStackSize(1);
 		this.setNoRepair();
 		this.setMaxDamage(2501);
@@ -56,10 +55,10 @@ public class ItemCanister extends Item
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void getSubItems(int id, CreativeTabs tabs, List list) 
+	public void getSubItems(Item item, CreativeTabs tabs, List list) 
 	{
-		list.add(new ItemStack(id, 1, getMaxDamage()));
-		list.add(new ItemStack(id, 1, 1));
+		list.add(new ItemStack(item, 1, getMaxDamage()));
+		list.add(new ItemStack(item, 1, 1));
 	}
 
 	private static NBTTagCompound getOrCreateNBT(ItemStack is) 

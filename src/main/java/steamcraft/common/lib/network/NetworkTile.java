@@ -18,8 +18,7 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 
-import net.minecraft.network.packet.Packet;
-import net.minecraft.network.packet.Packet250CustomPayload;
+import net.minecraft.network.Packet;
 import net.minecraft.tileentity.TileEntity;
 import steamcraft.common.Steamcraft;
 
@@ -45,7 +44,7 @@ public abstract class NetworkTile extends TileEntity
 	public void sendPacket() 
 	{
 		Packet packet = this.getDescriptionPacket();
-		packet.isChunkDataPacket = false;
+		//packet.isChunkDataPacket = false;
 		Steamcraft.proxy.sendToPlayers(packet, this.worldObj, this.xCoord, this.yCoord, this.zCoord, null);
 	}
 
@@ -67,13 +66,14 @@ public abstract class NetworkTile extends TileEntity
 			e.printStackTrace();
 		}
 
+		/*
 		Packet250CustomPayload packet = new Packet250CustomPayload();
 		packet.channel = "SC2_Channel";
 		packet.data = byteStream.toByteArray();
 		packet.length = byteStream.size();
-		packet.isChunkDataPacket = true;
+		packet.isChunkDataPacket = true;*/
 
-		return packet;
+		return null;//packet;
 	}
 
 	@Override

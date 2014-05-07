@@ -20,19 +20,20 @@ import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.EnumMovingObjectType;
 import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.util.MovingObjectPosition.MovingObjectType;
 import net.minecraftforge.client.event.DrawBlockHighlightEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
-import net.minecraftforge.event.EventPriority;
-import net.minecraftforge.event.ForgeSubscribe;
 
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL13;
 
 import steamcraft.common.config.ConfigItems;
+import cpw.mods.fml.common.eventhandler.EventPriority;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 /**
  * @author Surseance (Johnny Eatmon)
@@ -40,9 +41,10 @@ import steamcraft.common.config.ConfigItems;
  */
 public class EventHandlerDrawHighlight
 {
-	int blockID, x, y, z;
+	Block block;
+	int x, y, z;
 
-	@ForgeSubscribe(priority = EventPriority.HIGH)
+	@SubscribeEvent(priority = EventPriority.HIGH)
 	public void renderOverlay(RenderGameOverlayEvent.Text event)
 	{
 		Minecraft mc = Minecraft.getMinecraft();
@@ -57,10 +59,10 @@ public class EventHandlerDrawHighlight
 		int posY2 = 15;
 		int color = 0xCCFF00;
 		fontRenderer.drawString(text, posX, posY, color);
-		fontRenderer.drawString("Block ID: " + this.blockID, posX, posY2, color);
+		fontRenderer.drawString("Block: " + block.getUnlocalizedName(), posX, posY2, color);
 	}
 
-	@ForgeSubscribe
+	@SubscribeEvent
 	public void onDrawBlockSelectionBox(DrawBlockHighlightEvent event)
 	{
 		if ((event.player.inventory.armorItemInSlot(3) != null) && (event.player.inventory.armorItemInSlot(3).getItem() == ConfigItems.itemBrassGoggles))
@@ -92,12 +94,12 @@ public class EventHandlerDrawHighlight
 		GL11.glVertex3f(1.0F, 1.0F, -1F);
 		GL11.glEnd();
 		
-		this.blockID = event.player.worldObj.getBlockId(event.target.blockX, event.target.blockY, event.target.blockZ);
+		this.block = event.player.worldObj.getBlock(event.target.blockX, event.target.blockY, event.target.blockZ);
 	}
 
 	private void drawSelectionBox(EntityPlayer player, MovingObjectPosition mop, int i, ItemStack is, float partialTicks)
 	{	
-		if ((i == 0) && (mop.typeOfHit == EnumMovingObjectType.TILE))
+		if ((i == 0) && (mop.typeOfHit == MovingObjectType.BLOCK))
 		{
 			GL11.glEnable(GL11.GL_BLEND);
 			//OpenGlHelper.glBlendFunc(770, 771, 1, 0);
@@ -106,11 +108,10 @@ public class EventHandlerDrawHighlight
 			GL11.glDisable(GL11.GL_TEXTURE_2D);
 			GL11.glDepthMask(false);
 			float offset = 0.002F;
-			int bid = player.worldObj.getBlockId(mop.blockX, mop.blockY, mop.blockZ);
+			Block block = player.worldObj.getBlock(mop.blockX, mop.blockY, mop.blockZ);
 
-			if (bid != 0)
+			if (block != Blocks.air)
 			{
-				Block block = Block.blocksList[bid];
 				block.setBlockBoundsBasedOnState(player.worldObj, mop.blockX, mop.blockY, mop.blockZ);
 				double dx = player.lastTickPosX + (player.posX - player.lastTickPosX) * (double)partialTicks;
 				double dy = player.lastTickPosY + (player.posY - player.lastTickPosY) * (double)partialTicks;
@@ -123,7 +124,7 @@ public class EventHandlerDrawHighlight
 			GL11.glDisable(GL11.GL_BLEND);
 		}
 
-		if ((i == 0) && (mop.typeOfHit == EnumMovingObjectType.ENTITY))
+		if ((i == 0) && (mop.typeOfHit == MovingObjectType.ENTITY))
 		{
 			GL11.glEnable(GL11.GL_BLEND);
 			//OpenGlHelper.glBlendFunc(770, 771, 1, 0);

@@ -17,17 +17,15 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.Potion;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
-import net.minecraftforge.event.ForgeSubscribe;
 
 import org.lwjgl.opengl.GL11;
 
 import steamcraft.common.config.ConfigItems;
 import steamcraft.common.lib.LibInfo;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 /**
  * @author Surseance (Johnny Eatmon)
@@ -38,7 +36,7 @@ public class EventHandlerHUD
 	private Minecraft mc = Minecraft.getMinecraft();
 	private static final ResourceLocation overlay = new ResourceLocation(LibInfo.PREFIX + "textures/misc/goggles.png");
 
-	@ForgeSubscribe
+	@SubscribeEvent
 	public void onHUDTick(RenderGameOverlayEvent.Pre event)
 	{
 		if (event.type == ElementType.HELMET) 

@@ -3,7 +3,7 @@ package steamcraft.common.tileentities;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntityFurnace;
-import net.minecraftforge.common.ForgeDirection;
+import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidRegistry;
@@ -12,10 +12,9 @@ import net.minecraftforge.fluids.FluidTank;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
 import steamcraft.common.blocks.machine.BlockSteamBoiler;
-import steamcraft.common.config.ConfigItems;
-import steamcraft.common.items.ItemCanister;
 
-public class TileEntitySteamBoiler extends TileEntityMachine implements IFluidHandler{
+public class TileEntitySteamBoiler extends TileEntityMachine implements IFluidHandler
+{
 	/*
 	 * 20 steam/tick is basically 4 MJ/t if we use RailCraft ratios
 	 * I also calculated that for a piece of coal that burns 400 ticks in this, we get 1600 MJ/t
@@ -38,12 +37,6 @@ public class TileEntitySteamBoiler extends TileEntityMachine implements IFluidHa
 		inventory = new ItemStack[3];
 		waterTank = new FluidTank(new FluidStack(FluidRegistry.WATER, 0), 5000);
 		steamTank = new FluidTank(new FluidStack(FluidRegistry.getFluid("steam"), 0), 10000);
-	}
-	
-	@Override
-	public String getInvName()
-	{
-		return "Coal Generator";
 	}
 	
 	@Override
@@ -105,7 +98,7 @@ public class TileEntitySteamBoiler extends TileEntityMachine implements IFluidHa
 				    	if(inventory[1].stackSize > 1)
 				    		inventory[1].stackSize--;
 				    	else
-				    		inventory[1] = inventory[1].getItem().getContainerItemStack(inventory[1]);
+				    		inventory[1] = inventory[1].getItem().getContainerItem(inventory[1]);
 				    }
 			}
 			//TODO: Readd this functionality
@@ -119,7 +112,7 @@ public class TileEntitySteamBoiler extends TileEntityMachine implements IFluidHa
 				currentItemBurnTime = furnaceBurnTime = this.getItemBurnTime()/4;
 				
 				if(this.inventory[0].stackSize==1)
-					inventory[0]=inventory[0].getItem().getContainerItemStack(inventory[0]);
+					inventory[0]=inventory[0].getItem().getContainerItem(inventory[0]);
 				else
 					--inventory[0].stackSize;
 			}
@@ -141,7 +134,7 @@ public class TileEntitySteamBoiler extends TileEntityMachine implements IFluidHa
 		}
 
 		if (var2)
-			this.onInventoryChanged();
+			this.markDirty();
 	}
 	
 	private int getItemBurnTime()

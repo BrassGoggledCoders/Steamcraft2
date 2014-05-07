@@ -1,12 +1,15 @@
 package steamcraft.client.gui;
 
+import javax.swing.Icon;
+
 import net.minecraft.block.Block;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 
@@ -67,16 +70,19 @@ public class GuiSteamBoiler extends GuiContainer{
 		if(fluid == null || fluid.getFluid() == null) {
 			return;
 		}
-		Icon icon = Block.blocksList[fluid.getFluid().getBlockID()].getIcon(0, 0); //Had to do this another way because our steam fluid's icon doesn't appear to register
+		
+		IIcon icon = null; // TODO: FIX THIS
+		//IIcon icon = ((Fluid) fluid).getBlock().getIcon(0, 0); //Had to do this another way because our steam fluid's icon doesn't appear to register
 		mc.renderEngine.bindTexture(TextureMap.locationBlocksTexture);
-		setGLColorFromInt(fluid.getFluid().getColor(fluid));
+		this.setGLColorFromInt(fluid.getFluid().getColor(fluid));
 		int fullX = width / 16;
 		int fullY = height / 16;
 		int lastX = width - fullX * 16;
 		int lastY = height - fullY * 16;
 		int fullLvl = (height - level) / 16;
 		int lastLvl = (height - level) - fullLvl * 16;
-		for(int i = 0; i < fullX; i++) {
+		
+		for (int i = 0; i < fullX; i++) {
 			for(int j = 0; j < fullY; j++) {
 				if(j >= fullLvl) {
 					drawCutIcon(icon, x + i * 16, y + j * 16, 16, 16, j == fullLvl ? lastLvl : 0);
@@ -95,7 +101,7 @@ public class GuiSteamBoiler extends GuiContainer{
 	}
 
 	//For some weird reason, our version of steam has NULL icons, so the GUISteamBoiler function drawCutIcon will crash
-	private void drawCutIcon(Icon icon, int x, int y, int width, int height, int cut)
+	private void drawCutIcon(IIcon icon, int x, int y, int width, int height, int cut)
 	{
 		Tessellator tess = Tessellator.instance;
 		tess.startDrawingQuads();

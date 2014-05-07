@@ -22,9 +22,9 @@ import net.minecraft.item.ItemStack;
  */
 public class BlockCustomOreItem extends ItemBlock
 {
-    public BlockCustomOreItem(int id)
+    public BlockCustomOreItem(Block block)
     {
-        super(id);
+        super(block);
         this.setMaxDamage(0);
         this.setHasSubtypes(true);
     }

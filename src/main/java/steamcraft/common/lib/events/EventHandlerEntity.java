@@ -18,12 +18,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
-import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.EntityEvent.EntityConstructing;
 import net.minecraftforge.event.entity.item.ItemTossEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import steamcraft.common.config.ConfigItems;
 import steamcraft.common.entities.EntityPlayerExtended;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 /**
  * @author Surseance (Johnny Eatmon)
@@ -33,7 +33,7 @@ public class EventHandlerEntity
 {
 	private int timer = 400;
 
-	@ForgeSubscribe
+	@SubscribeEvent
 	public void onItemDrop(ItemTossEvent event)
 	{
 		NBTTagCompound thrower = event.entityItem.getEntityData();
@@ -50,7 +50,7 @@ public class EventHandlerEntity
 		}
     }*/
 
-	@ForgeSubscribe
+	@SubscribeEvent
 	public void entityConstructing(EntityConstructing event)
 	{
 		if (event.entity instanceof EntityPlayer)
@@ -59,7 +59,7 @@ public class EventHandlerEntity
 		}
 	}
 
-	@ForgeSubscribe
+	@SubscribeEvent
 	public void livingUpdate(LivingUpdateEvent event)
 	{
 		if (event.entityLiving instanceof EntityPlayer)
