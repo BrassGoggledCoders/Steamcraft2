@@ -134,7 +134,7 @@ item.hoeObsidian.name=Obsidian Hoe
 item.spadeObsidian.name=Obsidian Shovel
 item.itemChisel.name=Chisel
 item.spanner.name=Spanner
-	#Armours
+	#Armors
 item.itemGoggles.name=Brass Goggles
 item.aqualung.name=Aqualung
 item.pnematicBraces.name=Pneumatic Leg Braces
@@ -149,7 +149,7 @@ item.legsObsidian.name=Obsidian Leggings
 item.bootsObsidian.name=Obsidian Boots
 item.brassMonocle.name=Brass Monocle
 item.brassWings.name=Brass Wings [NYI]
-item.jetpack.name=Steam-Powered Jetpack [NYI]
+item.itemSteamJetpack.name=Steam-Powered Jetpack [NYI]
 item.steamWings.name=Steam-Powered Wingpack [NYI]
 item.pnematicBoots.name=Pnematic Boots
     #Parts

@@ -37,6 +37,14 @@ public class ItemCustomArmor extends ItemArmor
 {
 	private Icon[] icon = new Icon[10];
 	EnumArmorMaterial mat;
+
+	public ItemCustomArmor(int id, EnumArmorMaterial armorMat, int renderIndex, int armorType)
+	{
+		super(id, armorMat, renderIndex, armorType);
+		this.mat = armorMat;
+		this.setMaxStackSize(1);
+		this.setCreativeTab(Steamcraft.tabSC2);
+	}
 	
 	@Override
 	@SideOnly(Side.CLIENT)
@@ -61,13 +69,6 @@ public class ItemCustomArmor extends ItemArmor
 		return slot==2 ? LibInfo.PREFIX + "textures/armor/brass_2.png" :  LibInfo.PREFIX + "textures/armor/brass_1.png";
 	}
 
-	public ItemCustomArmor(int id, EnumArmorMaterial armorMat, int renderIndex, int armorType)
-	{
-		super(id, armorMat, renderIndex, armorType);
-		this.mat = armorMat;
-		this.setCreativeTab(Steamcraft.tabSC2);
-	}
-
 	@SuppressWarnings("all")
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean flag)
@@ -82,29 +83,34 @@ public class ItemCustomArmor extends ItemArmor
 		{
 			if (stack.getItem() == ConfigItems.itemBrassGoggles)
 			{
-				list.add("It is a violation of ");
+				list.add("It is a violation of");
 				list.add("the law of steampunk");
-				list.add("to fly without these");
+				list.add("to fly without these.");
 				//TODO: Make this work to help seeing underwater + at night
-				list.add("Helps with seeing things");
+				list.add("Helps with seeing things.");
 			}
 			else if(stack.getItem() == ConfigItems.itemAqualung)
 			{
 				list.add("This allows underwater breathing");
-				list.add("for as long as the durability lasts");
+				list.add("for as long as the durability lasts.");
 			}
 			else if(stack.getItem() == ConfigItems.itemLegBraces)
 			{
 				list.add("A set of mechanical pistons");
 				list.add("and rods to help reduce damage");
-				list.add("substained from falling");
+				list.add("substained from falling.");
 			}
 			else if(stack.getItem() == ConfigItems.itemRollerSkates)
 			{
-				list.add("Increases movement speed");
+				list.add("Increases movement speed.");
+			}
+			else if(stack.getItem() == ConfigItems.itemSteamJetpack)
+			{
+				list.add("Steam-powered Flight!");
+				list.add("Uses steam from canisters.");
 			}
 			/*
-			else if(stack.getItem() == ModArmors.pnematicBoots)
+			else if(stack.getItem() == ConfigItems.itemPneumaticBoots)
 			{
 				list.add("A set of pistons strapped");
 				list.add("to your feet increase the");
@@ -117,11 +123,6 @@ public class ItemCustomArmor extends ItemArmor
 				list.add("Hand-Powered Flight - uses Hunger");
 				//TODO: Implement this!
 				list.add("Can also be used to glide - without using power");
-			}
-			else if(stack.getItem() == ModArmors.jetpack)
-			{
-				list.add("Steam-powered Flight!");
-				list.add("Uses power from canisters");
 			}
 			/*
 			 * else if(stack.getItem() == ModArmors.steamWings)
