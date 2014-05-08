@@ -57,7 +57,7 @@ public class ConfigBlocks
 	public static Block blockLampA;
 	public static Block blockTeaPlant;
 	public static Block blockSmog;
-	public static Block blockFluidSteam;
+	//public static Block blockFluidSteam;
 	public static Block blockSteamBoiler;
 
 	public static Fluid steamFluid;
@@ -79,16 +79,16 @@ public class ConfigBlocks
 
 	public static void initializeBlocks()
 	{
-		blockCustomOre = new BlockCustomOre();
-		blockCosmetic = new BlockCosmeticSolid();
-		blockEngraved = new BlockEngravedSolid();
-		blockCastIronFence = new BlockCastIronFence();
-		blockCastIronGate = new BlockCastIronGate();
-		blockCrystal = new BlockCrystal();
-		blockCastIronLampI = new BlockCastIronLamp(false);
-		blockCastIronLampA = new BlockCastIronLamp(true);
-		blockSteamBoiler = new BlockSteamBoiler();
-		blockMetal = new BlockMetal();
+		blockCustomOre = new BlockCustomOre().setBlockName("blockCustomOre");
+		blockCosmetic = new BlockCosmeticSolid().setBlockName("blockCosmeticSolid");
+		blockEngraved = new BlockEngravedSolid().setBlockName("blockEngravedSolid");
+		blockCastIronFence = new BlockCastIronFence().setBlockName("blockCastIronFence");
+		blockCastIronGate = new BlockCastIronGate().setBlockName("blockCastIronGate");
+		blockCrystal = new BlockCrystal().setBlockName("blockCrystal");
+		blockCastIronLampI = new BlockCastIronLamp(false).setBlockName("blockCastIronLampOff");
+		blockCastIronLampA = new BlockCastIronLamp(true).setBlockName("blockCastIronLampOn");
+		blockSteamBoiler = new BlockSteamBoiler().setBlockName("blockSteamBoiler");
+		blockMetal = new BlockMetal().setBlockName("blockMetal");
 
 		//blockFluidSteam = new BlockFluidSteam(steamFluid, Material.water);
 		//Fluid steamFluid = new Fluid("steam").setGaseous(true).setTemperature(700).setDensity(-100).setViscosity(500).setLuminosity(1);
@@ -108,7 +108,6 @@ public class ConfigBlocks
 		//GameRegistry.registerBlock(blockFluidSteam, "BlockFluidSteam");
 		GameRegistry.registerBlock(blockSteamBoiler, "BlockSteamBoiler");
 		GameRegistry.registerBlock(blockMetal, BlockMetalItem.class,"BlockMetal");
-		GameRegistry.registerBlock(blockSteamPipe, "BlockSteamPipe");
 	}
 
 	private static void registerTileEntities()

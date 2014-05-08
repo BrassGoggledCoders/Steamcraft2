@@ -66,7 +66,7 @@ public class Steamcraft
 	public RenderEventHandler renderEventHandler;
 	public File directory;
 
-	public static CreativeTabs tabSC2 = new CreativeTabSteamcraft(CreativeTabs.getNextID(), LibInfo.NAME.toLowerCase()); //TODO: Needs Icon
+	public static CreativeTabs tabSC2 = new CreativeTabSteamcraft(CreativeTabs.getNextID(), "steamcraft"); //TODO: Needs Icon
 
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event)
