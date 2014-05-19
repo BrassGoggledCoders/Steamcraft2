@@ -15,7 +15,7 @@ package steamcraft.common.items.equipment;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.item.EnumToolMaterial;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemStack;
 import steamcraft.api.SteamcraftApi;
@@ -26,21 +26,21 @@ import steamcraft.api.SteamcraftApi;
  */
 public class ItemSteamcraftPickaxe extends ItemPickaxe
 {
-	public ItemSteamcraftPickaxe(int id, EnumToolMaterial toolMat)
+	public ItemSteamcraftPickaxe(Item.ToolMaterial toolMat)
 	{
-		super(id, toolMat);
+		super(toolMat);
 	}
 
 	@Override
-    public float getStrVsBlock(ItemStack is, Block block) // getStrVsBlock
+    public float func_150893_a(ItemStack is, Block block) // getStrVsBlock
     {
     	if (this.toolMaterial == SteamcraftApi.toolMatSteam)
 		{
 			return (4.0F - (((float)is.getItemDamage()) * 11 / 320));
 		}
-		if (block != null && (block.blockMaterial == Material.iron || block.blockMaterial == Material.anvil || block.blockMaterial == Material.rock))
+		if (block != null && (block.getMaterial() == Material.iron || block.getMaterial() == Material.anvil || block.getMaterial() == Material.rock))
 		{
-			super.getStrVsBlock(is, block);
+			super.func_150893_a(is, block);
 		}
 
 		return this.efficiencyOnProperMaterial;

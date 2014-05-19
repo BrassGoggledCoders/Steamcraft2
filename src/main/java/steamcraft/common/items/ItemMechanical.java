@@ -13,9 +13,9 @@
  */
 package steamcraft.common.items;
 
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.item.Item;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import steamcraft.common.Steamcraft;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -25,32 +25,35 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 public class ItemMechanical extends Item
 {
-	//public static Item brassWatch;
-	//public static Item canisterSteam;
-	//public static Item canisterGas;
-	//public static Item steamCanister;
-	//public static Item gasCanister;
-    //public static Item emptyCanister;
+	/*
+	 * 
+	public static Item brassWatch;
+	public static Item canisterSteam;
+	public static Item canisterGas;
+	public static Item steamCanister;
+	public static Item gasCanister;
+    public static Item emptyCanister;
+	 */
 	
-    public Icon[] icon = new Icon[6];
+    public IIcon[] icon = new IIcon[6];
 
     @Override
     @SideOnly(Side.CLIENT)
-    public Icon getIconFromDamage(int itemDamage)
+    public IIcon getIconFromDamage(int itemDamage)
     {
         return this.icon[itemDamage];
     }
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void registerIcons(IconRegister ir)
+    public void registerIcons(IIconRegister ir)
     {
 
     }
 
-    public ItemMechanical(int id)
+    public ItemMechanical()
     {
-    	super(id);
+    	super();
         this.setMaxStackSize(64);
         this.setHasSubtypes(true);
         this.setMaxDamage(0);

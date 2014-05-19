@@ -17,11 +17,11 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.LibInfo;
@@ -36,14 +36,20 @@ public class ItemWatch extends Item
 {
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister ir)
+	public IIcon getIconFromDamage(int damage)
 	{
-		this.itemIcon = ir.registerIcon(LibInfo.PREFIX + "clock");
+		return this.itemIcon;
 	}
 
-	public ItemWatch(int id)
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void registerIcons(IIconRegister ir)
 	{
-		super(id);
+		this.itemIcon = ir.registerIcon(LibInfo.PREFIX + "itemWatch");
+	}
+
+	public ItemWatch()
+	{
 		this.setMaxStackSize(1);
 		this.setCreativeTab(Steamcraft.tabSC2);
 	}

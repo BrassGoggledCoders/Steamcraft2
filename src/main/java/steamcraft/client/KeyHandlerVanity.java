@@ -6,10 +6,9 @@ import net.minecraft.client.entity.EntityClientPlayerMP;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.player.EntityPlayer;
 import cpw.mods.fml.client.FMLClientHandler;
-import cpw.mods.fml.client.registry.KeyBindingRegistry.KeyHandler;
-import cpw.mods.fml.common.TickType;
 
-public class KeyHandlerVanity extends KeyHandler
+/*
+public class KeyHandlerVanity extends IKeyHandler
 {
 	private EnumSet tickTypes = EnumSet.of(TickType.CLIENT);
 	public static boolean keyPressed = false;
@@ -50,4 +49,4 @@ public class KeyHandlerVanity extends KeyHandler
 	public EnumSet<TickType> ticks() {
 	return EnumSet.of(TickType.CLIENT);
 	}
-}
+}*/
