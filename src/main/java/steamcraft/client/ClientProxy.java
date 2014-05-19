@@ -20,14 +20,15 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 import steamcraft.client.fx.FXRaygun;
 import steamcraft.client.fx.FXSmoke;
+import steamcraft.client.renderers.block.BlockCastIronLampRenderer;
 import steamcraft.client.renderers.block.BlockCrystalRenderer;
-import steamcraft.client.renderers.block.BlockHatchRenderer;
+import steamcraft.client.renderers.tile.TileCastIronLampRenderer;
 import steamcraft.client.renderers.tile.TileCrystalRenderer;
-import steamcraft.client.renderers.tile.TileHatchRenderer;
 import steamcraft.common.CommonProxy;
+import steamcraft.common.config.ConfigBlocks;
 import steamcraft.common.lib.Utils;
+import steamcraft.common.tiles.TileCastIronLamp;
 import steamcraft.common.tiles.TileCrystal;
-import steamcraft.common.tiles.TileHatch;
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
@@ -38,21 +39,19 @@ import cpw.mods.fml.client.registry.RenderingRegistry;
  */
 public class ClientProxy extends CommonProxy
 {
-
-	@Override
+    @Override
     public void registerDisplayInformation()
     {
+    	ConfigBlocks.blockCrystalRI = RenderingRegistry.getNextAvailableRenderId();
+        ClientRegistry.bindTileEntitySpecialRenderer(TileCrystal.class, new TileCrystalRenderer());
+        RenderingRegistry.registerBlockHandler(new BlockCrystalRenderer());
+        
+        ConfigBlocks.blockCastIronLampRI = RenderingRegistry.getNextAvailableRenderId();
+        ClientRegistry.bindTileEntitySpecialRenderer(TileCastIronLamp.class, new TileCastIronLampRenderer());
+        RenderingRegistry.registerBlockHandler(new BlockCastIronLampRenderer());
+
         Utils.downloadCapes();
     }
-	@Override
-	public void registerRenderers()
-	{
-        ClientRegistry.bindTileEntitySpecialRenderer(TileCrystal.class, new TileCrystalRenderer());
-        ClientRegistry.bindTileEntitySpecialRenderer(TileHatch.class, new TileHatchRenderer());
-        
-        RenderingRegistry.registerBlockHandler(new BlockCrystalRenderer());
-        RenderingRegistry.registerBlockHandler(new BlockHatchRenderer());
-	}
 
     @Override
     public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)

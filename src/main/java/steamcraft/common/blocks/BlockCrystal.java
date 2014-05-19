@@ -13,8 +13,6 @@
  */
 package steamcraft.common.blocks;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.ITileEntityProvider;
@@ -28,24 +26,25 @@ import net.minecraft.world.World;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.config.ConfigBlocks;
 import steamcraft.common.tiles.TileCrystal;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author Surseance (Johnny Eatmon)
  */
 public class BlockCrystal extends BlockContainer implements ITileEntityProvider
 {
-    public BlockCrystal(int id)
+    public BlockCrystal()
     {
-        super(id, Material.glass);
+        super(Material.glass);
         this.setHardness(8.5F);
         this.setResistance(6000000.0F);
-        this.setStepSound(Block.soundGlassFootstep);
+        this.setStepSound(Block.soundTypeGlass);
         this.setCreativeTab(Steamcraft.tabSC2);
-        setUnlocalizedName("blockCrystal");
     }
 
     @Override
-    public TileEntity createNewTileEntity(World world)
+    public TileEntity createNewTileEntity(World world, int metadata)
     {
         return new TileCrystal();
     }
@@ -75,16 +74,16 @@ public class BlockCrystal extends BlockContainer implements ITileEntityProvider
     }
 
     @Override
-    public boolean canCreatureSpawn(EnumCreatureType type, World world, int x, int y, int z)
+    public boolean canCreatureSpawn(EnumCreatureType type, IBlockAccess world, int x, int y, int z)
     {
         return false;
     }
 
     @Override
     @SideOnly(Side.CLIENT)
-    public boolean addBlockDestroyEffects(World world, int x, int y, int z, int metadata, EffectRenderer effectRenderer)
+    public boolean addDestroyEffects(World world, int x, int y, int z, int metadata, EffectRenderer effectRenderer)
     {
-        return super.addBlockDestroyEffects(world, x, y, z, metadata, effectRenderer);
+        return super.addDestroyEffects(world, x, y, z, metadata, effectRenderer);
     }
 
     /*
