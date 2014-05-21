@@ -72,11 +72,6 @@ public class ConfigBlocks
 	public static Block blockSteam;
 
     public static BlockStairs blockObsidianTileStairs;
-    
-	public static int blockCrystalRI = -1;
-	public static int blockCastIronLampRI = -1;
-	public static int blockLightningRodRI = -1;
-	public static int blockSmogRI = 1;
 
     public static int blockCrystalRI = RenderingRegistry.getNextAvailableRenderId();
     public static int blockCastIronLampRI = RenderingRegistry.getNextAvailableRenderId();

@@ -13,6 +13,8 @@
  */
 package steamcraft.common.lib;
 
+import net.minecraft.item.Item.ToolMaterial;
+import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraftforge.common.util.EnumHelper;
 
 /**
@@ -22,23 +24,23 @@ import net.minecraftforge.common.util.EnumHelper;
 public class MaterialHelper
 {
 	//Tool Materials
-		public static EnumToolMaterial OBSIDIAN_TOOL; 
-		public static EnumToolMaterial ETHERIUM_TOOL;
-		public static EnumToolMaterial STEAM_TOOL;
+		public static ToolMaterial OBSIDIAN_TOOL; 
+		public static ToolMaterial ETHERIUM_TOOL;
+		public static ToolMaterial STEAM_TOOL;
 		
-		public static EnumToolMaterial D_WOOD = EnumHelper.addToolMaterial("D_WOOD", 0, 89, 4.0F, 0.0F, 0);
-		public static EnumToolMaterial D_STONE = EnumHelper.addToolMaterial("D_STONE", 0, 197, 8.0F, 0.0F, 0);
-		public static EnumToolMaterial D_IRON = EnumHelper.addToolMaterial("D_IRON", 0, 375, 12.0F, 0.0F, 0);
-		public static EnumToolMaterial D_EMERALD = EnumHelper.addToolMaterial("D_EMERALD", 0, 2342, 16.0F, 0.0F, 0);
-		public static EnumToolMaterial D_GOLD = EnumHelper.addToolMaterial("D_GOLD", 0, 48, 24.0F, 0.0F, 0);
-		public static EnumToolMaterial D_STEAM = EnumHelper.addToolMaterial("D_STEAM", 0, 482, 24.0F, 0.0F, 0);
-		public static EnumToolMaterial D_ETHERIUM = EnumHelper.addToolMaterial("D_ETHERIUM", 0, 3518, 34.0F, 0.0F, 0);
-		public static EnumToolMaterial D_OBSIDIAN = EnumHelper.addToolMaterial("D_OBSIDIAN", 0, -1, 6.0F, 0.0F, 0);
+		public static ToolMaterial D_WOOD = EnumHelper.addToolMaterial("D_WOOD", 0, 89, 4.0F, 0.0F, 0);
+		public static ToolMaterial D_STONE = EnumHelper.addToolMaterial("D_STONE", 0, 197, 8.0F, 0.0F, 0);
+		public static ToolMaterial D_IRON = EnumHelper.addToolMaterial("D_IRON", 0, 375, 12.0F, 0.0F, 0);
+		public static ToolMaterial D_EMERALD = EnumHelper.addToolMaterial("D_EMERALD", 0, 2342, 16.0F, 0.0F, 0);
+		public static ToolMaterial D_GOLD = EnumHelper.addToolMaterial("D_GOLD", 0, 48, 24.0F, 0.0F, 0);
+		public static ToolMaterial D_STEAM = EnumHelper.addToolMaterial("D_STEAM", 0, 482, 24.0F, 0.0F, 0);
+		public static ToolMaterial D_ETHERIUM = EnumHelper.addToolMaterial("D_ETHERIUM", 0, 3518, 34.0F, 0.0F, 0);
+		public static ToolMaterial D_OBSIDIAN = EnumHelper.addToolMaterial("D_OBSIDIAN", 0, -1, 6.0F, 0.0F, 0);
 
 		// Armor Materials
-		public static EnumArmorMaterial OBSIDIAN_ARMOR;
-		public static EnumArmorMaterial ETHERIUM_ARMOR;
-		public static EnumArmorMaterial STEAM_ARMOR;
+		public static ArmorMaterial OBSIDIAN_ARMOR;
+		public static ArmorMaterial ETHERIUM_ARMOR;
+		public static ArmorMaterial STEAM_ARMOR;
 		
 		
 		public static void initializeMaterials()

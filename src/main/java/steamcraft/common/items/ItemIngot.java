@@ -17,9 +17,11 @@ import java.util.List;
 
 import javax.swing.Icon;
 
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.IIcon;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.LibInfo;
 import cpw.mods.fml.relauncher.Side;
@@ -30,18 +32,18 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 public class ItemIngot extends Item
 {
-    public Icon[] icon = new Icon[8];
+    public IIcon[] icon = new IIcon[8];
 
     @Override
     @SideOnly(Side.CLIENT)
-    public Icon getIconFromDamage(int itemDamage)
+    public IIcon getIconFromDamage(int itemDamage)
     {
         return this.icon[itemDamage];
     }
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void registerIcons(IconRegister ir)
+    public void registerIcons(IIconRegister ir)
     {
         this.icon[0] = ir.registerIcon(LibInfo.PREFIX + "itemIngotAluminum");
         this.icon[1] = ir.registerIcon(LibInfo.PREFIX + "itemIngotCopper");
@@ -53,28 +55,14 @@ public class ItemIngot extends Item
         this.icon[7] = ir.registerIcon(LibInfo.PREFIX + "itemIngotCastIron");
     }
 
-    public ItemIngot(int id)
+    public ItemIngot()
     {
-    	super(id);
+    	super();
         this.setMaxStackSize(64);
         this.setHasSubtypes(true);
         this.setMaxDamage(0);
         this.setCreativeTab(Steamcraft.tabSC2);
     }
-    
-    @Override
-	@SideOnly(Side.CLIENT)
-	public void getSubItems(int id, CreativeTabs tabs, List list) 
-	{
-		list.add(new ItemStack(id, 1, 0));
-		list.add(new ItemStack(id, 1, 1));
-		list.add(new ItemStack(id, 1, 2));
-		list.add(new ItemStack(id, 1, 3));
-		list.add(new ItemStack(id, 1, 4));
-		list.add(new ItemStack(id, 1, 5));
-		list.add(new ItemStack(id, 1, 6));
-		list.add(new ItemStack(id, 1, 7));
-	}
     @Override
     public String getUnlocalizedName(ItemStack is)
     {

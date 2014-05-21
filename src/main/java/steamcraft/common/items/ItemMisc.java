@@ -13,6 +13,7 @@
  */
 package steamcraft.common.items;
 
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.item.Item;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.LibInfo;
@@ -25,15 +26,15 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 public class ItemMisc extends Item
 {
-	public ItemMisc(int id)
+	public ItemMisc()
 	{
-		super(id);
+		super();
 		this.setCreativeTab(Steamcraft.tabSC2);
 	}
 	
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister icon)
+	public void registerIcons(IIconRegister icon)
 	{
 		itemIcon = icon.registerIcon(LibInfo.PREFIX + (getUnlocalizedName().substring(5))); // Cannot do a 'this' reflection!
 	}

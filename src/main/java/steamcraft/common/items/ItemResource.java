@@ -14,9 +14,7 @@
 package steamcraft.common.items;
 
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.LibInfo;
@@ -61,19 +59,4 @@ public class ItemResource extends Item
         this.setMaxDamage(0);
         this.setCreativeTab(Steamcraft.tabSC2);
     }
-    @Override
-	@SideOnly(Side.CLIENT)
-	public void getSubItems(int id, CreativeTabs tabs, List list) 
-	{
-		list.add(new ItemStack(id, 1, 0));
-		list.add(new ItemStack(id, 1, 1));
-		list.add(new ItemStack(id, 1, 2));
-		list.add(new ItemStack(id, 1, 3));
-		list.add(new ItemStack(id, 1, 4));
-		list.add(new ItemStack(id, 1, 5));
-		list.add(new ItemStack(id, 1, 6));
-		list.add(new ItemStack(id, 1, 7));
-		list.add(new ItemStack(id, 1, 8));
-		list.add(new ItemStack(id, 1, 9));
-	}
 }
