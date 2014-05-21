@@ -30,7 +30,7 @@ import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
 import steamcraft.common.blocks.machine.BlockSteamBoiler;
 
-public class TileEntitySteamBoiler extends TileEntityMachine implements IFluidHandler
+public class TileSteamBoiler extends TileEntityMachine implements IFluidHandler
 {
 	/*
 	 * 20 steam/tick is basically 4 MJ/t if we use RailCraft ratios
@@ -48,7 +48,7 @@ public class TileEntitySteamBoiler extends TileEntityMachine implements IFluidHa
 	public FluidTank waterTank;
 	public FluidTank steamTank;
 	
-	public TileEntitySteamBoiler()
+	public TileSteamBoiler()
 	{
 		super();
 		inventory = new ItemStack[3];

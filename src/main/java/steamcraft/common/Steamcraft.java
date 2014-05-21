@@ -29,7 +29,9 @@ import steamcraft.common.lib.events.EventHandlerDrawHighlight;
 import steamcraft.common.lib.events.EventHandlerEntity;
 import steamcraft.common.lib.network.LoggerSteamcraft;
 import steamcraft.common.lib.world.SteamcraftWorldGenerator;
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
+import cpw.mods.fml.common.ModContainer;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
@@ -37,6 +39,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
+import cpw.mods.fml.relauncher.Side;
 
 /**
  * @author Surseance (Johnny Eatmon)
@@ -121,7 +124,8 @@ public class Steamcraft
 		//ConfigRecipes.init();
 		Config.initLoot();
 		//LoggerSteamcraft.log(Level.INFO, "SC2 is " + event.getModState());
-		LanguageRegistry.instance().loadLocalization("assets/steamcraft/lang/en_US.lang", "en_US", false);
+		ModContainer container = FMLCommonHandler.instance().findContainerFor(this);
+		LanguageRegistry.instance().loadLanguagesFor(container, Side.CLIENT);
 	}
 
 	@Mod.EventHandler

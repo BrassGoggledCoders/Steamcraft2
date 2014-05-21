@@ -34,7 +34,7 @@ public class BlockHatchRenderer implements ISimpleBlockRenderingHandler{
 		GL11.glRotatef(90.0F, 0.0F, 1.0F, 0.0F);
 		GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
 		TileHatch te = new TileHatch();
-		TileEntityRenderer.instance.renderTileEntityAt(te, 0.0D, 0.0D, 0.0D, 0.0F);
+		//TileEntityRenderer.instance.renderTileEntityAt(te, 0.0D, 0.0D, 0.0D, 0.0F);
 		GL11.glEnable(32826);
 	}
 
@@ -44,7 +44,6 @@ public class BlockHatchRenderer implements ISimpleBlockRenderingHandler{
 		return true;
 	}
 
-	@Override
 	public boolean shouldRender3DInInventory()
 	{
 		return true;
@@ -54,5 +53,10 @@ public class BlockHatchRenderer implements ISimpleBlockRenderingHandler{
 	public int getRenderId()
 	{
 		return ConfigBlocks.blockHatchRI;
+	}
+
+	@Override
+	public boolean shouldRender3DInInventory(int modelId) {
+		return false;
 	}
 }
