@@ -10,7 +10,6 @@ import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
-import steamcraft.client.gui.TileSteamBoiler;
 import steamcraft.common.config.ConfigItems;
 import steamcraft.common.tiles.TileSteamBoiler;
 import cpw.mods.fml.relauncher.Side;

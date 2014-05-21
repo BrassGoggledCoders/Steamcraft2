@@ -57,6 +57,13 @@ public class Steamcraft
 	public SteamcraftWorldGenerator worldGen;
 	public File directory;
 
+	//public EventHandlerWorld worldEventHandler;
+	public EventHandlerEntity entityEventHandler;
+	//public EventHandlerTick tickEventHandler;
+	//public EventHandlerHUD hudEventHandler;
+	public EventHandlerDrawHighlight drawEventHandler;
+	//public RenderEventHandler renderEventHandler;
+
 	public static CreativeTabs tabSC2 = new CreativeTabSteamcraft(CreativeTabs.getNextID(), "steamcraft"); //TODO: Needs Icon
 
 	@Mod.EventHandler
@@ -77,19 +84,19 @@ public class Steamcraft
 			if (Config.config != null) 
 				Config.save();
 		}
-		this.worldEventHandler = new EventHandlerWorld();
+		//this.worldEventHandler = new EventHandlerWorld();
 		this.entityEventHandler = new EventHandlerEntity();
-		this.tickEventHandler = new EventHandlerTick();
-		this.hudEventHandler = new EventHandlerHUD();
+		//this.tickEventHandler = new EventHandlerTick();
+		//this.hudEventHandler = new EventHandlerHUD();
 		this.drawEventHandler = new EventHandlerDrawHighlight();
-		this.renderEventHandler = new RenderEventHandler();
+		//this.renderEventHandler = new RenderEventHandler();
 
-		MinecraftForge.EVENT_BUS.register(this.worldEventHandler);
+		//MinecraftForge.EVENT_BUS.register(this.worldEventHandler);
 		MinecraftForge.EVENT_BUS.register(this.entityEventHandler);
 		//MinecraftForge.EVENT_BUS.register(this.tickEventHandler);
-		MinecraftForge.EVENT_BUS.register(this.hudEventHandler);
+		//MinecraftForge.EVENT_BUS.register(this.hudEventHandler);
 		//MinecraftForge.EVENT_BUS.register(this.drawEventHandler);
-		MinecraftForge.EVENT_BUS.register(this.renderEventHandler);
+		//MinecraftForge.EVENT_BUS.register(this.renderEventHandler);
 
 		//GameRegistry.registerFuelHandler(this.worldEventHandler);
 		//GameRegistry.registerCraftingHandler(this.worldEventHandler);
