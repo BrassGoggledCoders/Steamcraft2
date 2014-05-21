@@ -18,7 +18,7 @@ import java.util.Iterator;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.network.Packet;
+import net.minecraft.network.packet.Packet;
 import net.minecraft.world.World;
 import cpw.mods.fml.common.network.IGuiHandler;
 
@@ -29,7 +29,8 @@ import cpw.mods.fml.common.network.IGuiHandler;
 public class CommonProxy implements IGuiHandler
 {
 	public void registerDisplayInformation() {}
-	
+	public void registerRenderers() {}
+		
 	@Override
 	public Object getClientGuiElement(int id, EntityPlayer player, World world, int x, int y, int z)
 	{
@@ -65,7 +66,7 @@ public class CommonProxy implements IGuiHandler
 
 				if ((Math.abs(playerMP.posX - x) <= maxDistance.intValue()) && (Math.abs(playerMP.posY - y) <= maxDistance.intValue()) && (Math.abs(playerMP.posZ - z) <= maxDistance.intValue())) 
 				{
-					playerMP.playerNetServerHandler.sendPacket(packet);
+					playerMP.playerNetServerHandler.sendPacketToPlayer(packet);
 				}	
 			}
 		}

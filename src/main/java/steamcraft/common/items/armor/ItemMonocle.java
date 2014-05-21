@@ -13,6 +13,7 @@
  */
 package steamcraft.common.items.armor;
 
+import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.ItemArmor;
 import steamcraft.common.Steamcraft;
 
@@ -22,9 +23,9 @@ import steamcraft.common.Steamcraft;
  */
 public class ItemMonocle extends ItemArmor
 {
-	public ItemMonocle(ItemArmor.ArmorMaterial armorMat, int armorType, int renderIndex)
+	public ItemMonocle(int id, EnumArmorMaterial armorMat, int armorType, int renderIndex)
 	{
-		super(armorMat, armorType, renderIndex);
+		super(id, armorMat, armorType, renderIndex);
 		this.setMaxStackSize(1);
 		this.setCreativeTab(Steamcraft.tabSC2);
 	}

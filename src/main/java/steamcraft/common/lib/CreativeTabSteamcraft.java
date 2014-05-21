@@ -14,10 +14,7 @@
 package steamcraft.common.lib;
 
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author Surseance (Johnny Eatmon)
@@ -28,12 +25,5 @@ public class CreativeTabSteamcraft extends CreativeTabs
 	public CreativeTabSteamcraft(int id, String name) 
 	{
 		super(id, name);
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public Item getTabIconItem() 
-	{
-		return Items.apple;
 	}
 }

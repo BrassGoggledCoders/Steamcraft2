@@ -22,9 +22,9 @@ import net.minecraft.item.ItemStack;
  */
 public class BlockEngravedSolidItem extends ItemBlock
 {
-    public BlockEngravedSolidItem(Block block)
+    public BlockEngravedSolidItem(int id)
     {
-        super(block);
+        super(id);
         this.setMaxDamage(0);
         this.setHasSubtypes(true);
     }

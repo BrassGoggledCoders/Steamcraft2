@@ -13,27 +13,26 @@
  */
 package steamcraft.common.entities;
 
-import ibxm.Player;
-
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
-
-import com.sun.xml.internal.ws.client.dispatch.PacketDispatch;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.packet.Packet250CustomPayload;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IExtendedEntityProperties;
 import steamcraft.common.container.InventoryVanity;
 import steamcraft.common.lib.network.PacketHandler;
+import cpw.mods.fml.common.network.PacketDispatcher;
+import cpw.mods.fml.common.network.Player;
 
 /**
  * @author warlordjones
  *
  */
-public class EntityPlayerExtended implements IExtendedEntityProperties //TODO: Add packets
+public class EntityPlayerExtended implements IExtendedEntityProperties
 {
 	public final static String EXT_PROP_NAME = "EntityPlayerExtended";
 
@@ -84,13 +83,13 @@ public class EntityPlayerExtended implements IExtendedEntityProperties //TODO: A
 			ex.printStackTrace();
 		}
 
-		//Packet250CustomPayload packet = new Packet250CustomPayload(PacketHandler.SC2_CHANNEL, baOutputStream.toByteArray());
+		Packet250CustomPayload packet = new Packet250CustomPayload(PacketHandler.SC2_CHANNEL, baOutputStream.toByteArray());
 
 		// We only want to send from the server to the client
 		if (!player.worldObj.isRemote) 
 		{
-			EntityPlayerMP playerMP = (EntityPlayerMP)player;
-			//PacketDispatch.sendPacketToPlayer(packet, playerMP);
+			EntityPlayerMP player1 = (EntityPlayerMP) player;
+			PacketDispatcher.sendPacketToPlayer(packet, (Player) player1);
 		}
 	}
 }

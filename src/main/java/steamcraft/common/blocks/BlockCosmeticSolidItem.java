@@ -22,9 +22,9 @@ import net.minecraft.item.ItemStack;
  */
 public class BlockCosmeticSolidItem extends ItemBlock
 {
-    public BlockCosmeticSolidItem(Block block)
+    public BlockCosmeticSolidItem(int id)
     {
-        super(block);
+        super(id);
         this.setMaxDamage(0);
         this.setHasSubtypes(true);
     }

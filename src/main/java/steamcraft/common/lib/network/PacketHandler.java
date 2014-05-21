@@ -13,17 +13,27 @@
  */
 package steamcraft.common.lib.network;
 
+import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
 import java.io.IOException;
+import java.util.logging.Level;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.network.INetworkManager;
+import net.minecraft.network.packet.Packet250CustomPayload;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.World;
+import steamcraft.common.Steamcraft;
+import cpw.mods.fml.common.FMLLog;
+import cpw.mods.fml.common.network.IPacketHandler;
+import cpw.mods.fml.common.network.Player;
 
 /**
  * @author Surseance (Johnny Eatmon)
  *
  */
-public class PacketHandler
-{// implements IPacketHandler {
+public class PacketHandler implements IPacketHandler {
 	/** */
 	public static final String SC2_CHANNEL = "SC2_Channel";
 
@@ -44,7 +54,7 @@ public class PacketHandler
 
 	/** */
 	public static final int PACKET_EXTENDED_PROPERTIES = 60;
-/*
+
 	@Override
 	public void onPacketData(INetworkManager manager, Packet250CustomPayload packet, Player player) 
 	{
@@ -77,14 +87,13 @@ public class PacketHandler
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
-	}*/
+	}
 	
 	/**
 	 * @param packet
 	 * @param player
 	 * @param dataStream
 	 */
-	/*
 	private void handleExtendedProperties(Packet250CustomPayload packet, Player player, DataInputStream dataStream) {}
 	
 	/**
@@ -92,7 +101,6 @@ public class PacketHandler
 	 * @param player
 	 * @param dataStream
 	 */
-	/*
 	private void handleOpenServerGui(Packet250CustomPayload packet, EntityPlayer player, DataInputStream dataStream) 
 	{
 		int guiID;
@@ -134,7 +142,6 @@ public class PacketHandler
 	 * @param dataStream
 	 * @param player
 	 */
-	/*
 	private void handleUpdatePacket(String type, DataInputStream dataStream, Player player) throws IOException 
 	{
 		int x = dataStream.readInt();
@@ -161,5 +168,5 @@ public class PacketHandler
 				netTE.readPacketFromClient(dataStream);
 			}
 		}
-	}*/
+	}
 }

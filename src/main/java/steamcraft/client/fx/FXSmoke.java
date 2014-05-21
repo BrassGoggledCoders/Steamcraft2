@@ -16,6 +16,7 @@ package steamcraft.client.fx;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.EntityReddustFX;
 import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.util.Icon;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 

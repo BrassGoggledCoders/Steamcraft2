@@ -73,9 +73,8 @@ public class InventoryVanity implements IInventory
 				this.setInventorySlotContents(slot, null);
 			}
 
-			this.markDirty();
+			this.onInventoryChanged();
 		}
-		
 		return is;
 	}
 
@@ -102,7 +101,19 @@ public class InventoryVanity implements IInventory
 			is.stackSize = this.getInventoryStackLimit();
 		}
 
-		this.markDirty();
+		this.onInventoryChanged();
+	}
+
+	@Override
+	public String getInvName()
+	{
+		return this.name;
+	}
+
+	@Override
+	public boolean isInvNameLocalized()
+	{
+		return this.name.length() > 0;
 	}
 
 	/**
@@ -115,10 +126,26 @@ public class InventoryVanity implements IInventory
 	}
 
 	@Override
+	public void onInventoryChanged()
+	{
+		for (int i = 0; i < this.getSizeInventory(); ++i)
+		{
+			if (this.getStackInSlot(i) != null && this.getStackInSlot(i).stackSize == 0)
+				this.setInventorySlotContents(i, null);
+		}
+	}
+
+	@Override
 	public boolean isUseableByPlayer(EntityPlayer player)
 	{
 		return true;
 	}
+
+	@Override
+	public void openChest() {}
+
+	@Override
+	public void closeChest() {}
 
 	/**
 	 * This method doesn't seem to do what it claims to do, as
@@ -153,11 +180,11 @@ public class InventoryVanity implements IInventory
 
 	public void readFromNBT(NBTTagCompound tagCompound)
 	{
-		NBTTagList tagList = (NBTTagList)tagCompound.getTag(this.tagName);
+		NBTTagList tagList = tagCompound.getTagList(this.tagName);
 
 		for (int i = 0; i < tagList.tagCount(); ++i)
 		{
-			NBTTagCompound newTagCompound = (NBTTagCompound)tagList.getCompoundTagAt(i);
+			NBTTagCompound newTagCompound = (NBTTagCompound)tagList.tagAt(i);
 			byte slot = newTagCompound.getByte("Slot");
 
 			if (slot >= 0 && slot < this.getSizeInventory())
@@ -165,35 +192,5 @@ public class InventoryVanity implements IInventory
 				this.setInventorySlotContents(slot, ItemStack.loadItemStackFromNBT(newTagCompound));
 			}
 		}
-	}
-
-	@Override
-	public void closeInventory() {}
-
-	@Override
-	public String getInventoryName() 
-	{
-		return this.getInventoryName();
-	}
-
-	@Override
-	public boolean hasCustomInventoryName() 
-	{
-		return true;
-	}
-
-	@Override
-	public void markDirty() 
-	{
-		for (int slot = 0; slot < this.getSizeInventory(); ++slot)
-		{
-			if (this.getStackInSlot(slot) != null && this.getStackInSlot(slot).stackSize == 0)
-				this.setInventorySlotContents(slot, null);
-		}
-	}
-
-	@Override
-	public void openInventory() 
-	{
 	}
 }

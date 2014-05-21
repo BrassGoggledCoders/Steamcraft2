@@ -38,7 +38,7 @@ public class TileCrystalRenderer extends TileEntitySpecialRenderer
     {
         GL11.glPushMatrix();
         GL11.glTranslatef((float) dx + 0.5F, (float) dy + 1.5F, (float) dz + 0.5F);
-        ResourceLocation crystal = (new ResourceLocation(LibInfo.PREFIX.replace(":", ""), "textures/models/crystal.png"));
+        ResourceLocation crystal = (new ResourceLocation(LibInfo.PREFIX + "textures/models/modelCrystal.png"));
         Minecraft.getMinecraft().renderEngine.bindTexture(crystal);
         GL11.glPushMatrix();
         GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);

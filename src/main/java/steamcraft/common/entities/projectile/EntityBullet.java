@@ -20,7 +20,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.IProjectile;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
@@ -49,7 +48,7 @@ public class EntityBullet extends Entity implements IProjectile
 	private int xTile = -1;
 	private int yTile = -1;
 	private int zTile = -1;
-	private Block inTile;
+	private int inTile;
 	private int inData;
 	private boolean inGround;
 	public int canBePickedUp;
@@ -210,9 +209,9 @@ public class EntityBullet extends Entity implements IProjectile
 
 		if (this.inGround)
 		{
-			Block block = worldObj.getBlock(xTile, yTile, zTile);
+			int bid = worldObj.getBlockId(xTile, yTile, zTile);
 
-			if (block != this.inTile)
+			if (bid != this.inTile)
 			{
 				this.inGround = false;
 				this.motionX *= this.rand.nextFloat() * 0.2F;
@@ -240,7 +239,7 @@ public class EntityBullet extends Entity implements IProjectile
 
 		Vec3 posVector = this.worldObj.getWorldVec3Pool().getVecFromPool(this.posX, this.posY, this.posZ);
 		Vec3 velVector = this.worldObj.getWorldVec3Pool().getVecFromPool(this.posX + this.motionX, this.posY + this.motionY, this.posZ + this.motionZ);
-		MovingObjectPosition mop = this.worldObj.rayTraceBlocks(posVector, velVector, false); // TODO: missing a true, check how this is affected
+		MovingObjectPosition mop = this.worldObj.rayTraceBlocks_do_do(posVector, velVector, false, true);
 		posVector = this.worldObj.getWorldVec3Pool().getVecFromPool(this.posX, this.posY, this.posZ);
 		velVector = this.worldObj.getWorldVec3Pool().getVecFromPool(this.posX + this.motionX, this.posY + this.motionY, this.posZ + this.motionZ);
 
@@ -308,11 +307,11 @@ public class EntityBullet extends Entity implements IProjectile
 				this.xTile = mop.blockX;
 				this.yTile = mop.blockY;
 				this.zTile = mop.blockZ;
-				this.inTile = this.worldObj.getBlock(this.xTile, this.yTile, this.zTile);
+				this.inTile = this.worldObj.getBlockId(this.xTile, this.yTile, this.zTile);
 
-				if (this.inTile == Blocks.glass || this.inTile == Blocks.glowstone)
+				if (this.inTile == Block.glass.blockID || this.inTile == Block.glowStone.blockID)
 				{
-					Block block = this.inTile;
+					Block block = Block.blocksList[this.inTile];
 					this.worldObj.playSoundEffect(this.xTile + 0.5D, this.yTile + 0.5D, this.zTile + 0.5D, block.stepSound.getBreakSound(), 1.0F, 1.0F);
 					this.worldObj.setBlockToAir(this.xTile, this.yTile, this.zTile);
 				} 
@@ -373,7 +372,7 @@ public class EntityBullet extends Entity implements IProjectile
 		tagCompound.setShort("xTile", (short)this.xTile);
 		tagCompound.setShort("yTile", (short)this.yTile);
 		tagCompound.setShort("zTile", (short)this.zTile);
-		//tagCompound.setByte("inTile", (byte)this.inTile.getI);
+		tagCompound.setByte("inTile", (byte)this.inTile);
 		tagCompound.setByte("shake", (byte)this.arrowShake);
 		tagCompound.setByte("inGround", (byte)(this.inGround ? 1 : 0));
 	}
@@ -384,7 +383,7 @@ public class EntityBullet extends Entity implements IProjectile
 		this.xTile = tagCompound.getShort("xTile");
 		this.yTile = tagCompound.getShort("yTile");
 		this.zTile = tagCompound.getShort("zTile");
-		//this.inTile = tagCompound.getByte("inTile") & 0xff;
+		this.inTile = tagCompound.getByte("inTile") & 0xff;
 		this.arrowShake = tagCompound.getByte("shake") & 0xff;
 		this.inGround = tagCompound.getByte("inGround") == 1;
 	}

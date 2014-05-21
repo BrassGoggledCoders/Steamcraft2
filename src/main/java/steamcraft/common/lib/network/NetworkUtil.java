@@ -18,6 +18,7 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.network.packet.Packet250CustomPayload;
 
 /**
  * A class to send GUI info to a server player through a packet.
@@ -40,12 +41,11 @@ public class NetworkUtil
 			e.printStackTrace();
 		}
 
-		/*
 		Packet250CustomPayload packet = new Packet250CustomPayload();
 		packet.channel = "SC2_Channel";
 		packet.data = byteStream.toByteArray();
 		packet.length = byteStream.size();
 		packet.isChunkDataPacket = false;
-		player.playerNetServerHandler.sendPacketToPlayer(packet);*/
+		player.playerNetServerHandler.sendPacketToPlayer(packet);
 	}
 }

@@ -65,19 +65,19 @@ public class GuiVanity extends GuiContainer
 	 * Draw the foreground layer for the GuiContainer (everything in front of the items)
 	 */
 	@Override
-	protected void drawGuiContainerForegroundLayer(int x, int y)
+	protected void drawGuiContainerForegroundLayer(int par1, int par2)
 	{
-		String s = this.inventory.getInventoryName();
-		this.fontRendererObj.drawString(s, this.xSize - this.fontRendererObj.getStringWidth(s) - 8, 5, 4210752);
-		this.fontRendererObj.drawString("container.inventory", 120, this.ySize - 92, 4210752); // TODO: Something happened here
-		this.fontRendererObj.drawString("Thanks, coolAlias!", this.xSize + 35, this.ySize + 34, 2000);
+		String s = this.inventory.isInvNameLocalized() ? this.inventory.getInvName() : I18n.getString(this.inventory.getInvName());
+		this.fontRenderer.drawString(s, this.xSize - this.fontRenderer.getStringWidth(s) - 8, 5, 4210752);
+		this.fontRenderer.drawString(I18n.getString("container.inventory"), 120, this.ySize - 92, 4210752);
+		this.fontRenderer.drawString("Thanks, coolAlias!", this.xSize + 35, this.ySize + 34, 2000);
 	}
 
 	/**
 	 * Draw the background layer for the GuiContainer (everything behind the items)
 	 */
 	@Override
-	protected void drawGuiContainerBackgroundLayer(float scale, int par2, int par3)
+	protected void drawGuiContainerBackgroundLayer(float par1, int par2, int par3)
 	{
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 		this.mc.getTextureManager().bindTexture(iconLocation);

@@ -14,16 +14,14 @@
 package steamcraft.common.items;
 
 import net.minecraft.block.Block;
-import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
+import net.minecraftforge.common.ForgeDirection;
 import net.minecraftforge.common.IPlantable;
-import net.minecraftforge.common.util.ForgeDirection;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.config.ConfigBlocks;
 import steamcraft.common.lib.LibInfo;
@@ -38,14 +36,14 @@ public class ItemTeaSeed extends Item implements IPlantable
 {
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IIconRegister ir)
+	public void registerIcons(IconRegister ir)
 	{
 		this.itemIcon = ir.registerIcon(LibInfo.PREFIX + "itemTeaSeed");
 	}
 
-	public ItemTeaSeed()
+	public ItemTeaSeed(int id)
 	{
-		super();
+		super(id);
 		this.setMaxStackSize(64);
 		this.setCreativeTab(Steamcraft.tabSC2);
 	}
@@ -57,8 +55,9 @@ public class ItemTeaSeed extends Item implements IPlantable
 			return false;
 		else if (player.canPlayerEdit(x, y, z, side, is) && player.canPlayerEdit(x, y + 1, z, side, is))
 		{
-			Block block = world.getBlock(x, y, z);
-			Block soil = Blocks.farmland;
+			int bid = world.getBlockId(x, y, z);
+			Block block = Block.blocksList[bid];
+			Block soil = Block.tilledField;
 
 			if (soil != null && soil.canSustainPlant(world, x, y, z, ForgeDirection.UP, this) && world.isAirBlock(x, y + 1, z))
 			{
@@ -78,19 +77,19 @@ public class ItemTeaSeed extends Item implements IPlantable
 	}
 
 	@Override
-	public Block getPlant(IBlockAccess world, int x, int y, int z)
+	public int getPlantID(World world, int x, int y, int z)
 	{
-		return ConfigBlocks.blockTeaPlant;
+		return ConfigBlocks.blockTeaPlant.blockID;
 	}
 
 	@Override
-	public int getPlantMetadata(IBlockAccess world, int x, int y, int z)
+	public int getPlantMetadata(World world, int x, int y, int z)
 	{
 		return 0;
 	}
 
 	@Override
-	public EnumPlantType getPlantType(IBlockAccess world, int x, int y, int z)
+	public EnumPlantType getPlantType(World world, int x, int y, int z)
 	{
 		return EnumPlantType.Crop;
 	}

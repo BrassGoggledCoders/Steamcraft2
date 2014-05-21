@@ -13,6 +13,10 @@
  */
 package steamcraft.common.lib.network;
 
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
+
+import net.minecraft.network.packet.Packet250CustomPayload;
 
 /**
  * @author Surseance (Johnny Eatmon)
@@ -20,7 +24,6 @@ package steamcraft.common.lib.network;
  */
 public class PacketOpenServerGui
 {
-	/*
 	public static Packet250CustomPayload getPacket(int guiID)
 	{
 		ByteArrayOutputStream byteStream = new ByteArrayOutputStream(5);
@@ -33,5 +36,5 @@ public class PacketOpenServerGui
 		}
 
 		return new Packet250CustomPayload(PacketHandler.SC2_CHANNEL, byteStream.toByteArray());
-	}*/
+	}
 }

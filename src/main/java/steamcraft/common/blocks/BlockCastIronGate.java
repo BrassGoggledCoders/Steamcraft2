@@ -15,8 +15,7 @@ package steamcraft.common.blocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFenceGate;
-import net.minecraft.block.material.Material;
-import net.minecraft.util.IIcon;
+import net.minecraft.util.Icon;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.config.ConfigBlocks;
 import cpw.mods.fml.relauncher.Side;
@@ -29,16 +28,18 @@ public class BlockCastIronGate extends BlockFenceGate
 {
     @Override
     @SideOnly(Side.CLIENT)
-    public IIcon getIcon(int side, int metadata)
+    public Icon getIcon(int side, int metadata)
     {
         return ConfigBlocks.blockCastIronFence.getBlockTextureFromSide(side);
     }
 
-    public BlockCastIronGate()
+    public BlockCastIronGate(int id)
     {
+    	super(id);
         this.setHardness(7.0F);
         this.setResistance(20.0F);
-        this.setStepSound(Block.soundTypeMetal);
+        this.setStepSound(Block.soundMetalFootstep);
         this.setCreativeTab(Steamcraft.tabSC2);
+        setUnlocalizedName("blockCastIronGate");
     }
 }

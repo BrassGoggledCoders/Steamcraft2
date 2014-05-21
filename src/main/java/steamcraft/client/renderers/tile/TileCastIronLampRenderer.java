@@ -16,8 +16,6 @@ package steamcraft.client.renderers.tile;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
-import net.minecraft.entity.Entity;
-import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 
@@ -44,43 +42,44 @@ public class TileCastIronLampRenderer extends TileEntitySpecialRenderer
 	@Override
 	public void renderTileEntityAt(TileEntity te, double dx, double dy, double dz, float scale) 
 	{
-		Block block = te.getWorldObj().getBlock(te.xCoord, te.yCoord, te.zCoord);
-		int metadata = te.getBlockMetadata();
-		float rot = 0.0F; // f3 - 1.0F;
-		
-		if (metadata == 2)
-			rot = 180.0F;
-		if (metadata == 4)
-			rot = 90.0F;
-		if (metadata == 3)
-			rot = -90.0F;
-		if (metadata == 6)
-			rot = 180.0F;
-		
+		Block block = te.getBlockType();
 		GL11.glPushMatrix();
-		float height = 0.6666667F;
-		GL11.glTranslatef((float)dx + 0.5F, (float)dy + 0.75F * height, (float)dz + 0.5F);
-		GL11.glRotatef(rot, 0.0F, 1.0F, 0.0F);
+		float f1 = 0.6666667F;
+		int metadata = te.getBlockMetadata();
+		float f3 = 0.0F;
+		float f2 = 1.0F;
+
+		if (metadata == 2)
+		{
+			f3 = 180F;
+		}
+		
+		if (metadata == 4)
+		{
+			f3 = 90F;
+		}
+		
+		if (metadata == 3)
+		{
+			f3 = -90F;
+		}
 		
 		if (metadata == 6)
-			GL11.glRotatef(180.0F, 0.0F, 0.0F, 1.0F);
-		
-		GL11.glTranslatef(0.0F, -0.3125F, -0.4375F);
-		
-        ResourceLocation crystal = (new ResourceLocation(LibInfo.PREFIX.replace(":", ""), "textures/models/lampon.png"));
-        Minecraft.getMinecraft().renderEngine.bindTexture(crystal);
-        GL11.glPushMatrix();
-        GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
-        this.lampModelTop.render((Entity)null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
-        this.lampModelSide.render((Entity)null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
-        GL11.glPopMatrix();
-        GL11.glPopMatrix();
-		
-		/*
+		{
+			f2 = 180F;
+		}
+
+		GL11.glTranslatef((float)dx + 0.5F, (float)dy + 0.75F * f1, (float)dz + 0.5F);
+		GL11.glRotatef(f3, 0.0F, 1.0F, 0.0F);
+
+		if (metadata == 6)
+		{
+			GL11.glRotatef(f2, 0.0F, 0.0F, 1.0F);
+		}
+
 		GL11.glTranslatef(0.0F, -0.3125F, -0.4375F);
 
-		/*
-		if ((block == Blocks.redstone_torch))
+		if ((block == Block.torchRedstoneActive) || (block == Block.torchRedstoneIdle))
 		{
 			lampModelTop.bracketWide.showModel = false;
 			lampModelTop.crossbarLeft.showModel = false;
@@ -88,7 +87,7 @@ public class TileCastIronLampRenderer extends TileEntitySpecialRenderer
 			lampModelSide.crossbarLeft.showModel = false;
 			lampModelSide.crossbarRight.showModel = false;
 		} 
-		else if (block == Blocks.torch)
+		else if (block == Block.torchWood)
 		{
 			lampModelTop.bracketWide.showModel = true;
 			lampModelTop.crossbarLeft.showModel = true;
@@ -98,8 +97,8 @@ public class TileCastIronLampRenderer extends TileEntitySpecialRenderer
 		}
 
 		// Renders the textures based on torch state
-		ResourceLocation lampOn = (new ResourceLocation(LibInfo.PREFIX.replace(":", ""), "textures/models/lampon.png"));
-		ResourceLocation lampOff = (new ResourceLocation(LibInfo.PREFIX.replace(":", ""), "textures/models/lampoff.png"));
+		ResourceLocation lampOn = (new ResourceLocation(LibInfo.PREFIX + "textures/models/lampon.png"));
+		ResourceLocation lampOff = (new ResourceLocation(LibInfo.PREFIX + "textures/models/lampoff.png"));
 
 		if (block == ConfigBlocks.blockCastIronLampA)
 		{
@@ -130,7 +129,7 @@ public class TileCastIronLampRenderer extends TileEntitySpecialRenderer
 		GL11.glDepthMask(false);
 		GL11.glDepthMask(true);
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-		GL11.glPopMatrix();*/
+		GL11.glPopMatrix();
 	}
 
 	/*
