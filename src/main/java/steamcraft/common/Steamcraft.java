@@ -42,7 +42,7 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
  * @author Surseance (Johnny Eatmon)
  *
  */
-@Mod(modid = LibInfo.ID, name = LibInfo.NAME, version = LibInfo.VERSION)
+@Mod(modid = LibInfo.ID, name = LibInfo.NAME, version = LibInfo.VERSION, dependencies="requiredAfter:Boilerplate")
 public class Steamcraft
 {
 	@SidedProxy(clientSide = LibInfo.CLIENT_PROXY, serverSide = LibInfo.COMMON_PROXY)

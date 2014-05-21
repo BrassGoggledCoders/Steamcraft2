@@ -15,11 +15,11 @@ package steamcraft.client;
 
 import java.awt.Color;
 
+import boilerplate.client.fx.FXRaygun;
+import boilerplate.client.fx.FXSmoke;
 import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
-import steamcraft.client.fx.FXRaygun;
-import steamcraft.client.fx.FXSmoke;
 import steamcraft.client.renderers.block.BlockCastIronLampRenderer;
 import steamcraft.client.renderers.block.BlockCrystalRenderer;
 import steamcraft.client.renderers.block.BlockHatchRenderer;

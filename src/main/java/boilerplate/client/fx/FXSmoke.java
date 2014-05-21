@@ -11,7 +11,7 @@
  *
  * File created @ [3/15/14, 10:49]
  */
-package steamcraft.client.fx;
+package boilerplate.client.fx;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.EntityReddustFX;

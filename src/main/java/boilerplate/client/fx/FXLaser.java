@@ -11,7 +11,7 @@
  *
  * File created @ [Mar 20, 2014, 11:26:57 AM]
  */
-package steamcraft.client.fx;
+package boilerplate.client.fx;
 
 import net.minecraft.client.particle.EntityReddustFX;
 import net.minecraft.client.renderer.Tessellator;
