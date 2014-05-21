@@ -18,6 +18,7 @@ import java.util.logging.Level;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.MinecraftForge;
+import steamcraft.client.RegisterKeyBindings;
 import steamcraft.client.gui.GuiHandler;
 import steamcraft.client.lib.RenderEventHandler;
 import steamcraft.common.config.Config;
@@ -28,21 +29,21 @@ import steamcraft.common.lib.CommandSteamcraft;
 import steamcraft.common.lib.CreativeTabSteamcraft;
 import steamcraft.common.lib.LibInfo;
 import steamcraft.common.lib.events.EventHandlerDrawHighlight;
-import steamcraft.common.lib.events.EventHandlerEntity;
-import steamcraft.common.lib.events.EventHandlerHUD;
-import steamcraft.common.lib.events.EventHandlerTick;
-import steamcraft.common.lib.events.EventHandlerWorld;
+import steamcraft.common.lib.events.EventHandlerSC2;
 import steamcraft.common.lib.network.LoggerSteamcraft;
 import steamcraft.common.lib.world.SteamcraftWorldGenerator;
+import cpw.mods.fml.client.CustomModLoadingErrorDisplayException;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
+import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
+import cpw.mods.fml.relauncher.Side;
 
 /**
  * @author Surseance (Johnny Eatmon)
@@ -58,12 +59,6 @@ public class Steamcraft
 	public static Steamcraft instance;
 
 	public SteamcraftWorldGenerator worldGen;
-	public EventHandlerWorld worldEventHandler;
-	public EventHandlerEntity entityEventHandler;
-	public EventHandlerTick tickEventHandler;
-	public EventHandlerHUD hudEventHandler;
-	public EventHandlerDrawHighlight drawEventHandler;
-	public RenderEventHandler renderEventHandler;
 	public File directory;
 
 	public static CreativeTabs tabSC2 = new CreativeTabSteamcraft(CreativeTabs.getNextID(), "steamcraft"); //TODO: Needs Icon
@@ -109,6 +104,7 @@ public class Steamcraft
 		ConfigItems.init();
 	
 		proxy.registerDisplayInformation();
+		proxy.registerRenderers();
 
 	}
 
@@ -117,7 +113,7 @@ public class Steamcraft
 	{
 		Config.registerBiomes();
 		ConfigEntities.init();
-		
+
 		//RegisterKeyBindings.init();
 		//NetworkRegistry.instance().registerGuiHandler(this.instance, new GuiHandler());
 	}

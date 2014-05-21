@@ -64,8 +64,8 @@ public class BlockCustomOre extends Block
         super(Material.rock);
         this.setHardness(3.0F);
         this.setResistance(6.0F);
-        this.setStepSound(Block.soundTypeStone);
-        //this.setUnlocalizedName("blockOre");
+        this.setStepSound(Block.soundStoneFootstep);
+        this.setUnlocalizedName("blockOre");
         this.setTickRandomly(true);
         this.setCreativeTab(Steamcraft.tabSC2);
     }

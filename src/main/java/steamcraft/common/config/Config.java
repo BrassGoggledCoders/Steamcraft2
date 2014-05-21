@@ -25,11 +25,18 @@ public class Config
 {
 	public static Configuration config;
 	public static final String CATEGORY_ENTITIES = "Entities";
+    
 	public static final String CATEGORY_GEN_OPTIONS = "generation options";
     
+    //Canisters
+    public static int itemCanisterEmptyId;
+    public static int itemCanisterSteamId;
+    public static int itemCanisterGasId;
+    
+    //Entities
     public static int entBulletId;
 
-    /*POWER TO THE END USER!*/
+    /* POWER TO THE END USER! Good heavens... */
     public static int etheriumChance;
     public static int uraniumChance;
     public static int brimstoneChance;

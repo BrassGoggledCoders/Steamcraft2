@@ -43,14 +43,12 @@ public class ItemResource extends Item
         this.icon[1] = ir.registerIcon(LibInfo.PREFIX + "itemChemSalt");
         this.icon[2] = ir.registerIcon(LibInfo.PREFIX + "itemBornite");
         this.icon[3] = ir.registerIcon(LibInfo.PREFIX + "itemSlate");
-        this.icon[4] = ir.registerIcon(LibInfo.PREFIX + "itemBrass");
-        this.icon[5] = ir.registerIcon(LibInfo.PREFIX + "itemCastIron");
-        this.icon[6] = ir.registerIcon(LibInfo.PREFIX + "itemBulb");
-        this.icon[7] = ir.registerIcon(LibInfo.PREFIX + "itemPhosphorus");
-        this.icon[8] = ir.registerIcon(LibInfo.PREFIX + "itemUranium");
-        this.icon[9] = ir.registerIcon(LibInfo.PREFIX + "itemPellet");
-        this.icon[10] = ir.registerIcon(LibInfo.PREFIX + "itemReactorCore");
-        this.icon[11] = ir.registerIcon(LibInfo.PREFIX + "itemTeaLeaves");
+        this.icon[4] = ir.registerIcon(LibInfo.PREFIX + "itemBulb");
+        this.icon[5] = ir.registerIcon(LibInfo.PREFIX + "itemPhosphorus");
+        this.icon[6] = ir.registerIcon(LibInfo.PREFIX + "itemUranium");
+        this.icon[7] = ir.registerIcon(LibInfo.PREFIX + "itemPellet");
+        this.icon[8] = ir.registerIcon(LibInfo.PREFIX + "itemReactorCore");
+        this.icon[9] = ir.registerIcon(LibInfo.PREFIX + "itemTeaLeaves");
     }
 
     public ItemResource()
@@ -61,4 +59,19 @@ public class ItemResource extends Item
         this.setMaxDamage(0);
         this.setCreativeTab(Steamcraft.tabSC2);
     }
+    @Override
+	@SideOnly(Side.CLIENT)
+	public void getSubItems(int id, CreativeTabs tabs, List list) 
+	{
+		list.add(new ItemStack(id, 1, 0));
+		list.add(new ItemStack(id, 1, 1));
+		list.add(new ItemStack(id, 1, 2));
+		list.add(new ItemStack(id, 1, 3));
+		list.add(new ItemStack(id, 1, 4));
+		list.add(new ItemStack(id, 1, 5));
+		list.add(new ItemStack(id, 1, 6));
+		list.add(new ItemStack(id, 1, 7));
+		list.add(new ItemStack(id, 1, 8));
+		list.add(new ItemStack(id, 1, 9));
+	}
 }

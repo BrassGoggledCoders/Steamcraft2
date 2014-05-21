@@ -33,6 +33,7 @@ public class BlockCastIronFence extends BlockFence
         this.setResistance(20.0F);
         this.setStepSound(Block.soundTypeMetal);
         this.setCreativeTab(Steamcraft.tabSC2);
+        setUnlocalizedName("blockCastIronFence");
     }
 
     @Override

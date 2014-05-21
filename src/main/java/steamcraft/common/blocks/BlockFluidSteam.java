@@ -18,6 +18,7 @@ public class BlockFluidSteam extends BlockFluidClassic
 	@SideOnly(Side.CLIENT)
 	protected IIcon stillIcon;
 	@SideOnly(Side.CLIENT)
+
 	protected IIcon flowingIcon;
 
 	public BlockFluidSteam(Fluid fluid, Material material) 

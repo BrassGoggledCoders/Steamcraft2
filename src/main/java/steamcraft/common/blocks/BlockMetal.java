@@ -13,10 +13,23 @@
  */
 package steamcraft.common.blocks;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Random;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockLeaves;
+import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.Entity;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.DamageSource;
+import net.minecraft.util.Icon;
+import net.minecraft.world.World;
+import steamcraft.common.Steamcraft;
+import steamcraft.common.config.ConfigBlocks;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -39,6 +52,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class BlockMetal extends Block
 {
 	private IIcon[] icon = new IIcon[8];
+
 	private boolean powered;
 
 	@Override
@@ -48,13 +62,13 @@ public class BlockMetal extends Block
         this.icon[0] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockBrass");
         this.icon[1] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockBronze");
         this.icon[2] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockSteel");
-        this.icon[3] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockUranite");
+        this.icon[3] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockUranium");
         this.icon[4] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockAluminum");
         this.icon[5] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockCopper");
         this.icon[6] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockTin");
         this.icon[7] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockZinc");
+        this.icon[8] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockEtherium");
 	}
-
 	public BlockMetal()
 	{
 		super(Material.iron);

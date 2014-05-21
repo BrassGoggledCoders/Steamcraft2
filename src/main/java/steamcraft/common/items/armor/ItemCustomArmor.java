@@ -49,7 +49,7 @@ public class ItemCustomArmor extends ItemArmor
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister ir)
 	{
-		this.itemIcon = ir.registerIcon(LibInfo.PREFIX + this.getUnlocalizedName().substring(5));
+		this.itemIcon = ir.registerIcon(LibInfo.PREFIX + "armor/" + this.getUnlocalizedName().substring(5));
 	}
 
 	@Override
@@ -68,7 +68,7 @@ public class ItemCustomArmor extends ItemArmor
 
 	@SuppressWarnings("all")
 	@Override
-	public void addInformation(ItemStack is, EntityPlayer player, List list, boolean flag)
+	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean flag)
 	{
 		//if(!ClientHelper.isShiftKeyDown())
 		//{
@@ -76,33 +76,38 @@ public class ItemCustomArmor extends ItemArmor
 		//	return;
 		//}
 
-		if (is != null)
+		if (stack != null)
 		{
-			if (is.getItem() == ConfigItems.itemBrassGoggles)
+			if (stack.getItem() == ConfigItems.itemBrassGoggles)
 			{
-				list.add("It is a violation of ");
+				list.add("It is a violation of");
 				list.add("the law of steampunk");
-				list.add("to fly without these");
+				list.add("to fly without these.");
 				//TODO: Make this work to help seeing underwater + at night
-				list.add("Helps with seeing things");
+				list.add("Helps with seeing things.");
 			}
-			/*
-			else if(stack.getItem() == ModArmors.aqualung)
+			else if(stack.getItem() == ConfigItems.itemAqualung)
 			{
 				list.add("This allows underwater breathing");
-				list.add("for as long as the durability lasts");
+				list.add("for as long as the durability lasts.");
 			}
-			else if(stack.getItem() == ModArmors.legBraces)
+			else if(stack.getItem() == ConfigItems.itemLegBraces)
 			{
 				list.add("A set of mechanical pistons");
 				list.add("and rods to help reduce damage");
-				list.add("substained from falling");
+				list.add("substained from falling.");
 			}
-			else if(stack.getItem() == ModArmors.rollerSkates)
+			else if(stack.getItem() == ConfigItems.itemRollerSkates)
 			{
-				list.add("Increases movement speed");
+				list.add("Increases movement speed.");
 			}
-			else if(stack.getItem() == ModArmors.pnematicBoots)
+			else if(stack.getItem() == ConfigItems.itemSteamJetpack)
+			{
+				list.add("Steam-powered Flight!");
+				list.add("Uses steam from canisters.");
+			}
+			/*
+			else if(stack.getItem() == ConfigItems.itemPneumaticBoots)
 			{
 				list.add("A set of pistons strapped");
 				list.add("to your feet increase the");
@@ -115,11 +120,6 @@ public class ItemCustomArmor extends ItemArmor
 				list.add("Hand-Powered Flight - uses Hunger");
 				//TODO: Implement this!
 				list.add("Can also be used to glide - without using power");
-			}
-			else if(stack.getItem() == ModArmors.jetpack)
-			{
-				list.add("Steam-powered Flight!");
-				list.add("Uses power from canisters");
 			}
 			/*
 			 * else if(stack.getItem() == ModArmors.steamWings)
@@ -161,8 +161,7 @@ public class ItemCustomArmor extends ItemArmor
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack is)
 	{
-		/*
-		if(stack.getItem() == ModArmors.aqualung)
+		if(stack.getItem() == ConfigItems.itemAqualung)
 		{
 			if(player.getAir() <= 0)
 			{
@@ -170,13 +169,13 @@ public class ItemCustomArmor extends ItemArmor
 				stack.damageItem(4, player); //tweak the damage taken a bit
 			}
 		}
-		else if (stack.getItem() == ModArmors.legBraces) 
+		else if (stack.getItem() == ConfigItems.itemLegBraces) 
 		{
 			if (player.fallDistance > 3.0F) 
 			{
 				player.fallDistance *= 0.888F;
 				stack.damageItem(1, player);
 			}
-		}*/
+		}
 	}
 }
