@@ -26,7 +26,7 @@ import steamcraft.common.lib.CommandSteamcraft;
 import steamcraft.common.lib.CreativeTabSteamcraft;
 import steamcraft.common.lib.LibInfo;
 import steamcraft.common.lib.events.EventHandlerDrawHighlight;
-import steamcraft.common.lib.events.EventHandlerEntity;
+import steamcraft.common.lib.events.EventHandlerSC2;
 import steamcraft.common.lib.network.LoggerSteamcraft;
 import steamcraft.common.lib.world.SteamcraftWorldGenerator;
 import cpw.mods.fml.common.FMLCommonHandler;
@@ -57,12 +57,8 @@ public class Steamcraft
 	public SteamcraftWorldGenerator worldGen;
 	public File directory;
 
-	//public EventHandlerWorld worldEventHandler;
-	public EventHandlerEntity entityEventHandler;
-	//public EventHandlerTick tickEventHandler;
-	//public EventHandlerHUD hudEventHandler;
 	public EventHandlerDrawHighlight drawEventHandler;
-	//public RenderEventHandler renderEventHandler;
+	public EventHandlerSC2 sc2EventHandler;
 
 	public static CreativeTabs tabSC2 = new CreativeTabSteamcraft(CreativeTabs.getNextID(), "steamcraft"); //TODO: Needs Icon
 
@@ -84,19 +80,11 @@ public class Steamcraft
 			if (Config.config != null) 
 				Config.save();
 		}
-		//this.worldEventHandler = new EventHandlerWorld();
-		this.entityEventHandler = new EventHandlerEntity();
-		//this.tickEventHandler = new EventHandlerTick();
-		//this.hudEventHandler = new EventHandlerHUD();
 		this.drawEventHandler = new EventHandlerDrawHighlight();
-		//this.renderEventHandler = new RenderEventHandler();
+		this.sc2EventHandler = new EventHandlerSC2();
 
 		//MinecraftForge.EVENT_BUS.register(this.worldEventHandler);
-		MinecraftForge.EVENT_BUS.register(this.entityEventHandler);
-		//MinecraftForge.EVENT_BUS.register(this.tickEventHandler);
-		//MinecraftForge.EVENT_BUS.register(this.hudEventHandler);
-		//MinecraftForge.EVENT_BUS.register(this.drawEventHandler);
-		//MinecraftForge.EVENT_BUS.register(this.renderEventHandler);
+		MinecraftForge.EVENT_BUS.register(this.sc2EventHandler);
 
 		//GameRegistry.registerFuelHandler(this.worldEventHandler);
 		//GameRegistry.registerCraftingHandler(this.worldEventHandler);

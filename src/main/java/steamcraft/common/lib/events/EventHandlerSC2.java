@@ -13,18 +13,24 @@
  */
 package steamcraft.common.lib.events;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.ScaledResolution;
+import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.event.ForgeSubscribe;
+import net.minecraftforge.client.event.RenderGameOverlayEvent;
+import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
 import net.minecraftforge.event.entity.EntityEvent.EntityConstructing;
 import net.minecraftforge.event.entity.item.ItemTossEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
-import net.minecraftforge.client.event.RenderGameOverlayEvent;
-import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
+import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 
 import org.lwjgl.opengl.GL11;
+
 import steamcraft.common.config.ConfigItems;
 import steamcraft.common.entities.EntityPlayerExtended;
 import steamcraft.common.lib.LibInfo;
@@ -36,7 +42,7 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
  */
 public class EventHandlerSC2
 {
-	@ForgeSubscribe
+	@SubscribeEvent
 	public void updatePlayer(LivingEvent.LivingUpdateEvent event) {
 		if (event.entityLiving instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) event.entityLiving;
@@ -67,16 +73,9 @@ public class EventHandlerSC2
 			}
 		}
 	}
-	
-	@ForgeSubscribe
-	public void onItemDrop(ItemTossEvent event)
-	{
-		NBTTagCompound thrower = event.entityItem.getEntityData();
-		thrower.setString("thrower", event.player.getCommandSenderName());
-	}
 
 	/*
-	@ForgeSubscribe
+	@SubscribeEvent
 	public void onPlayerLogIn(PlayerEvent. event)
 	{
 		if (event.player.getCommandSenderName().equals("Surseance"))
@@ -85,7 +84,7 @@ public class EventHandlerSC2
 		}
     }*/
 
-	@ForgeSubscribe
+	@SubscribeEvent
 	public void entityConstructing(EntityConstructing event)
 	{
 		if (event.entity instanceof EntityPlayer)
@@ -148,7 +147,51 @@ public class EventHandlerSC2
 		{
 			return;
 		}
-	}*/
-}
 	}
+private int timer = 400;
+
+@SubscribeEvent
+public void onItemDrop(ItemTossEvent event)
+{
+	NBTTagCompound thrower = event.entityItem.getEntityData();
+	thrower.setString("thrower", event.player.getCommandSenderName());
+}
+
+/*
+@ForgeSubscribe
+public void onPlayerLogIn(PlayerEvent. event)
+{
+	if (event.player.getCommandSenderName().equals("Surseance"))
+	{
+		event.player.addExperience(10000);
+	}
+}*/
+
+@SubscribeEvent
+public void livingUpdate(LivingUpdateEvent event)
+{
+	if (event.entityLiving instanceof EntityPlayer)
+	{
+		EntityPlayer player = (EntityPlayer)event.entityLiving;
+		ItemStack is = player.inventory.armorItemInSlot(3);
+
+		if ((is != null) && is.getItem() == ConfigItems.itemBrassGoggles)
+		{
+			player.addPotionEffect(new PotionEffect(Potion.nightVision.id, this.timer, 0));
+			
+			if (this.timer <= 220)
+			{
+				this.timer = 400;
+			}
+		}
+		else if ((is == null) || (is.getItem() != ConfigItems.itemBrassGoggles))
+		{
+			player.removePotionEffect(Potion.nightVision.id);
+		}
+	}
+	else if (!(event.entityLiving instanceof EntityPlayer))
+	{
+		event.entityLiving.removePotionEffect(Potion.nightVision.id);
+	}
+}
 }
