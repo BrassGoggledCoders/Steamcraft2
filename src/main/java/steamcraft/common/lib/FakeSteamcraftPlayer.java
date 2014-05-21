@@ -14,9 +14,11 @@
 package steamcraft.common.lib;
 
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.ChatMessageComponent;
 import net.minecraft.util.ChunkCoordinates;
+import net.minecraft.util.IChatComponent;
 import net.minecraft.world.World;
+
+import com.mojang.authlib.GameProfile;
 
 /**
  * @author Surseance (Johnny Eatmon)
@@ -24,17 +26,14 @@ import net.minecraft.world.World;
  */
 public class FakeSteamcraftPlayer extends EntityPlayer
 {
-	public FakeSteamcraftPlayer(World world, String username)
+	public FakeSteamcraftPlayer(World world, GameProfile profile)
 	{
-		super(world, username);
+		super(world, profile);
 	}
 
 	@Override
-	public void sendChatToPlayer(ChatMessageComponent chat)
-	{
-		// Nah
-	}
-
+	public void addChatMessage(IChatComponent chat) {}
+	
 	@Override
 	public boolean canCommandSenderUseCommand(int i, String s) 
 	{

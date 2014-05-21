@@ -14,7 +14,16 @@
 package steamcraft.common.config;
 
 import net.minecraft.item.Item;
+<<<<<<< HEAD
 import steamcraft.common.items.*;
+=======
+import net.minecraft.item.ItemArmor;
+import steamcraft.common.items.ItemChisel;
+import steamcraft.common.items.ItemMechanical;
+import steamcraft.common.items.ItemResource;
+import steamcraft.common.items.ItemTeaSeed;
+import steamcraft.common.items.ItemWatch;
+>>>>>>> pr/72
 import steamcraft.common.items.armor.ItemCustomArmor;
 import steamcraft.common.items.armor.ItemNormalArmor;
 import steamcraft.common.lib.LibInfo;
@@ -33,6 +42,7 @@ public class ConfigItems
     public static Item itemWatch;
     public static Item itemTeaSeed;
     public static Item itemChisel;
+<<<<<<< HEAD
     
     //Armor
     public static Item itemBrassGoggles;
@@ -62,6 +72,17 @@ public class ConfigItems
     
     //Canisters
     public static Item itemCanisterSteam;
+=======
+    public static Item itemBrassGoggles;
+
+    public static Item itemColdKettle;
+    public static Item itemHotKettle;
+    public static Item itemEmptyKettle;
+    public static Item itemEmptyTeacup;
+    public static Item itemFullTeacup;
+
+    public static Item itemSteamCanister;
+>>>>>>> pr/72
     public static Item itemCanisterGas;
     public static Item itemCanisterEmpty;
     
@@ -78,6 +99,7 @@ public class ConfigItems
 	
 	public static void initializeItems()
 	{
+<<<<<<< HEAD
 		//Items
 		itemMechanical = new ItemMechanical(Config.itemMechanicalId).setUnlocalizedName("itemMechanical");
 		GameRegistry.registerItem(itemMechanical, "ItemMechanical", LibInfo.ID);
@@ -142,5 +164,21 @@ public class ConfigItems
 		GameRegistry.registerItem(itemCanisterSteam, "ItemCanisterSteam", LibInfo.ID);
 		itemCanisterGas = new ItemCanister(Config.itemCanisterGasId, "compressedgas").setUnlocalizedName("itemCanisterGas");
 		GameRegistry.registerItem(itemCanisterGas, "ItemCanisterGas", LibInfo.ID);
+=======
+		itemMechanical = new ItemMechanical().setUnlocalizedName("ItemMechanical");
+		GameRegistry.registerItem(itemMechanical, "ItemMechanical", LibInfo.ID);
+		itemResource = new ItemResource().setUnlocalizedName("ItemResource");
+		GameRegistry.registerItem(itemResource, "ItemResource", LibInfo.ID);
+		itemWatch = new ItemWatch().setUnlocalizedName("ItemWatch");
+		GameRegistry.registerItem(itemWatch, "ItemWatch", LibInfo.ID);
+		
+		itemTeaSeed = new ItemTeaSeed().setUnlocalizedName("ItemTeaSeed");
+		GameRegistry.registerItem(itemTeaSeed, "ItemTeaSeed", LibInfo.ID);
+		itemChisel = new ItemChisel().setUnlocalizedName("ItemChisel");
+		GameRegistry.registerItem(itemChisel, "ItemChisel", LibInfo.ID);
+		
+		itemBrassGoggles = new ItemCustomArmor(ItemArmor.ArmorMaterial.CHAIN, 0, 0).setUnlocalizedName("ItemCustomArmor");
+		GameRegistry.registerItem(itemBrassGoggles, "ItemCustomArmor", LibInfo.ID);
+>>>>>>> pr/72
 	}
 }

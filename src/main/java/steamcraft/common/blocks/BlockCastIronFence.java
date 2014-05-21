@@ -18,7 +18,6 @@ import net.minecraft.block.BlockFence;
 import net.minecraft.block.material.Material;
 import net.minecraft.world.IBlockAccess;
 import steamcraft.common.Steamcraft;
-import steamcraft.common.config.Config;
 import steamcraft.common.config.ConfigBlocks;
 import steamcraft.common.lib.LibInfo;
 
@@ -27,12 +26,12 @@ import steamcraft.common.lib.LibInfo;
  */
 public class BlockCastIronFence extends BlockFence
 {
-    public BlockCastIronFence(int id)
+    public BlockCastIronFence()
     {
-        super(id, LibInfo.PREFIX + "blockCastIron", Material.iron);
+        super(LibInfo.PREFIX + "blockCastIron", Material.iron);
         this.setHardness(4.5F);
         this.setResistance(20.0F);
-        this.setStepSound(Block.soundMetalFootstep);
+        this.setStepSound(Block.soundTypeMetal);
         this.setCreativeTab(Steamcraft.tabSC2);
         setUnlocalizedName("blockCastIronFence");
     }
@@ -40,16 +39,11 @@ public class BlockCastIronFence extends BlockFence
     @Override
     public boolean canConnectFenceTo(IBlockAccess world, int x, int y, int z)
     {
-        int bid = world.getBlockId(x, y, z);
-        Block block = Block.blocksList[bid];
+        Block block = world.getBlock(x, y, z);
 
         if ((block != this) && (block != ConfigBlocks.blockCastIronGate))
-        {
-            return ((block != null) && (block.blockMaterial.isOpaque()) && (block.renderAsNormalBlock()) ? block.blockMaterial != Material.cactus : false);
-        }
+            return ((block != null) && (block.getMaterial().isOpaque()) && (block.renderAsNormalBlock()) ? block.getMaterial() != Material.cactus : false);
         else
-        {
             return true;
-        }
     }
 }

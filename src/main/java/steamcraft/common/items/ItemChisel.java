@@ -13,17 +13,17 @@
  */
 package steamcraft.common.items;
 
+import java.util.Random;
+
 import net.minecraft.block.Block;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import steamcraft.client.fx.FXSmoke;
 import steamcraft.common.Steamcraft;
-import steamcraft.common.config.ConfigBlocks;
 import steamcraft.common.lib.LibInfo;
-import steamcraft.common.lib.Utils;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -35,14 +35,13 @@ public class ItemChisel extends Item
 {
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister ir)
+	public void registerIcons(IIconRegister ir)
 	{
 		this.itemIcon = ir.registerIcon(LibInfo.PREFIX + "itemChisel");
 	}
 	
-	public ItemChisel(int id)
+	public ItemChisel()
 	{
-		super(id);
 		this.setMaxStackSize(1);
 		this.setMaxDamage(21);
 		this.bFull3D = true;
@@ -52,47 +51,49 @@ public class ItemChisel extends Item
 	@Override
 	public boolean onItemUse(ItemStack is, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ)
 	{
-		int bid = world.getBlockId(x, y, z);
-		int metadata = world.getBlockMetadata(x, y, z);
+		Block block = world.getBlock(x, y, z);
 
-		if (bid == Block.blockIron.blockID)
+		/*
+		if(bid == Block.blockIron.blockID)
 		{
-			world.setBlock(x, y, z, ConfigBlocks.blockEngraved.blockID);
+			world.setBlock(i, j, k, ModBlocks.decorIron.blockID);
 		}
-		if (bid == Block.blockGold.blockID)
+		if(bid == Block.blockGold.blockID)
 		{
-			world.setBlock(x, y, z, ConfigBlocks.blockEngraved.blockID);
+			world.setBlock(i, j, k, ModBlocks.decorGold.blockID);
 		}
-		if (bid == Block.blockDiamond.blockID)
+		if(bid == Block.blockDiamond.blockID)
 		{
-			world.setBlock(x, y, z, ConfigBlocks.blockEngraved.blockID);
+			world.setBlock(i, j, k, ModBlocks.decorDiamond.blockID);
 		}
-		if ((bid == ConfigBlocks.blockCosmetic.blockID) && (metadata == 0)) // Brass block
+		if(bid == ModBlocks.blockCastIron.blockID)
 		{
-			world.setBlock(x, y, z, ConfigBlocks.blockEngraved.blockID, 0, 2);
+			world.setBlock(i, j, k, ModBlocks.decorCastIron.blockID);
 		}
-		if ((bid == ConfigBlocks.blockCosmetic.blockID) && (metadata == 1)) // Cast iron block
+		if(bid == ModBlocks.blockBrass.blockID)
 		{
-			world.setBlock(x, y, z, ConfigBlocks.blockEngraved.blockID, 1, 2);
+			world.setBlock(i, j, k, ModBlocks.decorBrass.blockID);
 		}
-		if ((bid == ConfigBlocks.blockCosmetic.blockID) && (metadata == 13)) // Volucite
+		if(bid == ModBlocks.blockVolucite.blockID)
 		{
-			world.setBlock(x, y, z, ConfigBlocks.blockEngraved.blockID, 8, 2);
+			world.setBlock(i, j, k, ModBlocks.decorVolucite.blockID);
 		}
-		if (bid == Block.blockLapis.blockID)
+		if(bid == Block.blockLapis.blockID)
 		{
-			world.setBlock(x, y, z, ConfigBlocks.blockEngraved.blockID);
+			world.setBlock(i, j, k, ModBlocks.decorLapis.blockID);
 		}
-		if (bid == Block.stone.blockID)
+		if(bid == Block.stone.blockID)
 		{
-			world.setBlock(x, y, z, ConfigBlocks.blockEngraved.blockID);
+			world.setBlock(i, j, k, ModBlocks.decorStone.blockID);
 		}
-		if ((bid == ConfigBlocks.blockCosmetic.blockID) && (metadata == 6)) // Uranium
+		if(bid == ModBlocks.blockUranium.blockID)
 		{
-			world.setBlock(x, y, z, ConfigBlocks.blockEngraved.blockID, 7, 2);
+			world.setBlock(i, j, k, ModBlocks.decorUranium.blockID);
 		}
+		*/
 	
-		Steamcraft.proxy.smokeFX(world, x + Utils.random.nextFloat(), y + Utils.random.nextFloat(), z + Utils.random.nextFloat(), FXSmoke.class);
+		Random random = world.rand;
+		Steamcraft.proxy.smokeFX(world, x + random.nextFloat(), y + random.nextFloat(), z + random.nextFloat(), FXSmoke.class);
 		is.damageItem(1, player);
 		
 		return true;

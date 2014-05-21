@@ -18,11 +18,11 @@ import java.util.List;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.config.ConfigBlocks;
@@ -36,18 +36,18 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 public class BlockCustomOre extends Block
 {
-    private Icon[] icon = new Icon[8];
+    private IIcon[] icon = new IIcon[8];
 
     @Override
     @SideOnly(Side.CLIENT)
-    public Icon getIcon(int side, int metadata)
+    public IIcon getIcon(int side, int metadata)
     {
         return this.icon[metadata];
     }
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void registerIcons(IconRegister ir)
+    public void registerBlockIcons(IIconRegister ir)
     {
         this.icon[0] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "oreBornite");
         this.icon[1] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "oreBrimstone");
@@ -59,9 +59,9 @@ public class BlockCustomOre extends Block
         this.icon[7] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "oreZinc");
     }
 
-    public BlockCustomOre(int id)
+    public BlockCustomOre()
     {
-        super(id, Material.rock);
+        super(Material.rock);
         this.setHardness(3.0F);
         this.setResistance(6.0F);
         this.setStepSound(Block.soundStoneFootstep);
@@ -78,20 +78,20 @@ public class BlockCustomOre extends Block
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void getSubBlocks(int id, CreativeTabs tabs, List list)
+    public void getSubBlocks(Item item, CreativeTabs tabs, List list)
     {
-        list.add(new ItemStack(id, 1, 0));
-        list.add(new ItemStack(id, 1, 1));
-        list.add(new ItemStack(id, 1, 2));
-        list.add(new ItemStack(id, 1, 3));
-        list.add(new ItemStack(id, 1, 4));
-        list.add(new ItemStack(id, 1, 5));
-        list.add(new ItemStack(id, 1, 6));
-        list.add(new ItemStack(id, 1, 7));
+        list.add(new ItemStack(item, 1, 0));
+        list.add(new ItemStack(item, 1, 1));
+        list.add(new ItemStack(item, 1, 2));
+        list.add(new ItemStack(item, 1, 3));
+        list.add(new ItemStack(item, 1, 4));
+        list.add(new ItemStack(item, 1, 5));
+        list.add(new ItemStack(item, 1, 6));
+        list.add(new ItemStack(item, 1, 7));
     }
 
     @Override
-    public ArrayList<ItemStack> getBlockDropped(World world, int x, int y, int z, int metadata, int fortune)
+    public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune)
     {
         ArrayList drop = new ArrayList();
 

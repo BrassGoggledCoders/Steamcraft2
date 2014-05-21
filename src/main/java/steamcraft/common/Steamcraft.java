@@ -20,6 +20,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.MinecraftForge;
 import steamcraft.client.RegisterKeyBindings;
 import steamcraft.client.gui.GuiHandler;
+import steamcraft.client.lib.RenderEventHandler;
 import steamcraft.common.config.Config;
 import steamcraft.common.config.ConfigBlocks;
 import steamcraft.common.config.ConfigEntities;
@@ -30,7 +31,6 @@ import steamcraft.common.lib.LibInfo;
 import steamcraft.common.lib.events.EventHandlerDrawHighlight;
 import steamcraft.common.lib.events.EventHandlerSC2;
 import steamcraft.common.lib.network.LoggerSteamcraft;
-import steamcraft.common.lib.network.PacketHandler;
 import steamcraft.common.lib.world.SteamcraftWorldGenerator;
 import cpw.mods.fml.client.CustomModLoadingErrorDisplayException;
 import cpw.mods.fml.common.Mod;
@@ -50,7 +50,6 @@ import cpw.mods.fml.relauncher.Side;
  *
  */
 @Mod(modid = LibInfo.ID, name = LibInfo.NAME, version = LibInfo.VERSION)
-@NetworkMod(clientSideRequired = false, serverSideRequired = true, channels = {PacketHandler.SC2_CHANNEL}, packetHandler = PacketHandler.class)
 public class Steamcraft
 {
 	@SidedProxy(clientSide = LibInfo.CLIENT_PROXY, serverSide = LibInfo.COMMON_PROXY)
@@ -62,7 +61,7 @@ public class Steamcraft
 	public SteamcraftWorldGenerator worldGen;
 	public File directory;
 
-	public static CreativeTabs tabSC2 = new CreativeTabSteamcraft(CreativeTabs.getNextID(), LibInfo.NAME.toLowerCase()); //TODO: Needs Icon
+	public static CreativeTabs tabSC2 = new CreativeTabSteamcraft(CreativeTabs.getNextID(), "steamcraft"); //TODO: Needs Icon
 
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event)
@@ -82,15 +81,23 @@ public class Steamcraft
 			if (Config.config != null) 
 				Config.save();
 		}
-		/*
-		 * Do we really need more than one event handler?
-		 */
-		MinecraftForge.EVENT_BUS.register(EventHandlerDrawHighlight.class);
-		MinecraftForge.EVENT_BUS.register(EventHandlerSC2.class);
+		this.worldEventHandler = new EventHandlerWorld();
+		this.entityEventHandler = new EventHandlerEntity();
+		this.tickEventHandler = new EventHandlerTick();
+		this.hudEventHandler = new EventHandlerHUD();
+		this.drawEventHandler = new EventHandlerDrawHighlight();
+		this.renderEventHandler = new RenderEventHandler();
+
+		MinecraftForge.EVENT_BUS.register(this.worldEventHandler);
+		MinecraftForge.EVENT_BUS.register(this.entityEventHandler);
+		//MinecraftForge.EVENT_BUS.register(this.tickEventHandler);
+		MinecraftForge.EVENT_BUS.register(this.hudEventHandler);
+		//MinecraftForge.EVENT_BUS.register(this.drawEventHandler);
+		MinecraftForge.EVENT_BUS.register(this.renderEventHandler);
 
 		//GameRegistry.registerFuelHandler(this.worldEventHandler);
 		//GameRegistry.registerCraftingHandler(this.worldEventHandler);
-		GameRegistry.registerWorldGenerator(this.worldGen = new SteamcraftWorldGenerator());
+		GameRegistry.registerWorldGenerator(this.worldGen = new SteamcraftWorldGenerator(), 0);
 		
 		Config.save();
 		ConfigBlocks.init();
@@ -106,9 +113,9 @@ public class Steamcraft
 	{
 		Config.registerBiomes();
 		ConfigEntities.init();
-		
-		RegisterKeyBindings.init();
-		NetworkRegistry.instance().registerGuiHandler(instance, new GuiHandler());
+
+		//RegisterKeyBindings.init();
+		//NetworkRegistry.instance().registerGuiHandler(this.instance, new GuiHandler());
 	}
 
 	@Mod.EventHandler

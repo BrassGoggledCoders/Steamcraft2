@@ -15,6 +15,7 @@ package steamcraft.common.items;
 
 import java.util.List;
 
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -40,10 +41,15 @@ public class ItemCanister extends Item
 	public static final int MAX_GAS = 150000; //Isn't this an excessively large number?
 	public static final int MAX_GAS_RATE = 20; //Maximum amount of gas that can be inserted into this canister per tick
 
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void registerIcons(IIconRegister ir)
+	{
+		this.itemIcon = ir.registerIcon(LibInfo.PREFIX + "itemCanister");
+	}
+
 	public ItemCanister(int id, String gas) 
 	{
-		super(id);
-		this.maxStackSize = 1;
 		this.setNoRepair();
 		this.gas = gas;
 		this.setMaxDamage(MAX_VISIBLE);
@@ -53,10 +59,10 @@ public class ItemCanister extends Item
 	@SuppressWarnings("all")
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void getSubItems(int itemID, CreativeTabs tab, List list) 
-	{	
-		list.add(getChargedItem());
-		list.add(new ItemStack(itemID, 1, this.getMaxDamage()));
+	public void getSubItems(Item item, CreativeTabs tabs, List list) 
+	{
+		list.add(new ItemStack(item, 1, getMaxDamage()));
+		list.add(new ItemStack(item, 1, 1));
 	}
 
 	@SuppressWarnings("all")

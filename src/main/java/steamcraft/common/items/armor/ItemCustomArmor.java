@@ -15,13 +15,13 @@ package steamcraft.common.items.armor;
 
 import java.util.List;
 
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.EnumArmorMaterial;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.config.ConfigItems;
@@ -35,27 +35,19 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 public class ItemCustomArmor extends ItemArmor
 {
-	private Icon[] icon = new Icon[10];
-	EnumArmorMaterial mat;
-
-	public ItemCustomArmor(int id, EnumArmorMaterial armorMat, int renderIndex, int armorType)
-	{
-		super(id, armorMat, renderIndex, armorType);
-		this.mat = armorMat;
-		this.setMaxStackSize(1);
-		this.setCreativeTab(Steamcraft.tabSC2);
-	}
+	private IIcon[] icon = new IIcon[10];
+	ItemArmor.ArmorMaterial mat;
 	
 	@Override
 	@SideOnly(Side.CLIENT)
-	public Icon getIconFromDamage(int damage)
+	public IIcon getIconFromDamage(int damage)
 	{
 		return this.icon[damage];
 	}
 	
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister ir)
+	public void registerIcons(IIconRegister ir)
 	{
 		this.itemIcon = ir.registerIcon(LibInfo.PREFIX + "armor/" + this.getUnlocalizedName().substring(5));
 	}
@@ -64,9 +56,14 @@ public class ItemCustomArmor extends ItemArmor
 	@SideOnly(Side.CLIENT)
 	public String getArmorTexture(ItemStack is, Entity entity, int slot, String type)
 	{
-		//This is only for brass armor(first four armors), the other stuff should return their file somehow...
-		//Maybe based on material
-		return slot==2 ? LibInfo.PREFIX + "textures/armor/brass_2.png" :  LibInfo.PREFIX + "textures/armor/brass_1.png";
+		return type != null ? LibInfo.PREFIX + "textures/armor/" + type + ".png" : null;
+	}
+
+	public ItemCustomArmor(ItemArmor.ArmorMaterial armorMat, int renderIndex, int armorType)
+	{
+		super(armorMat, renderIndex, armorType);
+		this.mat = armorMat;
+		this.setCreativeTab(Steamcraft.tabSC2);
 	}
 
 	@SuppressWarnings("all")
@@ -162,7 +159,7 @@ public class ItemCustomArmor extends ItemArmor
 	}
 
 	@Override
-	public void onArmorTickUpdate(World world, EntityPlayer player, ItemStack stack)
+	public void onArmorTick(World world, EntityPlayer player, ItemStack is)
 	{
 		if(stack.getItem() == ConfigItems.itemAqualung)
 		{

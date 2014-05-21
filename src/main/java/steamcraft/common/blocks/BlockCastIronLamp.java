@@ -20,14 +20,14 @@ import java.util.Random;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import steamcraft.common.Steamcraft;
 import steamcraft.common.config.ConfigBlocks;
-import steamcraft.common.lib.LibInfo;
 import steamcraft.common.tiles.TileCastIronLamp;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -42,9 +42,9 @@ public class BlockCastIronLamp extends BlockContainer
 	private static List torchUpdates = new ArrayList();
 	public static Block instance;
  
-	public BlockCastIronLamp(int id, boolean flag)
+	public BlockCastIronLamp(boolean flag)
 	{
-		super(id, Material.circuits);
+		super(Material.circuits);
 		this.setHardness(0.0F);
 		this.setResistance(7.5F);
 		this.powered = flag;
@@ -52,14 +52,17 @@ public class BlockCastIronLamp extends BlockContainer
 		this.disableStats();
 		float f = 0.25F;
 		this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, 1.0F, 0.5F + f);
-		this.setCreativeTab((CreativeTabs) null);
+		this.setCreativeTab(Steamcraft.tabSC2);
 
-		if (this.powered)
-			this.setLightValue(1.0F);
+		if (flag)
+		{
+			this.setLightLevel(1.0F);
+			this.setCreativeTab((CreativeTabs)null);
+		}
 	}
 	
 	@Override
-	public TileEntity createNewTileEntity(World var1)
+	public TileEntity createNewTileEntity(World world, int metadata)
 	{
 		return new TileCastIronLamp();
 	}
@@ -141,7 +144,7 @@ public class BlockCastIronLamp extends BlockContainer
 	@Override
 	public boolean canPlaceBlockAt(World world, int x, int y, int z)
 	{
-		return (world.getBlockId(x, y - 1, z) != 0) ? true : false;
+		return (world.getBlock(x, y - 1, z) != Blocks.air) ? true : false;
 	}
 
 	@Override
@@ -151,43 +154,43 @@ public class BlockCastIronLamp extends BlockContainer
 		{
 			if (this.powered && !world.isBlockIndirectlyGettingPowered(x, y, z))
 			{
-				world.scheduleBlockUpdate(x, y, z, this.blockID, 4);
+				world.scheduleBlockUpdate(x, y, z, this, 4);
 			} 
 			else if (!this.powered && world.isBlockIndirectlyGettingPowered(x, y, z))
 			{
-				world.setBlock(x, y, z, ConfigBlocks.blockCastIronLampA.blockID, 0, 2);
+				world.setBlock(x, y, z, ConfigBlocks.blockCastIronLampA, 0, 2);
 			}
 			if (world.getBlockMetadata(x, y, z) == 0)
 			{
 				super.onBlockAdded(world, x, y, z);
 			}
 
-			world.notifyBlocksOfNeighborChange(x, y - 1, z, this.blockID);
-			world.notifyBlocksOfNeighborChange(x, y + 1, z, this.blockID);
-			world.notifyBlocksOfNeighborChange(x - 1, y, z, this.blockID);
-			world.notifyBlocksOfNeighborChange(x + 1, y, z, this.blockID);
-			world.notifyBlocksOfNeighborChange(x, y, z - 1, this.blockID);
-			world.notifyBlocksOfNeighborChange(x, y, z + 1, this.blockID);
-			world.notifyBlocksOfNeighborChange(x, y, z, this.blockID);
+			world.notifyBlocksOfNeighborChange(x, y - 1, z, this);
+			world.notifyBlocksOfNeighborChange(x, y + 1, z, this);
+			world.notifyBlocksOfNeighborChange(x - 1, y, z, this);
+			world.notifyBlocksOfNeighborChange(x + 1, y, z, this);
+			world.notifyBlocksOfNeighborChange(x, y, z - 1, this);
+			world.notifyBlocksOfNeighborChange(x, y, z + 1, this);
+			world.notifyBlocksOfNeighborChange(x, y, z, this);
 		}
 
 		this.dropIfCantStay(world, x, y, z);
 	}
 
 	@Override
-	public void breakBlock(World world, int x, int y, int z, int bid, int metadata)
+	public void breakBlock(World world, int x, int y, int z, Block block, int metadata)
 	{
 		if (this.powered)
 		{
-			world.notifyBlocksOfNeighborChange(x, y - 1, z, this.blockID);
-			world.notifyBlocksOfNeighborChange(x, y + 1, z, this.blockID);
-			world.notifyBlocksOfNeighborChange(x - 1, y, z, this.blockID);
-			world.notifyBlocksOfNeighborChange(x + 1, y, z, this.blockID);
-			world.notifyBlocksOfNeighborChange(x, y, z - 1, this.blockID);
-			world.notifyBlocksOfNeighborChange(x, y, z + 1, this.blockID);
+			world.notifyBlocksOfNeighborChange(x, y - 1, z, this);
+			world.notifyBlocksOfNeighborChange(x, y + 1, z, this);
+			world.notifyBlocksOfNeighborChange(x - 1, y, z, this);
+			world.notifyBlocksOfNeighborChange(x + 1, y, z, this);
+			world.notifyBlocksOfNeighborChange(x, y, z - 1, this);
+			world.notifyBlocksOfNeighborChange(x, y, z + 1, this);
 		}
 
-		super.breakBlock(world, x, y, z, bid, metadata);
+		super.breakBlock(world, x, y, z, block, metadata);
 	}
 
 	@Override
@@ -199,25 +202,27 @@ public class BlockCastIronLamp extends BlockContainer
 		{
 			this.onBlockAdded(world, x, y, z);
 		}
+		
 		if (!world.isRemote && this.powered && !world.isBlockIndirectlyGettingPowered(x, y, z))
 		{
-			world.setBlock(x, y, z, ConfigBlocks.blockCastIronLampI.blockID, 0, 2);
+			world.setBlock(x, y, z, ConfigBlocks.blockCastIronLampI, 0, 2);
 		}
 	}
 
 	@Override
-	public void onNeighborBlockChange(World world, int x, int y, int z, int bid)
+	public void onNeighborBlockChange(World world, int x, int y, int z, Block block)
 	{
 		if (!world.isRemote)
 		{ 
 			if (this.powered && !world.isBlockIndirectlyGettingPowered(x, y, z))
 			{
-				world.scheduleBlockUpdate(x, y, z, this.blockID, this.tickRate(world));
+				world.scheduleBlockUpdate(x, y, z, this, this.tickRate(world));
 			} 
 			else if (!this.powered && world.isBlockIndirectlyGettingPowered(x, y, z))
 			{
-				world.setBlock(x, y, z, ConfigBlocks.blockCastIronLampA.blockID, 0, 2);
+				world.setBlock(x, y, z, ConfigBlocks.blockCastIronLampA, 0, 2);
 			}
+			
 			if (dropIfCantStay(world, x, y, z))
 			{
 				int metadata = world.getBlockMetadata(x, y, z);
@@ -243,6 +248,7 @@ public class BlockCastIronLamp extends BlockContainer
 				{
 					flag = true;
 				}
+				
 				if (flag)
 				{
 					this.dropBlockAsItem(world, x, y, z, world.getBlockMetadata(x, y, z), 1);
@@ -251,7 +257,7 @@ public class BlockCastIronLamp extends BlockContainer
 			}
 		}
 
-		super.onNeighborBlockChange(world, x, y, z, bid);
+		super.onNeighborBlockChange(world, x, y, z, block);
 	}
 
 	private boolean dropIfCantStay(World world, int x, int y, int z)
@@ -268,10 +274,10 @@ public class BlockCastIronLamp extends BlockContainer
 		}
 	}
 
-	@Override
+	//@Override
 	public int idDropped(int id, Random random, int metadata)
     {
-		return ConfigBlocks.blockCastIronLampI.blockID;
+		return 0;//ConfigBlocks.blockCastIronLampI;
 	}
 
 	@Override

@@ -15,7 +15,7 @@ package steamcraft.common.config;
 
 import java.io.File;
 
-import net.minecraftforge.common.Configuration;
+import net.minecraftforge.common.config.Configuration;
 
 /**
  * @author Surseance (Johnny Eatmon)
@@ -25,56 +25,8 @@ public class Config
 {
 	public static Configuration config;
 	public static final String CATEGORY_ENTITIES = "Entities";
-
-	public static String CATEGORY_GEN_OPTIONS = "Generation";
-	
-	public static int blockCustomOreId;
-	public static int blockCosmeticId;
-	public static int blockEngravedId;
-	public static int blockCastIronFenceId;
-	public static int blockCastIronGateId;
-	public static int blockCrystalId;
-	public static int blockCastIronLampIId;
-	public static int blockCastIronLampAId;
-	public static int blockSteamFluidId;
-	public static int blockSteamBoilerId;	
-	public static int blockMetalId;
-	public static int blockHatchId;
-	public static int blockSlateId;
-	
-	//Item Tools(sort of)
-	public static int itemMechanicalId;
-    public static int itemResourceId;
-	public static int itemIngotId;
-    public static int itemWatchId;
-    public static int itemTeaSeedId;
-    public static int itemChiselId;
     
-    //Armor
-    public static int itemGogglesId;
-    public static int itemAqualungId;
-    public static int itemLegBracesId;
-    public static int itemRollerSkatesId;
-    
-    public static int itemSteamJetpackId;
-    
-    public static int itemHelmetEtheriumId;
-    public static int itemPlateEtheriumId;
-    public static int itemLegsEtheriumId;
-    public static int itemBootsEtheriumId;
-    
-	public static int itemHelmetObsidianId;
-	public static int itemPlateObsidianId;
-	public static int itemLegsObsidianId;
-	public static int itemBootsObsidianId;
-    
-	//Items
-    public static int itemTeacupEmptyId;
-    public static int itemTeacupFullId;
-    public static int itemKettleEmptyId;
-    public static int itemKettleHotId;
-    public static int itemKettleColdId;
-    public static int itemGunPartsId;
+	public static final String CATEGORY_GEN_OPTIONS = "generation options";
     
     //Canisters
     public static int itemCanisterEmptyId;
@@ -132,60 +84,6 @@ public class Config
 		
 		int eIdx = 300;
 		entBulletId = config.get("Entities", "bullet", eIdx++).getInt();
-		
-		int bIdx = 2600;
-		blockCustomOreId = config.getBlock("BlockCustomOre", bIdx++).getInt();
-		blockCosmeticId = config.getBlock("BlockCosmeticSolid", bIdx++).getInt();
-		blockEngravedId = config.getBlock("BlockEngravedSolid", bIdx++).getInt();
-		blockCastIronFenceId = config.getBlock("BlockCastIronFence", bIdx++).getInt();
-		blockCastIronGateId = config.getBlock("BlockCastIronGate", bIdx++).getInt();
-		blockCrystalId = config.getBlock("BlockCrystal", bIdx++).getInt();
-		blockCastIronLampIId = config.getBlock("BlockCastIronLamp (OFF)", bIdx++).getInt();
-		blockCastIronLampAId = config.getBlock("BlockCastIronLamp (ON)", bIdx++).getInt();
-		blockSteamFluidId = config.getBlock("BlockSteamFluid", bIdx++).getInt();
-		blockSteamBoilerId = config.getBlock("BlockSteamBoiler", bIdx++).getInt();
-		blockMetalId = config.getBlock("BlockMetal", bIdx++).getInt();
-		blockHatchId = config.getBlock("BlockHatch", bIdx++).getInt();
-		blockSlateId = config.getBlock("BlockSlate", bIdx++).getInt();
-		
-		int iIdx = 27000;
-		//Item Tools(sort of)
-		itemMechanicalId = config.getItem("ItemMechanical", iIdx++).getInt();
-		itemResourceId = config.getItem("ItemResource", iIdx++).getInt();
-		itemGunPartsId = config.getItem("ItemGunParts", iIdx++).getInt();
-		itemIngotId = config.getItem("ItemIngot", iIdx++).getInt();
-		itemWatchId = config.getItem("ItemWatch", iIdx++).getInt();
-		itemTeaSeedId = config.getItem("ItemTeaSeed", iIdx++).getInt();
-		itemChiselId = config.getItem("ItemChisel", iIdx++).getInt();
-		
-		//Armor
-		itemGogglesId = config.getItem("ItemBrassGoggles", iIdx++).getInt();
-		itemAqualungId = config.getItem("ItemAqualung", iIdx++).getInt();
-		itemLegBracesId = config.getItem("ItemLegBraces", iIdx++).getInt();
-		itemRollerSkatesId = config.getItem("ItemRollerSkates", iIdx++).getInt();
-		
-		itemSteamJetpackId = config.getItem("ItemBrassJetpack", iIdx++).getInt();
-		
-		itemHelmetEtheriumId = config.getItem("ItemHelmetEtherium", iIdx++).getInt();
-		itemPlateEtheriumId = config.getItem("ItemPlateEtherium", iIdx++).getInt();
-		itemLegsEtheriumId = config.getItem("ItemLegsEtherium", iIdx++).getInt();
-		itemBootsEtheriumId = config.getItem("ItemBootsEtherium", iIdx++).getInt();
-		
-		itemHelmetObsidianId = config.getItem("ItemHelmetObsidian", iIdx++).getInt();
-		itemPlateObsidianId = config.getItem("ItemPlateObsidian", iIdx++).getInt();
-		itemLegsObsidianId = config.getItem("ItemLegsObsidian", iIdx++).getInt();
-		itemBootsObsidianId = config.getItem("ItemBootsObsidian", iIdx++).getInt();
-        
-		//Items
-		itemTeacupEmptyId = config.getItem("ItemLiquidFood", iIdx++).getInt();
-		itemCanisterEmptyId = config.getItem("ItemCanisterEmpty", iIdx++).getInt();
-		itemCanisterSteamId = config.getItem("ItemCanisterSteam", iIdx++).getInt();
-		itemCanisterGasId = config.getItem("ItemCanisterGas", iIdx++).getInt();
-		itemTeacupEmptyId = config.getItem("ItemTeacup", iIdx++).getInt();
-		itemTeacupFullId = config.getItem("ItemTeacupFull", iIdx++).getInt();
-		itemKettleEmptyId = config.getItem("ItemKettle", iIdx++).getInt();
-		itemKettleColdId = config.getItem("ItemKettleCold", iIdx++).getInt();
-		itemKettleHotId = config.getItem("ItemKettleHot", iIdx++).getInt();
 		
 		etheriumChance = config.get(CATEGORY_GEN_OPTIONS, "Chance of Etherium Ore Generation. (Higher value = more ore. 0 disables.)", 1).getInt();
         uraniumChance = config.get(CATEGORY_GEN_OPTIONS, "Chance of Uranium Ore Generation", 3).getInt();

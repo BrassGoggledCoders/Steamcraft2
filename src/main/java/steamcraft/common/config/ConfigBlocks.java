@@ -35,6 +35,9 @@ import steamcraft.common.blocks.BlockMetalItem;
 import steamcraft.common.blocks.BlockSlate;
 import steamcraft.common.blocks.BlockSlateItem;
 import steamcraft.common.blocks.BlockSteamBoiler;
+import steamcraft.common.blocks.BlockMetal;
+import steamcraft.common.blocks.BlockMetalItem;
+import steamcraft.common.blocks.machine.BlockSteamBoiler;
 import steamcraft.common.lib.LibInfo;
 import steamcraft.common.tiles.TileCrystal;
 import steamcraft.common.tiles.TileEntitySteamBoiler;
@@ -48,32 +51,40 @@ import cpw.mods.fml.common.registry.GameRegistry;
  */
 public class ConfigBlocks
 {
-    public static Block blockCustomOre;
-    public static Block blockCosmetic;
-    public static Block blockEngraved;
-    public static Block blockCastIronFence;
-    public static Block blockCastIronGate;
-    public static Block blockCrystal;
-    public static Block blockCastIronLampI;
+	public static Block blockCustomOre;
+	public static Block blockCosmetic;
+	public static Block blockEngraved;
+	public static Block blockCastIronFence;
+	public static Block blockCastIronGate;
+	public static Block blockCrystal;
+	public static Block blockCastIronLampI;
 	public static Block blockCastIronLampA;
 	public static Block blockMetal;
+
 	public static Block blockHatch;
 
+	public static Block blockSteamPipe;
+    
 	public static Block blockLampI;
 	public static Block blockLampA;
 	public static Block blockTeaPlant;
 	public static Block blockSmog;
+    
 	public static Block blockFluidSteam;
 	public static Block blockSlate;
 
-	
 	public static Block blockSteamBoiler;
-	
+
 	public static Fluid steamFluid;
 
 	public static Block blockSteam;
 
     public static BlockStairs blockObsidianTileStairs;
+    
+	public static int blockCrystalRI = -1;
+	public static int blockCastIronLampRI = -1;
+	public static int blockLightningRodRI = -1;
+	public static int blockSmogRI = 1;
 
     public static int blockCrystalRI = RenderingRegistry.getNextAvailableRenderId();
     public static int blockCastIronLampRI = RenderingRegistry.getNextAvailableRenderId();
@@ -87,27 +98,25 @@ public class ConfigBlocks
 		registerBlocks();
 		registerTileEntities();
 	}
-	
+
 	public static void initializeBlocks()
 	{
-        blockCustomOre = new BlockCustomOre(Config.blockCustomOreId);
-        blockCosmetic = new BlockCosmeticSolid(Config.blockCosmeticId);
-        blockEngraved = new BlockEngravedSolid(Config.blockEngravedId);
-        blockCastIronFence = new BlockCastIronFence(Config.blockCastIronFenceId);
-        blockCastIronGate = new BlockCastIronGate(Config.blockCastIronGateId);
-        blockCrystal = new BlockCrystal(Config.blockCrystalId);
-        blockCastIronLampI = new BlockCastIronLamp(Config.blockCastIronLampIId, false);
-        blockCastIronLampA = new BlockCastIronLamp(Config.blockCastIronLampAId, true);
-        blockSteamBoiler = new BlockSteamBoiler(Config.blockSteamBoilerId);
-        blockMetal = new BlockMetal(Config.blockMetalId);
-        blockHatch = new BlockHatch(Config.blockHatchId, Material.anvil);
-        blockSlate = new BlockSlate(Config.blockSlateId);
-        
-		Fluid steamFluid = new Fluid("steam").setGaseous(true).setTemperature(700).setDensity(-100).setViscosity(500).setLuminosity(1);;
-		FluidRegistry.registerFluid(steamFluid);
-        blockFluidSteam = new BlockFluidSteam(steamFluid, Material.water);
+		blockCustomOre = new BlockCustomOre().setBlockName("blockCustomOre");
+		blockCosmetic = new BlockCosmeticSolid().setBlockName("blockCosmeticSolid");
+		blockEngraved = new BlockEngravedSolid().setBlockName("blockEngravedSolid");
+		blockCastIronFence = new BlockCastIronFence().setBlockName("blockCastIronFence");
+		blockCastIronGate = new BlockCastIronGate().setBlockName("blockCastIronGate");
+		blockCrystal = new BlockCrystal().setBlockName("blockCrystal");
+		blockCastIronLampI = new BlockCastIronLamp(false).setBlockName("blockCastIronLampOff");
+		blockCastIronLampA = new BlockCastIronLamp(true).setBlockName("blockCastIronLampOn");
+		blockSteamBoiler = new BlockSteamBoiler().setBlockName("blockSteamBoiler");
+		blockMetal = new BlockMetal().setBlockName("blockMetal");
+
+		//blockFluidSteam = new BlockFluidSteam(steamFluid, Material.water);
+		//Fluid steamFluid = new Fluid("steam").setGaseous(true).setTemperature(700).setDensity(-100).setViscosity(500).setLuminosity(1);
+		//FluidRegistry.registerFluid(steamFluid);
 	}
-	
+
 	public static void registerBlocks()
 	{
         GameRegistry.registerBlock(blockCustomOre, BlockCustomOreItem.class, "BlockCustomOre"); // If you want different hardness/resistances/light values,

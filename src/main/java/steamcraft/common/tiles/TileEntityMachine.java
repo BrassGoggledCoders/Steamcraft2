@@ -38,12 +38,12 @@ public class TileEntityMachine extends TileEntity implements ISidedInventory
 	public void readFromNBT(NBTTagCompound par1NBTTagCompound)
 	{
 		super.readFromNBT(par1NBTTagCompound);
-		NBTTagList nbttaglist = par1NBTTagCompound.getTagList("Items");
+		NBTTagList nbttaglist = (NBTTagList)par1NBTTagCompound.getTag("Items");
 		inventory = new ItemStack[this.getSizeInventory()];
 
 		for (int i = 0; i < nbttaglist.tagCount(); ++i)
 		{
-			NBTTagCompound nbttagcompound1 = (NBTTagCompound) nbttaglist.tagAt(i);
+			NBTTagCompound nbttagcompound1 = (NBTTagCompound) nbttaglist.getCompoundTagAt(i);
 			byte b0 = nbttagcompound1.getByte("Slot");
 
 			if (b0 >= 0 && b0 < inventory.length)
@@ -138,32 +138,10 @@ public class TileEntityMachine extends TileEntity implements ISidedInventory
 	}
 	
 	@Override
-	public boolean isInvNameLocalized()
+	public boolean isUseableByPlayer(EntityPlayer player)
 	{
-		return true;
-	}
-	
-	@Override
-	public boolean isUseableByPlayer(EntityPlayer par1EntityPlayer)
-	{
-		return worldObj.getBlockTileEntity(xCoord, yCoord, zCoord) != this ? false : par1EntityPlayer.getDistanceSq(xCoord + 0.5D, yCoord + 0.5D,
+		return worldObj.getTileEntity(xCoord, yCoord, zCoord) != this ? false : player.getDistanceSq(xCoord + 0.5D, yCoord + 0.5D,
 				zCoord + 0.5D) <= 64.0D;
-	}
-	
-	@Override
-	public void openChest()
-	{
-	}
-
-	@Override
-	public void closeChest()
-	{
-	}
-
-	@Override
-	public String getInvName() 
-	{
-		return "SteamCraft 2 Inventory";
 	}
 
 	@Override
@@ -189,4 +167,22 @@ public class TileEntityMachine extends TileEntity implements ISidedInventory
 	{
 		return false;
 	}
+
+	@Override
+	public void closeInventory() {}
+
+	@Override
+	public String getInventoryName() 
+	{
+		return this.getInventoryName();
+	}
+
+	@Override
+	public boolean hasCustomInventoryName() 
+	{
+		return true;
+	}
+
+	@Override
+	public void openInventory() {}
 }

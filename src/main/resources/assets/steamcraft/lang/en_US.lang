@@ -23,10 +23,12 @@ tile.blockEngravedSolid.5.name=Engraved Lapis
 tile.blockEngravedSolid.6.name=Engraved Stone
 tile.blockEngravedSolid.7.name=Engraved Uranium
 tile.blockEngravedSolid.8.name=Engraved Etherium
+tile.blockCastIronFence.name=Cast Iron Fence
+tile.blockCastIronGate.name=Cast Iron Gate
 tile.teaPlant.name=Tea Plant
 tile.blockObsidianTile.name=Obsidian Tiles
-tile.castIronLampOff.name=Cast Iron Lamp
-tile.castIronLampOn.name=Cast Iron Lamp
+tile.blockCastIronLampOff.name=Cast Iron Lamp
+tile.blockCastIronLampOn.name=Cast Iron Lamp
 tile.smog.name=Smog
 tile.hammerHead.name=Drop Hammer Head
 tile.blockObsidianTile.name=Obsidian Tiles
@@ -42,27 +44,29 @@ tile.blockSlate.5.name=Red Slate Cobblestone
 tile.blockSlate.6.name=Blue Slate Bricks 
 tile.blockSlate.7.name=Black Slate Bricks
 tile.blockSlate.8.name=Red Slate Bricks
-	#Ores
-tile.blockOre.0.name=Bornite Ore
-tile.blockOre.1.name=Brimstone Ore
-tile.blockOre.2.name=Phosphate Ore
-tile.blockOre.3.name=Uranite Ore
-tile.blockOre.4.name=Aluminum Ore
-tile.blockOre.5.name=Copper Ore
-tile.blockOre.6.name=Tin Ore
-tile.blockOre.7.name=Zinc Ore
-tile.blockCrystal.name=Etherium Crystal Block
-	#Machines
-tile.steamBoiler.name=Coal-Fired Steam Boiler
+
+#Ores
+tile.blockCustomOre.0.name=Bornite Ore
+tile.blockCustomOre.1.name=Brimstone Ore
+tile.blockCustomOre.2.name=Phosphate Ore
+tile.blockCustomOre.3.name=Uranite Ore
+tile.blockCustomOre.4.name=Aluminum Ore
+tile.blockCustomOre.5.name=Copper Ore
+tile.blockCustomOre.6.name=Tin Ore
+tile.blockCustomOre.7.name=Zinc Ore
+tile.blockCrystal.name=Etherium Crystal
+
+#Machines
+tile.blockSteamBoiler.name=Steam Boiler
 tile.copperWire.name=Copper Wire
 tile.lightningRod.name=Lightning Rod
 tile.steamfurnace.name=Steam Oven
 tile.chemfurnace.name=Chemical Furnace
 tile.nukefurnace.name=Nuclear Furnace
 tile.compressorMachine.name=Compressor
-tile.conveyor.name=Conveyor Belt
 tile.simpleCoalGenerator.name=Simple Coal Generator
 tile.dropHammer.name=Drop Hammer Head
+
 #Items
 item.itemResource.0.name=Etherium Crystal
 item.itemResource.1.name=Sulfur
@@ -93,7 +97,8 @@ item.emptycanister.name=Empty Canister
 item.guidebook.name=SteamCraft2 Guidebook
 item.steamBucket.name=Steam Bucket
 item.itemTeacupEmpty=Empty Teacup
-	#Guns
+
+#Guns
 item.smoothbarrel.name=Smooth Barrel
 item.rifledbarrel.name=Rifled Barrel
 item.woodenstock.name=Wooden Stock
@@ -108,7 +113,8 @@ item.musketcartridge.name=Musket Round
 item.percussioncap.name=Percussion Cap
 item.rifleround.name=Rifle Round
 item.raygun.name=Ray Gun
-	#Tools
+
+#Tools
 item.coredrill.name=Drill Core
 item.coredrillbase.name=Drill Base
 item.drillWood.name=Wooden Drill
@@ -134,7 +140,8 @@ item.hoeObsidian.name=Obsidian Hoe
 item.spadeObsidian.name=Obsidian Shovel
 item.itemChisel.name=Chisel
 item.spanner.name=Spanner
-	#Armors
+
+#Armors
 item.itemGoggles.name=Brass Goggles
 item.aqualung.name=Aqualung
 item.pnematicBraces.name=Pneumatic Leg Braces
@@ -152,7 +159,8 @@ item.brassWings.name=Brass Wings [NYI]
 item.itemSteamJetpack.name=Steam-Powered Jetpack [NYI]
 item.steamWings.name=Steam-Powered Wingpack [NYI]
 item.pnematicBoots.name=Pnematic Boots
-    #Parts
+
+#Parts
 item.partsBrass.0.name=Brass Gear
 item.partsBrass.1.name=Brass Sprocket
 item.partsBrass.2.name=Brass Spring
@@ -197,6 +205,6 @@ item.pileParts.0.name=Pile of Brass Parts
 item.pileParts.1.name=Pile of Steel Parts
 item.pileParts.2.name=Pile of Iron Parts
 item.pileParts.3.name=Pile of Copper Parts
+
 #Tabs
-itemGroup.SC2Blocks=Steamcraft 2 Blocks
-itemGroup.SC2Items=Steamcraft 2 Items
+itemGroup.steamcraft=Steamcraft 2

@@ -21,9 +21,14 @@ import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.EntityEvent.EntityConstructing;
 import net.minecraftforge.event.entity.item.ItemTossEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
+import net.minecraftforge.client.event.RenderGameOverlayEvent;
+import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
+
+import org.lwjgl.opengl.GL11;
 import steamcraft.common.config.ConfigItems;
 import steamcraft.common.entities.EntityPlayerExtended;
 import steamcraft.common.lib.LibInfo;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 /**
  * @author Decebaldecebal
@@ -89,29 +94,24 @@ public class EventHandlerSC2
 		}
 	}
 	
-	private static final ResourceLocation overlay = new ResourceLocation(LibInfo.PREFIX + "textures/misc/goggles_overlay.png");
+	private Minecraft mc = Minecraft.getMinecraft();
+	private static final ResourceLocation overlay = new ResourceLocation(LibInfo.PREFIX + "textures/misc/goggles.png");
 
-	/*
-	@ForgeSubscribe
-	public void onHUDTick(TickEvent.RenderTickEvent event)
+	@SubscribeEvent
+	public void onHUDTick(RenderGameOverlayEvent.Pre event)
 	{
-		if (event.phase == event.phase.END)
+		if (event.type == ElementType.HELMET) 
 		{
-			Minecraft mc = Minecraft.getMinecraft();
-
-			if (mc.thePlayer == null || mc.currentScreen != null)
+			if (this.mc.thePlayer == null || this.mc.currentScreen != null)
 			{
 				return;
 			} 
 
-			ItemStack helmet = Minecraft.getMinecraft().thePlayer.inventory.armorItemInSlot(3);
+			ItemStack helmet = this.mc.thePlayer.inventory.armorItemInSlot(3);
 
-			if (mc.gameSettings.thirdPersonView == 0 && helmet != null && helmet.getItem() == ConfigItems.itemBrassGoggles)// && KeyHandler.keyPressed)
+			if (this.mc.gameSettings.thirdPersonView == 0 && helmet != null && helmet.getItem() == ConfigItems.itemBrassGoggles)// && KeyHandler.keyPressed)
 			{
-				GL11.glPushMatrix();
-				// TODO: Might want to change these values for maximum brightness
-				mc.getTextureManager().bindTexture(this.overlay);
-				//GL11.glPushAttrib(GL11.GL_ALL_ATTRIB_BITS);
+				this.mc.getTextureManager().bindTexture(this.overlay);
 				Tessellator tessellator = Tessellator.instance;
 				ScaledResolution scaledResolution = new ScaledResolution(mc.gameSettings, mc.displayWidth, mc.displayHeight);
 				int width = scaledResolution.getScaledWidth();
@@ -119,13 +119,12 @@ public class EventHandlerSC2
 
 				GL11.glDisable(GL11.GL_DEPTH_TEST);
 				GL11.glDepthMask(false);
-				GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA); // Does cool effects with the brightness
-				//GL11.glColor4f(1.0F, 0.5F, 1.0F, 1.0F); // Changes the rendering color; values must be between 0.0F - 1.0F
+				//GL11.glEnable(GL11.GL_BLEND);
+				//GL11.glBlendFunc(GL11.GL_DST_COLOR, GL11.GL_SRC_COLOR);
+				//GL11.glColor3f(1.0F, 1.0F, 1.0F);
 				GL11.glDisable(GL11.GL_ALPHA_TEST);
-				GL11.glEnable(GL11.GL_BLEND);
-				GL11.glClearDepth(1.0);
+				GL11.glClearDepth(1.0D);
 				tessellator.startDrawingQuads();
-				tessellator.setBrightness(10);
 				tessellator.addVertexWithUV(0.0D, (double)height, 90.0D, 0.0D, 1.0D);
 				tessellator.addVertexWithUV((double)width, (double)height, 90.0D, 1.0D, 1.0D);
 				tessellator.addVertexWithUV((double)width, 0.0D, 90.0D, 1.0D, 0.0D);
@@ -134,16 +133,15 @@ public class EventHandlerSC2
 				GL11.glDepthMask(true);
 				GL11.glEnable(GL11.GL_DEPTH_TEST);
 				GL11.glEnable(GL11.GL_ALPHA_TEST);
-				GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 				GL11.glDisable(GL11.GL_BLEND);
-				GL11.glPopMatrix();
 
+				/*
 				if (!mc.gameSettings.hideGUI || mc.currentScreen != null)
 				{
 					int x = (Mouse.getX() * width) / mc.displayWidth;
 					int y = height - (Mouse.getY() * height) / mc.displayHeight - 1;
 					mc.ingameGUI.renderGameOverlay(0.0F, mc.currentScreen != null, x, y);
-				}
+				}*/
 			}
 		}
 		else
@@ -151,4 +149,6 @@ public class EventHandlerSC2
 			return;
 		}
 	}*/
+}
+	}
 }

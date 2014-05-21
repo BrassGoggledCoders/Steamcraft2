@@ -21,8 +21,6 @@ import net.minecraft.client.settings.KeyBinding;
 
 import org.lwjgl.input.Keyboard;
 
-import cpw.mods.fml.client.registry.KeyBindingRegistry;
-
 /**
  * @author warlordjones
  *
@@ -44,13 +42,13 @@ public class RegisterKeyBindings {
 	/** This initializes and registers all the key bindings */
 	public static void init()
 	{
-	boolean[] repeat = new boolean[desc.length];
-	// just use a for loop to run through all the values
-	for (int i = 0; i < desc.length; ++i) {
-	keys[i] = new KeyBinding(desc[i], keyValues[i]);
-	repeat[i] = false;
-	}
+		boolean[] repeat = new boolean[desc.length];
+		// just use a for loop to run through all the values
+		for (int i = 0; i < desc.length; ++i) {
+			//keys[i] = new KeyBinding(desc[i], keyValues[i]);
+			repeat[i] = false;
+		}
 
-	KeyBindingRegistry.registerKeyBinding(new KeyHandlerVanity(keys, repeat));
+		//KeyBindingRegistry.registerKeyBinding(new KeyHandlerVanity(keys, repeat));
 	}
-	}
+}

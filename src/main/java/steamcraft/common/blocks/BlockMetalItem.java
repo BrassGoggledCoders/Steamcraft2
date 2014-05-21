@@ -13,6 +13,7 @@
  */
 package steamcraft.common.blocks;
 
+import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 
@@ -20,10 +21,11 @@ import net.minecraft.item.ItemStack;
  * @author warlordjones
  *
  */
-public class BlockMetalItem extends ItemBlock{
-    public BlockMetalItem(int id)
+public class BlockMetalItem extends ItemBlock
+{
+    public BlockMetalItem(Block block)
     {
-        super(id);
+        super(block);
         this.setMaxDamage(0);
         this.setHasSubtypes(true);
     }

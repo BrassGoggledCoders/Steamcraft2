@@ -13,13 +13,9 @@
  */
 package steamcraft.common.items;
 
-import java.util.List;
-
-import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.LibInfo;
 import cpw.mods.fml.relauncher.Side;
@@ -30,18 +26,18 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 public class ItemResource extends Item
 {
-    public Icon[] icon = new Icon[10];
+    public IIcon[] icon = new IIcon[12];
 
     @Override
     @SideOnly(Side.CLIENT)
-    public Icon getIconFromDamage(int itemDamage)
+    public IIcon getIconFromDamage(int itemDamage)
     {
         return this.icon[itemDamage];
     }
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void registerIcons(IconRegister ir)
+    public void registerIcons(IIconRegister ir)
     {
         this.icon[0] = ir.registerIcon(LibInfo.PREFIX + "itemCrystal");
         this.icon[1] = ir.registerIcon(LibInfo.PREFIX + "itemChemSalt");
@@ -55,15 +51,14 @@ public class ItemResource extends Item
         this.icon[9] = ir.registerIcon(LibInfo.PREFIX + "itemTeaLeaves");
     }
 
-    public ItemResource(int id)
+    public ItemResource()
     {
-    	super(id);
+    	super();
         this.setMaxStackSize(64);
         this.setHasSubtypes(true);
         this.setMaxDamage(0);
         this.setCreativeTab(Steamcraft.tabSC2);
     }
-    
     @Override
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(int id, CreativeTabs tabs, List list) 
@@ -79,9 +74,4 @@ public class ItemResource extends Item
 		list.add(new ItemStack(id, 1, 8));
 		list.add(new ItemStack(id, 1, 9));
 	}
-    @Override
-    public String getUnlocalizedName(ItemStack is)
-    {
-        return super.getUnlocalizedName() + "." + is.getItemDamage();
-    }
 }

@@ -20,13 +20,13 @@ import java.util.Random;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import steamcraft.common.Steamcraft;
@@ -47,12 +47,13 @@ public class BlockCosmeticSolid extends Block
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public Icon getIcon(int side, int metadata)
+	public IIcon getIcon(int side, int metadata)
 	{
 		if (metadata == 8) // This is for the brass wood. It's kinda messed up. Maybe a separate file would do?
 		{
 			int i = metadata & 11;
 			int j = metadata & 3;
+
 			return i == 0 && (side == 1 || side == 0) ? this.icon[0] : (i == 4 && (side == 5 || side == 4) ? this.icon[0] : (i == 8 && (side == 2 || side == 3) ? this.icon[0] : this.icon[0]));
 		}
 
@@ -61,7 +62,7 @@ public class BlockCosmeticSolid extends Block
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister ir)
+	public void registerBlockIcons(IIconRegister ir)
 	{
 		this.icon[0] = ir.registerIcon(LibInfo.PREFIX + "blockBrassLog");
 		this.icon[1] = ir.registerIcon(LibInfo.PREFIX + "blockBrassLogTop");
@@ -70,19 +71,19 @@ public class BlockCosmeticSolid extends Block
 		this.icon[4] = ir.registerIcon(LibInfo.PREFIX + "blockLampOn");
 	}
 
-	public BlockCosmeticSolid(int id)
+	public BlockCosmeticSolid()
 	{
-		super(id, Material.iron);
+		super(Material.iron);
 		this.setHardness(3.0F);
 		this.setResistance(10.0F);
-		this.setStepSound(Block.soundMetalFootstep);
-		this.setUnlocalizedName("blockCosmeticSolid");
+		this.setStepSound(Block.soundTypeMetal);
+		// TODO:this.setUnlocalizedName("blockCosmeticSolid");
 		this.setTickRandomly(true);
 		this.setCreativeTab(Steamcraft.tabSC2);
 
 		if (this.powered)
 		{
-			this.setLightValue(0.98F);
+			this.setLightLevel(0.98F);
 		}
 	}
 
@@ -94,7 +95,7 @@ public class BlockCosmeticSolid extends Block
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void getSubBlocks(int id, CreativeTabs tabs, List list)
+	public void getSubBlocks(Item item, CreativeTabs tabs, List list)
 	{
 		list.add(new ItemStack(id, 1, 0));
 		list.add(new ItemStack(id, 1, 1));
@@ -104,7 +105,7 @@ public class BlockCosmeticSolid extends Block
 	}
 
 	@Override
-	public ArrayList<ItemStack> getBlockDropped(World world, int x, int y, int z, int metadata, int fortune)
+	public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune)
 	{
 		ArrayList drop = new ArrayList();
 
@@ -129,7 +130,7 @@ public class BlockCosmeticSolid extends Block
 	@Override
 	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)
 	{
-		if ((world.getBlockId(x, y, z) == this.blockID) && (world.getBlockMetadata(x, y, z) == 6))
+		if ((world.getBlock(x, y, z) == this) && (world.getBlockMetadata(x, y, z) == 6))
 		{
 			entity.attackEntityFrom(DamageSource.magic, 1);
 		}
@@ -139,16 +140,16 @@ public class BlockCosmeticSolid extends Block
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(World world, int x, int y, int z, Random random)
 	{
-		if ((world.getBlockId(x, y, z) == this.blockID) && (world.getBlockMetadata(x, y, z) == 6))
+		if ((world.getBlock(x, y, z) == this) && (world.getBlockMetadata(x, y, z) == 6))
 		{
 			Utils.sparkle(world, x, y, z, "reddust");
 		}
 	}
 
 	@Override
-	public boolean isLeaves(World world, int x, int y, int z)
+	public boolean isLeaves(IBlockAccess world, int x, int y, int z)
 	{
-		if ((world.getBlockId(x, y, z) == this.blockID) && (world.getBlockMetadata(x, y, z) == 10))
+		if ((world.getBlock(x, y, z) == this) && (world.getBlockMetadata(x, y, z) == 10))
 			return this.blockMaterial == Material.leaves;
 		else
 			return false;
@@ -157,7 +158,7 @@ public class BlockCosmeticSolid extends Block
 	@Override // Something is wrong with the functionality of this method. You'll see when you place a Brass Log.
 	public int onBlockPlaced(World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ, int metadata)
 	{
-		if ((world.getBlockId(x, y, z) == this.blockID) && (world.getBlockMetadata(x, y, z) == 8))
+		if ((world.getBlock(x, y, z) == this) && (world.getBlockMetadata(x, y, z) == 8))
 		{
 			int meta = metadata & 3;
 			byte byte0 = 0;
@@ -184,9 +185,9 @@ public class BlockCosmeticSolid extends Block
 	}
 
 	@Override
-	public void breakBlock(World world, int x, int y, int z, int bid, int meta)
+	public void breakBlock(World world, int x, int y, int z, Block block, int meta)
 	{
-		if ((world.getBlockId(x, y, z) == this.blockID) && (world.getBlockMetadata(x, y, z) == 8))
+		if ((world.getBlock(x, y, z) == this) && (world.getBlockMetadata(x, y, z) == 8))
 		{
 			byte byte0 = 4;
 			int factor = byte0 + 1;
@@ -199,8 +200,7 @@ public class BlockCosmeticSolid extends Block
 					{
 						for (int iz = -byte0; iz <= byte0; ++iz)
 						{
-							bid = world.getBlockId(x + ix, y + iy, z + iz);
-							Block block = Block.blocksList[bid];
+							block = world.getBlock(x + ix, y + iy, z + iz);
 							
 							if (block instanceof BlockLeaves)
 							{
@@ -214,18 +214,18 @@ public class BlockCosmeticSolid extends Block
 	}
 
 	@Override
-	public boolean canSustainLeaves(World world, int x, int y, int z)
+	public boolean canSustainLeaves(IBlockAccess world, int x, int y, int z)
 	{
-		if ((world.getBlockId(x, y, z) == this.blockID) && (world.getBlockMetadata(x, y, z) == 8))
+		if ((world.getBlock(x, y, z) == this) && (world.getBlockMetadata(x, y, z) == 8))
 			return true;
 		else
 			return false;
 	}
 
 	@Override
-	public boolean isWood(World world, int x, int y, int z)
+	public boolean isWood(IBlockAccess world, int x, int y, int z)
 	{
-		if ((world.getBlockId(x, y, z) == this.blockID) && (world.getBlockMetadata(x, y, z) == 8))
+		if ((world.getBlock(x, y, z) == this) && (world.getBlockMetadata(x, y, z) == 8))
 			return true;
 		else
 			return false;
