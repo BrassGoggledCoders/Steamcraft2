@@ -13,12 +13,8 @@
  */
 package steamcraft.common.entities;
 
-import ibxm.Player;
-
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
-
-import com.sun.xml.internal.ws.client.dispatch.PacketDispatch;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;

@@ -13,9 +13,7 @@
  */
 package steamcraft.common.items.armor;
 
-import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.Entity;
-import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import steamcraft.common.Steamcraft;

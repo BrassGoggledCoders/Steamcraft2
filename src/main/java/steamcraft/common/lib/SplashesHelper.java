@@ -16,9 +16,8 @@ package steamcraft.common.lib;
 import java.util.Random;
 import java.util.logging.Level;
 
-import steamcraft.common.lib.network.LoggerSteamcraft;
 import net.minecraft.client.gui.GuiMainMenu;
-import cpw.mods.fml.common.FMLLog;
+import steamcraft.common.lib.network.LoggerSteamcraft;
 import cpw.mods.fml.relauncher.ReflectionHelper;
 
 /**

@@ -13,9 +13,7 @@
  */
 package steamcraft.common.lib;
 
-import net.minecraft.item.EnumArmorMaterial;
-import net.minecraft.item.EnumToolMaterial;
-import net.minecraftforge.common.EnumHelper;
+import net.minecraftforge.common.util.EnumHelper;
 
 /**
  * @author Decebaldecebal

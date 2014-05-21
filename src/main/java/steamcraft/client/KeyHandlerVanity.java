@@ -1,11 +1,5 @@
 package steamcraft.client;
 
-import java.util.EnumSet;
-
-import net.minecraft.client.entity.EntityClientPlayerMP;
-import net.minecraft.client.settings.KeyBinding;
-import net.minecraft.entity.player.EntityPlayer;
-import cpw.mods.fml.client.FMLClientHandler;
 
 /*
 public class KeyHandlerVanity extends IKeyHandler

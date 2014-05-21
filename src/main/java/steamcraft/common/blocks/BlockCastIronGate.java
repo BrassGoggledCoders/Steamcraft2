@@ -15,7 +15,6 @@ package steamcraft.common.blocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFenceGate;
-import net.minecraft.block.material.Material;
 import net.minecraft.util.IIcon;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.config.ConfigBlocks;

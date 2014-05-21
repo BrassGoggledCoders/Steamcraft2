@@ -13,7 +13,6 @@
  */
 package steamcraft.common.items;
 
-import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.item.Item;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.LibInfo;

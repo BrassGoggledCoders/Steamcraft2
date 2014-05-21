@@ -13,7 +13,6 @@
  */
 package steamcraft.client.lib;
 
-import steamcraft.common.Steamcraft;
 
 
 /**

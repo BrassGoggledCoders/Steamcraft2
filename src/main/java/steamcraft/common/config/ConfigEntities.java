@@ -13,7 +13,6 @@
  */
 package steamcraft.common.config;
 
-import steamcraft.common.Steamcraft;
 import steamcraft.common.entities.projectile.EntityBullet;
 import cpw.mods.fml.common.registry.EntityRegistry;
 

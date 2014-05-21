@@ -13,7 +13,6 @@
  */
 package steamcraft.client.fx;
 
-import cpw.mods.fml.client.FMLClientHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.EntityFX;
 import net.minecraft.client.renderer.Tessellator;
@@ -24,8 +23,11 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
+
 import org.lwjgl.opengl.GL11;
+
 import steamcraft.common.lib.LibInfo;
+import cpw.mods.fml.client.FMLClientHandler;
 
 /**
  * Created by Surseance (Johnny Eatmon)
