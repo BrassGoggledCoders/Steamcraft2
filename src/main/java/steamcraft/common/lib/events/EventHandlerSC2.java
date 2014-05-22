@@ -110,7 +110,7 @@ public class EventHandlerSC2
 
 			if (this.mc.gameSettings.thirdPersonView == 0 && helmet != null && helmet.getItem() == ConfigItems.itemBrassGoggles)// && KeyHandler.keyPressed)
 			{
-				this.mc.getTextureManager().bindTexture(this.overlay);
+				this.mc.getTextureManager().bindTexture(EventHandlerSC2.overlay);
 				Tessellator tessellator = Tessellator.instance;
 				ScaledResolution scaledResolution = new ScaledResolution(mc.gameSettings, mc.displayWidth, mc.displayHeight);
 				int width = scaledResolution.getScaledWidth();
@@ -124,9 +124,9 @@ public class EventHandlerSC2
 				GL11.glDisable(GL11.GL_ALPHA_TEST);
 				GL11.glClearDepth(1.0D);
 				tessellator.startDrawingQuads();
-				tessellator.addVertexWithUV(0.0D, (double)height, 90.0D, 0.0D, 1.0D);
-				tessellator.addVertexWithUV((double)width, (double)height, 90.0D, 1.0D, 1.0D);
-				tessellator.addVertexWithUV((double)width, 0.0D, 90.0D, 1.0D, 0.0D);
+				tessellator.addVertexWithUV(0.0D, height, 90.0D, 0.0D, 1.0D);
+				tessellator.addVertexWithUV(width, height, 90.0D, 1.0D, 1.0D);
+				tessellator.addVertexWithUV(width, 0.0D, 90.0D, 1.0D, 0.0D);
 				tessellator.addVertexWithUV(0.0D, 0.0D, 90.0D, 0.0D, 0.0D);
 				tessellator.draw();
 				GL11.glDepthMask(true);

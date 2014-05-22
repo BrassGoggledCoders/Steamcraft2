@@ -157,7 +157,7 @@ public class InventoryVanity implements IInventory
 
 		for (int i = 0; i < tagList.tagCount(); ++i)
 		{
-			NBTTagCompound newTagCompound = (NBTTagCompound)tagList.getCompoundTagAt(i);
+			NBTTagCompound newTagCompound = tagList.getCompoundTagAt(i);
 			byte slot = newTagCompound.getByte("Slot");
 
 			if (slot >= 0 && slot < this.getSizeInventory())

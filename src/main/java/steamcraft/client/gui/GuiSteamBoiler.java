@@ -70,7 +70,7 @@ public class GuiSteamBoiler extends GuiContainer{
 		IIcon icon = null; // TODO: FIX THIS
 		//IIcon icon = ((Fluid) fluid).getBlock().getIcon(0, 0); //Had to do this another way because our steam fluid's icon doesn't appear to register
 		mc.renderEngine.bindTexture(TextureMap.locationBlocksTexture);
-		this.setGLColorFromInt(fluid.getFluid().getColor(fluid));
+		GuiSteamBoiler.setGLColorFromInt(fluid.getFluid().getColor(fluid));
 		int fullX = width / 16;
 		int fullY = height / 16;
 		int lastX = width - fullX * 16;
@@ -110,9 +110,9 @@ public class GuiSteamBoiler extends GuiContainer{
 	
 	public static void setGLColorFromInt(int color) 
 	{
-		float red = (float) (color >> 16 & 255) / 255.0F;
-		float green = (float) (color >> 8 & 255) / 255.0F;
-		float blue = (float) (color & 255) / 255.0F;
+		float red = (color >> 16 & 255) / 255.0F;
+		float green = (color >> 8 & 255) / 255.0F;
+		float blue = (color & 255) / 255.0F;
 		GL11.glColor4f(red, green, blue, 1.0F);
 	}
 }

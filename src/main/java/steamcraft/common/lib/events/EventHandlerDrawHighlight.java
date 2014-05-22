@@ -113,10 +113,10 @@ public class EventHandlerDrawHighlight
 			if (block != Blocks.air)
 			{
 				block.setBlockBoundsBasedOnState(player.worldObj, mop.blockX, mop.blockY, mop.blockZ);
-				double dx = player.lastTickPosX + (player.posX - player.lastTickPosX) * (double)partialTicks;
-				double dy = player.lastTickPosY + (player.posY - player.lastTickPosY) * (double)partialTicks;
-				double dz = player.lastTickPosZ + (player.posZ - player.lastTickPosZ) * (double)partialTicks;
-				this.drawOutlinedBoundingBox(block.getSelectedBoundingBoxFromPool(player.worldObj, mop.blockX, mop.blockY, mop.blockZ).expand((double)offset, (double)offset, (double)offset).getOffsetBoundingBox(-dx, -dy, -dz));
+				double dx = player.lastTickPosX + (player.posX - player.lastTickPosX) * partialTicks;
+				double dy = player.lastTickPosY + (player.posY - player.lastTickPosY) * partialTicks;
+				double dz = player.lastTickPosZ + (player.posZ - player.lastTickPosZ) * partialTicks;
+				this.drawOutlinedBoundingBox(block.getSelectedBoundingBoxFromPool(player.worldObj, mop.blockX, mop.blockY, mop.blockZ).expand(offset, offset, offset).getOffsetBoundingBox(-dx, -dy, -dz));
 			}
 
 			GL11.glDepthMask(true);
@@ -138,10 +138,10 @@ public class EventHandlerDrawHighlight
 			if (entity != null)
 			{
 				entity.setPosition(entity.posX, entity.posY, entity.posZ);
-				double dx = player.lastTickPosX + (player.posX - player.lastTickPosX) * (double)partialTicks;
-				double dy = player.lastTickPosY + (player.posY - player.lastTickPosY) * (double)partialTicks;
-				double dz = player.lastTickPosZ + (player.posZ - player.lastTickPosZ) * (double)partialTicks;
-				this.drawOutlinedBoundingBox(entity.boundingBox.expand((double)offset, (double)offset, (double)offset).getOffsetBoundingBox(-dx, -dy, -dz));
+				double dx = player.lastTickPosX + (player.posX - player.lastTickPosX) * partialTicks;
+				double dy = player.lastTickPosY + (player.posY - player.lastTickPosY) * partialTicks;
+				double dz = player.lastTickPosZ + (player.posZ - player.lastTickPosZ) * partialTicks;
+				this.drawOutlinedBoundingBox(entity.boundingBox.expand(offset, offset, offset).getOffsetBoundingBox(-dx, -dy, -dz));
 			}
 
 			GL11.glDepthMask(true);

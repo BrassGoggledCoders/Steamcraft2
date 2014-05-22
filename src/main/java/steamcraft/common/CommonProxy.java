@@ -13,12 +13,8 @@
  */
 package steamcraft.common;
 
-import java.util.Iterator;
-
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.network.Packet;
 import net.minecraft.world.World;
 import cpw.mods.fml.common.network.IGuiHandler;
 

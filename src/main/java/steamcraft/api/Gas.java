@@ -47,8 +47,8 @@ public class Gas extends BlockContainer implements IFluidBlock
 	{
 		super(new MaterialGas(false));
 		this.setCreativeTab((CreativeTabs)null);
-		this.isFlammable = false;
-		this.isExplosive = false;
+		Gas.isFlammable = false;
+		Gas.isExplosive = false;
 		this.dissipationHeight = 10;
 		this.viscosity = 5;
 	}
@@ -58,8 +58,8 @@ public class Gas extends BlockContainer implements IFluidBlock
 		super(new MaterialGas(canBurn));
 		this.setLightLevel(lightLevel);
 		this.setCreativeTab((CreativeTabs)null);
-		this.isFlammable = isFlammable;
-		this.isExplosive = isExplosive;
+		Gas.isFlammable = isFlammable;
+		Gas.isExplosive = isExplosive;
 		this.dissipationHeight = disHeight;
 		this.viscosity = viscosity;
 	}
@@ -84,7 +84,7 @@ public class Gas extends BlockContainer implements IFluidBlock
 		if (te != null && te instanceof TileGas)
 		{
 			TileGas teGas = (TileGas)te;
-			FluidStack fluid = teGas.getGas();
+			FluidStack fluid = TileGas.getGas();
 
 			if (doDrain)
 			{
@@ -148,8 +148,8 @@ public class Gas extends BlockContainer implements IFluidBlock
 	@Override
 	public void onBlockDestroyedByExplosion(World world, int x, int y, int z, Explosion explosion)
 	{
-		if (this.isExplosive)
-			this.createExplosion(world, x, y, z);
+		if (Gas.isExplosive)
+			Gas.createExplosion(world, x, y, z);
 	}
 
 	@Override
@@ -157,10 +157,10 @@ public class Gas extends BlockContainer implements IFluidBlock
 	{
 		if ((block == Blocks.torch) || (block == Blocks.fire) || (block == Blocks.lava))
 		{
-			if (this.isExplosive)
-				this.createExplosion(world, x, y, z);
-			else if (this.isFlammable)
-				this.setFire(world, x, y, z);
+			if (Gas.isExplosive)
+				Gas.createExplosion(world, x, y, z);
+			else if (Gas.isFlammable)
+				Gas.setFire(world, x, y, z);
 		}
 	}
 
@@ -175,7 +175,7 @@ public class Gas extends BlockContainer implements IFluidBlock
 		{
 			TileGas tg = (TileGas)te;
 
-			int volume = tg.getGasAmount();
+			int volume = TileGas.getGasAmount();
 			int metadata = (volume * 15) / TileGas.VOLUME;
 			world.setBlockMetadataWithNotify(x, y, z, metadata, 4);
 		}

@@ -194,6 +194,7 @@ public class TileSteamBoiler extends TileEntityMachine implements IFluidHandler
 		return false;
 	}
 
+	@Override
 	public boolean isItemValidForSlot(int i, ItemStack itemstack)
 	{
 		if(i == 0 || i == 1)

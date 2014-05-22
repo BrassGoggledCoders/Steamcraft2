@@ -37,7 +37,7 @@ public class GasUtils
 	 */
 	public GasUtils(World world, int x, int y, int z)
 	{
-		this.world = world;
+		GasUtils.world = world;
 
 		ix = x;
 		iy = y;
@@ -97,7 +97,7 @@ public class GasUtils
 		TileEntity te = world.getTileEntity(ix + x, iy + y, iz + z);
 
 		if ((te != null) && (te instanceof TileGas))
-			((TileGas)te).setGasAmount(TileGas.getGasAmount());
+			TileGas.setGasAmount(TileGas.getGasAmount());
 
 		world.setBlockToAir(ix, iy, iz);
 		world.removeTileEntity(ix, iy, iz);
@@ -119,8 +119,8 @@ public class GasUtils
 
 		if ((te != null) && (te instanceof TileGas))
 		{
-			((TileGas)te).setGasAmount(TileGas.getGasAmount() / 2);
-			volume = ((TileGas)te).getGasAmount();
+			TileGas.setGasAmount(TileGas.getGasAmount() / 2);
+			volume = TileGas.getGasAmount();
 			metadata = (volume * 15) / TileGas.VOLUME;
 
 			world.setBlockMetadataWithNotify(ix + x, iy + y, iz + z, metadata, 4);
@@ -210,7 +210,7 @@ public class GasUtils
 						for(int z = iz - 2; z < iz + 2; z++)
 						{
 							if ((world.getBlock(x, y, z) == Blocks.fire) || (world.getBlock(x, y, z) == Blocks.torch) || (world.getBlock(x, y, z) == Blocks.lava))
-								gas.setFire(world, ix, iy, iz);
+								Gas.setFire(world, ix, iy, iz);
 						}
 					}
 				}

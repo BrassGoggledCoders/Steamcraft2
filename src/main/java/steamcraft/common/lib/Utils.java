@@ -70,7 +70,7 @@ public class Utils
 		{
 			try {	
 				ThreadDownloadImageData imageData = new ThreadDownloadImageData("https://www.dropbox.com/s/cicvp1u0kq9xtbp/steamcraft_cape_1.png", null, null);
-				Minecraft.getMinecraft().getTextureManager().loadTexture((new ResourceLocation("cloaks/" + username)), (ITextureObject)imageData);
+				Minecraft.getMinecraft().getTextureManager().loadTexture((new ResourceLocation("cloaks/" + username)), imageData);
 			} catch (Exception e) {
 				LoggerSteamcraft.log(Level.INFO, "Unable to load capes");
 			}
@@ -103,12 +103,12 @@ public class Utils
 				list.add(line);
 			}
 
-			return (String[]) list.toArray(new String[list.size()]);
+			return list.toArray(new String[list.size()]);
 		} catch(Exception e) {
 			e.printStackTrace();
 			LoggerSteamcraft.log(Level.INFO, "Unable to connect to Dropbox");
 			
-			return (String[]) list.toArray(new String[list.size()]);
+			return list.toArray(new String[list.size()]);
 		}
 	}
 

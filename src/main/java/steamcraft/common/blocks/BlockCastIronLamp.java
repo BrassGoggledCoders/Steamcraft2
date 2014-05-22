@@ -297,9 +297,9 @@ public class BlockCastIronLamp extends BlockContainer
 		else
 		{
 			int l = world.getBlockMetadata(x, j, z);
-			double d = (double)((float)x + 0.5F) + (double)(random.nextFloat() - 0.5F) * 0.20000000000000001D;
-			double d1 = (double)((float)j + 1.0F) + (double)(random.nextFloat() - 0.5F) * 0.20000000000000001D;
-			double d2 = (double)((float)z + 0.5F) + (double)(random.nextFloat() - 0.5F) * 0.20000000000000001D;
+			double d = x + 0.5F + (random.nextFloat() - 0.5F) * 0.20000000000000001D;
+			double d1 = j + 1.0F + (random.nextFloat() - 0.5F) * 0.20000000000000001D;
+			double d2 = z + 0.5F + (random.nextFloat() - 0.5F) * 0.20000000000000001D;
 			double d3 = 0.2199999988079071D;
 			double d4 = 0.27000001072883606D;
 
