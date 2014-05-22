@@ -13,9 +13,9 @@
  */
 package steamcraft.common.blocks;
 
-import steamcraft.common.config.ConfigBlocks;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import steamcraft.common.config.ConfigBlocks;
 
 /**
  * @author warlordjones

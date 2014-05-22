@@ -32,8 +32,8 @@ import steamcraft.common.blocks.BlockSlateItem;
 import steamcraft.common.blocks.machine.BlockSteamBoiler;
 import steamcraft.common.lib.LibInfo;
 import steamcraft.common.tiles.TileCrystal;
-import steamcraft.common.tiles.TileSteamBoiler;
 import steamcraft.common.tiles.TileHatch;
+import steamcraft.common.tiles.TileSteamBoiler;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 

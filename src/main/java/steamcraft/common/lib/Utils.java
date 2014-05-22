@@ -23,14 +23,12 @@ import java.util.Random;
 import java.util.logging.Level;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ThreadDownloadImageData;
 import net.minecraft.client.renderer.texture.ITextureObject;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import steamcraft.common.config.ConfigBlocks;
 import steamcraft.common.config.ConfigItems;

@@ -15,8 +15,6 @@ package steamcraft.client;
 
 import java.awt.Color;
 
-import boilerplate.client.fx.FXRaygun;
-import boilerplate.client.fx.FXSmoke;
 import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
@@ -32,6 +30,8 @@ import steamcraft.common.lib.Utils;
 import steamcraft.common.tiles.TileCastIronLamp;
 import steamcraft.common.tiles.TileCrystal;
 import steamcraft.common.tiles.TileHatch;
+import boilerplate.client.fx.FXRaygun;
+import boilerplate.client.fx.FXSmoke;
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
