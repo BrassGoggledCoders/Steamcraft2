@@ -34,7 +34,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 public class BlockMetal extends Block
 {
-	private IIcon[] icon = new IIcon[8];
+	private IIcon[] icon = new IIcon[9];
 
 	private boolean powered;
 

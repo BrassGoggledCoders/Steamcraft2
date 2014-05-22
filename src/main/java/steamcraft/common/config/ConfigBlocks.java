@@ -28,7 +28,6 @@ import steamcraft.common.blocks.BlockEngravedSolid;
 import steamcraft.common.blocks.BlockEngravedSolidItem;
 import steamcraft.common.blocks.BlockMetal;
 import steamcraft.common.blocks.BlockMetalItem;
-import steamcraft.common.blocks.BlockSlateItem;
 import steamcraft.common.blocks.machine.BlockSteamBoiler;
 import steamcraft.common.lib.LibInfo;
 import steamcraft.common.tiles.TileCrystal;
@@ -114,11 +113,11 @@ public class ConfigBlocks
         GameRegistry.registerBlock(blockCrystal, "BlockCrystal");
         GameRegistry.registerBlock(blockCastIronLampI, "BlockCastIronLampI");
         GameRegistry.registerBlock(blockCastIronLampA, "BlockCastIronLampA");
-        GameRegistry.registerBlock(blockFluidSteam, "BlockFluidSteam");
+       // GameRegistry.registerBlock(blockFluidSteam, "BlockFluidSteam");
         GameRegistry.registerBlock(blockSteamBoiler, "BlockSteamBoiler");
         GameRegistry.registerBlock(blockMetal, BlockMetalItem.class,"BlockMetal");
-        GameRegistry.registerBlock(blockHatch, "BlockHatch");
-        GameRegistry.registerBlock(blockSlate, BlockSlateItem.class,"BlockSlate");
+        //GameRegistry.registerBlock(blockHatch, "BlockHatch");
+        //GameRegistry.registerBlock(blockSlate, BlockSlateItem.class,"BlockSlate");
     }
 	
 	private static void registerTileEntities()

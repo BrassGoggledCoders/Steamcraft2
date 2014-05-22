@@ -45,7 +45,7 @@ import cpw.mods.fml.relauncher.Side;
  * @author Surseance (Johnny Eatmon)
  *
  */
-@Mod(modid = LibInfo.ID, name = LibInfo.NAME, version = LibInfo.VERSION, dependencies="required-after:Boilerplate")
+@Mod(modid = LibInfo.ID, name = LibInfo.NAME, version = LibInfo.VERSION, dependencies="required-after:boilerplate")
 public class Steamcraft
 {
 	@SidedProxy(clientSide = LibInfo.CLIENT_PROXY, serverSide = LibInfo.COMMON_PROXY)
