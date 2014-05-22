@@ -20,7 +20,7 @@ import java.io.IOException;
 
 import net.minecraft.network.Packet;
 import net.minecraft.tileentity.TileEntity;
-import steamcraft.common.Steamcraft;
+import boilerplate.common.Utils;
 
 /**
  * @author Surseance (Johnny Eatmon)
@@ -45,7 +45,7 @@ public abstract class NetworkTile extends TileEntity
 	{
 		Packet packet = this.getDescriptionPacket();
 		//packet.isChunkDataPacket = false;
-		Steamcraft.proxy.sendToPlayers(packet, this.worldObj, this.xCoord, this.yCoord, this.zCoord, null);
+		Utils.sendToPlayers(packet, this.worldObj, this.xCoord, this.yCoord, this.zCoord, null);
 	}
 
 	@Override

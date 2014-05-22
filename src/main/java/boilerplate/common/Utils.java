@@ -1,8 +1,11 @@
 package boilerplate.common;
 
+import java.util.Iterator;
 import java.util.Random;
 
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.network.Packet;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
@@ -62,5 +65,28 @@ public class Utils {
 			return world.getBlock(x, y, z).getMaterial();
 		
 		return Material.air;
+	}
+	public static void sendToPlayers(Packet packet, World world, int x, int y, int z, Integer maxDistance) 
+	{
+		if (maxDistance == null) 
+		{
+			maxDistance = Integer.valueOf(128);
+		}
+
+		Iterator<?> iterator;
+
+		if (packet != null)
+		{
+			for (iterator = world.playerEntities.iterator(); iterator.hasNext();) 
+			{ 
+				Object player = iterator.next();
+				EntityPlayerMP playerMP = (EntityPlayerMP)player;
+
+				if ((Math.abs(playerMP.posX - x) <= maxDistance.intValue()) && (Math.abs(playerMP.posY - y) <= maxDistance.intValue()) && (Math.abs(playerMP.posZ - z) <= maxDistance.intValue())) 
+				{
+					playerMP.playerNetServerHandler.sendPacket(packet);
+				}	
+			}
+		}
 	}
 }

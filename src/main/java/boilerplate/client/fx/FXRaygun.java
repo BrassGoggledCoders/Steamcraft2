@@ -16,7 +16,6 @@ package boilerplate.client.fx;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.EntityFX;
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.MathHelper;
@@ -42,13 +41,15 @@ public class FXRaygun extends EntityFX
     private float rotPitch = 0.0F;
     private float prevYaw = 0.0F;
     private float prevPitch = 0.0F;
-    private Entity targetEntity = null;
     private double tX = 0.0D;
     private double tY = 0.0D;
     private double tZ = 0.0D;
-    private double ptX = 0.0D;
-    private double ptY = 0.0D;
-    private double ptZ = 0.0D;
+    @SuppressWarnings("unused")
+	private double ptX = 0.0D;
+    @SuppressWarnings("unused")
+	private double ptY = 0.0D;
+    @SuppressWarnings("unused")
+	private double ptZ = 0.0D;
     private int type = 0;
     private float endMod = 1.0F;
     private boolean reverse = false;
