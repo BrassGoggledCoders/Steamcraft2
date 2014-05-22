@@ -111,9 +111,9 @@ public class ConfigBlocks
         GameRegistry.registerBlock(blockCastIronFence, "BlockCastIronFence");
         GameRegistry.registerBlock(blockCastIronGate, "BlockCastIronGate");
         GameRegistry.registerBlock(blockCrystal, "BlockCrystal");
-        GameRegistry.registerBlock(blockCastIronLampI, "BlockCastIronLampI");
-        GameRegistry.registerBlock(blockCastIronLampA, "BlockCastIronLampA");
-       // GameRegistry.registerBlock(blockFluidSteam, "BlockFluidSteam");
+        //GameRegistry.registerBlock(blockCastIronLampI, "BlockCastIronLampI");
+        //GameRegistry.registerBlock(blockCastIronLampA, "BlockCastIronLampA");
+        //GameRegistry.registerBlock(blockFluidSteam, "BlockFluidSteam");
         GameRegistry.registerBlock(blockSteamBoiler, "BlockSteamBoiler");
         GameRegistry.registerBlock(blockMetal, BlockMetalItem.class,"BlockMetal");
         //GameRegistry.registerBlock(blockHatch, "BlockHatch");
