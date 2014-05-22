@@ -33,14 +33,14 @@ public class ItemSteamJetpack extends ItemCustomArmor
 {
 	private static final int steamPerTick = 10; //how much steam is uses per tick
 	
-	public ItemSteamJetpack(int id, EnumArmorMaterial mat, int renderIndex, int armorType)
+	public ItemSteamJetpack(int id, ArmorMaterial mat, int renderIndex, int armorType)
 	{
-		super(id, mat, renderIndex, armorType);
+		super(mat, renderIndex, armorType);
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void onArmorTickUpdate(World world, EntityPlayer player, ItemStack stack)
+	public void onArmorTick(World world, EntityPlayer player, ItemStack is)
 	{		
         int i = 0;
         while(i < 36)
@@ -50,7 +50,7 @@ public class ItemSteamJetpack extends ItemCustomArmor
             {
                 if(!player.capabilities.allowFlying)
                 {
-                    if(Minecraft.getMinecraft().currentScreen == null && Keyboard.isKeyDown(Minecraft.getMinecraft().gameSettings.keyBindJump.keyCode))
+                    if(Minecraft.getMinecraft().currentScreen == null && Keyboard.isKeyDown(Minecraft.getMinecraft().gameSettings.keyBindJump.getKeyCode()))
                     {
                         if(player.motionY > 0.0D)
                         {

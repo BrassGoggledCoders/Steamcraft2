@@ -30,17 +30,16 @@ public class BlockHatch extends BlockContainer{
 
 	public static ResourceLocation hatchTextures = new ResourceLocation("assets/steamcraft/textures/blocks/");
 	/**
-	 * @param par1
-	 * @param par2Material
+	 * @param mat
 	 */
-	public BlockHatch(int par1, Material par2Material) {
-		super(par1, par2Material);
+	public BlockHatch(int par1, Material mat) {
+		super(mat);
 		setCreativeTab(Steamcraft.tabSC2);
-		setUnlocalizedName("blockHatch");
+		//setUnlocalizedName("blockHatch");
 		setBlockBounds(0, 0, 0, 1, 0.55F, 1);
 	}
 	 @Override
-	    public TileEntity createNewTileEntity(World world)
+	    public TileEntity createNewTileEntity(World world, int var2)
 	    {
 	        return new TileHatch();
 	    }

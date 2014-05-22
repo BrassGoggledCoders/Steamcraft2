@@ -13,28 +13,20 @@
  */
 package steamcraft.common.blocks;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
-
-import javax.swing.Icon;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import steamcraft.common.Steamcraft;
-import steamcraft.common.config.ConfigBlocks;
 import steamcraft.common.lib.LibInfo;
-import steamcraft.common.lib.Utils;
+import boilerplate.common.Utils;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -43,7 +35,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 public class BlockCosmeticSolid extends Block
 {
-	private Icon[] icon = new Icon[5];
+	private IIcon[] icon = new IIcon[5];
 
 	private boolean powered;
 
@@ -54,7 +46,7 @@ public class BlockCosmeticSolid extends Block
 		if (metadata == 8) // This is for the brass wood. It's kinda messed up. Maybe a separate file would do?
 		{
 			int i = metadata & 11;
-			int j = metadata & 3;
+			//int j = metadata & 3;
 
 			return i == 0 && (side == 1 || side == 0) ? this.icon[0] : (i == 4 && (side == 5 || side == 4) ? this.icon[0] : (i == 8 && (side == 2 || side == 3) ? this.icon[0] : this.icon[0]));
 		}
@@ -94,40 +86,8 @@ public class BlockCosmeticSolid extends Block
 	{
 		return id;
 	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void getSubBlocks(Item item, CreativeTabs tabs, List list)
-	{
-		list.add(new ItemStack(id, 1, 0));
-		list.add(new ItemStack(id, 1, 1));
-		list.add(new ItemStack(id, 1, 2));
-		list.add(new ItemStack(id, 1, 3));
-		list.add(new ItemStack(id, 1, 4));
-	}
-
-	@Override
-	public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune)
-	{
-		ArrayList drop = new ArrayList();
-
-		switch (metadata) {
-		case 0:
-			drop.add(new ItemStack(ConfigBlocks.blockCosmetic, 1, 0));
-		case 1:
-			drop.add(new ItemStack(ConfigBlocks.blockCosmetic, 1, 1));
-		case 2:
-			drop.add(new ItemStack(ConfigBlocks.blockCosmetic, 1, 2));
-		case 3:
-			drop.add(new ItemStack(ConfigBlocks.blockCosmetic, 1, 3));
-		case 4:
-			drop.add(new ItemStack(ConfigBlocks.blockCosmetic, 1, 4));
-		case 5:
-			drop.add(new ItemStack(ConfigBlocks.blockCosmetic, 1, 5));
-		}
-
-		return drop;
-	}
+	
+	//TODO: Drop and sub item methods removed
 
 	@Override
 	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)

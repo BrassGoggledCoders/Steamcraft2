@@ -13,19 +13,11 @@
  */
 package steamcraft.common.blocks;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
-import net.minecraft.world.World;
 import steamcraft.common.Steamcraft;
-import steamcraft.common.config.ConfigBlocks;
 import steamcraft.common.lib.LibInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -64,8 +56,8 @@ public class BlockCustomOre extends Block
         super(Material.rock);
         this.setHardness(3.0F);
         this.setResistance(6.0F);
-        this.setStepSound(Block.soundStoneFootstep);
-        this.setUnlocalizedName("blockOre");
+        this.setStepSound(Block.soundTypeStone);
+        //this.setUnlocalizedName("blockOre");
         this.setTickRandomly(true);
         this.setCreativeTab(Steamcraft.tabSC2);
     }
@@ -74,46 +66,5 @@ public class BlockCustomOre extends Block
     public int damageDropped(int id)
     {
         return id;
-    }
-
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void getSubBlocks(Item item, CreativeTabs tabs, List list)
-    {
-        list.add(new ItemStack(item, 1, 0));
-        list.add(new ItemStack(item, 1, 1));
-        list.add(new ItemStack(item, 1, 2));
-        list.add(new ItemStack(item, 1, 3));
-        list.add(new ItemStack(item, 1, 4));
-        list.add(new ItemStack(item, 1, 5));
-        list.add(new ItemStack(item, 1, 6));
-        list.add(new ItemStack(item, 1, 7));
-    }
-
-    @Override
-    public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune)
-    {
-        ArrayList drop = new ArrayList();
-
-        switch (metadata) {
-            case 0:
-                drop.add(new ItemStack(ConfigBlocks.blockCustomOre, 1, 0));
-            case 1:
-                drop.add(new ItemStack(ConfigBlocks.blockCustomOre, 1, 1));
-            case 2:
-                drop.add(new ItemStack(ConfigBlocks.blockCustomOre, 1, 2));
-            case 3:
-                drop.add(new ItemStack(ConfigBlocks.blockCustomOre, 1, 3));
-            case 4:
-                drop.add(new ItemStack(ConfigBlocks.blockCustomOre, 1, 4));
-            case 5:
-                drop.add(new ItemStack(ConfigBlocks.blockCustomOre, 1, 5));
-            case 6:
-                drop.add(new ItemStack(ConfigBlocks.blockCustomOre, 1, 6));
-            case 7:
-                drop.add(new ItemStack(ConfigBlocks.blockCustomOre, 1, 7));
-        }
-
-        return drop;
     }
 }

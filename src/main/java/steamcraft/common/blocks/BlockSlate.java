@@ -16,12 +16,12 @@ package steamcraft.common.blocks;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.Icon;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.config.ConfigBlocks;
@@ -35,18 +35,18 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 public class BlockSlate extends Block
 {
-	private Icon[] icon = new Icon[9];
+	private IIcon[] icon = new IIcon[9];
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public Icon getIcon(int side, int metadata)
+	public IIcon getIcon(int side, int metadata)
 	{
 		return this.icon[metadata];
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister ir)
+	public void registerBlockIcons(IIconRegister ir)
 	{
 		//Raw
 		this.icon[0] = ir.registerIcon(LibInfo.PREFIX + "blockSlateRawBlue");
@@ -63,13 +63,13 @@ public class BlockSlate extends Block
 		//Polished
 	}
 
-	public BlockSlate(int id)
+	public BlockSlate()
 	{
-		super(id, Material.rock);
+		super(Material.rock);
 		this.setHardness(3.0F);
 		this.setResistance(10.0F);
-		this.setStepSound(Block.soundStoneFootstep);
-		this.setUnlocalizedName("blockSlate");
+		this.setStepSound(Block.soundTypeStone);
+		//this.setUnlocalizedName("blockSlate");
 		this.setTickRandomly(true);
 		this.setCreativeTab(Steamcraft.tabSC2);
 	}
@@ -78,49 +78,5 @@ public class BlockSlate extends Block
 	public int damageDropped(int id)
 	{
 		return id;
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void getSubBlocks(int id, CreativeTabs tabs, List list)
-	{
-		list.add(new ItemStack(id, 1, 0));
-		list.add(new ItemStack(id, 1, 1));
-		list.add(new ItemStack(id, 1, 2));
-		list.add(new ItemStack(id, 1, 3));
-		list.add(new ItemStack(id, 1, 4));
-		list.add(new ItemStack(id, 1, 5));
-		list.add(new ItemStack(id, 1, 6));
-		list.add(new ItemStack(id, 1, 7));
-		list.add(new ItemStack(id, 1, 8));
-	}
-
-	@Override
-	public ArrayList<ItemStack> getBlockDropped(World world, int x, int y, int z, int metadata, int fortune)
-	{
-		ArrayList drop = new ArrayList();
-
-		switch (metadata) {
-		case 0:
-			drop.add(new ItemStack(ConfigBlocks.blockSlate, 1, 0));
-		case 1:
-			drop.add(new ItemStack(ConfigBlocks.blockSlate, 1, 1));
-		case 2:
-			drop.add(new ItemStack(ConfigBlocks.blockSlate, 1, 2));
-		case 3:
-			drop.add(new ItemStack(ConfigBlocks.blockSlate, 1, 3));
-		case 4:
-			drop.add(new ItemStack(ConfigBlocks.blockSlate, 1, 4));
-		case 5:
-			drop.add(new ItemStack(ConfigBlocks.blockSlate, 1, 5));
-		case 6:
-			drop.add(new ItemStack(ConfigBlocks.blockSlate, 1, 6));
-		case 7:
-			drop.add(new ItemStack(ConfigBlocks.blockSlate, 1, 7));
-		case 8:
-			drop.add(new ItemStack(ConfigBlocks.blockSlate, 1, 8));
-		}
-
-		return drop;
 	}
 }

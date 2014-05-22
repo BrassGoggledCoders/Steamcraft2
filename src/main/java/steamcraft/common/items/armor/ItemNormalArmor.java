@@ -13,6 +13,7 @@
  */
 package steamcraft.common.items.armor;
 
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
@@ -28,11 +29,11 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 public class ItemNormalArmor extends ItemArmor
 {
-	EnumArmorMaterial material;
+	ArmorMaterial material;
 
-	public ItemNormalArmor(int id, EnumArmorMaterial mat, int renderIndex, int armorType)
+	public ItemNormalArmor(int id, ArmorMaterial mat, int renderIndex, int armorType)
 	{
-		super(id, mat, renderIndex, armorType);
+		super(mat, renderIndex, armorType);
 		mat = material;
 		this.setMaxStackSize(1);
 		this.setCreativeTab(Steamcraft.tabSC2);
@@ -40,14 +41,14 @@ public class ItemNormalArmor extends ItemArmor
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister icon)
+	public void registerIcons(IIconRegister icon)
 	{
 		this.itemIcon = icon.registerIcon(LibInfo.PREFIX + "armor/" + this.getUnlocalizedName().substring(5));
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public String getArmorTexture(ItemStack armor, Entity entity, int slot, int layer)
+	public String getArmorTexture(ItemStack is, Entity entity, int slot, String type)
 	{
 		if(material == MaterialHelper.ETHERIUM_ARMOR)
 			return slot==2 ? LibInfo.PREFIX + "textures/armor/etherium_2.png" :  LibInfo.PREFIX + "textures/armor/etherium_1.png";

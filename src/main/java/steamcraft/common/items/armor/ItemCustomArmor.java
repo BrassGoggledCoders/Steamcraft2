@@ -160,20 +160,20 @@ public class ItemCustomArmor extends ItemArmor
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack is)
 	{
-		if(stack.getItem() == ConfigItems.itemAqualung)
+		if(is.getItem() == ConfigItems.itemAqualung)
 		{
 			if(player.getAir() <= 0)
 			{
 				player.setAir(300);
-				stack.damageItem(4, player); //tweak the damage taken a bit
+				is.damageItem(4, player); //tweak the damage taken a bit
 			}
 		}
-		else if (stack.getItem() == ConfigItems.itemLegBraces) 
+		else if (is.getItem() == ConfigItems.itemLegBraces) 
 		{
 			if (player.fallDistance > 3.0F) 
 			{
 				player.fallDistance *= 0.888F;
-				stack.damageItem(1, player);
+				is.damageItem(1, player);
 			}
 		}
 	}

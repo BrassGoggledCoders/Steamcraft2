@@ -13,6 +13,7 @@
  */
 package steamcraft.common.blocks;
 
+import steamcraft.common.config.ConfigBlocks;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 
@@ -20,9 +21,9 @@ import net.minecraft.item.ItemStack;
  * @author warlordjones
  */
 public class BlockSlateItem extends ItemBlock{
-    public BlockSlateItem(int id)
+    public BlockSlateItem()
     {
-        super(id);
+        super(ConfigBlocks.blockSlate);
         this.setMaxDamage(0);
         this.setHasSubtypes(true);
     }
