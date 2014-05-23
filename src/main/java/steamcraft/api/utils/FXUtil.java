@@ -22,32 +22,39 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author Surseance (Johnny Eatmon)
- *
+ * 
  */
 @SideOnly(Side.CLIENT)
 public class FXUtil
 {
 	private static EntityFX particle;
-	
-	public static void displayFX(String name, World world, double dx, double dy, double dz, double velX, double velY, double velZ, float scale)
+
+	public static void displayFX(final String name, final World world,
+			final double dx, final double dy, final double dz,
+			final double velX, final double velY, final double velZ,
+			final float scale)
 	{
 		particle = null;
-		
+
 		/** An example of adding an EntityFX class. */
 		if (name.equals("smoke"))
-			particle = new EntitySmokeFX(world, dx, dy, dz, velX, velY, velZ, scale);
-		
-		Minecraft mc = Minecraft.getMinecraft();
-		double distX = mc.renderViewEntity.posX - particle.posX;
-		double distY = mc.renderViewEntity.posY - particle.posY;
-		double distZ = mc.renderViewEntity.posZ - particle.posZ;
+		{
+			particle = new EntitySmokeFX(world, dx, dy, dz, velX, velY, velZ,
+					scale);
+		}
+
+		final Minecraft mc = Minecraft.getMinecraft();
+		final double distX = mc.renderViewEntity.posX - particle.posX;
+		final double distY = mc.renderViewEntity.posY - particle.posY;
+		final double distZ = mc.renderViewEntity.posZ - particle.posZ;
 		int display = mc.gameSettings.particleSetting;
-		
+
 		if ((display == 1) && (particle.worldObj.rand.nextInt(3) == 0))
 		{
 			display = 2;
 		}
-		if ((display <= 1) && (distX * distX + distY * distY + distZ * distZ <= 4096.0D))
+		if ((display <= 1)
+				&& (distX * distX + distY * distY + distZ * distZ <= 4096.0D))
 		{
 			mc.effectRenderer.addEffect(particle);
 		}

@@ -33,60 +33,68 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 public class BlockEngravedSolid extends Block
 {
-    private IIcon[] icon = new IIcon[9];
+	private final IIcon[] icon = new IIcon[9];
 
-    @Override
-    @SideOnly(Side.CLIENT)
-    public IIcon getIcon(int side, int metadata)
-    {
-        return this.icon[metadata];
-    }
+	@Override
+	@SideOnly(Side.CLIENT)
+	public IIcon getIcon(final int side, final int metadata)
+	{
+		return icon[metadata];
+	}
 
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void registerBlockIcons(IIconRegister ir)
-    {
-        this.icon[0] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedBrass");
-        this.icon[1] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedCastIron");
-        this.icon[2] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedDiamond");
-        this.icon[3] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedGold");
-        this.icon[4] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedIron");
-        this.icon[5] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedLapis");
-        this.icon[6] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedStone");
-        this.icon[7] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedUranium");
-        this.icon[8] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedEtherium");
-        //TODO: Add engravings of aluminum, copper, zinc, tin...
-    }
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void registerBlockIcons(final IIconRegister ir)
+	{
+		icon[0] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedBrass");
+		icon[1] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedCastIron");
+		icon[2] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedDiamond");
+		icon[3] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedGold");
+		icon[4] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedIron");
+		icon[5] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedLapis");
+		icon[6] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedStone");
+		icon[7] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedUranium");
+		icon[8] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedEtherium");
+		// TODO: Add engravings of aluminum, copper, zinc, tin...
+	}
 
-    public BlockEngravedSolid()
-    {
-        super(Material.rock);
-        this.setHardness(3.0F);
-        this.setResistance(15.0F);
-        this.setStepSound(Block.soundTypeMetal);
-        //this.setUnlocalizedName("blockEngravedSolid");
-        this.setTickRandomly(true);
-        this.setCreativeTab(Steamcraft.tabSC2);
-    }
+	public BlockEngravedSolid()
+	{
+		super(Material.rock);
+		setHardness(3.0F);
+		setResistance(15.0F);
+		setStepSound(Block.soundTypeMetal);
+		// this.setUnlocalizedName("blockEngravedSolid");
+		setTickRandomly(true);
+		setCreativeTab(Steamcraft.tabSC2);
+	}
 
-    @Override
-    public int damageDropped(int id)
-    {
-        return id;
-    }
+	@Override
+	public int damageDropped(final int id)
+	{
+		return id;
+	}
 
-    @Override
-    public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)
-    {
-        if ((world.getBlock(x, y, z) == this) && (world.getBlockMetadata(x, y, z) == 7))
-            entity.attackEntityFrom(DamageSource.magic, 1);
-    }
+	@Override
+	public void onEntityCollidedWithBlock(final World world, final int x,
+			final int y, final int z, final Entity entity)
+	{
+		if ((world.getBlock(x, y, z) == this)
+				&& (world.getBlockMetadata(x, y, z) == 7))
+		{
+			entity.attackEntityFrom(DamageSource.magic, 1);
+		}
+	}
 
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void randomDisplayTick(World world, int x, int y, int z, Random random)
-    {
-        if ((world.getBlock(x, y, z) == this) && (world.getBlockMetadata(x, y, z) == 7))
-            Utils.sparkle(world, x, y, z, "reddust");
-    }
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void randomDisplayTick(final World world, final int x, final int y,
+			final int z, final Random random)
+	{
+		if ((world.getBlock(x, y, z) == this)
+				&& (world.getBlockMetadata(x, y, z) == 7))
+		{
+			Utils.sparkle(world, x, y, z, "reddust");
+		}
+	}
 }

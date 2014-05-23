@@ -26,7 +26,7 @@ import net.minecraftforge.common.util.ForgeDirection;
 
 /**
  * @author Surseance (Johnny Eatmon)
- *
+ * 
  */
 public interface IMachine
 {
@@ -46,10 +46,12 @@ public interface IMachine
 	public abstract void b(NBTTagCompound paramNBTTagCompound);
 
 	/** */
-	public abstract void writePacket(DataOutputStream paramDataOutputStream) throws IOException;
+	public abstract void writePacket(DataOutputStream paramDataOutputStream)
+			throws IOException;
 
 	/** */
-	public abstract void readPacket(DataInputStream paramDataInputStream) throws IOException;
+	public abstract void readPacket(DataInputStream paramDataInputStream)
+			throws IOException;
 
 	/** */
 	public abstract boolean isSolidOnSide(ForgeDirection paramForgeDirection);
@@ -58,10 +60,13 @@ public interface IMachine
 	public abstract void onBreak();
 
 	/** */
-	public abstract void onBlockPlacedBy(World paramWorld, int paramInt1, int paramInt2, int paramInt3, EntityLiving paramEntityLiving);
+	public abstract void onBlockPlacedBy(World paramWorld, int paramInt1,
+			int paramInt2, int paramInt3, EntityLiving paramEntityLiving);
 
 	/** */
-	public abstract boolean onActivated(EntityPlayer paramEntityPlayer, int paramInt, float paramFloat1, float paramFloat2, float paramFloat3);
+	public abstract boolean onActivated(EntityPlayer paramEntityPlayer,
+			int paramInt, float paramFloat1, float paramFloat2,
+			float paramFloat3);
 
 	/** */
 	public abstract ArrayList getBlockDropped();

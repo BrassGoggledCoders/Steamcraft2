@@ -25,34 +25,43 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author Decebaldecebal
- *
+ * 
  */
 public class ItemNormalArmor extends ItemArmor
 {
 	ArmorMaterial material;
 
-	public ItemNormalArmor(int id, ArmorMaterial mat, int renderIndex, int armorType)
+	public ItemNormalArmor(final int id, ArmorMaterial mat,
+			final int renderIndex, final int armorType)
 	{
 		super(mat, renderIndex, armorType);
 		mat = material;
-		this.setMaxStackSize(1);
-		this.setCreativeTab(Steamcraft.tabSC2);
+		setMaxStackSize(1);
+		setCreativeTab(Steamcraft.tabSC2);
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IIconRegister icon)
+	public void registerIcons(final IIconRegister icon)
 	{
-		this.itemIcon = icon.registerIcon(LibInfo.PREFIX + "armor/" + this.getUnlocalizedName().substring(5));
+		itemIcon = icon.registerIcon(LibInfo.PREFIX + "armor/"
+				+ this.getUnlocalizedName().substring(5));
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public String getArmorTexture(ItemStack is, Entity entity, int slot, String type)
+	public String getArmorTexture(final ItemStack is, final Entity entity,
+			final int slot, final String type)
 	{
-		if(material == MaterialHelper.ETHERIUM_ARMOR)
-			return slot==2 ? LibInfo.PREFIX + "textures/armor/etherium_2.png" :  LibInfo.PREFIX + "textures/armor/etherium_1.png";
+		if (material == MaterialHelper.ETHERIUM_ARMOR)
+		{
+			return slot == 2 ? LibInfo.PREFIX + "textures/armor/etherium_2.png"
+					: LibInfo.PREFIX + "textures/armor/etherium_1.png";
+		}
 		else
-			return slot==2 ? LibInfo.PREFIX + "textures/armor/obsidian_2.png" :  LibInfo.PREFIX + "textures/armor/obsidian_1.png";
+		{
+			return slot == 2 ? LibInfo.PREFIX + "textures/armor/obsidian_2.png"
+					: LibInfo.PREFIX + "textures/armor/obsidian_1.png";
+		}
 	}
 }

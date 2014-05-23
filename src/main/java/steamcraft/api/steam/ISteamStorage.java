@@ -17,7 +17,7 @@ import java.util.List;
 
 /**
  * @author Surseance (Johnny Eatmon)
- *
+ * 
  */
 public abstract interface ISteamStorage
 {

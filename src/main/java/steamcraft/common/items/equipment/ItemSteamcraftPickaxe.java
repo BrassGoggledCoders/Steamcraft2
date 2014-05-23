@@ -22,29 +22,34 @@ import steamcraft.api.SteamcraftApi;
 
 /**
  * @author Surseance (Johnny Eatmon)
- *
+ * 
  */
 public class ItemSteamcraftPickaxe extends ItemPickaxe
 {
-	public ItemSteamcraftPickaxe(Item.ToolMaterial toolMat)
+	public ItemSteamcraftPickaxe(final Item.ToolMaterial toolMat)
 	{
 		super(toolMat);
 	}
 
 	@Override
-    public float func_150893_a(ItemStack is, Block block) // getStrVsBlock
-    {
-    	if (this.toolMaterial == SteamcraftApi.toolMatSteam)
+	public float func_150893_a(final ItemStack is, final Block block) // getStrVsBlock
+	{
+		if (toolMaterial == SteamcraftApi.toolMatSteam)
 		{
-			return (4.0F - (((float)is.getItemDamage()) * 11 / 320));
+			return (4.0F - (((float) is.getItemDamage()) * 11 / 320));
 		}
-		if (block != null && (block.getMaterial() == Material.iron || block.getMaterial() == Material.anvil || block.getMaterial() == Material.rock))
+		if (block != null
+				&& (block.getMaterial() == Material.iron
+						|| block.getMaterial() == Material.anvil || block
+						.getMaterial() == Material.rock))
 		{
 			super.func_150893_a(is, block);
 		}
 
-		return this.efficiencyOnProperMaterial;
-    	
-        //return block.getMaterial() != Material.iron && block.getMaterial() != Material.anvil && block.getMaterial() != Material.rock ? super.func_150893_a(is, block) : this.efficiencyOnProperMaterial;
-    }
+		return efficiencyOnProperMaterial;
+
+		// return block.getMaterial() != Material.iron && block.getMaterial() !=
+		// Material.anvil && block.getMaterial() != Material.rock ?
+		// super.func_150893_a(is, block) : this.efficiencyOnProperMaterial;
+	}
 }

@@ -31,7 +31,7 @@ import net.minecraftforge.fluids.IFluidBlock;
 
 /**
  * @author Surseance (Johnny Eatmon)
- *
+ * 
  */
 public class Gas extends BlockContainer implements IFluidBlock
 {
@@ -46,45 +46,47 @@ public class Gas extends BlockContainer implements IFluidBlock
 	public Gas()
 	{
 		super(new MaterialGas(false));
-		this.setCreativeTab((CreativeTabs)null);
+		setCreativeTab((CreativeTabs) null);
 		Gas.isFlammable = false;
 		Gas.isExplosive = false;
-		this.dissipationHeight = 10;
-		this.viscosity = 5;
+		dissipationHeight = 10;
+		viscosity = 5;
 	}
 
-	public Gas(boolean canBurn, int lightLevel, boolean isFlammable, boolean isExplosive, int disHeight, int viscosity)
+	public Gas(final boolean canBurn, final int lightLevel,
+			final boolean isFlammable, final boolean isExplosive,
+			final int disHeight, final int viscosity)
 	{
 		super(new MaterialGas(canBurn));
-		this.setLightLevel(lightLevel);
-		this.setCreativeTab((CreativeTabs)null);
+		setLightLevel(lightLevel);
+		setCreativeTab((CreativeTabs) null);
 		Gas.isFlammable = isFlammable;
 		Gas.isExplosive = isExplosive;
-		this.dissipationHeight = disHeight;
+		dissipationHeight = disHeight;
 		this.viscosity = viscosity;
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world, int metadata)
+	public TileEntity createNewTileEntity(final World world, final int metadata)
 	{
-		return new TileGas(this.getFluid(), this.dissipationHeight, this.viscosity);
+		return new TileGas(getFluid(), dissipationHeight, viscosity);
 	}
 
 	@Override
 	public Fluid getFluid()
 	{
-		return this.gas;
+		return gas;
 	}
 
 	@Override
-	public FluidStack drain(World world, int x, int y, int z, boolean doDrain)
+	public FluidStack drain(final World world, final int x, final int y,
+			final int z, final boolean doDrain)
 	{
-		TileEntity te = world.getTileEntity(x, y, z);
+		final TileEntity te = world.getTileEntity(x, y, z);
 
 		if (te != null && te instanceof TileGas)
 		{
-			TileGas teGas = (TileGas)te;
-			FluidStack fluid = TileGas.getGas();
+			final FluidStack fluid = TileGas.getGas();
 
 			if (doDrain)
 			{
@@ -99,18 +101,22 @@ public class Gas extends BlockContainer implements IFluidBlock
 	}
 
 	@Override
-	public boolean canDrain(World world, int x, int y, int z)
+	public boolean canDrain(final World world, final int x, final int y,
+			final int z)
 	{
-		TileEntity te = world.getTileEntity(x, y, z);
+		final TileEntity te = world.getTileEntity(x, y, z);
 
 		if (te != null && te instanceof TileGas)
+		{
 			return true;
+		}
 
 		return false;
 	}
-	
+
 	@Override
-	public float getFilledPercentage(World world, int x, int y, int z)
+	public float getFilledPercentage(final World world, final int x,
+			final int y, final int z)
 	{
 		return 0;
 	}
@@ -134,77 +140,93 @@ public class Gas extends BlockContainer implements IFluidBlock
 	}
 
 	@Override
-	public int quantityDropped(Random random)
+	public int quantityDropped(final Random random)
 	{
 		return 0;
 	}
 
 	@Override
-	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z)
+	public AxisAlignedBB getCollisionBoundingBoxFromPool(final World world,
+			final int x, final int y, final int z)
 	{
 		return null;
 	}
 
 	@Override
-	public void onBlockDestroyedByExplosion(World world, int x, int y, int z, Explosion explosion)
+	public void onBlockDestroyedByExplosion(final World world, final int x,
+			final int y, final int z, final Explosion explosion)
 	{
 		if (Gas.isExplosive)
-			Gas.createExplosion(world, x, y, z);
-	}
-
-	@Override
-	public void onNeighborBlockChange(World world, int x, int y, int z, Block block)
-	{
-		if ((block == Blocks.torch) || (block == Blocks.fire) || (block == Blocks.lava))
 		{
-			if (Gas.isExplosive)
-				Gas.createExplosion(world, x, y, z);
-			else if (Gas.isFlammable)
-				Gas.setFire(world, x, y, z);
+			Gas.createExplosion(world, x, y, z);
 		}
 	}
 
 	@Override
-	public void onBlockAdded(World world, int x, int y, int z)
+	public void onNeighborBlockChange(final World world, final int x,
+			final int y, final int z, final Block block)
+	{
+		if ((block == Blocks.torch) || (block == Blocks.fire)
+				|| (block == Blocks.lava))
+		{
+			if (Gas.isExplosive)
+			{
+				Gas.createExplosion(world, x, y, z);
+			}
+			else if (Gas.isFlammable)
+			{
+				Gas.setFire(world, x, y, z);
+			}
+		}
+	}
+
+	@Override
+	public void onBlockAdded(final World world, final int x, final int y,
+			final int z)
 	{
 		super.onBlockAdded(world, x, y, z);
 
-		TileEntity te = world.getTileEntity(x, y, z);
+		final TileEntity te = world.getTileEntity(x, y, z);
 
 		if (te != null && te instanceof TileGas)
 		{
-			TileGas tg = (TileGas)te;
-
-			int volume = TileGas.getGasAmount();
-			int metadata = (volume * 15) / TileGas.VOLUME;
+			final int volume = TileGas.getGasAmount();
+			final int metadata = (volume * 15) / TileGas.VOLUME;
 			world.setBlockMetadataWithNotify(x, y, z, metadata, 4);
 		}
 	}
 
-	public static void createExplosion(World world, int x, int y, int z)
+	public static void createExplosion(final World world, final int x,
+			final int y, final int z)
 	{
 		// TODO: send to packet handlers
-		world.newExplosion((Entity)null, x, y, z, (world.rand.nextFloat() / 0.5F) + 0.9F, isFlammable, true);
+		world.newExplosion((Entity) null, x, y, z,
+				(world.rand.nextFloat() / 0.5F) + 0.9F, isFlammable, true);
 	}
 
-	public static void setFire(World world, int x, int y, int z)
+	public static void setFire(final World world, final int x, final int y,
+			final int z)
 	{
 		// TODO: send to packet handlers
 		int tempX = x - 1;
 		int tempY = y - 1;
 		int tempZ = y - 2;
 
-		while ((world.getBlock(tempX, tempY, tempZ) instanceof Gas) || (world.getBlock(tempX, tempY, tempZ).isAir(world, tempX, tempY, tempZ)) || (world.getBlock(tempX, tempY, tempZ).isReplaceable(world, tempX, tempY, tempZ)))
+		while ((world.getBlock(tempX, tempY, tempZ) instanceof Gas)
+				|| (world.getBlock(tempX, tempY, tempZ).isAir(world, tempX,
+						tempY, tempZ))
+				|| (world.getBlock(tempX, tempY, tempZ).isReplaceable(world,
+						tempX, tempY, tempZ)))
 		{
 			tempX--;
 			tempY--;
 			tempZ--;
 		}
-		
+
 		tempX++;
 		tempY++;
 		tempZ++;
-		
+
 		world.setBlockToAir(x, y, z);
 		world.removeTileEntity(x, y, z);
 		world.setBlock(tempX, tempY, tempZ, Blocks.fire);

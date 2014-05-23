@@ -20,28 +20,30 @@ import steamcraft.api.vanity.IBoots;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class SlotBoots extends Slot
 {
-	public SlotBoots(IInventory inventory, int i, int j, int k)
+	public SlotBoots(final IInventory inventory, final int i, final int j,
+			final int k)
 	{
 		super(inventory, i, j, k);
 	}
 
 	/**
-	 * Check if the stack is a valid item for this slot. Always true beside for the armor slots
-	 * (and now also not always true for our custom inventory slots)
+	 * Check if the stack is a valid item for this slot. Always true beside for
+	 * the armor slots (and now also not always true for our custom inventory
+	 * slots)
 	 */
 	@Override
-	public boolean isItemValid(ItemStack is)
+	public boolean isItemValid(final ItemStack is)
 	{
 		return is.getItem() instanceof IBoots;
 	}
-	
+
 	/**
-	 * Returns the maximum stack size for a given slot (usually the same as getInventoryStackLimit(), but 1 in the case
-	 * of armor slots)
+	 * Returns the maximum stack size for a given slot (usually the same as
+	 * getInventoryStackLimit(), but 1 in the case of armor slots)
 	 */
 	@Override
 	public int getSlotStackLimit()

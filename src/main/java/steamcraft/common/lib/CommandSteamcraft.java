@@ -21,21 +21,21 @@ import net.minecraft.command.ICommandSender;
 
 /**
  * @author Surseance (Johnny Eatmon)
- *
+ * 
  */
 public class CommandSteamcraft extends CommandBase
-{	
-	private List aliases;
-	
+{
+	private final List aliases;
+
 	public CommandSteamcraft()
 	{
-		this.aliases = new ArrayList();
-		this.aliases.add("steamcraft");
-		this.aliases.add("sc");
+		aliases = new ArrayList();
+		aliases.add("steamcraft");
+		aliases.add("sc");
 	}
-	
+
 	@Override
-	public boolean canCommandSenderUseCommand(ICommandSender sender)
+	public boolean canCommandSenderUseCommand(final ICommandSender sender)
 	{
 		return true;
 	}
@@ -47,69 +47,64 @@ public class CommandSteamcraft extends CommandBase
 	}
 
 	@Override
-	public String getCommandUsage(ICommandSender sender) 
+	public String getCommandUsage(final ICommandSender sender)
 	{
 		return "/sc2 <parameters>";
 	}
 
 	@Override
-	public void processCommand(ICommandSender sender, String[] parameters) 
+	public void processCommand(final ICommandSender sender,
+			final String[] parameters)
 	{
 		/*
-		ChatMessageComponent chat = sender.();
-		String prefix = EnumChatFormatting.GOLD + " [Steamcraft] ";
-		
-		if (parameters.length < 1)
-		{	
-			sender.addChatMessage(chat.appendText(prefix + EnumChatFormatting.LIGHT_PURPLE + "Welcome to Steamcraft 2!"));
-		}
-		else if (parameters.length == 1)
-		{
-			if (parameters[0].equalsIgnoreCase("help"))
-			{
-				sender.addChatMessage(chat.appendText(EnumChatFormatting.RED + " =-=-=-" + prefix + EnumChatFormatting.RED + "-=-=-=")); 
-				/*
-						EnumChatFormatting.GOLD + "\r/sc2" + EnumChatFormatting.LIGHT_PURPLE + "-- the main mod function" +
-				EnumChatFormatting.GOLD + "/sc2 help" + EnumChatFormatting.LIGHT_PURPLE + "-- displays this list" +
-				EnumChatFormatting.GOLD + "/sc2 version" + EnumChatFormatting.LIGHT_PURPLE + "-- the running mod version" +
-				EnumChatFormatting.GOLD + "/sc2 update" + EnumChatFormatting.LIGHT_PURPLE + "-- checks for latest version"));
-				
-			}
-			else if (parameters[0].equalsIgnoreCase("version"))
-			{
-				sender.addChatMessage(chat.appendText(prefix + EnumChatFormatting.LIGHT_PURPLE + "Steamcraft 2 v" + LibInfo.VERSION + " for MC v1.7.2"));
-			}
-			else if (parameters[0].equalsIgnoreCase("debug") && this.isDeveloper(sender.getCommandSenderName()))
-			{
-				boolean debug = LibInfo.DEBUG;
-				sender.addChatMessage(chat.appendText(prefix + EnumChatFormatting.LIGHT_PURPLE + "Debug mode for is set to: " + debug));
-			}
-			else if (parameters[0].equalsIgnoreCase("update"))
-			{
-				if (Utils.checkForUpdatedVersion(LibInfo.NAME, LibInfo.VERSION))
-				{
-					sender.addChatMessage(chat.appendText(prefix + EnumChatFormatting.LIGHT_PURPLE + "Version " + Utils.newestVersion + " of SC2 is now available!"));
-				}
-				else
-				{
-					sender.addChatMessage(chat.appendText(prefix + EnumChatFormatting.LIGHT_PURPLE + "You are running the latest version"));
-				}
-			}
-			else
-			{
-				sender.addChatMessage(chat.appendText(prefix + EnumChatFormatting.RED + "Not a valid command!"));
-			}
-		}*/
+		 * ChatMessageComponent chat = sender.(); String prefix =
+		 * EnumChatFormatting.GOLD + " [Steamcraft] ";
+		 * 
+		 * if (parameters.length < 1) {
+		 * sender.addChatMessage(chat.appendText(prefix +
+		 * EnumChatFormatting.LIGHT_PURPLE + "Welcome to Steamcraft 2!")); }
+		 * else if (parameters.length == 1) { if
+		 * (parameters[0].equalsIgnoreCase("help")) {
+		 * sender.addChatMessage(chat.appendText(EnumChatFormatting.RED +
+		 * " =-=-=-" + prefix + EnumChatFormatting.RED + "-=-=-=")); /*
+		 * EnumChatFormatting.GOLD + "\r/sc2" + EnumChatFormatting.LIGHT_PURPLE
+		 * + "-- the main mod function" + EnumChatFormatting.GOLD + "/sc2 help"
+		 * + EnumChatFormatting.LIGHT_PURPLE + "-- displays this list" +
+		 * EnumChatFormatting.GOLD + "/sc2 version" +
+		 * EnumChatFormatting.LIGHT_PURPLE + "-- the running mod version" +
+		 * EnumChatFormatting.GOLD + "/sc2 update" +
+		 * EnumChatFormatting.LIGHT_PURPLE + "-- checks for latest version"));
+		 * 
+		 * } else if (parameters[0].equalsIgnoreCase("version")) {
+		 * sender.addChatMessage(chat.appendText(prefix +
+		 * EnumChatFormatting.LIGHT_PURPLE + "Steamcraft 2 v" + LibInfo.VERSION
+		 * + " for MC v1.7.2")); } else if
+		 * (parameters[0].equalsIgnoreCase("debug") &&
+		 * this.isDeveloper(sender.getCommandSenderName())) { boolean debug =
+		 * LibInfo.DEBUG; sender.addChatMessage(chat.appendText(prefix +
+		 * EnumChatFormatting.LIGHT_PURPLE + "Debug mode for is set to: " +
+		 * debug)); } else if (parameters[0].equalsIgnoreCase("update")) { if
+		 * (Utils.checkForUpdatedVersion(LibInfo.NAME, LibInfo.VERSION)) {
+		 * sender.addChatMessage(chat.appendText(prefix +
+		 * EnumChatFormatting.LIGHT_PURPLE + "Version " + Utils.newestVersion +
+		 * " of SC2 is now available!")); } else {
+		 * sender.addChatMessage(chat.appendText(prefix +
+		 * EnumChatFormatting.LIGHT_PURPLE +
+		 * "You are running the latest version")); } } else {
+		 * sender.addChatMessage(chat.appendText(prefix + EnumChatFormatting.RED
+		 * + "Not a valid command!")); } }
+		 */
 	}
-	
+
 	/** Is an SC2 developer the one sending a command? */
-	private boolean isDeveloper(String username)
+	private boolean isDeveloper(final String username)
 	{
-		return (username.equals("Surseance") || (username.equals("decebaldecebal") || (username.equals("warlordjones"))));
+		return (username.equals("Surseance") || (username
+				.equals("decebaldecebal") || (username.equals("warlordjones"))));
 	}
 
 	@Override
-	public int compareTo(Object arg0)
+	public int compareTo(final Object arg0)
 	{
 		return 0;
 	}

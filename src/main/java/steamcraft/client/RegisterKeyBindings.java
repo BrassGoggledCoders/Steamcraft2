@@ -23,32 +23,38 @@ import org.lwjgl.input.Keyboard;
 
 /**
  * @author warlordjones
- *
- * 5 Apr 201420:47:06
+ * 
+ *         5 Apr 201420:47:06
  */
-public class RegisterKeyBindings {
+public class RegisterKeyBindings
+{
 	/** Key index for easy handling */
 	public static final int CUSTOM_INV = 0;
 
 	/** Key descriptions */
-	private static final String[] desc = {"[SC2] Vanity Inventory"};
+	private static final String[] desc = { "[SC2] Vanity Inventory" };
 
 	/** Default key values */
-	private static final int[] keyValues = {Keyboard.KEY_V};
+	private static final int[] keyValues = { Keyboard.KEY_V };
 
-	/** This stores all of our key bindings and is always updated with the in-game settings */
+	/**
+	 * This stores all of our key bindings and is always updated with the
+	 * in-game settings
+	 */
 	public static final KeyBinding[] keys = new KeyBinding[desc.length];
 
 	/** This initializes and registers all the key bindings */
 	public static void init()
 	{
-		boolean[] repeat = new boolean[desc.length];
+		final boolean[] repeat = new boolean[desc.length];
 		// just use a for loop to run through all the values
-		for (int i = 0; i < desc.length; ++i) {
-			//keys[i] = new KeyBinding(desc[i], keyValues[i]);
+		for (int i = 0; i < desc.length; ++i)
+		{
+			// keys[i] = new KeyBinding(desc[i], keyValues[i]);
 			repeat[i] = false;
 		}
 
-		//KeyBindingRegistry.registerKeyBinding(new KeyHandlerVanity(keys, repeat));
+		// KeyBindingRegistry.registerKeyBinding(new KeyHandlerVanity(keys,
+		// repeat));
 	}
 }

@@ -24,47 +24,47 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author Surseance (Johnny Eatmon)
- *
+ * 
  */
 public class BlockCustomOre extends Block
 {
-    private IIcon[] icon = new IIcon[8];
+	private final IIcon[] icon = new IIcon[8];
 
-    @Override
-    @SideOnly(Side.CLIENT)
-    public IIcon getIcon(int side, int metadata)
-    {
-        return this.icon[metadata];
-    }
+	@Override
+	@SideOnly(Side.CLIENT)
+	public IIcon getIcon(final int side, final int metadata)
+	{
+		return icon[metadata];
+	}
 
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void registerBlockIcons(IIconRegister ir)
-    {
-        this.icon[0] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "oreBornite");
-        this.icon[1] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "oreBrimstone");
-        this.icon[2] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "orePhosphate");
-        this.icon[3] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "oreUranite");
-        this.icon[4] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "oreAluminum");
-        this.icon[5] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "oreCopper");
-        this.icon[6] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "oreTin");
-        this.icon[7] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "oreZinc");
-    }
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void registerBlockIcons(final IIconRegister ir)
+	{
+		icon[0] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "oreBornite");
+		icon[1] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "oreBrimstone");
+		icon[2] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "orePhosphate");
+		icon[3] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "oreUranite");
+		icon[4] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "oreAluminum");
+		icon[5] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "oreCopper");
+		icon[6] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "oreTin");
+		icon[7] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "oreZinc");
+	}
 
-    public BlockCustomOre()
-    {
-        super(Material.rock);
-        this.setHardness(3.0F);
-        this.setResistance(6.0F);
-        this.setStepSound(Block.soundTypeStone);
-        //this.setUnlocalizedName("blockOre");
-        this.setTickRandomly(true);
-        this.setCreativeTab(Steamcraft.tabSC2);
-    }
+	public BlockCustomOre()
+	{
+		super(Material.rock);
+		setHardness(3.0F);
+		setResistance(6.0F);
+		setStepSound(Block.soundTypeStone);
+		// this.setUnlocalizedName("blockOre");
+		setTickRandomly(true);
+		setCreativeTab(Steamcraft.tabSC2);
+	}
 
-    @Override
-    public int damageDropped(int id)
-    {
-        return id;
-    }
+	@Override
+	public int damageDropped(final int id)
+	{
+		return id;
+	}
 }

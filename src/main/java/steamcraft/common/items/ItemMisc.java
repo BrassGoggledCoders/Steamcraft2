@@ -22,24 +22,27 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author Decebaldecebal
- *
+ * 
  */
 public class ItemMisc extends Item
 {
 	public ItemMisc()
 	{
 		super();
-		this.setCreativeTab(Steamcraft.tabSC2);
+		setCreativeTab(Steamcraft.tabSC2);
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IIconRegister icon)
+	public void registerIcons(final IIconRegister icon)
 	{
-		itemIcon = icon.registerIcon(LibInfo.PREFIX + (getUnlocalizedName().substring(5))); // Cannot do a 'this' reflection!
+		itemIcon = icon.registerIcon(LibInfo.PREFIX
+				+ (getUnlocalizedName().substring(5))); // Cannot do a 'this'
+														// reflection!
 	}
-	
-	public boolean isSteamPowered() {
+
+	public boolean isSteamPowered()
+	{
 		return false;
 	}
 }

@@ -23,29 +23,32 @@ import net.minecraft.entity.player.EntityPlayerMP;
  * A class to send GUI info to a server player through a packet.
  * 
  * @author Surseance (Johnny Eatmon)
- *
+ * 
  */
 public class NetworkUtil
 {
-	public static void sendGuiInfo(EntityPlayerMP player, int windowID, int type, int value) 
+	public static void sendGuiInfo(final EntityPlayerMP player,
+			final int windowID, final int type, final int value)
 	{
-		ByteArrayOutputStream byteStream = new ByteArrayOutputStream();
-		DataOutputStream dataStream = new DataOutputStream(byteStream);
-		try {
+		final ByteArrayOutputStream byteStream = new ByteArrayOutputStream();
+		final DataOutputStream dataStream = new DataOutputStream(byteStream);
+		try
+		{
 			dataStream.writeInt(40);
 			dataStream.writeByte(windowID);
 			dataStream.writeShort(type);
 			dataStream.writeInt(value);
-		} catch (IOException e) {
+		} catch (final IOException e)
+		{
 			e.printStackTrace();
 		}
 
 		/*
-		Packet250CustomPayload packet = new Packet250CustomPayload();
-		packet.channel = "SC2_Channel";
-		packet.data = byteStream.toByteArray();
-		packet.length = byteStream.size();
-		packet.isChunkDataPacket = false;
-		player.playerNetServerHandler.sendPacketToPlayer(packet);*/
+		 * Packet250CustomPayload packet = new Packet250CustomPayload();
+		 * packet.channel = "SC2_Channel"; packet.data =
+		 * byteStream.toByteArray(); packet.length = byteStream.size();
+		 * packet.isChunkDataPacket = false;
+		 * player.playerNetServerHandler.sendPacketToPlayer(packet);
+		 */
 	}
 }

@@ -20,7 +20,7 @@ import net.minecraft.world.World;
 
 /**
  * @author Surseance (Johnny Eatmon)
- *
+ * 
  */
 public class GasUtils
 {
@@ -30,12 +30,16 @@ public class GasUtils
 	/**
 	 * GasUtils
 	 * 
-	 * @param world - the TileGas worldObj
-	 * @param x - TileGas xCoord
-	 * @param y - TileGas yCoord
-	 * @param z - TileGas zCoord
+	 * @param world
+	 *            - the TileGas worldObj
+	 * @param x
+	 *            - TileGas xCoord
+	 * @param y
+	 *            - TileGas yCoord
+	 * @param z
+	 *            - TileGas zCoord
 	 */
-	public GasUtils(World world, int x, int y, int z)
+	public GasUtils(final World world, final int x, final int y, final int z)
 	{
 		GasUtils.world = world;
 
@@ -45,18 +49,21 @@ public class GasUtils
 	}
 
 	/**
-	 * Determines how high the gas will float before
-	 * dissipating.
+	 * Determines how high the gas will float before dissipating.
 	 * 
-	 * @param height - the height before dissipating
+	 * @param height
+	 *            - the height before dissipating
 	 * @return - when the block above != Blocks.air
 	 */
-	public static boolean continueRising(int height)
+	public static boolean continueRising(final int height)
 	{
 		boolean result = true;
 		int y = 0;
 
-		while ((result) && (y < height));
+		while ((result) && (y < height))
+		{
+			;
+		}
 		{
 			result = isOffsetAir(0, 1 + y, 0);
 			y++;
@@ -66,56 +73,69 @@ public class GasUtils
 	}
 
 	/**
-	 * Plays the fizz sound and spawns various smoke particles
-	 * around the general area. Woo.
+	 * Plays the fizz sound and spawns various smoke particles around the
+	 * general area. Woo.
 	 * 
-	 * @param particleAmount - the particle spawn amount
+	 * @param particleAmount
+	 *            - the particle spawn amount
 	 */
-	public static void gasSFX(int particleAmount)
+	public static void gasSFX(final int particleAmount)
 	{
-		world.playSoundEffect(ix + 0.5D, iy + 0.5D, iz + 0.5D, "random.fizz", 1.0F, (world.rand.nextFloat() * 0.4F) + 0.8F);
+		world.playSoundEffect(ix + 0.5D, iy + 0.5D, iz + 0.5D, "random.fizz",
+				1.0F, (world.rand.nextFloat() * 0.4F) + 0.8F);
 
 		for (int amount = 0; amount < particleAmount; amount++)
 		{
-			double gaussian = world.rand.nextGaussian() - 0.5D;
-			world.spawnParticle("smoke", ix - gaussian, iy - gaussian, iz - gaussian, 0, 0, 0);
+			final double gaussian = world.rand.nextGaussian() - 0.5D;
+			world.spawnParticle("smoke", ix - gaussian, iy - gaussian, iz
+					- gaussian, 0, 0, 0);
 		}
 	}
 
 	/**
-	 * Moves the gas with the given offset. Removes previous
-	 * TileEntities and Gas blocks.
+	 * Moves the gas with the given offset. Removes previous TileEntities and
+	 * Gas blocks.
 	 * 
-	 * @param x - xCoord offset
-	 * @param y - yCoord offset
-	 * @param z - zCoord offset
+	 * @param x
+	 *            - xCoord offset
+	 * @param y
+	 *            - yCoord offset
+	 * @param z
+	 *            - zCoord offset
 	 */
-	public static void moveGas(int x, int y, int z)
+	public static void moveGas(final int x, final int y, final int z)
 	{
-		world.setBlock(ix + x, iy + y, iz + z, TileGas.getGas().getFluid().getBlock(), TileGas.getMeta(), 4);
+		world.setBlock(ix + x, iy + y, iz + z, TileGas.getGas().getFluid()
+				.getBlock(), TileGas.getMeta(), 4);
 
-		TileEntity te = world.getTileEntity(ix + x, iy + y, iz + z);
+		final TileEntity te = world.getTileEntity(ix + x, iy + y, iz + z);
 
 		if ((te != null) && (te instanceof TileGas))
+		{
 			TileGas.setGasAmount(TileGas.getGasAmount());
+		}
 
 		world.setBlockToAir(ix, iy, iz);
 		world.removeTileEntity(ix, iy, iz);
 	}
 
 	/**
-	 * Partially dissipates the gas and divides the volume and
-	 * metadata. Removes previous TileEntities and Gas blocks.
+	 * Partially dissipates the gas and divides the volume and metadata. Removes
+	 * previous TileEntities and Gas blocks.
 	 * 
-	 * @param x - xCoord offset
-	 * @param y - yCoord offset
-	 * @param z - zCoord offset
+	 * @param x
+	 *            - xCoord offset
+	 * @param y
+	 *            - yCoord offset
+	 * @param z
+	 *            - zCoord offset
 	 */
-	public static void splitAndMoveGas(int x, int y, int z)
+	public static void splitAndMoveGas(final int x, final int y, final int z)
 	{
 		int volume, metadata;
-		world.setBlock(ix + x, iy + y, iz + z, TileGas.getGas().getFluid().getBlock());
-		TileEntity te = getOffsetTile(x, y, z);
+		world.setBlock(ix + x, iy + y, iz + z, TileGas.getGas().getFluid()
+				.getBlock());
+		final TileEntity te = getOffsetTile(x, y, z);
 
 		if ((te != null) && (te instanceof TileGas))
 		{
@@ -123,7 +143,8 @@ public class GasUtils
 			volume = TileGas.getGasAmount();
 			metadata = (volume * 15) / TileGas.VOLUME;
 
-			world.setBlockMetadataWithNotify(ix + x, iy + y, iz + z, metadata, 4);
+			world.setBlockMetadataWithNotify(ix + x, iy + y, iz + z, metadata,
+					4);
 		}
 
 		TileGas.getGas().amount /= 2;
@@ -133,65 +154,77 @@ public class GasUtils
 	}
 
 	/**
-	 * Grabs the block at the given offset using the TileGas'
-	 * coordinates.
+	 * Grabs the block at the given offset using the TileGas' coordinates.
 	 * 
-	 * @param x - xCoord offset
-	 * @param y - yCoord offset
-	 * @param z - zCoord offset
+	 * @param x
+	 *            - xCoord offset
+	 * @param y
+	 *            - yCoord offset
+	 * @param z
+	 *            - zCoord offset
 	 * @return - the block at the given offset
 	 */
-	public static Block getOffsetBlock(int x, int y, int z)
+	public static Block getOffsetBlock(final int x, final int y, final int z)
 	{
 		return world.getBlock(ix + x, iy + x, iz + z);
 	}
 
 	/**
-	 * Grabs the TileEntity at the given offset using the 
-	 * TileGas' coordinates.
+	 * Grabs the TileEntity at the given offset using the TileGas' coordinates.
 	 * 
-	 * @param x - xCoord offset
-	 * @param y - yCoord offset
-	 * @param z - zCoord offset
+	 * @param x
+	 *            - xCoord offset
+	 * @param y
+	 *            - yCoord offset
+	 * @param z
+	 *            - zCoord offset
 	 * @return - the TileEntity at the given offset
 	 */
-	public static TileEntity getOffsetTile(int x, int y, int z)
+	public static TileEntity getOffsetTile(final int x, final int y, final int z)
 	{
 		return world.getTileEntity(ix + x, iy + y, iz + z);
 	}
 
 	/**
-	 * Determines whether the block at the given offset is
-	 * an air block. The offset is determined by passing
-	 * the TileGas' coordinates.
+	 * Determines whether the block at the given offset is an air block. The
+	 * offset is determined by passing the TileGas' coordinates.
 	 * 
-	 * @param x - xCoord offset
-	 * @param y - yCoord offset
-	 * @param z - zCoord offset
+	 * @param x
+	 *            - xCoord offset
+	 * @param y
+	 *            - yCoord offset
+	 * @param z
+	 *            - zCoord offset
 	 * @return - true if there is an air block, false if not
 	 */
-	public static boolean isOffsetAir(int x, int y, int z)
+	public static boolean isOffsetAir(final int x, final int y, final int z)
 	{
-		return (world.getBlock(ix + x, iy + y, iz + z) == Blocks.air) ? true : false;
+		return (world.getBlock(ix + x, iy + y, iz + z) == Blocks.air) ? true
+				: false;
 	}
 
 	/**
-	 * Places a block at the given offset. The offset is
-	 * determined by passing the TileGas' coordinates.
+	 * Places a block at the given offset. The offset is determined by passing
+	 * the TileGas' coordinates.
 	 * 
-	 * @param x - xCoord offset
-	 * @param y - yCoord offset
-	 * @param z - zCoord offset
-	 * @param block - the block to place
+	 * @param x
+	 *            - xCoord offset
+	 * @param y
+	 *            - yCoord offset
+	 * @param z
+	 *            - zCoord offset
+	 * @param block
+	 *            - the block to place
 	 */
-	private static void setOffsetBlock(int x, int y, int z, Block block)
+	private static void setOffsetBlock(final int x, final int y, final int z,
+			final Block block)
 	{
 		world.setBlock(ix + x, iy + y, iz + z, block);
 	}
 
 	/**
-	 * Uses the TileGas' coordinates to determine whether to
-	 * start a fire or not.
+	 * Uses the TileGas' coordinates to determine whether to start a fire or
+	 * not.
 	 * 
 	 * @param
 	 */
@@ -201,39 +234,51 @@ public class GasUtils
 		{
 			if (Gas.isFlammable)
 			{
-				Gas gas = (Gas)getOffsetBlock(0, 0, 0);
+				getOffsetBlock(0, 0, 0);
 
 				for (int x = ix - 2; x < ix + 2; x++)
 				{
-					for(int y = iy - 2; y < iy + 2; y++)
+					for (int y = iy - 2; y < iy + 2; y++)
 					{
-						for(int z = iz - 2; z < iz + 2; z++)
+						for (int z = iz - 2; z < iz + 2; z++)
 						{
-							if ((world.getBlock(x, y, z) == Blocks.fire) || (world.getBlock(x, y, z) == Blocks.torch) || (world.getBlock(x, y, z) == Blocks.lava))
+							if ((world.getBlock(x, y, z) == Blocks.fire)
+									|| (world.getBlock(x, y, z) == Blocks.torch)
+									|| (world.getBlock(x, y, z) == Blocks.lava))
+							{
 								Gas.setFire(world, ix, iy, iz);
+							}
 						}
 					}
 				}
 			}
 		}
 	}
-	
+
 	/**
-	 * Determines whether the block at the given offset can
-	 * be broken/replaced by the gas.
+	 * Determines whether the block at the given offset can be broken/replaced
+	 * by the gas.
 	 * 
-	 * @param x - zCoord offset
-	 * @param y - yCoord offset
-	 * @param z - zCoord offset
+	 * @param x
+	 *            - zCoord offset
+	 * @param y
+	 *            - yCoord offset
+	 * @param z
+	 *            - zCoord offset
 	 * @return - false if it cannot be broken, true if it can
 	 */
-	public static boolean canGasDestroyBlock(int x, int y, int z)
+	public static boolean canGasDestroyBlock(final int x, final int y,
+			final int z)
 	{
-		Block block = getOffsetBlock(x, y, z);
-		
-		if ((SteamcraftApi.gasDestructionWhiteList.contains(block)) || !(block.getMaterial().isSolid()) || !(block.getMaterial().isReplaceable()))
+		final Block block = getOffsetBlock(x, y, z);
+
+		if ((SteamcraftApi.gasDestructionWhiteList.contains(block))
+				|| !(block.getMaterial().isSolid())
+				|| !(block.getMaterial().isReplaceable()))
+		{
 			return true;
-		
+		}
+
 		return false;
 	}
 }

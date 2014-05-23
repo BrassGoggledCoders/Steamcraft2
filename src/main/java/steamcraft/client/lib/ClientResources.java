@@ -19,16 +19,17 @@ package steamcraft.client.lib;
 
 /**
  * @author MrArcane111 & general3214
- *
+ * 
  */
-public class ClientResources { // TODO: Please move this to ClientHelper.java
+public class ClientResources
+{ // TODO: Please move this to ClientHelper.java
 	public static final String PREFIX_MOD = "steamcraft:";
 
-    //public static final String PREFIX_LANG = "/assets/steamcraft/lang/";
+	// public static final String PREFIX_LANG = "/assets/steamcraft/lang/";
 
-    public static final String PREFIX_GUI = PREFIX_MOD + "textures/gui/";
-    public static final String PREFIX_MISC = PREFIX_MOD + "textures/misc/";
-    public static final String PREFIX_MODEL = PREFIX_MOD + "textures/model/";
+	public static final String PREFIX_GUI = PREFIX_MOD + "textures/gui/";
+	public static final String PREFIX_MISC = PREFIX_MOD + "textures/misc/";
+	public static final String PREFIX_MODEL = PREFIX_MOD + "textures/model/";
 
-    public static final String EMPTY_TEXTURE = "emptyTexture";
+	public static final String EMPTY_TEXTURE = "emptyTexture";
 }

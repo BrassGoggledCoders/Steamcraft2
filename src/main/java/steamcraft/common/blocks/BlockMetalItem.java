@@ -19,26 +19,26 @@ import net.minecraft.item.ItemStack;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class BlockMetalItem extends ItemBlock
 {
-    public BlockMetalItem(Block block)
-    {
-        super(block);
-        this.setMaxDamage(0);
-        this.setHasSubtypes(true);
-    }
+	public BlockMetalItem(final Block block)
+	{
+		super(block);
+		setMaxDamage(0);
+		setHasSubtypes(true);
+	}
 
-    @Override
-    public int getMetadata(int metadata)
-    {
-        return metadata;
-    }
+	@Override
+	public int getMetadata(final int metadata)
+	{
+		return metadata;
+	}
 
-    @Override
-    public String getUnlocalizedName(ItemStack is)
-    {
-        return super.getUnlocalizedName() + "." + is.getItemDamage();
-    }
+	@Override
+	public String getUnlocalizedName(final ItemStack is)
+	{
+		return super.getUnlocalizedName() + "." + is.getItemDamage();
+	}
 }

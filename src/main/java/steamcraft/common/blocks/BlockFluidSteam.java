@@ -26,50 +26,53 @@ import boilerplate.common.Utils;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockFluidSteam extends BlockFluidClassic 
+public class BlockFluidSteam extends BlockFluidClassic
 {
 	@SideOnly(Side.CLIENT)
 	protected IIcon stillIcon;
 	@SideOnly(Side.CLIENT)
-
 	protected IIcon flowingIcon;
 
-	public BlockFluidSteam(Fluid fluid, Material material) 
+	public BlockFluidSteam(final Fluid fluid, final Material material)
 	{
 		super(fluid, material);
-		//setUnlocalizedName("steamFluidBlock");
-		this.setCreativeTab(Steamcraft.tabSC2);
+		// setUnlocalizedName("steamFluidBlock");
+		setCreativeTab(Steamcraft.tabSC2);
 	}
 
 	@Override
-	public IIcon getIcon(int side, int meta) 
+	public IIcon getIcon(final int side, final int meta)
 	{
 		return (side == 0 || side == 1) ? stillIcon : flowingIcon;
 	}
 
 	@SideOnly(Side.CLIENT)
 	@Override
-	public void registerBlockIcons(IIconRegister register) 
+	public void registerBlockIcons(final IIconRegister register)
 	{
 		stillIcon = register.registerIcon(LibInfo.PREFIX + "steamStill");
 		flowingIcon = register.registerIcon(LibInfo.PREFIX + "steamFlowing");
 	}
 
 	@Override
-	public boolean canDisplace(IBlockAccess world, int x, int y, int z) 
+	public boolean canDisplace(final IBlockAccess world, final int x,
+			final int y, final int z)
 	{
-		if (Utils.getBlockMaterial(world, x, y, z).isLiquid()) 
+		if (Utils.getBlockMaterial(world, x, y, z).isLiquid())
+		{
 			return false;
-		return 
-				super.canDisplace(world, x, y, z);
+		}
+		return super.canDisplace(world, x, y, z);
 	}
 
 	@Override
-	public boolean displaceIfPossible(World world, int x, int y, int z) 
+	public boolean displaceIfPossible(final World world, final int x,
+			final int y, final int z)
 	{
 		if (Utils.getBlockMaterial(world, x, y, z).isLiquid())
+		{
 			return false;
-		return 
-				super.displaceIfPossible(world, x, y, z);
+		}
+		return super.displaceIfPossible(world, x, y, z);
 	}
 }

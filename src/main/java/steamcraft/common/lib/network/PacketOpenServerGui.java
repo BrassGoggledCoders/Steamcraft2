@@ -13,25 +13,21 @@
  */
 package steamcraft.common.lib.network;
 
-
 /**
  * @author Surseance (Johnny Eatmon)
- *
+ * 
  */
 public class PacketOpenServerGui
 {
 	/*
-	public static Packet250CustomPayload getPacket(int guiID)
-	{
-		ByteArrayOutputStream byteStream = new ByteArrayOutputStream(5);
-		DataOutputStream dataStream = new DataOutputStream(byteStream);
-		try {
-			dataStream.writeByte(PacketHandler.PACKET_OPEN_SERVER_GUI);
-			dataStream.writeInt(guiID);
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		}
-
-		return new Packet250CustomPayload(PacketHandler.SC2_CHANNEL, byteStream.toByteArray());
-	}*/
+	 * public static Packet250CustomPayload getPacket(int guiID) {
+	 * ByteArrayOutputStream byteStream = new ByteArrayOutputStream(5);
+	 * DataOutputStream dataStream = new DataOutputStream(byteStream); try {
+	 * dataStream.writeByte(PacketHandler.PACKET_OPEN_SERVER_GUI);
+	 * dataStream.writeInt(guiID); } catch (Exception ex) {
+	 * ex.printStackTrace(); }
+	 * 
+	 * return new Packet250CustomPayload(PacketHandler.SC2_CHANNEL,
+	 * byteStream.toByteArray()); }
+	 */
 }

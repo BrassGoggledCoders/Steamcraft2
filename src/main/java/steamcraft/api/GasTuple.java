@@ -17,23 +17,25 @@ package steamcraft.api;
  * Does stuff. For gases.
  * 
  * @author Surseance (Johnny Eatmon)
- *
+ * 
  */
 public class GasTuple
 {
 	int[] values;
 
-	public GasTuple(int ... newValues)
+	public GasTuple(final int... newValues)
 	{
-		this.values = newValues;
+		values = newValues;
 	}
 
 	public int x()
 	{
 		int result = 0;
 
-		if (this.values.length >= 1)
-			result = this.values[0];
+		if (values.length >= 1)
+		{
+			result = values[0];
+		}
 
 		return result;
 	}
@@ -42,8 +44,10 @@ public class GasTuple
 	{
 		int result = 0;
 
-		if (this.values.length >= 2)
-			result = this.values[1];
+		if (values.length >= 2)
+		{
+			result = values[1];
+		}
 
 		return result;
 	}
@@ -52,18 +56,22 @@ public class GasTuple
 	{
 		int result = 0;
 
-		if (this.values.length >= 3)
-			result = this.values[2];
+		if (values.length >= 3)
+		{
+			result = values[2];
+		}
 
 		return result;
 	}
 
-	public int getValue(int index)
+	public int getValue(final int index)
 	{
 		int result = 0;
 
-		if (this.values.length >= index + 1)
-			result = this.values[index];
+		if (values.length >= index + 1)
+		{
+			result = values[index];
+		}
 
 		return result;
 	}

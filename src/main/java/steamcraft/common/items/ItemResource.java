@@ -26,37 +26,37 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 public class ItemResource extends Item
 {
-    public IIcon[] icon = new IIcon[12];
+	public IIcon[] icon = new IIcon[12];
 
-    @Override
-    @SideOnly(Side.CLIENT)
-    public IIcon getIconFromDamage(int itemDamage)
-    {
-        return this.icon[itemDamage];
-    }
+	@Override
+	@SideOnly(Side.CLIENT)
+	public IIcon getIconFromDamage(final int itemDamage)
+	{
+		return icon[itemDamage];
+	}
 
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void registerIcons(IIconRegister ir)
-    {
-        this.icon[0] = ir.registerIcon(LibInfo.PREFIX + "itemCrystal");
-        this.icon[1] = ir.registerIcon(LibInfo.PREFIX + "itemChemSalt");
-        this.icon[2] = ir.registerIcon(LibInfo.PREFIX + "itemBornite");
-        this.icon[3] = ir.registerIcon(LibInfo.PREFIX + "itemSlate");
-        this.icon[4] = ir.registerIcon(LibInfo.PREFIX + "itemBulb");
-        this.icon[5] = ir.registerIcon(LibInfo.PREFIX + "itemPhosphorus");
-        this.icon[6] = ir.registerIcon(LibInfo.PREFIX + "itemUranium");
-        this.icon[7] = ir.registerIcon(LibInfo.PREFIX + "itemPellet");
-        this.icon[8] = ir.registerIcon(LibInfo.PREFIX + "itemReactorCore");
-        this.icon[9] = ir.registerIcon(LibInfo.PREFIX + "itemTeaLeaves");
-    }
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void registerIcons(final IIconRegister ir)
+	{
+		icon[0] = ir.registerIcon(LibInfo.PREFIX + "itemCrystal");
+		icon[1] = ir.registerIcon(LibInfo.PREFIX + "itemChemSalt");
+		icon[2] = ir.registerIcon(LibInfo.PREFIX + "itemBornite");
+		icon[3] = ir.registerIcon(LibInfo.PREFIX + "itemSlate");
+		icon[4] = ir.registerIcon(LibInfo.PREFIX + "itemBulb");
+		icon[5] = ir.registerIcon(LibInfo.PREFIX + "itemPhosphorus");
+		icon[6] = ir.registerIcon(LibInfo.PREFIX + "itemUranium");
+		icon[7] = ir.registerIcon(LibInfo.PREFIX + "itemPellet");
+		icon[8] = ir.registerIcon(LibInfo.PREFIX + "itemReactorCore");
+		icon[9] = ir.registerIcon(LibInfo.PREFIX + "itemTeaLeaves");
+	}
 
-    public ItemResource()
-    {
-    	super();
-        this.setMaxStackSize(64);
-        this.setHasSubtypes(true);
-        this.setMaxDamage(0);
-        this.setCreativeTab(Steamcraft.tabSC2);
-    }
+	public ItemResource()
+	{
+		super();
+		setMaxStackSize(64);
+		setHasSubtypes(true);
+		setMaxDamage(0);
+		setCreativeTab(Steamcraft.tabSC2);
+	}
 }

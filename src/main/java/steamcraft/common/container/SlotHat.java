@@ -13,7 +13,6 @@
  */
 package steamcraft.common.container;
 
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
@@ -21,28 +20,30 @@ import steamcraft.api.vanity.IHat;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class SlotHat extends Slot
 {
-	public SlotHat(IInventory inventory, int par2, int par3, int par4)
+	public SlotHat(final IInventory inventory, final int par2, final int par3,
+			final int par4)
 	{
 		super(inventory, par2, par3, par4);
 	}
 
 	/**
-	 * Check if the stack is a valid item for this slot. Always true beside for the armor slots
-	 * (and now also not always true for our custom inventory slots)
+	 * Check if the stack is a valid item for this slot. Always true beside for
+	 * the armor slots (and now also not always true for our custom inventory
+	 * slots)
 	 */
 	@Override
-	public boolean isItemValid(ItemStack is)
+	public boolean isItemValid(final ItemStack is)
 	{
 		return is.getItem() instanceof IHat;
 	}
-	
+
 	/**
-	 * Returns the maximum stack size for a given slot (usually the same as getInventoryStackLimit(), but 1 in the case
-	 * of armor slots)
+	 * Returns the maximum stack size for a given slot (usually the same as
+	 * getInventoryStackLimit(), but 1 in the case of armor slots)
 	 */
 	@Override
 	public int getSlotStackLimit()
@@ -51,11 +52,10 @@ public class SlotHat extends Slot
 	}
 
 	@Override
-	public void onSlotChange(ItemStack is1, ItemStack is2)
+	public void onSlotChange(final ItemStack is1, final ItemStack is2)
 	{
 		if (is1.getItem() instanceof IHat)
 		{
-			EntityPlayer player;
 		}
 	}
 }

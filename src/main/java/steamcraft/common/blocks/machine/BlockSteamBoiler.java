@@ -45,26 +45,31 @@ public class BlockSteamBoiler extends BlockContainerMod
 	@SideOnly(Side.CLIENT)
 	private IIcon iconFrontA;
 
-	public BlockSteamBoiler() // TODO: This class needs cleanup; consolidate the icons to an array of icons
+	public BlockSteamBoiler() // TODO: This class needs cleanup; consolidate the
+								// icons to an array of icons
 	{
 		super(Material.iron);
-		//this.setUnlocalizedName("steamBoiler");
+		// this.setUnlocalizedName("steamBoiler");
 	}
 
 	@Override
-	public int damageDropped (int metadata)
+	public int damageDropped(final int metadata)
 	{
 		return 0;
 	}
 
 	@SideOnly(Side.CLIENT)
 	@Override
-	public IIcon getIcon(int side, int meta)
+	public IIcon getIcon(final int side, final int meta)
 	{
-		if(side == meta-7) //active icon in world
+		if (side == meta - 7)
+		{
 			return iconFrontA;
-		if (meta == 0 && side == 3 || side == meta) //icon in the world and in the inventory
+		}
+		if (meta == 0 && side == 3 || side == meta)
+		{
 			return iconFront;
+		}
 		switch (side)
 		{
 		case 0:
@@ -80,40 +85,58 @@ public class BlockSteamBoiler extends BlockContainerMod
 
 	@SideOnly(Side.CLIENT)
 	@Override
-	public void registerBlockIcons(IIconRegister par1IconRegister)
+	public void registerBlockIcons(final IIconRegister par1IconRegister)
 	{
-		blockIcon = par1IconRegister.registerIcon(LibInfo.PREFIX + "generatorside");
-		iconFront = par1IconRegister.registerIcon(LibInfo.PREFIX + "generatorfrontinactive");
-		iconFrontA = par1IconRegister.registerIcon(LibInfo.PREFIX + "generatorfrontinactive");
-		iconTop = par1IconRegister.registerIcon(LibInfo.PREFIX + "generatortop");
+		blockIcon = par1IconRegister.registerIcon(LibInfo.PREFIX
+				+ "generatorside");
+		iconFront = par1IconRegister.registerIcon(LibInfo.PREFIX
+				+ "generatorfrontinactive");
+		iconFrontA = par1IconRegister.registerIcon(LibInfo.PREFIX
+				+ "generatorfrontinactive");
+		iconTop = par1IconRegister
+				.registerIcon(LibInfo.PREFIX + "generatortop");
 	}
 
 	@Override
-	public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8,
-			float par9)
+	public boolean onBlockActivated(final World par1World, final int par2,
+			final int par3, final int par4,
+			final EntityPlayer par5EntityPlayer, final int par6,
+			final float par7, final float par8, final float par9)
 	{
 		if (par1World.isRemote)
+		{
 			return true;
+		}
 		else
 		{
-			TileSteamBoiler tile_entity = (TileSteamBoiler) par1World.getTileEntity(par2, par3, par4);
+			final TileSteamBoiler tile_entity = (TileSteamBoiler) par1World
+					.getTileEntity(par2, par3, par4);
 			if (tile_entity == null || par5EntityPlayer.isSneaking())
+			{
 				return false;
-			par5EntityPlayer.openGui(Steamcraft.instance, GuiIDs.GUI_ID_COAL_GENERATOR, par1World, par2, par3, par4);
+			}
+			par5EntityPlayer.openGui(Steamcraft.instance,
+					GuiIDs.GUI_ID_COAL_GENERATOR, par1World, par2, par3, par4);
 			return true;
 		}
 	}
 
-	public static void updateFurnaceBlockState(boolean par0, World par1World, int par2, int par3, int par4)
+	public static void updateFurnaceBlockState(final boolean par0,
+			final World par1World, final int par2, final int par3,
+			final int par4)
 	{
-		int var5 = par1World.getBlockMetadata(par2, par3, par4);
-		TileEntity tileentity = par1World.getTileEntity(par2, par3, par4);
+		final int var5 = par1World.getBlockMetadata(par2, par3, par4);
+		final TileEntity tileentity = par1World.getTileEntity(par2, par3, par4);
 		keepInventory = true;
 
 		if (par0)
-			par1World.setBlockMetadataWithNotify(par2, par3, par4, var5+7, 2);
+		{
+			par1World.setBlockMetadataWithNotify(par2, par3, par4, var5 + 7, 2);
+		}
 		else
-			par1World.setBlockMetadataWithNotify(par2, par3, par4, var5-7, 2);
+		{
+			par1World.setBlockMetadataWithNotify(par2, par3, par4, var5 - 7, 2);
+		}
 
 		keepInventory = false;
 
@@ -129,42 +152,53 @@ public class BlockSteamBoiler extends BlockContainerMod
 	/**
 	 * A randomly called display update to be able to add particles or other items for display
 	 */
-	public void randomDisplayTick(World par1World, int par2, int par3, int par4, Random par5Random)
+	public void randomDisplayTick(final World par1World, final int par2,
+			final int par3, final int par4, final Random par5Random)
 	{
-		int l = par1World.getBlockMetadata(par2, par3, par4);
-		if (l>=7)
+		final int l = par1World.getBlockMetadata(par2, par3, par4);
+		if (l >= 7)
 		{
-			float f = par2 + 0.5F;
-			float f1 = par3 + 0.0F + par5Random.nextFloat() * 6.0F / 16.0F;
-			float f2 = par4 + 0.5F;
-			float f3 = 0.52F;
-			float f4 = par5Random.nextFloat() * 0.6F - 0.3F;
+			final float f = par2 + 0.5F;
+			final float f1 = par3 + 0.0F + par5Random.nextFloat() * 6.0F
+					/ 16.0F;
+			final float f2 = par4 + 0.5F;
+			final float f3 = 0.52F;
+			final float f4 = par5Random.nextFloat() * 0.6F - 0.3F;
 
-			if (l == 4 || l==11)
+			if (l == 4 || l == 11)
 			{
-				par1World.spawnParticle("smoke", f - f3, f1, f2 + f4, 0.0D, 0.0D, 0.0D);
-				par1World.spawnParticle("flame", f - f3, f1, f2 + f4, 0.0D, 0.0D, 0.0D);
+				par1World.spawnParticle("smoke", f - f3, f1, f2 + f4, 0.0D,
+						0.0D, 0.0D);
+				par1World.spawnParticle("flame", f - f3, f1, f2 + f4, 0.0D,
+						0.0D, 0.0D);
 			}
-			else if (l == 5 || l==12)
+			else if (l == 5 || l == 12)
 			{
-				par1World.spawnParticle("smoke", f + f3, f1, f2 + f4, 0.0D, 0.0D, 0.0D);
-				par1World.spawnParticle("flame", f + f3, f1, f2 + f4, 0.0D, 0.0D, 0.0D);
+				par1World.spawnParticle("smoke", f + f3, f1, f2 + f4, 0.0D,
+						0.0D, 0.0D);
+				par1World.spawnParticle("flame", f + f3, f1, f2 + f4, 0.0D,
+						0.0D, 0.0D);
 			}
-			else if (l == 2 || l==9)
+			else if (l == 2 || l == 9)
 			{
-				par1World.spawnParticle("smoke", f + f4, f1, f2 - f3, 0.0D, 0.0D, 0.0D);
-				par1World.spawnParticle("flame", f + f4, f1, f2 - f3, 0.0D, 0.0D, 0.0D);
+				par1World.spawnParticle("smoke", f + f4, f1, f2 - f3, 0.0D,
+						0.0D, 0.0D);
+				par1World.spawnParticle("flame", f + f4, f1, f2 - f3, 0.0D,
+						0.0D, 0.0D);
 			}
-			else if (l == 3 || l==10)
+			else if (l == 3 || l == 10)
 			{
-				par1World.spawnParticle("smoke", f + f4, f1, f2 + f3, 0.0D, 0.0D, 0.0D);
-				par1World.spawnParticle("flame", f + f4, f1, f2 + f3, 0.0D, 0.0D, 0.0D);
+				par1World.spawnParticle("smoke", f + f4, f1, f2 + f3, 0.0D,
+						0.0D, 0.0D);
+				par1World.spawnParticle("flame", f + f4, f1, f2 + f3, 0.0D,
+						0.0D, 0.0D);
 			}
 		}
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World par1World, int metadata)
+	public TileEntity createNewTileEntity(final World par1World,
+			final int metadata)
 	{
 		return new TileSteamBoiler();
 	}
@@ -173,9 +207,11 @@ public class BlockSteamBoiler extends BlockContainerMod
 	 * Called when the block is placed in the world.
 	 */
 	@Override
-	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase living, ItemStack stack)
-	{    	
-		int l = MathHelper.floor_double(living.rotationYaw * 4.0F / 360.0F + 0.5D) & 3;
+	public void onBlockPlacedBy(final World world, final int x, final int y,
+			final int z, final EntityLivingBase living, final ItemStack stack)
+	{
+		final int l = MathHelper
+				.floor_double(living.rotationYaw * 4.0F / 360.0F + 0.5D) & 3;
 
 		if (l == 0)
 		{
@@ -201,45 +237,60 @@ public class BlockSteamBoiler extends BlockContainerMod
 	}
 
 	@Override
-	public void breakBlock(World par1World, int par2, int par3, int par4, Block block, int par6)
+	public void breakBlock(final World par1World, final int par2,
+			final int par3, final int par4, final Block block, final int par6)
 	{
 		if (!keepInventory)
 		{
-			TileSteamBoiler var7 = (TileSteamBoiler) par1World.getTileEntity(par2, par3, par4);
+			final TileSteamBoiler var7 = (TileSteamBoiler) par1World
+					.getTileEntity(par2, par3, par4);
 
 			if (var7 != null)
+			{
 				for (int var8 = 0; var8 < var7.getSizeInventory(); ++var8)
 				{
-					ItemStack var9 = var7.getStackInSlot(var8);
+					final ItemStack var9 = var7.getStackInSlot(var8);
 
 					if (var9 != null)
 					{
-						float var10 = random.nextFloat() * 0.8F + 0.1F;
-						float var11 = random.nextFloat() * 0.8F + 0.1F;
-						float var12 = random.nextFloat() * 0.8F + 0.1F;
+						final float var10 = random.nextFloat() * 0.8F + 0.1F;
+						final float var11 = random.nextFloat() * 0.8F + 0.1F;
+						final float var12 = random.nextFloat() * 0.8F + 0.1F;
 
 						while (var9.stackSize > 0)
 						{
 							int var13 = random.nextInt(21) + 10;
 
 							if (var13 > var9.stackSize)
+							{
 								var13 = var9.stackSize;
+							}
 
 							var9.stackSize -= var13;
-							EntityItem var14 = new EntityItem(par1World, par2 + var10, par3 + var11, par4 + var12, new ItemStack(var9.getItem(), var13,
-									var9.getItemDamage()));
+							final EntityItem var14 = new EntityItem(par1World,
+									par2 + var10, par3 + var11, par4 + var12,
+									new ItemStack(var9.getItem(), var13,
+											var9.getItemDamage()));
 
 							if (var9.hasTagCompound())
-								var14.getEntityItem().setTagCompound((NBTTagCompound) var9.getTagCompound().copy());
+							{
+								var14.getEntityItem().setTagCompound(
+										(NBTTagCompound) var9.getTagCompound()
+												.copy());
+							}
 
-							float var15 = 0.05F;
-							var14.motionX = (float) random.nextGaussian() * var15;
-							var14.motionY = (float) random.nextGaussian() * var15 + 0.2F;
-							var14.motionZ = (float) random.nextGaussian() * var15;
+							final float var15 = 0.05F;
+							var14.motionX = (float) random.nextGaussian()
+									* var15;
+							var14.motionY = (float) random.nextGaussian()
+									* var15 + 0.2F;
+							var14.motionZ = (float) random.nextGaussian()
+									* var15;
 							par1World.spawnEntityInWorld(var14);
 						}
 					}
 				}
+			}
 		}
 
 		super.breakBlock(par1World, par2, par3, par4, block, par6);
@@ -252,8 +303,10 @@ public class BlockSteamBoiler extends BlockContainerMod
 	}
 
 	@Override
-	public int getComparatorInputOverride(World par1World, int par2, int par3, int par4, int par5)
+	public int getComparatorInputOverride(final World par1World,
+			final int par2, final int par3, final int par4, final int par5)
 	{
-		return Container.calcRedstoneFromInventory((IInventory) par1World.getTileEntity(par2, par3, par4));
+		return Container.calcRedstoneFromInventory((IInventory) par1World
+				.getTileEntity(par2, par3, par4));
 	}
 }

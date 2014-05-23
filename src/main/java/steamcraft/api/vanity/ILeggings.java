@@ -15,7 +15,7 @@ package steamcraft.api.vanity;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public interface ILeggings
 {

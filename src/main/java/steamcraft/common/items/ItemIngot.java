@@ -27,40 +27,41 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 public class ItemIngot extends Item
 {
-    public IIcon[] icon = new IIcon[8];
+	public IIcon[] icon = new IIcon[8];
 
-    @Override
-    @SideOnly(Side.CLIENT)
-    public IIcon getIconFromDamage(int itemDamage)
-    {
-        return this.icon[itemDamage];
-    }
+	@Override
+	@SideOnly(Side.CLIENT)
+	public IIcon getIconFromDamage(final int itemDamage)
+	{
+		return icon[itemDamage];
+	}
 
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void registerIcons(IIconRegister ir)
-    {
-        this.icon[0] = ir.registerIcon(LibInfo.PREFIX + "itemIngotAluminum");
-        this.icon[1] = ir.registerIcon(LibInfo.PREFIX + "itemIngotCopper");
-        this.icon[2] = ir.registerIcon(LibInfo.PREFIX + "itemIngotTin");
-        this.icon[3] = ir.registerIcon(LibInfo.PREFIX + "itemIngotZinc");
-        this.icon[4] = ir.registerIcon(LibInfo.PREFIX + "itemIngotBrass");
-        this.icon[5] = ir.registerIcon(LibInfo.PREFIX + "itemIngotBronze");
-        this.icon[6] = ir.registerIcon(LibInfo.PREFIX + "itemIngotSteel");
-        this.icon[7] = ir.registerIcon(LibInfo.PREFIX + "itemIngotCastIron");
-    }
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void registerIcons(final IIconRegister ir)
+	{
+		icon[0] = ir.registerIcon(LibInfo.PREFIX + "itemIngotAluminum");
+		icon[1] = ir.registerIcon(LibInfo.PREFIX + "itemIngotCopper");
+		icon[2] = ir.registerIcon(LibInfo.PREFIX + "itemIngotTin");
+		icon[3] = ir.registerIcon(LibInfo.PREFIX + "itemIngotZinc");
+		icon[4] = ir.registerIcon(LibInfo.PREFIX + "itemIngotBrass");
+		icon[5] = ir.registerIcon(LibInfo.PREFIX + "itemIngotBronze");
+		icon[6] = ir.registerIcon(LibInfo.PREFIX + "itemIngotSteel");
+		icon[7] = ir.registerIcon(LibInfo.PREFIX + "itemIngotCastIron");
+	}
 
-    public ItemIngot()
-    {
-    	super();
-        this.setMaxStackSize(64);
-        this.setHasSubtypes(true);
-        this.setMaxDamage(0);
-        this.setCreativeTab(Steamcraft.tabSC2);
-    }
-    @Override
-    public String getUnlocalizedName(ItemStack is)
-    {
-        return super.getUnlocalizedName() + "." + is.getItemDamage();
-    }
+	public ItemIngot()
+	{
+		super();
+		setMaxStackSize(64);
+		setHasSubtypes(true);
+		setMaxDamage(0);
+		setCreativeTab(Steamcraft.tabSC2);
+	}
+
+	@Override
+	public String getUnlocalizedName(final ItemStack is)
+	{
+		return super.getUnlocalizedName() + "." + is.getItemDamage();
+	}
 }

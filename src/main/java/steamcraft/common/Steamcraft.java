@@ -43,9 +43,9 @@ import cpw.mods.fml.relauncher.Side;
 
 /**
  * @author Surseance (Johnny Eatmon)
- *
+ * 
  */
-@Mod(modid = LibInfo.ID, name = LibInfo.NAME, version = LibInfo.VERSION, dependencies="required-after:boilerplate")
+@Mod(modid = LibInfo.ID, name = LibInfo.NAME, version = LibInfo.VERSION, dependencies = "required-after:boilerplate")
 public class Steamcraft
 {
 	@SidedProxy(clientSide = LibInfo.CLIENT_PROXY, serverSide = LibInfo.COMMON_PROXY)
@@ -60,35 +60,41 @@ public class Steamcraft
 	public EventHandlerDrawHighlight drawEventHandler;
 	public EventHandlerSC2 sc2EventHandler;
 
-	public static CreativeTabs tabSC2 = new CreativeTabSteamcraft(CreativeTabs.getNextID(), "steamcraft"); //TODO: Needs Icon
+	public static CreativeTabs tabSC2 = new CreativeTabSteamcraft(
+			CreativeTabs.getNextID(), "steamcraft"); // TODO: Needs Icon
 
 	@Mod.EventHandler
-	public void preInit(FMLPreInitializationEvent event)
+	public void preInit(final FMLPreInitializationEvent event)
 	{
 		event.getModMetadata().version = LibInfo.VERSION;
-		this.directory = event.getModConfigurationDirectory();
+		directory = event.getModConfigurationDirectory();
 
-		LanguageRegistry.instance().getStringLocalization("itemGroup.steamcraft", "en_US");
+		LanguageRegistry.instance().getStringLocalization(
+				"itemGroup.steamcraft", "en_US");
 		try
 		{
 			Config.initialize(event.getSuggestedConfigurationFile());
-		} catch (Exception e)
+		} catch (final Exception e)
 		{
-			LoggerSteamcraft.log(Level.SEVERE, "Failed to load configuration file!");
+			LoggerSteamcraft.log(Level.SEVERE,
+					"Failed to load configuration file!");
 		} finally
 		{
 			if (Config.config != null)
+			{
 				Config.save();
+			}
 		}
-		this.drawEventHandler = new EventHandlerDrawHighlight();
-		this.sc2EventHandler = new EventHandlerSC2();
+		drawEventHandler = new EventHandlerDrawHighlight();
+		sc2EventHandler = new EventHandlerSC2();
 
-		//MinecraftForge.EVENT_BUS.register(this.worldEventHandler);
-		MinecraftForge.EVENT_BUS.register(this.sc2EventHandler);
+		// MinecraftForge.EVENT_BUS.register(this.worldEventHandler);
+		MinecraftForge.EVENT_BUS.register(sc2EventHandler);
 
-		//GameRegistry.registerFuelHandler(this.worldEventHandler);
-		//GameRegistry.registerCraftingHandler(this.worldEventHandler);
-		GameRegistry.registerWorldGenerator(this.worldGen = new SteamcraftWorldGenerator(), 0);
+		// GameRegistry.registerFuelHandler(this.worldEventHandler);
+		// GameRegistry.registerCraftingHandler(this.worldEventHandler);
+		GameRegistry.registerWorldGenerator(
+				worldGen = new SteamcraftWorldGenerator(), 0);
 
 		Config.save();
 		ConfigBlocks.init();
@@ -100,31 +106,33 @@ public class Steamcraft
 	}
 
 	@Mod.EventHandler
-	public void init(FMLInitializationEvent event)
+	public void init(final FMLInitializationEvent event)
 	{
 		Config.registerBiomes();
 		ConfigEntities.init();
 
-		//RegisterKeyBindings.init();
-		//NetworkRegistry.instance().registerGuiHandler(this.instance, new GuiHandler());
+		// RegisterKeyBindings.init();
+		// NetworkRegistry.instance().registerGuiHandler(this.instance, new
+		// GuiHandler());
 	}
 
 	@Mod.EventHandler
-	public void postInit(FMLPostInitializationEvent event)
+	public void postInit(final FMLPostInitializationEvent event)
 	{
-		//Dosn't work! >> BiomeDictionary.registerAllBiomes();
+		// Dosn't work! >> BiomeDictionary.registerAllBiomes();
 		ConfigEntities.initEntitySpawns();
 		Config.initModCompatibility();
 		ConfigItems.postInit();
-		//ConfigRecipes.init();
+		// ConfigRecipes.init();
 		Config.initLoot();
-		//LoggerSteamcraft.log(Level.INFO, "SC2 is " + event.getModState());
-		ModContainer container = FMLCommonHandler.instance().findContainerFor(this);
+		// LoggerSteamcraft.log(Level.INFO, "SC2 is " + event.getModState());
+		final ModContainer container = FMLCommonHandler.instance()
+				.findContainerFor(this);
 		LanguageRegistry.instance().loadLanguagesFor(container, Side.CLIENT);
 	}
 
 	@Mod.EventHandler
-	public void serverStarting(FMLServerStartingEvent event)
+	public void serverStarting(final FMLServerStartingEvent event)
 	{
 		event.registerServerCommand(new CommandSteamcraft());
 		LoggerSteamcraft.log(Level.INFO, "Registering commands just for you");

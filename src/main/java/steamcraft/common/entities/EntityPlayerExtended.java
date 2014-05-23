@@ -18,7 +18,6 @@ import java.io.DataOutputStream;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IExtendedEntityProperties;
@@ -27,9 +26,11 @@ import steamcraft.common.lib.network.PacketHandler;
 
 /**
  * @author warlordjones
- *
+ * 
  */
-public class EntityPlayerExtended implements IExtendedEntityProperties //TODO: Add packets
+public class EntityPlayerExtended implements IExtendedEntityProperties // TODO:
+																		// Add
+																		// packets
 {
 	public final static String EXT_PROP_NAME = "EntityPlayerExtended";
 
@@ -37,56 +38,65 @@ public class EntityPlayerExtended implements IExtendedEntityProperties //TODO: A
 
 	private final EntityPlayer player;
 
-	public EntityPlayerExtended(EntityPlayer player)
+	public EntityPlayerExtended(final EntityPlayer player)
 	{
 		this.player = player;
 	}
-	
-	public static final void register(EntityPlayer player)
+
+	public static final void register(final EntityPlayer player)
 	{
-		player.registerExtendedProperties(EntityPlayerExtended.EXT_PROP_NAME, new EntityPlayerExtended(player));
+		player.registerExtendedProperties(EntityPlayerExtended.EXT_PROP_NAME,
+				new EntityPlayerExtended(player));
 	}
 
-	public static final EntityPlayerExtended get(EntityPlayer player)
+	public static final EntityPlayerExtended get(final EntityPlayer player)
 	{
-		return (EntityPlayerExtended) player.getExtendedProperties(EXT_PROP_NAME);
+		return (EntityPlayerExtended) player
+				.getExtendedProperties(EXT_PROP_NAME);
 	}
-	
+
 	@Override
-	public void saveNBTData(NBTTagCompound tagCompound)
+	public void saveNBTData(final NBTTagCompound tagCompound)
 	{
-		NBTTagCompound properties = new NBTTagCompound();
+		final NBTTagCompound properties = new NBTTagCompound();
 		tagCompound.setTag(EXT_PROP_NAME, properties);
-		this.inventory.writeToNBT(properties);
-	}
-	
-	@Override
-	public void loadNBTData(NBTTagCompound tagCompound)
-	{
-		NBTTagCompound properties = (NBTTagCompound) tagCompound.getTag(EXT_PROP_NAME);
-		this.inventory.readFromNBT(properties);
+		inventory.writeToNBT(properties);
 	}
 
 	@Override
-	public void init(Entity entity, World world) {}
-	
+	public void loadNBTData(final NBTTagCompound tagCompound)
+	{
+		final NBTTagCompound properties = (NBTTagCompound) tagCompound
+				.getTag(EXT_PROP_NAME);
+		inventory.readFromNBT(properties);
+	}
+
+	@Override
+	public void init(final Entity entity, final World world)
+	{
+	}
+
 	public final void sync()
 	{
-		ByteArrayOutputStream baOutputStream = new ByteArrayOutputStream(8);
-		DataOutputStream dOutputStream = new DataOutputStream(baOutputStream);
-		try {
+		final ByteArrayOutputStream baOutputStream = new ByteArrayOutputStream(
+				8);
+		final DataOutputStream dOutputStream = new DataOutputStream(
+				baOutputStream);
+		try
+		{
 			dOutputStream.writeInt(PacketHandler.PACKET_EXTENDED_PROPERTIES);
-		} catch (Exception ex) {
+		} catch (final Exception ex)
+		{
 			ex.printStackTrace();
 		}
 
-		//Packet250CustomPayload packet = new Packet250CustomPayload(PacketHandler.SC2_CHANNEL, baOutputStream.toByteArray());
+		// Packet250CustomPayload packet = new
+		// Packet250CustomPayload(PacketHandler.SC2_CHANNEL,
+		// baOutputStream.toByteArray());
 
 		// We only want to send from the server to the client
-		if (!player.worldObj.isRemote) 
+		if (!player.worldObj.isRemote)
 		{
-			EntityPlayerMP playerMP = (EntityPlayerMP)player;
-			//PacketDispatch.sendPacketToPlayer(packet, playerMP);
 		}
 	}
 }

@@ -22,22 +22,22 @@ import net.minecraft.item.ItemStack;
  */
 public class BlockEngravedSolidItem extends ItemBlock
 {
-    public BlockEngravedSolidItem(Block block)
-    {
-        super(block);
-        this.setMaxDamage(0);
-        this.setHasSubtypes(true);
-    }
+	public BlockEngravedSolidItem(final Block block)
+	{
+		super(block);
+		setMaxDamage(0);
+		setHasSubtypes(true);
+	}
 
-    @Override
-    public int getMetadata(int metadata)
-    {
-        return metadata;
-    }
+	@Override
+	public int getMetadata(final int metadata)
+	{
+		return metadata;
+	}
 
-    @Override
-    public String getUnlocalizedName(ItemStack is)
-    {
-        return super.getUnlocalizedName() + "." + is.getItemDamage();
-    }
+	@Override
+	public String getUnlocalizedName(final ItemStack is)
+	{
+		return super.getUnlocalizedName() + "." + is.getItemDamage();
+	}
 }

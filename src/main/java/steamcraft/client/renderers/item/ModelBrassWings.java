@@ -21,7 +21,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author Surseance (Johnny Eatmon) & Falkok15
- *
+ * 
  */
 @SideOnly(Side.CLIENT)
 public class ModelBrassWings extends ModelBiped
@@ -42,15 +42,16 @@ public class ModelBrassWings extends ModelBiped
 	ModelRenderer Shape15;
 	ModelRenderer Shape14;
 
-	public ModelBrassWings(float f)
+	public ModelBrassWings(final float f)
 	{
 		super(f, 0, 64, 32);
-		//textureWidth = 64; <-- these things are bullshit, they do nothing useful
-		//textureHeight = 32;
+		// textureWidth = 64; <-- these things are bullshit, they do nothing
+		// useful
+		// textureHeight = 32;
 		Shape1 = new ModelRenderer(this, 0, 0);
 		Shape1.addBox(0F, 0F, 0F, 4, 4, 2);
 		Shape1.setRotationPoint(-2F, 0F, 2F);
-		//Shape1.setRotationPoint(0F, 0F, 0F);
+		// Shape1.setRotationPoint(0F, 0F, 0F);
 		Shape1.setTextureSize(64, 32);
 		Shape1.mirror = true;
 		setRotation(Shape1, 0F, 0F, 0F);
@@ -90,44 +91,44 @@ public class ModelBrassWings extends ModelBiped
 		Shape5.setTextureSize(64, 32);
 		Shape5.mirror = true;
 		setRotation(Shape5, 0F, 0F, 0.4363323F);
-		//Shape8.mirror = true;
+		// Shape8.mirror = true;
 		Shape8 = new ModelRenderer(this, 0, 6);
 		Shape8.addBox(0F, 0F, 0F, 1, 6, 1);
 		Shape8.setRotationPoint(-5F, -0.8F, 2.5F);
 		Shape8.setTextureSize(64, 32);
 		Shape8.mirror = true;
 		setRotation(Shape8, 0F, 0F, 0F);
-		//Shape8.mirror = false;
-		//Shape9.mirror = true;
+		// Shape8.mirror = false;
+		// Shape9.mirror = true;
 		Shape9 = new ModelRenderer(this, 20, 0);
 		Shape9.addBox(-4F, 0F, 0F, 4, 1, 1);
 		Shape9.setRotationPoint(-4F, -1F, 2.5F);
 		Shape9.setTextureSize(64, 32);
 		Shape9.mirror = true;
 		setRotation(Shape9, 0F, 0F, 0.1745329F);
-		//Shape9.mirror = false;
-		//Shape10.mirror = true;
+		// Shape9.mirror = false;
+		// Shape10.mirror = true;
 		Shape10 = new ModelRenderer(this, 32, 0);
 		Shape10.addBox(0F, 0F, 0F, 4, 10, 0);
 		Shape10.setRotationPoint(4F, -1F, 3F);
 		Shape10.setTextureSize(64, 32);
 		Shape10.mirror = true;
 		setRotation(Shape10, 0F, 0F, 0F);
-		//Shape10.mirror = false;
+		// Shape10.mirror = false;
 		Shape11 = new ModelRenderer(this, 32, 0);
 		Shape11.addBox(0F, 0F, 0F, 4, 10, 0);
 		Shape11.setRotationPoint(-8F, -1F, 3F);
 		Shape11.setTextureSize(64, 32);
 		Shape11.mirror = true;
 		setRotation(Shape11, 0F, 0F, 0F);
-		//Shape12.mirror = true;
+		// Shape12.mirror = true;
 		Shape12 = new ModelRenderer(this, 6, 10);
 		Shape12.addBox(0F, 0F, 0F, 3, 3, 0);
 		Shape12.setRotationPoint(4F, 9F, 3F);
 		Shape12.setTextureSize(64, 32);
 		Shape12.mirror = true;
 		setRotation(Shape12, 0F, 0F, 0F);
-		//Shape12.mirror = false;
+		// Shape12.mirror = false;
 		Shape13 = new ModelRenderer(this, 6, 10);
 		Shape13.addBox(0F, 0F, 0F, 3, 3, 0);
 		Shape13.setRotationPoint(-7F, 9F, 3F);
@@ -140,56 +141,58 @@ public class ModelBrassWings extends ModelBiped
 		Shape15.setTextureSize(64, 32);
 		Shape15.mirror = true;
 		setRotation(Shape15, 0F, 0F, 0F);
-		//Shape14.mirror = true;
+		// Shape14.mirror = true;
 		Shape14 = new ModelRenderer(this, 20, 6);
 		Shape14.addBox(0F, 0F, 0F, 2, 2, 0);
 		Shape14.setRotationPoint(-6F, 12F, 3F);
 		Shape14.setTextureSize(64, 32);
 		Shape14.mirror = true;
 		setRotation(Shape14, 0F, 0F, 0F);
-		//Shape14.mirror = false;
+		// Shape14.mirror = false;
 
-		this.bipedBody.addChild(Shape1);
-		this.bipedBody.addChild(Shape2);
-		this.bipedBody.addChild(Shape3);
-		this.bipedBody.addChild(Shape6);
-		this.bipedBody.addChild(Shape7);
-		this.bipedBody.addChild(Shape4);
-		this.bipedBody.addChild(Shape5);
-		this.bipedBody.addChild(Shape8);
-		this.bipedBody.addChild(Shape9);
-		this.bipedBody.addChild(Shape10);
-		this.bipedBody.addChild(Shape11);
-		this.bipedBody.addChild(Shape12);
-		this.bipedBody.addChild(Shape13);
-		this.bipedBody.addChild(Shape15);
-		this.bipedBody.addChild(Shape14);
+		bipedBody.addChild(Shape1);
+		bipedBody.addChild(Shape2);
+		bipedBody.addChild(Shape3);
+		bipedBody.addChild(Shape6);
+		bipedBody.addChild(Shape7);
+		bipedBody.addChild(Shape4);
+		bipedBody.addChild(Shape5);
+		bipedBody.addChild(Shape8);
+		bipedBody.addChild(Shape9);
+		bipedBody.addChild(Shape10);
+		bipedBody.addChild(Shape11);
+		bipedBody.addChild(Shape12);
+		bipedBody.addChild(Shape13);
+		bipedBody.addChild(Shape15);
+		bipedBody.addChild(Shape14);
 	}
 
 	@Override
-	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5)
+	public void render(final Entity entity, final float f, final float f1,
+			final float f2, final float f3, final float f4, final float f5)
 	{
 		super.render(entity, f, f1, f2, f3, f4, f5);
-		this.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
-		//Shape1.render(f5);
-		//Shape2.render(f5);
-		//Shape3.render(f5);
-		//Shape6.render(f5);
-		//Shape7.render(f5);
-		//Shape4.render(f5);
-		//Shape5.render(f5);
-		//Shape8.render(f5);
-		//Shape9.render(f5);
-		//Shape10.render(f5);
-		//Shape11.render(f5);
-		//Shape12.render(f5);
-		//Shape13.render(f5);
-		//Shape15.render(f5);
-		//Shape14.render(f5);
+		setRotationAngles(f, f1, f2, f3, f4, f5, entity);
+		// Shape1.render(f5);
+		// Shape2.render(f5);
+		// Shape3.render(f5);
+		// Shape6.render(f5);
+		// Shape7.render(f5);
+		// Shape4.render(f5);
+		// Shape5.render(f5);
+		// Shape8.render(f5);
+		// Shape9.render(f5);
+		// Shape10.render(f5);
+		// Shape11.render(f5);
+		// Shape12.render(f5);
+		// Shape13.render(f5);
+		// Shape15.render(f5);
+		// Shape14.render(f5);
 	}
 
 	// Techne method
-	private void setRotation(ModelRenderer model, float x, float y, float z)
+	private void setRotation(final ModelRenderer model, final float x,
+			final float y, final float z)
 	{
 		model.rotateAngleX = x;
 		model.rotateAngleY = y;
@@ -197,7 +200,9 @@ public class ModelBrassWings extends ModelBiped
 	}
 
 	@Override
-	public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity entity)
+	public void setRotationAngles(final float f, final float f1,
+			final float f2, final float f3, final float f4, final float f5,
+			final Entity entity)
 	{
 		super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
 	}

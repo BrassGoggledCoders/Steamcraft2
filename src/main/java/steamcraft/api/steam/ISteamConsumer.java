@@ -15,7 +15,7 @@ package steamcraft.api.steam;
 
 /**
  * @author Surseance (Johnny Eatmon)
- *
+ * 
  */
 public abstract interface ISteamConsumer
 {

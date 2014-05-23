@@ -22,11 +22,13 @@ import net.minecraft.network.Packet;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class Utils {
-	public static void sparkle(World world, int x, int y, int z, String particleName)
+public class Utils
+{
+	public static void sparkle(final World world, final int x, final int y,
+			final int z, final String particleName)
 	{
-		Random random = world.rand;
-		double offset = 0.0625D;
+		final Random random = world.rand;
+		final double offset = 0.0625D;
 
 		for (int amount = 0; amount < 6; amount++)
 		{
@@ -34,54 +36,67 @@ public class Utils {
 			double dy = y + random.nextFloat();
 			double dz = z + random.nextFloat();
 
-			if ((amount == 0) && (!world.isBlockNormalCubeDefault(x, y + 1, z, false)))
+			if ((amount == 0)
+					&& (!world.isBlockNormalCubeDefault(x, y + 1, z, false)))
 			{
 				dy = y + 1 + offset;
 			}
-			
-			if ((amount == 1) && (!world.isBlockNormalCubeDefault(x, y - 1, z, false)))
+
+			if ((amount == 1)
+					&& (!world.isBlockNormalCubeDefault(x, y - 1, z, false)))
 			{
 				dy = y + 0 - offset;
 			}
-			
-			if ((amount == 2) && (!world.isBlockNormalCubeDefault(x, y, z + 1, false)))
+
+			if ((amount == 2)
+					&& (!world.isBlockNormalCubeDefault(x, y, z + 1, false)))
 			{
 				dz = z + 1 + offset;
 			}
-			
-			if ((amount == 3) && (!world.isBlockNormalCubeDefault(x, y, z - 1, false)))
+
+			if ((amount == 3)
+					&& (!world.isBlockNormalCubeDefault(x, y, z - 1, false)))
 			{
 				dz = z + 0 - offset;
 			}
-			
-			if ((amount == 4) && (!world.isBlockNormalCubeDefault(x + 1, y, z, false)))
+
+			if ((amount == 4)
+					&& (!world.isBlockNormalCubeDefault(x + 1, y, z, false)))
 			{
 				dx = x + 1 + offset;
 			}
-			
-			if ((amount == 5) && (!world.isBlockNormalCubeDefault(x - 1, y, z, false)))
+
+			if ((amount == 5)
+					&& (!world.isBlockNormalCubeDefault(x - 1, y, z, false)))
 			{
 				dx = x + 0 - offset;
 			}
-			
-			if ((dx < x) || (dx > x + 1) || (dy < 0.0D) || (dy > y + 1) || (dz < z) || (dz > z + 1))
+
+			if ((dx < x) || (dx > x + 1) || (dy < 0.0D) || (dy > y + 1)
+					|| (dz < z) || (dz > z + 1))
 			{
-				world.spawnParticle(particleName, dx, dy, dz, -1.0D, 1.0D, -1.0D);
-				//Steamcraft.proxy.smokeFX(world, dx, dy, dz, FXSmoke.class);
+				world.spawnParticle(particleName, dx, dy, dz, -1.0D, 1.0D,
+						-1.0D);
+				// Steamcraft.proxy.smokeFX(world, dx, dy, dz, FXSmoke.class);
 			}
 		}
 	}
-	
-	public static Material getBlockMaterial(IBlockAccess world, int x, int y, int z)
+
+	public static Material getBlockMaterial(final IBlockAccess world,
+			final int x, final int y, final int z)
 	{
 		if (world.getBlock(x, y, z) != null)
+		{
 			return world.getBlock(x, y, z).getMaterial();
-		
+		}
+
 		return Material.air;
 	}
-	public static void sendToPlayers(Packet packet, World world, int x, int y, int z, Integer maxDistance) 
+
+	public static void sendToPlayers(final Packet packet, final World world,
+			final int x, final int y, final int z, Integer maxDistance)
 	{
-		if (maxDistance == null) 
+		if (maxDistance == null)
 		{
 			maxDistance = Integer.valueOf(128);
 		}
@@ -90,15 +105,19 @@ public class Utils {
 
 		if (packet != null)
 		{
-			for (iterator = world.playerEntities.iterator(); iterator.hasNext();) 
-			{ 
-				Object player = iterator.next();
-				EntityPlayerMP playerMP = (EntityPlayerMP)player;
+			for (iterator = world.playerEntities.iterator(); iterator.hasNext();)
+			{
+				final Object player = iterator.next();
+				final EntityPlayerMP playerMP = (EntityPlayerMP) player;
 
-				if ((Math.abs(playerMP.posX - x) <= maxDistance.intValue()) && (Math.abs(playerMP.posY - y) <= maxDistance.intValue()) && (Math.abs(playerMP.posZ - z) <= maxDistance.intValue())) 
+				if ((Math.abs(playerMP.posX - x) <= maxDistance.intValue())
+						&& (Math.abs(playerMP.posY - y) <= maxDistance
+								.intValue())
+						&& (Math.abs(playerMP.posZ - z) <= maxDistance
+								.intValue()))
 				{
 					playerMP.playerNetServerHandler.sendPacket(packet);
-				}	
+				}
 			}
 		}
 	}

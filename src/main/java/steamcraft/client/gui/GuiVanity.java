@@ -28,60 +28,74 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 @SideOnly(Side.CLIENT)
 public class GuiVanity extends GuiContainer
 {
-	/** x size of the inventory window in pixels. Defined as float, passed as int */
+	/**
+	 * x size of the inventory window in pixels. Defined as float, passed as int
+	 */
 	private float xSize_lo;
 
-	/** y size of the inventory window in pixels. Defined as float, passed as int. */
+	/**
+	 * y size of the inventory window in pixels. Defined as float, passed as
+	 * int.
+	 */
 	private float ySize_lo;
 
-	private static final ResourceLocation iconLocation = new ResourceLocation(LibInfo.PREFIX + "textures/gui/vanity.png");
+	private static final ResourceLocation iconLocation = new ResourceLocation(
+			LibInfo.PREFIX + "textures/gui/vanity.png");
 
 	private final InventoryVanity inventory;
 
-	public GuiVanity(EntityPlayer player, InventoryPlayer inventoryPlayer, InventoryVanity inventoryCustom)
+	public GuiVanity(final EntityPlayer player,
+			final InventoryPlayer inventoryPlayer,
+			final InventoryVanity inventoryCustom)
 	{
 		super(new ContainerVanity(player, inventoryPlayer, inventoryCustom));
-		this.inventory = inventoryCustom;
+		inventory = inventoryCustom;
 	}
 
 	/**
 	 * Draws the screen and all the components in it.
 	 */
 	@Override
-	public void drawScreen(int x, int y, float scale)
+	public void drawScreen(final int x, final int y, final float scale)
 	{
 		super.drawScreen(x, y, scale);
-		this.xSize_lo = x;
-		this.ySize_lo = y;
+		xSize_lo = x;
+		ySize_lo = y;
 	}
 
 	/**
-	 * Draw the foreground layer for the GuiContainer (everything in front of the items)
+	 * Draw the foreground layer for the GuiContainer (everything in front of
+	 * the items)
 	 */
 	@Override
-	protected void drawGuiContainerForegroundLayer(int x, int y)
+	protected void drawGuiContainerForegroundLayer(final int x, final int y)
 	{
-		String s = this.inventory.getInventoryName();
-		this.fontRendererObj.drawString(s, this.xSize - this.fontRendererObj.getStringWidth(s) - 8, 5, 4210752);
-		this.fontRendererObj.drawString("container.inventory", 120, this.ySize - 92, 4210752); // TODO: Something happened here
-		this.fontRendererObj.drawString("Thanks, coolAlias!", this.xSize + 35, this.ySize + 34, 2000);
+		final String s = inventory.getInventoryName();
+		fontRendererObj.drawString(s, xSize - fontRendererObj.getStringWidth(s)
+				- 8, 5, 4210752);
+		fontRendererObj.drawString("container.inventory", 120, ySize - 92,
+				4210752); // TODO: Something happened here
+		fontRendererObj.drawString("Thanks, coolAlias!", xSize + 35,
+				ySize + 34, 2000);
 	}
 
 	/**
-	 * Draw the background layer for the GuiContainer (everything behind the items)
+	 * Draw the background layer for the GuiContainer (everything behind the
+	 * items)
 	 */
 	@Override
-	protected void drawGuiContainerBackgroundLayer(float scale, int par2, int par3)
+	protected void drawGuiContainerBackgroundLayer(final float scale,
+			final int par2, final int par3)
 	{
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-		this.mc.getTextureManager().bindTexture(iconLocation);
-		int x = (this.width - this.xSize) / 2;
-		int y = (this.height - this.ySize) / 2;
-		this.drawTexturedModalRect(x, y, 0, 0, this.xSize, this.ySize);
+		mc.getTextureManager().bindTexture(iconLocation);
+		final int x = (width - xSize) / 2;
+		final int y = (height - ySize) / 2;
+		drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
 	}
 }

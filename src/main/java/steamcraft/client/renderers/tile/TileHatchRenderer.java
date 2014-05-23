@@ -24,28 +24,31 @@ import steamcraft.common.lib.LibInfo;
 
 /**
  * @author warlordjones
- *
+ * 
  */
-public class TileHatchRenderer extends TileEntitySpecialRenderer{
-    private final ModelHatch model;
+public class TileHatchRenderer extends TileEntitySpecialRenderer
+{
+	private final ModelHatch model;
 
-    public TileHatchRenderer()
-    {
-        this.model = new ModelHatch();
-    }
+	public TileHatchRenderer()
+	{
+		model = new ModelHatch();
+	}
 
-    @Override
-    public void renderTileEntityAt(TileEntity te, double dx, double dy, double dz, float scale)
-    {
-        GL11.glPushMatrix();
-        GL11.glTranslatef((float) dx + 0.5F, (float) dy, (float) dz + 0.5F);
-        ResourceLocation hatch = (new ResourceLocation(LibInfo.PREFIX + "textures/models/modelHatch.png"));
-        Minecraft.getMinecraft().renderEngine.bindTexture(hatch);
-        GL11.glPushMatrix();
-        GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
-        this.model.render(0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
-        GL11.glPopMatrix();
-        GL11.glPopMatrix();
-    }
+	@Override
+	public void renderTileEntityAt(final TileEntity te, final double dx,
+			final double dy, final double dz, final float scale)
+	{
+		GL11.glPushMatrix();
+		GL11.glTranslatef((float) dx + 0.5F, (float) dy, (float) dz + 0.5F);
+		final ResourceLocation hatch = (new ResourceLocation(LibInfo.PREFIX
+				+ "textures/models/modelHatch.png"));
+		Minecraft.getMinecraft().renderEngine.bindTexture(hatch);
+		GL11.glPushMatrix();
+		GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
+		model.render(0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
+		GL11.glPopMatrix();
+		GL11.glPopMatrix();
+	}
 
 }

@@ -38,7 +38,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 /**
  * @author Surseance (Johnny Eatmon)
- *
+ * 
  */
 public class ConfigBlocks
 {
@@ -55,12 +55,12 @@ public class ConfigBlocks
 	public static Block blockHatch;
 
 	public static Block blockSteamPipe;
-    
+
 	public static Block blockLampI;
 	public static Block blockLampA;
 	public static Block blockTeaPlant;
 	public static Block blockSmog;
-    
+
 	public static Block blockFluidSteam;
 	public static Block blockSlate;
 
@@ -70,14 +70,19 @@ public class ConfigBlocks
 
 	public static Block blockSteam;
 
-    public static BlockStairs blockObsidianTileStairs;
+	public static BlockStairs blockObsidianTileStairs;
 
-    public static int blockCrystalRI = RenderingRegistry.getNextAvailableRenderId();
-    public static int blockCastIronLampRI = RenderingRegistry.getNextAvailableRenderId();
-    public static int blockLightningRodRI = RenderingRegistry.getNextAvailableRenderId();
-    public static int blockSmogRI = RenderingRegistry.getNextAvailableRenderId();
-    public static int blockHatchRI = RenderingRegistry.getNextAvailableRenderId();
-    
+	public static int blockCrystalRI = RenderingRegistry
+			.getNextAvailableRenderId();
+	public static int blockCastIronLampRI = RenderingRegistry
+			.getNextAvailableRenderId();
+	public static int blockLightningRodRI = RenderingRegistry
+			.getNextAvailableRenderId();
+	public static int blockSmogRI = RenderingRegistry
+			.getNextAvailableRenderId();
+	public static int blockHatchRI = RenderingRegistry
+			.getNextAvailableRenderId();
+
 	public static void init()
 	{
 		initializeBlocks();
@@ -88,42 +93,60 @@ public class ConfigBlocks
 	public static void initializeBlocks()
 	{
 		blockCustomOre = new BlockCustomOre().setBlockName("blockCustomOre");
-		blockCosmetic = new BlockCosmeticSolid().setBlockName("blockCosmeticSolid");
-		blockEngraved = new BlockEngravedSolid().setBlockName("blockEngravedSolid");
-		blockCastIronFence = new BlockCastIronFence().setBlockName("blockCastIronFence");
-		blockCastIronGate = new BlockCastIronGate().setBlockName("blockCastIronGate");
+		blockCosmetic = new BlockCosmeticSolid()
+				.setBlockName("blockCosmeticSolid");
+		blockEngraved = new BlockEngravedSolid()
+				.setBlockName("blockEngravedSolid");
+		blockCastIronFence = new BlockCastIronFence()
+				.setBlockName("blockCastIronFence");
+		blockCastIronGate = new BlockCastIronGate()
+				.setBlockName("blockCastIronGate");
 		blockCrystal = new BlockCrystal().setBlockName("blockCrystal");
-		blockCastIronLampI = new BlockCastIronLamp(false).setBlockName("blockCastIronLampOff");
-		blockCastIronLampA = new BlockCastIronLamp(true).setBlockName("blockCastIronLampOn");
-		blockSteamBoiler = new BlockSteamBoiler().setBlockName("blockSteamBoiler");
+		blockCastIronLampI = new BlockCastIronLamp(false)
+				.setBlockName("blockCastIronLampOff");
+		blockCastIronLampA = new BlockCastIronLamp(true)
+				.setBlockName("blockCastIronLampOn");
+		blockSteamBoiler = new BlockSteamBoiler()
+				.setBlockName("blockSteamBoiler");
 		blockMetal = new BlockMetal().setBlockName("blockMetal");
 
-		//blockFluidSteam = new BlockFluidSteam(steamFluid, Material.water);
-		//Fluid steamFluid = new Fluid("steam").setGaseous(true).setTemperature(700).setDensity(-100).setViscosity(500).setLuminosity(1);
-		//FluidRegistry.registerFluid(steamFluid);
+		// blockFluidSteam = new BlockFluidSteam(steamFluid, Material.water);
+		// Fluid steamFluid = new
+		// Fluid("steam").setGaseous(true).setTemperature(700).setDensity(-100).setViscosity(500).setLuminosity(1);
+		// FluidRegistry.registerFluid(steamFluid);
 	}
 
 	public static void registerBlocks()
 	{
-        GameRegistry.registerBlock(blockCustomOre, BlockCustomOreItem.class, "BlockCustomOre"); // If you want different hardness/resistances/light values,
-        GameRegistry.registerBlock(blockCosmetic, BlockCosmeticSolidItem.class, "BlockCosmeticSolid"); // then use the actual methods and check by metadata;
-        GameRegistry.registerBlock(blockEngraved, BlockEngravedSolidItem.class, "BlockEngravedSolid"); // same goes for this too
-        GameRegistry.registerBlock(blockCastIronFence, "BlockCastIronFence");
-        GameRegistry.registerBlock(blockCastIronGate, "BlockCastIronGate");
-        GameRegistry.registerBlock(blockCrystal, "BlockCrystal");
-        //GameRegistry.registerBlock(blockCastIronLampI, "BlockCastIronLampI");
-        //GameRegistry.registerBlock(blockCastIronLampA, "BlockCastIronLampA");
-        //GameRegistry.registerBlock(blockFluidSteam, "BlockFluidSteam");
-        GameRegistry.registerBlock(blockSteamBoiler, "BlockSteamBoiler");
-        GameRegistry.registerBlock(blockMetal, BlockMetalItem.class,"BlockMetal");
-        //GameRegistry.registerBlock(blockHatch, "BlockHatch");
-        //GameRegistry.registerBlock(blockSlate, BlockSlateItem.class,"BlockSlate");
-    }
-	
+		GameRegistry.registerBlock(blockCustomOre, BlockCustomOreItem.class,
+				"BlockCustomOre"); // If you want different
+									// hardness/resistances/light values,
+		GameRegistry.registerBlock(blockCosmetic, BlockCosmeticSolidItem.class,
+				"BlockCosmeticSolid"); // then use the actual methods and check
+										// by metadata;
+		GameRegistry.registerBlock(blockEngraved, BlockEngravedSolidItem.class,
+				"BlockEngravedSolid"); // same goes for this too
+		GameRegistry.registerBlock(blockCastIronFence, "BlockCastIronFence");
+		GameRegistry.registerBlock(blockCastIronGate, "BlockCastIronGate");
+		GameRegistry.registerBlock(blockCrystal, "BlockCrystal");
+		// GameRegistry.registerBlock(blockCastIronLampI, "BlockCastIronLampI");
+		// GameRegistry.registerBlock(blockCastIronLampA, "BlockCastIronLampA");
+		// GameRegistry.registerBlock(blockFluidSteam, "BlockFluidSteam");
+		GameRegistry.registerBlock(blockSteamBoiler, "BlockSteamBoiler");
+		GameRegistry.registerBlock(blockMetal, BlockMetalItem.class,
+				"BlockMetal");
+		// GameRegistry.registerBlock(blockHatch, "BlockHatch");
+		// GameRegistry.registerBlock(blockSlate,
+		// BlockSlateItem.class,"BlockSlate");
+	}
+
 	private static void registerTileEntities()
 	{
-        GameRegistry.registerTileEntity(TileCrystal.class, LibInfo.ID + "TECrystal");
-        GameRegistry.registerTileEntity(TileHatch.class, LibInfo.ID + "TEHatch");
-        GameRegistry.registerTileEntity(TileSteamBoiler.class, LibInfo.ID + "TESteamBoiler");
+		GameRegistry.registerTileEntity(TileCrystal.class, LibInfo.ID
+				+ "TECrystal");
+		GameRegistry
+				.registerTileEntity(TileHatch.class, LibInfo.ID + "TEHatch");
+		GameRegistry.registerTileEntity(TileSteamBoiler.class, LibInfo.ID
+				+ "TESteamBoiler");
 	}
 }

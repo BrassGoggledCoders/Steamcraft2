@@ -19,93 +19,101 @@ import net.minecraft.world.World;
 
 /**
  * @author Surseance (Johnny Eatmon)
- *
+ * 
  */
 public class FXLaser extends EntityReddustFX
 {
 	private int part;
 
-	public FXLaser(World world, double dx, double dy, double dz, float r, float g, float b, int movX, int movY, int movZ, int part) 
+	public FXLaser(final World world, final double dx, final double dy,
+			final double dz, final float r, final float g, final float b,
+			final int movX, final int movY, final int movZ, final int part)
 	{
 		super(world, dx, dy, dz, 0.5F, r, g, b);
-		this.motionX = 0.04F;
-		this.motionZ = 0.04F;
-		this.motionY = 0.04F;
-		this.motionX *= movX;
-		this.motionZ *= movZ;
-		this.motionY *= movY;
+		motionX = 0.04F;
+		motionZ = 0.04F;
+		motionY = 0.04F;
+		motionX *= movX;
+		motionZ *= movZ;
+		motionY *= movY;
 		this.part = part;
-		this.noClip = true;
+		noClip = true;
 	}
 
-	public FXLaser(World world, double dx, double dy, double dz, float r, float g, float b, float scale) 
+	public FXLaser(final World world, final double dx, final double dy,
+			final double dz, final float r, final float g, final float b,
+			final float scale)
 	{
 		super(world, dx, dy, dz, r, g, b, scale);
 	}
 
 	@Override
-	public void renderParticle(Tessellator tessellator, float par2, float par3, float par4, float par5, float par6, float par7)
+	public void renderParticle(final Tessellator tessellator, final float par2,
+			final float par3, final float par4, final float par5,
+			final float par6, final float par7)
 	{
 		super.renderParticle(tessellator, par2, par3, par4, par5, par6, par7);
 	}
 
 	@Override
-	public void onUpdate() 
+	public void onUpdate()
 	{
-		this.prevPosX = this.posX;
-		this.prevPosY = this.posY;
-		this.prevPosZ = this.posZ;
+		prevPosX = posX;
+		prevPosY = posY;
+		prevPosZ = posZ;
 
-		if (this.particleAge++ >= this.particleMaxAge) 
+		if (particleAge++ >= particleMaxAge)
 		{
 			setDead();
 		}
 
-		this.setParticleTextureIndex(7 - (this.particleAge * 8) / this.particleMaxAge);
+		setParticleTextureIndex(7 - (particleAge * 8) / particleMaxAge);
 
-		if (!this.isDead) 
-			moveEntity(this.motionX, this.motionY, this.motionZ);
+		if (!isDead)
+		{
+			moveEntity(motionX, motionY, motionZ);
+		}
 
 		// motionX *= 0.95999997854232788D;
 		// motionZ *= 0.95999997854232788D;
 
-		if (this.part == 1) 
+		if (part == 1)
 		{
-			if (this.motionX > 0 && this.posX - Math.floor(this.posX) > 0.45F) 
+			if (motionX > 0 && posX - Math.floor(posX) > 0.45F)
 			{
-				this.setDead();
+				setDead();
 			}
-			if (this.motionX < 0 && this.posX - Math.floor(this.posX) < 0.55F) 
+			if (motionX < 0 && posX - Math.floor(posX) < 0.55F)
 			{
-				this.setDead();
+				setDead();
 			}
-			if (this.motionY > 0 && this.posY - Math.floor(this.posY) > 0.45F) 
+			if (motionY > 0 && posY - Math.floor(posY) > 0.45F)
 			{
-				this.setDead();
+				setDead();
 			}
-			if (this.motionY < 0 && this.posY - Math.floor(this.posY) < 0.55F)
+			if (motionY < 0 && posY - Math.floor(posY) < 0.55F)
 			{
-				this.setDead();
+				setDead();
 			}
-			if (this.motionZ > 0 && this.posZ - Math.floor(this.posZ) > 0.45F)
+			if (motionZ > 0 && posZ - Math.floor(posZ) > 0.45F)
 			{
-				this.setDead();
+				setDead();
 			}
-			if (this.motionZ < 0 && this.posZ - Math.floor(this.posZ) < 0.55F) 
+			if (motionZ < 0 && posZ - Math.floor(posZ) < 0.55F)
 			{
-				this.setDead();
+				setDead();
 			}
 		}
 	}
 
 	@Override
-	public int getBrightnessForRender(float f) 
+	public int getBrightnessForRender(final float f)
 	{
 		return 0xf000f0;
 	}
 
 	@Override
-	public float getBrightness(float f) 
+	public float getBrightness(final float f)
 	{
 		return 0.9F;
 	}

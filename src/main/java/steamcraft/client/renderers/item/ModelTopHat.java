@@ -21,7 +21,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author Surseance (Johnny Eatmon) & Falkok15
- *
+ * 
  */
 @SideOnly(Side.CLIENT)
 public class ModelTopHat extends ModelBiped
@@ -29,39 +29,41 @@ public class ModelTopHat extends ModelBiped
 	ModelRenderer Shape1;
 	ModelRenderer Shape2;
 
-	public ModelTopHat(float f)
+	public ModelTopHat(final float f)
 	{
 		super(f, 0, 64, 32);
-		//textureWidth = 64;
-		//textureHeight = 32;
+		// textureWidth = 64;
+		// textureHeight = 32;
 		Shape1 = new ModelRenderer(this, 0, 0);
 		Shape1.addBox(0F, 0F, 0F, 11, 1, 11);
 		Shape1.setRotationPoint(-5.5F, -9F, -5.5F);
 		Shape1.setTextureSize(64, 32);
 		Shape1.mirror = true;
-		this.setRotation(Shape1, 0F, 0F, 0F);
+		setRotation(Shape1, 0F, 0F, 0F);
 		Shape2 = new ModelRenderer(this, 0, 14);
 		Shape2.addBox(0F, 0F, 0F, 9, 8, 9);
 		Shape2.setRotationPoint(-4.5F, -17F, -4.5F);
 		Shape2.setTextureSize(64, 32);
 		Shape2.mirror = true;
-		this.setRotation(Shape2, 0F, 0F, 0F);
-		
-		this.bipedHead.addChild(Shape1);
-		this.bipedHead.addChild(Shape2);
+		setRotation(Shape2, 0F, 0F, 0F);
+
+		bipedHead.addChild(Shape1);
+		bipedHead.addChild(Shape2);
 	}
 
 	@Override
-	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5)
+	public void render(final Entity entity, final float f, final float f1,
+			final float f2, final float f3, final float f4, final float f5)
 	{
 		super.render(entity, f, f1, f2, f3, f4, f5);
-		this.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
-		//Shape1.render(f5);
-		//Shape2.render(f5);
+		setRotationAngles(f, f1, f2, f3, f4, f5, entity);
+		// Shape1.render(f5);
+		// Shape2.render(f5);
 	}
 
 	// Techne method
-	private void setRotation(ModelRenderer model, float x, float y, float z)
+	private void setRotation(final ModelRenderer model, final float x,
+			final float y, final float z)
 	{
 		model.rotateAngleX = x;
 		model.rotateAngleY = y;
@@ -69,7 +71,9 @@ public class ModelTopHat extends ModelBiped
 	}
 
 	@Override
-	public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity entity)
+	public void setRotationAngles(final float f, final float f1,
+			final float f2, final float f3, final float f4, final float f5,
+			final Entity entity)
 	{
 		super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
 	}

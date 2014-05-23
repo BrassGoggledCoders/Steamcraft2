@@ -22,26 +22,28 @@ import com.mojang.authlib.GameProfile;
 
 /**
  * @author Surseance (Johnny Eatmon)
- *
+ * 
  */
 public class FakeSteamcraftPlayer extends EntityPlayer
 {
-	public FakeSteamcraftPlayer(World world, GameProfile profile)
+	public FakeSteamcraftPlayer(final World world, final GameProfile profile)
 	{
 		super(world, profile);
 	}
 
 	@Override
-	public void addChatMessage(IChatComponent chat) {}
-	
+	public void addChatMessage(final IChatComponent chat)
+	{
+	}
+
 	@Override
-	public boolean canCommandSenderUseCommand(int i, String s) 
+	public boolean canCommandSenderUseCommand(final int i, final String s)
 	{
 		return false;
 	}
 
 	@Override
-	public ChunkCoordinates getPlayerCoordinates() 
+	public ChunkCoordinates getPlayerCoordinates()
 	{
 		return null;
 	}

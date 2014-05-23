@@ -27,36 +27,33 @@ public class ItemMechanical extends Item
 {
 	/*
 	 * 
-	public static Item brassWatch;
-	public static Item canisterSteam;
-	public static Item canisterGas;
-	public static Item steamCanister;
-	public static Item gasCanister;
-    public static Item emptyCanister;
+	 * public static Item brassWatch; public static Item canisterSteam; public
+	 * static Item canisterGas; public static Item steamCanister; public static
+	 * Item gasCanister; public static Item emptyCanister;
 	 */
-	
-    public IIcon[] icon = new IIcon[6];
 
-    @Override
-    @SideOnly(Side.CLIENT)
-    public IIcon getIconFromDamage(int itemDamage)
-    {
-        return this.icon[itemDamage];
-    }
+	public IIcon[] icon = new IIcon[6];
 
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void registerIcons(IIconRegister ir)
-    {
+	@Override
+	@SideOnly(Side.CLIENT)
+	public IIcon getIconFromDamage(final int itemDamage)
+	{
+		return icon[itemDamage];
+	}
 
-    }
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void registerIcons(final IIconRegister ir)
+	{
 
-    public ItemMechanical()
-    {
-    	super();
-        this.setMaxStackSize(64);
-        this.setHasSubtypes(true);
-        this.setMaxDamage(0);
-        this.setCreativeTab(Steamcraft.tabSC2);
-    }
+	}
+
+	public ItemMechanical()
+	{
+		super();
+		setMaxStackSize(64);
+		setHasSubtypes(true);
+		setMaxDamage(0);
+		setCreativeTab(Steamcraft.tabSC2);
+	}
 }

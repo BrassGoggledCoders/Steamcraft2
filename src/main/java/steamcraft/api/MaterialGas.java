@@ -19,36 +19,36 @@ import net.minecraft.block.material.MaterialLiquid;
 
 /**
  * @author Surseance (Johnny Eatmon)
- *
+ * 
  */
 public class MaterialGas extends MaterialLiquid
 {
-	private boolean canBurn;
-	
-	public MaterialGas(boolean canBurn)
+	private final boolean canBurn;
+
+	public MaterialGas(final boolean canBurn)
 	{
 		super(MapColor.airColor);
 		this.canBurn = canBurn;
-	}	
-	
+	}
+
 	@Override
 	public Material setRequiresTool()
 	{
 		return Material.air;
 	}
-	
+
 	@Override
 	public boolean getCanBurn()
 	{
-		return this.canBurn;
+		return canBurn;
 	}
-	
+
 	@Override
 	public boolean isReplaceable()
 	{
 		return true;
 	}
-	
+
 	@Override
 	public boolean isOpaque()
 	{

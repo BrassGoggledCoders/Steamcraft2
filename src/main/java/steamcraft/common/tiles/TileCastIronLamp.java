@@ -17,9 +17,11 @@ import net.minecraft.tileentity.TileEntity;
 
 /**
  * @author Surseance (Johnny Eatmon)
- *
+ * 
  */
 public class TileCastIronLamp extends TileEntity
 {
-	public TileCastIronLamp() {}
+	public TileCastIronLamp()
+	{
+	}
 }

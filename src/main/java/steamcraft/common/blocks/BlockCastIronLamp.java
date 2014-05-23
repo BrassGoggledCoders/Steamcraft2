@@ -34,61 +34,64 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author Surseance (Johnny Eatmon)
- *
+ * 
  */
 public class BlockCastIronLamp extends BlockContainer
 {
 	public boolean powered;
 	private static List torchUpdates = new ArrayList();
 	public static Block instance;
- 
-	public BlockCastIronLamp(boolean flag)
+
+	public BlockCastIronLamp(final boolean flag)
 	{
 		super(Material.circuits);
-		this.setHardness(0.0F);
-		this.setResistance(7.5F);
-		this.powered = flag;
-		this.setTickRandomly(true);
-		this.disableStats();
-		float f = 0.25F;
-		this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, 1.0F, 0.5F + f);
-		this.setCreativeTab(Steamcraft.tabSC2);
+		setHardness(0.0F);
+		setResistance(7.5F);
+		powered = flag;
+		setTickRandomly(true);
+		disableStats();
+		final float f = 0.25F;
+		setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, 1.0F, 0.5F + f);
+		setCreativeTab(Steamcraft.tabSC2);
 
 		if (flag)
 		{
-			this.setLightLevel(1.0F);
-			this.setCreativeTab((CreativeTabs)null);
+			setLightLevel(1.0F);
+			setCreativeTab((CreativeTabs) null);
 		}
 	}
-	
+
 	@Override
-	public TileEntity createNewTileEntity(World world, int metadata)
+	public TileEntity createNewTileEntity(final World world, final int metadata)
 	{
 		return new TileCastIronLamp();
 	}
 
 	@Override
-	public boolean shouldSideBeRendered(IBlockAccess world, int x, int y, int z, int side)
+	public boolean shouldSideBeRendered(final IBlockAccess world, final int x,
+			final int y, final int z, final int side)
 	{
 		return false;
 	}
 
 	@Override
-	public int tickRate(World world)
+	public int tickRate(final World world)
 	{
 		return 10;
 	}
 
 	@Override
-	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z)
+	public AxisAlignedBB getCollisionBoundingBoxFromPool(final World world,
+			final int x, final int y, final int z)
 	{
 		return null;
 	}
 
 	@Override
-	public AxisAlignedBB getSelectedBoundingBoxFromPool(World world, int x, int y, int z)
+	public AxisAlignedBB getSelectedBoundingBoxFromPool(final World world,
+			final int x, final int y, final int z)
 	{
-		this.setBlockBoundsBasedOnState(world, x, y, z);
+		setBlockBoundsBasedOnState(world, x, y, z);
 		return super.getSelectedBoundingBoxFromPool(world, x, y, z);
 	}
 
@@ -111,7 +114,9 @@ public class BlockCastIronLamp extends BlockContainer
 	}
 
 	@Override
-	public int onBlockPlaced(World world, int i, int j, int k, int side, float hitX, float hitY, float hitZ, int metadata)
+	public int onBlockPlaced(final World world, final int i, final int j,
+			final int k, final int side, final float hitX, final float hitY,
+			final float hitZ, final int metadata)
 	{
 		if (side == 0)
 		{
@@ -142,21 +147,23 @@ public class BlockCastIronLamp extends BlockContainer
 	}
 
 	@Override
-	public boolean canPlaceBlockAt(World world, int x, int y, int z)
+	public boolean canPlaceBlockAt(final World world, final int x, final int y,
+			final int z)
 	{
 		return (world.getBlock(x, y - 1, z) != Blocks.air) ? true : false;
 	}
 
 	@Override
-	public void onBlockAdded(World world, int x, int y, int z)
+	public void onBlockAdded(final World world, final int x, final int y,
+			final int z)
 	{
 		if (!world.isRemote)
 		{
-			if (this.powered && !world.isBlockIndirectlyGettingPowered(x, y, z))
+			if (powered && !world.isBlockIndirectlyGettingPowered(x, y, z))
 			{
 				world.scheduleBlockUpdate(x, y, z, this, 4);
-			} 
-			else if (!this.powered && world.isBlockIndirectlyGettingPowered(x, y, z))
+			}
+			else if (!powered && world.isBlockIndirectlyGettingPowered(x, y, z))
 			{
 				world.setBlock(x, y, z, ConfigBlocks.blockCastIronLampA, 0, 2);
 			}
@@ -174,13 +181,14 @@ public class BlockCastIronLamp extends BlockContainer
 			world.notifyBlocksOfNeighborChange(x, y, z, this);
 		}
 
-		this.dropIfCantStay(world, x, y, z);
+		dropIfCantStay(world, x, y, z);
 	}
 
 	@Override
-	public void breakBlock(World world, int x, int y, int z, Block block, int metadata)
+	public void breakBlock(final World world, final int x, final int y,
+			final int z, final Block block, final int metadata)
 	{
-		if (this.powered)
+		if (powered)
 		{
 			world.notifyBlocksOfNeighborChange(x, y - 1, z, this);
 			world.notifyBlocksOfNeighborChange(x, y + 1, z, this);
@@ -194,38 +202,41 @@ public class BlockCastIronLamp extends BlockContainer
 	}
 
 	@Override
-	public void updateTick(World world, int x, int y, int z, Random random)
+	public void updateTick(final World world, final int x, final int y,
+			final int z, final Random random)
 	{
 		super.updateTick(world, x, y, z, random);
 
 		if (world.getBlockMetadata(x, y, z) == 0)
 		{
-			this.onBlockAdded(world, x, y, z);
+			onBlockAdded(world, x, y, z);
 		}
-		
-		if (!world.isRemote && this.powered && !world.isBlockIndirectlyGettingPowered(x, y, z))
+
+		if (!world.isRemote && powered
+				&& !world.isBlockIndirectlyGettingPowered(x, y, z))
 		{
 			world.setBlock(x, y, z, ConfigBlocks.blockCastIronLampI, 0, 2);
 		}
 	}
 
 	@Override
-	public void onNeighborBlockChange(World world, int x, int y, int z, Block block)
+	public void onNeighborBlockChange(final World world, final int x,
+			final int y, final int z, final Block block)
 	{
 		if (!world.isRemote)
-		{ 
-			if (this.powered && !world.isBlockIndirectlyGettingPowered(x, y, z))
+		{
+			if (powered && !world.isBlockIndirectlyGettingPowered(x, y, z))
 			{
-				world.scheduleBlockUpdate(x, y, z, this, this.tickRate(world));
-			} 
-			else if (!this.powered && world.isBlockIndirectlyGettingPowered(x, y, z))
+				world.scheduleBlockUpdate(x, y, z, this, tickRate(world));
+			}
+			else if (!powered && world.isBlockIndirectlyGettingPowered(x, y, z))
 			{
 				world.setBlock(x, y, z, ConfigBlocks.blockCastIronLampA, 0, 2);
 			}
-			
+
 			if (dropIfCantStay(world, x, y, z))
 			{
-				int metadata = world.getBlockMetadata(x, y, z);
+				final int metadata = world.getBlockMetadata(x, y, z);
 				boolean flag = false;
 
 				if (metadata == 1)
@@ -248,10 +259,11 @@ public class BlockCastIronLamp extends BlockContainer
 				{
 					flag = true;
 				}
-				
+
 				if (flag)
 				{
-					this.dropBlockAsItem(world, x, y, z, world.getBlockMetadata(x, y, z), 1);
+					this.dropBlockAsItem(world, x, y, z,
+							world.getBlockMetadata(x, y, z), 1);
 					world.setBlockToAir(x, y, z);
 				}
 			}
@@ -260,24 +272,26 @@ public class BlockCastIronLamp extends BlockContainer
 		super.onNeighborBlockChange(world, x, y, z, block);
 	}
 
-	private boolean dropIfCantStay(World world, int x, int y, int z)
+	private boolean dropIfCantStay(final World world, final int x, final int y,
+			final int z)
 	{
-		if (!this.canPlaceBlockAt(world, x, y, z))
+		if (!canPlaceBlockAt(world, x, y, z))
 		{
-			this.dropBlockAsItem(world, x, y, z, world.getBlockMetadata(x, y, z), 1);
+			this.dropBlockAsItem(world, x, y, z,
+					world.getBlockMetadata(x, y, z), 1);
 			world.setBlockToAir(x, y, z);
 			return false;
-		} 
+		}
 		else
 		{
 			return true;
 		}
 	}
 
-	//@Override
-	public int idDropped(int id, Random random, int metadata)
-    {
-		return 0;//ConfigBlocks.blockCastIronLampI;
+	// @Override
+	public int idDropped(final int id, final Random random, final int metadata)
+	{
+		return 0;// ConfigBlocks.blockCastIronLampI;
 	}
 
 	@Override
@@ -288,34 +302,46 @@ public class BlockCastIronLamp extends BlockContainer
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void randomDisplayTick(World world, int x, int j, int z, Random random)
+	public void randomDisplayTick(final World world, final int x, final int j,
+			final int z, final Random random)
 	{
-		if(!powered)
+		if (!powered)
 		{
 			return;
-		} 
+		}
 		else
 		{
-			int l = world.getBlockMetadata(x, j, z);
-			double d = x + 0.5F + (random.nextFloat() - 0.5F) * 0.20000000000000001D;
-			double d1 = j + 1.0F + (random.nextFloat() - 0.5F) * 0.20000000000000001D;
-			double d2 = z + 0.5F + (random.nextFloat() - 0.5F) * 0.20000000000000001D;
-			double d3 = 0.2199999988079071D;
-			double d4 = 0.27000001072883606D;
+			final int l = world.getBlockMetadata(x, j, z);
+			final double d = x + 0.5F + (random.nextFloat() - 0.5F)
+					* 0.20000000000000001D;
+			final double d1 = j + 1.0F + (random.nextFloat() - 0.5F)
+					* 0.20000000000000001D;
+			final double d2 = z + 0.5F + (random.nextFloat() - 0.5F)
+					* 0.20000000000000001D;
+			final double d3 = 0.2199999988079071D;
+			final double d4 = 0.27000001072883606D;
 
-			if(l == 1)
+			if (l == 1)
 			{
-				world.spawnParticle("reddust", d - d4, d1 + d3, d2, -1.0D, 0.7D, 1.0D);
-			} else if(l == 2)
+				world.spawnParticle("reddust", d - d4, d1 + d3, d2, -1.0D,
+						0.7D, 1.0D);
+			}
+			else if (l == 2)
 			{
-				world.spawnParticle("reddust", d + d4, d1 + d3, d2, -1.0D, 0.7D, 1.0D);
-			} else if(l == 3)
+				world.spawnParticle("reddust", d + d4, d1 + d3, d2, -1.0D,
+						0.7D, 1.0D);
+			}
+			else if (l == 3)
 			{
-				world.spawnParticle("reddust", d, d1 + d3, d2 - d4, -1.0D, 0.7D, 1.0D);
-			} else if(l == 4)
+				world.spawnParticle("reddust", d, d1 + d3, d2 - d4, -1.0D,
+						0.7D, 1.0D);
+			}
+			else if (l == 4)
 			{
-				world.spawnParticle("reddust", d, d1 + d3, d2 + d4, -1.0D, 0.7D, 1.0D);
-			} else
+				world.spawnParticle("reddust", d, d1 + d3, d2 + d4, -1.0D,
+						0.7D, 1.0D);
+			}
+			else
 			{
 				world.spawnParticle("reddust", d, d1, d2, -1.0D, 0.7D, 1.0D);
 			}

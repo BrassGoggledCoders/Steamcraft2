@@ -38,89 +38,101 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 /**
  * @author Decebaldecebal
- *
+ * 
  */
 public class EventHandlerSC2
 {
 	@SubscribeEvent
-	public void updatePlayer(LivingEvent.LivingUpdateEvent event) {
-		if (event.entityLiving instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer) event.entityLiving;
+	public void updatePlayer(final LivingEvent.LivingUpdateEvent event)
+	{
+		if (event.entityLiving instanceof EntityPlayer)
+		{
+			final EntityPlayer player = (EntityPlayer) event.entityLiving;
 
-            ItemStack legsSlot = player.inventory.armorItemInSlot(1);
+			final ItemStack legsSlot = player.inventory.armorItemInSlot(1);
 
-            if (legsSlot != null) {
-                if (legsSlot.getItem() == ConfigItems.itemLegBraces) {
-                    float distToFall = player.fallDistance;
+			if (legsSlot != null)
+			{
+				if (legsSlot.getItem() == ConfigItems.itemLegBraces)
+				{
+					final float distToFall = player.fallDistance;
 
-                    if (distToFall > 3.0F) {
-                        player.fallDistance = distToFall * 0.888F;
-                        legsSlot.damageItem(1, player);
-                    }
-                }
-            }
+					if (distToFall > 3.0F)
+					{
+						player.fallDistance = distToFall * 0.888F;
+						legsSlot.damageItem(1, player);
+					}
+				}
+			}
 
-			ItemStack bootsSlot = player.inventory.armorItemInSlot(0);
+			final ItemStack bootsSlot = player.inventory.armorItemInSlot(0);
 
-			if (bootsSlot != null) {
-				if (!player.isInWater() && player.onGround && bootsSlot.getItem() == ConfigItems.itemRollerSkates) {	
-					player.moveEntityWithHeading(player.moveStrafing, player.moveForward * 0.8F);
+			if (bootsSlot != null)
+			{
+				if (!player.isInWater() && player.onGround
+						&& bootsSlot.getItem() == ConfigItems.itemRollerSkates)
+				{
+					player.moveEntityWithHeading(player.moveStrafing,
+							player.moveForward * 0.8F);
 					player.jumpMovementFactor = 0.03F;
 					player.stepHeight = 0.0F;
 				}
-			} else if (bootsSlot == null || bootsSlot.getItem() != ConfigItems.itemRollerSkates) {
+			}
+			else if (bootsSlot == null
+					|| bootsSlot.getItem() != ConfigItems.itemRollerSkates)
+			{
 				player.stepHeight = 0.5F;
 			}
 		}
 	}
 
 	/*
-	@SubscribeEvent
-	public void onPlayerLogIn(PlayerEvent. event)
-	{
-		if (event.player.getCommandSenderName().equals("Surseance"))
-		{
-			event.player.addExperience(10000);
-		}
-    }*/
+	 * @SubscribeEvent public void onPlayerLogIn(PlayerEvent. event) { if
+	 * (event.player.getCommandSenderName().equals("Surseance")) {
+	 * event.player.addExperience(10000); } }
+	 */
 
 	@SubscribeEvent
-	public void entityConstructing(EntityConstructing event)
+	public void entityConstructing(final EntityConstructing event)
 	{
 		if (event.entity instanceof EntityPlayer)
 		{
-			EntityPlayerExtended.register((EntityPlayer)event.entity);
+			EntityPlayerExtended.register((EntityPlayer) event.entity);
 		}
 	}
-	
-	private Minecraft mc = Minecraft.getMinecraft();
-	private static final ResourceLocation overlay = new ResourceLocation(LibInfo.PREFIX + "textures/misc/goggles.png");
+
+	private final Minecraft mc = Minecraft.getMinecraft();
+	private static final ResourceLocation overlay = new ResourceLocation(
+			LibInfo.PREFIX + "textures/misc/goggles.png");
 
 	@SubscribeEvent
-	public void onHUDTick(RenderGameOverlayEvent.Pre event)
+	public void onHUDTick(final RenderGameOverlayEvent.Pre event)
 	{
-		if (event.type == ElementType.HELMET) 
+		if (event.type == ElementType.HELMET)
 		{
-			if (this.mc.thePlayer == null || this.mc.currentScreen != null)
+			if (mc.thePlayer == null || mc.currentScreen != null)
 			{
 				return;
-			} 
+			}
 
-			ItemStack helmet = this.mc.thePlayer.inventory.armorItemInSlot(3);
+			final ItemStack helmet = mc.thePlayer.inventory.armorItemInSlot(3);
 
-			if (this.mc.gameSettings.thirdPersonView == 0 && helmet != null && helmet.getItem() == ConfigItems.itemBrassGoggles)// && KeyHandler.keyPressed)
+			if (mc.gameSettings.thirdPersonView == 0 && helmet != null
+					&& helmet.getItem() == ConfigItems.itemBrassGoggles)// &&
+																		// KeyHandler.keyPressed)
 			{
-				this.mc.getTextureManager().bindTexture(EventHandlerSC2.overlay);
-				Tessellator tessellator = Tessellator.instance;
-				ScaledResolution scaledResolution = new ScaledResolution(mc.gameSettings, mc.displayWidth, mc.displayHeight);
-				int width = scaledResolution.getScaledWidth();
-				int height = scaledResolution.getScaledHeight();
+				mc.getTextureManager().bindTexture(EventHandlerSC2.overlay);
+				final Tessellator tessellator = Tessellator.instance;
+				final ScaledResolution scaledResolution = new ScaledResolution(
+						mc.gameSettings, mc.displayWidth, mc.displayHeight);
+				final int width = scaledResolution.getScaledWidth();
+				final int height = scaledResolution.getScaledHeight();
 
 				GL11.glDisable(GL11.GL_DEPTH_TEST);
 				GL11.glDepthMask(false);
-				//GL11.glEnable(GL11.GL_BLEND);
-				//GL11.glBlendFunc(GL11.GL_DST_COLOR, GL11.GL_SRC_COLOR);
-				//GL11.glColor3f(1.0F, 1.0F, 1.0F);
+				// GL11.glEnable(GL11.GL_BLEND);
+				// GL11.glBlendFunc(GL11.GL_DST_COLOR, GL11.GL_SRC_COLOR);
+				// GL11.glColor3f(1.0F, 1.0F, 1.0F);
 				GL11.glDisable(GL11.GL_ALPHA_TEST);
 				GL11.glClearDepth(1.0D);
 				tessellator.startDrawingQuads();
@@ -135,12 +147,12 @@ public class EventHandlerSC2
 				GL11.glDisable(GL11.GL_BLEND);
 
 				/*
-				if (!mc.gameSettings.hideGUI || mc.currentScreen != null)
-				{
-					int x = (Mouse.getX() * width) / mc.displayWidth;
-					int y = height - (Mouse.getY() * height) / mc.displayHeight - 1;
-					mc.ingameGUI.renderGameOverlay(0.0F, mc.currentScreen != null, x, y);
-				}*/
+				 * if (!mc.gameSettings.hideGUI || mc.currentScreen != null) {
+				 * int x = (Mouse.getX() * width) / mc.displayWidth; int y =
+				 * height - (Mouse.getY() * height) / mc.displayHeight - 1;
+				 * mc.ingameGUI.renderGameOverlay(0.0F, mc.currentScreen !=
+				 * null, x, y); }
+				 */
 			}
 		}
 		else
@@ -148,50 +160,49 @@ public class EventHandlerSC2
 			return;
 		}
 	}
-private int timer = 400;
 
-@SubscribeEvent
-public void onItemDrop(ItemTossEvent event)
-{
-	NBTTagCompound thrower = event.entityItem.getEntityData();
-	thrower.setString("thrower", event.player.getCommandSenderName());
-}
+	private int timer = 400;
 
-/*
-@ForgeSubscribe
-public void onPlayerLogIn(PlayerEvent. event)
-{
-	if (event.player.getCommandSenderName().equals("Surseance"))
+	@SubscribeEvent
+	public void onItemDrop(final ItemTossEvent event)
 	{
-		event.player.addExperience(10000);
+		final NBTTagCompound thrower = event.entityItem.getEntityData();
+		thrower.setString("thrower", event.player.getCommandSenderName());
 	}
-}*/
 
-@SubscribeEvent
-public void livingUpdate(LivingUpdateEvent event)
-{
-	if (event.entityLiving instanceof EntityPlayer)
+	/*
+	 * @ForgeSubscribe public void onPlayerLogIn(PlayerEvent. event) { if
+	 * (event.player.getCommandSenderName().equals("Surseance")) {
+	 * event.player.addExperience(10000); } }
+	 */
+
+	@SubscribeEvent
+	public void livingUpdate(final LivingUpdateEvent event)
 	{
-		EntityPlayer player = (EntityPlayer)event.entityLiving;
-		ItemStack is = player.inventory.armorItemInSlot(3);
-
-		if ((is != null) && is.getItem() == ConfigItems.itemBrassGoggles)
+		if (event.entityLiving instanceof EntityPlayer)
 		{
-			player.addPotionEffect(new PotionEffect(Potion.nightVision.id, this.timer, 0));
-			
-			if (this.timer <= 220)
+			final EntityPlayer player = (EntityPlayer) event.entityLiving;
+			final ItemStack is = player.inventory.armorItemInSlot(3);
+
+			if ((is != null) && is.getItem() == ConfigItems.itemBrassGoggles)
 			{
-				this.timer = 400;
+				player.addPotionEffect(new PotionEffect(Potion.nightVision.id,
+						timer, 0));
+
+				if (timer <= 220)
+				{
+					timer = 400;
+				}
+			}
+			else if ((is == null)
+					|| (is.getItem() != ConfigItems.itemBrassGoggles))
+			{
+				player.removePotionEffect(Potion.nightVision.id);
 			}
 		}
-		else if ((is == null) || (is.getItem() != ConfigItems.itemBrassGoggles))
+		else if (!(event.entityLiving instanceof EntityPlayer))
 		{
-			player.removePotionEffect(Potion.nightVision.id);
+			event.entityLiving.removePotionEffect(Potion.nightVision.id);
 		}
 	}
-	else if (!(event.entityLiving instanceof EntityPlayer))
-	{
-		event.entityLiving.removePotionEffect(Potion.nightVision.id);
-	}
-}
 }

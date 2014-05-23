@@ -17,7 +17,7 @@ import net.minecraft.tileentity.TileEntity;
 
 /**
  * @author Surseance (Johnny Eatmon)
- *
+ * 
  */
 public class TileLightningRod extends TileEntity
 {

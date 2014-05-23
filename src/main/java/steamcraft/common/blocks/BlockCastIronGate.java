@@ -26,19 +26,19 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 public class BlockCastIronGate extends BlockFenceGate
 {
-    @Override
-    @SideOnly(Side.CLIENT)
-    public IIcon getIcon(int side, int metadata)
-    {
-        return ConfigBlocks.blockCastIronFence.getBlockTextureFromSide(side);
-    }
+	@Override
+	@SideOnly(Side.CLIENT)
+	public IIcon getIcon(final int side, final int metadata)
+	{
+		return ConfigBlocks.blockCastIronFence.getBlockTextureFromSide(side);
+	}
 
-    public BlockCastIronGate()
-    {
-        this.setHardness(7.0F);
-        this.setResistance(20.0F);
-        this.setStepSound(Block.soundTypeMetal);
-        this.setCreativeTab(Steamcraft.tabSC2);
-        //setUnlocalizedName("blockCastIronGate");
-    }
+	public BlockCastIronGate()
+	{
+		setHardness(7.0F);
+		setResistance(20.0F);
+		setStepSound(Block.soundTypeMetal);
+		setCreativeTab(Steamcraft.tabSC2);
+		// setUnlocalizedName("blockCastIronGate");
+	}
 }

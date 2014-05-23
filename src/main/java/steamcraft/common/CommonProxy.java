@@ -20,63 +20,75 @@ import cpw.mods.fml.common.network.IGuiHandler;
 
 /**
  * @author Surseance (Johnny Eatmon)
- *
+ * 
  */
 public class CommonProxy implements IGuiHandler
 {
-	public void registerDisplayInformation() {}
-	public void registerRenderers() {}
-		
+	public void registerDisplayInformation()
+	{
+	}
+
+	public void registerRenderers()
+	{
+	}
+
 	@Override
-	public Object getClientGuiElement(int id, EntityPlayer player, World world, int x, int y, int z)
+	public Object getClientGuiElement(final int id, final EntityPlayer player,
+			final World world, final int x, final int y, final int z)
 	{
 		return null;
 	}
 
 	@Override
-	public Object getServerGuiElement(int id, EntityPlayer player, World world, int x, int y, int z)
+	public Object getServerGuiElement(final int id, final EntityPlayer player,
+			final World world, final int x, final int y, final int z)
 	{
-		switch (id) // Containers
+		switch (id)
+		// Containers
 		{
 		case 0:
-		} 
-		
+		}
+
 		return null;
 	}
-	
+
 	// ====================== WARNING: CLIENT-SIDE ====================== //
-	
+
 	public World getClientWorld()
 	{
 		return null;
 	}
 
-    public Object addSC2Capes()
-    {
-        return null;
-    }
-
-    public Object rayFX(World world, EntityPlayer player, double dx, double dy, double dz, int type, boolean reverse, float endMod, Object input, int impact)
-    {
-        return null;
-    }
-
-    public Object smokeFX(World world, double dx, double dy, double dz, Object input)
-    {
-        return null;
-    }
-    
-    public ModelBiped getMonocleArmorModel(int id) 
-    {
-		return null;
-	}
-
-	public ModelBiped getWingsArmorModel(int id) 
+	public Object addSC2Capes()
 	{
 		return null;
 	}
 
-	public ModelBiped getCapeArmorModel(int id) 
+	public Object rayFX(final World world, final EntityPlayer player,
+			final double dx, final double dy, final double dz, final int type,
+			final boolean reverse, final float endMod, final Object input,
+			final int impact)
+	{
+		return null;
+	}
+
+	public Object smokeFX(final World world, final double dx, final double dy,
+			final double dz, final Object input)
+	{
+		return null;
+	}
+
+	public ModelBiped getMonocleArmorModel(final int id)
+	{
+		return null;
+	}
+
+	public ModelBiped getWingsArmorModel(final int id)
+	{
+		return null;
+	}
+
+	public ModelBiped getCapeArmorModel(final int id)
 	{
 		return null;
 	}

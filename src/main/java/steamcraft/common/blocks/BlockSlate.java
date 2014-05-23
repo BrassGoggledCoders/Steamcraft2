@@ -24,51 +24,51 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class BlockSlate extends Block
 {
-	private IIcon[] icon = new IIcon[9];
+	private final IIcon[] icon = new IIcon[9];
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(int side, int metadata)
+	public IIcon getIcon(final int side, final int metadata)
 	{
-		return this.icon[metadata];
+		return icon[metadata];
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister ir)
+	public void registerBlockIcons(final IIconRegister ir)
 	{
-		//Raw
-		this.icon[0] = ir.registerIcon(LibInfo.PREFIX + "blockSlateRawBlue");
-		this.icon[1] = ir.registerIcon(LibInfo.PREFIX + "blockSlateRawBlack");
-		this.icon[2] = ir.registerIcon(LibInfo.PREFIX + "blockSlateRawRed");
-		//Cobble
-		this.icon[3] = ir.registerIcon(LibInfo.PREFIX + "blockSlateCobbleBlue");
-		this.icon[4] = ir.registerIcon(LibInfo.PREFIX + "blockSlateCobbleBlack");
-		this.icon[5] = ir.registerIcon(LibInfo.PREFIX + "blockSlateCobbleRed");
-		//Brick
-		this.icon[6] = ir.registerIcon(LibInfo.PREFIX + "blockSlateBrickBlue");
-		this.icon[7] = ir.registerIcon(LibInfo.PREFIX + "blockSlateBrickBlack");
-		this.icon[8] = ir.registerIcon(LibInfo.PREFIX + "blockSlateBrickRed");
-		//Polished
+		// Raw
+		icon[0] = ir.registerIcon(LibInfo.PREFIX + "blockSlateRawBlue");
+		icon[1] = ir.registerIcon(LibInfo.PREFIX + "blockSlateRawBlack");
+		icon[2] = ir.registerIcon(LibInfo.PREFIX + "blockSlateRawRed");
+		// Cobble
+		icon[3] = ir.registerIcon(LibInfo.PREFIX + "blockSlateCobbleBlue");
+		icon[4] = ir.registerIcon(LibInfo.PREFIX + "blockSlateCobbleBlack");
+		icon[5] = ir.registerIcon(LibInfo.PREFIX + "blockSlateCobbleRed");
+		// Brick
+		icon[6] = ir.registerIcon(LibInfo.PREFIX + "blockSlateBrickBlue");
+		icon[7] = ir.registerIcon(LibInfo.PREFIX + "blockSlateBrickBlack");
+		icon[8] = ir.registerIcon(LibInfo.PREFIX + "blockSlateBrickRed");
+		// Polished
 	}
 
 	public BlockSlate()
 	{
 		super(Material.rock);
-		this.setHardness(3.0F);
-		this.setResistance(10.0F);
-		this.setStepSound(Block.soundTypeStone);
-		//this.setUnlocalizedName("blockSlate");
-		this.setTickRandomly(true);
-		this.setCreativeTab(Steamcraft.tabSC2);
+		setHardness(3.0F);
+		setResistance(10.0F);
+		setStepSound(Block.soundTypeStone);
+		// this.setUnlocalizedName("blockSlate");
+		setTickRandomly(true);
+		setCreativeTab(Steamcraft.tabSC2);
 	}
 
 	@Override
-	public int damageDropped(int id)
+	public int damageDropped(final int id)
 	{
 		return id;
 	}

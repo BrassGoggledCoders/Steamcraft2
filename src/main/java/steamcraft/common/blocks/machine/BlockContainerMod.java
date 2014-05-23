@@ -31,48 +31,56 @@ public abstract class BlockContainerMod extends BlockContainer
 {
 	/** */
 	protected static boolean keepInventory = true;
-	
+
 	/** */
 	protected final Random random = new Random();
-	
+
 	/** */
 	public static String owner = "[SC2]";
-	
-	protected BlockContainerMod(Material mat)
+
+	protected BlockContainerMod(final Material mat)
 	{
 		super(mat);
-		this.setCreativeTab(Steamcraft.tabSC2);
-		this.setHardness(5.0F);
+		setCreativeTab(Steamcraft.tabSC2);
+		setHardness(5.0F);
 	}
-	
+
 	public String getOwner()
 	{
 		return owner;
 	}
 
 	@Override
-	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entityLiving, ItemStack is) 
+	public void onBlockPlacedBy(final World world, final int x, final int y,
+			final int z, final EntityLivingBase entityLiving, final ItemStack is)
 	{
 		super.onBlockPlacedBy(world, x, y, z, entityLiving, is);
-	
+
 		if (entityLiving instanceof EntityPlayer)
-			owner = owner + ((EntityPlayer)entityLiving).getCommandSenderName();
+		{
+			owner = owner
+					+ ((EntityPlayer) entityLiving).getCommandSenderName();
+		}
 	}
 
 	@Override
-	public void breakBlock(World world, int x, int y, int z, Block block, int metadata) 
+	public void breakBlock(final World world, final int x, final int y,
+			final int z, final Block block, final int metadata)
 	{
 		super.breakBlock(world, x, y, z, block, metadata);
 	}
 
 	@Override
-	public int getLightValue(IBlockAccess world, int x, int y, int z)
+	public int getLightValue(final IBlockAccess world, final int x,
+			final int y, final int z)
 	{
-		TileEntity te = world.getTileEntity(x, y, z);
-		
+		final TileEntity te = world.getTileEntity(x, y, z);
+
 		if (te instanceof IMachine && ((IMachine) te).isActive())
+		{
 			return super.getLightValue(world, x, y, z) + 8;
-		
+		}
+
 		return super.getLightValue(world, x, y, z);
 	}
 }

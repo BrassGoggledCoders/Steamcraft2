@@ -17,8 +17,9 @@ import net.minecraft.tileentity.TileEntity;
 
 /**
  * @author warlordjones
- *
+ * 
  */
-public class TileHatch extends TileEntity{
+public class TileHatch extends TileEntity
+{
 
 }

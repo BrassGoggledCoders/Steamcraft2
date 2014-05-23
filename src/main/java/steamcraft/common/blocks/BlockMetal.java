@@ -30,62 +30,71 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class BlockMetal extends Block
 {
-	private IIcon[] icon = new IIcon[9];
+	private final IIcon[] icon = new IIcon[9];
 
 	private boolean powered;
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister ir)
+	public void registerBlockIcons(final IIconRegister ir)
 	{
-        this.icon[0] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockBrass");
-        this.icon[1] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockBronze");
-        this.icon[2] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockSteel");
-        this.icon[3] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockUranium");
-        this.icon[4] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockAluminum");
-        this.icon[5] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockCopper");
-        this.icon[6] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockTin");
-        this.icon[7] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockZinc");
-        this.icon[8] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockEtherium");
+		icon[0] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockBrass");
+		icon[1] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockBronze");
+		icon[2] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockSteel");
+		icon[3] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockUranium");
+		icon[4] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockAluminum");
+		icon[5] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockCopper");
+		icon[6] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockTin");
+		icon[7] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockZinc");
+		icon[8] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockEtherium");
 	}
+
 	public BlockMetal()
 	{
 		super(Material.iron);
-		this.setHardness(3.0F);
-		this.setResistance(10.0F);
-		this.setStepSound(Block.soundTypeMetal);
-		//this.setUnlocalizedName("blockMetal");
-		this.setTickRandomly(true);
-		this.setCreativeTab(Steamcraft.tabSC2);
+		setHardness(3.0F);
+		setResistance(10.0F);
+		setStepSound(Block.soundTypeMetal);
+		// this.setUnlocalizedName("blockMetal");
+		setTickRandomly(true);
+		setCreativeTab(Steamcraft.tabSC2);
 
-		if (this.powered)
+		if (powered)
 		{
-			this.setLightLevel(0.98F);
+			setLightLevel(0.98F);
 		}
 	}
 
 	@Override
-	public int damageDropped(int id)
+	public int damageDropped(final int id)
 	{
 		return id;
 	}
 
 	@Override
-	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)
+	public void onEntityCollidedWithBlock(final World world, final int x,
+			final int y, final int z, final Entity entity)
 	{
-		if ((world.getBlock(x, y, z) == this) && (world.getBlockMetadata(x, y, z) == 4))
+		if ((world.getBlock(x, y, z) == this)
+				&& (world.getBlockMetadata(x, y, z) == 4))
+		{
 			entity.attackEntityFrom(DamageSource.magic, 1);
+		}
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void randomDisplayTick(World world, int x, int y, int z, Random random)
+	public void randomDisplayTick(final World world, final int x, final int y,
+			final int z, final Random random)
 	{
-		if ((world.getBlock(x, y, z) == this) && (world.getBlockMetadata(x, y, z) == 4))
+		if ((world.getBlock(x, y, z) == this)
+				&& (world.getBlockMetadata(x, y, z) == 4))
+		{
 			Utils.sparkle(world, x, y, z, "reddust");
+		}
 	}
 }

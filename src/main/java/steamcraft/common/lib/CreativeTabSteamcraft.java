@@ -21,18 +21,18 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author Surseance (Johnny Eatmon)
- *
+ * 
  */
 public class CreativeTabSteamcraft extends CreativeTabs
 {
-	public CreativeTabSteamcraft(int id, String name) 
+	public CreativeTabSteamcraft(final int id, final String name)
 	{
 		super(id, name);
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public Item getTabIconItem() 
+	public Item getTabIconItem()
 	{
 		return Items.apple;
 	}

@@ -20,29 +20,31 @@ import steamcraft.api.vanity.ICape;
 
 /**
  * @author Surseance (Johnny Eatmon)
- *
+ * 
  */
 public class SlotCape extends Slot
 {
-	public SlotCape(IInventory inventory, int par2, int par3, int par4)
+	public SlotCape(final IInventory inventory, final int par2, final int par3,
+			final int par4)
 	{
 		super(inventory, par2, par3, par4);
 	}
 
 	/**
-	 * Check if the stack is a valid item for this slot. Always true beside for the armor slots
-	 * (and now also not always true for our custom inventory slots)
+	 * Check if the stack is a valid item for this slot. Always true beside for
+	 * the armor slots (and now also not always true for our custom inventory
+	 * slots)
 	 */
 	@Override
-	public boolean isItemValid(ItemStack is)
+	public boolean isItemValid(final ItemStack is)
 	{
 
 		return is.getItem() instanceof ICape;
 	}
-	
+
 	/**
-	 * Returns the maximum stack size for a given slot (usually the same as getInventoryStackLimit(), but 1 in the case
-	 * of armor slots)
+	 * Returns the maximum stack size for a given slot (usually the same as
+	 * getInventoryStackLimit(), but 1 in the case of armor slots)
 	 */
 	@Override
 	public int getSlotStackLimit()

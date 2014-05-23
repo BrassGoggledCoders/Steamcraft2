@@ -30,23 +30,27 @@ import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 public class BlockCrystalRenderer implements ISimpleBlockRenderingHandler
 {
 	@Override
-	public void renderInventoryBlock(Block block, int metadata, int modelID, RenderBlocks renderer)
+	public void renderInventoryBlock(final Block block, final int metadata,
+			final int modelID, final RenderBlocks renderer)
 	{
 		GL11.glRotatef(90.0F, 0.0F, 1.0F, 0.0F);
 		GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
-		TileCrystal te = new TileCrystal();
-		TileEntityRendererDispatcher.instance.renderTileEntityAt(te, 0.0D, 0.0D, 0.0D, 0.0F);
+		final TileCrystal te = new TileCrystal();
+		TileEntityRendererDispatcher.instance.renderTileEntityAt(te, 0.0D,
+				0.0D, 0.0D, 0.0F);
 		GL11.glEnable(32826);
 	}
 
 	@Override
-	public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelID, RenderBlocks renderer)
+	public boolean renderWorldBlock(final IBlockAccess world, final int x,
+			final int y, final int z, final Block block, final int modelID,
+			final RenderBlocks renderer)
 	{
 		return true;
 	}
 
 	@Override
-	public boolean shouldRender3DInInventory(int i)
+	public boolean shouldRender3DInInventory(final int i)
 	{
 		return true;
 	}

@@ -25,7 +25,6 @@ import java.util.logging.Level;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ThreadDownloadImageData;
-import net.minecraft.client.renderer.texture.ITextureObject;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.ResourceLocation;
@@ -36,27 +35,34 @@ import steamcraft.common.lib.network.LoggerSteamcraft;
 
 /**
  * @author Surseance (Johnny Eatmon)
- *
+ * 
  */
 public class Utils
 {
 	public Random random = new Random();
 	static String newestVersion;
 
-	public static boolean checkForUpdatedVersion(String name, String version)
+	public static boolean checkForUpdatedVersion(final String name,
+			final String version)
 	{
-		try {
-			URL webLink = new URL(LibInfo.VERSION_URL);
-			InputStream inputStream = webLink.openStream();
-			Properties prop = new Properties();
+		try
+		{
+			final URL webLink = new URL(LibInfo.VERSION_URL);
+			final InputStream inputStream = webLink.openStream();
+			final Properties prop = new Properties();
 			prop.load(inputStream);
-			String newVersion = prop.getProperty(name);
+			final String newVersion = prop.getProperty(name);
 			newestVersion = newVersion;
 
 			if (version.compareTo(newVersion) != 0)
+			{
 				return true;
-		} catch (Exception e) {
-			LoggerSteamcraft.log(Level.FINEST, "Could not establish a connection to Dropbox.com; no worries!");
+			}
+		} catch (final Exception e)
+		{
+			LoggerSteamcraft
+					.log(Level.FINEST,
+							"Could not establish a connection to Dropbox.com; no worries!");
 		}
 
 		return false;
@@ -64,38 +70,45 @@ public class Utils
 
 	public static void downloadCapes()
 	{
-		String[] developers = getUsersFromUrl("https://www.dropbox.com/s/m7tn0tx7y7w630s/devs.txt");
+		final String[] developers = getUsersFromUrl("https://www.dropbox.com/s/m7tn0tx7y7w630s/devs.txt");
 
-		for (String username : developers)
+		for (final String username : developers)
 		{
-			try {	
-				ThreadDownloadImageData imageData = new ThreadDownloadImageData("https://www.dropbox.com/s/cicvp1u0kq9xtbp/steamcraft_cape_1.png", null, null);
-				Minecraft.getMinecraft().getTextureManager().loadTexture((new ResourceLocation("cloaks/" + username)), imageData);
-			} catch (Exception e) {
+			try
+			{
+				final ThreadDownloadImageData imageData = new ThreadDownloadImageData(
+						"https://www.dropbox.com/s/cicvp1u0kq9xtbp/steamcraft_cape_1.png",
+						null, null);
+				Minecraft
+						.getMinecraft()
+						.getTextureManager()
+						.loadTexture(
+								(new ResourceLocation("cloaks/" + username)),
+								imageData);
+			} catch (final Exception e)
+			{
 				LoggerSteamcraft.log(Level.INFO, "Unable to load capes");
 			}
 		}
 
-		//String donators[] = getUsersFromUrl(LibInfo.DONATOR_LIST);
+		// String donators[] = getUsersFromUrl(LibInfo.DONATOR_LIST);
 		/*
-		for (String username : donators)
-		{
-			try
-			{
-				ThreadDownloadImageData imageData = new ThreadDownloadImageData(LibInfo.DONATOR_CAPE_URL, null, null);
-				Minecraft.getMinecraft().renderEngine.loadTexture(new ResourceLocation(("cloaks/" + username)), ((ITextureObject)imageData));
-			} catch (Exception e) {
-				LoggerSteamcraft.log(Level.INFO, "Unable to load capes");
-			}
-		}*/
+		 * for (String username : donators) { try { ThreadDownloadImageData
+		 * imageData = new ThreadDownloadImageData(LibInfo.DONATOR_CAPE_URL,
+		 * null, null); Minecraft.getMinecraft().renderEngine.loadTexture(new
+		 * ResourceLocation(("cloaks/" + username)),
+		 * ((ITextureObject)imageData)); } catch (Exception e) {
+		 * LoggerSteamcraft.log(Level.INFO, "Unable to load capes"); } }
+		 */
 	}
 
-	private static String[] getUsersFromUrl(String url)
+	private static String[] getUsersFromUrl(final String url)
 	{
-		ArrayList<String> list = new ArrayList<String>();
+		final ArrayList<String> list = new ArrayList<String>();
 		try
 		{
-			BufferedReader urlReader = new BufferedReader(new InputStreamReader(new URL(url).openStream()));
+			final BufferedReader urlReader = new BufferedReader(
+					new InputStreamReader(new URL(url).openStream()));
 			String line;
 
 			while ((line = urlReader.readLine()) != null)
@@ -104,23 +117,26 @@ public class Utils
 			}
 
 			return list.toArray(new String[list.size()]);
-		} catch(Exception e) {
+		} catch (final Exception e)
+		{
 			e.printStackTrace();
 			LoggerSteamcraft.log(Level.INFO, "Unable to connect to Dropbox");
-			
+
 			return list.toArray(new String[list.size()]);
 		}
 	}
 
-	private ItemStack fillBucket(World world, MovingObjectPosition mop) 
+	private ItemStack fillBucket(final World world,
+			final MovingObjectPosition mop)
 	{
-		Block block = world.getBlock(mop.blockX, mop.blockY, mop.blockZ);
+		final Block block = world.getBlock(mop.blockX, mop.blockY, mop.blockZ);
 
-		if ((block == ConfigBlocks.blockSteam) && (world.getBlockMetadata(mop.blockX, mop.blockY, mop.blockZ) == 0)) 
+		if ((block == ConfigBlocks.blockSteam)
+				&& (world.getBlockMetadata(mop.blockX, mop.blockY, mop.blockZ) == 0))
 		{
 			world.setBlockToAir(mop.blockX, mop.blockY, mop.blockZ);
 			return new ItemStack(ConfigItems.itemBucketSteam);
-		} 
+		}
 		else
 		{
 			return null;

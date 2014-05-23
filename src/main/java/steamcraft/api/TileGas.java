@@ -23,38 +23,39 @@ import net.minecraftforge.fluids.FluidStack;
 
 /**
  * @author Surseance (Johnny Eatmon)
- *
+ * 
  */
 public class TileGas extends TileEntity
 {
 	private static FluidStack gas;
 	public static final int VOLUME = FluidContainerRegistry.BUCKET_VOLUME * 4;
-	private Random random;
+	private final Random random;
 	public static int count;
-	private int dissipationHeight;
+	private final int dissipationHeight;
 	private static int meta;
 	private int viscosity;
 	GasUtils utils;
-	
-	GasTuple[] pos = new GasTuple[] { new GasTuple(0, 1), new GasTuple(1, 0), new GasTuple(0, -1), new GasTuple(-1, 0) };
 
-	public TileGas(int disHeight)
+	GasTuple[] pos = new GasTuple[] { new GasTuple(0, 1), new GasTuple(1, 0),
+			new GasTuple(0, -1), new GasTuple(-1, 0) };
+
+	public TileGas(final int disHeight)
 	{
-		this.random = new Random();
+		random = new Random();
 		TileGas.count = random.nextInt(10);
-		this.dissipationHeight = disHeight;
-		this.utils = new GasUtils(this.worldObj, this.xCoord, this.yCoord, this.zCoord);
-		this.blockMetadata = meta;
+		dissipationHeight = disHeight;
+		utils = new GasUtils(worldObj, xCoord, yCoord, zCoord);
+		blockMetadata = meta;
 	}
 
-	public TileGas(Fluid type, int disHeight, int viscosity)
+	public TileGas(final Fluid type, final int disHeight, final int viscosity)
 	{
 		TileGas.gas = new FluidStack(type, VOLUME);
-		this.random = new Random(System.nanoTime());
+		random = new Random(System.nanoTime());
 		TileGas.count = random.nextInt(10);
-		this.dissipationHeight = disHeight;
-		this.utils = new GasUtils(this.worldObj, this.xCoord, this.yCoord, this.zCoord);
-		this.blockMetadata = meta;
+		dissipationHeight = disHeight;
+		utils = new GasUtils(worldObj, xCoord, yCoord, zCoord);
+		blockMetadata = meta;
 		this.viscosity = viscosity;
 	}
 
@@ -62,27 +63,28 @@ public class TileGas extends TileEntity
 	public void updateEntity()
 	{
 		boolean go = false;
-		
-		if (!this.worldObj.isRemote)
+
+		if (!worldObj.isRemote)
 		{
 			GasUtils.updateForFireCheck();
-			
-			while (GasUtils.isOffsetAir(0, 1, 0) && (this.dissipationHeight != 0))
+
+			while (GasUtils.isOffsetAir(0, 1, 0) && (dissipationHeight != 0))
 			{
 				GasUtils.moveGas(0, 1, 0);
 				go = true;
 			}
-			
+
 			if (!(GasUtils.isOffsetAir(0, 1, 0)))
 			{
 				for (; (viscosity < 10) && !(go); viscosity++)
 				{
 					int x, z;
-					int randInt = this.worldObj.rand.nextInt(TileGas.getGasAmount());
+					int randInt = worldObj.rand.nextInt(TileGas.getGasAmount());
 					x = pos[randInt].x();
 					z = pos[randInt].z();
 
-					if (GasUtils.isOffsetAir(x, 0, z) || (GasUtils.canGasDestroyBlock(x, 0, z)))
+					if (GasUtils.isOffsetAir(x, 0, z)
+							|| (GasUtils.canGasDestroyBlock(x, 0, z)))
 					{
 						TileGas.setGasAmount(TileGas.getGasAmount() / 2);
 						GasUtils.splitAndMoveGas(x, 0, z);
@@ -90,9 +92,11 @@ public class TileGas extends TileEntity
 					}
 
 					randInt++;
-					
+
 					if (randInt == TileGas.getGasAmount())
+					{
 						randInt = 0;
+					}
 				}
 			}
 		}
@@ -111,9 +115,10 @@ public class TileGas extends TileEntity
 	/**
 	 * Sets a new gas amount.
 	 * 
-	 * @param amount - new amount
+	 * @param amount
+	 *            - new amount
 	 */
-	public static void setGasAmount(int amount)
+	public static void setGasAmount(final int amount)
 	{
 		gas.amount = amount;
 	}
@@ -127,7 +132,7 @@ public class TileGas extends TileEntity
 	{
 		return gas;
 	}
-	
+
 	/**
 	 * Grabs a static reference of the gas' metadata.
 	 * 
@@ -139,7 +144,7 @@ public class TileGas extends TileEntity
 	}
 
 	@Override
-	public void writeToNBT(NBTTagCompound tagCompound)
+	public void writeToNBT(final NBTTagCompound tagCompound)
 	{
 		super.writeToNBT(tagCompound);
 		TileGas.gas.writeToNBT(tagCompound);
@@ -148,13 +153,15 @@ public class TileGas extends TileEntity
 	}
 
 	@Override
-	public void readFromNBT(NBTTagCompound tagCompound)
+	public void readFromNBT(final NBTTagCompound tagCompound)
 	{
 		super.readFromNBT(tagCompound);
 		Gas.isFlammable = tagCompound.getBoolean("Flammable");
 		Gas.isExplosive = tagCompound.getBoolean("Explosive");
 
 		if (tagCompound.hasKey("Amount"))
+		{
 			TileGas.gas = FluidStack.loadFluidStackFromNBT(tagCompound);
+		}
 	}
 }
