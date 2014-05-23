@@ -92,7 +92,16 @@ public class Utils
 
 		return Material.air;
 	}
+    public static int randInt(final int min, final int max) {
+	// Usually this can be a field rather than a method variable
+	final Random rand = new Random();
 
+	// nextInt is normally exclusive of the top value,
+	// so add 1 to make it inclusive
+	final int randomNum = rand.nextInt(max - min + 1) + min;
+
+	return randomNum;
+    }
 	public static void sendToPlayers(final Packet packet, final World world,
 			final int x, final int y, final int z, Integer maxDistance)
 	{

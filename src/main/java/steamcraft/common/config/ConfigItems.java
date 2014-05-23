@@ -1,14 +1,14 @@
 /**
- * This class was created by <Surseance> or his SC2 development team. 
+ * This class was created by <Surseance> or his SC2 development team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
  * (http://www.mod-buildcraft.com/MMPL-1.0.txt)
- * 
+ *
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- * 
+ *
  * File created @ [Mar 14, 2014, 1:29:42 PM]
  */
 package steamcraft.common.config;
@@ -29,7 +29,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 /**
  * @author Surseance (Johnny Eatmon)
- * 
+ *
  */
 public class ConfigItems
 {
@@ -105,7 +105,7 @@ public class ConfigItems
 		 * itemChisel = new
 		 * ItemChisel(Config.itemChiselId).setUnlocalizedName("itemChisel");
 		 * GameRegistry.registerItem(itemChisel, "ItemChisel", LibInfo.ID);
-		 * 
+		 *
 		 * //Armor itemBrassGoggles = new ItemCustomArmor(Config.itemGogglesId,
 		 * MaterialHelper.STEAM_ARMOR, 0, 0).setUnlocalizedName("itemGoggles");
 		 * GameRegistry.registerItem(itemBrassGoggles, "ItemBrassGoggles",
@@ -128,7 +128,7 @@ public class ConfigItems
 		 * 1).setUnlocalizedName("itemSteamJetpack");
 		 * GameRegistry.registerItem(itemSteamJetpack, "ItemSteamJetpack",
 		 * LibInfo.ID);
-		 * 
+		 *
 		 * itemHelmetEtherium = new ItemNormalArmor(Config.itemHelmetEtheriumId,
 		 * MaterialHelper.ETHERIUM_ARMOR, 0,
 		 * 0).setUnlocalizedName("itemHelmetEtherium");
@@ -149,7 +149,7 @@ public class ConfigItems
 		 * 3).setUnlocalizedName("itemBootsEtherium");
 		 * GameRegistry.registerItem(itemRollerSkates, "ItemBootsEtherium",
 		 * LibInfo.ID);
-		 * 
+		 *
 		 * itemHelmetObsidian = new ItemNormalArmor(Config.itemHelmetObsidianId,
 		 * MaterialHelper.OBSIDIAN_ARMOR, 0,
 		 * 0).setUnlocalizedName("itemHelmetObsidian");
@@ -170,7 +170,7 @@ public class ConfigItems
 		 * 3).setUnlocalizedName("itemBootsObsidian");
 		 * GameRegistry.registerItem(itemRollerSkates, "ItemBootsObsidian",
 		 * LibInfo.ID);
-		 * 
+		 *
 		 * //More Items itemTeacupEmpty = new
 		 * ItemTeacup(Config.itemTeacupEmptyId, 0, 0.0F,
 		 * false).setUnlocalizedName("itemTeacupEmpty");
@@ -210,19 +210,19 @@ public class ConfigItems
 
 		itemMechanical = new ItemMechanical()
 				.setUnlocalizedName("ItemMechanical");
-		GameRegistry.registerItem(itemMechanical, "ItemMechanical", LibInfo.ID);
-		itemResource = new ItemResource().setUnlocalizedName("ItemResource");
+		GameRegistry.registerItem(itemMechanical, "ItemMechanical", LibInfo.ID).setUnlocalizedName("itemMechanical");
+		itemResource = new ItemResource().setUnlocalizedName("ItemResource").setUnlocalizedName("itemResource");
 		GameRegistry.registerItem(itemResource, "ItemResource", LibInfo.ID);
-		itemWatch = new ItemWatch().setUnlocalizedName("ItemWatch");
+		itemWatch = new ItemWatch().setUnlocalizedName("ItemWatch").setUnlocalizedName("itemWatch");
 		GameRegistry.registerItem(itemWatch, "ItemWatch", LibInfo.ID);
 
-		itemTeaSeed = new ItemTeaSeed().setUnlocalizedName("ItemTeaSeed");
+		itemTeaSeed = new ItemTeaSeed().setUnlocalizedName("ItemTeaSeed").setUnlocalizedName("itemTeaSeed");
 		GameRegistry.registerItem(itemTeaSeed, "ItemTeaSeed", LibInfo.ID);
-		itemChisel = new ItemChisel().setUnlocalizedName("ItemChisel");
+		itemChisel = new ItemChisel().setUnlocalizedName("ItemChisel").setUnlocalizedName("itemChisel");
 		GameRegistry.registerItem(itemChisel, "ItemChisel", LibInfo.ID);
 
 		itemBrassGoggles = new ItemCustomArmor(ItemArmor.ArmorMaterial.CHAIN,
-				0, 0).setUnlocalizedName("ItemCustomArmor");
+				0, 0).setUnlocalizedName("ItemCustomArmor")/*.setUnlocalizedName("itemCustomArmor")*/;
 		GameRegistry.registerItem(itemBrassGoggles, "ItemCustomArmor",
 				LibInfo.ID);
 	}

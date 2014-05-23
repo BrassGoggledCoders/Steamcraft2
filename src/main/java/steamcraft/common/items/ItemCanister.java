@@ -91,7 +91,7 @@ public class ItemCanister extends Item
 					MAX_GAS }));
 		}
 	}
-
+	@SuppressWarnings("all")
 	private ItemStack getChargedItem()
 	{
 		final ItemStack charged = new ItemStack(this, 1, 0);

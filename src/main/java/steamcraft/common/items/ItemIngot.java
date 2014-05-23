@@ -1,5 +1,5 @@
 /**
- * This class was created by <Surseance> or his SC2 development team. 
+ * This class was created by <Surseance> or his SC2 development team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -13,11 +13,16 @@
  */
 package steamcraft.common.items;
 
+import java.util.List;
+
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import steamcraft.common.Steamcraft;
+import steamcraft.common.config.ConfigBlocks;
+import steamcraft.common.config.ConfigItems;
 import steamcraft.common.lib.LibInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -58,10 +63,12 @@ public class ItemIngot extends Item
 		setMaxDamage(0);
 		setCreativeTab(Steamcraft.tabSC2);
 	}
-
 	@Override
-	public String getUnlocalizedName(final ItemStack is)
+	@SideOnly(Side.CLIENT)
+	public void getSubItems(Item item, CreativeTabs tab, List l)
 	{
-		return super.getUnlocalizedName() + "." + is.getItemDamage();
+		for(int var4 = 0; var4 < 8; ++var4) {
+		l.add(new ItemStack(ConfigItems.itemIngot, 1, var4));
 	}
+}
 }
