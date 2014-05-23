@@ -21,7 +21,7 @@ import net.minecraft.world.World;
  * @author Surseance (Johnny Eatmon)
  *
  */
-public class FXLaser extends EntityReddustFX 
+public class FXLaser extends EntityReddustFX
 {
 	private int part;
 

@@ -50,15 +50,13 @@ public class EntityBullet extends Entity implements IProjectile
 	private int yTile = -1;
 	private int zTile = -1;
 	private Block inTile;
-	private int inData;
 	private boolean inGround;
-	public int canBePickedUp;
+	private int canBePickedUp;
 	public int arrowShake;
-	public Entity shootingEntity;
+	private Entity shootingEntity;
 	private int timeTillDeath;
 	private int flyTime;
 	private int damage;
-	private final float size = 1F;
 	private int accuracy;
 
 	public EntityBullet(World world)
