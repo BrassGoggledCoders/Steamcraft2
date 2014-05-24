@@ -1,14 +1,14 @@
 /**
- * This class was created by <Surseance> or his SC2 development team. 
+ * This class was created by <Surseance> or his SC2 development team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
  * (http://www.mod-buildcraft.com/MMPL-1.0.txt)
- * 
+ *
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- * 
+ *
  * File created @ [Mar 12, 2014, 5:03:06 PM]
  */
 package steamcraft.common.config;
@@ -28,6 +28,8 @@ import steamcraft.common.blocks.BlockEngravedSolid;
 import steamcraft.common.blocks.BlockEngravedSolidItem;
 import steamcraft.common.blocks.BlockMetal;
 import steamcraft.common.blocks.BlockMetalItem;
+import steamcraft.common.blocks.BlockSlate;
+import steamcraft.common.blocks.BlockSlateItem;
 import steamcraft.common.blocks.machine.BlockSteamBoiler;
 import steamcraft.common.lib.LibInfo;
 import steamcraft.common.tiles.TileCrystal;
@@ -44,31 +46,31 @@ import cpw.mods.fml.common.registry.GameRegistry;
  */
 public class ConfigBlocks
 {
-	
+
 	/** The block custom ore. */
 	public static Block blockCustomOre;
-	
+
 	/** The block cosmetic. */
 	public static Block blockCosmetic;
-	
+
 	/** The block engraved. */
 	public static Block blockEngraved;
-	
+
 	/** The block cast iron fence. */
 	public static Block blockCastIronFence;
-	
+
 	/** The block cast iron gate. */
 	public static Block blockCastIronGate;
-	
+
 	/** The block crystal. */
 	public static Block blockCrystal;
-	
+
 	/** The block cast iron lamp i. */
 	public static Block blockCastIronLampI;
-	
+
 	/** The block cast iron lamp a. */
 	public static Block blockCastIronLampA;
-	
+
 	/** The block metal. */
 	public static Block blockMetal;
 
@@ -80,19 +82,19 @@ public class ConfigBlocks
 
 	/** The block lamp i. */
 	public static Block blockLampI;
-	
+
 	/** The block lamp a. */
 	public static Block blockLampA;
-	
+
 	/** The block tea plant. */
 	public static Block blockTeaPlant;
-	
+
 	/** The block smog. */
 	public static Block blockSmog;
 
 	/** The block fluid steam. */
 	public static Block blockFluidSteam;
-	
+
 	/** The block slate. */
 	public static Block blockSlate;
 
@@ -111,19 +113,19 @@ public class ConfigBlocks
 	/** The block crystal ri. */
 	public static int blockCrystalRI = RenderingRegistry
 			.getNextAvailableRenderId();
-	
+
 	/** The block cast iron lamp ri. */
 	public static int blockCastIronLampRI = RenderingRegistry
 			.getNextAvailableRenderId();
-	
+
 	/** The block lightning rod ri. */
 	public static int blockLightningRodRI = RenderingRegistry
 			.getNextAvailableRenderId();
-	
+
 	/** The block smog ri. */
 	public static int blockSmogRI = RenderingRegistry
 			.getNextAvailableRenderId();
-	
+
 	/** The block hatch ri. */
 	public static int blockHatchRI = RenderingRegistry
 			.getNextAvailableRenderId();
@@ -160,6 +162,7 @@ public class ConfigBlocks
 		blockSteamBoiler = new BlockSteamBoiler()
 				.setBlockName("blockSteamBoiler");
 		blockMetal = new BlockMetal().setBlockName("blockMetal");
+		blockSlate = new BlockSlate().setUnlocalizedName("blockSlate");
 
 		// blockFluidSteam = new BlockFluidSteam(steamFluid, Material.water);
 		// Fluid steamFluid = new
@@ -190,8 +193,8 @@ public class ConfigBlocks
 		GameRegistry.registerBlock(blockMetal, BlockMetalItem.class,
 				"BlockMetal");
 		// GameRegistry.registerBlock(blockHatch, "BlockHatch");
-		// GameRegistry.registerBlock(blockSlate,
-		// BlockSlateItem.class,"BlockSlate");
+		 GameRegistry.registerBlock(blockSlate,
+		 BlockSlateItem.class,"BlockSlate");
 	}
 
 	/**

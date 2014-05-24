@@ -13,10 +13,10 @@
  */
 package steamcraft.common.container;
 
+import boilerplate.steamcraft.api.vanity.IBoots;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
-import steamcraft.api.vanity.IBoots;
 
 // TODO: Auto-generated Javadoc
 /**

@@ -15,6 +15,7 @@ package steamcraft.common.blocks.machine;
 
 import java.util.Random;
 
+import boilerplate.steamcraft.api.machines.IMachine;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
@@ -24,7 +25,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import steamcraft.api.machines.IMachine;
 import steamcraft.common.Steamcraft;
 
 // TODO: Auto-generated Javadoc

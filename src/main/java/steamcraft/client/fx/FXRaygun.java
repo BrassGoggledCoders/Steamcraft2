@@ -11,7 +11,7 @@
  *
  * File created @ [3/15/14, 10:44]
  */
-package boilerplate.client.fx;
+package steamcraft.client.fx;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.EntityFX;
@@ -25,7 +25,6 @@ import net.minecraft.world.World;
 
 import org.lwjgl.opengl.GL11;
 
-import steamcraft.common.lib.LibInfo;
 import cpw.mods.fml.client.FMLClientHandler;
 
 /**
