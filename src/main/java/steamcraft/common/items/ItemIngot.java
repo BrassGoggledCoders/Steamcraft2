@@ -73,7 +73,6 @@ public class ItemIngot extends Item
 		super();
 		setMaxStackSize(64);
 		setHasSubtypes(true);
-		setMaxDamage(0);
 		setCreativeTab(Steamcraft.tabSC2);
 	}
 

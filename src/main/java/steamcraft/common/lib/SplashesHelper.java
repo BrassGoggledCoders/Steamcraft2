@@ -82,6 +82,7 @@ public class SplashesHelper
 			"Kick out the funk!",
 			"Read the README!",
 			"Check for monsters under your bed!",
+			"Don't do Drugs!",
 			// Also Try...
 			"Also try Thaumcraft 4!", "Also try Ars Magica 2!",
 			"Also try Pixelmon, if you like remote hacking of your server",

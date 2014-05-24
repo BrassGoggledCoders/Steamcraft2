@@ -1,5 +1,5 @@
 /**
- * This class was created by <Surseance> or his SC2 development team. 
+ * This class was created by <Surseance> or his SC2 development team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -15,6 +15,7 @@ package steamcraft.common.blocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemBlockWithMetadata;
 import net.minecraft.item.ItemStack;
 
 // TODO: Auto-generated Javadoc
@@ -23,9 +24,9 @@ import net.minecraft.item.ItemStack;
  *
  * @author warlordjones
  */
-public class BlockMetalItem extends ItemBlock
+public class BlockMetalItem extends ItemBlockWithMetadata
 {
-	
+
 	/**
 	 * Instantiates a new block metal item.
 	 *
@@ -33,7 +34,7 @@ public class BlockMetalItem extends ItemBlock
 	 */
 	public BlockMetalItem(final Block block)
 	{
-		super(block);
+		super(block, block);
 		setMaxDamage(0);
 		setHasSubtypes(true);
 	}

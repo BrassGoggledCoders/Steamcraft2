@@ -15,10 +15,12 @@ package steamcraft.common.config;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
+import steamcraft.common.Steamcraft;
 import steamcraft.common.items.ItemCanister;
 import steamcraft.common.items.ItemChisel;
 import steamcraft.common.items.ItemMechanical;
 import steamcraft.common.items.ItemMisc;
+import steamcraft.common.items.ItemPipe;
 import steamcraft.common.items.ItemResource;
 import steamcraft.common.items.ItemTeaSeed;
 import steamcraft.common.items.ItemWatch;
@@ -38,29 +40,29 @@ public class ConfigItems
 	// Item Tools(sort of)
 	/** The item mechanical. */
 	public static Item itemMechanical;
-	
+
 	/** The item ingot. */
 	public static Item itemResource, itemIngot;
-	
+
 	/** The item watch. */
 	public static Item itemWatch;
-	
+
 	/** The item tea seed. */
 	public static Item itemTeaSeed;
-	
+
 	/** The item chisel. */
 	public static Item itemChisel;
 
 	// Armor
 	/** The item brass goggles. */
 	public static Item itemBrassGoggles;
-	
+
 	/** The item aqualung. */
 	public static Item itemAqualung;
-	
+
 	/** The item leg braces. */
 	public static Item itemLegBraces;
-	
+
 	/** The item roller skates. */
 	public static Item itemRollerSkates;
 
@@ -69,25 +71,25 @@ public class ConfigItems
 
 	/** The item helmet etherium. */
 	public static Item itemHelmetEtherium;
-	
+
 	/** The item plate etherium. */
 	public static Item itemPlateEtherium;
-	
+
 	/** The item legs etherium. */
 	public static Item itemLegsEtherium;
-	
+
 	/** The item boots etherium. */
 	public static Item itemBootsEtherium;
 
 	/** The item helmet obsidian. */
 	public static Item itemHelmetObsidian;
-	
+
 	/** The item plate obsidian. */
 	public static Item itemPlateObsidian;
-	
+
 	/** The item legs obsidian. */
 	public static Item itemLegsObsidian;
-	
+
 	/** The item boots obsidian. */
 	public static Item itemBootsObsidian;
 
@@ -97,33 +99,37 @@ public class ConfigItems
 
 	/** The item cold kettle. */
 	public static Item itemColdKettle;
-	
+
 	/** The item hot kettle. */
 	public static Item itemHotKettle;
-	
+
 	/** The item empty kettle. */
 	public static Item itemEmptyKettle;
-	
+
 	/** The item empty teacup. */
 	public static Item itemEmptyTeacup;
-	
+
 	/** The item full teacup. */
 	public static Item itemFullTeacup;
 
 	/** The item steam canister. */
 	public static Item itemSteamCanister;
-	
+
 	/** The item canister gas. */
 	public static Item itemCanisterGas;
-	
+
 	/** The item canister empty. */
 	public static Item itemCanisterEmpty;
 
 	/** The item musket round. */
 	public static Item itemMusketRound;
-	
+
 	/** The item bucket steam. */
 	public static Item itemBucketSteam;
+
+	public static Item itemPipe;
+
+	public static Item itemPoppySeed;
 
 	/**
 	 * Inits the.
@@ -165,7 +171,7 @@ public class ConfigItems
 		 * itemChisel = new
 		 * ItemChisel(Config.itemChiselId).setUnlocalizedName("itemChisel");
 		 * GameRegistry.registerItem(itemChisel, "ItemChisel", LibInfo.ID);
-		 * 
+		 *
 		 * //Armor itemBrassGoggles = new ItemCustomArmor(Config.itemGogglesId,
 		 * MaterialHelper.STEAM_ARMOR, 0, 0).setUnlocalizedName("itemGoggles");
 		 * GameRegistry.registerItem(itemBrassGoggles, "ItemBrassGoggles",
@@ -188,7 +194,7 @@ public class ConfigItems
 		 * 1).setUnlocalizedName("itemSteamJetpack");
 		 * GameRegistry.registerItem(itemSteamJetpack, "ItemSteamJetpack",
 		 * LibInfo.ID);
-		 * 
+		 *
 		 * itemHelmetEtherium = new ItemNormalArmor(Config.itemHelmetEtheriumId,
 		 * MaterialHelper.ETHERIUM_ARMOR, 0,
 		 * 0).setUnlocalizedName("itemHelmetEtherium");
@@ -209,7 +215,7 @@ public class ConfigItems
 		 * 3).setUnlocalizedName("itemBootsEtherium");
 		 * GameRegistry.registerItem(itemRollerSkates, "ItemBootsEtherium",
 		 * LibInfo.ID);
-		 * 
+		 *
 		 * itemHelmetObsidian = new ItemNormalArmor(Config.itemHelmetObsidianId,
 		 * MaterialHelper.OBSIDIAN_ARMOR, 0,
 		 * 0).setUnlocalizedName("itemHelmetObsidian");
@@ -230,7 +236,7 @@ public class ConfigItems
 		 * 3).setUnlocalizedName("itemBootsObsidian");
 		 * GameRegistry.registerItem(itemRollerSkates, "ItemBootsObsidian",
 		 * LibInfo.ID);
-		 * 
+		 *
 		 * //More Items itemTeacupEmpty = new
 		 * ItemTeacup(Config.itemTeacupEmptyId, 0, 0.0F,
 		 * false).setUnlocalizedName("itemTeacupEmpty");
@@ -279,11 +285,9 @@ public class ConfigItems
 				.setUnlocalizedName("itemWatch");
 		GameRegistry.registerItem(itemWatch, "ItemWatch", LibInfo.ID);
 
-		itemTeaSeed = new ItemTeaSeed().setUnlocalizedName("ItemTeaSeed")
-				.setUnlocalizedName("itemTeaSeed");
+		itemTeaSeed = new ItemTeaSeed().setUnlocalizedName("itemTeaSeed");
 		GameRegistry.registerItem(itemTeaSeed, "ItemTeaSeed", LibInfo.ID);
-		itemChisel = new ItemChisel().setUnlocalizedName("ItemChisel")
-				.setUnlocalizedName("itemChisel");
+		itemChisel = new ItemChisel().setUnlocalizedName("itemChisel");
 		GameRegistry.registerItem(itemChisel, "ItemChisel", LibInfo.ID);
 
 		itemBrassGoggles = new ItemCustomArmor(ItemArmor.ArmorMaterial.CHAIN,
@@ -295,5 +299,9 @@ public class ConfigItems
 															 */;
 		GameRegistry.registerItem(itemBrassGoggles, "ItemCustomArmor",
 				LibInfo.ID);
+		itemPipe = new ItemPipe();
+		GameRegistry.registerItem(itemPipe, "ItemPipe", LibInfo.ID);
+		itemPoppySeed = new Item().setUnlocalizedName("itemPoppySeed").setCreativeTab(Steamcraft.tabSC2);
+		GameRegistry.registerItem(itemPoppySeed, "ItemPoppySeed", LibInfo.ID);
 	}
 }

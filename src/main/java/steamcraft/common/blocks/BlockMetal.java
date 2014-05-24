@@ -13,16 +13,22 @@
  */
 package steamcraft.common.blocks;
 
+import java.util.List;
 import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import steamcraft.common.Steamcraft;
+import steamcraft.common.config.ConfigBlocks;
+import steamcraft.common.config.ConfigItems;
 import steamcraft.common.lib.LibInfo;
 import boilerplate.common.Utils;
 import cpw.mods.fml.relauncher.Side;
@@ -115,6 +121,20 @@ public class BlockMetal extends Block
 				&& (world.getBlockMetadata(x, y, z) == 4))
 		{
 			Utils.sparkle(world, x, y, z, "reddust");
+		}
+	}
+	/* (non-Javadoc)
+	 * @see net.minecraft.item.Item#getSubItems(net.minecraft.item.Item, net.minecraft.creativetab.CreativeTabs, java.util.List)
+	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void getSubBlocks(final Item item, final CreativeTabs tab,
+			final List l)
+	{
+		for (int var4 = 0; var4 < 8; ++var4)
+		{
+			l.add(new ItemStack(ConfigBlocks.blockMetal, 1, var4));
 		}
 	}
 }
