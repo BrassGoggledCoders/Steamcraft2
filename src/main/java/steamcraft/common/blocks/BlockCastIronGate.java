@@ -21,11 +21,18 @@ import steamcraft.common.config.ConfigBlocks;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class BlockCastIronGate.
+ *
  * @author Surseance (Johnny Eatmon)
  */
 public class BlockCastIronGate extends BlockFenceGate
 {
+	
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.BlockFenceGate#getIcon(int, int)
+	 */
 	@Override
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(final int side, final int metadata)
@@ -33,6 +40,9 @@ public class BlockCastIronGate extends BlockFenceGate
 		return ConfigBlocks.blockCastIronFence.getBlockTextureFromSide(side);
 	}
 
+	/**
+	 * Instantiates a new block cast iron gate.
+	 */
 	public BlockCastIronGate()
 	{
 		setHardness(7.0F);

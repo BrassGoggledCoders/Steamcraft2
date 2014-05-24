@@ -18,12 +18,23 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import steamcraft.api.vanity.IBoots;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class SlotBoots.
+ *
  * @author warlordjones
- * 
  */
 public class SlotBoots extends Slot
 {
+	
+	/**
+	 * Instantiates a new slot boots.
+	 *
+	 * @param inventory the inventory
+	 * @param i the i
+	 * @param j the j
+	 * @param k the k
+	 */
 	public SlotBoots(final IInventory inventory, final int i, final int j,
 			final int k)
 	{
@@ -34,6 +45,9 @@ public class SlotBoots extends Slot
 	 * Check if the stack is a valid item for this slot. Always true beside for
 	 * the armor slots (and now also not always true for our custom inventory
 	 * slots)
+	 *
+	 * @param is the is
+	 * @return true, if is item valid
 	 */
 	@Override
 	public boolean isItemValid(final ItemStack is)
@@ -43,7 +57,9 @@ public class SlotBoots extends Slot
 
 	/**
 	 * Returns the maximum stack size for a given slot (usually the same as
-	 * getInventoryStackLimit(), but 1 in the case of armor slots)
+	 * getInventoryStackLimit(), but 1 in the case of armor slots).
+	 *
+	 * @return the slot stack limit
 	 */
 	@Override
 	public int getSlotStackLimit()

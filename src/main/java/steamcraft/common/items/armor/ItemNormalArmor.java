@@ -23,14 +23,26 @@ import steamcraft.common.lib.MaterialHelper;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ItemNormalArmor.
+ *
  * @author Decebaldecebal
- * 
  */
 public class ItemNormalArmor extends ItemArmor
 {
+	
+	/** The material. */
 	ArmorMaterial material;
 
+	/**
+	 * Instantiates a new item normal armor.
+	 *
+	 * @param id the id
+	 * @param mat the mat
+	 * @param renderIndex the render index
+	 * @param armorType the armor type
+	 */
 	public ItemNormalArmor(final int id, ArmorMaterial mat,
 			final int renderIndex, final int armorType)
 	{
@@ -40,6 +52,9 @@ public class ItemNormalArmor extends ItemArmor
 		setCreativeTab(Steamcraft.tabSC2);
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.item.ItemArmor#registerIcons(net.minecraft.client.renderer.texture.IIconRegister)
+	 */
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(final IIconRegister icon)
@@ -48,6 +63,9 @@ public class ItemNormalArmor extends ItemArmor
 				+ this.getUnlocalizedName().substring(5));
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.item.Item#getArmorTexture(net.minecraft.item.ItemStack, net.minecraft.entity.Entity, int, java.lang.String)
+	 */
 	@Override
 	@SideOnly(Side.CLIENT)
 	public String getArmorTexture(final ItemStack is, final Entity entity,

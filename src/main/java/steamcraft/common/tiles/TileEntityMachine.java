@@ -24,16 +24,21 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 
+// TODO: Auto-generated Javadoc
 /**
- * Basic machine class that includes a lot of functions widely used
- * 
+ * Basic machine class that includes a lot of functions widely used.
+ *
  * @author Decebaldecebal
- * 
  */
 public class TileEntityMachine extends TileEntity implements ISidedInventory
 {
+	
+	/** The inventory. */
 	protected ItemStack[] inventory;
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.tileentity.TileEntity#readFromNBT(net.minecraft.nbt.NBTTagCompound)
+	 */
 	@Override
 	public void readFromNBT(final NBTTagCompound par1NBTTagCompound)
 	{
@@ -55,6 +60,9 @@ public class TileEntityMachine extends TileEntity implements ISidedInventory
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.tileentity.TileEntity#writeToNBT(net.minecraft.nbt.NBTTagCompound)
+	 */
 	@Override
 	public void writeToNBT(final NBTTagCompound par1NBTTagCompound)
 	{
@@ -76,18 +84,27 @@ public class TileEntityMachine extends TileEntity implements ISidedInventory
 		par1NBTTagCompound.setTag("Items", nbttaglist);
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.inventory.IInventory#getSizeInventory()
+	 */
 	@Override
 	public int getSizeInventory()
 	{
 		return inventory.length;
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.inventory.IInventory#getStackInSlot(int)
+	 */
 	@Override
 	public ItemStack getStackInSlot(final int par1)
 	{
 		return inventory[par1];
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.inventory.IInventory#decrStackSize(int, int)
+	 */
 	@Override
 	public ItemStack decrStackSize(final int par1, final int par2)
 	{
@@ -119,6 +136,9 @@ public class TileEntityMachine extends TileEntity implements ISidedInventory
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.inventory.IInventory#getStackInSlotOnClosing(int)
+	 */
 	@Override
 	public ItemStack getStackInSlotOnClosing(final int par1)
 	{
@@ -134,6 +154,9 @@ public class TileEntityMachine extends TileEntity implements ISidedInventory
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.inventory.IInventory#setInventorySlotContents(int, net.minecraft.item.ItemStack)
+	 */
 	@Override
 	public void setInventorySlotContents(final int par1,
 			final ItemStack par2ItemStack)
@@ -147,12 +170,18 @@ public class TileEntityMachine extends TileEntity implements ISidedInventory
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.inventory.IInventory#getInventoryStackLimit()
+	 */
 	@Override
 	public int getInventoryStackLimit()
 	{
 		return 64;
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.inventory.IInventory#isUseableByPlayer(net.minecraft.entity.player.EntityPlayer)
+	 */
 	@Override
 	public boolean isUseableByPlayer(final EntityPlayer player)
 	{
@@ -161,18 +190,27 @@ public class TileEntityMachine extends TileEntity implements ISidedInventory
 						zCoord + 0.5D) <= 64.0D;
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.inventory.IInventory#isItemValidForSlot(int, net.minecraft.item.ItemStack)
+	 */
 	@Override
 	public boolean isItemValidForSlot(final int i, final ItemStack itemstack)
 	{
 		return false;
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.inventory.ISidedInventory#getAccessibleSlotsFromSide(int)
+	 */
 	@Override
 	public int[] getAccessibleSlotsFromSide(final int var1)
 	{
 		return null;
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.inventory.ISidedInventory#canInsertItem(int, net.minecraft.item.ItemStack, int)
+	 */
 	@Override
 	public boolean canInsertItem(final int i, final ItemStack itemstack,
 			final int j)
@@ -180,6 +218,9 @@ public class TileEntityMachine extends TileEntity implements ISidedInventory
 		return false;
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.inventory.ISidedInventory#canExtractItem(int, net.minecraft.item.ItemStack, int)
+	 */
 	@Override
 	public boolean canExtractItem(final int i, final ItemStack itemstack,
 			final int j)
@@ -187,23 +228,35 @@ public class TileEntityMachine extends TileEntity implements ISidedInventory
 		return false;
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.inventory.IInventory#closeInventory()
+	 */
 	@Override
 	public void closeInventory()
 	{
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.inventory.IInventory#getInventoryName()
+	 */
 	@Override
 	public String getInventoryName()
 	{
 		return getInventoryName();
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.inventory.IInventory#hasCustomInventoryName()
+	 */
 	@Override
 	public boolean hasCustomInventoryName()
 	{
 		return true;
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.inventory.IInventory#openInventory()
+	 */
 	@Override
 	public void openInventory()
 	{

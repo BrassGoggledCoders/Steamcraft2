@@ -22,14 +22,21 @@ import steamcraft.common.lib.LibInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class BlockCustomOre.
+ *
  * @author Surseance (Johnny Eatmon)
- * 
  */
 public class BlockCustomOre extends Block
 {
+	
+	/** The icon. */
 	private final IIcon[] icon = new IIcon[8];
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#getIcon(int, int)
+	 */
 	@Override
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(final int side, final int metadata)
@@ -37,6 +44,9 @@ public class BlockCustomOre extends Block
 		return icon[metadata];
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#registerBlockIcons(net.minecraft.client.renderer.texture.IIconRegister)
+	 */
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(final IIconRegister ir)
@@ -51,6 +61,9 @@ public class BlockCustomOre extends Block
 		icon[7] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "oreZinc");
 	}
 
+	/**
+	 * Instantiates a new block custom ore.
+	 */
 	public BlockCustomOre()
 	{
 		super(Material.rock);
@@ -62,6 +75,9 @@ public class BlockCustomOre extends Block
 		setCreativeTab(Steamcraft.tabSC2);
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#damageDropped(int)
+	 */
 	@Override
 	public int damageDropped(final int id)
 	{

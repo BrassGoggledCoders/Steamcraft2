@@ -16,12 +16,22 @@ package steamcraft.common.items.armor;
 import net.minecraft.item.ItemArmor;
 import steamcraft.common.Steamcraft;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ItemMonocle.
+ *
  * @author Surseance (Johnny Eatmon)
- * 
  */
 public class ItemMonocle extends ItemArmor
 {
+	
+	/**
+	 * Instantiates a new item monocle.
+	 *
+	 * @param armorMat the armor mat
+	 * @param armorType the armor type
+	 * @param renderIndex the render index
+	 */
 	public ItemMonocle(final ItemArmor.ArmorMaterial armorMat,
 			final int armorType, final int renderIndex)
 	{

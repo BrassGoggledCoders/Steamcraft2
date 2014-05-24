@@ -26,12 +26,18 @@ import boilerplate.client.fx.FXSmoke;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ItemChisel.
+ *
  * @author Surseance (Johnny Eatmon)
- * 
  */
 public class ItemChisel extends Item
 {
+	
+	/* (non-Javadoc)
+	 * @see net.minecraft.item.Item#registerIcons(net.minecraft.client.renderer.texture.IIconRegister)
+	 */
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(final IIconRegister ir)
@@ -39,6 +45,9 @@ public class ItemChisel extends Item
 		itemIcon = ir.registerIcon(LibInfo.PREFIX + "itemChisel");
 	}
 
+	/**
+	 * Instantiates a new item chisel.
+	 */
 	public ItemChisel()
 	{
 		setMaxStackSize(1);
@@ -47,6 +56,9 @@ public class ItemChisel extends Item
 		setCreativeTab(Steamcraft.tabSC2);
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.item.Item#onItemUse(net.minecraft.item.ItemStack, net.minecraft.entity.player.EntityPlayer, net.minecraft.world.World, int, int, int, int, float, float, float)
+	 */
 	@Override
 	public boolean onItemUse(final ItemStack is, final EntityPlayer player,
 			final World world, final int x, final int y, final int z,

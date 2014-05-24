@@ -17,66 +17,158 @@ import java.io.File;
 
 import net.minecraftforge.common.config.Configuration;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class Config.
+ *
  * @author Surseance (Johnny Eatmon)
- * 
  */
 public class Config
 {
+	
+	/** The config. */
 	public static Configuration config;
+	
+	/** The Constant CATEGORY_ENTITIES. */
 	public static final String CATEGORY_ENTITIES = "Entities";
 
+	/** The Constant CATEGORY_GEN_OPTIONS. */
 	public static final String CATEGORY_GEN_OPTIONS = "generation options";
 
 	// Canisters
+	/** The item canister empty id. */
 	public static int itemCanisterEmptyId;
+	
+	/** The item canister steam id. */
 	public static int itemCanisterSteamId;
+	
+	/** The item canister gas id. */
 	public static int itemCanisterGasId;
 
 	// Entities
+	/** The ent bullet id. */
 	public static int entBulletId;
 
 	/* POWER TO THE END USER! Good heavens... */
+	/** The etherium chance. */
 	public static int etheriumChance;
+	
+	/** The uranium chance. */
 	public static int uraniumChance;
+	
+	/** The brimstone chance. */
 	public static int brimstoneChance;
+	
+	/** The bornite chance. */
 	public static int borniteChance;
+	
+	/** The phosphate chance. */
 	public static int phosphateChance;
+	
+	/** The aluminum chance. */
 	public static int aluminumChance;
+	
+	/** The copper chance. */
 	public static int copperChance;
+	
+	/** The tin chance. */
 	public static int tinChance;
+	
+	/** The zinc chance. */
 	public static int zincChance;
+	
+	/** The nether etherium crystal chance. */
 	public static int netherEtheriumCrystalChance;
+	
+	/** The end etherium crystal chance. */
 	public static int endEtheriumCrystalChance;
+	
+	/** The etherium height. */
 	public static int etheriumHeight;
+	
+	/** The uranium height. */
 	public static int uraniumHeight;
+	
+	/** The brimstone height. */
 	public static int brimstoneHeight;
+	
+	/** The bornite height. */
 	public static int borniteHeight;
+	
+	/** The phosphate height. */
 	public static int phosphateHeight;
+	
+	/** The aluminum height. */
 	public static int aluminumHeight;
+	
+	/** The copper height. */
 	public static int copperHeight;
+	
+	/** The tin height. */
 	public static int tinHeight;
+	
+	/** The zinc height. */
 	public static int zincHeight;
+	
+	/** The nether etherium crystal height. */
 	public static int netherEtheriumCrystalHeight;
+	
+	/** The end etherium crystal height. */
 	public static int endEtheriumCrystalHeight;
 
+	/** The generation enabled. */
 	public static boolean generationEnabled;
+	
+	/** The overworld generation enabled. */
 	public static boolean overworldGenerationEnabled;
+	
+	/** The nether generation enabled. */
 	public static boolean netherGenerationEnabled;
+	
+	/** The end generation enabled. */
 	public static boolean endGenerationEnabled;
+	
+	/** The ore generation enabled. */
 	public static boolean oreGenerationEnabled;
+	
+	/** The etherium ore gen enabled. */
 	public static boolean etheriumOreGenEnabled;
+	
+	/** The uranium ore gen enabled. */
 	public static boolean uraniumOreGenEnabled;
+	
+	/** The brimstone ore gen enabled. */
 	public static boolean brimstoneOreGenEnabled;
+	
+	/** The bornite ore gen enabled. */
 	public static boolean borniteOreGenEnabled;
+	
+	/** The phosphate ore gen enabled. */
 	public static boolean phosphateOreGenEnabled;
+	
+	/** The aluminum ore gen enabled. */
 	public static boolean aluminumOreGenEnabled;
+	
+	/** The copper ore gen enabled. */
 	public static boolean copperOreGenEnabled;
+	
+	/** The tin ore gen enabled. */
 	public static boolean tinOreGenEnabled;
+	
+	/** The zinc ore gen enabled. */
 	public static boolean zincOreGenEnabled;
+	
+	/** The nether etherium crystal gen enabled. */
 	public static boolean netherEtheriumCrystalGenEnabled;
+	
+	/** The end etherium crystal gen enabled. */
 	public static boolean endEtheriumCrystalGenEnabled;
 
+	/**
+	 * Initialize.
+	 *
+	 * @param file the file
+	 */
 	public static void initialize(final File file)
 	{
 		config = new Configuration(file);
@@ -172,19 +264,31 @@ public class Config
 				.getBoolean(true);
 	}
 
+	/**
+	 * Save.
+	 */
 	public static void save()
 	{
 		config.save();
 	}
 
+	/**
+	 * Inits the loot.
+	 */
 	public static void initLoot()
 	{
 	}
 
+	/**
+	 * Inits the mod compatibility.
+	 */
 	public static void initModCompatibility()
 	{
 	}
 
+	/**
+	 * Register biomes.
+	 */
 	public static void registerBiomes()
 	{
 	}

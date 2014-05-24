@@ -16,21 +16,42 @@ package steamcraft.client.renderers.tile;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ModelCastIronLampTop.
+ *
  * @author Surseance (Johnny Eatmon)
- * 
  */
 public class ModelCastIronLampTop extends ModelBase
 {
+	
+	/** The bracket. */
 	public ModelRenderer bracket;
+	
+	/** The bracket wide. */
 	public ModelRenderer bracketWide;
+	
+	/** The crossbar left. */
 	public ModelRenderer crossbarLeft;
+	
+	/** The crossbar right. */
 	public ModelRenderer crossbarRight;
+	
+	/** The lower lamp. */
 	public ModelRenderer lowerLamp;
+	
+	/** The top. */
 	public ModelRenderer top;
+	
+	/** The top peak. */
 	public ModelRenderer topPeak;
+	
+	/** The upper lamp. */
 	public ModelRenderer upperLamp;
 
+	/**
+	 * Instantiates a new model cast iron lamp top.
+	 */
 	public ModelCastIronLampTop()
 	{
 		bracket = new ModelRenderer(this, 24, 3);
@@ -66,6 +87,9 @@ public class ModelCastIronLampTop extends ModelBase
 		// TopPeak.setPosition(-3F, 14F, -3F);
 	}
 
+	/**
+	 * Render sign.
+	 */
 	public void renderSign()
 	{
 		bracket.render(0.1F);

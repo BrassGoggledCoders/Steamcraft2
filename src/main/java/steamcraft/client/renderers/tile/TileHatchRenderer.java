@@ -22,19 +22,29 @@ import org.lwjgl.opengl.GL11;
 
 import steamcraft.common.lib.LibInfo;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class TileHatchRenderer.
+ *
  * @author warlordjones
- * 
  */
 public class TileHatchRenderer extends TileEntitySpecialRenderer
 {
+	
+	/** The model. */
 	private final ModelHatch model;
 
+	/**
+	 * Instantiates a new tile hatch renderer.
+	 */
 	public TileHatchRenderer()
 	{
 		model = new ModelHatch();
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer#renderTileEntityAt(net.minecraft.tileentity.TileEntity, double, double, double, float)
+	 */
 	@Override
 	public void renderTileEntityAt(final TileEntity te, final double dx,
 			final double dy, final double dz, final float scale)

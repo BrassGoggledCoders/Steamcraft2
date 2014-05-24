@@ -36,53 +36,101 @@ import steamcraft.common.tiles.TileSteamBoiler;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ConfigBlocks.
+ *
  * @author Surseance (Johnny Eatmon)
- * 
  */
 public class ConfigBlocks
 {
+	
+	/** The block custom ore. */
 	public static Block blockCustomOre;
+	
+	/** The block cosmetic. */
 	public static Block blockCosmetic;
+	
+	/** The block engraved. */
 	public static Block blockEngraved;
+	
+	/** The block cast iron fence. */
 	public static Block blockCastIronFence;
+	
+	/** The block cast iron gate. */
 	public static Block blockCastIronGate;
+	
+	/** The block crystal. */
 	public static Block blockCrystal;
+	
+	/** The block cast iron lamp i. */
 	public static Block blockCastIronLampI;
+	
+	/** The block cast iron lamp a. */
 	public static Block blockCastIronLampA;
+	
+	/** The block metal. */
 	public static Block blockMetal;
 
+	/** The block hatch. */
 	public static Block blockHatch;
 
+	/** The block steam pipe. */
 	public static Block blockSteamPipe;
 
+	/** The block lamp i. */
 	public static Block blockLampI;
+	
+	/** The block lamp a. */
 	public static Block blockLampA;
+	
+	/** The block tea plant. */
 	public static Block blockTeaPlant;
+	
+	/** The block smog. */
 	public static Block blockSmog;
 
+	/** The block fluid steam. */
 	public static Block blockFluidSteam;
+	
+	/** The block slate. */
 	public static Block blockSlate;
 
+	/** The block steam boiler. */
 	public static Block blockSteamBoiler;
 
+	/** The steam fluid. */
 	public static Fluid steamFluid;
 
+	/** The block steam. */
 	public static Block blockSteam;
 
+	/** The block obsidian tile stairs. */
 	public static BlockStairs blockObsidianTileStairs;
 
+	/** The block crystal ri. */
 	public static int blockCrystalRI = RenderingRegistry
 			.getNextAvailableRenderId();
+	
+	/** The block cast iron lamp ri. */
 	public static int blockCastIronLampRI = RenderingRegistry
 			.getNextAvailableRenderId();
+	
+	/** The block lightning rod ri. */
 	public static int blockLightningRodRI = RenderingRegistry
 			.getNextAvailableRenderId();
+	
+	/** The block smog ri. */
 	public static int blockSmogRI = RenderingRegistry
 			.getNextAvailableRenderId();
+	
+	/** The block hatch ri. */
 	public static int blockHatchRI = RenderingRegistry
 			.getNextAvailableRenderId();
 
+	/**
+	 * Inits the.
+	 */
 	public static void init()
 	{
 		initializeBlocks();
@@ -90,6 +138,9 @@ public class ConfigBlocks
 		registerTileEntities();
 	}
 
+	/**
+	 * Initialize blocks.
+	 */
 	public static void initializeBlocks()
 	{
 		blockCustomOre = new BlockCustomOre().setBlockName("blockCustomOre");
@@ -116,6 +167,9 @@ public class ConfigBlocks
 		// FluidRegistry.registerFluid(steamFluid);
 	}
 
+	/**
+	 * Register blocks.
+	 */
 	public static void registerBlocks()
 	{
 		GameRegistry.registerBlock(blockCustomOre, BlockCustomOreItem.class,
@@ -140,6 +194,9 @@ public class ConfigBlocks
 		// BlockSlateItem.class,"BlockSlate");
 	}
 
+	/**
+	 * Register tile entities.
+	 */
 	private static void registerTileEntities()
 	{
 		GameRegistry.registerTileEntity(TileCrystal.class, LibInfo.ID

@@ -17,45 +17,78 @@ import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraftforge.common.util.EnumHelper;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class MaterialHelper.
+ *
  * @author Decebaldecebal
- * 
  */
 public class MaterialHelper
 {
 	// Tool Materials
+	/** The obsidian tool. */
 	public static ToolMaterial OBSIDIAN_TOOL;
+	
+	/** The etherium tool. */
 	public static ToolMaterial ETHERIUM_TOOL;
+	
+	/** The steam tool. */
 	public static ToolMaterial STEAM_TOOL;
 
+	/** The d wood. */
 	public static ToolMaterial D_WOOD = EnumHelper.addToolMaterial("D_WOOD", 0,
 			89, 4.0F, 0.0F, 0);
+	
+	/** The d stone. */
 	public static ToolMaterial D_STONE = EnumHelper.addToolMaterial("D_STONE",
 			0, 197, 8.0F, 0.0F, 0);
+	
+	/** The d iron. */
 	public static ToolMaterial D_IRON = EnumHelper.addToolMaterial("D_IRON", 0,
 			375, 12.0F, 0.0F, 0);
+	
+	/** The d emerald. */
 	public static ToolMaterial D_EMERALD = EnumHelper.addToolMaterial(
 			"D_EMERALD", 0, 2342, 16.0F, 0.0F, 0);
+	
+	/** The d gold. */
 	public static ToolMaterial D_GOLD = EnumHelper.addToolMaterial("D_GOLD", 0,
 			48, 24.0F, 0.0F, 0);
+	
+	/** The d steam. */
 	public static ToolMaterial D_STEAM = EnumHelper.addToolMaterial("D_STEAM",
 			0, 482, 24.0F, 0.0F, 0);
+	
+	/** The d etherium. */
 	public static ToolMaterial D_ETHERIUM = EnumHelper.addToolMaterial(
 			"D_ETHERIUM", 0, 3518, 34.0F, 0.0F, 0);
+	
+	/** The d obsidian. */
 	public static ToolMaterial D_OBSIDIAN = EnumHelper.addToolMaterial(
 			"D_OBSIDIAN", 0, -1, 6.0F, 0.0F, 0);
 
 	// Armor Materials
+	/** The obsidian armor. */
 	public static ArmorMaterial OBSIDIAN_ARMOR;
+	
+	/** The etherium armor. */
 	public static ArmorMaterial ETHERIUM_ARMOR;
+	
+	/** The steam armor. */
 	public static ArmorMaterial STEAM_ARMOR;
 
+	/**
+	 * Initialize materials.
+	 */
 	public static void initializeMaterials()
 	{
 		initToolMaterials();
 		initArmorMaterials();
 	}
 
+	/**
+	 * Inits the tool materials.
+	 */
 	private static void initToolMaterials()
 	{
 		// name, int harvest level, int max uses, float efficiency, float
@@ -82,6 +115,9 @@ public class MaterialHelper
 				0.0F, 0);
 	}
 
+	/**
+	 * Inits the armor materials.
+	 */
 	private static void initArmorMaterials()
 	{
 		// name, int durability, int[] reduction amounts, int enchantability

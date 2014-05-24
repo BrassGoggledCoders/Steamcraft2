@@ -17,11 +17,18 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import steamcraft.common.config.ConfigBlocks;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class BlockSlateItem.
+ *
  * @author warlordjones
  */
 public class BlockSlateItem extends ItemBlock
 {
+	
+	/**
+	 * Instantiates a new block slate item.
+	 */
 	public BlockSlateItem()
 	{
 		super(ConfigBlocks.blockSlate);
@@ -29,12 +36,18 @@ public class BlockSlateItem extends ItemBlock
 		setHasSubtypes(true);
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.item.Item#getMetadata(int)
+	 */
 	@Override
 	public int getMetadata(final int metadata)
 	{
 		return metadata;
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.item.ItemBlock#getUnlocalizedName(net.minecraft.item.ItemStack)
+	 */
 	@Override
 	public String getUnlocalizedName(final ItemStack is)
 	{

@@ -24,11 +24,18 @@ import steamcraft.common.config.ConfigBlocks;
 import steamcraft.common.tiles.TileCrystal;
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class BlockCrystalRenderer.
+ *
  * @author Surseance (Johnny Eatmon)
  */
 public class BlockCrystalRenderer implements ISimpleBlockRenderingHandler
 {
+	
+	/* (non-Javadoc)
+	 * @see cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler#renderInventoryBlock(net.minecraft.block.Block, int, int, net.minecraft.client.renderer.RenderBlocks)
+	 */
 	@Override
 	public void renderInventoryBlock(final Block block, final int metadata,
 			final int modelID, final RenderBlocks renderer)
@@ -41,6 +48,9 @@ public class BlockCrystalRenderer implements ISimpleBlockRenderingHandler
 		GL11.glEnable(32826);
 	}
 
+	/* (non-Javadoc)
+	 * @see cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler#renderWorldBlock(net.minecraft.world.IBlockAccess, int, int, int, net.minecraft.block.Block, int, net.minecraft.client.renderer.RenderBlocks)
+	 */
 	@Override
 	public boolean renderWorldBlock(final IBlockAccess world, final int x,
 			final int y, final int z, final Block block, final int modelID,
@@ -49,12 +59,18 @@ public class BlockCrystalRenderer implements ISimpleBlockRenderingHandler
 		return true;
 	}
 
+	/* (non-Javadoc)
+	 * @see cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler#shouldRender3DInInventory(int)
+	 */
 	@Override
 	public boolean shouldRender3DInInventory(final int i)
 	{
 		return true;
 	}
 
+	/* (non-Javadoc)
+	 * @see cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler#getRenderId()
+	 */
 	@Override
 	public int getRenderId()
 	{

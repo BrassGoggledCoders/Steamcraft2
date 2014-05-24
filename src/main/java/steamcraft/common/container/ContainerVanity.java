@@ -21,17 +21,28 @@ import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemBucket;
 import net.minecraft.item.ItemStack;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ContainerVanity.
+ *
  * @author warlordjones
- * 
  */
 public class ContainerVanity extends Container
 {
+	
+	/** The Constant HOTBAR_END. */
 	private static final int ARMOR_START = InventoryVanity.INV_SIZE,
 			ARMOR_END = ARMOR_START + 3, INV_START = ARMOR_END + 1,
 			INV_END = INV_START + 26, HOTBAR_START = INV_END + 1,
 			HOTBAR_END = HOTBAR_START + 8;
 
+	/**
+	 * Instantiates a new container vanity.
+	 *
+	 * @param player the player
+	 * @param inventoryPlayer the inventory player
+	 * @param inventoryCustom the inventory custom
+	 */
 	public ContainerVanity(final EntityPlayer player,
 			final InventoryPlayer inventoryPlayer,
 			final InventoryVanity inventoryCustom)
@@ -65,7 +76,10 @@ public class ContainerVanity extends Container
 
 	/**
 	 * This should always return true, since custom inventory can be accessed
-	 * from anywhere
+	 * from anywhere.
+	 *
+	 * @param player the player
+	 * @return true, if successful
 	 */
 	@Override
 	public boolean canInteractWith(final EntityPlayer player)
@@ -78,6 +92,10 @@ public class ContainerVanity extends Container
 	 * you will crash when someone does that. Basically the same as every other
 	 * container I make, since I define the same constant indices for all of
 	 * them
+	 *
+	 * @param player the player
+	 * @param slots the slots
+	 * @return the item stack
 	 */
 	@Override
 	public ItemStack transferStackInSlot(final EntityPlayer player,

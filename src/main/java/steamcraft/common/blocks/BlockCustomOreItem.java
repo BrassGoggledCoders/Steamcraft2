@@ -17,11 +17,20 @@ import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class BlockCustomOreItem.
+ *
  * @author Surseance (Johnny Eatmon)
  */
 public class BlockCustomOreItem extends ItemBlock
 {
+	
+	/**
+	 * Instantiates a new block custom ore item.
+	 *
+	 * @param block the block
+	 */
 	public BlockCustomOreItem(final Block block)
 	{
 		super(block);
@@ -29,12 +38,18 @@ public class BlockCustomOreItem extends ItemBlock
 		setHasSubtypes(true);
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.item.Item#getMetadata(int)
+	 */
 	@Override
 	public int getMetadata(final int metadata)
 	{
 		return metadata;
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.item.ItemBlock#getUnlocalizedName(net.minecraft.item.ItemStack)
+	 */
 	@Override
 	public String getUnlocalizedName(final ItemStack is)
 	{

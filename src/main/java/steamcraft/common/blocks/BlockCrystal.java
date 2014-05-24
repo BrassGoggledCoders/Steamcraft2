@@ -29,11 +29,18 @@ import steamcraft.common.tiles.TileCrystal;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class BlockCrystal.
+ *
  * @author Surseance (Johnny Eatmon)
  */
 public class BlockCrystal extends BlockContainer implements ITileEntityProvider
 {
+	
+	/**
+	 * Instantiates a new block crystal.
+	 */
 	public BlockCrystal()
 	{
 		super(Material.glass);
@@ -44,30 +51,45 @@ public class BlockCrystal extends BlockContainer implements ITileEntityProvider
 		// setUnlocalizedName("blockCrystal");
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.ITileEntityProvider#createNewTileEntity(net.minecraft.world.World, int)
+	 */
 	@Override
 	public TileEntity createNewTileEntity(final World world, final int metadata)
 	{
 		return new TileCrystal();
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#getRenderType()
+	 */
 	@Override
 	public int getRenderType()
 	{
 		return ConfigBlocks.blockCrystalRI;
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#isOpaqueCube()
+	 */
 	@Override
 	public boolean isOpaqueCube()
 	{
 		return false;
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#renderAsNormalBlock()
+	 */
 	@Override
 	public boolean renderAsNormalBlock()
 	{
 		return false;
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#getCollisionBoundingBoxFromPool(net.minecraft.world.World, int, int, int)
+	 */
 	@Override
 	public AxisAlignedBB getCollisionBoundingBoxFromPool(final World world,
 			final int x, final int y, final int z)
@@ -75,6 +97,9 @@ public class BlockCrystal extends BlockContainer implements ITileEntityProvider
 		return null;
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#canCreatureSpawn(net.minecraft.entity.EnumCreatureType, net.minecraft.world.IBlockAccess, int, int, int)
+	 */
 	@Override
 	public boolean canCreatureSpawn(final EnumCreatureType type,
 			final IBlockAccess world, final int x, final int y, final int z)
@@ -82,6 +107,9 @@ public class BlockCrystal extends BlockContainer implements ITileEntityProvider
 		return false;
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#addDestroyEffects(net.minecraft.world.World, int, int, int, int, net.minecraft.client.particle.EffectRenderer)
+	 */
 	@Override
 	@SideOnly(Side.CLIENT)
 	public boolean addDestroyEffects(final World world, final int x,
@@ -113,6 +141,9 @@ public class BlockCrystal extends BlockContainer implements ITileEntityProvider
 	 * this.quantityDropped(random); } }
 	 */
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#tickRate(net.minecraft.world.World)
+	 */
 	@Override
 	public int tickRate(final World world)
 	{

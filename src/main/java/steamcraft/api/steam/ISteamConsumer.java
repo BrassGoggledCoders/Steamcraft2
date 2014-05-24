@@ -13,12 +13,20 @@
  */
 package steamcraft.api.steam;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Interface ISteamConsumer.
+ *
  * @author Surseance (Johnny Eatmon)
- * 
  */
 public abstract interface ISteamConsumer
 {
-	/** */
+	
+	/**
+	 * Adds the steam.
+	 *
+	 * @param steam the steam
+	 * @return the float
+	 */
 	public abstract float addSteam(float steam);
 }

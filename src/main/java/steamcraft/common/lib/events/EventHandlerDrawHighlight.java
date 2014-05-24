@@ -35,15 +35,26 @@ import steamcraft.common.config.ConfigItems;
 import cpw.mods.fml.common.eventhandler.EventPriority;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class EventHandlerDrawHighlight.
+ *
  * @author Surseance (Johnny Eatmon)
- * 
  */
 public class EventHandlerDrawHighlight
 {
+	
+	/** The block. */
 	Block block;
+	
+	/** The z. */
 	int x, y, z;
 
+	/**
+	 * Render overlay.
+	 *
+	 * @param event the event
+	 */
 	@SubscribeEvent(priority = EventPriority.HIGH)
 	public void renderOverlay(final RenderGameOverlayEvent.Text event)
 	{
@@ -64,6 +75,11 @@ public class EventHandlerDrawHighlight
 				posY2, color);
 	}
 
+	/**
+	 * On draw block selection box.
+	 *
+	 * @param event the event
+	 */
 	@SubscribeEvent
 	public void onDrawBlockSelectionBox(final DrawBlockHighlightEvent event)
 	{
@@ -102,6 +118,15 @@ public class EventHandlerDrawHighlight
 				event.target.blockY, event.target.blockZ);
 	}
 
+	/**
+	 * Draw selection box.
+	 *
+	 * @param player the player
+	 * @param mop the mop
+	 * @param i the i
+	 * @param is the is
+	 * @param partialTicks the partial ticks
+	 */
 	private void drawSelectionBox(final EntityPlayer player,
 			final MovingObjectPosition mop, final int i, final ItemStack is,
 			final float partialTicks)
@@ -170,6 +195,11 @@ public class EventHandlerDrawHighlight
 		}
 	}
 
+	/**
+	 * Draw outlined bounding box.
+	 *
+	 * @param aaBB the aa bb
+	 */
 	private void drawOutlinedBoundingBox(final AxisAlignedBB aaBB)
 	{
 		final Tessellator tessellator = Tessellator.instance;

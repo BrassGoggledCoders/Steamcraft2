@@ -13,8 +13,6 @@
  */
 package steamcraft.common.blocks;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 import net.minecraft.block.Block;
@@ -32,16 +30,26 @@ import steamcraft.common.tiles.TileCastIronLamp;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class BlockCastIronLamp.
+ *
  * @author Surseance (Johnny Eatmon)
- * 
  */
 public class BlockCastIronLamp extends BlockContainer
 {
+	
+	/** The powered. */
 	public boolean powered;
-	private static List torchUpdates = new ArrayList();
+	
+	/** The instance. */
 	public static Block instance;
 
+	/**
+	 * Instantiates a new block cast iron lamp.
+	 *
+	 * @param flag the flag
+	 */
 	public BlockCastIronLamp(final boolean flag)
 	{
 		super(Material.circuits);
@@ -61,12 +69,18 @@ public class BlockCastIronLamp extends BlockContainer
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.ITileEntityProvider#createNewTileEntity(net.minecraft.world.World, int)
+	 */
 	@Override
 	public TileEntity createNewTileEntity(final World world, final int metadata)
 	{
 		return new TileCastIronLamp();
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#shouldSideBeRendered(net.minecraft.world.IBlockAccess, int, int, int, int)
+	 */
 	@Override
 	public boolean shouldSideBeRendered(final IBlockAccess world, final int x,
 			final int y, final int z, final int side)
@@ -74,12 +88,18 @@ public class BlockCastIronLamp extends BlockContainer
 		return false;
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#tickRate(net.minecraft.world.World)
+	 */
 	@Override
 	public int tickRate(final World world)
 	{
 		return 10;
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#getCollisionBoundingBoxFromPool(net.minecraft.world.World, int, int, int)
+	 */
 	@Override
 	public AxisAlignedBB getCollisionBoundingBoxFromPool(final World world,
 			final int x, final int y, final int z)
@@ -87,6 +107,9 @@ public class BlockCastIronLamp extends BlockContainer
 		return null;
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#getSelectedBoundingBoxFromPool(net.minecraft.world.World, int, int, int)
+	 */
 	@Override
 	public AxisAlignedBB getSelectedBoundingBoxFromPool(final World world,
 			final int x, final int y, final int z)
@@ -95,24 +118,36 @@ public class BlockCastIronLamp extends BlockContainer
 		return super.getSelectedBoundingBoxFromPool(world, x, y, z);
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#getRenderType()
+	 */
 	@Override
 	public int getRenderType()
 	{
 		return ConfigBlocks.blockCastIronLampRI;
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#renderAsNormalBlock()
+	 */
 	@Override
 	public boolean renderAsNormalBlock()
 	{
 		return false;
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#isOpaqueCube()
+	 */
 	@Override
 	public boolean isOpaqueCube()
 	{
 		return false;
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#onBlockPlaced(net.minecraft.world.World, int, int, int, int, float, float, float, int)
+	 */
 	@Override
 	public int onBlockPlaced(final World world, final int i, final int j,
 			final int k, final int side, final float hitX, final float hitY,
@@ -146,6 +181,9 @@ public class BlockCastIronLamp extends BlockContainer
 		return metadata;
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#canPlaceBlockAt(net.minecraft.world.World, int, int, int)
+	 */
 	@Override
 	public boolean canPlaceBlockAt(final World world, final int x, final int y,
 			final int z)
@@ -153,6 +191,9 @@ public class BlockCastIronLamp extends BlockContainer
 		return (world.getBlock(x, y - 1, z) != Blocks.air) ? true : false;
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.BlockContainer#onBlockAdded(net.minecraft.world.World, int, int, int)
+	 */
 	@Override
 	public void onBlockAdded(final World world, final int x, final int y,
 			final int z)
@@ -184,6 +225,9 @@ public class BlockCastIronLamp extends BlockContainer
 		dropIfCantStay(world, x, y, z);
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.BlockContainer#breakBlock(net.minecraft.world.World, int, int, int, net.minecraft.block.Block, int)
+	 */
 	@Override
 	public void breakBlock(final World world, final int x, final int y,
 			final int z, final Block block, final int metadata)
@@ -201,6 +245,9 @@ public class BlockCastIronLamp extends BlockContainer
 		super.breakBlock(world, x, y, z, block, metadata);
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#updateTick(net.minecraft.world.World, int, int, int, java.util.Random)
+	 */
 	@Override
 	public void updateTick(final World world, final int x, final int y,
 			final int z, final Random random)
@@ -219,6 +266,9 @@ public class BlockCastIronLamp extends BlockContainer
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#onNeighborBlockChange(net.minecraft.world.World, int, int, int, net.minecraft.block.Block)
+	 */
 	@Override
 	public void onNeighborBlockChange(final World world, final int x,
 			final int y, final int z, final Block block)
@@ -272,6 +322,15 @@ public class BlockCastIronLamp extends BlockContainer
 		super.onNeighborBlockChange(world, x, y, z, block);
 	}
 
+	/**
+	 * Drop if cant stay.
+	 *
+	 * @param world the world
+	 * @param x the x
+	 * @param y the y
+	 * @param z the z
+	 * @return true, if successful
+	 */
 	private boolean dropIfCantStay(final World world, final int x, final int y,
 			final int z)
 	{
@@ -289,17 +348,31 @@ public class BlockCastIronLamp extends BlockContainer
 	}
 
 	// @Override
+	/**
+	 * Id dropped.
+	 *
+	 * @param id the id
+	 * @param random the random
+	 * @param metadata the metadata
+	 * @return the int
+	 */
 	public int idDropped(final int id, final Random random, final int metadata)
 	{
 		return 0;// ConfigBlocks.blockCastIronLampI;
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#canProvidePower()
+	 */
 	@Override
 	public boolean canProvidePower()
 	{
 		return false;
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#randomDisplayTick(net.minecraft.world.World, int, int, int, java.util.Random)
+	 */
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(final World world, final int x, final int j,

@@ -19,16 +19,27 @@ import net.minecraft.entity.Entity;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ModelTopHat.
+ *
  * @author Surseance (Johnny Eatmon) & Falkok15
- * 
  */
 @SideOnly(Side.CLIENT)
 public class ModelTopHat extends ModelBiped
 {
+	
+	/** The Shape1. */
 	ModelRenderer Shape1;
+	
+	/** The Shape2. */
 	ModelRenderer Shape2;
 
+	/**
+	 * Instantiates a new model top hat.
+	 *
+	 * @param f the f
+	 */
 	public ModelTopHat(final float f)
 	{
 		super(f, 0, 64, 32);
@@ -51,6 +62,9 @@ public class ModelTopHat extends ModelBiped
 		bipedHead.addChild(Shape2);
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.client.model.ModelBiped#render(net.minecraft.entity.Entity, float, float, float, float, float, float)
+	 */
 	@Override
 	public void render(final Entity entity, final float f, final float f1,
 			final float f2, final float f3, final float f4, final float f5)
@@ -62,6 +76,14 @@ public class ModelTopHat extends ModelBiped
 	}
 
 	// Techne method
+	/**
+	 * Sets the rotation.
+	 *
+	 * @param model the model
+	 * @param x the x
+	 * @param y the y
+	 * @param z the z
+	 */
 	private void setRotation(final ModelRenderer model, final float x,
 			final float y, final float z)
 	{
@@ -70,6 +92,9 @@ public class ModelTopHat extends ModelBiped
 		model.rotateAngleZ = z;
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.client.model.ModelBiped#setRotationAngles(float, float, float, float, float, float, net.minecraft.entity.Entity)
+	 */
 	@Override
 	public void setRotationAngles(final float f, final float f1,
 			final float f2, final float f3, final float f4, final float f5,

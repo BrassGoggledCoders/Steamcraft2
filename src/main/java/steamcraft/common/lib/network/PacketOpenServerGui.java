@@ -14,8 +14,9 @@
 package steamcraft.common.lib.network;
 
 /**
+ * The Class PacketOpenServerGui.
+ *
  * @author Surseance (Johnny Eatmon)
- * 
  */
 public class PacketOpenServerGui
 {

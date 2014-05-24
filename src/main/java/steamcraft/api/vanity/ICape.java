@@ -14,8 +14,9 @@
 package steamcraft.api.vanity;
 
 /**
+ * The Interface ICape.
+ *
  * @author warlordjones
- * 
  */
 public interface ICape
 {

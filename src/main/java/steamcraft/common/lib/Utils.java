@@ -1,5 +1,5 @@
 /**
- * This class was created by <Surseance> or his SC2 development team. 
+ * This class was created by <Surseance> or his SC2 development team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -33,15 +33,28 @@ import steamcraft.common.config.ConfigBlocks;
 import steamcraft.common.config.ConfigItems;
 import steamcraft.common.lib.network.LoggerSteamcraft;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class Utils.
+ *
  * @author Surseance (Johnny Eatmon)
- * 
  */
 public class Utils
 {
+
+	/** The random. */
 	public Random random = new Random();
+
+	/** The newest version. */
 	static String newestVersion;
 
+	/**
+	 * Check for updated version.
+	 *
+	 * @param name the name
+	 * @param version the version
+	 * @return true, if successful
+	 */
 	public static boolean checkForUpdatedVersion(final String name,
 			final String version)
 	{
@@ -68,6 +81,9 @@ public class Utils
 		return false;
 	}
 
+	/**
+	 * Download capes.
+	 */
 	public static void downloadCapes()
 	{
 		final String[] developers = getUsersFromUrl("https://www.dropbox.com/s/m7tn0tx7y7w630s/devs.txt");
@@ -102,6 +118,12 @@ public class Utils
 		 */
 	}
 
+	/**
+	 * Gets the users from url.
+	 *
+	 * @param url the url
+	 * @return the users from url
+	 */
 	private static String[] getUsersFromUrl(final String url)
 	{
 		final ArrayList<String> list = new ArrayList<String>();
@@ -126,6 +148,14 @@ public class Utils
 		}
 	}
 
+	/**
+	 * Fill bucket.
+	 *
+	 * @param world the world
+	 * @param mop the mop
+	 * @return the item stack
+	 */
+	@SuppressWarnings("unused")
 	private ItemStack fillBucket(final World world,
 			final MovingObjectPosition mop)
 	{

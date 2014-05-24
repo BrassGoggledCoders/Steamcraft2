@@ -21,11 +21,18 @@ import steamcraft.common.Steamcraft;
 import steamcraft.common.config.ConfigBlocks;
 import steamcraft.common.lib.LibInfo;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class BlockCastIronFence.
+ *
  * @author Surseance (Johnny Eatmon)
  */
 public class BlockCastIronFence extends BlockFence
 {
+	
+	/**
+	 * Instantiates a new block cast iron fence.
+	 */
 	public BlockCastIronFence()
 	{
 		super(LibInfo.PREFIX + "blockCastIron", Material.iron);
@@ -36,6 +43,9 @@ public class BlockCastIronFence extends BlockFence
 		// setUnlocalizedName("blockCastIronFence");
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.BlockFence#canConnectFenceTo(net.minecraft.world.IBlockAccess, int, int, int)
+	 */
 	@Override
 	public boolean canConnectFenceTo(final IBlockAccess world, final int x,
 			final int y, final int z)

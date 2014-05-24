@@ -28,12 +28,26 @@ import steamcraft.common.lib.LibInfo;
 import steamcraft.common.tiles.TileSteamBoiler;
 import steamcraft.common.tiles.container.ContainerSteamBoiler;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class GuiSteamBoiler.
+ */
 public class GuiSteamBoiler extends GuiContainer
 {
+	
+	/** The Constant guitexture. */
 	private static final ResourceLocation guitexture = new ResourceLocation(
 			LibInfo.PREFIX + "textures/gui/steamboiler.png");
+	
+	/** The tile. */
 	private final TileSteamBoiler tile;
 
+	/**
+	 * Instantiates a new gui steam boiler.
+	 *
+	 * @param player the player
+	 * @param tile the tile
+	 */
 	public GuiSteamBoiler(final InventoryPlayer player,
 			final TileSteamBoiler tile)
 	{
@@ -41,6 +55,9 @@ public class GuiSteamBoiler extends GuiContainer
 		this.tile = tile;
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.client.gui.inventory.GuiContainer#drawGuiContainerForegroundLayer(int, int)
+	 */
 	@Override
 	protected void drawGuiContainerForegroundLayer(final int par1,
 			final int par2)
@@ -48,6 +65,9 @@ public class GuiSteamBoiler extends GuiContainer
 		// fontRenderer.drawString("Inventory", 8, ySize - 96 + 2, 4210752);
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.client.gui.inventory.GuiContainer#drawGuiContainerBackgroundLayer(float, int, int)
+	 */
 	@Override
 	protected void drawGuiContainerBackgroundLayer(final float par1,
 			final int par2, final int par3)
@@ -79,6 +99,16 @@ public class GuiSteamBoiler extends GuiContainer
 	/*
 	 * 
 	 * Code from BC IDK what any of it does :)
+	 */
+	/**
+	 * Draw fluid.
+	 *
+	 * @param fluid the fluid
+	 * @param level the level
+	 * @param x the x
+	 * @param y the y
+	 * @param width the width
+	 * @param height the height
 	 */
 	private void drawFluid(final FluidStack fluid, final int level,
 			final int x, final int y, final int width, final int height)
@@ -131,6 +161,16 @@ public class GuiSteamBoiler extends GuiContainer
 
 	// For some weird reason, our version of steam has NULL icons, so the
 	// GUISteamBoiler function drawCutIcon will crash
+	/**
+	 * Draw cut icon.
+	 *
+	 * @param icon the icon
+	 * @param x the x
+	 * @param y the y
+	 * @param width the width
+	 * @param height the height
+	 * @param cut the cut
+	 */
 	private void drawCutIcon(final IIcon icon, final int x, final int y,
 			final int width, final int height, final int cut)
 	{
@@ -147,6 +187,11 @@ public class GuiSteamBoiler extends GuiContainer
 		tess.draw();
 	}
 
+	/**
+	 * Sets the GL color from int.
+	 *
+	 * @param color the new GL color from int
+	 */
 	public static void setGLColorFromInt(final int color)
 	{
 		final float red = (color >> 16 & 255) / 255.0F;

@@ -27,35 +27,54 @@ import steamcraft.common.lib.LibInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ItemCanister.
+ *
  * @author Surseance (Johnny Eatmon), Decebaldecebal
- * 
  */
 public class ItemCanister extends Item
 {
+	
+	/** The gas. */
 	public String gas;
+	
+	/** The Constant MAX_VISIBLE. */
 	public static final int MAX_VISIBLE = 2500; // Visual representation of
 												// gas/steam through item damage
 
-	public static final int MAX_STEAM = 150000; // Isn't this an excessively
+	/** The Constant MAX_STEAM. */
+												public static final int MAX_STEAM = 150000; // Isn't this an excessively
 												// large number?
-	public static final int MAX_STEAM_RATE = 20; // Maximum amount of steam that
+	/** The Constant MAX_STEAM_RATE. */
+												public static final int MAX_STEAM_RATE = 20; // Maximum amount of steam that
 													// can be inserted into this
 													// canister per tick
 
-	public static final int MAX_GAS = 150000; // Isn't this an excessively large
+	/** The Constant MAX_GAS. */
+													public static final int MAX_GAS = 150000; // Isn't this an excessively large
 												// number?
-	public static final int MAX_GAS_RATE = 20; // Maximum amount of gas that can
+	/** The Constant MAX_GAS_RATE. */
+												public static final int MAX_GAS_RATE = 20; // Maximum amount of gas that can
 												// be inserted into this
 												// canister per tick
 
-	@Override
+	/* (non-Javadoc)
+												 * @see net.minecraft.item.Item#registerIcons(net.minecraft.client.renderer.texture.IIconRegister)
+												 */
+												@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(final IIconRegister ir)
 	{
 		itemIcon = ir.registerIcon(LibInfo.PREFIX + "itemCanister");
 	}
 
+	/**
+	 * Instantiates a new item canister.
+	 *
+	 * @param id the id
+	 * @param gas the gas
+	 */
 	public ItemCanister(final int id, final String gas)
 	{
 		setNoRepair();
@@ -64,6 +83,9 @@ public class ItemCanister extends Item
 		setCreativeTab(Steamcraft.tabSC2);
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.item.Item#getSubItems(net.minecraft.item.Item, net.minecraft.creativetab.CreativeTabs, java.util.List)
+	 */
 	@SuppressWarnings("all")
 	@Override
 	@SideOnly(Side.CLIENT)
@@ -74,6 +96,9 @@ public class ItemCanister extends Item
 		list.add(new ItemStack(item, 1, 1));
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.item.Item#addInformation(net.minecraft.item.ItemStack, net.minecraft.entity.player.EntityPlayer, java.util.List, boolean)
+	 */
 	@SuppressWarnings("all")
 	@Override
 	@SideOnly(Side.CLIENT)
@@ -91,6 +116,12 @@ public class ItemCanister extends Item
 					MAX_GAS }));
 		}
 	}
+
+	/**
+	 * Gets the charged item.
+	 *
+	 * @return the charged item
+	 */
 	@SuppressWarnings("all")
 	private ItemStack getChargedItem()
 	{
@@ -111,6 +142,12 @@ public class ItemCanister extends Item
 		return charged.copy();
 	}
 
+	/**
+	 * Gets the or create nbt.
+	 *
+	 * @param stack the stack
+	 * @return the or create nbt
+	 */
 	private static NBTTagCompound getOrCreateNBT(final ItemStack stack)
 	{
 		if (stack.getTagCompound() == null)
@@ -138,18 +175,37 @@ public class ItemCanister extends Item
 	 * For steam canisters
 	 */
 
+	/**
+	 * Gets the steam.
+	 *
+	 * @param stack the stack
+	 * @return the steam
+	 */
 	public static int getSteam(final ItemStack stack)
 	{
 		final NBTTagCompound compound = getOrCreateNBT(stack);
 		return compound.getInteger("steam");
 	}
 
+	/**
+	 * Gets the empty space steam.
+	 *
+	 * @param stack the stack
+	 * @return the empty space steam
+	 */
 	public static int getEmptySpaceSteam(final ItemStack stack)
 	{
 		final NBTTagCompound compound = getOrCreateNBT(stack);
 		return MAX_STEAM - compound.getInteger("steam");
 	}
 
+	/**
+	 * Adds the steam.
+	 *
+	 * @param stack the stack
+	 * @param steam the steam
+	 * @return the int
+	 */
 	public static int addSteam(final ItemStack stack, final int steam)
 	{
 		final int steamToAdd = Math.min(getEmptySpaceSteam(stack),
@@ -158,6 +214,12 @@ public class ItemCanister extends Item
 		return steamToAdd;
 	}
 
+	/**
+	 * Sets the steam.
+	 *
+	 * @param stack the stack
+	 * @param steam the steam
+	 */
 	public static void setSteam(final ItemStack stack, final int steam)
 	{
 		final NBTTagCompound compound = getOrCreateNBT(stack);
@@ -166,12 +228,24 @@ public class ItemCanister extends Item
 		stack.setItemDamage(MAX_VISIBLE - steamToAdd * MAX_VISIBLE / MAX_STEAM);
 	}
 
+	/**
+	 * Checks if is full steam.
+	 *
+	 * @param stack the stack
+	 * @return true, if is full steam
+	 */
 	public static boolean isFullSteam(final ItemStack stack)
 	{
 		final NBTTagCompound compound = getOrCreateNBT(stack);
 		return compound.getInteger("steam") >= MAX_STEAM;
 	}
 
+	/**
+	 * Checks if is empty steam.
+	 *
+	 * @param stack the stack
+	 * @return true, if is empty steam
+	 */
 	public static boolean isEmptySteam(final ItemStack stack)
 	{
 		final NBTTagCompound compound = getOrCreateNBT(stack);
@@ -182,18 +256,37 @@ public class ItemCanister extends Item
 	 * For gas canisters
 	 */
 
+	/**
+	 * Gets the gas.
+	 *
+	 * @param stack the stack
+	 * @return the gas
+	 */
 	public static int getGas(final ItemStack stack)
 	{
 		final NBTTagCompound compound = getOrCreateNBT(stack);
 		return compound.getInteger("gas");
 	}
 
+	/**
+	 * Gets the empty space gas.
+	 *
+	 * @param stack the stack
+	 * @return the empty space gas
+	 */
 	public static int getEmptySpaceGas(final ItemStack stack)
 	{
 		final NBTTagCompound compound = getOrCreateNBT(stack);
 		return MAX_STEAM - compound.getInteger("gas");
 	}
 
+	/**
+	 * Adds the gas.
+	 *
+	 * @param stack the stack
+	 * @param gas the gas
+	 * @return the int
+	 */
 	public static int addGas(final ItemStack stack, final int gas)
 	{
 		final int gasToAdd = Math.min(getEmptySpaceGas(stack),
@@ -202,6 +295,12 @@ public class ItemCanister extends Item
 		return gasToAdd;
 	}
 
+	/**
+	 * Sets the gas.
+	 *
+	 * @param stack the stack
+	 * @param gas the gas
+	 */
 	public static void setGas(final ItemStack stack, final int gas)
 	{
 		final NBTTagCompound compound = getOrCreateNBT(stack);
@@ -210,12 +309,24 @@ public class ItemCanister extends Item
 		stack.setItemDamage(MAX_VISIBLE - gasToAdd * MAX_VISIBLE / MAX_GAS);
 	}
 
+	/**
+	 * Checks if is full gas.
+	 *
+	 * @param stack the stack
+	 * @return true, if is full gas
+	 */
 	public static boolean isFullGas(final ItemStack stack)
 	{
 		final NBTTagCompound compound = getOrCreateNBT(stack);
 		return compound.getInteger("gas") >= MAX_GAS;
 	}
 
+	/**
+	 * Checks if is empty gas.
+	 *
+	 * @param stack the stack
+	 * @return true, if is empty gas
+	 */
 	public static boolean isEmptyGas(final ItemStack stack)
 	{
 		final NBTTagCompound compound = getOrCreateNBT(stack);

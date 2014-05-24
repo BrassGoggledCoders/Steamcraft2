@@ -19,17 +19,29 @@ import net.minecraft.item.Item;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class CreativeTabSteamcraft.
+ *
  * @author Surseance (Johnny Eatmon)
- * 
  */
 public class CreativeTabSteamcraft extends CreativeTabs
 {
+	
+	/**
+	 * Instantiates a new creative tab steamcraft.
+	 *
+	 * @param id the id
+	 * @param name the name
+	 */
 	public CreativeTabSteamcraft(final int id, final String name)
 	{
 		super(id, name);
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.creativetab.CreativeTabs#getTabIconItem()
+	 */
 	@Override
 	@SideOnly(Side.CLIENT)
 	public Item getTabIconItem()

@@ -20,17 +20,28 @@ import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemStack;
 import steamcraft.api.SteamcraftApi;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ItemSteamcraftPickaxe.
+ *
  * @author Surseance (Johnny Eatmon)
- * 
  */
 public class ItemSteamcraftPickaxe extends ItemPickaxe
 {
+	
+	/**
+	 * Instantiates a new item steamcraft pickaxe.
+	 *
+	 * @param toolMat the tool mat
+	 */
 	public ItemSteamcraftPickaxe(final Item.ToolMaterial toolMat)
 	{
 		super(toolMat);
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.item.ItemPickaxe#func_150893_a(net.minecraft.item.ItemStack, net.minecraft.block.Block)
+	 */
 	@Override
 	public float func_150893_a(final ItemStack is, final Block block) // getStrVsBlock
 	{

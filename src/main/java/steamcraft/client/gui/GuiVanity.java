@@ -1,5 +1,5 @@
 /**
- * This class was created by <Surseance> or his SC2 development team. 
+ * This class was created by <Surseance> or his SC2 development team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -26,9 +26,11 @@ import steamcraft.common.lib.LibInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class GuiVanity.
+ *
  * @author warlordjones
- * 
  */
 @SideOnly(Side.CLIENT)
 public class GuiVanity extends GuiContainer
@@ -36,19 +38,30 @@ public class GuiVanity extends GuiContainer
 	/**
 	 * x size of the inventory window in pixels. Defined as float, passed as int
 	 */
+	@SuppressWarnings("unused")
 	private float xSize_lo;
 
 	/**
 	 * y size of the inventory window in pixels. Defined as float, passed as
 	 * int.
 	 */
+	@SuppressWarnings("unused")
 	private float ySize_lo;
 
+	/** The Constant iconLocation. */
 	private static final ResourceLocation iconLocation = new ResourceLocation(
 			LibInfo.PREFIX + "textures/gui/vanity.png");
 
+	/** The inventory. */
 	private final InventoryVanity inventory;
 
+	/**
+	 * Instantiates a new gui vanity.
+	 *
+	 * @param player the player
+	 * @param inventoryPlayer the inventory player
+	 * @param inventoryCustom the inventory custom
+	 */
 	public GuiVanity(final EntityPlayer player,
 			final InventoryPlayer inventoryPlayer,
 			final InventoryVanity inventoryCustom)
@@ -59,6 +72,10 @@ public class GuiVanity extends GuiContainer
 
 	/**
 	 * Draws the screen and all the components in it.
+	 *
+	 * @param x the x
+	 * @param y the y
+	 * @param scale the scale
 	 */
 	@Override
 	public void drawScreen(final int x, final int y, final float scale)
@@ -70,7 +87,10 @@ public class GuiVanity extends GuiContainer
 
 	/**
 	 * Draw the foreground layer for the GuiContainer (everything in front of
-	 * the items)
+	 * the items).
+	 *
+	 * @param x the x
+	 * @param y the y
 	 */
 	@Override
 	protected void drawGuiContainerForegroundLayer(final int x, final int y)
@@ -86,7 +106,11 @@ public class GuiVanity extends GuiContainer
 
 	/**
 	 * Draw the background layer for the GuiContainer (everything behind the
-	 * items)
+	 * items).
+	 *
+	 * @param scale the scale
+	 * @param par2 the par2
+	 * @param par3 the par3
 	 */
 	@Override
 	protected void drawGuiContainerBackgroundLayer(final float scale,

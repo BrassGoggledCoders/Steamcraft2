@@ -17,11 +17,20 @@ import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class BlockEngravedSolidItem.
+ *
  * @author Surseance (Johnny Eatmon)
  */
 public class BlockEngravedSolidItem extends ItemBlock
 {
+	
+	/**
+	 * Instantiates a new block engraved solid item.
+	 *
+	 * @param block the block
+	 */
 	public BlockEngravedSolidItem(final Block block)
 	{
 		super(block);
@@ -29,12 +38,18 @@ public class BlockEngravedSolidItem extends ItemBlock
 		setHasSubtypes(true);
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.item.Item#getMetadata(int)
+	 */
 	@Override
 	public int getMetadata(final int metadata)
 	{
 		return metadata;
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.item.ItemBlock#getUnlocalizedName(net.minecraft.item.ItemStack)
+	 */
 	@Override
 	public String getUnlocalizedName(final ItemStack is)
 	{

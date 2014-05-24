@@ -1,5 +1,5 @@
 /**
- * This class was created by <Surseance> or his SC2 development team. 
+ * This class was created by <Surseance> or his SC2 development team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -35,29 +35,59 @@ import steamcraft.common.lib.LibInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+// TODO: Auto-generated Javadoc
 /**
  * NOTE: Please do not tamper with this file unless you know vectors and
  * trigonometric functions very well. Thank you. I have, however, cleaned up the
  * code to make things easier to understand.
- * 
+ *
  * @author Surseance (Johnny Eatmon)
- * 
+ *
  */
 public class EntityBullet extends Entity implements IProjectile
 {
+
+	/** The x tile. */
 	private int xTile = -1;
+
+	/** The y tile. */
 	private int yTile = -1;
+
+	/** The z tile. */
 	private int zTile = -1;
+
+	/** The in tile. */
 	private Block inTile;
+
+	/** The in ground. */
 	private boolean inGround;
+
+	/** The can be picked up. */
 	private int canBePickedUp;
+
+	/** The arrow shake. */
 	public int arrowShake;
+
+	/** The shooting entity. */
 	private Entity shootingEntity;
+
+	/** The time till death. */
 	private int timeTillDeath;
+
+	/** The fly time. */
 	private int flyTime;
+
+	/** The damage. */
 	private int damage;
+
+	/** The accuracy. */
 	private int accuracy;
 
+	/**
+	 * Instantiates a new entity bullet.
+	 *
+	 * @param world the world
+	 */
 	public EntityBullet(final World world)
 	{
 		super(world);
@@ -65,6 +95,14 @@ public class EntityBullet extends Entity implements IProjectile
 		setSize(0.5F, 0.5F);
 	}
 
+	/**
+	 * Instantiates a new entity bullet.
+	 *
+	 * @param world the world
+	 * @param dx the dx
+	 * @param dy the dy
+	 * @param dz the dz
+	 */
 	public EntityBullet(final World world, final double dx, final double dy,
 			final double dz)
 	{
@@ -75,6 +113,15 @@ public class EntityBullet extends Entity implements IProjectile
 		yOffset = 0.0F;
 	}
 
+	/**
+	 * Instantiates a new entity bullet.
+	 *
+	 * @param world the world
+	 * @param shooter the shooter
+	 * @param target the target
+	 * @param frotY the frot y
+	 * @param frotP the frot p
+	 */
 	public EntityBullet(final World world, final EntityLivingBase shooter,
 			final EntityLivingBase target, final float frotY, final float frotP)
 	{
@@ -112,6 +159,14 @@ public class EntityBullet extends Entity implements IProjectile
 		}
 	}
 
+	/**
+	 * Instantiates a new entity bullet.
+	 *
+	 * @param world the world
+	 * @param shooter the shooter
+	 * @param damage the damage
+	 * @param accuracy the accuracy
+	 */
 	public EntityBullet(final World world, final EntityLivingBase shooter,
 			final int damage, final int accuracy)
 	{
@@ -143,12 +198,18 @@ public class EntityBullet extends Entity implements IProjectile
 		this.damage = damage;
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.entity.Entity#entityInit()
+	 */
 	@Override
 	protected void entityInit()
 	{
 		dataWatcher.addObject(Config.entBulletId, Byte.valueOf((byte) 0));
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.entity.IProjectile#setThrowableHeading(double, double, double, float, float)
+	 */
 	@Override
 	public void setThrowableHeading(double dx, double dy, double dz,
 			final float frotY, final float frotP)
@@ -176,6 +237,9 @@ public class EntityBullet extends Entity implements IProjectile
 		timeTillDeath = 0;
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.entity.Entity#setPositionAndRotation2(double, double, double, float, float, int)
+	 */
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void setPositionAndRotation2(final double dx, final double dy,
@@ -185,6 +249,9 @@ public class EntityBullet extends Entity implements IProjectile
 		setRotation(frotY, frotP);
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.entity.Entity#setVelocity(double, double, double)
+	 */
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void setVelocity(final double dx, final double dy, final double dz)
@@ -202,6 +269,9 @@ public class EntityBullet extends Entity implements IProjectile
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.entity.Entity#onUpdate()
+	 */
 	@Override
 	public void onUpdate()
 	{
@@ -276,7 +346,7 @@ public class EntityBullet extends Entity implements IProjectile
 		}
 
 		Entity entity = null;
-		final List entList = worldObj.getEntitiesWithinAABBExcludingEntity(
+		final List<?> entList = worldObj.getEntitiesWithinAABBExcludingEntity(
 				this,
 				boundingBox.addCoord(motionX, motionY, motionZ).expand(1.0D,
 						1.0D, 1.0D));
@@ -421,6 +491,9 @@ public class EntityBullet extends Entity implements IProjectile
 		setPosition(posX, posY, posZ);
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.entity.Entity#writeEntityToNBT(net.minecraft.nbt.NBTTagCompound)
+	 */
 	@Override
 	public void writeEntityToNBT(final NBTTagCompound tagCompound)
 	{
@@ -432,6 +505,9 @@ public class EntityBullet extends Entity implements IProjectile
 		tagCompound.setByte("inGround", (byte) (inGround ? 1 : 0));
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.entity.Entity#readEntityFromNBT(net.minecraft.nbt.NBTTagCompound)
+	 */
 	@Override
 	public void readEntityFromNBT(final NBTTagCompound tagCompound)
 	{
@@ -443,6 +519,9 @@ public class EntityBullet extends Entity implements IProjectile
 		inGround = tagCompound.getByte("inGround") == 1;
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.entity.Entity#onCollideWithPlayer(net.minecraft.entity.player.EntityPlayer)
+	 */
 	@Override
 	public void onCollideWithPlayer(final EntityPlayer player)
 	{
@@ -470,12 +549,18 @@ public class EntityBullet extends Entity implements IProjectile
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.entity.Entity#canTriggerWalking()
+	 */
 	@Override
 	protected boolean canTriggerWalking()
 	{
 		return false;
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.entity.Entity#getShadowSize()
+	 */
 	@Override
 	@SideOnly(Side.CLIENT)
 	public float getShadowSize()
@@ -483,6 +568,9 @@ public class EntityBullet extends Entity implements IProjectile
 		return 0.0F;
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.entity.Entity#canAttackWithItem()
+	 */
 	@Override
 	public boolean canAttackWithItem()
 	{

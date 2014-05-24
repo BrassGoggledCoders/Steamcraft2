@@ -41,28 +41,45 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import cpw.mods.fml.relauncher.Side;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class Steamcraft.
+ *
  * @author Surseance (Johnny Eatmon)
- * 
  */
 @Mod(modid = LibInfo.ID, name = LibInfo.NAME, version = LibInfo.VERSION, dependencies = "required-after:boilerplate")
 public class Steamcraft
 {
+	
+	/** The proxy. */
 	@SidedProxy(clientSide = LibInfo.CLIENT_PROXY, serverSide = LibInfo.COMMON_PROXY)
 	public static CommonProxy proxy;
 
+	/** The instance. */
 	@Mod.Instance(LibInfo.NAME)
 	public static Steamcraft instance;
 
+	/** The world gen. */
 	public SteamcraftWorldGenerator worldGen;
+	
+	/** The directory. */
 	public File directory;
 
+	/** The draw event handler. */
 	public EventHandlerDrawHighlight drawEventHandler;
+	
+	/** The sc2 event handler. */
 	public EventHandlerSC2 sc2EventHandler;
 
+	/** The tab s c2. */
 	public static CreativeTabs tabSC2 = new CreativeTabSteamcraft(
 			CreativeTabs.getNextID(), "steamcraft"); // TODO: Needs Icon
 
+	/**
+	 * Pre init.
+	 *
+	 * @param event the event
+	 */
 	@Mod.EventHandler
 	public void preInit(final FMLPreInitializationEvent event)
 	{
@@ -105,6 +122,11 @@ public class Steamcraft
 
 	}
 
+	/**
+	 * Inits the.
+	 *
+	 * @param event the event
+	 */
 	@Mod.EventHandler
 	public void init(final FMLInitializationEvent event)
 	{
@@ -116,6 +138,11 @@ public class Steamcraft
 		// GuiHandler());
 	}
 
+	/**
+	 * Post init.
+	 *
+	 * @param event the event
+	 */
 	@Mod.EventHandler
 	public void postInit(final FMLPostInitializationEvent event)
 	{
@@ -131,6 +158,11 @@ public class Steamcraft
 		LanguageRegistry.instance().loadLanguagesFor(container, Side.CLIENT);
 	}
 
+	/**
+	 * Server starting.
+	 *
+	 * @param event the event
+	 */
 	@Mod.EventHandler
 	public void serverStarting(final FMLServerStartingEvent event)
 	{

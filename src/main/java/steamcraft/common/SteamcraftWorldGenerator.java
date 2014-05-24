@@ -24,12 +24,18 @@ import steamcraft.common.config.Config;
 import steamcraft.common.config.ConfigBlocks;
 import cpw.mods.fml.common.IWorldGenerator;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class SteamcraftWorldGenerator.
+ *
  * @author Surseance
- * 
  */
 public class SteamcraftWorldGenerator implements IWorldGenerator
 {
+	
+	/* (non-Javadoc)
+	 * @see cpw.mods.fml.common.IWorldGenerator#generate(java.util.Random, int, int, net.minecraft.world.World, net.minecraft.world.chunk.IChunkProvider, net.minecraft.world.chunk.IChunkProvider)
+	 */
 	@Override
 	public void generate(final Random random, final int chunkX,
 			final int chunkZ, final World world,
@@ -62,6 +68,14 @@ public class SteamcraftWorldGenerator implements IWorldGenerator
 	}
 
 	// TODO: Add Config Options for ore vein size
+	/**
+	 * Generate surface.
+	 *
+	 * @param world the world
+	 * @param random the random
+	 * @param chunkX the chunk x
+	 * @param chunkZ the chunk z
+	 */
 	private void generateSurface(final World world, final Random random,
 			final int chunkX, final int chunkZ)
 	{

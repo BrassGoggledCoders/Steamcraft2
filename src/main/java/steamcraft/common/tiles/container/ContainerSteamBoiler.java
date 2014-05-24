@@ -28,14 +28,34 @@ import steamcraft.common.tiles.TileSteamBoiler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ContainerSteamBoiler.
+ */
 public class ContainerSteamBoiler extends Container
 {
+	
+	/** The Tile_ e. */
 	protected TileSteamBoiler Tile_E;
+	
+	/** The last burn time. */
 	private int lastBurnTime = 0;
+	
+	/** The last item burn time. */
 	private int lastItemBurnTime = 0;
+	
+	/** The last steam level. */
 	private int lastSteamLevel = 0;
+	
+	/** The last water level. */
 	private int lastWaterLevel = 0;
 
+	/**
+	 * Instantiates a new container steam boiler.
+	 *
+	 * @param player the player
+	 * @param tile the tile
+	 */
 	public ContainerSteamBoiler(final InventoryPlayer player,
 			final TileSteamBoiler tile)
 	{
@@ -83,6 +103,9 @@ public class ContainerSteamBoiler extends Container
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.inventory.Container#addCraftingToCrafters(net.minecraft.inventory.ICrafting)
+	 */
 	@Override
 	public void addCraftingToCrafters(final ICrafting par1ICrafting)
 	{
@@ -96,6 +119,9 @@ public class ContainerSteamBoiler extends Container
 				Tile_E.waterTank.getFluidAmount());
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.inventory.Container#detectAndSendChanges()
+	 */
 	@Override
 	public void detectAndSendChanges()
 	{
@@ -134,6 +160,9 @@ public class ContainerSteamBoiler extends Container
 		lastWaterLevel = Tile_E.waterTank.getFluidAmount();
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.inventory.Container#updateProgressBar(int, int)
+	 */
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void updateProgressBar(final int par1, final int par2)
@@ -158,12 +187,18 @@ public class ContainerSteamBoiler extends Container
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.inventory.Container#canInteractWith(net.minecraft.entity.player.EntityPlayer)
+	 */
 	@Override
 	public boolean canInteractWith(final EntityPlayer par1EntityPlayer)
 	{
 		return Tile_E.isUseableByPlayer(par1EntityPlayer);
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.inventory.Container#transferStackInSlot(net.minecraft.entity.player.EntityPlayer, int)
+	 */
 	@Override
 	public ItemStack transferStackInSlot(final EntityPlayer par1EntityPlayer,
 			final int par2)

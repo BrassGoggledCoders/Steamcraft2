@@ -30,15 +30,24 @@ import boilerplate.common.Utils;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class BlockCosmeticSolid.
+ *
  * @author Surseance (Johnny Eatmon)
  */
 public class BlockCosmeticSolid extends Block
 {
+	
+	/** The icon. */
 	private final IIcon[] icon = new IIcon[5];
 
+	/** The powered. */
 	private boolean powered;
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#getIcon(int, int)
+	 */
 	@Override
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(final int side, final int metadata)
@@ -57,6 +66,9 @@ public class BlockCosmeticSolid extends Block
 		return icon[metadata];
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#registerBlockIcons(net.minecraft.client.renderer.texture.IIconRegister)
+	 */
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(final IIconRegister ir)
@@ -68,6 +80,9 @@ public class BlockCosmeticSolid extends Block
 		icon[4] = ir.registerIcon(LibInfo.PREFIX + "blockLampOn");
 	}
 
+	/**
+	 * Instantiates a new block cosmetic solid.
+	 */
 	public BlockCosmeticSolid()
 	{
 		super(Material.iron);
@@ -84,6 +99,9 @@ public class BlockCosmeticSolid extends Block
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#damageDropped(int)
+	 */
 	@Override
 	public int damageDropped(final int id)
 	{
@@ -92,6 +110,9 @@ public class BlockCosmeticSolid extends Block
 
 	// TODO: Drop and sub item methods removed
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#onEntityCollidedWithBlock(net.minecraft.world.World, int, int, int, net.minecraft.entity.Entity)
+	 */
 	@Override
 	public void onEntityCollidedWithBlock(final World world, final int x,
 			final int y, final int z, final Entity entity)
@@ -103,6 +124,9 @@ public class BlockCosmeticSolid extends Block
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#randomDisplayTick(net.minecraft.world.World, int, int, int, java.util.Random)
+	 */
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(final World world, final int x, final int y,
@@ -115,6 +139,9 @@ public class BlockCosmeticSolid extends Block
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#isLeaves(net.minecraft.world.IBlockAccess, int, int, int)
+	 */
 	@Override
 	public boolean isLeaves(final IBlockAccess world, final int x, final int y,
 			final int z)
@@ -130,6 +157,9 @@ public class BlockCosmeticSolid extends Block
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#onBlockPlaced(net.minecraft.world.World, int, int, int, int, float, float, float, int)
+	 */
 	@Override
 	// Something is wrong with the functionality of this method. You'll see when
 	// you place a Brass Log.
@@ -166,6 +196,9 @@ public class BlockCosmeticSolid extends Block
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#breakBlock(net.minecraft.world.World, int, int, int, net.minecraft.block.Block, int)
+	 */
 	@Override
 	public void breakBlock(final World world, final int x, final int y,
 			final int z, Block block, final int meta)
@@ -199,6 +232,9 @@ public class BlockCosmeticSolid extends Block
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#canSustainLeaves(net.minecraft.world.IBlockAccess, int, int, int)
+	 */
 	@Override
 	public boolean canSustainLeaves(final IBlockAccess world, final int x,
 			final int y, final int z)
@@ -214,6 +250,9 @@ public class BlockCosmeticSolid extends Block
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#isWood(net.minecraft.world.IBlockAccess, int, int, int)
+	 */
 	@Override
 	public boolean isWood(final IBlockAccess world, final int x, final int y,
 			final int z)

@@ -30,12 +30,18 @@ import steamcraft.common.lib.LibInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ItemTeaSeed.
+ *
  * @author Surseance (Johnny Eatmon)
- * 
  */
 public class ItemTeaSeed extends Item implements IPlantable
 {
+	
+	/* (non-Javadoc)
+	 * @see net.minecraft.item.Item#registerIcons(net.minecraft.client.renderer.texture.IIconRegister)
+	 */
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(final IIconRegister ir)
@@ -43,6 +49,9 @@ public class ItemTeaSeed extends Item implements IPlantable
 		itemIcon = ir.registerIcon(LibInfo.PREFIX + "itemTeaSeed");
 	}
 
+	/**
+	 * Instantiates a new item tea seed.
+	 */
 	public ItemTeaSeed()
 	{
 		super();
@@ -50,6 +59,9 @@ public class ItemTeaSeed extends Item implements IPlantable
 		setCreativeTab(Steamcraft.tabSC2);
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.item.Item#onItemUse(net.minecraft.item.ItemStack, net.minecraft.entity.player.EntityPlayer, net.minecraft.world.World, int, int, int, int, float, float, float)
+	 */
 	@Override
 	public boolean onItemUse(final ItemStack is, final EntityPlayer player,
 			final World world, final int x, final int y, final int z,
@@ -84,6 +96,9 @@ public class ItemTeaSeed extends Item implements IPlantable
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraftforge.common.IPlantable#getPlant(net.minecraft.world.IBlockAccess, int, int, int)
+	 */
 	@Override
 	public Block getPlant(final IBlockAccess world, final int x, final int y,
 			final int z)
@@ -91,6 +106,9 @@ public class ItemTeaSeed extends Item implements IPlantable
 		return ConfigBlocks.blockTeaPlant;
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraftforge.common.IPlantable#getPlantMetadata(net.minecraft.world.IBlockAccess, int, int, int)
+	 */
 	@Override
 	public int getPlantMetadata(final IBlockAccess world, final int x,
 			final int y, final int z)
@@ -98,6 +116,9 @@ public class ItemTeaSeed extends Item implements IPlantable
 		return 0;
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraftforge.common.IPlantable#getPlantType(net.minecraft.world.IBlockAccess, int, int, int)
+	 */
 	@Override
 	public EnumPlantType getPlantType(final IBlockAccess world, final int x,
 			final int y, final int z)

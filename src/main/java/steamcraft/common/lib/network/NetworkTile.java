@@ -22,25 +22,41 @@ import net.minecraft.network.Packet;
 import net.minecraft.tileentity.TileEntity;
 import boilerplate.common.Utils;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class NetworkTile.
+ *
  * @author Surseance (Johnny Eatmon)
- * 
  */
 public abstract class NetworkTile extends TileEntity
 {
-	/** */
+	
+	/** The marked for resend. */
 	private boolean markedForResend;
 
+	/**
+	 * Checks if is marked for resend.
+	 *
+	 * @return true, if is marked for resend
+	 */
 	public boolean isMarkedForResend()
 	{
 		return markedForResend;
 	}
 
+	/**
+	 * Sets the marked for resend.
+	 *
+	 * @param markedForResend the new marked for resend
+	 */
 	public void setMarkedForResend(final boolean markedForResend)
 	{
 		this.markedForResend = markedForResend;
 	}
 
+	/**
+	 * Send packet.
+	 */
 	public void sendPacket()
 	{
 		final Packet packet = getDescriptionPacket();
@@ -48,6 +64,9 @@ public abstract class NetworkTile extends TileEntity
 		Utils.sendToPlayers(packet, worldObj, xCoord, yCoord, zCoord, null);
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.tileentity.TileEntity#getDescriptionPacket()
+	 */
 	@Override
 	public Packet getDescriptionPacket()
 	{
@@ -78,6 +97,9 @@ public abstract class NetworkTile extends TileEntity
 		return null;// packet;
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.tileentity.TileEntity#updateEntity()
+	 */
 	@Override
 	public void updateEntity()
 	{
@@ -89,12 +111,30 @@ public abstract class NetworkTile extends TileEntity
 		}
 	}
 
+	/**
+	 * Write packet.
+	 *
+	 * @param dataStream the data stream
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public abstract void writePacket(DataOutputStream dataStream)
 			throws IOException;
 
+	/**
+	 * Read packet.
+	 *
+	 * @param dataStream the data stream
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public abstract void readPacket(DataInputStream dataStream)
 			throws IOException;
 
+	/**
+	 * Read packet from client.
+	 *
+	 * @param dataStream the data stream
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public abstract void readPacketFromClient(DataInputStream dataStream)
 			throws IOException;
 }

@@ -20,15 +20,32 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class FXUtil.
+ *
  * @author Surseance (Johnny Eatmon)
- * 
  */
 @SideOnly(Side.CLIENT)
 public class FXUtil
 {
+	
+	/** The particle. */
 	private static EntityFX particle;
 
+	/**
+	 * Display fx.
+	 *
+	 * @param name the name
+	 * @param world the world
+	 * @param dx the dx
+	 * @param dy the dy
+	 * @param dz the dz
+	 * @param velX the vel x
+	 * @param velY the vel y
+	 * @param velZ the vel z
+	 * @param scale the scale
+	 */
 	public static void displayFX(final String name, final World world,
 			final double dx, final double dy, final double dz,
 			final double velX, final double velY, final double velZ,

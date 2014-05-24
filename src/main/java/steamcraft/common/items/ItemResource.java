@@ -21,13 +21,21 @@ import steamcraft.common.lib.LibInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ItemResource.
+ *
  * @author Surseance (Johnny Eatmon)
  */
 public class ItemResource extends Item
 {
+	
+	/** The icon. */
 	public IIcon[] icon = new IIcon[12];
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.item.Item#getIconFromDamage(int)
+	 */
 	@Override
 	@SideOnly(Side.CLIENT)
 	public IIcon getIconFromDamage(final int itemDamage)
@@ -35,6 +43,9 @@ public class ItemResource extends Item
 		return icon[itemDamage];
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.item.Item#registerIcons(net.minecraft.client.renderer.texture.IIconRegister)
+	 */
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(final IIconRegister ir)
@@ -51,6 +62,9 @@ public class ItemResource extends Item
 		icon[9] = ir.registerIcon(LibInfo.PREFIX + "itemTeaLeaves");
 	}
 
+	/**
+	 * Instantiates a new item resource.
+	 */
 	public ItemResource()
 	{
 		super();

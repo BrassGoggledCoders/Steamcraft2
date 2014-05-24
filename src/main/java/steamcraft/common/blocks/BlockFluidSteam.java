@@ -26,13 +26,27 @@ import boilerplate.common.Utils;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class BlockFluidSteam.
+ */
 public class BlockFluidSteam extends BlockFluidClassic
 {
+	
+	/** The still icon. */
 	@SideOnly(Side.CLIENT)
 	protected IIcon stillIcon;
+	
+	/** The flowing icon. */
 	@SideOnly(Side.CLIENT)
 	protected IIcon flowingIcon;
 
+	/**
+	 * Instantiates a new block fluid steam.
+	 *
+	 * @param fluid the fluid
+	 * @param material the material
+	 */
 	public BlockFluidSteam(final Fluid fluid, final Material material)
 	{
 		super(fluid, material);
@@ -40,12 +54,18 @@ public class BlockFluidSteam extends BlockFluidClassic
 		setCreativeTab(Steamcraft.tabSC2);
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#getIcon(int, int)
+	 */
 	@Override
 	public IIcon getIcon(final int side, final int meta)
 	{
 		return (side == 0 || side == 1) ? stillIcon : flowingIcon;
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#registerBlockIcons(net.minecraft.client.renderer.texture.IIconRegister)
+	 */
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void registerBlockIcons(final IIconRegister register)
@@ -54,6 +74,9 @@ public class BlockFluidSteam extends BlockFluidClassic
 		flowingIcon = register.registerIcon(LibInfo.PREFIX + "steamFlowing");
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraftforge.fluids.BlockFluidBase#canDisplace(net.minecraft.world.IBlockAccess, int, int, int)
+	 */
 	@Override
 	public boolean canDisplace(final IBlockAccess world, final int x,
 			final int y, final int z)
@@ -65,6 +88,9 @@ public class BlockFluidSteam extends BlockFluidClassic
 		return super.canDisplace(world, x, y, z);
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraftforge.fluids.BlockFluidBase#displaceIfPossible(net.minecraft.world.World, int, int, int)
+	 */
 	@Override
 	public boolean displaceIfPossible(final World world, final int x,
 			final int y, final int z)

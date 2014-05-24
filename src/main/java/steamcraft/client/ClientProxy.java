@@ -36,13 +36,18 @@ import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ClientProxy.
+ *
  * @author Surseance (Johnny Eatmon)
- * 
  */
 public class ClientProxy extends CommonProxy
 {
 
+	/* (non-Javadoc)
+	 * @see steamcraft.common.CommonProxy#registerDisplayInformation()
+	 */
 	@Override
 	public void registerDisplayInformation()
 	{
@@ -61,6 +66,9 @@ public class ClientProxy extends CommonProxy
 		Utils.downloadCapes();
 	}
 
+	/* (non-Javadoc)
+	 * @see steamcraft.common.CommonProxy#registerRenderers()
+	 */
 	@Override
 	public void registerRenderers()
 	{
@@ -73,6 +81,9 @@ public class ClientProxy extends CommonProxy
 		RenderingRegistry.registerBlockHandler(new BlockHatchRenderer());
 	}
 
+	/* (non-Javadoc)
+	 * @see steamcraft.common.CommonProxy#getClientGuiElement(int, net.minecraft.entity.player.EntityPlayer, net.minecraft.world.World, int, int, int)
+	 */
 	@Override
 	public Object getClientGuiElement(final int ID, final EntityPlayer player,
 			final World world, final int x, final int y, final int z)
@@ -88,6 +99,9 @@ public class ClientProxy extends CommonProxy
 		return null;
 	}
 
+	/* (non-Javadoc)
+	 * @see steamcraft.common.CommonProxy#getClientWorld()
+	 */
 	@Override
 	public World getClientWorld()
 	{
@@ -103,6 +117,9 @@ public class ClientProxy extends CommonProxy
 
 	// ========== Warning: PAIN IN THE ASS MATERIAL ========== //
 
+	/* (non-Javadoc)
+	 * @see steamcraft.common.CommonProxy#rayFX(net.minecraft.world.World, net.minecraft.entity.player.EntityPlayer, double, double, double, int, boolean, float, java.lang.Object, int)
+	 */
 	@Override
 	public Object rayFX(final World world, final EntityPlayer player,
 			final double dx, final double dy, final double dz, final int type,
@@ -137,6 +154,9 @@ public class ClientProxy extends CommonProxy
 		return ray;
 	}
 
+	/* (non-Javadoc)
+	 * @see steamcraft.common.CommonProxy#smokeFX(net.minecraft.world.World, double, double, double, java.lang.Object)
+	 */
 	@Override
 	public Object smokeFX(final World world, final double dx, final double dy,
 			final double dz, final Object input)

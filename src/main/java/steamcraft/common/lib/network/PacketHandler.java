@@ -1,5 +1,5 @@
 /**
- * This class was created by <Surseance> or his SC2 development team. 
+ * This class was created by <Surseance> or his SC2 development team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -18,31 +18,33 @@ import java.io.IOException;
 
 import net.minecraft.client.Minecraft;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class PacketHandler.
+ *
  * @author Surseance (Johnny Eatmon)
- * 
  */
 public class PacketHandler
 {// implements IPacketHandler {
-	/** */
+	/** The Constant SC2_CHANNEL. */
 	public static final String SC2_CHANNEL = "SC2_Channel";
 
-	/** */
+	/** The Constant PACKET_UPDATE. */
 	public static final int PACKET_UPDATE = 10;
 
-	/** */
+	/** The Constant PACKET_REQUEST_UPDATE. */
 	public static final int PACKET_REQUEST_UPDATE = 20;
 
-	/** */
+	/** The Constant PACKET_CLIENT_UPDATE. */
 	public static final int PACKET_CLIENT_UPDATE = 30;
 
-	/** */
+	/** The Constant PACKET_GUI_INFO. */
 	public static final int PACKET_GUI_INFO = 40;
 
-	/** */
+	/** The Constant PACKET_OPEN_SERVER_GUI. */
 	public static final int PACKET_OPEN_SERVER_GUI = 50;
 
-	/** */
+	/** The Constant PACKET_EXTENDED_PROPERTIES. */
 	public static final int PACKET_EXTENDED_PROPERTIES = 60;
 
 	/*
@@ -50,7 +52,7 @@ public class PacketHandler
 	 * Packet250CustomPayload packet, Player player) { try { DataInputStream
 	 * dataStream = new DataInputStream(new ByteArrayInputStream(packet.data));
 	 * int packetType = dataStream.read();
-	 * 
+	 *
 	 * switch(packetType) { case PACKET_UPDATE: handleUpdatePacket("server",
 	 * dataStream, player); break; case PACKET_REQUEST_UPDATE:
 	 * handleUpdatePacket("request", dataStream, player); break; case
@@ -64,44 +66,46 @@ public class PacketHandler
 	 */
 
 	/**
-	 * @param packet
-	 * @param player
-	 * @param dataStream
+	 * Handle gui info packet.
+	 *
+	 * @param dataStream the data stream
+	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	/*
 	 * private void handleExtendedProperties(Packet250CustomPayload packet,
 	 * Player player, DataInputStream dataStream) {}
-	 * 
+	 *
 	 * /**
-	 * 
+	 *
 	 * @param packet
-	 * 
+	 *
 	 * @param player
-	 * 
+	 *
 	 * @param dataStream
 	 */
 	/*
 	 * private void handleOpenServerGui(Packet250CustomPayload packet,
 	 * EntityPlayer player, DataInputStream dataStream) { int guiID;
-	 * 
+	 *
 	 * try { guiID = dataStream.readInt(); } catch (IOException e) {
 	 * e.printStackTrace(); return; }
-	 * 
+	 *
 	 * player.openGui(Steamcraft.instance, guiID, player.worldObj, (int)
 	 * player.posX, (int) player.posY, (int) player.posZ);
-	 * 
+	 *
 	 * }
-	 * 
+	 *
 	 * /**
-	 * 
+	 *
 	 * @throws IOException
-	 * 
+	 *
 	 * @param type
-	 * 
+	 *
 	 * @param dataStream
-	 * 
+	 *
 	 * @param player
 	 */
+	@SuppressWarnings("unused")
 	private void handleGUIInfoPacket(final DataInputStream dataStream)
 			throws IOException
 	{
@@ -128,12 +132,12 @@ public class PacketHandler
 	 * private void handleUpdatePacket(String type, DataInputStream dataStream,
 	 * Player player) throws IOException { int x = dataStream.readInt(); int y =
 	 * dataStream.readInt(); int z = dataStream.readInt();
-	 * 
+	 *
 	 * World world = ((EntityPlayer) player).worldObj; TileEntity te =
 	 * world.getBlockTileEntity(x, y, z);
-	 * 
+	 *
 	 * if (te instanceof NetworkTile) { NetworkTile netTE = (NetworkTile)te;
-	 * 
+	 *
 	 * if (type == "server") { netTE.readPacket(dataStream); } else if (type ==
 	 * "request") { netTE.sendPacket(); } else if (type == "client") {
 	 * netTE.readPacketFromClient(dataStream); } } }

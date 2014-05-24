@@ -22,8 +22,16 @@ import steamcraft.common.tiles.TileSteamBoiler;
 import steamcraft.common.tiles.container.ContainerSteamBoiler;
 import cpw.mods.fml.common.network.IGuiHandler;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class GuiHandler.
+ */
 public class GuiHandler implements IGuiHandler
 {
+	
+	/* (non-Javadoc)
+	 * @see cpw.mods.fml.common.network.IGuiHandler#getServerGuiElement(int, net.minecraft.entity.player.EntityPlayer, net.minecraft.world.World, int, int, int)
+	 */
 	@Override
 	public Object getServerGuiElement(final int id, final EntityPlayer player,
 			final World world, final int x, final int y, final int z)
@@ -58,6 +66,9 @@ public class GuiHandler implements IGuiHandler
 		return null;
 	}
 
+	/* (non-Javadoc)
+	 * @see cpw.mods.fml.common.network.IGuiHandler#getClientGuiElement(int, net.minecraft.entity.player.EntityPlayer, net.minecraft.world.World, int, int, int)
+	 */
 	@Override
 	public Object getClientGuiElement(final int id, final EntityPlayer player,
 			final World world, final int x, final int y, final int z)

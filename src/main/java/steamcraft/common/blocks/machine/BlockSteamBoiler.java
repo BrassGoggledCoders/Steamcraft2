@@ -36,15 +36,28 @@ import steamcraft.common.tiles.TileSteamBoiler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class BlockSteamBoiler.
+ */
 public class BlockSteamBoiler extends BlockContainerMod
 {
+	
+	/** The icon top. */
 	@SideOnly(Side.CLIENT)
 	private IIcon iconTop;
+	
+	/** The icon front. */
 	@SideOnly(Side.CLIENT)
 	private IIcon iconFront;
+	
+	/** The icon front a. */
 	@SideOnly(Side.CLIENT)
 	private IIcon iconFrontA;
 
+	/**
+	 * Instantiates a new block steam boiler.
+	 */
 	public BlockSteamBoiler() // TODO: This class needs cleanup; consolidate the
 								// icons to an array of icons
 	{
@@ -52,12 +65,18 @@ public class BlockSteamBoiler extends BlockContainerMod
 		// this.setUnlocalizedName("steamBoiler");
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#damageDropped(int)
+	 */
 	@Override
 	public int damageDropped(final int metadata)
 	{
 		return 0;
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#getIcon(int, int)
+	 */
 	@SideOnly(Side.CLIENT)
 	@Override
 	public IIcon getIcon(final int side, final int meta)
@@ -83,6 +102,9 @@ public class BlockSteamBoiler extends BlockContainerMod
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#registerBlockIcons(net.minecraft.client.renderer.texture.IIconRegister)
+	 */
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void registerBlockIcons(final IIconRegister par1IconRegister)
@@ -97,6 +119,9 @@ public class BlockSteamBoiler extends BlockContainerMod
 				.registerIcon(LibInfo.PREFIX + "generatortop");
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#onBlockActivated(net.minecraft.world.World, int, int, int, net.minecraft.entity.player.EntityPlayer, int, float, float, float)
+	 */
 	@Override
 	public boolean onBlockActivated(final World par1World, final int par2,
 			final int par3, final int par4,
@@ -121,6 +146,15 @@ public class BlockSteamBoiler extends BlockContainerMod
 		}
 	}
 
+	/**
+	 * Update furnace block state.
+	 *
+	 * @param par0 the par0
+	 * @param par1World the par1 world
+	 * @param par2 the par2
+	 * @param par3 the par3
+	 * @param par4 the par4
+	 */
 	public static void updateFurnaceBlockState(final boolean par0,
 			final World par1World, final int par2, final int par3,
 			final int par4)
@@ -147,6 +181,9 @@ public class BlockSteamBoiler extends BlockContainerMod
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#randomDisplayTick(net.minecraft.world.World, int, int, int, java.util.Random)
+	 */
 	@Override
 	@SideOnly(Side.CLIENT)
 	/**
@@ -196,6 +233,9 @@ public class BlockSteamBoiler extends BlockContainerMod
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.ITileEntityProvider#createNewTileEntity(net.minecraft.world.World, int)
+	 */
 	@Override
 	public TileEntity createNewTileEntity(final World par1World,
 			final int metadata)
@@ -205,6 +245,13 @@ public class BlockSteamBoiler extends BlockContainerMod
 
 	/**
 	 * Called when the block is placed in the world.
+	 *
+	 * @param world the world
+	 * @param x the x
+	 * @param y the y
+	 * @param z the z
+	 * @param living the living
+	 * @param stack the stack
 	 */
 	@Override
 	public void onBlockPlacedBy(final World world, final int x, final int y,
@@ -236,6 +283,9 @@ public class BlockSteamBoiler extends BlockContainerMod
 		super.onBlockPlacedBy(world, x, y, z, living, stack);
 	}
 
+	/* (non-Javadoc)
+	 * @see steamcraft.common.blocks.machine.BlockContainerMod#breakBlock(net.minecraft.world.World, int, int, int, net.minecraft.block.Block, int)
+	 */
 	@Override
 	public void breakBlock(final World par1World, final int par2,
 			final int par3, final int par4, final Block block, final int par6)
@@ -296,12 +346,18 @@ public class BlockSteamBoiler extends BlockContainerMod
 		super.breakBlock(par1World, par2, par3, par4, block, par6);
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#hasComparatorInputOverride()
+	 */
 	@Override
 	public boolean hasComparatorInputOverride()
 	{
 		return true;
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#getComparatorInputOverride(net.minecraft.world.World, int, int, int, int)
+	 */
 	@Override
 	public int getComparatorInputOverride(final World par1World,
 			final int par2, final int par3, final int par4, final int par5)

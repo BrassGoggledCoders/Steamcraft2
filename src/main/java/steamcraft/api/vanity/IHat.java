@@ -14,8 +14,9 @@
 package steamcraft.api.vanity;
 
 /**
+ * The Interface IHat.
+ *
  * @author warlordjones
- * 
  */
 public interface IHat
 {

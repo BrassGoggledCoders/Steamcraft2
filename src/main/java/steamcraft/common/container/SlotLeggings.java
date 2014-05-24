@@ -18,12 +18,23 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import steamcraft.api.vanity.ILeggings;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class SlotLeggings.
+ *
  * @author warlordjones
- * 
  */
 public class SlotLeggings extends Slot
 {
+	
+	/**
+	 * Instantiates a new slot leggings.
+	 *
+	 * @param inventory the inventory
+	 * @param par2 the par2
+	 * @param par3 the par3
+	 * @param par4 the par4
+	 */
 	public SlotLeggings(final IInventory inventory, final int par2,
 			final int par3, final int par4)
 	{
@@ -34,6 +45,9 @@ public class SlotLeggings extends Slot
 	 * Check if the stack is a valid item for this slot. Always true beside for
 	 * the armor slots (and now also not always true for our custom inventory
 	 * slots)
+	 *
+	 * @param is the is
+	 * @return true, if is item valid
 	 */
 	@Override
 	public boolean isItemValid(final ItemStack is)
@@ -44,7 +58,9 @@ public class SlotLeggings extends Slot
 
 	/**
 	 * Returns the maximum stack size for a given slot (usually the same as
-	 * getInventoryStackLimit(), but 1 in the case of armor slots)
+	 * getInventoryStackLimit(), but 1 in the case of armor slots).
+	 *
+	 * @return the slot stack limit
 	 */
 	@Override
 	public int getSlotStackLimit()

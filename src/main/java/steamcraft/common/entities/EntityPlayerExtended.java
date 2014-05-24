@@ -24,37 +24,62 @@ import net.minecraftforge.common.IExtendedEntityProperties;
 import steamcraft.common.container.InventoryVanity;
 import steamcraft.common.lib.network.PacketHandler;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class EntityPlayerExtended.
+ *
  * @author warlordjones
- * 
  */
 public class EntityPlayerExtended implements IExtendedEntityProperties // TODO:
-																		// Add
-																		// packets
+// Add
+// packets
 {
+	
+	/** The Constant EXT_PROP_NAME. */
 	public final static String EXT_PROP_NAME = "EntityPlayerExtended";
 
+	/** The inventory. */
 	public final InventoryVanity inventory = new InventoryVanity();
 
+	/** The player. */
 	private final EntityPlayer player;
 
+	/**
+	 * Instantiates a new entity player extended.
+	 *
+	 * @param player the player
+	 */
 	public EntityPlayerExtended(final EntityPlayer player)
 	{
 		this.player = player;
 	}
 
+	/**
+	 * Register.
+	 *
+	 * @param player the player
+	 */
 	public static final void register(final EntityPlayer player)
 	{
 		player.registerExtendedProperties(EntityPlayerExtended.EXT_PROP_NAME,
 				new EntityPlayerExtended(player));
 	}
 
+	/**
+	 * Gets the.
+	 *
+	 * @param player the player
+	 * @return the entity player extended
+	 */
 	public static final EntityPlayerExtended get(final EntityPlayer player)
 	{
 		return (EntityPlayerExtended) player
 				.getExtendedProperties(EXT_PROP_NAME);
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraftforge.common.IExtendedEntityProperties#saveNBTData(net.minecraft.nbt.NBTTagCompound)
+	 */
 	@Override
 	public void saveNBTData(final NBTTagCompound tagCompound)
 	{
@@ -63,6 +88,9 @@ public class EntityPlayerExtended implements IExtendedEntityProperties // TODO:
 		inventory.writeToNBT(properties);
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraftforge.common.IExtendedEntityProperties#loadNBTData(net.minecraft.nbt.NBTTagCompound)
+	 */
 	@Override
 	public void loadNBTData(final NBTTagCompound tagCompound)
 	{
@@ -71,11 +99,17 @@ public class EntityPlayerExtended implements IExtendedEntityProperties // TODO:
 		inventory.readFromNBT(properties);
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraftforge.common.IExtendedEntityProperties#init(net.minecraft.entity.Entity, net.minecraft.world.World)
+	 */
 	@Override
 	public void init(final Entity entity, final World world)
 	{
 	}
 
+	/**
+	 * Sync.
+	 */
 	public final void sync()
 	{
 		final ByteArrayOutputStream baOutputStream = new ByteArrayOutputStream(

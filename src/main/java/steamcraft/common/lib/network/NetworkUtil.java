@@ -19,6 +19,7 @@ import java.io.IOException;
 
 import net.minecraft.entity.player.EntityPlayerMP;
 
+// TODO: Auto-generated Javadoc
 /**
  * A class to send GUI info to a server player through a packet.
  * 
@@ -27,6 +28,15 @@ import net.minecraft.entity.player.EntityPlayerMP;
  */
 public class NetworkUtil
 {
+	
+	/**
+	 * Send gui info.
+	 *
+	 * @param player the player
+	 * @param windowID the window id
+	 * @param type the type
+	 * @param value the value
+	 */
 	public static void sendGuiInfo(final EntityPlayerMP player,
 			final int windowID, final int type, final int value)
 	{

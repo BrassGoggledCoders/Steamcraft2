@@ -28,15 +28,24 @@ import steamcraft.common.lib.LibInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ItemCustomArmor.
+ *
  * @author Surseance (Johnny Eatmon)
- * 
  */
 public class ItemCustomArmor extends ItemArmor
 {
+	
+	/** The icon. */
 	private final IIcon[] icon = new IIcon[10];
+	
+	/** The mat. */
 	ItemArmor.ArmorMaterial mat;
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.item.Item#getIconFromDamage(int)
+	 */
 	@Override
 	@SideOnly(Side.CLIENT)
 	public IIcon getIconFromDamage(final int damage)
@@ -44,6 +53,9 @@ public class ItemCustomArmor extends ItemArmor
 		return icon[damage];
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.item.ItemArmor#registerIcons(net.minecraft.client.renderer.texture.IIconRegister)
+	 */
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(final IIconRegister ir)
@@ -52,6 +64,9 @@ public class ItemCustomArmor extends ItemArmor
 				+ this.getUnlocalizedName().substring(5));
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.item.Item#getArmorTexture(net.minecraft.item.ItemStack, net.minecraft.entity.Entity, int, java.lang.String)
+	 */
 	@Override
 	@SideOnly(Side.CLIENT)
 	public String getArmorTexture(final ItemStack is, final Entity entity,
@@ -61,6 +76,13 @@ public class ItemCustomArmor extends ItemArmor
 				+ ".png" : null;
 	}
 
+	/**
+	 * Instantiates a new item custom armor.
+	 *
+	 * @param armorMat the armor mat
+	 * @param renderIndex the render index
+	 * @param armorType the armor type
+	 */
 	public ItemCustomArmor(final ItemArmor.ArmorMaterial armorMat,
 			final int renderIndex, final int armorType)
 	{
@@ -69,6 +91,9 @@ public class ItemCustomArmor extends ItemArmor
 		setCreativeTab(Steamcraft.tabSC2);
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.item.Item#addInformation(net.minecraft.item.ItemStack, net.minecraft.entity.player.EntityPlayer, java.util.List, boolean)
+	 */
 	@SuppressWarnings("all")
 	@Override
 	public void addInformation(final ItemStack stack,
@@ -144,6 +169,9 @@ public class ItemCustomArmor extends ItemArmor
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.item.Item#onArmorTick(net.minecraft.world.World, net.minecraft.entity.player.EntityPlayer, net.minecraft.item.ItemStack)
+	 */
 	@Override
 	public void onArmorTick(final World world, final EntityPlayer player,
 			final ItemStack is)

@@ -16,12 +16,18 @@ package steamcraft.common.config;
 import steamcraft.common.entities.projectile.EntityBullet;
 import cpw.mods.fml.common.registry.EntityRegistry;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ConfigEntities.
+ *
  * @author Surseance (Johnny Eatmon)
- * 
  */
 public class ConfigEntities
 {
+	
+	/**
+	 * Inits the.
+	 */
 	public static void init()
 	{
 		EntityRegistry.registerGlobalEntityID(EntityBullet.class, "Bullet",
@@ -30,6 +36,9 @@ public class ConfigEntities
 		// Config.entBulletId, Steamcraft.instance, 64, 20, true);
 	}
 
+	/**
+	 * Inits the entity spawns.
+	 */
 	public static void initEntitySpawns()
 	{
 	}

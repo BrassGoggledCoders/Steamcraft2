@@ -22,14 +22,21 @@ import steamcraft.common.lib.LibInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class BlockSlate.
+ *
  * @author warlordjones
- * 
  */
 public class BlockSlate extends Block
 {
+	
+	/** The icon. */
 	private final IIcon[] icon = new IIcon[9];
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#getIcon(int, int)
+	 */
 	@Override
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(final int side, final int metadata)
@@ -37,6 +44,9 @@ public class BlockSlate extends Block
 		return icon[metadata];
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#registerBlockIcons(net.minecraft.client.renderer.texture.IIconRegister)
+	 */
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(final IIconRegister ir)
@@ -56,6 +66,9 @@ public class BlockSlate extends Block
 		// Polished
 	}
 
+	/**
+	 * Instantiates a new block slate.
+	 */
 	public BlockSlate()
 	{
 		super(Material.rock);
@@ -67,6 +80,9 @@ public class BlockSlate extends Block
 		setCreativeTab(Steamcraft.tabSC2);
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#damageDropped(int)
+	 */
 	@Override
 	public int damageDropped(final int id)
 	{

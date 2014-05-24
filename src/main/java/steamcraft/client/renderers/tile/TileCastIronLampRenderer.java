@@ -23,21 +23,33 @@ import org.lwjgl.opengl.GL11;
 
 import steamcraft.common.lib.LibInfo;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class TileCastIronLampRenderer.
+ *
  * @author Surseance (Johnny Eatmon)
- * 
  */
 public class TileCastIronLampRenderer extends TileEntitySpecialRenderer
 {
+	
+	/** The lamp model top. */
 	private final ModelCastIronLampTop lampModelTop;
+	
+	/** The lamp model side. */
 	private final ModelCastIronLampSide lampModelSide;
 
+	/**
+	 * Instantiates a new tile cast iron lamp renderer.
+	 */
 	public TileCastIronLampRenderer()
 	{
 		lampModelTop = new ModelCastIronLampTop();
 		lampModelSide = new ModelCastIronLampSide();
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer#renderTileEntityAt(net.minecraft.tileentity.TileEntity, double, double, double, float)
+	 */
 	@Override
 	public void renderTileEntityAt(final TileEntity te, final double dx,
 			final double dy, final double dz, final float scale)

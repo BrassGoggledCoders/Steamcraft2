@@ -28,16 +28,24 @@ import boilerplate.common.Utils;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class BlockMetal.
+ *
  * @author warlordjones
- * 
  */
 public class BlockMetal extends Block
 {
+	
+	/** The icon. */
 	private final IIcon[] icon = new IIcon[9];
 
+	/** The powered. */
 	private boolean powered;
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#registerBlockIcons(net.minecraft.client.renderer.texture.IIconRegister)
+	 */
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(final IIconRegister ir)
@@ -53,6 +61,9 @@ public class BlockMetal extends Block
 		icon[8] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockEtherium");
 	}
 
+	/**
+	 * Instantiates a new block metal.
+	 */
 	public BlockMetal()
 	{
 		super(Material.iron);
@@ -69,12 +80,18 @@ public class BlockMetal extends Block
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#damageDropped(int)
+	 */
 	@Override
 	public int damageDropped(final int id)
 	{
 		return id;
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#onEntityCollidedWithBlock(net.minecraft.world.World, int, int, int, net.minecraft.entity.Entity)
+	 */
 	@Override
 	public void onEntityCollidedWithBlock(final World world, final int x,
 			final int y, final int z, final Entity entity)
@@ -86,6 +103,9 @@ public class BlockMetal extends Block
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#randomDisplayTick(net.minecraft.world.World, int, int, int, java.util.Random)
+	 */
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(final World world, final int x, final int y,

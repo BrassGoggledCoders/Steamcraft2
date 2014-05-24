@@ -25,21 +25,36 @@ import steamcraft.common.items.ItemCanister;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ItemSteamJetpack.
+ *
  * @author Decebaldecebal
- * 
  */
 public class ItemSteamJetpack extends ItemCustomArmor
 {
+	
+	/** The Constant steamPerTick. */
 	private static final int steamPerTick = 10; // how much steam is uses per
 												// tick
 
-	public ItemSteamJetpack(final int id, final ArmorMaterial mat,
+	/**
+												 * Instantiates a new item steam jetpack.
+												 *
+												 * @param id the id
+												 * @param mat the mat
+												 * @param renderIndex the render index
+												 * @param armorType the armor type
+												 */
+												public ItemSteamJetpack(final int id, final ArmorMaterial mat,
 			final int renderIndex, final int armorType)
 	{
 		super(mat, renderIndex, armorType);
 	}
 
+	/* (non-Javadoc)
+	 * @see steamcraft.common.items.armor.ItemCustomArmor#onArmorTick(net.minecraft.world.World, net.minecraft.entity.player.EntityPlayer, net.minecraft.item.ItemStack)
+	 */
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void onArmorTick(final World world, final EntityPlayer player,

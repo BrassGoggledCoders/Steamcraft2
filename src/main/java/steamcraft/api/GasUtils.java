@@ -1,5 +1,5 @@
 /**
- * This class was created by <Surseance> or his SC2 development team. 
+ * This class was created by <Surseance> or his SC2 development team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -20,7 +20,7 @@ import net.minecraft.world.World;
 
 /**
  * @author Surseance (Johnny Eatmon)
- * 
+ *
  */
 public class GasUtils
 {
@@ -29,7 +29,7 @@ public class GasUtils
 
 	/**
 	 * GasUtils
-	 * 
+	 *
 	 * @param world
 	 *            - the TileGas worldObj
 	 * @param x
@@ -50,7 +50,7 @@ public class GasUtils
 
 	/**
 	 * Determines how high the gas will float before dissipating.
-	 * 
+	 *
 	 * @param height
 	 *            - the height before dissipating
 	 * @return - when the block above != Blocks.air
@@ -75,7 +75,7 @@ public class GasUtils
 	/**
 	 * Plays the fizz sound and spawns various smoke particles around the
 	 * general area. Woo.
-	 * 
+	 *
 	 * @param particleAmount
 	 *            - the particle spawn amount
 	 */
@@ -95,7 +95,7 @@ public class GasUtils
 	/**
 	 * Moves the gas with the given offset. Removes previous TileEntities and
 	 * Gas blocks.
-	 * 
+	 *
 	 * @param x
 	 *            - xCoord offset
 	 * @param y
@@ -122,7 +122,7 @@ public class GasUtils
 	/**
 	 * Partially dissipates the gas and divides the volume and metadata. Removes
 	 * previous TileEntities and Gas blocks.
-	 * 
+	 *
 	 * @param x
 	 *            - xCoord offset
 	 * @param y
@@ -155,7 +155,7 @@ public class GasUtils
 
 	/**
 	 * Grabs the block at the given offset using the TileGas' coordinates.
-	 * 
+	 *
 	 * @param x
 	 *            - xCoord offset
 	 * @param y
@@ -171,7 +171,7 @@ public class GasUtils
 
 	/**
 	 * Grabs the TileEntity at the given offset using the TileGas' coordinates.
-	 * 
+	 *
 	 * @param x
 	 *            - xCoord offset
 	 * @param y
@@ -188,7 +188,7 @@ public class GasUtils
 	/**
 	 * Determines whether the block at the given offset is an air block. The
 	 * offset is determined by passing the TileGas' coordinates.
-	 * 
+	 *
 	 * @param x
 	 *            - xCoord offset
 	 * @param y
@@ -206,7 +206,7 @@ public class GasUtils
 	/**
 	 * Places a block at the given offset. The offset is determined by passing
 	 * the TileGas' coordinates.
-	 * 
+	 *
 	 * @param x
 	 *            - xCoord offset
 	 * @param y
@@ -216,6 +216,7 @@ public class GasUtils
 	 * @param block
 	 *            - the block to place
 	 */
+	@SuppressWarnings("unused")
 	private static void setOffsetBlock(final int x, final int y, final int z,
 			final Block block)
 	{
@@ -225,7 +226,7 @@ public class GasUtils
 	/**
 	 * Uses the TileGas' coordinates to determine whether to start a fire or
 	 * not.
-	 * 
+	 *
 	 * @param
 	 */
 	public static void updateForFireCheck()
@@ -258,7 +259,7 @@ public class GasUtils
 	/**
 	 * Determines whether the block at the given offset can be broken/replaced
 	 * by the gas.
-	 * 
+	 *
 	 * @param x
 	 *            - zCoord offset
 	 * @param y

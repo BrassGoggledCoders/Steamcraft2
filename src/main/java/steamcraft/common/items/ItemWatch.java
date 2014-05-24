@@ -28,12 +28,18 @@ import steamcraft.common.lib.LibInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author Surseance (Johnny Eatmon)
+ * The Class ItemWatch.
  *
+ * @author Surseance (Johnny Eatmon)
  */
 public class ItemWatch extends Item
 {
+
+	/* (non-Javadoc)
+	 * @see net.minecraft.item.Item#getIconFromDamage(int)
+	 */
 	@Override
 	@SideOnly(Side.CLIENT)
 	public IIcon getIconFromDamage(final int damage)
@@ -41,6 +47,9 @@ public class ItemWatch extends Item
 		return itemIcon;
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.item.Item#registerIcons(net.minecraft.client.renderer.texture.IIconRegister)
+	 */
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(final IIconRegister ir)
@@ -48,12 +57,18 @@ public class ItemWatch extends Item
 		itemIcon = ir.registerIcon(LibInfo.PREFIX + "itemWatch");
 	}
 
+	/**
+	 * Instantiates a new item watch.
+	 */
 	public ItemWatch()
 	{
 		setMaxStackSize(1);
 		setCreativeTab(Steamcraft.tabSC2);
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.item.Item#addInformation(net.minecraft.item.ItemStack, net.minecraft.entity.player.EntityPlayer, java.util.List, boolean)
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void addInformation(final ItemStack is, final EntityPlayer player,
@@ -71,6 +86,10 @@ public class ItemWatch extends Item
 		list.add("and the real-world time");
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.item.Item#onItemRightClick(net.minecraft.item.ItemStack, net.minecraft.world.World, net.minecraft.entity.player.EntityPlayer)
+	 */
+	@SuppressWarnings("unused")
 	@Override
 	public ItemStack onItemRightClick(final ItemStack is, final World world, final EntityPlayer player)
 	{
@@ -81,11 +100,12 @@ public class ItemWatch extends Item
 			cal.getTime();
 			final SimpleDateFormat sdf = new SimpleDateFormat("HH:mm"); // hours and minutes, subtract twelve, ya pussy!
 			// System.out.println(sdf.format(cal.getTime()));
-						@SuppressWarnings("unused")
-						String message = "MC Time: " + mcTime;
-						//player.sendChatToPlayer(ChatMessageComponent.createFromText(message).setColor(EnumChatFormatting.GOLD));
-						message = "Real-World Time: " + sdf.format(cal.getTime());
-						//player.sendChatToPlayer(ChatMessageComponent.createFromText(message).setColor(EnumChatFormatting.GOLD));
+			//formatter:off
+			String message = "MC Time: " + mcTime;
+			//player.sendChatToPlayer(ChatMessageComponent.createFromText(message).setColor(EnumChatFormatting.GOLD));
+			message = "Real-World Time: " + sdf.format(cal.getTime());
+			//player.sendChatToPlayer(ChatMessageComponent.createFromText(message).setColor(EnumChatFormatting.GOLD));
+			//formatter:on
 		}
 
 		return is;

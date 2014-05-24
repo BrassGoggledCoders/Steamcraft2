@@ -28,13 +28,21 @@ import boilerplate.common.Utils;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class BlockEngravedSolid.
+ *
  * @author Surseance (Johnny Eatmon)
  */
 public class BlockEngravedSolid extends Block
 {
+	
+	/** The icon. */
 	private final IIcon[] icon = new IIcon[9];
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#getIcon(int, int)
+	 */
 	@Override
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(final int side, final int metadata)
@@ -42,6 +50,9 @@ public class BlockEngravedSolid extends Block
 		return icon[metadata];
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#registerBlockIcons(net.minecraft.client.renderer.texture.IIconRegister)
+	 */
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(final IIconRegister ir)
@@ -58,6 +69,9 @@ public class BlockEngravedSolid extends Block
 		// TODO: Add engravings of aluminum, copper, zinc, tin...
 	}
 
+	/**
+	 * Instantiates a new block engraved solid.
+	 */
 	public BlockEngravedSolid()
 	{
 		super(Material.rock);
@@ -69,12 +83,18 @@ public class BlockEngravedSolid extends Block
 		setCreativeTab(Steamcraft.tabSC2);
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#damageDropped(int)
+	 */
 	@Override
 	public int damageDropped(final int id)
 	{
 		return id;
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#onEntityCollidedWithBlock(net.minecraft.world.World, int, int, int, net.minecraft.entity.Entity)
+	 */
 	@Override
 	public void onEntityCollidedWithBlock(final World world, final int x,
 			final int y, final int z, final Entity entity)
@@ -86,6 +106,9 @@ public class BlockEngravedSolid extends Block
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#randomDisplayTick(net.minecraft.world.World, int, int, int, java.util.Random)
+	 */
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(final World world, final int x, final int y,

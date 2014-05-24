@@ -27,17 +27,27 @@ import net.minecraft.world.World;
 import steamcraft.api.machines.IMachine;
 import steamcraft.common.Steamcraft;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class BlockContainerMod.
+ */
 public abstract class BlockContainerMod extends BlockContainer
 {
-	/** */
+	
+	/** The keep inventory. */
 	protected static boolean keepInventory = true;
 
-	/** */
+	/** The random. */
 	protected final Random random = new Random();
 
-	/** */
+	/** The owner. */
 	public static String owner = "[SC2]";
 
+	/**
+	 * Instantiates a new block container mod.
+	 *
+	 * @param mat the mat
+	 */
 	protected BlockContainerMod(final Material mat)
 	{
 		super(mat);
@@ -45,11 +55,19 @@ public abstract class BlockContainerMod extends BlockContainer
 		setHardness(5.0F);
 	}
 
+	/**
+	 * Gets the owner.
+	 *
+	 * @return the owner
+	 */
 	public String getOwner()
 	{
 		return owner;
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#onBlockPlacedBy(net.minecraft.world.World, int, int, int, net.minecraft.entity.EntityLivingBase, net.minecraft.item.ItemStack)
+	 */
 	@Override
 	public void onBlockPlacedBy(final World world, final int x, final int y,
 			final int z, final EntityLivingBase entityLiving, final ItemStack is)
@@ -63,6 +81,9 @@ public abstract class BlockContainerMod extends BlockContainer
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.BlockContainer#breakBlock(net.minecraft.world.World, int, int, int, net.minecraft.block.Block, int)
+	 */
 	@Override
 	public void breakBlock(final World world, final int x, final int y,
 			final int z, final Block block, final int metadata)
@@ -70,6 +91,9 @@ public abstract class BlockContainerMod extends BlockContainer
 		super.breakBlock(world, x, y, z, block, metadata);
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#getLightValue(net.minecraft.world.IBlockAccess, int, int, int)
+	 */
 	@Override
 	public int getLightValue(final IBlockAccess world, final int x,
 			final int y, final int z)

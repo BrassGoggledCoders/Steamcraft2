@@ -36,12 +36,20 @@ import steamcraft.common.entities.EntityPlayerExtended;
 import steamcraft.common.lib.LibInfo;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class EventHandlerSC2.
+ *
  * @author Decebaldecebal
- * 
  */
 public class EventHandlerSC2
 {
+	
+	/**
+	 * Update player.
+	 *
+	 * @param event the event
+	 */
 	@SubscribeEvent
 	public void updatePlayer(final LivingEvent.LivingUpdateEvent event)
 	{
@@ -92,6 +100,11 @@ public class EventHandlerSC2
 	 * event.player.addExperience(10000); } }
 	 */
 
+	/**
+	 * Entity constructing.
+	 *
+	 * @param event the event
+	 */
 	@SubscribeEvent
 	public void entityConstructing(final EntityConstructing event)
 	{
@@ -101,10 +114,18 @@ public class EventHandlerSC2
 		}
 	}
 
+	/** The mc. */
 	private final Minecraft mc = Minecraft.getMinecraft();
+	
+	/** The Constant overlay. */
 	private static final ResourceLocation overlay = new ResourceLocation(
 			LibInfo.PREFIX + "textures/misc/goggles.png");
 
+	/**
+	 * On hud tick.
+	 *
+	 * @param event the event
+	 */
 	@SubscribeEvent
 	public void onHUDTick(final RenderGameOverlayEvent.Pre event)
 	{
@@ -161,8 +182,14 @@ public class EventHandlerSC2
 		}
 	}
 
+	/** The timer. */
 	private int timer = 400;
 
+	/**
+	 * On item drop.
+	 *
+	 * @param event the event
+	 */
 	@SubscribeEvent
 	public void onItemDrop(final ItemTossEvent event)
 	{
@@ -176,6 +203,11 @@ public class EventHandlerSC2
 	 * event.player.addExperience(10000); } }
 	 */
 
+	/**
+	 * Living update.
+	 *
+	 * @param event the event
+	 */
 	@SubscribeEvent
 	public void livingUpdate(final LivingUpdateEvent event)
 	{

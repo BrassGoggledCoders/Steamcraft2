@@ -14,8 +14,9 @@
 package steamcraft.api.vanity;
 
 /**
+ * The Interface ITunic.
+ *
  * @author warlordjones
- * 
  */
 public interface ITunic
 {
