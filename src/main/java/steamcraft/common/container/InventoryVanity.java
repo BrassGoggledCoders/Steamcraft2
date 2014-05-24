@@ -194,22 +194,18 @@ public class InventoryVanity implements IInventory
 	 *
 	 * @param tagCompound the tag compound
 	 */
-	public void readFromNBT(final NBTTagCompound tagCompound)
-	{
-		final NBTTagList tagList = (NBTTagList) tagCompound.getTag(tagName);
-
-		for (int i = 0; i < tagList.tagCount(); ++i)
-		{
-			final NBTTagCompound newTagCompound = tagList.getCompoundTagAt(i);
-			final byte slot = newTagCompound.getByte("Slot");
-
-			if (slot >= 0 && slot < getSizeInventory())
-			{
-				setInventorySlotContents(slot,
-						ItemStack.loadItemStackFromNBT(newTagCompound));
-			}
+	public void readFromNBT(NBTTagCompound compound) {
+		// now you must include the NBTBase type ID when getting the list; NBTTagCompound's ID is 10
+		NBTTagList items = compound.getTagList(tagName, compound.getId());
+		for (int i = 0; i < items.tagCount(); ++i) {
+		// tagAt(int) has changed to getCompoundTagAt(int)
+		NBTTagCompound item = items.getCompoundTagAt(i);
+		byte slot = item.getByte("Slot");
+		if (slot >= 0 && slot < getSizeInventory()) {
+		inventory[slot] = ItemStack.loadItemStackFromNBT(item);
 		}
-	}
+		}
+		}
 
 	/* (non-Javadoc)
 	 * @see net.minecraft.inventory.IInventory#closeInventory()

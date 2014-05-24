@@ -37,4 +37,6 @@ public final class GuiIDs
 
 	/** The Constant GUI_ID_GUIDE_BOOK. */
 	public static final int GUI_ID_GUIDE_BOOK = 10;
+
+	public static final int GUI_ID_VANITY = 11;
 }

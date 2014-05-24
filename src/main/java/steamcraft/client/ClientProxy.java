@@ -1,5 +1,5 @@
 /**
- * This class was created by <Surseance> or his SC2 development team. 
+ * This class was created by <Surseance> or his SC2 development team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -18,6 +18,7 @@ import java.awt.Color;
 import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
+import steamcraft.client.fx.FXRaygun;
 import steamcraft.client.renderers.block.BlockCastIronLampRenderer;
 import steamcraft.client.renderers.block.BlockCrystalRenderer;
 import steamcraft.client.renderers.block.BlockHatchRenderer;
@@ -25,16 +26,18 @@ import steamcraft.client.renderers.tile.TileCastIronLampRenderer;
 import steamcraft.client.renderers.tile.TileCrystalRenderer;
 import steamcraft.client.renderers.tile.TileHatchRenderer;
 import steamcraft.common.CommonProxy;
+import steamcraft.common.KeyBindings;
+import steamcraft.common.KeyInputHandler;
 import steamcraft.common.config.ConfigBlocks;
 import steamcraft.common.lib.Utils;
 import steamcraft.common.tiles.TileCastIronLamp;
 import steamcraft.common.tiles.TileCrystal;
 import steamcraft.common.tiles.TileHatch;
-import boilerplate.client.fx.FXRaygun;
 import boilerplate.client.fx.FXSmoke;
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
+import cpw.mods.fml.common.FMLCommonHandler;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -44,7 +47,12 @@ import cpw.mods.fml.client.registry.RenderingRegistry;
  */
 public class ClientProxy extends CommonProxy
 {
-
+	@Override
+	public void registerKeys()
+	{
+		FMLCommonHandler.instance().bus().register(new KeyInputHandler());
+		KeyBindings.registerKeys();
+	}
 	/* (non-Javadoc)
 	 * @see steamcraft.common.CommonProxy#registerDisplayInformation()
 	 */
@@ -187,27 +195,27 @@ public class ClientProxy extends CommonProxy
 	 * private static final ModelBrassMonocle chest = new
 	 * ModelBrassMonocle(1.0F); private static final ModelBrassMonocle legs =
 	 * new ModelBrassMonocle(0.5F);
-	 * 
+	 *
 	 * @Override public ModelBiped getMonocleArmorModel(int id) { switch (id) {
 	 * case 0: return chest; case 1: return legs; default: break; }
-	 * 
+	 *
 	 * return chest; // Default, if the wrong ID is passed }
-	 * 
+	 *
 	 * /* private static final ModelBrassWings chest1 = new
 	 * ModelBrassWings(1.0F); private static final ModelBrassWings legs1 = new
 	 * ModelBrassWings(0.5F);
-	 * 
+	 *
 	 * @Override public ModelBiped getWingsArmorModel(int id) { switch (id) {
 	 * case 0: return chest1; case 1: return legs1; default: break; }
-	 * 
+	 *
 	 * return chest1; // Default, if the wrong ID is passed }
-	 * 
+	 *
 	 * private static final ModelCape chest2 = new ModelCape(1.0F); private
 	 * static final ModelCape legs2 = new ModelCape(0.5F);
-	 * 
+	 *
 	 * @Override public ModelBiped getCapeArmorModel(int id) { switch(id) { case
 	 * 0: return chest2; case 1: return legs2; default: break; }
-	 * 
+	 *
 	 * return chest2; // Default, if the wrong ID is passed }
 	 */
 }

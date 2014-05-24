@@ -162,7 +162,7 @@ public class ConfigBlocks
 		blockSteamBoiler = new BlockSteamBoiler()
 				.setBlockName("blockSteamBoiler");
 		blockMetal = new BlockMetal().setBlockName("blockMetal");
-		blockSlate = new BlockSlate().setUnlocalizedName("blockSlate");
+		blockSlate = new BlockSlate();
 
 		// blockFluidSteam = new BlockFluidSteam(steamFluid, Material.water);
 		// Fluid steamFluid = new
