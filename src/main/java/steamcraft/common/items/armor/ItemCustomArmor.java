@@ -28,52 +28,82 @@ import steamcraft.common.lib.LibInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author Surseance (Johnny Eatmon)
+ * The Class ItemCustomArmor.
  *
+ * @author Surseance (Johnny Eatmon)
  */
 public class ItemCustomArmor extends ItemArmor
 {
-	private IIcon[] icon = new IIcon[10];
+	
+	/** The icon. */
+	private final IIcon[] icon = new IIcon[10];
+	
+	/** The mat. */
 	ItemArmor.ArmorMaterial mat;
-	
+
+	/* (non-Javadoc)
+	 * @see net.minecraft.item.Item#getIconFromDamage(int)
+	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public IIcon getIconFromDamage(int damage)
+	public IIcon getIconFromDamage(final int damage)
 	{
-		return this.icon[damage];
-	}
-	
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerIcons(IIconRegister ir)
-	{
-		this.itemIcon = ir.registerIcon(LibInfo.PREFIX + "armor/" + this.getUnlocalizedName().substring(5));
+		return icon[damage];
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.item.ItemArmor#registerIcons(net.minecraft.client.renderer.texture.IIconRegister)
+	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public String getArmorTexture(ItemStack is, Entity entity, int slot, String type)
+	public void registerIcons(final IIconRegister ir)
 	{
-		return type != null ? LibInfo.PREFIX + "textures/armor/" + type + ".png" : null;
+		itemIcon = ir.registerIcon(LibInfo.PREFIX + "armor/"
+				+ this.getUnlocalizedName().substring(5));
 	}
 
-	public ItemCustomArmor(ItemArmor.ArmorMaterial armorMat, int renderIndex, int armorType)
+	/* (non-Javadoc)
+	 * @see net.minecraft.item.Item#getArmorTexture(net.minecraft.item.ItemStack, net.minecraft.entity.Entity, int, java.lang.String)
+	 */
+	@Override
+	@SideOnly(Side.CLIENT)
+	public String getArmorTexture(final ItemStack is, final Entity entity,
+			final int slot, final String type)
+	{
+		return type != null ? LibInfo.PREFIX + "textures/armor/" + type
+				+ ".png" : null;
+	}
+
+	/**
+	 * Instantiates a new item custom armor.
+	 *
+	 * @param armorMat the armor mat
+	 * @param renderIndex the render index
+	 * @param armorType the armor type
+	 */
+	public ItemCustomArmor(final ItemArmor.ArmorMaterial armorMat,
+			final int renderIndex, final int armorType)
 	{
 		super(armorMat, renderIndex, armorType);
-		this.mat = armorMat;
-		this.setCreativeTab(Steamcraft.tabSC2);
+		mat = armorMat;
+		setCreativeTab(Steamcraft.tabSC2);
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.item.Item#addInformation(net.minecraft.item.ItemStack, net.minecraft.entity.player.EntityPlayer, java.util.List, boolean)
+	 */
 	@SuppressWarnings("all")
 	@Override
-	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean flag)
+	public void addInformation(final ItemStack stack,
+			final EntityPlayer player, final List list, final boolean flag)
 	{
-		//if(!ClientHelper.isShiftKeyDown())
-		//{
-		//	list.add(ClientHelper.shiftForInfo);
-		//	return;
-		//}
+		// if(!ClientHelper.isShiftKeyDown())
+		// {
+		// list.add(ClientHelper.shiftForInfo);
+		// return;
+		// }
 
 		if (stack != null)
 		{
@@ -82,73 +112,55 @@ public class ItemCustomArmor extends ItemArmor
 				list.add("It is a violation of");
 				list.add("the law of steampunk");
 				list.add("to fly without these.");
-				//TODO: Make this work to help seeing underwater + at night
+				// TODO: Make this work to help seeing underwater + at night
 				list.add("Helps with seeing things.");
 			}
-			else if(stack.getItem() == ConfigItems.itemAqualung)
+			else if (stack.getItem() == ConfigItems.itemAqualung)
 			{
 				list.add("This allows underwater breathing");
 				list.add("for as long as the durability lasts.");
 			}
-			else if(stack.getItem() == ConfigItems.itemLegBraces)
+			else if (stack.getItem() == ConfigItems.itemLegBraces)
 			{
 				list.add("A set of mechanical pistons");
 				list.add("and rods to help reduce damage");
 				list.add("substained from falling.");
 			}
-			else if(stack.getItem() == ConfigItems.itemRollerSkates)
+			else if (stack.getItem() == ConfigItems.itemRollerSkates)
 			{
 				list.add("Increases movement speed.");
 			}
-			else if(stack.getItem() == ConfigItems.itemSteamJetpack)
+			else if (stack.getItem() == ConfigItems.itemSteamJetpack)
 			{
 				list.add("Steam-powered Flight!");
 				list.add("Uses steam from canisters.");
 			}
 			/*
-			else if(stack.getItem() == ConfigItems.itemPneumaticBoots)
-			{
-				list.add("A set of pistons strapped");
-				list.add("to your feet increase the");
-				list.add("height of jumps");
-				list.add("Also allows automatic step up");
-				list.add("one-block");
-			}
-			else if(stack.getItem() == ModArmors.brassWings)
-			{
-				list.add("Hand-Powered Flight - uses Hunger");
-				//TODO: Implement this!
-				list.add("Can also be used to glide - without using power");
-			}
-			/*
-			 * else if(stack.getItem() == ModArmors.steamWings)
-			 * {
-			 * 	list.add("A combination of the jetpack and wings");
-			 * 	list.add("Uses fuel. No flight limit.");
-			 * 	list.add("Is also able to glide");
-			 *  }
-			else if(stack.getItem() == ModArmors.climbingClaws)
-			{
-				list.add("Allows you to grip onto and slide down walls");
-			}
-			else if(stack.getItem() == ModArmors.jetBoots)
-			{
-				list.add("Pseudo Flight");
-				list.add("It's really a very large jump");
-				list.add("Uses power from canisters");
-			}
-			else if(stack.getItem() == ModArmors.stilts)
-			{
-				list.add("Be three blocks tall!");
-				list.add("A little inconvient indoors");
-				list.add("Good for wading through water");
-			}
-			else if(stack.getItem() == ModArmors.reactivePistonPlate)
-			{
-				list.add("Pistons attached to this chestplate");
-				list.add("push back mobs that attack you")
-			}
-
+			 * else if(stack.getItem() == ConfigItems.itemPneumaticBoots) {
+			 * list.add("A set of pistons strapped");
+			 * list.add("to your feet increase the");
+			 * list.add("height of jumps");
+			 * list.add("Also allows automatic step up"); list.add("one-block");
+			 * } else if(stack.getItem() == ModArmors.brassWings) {
+			 * list.add("Hand-Powered Flight - uses Hunger"); //TODO: Implement
+			 * this!
+			 * list.add("Can also be used to glide - without using power"); } /*
+			 * else if(stack.getItem() == ModArmors.steamWings) {
+			 * list.add("A combination of the jetpack and wings");
+			 * list.add("Uses fuel. No flight limit.");
+			 * list.add("Is also able to glide"); } else if(stack.getItem() ==
+			 * ModArmors.climbingClaws) {
+			 * list.add("Allows you to grip onto and slide down walls"); } else
+			 * if(stack.getItem() == ModArmors.jetBoots) {
+			 * list.add("Pseudo Flight");
+			 * list.add("It's really a very large jump");
+			 * list.add("Uses power from canisters"); } else if(stack.getItem()
+			 * == ModArmors.stilts) { list.add("Be three blocks tall!");
+			 * list.add("A little inconvient indoors");
+			 * list.add("Good for wading through water"); } else
+			 * if(stack.getItem() == ModArmors.reactivePistonPlate) {
+			 * list.add("Pistons attached to this chestplate");
+			 * list.add("push back mobs that attack you") }
 			 */
 			else
 			{
@@ -157,20 +169,24 @@ public class ItemCustomArmor extends ItemArmor
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.item.Item#onArmorTick(net.minecraft.world.World, net.minecraft.entity.player.EntityPlayer, net.minecraft.item.ItemStack)
+	 */
 	@Override
-	public void onArmorTick(World world, EntityPlayer player, ItemStack is)
+	public void onArmorTick(final World world, final EntityPlayer player,
+			final ItemStack is)
 	{
-		if(is.getItem() == ConfigItems.itemAqualung)
+		if (is.getItem() == ConfigItems.itemAqualung)
 		{
-			if(player.getAir() <= 0)
+			if (player.getAir() <= 0)
 			{
 				player.setAir(300);
-				is.damageItem(4, player); //tweak the damage taken a bit
+				is.damageItem(4, player); // tweak the damage taken a bit
 			}
 		}
-		else if (is.getItem() == ConfigItems.itemLegBraces) 
+		else if (is.getItem() == ConfigItems.itemLegBraces)
 		{
-			if (player.fallDistance > 3.0F) 
+			if (player.fallDistance > 3.0F)
 			{
 				player.fallDistance *= 0.888F;
 				is.damageItem(1, player);

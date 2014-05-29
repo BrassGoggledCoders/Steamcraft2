@@ -18,20 +18,34 @@ import java.util.logging.Logger;
 
 import cpw.mods.fml.common.FMLLog;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author Surseance (Johnny Eatmon)
+ * The Class LoggerSteamcraft.
  *
+ * @author Surseance (Johnny Eatmon)
  */
 public class LoggerSteamcraft
 {
-	private static Logger logger = Logger.getLogger("SC2");
 	
+	/** The logger. */
+	private static Logger logger = Logger.getLogger("SC2");
+
+	/**
+	 * Inits the.
+	 */
 	public static void init()
 	{
-		logger.setParent((Logger) FMLLog.getLogger());;
+		logger.setParent((Logger) FMLLog.getLogger());
+		;
 	}
-	
-	public static void log(Level level, String message)
+
+	/**
+	 * Log.
+	 *
+	 * @param level the level
+	 * @param message the message
+	 */
+	public static void log(final Level level, final String message)
 	{
 		logger.log(level, "[Steamcraft] " + message);
 	}

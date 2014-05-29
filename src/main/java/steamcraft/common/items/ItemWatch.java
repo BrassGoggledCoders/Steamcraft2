@@ -1,5 +1,5 @@
 /**
- * This class was created by <Surseance> or his SC2 development team. 
+ * This class was created by <Surseance> or his SC2 development team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -28,57 +28,84 @@ import steamcraft.common.lib.LibInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author Surseance (Johnny Eatmon)
+ * The Class ItemWatch.
  *
+ * @author Surseance (Johnny Eatmon)
  */
 public class ItemWatch extends Item
 {
+
+	/* (non-Javadoc)
+	 * @see net.minecraft.item.Item#getIconFromDamage(int)
+	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public IIcon getIconFromDamage(int damage)
+	public IIcon getIconFromDamage(final int damage)
 	{
-		return this.itemIcon;
+		return itemIcon;
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.item.Item#registerIcons(net.minecraft.client.renderer.texture.IIconRegister)
+	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IIconRegister ir)
+	public void registerIcons(final IIconRegister ir)
 	{
-		this.itemIcon = ir.registerIcon(LibInfo.PREFIX + "itemWatch");
+		itemIcon = ir.registerIcon(LibInfo.PREFIX + "itemWatch");
 	}
 
+	/**
+	 * Instantiates a new item watch.
+	 */
 	public ItemWatch()
 	{
-		this.setMaxStackSize(1);
-		this.setCreativeTab(Steamcraft.tabSC2);
+		setMaxStackSize(1);
+		setCreativeTab(Steamcraft.tabSC2);
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.item.Item#addInformation(net.minecraft.item.ItemStack, net.minecraft.entity.player.EntityPlayer, java.util.List, boolean)
+	 */
+	@SuppressWarnings("unchecked")
 	@Override
-	public void addInformation(ItemStack is, EntityPlayer player, List list, boolean flag)
+	public void addInformation(final ItemStack is, final EntityPlayer player,
+			@SuppressWarnings("rawtypes") final List list, final boolean flag)
 	{
 		if (flag)
+		{
 			list.add("");
+		}
 		else
-			list.add("On right-click, this item"); 
-			list.add("will display the MC time");
-			list.add("and the real-world time");
+		{
+			list.add("On right-click, this item");
+		}
+		list.add("will display the MC time");
+		list.add("and the real-world time");
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.item.Item#onItemRightClick(net.minecraft.item.ItemStack, net.minecraft.world.World, net.minecraft.entity.player.EntityPlayer)
+	 */
+	@SuppressWarnings("unused")
 	@Override
-	public ItemStack onItemRightClick(ItemStack is, World world, EntityPlayer player)
+	public ItemStack onItemRightClick(final ItemStack is, final World world, final EntityPlayer player)
 	{
 		if (!world.isRemote)
 		{
-			long mcTime = world.getTotalWorldTime();
-			Calendar cal = Calendar.getInstance();
+			final long mcTime = world.getTotalWorldTime();
+			final Calendar cal = Calendar.getInstance();
 			cal.getTime();
-			SimpleDateFormat sdf = new SimpleDateFormat("HH:mm"); // hours and minutes, subtract twelve, ya pussy!
+			final SimpleDateFormat sdf = new SimpleDateFormat("HH:mm"); // hours and minutes, subtract twelve, ya pussy!
 			// System.out.println(sdf.format(cal.getTime()));
+			//formatter:off
 			String message = "MC Time: " + mcTime;
 			//player.sendChatToPlayer(ChatMessageComponent.createFromText(message).setColor(EnumChatFormatting.GOLD));
 			message = "Real-World Time: " + sdf.format(cal.getTime());
 			//player.sendChatToPlayer(ChatMessageComponent.createFromText(message).setColor(EnumChatFormatting.GOLD));
+			//formatter:on
 		}
 
 		return is;

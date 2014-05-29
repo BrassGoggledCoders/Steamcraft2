@@ -1,5 +1,5 @@
 /**
- * This class was created by <Surseance> or his SC2 development team. 
+ * This class was created by <Surseance> or his SC2 development team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -13,54 +13,81 @@
  */
 package steamcraft.common.items;
 
+import java.util.List;
+
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import steamcraft.common.Steamcraft;
+import steamcraft.common.config.ConfigItems;
 import steamcraft.common.lib.LibInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ItemIngot.
+ *
  * @author warlordjones
  */
 public class ItemIngot extends Item
 {
-    public IIcon[] icon = new IIcon[8];
 
-    @Override
-    @SideOnly(Side.CLIENT)
-    public IIcon getIconFromDamage(int itemDamage)
-    {
-        return this.icon[itemDamage];
-    }
+	/** The icon. */
+	public IIcon[] icon = new IIcon[8];
 
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void registerIcons(IIconRegister ir)
-    {
-        this.icon[0] = ir.registerIcon(LibInfo.PREFIX + "itemIngotAluminum");
-        this.icon[1] = ir.registerIcon(LibInfo.PREFIX + "itemIngotCopper");
-        this.icon[2] = ir.registerIcon(LibInfo.PREFIX + "itemIngotTin");
-        this.icon[3] = ir.registerIcon(LibInfo.PREFIX + "itemIngotZinc");
-        this.icon[4] = ir.registerIcon(LibInfo.PREFIX + "itemIngotBrass");
-        this.icon[5] = ir.registerIcon(LibInfo.PREFIX + "itemIngotBronze");
-        this.icon[6] = ir.registerIcon(LibInfo.PREFIX + "itemIngotSteel");
-        this.icon[7] = ir.registerIcon(LibInfo.PREFIX + "itemIngotCastIron");
-    }
+	/* (non-Javadoc)
+	 * @see net.minecraft.item.Item#getIconFromDamage(int)
+	 */
+	@Override
+	@SideOnly(Side.CLIENT)
+	public IIcon getIconFromDamage(final int itemDamage)
+	{
+		return icon[itemDamage];
+	}
 
-    public ItemIngot()
-    {
-    	super();
-        this.setMaxStackSize(64);
-        this.setHasSubtypes(true);
-        this.setMaxDamage(0);
-        this.setCreativeTab(Steamcraft.tabSC2);
-    }
-    @Override
-    public String getUnlocalizedName(ItemStack is)
-    {
-        return super.getUnlocalizedName() + "." + is.getItemDamage();
-    }
+	/* (non-Javadoc)
+	 * @see net.minecraft.item.Item#registerIcons(net.minecraft.client.renderer.texture.IIconRegister)
+	 */
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void registerIcons(final IIconRegister ir)
+	{
+		icon[0] = ir.registerIcon(LibInfo.PREFIX + "itemIngotAluminum");
+		icon[1] = ir.registerIcon(LibInfo.PREFIX + "itemIngotCopper");
+		icon[2] = ir.registerIcon(LibInfo.PREFIX + "itemIngotTin");
+		icon[3] = ir.registerIcon(LibInfo.PREFIX + "itemIngotZinc");
+		icon[4] = ir.registerIcon(LibInfo.PREFIX + "itemIngotBrass");
+		icon[5] = ir.registerIcon(LibInfo.PREFIX + "itemIngotBronze");
+		icon[6] = ir.registerIcon(LibInfo.PREFIX + "itemIngotSteel");
+		icon[7] = ir.registerIcon(LibInfo.PREFIX + "itemIngotCastIron");
+	}
+
+	/**
+	 * Instantiates a new item ingot.
+	 */
+	public ItemIngot()
+	{
+		super();
+		setMaxStackSize(64);
+		setHasSubtypes(true);
+		setCreativeTab(Steamcraft.tabSC2);
+	}
+
+	/* (non-Javadoc)
+	 * @see net.minecraft.item.Item#getSubItems(net.minecraft.item.Item, net.minecraft.creativetab.CreativeTabs, java.util.List)
+	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void getSubItems(final Item item, final CreativeTabs tab,
+			final List l)
+	{
+		for (int var4 = 0; var4 < 8; ++var4)
+		{
+			l.add(new ItemStack(ConfigItems.itemIngot, 1, var4));
+		}
+	}
 }

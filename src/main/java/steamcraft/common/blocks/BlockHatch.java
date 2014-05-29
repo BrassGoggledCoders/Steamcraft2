@@ -22,43 +22,66 @@ import steamcraft.common.Steamcraft;
 import steamcraft.common.config.ConfigBlocks;
 import steamcraft.common.tiles.TileHatch;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author warlordjones
+ * The Class BlockHatch.
  *
+ * @author warlordjones
  */
-public class BlockHatch extends BlockContainer{
+public class BlockHatch extends BlockContainer
+{
 
-	public static ResourceLocation hatchTextures = new ResourceLocation("assets/steamcraft/textures/blocks/");
+	/** The hatch textures. */
+	public static ResourceLocation hatchTextures = new ResourceLocation(
+			"assets/steamcraft/textures/blocks/");
+
 	/**
-	 * @param mat
+	 * Instantiates a new block hatch.
+	 *
+	 * @param par1 the par1
+	 * @param mat the mat
 	 */
-	public BlockHatch(int par1, Material mat) {
+	public BlockHatch(final int par1, final Material mat)
+	{
 		super(mat);
 		setCreativeTab(Steamcraft.tabSC2);
-		//setUnlocalizedName("blockHatch");
+		// setUnlocalizedName("blockHatch");
 		setBlockBounds(0, 0, 0, 1, 0.55F, 1);
 	}
-	 @Override
-	    public TileEntity createNewTileEntity(World world, int var2)
-	    {
-	        return new TileHatch();
-	    }
 
-	    @Override
-	    public int getRenderType()
-	    {
-	        return ConfigBlocks.blockHatchRI;
-	    }
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.ITileEntityProvider#createNewTileEntity(net.minecraft.world.World, int)
+	 */
+	@Override
+	public TileEntity createNewTileEntity(final World world, final int var2)
+	{
+		return new TileHatch();
+	}
 
-	    @Override
-	    public boolean isOpaqueCube()
-	    {
-	        return false;
-	    }
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#getRenderType()
+	 */
+	@Override
+	public int getRenderType()
+	{
+		return ConfigBlocks.blockHatchRI;
+	}
 
-	    @Override
-	    public boolean renderAsNormalBlock()
-	    {
-	        return false;
-	    }
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#isOpaqueCube()
+	 */
+	@Override
+	public boolean isOpaqueCube()
+	{
+		return false;
+	}
+
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#renderAsNormalBlock()
+	 */
+	@Override
+	public boolean renderAsNormalBlock()
+	{
+		return false;
+	}
 }

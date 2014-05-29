@@ -17,26 +17,40 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import steamcraft.common.config.ConfigBlocks;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class BlockSlateItem.
+ *
  * @author warlordjones
  */
-public class BlockSlateItem extends ItemBlock{
-    public BlockSlateItem()
-    {
-        super(ConfigBlocks.blockSlate);
-        this.setMaxDamage(0);
-        this.setHasSubtypes(true);
-    }
+public class BlockSlateItem extends ItemBlock
+{
+	
+	/**
+	 * Instantiates a new block slate item.
+	 */
+	public BlockSlateItem()
+	{
+		super(ConfigBlocks.blockSlate);
+		setMaxDamage(0);
+		setHasSubtypes(true);
+	}
 
-    @Override
-    public int getMetadata(int metadata)
-    {
-        return metadata;
-    }
+	/* (non-Javadoc)
+	 * @see net.minecraft.item.Item#getMetadata(int)
+	 */
+	@Override
+	public int getMetadata(final int metadata)
+	{
+		return metadata;
+	}
 
-    @Override
-    public String getUnlocalizedName(ItemStack is)
-    {
-        return super.getUnlocalizedName() + "." + is.getItemDamage();
-    }
+	/* (non-Javadoc)
+	 * @see net.minecraft.item.ItemBlock#getUnlocalizedName(net.minecraft.item.ItemStack)
+	 */
+	@Override
+	public String getUnlocalizedName(final ItemStack is)
+	{
+		return super.getUnlocalizedName() + "." + is.getItemDamage();
+	}
 }

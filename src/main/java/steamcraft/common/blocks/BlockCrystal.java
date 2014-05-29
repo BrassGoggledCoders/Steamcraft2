@@ -29,99 +29,124 @@ import steamcraft.common.tiles.TileCrystal;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class BlockCrystal.
+ *
  * @author Surseance (Johnny Eatmon)
  */
 public class BlockCrystal extends BlockContainer implements ITileEntityProvider
 {
-    public BlockCrystal()
-    {
-        super(Material.glass);
-        this.setHardness(8.5F);
-        this.setResistance(6000000.0F);
-        this.setStepSound(Block.soundTypeGlass);
-        this.setCreativeTab(Steamcraft.tabSC2);
-        //setUnlocalizedName("blockCrystal");
-    }
+	
+	/**
+	 * Instantiates a new block crystal.
+	 */
+	public BlockCrystal()
+	{
+		super(Material.glass);
+		setHardness(8.5F);
+		setResistance(6000000.0F);
+		setStepSound(Block.soundTypeGlass);
+		setCreativeTab(Steamcraft.tabSC2);
+		// setUnlocalizedName("blockCrystal");
+	}
 
-    @Override
-    public TileEntity createNewTileEntity(World world, int metadata)
-    {
-        return new TileCrystal();
-    }
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.ITileEntityProvider#createNewTileEntity(net.minecraft.world.World, int)
+	 */
+	@Override
+	public TileEntity createNewTileEntity(final World world, final int metadata)
+	{
+		return new TileCrystal();
+	}
 
-    @Override
-    public int getRenderType()
-    {
-        return ConfigBlocks.blockCrystalRI;
-    }
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#getRenderType()
+	 */
+	@Override
+	public int getRenderType()
+	{
+		return ConfigBlocks.blockCrystalRI;
+	}
 
-    @Override
-    public boolean isOpaqueCube()
-    {
-        return false;
-    }
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#isOpaqueCube()
+	 */
+	@Override
+	public boolean isOpaqueCube()
+	{
+		return false;
+	}
 
-    @Override
-    public boolean renderAsNormalBlock()
-    {
-        return false;
-    }
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#renderAsNormalBlock()
+	 */
+	@Override
+	public boolean renderAsNormalBlock()
+	{
+		return false;
+	}
 
-    @Override
-    public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z)
-    {
-        return null;
-    }
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#getCollisionBoundingBoxFromPool(net.minecraft.world.World, int, int, int)
+	 */
+	@Override
+	public AxisAlignedBB getCollisionBoundingBoxFromPool(final World world,
+			final int x, final int y, final int z)
+	{
+		return null;
+	}
 
-    @Override
-    public boolean canCreatureSpawn(EnumCreatureType type, IBlockAccess world, int x, int y, int z)
-    {
-        return false;
-    }
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#canCreatureSpawn(net.minecraft.entity.EnumCreatureType, net.minecraft.world.IBlockAccess, int, int, int)
+	 */
+	@Override
+	public boolean canCreatureSpawn(final EnumCreatureType type,
+			final IBlockAccess world, final int x, final int y, final int z)
+	{
+		return false;
+	}
 
-    @Override
-    @SideOnly(Side.CLIENT)
-    public boolean addDestroyEffects(World world, int x, int y, int z, int metadata, EffectRenderer effectRenderer)
-    {
-        return super.addDestroyEffects(world, x, y, z, metadata, effectRenderer);
-    }
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#addDestroyEffects(net.minecraft.world.World, int, int, int, int, net.minecraft.client.particle.EffectRenderer)
+	 */
+	@Override
+	@SideOnly(Side.CLIENT)
+	public boolean addDestroyEffects(final World world, final int x,
+			final int y, final int z, final int metadata,
+			final EffectRenderer effectRenderer)
+	{
+		return super
+				.addDestroyEffects(world, x, y, z, metadata, effectRenderer);
+	}
 
-    /*
-    @SideOnly(Side.CLIENT)
-    public AxisAlignedBB getSelectedBoundingBoxFromPool(World p_149633_1_, int p_149633_2_, int p_149633_3_, int p_149633_4_)
-    {
-        return null;
-    }
+	/*
+	 * @SideOnly(Side.CLIENT) public AxisAlignedBB
+	 * getSelectedBoundingBoxFromPool(World p_149633_1_, int p_149633_2_, int
+	 * p_149633_3_, int p_149633_4_) { return null; }
+	 * 
+	 * @Override public int getExpDrop(World world, int i, int j) { if
+	 * (this.idDropped(i, world.rand, j) != this.blockID) { int randInt =
+	 * MathHelper.getRandomIntegerInRange(world.rand, 4, 10); return randInt; }
+	 * 
+	 * return 0; }
+	 * 
+	 * @Override public int quantityDroppedWithBonus(int quantity, Random
+	 * random) { if (quantity > 0 && (this.blockID != this.idDropped(0, random,
+	 * quantity))) { int randInt = random.nextInt(quantity + 2) - 1;
+	 * 
+	 * if (randInt < 0) { randInt = 0; }
+	 * 
+	 * return this.quantityDropped(random) * (randInt + 1); } else { return
+	 * this.quantityDropped(random); } }
+	 */
 
-    @Override
-    public int getExpDrop(World world, int i, int j) {
-        if (this.idDropped(i, world.rand, j) != this.blockID) {
-            int randInt = MathHelper.getRandomIntegerInRange(world.rand, 4, 10);
-            return randInt;
-        }
-
-        return 0;
-    }
-
-    @Override
-    public int quantityDroppedWithBonus(int quantity, Random random) {
-        if (quantity > 0 && (this.blockID != this.idDropped(0, random, quantity))) {
-            int randInt = random.nextInt(quantity + 2) - 1;
-
-            if (randInt < 0) {
-                randInt = 0;
-            }
-
-            return this.quantityDropped(random) * (randInt + 1);
-        } else {
-            return this.quantityDropped(random);
-        }
-    }*/
-
-    @Override
-    public int tickRate(World world)
-    {
-        return 10;
-    }
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#tickRate(net.minecraft.world.World)
+	 */
+	@Override
+	public int tickRate(final World world)
+	{
+		return 10;
+	}
 }

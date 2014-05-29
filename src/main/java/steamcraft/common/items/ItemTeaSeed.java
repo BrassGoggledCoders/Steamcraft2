@@ -30,67 +30,98 @@ import steamcraft.common.lib.LibInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author Surseance (Johnny Eatmon)
+ * The Class ItemTeaSeed.
  *
+ * @author Surseance (Johnny Eatmon)
  */
 public class ItemTeaSeed extends Item implements IPlantable
 {
+	
+	/* (non-Javadoc)
+	 * @see net.minecraft.item.Item#registerIcons(net.minecraft.client.renderer.texture.IIconRegister)
+	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IIconRegister ir)
+	public void registerIcons(final IIconRegister ir)
 	{
-		this.itemIcon = ir.registerIcon(LibInfo.PREFIX + "itemTeaSeed");
+		itemIcon = ir.registerIcon(LibInfo.PREFIX + "itemTeaSeed");
 	}
 
+	/**
+	 * Instantiates a new item tea seed.
+	 */
 	public ItemTeaSeed()
 	{
 		super();
-		this.setMaxStackSize(64);
-		this.setCreativeTab(Steamcraft.tabSC2);
+		setMaxStackSize(64);
+		setCreativeTab(Steamcraft.tabSC2);
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.item.Item#onItemUse(net.minecraft.item.ItemStack, net.minecraft.entity.player.EntityPlayer, net.minecraft.world.World, int, int, int, int, float, float, float)
+	 */
 	@Override
-	public boolean onItemUse(ItemStack is, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ)
+	public boolean onItemUse(final ItemStack is, final EntityPlayer player,
+			final World world, final int x, final int y, final int z,
+			final int side, final float hitX, final float hitY, final float hitZ)
 	{
 		if (side != 1)
-			return false;
-		else if (player.canPlayerEdit(x, y, z, side, is) && player.canPlayerEdit(x, y + 1, z, side, is))
 		{
-			Block block = world.getBlock(x, y, z);
-			Block soil = Blocks.farmland;
+			return false;
+		}
+		else if (player.canPlayerEdit(x, y, z, side, is)
+				&& player.canPlayerEdit(x, y + 1, z, side, is))
+		{
+			world.getBlock(x, y, z);
+			final Block soil = Blocks.farmland;
 
-			if (soil != null && soil.canSustainPlant(world, x, y, z, ForgeDirection.UP, this) && world.isAirBlock(x, y + 1, z))
+			if (soil != null
+					&& soil.canSustainPlant(world, x, y, z, ForgeDirection.UP,
+							this) && world.isAirBlock(x, y + 1, z))
 			{
 				world.setBlockToAir(x, y + 1, z);
 				--is.stackSize;
 				return true;
-			} 
+			}
 			else
 			{
 				return false;
 			}
-		} 
+		}
 		else
 		{
 			return false;
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraftforge.common.IPlantable#getPlant(net.minecraft.world.IBlockAccess, int, int, int)
+	 */
 	@Override
-	public Block getPlant(IBlockAccess world, int x, int y, int z)
+	public Block getPlant(final IBlockAccess world, final int x, final int y,
+			final int z)
 	{
 		return ConfigBlocks.blockTeaPlant;
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraftforge.common.IPlantable#getPlantMetadata(net.minecraft.world.IBlockAccess, int, int, int)
+	 */
 	@Override
-	public int getPlantMetadata(IBlockAccess world, int x, int y, int z)
+	public int getPlantMetadata(final IBlockAccess world, final int x,
+			final int y, final int z)
 	{
 		return 0;
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraftforge.common.IPlantable#getPlantType(net.minecraft.world.IBlockAccess, int, int, int)
+	 */
 	@Override
-	public EnumPlantType getPlantType(IBlockAccess world, int x, int y, int z)
+	public EnumPlantType getPlantType(final IBlockAccess world, final int x,
+			final int y, final int z)
 	{
 		return EnumPlantType.Crop;
 	}

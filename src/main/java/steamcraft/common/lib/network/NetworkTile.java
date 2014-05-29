@@ -22,77 +22,119 @@ import net.minecraft.network.Packet;
 import net.minecraft.tileentity.TileEntity;
 import boilerplate.common.Utils;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author Surseance (Johnny Eatmon)
+ * The Class NetworkTile.
  *
+ * @author Surseance (Johnny Eatmon)
  */
-public abstract class NetworkTile extends TileEntity 
+public abstract class NetworkTile extends TileEntity
 {
-	/** */
+	
+	/** The marked for resend. */
 	private boolean markedForResend;
 
-	public boolean isMarkedForResend() 
+	/**
+	 * Checks if is marked for resend.
+	 *
+	 * @return true, if is marked for resend
+	 */
+	public boolean isMarkedForResend()
 	{
-		return this.markedForResend;
+		return markedForResend;
 	}
 
-	public void setMarkedForResend(boolean markedForResend) 
+	/**
+	 * Sets the marked for resend.
+	 *
+	 * @param markedForResend the new marked for resend
+	 */
+	public void setMarkedForResend(final boolean markedForResend)
 	{
 		this.markedForResend = markedForResend;
 	}
 
-	public void sendPacket() 
+	/**
+	 * Send packet.
+	 */
+	public void sendPacket()
 	{
-		Packet packet = this.getDescriptionPacket();
-		//packet.isChunkDataPacket = false;
-		Utils.sendToPlayers(packet, this.worldObj, this.xCoord, this.yCoord, this.zCoord, null);
+		final Packet packet = getDescriptionPacket();
+		// packet.isChunkDataPacket = false;
+		Utils.sendToPlayers(packet, worldObj, xCoord, yCoord, zCoord, null);
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.tileentity.TileEntity#getDescriptionPacket()
+	 */
 	@Override
-	public Packet getDescriptionPacket() 
+	public Packet getDescriptionPacket()
 	{
-		ByteArrayOutputStream byteStream = new ByteArrayOutputStream();
-		DataOutputStream dataStream = new DataOutputStream(byteStream);
+		final ByteArrayOutputStream byteStream = new ByteArrayOutputStream();
+		final DataOutputStream dataStream = new DataOutputStream(byteStream);
 
-		try {
+		try
+		{
 			dataStream.writeInt(10);
 
-			dataStream.writeInt(this.xCoord);
-			dataStream.writeInt(this.yCoord);
-			dataStream.writeInt(this.zCoord);
-			
-			this.writePacket(dataStream);
-		} catch (IOException e) {
+			dataStream.writeInt(xCoord);
+			dataStream.writeInt(yCoord);
+			dataStream.writeInt(zCoord);
+
+			writePacket(dataStream);
+		} catch (final IOException e)
+		{
 			e.printStackTrace();
 		}
 
 		/*
-		Packet250CustomPayload packet = new Packet250CustomPayload();
-		packet.channel = "SC2_Channel";
-		packet.data = byteStream.toByteArray();
-		packet.length = byteStream.size();
-		packet.isChunkDataPacket = true;*/
+		 * Packet250CustomPayload packet = new Packet250CustomPayload();
+		 * packet.channel = "SC2_Channel"; packet.data =
+		 * byteStream.toByteArray(); packet.length = byteStream.size();
+		 * packet.isChunkDataPacket = true;
+		 */
 
-		return null;//packet;
+		return null;// packet;
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.tileentity.TileEntity#updateEntity()
+	 */
 	@Override
-	public void updateEntity() 
+	public void updateEntity()
 	{
 		super.updateEntity();
 
-		if ((!this.worldObj.isRemote) && (this.isMarkedForResend())) 
+		if ((!worldObj.isRemote) && (isMarkedForResend()))
 		{
-			this.setMarkedForResend(false);
+			setMarkedForResend(false);
 		}
 	}
 
-	public abstract void writePacket(DataOutputStream dataStream) 
+	/**
+	 * Write packet.
+	 *
+	 * @param dataStream the data stream
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
+	public abstract void writePacket(DataOutputStream dataStream)
 			throws IOException;
 
+	/**
+	 * Read packet.
+	 *
+	 * @param dataStream the data stream
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public abstract void readPacket(DataInputStream dataStream)
 			throws IOException;
 
+	/**
+	 * Read packet from client.
+	 *
+	 * @param dataStream the data stream
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public abstract void readPacketFromClient(DataInputStream dataStream)
 			throws IOException;
 }

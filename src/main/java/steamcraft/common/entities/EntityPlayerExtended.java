@@ -18,75 +18,119 @@ import java.io.DataOutputStream;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IExtendedEntityProperties;
 import steamcraft.common.container.InventoryVanity;
 import steamcraft.common.lib.network.PacketHandler;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author warlordjones
+ * The Class EntityPlayerExtended.
  *
+ * @author warlordjones
  */
-public class EntityPlayerExtended implements IExtendedEntityProperties //TODO: Add packets
+public class EntityPlayerExtended implements IExtendedEntityProperties // TODO:
+// Add
+// packets
 {
+	
+	/** The Constant EXT_PROP_NAME. */
 	public final static String EXT_PROP_NAME = "EntityPlayerExtended";
 
+	/** The inventory. */
 	public final InventoryVanity inventory = new InventoryVanity();
 
+	/** The player. */
 	private final EntityPlayer player;
 
-	public EntityPlayerExtended(EntityPlayer player)
+	/**
+	 * Instantiates a new entity player extended.
+	 *
+	 * @param player the player
+	 */
+	public EntityPlayerExtended(final EntityPlayer player)
 	{
 		this.player = player;
 	}
-	
-	public static final void register(EntityPlayer player)
+
+	/**
+	 * Register.
+	 *
+	 * @param player the player
+	 */
+	public static final void register(final EntityPlayer player)
 	{
-		player.registerExtendedProperties(EntityPlayerExtended.EXT_PROP_NAME, new EntityPlayerExtended(player));
+		player.registerExtendedProperties(EntityPlayerExtended.EXT_PROP_NAME,
+				new EntityPlayerExtended(player));
 	}
 
-	public static final EntityPlayerExtended get(EntityPlayer player)
+	/**
+	 * Gets the.
+	 *
+	 * @param player the player
+	 * @return the entity player extended
+	 */
+	public static final EntityPlayerExtended get(final EntityPlayer player)
 	{
-		return (EntityPlayerExtended) player.getExtendedProperties(EXT_PROP_NAME);
+		return (EntityPlayerExtended) player
+				.getExtendedProperties(EXT_PROP_NAME);
 	}
-	
+
+	/* (non-Javadoc)
+	 * @see net.minecraftforge.common.IExtendedEntityProperties#saveNBTData(net.minecraft.nbt.NBTTagCompound)
+	 */
 	@Override
-	public void saveNBTData(NBTTagCompound tagCompound)
+	public void saveNBTData(final NBTTagCompound tagCompound)
 	{
-		NBTTagCompound properties = new NBTTagCompound();
+		final NBTTagCompound properties = new NBTTagCompound();
 		tagCompound.setTag(EXT_PROP_NAME, properties);
-		this.inventory.writeToNBT(properties);
-	}
-	
-	@Override
-	public void loadNBTData(NBTTagCompound tagCompound)
-	{
-		NBTTagCompound properties = (NBTTagCompound) tagCompound.getTag(EXT_PROP_NAME);
-		this.inventory.readFromNBT(properties);
+		inventory.writeToNBT(properties);
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraftforge.common.IExtendedEntityProperties#loadNBTData(net.minecraft.nbt.NBTTagCompound)
+	 */
 	@Override
-	public void init(Entity entity, World world) {}
-	
+	public void loadNBTData(final NBTTagCompound tagCompound)
+	{
+		final NBTTagCompound properties = (NBTTagCompound) tagCompound
+				.getTag(EXT_PROP_NAME);
+		inventory.readFromNBT(properties);
+	}
+
+	/* (non-Javadoc)
+	 * @see net.minecraftforge.common.IExtendedEntityProperties#init(net.minecraft.entity.Entity, net.minecraft.world.World)
+	 */
+	@Override
+	public void init(final Entity entity, final World world)
+	{
+	}
+
+	/**
+	 * Sync.
+	 */
 	public final void sync()
 	{
-		ByteArrayOutputStream baOutputStream = new ByteArrayOutputStream(8);
-		DataOutputStream dOutputStream = new DataOutputStream(baOutputStream);
-		try {
+		final ByteArrayOutputStream baOutputStream = new ByteArrayOutputStream(
+				8);
+		final DataOutputStream dOutputStream = new DataOutputStream(
+				baOutputStream);
+		try
+		{
 			dOutputStream.writeInt(PacketHandler.PACKET_EXTENDED_PROPERTIES);
-		} catch (Exception ex) {
+		} catch (final Exception ex)
+		{
 			ex.printStackTrace();
 		}
 
-		//Packet250CustomPayload packet = new Packet250CustomPayload(PacketHandler.SC2_CHANNEL, baOutputStream.toByteArray());
+		// Packet250CustomPayload packet = new
+		// Packet250CustomPayload(PacketHandler.SC2_CHANNEL,
+		// baOutputStream.toByteArray());
 
 		// We only want to send from the server to the client
-		if (!player.worldObj.isRemote) 
+		if (!player.worldObj.isRemote)
 		{
-			EntityPlayerMP playerMP = (EntityPlayerMP)player;
-			//PacketDispatch.sendPacketToPlayer(packet, playerMP);
 		}
 	}
 }

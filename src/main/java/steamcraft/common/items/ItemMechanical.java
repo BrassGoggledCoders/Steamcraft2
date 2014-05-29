@@ -20,43 +20,53 @@ import steamcraft.common.Steamcraft;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ItemMechanical.
+ *
  * @author Surseance (Johnny Eatmon)
  */
 public class ItemMechanical extends Item
 {
 	/*
 	 * 
-	public static Item brassWatch;
-	public static Item canisterSteam;
-	public static Item canisterGas;
-	public static Item steamCanister;
-	public static Item gasCanister;
-    public static Item emptyCanister;
+	 * public static Item brassWatch; public static Item canisterSteam; public
+	 * static Item canisterGas; public static Item steamCanister; public static
+	 * Item gasCanister; public static Item emptyCanister;
 	 */
-	
-    public IIcon[] icon = new IIcon[6];
 
-    @Override
-    @SideOnly(Side.CLIENT)
-    public IIcon getIconFromDamage(int itemDamage)
-    {
-        return this.icon[itemDamage];
-    }
+	/** The icon. */
+	public IIcon[] icon = new IIcon[6];
 
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void registerIcons(IIconRegister ir)
-    {
+	/* (non-Javadoc)
+	 * @see net.minecraft.item.Item#getIconFromDamage(int)
+	 */
+	@Override
+	@SideOnly(Side.CLIENT)
+	public IIcon getIconFromDamage(final int itemDamage)
+	{
+		return icon[itemDamage];
+	}
 
-    }
+	/* (non-Javadoc)
+	 * @see net.minecraft.item.Item#registerIcons(net.minecraft.client.renderer.texture.IIconRegister)
+	 */
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void registerIcons(final IIconRegister ir)
+	{
 
-    public ItemMechanical()
-    {
-    	super();
-        this.setMaxStackSize(64);
-        this.setHasSubtypes(true);
-        this.setMaxDamage(0);
-        this.setCreativeTab(Steamcraft.tabSC2);
-    }
+	}
+
+	/**
+	 * Instantiates a new item mechanical.
+	 */
+	public ItemMechanical()
+	{
+		super();
+		setMaxStackSize(64);
+		setHasSubtypes(true);
+		setMaxDamage(0);
+		setCreativeTab(Steamcraft.tabSC2);
+	}
 }

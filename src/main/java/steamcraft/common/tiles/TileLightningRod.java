@@ -16,8 +16,9 @@ package steamcraft.common.tiles;
 import net.minecraft.tileentity.TileEntity;
 
 /**
- * @author Surseance (Johnny Eatmon)
+ * The Class TileLightningRod.
  *
+ * @author Surseance (Johnny Eatmon)
  */
 public class TileLightningRod extends TileEntity
 {

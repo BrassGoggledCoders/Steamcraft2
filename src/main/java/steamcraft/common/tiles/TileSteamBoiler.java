@@ -30,221 +30,369 @@ import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
 import steamcraft.common.blocks.machine.BlockSteamBoiler;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class TileSteamBoiler.
+ */
 public class TileSteamBoiler extends TileEntityMachine implements IFluidHandler
 {
 	/*
-	 * 20 steam/tick is basically 4 MJ/t if we use RailCraft ratios
-	 * I also calculated that for a piece of coal that burns 400 ticks in this, we get 1600 MJ/t
-	 * and if we transform that in EU using the MFR conversion ratio, we get 4000 EU/t, which is the same
-	 * as a piece of coal in an IC2 generator
+	 * 20 steam/tick is basically 4 MJ/t if we use RailCraft ratios I also
+	 * calculated that for a piece of coal that burns 400 ticks in this, we get
+	 * 1600 MJ/t and if we transform that in EU using the MFR conversion ratio,
+	 * we get 4000 EU/t, which is the same as a piece of coal in an IC2
+	 * generator
 	 * 
-	 * Anyways, I think this is a good number
-	 * Maybe we'll have to tweak the water a bit
+	 * Anyways, I think this is a good number Maybe we'll have to tweak the
+	 * water a bit
 	 */
-	private final int steamPerTick = 20; //how much steam it produces per tick
-	private final int waterPerTick = 30; //how much water it uses per tick
-	public int furnaceBurnTime = 0;
-	public int currentItemBurnTime = 0;
-	public FluidTank waterTank;
-	public FluidTank steamTank;
+	/** The steam per tick. */
+	private final int steamPerTick = 20; // how much steam it produces per tick
 	
+	/** The water per tick. */
+	private final int waterPerTick = 30; // how much water it uses per tick
+	
+	/** The furnace burn time. */
+	public int furnaceBurnTime = 0;
+	
+	/** The current item burn time. */
+	public int currentItemBurnTime = 0;
+	
+	/** The water tank. */
+	public FluidTank waterTank;
+	
+	/** The steam tank. */
+	public FluidTank steamTank;
+
+	/**
+	 * Instantiates a new tile steam boiler.
+	 */
 	public TileSteamBoiler()
 	{
 		super();
 		inventory = new ItemStack[3];
 		waterTank = new FluidTank(new FluidStack(FluidRegistry.WATER, 0), 5000);
-		steamTank = new FluidTank(new FluidStack(FluidRegistry.getFluid("steam"), 0), 10000);
+		steamTank = new FluidTank(new FluidStack(
+				FluidRegistry.getFluid("steam"), 0), 10000);
 	}
-	
+
+	/* (non-Javadoc)
+	 * @see steamcraft.common.tiles.TileEntityMachine#readFromNBT(net.minecraft.nbt.NBTTagCompound)
+	 */
 	@Override
-	public void readFromNBT(NBTTagCompound par1NBTTagCompound)
+	public void readFromNBT(final NBTTagCompound par1NBTTagCompound)
 	{
 		super.readFromNBT(par1NBTTagCompound);
-		
+
 		furnaceBurnTime = par1NBTTagCompound.getShort("BurnTime");
 		currentItemBurnTime = par1NBTTagCompound.getShort("ItemTime");
-		steamTank.setFluid(new FluidStack(FluidRegistry.getFluid("steam"), par1NBTTagCompound.getShort("steamLevel")));
-		waterTank.setFluid(new FluidStack(FluidRegistry.getFluid("water"), par1NBTTagCompound.getShort("waterLevel")));
+		steamTank.setFluid(new FluidStack(FluidRegistry.getFluid("steam"),
+				par1NBTTagCompound.getShort("steamLevel")));
+		waterTank.setFluid(new FluidStack(FluidRegistry.getFluid("water"),
+				par1NBTTagCompound.getShort("waterLevel")));
 	}
 
+	/* (non-Javadoc)
+	 * @see steamcraft.common.tiles.TileEntityMachine#writeToNBT(net.minecraft.nbt.NBTTagCompound)
+	 */
 	@Override
-	public void writeToNBT(NBTTagCompound par1NBTTagCompound)
+	public void writeToNBT(final NBTTagCompound par1NBTTagCompound)
 	{
 		super.writeToNBT(par1NBTTagCompound);
-		
+
 		par1NBTTagCompound.setShort("BurnTime", (short) furnaceBurnTime);
 		par1NBTTagCompound.setShort("ItemTime", (short) currentItemBurnTime);
-		par1NBTTagCompound.setShort("steamLevel", (short) this.steamTank.getFluidAmount());
-		par1NBTTagCompound.setShort("waterLevel", (short) this.waterTank.getFluidAmount());
+		par1NBTTagCompound.setShort("steamLevel",
+				(short) steamTank.getFluidAmount());
+		par1NBTTagCompound.setShort("waterLevel",
+				(short) waterTank.getFluidAmount());
 	}
 
-    public int getBurnTimeRemainingScaled(int par1)
-    {
-        if (this.currentItemBurnTime == 0)
-        {
-            this.currentItemBurnTime = 200;
-        }
+	/**
+	 * Gets the burn time remaining scaled.
+	 *
+	 * @param par1 the par1
+	 * @return the burn time remaining scaled
+	 */
+	public int getBurnTimeRemainingScaled(final int par1)
+	{
+		if (currentItemBurnTime == 0)
+		{
+			currentItemBurnTime = 200;
+		}
 
-        return this.furnaceBurnTime * par1 / this.currentItemBurnTime;
-    }
+		return furnaceBurnTime * par1 / currentItemBurnTime;
+	}
 
+	/**
+	 * Checks if is burning.
+	 *
+	 * @return true, if is burning
+	 */
 	public boolean isBurning()
 	{
 		return furnaceBurnTime > 0;
 	}
-	
+
+	/* (non-Javadoc)
+	 * @see net.minecraft.tileentity.TileEntity#updateEntity()
+	 */
 	@Override
 	public void updateEntity()
 	{
 		super.updateEntity();
-		
-		boolean var1 = furnaceBurnTime > 0;
+
+		final boolean var1 = furnaceBurnTime > 0;
 		boolean var2 = false;
 
 		if (!worldObj.isRemote)
-		{			
-			if(inventory[1]!=null)			
+		{
+			if (inventory[1] != null)
 			{
-				FluidStack liquid = FluidContainerRegistry.getFluidForFilledItem(inventory[1]);
+				final FluidStack liquid = FluidContainerRegistry
+						.getFluidForFilledItem(inventory[1]);
 
-				if(liquid != null && this.waterTank.fill(new FluidStack(FluidRegistry.getFluid("water"), liquid.amount), false)==liquid.amount)
-					if(liquid.getFluid() == FluidRegistry.WATER)
-				    {
-				    	this.waterTank.fill(new FluidStack(FluidRegistry.getFluid("water"), liquid.amount), true);
-				    	
-				    	if(inventory[1].stackSize > 1)
-				    		inventory[1].stackSize--;
-				    	else
-				    		inventory[1] = inventory[1].getItem().getContainerItem(inventory[1]);
-				    }
+				if (liquid != null
+						&& waterTank.fill(
+								new FluidStack(FluidRegistry.getFluid("water"),
+										liquid.amount), false) == liquid.amount)
+				{
+					if (liquid.getFluid() == FluidRegistry.WATER)
+					{
+						waterTank.fill(
+								new FluidStack(FluidRegistry.getFluid("water"),
+										liquid.amount), true);
+
+						if (inventory[1].stackSize > 1)
+						{
+							inventory[1].stackSize--;
+						}
+						else
+						{
+							inventory[1] = inventory[1].getItem()
+									.getContainerItem(inventory[1]);
+						}
+					}
+				}
 			}
-			//TODO: Readd this functionality
-/*			if(inventory[2] != null && inventory[2].getItem() == ConfigItems.itemCanisterGas)
-				if(!ItemCanister.isFull(inventory[2]))
-					this.steamTank.drain(ItemCanister.setSteam(inventory[2], this.steamTank.getFluidAmount()), true);
-*/
-			if (this.getItemBurnTime()>0 && furnaceBurnTime==0 && this.waterTank.getFluidAmount()>=this.waterPerTick &&
-					this.steamTank.fill(new FluidStack(FluidRegistry.getFluid("steam"), this.steamPerTick), false)>0)
-			{	
-				currentItemBurnTime = furnaceBurnTime = this.getItemBurnTime()/4;
-				
-				if(this.inventory[0].stackSize==1)
-					inventory[0]=inventory[0].getItem().getContainerItem(inventory[0]);
-				else
-					--inventory[0].stackSize;
-			}
-			
-			if(furnaceBurnTime > 0 && this.waterTank.getFluidAmount()>=this.waterPerTick && this.steamTank.getFluidAmount()<=10000)
+			// TODO: Readd this functionality
+			/*
+			 * if(inventory[2] != null && inventory[2].getItem() ==
+			 * ConfigItems.itemCanisterGas)
+			 * if(!ItemCanister.isFull(inventory[2]))
+			 * this.steamTank.drain(ItemCanister.setSteam(inventory[2],
+			 * this.steamTank.getFluidAmount()), true);
+			 */
+			if (getItemBurnTime() > 0
+					&& furnaceBurnTime == 0
+					&& waterTank.getFluidAmount() >= waterPerTick
+					&& steamTank.fill(
+							new FluidStack(FluidRegistry.getFluid("steam"),
+									steamPerTick), false) > 0)
 			{
-				this.steamTank.fill(new FluidStack(FluidRegistry.getFluid("steam"), this.steamPerTick), true);
+				currentItemBurnTime = furnaceBurnTime = getItemBurnTime() / 4;
+
+				if (inventory[0].stackSize == 1)
+				{
+					inventory[0] = inventory[0].getItem().getContainerItem(
+							inventory[0]);
+				}
+				else
+				{
+					--inventory[0].stackSize;
+				}
+			}
+
+			if (furnaceBurnTime > 0
+					&& waterTank.getFluidAmount() >= waterPerTick
+					&& steamTank.getFluidAmount() <= 10000)
+			{
+				steamTank.fill(new FluidStack(FluidRegistry.getFluid("steam"),
+						steamPerTick), true);
 				furnaceBurnTime--;
-				this.waterTank.drain(this.waterPerTick, true);
+				waterTank.drain(waterPerTick, true);
 			}
 			else
-				furnaceBurnTime=0;
+			{
+				furnaceBurnTime = 0;
+			}
 
 			if (var1 != furnaceBurnTime > 0)
 			{
 				var2 = true;
-				BlockSteamBoiler.updateFurnaceBlockState(furnaceBurnTime > 0, worldObj, xCoord, yCoord, zCoord);
+				BlockSteamBoiler.updateFurnaceBlockState(furnaceBurnTime > 0,
+						worldObj, xCoord, yCoord, zCoord);
 			}
 		}
 
 		if (var2)
-			this.markDirty();
+		{
+			markDirty();
+		}
 	}
-	
+
+	/**
+	 * Gets the item burn time.
+	 *
+	 * @return the item burn time
+	 */
 	private int getItemBurnTime()
 	{
 		if (inventory[0] == null)
+		{
 			return 0;
-		
+		}
+
 		return TileEntityFurnace.getItemBurnTime(inventory[0]);
 	}
-	
-	public int getScaledWaterLevel(int i) 
+
+	/**
+	 * Gets the scaled water level.
+	 *
+	 * @param i the i
+	 * @return the scaled water level
+	 */
+	public int getScaledWaterLevel(final int i)
 	{
-		return this.waterTank.getFluid() != null ? (int) (((float) this.waterTank.getFluid().amount / (float) (this.waterTank.getCapacity())) * i) : 0;
+		return waterTank.getFluid() != null ? (int) (((float) waterTank
+				.getFluid().amount / (float) (waterTank.getCapacity())) * i)
+				: 0;
 	}
-	
-	public int getScaledSteamLevel(int i) 
+
+	/**
+	 * Gets the scaled steam level.
+	 *
+	 * @param i the i
+	 * @return the scaled steam level
+	 */
+	public int getScaledSteamLevel(final int i)
 	{
-		return this.steamTank.getFluid() != null ? (int) (((float) this.steamTank.getFluid().amount / (float) (this.steamTank.getCapacity())) * i) : 0;
+		return steamTank.getFluid() != null ? (int) (((float) steamTank
+				.getFluid().amount / (float) (steamTank.getCapacity())) * i)
+				: 0;
 	}
-	
+
+	/* (non-Javadoc)
+	 * @see steamcraft.common.tiles.TileEntityMachine#getAccessibleSlotsFromSide(int)
+	 */
 	@Override
-	public int[] getAccessibleSlotsFromSide(int par1)
+	public int[] getAccessibleSlotsFromSide(final int par1)
 	{
-		return new int[]{0,1};
+		return new int[] { 0, 1 };
 	}
-	
+
+	/* (non-Javadoc)
+	 * @see steamcraft.common.tiles.TileEntityMachine#canInsertItem(int, net.minecraft.item.ItemStack, int)
+	 */
 	@Override
-	public boolean canInsertItem(int par1, ItemStack itemstack, int par3)
+	public boolean canInsertItem(final int par1, final ItemStack itemstack,
+			final int par3)
 	{
-		if(par1 == 1 && FluidContainerRegistry.isContainer(itemstack))
+		if (par1 == 1 && FluidContainerRegistry.isContainer(itemstack))
+		{
 			return true;
-		if(par1 == 0 && TileEntityFurnace.getItemBurnTime(itemstack)>0)
+		}
+		if (par1 == 0 && TileEntityFurnace.getItemBurnTime(itemstack) > 0)
+		{
 			return true;
+		}
 		return false;
 	}
 
+	/* (non-Javadoc)
+	 * @see steamcraft.common.tiles.TileEntityMachine#canExtractItem(int, net.minecraft.item.ItemStack, int)
+	 */
 	@Override
-	public boolean canExtractItem(int par1, ItemStack par2ItemStack, int par3)
+	public boolean canExtractItem(final int par1,
+			final ItemStack par2ItemStack, final int par3)
 	{
 		return false;
 	}
 
-	public boolean isItemValidForSlot(int i, ItemStack itemstack)
+	/* (non-Javadoc)
+	 * @see steamcraft.common.tiles.TileEntityMachine#isItemValidForSlot(int, net.minecraft.item.ItemStack)
+	 */
+	@Override
+	public boolean isItemValidForSlot(final int i, final ItemStack itemstack)
 	{
-		if(i == 0 || i == 1)
+		if (i == 0 || i == 1)
+		{
 			return true;
+		}
 		return false;
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraftforge.fluids.IFluidHandler#fill(net.minecraftforge.common.util.ForgeDirection, net.minecraftforge.fluids.FluidStack, boolean)
+	 */
 	@Override
-    public int fill(ForgeDirection from, FluidStack resource, boolean doFill)
-    {
-		if(resource.getFluid() == FluidRegistry.WATER)
-			return this.waterTank.fill(resource, doFill);
-		
+	public int fill(final ForgeDirection from, final FluidStack resource,
+			final boolean doFill)
+	{
+		if (resource.getFluid() == FluidRegistry.WATER)
+		{
+			return waterTank.fill(resource, doFill);
+		}
+
 		return 0;
-    }
+	}
 
-    @Override
-    public FluidStack drain(ForgeDirection from, FluidStack resource, boolean doDrain)
-    {
-        if (resource == null || !resource.isFluidEqual(this.steamTank.getFluid()))
-        {
-            return null;
-        }
-        return this.steamTank.drain(resource.amount, doDrain);
-    }
+	/* (non-Javadoc)
+	 * @see net.minecraftforge.fluids.IFluidHandler#drain(net.minecraftforge.common.util.ForgeDirection, net.minecraftforge.fluids.FluidStack, boolean)
+	 */
+	@Override
+	public FluidStack drain(final ForgeDirection from,
+			final FluidStack resource, final boolean doDrain)
+	{
+		if (resource == null || !resource.isFluidEqual(steamTank.getFluid()))
+		{
+			return null;
+		}
+		return steamTank.drain(resource.amount, doDrain);
+	}
 
-    @Override
-    public FluidStack drain(ForgeDirection from, int maxDrain, boolean doDrain)
-    {
-        return this.steamTank.drain(maxDrain, doDrain);
-    }
+	/* (non-Javadoc)
+	 * @see net.minecraftforge.fluids.IFluidHandler#drain(net.minecraftforge.common.util.ForgeDirection, int, boolean)
+	 */
+	@Override
+	public FluidStack drain(final ForgeDirection from, final int maxDrain,
+			final boolean doDrain)
+	{
+		return steamTank.drain(maxDrain, doDrain);
+	}
 
-    @Override
-    public boolean canFill(ForgeDirection from, Fluid fluid)
-    {
-    	if(fluid == FluidRegistry.WATER)
-    		return true;
-    	return false;
-    }
+	/* (non-Javadoc)
+	 * @see net.minecraftforge.fluids.IFluidHandler#canFill(net.minecraftforge.common.util.ForgeDirection, net.minecraftforge.fluids.Fluid)
+	 */
+	@Override
+	public boolean canFill(final ForgeDirection from, final Fluid fluid)
+	{
+		if (fluid == FluidRegistry.WATER)
+		{
+			return true;
+		}
+		return false;
+	}
 
-    @Override
-    public boolean canDrain(ForgeDirection from, Fluid fluid)
-    {
-    	if(fluid == FluidRegistry.getFluid("steam"))
-    		return true;
-    	return false;
-    }
+	/* (non-Javadoc)
+	 * @see net.minecraftforge.fluids.IFluidHandler#canDrain(net.minecraftforge.common.util.ForgeDirection, net.minecraftforge.fluids.Fluid)
+	 */
+	@Override
+	public boolean canDrain(final ForgeDirection from, final Fluid fluid)
+	{
+		if (fluid == FluidRegistry.getFluid("steam"))
+		{
+			return true;
+		}
+		return false;
+	}
 
-    @Override
-    public FluidTankInfo[] getTankInfo(ForgeDirection from)
-    {
-        return new FluidTankInfo[] {this.steamTank.getInfo(), this.waterTank.getInfo()};
-    }
+	/* (non-Javadoc)
+	 * @see net.minecraftforge.fluids.IFluidHandler#getTankInfo(net.minecraftforge.common.util.ForgeDirection)
+	 */
+	@Override
+	public FluidTankInfo[] getTankInfo(final ForgeDirection from)
+	{
+		return new FluidTankInfo[] { steamTank.getInfo(), waterTank.getInfo() };
+	}
 }

@@ -21,29 +21,46 @@ import steamcraft.common.Steamcraft;
 import steamcraft.common.config.ConfigBlocks;
 import steamcraft.common.lib.LibInfo;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class BlockCastIronFence.
+ *
  * @author Surseance (Johnny Eatmon)
  */
 public class BlockCastIronFence extends BlockFence
 {
-    public BlockCastIronFence()
-    {
-        super(LibInfo.PREFIX + "blockCastIron", Material.iron);
-        this.setHardness(4.5F);
-        this.setResistance(20.0F);
-        this.setStepSound(Block.soundTypeMetal);
-        this.setCreativeTab(Steamcraft.tabSC2);
-        //setUnlocalizedName("blockCastIronFence");
-    }
+	
+	/**
+	 * Instantiates a new block cast iron fence.
+	 */
+	public BlockCastIronFence()
+	{
+		super(LibInfo.PREFIX + "blockCastIron", Material.iron);
+		setHardness(4.5F);
+		setResistance(20.0F);
+		setStepSound(Block.soundTypeMetal);
+		setCreativeTab(Steamcraft.tabSC2);
+		// setUnlocalizedName("blockCastIronFence");
+	}
 
-    @Override
-    public boolean canConnectFenceTo(IBlockAccess world, int x, int y, int z)
-    {
-        Block block = world.getBlock(x, y, z);
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.BlockFence#canConnectFenceTo(net.minecraft.world.IBlockAccess, int, int, int)
+	 */
+	@Override
+	public boolean canConnectFenceTo(final IBlockAccess world, final int x,
+			final int y, final int z)
+	{
+		final Block block = world.getBlock(x, y, z);
 
-        if ((block != this) && (block != ConfigBlocks.blockCastIronGate))
-            return ((block != null) && (block.getMaterial().isOpaque()) && (block.renderAsNormalBlock()) ? block.getMaterial() != Material.cactus : false);
-        else
-            return true;
-    }
+		if ((block != this) && (block != ConfigBlocks.blockCastIronGate))
+		{
+			return ((block != null) && (block.getMaterial().isOpaque())
+					&& (block.renderAsNormalBlock()) ? block.getMaterial() != Material.cactus
+					: false);
+		}
+		else
+		{
+			return true;
+		}
+	}
 }

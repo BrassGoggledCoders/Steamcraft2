@@ -13,38 +13,54 @@
  */
 package steamcraft.common.items.equipment;
 
+import boilerplate.steamcraft.api.SteamcraftApi;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemStack;
-import steamcraft.api.SteamcraftApi;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author Surseance (Johnny Eatmon)
+ * The Class ItemSteamcraftPickaxe.
  *
+ * @author Surseance (Johnny Eatmon)
  */
 public class ItemSteamcraftPickaxe extends ItemPickaxe
 {
-	public ItemSteamcraftPickaxe(Item.ToolMaterial toolMat)
+	
+	/**
+	 * Instantiates a new item steamcraft pickaxe.
+	 *
+	 * @param toolMat the tool mat
+	 */
+	public ItemSteamcraftPickaxe(final Item.ToolMaterial toolMat)
 	{
 		super(toolMat);
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.item.ItemPickaxe#func_150893_a(net.minecraft.item.ItemStack, net.minecraft.block.Block)
+	 */
 	@Override
-    public float func_150893_a(ItemStack is, Block block) // getStrVsBlock
-    {
-    	if (this.toolMaterial == SteamcraftApi.toolMatSteam)
+	public float func_150893_a(final ItemStack is, final Block block) // getStrVsBlock
+	{
+		if (toolMaterial == SteamcraftApi.toolMatSteam)
 		{
-			return (4.0F - (((float)is.getItemDamage()) * 11 / 320));
+			return (4.0F - (((float) is.getItemDamage()) * 11 / 320));
 		}
-		if (block != null && (block.getMaterial() == Material.iron || block.getMaterial() == Material.anvil || block.getMaterial() == Material.rock))
+		if (block != null
+				&& (block.getMaterial() == Material.iron
+						|| block.getMaterial() == Material.anvil || block
+						.getMaterial() == Material.rock))
 		{
 			super.func_150893_a(is, block);
 		}
 
-		return this.efficiencyOnProperMaterial;
-    	
-        //return block.getMaterial() != Material.iron && block.getMaterial() != Material.anvil && block.getMaterial() != Material.rock ? super.func_150893_a(is, block) : this.efficiencyOnProperMaterial;
-    }
+		return efficiencyOnProperMaterial;
+
+		// return block.getMaterial() != Material.iron && block.getMaterial() !=
+		// Material.anvil && block.getMaterial() != Material.rock ?
+		// super.func_150893_a(is, block) : this.efficiencyOnProperMaterial;
+	}
 }

@@ -16,56 +16,80 @@ package steamcraft.client.renderers.tile;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author Surseance (Johnny Eatmon)
+ * The Class ModelCastIronLampTop.
  *
+ * @author Surseance (Johnny Eatmon)
  */
 public class ModelCastIronLampTop extends ModelBase
 {
+	
+	/** The bracket. */
 	public ModelRenderer bracket;
+	
+	/** The bracket wide. */
 	public ModelRenderer bracketWide;
+	
+	/** The crossbar left. */
 	public ModelRenderer crossbarLeft;
+	
+	/** The crossbar right. */
 	public ModelRenderer crossbarRight;
+	
+	/** The lower lamp. */
 	public ModelRenderer lowerLamp;
+	
+	/** The top. */
 	public ModelRenderer top;
+	
+	/** The top peak. */
 	public ModelRenderer topPeak;
+	
+	/** The upper lamp. */
 	public ModelRenderer upperLamp;
 
+	/**
+	 * Instantiates a new model cast iron lamp top.
+	 */
 	public ModelCastIronLampTop()
 	{
 		bracket = new ModelRenderer(this, 24, 3);
 		bracket.addBox(-1F, 0F, -7.5F, 2, 3, 2);
-		//Bracket.setPosition(-1F, 0F, -1F);
+		// Bracket.setPosition(-1F, 0F, -1F);
 
 		bracketWide = new ModelRenderer(this, 12, 13);
 		bracketWide.addBox(-2F, 0F, -8.5F, 4, 3, 4);
-		//Bracket.setPosition(-1F, 0F, -1F);
+		// Bracket.setPosition(-1F, 0F, -1F);
 
 		crossbarLeft = new ModelRenderer(this, 11, 16);
 		crossbarLeft.addBox(0F, 1F, -7.5F, 7, 2, 2);
-		//Bracket.setPosition(-1F, 0F, -1F);
+		// Bracket.setPosition(-1F, 0F, -1F);
 
 		crossbarRight = new ModelRenderer(this, 11, 16);
 		crossbarRight.addBox(-7F, 1F, -7.5F, 7, 2, 2);
-		//Bracket.setPosition(-1F, 0F, -1F);
+		// Bracket.setPosition(-1F, 0F, -1F);
 
 		lowerLamp = new ModelRenderer(this, 40, 13);
 		lowerLamp.addBox(-3F, -4F, -9.5F, 6, 4, 6);
-		//LowerLamp.setPosition(-3F, 3F, -3F);
+		// LowerLamp.setPosition(-3F, 3F, -3F);
 
 		upperLamp = new ModelRenderer(this, 31, 0);
 		upperLamp.addBox(-4F, -9F, -10.5F, 8, 5, 8);
-		//UpperLamp.setPosition(-4F, 7F, -4F);
+		// UpperLamp.setPosition(-4F, 7F, -4F);
 
 		top = new ModelRenderer(this, 0, 8);
 		top.addBox(-5F, -11F, -11.5F, 10, 2, 10);
-		//Top.setPosition(-5F, 12F, -5F);
+		// Top.setPosition(-5F, 12F, -5F);
 
 		topPeak = new ModelRenderer(this, 0, 0);
 		topPeak.addBox(-3F, -13F, -9.5F, 6, 2, 6);
-		//TopPeak.setPosition(-3F, 14F, -3F);
+		// TopPeak.setPosition(-3F, 14F, -3F);
 	}
 
+	/**
+	 * Render sign.
+	 */
 	public void renderSign()
 	{
 		bracket.render(0.1F);

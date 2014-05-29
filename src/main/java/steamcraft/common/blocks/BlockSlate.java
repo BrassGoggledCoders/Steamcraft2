@@ -1,5 +1,5 @@
 /**
- * This class was created by <Surseance> or his SC2 development team. 
+ * This class was created by <Surseance> or his SC2 development team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -22,53 +22,69 @@ import steamcraft.common.lib.LibInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author warlordjones
+ * The Class BlockSlate.
  *
+ * @author warlordjones
  */
 public class BlockSlate extends Block
 {
-	private IIcon[] icon = new IIcon[9];
 
+	/** The icon. */
+	private final IIcon[] icon = new IIcon[9];
+
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#getIcon(int, int)
+	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(int side, int metadata)
+	public IIcon getIcon(final int side, final int metadata)
 	{
-		return this.icon[metadata];
+		return icon[metadata];
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#registerBlockIcons(net.minecraft.client.renderer.texture.IIconRegister)
+	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister ir)
+	public void registerBlockIcons(final IIconRegister ir)
 	{
-		//Raw
-		this.icon[0] = ir.registerIcon(LibInfo.PREFIX + "blockSlateRawBlue");
-		this.icon[1] = ir.registerIcon(LibInfo.PREFIX + "blockSlateRawBlack");
-		this.icon[2] = ir.registerIcon(LibInfo.PREFIX + "blockSlateRawRed");
-		//Cobble
-		this.icon[3] = ir.registerIcon(LibInfo.PREFIX + "blockSlateCobbleBlue");
-		this.icon[4] = ir.registerIcon(LibInfo.PREFIX + "blockSlateCobbleBlack");
-		this.icon[5] = ir.registerIcon(LibInfo.PREFIX + "blockSlateCobbleRed");
-		//Brick
-		this.icon[6] = ir.registerIcon(LibInfo.PREFIX + "blockSlateBrickBlue");
-		this.icon[7] = ir.registerIcon(LibInfo.PREFIX + "blockSlateBrickBlack");
-		this.icon[8] = ir.registerIcon(LibInfo.PREFIX + "blockSlateBrickRed");
-		//Polished
+		// Raw
+		icon[0] = ir.registerIcon(LibInfo.PREFIX + "blockSlateRawBlue");
+		icon[1] = ir.registerIcon(LibInfo.PREFIX + "blockSlateRawBlack");
+		icon[2] = ir.registerIcon(LibInfo.PREFIX + "blockSlateRawRed");
+		// Cobble
+		icon[3] = ir.registerIcon(LibInfo.PREFIX + "blockSlateCobbleBlue");
+		icon[4] = ir.registerIcon(LibInfo.PREFIX + "blockSlateCobbleBlack");
+		icon[5] = ir.registerIcon(LibInfo.PREFIX + "blockSlateCobbleRed");
+		// Brick
+		icon[6] = ir.registerIcon(LibInfo.PREFIX + "blockSlateBrickBlue");
+		icon[7] = ir.registerIcon(LibInfo.PREFIX + "blockSlateBrickBlack");
+		icon[8] = ir.registerIcon(LibInfo.PREFIX + "blockSlateBrickRed");
+		// Polished
 	}
 
+	/**
+	 * Instantiates a new block slate.
+	 */
 	public BlockSlate()
 	{
 		super(Material.rock);
-		this.setHardness(3.0F);
-		this.setResistance(10.0F);
-		this.setStepSound(Block.soundTypeStone);
-		//this.setUnlocalizedName("blockSlate");
-		this.setTickRandomly(true);
-		this.setCreativeTab(Steamcraft.tabSC2);
+		setHardness(3.0F);
+		setResistance(10.0F);
+		setStepSound(Block.soundTypeStone);
+		setBlockName("blockSlate");
+		setTickRandomly(true);
+		setCreativeTab(Steamcraft.tabSC2);
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#damageDropped(int)
+	 */
 	@Override
-	public int damageDropped(int id)
+	public int damageDropped(final int id)
 	{
 		return id;
 	}

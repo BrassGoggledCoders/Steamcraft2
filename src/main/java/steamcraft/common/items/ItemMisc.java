@@ -20,26 +20,43 @@ import steamcraft.common.lib.LibInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author Decebaldecebal
+ * The Class ItemMisc.
  *
+ * @author Decebaldecebal
  */
 public class ItemMisc extends Item
 {
+	
+	/**
+	 * Instantiates a new item misc.
+	 */
 	public ItemMisc()
 	{
 		super();
-		this.setCreativeTab(Steamcraft.tabSC2);
+		setCreativeTab(Steamcraft.tabSC2);
 	}
-	
+
+	/* (non-Javadoc)
+	 * @see net.minecraft.item.Item#registerIcons(net.minecraft.client.renderer.texture.IIconRegister)
+	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IIconRegister icon)
+	public void registerIcons(final IIconRegister icon)
 	{
-		itemIcon = icon.registerIcon(LibInfo.PREFIX + (getUnlocalizedName().substring(5))); // Cannot do a 'this' reflection!
+		itemIcon = icon.registerIcon(LibInfo.PREFIX
+				+ (getUnlocalizedName().substring(5))); // Cannot do a 'this'
+														// reflection!
 	}
-	
-	public boolean isSteamPowered() {
+
+	/**
+	 * Checks if is steam powered.
+	 *
+	 * @return true, if is steam powered
+	 */
+	public boolean isSteamPowered()
+	{
 		return false;
 	}
 }
