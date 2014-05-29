@@ -1,5 +1,5 @@
 /**
- * This class was created by <Surseance> or his SC2 development team. 
+ * This class was created by <Surseance> or his SC2 development team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -24,7 +24,7 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.LibInfo;
-import boilerplate.common.Utils;
+import boilerplate.client.utils.EffectUtils;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -36,7 +36,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 public class BlockEngravedSolid extends Block
 {
-	
+
 	/** The icon. */
 	private final IIcon[] icon = new IIcon[9];
 
@@ -117,7 +117,7 @@ public class BlockEngravedSolid extends Block
 		if ((world.getBlock(x, y, z) == this)
 				&& (world.getBlockMetadata(x, y, z) == 7))
 		{
-			Utils.sparkle(world, x, y, z, "reddust");
+			EffectUtils.sparkle(world, x, y, z, "reddust");
 		}
 	}
 }

@@ -13,12 +13,12 @@
  */
 package steamcraft.common.items.equipment;
 
-import boilerplate.steamcraft.api.SteamcraftApi;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemStack;
+import boilerplate.steamcraft.api.SteamcraftApi;
 
 // TODO: Auto-generated Javadoc
 /**

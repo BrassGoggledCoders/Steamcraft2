@@ -15,7 +15,7 @@
  *
  * File created @ [5 Apr 2014, 20:57:54]
  */
-package common.steamcraft.common.network;
+package steamcraft.common.lib.network;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
@@ -26,7 +26,7 @@ import net.minecraft.entity.player.EntityPlayer;
  *
  * 5 Apr 201420:57:54
  */
-public class PacketOpenServerGui extends AbstractPacket
+/*public class PacketOpenServerGui extends AbstractPacket
 {
 	// this will store the id of the gui to open
 	private int id;
@@ -62,4 +62,4 @@ public class PacketOpenServerGui extends AbstractPacket
 	// because we sent the gui's id with the packet, we can handle all cases with one line:
 	player.openGui(TutorialMain.instance, id, player.worldObj, (int) player.posX, (int) player.posY, (int) player.posZ);
 	}
-	}
+	}*/

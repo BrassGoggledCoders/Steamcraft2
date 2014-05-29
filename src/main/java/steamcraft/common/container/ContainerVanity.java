@@ -1,5 +1,5 @@
 /**
- * This class was created by <Surseance> or his SC2 development team. 
+ * This class was created by <Surseance> or his SC2 development team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -29,7 +29,7 @@ import net.minecraft.item.ItemStack;
  */
 public class ContainerVanity extends Container
 {
-	
+
 	/** The Constant HOTBAR_END. */
 	private static final int ARMOR_START = InventoryVanity.INV_SIZE,
 			ARMOR_END = ARMOR_START + 3, INV_START = ARMOR_END + 1,
@@ -48,12 +48,13 @@ public class ContainerVanity extends Container
 			final InventoryVanity inventoryCustom)
 	{
 		// Custom Slots
-		addSlotToContainer(new SlotHead(inventoryCustom, 0, 25, 8));
+		//TODO: Import classes
+		/*addSlotToContainer(new SlotHead(inventoryCustom, 0, 25, 8));
 		addSlotToContainer(new SlotTunic(inventoryCustom, 1, 25, 26));
 		addSlotToContainer(new SlotLeggings(inventoryCustom, 2, 25, 44));
 		addSlotToContainer(new SlotBoots(inventoryCustom, 3, 25, 62));
 		addSlotToContainer(new SlotHat(inventoryCustom, 5, 45, 8));
-		addSlotToContainer(new SlotCape(inventoryCustom, 4, 45, 26));
+		addSlotToContainer(new SlotCape(inventoryCustom, 4, 45, 26));*/
 
 		// Inventory
 		int i;

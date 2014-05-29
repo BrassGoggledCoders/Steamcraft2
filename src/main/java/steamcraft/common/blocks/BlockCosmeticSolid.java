@@ -1,5 +1,5 @@
 /**
- * This class was created by <Surseance> or his SC2 development team. 
+ * This class was created by <Surseance> or his SC2 development team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -26,7 +26,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.LibInfo;
-import boilerplate.common.Utils;
+import boilerplate.client.utils.EffectUtils;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -38,7 +38,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 public class BlockCosmeticSolid extends Block
 {
-	
+
 	/** The icon. */
 	private final IIcon[] icon = new IIcon[5];
 
@@ -135,7 +135,7 @@ public class BlockCosmeticSolid extends Block
 		if ((world.getBlock(x, y, z) == this)
 				&& (world.getBlockMetadata(x, y, z) == 6))
 		{
-			Utils.sparkle(world, x, y, z, "reddust");
+			EffectUtils.sparkle(world, x, y, z, "reddust");
 		}
 	}
 
@@ -281,7 +281,7 @@ public class BlockCosmeticSolid extends Block
 	 * ((!this.powered) && (world.isBlockIndirectlyGettingPowered(x, y, z))) {
 	 * world.setBlock(x, y, z, ConfigBlocks.blockCastIronLamp.blockID, 1, 11); }
 	 * } }
-	 * 
+	 *
 	 * @Override public void onNeighborBlockChange(World world, int x, int y,
 	 * int z, int bid) { if (!world.isRemote) { if ((this.powered) &&
 	 * (!world.isBlockIndirectlyGettingPowered(x, y, z))) {
@@ -290,7 +290,7 @@ public class BlockCosmeticSolid extends Block
 	 * ((!this.powered) && (world.isBlockIndirectlyGettingPowered(x, y, z))) {
 	 * world.setBlock(x, y, z, ConfigBlocks.blockCastIronLamp.blockID, 1, 11); }
 	 * } }
-	 * 
+	 *
 	 * @Override public void updateTick(World world, int x, int y, int z, Random
 	 * random) { if ((!world.isRemote && this.powered) &&
 	 * (!world.isBlockIndirectlyGettingPowered(x, y, z))) { world.setBlock(x, y,

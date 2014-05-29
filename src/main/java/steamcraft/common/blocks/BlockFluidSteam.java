@@ -22,7 +22,7 @@ import net.minecraftforge.fluids.BlockFluidClassic;
 import net.minecraftforge.fluids.Fluid;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.LibInfo;
-import boilerplate.common.Utils;
+import boilerplate.common.utils.ItemStackUtils;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -32,11 +32,11 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 public class BlockFluidSteam extends BlockFluidClassic
 {
-	
+
 	/** The still icon. */
 	@SideOnly(Side.CLIENT)
 	protected IIcon stillIcon;
-	
+
 	/** The flowing icon. */
 	@SideOnly(Side.CLIENT)
 	protected IIcon flowingIcon;
@@ -81,7 +81,7 @@ public class BlockFluidSteam extends BlockFluidClassic
 	public boolean canDisplace(final IBlockAccess world, final int x,
 			final int y, final int z)
 	{
-		if (Utils.getBlockMaterial(world, x, y, z).isLiquid())
+		if (ItemStackUtils.getBlockMaterial(world, x, y, z).isLiquid())
 		{
 			return false;
 		}
@@ -95,7 +95,7 @@ public class BlockFluidSteam extends BlockFluidClassic
 	public boolean displaceIfPossible(final World world, final int x,
 			final int y, final int z)
 	{
-		if (Utils.getBlockMaterial(world, x, y, z).isLiquid())
+		if (ItemStackUtils.getBlockMaterial(world, x, y, z).isLiquid())
 		{
 			return false;
 		}

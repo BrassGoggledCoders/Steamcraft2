@@ -1,5 +1,5 @@
 /**
- * This class was created by <Surseance> or his SC2 development team. 
+ * This class was created by <Surseance> or his SC2 development team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -20,7 +20,7 @@ import java.io.IOException;
 
 import net.minecraft.network.Packet;
 import net.minecraft.tileentity.TileEntity;
-import boilerplate.common.Utils;
+import boilerplate.common.utils.PlayerUtils;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -30,7 +30,7 @@ import boilerplate.common.Utils;
  */
 public abstract class NetworkTile extends TileEntity
 {
-	
+
 	/** The marked for resend. */
 	private boolean markedForResend;
 
@@ -61,7 +61,7 @@ public abstract class NetworkTile extends TileEntity
 	{
 		final Packet packet = getDescriptionPacket();
 		// packet.isChunkDataPacket = false;
-		Utils.sendToPlayers(packet, worldObj, xCoord, yCoord, zCoord, null);
+		PlayerUtils.sendToPlayers(packet, worldObj, xCoord, yCoord, zCoord, null);
 	}
 
 	/* (non-Javadoc)
