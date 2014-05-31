@@ -25,6 +25,7 @@ import steamcraft.common.blocks.BlockCosmeticSolidItem;
 import steamcraft.common.blocks.BlockCrystal;
 import steamcraft.common.blocks.BlockCustomOre;
 import steamcraft.common.blocks.BlockCustomOreItem;
+import steamcraft.common.blocks.BlockDropHammerFrame;
 import steamcraft.common.blocks.BlockEngravedSolid;
 import steamcraft.common.blocks.BlockEngravedSolidItem;
 import steamcraft.common.blocks.BlockMetal;
@@ -103,7 +104,7 @@ public class ConfigBlocks
 	/** The block steam boiler. */
 	public static Block blockSteamBoiler;
 
-	public static Block blockDropHammer;
+	public static Block blockDropHammer, blockDropHammerFrame;
 
 	/** The steam fluid. */
 	public static Fluid steamFluid;
@@ -141,12 +142,11 @@ public class ConfigBlocks
 		blockCastIronGate = new BlockCastIronGate()
 				.setBlockName("blockCastIronGate");
 		blockCrystal = new BlockCrystal().setBlockName("blockCrystal");
-		blockCastIronLampI = new BlockCastIronLamp(false)
-				.setBlockName("blockCastIronLampOff");
-		blockCastIronLampA = new BlockCastIronLamp(true)
-				.setBlockName("blockCastIronLampOn");
+		blockCastIronLampI = new BlockCastIronLamp(false).setBlockName("blockCastIronLampOff");
+		blockCastIronLampA = new BlockCastIronLamp(true).setBlockName("blockCastIronLampOn");
 		blockSteamBoiler = new BlockSteamBoiler().setBlockName("blockSteamBoiler");
 		blockDropHammer = new BlockDropHammer(Material.anvil).setBlockName("blockDropHammer");
+		blockDropHammerFrame = new BlockDropHammerFrame(Material.iron).setBlockName("blockDropHammerFrame");
 		blockMetal = new BlockMetal().setBlockName("blockMetal");
 		blockSlate = new BlockSlate().setBlockName("blockSlate");
 
@@ -170,6 +170,7 @@ public class ConfigBlocks
 		//GameRegistry.registerBlock(blockCastIronLampI, "BlockCastIronLampI");
 		//GameRegistry.registerBlock(blockCastIronLampA, "BlockCastIronLampA");
 		//GameRegistry.registerBlock(blockFluidSteam, "BlockFluidSteam");
+		GameRegistry.registerBlock(blockDropHammerFrame, "BlockDropHammerFrame");
 		RegistryHelper.registerContainerBlock(blockCrystal, TileCrystal.class, "BlockCrystal");
 		RegistryHelper.registerContainerBlock(blockSteamBoiler, TileSteamBoiler.class, "BlockSteamBoiler");
 		RegistryHelper.registerContainerBlock(blockDropHammer, TileDropHammer.class, "BlockDropHammer");
