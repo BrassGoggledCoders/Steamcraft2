@@ -31,7 +31,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  *
  * @author Decebaldecebal
  */
-public class ItemSteamJetpack extends ItemCustomArmor
+public class ItemSteamJetpack extends ItemBrassArmor
 {
 	
 	/** The Constant steamPerTick. */

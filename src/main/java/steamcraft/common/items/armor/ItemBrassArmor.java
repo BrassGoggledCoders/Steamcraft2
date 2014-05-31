@@ -1,5 +1,5 @@
 /**
- * This class was created by <Surseance> or his SC2 development team. 
+ * This class was created by <Surseance> or his SC2 development team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -13,6 +13,7 @@
  */
 package steamcraft.common.items.armor;
 
+import java.util.HashMap;
 import java.util.List;
 
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -23,7 +24,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import steamcraft.common.Steamcraft;
-import steamcraft.common.config.ConfigItems;
 import steamcraft.common.lib.LibInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -34,23 +34,32 @@ import cpw.mods.fml.relauncher.SideOnly;
  *
  * @author Surseance (Johnny Eatmon)
  */
-public class ItemCustomArmor extends ItemArmor
+public class ItemBrassArmor extends ItemArmor
 {
-	
+
 	/** The icon. */
-	private final IIcon[] icon = new IIcon[10];
-	
+	private  IIcon[] icon = new IIcon[3];
+
 	/** The mat. */
 	ItemArmor.ArmorMaterial mat;
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.item.Item#getIconFromDamage(int)
+	@SuppressWarnings("rawtypes")
+	HashMap modules = new HashMap();
+
+
+	/**
+	 * Instantiates a new item custom armor.
+	 *
+	 * @param armorMat the armor mat
+	 * @param renderIndex the render index
+	 * @param armorType the armor type
 	 */
-	@Override
-	@SideOnly(Side.CLIENT)
-	public IIcon getIconFromDamage(final int damage)
+	public ItemBrassArmor(ItemArmor.ArmorMaterial armorMat,
+			int renderIndex, int armorType)
 	{
-		return icon[damage];
+		super(armorMat, renderIndex, armorType);
+		mat = armorMat;
+		setCreativeTab(Steamcraft.tabSC2);
 	}
 
 	/* (non-Javadoc)
@@ -58,7 +67,7 @@ public class ItemCustomArmor extends ItemArmor
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(final IIconRegister ir)
+	public void registerIcons( IIconRegister ir)
 	{
 		itemIcon = ir.registerIcon(LibInfo.PREFIX + "armor/"
 				+ this.getUnlocalizedName().substring(5));
@@ -69,35 +78,29 @@ public class ItemCustomArmor extends ItemArmor
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public String getArmorTexture(final ItemStack is, final Entity entity,
-			final int slot, final String type)
+	public String getArmorTexture( ItemStack is,  Entity entity,
+			 int slot, String type)
 	{
 		return type != null ? LibInfo.PREFIX + "textures/armor/" + type
 				+ ".png" : null;
 	}
-
-	/**
-	 * Instantiates a new item custom armor.
-	 *
-	 * @param armorMat the armor mat
-	 * @param renderIndex the render index
-	 * @param armorType the armor type
-	 */
-	public ItemCustomArmor(final ItemArmor.ArmorMaterial armorMat,
-			final int renderIndex, final int armorType)
-	{
-		super(armorMat, renderIndex, armorType);
-		mat = armorMat;
-		setCreativeTab(Steamcraft.tabSC2);
-	}
+    /**
+     * Called whenever this item is equipped and the right mouse button is pressed. Args: itemStack, world, entityPlayer
+     */
+    public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
+    {
+    	this.modules.put("aqualung", true);
+        return par1ItemStack;
+    }
 
 	/* (non-Javadoc)
 	 * @see net.minecraft.item.Item#addInformation(net.minecraft.item.ItemStack, net.minecraft.entity.player.EntityPlayer, java.util.List, boolean)
 	 */
 	@SuppressWarnings("all")
 	@Override
-	public void addInformation(final ItemStack stack,
-			final EntityPlayer player, final List list, final boolean flag)
+	//TODO: Make module-sensitive
+	public void addInformation( ItemStack stack,
+			 EntityPlayer player,  List list,  boolean flag)
 	{
 		// if(!ClientHelper.isShiftKeyDown())
 		// {
@@ -107,6 +110,7 @@ public class ItemCustomArmor extends ItemArmor
 
 		if (stack != null)
 		{
+			/*
 			if (stack.getItem() == ConfigItems.itemBrassGoggles)
 			{
 				list.add("It is a violation of");
@@ -135,7 +139,6 @@ public class ItemCustomArmor extends ItemArmor
 				list.add("Steam-powered Flight!");
 				list.add("Uses steam from canisters.");
 			}
-			/*
 			 * else if(stack.getItem() == ConfigItems.itemPneumaticBoots) {
 			 * list.add("A set of pistons strapped");
 			 * list.add("to your feet increase the");
@@ -161,11 +164,11 @@ public class ItemCustomArmor extends ItemArmor
 			 * if(stack.getItem() == ModArmors.reactivePistonPlate) {
 			 * list.add("Pistons attached to this chestplate");
 			 * list.add("push back mobs that attack you") }
-			 */
+			 *
 			else
 			{
 				list.add("This armour has no documented abilities.");
-			}
+			}*/
 		}
 	}
 
@@ -173,10 +176,10 @@ public class ItemCustomArmor extends ItemArmor
 	 * @see net.minecraft.item.Item#onArmorTick(net.minecraft.world.World, net.minecraft.entity.player.EntityPlayer, net.minecraft.item.ItemStack)
 	 */
 	@Override
-	public void onArmorTick(final World world, final EntityPlayer player,
-			final ItemStack is)
+	public void onArmorTick( World world,  EntityPlayer player,
+			 ItemStack is)
 	{
-		if (is.getItem() == ConfigItems.itemAqualung)
+		if (modules.get("aqualung") != null && (boolean) this.modules.get("aqualung"))
 		{
 			if (player.getAir() <= 0)
 			{
@@ -184,6 +187,7 @@ public class ItemCustomArmor extends ItemArmor
 				is.damageItem(4, player); // tweak the damage taken a bit
 			}
 		}
+		/*
 		else if (is.getItem() == ConfigItems.itemLegBraces)
 		{
 			if (player.fallDistance > 3.0F)
@@ -191,6 +195,6 @@ public class ItemCustomArmor extends ItemArmor
 				player.fallDistance *= 0.888F;
 				is.damageItem(1, player);
 			}
-		}
+		}*/
 	}
 }

@@ -13,6 +13,7 @@
  */
 package steamcraft.common.config;
 
+import boilerplate.common.RegistryHelper;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import steamcraft.common.Steamcraft;
@@ -24,7 +25,7 @@ import steamcraft.common.items.ItemPipe;
 import steamcraft.common.items.ItemResource;
 import steamcraft.common.items.ItemTeaSeed;
 import steamcraft.common.items.ItemWatch;
-import steamcraft.common.items.armor.ItemCustomArmor;
+import steamcraft.common.items.armor.ItemBrassArmor;
 import steamcraft.common.lib.LibInfo;
 import steamcraft.common.lib.MaterialHelper;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -54,16 +55,17 @@ public class ConfigItems
 	public static Item itemChisel;
 
 	// Armor
-	/** The item brass goggles. */
+	public static Item itemBrassHelm, itemBrassChest, itemBrassLegs, itemBrassBoots;
+	/** The item brass goggles.
 	public static Item itemBrassGoggles;
 
-	/** The item aqualung. */
+	/** The item aqualung.
 	public static Item itemAqualung;
 
-	/** The item leg braces. */
+	/** The item leg braces.
 	public static Item itemLegBraces;
 
-	/** The item roller skates. */
+	/** The item roller skates
 	public static Item itemRollerSkates;
 
 	/** The item steam jetpack. */
@@ -138,8 +140,8 @@ public class ConfigItems
 	{
 		MaterialHelper.initializeMaterials();
 		initializeItems();
+		registerItems();
 	}
-
 	/**
 	 * Post init.
 	 */
@@ -260,48 +262,42 @@ public class ConfigItems
 		 * "ItemGunParts", LibInfo.ID);
 		 */
 
+		//Armor
+		itemBrassHelm = new ItemBrassArmor(ItemArmor.ArmorMaterial.IRON, 0, 0).setUnlocalizedName("itemBrassHelm");
+		itemBrassChest = new ItemBrassArmor(ItemArmor.ArmorMaterial.IRON, 0, 0).setUnlocalizedName("itemBrassChest");
+		itemBrassLegs = new ItemBrassArmor(ItemArmor.ArmorMaterial.IRON, 0, 0).setUnlocalizedName("itemBrassLegs");
+		itemBrassBoots = new ItemBrassArmor(ItemArmor.ArmorMaterial.IRON, 0, 0).setUnlocalizedName("itemBrassBoots");
 		// Canisters
-		itemCanisterEmpty = new ItemMisc()
-				.setUnlocalizedName("itemCanisterEmpty");
-		GameRegistry.registerItem(itemCanisterEmpty, "ItemCanisterEmpty",
-				LibInfo.ID);
+		itemCanisterEmpty = new ItemMisc().setUnlocalizedName("itemCanisterEmpty");
 		itemCanisterSteam = new ItemCanister(Config.itemCanisterSteamId,
 				"steam").setUnlocalizedName("itemCanisterSteam");
-		GameRegistry.registerItem(itemCanisterSteam, "ItemCanisterSteam",
-				LibInfo.ID);
 		itemCanisterGas = new ItemCanister(Config.itemCanisterGasId,
 				"compressedgas").setUnlocalizedName("itemCanisterGas");
-		GameRegistry.registerItem(itemCanisterGas, "ItemCanisterGas",
-				LibInfo.ID);
 
-		itemMechanical = new ItemMechanical()
-				.setUnlocalizedName("ItemMechanical");
-		GameRegistry.registerItem(itemMechanical, "ItemMechanical", LibInfo.ID)
-				.setUnlocalizedName("itemMechanical");
-		itemResource = new ItemResource().setUnlocalizedName("ItemResource")
-				.setUnlocalizedName("itemResource");
-		GameRegistry.registerItem(itemResource, "ItemResource", LibInfo.ID);
-		itemWatch = new ItemWatch().setUnlocalizedName("ItemWatch")
-				.setUnlocalizedName("itemWatch");
-		GameRegistry.registerItem(itemWatch, "ItemWatch", LibInfo.ID);
-
+		itemMechanical = new ItemMechanical().setUnlocalizedName("ItemMechanical");
+		itemResource = new ItemResource().setUnlocalizedName("ItemResource").setUnlocalizedName("itemResource");
+		itemWatch = new ItemWatch().setUnlocalizedName("ItemWatch").setUnlocalizedName("itemWatch");
 		itemTeaSeed = new ItemTeaSeed().setUnlocalizedName("itemTeaSeed");
-		GameRegistry.registerItem(itemTeaSeed, "ItemTeaSeed", LibInfo.ID);
 		itemChisel = new ItemChisel().setUnlocalizedName("itemChisel");
-		GameRegistry.registerItem(itemChisel, "ItemChisel", LibInfo.ID);
-
-		itemBrassGoggles = new ItemCustomArmor(ItemArmor.ArmorMaterial.CHAIN,
-				0, 0).setUnlocalizedName("ItemCustomArmor")/*
-															 * .setUnlocalizedName
-															 * (
-															 * "itemCustomArmor"
-															 * )
-															 */;
-		GameRegistry.registerItem(itemBrassGoggles, "ItemCustomArmor",
-				LibInfo.ID);
+		//Will Fix soon
+		//itemBrassGoggles = new ItemBrassArmor(ItemArmor.ArmorMaterial.CHAIN, 0, 0);
 		itemPipe = new ItemPipe();
-		GameRegistry.registerItem(itemPipe, "ItemPipe", LibInfo.ID);
 		itemPoppySeed = new Item().setUnlocalizedName("itemPoppySeed").setCreativeTab(Steamcraft.tabSC2);
-		GameRegistry.registerItem(itemPoppySeed, "ItemPoppySeed", LibInfo.ID);
 	}
+	private static void registerItems()
+	{
+		GameRegistry.registerItem(itemCanisterEmpty, "ItemCanisterEmpty", LibInfo.ID);
+		GameRegistry.registerItem(itemCanisterSteam, "ItemCanisterSteam", LibInfo.ID);
+		GameRegistry.registerItem(itemCanisterGas, "ItemCanisterGas", LibInfo.ID);
+		GameRegistry.registerItem(itemMechanical, "ItemMechanical", LibInfo.ID);
+		GameRegistry.registerItem(itemResource, "ItemResource", LibInfo.ID);
+		GameRegistry.registerItem(itemWatch, "ItemWatch", LibInfo.ID);
+		GameRegistry.registerItem(itemTeaSeed, "ItemTeaSeed", LibInfo.ID);
+		GameRegistry.registerItem(itemChisel, "ItemChisel", LibInfo.ID);
+		//GameRegistry.registerItem(itemBrassGoggles, "ItemCustomArmor", LibInfo.ID);
+		GameRegistry.registerItem(itemPipe, "ItemPipe", LibInfo.ID);
+		GameRegistry.registerItem(itemPoppySeed, "ItemPoppySeed", LibInfo.ID);
+		RegistryHelper.registerArmorSet(itemBrassHelm, itemBrassChest, itemBrassLegs, itemBrassBoots, "Brass");
+	}
+
 }

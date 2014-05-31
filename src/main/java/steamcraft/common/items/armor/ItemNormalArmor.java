@@ -43,8 +43,8 @@ public class ItemNormalArmor extends ItemArmor
 	 * @param renderIndex the render index
 	 * @param armorType the armor type
 	 */
-	public ItemNormalArmor(final int id, ArmorMaterial mat,
-			final int renderIndex, final int armorType)
+	public ItemNormalArmor( int id, ArmorMaterial mat,
+			 int renderIndex,  int armorType)
 	{
 		super(mat, renderIndex, armorType);
 		mat = material;
@@ -57,7 +57,7 @@ public class ItemNormalArmor extends ItemArmor
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(final IIconRegister icon)
+	public void registerIcons( IIconRegister icon)
 	{
 		itemIcon = icon.registerIcon(LibInfo.PREFIX + "armor/"
 				+ this.getUnlocalizedName().substring(5));
@@ -68,8 +68,8 @@ public class ItemNormalArmor extends ItemArmor
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public String getArmorTexture(final ItemStack is, final Entity entity,
-			final int slot, final String type)
+	public String getArmorTexture( ItemStack is,  Entity entity,
+			 int slot,  String type)
 	{
 		if (material == MaterialHelper.ETHERIUM_ARMOR)
 		{

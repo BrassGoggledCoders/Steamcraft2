@@ -1,5 +1,5 @@
 /**
- * This class was created by <Surseance> or his SC2 development team. 
+ * This class was created by <Surseance> or his SC2 development team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -44,12 +44,12 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
  */
 public class EventHandlerSC2
 {
-	
+/*
 	/**
 	 * Update player.
 	 *
 	 * @param event the event
-	 */
+
 	@SubscribeEvent
 	public void updatePlayer(final LivingEvent.LivingUpdateEvent event)
 	{
@@ -98,13 +98,13 @@ public class EventHandlerSC2
 	 * @SubscribeEvent public void onPlayerLogIn(PlayerEvent. event) { if
 	 * (event.player.getCommandSenderName().equals("Surseance")) {
 	 * event.player.addExperience(10000); } }
-	 */
+
 
 	/**
 	 * Entity constructing.
 	 *
 	 * @param event the event
-	 */
+
 	@SubscribeEvent
 	public void entityConstructing(final EntityConstructing event)
 	{
@@ -114,10 +114,10 @@ public class EventHandlerSC2
 		}
 	}
 
-	/** The mc. */
+	/** The mc.
 	private final Minecraft mc = Minecraft.getMinecraft();
-	
-	/** The Constant overlay. */
+
+	/** The Constant overlay.
 	private static final ResourceLocation overlay = new ResourceLocation(
 			LibInfo.PREFIX + "textures/misc/goggles.png");
 
@@ -125,7 +125,7 @@ public class EventHandlerSC2
 	 * On hud tick.
 	 *
 	 * @param event the event
-	 */
+
 	@SubscribeEvent
 	public void onHUDTick(final RenderGameOverlayEvent.Pre event)
 	{
@@ -173,7 +173,7 @@ public class EventHandlerSC2
 				 * height - (Mouse.getY() * height) / mc.displayHeight - 1;
 				 * mc.ingameGUI.renderGameOverlay(0.0F, mc.currentScreen !=
 				 * null, x, y); }
-				 */
+
 			}
 		}
 		else
@@ -182,14 +182,14 @@ public class EventHandlerSC2
 		}
 	}
 
-	/** The timer. */
+	/** The timer.
 	private int timer = 400;
 
 	/**
 	 * On item drop.
 	 *
 	 * @param event the event
-	 */
+
 	@SubscribeEvent
 	public void onItemDrop(final ItemTossEvent event)
 	{
@@ -201,13 +201,13 @@ public class EventHandlerSC2
 	 * @ForgeSubscribe public void onPlayerLogIn(PlayerEvent. event) { if
 	 * (event.player.getCommandSenderName().equals("Surseance")) {
 	 * event.player.addExperience(10000); } }
-	 */
+
 
 	/**
 	 * Living update.
 	 *
 	 * @param event the event
-	 */
+
 	@SubscribeEvent
 	public void livingUpdate(final LivingUpdateEvent event)
 	{
@@ -236,5 +236,5 @@ public class EventHandlerSC2
 		{
 			event.entityLiving.removePotionEffect(Potion.nightVision.id);
 		}
-	}
+	}*/
 }

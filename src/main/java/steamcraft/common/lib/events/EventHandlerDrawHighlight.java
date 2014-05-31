@@ -1,5 +1,5 @@
 /**
- * This class was created by <Surseance> or his SC2 development team. 
+ * This class was created by <Surseance> or his SC2 development team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -43,10 +43,10 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
  */
 public class EventHandlerDrawHighlight
 {
-	
+
 	/** The block. */
 	Block block;
-	
+
 	/** The z. */
 	int x, y, z;
 
@@ -83,6 +83,7 @@ public class EventHandlerDrawHighlight
 	@SubscribeEvent
 	public void onDrawBlockSelectionBox(final DrawBlockHighlightEvent event)
 	{
+		/*
 		if ((event.player.inventory.armorItemInSlot(3) != null)
 				&& (event.player.inventory.armorItemInSlot(3).getItem() == ConfigItems.itemBrassGoggles))
 		{
@@ -116,6 +117,7 @@ public class EventHandlerDrawHighlight
 
 		block = event.player.worldObj.getBlock(event.target.blockX,
 				event.target.blockY, event.target.blockZ);
+				*/
 	}
 
 	/**
