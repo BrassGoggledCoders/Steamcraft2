@@ -13,7 +13,6 @@
  */
 package steamcraft.common.config;
 
-import boilerplate.common.RegistryHelper;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import steamcraft.common.Steamcraft;
@@ -29,6 +28,7 @@ import steamcraft.common.items.ItemWatch;
 import steamcraft.common.items.armor.ItemBrassArmor;
 import steamcraft.common.lib.LibInfo;
 import steamcraft.common.lib.MaterialHelper;
+import boilerplate.common.RegistryHelper;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 // TODO: Auto-generated Javadoc
@@ -135,6 +135,8 @@ public class ConfigItems
 	public static Item itemPoppySeed;
 
 	public static Item itemRayGun;
+
+	public static Item itemBrassGoggles;
 
 	/**
 	 * Inits the.
@@ -282,8 +284,7 @@ public class ConfigItems
 		itemWatch = new ItemWatch().setUnlocalizedName("ItemWatch").setUnlocalizedName("itemWatch");
 		itemTeaSeed = new ItemTeaSeed().setUnlocalizedName("itemTeaSeed");
 		itemChisel = new ItemChisel().setUnlocalizedName("itemChisel");
-		//Will Fix soon
-		//itemBrassGoggles = new ItemBrassArmor(ItemArmor.ArmorMaterial.CHAIN, 0, 0);
+		itemBrassGoggles = new ItemBrassGoggles(ItemArmor.ArmorMaterial.CHAIN, 0, 0);
 		itemPipe = new ItemPipe();
 		itemPoppySeed = new Item().setUnlocalizedName("itemPoppySeed").setCreativeTab(Steamcraft.tabSC2);
 		itemRayGun = new ItemRayGun(LibInfo.PREFIX + "raygun").setUnlocalizedName("itemRayGun");
@@ -301,7 +302,8 @@ public class ConfigItems
 		//GameRegistry.registerItem(itemBrassGoggles, "ItemCustomArmor", LibInfo.ID);
 		GameRegistry.registerItem(itemPipe, "ItemPipe", LibInfo.ID);
 		GameRegistry.registerItem(itemPoppySeed, "ItemPoppySeed", LibInfo.ID);
-		GameRegistry.registerItem(itemRayGun, "ItemRayGun");
+		GameRegistry.registerItem(itemRayGun, "ItemRayGun", LibInfo.ID);
+		GameRegistry.registerItem(itemBrassGoggles, "ItemBrassGoggles");
 		RegistryHelper.registerArmorSet(itemBrassHelm, itemBrassChest, itemBrassLegs, itemBrassBoots, "Brass");
 	}
 

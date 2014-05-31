@@ -83,7 +83,6 @@ public class EventHandlerDrawHighlight
 	@SubscribeEvent
 	public void onDrawBlockSelectionBox(final DrawBlockHighlightEvent event)
 	{
-		/*
 		if ((event.player.inventory.armorItemInSlot(3) != null)
 				&& (event.player.inventory.armorItemInSlot(3).getItem() == ConfigItems.itemBrassGoggles))
 		{
@@ -117,7 +116,6 @@ public class EventHandlerDrawHighlight
 
 		block = event.player.worldObj.getBlock(event.target.blockX,
 				event.target.blockY, event.target.blockZ);
-				*/
 	}
 
 	/**

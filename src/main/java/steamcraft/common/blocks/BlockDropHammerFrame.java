@@ -1,8 +1,8 @@
 package steamcraft.common.blocks;
 
-import steamcraft.common.Steamcraft;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import steamcraft.common.Steamcraft;
 
 public class BlockDropHammerFrame extends Block
 {

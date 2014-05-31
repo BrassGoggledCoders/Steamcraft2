@@ -38,7 +38,6 @@ import steamcraft.common.tiles.TileCrystal;
 import steamcraft.common.tiles.TileDropHammer;
 import steamcraft.common.tiles.TileSteamBoiler;
 import boilerplate.common.RegistryHelper;
-import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 // TODO: Auto-generated Javadoc

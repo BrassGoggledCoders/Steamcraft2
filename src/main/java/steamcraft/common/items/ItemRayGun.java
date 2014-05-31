@@ -3,7 +3,6 @@ package steamcraft.common.items;
 import java.util.HashMap;
 import java.util.Random;
 
-import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -156,16 +155,5 @@ public class ItemRayGun extends Item
 		double var21 = 10.0D;
 		Vec3 var23 = var13.addVector(var18 * var21, var17 * var21, var20 * var21);
 		return world.rayTraceBlocks(var13, var23, flag);
-	}
-
-	private void spawnParticles(World world, int x, int y, int z) // From RedstoneOre
-	{
-		for(int l = 0; l < 4; ++l)
-		{
-			double d1 = x + random.nextFloat();
-			double d2 = y + random.nextFloat();
-			double d3 = z + random.nextFloat();
-			world.spawnParticle("smoke", d1, d2, d3, 0.0D, 0.0D, 0.0D);
-		}
 	}
 }

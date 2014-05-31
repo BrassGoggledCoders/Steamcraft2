@@ -1,13 +1,12 @@
 package steamcraft.common.blocks.machine;
 
-import cpw.mods.fml.common.FMLLog;
-import steamcraft.common.Steamcraft;
-import steamcraft.common.blocks.BlockDropHammerFrame;
-import steamcraft.common.tiles.TileDropHammer;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+import steamcraft.common.blocks.BlockDropHammerFrame;
+import steamcraft.common.tiles.TileDropHammer;
+import cpw.mods.fml.common.FMLLog;
 
 public class BlockDropHammer extends BlockContainerMod
 {

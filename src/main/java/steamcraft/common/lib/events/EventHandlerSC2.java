@@ -36,6 +36,7 @@ import steamcraft.common.entities.EntityPlayerExtended;
 import steamcraft.common.lib.LibInfo;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
+
 // TODO: Auto-generated Javadoc
 /**
  * The Class EventHandlerSC2.
@@ -44,15 +45,15 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
  */
 public class EventHandlerSC2
 {
-/*
 	/**
 	 * Update player.
 	 *
 	 * @param event the event
-
+	*/
 	@SubscribeEvent
 	public void updatePlayer(final LivingEvent.LivingUpdateEvent event)
 	{
+		/*
 		if (event.entityLiving instanceof EntityPlayer)
 		{
 			final EntityPlayer player = (EntityPlayer) event.entityLiving;
@@ -91,20 +92,20 @@ public class EventHandlerSC2
 			{
 				player.stepHeight = 0.5F;
 			}
-		}
+		}*/
 	}
 
 	/*
 	 * @SubscribeEvent public void onPlayerLogIn(PlayerEvent. event) { if
 	 * (event.player.getCommandSenderName().equals("Surseance")) {
 	 * event.player.addExperience(10000); } }
-
+	*/
 
 	/**
 	 * Entity constructing.
 	 *
 	 * @param event the event
-
+	*/
 	@SubscribeEvent
 	public void entityConstructing(final EntityConstructing event)
 	{
@@ -114,10 +115,10 @@ public class EventHandlerSC2
 		}
 	}
 
-	/** The mc.
+	/** The mc.*/
 	private final Minecraft mc = Minecraft.getMinecraft();
 
-	/** The Constant overlay.
+	/** The Constant overlay.*/
 	private static final ResourceLocation overlay = new ResourceLocation(
 			LibInfo.PREFIX + "textures/misc/goggles.png");
 
@@ -125,7 +126,7 @@ public class EventHandlerSC2
 	 * On hud tick.
 	 *
 	 * @param event the event
-
+	*/
 	@SubscribeEvent
 	public void onHUDTick(final RenderGameOverlayEvent.Pre event)
 	{
@@ -173,7 +174,7 @@ public class EventHandlerSC2
 				 * height - (Mouse.getY() * height) / mc.displayHeight - 1;
 				 * mc.ingameGUI.renderGameOverlay(0.0F, mc.currentScreen !=
 				 * null, x, y); }
-
+				*/
 			}
 		}
 		else
@@ -182,14 +183,14 @@ public class EventHandlerSC2
 		}
 	}
 
-	/** The timer.
+	/** The timer.*/
 	private int timer = 400;
 
 	/**
 	 * On item drop.
 	 *
 	 * @param event the event
-
+	*/
 	@SubscribeEvent
 	public void onItemDrop(final ItemTossEvent event)
 	{
@@ -201,13 +202,13 @@ public class EventHandlerSC2
 	 * @ForgeSubscribe public void onPlayerLogIn(PlayerEvent. event) { if
 	 * (event.player.getCommandSenderName().equals("Surseance")) {
 	 * event.player.addExperience(10000); } }
-
+	*/
 
 	/**
 	 * Living update.
 	 *
 	 * @param event the event
-
+	*/
 	@SubscribeEvent
 	public void livingUpdate(final LivingUpdateEvent event)
 	{
@@ -236,5 +237,5 @@ public class EventHandlerSC2
 		{
 			event.entityLiving.removePotionEffect(Potion.nightVision.id);
 		}
-	}*/
+	}
 }
