@@ -25,7 +25,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import steamcraft.common.Steamcraft;
-import boilerplate.steamcraft.api.machines.IMachine;
+import boilerplate.steamapi.machines.IMachine;
 
 // TODO: Auto-generated Javadoc
 /**

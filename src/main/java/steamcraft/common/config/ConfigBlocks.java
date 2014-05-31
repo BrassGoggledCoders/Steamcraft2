@@ -13,26 +13,16 @@
  */
 package steamcraft.common.config;
 
+import boilerplate.common.RegistryHelper;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockStairs;
 import net.minecraftforge.fluids.Fluid;
-import steamcraft.common.blocks.BlockCastIronFence;
-import steamcraft.common.blocks.BlockCastIronGate;
-import steamcraft.common.blocks.BlockCastIronLamp;
-import steamcraft.common.blocks.BlockCosmeticSolid;
-import steamcraft.common.blocks.BlockCosmeticSolidItem;
-import steamcraft.common.blocks.BlockCrystal;
-import steamcraft.common.blocks.BlockCustomOre;
-import steamcraft.common.blocks.BlockCustomOreItem;
-import steamcraft.common.blocks.BlockEngravedSolid;
-import steamcraft.common.blocks.BlockEngravedSolidItem;
-import steamcraft.common.blocks.BlockMetal;
-import steamcraft.common.blocks.BlockMetalItem;
-import steamcraft.common.blocks.BlockSlate;
-import steamcraft.common.blocks.BlockSlateItem;
+import steamcraft.common.blocks.*;
+import steamcraft.common.blocks.machine.BlockDropHammer;
 import steamcraft.common.blocks.machine.BlockSteamBoiler;
 import steamcraft.common.lib.LibInfo;
 import steamcraft.common.tiles.TileCrystal;
+import steamcraft.common.tiles.TileDropHammer;
 import steamcraft.common.tiles.TileHatch;
 import steamcraft.common.tiles.TileSteamBoiler;
 import cpw.mods.fml.client.registry.RenderingRegistry;
@@ -101,6 +91,8 @@ public class ConfigBlocks
 	/** The block steam boiler. */
 	public static Block blockSteamBoiler;
 
+	public static Block blockDropHammer;
+
 	/** The steam fluid. */
 	public static Fluid steamFluid;
 
@@ -159,10 +151,10 @@ public class ConfigBlocks
 				.setBlockName("blockCastIronLampOff");
 		blockCastIronLampA = new BlockCastIronLamp(true)
 				.setBlockName("blockCastIronLampOn");
-		blockSteamBoiler = new BlockSteamBoiler()
-				.setBlockName("blockSteamBoiler");
+		blockSteamBoiler = new BlockSteamBoiler().setBlockName("blockSteamBoiler");
+		blockDropHammer = new BlockDropHammer().setBlockname("blockDropHammer");
 		blockMetal = new BlockMetal().setBlockName("blockMetal");
-		blockSlate = new BlockSlate();
+		blockSlate = new BlockSlate().setBlockName("blockSlate");
 
 		// blockFluidSteam = new BlockFluidSteam(steamFluid, Material.water);
 		// Fluid steamFluid = new
@@ -175,38 +167,19 @@ public class ConfigBlocks
 	 */
 	public static void registerBlocks()
 	{
-		GameRegistry.registerBlock(blockCustomOre, BlockCustomOreItem.class,
-				"BlockCustomOre"); // If you want different
-									// hardness/resistances/light values,
-		GameRegistry.registerBlock(blockCosmetic, BlockCosmeticSolidItem.class,
-				"BlockCosmeticSolid"); // then use the actual methods and check
-										// by metadata;
-		GameRegistry.registerBlock(blockEngraved, BlockEngravedSolidItem.class,
-				"BlockEngravedSolid"); // same goes for this too
+		GameRegistry.registerBlock(blockCustomOre, BlockCustomOreItem.class, "BlockCustomOre");
+		GameRegistry.registerBlock(blockCosmetic, BlockCosmeticSolidItem.class, "BlockCosmeticSolid");
+		GameRegistry.registerBlock(blockEngraved, BlockEngravedSolidItem.class, "BlockEngravedSolid");
+		GameRegistry.registerBlock(blockSlate, BlockSlateItem.class,"BlockSlate");
 		GameRegistry.registerBlock(blockCastIronFence, "BlockCastIronFence");
 		GameRegistry.registerBlock(blockCastIronGate, "BlockCastIronGate");
-		GameRegistry.registerBlock(blockCrystal, "BlockCrystal");
-		// GameRegistry.registerBlock(blockCastIronLampI, "BlockCastIronLampI");
-		// GameRegistry.registerBlock(blockCastIronLampA, "BlockCastIronLampA");
-		// GameRegistry.registerBlock(blockFluidSteam, "BlockFluidSteam");
-		GameRegistry.registerBlock(blockSteamBoiler, "BlockSteamBoiler");
-		GameRegistry.registerBlock(blockMetal, BlockMetalItem.class,
-				"BlockMetal");
-		// GameRegistry.registerBlock(blockHatch, "BlockHatch");
-		 GameRegistry.registerBlock(blockSlate,
-		 BlockSlateItem.class,"BlockSlate");
-	}
-
-	/**
-	 * Register tile entities.
-	 */
-	private static void registerTileEntities()
-	{
-		GameRegistry.registerTileEntity(TileCrystal.class, LibInfo.ID
-				+ "TECrystal");
-		GameRegistry
-				.registerTileEntity(TileHatch.class, LibInfo.ID + "TEHatch");
-		GameRegistry.registerTileEntity(TileSteamBoiler.class, LibInfo.ID
-				+ "TESteamBoiler");
+		//GameRegistry.registerBlock(blockCastIronLampI, "BlockCastIronLampI");
+		//GameRegistry.registerBlock(blockCastIronLampA, "BlockCastIronLampA");
+		//GameRegistry.registerBlock(blockFluidSteam, "BlockFluidSteam");
+		RegistryHelper.registerContainerBlock(blockCrystal, TileCrystal.class, "BlockCrystal");
+		RegistryHelper.registerContainerBlock(blockSteamBoiler, TileSteamBoiler.class, "BlockSteamBoiler");
+		RegistryHelper.registerContainerBlock(blockDropHammer, TileDropHammer.class, "BlockDropHammer");
+		GameRegistry.registerBlock(blockMetal, BlockMetalItem.class, "BlockMetal");
+		//RegistryHelper.registerContainerBlock(blockHatch, TileHatch.class, "BlockHatch");
 	}
 }

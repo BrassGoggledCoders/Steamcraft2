@@ -18,7 +18,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemStack;
-import boilerplate.steamcraft.api.SteamcraftApi;
+import boilerplate.steamapi.SteamcraftApi;
 
 // TODO: Auto-generated Javadoc
 /**

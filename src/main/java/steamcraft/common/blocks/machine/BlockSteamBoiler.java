@@ -42,15 +42,15 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 public class BlockSteamBoiler extends BlockContainerMod
 {
-	
+
 	/** The icon top. */
 	@SideOnly(Side.CLIENT)
 	private IIcon iconTop;
-	
+
 	/** The icon front. */
 	@SideOnly(Side.CLIENT)
 	private IIcon iconFront;
-	
+
 	/** The icon front a. */
 	@SideOnly(Side.CLIENT)
 	private IIcon iconFrontA;
@@ -62,7 +62,6 @@ public class BlockSteamBoiler extends BlockContainerMod
 								// icons to an array of icons
 	{
 		super(Material.iron);
-		// this.setUnlocalizedName("steamBoiler");
 	}
 
 	/* (non-Javadoc)

@@ -31,7 +31,7 @@ public class BlockMetalItem extends ItemBlockWithMetadata
 	 *
 	 * @param block the block
 	 */
-	public BlockMetalItem(final Block block)
+	public BlockMetalItem(Block block)
 	{
 		super(block, block);
 		setMaxDamage(0);

@@ -1,5 +1,5 @@
 /**
- * This class was created by <Surseance> or his SC2 development team. 
+ * This class was created by <Surseance> or his SC2 development team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -13,9 +13,9 @@
  */
 package steamcraft.common.blocks;
 
-import net.minecraft.item.ItemBlock;
+import net.minecraft.block.Block;
+import net.minecraft.item.ItemBlockWithMetadata;
 import net.minecraft.item.ItemStack;
-import steamcraft.common.config.ConfigBlocks;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -23,15 +23,15 @@ import steamcraft.common.config.ConfigBlocks;
  *
  * @author warlordjones
  */
-public class BlockSlateItem extends ItemBlock
+public class BlockSlateItem extends ItemBlockWithMetadata
 {
-	
+
 	/**
 	 * Instantiates a new block slate item.
 	 */
-	public BlockSlateItem()
+	public BlockSlateItem(Block block)
 	{
-		super(ConfigBlocks.blockSlate);
+		super(block, block);
 		setMaxDamage(0);
 		setHasSubtypes(true);
 	}
