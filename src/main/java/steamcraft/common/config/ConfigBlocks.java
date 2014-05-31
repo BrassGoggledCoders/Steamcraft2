@@ -13,18 +13,30 @@
  */
 package steamcraft.common.config;
 
-import boilerplate.common.RegistryHelper;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockStairs;
+import net.minecraft.block.material.Material;
 import net.minecraftforge.fluids.Fluid;
-import steamcraft.common.blocks.*;
+import steamcraft.common.blocks.BlockCastIronFence;
+import steamcraft.common.blocks.BlockCastIronGate;
+import steamcraft.common.blocks.BlockCastIronLamp;
+import steamcraft.common.blocks.BlockCosmeticSolid;
+import steamcraft.common.blocks.BlockCosmeticSolidItem;
+import steamcraft.common.blocks.BlockCrystal;
+import steamcraft.common.blocks.BlockCustomOre;
+import steamcraft.common.blocks.BlockCustomOreItem;
+import steamcraft.common.blocks.BlockEngravedSolid;
+import steamcraft.common.blocks.BlockEngravedSolidItem;
+import steamcraft.common.blocks.BlockMetal;
+import steamcraft.common.blocks.BlockMetalItem;
+import steamcraft.common.blocks.BlockSlate;
+import steamcraft.common.blocks.BlockSlateItem;
 import steamcraft.common.blocks.machine.BlockDropHammer;
 import steamcraft.common.blocks.machine.BlockSteamBoiler;
-import steamcraft.common.lib.LibInfo;
 import steamcraft.common.tiles.TileCrystal;
 import steamcraft.common.tiles.TileDropHammer;
-import steamcraft.common.tiles.TileHatch;
 import steamcraft.common.tiles.TileSteamBoiler;
+import boilerplate.common.RegistryHelper;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -102,25 +114,8 @@ public class ConfigBlocks
 	/** The block obsidian tile stairs. */
 	public static BlockStairs blockObsidianTileStairs;
 
-	/** The block crystal ri. */
-	public static int blockCrystalRI = RenderingRegistry
-			.getNextAvailableRenderId();
-
-	/** The block cast iron lamp ri. */
-	public static int blockCastIronLampRI = RenderingRegistry
-			.getNextAvailableRenderId();
-
-	/** The block lightning rod ri. */
-	public static int blockLightningRodRI = RenderingRegistry
-			.getNextAvailableRenderId();
-
-	/** The block smog ri. */
-	public static int blockSmogRI = RenderingRegistry
-			.getNextAvailableRenderId();
-
-	/** The block hatch ri. */
-	public static int blockHatchRI = RenderingRegistry
-			.getNextAvailableRenderId();
+	//Render IDs
+	public static int blockCastIronLampRI, blockCrystalRI, blockDropHammerRI, blockHatchRI, blockLightningRodRI;
 
 	/**
 	 * Inits the.
@@ -129,7 +124,6 @@ public class ConfigBlocks
 	{
 		initializeBlocks();
 		registerBlocks();
-		registerTileEntities();
 	}
 
 	/**
@@ -152,7 +146,7 @@ public class ConfigBlocks
 		blockCastIronLampA = new BlockCastIronLamp(true)
 				.setBlockName("blockCastIronLampOn");
 		blockSteamBoiler = new BlockSteamBoiler().setBlockName("blockSteamBoiler");
-		blockDropHammer = new BlockDropHammer().setBlockname("blockDropHammer");
+		blockDropHammer = new BlockDropHammer(Material.anvil).setBlockName("blockDropHammer");
 		blockMetal = new BlockMetal().setBlockName("blockMetal");
 		blockSlate = new BlockSlate().setBlockName("blockSlate");
 

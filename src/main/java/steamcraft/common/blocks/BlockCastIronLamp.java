@@ -1,5 +1,5 @@
 /**
- * This class was created by <Surseance> or his SC2 development team. 
+ * This class was created by <Surseance> or his SC2 development team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -38,10 +38,10 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 public class BlockCastIronLamp extends BlockContainer
 {
-	
+
 	/** The powered. */
 	public boolean powered;
-	
+
 	/** The instance. */
 	public static Block instance;
 

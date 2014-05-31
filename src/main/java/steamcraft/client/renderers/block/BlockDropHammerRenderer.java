@@ -9,7 +9,7 @@
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
  *
- * File created @ [Apr 8, 2014, 3:20:21 PM]
+ * File created @ [12 Apr 2014, 22:27:20]
  */
 package steamcraft.client.renderers.block;
 
@@ -20,17 +20,17 @@ import net.minecraft.world.IBlockAccess;
 
 import org.lwjgl.opengl.GL11;
 
-import steamcraft.common.tiles.TileCastIronLamp;
+import steamcraft.common.config.ConfigBlocks;
+import steamcraft.common.tiles.TileDropHammer;
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
-import cpw.mods.fml.client.registry.RenderingRegistry;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class BlockCastIronLampRenderer.
+ * The Class BlockHatchRenderer.
  *
- * @author Surseance (Johnny Eatmon)
+ * @author warlordjones
  */
-public class BlockCastIronLampRenderer implements ISimpleBlockRenderingHandler
+public class BlockDropHammerRenderer implements ISimpleBlockRenderingHandler
 {
 
 	/* (non-Javadoc)
@@ -42,7 +42,7 @@ public class BlockCastIronLampRenderer implements ISimpleBlockRenderingHandler
 	{
 		GL11.glRotatef(90.0F, 0.0F, 1.0F, 0.0F);
 		GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
-		final TileCastIronLamp te = new TileCastIronLamp();
+		TileDropHammer te = new TileDropHammer();
 		TileEntityRendererDispatcher.instance.renderTileEntityAt(te, te.xCoord,
 				te.yCoord, te.zCoord, 0.0F);
 		GL11.glEnable(32826);
@@ -59,11 +59,12 @@ public class BlockCastIronLampRenderer implements ISimpleBlockRenderingHandler
 		return true;
 	}
 
-	/* (non-Javadoc)
-	 * @see cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler#shouldRender3DInInventory(int)
+	/**
+	 * Should render3 d in inventory.
+	 *
+	 * @return true, if successful
 	 */
-	@Override
-	public boolean shouldRender3DInInventory(final int i)
+	public boolean shouldRender3DInInventory()
 	{
 		return true;
 	}
@@ -74,6 +75,15 @@ public class BlockCastIronLampRenderer implements ISimpleBlockRenderingHandler
 	@Override
 	public int getRenderId()
 	{
-		return RenderingRegistry.getNextAvailableRenderId();
+		return ConfigBlocks.blockDropHammerRI;
+	}
+
+	/* (non-Javadoc)
+	 * @see cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler#shouldRender3DInInventory(int)
+	 */
+	@Override
+	public boolean shouldRender3DInInventory(final int modelId)
+	{
+		return false;
 	}
 }
