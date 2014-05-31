@@ -22,6 +22,7 @@ import steamcraft.common.items.ItemChisel;
 import steamcraft.common.items.ItemMechanical;
 import steamcraft.common.items.ItemMisc;
 import steamcraft.common.items.ItemPipe;
+import steamcraft.common.items.ItemRayGun;
 import steamcraft.common.items.ItemResource;
 import steamcraft.common.items.ItemTeaSeed;
 import steamcraft.common.items.ItemWatch;
@@ -132,6 +133,8 @@ public class ConfigItems
 	public static Item itemPipe;
 
 	public static Item itemPoppySeed;
+
+	public static Item itemRayGun;
 
 	/**
 	 * Inits the.
@@ -283,6 +286,7 @@ public class ConfigItems
 		//itemBrassGoggles = new ItemBrassArmor(ItemArmor.ArmorMaterial.CHAIN, 0, 0);
 		itemPipe = new ItemPipe();
 		itemPoppySeed = new Item().setUnlocalizedName("itemPoppySeed").setCreativeTab(Steamcraft.tabSC2);
+		itemRayGun = new ItemRayGun(LibInfo.PREFIX + "raygun").setUnlocalizedName("itemRayGun");
 	}
 	private static void registerItems()
 	{
@@ -297,6 +301,7 @@ public class ConfigItems
 		//GameRegistry.registerItem(itemBrassGoggles, "ItemCustomArmor", LibInfo.ID);
 		GameRegistry.registerItem(itemPipe, "ItemPipe", LibInfo.ID);
 		GameRegistry.registerItem(itemPoppySeed, "ItemPoppySeed", LibInfo.ID);
+		GameRegistry.registerItem(itemRayGun, "ItemRayGun");
 		RegistryHelper.registerArmorSet(itemBrassHelm, itemBrassChest, itemBrassLegs, itemBrassBoots, "Brass");
 	}
 
