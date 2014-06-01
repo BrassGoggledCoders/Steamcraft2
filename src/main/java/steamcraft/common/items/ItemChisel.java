@@ -1,5 +1,5 @@
 /**
- * This class was created by <Surseance> or his SC2 development team. 
+ * This class was created by <Surseance> or his SC2 development team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -17,7 +17,6 @@ import java.util.Random;
 
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import steamcraft.common.Steamcraft;
@@ -32,15 +31,15 @@ import cpw.mods.fml.relauncher.SideOnly;
  *
  * @author Surseance (Johnny Eatmon)
  */
-public class ItemChisel extends Item
+public class ItemChisel extends BaseItem
 {
-	
+
 	/* (non-Javadoc)
 	 * @see net.minecraft.item.Item#registerIcons(net.minecraft.client.renderer.texture.IIconRegister)
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(final IIconRegister ir)
+	public void registerIcons( IIconRegister ir)
 	{
 		itemIcon = ir.registerIcon(LibInfo.PREFIX + "itemChisel");
 	}
@@ -52,7 +51,6 @@ public class ItemChisel extends Item
 	{
 		setMaxStackSize(1);
 		setMaxDamage(21);
-		bFull3D = true;
 		setCreativeTab(Steamcraft.tabSC2);
 	}
 
@@ -60,9 +58,9 @@ public class ItemChisel extends Item
 	 * @see net.minecraft.item.Item#onItemUse(net.minecraft.item.ItemStack, net.minecraft.entity.player.EntityPlayer, net.minecraft.world.World, int, int, int, int, float, float, float)
 	 */
 	@Override
-	public boolean onItemUse(final ItemStack is, final EntityPlayer player,
-			final World world, final int x, final int y, final int z,
-			final int side, final float hitX, final float hitY, final float hitZ)
+	public boolean onItemUse( ItemStack is,  EntityPlayer player,
+			 World world,  int x,  int y,  int z,
+			 int side,  float hitX,  float hitY,  float hitZ)
 	{
 		world.getBlock(x, y, z);
 
@@ -85,7 +83,7 @@ public class ItemChisel extends Item
 		 * ModBlocks.decorUranium.blockID); }
 		 */
 
-		final Random random = world.rand;
+		 Random random = world.rand;
 		Steamcraft.proxy.smokeFX(world, x + random.nextFloat(),
 				y + random.nextFloat(), z + random.nextFloat(), FXSmoke.class);
 		is.damageItem(1, player);

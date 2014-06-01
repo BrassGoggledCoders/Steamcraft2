@@ -1,5 +1,5 @@
 /**
- * This class was created by <Surseance> or his SC2 development team. 
+ * This class was created by <Surseance> or his SC2 development team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -35,10 +35,10 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 public class ItemCanister extends Item
 {
-	
+
 	/** The gas. */
 	public String gas;
-	
+
 	/** The Constant MAX_VISIBLE. */
 	public static final int MAX_VISIBLE = 2500; // Visual representation of
 												// gas/steam through item damage

@@ -1,5 +1,5 @@
 /**
- * This class was created by <Surseance> or his SC2 development team. 
+ * This class was created by <Surseance> or his SC2 development team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -13,10 +13,14 @@
  */
 package steamcraft.common.items;
 
+import java.util.List;
+
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
-import steamcraft.common.Steamcraft;
+import steamcraft.common.config.ConfigItems;
 import steamcraft.common.lib.LibInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -27,28 +31,18 @@ import cpw.mods.fml.relauncher.SideOnly;
  *
  * @author Surseance (Johnny Eatmon)
  */
-public class ItemResource extends Item
+public class ItemResource extends BaseItemWithMetadata
 {
-	
-	/** The icon. */
-	public IIcon[] icon = new IIcon[12];
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.item.Item#getIconFromDamage(int)
-	 */
-	@Override
-	@SideOnly(Side.CLIENT)
-	public IIcon getIconFromDamage(final int itemDamage)
-	{
-		return icon[itemDamage];
-	}
+	/** The icon. */
+	public IIcon[] icon = new IIcon[10];
 
 	/* (non-Javadoc)
 	 * @see net.minecraft.item.Item#registerIcons(net.minecraft.client.renderer.texture.IIconRegister)
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(final IIconRegister ir)
+	public void registerIcons( IIconRegister ir)
 	{
 		icon[0] = ir.registerIcon(LibInfo.PREFIX + "itemCrystal");
 		icon[1] = ir.registerIcon(LibInfo.PREFIX + "itemChemSalt");
@@ -69,8 +63,28 @@ public class ItemResource extends Item
 	{
 		super();
 		setMaxStackSize(64);
-		setHasSubtypes(true);
-		setMaxDamage(0);
-		setCreativeTab(Steamcraft.tabSC2);
+	}
+	/* (non-Javadoc)
+	 * @see net.minecraft.item.Item#getSubItems(net.minecraft.item.Item, net.minecraft.creativetab.CreativeTabs, java.util.List)
+	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void getSubItems( Item item,  CreativeTabs tab,
+			 List l)
+	{
+		for (int var4 = 0; var4 < 10; ++var4)
+		{
+			l.add(new ItemStack(ConfigItems.itemResource, 1, var4));
+		}
+	}
+	/* (non-Javadoc)
+	 * @see net.minecraft.item.Item#getIconFromDamage(int)
+	 */
+	@Override
+	@SideOnly(Side.CLIENT)
+	public IIcon getIconFromDamage( int itemDamage)
+	{
+		return icon[itemDamage];
 	}
 }

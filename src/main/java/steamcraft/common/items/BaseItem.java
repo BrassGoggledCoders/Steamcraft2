@@ -1,21 +1,18 @@
 package steamcraft.common.items;
 
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.item.ItemArmor;
-import net.minecraft.util.IIcon;
+import net.minecraft.item.Item;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.LibInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemBrassGoggles extends ItemArmor
+public class BaseItem extends Item
 {
-
-	public ItemBrassGoggles(ArmorMaterial mat, int p_i45325_2_, int p_i45325_3_)
+	public BaseItem()
 	{
-		super(mat, p_i45325_2_, p_i45325_3_);
+		super();
 		setCreativeTab(Steamcraft.tabSC2);
-		setUnlocalizedName("itemBrassGoggles");
 	}
     @SideOnly(Side.CLIENT)
     @Override
@@ -23,14 +20,4 @@ public class ItemBrassGoggles extends ItemArmor
     {
             itemIcon = par1IconRegister.registerIcon(LibInfo.PREFIX + this.getUnlocalizedName().substring(5));
     }
-
-	/* (non-Javadoc)
-	 * @see net.minecraft.item.Item#getIconFromDamage(int)
-	 */
-	@Override
-	@SideOnly(Side.CLIENT)
-	public IIcon getIconFromDamage(int itemDamage)
-	{
-		return itemIcon;
-	}
 }

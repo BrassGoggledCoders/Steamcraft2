@@ -19,8 +19,8 @@ import steamcraft.common.Steamcraft;
 import steamcraft.common.items.ItemBrassGoggles;
 import steamcraft.common.items.ItemCanister;
 import steamcraft.common.items.ItemChisel;
+import steamcraft.common.items.ItemIngot;
 import steamcraft.common.items.ItemMechanical;
-import steamcraft.common.items.ItemMisc;
 import steamcraft.common.items.ItemPipe;
 import steamcraft.common.items.ItemRayGun;
 import steamcraft.common.items.ItemResource;
@@ -275,15 +275,15 @@ public class ConfigItems
 		itemBrassLegs = new ItemBrassArmor(ItemArmor.ArmorMaterial.IRON, 0, 0).setUnlocalizedName("itemBrassLegs");
 		itemBrassBoots = new ItemBrassArmor(ItemArmor.ArmorMaterial.IRON, 0, 0).setUnlocalizedName("itemBrassBoots");
 		// Canisters
-		itemCanisterEmpty = new ItemMisc().setUnlocalizedName("itemCanisterEmpty");
+		itemCanisterEmpty = new Item().setUnlocalizedName("itemCanisterEmpty");
 		itemCanisterSteam = new ItemCanister(Config.itemCanisterSteamId,
 				"steam").setUnlocalizedName("itemCanisterSteam");
 		itemCanisterGas = new ItemCanister(Config.itemCanisterGasId,
 				"compressedgas").setUnlocalizedName("itemCanisterGas");
-
+		itemIngot = new ItemIngot();
 		itemMechanical = new ItemMechanical().setUnlocalizedName("ItemMechanical");
-		itemResource = new ItemResource().setUnlocalizedName("ItemResource").setUnlocalizedName("itemResource");
-		itemWatch = new ItemWatch().setUnlocalizedName("ItemWatch").setUnlocalizedName("itemWatch");
+		itemResource = new ItemResource().setUnlocalizedName("itemResource");
+		itemWatch = new ItemWatch().setUnlocalizedName("itemWatch");
 		itemTeaSeed = new ItemTeaSeed().setUnlocalizedName("itemTeaSeed");
 		itemChisel = new ItemChisel().setUnlocalizedName("itemChisel");
 		itemBrassGoggles = new ItemBrassGoggles(ItemArmor.ArmorMaterial.CHAIN, 0, 0);
@@ -306,7 +306,8 @@ public class ConfigItems
 		GameRegistry.registerItem(itemPoppySeed, "ItemPoppySeed", LibInfo.ID);
 		GameRegistry.registerItem(itemRayGun, "ItemRayGun", LibInfo.ID);
 		GameRegistry.registerItem(itemShrinkray, "ItemShrinkray", LibInfo.ID);
-		GameRegistry.registerItem(itemBrassGoggles, "ItemBrassGoggles");
+		GameRegistry.registerItem(itemBrassGoggles, "ItemBrassGoggles", LibInfo.ID);
+		GameRegistry.registerItem(itemIngot, "ItemIngot", LibInfo.ID);
 		RegistryHelper.registerArmorSet(itemBrassHelm, itemBrassChest, itemBrassLegs, itemBrassBoots, "Brass");
 	}
 

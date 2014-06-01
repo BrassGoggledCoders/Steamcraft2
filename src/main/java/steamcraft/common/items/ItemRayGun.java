@@ -6,7 +6,6 @@ import java.util.Random;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
@@ -16,7 +15,7 @@ import steamcraft.common.lib.LibInfo;
 import boilerplate.common.utils.PlayerUtils;
 import boilerplate.common.utils.Utils;
 
-public class ItemRayGun extends Item
+public class ItemRayGun extends BaseItem
 {
 	String raySound;
 	private Random random = new Random();
@@ -30,7 +29,6 @@ public class ItemRayGun extends Item
 	{
 		super();
 		this.raySound = raySound;
-		setCreativeTab(Steamcraft.tabSC2);
 		setMaxDamage(300);
 		setMaxStackSize(1);
 		setUnlocalizedName("itemRaygun");

@@ -6,7 +6,6 @@ import java.util.HashMap;
 
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
@@ -17,7 +16,7 @@ import boilerplate.common.entity.EntityMinedBlock;
 import boilerplate.common.utils.PlayerUtils;
 import boilerplate.common.utils.Utils;
 
-public class ItemShrinkray extends Item
+public class ItemShrinkray extends BaseItem
 {
 	String raySound;
 
@@ -72,20 +71,14 @@ public class ItemShrinkray extends Item
 		{
 			ray.put(player.getCommandSenderName(), Steamcraft.proxy.rayFX(world, player, tx, ty, tz, 2, false, impact > 0 ? 2.0F : 0.0F, ray.get(player), impact, Color.RED));
 		}
-
-		// Couldn't get this shit to work...maybe I was just having a bad day
-		/*
-		if(mop != null && mop.typeOfHit == EnumMovingObjectType.ENTITY)
+		/*if(mop != null && mop.typeOfHit == MovingObjectPosition.MovingObjectType.ENTITY)
 		{
 			if(!(mop.entityHit instanceof EntityEnderman))
 			{
-				//mop.entityHit.setFire(500);
-				System.out.println(mop.entityHit);
-				//DamageSource damage = DamageSource.causePlayerDamage(player);
+				mop.entityHit.setFire(500);
 				stack.damageItem(1, player);
 			}
-		}
-		*/
+		}*/
 		if(mop != null && mop.typeOfHit == MovingObjectPosition.MovingObjectType.BLOCK)
 		{
 			int x = mop.blockX;
@@ -95,7 +88,7 @@ public class ItemShrinkray extends Item
 
 			if(!world.isAirBlock(x, y, z) && !Utils.getBlockUnbreakable(world, x, y, z))
 			{
-				player.worldObj.spawnEntityInWorld(new EntityMinedBlock(player.worldObj, x + 0.5F, y + 0.5F, z + 0.5F, world.getBlock(x, y, z), world.getBlockMetadata(x, y, z)));
+				player.worldObj.spawnEntityInWorld(new EntityMinedBlock(player.worldObj, x + 0.5F, y + 0.5F, z + 0.5F, world.getBlock(x, y, z), world.getBlockMetadata(x, y, z), false));
 				ArrayList<ItemStack> items = world.getBlock(x, y, z).getDrops(world, x, y, z, 0, 0);
 				for(ItemStack drops : items)
 				world.spawnEntityInWorld(new EntityItem(world, x, y, z, drops));

@@ -20,7 +20,6 @@ package steamcraft.common.items;
 import java.util.List;
 
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
@@ -34,7 +33,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  * @author MrArcane111
  *
  */
-public class ItemGuideBook extends Item
+public class ItemGuideBook extends BaseItem
 {
 	public ItemGuideBook() {
 		super();

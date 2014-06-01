@@ -20,7 +20,6 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
-import steamcraft.common.Steamcraft;
 import steamcraft.common.config.ConfigItems;
 import steamcraft.common.lib.LibInfo;
 import cpw.mods.fml.relauncher.Side;
@@ -32,28 +31,18 @@ import cpw.mods.fml.relauncher.SideOnly;
  *
  * @author warlordjones
  */
-public class ItemIngot extends Item
+public class ItemIngot extends BaseItemWithMetadata
 {
 
 	/** The icon. */
 	public IIcon[] icon = new IIcon[8];
 
 	/* (non-Javadoc)
-	 * @see net.minecraft.item.Item#getIconFromDamage(int)
-	 */
-	@Override
-	@SideOnly(Side.CLIENT)
-	public IIcon getIconFromDamage(final int itemDamage)
-	{
-		return icon[itemDamage];
-	}
-
-	/* (non-Javadoc)
 	 * @see net.minecraft.item.Item#registerIcons(net.minecraft.client.renderer.texture.IIconRegister)
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(final IIconRegister ir)
+	public void registerIcons( IIconRegister ir)
 	{
 		icon[0] = ir.registerIcon(LibInfo.PREFIX + "itemIngotAluminum");
 		icon[1] = ir.registerIcon(LibInfo.PREFIX + "itemIngotCopper");
@@ -72,22 +61,29 @@ public class ItemIngot extends Item
 	{
 		super();
 		setMaxStackSize(64);
-		setHasSubtypes(true);
-		setCreativeTab(Steamcraft.tabSC2);
+		setUnlocalizedName("itemIngot");
 	}
-
 	/* (non-Javadoc)
 	 * @see net.minecraft.item.Item#getSubItems(net.minecraft.item.Item, net.minecraft.creativetab.CreativeTabs, java.util.List)
 	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void getSubItems(final Item item, final CreativeTabs tab,
-			final List l)
+	public void getSubItems( Item item,  CreativeTabs tab,
+			 List l)
 	{
 		for (int var4 = 0; var4 < 8; ++var4)
 		{
 			l.add(new ItemStack(ConfigItems.itemIngot, 1, var4));
 		}
+	}
+	/* (non-Javadoc)
+	 * @see net.minecraft.item.Item#getIconFromDamage(int)
+	 */
+	@Override
+	@SideOnly(Side.CLIENT)
+	public IIcon getIconFromDamage( int itemDamage)
+	{
+		return icon[itemDamage];
 	}
 }

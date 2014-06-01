@@ -13,10 +13,9 @@
  */
 package steamcraft.common.lib;
 
-import steamcraft.common.config.ConfigItems;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import steamcraft.common.config.ConfigItems;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
