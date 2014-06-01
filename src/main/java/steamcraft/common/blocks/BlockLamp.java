@@ -68,6 +68,7 @@ public class BlockLamp extends BlockRedstoneLight
 	public BlockLamp()
 	{
 		super(powered);
+		setBlockName("blockLamp");
 		setHardness(3.0F);
 		setResistance(10.0F);
 		setStepSound(Block.soundTypeStone);

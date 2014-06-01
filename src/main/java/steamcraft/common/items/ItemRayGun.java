@@ -29,10 +29,10 @@ public class ItemRayGun extends Item
 	{
 		super();
 		this.raySound = raySound;
-		this.setCreativeTab(Steamcraft.tabSC2);
-		this.setMaxDamage(300);
-		this.setMaxStackSize(1);
-		this.setUnlocalizedName("raygun");
+		setCreativeTab(Steamcraft.tabSC2);
+		setMaxDamage(300);
+		setMaxStackSize(1);
+		setUnlocalizedName("itemRaygun");
 	}
 
 	@SuppressWarnings("all")
