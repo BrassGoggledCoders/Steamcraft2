@@ -13,6 +13,8 @@
  */
 package steamcraft.common;
 
+import java.awt.Color;
+
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
@@ -45,8 +47,8 @@ public class CommonProxy implements IGuiHandler
 	 * @see cpw.mods.fml.common.network.IGuiHandler#getClientGuiElement(int, net.minecraft.entity.player.EntityPlayer, net.minecraft.world.World, int, int, int)
 	 */
 	@Override
-	public Object getClientGuiElement(final int id, final EntityPlayer player,
-			final World world, final int x, final int y, final int z)
+	public Object getClientGuiElement( int id,  EntityPlayer player,
+			 World world,  int x,  int y,  int z)
 	{
 		return null;
 	}
@@ -55,8 +57,8 @@ public class CommonProxy implements IGuiHandler
 	 * @see cpw.mods.fml.common.network.IGuiHandler#getServerGuiElement(int, net.minecraft.entity.player.EntityPlayer, net.minecraft.world.World, int, int, int)
 	 */
 	@Override
-	public Object getServerGuiElement(final int id, final EntityPlayer player,
-			final World world, final int x, final int y, final int z)
+	public Object getServerGuiElement( int id,  EntityPlayer player,
+			 World world,  int x,  int y,  int z)
 	{
 		switch (id)
 		// Containers
@@ -102,12 +104,13 @@ public class CommonProxy implements IGuiHandler
 	 * @param endMod the end mod
 	 * @param input the input
 	 * @param impact the impact
+	 * @param rayColor Color of Raygun beam
 	 * @return the object
 	 */
-	public Object rayFX(final World world, final EntityPlayer player,
-			final double dx, final double dy, final double dz, final int type,
-			final boolean reverse, final float endMod, final Object input,
-			final int impact)
+	public Object rayFX( World world,  EntityPlayer player,
+			 double dx,  double dy,  double dz,  int type,
+			 boolean reverse,  float endMod,  Object input,
+			 int impact, Color rayColor)
 	{
 		return null;
 	}
@@ -122,8 +125,8 @@ public class CommonProxy implements IGuiHandler
 	 * @param input the input
 	 * @return the object
 	 */
-	public Object smokeFX(final World world, final double dx, final double dy,
-			final double dz, final Object input)
+	public Object smokeFX( World world,  double dx,  double dy,
+			 double dz,  Object input)
 	{
 		return null;
 	}
@@ -134,7 +137,7 @@ public class CommonProxy implements IGuiHandler
 	 * @param id the id
 	 * @return the monocle armor model
 	 */
-	public ModelBiped getMonocleArmorModel(final int id)
+	public ModelBiped getMonocleArmorModel( int id)
 	{
 		return null;
 	}
@@ -145,7 +148,7 @@ public class CommonProxy implements IGuiHandler
 	 * @param id the id
 	 * @return the wings armor model
 	 */
-	public ModelBiped getWingsArmorModel(final int id)
+	public ModelBiped getWingsArmorModel( int id)
 	{
 		return null;
 	}
@@ -156,7 +159,7 @@ public class CommonProxy implements IGuiHandler
 	 * @param id the id
 	 * @return the cape armor model
 	 */
-	public ModelBiped getCapeArmorModel(final int id)
+	public ModelBiped getCapeArmorModel( int id)
 	{
 		return null;
 	}

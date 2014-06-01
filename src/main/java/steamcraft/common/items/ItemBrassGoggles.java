@@ -1,4 +1,4 @@
-package steamcraft.common.config;
+package steamcraft.common.items;
 
 import steamcraft.common.Steamcraft;
 import net.minecraft.item.ItemArmor;

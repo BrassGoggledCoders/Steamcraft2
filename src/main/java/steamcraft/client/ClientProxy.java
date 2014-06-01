@@ -93,8 +93,8 @@ public class ClientProxy extends CommonProxy
 	 * @see steamcraft.common.CommonProxy#getClientGuiElement(int, net.minecraft.entity.player.EntityPlayer, net.minecraft.world.World, int, int, int)
 	 */
 	@Override
-	public Object getClientGuiElement(final int ID, final EntityPlayer player,
-			final World world, final int x, final int y, final int z)
+	public Object getClientGuiElement( int ID,  EntityPlayer player,
+			 World world,  int x,  int y,  int z)
 	{
 		if ((world instanceof WorldClient))
 		{
@@ -129,13 +129,12 @@ public class ClientProxy extends CommonProxy
 	 * @see steamcraft.common.CommonProxy#rayFX(net.minecraft.world.World, net.minecraft.entity.player.EntityPlayer, double, double, double, int, boolean, float, java.lang.Object, int)
 	 */
 	@Override
-	public Object rayFX(final World world, final EntityPlayer player,
-			final double dx, final double dy, final double dz, final int type,
-			final boolean reverse, final float endMod, final Object input,
-			final int impact)
+	public Object rayFX( World world,  EntityPlayer player,  double dx,  double dy,  double dz,  int type,
+			 boolean reverse,  float endMod,  Object input,
+			 int impact, Color rayColor)
 	{
 		FXRaygun ray = null;
-		final Color color = Color.RED;
+		Color color = rayColor;
 
 		if (input instanceof FXRaygun)
 		{
@@ -166,11 +165,11 @@ public class ClientProxy extends CommonProxy
 	 * @see steamcraft.common.CommonProxy#smokeFX(net.minecraft.world.World, double, double, double, java.lang.Object)
 	 */
 	@Override
-	public Object smokeFX(final World world, final double dx, final double dy,
-			final double dz, final Object input)
+	public Object smokeFX( World world,  double dx,  double dy,
+			 double dz,  Object input)
 	{
 		FXSmoke smoke = null;
-		final Color color = Color.BLUE;
+		 Color color = Color.BLUE;
 
 		if (input instanceof FXSmoke)
 		{
@@ -192,8 +191,8 @@ public class ClientProxy extends CommonProxy
 	}
 
 	/*
-	 * private static final ModelBrassMonocle chest = new
-	 * ModelBrassMonocle(1.0F); private static final ModelBrassMonocle legs =
+	 * private static  ModelBrassMonocle chest = new
+	 * ModelBrassMonocle(1.0F); private static  ModelBrassMonocle legs =
 	 * new ModelBrassMonocle(0.5F);
 	 *
 	 * @Override public ModelBiped getMonocleArmorModel(int id) { switch (id) {
@@ -201,8 +200,8 @@ public class ClientProxy extends CommonProxy
 	 *
 	 * return chest; // Default, if the wrong ID is passed }
 	 *
-	 * /* private static final ModelBrassWings chest1 = new
-	 * ModelBrassWings(1.0F); private static final ModelBrassWings legs1 = new
+	 * /* private static  ModelBrassWings chest1 = new
+	 * ModelBrassWings(1.0F); private static  ModelBrassWings legs1 = new
 	 * ModelBrassWings(0.5F);
 	 *
 	 * @Override public ModelBiped getWingsArmorModel(int id) { switch (id) {
@@ -210,8 +209,8 @@ public class ClientProxy extends CommonProxy
 	 *
 	 * return chest1; // Default, if the wrong ID is passed }
 	 *
-	 * private static final ModelCape chest2 = new ModelCape(1.0F); private
-	 * static final ModelCape legs2 = new ModelCape(0.5F);
+	 * private static  ModelCape chest2 = new ModelCape(1.0F); private
+	 * static  ModelCape legs2 = new ModelCape(0.5F);
 	 *
 	 * @Override public ModelBiped getCapeArmorModel(int id) { switch(id) { case
 	 * 0: return chest2; case 1: return legs2; default: break; }

@@ -43,7 +43,7 @@ public class BlockMetal extends Block
 {
 
 	/** The icon. */
-	private final IIcon[] icon = new IIcon[9];
+	private final IIcon[] icon = new IIcon[10];
 
 	/** The powered. */
 	private boolean powered;
@@ -64,6 +64,7 @@ public class BlockMetal extends Block
 		icon[6] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockTin");
 		icon[7] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockZinc");
 		icon[8] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockEtherium");
+		icon[9] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockCastIron");
 	}
 
 	/**
@@ -72,10 +73,10 @@ public class BlockMetal extends Block
 	public BlockMetal()
 	{
 		super(Material.iron);
+		setBlockName("blockMetal");
 		setHardness(3.0F);
 		setResistance(10.0F);
 		setStepSound(Block.soundTypeMetal);
-		// this.setUnlocalizedName("blockMetal");
 		setTickRandomly(true);
 		setCreativeTab(Steamcraft.tabSC2);
 

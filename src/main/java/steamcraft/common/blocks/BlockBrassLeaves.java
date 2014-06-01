@@ -11,5 +11,6 @@ public class BlockBrassLeaves extends Block
 		super(p_i45394_1_);
 		setCreativeTab(Steamcraft.tabSC2);
 		setBlockName("blockBrassLeaves");
+		setBlockUnbreakable();
 	}
 }

@@ -1,22 +1,26 @@
 package steamcraft.common.items;
 
 import java.awt.Color;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.LibInfo;
+import boilerplate.common.entity.EntityMinedBlock;
 import boilerplate.common.utils.PlayerUtils;
 import boilerplate.common.utils.Utils;
 
-public class ItemRayGun extends Item
+public class ItemShrinkray extends Item
 {
 	String raySound;
 	private Random random = new Random();
@@ -26,14 +30,14 @@ public class ItemRayGun extends Item
 	@SuppressWarnings("all")
 	static HashMap<String, Long> soundDelay = new HashMap();
 
-	public ItemRayGun(String raySound)
+	public ItemShrinkray(String raySound)
 	{
 		super();
 		this.raySound = raySound;
 		setCreativeTab(Steamcraft.tabSC2);
 		setMaxDamage(300);
 		setMaxStackSize(1);
-		setUnlocalizedName("itemRaygun");
+		setUnlocalizedName("itemShrinkray");
 	}
 
 	@SuppressWarnings("all")
@@ -70,7 +74,7 @@ public class ItemRayGun extends Item
 		}
 		if(world.isRemote)
 		{
-			ray.put(player.getCommandSenderName(), Steamcraft.proxy.rayFX(world, player, tx, ty, tz, 2, false, impact > 0 ? 2.0F : 0.0F, ray.get(player), impact, Color.GREEN));
+			ray.put(player.getCommandSenderName(), Steamcraft.proxy.rayFX(world, player, tx, ty, tz, 2, false, impact > 0 ? 2.0F : 0.0F, ray.get(player), impact, Color.RED));
 		}
 
 		// Couldn't get this shit to work...maybe I was just having a bad day
@@ -93,47 +97,16 @@ public class ItemRayGun extends Item
 			int z = mop.blockZ;
 			//this.spawnParticles(world, x, y, z);
 
-			if(!world.isAirBlock(x, y, z) /*This bit is pretty important!*/ && !Utils.getBlockUnbreakable(world, x, y, z)) // Causes unceremonious destruction & havoc all over the place!
+			if(!world.isAirBlock(x, y, z) && !Utils.getBlockUnbreakable(world, x, y, z))
 			{
-				//int randomInt = random.nextInt(5);
-
-				for(int i = x - random.nextInt(3); i < x + random.nextInt(3); i++)
-				{
-					for(int j = y - random.nextInt(3); j < y + random.nextInt(3); j++)
-					{
-						for(int k = z - random.nextInt(3); k < z + random.nextInt(3); k++)
-						{
-							if(world.isAirBlock(i, j, k))
-							{
-								world.setBlock(i, j, k, Blocks.fire);
-								stack.damageItem(1, player);
-							}
-							else if(world.getBlock(i, j, k) == Blocks.snow)
-							{
-								world.setBlock(i, j, k, Blocks.flowing_water);
-								stack.damageItem(1, player);
-							}
-							if(world.getBlock(i, j, k) == Blocks.snow_layer)
-							{
-								world.setBlock(i, j, k, Blocks.flowing_water);
-								stack.damageItem(1, player);
-							}
-							if(world.getBlock(i, j, k) == Blocks.sand)
-							{
-								world.setBlock(i, j, k, Blocks.glass);
-								stack.damageItem(1, player);
-							}
-							if(world.getBlock(i, j, k) == Blocks.netherrack)
-							{
-								world.setBlock(i, j, k, Blocks.flowing_lava);
-								stack.damageItem(1, player);
-							}
-						}
-					}
-				}
+				player.worldObj.spawnEntityInWorld(new EntityMinedBlock(player.worldObj, x + 0.5F, y + 0.5F, z + 0.5F, world.getBlock(x, y, z), world.getBlockMetadata(x, y, z)));
+				ArrayList<ItemStack> items = world.getBlock(x, y, z).getDrops(world, x, y, z, 0, 0);
+				for(ItemStack drops : items)
+				world.spawnEntityInWorld(new EntityItem(world, x, y, z, drops));
+				world.setBlockToAir(x, y, z);
+				stack.damageItem(1, player);
 			}
 		}
-
 		return stack;
 	}
 }

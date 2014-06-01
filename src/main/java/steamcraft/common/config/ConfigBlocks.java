@@ -53,9 +53,6 @@ public class ConfigBlocks
 	/** The block custom ore. */
 	public static Block blockCustomOre;
 
-	/** The block cosmetic. */
-	public static Block blockCosmetic;
-
 	/** The block engraved. */
 	public static Block blockEngraved;
 
@@ -147,7 +144,7 @@ public class ConfigBlocks
 		blockSteamBoiler = new BlockSteamBoiler().setBlockName("blockSteamBoiler");
 		blockDropHammer = new BlockDropHammer(Material.anvil).setBlockName("blockDropHammer");
 		blockDropHammerFrame = new BlockDropHammerFrame(Material.iron).setBlockName("blockDropHammerFrame");
-		blockMetal = new BlockMetal().setBlockName("blockMetal");
+		blockMetal = new BlockMetal();
 		blockSlate = new BlockSlate().setBlockName("blockSlate");
 		blockBrassLog = new BlockBrassLog(Material.wood);
 		blockBrassLeaves = new BlockBrassLeaves(Material.iron);

@@ -16,6 +16,7 @@ package steamcraft.common.config;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import steamcraft.common.Steamcraft;
+import steamcraft.common.items.ItemBrassGoggles;
 import steamcraft.common.items.ItemCanister;
 import steamcraft.common.items.ItemChisel;
 import steamcraft.common.items.ItemMechanical;
@@ -23,6 +24,7 @@ import steamcraft.common.items.ItemMisc;
 import steamcraft.common.items.ItemPipe;
 import steamcraft.common.items.ItemRayGun;
 import steamcraft.common.items.ItemResource;
+import steamcraft.common.items.ItemShrinkray;
 import steamcraft.common.items.ItemTeaSeed;
 import steamcraft.common.items.ItemWatch;
 import steamcraft.common.items.armor.ItemBrassArmor;
@@ -134,7 +136,7 @@ public class ConfigItems
 
 	public static Item itemPoppySeed;
 
-	public static Item itemRayGun;
+	public static Item itemRayGun, itemShrinkray;
 
 	public static Item itemBrassGoggles;
 
@@ -287,7 +289,8 @@ public class ConfigItems
 		itemBrassGoggles = new ItemBrassGoggles(ItemArmor.ArmorMaterial.CHAIN, 0, 0);
 		itemPipe = new ItemPipe();
 		itemPoppySeed = new Item().setUnlocalizedName("itemPoppySeed").setCreativeTab(Steamcraft.tabSC2);
-		itemRayGun = new ItemRayGun(LibInfo.PREFIX + "raygun").setUnlocalizedName("itemRayGun");
+		itemRayGun = new ItemRayGun(LibInfo.PREFIX + "raygun");
+		itemShrinkray = new ItemShrinkray(LibInfo.PREFIX + "shrinkray");
 	}
 	private static void registerItems()
 	{
@@ -302,6 +305,7 @@ public class ConfigItems
 		GameRegistry.registerItem(itemPipe, "ItemPipe", LibInfo.ID);
 		GameRegistry.registerItem(itemPoppySeed, "ItemPoppySeed", LibInfo.ID);
 		GameRegistry.registerItem(itemRayGun, "ItemRayGun", LibInfo.ID);
+		GameRegistry.registerItem(itemShrinkray, "ItemShrinkray", LibInfo.ID);
 		GameRegistry.registerItem(itemBrassGoggles, "ItemBrassGoggles");
 		RegistryHelper.registerArmorSet(itemBrassHelm, itemBrassChest, itemBrassLegs, itemBrassBoots, "Brass");
 	}
