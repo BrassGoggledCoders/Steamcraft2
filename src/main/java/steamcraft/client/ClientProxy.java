@@ -34,6 +34,8 @@ import steamcraft.common.tiles.TileCrystal;
 import steamcraft.common.tiles.TileHatch;
 import boilerplate.client.fx.FXRaygun;
 import boilerplate.client.fx.FXSmoke;
+import boilerplate.client.renderers.block.RenderMinedBlock;
+import boilerplate.common.entity.EntityMinedBlock;
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
@@ -59,6 +61,8 @@ public class ClientProxy extends CommonProxy
 	@Override
 	public void registerDisplayInformation()
 	{
+		//TODO: Should be in boilerplate
+		RenderingRegistry.registerEntityRenderingHandler(EntityMinedBlock.class, new RenderMinedBlock());
 		ConfigBlocks.blockCrystalRI = RenderingRegistry
 				.getNextAvailableRenderId();
 		ClientRegistry.bindTileEntitySpecialRenderer(TileCrystal.class,
