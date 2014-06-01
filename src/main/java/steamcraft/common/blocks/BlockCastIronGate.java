@@ -1,5 +1,5 @@
 /**
- * This class was created by <Surseance> or his SC2 development team. 
+ * This class was created by <Surseance> or his SC2 development team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -29,7 +29,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 public class BlockCastIronGate extends BlockFenceGate
 {
-	
+
 	/* (non-Javadoc)
 	 * @see net.minecraft.block.BlockFenceGate#getIcon(int, int)
 	 */
@@ -45,10 +45,10 @@ public class BlockCastIronGate extends BlockFenceGate
 	 */
 	public BlockCastIronGate()
 	{
+		setBlockName("blockCastIronGate");
 		setHardness(7.0F);
 		setResistance(20.0F);
 		setStepSound(Block.soundTypeMetal);
 		setCreativeTab(Steamcraft.tabSC2);
-		// setUnlocalizedName("blockCastIronGate");
 	}
 }

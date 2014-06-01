@@ -19,7 +19,6 @@ package steamcraft.client.lib;
  */
 public final class GuiIDs
 {
-
 	/** The Constant GUI_ID_NUKE_OVEN. */
 	public static final int GUI_ID_NUKE_OVEN = 5;// SC2_CommonProxy.cfgHandler.loadGui("GUI_ID_NukeOven");
 
@@ -38,5 +37,9 @@ public final class GuiIDs
 	/** The Constant GUI_ID_GUIDE_BOOK. */
 	public static final int GUI_ID_GUIDE_BOOK = 10;
 
-	public static final int GUI_ID_VANITY = 11;
+	/** The Constant GUI_ID_DROP_HAMMER. */
+	public static final int GUI_ID_DROP_HAMMER = 11;
+
+	/** The Constant GUI_ID_VANITY. */
+	public static final int GUI_ID_VANITY = 12;
 }

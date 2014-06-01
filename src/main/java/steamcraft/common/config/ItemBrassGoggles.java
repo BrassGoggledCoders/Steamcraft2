@@ -6,9 +6,9 @@ import net.minecraft.item.ItemArmor;
 public class ItemBrassGoggles extends ItemArmor
 {
 
-	public ItemBrassGoggles(ArmorMaterial p_i45325_1_, int p_i45325_2_,
-			int p_i45325_3_) {
-		super(p_i45325_1_, p_i45325_2_, p_i45325_3_);
+	public ItemBrassGoggles(ArmorMaterial mat, int p_i45325_2_, int p_i45325_3_)
+	{
+		super(mat, p_i45325_2_, p_i45325_3_);
 		setCreativeTab(Steamcraft.tabSC2);
 		setUnlocalizedName("itemBrassGoggles");
 	}

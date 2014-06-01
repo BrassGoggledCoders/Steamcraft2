@@ -29,7 +29,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import steamcraft.client.gui.GuiIDs;
+import steamcraft.client.lib.GuiIDs;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.LibInfo;
 import steamcraft.common.tiles.TileSteamBoiler;

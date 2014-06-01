@@ -22,6 +22,7 @@ import steamcraft.common.config.Config;
 import steamcraft.common.config.ConfigBlocks;
 import steamcraft.common.config.ConfigEntities;
 import steamcraft.common.config.ConfigItems;
+import steamcraft.common.config.ConfigRecipes;
 import steamcraft.common.lib.CommandSteamcraft;
 import steamcraft.common.lib.CreativeTabSteamcraft;
 import steamcraft.common.lib.LibInfo;
@@ -50,7 +51,7 @@ import cpw.mods.fml.relauncher.Side;
 @Mod(modid = LibInfo.ID, name = LibInfo.NAME, version = LibInfo.VERSION, dependencies = "required-after:boilerplate")
 public class Steamcraft
 {
-	
+
 	/** The proxy. */
 	@SidedProxy(clientSide = LibInfo.CLIENT_PROXY, serverSide = LibInfo.COMMON_PROXY)
 	public static CommonProxy proxy;
@@ -61,13 +62,13 @@ public class Steamcraft
 
 	/** The world gen. */
 	public SteamcraftWorldGenerator worldGen;
-	
+
 	/** The directory. */
 	public File directory;
 
 	/** The draw event handler. */
 	public EventHandlerDrawHighlight drawEventHandler;
-	
+
 	/** The sc2 event handler. */
 	public EventHandlerSC2 sc2EventHandler;
 
@@ -150,7 +151,7 @@ public class Steamcraft
 		ConfigEntities.initEntitySpawns();
 		Config.initModCompatibility();
 		ConfigItems.postInit();
-		// ConfigRecipes.init();
+		ConfigRecipes.init();
 		Config.initLoot();
 		// LoggerSteamcraft.log(Level.INFO, "SC2 is " + event.getModState());
 		final ModContainer container = FMLCommonHandler.instance()

@@ -299,7 +299,6 @@ public class ConfigItems
 		GameRegistry.registerItem(itemWatch, "ItemWatch", LibInfo.ID);
 		GameRegistry.registerItem(itemTeaSeed, "ItemTeaSeed", LibInfo.ID);
 		GameRegistry.registerItem(itemChisel, "ItemChisel", LibInfo.ID);
-		//GameRegistry.registerItem(itemBrassGoggles, "ItemCustomArmor", LibInfo.ID);
 		GameRegistry.registerItem(itemPipe, "ItemPipe", LibInfo.ID);
 		GameRegistry.registerItem(itemPoppySeed, "ItemPoppySeed", LibInfo.ID);
 		GameRegistry.registerItem(itemRayGun, "ItemRayGun", LibInfo.ID);

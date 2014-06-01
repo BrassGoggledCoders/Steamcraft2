@@ -1,5 +1,5 @@
 /**
- * This class was created by <Surseance> or his SC2 development team. 
+ * This class was created by <Surseance> or his SC2 development team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -29,18 +29,18 @@ import steamcraft.common.lib.LibInfo;
  */
 public class BlockCastIronFence extends BlockFence
 {
-	
+
 	/**
 	 * Instantiates a new block cast iron fence.
 	 */
 	public BlockCastIronFence()
 	{
 		super(LibInfo.PREFIX + "blockCastIron", Material.iron);
+		setBlockName("blockCastIronFence");
 		setHardness(4.5F);
 		setResistance(20.0F);
 		setStepSound(Block.soundTypeMetal);
 		setCreativeTab(Steamcraft.tabSC2);
-		// setUnlocalizedName("blockCastIronFence");
 	}
 
 	/* (non-Javadoc)

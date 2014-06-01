@@ -75,10 +75,10 @@ public class BlockEngravedSolid extends Block
 	public BlockEngravedSolid()
 	{
 		super(Material.rock);
+		setBlockName("blockEngravedSolid");
 		setHardness(3.0F);
 		setResistance(15.0F);
 		setStepSound(Block.soundTypeMetal);
-		// this.setUnlocalizedName("blockEngravedSolid");
 		setTickRandomly(true);
 		setCreativeTab(Steamcraft.tabSC2);
 	}

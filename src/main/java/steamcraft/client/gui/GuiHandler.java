@@ -16,6 +16,7 @@ package steamcraft.client.gui;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+import steamcraft.client.lib.GuiIDs;
 import steamcraft.common.container.ContainerVanity;
 import steamcraft.common.entities.EntityPlayerExtended;
 import steamcraft.common.tiles.TileSteamBoiler;
@@ -28,7 +29,7 @@ import cpw.mods.fml.common.network.IGuiHandler;
  */
 public class GuiHandler implements IGuiHandler
 {
-	
+
 	/* (non-Javadoc)
 	 * @see cpw.mods.fml.common.network.IGuiHandler#getServerGuiElement(int, net.minecraft.entity.player.EntityPlayer, net.minecraft.world.World, int, int, int)
 	 */
@@ -43,15 +44,15 @@ public class GuiHandler implements IGuiHandler
 		/*
 		 * case GuiIDs.GUI_ID_NUKE_OVEN: return new
 		 * ContainerNukeFurnace(player.inventory, (TileEntityNukeFurnace) tile);
-		 * 
+		 *
 		 * case GuiIDs.GUI_ID_CHEM_OVEN: return new
 		 * ContainerChemicalFurnace(player.inventory,
 		 * (TileEntityChemicalFurnace) tile);
-		 * 
+		 *
 		 * case GuiIDs.GUI_ID_STEAM_OVEN: return new
 		 * ContainerSteamFurnace(player.inventory, (TileEntitySteamFurnace)
 		 * tile);
-		 * 
+		 *
 		 * case GuiIDs.GUI_ID_COMPRESSOR: return new
 		 * ContainerCompressor(player.inventory, (TileEntityCompressor) tile);
 		 */
@@ -80,17 +81,17 @@ public class GuiHandler implements IGuiHandler
 		/*
 		 * case GuiIDs.GUI_ID_NUKE_OVEN: return new
 		 * GuiNukeFurnace(player.inventory, (TileEntityNukeFurnace) tile);
-		 * 
+		 *
 		 * case GuiIDs.GUI_ID_CHEM_OVEN: return new
 		 * GuiChemicalFurnace(player.inventory, (TileEntityChemicalFurnace)
 		 * tile);
-		 * 
+		 *
 		 * case GuiIDs.GUI_ID_STEAM_OVEN: return new
 		 * GuiSteamFurnace(player.inventory, (TileEntitySteamFurnace) tile);
-		 * 
+		 *
 		 * case GuiIDs.GUI_ID_COMPRESSOR: return new
 		 * GuiCompressor(player.inventory, (TileEntityCompressor) tile);
-		 * 
+		 *
 		 * case GuiIDs.GUI_ID_GUIDE_BOOK: return new GuiGuideBook(player,
 		 * player.inventory.getItemStack());
 		 */

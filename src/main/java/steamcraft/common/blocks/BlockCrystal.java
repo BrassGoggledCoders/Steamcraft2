@@ -1,5 +1,5 @@
 /**
- * This class was created by <Surseance> or his SC2 development team. 
+ * This class was created by <Surseance> or his SC2 development team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -37,18 +37,18 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 public class BlockCrystal extends BlockContainer implements ITileEntityProvider
 {
-	
+
 	/**
 	 * Instantiates a new block crystal.
 	 */
 	public BlockCrystal()
 	{
 		super(Material.glass);
+		setBlockName("blockCrystal");
 		setHardness(8.5F);
 		setResistance(6000000.0F);
 		setStepSound(Block.soundTypeGlass);
 		setCreativeTab(Steamcraft.tabSC2);
-		// setUnlocalizedName("blockCrystal");
 	}
 
 	/* (non-Javadoc)
@@ -124,19 +124,19 @@ public class BlockCrystal extends BlockContainer implements ITileEntityProvider
 	 * @SideOnly(Side.CLIENT) public AxisAlignedBB
 	 * getSelectedBoundingBoxFromPool(World p_149633_1_, int p_149633_2_, int
 	 * p_149633_3_, int p_149633_4_) { return null; }
-	 * 
+	 *
 	 * @Override public int getExpDrop(World world, int i, int j) { if
 	 * (this.idDropped(i, world.rand, j) != this.blockID) { int randInt =
 	 * MathHelper.getRandomIntegerInRange(world.rand, 4, 10); return randInt; }
-	 * 
+	 *
 	 * return 0; }
-	 * 
+	 *
 	 * @Override public int quantityDroppedWithBonus(int quantity, Random
 	 * random) { if (quantity > 0 && (this.blockID != this.idDropped(0, random,
 	 * quantity))) { int randInt = random.nextInt(quantity + 2) - 1;
-	 * 
+	 *
 	 * if (randInt < 0) { randInt = 0; }
-	 * 
+	 *
 	 * return this.quantityDropped(random) * (randInt + 1); } else { return
 	 * this.quantityDropped(random); } }
 	 */
