@@ -35,7 +35,7 @@ public class BlockCastIronFence extends BlockFence
 	 */
 	public BlockCastIronFence()
 	{
-		super(LibInfo.PREFIX + "blockCastIron", Material.iron);
+		super(LibInfo.PREFIX + "metal/" +"blockCastIron", Material.iron);
 		setBlockName("blockCastIronFence");
 		setHardness(4.5F);
 		setResistance(20.0F);
