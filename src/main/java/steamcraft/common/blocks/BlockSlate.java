@@ -13,11 +13,17 @@
  */
 package steamcraft.common.blocks;
 
+import java.util.List;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import steamcraft.common.Steamcraft;
+import steamcraft.common.config.ConfigBlocks;
 import steamcraft.common.lib.LibInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -33,7 +39,18 @@ public class BlockSlate extends Block
 
 	/** The icon. */
 	private final IIcon[] icon = new IIcon[9];
-
+	/**
+	 * Instantiates a new block slate.
+	 */
+	public BlockSlate()
+	{
+		super(Material.rock);
+		setHardness(3.0F);
+		setResistance(10.0F);
+		setStepSound(Block.soundTypeStone);
+		setBlockName("blockSlate");
+		setCreativeTab(Steamcraft.tabSC2);
+	}
 	/* (non-Javadoc)
 	 * @see net.minecraft.block.Block#getIcon(int, int)
 	 */
@@ -65,27 +82,18 @@ public class BlockSlate extends Block
 		icon[8] = ir.registerIcon(LibInfo.PREFIX + "blockSlateBrickRed");
 		// Polished
 	}
-
-	/**
-	 * Instantiates a new block slate.
-	 */
-	public BlockSlate()
-	{
-		super(Material.rock);
-		setHardness(3.0F);
-		setResistance(10.0F);
-		setStepSound(Block.soundTypeStone);
-		setBlockName("blockSlate");
-		setTickRandomly(true);
-		setCreativeTab(Steamcraft.tabSC2);
-	}
-
 	/* (non-Javadoc)
-	 * @see net.minecraft.block.Block#damageDropped(int)
+	 * @see net.minecraft.item.Item#getSubItems(net.minecraft.item.Item, net.minecraft.creativetab.CreativeTabs, java.util.List)
 	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
-	public int damageDropped(final int id)
+	@SideOnly(Side.CLIENT)
+	public void getSubBlocks(final Item item, final CreativeTabs tab,
+			final List l)
 	{
-		return id;
+		for (int var4 = 0; var4 < 8; ++var4)
+		{
+			l.add(new ItemStack(ConfigBlocks.blockSlate, 1, var4));
+		}
 	}
 }

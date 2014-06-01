@@ -73,8 +73,7 @@ public class Steamcraft
 	public EventHandlerSC2 sc2EventHandler;
 
 	/** The tab s c2. */
-	public static CreativeTabs tabSC2 = new CreativeTabSteamcraft(
-			CreativeTabs.getNextID(), "steamcraft"); // TODO: Needs Icon
+	public static CreativeTabs tabSC2 = new CreativeTabSteamcraft(CreativeTabs.getNextID(), "steamcraft");
 
 	/**
 	 * Pre init.
@@ -157,6 +156,7 @@ public class Steamcraft
 		final ModContainer container = FMLCommonHandler.instance()
 				.findContainerFor(this);
 		LanguageRegistry.instance().loadLanguagesFor(container, Side.CLIENT);
+		
 	}
 
 	/**

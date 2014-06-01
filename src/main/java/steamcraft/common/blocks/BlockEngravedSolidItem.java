@@ -14,8 +14,6 @@
 package steamcraft.common.blocks;
 
 import net.minecraft.block.Block;
-import net.minecraft.item.ItemBlockWithMetadata;
-import net.minecraft.item.ItemStack;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -23,7 +21,7 @@ import net.minecraft.item.ItemStack;
  *
  * @author Surseance (Johnny Eatmon)
  */
-public class BlockEngravedSolidItem extends ItemBlockWithMetadata
+public class BlockEngravedSolidItem extends BaseItemBlockWithMetadata
 {
 
 	/**
@@ -34,25 +32,5 @@ public class BlockEngravedSolidItem extends ItemBlockWithMetadata
 	public BlockEngravedSolidItem(Block block)
 	{
 		super(block, block);
-		setMaxDamage(0);
-		setHasSubtypes(true);
-	}
-
-	/* (non-Javadoc)
-	 * @see net.minecraft.item.Item#getMetadata(int)
-	 */
-	@Override
-	public int getMetadata(final int metadata)
-	{
-		return metadata;
-	}
-
-	/* (non-Javadoc)
-	 * @see net.minecraft.item.ItemBlock#getUnlocalizedName(net.minecraft.item.ItemStack)
-	 */
-	@Override
-	public String getUnlocalizedName(final ItemStack is)
-	{
-		return super.getUnlocalizedName() + "." + is.getItemDamage();
 	}
 }

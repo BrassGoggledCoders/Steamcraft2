@@ -66,7 +66,15 @@ public class BlockMetal extends Block
 		icon[8] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockEtherium");
 		icon[9] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockCastIron");
 	}
-
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#getIcon(int, int)
+	 */
+	@Override
+	@SideOnly(Side.CLIENT)
+	public IIcon getIcon(final int side, final int metadata)
+	{
+		return icon[metadata];
+	}
 	/**
 	 * Instantiates a new block metal.
 	 */
@@ -87,15 +95,6 @@ public class BlockMetal extends Block
 	}
 
 	/* (non-Javadoc)
-	 * @see net.minecraft.block.Block#damageDropped(int)
-	 */
-	@Override
-	public int damageDropped(final int id)
-	{
-		return id;
-	}
-
-	/* (non-Javadoc)
 	 * @see net.minecraft.block.Block#onEntityCollidedWithBlock(net.minecraft.world.World, int, int, int, net.minecraft.entity.Entity)
 	 */
 	@Override
@@ -103,7 +102,7 @@ public class BlockMetal extends Block
 			final int y, final int z, final Entity entity)
 	{
 		if ((world.getBlock(x, y, z) == this)
-				&& (world.getBlockMetadata(x, y, z) == 4))
+				&& (world.getBlockMetadata(x, y, z) == 8))
 		{
 			entity.attackEntityFrom(DamageSource.magic, 1);
 		}
@@ -118,7 +117,7 @@ public class BlockMetal extends Block
 			final int z, final Random random)
 	{
 		if ((world.getBlock(x, y, z) == this)
-				&& (world.getBlockMetadata(x, y, z) == 4))
+				&& (world.getBlockMetadata(x, y, z) == 8))
 		{
 			EffectUtils.sparkle(world, x, y, z, "reddust");
 		}

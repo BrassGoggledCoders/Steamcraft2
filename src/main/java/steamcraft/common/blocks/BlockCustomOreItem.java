@@ -1,5 +1,5 @@
 /**
- * This class was created by <Surseance> or his SC2 development team. 
+ * This class was created by <Surseance> or his SC2 development team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -14,8 +14,6 @@
 package steamcraft.common.blocks;
 
 import net.minecraft.block.Block;
-import net.minecraft.item.ItemBlock;
-import net.minecraft.item.ItemStack;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -23,9 +21,8 @@ import net.minecraft.item.ItemStack;
  *
  * @author Surseance (Johnny Eatmon)
  */
-public class BlockCustomOreItem extends ItemBlock
+public class BlockCustomOreItem extends BaseItemBlockWithMetadata
 {
-	
 	/**
 	 * Instantiates a new block custom ore item.
 	 *
@@ -33,26 +30,6 @@ public class BlockCustomOreItem extends ItemBlock
 	 */
 	public BlockCustomOreItem(final Block block)
 	{
-		super(block);
-		setMaxDamage(0);
-		setHasSubtypes(true);
-	}
-
-	/* (non-Javadoc)
-	 * @see net.minecraft.item.Item#getMetadata(int)
-	 */
-	@Override
-	public int getMetadata(final int metadata)
-	{
-		return metadata;
-	}
-
-	/* (non-Javadoc)
-	 * @see net.minecraft.item.ItemBlock#getUnlocalizedName(net.minecraft.item.ItemStack)
-	 */
-	@Override
-	public String getUnlocalizedName(final ItemStack is)
-	{
-		return super.getUnlocalizedName() + "." + is.getItemDamage();
+		super(block, block);
 	}
 }

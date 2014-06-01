@@ -3,14 +3,11 @@ package steamcraft.common.items;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Random;
 
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
@@ -23,7 +20,6 @@ import boilerplate.common.utils.Utils;
 public class ItemShrinkray extends Item
 {
 	String raySound;
-	private Random random = new Random();
 
 	@SuppressWarnings("all")
 	static HashMap<String, Object> ray = new HashMap();
