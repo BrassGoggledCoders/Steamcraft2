@@ -47,10 +47,10 @@ public class BlockFluidSteam extends BlockFluidClassic
 	 * @param fluid the fluid
 	 * @param material the material
 	 */
-	public BlockFluidSteam(final Fluid fluid, final Material material)
+	public BlockFluidSteam(Fluid fluid,  Material material)
 	{
 		super(fluid, material);
-		// setUnlocalizedName("steamFluidBlock");
+		setBlockName("steamFluidBlock");
 		setCreativeTab(Steamcraft.tabSC2);
 	}
 
@@ -58,7 +58,7 @@ public class BlockFluidSteam extends BlockFluidClassic
 	 * @see net.minecraft.block.Block#getIcon(int, int)
 	 */
 	@Override
-	public IIcon getIcon(final int side, final int meta)
+	public IIcon getIcon( int side,  int meta)
 	{
 		return (side == 0 || side == 1) ? stillIcon : flowingIcon;
 	}
@@ -68,7 +68,7 @@ public class BlockFluidSteam extends BlockFluidClassic
 	 */
 	@SideOnly(Side.CLIENT)
 	@Override
-	public void registerBlockIcons(final IIconRegister register)
+	public void registerBlockIcons( IIconRegister register)
 	{
 		stillIcon = register.registerIcon(LibInfo.PREFIX + "steamStill");
 		flowingIcon = register.registerIcon(LibInfo.PREFIX + "steamFlowing");
@@ -78,8 +78,8 @@ public class BlockFluidSteam extends BlockFluidClassic
 	 * @see net.minecraftforge.fluids.BlockFluidBase#canDisplace(net.minecraft.world.IBlockAccess, int, int, int)
 	 */
 	@Override
-	public boolean canDisplace(final IBlockAccess world, final int x,
-			final int y, final int z)
+	public boolean canDisplace( IBlockAccess world,  int x,
+			 int y,  int z)
 	{
 		if (ItemStackUtils.getBlockMaterial(world, x, y, z).isLiquid())
 		{
@@ -92,8 +92,8 @@ public class BlockFluidSteam extends BlockFluidClassic
 	 * @see net.minecraftforge.fluids.BlockFluidBase#displaceIfPossible(net.minecraft.world.World, int, int, int)
 	 */
 	@Override
-	public boolean displaceIfPossible(final World world, final int x,
-			final int y, final int z)
+	public boolean displaceIfPossible( World world,  int x,
+			 int y,  int z)
 	{
 		if (ItemStackUtils.getBlockMaterial(world, x, y, z).isLiquid())
 		{

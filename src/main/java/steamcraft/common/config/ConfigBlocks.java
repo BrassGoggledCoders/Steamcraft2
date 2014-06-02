@@ -17,6 +17,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockStairs;
 import net.minecraft.block.material.Material;
 import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidRegistry;
 import steamcraft.common.blocks.BlockBrassLeaves;
 import steamcraft.common.blocks.BlockBrassLog;
 import steamcraft.common.blocks.BlockCastIronFence;
@@ -29,6 +30,7 @@ import steamcraft.common.blocks.BlockCustomOreItem;
 import steamcraft.common.blocks.BlockDropHammerFrame;
 import steamcraft.common.blocks.BlockEngravedSolid;
 import steamcraft.common.blocks.BlockEngravedSolidItem;
+import steamcraft.common.blocks.BlockFluidSteam;
 import steamcraft.common.blocks.BlockLamp;
 import steamcraft.common.blocks.BlockMetal;
 import steamcraft.common.blocks.BlockMetalItem;
@@ -151,10 +153,9 @@ public class ConfigBlocks
 		blockBrassLog = new BlockBrassLog(Material.wood);
 		blockBrassLeaves = new BlockBrassLeaves(Material.iron);
 
-		// blockFluidSteam = new BlockFluidSteam(steamFluid, Material.water);
-		// Fluid steamFluid = new
-		// Fluid("steam").setGaseous(true).setTemperature(700).setDensity(-100).setViscosity(500).setLuminosity(1);
-		// FluidRegistry.registerFluid(steamFluid);
+		Fluid steamFluid = new Fluid("steam").setGaseous(true).setTemperature(700).setDensity(-100).setViscosity(500).setLuminosity(1);
+		FluidRegistry.registerFluid(steamFluid);
+		blockFluidSteam = new BlockFluidSteam(steamFluid, Material.water);
 	}
 
 	/**
@@ -178,6 +179,7 @@ public class ConfigBlocks
 		RegistryHelper.registerContainerBlock(blockSteamBoiler, TileSteamBoiler.class, "BlockSteamBoiler");
 		RegistryHelper.registerContainerBlock(blockDropHammer, TileDropHammer.class, "BlockDropHammer");
 		GameRegistry.registerBlock(blockMetal, BlockMetalItem.class, "BlockMetal");
+		GameRegistry.registerBlock(blockFluidSteam, "blockFluidSteam");
 		//RegistryHelper.registerContainerBlock(blockHatch, TileHatch.class, "BlockHatch");
 	}
 }
