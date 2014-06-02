@@ -77,6 +77,7 @@ public class ItemCanister extends Item
 	 */
 	public ItemCanister(final int id, final String gas)
 	{
+		setMaxStackSize(1);
 		setNoRepair();
 		this.gas = gas;
 		setMaxDamage(MAX_VISIBLE);

@@ -50,7 +50,7 @@ public class ItemChisel extends BaseItem
 	public ItemChisel()
 	{
 		setMaxStackSize(1);
-		setMaxDamage(21);
+		setMaxDamage(20);
 		setCreativeTab(Steamcraft.tabSC2);
 	}
 

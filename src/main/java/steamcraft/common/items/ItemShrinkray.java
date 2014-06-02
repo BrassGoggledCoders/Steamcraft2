@@ -30,7 +30,7 @@ public class ItemShrinkray extends BaseItem
 		super();
 		this.raySound = raySound;
 		setCreativeTab(Steamcraft.tabSC2);
-		setMaxDamage(300);
+		setMaxDamage(150);
 		setMaxStackSize(1);
 		setUnlocalizedName("itemShrinkray");
 	}
@@ -89,9 +89,9 @@ public class ItemShrinkray extends BaseItem
 			if(!world.isAirBlock(x, y, z) && !Utils.getBlockUnbreakable(world, x, y, z))
 			{
 				player.worldObj.spawnEntityInWorld(new EntityMinedBlock(player.worldObj, x + 0.5F, y + 0.5F, z + 0.5F, world.getBlock(x, y, z), world.getBlockMetadata(x, y, z), false));
-				ArrayList<ItemStack> items = world.getBlock(x, y, z).getDrops(world, x, y, z, 0, 0);
-				for(ItemStack drops : items)
-				world.spawnEntityInWorld(new EntityItem(world, x, y, z, drops));
+				//ArrayList<ItemStack> items = world.getBlock(x, y, z).getDrops(world, x, y, z, 0, 0);
+				//for(ItemStack drops : items)
+				//world.spawnEntityInWorld(new EntityItem(world, x, y, z, drops));
 				world.setBlockToAir(x, y, z);
 				stack.damageItem(1, player);
 			}
