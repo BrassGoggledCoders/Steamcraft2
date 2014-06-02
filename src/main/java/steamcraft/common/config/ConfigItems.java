@@ -14,8 +14,10 @@
 package steamcraft.common.config;
 
 import net.minecraft.item.Item;
+import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemArmor;
 import steamcraft.common.Steamcraft;
+import steamcraft.common.items.BaseItem;
 import steamcraft.common.items.ItemBrassGoggles;
 import steamcraft.common.items.ItemCanister;
 import steamcraft.common.items.ItemChisel;
@@ -28,6 +30,14 @@ import steamcraft.common.items.ItemShrinkray;
 import steamcraft.common.items.ItemTeaSeed;
 import steamcraft.common.items.ItemWatch;
 import steamcraft.common.items.armor.ItemBrassArmor;
+import steamcraft.common.items.equipment.ItemCoreDrill;
+import steamcraft.common.items.equipment.ItemDrill;
+import steamcraft.common.items.equipment.ItemModAxe;
+import steamcraft.common.items.equipment.ItemModHoe;
+import steamcraft.common.items.equipment.ItemModPickaxe;
+import steamcraft.common.items.equipment.ItemModSpade;
+import steamcraft.common.items.equipment.ItemModSword;
+import steamcraft.common.items.equipment.ItemSteamDrill;
 import steamcraft.common.lib.LibInfo;
 import steamcraft.common.lib.MaterialHelper;
 import boilerplate.common.RegistryHelper;
@@ -140,6 +150,44 @@ public class ConfigItems
 
 	public static Item itemBrassGoggles;
 
+	// Drills
+		public static Item drillCore;
+		public static Item drillBase;
+		public static Item drillWood;
+		public static Item drillStone;
+		public static Item drillIron;
+		public static Item drillDiamond;
+		public static Item drillGold;
+		public static Item drillSteam;
+		public static Item drillEtherium;
+		public static Item drillObsidian;
+
+		// Steam
+		public static Item pickaxeSteam;
+		public static Item swordSteam;
+		public static Item shovelSteam;
+		public static Item axeSteam;
+		public static Item hoeSteam;
+
+
+		// Etherium
+		public static Item pickaxeEtherium;
+		public static Item swordEtherium;
+		public static Item shovelEtherium;
+		public static Item axeEtherium;
+		public static Item hoeEtherium;
+
+		// Obsidian
+		public static Item pickaxeObsidian;
+		public static Item swordObsidian;
+		public static Item shovelObsidian;
+		public static Item axeObsidian;
+		public static Item hoeObsidian;
+
+		// Other
+		public static Item chisel;
+		public static Item spanner;
+
 	/**
 	 * Inits the.
 	 */
@@ -162,24 +210,6 @@ public class ConfigItems
 	public static void initializeItems()
 	{
 		/*
-		 * Items itemMechanical = new
-		 * ItemMechanical(Config.itemMechanicalId).setUnlocalizedName
-		 * ("itemMechanical"); GameRegistry.registerItem(itemMechanical,
-		 * "ItemMechanical", LibInfo.ID); itemResource = new
-		 * ItemResource(Config.
-		 * itemResourceId).setUnlocalizedName("itemResource");
-		 * GameRegistry.registerItem(itemResource, "ItemResource", LibInfo.ID);
-		 * itemIngot = new
-		 * ItemIngot(Config.itemIngotId).setUnlocalizedName("itemIngot");
-		 * itemWatch = new
-		 * ItemWatch(Config.itemWatchId).setUnlocalizedName("itemWatch");
-		 * GameRegistry.registerItem(itemWatch, "ItemWatch", LibInfo.ID);
-		 * itemTeaSeed = new
-		 * ItemTeaSeed(Config.itemTeaSeedId).setUnlocalizedName("itemTeaSeed");
-		 * GameRegistry.registerItem(itemTeaSeed, "ItemTeaSeed", LibInfo.ID);
-		 * itemChisel = new
-		 * ItemChisel(Config.itemChiselId).setUnlocalizedName("itemChisel");
-		 * GameRegistry.registerItem(itemChisel, "ItemChisel", LibInfo.ID);
 		 *
 		 * //Armor itemBrassGoggles = new ItemCustomArmor(Config.itemGogglesId,
 		 * MaterialHelper.STEAM_ARMOR, 0, 0).setUnlocalizedName("itemGoggles");
@@ -291,6 +321,37 @@ public class ConfigItems
 		itemPoppySeed = new Item().setUnlocalizedName("itemPoppySeed").setCreativeTab(Steamcraft.tabSC2);
 		itemRayGun = new ItemRayGun(LibInfo.PREFIX + "raygun");
 		itemShrinkray = new ItemShrinkray(LibInfo.PREFIX + "shrinkray");
+		drillCore = new ItemCoreDrill().setUnlocalizedName("itemDrillCore");
+		drillBase = new BaseItem().setUnlocalizedName("itemDrillBase");
+		// int id, int maxEnergy, int toolTier, int energyTier(mostly for IC2)
+		drillWood = new ItemDrill(ToolMaterial.WOOD.getHarvestLevel()).setUnlocalizedName("itemDrillWood");
+		drillStone = new ItemDrill(ToolMaterial.STONE.getHarvestLevel()).setUnlocalizedName("itemDrillStone");
+		drillIron = new ItemDrill(ToolMaterial.IRON.getHarvestLevel()).setUnlocalizedName("itemDrillIron");
+		drillDiamond = new ItemDrill(ToolMaterial.EMERALD.getHarvestLevel()).setUnlocalizedName("itemDrillDiamond");
+		drillGold = new ItemDrill(ToolMaterial.GOLD.getHarvestLevel()).setUnlocalizedName("itemDrillGold");
+		drillSteam = new ItemSteamDrill().setUnlocalizedName("itemDrillSteam");
+		drillEtherium = new ItemDrill(MaterialHelper.ETHERIUM_TOOL.getHarvestLevel()).setUnlocalizedName("itemDrillEtherium");
+		drillObsidian = new ItemDrill(MaterialHelper.OBSIDIAN_TOOL.getHarvestLevel()).setUnlocalizedName("itemDrillObsidian");
+
+		pickaxeSteam = new ItemModPickaxe(MaterialHelper.STEAM_TOOL).setUnlocalizedName("itemPickSteam");
+		swordSteam = new ItemModSword(MaterialHelper.STEAM_TOOL).setUnlocalizedName("itemSwordSteam");
+		shovelSteam = new ItemModSpade(MaterialHelper.STEAM_TOOL).setUnlocalizedName("itemShovelSteam");
+		axeSteam = new ItemModAxe(MaterialHelper.STEAM_TOOL).setUnlocalizedName("itemAxeSteam");
+		hoeSteam = new ItemModHoe(MaterialHelper.STEAM_TOOL).setUnlocalizedName("itemHoeSteam");
+
+		pickaxeEtherium = new ItemModPickaxe(MaterialHelper.ETHERIUM_TOOL).setUnlocalizedName("itemPickEtherium");
+		swordEtherium = new ItemModSword(MaterialHelper.ETHERIUM_TOOL).setUnlocalizedName("itemSwordEtherium");
+		shovelEtherium = new ItemModSpade(MaterialHelper.ETHERIUM_TOOL).setUnlocalizedName("itemSpadeEtherium");
+		axeEtherium = new ItemModAxe(MaterialHelper.ETHERIUM_TOOL).setUnlocalizedName("itemAxeEtherium");
+		hoeEtherium = new ItemModHoe(MaterialHelper.ETHERIUM_TOOL).setUnlocalizedName("itemHoeEtherium");
+
+		pickaxeObsidian = new ItemModPickaxe(MaterialHelper.OBSIDIAN_TOOL).setUnlocalizedName("itemPickObsidian");
+		swordObsidian = new ItemModSword(MaterialHelper.OBSIDIAN_TOOL).setUnlocalizedName("itemSwordObsidian");
+		shovelObsidian = new ItemModSpade(MaterialHelper.OBSIDIAN_TOOL).setUnlocalizedName("itemSpadeObsidian");
+		axeObsidian = new ItemModAxe(MaterialHelper.OBSIDIAN_TOOL).setUnlocalizedName("itemAxeObsidian");
+		hoeObsidian = new ItemModHoe(MaterialHelper.OBSIDIAN_TOOL).setUnlocalizedName("itemHoeObsidian");
+
+		spanner = new /*Really?*/ItemChisel().setUnlocalizedName("spanner");
 	}
 	private static void registerItems()
 	{
@@ -308,7 +369,11 @@ public class ConfigItems
 		GameRegistry.registerItem(itemShrinkray, "ItemShrinkray", LibInfo.ID);
 		GameRegistry.registerItem(itemBrassGoggles, "ItemBrassGoggles", LibInfo.ID);
 		GameRegistry.registerItem(itemIngot, "ItemIngot", LibInfo.ID);
-		RegistryHelper.registerArmorSet(itemBrassHelm, itemBrassChest, itemBrassLegs, itemBrassBoots, "Brass");
+		GameRegistry.registerItem(drillCore, "ItemDrillCore", LibInfo.ID);
+		GameRegistry.registerItem(drillBase, "ItemDrillBase", LibInfo.ID);
+		RegistryHelper.registerToolSet(axeEtherium, hoeEtherium, pickaxeEtherium, shovelEtherium, swordEtherium, "Etherium", LibInfo.ID);
+		RegistryHelper.registerToolSet(axeObsidian, hoeObsidian, pickaxeObsidian, shovelObsidian, swordObsidian, "Obsidian", LibInfo.ID);
+		RegistryHelper.registerArmorSet(itemBrassHelm, itemBrassChest, itemBrassLegs, itemBrassBoots, "Brass", LibInfo.ID);
 	}
 
 }

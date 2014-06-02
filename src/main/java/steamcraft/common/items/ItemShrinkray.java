@@ -1,10 +1,8 @@
 package steamcraft.common.items;
 
 import java.awt.Color;
-import java.util.ArrayList;
 import java.util.HashMap;
 
-import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MovingObjectPosition;

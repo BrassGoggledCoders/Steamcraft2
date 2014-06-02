@@ -58,6 +58,7 @@ public class ItemBrassArmor extends ItemArmor
 			int renderIndex, int armorType)
 	{
 		super(armorMat, renderIndex, armorType);
+		setMaxStackSize(1);
 		mat = armorMat;
 		setCreativeTab(Steamcraft.tabSC2);
 	}

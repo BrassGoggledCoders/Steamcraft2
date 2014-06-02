@@ -35,19 +35,18 @@ public class ItemSteamJetpack extends ItemBrassArmor
 {
 	
 	/** The Constant steamPerTick. */
-	private static final int steamPerTick = 10; // how much steam is uses per
+	private static  int steamPerTick = 10; // how much steam is uses per
 												// tick
 
 	/**
-												 * Instantiates a new item steam jetpack.
-												 *
-												 * @param id the id
-												 * @param mat the mat
-												 * @param renderIndex the render index
-												 * @param armorType the armor type
-												 */
-												public ItemSteamJetpack(final int id, final ArmorMaterial mat,
-			final int renderIndex, final int armorType)
+	 * Instantiates a new item steam jetpack.
+	 *
+	 * @param id the id
+	 * @param mat the mat
+	 * @param renderIndex the render index
+	 * @param armorType the armor type
+	 */
+	public ItemSteamJetpack( int id,  ArmorMaterial mat,  int renderIndex,  int armorType)
 	{
 		super(mat, renderIndex, armorType);
 	}
@@ -57,13 +56,13 @@ public class ItemSteamJetpack extends ItemBrassArmor
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void onArmorTick(final World world, final EntityPlayer player,
-			final ItemStack is)
+	public void onArmorTick( World world,  EntityPlayer player,
+			 ItemStack is)
 	{
 		int i = 0;
 		while (i < 36)
 		{
-			final ItemStack[] mainInv = player.inventory.mainInventory;
+			 ItemStack[] mainInv = player.inventory.mainInventory;
 			if (mainInv[i] != null
 					&& mainInv[i].getItem() == ConfigItems.itemCanisterSteam)
 			{
