@@ -5,6 +5,7 @@ import net.minecraft.item.ItemArmor;
 import net.minecraft.util.IIcon;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.LibInfo;
+import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -22,16 +23,6 @@ public class ItemBrassGoggles extends ItemArmor
     @Override
     public void registerIcons(IIconRegister par1IconRegister)
     {
-            itemIcon = par1IconRegister.registerIcon(LibInfo.PREFIX + this.getUnlocalizedName().substring(5));
+            itemIcon = par1IconRegister.registerIcon(LibInfo.PREFIX + "armor/itemBrassGoggles.png");
     }
-
-	/* (non-Javadoc)
-	 * @see net.minecraft.item.Item#getIconFromDamage(int)
-	 */
-	@Override
-	@SideOnly(Side.CLIENT)
-	public IIcon getIconFromDamage(int itemDamage)
-	{
-		return itemIcon;
-	}
 }

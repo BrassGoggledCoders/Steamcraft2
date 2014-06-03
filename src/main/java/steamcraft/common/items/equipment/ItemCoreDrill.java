@@ -1,9 +1,13 @@
 package steamcraft.common.items.equipment;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import steamcraft.common.items.BaseItem;
+import steamcraft.common.lib.LibInfo;
 
 public class ItemCoreDrill extends BaseItem
 {
@@ -25,6 +29,12 @@ public class ItemCoreDrill extends BaseItem
 		stack.damageItem(1, player);
 		return true;
 	}
+    @SideOnly(Side.CLIENT)
+    @Override
+    public void registerIcons(IIconRegister par1IconRegister)
+    {
+            itemIcon = par1IconRegister.registerIcon(LibInfo.PREFIX +"tools/"+ this.getUnlocalizedName().substring(5));
+    }
 
 	/*public int getRandomInt(Random random, int bound){
 	return random.nextInt(bound);

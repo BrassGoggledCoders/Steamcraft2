@@ -146,6 +146,7 @@ public class Steamcraft
 	@Mod.EventHandler
 	public void postInit(final FMLPostInitializationEvent event)
 	{
+		CompatabilityLayer.init();
 		// Dosn't work! >> BiomeDictionary.registerAllBiomes();
 		ConfigEntities.initEntitySpawns();
 		Config.initModCompatibility();
@@ -156,7 +157,7 @@ public class Steamcraft
 		final ModContainer container = FMLCommonHandler.instance()
 				.findContainerFor(this);
 		LanguageRegistry.instance().loadLanguagesFor(container, Side.CLIENT);
-		
+
 	}
 
 	/**
