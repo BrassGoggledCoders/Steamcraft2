@@ -324,7 +324,7 @@ public class ConfigItems
 		drillCore = new ItemCoreDrill().setUnlocalizedName("itemDrillCore");
 		drillBase = new BaseItem().setUnlocalizedName("itemDrillBase");
 		// int id, int maxEnergy, int toolTier, int energyTier(mostly for IC2)
-		drillWood = new ItemDrill(ToolMaterial.WOOD.getHarvestLevel()).setUnlocalizedName("itemDrillWood");
+		drillWood = new ItemDrill(ToolMaterial.WOOD.getHarvestLevel()).setUnlocalizedName("itemDrillWood").setCreativeTab(Steamcraft.tabSC2);
 		drillStone = new ItemDrill(ToolMaterial.STONE.getHarvestLevel()).setUnlocalizedName("itemDrillStone");
 		drillIron = new ItemDrill(ToolMaterial.IRON.getHarvestLevel()).setUnlocalizedName("itemDrillIron");
 		drillDiamond = new ItemDrill(ToolMaterial.EMERALD.getHarvestLevel()).setUnlocalizedName("itemDrillDiamond");
@@ -371,9 +371,16 @@ public class ConfigItems
 		GameRegistry.registerItem(itemIngot, "ItemIngot", LibInfo.ID);
 		GameRegistry.registerItem(drillCore, "ItemDrillCore", LibInfo.ID);
 		GameRegistry.registerItem(drillBase, "ItemDrillBase", LibInfo.ID);
+		GameRegistry.registerItem(drillWood, "ItemDrillWood", LibInfo.ID);
+		GameRegistry.registerItem(drillStone, "ItemDrillStone", LibInfo.ID);
+		GameRegistry.registerItem(drillIron, "ItemDrillIron", LibInfo.ID);
+		GameRegistry.registerItem(drillDiamond, "ItemDrillDiamond", LibInfo.ID);
+		GameRegistry.registerItem(drillGold, "ItemDrillGold", LibInfo.ID);
+		GameRegistry.registerItem(drillSteam, "ItemDrillSteam", LibInfo.ID);
+		GameRegistry.registerItem(drillEtherium, "ItemDrillEtherium", LibInfo.ID);
+		GameRegistry.registerItem(drillObsidian, "ItemDrillObsidian", LibInfo.ID);
 		RegistryHelper.registerToolSet(axeEtherium, hoeEtherium, pickaxeEtherium, shovelEtherium, swordEtherium, "Etherium", LibInfo.ID);
 		RegistryHelper.registerToolSet(axeObsidian, hoeObsidian, pickaxeObsidian, shovelObsidian, swordObsidian, "Obsidian", LibInfo.ID);
 		RegistryHelper.registerArmorSet(itemBrassHelm, itemBrassChest, itemBrassLegs, itemBrassBoots, "Brass", LibInfo.ID);
 	}
-
 }

@@ -13,6 +13,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
+import steamcraft.common.Steamcraft;
 import steamcraft.common.config.ConfigItems;
 import steamcraft.common.lib.LibInfo;
 import boilerplate.common.utils.PlayerUtils;
@@ -29,6 +30,7 @@ public class ItemSteamDrill extends ItemDrill
 	{
 		super(ToolMaterial.EMERALD.getHarvestLevel());
 		this.setMaxDamage(321);
+		setCreativeTab(Steamcraft.tabSC2);
 	}
 
 	@SuppressWarnings("all")

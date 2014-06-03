@@ -10,6 +10,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import steamcraft.common.Steamcraft;
 import steamcraft.common.config.ConfigItems;
 import steamcraft.common.lib.MaterialHelper;
 
@@ -29,6 +30,7 @@ public class ItemModTool extends Item
 	protected ItemModTool(float damage, ToolMaterial toolMat, Block[] blockArray)
 	{
 		super();
+		setCreativeTab(Steamcraft.tabSC2);
 		this.toolMaterial = toolMat;
 		ItemModTool.blocksEffectiveAgainst = blockArray;
 		this.maxStackSize = 1;

@@ -1,11 +1,11 @@
 package steamcraft.common.items.equipment;
 
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import steamcraft.common.items.BaseItem;
 
-public class ItemCoreDrill extends Item
+public class ItemCoreDrill extends BaseItem
 {
 	public ItemCoreDrill()
 	{

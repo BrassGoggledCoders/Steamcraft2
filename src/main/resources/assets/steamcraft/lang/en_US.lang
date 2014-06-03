@@ -114,8 +114,8 @@ item.rifleround.name=Rifle Round
 item.itemRaygun.name=Ray Gun
 
 #Tools
-item.coredrill.name=Drill Core
-item.coredrillbase.name=Drill Base
+item.itemDrillCore.name=Drill Core
+item.itemDrillBase.name=Drill Base
 item.drillWood.name=Wooden Drill
 item.drillStone.name=Stone Drill
 item.drillIron.name=Iron Drill
@@ -128,15 +128,15 @@ item.steampick.name=Steam-Powered Pickaxe
 item.steamsword.name=Stean-Powered Sword
 item.steamaxe.name=Steam-Powered Axe
 item.steamhoe.name=Steam-Powered Hoe
-item.pickaxeEtherium.name=Etherium Pickaxe
-item.swordEtherium.name=Etherium Sword
-item.axeEtherium.name=Etherium Axe
-item.hoeEtherium.name=Etherium Hoe
-item.pickObsidian.name=Obsidian Pickaxe
-item.swordObsidian.name=Obsidian Sword
-item.axeObsidian.name=Obsidian Axe
-item.hoeObsidian.name=Obsidian Hoe
-item.spadeObsidian.name=Obsidian Shovel
+item.itemPickEtherium.name=Etherium Pickaxe
+item.itemSwordEtherium.name=Etherium Sword
+item.itemAxeEtherium.name=Etherium Axe
+item.itemHoeEtherium.name=Etherium Hoe
+item.itemPickObsidian.name=Obsidian Pickaxe
+item.itemSwordObsidian.name=Obsidian Sword
+item.itemAxeObsidian.name=Obsidian Axe
+item.itemHoeObsidian.name=Obsidian Hoe
+item.itemSpadeObsidian.name=Obsidian Shovel
 item.itemChisel.name=Chisel
 item.spanner.name=Spanner
 
