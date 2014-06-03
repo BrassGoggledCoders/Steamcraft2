@@ -2,10 +2,8 @@ package steamcraft.common.items;
 
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.item.ItemArmor;
-import net.minecraft.util.IIcon;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.LibInfo;
-import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
