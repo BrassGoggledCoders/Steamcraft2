@@ -30,6 +30,7 @@ import steamcraft.common.items.ItemShrinkray;
 import steamcraft.common.items.ItemTeaSeed;
 import steamcraft.common.items.ItemWatch;
 import steamcraft.common.items.armor.ItemBrassArmor;
+import steamcraft.common.items.armor.ItemNormalArmor;
 import steamcraft.common.items.equipment.ItemCoreDrill;
 import steamcraft.common.items.equipment.ItemDrill;
 import steamcraft.common.items.equipment.ItemModAxe;
@@ -234,47 +235,7 @@ public class ConfigItems
 		 * GameRegistry.registerItem(itemSteamJetpack, "ItemSteamJetpack",
 		 * LibInfo.ID);
 		 *
-		 * itemHelmetEtherium = new ItemNormalArmor(Config.itemHelmetEtheriumId,
-		 * MaterialHelper.ETHERIUM_ARMOR, 0,
-		 * 0).setUnlocalizedName("itemHelmetEtherium");
-		 * GameRegistry.registerItem(itemRollerSkates, "ItemHelmetEtherium",
-		 * LibInfo.ID); itemPlateEtherium = new
-		 * ItemNormalArmor(Config.itemPlateEtheriumId,
-		 * MaterialHelper.ETHERIUM_ARMOR, 0,
-		 * 1).setUnlocalizedName("itemPlateEtherium");
-		 * GameRegistry.registerItem(itemRollerSkates, "ItemPlateEtherium",
-		 * LibInfo.ID); itemLegsEtherium = new
-		 * ItemNormalArmor(Config.itemLegsEtheriumId,
-		 * MaterialHelper.ETHERIUM_ARMOR, 0,
-		 * 2).setUnlocalizedName("itemLegsEtherium");
-		 * GameRegistry.registerItem(itemRollerSkates, "ItemLegsEtherium",
-		 * LibInfo.ID); itemBootsEtherium = new
-		 * ItemNormalArmor(Config.itemBootsEtheriumId,
-		 * MaterialHelper.ETHERIUM_ARMOR, 0,
-		 * 3).setUnlocalizedName("itemBootsEtherium");
-		 * GameRegistry.registerItem(itemRollerSkates, "ItemBootsEtherium",
-		 * LibInfo.ID);
 		 *
-		 * itemHelmetObsidian = new ItemNormalArmor(Config.itemHelmetObsidianId,
-		 * MaterialHelper.OBSIDIAN_ARMOR, 0,
-		 * 0).setUnlocalizedName("itemHelmetObsidian");
-		 * GameRegistry.registerItem(itemRollerSkates, "ItemHelmetObsidian",
-		 * LibInfo.ID); itemPlateObsidian = new
-		 * ItemNormalArmor(Config.itemPlateObsidianId,
-		 * MaterialHelper.OBSIDIAN_ARMOR, 0,
-		 * 1).setUnlocalizedName("itemPlateObsidian");
-		 * GameRegistry.registerItem(itemRollerSkates, "ItemPlateObsidian",
-		 * LibInfo.ID); itemLegsObsidian = new
-		 * ItemNormalArmor(Config.itemLegsObsidianId,
-		 * MaterialHelper.OBSIDIAN_ARMOR, 0,
-		 * 2).setUnlocalizedName("itemLegsObsidian");
-		 * GameRegistry.registerItem(itemRollerSkates, "ItemLegsObsidian",
-		 * LibInfo.ID); itemBootsObsidian = new
-		 * ItemNormalArmor(Config.itemBootsObsidianId,
-		 * MaterialHelper.OBSIDIAN_ARMOR, 0,
-		 * 3).setUnlocalizedName("itemBootsObsidian");
-		 * GameRegistry.registerItem(itemRollerSkates, "ItemBootsObsidian",
-		 * LibInfo.ID);
 		 *
 		 * //More Items itemTeacupEmpty = new
 		 * ItemTeacup(Config.itemTeacupEmptyId, 0, 0.0F,
@@ -352,6 +313,16 @@ public class ConfigItems
 		hoeObsidian = new ItemModHoe(MaterialHelper.OBSIDIAN_TOOL).setUnlocalizedName("itemHoeObsidian");
 
 		spanner = new /*Really?*/ItemChisel().setUnlocalizedName("spanner");
+
+		itemHelmetEtherium = new ItemNormalArmor(MaterialHelper.ETHERIUM_ARMOR, 0, 0).setUnlocalizedName("itemHelmetEtherium");
+		itemPlateEtherium = new ItemNormalArmor(MaterialHelper.ETHERIUM_ARMOR, 0, 1).setUnlocalizedName("itemPlateEtherium");
+		itemLegsEtherium = new ItemNormalArmor(MaterialHelper.ETHERIUM_ARMOR, 0, 2).setUnlocalizedName("itemLegsEtherium");
+		itemBootsEtherium = new ItemNormalArmor(MaterialHelper.ETHERIUM_ARMOR, 0, 3).setUnlocalizedName("itemBootsEtherium");
+
+		itemHelmetObsidian = new ItemNormalArmor(MaterialHelper.OBSIDIAN_ARMOR, 0, 0).setUnlocalizedName("itemHelmetObsidian");
+		itemPlateObsidian = new ItemNormalArmor(MaterialHelper.OBSIDIAN_ARMOR, 0, 1).setUnlocalizedName("itemPlateObsidian");
+		itemLegsObsidian = new ItemNormalArmor(MaterialHelper.OBSIDIAN_ARMOR, 0, 2).setUnlocalizedName("itemLegsObsidian");
+		itemBootsObsidian = new ItemNormalArmor(MaterialHelper.OBSIDIAN_ARMOR, 0, 3).setUnlocalizedName("itemBootsObsidian");
 	}
 	private static void registerItems()
 	{
@@ -382,5 +353,7 @@ public class ConfigItems
 		RegistryHelper.registerToolSet(axeEtherium, hoeEtherium, pickaxeEtherium, shovelEtherium, swordEtherium, "Etherium", LibInfo.ID);
 		RegistryHelper.registerToolSet(axeObsidian, hoeObsidian, pickaxeObsidian, shovelObsidian, swordObsidian, "Obsidian", LibInfo.ID);
 		RegistryHelper.registerArmorSet(itemBrassHelm, itemBrassChest, itemBrassLegs, itemBrassBoots, "Brass", LibInfo.ID);
+		RegistryHelper.registerArmorSet(itemHelmetObsidian, itemPlateObsidian, itemLegsObsidian, itemBootsObsidian, "Obsidian", LibInfo.ID);
+		RegistryHelper.registerArmorSet(itemHelmetEtherium, itemPlateEtherium, itemLegsEtherium, itemBootsEtherium, "Etherium", LibInfo.ID);
 	}
 }

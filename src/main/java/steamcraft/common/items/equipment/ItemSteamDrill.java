@@ -13,6 +13,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
+import steamcraft.client.ClientHelper;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.config.ConfigItems;
 import steamcraft.common.lib.LibInfo;
@@ -37,11 +38,11 @@ public class ItemSteamDrill extends ItemDrill
 	@Override
 	public void addInformation(ItemStack itemStack, EntityPlayer entityPlayer, List list, boolean bool)
 	{
-		/*if(!ClientHelper.isShiftKeyDown())
+		if(!ClientHelper.isShiftKeyDown())
 		{
 			list.add(ClientHelper.shiftForInfo);
 			return;
-		}*/
+		}
 
 		if(!itemStack.hasTagCompound())
 			itemStack.setTagCompound(new NBTTagCompound());

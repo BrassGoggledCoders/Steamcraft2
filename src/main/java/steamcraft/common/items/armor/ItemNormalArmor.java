@@ -1,5 +1,5 @@
 /**
- * This class was created by <Surseance> or his SC2 development team. 
+ * This class was created by <Surseance> or his SC2 development team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -31,7 +31,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 public class ItemNormalArmor extends ItemArmor
 {
-	
+
 	/** The material. */
 	ArmorMaterial material;
 
@@ -43,7 +43,7 @@ public class ItemNormalArmor extends ItemArmor
 	 * @param renderIndex the render index
 	 * @param armorType the armor type
 	 */
-	public ItemNormalArmor( int id, ArmorMaterial mat,
+	public ItemNormalArmor(ArmorMaterial mat,
 			 int renderIndex,  int armorType)
 	{
 		super(mat, renderIndex, armorType);
