@@ -13,18 +13,24 @@
  */
 package steamcraft.common.blocks;
 
+import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.particle.EffectRenderer;
 import net.minecraft.entity.EnumCreatureType;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.config.ConfigBlocks;
+import steamcraft.common.config.ConfigItems;
 import steamcraft.common.tiles.TileCrystal;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -46,7 +52,7 @@ public class BlockCrystal extends BlockContainer implements ITileEntityProvider
 		super(Material.glass);
 		setBlockName("blockCrystal");
 		setHardness(8.5F);
-		setResistance(6000000.0F);
+		setResistance(-1);
 		setStepSound(Block.soundTypeGlass);
 		setCreativeTab(Steamcraft.tabSC2);
 	}
@@ -149,4 +155,9 @@ public class BlockCrystal extends BlockContainer implements ITileEntityProvider
 	{
 		return 10;
 	}
+	public Item getItemDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_)
+	{
+	    return ConfigItems.itemResource;
+	}
+
 }

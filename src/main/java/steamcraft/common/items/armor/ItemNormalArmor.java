@@ -76,12 +76,10 @@ public class ItemNormalArmor extends ItemArmor
 			return slot == 2 ? LibInfo.PREFIX + "textures/armor/etherium_2.png"
 					: LibInfo.PREFIX + "textures/armor/etherium_1.png";
 		}
-		else if(material == MaterialHelper.OBSIDIAN_ARMOR)
+		else
 		{
 			return slot == 2 ? LibInfo.PREFIX + "textures/armor/obsidian_2.png"
 					: LibInfo.PREFIX + "textures/armor/obsidian_1.png";
 		}
-		else
-			return "";
 	}
 }
