@@ -112,6 +112,7 @@ item.musketcartridge.name=Musket Round
 item.percussioncap.name=Percussion Cap
 item.rifleround.name=Rifle Round
 item.itemRaygun.name=Ray Gun
+item.itemShrinkray.name=Shrinkray
 
 #Tools
 item.itemDrillCore.name=Drill Core

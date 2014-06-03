@@ -2,6 +2,7 @@ package steamcraft.common.items;
 
 import java.awt.Color;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Random;
 
 import net.minecraft.entity.player.EntityPlayer;
@@ -10,6 +11,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
+import steamcraft.client.ClientHelper;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.LibInfo;
 import boilerplate.common.utils.PlayerUtils;
@@ -33,7 +35,21 @@ public class ItemRayGun extends BaseItem
 		setMaxStackSize(1);
 		setUnlocalizedName("itemRaygun");
 	}
-
+	@SuppressWarnings("all")
+	@Override
+	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean flag) {
+		super.addInformation(stack, player, list, flag);
+		if(!ClientHelper.isShiftKeyDown())
+		{
+			list.add(ClientHelper.shiftForInfo);
+			return;
+		}
+		else
+		{
+		list.add("Causes uncerimonos destruction and havoc all over the place!");
+		list.add("Good for melting things");
+		}
+	}
 	@SuppressWarnings("all")
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)

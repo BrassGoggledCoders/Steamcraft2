@@ -2,12 +2,14 @@ package steamcraft.common.items;
 
 import java.awt.Color;
 import java.util.HashMap;
+import java.util.List;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
+import steamcraft.client.ClientHelper;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.LibInfo;
 import boilerplate.common.entity.EntityMinedBlock;
@@ -31,6 +33,22 @@ public class ItemShrinkray extends BaseItem
 		setMaxDamage(150);
 		setMaxStackSize(1);
 		setUnlocalizedName("itemShrinkray");
+	}
+	@SuppressWarnings("all")
+	@Override
+	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean flag) {
+		super.addInformation(stack, player, list, flag);
+		if(!ClientHelper.isShiftKeyDown())
+		{
+			list.add(ClientHelper.shiftForInfo);
+			return;
+		}
+		else
+		{
+		list.add("Shrinks blocks infinitely small");
+		list.add("WARNING! Ray cannot enlarge objects");
+		list.add("(Shrinking Process is probably irreversible)");
+		}
 	}
 
 	@SuppressWarnings("all")

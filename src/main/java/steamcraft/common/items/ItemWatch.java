@@ -56,7 +56,7 @@ public class ItemWatch extends BaseItem
 		{
 			list.add("On right-click, this item");
 		}
-		list.add("will display the MC time");
+		list.add("will display the in-game time");
 		list.add("and the real-world time");
 	}
 
