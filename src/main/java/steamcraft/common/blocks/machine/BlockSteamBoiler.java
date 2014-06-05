@@ -107,7 +107,8 @@ public class BlockSteamBoiler extends BlockContainerMod
 
 			if ((tile == null) || player.isSneaking())
 				return false;
-
+			
+			
 			player.openGui(Steamcraft.instance, GuiIDs.GUI_ID_STEAM_BOILER, world, par2, par3, par4);
 			return true;
 		}

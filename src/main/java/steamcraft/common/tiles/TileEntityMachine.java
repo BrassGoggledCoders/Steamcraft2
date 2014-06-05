@@ -36,9 +36,11 @@ public class TileEntityMachine extends TileEntity implements ISidedInventory
 	/** The inventory. */
 	protected ItemStack[] inventory;
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.tileentity.TileEntity#readFromNBT(net.minecraft.nbt.NBTTagCompound)
-	 */
+	public TileEntityMachine(byte invSize)
+	{
+		this.inventory = new ItemStack[invSize];
+	}
+
 	@Override
 	public void readFromNBT(final NBTTagCompound par1NBTTagCompound)
 	{
