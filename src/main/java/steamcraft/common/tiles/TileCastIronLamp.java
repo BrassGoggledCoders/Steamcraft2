@@ -15,9 +15,7 @@ package steamcraft.common.tiles;
 
 import net.minecraft.tileentity.TileEntity;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class TileCastIronLamp.
  *
  * @author Surseance (Johnny Eatmon)
  */

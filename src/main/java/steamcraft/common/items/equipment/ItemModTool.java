@@ -73,7 +73,7 @@ public class ItemModTool extends BaseItem
 		{
 			if(blocksEffectiveAgainst[i] == block)
 			{
-				if(this.toolMaterial == MaterialHelper.STEAM_TOOL)
+				if(this.toolMaterial == MaterialHelper.TOOL_STEAM)
 				{
 					return (efficiencyOnProperMaterial - (((float) stack.getItemDamage()) * 11 / 320));
 				}
@@ -117,7 +117,7 @@ public class ItemModTool extends BaseItem
 	@Override
 	public boolean onBlockDestroyed(ItemStack stack, World p_150894_2_, Block p_150894_3_, int p_150894_4_, int p_150894_5_, int p_150894_6_, EntityLivingBase living)
 	{
-		if(toolMaterial == MaterialHelper.STEAM_TOOL)
+		if(toolMaterial == MaterialHelper.TOOL_STEAM)
 		{
 			System.out.println(efficiencyOnProperMaterial - (((float) stack.getItemDamage()) * 11 / 320));
 			//int itemDamage = stack.getItemDamage();
@@ -131,7 +131,7 @@ public class ItemModTool extends BaseItem
 	@Override
 	public void addInformation(ItemStack itemStack, EntityPlayer entityPlayer, List list, boolean bool)
 	{
-		if(toolMaterial==MaterialHelper.STEAM_TOOL)
+		if(toolMaterial==MaterialHelper.TOOL_STEAM)
 		{
 			//if(!ClientHelper.isShiftKeyDown())
 			//{
@@ -149,7 +149,7 @@ public class ItemModTool extends BaseItem
 	{
 		if(!world.isRemote)
 		{
-			if(toolMaterial==MaterialHelper.STEAM_TOOL)
+			if(toolMaterial==MaterialHelper.TOOL_STEAM)
 			{
 				if(player.inventory.hasItem(ConfigItems.itemCanisterSteam))
 				{

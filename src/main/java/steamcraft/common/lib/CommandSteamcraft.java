@@ -19,66 +19,47 @@ import java.util.List;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class CommandSteamcraft.
- *
+ * 
  * @author Surseance (Johnny Eatmon)
  */
 public class CommandSteamcraft extends CommandBase
 {
 
-	/** The aliases. */
-	private final List<String> aliases;
+	private List<String> aliases;
 
-	/**
-	 * Instantiates a new command steamcraft.
-	 */
 	public CommandSteamcraft()
 	{
-		aliases = new ArrayList<String>();
-		aliases.add("steamcraft");
-		aliases.add("sc");
+		this.aliases = new ArrayList<String>();
+		this.aliases.add("steamcraft");
+		this.aliases.add("sc");
 	}
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.command.CommandBase#canCommandSenderUseCommand(net.minecraft.command.ICommandSender)
-	 */
 	@Override
-	public boolean canCommandSenderUseCommand(final ICommandSender sender)
+	public boolean canCommandSenderUseCommand(ICommandSender sender)
 	{
 		return true;
 	}
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.command.ICommand#getCommandName()
-	 */
 	@Override
 	public String getCommandName()
 	{
 		return "sc2";
 	}
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.command.ICommand#getCommandUsage(net.minecraft.command.ICommandSender)
-	 */
 	@Override
-	public String getCommandUsage(final ICommandSender sender)
+	public String getCommandUsage(ICommandSender sender)
 	{
 		return "/sc2 <parameters>";
 	}
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.command.ICommand#processCommand(net.minecraft.command.ICommandSender, java.lang.String[])
-	 */
 	@Override
-	public void processCommand(final ICommandSender sender,
-			final String[] parameters)
+	public void processCommand(ICommandSender sender, String[] parameters)
 	{
 		/*
 		 * ChatMessageComponent chat = sender.(); String prefix =
 		 * EnumChatFormatting.GOLD + " [Steamcraft] ";
-		 *
+		 * 
 		 * if (parameters.length < 1) {
 		 * sender.addChatMessage(chat.appendText(prefix +
 		 * EnumChatFormatting.LIGHT_PURPLE + "Welcome to Steamcraft 2!")); }
@@ -93,7 +74,7 @@ public class CommandSteamcraft extends CommandBase
 		 * EnumChatFormatting.LIGHT_PURPLE + "-- the running mod version" +
 		 * EnumChatFormatting.GOLD + "/sc2 update" +
 		 * EnumChatFormatting.LIGHT_PURPLE + "-- checks for latest version"));
-		 *
+		 * 
 		 * } else if (parameters[0].equalsIgnoreCase("version")) {
 		 * sender.addChatMessage(chat.appendText(prefix +
 		 * EnumChatFormatting.LIGHT_PURPLE + "Steamcraft 2 v" + LibInfo.VERSION
@@ -115,24 +96,14 @@ public class CommandSteamcraft extends CommandBase
 		 */
 	}
 
-	/**
-	 *  Is an SC2 developer the one sending a command?.
-	 *
-	 * @param username the username
-	 * @return true, if is developer
-	 */
 	@SuppressWarnings("unused")
-	private boolean isDeveloper(final String username)
+	private boolean isSC2Developer(String username)
 	{
-		return (username.equals("Surseance") || (username
-				.equals("decebaldecebal") || (username.equals("warlordjones"))));
+		return (username.equals("Surseance") || (username.equals("decebaldecebal") || (username.equals("warlordjones"))));
 	}
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.command.CommandBase#compareTo(java.lang.Object)
-	 */
 	@Override
-	public int compareTo(final Object arg0)
+	public int compareTo(Object arg0)
 	{
 		return 0;
 	}

@@ -29,7 +29,7 @@ public class ItemModPickaxe extends ItemModTool
 	@Override
 	public float getDigSpeed(ItemStack stack, Block block, int metadata)
     {
-		if(this.toolMaterial == MaterialHelper.STEAM_TOOL)
+		if(this.toolMaterial == MaterialHelper.TOOL_STEAM)
 		{
 			return (4.0F - (((float) stack.getItemDamage()) * 11 / 320));
 		}

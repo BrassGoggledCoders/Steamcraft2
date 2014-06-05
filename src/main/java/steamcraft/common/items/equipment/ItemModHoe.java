@@ -43,7 +43,7 @@ public class ItemModHoe extends ItemModTool
 			{
 				world.setBlock(i, j, k, block);
 
-				if(this.toolMaterial == MaterialHelper.STEAM_TOOL)
+				if(this.toolMaterial == MaterialHelper.TOOL_STEAM)
 				{
 					stack.damageItem(1 + Math.round(stack.getItemDamage() * 5 / 320), player);
 					return true;
@@ -64,7 +64,7 @@ public class ItemModHoe extends ItemModTool
 	{
 		if(!world.isRemote)
 		{
-			if(toolMaterial==MaterialHelper.STEAM_TOOL)
+			if(toolMaterial==MaterialHelper.TOOL_STEAM)
 			{
 				if(player.inventory.hasItem(ConfigItems.itemCanisterSteam))
 				{

@@ -35,63 +35,45 @@ import steamcraft.common.config.ConfigItems;
 import cpw.mods.fml.common.eventhandler.EventPriority;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class EventHandlerDrawHighlight.
- *
+ * 
  * @author Surseance (Johnny Eatmon)
  */
 public class EventHandlerDrawHighlight
 {
-
-	/** The block. */
 	Block block;
 
-	/** The z. */
 	int x, y, z;
 
-	/**
-	 * Render overlay.
-	 *
-	 * @param event the event
-	 */
 	@SubscribeEvent(priority = EventPriority.HIGH)
-	public void renderOverlay(final RenderGameOverlayEvent.Text event)
+	public void renderOverlay(RenderGameOverlayEvent.Text event)
 	{
-		final Minecraft mc = Minecraft.getMinecraft();
-		final ScaledResolution res = new ScaledResolution(mc.gameSettings,
-				mc.displayWidth, mc.displayHeight);
-		final FontRenderer fontRenderer = mc.fontRenderer;
+		Minecraft mc = Minecraft.getMinecraft();
+		ScaledResolution res = new ScaledResolution(mc.gameSettings, mc.displayWidth, mc.displayHeight);
+		FontRenderer fontRenderer = mc.fontRenderer;
 		res.getScaledWidth();
 		res.getScaledHeight();
 		mc.entityRenderer.setupOverlayRendering();
-		final String text = "Name: ";// + this.mopBlock.getLocalizedName();
-		final int posX = 5;
-		final int posY = 5;
-		final int posY2 = 15;
-		final int color = 0xCCFF00;
+		String text = "Name: ";// + this.mopBlock.getLocalizedName();
+		int posX = 5;
+		int posY = 5;
+		int posY2 = 15;
+		int color = 0xCCFF00;
 		fontRenderer.drawString(text, posX, posY, color);
-		fontRenderer.drawString("Block: " + block.getUnlocalizedName(), posX,
-				posY2, color);
+		fontRenderer.drawString("Block: " + this.block.getUnlocalizedName(), posX, posY2, color);
 	}
 
-	/**
-	 * On draw block selection box.
-	 *
-	 * @param event the event
-	 */
 	@SubscribeEvent
-	public void onDrawBlockSelectionBox(final DrawBlockHighlightEvent event)
+	public void onDrawBlockSelectionBox(DrawBlockHighlightEvent event)
 	{
 		if ((event.player.inventory.armorItemInSlot(3) != null)
 				&& (event.player.inventory.armorItemInSlot(3).getItem() == ConfigItems.itemBrassGoggles))
 		{
-			drawSelectionBox(event.player, event.target, 0, event.currentItem,
-					event.partialTicks);
+			this.drawSelectionBox(event.player, event.target, 0, event.currentItem, event.partialTicks);
 			event.setCanceled(true);
 		}
 
-		final Minecraft mc = Minecraft.getMinecraft();
+		Minecraft mc = Minecraft.getMinecraft();
 		GL13.glActiveTexture(GL13.GL_TEXTURE1);
 		GL13.glActiveTexture(GL13.GL_TEXTURE2);
 		GL13.glActiveTexture(GL13.GL_TEXTURE0);
@@ -114,22 +96,24 @@ public class EventHandlerDrawHighlight
 		GL11.glVertex3f(1.0F, 1.0F, -1F);
 		GL11.glEnd();
 
-		block = event.player.worldObj.getBlock(event.target.blockX,
-				event.target.blockY, event.target.blockZ);
+		this.block = event.player.worldObj.getBlock(event.target.blockX, event.target.blockY, event.target.blockZ);
 	}
 
 	/**
 	 * Draw selection box.
-	 *
-	 * @param player the player
-	 * @param mop the mop
-	 * @param i the i
-	 * @param is the is
-	 * @param partialTicks the partial ticks
+	 * 
+	 * @param player
+	 *            the player
+	 * @param mop
+	 *            the mop
+	 * @param i
+	 *            the i
+	 * @param is
+	 *            the is
+	 * @param partialTicks
+	 *            the partial ticks
 	 */
-	private void drawSelectionBox(final EntityPlayer player,
-			final MovingObjectPosition mop, final int i, final ItemStack is,
-			final float partialTicks)
+	private void drawSelectionBox(EntityPlayer player, MovingObjectPosition mop, int i, ItemStack is, float partialTicks)
 	{
 		if ((i == 0) && (mop.typeOfHit == MovingObjectType.BLOCK))
 		{
@@ -139,25 +123,17 @@ public class EventHandlerDrawHighlight
 			GL11.glLineWidth(3.5F);
 			GL11.glDisable(GL11.GL_TEXTURE_2D);
 			GL11.glDepthMask(false);
-			final float offset = 0.002F;
-			final Block block = player.worldObj.getBlock(mop.blockX,
-					mop.blockY, mop.blockZ);
+			float offset = 0.002F;
+			Block block = player.worldObj.getBlock(mop.blockX, mop.blockY, mop.blockZ);
 
 			if (block != Blocks.air)
 			{
-				block.setBlockBoundsBasedOnState(player.worldObj, mop.blockX,
-						mop.blockY, mop.blockZ);
-				final double dx = player.lastTickPosX
-						+ (player.posX - player.lastTickPosX) * partialTicks;
-				final double dy = player.lastTickPosY
-						+ (player.posY - player.lastTickPosY) * partialTicks;
-				final double dz = player.lastTickPosZ
-						+ (player.posZ - player.lastTickPosZ) * partialTicks;
-				drawOutlinedBoundingBox(block
-						.getSelectedBoundingBoxFromPool(player.worldObj,
-								mop.blockX, mop.blockY, mop.blockZ)
-						.expand(offset, offset, offset)
-						.getOffsetBoundingBox(-dx, -dy, -dz));
+				block.setBlockBoundsBasedOnState(player.worldObj, mop.blockX, mop.blockY, mop.blockZ);
+				double dx = player.lastTickPosX + ((player.posX - player.lastTickPosX) * partialTicks);
+				double dy = player.lastTickPosY + ((player.posY - player.lastTickPosY) * partialTicks);
+				double dz = player.lastTickPosZ + ((player.posZ - player.lastTickPosZ) * partialTicks);
+				this.drawOutlinedBoundingBox(block.getSelectedBoundingBoxFromPool(player.worldObj, mop.blockX, mop.blockY, mop.blockZ)
+						.expand(offset, offset, offset).getOffsetBoundingBox(-dx, -dy, -dz));
 			}
 
 			GL11.glDepthMask(true);
@@ -173,20 +149,16 @@ public class EventHandlerDrawHighlight
 			GL11.glLineWidth(3.5F);
 			GL11.glDisable(GL11.GL_TEXTURE_2D);
 			GL11.glDepthMask(false);
-			final float offset = 0.002F;
-			final Entity entity = mop.entityHit;
+			float offset = 0.002F;
+			Entity entity = mop.entityHit;
 
 			if (entity != null)
 			{
 				entity.setPosition(entity.posX, entity.posY, entity.posZ);
-				final double dx = player.lastTickPosX
-						+ (player.posX - player.lastTickPosX) * partialTicks;
-				final double dy = player.lastTickPosY
-						+ (player.posY - player.lastTickPosY) * partialTicks;
-				final double dz = player.lastTickPosZ
-						+ (player.posZ - player.lastTickPosZ) * partialTicks;
-				drawOutlinedBoundingBox(entity.boundingBox.expand(offset,
-						offset, offset).getOffsetBoundingBox(-dx, -dy, -dz));
+				double dx = player.lastTickPosX + ((player.posX - player.lastTickPosX) * partialTicks);
+				double dy = player.lastTickPosY + ((player.posY - player.lastTickPosY) * partialTicks);
+				double dz = player.lastTickPosZ + ((player.posZ - player.lastTickPosZ) * partialTicks);
+				this.drawOutlinedBoundingBox(entity.boundingBox.expand(offset, offset, offset).getOffsetBoundingBox(-dx, -dy, -dz));
 			}
 
 			GL11.glDepthMask(true);
@@ -197,12 +169,13 @@ public class EventHandlerDrawHighlight
 
 	/**
 	 * Draw outlined bounding box.
-	 *
-	 * @param aaBB the aa bb
+	 * 
+	 * @param aaBB
+	 *            the aa bb
 	 */
-	private void drawOutlinedBoundingBox(final AxisAlignedBB aaBB)
+	private void drawOutlinedBoundingBox(AxisAlignedBB aaBB)
 	{
-		final Tessellator tessellator = Tessellator.instance;
+		Tessellator tessellator = Tessellator.instance;
 		tessellator.startDrawing(3);
 		tessellator.addVertex(aaBB.minX, aaBB.minY, aaBB.minZ);
 		tessellator.addVertex(aaBB.maxX, aaBB.minY, aaBB.minZ);

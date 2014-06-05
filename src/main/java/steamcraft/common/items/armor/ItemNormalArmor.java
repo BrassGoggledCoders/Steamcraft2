@@ -71,7 +71,7 @@ public class ItemNormalArmor extends ItemArmor
 	public String getArmorTexture( ItemStack is,  Entity entity,
 			 int slot,  String type)
 	{
-		if (material == MaterialHelper.ETHERIUM_ARMOR)
+		if (material == MaterialHelper.ARMOR_ETHERIUM)
 		{
 			return slot == 2 ? LibInfo.PREFIX + "textures/armor/etherium_2.png"
 					: LibInfo.PREFIX + "textures/armor/etherium_1.png";

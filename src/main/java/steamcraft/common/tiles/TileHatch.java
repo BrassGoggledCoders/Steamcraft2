@@ -16,7 +16,6 @@ package steamcraft.common.tiles;
 import net.minecraft.tileentity.TileEntity;
 
 /**
- * The Class TileHatch.
  *
  * @author warlordjones
  */

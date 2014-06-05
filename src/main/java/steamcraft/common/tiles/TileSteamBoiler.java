@@ -35,8 +35,8 @@ import steamcraft.common.blocks.machine.BlockSteamBoiler;
  */
 public class TileSteamBoiler extends TileEntityMachine implements IFluidHandler
 {
-	private static int steamPerTick = 20; // how much steam it produces per tick
-	private static int waterPerTick = 30; // how much water it uses per tick
+	private static final int steamPerTick = 20; // how much steam it produces per tick
+	private static final int waterPerTick = 30; // how much water it uses per tick
 	
 	public int furnaceBurnTime = 0;
 	public int currentItemBurnTime = 0;
@@ -129,8 +129,8 @@ public class TileSteamBoiler extends TileEntityMachine implements IFluidHandler
 			 * this.steamTank.drain(ItemCanister.setSteam(inventory[2],
 			 * this.steamTank.getFluidAmount()), true);
 			 */
-			if ((this.getItemBurnTime() > 0) && (this.furnaceBurnTime == 0) && (this.waterTank.getFluidAmount() >= this.waterPerTick)
-					&& (this.steamTank.fill(new FluidStack(FluidRegistry.getFluid("steam"), this.steamPerTick), false) > 0))
+			if ((this.getItemBurnTime() > 0) && (this.furnaceBurnTime == 0) && (this.waterTank.getFluidAmount() >= waterPerTick)
+					&& (this.steamTank.fill(new FluidStack(FluidRegistry.getFluid("steam"), steamPerTick), false) > 0))
 			{
 				this.currentItemBurnTime = this.furnaceBurnTime = this.getItemBurnTime() / 4;
 
@@ -144,11 +144,11 @@ public class TileSteamBoiler extends TileEntityMachine implements IFluidHandler
 				}
 			}
 
-			if ((this.furnaceBurnTime > 0) && (this.waterTank.getFluidAmount() >= this.waterPerTick) && (this.steamTank.getFluidAmount() <= 10000))
+			if ((this.furnaceBurnTime > 0) && (this.waterTank.getFluidAmount() >= waterPerTick) && (this.steamTank.getFluidAmount() <= 10000))
 			{
-				this.steamTank.fill(new FluidStack(FluidRegistry.getFluid("steam"), this.steamPerTick), true);
+				this.steamTank.fill(new FluidStack(FluidRegistry.getFluid("steam"), steamPerTick), true);
 				this.furnaceBurnTime--;
-				this.waterTank.drain(this.waterPerTick, true);
+				this.waterTank.drain(waterPerTick, true);
 			}
 			else
 			{

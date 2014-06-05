@@ -22,7 +22,6 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IExtendedEntityProperties;
 import steamcraft.common.container.InventoryVanity;
-import steamcraft.common.lib.network.PacketHandler;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -118,7 +117,7 @@ public class EntityPlayerExtended implements IExtendedEntityProperties // TODO:
 				baOutputStream);
 		try
 		{
-			dOutputStream.writeInt(PacketHandler.PACKET_EXTENDED_PROPERTIES);
+			//dOutputStream.writeInt(PacketHandler.PACKET_EXTENDED_PROPERTIES);
 		} catch (final Exception ex)
 		{
 			ex.printStackTrace();

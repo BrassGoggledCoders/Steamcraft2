@@ -19,36 +19,26 @@ import java.io.IOException;
 
 import net.minecraft.entity.player.EntityPlayerMP;
 
-// TODO: Auto-generated Javadoc
 /**
  * A class to send GUI info to a server player through a packet.
+ * (likely needs to be updated for to the new Netty system)
  * 
  * @author Surseance (Johnny Eatmon)
  * 
  */
 public class NetworkUtil
 {
-	
-	/**
-	 * Send gui info.
-	 *
-	 * @param player the player
-	 * @param windowID the window id
-	 * @param type the type
-	 * @param value the value
-	 */
-	public static void sendGuiInfo(final EntityPlayerMP player,
-			final int windowID, final int type, final int value)
+	public static void sendGuiInfo(EntityPlayerMP player, int windowID, int type, int value)
 	{
-		final ByteArrayOutputStream byteStream = new ByteArrayOutputStream();
-		final DataOutputStream dataStream = new DataOutputStream(byteStream);
+		ByteArrayOutputStream byteStream = new ByteArrayOutputStream();
+		DataOutputStream dataStream = new DataOutputStream(byteStream);
 		try
 		{
 			dataStream.writeInt(40);
 			dataStream.writeByte(windowID);
 			dataStream.writeShort(type);
 			dataStream.writeInt(value);
-		} catch (final IOException e)
+		} catch (IOException e)
 		{
 			e.printStackTrace();
 		}

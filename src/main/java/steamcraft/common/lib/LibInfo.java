@@ -13,7 +13,6 @@
  */
 package steamcraft.common.lib;
 
-// TODO: Auto-generated Javadoc
 /**
  * A neat, tidy class for holding various bits of mod information.
  * 

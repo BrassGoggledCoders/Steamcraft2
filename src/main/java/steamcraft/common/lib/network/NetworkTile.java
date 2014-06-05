@@ -22,9 +22,8 @@ import net.minecraft.network.Packet;
 import net.minecraft.tileentity.TileEntity;
 import boilerplate.common.utils.PlayerUtils;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class NetworkTile.
+ * (likely needs to be updated for to the new Netty system)
  *
  * @author Surseance (Johnny Eatmon)
  */
@@ -49,7 +48,7 @@ public abstract class NetworkTile extends TileEntity
 	 *
 	 * @param markedForResend the new marked for resend
 	 */
-	public void setMarkedForResend(final boolean markedForResend)
+	public void setMarkedForResend(boolean markedForResend)
 	{
 		this.markedForResend = markedForResend;
 	}
@@ -59,7 +58,7 @@ public abstract class NetworkTile extends TileEntity
 	 */
 	public void sendPacket()
 	{
-		final Packet packet = getDescriptionPacket();
+		Packet packet = getDescriptionPacket();
 		// packet.isChunkDataPacket = false;
 		PlayerUtils.sendToPlayers(packet, worldObj, xCoord, yCoord, zCoord, null);
 	}
@@ -70,8 +69,8 @@ public abstract class NetworkTile extends TileEntity
 	@Override
 	public Packet getDescriptionPacket()
 	{
-		final ByteArrayOutputStream byteStream = new ByteArrayOutputStream();
-		final DataOutputStream dataStream = new DataOutputStream(byteStream);
+		ByteArrayOutputStream byteStream = new ByteArrayOutputStream();
+		DataOutputStream dataStream = new DataOutputStream(byteStream);
 
 		try
 		{
@@ -82,7 +81,7 @@ public abstract class NetworkTile extends TileEntity
 			dataStream.writeInt(zCoord);
 
 			writePacket(dataStream);
-		} catch (final IOException e)
+		} catch (IOException e)
 		{
 			e.printStackTrace();
 		}
