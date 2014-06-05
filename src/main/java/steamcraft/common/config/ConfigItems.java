@@ -14,7 +14,6 @@
 package steamcraft.common.config;
 
 import net.minecraft.item.Item;
-import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemArmor;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.items.BaseItem;
@@ -41,7 +40,6 @@ import steamcraft.common.items.equipment.ItemModSword;
 import steamcraft.common.items.equipment.ItemSteamDrill;
 import steamcraft.common.lib.LibInfo;
 import steamcraft.common.lib.MaterialHelper;
-import boilerplate.common.RegistryHelper;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 // TODO: Auto-generated Javadoc
@@ -261,10 +259,10 @@ public class ConfigItems
 		 */
 
 		//Armor
-		itemHelmetBrass = new ItemBrassArmor(MaterialHelper.STEAM_ARMOR, 0, 0).setUnlocalizedName("itemHelmetBrass");
-		itemChestplateBrass = new ItemBrassArmor(MaterialHelper.STEAM_ARMOR, 0, 0).setUnlocalizedName("itemChestplateBrass");
-		itemLegsBrass = new ItemBrassArmor(MaterialHelper.STEAM_ARMOR, 0, 0).setUnlocalizedName("itemLegsBrass");
-		itemBootsBrass = new ItemBrassArmor(MaterialHelper.STEAM_ARMOR, 0, 0).setUnlocalizedName("itemBootsBrass");
+		itemHelmetBrass = new ItemBrassArmor(MaterialHelper.ARMOR_STEAM, 0, 0).setUnlocalizedName("itemHelmetBrass");
+		itemChestplateBrass = new ItemBrassArmor(MaterialHelper.ARMOR_STEAM, 0, 0).setUnlocalizedName("itemChestplateBrass");
+		itemLegsBrass = new ItemBrassArmor(MaterialHelper.ARMOR_STEAM, 0, 0).setUnlocalizedName("itemLegsBrass");
+		itemBootsBrass = new ItemBrassArmor(MaterialHelper.ARMOR_STEAM, 0, 0).setUnlocalizedName("itemBootsBrass");
 		// Canisters
 		itemCanisterEmpty = new Item().setUnlocalizedName("itemCanisterEmpty");
 		itemCanisterSteam = new ItemCanister(Config.itemCanisterSteamId,
@@ -285,14 +283,14 @@ public class ConfigItems
 		drillCore = new ItemCoreDrill().setUnlocalizedName("itemDrillCore");
 		drillBase = new BaseItem().setUnlocalizedName("itemDrillBase");
 		// int id, int maxEnergy, int toolTier, int energyTier(mostly for IC2)
-		drillWood = new ItemDrill(ToolMaterial.WOOD.getHarvestLevel()).setUnlocalizedName("itemDrillWood").setCreativeTab(Steamcraft.tabSC2);
-		drillStone = new ItemDrill(ToolMaterial.STONE.getHarvestLevel()).setUnlocalizedName("itemDrillStone");
-		drillIron = new ItemDrill(ToolMaterial.IRON.getHarvestLevel()).setUnlocalizedName("itemDrillIron");
-		drillDiamond = new ItemDrill(ToolMaterial.EMERALD.getHarvestLevel()).setUnlocalizedName("itemDrillDiamond");
-		drillGold = new ItemDrill(ToolMaterial.GOLD.getHarvestLevel()).setUnlocalizedName("itemDrillGold");
-		drillSteam = new ItemSteamDrill().setUnlocalizedName("itemDrillSteam");
-		drillEtherium = new ItemDrill(MaterialHelper.TOOL_ETHERIUM.getHarvestLevel()).setUnlocalizedName("itemDrillEtherium");
-		drillObsidian = new ItemDrill(MaterialHelper.TOOL_OBSIDIAN.getHarvestLevel()).setUnlocalizedName("itemDrillObsidian");
+		drillWood = new ItemDrill(MaterialHelper.DRILL_WOOD).setUnlocalizedName("itemDrillWood").setCreativeTab(Steamcraft.tabSC2);
+		drillStone = new ItemDrill(MaterialHelper.DRILL_STONE).setUnlocalizedName("itemDrillStone");
+		drillIron = new ItemDrill(MaterialHelper.DRILL_IRON).setUnlocalizedName("itemDrillIron");
+		drillDiamond = new ItemDrill(MaterialHelper.DRILL_EMERALD).setUnlocalizedName("itemDrillDiamond");
+		drillGold = new ItemDrill(MaterialHelper.DRILL_GOLD).setUnlocalizedName("itemDrillGold");
+		drillSteam = new ItemSteamDrill(MaterialHelper.DRILL_STEAM).setUnlocalizedName("itemDrillSteam");
+		drillEtherium = new ItemDrill(MaterialHelper.DRILL_ETHERIUM).setUnlocalizedName("itemDrillEtherium");
+		drillObsidian = new ItemDrill(MaterialHelper.DRILL_OBSIDIAN).setUnlocalizedName("itemDrillObsidian");
 
 		pickaxeSteam = new ItemModPickaxe(MaterialHelper.TOOL_STEAM).setUnlocalizedName("itemPickaxeSteam");
 		swordSteam = new ItemModSword(MaterialHelper.TOOL_STEAM).setUnlocalizedName("itemSwordSteam");

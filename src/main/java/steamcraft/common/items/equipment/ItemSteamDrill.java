@@ -14,7 +14,6 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import steamcraft.client.ClientHelper;
-import steamcraft.common.Steamcraft;
 import steamcraft.common.config.ConfigItems;
 import steamcraft.common.lib.LibInfo;
 import boilerplate.common.utils.PlayerUtils;
@@ -24,15 +23,12 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class ItemSteamDrill extends ItemDrill
 {
 	private Random random = new Random();
-	public static final Block[] blocksEffectiveAgainst = new Block[] { Blocks.cobblestone, Blocks.dirt, Blocks.stone, Blocks.sand, Blocks.clay,
+	public static Block[] blocksEffectiveAgainst = new Block[] { Blocks.cobblestone, Blocks.dirt, Blocks.stone, Blocks.sand, Blocks.clay,
 			Blocks.ice, Blocks.snow, Blocks.netherrack, Blocks.grass };
-	protected ToolMaterial toolMaterial;
 
-	public ItemSteamDrill()
+	public ItemSteamDrill(ToolMaterial mat)
 	{
-		super(ToolMaterial.EMERALD.getHarvestLevel());
-		this.setMaxDamage(321);
-		this.setCreativeTab(Steamcraft.tabSC2);
+		super(mat);
 	}
 
 	@SuppressWarnings("all")
