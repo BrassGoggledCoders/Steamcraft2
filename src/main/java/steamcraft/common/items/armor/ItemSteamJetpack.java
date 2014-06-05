@@ -31,7 +31,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 public class ItemSteamJetpack extends ItemBrassArmor
 {
-	private static final int steamPerTick = 10; // how much steam is uses per tick
+	private static final int steamPerTick = 5; // how much steam is uses per tick
 
 	public ItemSteamJetpack(ArmorMaterial mat, int renderIndex, int armorType)
 	{
@@ -44,62 +44,68 @@ public class ItemSteamJetpack extends ItemBrassArmor
 	{
 		if (!player.capabilities.allowFlying)
 		{
-			int i = 0;
-			while (i < 36)
+			if ((Minecraft.getMinecraft().currentScreen == null)
+					&& Keyboard.isKeyDown(Minecraft.getMinecraft().gameSettings.keyBindJump.getKeyCode())
+					&& canConsumeSteamFromCanister(player))
 			{
-				ItemStack[] mainInv = player.inventory.mainInventory;
-				if ((mainInv[i] != null) && (mainInv[i].getItem() == ConfigItems.itemCanisterSteam))
+				
+				if (player.motionY > 0.0D)
 				{
-					ItemCanister canister =  (ItemCanister)mainInv[i].getItem();
-					
-					if ((Minecraft.getMinecraft().currentScreen == null)
-							&& Keyboard.isKeyDown(Minecraft.getMinecraft().gameSettings.keyBindJump.getKeyCode()))
-					{
-						if (player.motionY > 0.0D)
-						{
-							player.motionY += 0.08499999910593033D;
-						}
-						else
-						{
-							player.motionY += 0.11699999910593033D;
-						}
-						
-					
-						
-						if (!canister.isEmpty(mainInv[i]))
-						{
-							canister.addAmount(mainInv[i], -steamPerTick);
-						}
-						else
-						{
-							mainInv[i] = new ItemStack(ConfigItems.itemCanisterEmpty);
-						}
-
-						world.spawnParticle("smoke", player.posX, player.posY - 0.25D, player.posZ, 0.0D, 0.0D, 0.0D);
-
-						break;
-					}
-
-					if ((player.motionY < 0.0D) && !player.isSneaking())
-					{
-						player.motionY /= 1.149999976158142D;
-					}
-
-					if (!player.onGround)
-					{
-						player.motionX *= 1.0399999618530273D;
-						player.motionZ *= 1.0399999618530273D;
-					}
-
-					if (player.fallDistance > 0)
-					{
-						canister.addAmount(mainInv[i], -(int) (player.fallDistance / Math.PI));
-						player.fallDistance = 0;
-					}
+					player.motionY += 0.08499999910593033D;
 				}
-				i++;
+				else
+				{
+					player.motionY += 0.11699999910593033D;
+				}
+				
+				world.spawnParticle("smoke", player.posX, player.posY - 0.25D, player.posZ, 0.0D, 0.0D, 0.0D);
+
 			}
+
+			if ((player.motionY < 0.0D) && !player.isSneaking())
+			{
+				player.motionY /= 1.149999976158142D;
+			}
+
+			if (!player.onGround)
+			{
+				player.motionX *= 1.0399999618530273D;
+				player.motionZ *= 1.0399999618530273D;
+			}
+
+			if (player.fallDistance > 0 && canConsumeSteamFromCanister(player))
+					player.fallDistance = 0;
 		}
+	}
+	
+	private boolean canConsumeSteamFromCanister(EntityPlayer player)
+	{
+		int i = 0;
+		while (i < 36)
+		{
+			ItemStack[] mainInv = player.inventory.mainInventory;
+			if ((mainInv[i] != null) && (mainInv[i].getItem() == ConfigItems.itemCanisterSteam))
+			{
+				ItemCanister canister =  (ItemCanister)mainInv[i].getItem();
+				
+				if (!canister.isEmpty(mainInv[i]))
+				{
+					canister.addAmount(mainInv[i], -steamPerTick);
+					
+					return true;
+				}
+				else
+				{
+					mainInv[i] = new ItemStack(ConfigItems.itemCanisterEmpty);
+					
+					return false;
+				}
+			}
+			
+			i++;
+		}
+		
+		return false;
 	}
 
 	/*
