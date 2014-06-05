@@ -13,10 +13,14 @@
  */
 package steamcraft.client.gui;
 
+import javax.swing.Icon;
+
+import net.minecraft.block.Block;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.FluidRegistry;
@@ -70,10 +74,10 @@ public class GuiSteamBoiler extends GuiContainer
 		}
 
 		this.drawFluid(new FluidStack(FluidRegistry.getFluid("water"), 0), this.tile.getScaledWaterLevel(60), var5 + 8, var6 + 18, 20, 60);
-		//this.drawFluid(new FluidStack(FluidRegistry.getFluid("steam"), 0), this.tile.getScaledSteamLevel(60), var5 + 74, var6 + 18, 32, 60);
+		this.drawFluid(new FluidStack(FluidRegistry.getFluid("steam"), 0), this.tile.getScaledSteamLevel(60), var5 + 74, var6 + 18, 32, 60);
 
 		this.mc.renderEngine.bindTexture(guitexture);
-		this.drawTexturedModalRect(var5 + 8, var6 + 26, 176, 14, 20, 49);
+		this.drawTexturedModalRect(var5 + 8, var6 + 24, 176, 14, 20, 49);
 		this.drawTexturedModalRect(var5 + 74, var6 + 24, 176, 14, 20, 49);
 	}
 
@@ -84,7 +88,7 @@ public class GuiSteamBoiler extends GuiContainer
 			return;
 		}
 
-		IIcon icon = fluid.getFluid().getIcon(fluid);
+		IIcon icon = fluid.getFluid().getBlock().getIcon(0, 0);
 		this.mc.renderEngine.bindTexture(TextureMap.locationBlocksTexture);
 		RenderUtils.setGLColorFromInt(fluid.getFluid().getColor(fluid));
 		int fullX = width / 16;

@@ -53,14 +53,14 @@ public class TileSteamBoiler extends TileEntityMachine implements IFluidHandler
 	}
 
 	@Override
-	public void readFromNBT(NBTTagCompound par1NBTTagCompound)
+	public void readFromNBT(NBTTagCompound tag)
 	{
-		super.readFromNBT(par1NBTTagCompound);
+		super.readFromNBT(tag);
 
-		this.furnaceBurnTime = par1NBTTagCompound.getShort("BurnTime");
-		this.currentItemBurnTime = par1NBTTagCompound.getShort("ItemTime");
-		this.steamTank.setFluid(new FluidStack(FluidRegistry.getFluid("steam"), par1NBTTagCompound.getShort("steamLevel")));
-		this.waterTank.setFluid(new FluidStack(FluidRegistry.getFluid("water"), par1NBTTagCompound.getShort("waterLevel")));
+		this.furnaceBurnTime = tag.getShort("BurnTime");
+		this.currentItemBurnTime = tag.getShort("ItemTime");
+		this.steamTank.setFluid(new FluidStack(FluidRegistry.getFluid("steam"), tag.getShort("steamLevel")));
+		this.waterTank.setFluid(new FluidStack(FluidRegistry.getFluid("water"), tag.getShort("waterLevel")));
 	}
 
 	@Override

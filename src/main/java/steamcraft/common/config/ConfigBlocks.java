@@ -153,9 +153,13 @@ public class ConfigBlocks
 		blockBrassLog = new BlockBrassLog(Material.wood);
 		blockBrassLeaves = new BlockBrassLeaves(Material.iron);
 
-		Fluid steamFluid = new Fluid("steam").setGaseous(true).setTemperature(700).setDensity(-100).setViscosity(500).setLuminosity(1);
-		FluidRegistry.registerFluid(steamFluid);
-		blockFluidSteam = new BlockFluidSteam(steamFluid, Material.water);
+		steamFluid = new Fluid("steam").setGaseous(true).setTemperature(700).setDensity(-100).setViscosity(500).setLuminosity(1)
+				.setUnlocalizedName("steamFluid");
+		
+		if (!FluidRegistry.registerFluid(steamFluid))
+			steamFluid = FluidRegistry.getFluid("steam");
+		
+		blockFluidSteam = new BlockFluidSteam(steamFluid, Material.water).setBlockName("steamFluid");
 	}
 
 	/**
@@ -179,6 +183,7 @@ public class ConfigBlocks
 		RegistryHelper.registerContainerBlock(blockSteamBoiler, TileSteamBoiler.class, "BlockSteamBoiler");
 		RegistryHelper.registerContainerBlock(blockDropHammer, TileDropHammer.class, "BlockDropHammer");
 		GameRegistry.registerBlock(blockMetal, BlockMetalItem.class, "BlockMetal");
+		
 		GameRegistry.registerBlock(blockFluidSteam, "blockFluidSteam");
 		//RegistryHelper.registerContainerBlock(blockHatch, TileHatch.class, "BlockHatch");
 	}
