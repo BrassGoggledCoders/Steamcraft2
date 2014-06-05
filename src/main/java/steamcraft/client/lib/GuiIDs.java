@@ -13,33 +13,26 @@
  */
 package steamcraft.client.lib;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class GuiIDs.
  */
 public final class GuiIDs
 {
 	/** The Constant GUI_ID_NUKE_OVEN. */
-	public static final int GUI_ID_NUKE_OVEN = 5;// SC2_CommonProxy.cfgHandler.loadGui("GUI_ID_NukeOven");
+	public static final int GUI_ID_NUKE_OVEN = 0;
 
 	/** The Constant GUI_ID_CHEM_OVEN. */
-	public static final int GUI_ID_CHEM_OVEN = 6;// SC2_CommonProxy.cfgHandler.loadGui("GUI_ID_ChemicalOven");
+	public static final int GUI_ID_CHEM_OVEN = 1;
 
 	/** The Constant GUI_ID_STEAM_OVEN. */
-	public static final int GUI_ID_STEAM_OVEN = 7;// SC2_CommonProxy.cfgHandler.loadGui("GUI_ID_SteamOven");
-
-	/** The Constant GUI_ID_COMPRESSOR. */
-	public static final int GUI_ID_COMPRESSOR = 8;
-
-	/** The Constant GUI_ID_COAL_GENERATOR. */
-	public static final int GUI_ID_COAL_GENERATOR = 9;
+	public static final int GUI_ID_STEAM_BOILER = 2;
 
 	/** The Constant GUI_ID_GUIDE_BOOK. */
-	public static final int GUI_ID_GUIDE_BOOK = 10;
+	public static final int GUI_ID_GUIDE_BOOK = 3;
 
 	/** The Constant GUI_ID_DROP_HAMMER. */
-	public static final int GUI_ID_DROP_HAMMER = 11;
+	public static final int GUI_ID_DROP_HAMMER = 4;
 
 	/** The Constant GUI_ID_VANITY. */
-	public static final int GUI_ID_VANITY = 12;
+	public static final int GUI_ID_VANITY = 5;
 }

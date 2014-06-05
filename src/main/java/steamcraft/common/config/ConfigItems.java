@@ -350,10 +350,10 @@ public class ConfigItems
 		GameRegistry.registerItem(drillSteam, "ItemDrillSteam", LibInfo.ID);
 		GameRegistry.registerItem(drillEtherium, "ItemDrillEtherium", LibInfo.ID);
 		GameRegistry.registerItem(drillObsidian, "ItemDrillObsidian", LibInfo.ID);
-		RegistryHelper.registerToolSet(itemAxeEtherium, itemHoeEtherium, itemPickaxeEtherium, itemShovelEtherium, itemSwordEtherium, "Etherium", LibInfo.ID);
-		RegistryHelper.registerToolSet(itemAxeObsidian, itemHoeObsidian, itemPickaxeObsidian, itemShovelObsidian, itemSwordObsidian, "Obsidian", LibInfo.ID);
-		RegistryHelper.registerArmorSet(itemHelmetBrass, itemChestplateBrass, itemLegsBrass, itemBootsBrass, "Brass", LibInfo.ID);
-		RegistryHelper.registerArmorSet(itemObsidianHelmet, itemChestplateObsidian, itemLegsObsidian, itemBootsObsidian, "Obsidian", LibInfo.ID);
-		RegistryHelper.registerArmorSet(itemHelmetEtherium, itemChestplateEtherium, itemLegsEtherium, itemBootsEtherium, "Etherium", LibInfo.ID);
+		//RegistryHelper.registerToolSet(itemAxeEtherium, itemHoeEtherium, itemPickaxeEtherium, itemShovelEtherium, itemSwordEtherium, "Etherium", LibInfo.ID);
+		//RegistryHelper.registerToolSet(itemAxeObsidian, itemHoeObsidian, itemPickaxeObsidian, itemShovelObsidian, itemSwordObsidian, "Obsidian", LibInfo.ID);
+		//RegistryHelper.registerArmorSet(itemHelmetBrass, itemChestplateBrass, itemLegsBrass, itemBootsBrass, "Brass", LibInfo.ID);
+		//RegistryHelper.registerArmorSet(itemObsidianHelmet, itemChestplateObsidian, itemLegsObsidian, itemBootsObsidian, "Obsidian", LibInfo.ID);
+		//RegistryHelper.registerArmorSet(itemHelmetEtherium, itemChestplateEtherium, itemLegsEtherium, itemBootsEtherium, "Etherium", LibInfo.ID);
 	}
 }
