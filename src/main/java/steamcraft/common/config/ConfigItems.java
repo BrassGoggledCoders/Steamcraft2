@@ -30,6 +30,7 @@ import steamcraft.common.items.ItemTeaSeed;
 import steamcraft.common.items.ItemWatch;
 import steamcraft.common.items.armor.ItemBrassArmor;
 import steamcraft.common.items.armor.ItemNormalArmor;
+import steamcraft.common.items.armor.ItemSteamJetpack;
 import steamcraft.common.items.equipment.ItemCoreDrill;
 import steamcraft.common.items.equipment.ItemDrill;
 import steamcraft.common.items.equipment.ItemModAxe;
@@ -226,11 +227,6 @@ public class ConfigItems
 		 * MaterialHelper.STEAM_ARMOR, 0,
 		 * 3).setUnlocalizedName("itemRollerSkates");
 		 * GameRegistry.registerItem(itemRollerSkates, "ItemRollerSkates",
-		 * LibInfo.ID); itemSteamJetpack = new
-		 * ItemSteamJetpack(Config.itemSteamJetpackId,
-		 * MaterialHelper.STEAM_ARMOR, 0,
-		 * 1).setUnlocalizedName("itemSteamJetpack");
-		 * GameRegistry.registerItem(itemSteamJetpack, "ItemSteamJetpack",
 		 * LibInfo.ID);
 		 *
 		 *
@@ -263,6 +259,10 @@ public class ConfigItems
 		itemChestplateBrass = new ItemBrassArmor(MaterialHelper.ARMOR_STEAM, 0, 0).setUnlocalizedName("itemChestplateBrass");
 		itemLegsBrass = new ItemBrassArmor(MaterialHelper.ARMOR_STEAM, 0, 0).setUnlocalizedName("itemLegsBrass");
 		itemBootsBrass = new ItemBrassArmor(MaterialHelper.ARMOR_STEAM, 0, 0).setUnlocalizedName("itemBootsBrass");
+		
+		itemSteamJetpack = new ItemSteamJetpack(MaterialHelper.ARMOR_STEAM, 0, 1).setUnlocalizedName("itemSteamJetpack");
+		GameRegistry.registerItem(itemSteamJetpack, "ItemSteamJetpack", LibInfo.ID);
+		
 		// Canisters
 		itemCanisterEmpty = new Item().setUnlocalizedName("itemCanisterEmpty");
 		itemCanisterSteam = new ItemCanister(Config.itemCanisterSteamId,

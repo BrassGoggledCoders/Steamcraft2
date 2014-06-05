@@ -31,29 +31,27 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 public class ItemSteamJetpack extends ItemBrassArmor
 {
-	private static final int steamPerTick = 10; // how much steam is uses per tick
+	private static int steamPerTick = 10; // how much steam is uses per tick
 
-	public ItemSteamJetpack(int id, ArmorMaterial mat, int renderIndex, int armorType)
+	public ItemSteamJetpack(ArmorMaterial mat, int renderIndex, int armorType)
 	{
 		super(mat, renderIndex, armorType);
 	}
 
-	//This is a very inefficient function...
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void onArmorTick(World world, EntityPlayer player, ItemStack is)
 	{
-		if (!player.capabilities.allowFlying)
+		int i = 0;
+		while (i < 36)
 		{
-			if ((Minecraft.getMinecraft().currentScreen == null) 
-					&& Keyboard.isKeyDown(Minecraft.getMinecraft().gameSettings.keyBindJump.getKeyCode()))
+			ItemStack[] mainInv = player.inventory.mainInventory;
+			if ((mainInv[i] != null) && (mainInv[i].getItem() == ConfigItems.itemCanisterSteam))
 			{
-				int i = 0;
-				
-				while (i < 36)
+				if (!player.capabilities.allowFlying)
 				{
-					ItemStack[] mainInv = player.inventory.mainInventory;
-					if ((mainInv[i] != null) && (mainInv[i].getItem() == ConfigItems.itemCanisterSteam))
+					if ((Minecraft.getMinecraft().currentScreen == null)
+							&& Keyboard.isKeyDown(Minecraft.getMinecraft().gameSettings.keyBindJump.getKeyCode()))
 					{
 						if (player.motionY > 0.0D)
 						{
@@ -77,7 +75,7 @@ public class ItemSteamJetpack extends ItemBrassArmor
 
 						break;
 					}
-		
+
 					if ((player.motionY < 0.0D) && !player.isSneaking())
 					{
 						player.motionY /= 1.149999976158142D;
@@ -94,10 +92,9 @@ public class ItemSteamJetpack extends ItemBrassArmor
 						ItemCanister.addSteam(mainInv[i], -(int) (player.fallDistance / Math.PI));
 						player.fallDistance = 0;
 					}
-					
-					i++;
 				}
 			}
+			i++;
 		}
 	}
 
