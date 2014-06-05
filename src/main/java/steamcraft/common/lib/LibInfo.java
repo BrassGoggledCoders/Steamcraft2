@@ -24,7 +24,7 @@ public class LibInfo
 {
 	
 	/** The Constant ID. */
-	public static final String ID = "SC2";
+	public static final String ID = "steamcraft2"; //should be lowercase
 	
 	/** The Constant NAME. */
 	public static final String NAME = "Steamcraft 2";

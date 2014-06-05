@@ -52,7 +52,10 @@ public class GuiHandler implements IGuiHandler
 		 * ContainerCompressor(player.inventory, (TileEntityCompressor) tile);
 		 */
 			case GuiIDs.GUI_ID_STEAM_BOILER:
+			{
+				System.out.println("works2");
 				return new ContainerSteamBoiler(player.inventory, (TileSteamBoiler) tile);
+			}
 			case GuiIDs.GUI_ID_VANITY:
 				return new ContainerVanity(player, player.inventory, EntityPlayerExtended.get(player).inventory);
 		}
@@ -60,13 +63,6 @@ public class GuiHandler implements IGuiHandler
 		return null;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see cpw.mods.fml.common.network.IGuiHandler#getClientGuiElement(int,
-	 * net.minecraft.entity.player.EntityPlayer, net.minecraft.world.World, int,
-	 * int, int)
-	 */
 	@Override
 	public Object getClientGuiElement(final int id, final EntityPlayer player, final World world, final int x,
 			final int y, final int z)
@@ -93,7 +89,10 @@ public class GuiHandler implements IGuiHandler
 		 * player.inventory.getItemStack());
 		 */
 			case GuiIDs.GUI_ID_STEAM_BOILER:
+			{
+				System.out.println("works2.2");
 				return new GuiSteamBoiler(player.inventory, (TileSteamBoiler) tile);
+			}
 			case GuiIDs.GUI_ID_VANITY:
 				return new GuiVanity(player, player.inventory, EntityPlayerExtended.get(player).inventory);
 		}

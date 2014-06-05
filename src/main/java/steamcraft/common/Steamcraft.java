@@ -18,6 +18,7 @@ import java.util.logging.Level;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.MinecraftForge;
+import steamcraft.client.gui.GuiHandler;
 import steamcraft.common.config.Config;
 import steamcraft.common.config.ConfigBlocks;
 import steamcraft.common.config.ConfigEntities;
@@ -32,32 +33,33 @@ import steamcraft.common.lib.network.LoggerSteamcraft;
 import steamcraft.common.lib.world.SteamcraftWorldGenerator;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
+import cpw.mods.fml.common.Mod.EventHandler;
+import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.ModContainer;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
+import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import cpw.mods.fml.relauncher.Side;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class Steamcraft.
- *
+ * 
  * @author Surseance (Johnny Eatmon)
  */
 @Mod(modid = LibInfo.ID, name = LibInfo.NAME, version = LibInfo.VERSION, dependencies = "required-after:boilerplate")
 public class Steamcraft
 {
-
 	/** The proxy. */
 	@SidedProxy(clientSide = LibInfo.CLIENT_PROXY, serverSide = LibInfo.COMMON_PROXY)
 	public static CommonProxy proxy;
 
 	/** The instance. */
-	@Mod.Instance(LibInfo.NAME)
+	@Instance(LibInfo.ID)
 	public static Steamcraft instance;
 
 	/** The world gen. */
@@ -75,26 +77,19 @@ public class Steamcraft
 	/** The tab s c2. */
 	public static CreativeTabs tabSC2 = new CreativeTabSteamcraft(CreativeTabs.getNextID(), "steamcraft");
 
-	/**
-	 * Pre init.
-	 *
-	 * @param event the event
-	 */
-	@Mod.EventHandler
-	public void preInit(final FMLPreInitializationEvent event)
+	@EventHandler
+	public void PreInit(FMLPreInitializationEvent event)
 	{
 		event.getModMetadata().version = LibInfo.VERSION;
-		directory = event.getModConfigurationDirectory();
+		this.directory = event.getModConfigurationDirectory();
 
-		LanguageRegistry.instance().getStringLocalization(
-				"itemGroup.steamcraft", "en_US");
+		LanguageRegistry.instance().getStringLocalization("itemGroup.steamcraft", "en_US");
 		try
 		{
 			Config.initialize(event.getSuggestedConfigurationFile());
 		} catch (final Exception e)
 		{
-			LoggerSteamcraft.log(Level.SEVERE,
-					"Failed to load configuration file!");
+			LoggerSteamcraft.log(Level.SEVERE, "Failed to load configuration file!");
 		} finally
 		{
 			if (Config.config != null)
@@ -102,16 +97,15 @@ public class Steamcraft
 				Config.save();
 			}
 		}
-		drawEventHandler = new EventHandlerDrawHighlight();
-		sc2EventHandler = new EventHandlerSC2();
+		this.drawEventHandler = new EventHandlerDrawHighlight();
+		this.sc2EventHandler = new EventHandlerSC2();
 
 		// MinecraftForge.EVENT_BUS.register(this.worldEventHandler);
-		MinecraftForge.EVENT_BUS.register(sc2EventHandler);
+		MinecraftForge.EVENT_BUS.register(this.sc2EventHandler);
 
 		// GameRegistry.registerFuelHandler(this.worldEventHandler);
 		// GameRegistry.registerCraftingHandler(this.worldEventHandler);
-		GameRegistry.registerWorldGenerator(
-				worldGen = new SteamcraftWorldGenerator(), 0);
+		GameRegistry.registerWorldGenerator(this.worldGen = new SteamcraftWorldGenerator(), 0);
 
 		Config.save();
 		ConfigBlocks.init();
@@ -120,15 +114,17 @@ public class Steamcraft
 		proxy.registerDisplayInformation();
 		proxy.registerRenderers();
 
+		NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
 	}
 
 	/**
 	 * Inits the.
-	 *
-	 * @param event the event
+	 * 
+	 * @param event
+	 *            the event
 	 */
-	@Mod.EventHandler
-	public void init(final FMLInitializationEvent event)
+	@EventHandler
+	public void init(FMLInitializationEvent event)
 	{
 		Config.registerBiomes();
 		ConfigEntities.init();
@@ -138,13 +134,8 @@ public class Steamcraft
 		// GuiHandler());
 	}
 
-	/**
-	 * Post init.
-	 *
-	 * @param event the event
-	 */
-	@Mod.EventHandler
-	public void postInit(final FMLPostInitializationEvent event)
+	@EventHandler
+	public void postInit(FMLPostInitializationEvent event)
 	{
 		CompatabilityLayer.init();
 		// Dosn't work! >> BiomeDictionary.registerAllBiomes();
@@ -154,16 +145,16 @@ public class Steamcraft
 		ConfigRecipes.init();
 		Config.initLoot();
 		// LoggerSteamcraft.log(Level.INFO, "SC2 is " + event.getModState());
-		final ModContainer container = FMLCommonHandler.instance()
-				.findContainerFor(this);
+		final ModContainer container = FMLCommonHandler.instance().findContainerFor(this);
 		LanguageRegistry.instance().loadLanguagesFor(container, Side.CLIENT);
 
 	}
 
 	/**
 	 * Server starting.
-	 *
-	 * @param event the event
+	 * 
+	 * @param event
+	 *            the event
 	 */
 	@Mod.EventHandler
 	public void serverStarting(final FMLServerStartingEvent event)

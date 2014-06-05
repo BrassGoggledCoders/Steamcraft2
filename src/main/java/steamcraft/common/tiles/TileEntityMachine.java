@@ -24,16 +24,13 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 
-// TODO: Auto-generated Javadoc
 /**
- * Basic machine class that includes a lot of functions widely used.
- *
+ * Basic machine class.Every machine should extend this
+ * 
  * @author Decebaldecebal
  */
-public class TileEntityMachine extends TileEntity implements ISidedInventory
+public abstract class TileEntityMachine extends TileEntity implements ISidedInventory
 {
-	
-	/** The inventory. */
 	protected ItemStack[] inventory;
 
 	public TileEntityMachine(byte invSize)
@@ -42,91 +39,78 @@ public class TileEntityMachine extends TileEntity implements ISidedInventory
 	}
 
 	@Override
-	public void readFromNBT(final NBTTagCompound par1NBTTagCompound)
+	public void readFromNBT(NBTTagCompound tag)
 	{
-		super.readFromNBT(par1NBTTagCompound);
-		final NBTTagList nbttaglist = (NBTTagList) par1NBTTagCompound
-				.getTag("Items");
-		inventory = new ItemStack[getSizeInventory()];
+		super.readFromNBT(tag);
+		
+		NBTTagList nbttaglist = (NBTTagList) tag.getTag("Items");
+		this.inventory = new ItemStack[this.getSizeInventory()];
 
 		for (int i = 0; i < nbttaglist.tagCount(); ++i)
 		{
-			final NBTTagCompound nbttagcompound1 = nbttaglist
-					.getCompoundTagAt(i);
-			final byte b0 = nbttagcompound1.getByte("Slot");
+			NBTTagCompound nbttagcompound1 = nbttaglist.getCompoundTagAt(i);
+			byte b0 = nbttagcompound1.getByte("Slot");
 
-			if (b0 >= 0 && b0 < inventory.length)
+			if ((b0 >= 0) && (b0 < this.inventory.length))
 			{
-				inventory[b0] = ItemStack.loadItemStackFromNBT(nbttagcompound1);
+				this.inventory[b0] = ItemStack.loadItemStackFromNBT(nbttagcompound1);
 			}
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.tileentity.TileEntity#writeToNBT(net.minecraft.nbt.NBTTagCompound)
-	 */
 	@Override
-	public void writeToNBT(final NBTTagCompound par1NBTTagCompound)
+	public void writeToNBT(NBTTagCompound tag)
 	{
-		super.writeToNBT(par1NBTTagCompound);
+		super.writeToNBT(tag);
 
-		final NBTTagList nbttaglist = new NBTTagList();
+		NBTTagList nbttaglist = new NBTTagList();
 
-		for (int i = 0; i < inventory.length; ++i)
+		for (int i = 0; i < this.inventory.length; ++i)
 		{
-			if (inventory[i] != null)
+			if (this.inventory[i] != null)
 			{
-				final NBTTagCompound nbttagcompound1 = new NBTTagCompound();
+				NBTTagCompound nbttagcompound1 = new NBTTagCompound();
 				nbttagcompound1.setByte("Slot", (byte) i);
-				inventory[i].writeToNBT(nbttagcompound1);
+				this.inventory[i].writeToNBT(nbttagcompound1);
 				nbttaglist.appendTag(nbttagcompound1);
 			}
 		}
 
-		par1NBTTagCompound.setTag("Items", nbttaglist);
+		tag.setTag("Items", nbttaglist);
 	}
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.inventory.IInventory#getSizeInventory()
-	 */
 	@Override
 	public int getSizeInventory()
 	{
-		return inventory.length;
+		return this.inventory.length;
 	}
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.inventory.IInventory#getStackInSlot(int)
-	 */
 	@Override
-	public ItemStack getStackInSlot(final int par1)
+	public ItemStack getStackInSlot(int par1)
 	{
-		return inventory[par1];
+		return this.inventory[par1];
 	}
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.inventory.IInventory#decrStackSize(int, int)
-	 */
 	@Override
-	public ItemStack decrStackSize(final int par1, final int par2)
+	public ItemStack decrStackSize(int par1, int par2)
 	{
-		if (inventory[par1] != null)
+		if (this.inventory[par1] != null)
 		{
 			ItemStack var3;
 
-			if (inventory[par1].stackSize <= par2)
+			if (this.inventory[par1].stackSize <= par2)
 			{
-				var3 = inventory[par1];
-				inventory[par1] = null;
+				var3 = this.inventory[par1];
+				this.inventory[par1] = null;
 				return var3;
 			}
 			else
 			{
-				var3 = inventory[par1].splitStack(par2);
+				var3 = this.inventory[par1].splitStack(par2);
 
-				if (inventory[par1].stackSize == 0)
+				if (this.inventory[par1].stackSize == 0)
 				{
-					inventory[par1] = null;
+					this.inventory[par1] = null;
 				}
 
 				return var3;
@@ -138,16 +122,13 @@ public class TileEntityMachine extends TileEntity implements ISidedInventory
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.inventory.IInventory#getStackInSlotOnClosing(int)
-	 */
 	@Override
-	public ItemStack getStackInSlotOnClosing(final int par1)
+	public ItemStack getStackInSlotOnClosing(int par1)
 	{
-		if (inventory[par1] != null)
+		if (this.inventory[par1] != null)
 		{
-			final ItemStack var2 = inventory[par1];
-			inventory[par1] = null;
+			ItemStack var2 = this.inventory[par1];
+			this.inventory[par1] = null;
 			return var2;
 		}
 		else
@@ -156,109 +137,71 @@ public class TileEntityMachine extends TileEntity implements ISidedInventory
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.inventory.IInventory#setInventorySlotContents(int, net.minecraft.item.ItemStack)
-	 */
 	@Override
-	public void setInventorySlotContents(final int par1,
-			final ItemStack par2ItemStack)
+	public void setInventorySlotContents(int par1, ItemStack par2ItemStack)
 	{
-		inventory[par1] = par2ItemStack;
+		this.inventory[par1] = par2ItemStack;
 
-		if (par2ItemStack != null
-				&& par2ItemStack.stackSize > getInventoryStackLimit())
+		if ((par2ItemStack != null) && (par2ItemStack.stackSize > this.getInventoryStackLimit()))
 		{
-			par2ItemStack.stackSize = getInventoryStackLimit();
+			par2ItemStack.stackSize = this.getInventoryStackLimit();
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.inventory.IInventory#getInventoryStackLimit()
-	 */
 	@Override
 	public int getInventoryStackLimit()
 	{
 		return 64;
 	}
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.inventory.IInventory#isUseableByPlayer(net.minecraft.entity.player.EntityPlayer)
-	 */
 	@Override
-	public boolean isUseableByPlayer(final EntityPlayer player)
+	public boolean isUseableByPlayer(EntityPlayer player)
 	{
-		return worldObj.getTileEntity(xCoord, yCoord, zCoord) != this ? false
-				: player.getDistanceSq(xCoord + 0.5D, yCoord + 0.5D,
-						zCoord + 0.5D) <= 64.0D;
+		return this.worldObj.getTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false : player.getDistanceSq(this.xCoord + 0.5D,
+				this.yCoord + 0.5D, this.zCoord + 0.5D) <= 64.0D;
 	}
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.inventory.IInventory#isItemValidForSlot(int, net.minecraft.item.ItemStack)
-	 */
 	@Override
-	public boolean isItemValidForSlot(final int i, final ItemStack itemstack)
+	public boolean isItemValidForSlot(int i, ItemStack itemstack)
 	{
 		return false;
 	}
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.inventory.ISidedInventory#getAccessibleSlotsFromSide(int)
-	 */
 	@Override
-	public int[] getAccessibleSlotsFromSide(final int var1)
+	public int[] getAccessibleSlotsFromSide(int var1)
 	{
 		return null;
 	}
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.inventory.ISidedInventory#canInsertItem(int, net.minecraft.item.ItemStack, int)
-	 */
 	@Override
-	public boolean canInsertItem(final int i, final ItemStack itemstack,
-			final int j)
+	public boolean canInsertItem(int i, ItemStack itemstack, int j)
 	{
 		return false;
 	}
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.inventory.ISidedInventory#canExtractItem(int, net.minecraft.item.ItemStack, int)
-	 */
 	@Override
-	public boolean canExtractItem(final int i, final ItemStack itemstack,
-			final int j)
+	public boolean canExtractItem(int i, ItemStack itemstack, int j)
 	{
 		return false;
 	}
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.inventory.IInventory#closeInventory()
-	 */
 	@Override
 	public void closeInventory()
 	{
 	}
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.inventory.IInventory#getInventoryName()
-	 */
 	@Override
 	public String getInventoryName()
 	{
-		return getInventoryName();
+		return this.getInventoryName();
 	}
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.inventory.IInventory#hasCustomInventoryName()
-	 */
 	@Override
 	public boolean hasCustomInventoryName()
 	{
 		return true;
 	}
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.inventory.IInventory#openInventory()
-	 */
 	@Override
 	public void openInventory()
 	{

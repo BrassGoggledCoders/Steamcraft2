@@ -120,6 +120,7 @@ public class TileSteamBoiler extends TileEntityMachine implements IFluidHandler
 					}
 				}
 			}
+			
 			// TODO: Readd this functionality
 			/*
 			 * if(inventory[2] != null && inventory[2].getItem() ==
