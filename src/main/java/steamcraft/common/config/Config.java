@@ -35,16 +35,6 @@ public class Config
 	/** The Constant CATEGORY_GEN_OPTIONS. */
 	public static final String CATEGORY_GEN_OPTIONS = "generation options";
 
-	// Canisters
-	/** The item canister empty id. */
-	public static int itemCanisterEmptyId;
-	
-	/** The item canister steam id. */
-	public static int itemCanisterSteamId;
-	
-	/** The item canister gas id. */
-	public static int itemCanisterGasId;
-
 	// Entities
 	/** The ent bullet id. */
 	public static int entBulletId;

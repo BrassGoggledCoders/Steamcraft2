@@ -31,7 +31,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 public class ItemSteamJetpack extends ItemBrassArmor
 {
-	private static int steamPerTick = 10; // how much steam is uses per tick
+	private static final int steamPerTick = 10; // how much steam is uses per tick
 
 	public ItemSteamJetpack(ArmorMaterial mat, int renderIndex, int armorType)
 	{
@@ -42,14 +42,16 @@ public class ItemSteamJetpack extends ItemBrassArmor
 	@SideOnly(Side.CLIENT)
 	public void onArmorTick(World world, EntityPlayer player, ItemStack is)
 	{
-		int i = 0;
-		while (i < 36)
+		if (!player.capabilities.allowFlying)
 		{
-			ItemStack[] mainInv = player.inventory.mainInventory;
-			if ((mainInv[i] != null) && (mainInv[i].getItem() == ConfigItems.itemCanisterSteam))
+			int i = 0;
+			while (i < 36)
 			{
-				if (!player.capabilities.allowFlying)
+				ItemStack[] mainInv = player.inventory.mainInventory;
+				if ((mainInv[i] != null) && (mainInv[i].getItem() == ConfigItems.itemCanisterSteam))
 				{
+					ItemCanister canister =  (ItemCanister)mainInv[i].getItem();
+					
 					if ((Minecraft.getMinecraft().currentScreen == null)
 							&& Keyboard.isKeyDown(Minecraft.getMinecraft().gameSettings.keyBindJump.getKeyCode()))
 					{
@@ -61,14 +63,16 @@ public class ItemSteamJetpack extends ItemBrassArmor
 						{
 							player.motionY += 0.11699999910593033D;
 						}
-
-						if (!ItemCanister.isEmptySteam(mainInv[i]))
+						
+					
+						
+						if (!canister.isEmpty(mainInv[i]))
 						{
-							ItemCanister.addSteam(mainInv[i], -steamPerTick);
+							canister.addAmount(mainInv[i], -steamPerTick);
 						}
 						else
 						{
-							mainInv[i] = new ItemStack(ConfigItems.itemCanisterSteam);
+							mainInv[i] = new ItemStack(ConfigItems.itemCanisterEmpty);
 						}
 
 						world.spawnParticle("smoke", player.posX, player.posY - 0.25D, player.posZ, 0.0D, 0.0D, 0.0D);
@@ -89,12 +93,12 @@ public class ItemSteamJetpack extends ItemBrassArmor
 
 					if (player.fallDistance > 0)
 					{
-						ItemCanister.addSteam(mainInv[i], -(int) (player.fallDistance / Math.PI));
+						canister.addAmount(mainInv[i], -(int) (player.fallDistance / Math.PI));
 						player.fallDistance = 0;
 					}
 				}
+				i++;
 			}
-			i++;
 		}
 	}
 
