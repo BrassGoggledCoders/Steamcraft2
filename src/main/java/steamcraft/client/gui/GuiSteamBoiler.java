@@ -24,6 +24,7 @@ import net.minecraftforge.fluids.FluidStack;
 
 import org.lwjgl.opengl.GL11;
 
+import steamcraft.client.util.RenderUtils;
 import steamcraft.common.lib.LibInfo;
 import steamcraft.common.tiles.TileSteamBoiler;
 import steamcraft.common.tiles.container.ContainerSteamBoiler;
@@ -95,11 +96,6 @@ public class GuiSteamBoiler extends GuiContainer
 		drawTexturedModalRect(var5 + 8, var6 + 26, 176, 14, 20, 49);
 		drawTexturedModalRect(var5 + 74, var6 + 24, 176, 14, 20, 49);
 	}
-
-	/*
-	 * 
-	 * Code from BC IDK what any of it does :)
-	 */
 	/**
 	 * Draw fluid.
 	 *
@@ -110,80 +106,45 @@ public class GuiSteamBoiler extends GuiContainer
 	 * @param width the width
 	 * @param height the height
 	 */
-	private void drawFluid(final FluidStack fluid, final int level,
-			final int x, final int y, final int width, final int height)
-	{
-		if (fluid == null || fluid.getFluid() == null)
-		{
+	private void drawFluid(FluidStack fluid, int level, int x, int y, int width, int height) {
+		if (fluid == null || fluid.getFluid() == null) {
 			return;
 		}
-
-		final IIcon icon = null; // TODO: FIX THIS
-		// IIcon icon = ((Fluid) fluid).getBlock().getIcon(0, 0); //Had to do
-		// this another way because our steam fluid's icon doesn't appear to
-		// register
+		
+		IIcon icon = fluid.getFluid().getIcon(fluid);
 		mc.renderEngine.bindTexture(TextureMap.locationBlocksTexture);
-		GuiSteamBoiler.setGLColorFromInt(fluid.getFluid().getColor(fluid));
-		final int fullX = width / 16;
-		final int fullY = height / 16;
-		final int lastX = width - fullX * 16;
-		final int lastY = height - fullY * 16;
-		final int fullLvl = (height - level) / 16;
-		final int lastLvl = (height - level) - fullLvl * 16;
-
-		for (int i = 0; i < fullX; i++)
-		{
-			for (int j = 0; j < fullY; j++)
-			{
-				if (j >= fullLvl)
-				{
-					drawCutIcon(icon, x + i * 16, y + j * 16, 16, 16,
-							j == fullLvl ? lastLvl : 0);
+		RenderUtils.setGLColorFromInt(fluid.getFluid().getColor(fluid));
+		int fullX = width / 16;
+		int fullY = height / 16;
+		int lastX = width - fullX * 16;
+		int lastY = height - fullY * 16;
+		int fullLvl = (height - level) / 16;
+		int lastLvl = (height - level) - fullLvl * 16;
+		for (int i = 0; i < fullX; i++) {
+			for (int j = 0; j < fullY; j++) {
+				if (j >= fullLvl) {
+					drawCutIcon(icon, x + i * 16, y + j * 16, 16, 16, j == fullLvl ? lastLvl : 0);
 				}
 			}
 		}
-		for (int i = 0; i < fullX; i++)
-		{
-			drawCutIcon(icon, x + i * 16, y + fullY * 16, 16, lastY,
-					fullLvl == fullY ? lastLvl : 0);
+		for (int i = 0; i < fullX; i++) {
+			drawCutIcon(icon, x + i * 16, y + fullY * 16, 16, lastY, fullLvl == fullY ? lastLvl : 0);
 		}
-		for (int i = 0; i < fullY; i++)
-		{
-			if (i >= fullLvl)
-			{
-				drawCutIcon(icon, x + fullX * 16, y + i * 16, lastX, 16,
-						i == fullLvl ? lastLvl : 0);
+		for (int i = 0; i < fullY; i++) {
+			if (i >= fullLvl) {
+				drawCutIcon(icon, x + fullX * 16, y + i * 16, lastX, 16, i == fullLvl ? lastLvl : 0);
 			}
 		}
-		drawCutIcon(icon, x + fullX * 16, y + fullY * 16, lastX, lastY,
-				fullLvl == fullY ? lastLvl : 0);
+		drawCutIcon(icon, x + fullX * 16, y + fullY * 16, lastX, lastY, fullLvl == fullY ? lastLvl : 0);
 	}
 
-	// For some weird reason, our version of steam has NULL icons, so the
-	// GUISteamBoiler function drawCutIcon will crash
-	/**
-	 * Draw cut icon.
-	 *
-	 * @param icon the icon
-	 * @param x the x
-	 * @param y the y
-	 * @param width the width
-	 * @param height the height
-	 * @param cut the cut
-	 */
-	private void drawCutIcon(final IIcon icon, final int x, final int y,
-			final int width, final int height, final int cut)
-	{
-		final Tessellator tess = Tessellator.instance;
+	private void drawCutIcon(IIcon icon, int x, int y, int width, int height, int cut) {
+		Tessellator tess = Tessellator.instance;
 		tess.startDrawingQuads();
-		tess.addVertexWithUV(x, y + height, zLevel, icon.getMinU(),
-				icon.getInterpolatedV(height));
-		tess.addVertexWithUV(x + width, y + height, zLevel,
-				icon.getInterpolatedU(width), icon.getInterpolatedV(height));
-		tess.addVertexWithUV(x + width, y + cut, zLevel,
-				icon.getInterpolatedU(width), icon.getInterpolatedV(cut));
-		tess.addVertexWithUV(x, y + cut, zLevel, icon.getMinU(),
-				icon.getInterpolatedV(cut));
+		tess.addVertexWithUV(x, y + height, zLevel, icon.getMinU(), icon.getInterpolatedV(height));
+		tess.addVertexWithUV(x + width, y + height, zLevel, icon.getInterpolatedU(width), icon.getInterpolatedV(height));
+		tess.addVertexWithUV(x + width, y + cut, zLevel, icon.getInterpolatedU(width), icon.getInterpolatedV(cut));
+		tess.addVertexWithUV(x, y + cut, zLevel, icon.getMinU(), icon.getInterpolatedV(cut));
 		tess.draw();
 	}
 
