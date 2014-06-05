@@ -5,7 +5,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import steamcraft.common.config.ConfigItems;
 import steamcraft.common.lib.MaterialHelper;
 
 public class ItemModHoe extends ItemModTool
@@ -29,7 +28,6 @@ public class ItemModHoe extends ItemModTool
 		}
 
 		Block i1 = world.getBlock(i, j, k);
-		//Block j1 = world.getBlock(i, j + 1, k);
 
 		if(l != 0 && world.isAirBlock(i, j, k) && i1 == Blocks.grass || i1 == Blocks.dirt)
 		{
@@ -66,24 +64,12 @@ public class ItemModHoe extends ItemModTool
 		{
 			if(toolMaterial==MaterialHelper.TOOL_STEAM)
 			{
-				if(player.inventory.hasItem(ConfigItems.itemCanisterSteam))
+				int i = 0;
+
+				while(stack.getItemDamage()-repairAmount >= 0 && canConsumeSteamFromCanister(player))
 				{
-					int i = 0;
-
-					while(stack.getItemDamage() != 0 && i < 36)
-					{
-						if(player.inventory.mainInventory[i]!=null &&
-								player.inventory.mainInventory[i] == new ItemStack(ConfigItems.itemCanisterSteam))
-						{
-							while(player.inventory.mainInventory[i].getItemDamage() < ConfigItems.itemCanisterSteam.getMaxDamage() && stack.getItemDamage() > 0)
-							{
-								player.inventory.mainInventory[i].damageItem(1, player);
-								stack.setItemDamage(stack.getItemDamage() - 1);
-							}
-						}
-
-						i++;
-					}
+					stack.setItemDamage(stack.getItemDamage() - repairAmount);	
+					i++;
 				}
 			}
 		}

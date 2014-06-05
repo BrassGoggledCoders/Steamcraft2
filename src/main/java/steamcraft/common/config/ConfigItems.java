@@ -208,13 +208,8 @@ public class ConfigItems
 	public static void initializeItems()
 	{
 		/*
-		 * 
-		 * //Armor itemBrassGoggles = new ItemCustomArmor(Config.itemGogglesId,
-		 * MaterialHelper.STEAM_ARMOR, 0, 0).setUnlocalizedName("itemGoggles");
-		 * GameRegistry.registerItem(itemBrassGoggles, "ItemBrassGoggles",
-		 * LibInfo.ID); itemAqualung = new
-		 * ItemCustomArmor(Config.itemAqualungId, MaterialHelper.STEAM_ARMOR, 0,
-		 * 1).setUnlocalizedName("itemAqualung");
+		 * itemAqualung = new ItemCustomArmor(Config.itemAqualungId,
+		 * MaterialHelper.STEAM_ARMOR, 0, 1).setUnlocalizedName("itemAqualung");
 		 * GameRegistry.registerItem(itemAqualung, "ItemAqualung", LibInfo.ID);
 		 * itemLegBraces = new ItemCustomArmor(Config.itemLegBracesId,
 		 * MaterialHelper.STEAM_ARMOR, 0,
@@ -259,12 +254,12 @@ public class ConfigItems
 		itemBootsBrass = new ItemBrassArmor(MaterialHelper.ARMOR_STEAM, 0, 0).setUnlocalizedName("itemBootsBrass");
 
 		itemSteamJetpack = new ItemSteamJetpack(MaterialHelper.ARMOR_STEAM, 0, 1).setUnlocalizedName("itemSteamJetpack");
-		GameRegistry.registerItem(itemSteamJetpack, "ItemSteamJetpack", LibInfo.ID);
 
 		// Canisters
 		itemCanisterEmpty = new Item().setUnlocalizedName("itemCanisterEmpty");
 		itemCanisterSteam = new ItemCanister("steam", 150000, 20).setUnlocalizedName("itemCanisterSteam");
 		itemCanisterGas = new ItemCanister("compressedgas", 150000, 20).setUnlocalizedName("itemCanisterGas");
+
 		itemIngot = new ItemIngot();
 		itemMechanical = new ItemMechanical().setUnlocalizedName("ItemMechanical");
 		itemResource = new ItemResource().setUnlocalizedName("itemResource");
@@ -276,9 +271,9 @@ public class ConfigItems
 		itemPoppySeed = new Item().setUnlocalizedName("itemPoppySeed").setCreativeTab(Steamcraft.tabSC2);
 		itemRayGun = new ItemRayGun(LibInfo.PREFIX + "raygun");
 		itemShrinkray = new ItemShrinkray(LibInfo.PREFIX + "shrinkray");
+
 		drillCore = new ItemCoreDrill().setUnlocalizedName("itemDrillCore");
 		drillBase = new BaseItem().setUnlocalizedName("itemDrillBase");
-		// int id, int maxEnergy, int toolTier, int energyTier(mostly for IC2)
 		drillWood = new ItemDrill(MaterialHelper.DRILL_WOOD).setUnlocalizedName("itemDrillWood").setCreativeTab(Steamcraft.tabSC2);
 		drillStone = new ItemDrill(MaterialHelper.DRILL_STONE).setUnlocalizedName("itemDrillStone");
 		drillIron = new ItemDrill(MaterialHelper.DRILL_IRON).setUnlocalizedName("itemDrillIron");
@@ -324,6 +319,8 @@ public class ConfigItems
 		GameRegistry.registerItem(itemCanisterEmpty, "ItemCanisterEmpty", LibInfo.ID);
 		GameRegistry.registerItem(itemCanisterSteam, "ItemCanisterSteam", LibInfo.ID);
 		GameRegistry.registerItem(itemCanisterGas, "ItemCanisterGas", LibInfo.ID);
+
+		GameRegistry.registerItem(itemIngot, "ItemIngot", LibInfo.ID);
 		GameRegistry.registerItem(itemMechanical, "ItemMechanical", LibInfo.ID);
 		GameRegistry.registerItem(itemResource, "ItemResource", LibInfo.ID);
 		GameRegistry.registerItem(itemWatch, "ItemWatch", LibInfo.ID);
@@ -334,7 +331,8 @@ public class ConfigItems
 		GameRegistry.registerItem(itemRayGun, "ItemRayGun", LibInfo.ID);
 		GameRegistry.registerItem(itemShrinkray, "ItemShrinkray", LibInfo.ID);
 		GameRegistry.registerItem(itemBrassGoggles, "ItemBrassGoggles", LibInfo.ID);
-		GameRegistry.registerItem(itemIngot, "ItemIngot", LibInfo.ID);
+
+		// Drills
 		GameRegistry.registerItem(drillCore, "ItemDrillCore", LibInfo.ID);
 		GameRegistry.registerItem(drillBase, "ItemDrillBase", LibInfo.ID);
 		GameRegistry.registerItem(drillWood, "ItemDrillWood", LibInfo.ID);
@@ -345,6 +343,16 @@ public class ConfigItems
 		GameRegistry.registerItem(drillSteam, "ItemDrillSteam", LibInfo.ID);
 		GameRegistry.registerItem(drillEtherium, "ItemDrillEtherium", LibInfo.ID);
 		GameRegistry.registerItem(drillObsidian, "ItemDrillObsidian", LibInfo.ID);
+		
+		GameRegistry.registerItem(itemSteamJetpack, "ItemSteamJetpack", LibInfo.ID);
+		
+		//Tools
+		GameRegistry.registerItem(pickaxeSteam, "ItemPickAxeSteam", LibInfo.ID);
+		GameRegistry.registerItem(swordSteam, "ItemSwordSteam", LibInfo.ID);
+		GameRegistry.registerItem(shovelSteam, "ItemShovelSteam", LibInfo.ID);
+		GameRegistry.registerItem(axeSteam, "ItemAxeSteam", LibInfo.ID);
+		GameRegistry.registerItem(hoeSteam, "ItemHoeSteam", LibInfo.ID);
+
 		// RegistryHelper.registerToolSet(itemAxeEtherium, itemHoeEtherium,
 		// itemPickaxeEtherium, itemShovelEtherium, itemSwordEtherium,
 		// "Etherium", LibInfo.ID);

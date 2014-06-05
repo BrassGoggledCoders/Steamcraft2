@@ -14,6 +14,7 @@ import net.minecraft.world.World;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.config.ConfigItems;
 import steamcraft.common.items.BaseItem;
+import steamcraft.common.items.ItemCanister;
 import steamcraft.common.lib.LibInfo;
 import steamcraft.common.lib.MaterialHelper;
 
@@ -24,6 +25,9 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemModTool extends BaseItem
 {
+	public static final int steamForRepair = 10; //how much it costs in steam to repair the tool with the below durabillity
+	public static final int repairAmount = 15;
+	
 	protected static Block[] blocksEffectiveAgainst;
 	public float efficiencyOnProperMaterial = 4.0F;
 	public float damageVsEntity;
@@ -106,11 +110,13 @@ public class ItemModTool extends BaseItem
 	@Override
 	public boolean onBlockDestroyed(ItemStack stack, World p_150894_2_, Block p_150894_3_, int p_150894_4_, int p_150894_5_, int p_150894_6_, EntityLivingBase living)
 	{
+		/*
 		if(toolMaterial == MaterialHelper.TOOL_STEAM)
 		{
 			System.out.println(efficiencyOnProperMaterial - (((float) stack.getItemDamage()) * 11 / 320));
 			//int itemDamage = stack.getItemDamage();
 		}
+		*/
 
 		stack.damageItem(1, living);
 		return true;
@@ -140,27 +146,46 @@ public class ItemModTool extends BaseItem
 		{
 			if(toolMaterial==MaterialHelper.TOOL_STEAM)
 			{
-				if(player.inventory.hasItem(ConfigItems.itemCanisterSteam))
+				int i = 0;
+
+				while(stack.getItemDamage()-repairAmount >= 0 && canConsumeSteamFromCanister(player))
 				{
-					int i = 0;
-
-					while(stack.getItemDamage() != 0 && i < 36)
-					{
-						if(player.inventory.mainInventory[i]!=null && player.inventory.mainInventory[i] == new ItemStack(ConfigItems.itemCanisterSteam))
-						{
-							while(player.inventory.mainInventory[i].getItemDamage() < ConfigItems.itemCanisterSteam.getMaxDamage() && stack.getItemDamage() > 0)
-							{
-								player.inventory.mainInventory[i].damageItem(1, player);
-								stack.setItemDamage(stack.getItemDamage() - 1);
-							}
-						}
-
-						i++;
-					}
+					stack.setItemDamage(stack.getItemDamage() - repairAmount);	
+					i++;
 				}
 			}
 		}
 
 		return stack;
+	}
+	
+	protected boolean canConsumeSteamFromCanister(EntityPlayer player)
+	{
+		int i = 0;
+		while (i < 36)
+		{
+			ItemStack[] mainInv = player.inventory.mainInventory;
+			if ((mainInv[i] != null) && (mainInv[i].getItem() == ConfigItems.itemCanisterSteam))
+			{
+				ItemCanister canister =  (ItemCanister)mainInv[i].getItem();
+				
+				if (!canister.isEmpty(mainInv[i]))
+				{
+					canister.addAmount(mainInv[i], -steamForRepair);
+					
+					return true;
+				}
+				else
+				{
+					mainInv[i] = new ItemStack(ConfigItems.itemCanisterEmpty);
+					
+					return false;
+				}
+			}
+			
+			i++;
+		}
+		
+		return false;
 	}
 }
