@@ -21,7 +21,6 @@ public class ItemModSword extends ItemModTool
 
 	public ItemModSword(ToolMaterial toolMat)
 	{
-		//Fixed the damage on swords
 		super(5.0F, toolMat, blocksEffectiveAgainst);
 		this.toolMaterial = toolMat;
 		this.maxStackSize = 1;

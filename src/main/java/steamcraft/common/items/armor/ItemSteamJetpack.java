@@ -25,53 +25,35 @@ import steamcraft.common.items.ItemCanister;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class ItemSteamJetpack.
- *
+ * 
  * @author Decebaldecebal
  */
 public class ItemSteamJetpack extends ItemBrassArmor
 {
-	
-	/** The Constant steamPerTick. */
-	private static  int steamPerTick = 10; // how much steam is uses per
-												// tick
+	private static final int steamPerTick = 10; // how much steam is uses per tick
 
-	/**
-	 * Instantiates a new item steam jetpack.
-	 *
-	 * @param id the id
-	 * @param mat the mat
-	 * @param renderIndex the render index
-	 * @param armorType the armor type
-	 */
-	public ItemSteamJetpack( int id,  ArmorMaterial mat,  int renderIndex,  int armorType)
+	public ItemSteamJetpack(int id, ArmorMaterial mat, int renderIndex, int armorType)
 	{
 		super(mat, renderIndex, armorType);
 	}
 
-	/* (non-Javadoc)
-	 * @see steamcraft.common.items.armor.ItemCustomArmor#onArmorTick(net.minecraft.world.World, net.minecraft.entity.player.EntityPlayer, net.minecraft.item.ItemStack)
-	 */
+	//This is a very inefficient function...
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void onArmorTick( World world,  EntityPlayer player,
-			 ItemStack is)
+	public void onArmorTick(World world, EntityPlayer player, ItemStack is)
 	{
-		int i = 0;
-		while (i < 36)
+		if (!player.capabilities.allowFlying)
 		{
-			 ItemStack[] mainInv = player.inventory.mainInventory;
-			if (mainInv[i] != null
-					&& mainInv[i].getItem() == ConfigItems.itemCanisterSteam)
+			if ((Minecraft.getMinecraft().currentScreen == null) 
+					&& Keyboard.isKeyDown(Minecraft.getMinecraft().gameSettings.keyBindJump.getKeyCode()))
 			{
-				if (!player.capabilities.allowFlying)
+				int i = 0;
+				
+				while (i < 36)
 				{
-					if (Minecraft.getMinecraft().currentScreen == null
-							&& Keyboard
-									.isKeyDown(Minecraft.getMinecraft().gameSettings.keyBindJump
-											.getKeyCode()))
+					ItemStack[] mainInv = player.inventory.mainInventory;
+					if ((mainInv[i] != null) && (mainInv[i].getItem() == ConfigItems.itemCanisterSteam))
 					{
 						if (player.motionY > 0.0D)
 						{
@@ -88,18 +70,15 @@ public class ItemSteamJetpack extends ItemBrassArmor
 						}
 						else
 						{
-							mainInv[i] = new ItemStack(
-									ConfigItems.itemCanisterSteam);
+							mainInv[i] = new ItemStack(ConfigItems.itemCanisterSteam);
 						}
 
-						world.spawnParticle("smoke", player.posX,
-								player.posY - 0.25D, player.posZ, 0.0D, 0.0D,
-								0.0D);
+						world.spawnParticle("smoke", player.posX, player.posY - 0.25D, player.posZ, 0.0D, 0.0D, 0.0D);
 
 						break;
 					}
-
-					if (player.motionY < 0.0D && !player.isSneaking())
+		
+					if ((player.motionY < 0.0D) && !player.isSneaking())
 					{
 						player.motionY /= 1.149999976158142D;
 					}
@@ -112,13 +91,13 @@ public class ItemSteamJetpack extends ItemBrassArmor
 
 					if (player.fallDistance > 0)
 					{
-						ItemCanister.addSteam(mainInv[i],
-								-(int) (player.fallDistance / Math.PI));
+						ItemCanister.addSteam(mainInv[i], -(int) (player.fallDistance / Math.PI));
 						player.fallDistance = 0;
 					}
+					
+					i++;
 				}
 			}
-			i++;
 		}
 	}
 

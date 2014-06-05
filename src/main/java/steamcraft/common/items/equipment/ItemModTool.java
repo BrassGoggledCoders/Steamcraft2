@@ -9,7 +9,6 @@ import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
-import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import steamcraft.common.Steamcraft;
@@ -40,23 +39,13 @@ public class ItemModTool extends BaseItem
 		this.maxStackSize = 1;
 		this.setMaxDamage(toolMat.getMaxUses());
 		this.efficiencyOnProperMaterial = toolMat.getEfficiencyOnProperMaterial();
-
-		/*
-		 * This makes the damage of steam tools negative
-		 *
-		if(this.toolMaterial == SC2_Material.STEAM_TOOL)
-		{
-			damageVsEntity = damage - (int) Math.round(this.getMaxDamage() * 5 / 320);
-		}
-		 */
-
 		this.damageVsEntity = damage + toolMat.getDamageVsEntity();
 	}
     @SideOnly(Side.CLIENT)
     @Override
     public void registerIcons(IIconRegister par1IconRegister)
     {
-            itemIcon = par1IconRegister.registerIcon(LibInfo.PREFIX + "tools/" + this.getUnlocalizedName().substring(5));
+        itemIcon = par1IconRegister.registerIcon(LibInfo.PREFIX + "tools/" + this.getUnlocalizedName().substring(5));
     }
 
 	@Override

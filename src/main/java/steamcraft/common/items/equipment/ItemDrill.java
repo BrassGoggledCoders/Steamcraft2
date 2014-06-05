@@ -16,12 +16,12 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 /**
- * Base class for electric drills.
+ * Base class for drills.
  * 
  * @author Decebaldecebal
  * 
  */
-public class ItemDrill extends ItemCoreDrill /* extends ItemElectricMod */
+public class ItemDrill extends ItemCoreDrill
 {
 
 	/** An array of blocks the drill can mine. */
