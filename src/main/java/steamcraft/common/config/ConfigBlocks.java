@@ -30,12 +30,12 @@ import steamcraft.common.blocks.BlockCustomOreItem;
 import steamcraft.common.blocks.BlockDropHammerFrame;
 import steamcraft.common.blocks.BlockEngravedSolid;
 import steamcraft.common.blocks.BlockEngravedSolidItem;
-import steamcraft.common.blocks.BlockFluidSteam;
 import steamcraft.common.blocks.BlockLamp;
 import steamcraft.common.blocks.BlockMetal;
 import steamcraft.common.blocks.BlockMetalItem;
 import steamcraft.common.blocks.BlockSlate;
 import steamcraft.common.blocks.BlockSlateItem;
+import steamcraft.common.blocks.BlockSteamFluid;
 import steamcraft.common.blocks.machine.BlockDropHammer;
 import steamcraft.common.blocks.machine.BlockSteamBoiler;
 import steamcraft.common.tiles.TileCrystal;
@@ -153,13 +153,11 @@ public class ConfigBlocks
 		blockBrassLog = new BlockBrassLog(Material.wood);
 		blockBrassLeaves = new BlockBrassLeaves(Material.iron);
 
-		steamFluid = new Fluid("steam").setGaseous(true).setTemperature(700).setDensity(-100).setViscosity(500).setLuminosity(1)
-				.setUnlocalizedName("steamFluid");
-		
-		if (!FluidRegistry.registerFluid(steamFluid))
-			steamFluid = FluidRegistry.getFluid("steam");
-		
-		blockFluidSteam = new BlockFluidSteam(steamFluid, Material.water).setBlockName("steamFluid");
+		Fluid steamFluid = new Fluid("steam").setGaseous(true).setTemperature(700).setDensity(-100).setViscosity(500).setLuminosity(1);
+		FluidRegistry.registerFluid(steamFluid);
+		steamFluid = FluidRegistry.getFluid("steam");
+		blockFluidSteam = new BlockSteamFluid(steamFluid, Material.lava);
+		steamFluid.setBlock(blockFluidSteam);
 	}
 
 	/**
@@ -183,7 +181,7 @@ public class ConfigBlocks
 		RegistryHelper.registerContainerBlock(blockSteamBoiler, TileSteamBoiler.class, "BlockSteamBoiler");
 		RegistryHelper.registerContainerBlock(blockDropHammer, TileDropHammer.class, "BlockDropHammer");
 		GameRegistry.registerBlock(blockMetal, BlockMetalItem.class, "BlockMetal");
-		
+
 		GameRegistry.registerBlock(blockFluidSteam, "blockFluidSteam");
 		//RegistryHelper.registerContainerBlock(blockHatch, TileHatch.class, "BlockHatch");
 	}
