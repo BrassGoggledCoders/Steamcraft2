@@ -39,7 +39,7 @@ public class BaseItem extends Item
     		{
     		String[] wrappedDesc = StringUtils.wrap(StatCollector.translateToLocal(getUnlocalizedName() + ".desc"), 30);
     		for(int i = 0; i<wrappedDesc.length; i++)
-    			list.add(wrappedDesc[i]);
+    			list.add(wrappedDesc[i].trim());
     		}
     		else
     		list.add(ClientHelper.shiftForInfo);
@@ -48,7 +48,7 @@ public class BaseItem extends Item
     		{
         		String[] wrappedDesc = StringUtils.wrap(StatCollector.translateToLocal(getUnlocalizedName() + ".desc"), 30);
         		for(int i = 0; i<wrappedDesc.length; i++)
-        			list.add(wrappedDesc[i]);
+        			list.add(wrappedDesc[i].trim());
     		}
 
     	}
