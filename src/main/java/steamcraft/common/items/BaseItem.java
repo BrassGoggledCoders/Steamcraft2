@@ -28,29 +28,33 @@ public class BaseItem extends Item
     {
             itemIcon = par1IconRegister.registerIcon(LibInfo.PREFIX + this.getUnlocalizedName().substring(5));
     }
+
     @SideOnly(Side.CLIENT)
     @Override
-    public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List list, boolean par4) {
+    public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List list, boolean par4)
+    {
     	if(!StatCollector.translateToLocal(getUnlocalizedName() + ".desc").contains("item."))
     	{
     		if(descNeedsShift)
     		{
     		if(ClientHelper.isShiftKeyDown())
     		{
-    		String[] wrappedDesc = StringUtils.wrap(StatCollector.translateToLocal(getUnlocalizedName() + ".desc"), 30);
-    		for(int i = 0; i<wrappedDesc.length; i++)
-    			list.add(wrappedDesc[i].trim());
+    			getWrappedDesc(list);
     		}
     		else
     		list.add(ClientHelper.shiftForInfo);
     		}
     		else
     		{
-        		String[] wrappedDesc = StringUtils.wrap(StatCollector.translateToLocal(getUnlocalizedName() + ".desc"), 30);
-        		for(int i = 0; i<wrappedDesc.length; i++)
-        			list.add(wrappedDesc[i].trim());
+    			getWrappedDesc(list);
     		}
 
     	}
+    }
+    public void getWrappedDesc(List list)
+    {
+		String[] wrappedDesc = StringUtils.wrap(StatCollector.translateToLocal(getUnlocalizedName() + ".desc"), 30);
+		for(int i = 0; i<wrappedDesc.length; i++)
+			list.add(wrappedDesc[i].trim());
     }
 }

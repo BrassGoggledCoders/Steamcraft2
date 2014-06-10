@@ -90,6 +90,7 @@ item.itemIngot.4.name=Brass Ingot
 item.itemIngot.5.name=Bronze Ingot
 item.itemIngot.6.name=Steel Ingot
 item.itemIngot.7.name=Cast Iron Ingot
+item.itemIngot.desc=Flatten with a drop hammer to get Plates
 item.copperwire.name=Copper Wire
 item.itemWatch.name=Brass Pocket-Watch
 item.itemCanisterSteam.name=Steam Canister
@@ -116,6 +117,7 @@ item.rifleround.name=Rifle Round
 item.itemRaygun.name=Ray Gun
 item.itemRaygun.desc=Causes destruction and havoc all over the place! Good for melting things
 item.itemShrinkray.name=Shrinkray
+item.itemShrinkray.desc=Shrinks blocks infinitely small. WARNING! Ray cannot enlarge objects. (Shrinking Process is probably irreversible)
 
 #Tools
 item.itemDrillCore.name=Drill Core

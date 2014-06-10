@@ -34,22 +34,6 @@ public class ItemShrinkray extends BaseItem
 		setMaxStackSize(1);
 		setUnlocalizedName("itemShrinkray");
 	}
-	@SuppressWarnings("all")
-	@Override
-	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean flag) {
-		super.addInformation(stack, player, list, flag);
-		if(!ClientHelper.isShiftKeyDown())
-		{
-			list.add(ClientHelper.shiftForInfo);
-			return;
-		}
-		else
-		{
-		list.add("Shrinks blocks infinitely small");
-		list.add("WARNING! Ray cannot enlarge objects");
-		list.add("(Shrinking Process is probably irreversible)");
-		}
-	}
 
 	@SuppressWarnings("all")
 	@Override
