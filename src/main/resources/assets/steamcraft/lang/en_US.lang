@@ -1,3 +1,5 @@
+#NB: for custom thingies StatCollector.translateToLocal(String);
+
 #Blocks
 tile.blockMetal.0.name=Brass Block
 tile.blockMetal.1.name=Bronze Block
@@ -112,6 +114,7 @@ item.musketcartridge.name=Musket Round
 item.percussioncap.name=Percussion Cap
 item.rifleround.name=Rifle Round
 item.itemRaygun.name=Ray Gun
+item.itemRaygun.desc=Causes destruction and havoc all over the place! Good for melting things
 item.itemShrinkray.name=Shrinkray
 
 #Tools
@@ -140,6 +143,7 @@ item.itemAxeObsidian.name=Obsidian Axe
 item.itemHoeObsidian.name=Obsidian Hoe
 item.itemShovelObsidian.name=Obsidian Shovel
 item.itemChisel.name=Chisel
+item.itemChisel.desc=Chisely
 item.spanner.name=Spanner
 
 #Armors

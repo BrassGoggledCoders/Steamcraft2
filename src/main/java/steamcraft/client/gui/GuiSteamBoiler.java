@@ -13,14 +13,10 @@
  */
 package steamcraft.client.gui;
 
-import javax.swing.Icon;
-
-import net.minecraft.block.Block;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.FluidRegistry;
@@ -28,7 +24,6 @@ import net.minecraftforge.fluids.FluidStack;
 
 import org.lwjgl.opengl.GL11;
 
-import steamcraft.client.util.RenderUtils;
 import steamcraft.common.lib.LibInfo;
 import steamcraft.common.tiles.TileSteamBoiler;
 import steamcraft.common.tiles.container.ContainerSteamBoiler;
@@ -44,7 +39,7 @@ public class GuiSteamBoiler extends GuiContainer
 
 	/** The tile. */
 	private TileSteamBoiler tile;
-	
+
 	public GuiSteamBoiler(InventoryPlayer player, TileSteamBoiler tile)
 	{
 		super(new ContainerSteamBoiler(player, tile));
@@ -90,7 +85,7 @@ public class GuiSteamBoiler extends GuiContainer
 
 		IIcon icon = fluid.getFluid().getBlock().getIcon(0, 0);
 		this.mc.renderEngine.bindTexture(TextureMap.locationBlocksTexture);
-		RenderUtils.setGLColorFromInt(fluid.getFluid().getColor(fluid));
+		//RenderUtils.setGLColorFromInt(fluid.getFluid().getColor(fluid));
 		int fullX = width / 16;
 		int fullY = height / 16;
 		int lastX = width - (fullX * 16);

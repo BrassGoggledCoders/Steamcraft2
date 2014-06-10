@@ -153,8 +153,7 @@ public class ConfigBlocks
 		blockBrassLog = new BlockBrassLog(Material.wood);
 		blockBrassLeaves = new BlockBrassLeaves(Material.iron);
 
-		steamFluid = new Fluid("steam").setGaseous(true).setTemperature(700).setDensity(-100).setViscosity(500).setLuminosity(1)
-				.setUnlocalizedName("steamFluid");
+		steamFluid = new Fluid("steam").setGaseous(true).setTemperature(700).setDensity(-100).setViscosity(500).setLuminosity(1).setUnlocalizedName("steamFluid");
 		
 		if (!FluidRegistry.registerFluid(steamFluid))
 			steamFluid = FluidRegistry.getFluid("steam");
