@@ -45,20 +45,6 @@ public class ItemChisel extends BaseItem
 	{
 		itemIcon = ir.registerIcon(LibInfo.PREFIX + "itemChisel");
 	}
-	@SuppressWarnings("all")
-	@Override
-	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean flag) {
-		super.addInformation(stack, player, list, flag);
-		if(!ClientHelper.isShiftKeyDown())
-		{
-			list.add(ClientHelper.shiftForInfo);
-			return;
-		}
-		else
-		{
-			list.add("Right-Click to chisel mineral blocks");
-		}
-	}
 
 	/**
 	 * Instantiates a new item chisel.

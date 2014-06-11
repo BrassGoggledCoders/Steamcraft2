@@ -44,10 +44,4 @@ public class ClientHelper {
 	public static EntityClientPlayerMP clientPlayer() {
 		return mc().thePlayer;
 	}
-
-	public static String shiftForInfo = EnumChatFormatting.GRAY + "Hold " + EnumChatFormatting.GREEN + "SHIFT" + EnumChatFormatting.GRAY + " for more info.";
-
-	public static boolean isShiftKeyDown() {
-		return (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT)) || (Keyboard.isKeyDown(Keyboard.KEY_RSHIFT));
-	}
 }

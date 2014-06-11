@@ -145,7 +145,7 @@ item.itemAxeObsidian.name=Obsidian Axe
 item.itemHoeObsidian.name=Obsidian Hoe
 item.itemShovelObsidian.name=Obsidian Shovel
 item.itemChisel.name=Chisel
-item.itemChisel.desc=Chisely
+item.itemChisel.desc=Right-Click to chisel mineral blocks
 item.spanner.name=Spanner
 
 #Armors
@@ -154,6 +154,7 @@ item.itemChestplateBrass.name=Brass Chestplate
 item.itemLegsBrass.name=Brass Greaves
 item.itemBootsBrass.name=Brass Boots
 item.itemBrassGoggles.name=Brass Goggles
+item.itemBrassGoggle.desc=It is a violation of the law of steampunk to fly without these. Helps with seeing things.
 item.aqualung.name=Aqualung
 item.pnematicBraces.name=Pneumatic Leg Braces
 item.rollerSkates.name=Roller Skates
