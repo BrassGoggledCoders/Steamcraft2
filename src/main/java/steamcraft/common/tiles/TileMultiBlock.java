@@ -3,7 +3,7 @@ package steamcraft.common.tiles;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 
-public class TileDropHammer extends TileEntity {
+public class TileMultiBlock extends TileEntity {
     private boolean hasMaster, isMaster;
     private int masterX, masterY, masterZ;
 
@@ -14,7 +14,7 @@ public class TileDropHammer extends TileEntity {
             if (hasMaster()) {
                 if (isMaster()) {
                     if (checkMultiBlockForm()) {
-                        System.out.print("potato");
+                        // Put stuff you want the multiblock to do here!
                     } else
                         resetStructure();
                 } else {
@@ -38,7 +38,7 @@ public class TileDropHammer extends TileEntity {
                 for (int z = zCoord - 1; z < zCoord + 2; z++) {
                     TileEntity tile = worldObj.getTileEntity(x, y, z);
                     // Make sure tile isn't null, is an instance of the same Tile, and isn't already a part of a multiblock
-                    if (tile != null && (tile instanceof TileDropHammer) && !((TileDropHammer)tile).hasMaster())
+                    if (tile != null && (tile instanceof TileMultiBlock) && !((TileMultiBlock)tile).hasMaster())
                         i++;
                 }
         // check if there are 26 blocks present ((3*3*3) - 1) and check that center block is empty
@@ -53,10 +53,10 @@ public class TileDropHammer extends TileEntity {
                     TileEntity tile = worldObj.getTileEntity(x, y, z);
                     // Check if block is bottom center block
                     boolean master = (x == xCoord && y == yCoord && z == zCoord);
-                    if (tile != null && (tile instanceof TileDropHammer)) {
-                        ((TileDropHammer) tile).setMasterCoords(xCoord, yCoord, zCoord);
-                        ((TileDropHammer) tile).setHasMaster(true);
-                        ((TileDropHammer) tile).setIsMaster(master);
+                    if (tile != null && (tile instanceof TileMultiBlock)) {
+                        ((TileMultiBlock) tile).setMasterCoords(xCoord, yCoord, zCoord);
+                        ((TileMultiBlock) tile).setHasMaster(true);
+                        ((TileMultiBlock) tile).setIsMaster(master);
                     }
                 }
     }
@@ -73,7 +73,7 @@ public class TileDropHammer extends TileEntity {
     /** Check that the master exists */
     public boolean checkForMaster() {
         TileEntity tile = worldObj.getTileEntity(masterX, masterY, masterZ);
-        return (tile != null && (tile instanceof TileDropHammer));
+        return (tile != null && (tile instanceof TileMultiBlock));
     }
 
     /** Reset all the parts of the structure */
@@ -82,8 +82,8 @@ public class TileDropHammer extends TileEntity {
             for (int y = yCoord; y < yCoord + 3; y++)
                 for (int z = zCoord - 1; z < zCoord + 2; z++) {
                     TileEntity tile = worldObj.getTileEntity(x, y, z);
-                    if (tile != null && (tile instanceof TileDropHammer))
-                        ((TileDropHammer) tile).reset();
+                    if (tile != null && (tile instanceof TileMultiBlock))
+                        ((TileMultiBlock) tile).reset();
                 }
     }
 

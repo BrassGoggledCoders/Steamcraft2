@@ -67,7 +67,7 @@ tile.chemfurnace.name=Chemical Furnace
 tile.nukefurnace.name=Nuclear Furnace
 tile.compressorMachine.name=Compressor
 tile.simpleCoalGenerator.name=Simple Coal Generator
-tile.blockDropHammer.name=Drop Hammer Head
+tile.blockDropHammer.name=Drop Hammer Anvil
 tile.blockDropHammerFrame.name=Drop Hammer Frame
 
 #Items
@@ -130,10 +130,10 @@ item.itemDrillGold.name=Golden Drill
 item.itemDrillSteam.name=Steam-Powered Drill
 item.itemDrillEtherium.name=Etherium Drill
 item.itemDrillObsidian.name=Obsidian Drill
-item.steampick.name=Steam-Powered Pickaxe
-item.steamsword.name=Stean-Powered Sword
-item.steamaxe.name=Steam-Powered Axe
-item.steamhoe.name=Steam-Powered Hoe
+item.itemSteamPick.name=Steam-Powered Pickaxe
+item.itemSteamSword.name=Stean-Powered Sword
+item.itemSteamAxe.name=Steam-Powered Axe
+item.itemSteamHoe.name=Steam-Powered Hoe
 item.itemPickEtherium.name=Etherium Pickaxe
 item.itemSwordEtherium.name=Etherium Sword
 item.itemAxeEtherium.name=Etherium Axe

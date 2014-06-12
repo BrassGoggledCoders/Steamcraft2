@@ -13,14 +13,12 @@
  */
 package steamcraft.common.items;
 
-import java.util.List;
 import java.util.Random;
 
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import steamcraft.client.ClientHelper;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.LibInfo;
 import boilerplate.client.fx.FXSmoke;

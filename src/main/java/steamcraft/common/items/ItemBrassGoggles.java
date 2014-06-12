@@ -1,11 +1,6 @@
 package steamcraft.common.items;
 
-import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.item.ItemArmor.ArmorMaterial;
 import steamcraft.common.items.armor.BaseArmor;
-import steamcraft.common.lib.LibInfo;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemBrassGoggles extends BaseArmor
 {

@@ -1,10 +1,10 @@
 package steamcraft.common.items.equipment;
 
-import steamcraft.common.lib.MaterialHelper;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import steamcraft.common.lib.MaterialHelper;
 
 public class ItemModPickaxe extends ItemModTool
 {
