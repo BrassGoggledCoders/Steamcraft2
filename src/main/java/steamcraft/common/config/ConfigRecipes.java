@@ -1,5 +1,7 @@
 package steamcraft.common.config;
 
+import boilerplate.common.utils.recipe.RecipeUtils;
+
 
 public class ConfigRecipes {
 
@@ -10,6 +12,7 @@ public class ConfigRecipes {
 	}
 	public static void initRecipes()
 	{
+		//RecipeUtils.addMetalRecipes();
 		//Blocks
 		/*GameRegistry.addRecipe(new ItemStack(ConfigBlocks.blockAluminum), new Object[] {"III", "III", "III", 'I', new ItemStack(ConfigItems.ingotsMetal, 1, 0)});
 		GameRegistry.addRecipe(new ItemStack(ConfigBlocks.blockCopper), new Object[] {"III", "III", "III", 'I', new ItemStack(ConfigItems.ingotsMetal, 1, 1)});

@@ -13,6 +13,7 @@
  */
 package steamcraft.common.config;
 
+import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import steamcraft.common.Steamcraft;
@@ -22,6 +23,7 @@ import steamcraft.common.items.ItemCanister;
 import steamcraft.common.items.ItemChisel;
 import steamcraft.common.items.ItemIngot;
 import steamcraft.common.items.ItemMechanical;
+import steamcraft.common.items.ItemNugget;
 import steamcraft.common.items.ItemPipe;
 import steamcraft.common.items.ItemPowder;
 import steamcraft.common.items.ItemRayGun;
@@ -190,6 +192,8 @@ public class ConfigItems
 
 	public static Item itemHammer;
 
+	public static Item itemNugget;
+
 	/**
 	 * Inits the.
 	 */
@@ -268,6 +272,7 @@ public class ConfigItems
 		itemIngot = new ItemIngot();
 		itemSheet = new ItemSheet();
 		itemPowder = new ItemPowder();
+		itemNugget = new ItemNugget();
 		itemMechanical = new ItemMechanical().setUnlocalizedName("ItemMechanical");
 		itemResource = new ItemResource().setUnlocalizedName("itemResource");
 		itemWatch = new ItemWatch().setUnlocalizedName("itemWatch");
