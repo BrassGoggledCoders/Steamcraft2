@@ -33,6 +33,7 @@ import steamcraft.common.items.armor.ItemNormalArmor;
 import steamcraft.common.items.armor.ItemSteamJetpack;
 import steamcraft.common.items.equipment.ItemCoreDrill;
 import steamcraft.common.items.equipment.ItemDrill;
+import steamcraft.common.items.equipment.ItemHammer;
 import steamcraft.common.items.equipment.ItemModAxe;
 import steamcraft.common.items.equipment.ItemModHoe;
 import steamcraft.common.items.equipment.ItemModPickaxe;
@@ -46,7 +47,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 // TODO: Auto-generated Javadoc
 /**
  * The Class ConfigItems.
- * 
+ *
  * @author Surseance (Johnny Eatmon)
  */
 public class ConfigItems
@@ -71,13 +72,13 @@ public class ConfigItems
 	public static Item itemHelmetBrass, itemChestplateBrass, itemLegsBrass, itemBootsBrass;
 	/**
 	 * The item brass goggles. public static Item itemBrassGoggles;
-	 * 
+	 *
 	 * /** The item aqualung. public static Item itemAqualung;
-	 * 
+	 *
 	 * /** The item leg braces. public static Item itemLegBraces;
-	 * 
+	 *
 	 * /** The item roller skates public static Item itemRollerSkates;
-	 * 
+	 *
 	 * /** The item steam jetpack.
 	 */
 	public static Item itemSteamJetpack;
@@ -185,6 +186,8 @@ public class ConfigItems
 	public static Item chisel;
 	public static Item spanner;
 
+	public static Item itemHammer;
+
 	/**
 	 * Inits the.
 	 */
@@ -221,9 +224,9 @@ public class ConfigItems
 		 * 3).setUnlocalizedName("itemRollerSkates");
 		 * GameRegistry.registerItem(itemRollerSkates, "ItemRollerSkates",
 		 * LibInfo.ID);
-		 * 
-		 * 
-		 * 
+		 *
+		 *
+		 *
 		 * //More Items itemTeacupEmpty = new
 		 * ItemTeacup(Config.itemTeacupEmptyId, 0, 0.0F,
 		 * false).setUnlocalizedName("itemTeacupEmpty");
@@ -271,6 +274,7 @@ public class ConfigItems
 		itemPoppySeed = new Item().setUnlocalizedName("itemPoppySeed").setCreativeTab(Steamcraft.tabSC2);
 		itemRayGun = new ItemRayGun(LibInfo.PREFIX + "raygun");
 		itemShrinkray = new ItemShrinkray(LibInfo.PREFIX + "shrinkray");
+		itemHammer = new ItemHammer().setUnlocalizedName("itemHammer");
 
 		drillCore = new ItemCoreDrill().setUnlocalizedName("itemDrillCore");
 		drillBase = new BaseItem().setUnlocalizedName("itemDrillBase");
@@ -331,6 +335,7 @@ public class ConfigItems
 		GameRegistry.registerItem(itemRayGun, "ItemRayGun", LibInfo.ID);
 		GameRegistry.registerItem(itemShrinkray, "ItemShrinkray", LibInfo.ID);
 		GameRegistry.registerItem(itemBrassGoggles, "ItemBrassGoggles", LibInfo.ID);
+		GameRegistry.registerItem(itemHammer, "ItemHammer", LibInfo.ID);
 
 		// Drills
 		GameRegistry.registerItem(drillCore, "ItemDrillCore", LibInfo.ID);
@@ -343,9 +348,9 @@ public class ConfigItems
 		GameRegistry.registerItem(drillSteam, "ItemDrillSteam", LibInfo.ID);
 		GameRegistry.registerItem(drillEtherium, "ItemDrillEtherium", LibInfo.ID);
 		GameRegistry.registerItem(drillObsidian, "ItemDrillObsidian", LibInfo.ID);
-		
+
 		GameRegistry.registerItem(itemSteamJetpack, "ItemSteamJetpack", LibInfo.ID);
-		
+
 		//Tools
 		GameRegistry.registerItem(pickaxeSteam, "ItemPickAxeSteam", LibInfo.ID);
 		GameRegistry.registerItem(swordSteam, "ItemSwordSteam", LibInfo.ID);
