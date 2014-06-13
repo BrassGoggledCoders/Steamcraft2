@@ -48,7 +48,7 @@ import cpw.mods.fml.relauncher.Side;
 
 /**
  * The Class Steamcraft.
- * 
+ *
  * @author Surseance (Johnny Eatmon)
  */
 @Mod(modid = LibInfo.ID, name = LibInfo.NAME, version = LibInfo.VERSION, dependencies = "required-after:boilerplate")
@@ -119,7 +119,7 @@ public class Steamcraft
 
 	/**
 	 * Inits the.
-	 * 
+	 *
 	 * @param event
 	 *            the event
 	 */
@@ -152,7 +152,7 @@ public class Steamcraft
 
 	/**
 	 * Server starting.
-	 * 
+	 *
 	 * @param event
 	 *            the event
 	 */

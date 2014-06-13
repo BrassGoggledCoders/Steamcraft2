@@ -347,6 +347,7 @@ public class ConfigItems
 		GameRegistry.registerItem(itemHammer, "ItemHammer", LibInfo.ID);
 		GameRegistry.registerItem(itemPowder, "ItemMetalPowder", LibInfo.ID);
 		GameRegistry.registerItem(itemSheet, "ItemMetalSheet", LibInfo.ID);
+		GameRegistry.registerItem(itemNugget, "ItemMetalNugget", LibInfo.ID);
 
 		// Drills
 		GameRegistry.registerItem(drillCore, "ItemDrillCore", LibInfo.ID);

@@ -12,19 +12,9 @@ public class ConfigRecipes {
 	}
 	public static void initRecipes()
 	{
-		//RecipeUtils.addMetalRecipes();
-		//Blocks
-		/*GameRegistry.addRecipe(new ItemStack(ConfigBlocks.blockAluminum), new Object[] {"III", "III", "III", 'I', new ItemStack(ConfigItems.ingotsMetal, 1, 0)});
-		GameRegistry.addRecipe(new ItemStack(ConfigBlocks.blockCopper), new Object[] {"III", "III", "III", 'I', new ItemStack(ConfigItems.ingotsMetal, 1, 1)});
-		GameRegistry.addRecipe(new ItemStack(ConfigBlocks.blockTin), new Object[] {"III", "III", "III", 'I', new ItemStack(ConfigItems.ingotsMetal, 1, 2)});
-		GameRegistry.addRecipe(new ItemStack(ConfigBlocks.blockZinc), new Object[] {"III", "III", "III", 'I', new ItemStack(ConfigItems.ingotsMetal, 1, 3)});
-		GameRegistry.addRecipe(new ItemStack(ConfigBlocks.blockCastIron), new Object[] {"III", "III", "III", 'I', new ItemStack(ConfigItems.ingotsMetal, 1, 4)});
-		GameRegistry.addRecipe(new ItemStack(ConfigBlocks.blockBrass), new Object[] {"III", "III", "III", 'I', new ItemStack(ConfigItems.ingotsMetal, 1, 5)});
-		GameRegistry.addRecipe(new ItemStack(ConfigBlocks.blockBronze), new Object[] {"III", "III", "III", 'I', new ItemStack(ConfigItems.ingotsMetal, 1, 6)});
-		GameRegistry.addRecipe(new ItemStack(ConfigBlocks.blockSteel), new Object[] {"III", "III", "III", 'I', new ItemStack(ConfigItems.ingotsMetal, 1, 7)});
-		GameRegistry.addRecipe(new ItemStack(ConfigBlocks.blockUranium), new Object[] {"III", "III", "III", 'I', new ItemStack(ConfigItems.uraniumOre)});
-		GameRegistry.addRecipe(new ItemStack(ConfigBlocks.blockVolucite), new Object[] {"III", "III", "III", 'I', new ItemStack(ConfigItems.etherium)});
-
+		for(int metals = 0; metals < 8; metals++)
+		RecipeUtils.addMetalRecipes(ConfigBlocks.blockMetal, ConfigItems.itemIngot, ConfigItems.itemNugget, metals);
+		/*
 		GameRegistry.addRecipe(new ItemStack(ConfigBlocks.blockObsidianTile), new Object[] {"XX", "XX", 'X', new ItemStack(Block.obsidian)});
 		GameRegistry.addShapedRecipe(new ItemStack(ConfigBlocks.castIronLampOff), new Object[] {"ccc", "flf", " f ", 'c', new ItemStack(ConfigItems.ingotsMetal, 1, 4), 'f', ConfigBlocks.railingCastIron, 'l', ConfigItems.lightBulb});
 		//Items

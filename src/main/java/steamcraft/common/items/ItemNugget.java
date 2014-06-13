@@ -24,7 +24,7 @@ public class ItemNugget extends BaseItemWithMetadata
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void getSubItems(Item item, final CreativeTabs tab, final List list)
+    public void getSubItems(Item item,  CreativeTabs tab,  List list)
     {
     	for (int var4 = 0; var4 < 8; ++var4)
 		{
