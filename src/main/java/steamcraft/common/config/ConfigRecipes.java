@@ -1,6 +1,10 @@
 package steamcraft.common.config;
 
+import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.OreDictionary;
 import boilerplate.common.utils.recipe.RecipeUtils;
+import cpw.mods.fml.common.registry.GameRegistry;
 
 
 public class ConfigRecipes {
@@ -12,9 +16,16 @@ public class ConfigRecipes {
 	}
 	public static void initRecipes()
 	{
-		for(int metals = 0; metals < 8; metals++)
-		RecipeUtils.addMetalRecipes(ConfigBlocks.blockMetal, ConfigItems.itemIngot, ConfigItems.itemNugget, metals);
+		for(int meta=0; meta<8; meta++)
+		{
+			RecipeUtils.addMetalRecipes(ConfigBlocks.blockMetal, ConfigItems.itemIngot, ConfigItems.itemNugget, meta);
+			GameRegistry.addShapelessRecipe(new ItemStack(ConfigItems.itemSheet, 1, meta), new Object[]{new ItemStack(ConfigItems.itemIngot, 1, meta), new ItemStack(ConfigItems.itemHammer,1,OreDictionary.WILDCARD_VALUE)});
+		}
+		//Blocks
 		/*
+		GameRegistry.addRecipe(new ItemStack(ConfigBlocks.blockUranium), new Object[] {"III", "III", "III", 'I', new ItemStack(ConfigItems.uraniumOre)});
+		GameRegistry.addRecipe(new ItemStack(ConfigBlocks.blockVolucite), new Object[] {"III", "III", "III", 'I', new ItemStack(ConfigItems.etherium)});
+
 		GameRegistry.addRecipe(new ItemStack(ConfigBlocks.blockObsidianTile), new Object[] {"XX", "XX", 'X', new ItemStack(Block.obsidian)});
 		GameRegistry.addShapedRecipe(new ItemStack(ConfigBlocks.castIronLampOff), new Object[] {"ccc", "flf", " f ", 'c', new ItemStack(ConfigItems.ingotsMetal, 1, 4), 'f', ConfigBlocks.railingCastIron, 'l', ConfigItems.lightBulb});
 		//Items
@@ -51,13 +62,13 @@ public class ConfigRecipes {
 	public static void initSmelting()
 	{
 		//Ores ---> Ingots
-		/*GameRegistry.addSmelting(ModOres.oreAluminum.blockID, new ItemStack(ConfigItems.ingotsMetal, 1, 0), 0.7F);
-		GameRegistry.addSmelting(ModOres.oreCopper.blockID, new ItemStack(ConfigItems.ingotsMetal, 1, 1), 0.7F);
-		GameRegistry.addSmelting(ModOres.oreTin.blockID, new ItemStack(ConfigItems.ingotsMetal, 1, 2), 0.7F);
-		GameRegistry.addSmelting(ModOres.oreZinc.blockID, new ItemStack(ConfigItems.ingotsMetal, 1, 3), 0.7F);
+		for(int meta=0; meta<5; meta++)
+		{
+			GameRegistry.addSmelting(new ItemStack(ConfigBlocks.blockCustomOre, 1, meta), new ItemStack(ConfigItems.itemIngot, 1, meta), 0.3F);
+		}
 		//Misc
-		GameRegistry.addSmelting(Block.blockIron.blockID, new ItemStack(ConfigBlocks.blockCastIron), 0.2F);
-		GameRegistry.addSmelting(ConfigItems.uraniumOre.itemID, new ItemStack(ConfigItems.uraniumPellet), 0.5F);*/
+		GameRegistry.addSmelting(Blocks.iron_block, new ItemStack(ConfigBlocks.blockMetal, 1, 7), 0.2F);
+		GameRegistry.addSmelting(new ItemStack(ConfigItems.itemResource, 1, 6), new ItemStack(ConfigItems.itemResource, 3, 7), 0.5F);
 	}
 
 }
