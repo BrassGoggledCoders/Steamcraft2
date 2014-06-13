@@ -55,16 +55,16 @@ public class BlockMetal extends Block
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(final IIconRegister ir)
 	{
-		icon[0] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockBrass");
-		icon[1] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockBronze");
-		icon[2] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockSteel");
-		icon[3] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockUranium");
-		icon[4] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockAluminum");
-		icon[5] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockCopper");
-		icon[6] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockTin");
-		icon[7] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockZinc");
-		icon[8] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockEtherium");
-		icon[9] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockCastIron");
+		icon[0] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockAluminum");
+		icon[1] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockCopper");
+		icon[2] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockTin");
+		icon[3] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockZinc");
+		icon[4] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockBrass");
+		icon[5] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockBronze");
+		icon[6] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockSteel");
+		icon[7] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockCastIron");
+		icon[8] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockUranium");
+		icon[9] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockEtherium");
 	}
 	/* (non-Javadoc)
 	 * @see net.minecraft.block.Block#getIcon(int, int)

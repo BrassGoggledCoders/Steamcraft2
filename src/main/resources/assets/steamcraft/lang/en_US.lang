@@ -1,15 +1,16 @@
 #NB: for custom thingies StatCollector.translateToLocal(String);
 
 #Blocks
-tile.blockMetal.0.name=Brass Block
-tile.blockMetal.1.name=Bronze Block
-tile.blockMetal.2.name=Steel Block
-tile.blockMetal.3.name=Uranium Block
-tile.blockMetal.4.name=Aluminum Block
-tile.blockMetal.5.name=Copper Block
-tile.blockMetal.6.name=Tin Block
-tile.blockMetal.7.name=Zinc Block
-tile.blockMetal.8.name=Etherium Block
+tile.blockMetal.0.name=Aluminum Block
+tile.blockMetal.1.name=Copper Block
+tile.blockMetal.2.name=Tin Block
+tile.blockMetal.3.name=Zinc Block
+tile.blockMetal.4.name=Brass Block
+tile.blockMetal.5.name=Bronze Block
+tile.blockMetal.6.name=Steel Block
+tile.blockMetal.7.name=Cast-Iron Block
+tile.blockMetal.8.name=Uranium Block
+tile.blockMetal.9.name=Etherium Block
 tile.blockBrassLog.name=Brass plated Log
 tile.blockBrassLeaves.name=Brass Leaves
 tile.blockLamp.0.name=Lamp
