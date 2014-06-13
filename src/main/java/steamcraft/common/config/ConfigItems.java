@@ -23,8 +23,10 @@ import steamcraft.common.items.ItemChisel;
 import steamcraft.common.items.ItemIngot;
 import steamcraft.common.items.ItemMechanical;
 import steamcraft.common.items.ItemPipe;
+import steamcraft.common.items.ItemPowder;
 import steamcraft.common.items.ItemRayGun;
 import steamcraft.common.items.ItemResource;
+import steamcraft.common.items.ItemSheet;
 import steamcraft.common.items.ItemShrinkray;
 import steamcraft.common.items.ItemTeaSeed;
 import steamcraft.common.items.ItemWatch;
@@ -57,7 +59,7 @@ public class ConfigItems
 	public static Item itemMechanical;
 
 	/** The item ingot. */
-	public static Item itemResource, itemIngot;
+	public static Item itemResource, itemIngot, itemSheet, itemPowder;
 
 	/** The item watch. */
 	public static Item itemWatch;
@@ -264,6 +266,8 @@ public class ConfigItems
 		itemCanisterGas = new ItemCanister("compressedgas", 150000, 20).setUnlocalizedName("itemCanisterGas");
 
 		itemIngot = new ItemIngot();
+		itemSheet = new ItemSheet();
+		itemPowder = new ItemPowder();
 		itemMechanical = new ItemMechanical().setUnlocalizedName("ItemMechanical");
 		itemResource = new ItemResource().setUnlocalizedName("itemResource");
 		itemWatch = new ItemWatch().setUnlocalizedName("itemWatch");
@@ -336,6 +340,8 @@ public class ConfigItems
 		GameRegistry.registerItem(itemShrinkray, "ItemShrinkray", LibInfo.ID);
 		GameRegistry.registerItem(itemBrassGoggles, "ItemBrassGoggles", LibInfo.ID);
 		GameRegistry.registerItem(itemHammer, "ItemHammer", LibInfo.ID);
+		GameRegistry.registerItem(itemPowder, "ItemMetalPowder", LibInfo.ID);
+		GameRegistry.registerItem(itemSheet, "ItemMetalSheet", LibInfo.ID);
 
 		// Drills
 		GameRegistry.registerItem(drillCore, "ItemDrillCore", LibInfo.ID);
