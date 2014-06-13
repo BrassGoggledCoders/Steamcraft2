@@ -49,14 +49,13 @@ tile.blockSlate.7.name=Black Slate Bricks
 tile.blockSlate.8.name=Red Slate Bricks
 
 #Ores
-tile.blockCustomOre.0.name=Bornite Ore
-tile.blockCustomOre.1.name=Brimstone Ore
-tile.blockCustomOre.2.name=Phosphate Ore
-tile.blockCustomOre.3.name=Uranite Ore
-tile.blockCustomOre.4.name=Aluminum Ore
-tile.blockCustomOre.5.name=Copper Ore
-tile.blockCustomOre.6.name=Tin Ore
-tile.blockCustomOre.7.name=Zinc Ore
+tile.blockCustomOre.0.name=Aluminum Ore
+tile.blockCustomOre.1.name=Copper Ore
+tile.blockCustomOre.2.name=Tin Ore
+tile.blockCustomOre.3.name=Zinc Ore
+tile.blockCustomOre.4.name=Uranite Ore
+tile.blockCustomOre.5.name=Brimstone Ore
+tile.blockCustomOre.6.name=Phosphate Ore
 tile.blockCrystal.name=Etherium Crystal
 
 #Machines

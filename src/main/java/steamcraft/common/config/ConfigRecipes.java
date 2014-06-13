@@ -1,6 +1,7 @@
 package steamcraft.common.config;
 
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import boilerplate.common.utils.recipe.RecipeUtils;
@@ -20,7 +21,11 @@ public class ConfigRecipes {
 		{
 			RecipeUtils.addMetalRecipes(ConfigBlocks.blockMetal, ConfigItems.itemIngot, ConfigItems.itemNugget, meta);
 			GameRegistry.addShapelessRecipe(new ItemStack(ConfigItems.itemSheet, 1, meta), new Object[]{new ItemStack(ConfigItems.itemIngot, 1, meta), new ItemStack(ConfigItems.itemHammer,1,OreDictionary.WILDCARD_VALUE)});
+			GameRegistry.addShapelessRecipe(new ItemStack(ConfigItems.itemPowder, 2, meta), new Object[]{new ItemStack(ConfigBlocks.blockCustomOre, 1, meta), new ItemStack(ConfigItems.itemHammer,1,OreDictionary.WILDCARD_VALUE)});
 		}
+		GameRegistry.addRecipe(new ItemStack(ConfigItems.itemHammer), new Object[]{"III", " H ", " H ", 'I', new ItemStack(ConfigItems.itemIngot, 1, 7), 'H', Items.stick});
+		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.itemRayGun), new Object[] {" BB", "EBE", "  B", 'E', Items.emerald, 'B', Items.iron_ingot});
+		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.itemShrinkray), new Object[] {" BB", "EBE", "  B", 'E', Items.diamond, 'B', Items.iron_ingot});
 		//Blocks
 		/*
 		GameRegistry.addRecipe(new ItemStack(ConfigBlocks.blockUranium), new Object[] {"III", "III", "III", 'I', new ItemStack(ConfigItems.uraniumOre)});
@@ -57,7 +62,6 @@ public class ConfigRecipes {
 		GameRegistry.addShapelessRecipe(new ItemStack(ConfigItems.pileParts, 1, 2),new Object[] {new ItemStack(ConfigItems.partsCopper,1,OreDictionary.WILDCARD_VALUE),new ItemStack(ConfigItems.partsCopper,1,OreDictionary.WILDCARD_VALUE),new ItemStack(ConfigItems.partsCopper,1,OreDictionary.WILDCARD_VALUE),new ItemStack(ConfigItems.partsCopper,1,OreDictionary.WILDCARD_VALUE),new ItemStack(ConfigItems.partsCopper,1,OreDictionary.WILDCARD_VALUE),new ItemStack(ConfigItems.partsCopper,1,OreDictionary.WILDCARD_VALUE),new ItemStack(ConfigItems.partsCopper,1,OreDictionary.WILDCARD_VALUE),new ItemStack(ConfigItems.partsCopper,1,OreDictionary.WILDCARD_VALUE),new ItemStack(ConfigItems.partsCopper,1,OreDictionary.WILDCARD_VALUE)});
 		GameRegistry.addShapelessRecipe(new ItemStack(ConfigItems.pileParts, 1, 3),new Object[] {new ItemStack(ConfigItems.partsIron,1,OreDictionary.WILDCARD_VALUE),new ItemStack(ConfigItems.partsIron,1,OreDictionary.WILDCARD_VALUE),new ItemStack(ConfigItems.partsIron,1,OreDictionary.WILDCARD_VALUE),new ItemStack(ConfigItems.partsIron,1,OreDictionary.WILDCARD_VALUE),new ItemStack(ConfigItems.partsIron,1,OreDictionary.WILDCARD_VALUE),new ItemStack(ConfigItems.partsIron,1,OreDictionary.WILDCARD_VALUE),new ItemStack(ConfigItems.partsIron,1,OreDictionary.WILDCARD_VALUE),new ItemStack(ConfigItems.partsIron,1,OreDictionary.WILDCARD_VALUE),new ItemStack(ConfigItems.partsIron,1,OreDictionary.WILDCARD_VALUE)});
 		*/
-		//GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.itemRayGun), new Object[] {" BB", "EBE", "  B", 'E', Items.emerald, 'B', Items.iron_ingot});
 	}
 	public static void initSmelting()
 	{
@@ -65,6 +69,7 @@ public class ConfigRecipes {
 		for(int meta=0; meta<5; meta++)
 		{
 			GameRegistry.addSmelting(new ItemStack(ConfigBlocks.blockCustomOre, 1, meta), new ItemStack(ConfigItems.itemIngot, 1, meta), 0.3F);
+			GameRegistry.addSmelting(new ItemStack(ConfigItems.itemPowder, 1, meta), new ItemStack(ConfigItems.itemIngot, 1, meta), 0.3F);
 		}
 		//Misc
 		GameRegistry.addSmelting(Blocks.iron_block, new ItemStack(ConfigBlocks.blockMetal, 1, 7), 0.2F);

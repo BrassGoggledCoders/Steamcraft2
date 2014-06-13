@@ -38,7 +38,7 @@ public class BlockCustomOre extends Block
 {
 
 	/** The icon. */
-	private final IIcon[] icon = new IIcon[8];
+	private final IIcon[] icon = new IIcon[7];
 
 	/* (non-Javadoc)
 	 * @see net.minecraft.block.Block#getIcon(int, int)
@@ -57,14 +57,13 @@ public class BlockCustomOre extends Block
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(final IIconRegister ir)
 	{
-		icon[0] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "oreBornite");
-		icon[1] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "oreBrimstone");
-		icon[2] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "orePhosphate");
-		icon[3] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "oreUranite");
-		icon[4] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "oreAluminum");
-		icon[5] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "oreCopper");
-		icon[6] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "oreTin");
-		icon[7] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "oreZinc");
+		icon[0] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "oreAluminum");
+		icon[1] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "oreCopper");
+		icon[2] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "oreTin");
+		icon[3] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "oreZinc");
+		icon[4] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "oreUranite");
+		icon[5] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "oreBrimstone");
+		icon[6] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "orePhosphate");
 	}
 
 	/**
