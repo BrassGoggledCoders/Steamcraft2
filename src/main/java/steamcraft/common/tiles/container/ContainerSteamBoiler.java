@@ -34,7 +34,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class ContainerSteamBoiler extends Container
 {
 	protected TileSteamBoiler tile_entity;
-	
+
 	private int lastBurnTime = 0;
 	private int lastItemBurnTime = 0;
 	private int lastSteamLevel = 0;
@@ -61,7 +61,7 @@ public class ContainerSteamBoiler extends Container
 			@Override
 			public boolean isItemValid(ItemStack stack)
 			{
-				if (stack.getItem() == ConfigItems.itemCanisterGas)
+				if (stack.getItem() == ConfigItems.itemCanisterSteam || stack.getItem() == ConfigItems.itemCanisterEmpty)
 				{
 					return true;
 				}
@@ -197,7 +197,7 @@ public class ContainerSteamBoiler extends Container
 						}
 					}
 				}
-				else if (var5.getItem() == ConfigItems.itemCanisterGas)
+				else if (var5.getItem() == ConfigItems.itemCanisterSteam)
 				{
 					if (!this.mergeItemStack(var5, 2, 3, false))
 					{

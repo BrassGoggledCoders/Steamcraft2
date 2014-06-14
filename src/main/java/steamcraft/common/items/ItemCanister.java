@@ -27,7 +27,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 /**
- * 
+ *
  * @author Decebaldecebal
  */
 public class ItemCanister extends BaseItem
@@ -35,7 +35,7 @@ public class ItemCanister extends BaseItem
 	public String gas;
 
 	public static int MAX_VISIBLE = 2500; // Visual representation of gas/steam through item damage
-	
+
 	public int max_amount;
 	public static int max_rate = 20; // Maximum amount of steam/gas that can be inserted into this canister per tick
 
@@ -52,7 +52,7 @@ public class ItemCanister extends BaseItem
 		this.setNoRepair();
 		this.setMaxDamage(MAX_VISIBLE);
 		this.setCreativeTab(Steamcraft.tabSC2);
-		
+
 		this.gas = gas;
 		this.max_amount = amount;
 	}
@@ -81,7 +81,7 @@ public class ItemCanister extends BaseItem
 		NBTTagCompound tag = new NBTTagCompound();
 
 		tag.setInteger("amount", this.max_amount);
-		
+
 		charged.setTagCompound(tag);
 
 		return charged.copy();
@@ -133,7 +133,7 @@ public class ItemCanister extends BaseItem
 		NBTTagCompound compound = getOrCreateNBT(stack);
 		return compound.getInteger("amount") >= max_amount;
 	}
-	
+
 	public boolean isEmpty(ItemStack stack)
 	{
 		NBTTagCompound compound = getOrCreateNBT(stack);
