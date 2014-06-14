@@ -1,5 +1,5 @@
 /**
- * This class was created by <Surseance> or his SC2 development team. 
+ * This class was created by <Surseance> or his SC2 development team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -15,25 +15,25 @@ package steamcraft.common.lib;
 
 /**
  * A neat, tidy class for holding various bits of mod information.
- * 
+ *
  * @author Surseance (Johnny Eatmon)
- * 
+ *
  */
 public class LibInfo
 {
-	
+
 	/** The Constant ID. */
 	public static final String ID = "steamcraft2"; //should be lowercase
-	
+
 	/** The Constant NAME. */
 	public static final String NAME = "Steamcraft 2";
-	
+
 	/** The Constant VERSION. */
-	public static final String VERSION = "1.3.0"; // major, minor, build
+	public static final String VERSION = "PA1"; // major, minor, build
 
 	/** The Constant CLIENT_PROXY. */
 	public static final String CLIENT_PROXY = "steamcraft.client.ClientProxy";
-	
+
 	/** The Constant COMMON_PROXY. */
 	public static final String COMMON_PROXY = "steamcraft.common.CommonProxy";
 
@@ -44,17 +44,17 @@ public class LibInfo
 	public static final boolean DEBUG = false;
 
 	/** The Constant VERSION_URL. */
-	public static final String VERSION_URL = "https://www.dropbox.com/s/36mpxgwjoanem32/version.txt";
+	public static final String VERSION_URL = /*"https://www.dropbox.com/s/36mpxgwjoanem32/version.txt"*/"https://gist.githubusercontent.com/warlordjones/42644dbc6db776152367/raw/99d70c9382a61b88cb61a605a8f0dfd9bbb49079/gistfile1.txt";
 
 	/**  Capes!. */
 	public static final String DEV_LIST = "https://www.dropbox.com/s/m7tn0tx7y7w630s/devs.txt";
-	
+
 	/** The Constant DONATOR_LIST. */
 	public static final String DONATOR_LIST = "https://www.dropbox.com/s/pihl7ja8m9z2ybs/donators.txt";
-	
+
 	/** The Constant DEV_CAPE_IMG_URL. */
 	public static final String DEV_CAPE_IMG_URL = "https://dl.dropboxusercontent.com/u/34970176/SteamCraft%202/steamcraft_cape_MID_1.png";
-	
+
 	/** The Constant DONATOR_CAPE_IMG_URL. */
 	public static final String DONATOR_CAPE_IMG_URL = "http://imgur.com/7O5dSL2";
 }
