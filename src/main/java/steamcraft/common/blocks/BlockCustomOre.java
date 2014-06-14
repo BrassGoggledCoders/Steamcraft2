@@ -45,7 +45,7 @@ public class BlockCustomOre extends Block
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(final int side, final int metadata)
+	public IIcon getIcon(int side, final int metadata)
 	{
 		return icon[metadata];
 	}
@@ -88,7 +88,7 @@ public class BlockCustomOre extends Block
 	public void getSubBlocks(final Item item, final CreativeTabs tab,
 			final List l)
 	{
-		for (int var4 = 0; var4 < 8; ++var4)
+		for (int var4 = 0; var4 < 7; ++var4)
 		{
 			l.add(new ItemStack(ConfigBlocks.blockCustomOre, 1, var4));
 		}

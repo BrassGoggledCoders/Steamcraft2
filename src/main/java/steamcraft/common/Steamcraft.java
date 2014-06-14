@@ -32,6 +32,7 @@ import steamcraft.common.lib.events.EventHandlerDrawHighlight;
 import steamcraft.common.lib.events.EventHandlerSC2;
 import steamcraft.common.lib.world.SteamcraftWorldGenerator;
 import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -105,7 +106,7 @@ public class Steamcraft
 
 		// GameRegistry.registerFuelHandler(this.worldEventHandler);
 		// GameRegistry.registerCraftingHandler(this.worldEventHandler);
-		GameRegistry.registerWorldGenerator(this.worldGen = new SteamcraftWorldGenerator(), 0);
+		GameRegistry.registerWorldGenerator(new SteamcraftWorldGenerator(), 0);
 
 		Config.save();
 		ConfigBlocks.init();
@@ -147,7 +148,6 @@ public class Steamcraft
 		// LoggerSteamcraft.log(Level.INFO, "SC2 is " + event.getModState());
 		final ModContainer container = FMLCommonHandler.instance().findContainerFor(this);
 		LanguageRegistry.instance().loadLanguagesFor(container, Side.CLIENT);
-
 	}
 
 	/**

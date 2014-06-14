@@ -26,6 +26,9 @@ public class ConfigRecipes {
 		GameRegistry.addRecipe(new ItemStack(ConfigItems.itemHammer), new Object[]{"III", " H ", " H ", 'I', new ItemStack(ConfigItems.itemIngot, 1, 7), 'H', Items.stick});
 		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.itemRayGun), new Object[] {" BB", "EBE", "  B", 'E', Items.emerald, 'B', Items.iron_ingot});
 		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.itemShrinkray), new Object[] {" BB", "EBE", "  B", 'E', Items.diamond, 'B', Items.iron_ingot});
+
+		GameRegistry.addShapelessRecipe(new ItemStack(ConfigItems.itemPowder, 3, 4), new Object[]{new ItemStack(ConfigItems.itemPowder, 2, 1), new ItemStack(ConfigItems.itemPowder, 1, 3)});
+		GameRegistry.addShapelessRecipe(new ItemStack(ConfigItems.itemPowder, 3, 5), new Object[]{new ItemStack(ConfigItems.itemPowder, 2, 1), new ItemStack(ConfigItems.itemPowder, 1, 2)});
 		//Blocks
 		/*
 		GameRegistry.addRecipe(new ItemStack(ConfigBlocks.blockUranium), new Object[] {"III", "III", "III", 'I', new ItemStack(ConfigItems.uraniumOre)});
@@ -34,14 +37,6 @@ public class ConfigRecipes {
 		GameRegistry.addRecipe(new ItemStack(ConfigBlocks.blockObsidianTile), new Object[] {"XX", "XX", 'X', new ItemStack(Block.obsidian)});
 		GameRegistry.addShapedRecipe(new ItemStack(ConfigBlocks.castIronLampOff), new Object[] {"ccc", "flf", " f ", 'c', new ItemStack(ConfigItems.ingotsMetal, 1, 4), 'f', ConfigBlocks.railingCastIron, 'l', ConfigItems.lightBulb});
 		//Items
-		GameRegistry.addShapelessRecipe(new ItemStack(ConfigItems.ingotsMetal,9, 0), new Object[]{new ItemStack(ConfigBlocks.blockAluminum)});
-		GameRegistry.addShapelessRecipe(new ItemStack(ConfigItems.ingotsMetal,9, 1), new Object[]{new ItemStack(ConfigBlocks.blockCopper)});
-		GameRegistry.addShapelessRecipe(new ItemStack(ConfigItems.ingotsMetal,9, 2), new Object[]{new ItemStack(ConfigBlocks.blockTin)});
-		GameRegistry.addShapelessRecipe(new ItemStack(ConfigItems.ingotsMetal,9, 3), new Object[]{new ItemStack(ConfigBlocks.blockZinc)});
-		GameRegistry.addShapelessRecipe(new ItemStack(ConfigItems.ingotsMetal,9, 4), new Object[]{new ItemStack(ConfigBlocks.blockCastIron)});
-		GameRegistry.addShapelessRecipe(new ItemStack(ConfigItems.ingotsMetal,9, 5), new Object[]{new ItemStack(ConfigBlocks.blockBrass)});
-		GameRegistry.addShapelessRecipe(new ItemStack(ConfigItems.ingotsMetal,9, 6), new Object[]{new ItemStack(ConfigBlocks.blockBronze)});
-		GameRegistry.addShapelessRecipe(new ItemStack(ConfigItems.ingotsMetal,9, 7), new Object[]{new ItemStack(ConfigBlocks.blockSteel)});
 		GameRegistry.addShapelessRecipe(new ItemStack(ConfigItems.uraniumOre, 9), new Object[]{new ItemStack(ConfigBlocks.blockUranium)});
 		GameRegistry.addShapelessRecipe(new ItemStack(ConfigItems.etherium, 9), new Object[]{new ItemStack(ConfigBlocks.blockVolucite)});
 
