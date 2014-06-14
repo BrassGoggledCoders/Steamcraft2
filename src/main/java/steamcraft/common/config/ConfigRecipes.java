@@ -27,8 +27,8 @@ public class ConfigRecipes {
 		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.itemRayGun), new Object[] {" BB", "EBE", "  B", 'E', Items.emerald, 'B', Items.iron_ingot});
 		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.itemShrinkray), new Object[] {" BB", "EBE", "  B", 'E', Items.diamond, 'B', Items.iron_ingot});
 
-		GameRegistry.addShapelessRecipe(new ItemStack(ConfigItems.itemPowder, 3, 4), new Object[]{new ItemStack(ConfigItems.itemPowder, 2, 1), new ItemStack(ConfigItems.itemPowder, 1, 3)});
-		GameRegistry.addShapelessRecipe(new ItemStack(ConfigItems.itemPowder, 3, 5), new Object[]{new ItemStack(ConfigItems.itemPowder, 2, 1), new ItemStack(ConfigItems.itemPowder, 1, 2)});
+		GameRegistry.addShapelessRecipe(new ItemStack(ConfigItems.itemPowder, 3, 4), new Object[]{new ItemStack(ConfigItems.itemPowder, 2, 1), new ItemStack(ConfigItems.itemPowder, 1, 3), new ItemStack(ConfigItems.itemPowder, 1, 3)});
+		GameRegistry.addShapelessRecipe(new ItemStack(ConfigItems.itemPowder, 3, 5), new Object[]{new ItemStack(ConfigItems.itemPowder, 2, 1), new ItemStack(ConfigItems.itemPowder, 1, 2), new ItemStack(ConfigItems.itemPowder, 1, 2)});
 		//Blocks
 		/*
 		GameRegistry.addRecipe(new ItemStack(ConfigBlocks.blockUranium), new Object[] {"III", "III", "III", 'I', new ItemStack(ConfigItems.uraniumOre)});
