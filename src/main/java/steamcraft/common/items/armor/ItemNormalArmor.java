@@ -29,7 +29,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  *
  * @author Decebaldecebal
  */
-public class ItemNormalArmor extends ItemArmor
+public class ItemNormalArmor extends BaseArmor
 {
 
 	/** The material. */

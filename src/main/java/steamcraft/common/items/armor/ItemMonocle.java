@@ -1,5 +1,5 @@
 /**
- * This class was created by <Surseance> or his SC2 development team. 
+ * This class was created by <Surseance> or his SC2 development team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -22,9 +22,9 @@ import steamcraft.common.Steamcraft;
  *
  * @author Surseance (Johnny Eatmon)
  */
-public class ItemMonocle extends ItemArmor
+public class ItemMonocle extends BaseArmor
 {
-	
+
 	/**
 	 * Instantiates a new item monocle.
 	 *
@@ -42,18 +42,18 @@ public class ItemMonocle extends ItemArmor
 
 	/*
 	 * @Override
-	 * 
+	 *
 	 * @SideOnly(Side.CLIENT) public ModelBiped getArmorModel(EntityLivingBase
 	 * living, ItemStack is, int slot) { ModelBiped armorModel = new
 	 * ModelBiped();
-	 * 
+	 *
 	 * if (is != null) { if (is.getItem() instanceof ItemMonocle) { int type =
 	 * ((ItemArmor)is.getItem()).armorType;
-	 * 
+	 *
 	 * if (type == 1 || type == 3) { armorModel =
 	 * Steamcraft.proxy.getMonocleArmorModel(0); } else { armorModel =
 	 * Steamcraft.proxy.getMonocleArmorModel(1); } }
-	 * 
+	 *
 	 * if (armorModel != null) { armorModel.bipedHead.showModel = slot == 0;
 	 * armorModel.bipedHeadwear.showModel = slot == 0;
 	 * armorModel.bipedBody.showModel = slot == 1 || slot == 2;
@@ -65,12 +65,12 @@ public class ItemMonocle extends ItemArmor
 	 * living.isRiding(); armorModel.isChild = living.isChild();
 	 * armorModel.heldItemRight = living.getCurrentItemOrArmor(0) != null ? 1 :
 	 * 0;
-	 * 
+	 *
 	 * if (living instanceof EntityPlayer) { armorModel.aimedBow =
 	 * ((EntityPlayer)living).getItemInUseDuration() > 2; }
-	 * 
+	 *
 	 * return armorModel; } }
-	 * 
+	 *
 	 * return null; }
 	 */
 }

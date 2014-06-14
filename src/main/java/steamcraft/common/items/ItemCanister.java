@@ -30,7 +30,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  * 
  * @author Decebaldecebal
  */
-public class ItemCanister extends Item
+public class ItemCanister extends BaseItem
 {
 	public String gas;
 

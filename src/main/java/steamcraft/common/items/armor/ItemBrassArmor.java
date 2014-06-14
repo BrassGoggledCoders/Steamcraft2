@@ -34,7 +34,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  *
  * @author Surseance (Johnny Eatmon)
  */
-public class ItemBrassArmor extends ItemArmor
+public class ItemBrassArmor extends BaseArmor
 {
 
 	/** The icon. */

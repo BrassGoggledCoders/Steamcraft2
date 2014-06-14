@@ -14,7 +14,7 @@ import steamcraft.common.config.ConfigItems;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemPipe extends Item
+public class ItemPipe extends BaseItem
 {
 	public ItemPipe()
 	{

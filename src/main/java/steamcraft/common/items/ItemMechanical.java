@@ -1,5 +1,5 @@
 /**
- * This class was created by <Surseance> or his SC2 development team. 
+ * This class was created by <Surseance> or his SC2 development team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -26,10 +26,10 @@ import cpw.mods.fml.relauncher.SideOnly;
  *
  * @author Surseance (Johnny Eatmon)
  */
-public class ItemMechanical extends Item
+public class ItemMechanical extends BaseItem
 {
 	/*
-	 * 
+	 *
 	 * public static Item brassWatch; public static Item canisterSteam; public
 	 * static Item canisterGas; public static Item steamCanister; public static
 	 * Item gasCanister; public static Item emptyCanister;

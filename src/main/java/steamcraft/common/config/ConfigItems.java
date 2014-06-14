@@ -13,7 +13,6 @@
  */
 package steamcraft.common.config;
 
-import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import steamcraft.common.Steamcraft;
@@ -265,7 +264,7 @@ public class ConfigItems
 		itemSteamJetpack = new ItemSteamJetpack(MaterialHelper.ARMOR_STEAM, 0, 1).setUnlocalizedName("itemSteamJetpack");
 
 		// Canisters
-		itemCanisterEmpty = new Item().setUnlocalizedName("itemCanisterEmpty");
+		itemCanisterEmpty = new BaseItem().setUnlocalizedName("itemCanisterEmpty");
 		itemCanisterSteam = new ItemCanister("steam", 150000, 20).setUnlocalizedName("itemCanisterSteam");
 		itemCanisterGas = new ItemCanister("compressedgas", 150000, 20).setUnlocalizedName("itemCanisterGas");
 
@@ -280,7 +279,7 @@ public class ConfigItems
 		itemChisel = new ItemChisel().setUnlocalizedName("itemChisel");
 		itemBrassGoggles = new ItemBrassGoggles(ItemArmor.ArmorMaterial.CHAIN, 0, 0);
 		itemPipe = new ItemPipe();
-		itemPoppySeed = new Item().setUnlocalizedName("itemPoppySeed").setCreativeTab(Steamcraft.tabSC2);
+		itemPoppySeed = new BaseItem().setUnlocalizedName("itemPoppySeed").setCreativeTab(Steamcraft.tabSC2);
 		itemRayGun = new ItemRayGun(LibInfo.PREFIX + "raygun");
 		itemShrinkray = new ItemShrinkray(LibInfo.PREFIX + "shrinkray");
 		itemHammer = new ItemHammer().setUnlocalizedName("itemHammer");
