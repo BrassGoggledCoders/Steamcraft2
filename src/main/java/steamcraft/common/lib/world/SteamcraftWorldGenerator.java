@@ -16,6 +16,7 @@ package steamcraft.common.lib.world;
 
 import java.util.Random;
 
+import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
@@ -34,27 +35,27 @@ public class SteamcraftWorldGenerator implements IWorldGenerator
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider generator,
 			IChunkProvider chunk)
 	{
-		int blockChunkX = chunkX * 16;
-		int blockChunkZ = chunkZ * 16;
+		//int blockChunkX = chunkX * 16;
+		//int blockChunkZ = chunkZ * 16;
 
 		switch (world.provider.dimensionId)
 		{
 		case -1:
 			if (Config.netherGenerationEnabled)
 			{
-				this.generateNether(world, random, blockChunkX, blockChunkZ);
+				this.generateNether(world, random, chunkX, chunkZ);
 			}
 			break;
 		case 0:
 			//if (Config.overworldGenerationEnabled)
 			//{
-				this.generateSurface(world, random, blockChunkX, blockChunkZ);
+				this.generateSurface(world, random, chunkX * 16, chunkZ * 16);
 			//}
 			break;
 		case 1:
 			if (Config.endGenerationEnabled)
 			{
-				this.generateEnd(world, random, blockChunkX, blockChunkZ);
+				this.generateEnd(world, random, chunkX, chunkZ);
 			}
 			break;
 		}
@@ -63,100 +64,20 @@ public class SteamcraftWorldGenerator implements IWorldGenerator
 	// TODO: Add Config Options for ore vein size
 	private void generateSurface(World world, Random random, int chunkX, int chunkZ)
 	{
-		if (Config.aluminumOreGenEnabled)
-		{
-			for (int chance = 0; chance < Config.aluminumChance; chance++)
-			{
-				int aluminumXCoord = chunkX + random.nextInt(16);
-				int aluminumYCoord = random.nextInt(Config.aluminumHeight);
-				int aluminumZCoord = chunkZ + random.nextInt(16);
-
-				new WorldGenMinable(ConfigBlocks.blockCustomOre, 4, random.nextInt(3), Blocks.stone).generate(world, random, aluminumXCoord,
-						aluminumYCoord, aluminumZCoord);
-			}
-		}
+		if(Config.aluminumOreGenEnabled)
+			addOreSpawn(ConfigBlocks.blockCustomOre,0, Blocks.stone, world, random, chunkX, chunkZ, 16, 16, 3+random.nextInt(3), Config.aluminumChance, 15, Config.aluminumHeight);
 		if (Config.copperOreGenEnabled)
-		{
-			for (int chance = 0; chance < Config.copperChance; chance++)
-			{
-				int copperXCoord = chunkX + random.nextInt(16);
-				int copperYCoord = random.nextInt(Config.copperHeight);
-				int copperZCoord = chunkZ + random.nextInt(16);
-
-				new WorldGenMinable(ConfigBlocks.blockCustomOre, 5, random.nextInt(3), Blocks.stone).generate(world, random, copperXCoord,
-						copperYCoord, copperZCoord);
-			}
-		}
+			addOreSpawn(ConfigBlocks.blockCustomOre,1, Blocks.stone,world, random, chunkX, chunkZ, 16, 16, 6+random.nextInt(3), Config.copperChance, 15, Config.copperHeight);
 		if (Config.tinOreGenEnabled)
-		{
-			for (int chance = 0; chance < Config.tinChance; chance++)
-			{
-				int tinXCoord = chunkX + random.nextInt(16);
-				int tinYCoord = random.nextInt(Config.tinHeight);
-				int tinZCoord = chunkZ + random.nextInt(16);
-
-				new WorldGenMinable(ConfigBlocks.blockCustomOre, 6, random.nextInt(3), Blocks.stone).generate(world, random, tinXCoord, tinYCoord,
-						tinZCoord);
-			}
-		}
+			addOreSpawn(ConfigBlocks.blockCustomOre,2,Blocks.stone, world, random, chunkX, chunkZ, 16, 16, 4+random.nextInt(3), Config.tinChance, 15, Config.tinHeight);
 		if (Config.zincOreGenEnabled)
-		{
-			for (int chance = 0; chance < Config.zincChance; chance++)
-			{
-				int zincXCoord = chunkX + random.nextInt(16);
-				int zincYCoord = random.nextInt(Config.zincHeight);
-				int zincZCoord = chunkZ + random.nextInt(16);
-
-				new WorldGenMinable(ConfigBlocks.blockCustomOre, 7, random.nextInt(3), Blocks.stone).generate(world, random, zincXCoord, zincYCoord,
-						zincZCoord);
-			}
-		}
+			addOreSpawn(ConfigBlocks.blockCustomOre,3, Blocks.stone,world, random, chunkX, chunkZ, 16, 16, 3+random.nextInt(3), Config.zincChance, 15, Config.zincHeight);
 		if (Config.uraniumOreGenEnabled)
-		{
-			for (int chance = 0; chance < Config.uraniumChance; chance++)
-			{
-				int uraniteXCoord = chunkX + random.nextInt(16);
-				int uraniteYCoord = random.nextInt(Config.uraniumHeight);
-				int uraniteZCoord = chunkZ + random.nextInt(16);
-
-				new WorldGenMinable(ConfigBlocks.blockCustomOre, 3, random.nextInt(3), Blocks.stone).generate(world, random, uraniteXCoord,
-						uraniteYCoord, uraniteZCoord);
-			}
-		}
+			addOreSpawn(ConfigBlocks.blockCustomOre,4,Blocks.stone, world, random, chunkX, chunkZ, 16, 16, 1+random.nextInt(3), Config.uraniumChance, 15, Config.uraniumHeight);
 		if (Config.brimstoneOreGenEnabled)
-		{
-				for (int chance = 0; chance < Config.brimstoneChance; chance++)
-				{
-					int brimstoneXCoord = chunkX + random.nextInt(16);
-					int brimstoneYCoord = random.nextInt(Config.brimstoneHeight);
-					int brimstoneZCoord = chunkZ + random.nextInt(16);
-
-					new WorldGenMinable(ConfigBlocks.blockCustomOre, 1, random.nextInt(3), Blocks.stone).generate(world, random, brimstoneXCoord,
-							brimstoneYCoord, brimstoneZCoord);
-				}
-		}
+			addOreSpawn(ConfigBlocks.blockCustomOre,5,Blocks.stone, world, random, chunkX, chunkZ, 16, 16, 3+random.nextInt(3), Config.brimstoneChance, 15, Config.brimstoneHeight);
 		if (Config.phosphateOreGenEnabled)
-		{
-			for (int chance = 0; chance < Config.phosphateChance; chance++)
-			{
-				int zincXCoord = chunkX + random.nextInt(16);
-				int zincYCoord = random.nextInt(Config.phosphateHeight);
-				int zincZCoord = chunkZ + random.nextInt(16);
-
-				new WorldGenMinable(ConfigBlocks.blockCustomOre, 2, random.nextInt(3), Blocks.stone).generate(world, random, zincXCoord, zincYCoord,
-						zincZCoord);
-			}
-		}
-		if (Config.etheriumOreGenEnabled)
-		{
-			for (int chance = 0; chance < Config.etheriumChance; chance++)
-			{
-
-				// new WorldGenMinable(ConfigBlocks.blockCustomOre.blockID, 8,
-				// random.nextInt(3), Block.stone.blockID).generate(world,
-				// random, etheriumXCoord, etheriumYCoord, etheriumZCoord);
-			}
-		}
+			addOreSpawn(ConfigBlocks.blockCustomOre,6,Blocks.stone, world, random, chunkX, chunkZ, 16, 16, 3+random.nextInt(3), Config.phosphateChance, 15, Config.phosphateHeight);
 	}
 
 	private void generateEnd(World world, Random random, int chunkX, int chunkZ)
@@ -180,4 +101,36 @@ public class SteamcraftWorldGenerator implements IWorldGenerator
 			}
 		}
 	}
+	/**
+     * Adds an Ore Spawn to Minecraft. Simply register all Ores to spawn with this method in your Generation method in your IWorldGeneration extending Class
+     *
+     * @param The Block to spawn
+     * @param The World to spawn in
+     * @param A Random object for retrieving random positions within the world to spawn the Block
+     * @param An int for passing the X-Coordinate for the Generation method
+     * @param An int for passing the Z-Coordinate for the Generation method
+     * @param An int for setting the maximum X-Coordinate values for spawning on the X-Axis on a Per-Chunk basis
+     * @param An int for setting the maximum Z-Coordinate values for spawning on the Z-Axis on a Per-Chunk basis
+     * @param An int for setting the maximum size of a vein
+     * @param An int for the Number of chances available for the Block to spawn per-chunk
+     * @param An int for the minimum Y-Coordinate height at which this block may spawn
+     * @param An int for the maximum Y-Coordinate height at which this block may spawn
+     **/
+    public void addOreSpawn(Block block, int meta, Block blockToGenIn, World world, Random random, int blockXPos, int blockZPos, int maxX, int maxZ, int maxVeinSize, int chancesToSpawn, int minY, int maxY)
+    {
+        assert maxY > minY : "The maximum Y must be greater than the Minimum Y";
+        assert maxX > 0 && maxX <= 16 : "addOreSpawn: The Maximum X must be greater than 0 and less than 16";
+        assert minY > 0 : "addOreSpawn: The Minimum Y must be greater than 0";
+        assert maxY < 256 && maxY > 0 : "addOreSpawn: The Maximum Y must be less than 256 but greater than 0";
+        assert maxZ > 0 && maxZ <= 16 : "addOreSpawn: The Maximum Z must be greater than 0 and less than 16";
+
+        int diffBtwnMinMaxY = maxY - minY;
+        for (int x = 0; x < chancesToSpawn; x++)
+        {
+            int posX = blockXPos + random.nextInt(maxX);
+            int posY = minY + random.nextInt(diffBtwnMinMaxY);
+            int posZ = blockZPos + random.nextInt(maxZ);
+            (new WorldGenMinable(block, meta, maxVeinSize, blockToGenIn)).generate(world, random, posX, posY, posZ);
+        }
+    }
 }

@@ -65,7 +65,7 @@ public class Steamcraft
 	public static Steamcraft instance;
 
 	/** The world gen. */
-	public SteamcraftWorldGenerator worldGen;
+	public SteamcraftWorldGenerator worldGen = new SteamcraftWorldGenerator();
 
 	/** The directory. */
 	public File directory;
@@ -107,7 +107,7 @@ public class Steamcraft
 
 		// GameRegistry.registerFuelHandler(this.worldEventHandler);
 		// GameRegistry.registerCraftingHandler(this.worldEventHandler);
-		GameRegistry.registerWorldGenerator(new SteamcraftWorldGenerator(), 0);
+		GameRegistry.registerWorldGenerator(this.worldGen, 0);
 
 		Config.save();
 		ConfigBlocks.init();
