@@ -180,7 +180,7 @@ public class ItemBrassArmor extends BaseArmor
 	public void onArmorTick( World world,  EntityPlayer player,
 			 ItemStack is)
 	{
-		if (modules.get("aqualung") != null && (boolean) this.modules.get("aqualung"))
+		if (modules.get("aqualung") != null && this.modules.get("aqualung").equals("true"))
 		{
 			if (player.getAir() <= 0)
 			{
