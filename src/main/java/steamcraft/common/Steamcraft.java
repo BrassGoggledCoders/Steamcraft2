@@ -69,11 +69,11 @@ public class Steamcraft
 	/** The directory. */
 	public File directory;
 
-	/** The draw event handler. */
-	public EventHandlerDrawHighlight drawEventHandler;
-
 	/** The sc2 event handler. */
 	public EventHandlerSC2 sc2EventHandler;
+
+	//TODO: FIX!
+	//public EventHandlerDrawHighlight drawEventHandler;
 
 	/** The tab s c2. */
 	public static CreativeTabs tabSC2 = new CreativeTabSteamcraft(CreativeTabs.getNextID(), "steamcraft");
@@ -98,11 +98,12 @@ public class Steamcraft
 				Config.save();
 			}
 		}
-		this.drawEventHandler = new EventHandlerDrawHighlight();
+		//this.drawEventHandler = new EventHandlerDrawHighlight();
 		this.sc2EventHandler = new EventHandlerSC2();
 
 		// MinecraftForge.EVENT_BUS.register(this.worldEventHandler);
 		MinecraftForge.EVENT_BUS.register(this.sc2EventHandler);
+		//MinecraftForge.EVENT_BUS.register(this.drawEventHandler);
 
 		// GameRegistry.registerFuelHandler(this.worldEventHandler);
 		// GameRegistry.registerCraftingHandler(this.worldEventHandler);

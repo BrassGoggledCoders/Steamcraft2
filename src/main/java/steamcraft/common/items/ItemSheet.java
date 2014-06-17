@@ -14,8 +14,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemSheet extends BaseItemWithMetadata
 {
-    @SideOnly(Side.CLIENT)
-    private IIcon[] icon = new IIcon[8];
+
 
     public ItemSheet() {
 	super();
@@ -36,6 +35,7 @@ public class ItemSheet extends BaseItemWithMetadata
     @SideOnly(Side.CLIENT)
     public void registerIcons(IIconRegister ir)
     {
+    	IIcon[] icon = new IIcon[8];
 		icon[0] = ir.registerIcon(LibInfo.PREFIX + "itemSheetAluminum");
 		icon[1] = ir.registerIcon(LibInfo.PREFIX + "itemSheetCopper");
 		icon[2] = ir.registerIcon(LibInfo.PREFIX + "itemSheetTin");

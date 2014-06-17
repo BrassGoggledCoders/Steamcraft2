@@ -18,6 +18,7 @@ import java.awt.Color;
 import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
+import net.minecraftforge.common.MinecraftForge;
 import steamcraft.client.renderers.block.BlockCastIronLampRenderer;
 import steamcraft.client.renderers.block.BlockCrystalRenderer;
 import steamcraft.client.renderers.block.BlockHatchRenderer;
@@ -29,6 +30,7 @@ import steamcraft.common.KeyBindings;
 import steamcraft.common.KeyInputHandler;
 import steamcraft.common.config.ConfigBlocks;
 import steamcraft.common.lib.Utils;
+import steamcraft.common.lib.events.EventHandlerDrawHighlight;
 import steamcraft.common.tiles.TileCastIronLamp;
 import steamcraft.common.tiles.TileCrystal;
 import steamcraft.common.tiles.TileHatch;
@@ -42,6 +44,7 @@ import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.FMLCommonHandler;
 
 // TODO: Auto-generated Javadoc
+
 /**
  * The Class ClientProxy.
  *
@@ -49,6 +52,9 @@ import cpw.mods.fml.common.FMLCommonHandler;
  */
 public class ClientProxy extends CommonProxy
 {
+
+	/** The draw event handler. */
+	public EventHandlerDrawHighlight drawEventHandler;
 	@Override
 	public void registerKeys()
 	{

@@ -79,65 +79,7 @@ public class EventHandlerSC2
 		}
 	}
 
-	@SideOnly(Side.CLIENT)
-	private Minecraft mc = Minecraft.getMinecraft();
 
-	private static ResourceLocation overlay = new ResourceLocation(LibInfo.PREFIX + "textures/misc/goggles.png");
-
-	@SubscribeEvent
-	@SideOnly(Side.CLIENT)
-	public void onHUDTick(RenderGameOverlayEvent.Pre event)
-	{
-		if (event.type == ElementType.HELMET)
-		{
-			if ((this.mc.thePlayer == null) || (this.mc.currentScreen != null))
-			{
-				return;
-			}
-
-			ItemStack helmet = this.mc.thePlayer.inventory.armorItemInSlot(3);
-
-			if ((this.mc.gameSettings.thirdPersonView == 0) && (helmet != null) && (helmet.getItem() == ConfigItems.itemBrassGoggles))// &&
-																																		// KeyHandler.keyPressed)
-			{
-				this.mc.getTextureManager().bindTexture(EventHandlerSC2.overlay);
-				Tessellator tessellator = Tessellator.instance;
-				ScaledResolution scaledResolution = new ScaledResolution(this.mc.gameSettings, this.mc.displayWidth, this.mc.displayHeight);
-				int width = scaledResolution.getScaledWidth();
-				int height = scaledResolution.getScaledHeight();
-
-				GL11.glDisable(GL11.GL_DEPTH_TEST);
-				GL11.glDepthMask(false);
-				// GL11.glEnable(GL11.GL_BLEND);
-				// GL11.glBlendFunc(GL11.GL_DST_COLOR, GL11.GL_SRC_COLOR);
-				// GL11.glColor3f(1.0F, 1.0F, 1.0F);
-				GL11.glDisable(GL11.GL_ALPHA_TEST);
-				GL11.glClearDepth(1.0D);
-				tessellator.startDrawingQuads();
-				tessellator.addVertexWithUV(0.0D, height, 90.0D, 0.0D, 1.0D);
-				tessellator.addVertexWithUV(width, height, 90.0D, 1.0D, 1.0D);
-				tessellator.addVertexWithUV(width, 0.0D, 90.0D, 1.0D, 0.0D);
-				tessellator.addVertexWithUV(0.0D, 0.0D, 90.0D, 0.0D, 0.0D);
-				tessellator.draw();
-				GL11.glDepthMask(true);
-				GL11.glEnable(GL11.GL_DEPTH_TEST);
-				GL11.glEnable(GL11.GL_ALPHA_TEST);
-				GL11.glDisable(GL11.GL_BLEND);
-
-				/*
-				 * if (!mc.gameSettings.hideGUI || mc.currentScreen != null) {
-				 * int x = (Mouse.getX() * width) / mc.displayWidth; int y =
-				 * height - (Mouse.getY() * height) / mc.displayHeight - 1;
-				 * mc.ingameGUI.renderGameOverlay(0.0F, mc.currentScreen !=
-				 * null, x, y); }
-				 */
-			}
-		}
-		else
-		{
-			return;
-		}
-	}
 
 	@SubscribeEvent
 	public void onItemDrop(ItemTossEvent event)
@@ -179,6 +121,62 @@ public class EventHandlerSC2
 		else if (!(event.entityLiving instanceof EntityPlayer))
 		{
 			event.entityLiving.removePotionEffect(Potion.nightVision.id);
+		}
+	}
+	private static ResourceLocation overlay = new ResourceLocation(LibInfo.PREFIX + "textures/misc/goggles.png");
+
+	@SubscribeEvent
+	@SideOnly(Side.CLIENT)
+	public void onHUDTick(RenderGameOverlayEvent.Pre event)
+	{
+		if (event.type == ElementType.HELMET)
+		{
+			if ((Minecraft.getMinecraft().thePlayer == null) || (Minecraft.getMinecraft().currentScreen != null))
+			{
+				return;
+			}
+
+			ItemStack helmet = Minecraft.getMinecraft().thePlayer.inventory.armorItemInSlot(3);
+
+			if ((Minecraft.getMinecraft().gameSettings.thirdPersonView == 0) && (helmet != null) && (helmet.getItem() == ConfigItems.itemBrassGoggles))// &&
+																																		// KeyHandler.keyPressed)
+			{
+				Minecraft.getMinecraft().getTextureManager().bindTexture(EventHandlerSC2.overlay);
+				Tessellator tessellator = Tessellator.instance;
+				ScaledResolution scaledResolution = new ScaledResolution(Minecraft.getMinecraft().gameSettings, Minecraft.getMinecraft().displayWidth, Minecraft.getMinecraft().displayHeight);
+				int width = scaledResolution.getScaledWidth();
+				int height = scaledResolution.getScaledHeight();
+
+				GL11.glDisable(GL11.GL_DEPTH_TEST);
+				GL11.glDepthMask(false);
+				// GL11.glEnable(GL11.GL_BLEND);
+				// GL11.glBlendFunc(GL11.GL_DST_COLOR, GL11.GL_SRC_COLOR);
+				// GL11.glColor3f(1.0F, 1.0F, 1.0F);
+				GL11.glDisable(GL11.GL_ALPHA_TEST);
+				GL11.glClearDepth(1.0D);
+				tessellator.startDrawingQuads();
+				tessellator.addVertexWithUV(0.0D, height, 90.0D, 0.0D, 1.0D);
+				tessellator.addVertexWithUV(width, height, 90.0D, 1.0D, 1.0D);
+				tessellator.addVertexWithUV(width, 0.0D, 90.0D, 1.0D, 0.0D);
+				tessellator.addVertexWithUV(0.0D, 0.0D, 90.0D, 0.0D, 0.0D);
+				tessellator.draw();
+				GL11.glDepthMask(true);
+				GL11.glEnable(GL11.GL_DEPTH_TEST);
+				GL11.glEnable(GL11.GL_ALPHA_TEST);
+				GL11.glDisable(GL11.GL_BLEND);
+
+				/*
+				 * if (!mc.gameSettings.hideGUI || mc.currentScreen != null) {
+				 * int x = (Mouse.getX() * width) / mc.displayWidth; int y =
+				 * height - (Mouse.getY() * height) / mc.displayHeight - 1;
+				 * mc.ingameGUI.renderGameOverlay(0.0F, mc.currentScreen !=
+				 * null, x, y); }
+				 */
+			}
+		}
+		else
+		{
+			return;
 		}
 	}
 }

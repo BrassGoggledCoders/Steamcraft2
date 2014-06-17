@@ -14,8 +14,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemNugget extends BaseItemWithMetadata
 {
-    @SideOnly(Side.CLIENT)
-    private IIcon[] icon = new IIcon[8];
 
     public ItemNugget() {
 	super();
@@ -36,6 +34,7 @@ public class ItemNugget extends BaseItemWithMetadata
     @SideOnly(Side.CLIENT)
     public void registerIcons(IIconRegister ir)
     {
+    	IIcon[] icon = new IIcon[8];
 		icon[0] = ir.registerIcon(LibInfo.PREFIX + "itemNuggetAluminum");
 		icon[1] = ir.registerIcon(LibInfo.PREFIX + "itemNuggetCopper");
 		icon[2] = ir.registerIcon(LibInfo.PREFIX + "itemNuggetTin");

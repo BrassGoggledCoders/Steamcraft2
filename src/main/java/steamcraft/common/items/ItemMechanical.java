@@ -28,18 +28,19 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class ItemMechanical extends BaseItem
 {
 	/*
+	/*
 	 *
 	 * public static Item brassWatch; public static Item canisterSteam; public
 	 * static Item canisterGas; public static Item steamCanister; public static
 	 * Item gasCanister; public static Item emptyCanister;
-	 */
+
 
 	/** The icon. */
 	public IIcon[] icon = new IIcon[6];
 
 	/* (non-Javadoc)
 	 * @see net.minecraft.item.Item#getIconFromDamage(int)
-	 */
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public IIcon getIconFromDamage(final int itemDamage)
@@ -49,7 +50,7 @@ public class ItemMechanical extends BaseItem
 
 	/* (non-Javadoc)
 	 * @see net.minecraft.item.Item#registerIcons(net.minecraft.client.renderer.texture.IIconRegister)
-	 */
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(final IIconRegister ir)
@@ -59,7 +60,8 @@ public class ItemMechanical extends BaseItem
 
 	/**
 	 * Instantiates a new item mechanical.
-	 */
+
+	*/
 	public ItemMechanical()
 	{
 		super();

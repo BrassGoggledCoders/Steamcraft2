@@ -57,7 +57,7 @@ public class EventHandlerDrawHighlight
 		res.getScaledWidth();
 		res.getScaledHeight();
 		mc.entityRenderer.setupOverlayRendering();
-		String text = "Name: ";// + this.mopBlock.getLocalizedName();
+		String text = "Name: " + this.block.getLocalizedName();
 		int posX = 5;
 		int posY = 5;
 		int posY2 = 15;

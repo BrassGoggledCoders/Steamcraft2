@@ -34,9 +34,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class ItemIngot extends BaseItemWithMetadata
 {
 
-	/** The icon. */
-	public IIcon[] icon = new IIcon[8];
-
 	/* (non-Javadoc)
 	 * @see net.minecraft.item.Item#registerIcons(net.minecraft.client.renderer.texture.IIconRegister)
 	 */
@@ -44,6 +41,7 @@ public class ItemIngot extends BaseItemWithMetadata
 	@SideOnly(Side.CLIENT)
 	public void registerIcons( IIconRegister ir)
 	{
+		IIcon[] icon = new IIcon[8];
 		icon[0] = ir.registerIcon(LibInfo.PREFIX + "itemIngotAluminum");
 		icon[1] = ir.registerIcon(LibInfo.PREFIX + "itemIngotCopper");
 		icon[2] = ir.registerIcon(LibInfo.PREFIX + "itemIngotTin");
@@ -76,14 +74,5 @@ public class ItemIngot extends BaseItemWithMetadata
 		{
 			l.add(new ItemStack(ConfigItems.itemIngot, 1, var4));
 		}
-	}
-	/* (non-Javadoc)
-	 * @see net.minecraft.item.Item#getIconFromDamage(int)
-	 */
-	@Override
-	@SideOnly(Side.CLIENT)
-	public IIcon getIconFromDamage( int itemDamage)
-	{
-		return icon[itemDamage];
 	}
 }
