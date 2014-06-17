@@ -15,7 +15,6 @@ package steamcraft.common.items.armor;
 
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
-import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.LibInfo;

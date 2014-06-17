@@ -14,7 +14,6 @@
 package steamcraft.common.items;
 
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.item.Item;
 import net.minecraft.util.IIcon;
 import steamcraft.common.Steamcraft;
 import cpw.mods.fml.relauncher.Side;

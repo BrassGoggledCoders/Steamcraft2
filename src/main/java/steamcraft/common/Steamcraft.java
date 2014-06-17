@@ -32,7 +32,6 @@ import steamcraft.common.lib.events.EventHandlerDrawHighlight;
 import steamcraft.common.lib.events.EventHandlerSC2;
 import steamcraft.common.lib.world.SteamcraftWorldGenerator;
 import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;

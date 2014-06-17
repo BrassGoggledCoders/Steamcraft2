@@ -31,7 +31,6 @@ import steamcraft.common.blocks.BlockDropHammerFrame;
 import steamcraft.common.blocks.BlockEngravedSolid;
 import steamcraft.common.blocks.BlockEngravedSolidItem;
 import steamcraft.common.blocks.BlockFluidSteam;
-import steamcraft.common.blocks.BlockIntake;
 import steamcraft.common.blocks.BlockLamp;
 import steamcraft.common.blocks.BlockMetal;
 import steamcraft.common.blocks.BlockMetalItem;
@@ -159,7 +158,7 @@ public class ConfigBlocks
 
 		steamFluid = new Fluid("steam").setGaseous(true).setTemperature(700).setDensity(-100).setViscosity(500).setLuminosity(1).setUnlocalizedName("steamFluid");
 
-		if (!FluidRegistry.registerFluid(steamFluid))
+		if (!FluidRegistry.registerFluid(steamFluid) && !FluidRegistry.isFluidRegistered("steam"))
 			steamFluid = FluidRegistry.getFluid("steam");
 
 		blockFluidSteam = new BlockFluidSteam(steamFluid, Material.water).setBlockName("steamFluid");

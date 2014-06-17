@@ -34,9 +34,11 @@ import org.lwjgl.opengl.GL13;
 import steamcraft.common.config.ConfigItems;
 import cpw.mods.fml.common.eventhandler.EventPriority;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 /**
- * 
+ *
  * @author Surseance (Johnny Eatmon)
  */
 public class EventHandlerDrawHighlight
@@ -46,6 +48,7 @@ public class EventHandlerDrawHighlight
 	int x, y, z;
 
 	@SubscribeEvent(priority = EventPriority.HIGH)
+	@SideOnly(Side.CLIENT)
 	public void renderOverlay(RenderGameOverlayEvent.Text event)
 	{
 		Minecraft mc = Minecraft.getMinecraft();
@@ -64,6 +67,7 @@ public class EventHandlerDrawHighlight
 	}
 
 	@SubscribeEvent
+	@SideOnly(Side.CLIENT)
 	public void onDrawBlockSelectionBox(DrawBlockHighlightEvent event)
 	{
 		if ((event.player.inventory.armorItemInSlot(3) != null)
@@ -101,7 +105,7 @@ public class EventHandlerDrawHighlight
 
 	/**
 	 * Draw selection box.
-	 * 
+	 *
 	 * @param player
 	 *            the player
 	 * @param mop
@@ -169,7 +173,7 @@ public class EventHandlerDrawHighlight
 
 	/**
 	 * Draw outlined bounding box.
-	 * 
+	 *
 	 * @param aaBB
 	 *            the aa bb
 	 */

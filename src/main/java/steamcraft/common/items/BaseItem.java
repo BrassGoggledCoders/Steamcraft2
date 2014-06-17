@@ -1,11 +1,11 @@
 package steamcraft.common.items;
 
 import net.minecraft.client.renderer.texture.IIconRegister;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.LibInfo;
 import boilerplate.common.RootItem;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class BaseItem extends RootItem
 {

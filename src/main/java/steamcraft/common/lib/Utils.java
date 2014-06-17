@@ -31,9 +31,11 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import steamcraft.common.config.ConfigBlocks;
 import steamcraft.common.config.ConfigItems;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 /**
- * 
+ *
  * @author Surseance (Johnny Eatmon)
  */
 public class Utils
@@ -65,6 +67,7 @@ public class Utils
 		return false;
 	}
 
+	@SideOnly(Side.CLIENT)
 	public static void downloadCapes()
 	{
 		 String[] developers = getUsersFromUrl("https://www.dropbox.com/s/m7tn0tx7y7w630s/devs.txt");
@@ -118,7 +121,7 @@ public class Utils
 
 	/**
 	 * Fill bucket.
-	 * 
+	 *
 	 * @param world
 	 *            the world
 	 * @param mop

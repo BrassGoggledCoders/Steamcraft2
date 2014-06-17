@@ -35,9 +35,11 @@ import steamcraft.common.config.ConfigItems;
 import steamcraft.common.entities.EntityPlayerExtended;
 import steamcraft.common.lib.LibInfo;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 /**
- * 
+ *
  * @author Decebaldecebal
  */
 public class EventHandlerSC2
@@ -48,17 +50,17 @@ public class EventHandlerSC2
 		/*
 		 * if (event.entityLiving instanceof EntityPlayer) { EntityPlayer player
 		 * = (EntityPlayer) event.entityLiving;
-		 * 
+		 *
 		 * ItemStack legsSlot = player.inventory.armorItemInSlot(1);
-		 * 
+		 *
 		 * if (legsSlot != null) { if (legsSlot.getItem() ==
 		 * ConfigItems.itemLegBraces) { float distToFall = player.fallDistance;
-		 * 
+		 *
 		 * if (distToFall > 3.0F) { player.fallDistance = distToFall * 0.888F;
 		 * legsSlot.damageItem(1, player); } } }
-		 * 
+		 *
 		 * ItemStack bootsSlot = player.inventory.armorItemInSlot(0);
-		 * 
+		 *
 		 * if (bootsSlot != null) { if (!player.isInWater() && player.onGround
 		 * && bootsSlot.getItem() == ConfigItems.itemRollerSkates) {
 		 * player.moveEntityWithHeading(player.moveStrafing, player.moveForward
@@ -77,11 +79,13 @@ public class EventHandlerSC2
 		}
 	}
 
+	@SideOnly(Side.CLIENT)
 	private Minecraft mc = Minecraft.getMinecraft();
 
 	private static ResourceLocation overlay = new ResourceLocation(LibInfo.PREFIX + "textures/misc/goggles.png");
 
 	@SubscribeEvent
+	@SideOnly(Side.CLIENT)
 	public void onHUDTick(RenderGameOverlayEvent.Pre event)
 	{
 		if (event.type == ElementType.HELMET)
