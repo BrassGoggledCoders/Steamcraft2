@@ -1,15 +1,15 @@
 package steamcraft.common.items;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import steamcraft.common.Steamcraft;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class BaseItemWithMetadata extends BaseItem
 {
     @SideOnly(Side.CLIENT)
-    private IIcon[] icon;
+    public IIcon[] itemIcon = new IIcon[0];
 	public BaseItemWithMetadata()
 	{
 		super();
@@ -24,4 +24,11 @@ public class BaseItemWithMetadata extends BaseItem
 	{
 		return super.getUnlocalizedName() + "." + is.getItemDamage();
 	}
+	/*@Override
+    public IIcon getIconFromDamage(int i)
+	{
+        if(itemIcon.length != 0)
+		return itemIcon[i];
+        else return itemIcon[0];
+    }*/
 }

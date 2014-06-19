@@ -15,7 +15,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class ItemSheet extends BaseItemWithMetadata
 {
 
-
+	IIcon[] itemIcon = new IIcon[8];
     public ItemSheet() {
 	super();
 	setUnlocalizedName("itemSheet");
@@ -35,15 +35,20 @@ public class ItemSheet extends BaseItemWithMetadata
     @SideOnly(Side.CLIENT)
     public void registerIcons(IIconRegister ir)
     {
-    	IIcon[] icon = new IIcon[8];
-		icon[0] = ir.registerIcon(LibInfo.PREFIX + "itemSheetAluminum");
-		icon[1] = ir.registerIcon(LibInfo.PREFIX + "itemSheetCopper");
-		icon[2] = ir.registerIcon(LibInfo.PREFIX + "itemSheetTin");
-		icon[3] = ir.registerIcon(LibInfo.PREFIX + "itemSheetZinc");
-		icon[4] = ir.registerIcon(LibInfo.PREFIX + "itemSheetBrass");
-		icon[5] = ir.registerIcon(LibInfo.PREFIX + "itemSheetBronze");
-		icon[6] = ir.registerIcon(LibInfo.PREFIX + "itemSheetSteel");
-		icon[7] = ir.registerIcon(LibInfo.PREFIX + "itemSheetCastIron");
+		itemIcon[0] = ir.registerIcon(LibInfo.PREFIX + "itemSheetAluminum");
+		itemIcon[1] = ir.registerIcon(LibInfo.PREFIX + "itemSheetCopper");
+		itemIcon[2] = ir.registerIcon(LibInfo.PREFIX + "itemSheetTin");
+		itemIcon[3] = ir.registerIcon(LibInfo.PREFIX + "itemSheetZinc");
+		itemIcon[4] = ir.registerIcon(LibInfo.PREFIX + "itemSheetBrass");
+		itemIcon[5] = ir.registerIcon(LibInfo.PREFIX + "itemSheetBronze");
+		itemIcon[6] = ir.registerIcon(LibInfo.PREFIX + "itemSheetSteel");
+		itemIcon[7] = ir.registerIcon(LibInfo.PREFIX + "itemSheetCastIron");
     }
+    @Override
+	@SideOnly(Side.CLIENT)
+	public IIcon getIconFromDamage( int itemDamage)
+	{
+		return itemIcon[itemDamage];
+	}
 
 }

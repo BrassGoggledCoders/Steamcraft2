@@ -17,9 +17,9 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * Base class for drills.
- * 
+ *
  * @author Decebaldecebal
- * 
+ *
  */
 public class ItemDrill extends ItemCoreDrill
 {
@@ -33,7 +33,7 @@ public class ItemDrill extends ItemCoreDrill
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister icon)
 	{
-		this.itemIcon = icon.registerIcon(LibInfo.PREFIX + this.getUnlocalizedName().substring(5));
+		this.itemIcon = icon.registerIcon(LibInfo.PREFIX +"tools/" +this.getUnlocalizedName().substring(5));
 	}
 
 	public ItemDrill(ToolMaterial mat)

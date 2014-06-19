@@ -14,7 +14,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemPowder extends BaseItemWithMetadata
 {
-
+	IIcon[] itemIcon = new IIcon[8];
     public ItemPowder() {
 	super();
 	setUnlocalizedName("itemPowder");
@@ -22,7 +22,7 @@ public class ItemPowder extends BaseItemWithMetadata
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void getSubItems(Item item, final CreativeTabs tab, final List list)
+    public void getSubItems(Item item,  CreativeTabs tab,  List list)
     {
     	for (int var4 = 0; var4 < 8; ++var4)
 		{
@@ -44,5 +44,11 @@ public class ItemPowder extends BaseItemWithMetadata
 		icon[6] = ir.registerIcon(LibInfo.PREFIX + "itemPowderSteel");
 		icon[7] = ir.registerIcon(LibInfo.PREFIX + "itemPowderCastIron");
     }
+    @Override
+	@SideOnly(Side.CLIENT)
+	public IIcon getIconFromDamage( int itemDamage)
+	{
+		return itemIcon[itemDamage];
+	}
 
 }

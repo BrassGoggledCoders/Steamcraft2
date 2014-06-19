@@ -34,8 +34,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class ItemResource extends BaseItemWithMetadata
 {
 
-	/** The icon. */
-	public IIcon[] icon = new IIcon[10];
+	IIcon[] itemIcon = new IIcon[10];
 
 	/* (non-Javadoc)
 	 * @see net.minecraft.item.Item#registerIcons(net.minecraft.client.renderer.texture.IIconRegister)
@@ -44,16 +43,16 @@ public class ItemResource extends BaseItemWithMetadata
 	@SideOnly(Side.CLIENT)
 	public void registerIcons( IIconRegister ir)
 	{
-		icon[0] = ir.registerIcon(LibInfo.PREFIX + "itemCrystal");
-		icon[1] = ir.registerIcon(LibInfo.PREFIX + "itemChemSalt");
-		icon[2] = ir.registerIcon(LibInfo.PREFIX + "itemBornite");
-		icon[3] = ir.registerIcon(LibInfo.PREFIX + "itemSlate");
-		icon[4] = ir.registerIcon(LibInfo.PREFIX + "itemBulb");
-		icon[5] = ir.registerIcon(LibInfo.PREFIX + "itemPhosphorus");
-		icon[6] = ir.registerIcon(LibInfo.PREFIX + "itemUranium");
-		icon[7] = ir.registerIcon(LibInfo.PREFIX + "itemPellet");
-		icon[8] = ir.registerIcon(LibInfo.PREFIX + "itemReactorCore");
-		icon[9] = ir.registerIcon(LibInfo.PREFIX + "itemTeaLeaves");
+		itemIcon[0] = ir.registerIcon(LibInfo.PREFIX + "itemCrystal");
+		itemIcon[1] = ir.registerIcon(LibInfo.PREFIX + "itemChemSalt");
+		itemIcon[2] = ir.registerIcon(LibInfo.PREFIX + "itemBornite");
+		itemIcon[3] = ir.registerIcon(LibInfo.PREFIX + "itemSlate");
+		itemIcon[4] = ir.registerIcon(LibInfo.PREFIX + "itemBulb");
+		itemIcon[5] = ir.registerIcon(LibInfo.PREFIX + "itemPhosphorus");
+		itemIcon[6] = ir.registerIcon(LibInfo.PREFIX + "itemUranium");
+		itemIcon[7] = ir.registerIcon(LibInfo.PREFIX + "itemPellet");
+		itemIcon[8] = ir.registerIcon(LibInfo.PREFIX + "itemReactorCore");
+		itemIcon[9] = ir.registerIcon(LibInfo.PREFIX + "itemTeaLeaves");
 	}
 
 	/**
@@ -85,6 +84,6 @@ public class ItemResource extends BaseItemWithMetadata
 	@SideOnly(Side.CLIENT)
 	public IIcon getIconFromDamage( int itemDamage)
 	{
-		return icon[itemDamage];
+		return itemIcon[itemDamage];
 	}
 }

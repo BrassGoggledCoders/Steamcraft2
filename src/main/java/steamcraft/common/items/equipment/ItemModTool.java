@@ -27,7 +27,7 @@ public class ItemModTool extends BaseItem
 {
 	public static final int steamForRepair = 10; //how much it costs in steam to repair the tool with the below durabillity
 	public static final int repairAmount = 15;
-	
+
 	protected static Block[] blocksEffectiveAgainst;
 	public float efficiencyOnProperMaterial = 4.0F;
 	public float damageVsEntity;
@@ -150,7 +150,7 @@ public class ItemModTool extends BaseItem
 
 				while(stack.getItemDamage()-repairAmount >= 0 && canConsumeSteamFromCanister(player))
 				{
-					stack.setItemDamage(stack.getItemDamage() - repairAmount);	
+					stack.setItemDamage(stack.getItemDamage() - repairAmount);
 					i++;
 				}
 			}
@@ -158,7 +158,7 @@ public class ItemModTool extends BaseItem
 
 		return stack;
 	}
-	
+
 	protected boolean canConsumeSteamFromCanister(EntityPlayer player)
 	{
 		int i = 0;
@@ -168,24 +168,24 @@ public class ItemModTool extends BaseItem
 			if ((mainInv[i] != null) && (mainInv[i].getItem() == ConfigItems.itemCanisterSteam))
 			{
 				ItemCanister canister =  (ItemCanister)mainInv[i].getItem();
-				
+
 				if (!canister.isEmpty(mainInv[i]))
 				{
-					canister.addAmount(mainInv[i], -steamForRepair);
-					
+					canister.add(mainInv[i], -steamForRepair);
+
 					return true;
 				}
 				else
 				{
-					mainInv[i] = new ItemStack(ConfigItems.itemCanisterEmpty);
-					
+					mainInv[i] = new ItemStack(ConfigItems.itemCanisterSteam);
+
 					return false;
 				}
 			}
-			
+
 			i++;
 		}
-		
+
 		return false;
 	}
 }

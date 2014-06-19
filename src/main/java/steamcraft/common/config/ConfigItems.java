@@ -21,7 +21,6 @@ import steamcraft.common.items.ItemBrassGoggles;
 import steamcraft.common.items.ItemCanister;
 import steamcraft.common.items.ItemChisel;
 import steamcraft.common.items.ItemIngot;
-import steamcraft.common.items.ItemMechanical;
 import steamcraft.common.items.ItemNugget;
 import steamcraft.common.items.ItemPipe;
 import steamcraft.common.items.ItemPowder;
@@ -56,8 +55,6 @@ import cpw.mods.fml.common.registry.GameRegistry;
 public class ConfigItems
 {
 	// Item Tools(sort of)
-	/** The item mechanical. */
-	public static Item itemMechanical;
 
 	/** The item ingot. */
 	public static Item itemResource, itemIngot, itemSheet, itemPowder;
@@ -131,12 +128,6 @@ public class ConfigItems
 
 	/** The item steam canister. */
 	public static Item itemSteamCanister;
-
-	/** The item canister gas. */
-	public static Item itemCanisterGas;
-
-	/** The item canister empty. */
-	public static Item itemCanisterEmpty;
 
 	/** The item musket round. */
 	public static Item itemMusketRound;
@@ -264,15 +255,12 @@ public class ConfigItems
 		itemSteamJetpack = new ItemSteamJetpack(MaterialHelper.ARMOR_STEAM, 0, 1).setUnlocalizedName("itemSteamJetpack");
 
 		// Canisters
-		itemCanisterEmpty = new BaseItem().setUnlocalizedName("itemCanisterEmpty");
-		itemCanisterSteam = new ItemCanister("steam", 150000, 20).setUnlocalizedName("itemCanisterSteam");
-		itemCanisterGas = new ItemCanister("compressedgas", 150000, 20).setUnlocalizedName("itemCanisterGas");
+		itemCanisterSteam = new ItemCanister().setUnlocalizedName("itemCanisterSteam");
 
 		itemIngot = new ItemIngot();
 		itemSheet = new ItemSheet();
 		itemPowder = new ItemPowder();
 		itemNugget = new ItemNugget();
-		itemMechanical = new ItemMechanical().setUnlocalizedName("ItemMechanical");
 		itemResource = new ItemResource().setUnlocalizedName("itemResource");
 		itemWatch = new ItemWatch().setUnlocalizedName("itemWatch");
 		itemTeaSeed = new ItemTeaSeed().setUnlocalizedName("itemTeaSeed");
@@ -328,12 +316,9 @@ public class ConfigItems
 
 	private static void registerItems()
 	{
-		GameRegistry.registerItem(itemCanisterEmpty, "ItemCanisterEmpty", LibInfo.ID);
 		GameRegistry.registerItem(itemCanisterSteam, "ItemCanisterSteam", LibInfo.ID);
-		GameRegistry.registerItem(itemCanisterGas, "ItemCanisterGas", LibInfo.ID);
 
 		GameRegistry.registerItem(itemIngot, "ItemIngot", LibInfo.ID);
-		GameRegistry.registerItem(itemMechanical, "ItemMechanical", LibInfo.ID);
 		GameRegistry.registerItem(itemResource, "ItemResource", LibInfo.ID);
 		GameRegistry.registerItem(itemWatch, "ItemWatch", LibInfo.ID);
 		GameRegistry.registerItem(itemTeaSeed, "ItemTeaSeed", LibInfo.ID);

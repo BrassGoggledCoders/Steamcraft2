@@ -22,6 +22,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import steamcraft.common.Steamcraft;
+import steamcraft.common.config.ConfigItems;
 import steamcraft.common.lib.LibInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -32,38 +33,26 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 public class ItemCanister extends BaseItem
 {
-	public String gas;
+	public static final int MAX_VISIBLE = 2500; //Visual represntation of gas/steam through item damage
 
-	public static int MAX_VISIBLE = 2500; // Visual representation of gas/steam through item damage
+	public static final int MAX_STEAM = 10000; //Isn't this an excesivly large number?
+	public static final int MAX_STEAM_RATE = 20; //Maximum amount of steam that can be inserted into this canister per tick
 
-	public int max_amount;
-	public static int max_rate = 20; // Maximum amount of steam/gas that can be inserted into this canister per tick
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerIcons(IIconRegister ir)
+	public ItemCanister()
 	{
-		this.itemIcon = ir.registerIcon(LibInfo.PREFIX + "itemCanister");
-	}
-
-	public ItemCanister(String gas, int amount, int rate)
-	{
-		this.setMaxStackSize(1);
+		super();
+		this.maxStackSize = 1;
 		this.setNoRepair();
 		this.setMaxDamage(MAX_VISIBLE);
-		this.setCreativeTab(Steamcraft.tabSC2);
-
-		this.gas = gas;
-		this.max_amount = amount;
 	}
 
 	@SuppressWarnings("all")
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void getSubItems(Item item, CreativeTabs tabs, List list)
+	public void getSubItems(Item item, CreativeTabs tab, List l)
 	{
-		list.add(new ItemStack(item, 1, this.getMaxDamage()));
-		list.add(getChargedItem());
+		l.add(getChargedItem());
+		//list.add(new ItemStack(ConfigItems, 1, this.getMaxDamage()));
 	}
 
 	@SuppressWarnings("all")
@@ -71,29 +60,27 @@ public class ItemCanister extends BaseItem
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack itemStack, EntityPlayer player, List list, boolean flag)
 	{
-		list.add(String.format("%d/%d", new Object[] {getAmount(itemStack), max_amount }));
+			list.add(String.format("%d/%d", new Object[] {get(itemStack), MAX_STEAM}));
 	}
 
-	@SuppressWarnings("all")
 	private ItemStack getChargedItem()
 	{
-		ItemStack charged = new ItemStack(this, 1, 0);
+		ItemStack charged = new ItemStack(ConfigItems.itemCanisterSteam);
 		NBTTagCompound tag = new NBTTagCompound();
 
-		tag.setInteger("amount", this.max_amount);
+			tag.setInteger("steam", MAX_STEAM);
 
 		charged.setTagCompound(tag);
 
 		return charged.copy();
 	}
 
-	private NBTTagCompound getOrCreateNBT(ItemStack stack)
+	private static NBTTagCompound getOrCreateNBT(ItemStack stack)
 	{
 		if (stack.getTagCompound() == null)
 		{
 			NBTTagCompound tag = new NBTTagCompound();
-
-			tag.setInteger("amount", ((MAX_VISIBLE - stack.getItemDamage()) * max_amount) / MAX_VISIBLE);
+				tag.setInteger("steam", (MAX_VISIBLE - stack.getItemDamage()) * MAX_STEAM / MAX_VISIBLE);
 
 			stack.setTagCompound(new NBTTagCompound());
 		}
@@ -101,42 +88,41 @@ public class ItemCanister extends BaseItem
 		return stack.getTagCompound();
 	}
 
-	public int getAmount(ItemStack stack)
+	public static int get(ItemStack stack)
 	{
 		NBTTagCompound compound = getOrCreateNBT(stack);
-		return compound.getInteger("amount");
+		return compound.getInteger("steam");
 	}
 
-	public int getEmptySpace(ItemStack stack)
+	public static int getEmptySpace(ItemStack stack)
 	{
 		NBTTagCompound compound = getOrCreateNBT(stack);
-		return max_amount - compound.getInteger("amount");
+		return MAX_STEAM - compound.getInteger("steam");
 	}
 
-	public int addAmount(ItemStack stack, int amount)
+	public int add(ItemStack stack, int steam)
 	{
-		int amountToAdd = Math.min(getEmptySpace(stack), Math.min(amount, max_rate));
-		setAmount(stack, getAmount(stack) + amountToAdd);
-		return amountToAdd;
+		int steamToAdd = Math.min(getEmptySpace(stack), Math.min(steam, MAX_STEAM_RATE));
+		set(stack, get(stack)+steamToAdd);
+		return steamToAdd;
 	}
 
-	public void setAmount(ItemStack stack, int amount)
+	public static void set(ItemStack stack, int steam)
 	{
 		NBTTagCompound compound = getOrCreateNBT(stack);
-		int amountToAdd = Math.min(amount, max_amount);
-		compound.setInteger("amount", amountToAdd);
-		stack.setItemDamage(MAX_VISIBLE - ((amountToAdd * MAX_VISIBLE) / max_amount));
+		int steamToAdd = Math.min(steam, MAX_STEAM);
+		compound.setInteger("steam", steamToAdd);
+		stack.setItemDamage(MAX_VISIBLE - steamToAdd * MAX_VISIBLE / MAX_STEAM);
 	}
 
 	public boolean isFull(ItemStack stack)
 	{
 		NBTTagCompound compound = getOrCreateNBT(stack);
-		return compound.getInteger("amount") >= max_amount;
+		return compound.getInteger("steam") >= MAX_STEAM;
 	}
 
-	public boolean isEmpty(ItemStack stack)
-	{
+	public boolean isEmpty(ItemStack stack) {
 		NBTTagCompound compound = getOrCreateNBT(stack);
-		return compound.getInteger("amount") <= 0;
+		return compound.getInteger("steam") <= 0;
 	}
 }

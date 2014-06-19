@@ -14,7 +14,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemNugget extends BaseItemWithMetadata
 {
-
+	IIcon[] itemIcon = new IIcon[8];
     public ItemNugget() {
 	super();
 	setUnlocalizedName("itemNugget");
@@ -34,15 +34,20 @@ public class ItemNugget extends BaseItemWithMetadata
     @SideOnly(Side.CLIENT)
     public void registerIcons(IIconRegister ir)
     {
-    	IIcon[] icon = new IIcon[8];
-		icon[0] = ir.registerIcon(LibInfo.PREFIX + "itemNuggetAluminum");
-		icon[1] = ir.registerIcon(LibInfo.PREFIX + "itemNuggetCopper");
-		icon[2] = ir.registerIcon(LibInfo.PREFIX + "itemNuggetTin");
-		icon[3] = ir.registerIcon(LibInfo.PREFIX + "itemNuggetZinc");
-		icon[4] = ir.registerIcon(LibInfo.PREFIX + "itemNuggetBrass");
-		icon[5] = ir.registerIcon(LibInfo.PREFIX + "itemNuggetBronze");
-		icon[6] = ir.registerIcon(LibInfo.PREFIX + "itemNuggetSteel");
-		icon[7] = ir.registerIcon(LibInfo.PREFIX + "itemNuggetCastIron");
+		itemIcon[0] = ir.registerIcon(LibInfo.PREFIX + "itemNuggetAluminum");
+		itemIcon[1] = ir.registerIcon(LibInfo.PREFIX + "itemNuggetCopper");
+		itemIcon[2] = ir.registerIcon(LibInfo.PREFIX + "itemNuggetTin");
+		itemIcon[3] = ir.registerIcon(LibInfo.PREFIX + "itemNuggetZinc");
+		itemIcon[4] = ir.registerIcon(LibInfo.PREFIX + "itemNuggetBrass");
+		itemIcon[5] = ir.registerIcon(LibInfo.PREFIX + "itemNuggetBronze");
+		itemIcon[6] = ir.registerIcon(LibInfo.PREFIX + "itemNuggetSteel");
+		itemIcon[7] = ir.registerIcon(LibInfo.PREFIX + "itemNuggetCastIron");
     }
+    @Override
+	@SideOnly(Side.CLIENT)
+	public IIcon getIconFromDamage( int itemDamage)
+	{
+		return itemIcon[itemDamage];
+	}
 
 }

@@ -33,7 +33,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 public class ItemIngot extends BaseItemWithMetadata
 {
-
+	IIcon[] itemIcon = new IIcon[8];
 	/* (non-Javadoc)
 	 * @see net.minecraft.item.Item#registerIcons(net.minecraft.client.renderer.texture.IIconRegister)
 	 */
@@ -41,15 +41,14 @@ public class ItemIngot extends BaseItemWithMetadata
 	@SideOnly(Side.CLIENT)
 	public void registerIcons( IIconRegister ir)
 	{
-		IIcon[] icon = new IIcon[8];
-		icon[0] = ir.registerIcon(LibInfo.PREFIX + "itemIngotAluminum");
-		icon[1] = ir.registerIcon(LibInfo.PREFIX + "itemIngotCopper");
-		icon[2] = ir.registerIcon(LibInfo.PREFIX + "itemIngotTin");
-		icon[3] = ir.registerIcon(LibInfo.PREFIX + "itemIngotZinc");
-		icon[4] = ir.registerIcon(LibInfo.PREFIX + "itemIngotBrass");
-		icon[5] = ir.registerIcon(LibInfo.PREFIX + "itemIngotBronze");
-		icon[6] = ir.registerIcon(LibInfo.PREFIX + "itemIngotSteel");
-		icon[7] = ir.registerIcon(LibInfo.PREFIX + "itemIngotCastIron");
+		itemIcon[0] = ir.registerIcon(LibInfo.PREFIX + "itemIngotAluminum");
+		itemIcon[1] = ir.registerIcon(LibInfo.PREFIX + "itemIngotCopper");
+		itemIcon[2] = ir.registerIcon(LibInfo.PREFIX + "itemIngotTin");
+		itemIcon[3] = ir.registerIcon(LibInfo.PREFIX + "itemIngotZinc");
+		itemIcon[4] = ir.registerIcon(LibInfo.PREFIX + "itemIngotBrass");
+		itemIcon[5] = ir.registerIcon(LibInfo.PREFIX + "itemIngotBronze");
+		itemIcon[6] = ir.registerIcon(LibInfo.PREFIX + "itemIngotSteel");
+		itemIcon[7] = ir.registerIcon(LibInfo.PREFIX + "itemIngotCastIron");
 	}
 
 	/**
@@ -74,5 +73,11 @@ public class ItemIngot extends BaseItemWithMetadata
 		{
 			l.add(new ItemStack(ConfigItems.itemIngot, 1, var4));
 		}
+	}
+	@Override
+	@SideOnly(Side.CLIENT)
+	public IIcon getIconFromDamage( int itemDamage)
+	{
+		return itemIcon[itemDamage];
 	}
 }

@@ -89,10 +89,10 @@ public class BlockSteamBoiler extends BlockContainerMod
 	@Override
 	public void registerBlockIcons(IIconRegister icon)
 	{
-		this.blockIcon = icon.registerIcon(LibInfo.PREFIX + "generatorside");
-		this.iconFront = icon.registerIcon(LibInfo.PREFIX + "generatorfrontinactive");
-		this.iconFrontActive = icon.registerIcon(LibInfo.PREFIX + "generatorfrontinactive");
-		this.iconTop = icon.registerIcon(LibInfo.PREFIX + "generatortop");
+		this.blockIcon = icon.registerIcon(LibInfo.PREFIX + "blockSteamBoilerSide");
+		this.iconFront = icon.registerIcon(LibInfo.PREFIX + "blockSteamBoilerFrontInactive");
+		this.iconFrontActive = icon.registerIcon(LibInfo.PREFIX + "blockSteamBoilerFrontActive");
+		this.iconTop = icon.registerIcon(LibInfo.PREFIX + "blockSteamBoilerTop");
 	}
 
 	@Override
@@ -107,7 +107,7 @@ public class BlockSteamBoiler extends BlockContainerMod
 
 			if ((tile == null) || player.isSneaking())
 				return false;
-			
+
 			System.out.println("works1");
 			player.openGui(Steamcraft.instance, GuiIDs.GUI_ID_STEAM_BOILER, world, par2, par3, par4);
 			return true;

@@ -61,7 +61,7 @@ public class ContainerSteamBoiler extends Container
 			@Override
 			public boolean isItemValid(ItemStack stack)
 			{
-				if (stack.getItem() == ConfigItems.itemCanisterSteam || stack.getItem() == ConfigItems.itemCanisterEmpty)
+				if (stack.getItem() == ConfigItems.itemCanisterSteam)
 				{
 					return true;
 				}

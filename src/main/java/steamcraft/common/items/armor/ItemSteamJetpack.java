@@ -1,5 +1,5 @@
 /**
- * This class was created by <Surseance> or his SC2 development team. 
+ * This class was created by <Surseance> or his SC2 development team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -26,7 +26,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 /**
- * 
+ *
  * @author Decebaldecebal
  */
 public class ItemSteamJetpack extends ItemBrassArmor
@@ -48,7 +48,7 @@ public class ItemSteamJetpack extends ItemBrassArmor
 					&& Keyboard.isKeyDown(Minecraft.getMinecraft().gameSettings.keyBindJump.getKeyCode())
 					&& canConsumeSteamFromCanister(player))
 			{
-				
+
 				if (player.motionY > 0.0D)
 				{
 					player.motionY += 0.08499999910593033D;
@@ -57,7 +57,7 @@ public class ItemSteamJetpack extends ItemBrassArmor
 				{
 					player.motionY += 0.11699999910593033D;
 				}
-				
+
 				world.spawnParticle("smoke", player.posX, player.posY - 0.25D, player.posZ, 0.0D, 0.0D, 0.0D);
 
 			}
@@ -77,7 +77,7 @@ public class ItemSteamJetpack extends ItemBrassArmor
 					player.fallDistance = 0;
 		}
 	}
-	
+
 	private boolean canConsumeSteamFromCanister(EntityPlayer player)
 	{
 		int i = 0;
@@ -87,40 +87,40 @@ public class ItemSteamJetpack extends ItemBrassArmor
 			if ((mainInv[i] != null) && (mainInv[i].getItem() == ConfigItems.itemCanisterSteam))
 			{
 				ItemCanister canister =  (ItemCanister)mainInv[i].getItem();
-				
+
 				if (!canister.isEmpty(mainInv[i]))
 				{
-					canister.addAmount(mainInv[i], -steamPerTick);
-					
+					canister.add(mainInv[i], -steamPerTick);
+
 					return true;
 				}
 				else
 				{
-					mainInv[i] = new ItemStack(ConfigItems.itemCanisterEmpty);
-					
+					mainInv[i] = new ItemStack(ConfigItems.itemCanisterSteam);
+
 					return false;
 				}
 			}
-			
+
 			i++;
 		}
-		
+
 		return false;
 	}
 
 	/*
 	 * Not sure if this is the right place for it
-	 * 
+	 *
 	 * @Override
-	 * 
+	 *
 	 * @SideOnly(Side.CLIENT) public ModelBiped getArmorModel(EntityLivingBase
 	 * entityLiving, ItemStack itemStack, int armorSlot) { ModelBiped armorModel
 	 * = new ModelBiped();
-	 * 
+	 *
 	 * if(itemStack != null) { if(itemStack.getItem() instanceof
 	 * ItemSteamJetpack) { int type =
 	 * ((ItemArmor)itemStack.getItem()).armorType;
-	 * 
+	 *
 	 * if(type == 1 || type == 3) { armorModel =
 	 * SC2.proxy.getWingsArmorModel(0); } else { armorModel =
 	 * SC2.proxy.getWingsArmorModel(1); } } if(armorModel != null) {
@@ -135,12 +135,12 @@ public class ItemSteamJetpack extends ItemBrassArmor
 	 * entityLiving.isRiding(); armorModel.isChild = entityLiving.isChild();
 	 * armorModel.heldItemRight = entityLiving.getCurrentItemOrArmor(0) != null
 	 * ? 1 :0;
-	 * 
+	 *
 	 * if(entityLiving instanceof EntityPlayer) { armorModel.aimedBow =
 	 * ((EntityPlayer)entityLiving).getItemInUseDuration() > 2; }
-	 * 
+	 *
 	 * return armorModel; } }
-	 * 
+	 *
 	 * return null; }
 	 */
 }
