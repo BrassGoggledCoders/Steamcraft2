@@ -36,8 +36,10 @@ import steamcraft.common.blocks.BlockMetal;
 import steamcraft.common.blocks.BlockMetalItem;
 import steamcraft.common.blocks.BlockSlate;
 import steamcraft.common.blocks.BlockSlateItem;
+import steamcraft.common.blocks.machine.BlockArmorEditor;
 import steamcraft.common.blocks.machine.BlockIntake;
 import steamcraft.common.blocks.machine.BlockSteamBoiler;
+import steamcraft.common.tiles.TileArmorEditor;
 import steamcraft.common.tiles.TileCrystal;
 import steamcraft.common.tiles.TileIntake;
 import steamcraft.common.tiles.TileSteamBoiler;
@@ -121,6 +123,8 @@ public class ConfigBlocks
 
 	public static Block blockIntake;
 
+	public static Block blockArmorEditor;
+
 	//Render IDs
 	public static int blockCastIronLampRI, blockCrystalRI, blockDropHammerRI, blockHatchRI, blockLightningRodRI;
 
@@ -155,6 +159,7 @@ public class ConfigBlocks
 		blockBrassLog = new BlockBrassLog(Material.wood);
 		blockBrassLeaves = new BlockBrassLeaves(Material.iron);
 		blockIntake = new BlockIntake(Material.iron);
+		blockArmorEditor = new BlockArmorEditor(Material.iron);
 
 		steamFluid = new Fluid("steam").setGaseous(true).setTemperature(700).setDensity(-100).setViscosity(500).setLuminosity(1).setUnlocalizedName("steamFluid");
 
@@ -184,6 +189,7 @@ public class ConfigBlocks
 		RegistryHelper.registerContainerBlock(blockCrystal, TileCrystal.class, "BlockCrystal");
 		RegistryHelper.registerContainerBlock(blockSteamBoiler, TileSteamBoiler.class, "BlockSteamBoiler");
 		RegistryHelper.registerContainerBlock(blockIntake, TileIntake.class, "BlockIntake");
+		RegistryHelper.registerContainerBlock(blockArmorEditor, TileArmorEditor.class, "BlockArmorEditor");
 		//RegistryHelper.registerContainerBlock(blockDropHammer, TileDropHammer.class, "BlockDropHammer");
 		//GameRegistry.registerBlock(blockDropHammer, "BlockDropHammer");
 		//GameRegistry.registerTileEntity(TileDropHammer.class, "TEDropHammer");

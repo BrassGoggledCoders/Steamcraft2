@@ -20,6 +20,8 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.IFluidContainerItem;
 import steamcraft.common.config.ConfigItems;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -28,7 +30,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  *
  * @author Decebaldecebal
  */
-public class ItemCanister extends BaseItem
+public class ItemCanister extends BaseItem implements IFluidContainerItem
 {
 	public static final int MAX_STEAM = 10000;
 	public static final int MAX_STEAM_RATE = 20; //Maximum amount of steam that can be inserted into this canister per tick
@@ -55,38 +57,127 @@ public class ItemCanister extends BaseItem
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack itemStack, EntityPlayer player, List list, boolean flag)
 	{
-			list.add(String.format("%d/%d", new Object[] {get(itemStack), MAX_STEAM}));
+			//list.add(String.format("%d/%d", new Object[] {get(itemStack), -MAX_STEAM}));
 	}
 
-	public static int get(ItemStack stack)
-	{
-		return stack.getItemDamage();
+	@Override
+	public FluidStack getFluid(ItemStack container) {
+		if (container.stackTagCompound == null || !container.stackTagCompound.hasKey("Fluid"))
+        {
+            return null;
+        }
+        return FluidStack.loadFluidStackFromNBT(container.stackTagCompound.getCompoundTag("Fluid"));
 	}
 
-	public static int getEmptySpace(ItemStack stack)
-	{
-		return MAX_STEAM - stack.getItemDamage();
+	@Override
+	public int getCapacity(ItemStack container) {
+		return MAX_STEAM;
 	}
+	@Override
+    public int fill(ItemStack container, FluidStack resource, boolean doFill)
+    {
+	 if (resource == null)
+     {
+         return 0;
+     }
 
-	public int add(ItemStack stack, int steam)
-	{
-		int steamToAdd = Math.min(getEmptySpace(stack), Math.min(steam, MAX_STEAM_RATE));
-		set(stack, get(stack)+steamToAdd);
-		return steamToAdd;
-	}
+     if (!doFill)
+     {
+         if (container.stackTagCompound == null || !container.stackTagCompound.hasKey("Fluid"))
+         {
+             return Math.min(MAX_STEAM, resource.amount);
+         }
 
-	public static void set(ItemStack stack, int steam)
-	{
-		int steamToAdd = Math.min(steam, MAX_STEAM);
-		stack.setItemDamage(MAX_STEAM - steamToAdd);
-	}
+         FluidStack stack = FluidStack.loadFluidStackFromNBT(container.stackTagCompound.getCompoundTag("Fluid"));
 
-	public boolean isFull(ItemStack stack)
-	{
-		return getDamage(stack) >= MAX_STEAM;
-	}
+         if (stack == null)
+         {
+             return Math.min(MAX_STEAM, resource.amount);
+         }
 
-	public boolean isEmpty(ItemStack stack) {
-		return getDamage(stack) <= 0;
-	}
+         if (!stack.isFluidEqual(resource))
+         {
+             return 0;
+         }
+
+         return Math.min(MAX_STEAM - stack.amount, resource.amount);
+     }
+
+     if (container.stackTagCompound == null)
+     {
+         container.stackTagCompound = new NBTTagCompound();
+     }
+
+     if (!container.stackTagCompound.hasKey("Fluid"))
+     {
+         NBTTagCompound fluidTag = resource.writeToNBT(new NBTTagCompound());
+
+         if (MAX_STEAM < resource.amount)
+         {
+             fluidTag.setInteger("Amount", MAX_STEAM);
+             container.stackTagCompound.setTag("Fluid", fluidTag);
+             return MAX_STEAM;
+         }
+
+         container.stackTagCompound.setTag("Fluid", fluidTag);
+         return resource.amount;
+     }
+
+     NBTTagCompound fluidTag = container.stackTagCompound.getCompoundTag("Fluid");
+     FluidStack stack = FluidStack.loadFluidStackFromNBT(fluidTag);
+
+     if (!stack.isFluidEqual(resource))
+     {
+         return 0;
+     }
+
+     int filled = MAX_STEAM - stack.amount;
+     if (resource.amount < filled)
+     {
+         stack.amount += resource.amount;
+         filled = resource.amount;
+     }
+     else
+     {
+         stack.amount = MAX_STEAM;
+     }
+
+     container.stackTagCompound.setTag("Fluid", stack.writeToNBT(fluidTag));
+     return filled;
+ }
+
+ @Override
+ public FluidStack drain(ItemStack container, int maxDrain, boolean doDrain)
+ {
+     if (container.stackTagCompound == null || !container.stackTagCompound.hasKey("Fluid"))
+     {
+         return null;
+     }
+
+     FluidStack stack = FluidStack.loadFluidStackFromNBT(container.stackTagCompound.getCompoundTag("Fluid"));
+     if (stack == null)
+     {
+         return null;
+     }
+
+     stack.amount = Math.min(stack.amount, maxDrain);
+     if (doDrain)
+     {
+         if (maxDrain >= MAX_STEAM)
+         {
+             container.stackTagCompound.removeTag("Fluid");
+
+             if (container.stackTagCompound.hasNoTags())
+             {
+                 container.stackTagCompound = null;
+             }
+             return stack;
+         }
+
+         NBTTagCompound fluidTag = container.stackTagCompound.getCompoundTag("Fluid");
+         fluidTag.setInteger("Amount", fluidTag.getInteger("Amount") - maxDrain);
+         container.stackTagCompound.setTag("Fluid", fluidTag);
+     }
+     return stack;
+ }
 }

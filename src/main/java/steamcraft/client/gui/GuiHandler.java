@@ -19,7 +19,9 @@ import net.minecraft.world.World;
 import steamcraft.client.lib.GuiIDs;
 import steamcraft.common.container.ContainerVanity;
 import steamcraft.common.entities.EntityPlayerExtended;
+import steamcraft.common.tiles.TileArmorEditor;
 import steamcraft.common.tiles.TileSteamBoiler;
+import steamcraft.common.tiles.container.ContainerArmorEditor;
 import steamcraft.common.tiles.container.ContainerSteamBoiler;
 import cpw.mods.fml.common.network.IGuiHandler;
 
@@ -39,28 +41,26 @@ public class GuiHandler implements IGuiHandler
 		/*
 		 * case GuiIDs.GUI_ID_NUKE_OVEN: return new
 		 * ContainerNukeFurnace(player.inventory, (TileEntityNukeFurnace) tile);
-		 * 
+		 *
 		 * case GuiIDs.GUI_ID_CHEM_OVEN: return new
 		 * ContainerChemicalFurnace(player.inventory,
 		 * (TileEntityChemicalFurnace) tile);
-		 * 
+		 *
 		 * case GuiIDs.GUI_ID_STEAM_OVEN: return new
 		 * ContainerSteamFurnace(player.inventory, (TileEntitySteamFurnace)
 		 * tile);
-		 * 
+		 *
 		 * case GuiIDs.GUI_ID_COMPRESSOR: return new
 		 * ContainerCompressor(player.inventory, (TileEntityCompressor) tile);
 		 */
 			case GuiIDs.GUI_ID_STEAM_BOILER:
-			{
-				System.out.println("works2");
 				return new ContainerSteamBoiler(player.inventory, (TileSteamBoiler) tile);
-			}
 			case GuiIDs.GUI_ID_VANITY:
 				return new ContainerVanity(player, player.inventory, EntityPlayerExtended.get(player).inventory);
+			case GuiIDs.GUI_ID_ARMOREDITOR:
+				return new ContainerArmorEditor(player.inventory, (TileArmorEditor) tile);
 		}
-
-		return null;
+				return null;
 	}
 
 	@Override
@@ -74,25 +74,24 @@ public class GuiHandler implements IGuiHandler
 		/*
 		 * case GuiIDs.GUI_ID_NUKE_OVEN: return new
 		 * GuiNukeFurnace(player.inventory, (TileEntityNukeFurnace) tile);
-		 * 
+		 *
 		 * case GuiIDs.GUI_ID_CHEM_OVEN: return new
 		 * GuiChemicalFurnace(player.inventory, (TileEntityChemicalFurnace)
 		 * tile);
-		 * 
+		 *
 		 * case GuiIDs.GUI_ID_STEAM_OVEN: return new
 		 * GuiSteamFurnace(player.inventory, (TileEntitySteamFurnace) tile);
-		 * 
+		 *
 		 * case GuiIDs.GUI_ID_COMPRESSOR: return new
 		 * GuiCompressor(player.inventory, (TileEntityCompressor) tile);
-		 * 
+		 *
 		 * case GuiIDs.GUI_ID_GUIDE_BOOK: return new GuiGuideBook(player,
 		 * player.inventory.getItemStack());
 		 */
 			case GuiIDs.GUI_ID_STEAM_BOILER:
-			{
-				System.out.println("works2.2");
 				return new GuiSteamBoiler(player.inventory, (TileSteamBoiler) tile);
-			}
+			case GuiIDs.GUI_ID_ARMOREDITOR:
+				return new GuiArmorEditor(player.inventory, (TileArmorEditor) tile);
 			case GuiIDs.GUI_ID_VANITY:
 				return new GuiVanity(player, player.inventory, EntityPlayerExtended.get(player).inventory);
 		}

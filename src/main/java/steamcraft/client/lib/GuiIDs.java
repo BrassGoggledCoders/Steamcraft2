@@ -35,4 +35,6 @@ public final class GuiIDs
 
 	/** The Constant GUI_ID_VANITY. */
 	public static final int GUI_ID_VANITY = 5;
+
+	public static final int GUI_ID_ARMOREDITOR = 6;
 }

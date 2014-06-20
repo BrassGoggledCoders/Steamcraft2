@@ -169,9 +169,9 @@ public class ItemModTool extends BaseItem
 			{
 				ItemCanister canister =  (ItemCanister)mainInv[i].getItem();
 
-				if (!canister.isEmpty(mainInv[i]))
+				if (!(getDamage(new ItemStack(canister))==0))
 				{
-					canister.add(mainInv[i], -steamForRepair);
+					canister.drain(new ItemStack(canister), steamForRepair, true);
 
 					return true;
 				}

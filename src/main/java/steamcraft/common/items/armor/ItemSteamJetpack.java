@@ -88,9 +88,9 @@ public class ItemSteamJetpack extends ItemBrassArmor
 			{
 				ItemCanister canister =  (ItemCanister)mainInv[i].getItem();
 
-				if (!canister.isEmpty(mainInv[i]))
+				if (!(getDamage(new ItemStack(canister))==0))
 				{
-					canister.add(mainInv[i], -steamPerTick);
+					canister.drain(new ItemStack(canister), steamPerTick, true);
 
 					return true;
 				}
