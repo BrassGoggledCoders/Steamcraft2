@@ -127,7 +127,7 @@ public class TileSteamBoiler extends TileEntityMachine implements IFluidHandler
 			  {
 			  ItemCanister canister = (ItemCanister) inventory[2].getItem();
 			  if(!canister.isFull(inventory[2]))
-			  canister.add(new ItemStack(ConfigItems.itemCanisterSteam), steamPerTick);
+			  canister.add(new ItemStack(canister), steamPerTick);
 			  this.steamTank.drain(steamPerTick, true);
 			  }
 

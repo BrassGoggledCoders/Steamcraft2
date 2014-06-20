@@ -1,11 +1,9 @@
-package steamcraft.common.blocks;
+package steamcraft.common.blocks.machine;
 
-import steamcraft.common.blocks.machine.BlockContainerMod;
-import steamcraft.common.tiles.TileIntake;
-import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+import steamcraft.common.tiles.TileIntake;
 
 public class BlockIntake extends BlockContainerMod {
 
