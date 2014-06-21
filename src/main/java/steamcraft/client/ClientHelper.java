@@ -23,20 +23,40 @@ import net.minecraft.client.gui.FontRenderer;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ClientHelper.
+ */
 @SideOnly(Side.CLIENT)
 /**
  * @authors Surseance & decabeldecabel
  *
  */
 public class ClientHelper {
+	
+	/**
+	 * Mc.
+	 *
+	 * @return the minecraft
+	 */
 	public static Minecraft mc() {
 		return Minecraft.getMinecraft();
 	}
 
+	/**
+	 * Font renderer.
+	 *
+	 * @return the font renderer
+	 */
 	public static FontRenderer fontRenderer() {
 		return mc().fontRenderer;
 	}
 
+	/**
+	 * Client player.
+	 *
+	 * @return the entity client player mp
+	 */
 	public static EntityClientPlayerMP clientPlayer() {
 		return mc().thePlayer;
 	}

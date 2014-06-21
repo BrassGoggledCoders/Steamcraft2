@@ -28,41 +28,51 @@ import steamcraft.common.tiles.TileSteamBoiler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ContainerSteamBoiler.
+ *
  * @author Decebaldecebal
  */
-public class ContainerSteamBoiler extends Container
-{
+public class ContainerSteamBoiler extends Container {
+	
+	/** The tile_entity. */
 	protected TileSteamBoiler tile_entity;
 
+	/** The last burn time. */
 	private int lastBurnTime = 0;
+	
+	/** The last item burn time. */
 	private int lastItemBurnTime = 0;
+	
+	/** The last steam level. */
 	private int lastSteamLevel = 0;
+	
+	/** The last water level. */
 	private int lastWaterLevel = 0;
 
-	public ContainerSteamBoiler(InventoryPlayer player, TileSteamBoiler tile)
-	{
+	/**
+	 * Instantiates a new container steam boiler.
+	 *
+	 * @param player the player
+	 * @param tile the tile
+	 */
+	public ContainerSteamBoiler(InventoryPlayer player, TileSteamBoiler tile) {
 		this.tile_entity = tile;
 		this.addSlotToContainer(new Slot(tile, 0, 42, 52));
-		this.addSlotToContainer(new Slot(tile, 1, 132, 57)
-		{
+		this.addSlotToContainer(new Slot(tile, 1, 132, 57) {
 			@Override
-			public boolean isItemValid(ItemStack stack)
-			{
-				if (FluidContainerRegistry.isContainer(stack))
-				{
+			public boolean isItemValid(ItemStack stack) {
+				if (FluidContainerRegistry.isContainer(stack)) {
 					return true;
 				}
 				return false;
 			}
 		});
-		this.addSlotToContainer(new Slot(tile, 2, 132, 21)
-		{
+		this.addSlotToContainer(new Slot(tile, 2, 132, 21) {
 			@Override
-			public boolean isItemValid(ItemStack stack)
-			{
-				if (stack.getItem() == ConfigItems.itemCanisterSteam)
-				{
+			public boolean isItemValid(ItemStack stack) {
+				if (stack.getItem() == ConfigItems.itemCanisterSteam) {
 					return true;
 				}
 				return false;
@@ -71,56 +81,64 @@ public class ContainerSteamBoiler extends Container
 
 		int var3;
 
-		for (var3 = 0; var3 < 3; ++var3)
-		{
-			for (int var4 = 0; var4 < 9; ++var4)
-			{
-				this.addSlotToContainer(new Slot(player, var4 + (var3 * 9) + 9, 8 + (var4 * 18), 84 + (var3 * 18)));
+		for (var3 = 0; var3 < 3; ++var3) {
+			for (int var4 = 0; var4 < 9; ++var4) {
+				this.addSlotToContainer(new Slot(player, var4 + (var3 * 9) + 9,
+						8 + (var4 * 18), 84 + (var3 * 18)));
 			}
 		}
 
-		for (var3 = 0; var3 < 9; ++var3)
-		{
+		for (var3 = 0; var3 < 9; ++var3) {
 			this.addSlotToContainer(new Slot(player, var3, 8 + (var3 * 18), 142));
 		}
 	}
+
+	/* (non-Javadoc)
+	 * @see net.minecraft.inventory.Container#addCraftingToCrafters(net.minecraft.inventory.ICrafting)
+	 */
 	@Override
-	public void addCraftingToCrafters(ICrafting par1ICrafting)
-	{
+	public void addCraftingToCrafters(ICrafting par1ICrafting) {
 		super.addCraftingToCrafters(par1ICrafting);
-		par1ICrafting.sendProgressBarUpdate(this, 0, this.tile_entity.furnaceBurnTime);
-		par1ICrafting.sendProgressBarUpdate(this, 1, this.tile_entity.currentItemBurnTime);
-		par1ICrafting.sendProgressBarUpdate(this, 2, this.tile_entity.steamTank.getFluidAmount());
-		par1ICrafting.sendProgressBarUpdate(this, 3, this.tile_entity.waterTank.getFluidAmount());
+		par1ICrafting.sendProgressBarUpdate(this, 0,
+				this.tile_entity.furnaceBurnTime);
+		par1ICrafting.sendProgressBarUpdate(this, 1,
+				this.tile_entity.currentItemBurnTime);
+		par1ICrafting.sendProgressBarUpdate(this, 2,
+				this.tile_entity.steamTank.getFluidAmount());
+		par1ICrafting.sendProgressBarUpdate(this, 3,
+				this.tile_entity.waterTank.getFluidAmount());
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.inventory.Container#detectAndSendChanges()
+	 */
 	@Override
-	public void detectAndSendChanges()
-	{
+	public void detectAndSendChanges() {
 		super.detectAndSendChanges();
 
-		for (int var1 = 0; var1 < this.crafters.size(); ++var1)
-		{
+		for (int var1 = 0; var1 < this.crafters.size(); ++var1) {
 			ICrafting var2 = (ICrafting) this.crafters.get(var1);
 
-			if (this.lastBurnTime != this.tile_entity.furnaceBurnTime)
-			{
-				var2.sendProgressBarUpdate(this, 0, this.tile_entity.furnaceBurnTime);
+			if (this.lastBurnTime != this.tile_entity.furnaceBurnTime) {
+				var2.sendProgressBarUpdate(this, 0,
+						this.tile_entity.furnaceBurnTime);
 			}
 
-			if (this.lastItemBurnTime != this.tile_entity.currentItemBurnTime)
-			{
-				var2.sendProgressBarUpdate(this, 1, this.tile_entity.currentItemBurnTime);
+			if (this.lastItemBurnTime != this.tile_entity.currentItemBurnTime) {
+				var2.sendProgressBarUpdate(this, 1,
+						this.tile_entity.currentItemBurnTime);
 			}
 
-			if (this.lastSteamLevel != this.tile_entity.steamTank.getFluidAmount())
-			{
-				var2.sendProgressBarUpdate(this, 2, this.tile_entity.steamTank.getFluidAmount());
+			if (this.lastSteamLevel != this.tile_entity.steamTank
+					.getFluidAmount()) {
+				var2.sendProgressBarUpdate(this, 2,
+						this.tile_entity.steamTank.getFluidAmount());
 			}
 
-			if (this.lastWaterLevel != this.tile_entity.waterTank.getFluidAmount())
-			{
-				var2.sendProgressBarUpdate(this, 3, this.tile_entity.waterTank.getFluidAmount());
+			if (this.lastWaterLevel != this.tile_entity.waterTank
+					.getFluidAmount()) {
+				var2.sendProgressBarUpdate(this, 3,
+						this.tile_entity.waterTank.getFluidAmount());
 			}
 		}
 
@@ -130,115 +148,94 @@ public class ContainerSteamBoiler extends Container
 		this.lastWaterLevel = this.tile_entity.waterTank.getFluidAmount();
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.inventory.Container#updateProgressBar(int, int)
+	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void updateProgressBar(int par1, int par2)
-	{
-		if (par1 == 0)
-		{
+	public void updateProgressBar(int par1, int par2) {
+		if (par1 == 0) {
 			this.tile_entity.furnaceBurnTime = par2;
-		}
-		else if (par1 == 1)
-		{
+		} else if (par1 == 1) {
 			this.tile_entity.currentItemBurnTime = par2;
-		}
-		else if (par1 == 2)
-		{
-			this.tile_entity.steamTank.setFluid(new FluidStack(FluidRegistry.getFluid("steam"), par2));
-		}
-		else if (par1 == 3)
-		{
-			this.tile_entity.waterTank.setFluid(new FluidStack(FluidRegistry.getFluid("water"), par2));
+		} else if (par1 == 2) {
+			this.tile_entity.steamTank.setFluid(new FluidStack(FluidRegistry
+					.getFluid("steam"), par2));
+		} else if (par1 == 3) {
+			this.tile_entity.waterTank.setFluid(new FluidStack(FluidRegistry
+					.getFluid("water"), par2));
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.inventory.Container#canInteractWith(net.minecraft.entity.player.EntityPlayer)
+	 */
 	@Override
-	public boolean canInteractWith(EntityPlayer par1EntityPlayer)
-	{
+	public boolean canInteractWith(EntityPlayer par1EntityPlayer) {
 		return this.tile_entity.isUseableByPlayer(par1EntityPlayer);
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.inventory.Container#transferStackInSlot(net.minecraft.entity.player.EntityPlayer, int)
+	 */
 	@Override
-	public ItemStack transferStackInSlot(EntityPlayer par1EntityPlayer, int par2)
-	{
+	public ItemStack transferStackInSlot(EntityPlayer par1EntityPlayer, int par2) {
 		ItemStack var3 = null;
 		Slot var4 = (Slot) this.inventorySlots.get(par2);
 
-		if ((var4 != null) && var4.getHasStack())
-		{
+		if ((var4 != null) && var4.getHasStack()) {
 			ItemStack var5 = var4.getStack();
 			var3 = var5.copy();
 
-			if (par2 > 2)
-			{
-				FluidStack liquid = FluidContainerRegistry.getFluidForFilledItem(var5);
+			if (par2 > 2) {
+				FluidStack liquid = FluidContainerRegistry
+						.getFluidForFilledItem(var5);
 
-				if ((liquid != null) && (liquid.getFluid() == FluidRegistry.WATER))
-				{
-					if (!this.mergeItemStack(var5, 1, 2, false))
-					{
+				if ((liquid != null)
+						&& (liquid.getFluid() == FluidRegistry.WATER)) {
+					if (!this.mergeItemStack(var5, 1, 2, false)) {
 						return null;
 					}
-				}
-				else if (TileEntityFurnace.getItemBurnTime(var5) > 0)
-				{
-					if (!this.mergeItemStack(var5, 0, 1, false))
-					{
-						if ((par2 >= 3) && (par2 < 30))
-						{
-							if (!this.mergeItemStack(var5, 30, 39, false))
-							{
+				} else if (TileEntityFurnace.getItemBurnTime(var5) > 0) {
+					if (!this.mergeItemStack(var5, 0, 1, false)) {
+						if ((par2 >= 3) && (par2 < 30)) {
+							if (!this.mergeItemStack(var5, 30, 39, false)) {
 								return null;
 							}
-						}
-						else if ((par2 >= 30) && (par2 < 39) && !this.mergeItemStack(var5, 3, 30, false))
-						{
+						} else if ((par2 >= 30) && (par2 < 39)
+								&& !this.mergeItemStack(var5, 3, 30, false)) {
 							return null;
 						}
 					}
-				}
-				else if (var5.getItem() == ConfigItems.itemCanisterSteam)
-				{
-					if (!this.mergeItemStack(var5, 2, 3, false))
-					{
-						if ((par2 >= 3) && (par2 < 30))
-						{
-							if (!this.mergeItemStack(var5, 30, 39, false))
-							{
+				} else if (var5.getItem() == ConfigItems.itemCanisterSteam) {
+					if (!this.mergeItemStack(var5, 2, 3, false)) {
+						if ((par2 >= 3) && (par2 < 30)) {
+							if (!this.mergeItemStack(var5, 30, 39, false)) {
 								return null;
 							}
-						}
-						else if ((par2 >= 30) && (par2 < 39) && !this.mergeItemStack(var5, 3, 30, false))
-						{
+						} else if ((par2 >= 30) && (par2 < 39)
+								&& !this.mergeItemStack(var5, 3, 30, false)) {
 							return null;
 						}
 					}
-				}
-				else if ((par2 >= 3) && (par2 < 30) && !this.mergeItemStack(var5, 30, 39, false))
-				{
+				} else if ((par2 >= 3) && (par2 < 30)
+						&& !this.mergeItemStack(var5, 30, 39, false)) {
+					return null;
+				} else if ((par2 >= 30) && (par2 < 39)
+						&& !this.mergeItemStack(var5, 3, 30, false)) {
 					return null;
 				}
-				else if ((par2 >= 30) && (par2 < 39) && !this.mergeItemStack(var5, 3, 30, false))
-				{
-					return null;
-				}
-			}
-			else if (!this.mergeItemStack(var5, 3, 39, false))
-			{
+			} else if (!this.mergeItemStack(var5, 3, 39, false)) {
 				return null;
 			}
 
-			if (var5.stackSize == 0)
-			{
+			if (var5.stackSize == 0) {
 				var4.putStack((ItemStack) null);
-			}
-			else
-			{
+			} else {
 				var4.onSlotChanged();
 			}
 
-			if (var5.stackSize == var3.stackSize)
-			{
+			if (var5.stackSize == var3.stackSize) {
 				return null;
 			}
 

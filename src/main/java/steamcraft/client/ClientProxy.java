@@ -46,28 +46,33 @@ import cpw.mods.fml.common.FMLCommonHandler;
 
 /**
  * The Class ClientProxy.
- *
+ * 
  * @author Surseance (Johnny Eatmon)
  */
-public class ClientProxy extends CommonProxy
-{
+public class ClientProxy extends CommonProxy {
 
 	/** The draw event handler. */
 	public EventHandlerDrawHighlight drawEventHandler;
+
+	/* (non-Javadoc)
+	 * @see steamcraft.common.CommonProxy#registerKeys()
+	 */
 	@Override
-	public void registerKeys()
-	{
+	public void registerKeys() {
 		FMLCommonHandler.instance().bus().register(new KeyInputHandler());
 		KeyBindings.registerKeys();
 	}
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see steamcraft.common.CommonProxy#registerDisplayInformation()
 	 */
 	@Override
-	public void registerDisplayInformation()
-	{
-		//TODO: Should be in boilerplate
-		RenderingRegistry.registerEntityRenderingHandler(EntityMinedBlock.class, new RenderMinedBlock());
+	public void registerDisplayInformation() {
+		// TODO: Should be in boilerplate
+		RenderingRegistry.registerEntityRenderingHandler(
+				EntityMinedBlock.class, new RenderMinedBlock());
 		ConfigBlocks.blockCrystalRI = RenderingRegistry
 				.getNextAvailableRenderId();
 		ClientRegistry.bindTileEntitySpecialRenderer(TileCrystal.class,
@@ -83,12 +88,13 @@ public class ClientProxy extends CommonProxy
 		Utils.downloadCapes();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see steamcraft.common.CommonProxy#registerRenderers()
 	 */
 	@Override
-	public void registerRenderers()
-	{
+	public void registerRenderers() {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileCrystal.class,
 				new TileCrystalRenderer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileHatch.class,
@@ -98,17 +104,18 @@ public class ClientProxy extends CommonProxy
 		RenderingRegistry.registerBlockHandler(new BlockHatchRenderer());
 	}
 
-	/* (non-Javadoc)
-	 * @see steamcraft.common.CommonProxy#getClientGuiElement(int, net.minecraft.entity.player.EntityPlayer, net.minecraft.world.World, int, int, int)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see steamcraft.common.CommonProxy#getClientGuiElement(int,
+	 * net.minecraft.entity.player.EntityPlayer, net.minecraft.world.World, int,
+	 * int, int)
 	 */
 	@Override
-	public Object getClientGuiElement( int ID,  EntityPlayer player,
-			 World world,  int x,  int y,  int z)
-	{
-		if ((world instanceof WorldClient))
-		{
-			switch (ID)
-			{
+	public Object getClientGuiElement(int ID, EntityPlayer player, World world,
+			int x, int y, int z) {
+		if ((world instanceof WorldClient)) {
+			switch (ID) {
 
 			}
 		}
@@ -116,12 +123,13 @@ public class ClientProxy extends CommonProxy
 		return null;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see steamcraft.common.CommonProxy#getClientWorld()
 	 */
 	@Override
-	public World getClientWorld()
-	{
+	public World getClientWorld() {
 		return FMLClientHandler.instance().getClient().theWorld;
 	}
 
@@ -134,23 +142,24 @@ public class ClientProxy extends CommonProxy
 
 	// ========== Warning: PAIN IN THE ASS MATERIAL ========== //
 
-	/* (non-Javadoc)
-	 * @see steamcraft.common.CommonProxy#rayFX(net.minecraft.world.World, net.minecraft.entity.player.EntityPlayer, double, double, double, int, boolean, float, java.lang.Object, int)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see steamcraft.common.CommonProxy#rayFX(net.minecraft.world.World,
+	 * net.minecraft.entity.player.EntityPlayer, double, double, double, int,
+	 * boolean, float, java.lang.Object, int)
 	 */
 	@Override
-	public Object rayFX( World world,  EntityPlayer player,  double dx,  double dy,  double dz,  int type,
-			 boolean reverse,  float endMod,  Object input,
-			 int impact, Color rayColor)
-	{
+	public Object rayFX(World world, EntityPlayer player, double dx, double dy,
+			double dz, int type, boolean reverse, float endMod, Object input,
+			int impact, Color rayColor) {
 		FXRaygun ray = null;
 		Color color = rayColor;
 
-		if (input instanceof FXRaygun)
-		{
+		if (input instanceof FXRaygun) {
 			ray = (FXRaygun) input;
 		}
-		if ((ray == null) || (ray.isDead))
-		{
+		if ((ray == null) || (ray.isDead)) {
 			ray = new FXRaygun(world, player, dx, dy, dz,
 					color.getRed() / 255.0F, color.getGreen() / 255.0F,
 					color.getBlue() / 255.0F, 9);
@@ -159,9 +168,7 @@ public class ClientProxy extends CommonProxy
 			ray.setReverse(reverse);
 			FMLClientHandler.instance().getClient().effectRenderer
 					.addEffect(ray);
-		}
-		else
-		{
+		} else {
 			ray.updateRay(dx, dy, dz);
 			ray.setEndMod(endMod);
 			ray.impact = impact;
@@ -170,29 +177,27 @@ public class ClientProxy extends CommonProxy
 		return ray;
 	}
 
-	/* (non-Javadoc)
-	 * @see steamcraft.common.CommonProxy#smokeFX(net.minecraft.world.World, double, double, double, java.lang.Object)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see steamcraft.common.CommonProxy#smokeFX(net.minecraft.world.World,
+	 * double, double, double, java.lang.Object)
 	 */
 	@Override
-	public Object smokeFX( World world,  double dx,  double dy,
-			 double dz,  Object input)
-	{
+	public Object smokeFX(World world, double dx, double dy, double dz,
+			Object input) {
 		FXSmoke smoke = null;
-		 Color color = Color.BLUE;
+		Color color = Color.BLUE;
 
-		if (input instanceof FXSmoke)
-		{
+		if (input instanceof FXSmoke) {
 			smoke = (FXSmoke) input;
 		}
-		if ((smoke == null) || (smoke.isDead))
-		{
+		if ((smoke == null) || (smoke.isDead)) {
 			smoke = new FXSmoke(world, dx, dy, dz, color.getBlue() / 255.0F,
 					color.getBlue() / 255.0F, color.getBlue() / 255.0F);
 			FMLClientHandler.instance().getClient().effectRenderer
 					.addEffect(smoke);
-		}
-		else
-		{
+		} else {
 			smoke.onUpdate();
 		}
 
@@ -200,30 +205,28 @@ public class ClientProxy extends CommonProxy
 	}
 
 	/*
-	 * private static  ModelBrassMonocle chest = new
-	 * ModelBrassMonocle(1.0F); private static  ModelBrassMonocle legs =
-	 * new ModelBrassMonocle(0.5F);
-	 *
+	 * private static ModelBrassMonocle chest = new ModelBrassMonocle(1.0F);
+	 * private static ModelBrassMonocle legs = new ModelBrassMonocle(0.5F);
+	 * 
 	 * @Override public ModelBiped getMonocleArmorModel(int id) { switch (id) {
 	 * case 0: return chest; case 1: return legs; default: break; }
-	 *
+	 * 
 	 * return chest; // Default, if the wrong ID is passed }
-	 *
-	 * /* private static  ModelBrassWings chest1 = new
-	 * ModelBrassWings(1.0F); private static  ModelBrassWings legs1 = new
-	 * ModelBrassWings(0.5F);
-	 *
+	 * 
+	 * /* private static ModelBrassWings chest1 = new ModelBrassWings(1.0F);
+	 * private static ModelBrassWings legs1 = new ModelBrassWings(0.5F);
+	 * 
 	 * @Override public ModelBiped getWingsArmorModel(int id) { switch (id) {
 	 * case 0: return chest1; case 1: return legs1; default: break; }
-	 *
+	 * 
 	 * return chest1; // Default, if the wrong ID is passed }
-	 *
-	 * private static  ModelCape chest2 = new ModelCape(1.0F); private
-	 * static  ModelCape legs2 = new ModelCape(0.5F);
-	 *
+	 * 
+	 * private static ModelCape chest2 = new ModelCape(1.0F); private static
+	 * ModelCape legs2 = new ModelCape(0.5F);
+	 * 
 	 * @Override public ModelBiped getCapeArmorModel(int id) { switch(id) { case
 	 * 0: return chest2; case 1: return legs2; default: break; }
-	 *
+	 * 
 	 * return chest2; // Default, if the wrong ID is passed }
 	 */
 }

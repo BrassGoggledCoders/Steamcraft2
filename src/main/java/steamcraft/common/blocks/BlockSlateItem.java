@@ -18,17 +18,17 @@ import net.minecraft.block.Block;
 // TODO: Auto-generated Javadoc
 /**
  * The Class BlockSlateItem.
- *
+ * 
  * @author warlordjones
  */
-public class BlockSlateItem extends BaseItemBlockWithMetadata
-{
+public class BlockSlateItem extends BaseItemBlockWithMetadata {
 
 	/**
 	 * Instantiates a new block slate item.
+	 *
+	 * @param block the block
 	 */
-	public BlockSlateItem(Block block)
-	{
+	public BlockSlateItem(Block block) {
 		super(block, block);
 	}
 }

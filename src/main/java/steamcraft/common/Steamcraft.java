@@ -48,14 +48,14 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import cpw.mods.fml.relauncher.Side;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class Steamcraft.
- *
+ * 
  * @author Surseance (Johnny Eatmon)
  */
 @Mod(modid = LibInfo.ID, name = LibInfo.NAME, version = LibInfo.VERSION, dependencies = "required-after:boilerplate")
-public class Steamcraft
-{
+public class Steamcraft {
 	/** The proxy. */
 	@SidedProxy(clientSide = LibInfo.CLIENT_PROXY, serverSide = LibInfo.COMMON_PROXY)
 	public static CommonProxy proxy;
@@ -73,44 +73,47 @@ public class Steamcraft
 	/** The sc2 event handler. */
 	public EventHandlerSC2 sc2EventHandler;
 
-	//TODO: FIX!
-	//public EventHandlerDrawHighlight drawEventHandler;
+	// TODO: FIX!
+	// public EventHandlerDrawHighlight drawEventHandler;
 
 	/** The tab s c2. */
-	public static CreativeTabs tabSC2 = new CreativeTabSteamcraft(CreativeTabs.getNextID(), "steamcraft");
+	public static CreativeTabs tabSC2 = new CreativeTabSteamcraft(
+			CreativeTabs.getNextID(), "steamcraft");
 
+	/**
+	 * Pre init.
+	 *
+	 * @param event the event
+	 */
 	@EventHandler
-	public void PreInit(FMLPreInitializationEvent event)
-	{
+	public void PreInit(FMLPreInitializationEvent event) {
 		event.getModMetadata().version = LibInfo.VERSION;
 		this.directory = event.getModConfigurationDirectory();
 
-		LanguageRegistry.instance().getStringLocalization("itemGroup.steamcraft", "en_US");
-		try
-		{
+		LanguageRegistry.instance().getStringLocalization(
+				"itemGroup.steamcraft", "en_US");
+		try {
 			Config.initialize(event.getSuggestedConfigurationFile());
-		} catch (final Exception e)
-		{
-			LoggerSteamcraft.log(Level.SEVERE, "Failed to load configuration file!");
-		} finally
-		{
-			if (Config.config != null)
-			{
+		} catch (final Exception e) {
+			LoggerSteamcraft.log(Level.SEVERE,
+					"Failed to load configuration file!");
+		} finally {
+			if (Config.config != null) {
 				Config.save();
 			}
 		}
-		//this.drawEventHandler = new EventHandlerDrawHighlight();
+		// this.drawEventHandler = new EventHandlerDrawHighlight();
 		sc2EventHandler = new EventHandlerSC2();
 
 		// MinecraftForge.EVENT_BUS.register(this.worldEventHandler);
 		MinecraftForge.EVENT_BUS.register(sc2EventHandler);
 		FMLCommonHandler.instance().bus().register(sc2EventHandler);
-		//MinecraftForge.EVENT_BUS.register(this.drawEventHandler);
+		// MinecraftForge.EVENT_BUS.register(this.drawEventHandler);
 
 		// GameRegistry.registerFuelHandler(this.worldEventHandler);
 		// GameRegistry.registerCraftingHandler(this.worldEventHandler);
-		if(Config.generationEnabled)
-		GameRegistry.registerWorldGenerator(this.worldGen, 0);
+		if (Config.generationEnabled)
+			GameRegistry.registerWorldGenerator(this.worldGen, 0);
 
 		Config.save();
 		ConfigBlocks.init();
@@ -124,13 +127,12 @@ public class Steamcraft
 
 	/**
 	 * Inits the.
-	 *
+	 * 
 	 * @param event
 	 *            the event
 	 */
 	@EventHandler
-	public void init(FMLInitializationEvent event)
-	{
+	public void init(FMLInitializationEvent event) {
 		ConfigEntities.init();
 		ConfigAchievments.init();
 		// RegisterKeyBindings.init();
@@ -138,9 +140,13 @@ public class Steamcraft
 		// GuiHandler());
 	}
 
+	/**
+	 * Post init.
+	 *
+	 * @param event the event
+	 */
 	@EventHandler
-	public void postInit(FMLPostInitializationEvent event)
-	{
+	public void postInit(FMLPostInitializationEvent event) {
 		FMLLog.fine(String.valueOf(Config.slateChance), "");
 		FMLLog.fine(String.valueOf(Config.slateHeight), "");
 		CompatabilityLayer.init();
@@ -149,20 +155,21 @@ public class Steamcraft
 		ConfigItems.postInit();
 		ConfigRecipes.init();
 		// LoggerSteamcraft.log(Level.INFO, "SC2 is " + event.getModState());
-		final ModContainer container = FMLCommonHandler.instance().findContainerFor(this);
+		final ModContainer container = FMLCommonHandler.instance()
+				.findContainerFor(this);
 		LanguageRegistry.instance().loadLanguagesFor(container, Side.CLIENT);
-		FMLInterModComms.sendRuntimeMessage(LibInfo.ID, "VersionChecker", "addVersionCheck", LibInfo.VERSION_URL);
+		FMLInterModComms.sendRuntimeMessage(LibInfo.ID, "VersionChecker",
+				"addVersionCheck", LibInfo.VERSION_URL);
 	}
 
 	/**
 	 * Server starting.
-	 *
+	 * 
 	 * @param event
 	 *            the event
 	 */
 	@Mod.EventHandler
-	public void serverStarting(final FMLServerStartingEvent event)
-	{
+	public void serverStarting(final FMLServerStartingEvent event) {
 		event.registerServerCommand(new CommandSteamcraft());
 		LoggerSteamcraft.log(Level.INFO, "Registering commands just for you");
 	}

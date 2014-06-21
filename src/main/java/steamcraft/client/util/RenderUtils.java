@@ -15,14 +15,20 @@ package steamcraft.client.util;
 
 import org.lwjgl.opengl.GL11;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author Decebaldecebal
+ * The Class RenderUtils.
  *
+ * @author Decebaldecebal
  */
-public class RenderUtils
-{
-	public static void setGLColorFromInt(int color) 
-	{
+public class RenderUtils {
+	
+	/**
+	 * Sets the GL color from int.
+	 *
+	 * @param color the new GL color from int
+	 */
+	public static void setGLColorFromInt(int color) {
 		float red = (color >> 16 & 255) / 255.0F;
 		float green = (color >> 8 & 255) / 255.0F;
 		float blue = (color & 255) / 255.0F;

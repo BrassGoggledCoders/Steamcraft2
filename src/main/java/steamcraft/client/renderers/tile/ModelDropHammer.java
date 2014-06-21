@@ -20,13 +20,12 @@ import net.minecraft.entity.Entity;
 // TODO: Auto-generated Javadoc
 /**
  * The Class ModelCrystal.
- *
+ * 
  * @author Surseance (Johnny Eatmon)
  */
-public class ModelDropHammer extends ModelBase
-{
+public class ModelDropHammer extends ModelBase {
 
-	/**  Renderer Fields. */
+	/** Renderer Fields. */
 	ModelRenderer Shape1;
 
 	/** The Shape2. */
@@ -65,8 +64,7 @@ public class ModelDropHammer extends ModelBase
 	/**
 	 * Instantiates a new model crystal.
 	 */
-	public ModelDropHammer()
-	{
+	public ModelDropHammer() {
 		textureWidth = 64;
 		textureHeight = 32;
 		Shape1 = new ModelRenderer(this, 0, 0);
@@ -143,13 +141,16 @@ public class ModelDropHammer extends ModelBase
 		setRotation(Shape12, 0F, 0F, -0.7853982F);
 	}
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.client.model.ModelBase#render(net.minecraft.entity.Entity, float, float, float, float, float, float)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * net.minecraft.client.model.ModelBase#render(net.minecraft.entity.Entity,
+	 * float, float, float, float, float, float)
 	 */
 	@Override
 	public void render(final Entity entity, final float f, final float f1,
-			final float f2, final float f3, final float f4, final float f5)
-	{
+			final float f2, final float f3, final float f4, final float f5) {
 		super.render(entity, f, f1, f2, f3, f4, f5);
 		setRotationAngles(f, f1, f2, f3, f4, f5, entity);
 		Shape1.render(f5);
@@ -169,28 +170,33 @@ public class ModelDropHammer extends ModelBase
 	// Techne method
 	/**
 	 * Sets the rotation.
-	 *
-	 * @param model the model
-	 * @param x the x
-	 * @param y the y
-	 * @param z the z
+	 * 
+	 * @param model
+	 *            the model
+	 * @param x
+	 *            the x
+	 * @param y
+	 *            the y
+	 * @param z
+	 *            the z
 	 */
 	private void setRotation(final ModelRenderer model, final float x,
-			final float y, final float z)
-	{
+			final float y, final float z) {
 		model.rotateAngleX = x;
 		model.rotateAngleY = y;
 		model.rotateAngleZ = z;
 	}
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.client.model.ModelBase#setRotationAngles(float, float, float, float, float, float, net.minecraft.entity.Entity)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.minecraft.client.model.ModelBase#setRotationAngles(float, float,
+	 * float, float, float, float, net.minecraft.entity.Entity)
 	 */
 	@Override
 	public void setRotationAngles(final float f, final float f1,
 			final float f2, final float f3, final float f4, final float f5,
-			final Entity entity)
-	{
+			final Entity entity) {
 		super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
 	}
 }

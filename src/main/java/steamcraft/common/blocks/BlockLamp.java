@@ -29,35 +29,38 @@ import cpw.mods.fml.relauncher.SideOnly;
 // TODO: Auto-generated Javadoc
 /**
  * The Class BlockCosmeticSolid.
- *
+ * 
  * @author Surseance (Johnny Eatmon)
  */
-public class BlockLamp extends BlockRedstoneLight
-{
+public class BlockLamp extends BlockRedstoneLight {
 
 	/** The icon. */
-	private  IIcon[] icon = new IIcon[2];
+	private IIcon[] icon = new IIcon[2];
 
 	/** The powered. */
 	private static boolean powered;
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see net.minecraft.block.Block#getIcon(int, int)
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public IIcon getIcon( int side,  int metadata)
-	{
+	public IIcon getIcon(int side, int metadata) {
 		return icon[metadata];
 	}
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.block.Block#registerBlockIcons(net.minecraft.client.renderer.texture.IIconRegister)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * net.minecraft.block.Block#registerBlockIcons(net.minecraft.client.renderer
+	 * .texture.IIconRegister)
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons( IIconRegister ir)
-	{
+	public void registerBlockIcons(IIconRegister ir) {
 		icon[0] = ir.registerIcon(LibInfo.PREFIX + "blockLampOff");
 		icon[1] = ir.registerIcon(LibInfo.PREFIX + "blockLampOn");
 	}
@@ -65,8 +68,7 @@ public class BlockLamp extends BlockRedstoneLight
 	/**
 	 * Instantiates a new block cosmetic solid.
 	 */
-	public BlockLamp()
-	{
+	public BlockLamp() {
 		super(powered);
 		setBlockName("blockLamp");
 		setHardness(3.0F);
@@ -74,49 +76,54 @@ public class BlockLamp extends BlockRedstoneLight
 		setStepSound(Block.soundTypeStone);
 		setCreativeTab(Steamcraft.tabSC2);
 
-		if (powered)
-		{
+		if (powered) {
 			setLightLevel(0.98F);
 		}
 	}
+
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.BlockRedstoneLight#onBlockAdded(net.minecraft.world.World, int, int, int)
+	 */
 	@Override
 	public void onBlockAdded(World world, int x, int y, int z) {
 		if (!world.isRemote) {
 			if ((BlockLamp.powered)
 					&& (!world.isBlockIndirectlyGettingPowered(x, y, z))) {
 				world.scheduleBlockUpdate(x, y, z, this, 4);
-				world.setBlock(x, y, z, ConfigBlocks.blockLamp,
-						1, 12);
+				world.setBlock(x, y, z, ConfigBlocks.blockLamp, 1, 12);
 			} else if ((!BlockLamp.powered)
 					&& (world.isBlockIndirectlyGettingPowered(x, y, z))) {
-				world.setBlock(x, y, z, ConfigBlocks.blockLamp,
-						1, 11);
+				world.setBlock(x, y, z, ConfigBlocks.blockLamp, 1, 11);
 			}
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.BlockRedstoneLight#onNeighborBlockChange(net.minecraft.world.World, int, int, int, net.minecraft.block.Block)
+	 */
 	@Override
-	public void onNeighborBlockChange(World world, int x, int y, int z, Block p_149695_5_) {
+	public void onNeighborBlockChange(World world, int x, int y, int z,
+			Block p_149695_5_) {
 		if (!world.isRemote) {
 			if ((this.powered)
 					&& (!world.isBlockIndirectlyGettingPowered(x, y, z))) {
 				world.scheduleBlockUpdate(x, y, z, this, 4);
-				world.setBlock(x, y, z, ConfigBlocks.blockLamp,
-						1, 12);
+				world.setBlock(x, y, z, ConfigBlocks.blockLamp, 1, 12);
 			} else if ((!BlockLamp.powered)
 					&& (world.isBlockIndirectlyGettingPowered(x, y, z))) {
-				world.setBlock(x, y, z, ConfigBlocks.blockLamp,
-						0, 11);
+				world.setBlock(x, y, z, ConfigBlocks.blockLamp, 0, 11);
 			}
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.BlockRedstoneLight#updateTick(net.minecraft.world.World, int, int, int, java.util.Random)
+	 */
 	@Override
 	public void updateTick(World world, int x, int y, int z, Random random) {
 		if ((!world.isRemote && BlockLamp.powered)
 				&& (!world.isBlockIndirectlyGettingPowered(x, y, z))) {
-			world.setBlock(x, y, z, ConfigBlocks.blockLamp, 0,
-					12);
+			world.setBlock(x, y, z, ConfigBlocks.blockLamp, 0, 12);
 		}
 	}
 

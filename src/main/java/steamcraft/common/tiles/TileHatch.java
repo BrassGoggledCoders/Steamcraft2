@@ -16,10 +16,10 @@ package steamcraft.common.tiles;
 import net.minecraft.tileentity.TileEntity;
 
 /**
+ * The Class TileHatch.
  *
  * @author warlordjones
  */
-public class TileHatch extends TileEntity
-{
+public class TileHatch extends TileEntity {
 
 }

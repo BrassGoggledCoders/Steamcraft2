@@ -20,11 +20,10 @@ import net.minecraftforge.common.config.Configuration;
 // TODO: Auto-generated Javadoc
 /**
  * The Class Config.
- *
+ * 
  * @author Surseance (Johnny Eatmon)
  */
-public class Config
-{
+public class Config {
 
 	/** The config. */
 	public static Configuration config;
@@ -40,7 +39,9 @@ public class Config
 	public static int entBulletId;
 
 	/* POWER TO THE END USER! Good heavens... */
-	public static int uraniumChance, brimstoneChance, borniteChance, phosphateChance;
+	/** The phosphate chance. */
+	public static int uraniumChance, brimstoneChance, borniteChance,
+			phosphateChance;
 
 	/** The aluminum chance. */
 	public static int aluminumChance;
@@ -60,6 +61,7 @@ public class Config
 	/** The end etherium crystal chance. */
 	public static int endEtheriumCrystalChance;
 
+	/** The slate chance. */
 	public static int slateChance;
 
 	/** The uranium height. */
@@ -92,6 +94,7 @@ public class Config
 	/** The end etherium crystal height. */
 	public static int endEtheriumCrystalHeight;
 
+	/** The slate height. */
 	public static int slateHeight;
 
 	/** The generation enabled. */
@@ -139,15 +142,16 @@ public class Config
 	/** The end etherium crystal gen enabled. */
 	public static boolean endEtheriumCrystalGenEnabled;
 
+	/** The slate gen enabled. */
 	public static boolean slateGenEnabled;
 
 	/**
 	 * Initialize.
-	 *
-	 * @param file the file
+	 * 
+	 * @param file
+	 *            the file
 	 */
-	public static void initialize(File file)
-	{
+	public static void initialize(File file) {
 		config = new Configuration(file);
 		config.addCustomCategoryComment("Entities", "Entity Ids");
 
@@ -209,8 +213,10 @@ public class Config
 				"SC2 World Gen in the Nether", true).getBoolean(true);
 		endGenerationEnabled = config.get(CATEGORY_GEN_OPTIONS,
 				"SC2 World Gen in the End", true).getBoolean(true);
-		/*oreGenerationEnabled = config.get(CATEGORY_GEN_OPTIONS, "SC2 Ore Gen",
-				true).getBoolean(true);*/
+		/*
+		 * oreGenerationEnabled = config.get(CATEGORY_GEN_OPTIONS,
+		 * "SC2 Ore Gen", true).getBoolean(true);
+		 */
 		uraniumOreGenEnabled = config.get(CATEGORY_GEN_OPTIONS,
 				"Uranium Ore Generation", true).getBoolean(true);
 		brimstoneOreGenEnabled = config.get(CATEGORY_GEN_OPTIONS,
@@ -227,17 +233,20 @@ public class Config
 				"Tin Ore Generation", true).getBoolean(true);
 		zincOreGenEnabled = config.get(CATEGORY_GEN_OPTIONS,
 				"Zinc Ore Generation", true).getBoolean(true);
-		slateGenEnabled = config.get(CATEGORY_GEN_OPTIONS,
-				"Slate Generation", true).getBoolean(true);
-		netherEtheriumCrystalGenEnabled = config.get(CATEGORY_GEN_OPTIONS,"Etherium Crystal Generation in the Nether", true).getBoolean(true);
-		endEtheriumCrystalGenEnabled = config.get(CATEGORY_GEN_OPTIONS,"Etherium Crystal Generation in the End", true).getBoolean(true);
+		slateGenEnabled = config.get(CATEGORY_GEN_OPTIONS, "Slate Generation",
+				true).getBoolean(true);
+		netherEtheriumCrystalGenEnabled = config.get(CATEGORY_GEN_OPTIONS,
+				"Etherium Crystal Generation in the Nether", true).getBoolean(
+				true);
+		endEtheriumCrystalGenEnabled = config.get(CATEGORY_GEN_OPTIONS,
+				"Etherium Crystal Generation in the End", true)
+				.getBoolean(true);
 	}
 
 	/**
 	 * Save.
 	 */
-	public static void save()
-	{
+	public static void save() {
 		config.save();
 	}
 }

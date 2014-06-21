@@ -13,14 +13,14 @@
  */
 package steamcraft.common.lib;
 
+// TODO: Auto-generated Javadoc
 /**
  * A neat, tidy class for holding various bits of mod information.
- *
+ * 
  * @author Surseance (Johnny Eatmon)
- *
+ * 
  */
-public class LibInfo
-{
+public class LibInfo {
 
 	/** The Constant ID. */
 	public static final String ID = "steamcraft2";
@@ -44,9 +44,9 @@ public class LibInfo
 	public static final boolean DEBUG = false;
 
 	/** The Constant VERSION_URL. */
-	public static final String VERSION_URL = /*"https://www.dropbox.com/s/36mpxgwjoanem32/version.txt"*/"https://gist.githubusercontent.com/warlordjones/42644dbc6db776152367/raw/99d70c9382a61b88cb61a605a8f0dfd9bbb49079/gistfile1.txt";
+	public static final String VERSION_URL = /* "https://www.dropbox.com/s/36mpxgwjoanem32/version.txt" */"https://gist.githubusercontent.com/warlordjones/42644dbc6db776152367/raw/99d70c9382a61b88cb61a605a8f0dfd9bbb49079/gistfile1.txt";
 
-	/**  Capes!. */
+	/** Capes!. */
 	public static final String DEV_LIST = "https://www.dropbox.com/s/m7tn0tx7y7w630s/devs.txt";
 
 	/** The Constant DONATOR_LIST. */

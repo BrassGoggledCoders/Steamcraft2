@@ -26,30 +26,31 @@ import steamcraft.common.lib.LibInfo;
 // TODO: Auto-generated Javadoc
 /**
  * The Class TileCrystalRenderer.
- *
+ * 
  * @author Surseance (Johnny Eatmon)
  */
-public class TileCrystalRenderer extends TileEntitySpecialRenderer
-{
-	
+public class TileCrystalRenderer extends TileEntitySpecialRenderer {
+
 	/** The model. */
 	private final ModelCrystal model;
 
 	/**
 	 * Instantiates a new tile crystal renderer.
 	 */
-	public TileCrystalRenderer()
-	{
+	public TileCrystalRenderer() {
 		model = new ModelCrystal();
 	}
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer#renderTileEntityAt(net.minecraft.tileentity.TileEntity, double, double, double, float)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer#
+	 * renderTileEntityAt(net.minecraft.tileentity.TileEntity, double, double,
+	 * double, float)
 	 */
 	@Override
 	public void renderTileEntityAt(final TileEntity te, final double dx,
-			final double dy, final double dz, final float scale)
-	{
+			final double dy, final double dz, final float scale) {
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float) dx + 0.5F, (float) dy + 1.5F,
 				(float) dz + 0.5F);

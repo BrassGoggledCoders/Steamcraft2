@@ -29,35 +29,38 @@ import cpw.mods.fml.relauncher.SideOnly;
 // TODO: Auto-generated Javadoc
 /**
  * The Class RenderBullet.
- *
+ * 
  * @author Surseance (Johnny Eatmon)
  */
 @SideOnly(Side.CLIENT)
-public class RenderBullet extends Render
-{
-	
+public class RenderBullet extends Render {
+
 	/** The Constant bulletTex. */
 	private static final ResourceLocation bulletTex = new ResourceLocation(
 			LibInfo.PREFIX + "textures/projectiles/musketball.png");
 
 	/**
 	 * Render bullet.
-	 *
-	 * @param bullet the bullet
-	 * @param dx the dx
-	 * @param dy the dy
-	 * @param dz the dz
-	 * @param frotY the frot y
-	 * @param frotP the frot p
+	 * 
+	 * @param bullet
+	 *            the bullet
+	 * @param dx
+	 *            the dx
+	 * @param dy
+	 *            the dy
+	 * @param dz
+	 *            the dz
+	 * @param frotY
+	 *            the frot y
+	 * @param frotP
+	 *            the frot p
 	 */
 	public void renderBullet(final EntityBullet bullet, final double dx,
 			final double dy, final double dz, final float frotY,
-			final float frotP)
-	{
+			final float frotP) {
 		bindEntityTexture(bullet);
 
-		if (bullet.prevRotationYaw == 0.0F && bullet.prevRotationPitch == 0.0F)
-		{
+		if (bullet.prevRotationYaw == 0.0F && bullet.prevRotationPitch == 0.0F) {
 			return;
 		}
 
@@ -83,8 +86,7 @@ public class RenderBullet extends Render
 		GL11.glEnable(32826 /* GL_RESCALE_NORMAL_EXT */);
 		final float f11 = 1.0F - frotP;
 
-		if (f11 > 0.0F)
-		{
+		if (f11 > 0.0F) {
 			final float f12 = -MathHelper.sin(f11 * 3F) * f11;
 			GL11.glRotatef(f12, 0.0F, 0.0F, 1.0F);
 		}
@@ -107,8 +109,7 @@ public class RenderBullet extends Render
 		tessellator.addVertexWithUV(-7D, -2D, -2D, f6, f9);
 		tessellator.draw();
 
-		for (int j = 0; j < 4; j++)
-		{
+		for (int j = 0; j < 4; j++) {
 			GL11.glRotatef(90F, 1.0F, 0.0F, 0.0F);
 			GL11.glNormal3f(0.0F, 0.0F, f10);
 			tessellator.startDrawingQuads();
@@ -125,31 +126,37 @@ public class RenderBullet extends Render
 
 	/**
 	 * Gets the bullet texture.
-	 *
-	 * @param bullet the bullet
+	 * 
+	 * @param bullet
+	 *            the bullet
 	 * @return the bullet texture
 	 */
-	protected ResourceLocation getBulletTexture(final EntityBullet bullet)
-	{
+	protected ResourceLocation getBulletTexture(final EntityBullet bullet) {
 		return bulletTex;
 	}
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.client.renderer.entity.Render#getEntityTexture(net.minecraft.entity.Entity)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * net.minecraft.client.renderer.entity.Render#getEntityTexture(net.minecraft
+	 * .entity.Entity)
 	 */
 	@Override
-	protected ResourceLocation getEntityTexture(final Entity entity)
-	{
+	protected ResourceLocation getEntityTexture(final Entity entity) {
 		return getBulletTexture((EntityBullet) entity);
 	}
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.client.renderer.entity.Render#doRender(net.minecraft.entity.Entity, double, double, double, float, float)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * net.minecraft.client.renderer.entity.Render#doRender(net.minecraft.entity
+	 * .Entity, double, double, double, float, float)
 	 */
 	@Override
 	public void doRender(final Entity entity, final double dx, final double dy,
-			final double dz, final float frotY, final float frotP)
-	{
+			final double dz, final float frotY, final float frotP) {
 		renderBullet((EntityBullet) entity, dx, dy, dz, frotY, frotP);
 	}
 }

@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package steamcraft.common;
 
 import net.minecraft.client.settings.KeyBinding;
@@ -6,14 +9,22 @@ import org.lwjgl.input.Keyboard;
 
 import cpw.mods.fml.client.registry.ClientRegistry;
 
-public class KeyBindings
-{
+// TODO: Auto-generated Javadoc
+/**
+ * The Class KeyBindings.
+ */
+public class KeyBindings {
+	
+	/** The key open vanity gui. */
 	static KeyBinding keyOpenVanityGUI;
 
-public static void registerKeys()
-{
-	keyOpenVanityGUI  = new KeyBinding("Open/Close Vanity GUI", Keyboard.KEY_V, "key.categories.sc2");
+	/**
+	 * Register keys.
+	 */
+	public static void registerKeys() {
+		keyOpenVanityGUI = new KeyBinding("Open/Close Vanity GUI",
+				Keyboard.KEY_V, "key.categories.sc2");
 
-	ClientRegistry.registerKeyBinding(keyOpenVanityGUI);
-}
+		ClientRegistry.registerKeyBinding(keyOpenVanityGUI);
+	}
 }

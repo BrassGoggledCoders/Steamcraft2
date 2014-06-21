@@ -22,7 +22,6 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
-import steamcraft.common.Steamcraft;
 import steamcraft.common.config.ConfigBlocks;
 import steamcraft.common.lib.LibInfo;
 import cpw.mods.fml.relauncher.Side;
@@ -31,42 +30,46 @@ import cpw.mods.fml.relauncher.SideOnly;
 // TODO: Auto-generated Javadoc
 /**
  * The Class BlockSlate.
- *
+ * 
  * @author warlordjones
  */
-public class BlockSlate extends BaseBlock
-{
+public class BlockSlate extends BaseBlock {
 
 	/** The icon. */
 	private final IIcon[] icon = new IIcon[9];
+
 	/**
 	 * Instantiates a new block slate.
 	 */
-	public BlockSlate()
-	{
+	public BlockSlate() {
 		super(Material.rock);
 		setHardness(3.0F);
 		setResistance(10.0F);
 		setStepSound(Block.soundTypeStone);
 		setBlockName("blockSlate");
 	}
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see net.minecraft.block.Block#getIcon(int, int)
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(final int side, final int metadata)
-	{
+	public IIcon getIcon(final int side, final int metadata) {
 		return icon[metadata];
 	}
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.block.Block#registerBlockIcons(net.minecraft.client.renderer.texture.IIconRegister)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * net.minecraft.block.Block#registerBlockIcons(net.minecraft.client.renderer
+	 * .texture.IIconRegister)
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(final IIconRegister ir)
-	{
+	public void registerBlockIcons(final IIconRegister ir) {
 		// Raw
 		icon[0] = ir.registerIcon(LibInfo.PREFIX + "blockSlateRawBlue");
 		icon[1] = ir.registerIcon(LibInfo.PREFIX + "blockSlateRawBlack");
@@ -81,17 +84,19 @@ public class BlockSlate extends BaseBlock
 		icon[8] = ir.registerIcon(LibInfo.PREFIX + "blockSlateBrickRed");
 		// Polished
 	}
-	/* (non-Javadoc)
-	 * @see net.minecraft.item.Item#getSubItems(net.minecraft.item.Item, net.minecraft.creativetab.CreativeTabs, java.util.List)
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.minecraft.item.Item#getSubItems(net.minecraft.item.Item,
+	 * net.minecraft.creativetab.CreativeTabs, java.util.List)
 	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(final Item item, final CreativeTabs tab,
-			final List l)
-	{
-		for (int var4 = 0; var4 < 8; ++var4)
-		{
+			final List l) {
+		for (int var4 = 0; var4 < 8; ++var4) {
 			l.add(new ItemStack(ConfigBlocks.blockSlate, 1, var4));
 		}
 	}

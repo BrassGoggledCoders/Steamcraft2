@@ -28,21 +28,24 @@ import cpw.mods.fml.relauncher.SideOnly;
 // TODO: Auto-generated Javadoc
 /**
  * The Class ItemIngot.
- *
+ * 
  * @author warlordjones
  */
-public class ItemIngot extends BaseItemWithMetadata
-{
-	//@SideOnly(Side.CLIENT)
+public class ItemIngot extends BaseItemWithMetadata {
+	// @SideOnly(Side.CLIENT)
+	/** The item icon. */
 	IIcon[] itemIcon = new IIcon[8];
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.item.Item#registerIcons(net.minecraft.client.renderer.texture.IIconRegister)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * net.minecraft.item.Item#registerIcons(net.minecraft.client.renderer.texture
+	 * .IIconRegister)
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons( IIconRegister ir)
-	{
+	public void registerIcons(IIconRegister ir) {
 		itemIcon[0] = ir.registerIcon(LibInfo.PREFIX + "itemIngotAluminum");
 		itemIcon[1] = ir.registerIcon(LibInfo.PREFIX + "itemIngotCopper");
 		itemIcon[2] = ir.registerIcon(LibInfo.PREFIX + "itemIngotTin");
@@ -56,30 +59,33 @@ public class ItemIngot extends BaseItemWithMetadata
 	/**
 	 * Instantiates a new item ingot.
 	 */
-	public ItemIngot()
-	{
+	public ItemIngot() {
 		super();
 		setMaxStackSize(64);
 		setUnlocalizedName("itemIngot");
 	}
-	/* (non-Javadoc)
-	 * @see net.minecraft.item.Item#getSubItems(net.minecraft.item.Item, net.minecraft.creativetab.CreativeTabs, java.util.List)
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.minecraft.item.Item#getSubItems(net.minecraft.item.Item,
+	 * net.minecraft.creativetab.CreativeTabs, java.util.List)
 	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void getSubItems( Item item,  CreativeTabs tab,
-			 List l)
-	{
-		for (int var4 = 0; var4 < 8; ++var4)
-		{
+	public void getSubItems(Item item, CreativeTabs tab, List l) {
+		for (int var4 = 0; var4 < 8; ++var4) {
 			l.add(new ItemStack(ConfigItems.itemIngot, 1, var4));
 		}
 	}
+
+	/* (non-Javadoc)
+	 * @see net.minecraft.item.Item#getIconFromDamage(int)
+	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public IIcon getIconFromDamage( int itemDamage)
-	{
+	public IIcon getIconFromDamage(int itemDamage) {
 		return itemIcon[itemDamage];
 	}
 }

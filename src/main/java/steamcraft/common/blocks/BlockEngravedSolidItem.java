@@ -18,19 +18,18 @@ import net.minecraft.block.Block;
 // TODO: Auto-generated Javadoc
 /**
  * The Class BlockEngravedSolidItem.
- *
+ * 
  * @author Surseance (Johnny Eatmon)
  */
-public class BlockEngravedSolidItem extends BaseItemBlockWithMetadata
-{
+public class BlockEngravedSolidItem extends BaseItemBlockWithMetadata {
 
 	/**
 	 * Instantiates a new block engraved solid item.
-	 *
-	 * @param block the block
+	 * 
+	 * @param block
+	 *            the block
 	 */
-	public BlockEngravedSolidItem(Block block)
-	{
+	public BlockEngravedSolidItem(Block block) {
 		super(block, block);
 	}
 }

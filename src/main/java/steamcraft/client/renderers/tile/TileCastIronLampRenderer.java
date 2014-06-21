@@ -26,52 +26,49 @@ import steamcraft.common.lib.LibInfo;
 // TODO: Auto-generated Javadoc
 /**
  * The Class TileCastIronLampRenderer.
- *
+ * 
  * @author Surseance (Johnny Eatmon)
  */
-public class TileCastIronLampRenderer extends TileEntitySpecialRenderer
-{
-	
+public class TileCastIronLampRenderer extends TileEntitySpecialRenderer {
+
 	/** The lamp model top. */
 	private final ModelCastIronLampTop lampModelTop;
-	
+
 	/** The lamp model side. */
 	private final ModelCastIronLampSide lampModelSide;
 
 	/**
 	 * Instantiates a new tile cast iron lamp renderer.
 	 */
-	public TileCastIronLampRenderer()
-	{
+	public TileCastIronLampRenderer() {
 		lampModelTop = new ModelCastIronLampTop();
 		lampModelSide = new ModelCastIronLampSide();
 	}
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer#renderTileEntityAt(net.minecraft.tileentity.TileEntity, double, double, double, float)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer#
+	 * renderTileEntityAt(net.minecraft.tileentity.TileEntity, double, double,
+	 * double, float)
 	 */
 	@Override
 	public void renderTileEntityAt(final TileEntity te, final double dx,
-			final double dy, final double dz, final float scale)
-	{
+			final double dy, final double dz, final float scale) {
 		te.getWorldObj().getBlock(te.xCoord, te.yCoord, te.zCoord);
 		final int metadata = te.getBlockMetadata();
 		float rot = 0.0F; // f3 - 1.0F;
 
-		if (metadata == 2)
-		{
+		if (metadata == 2) {
 			rot = 180.0F;
 		}
-		if (metadata == 4)
-		{
+		if (metadata == 4) {
 			rot = 90.0F;
 		}
-		if (metadata == 3)
-		{
+		if (metadata == 3) {
 			rot = -90.0F;
 		}
-		if (metadata == 6)
-		{
+		if (metadata == 6) {
 			rot = 180.0F;
 		}
 
@@ -81,8 +78,7 @@ public class TileCastIronLampRenderer extends TileEntitySpecialRenderer
 				(float) dz + 0.5F);
 		GL11.glRotatef(rot, 0.0F, 1.0F, 0.0F);
 
-		if (metadata == 6)
-		{
+		if (metadata == 6) {
 			GL11.glRotatef(180.0F, 0.0F, 0.0F, 1.0F);
 		}
 

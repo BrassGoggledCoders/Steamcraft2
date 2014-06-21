@@ -15,17 +15,17 @@ package steamcraft.common.tiles;
 
 import net.minecraft.tileentity.TileEntity;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class TileCastIronLamp.
  *
  * @author Surseance (Johnny Eatmon)
  */
-public class TileCastIronLamp extends TileEntity
-{
-	
+public class TileCastIronLamp extends TileEntity {
+
 	/**
 	 * Instantiates a new tile cast iron lamp.
 	 */
-	public TileCastIronLamp()
-	{
+	public TileCastIronLamp() {
 	}
 }

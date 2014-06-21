@@ -24,27 +24,26 @@ import cpw.mods.fml.relauncher.SideOnly;
 // TODO: Auto-generated Javadoc
 /**
  * The Class BlockCastIronGate.
- *
+ * 
  * @author Surseance (Johnny Eatmon)
  */
-public class BlockCastIronGate extends BlockFenceGate
-{
+public class BlockCastIronGate extends BlockFenceGate {
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see net.minecraft.block.BlockFenceGate#getIcon(int, int)
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(final int side, final int metadata)
-	{
+	public IIcon getIcon(final int side, final int metadata) {
 		return ConfigBlocks.blockCastIronFence.getBlockTextureFromSide(side);
 	}
 
 	/**
 	 * Instantiates a new block cast iron gate.
 	 */
-	public BlockCastIronGate()
-	{
+	public BlockCastIronGate() {
 		setBlockName("blockCastIronGate");
 		setHardness(7.0F);
 		setResistance(20.0F);

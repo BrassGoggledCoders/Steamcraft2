@@ -16,9 +16,9 @@ package steamcraft.common.tiles;
 import net.minecraft.tileentity.TileEntity;
 
 /**
+ * The Class TileCrystal.
  *
  * @author Surseance (Johnny Eatmon)
  */
-public class TileCrystal extends TileEntity
-{
+public class TileCrystal extends TileEntity {
 }

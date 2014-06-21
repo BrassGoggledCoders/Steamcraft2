@@ -40,12 +40,11 @@ import cpw.mods.fml.relauncher.SideOnly;
  * NOTE: Please do not tamper with this file unless you know vectors and
  * trigonometric functions very well. Thank you. I have, however, cleaned up the
  * code to make things easier to understand.
- *
+ * 
  * @author Surseance (Johnny Eatmon)
- *
+ * 
  */
-public class EntityBullet extends Entity implements IProjectile
-{
+public class EntityBullet extends Entity implements IProjectile {
 
 	/** The x tile. */
 	private int xTile = -1;
@@ -85,11 +84,11 @@ public class EntityBullet extends Entity implements IProjectile
 
 	/**
 	 * Instantiates a new entity bullet.
-	 *
-	 * @param world the world
+	 * 
+	 * @param world
+	 *            the world
 	 */
-	public EntityBullet(final World world)
-	{
+	public EntityBullet(final World world) {
 		super(world);
 		renderDistanceWeight = 10.0D;
 		setSize(0.5F, 0.5F);
@@ -97,15 +96,18 @@ public class EntityBullet extends Entity implements IProjectile
 
 	/**
 	 * Instantiates a new entity bullet.
-	 *
-	 * @param world the world
-	 * @param dx the dx
-	 * @param dy the dy
-	 * @param dz the dz
+	 * 
+	 * @param world
+	 *            the world
+	 * @param dx
+	 *            the dx
+	 * @param dy
+	 *            the dy
+	 * @param dz
+	 *            the dz
 	 */
 	public EntityBullet(final World world, final double dx, final double dy,
-			final double dz)
-	{
+			final double dz) {
 		super(world);
 		renderDistanceWeight = 10.0D;
 		setSize(0.5F, 0.5F);
@@ -115,22 +117,25 @@ public class EntityBullet extends Entity implements IProjectile
 
 	/**
 	 * Instantiates a new entity bullet.
-	 *
-	 * @param world the world
-	 * @param shooter the shooter
-	 * @param target the target
-	 * @param frotY the frot y
-	 * @param frotP the frot p
+	 * 
+	 * @param world
+	 *            the world
+	 * @param shooter
+	 *            the shooter
+	 * @param target
+	 *            the target
+	 * @param frotY
+	 *            the frot y
+	 * @param frotP
+	 *            the frot p
 	 */
 	public EntityBullet(final World world, final EntityLivingBase shooter,
-			final EntityLivingBase target, final float frotY, final float frotP)
-	{
+			final EntityLivingBase target, final float frotY, final float frotP) {
 		super(world);
 		renderDistanceWeight = 10.0D;
 		shootingEntity = shooter;
 
-		if (shooter instanceof EntityPlayer)
-		{
+		if (shooter instanceof EntityPlayer) {
 			canBePickedUp = 1;
 		}
 
@@ -145,8 +150,7 @@ public class EntityBullet extends Entity implements IProjectile
 																			// Yay,
 																			// math!
 
-		if (magnitude >= 1.0E-7D)
-		{
+		if (magnitude >= 1.0E-7D) {
 			final float fx = (float) (Math.atan2(dz, dx) * 180.0D / Math.PI) - 90.0F;
 			final float fy = (float) (-(Math.atan2(dy, magnitude) * 180.0D / Math.PI));
 			final double dlx = dx / magnitude;
@@ -161,21 +165,23 @@ public class EntityBullet extends Entity implements IProjectile
 
 	/**
 	 * Instantiates a new entity bullet.
-	 *
-	 * @param world the world
-	 * @param shooter the shooter
-	 * @param damage the damage
-	 * @param accuracy the accuracy
+	 * 
+	 * @param world
+	 *            the world
+	 * @param shooter
+	 *            the shooter
+	 * @param damage
+	 *            the damage
+	 * @param accuracy
+	 *            the accuracy
 	 */
 	public EntityBullet(final World world, final EntityLivingBase shooter,
-			final int damage, final int accuracy)
-	{
+			final int damage, final int accuracy) {
 		super(world);
 		renderDistanceWeight = 10.0D;
 		shootingEntity = shooter;
 
-		if (shooter instanceof EntityPlayer)
-		{
+		if (shooter instanceof EntityPlayer) {
 			canBePickedUp = 1;
 		}
 
@@ -198,22 +204,25 @@ public class EntityBullet extends Entity implements IProjectile
 		this.damage = damage;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see net.minecraft.entity.Entity#entityInit()
 	 */
 	@Override
-	protected void entityInit()
-	{
+	protected void entityInit() {
 		dataWatcher.addObject(Config.entBulletId, Byte.valueOf((byte) 0));
 	}
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.entity.IProjectile#setThrowableHeading(double, double, double, float, float)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.minecraft.entity.IProjectile#setThrowableHeading(double, double,
+	 * double, float, float)
 	 */
 	@Override
 	public void setThrowableHeading(double dx, double dy, double dz,
-			final float frotY, final float frotP)
-	{
+			final float frotY, final float frotP) {
 		final int accuracy = this.accuracy;
 		final float f2 = MathHelper.sqrt_double(dx * dx + dy * dy + dz * dz);
 		dx /= f2;
@@ -237,31 +246,33 @@ public class EntityBullet extends Entity implements IProjectile
 		timeTillDeath = 0;
 	}
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.entity.Entity#setPositionAndRotation2(double, double, double, float, float, int)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.minecraft.entity.Entity#setPositionAndRotation2(double, double,
+	 * double, float, float, int)
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void setPositionAndRotation2(final double dx, final double dy,
-			final double dz, final float frotY, final float frotP, final int i)
-	{
+			final double dz, final float frotY, final float frotP, final int i) {
 		setPosition(dx, dy, dz);
 		setRotation(frotY, frotP);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see net.minecraft.entity.Entity#setVelocity(double, double, double)
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void setVelocity(final double dx, final double dy, final double dz)
-	{
+	public void setVelocity(final double dx, final double dy, final double dz) {
 		motionX = dx;
 		motionY = dy;
 		motionZ = dz;
 
-		if ((prevRotationPitch == 0.0F) && (prevRotationYaw == 0.0F))
-		{
+		if ((prevRotationPitch == 0.0F) && (prevRotationYaw == 0.0F)) {
 			final float magnitude = MathHelper.sqrt_double(dx * dx + dz * dz);
 			prevRotationYaw = rotationYaw = (float) ((Math.atan2(dx, dz) * 180D) / 3.1415927410125732D);
 			prevRotationPitch = rotationPitch = (float) ((Math.atan2(dy,
@@ -269,21 +280,20 @@ public class EntityBullet extends Entity implements IProjectile
 		}
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see net.minecraft.entity.Entity#onUpdate()
 	 */
 	@Override
-	public void onUpdate()
-	{
+	public void onUpdate() {
 		super.onUpdate();
 
-		if (flyTime > 1000)
-		{
+		if (flyTime > 1000) {
 			setDead();
 		}
 
-		if (prevRotationPitch == 0.0F && prevRotationYaw == 0.0F)
-		{
+		if (prevRotationPitch == 0.0F && prevRotationYaw == 0.0F) {
 			final float magnitude = MathHelper.sqrt_double(motionX * motionX
 					+ motionZ * motionZ);
 			prevRotationYaw = rotationYaw = (float) ((Math.atan2(motionX,
@@ -292,38 +302,30 @@ public class EntityBullet extends Entity implements IProjectile
 					magnitude) * 180D) / 3.1415927410125732D);
 		}
 
-		if (arrowShake > 0)
-		{
+		if (arrowShake > 0) {
 			arrowShake--;
 		}
 
-		if (inGround)
-		{
+		if (inGround) {
 			final Block block = worldObj.getBlock(xTile, yTile, zTile);
 
-			if (block != inTile)
-			{
+			if (block != inTile) {
 				inGround = false;
 				motionX *= rand.nextFloat() * 0.2F;
 				motionY *= rand.nextFloat() * 0.2F;
 				motionZ *= rand.nextFloat() * 0.2F;
 				timeTillDeath = 0;
 				flyTime = 0;
-			}
-			else
-			{
+			} else {
 				timeTillDeath++;
 
-				if (timeTillDeath == 1200)
-				{
+				if (timeTillDeath == 1200) {
 					setDead();
 				}
 
 				return;
 			}
-		}
-		else
-		{
+		} else {
 			flyTime++;
 		}
 
@@ -339,8 +341,7 @@ public class EntityBullet extends Entity implements IProjectile
 		velVector = worldObj.getWorldVec3Pool().getVecFromPool(posX + motionX,
 				posY + motionY, posZ + motionZ);
 
-		if (mop != null)
-		{
+		if (mop != null) {
 			velVector = worldObj.getWorldVec3Pool().getVecFromPool(
 					mop.hitVec.xCoord, mop.hitVec.yCoord, mop.hitVec.zCoord);
 		}
@@ -352,13 +353,11 @@ public class EntityBullet extends Entity implements IProjectile
 						1.0D, 1.0D));
 		double distance = 0.0D;
 
-		for (int listSize = 0; listSize < entList.size(); listSize++)
-		{
+		for (int listSize = 0; listSize < entList.size(); listSize++) {
 			final Entity collidableEnt = (Entity) entList.get(listSize);
 
 			if (!collidableEnt.canBeCollidedWith()
-					|| collidableEnt == shootingEntity && flyTime < 5)
-			{
+					|| collidableEnt == shootingEntity && flyTime < 5) {
 				continue;
 			}
 
@@ -368,8 +367,7 @@ public class EntityBullet extends Entity implements IProjectile
 			final MovingObjectPosition objectInVector = aaBB
 					.calculateIntercept(posVector, velVector);
 
-			if (objectInVector == null)
-			{
+			if (objectInVector == null) {
 				continue;
 			}
 
@@ -384,49 +382,38 @@ public class EntityBullet extends Entity implements IProjectile
 			}
 		}
 
-		if (entity != null)
-		{
+		if (entity != null) {
 			mop = new MovingObjectPosition(entity);
 		}
 
-		if (mop != null)
-		{
-			if (mop.entityHit != null)
-			{
+		if (mop != null) {
+			if (mop.entityHit != null) {
 				if (mop.entityHit.attackEntityFrom(
-						DamageSource.causeThrownDamage(this, this), damage))
-				{
+						DamageSource.causeThrownDamage(this, this), damage)) {
 					worldObj.playSoundAtEntity(this, LibInfo.PREFIX
 							+ "hitflesh", 1.0F,
 							1.2F / (rand.nextFloat() * 0.2F + 0.9F));
 					setDead();
-				}
-				else
-				{
+				} else {
 					motionX *= 0.10000000149011612D;
 					motionY *= 0.10000000149011612D;
 					motionZ *= 0.10000000149011612D;
 					flyTime = 0;
 					setDead();
 				}
-			}
-			else
-			{
+			} else {
 				xTile = mop.blockX;
 				yTile = mop.blockY;
 				zTile = mop.blockZ;
 				inTile = worldObj.getBlock(xTile, yTile, zTile);
 
-				if (inTile == Blocks.glass || inTile == Blocks.glowstone)
-				{
+				if (inTile == Blocks.glass || inTile == Blocks.glowstone) {
 					final Block block = inTile;
 					worldObj.playSoundEffect(xTile + 0.5D, yTile + 0.5D,
 							zTile + 0.5D, block.stepSound.getBreakSound(),
 							1.0F, 1.0F);
 					worldObj.setBlockToAir(xTile, yTile, zTile);
-				}
-				else
-				{
+				} else {
 					motionX = (float) (mop.hitVec.xCoord - posX);
 					motionY = (float) (mop.hitVec.yCoord - posY);
 					motionZ = (float) (mop.hitVec.zCoord - posZ);
@@ -450,20 +437,16 @@ public class EntityBullet extends Entity implements IProjectile
 		rotationYaw = (float) ((Math.atan2(motionX, motionZ) * 180D) / 3.1415927410125732D);
 
 		for (rotationPitch = (float) ((Math.atan2(motionY, magnitude) * 180D) / 3.1415927410125732D); rotationPitch
-				- prevRotationPitch < -180F; prevRotationPitch -= 360F)
-		{
+				- prevRotationPitch < -180F; prevRotationPitch -= 360F) {
 		}
 
-		for (; rotationPitch - prevRotationPitch >= 180F; prevRotationPitch += 360F)
-		{
+		for (; rotationPitch - prevRotationPitch >= 180F; prevRotationPitch += 360F) {
 		}
 
-		for (; rotationYaw - prevRotationYaw < -180F; prevRotationYaw -= 360F)
-		{
+		for (; rotationYaw - prevRotationYaw < -180F; prevRotationYaw -= 360F) {
 		}
 
-		for (; rotationYaw - prevRotationYaw >= 180F; prevRotationYaw += 360F)
-		{
+		for (; rotationYaw - prevRotationYaw >= 180F; prevRotationYaw += 360F) {
 		}
 
 		rotationPitch = prevRotationPitch + (rotationPitch - prevRotationPitch)
@@ -471,8 +454,7 @@ public class EntityBullet extends Entity implements IProjectile
 		rotationYaw = prevRotationYaw + (rotationYaw - prevRotationYaw) * 0.2F;
 		final float speed = 0.99F;
 
-		if (handleWaterMovement())
-		{
+		if (handleWaterMovement()) {
 			setDead();
 			// Bullets can't go through water, silly!
 			// for(int k = 0; k < 4; k++)
@@ -491,12 +473,15 @@ public class EntityBullet extends Entity implements IProjectile
 		setPosition(posX, posY, posZ);
 	}
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.entity.Entity#writeEntityToNBT(net.minecraft.nbt.NBTTagCompound)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * net.minecraft.entity.Entity#writeEntityToNBT(net.minecraft.nbt.NBTTagCompound
+	 * )
 	 */
 	@Override
-	public void writeEntityToNBT(final NBTTagCompound tagCompound)
-	{
+	public void writeEntityToNBT(final NBTTagCompound tagCompound) {
 		tagCompound.setShort("xTile", (short) xTile);
 		tagCompound.setShort("yTile", (short) yTile);
 		tagCompound.setShort("zTile", (short) zTile);
@@ -505,12 +490,14 @@ public class EntityBullet extends Entity implements IProjectile
 		tagCompound.setByte("inGround", (byte) (inGround ? 1 : 0));
 	}
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.entity.Entity#readEntityFromNBT(net.minecraft.nbt.NBTTagCompound)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.minecraft.entity.Entity#readEntityFromNBT(net.minecraft.nbt.
+	 * NBTTagCompound)
 	 */
 	@Override
-	public void readEntityFromNBT(final NBTTagCompound tagCompound)
-	{
+	public void readEntityFromNBT(final NBTTagCompound tagCompound) {
 		xTile = tagCompound.getShort("xTile");
 		yTile = tagCompound.getShort("yTile");
 		zTile = tagCompound.getShort("zTile");
@@ -519,26 +506,26 @@ public class EntityBullet extends Entity implements IProjectile
 		inGround = tagCompound.getByte("inGround") == 1;
 	}
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.entity.Entity#onCollideWithPlayer(net.minecraft.entity.player.EntityPlayer)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * net.minecraft.entity.Entity#onCollideWithPlayer(net.minecraft.entity.
+	 * player.EntityPlayer)
 	 */
 	@Override
-	public void onCollideWithPlayer(final EntityPlayer player)
-	{
-		if (!worldObj.isRemote && inGround && arrowShake <= 0)
-		{
+	public void onCollideWithPlayer(final EntityPlayer player) {
+		if (!worldObj.isRemote && inGround && arrowShake <= 0) {
 			boolean flag = canBePickedUp == 1 || canBePickedUp == 2
 					&& player.capabilities.isCreativeMode;
 
 			if (canBePickedUp == 1
 					&& !player.inventory.addItemStackToInventory(new ItemStack(
-							ConfigItems.itemMusketRound, 1)))
-			{
+							ConfigItems.itemMusketRound, 1))) {
 				flag = false;
 			}
 
-			if (flag)
-			{
+			if (flag) {
 				playSound(
 						"random.pop",
 						0.2F,
@@ -549,31 +536,34 @@ public class EntityBullet extends Entity implements IProjectile
 		}
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see net.minecraft.entity.Entity#canTriggerWalking()
 	 */
 	@Override
-	protected boolean canTriggerWalking()
-	{
+	protected boolean canTriggerWalking() {
 		return false;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see net.minecraft.entity.Entity#getShadowSize()
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public float getShadowSize()
-	{
+	public float getShadowSize() {
 		return 0.0F;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see net.minecraft.entity.Entity#canAttackWithItem()
 	 */
 	@Override
-	public boolean canAttackWithItem()
-	{
+	public boolean canAttackWithItem() {
 		return false;
 	}
 }

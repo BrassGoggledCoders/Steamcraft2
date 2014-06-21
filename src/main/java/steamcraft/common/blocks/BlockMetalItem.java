@@ -18,19 +18,18 @@ import net.minecraft.block.Block;
 // TODO: Auto-generated Javadoc
 /**
  * The Class BlockMetalItem.
- *
+ * 
  * @author warlordjones
  */
-public class BlockMetalItem extends BaseItemBlockWithMetadata
-{
+public class BlockMetalItem extends BaseItemBlockWithMetadata {
 
 	/**
 	 * Instantiates a new block metal item.
-	 *
-	 * @param block the block
+	 * 
+	 * @param block
+	 *            the block
 	 */
-	public BlockMetalItem(Block block)
-	{
+	public BlockMetalItem(Block block) {
 		super(block, block);
 	}
 }

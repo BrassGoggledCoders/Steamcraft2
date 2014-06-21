@@ -26,11 +26,10 @@ import steamcraft.common.lib.LibInfo;
 // TODO: Auto-generated Javadoc
 /**
  * The Class TileHatchRenderer.
- *
+ * 
  * @author warlordjones
  */
-public class TileDropHammerRenderer extends TileEntitySpecialRenderer
-{
+public class TileDropHammerRenderer extends TileEntitySpecialRenderer {
 
 	/** The model. */
 	private final ModelDropHammer model;
@@ -38,26 +37,28 @@ public class TileDropHammerRenderer extends TileEntitySpecialRenderer
 	/**
 	 * Instantiates a new tile hatch renderer.
 	 */
-	public TileDropHammerRenderer()
-	{
+	public TileDropHammerRenderer() {
 		model = new ModelDropHammer();
 	}
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer#renderTileEntityAt(net.minecraft.tileentity.TileEntity, double, double, double, float)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer#
+	 * renderTileEntityAt(net.minecraft.tileentity.TileEntity, double, double,
+	 * double, float)
 	 */
 	@Override
 	public void renderTileEntityAt(final TileEntity te, final double dx,
-			final double dy, final double dz, final float scale)
-	{
+			final double dy, final double dz, final float scale) {
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float) dx + 0.5F, (float) dy, (float) dz + 0.5F);
-		final ResourceLocation dropHammer = (new ResourceLocation(LibInfo.PREFIX
-				+ "textures/models/modelDropHammer.png"));
+		final ResourceLocation dropHammer = (new ResourceLocation(
+				LibInfo.PREFIX + "textures/models/modelDropHammer.png"));
 		Minecraft.getMinecraft().renderEngine.bindTexture(dropHammer);
 		GL11.glPushMatrix();
 		GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
-		model.render((Entity)null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
+		model.render((Entity) null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
 		GL11.glPopMatrix();
 		GL11.glPopMatrix();
 	}

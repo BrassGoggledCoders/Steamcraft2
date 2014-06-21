@@ -36,32 +36,35 @@ import cpw.mods.fml.relauncher.SideOnly;
 // TODO: Auto-generated Javadoc
 /**
  * The Class BlockEngravedSolid.
- *
+ * 
  * @author Surseance (Johnny Eatmon)
  */
-public class BlockEngravedSolid extends Block
-{
+public class BlockEngravedSolid extends Block {
 
 	/** The icon. */
-	private  IIcon[] icon = new IIcon[9];
+	private IIcon[] icon = new IIcon[9];
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see net.minecraft.block.Block#getIcon(int, int)
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public IIcon getIcon( int side,  int metadata)
-	{
+	public IIcon getIcon(int side, int metadata) {
 		return icon[metadata];
 	}
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.block.Block#registerBlockIcons(net.minecraft.client.renderer.texture.IIconRegister)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * net.minecraft.block.Block#registerBlockIcons(net.minecraft.client.renderer
+	 * .texture.IIconRegister)
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons( IIconRegister ir)
-	{
+	public void registerBlockIcons(IIconRegister ir) {
 		icon[0] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedBrass");
 		icon[1] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedCastIron");
 		icon[2] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedDiamond");
@@ -77,8 +80,7 @@ public class BlockEngravedSolid extends Block
 	/**
 	 * Instantiates a new block engraved solid.
 	 */
-	public BlockEngravedSolid()
-	{
+	public BlockEngravedSolid() {
 		super(Material.rock);
 		setBlockName("blockEngravedSolid");
 		setHardness(3.0F);
@@ -88,56 +90,62 @@ public class BlockEngravedSolid extends Block
 		setCreativeTab(Steamcraft.tabSC2);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see net.minecraft.block.Block#damageDropped(int)
 	 */
 	@Override
-	public int damageDropped( int id)
-	{
+	public int damageDropped(int id) {
 		return id;
 	}
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.block.Block#onEntityCollidedWithBlock(net.minecraft.world.World, int, int, int, net.minecraft.entity.Entity)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * net.minecraft.block.Block#onEntityCollidedWithBlock(net.minecraft.world
+	 * .World, int, int, int, net.minecraft.entity.Entity)
 	 */
 	@Override
-	public void onEntityCollidedWithBlock( World world,  int x,
-			 int y,  int z,  Entity entity)
-	{
+	public void onEntityCollidedWithBlock(World world, int x, int y, int z,
+			Entity entity) {
 		if ((world.getBlock(x, y, z) == this)
-				&& (world.getBlockMetadata(x, y, z) == 7))
-		{
+				&& (world.getBlockMetadata(x, y, z) == 7)) {
 			entity.attackEntityFrom(DamageSource.magic, 1);
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.block.Block#randomDisplayTick(net.minecraft.world.World, int, int, int, java.util.Random)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * net.minecraft.block.Block#randomDisplayTick(net.minecraft.world.World,
+	 * int, int, int, java.util.Random)
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void randomDisplayTick( World world,  int x,  int y,
-			 int z,  Random random)
-	{
+	public void randomDisplayTick(World world, int x, int y, int z,
+			Random random) {
 		if ((world.getBlock(x, y, z) == this)
-				&& (world.getBlockMetadata(x, y, z) == 7))
-		{
+				&& (world.getBlockMetadata(x, y, z) == 7)) {
 			EffectUtils.sparkle(world, x, y, z, "reddust");
 		}
 	}
-	/* (non-Javadoc)
-	 * @see net.minecraft.item.Item#getSubItems(net.minecraft.item.Item, net.minecraft.creativetab.CreativeTabs, java.util.List)
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.minecraft.item.Item#getSubItems(net.minecraft.item.Item,
+	 * net.minecraft.creativetab.CreativeTabs, java.util.List)
 	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void getSubBlocks( Item item,  CreativeTabs tab,
-			 List l)
-	{
-		for (int var4 = 0; var4 < 8; ++var4)
-		{
+	public void getSubBlocks(Item item, CreativeTabs tab, List l) {
+		for (int var4 = 0; var4 < 8; ++var4) {
 			l.add(new ItemStack(ConfigBlocks.blockEngraved, 1, var4));
 		}
 	}
-	
+
 }

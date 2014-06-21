@@ -22,65 +22,64 @@ import cpw.mods.fml.relauncher.SideOnly;
 // TODO: Auto-generated Javadoc
 /**
  * The Class ModelBrassWings.
- *
+ * 
  * @author Surseance (Johnny Eatmon) & Falkok15
  */
 @SideOnly(Side.CLIENT)
-public class ModelBrassWings extends ModelBiped
-{
-	
+public class ModelBrassWings extends ModelBiped {
+
 	/** The Shape1. */
 	ModelRenderer Shape1;
-	
+
 	/** The Shape2. */
 	ModelRenderer Shape2;
-	
+
 	/** The Shape3. */
 	ModelRenderer Shape3;
-	
+
 	/** The Shape6. */
 	ModelRenderer Shape6;
-	
+
 	/** The Shape7. */
 	ModelRenderer Shape7;
-	
+
 	/** The Shape4. */
 	ModelRenderer Shape4;
-	
+
 	/** The Shape5. */
 	ModelRenderer Shape5;
-	
+
 	/** The Shape8. */
 	ModelRenderer Shape8;
-	
+
 	/** The Shape9. */
 	ModelRenderer Shape9;
-	
+
 	/** The Shape10. */
 	ModelRenderer Shape10;
-	
+
 	/** The Shape11. */
 	ModelRenderer Shape11;
-	
+
 	/** The Shape12. */
 	ModelRenderer Shape12;
-	
+
 	/** The Shape13. */
 	ModelRenderer Shape13;
-	
+
 	/** The Shape15. */
 	ModelRenderer Shape15;
-	
+
 	/** The Shape14. */
 	ModelRenderer Shape14;
 
 	/**
 	 * Instantiates a new model brass wings.
-	 *
-	 * @param f the f
+	 * 
+	 * @param f
+	 *            the f
 	 */
-	public ModelBrassWings(final float f)
-	{
+	public ModelBrassWings(final float f) {
 		super(f, 0, 64, 32);
 		// textureWidth = 64; <-- these things are bullshit, they do nothing
 		// useful
@@ -204,13 +203,16 @@ public class ModelBrassWings extends ModelBiped
 		bipedBody.addChild(Shape14);
 	}
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.client.model.ModelBiped#render(net.minecraft.entity.Entity, float, float, float, float, float, float)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * net.minecraft.client.model.ModelBiped#render(net.minecraft.entity.Entity,
+	 * float, float, float, float, float, float)
 	 */
 	@Override
 	public void render(final Entity entity, final float f, final float f1,
-			final float f2, final float f3, final float f4, final float f5)
-	{
+			final float f2, final float f3, final float f4, final float f5) {
 		super.render(entity, f, f1, f2, f3, f4, f5);
 		setRotationAngles(f, f1, f2, f3, f4, f5, entity);
 		// Shape1.render(f5);
@@ -233,28 +235,33 @@ public class ModelBrassWings extends ModelBiped
 	// Techne method
 	/**
 	 * Sets the rotation.
-	 *
-	 * @param model the model
-	 * @param x the x
-	 * @param y the y
-	 * @param z the z
+	 * 
+	 * @param model
+	 *            the model
+	 * @param x
+	 *            the x
+	 * @param y
+	 *            the y
+	 * @param z
+	 *            the z
 	 */
 	private void setRotation(final ModelRenderer model, final float x,
-			final float y, final float z)
-	{
+			final float y, final float z) {
 		model.rotateAngleX = x;
 		model.rotateAngleY = y;
 		model.rotateAngleZ = z;
 	}
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.client.model.ModelBiped#setRotationAngles(float, float, float, float, float, float, net.minecraft.entity.Entity)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.minecraft.client.model.ModelBiped#setRotationAngles(float,
+	 * float, float, float, float, float, net.minecraft.entity.Entity)
 	 */
 	@Override
 	public void setRotationAngles(final float f, final float f1,
 			final float f2, final float f3, final float f4, final float f5,
-			final Entity entity)
-	{
+			final Entity entity) {
 		super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
 	}
 }

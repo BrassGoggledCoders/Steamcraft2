@@ -31,25 +31,24 @@ import boilerplate.steamapi.machines.IMachine;
 /**
  * The Class BlockContainerMod.
  */
-public abstract class BlockContainerMod extends BlockContainer
-{
+public abstract class BlockContainerMod extends BlockContainer {
 
 	/** The keep inventory. */
 	protected static boolean keepInventory = true;
 
 	/** The random. */
-	protected  Random random = new Random();
+	protected Random random = new Random();
 
 	/** The owner. */
 	public static String owner = "[SC2]";
 
 	/**
 	 * Instantiates a new block container mod.
-	 *
-	 * @param mat the mat
+	 * 
+	 * @param mat
+	 *            the mat
 	 */
-	protected BlockContainerMod( Material mat)
-	{
+	protected BlockContainerMod(Material mat) {
 		super(mat);
 		setCreativeTab(Steamcraft.tabSC2);
 		setHardness(5.0F);
@@ -57,51 +56,56 @@ public abstract class BlockContainerMod extends BlockContainer
 
 	/**
 	 * Gets the owner.
-	 *
+	 * 
 	 * @return the owner
 	 */
-	public String getOwner()
-	{
+	public String getOwner() {
 		return owner;
 	}
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.block.Block#onBlockPlacedBy(net.minecraft.world.World, int, int, int, net.minecraft.entity.EntityLivingBase, net.minecraft.item.ItemStack)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.minecraft.block.Block#onBlockPlacedBy(net.minecraft.world.World,
+	 * int, int, int, net.minecraft.entity.EntityLivingBase,
+	 * net.minecraft.item.ItemStack)
 	 */
 	@Override
-	public void onBlockPlacedBy( World world,  int x,  int y,
-			 int z,  EntityLivingBase entityLiving,  ItemStack is)
-	{
+	public void onBlockPlacedBy(World world, int x, int y, int z,
+			EntityLivingBase entityLiving, ItemStack is) {
 		super.onBlockPlacedBy(world, x, y, z, entityLiving, is);
 
-		if (entityLiving instanceof EntityPlayer)
-		{
+		if (entityLiving instanceof EntityPlayer) {
 			owner = owner
 					+ ((EntityPlayer) entityLiving).getCommandSenderName();
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.block.BlockContainer#breakBlock(net.minecraft.world.World, int, int, int, net.minecraft.block.Block, int)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * net.minecraft.block.BlockContainer#breakBlock(net.minecraft.world.World,
+	 * int, int, int, net.minecraft.block.Block, int)
 	 */
 	@Override
-	public void breakBlock( World world,  int x,  int y,
-			 int z,  Block block,  int metadata)
-	{
+	public void breakBlock(World world, int x, int y, int z, Block block,
+			int metadata) {
 		super.breakBlock(world, x, y, z, block, metadata);
 	}
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.block.Block#getLightValue(net.minecraft.world.IBlockAccess, int, int, int)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * net.minecraft.block.Block#getLightValue(net.minecraft.world.IBlockAccess,
+	 * int, int, int)
 	 */
 	@Override
-	public int getLightValue( IBlockAccess world,  int x,
-			 int y,  int z)
-	{
-		 TileEntity te = world.getTileEntity(x, y, z);
+	public int getLightValue(IBlockAccess world, int x, int y, int z) {
+		TileEntity te = world.getTileEntity(x, y, z);
 
-		if (te instanceof IMachine && ((IMachine) te).isActive())
-		{
+		if (te instanceof IMachine && ((IMachine) te).isActive()) {
 			return super.getLightValue(world, x, y, z) + 8;
 		}
 

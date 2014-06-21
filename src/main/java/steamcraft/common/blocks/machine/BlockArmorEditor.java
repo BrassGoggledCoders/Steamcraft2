@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package steamcraft.common.blocks.machine;
 
 import net.minecraft.block.Block;
@@ -15,99 +18,125 @@ import steamcraft.common.Steamcraft;
 import steamcraft.common.tiles.TileArmorEditor;
 import steamcraft.common.tiles.TileSteamBoiler;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class BlockArmorEditor.
+ */
 public class BlockArmorEditor extends BlockContainerMod {
 
+	/**
+	 * Instantiates a new block armor editor.
+	 *
+	 * @param p_i45394_1_ the p_i45394_1_
+	 */
 	public BlockArmorEditor(Material p_i45394_1_) {
 		super(p_i45394_1_);
 		setBlockName("blockArmorEditor");
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.ITileEntityProvider#createNewTileEntity(net.minecraft.world.World, int)
+	 */
 	@Override
 	public TileEntity createNewTileEntity(World var1, int var2) {
 		return new TileArmorEditor();
 	}
+
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#onBlockActivated(net.minecraft.world.World, int, int, int, net.minecraft.entity.player.EntityPlayer, int, float, float, float)
+	 */
 	@Override
-	public boolean onBlockActivated(World world, int par2, int par3, int par4, EntityPlayer player, int par6,
-			float par7, float par8, float par9)
-	{
+	public boolean onBlockActivated(World world, int par2, int par3, int par4,
+			EntityPlayer player, int par6, float par7, float par8, float par9) {
 		if (world.isRemote)
 			return true;
-		else
-		{
-			TileArmorEditor tile = (TileArmorEditor) world.getTileEntity(par2, par3, par4);
+		else {
+			TileArmorEditor tile = (TileArmorEditor) world.getTileEntity(par2,
+					par3, par4);
 
 			if ((tile == null) || player.isSneaking())
 				return false;
 
-			player.openGui(Steamcraft.instance, GuiIDs.GUI_ID_ARMOREDITOR, world, par2, par3, par4);
+			player.openGui(Steamcraft.instance, GuiIDs.GUI_ID_ARMOREDITOR,
+					world, par2, par3, par4);
 			return true;
 		}
 	}
-	public static void updateFurnaceBlockState(boolean par0, World par1World, int par2, int par3, int par4)
-	{
+
+	/**
+	 * Update furnace block state.
+	 *
+	 * @param par0 the par0
+	 * @param par1World the par1 world
+	 * @param par2 the par2
+	 * @param par3 the par3
+	 * @param par4 the par4
+	 */
+	public static void updateFurnaceBlockState(boolean par0, World par1World,
+			int par2, int par3, int par4) {
 		int var5 = par1World.getBlockMetadata(par2, par3, par4);
 		TileEntity tileentity = par1World.getTileEntity(par2, par3, par4);
 
 		keepInventory = true;
 
-		if (par0)
-		{
+		if (par0) {
 			par1World.setBlockMetadataWithNotify(par2, par3, par4, var5 + 7, 2);
-		}
-		else
-		{
+		} else {
 			par1World.setBlockMetadataWithNotify(par2, par3, par4, var5 - 7, 2);
 		}
 
 		keepInventory = false;
 
-		if (tileentity != null)
-		{
+		if (tileentity != null) {
 			tileentity.validate();
 			par1World.setTileEntity(par2, par3, par4, tileentity);
 		}
 	}
-	@Override
-	public void breakBlock(World par1World, int par2, int par3, int par4, Block block, int par6)
-	{
-		if (!keepInventory)
-		{
-			TileSteamBoiler var7 = (TileSteamBoiler) par1World.getTileEntity(par2, par3, par4);
 
-			if (var7 != null)
-			{
-				for (int var8 = 0; var8 < var7.getSizeInventory(); ++var8)
-				{
+	/* (non-Javadoc)
+	 * @see steamcraft.common.blocks.machine.BlockContainerMod#breakBlock(net.minecraft.world.World, int, int, int, net.minecraft.block.Block, int)
+	 */
+	@Override
+	public void breakBlock(World par1World, int par2, int par3, int par4,
+			Block block, int par6) {
+		if (!keepInventory) {
+			TileSteamBoiler var7 = (TileSteamBoiler) par1World.getTileEntity(
+					par2, par3, par4);
+
+			if (var7 != null) {
+				for (int var8 = 0; var8 < var7.getSizeInventory(); ++var8) {
 					ItemStack var9 = var7.getStackInSlot(var8);
 
-					if (var9 != null)
-					{
+					if (var9 != null) {
 						float var10 = (this.random.nextFloat() * 0.8F) + 0.1F;
 						float var11 = (this.random.nextFloat() * 0.8F) + 0.1F;
 						float var12 = (this.random.nextFloat() * 0.8F) + 0.1F;
 
-						while (var9.stackSize > 0)
-						{
+						while (var9.stackSize > 0) {
 							int var13 = this.random.nextInt(21) + 10;
 
-							if (var13 > var9.stackSize)
-							{
+							if (var13 > var9.stackSize) {
 								var13 = var9.stackSize;
 							}
 
 							var9.stackSize -= var13;
-							EntityItem var14 = new EntityItem(par1World, par2 + var10, par3 + var11, par4 + var12,
-									new ItemStack(var9.getItem(), var13, var9.getItemDamage()));
+							EntityItem var14 = new EntityItem(par1World, par2
+									+ var10, par3 + var11, par4 + var12,
+									new ItemStack(var9.getItem(), var13,
+											var9.getItemDamage()));
 
-							if (var9.hasTagCompound())
-							{
-								var14.getEntityItem().setTagCompound((NBTTagCompound) var9.getTagCompound().copy());
+							if (var9.hasTagCompound()) {
+								var14.getEntityItem().setTagCompound(
+										(NBTTagCompound) var9.getTagCompound()
+												.copy());
 							}
 
 							float var15 = 0.05F;
-							var14.motionX = (float) this.random.nextGaussian() * var15;
+							var14.motionX = (float) this.random.nextGaussian()
+									* var15;
 							var14.motionY = ((float) this.random.nextGaussian() * var15) + 0.2F;
-							var14.motionZ = (float) this.random.nextGaussian() * var15;
+							var14.motionZ = (float) this.random.nextGaussian()
+									* var15;
 							par1World.spawnEntityInWorld(var14);
 						}
 					}
@@ -118,16 +147,22 @@ public class BlockArmorEditor extends BlockContainerMod {
 		super.breakBlock(par1World, par2, par3, par4, block, par6);
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#hasComparatorInputOverride()
+	 */
 	@Override
-	public boolean hasComparatorInputOverride()
-	{
+	public boolean hasComparatorInputOverride() {
 		return true;
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.block.Block#getComparatorInputOverride(net.minecraft.world.World, int, int, int, int)
+	 */
 	@Override
-	public int getComparatorInputOverride(World par1World, int par2, int par3, int par4, int par5)
-	{
-		return Container.calcRedstoneFromInventory((IInventory) par1World.getTileEntity(par2, par3, par4));
+	public int getComparatorInputOverride(World par1World, int par2, int par3,
+			int par4, int par5) {
+		return Container.calcRedstoneFromInventory((IInventory) par1World
+				.getTileEntity(par2, par3, par4));
 	}
 
 }

@@ -13,11 +13,11 @@
  */
 package steamcraft.client.lib;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class GuiIDs.
  */
-public final class GuiIDs
-{
+public final class GuiIDs {
 	/** The Constant GUI_ID_NUKE_OVEN. */
 	public static final int GUI_ID_NUKE_OVEN = 0;
 
@@ -36,5 +36,6 @@ public final class GuiIDs
 	/** The Constant GUI_ID_VANITY. */
 	public static final int GUI_ID_VANITY = 5;
 
+	/** The Constant GUI_ID_ARMOREDITOR. */
 	public static final int GUI_ID_ARMOREDITOR = 6;
 }

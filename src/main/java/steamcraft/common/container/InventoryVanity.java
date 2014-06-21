@@ -23,71 +23,73 @@ import net.minecraft.nbt.NBTTagList;
 // TODO: Auto-generated Javadoc
 /**
  * The Class InventoryVanity.
- *
+ * 
  * @author warlordjones
  */
-public class InventoryVanity implements IInventory
-{
+public class InventoryVanity implements IInventory {
 
-	/**  The name for your custom inventory, possibly just "Inventory". */
+	/** The name for your custom inventory, possibly just "Inventory". */
 	@SuppressWarnings("unused")
 	private final String name = "Vanity Items";
 
-	/** In case your inventory name is too generic, define a name to store the NBT tag in as well. */
+	/**
+	 * In case your inventory name is too generic, define a name to store the
+	 * NBT tag in as well.
+	 */
 	private final String tagName = "tagVanityInventory";
 
-	/**  Define the inventory size here for easy reference. */
+	/** Define the inventory size here for easy reference. */
 	public static final int INV_SIZE = 6;
 
-	/** Inventory's size must be same as number of slots you add to the Container class. */
+	/**
+	 * Inventory's size must be same as number of slots you add to the Container
+	 * class.
+	 */
 	ItemStack[] inventory = new ItemStack[INV_SIZE];
 
 	/**
 	 * Instantiates a new inventory vanity.
 	 */
-	public InventoryVanity()
-	{
+	public InventoryVanity() {
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see net.minecraft.inventory.IInventory#getSizeInventory()
 	 */
 	@Override
-	public int getSizeInventory()
-	{
+	public int getSizeInventory() {
 		return inventory.length;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see net.minecraft.inventory.IInventory#getStackInSlot(int)
 	 */
 	@Override
-	public ItemStack getStackInSlot(final int slot)
-	{
+	public ItemStack getStackInSlot(final int slot) {
 		return inventory[slot];
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see net.minecraft.inventory.IInventory#decrStackSize(int, int)
 	 */
 	@Override
-	public ItemStack decrStackSize(final int slot, final int amount)
-	{
+	public ItemStack decrStackSize(final int slot, final int amount) {
 		ItemStack is = getStackInSlot(slot);
 
-		if (is != null)
-		{
-			if (is.stackSize > amount)
-			{
+		if (is != null) {
+			if (is.stackSize > amount) {
 				is = is.splitStack(amount);
 
-				if (is.stackSize == 0)
-				{
+				if (is.stackSize == 0) {
 					setInventorySlotContents(slot, null);
 				}
-			}
-			else
-			{
+			} else {
 				setInventorySlotContents(slot, null);
 			}
 
@@ -97,32 +99,33 @@ public class InventoryVanity implements IInventory
 		return is;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see net.minecraft.inventory.IInventory#getStackInSlotOnClosing(int)
 	 */
 	@Override
-	public ItemStack getStackInSlotOnClosing(final int slot)
-	{
+	public ItemStack getStackInSlotOnClosing(final int slot) {
 		final ItemStack is = getStackInSlot(slot);
 
-		if (is != null)
-		{
+		if (is != null) {
 			setInventorySlotContents(slot, null);
 		}
 
 		return is;
 	}
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.inventory.IInventory#setInventorySlotContents(int, net.minecraft.item.ItemStack)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.minecraft.inventory.IInventory#setInventorySlotContents(int,
+	 * net.minecraft.item.ItemStack)
 	 */
 	@Override
-	public void setInventorySlotContents(final int slot, final ItemStack is)
-	{
+	public void setInventorySlotContents(final int slot, final ItemStack is) {
 		inventory[slot] = is;
 
-		if (is != null && is.stackSize > getInventoryStackLimit())
-		{
+		if (is != null && is.stackSize > getInventoryStackLimit()) {
 			is.stackSize = getInventoryStackLimit();
 		}
 
@@ -131,51 +134,52 @@ public class InventoryVanity implements IInventory
 
 	/**
 	 * Our custom slots are similar to armor - only one item per slot.
-	 *
+	 * 
 	 * @return the inventory stack limit
 	 */
 	@Override
-	public int getInventoryStackLimit()
-	{
+	public int getInventoryStackLimit() {
 		return 1;
 	}
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.inventory.IInventory#isUseableByPlayer(net.minecraft.entity.player.EntityPlayer)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * net.minecraft.inventory.IInventory#isUseableByPlayer(net.minecraft.entity
+	 * .player.EntityPlayer)
 	 */
 	@Override
-	public boolean isUseableByPlayer(final EntityPlayer player)
-	{
+	public boolean isUseableByPlayer(final EntityPlayer player) {
 		return true;
 	}
 
 	/**
 	 * This method doesn't seem to do what it claims to do, as items can still
 	 * be left-clicked and placed in the inventory even when this returns false.
-	 *
-	 * @param slot the slot
-	 * @param itemstack the itemstack
+	 * 
+	 * @param slot
+	 *            the slot
+	 * @param itemstack
+	 *            the itemstack
 	 * @return true, if is item valid for slot
 	 */
 	@Override
-	public boolean isItemValidForSlot(final int slot, final ItemStack itemstack)
-	{
+	public boolean isItemValidForSlot(final int slot, final ItemStack itemstack) {
 		return itemstack.getItem() instanceof Item;
 	}
 
 	/**
 	 * Write to nbt.
-	 *
-	 * @param tagCompound the tag compound
+	 * 
+	 * @param tagCompound
+	 *            the tag compound
 	 */
-	public void writeToNBT(final NBTTagCompound tagCompound)
-	{
+	public void writeToNBT(final NBTTagCompound tagCompound) {
 		final NBTTagList tagList = new NBTTagList();
 
-		for (int i = 0; i < getSizeInventory(); ++i)
-		{
-			if (getStackInSlot(i) != null)
-			{
+		for (int i = 0; i < getSizeInventory(); ++i) {
+			if (getStackInSlot(i) != null) {
 				final NBTTagCompound newTagCompound = new NBTTagCompound();
 				newTagCompound.setByte("Slot", (byte) i);
 				getStackInSlot(i).writeToNBT(newTagCompound);
@@ -192,68 +196,72 @@ public class InventoryVanity implements IInventory
 	/**
 	 * Read from nbt.
 	 *
-	 * @param tagCompound the tag compound
+	 * @param compound the compound
 	 */
 	public void readFromNBT(NBTTagCompound compound) {
-		// now you must include the NBTBase type ID when getting the list; NBTTagCompound's ID is 10
+		// now you must include the NBTBase type ID when getting the list;
+		// NBTTagCompound's ID is 10
 		NBTTagList items = compound.getTagList(tagName, compound.getId());
 		for (int i = 0; i < items.tagCount(); ++i) {
-		// tagAt(int) has changed to getCompoundTagAt(int)
-		NBTTagCompound item = items.getCompoundTagAt(i);
-		byte slot = item.getByte("Slot");
-		if (slot >= 0 && slot < getSizeInventory()) {
-		inventory[slot] = ItemStack.loadItemStackFromNBT(item);
+			// tagAt(int) has changed to getCompoundTagAt(int)
+			NBTTagCompound item = items.getCompoundTagAt(i);
+			byte slot = item.getByte("Slot");
+			if (slot >= 0 && slot < getSizeInventory()) {
+				inventory[slot] = ItemStack.loadItemStackFromNBT(item);
+			}
 		}
-		}
-		}
+	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see net.minecraft.inventory.IInventory#closeInventory()
 	 */
 	@Override
-	public void closeInventory()
-	{
+	public void closeInventory() {
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see net.minecraft.inventory.IInventory#getInventoryName()
 	 */
 	@Override
-	public String getInventoryName()
-	{
+	public String getInventoryName() {
 		return getInventoryName();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see net.minecraft.inventory.IInventory#hasCustomInventoryName()
 	 */
 	@Override
-	public boolean hasCustomInventoryName()
-	{
+	public boolean hasCustomInventoryName() {
 		return true;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see net.minecraft.inventory.IInventory#markDirty()
 	 */
 	@Override
-	public void markDirty()
-	{
-		for (int slot = 0; slot < getSizeInventory(); ++slot)
-		{
+	public void markDirty() {
+		for (int slot = 0; slot < getSizeInventory(); ++slot) {
 			if (getStackInSlot(slot) != null
-					&& getStackInSlot(slot).stackSize == 0)
-			{
+					&& getStackInSlot(slot).stackSize == 0) {
 				setInventorySlotContents(slot, null);
 			}
 		}
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see net.minecraft.inventory.IInventory#openInventory()
 	 */
 	@Override
-	public void openInventory()
-	{
+	public void openInventory() {
 	}
 }

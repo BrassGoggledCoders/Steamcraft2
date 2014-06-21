@@ -19,17 +19,15 @@ import cpw.mods.fml.common.registry.EntityRegistry;
 // TODO: Auto-generated Javadoc
 /**
  * The Class ConfigEntities.
- *
+ * 
  * @author Surseance (Johnny Eatmon)
  */
-public class ConfigEntities
-{
-	
+public class ConfigEntities {
+
 	/**
 	 * Inits the.
 	 */
-	public static void init()
-	{
+	public static void init() {
 		EntityRegistry.registerGlobalEntityID(EntityBullet.class, "Bullet",
 				EntityRegistry.findGlobalUniqueEntityId());
 		// EntityRegistry.registerModEntity(EntityBullet.class, "Bullet",
@@ -39,7 +37,6 @@ public class ConfigEntities
 	/**
 	 * Inits the entity spawns.
 	 */
-	public static void initEntitySpawns()
-	{
+	public static void initEntitySpawns() {
 	}
 }

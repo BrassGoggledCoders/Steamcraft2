@@ -29,12 +29,11 @@ import cpw.mods.fml.relauncher.SideOnly;
 // TODO: Auto-generated Javadoc
 /**
  * The Class GuiVanity.
- *
+ * 
  * @author warlordjones
  */
 @SideOnly(Side.CLIENT)
-public class GuiVanity extends GuiContainer
-{
+public class GuiVanity extends GuiContainer {
 	/**
 	 * x size of the inventory window in pixels. Defined as float, passed as int
 	 */
@@ -57,29 +56,33 @@ public class GuiVanity extends GuiContainer
 
 	/**
 	 * Instantiates a new gui vanity.
-	 *
-	 * @param player the player
-	 * @param inventoryPlayer the inventory player
-	 * @param inventoryCustom the inventory custom
+	 * 
+	 * @param player
+	 *            the player
+	 * @param inventoryPlayer
+	 *            the inventory player
+	 * @param inventoryCustom
+	 *            the inventory custom
 	 */
 	public GuiVanity(final EntityPlayer player,
 			final InventoryPlayer inventoryPlayer,
-			final InventoryVanity inventoryCustom)
-	{
+			final InventoryVanity inventoryCustom) {
 		super(new ContainerVanity(player, inventoryPlayer, inventoryCustom));
 		inventory = inventoryCustom;
 	}
 
 	/**
 	 * Draws the screen and all the components in it.
-	 *
-	 * @param x the x
-	 * @param y the y
-	 * @param scale the scale
+	 * 
+	 * @param x
+	 *            the x
+	 * @param y
+	 *            the y
+	 * @param scale
+	 *            the scale
 	 */
 	@Override
-	public void drawScreen(final int x, final int y, final float scale)
-	{
+	public void drawScreen(final int x, final int y, final float scale) {
 		super.drawScreen(x, y, scale);
 		xSize_lo = x;
 		ySize_lo = y;
@@ -88,13 +91,14 @@ public class GuiVanity extends GuiContainer
 	/**
 	 * Draw the foreground layer for the GuiContainer (everything in front of
 	 * the items).
-	 *
-	 * @param x the x
-	 * @param y the y
+	 * 
+	 * @param x
+	 *            the x
+	 * @param y
+	 *            the y
 	 */
 	@Override
-	protected void drawGuiContainerForegroundLayer(final int x, final int y)
-	{
+	protected void drawGuiContainerForegroundLayer(final int x, final int y) {
 		final String s = inventory.getInventoryName();
 		fontRendererObj.drawString(s, xSize - fontRendererObj.getStringWidth(s)
 				- 8, 5, 4210752);
@@ -107,15 +111,17 @@ public class GuiVanity extends GuiContainer
 	/**
 	 * Draw the background layer for the GuiContainer (everything behind the
 	 * items).
-	 *
-	 * @param scale the scale
-	 * @param par2 the par2
-	 * @param par3 the par3
+	 * 
+	 * @param scale
+	 *            the scale
+	 * @param par2
+	 *            the par2
+	 * @param par3
+	 *            the par3
 	 */
 	@Override
 	protected void drawGuiContainerBackgroundLayer(final float scale,
-			final int par2, final int par3)
-	{
+			final int par2, final int par3) {
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 		mc.getTextureManager().bindTexture(iconLocation);
 		final int x = (width - xSize) / 2;

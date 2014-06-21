@@ -36,11 +36,10 @@ import cpw.mods.fml.relauncher.SideOnly;
 // TODO: Auto-generated Javadoc
 /**
  * The Class BlockMetal.
- *
+ * 
  * @author warlordjones
  */
-public class BlockMetal extends Block
-{
+public class BlockMetal extends Block {
 
 	/** The icon. */
 	private final IIcon[] icon = new IIcon[10];
@@ -48,13 +47,16 @@ public class BlockMetal extends Block
 	/** The powered. */
 	private boolean powered;
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.block.Block#registerBlockIcons(net.minecraft.client.renderer.texture.IIconRegister)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * net.minecraft.block.Block#registerBlockIcons(net.minecraft.client.renderer
+	 * .texture.IIconRegister)
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(final IIconRegister ir)
-	{
+	public void registerBlockIcons(final IIconRegister ir) {
 		icon[0] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockAluminum");
 		icon[1] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockCopper");
 		icon[2] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockTin");
@@ -66,20 +68,22 @@ public class BlockMetal extends Block
 		icon[8] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockUranium");
 		icon[9] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockEtherium");
 	}
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see net.minecraft.block.Block#getIcon(int, int)
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(final int side, final int metadata)
-	{
+	public IIcon getIcon(final int side, final int metadata) {
 		return icon[metadata];
 	}
+
 	/**
 	 * Instantiates a new block metal.
 	 */
-	public BlockMetal()
-	{
+	public BlockMetal() {
 		super(Material.iron);
 		setBlockName("blockMetal");
 		setHardness(3.0F);
@@ -88,51 +92,56 @@ public class BlockMetal extends Block
 		setTickRandomly(true);
 		setCreativeTab(Steamcraft.tabSC2);
 
-		if (powered)
-		{
+		if (powered) {
 			setLightLevel(0.98F);
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.block.Block#onEntityCollidedWithBlock(net.minecraft.world.World, int, int, int, net.minecraft.entity.Entity)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * net.minecraft.block.Block#onEntityCollidedWithBlock(net.minecraft.world
+	 * .World, int, int, int, net.minecraft.entity.Entity)
 	 */
 	@Override
 	public void onEntityCollidedWithBlock(final World world, final int x,
-			final int y, final int z, final Entity entity)
-	{
+			final int y, final int z, final Entity entity) {
 		if ((world.getBlock(x, y, z) == this)
-				&& (world.getBlockMetadata(x, y, z) == 8))
-		{
+				&& (world.getBlockMetadata(x, y, z) == 8)) {
 			entity.attackEntityFrom(DamageSource.magic, 1);
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.block.Block#randomDisplayTick(net.minecraft.world.World, int, int, int, java.util.Random)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * net.minecraft.block.Block#randomDisplayTick(net.minecraft.world.World,
+	 * int, int, int, java.util.Random)
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(final World world, final int x, final int y,
-			final int z, final Random random)
-	{
+			final int z, final Random random) {
 		if ((world.getBlock(x, y, z) == this)
-				&& (world.getBlockMetadata(x, y, z) == 8))
-		{
+				&& (world.getBlockMetadata(x, y, z) == 8)) {
 			EffectUtils.sparkle(world, x, y, z, "reddust");
 		}
 	}
-	/* (non-Javadoc)
-	 * @see net.minecraft.item.Item#getSubItems(net.minecraft.item.Item, net.minecraft.creativetab.CreativeTabs, java.util.List)
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.minecraft.item.Item#getSubItems(net.minecraft.item.Item,
+	 * net.minecraft.creativetab.CreativeTabs, java.util.List)
 	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(final Item item, final CreativeTabs tab,
-			final List l)
-	{
-		for (int var4 = 0; var4 < 8; ++var4)
-		{
+			final List l) {
+		for (int var4 = 0; var4 < 8; ++var4) {
 			l.add(new ItemStack(ConfigBlocks.blockMetal, 1, var4));
 		}
 	}

@@ -19,44 +19,42 @@ import net.minecraft.client.model.ModelRenderer;
 // TODO: Auto-generated Javadoc
 /**
  * The Class ModelCastIronLampSide.
- *
+ * 
  * @author Surseance (Johnny Eatmon)
  */
-public class ModelCastIronLampSide extends ModelBase
-{
-	
+public class ModelCastIronLampSide extends ModelBase {
+
 	/** The bracket. */
 	public ModelRenderer bracket;
-	
+
 	/** The bracket2. */
 	public ModelRenderer bracket2;
-	
+
 	/** The crossbar left. */
 	public ModelRenderer crossbarLeft;
-	
+
 	/** The crossbar right. */
 	public ModelRenderer crossbarRight;
-	
+
 	/** The lower lamp. */
 	public ModelRenderer lowerLamp;
-	
+
 	/** The support. */
 	public ModelRenderer support;
-	
+
 	/** The top. */
 	public ModelRenderer top;
-	
+
 	/** The top peak. */
 	public ModelRenderer topPeak;
-	
+
 	/** The upper lamp. */
 	public ModelRenderer upperLamp;
 
 	/**
 	 * Instantiates a new model cast iron lamp side.
 	 */
-	public ModelCastIronLampSide()
-	{
+	public ModelCastIronLampSide() {
 		bracket2 = new ModelRenderer(this, 13, 16);
 		bracket2.addBox(-6.5F, 1F, -7.5F, 6, 2, 2);
 		// Bracket2.setPosition(8F, -16F, -1F);
@@ -97,8 +95,7 @@ public class ModelCastIronLampSide extends ModelBase
 	/**
 	 * Render sign.
 	 */
-	public void renderSign()
-	{
+	public void renderSign() {
 		final float scale = 0.1F;
 		bracket.render(scale);
 		bracket2.render(scale);
