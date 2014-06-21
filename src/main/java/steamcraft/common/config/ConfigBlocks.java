@@ -143,6 +143,7 @@ public class ConfigBlocks
 	public static void initializeBlocks()
 	{
 		blockCustomOre = new BlockCustomOre();
+		blockSlate = new BlockSlate().setBlockName("blockSlate");
 		blockLamp = new BlockLamp();
 		blockEngraved = new BlockEngravedSolid();
 		blockCastIronFence = new BlockCastIronFence();
@@ -155,7 +156,6 @@ public class ConfigBlocks
 		//blockDropHammer = new BlockDropHammer(Material.anvil).setBlockName("blockDropHammer");
 		blockDropHammerFrame = new BlockDropHammerFrame(Material.iron).setBlockName("blockDropHammerFrame");
 		blockMetal = new BlockMetal();
-		blockSlate = new BlockSlate().setBlockName("blockSlate");
 		blockBrassLog = new BlockBrassLog(Material.wood);
 		blockBrassLeaves = new BlockBrassLeaves(Material.iron);
 		blockIntake = new BlockIntake(Material.iron);
@@ -175,11 +175,11 @@ public class ConfigBlocks
 	public static void registerBlocks()
 	{
 		GameRegistry.registerBlock(blockCustomOre, BlockCustomOreItem.class, "BlockCustomOre");
+		GameRegistry.registerBlock(blockSlate, BlockSlateItem.class,"BlockSlate");
 		GameRegistry.registerBlock(blockLamp, "BlockLamp");
 		GameRegistry.registerBlock(blockBrassLeaves, "BlockBrassLeaves");
 		GameRegistry.registerBlock(blockBrassLog, "BlockBrassLog");
 		GameRegistry.registerBlock(blockEngraved, BlockEngravedSolidItem.class, "BlockEngravedSolid");
-		GameRegistry.registerBlock(blockSlate, BlockSlateItem.class,"BlockSlate");
 		GameRegistry.registerBlock(blockCastIronFence, "BlockCastIronFence");
 		GameRegistry.registerBlock(blockCastIronGate, "BlockCastIronGate");
 		//GameRegistry.registerBlock(blockCastIronLampI, "BlockCastIronLampI");

@@ -34,7 +34,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  *
  * @author Surseance (Johnny Eatmon)
  */
-public class BlockCustomOre extends Block
+public class BlockCustomOre extends BaseBlock
 {
 
 	/** The icon. */
@@ -77,7 +77,6 @@ public class BlockCustomOre extends Block
 		setResistance(6.0F);
 		setStepSound(Block.soundTypeStone);
 		setTickRandomly(true);
-		setCreativeTab(Steamcraft.tabSC2);
 	}
 	/* (non-Javadoc)
 	 * @see net.minecraft.item.Item#getSubItems(net.minecraft.item.Item, net.minecraft.creativetab.CreativeTabs, java.util.List)

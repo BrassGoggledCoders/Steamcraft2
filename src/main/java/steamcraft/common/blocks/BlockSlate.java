@@ -34,7 +34,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  *
  * @author warlordjones
  */
-public class BlockSlate extends Block
+public class BlockSlate extends BaseBlock
 {
 
 	/** The icon. */
@@ -49,7 +49,6 @@ public class BlockSlate extends Block
 		setResistance(10.0F);
 		setStepSound(Block.soundTypeStone);
 		setBlockName("blockSlate");
-		setCreativeTab(Steamcraft.tabSC2);
 	}
 	/* (non-Javadoc)
 	 * @see net.minecraft.block.Block#getIcon(int, int)

@@ -32,15 +32,13 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 public class ItemCanister extends BaseItem implements IFluidContainerItem
 {
-	public static final int MAX_STEAM = 10000;
+	public static final int MAX_STEAM = 1000;
 	public static final int MAX_STEAM_RATE = 20; //Maximum amount of steam that can be inserted into this canister per tick
 
 	public ItemCanister()
 	{
 		super();
-		this.maxStackSize = 1;
-		this.setNoRepair();
-		this.setMaxDamage(MAX_STEAM);
+		setMaxStackSize(1);
 	}
 
 	@SuppressWarnings("all")
@@ -54,9 +52,20 @@ public class ItemCanister extends BaseItem implements IFluidContainerItem
 	@SuppressWarnings("all")
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack itemStack, EntityPlayer player, List list, boolean flag)
+	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean flag)
 	{
-			//list.add(String.format("%d/%d", new Object[] {get(itemStack), -MAX_STEAM}));
+		 FluidStack fluid = this.getFluid(stack);
+         if(fluid!=null && fluid.amount>0)
+         {
+         	String str = fluid.getFluid().getName();
+         	int amount = fluid.amount;
+
+         	list.add("Holding " + amount + "mB of " + str);
+         	list.add("(That's about " + amount/100 + " buckets)");
+         }else
+         {
+         	list.add("Empty");
+         }
 	}
 
 	@Override
@@ -178,5 +187,14 @@ public class ItemCanister extends BaseItem implements IFluidContainerItem
          container.stackTagCompound.setTag("Fluid", fluidTag);
      }
      return stack;
+ }
+ public int getFluidAmount(ItemStack stack)
+ {
+	 FluidStack fluid = this.getFluid(stack);
+     if (fluid == null)
+     {
+         return 0;
+     }
+     return fluid.amount;
  }
 }

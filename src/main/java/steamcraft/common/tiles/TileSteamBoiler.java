@@ -29,7 +29,6 @@ import net.minecraftforge.fluids.FluidTank;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
 import steamcraft.common.blocks.machine.BlockSteamBoiler;
-import steamcraft.common.config.ConfigItems;
 import steamcraft.common.items.ItemCanister;
 
 /**
@@ -45,7 +44,6 @@ public class TileSteamBoiler extends TileEntityMachine implements IFluidHandler
 
 	public FluidTank waterTank;
 	public FluidTank steamTank;
-	private ItemCanister canister;
 
 	public TileSteamBoiler()
 	{
@@ -123,17 +121,14 @@ public class TileSteamBoiler extends TileEntityMachine implements IFluidHandler
 					}
 				}
 			}
-			  if(inventory[2] != null && inventory[2].getItem() == ConfigItems.itemCanisterSteam)
+			  if(inventory[2] != null && inventory[2].getItem() instanceof ItemCanister)
 			  {
-			 ItemCanister canister = (ItemCanister) inventory[2].getItem();
-			  //if(!canister.isFull(inventory[2]))
-			canister
-			.fill(/*<--Problem seems to be here*/
-					new ItemStack(canister),
-					new FluidStack(FluidRegistry.getFluid("steam"),
-							steamPerTick),
-							true);
-			  this.steamTank.drain(steamPerTick, true);
+				  ItemCanister canister = (ItemCanister) inventory[2].getItem();
+				  if(steamTank.getFluidAmount() > 0 && canister.getFluidAmount(inventory[2]) != ItemCanister.MAX_STEAM)
+				  {
+					  canister.fill(inventory[2],new FluidStack(FluidRegistry.getFluid("steam"), steamPerTick), true);
+					  this.steamTank.drain(steamPerTick, true);
+				  }
 			  }
 
 			if ((this.getItemBurnTime() > 0) && (this.furnaceBurnTime == 0) && (this.waterTank.getFluidAmount() >= waterPerTick)

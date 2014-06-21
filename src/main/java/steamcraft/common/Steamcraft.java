@@ -32,6 +32,7 @@ import steamcraft.common.lib.LoggerSteamcraft;
 import steamcraft.common.lib.events.EventHandlerSC2;
 import steamcraft.common.lib.world.SteamcraftWorldGenerator;
 import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -140,6 +141,8 @@ public class Steamcraft
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event)
 	{
+		FMLLog.fine(String.valueOf(Config.slateChance), "");
+		FMLLog.fine(String.valueOf(Config.slateHeight), "");
 		CompatabilityLayer.init();
 		// Dosn't work! >> BiomeDictionary.registerAllBiomes();
 		ConfigEntities.initEntitySpawns();

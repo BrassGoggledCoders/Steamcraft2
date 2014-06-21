@@ -171,7 +171,7 @@ public class Config
 		zincChance = config.get(CATEGORY_GEN_OPTIONS,
 				"Chance of Zinc Ore Generation", 15).getInt();
 		slateChance = config.get(CATEGORY_GEN_OPTIONS,
-				"Chance of Slate Generation", 50).getInt();
+				"Chance of Slate Generation", 20).getInt();
 		netherEtheriumCrystalChance = config.get(CATEGORY_GEN_OPTIONS,
 				"Chance of Etheruim Crystal Generation in the Nether", 3)
 				.getInt();

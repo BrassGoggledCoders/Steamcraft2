@@ -78,19 +78,19 @@ public class ConfigWorldGen implements IWorldGenerator
 	private void generateSurface(World world, Random random,
 			 int chunkX,  int chunkZ)
 	{
-		if (Config.aluminumOreGenEnabled)
+		if(Config.aluminumOreGenEnabled)
 		generateOre(world, random, chunkX, chunkZ, Config.aluminumChance, Config.aluminumHeight, 6, ConfigBlocks.blockCustomOre, 0, Blocks.stone);
-		if (Config.copperOreGenEnabled)
+		if(Config.copperOreGenEnabled)
 		generateOre(world, random, chunkX, chunkZ, Config.copperChance, Config.copperHeight, 4, ConfigBlocks.blockCustomOre, 1, Blocks.stone);
-		if (Config.tinOreGenEnabled)
+		if(Config.tinOreGenEnabled)
 		generateOre(world, random, chunkX, chunkZ, Config.tinChance, Config.tinHeight, 4, ConfigBlocks.blockCustomOre, 2, Blocks.stone);
-		if (Config.zincOreGenEnabled)
+		if(Config.zincOreGenEnabled)
 		generateOre(world, random, chunkX, chunkZ, Config.zincChance, Config.zincHeight, 3, ConfigBlocks.blockCustomOre, 3, Blocks.stone);
-		if (Config.uraniumOreGenEnabled)
+		if(Config.uraniumOreGenEnabled)
 		generateOre(world, random, chunkX, chunkZ, Config.uraniumChance, Config.uraniumHeight, 1, ConfigBlocks.blockCustomOre, 4, Blocks.stone);
-		if (Config.brimstoneOreGenEnabled)
+		if(Config.brimstoneOreGenEnabled)
 		generateOre(world, random, chunkX, chunkZ, Config.brimstoneChance, Config.brimstoneHeight, 4, ConfigBlocks.blockCustomOre, 5, Blocks.stone);
-		if (Config.phosphateOreGenEnabled)
+		if(Config.phosphateOreGenEnabled)
 		generateOre(world, random, chunkX, chunkZ, Config.phosphateChance, Config.phosphateHeight, 3, ConfigBlocks.blockCustomOre, 6, Blocks.stone);
 		if(Config.slateGenEnabled)
 		{
