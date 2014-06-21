@@ -155,13 +155,13 @@ public class Config
 		entBulletId = config.get("Entities", "bullet", eIdx++).getInt();
 
 		uraniumChance = config.get(CATEGORY_GEN_OPTIONS,
-				"Chance of Uranium Ore Generation", 3).getInt();
+				"Chance of Uranium Ore Generation", 5).getInt();
 		brimstoneChance = config.get(CATEGORY_GEN_OPTIONS,
 				"Chance of Brimstone Ore Generation", 15).getInt();
 		borniteChance = config.get(CATEGORY_GEN_OPTIONS,
 				"Chance of Bornite Ore Generation", 15).getInt();
 		phosphateChance = config.get(CATEGORY_GEN_OPTIONS,
-				"Chance of Phosphate Ore Generation", 5).getInt();
+				"Chance of Phosphate Ore Generation", 7).getInt();
 		aluminumChance = config.get(CATEGORY_GEN_OPTIONS,
 				"Chance of Aluminum Ore Generation", 20).getInt();
 		copperChance = config.get(CATEGORY_GEN_OPTIONS,

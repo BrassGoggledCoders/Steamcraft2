@@ -67,7 +67,7 @@ public class ItemShrinkray extends BaseItem
 		}
 		if(world.isRemote)
 		{
-			ray.put(player.getCommandSenderName(), Steamcraft.proxy.rayFX(world, player, tx, ty, tz, 2, false, impact > 0 ? 2.0F : 0.0F, ray.get(player), impact, Color.RED));
+			ray.put(player.getCommandSenderName(), Steamcraft.proxy.rayFX(world, player, tx, ty, tz, 2, false, impact > 0 ? 2.0F : 0.0F, ray.get(player), impact, Color.BLUE));
 		}
 		/*if(mop != null && mop.typeOfHit == MovingObjectPosition.MovingObjectType.ENTITY)
 		{
