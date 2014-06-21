@@ -23,13 +23,13 @@ public class LibInfo
 {
 
 	/** The Constant ID. */
-	public static final String ID = "steamcraft2"; //should be lowercase
+	public static final String ID = "steamcraft2";
 
 	/** The Constant NAME. */
 	public static final String NAME = "Steamcraft 2";
 
 	/** The Constant VERSION. */
-	public static final String VERSION = "PA1"; // major, minor, build
+	public static final String VERSION = "PA2"; // major, minor, bugfix
 
 	/** The Constant CLIENT_PROXY. */
 	public static final String CLIENT_PROXY = "steamcraft.client.ClientProxy";

@@ -33,7 +33,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 public class ItemResource extends BaseItemWithMetadata
 {
-
+	//@SideOnly(Side.CLIENT)
 	IIcon[] itemIcon = new IIcon[10];
 
 	/* (non-Javadoc)

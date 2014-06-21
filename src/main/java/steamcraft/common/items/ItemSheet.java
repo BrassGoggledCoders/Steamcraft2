@@ -14,7 +14,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemSheet extends BaseItemWithMetadata
 {
-
+	//@SideOnly(Side.CLIENT)
 	IIcon[] itemIcon = new IIcon[8];
     public ItemSheet() {
 	super();

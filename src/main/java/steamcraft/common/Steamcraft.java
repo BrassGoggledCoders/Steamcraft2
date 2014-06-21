@@ -20,6 +20,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.MinecraftForge;
 import steamcraft.client.gui.GuiHandler;
 import steamcraft.common.config.Config;
+import steamcraft.common.config.ConfigAchievments;
 import steamcraft.common.config.ConfigBlocks;
 import steamcraft.common.config.ConfigEntities;
 import steamcraft.common.config.ConfigItems;
@@ -98,14 +99,16 @@ public class Steamcraft
 			}
 		}
 		//this.drawEventHandler = new EventHandlerDrawHighlight();
-		this.sc2EventHandler = new EventHandlerSC2();
+		sc2EventHandler = new EventHandlerSC2();
 
 		// MinecraftForge.EVENT_BUS.register(this.worldEventHandler);
-		MinecraftForge.EVENT_BUS.register(this.sc2EventHandler);
+		MinecraftForge.EVENT_BUS.register(sc2EventHandler);
+		FMLCommonHandler.instance().bus().register(sc2EventHandler);
 		//MinecraftForge.EVENT_BUS.register(this.drawEventHandler);
 
 		// GameRegistry.registerFuelHandler(this.worldEventHandler);
 		// GameRegistry.registerCraftingHandler(this.worldEventHandler);
+		if(Config.generationEnabled)
 		GameRegistry.registerWorldGenerator(this.worldGen, 0);
 
 		Config.save();
@@ -127,9 +130,8 @@ public class Steamcraft
 	@EventHandler
 	public void init(FMLInitializationEvent event)
 	{
-		Config.registerBiomes();
 		ConfigEntities.init();
-
+		ConfigAchievments.init();
 		// RegisterKeyBindings.init();
 		// NetworkRegistry.instance().registerGuiHandler(this.instance, new
 		// GuiHandler());
@@ -141,10 +143,8 @@ public class Steamcraft
 		CompatabilityLayer.init();
 		// Dosn't work! >> BiomeDictionary.registerAllBiomes();
 		ConfigEntities.initEntitySpawns();
-		Config.initModCompatibility();
 		ConfigItems.postInit();
 		ConfigRecipes.init();
-		Config.initLoot();
 		// LoggerSteamcraft.log(Level.INFO, "SC2 is " + event.getModState());
 		final ModContainer container = FMLCommonHandler.instance().findContainerFor(this);
 		LanguageRegistry.instance().loadLanguagesFor(container, Side.CLIENT);

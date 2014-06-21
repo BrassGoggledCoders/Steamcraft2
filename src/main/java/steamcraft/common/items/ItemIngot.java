@@ -33,7 +33,9 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 public class ItemIngot extends BaseItemWithMetadata
 {
+	//@SideOnly(Side.CLIENT)
 	IIcon[] itemIcon = new IIcon[8];
+
 	/* (non-Javadoc)
 	 * @see net.minecraft.item.Item#registerIcons(net.minecraft.client.renderer.texture.IIconRegister)
 	 */

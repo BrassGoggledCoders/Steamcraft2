@@ -14,6 +14,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemPowder extends BaseItemWithMetadata
 {
+	//@SideOnly(Side.CLIENT)
 	IIcon[] itemIcon = new IIcon[8];
     public ItemPowder() {
 	super();
@@ -34,15 +35,14 @@ public class ItemPowder extends BaseItemWithMetadata
     @SideOnly(Side.CLIENT)
     public void registerIcons(IIconRegister ir)
     {
-    	IIcon[] icon = new IIcon[8];
-		icon[0] = ir.registerIcon(LibInfo.PREFIX + "itemPowderAluminum");
-		icon[1] = ir.registerIcon(LibInfo.PREFIX + "itemPowderCopper");
-		icon[2] = ir.registerIcon(LibInfo.PREFIX + "itemPowderTin");
-		icon[3] = ir.registerIcon(LibInfo.PREFIX + "itemPowderZinc");
-		icon[4] = ir.registerIcon(LibInfo.PREFIX + "itemPowderBrass");
-		icon[5] = ir.registerIcon(LibInfo.PREFIX + "itemPowderBronze");
-		icon[6] = ir.registerIcon(LibInfo.PREFIX + "itemPowderSteel");
-		icon[7] = ir.registerIcon(LibInfo.PREFIX + "itemPowderCastIron");
+		itemIcon[0] = ir.registerIcon(LibInfo.PREFIX + "itemPowderAluminum");
+		itemIcon[1] = ir.registerIcon(LibInfo.PREFIX + "itemPowderCopper");
+		itemIcon[2] = ir.registerIcon(LibInfo.PREFIX + "itemPowderTin");
+		itemIcon[3] = ir.registerIcon(LibInfo.PREFIX + "itemPowderZinc");
+		itemIcon[4] = ir.registerIcon(LibInfo.PREFIX + "itemPowderBrass");
+		itemIcon[5] = ir.registerIcon(LibInfo.PREFIX + "itemPowderBronze");
+		itemIcon[6] = ir.registerIcon(LibInfo.PREFIX + "itemPowderSteel");
+		itemIcon[7] = ir.registerIcon(LibInfo.PREFIX + "itemPowderCastIron");
     }
     @Override
 	@SideOnly(Side.CLIENT)

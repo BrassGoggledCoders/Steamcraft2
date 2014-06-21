@@ -31,10 +31,14 @@ import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 
 import org.lwjgl.opengl.GL11;
 
+import steamcraft.common.config.ConfigAchievments;
 import steamcraft.common.config.ConfigItems;
 import steamcraft.common.entities.EntityPlayerExtended;
+import steamcraft.common.items.ItemRayGun;
+import steamcraft.common.items.ItemShrinkray;
 import steamcraft.common.lib.LibInfo;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.gameevent.PlayerEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -177,6 +181,18 @@ public class EventHandlerSC2
 		else
 		{
 			return;
+		}
+	}
+	@SubscribeEvent
+	public void onItemCrafted(PlayerEvent.ItemCraftedEvent event)
+	{
+		if(event.crafting.getItem() instanceof ItemRayGun)
+		{
+			event.player.addStat(ConfigAchievments.raygunAchieve, 1);
+		}
+		else if(event.crafting.getItem() instanceof ItemShrinkray)
+		{
+			event.player.addStat(ConfigAchievments.shrinkrayAchieve, 1);
 		}
 	}
 }

@@ -40,20 +40,7 @@ public class Config
 	public static int entBulletId;
 
 	/* POWER TO THE END USER! Good heavens... */
-	/** The etherium chance. */
-	public static int etheriumChance;
-
-	/** The uranium chance. */
-	public static int uraniumChance;
-
-	/** The brimstone chance. */
-	public static int brimstoneChance;
-
-	/** The bornite chance. */
-	public static int borniteChance;
-
-	/** The phosphate chance. */
-	public static int phosphateChance;
+	public static int uraniumChance, brimstoneChance, borniteChance, phosphateChance;
 
 	/** The aluminum chance. */
 	public static int aluminumChance;
@@ -73,8 +60,7 @@ public class Config
 	/** The end etherium crystal chance. */
 	public static int endEtheriumCrystalChance;
 
-	/** The etherium height. */
-	public static int etheriumHeight;
+	public static int slateChance;
 
 	/** The uranium height. */
 	public static int uraniumHeight;
@@ -106,6 +92,8 @@ public class Config
 	/** The end etherium crystal height. */
 	public static int endEtheriumCrystalHeight;
 
+	public static int slateHeight;
+
 	/** The generation enabled. */
 	public static boolean generationEnabled;
 
@@ -120,9 +108,6 @@ public class Config
 
 	/** The ore generation enabled. */
 	public static boolean oreGenerationEnabled;
-
-	/** The etherium ore gen enabled. */
-	public static boolean etheriumOreGenEnabled;
 
 	/** The uranium ore gen enabled. */
 	public static boolean uraniumOreGenEnabled;
@@ -154,6 +139,8 @@ public class Config
 	/** The end etherium crystal gen enabled. */
 	public static boolean endEtheriumCrystalGenEnabled;
 
+	public static boolean slateGenEnabled;
+
 	/**
 	 * Initialize.
 	 *
@@ -167,35 +154,29 @@ public class Config
 		int eIdx = 300;
 		entBulletId = config.get("Entities", "bullet", eIdx++).getInt();
 
-		etheriumChance = config
-				.get(CATEGORY_GEN_OPTIONS,
-						"Chance of Etherium Ore Generation. (Higher value = more ore. 0 disables.)",
-						1).getInt();
 		uraniumChance = config.get(CATEGORY_GEN_OPTIONS,
 				"Chance of Uranium Ore Generation", 3).getInt();
 		brimstoneChance = config.get(CATEGORY_GEN_OPTIONS,
-				"Chance of Brimstone Ore Generation", 10).getInt();
+				"Chance of Brimstone Ore Generation", 15).getInt();
 		borniteChance = config.get(CATEGORY_GEN_OPTIONS,
-				"Chance of Bornite Ore Generation", 20).getInt();
+				"Chance of Bornite Ore Generation", 15).getInt();
 		phosphateChance = config.get(CATEGORY_GEN_OPTIONS,
-				"Chance of Phosphate Ore Generation", 3).getInt();
+				"Chance of Phosphate Ore Generation", 5).getInt();
 		aluminumChance = config.get(CATEGORY_GEN_OPTIONS,
-				"Chance of Aluminum Ore Generation", 10).getInt();
+				"Chance of Aluminum Ore Generation", 20).getInt();
 		copperChance = config.get(CATEGORY_GEN_OPTIONS,
-				"Chance of Copper Ore Generation", 10).getInt();
+				"Chance of Copper Ore Generation", 17).getInt();
 		tinChance = config.get(CATEGORY_GEN_OPTIONS,
-				"Chance of Tin Ore Generation", 10).getInt();
+				"Chance of Tin Ore Generation", 17).getInt();
 		zincChance = config.get(CATEGORY_GEN_OPTIONS,
-				"Chance of Zinc Ore Generation", 10).getInt();
+				"Chance of Zinc Ore Generation", 15).getInt();
+		slateChance = config.get(CATEGORY_GEN_OPTIONS,
+				"Chance of Slate Generation", 50).getInt();
 		netherEtheriumCrystalChance = config.get(CATEGORY_GEN_OPTIONS,
 				"Chance of Etheruim Crystal Generation in the Nether", 3)
 				.getInt();
 		endEtheriumCrystalChance = config.get(CATEGORY_GEN_OPTIONS,
 				"Chance of Etheruim Crystal Generation in the End", 3).getInt();
-		etheriumHeight = config
-				.get(CATEGORY_GEN_OPTIONS,
-						"Height of Etherium Ore Generation. Ore will generate below this Y level in world",
-						12).getInt();
 		uraniumHeight = config.get(CATEGORY_GEN_OPTIONS,
 				"Height of Uranium Ore Generation", 24).getInt();
 		brimstoneHeight = config.get(CATEGORY_GEN_OPTIONS,
@@ -205,18 +186,20 @@ public class Config
 		phosphateHeight = config.get(CATEGORY_GEN_OPTIONS,
 				"Height of Phosphate Ore Generation", 36).getInt();
 		aluminumHeight = config.get(CATEGORY_GEN_OPTIONS,
-				"Height of Aluminum Ore Generation", 36).getInt();
+				"Height of Aluminum Ore Generation", 40).getInt();
 		copperHeight = config.get(CATEGORY_GEN_OPTIONS,
-				"Height of Copper Ore Generation", 36).getInt();
+				"Height of Copper Ore Generation", 45).getInt();
 		tinHeight = config.get(CATEGORY_GEN_OPTIONS,
-				"Height of Tin Ore Generation", 36).getInt();
+				"Height of Tin Ore Generation", 45).getInt();
 		zincHeight = config.get(CATEGORY_GEN_OPTIONS,
 				"Height of Zinc Ore Generation", 36).getInt();
+		slateHeight = config.get(CATEGORY_GEN_OPTIONS,
+				"Height of Slate Generation", 65).getInt();
 		netherEtheriumCrystalHeight = config.get(CATEGORY_GEN_OPTIONS,
-				"Height of Etherium Crystal Generation in the Nether", 36)
+				"Height of Etherium Crystal Generation in the Nether", 100)
 				.getInt();
 		endEtheriumCrystalHeight = config.get(CATEGORY_GEN_OPTIONS,
-				"Height of Etherium Crystal Generation in the End", 36)
+				"Height of Etherium Crystal Generation in the End", 100)
 				.getInt();
 		generationEnabled = config.get(CATEGORY_GEN_OPTIONS,
 				" ALL SC2 World Gen, everywhere", true).getBoolean(true);
@@ -226,10 +209,8 @@ public class Config
 				"SC2 World Gen in the Nether", true).getBoolean(true);
 		endGenerationEnabled = config.get(CATEGORY_GEN_OPTIONS,
 				"SC2 World Gen in the End", true).getBoolean(true);
-		oreGenerationEnabled = config.get(CATEGORY_GEN_OPTIONS, "SC2 Ore Gen",
-				true).getBoolean(true);
-		etheriumOreGenEnabled = config.get(CATEGORY_GEN_OPTIONS,
-				"Etherium Ore Generation", true).getBoolean(true);
+		/*oreGenerationEnabled = config.get(CATEGORY_GEN_OPTIONS, "SC2 Ore Gen",
+				true).getBoolean(true);*/
 		uraniumOreGenEnabled = config.get(CATEGORY_GEN_OPTIONS,
 				"Uranium Ore Generation", true).getBoolean(true);
 		brimstoneOreGenEnabled = config.get(CATEGORY_GEN_OPTIONS,
@@ -246,12 +227,10 @@ public class Config
 				"Tin Ore Generation", true).getBoolean(true);
 		zincOreGenEnabled = config.get(CATEGORY_GEN_OPTIONS,
 				"Zinc Ore Generation", true).getBoolean(true);
-		netherEtheriumCrystalGenEnabled = config.get(CATEGORY_GEN_OPTIONS,
-				"Etherium Crystal Generation in the Nether", true).getBoolean(
-				true);
-		endEtheriumCrystalGenEnabled = config.get(CATEGORY_GEN_OPTIONS,
-				"Etherium Crystal Generation in the End", true)
-				.getBoolean(true);
+		slateGenEnabled = config.get(CATEGORY_GEN_OPTIONS,
+				"Slate Generation", true).getBoolean(true);
+		netherEtheriumCrystalGenEnabled = config.get(CATEGORY_GEN_OPTIONS,"Etherium Crystal Generation in the Nether", true).getBoolean(true);
+		endEtheriumCrystalGenEnabled = config.get(CATEGORY_GEN_OPTIONS,"Etherium Crystal Generation in the End", true).getBoolean(true);
 	}
 
 	/**
@@ -260,26 +239,5 @@ public class Config
 	public static void save()
 	{
 		config.save();
-	}
-
-	/**
-	 * Inits the loot.
-	 */
-	public static void initLoot()
-	{
-	}
-
-	/**
-	 * Inits the mod compatibility.
-	 */
-	public static void initModCompatibility()
-	{
-	}
-
-	/**
-	 * Register biomes.
-	 */
-	public static void registerBiomes()
-	{
 	}
 }

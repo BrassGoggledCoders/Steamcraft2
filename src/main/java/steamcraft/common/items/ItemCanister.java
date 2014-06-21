@@ -49,7 +49,6 @@ public class ItemCanister extends BaseItem implements IFluidContainerItem
 	public void getSubItems(Item item, CreativeTabs tab, List l)
 	{
 		l.add(new ItemStack(ConfigItems.itemCanisterSteam, 1, 0));
-		l.add(new ItemStack(ConfigItems.itemCanisterSteam, 1, MAX_STEAM));
 	}
 
 	@SuppressWarnings("all")

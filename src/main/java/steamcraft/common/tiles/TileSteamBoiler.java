@@ -125,7 +125,7 @@ public class TileSteamBoiler extends TileEntityMachine implements IFluidHandler
 			}
 			  if(inventory[2] != null && inventory[2].getItem() == ConfigItems.itemCanisterSteam)
 			  {
-			  //ItemCanister canister = (ItemCanister) inventory[2].getItem();
+			 ItemCanister canister = (ItemCanister) inventory[2].getItem();
 			  //if(!canister.isFull(inventory[2]))
 			canister
 			.fill(/*<--Problem seems to be here*/

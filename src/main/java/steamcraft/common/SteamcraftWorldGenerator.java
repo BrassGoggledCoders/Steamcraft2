@@ -28,28 +28,28 @@ import cpw.mods.fml.common.IWorldGenerator;
 /**
  * The Class SteamcraftWorldGenerator.
  *
- * @author Surseance
+ * @authors Surseance & warlordjones
  */
 public class SteamcraftWorldGenerator implements IWorldGenerator
 {
-	
+
 	/* (non-Javadoc)
 	 * @see cpw.mods.fml.common.IWorldGenerator#generate(java.util.Random, int, int, net.minecraft.world.World, net.minecraft.world.chunk.IChunkProvider, net.minecraft.world.chunk.IChunkProvider)
 	 */
 	@Override
-	public void generate(final Random random, final int chunkX,
-			final int chunkZ, final World world,
-			final IChunkProvider generator, final IChunkProvider chunk)
+	public void generate( Random random,  int chunkX,
+			 int chunkZ,  World world,
+			 IChunkProvider generator,  IChunkProvider chunk)
 	{
-		final int blockChunkX = chunkX * 16;
-		final int blockChunkZ = chunkZ * 16;
+		 int blockChunkX = chunkX * 16;
+		 int blockChunkZ = chunkZ * 16;
 
 		switch (world.provider.dimensionId)
 		{
 		case -1:
 			if (Config.netherGenerationEnabled)
 			{
-				// generateNether(world, random, blockChunkX, blockChunkZ);
+				generateNether(world, random, blockChunkX, blockChunkZ);
 				break;
 			}
 		case 0:
@@ -61,7 +61,7 @@ public class SteamcraftWorldGenerator implements IWorldGenerator
 		case 1:
 			if (Config.endGenerationEnabled)
 			{
-				// generateEnd(world, random, blockChunkX, blockChunkZ);
+				generateEnd(world, random, blockChunkX, blockChunkZ);
 				break;
 			}
 		}
@@ -76,16 +76,16 @@ public class SteamcraftWorldGenerator implements IWorldGenerator
 	 * @param chunkX the chunk x
 	 * @param chunkZ the chunk z
 	 */
-	private void generateSurface(final World world, final Random random,
-			final int chunkX, final int chunkZ)
+	private void generateSurface( World world,  Random random,
+			 int chunkX,  int chunkZ)
 	{
 		if (Config.borniteOreGenEnabled)
 		{
 			for (int chance = 0; chance < Config.borniteChance; chance++)
 			{
-				final int borniteXCoord = chunkX + random.nextInt(16);
-				final int borniteYCoord = random.nextInt(Config.borniteHeight);
-				final int borniteZCoord = chunkZ + random.nextInt(16);
+				 int borniteXCoord = chunkX + random.nextInt(16);
+				 int borniteYCoord = random.nextInt(Config.borniteHeight);
+				 int borniteZCoord = chunkZ + random.nextInt(16);
 
 				new WorldGenMinable(ConfigBlocks.blockCustomOre, 0,
 						random.nextInt(3), Blocks.stone).generate(world,
@@ -95,10 +95,10 @@ public class SteamcraftWorldGenerator implements IWorldGenerator
 			{
 				for (int chance = 0; chance < Config.brimstoneChance; chance++)
 				{
-					final int brimstoneXCoord = chunkX + random.nextInt(16);
-					final int brimstoneYCoord = random
+					 int brimstoneXCoord = chunkX + random.nextInt(16);
+					 int brimstoneYCoord = random
 							.nextInt(Config.brimstoneHeight);
-					final int brimstoneZCoord = chunkZ + random.nextInt(16);
+					 int brimstoneZCoord = chunkZ + random.nextInt(16);
 
 					new WorldGenMinable(ConfigBlocks.blockCustomOre, 1,
 							random.nextInt(3), Blocks.stone).generate(world,
@@ -111,9 +111,9 @@ public class SteamcraftWorldGenerator implements IWorldGenerator
 		{
 			for (int chance = 0; chance < Config.phosphateChance; chance++)
 			{
-				final int zincXCoord = chunkX + random.nextInt(16);
-				final int zincYCoord = random.nextInt(Config.phosphateHeight);
-				final int zincZCoord = chunkZ + random.nextInt(16);
+				 int zincXCoord = chunkX + random.nextInt(16);
+				 int zincYCoord = random.nextInt(Config.phosphateHeight);
+				 int zincZCoord = chunkZ + random.nextInt(16);
 
 				new WorldGenMinable(ConfigBlocks.blockCustomOre, 2,
 						random.nextInt(3), Blocks.stone).generate(world,
@@ -123,10 +123,10 @@ public class SteamcraftWorldGenerator implements IWorldGenerator
 			{
 				for (int chance = 0; chance < Config.uraniumChance; chance++)
 				{
-					final int uraniteXCoord = chunkX + random.nextInt(16);
-					final int uraniteYCoord = random
+					 int uraniteXCoord = chunkX + random.nextInt(16);
+					 int uraniteYCoord = random
 							.nextInt(Config.uraniumHeight);
-					final int uraniteZCoord = chunkZ + random.nextInt(16);
+					 int uraniteZCoord = chunkZ + random.nextInt(16);
 
 					new WorldGenMinable(ConfigBlocks.blockCustomOre, 3,
 							random.nextInt(3), Blocks.stone)
@@ -139,10 +139,10 @@ public class SteamcraftWorldGenerator implements IWorldGenerator
 		{
 			for (int chance = 0; chance < Config.aluminumChance; chance++)
 			{
-				final int aluminumXCoord = chunkX + random.nextInt(16);
-				final int aluminumYCoord = random
+				 int aluminumXCoord = chunkX + random.nextInt(16);
+				 int aluminumYCoord = random
 						.nextInt(Config.aluminumHeight);
-				final int aluminumZCoord = chunkZ + random.nextInt(16);
+				 int aluminumZCoord = chunkZ + random.nextInt(16);
 
 				new WorldGenMinable(ConfigBlocks.blockCustomOre, 4,
 						random.nextInt(3), Blocks.stone).generate(world,
@@ -153,9 +153,9 @@ public class SteamcraftWorldGenerator implements IWorldGenerator
 		{
 			for (int chance = 0; chance < Config.copperChance; chance++)
 			{
-				final int copperXCoord = chunkX + random.nextInt(16);
-				final int copperYCoord = random.nextInt(Config.copperHeight);
-				final int copperZCoord = chunkZ + random.nextInt(16);
+				 int copperXCoord = chunkX + random.nextInt(16);
+				 int copperYCoord = random.nextInt(Config.copperHeight);
+				 int copperZCoord = chunkZ + random.nextInt(16);
 
 				new WorldGenMinable(ConfigBlocks.blockCustomOre, 5,
 						random.nextInt(3), Blocks.stone).generate(world,
@@ -166,9 +166,9 @@ public class SteamcraftWorldGenerator implements IWorldGenerator
 		{
 			for (int chance = 0; chance < Config.tinChance; chance++)
 			{
-				final int tinXCoord = chunkX + random.nextInt(16);
-				final int tinYCoord = random.nextInt(Config.tinHeight);
-				final int tinZCoord = chunkZ + random.nextInt(16);
+				 int tinXCoord = chunkX + random.nextInt(16);
+				 int tinYCoord = random.nextInt(Config.tinHeight);
+				 int tinZCoord = chunkZ + random.nextInt(16);
 
 				new WorldGenMinable(ConfigBlocks.blockCustomOre, 6,
 						random.nextInt(3), Blocks.stone).generate(world,
@@ -179,15 +179,76 @@ public class SteamcraftWorldGenerator implements IWorldGenerator
 		{
 			for (int chance = 0; chance < Config.zincChance; chance++)
 			{
-				final int zincXCoord = chunkX + random.nextInt(16);
-				final int zincYCoord = random.nextInt(Config.zincHeight);
-				final int zincZCoord = chunkZ + random.nextInt(16);
+				 int zincXCoord = chunkX + random.nextInt(16);
+				 int zincYCoord = random.nextInt(Config.zincHeight);
+				 int zincZCoord = chunkZ + random.nextInt(16);
 
-				new WorldGenMinable(ConfigBlocks.blockCustomOre, 7,
-						random.nextInt(3), Blocks.stone).generate(world,
-						random, zincXCoord, zincYCoord, zincZCoord);
+				new WorldGenMinable(ConfigBlocks.blockCustomOre, 7, random.nextInt(3), Blocks.stone).generate(world, random, zincXCoord, zincYCoord, zincZCoord);
+			}
+		}
+		if(Config.slateGenEnabled)
+		{
+			for (int chance = 0; chance < Config.slateChance; chance++)
+			{
+				 int slateXCoord = chunkX + random.nextInt(16);
+				 int slateYCoord = random.nextInt(Config.slateHeight);
+				 int slateZCoord = chunkZ + random.nextInt(16);
+
+				new WorldGenMinable(ConfigBlocks.blockSlate, 0, random.nextInt(10), Blocks.stone).generate(world,
+						random, slateXCoord, slateYCoord, slateZCoord);
+				System.out.print("SlateGen at" + String.valueOf(slateXCoord) + String.valueOf(slateYCoord) + String.valueOf(slateZCoord));
+			}
+			for (int chance = 0; chance < Config.slateChance; chance++)
+			{
+				 int slateXCoord = chunkX + random.nextInt(16);
+				 int slateYCoord = random.nextInt(Config.slateHeight);
+				 int slateZCoord = chunkZ + random.nextInt(16);
+
+				new WorldGenMinable(ConfigBlocks.blockSlate, 1, random.nextInt(10), Blocks.stone).generate(world, random, slateXCoord, slateYCoord, slateZCoord);
+				System.out.print("SlateGen at" + String.valueOf(slateXCoord) + String.valueOf(slateYCoord) + String.valueOf(slateZCoord));
+			}
+			for (int chance = 0; chance < Config.slateChance; chance++)
+			{
+				 int slateXCoord = chunkX + random.nextInt(16);
+				 int slateYCoord = random.nextInt(Config.slateHeight);
+				 int slateZCoord = chunkZ + random.nextInt(16);
+
+				new WorldGenMinable(ConfigBlocks.blockSlate, 2, random.nextInt(10), Blocks.stone).generate(world, random, slateXCoord, slateYCoord, slateZCoord);
+				System.out.print("SlateGen at" + String.valueOf(slateXCoord) + String.valueOf(slateYCoord) + String.valueOf(slateZCoord));
 			}
 		}
 	}
-	// TODO: Add etherium crystal generation (in all dimensions)
+	private void generateNether( World world,  Random random,
+			 int chunkX,  int chunkZ)
+	{
+		if(Config.netherEtheriumCrystalGenEnabled)
+		{
+		for (int chance = 0; chance < Config.netherEtheriumCrystalChance; chance++)
+		{
+			 int etheriumXCoord = chunkX + random.nextInt(16);
+			 int etheriumYCoord = random.nextInt(Config.netherEtheriumCrystalHeight);
+			 int etheriumZCoord = chunkZ + random.nextInt(16);
+
+			new WorldGenMinable(ConfigBlocks.blockCrystal,
+					1, Blocks.netherrack).generate(world, random, etheriumXCoord, etheriumYCoord, etheriumZCoord);
+		}
+		}
+	}
+	private void generateEnd(final World world, final Random random,
+			final int chunkX, final int chunkZ)
+	{
+		if(Config.endEtheriumCrystalGenEnabled)
+		{
+		for (int chance = 0; chance < Config.endEtheriumCrystalChance; chance++)
+		{
+			 int etheriumXCoord = chunkX + random.nextInt(16);
+			 int etheriumYCoord = random.nextInt(Config.endEtheriumCrystalHeight);
+			 int etheriumZCoord = chunkZ + random.nextInt(16);
+
+			new WorldGenMinable(ConfigBlocks.blockCrystal,
+					1, Blocks.end_stone).generate(world,
+					random, etheriumXCoord, etheriumYCoord, etheriumZCoord);
+		}
+		}
+	}
 }

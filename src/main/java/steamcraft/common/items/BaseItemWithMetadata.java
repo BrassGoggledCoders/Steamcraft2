@@ -1,15 +1,10 @@
 package steamcraft.common.items;
 
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.IIcon;
 import steamcraft.common.Steamcraft;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class BaseItemWithMetadata extends BaseItem
 {
-    @SideOnly(Side.CLIENT)
-    public IIcon[] itemIcon = new IIcon[0];
 	public BaseItemWithMetadata()
 	{
 		super();
