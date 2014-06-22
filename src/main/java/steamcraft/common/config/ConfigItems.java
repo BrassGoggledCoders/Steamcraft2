@@ -23,6 +23,7 @@ import steamcraft.common.items.ItemChisel;
 import steamcraft.common.items.ItemIngot;
 import steamcraft.common.items.ItemMachinePart;
 import steamcraft.common.items.ItemNugget;
+import steamcraft.common.items.ItemParts;
 import steamcraft.common.items.ItemPipe;
 import steamcraft.common.items.ItemPowder;
 import steamcraft.common.items.ItemRayGun;
@@ -241,6 +242,7 @@ public class ConfigItems
 	public static Item itemNugget;
 
 	public static Item itemMachinePart;
+	public static Item itemCopperParts, itemBrassParts, itemSteelParts, itemIronParts;
 
 	/**
 	 * Inits the.
@@ -321,6 +323,10 @@ public class ConfigItems
 		itemNugget = new ItemNugget();
 		itemResource = new ItemResource().setUnlocalizedName("itemResource");
 		itemMachinePart = new ItemMachinePart().setUnlocalizedName("itemMachinePart");
+		itemCopperParts = ((ItemParts) new ItemParts().setUnlocalizedName("itemPartsCopper")).setMaterial("copper");
+		itemIronParts = ((ItemParts) new ItemParts().setUnlocalizedName("itemPartsIron")).setMaterial("iron");
+		itemBrassParts = ((ItemParts) new ItemParts().setUnlocalizedName("itemPartsBrass")).setMaterial("brass");
+		itemSteelParts = ((ItemParts) new ItemParts().setUnlocalizedName("itemPartsSteel")).setMaterial("steel");
 		itemWatch = new ItemWatch().setUnlocalizedName("itemWatch");
 		itemTeaSeed = new ItemTeaSeed().setUnlocalizedName("itemTeaSeed");
 		itemChisel = new ItemChisel().setUnlocalizedName("itemChisel");
@@ -395,7 +401,10 @@ public class ConfigItems
 		GameRegistry.registerItem(itemPowder, "ItemMetalPowder", LibInfo.ID);
 		GameRegistry.registerItem(itemSheet, "ItemMetalSheet", LibInfo.ID);
 		GameRegistry.registerItem(itemNugget, "ItemMetalNugget", LibInfo.ID);
-
+		GameRegistry.registerItem(itemCopperParts, "ItemCopperParts", LibInfo.ID);
+		GameRegistry.registerItem(itemIronParts, "ItemIronParts", LibInfo.ID);
+		GameRegistry.registerItem(itemBrassParts, "ItemBrassParts", LibInfo.ID);
+		GameRegistry.registerItem(itemSteelParts, "ItemSteelParts", LibInfo.ID);
 		// Drills
 		GameRegistry.registerItem(drillCore, "ItemDrillCore", LibInfo.ID);
 		GameRegistry.registerItem(drillBase, "ItemDrillBase", LibInfo.ID);

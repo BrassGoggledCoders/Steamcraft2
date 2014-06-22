@@ -31,12 +31,12 @@ import cpw.mods.fml.relauncher.SideOnly;
  *
  * @author Surseance (Johnny Eatmon)
  */
-public class ItemMachinePart extends BaseItemWithMetadata
+public class ItemParts extends BaseItemWithMetadata
 {
 	// @SideOnly(Side.CLIENT)
 	/** The item icon. */
-	IIcon[] itemIcon = new IIcon[5];
-
+	IIcon[] itemIcon = new IIcon[11];
+	private String material;
 	/*
 	 * (non-Javadoc)
 	 *
@@ -48,17 +48,23 @@ public class ItemMachinePart extends BaseItemWithMetadata
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister ir)
 	{
-		itemIcon[0] = ir.registerIcon(LibInfo.PREFIX + "itemMagnet");
-		itemIcon[1] = ir.registerIcon(LibInfo.PREFIX + "itemGenerator");
-		itemIcon[2] = ir.registerIcon(LibInfo.PREFIX + "itemFan");
-		itemIcon[3] = ir.registerIcon(LibInfo.PREFIX + "itemTurbine");
-		itemIcon[4] = ir.registerIcon(LibInfo.PREFIX + "itemBulb");
+		itemIcon[0] = ir.registerIcon(LibInfo.PREFIX + "/parts"+ "item" + getMaterial() + "Gear");
+		itemIcon[1] = ir.registerIcon(LibInfo.PREFIX + "/parts"+ "item" + getMaterial() + "Sprocket");
+		itemIcon[2] = ir.registerIcon(LibInfo.PREFIX + "/parts"+ "item" + getMaterial() + "Spring");
+		itemIcon[3] = ir.registerIcon(LibInfo.PREFIX + "/parts"+ "item" + getMaterial() + "Thread");
+		itemIcon[4] = ir.registerIcon(LibInfo.PREFIX + "/parts"+ "item" + getMaterial() + "Nut");
+		itemIcon[5] = ir.registerIcon(LibInfo.PREFIX + "/parts"+ "item" + getMaterial() + "Bolt");
+		itemIcon[6] = ir.registerIcon(LibInfo.PREFIX + "/parts"+ "item" + getMaterial() + "Washer");
+		itemIcon[7] = ir.registerIcon(LibInfo.PREFIX + "/parts"+ "item" + getMaterial() + "Wire");
+		itemIcon[8] = ir.registerIcon(LibInfo.PREFIX + "/parts"+ "item" + getMaterial() + "Bearing");
+		itemIcon[9] = ir.registerIcon(LibInfo.PREFIX + "/parts"+ "item" + getMaterial() + "Screw");
+		itemIcon[10] = ir.registerIcon(LibInfo.PREFIX + "/parts"+ "item" + getMaterial() + "Nail");
 	}
 
 	/**
 	 * Instantiates a new item resource.
 	 */
-	public ItemMachinePart()
+	public ItemParts()
 	{
 		super();
 		setMaxStackSize(64);
@@ -77,7 +83,7 @@ public class ItemMachinePart extends BaseItemWithMetadata
 	{
 		for (int var4 = 0; var4 < itemIcon.length; ++var4)
 		{
-			l.add(new ItemStack(ConfigItems.itemMachinePart, 1, var4));
+			l.add(new ItemStack(this, 1, var4));
 		}
 	}
 
@@ -91,5 +97,16 @@ public class ItemMachinePart extends BaseItemWithMetadata
 	public IIcon getIconFromDamage(int itemDamage)
 	{
 		return itemIcon[itemDamage];
+	}
+
+	public String getMaterial()
+	{
+		return material;
+	}
+
+	public Item setMaterial(String material)
+	{
+		this.material = material;
+		return this;
 	}
 }

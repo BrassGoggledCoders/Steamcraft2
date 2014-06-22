@@ -35,7 +35,7 @@ public class ItemResource extends BaseItemWithMetadata
 {
 	// @SideOnly(Side.CLIENT)
 	/** The item icon. */
-	IIcon[] itemIcon = new IIcon[9];
+	IIcon[] itemIcon = new IIcon[8];
 
 	/*
 	 * (non-Javadoc)
@@ -52,11 +52,10 @@ public class ItemResource extends BaseItemWithMetadata
 		itemIcon[1] = ir.registerIcon(LibInfo.PREFIX + "itemChemSalt");
 		itemIcon[2] = ir.registerIcon(LibInfo.PREFIX + "itemBornite");
 		itemIcon[3] = ir.registerIcon(LibInfo.PREFIX + "itemSlate");
-		itemIcon[4] = ir.registerIcon(LibInfo.PREFIX + "itemBulb");
-		itemIcon[5] = ir.registerIcon(LibInfo.PREFIX + "itemPhosphorus");
-		itemIcon[6] = ir.registerIcon(LibInfo.PREFIX + "itemUranium");
-		itemIcon[7] = ir.registerIcon(LibInfo.PREFIX + "itemPellet");
-		itemIcon[8] = ir.registerIcon(LibInfo.PREFIX + "itemTeaLeaves");
+		itemIcon[4] = ir.registerIcon(LibInfo.PREFIX + "itemPhosphorus");
+		itemIcon[5] = ir.registerIcon(LibInfo.PREFIX + "itemUranium");
+		itemIcon[6] = ir.registerIcon(LibInfo.PREFIX + "itemPellet");
+		itemIcon[7] = ir.registerIcon(LibInfo.PREFIX + "itemTeaLeaves");
 	}
 
 	/**
