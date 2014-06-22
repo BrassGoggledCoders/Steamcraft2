@@ -21,6 +21,7 @@ import steamcraft.common.items.ItemBrassGoggles;
 import steamcraft.common.items.ItemCanister;
 import steamcraft.common.items.ItemChisel;
 import steamcraft.common.items.ItemIngot;
+import steamcraft.common.items.ItemMachinePart;
 import steamcraft.common.items.ItemNugget;
 import steamcraft.common.items.ItemPipe;
 import steamcraft.common.items.ItemPowder;
@@ -239,6 +240,8 @@ public class ConfigItems
 	/** The item nugget. */
 	public static Item itemNugget;
 
+	public static Item itemMachinePart;
+
 	/**
 	 * Inits the.
 	 */
@@ -317,6 +320,7 @@ public class ConfigItems
 		itemPowder = new ItemPowder();
 		itemNugget = new ItemNugget();
 		itemResource = new ItemResource().setUnlocalizedName("itemResource");
+		itemMachinePart = new ItemMachinePart().setUnlocalizedName("itemMachinePart");
 		itemWatch = new ItemWatch().setUnlocalizedName("itemWatch");
 		itemTeaSeed = new ItemTeaSeed().setUnlocalizedName("itemTeaSeed");
 		itemChisel = new ItemChisel().setUnlocalizedName("itemChisel");
@@ -378,6 +382,7 @@ public class ConfigItems
 
 		GameRegistry.registerItem(itemIngot, "ItemIngot", LibInfo.ID);
 		GameRegistry.registerItem(itemResource, "ItemResource", LibInfo.ID);
+		GameRegistry.registerItem(itemMachinePart, "ItemMachinePart", LibInfo.ID);
 		GameRegistry.registerItem(itemWatch, "ItemWatch", LibInfo.ID);
 		GameRegistry.registerItem(itemTeaSeed, "ItemTeaSeed", LibInfo.ID);
 		GameRegistry.registerItem(itemChisel, "ItemChisel", LibInfo.ID);

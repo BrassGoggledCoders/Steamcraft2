@@ -31,7 +31,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  *
  * @author Surseance (Johnny Eatmon)
  */
-public class ItemResource extends BaseItemWithMetadata
+public class ItemMachinePart extends BaseItemWithMetadata
 {
 	// @SideOnly(Side.CLIENT)
 	/** The item icon. */
@@ -48,21 +48,13 @@ public class ItemResource extends BaseItemWithMetadata
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister ir)
 	{
-		itemIcon[0] = ir.registerIcon(LibInfo.PREFIX + "itemCrystal");
-		itemIcon[1] = ir.registerIcon(LibInfo.PREFIX + "itemChemSalt");
-		itemIcon[2] = ir.registerIcon(LibInfo.PREFIX + "itemBornite");
-		itemIcon[3] = ir.registerIcon(LibInfo.PREFIX + "itemSlate");
-		itemIcon[4] = ir.registerIcon(LibInfo.PREFIX + "itemBulb");
-		itemIcon[5] = ir.registerIcon(LibInfo.PREFIX + "itemPhosphorus");
-		itemIcon[6] = ir.registerIcon(LibInfo.PREFIX + "itemUranium");
-		itemIcon[7] = ir.registerIcon(LibInfo.PREFIX + "itemPellet");
-		itemIcon[8] = ir.registerIcon(LibInfo.PREFIX + "itemTeaLeaves");
+		itemIcon[0] = ir.registerIcon(LibInfo.PREFIX + "item");
 	}
 
 	/**
 	 * Instantiates a new item resource.
 	 */
-	public ItemResource()
+	public ItemMachinePart()
 	{
 		super();
 		setMaxStackSize(64);

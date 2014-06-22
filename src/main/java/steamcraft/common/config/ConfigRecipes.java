@@ -1,5 +1,5 @@
 /*
- * 
+ *
  */
 package steamcraft.common.config;
 
@@ -50,14 +50,11 @@ public class ConfigRecipes
 				new ItemStack(ConfigItems.itemPowder, 1, 3), new ItemStack(ConfigItems.itemPowder, 1, 3) });
 		GameRegistry.addShapelessRecipe(new ItemStack(ConfigItems.itemPowder, 3, 5), new Object[] { new ItemStack(ConfigItems.itemPowder, 2, 1),
 				new ItemStack(ConfigItems.itemPowder, 1, 2), new ItemStack(ConfigItems.itemPowder, 1, 2) });
+		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.itemPowder, 1, 6), new Object[]{" C ", "CIC", " C ", 'C', new ItemStack(Items.coal), 'I', new ItemStack(Items.iron_ingot)});
+
 		// Blocks
 		/*
-		 * GameRegistry.addRecipe(new ItemStack(ConfigBlocks.blockUranium), new
-		 * Object[] {"III", "III", "III", 'I', new
-		 * ItemStack(ConfigItems.uraniumOre)}); GameRegistry.addRecipe(new
-		 * ItemStack(ConfigBlocks.blockVolucite), new Object[] {"III", "III",
-		 * "III", 'I', new ItemStack(ConfigItems.etherium)});
-		 * 
+		 *
 		 * GameRegistry.addRecipe(new ItemStack(ConfigBlocks.blockObsidianTile),
 		 * new Object[] {"XX", "XX", 'X', new ItemStack(Block.obsidian)});
 		 * GameRegistry.addShapedRecipe(new
@@ -68,7 +65,7 @@ public class ConfigRecipes
 		 * 9), new Object[]{new ItemStack(ConfigBlocks.blockUranium)});
 		 * GameRegistry.addShapelessRecipe(new ItemStack(ConfigItems.etherium,
 		 * 9), new Object[]{new ItemStack(ConfigBlocks.blockVolucite)});
-		 * 
+		 *
 		 * GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.lightBulb),
 		 * new Object[] {"ppp", "p p", "pcp", 'p', Block.thinGlass, 'c',
 		 * ConfigItems.copperWire}); //Duplicate Recipes are deliberate, until I
