@@ -99,11 +99,11 @@ public class ItemModHoe extends ItemModTool
 			{
 				int i = 0;
 
-				while (stack.getItemDamage() - repairAmount >= 0 && consumeSteamFromCanister(player))
-				{
-					stack.setItemDamage(stack.getItemDamage() - repairAmount);
-					i++;
-				}
+				//while (stack.getItemDamage() - repairAmount >= 0 && consumeSteamFromCanister(player))
+				//{
+					//stack.setItemDamage(stack.getItemDamage() - repairAmount);
+					//i++;
+				//}
 			}
 		}
 

@@ -16,12 +16,9 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
-import steamcraft.common.config.ConfigItems;
 import steamcraft.common.lib.LibInfo;
 import boilerplate.client.ClientHelper;
 import boilerplate.common.utils.PlayerUtils;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -168,10 +165,16 @@ public class ItemSteamDrill extends ItemDrill
 	@Override
 	public boolean onBlockDestroyed(ItemStack stack, World world, Block p_150894_3_, int x, int y, int z, EntityLivingBase living)
 	{
-		stack.damageItem(1, living);
-		world.playSoundAtEntity(living, LibInfo.PREFIX + "drill", 1.0F, 1.0F);
-		world.spawnParticle("smoke", x + 0.5, y + 0.5, z + 0.5, this.random.nextGaussian(), this.random.nextGaussian(), this.random.nextGaussian());
-		return true;
+		 if(living instanceof EntityPlayer)
+		 {
+			 for(int i=0; i<5; i++)
+			 consumeSteamFromCanister((EntityPlayer) living);
+			 stack.damageItem(1, living);
+			 world.playSoundAtEntity(living, LibInfo.PREFIX + "drill", 1.0F, 1.0F);
+			 world.spawnParticle("smoke", x + 0.5, y + 0.5, z + 0.5, this.random.nextGaussian(), this.random.nextGaussian(), this.random.nextGaussian());
+			 return true;
+		 }
+		 else return false;
 	}
 
 	/*

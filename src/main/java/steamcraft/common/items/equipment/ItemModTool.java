@@ -36,9 +36,6 @@ public class ItemModTool extends BaseItem
 	/** The Constant steamForRepair. */
 	public static final int steamForRepair = 10;
 
-	/** The Constant repairAmount. */
-	public static final int repairAmount = 15;
-
 	/** The blocks effective against. */
 	protected static Block[] blocksEffectiveAgainst;
 
@@ -67,7 +64,7 @@ public class ItemModTool extends BaseItem
 		super();
 		setCreativeTab(Steamcraft.tabSC2);
 		this.toolMaterial = toolMat;
-		ItemModTool.blocksEffectiveAgainst = blockArray;
+		blocksEffectiveAgainst = blockArray;
 		this.maxStackSize = 1;
 		this.setMaxDamage(toolMat.getMaxUses());
 		this.efficiencyOnProperMaterial = toolMat.getEfficiencyOnProperMaterial();
@@ -109,7 +106,6 @@ public class ItemModTool extends BaseItem
 				return efficiencyOnProperMaterial;
 			}
 		}
-
 		return 1.0F;
 	}
 
@@ -131,7 +127,7 @@ public class ItemModTool extends BaseItem
 		return true;
 	}
 
-	private boolean isSteampowered()
+	protected boolean isSteampowered()
 	{
 		if(toolMaterial == MaterialHelper.TOOL_STEAM)
 		{
@@ -228,37 +224,50 @@ public class ItemModTool extends BaseItem
 	/**
 	 * Can consume steam from canister.
 	 *
-	 * @param player
-	 *            the player
-	 * @return true, if successful
+	 * @param player the player
 	 */
-	protected boolean consumeSteamFromCanister(EntityPlayer player)
+	protected void consumeSteamFromCanister(EntityPlayer player)
 	{
-		int i = 0;
-		while (i < 36)
+		ItemStack[] mainInv = player.inventory.mainInventory;
+		for(int i=0; i<mainInv.length;i++)
 		{
-			ItemStack[] mainInv = player.inventory.mainInventory;
-			if ((mainInv[i] != null) && (mainInv[i].getItem() == ConfigItems.itemCanisterSteam))
+			if (mainInv[i] != null && mainInv[i].getItem() == ConfigItems.itemCanisterSteam)
 			{
 				ItemCanister canister = (ItemCanister) mainInv[i].getItem();
 
-				if (!(getDamage(new ItemStack(canister)) == 0))
+				if(canister.getFluidAmount(mainInv[i]) > steamForRepair)
 				{
-					canister.drain(new ItemStack(canister), steamForRepair, true);
-
-					return true;
-				}
-				else
-				{
-					mainInv[i] = new ItemStack(ConfigItems.itemCanisterSteam);
-
-					return false;
+					canister.drain(mainInv[i], steamForRepair, true);
 				}
 			}
-
-			i++;
 		}
+	}
+	/**
+	 * Can consume steam from canister.
+	 *
+	 * @param player the player
+	 */
+	protected boolean isCanisterEmpty(ItemStack stack)
+	{
+		ItemCanister canister = (ItemCanister) stack.getItem();
 
+		if(canister.getFluidAmount(stack) <= steamForRepair)
+		{
+			return true;
+		}
+		else return false;
+	}
+	protected boolean hasCanister(EntityPlayer player)
+	{
+		ItemStack[] mainInv = player.inventory.mainInventory;
+		for(int i=0; i<mainInv.length; i++)
+		{
+			if (mainInv[i] != null && mainInv[i].getItem() == ConfigItems.itemCanisterSteam)
+			{
+				return true;
+			}
+			else return false;
+		}
 		return false;
 	}
 }

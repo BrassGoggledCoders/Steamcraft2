@@ -12,7 +12,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
-import net.minecraft.world.World;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.LibInfo;
 import cpw.mods.fml.relauncher.Side;
@@ -127,19 +126,6 @@ public class ItemDrill extends ItemModTool
 	{
 		return /* this.getEnergy(stack) != 0 && */this.canHarvestBlock(block, stack) ? this.getEfficiency() : 1.0F;
 	}
-
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see net.minecraft.item.Item#isFull3D()
-	 */
-	@Override
-	@SideOnly(Side.CLIENT)
-	public boolean isFull3D()
-	{
-		return true;
-	}
-
 	/**
 	 * Gets the efficiency.
 	 *
