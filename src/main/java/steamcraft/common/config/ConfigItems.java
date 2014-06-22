@@ -334,7 +334,6 @@ public class ConfigItems
 		drillIron = new ItemDrill(MaterialHelper.DRILL_IRON).setUnlocalizedName("itemDrillIron");
 		drillDiamond = new ItemDrill(MaterialHelper.DRILL_EMERALD).setUnlocalizedName("itemDrillDiamond");
 		drillGold = new ItemDrill(MaterialHelper.DRILL_GOLD).setUnlocalizedName("itemDrillGold");
-		drillSteam = new ItemSteamDrill(MaterialHelper.DRILL_STEAM).setUnlocalizedName("itemDrillSteam");
 		drillEtherium = new ItemDrill(MaterialHelper.DRILL_ETHERIUM).setUnlocalizedName("itemDrillEtherium");
 		drillObsidian = new ItemDrill(MaterialHelper.DRILL_OBSIDIAN).setUnlocalizedName("itemDrillObsidian");
 		drillSteam = new ItemSteamDrill(MaterialHelper.DRILL_STEAM).setUnlocalizedName("itemDrillSteam");
@@ -400,7 +399,6 @@ public class ConfigItems
 		GameRegistry.registerItem(drillIron, "ItemDrillIron", LibInfo.ID);
 		GameRegistry.registerItem(drillDiamond, "ItemDrillDiamond", LibInfo.ID);
 		GameRegistry.registerItem(drillGold, "ItemDrillGold", LibInfo.ID);
-		GameRegistry.registerItem(drillSteam, "ItemDrillSteam", LibInfo.ID);
 		GameRegistry.registerItem(drillEtherium, "ItemDrillEtherium", LibInfo.ID);
 		GameRegistry.registerItem(drillObsidian, "ItemDrillObsidian", LibInfo.ID);
 		GameRegistry.registerItem(drillSteam, "ItemDrillSteam", LibInfo.ID);

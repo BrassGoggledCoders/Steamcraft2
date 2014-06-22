@@ -16,6 +16,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
+import steamcraft.common.config.ConfigItems;
 import steamcraft.common.lib.LibInfo;
 import boilerplate.client.ClientHelper;
 import boilerplate.common.utils.PlayerUtils;
@@ -200,29 +201,6 @@ public class ItemSteamDrill extends ItemDrill
 			itemStack.setTagCompound(tag);
 
 		}
-		/*else if (!world.isRemote)
-		{
-			if (player.inventory.hasItem(ConfigItems.itemCanisterSteam))
-			{
-				int i = 0;
-
-				while ((itemStack.getItemDamage() != 0) && (i < 36))
-				{
-					if ((player.inventory.mainInventory[i] != null)
-							&& (player.inventory.mainInventory[i] == new ItemStack(ConfigItems.itemCanisterSteam)))
-					{
-						while ((player.inventory.mainInventory[i].getItemDamage() < ConfigItems.itemCanisterSteam.getMaxDamage())
-								&& (itemStack.getItemDamage() > 0))
-						{
-							player.inventory.mainInventory[i].damageItem(1, player);
-							itemStack.setItemDamage(itemStack.getItemDamage() - 1);
-						}
-					}
-
-					i++;
-				}
-			}
-		}*/
 		return itemStack;
 	}
 

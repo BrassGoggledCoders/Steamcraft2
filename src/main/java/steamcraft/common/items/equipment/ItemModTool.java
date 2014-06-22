@@ -7,12 +7,14 @@ import java.util.List;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.config.ConfigItems;
@@ -34,7 +36,7 @@ public class ItemModTool extends BaseItem
 {
 
 	/** The Constant steamForRepair. */
-	public static final int steamForRepair = 10;
+	public static final int steamForRepair = 20;
 
 	/** The blocks effective against. */
 	protected static Block[] blocksEffectiveAgainst;
@@ -47,6 +49,8 @@ public class ItemModTool extends BaseItem
 
 	/** The tool material. */
 	protected ToolMaterial toolMaterial;
+
+	//private boolean canister = false;
 
 	/**
 	 * Instantiates a new item mod tool.
@@ -94,6 +98,8 @@ public class ItemModTool extends BaseItem
 	@Override
 	public float getDigSpeed(ItemStack stack, Block block, int metadata)
 	{
+		//if(canister && isSteampowered())
+		//{
 		for (int i = 0; i < blocksEffectiveAgainst.length; i++)
 		{
 			if (blocksEffectiveAgainst[i] == block)
@@ -106,7 +112,8 @@ public class ItemModTool extends BaseItem
 				return efficiencyOnProperMaterial;
 			}
 		}
-		return 1.0F;
+		//}
+		return 0.1F;
 	}
 
 	/*
@@ -121,6 +128,7 @@ public class ItemModTool extends BaseItem
 	{
 		 if(isSteampowered() && living2 instanceof EntityPlayer)
 		 {
+			 //if(hasCanister((EntityPlayer) living2))
 			 consumeSteamFromCanister((EntityPlayer) living2);
 		 }
 		itemstack.damageItem(2, living2);
@@ -176,7 +184,6 @@ public class ItemModTool extends BaseItem
 		multimap.put(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName(), new AttributeModifier(field_111210_e, "Tool modifier", this.damageVsEntity, 0));
 		return multimap;
 	}
-
 	/*
 	 * (non-Javadoc)
 	 *
@@ -188,10 +195,17 @@ public class ItemModTool extends BaseItem
 	@Override
 	public boolean onBlockDestroyed(ItemStack stack, World p_150894_2_, Block p_150894_3_, int p_150894_4_, int p_150894_5_, int p_150894_6_, EntityLivingBase living)
 	{
-		 if(isSteampowered() && living instanceof EntityPlayer)
-		 {
-			 consumeSteamFromCanister((EntityPlayer) living);
-		 }
+		if (!stack.hasTagCompound())
+			stack.setTagCompound(new NBTTagCompound());
+
+		if (stack.getTagCompound().getBoolean("hasCanister"))
+		{
+			if(isSteampowered() && living instanceof EntityPlayer)
+			{
+				if(hasCanister((EntityPlayer) living))
+				consumeSteamFromCanister((EntityPlayer) living);
+		 	}
+		}
 		stack.damageItem(1, living);
 		return true;
 	}
@@ -209,15 +223,12 @@ public class ItemModTool extends BaseItem
 	{
 		if (toolMaterial == MaterialHelper.TOOL_STEAM)
 		{
-			// if(!ClientHelper.isShiftKeyDown())
-			// {
-			// list.add(ClientHelper.shiftForInfo);
-			return;
-			// }
+			if (!itemStack.hasTagCompound())
+				itemStack.setTagCompound(new NBTTagCompound());
 
-			// list.add("\u00A77"+ (this.getMaxDamage() -
-			// itemStack.getItemDamage()) + "/" + this.getMaxDamage() +
-			// " steam");
+			if(itemStack.getTagCompound().hasKey("hasCanister"))
+			list.add("Canister Detected: " + String.valueOf(itemStack.getTagCompound().getBoolean("hasCanister")));
+
 		}
 	}
 
@@ -259,15 +270,27 @@ public class ItemModTool extends BaseItem
 	}
 	protected boolean hasCanister(EntityPlayer player)
 	{
-		ItemStack[] mainInv = player.inventory.mainInventory;
-		for(int i=0; i<mainInv.length; i++)
+		for(int i=0; i!=player.inventory.mainInventory.length; i++)
 		{
-			if (mainInv[i] != null && mainInv[i].getItem() == ConfigItems.itemCanisterSteam)
+			ItemStack[] mainInv = player.inventory.mainInventory;
+			if ((mainInv[i] != null) && (mainInv[i].getItem() == ConfigItems.itemCanisterSteam))
 			{
-				return true;
+				return !isCanisterEmpty(mainInv[i]);
 			}
-			else return false;
 		}
 		return false;
+	}
+	public void onUpdate(ItemStack itemStack, World par2World, Entity par3Entity, int par4, boolean par5) {
+		if (!itemStack.hasTagCompound())
+			itemStack.setTagCompound(new NBTTagCompound());
+		NBTTagCompound tag = itemStack.getTagCompound();
+		if(par3Entity instanceof EntityPlayer)
+		{
+		if (hasCanister((EntityPlayer) par3Entity))
+			tag.setBoolean("hasCanister", true);
+		else
+			tag.setBoolean("hasCanister", false);
+		itemStack.setTagCompound(tag);
+		}
 	}
 }
