@@ -14,6 +14,7 @@ import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import steamcraft.common.Steamcraft;
@@ -72,7 +73,10 @@ public class ItemModTool extends BaseItem
 		this.maxStackSize = 1;
 		this.setMaxDamage(toolMat.getMaxUses());
 		this.efficiencyOnProperMaterial = toolMat.getEfficiencyOnProperMaterial();
-		this.damageVsEntity = damage + toolMat.getDamageVsEntity();
+		if(this instanceof ItemModSword)
+		this.damageVsEntity = toolMat.getDamageVsEntity();
+		else
+		this.damageVsEntity = 2;
 	}
 
 	/*
@@ -289,10 +293,18 @@ public class ItemModTool extends BaseItem
 			tag.setBoolean("hasCanister", false);
 		itemStack.setTagCompound(tag);
 		}
+		//getItemAttributeModifiers().notify();
+		//getItemAttributeModifiers().put(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName(), new AttributeModifier(field_111210_e, "Weapon modifier", getDamage(toolMaterial, itemStack), 0));
 		/*if(tag.getBoolean("hasCanister"))
 		{
 			efficiencyOnProperMaterial = 4.0F;
 		}
 		else efficiencyOnProperMaterial = 0F;*/
 	}
+	@Override
+    public Multimap<String,AttributeModifier> getAttributeModifiers(ItemStack stack)
+    {
+    	super.getAttributeModifiers(stack).put(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName(), new AttributeModifier(field_111210_e, "Weapon modifier",0, 0));
+        return super.getAttributeModifiers(stack);
+    }
 }

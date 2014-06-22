@@ -5,6 +5,7 @@ package steamcraft.common.items.equipment;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
@@ -14,6 +15,7 @@ import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 
 import com.google.common.collect.Multimap;
@@ -36,7 +38,7 @@ public class ItemModSword extends ItemModTool
 	 */
 	public ItemModSword(ToolMaterial toolMat)
 	{
-		super(5.0F, toolMat, blocksEffectiveAgainst);
+		super(0, toolMat, blocksEffectiveAgainst);
 		this.toolMaterial = toolMat;
 		this.maxStackSize = 1;
 		this.setMaxDamage(toolMat.getMaxUses());
@@ -160,36 +162,23 @@ public class ItemModSword extends ItemModTool
 		Item item = stack2.getItem();
 		return this.toolMaterial.func_150995_f() == item ? true : super.getIsRepairable(stack1, stack2);
 	}
-
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see
-	 * steamcraft.common.items.equipment.ItemModTool#getItemAttributeModifiers()
-	 */
-	@SuppressWarnings("all")
 	@Override
-	public Multimap getAttributeModifiers(ItemStack stack)
-	{
-		Multimap multimap = super.getItemAttributeModifiers();
-		multimap.put(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName(), new AttributeModifier(field_111210_e, "Weapon Modifier", getWeaponDamage(toolMaterial, stack), 0));
-		return multimap;
-	}
-
-	private double getWeaponDamage(ToolMaterial mat, ItemStack stack)
+	public boolean onLeftClickEntity(ItemStack stack, EntityPlayer player, Entity entity)
 	{
 		if (this.isSteampowered())
 		{
-		NBTTagCompound tag = stack.getTagCompound();
-		if(tag.getBoolean("hasCanister"))
-		{
-			return toolMaterial.getDamageVsEntity();
-		}
-		else return 1D;
+			NBTTagCompound tag = stack.getTagCompound();
+			if(tag.getBoolean("hasCanister"))
+			{
+			entity.attackEntityFrom(DamageSource.causePlayerDamage(player), toolMaterial.getDamageVsEntity());
+			return true;
+			}
+			else return false;
 		}
 		else
 		{
-			return toolMaterial.getDamageVsEntity();
+			entity.attackEntityFrom(DamageSource.causePlayerDamage(player), toolMaterial.getDamageVsEntity());
+			return true;
 		}
 	}
 }
