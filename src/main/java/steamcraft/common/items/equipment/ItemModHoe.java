@@ -1,5 +1,5 @@
 /*
- * 
+ *
  */
 package steamcraft.common.items.equipment;
 
@@ -22,7 +22,7 @@ public class ItemModHoe extends ItemModTool
 
 	/**
 	 * Instantiates a new item mod hoe.
-	 * 
+	 *
 	 * @param toolMat
 	 *            the tool mat
 	 */
@@ -36,7 +36,7 @@ public class ItemModHoe extends ItemModTool
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.minecraft.item.Item#onItemUse(net.minecraft.item.ItemStack,
 	 * net.minecraft.entity.player.EntityPlayer, net.minecraft.world.World, int,
 	 * int, int, int, float, float, float)
@@ -83,7 +83,7 @@ public class ItemModHoe extends ItemModTool
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * steamcraft.common.items.equipment.ItemModTool#onItemRightClick(net.minecraft
 	 * .item.ItemStack, net.minecraft.world.World,
@@ -99,7 +99,7 @@ public class ItemModHoe extends ItemModTool
 			{
 				int i = 0;
 
-				while (stack.getItemDamage() - repairAmount >= 0 && canConsumeSteamFromCanister(player))
+				while (stack.getItemDamage() - repairAmount >= 0 && consumeSteamFromCanister(player))
 				{
 					stack.setItemDamage(stack.getItemDamage() - repairAmount);
 					i++;

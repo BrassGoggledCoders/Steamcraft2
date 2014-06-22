@@ -1,5 +1,5 @@
 /*
- * 
+ *
  */
 package steamcraft.common.items.equipment;
 
@@ -34,12 +34,11 @@ public class ItemSteamDrill extends ItemDrill
 	private Random random = new Random();
 
 	/** The blocks effective against. */
-	public static Block[] blocksEffectiveAgainst = new Block[] { Blocks.cobblestone, Blocks.dirt, Blocks.stone, Blocks.sand, Blocks.clay, Blocks.ice,
-			Blocks.snow, Blocks.netherrack, Blocks.grass };
+	public static Block[] blocksEffectiveAgainst = new Block[] { Blocks.cobblestone, Blocks.dirt, Blocks.stone, Blocks.sand, Blocks.clay, Blocks.ice, Blocks.snow, Blocks.netherrack, Blocks.grass };
 
 	/**
 	 * Instantiates a new item steam drill.
-	 * 
+	 *
 	 * @param mat
 	 *            the mat
 	 */
@@ -50,7 +49,7 @@ public class ItemSteamDrill extends ItemDrill
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * steamcraft.common.items.equipment.ItemDrill#addInformation(net.minecraft
 	 * .item.ItemStack, net.minecraft.entity.player.EntityPlayer,
@@ -86,7 +85,7 @@ public class ItemSteamDrill extends ItemDrill
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.minecraft.item.Item#onBlockStartBreak(net.minecraft.item.ItemStack,
 	 * int, int, int, net.minecraft.entity.player.EntityPlayer)
@@ -97,7 +96,7 @@ public class ItemSteamDrill extends ItemDrill
 		if (!itemStack.hasTagCompound())
 			itemStack.setTagCompound(new NBTTagCompound());
 
-		if (itemStack.getTagCompound().getBoolean("active") && this.searchForCanister(player))
+		if (itemStack.getTagCompound().getBoolean("active"))
 		{
 			World world = player.worldObj;
 
@@ -158,48 +157,9 @@ public class ItemSteamDrill extends ItemDrill
 		return false;
 	}
 
-	/**
-	 * Search for canister.
-	 * 
-	 * @param player
-	 *            the player
-	 * @return true, if successful
-	 */
-	private boolean searchForCanister(EntityPlayer player)
-	{
-		if (!player.worldObj.isRemote)
-		{
-			if (player.inventory.hasItem(ConfigItems.itemCanisterSteam))
-			{
-				int steamPerUse = 7;
-				int i = 0, j = 0;
-
-				while ((i < 36) && (j < steamPerUse))
-				{
-					if ((player.inventory.mainInventory[i] != null)
-							&& (player.inventory.mainInventory[i] == new ItemStack(ConfigItems.itemCanisterSteam)))
-					{
-						while ((player.inventory.mainInventory[i].getItemDamage() < ConfigItems.itemCanisterSteam.getMaxDamage())
-								&& (j < steamPerUse))
-						{
-							player.inventory.mainInventory[i].damageItem(1, player);
-							j++;
-						}
-					}
-
-					i++;
-				}
-
-				if (j == steamPerUse)
-					return true;
-			}
-		}
-		return false;
-	}
-
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * steamcraft.common.items.equipment.ItemDrill#onBlockDestroyed(net.minecraft
 	 * .item.ItemStack, net.minecraft.world.World, net.minecraft.block.Block,
@@ -216,7 +176,7 @@ public class ItemSteamDrill extends ItemDrill
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.minecraft.item.Item#onItemRightClick(net.minecraft.item.ItemStack,
 	 * net.minecraft.world.World, net.minecraft.entity.player.EntityPlayer)
@@ -237,7 +197,7 @@ public class ItemSteamDrill extends ItemDrill
 			itemStack.setTagCompound(tag);
 
 		}
-		else if (!world.isRemote)
+		/*else if (!world.isRemote)
 		{
 			if (player.inventory.hasItem(ConfigItems.itemCanisterSteam))
 			{
@@ -259,13 +219,13 @@ public class ItemSteamDrill extends ItemDrill
 					i++;
 				}
 			}
-		}
+		}*/
 		return itemStack;
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * steamcraft.common.items.equipment.ItemDrill#canHarvestBlock(net.minecraft
 	 * .block.Block, net.minecraft.item.ItemStack)
@@ -287,7 +247,7 @@ public class ItemSteamDrill extends ItemDrill
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * steamcraft.common.items.equipment.ItemDrill#hitEntity(net.minecraft.item
 	 * .ItemStack, net.minecraft.entity.EntityLivingBase,
@@ -303,19 +263,7 @@ public class ItemSteamDrill extends ItemDrill
 
 	/*
 	 * (non-Javadoc)
-	 * 
-	 * @see steamcraft.common.items.equipment.ItemDrill#isFull3D()
-	 */
-	@Override
-	@SideOnly(Side.CLIENT)
-	public boolean isFull3D()
-	{
-		return true;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * steamcraft.common.items.equipment.ItemDrill#getDigSpeed(net.minecraft
 	 * .item.ItemStack, net.minecraft.block.Block, int)

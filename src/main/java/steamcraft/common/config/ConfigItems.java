@@ -33,7 +33,6 @@ import steamcraft.common.items.ItemWatch;
 import steamcraft.common.items.armor.ItemBrassArmor;
 import steamcraft.common.items.armor.ItemNormalArmor;
 import steamcraft.common.items.armor.ItemSteamJetpack;
-import steamcraft.common.items.equipment.ItemCoreDrill;
 import steamcraft.common.items.equipment.ItemDrill;
 import steamcraft.common.items.equipment.ItemHammer;
 import steamcraft.common.items.equipment.ItemModAxe;
@@ -49,7 +48,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 // TODO: Auto-generated Javadoc
 /**
  * The Class ConfigItems.
- * 
+ *
  * @author Surseance (Johnny Eatmon)
  */
 public class ConfigItems
@@ -73,13 +72,13 @@ public class ConfigItems
 	public static Item itemHelmetBrass, itemChestplateBrass, itemLegsBrass, itemBootsBrass;
 	/**
 	 * The item brass goggles. public static Item itemBrassGoggles;
-	 * 
+	 *
 	 * /** The item aqualung. public static Item itemAqualung;
-	 * 
+	 *
 	 * /** The item leg braces. public static Item itemLegBraces;
-	 * 
+	 *
 	 * /** The item roller skates public static Item itemRollerSkates;
-	 * 
+	 *
 	 * /** The item steam jetpack.
 	 */
 	public static Item itemSteamJetpack;
@@ -276,9 +275,9 @@ public class ConfigItems
 		 * 3).setUnlocalizedName("itemRollerSkates");
 		 * GameRegistry.registerItem(itemRollerSkates, "ItemRollerSkates",
 		 * LibInfo.ID);
-		 * 
-		 * 
-		 * 
+		 *
+		 *
+		 *
 		 * //More Items itemTeacupEmpty = new
 		 * ItemTeacup(Config.itemTeacupEmptyId, 0, 0.0F,
 		 * false).setUnlocalizedName("itemTeacupEmpty");
@@ -328,9 +327,9 @@ public class ConfigItems
 		itemShrinkray = new ItemShrinkray(LibInfo.PREFIX + "shrinkray");
 		itemHammer = new ItemHammer().setUnlocalizedName("itemHammer");
 
-		drillCore = new ItemCoreDrill().setUnlocalizedName("itemDrillCore");
+		drillCore = new BaseItem().setUnlocalizedName("itemDrillCore");
 		drillBase = new BaseItem().setUnlocalizedName("itemDrillBase");
-		drillWood = new ItemDrill(MaterialHelper.DRILL_WOOD).setUnlocalizedName("itemDrillWood").setCreativeTab(Steamcraft.tabSC2);
+		drillWood = new ItemDrill(MaterialHelper.DRILL_WOOD).setUnlocalizedName("itemDrillWood");
 		drillStone = new ItemDrill(MaterialHelper.DRILL_STONE).setUnlocalizedName("itemDrillStone");
 		drillIron = new ItemDrill(MaterialHelper.DRILL_IRON).setUnlocalizedName("itemDrillIron");
 		drillDiamond = new ItemDrill(MaterialHelper.DRILL_EMERALD).setUnlocalizedName("itemDrillDiamond");
@@ -338,6 +337,7 @@ public class ConfigItems
 		drillSteam = new ItemSteamDrill(MaterialHelper.DRILL_STEAM).setUnlocalizedName("itemDrillSteam");
 		drillEtherium = new ItemDrill(MaterialHelper.DRILL_ETHERIUM).setUnlocalizedName("itemDrillEtherium");
 		drillObsidian = new ItemDrill(MaterialHelper.DRILL_OBSIDIAN).setUnlocalizedName("itemDrillObsidian");
+		drillSteam = new ItemSteamDrill(MaterialHelper.DRILL_STEAM).setUnlocalizedName("itemDrillSteam");
 
 		pickaxeSteam = new ItemModPickaxe(MaterialHelper.TOOL_STEAM).setUnlocalizedName("itemPickaxeSteam");
 		swordSteam = new ItemModSword(MaterialHelper.TOOL_STEAM).setUnlocalizedName("itemSwordSteam");
@@ -403,6 +403,7 @@ public class ConfigItems
 		GameRegistry.registerItem(drillSteam, "ItemDrillSteam", LibInfo.ID);
 		GameRegistry.registerItem(drillEtherium, "ItemDrillEtherium", LibInfo.ID);
 		GameRegistry.registerItem(drillObsidian, "ItemDrillObsidian", LibInfo.ID);
+		GameRegistry.registerItem(drillSteam, "ItemDrillSteam", LibInfo.ID);
 
 		GameRegistry.registerItem(itemSteamJetpack, "ItemSteamJetpack", LibInfo.ID);
 

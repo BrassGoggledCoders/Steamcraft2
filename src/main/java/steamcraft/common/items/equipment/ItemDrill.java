@@ -1,5 +1,5 @@
 /*
- * 
+ *
  */
 package steamcraft.common.items.equipment;
 
@@ -21,11 +21,11 @@ import cpw.mods.fml.relauncher.SideOnly;
 // TODO: Auto-generated Javadoc
 /**
  * Base class for drills.
- * 
+ *
  * @author Decebaldecebal
- * 
+ *
  */
-public class ItemDrill extends ItemCoreDrill
+public class ItemDrill extends ItemModTool
 {
 
 	/** An array of blocks the drill can mine. */
@@ -37,7 +37,7 @@ public class ItemDrill extends ItemCoreDrill
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * steamcraft.common.items.equipment.ItemCoreDrill#registerIcons(net.minecraft
 	 * .client.renderer.texture.IIconRegister)
@@ -51,13 +51,13 @@ public class ItemDrill extends ItemCoreDrill
 
 	/**
 	 * Instantiates a new item drill.
-	 * 
+	 *
 	 * @param mat
 	 *            the mat
 	 */
 	public ItemDrill(ToolMaterial mat)
 	{
-		super();
+		super(damageVsEntity, mat, blocksEffectiveAgainst);
 		this.setCreativeTab(Steamcraft.tabSC2);
 		this.toolMaterial = mat;
 		this.setMaxDamage(toolMaterial.getMaxUses());
@@ -65,7 +65,7 @@ public class ItemDrill extends ItemCoreDrill
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.minecraft.item.Item#canHarvestBlock(net.minecraft.block.Block,
 	 * net.minecraft.item.ItemStack)
 	 */
@@ -86,7 +86,7 @@ public class ItemDrill extends ItemCoreDrill
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * boilerplate.common.RootItem#addInformation(net.minecraft.item.ItemStack,
 	 * net.minecraft.entity.player.EntityPlayer, java.util.List, boolean)
@@ -101,7 +101,7 @@ public class ItemDrill extends ItemCoreDrill
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.minecraft.item.Item#hitEntity(net.minecraft.item.ItemStack,
 	 * net.minecraft.entity.EntityLivingBase,
 	 * net.minecraft.entity.EntityLivingBase)
@@ -112,18 +112,13 @@ public class ItemDrill extends ItemCoreDrill
 		// if(this.getEnergy(stack) > 0) {
 		hitEntity.attackEntityFrom(DamageSource.causePlayerDamage((EntityPlayer) player), (this.toolMaterial.getDamageVsEntity()));
 		stack.damageItem(1, player);
-		// this.setEnergy(stack, getEnergy(stack) - this.energyPerBlock * 2);
-		// } else {
-		// hitEntity.attackEntityFrom(DamageSource.causePlayerDamage((EntityPlayer)player),
-		// 1);
-		// }
 
 		return false;
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.minecraft.item.Item#getDigSpeed(net.minecraft.item.ItemStack,
 	 * net.minecraft.block.Block, int)
 	 */
@@ -135,28 +130,7 @@ public class ItemDrill extends ItemCoreDrill
 
 	/*
 	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * net.minecraft.item.Item#onBlockDestroyed(net.minecraft.item.ItemStack,
-	 * net.minecraft.world.World, net.minecraft.block.Block, int, int, int,
-	 * net.minecraft.entity.EntityLivingBase)
-	 */
-	@Override
-	public boolean onBlockDestroyed(ItemStack stack, World world, Block block, int x, int y, int z, EntityLivingBase living)
-	{
-		// if(block.getBlockHardness(world, x, y, z) != 0.0D)
-		stack.damageItem(1, living);
-		// this.setEnergy(stack, getEnergy(stack) - this.energyPerBlock);
-		// else
-		// stack.damageItem(1, living);
-		// this.setEnergy(stack, getEnergy(stack) - this.energyPerBlock/2);
-
-		return true;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.minecraft.item.Item#isFull3D()
 	 */
 	@Override
@@ -168,7 +142,7 @@ public class ItemDrill extends ItemCoreDrill
 
 	/**
 	 * Gets the efficiency.
-	 * 
+	 *
 	 * @return the efficiency
 	 */
 	public float getEfficiency()

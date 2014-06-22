@@ -34,7 +34,7 @@ import steamcraft.common.items.ItemCanister;
 // TODO: Auto-generated Javadoc
 /**
  * The Class TileSteamBoiler.
- * 
+ *
  * @author Decebaldecebal
  */
 public class TileSteamBoiler extends TileEntityMachine implements IFluidHandler
@@ -72,7 +72,7 @@ public class TileSteamBoiler extends TileEntityMachine implements IFluidHandler
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * steamcraft.common.tiles.TileEntityMachine#readFromNBT(net.minecraft.nbt
 	 * .NBTTagCompound)
@@ -90,7 +90,7 @@ public class TileSteamBoiler extends TileEntityMachine implements IFluidHandler
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * steamcraft.common.tiles.TileEntityMachine#writeToNBT(net.minecraft.nbt
 	 * .NBTTagCompound)
@@ -108,7 +108,7 @@ public class TileSteamBoiler extends TileEntityMachine implements IFluidHandler
 
 	/**
 	 * Gets the burn time remaining scaled.
-	 * 
+	 *
 	 * @param par1
 	 *            the par1
 	 * @return the burn time remaining scaled
@@ -125,7 +125,7 @@ public class TileSteamBoiler extends TileEntityMachine implements IFluidHandler
 
 	/**
 	 * Checks if is burning.
-	 * 
+	 *
 	 * @return true, if is burning
 	 */
 	public boolean isBurning()
@@ -135,7 +135,7 @@ public class TileSteamBoiler extends TileEntityMachine implements IFluidHandler
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.minecraft.tileentity.TileEntity#updateEntity()
 	 */
 	@Override
@@ -172,7 +172,7 @@ public class TileSteamBoiler extends TileEntityMachine implements IFluidHandler
 			if (inventory[2] != null && inventory[2].getItem() instanceof ItemCanister)
 			{
 				ItemCanister canister = (ItemCanister) inventory[2].getItem();
-				if (steamTank.getFluidAmount() > 0 && canister.getFluidAmount(inventory[2]) != ItemCanister.MAX_STEAM)
+				if (steamTank.getFluidAmount() > steamPerTick && canister.getFluidAmount(inventory[2]) != ItemCanister.MAX_STEAM)
 				{
 					canister.fill(inventory[2], new FluidStack(FluidRegistry.getFluid("steam"), steamPerTick), true);
 					this.steamTank.drain(steamPerTick, true);
@@ -220,7 +220,7 @@ public class TileSteamBoiler extends TileEntityMachine implements IFluidHandler
 
 	/**
 	 * Gets the item burn time.
-	 * 
+	 *
 	 * @return the item burn time
 	 */
 	private int getItemBurnTime()
@@ -235,7 +235,7 @@ public class TileSteamBoiler extends TileEntityMachine implements IFluidHandler
 
 	/**
 	 * Gets the scaled water level.
-	 * 
+	 *
 	 * @param i
 	 *            the i
 	 * @return the scaled water level
@@ -248,7 +248,7 @@ public class TileSteamBoiler extends TileEntityMachine implements IFluidHandler
 
 	/**
 	 * Gets the scaled steam level.
-	 * 
+	 *
 	 * @param i
 	 *            the i
 	 * @return the scaled steam level
@@ -261,7 +261,7 @@ public class TileSteamBoiler extends TileEntityMachine implements IFluidHandler
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * steamcraft.common.tiles.TileEntityMachine#getAccessibleSlotsFromSide(int)
 	 */
@@ -273,7 +273,7 @@ public class TileSteamBoiler extends TileEntityMachine implements IFluidHandler
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see steamcraft.common.tiles.TileEntityMachine#canInsertItem(int,
 	 * net.minecraft.item.ItemStack, int)
 	 */
@@ -293,7 +293,7 @@ public class TileSteamBoiler extends TileEntityMachine implements IFluidHandler
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see steamcraft.common.tiles.TileEntityMachine#canExtractItem(int,
 	 * net.minecraft.item.ItemStack, int)
 	 */
@@ -305,7 +305,7 @@ public class TileSteamBoiler extends TileEntityMachine implements IFluidHandler
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see steamcraft.common.tiles.TileEntityMachine#isItemValidForSlot(int,
 	 * net.minecraft.item.ItemStack)
 	 */
@@ -321,7 +321,7 @@ public class TileSteamBoiler extends TileEntityMachine implements IFluidHandler
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.minecraftforge.fluids.IFluidHandler#fill(net.minecraftforge.common
 	 * .util.ForgeDirection, net.minecraftforge.fluids.FluidStack, boolean)
@@ -339,7 +339,7 @@ public class TileSteamBoiler extends TileEntityMachine implements IFluidHandler
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.minecraftforge.fluids.IFluidHandler#drain(net.minecraftforge.common
 	 * .util.ForgeDirection, net.minecraftforge.fluids.FluidStack, boolean)
@@ -356,7 +356,7 @@ public class TileSteamBoiler extends TileEntityMachine implements IFluidHandler
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.minecraftforge.fluids.IFluidHandler#drain(net.minecraftforge.common
 	 * .util.ForgeDirection, int, boolean)
@@ -369,7 +369,7 @@ public class TileSteamBoiler extends TileEntityMachine implements IFluidHandler
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.minecraftforge.fluids.IFluidHandler#canFill(net.minecraftforge.common
 	 * .util.ForgeDirection, net.minecraftforge.fluids.Fluid)
@@ -386,7 +386,7 @@ public class TileSteamBoiler extends TileEntityMachine implements IFluidHandler
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.minecraftforge.fluids.IFluidHandler#canDrain(net.minecraftforge.common
 	 * .util.ForgeDirection, net.minecraftforge.fluids.Fluid)
@@ -403,7 +403,7 @@ public class TileSteamBoiler extends TileEntityMachine implements IFluidHandler
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.minecraftforge.fluids.IFluidHandler#getTankInfo(net.minecraftforge
 	 * .common.util.ForgeDirection)

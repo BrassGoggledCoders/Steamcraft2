@@ -1,5 +1,5 @@
 /*
- * 
+ *
  */
 package steamcraft.common.items.equipment;
 
@@ -34,9 +34,8 @@ public class ItemModTool extends BaseItem
 {
 
 	/** The Constant steamForRepair. */
-	public static final int steamForRepair = 10; // how much it costs in steam
-													// to repair the tool with
-													// the below durabillity
+	public static final int steamForRepair = 10;
+
 	/** The Constant repairAmount. */
 	public static final int repairAmount = 15;
 
@@ -47,14 +46,14 @@ public class ItemModTool extends BaseItem
 	public float efficiencyOnProperMaterial = 4.0F;
 
 	/** The damage vs entity. */
-	public float damageVsEntity;
+	public static float damageVsEntity;
 
 	/** The tool material. */
 	protected ToolMaterial toolMaterial;
 
 	/**
 	 * Instantiates a new item mod tool.
-	 * 
+	 *
 	 * @param damage
 	 *            the damage
 	 * @param toolMat
@@ -77,7 +76,7 @@ public class ItemModTool extends BaseItem
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * steamcraft.common.items.BaseItem#registerIcons(net.minecraft.client.renderer
 	 * .texture.IIconRegister)
@@ -91,19 +90,7 @@ public class ItemModTool extends BaseItem
 
 	/*
 	 * (non-Javadoc)
-	 * 
-	 * @see net.minecraft.item.Item#isFull3D()
-	 */
-	@Override
-	@SideOnly(Side.CLIENT)
-	public boolean isFull3D()
-	{
-		return true;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.minecraft.item.Item#getDigSpeed(net.minecraft.item.ItemStack,
 	 * net.minecraft.block.Block, int)
 	 */
@@ -128,7 +115,7 @@ public class ItemModTool extends BaseItem
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.minecraft.item.Item#hitEntity(net.minecraft.item.ItemStack,
 	 * net.minecraft.entity.EntityLivingBase,
 	 * net.minecraft.entity.EntityLivingBase)
@@ -136,13 +123,29 @@ public class ItemModTool extends BaseItem
 	@Override
 	public boolean hitEntity(ItemStack itemstack, EntityLivingBase living1, EntityLivingBase living2)
 	{
+		 if(isSteampowered() && living2 instanceof EntityPlayer)
+		 {
+			 consumeSteamFromCanister((EntityPlayer) living2);
+		 }
 		itemstack.damageItem(2, living2);
 		return true;
 	}
 
+	private boolean isSteampowered()
+	{
+		if(toolMaterial == MaterialHelper.TOOL_STEAM)
+		{
+			return true;
+		}
+		else if(toolMaterial == MaterialHelper.DRILL_EMERALD|| toolMaterial == MaterialHelper.DRILL_ETHERIUM || toolMaterial == MaterialHelper.DRILL_GOLD || toolMaterial == MaterialHelper.DRILL_IRON || toolMaterial == MaterialHelper.DRILL_OBSIDIAN || toolMaterial == MaterialHelper.DRILL_STEAM || toolMaterial == MaterialHelper.DRILL_STEAM || toolMaterial == MaterialHelper.DRILL_WOOD)
+			return true;
+		else
+		return false;
+	}
+
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.minecraft.item.Item#getItemEnchantability()
 	 */
 	@Override
@@ -150,10 +153,9 @@ public class ItemModTool extends BaseItem
 	{
 		return this.toolMaterial.getEnchantability();
 	}
-
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.minecraft.item.Item#getIsRepairable(net.minecraft.item.ItemStack,
 	 * net.minecraft.item.ItemStack)
@@ -167,7 +169,7 @@ public class ItemModTool extends BaseItem
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.minecraft.item.Item#getItemAttributeModifiers()
 	 */
 	@SuppressWarnings("all")
@@ -175,37 +177,32 @@ public class ItemModTool extends BaseItem
 	public Multimap getItemAttributeModifiers()
 	{
 		Multimap multimap = super.getItemAttributeModifiers();
-		multimap.put(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName(), new AttributeModifier(field_111210_e, "Tool modifier",
-				this.damageVsEntity, 0));
+		multimap.put(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName(), new AttributeModifier(field_111210_e, "Tool modifier", this.damageVsEntity, 0));
 		return multimap;
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.minecraft.item.Item#onBlockDestroyed(net.minecraft.item.ItemStack,
 	 * net.minecraft.world.World, net.minecraft.block.Block, int, int, int,
 	 * net.minecraft.entity.EntityLivingBase)
 	 */
 	@Override
-	public boolean onBlockDestroyed(ItemStack stack, World p_150894_2_, Block p_150894_3_, int p_150894_4_, int p_150894_5_, int p_150894_6_,
-			EntityLivingBase living)
+	public boolean onBlockDestroyed(ItemStack stack, World p_150894_2_, Block p_150894_3_, int p_150894_4_, int p_150894_5_, int p_150894_6_, EntityLivingBase living)
 	{
-		/*
-		 * if(toolMaterial == MaterialHelper.TOOL_STEAM) {
-		 * System.out.println(efficiencyOnProperMaterial - (((float)
-		 * stack.getItemDamage()) * 11 / 320)); //int itemDamage =
-		 * stack.getItemDamage(); }
-		 */
-
+		 if(isSteampowered() && living instanceof EntityPlayer)
+		 {
+			 consumeSteamFromCanister((EntityPlayer) living);
+		 }
 		stack.damageItem(1, living);
 		return true;
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * boilerplate.common.RootItem#addInformation(net.minecraft.item.ItemStack,
 	 * net.minecraft.entity.player.EntityPlayer, java.util.List, boolean)
@@ -228,42 +225,14 @@ public class ItemModTool extends BaseItem
 		}
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * net.minecraft.item.Item#onItemRightClick(net.minecraft.item.ItemStack,
-	 * net.minecraft.world.World, net.minecraft.entity.player.EntityPlayer)
-	 */
-	@SuppressWarnings("all")
-	@Override
-	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
-	{
-		if (!world.isRemote)
-		{
-			if (toolMaterial == MaterialHelper.TOOL_STEAM)
-			{
-				int i = 0;
-
-				while (stack.getItemDamage() - repairAmount >= 0 && canConsumeSteamFromCanister(player))
-				{
-					stack.setItemDamage(stack.getItemDamage() - repairAmount);
-					i++;
-				}
-			}
-		}
-
-		return stack;
-	}
-
 	/**
 	 * Can consume steam from canister.
-	 * 
+	 *
 	 * @param player
 	 *            the player
 	 * @return true, if successful
 	 */
-	protected boolean canConsumeSteamFromCanister(EntityPlayer player)
+	protected boolean consumeSteamFromCanister(EntityPlayer player)
 	{
 		int i = 0;
 		while (i < 36)
