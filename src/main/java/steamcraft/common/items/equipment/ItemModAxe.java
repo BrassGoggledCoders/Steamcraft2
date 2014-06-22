@@ -1,5 +1,5 @@
 /*
- * 
+ *
  */
 package steamcraft.common.items.equipment;
 
@@ -7,6 +7,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -21,7 +22,7 @@ public class ItemModAxe extends ItemModTool
 
 	/**
 	 * Instantiates a new item mod axe.
-	 * 
+	 *
 	 * @param toolMat
 	 *            the tool mat
 	 */
@@ -32,7 +33,7 @@ public class ItemModAxe extends ItemModTool
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * steamcraft.common.items.equipment.ItemModTool#getDigSpeed(net.minecraft
 	 * .item.ItemStack, net.minecraft.block.Block, int)
@@ -40,8 +41,19 @@ public class ItemModAxe extends ItemModTool
 	@Override
 	public float getDigSpeed(ItemStack stack, Block block, int metadata)
 	{
-		return block != null
-				&& (block.getMaterial() == Material.wood || block.getMaterial() == Material.plants || block.getMaterial() == Material.vine) ? this.efficiencyOnProperMaterial
-				: super.getDigSpeed(stack, block, metadata);
+		if (this.isSteampowered())
+		{
+			NBTTagCompound tag = stack.getTagCompound();
+			if(tag.getBoolean("hasCanister"))
+			return (4.0F);
+			else return 0.1F;
+		}
+		if (block != null && (block.getMaterial() == Material.wood || block.getMaterial() == Material.plants || block.getMaterial() == Material.vine))
+		{
+			super.getDigSpeed(stack, block, metadata);
+		}
+
+		return this.efficiencyOnProperMaterial;
 	}
+
 }

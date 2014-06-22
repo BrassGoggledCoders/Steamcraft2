@@ -120,9 +120,14 @@ public class ItemModTool extends BaseItem
 	{
 		 if(isSteampowered() && living2 instanceof EntityPlayer)
 		 {
-			 //if(hasCanister((EntityPlayer) living2))
+			 if(hasCanister((EntityPlayer) living2))
 			 consumeSteamFromCanister((EntityPlayer) living2);
 		 }
+		if(this instanceof ItemModSword)
+		{
+			itemstack.damageItem(1, living2);
+		}
+		else
 		itemstack.damageItem(2, living2);
 		return true;
 	}

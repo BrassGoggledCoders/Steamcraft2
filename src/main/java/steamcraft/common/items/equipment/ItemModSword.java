@@ -1,5 +1,5 @@
 /*
- * 
+ *
  */
 package steamcraft.common.items.equipment;
 
@@ -13,6 +13,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
 import com.google.common.collect.Multimap;
@@ -27,12 +28,9 @@ public class ItemModSword extends ItemModTool
 	/** The tool material. */
 	protected ToolMaterial toolMaterial;
 
-	/** The weapon damage. */
-	private float weaponDamage;
-
 	/**
 	 * Instantiates a new item mod sword.
-	 * 
+	 *
 	 * @param toolMat
 	 *            the tool mat
 	 */
@@ -46,7 +44,7 @@ public class ItemModSword extends ItemModTool
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * steamcraft.common.items.equipment.ItemModTool#getDigSpeed(net.minecraft
 	 * .item.ItemStack, net.minecraft.block.Block, int)
@@ -68,24 +66,7 @@ public class ItemModSword extends ItemModTool
 
 	/*
 	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * steamcraft.common.items.equipment.ItemModTool#hitEntity(net.minecraft
-	 * .item.ItemStack, net.minecraft.entity.EntityLivingBase,
-	 * net.minecraft.entity.EntityLivingBase)
-	 */
-	@Override
-	public boolean hitEntity(ItemStack stack, EntityLivingBase living1, EntityLivingBase living2)
-	{
-		int itemDamage = stack.getItemDamage();
-		System.out.println(weaponDamage - Math.round(itemDamage * 10 / 320));
-		stack.damageItem(1, living2);
-		return true;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * steamcraft.common.items.equipment.ItemModTool#onBlockDestroyed(net.minecraft
 	 * .item.ItemStack, net.minecraft.world.World, net.minecraft.block.Block,
@@ -104,7 +85,7 @@ public class ItemModSword extends ItemModTool
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.minecraft.item.Item#getItemUseAction(net.minecraft.item.ItemStack)
 	 */
@@ -116,7 +97,7 @@ public class ItemModSword extends ItemModTool
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.minecraft.item.Item#getMaxItemUseDuration(net.minecraft.item.ItemStack
 	 * )
@@ -129,7 +110,7 @@ public class ItemModSword extends ItemModTool
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * steamcraft.common.items.equipment.ItemModTool#onItemRightClick(net.minecraft
 	 * .item.ItemStack, net.minecraft.world.World,
@@ -144,7 +125,7 @@ public class ItemModSword extends ItemModTool
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.minecraft.item.Item#canHarvestBlock(net.minecraft.block.Block,
 	 * net.minecraft.item.ItemStack)
 	 */
@@ -156,7 +137,7 @@ public class ItemModSword extends ItemModTool
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * steamcraft.common.items.equipment.ItemModTool#getItemEnchantability()
 	 */
@@ -168,7 +149,7 @@ public class ItemModSword extends ItemModTool
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * steamcraft.common.items.equipment.ItemModTool#getIsRepairable(net.minecraft
 	 * .item.ItemStack, net.minecraft.item.ItemStack)
@@ -182,17 +163,33 @@ public class ItemModSword extends ItemModTool
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * steamcraft.common.items.equipment.ItemModTool#getItemAttributeModifiers()
 	 */
 	@SuppressWarnings("all")
 	@Override
-	public Multimap getItemAttributeModifiers()
+	public Multimap getAttributeModifiers(ItemStack stack)
 	{
 		Multimap multimap = super.getItemAttributeModifiers();
-		multimap.put(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName(), new AttributeModifier(field_111210_e, "Weapon modifier",
-				this.weaponDamage, 0));
+		multimap.put(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName(), new AttributeModifier(field_111210_e, "Weapon Modifier", getWeaponDamage(toolMaterial, stack), 0));
 		return multimap;
+	}
+
+	private double getWeaponDamage(ToolMaterial mat, ItemStack stack)
+	{
+		if (this.isSteampowered())
+		{
+		NBTTagCompound tag = stack.getTagCompound();
+		if(tag.getBoolean("hasCanister"))
+		{
+			return toolMaterial.getDamageVsEntity();
+		}
+		else return 1D;
+		}
+		else
+		{
+			return toolMaterial.getDamageVsEntity();
+		}
 	}
 }

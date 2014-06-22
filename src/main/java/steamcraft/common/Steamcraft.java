@@ -29,6 +29,7 @@ import steamcraft.common.lib.CommandSteamcraft;
 import steamcraft.common.lib.CreativeTabSteamcraft;
 import steamcraft.common.lib.LibInfo;
 import steamcraft.common.lib.LoggerSteamcraft;
+import steamcraft.common.lib.VillageCreationHandler;
 import steamcraft.common.lib.events.EventHandlerSC2;
 import steamcraft.common.lib.world.SteamcraftWorldGenerator;
 import cpw.mods.fml.common.FMLCommonHandler;
@@ -46,12 +47,13 @@ import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
+import cpw.mods.fml.common.registry.VillagerRegistry;
 import cpw.mods.fml.relauncher.Side;
 
 // TODO: Auto-generated Javadoc
 /**
  * The Class Steamcraft.
- * 
+ *
  * @author Surseance (Johnny Eatmon)
  */
 @Mod(modid = LibInfo.ID, name = LibInfo.NAME, version = LibInfo.VERSION, dependencies = "required-after:boilerplate")
@@ -82,7 +84,7 @@ public class Steamcraft
 
 	/**
 	 * Pre init.
-	 * 
+	 *
 	 * @param event
 	 *            the event
 	 */
@@ -127,11 +129,12 @@ public class Steamcraft
 		proxy.registerRenderers();
 
 		NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
+		//VillagerRegistry.instance().registerVillageCreationHandler(new VillageCreationHandler());
 	}
 
 	/**
 	 * Inits the.
-	 * 
+	 *
 	 * @param event
 	 *            the event
 	 */
@@ -147,7 +150,7 @@ public class Steamcraft
 
 	/**
 	 * Post init.
-	 * 
+	 *
 	 * @param event
 	 *            the event
 	 */
@@ -169,7 +172,7 @@ public class Steamcraft
 
 	/**
 	 * Server starting.
-	 * 
+	 *
 	 * @param event
 	 *            the event
 	 */
