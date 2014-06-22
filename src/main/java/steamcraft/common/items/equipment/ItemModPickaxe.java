@@ -1,5 +1,5 @@
 /*
- * 
+ *
  */
 package steamcraft.common.items.equipment;
 
@@ -7,6 +7,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import steamcraft.common.lib.MaterialHelper;
 
 // TODO: Auto-generated Javadoc
@@ -24,7 +25,7 @@ public class ItemModPickaxe extends ItemModTool
 
 	/**
 	 * Instantiates a new item mod pickaxe.
-	 * 
+	 *
 	 * @param toolMat
 	 *            the tool mat
 	 */
@@ -35,7 +36,7 @@ public class ItemModPickaxe extends ItemModTool
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.minecraft.item.Item#canHarvestBlock(net.minecraft.block.Block,
 	 * net.minecraft.item.ItemStack)
 	 */
@@ -55,9 +56,22 @@ public class ItemModPickaxe extends ItemModTool
 						: this.toolMaterial.getHarvestLevel() >= 2);
 	}
 
+
+	protected boolean isSteampowered()
+	{
+		if(toolMaterial == MaterialHelper.TOOL_STEAM)
+		{
+			return true;
+		}
+		else if(toolMaterial == MaterialHelper.DRILL_EMERALD|| toolMaterial == MaterialHelper.DRILL_ETHERIUM || toolMaterial == MaterialHelper.DRILL_GOLD || toolMaterial == MaterialHelper.DRILL_IRON || toolMaterial == MaterialHelper.DRILL_OBSIDIAN || toolMaterial == MaterialHelper.DRILL_STEAM || toolMaterial == MaterialHelper.DRILL_STEAM || toolMaterial == MaterialHelper.DRILL_WOOD)
+			return true;
+		else
+		return false;
+	}
+
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * steamcraft.common.items.equipment.ItemModTool#getDigSpeed(net.minecraft
 	 * .item.ItemStack, net.minecraft.block.Block, int)
@@ -65,9 +79,12 @@ public class ItemModPickaxe extends ItemModTool
 	@Override
 	public float getDigSpeed(ItemStack stack, Block block, int metadata)
 	{
-		if (this.toolMaterial == MaterialHelper.TOOL_STEAM)
+		if (this.isSteampowered())
 		{
-			return (4.0F - (((float) stack.getItemDamage()) * 11 / 320));
+			NBTTagCompound tag = stack.getTagCompound();
+			if(tag.getBoolean("hasCanister"))
+			return (4.0F);
+			else return 0.1F;
 		}
 		if (block != null && (block.getMaterial() == Material.iron || block.getMaterial() == Material.anvil || block.getMaterial() == Material.rock))
 		{

@@ -98,21 +98,13 @@ public class ItemModTool extends BaseItem
 	@Override
 	public float getDigSpeed(ItemStack stack, Block block, int metadata)
 	{
-		//if(canister && isSteampowered())
-		//{
-		for (int i = 0; i < blocksEffectiveAgainst.length; i++)
-		{
-			if (blocksEffectiveAgainst[i] == block)
+			for (int i = 0; i < blocksEffectiveAgainst.length; i++)
 			{
-				if (this.toolMaterial == MaterialHelper.TOOL_STEAM)
+				if (blocksEffectiveAgainst[i] == block)
 				{
-					return (efficiencyOnProperMaterial - (((float) stack.getItemDamage()) * 11 / 320));
+					return efficiencyOnProperMaterial;
 				}
-
-				return efficiencyOnProperMaterial;
 			}
-		}
-		//}
 		return 0.1F;
 	}
 
@@ -292,5 +284,10 @@ public class ItemModTool extends BaseItem
 			tag.setBoolean("hasCanister", false);
 		itemStack.setTagCompound(tag);
 		}
+		/*if(tag.getBoolean("hasCanister"))
+		{
+			efficiencyOnProperMaterial = 4.0F;
+		}
+		else efficiencyOnProperMaterial = 0F;*/
 	}
 }
