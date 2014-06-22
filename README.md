@@ -23,8 +23,7 @@ Also, before you commit any changes, you must contact me first to discuss detail
 Developers & Credits:
 =====================
 _Coders:_
-* Surseance: leader(ish), programmer; speciality: uhhh...
-* warlordjones: author of the mod Steampunkery (which was merged into SC2), programmer; speciality: fancy, items/vanity system and breaking things
+* warlordjones: leader(ish), author of the mod Steampunkery (which was merged into SC2), programmer; speciality: fancy, items/vanity system and breaking things
 * decebaldecebal: programmer; speciality: complicated tile entities, power systems, GUIs
 
 _Artists:_
@@ -37,8 +36,11 @@ _Testers/Other:_
 * Rongmario: support, possible alpha/beta tester (I had no time to commit, come on :P)
 * seanvanpelt2: alpha/beta tester
 
+_Ex-Coders:_
+* Surseance: ex-leader(ish), programmer; speciality: uhhh...
+
 ***
 
-Email: jmaeatmon@gmail.com <br/>
-Twitter: www.twitter.com/surseance <br/>
-Skype: johnny.eatmon <br/>
+Email: warlordjones@gmail.com <br/>
+Twitter: www.twitter.com/jacknife98 <br/>
+Skype: arona.jones <br/>
