@@ -6,7 +6,8 @@ package steamcraft.common;
 /**
  * The Class KeyInputHandler.
  */
-public class KeyInputHandler {
+public class KeyInputHandler
+{
 	/*
 	 * @SubscribeEvent public void onKeyInput(KeyInputEvent event) {
 	 * EntityPlayer player = FMLClientHandler.instance().getClient().thePlayer;

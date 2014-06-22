@@ -33,7 +33,8 @@ import cpw.mods.fml.relauncher.SideOnly;
  * @author warlordjones
  */
 @SideOnly(Side.CLIENT)
-public class GuiVanity extends GuiContainer {
+public class GuiVanity extends GuiContainer
+{
 	/**
 	 * x size of the inventory window in pixels. Defined as float, passed as int
 	 */
@@ -48,8 +49,7 @@ public class GuiVanity extends GuiContainer {
 	private float ySize_lo;
 
 	/** The Constant iconLocation. */
-	private static final ResourceLocation iconLocation = new ResourceLocation(
-			LibInfo.PREFIX + "textures/gui/vanity.png");
+	private static final ResourceLocation iconLocation = new ResourceLocation(LibInfo.PREFIX + "textures/gui/vanity.png");
 
 	/** The inventory. */
 	private final InventoryVanity inventory;
@@ -64,9 +64,8 @@ public class GuiVanity extends GuiContainer {
 	 * @param inventoryCustom
 	 *            the inventory custom
 	 */
-	public GuiVanity(final EntityPlayer player,
-			final InventoryPlayer inventoryPlayer,
-			final InventoryVanity inventoryCustom) {
+	public GuiVanity(final EntityPlayer player, final InventoryPlayer inventoryPlayer, final InventoryVanity inventoryCustom)
+	{
 		super(new ContainerVanity(player, inventoryPlayer, inventoryCustom));
 		inventory = inventoryCustom;
 	}
@@ -82,7 +81,8 @@ public class GuiVanity extends GuiContainer {
 	 *            the scale
 	 */
 	@Override
-	public void drawScreen(final int x, final int y, final float scale) {
+	public void drawScreen(final int x, final int y, final float scale)
+	{
 		super.drawScreen(x, y, scale);
 		xSize_lo = x;
 		ySize_lo = y;
@@ -98,14 +98,15 @@ public class GuiVanity extends GuiContainer {
 	 *            the y
 	 */
 	@Override
-	protected void drawGuiContainerForegroundLayer(final int x, final int y) {
+	protected void drawGuiContainerForegroundLayer(final int x, final int y)
+	{
 		final String s = inventory.getInventoryName();
-		fontRendererObj.drawString(s, xSize - fontRendererObj.getStringWidth(s)
-				- 8, 5, 4210752);
-		fontRendererObj.drawString("container.inventory", 120, ySize - 92,
-				4210752); // TODO: Something happened here
-		fontRendererObj.drawString("Thanks, coolAlias!", xSize + 35,
-				ySize + 34, 2000);
+		fontRendererObj.drawString(s, xSize - fontRendererObj.getStringWidth(s) - 8, 5, 4210752);
+		fontRendererObj.drawString("container.inventory", 120, ySize - 92, 4210752); // TODO:
+																						// Something
+																						// happened
+																						// here
+		fontRendererObj.drawString("Thanks, coolAlias!", xSize + 35, ySize + 34, 2000);
 	}
 
 	/**
@@ -120,8 +121,8 @@ public class GuiVanity extends GuiContainer {
 	 *            the par3
 	 */
 	@Override
-	protected void drawGuiContainerBackgroundLayer(final float scale,
-			final int par2, final int par3) {
+	protected void drawGuiContainerBackgroundLayer(final float scale, final int par2, final int par3)
+	{
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 		mc.getTextureManager().bindTexture(iconLocation);
 		final int x = (width - xSize) / 2;

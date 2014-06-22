@@ -29,7 +29,8 @@ import cpw.mods.fml.common.IWorldGenerator;
  * 
  * @authors Surseance & warlordjones
  */
-public class ConfigWorldGen implements IWorldGenerator {
+public class ConfigWorldGen implements IWorldGenerator
+{
 
 	/*
 	 * (non-Javadoc)
@@ -39,24 +40,28 @@ public class ConfigWorldGen implements IWorldGenerator {
 	 * net.minecraft.world.chunk.IChunkProvider)
 	 */
 	@Override
-	public void generate(Random random, int chunkX, int chunkZ, World world,
-			IChunkProvider generator, IChunkProvider chunk) {
+	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider generator, IChunkProvider chunk)
+	{
 		int blockChunkX = chunkX * 16;
 		int blockChunkZ = chunkZ * 16;
 
-		switch (world.provider.dimensionId) {
+		switch (world.provider.dimensionId)
+		{
 		case -1:
-			if (Config.netherGenerationEnabled) {
+			if (Config.netherGenerationEnabled)
+			{
 				generateNether(world, random, blockChunkX, blockChunkZ);
 				break;
 			}
 		case 0:
-			if (Config.overworldGenerationEnabled) {
+			if (Config.overworldGenerationEnabled)
+			{
 				generateSurface(world, random, blockChunkX, blockChunkZ);
 			}
 			break;
 		case 1:
-			if (Config.endGenerationEnabled) {
+			if (Config.endGenerationEnabled)
+			{
 				generateEnd(world, random, blockChunkX, blockChunkZ);
 				break;
 			}
@@ -76,107 +81,104 @@ public class ConfigWorldGen implements IWorldGenerator {
 	 * @param chunkZ
 	 *            the chunk z
 	 */
-	private void generateSurface(World world, Random random, int chunkX,
-			int chunkZ) {
+	private void generateSurface(World world, Random random, int chunkX, int chunkZ)
+	{
 		if (Config.aluminumOreGenEnabled)
-			generateOre(world, random, chunkX, chunkZ, Config.aluminumChance,
-					Config.aluminumHeight, 6, ConfigBlocks.blockCustomOre, 0,
-					Blocks.stone);
+			generateOre(world, random, chunkX, chunkZ, Config.aluminumChance, Config.aluminumHeight, 6, ConfigBlocks.blockCustomOre, 0, Blocks.stone);
 		if (Config.copperOreGenEnabled)
-			generateOre(world, random, chunkX, chunkZ, Config.copperChance,
-					Config.copperHeight, 4, ConfigBlocks.blockCustomOre, 1,
-					Blocks.stone);
+			generateOre(world, random, chunkX, chunkZ, Config.copperChance, Config.copperHeight, 4, ConfigBlocks.blockCustomOre, 1, Blocks.stone);
 		if (Config.tinOreGenEnabled)
-			generateOre(world, random, chunkX, chunkZ, Config.tinChance,
-					Config.tinHeight, 4, ConfigBlocks.blockCustomOre, 2,
-					Blocks.stone);
+			generateOre(world, random, chunkX, chunkZ, Config.tinChance, Config.tinHeight, 4, ConfigBlocks.blockCustomOre, 2, Blocks.stone);
 		if (Config.zincOreGenEnabled)
-			generateOre(world, random, chunkX, chunkZ, Config.zincChance,
-					Config.zincHeight, 3, ConfigBlocks.blockCustomOre, 3,
-					Blocks.stone);
+			generateOre(world, random, chunkX, chunkZ, Config.zincChance, Config.zincHeight, 3, ConfigBlocks.blockCustomOre, 3, Blocks.stone);
 		if (Config.uraniumOreGenEnabled)
-			generateOre(world, random, chunkX, chunkZ, Config.uraniumChance,
-					Config.uraniumHeight, 1, ConfigBlocks.blockCustomOre, 4,
-					Blocks.stone);
+			generateOre(world, random, chunkX, chunkZ, Config.uraniumChance, Config.uraniumHeight, 1, ConfigBlocks.blockCustomOre, 4, Blocks.stone);
 		if (Config.brimstoneOreGenEnabled)
-			generateOre(world, random, chunkX, chunkZ, Config.brimstoneChance,
-					Config.brimstoneHeight, 4, ConfigBlocks.blockCustomOre, 5,
+			generateOre(world, random, chunkX, chunkZ, Config.brimstoneChance, Config.brimstoneHeight, 4, ConfigBlocks.blockCustomOre, 5,
 					Blocks.stone);
 		if (Config.phosphateOreGenEnabled)
-			generateOre(world, random, chunkX, chunkZ, Config.phosphateChance,
-					Config.phosphateHeight, 3, ConfigBlocks.blockCustomOre, 6,
+			generateOre(world, random, chunkX, chunkZ, Config.phosphateChance, Config.phosphateHeight, 3, ConfigBlocks.blockCustomOre, 6,
 					Blocks.stone);
-		if (Config.slateGenEnabled) {
-			generateOre(world, random, chunkX, chunkZ, Config.slateChance,
-					Config.slateHeight, 15, ConfigBlocks.blockSlate, 0,
-					Blocks.stone);
-			generateOre(world, random, chunkX, chunkZ, Config.slateChance,
-					Config.slateHeight, 15, ConfigBlocks.blockSlate, 1,
-					Blocks.stone);
-			generateOre(world, random, chunkX, chunkZ, Config.slateChance,
-					Config.slateHeight, 15, ConfigBlocks.blockSlate, 2,
-					Blocks.stone);
+		if (Config.slateGenEnabled)
+		{
+			generateOre(world, random, chunkX, chunkZ, Config.slateChance, Config.slateHeight, 15, ConfigBlocks.blockSlate, 0, Blocks.stone);
+			generateOre(world, random, chunkX, chunkZ, Config.slateChance, Config.slateHeight, 15, ConfigBlocks.blockSlate, 1, Blocks.stone);
+			generateOre(world, random, chunkX, chunkZ, Config.slateChance, Config.slateHeight, 15, ConfigBlocks.blockSlate, 2, Blocks.stone);
 		}
 	}
 
 	/**
 	 * Generate ore.
-	 *
-	 * @param world the world
-	 * @param random the random
-	 * @param chunkX the chunk x
-	 * @param chunkZ the chunk z
-	 * @param chance the chance
-	 * @param height the height
-	 * @param blocks the blocks
-	 * @param ore the ore
-	 * @param meta the meta
-	 * @param blockToGenIn the block to gen in
+	 * 
+	 * @param world
+	 *            the world
+	 * @param random
+	 *            the random
+	 * @param chunkX
+	 *            the chunk x
+	 * @param chunkZ
+	 *            the chunk z
+	 * @param chance
+	 *            the chance
+	 * @param height
+	 *            the height
+	 * @param blocks
+	 *            the blocks
+	 * @param ore
+	 *            the ore
+	 * @param meta
+	 *            the meta
+	 * @param blockToGenIn
+	 *            the block to gen in
 	 */
-	private void generateOre(World world, Random random, int chunkX,
-			int chunkZ, int chance, int height, int blocks, Block ore,
-			int meta, Block blockToGenIn) {
-		for (int i = 0; i < chance; i++) {
+	private void generateOre(World world, Random random, int chunkX, int chunkZ, int chance, int height, int blocks, Block ore, int meta,
+			Block blockToGenIn)
+	{
+		for (int i = 0; i < chance; i++)
+		{
 			int oreXCoord = chunkX + random.nextInt(16);
 			int oreYCoord = random.nextInt(height);
 			int oreZCoord = chunkZ + random.nextInt(16);
 
-			new WorldGenMinable(ore, meta, random.nextInt(blocks), blockToGenIn)
-					.generate(world, random, oreXCoord, oreYCoord, oreZCoord);
+			new WorldGenMinable(ore, meta, random.nextInt(blocks), blockToGenIn).generate(world, random, oreXCoord, oreYCoord, oreZCoord);
 		}
 	}
 
 	/**
 	 * Generate nether.
-	 *
-	 * @param world the world
-	 * @param random the random
-	 * @param chunkX the chunk x
-	 * @param chunkZ the chunk z
+	 * 
+	 * @param world
+	 *            the world
+	 * @param random
+	 *            the random
+	 * @param chunkX
+	 *            the chunk x
+	 * @param chunkZ
+	 *            the chunk z
 	 */
-	private void generateNether(World world, Random random, int chunkX,
-			int chunkZ) {
+	private void generateNether(World world, Random random, int chunkX, int chunkZ)
+	{
 		if (Config.netherEtheriumCrystalGenEnabled)
-			generateOre(world, random, chunkX, chunkZ,
-					Config.netherEtheriumCrystalChance,
-					Config.netherEtheriumCrystalHeight, 15,
+			generateOre(world, random, chunkX, chunkZ, Config.netherEtheriumCrystalChance, Config.netherEtheriumCrystalHeight, 15,
 					ConfigBlocks.blockCrystal, 0, Blocks.netherrack);
 	}
 
 	/**
 	 * Generate end.
-	 *
-	 * @param world the world
-	 * @param random the random
-	 * @param chunkX the chunk x
-	 * @param chunkZ the chunk z
+	 * 
+	 * @param world
+	 *            the world
+	 * @param random
+	 *            the random
+	 * @param chunkX
+	 *            the chunk x
+	 * @param chunkZ
+	 *            the chunk z
 	 */
-	private void generateEnd(final World world, final Random random,
-			final int chunkX, final int chunkZ) {
+	private void generateEnd(final World world, final Random random, final int chunkX, final int chunkZ)
+	{
 		if (Config.endEtheriumCrystalGenEnabled)
-			generateOre(world, random, chunkX, chunkZ,
-					Config.endEtheriumCrystalChance,
-					Config.endEtheriumCrystalHeight, 15,
+			generateOre(world, random, chunkX, chunkZ, Config.endEtheriumCrystalChance, Config.endEtheriumCrystalHeight, 15,
 					ConfigBlocks.blockCrystal, 0, Blocks.end_stone);
 	}
 }

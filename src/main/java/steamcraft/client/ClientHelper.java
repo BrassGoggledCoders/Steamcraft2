@@ -32,32 +32,36 @@ import cpw.mods.fml.relauncher.SideOnly;
  * @authors Surseance & decabeldecabel
  *
  */
-public class ClientHelper {
-	
+public class ClientHelper
+{
+
 	/**
 	 * Mc.
-	 *
+	 * 
 	 * @return the minecraft
 	 */
-	public static Minecraft mc() {
+	public static Minecraft mc()
+	{
 		return Minecraft.getMinecraft();
 	}
 
 	/**
 	 * Font renderer.
-	 *
+	 * 
 	 * @return the font renderer
 	 */
-	public static FontRenderer fontRenderer() {
+	public static FontRenderer fontRenderer()
+	{
 		return mc().fontRenderer;
 	}
 
 	/**
 	 * Client player.
-	 *
+	 * 
 	 * @return the entity client player mp
 	 */
-	public static EntityClientPlayerMP clientPlayer() {
+	public static EntityClientPlayerMP clientPlayer()
+	{
 		return mc().thePlayer;
 	}
 }

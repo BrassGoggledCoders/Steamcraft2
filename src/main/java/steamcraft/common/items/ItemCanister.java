@@ -29,116 +29,148 @@ import cpw.mods.fml.relauncher.SideOnly;
 // TODO: Auto-generated Javadoc
 /**
  * The Class ItemCanister.
- *
+ * 
  * @author Decebaldecebal
  */
-public class ItemCanister extends BaseItem implements IFluidContainerItem {
-	
+public class ItemCanister extends BaseItem implements IFluidContainerItem
+{
+
 	/** The Constant MAX_STEAM. */
 	public static final int MAX_STEAM = 1000;
-	
+
 	/** The Constant MAX_STEAM_RATE. */
 	public static final int MAX_STEAM_RATE = 20; // Maximum amount of steam that
 													// can be inserted into this
 													// canister per tick
 
 	/**
-													 * Instantiates a new item canister.
-													 */
-													public ItemCanister() {
+	 * Instantiates a new item canister.
+	 */
+	public ItemCanister()
+	{
 		super();
 		setMaxStackSize(1);
 	}
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.item.Item#getSubItems(net.minecraft.item.Item, net.minecraft.creativetab.CreativeTabs, java.util.List)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.minecraft.item.Item#getSubItems(net.minecraft.item.Item,
+	 * net.minecraft.creativetab.CreativeTabs, java.util.List)
 	 */
 	@SuppressWarnings("all")
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void getSubItems(Item item, CreativeTabs tab, List l) {
+	public void getSubItems(Item item, CreativeTabs tab, List l)
+	{
 		l.add(new ItemStack(ConfigItems.itemCanisterSteam, 1, 0));
 	}
 
-	/* (non-Javadoc)
-	 * @see boilerplate.common.RootItem#addInformation(net.minecraft.item.ItemStack, net.minecraft.entity.player.EntityPlayer, java.util.List, boolean)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * boilerplate.common.RootItem#addInformation(net.minecraft.item.ItemStack,
+	 * net.minecraft.entity.player.EntityPlayer, java.util.List, boolean)
 	 */
 	@SuppressWarnings("all")
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List list,
-			boolean flag) {
+	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean flag)
+	{
 		FluidStack fluid = this.getFluid(stack);
-		if (fluid != null && fluid.amount > 0) {
+		if (fluid != null && fluid.amount > 0)
+		{
 			String str = fluid.getFluid().getName();
 			int amount = fluid.amount;
 
 			list.add("Holding " + amount + "mB of " + str);
 			list.add("(That's about " + amount / 100 + " buckets)");
-		} else {
+		}
+		else
+		{
 			list.add("Empty");
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see net.minecraftforge.fluids.IFluidContainerItem#getFluid(net.minecraft.item.ItemStack)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * net.minecraftforge.fluids.IFluidContainerItem#getFluid(net.minecraft.
+	 * item.ItemStack)
 	 */
 	@Override
-	public FluidStack getFluid(ItemStack container) {
-		if (container.stackTagCompound == null
-				|| !container.stackTagCompound.hasKey("Fluid")) {
+	public FluidStack getFluid(ItemStack container)
+	{
+		if (container.stackTagCompound == null || !container.stackTagCompound.hasKey("Fluid"))
+		{
 			return null;
 		}
-		return FluidStack.loadFluidStackFromNBT(container.stackTagCompound
-				.getCompoundTag("Fluid"));
+		return FluidStack.loadFluidStackFromNBT(container.stackTagCompound.getCompoundTag("Fluid"));
 	}
 
-	/* (non-Javadoc)
-	 * @see net.minecraftforge.fluids.IFluidContainerItem#getCapacity(net.minecraft.item.ItemStack)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * net.minecraftforge.fluids.IFluidContainerItem#getCapacity(net.minecraft
+	 * .item.ItemStack)
 	 */
 	@Override
-	public int getCapacity(ItemStack container) {
+	public int getCapacity(ItemStack container)
+	{
 		return MAX_STEAM;
 	}
 
-	/* (non-Javadoc)
-	 * @see net.minecraftforge.fluids.IFluidContainerItem#fill(net.minecraft.item.ItemStack, net.minecraftforge.fluids.FluidStack, boolean)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * net.minecraftforge.fluids.IFluidContainerItem#fill(net.minecraft.item
+	 * .ItemStack, net.minecraftforge.fluids.FluidStack, boolean)
 	 */
 	@Override
-	public int fill(ItemStack container, FluidStack resource, boolean doFill) {
-		if (resource == null) {
+	public int fill(ItemStack container, FluidStack resource, boolean doFill)
+	{
+		if (resource == null)
+		{
 			return 0;
 		}
 
-		if (!doFill) {
-			if (container.stackTagCompound == null
-					|| !container.stackTagCompound.hasKey("Fluid")) {
+		if (!doFill)
+		{
+			if (container.stackTagCompound == null || !container.stackTagCompound.hasKey("Fluid"))
+			{
 				return Math.min(MAX_STEAM, resource.amount);
 			}
 
-			FluidStack stack = FluidStack
-					.loadFluidStackFromNBT(container.stackTagCompound
-							.getCompoundTag("Fluid"));
+			FluidStack stack = FluidStack.loadFluidStackFromNBT(container.stackTagCompound.getCompoundTag("Fluid"));
 
-			if (stack == null) {
+			if (stack == null)
+			{
 				return Math.min(MAX_STEAM, resource.amount);
 			}
 
-			if (!stack.isFluidEqual(resource)) {
+			if (!stack.isFluidEqual(resource))
+			{
 				return 0;
 			}
 
 			return Math.min(MAX_STEAM - stack.amount, resource.amount);
 		}
 
-		if (container.stackTagCompound == null) {
+		if (container.stackTagCompound == null)
+		{
 			container.stackTagCompound = new NBTTagCompound();
 		}
 
-		if (!container.stackTagCompound.hasKey("Fluid")) {
+		if (!container.stackTagCompound.hasKey("Fluid"))
+		{
 			NBTTagCompound fluidTag = resource.writeToNBT(new NBTTagCompound());
 
-			if (MAX_STEAM < resource.amount) {
+			if (MAX_STEAM < resource.amount)
+			{
 				fluidTag.setInteger("Amount", MAX_STEAM);
 				container.stackTagCompound.setTag("Fluid", fluidTag);
 				return MAX_STEAM;
@@ -148,19 +180,22 @@ public class ItemCanister extends BaseItem implements IFluidContainerItem {
 			return resource.amount;
 		}
 
-		NBTTagCompound fluidTag = container.stackTagCompound
-				.getCompoundTag("Fluid");
+		NBTTagCompound fluidTag = container.stackTagCompound.getCompoundTag("Fluid");
 		FluidStack stack = FluidStack.loadFluidStackFromNBT(fluidTag);
 
-		if (!stack.isFluidEqual(resource)) {
+		if (!stack.isFluidEqual(resource))
+		{
 			return 0;
 		}
 
 		int filled = MAX_STEAM - stack.amount;
-		if (resource.amount < filled) {
+		if (resource.amount < filled)
+		{
 			stack.amount += resource.amount;
 			filled = resource.amount;
-		} else {
+		}
+		else
+		{
 			stack.amount = MAX_STEAM;
 		}
 
@@ -168,38 +203,43 @@ public class ItemCanister extends BaseItem implements IFluidContainerItem {
 		return filled;
 	}
 
-	/* (non-Javadoc)
-	 * @see net.minecraftforge.fluids.IFluidContainerItem#drain(net.minecraft.item.ItemStack, int, boolean)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * net.minecraftforge.fluids.IFluidContainerItem#drain(net.minecraft.item
+	 * .ItemStack, int, boolean)
 	 */
 	@Override
-	public FluidStack drain(ItemStack container, int maxDrain, boolean doDrain) {
-		if (container.stackTagCompound == null
-				|| !container.stackTagCompound.hasKey("Fluid")) {
+	public FluidStack drain(ItemStack container, int maxDrain, boolean doDrain)
+	{
+		if (container.stackTagCompound == null || !container.stackTagCompound.hasKey("Fluid"))
+		{
 			return null;
 		}
 
-		FluidStack stack = FluidStack
-				.loadFluidStackFromNBT(container.stackTagCompound
-						.getCompoundTag("Fluid"));
-		if (stack == null) {
+		FluidStack stack = FluidStack.loadFluidStackFromNBT(container.stackTagCompound.getCompoundTag("Fluid"));
+		if (stack == null)
+		{
 			return null;
 		}
 
 		stack.amount = Math.min(stack.amount, maxDrain);
-		if (doDrain) {
-			if (maxDrain >= MAX_STEAM) {
+		if (doDrain)
+		{
+			if (maxDrain >= MAX_STEAM)
+			{
 				container.stackTagCompound.removeTag("Fluid");
 
-				if (container.stackTagCompound.hasNoTags()) {
+				if (container.stackTagCompound.hasNoTags())
+				{
 					container.stackTagCompound = null;
 				}
 				return stack;
 			}
 
-			NBTTagCompound fluidTag = container.stackTagCompound
-					.getCompoundTag("Fluid");
-			fluidTag.setInteger("Amount", fluidTag.getInteger("Amount")
-					- maxDrain);
+			NBTTagCompound fluidTag = container.stackTagCompound.getCompoundTag("Fluid");
+			fluidTag.setInteger("Amount", fluidTag.getInteger("Amount") - maxDrain);
 			container.stackTagCompound.setTag("Fluid", fluidTag);
 		}
 		return stack;
@@ -207,13 +247,16 @@ public class ItemCanister extends BaseItem implements IFluidContainerItem {
 
 	/**
 	 * Gets the fluid amount.
-	 *
-	 * @param stack the stack
+	 * 
+	 * @param stack
+	 *            the stack
 	 * @return the fluid amount
 	 */
-	public int getFluidAmount(ItemStack stack) {
+	public int getFluidAmount(ItemStack stack)
+	{
 		FluidStack fluid = this.getFluid(stack);
-		if (fluid == null) {
+		if (fluid == null)
+		{
 			return 0;
 		}
 		return fluid.amount;

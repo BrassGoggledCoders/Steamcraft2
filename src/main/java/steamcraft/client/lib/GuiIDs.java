@@ -17,7 +17,8 @@ package steamcraft.client.lib;
 /**
  * The Class GuiIDs.
  */
-public final class GuiIDs {
+public final class GuiIDs
+{
 	/** The Constant GUI_ID_NUKE_OVEN. */
 	public static final int GUI_ID_NUKE_OVEN = 0;
 

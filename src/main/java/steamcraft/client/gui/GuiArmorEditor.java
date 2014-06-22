@@ -17,40 +17,50 @@ import steamcraft.common.tiles.container.ContainerArmorEditor;
 /**
  * The Class GuiArmorEditor.
  */
-public class GuiArmorEditor extends GuiContainer {
+public class GuiArmorEditor extends GuiContainer
+{
 
 	/** The Constant guitexture. */
-	private static ResourceLocation guitexture = new ResourceLocation(
-			LibInfo.PREFIX + "textures/gui/armoreditor.png");
+	private static ResourceLocation guitexture = new ResourceLocation(LibInfo.PREFIX + "textures/gui/armoreditor.png");
 
 	/** The tile. */
 	private TileArmorEditor tile;
 
 	/**
 	 * Instantiates a new gui armor editor.
-	 *
-	 * @param player the player
-	 * @param tile the tile
+	 * 
+	 * @param player
+	 *            the player
+	 * @param tile
+	 *            the tile
 	 */
-	public GuiArmorEditor(InventoryPlayer player, TileArmorEditor tile) {
+	public GuiArmorEditor(InventoryPlayer player, TileArmorEditor tile)
+	{
 		super(new ContainerArmorEditor(player, tile));
 		this.tile = tile;
 	}
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.client.gui.inventory.GuiContainer#drawGuiContainerForegroundLayer(int, int)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.minecraft.client.gui.inventory.GuiContainer#
+	 * drawGuiContainerForegroundLayer(int, int)
 	 */
 	@Override
-	protected void drawGuiContainerForegroundLayer(int par1, int par2) {
+	protected void drawGuiContainerForegroundLayer(int par1, int par2)
+	{
 		// fontRenderer.drawString("Inventory", 8, ySize - 96 + 2, 4210752);
 	}
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.client.gui.inventory.GuiContainer#drawGuiContainerBackgroundLayer(float, int, int)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.minecraft.client.gui.inventory.GuiContainer#
+	 * drawGuiContainerBackgroundLayer(float, int, int)
 	 */
 	@Override
-	protected void drawGuiContainerBackgroundLayer(float par1, int par2,
-			int par3) {
+	protected void drawGuiContainerBackgroundLayer(float par1, int par2, int par3)
+	{
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 
 		this.mc.renderEngine.bindTexture(guitexture);

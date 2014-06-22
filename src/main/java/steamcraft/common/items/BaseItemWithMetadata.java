@@ -10,12 +10,14 @@ import steamcraft.common.Steamcraft;
 /**
  * The Class BaseItemWithMetadata.
  */
-public class BaseItemWithMetadata extends BaseItem {
-	
+public class BaseItemWithMetadata extends BaseItem
+{
+
 	/**
 	 * Instantiates a new base item with metadata.
 	 */
-	public BaseItemWithMetadata() {
+	public BaseItemWithMetadata()
+	{
 		super();
 		setHasSubtypes(true);
 		setCreativeTab(Steamcraft.tabSC2);
@@ -29,7 +31,8 @@ public class BaseItemWithMetadata extends BaseItem {
 	 * )
 	 */
 	@Override
-	public String getUnlocalizedName(ItemStack is) {
+	public String getUnlocalizedName(ItemStack is)
+	{
 		return super.getUnlocalizedName() + "." + is.getItemDamage();
 	}
 	/*

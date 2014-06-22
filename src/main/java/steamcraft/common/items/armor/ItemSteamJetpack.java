@@ -28,55 +28,69 @@ import cpw.mods.fml.relauncher.SideOnly;
 // TODO: Auto-generated Javadoc
 /**
  * The Class ItemSteamJetpack.
- *
+ * 
  * @author Decebaldecebal
  */
-public class ItemSteamJetpack extends ItemBrassArmor {
-	
+public class ItemSteamJetpack extends ItemBrassArmor
+{
+
 	/** The Constant steamPerTick. */
 	private static final int steamPerTick = 5; // how much steam is uses per
 												// tick
 
 	/**
-												 * Instantiates a new item steam jetpack.
-												 *
-												 * @param mat the mat
-												 * @param renderIndex the render index
-												 * @param armorType the armor type
-												 */
-												public ItemSteamJetpack(ArmorMaterial mat, int renderIndex, int armorType) {
+	 * Instantiates a new item steam jetpack.
+	 * 
+	 * @param mat
+	 *            the mat
+	 * @param renderIndex
+	 *            the render index
+	 * @param armorType
+	 *            the armor type
+	 */
+	public ItemSteamJetpack(ArmorMaterial mat, int renderIndex, int armorType)
+	{
 		super(mat, renderIndex, armorType);
 	}
 
-	/* (non-Javadoc)
-	 * @see steamcraft.common.items.armor.ItemBrassArmor#onArmorTick(net.minecraft.world.World, net.minecraft.entity.player.EntityPlayer, net.minecraft.item.ItemStack)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * steamcraft.common.items.armor.ItemBrassArmor#onArmorTick(net.minecraft
+	 * .world.World, net.minecraft.entity.player.EntityPlayer,
+	 * net.minecraft.item.ItemStack)
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void onArmorTick(World world, EntityPlayer player, ItemStack is) {
-		if (!player.capabilities.allowFlying) {
+	public void onArmorTick(World world, EntityPlayer player, ItemStack is)
+	{
+		if (!player.capabilities.allowFlying)
+		{
 			if ((Minecraft.getMinecraft().currentScreen == null)
-					&& Keyboard
-							.isKeyDown(Minecraft.getMinecraft().gameSettings.keyBindJump
-									.getKeyCode())
-					&& canConsumeSteamFromCanister(player)) {
+					&& Keyboard.isKeyDown(Minecraft.getMinecraft().gameSettings.keyBindJump.getKeyCode()) && canConsumeSteamFromCanister(player))
+			{
 
-				if (player.motionY > 0.0D) {
+				if (player.motionY > 0.0D)
+				{
 					player.motionY += 0.08499999910593033D;
-				} else {
+				}
+				else
+				{
 					player.motionY += 0.11699999910593033D;
 				}
 
-				world.spawnParticle("smoke", player.posX, player.posY - 0.25D,
-						player.posZ, 0.0D, 0.0D, 0.0D);
+				world.spawnParticle("smoke", player.posX, player.posY - 0.25D, player.posZ, 0.0D, 0.0D, 0.0D);
 
 			}
 
-			if ((player.motionY < 0.0D) && !player.isSneaking()) {
+			if ((player.motionY < 0.0D) && !player.isSneaking())
+			{
 				player.motionY /= 1.149999976158142D;
 			}
 
-			if (!player.onGround) {
+			if (!player.onGround)
+			{
 				player.motionX *= 1.0399999618530273D;
 				player.motionZ *= 1.0399999618530273D;
 			}
@@ -88,23 +102,29 @@ public class ItemSteamJetpack extends ItemBrassArmor {
 
 	/**
 	 * Can consume steam from canister.
-	 *
-	 * @param player the player
+	 * 
+	 * @param player
+	 *            the player
 	 * @return true, if successful
 	 */
-	private boolean canConsumeSteamFromCanister(EntityPlayer player) {
+	private boolean canConsumeSteamFromCanister(EntityPlayer player)
+	{
 		int i = 0;
-		while (i < 36) {
+		while (i < 36)
+		{
 			ItemStack[] mainInv = player.inventory.mainInventory;
-			if ((mainInv[i] != null)
-					&& (mainInv[i].getItem() == ConfigItems.itemCanisterSteam)) {
+			if ((mainInv[i] != null) && (mainInv[i].getItem() == ConfigItems.itemCanisterSteam))
+			{
 				ItemCanister canister = (ItemCanister) mainInv[i].getItem();
 
-				if (!(getDamage(new ItemStack(canister)) == 0)) {
+				if (!(getDamage(new ItemStack(canister)) == 0))
+				{
 					canister.drain(new ItemStack(canister), steamPerTick, true);
 
 					return true;
-				} else {
+				}
+				else
+				{
 					mainInv[i] = new ItemStack(ConfigItems.itemCanisterSteam);
 
 					return false;

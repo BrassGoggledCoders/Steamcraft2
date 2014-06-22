@@ -21,12 +21,14 @@ import cpw.mods.fml.relauncher.SideOnly;
 /**
  * The Class ItemPipe.
  */
-public class ItemPipe extends BaseItem {
-	
+public class ItemPipe extends BaseItem
+{
+
 	/**
 	 * Instantiates a new item pipe.
 	 */
-	public ItemPipe() {
+	public ItemPipe()
+	{
 		super();
 		setUnlocalizedName("itemPipe");
 		setHasSubtypes(true);
@@ -35,37 +37,44 @@ public class ItemPipe extends BaseItem {
 		setMaxStackSize(1);
 	}
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.item.Item#onItemUse(net.minecraft.item.ItemStack, net.minecraft.entity.player.EntityPlayer, net.minecraft.world.World, int, int, int, int, float, float, float)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.minecraft.item.Item#onItemUse(net.minecraft.item.ItemStack,
+	 * net.minecraft.entity.player.EntityPlayer, net.minecraft.world.World, int,
+	 * int, int, int, float, float, float)
 	 */
 	@Override
-	public boolean onItemUse(ItemStack is, EntityPlayer player,
-			World par3World, int par4, int par5, int par6, int par7,
-			float par8, float par9, float par10) {
-		if (is.getItemDamage() < 1) {
-			player.addPotionEffect(new PotionEffect(Potion.digSlowdown.id, 100,
-					1));
-			player.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id,
-					100, 1));
+	public boolean onItemUse(ItemStack is, EntityPlayer player, World par3World, int par4, int par5, int par6, int par7, float par8, float par9,
+			float par10)
+	{
+		if (is.getItemDamage() < 1)
+		{
+			player.addPotionEffect(new PotionEffect(Potion.digSlowdown.id, 100, 1));
+			player.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 100, 1));
 			player.addPotionEffect(new PotionEffect(Potion.weakness.id, 100, 1));
-			player.addPotionEffect(new PotionEffect(Potion.regeneration.id, 10,
-					1));
+			player.addPotionEffect(new PotionEffect(Potion.regeneration.id, 10, 1));
 			player.addPotionEffect(new PotionEffect(Potion.blindness.id, 10, 1));
 			setDamage(is, 1);
 			return true;
-		} else
+		}
+		else
 			return false;
 	}
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.item.Item#getSubItems(net.minecraft.item.Item, net.minecraft.creativetab.CreativeTabs, java.util.List)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.minecraft.item.Item#getSubItems(net.minecraft.item.Item,
+	 * net.minecraft.creativetab.CreativeTabs, java.util.List)
 	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void getSubItems(final Item item, final CreativeTabs tab,
-			final List l) {
-		for (int var4 = 0; var4 < 1; ++var4) {
+	public void getSubItems(final Item item, final CreativeTabs tab, final List l)
+	{
+		for (int var4 = 0; var4 < 1; ++var4)
+		{
 			l.add(new ItemStack(ConfigItems.itemPipe, 1, var4));
 		}
 	}

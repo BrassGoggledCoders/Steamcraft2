@@ -49,7 +49,8 @@ public class EntityPlayerExtended implements IExtendedEntityProperties // TODO:
 	 * @param player
 	 *            the player
 	 */
-	public EntityPlayerExtended(final EntityPlayer player) {
+	public EntityPlayerExtended(final EntityPlayer player)
+	{
 		this.player = player;
 	}
 
@@ -59,9 +60,9 @@ public class EntityPlayerExtended implements IExtendedEntityProperties // TODO:
 	 * @param player
 	 *            the player
 	 */
-	public static final void register(final EntityPlayer player) {
-		player.registerExtendedProperties(EntityPlayerExtended.EXT_PROP_NAME,
-				new EntityPlayerExtended(player));
+	public static final void register(final EntityPlayer player)
+	{
+		player.registerExtendedProperties(EntityPlayerExtended.EXT_PROP_NAME, new EntityPlayerExtended(player));
 	}
 
 	/**
@@ -71,9 +72,9 @@ public class EntityPlayerExtended implements IExtendedEntityProperties // TODO:
 	 *            the player
 	 * @return the entity player extended
 	 */
-	public static final EntityPlayerExtended get(final EntityPlayer player) {
-		return (EntityPlayerExtended) player
-				.getExtendedProperties(EXT_PROP_NAME);
+	public static final EntityPlayerExtended get(final EntityPlayer player)
+	{
+		return (EntityPlayerExtended) player.getExtendedProperties(EXT_PROP_NAME);
 	}
 
 	/*
@@ -84,7 +85,8 @@ public class EntityPlayerExtended implements IExtendedEntityProperties // TODO:
 	 * .nbt.NBTTagCompound)
 	 */
 	@Override
-	public void saveNBTData(final NBTTagCompound tagCompound) {
+	public void saveNBTData(final NBTTagCompound tagCompound)
+	{
 		final NBTTagCompound properties = new NBTTagCompound();
 		tagCompound.setTag(EXT_PROP_NAME, properties);
 		inventory.writeToNBT(properties);
@@ -98,9 +100,9 @@ public class EntityPlayerExtended implements IExtendedEntityProperties // TODO:
 	 * .nbt.NBTTagCompound)
 	 */
 	@Override
-	public void loadNBTData(final NBTTagCompound tagCompound) {
-		final NBTTagCompound properties = (NBTTagCompound) tagCompound
-				.getTag(EXT_PROP_NAME);
+	public void loadNBTData(final NBTTagCompound tagCompound)
+	{
+		final NBTTagCompound properties = (NBTTagCompound) tagCompound.getTag(EXT_PROP_NAME);
 		inventory.readFromNBT(properties);
 	}
 
@@ -112,20 +114,22 @@ public class EntityPlayerExtended implements IExtendedEntityProperties // TODO:
 	 * .entity.Entity, net.minecraft.world.World)
 	 */
 	@Override
-	public void init(final Entity entity, final World world) {
+	public void init(final Entity entity, final World world)
+	{
 	}
 
 	/**
 	 * Sync.
 	 */
-	public final void sync() {
-		final ByteArrayOutputStream baOutputStream = new ByteArrayOutputStream(
-				8);
-		final DataOutputStream dOutputStream = new DataOutputStream(
-				baOutputStream);
-		try {
+	public final void sync()
+	{
+		final ByteArrayOutputStream baOutputStream = new ByteArrayOutputStream(8);
+		final DataOutputStream dOutputStream = new DataOutputStream(baOutputStream);
+		try
+		{
 			// dOutputStream.writeInt(PacketHandler.PACKET_EXTENDED_PROPERTIES);
-		} catch (final Exception ex) {
+		} catch (final Exception ex)
+		{
 			ex.printStackTrace();
 		}
 
@@ -134,7 +138,8 @@ public class EntityPlayerExtended implements IExtendedEntityProperties // TODO:
 		// baOutputStream.toByteArray());
 
 		// We only want to send from the server to the client
-		if (!player.worldObj.isRemote) {
+		if (!player.worldObj.isRemote)
+		{
 		}
 	}
 }

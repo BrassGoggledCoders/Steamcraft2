@@ -13,136 +13,188 @@ import net.minecraft.tileentity.TileEntity;
 /**
  * The Class TileArmorEditor.
  */
-public class TileArmorEditor extends TileEntity implements IInventory {
-	
-	/* (non-Javadoc)
-	 * @see net.minecraft.tileentity.TileEntity#readFromNBT(net.minecraft.nbt.NBTTagCompound)
+public class TileArmorEditor extends TileEntity implements IInventory
+{
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.minecraft.tileentity.TileEntity#readFromNBT(net.minecraft.nbt.
+	 * NBTTagCompound)
 	 */
 	@Override
-	public void readFromNBT(NBTTagCompound tag) {
+	public void readFromNBT(NBTTagCompound tag)
+	{
 		super.readFromNBT(tag);
 	}
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.tileentity.TileEntity#writeToNBT(net.minecraft.nbt.NBTTagCompound)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.minecraft.tileentity.TileEntity#writeToNBT(net.minecraft.nbt.
+	 * NBTTagCompound)
 	 */
 	@Override
-	public void writeToNBT(NBTTagCompound tag) {
+	public void writeToNBT(NBTTagCompound tag)
+	{
 		super.writeToNBT(tag);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see net.minecraft.tileentity.TileEntity#updateEntity()
 	 */
 	@Override
-	public void updateEntity() {
+	public void updateEntity()
+	{
 		super.updateEntity();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see net.minecraft.inventory.IInventory#getSizeInventory()
 	 */
 	@Override
-	public int getSizeInventory() {
+	public int getSizeInventory()
+	{
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see net.minecraft.inventory.IInventory#getStackInSlot(int)
 	 */
 	@Override
-	public ItemStack getStackInSlot(int var1) {
+	public ItemStack getStackInSlot(int var1)
+	{
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see net.minecraft.inventory.IInventory#decrStackSize(int, int)
 	 */
 	@Override
-	public ItemStack decrStackSize(int var1, int var2) {
+	public ItemStack decrStackSize(int var1, int var2)
+	{
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see net.minecraft.inventory.IInventory#getStackInSlotOnClosing(int)
 	 */
 	@Override
-	public ItemStack getStackInSlotOnClosing(int var1) {
+	public ItemStack getStackInSlotOnClosing(int var1)
+	{
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.inventory.IInventory#setInventorySlotContents(int, net.minecraft.item.ItemStack)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.minecraft.inventory.IInventory#setInventorySlotContents(int,
+	 * net.minecraft.item.ItemStack)
 	 */
 	@Override
-	public void setInventorySlotContents(int var1, ItemStack var2) {
+	public void setInventorySlotContents(int var1, ItemStack var2)
+	{
 		// TODO Auto-generated method stub
 
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see net.minecraft.inventory.IInventory#getInventoryName()
 	 */
 	@Override
-	public String getInventoryName() {
+	public String getInventoryName()
+	{
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see net.minecraft.inventory.IInventory#hasCustomInventoryName()
 	 */
 	@Override
-	public boolean hasCustomInventoryName() {
+	public boolean hasCustomInventoryName()
+	{
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see net.minecraft.inventory.IInventory#getInventoryStackLimit()
 	 */
 	@Override
-	public int getInventoryStackLimit() {
+	public int getInventoryStackLimit()
+	{
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.inventory.IInventory#isUseableByPlayer(net.minecraft.entity.player.EntityPlayer)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * net.minecraft.inventory.IInventory#isUseableByPlayer(net.minecraft.entity
+	 * .player.EntityPlayer)
 	 */
 	@Override
-	public boolean isUseableByPlayer(EntityPlayer var1) {
+	public boolean isUseableByPlayer(EntityPlayer var1)
+	{
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see net.minecraft.inventory.IInventory#openInventory()
 	 */
 	@Override
-	public void openInventory() {
+	public void openInventory()
+	{
 		// TODO Auto-generated method stub
 
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see net.minecraft.inventory.IInventory#closeInventory()
 	 */
 	@Override
-	public void closeInventory() {
+	public void closeInventory()
+	{
 		// TODO Auto-generated method stub
 
 	}
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.inventory.IInventory#isItemValidForSlot(int, net.minecraft.item.ItemStack)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.minecraft.inventory.IInventory#isItemValidForSlot(int,
+	 * net.minecraft.item.ItemStack)
 	 */
 	@Override
-	public boolean isItemValidForSlot(int var1, ItemStack var2) {
+	public boolean isItemValidForSlot(int var1, ItemStack var2)
+	{
 		// TODO Auto-generated method stub
 		return false;
 	}

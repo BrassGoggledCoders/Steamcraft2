@@ -28,7 +28,8 @@ import steamcraft.common.lib.LibInfo;
  * 
  * @author warlordjones
  */
-public class TileHatchRenderer extends TileEntitySpecialRenderer {
+public class TileHatchRenderer extends TileEntitySpecialRenderer
+{
 
 	/** The model. */
 	private final ModelHatch model;
@@ -36,7 +37,8 @@ public class TileHatchRenderer extends TileEntitySpecialRenderer {
 	/**
 	 * Instantiates a new tile hatch renderer.
 	 */
-	public TileHatchRenderer() {
+	public TileHatchRenderer()
+	{
 		model = new ModelHatch();
 	}
 
@@ -48,12 +50,11 @@ public class TileHatchRenderer extends TileEntitySpecialRenderer {
 	 * double, float)
 	 */
 	@Override
-	public void renderTileEntityAt(final TileEntity te, final double dx,
-			final double dy, final double dz, final float scale) {
+	public void renderTileEntityAt(final TileEntity te, final double dx, final double dy, final double dz, final float scale)
+	{
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float) dx + 0.5F, (float) dy, (float) dz + 0.5F);
-		final ResourceLocation hatch = (new ResourceLocation(LibInfo.PREFIX
-				+ "textures/models/modelHatch.png"));
+		final ResourceLocation hatch = (new ResourceLocation(LibInfo.PREFIX + "textures/models/modelHatch.png"));
 		Minecraft.getMinecraft().renderEngine.bindTexture(hatch);
 		GL11.glPushMatrix();
 		GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);

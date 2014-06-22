@@ -33,11 +33,11 @@ import cpw.mods.fml.relauncher.SideOnly;
  * @author Surseance (Johnny Eatmon)
  */
 @SideOnly(Side.CLIENT)
-public class RenderBullet extends Render {
+public class RenderBullet extends Render
+{
 
 	/** The Constant bulletTex. */
-	private static final ResourceLocation bulletTex = new ResourceLocation(
-			LibInfo.PREFIX + "textures/projectiles/musketball.png");
+	private static final ResourceLocation bulletTex = new ResourceLocation(LibInfo.PREFIX + "textures/projectiles/musketball.png");
 
 	/**
 	 * Render bullet.
@@ -55,23 +55,19 @@ public class RenderBullet extends Render {
 	 * @param frotP
 	 *            the frot p
 	 */
-	public void renderBullet(final EntityBullet bullet, final double dx,
-			final double dy, final double dz, final float frotY,
-			final float frotP) {
+	public void renderBullet(final EntityBullet bullet, final double dx, final double dy, final double dz, final float frotY, final float frotP)
+	{
 		bindEntityTexture(bullet);
 
-		if (bullet.prevRotationYaw == 0.0F && bullet.prevRotationPitch == 0.0F) {
+		if (bullet.prevRotationYaw == 0.0F && bullet.prevRotationPitch == 0.0F)
+		{
 			return;
 		}
 
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float) dx, (float) dy, (float) dz);
-		GL11.glRotatef(
-				(bullet.prevRotationYaw + (bullet.rotationYaw - bullet.prevRotationYaw)
-						* frotP) - 90F, 0.0F, 1.0F, 0.0F);
-		GL11.glRotatef(bullet.prevRotationPitch
-				+ (bullet.rotationPitch - bullet.prevRotationPitch) * frotP,
-				0.0F, 0.0F, 1.0F);
+		GL11.glRotatef((bullet.prevRotationYaw + (bullet.rotationYaw - bullet.prevRotationYaw) * frotP) - 90F, 0.0F, 1.0F, 0.0F);
+		GL11.glRotatef(bullet.prevRotationPitch + (bullet.rotationPitch - bullet.prevRotationPitch) * frotP, 0.0F, 0.0F, 1.0F);
 		final Tessellator tessellator = Tessellator.instance;
 		final int i = 0;
 		final float f2 = 0.0F;
@@ -86,7 +82,8 @@ public class RenderBullet extends Render {
 		GL11.glEnable(32826 /* GL_RESCALE_NORMAL_EXT */);
 		final float f11 = 1.0F - frotP;
 
-		if (f11 > 0.0F) {
+		if (f11 > 0.0F)
+		{
 			final float f12 = -MathHelper.sin(f11 * 3F) * f11;
 			GL11.glRotatef(f12, 0.0F, 0.0F, 1.0F);
 		}
@@ -109,7 +106,8 @@ public class RenderBullet extends Render {
 		tessellator.addVertexWithUV(-7D, -2D, -2D, f6, f9);
 		tessellator.draw();
 
-		for (int j = 0; j < 4; j++) {
+		for (int j = 0; j < 4; j++)
+		{
 			GL11.glRotatef(90F, 1.0F, 0.0F, 0.0F);
 			GL11.glNormal3f(0.0F, 0.0F, f10);
 			tessellator.startDrawingQuads();
@@ -131,7 +129,8 @@ public class RenderBullet extends Render {
 	 *            the bullet
 	 * @return the bullet texture
 	 */
-	protected ResourceLocation getBulletTexture(final EntityBullet bullet) {
+	protected ResourceLocation getBulletTexture(final EntityBullet bullet)
+	{
 		return bulletTex;
 	}
 
@@ -143,7 +142,8 @@ public class RenderBullet extends Render {
 	 * .entity.Entity)
 	 */
 	@Override
-	protected ResourceLocation getEntityTexture(final Entity entity) {
+	protected ResourceLocation getEntityTexture(final Entity entity)
+	{
 		return getBulletTexture((EntityBullet) entity);
 	}
 
@@ -155,8 +155,8 @@ public class RenderBullet extends Render {
 	 * .Entity, double, double, double, float, float)
 	 */
 	@Override
-	public void doRender(final Entity entity, final double dx, final double dy,
-			final double dz, final float frotY, final float frotP) {
+	public void doRender(final Entity entity, final double dx, final double dy, final double dz, final float frotY, final float frotP)
+	{
 		renderBullet((EntityBullet) entity, dx, dy, dz, frotY, frotP);
 	}
 }

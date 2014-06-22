@@ -27,26 +27,33 @@ import net.minecraft.entity.player.EntityPlayerMP;
  * @author Surseance (Johnny Eatmon)
  * 
  */
-public class NetworkUtil {
-	
+public class NetworkUtil
+{
+
 	/**
 	 * Send gui info.
-	 *
-	 * @param player the player
-	 * @param windowID the window id
-	 * @param type the type
-	 * @param value the value
+	 * 
+	 * @param player
+	 *            the player
+	 * @param windowID
+	 *            the window id
+	 * @param type
+	 *            the type
+	 * @param value
+	 *            the value
 	 */
-	public static void sendGuiInfo(EntityPlayerMP player, int windowID,
-			int type, int value) {
+	public static void sendGuiInfo(EntityPlayerMP player, int windowID, int type, int value)
+	{
 		ByteArrayOutputStream byteStream = new ByteArrayOutputStream();
 		DataOutputStream dataStream = new DataOutputStream(byteStream);
-		try {
+		try
+		{
 			dataStream.writeInt(40);
 			dataStream.writeByte(windowID);
 			dataStream.writeShort(type);
 			dataStream.writeInt(value);
-		} catch (IOException e) {
+		} catch (IOException e)
+		{
 			e.printStackTrace();
 		}
 

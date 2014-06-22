@@ -19,36 +19,48 @@ import cpw.mods.fml.relauncher.SideOnly;
 /**
  * The Class ItemNugget.
  */
-public class ItemNugget extends BaseItemWithMetadata {
-	
+public class ItemNugget extends BaseItemWithMetadata
+{
+
 	/** The item icon. */
 	IIcon[] itemIcon = new IIcon[8];
 
 	/**
 	 * Instantiates a new item nugget.
 	 */
-	public ItemNugget() {
+	public ItemNugget()
+	{
 		super();
 		setUnlocalizedName("itemNugget");
 	}
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.item.Item#getSubItems(net.minecraft.item.Item, net.minecraft.creativetab.CreativeTabs, java.util.List)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.minecraft.item.Item#getSubItems(net.minecraft.item.Item,
+	 * net.minecraft.creativetab.CreativeTabs, java.util.List)
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void getSubItems(Item item, CreativeTabs tab, List list) {
-		for (int var4 = 0; var4 < 8; ++var4) {
+	public void getSubItems(Item item, CreativeTabs tab, List list)
+	{
+		for (int var4 = 0; var4 < 8; ++var4)
+		{
 			list.add(new ItemStack(ConfigItems.itemNugget, 1, var4));
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see steamcraft.common.items.BaseItem#registerIcons(net.minecraft.client.renderer.texture.IIconRegister)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * steamcraft.common.items.BaseItem#registerIcons(net.minecraft.client.renderer
+	 * .texture.IIconRegister)
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IIconRegister ir) {
+	public void registerIcons(IIconRegister ir)
+	{
 		itemIcon[0] = ir.registerIcon(LibInfo.PREFIX + "itemNuggetAluminum");
 		itemIcon[1] = ir.registerIcon(LibInfo.PREFIX + "itemNuggetCopper");
 		itemIcon[2] = ir.registerIcon(LibInfo.PREFIX + "itemNuggetTin");
@@ -59,12 +71,15 @@ public class ItemNugget extends BaseItemWithMetadata {
 		itemIcon[7] = ir.registerIcon(LibInfo.PREFIX + "itemNuggetCastIron");
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see net.minecraft.item.Item#getIconFromDamage(int)
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public IIcon getIconFromDamage(int itemDamage) {
+	public IIcon getIconFromDamage(int itemDamage)
+	{
 		return itemIcon[itemDamage];
 	}
 

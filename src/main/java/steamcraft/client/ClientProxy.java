@@ -49,16 +49,20 @@ import cpw.mods.fml.common.FMLCommonHandler;
  * 
  * @author Surseance (Johnny Eatmon)
  */
-public class ClientProxy extends CommonProxy {
+public class ClientProxy extends CommonProxy
+{
 
 	/** The draw event handler. */
 	public EventHandlerDrawHighlight drawEventHandler;
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see steamcraft.common.CommonProxy#registerKeys()
 	 */
 	@Override
-	public void registerKeys() {
+	public void registerKeys()
+	{
 		FMLCommonHandler.instance().bus().register(new KeyInputHandler());
 		KeyBindings.registerKeys();
 	}
@@ -69,20 +73,16 @@ public class ClientProxy extends CommonProxy {
 	 * @see steamcraft.common.CommonProxy#registerDisplayInformation()
 	 */
 	@Override
-	public void registerDisplayInformation() {
+	public void registerDisplayInformation()
+	{
 		// TODO: Should be in boilerplate
-		RenderingRegistry.registerEntityRenderingHandler(
-				EntityMinedBlock.class, new RenderMinedBlock());
-		ConfigBlocks.blockCrystalRI = RenderingRegistry
-				.getNextAvailableRenderId();
-		ClientRegistry.bindTileEntitySpecialRenderer(TileCrystal.class,
-				new TileCrystalRenderer());
+		RenderingRegistry.registerEntityRenderingHandler(EntityMinedBlock.class, new RenderMinedBlock());
+		ConfigBlocks.blockCrystalRI = RenderingRegistry.getNextAvailableRenderId();
+		ClientRegistry.bindTileEntitySpecialRenderer(TileCrystal.class, new TileCrystalRenderer());
 		RenderingRegistry.registerBlockHandler(new BlockCrystalRenderer());
 
-		ConfigBlocks.blockCastIronLampRI = RenderingRegistry
-				.getNextAvailableRenderId();
-		ClientRegistry.bindTileEntitySpecialRenderer(TileCastIronLamp.class,
-				new TileCastIronLampRenderer());
+		ConfigBlocks.blockCastIronLampRI = RenderingRegistry.getNextAvailableRenderId();
+		ClientRegistry.bindTileEntitySpecialRenderer(TileCastIronLamp.class, new TileCastIronLampRenderer());
 		RenderingRegistry.registerBlockHandler(new BlockCastIronLampRenderer());
 
 		Utils.downloadCapes();
@@ -94,11 +94,10 @@ public class ClientProxy extends CommonProxy {
 	 * @see steamcraft.common.CommonProxy#registerRenderers()
 	 */
 	@Override
-	public void registerRenderers() {
-		ClientRegistry.bindTileEntitySpecialRenderer(TileCrystal.class,
-				new TileCrystalRenderer());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileHatch.class,
-				new TileHatchRenderer());
+	public void registerRenderers()
+	{
+		ClientRegistry.bindTileEntitySpecialRenderer(TileCrystal.class, new TileCrystalRenderer());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileHatch.class, new TileHatchRenderer());
 
 		RenderingRegistry.registerBlockHandler(new BlockCrystalRenderer());
 		RenderingRegistry.registerBlockHandler(new BlockHatchRenderer());
@@ -112,10 +111,12 @@ public class ClientProxy extends CommonProxy {
 	 * int, int)
 	 */
 	@Override
-	public Object getClientGuiElement(int ID, EntityPlayer player, World world,
-			int x, int y, int z) {
-		if ((world instanceof WorldClient)) {
-			switch (ID) {
+	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
+	{
+		if ((world instanceof WorldClient))
+		{
+			switch (ID)
+			{
 
 			}
 		}
@@ -129,7 +130,8 @@ public class ClientProxy extends CommonProxy {
 	 * @see steamcraft.common.CommonProxy#getClientWorld()
 	 */
 	@Override
-	public World getClientWorld() {
+	public World getClientWorld()
+	{
 		return FMLClientHandler.instance().getClient().theWorld;
 	}
 
@@ -150,25 +152,26 @@ public class ClientProxy extends CommonProxy {
 	 * boolean, float, java.lang.Object, int)
 	 */
 	@Override
-	public Object rayFX(World world, EntityPlayer player, double dx, double dy,
-			double dz, int type, boolean reverse, float endMod, Object input,
-			int impact, Color rayColor) {
+	public Object rayFX(World world, EntityPlayer player, double dx, double dy, double dz, int type, boolean reverse, float endMod, Object input,
+			int impact, Color rayColor)
+	{
 		FXRaygun ray = null;
 		Color color = rayColor;
 
-		if (input instanceof FXRaygun) {
+		if (input instanceof FXRaygun)
+		{
 			ray = (FXRaygun) input;
 		}
-		if ((ray == null) || (ray.isDead)) {
-			ray = new FXRaygun(world, player, dx, dy, dz,
-					color.getRed() / 255.0F, color.getGreen() / 255.0F,
-					color.getBlue() / 255.0F, 9);
+		if ((ray == null) || (ray.isDead))
+		{
+			ray = new FXRaygun(world, player, dx, dy, dz, color.getRed() / 255.0F, color.getGreen() / 255.0F, color.getBlue() / 255.0F, 9);
 			ray.setType(type);
 			ray.setEndMod(endMod);
 			ray.setReverse(reverse);
-			FMLClientHandler.instance().getClient().effectRenderer
-					.addEffect(ray);
-		} else {
+			FMLClientHandler.instance().getClient().effectRenderer.addEffect(ray);
+		}
+		else
+		{
 			ray.updateRay(dx, dy, dz);
 			ray.setEndMod(endMod);
 			ray.impact = impact;
@@ -184,20 +187,22 @@ public class ClientProxy extends CommonProxy {
 	 * double, double, double, java.lang.Object)
 	 */
 	@Override
-	public Object smokeFX(World world, double dx, double dy, double dz,
-			Object input) {
+	public Object smokeFX(World world, double dx, double dy, double dz, Object input)
+	{
 		FXSmoke smoke = null;
 		Color color = Color.BLUE;
 
-		if (input instanceof FXSmoke) {
+		if (input instanceof FXSmoke)
+		{
 			smoke = (FXSmoke) input;
 		}
-		if ((smoke == null) || (smoke.isDead)) {
-			smoke = new FXSmoke(world, dx, dy, dz, color.getBlue() / 255.0F,
-					color.getBlue() / 255.0F, color.getBlue() / 255.0F);
-			FMLClientHandler.instance().getClient().effectRenderer
-					.addEffect(smoke);
-		} else {
+		if ((smoke == null) || (smoke.isDead))
+		{
+			smoke = new FXSmoke(world, dx, dy, dz, color.getBlue() / 255.0F, color.getBlue() / 255.0F, color.getBlue() / 255.0F);
+			FMLClientHandler.instance().getClient().effectRenderer.addEffect(smoke);
+		}
+		else
+		{
 			smoke.onUpdate();
 		}
 

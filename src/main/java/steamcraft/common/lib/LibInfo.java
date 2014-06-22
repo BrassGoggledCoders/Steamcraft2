@@ -20,7 +20,8 @@ package steamcraft.common.lib;
  * @author Surseance (Johnny Eatmon)
  * 
  */
-public class LibInfo {
+public class LibInfo
+{
 
 	/** The Constant ID. */
 	public static final String ID = "steamcraft2";

@@ -18,7 +18,8 @@ package steamcraft.client.lib;
  * 
  * @author MrArcane111 & general3214
  */
-public class RenderIDs {
+public class RenderIDs
+{
 	// public static int chimneyID =
 	// Steamcraft.proxy.cfgHandler.loadRender("chimneyID");
 }

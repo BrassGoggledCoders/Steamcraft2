@@ -44,7 +44,8 @@ import cpw.mods.fml.relauncher.SideOnly;
  * @author Surseance (Johnny Eatmon)
  * 
  */
-public class EntityBullet extends Entity implements IProjectile {
+public class EntityBullet extends Entity implements IProjectile
+{
 
 	/** The x tile. */
 	private int xTile = -1;
@@ -88,7 +89,8 @@ public class EntityBullet extends Entity implements IProjectile {
 	 * @param world
 	 *            the world
 	 */
-	public EntityBullet(final World world) {
+	public EntityBullet(final World world)
+	{
 		super(world);
 		renderDistanceWeight = 10.0D;
 		setSize(0.5F, 0.5F);
@@ -106,8 +108,8 @@ public class EntityBullet extends Entity implements IProjectile {
 	 * @param dz
 	 *            the dz
 	 */
-	public EntityBullet(final World world, final double dx, final double dy,
-			final double dz) {
+	public EntityBullet(final World world, final double dx, final double dy, final double dz)
+	{
 		super(world);
 		renderDistanceWeight = 10.0D;
 		setSize(0.5F, 0.5F);
@@ -129,13 +131,14 @@ public class EntityBullet extends Entity implements IProjectile {
 	 * @param frotP
 	 *            the frot p
 	 */
-	public EntityBullet(final World world, final EntityLivingBase shooter,
-			final EntityLivingBase target, final float frotY, final float frotP) {
+	public EntityBullet(final World world, final EntityLivingBase shooter, final EntityLivingBase target, final float frotY, final float frotP)
+	{
 		super(world);
 		renderDistanceWeight = 10.0D;
 		shootingEntity = shooter;
 
-		if (shooter instanceof EntityPlayer) {
+		if (shooter instanceof EntityPlayer)
+		{
 			canBePickedUp = 1;
 		}
 
@@ -150,13 +153,13 @@ public class EntityBullet extends Entity implements IProjectile {
 																			// Yay,
 																			// math!
 
-		if (magnitude >= 1.0E-7D) {
+		if (magnitude >= 1.0E-7D)
+		{
 			final float fx = (float) (Math.atan2(dz, dx) * 180.0D / Math.PI) - 90.0F;
 			final float fy = (float) (-(Math.atan2(dy, magnitude) * 180.0D / Math.PI));
 			final double dlx = dx / magnitude;
 			final double dlz = dz / magnitude;
-			setLocationAndAngles(shooter.posX + dlx, posY, shooter.posZ + dlz,
-					fx, fy);
+			setLocationAndAngles(shooter.posX + dlx, posY, shooter.posZ + dlz, fx, fy);
 			yOffset = 0.0F;
 			final float height = (float) magnitude * 0.2F;
 			setThrowableHeading(dx, dy + height, dz, frotY, frotP);
@@ -175,29 +178,26 @@ public class EntityBullet extends Entity implements IProjectile {
 	 * @param accuracy
 	 *            the accuracy
 	 */
-	public EntityBullet(final World world, final EntityLivingBase shooter,
-			final int damage, final int accuracy) {
+	public EntityBullet(final World world, final EntityLivingBase shooter, final int damage, final int accuracy)
+	{
 		super(world);
 		renderDistanceWeight = 10.0D;
 		shootingEntity = shooter;
 
-		if (shooter instanceof EntityPlayer) {
+		if (shooter instanceof EntityPlayer)
+		{
 			canBePickedUp = 1;
 		}
 
 		setSize(0.5F, 0.5F);
-		setLocationAndAngles(shooter.posX,
-				shooter.posY + shooter.getEyeHeight(), shooter.posZ,
-				shooter.rotationYaw, shooter.rotationPitch);
+		setLocationAndAngles(shooter.posX, shooter.posY + shooter.getEyeHeight(), shooter.posZ, shooter.rotationYaw, shooter.rotationPitch);
 		posX -= MathHelper.cos(rotationYaw / 180.0F * (float) Math.PI) * 0.16F;
 		posY -= 0.10000000149011612D;
 		posZ -= MathHelper.sin(rotationYaw / 180.0F * (float) Math.PI) * 0.16F;
 		setPosition(posX, posY, posZ);
 		yOffset = 0.0F;
-		motionX = -MathHelper.sin(rotationYaw / 180.0F * (float) Math.PI)
-				* MathHelper.cos(rotationPitch / 180.0F * (float) Math.PI);
-		motionZ = MathHelper.cos(rotationYaw / 180.0F * (float) Math.PI)
-				* MathHelper.cos(rotationPitch / 180.0F * (float) Math.PI);
+		motionX = -MathHelper.sin(rotationYaw / 180.0F * (float) Math.PI) * MathHelper.cos(rotationPitch / 180.0F * (float) Math.PI);
+		motionZ = MathHelper.cos(rotationYaw / 180.0F * (float) Math.PI) * MathHelper.cos(rotationPitch / 180.0F * (float) Math.PI);
 		motionY = (-MathHelper.sin(rotationPitch / 180.0F * (float) Math.PI));
 		setThrowableHeading(motionX, motionY, motionZ, 1.5F, accuracy);
 		this.accuracy = accuracy;
@@ -210,7 +210,8 @@ public class EntityBullet extends Entity implements IProjectile {
 	 * @see net.minecraft.entity.Entity#entityInit()
 	 */
 	@Override
-	protected void entityInit() {
+	protected void entityInit()
+	{
 		dataWatcher.addObject(Config.entBulletId, Byte.valueOf((byte) 0));
 	}
 
@@ -221,19 +222,16 @@ public class EntityBullet extends Entity implements IProjectile {
 	 * double, float, float)
 	 */
 	@Override
-	public void setThrowableHeading(double dx, double dy, double dz,
-			final float frotY, final float frotP) {
+	public void setThrowableHeading(double dx, double dy, double dz, final float frotY, final float frotP)
+	{
 		final int accuracy = this.accuracy;
 		final float f2 = MathHelper.sqrt_double(dx * dx + dy * dy + dz * dz);
 		dx /= f2;
 		dy /= f2;
 		dz /= f2;
-		dx += rand.nextGaussian() * 0.0034999998323619365D * frotP * accuracy
-				/ 5;
-		dy += rand.nextGaussian() * 0.0034999998323619365D * frotP * accuracy
-				/ 5;
-		dz += rand.nextGaussian() * 0.0034999998323619365D * frotP * accuracy
-				/ 5;
+		dx += rand.nextGaussian() * 0.0034999998323619365D * frotP * accuracy / 5;
+		dy += rand.nextGaussian() * 0.0034999998323619365D * frotP * accuracy / 5;
+		dz += rand.nextGaussian() * 0.0034999998323619365D * frotP * accuracy / 5;
 		dx *= frotY;
 		dy *= frotY;
 		dz *= frotY;
@@ -254,8 +252,8 @@ public class EntityBullet extends Entity implements IProjectile {
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void setPositionAndRotation2(final double dx, final double dy,
-			final double dz, final float frotY, final float frotP, final int i) {
+	public void setPositionAndRotation2(final double dx, final double dy, final double dz, final float frotY, final float frotP, final int i)
+	{
 		setPosition(dx, dy, dz);
 		setRotation(frotY, frotP);
 	}
@@ -267,16 +265,17 @@ public class EntityBullet extends Entity implements IProjectile {
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void setVelocity(final double dx, final double dy, final double dz) {
+	public void setVelocity(final double dx, final double dy, final double dz)
+	{
 		motionX = dx;
 		motionY = dy;
 		motionZ = dz;
 
-		if ((prevRotationPitch == 0.0F) && (prevRotationYaw == 0.0F)) {
+		if ((prevRotationPitch == 0.0F) && (prevRotationYaw == 0.0F))
+		{
 			final float magnitude = MathHelper.sqrt_double(dx * dx + dz * dz);
 			prevRotationYaw = rotationYaw = (float) ((Math.atan2(dx, dz) * 180D) / 3.1415927410125732D);
-			prevRotationPitch = rotationPitch = (float) ((Math.atan2(dy,
-					magnitude) * 180D) / 3.1415927410125732D);
+			prevRotationPitch = rotationPitch = (float) ((Math.atan2(dy, magnitude) * 180D) / 3.1415927410125732D);
 		}
 	}
 
@@ -286,93 +285,100 @@ public class EntityBullet extends Entity implements IProjectile {
 	 * @see net.minecraft.entity.Entity#onUpdate()
 	 */
 	@Override
-	public void onUpdate() {
+	public void onUpdate()
+	{
 		super.onUpdate();
 
-		if (flyTime > 1000) {
+		if (flyTime > 1000)
+		{
 			setDead();
 		}
 
-		if (prevRotationPitch == 0.0F && prevRotationYaw == 0.0F) {
-			final float magnitude = MathHelper.sqrt_double(motionX * motionX
-					+ motionZ * motionZ);
-			prevRotationYaw = rotationYaw = (float) ((Math.atan2(motionX,
-					motionZ) * 180D) / 3.1415927410125732D);
-			prevRotationPitch = rotationPitch = (float) ((Math.atan2(motionY,
-					magnitude) * 180D) / 3.1415927410125732D);
+		if (prevRotationPitch == 0.0F && prevRotationYaw == 0.0F)
+		{
+			final float magnitude = MathHelper.sqrt_double(motionX * motionX + motionZ * motionZ);
+			prevRotationYaw = rotationYaw = (float) ((Math.atan2(motionX, motionZ) * 180D) / 3.1415927410125732D);
+			prevRotationPitch = rotationPitch = (float) ((Math.atan2(motionY, magnitude) * 180D) / 3.1415927410125732D);
 		}
 
-		if (arrowShake > 0) {
+		if (arrowShake > 0)
+		{
 			arrowShake--;
 		}
 
-		if (inGround) {
+		if (inGround)
+		{
 			final Block block = worldObj.getBlock(xTile, yTile, zTile);
 
-			if (block != inTile) {
+			if (block != inTile)
+			{
 				inGround = false;
 				motionX *= rand.nextFloat() * 0.2F;
 				motionY *= rand.nextFloat() * 0.2F;
 				motionZ *= rand.nextFloat() * 0.2F;
 				timeTillDeath = 0;
 				flyTime = 0;
-			} else {
+			}
+			else
+			{
 				timeTillDeath++;
 
-				if (timeTillDeath == 1200) {
+				if (timeTillDeath == 1200)
+				{
 					setDead();
 				}
 
 				return;
 			}
-		} else {
+		}
+		else
+		{
 			flyTime++;
 		}
 
-		Vec3 posVector = worldObj.getWorldVec3Pool().getVecFromPool(posX, posY,
-				posZ);
-		Vec3 velVector = worldObj.getWorldVec3Pool().getVecFromPool(
-				posX + motionX, posY + motionY, posZ + motionZ);
-		MovingObjectPosition mop = worldObj.rayTraceBlocks(posVector,
-				velVector, false); // TODO: missing a true, check how this is
-									// affected
-		posVector = worldObj.getWorldVec3Pool()
-				.getVecFromPool(posX, posY, posZ);
-		velVector = worldObj.getWorldVec3Pool().getVecFromPool(posX + motionX,
-				posY + motionY, posZ + motionZ);
+		Vec3 posVector = worldObj.getWorldVec3Pool().getVecFromPool(posX, posY, posZ);
+		Vec3 velVector = worldObj.getWorldVec3Pool().getVecFromPool(posX + motionX, posY + motionY, posZ + motionZ);
+		MovingObjectPosition mop = worldObj.rayTraceBlocks(posVector, velVector, false); // TODO:
+																							// missing
+																							// a
+																							// true,
+																							// check
+																							// how
+																							// this
+																							// is
+																							// affected
+		posVector = worldObj.getWorldVec3Pool().getVecFromPool(posX, posY, posZ);
+		velVector = worldObj.getWorldVec3Pool().getVecFromPool(posX + motionX, posY + motionY, posZ + motionZ);
 
-		if (mop != null) {
-			velVector = worldObj.getWorldVec3Pool().getVecFromPool(
-					mop.hitVec.xCoord, mop.hitVec.yCoord, mop.hitVec.zCoord);
+		if (mop != null)
+		{
+			velVector = worldObj.getWorldVec3Pool().getVecFromPool(mop.hitVec.xCoord, mop.hitVec.yCoord, mop.hitVec.zCoord);
 		}
 
 		Entity entity = null;
-		final List<?> entList = worldObj.getEntitiesWithinAABBExcludingEntity(
-				this,
-				boundingBox.addCoord(motionX, motionY, motionZ).expand(1.0D,
-						1.0D, 1.0D));
+		final List<?> entList = worldObj.getEntitiesWithinAABBExcludingEntity(this,
+				boundingBox.addCoord(motionX, motionY, motionZ).expand(1.0D, 1.0D, 1.0D));
 		double distance = 0.0D;
 
-		for (int listSize = 0; listSize < entList.size(); listSize++) {
+		for (int listSize = 0; listSize < entList.size(); listSize++)
+		{
 			final Entity collidableEnt = (Entity) entList.get(listSize);
 
-			if (!collidableEnt.canBeCollidedWith()
-					|| collidableEnt == shootingEntity && flyTime < 5) {
+			if (!collidableEnt.canBeCollidedWith() || collidableEnt == shootingEntity && flyTime < 5)
+			{
 				continue;
 			}
 
 			final float amount = 0.3F;
-			final AxisAlignedBB aaBB = collidableEnt.boundingBox.expand(amount,
-					amount, amount);
-			final MovingObjectPosition objectInVector = aaBB
-					.calculateIntercept(posVector, velVector);
+			final AxisAlignedBB aaBB = collidableEnt.boundingBox.expand(amount, amount, amount);
+			final MovingObjectPosition objectInVector = aaBB.calculateIntercept(posVector, velVector);
 
-			if (objectInVector == null) {
+			if (objectInVector == null)
+			{
 				continue;
 			}
 
-			final double distanceToObject = posVector
-					.distanceTo(objectInVector.hitVec);
+			final double distanceToObject = posVector.distanceTo(objectInVector.hitVec);
 
 			if (distanceToObject < distance || distance == 0.0D) // Orthogonal
 																	// check
@@ -382,48 +388,52 @@ public class EntityBullet extends Entity implements IProjectile {
 			}
 		}
 
-		if (entity != null) {
+		if (entity != null)
+		{
 			mop = new MovingObjectPosition(entity);
 		}
 
-		if (mop != null) {
-			if (mop.entityHit != null) {
-				if (mop.entityHit.attackEntityFrom(
-						DamageSource.causeThrownDamage(this, this), damage)) {
-					worldObj.playSoundAtEntity(this, LibInfo.PREFIX
-							+ "hitflesh", 1.0F,
-							1.2F / (rand.nextFloat() * 0.2F + 0.9F));
+		if (mop != null)
+		{
+			if (mop.entityHit != null)
+			{
+				if (mop.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, this), damage))
+				{
+					worldObj.playSoundAtEntity(this, LibInfo.PREFIX + "hitflesh", 1.0F, 1.2F / (rand.nextFloat() * 0.2F + 0.9F));
 					setDead();
-				} else {
+				}
+				else
+				{
 					motionX *= 0.10000000149011612D;
 					motionY *= 0.10000000149011612D;
 					motionZ *= 0.10000000149011612D;
 					flyTime = 0;
 					setDead();
 				}
-			} else {
+			}
+			else
+			{
 				xTile = mop.blockX;
 				yTile = mop.blockY;
 				zTile = mop.blockZ;
 				inTile = worldObj.getBlock(xTile, yTile, zTile);
 
-				if (inTile == Blocks.glass || inTile == Blocks.glowstone) {
+				if (inTile == Blocks.glass || inTile == Blocks.glowstone)
+				{
 					final Block block = inTile;
-					worldObj.playSoundEffect(xTile + 0.5D, yTile + 0.5D,
-							zTile + 0.5D, block.stepSound.getBreakSound(),
-							1.0F, 1.0F);
+					worldObj.playSoundEffect(xTile + 0.5D, yTile + 0.5D, zTile + 0.5D, block.stepSound.getBreakSound(), 1.0F, 1.0F);
 					worldObj.setBlockToAir(xTile, yTile, zTile);
-				} else {
+				}
+				else
+				{
 					motionX = (float) (mop.hitVec.xCoord - posX);
 					motionY = (float) (mop.hitVec.yCoord - posY);
 					motionZ = (float) (mop.hitVec.zCoord - posZ);
-					final float magnitude = MathHelper.sqrt_double(motionX
-							* motionX + motionY * motionY + motionZ * motionZ);
+					final float magnitude = MathHelper.sqrt_double(motionX * motionX + motionY * motionY + motionZ * motionZ);
 					posX -= (motionX / magnitude) * 0.05000000074505806D;
 					posY -= (motionY / magnitude) * 0.05000000074505806D;
 					posZ -= (motionZ / magnitude) * 0.05000000074505806D;
-					worldObj.playSoundAtEntity(this, LibInfo.PREFIX
-							+ "hitblock", 1.0F, 1.0F);
+					worldObj.playSoundAtEntity(this, LibInfo.PREFIX + "hitblock", 1.0F, 1.0F);
 					setDead();
 				}
 			}
@@ -432,29 +442,31 @@ public class EntityBullet extends Entity implements IProjectile {
 		posX += motionX * 3.0D;
 		posY += motionY * 3.0D;
 		posZ += motionZ * 3.0D;
-		final float magnitude = MathHelper.sqrt_double(motionX * motionX
-				+ motionZ * motionZ);
+		final float magnitude = MathHelper.sqrt_double(motionX * motionX + motionZ * motionZ);
 		rotationYaw = (float) ((Math.atan2(motionX, motionZ) * 180D) / 3.1415927410125732D);
 
-		for (rotationPitch = (float) ((Math.atan2(motionY, magnitude) * 180D) / 3.1415927410125732D); rotationPitch
-				- prevRotationPitch < -180F; prevRotationPitch -= 360F) {
+		for (rotationPitch = (float) ((Math.atan2(motionY, magnitude) * 180D) / 3.1415927410125732D); rotationPitch - prevRotationPitch < -180F; prevRotationPitch -= 360F)
+		{
 		}
 
-		for (; rotationPitch - prevRotationPitch >= 180F; prevRotationPitch += 360F) {
+		for (; rotationPitch - prevRotationPitch >= 180F; prevRotationPitch += 360F)
+		{
 		}
 
-		for (; rotationYaw - prevRotationYaw < -180F; prevRotationYaw -= 360F) {
+		for (; rotationYaw - prevRotationYaw < -180F; prevRotationYaw -= 360F)
+		{
 		}
 
-		for (; rotationYaw - prevRotationYaw >= 180F; prevRotationYaw += 360F) {
+		for (; rotationYaw - prevRotationYaw >= 180F; prevRotationYaw += 360F)
+		{
 		}
 
-		rotationPitch = prevRotationPitch + (rotationPitch - prevRotationPitch)
-				* 0.2F;
+		rotationPitch = prevRotationPitch + (rotationPitch - prevRotationPitch) * 0.2F;
 		rotationYaw = prevRotationYaw + (rotationYaw - prevRotationYaw) * 0.2F;
 		final float speed = 0.99F;
 
-		if (handleWaterMovement()) {
+		if (handleWaterMovement())
+		{
 			setDead();
 			// Bullets can't go through water, silly!
 			// for(int k = 0; k < 4; k++)
@@ -481,7 +493,8 @@ public class EntityBullet extends Entity implements IProjectile {
 	 * )
 	 */
 	@Override
-	public void writeEntityToNBT(final NBTTagCompound tagCompound) {
+	public void writeEntityToNBT(final NBTTagCompound tagCompound)
+	{
 		tagCompound.setShort("xTile", (short) xTile);
 		tagCompound.setShort("yTile", (short) yTile);
 		tagCompound.setShort("zTile", (short) zTile);
@@ -497,7 +510,8 @@ public class EntityBullet extends Entity implements IProjectile {
 	 * NBTTagCompound)
 	 */
 	@Override
-	public void readEntityFromNBT(final NBTTagCompound tagCompound) {
+	public void readEntityFromNBT(final NBTTagCompound tagCompound)
+	{
 		xTile = tagCompound.getShort("xTile");
 		yTile = tagCompound.getShort("yTile");
 		zTile = tagCompound.getShort("zTile");
@@ -514,22 +528,20 @@ public class EntityBullet extends Entity implements IProjectile {
 	 * player.EntityPlayer)
 	 */
 	@Override
-	public void onCollideWithPlayer(final EntityPlayer player) {
-		if (!worldObj.isRemote && inGround && arrowShake <= 0) {
-			boolean flag = canBePickedUp == 1 || canBePickedUp == 2
-					&& player.capabilities.isCreativeMode;
+	public void onCollideWithPlayer(final EntityPlayer player)
+	{
+		if (!worldObj.isRemote && inGround && arrowShake <= 0)
+		{
+			boolean flag = canBePickedUp == 1 || canBePickedUp == 2 && player.capabilities.isCreativeMode;
 
-			if (canBePickedUp == 1
-					&& !player.inventory.addItemStackToInventory(new ItemStack(
-							ConfigItems.itemMusketRound, 1))) {
+			if (canBePickedUp == 1 && !player.inventory.addItemStackToInventory(new ItemStack(ConfigItems.itemMusketRound, 1)))
+			{
 				flag = false;
 			}
 
-			if (flag) {
-				playSound(
-						"random.pop",
-						0.2F,
-						((rand.nextFloat() - rand.nextFloat()) * 0.7F + 1.0F) * 2.0F);
+			if (flag)
+			{
+				playSound("random.pop", 0.2F, ((rand.nextFloat() - rand.nextFloat()) * 0.7F + 1.0F) * 2.0F);
 				player.onItemPickup(this, 1);
 				setDead();
 			}
@@ -542,7 +554,8 @@ public class EntityBullet extends Entity implements IProjectile {
 	 * @see net.minecraft.entity.Entity#canTriggerWalking()
 	 */
 	@Override
-	protected boolean canTriggerWalking() {
+	protected boolean canTriggerWalking()
+	{
 		return false;
 	}
 
@@ -553,7 +566,8 @@ public class EntityBullet extends Entity implements IProjectile {
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public float getShadowSize() {
+	public float getShadowSize()
+	{
 		return 0.0F;
 	}
 
@@ -563,7 +577,8 @@ public class EntityBullet extends Entity implements IProjectile {
 	 * @see net.minecraft.entity.Entity#canAttackWithItem()
 	 */
 	@Override
-	public boolean canAttackWithItem() {
+	public boolean canAttackWithItem()
+	{
 		return false;
 	}
 }

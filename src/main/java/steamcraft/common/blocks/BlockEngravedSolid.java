@@ -39,7 +39,8 @@ import cpw.mods.fml.relauncher.SideOnly;
  * 
  * @author Surseance (Johnny Eatmon)
  */
-public class BlockEngravedSolid extends Block {
+public class BlockEngravedSolid extends Block
+{
 
 	/** The icon. */
 	private IIcon[] icon = new IIcon[9];
@@ -51,7 +52,8 @@ public class BlockEngravedSolid extends Block {
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(int side, int metadata) {
+	public IIcon getIcon(int side, int metadata)
+	{
 		return icon[metadata];
 	}
 
@@ -64,7 +66,8 @@ public class BlockEngravedSolid extends Block {
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister ir) {
+	public void registerBlockIcons(IIconRegister ir)
+	{
 		icon[0] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedBrass");
 		icon[1] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedCastIron");
 		icon[2] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedDiamond");
@@ -80,7 +83,8 @@ public class BlockEngravedSolid extends Block {
 	/**
 	 * Instantiates a new block engraved solid.
 	 */
-	public BlockEngravedSolid() {
+	public BlockEngravedSolid()
+	{
 		super(Material.rock);
 		setBlockName("blockEngravedSolid");
 		setHardness(3.0F);
@@ -96,7 +100,8 @@ public class BlockEngravedSolid extends Block {
 	 * @see net.minecraft.block.Block#damageDropped(int)
 	 */
 	@Override
-	public int damageDropped(int id) {
+	public int damageDropped(int id)
+	{
 		return id;
 	}
 
@@ -108,10 +113,10 @@ public class BlockEngravedSolid extends Block {
 	 * .World, int, int, int, net.minecraft.entity.Entity)
 	 */
 	@Override
-	public void onEntityCollidedWithBlock(World world, int x, int y, int z,
-			Entity entity) {
-		if ((world.getBlock(x, y, z) == this)
-				&& (world.getBlockMetadata(x, y, z) == 7)) {
+	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)
+	{
+		if ((world.getBlock(x, y, z) == this) && (world.getBlockMetadata(x, y, z) == 7))
+		{
 			entity.attackEntityFrom(DamageSource.magic, 1);
 		}
 	}
@@ -125,10 +130,10 @@ public class BlockEngravedSolid extends Block {
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void randomDisplayTick(World world, int x, int y, int z,
-			Random random) {
-		if ((world.getBlock(x, y, z) == this)
-				&& (world.getBlockMetadata(x, y, z) == 7)) {
+	public void randomDisplayTick(World world, int x, int y, int z, Random random)
+	{
+		if ((world.getBlock(x, y, z) == this) && (world.getBlockMetadata(x, y, z) == 7))
+		{
 			EffectUtils.sparkle(world, x, y, z, "reddust");
 		}
 	}
@@ -142,8 +147,10 @@ public class BlockEngravedSolid extends Block {
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void getSubBlocks(Item item, CreativeTabs tab, List l) {
-		for (int var4 = 0; var4 < 8; ++var4) {
+	public void getSubBlocks(Item item, CreativeTabs tab, List l)
+	{
+		for (int var4 = 0; var4 < 8; ++var4)
+		{
 			l.add(new ItemStack(ConfigBlocks.blockEngraved, 1, var4));
 		}
 	}

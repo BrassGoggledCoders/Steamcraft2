@@ -21,14 +21,16 @@ import net.minecraft.block.Block;
  * 
  * @author Surseance (Johnny Eatmon)
  */
-public class BlockCustomOreItem extends BaseItemBlockWithMetadata {
+public class BlockCustomOreItem extends BaseItemBlockWithMetadata
+{
 	/**
 	 * Instantiates a new block custom ore item.
 	 * 
 	 * @param block
 	 *            the block
 	 */
-	public BlockCustomOreItem(final Block block) {
+	public BlockCustomOreItem(final Block block)
+	{
 		super(block, block);
 	}
 }

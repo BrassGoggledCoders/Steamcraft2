@@ -22,7 +22,8 @@ import steamcraft.common.Steamcraft;
  * 
  * @author Surseance (Johnny Eatmon)
  */
-public class ItemMonocle extends BaseArmor {
+public class ItemMonocle extends BaseArmor
+{
 
 	/**
 	 * Instantiates a new item monocle.
@@ -34,8 +35,8 @@ public class ItemMonocle extends BaseArmor {
 	 * @param renderIndex
 	 *            the render index
 	 */
-	public ItemMonocle(final ItemArmor.ArmorMaterial armorMat,
-			final int armorType, final int renderIndex) {
+	public ItemMonocle(final ItemArmor.ArmorMaterial armorMat, final int armorType, final int renderIndex)
+	{
 		super(armorMat, armorType, renderIndex);
 		setMaxStackSize(1);
 		setCreativeTab(Steamcraft.tabSC2);

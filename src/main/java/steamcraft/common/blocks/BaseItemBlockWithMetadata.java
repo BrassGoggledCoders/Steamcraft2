@@ -11,15 +11,19 @@ import net.minecraft.item.ItemStack;
 /**
  * The Class BaseItemBlockWithMetadata.
  */
-public class BaseItemBlockWithMetadata extends ItemBlockWithMetadata {
+public class BaseItemBlockWithMetadata extends ItemBlockWithMetadata
+{
 
 	/**
 	 * Instantiates a new base item block with metadata.
-	 *
-	 * @param p_i45328_1_ the p_i45328_1_
-	 * @param block the block
+	 * 
+	 * @param p_i45328_1_
+	 *            the p_i45328_1_
+	 * @param block
+	 *            the block
 	 */
-	public BaseItemBlockWithMetadata(Block p_i45328_1_, Block block) {
+	public BaseItemBlockWithMetadata(Block p_i45328_1_, Block block)
+	{
 		super(p_i45328_1_, block);
 		setHasSubtypes(true);
 	}
@@ -30,7 +34,8 @@ public class BaseItemBlockWithMetadata extends ItemBlockWithMetadata {
 	 * @see net.minecraft.item.Item#getMetadata(int)
 	 */
 	@Override
-	public int getMetadata(int metadata) {
+	public int getMetadata(int metadata)
+	{
 		return metadata;
 	}
 
@@ -42,7 +47,8 @@ public class BaseItemBlockWithMetadata extends ItemBlockWithMetadata {
 	 * )
 	 */
 	@Override
-	public String getUnlocalizedName(ItemStack is) {
+	public String getUnlocalizedName(ItemStack is)
+	{
 		return super.getUnlocalizedName() + "." + is.getItemDamage();
 	}
 }

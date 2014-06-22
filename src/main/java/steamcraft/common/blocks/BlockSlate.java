@@ -33,7 +33,8 @@ import cpw.mods.fml.relauncher.SideOnly;
  * 
  * @author warlordjones
  */
-public class BlockSlate extends BaseBlock {
+public class BlockSlate extends BaseBlock
+{
 
 	/** The icon. */
 	private final IIcon[] icon = new IIcon[9];
@@ -41,7 +42,8 @@ public class BlockSlate extends BaseBlock {
 	/**
 	 * Instantiates a new block slate.
 	 */
-	public BlockSlate() {
+	public BlockSlate()
+	{
 		super(Material.rock);
 		setHardness(3.0F);
 		setResistance(10.0F);
@@ -56,7 +58,8 @@ public class BlockSlate extends BaseBlock {
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(final int side, final int metadata) {
+	public IIcon getIcon(final int side, final int metadata)
+	{
 		return icon[metadata];
 	}
 
@@ -69,7 +72,8 @@ public class BlockSlate extends BaseBlock {
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(final IIconRegister ir) {
+	public void registerBlockIcons(final IIconRegister ir)
+	{
 		// Raw
 		icon[0] = ir.registerIcon(LibInfo.PREFIX + "blockSlateRawBlue");
 		icon[1] = ir.registerIcon(LibInfo.PREFIX + "blockSlateRawBlack");
@@ -94,9 +98,10 @@ public class BlockSlate extends BaseBlock {
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void getSubBlocks(final Item item, final CreativeTabs tab,
-			final List l) {
-		for (int var4 = 0; var4 < 8; ++var4) {
+	public void getSubBlocks(final Item item, final CreativeTabs tab, final List l)
+	{
+		for (int var4 = 0; var4 < 8; ++var4)
+		{
 			l.add(new ItemStack(ConfigBlocks.blockSlate, 1, var4));
 		}
 	}

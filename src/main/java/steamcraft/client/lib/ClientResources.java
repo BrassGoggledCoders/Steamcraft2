@@ -23,7 +23,8 @@ package steamcraft.client.lib;
  * 
  * @author MrArcane111 & general3214
  */
-public class ClientResources { // TODO: Please move this to ClientHelper.java
+public class ClientResources
+{ // TODO: Please move this to ClientHelper.java
 	/** The Constant PREFIX_MOD. */
 	public static final String PREFIX_MOD = "steamcraft:";
 

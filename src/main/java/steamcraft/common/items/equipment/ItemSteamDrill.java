@@ -27,34 +27,41 @@ import cpw.mods.fml.relauncher.SideOnly;
 /**
  * The Class ItemSteamDrill.
  */
-public class ItemSteamDrill extends ItemDrill {
-	
+public class ItemSteamDrill extends ItemDrill
+{
+
 	/** The random. */
 	private Random random = new Random();
-	
+
 	/** The blocks effective against. */
-	public static Block[] blocksEffectiveAgainst = new Block[] {
-			Blocks.cobblestone, Blocks.dirt, Blocks.stone, Blocks.sand,
-			Blocks.clay, Blocks.ice, Blocks.snow, Blocks.netherrack,
-			Blocks.grass };
+	public static Block[] blocksEffectiveAgainst = new Block[] { Blocks.cobblestone, Blocks.dirt, Blocks.stone, Blocks.sand, Blocks.clay, Blocks.ice,
+			Blocks.snow, Blocks.netherrack, Blocks.grass };
 
 	/**
 	 * Instantiates a new item steam drill.
-	 *
-	 * @param mat the mat
+	 * 
+	 * @param mat
+	 *            the mat
 	 */
-	public ItemSteamDrill(ToolMaterial mat) {
+	public ItemSteamDrill(ToolMaterial mat)
+	{
 		super(mat);
 	}
 
-	/* (non-Javadoc)
-	 * @see steamcraft.common.items.equipment.ItemDrill#addInformation(net.minecraft.item.ItemStack, net.minecraft.entity.player.EntityPlayer, java.util.List, boolean)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * steamcraft.common.items.equipment.ItemDrill#addInformation(net.minecraft
+	 * .item.ItemStack, net.minecraft.entity.player.EntityPlayer,
+	 * java.util.List, boolean)
 	 */
 	@SuppressWarnings("all")
 	@Override
-	public void addInformation(ItemStack itemStack, EntityPlayer entityPlayer,
-			List list, boolean bool) {
-		if (!ClientHelper.isShiftKeyDown()) {
+	public void addInformation(ItemStack itemStack, EntityPlayer entityPlayer, List list, boolean bool)
+	{
+		if (!ClientHelper.isShiftKeyDown())
+		{
 			list.add(ClientHelper.shiftForInfo);
 			return;
 		}
@@ -62,34 +69,39 @@ public class ItemSteamDrill extends ItemDrill {
 		if (!itemStack.hasTagCompound())
 			itemStack.setTagCompound(new NBTTagCompound());
 
-		if (itemStack.getTagCompound().getBoolean("active")) {
+		if (itemStack.getTagCompound().getBoolean("active"))
+		{
 			list.add("\u00A7c" + "Active");
 			list.add("\u00A77" + "Will try to mine a 3x3 area if");
 			list.add("\u00A77" + "you have Steam Canisters in your inventory.");
-		} else {
+		}
+		else
+		{
 			list.add("\u00A7c" + "Inactive");
 			list.add("\u00A77" + "Sneak + Right Click to activate the drill.");
 			list.add("\u00A77" + "While active, it will try to mine a 3x3 area");
-			list.add("\u00A77"
-					+ "if you have Steam Canisters in your inventory.");
+			list.add("\u00A77" + "if you have Steam Canisters in your inventory.");
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.item.Item#onBlockStartBreak(net.minecraft.item.ItemStack, int, int, int, net.minecraft.entity.player.EntityPlayer)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * net.minecraft.item.Item#onBlockStartBreak(net.minecraft.item.ItemStack,
+	 * int, int, int, net.minecraft.entity.player.EntityPlayer)
 	 */
 	@Override
-	public boolean onBlockStartBreak(ItemStack itemStack, int x, int y, int z,
-			EntityPlayer player) {
+	public boolean onBlockStartBreak(ItemStack itemStack, int x, int y, int z, EntityPlayer player)
+	{
 		if (!itemStack.hasTagCompound())
 			itemStack.setTagCompound(new NBTTagCompound());
 
-		if (itemStack.getTagCompound().getBoolean("active")
-				&& this.searchForCanister(player)) {
+		if (itemStack.getTagCompound().getBoolean("active") && this.searchForCanister(player))
+		{
 			World world = player.worldObj;
 
-			MovingObjectPosition mop = PlayerUtils.getTargetBlock(world,
-					player, false);
+			MovingObjectPosition mop = PlayerUtils.getTargetBlock(world, player, false);
 
 			if (mop == null)
 				return super.onBlockStartBreak(itemStack, x, y, z, player);
@@ -97,7 +109,8 @@ public class ItemSteamDrill extends ItemDrill {
 			int xRange = 1;
 			int yRange = 1;
 			int zRange = 1;
-			switch (mop.sideHit) {
+			switch (mop.sideHit)
+			{
 			case 0:
 			case 1:
 				yRange = 0;
@@ -112,34 +125,28 @@ public class ItemSteamDrill extends ItemDrill {
 				break;
 			}
 			Block block = world.getBlock(x, y, z);
-			if ((block != null)
-					&& (block.getBlockHardness(world, x, y, z) != 0)
-					&& this.canHarvestBlock(block, itemStack)) {
+			if ((block != null) && (block.getBlockHardness(world, x, y, z) != 0) && this.canHarvestBlock(block, itemStack))
+			{
 				for (int xPos = x - xRange; xPos <= (x + xRange); xPos++)
 					for (int yPos = y - yRange; yPos <= (y + yRange); yPos++)
-						for (int zPos = z - zRange; zPos <= (z + zRange); zPos++) {
+						for (int zPos = z - zRange; zPos <= (z + zRange); zPos++)
+						{
 							Block nblock = world.getBlock(xPos, yPos, zPos);
 
-							if (block == nblock) {
-								int meta = world.getBlockMetadata(xPos, yPos,
-										zPos);
+							if (block == nblock)
+							{
+								int meta = world.getBlockMetadata(xPos, yPos, zPos);
 
-								ItemStack result = new ItemStack(
-										nblock.getItemDropped(meta,
-												this.random, 0),
-										nblock.quantityDropped(meta, 0,
-												this.random),
-										nblock.damageDropped(meta));
+								ItemStack result = new ItemStack(nblock.getItemDropped(meta, this.random, 0), nblock.quantityDropped(meta, 0,
+										this.random), nblock.damageDropped(meta));
 
-								if (nblock.getBlockHardness(world, xPos, yPos,
-										zPos) != 0.0D)
+								if (nblock.getBlockHardness(world, xPos, yPos, zPos) != 0.0D)
 									itemStack.damageItem(1, player);
 
-								if (!world.isRemote && (result != null)) {
+								if (!world.isRemote && (result != null))
+								{
 									world.setBlockToAir(xPos, yPos, zPos);
-									world.spawnEntityInWorld(new EntityItem(
-											world, xPos + 0.5, yPos + 0.5,
-											zPos + 0.5, result.copy()));
+									world.spawnEntityInWorld(new EntityItem(world, xPos + 0.5, yPos + 0.5, zPos + 0.5, result.copy()));
 								}
 								// Broke
 								// world.playAuxSFX(2001, xPos, yPos, zPos,
@@ -153,26 +160,29 @@ public class ItemSteamDrill extends ItemDrill {
 
 	/**
 	 * Search for canister.
-	 *
-	 * @param player the player
+	 * 
+	 * @param player
+	 *            the player
 	 * @return true, if successful
 	 */
-	private boolean searchForCanister(EntityPlayer player) {
-		if (!player.worldObj.isRemote) {
-			if (player.inventory.hasItem(ConfigItems.itemCanisterSteam)) {
+	private boolean searchForCanister(EntityPlayer player)
+	{
+		if (!player.worldObj.isRemote)
+		{
+			if (player.inventory.hasItem(ConfigItems.itemCanisterSteam))
+			{
 				int steamPerUse = 7;
 				int i = 0, j = 0;
 
-				while ((i < 36) && (j < steamPerUse)) {
+				while ((i < 36) && (j < steamPerUse))
+				{
 					if ((player.inventory.mainInventory[i] != null)
-							&& (player.inventory.mainInventory[i] == new ItemStack(
-									ConfigItems.itemCanisterSteam))) {
-						while ((player.inventory.mainInventory[i]
-								.getItemDamage() < ConfigItems.itemCanisterSteam
-								.getMaxDamage())
-								&& (j < steamPerUse)) {
-							player.inventory.mainInventory[i].damageItem(1,
-									player);
+							&& (player.inventory.mainInventory[i] == new ItemStack(ConfigItems.itemCanisterSteam)))
+					{
+						while ((player.inventory.mainInventory[i].getItemDamage() < ConfigItems.itemCanisterSteam.getMaxDamage())
+								&& (j < steamPerUse))
+						{
+							player.inventory.mainInventory[i].damageItem(1, player);
 							j++;
 						}
 					}
@@ -187,27 +197,35 @@ public class ItemSteamDrill extends ItemDrill {
 		return false;
 	}
 
-	/* (non-Javadoc)
-	 * @see steamcraft.common.items.equipment.ItemDrill#onBlockDestroyed(net.minecraft.item.ItemStack, net.minecraft.world.World, net.minecraft.block.Block, int, int, int, net.minecraft.entity.EntityLivingBase)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * steamcraft.common.items.equipment.ItemDrill#onBlockDestroyed(net.minecraft
+	 * .item.ItemStack, net.minecraft.world.World, net.minecraft.block.Block,
+	 * int, int, int, net.minecraft.entity.EntityLivingBase)
 	 */
 	@Override
-	public boolean onBlockDestroyed(ItemStack stack, World world,
-			Block p_150894_3_, int x, int y, int z, EntityLivingBase living) {
+	public boolean onBlockDestroyed(ItemStack stack, World world, Block p_150894_3_, int x, int y, int z, EntityLivingBase living)
+	{
 		stack.damageItem(1, living);
 		world.playSoundAtEntity(living, LibInfo.PREFIX + "drill", 1.0F, 1.0F);
-		world.spawnParticle("smoke", x + 0.5, y + 0.5, z + 0.5,
-				this.random.nextGaussian(), this.random.nextGaussian(),
-				this.random.nextGaussian());
+		world.spawnParticle("smoke", x + 0.5, y + 0.5, z + 0.5, this.random.nextGaussian(), this.random.nextGaussian(), this.random.nextGaussian());
 		return true;
 	}
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.item.Item#onItemRightClick(net.minecraft.item.ItemStack, net.minecraft.world.World, net.minecraft.entity.player.EntityPlayer)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * net.minecraft.item.Item#onItemRightClick(net.minecraft.item.ItemStack,
+	 * net.minecraft.world.World, net.minecraft.entity.player.EntityPlayer)
 	 */
 	@Override
-	public ItemStack onItemRightClick(ItemStack itemStack, World world,
-			EntityPlayer player) {
-		if (player.isSneaking()) {
+	public ItemStack onItemRightClick(ItemStack itemStack, World world, EntityPlayer player)
+	{
+		if (player.isSneaking())
+		{
 			if (!itemStack.hasTagCompound())
 				itemStack.setTagCompound(new NBTTagCompound());
 
@@ -218,22 +236,23 @@ public class ItemSteamDrill extends ItemDrill {
 				tag.setBoolean("active", true);
 			itemStack.setTagCompound(tag);
 
-		} else if (!world.isRemote) {
-			if (player.inventory.hasItem(ConfigItems.itemCanisterSteam)) {
+		}
+		else if (!world.isRemote)
+		{
+			if (player.inventory.hasItem(ConfigItems.itemCanisterSteam))
+			{
 				int i = 0;
 
-				while ((itemStack.getItemDamage() != 0) && (i < 36)) {
+				while ((itemStack.getItemDamage() != 0) && (i < 36))
+				{
 					if ((player.inventory.mainInventory[i] != null)
-							&& (player.inventory.mainInventory[i] == new ItemStack(
-									ConfigItems.itemCanisterSteam))) {
-						while ((player.inventory.mainInventory[i]
-								.getItemDamage() < ConfigItems.itemCanisterSteam
-								.getMaxDamage())
-								&& (itemStack.getItemDamage() > 0)) {
-							player.inventory.mainInventory[i].damageItem(1,
-									player);
-							itemStack
-									.setItemDamage(itemStack.getItemDamage() - 1);
+							&& (player.inventory.mainInventory[i] == new ItemStack(ConfigItems.itemCanisterSteam)))
+					{
+						while ((player.inventory.mainInventory[i].getItemDamage() < ConfigItems.itemCanisterSteam.getMaxDamage())
+								&& (itemStack.getItemDamage() > 0))
+						{
+							player.inventory.mainInventory[i].damageItem(1, player);
+							itemStack.setItemDamage(itemStack.getItemDamage() - 1);
 						}
 					}
 
@@ -244,14 +263,21 @@ public class ItemSteamDrill extends ItemDrill {
 		return itemStack;
 	}
 
-	/* (non-Javadoc)
-	 * @see steamcraft.common.items.equipment.ItemDrill#canHarvestBlock(net.minecraft.block.Block, net.minecraft.item.ItemStack)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * steamcraft.common.items.equipment.ItemDrill#canHarvestBlock(net.minecraft
+	 * .block.Block, net.minecraft.item.ItemStack)
 	 */
 	@SuppressWarnings("all")
 	@Override
-	public boolean canHarvestBlock(Block block, ItemStack stack) {
-		for (Block element : ItemSteamDrill.blocksEffectiveAgainst) {
-			if (element == block) {
+	public boolean canHarvestBlock(Block block, ItemStack stack)
+	{
+		for (Block element : ItemSteamDrill.blocksEffectiveAgainst)
+		{
+			if (element == block)
+			{
 				return true;
 			}
 		}
@@ -259,32 +285,44 @@ public class ItemSteamDrill extends ItemDrill {
 		return false;
 	}
 
-	/* (non-Javadoc)
-	 * @see steamcraft.common.items.equipment.ItemDrill#hitEntity(net.minecraft.item.ItemStack, net.minecraft.entity.EntityLivingBase, net.minecraft.entity.EntityLivingBase)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * steamcraft.common.items.equipment.ItemDrill#hitEntity(net.minecraft.item
+	 * .ItemStack, net.minecraft.entity.EntityLivingBase,
+	 * net.minecraft.entity.EntityLivingBase)
 	 */
 	@Override
-	public boolean hitEntity(ItemStack stack, EntityLivingBase hitEntity,
-			EntityLivingBase player) {
+	public boolean hitEntity(ItemStack stack, EntityLivingBase hitEntity, EntityLivingBase player)
+	{
 		stack.damageItem(2, player);
-		hitEntity.attackEntityFrom(
-				DamageSource.causePlayerDamage((EntityPlayer) player), 2);
+		hitEntity.attackEntityFrom(DamageSource.causePlayerDamage((EntityPlayer) player), 2);
 		return false;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see steamcraft.common.items.equipment.ItemDrill#isFull3D()
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public boolean isFull3D() {
+	public boolean isFull3D()
+	{
 		return true;
 	}
 
-	/* (non-Javadoc)
-	 * @see steamcraft.common.items.equipment.ItemDrill#getDigSpeed(net.minecraft.item.ItemStack, net.minecraft.block.Block, int)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * steamcraft.common.items.equipment.ItemDrill#getDigSpeed(net.minecraft
+	 * .item.ItemStack, net.minecraft.block.Block, int)
 	 */
 	@Override
-	public float getDigSpeed(ItemStack stack, Block block, int metadata) {
+	public float getDigSpeed(ItemStack stack, Block block, int metadata)
+	{
 		if (this.canHarvestBlock(block, stack))
 			return 8.0F;
 		return 1.0F;

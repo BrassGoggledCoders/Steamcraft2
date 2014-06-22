@@ -26,7 +26,8 @@ import cpw.mods.fml.relauncher.SideOnly;
  * @author Surseance (Johnny Eatmon) & Falkok15
  */
 @SideOnly(Side.CLIENT)
-public class ModelLightningRod extends ModelBase {
+public class ModelLightningRod extends ModelBase
+{
 
 	/** The Shape1. */
 	ModelRenderer Shape1;
@@ -93,7 +94,8 @@ public class ModelLightningRod extends ModelBase {
 	/**
 	 * Instantiates a new model lightning rod.
 	 */
-	public ModelLightningRod() {
+	public ModelLightningRod()
+	{
 		textureWidth = 64;
 		textureHeight = 32;
 		Shape1 = new ModelRenderer(this, 0, 0);
@@ -232,8 +234,8 @@ public class ModelLightningRod extends ModelBase {
 	 * float, float, float, float, float, float)
 	 */
 	@Override
-	public void render(final Entity entity, final float f, final float f1,
-			final float f2, final float f3, final float f4, final float f5) {
+	public void render(final Entity entity, final float f, final float f1, final float f2, final float f3, final float f4, final float f5)
+	{
 		super.render(entity, f, f1, f2, f3, f4, f5);
 		setRotationAngles(f, f1, f2, f3, f4, f5, entity);
 		Shape1.render(f5);
@@ -272,8 +274,8 @@ public class ModelLightningRod extends ModelBase {
 	 * @param z
 	 *            the z
 	 */
-	private void setRotation(final ModelRenderer model, final float x,
-			final float y, final float z) {
+	private void setRotation(final ModelRenderer model, final float x, final float y, final float z)
+	{
 		model.rotateAngleX = x;
 		model.rotateAngleY = y;
 		model.rotateAngleZ = z;
@@ -286,9 +288,8 @@ public class ModelLightningRod extends ModelBase {
 	 * float, float, float, float, net.minecraft.entity.Entity)
 	 */
 	@Override
-	public void setRotationAngles(final float f, final float f1,
-			final float f2, final float f3, final float f4, final float f5,
-			final Entity entity) {
+	public void setRotationAngles(final float f, final float f1, final float f2, final float f3, final float f4, final float f5, final Entity entity)
+	{
 		super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
 	}
 }

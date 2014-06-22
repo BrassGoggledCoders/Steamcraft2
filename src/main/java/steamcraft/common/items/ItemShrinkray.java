@@ -21,25 +21,28 @@ import boilerplate.common.utils.Utils;
 /**
  * The Class ItemShrinkray.
  */
-public class ItemShrinkray extends BaseItem {
-	
+public class ItemShrinkray extends BaseItem
+{
+
 	/** The ray sound. */
 	String raySound;
 
 	/** The ray. */
 	@SuppressWarnings("all")
 	static HashMap<String, Object> ray = new HashMap();
-	
+
 	/** The sound delay. */
 	@SuppressWarnings("all")
 	static HashMap<String, Long> soundDelay = new HashMap();
 
 	/**
 	 * Instantiates a new item shrinkray.
-	 *
-	 * @param raySound the ray sound
+	 * 
+	 * @param raySound
+	 *            the ray sound
 	 */
-	public ItemShrinkray(String raySound) {
+	public ItemShrinkray(String raySound)
+	{
 		super();
 		this.raySound = raySound;
 		setCreativeTab(Steamcraft.tabSC2);
@@ -48,15 +51,19 @@ public class ItemShrinkray extends BaseItem {
 		setUnlocalizedName("itemShrinkray");
 	}
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.item.Item#onItemRightClick(net.minecraft.item.ItemStack, net.minecraft.world.World, net.minecraft.entity.player.EntityPlayer)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * net.minecraft.item.Item#onItemRightClick(net.minecraft.item.ItemStack,
+	 * net.minecraft.world.World, net.minecraft.entity.player.EntityPlayer)
 	 */
 	@SuppressWarnings("all")
 	@Override
-	public ItemStack onItemRightClick(ItemStack stack, World world,
-			EntityPlayer player) {
-		MovingObjectPosition mop = PlayerUtils.getTargetBlock(world, player,
-				false); // Grabs vector
+	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
+	{
+		MovingObjectPosition mop = PlayerUtils.getTargetBlock(world, player, false); // Grabs
+																						// vector
 		Vec3 vec3 = player.getLookVec();
 		double tx = player.posX + vec3.xCoord * 10.0D;
 		double ty = player.posY + vec3.yCoord * 10.0D;
@@ -72,23 +79,23 @@ public class ItemShrinkray extends BaseItem {
 		}
 
 		// For RAY GUN sounds
-		if (soundDelay.get(player) == null) {
+		if (soundDelay.get(player) == null)
+		{
 			soundDelay.put(player.getCommandSenderName(), Long.valueOf(0L));
 		}
-		if ((!world.isRemote)
-				&& (soundDelay.get(player.getCommandSenderName()).longValue() < System
-						.currentTimeMillis())) {
-			world.playSoundEffect(tx, ty, tz, LibInfo.PREFIX + "raygun", 0.35F,
-					1.0F);
-			soundDelay.put(player.getCommandSenderName(),
-					Long.valueOf(System.currentTimeMillis() + 1200L));
-		} else {
+		if ((!world.isRemote) && (soundDelay.get(player.getCommandSenderName()).longValue() < System.currentTimeMillis()))
+		{
+			world.playSoundEffect(tx, ty, tz, LibInfo.PREFIX + "raygun", 0.35F, 1.0F);
+			soundDelay.put(player.getCommandSenderName(), Long.valueOf(System.currentTimeMillis() + 1200L));
+		}
+		else
+		{
 			soundDelay.put(player.getCommandSenderName(), Long.valueOf(0L));
 		}
-		if (world.isRemote) {
-			ray.put(player.getCommandSenderName(), Steamcraft.proxy.rayFX(
-					world, player, tx, ty, tz, 2, false, impact > 0 ? 2.0F
-							: 0.0F, ray.get(player), impact, Color.BLUE));
+		if (world.isRemote)
+		{
+			ray.put(player.getCommandSenderName(),
+					Steamcraft.proxy.rayFX(world, player, tx, ty, tz, 2, false, impact > 0 ? 2.0F : 0.0F, ray.get(player), impact, Color.BLUE));
 		}
 		/*
 		 * if(mop != null && mop.typeOfHit ==
@@ -96,19 +103,17 @@ public class ItemShrinkray extends BaseItem {
 		 * instanceof EntityEnderman)) { mop.entityHit.setFire(500);
 		 * stack.damageItem(1, player); } }
 		 */
-		if (mop != null
-				&& mop.typeOfHit == MovingObjectPosition.MovingObjectType.BLOCK) {
+		if (mop != null && mop.typeOfHit == MovingObjectPosition.MovingObjectType.BLOCK)
+		{
 			int x = mop.blockX;
 			int y = mop.blockY;
 			int z = mop.blockZ;
 			// this.spawnParticles(world, x, y, z);
 
-			if (!world.isAirBlock(x, y, z)
-					&& !Utils.getBlockUnbreakable(world, x, y, z)) {
-				player.worldObj.spawnEntityInWorld(new EntityMinedBlock(
-						player.worldObj, x + 0.5F, y + 0.5F, z + 0.5F, world
-								.getBlock(x, y, z), world.getBlockMetadata(x,
-								y, z), false));
+			if (!world.isAirBlock(x, y, z) && !Utils.getBlockUnbreakable(world, x, y, z))
+			{
+				player.worldObj.spawnEntityInWorld(new EntityMinedBlock(player.worldObj, x + 0.5F, y + 0.5F, z + 0.5F, world.getBlock(x, y, z), world
+						.getBlockMetadata(x, y, z), false));
 				// ArrayList<ItemStack> items = world.getBlock(x, y,
 				// z).getDrops(world, x, y, z, 0, 0);
 				// for(ItemStack drops : items)

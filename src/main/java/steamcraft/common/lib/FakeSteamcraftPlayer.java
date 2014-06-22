@@ -23,41 +23,57 @@ import com.mojang.authlib.GameProfile;
 // TODO: Auto-generated Javadoc
 /**
  * The Class FakeSteamcraftPlayer.
- *
+ * 
  * @author Surseance (Johnny Eatmon)
  */
-public class FakeSteamcraftPlayer extends EntityPlayer {
-	
+public class FakeSteamcraftPlayer extends EntityPlayer
+{
+
 	/**
 	 * Instantiates a new fake steamcraft player.
-	 *
-	 * @param world the world
-	 * @param profile the profile
+	 * 
+	 * @param world
+	 *            the world
+	 * @param profile
+	 *            the profile
 	 */
-	public FakeSteamcraftPlayer(World world, GameProfile profile) {
+	public FakeSteamcraftPlayer(World world, GameProfile profile)
+	{
 		super(world, profile);
 	}
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.command.ICommandSender#addChatMessage(net.minecraft.util.IChatComponent)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * net.minecraft.command.ICommandSender#addChatMessage(net.minecraft.util
+	 * .IChatComponent)
 	 */
 	@Override
-	public void addChatMessage(IChatComponent chat) {
+	public void addChatMessage(IChatComponent chat)
+	{
 	}
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.command.ICommandSender#canCommandSenderUseCommand(int, java.lang.String)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.minecraft.command.ICommandSender#canCommandSenderUseCommand(int,
+	 * java.lang.String)
 	 */
 	@Override
-	public boolean canCommandSenderUseCommand(int i, String s) {
+	public boolean canCommandSenderUseCommand(int i, String s)
+	{
 		return false;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see net.minecraft.command.ICommandSender#getPlayerCoordinates()
 	 */
 	@Override
-	public ChunkCoordinates getPlayerCoordinates() {
+	public ChunkCoordinates getPlayerCoordinates()
+	{
 		return null;
 	}
 }

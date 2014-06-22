@@ -22,14 +22,15 @@ import cpw.mods.fml.common.registry.EntityRegistry;
  * 
  * @author Surseance (Johnny Eatmon)
  */
-public class ConfigEntities {
+public class ConfigEntities
+{
 
 	/**
 	 * Inits the.
 	 */
-	public static void init() {
-		EntityRegistry.registerGlobalEntityID(EntityBullet.class, "Bullet",
-				EntityRegistry.findGlobalUniqueEntityId());
+	public static void init()
+	{
+		EntityRegistry.registerGlobalEntityID(EntityBullet.class, "Bullet", EntityRegistry.findGlobalUniqueEntityId());
 		// EntityRegistry.registerModEntity(EntityBullet.class, "Bullet",
 		// Config.entBulletId, Steamcraft.instance, 64, 20, true);
 	}
@@ -37,6 +38,7 @@ public class ConfigEntities {
 	/**
 	 * Inits the entity spawns.
 	 */
-	public static void initEntitySpawns() {
+	public static void initEntitySpawns()
+	{
 	}
 }

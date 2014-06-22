@@ -28,23 +28,30 @@ import cpw.mods.fml.common.IWorldGenerator;
 // TODO: Auto-generated Javadoc
 /**
  * The Class SteamcraftWorldGenerator.
- *
+ * 
  * @author Surseance
  */
-public class SteamcraftWorldGenerator implements IWorldGenerator {
-	
-	/* (non-Javadoc)
-	 * @see cpw.mods.fml.common.IWorldGenerator#generate(java.util.Random, int, int, net.minecraft.world.World, net.minecraft.world.chunk.IChunkProvider, net.minecraft.world.chunk.IChunkProvider)
+public class SteamcraftWorldGenerator implements IWorldGenerator
+{
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see cpw.mods.fml.common.IWorldGenerator#generate(java.util.Random, int,
+	 * int, net.minecraft.world.World, net.minecraft.world.chunk.IChunkProvider,
+	 * net.minecraft.world.chunk.IChunkProvider)
 	 */
 	@Override
-	public void generate(Random random, int chunkX, int chunkZ, World world,
-			IChunkProvider generator, IChunkProvider chunk) {
+	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider generator, IChunkProvider chunk)
+	{
 		// int blockChunkX = chunkX * 16;
 		// int blockChunkZ = chunkZ * 16;
 
-		switch (world.provider.dimensionId) {
+		switch (world.provider.dimensionId)
+		{
 		case -1:
-			if (Config.netherGenerationEnabled) {
+			if (Config.netherGenerationEnabled)
+			{
 				this.generateNether(world, random, chunkX, chunkZ);
 			}
 			break;
@@ -55,7 +62,8 @@ public class SteamcraftWorldGenerator implements IWorldGenerator {
 			// }
 			break;
 		case 1:
-			if (Config.endGenerationEnabled) {
+			if (Config.endGenerationEnabled)
+			{
 				this.generateEnd(world, random, chunkX, chunkZ);
 			}
 			break;
@@ -65,55 +73,59 @@ public class SteamcraftWorldGenerator implements IWorldGenerator {
 	// TODO: Add Config Options for ore vein size
 	/**
 	 * Generate surface.
-	 *
-	 * @param world the world
-	 * @param random the random
-	 * @param chunkX the chunk x
-	 * @param chunkZ the chunk z
+	 * 
+	 * @param world
+	 *            the world
+	 * @param random
+	 *            the random
+	 * @param chunkX
+	 *            the chunk x
+	 * @param chunkZ
+	 *            the chunk z
 	 */
-	private void generateSurface(World world, Random random, int chunkX,
-			int chunkZ) {
+	private void generateSurface(World world, Random random, int chunkX, int chunkZ)
+	{
 		if (Config.aluminumOreGenEnabled)
-			addOreSpawn(ConfigBlocks.blockCustomOre, 0, Blocks.stone, world,
-					random, chunkX, chunkZ, 16, 16, 3 + random.nextInt(3),
+			addOreSpawn(ConfigBlocks.blockCustomOre, 0, Blocks.stone, world, random, chunkX, chunkZ, 16, 16, 3 + random.nextInt(3),
 					Config.aluminumChance, 15, Config.aluminumHeight);
 		if (Config.copperOreGenEnabled)
-			addOreSpawn(ConfigBlocks.blockCustomOre, 1, Blocks.stone, world,
-					random, chunkX, chunkZ, 16, 16, 6 + random.nextInt(3),
+			addOreSpawn(ConfigBlocks.blockCustomOre, 1, Blocks.stone, world, random, chunkX, chunkZ, 16, 16, 6 + random.nextInt(3),
 					Config.copperChance, 15, Config.copperHeight);
 		if (Config.tinOreGenEnabled)
-			addOreSpawn(ConfigBlocks.blockCustomOre, 2, Blocks.stone, world,
-					random, chunkX, chunkZ, 16, 16, 4 + random.nextInt(3),
-					Config.tinChance, 15, Config.tinHeight);
+			addOreSpawn(ConfigBlocks.blockCustomOre, 2, Blocks.stone, world, random, chunkX, chunkZ, 16, 16, 4 + random.nextInt(3), Config.tinChance,
+					15, Config.tinHeight);
 		if (Config.zincOreGenEnabled)
-			addOreSpawn(ConfigBlocks.blockCustomOre, 3, Blocks.stone, world,
-					random, chunkX, chunkZ, 16, 16, 3 + random.nextInt(3),
+			addOreSpawn(ConfigBlocks.blockCustomOre, 3, Blocks.stone, world, random, chunkX, chunkZ, 16, 16, 3 + random.nextInt(3),
 					Config.zincChance, 15, Config.zincHeight);
 		if (Config.uraniumOreGenEnabled)
-			addOreSpawn(ConfigBlocks.blockCustomOre, 4, Blocks.stone, world,
-					random, chunkX, chunkZ, 16, 16, 1 + random.nextInt(3),
+			addOreSpawn(ConfigBlocks.blockCustomOre, 4, Blocks.stone, world, random, chunkX, chunkZ, 16, 16, 1 + random.nextInt(3),
 					Config.uraniumChance, 15, Config.uraniumHeight);
 		if (Config.brimstoneOreGenEnabled)
-			addOreSpawn(ConfigBlocks.blockCustomOre, 5, Blocks.stone, world,
-					random, chunkX, chunkZ, 16, 16, 3 + random.nextInt(3),
+			addOreSpawn(ConfigBlocks.blockCustomOre, 5, Blocks.stone, world, random, chunkX, chunkZ, 16, 16, 3 + random.nextInt(3),
 					Config.brimstoneChance, 15, Config.brimstoneHeight);
 		if (Config.phosphateOreGenEnabled)
-			addOreSpawn(ConfigBlocks.blockCustomOre, 6, Blocks.stone, world,
-					random, chunkX, chunkZ, 16, 16, 3 + random.nextInt(3),
+			addOreSpawn(ConfigBlocks.blockCustomOre, 6, Blocks.stone, world, random, chunkX, chunkZ, 16, 16, 3 + random.nextInt(3),
 					Config.phosphateChance, 15, Config.phosphateHeight);
 	}
 
 	/**
 	 * Generate end.
-	 *
-	 * @param world the world
-	 * @param random the random
-	 * @param chunkX the chunk x
-	 * @param chunkZ the chunk z
+	 * 
+	 * @param world
+	 *            the world
+	 * @param random
+	 *            the random
+	 * @param chunkX
+	 *            the chunk x
+	 * @param chunkZ
+	 *            the chunk z
 	 */
-	private void generateEnd(World world, Random random, int chunkX, int chunkZ) {
-		if (Config.netherEtheriumCrystalGenEnabled) {
-			for (int chance = 0; chance < Config.netherEtheriumCrystalChance; chance++) {
+	private void generateEnd(World world, Random random, int chunkX, int chunkZ)
+	{
+		if (Config.netherEtheriumCrystalGenEnabled)
+		{
+			for (int chance = 0; chance < Config.netherEtheriumCrystalChance; chance++)
+			{
 				random.nextInt(Config.netherEtheriumCrystalHeight);
 			}
 		}
@@ -121,16 +133,22 @@ public class SteamcraftWorldGenerator implements IWorldGenerator {
 
 	/**
 	 * Generate nether.
-	 *
-	 * @param world the world
-	 * @param random the random
-	 * @param chunkX the chunk x
-	 * @param chunkZ the chunk z
+	 * 
+	 * @param world
+	 *            the world
+	 * @param random
+	 *            the random
+	 * @param chunkX
+	 *            the chunk x
+	 * @param chunkZ
+	 *            the chunk z
 	 */
-	private void generateNether(World world, Random random, int chunkX,
-			int chunkZ) {
-		if (Config.endEtheriumCrystalGenEnabled) {
-			for (int chance = 0; chance < Config.endEtheriumCrystalChance; chance++) {
+	private void generateNether(World world, Random random, int chunkX, int chunkZ)
+	{
+		if (Config.endEtheriumCrystalGenEnabled)
+		{
+			for (int chance = 0; chance < Config.endEtheriumCrystalChance; chance++)
+			{
 				random.nextInt(Config.endEtheriumCrystalHeight);
 			}
 		}
@@ -140,24 +158,37 @@ public class SteamcraftWorldGenerator implements IWorldGenerator {
 	 * Adds an Ore Spawn to Minecraft. Simply register all Ores to spawn with
 	 * this method in your Generation method in your IWorldGeneration extending
 	 * Class
-	 *
-	 * @param block the block
-	 * @param meta the meta
-	 * @param blockToGenIn the block to gen in
-	 * @param world the world
-	 * @param random the random
-	 * @param blockXPos the block x pos
-	 * @param blockZPos the block z pos
-	 * @param maxX the max x
-	 * @param maxZ the max z
-	 * @param maxVeinSize the max vein size
-	 * @param chancesToSpawn the chances to spawn
-	 * @param minY the min y
-	 * @param maxY the max y
+	 * 
+	 * @param block
+	 *            the block
+	 * @param meta
+	 *            the meta
+	 * @param blockToGenIn
+	 *            the block to gen in
+	 * @param world
+	 *            the world
+	 * @param random
+	 *            the random
+	 * @param blockXPos
+	 *            the block x pos
+	 * @param blockZPos
+	 *            the block z pos
+	 * @param maxX
+	 *            the max x
+	 * @param maxZ
+	 *            the max z
+	 * @param maxVeinSize
+	 *            the max vein size
+	 * @param chancesToSpawn
+	 *            the chances to spawn
+	 * @param minY
+	 *            the min y
+	 * @param maxY
+	 *            the max y
 	 */
-	public void addOreSpawn(Block block, int meta, Block blockToGenIn,
-			World world, Random random, int blockXPos, int blockZPos, int maxX,
-			int maxZ, int maxVeinSize, int chancesToSpawn, int minY, int maxY) {
+	public void addOreSpawn(Block block, int meta, Block blockToGenIn, World world, Random random, int blockXPos, int blockZPos, int maxX, int maxZ,
+			int maxVeinSize, int chancesToSpawn, int minY, int maxY)
+	{
 		assert maxY > minY : "The maximum Y must be greater than the Minimum Y";
 		assert maxX > 0 && maxX <= 16 : "addOreSpawn: The Maximum X must be greater than 0 and less than 16";
 		assert minY > 0 : "addOreSpawn: The Minimum Y must be greater than 0";
@@ -165,12 +196,12 @@ public class SteamcraftWorldGenerator implements IWorldGenerator {
 		assert maxZ > 0 && maxZ <= 16 : "addOreSpawn: The Maximum Z must be greater than 0 and less than 16";
 
 		int diffBtwnMinMaxY = maxY - minY;
-		for (int x = 0; x < chancesToSpawn; x++) {
+		for (int x = 0; x < chancesToSpawn; x++)
+		{
 			int posX = blockXPos + random.nextInt(maxX);
 			int posY = minY + random.nextInt(diffBtwnMinMaxY);
 			int posZ = blockZPos + random.nextInt(maxZ);
-			(new WorldGenMinable(block, meta, maxVeinSize, blockToGenIn))
-					.generate(world, random, posX, posY, posZ);
+			(new WorldGenMinable(block, meta, maxVeinSize, blockToGenIn)).generate(world, random, posX, posY, posZ);
 		}
 	}
 }

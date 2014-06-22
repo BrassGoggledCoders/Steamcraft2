@@ -25,10 +25,11 @@ import boilerplate.common.utils.PlayerUtils;
 // TODO: Auto-generated Javadoc
 /**
  * (likely needs to be updated for to the new Netty system).
- *
+ * 
  * @author Surseance (Johnny Eatmon)
  */
-public abstract class NetworkTile extends TileEntity {
+public abstract class NetworkTile extends TileEntity
+{
 
 	/** The marked for resend. */
 	private boolean markedForResend;
@@ -38,7 +39,8 @@ public abstract class NetworkTile extends TileEntity {
 	 * 
 	 * @return true, if is marked for resend
 	 */
-	public boolean isMarkedForResend() {
+	public boolean isMarkedForResend()
+	{
 		return markedForResend;
 	}
 
@@ -48,18 +50,19 @@ public abstract class NetworkTile extends TileEntity {
 	 * @param markedForResend
 	 *            the new marked for resend
 	 */
-	public void setMarkedForResend(boolean markedForResend) {
+	public void setMarkedForResend(boolean markedForResend)
+	{
 		this.markedForResend = markedForResend;
 	}
 
 	/**
 	 * Send packet.
 	 */
-	public void sendPacket() {
+	public void sendPacket()
+	{
 		Packet packet = getDescriptionPacket();
 		// packet.isChunkDataPacket = false;
-		PlayerUtils.sendToPlayers(packet, worldObj, xCoord, yCoord, zCoord,
-				null);
+		PlayerUtils.sendToPlayers(packet, worldObj, xCoord, yCoord, zCoord, null);
 	}
 
 	/*
@@ -68,11 +71,13 @@ public abstract class NetworkTile extends TileEntity {
 	 * @see net.minecraft.tileentity.TileEntity#getDescriptionPacket()
 	 */
 	@Override
-	public Packet getDescriptionPacket() {
+	public Packet getDescriptionPacket()
+	{
 		ByteArrayOutputStream byteStream = new ByteArrayOutputStream();
 		DataOutputStream dataStream = new DataOutputStream(byteStream);
 
-		try {
+		try
+		{
 			dataStream.writeInt(10);
 
 			dataStream.writeInt(xCoord);
@@ -80,7 +85,8 @@ public abstract class NetworkTile extends TileEntity {
 			dataStream.writeInt(zCoord);
 
 			writePacket(dataStream);
-		} catch (IOException e) {
+		} catch (IOException e)
+		{
 			e.printStackTrace();
 		}
 
@@ -100,10 +106,12 @@ public abstract class NetworkTile extends TileEntity {
 	 * @see net.minecraft.tileentity.TileEntity#updateEntity()
 	 */
 	@Override
-	public void updateEntity() {
+	public void updateEntity()
+	{
 		super.updateEntity();
 
-		if ((!worldObj.isRemote) && (isMarkedForResend())) {
+		if ((!worldObj.isRemote) && (isMarkedForResend()))
+		{
 			setMarkedForResend(false);
 		}
 	}
@@ -116,8 +124,7 @@ public abstract class NetworkTile extends TileEntity {
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
 	 */
-	public abstract void writePacket(DataOutputStream dataStream)
-			throws IOException;
+	public abstract void writePacket(DataOutputStream dataStream) throws IOException;
 
 	/**
 	 * Read packet.
@@ -127,8 +134,7 @@ public abstract class NetworkTile extends TileEntity {
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
 	 */
-	public abstract void readPacket(DataInputStream dataStream)
-			throws IOException;
+	public abstract void readPacket(DataInputStream dataStream) throws IOException;
 
 	/**
 	 * Read packet from client.
@@ -138,6 +144,5 @@ public abstract class NetworkTile extends TileEntity {
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
 	 */
-	public abstract void readPacketFromClient(DataInputStream dataStream)
-			throws IOException;
+	public abstract void readPacketFromClient(DataInputStream dataStream) throws IOException;
 }

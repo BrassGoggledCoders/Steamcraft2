@@ -28,15 +28,15 @@ import cpw.mods.fml.relauncher.SideOnly;
 // TODO: Auto-generated Javadoc
 /**
  * The Class GuiGuideBook.
- *
+ * 
  * @author Surseance
  */
 @SideOnly(Side.CLIENT)
-public class GuiGuideBook extends GuiScreen {
-	
+public class GuiGuideBook extends GuiScreen
+{
+
 	/** The Constant bookTexture. */
-	private static final ResourceLocation bookTexture = new ResourceLocation(
-			LibInfo.PREFIX + "/textures/gui/book.png");
+	private static final ResourceLocation bookTexture = new ResourceLocation(LibInfo.PREFIX + "/textures/gui/book.png");
 
 	/** The player editing the book. */
 	// private final EntityPlayer player;
@@ -47,17 +47,17 @@ public class GuiGuideBook extends GuiScreen {
 
 	/** The width. */
 	private int WIDTH = 90;
-	
+
 	/** The height. */
 	private int HEIGHT = 90;
 
 	// private int bookTotalPages = 1;
 	/** The curr page. */
 	private int currPage;
-	
+
 	/** The book pages. */
 	private NBTTagList bookPages;
-	
+
 	/** The book title. */
 	private String bookTitle = "SC2 Guide";
 	// private NextPageButton buttonNextPage;
@@ -68,13 +68,13 @@ public class GuiGuideBook extends GuiScreen {
 	//
 	/** The items index. */
 	private int itemsIndex = 0;
-	
+
 	/** The feature index. */
 	private int featureIndex = 0;
-	
+
 	/** The blocks index. */
 	private int blocksIndex = 0;
-	
+
 	/** The book total pages. */
 	private int bookTotalPages = itemsIndex + featureIndex + blocksIndex;
 

@@ -28,19 +28,24 @@ import cpw.mods.fml.relauncher.SideOnly;
  * 
  * @author Decebaldecebal
  */
-public class ItemNormalArmor extends BaseArmor {
+public class ItemNormalArmor extends BaseArmor
+{
 
 	/** The material. */
 	ArmorMaterial material;
 
 	/**
 	 * Instantiates a new item normal armor.
-	 *
-	 * @param mat            the mat
-	 * @param renderIndex            the render index
-	 * @param armorType            the armor type
+	 * 
+	 * @param mat
+	 *            the mat
+	 * @param renderIndex
+	 *            the render index
+	 * @param armorType
+	 *            the armor type
 	 */
-	public ItemNormalArmor(ArmorMaterial mat, int renderIndex, int armorType) {
+	public ItemNormalArmor(ArmorMaterial mat, int renderIndex, int armorType)
+	{
 		super(mat, renderIndex, armorType);
 		mat = material;
 		setMaxStackSize(1);
@@ -56,9 +61,9 @@ public class ItemNormalArmor extends BaseArmor {
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IIconRegister icon) {
-		itemIcon = icon.registerIcon(LibInfo.PREFIX + "armor/"
-				+ this.getUnlocalizedName().substring(5));
+	public void registerIcons(IIconRegister icon)
+	{
+		itemIcon = icon.registerIcon(LibInfo.PREFIX + "armor/" + this.getUnlocalizedName().substring(5));
 	}
 
 	/*
@@ -70,14 +75,15 @@ public class ItemNormalArmor extends BaseArmor {
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public String getArmorTexture(ItemStack is, Entity entity, int slot,
-			String type) {
-		if (material == MaterialHelper.ARMOR_ETHERIUM) {
-			return slot == 2 ? LibInfo.PREFIX + "textures/armor/etherium_2.png"
-					: LibInfo.PREFIX + "textures/armor/etherium_1.png";
-		} else {
-			return slot == 2 ? LibInfo.PREFIX + "textures/armor/obsidian_2.png"
-					: LibInfo.PREFIX + "textures/armor/obsidian_1.png";
+	public String getArmorTexture(ItemStack is, Entity entity, int slot, String type)
+	{
+		if (material == MaterialHelper.ARMOR_ETHERIUM)
+		{
+			return slot == 2 ? LibInfo.PREFIX + "textures/armor/etherium_2.png" : LibInfo.PREFIX + "textures/armor/etherium_1.png";
+		}
+		else
+		{
+			return slot == 2 ? LibInfo.PREFIX + "textures/armor/obsidian_2.png" : LibInfo.PREFIX + "textures/armor/obsidian_1.png";
 		}
 	}
 }

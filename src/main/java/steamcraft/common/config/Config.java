@@ -23,7 +23,8 @@ import net.minecraftforge.common.config.Configuration;
  * 
  * @author Surseance (Johnny Eatmon)
  */
-public class Config {
+public class Config
+{
 
 	/** The config. */
 	public static Configuration config;
@@ -40,8 +41,7 @@ public class Config {
 
 	/* POWER TO THE END USER! Good heavens... */
 	/** The phosphate chance. */
-	public static int uraniumChance, brimstoneChance, borniteChance,
-			phosphateChance;
+	public static int uraniumChance, brimstoneChance, borniteChance, phosphateChance;
 
 	/** The aluminum chance. */
 	public static int aluminumChance;
@@ -151,102 +151,62 @@ public class Config {
 	 * @param file
 	 *            the file
 	 */
-	public static void initialize(File file) {
+	public static void initialize(File file)
+	{
 		config = new Configuration(file);
 		config.addCustomCategoryComment("Entities", "Entity Ids");
 
 		int eIdx = 300;
 		entBulletId = config.get("Entities", "bullet", eIdx++).getInt();
 
-		uraniumChance = config.get(CATEGORY_GEN_OPTIONS,
-				"Chance of Uranium Ore Generation", 5).getInt();
-		brimstoneChance = config.get(CATEGORY_GEN_OPTIONS,
-				"Chance of Brimstone Ore Generation", 15).getInt();
-		borniteChance = config.get(CATEGORY_GEN_OPTIONS,
-				"Chance of Bornite Ore Generation", 15).getInt();
-		phosphateChance = config.get(CATEGORY_GEN_OPTIONS,
-				"Chance of Phosphate Ore Generation", 7).getInt();
-		aluminumChance = config.get(CATEGORY_GEN_OPTIONS,
-				"Chance of Aluminum Ore Generation", 20).getInt();
-		copperChance = config.get(CATEGORY_GEN_OPTIONS,
-				"Chance of Copper Ore Generation", 17).getInt();
-		tinChance = config.get(CATEGORY_GEN_OPTIONS,
-				"Chance of Tin Ore Generation", 17).getInt();
-		zincChance = config.get(CATEGORY_GEN_OPTIONS,
-				"Chance of Zinc Ore Generation", 15).getInt();
-		slateChance = config.get(CATEGORY_GEN_OPTIONS,
-				"Chance of Slate Generation", 20).getInt();
-		netherEtheriumCrystalChance = config.get(CATEGORY_GEN_OPTIONS,
-				"Chance of Etheruim Crystal Generation in the Nether", 3)
-				.getInt();
-		endEtheriumCrystalChance = config.get(CATEGORY_GEN_OPTIONS,
-				"Chance of Etheruim Crystal Generation in the End", 3).getInt();
-		uraniumHeight = config.get(CATEGORY_GEN_OPTIONS,
-				"Height of Uranium Ore Generation", 24).getInt();
-		brimstoneHeight = config.get(CATEGORY_GEN_OPTIONS,
-				"Height of Brimstone Ore Generation", 64).getInt();
-		borniteHeight = config.get(CATEGORY_GEN_OPTIONS,
-				"Height of Bornite Ore Generation", 48).getInt();
-		phosphateHeight = config.get(CATEGORY_GEN_OPTIONS,
-				"Height of Phosphate Ore Generation", 36).getInt();
-		aluminumHeight = config.get(CATEGORY_GEN_OPTIONS,
-				"Height of Aluminum Ore Generation", 40).getInt();
-		copperHeight = config.get(CATEGORY_GEN_OPTIONS,
-				"Height of Copper Ore Generation", 45).getInt();
-		tinHeight = config.get(CATEGORY_GEN_OPTIONS,
-				"Height of Tin Ore Generation", 45).getInt();
-		zincHeight = config.get(CATEGORY_GEN_OPTIONS,
-				"Height of Zinc Ore Generation", 36).getInt();
-		slateHeight = config.get(CATEGORY_GEN_OPTIONS,
-				"Height of Slate Generation", 65).getInt();
-		netherEtheriumCrystalHeight = config.get(CATEGORY_GEN_OPTIONS,
-				"Height of Etherium Crystal Generation in the Nether", 100)
-				.getInt();
-		endEtheriumCrystalHeight = config.get(CATEGORY_GEN_OPTIONS,
-				"Height of Etherium Crystal Generation in the End", 100)
-				.getInt();
-		generationEnabled = config.get(CATEGORY_GEN_OPTIONS,
-				" ALL SC2 World Gen, everywhere", true).getBoolean(true);
-		overworldGenerationEnabled = config.get(CATEGORY_GEN_OPTIONS,
-				"SC2 World Gen in the Overworld", true).getBoolean(true);
-		netherGenerationEnabled = config.get(CATEGORY_GEN_OPTIONS,
-				"SC2 World Gen in the Nether", true).getBoolean(true);
-		endGenerationEnabled = config.get(CATEGORY_GEN_OPTIONS,
-				"SC2 World Gen in the End", true).getBoolean(true);
+		uraniumChance = config.get(CATEGORY_GEN_OPTIONS, "Chance of Uranium Ore Generation", 5).getInt();
+		brimstoneChance = config.get(CATEGORY_GEN_OPTIONS, "Chance of Brimstone Ore Generation", 15).getInt();
+		borniteChance = config.get(CATEGORY_GEN_OPTIONS, "Chance of Bornite Ore Generation", 15).getInt();
+		phosphateChance = config.get(CATEGORY_GEN_OPTIONS, "Chance of Phosphate Ore Generation", 7).getInt();
+		aluminumChance = config.get(CATEGORY_GEN_OPTIONS, "Chance of Aluminum Ore Generation", 20).getInt();
+		copperChance = config.get(CATEGORY_GEN_OPTIONS, "Chance of Copper Ore Generation", 17).getInt();
+		tinChance = config.get(CATEGORY_GEN_OPTIONS, "Chance of Tin Ore Generation", 17).getInt();
+		zincChance = config.get(CATEGORY_GEN_OPTIONS, "Chance of Zinc Ore Generation", 15).getInt();
+		slateChance = config.get(CATEGORY_GEN_OPTIONS, "Chance of Slate Generation", 20).getInt();
+		netherEtheriumCrystalChance = config.get(CATEGORY_GEN_OPTIONS, "Chance of Etheruim Crystal Generation in the Nether", 3).getInt();
+		endEtheriumCrystalChance = config.get(CATEGORY_GEN_OPTIONS, "Chance of Etheruim Crystal Generation in the End", 3).getInt();
+		uraniumHeight = config.get(CATEGORY_GEN_OPTIONS, "Height of Uranium Ore Generation", 24).getInt();
+		brimstoneHeight = config.get(CATEGORY_GEN_OPTIONS, "Height of Brimstone Ore Generation", 64).getInt();
+		borniteHeight = config.get(CATEGORY_GEN_OPTIONS, "Height of Bornite Ore Generation", 48).getInt();
+		phosphateHeight = config.get(CATEGORY_GEN_OPTIONS, "Height of Phosphate Ore Generation", 36).getInt();
+		aluminumHeight = config.get(CATEGORY_GEN_OPTIONS, "Height of Aluminum Ore Generation", 40).getInt();
+		copperHeight = config.get(CATEGORY_GEN_OPTIONS, "Height of Copper Ore Generation", 45).getInt();
+		tinHeight = config.get(CATEGORY_GEN_OPTIONS, "Height of Tin Ore Generation", 45).getInt();
+		zincHeight = config.get(CATEGORY_GEN_OPTIONS, "Height of Zinc Ore Generation", 36).getInt();
+		slateHeight = config.get(CATEGORY_GEN_OPTIONS, "Height of Slate Generation", 65).getInt();
+		netherEtheriumCrystalHeight = config.get(CATEGORY_GEN_OPTIONS, "Height of Etherium Crystal Generation in the Nether", 100).getInt();
+		endEtheriumCrystalHeight = config.get(CATEGORY_GEN_OPTIONS, "Height of Etherium Crystal Generation in the End", 100).getInt();
+		generationEnabled = config.get(CATEGORY_GEN_OPTIONS, " ALL SC2 World Gen, everywhere", true).getBoolean(true);
+		overworldGenerationEnabled = config.get(CATEGORY_GEN_OPTIONS, "SC2 World Gen in the Overworld", true).getBoolean(true);
+		netherGenerationEnabled = config.get(CATEGORY_GEN_OPTIONS, "SC2 World Gen in the Nether", true).getBoolean(true);
+		endGenerationEnabled = config.get(CATEGORY_GEN_OPTIONS, "SC2 World Gen in the End", true).getBoolean(true);
 		/*
 		 * oreGenerationEnabled = config.get(CATEGORY_GEN_OPTIONS,
 		 * "SC2 Ore Gen", true).getBoolean(true);
 		 */
-		uraniumOreGenEnabled = config.get(CATEGORY_GEN_OPTIONS,
-				"Uranium Ore Generation", true).getBoolean(true);
-		brimstoneOreGenEnabled = config.get(CATEGORY_GEN_OPTIONS,
-				"Brimstone Ore Generation", true).getBoolean(true);
-		borniteOreGenEnabled = config.get(CATEGORY_GEN_OPTIONS,
-				"Bornite Ore Generation", true).getBoolean(true);
-		phosphateOreGenEnabled = config.get(CATEGORY_GEN_OPTIONS,
-				"Phosphate Ore Generation", true).getBoolean(true);
-		aluminumOreGenEnabled = config.get(CATEGORY_GEN_OPTIONS,
-				"Aluminum Ore Generation", true).getBoolean(true);
-		copperOreGenEnabled = config.get(CATEGORY_GEN_OPTIONS,
-				"Copper Ore Generation", true).getBoolean(true);
-		tinOreGenEnabled = config.get(CATEGORY_GEN_OPTIONS,
-				"Tin Ore Generation", true).getBoolean(true);
-		zincOreGenEnabled = config.get(CATEGORY_GEN_OPTIONS,
-				"Zinc Ore Generation", true).getBoolean(true);
-		slateGenEnabled = config.get(CATEGORY_GEN_OPTIONS, "Slate Generation",
-				true).getBoolean(true);
-		netherEtheriumCrystalGenEnabled = config.get(CATEGORY_GEN_OPTIONS,
-				"Etherium Crystal Generation in the Nether", true).getBoolean(
-				true);
-		endEtheriumCrystalGenEnabled = config.get(CATEGORY_GEN_OPTIONS,
-				"Etherium Crystal Generation in the End", true)
-				.getBoolean(true);
+		uraniumOreGenEnabled = config.get(CATEGORY_GEN_OPTIONS, "Uranium Ore Generation", true).getBoolean(true);
+		brimstoneOreGenEnabled = config.get(CATEGORY_GEN_OPTIONS, "Brimstone Ore Generation", true).getBoolean(true);
+		borniteOreGenEnabled = config.get(CATEGORY_GEN_OPTIONS, "Bornite Ore Generation", true).getBoolean(true);
+		phosphateOreGenEnabled = config.get(CATEGORY_GEN_OPTIONS, "Phosphate Ore Generation", true).getBoolean(true);
+		aluminumOreGenEnabled = config.get(CATEGORY_GEN_OPTIONS, "Aluminum Ore Generation", true).getBoolean(true);
+		copperOreGenEnabled = config.get(CATEGORY_GEN_OPTIONS, "Copper Ore Generation", true).getBoolean(true);
+		tinOreGenEnabled = config.get(CATEGORY_GEN_OPTIONS, "Tin Ore Generation", true).getBoolean(true);
+		zincOreGenEnabled = config.get(CATEGORY_GEN_OPTIONS, "Zinc Ore Generation", true).getBoolean(true);
+		slateGenEnabled = config.get(CATEGORY_GEN_OPTIONS, "Slate Generation", true).getBoolean(true);
+		netherEtheriumCrystalGenEnabled = config.get(CATEGORY_GEN_OPTIONS, "Etherium Crystal Generation in the Nether", true).getBoolean(true);
+		endEtheriumCrystalGenEnabled = config.get(CATEGORY_GEN_OPTIONS, "Etherium Crystal Generation in the End", true).getBoolean(true);
 	}
 
 	/**
 	 * Save.
 	 */
-	public static void save() {
+	public static void save()
+	{
 		config.save();
 	}
 }

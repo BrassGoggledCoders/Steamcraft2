@@ -31,7 +31,8 @@ import cpw.mods.fml.relauncher.SideOnly;
  * 
  * @author warlordjones
  */
-public class ItemIngot extends BaseItemWithMetadata {
+public class ItemIngot extends BaseItemWithMetadata
+{
 	// @SideOnly(Side.CLIENT)
 	/** The item icon. */
 	IIcon[] itemIcon = new IIcon[8];
@@ -45,7 +46,8 @@ public class ItemIngot extends BaseItemWithMetadata {
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IIconRegister ir) {
+	public void registerIcons(IIconRegister ir)
+	{
 		itemIcon[0] = ir.registerIcon(LibInfo.PREFIX + "itemIngotAluminum");
 		itemIcon[1] = ir.registerIcon(LibInfo.PREFIX + "itemIngotCopper");
 		itemIcon[2] = ir.registerIcon(LibInfo.PREFIX + "itemIngotTin");
@@ -59,7 +61,8 @@ public class ItemIngot extends BaseItemWithMetadata {
 	/**
 	 * Instantiates a new item ingot.
 	 */
-	public ItemIngot() {
+	public ItemIngot()
+	{
 		super();
 		setMaxStackSize(64);
 		setUnlocalizedName("itemIngot");
@@ -74,18 +77,23 @@ public class ItemIngot extends BaseItemWithMetadata {
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void getSubItems(Item item, CreativeTabs tab, List l) {
-		for (int var4 = 0; var4 < 8; ++var4) {
+	public void getSubItems(Item item, CreativeTabs tab, List l)
+	{
+		for (int var4 = 0; var4 < 8; ++var4)
+		{
 			l.add(new ItemStack(ConfigItems.itemIngot, 1, var4));
 		}
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see net.minecraft.item.Item#getIconFromDamage(int)
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public IIcon getIconFromDamage(int itemDamage) {
+	public IIcon getIconFromDamage(int itemDamage)
+	{
 		return itemIcon[itemDamage];
 	}
 }

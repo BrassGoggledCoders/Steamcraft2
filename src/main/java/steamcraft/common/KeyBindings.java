@@ -13,17 +13,18 @@ import cpw.mods.fml.client.registry.ClientRegistry;
 /**
  * The Class KeyBindings.
  */
-public class KeyBindings {
-	
+public class KeyBindings
+{
+
 	/** The key open vanity gui. */
 	static KeyBinding keyOpenVanityGUI;
 
 	/**
 	 * Register keys.
 	 */
-	public static void registerKeys() {
-		keyOpenVanityGUI = new KeyBinding("Open/Close Vanity GUI",
-				Keyboard.KEY_V, "key.categories.sc2");
+	public static void registerKeys()
+	{
+		keyOpenVanityGUI = new KeyBinding("Open/Close Vanity GUI", Keyboard.KEY_V, "key.categories.sc2");
 
 		ClientRegistry.registerKeyBinding(keyOpenVanityGUI);
 	}

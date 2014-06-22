@@ -31,11 +31,13 @@ import steamcraft.common.config.ConfigBlocks;
  * 
  * @author Surseance (Johnny Eatmon)
  */
-public class ItemTeaSeed extends BaseItem implements IPlantable {
+public class ItemTeaSeed extends BaseItem implements IPlantable
+{
 	/**
 	 * Instantiates a new item tea seed.
 	 */
-	public ItemTeaSeed() {
+	public ItemTeaSeed()
+	{
 		super();
 		setMaxStackSize(64);
 		setCreativeTab(Steamcraft.tabSC2);
@@ -49,26 +51,31 @@ public class ItemTeaSeed extends BaseItem implements IPlantable {
 	 * int, int, int, float, float, float)
 	 */
 	@Override
-	public boolean onItemUse(final ItemStack is, final EntityPlayer player,
-			final World world, final int x, final int y, final int z,
-			final int side, final float hitX, final float hitY, final float hitZ) {
-		if (side != 1) {
+	public boolean onItemUse(final ItemStack is, final EntityPlayer player, final World world, final int x, final int y, final int z, final int side,
+			final float hitX, final float hitY, final float hitZ)
+	{
+		if (side != 1)
+		{
 			return false;
-		} else if (player.canPlayerEdit(x, y, z, side, is)
-				&& player.canPlayerEdit(x, y + 1, z, side, is)) {
+		}
+		else if (player.canPlayerEdit(x, y, z, side, is) && player.canPlayerEdit(x, y + 1, z, side, is))
+		{
 			world.getBlock(x, y, z);
 			final Block soil = Blocks.farmland;
 
-			if (soil != null
-					&& soil.canSustainPlant(world, x, y, z, ForgeDirection.UP,
-							this) && world.isAirBlock(x, y + 1, z)) {
+			if (soil != null && soil.canSustainPlant(world, x, y, z, ForgeDirection.UP, this) && world.isAirBlock(x, y + 1, z))
+			{
 				world.setBlockToAir(x, y + 1, z);
 				--is.stackSize;
 				return true;
-			} else {
+			}
+			else
+			{
 				return false;
 			}
-		} else {
+		}
+		else
+		{
 			return false;
 		}
 	}
@@ -80,8 +87,8 @@ public class ItemTeaSeed extends BaseItem implements IPlantable {
 	 * IBlockAccess, int, int, int)
 	 */
 	@Override
-	public Block getPlant(final IBlockAccess world, final int x, final int y,
-			final int z) {
+	public Block getPlant(final IBlockAccess world, final int x, final int y, final int z)
+	{
 		return ConfigBlocks.blockTeaPlant;
 	}
 
@@ -93,8 +100,8 @@ public class ItemTeaSeed extends BaseItem implements IPlantable {
 	 * .IBlockAccess, int, int, int)
 	 */
 	@Override
-	public int getPlantMetadata(final IBlockAccess world, final int x,
-			final int y, final int z) {
+	public int getPlantMetadata(final IBlockAccess world, final int x, final int y, final int z)
+	{
 		return 0;
 	}
 
@@ -106,8 +113,8 @@ public class ItemTeaSeed extends BaseItem implements IPlantable {
 	 * .IBlockAccess, int, int, int)
 	 */
 	@Override
-	public EnumPlantType getPlantType(final IBlockAccess world, final int x,
-			final int y, final int z) {
+	public EnumPlantType getPlantType(final IBlockAccess world, final int x, final int y, final int z)
+	{
 		return EnumPlantType.Crop;
 	}
 }

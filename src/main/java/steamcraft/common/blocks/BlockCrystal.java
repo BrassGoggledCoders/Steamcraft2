@@ -39,12 +39,14 @@ import cpw.mods.fml.relauncher.SideOnly;
  * 
  * @author Surseance (Johnny Eatmon)
  */
-public class BlockCrystal extends BlockContainer implements ITileEntityProvider {
+public class BlockCrystal extends BlockContainer implements ITileEntityProvider
+{
 
 	/**
 	 * Instantiates a new block crystal.
 	 */
-	public BlockCrystal() {
+	public BlockCrystal()
+	{
 		super(Material.glass);
 		setBlockName("blockCrystal");
 		setHardness(8.5F);
@@ -61,7 +63,8 @@ public class BlockCrystal extends BlockContainer implements ITileEntityProvider 
 	 * .world.World, int)
 	 */
 	@Override
-	public TileEntity createNewTileEntity(final World world, final int metadata) {
+	public TileEntity createNewTileEntity(final World world, final int metadata)
+	{
 		return new TileCrystal();
 	}
 
@@ -71,7 +74,8 @@ public class BlockCrystal extends BlockContainer implements ITileEntityProvider 
 	 * @see net.minecraft.block.Block#getRenderType()
 	 */
 	@Override
-	public int getRenderType() {
+	public int getRenderType()
+	{
 		return ConfigBlocks.blockCrystalRI;
 	}
 
@@ -81,7 +85,8 @@ public class BlockCrystal extends BlockContainer implements ITileEntityProvider 
 	 * @see net.minecraft.block.Block#isOpaqueCube()
 	 */
 	@Override
-	public boolean isOpaqueCube() {
+	public boolean isOpaqueCube()
+	{
 		return false;
 	}
 
@@ -91,7 +96,8 @@ public class BlockCrystal extends BlockContainer implements ITileEntityProvider 
 	 * @see net.minecraft.block.Block#renderAsNormalBlock()
 	 */
 	@Override
-	public boolean renderAsNormalBlock() {
+	public boolean renderAsNormalBlock()
+	{
 		return false;
 	}
 
@@ -103,8 +109,8 @@ public class BlockCrystal extends BlockContainer implements ITileEntityProvider 
 	 * .world.World, int, int, int)
 	 */
 	@Override
-	public AxisAlignedBB getCollisionBoundingBoxFromPool(final World world,
-			final int x, final int y, final int z) {
+	public AxisAlignedBB getCollisionBoundingBoxFromPool(final World world, final int x, final int y, final int z)
+	{
 		return null;
 	}
 
@@ -115,8 +121,8 @@ public class BlockCrystal extends BlockContainer implements ITileEntityProvider 
 	 * EnumCreatureType, net.minecraft.world.IBlockAccess, int, int, int)
 	 */
 	@Override
-	public boolean canCreatureSpawn(final EnumCreatureType type,
-			final IBlockAccess world, final int x, final int y, final int z) {
+	public boolean canCreatureSpawn(final EnumCreatureType type, final IBlockAccess world, final int x, final int y, final int z)
+	{
 		return false;
 	}
 
@@ -129,11 +135,9 @@ public class BlockCrystal extends BlockContainer implements ITileEntityProvider 
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public boolean addDestroyEffects(final World world, final int x,
-			final int y, final int z, final int metadata,
-			final EffectRenderer effectRenderer) {
-		return super
-				.addDestroyEffects(world, x, y, z, metadata, effectRenderer);
+	public boolean addDestroyEffects(final World world, final int x, final int y, final int z, final int metadata, final EffectRenderer effectRenderer)
+	{
+		return super.addDestroyEffects(world, x, y, z, metadata, effectRenderer);
 	}
 
 	/*
@@ -163,16 +167,19 @@ public class BlockCrystal extends BlockContainer implements ITileEntityProvider 
 	 * @see net.minecraft.block.Block#tickRate(net.minecraft.world.World)
 	 */
 	@Override
-	public int tickRate(final World world) {
+	public int tickRate(final World world)
+	{
 		return 10;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see net.minecraft.block.Block#getItemDropped(int, java.util.Random, int)
 	 */
 	@Override
-	public Item getItemDropped(int p_149650_1_, Random p_149650_2_,
-			int p_149650_3_) {
+	public Item getItemDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_)
+	{
 		return ConfigItems.itemResource;
 	}
 

@@ -33,7 +33,8 @@ import cpw.mods.fml.relauncher.SideOnly;
  * 
  * @author Surseance (Johnny Eatmon)
  */
-public class BlockCustomOre extends BaseBlock {
+public class BlockCustomOre extends BaseBlock
+{
 
 	/** The icon. */
 	private final IIcon[] icon = new IIcon[7];
@@ -45,7 +46,8 @@ public class BlockCustomOre extends BaseBlock {
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(int side, final int metadata) {
+	public IIcon getIcon(int side, final int metadata)
+	{
 		return icon[metadata];
 	}
 
@@ -58,7 +60,8 @@ public class BlockCustomOre extends BaseBlock {
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(final IIconRegister ir) {
+	public void registerBlockIcons(final IIconRegister ir)
+	{
 		icon[0] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "oreAluminum");
 		icon[1] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "oreCopper");
 		icon[2] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "oreTin");
@@ -71,7 +74,8 @@ public class BlockCustomOre extends BaseBlock {
 	/**
 	 * Instantiates a new block custom ore.
 	 */
-	public BlockCustomOre() {
+	public BlockCustomOre()
+	{
 		super(Material.rock);
 		setBlockName("blockCustomOre");
 		setHardness(3.0F);
@@ -89,9 +93,10 @@ public class BlockCustomOre extends BaseBlock {
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void getSubBlocks(final Item item, final CreativeTabs tab,
-			final List l) {
-		for (int var4 = 0; var4 < 7; ++var4) {
+	public void getSubBlocks(final Item item, final CreativeTabs tab, final List l)
+	{
+		for (int var4 = 0; var4 < 7; ++var4)
+		{
 			l.add(new ItemStack(ConfigBlocks.blockCustomOre, 1, var4));
 		}
 	}

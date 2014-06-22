@@ -28,12 +28,14 @@ import steamcraft.common.Steamcraft;
  * 
  * @author Surseance (Johnny Eatmon)
  */
-public class ItemWatch extends BaseItem {
+public class ItemWatch extends BaseItem
+{
 
 	/**
 	 * Instantiates a new item watch.
 	 */
-	public ItemWatch() {
+	public ItemWatch()
+	{
 		setMaxStackSize(1);
 		setCreativeTab(Steamcraft.tabSC2);
 	}
@@ -46,11 +48,14 @@ public class ItemWatch extends BaseItem {
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public void addInformation(final ItemStack is, final EntityPlayer player,
-			@SuppressWarnings("rawtypes") final List list, final boolean flag) {
-		if (flag) {
+	public void addInformation(final ItemStack is, final EntityPlayer player, @SuppressWarnings("rawtypes") final List list, final boolean flag)
+	{
+		if (flag)
+		{
 			list.add("");
-		} else {
+		}
+		else
+		{
 			list.add("On right-click, this item");
 		}
 		list.add("will display the in-game time");
@@ -66,9 +71,10 @@ public class ItemWatch extends BaseItem {
 	 */
 	@SuppressWarnings("unused")
 	@Override
-	public ItemStack onItemRightClick(final ItemStack is, final World world,
-			final EntityPlayer player) {
-		if (!world.isRemote) {
+	public ItemStack onItemRightClick(final ItemStack is, final World world, final EntityPlayer player)
+	{
+		if (!world.isRemote)
+		{
 			final long mcTime = world.getTotalWorldTime();
 			final Calendar cal = Calendar.getInstance();
 			cal.getTime();

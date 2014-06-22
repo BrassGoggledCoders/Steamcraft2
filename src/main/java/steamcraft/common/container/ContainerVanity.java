@@ -27,13 +27,12 @@ import net.minecraft.item.ItemStack;
  * 
  * @author warlordjones
  */
-public class ContainerVanity extends Container {
+public class ContainerVanity extends Container
+{
 
 	/** The Constant HOTBAR_END. */
-	private static final int ARMOR_START = InventoryVanity.INV_SIZE,
-			ARMOR_END = ARMOR_START + 3, INV_START = ARMOR_END + 1,
-			INV_END = INV_START + 26, HOTBAR_START = INV_END + 1,
-			HOTBAR_END = HOTBAR_START + 8;
+	private static final int ARMOR_START = InventoryVanity.INV_SIZE, ARMOR_END = ARMOR_START + 3, INV_START = ARMOR_END + 1,
+			INV_END = INV_START + 26, HOTBAR_START = INV_END + 1, HOTBAR_END = HOTBAR_START + 8;
 
 	/**
 	 * Instantiates a new container vanity.
@@ -45,9 +44,8 @@ public class ContainerVanity extends Container {
 	 * @param inventoryCustom
 	 *            the inventory custom
 	 */
-	public ContainerVanity(final EntityPlayer player,
-			final InventoryPlayer inventoryPlayer,
-			final InventoryVanity inventoryCustom) {
+	public ContainerVanity(final EntityPlayer player, final InventoryPlayer inventoryPlayer, final InventoryVanity inventoryCustom)
+	{
 		// Custom Slots
 		// TODO: Import classes
 		/*
@@ -62,15 +60,17 @@ public class ContainerVanity extends Container {
 		// Inventory
 		int i;
 
-		for (i = 0; i < 3; ++i) {
-			for (int j = 0; j < 9; ++j) {
-				addSlotToContainer(new Slot(inventoryPlayer, j + i * 9 + 9,
-						8 + j * 18, 84 + i * 18));
+		for (i = 0; i < 3; ++i)
+		{
+			for (int j = 0; j < 9; ++j)
+			{
+				addSlotToContainer(new Slot(inventoryPlayer, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
 			}
 		}
 
 		// Hotbar
-		for (i = 0; i < 9; ++i) {
+		for (i = 0; i < 9; ++i)
+		{
 			addSlotToContainer(new Slot(inventoryPlayer, i, 8 + i * 18, 142));
 		}
 	}
@@ -84,7 +84,8 @@ public class ContainerVanity extends Container {
 	 * @return true, if successful
 	 */
 	@Override
-	public boolean canInteractWith(final EntityPlayer player) {
+	public boolean canInteractWith(final EntityPlayer player)
+	{
 		return true;
 	}
 
@@ -101,42 +102,49 @@ public class ContainerVanity extends Container {
 	 * @return the item stack
 	 */
 	@Override
-	public ItemStack transferStackInSlot(final EntityPlayer player,
-			final int slots) {
+	public ItemStack transferStackInSlot(final EntityPlayer player, final int slots)
+	{
 		ItemStack isCopy = null;
 		final Slot slot = (Slot) inventorySlots.get(slots);
 
-		if (slot != null && slot.getHasStack()) {
+		if (slot != null && slot.getHasStack())
+		{
 			final ItemStack is = slot.getStack();
 			isCopy = is.copy();
 
 			// Either armor slot or custom item slot was clicked
-			if (slots < INV_START) {
+			if (slots < INV_START)
+			{
 				// try to place in player inventory / action bar
-				if (!mergeItemStack(is, INV_START, HOTBAR_END + 1, true)) {
+				if (!mergeItemStack(is, INV_START, HOTBAR_END + 1, true))
+				{
 					return null;
 				}
 
 				slot.onSlotChange(is, isCopy);
-			} else
+			}
+			else
 			// Item is in inventory / hotbar, try to place either in custom or
 			// armor slots
 			{
 				if (is.getItem() instanceof ItemBucket) // if item is our custom
 														// item
 				{
-					if (!mergeItemStack(is, 0, InventoryVanity.INV_SIZE, false)) {
+					if (!mergeItemStack(is, 0, InventoryVanity.INV_SIZE, false))
+					{
 						return null;
 					}
-				} else if (is.getItem() instanceof ItemArmor) // if item is
-																// armor
+				}
+				else if (is.getItem() instanceof ItemArmor) // if item is
+															// armor
 				{
 					final int type = ((ItemArmor) is.getItem()).armorType;
-					if (!mergeItemStack(is, ARMOR_START + type, ARMOR_START
-							+ type + 1, false)) {
+					if (!mergeItemStack(is, ARMOR_START + type, ARMOR_START + type + 1, false))
+					{
 						return null;
 					}
-				} else if (slots >= INV_START && slots < HOTBAR_START) // item
+				}
+				else if (slots >= INV_START && slots < HOTBAR_START) // item
 																		// in
 																		// player's
 																		// inventory,
@@ -146,12 +154,15 @@ public class ContainerVanity extends Container {
 																		// action
 																		// bar
 				{
-					if (!mergeItemStack(is, HOTBAR_START, HOTBAR_START + 1,
-							false)) // place in action bar
+					if (!mergeItemStack(is, HOTBAR_START, HOTBAR_START + 1, false)) // place
+																					// in
+																					// action
+																					// bar
 					{
 						return null;
 					}
-				} else if (slots >= HOTBAR_START && slots < HOTBAR_END + 1) // item
+				}
+				else if (slots >= HOTBAR_START && slots < HOTBAR_END + 1) // item
 																			// in
 																			// action
 																			// bar
@@ -161,19 +172,24 @@ public class ContainerVanity extends Container {
 																			// player
 																			// inventory
 				{
-					if (!mergeItemStack(is, INV_START, INV_END + 1, false)) {
+					if (!mergeItemStack(is, INV_START, INV_END + 1, false))
+					{
 						return null;
 					}
 				}
 			}
 
-			if (is.stackSize == 0) {
+			if (is.stackSize == 0)
+			{
 				slot.putStack((ItemStack) null);
-			} else {
+			}
+			else
+			{
 				slot.onSlotChanged();
 			}
 
-			if (is.stackSize == isCopy.stackSize) {
+			if (is.stackSize == isCopy.stackSize)
+			{
 				return null;
 			}
 

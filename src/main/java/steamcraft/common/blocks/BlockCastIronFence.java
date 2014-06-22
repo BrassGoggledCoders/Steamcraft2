@@ -27,12 +27,14 @@ import steamcraft.common.lib.LibInfo;
  * 
  * @author Surseance (Johnny Eatmon)
  */
-public class BlockCastIronFence extends BlockFence {
+public class BlockCastIronFence extends BlockFence
+{
 
 	/**
 	 * Instantiates a new block cast iron fence.
 	 */
-	public BlockCastIronFence() {
+	public BlockCastIronFence()
+	{
 		super(LibInfo.PREFIX + "metal/" + "blockCastIron", Material.iron);
 		setBlockName("blockCastIronFence");
 		setHardness(4.5F);
@@ -49,15 +51,17 @@ public class BlockCastIronFence extends BlockFence {
 	 * IBlockAccess, int, int, int)
 	 */
 	@Override
-	public boolean canConnectFenceTo(final IBlockAccess world, final int x,
-			final int y, final int z) {
+	public boolean canConnectFenceTo(final IBlockAccess world, final int x, final int y, final int z)
+	{
 		final Block block = world.getBlock(x, y, z);
 
-		if ((block != this) && (block != ConfigBlocks.blockCastIronGate)) {
-			return ((block != null) && (block.getMaterial().isOpaque())
-					&& (block.renderAsNormalBlock()) ? block.getMaterial() != Material.cactus
+		if ((block != this) && (block != ConfigBlocks.blockCastIronGate))
+		{
+			return ((block != null) && (block.getMaterial().isOpaque()) && (block.renderAsNormalBlock()) ? block.getMaterial() != Material.cactus
 					: false);
-		} else {
+		}
+		else
+		{
 			return true;
 		}
 	}

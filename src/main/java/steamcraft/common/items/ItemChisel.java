@@ -31,7 +31,8 @@ import cpw.mods.fml.relauncher.SideOnly;
  * 
  * @author Surseance (Johnny Eatmon)
  */
-public class ItemChisel extends BaseItem {
+public class ItemChisel extends BaseItem
+{
 
 	/*
 	 * (non-Javadoc)
@@ -42,14 +43,16 @@ public class ItemChisel extends BaseItem {
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IIconRegister ir) {
+	public void registerIcons(IIconRegister ir)
+	{
 		itemIcon = ir.registerIcon(LibInfo.PREFIX + "itemChisel");
 	}
 
 	/**
 	 * Instantiates a new item chisel.
 	 */
-	public ItemChisel() {
+	public ItemChisel()
+	{
 		setMaxStackSize(1);
 		setMaxDamage(20);
 		setCreativeTab(Steamcraft.tabSC2);
@@ -63,8 +66,8 @@ public class ItemChisel extends BaseItem {
 	 * int, int, int, float, float, float)
 	 */
 	@Override
-	public boolean onItemUse(ItemStack is, EntityPlayer player, World world,
-			int x, int y, int z, int side, float hitX, float hitY, float hitZ) {
+	public boolean onItemUse(ItemStack is, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ)
+	{
 		world.getBlock(x, y, z);
 
 		/*
@@ -87,8 +90,7 @@ public class ItemChisel extends BaseItem {
 		 */
 
 		Random random = world.rand;
-		Steamcraft.proxy.smokeFX(world, x + random.nextFloat(),
-				y + random.nextFloat(), z + random.nextFloat(), FXSmoke.class);
+		Steamcraft.proxy.smokeFX(world, x + random.nextFloat(), y + random.nextFloat(), z + random.nextFloat(), FXSmoke.class);
 		is.damageItem(1, player);
 
 		return true;

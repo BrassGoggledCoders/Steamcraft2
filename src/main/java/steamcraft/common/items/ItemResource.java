@@ -31,7 +31,8 @@ import cpw.mods.fml.relauncher.SideOnly;
  * 
  * @author Surseance (Johnny Eatmon)
  */
-public class ItemResource extends BaseItemWithMetadata {
+public class ItemResource extends BaseItemWithMetadata
+{
 	// @SideOnly(Side.CLIENT)
 	/** The item icon. */
 	IIcon[] itemIcon = new IIcon[10];
@@ -45,7 +46,8 @@ public class ItemResource extends BaseItemWithMetadata {
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IIconRegister ir) {
+	public void registerIcons(IIconRegister ir)
+	{
 		itemIcon[0] = ir.registerIcon(LibInfo.PREFIX + "itemCrystal");
 		itemIcon[1] = ir.registerIcon(LibInfo.PREFIX + "itemChemSalt");
 		itemIcon[2] = ir.registerIcon(LibInfo.PREFIX + "itemBornite");
@@ -61,7 +63,8 @@ public class ItemResource extends BaseItemWithMetadata {
 	/**
 	 * Instantiates a new item resource.
 	 */
-	public ItemResource() {
+	public ItemResource()
+	{
 		super();
 		setMaxStackSize(64);
 	}
@@ -75,8 +78,10 @@ public class ItemResource extends BaseItemWithMetadata {
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void getSubItems(Item item, CreativeTabs tab, List l) {
-		for (int var4 = 0; var4 < 10; ++var4) {
+	public void getSubItems(Item item, CreativeTabs tab, List l)
+	{
+		for (int var4 = 0; var4 < 10; ++var4)
+		{
 			l.add(new ItemStack(ConfigItems.itemResource, 1, var4));
 		}
 	}
@@ -88,7 +93,8 @@ public class ItemResource extends BaseItemWithMetadata {
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public IIcon getIconFromDamage(int itemDamage) {
+	public IIcon getIconFromDamage(int itemDamage)
+	{
 		return itemIcon[itemDamage];
 	}
 }

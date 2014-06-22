@@ -29,7 +29,8 @@ import steamcraft.common.lib.LibInfo;
  * 
  * @author Surseance (Johnny Eatmon)
  */
-public class TileCrystalRenderer extends TileEntitySpecialRenderer {
+public class TileCrystalRenderer extends TileEntitySpecialRenderer
+{
 
 	/** The model. */
 	private final ModelCrystal model;
@@ -37,7 +38,8 @@ public class TileCrystalRenderer extends TileEntitySpecialRenderer {
 	/**
 	 * Instantiates a new tile crystal renderer.
 	 */
-	public TileCrystalRenderer() {
+	public TileCrystalRenderer()
+	{
 		model = new ModelCrystal();
 	}
 
@@ -49,13 +51,11 @@ public class TileCrystalRenderer extends TileEntitySpecialRenderer {
 	 * double, float)
 	 */
 	@Override
-	public void renderTileEntityAt(final TileEntity te, final double dx,
-			final double dy, final double dz, final float scale) {
+	public void renderTileEntityAt(final TileEntity te, final double dx, final double dy, final double dz, final float scale)
+	{
 		GL11.glPushMatrix();
-		GL11.glTranslatef((float) dx + 0.5F, (float) dy + 1.5F,
-				(float) dz + 0.5F);
-		final ResourceLocation crystal = (new ResourceLocation(
-				LibInfo.PREFIX.replace(":", ""), "textures/models/crystal.png"));
+		GL11.glTranslatef((float) dx + 0.5F, (float) dy + 1.5F, (float) dz + 0.5F);
+		final ResourceLocation crystal = (new ResourceLocation(LibInfo.PREFIX.replace(":", ""), "textures/models/crystal.png"));
 		Minecraft.getMinecraft().renderEngine.bindTexture(crystal);
 		GL11.glPushMatrix();
 		GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);

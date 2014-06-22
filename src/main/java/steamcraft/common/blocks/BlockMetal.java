@@ -39,7 +39,8 @@ import cpw.mods.fml.relauncher.SideOnly;
  * 
  * @author warlordjones
  */
-public class BlockMetal extends Block {
+public class BlockMetal extends Block
+{
 
 	/** The icon. */
 	private final IIcon[] icon = new IIcon[10];
@@ -56,7 +57,8 @@ public class BlockMetal extends Block {
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(final IIconRegister ir) {
+	public void registerBlockIcons(final IIconRegister ir)
+	{
 		icon[0] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockAluminum");
 		icon[1] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockCopper");
 		icon[2] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockTin");
@@ -76,14 +78,16 @@ public class BlockMetal extends Block {
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(final int side, final int metadata) {
+	public IIcon getIcon(final int side, final int metadata)
+	{
 		return icon[metadata];
 	}
 
 	/**
 	 * Instantiates a new block metal.
 	 */
-	public BlockMetal() {
+	public BlockMetal()
+	{
 		super(Material.iron);
 		setBlockName("blockMetal");
 		setHardness(3.0F);
@@ -92,7 +96,8 @@ public class BlockMetal extends Block {
 		setTickRandomly(true);
 		setCreativeTab(Steamcraft.tabSC2);
 
-		if (powered) {
+		if (powered)
+		{
 			setLightLevel(0.98F);
 		}
 	}
@@ -105,10 +110,10 @@ public class BlockMetal extends Block {
 	 * .World, int, int, int, net.minecraft.entity.Entity)
 	 */
 	@Override
-	public void onEntityCollidedWithBlock(final World world, final int x,
-			final int y, final int z, final Entity entity) {
-		if ((world.getBlock(x, y, z) == this)
-				&& (world.getBlockMetadata(x, y, z) == 8)) {
+	public void onEntityCollidedWithBlock(final World world, final int x, final int y, final int z, final Entity entity)
+	{
+		if ((world.getBlock(x, y, z) == this) && (world.getBlockMetadata(x, y, z) == 8))
+		{
 			entity.attackEntityFrom(DamageSource.magic, 1);
 		}
 	}
@@ -122,10 +127,10 @@ public class BlockMetal extends Block {
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void randomDisplayTick(final World world, final int x, final int y,
-			final int z, final Random random) {
-		if ((world.getBlock(x, y, z) == this)
-				&& (world.getBlockMetadata(x, y, z) == 8)) {
+	public void randomDisplayTick(final World world, final int x, final int y, final int z, final Random random)
+	{
+		if ((world.getBlock(x, y, z) == this) && (world.getBlockMetadata(x, y, z) == 8))
+		{
 			EffectUtils.sparkle(world, x, y, z, "reddust");
 		}
 	}
@@ -139,9 +144,10 @@ public class BlockMetal extends Block {
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void getSubBlocks(final Item item, final CreativeTabs tab,
-			final List l) {
-		for (int var4 = 0; var4 < 8; ++var4) {
+	public void getSubBlocks(final Item item, final CreativeTabs tab, final List l)
+	{
+		for (int var4 = 0; var4 < 8; ++var4)
+		{
 			l.add(new ItemStack(ConfigBlocks.blockMetal, 1, var4));
 		}
 	}

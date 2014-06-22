@@ -21,14 +21,17 @@ import net.minecraft.block.Block;
  * 
  * @author warlordjones
  */
-public class BlockSlateItem extends BaseItemBlockWithMetadata {
+public class BlockSlateItem extends BaseItemBlockWithMetadata
+{
 
 	/**
 	 * Instantiates a new block slate item.
-	 *
-	 * @param block the block
+	 * 
+	 * @param block
+	 *            the block
 	 */
-	public BlockSlateItem(Block block) {
+	public BlockSlateItem(Block block)
+	{
 		super(block, block);
 	}
 }

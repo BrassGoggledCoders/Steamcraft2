@@ -31,7 +31,8 @@ import boilerplate.steamapi.machines.IMachine;
 /**
  * The Class BlockContainerMod.
  */
-public abstract class BlockContainerMod extends BlockContainer {
+public abstract class BlockContainerMod extends BlockContainer
+{
 
 	/** The keep inventory. */
 	protected static boolean keepInventory = true;
@@ -48,7 +49,8 @@ public abstract class BlockContainerMod extends BlockContainer {
 	 * @param mat
 	 *            the mat
 	 */
-	protected BlockContainerMod(Material mat) {
+	protected BlockContainerMod(Material mat)
+	{
 		super(mat);
 		setCreativeTab(Steamcraft.tabSC2);
 		setHardness(5.0F);
@@ -59,7 +61,8 @@ public abstract class BlockContainerMod extends BlockContainer {
 	 * 
 	 * @return the owner
 	 */
-	public String getOwner() {
+	public String getOwner()
+	{
 		return owner;
 	}
 
@@ -71,13 +74,13 @@ public abstract class BlockContainerMod extends BlockContainer {
 	 * net.minecraft.item.ItemStack)
 	 */
 	@Override
-	public void onBlockPlacedBy(World world, int x, int y, int z,
-			EntityLivingBase entityLiving, ItemStack is) {
+	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entityLiving, ItemStack is)
+	{
 		super.onBlockPlacedBy(world, x, y, z, entityLiving, is);
 
-		if (entityLiving instanceof EntityPlayer) {
-			owner = owner
-					+ ((EntityPlayer) entityLiving).getCommandSenderName();
+		if (entityLiving instanceof EntityPlayer)
+		{
+			owner = owner + ((EntityPlayer) entityLiving).getCommandSenderName();
 		}
 	}
 
@@ -89,8 +92,8 @@ public abstract class BlockContainerMod extends BlockContainer {
 	 * int, int, int, net.minecraft.block.Block, int)
 	 */
 	@Override
-	public void breakBlock(World world, int x, int y, int z, Block block,
-			int metadata) {
+	public void breakBlock(World world, int x, int y, int z, Block block, int metadata)
+	{
 		super.breakBlock(world, x, y, z, block, metadata);
 	}
 
@@ -102,10 +105,12 @@ public abstract class BlockContainerMod extends BlockContainer {
 	 * int, int, int)
 	 */
 	@Override
-	public int getLightValue(IBlockAccess world, int x, int y, int z) {
+	public int getLightValue(IBlockAccess world, int x, int y, int z)
+	{
 		TileEntity te = world.getTileEntity(x, y, z);
 
-		if (te instanceof IMachine && ((IMachine) te).isActive()) {
+		if (te instanceof IMachine && ((IMachine) te).isActive())
+		{
 			return super.getLightValue(world, x, y, z) + 8;
 		}
 

@@ -32,74 +32,95 @@ import cpw.mods.fml.relauncher.SideOnly;
 // TODO: Auto-generated Javadoc
 /**
  * The Class ItemGuideBook.
- *
+ * 
  * @author MrArcane111
  */
-public class ItemGuideBook extends BaseItem {
-	
+public class ItemGuideBook extends BaseItem
+{
+
 	/**
 	 * Instantiates a new item guide book.
 	 */
-	public ItemGuideBook() {
+	public ItemGuideBook()
+	{
 		super();
 		setMaxStackSize(1);
 	}
 
-	/* (non-Javadoc)
-	 * @see boilerplate.common.RootItem#addInformation(net.minecraft.item.ItemStack, net.minecraft.entity.player.EntityPlayer, java.util.List, boolean)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * boilerplate.common.RootItem#addInformation(net.minecraft.item.ItemStack,
+	 * net.minecraft.entity.player.EntityPlayer, java.util.List, boolean)
 	 */
 	@SuppressWarnings("all")
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List list,
-			boolean flag) {
+	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean flag)
+	{
 		list.add("Don't worry, this item");
 		list.add("doesn't explode ;)");
 		list.add("(probably)");
 	}
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.item.Item#onItemRightClick(net.minecraft.item.ItemStack, net.minecraft.world.World, net.minecraft.entity.player.EntityPlayer)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * net.minecraft.item.Item#onItemRightClick(net.minecraft.item.ItemStack,
+	 * net.minecraft.world.World, net.minecraft.entity.player.EntityPlayer)
 	 */
 	@Override
-	public ItemStack onItemRightClick(ItemStack stack, World world,
-			EntityPlayer player) {
-		if (world.isRemote) {
-			if (player.getCommandSenderName() == "Surseance") {
-				world.createExplosion(player, player.posX, player.posY,
-						player.posZ, 0, false);
+	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
+	{
+		if (world.isRemote)
+		{
+			if (player.getCommandSenderName() == "Surseance")
+			{
+				world.createExplosion(player, player.posX, player.posY, player.posZ, 0, false);
 			}
-			player.openGui(Steamcraft.instance, GuiIDs.GUI_ID_GUIDE_BOOK,
-					player.worldObj, 0, 0, 0);
+			player.openGui(Steamcraft.instance, GuiIDs.GUI_ID_GUIDE_BOOK, player.worldObj, 0, 0, 0);
 		}
 
 		return stack;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see net.minecraft.item.Item#getShareTag()
 	 */
 	@Override
 	/** Sends NBT Tag to client. */
-	public boolean getShareTag() {
+	public boolean getShareTag()
+	{
 		return true;
 	}
 
 	/**
 	 * Valid book tag pages.
-	 *
-	 * @param tagCompound the tag compound
+	 * 
+	 * @param tagCompound
+	 *            the tag compound
 	 * @return true, if successful
 	 */
-	public static boolean validBookTagPages(NBTTagCompound tagCompound) {
-		if (tagCompound == null) {
+	public static boolean validBookTagPages(NBTTagCompound tagCompound)
+	{
+		if (tagCompound == null)
+		{
 			return false;
-		} else if (!tagCompound.hasKey("pages")) {
+		}
+		else if (!tagCompound.hasKey("pages"))
+		{
 			return false;
-		} else {
+		}
+		else
+		{
 			NBTTagList nbttaglist = (NBTTagList) tagCompound.getTag("pages");
 
-			for (int i = 0; i < nbttaglist.tagCount(); ++i) {
+			for (int i = 0; i < nbttaglist.tagCount(); ++i)
+			{
 				// Broken:
 				/*
 				 * NBTTagString nbttagstring =

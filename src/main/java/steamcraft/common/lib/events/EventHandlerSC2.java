@@ -45,18 +45,21 @@ import cpw.mods.fml.relauncher.SideOnly;
 // TODO: Auto-generated Javadoc
 /**
  * The Class EventHandlerSC2.
- *
+ * 
  * @author Decebaldecebal
  */
-public class EventHandlerSC2 {
-	
+public class EventHandlerSC2
+{
+
 	/**
 	 * Update player.
-	 *
-	 * @param event the event
+	 * 
+	 * @param event
+	 *            the event
 	 */
 	@SubscribeEvent
-	public void updatePlayer(LivingEvent.LivingUpdateEvent event) {
+	public void updatePlayer(LivingEvent.LivingUpdateEvent event)
+	{
 		/*
 		 * if (event.entityLiving instanceof EntityPlayer) { EntityPlayer player
 		 * = (EntityPlayer) event.entityLiving;
@@ -82,23 +85,28 @@ public class EventHandlerSC2 {
 
 	/**
 	 * Entity constructing.
-	 *
-	 * @param event the event
+	 * 
+	 * @param event
+	 *            the event
 	 */
 	@SubscribeEvent
-	public void entityConstructing(EntityConstructing event) {
-		if (event.entity instanceof EntityPlayer) {
+	public void entityConstructing(EntityConstructing event)
+	{
+		if (event.entity instanceof EntityPlayer)
+		{
 			EntityPlayerExtended.register((EntityPlayer) event.entity);
 		}
 	}
 
 	/**
 	 * On item drop.
-	 *
-	 * @param event the event
+	 * 
+	 * @param event
+	 *            the event
 	 */
 	@SubscribeEvent
-	public void onItemDrop(ItemTossEvent event) {
+	public void onItemDrop(ItemTossEvent event)
+	{
 		NBTTagCompound thrower = event.entityItem.getEntityData();
 		thrower.setString("thrower", event.player.getCommandSenderName());
 	}
@@ -114,64 +122,68 @@ public class EventHandlerSC2 {
 
 	/**
 	 * Living update.
-	 *
-	 * @param event the event
+	 * 
+	 * @param event
+	 *            the event
 	 */
 	@SubscribeEvent
-	public void livingUpdate(LivingUpdateEvent event) {
-		if (event.entityLiving instanceof EntityPlayer) {
+	public void livingUpdate(LivingUpdateEvent event)
+	{
+		if (event.entityLiving instanceof EntityPlayer)
+		{
 			EntityPlayer player = (EntityPlayer) event.entityLiving;
 			ItemStack is = player.inventory.armorItemInSlot(3);
 
-			if ((is != null) && (is.getItem() == ConfigItems.itemBrassGoggles)) {
-				player.addPotionEffect(new PotionEffect(Potion.nightVision.id,
-						this.timer, 0));
+			if ((is != null) && (is.getItem() == ConfigItems.itemBrassGoggles))
+			{
+				player.addPotionEffect(new PotionEffect(Potion.nightVision.id, this.timer, 0));
 
-				if (this.timer <= 220) {
+				if (this.timer <= 220)
+				{
 					this.timer = 400;
 				}
-			} else if ((is == null)
-					|| (is.getItem() != ConfigItems.itemBrassGoggles)) {
+			}
+			else if ((is == null) || (is.getItem() != ConfigItems.itemBrassGoggles))
+			{
 				player.removePotionEffect(Potion.nightVision.id);
 			}
-		} else if (!(event.entityLiving instanceof EntityPlayer)) {
+		}
+		else if (!(event.entityLiving instanceof EntityPlayer))
+		{
 			event.entityLiving.removePotionEffect(Potion.nightVision.id);
 		}
 	}
 
 	/** The overlay. */
-	private static ResourceLocation overlay = new ResourceLocation(
-			LibInfo.PREFIX + "textures/misc/goggles.png");
+	private static ResourceLocation overlay = new ResourceLocation(LibInfo.PREFIX + "textures/misc/goggles.png");
 
 	/**
 	 * On hud tick.
-	 *
-	 * @param event the event
+	 * 
+	 * @param event
+	 *            the event
 	 */
 	@SubscribeEvent
 	@SideOnly(Side.CLIENT)
-	public void onHUDTick(RenderGameOverlayEvent.Pre event) {
-		if (event.type == ElementType.HELMET) {
-			if ((Minecraft.getMinecraft().thePlayer == null)
-					|| (Minecraft.getMinecraft().currentScreen != null)) {
+	public void onHUDTick(RenderGameOverlayEvent.Pre event)
+	{
+		if (event.type == ElementType.HELMET)
+		{
+			if ((Minecraft.getMinecraft().thePlayer == null) || (Minecraft.getMinecraft().currentScreen != null))
+			{
 				return;
 			}
 
-			ItemStack helmet = Minecraft.getMinecraft().thePlayer.inventory
-					.armorItemInSlot(3);
+			ItemStack helmet = Minecraft.getMinecraft().thePlayer.inventory.armorItemInSlot(3);
 
-			if ((Minecraft.getMinecraft().gameSettings.thirdPersonView == 0)
-					&& (helmet != null)
+			if ((Minecraft.getMinecraft().gameSettings.thirdPersonView == 0) && (helmet != null)
 					&& (helmet.getItem() == ConfigItems.itemBrassGoggles))// &&
 			// KeyHandler.keyPressed)
 			{
-				Minecraft.getMinecraft().getTextureManager()
-						.bindTexture(EventHandlerSC2.overlay);
+				Minecraft.getMinecraft().getTextureManager().bindTexture(EventHandlerSC2.overlay);
 				Tessellator tessellator = Tessellator.instance;
-				ScaledResolution scaledResolution = new ScaledResolution(
-						Minecraft.getMinecraft().gameSettings,
-						Minecraft.getMinecraft().displayWidth,
-						Minecraft.getMinecraft().displayHeight);
+				ScaledResolution scaledResolution = new ScaledResolution(Minecraft.getMinecraft().gameSettings,
+						Minecraft.getMinecraft().displayWidth, Minecraft.getMinecraft().displayHeight);
 				int width = scaledResolution.getScaledWidth();
 				int height = scaledResolution.getScaledHeight();
 
@@ -201,21 +213,28 @@ public class EventHandlerSC2 {
 				 * null, x, y); }
 				 */
 			}
-		} else {
+		}
+		else
+		{
 			return;
 		}
 	}
 
 	/**
 	 * On item crafted.
-	 *
-	 * @param event the event
+	 * 
+	 * @param event
+	 *            the event
 	 */
 	@SubscribeEvent
-	public void onItemCrafted(PlayerEvent.ItemCraftedEvent event) {
-		if (event.crafting.getItem() instanceof ItemRayGun) {
+	public void onItemCrafted(PlayerEvent.ItemCraftedEvent event)
+	{
+		if (event.crafting.getItem() instanceof ItemRayGun)
+		{
 			event.player.addStat(ConfigAchievments.raygunAchieve, 1);
-		} else if (event.crafting.getItem() instanceof ItemShrinkray) {
+		}
+		else if (event.crafting.getItem() instanceof ItemShrinkray)
+		{
 			event.player.addStat(ConfigAchievments.shrinkrayAchieve, 1);
 		}
 	}

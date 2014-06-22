@@ -34,7 +34,8 @@ import cpw.mods.fml.relauncher.SideOnly;
  * 
  * @author Surseance (Johnny Eatmon)
  */
-public class ItemBrassArmor extends BaseArmor {
+public class ItemBrassArmor extends BaseArmor
+{
 
 	/** The icon. */
 	private IIcon[] icon = new IIcon[3];
@@ -56,8 +57,8 @@ public class ItemBrassArmor extends BaseArmor {
 	 * @param armorType
 	 *            the armor type
 	 */
-	public ItemBrassArmor(ItemArmor.ArmorMaterial armorMat, int renderIndex,
-			int armorType) {
+	public ItemBrassArmor(ItemArmor.ArmorMaterial armorMat, int renderIndex, int armorType)
+	{
 		super(armorMat, renderIndex, armorType);
 		setMaxStackSize(1);
 		mat = armorMat;
@@ -73,9 +74,9 @@ public class ItemBrassArmor extends BaseArmor {
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IIconRegister ir) {
-		itemIcon = ir.registerIcon(LibInfo.PREFIX + "armor/"
-				+ this.getUnlocalizedName().substring(5));
+	public void registerIcons(IIconRegister ir)
+	{
+		itemIcon = ir.registerIcon(LibInfo.PREFIX + "armor/" + this.getUnlocalizedName().substring(5));
 	}
 
 	/*
@@ -87,24 +88,26 @@ public class ItemBrassArmor extends BaseArmor {
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public String getArmorTexture(ItemStack is, Entity entity, int slot,
-			String type) {
-		return type != null ? LibInfo.PREFIX + "textures/armor/" + type
-				+ ".png" : null;
+	public String getArmorTexture(ItemStack is, Entity entity, int slot, String type)
+	{
+		return type != null ? LibInfo.PREFIX + "textures/armor/" + type + ".png" : null;
 	}
 
 	/**
 	 * Called whenever this item is equipped and the right mouse button is
 	 * pressed. Args: itemStack, world, entityPlayer
-	 *
-	 * @param par1ItemStack the par1 item stack
-	 * @param par2World the par2 world
-	 * @param par3EntityPlayer the par3 entity player
+	 * 
+	 * @param par1ItemStack
+	 *            the par1 item stack
+	 * @param par2World
+	 *            the par2 world
+	 * @param par3EntityPlayer
+	 *            the par3 entity player
 	 * @return the item stack
 	 */
 	@Override
-	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World,
-			EntityPlayer par3EntityPlayer) {
+	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
+	{
 		this.modules.put("aqualung", true);
 		return par1ItemStack;
 	}
@@ -118,15 +121,16 @@ public class ItemBrassArmor extends BaseArmor {
 	@SuppressWarnings("all")
 	@Override
 	// TODO: Make module-sensitive
-	public void addInformation(ItemStack stack, EntityPlayer player, List list,
-			boolean flag) {
+	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean flag)
+	{
 		// if(!ClientHelper.isShiftKeyDown())
 		// {
 		// list.add(ClientHelper.shiftForInfo);
 		// return;
 		// }
 
-		if (stack != null) {
+		if (stack != null)
+		{
 			/*
 			 * if (stack.getItem() == ConfigItems.itemBrassGoggles) {
 			 * list.add("It is a violation of");
@@ -184,10 +188,12 @@ public class ItemBrassArmor extends BaseArmor {
 	 * net.minecraft.entity.player.EntityPlayer, net.minecraft.item.ItemStack)
 	 */
 	@Override
-	public void onArmorTick(World world, EntityPlayer player, ItemStack is) {
-		if (modules.get("aqualung") != null
-				&& this.modules.get("aqualung").equals("true")) {
-			if (player.getAir() <= 0) {
+	public void onArmorTick(World world, EntityPlayer player, ItemStack is)
+	{
+		if (modules.get("aqualung") != null && this.modules.get("aqualung").equals("true"))
+		{
+			if (player.getAir() <= 0)
+			{
 				player.setAir(300);
 				is.damageItem(4, player); // tweak the damage taken a bit
 			}

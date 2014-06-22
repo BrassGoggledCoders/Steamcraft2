@@ -22,7 +22,8 @@ import net.minecraft.client.model.ModelRenderer;
  * 
  * @author Surseance (Johnny Eatmon)
  */
-public class ModelCastIronLampSide extends ModelBase {
+public class ModelCastIronLampSide extends ModelBase
+{
 
 	/** The bracket. */
 	public ModelRenderer bracket;
@@ -54,7 +55,8 @@ public class ModelCastIronLampSide extends ModelBase {
 	/**
 	 * Instantiates a new model cast iron lamp side.
 	 */
-	public ModelCastIronLampSide() {
+	public ModelCastIronLampSide()
+	{
 		bracket2 = new ModelRenderer(this, 13, 16);
 		bracket2.addBox(-6.5F, 1F, -7.5F, 6, 2, 2);
 		// Bracket2.setPosition(8F, -16F, -1F);
@@ -95,7 +97,8 @@ public class ModelCastIronLampSide extends ModelBase {
 	/**
 	 * Render sign.
 	 */
-	public void renderSign() {
+	public void renderSign()
+	{
 		final float scale = 0.1F;
 		bracket.render(scale);
 		bracket2.render(scale);

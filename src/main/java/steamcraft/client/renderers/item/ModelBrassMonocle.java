@@ -26,7 +26,8 @@ import cpw.mods.fml.relauncher.SideOnly;
  * @author Surseance (Johnny Eatmon) & Falkok15
  */
 @SideOnly(Side.CLIENT)
-public class ModelBrassMonocle extends ModelBiped {
+public class ModelBrassMonocle extends ModelBiped
+{
 
 	/** The Shape1. */
 	ModelRenderer Shape1;
@@ -49,7 +50,8 @@ public class ModelBrassMonocle extends ModelBiped {
 	 * @param f
 	 *            the f
 	 */
-	public ModelBrassMonocle(final float f) {
+	public ModelBrassMonocle(final float f)
+	{
 		super(f, 0, 64, 32);
 		// textureWidth = 64;
 		// textureHeight = 32;
@@ -107,8 +109,8 @@ public class ModelBrassMonocle extends ModelBiped {
 	 * float, float, float, float, float, float)
 	 */
 	@Override
-	public void render(final Entity entity, final float f1, final float f2,
-			final float f3, final float f4, final float f5, final float f6) {
+	public void render(final Entity entity, final float f1, final float f2, final float f3, final float f4, final float f5, final float f6)
+	{
 		super.render(entity, f1, f2, f3, f4, f5, f6);
 		setRotationAngles(f1, f2, f3, f4, f5, f6, entity);
 		// Shape1.render(f5);
@@ -131,8 +133,8 @@ public class ModelBrassMonocle extends ModelBiped {
 	 * @param z
 	 *            the z
 	 */
-	private void setRotation(final ModelRenderer model, final float x,
-			final float y, final float z) {
+	private void setRotation(final ModelRenderer model, final float x, final float y, final float z)
+	{
 		model.rotateAngleX = x;
 		model.rotateAngleY = y;
 		model.rotateAngleZ = z;
@@ -145,9 +147,8 @@ public class ModelBrassMonocle extends ModelBiped {
 	 * float, float, float, float, float, net.minecraft.entity.Entity)
 	 */
 	@Override
-	public void setRotationAngles(final float f1, final float f2,
-			final float f3, final float f4, final float f5, final float f6,
-			final Entity entity) {
+	public void setRotationAngles(final float f1, final float f2, final float f3, final float f4, final float f5, final float f6, final Entity entity)
+	{
 		super.setRotationAngles(f1, f2, f3, f4, f5, f6, entity);
 	}
 }

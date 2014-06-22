@@ -22,7 +22,8 @@ import net.minecraft.client.model.ModelRenderer;
  * 
  * @author warlordjones
  */
-public class ModelHatch extends ModelBase {
+public class ModelHatch extends ModelBase
+{
 
 	/** The base. */
 	public ModelRenderer base;
@@ -48,7 +49,8 @@ public class ModelHatch extends ModelBase {
 	/**
 	 * Instantiates a new model hatch.
 	 */
-	public ModelHatch() {
+	public ModelHatch()
+	{
 		base = new ModelRenderer(this, 0, 0);
 		base.addBox(-8.5F, -2.0F, -8.5F, 17, 4, 17, 0);
 
@@ -87,8 +89,8 @@ public class ModelHatch extends ModelBase {
 	 * @param f5
 	 *            the f5
 	 */
-	public void render(final float f, final float f1, final float f2,
-			final float f3, final float f4, final float f5) {
+	public void render(final float f, final float f1, final float f2, final float f3, final float f4, final float f5)
+	{
 		this.setRotationAngles(f, f1, f2, f3, f4, f5);
 		base.render(f5);
 		hatch.render(f5);
@@ -116,8 +118,8 @@ public class ModelHatch extends ModelBase {
 	 * @param f5
 	 *            the f5
 	 */
-	public void setRotationAngles(final float f, final float f1,
-			final float f2, final float f3, final float f4, final float f5) {
+	public void setRotationAngles(final float f, final float f1, final float f2, final float f3, final float f4, final float f5)
+	{
 	}
 
 }

@@ -16,17 +16,20 @@ import cpw.mods.fml.relauncher.SideOnly;
 /**
  * The Class BaseBlock.
  */
-public class BaseBlock extends Block {
-	
+public class BaseBlock extends Block
+{
+
 	/** The icon. */
 	IIcon icon;
 
 	/**
 	 * Instantiates a new base block.
-	 *
-	 * @param p_i45394_1_ the p_i45394_1_
+	 * 
+	 * @param p_i45394_1_
+	 *            the p_i45394_1_
 	 */
-	protected BaseBlock(Material p_i45394_1_) {
+	protected BaseBlock(Material p_i45394_1_)
+	{
 		super(p_i45394_1_);
 		setCreativeTab(Steamcraft.tabSC2);
 	}
@@ -40,16 +43,19 @@ public class BaseBlock extends Block {
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister ir) {
-		icon = ir.registerIcon(LibInfo.PREFIX
-				+ this.getUnlocalizedName().substring(5));
+	public void registerBlockIcons(IIconRegister ir)
+	{
+		icon = ir.registerIcon(LibInfo.PREFIX + this.getUnlocalizedName().substring(5));
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see net.minecraft.block.Block#getIcon(int, int)
 	 */
 	@Override
-	public IIcon getIcon(int p_149691_1_, int p_149691_2_) {
+	public IIcon getIcon(int p_149691_1_, int p_149691_2_)
+	{
 		return icon;
 	}
 }

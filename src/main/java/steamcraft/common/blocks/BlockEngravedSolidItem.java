@@ -21,7 +21,8 @@ import net.minecraft.block.Block;
  * 
  * @author Surseance (Johnny Eatmon)
  */
-public class BlockEngravedSolidItem extends BaseItemBlockWithMetadata {
+public class BlockEngravedSolidItem extends BaseItemBlockWithMetadata
+{
 
 	/**
 	 * Instantiates a new block engraved solid item.
@@ -29,7 +30,8 @@ public class BlockEngravedSolidItem extends BaseItemBlockWithMetadata {
 	 * @param block
 	 *            the block
 	 */
-	public BlockEngravedSolidItem(Block block) {
+	public BlockEngravedSolidItem(Block block)
+	{
 		super(block, block);
 	}
 }

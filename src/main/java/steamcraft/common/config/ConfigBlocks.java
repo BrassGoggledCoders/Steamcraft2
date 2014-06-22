@@ -52,7 +52,8 @@ import cpw.mods.fml.common.registry.GameRegistry;
  * 
  * @author Surseance (Johnny Eatmon)
  */
-public class ConfigBlocks {
+public class ConfigBlocks
+{
 
 	/** The block custom ore. */
 	public static Block blockCustomOre;
@@ -131,13 +132,13 @@ public class ConfigBlocks {
 
 	// Render IDs
 	/** The block lightning rod ri. */
-	public static int blockCastIronLampRI, blockCrystalRI, blockDropHammerRI,
-			blockHatchRI, blockLightningRodRI;
+	public static int blockCastIronLampRI, blockCrystalRI, blockDropHammerRI, blockHatchRI, blockLightningRodRI;
 
 	/**
 	 * Inits the.
 	 */
-	public static void init() {
+	public static void init()
+	{
 		initializeBlocks();
 		registerBlocks();
 	}
@@ -145,7 +146,8 @@ public class ConfigBlocks {
 	/**
 	 * Initialize blocks.
 	 */
-	public static void initializeBlocks() {
+	public static void initializeBlocks()
+	{
 		blockCustomOre = new BlockCustomOre();
 		blockSlate = new BlockSlate().setBlockName("blockSlate");
 		blockLamp = new BlockLamp();
@@ -154,69 +156,54 @@ public class ConfigBlocks {
 		blockCastIronGate = new BlockCastIronGate();
 		blockCastIronRailing = new BlockCastIronRailing(Material.iron);
 		blockCrystal = new BlockCrystal();
-		blockCastIronLampI = new BlockCastIronLamp(false)
-				.setBlockName("blockCastIronLampOff");
-		blockCastIronLampA = new BlockCastIronLamp(true)
-				.setBlockName("blockCastIronLampOn");
-		blockSteamBoiler = new BlockSteamBoiler()
-				.setBlockName("blockSteamBoiler");
+		blockCastIronLampI = new BlockCastIronLamp(false).setBlockName("blockCastIronLampOff");
+		blockCastIronLampA = new BlockCastIronLamp(true).setBlockName("blockCastIronLampOn");
+		blockSteamBoiler = new BlockSteamBoiler().setBlockName("blockSteamBoiler");
 		// blockDropHammer = new
 		// BlockDropHammer(Material.anvil).setBlockName("blockDropHammer");
-		blockDropHammerFrame = new BlockDropHammerFrame(Material.iron)
-				.setBlockName("blockDropHammerFrame");
+		blockDropHammerFrame = new BlockDropHammerFrame(Material.iron).setBlockName("blockDropHammerFrame");
 		blockMetal = new BlockMetal();
 		blockBrassLog = new BlockBrassLog(Material.wood);
 		blockBrassLeaves = new BlockBrassLeaves(Material.iron);
 		blockIntake = new BlockIntake(Material.iron);
 		blockArmorEditor = new BlockArmorEditor(Material.iron);
 
-		steamFluid = new Fluid("steam").setGaseous(true).setTemperature(700)
-				.setDensity(-100).setViscosity(500).setLuminosity(1)
+		steamFluid = new Fluid("steam").setGaseous(true).setTemperature(700).setDensity(-100).setViscosity(500).setLuminosity(1)
 				.setUnlocalizedName("steamFluid");
 
-		if (!FluidRegistry.registerFluid(steamFluid)
-				&& !FluidRegistry.isFluidRegistered("steam"))
+		if (!FluidRegistry.registerFluid(steamFluid) && !FluidRegistry.isFluidRegistered("steam"))
 			steamFluid = FluidRegistry.getFluid("steam");
 
-		blockFluidSteam = new BlockFluidSteam(steamFluid, Material.water)
-				.setBlockName("steamFluid");
+		blockFluidSteam = new BlockFluidSteam(steamFluid, Material.water).setBlockName("steamFluid");
 	}
 
 	/**
 	 * Register blocks.
 	 */
-	public static void registerBlocks() {
-		GameRegistry.registerBlock(blockCustomOre, BlockCustomOreItem.class,
-				"BlockCustomOre");
-		GameRegistry.registerBlock(blockSlate, BlockSlateItem.class,
-				"BlockSlate");
+	public static void registerBlocks()
+	{
+		GameRegistry.registerBlock(blockCustomOre, BlockCustomOreItem.class, "BlockCustomOre");
+		GameRegistry.registerBlock(blockSlate, BlockSlateItem.class, "BlockSlate");
 		GameRegistry.registerBlock(blockLamp, "BlockLamp");
 		GameRegistry.registerBlock(blockBrassLeaves, "BlockBrassLeaves");
 		GameRegistry.registerBlock(blockBrassLog, "BlockBrassLog");
-		GameRegistry.registerBlock(blockEngraved, BlockEngravedSolidItem.class,
-				"BlockEngravedSolid");
+		GameRegistry.registerBlock(blockEngraved, BlockEngravedSolidItem.class, "BlockEngravedSolid");
 		GameRegistry.registerBlock(blockCastIronFence, "BlockCastIronFence");
 		GameRegistry.registerBlock(blockCastIronGate, "BlockCastIronGate");
 		// GameRegistry.registerBlock(blockCastIronLampI, "BlockCastIronLampI");
 		// GameRegistry.registerBlock(blockCastIronLampA, "BlockCastIronLampA");
 		// GameRegistry.registerBlock(blockFluidSteam, "BlockFluidSteam");
-		GameRegistry
-				.registerBlock(blockDropHammerFrame, "BlockDropHammerFrame");
-		RegistryHelper.registerContainerBlock(blockCrystal, TileCrystal.class,
-				"BlockCrystal");
-		RegistryHelper.registerContainerBlock(blockSteamBoiler,
-				TileSteamBoiler.class, "BlockSteamBoiler");
-		RegistryHelper.registerContainerBlock(blockIntake, TileIntake.class,
-				"BlockIntake");
-		RegistryHelper.registerContainerBlock(blockArmorEditor,
-				TileArmorEditor.class, "BlockArmorEditor");
+		GameRegistry.registerBlock(blockDropHammerFrame, "BlockDropHammerFrame");
+		RegistryHelper.registerContainerBlock(blockCrystal, TileCrystal.class, "BlockCrystal");
+		RegistryHelper.registerContainerBlock(blockSteamBoiler, TileSteamBoiler.class, "BlockSteamBoiler");
+		RegistryHelper.registerContainerBlock(blockIntake, TileIntake.class, "BlockIntake");
+		RegistryHelper.registerContainerBlock(blockArmorEditor, TileArmorEditor.class, "BlockArmorEditor");
 		// RegistryHelper.registerContainerBlock(blockDropHammer,
 		// TileDropHammer.class, "BlockDropHammer");
 		// GameRegistry.registerBlock(blockDropHammer, "BlockDropHammer");
 		// GameRegistry.registerTileEntity(TileDropHammer.class,
 		// "TEDropHammer");
-		GameRegistry.registerBlock(blockMetal, BlockMetalItem.class,
-				"BlockMetal");
+		GameRegistry.registerBlock(blockMetal, BlockMetalItem.class, "BlockMetal");
 
 		GameRegistry.registerBlock(blockFluidSteam, "blockFluidSteam");
 		// RegistryHelper.registerContainerBlock(blockHatch, TileHatch.class,

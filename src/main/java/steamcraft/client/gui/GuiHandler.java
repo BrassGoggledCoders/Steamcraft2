@@ -29,17 +29,23 @@ import cpw.mods.fml.common.network.IGuiHandler;
 /**
  * The Class GuiHandler.
  */
-public class GuiHandler implements IGuiHandler {
-	
-	/* (non-Javadoc)
-	 * @see cpw.mods.fml.common.network.IGuiHandler#getServerGuiElement(int, net.minecraft.entity.player.EntityPlayer, net.minecraft.world.World, int, int, int)
+public class GuiHandler implements IGuiHandler
+{
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see cpw.mods.fml.common.network.IGuiHandler#getServerGuiElement(int,
+	 * net.minecraft.entity.player.EntityPlayer, net.minecraft.world.World, int,
+	 * int, int)
 	 */
 	@Override
-	public Object getServerGuiElement(final int id, final EntityPlayer player,
-			final World world, final int x, final int y, final int z) {
+	public Object getServerGuiElement(final int id, final EntityPlayer player, final World world, final int x, final int y, final int z)
+	{
 		final TileEntity tile = world.getTileEntity(x, y, z);
 
-		switch (id) {
+		switch (id)
+		{
 		/*
 		 * case GuiIDs.GUI_ID_NUKE_OVEN: return new
 		 * ContainerNukeFurnace(player.inventory, (TileEntityNukeFurnace) tile);
@@ -56,27 +62,29 @@ public class GuiHandler implements IGuiHandler {
 		 * ContainerCompressor(player.inventory, (TileEntityCompressor) tile);
 		 */
 		case GuiIDs.GUI_ID_STEAM_BOILER:
-			return new ContainerSteamBoiler(player.inventory,
-					(TileSteamBoiler) tile);
+			return new ContainerSteamBoiler(player.inventory, (TileSteamBoiler) tile);
 		case GuiIDs.GUI_ID_VANITY:
-			return new ContainerVanity(player, player.inventory,
-					EntityPlayerExtended.get(player).inventory);
+			return new ContainerVanity(player, player.inventory, EntityPlayerExtended.get(player).inventory);
 		case GuiIDs.GUI_ID_ARMOREDITOR:
-			return new ContainerArmorEditor(player.inventory,
-					(TileArmorEditor) tile);
+			return new ContainerArmorEditor(player.inventory, (TileArmorEditor) tile);
 		}
 		return null;
 	}
 
-	/* (non-Javadoc)
-	 * @see cpw.mods.fml.common.network.IGuiHandler#getClientGuiElement(int, net.minecraft.entity.player.EntityPlayer, net.minecraft.world.World, int, int, int)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see cpw.mods.fml.common.network.IGuiHandler#getClientGuiElement(int,
+	 * net.minecraft.entity.player.EntityPlayer, net.minecraft.world.World, int,
+	 * int, int)
 	 */
 	@Override
-	public Object getClientGuiElement(final int id, final EntityPlayer player,
-			final World world, final int x, final int y, final int z) {
+	public Object getClientGuiElement(final int id, final EntityPlayer player, final World world, final int x, final int y, final int z)
+	{
 		final TileEntity tile = world.getTileEntity(x, y, z);
 
-		switch (id) {
+		switch (id)
+		{
 		/*
 		 * case GuiIDs.GUI_ID_NUKE_OVEN: return new
 		 * GuiNukeFurnace(player.inventory, (TileEntityNukeFurnace) tile);
@@ -99,8 +107,7 @@ public class GuiHandler implements IGuiHandler {
 		case GuiIDs.GUI_ID_ARMOREDITOR:
 			return new GuiArmorEditor(player.inventory, (TileArmorEditor) tile);
 		case GuiIDs.GUI_ID_VANITY:
-			return new GuiVanity(player, player.inventory,
-					EntityPlayerExtended.get(player).inventory);
+			return new GuiVanity(player, player.inventory, EntityPlayerExtended.get(player).inventory);
 		}
 
 		return null;

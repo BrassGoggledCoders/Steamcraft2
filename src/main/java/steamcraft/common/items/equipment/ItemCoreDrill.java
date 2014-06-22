@@ -16,23 +16,29 @@ import cpw.mods.fml.relauncher.SideOnly;
 /**
  * The Class ItemCoreDrill.
  */
-public class ItemCoreDrill extends BaseItem {
-	
+public class ItemCoreDrill extends BaseItem
+{
+
 	/**
 	 * Instantiates a new item core drill.
 	 */
-	public ItemCoreDrill() {
+	public ItemCoreDrill()
+	{
 		super();
 		this.setMaxStackSize(1);
 		this.setMaxDamage(256);
 	}
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.item.Item#onItemUse(net.minecraft.item.ItemStack, net.minecraft.entity.player.EntityPlayer, net.minecraft.world.World, int, int, int, int, float, float, float)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.minecraft.item.Item#onItemUse(net.minecraft.item.ItemStack,
+	 * net.minecraft.entity.player.EntityPlayer, net.minecraft.world.World, int,
+	 * int, int, int, float, float, float)
 	 */
 	@Override
-	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world,
-			int i, int j, int k, int l, float f1, float f2, float f3) {
+	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int i, int j, int k, int l, float f1, float f2, float f3)
+	{
 		world.createExplosion(player, i, j, k, 2F, true);
 		double d = i + 0.5F + (0.5F) * 2.0000000000000001D;
 		double d1 = j + 0.7F + (0.5F) * 2.0000000000000001D;
@@ -42,14 +48,18 @@ public class ItemCoreDrill extends BaseItem {
 		return true;
 	}
 
-	/* (non-Javadoc)
-	 * @see steamcraft.common.items.BaseItem#registerIcons(net.minecraft.client.renderer.texture.IIconRegister)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * steamcraft.common.items.BaseItem#registerIcons(net.minecraft.client.renderer
+	 * .texture.IIconRegister)
 	 */
 	@SideOnly(Side.CLIENT)
 	@Override
-	public void registerIcons(IIconRegister par1IconRegister) {
-		itemIcon = par1IconRegister.registerIcon(LibInfo.PREFIX + "tools/"
-				+ this.getUnlocalizedName().substring(5));
+	public void registerIcons(IIconRegister par1IconRegister)
+	{
+		itemIcon = par1IconRegister.registerIcon(LibInfo.PREFIX + "tools/" + this.getUnlocalizedName().substring(5));
 	}
 
 	/*

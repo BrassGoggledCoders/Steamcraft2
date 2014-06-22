@@ -21,7 +21,8 @@ import net.minecraft.block.Block;
  * 
  * @author warlordjones
  */
-public class BlockMetalItem extends BaseItemBlockWithMetadata {
+public class BlockMetalItem extends BaseItemBlockWithMetadata
+{
 
 	/**
 	 * Instantiates a new block metal item.
@@ -29,7 +30,8 @@ public class BlockMetalItem extends BaseItemBlockWithMetadata {
 	 * @param block
 	 *            the block
 	 */
-	public BlockMetalItem(Block block) {
+	public BlockMetalItem(Block block)
+	{
 		super(block, block);
 	}
 }

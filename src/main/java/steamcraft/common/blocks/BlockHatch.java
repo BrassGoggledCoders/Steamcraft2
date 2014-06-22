@@ -28,11 +28,11 @@ import steamcraft.common.tiles.TileHatch;
  * 
  * @author warlordjones
  */
-public class BlockHatch extends BlockContainer {
+public class BlockHatch extends BlockContainer
+{
 
 	/** The hatch textures. */
-	public static ResourceLocation hatchTextures = new ResourceLocation(
-			"assets/steamcraft/textures/blocks/");
+	public static ResourceLocation hatchTextures = new ResourceLocation("assets/steamcraft/textures/blocks/");
 
 	/**
 	 * Instantiates a new block hatch.
@@ -42,7 +42,8 @@ public class BlockHatch extends BlockContainer {
 	 * @param mat
 	 *            the mat
 	 */
-	public BlockHatch(final int par1, final Material mat) {
+	public BlockHatch(final int par1, final Material mat)
+	{
 		super(mat);
 		setCreativeTab(Steamcraft.tabSC2);
 		// setUnlocalizedName("blockHatch");
@@ -57,7 +58,8 @@ public class BlockHatch extends BlockContainer {
 	 * .world.World, int)
 	 */
 	@Override
-	public TileEntity createNewTileEntity(final World world, final int var2) {
+	public TileEntity createNewTileEntity(final World world, final int var2)
+	{
 		return new TileHatch();
 	}
 
@@ -67,7 +69,8 @@ public class BlockHatch extends BlockContainer {
 	 * @see net.minecraft.block.Block#getRenderType()
 	 */
 	@Override
-	public int getRenderType() {
+	public int getRenderType()
+	{
 		return ConfigBlocks.blockHatchRI;
 	}
 
@@ -77,7 +80,8 @@ public class BlockHatch extends BlockContainer {
 	 * @see net.minecraft.block.Block#isOpaqueCube()
 	 */
 	@Override
-	public boolean isOpaqueCube() {
+	public boolean isOpaqueCube()
+	{
 		return false;
 	}
 
@@ -87,7 +91,8 @@ public class BlockHatch extends BlockContainer {
 	 * @see net.minecraft.block.Block#renderAsNormalBlock()
 	 */
 	@Override
-	public boolean renderAsNormalBlock() {
+	public boolean renderAsNormalBlock()
+	{
 		return false;
 	}
 }

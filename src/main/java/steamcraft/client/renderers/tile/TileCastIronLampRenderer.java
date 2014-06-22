@@ -29,7 +29,8 @@ import steamcraft.common.lib.LibInfo;
  * 
  * @author Surseance (Johnny Eatmon)
  */
-public class TileCastIronLampRenderer extends TileEntitySpecialRenderer {
+public class TileCastIronLampRenderer extends TileEntitySpecialRenderer
+{
 
 	/** The lamp model top. */
 	private final ModelCastIronLampTop lampModelTop;
@@ -40,7 +41,8 @@ public class TileCastIronLampRenderer extends TileEntitySpecialRenderer {
 	/**
 	 * Instantiates a new tile cast iron lamp renderer.
 	 */
-	public TileCastIronLampRenderer() {
+	public TileCastIronLampRenderer()
+	{
 		lampModelTop = new ModelCastIronLampTop();
 		lampModelSide = new ModelCastIronLampSide();
 	}
@@ -53,46 +55,47 @@ public class TileCastIronLampRenderer extends TileEntitySpecialRenderer {
 	 * double, float)
 	 */
 	@Override
-	public void renderTileEntityAt(final TileEntity te, final double dx,
-			final double dy, final double dz, final float scale) {
+	public void renderTileEntityAt(final TileEntity te, final double dx, final double dy, final double dz, final float scale)
+	{
 		te.getWorldObj().getBlock(te.xCoord, te.yCoord, te.zCoord);
 		final int metadata = te.getBlockMetadata();
 		float rot = 0.0F; // f3 - 1.0F;
 
-		if (metadata == 2) {
+		if (metadata == 2)
+		{
 			rot = 180.0F;
 		}
-		if (metadata == 4) {
+		if (metadata == 4)
+		{
 			rot = 90.0F;
 		}
-		if (metadata == 3) {
+		if (metadata == 3)
+		{
 			rot = -90.0F;
 		}
-		if (metadata == 6) {
+		if (metadata == 6)
+		{
 			rot = 180.0F;
 		}
 
 		GL11.glPushMatrix();
 		final float height = 0.6666667F;
-		GL11.glTranslatef((float) dx + 0.5F, (float) dy + 0.75F * height,
-				(float) dz + 0.5F);
+		GL11.glTranslatef((float) dx + 0.5F, (float) dy + 0.75F * height, (float) dz + 0.5F);
 		GL11.glRotatef(rot, 0.0F, 1.0F, 0.0F);
 
-		if (metadata == 6) {
+		if (metadata == 6)
+		{
 			GL11.glRotatef(180.0F, 0.0F, 0.0F, 1.0F);
 		}
 
 		GL11.glTranslatef(0.0F, -0.3125F, -0.4375F);
 
-		final ResourceLocation crystal = (new ResourceLocation(
-				LibInfo.PREFIX.replace(":", ""), "textures/models/lampon.png"));
+		final ResourceLocation crystal = (new ResourceLocation(LibInfo.PREFIX.replace(":", ""), "textures/models/lampon.png"));
 		Minecraft.getMinecraft().renderEngine.bindTexture(crystal);
 		GL11.glPushMatrix();
 		GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
-		lampModelTop.render((Entity) null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F,
-				0.0625F);
-		lampModelSide.render((Entity) null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F,
-				0.0625F);
+		lampModelTop.render((Entity) null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
+		lampModelSide.render((Entity) null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
 		GL11.glPopMatrix();
 		GL11.glPopMatrix();
 

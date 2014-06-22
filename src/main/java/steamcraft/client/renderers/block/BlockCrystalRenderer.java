@@ -30,7 +30,8 @@ import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
  * 
  * @author Surseance (Johnny Eatmon)
  */
-public class BlockCrystalRenderer implements ISimpleBlockRenderingHandler {
+public class BlockCrystalRenderer implements ISimpleBlockRenderingHandler
+{
 
 	/*
 	 * (non-Javadoc)
@@ -40,13 +41,12 @@ public class BlockCrystalRenderer implements ISimpleBlockRenderingHandler {
 	 * net.minecraft.client.renderer.RenderBlocks)
 	 */
 	@Override
-	public void renderInventoryBlock(final Block block, final int metadata,
-			final int modelID, final RenderBlocks renderer) {
+	public void renderInventoryBlock(final Block block, final int metadata, final int modelID, final RenderBlocks renderer)
+	{
 		GL11.glRotatef(90.0F, 0.0F, 1.0F, 0.0F);
 		GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
 		final TileCrystal te = new TileCrystal();
-		TileEntityRendererDispatcher.instance.renderTileEntityAt(te, 0.0D,
-				0.0D, 0.0D, 0.0F);
+		TileEntityRendererDispatcher.instance.renderTileEntityAt(te, 0.0D, 0.0D, 0.0D, 0.0F);
 		GL11.glEnable(32826);
 	}
 
@@ -60,9 +60,9 @@ public class BlockCrystalRenderer implements ISimpleBlockRenderingHandler {
 	 * net.minecraft.client.renderer.RenderBlocks)
 	 */
 	@Override
-	public boolean renderWorldBlock(final IBlockAccess world, final int x,
-			final int y, final int z, final Block block, final int modelID,
-			final RenderBlocks renderer) {
+	public boolean renderWorldBlock(final IBlockAccess world, final int x, final int y, final int z, final Block block, final int modelID,
+			final RenderBlocks renderer)
+	{
 		return true;
 	}
 
@@ -73,7 +73,8 @@ public class BlockCrystalRenderer implements ISimpleBlockRenderingHandler {
 	 * shouldRender3DInInventory(int)
 	 */
 	@Override
-	public boolean shouldRender3DInInventory(final int i) {
+	public boolean shouldRender3DInInventory(final int i)
+	{
 		return true;
 	}
 
@@ -84,7 +85,8 @@ public class BlockCrystalRenderer implements ISimpleBlockRenderingHandler {
 	 * cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler#getRenderId()
 	 */
 	@Override
-	public int getRenderId() {
+	public int getRenderId()
+	{
 		return ConfigBlocks.blockCrystalRI;
 	}
 }

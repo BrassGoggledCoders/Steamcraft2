@@ -22,10 +22,11 @@ import net.minecraft.command.ICommandSender;
 // TODO: Auto-generated Javadoc
 /**
  * The Class CommandSteamcraft.
- *
+ * 
  * @author Surseance (Johnny Eatmon)
  */
-public class CommandSteamcraft extends CommandBase {
+public class CommandSteamcraft extends CommandBase
+{
 
 	/** The aliases. */
 	private List<String> aliases;
@@ -33,41 +34,59 @@ public class CommandSteamcraft extends CommandBase {
 	/**
 	 * Instantiates a new command steamcraft.
 	 */
-	public CommandSteamcraft() {
+	public CommandSteamcraft()
+	{
 		this.aliases = new ArrayList<String>();
 		this.aliases.add("steamcraft");
 		this.aliases.add("sc");
 	}
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.command.CommandBase#canCommandSenderUseCommand(net.minecraft.command.ICommandSender)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * net.minecraft.command.CommandBase#canCommandSenderUseCommand(net.minecraft
+	 * .command.ICommandSender)
 	 */
 	@Override
-	public boolean canCommandSenderUseCommand(ICommandSender sender) {
+	public boolean canCommandSenderUseCommand(ICommandSender sender)
+	{
 		return true;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see net.minecraft.command.ICommand#getCommandName()
 	 */
 	@Override
-	public String getCommandName() {
+	public String getCommandName()
+	{
 		return "sc2";
 	}
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.command.ICommand#getCommandUsage(net.minecraft.command.ICommandSender)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * net.minecraft.command.ICommand#getCommandUsage(net.minecraft.command.
+	 * ICommandSender)
 	 */
 	@Override
-	public String getCommandUsage(ICommandSender sender) {
+	public String getCommandUsage(ICommandSender sender)
+	{
 		return "/sc2 <parameters>";
 	}
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.command.ICommand#processCommand(net.minecraft.command.ICommandSender, java.lang.String[])
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.minecraft.command.ICommand#processCommand(net.minecraft.command.
+	 * ICommandSender, java.lang.String[])
 	 */
 	@Override
-	public void processCommand(ICommandSender sender, String[] parameters) {
+	public void processCommand(ICommandSender sender, String[] parameters)
+	{
 		/*
 		 * ChatMessageComponent chat = sender.(); String prefix =
 		 * EnumChatFormatting.GOLD + " [Steamcraft] ";
@@ -110,21 +129,25 @@ public class CommandSteamcraft extends CommandBase {
 
 	/**
 	 * Checks if is s c2 developer.
-	 *
-	 * @param username the username
+	 * 
+	 * @param username
+	 *            the username
 	 * @return true, if is s c2 developer
 	 */
 	@SuppressWarnings("unused")
-	private boolean isSC2Developer(String username) {
-		return (username.equals("Surseance") || (username
-				.equals("decebaldecebal") || (username.equals("warlordjones"))));
+	private boolean isSC2Developer(String username)
+	{
+		return (username.equals("Surseance") || (username.equals("decebaldecebal") || (username.equals("warlordjones"))));
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see net.minecraft.command.CommandBase#compareTo(java.lang.Object)
 	 */
 	@Override
-	public int compareTo(Object arg0) {
+	public int compareTo(Object arg0)
+	{
 		return 0;
 	}
 }

@@ -11,14 +11,17 @@ import steamcraft.common.Steamcraft;
 /**
  * The Class BlockDropHammerFrame.
  */
-public class BlockDropHammerFrame extends Block {
-	
+public class BlockDropHammerFrame extends Block
+{
+
 	/**
 	 * Instantiates a new block drop hammer frame.
-	 *
-	 * @param mat the mat
+	 * 
+	 * @param mat
+	 *            the mat
 	 */
-	public BlockDropHammerFrame(Material mat) {
+	public BlockDropHammerFrame(Material mat)
+	{
 		super(mat);
 		setCreativeTab(Steamcraft.tabSC2);
 	}

@@ -30,7 +30,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 /**
  * The Class BlockFluidSteam.
  */
-public class BlockFluidSteam extends BlockFluidClassic {
+public class BlockFluidSteam extends BlockFluidClassic
+{
 
 	/** The still icon. */
 	@SideOnly(Side.CLIENT)
@@ -48,48 +49,68 @@ public class BlockFluidSteam extends BlockFluidClassic {
 	 * @param material
 	 *            the material
 	 */
-	public BlockFluidSteam(Fluid fluid, Material material) {
+	public BlockFluidSteam(Fluid fluid, Material material)
+	{
 		super(fluid, material);
 		this.setBlockName("steamFluidBlock");
 		this.setCreativeTab(Steamcraft.tabSC2);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see net.minecraft.block.Block#getIcon(int, int)
 	 */
 	@Override
-	public IIcon getIcon(int side, int meta) {
+	public IIcon getIcon(int side, int meta)
+	{
 		return ((side == 0) || (side == 1)) ? this.stillIcon : this.flowingIcon;
 	}
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.block.Block#registerBlockIcons(net.minecraft.client.renderer.texture.IIconRegister)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * net.minecraft.block.Block#registerBlockIcons(net.minecraft.client.renderer
+	 * .texture.IIconRegister)
 	 */
 	@SideOnly(Side.CLIENT)
 	@Override
-	public void registerBlockIcons(IIconRegister register) {
+	public void registerBlockIcons(IIconRegister register)
+	{
 		this.stillIcon = register.registerIcon(LibInfo.PREFIX + "steamStill");
-		this.flowingIcon = register.registerIcon(LibInfo.PREFIX
-				+ "steamFlowing");
+		this.flowingIcon = register.registerIcon(LibInfo.PREFIX + "steamFlowing");
 	}
 
-	/* (non-Javadoc)
-	 * @see net.minecraftforge.fluids.BlockFluidBase#canDisplace(net.minecraft.world.IBlockAccess, int, int, int)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * net.minecraftforge.fluids.BlockFluidBase#canDisplace(net.minecraft.world
+	 * .IBlockAccess, int, int, int)
 	 */
 	@Override
-	public boolean canDisplace(IBlockAccess world, int x, int y, int z) {
-		if (ItemStackUtils.getBlockMaterial(world, x, y, z).isLiquid()) {
+	public boolean canDisplace(IBlockAccess world, int x, int y, int z)
+	{
+		if (ItemStackUtils.getBlockMaterial(world, x, y, z).isLiquid())
+		{
 			return false;
 		}
 		return super.canDisplace(world, x, y, z);
 	}
 
-	/* (non-Javadoc)
-	 * @see net.minecraftforge.fluids.BlockFluidBase#displaceIfPossible(net.minecraft.world.World, int, int, int)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * net.minecraftforge.fluids.BlockFluidBase#displaceIfPossible(net.minecraft
+	 * .world.World, int, int, int)
 	 */
 	@Override
-	public boolean displaceIfPossible(World world, int x, int y, int z) {
-		if (ItemStackUtils.getBlockMaterial(world, x, y, z).isLiquid()) {
+	public boolean displaceIfPossible(World world, int x, int y, int z)
+	{
+		if (ItemStackUtils.getBlockMaterial(world, x, y, z).isLiquid())
+		{
 			return false;
 		}
 		return super.displaceIfPossible(world, x, y, z);

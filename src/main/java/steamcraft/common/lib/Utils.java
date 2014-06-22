@@ -37,11 +37,12 @@ import cpw.mods.fml.relauncher.SideOnly;
 // TODO: Auto-generated Javadoc
 /**
  * The Class Utils.
- *
+ * 
  * @author Surseance (Johnny Eatmon)
  */
-public class Utils {
-	
+public class Utils
+{
+
 	/** The random. */
 	public Random random = new Random();
 
@@ -50,13 +51,17 @@ public class Utils {
 
 	/**
 	 * Check for updated version.
-	 *
-	 * @param name the name
-	 * @param version the version
+	 * 
+	 * @param name
+	 *            the name
+	 * @param version
+	 *            the version
 	 * @return true, if successful
 	 */
-	public static boolean checkForUpdatedVersion(String name, String version) {
-		try {
+	public static boolean checkForUpdatedVersion(String name, String version)
+	{
+		try
+		{
 			URL webLink = new URL(LibInfo.VERSION_URL);
 			InputStream inputStream = webLink.openStream();
 			Properties prop = new Properties();
@@ -64,13 +69,13 @@ public class Utils {
 			String newVersion = prop.getProperty(name);
 			newestVersion = newVersion;
 
-			if (version.compareTo(newVersion) != 0) {
+			if (version.compareTo(newVersion) != 0)
+			{
 				return true;
 			}
-		} catch (Exception e) {
-			LoggerSteamcraft
-					.log(Level.FINEST,
-							"Could not establish a connection to Dropbox.com; no worries!");
+		} catch (Exception e)
+		{
+			LoggerSteamcraft.log(Level.FINEST, "Could not establish a connection to Dropbox.com; no worries!");
 		}
 
 		return false;
@@ -80,21 +85,19 @@ public class Utils {
 	 * Download capes.
 	 */
 	@SideOnly(Side.CLIENT)
-	public static void downloadCapes() {
+	public static void downloadCapes()
+	{
 		String[] developers = getUsersFromUrl("https://www.dropbox.com/s/m7tn0tx7y7w630s/devs.txt");
 
-		for (String username : developers) {
-			try {
-				ThreadDownloadImageData imageData = new ThreadDownloadImageData(
-						"https://www.dropbox.com/s/cicvp1u0kq9xtbp/steamcraft_cape_1.png",
+		for (String username : developers)
+		{
+			try
+			{
+				ThreadDownloadImageData imageData = new ThreadDownloadImageData("https://www.dropbox.com/s/cicvp1u0kq9xtbp/steamcraft_cape_1.png",
 						null, null);
-				Minecraft
-						.getMinecraft()
-						.getTextureManager()
-						.loadTexture(
-								(new ResourceLocation("cloaks/" + username)),
-								imageData);
-			} catch (Exception e) {
+				Minecraft.getMinecraft().getTextureManager().loadTexture((new ResourceLocation("cloaks/" + username)), imageData);
+			} catch (Exception e)
+			{
 				LoggerSteamcraft.log(Level.INFO, "Unable to load capes");
 			}
 		}
@@ -112,23 +115,27 @@ public class Utils {
 
 	/**
 	 * Gets the users from url.
-	 *
-	 * @param url the url
+	 * 
+	 * @param url
+	 *            the url
 	 * @return the users from url
 	 */
-	private static String[] getUsersFromUrl(String url) {
+	private static String[] getUsersFromUrl(String url)
+	{
 		ArrayList<String> list = new ArrayList<String>();
-		try {
-			BufferedReader urlReader = new BufferedReader(
-					new InputStreamReader(new URL(url).openStream()));
+		try
+		{
+			BufferedReader urlReader = new BufferedReader(new InputStreamReader(new URL(url).openStream()));
 			String line;
 
-			while ((line = urlReader.readLine()) != null) {
+			while ((line = urlReader.readLine()) != null)
+			{
 				list.add(line);
 			}
 
 			return list.toArray(new String[list.size()]);
-		} catch (Exception e) {
+		} catch (Exception e)
+		{
 			e.printStackTrace();
 			LoggerSteamcraft.log(Level.INFO, "Unable to connect to Dropbox");
 
@@ -146,14 +153,17 @@ public class Utils {
 	 * @return the item stack
 	 */
 	@SuppressWarnings("unused")
-	private ItemStack fillBucket(World world, MovingObjectPosition mop) {
+	private ItemStack fillBucket(World world, MovingObjectPosition mop)
+	{
 		Block block = world.getBlock(mop.blockX, mop.blockY, mop.blockZ);
 
-		if ((block == ConfigBlocks.blockSteam)
-				&& (world.getBlockMetadata(mop.blockX, mop.blockY, mop.blockZ) == 0)) {
+		if ((block == ConfigBlocks.blockSteam) && (world.getBlockMetadata(mop.blockX, mop.blockY, mop.blockZ) == 0))
+		{
 			world.setBlockToAir(mop.blockX, mop.blockY, mop.blockZ);
 			return new ItemStack(ConfigItems.itemBucketSteam);
-		} else {
+		}
+		else
+		{
 			return null;
 		}
 	}
