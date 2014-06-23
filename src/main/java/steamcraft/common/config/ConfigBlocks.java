@@ -39,6 +39,7 @@ import steamcraft.common.blocks.machine.BlockArmorEditor;
 import steamcraft.common.blocks.machine.BlockDropHammerAnvil;
 import steamcraft.common.blocks.machine.BlockIntake;
 import steamcraft.common.blocks.machine.BlockSteamBoiler;
+import steamcraft.common.itemblocks.ItemBlockIntake;
 import steamcraft.common.tiles.TileArmorEditor;
 import steamcraft.common.tiles.TileCrystal;
 import steamcraft.common.tiles.TileDropHammer;
@@ -198,7 +199,10 @@ public class ConfigBlocks
 		//GameRegistry.registerBlock(blockDropHammerFrame, "BlockDropHammerFrame");
 		RegistryHelper.registerContainerBlock(blockCrystal, TileCrystal.class, "BlockCrystal");
 		RegistryHelper.registerContainerBlock(blockSteamBoiler, TileSteamBoiler.class, "BlockSteamBoiler");
-		RegistryHelper.registerContainerBlock(blockIntake, TileIntake.class, "BlockIntake");
+		
+		GameRegistry.registerBlock(blockIntake, ItemBlockIntake.class, "BlockIntake");
+		GameRegistry.registerTileEntity(TileIntake.class, "TEIntake");
+		
 		RegistryHelper.registerContainerBlock(blockArmorEditor, TileArmorEditor.class, "BlockArmorEditor");
 		RegistryHelper.registerContainerBlock(blockDropHammerAnvil, TileDropHammer.class, "BlockDropHammerAnvil");
 		// RegistryHelper.registerContainerBlock(blockDropHammer,

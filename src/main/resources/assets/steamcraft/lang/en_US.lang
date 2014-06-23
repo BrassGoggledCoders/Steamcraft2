@@ -68,6 +68,7 @@ tile.compressorMachine.name=Compressor
 tile.simpleCoalGenerator.name=Simple Coal Generator
 tile.blockDropHammer.name=Drop Hammer Anvil
 tile.blockDropHammerFrame.name=Drop Hammer Frame
+tile.blockIntake.name=Intake Block
 
 #Items
 item.itemResource.0.name=Etherium Crystal

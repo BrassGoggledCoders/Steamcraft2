@@ -13,7 +13,7 @@
  */
 package steamcraft.common.tiles;
 
-import net.minecraft.block.material.Material;
+import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
@@ -31,9 +31,10 @@ import net.minecraftforge.fluids.IFluidHandler;
 public class TileIntake extends TileEntity implements IFluidHandler
 {
 	private static byte waterPerTick = 10;
-	private static byte exportAmountPerTick = 10;
+	private static byte exportAmountPerTick = 20;
 	
 	private FluidTank waterTank;
+	private short tickSinceLastConsume = 0;
 
 	public TileIntake()
 	{
@@ -44,8 +45,18 @@ public class TileIntake extends TileEntity implements IFluidHandler
 	public void updateEntity()
 	{
 		super.updateEntity();
-		if (this.worldObj.getBlock(this.xCoord, this.yCoord - 1, this.zCoord).getMaterial() == Material.water)
+		if (this.worldObj.getBlock(this.xCoord, this.yCoord - 1, this.zCoord) == Blocks.water 
+				&& this.worldObj.getBlockMetadata(this.xCoord, this.yCoord - 1, this.zCoord) == 0)
+		{
 			this.waterTank.fill(new FluidStack(FluidRegistry.WATER, waterPerTick), true);
+			tickSinceLastConsume++;
+			
+			if(tickSinceLastConsume == 200)
+			{
+				tickSinceLastConsume = 0;
+				this.worldObj.setBlockToAir(this.xCoord, this.yCoord - 1, this.zCoord);
+			}
+		}
 		
 		if(this.worldObj.getTileEntity(this.xCoord, this.yCoord + 1, this.zCoord)!=null
 			&& this.worldObj.getTileEntity(this.xCoord, this.yCoord + 1, this.zCoord) instanceof IFluidHandler)
@@ -60,6 +71,7 @@ public class TileIntake extends TileEntity implements IFluidHandler
 	{
 		super.readFromNBT(tag);
 		this.waterTank.setFluid(new FluidStack(FluidRegistry.getFluid("water"), tag.getShort("waterLevel")));
+		this.tickSinceLastConsume = tag.getShort("consumeTicks");
 	}
 
 	@Override
@@ -67,6 +79,7 @@ public class TileIntake extends TileEntity implements IFluidHandler
 	{
 		super.writeToNBT(tag);
 		tag.setShort("waterLevel", (short) this.waterTank.getFluidAmount());
+		tag.setShort("consumeTicks", tickSinceLastConsume);
 	}
 
 	@Override
