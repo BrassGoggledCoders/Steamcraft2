@@ -15,34 +15,75 @@ package steamcraft.common.items;
 
 import java.util.List;
 
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraft.util.IIcon;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidContainerItem;
 import steamcraft.common.config.ConfigItems;
+import steamcraft.common.lib.LibInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * The Class ItemCanister.
- * 
+ *
  * @author Decebaldecebal
  */
 public class ItemCanister extends BaseItem implements IFluidContainerItem
 {
-	public static final int MAX_STEAM = 10000; //in mb
-	public static final int MAX_STEAM_RATE = 20; // Maximum amount of steam that can be inserted into this canister per tick
+	private static IIcon emptyIcon;
+    private static IIcon halfIcon;
+    private static IIcon fullIcon;
+	/** The Constant MAX_STEAM. */
+	public static final int MAX_STEAM = 10000;
 
+	/** The Constant MAX_STEAM_RATE. */
+	public static final int MAX_STEAM_RATE = 20; // Maximum amount of steam that
+													// can be inserted into this
+													// canister per tick
+
+	/**
+	 * Instantiates a new item canister.
+	 */
 	public ItemCanister()
 	{
 		super();
 		this.setMaxStackSize(1);
 	}
-
+	@SideOnly(Side.CLIENT)
+	@Override
+	public void registerIcons(IIconRegister par1IconRegister)
+	{
+		emptyIcon = par1IconRegister.registerIcon(LibInfo.PREFIX + "itemCanisterEmpty");
+		halfIcon = par1IconRegister.registerIcon(LibInfo.PREFIX + "itemCanisterHalf");
+		fullIcon = par1IconRegister.registerIcon(LibInfo.PREFIX + "itemCanisterFull");
+	}
+	 @Override
+	 public IIcon getIcon(ItemStack stack, int renderPass, EntityPlayer player, ItemStack usingItem, int useRemaining)
+	 {
+		 ItemCanister canister = (ItemCanister) stack.getItem();
+	       if(canister.getFluidAmount(stack) == 0)
+	       {
+	    	   return emptyIcon;
+	       }
+	       else if(canister.getFluidAmount(stack) > 0)
+	       {
+	    	   return halfIcon;
+	       }
+	       else return fullIcon;
+	 }
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see net.minecraft.item.Item#getSubItems(net.minecraft.item.Item,
+	 * net.minecraft.creativetab.CreativeTabs, java.util.List)
+	 */
 	@SuppressWarnings("all")
 	@Override
 	@SideOnly(Side.CLIENT)
@@ -60,6 +101,13 @@ public class ItemCanister extends BaseItem implements IFluidContainerItem
 		return filled;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see
+	 * boilerplate.common.RootItem#addInformation(net.minecraft.item.ItemStack,
+	 * net.minecraft.entity.player.EntityPlayer, java.util.List, boolean)
+	 */
 	@SuppressWarnings("all")
 	@Override
 	@SideOnly(Side.CLIENT)
@@ -79,7 +127,13 @@ public class ItemCanister extends BaseItem implements IFluidContainerItem
 			list.add("Empty");
 		}
 	}
-
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see
+	 * net.minecraftforge.fluids.IFluidContainerItem#getFluid(net.minecraft.
+	 * item.ItemStack)
+	 */
 	@Override
 	public FluidStack getFluid(ItemStack container)
 	{
@@ -89,13 +143,26 @@ public class ItemCanister extends BaseItem implements IFluidContainerItem
 		}
 		return FluidStack.loadFluidStackFromNBT(container.stackTagCompound.getCompoundTag("Fluid"));
 	}
-	
+
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see
+	 * net.minecraftforge.fluids.IFluidContainerItem#getCapacity(net.minecraft
+	 * .item.ItemStack)
+	 */
 	@Override
 	public int getCapacity(ItemStack container)
 	{
 		return MAX_STEAM;
 	}
-
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see
+	 * net.minecraftforge.fluids.IFluidContainerItem#fill(net.minecraft.item
+	 * .ItemStack, net.minecraftforge.fluids.FluidStack, boolean)
+	 */
 	@Override
 	public int fill(ItemStack container, FluidStack resource, boolean doFill)
 	{
@@ -168,7 +235,13 @@ public class ItemCanister extends BaseItem implements IFluidContainerItem
 		container.stackTagCompound.setTag("Fluid", stack.writeToNBT(fluidTag));
 		return filled;
 	}
-
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see
+	 * net.minecraftforge.fluids.IFluidContainerItem#drain(net.minecraft.item
+	 * .ItemStack, int, boolean)
+	 */
 	@Override
 	public FluidStack drain(ItemStack container, int maxDrain, boolean doDrain)
 	{
@@ -207,7 +280,13 @@ public class ItemCanister extends BaseItem implements IFluidContainerItem
 		
 		return stack;
 	}
-
+	/**
+	 * Gets the fluid amount.
+	 *
+	 * @param stack
+	 *            the stack
+	 * @return the fluid amount
+	 */
 	public int getFluidAmount(ItemStack stack)
 	{
 		FluidStack fluid = this.getFluid(stack);
