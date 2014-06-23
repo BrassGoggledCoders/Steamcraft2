@@ -243,7 +243,6 @@ public class ItemSteamDrill extends ItemDrill
 		hitEntity.attackEntityFrom(DamageSource.causePlayerDamage((EntityPlayer) player), 2);
 		return false;
 	}
-
 	/*
 	 * (non-Javadoc)
 	 * 

@@ -11,6 +11,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.LibInfo;
@@ -81,7 +82,10 @@ public class ItemDrill extends ItemModTool
 	@Override
 	public float getDigSpeed(ItemStack stack, Block block, int metadata)
 	{
-		return /* this.getEnergy(stack) != 0 && */this.canHarvestBlock(block, stack) ? this.getEfficiency() : 1.0F;
+			NBTTagCompound tag = stack.getTagCompound();
+			if(tag.getBoolean("hasCanister"))
+			return this.canHarvestBlock(block, stack) ? this.getEfficiency() : 1.0F;
+			else return 0.1F;
 	}
 
 	public float getEfficiency()
