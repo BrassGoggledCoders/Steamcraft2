@@ -30,8 +30,8 @@ import net.minecraftforge.fluids.IFluidHandler;
  */
 public class TileIntake extends TileEntity implements IFluidHandler
 {
-	private static byte waterPerTick = 10;
-	private static byte exportAmountPerTick = 20;
+	private static byte waterPerTick = 30;
+	private static byte exportAmountPerTick = 30;
 	
 	private FluidTank waterTank;
 	private short tickSinceLastConsume = 0;
