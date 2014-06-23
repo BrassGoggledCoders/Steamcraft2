@@ -142,7 +142,7 @@ public class ItemModTool extends BaseItem
 		{
 			return true;
 		}
-		else if(toolMaterial == MaterialHelper.DRILL_EMERALD|| toolMaterial == MaterialHelper.DRILL_ETHERIUM || toolMaterial == MaterialHelper.DRILL_GOLD || toolMaterial == MaterialHelper.DRILL_IRON || toolMaterial == MaterialHelper.DRILL_OBSIDIAN || toolMaterial == MaterialHelper.DRILL_STEAM || toolMaterial == MaterialHelper.DRILL_STEAM || toolMaterial == MaterialHelper.DRILL_WOOD)
+		else if(toolMaterial == MaterialHelper.DRILL_EMERALD || toolMaterial == MaterialHelper.DRILL_ETHERIUM || toolMaterial == MaterialHelper.DRILL_GOLD || toolMaterial == MaterialHelper.DRILL_IRON || toolMaterial == MaterialHelper.DRILL_OBSIDIAN || toolMaterial == MaterialHelper.DRILL_STEAM || toolMaterial == MaterialHelper.DRILL_STEAM || toolMaterial == MaterialHelper.DRILL_WOOD)
 			return true;
 		else
 		return false;
@@ -269,6 +269,7 @@ public class ItemModTool extends BaseItem
 		}
 		else return false;
 	}
+	
 	protected boolean hasCanister(EntityPlayer player)
 	{
 		for(int i=0; i!=player.inventory.mainInventory.length; i++)
@@ -281,6 +282,7 @@ public class ItemModTool extends BaseItem
 		}
 		return false;
 	}
+	
 	public void onUpdate(ItemStack itemStack, World par2World, Entity par3Entity, int par4, boolean par5) {
 		if (!itemStack.hasTagCompound())
 			itemStack.setTagCompound(new NBTTagCompound());
@@ -301,6 +303,7 @@ public class ItemModTool extends BaseItem
 		}
 		else efficiencyOnProperMaterial = 0F;*/
 	}
+	
 	@Override
     public Multimap<String,AttributeModifier> getAttributeModifiers(ItemStack stack)
     {
