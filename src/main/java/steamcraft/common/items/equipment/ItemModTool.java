@@ -198,15 +198,16 @@ public class ItemModTool extends BaseItem
 
 	protected boolean hasCanister(EntityPlayer player)
 	{
+		boolean hasCanister = false;
 		for (int i = 0; i != player.inventory.mainInventory.length; i++)
 		{
 			ItemStack[] mainInv = player.inventory.mainInventory;
 			if ((mainInv[i] != null) && (mainInv[i].getItem() == ConfigItems.itemCanisterSteam))
 			{
-				return !this.isCanisterEmpty(mainInv[i]);
+				hasCanister = hasCanister || !this.isCanisterEmpty(mainInv[i]);
 			}
 		}
-		return false;
+		return hasCanister;
 	}
 
 	@Override
