@@ -45,6 +45,7 @@ public class ItemModTool extends BaseItem
 		this.maxStackSize = 1;
 		this.efficiencyOnProperMaterial = toolMat.getEfficiencyOnProperMaterial();
 		this.damageVsEntity = damage;
+		this.setFull3D();
 	}
 
 	@SuppressWarnings("all")
@@ -57,22 +58,22 @@ public class ItemModTool extends BaseItem
 			ItemStack stack = new ItemStack(this, 1, 0);
 			NBTTagCompound tag = new NBTTagCompound();
 			tag.setBoolean("hasCanister", true); //To make sure damage is reset when the tool is spawned from creative
-			
+
 			stack.setTagCompound(tag);
-			
+
 			l.add(stack);
 		}
 	}
-	
+
 	@Override
     public void onCreated(ItemStack stack, World world, EntityPlayer player)
 	{
 		NBTTagCompound tag = new NBTTagCompound();
 		tag.setBoolean("hasCanister", true); //To make sure damage is reset when the tool is crafted
-		
+
 		stack.setTagCompound(tag);
 	}
-	
+
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void registerIcons(IIconRegister par1IconRegister)
@@ -99,12 +100,12 @@ public class ItemModTool extends BaseItem
 		if (this.isSteampowered() && (living2 instanceof EntityPlayer))
 			if (this.hasCanister((EntityPlayer) living2))
 				this.consumeSteamFromCanister((EntityPlayer) living2);
-		
+
 		if (this instanceof ItemModSword)
 			itemstack.damageItem(1, living2);
 		else
 			itemstack.damageItem(2, living2);
-		
+
 		return true;
 	}
 
@@ -133,7 +134,7 @@ public class ItemModTool extends BaseItem
 		Item item = stack2.getItem();
 		return this.toolMaterial.func_150995_f() == item ? true : super.getIsRepairable(stack1, stack2);
 	}
-	
+
 	@Override
 	public boolean onBlockDestroyed(ItemStack stack, World p_150894_2_, Block p_150894_3_, int p_150894_4_, int p_150894_5_, int p_150894_6_,
 			EntityLivingBase living)
@@ -169,7 +170,7 @@ public class ItemModTool extends BaseItem
 	protected void consumeSteamFromCanister(EntityPlayer player)
 	{
 		ItemStack[] mainInv = player.inventory.mainInventory;
-		
+
 		for (ItemStack element : mainInv)
 		{
 			if ((element != null) && (element.getItem() == ConfigItems.itemCanisterSteam))
@@ -179,7 +180,7 @@ public class ItemModTool extends BaseItem
 				if (canister.getFluidAmount(element) > steamForRepair)
 				{
 					canister.drain(element, steamForRepair, true);
-					
+
 					return ;
 				}
 			}
@@ -215,20 +216,20 @@ public class ItemModTool extends BaseItem
 	{
 		if (!itemStack.hasTagCompound())
 			itemStack.setTagCompound(new NBTTagCompound());
-		
+
 		NBTTagCompound tag = itemStack.getTagCompound();
 		if (par3Entity instanceof EntityPlayer)
 		{
 			boolean hasCanister = false;
-			
+
 			if (this.hasCanister((EntityPlayer) par3Entity))
 				hasCanister = true;
-			
+
 			if(hasCanister!=tag.getBoolean("hasCanister")) //For performance reason.Not sure if it's a good idea to change NBT data each tick...
-			{				
+			{
 				tag.setBoolean("hasCanister", hasCanister);
 				itemStack.setTagCompound(tag);
-				
+
 				if(hasCanister)
 					changeToolDamage(itemStack, damageVsEntity);
 				else
@@ -241,7 +242,7 @@ public class ItemModTool extends BaseItem
 	{
 		addModifier(itemStack, SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName(), damage, 0);
 	}
-	
+
 	//Got this from the forums.Maybe move it to a more appropriate class or in BoilerPlate?
 	public static void addModifier(ItemStack itemStack, String attribute, double amount, int mode)
 	{
@@ -254,15 +255,15 @@ public class ItemModTool extends BaseItem
 	  	  attributes.setLong("UUIDMost", UUID.randomUUID().getMostSignificantBits());
 	  	  attributes.setLong("UUIDLeast", UUID.randomUUID().getLeastSignificantBits());
 	  	  attributes.setInteger("Operation", mode);
-	  	  
+
 	  	  list.appendTag(attributes);
-	  	  
+
 	  	  NBTTagCompound attributeModifierTag = itemStack.getTagCompound();
 	  	  attributeModifierTag.setTag("AttributeModifiers", list);
-	  	  
+
 	  	  itemStack.setTagCompound(attributeModifierTag);
 	}
-	
+
 	@SuppressWarnings("all")
 	@Override
 	public Multimap getItemAttributeModifiers()

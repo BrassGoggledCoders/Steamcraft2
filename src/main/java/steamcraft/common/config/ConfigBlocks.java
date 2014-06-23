@@ -27,7 +27,6 @@ import steamcraft.common.blocks.BlockCastIronRailing;
 import steamcraft.common.blocks.BlockCrystal;
 import steamcraft.common.blocks.BlockCustomOre;
 import steamcraft.common.blocks.BlockCustomOreItem;
-import steamcraft.common.blocks.BlockDropHammerFrame;
 import steamcraft.common.blocks.BlockEngravedSolid;
 import steamcraft.common.blocks.BlockEngravedSolidItem;
 import steamcraft.common.blocks.BlockFluidSteam;
@@ -37,10 +36,12 @@ import steamcraft.common.blocks.BlockMetalItem;
 import steamcraft.common.blocks.BlockSlate;
 import steamcraft.common.blocks.BlockSlateItem;
 import steamcraft.common.blocks.machine.BlockArmorEditor;
+import steamcraft.common.blocks.machine.BlockDropHammerAnvil;
 import steamcraft.common.blocks.machine.BlockIntake;
 import steamcraft.common.blocks.machine.BlockSteamBoiler;
 import steamcraft.common.tiles.TileArmorEditor;
 import steamcraft.common.tiles.TileCrystal;
+import steamcraft.common.tiles.TileDropHammer;
 import steamcraft.common.tiles.TileIntake;
 import steamcraft.common.tiles.TileSteamBoiler;
 import boilerplate.common.RegistryHelper;
@@ -49,7 +50,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 // TODO: Auto-generated Javadoc
 /**
  * The Class ConfigBlocks.
- * 
+ *
  * @author Surseance (Johnny Eatmon)
  */
 public class ConfigBlocks
@@ -107,7 +108,7 @@ public class ConfigBlocks
 	public static Block blockSteamBoiler;
 
 	/** The block drop hammer frame. */
-	public static Block blockDropHammer, blockDropHammerFrame;
+	public static Block blockDropHammerAnvil;
 
 	/** The steam fluid. */
 	public static Fluid steamFluid;
@@ -161,7 +162,8 @@ public class ConfigBlocks
 		blockSteamBoiler = new BlockSteamBoiler().setBlockName("blockSteamBoiler");
 		// blockDropHammer = new
 		// BlockDropHammer(Material.anvil).setBlockName("blockDropHammer");
-		blockDropHammerFrame = new BlockDropHammerFrame(Material.iron).setBlockName("blockDropHammerFrame");
+		blockDropHammerAnvil = new BlockDropHammerAnvil(Material.anvil).setBlockName("blockDropHammerAnvil");
+		//blockDropHammerFrame = new BlockDropHammerFrame(Material.iron).setBlockName("blockDropHammerFrame");
 		blockMetal = new BlockMetal();
 		blockBrassLog = new BlockBrassLog(Material.wood);
 		blockBrassLeaves = new BlockBrassLeaves(Material.iron);
@@ -193,11 +195,12 @@ public class ConfigBlocks
 		// GameRegistry.registerBlock(blockCastIronLampI, "BlockCastIronLampI");
 		// GameRegistry.registerBlock(blockCastIronLampA, "BlockCastIronLampA");
 		// GameRegistry.registerBlock(blockFluidSteam, "BlockFluidSteam");
-		GameRegistry.registerBlock(blockDropHammerFrame, "BlockDropHammerFrame");
+		//GameRegistry.registerBlock(blockDropHammerFrame, "BlockDropHammerFrame");
 		RegistryHelper.registerContainerBlock(blockCrystal, TileCrystal.class, "BlockCrystal");
 		RegistryHelper.registerContainerBlock(blockSteamBoiler, TileSteamBoiler.class, "BlockSteamBoiler");
 		RegistryHelper.registerContainerBlock(blockIntake, TileIntake.class, "BlockIntake");
 		RegistryHelper.registerContainerBlock(blockArmorEditor, TileArmorEditor.class, "BlockArmorEditor");
+		RegistryHelper.registerContainerBlock(blockDropHammerAnvil, TileDropHammer.class, "BlockDropHammerAnvil");
 		// RegistryHelper.registerContainerBlock(blockDropHammer,
 		// TileDropHammer.class, "BlockDropHammer");
 		// GameRegistry.registerBlock(blockDropHammer, "BlockDropHammer");

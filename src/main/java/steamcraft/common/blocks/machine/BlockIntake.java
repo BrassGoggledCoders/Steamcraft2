@@ -1,5 +1,5 @@
 /*
- * 
+ *
  */
 package steamcraft.common.blocks.machine;
 
@@ -17,18 +17,19 @@ public class BlockIntake extends BlockContainerMod
 
 	/**
 	 * Instantiates a new block intake.
-	 * 
+	 *
 	 * @param p_i45394_1_
 	 *            the p_i45394_1_
 	 */
 	public BlockIntake(Material p_i45394_1_)
 	{
 		super(p_i45394_1_);
+		setBlockName("blockIntake");
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.minecraft.block.ITileEntityProvider#createNewTileEntity(net.minecraft
 	 * .world.World, int)

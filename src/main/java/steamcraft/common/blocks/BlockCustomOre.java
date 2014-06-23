@@ -23,17 +23,19 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import steamcraft.common.config.ConfigBlocks;
+import steamcraft.common.config.ConfigItems;
 import steamcraft.common.lib.LibInfo;
+import boilerplate.steamapi.machines.IHammerable;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 // TODO: Auto-generated Javadoc
 /**
  * The Class BlockCustomOre.
- * 
+ *
  * @author Surseance (Johnny Eatmon)
  */
-public class BlockCustomOre extends BaseBlock
+public class BlockCustomOre extends BaseBlock implements IHammerable
 {
 
 	/** The icon. */
@@ -41,7 +43,7 @@ public class BlockCustomOre extends BaseBlock
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.minecraft.block.Block#getIcon(int, int)
 	 */
 	@Override
@@ -53,7 +55,7 @@ public class BlockCustomOre extends BaseBlock
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.minecraft.block.Block#registerBlockIcons(net.minecraft.client.renderer
 	 * .texture.IIconRegister)
@@ -86,7 +88,7 @@ public class BlockCustomOre extends BaseBlock
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.minecraft.item.Item#getSubItems(net.minecraft.item.Item,
 	 * net.minecraft.creativetab.CreativeTabs, java.util.List)
 	 */
@@ -99,5 +101,11 @@ public class BlockCustomOre extends BaseBlock
 		{
 			l.add(new ItemStack(ConfigBlocks.blockCustomOre, 1, var4));
 		}
+	}
+
+	@Override
+	public ItemStack getOutput()
+	{
+		return new ItemStack(ConfigItems.itemPowder);
 	}
 }
