@@ -31,7 +31,7 @@ public class ItemModPickaxe extends ItemModTool
 	 */
 	public ItemModPickaxe(ToolMaterial toolMat)
 	{
-		super(toolMat, blocksEffectiveAgainst);
+		super(2.0F, toolMat, blocksEffectiveAgainst);
 	}
 
 	/*

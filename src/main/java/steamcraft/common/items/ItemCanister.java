@@ -34,58 +34,37 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 public class ItemCanister extends BaseItem implements IFluidContainerItem
 {
-
-	/** The Constant MAX_STEAM. */
 	public static final int MAX_STEAM = 1000;
+	public static final int MAX_STEAM_RATE = 20; // Maximum amount of steam that can be inserted into this canister per tick
 
-	/** The Constant MAX_STEAM_RATE. */
-	public static final int MAX_STEAM_RATE = 20; // Maximum amount of steam that
-													// can be inserted into this
-													// canister per tick
-
-	/**
-	 * Instantiates a new item canister.
-	 */
 	public ItemCanister()
 	{
 		super();
-		setMaxStackSize(1);
+		this.setMaxStackSize(1);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see net.minecraft.item.Item#getSubItems(net.minecraft.item.Item,
-	 * net.minecraft.creativetab.CreativeTabs, java.util.List)
-	 */
 	@SuppressWarnings("all")
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(Item item, CreativeTabs tab, List l)
 	{
 		l.add(new ItemStack(ConfigItems.itemCanisterSteam, 1, 0));
+		l.add(new ItemStack(ConfigItems.itemCanisterSteam, 1, MAX_STEAM));
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * boilerplate.common.RootItem#addInformation(net.minecraft.item.ItemStack,
-	 * net.minecraft.entity.player.EntityPlayer, java.util.List, boolean)
-	 */
 	@SuppressWarnings("all")
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean flag)
 	{
 		FluidStack fluid = this.getFluid(stack);
-		if (fluid != null && fluid.amount > 0)
+		if ((fluid != null) && (fluid.amount > 0))
 		{
 			String str = fluid.getFluid().getName();
 			int amount = fluid.amount;
 
 			list.add("Holding " + amount + "mB of " + str);
-			list.add("(That's about " + amount / 100 + " buckets)");
+			list.add("(That's about " + (amount / 100) + " buckets)");
 		}
 		else
 		{
@@ -93,17 +72,10 @@ public class ItemCanister extends BaseItem implements IFluidContainerItem
 		}
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * net.minecraftforge.fluids.IFluidContainerItem#getFluid(net.minecraft.
-	 * item.ItemStack)
-	 */
 	@Override
 	public FluidStack getFluid(ItemStack container)
 	{
-		if (container.stackTagCompound == null || !container.stackTagCompound.hasKey("Fluid"))
+		if ((container.stackTagCompound == null) || !container.stackTagCompound.hasKey("Fluid"))
 		{
 			return null;
 		}
@@ -140,7 +112,7 @@ public class ItemCanister extends BaseItem implements IFluidContainerItem
 
 		if (!doFill)
 		{
-			if (container.stackTagCompound == null || !container.stackTagCompound.hasKey("Fluid"))
+			if ((container.stackTagCompound == null) || !container.stackTagCompound.hasKey("Fluid"))
 			{
 				return Math.min(MAX_STEAM, resource.amount);
 			}
@@ -213,7 +185,7 @@ public class ItemCanister extends BaseItem implements IFluidContainerItem
 	@Override
 	public FluidStack drain(ItemStack container, int maxDrain, boolean doDrain)
 	{
-		if (container.stackTagCompound == null || !container.stackTagCompound.hasKey("Fluid"))
+		if ((container.stackTagCompound == null) || !container.stackTagCompound.hasKey("Fluid"))
 		{
 			return null;
 		}
