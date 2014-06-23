@@ -5,6 +5,7 @@ package steamcraft.common.tiles;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import boilerplate.steamapi.machines.IHammerable;
@@ -27,9 +28,14 @@ public class TileDropHammer extends TileEntity
 
 				if(hammerable.getOutput() != null)
 				{
-					worldObj.setBlockToAir(xCoord, yCoord+1, zCoord);
 					ItemStack output = hammerable.getOutput();
-					worldObj.spawnEntityInWorld(new EntityItem(worldObj, xCoord, yCoord+1, zCoord, output));
+					Item outputItem = output.getItem();
+					int meta = worldObj.getBlockMetadata(xCoord, yCoord+1, zCoord);
+					if(meta < 4)
+					{
+					worldObj.spawnEntityInWorld(new EntityItem(worldObj, xCoord, yCoord+1, zCoord, new ItemStack(outputItem,2,meta)));
+					worldObj.setBlockToAir(xCoord, yCoord+1, zCoord);
+					}
 				}
 			}
 	}
