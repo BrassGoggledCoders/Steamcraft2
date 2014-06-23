@@ -38,7 +38,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class ItemCanister extends BaseItem implements IFluidContainerItem
 {
 	private static IIcon emptyIcon;
-    private static IIcon halfIcon;
     private static IIcon fullIcon;
 	public static final int MAX_STEAM = 10000;
 	public static final int MAX_STEAM_RATE = 20; // Maximum amount of steam that can be inserted into thiscanister per tick
@@ -54,7 +53,7 @@ public class ItemCanister extends BaseItem implements IFluidContainerItem
 	@Override
 	public void registerIcons(IIconRegister par1IconRegister)
 	{
-		halfIcon = itemIcon = par1IconRegister.registerIcon(LibInfo.PREFIX + "itemCanisterHalf");
+		itemIcon = par1IconRegister.registerIcon(LibInfo.PREFIX + "itemCanisterHalf");
 		emptyIcon = par1IconRegister.registerIcon(LibInfo.PREFIX + "itemCanisterEmpty");
 		fullIcon = par1IconRegister.registerIcon(LibInfo.PREFIX + "itemCanisterFull");
 	}
@@ -63,9 +62,9 @@ public class ItemCanister extends BaseItem implements IFluidContainerItem
 	 public IIcon getIconFromDamage(int damage)
 	 {
 		 if(damage == 0)
-			 return this.fullIcon;
+			 return fullIcon;
 		 else if(damage == this.getMaxDamage())
-			 return this.emptyIcon;
+			 return emptyIcon;
 		 return this.itemIcon;
 	 }
 
