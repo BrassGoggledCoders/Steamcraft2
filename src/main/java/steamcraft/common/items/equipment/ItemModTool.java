@@ -1,9 +1,11 @@
 package steamcraft.common.items.equipment;
 
 import java.util.List;
+import java.util.UUID;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -12,6 +14,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
 import net.minecraft.world.World;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.config.ConfigItems;
@@ -44,6 +47,32 @@ public class ItemModTool extends BaseItem
 		this.damageVsEntity = damage;
 	}
 
+	@SuppressWarnings("all")
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void getSubItems(Item item, CreativeTabs tab, List l)
+	{
+		if(isSteampowered())
+		{
+			ItemStack stack = new ItemStack(this, 1, 0);
+			NBTTagCompound tag = new NBTTagCompound();
+			tag.setBoolean("hasCanister", true); //To make sure damage is reset when the tool is spawned from creative
+			
+			stack.setTagCompound(tag);
+			
+			l.add(stack);
+		}
+	}
+	
+	@Override
+    public void onCreated(ItemStack stack, World world, EntityPlayer player)
+	{
+		NBTTagCompound tag = new NBTTagCompound();
+		tag.setBoolean("hasCanister", true); //To make sure damage is reset when the tool is crafted
+		
+		stack.setTagCompound(tag);
+	}
+	
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void registerIcons(IIconRegister par1IconRegister)
@@ -103,16 +132,6 @@ public class ItemModTool extends BaseItem
 	{
 		Item item = stack2.getItem();
 		return this.toolMaterial.func_150995_f() == item ? true : super.getIsRepairable(stack1, stack2);
-	}
-
-	@SuppressWarnings("all")
-	@Override
-	public Multimap getItemAttributeModifiers()
-	{
-		Multimap multimap = super.getItemAttributeModifiers();
-		multimap.put(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName(), new AttributeModifier(field_111210_e, "Tool modifier",
-				damageVsEntity, 0));
-		return multimap;
 	}
 	
 	@Override
@@ -195,29 +214,61 @@ public class ItemModTool extends BaseItem
 	{
 		if (!itemStack.hasTagCompound())
 			itemStack.setTagCompound(new NBTTagCompound());
+		
 		NBTTagCompound tag = itemStack.getTagCompound();
 		if (par3Entity instanceof EntityPlayer)
 		{
+			boolean hasCanister = false;
+			
 			if (this.hasCanister((EntityPlayer) par3Entity))
-				tag.setBoolean("hasCanister", true);
-			else
-				tag.setBoolean("hasCanister", false);
-			itemStack.setTagCompound(tag);
+				hasCanister = true;
+			
+			if(hasCanister!=tag.getBoolean("hasCanister")) //For performance reason.Not sure if it's a good idea to change NBT data each tick...
+			{				
+				tag.setBoolean("hasCanister", hasCanister);
+				itemStack.setTagCompound(tag);
+				
+				if(hasCanister)
+					changeToolDamage(itemStack, damageVsEntity);
+				else
+					changeToolDamage(itemStack, 1.0F);
+			}
 		}
-		
-		//getAttributeModifiers(itemStack).put(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName(), 
-				//new AttributeModifier(field_111210_e, "Tool modifier", 10, 0));
 	}
 
-	/*
-	 * Seems to not be used anyway...
+	private void changeToolDamage(ItemStack itemStack, float damage)
+	{
+		addModifier(itemStack, SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName(), damage, 0);
+	}
+	
+	//Got this from the forums.Maybe move it to a more appropriate class or in BoilerPlate?
+	public static void addModifier(ItemStack itemStack, String attribute, double amount, int mode)
+	{
+
+		  NBTTagList list = new NBTTagList();
+	  	  NBTTagCompound attributes = new NBTTagCompound();
+	  	  attributes.setString("Name", "Attribute");
+	  	  attributes.setString("AttributeName", attribute);
+	  	  attributes.setDouble("Amount", amount);
+	  	  attributes.setLong("UUIDMost", UUID.randomUUID().getMostSignificantBits());
+	  	  attributes.setLong("UUIDLeast", UUID.randomUUID().getLeastSignificantBits());
+	  	  attributes.setInteger("Operation", mode);
+	  	  
+	  	  list.appendTag(attributes);
+	  	  
+	  	  NBTTagCompound attributeModifierTag = itemStack.getTagCompound();
+	  	  attributeModifierTag.setTag("AttributeModifiers", list);
+	  	  
+	  	  itemStack.setTagCompound(attributeModifierTag);
+	}
+	
 	@SuppressWarnings("all")
 	@Override
-	public Multimap<String, AttributeModifier> getAttributeModifiers(ItemStack stack)
+	public Multimap getItemAttributeModifiers()
 	{
-		super.getAttributeModifiers(stack).put(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName(), 
-			new AttributeModifier(field_111210_e, "Tool modifier", damageVsEntity, 0));
-		return super.getAttributeModifiers(stack);
+		Multimap multimap = super.getItemAttributeModifiers();
+		multimap.put(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName(), new AttributeModifier(field_111210_e, "Tool modifier",
+				damageVsEntity, 0));
+		return multimap;
 	}
-	*/
 }

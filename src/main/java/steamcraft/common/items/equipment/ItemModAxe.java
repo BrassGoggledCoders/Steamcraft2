@@ -28,7 +28,7 @@ public class ItemModAxe extends ItemModTool
 	 */
 	public ItemModAxe(ToolMaterial toolMat)
 	{
-		super(3.0F, toolMat, blocksEffectiveAgainst);
+		super(toolMat.getDamageVsEntity() + 2.0F, toolMat, blocksEffectiveAgainst);
 	}
 
 	/*

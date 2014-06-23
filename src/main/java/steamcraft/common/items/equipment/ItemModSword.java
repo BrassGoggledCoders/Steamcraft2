@@ -30,7 +30,7 @@ public class ItemModSword extends ItemModTool
 	 */
 	public ItemModSword(ToolMaterial toolMat)
 	{
-		super(toolMat.getDamageVsEntity(), toolMat, blocksEffectiveAgainst);
+		super(toolMat.getDamageVsEntity() + 4.0F, toolMat, blocksEffectiveAgainst);
 		this.toolMaterial = toolMat;
 		this.maxStackSize = 1;
 		this.setMaxDamage(toolMat.getMaxUses());

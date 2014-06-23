@@ -28,7 +28,7 @@ public class ItemModShovel extends ItemModTool
 	 */
 	public ItemModShovel(ToolMaterial toolMat)
 	{
-		super(1.0F, toolMat, blocksEffectiveAgainst);
+		super(toolMat.getDamageVsEntity() + 1.0F, toolMat, blocksEffectiveAgainst);
 	}
 
 	/*
