@@ -33,7 +33,6 @@ public class ItemModTool extends BaseItem
 	public float damageVsEntity;
 	protected ToolMaterial toolMaterial;
 
-	@SuppressWarnings("all")
 	protected ItemModTool(float damage, ToolMaterial toolMat, Block[] blockArray)
 	{
 		super();
@@ -41,7 +40,6 @@ public class ItemModTool extends BaseItem
 		this.toolMaterial = toolMat;
 		blocksEffectiveAgainst = blockArray;
 		this.maxStackSize = 1;
-		this.setMaxDamage(toolMat.getMaxUses());
 		this.efficiencyOnProperMaterial = toolMat.getEfficiencyOnProperMaterial();
 		this.damageVsEntity = damage;
 	}
@@ -105,6 +103,16 @@ public class ItemModTool extends BaseItem
 	{
 		Item item = stack2.getItem();
 		return this.toolMaterial.func_150995_f() == item ? true : super.getIsRepairable(stack1, stack2);
+	}
+
+	@SuppressWarnings("all")
+	@Override
+	public Multimap getItemAttributeModifiers()
+	{
+		Multimap multimap = super.getItemAttributeModifiers();
+		multimap.put(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName(), new AttributeModifier(field_111210_e, "Tool modifier",
+				damageVsEntity, 0));
+		return multimap;
 	}
 	
 	@Override
@@ -197,21 +205,19 @@ public class ItemModTool extends BaseItem
 			itemStack.setTagCompound(tag);
 		}
 		
-		//getItemAttributeModifiers().notify();
-		getItemAttributeModifiers().put(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName(), 
-				new AttributeModifier(field_111210_e, "Weapon modifier", 0, 0));
-		/*
-		 * if(tag.getBoolean("hasCanister")) { efficiencyOnProperMaterial =
-		 * 4.0F; } else efficiencyOnProperMaterial = 0F;
-		 */
+		//getAttributeModifiers(itemStack).put(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName(), 
+				//new AttributeModifier(field_111210_e, "Tool modifier", 10, 0));
 	}
 
+	/*
+	 * Seems to not be used anyway...
 	@SuppressWarnings("all")
 	@Override
 	public Multimap<String, AttributeModifier> getAttributeModifiers(ItemStack stack)
 	{
-		super.getAttributeModifiers(stack).put(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName(),
-				new AttributeModifier(field_111210_e, "Weapon modifier", damageVsEntity, 0));
+		super.getAttributeModifiers(stack).put(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName(), 
+			new AttributeModifier(field_111210_e, "Tool modifier", damageVsEntity, 0));
 		return super.getAttributeModifiers(stack);
 	}
+	*/
 }
