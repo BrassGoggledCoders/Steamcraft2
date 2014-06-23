@@ -90,7 +90,7 @@ public class MaterialHelper
 		// damage, int enchantability
 		TOOL_OBSIDIAN = EnumHelper.addToolMaterial("TOOL_OBSIDIAN", 4, -1, 3.0F, 6.5F, 7);
 		TOOL_ETHERIUM = EnumHelper.addToolMaterial("TOOL_ETHERIUM", 4, 2345, 10.5F, 9.5F, 14);
-		TOOL_STEAM = EnumHelper.addToolMaterial("TOOL_STEAM", 2, 1561, 12.0F, 2.0F, 0);
+		TOOL_STEAM = EnumHelper.addToolMaterial("TOOL_STEAM", 2, 1561, 12.0F, 0.0F, 0);
 
 		// DRILLS!
 		DRILL_WOOD = EnumHelper.addToolMaterial("DRILL_WOOD", 0, 89, 4.0F, 0.0F, 0);

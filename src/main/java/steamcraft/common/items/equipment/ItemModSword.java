@@ -24,13 +24,13 @@ public class ItemModSword extends ItemModTool
 
 	/**
 	 * Instantiates a new item mod sword.
-	 * 
+	 *
 	 * @param toolMat
 	 *            the tool mat
 	 */
 	public ItemModSword(ToolMaterial toolMat)
 	{
-		super(toolMat.getDamageVsEntity() + 4.0F, toolMat, blocksEffectiveAgainst);
+		super(toolMat.getDamageVsEntity() /*+4.0F*/, toolMat, blocksEffectiveAgainst);
 		this.toolMaterial = toolMat;
 		this.maxStackSize = 1;
 		this.setMaxDamage(toolMat.getMaxUses());
@@ -99,7 +99,6 @@ public class ItemModSword extends ItemModTool
 		Item item = stack2.getItem();
 		return this.toolMaterial.func_150995_f() == item ? true : super.getIsRepairable(stack1, stack2);
 	}
-
 	@Override
 	public boolean onLeftClickEntity(ItemStack stack, EntityPlayer player, Entity entity)
 	{
