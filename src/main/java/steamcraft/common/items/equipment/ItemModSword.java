@@ -16,10 +16,6 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 
-// TODO: Auto-generated Javadoc
-/**
- * The Class ItemModSword.
- */
 public class ItemModSword extends ItemModTool
 {
 
@@ -34,21 +30,12 @@ public class ItemModSword extends ItemModTool
 	 */
 	public ItemModSword(ToolMaterial toolMat)
 	{
-		super(0, toolMat, blocksEffectiveAgainst);
+		super(toolMat.getDamageVsEntity(), toolMat, blocksEffectiveAgainst);
 		this.toolMaterial = toolMat;
 		this.maxStackSize = 1;
 		this.setMaxDamage(toolMat.getMaxUses());
-		
-		damageVsEntity = toolMat.getDamageVsEntity();
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * steamcraft.common.items.equipment.ItemModTool#getDigSpeed(net.minecraft
-	 * .item.ItemStack, net.minecraft.block.Block, int)
-	 */
 	@Override
 	public float getDigSpeed(ItemStack stack, Block block, int metadata)
 	{
@@ -64,14 +51,6 @@ public class ItemModSword extends ItemModTool
 		}
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * steamcraft.common.items.equipment.ItemModTool#onBlockDestroyed(net.minecraft
-	 * .item.ItemStack, net.minecraft.world.World, net.minecraft.block.Block,
-	 * int, int, int, net.minecraft.entity.EntityLivingBase)
-	 */
 	@Override
 	public boolean onBlockDestroyed(ItemStack stack, World world, Block block, int x, int y, int z, EntityLivingBase living)
 	{
@@ -83,39 +62,18 @@ public class ItemModSword extends ItemModTool
 		return true;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * net.minecraft.item.Item#getItemUseAction(net.minecraft.item.ItemStack)
-	 */
 	@Override
 	public EnumAction getItemUseAction(ItemStack stack)
 	{
 		return EnumAction.block;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * net.minecraft.item.Item#getMaxItemUseDuration(net.minecraft.item.ItemStack
-	 * )
-	 */
 	@Override
 	public int getMaxItemUseDuration(ItemStack stack)
 	{
 		return 72000;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * steamcraft.common.items.equipment.ItemModTool#onItemRightClick(net.minecraft
-	 * .item.ItemStack, net.minecraft.world.World,
-	 * net.minecraft.entity.player.EntityPlayer)
-	 */
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
 	{
@@ -123,37 +81,18 @@ public class ItemModSword extends ItemModTool
 		return stack;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see net.minecraft.item.Item#canHarvestBlock(net.minecraft.block.Block,
-	 * net.minecraft.item.ItemStack)
-	 */
 	@Override
 	public boolean canHarvestBlock(Block block, ItemStack itemstack)
 	{
 		return block == Blocks.web;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * steamcraft.common.items.equipment.ItemModTool#getItemEnchantability()
-	 */
 	@Override
 	public int getItemEnchantability()
 	{
 		return this.toolMaterial.getEnchantability();
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * steamcraft.common.items.equipment.ItemModTool#getIsRepairable(net.minecraft
-	 * .item.ItemStack, net.minecraft.item.ItemStack)
-	 */
 	@Override
 	public boolean getIsRepairable(ItemStack stack1, ItemStack stack2)
 	{

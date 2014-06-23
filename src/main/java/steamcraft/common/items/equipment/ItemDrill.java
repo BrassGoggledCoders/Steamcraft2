@@ -17,7 +17,6 @@ import steamcraft.common.lib.LibInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-// TODO: Auto-generated Javadoc
 /**
  * Base class for drills.
  * 
@@ -26,21 +25,11 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 public class ItemDrill extends ItemModTool
 {
-
-	/** An array of blocks the drill can mine. */
 	public static final Block[] blocksEffectiveAgainst = new Block[] { Blocks.cobblestone, Blocks.dirt, Blocks.stone, Blocks.sand, Blocks.clay,
 			Blocks.ice, Blocks.snow, Blocks.netherrack, Blocks.grass, Blocks.gravel };
 
-	/** The tool material. */
 	protected ToolMaterial toolMaterial;
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * steamcraft.common.items.equipment.ItemCoreDrill#registerIcons(net.minecraft
-	 * .client.renderer.texture.IIconRegister)
-	 */
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister icon)
@@ -48,26 +37,14 @@ public class ItemDrill extends ItemModTool
 		this.itemIcon = icon.registerIcon(LibInfo.PREFIX + "tools/" + this.getUnlocalizedName().substring(5));
 	}
 
-	/**
-	 * Instantiates a new item drill.
-	 * 
-	 * @param mat
-	 *            the mat
-	 */
 	public ItemDrill(ToolMaterial mat)
 	{
-		super(damageVsEntity, mat, blocksEffectiveAgainst);
+		super(2.0F, mat, blocksEffectiveAgainst);
 		this.setCreativeTab(Steamcraft.tabSC2);
 		this.toolMaterial = mat;
 		this.setMaxDamage(this.toolMaterial.getMaxUses());
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see net.minecraft.item.Item#canHarvestBlock(net.minecraft.block.Block,
-	 * net.minecraft.item.ItemStack)
-	 */
 	@SuppressWarnings("all")
 	@Override
 	public boolean canHarvestBlock(Block block, ItemStack stack)
@@ -83,13 +60,6 @@ public class ItemDrill extends ItemModTool
 		return false;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * boilerplate.common.RootItem#addInformation(net.minecraft.item.ItemStack,
-	 * net.minecraft.entity.player.EntityPlayer, java.util.List, boolean)
-	 */
 	@SuppressWarnings("all")
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean flag)
@@ -98,13 +68,6 @@ public class ItemDrill extends ItemModTool
 		list.add("Efficiency: " + this.getEfficiency());
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see net.minecraft.item.Item#hitEntity(net.minecraft.item.ItemStack,
-	 * net.minecraft.entity.EntityLivingBase,
-	 * net.minecraft.entity.EntityLivingBase)
-	 */
 	@Override
 	public boolean hitEntity(ItemStack stack, EntityLivingBase hitEntity, EntityLivingBase player)
 	{
@@ -115,23 +78,12 @@ public class ItemDrill extends ItemModTool
 		return false;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see net.minecraft.item.Item#getDigSpeed(net.minecraft.item.ItemStack,
-	 * net.minecraft.block.Block, int)
-	 */
 	@Override
 	public float getDigSpeed(ItemStack stack, Block block, int metadata)
 	{
 		return /* this.getEnergy(stack) != 0 && */this.canHarvestBlock(block, stack) ? this.getEfficiency() : 1.0F;
 	}
 
-	/**
-	 * Gets the efficiency.
-	 * 
-	 * @return the efficiency
-	 */
 	public float getEfficiency()
 	{
 		return this.toolMaterial.getEfficiencyOnProperMaterial();

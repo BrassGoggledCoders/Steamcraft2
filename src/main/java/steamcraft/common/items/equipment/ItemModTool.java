@@ -49,7 +49,7 @@ public class ItemModTool extends BaseItem
 		this.maxStackSize = 1;
 		this.setMaxDamage(toolMat.getMaxUses());
 		this.efficiencyOnProperMaterial = toolMat.getEfficiencyOnProperMaterial();
-		this.damageVsEntity = 2;
+		this.damageVsEntity = damage;
 	}
 
 	@SideOnly(Side.CLIENT)
