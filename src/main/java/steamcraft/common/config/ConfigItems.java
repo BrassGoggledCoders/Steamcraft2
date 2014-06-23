@@ -22,6 +22,7 @@ import steamcraft.common.items.ItemCanister;
 import steamcraft.common.items.ItemChisel;
 import steamcraft.common.items.ItemIngot;
 import steamcraft.common.items.ItemMachinePart;
+import steamcraft.common.items.ItemMultiParts;
 import steamcraft.common.items.ItemNugget;
 import steamcraft.common.items.ItemParts;
 import steamcraft.common.items.ItemPipe;
@@ -243,6 +244,7 @@ public class ConfigItems
 
 	public static Item itemMachinePart;
 	public static Item itemCopperParts, itemBrassParts, itemSteelParts, itemIronParts;
+	public static Item itemCopperMultiParts, itemBrassMultiParts, itemSteelMultiParts, itemIronMultiParts;
 
 	/**
 	 * Inits the.
@@ -327,6 +329,10 @@ public class ConfigItems
 		itemIronParts = ((ItemParts) new ItemParts().setUnlocalizedName("itemPartsIron")).setMaterial("iron");
 		itemBrassParts = ((ItemParts) new ItemParts().setUnlocalizedName("itemPartsBrass")).setMaterial("brass");
 		itemSteelParts = ((ItemParts) new ItemParts().setUnlocalizedName("itemPartsSteel")).setMaterial("steel");
+		itemCopperMultiParts = ((ItemMultiParts) new ItemMultiParts().setUnlocalizedName("itemMultiPartsCopper")).setMaterial("copper");
+		itemIronMultiParts = ((ItemMultiParts) new ItemMultiParts().setUnlocalizedName("itemMultiPartsIron")).setMaterial("iron");
+		itemBrassMultiParts = ((ItemMultiParts) new ItemMultiParts().setUnlocalizedName("itemMultiPartsBrass")).setMaterial("brass");
+		itemSteelMultiParts = ((ItemMultiParts) new ItemMultiParts().setUnlocalizedName("itemMultiPartsSteel")).setMaterial("steel");
 		itemWatch = new ItemWatch().setUnlocalizedName("itemWatch");
 		itemTeaSeed = new ItemTeaSeed().setUnlocalizedName("itemTeaSeed");
 		itemChisel = new ItemChisel().setUnlocalizedName("itemChisel");
@@ -405,6 +411,10 @@ public class ConfigItems
 		GameRegistry.registerItem(itemIronParts, "ItemIronParts", LibInfo.ID);
 		GameRegistry.registerItem(itemBrassParts, "ItemBrassParts", LibInfo.ID);
 		GameRegistry.registerItem(itemSteelParts, "ItemSteelParts", LibInfo.ID);
+		GameRegistry.registerItem(itemCopperMultiParts, "ItemCopperMultiParts", LibInfo.ID);
+		GameRegistry.registerItem(itemIronMultiParts, "ItemIronMultiParts", LibInfo.ID);
+		GameRegistry.registerItem(itemBrassMultiParts, "ItemBrassMultiParts", LibInfo.ID);
+		GameRegistry.registerItem(itemSteelMultiParts, "ItemSteelMultiParts", LibInfo.ID);
 		// Drills
 		GameRegistry.registerItem(drillCore, "ItemDrillCore", LibInfo.ID);
 		GameRegistry.registerItem(drillBase, "ItemDrillBase", LibInfo.ID);
