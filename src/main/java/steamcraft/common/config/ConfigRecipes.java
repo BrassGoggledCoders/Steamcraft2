@@ -46,13 +46,28 @@ public class ConfigRecipes
 		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.itemShrinkray), new Object[] { " BB", "EBE", "  B", 'E', Items.diamond, 'B',
 				Items.iron_ingot });
 		GameRegistry.addShapedRecipe(new ItemStack(ConfigBlocks.blockSteamBoiler), new Object[]{"PPP","PFP","PPP", 'F', Blocks.furnace, 'P', new ItemStack(ConfigItems.itemSheet, 1, 4)});
+		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.itemCanisterSteam), new Object[]{"PPP","GGG","PPP", 'G', Blocks.glass_pane, 'P', new ItemStack(ConfigItems.itemSheet, 1, 4)});
+		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.swordSteam), new Object[]{" P "," P "," I ", 'I', new ItemStack(ConfigItems.itemIngot,1, 4), 'P', new ItemStack(ConfigItems.itemSheet, 1, 6)});
+		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.pickaxeSteam), new Object[]{"PPP"," I "," I ", 'I', new ItemStack(ConfigItems.itemIngot,1, 4), 'P', new ItemStack(ConfigItems.itemSheet, 1, 6)});
+		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.shovelSteam), new Object[]{" P "," I "," I ", 'I', new ItemStack(ConfigItems.itemIngot,1, 4), 'P', new ItemStack(ConfigItems.itemSheet, 1, 6)});
+		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.axeSteam), new Object[]{"PP ","PI "," I ", 'I', new ItemStack(ConfigItems.itemIngot,1, 4), 'P', new ItemStack(ConfigItems.itemSheet, 1, 6)});
+		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.hoeSteam), new Object[]{"PP "," I "," I ", 'I', new ItemStack(ConfigItems.itemIngot,1, 4), 'P', new ItemStack(ConfigItems.itemSheet, 1, 6)});
 
 		GameRegistry.addShapelessRecipe(new ItemStack(ConfigItems.itemPowder, 3, 4), new Object[] { new ItemStack(ConfigItems.itemPowder, 2, 1),
 				new ItemStack(ConfigItems.itemPowder, 1, 3), new ItemStack(ConfigItems.itemPowder, 1, 3) });
 		GameRegistry.addShapelessRecipe(new ItemStack(ConfigItems.itemPowder, 3, 5), new Object[] { new ItemStack(ConfigItems.itemPowder, 2, 1),
 				new ItemStack(ConfigItems.itemPowder, 1, 2), new ItemStack(ConfigItems.itemPowder, 1, 2) });
 		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.itemPowder, 1, 6), new Object[]{" C ", "CIC", " C ", 'C', new ItemStack(Items.coal), 'I', new ItemStack(Items.iron_ingot)});
-
+		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.drillBase), new Object[]{"   ","IGI","III", 'I', new ItemStack(ConfigItems.itemIngot,1, 7), 'G', new ItemStack(ConfigItems.itemSteelMultiParts, 1, 0)});
+		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.drillCore), new Object[]{" D ","DDD"," B ", 'B', ConfigItems.drillBase, 'D', new ItemStack(ConfigItems.itemIngot, 1, 6)});
+		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.drillDiamond), new Object[]{" M ","MMM"," C ", 'C', ConfigItems.drillCore, 'M', new ItemStack(Items.diamond, 1)});
+		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.drillEtherium), new Object[]{" M ","MMM"," C ", 'C', ConfigItems.drillCore, 'M', new ItemStack(ConfigItems.itemResource, 1, 0)});
+		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.drillGold), new Object[]{" M ","MMM"," C ", 'C', ConfigItems.drillCore, 'M', new ItemStack(Items.gold_ingot, 1)});
+		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.drillIron), new Object[]{" M ","MMM"," C ", 'C', ConfigItems.drillCore, 'M', new ItemStack(Items.iron_ingot, 1)});
+		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.drillObsidian), new Object[]{" M ","MMM"," C ", 'C', ConfigItems.drillCore, 'M', new ItemStack(ConfigItems.itemResource, 1, 3)});
+		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.drillSteam), new Object[]{" M ","MMM"," C ", 'C', ConfigItems.drillCore, 'M', new ItemStack(ConfigItems.itemIngot, 1, 4)});
+		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.drillStone), new Object[]{" M ","MMM"," C ", 'C', ConfigItems.drillCore, 'M', new ItemStack(Blocks.stone, 1)});
+		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.drillWood), new Object[]{" M ","MMM"," C ", 'C', ConfigItems.drillCore, 'M', new ItemStack(Blocks.planks, 1)});
 		// Blocks
 		/*
 		 *

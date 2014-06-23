@@ -68,7 +68,7 @@ public class ItemCanister extends BaseItem implements IFluidContainerItem
 	 @Override
 	 public IIcon getIcon(ItemStack stack, int renderPass, EntityPlayer player, ItemStack usingItem, int useRemaining)
 	 {
-		 ItemCanister canister = (ItemCanister) stack.getItem();
+		 ItemCanister canister = (ItemCanister)stack.getItem();
 	     if(canister.getFluidAmount(stack) == 0)
 	     {
 	    	 return emptyIcon;
