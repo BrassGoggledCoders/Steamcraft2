@@ -28,16 +28,10 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class ItemModTool extends BaseItem
 {
 	public static final int steamForRepair = 20;
-
 	protected static Block[] blocksEffectiveAgainst;
-
 	public float efficiencyOnProperMaterial = 4.0F;
-
 	public float damageVsEntity;
-
 	protected ToolMaterial toolMaterial;
-
-	// private boolean canister = false;
 
 	@SuppressWarnings("all")
 	protected ItemModTool(float damage, ToolMaterial toolMat, Block[] blockArray)
@@ -76,25 +70,21 @@ public class ItemModTool extends BaseItem
 	public boolean hitEntity(ItemStack itemstack, EntityLivingBase living1, EntityLivingBase living2)
 	{
 		if (this.isSteampowered() && (living2 instanceof EntityPlayer))
-		{
 			if (this.hasCanister((EntityPlayer) living2))
 				this.consumeSteamFromCanister((EntityPlayer) living2);
-		}
+		
 		if (this instanceof ItemModSword)
-		{
 			itemstack.damageItem(1, living2);
-		}
 		else
 			itemstack.damageItem(2, living2);
+		
 		return true;
 	}
 
 	protected boolean isSteampowered()
 	{
 		if (this.toolMaterial == MaterialHelper.TOOL_STEAM)
-		{
 			return true;
-		}
 		else if ((this.toolMaterial == MaterialHelper.DRILL_EMERALD) || (this.toolMaterial == MaterialHelper.DRILL_ETHERIUM)
 				|| (this.toolMaterial == MaterialHelper.DRILL_GOLD) || (this.toolMaterial == MaterialHelper.DRILL_IRON)
 				|| (this.toolMaterial == MaterialHelper.DRILL_OBSIDIAN) || (this.toolMaterial == MaterialHelper.DRILL_STEAM)
@@ -115,16 +105,6 @@ public class ItemModTool extends BaseItem
 	{
 		Item item = stack2.getItem();
 		return this.toolMaterial.func_150995_f() == item ? true : super.getIsRepairable(stack1, stack2);
-	}
-
-	@SuppressWarnings("all")
-	@Override
-	public Multimap getItemAttributeModifiers()
-	{
-		Multimap multimap = super.getItemAttributeModifiers();
-		multimap.put(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName(), new AttributeModifier(field_111210_e, "Tool modifier",
-				damageVsEntity, 0));
-		return multimap;
 	}
 	
 	@Override
@@ -155,9 +135,7 @@ public class ItemModTool extends BaseItem
 			if (!itemStack.hasTagCompound())
 				itemStack.setTagCompound(new NBTTagCompound());
 
-			if (itemStack.getTagCompound().hasKey("hasCanister"))
-				list.add("Canister Detected: " + String.valueOf(itemStack.getTagCompound().getBoolean("hasCanister")));
-
+			list.add("Canister Detected: " + String.valueOf(itemStack.getTagCompound().getBoolean("hasCanister")));
 		}
 	}
 
@@ -219,10 +197,9 @@ public class ItemModTool extends BaseItem
 			itemStack.setTagCompound(tag);
 		}
 		
-		// getItemAttributeModifiers().notify();
-		// getItemAttributeModifiers().put(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName(),
-		// new AttributeModifier(field_111210_e, "Weapon modifier",
-		// getDamage(toolMaterial, itemStack), 0));
+		//getItemAttributeModifiers().notify();
+		getItemAttributeModifiers().put(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName(), 
+				new AttributeModifier(field_111210_e, "Weapon modifier", 0, 0));
 		/*
 		 * if(tag.getBoolean("hasCanister")) { efficiencyOnProperMaterial =
 		 * 4.0F; } else efficiencyOnProperMaterial = 0F;
@@ -234,7 +211,7 @@ public class ItemModTool extends BaseItem
 	public Multimap<String, AttributeModifier> getAttributeModifiers(ItemStack stack)
 	{
 		super.getAttributeModifiers(stack).put(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName(),
-				new AttributeModifier(field_111210_e, "Weapon modifier", 0, 0));
+				new AttributeModifier(field_111210_e, "Weapon modifier", damageVsEntity, 0));
 		return super.getAttributeModifiers(stack);
 	}
 }

@@ -20,13 +20,13 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidContainerItem;
 import steamcraft.common.config.ConfigItems;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class ItemCanister.
  * 
@@ -34,7 +34,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 public class ItemCanister extends BaseItem implements IFluidContainerItem
 {
-	public static final int MAX_STEAM = 1000;
+	public static final int MAX_STEAM = 10000; //in mb
 	public static final int MAX_STEAM_RATE = 20; // Maximum amount of steam that can be inserted into this canister per tick
 
 	public ItemCanister()
@@ -49,7 +49,15 @@ public class ItemCanister extends BaseItem implements IFluidContainerItem
 	public void getSubItems(Item item, CreativeTabs tab, List l)
 	{
 		l.add(new ItemStack(ConfigItems.itemCanisterSteam, 1, 0));
-		l.add(new ItemStack(ConfigItems.itemCanisterSteam, 1, MAX_STEAM));
+		l.add(getFilledCanister());
+	}
+	
+	public ItemStack getFilledCanister()
+	{
+		ItemStack filled = new ItemStack(ConfigItems.itemCanisterSteam, 1, 0);
+		fill(filled, new FluidStack(FluidRegistry.getFluid("steam"), MAX_STEAM), true);
+		
+		return filled;
 	}
 
 	@SuppressWarnings("all")
@@ -64,7 +72,7 @@ public class ItemCanister extends BaseItem implements IFluidContainerItem
 			int amount = fluid.amount;
 
 			list.add("Holding " + amount + "mB of " + str);
-			list.add("(That's about " + (amount / 100) + " buckets)");
+			list.add("(That's about " + (amount / 1000) + " buckets)");
 		}
 		else
 		{
@@ -81,27 +89,13 @@ public class ItemCanister extends BaseItem implements IFluidContainerItem
 		}
 		return FluidStack.loadFluidStackFromNBT(container.stackTagCompound.getCompoundTag("Fluid"));
 	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * net.minecraftforge.fluids.IFluidContainerItem#getCapacity(net.minecraft
-	 * .item.ItemStack)
-	 */
+	
 	@Override
 	public int getCapacity(ItemStack container)
 	{
 		return MAX_STEAM;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * net.minecraftforge.fluids.IFluidContainerItem#fill(net.minecraft.item
-	 * .ItemStack, net.minecraftforge.fluids.FluidStack, boolean)
-	 */
 	@Override
 	public int fill(ItemStack container, FluidStack resource, boolean doFill)
 	{
@@ -175,13 +169,6 @@ public class ItemCanister extends BaseItem implements IFluidContainerItem
 		return filled;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * net.minecraftforge.fluids.IFluidContainerItem#drain(net.minecraft.item
-	 * .ItemStack, int, boolean)
-	 */
 	@Override
 	public FluidStack drain(ItemStack container, int maxDrain, boolean doDrain)
 	{
@@ -191,12 +178,14 @@ public class ItemCanister extends BaseItem implements IFluidContainerItem
 		}
 
 		FluidStack stack = FluidStack.loadFluidStackFromNBT(container.stackTagCompound.getCompoundTag("Fluid"));
+		
 		if (stack == null)
 		{
 			return null;
 		}
 
 		stack.amount = Math.min(stack.amount, maxDrain);
+		
 		if (doDrain)
 		{
 			if (maxDrain >= MAX_STEAM)
@@ -207,30 +196,27 @@ public class ItemCanister extends BaseItem implements IFluidContainerItem
 				{
 					container.stackTagCompound = null;
 				}
+				
 				return stack;
 			}
 
 			NBTTagCompound fluidTag = container.stackTagCompound.getCompoundTag("Fluid");
-			fluidTag.setInteger("Amount", fluidTag.getInteger("Amount") - maxDrain);
+			fluidTag.setInteger("Amount", fluidTag.getInteger("Amount") - stack.amount);
 			container.stackTagCompound.setTag("Fluid", fluidTag);
 		}
+		
 		return stack;
 	}
 
-	/**
-	 * Gets the fluid amount.
-	 * 
-	 * @param stack
-	 *            the stack
-	 * @return the fluid amount
-	 */
 	public int getFluidAmount(ItemStack stack)
 	{
 		FluidStack fluid = this.getFluid(stack);
+		
 		if (fluid == null)
 		{
 			return 0;
 		}
+		
 		return fluid.amount;
 	}
 }
