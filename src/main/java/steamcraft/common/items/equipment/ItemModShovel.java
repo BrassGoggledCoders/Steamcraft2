@@ -22,7 +22,7 @@ public class ItemModShovel extends ItemModTool
 
 	/**
 	 * Instantiates a new item mod shovel.
-	 *
+	 * 
 	 * @param toolMat
 	 *            the tool mat
 	 */
@@ -33,7 +33,7 @@ public class ItemModShovel extends ItemModTool
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see net.minecraft.item.Item#canHarvestBlock(net.minecraft.block.Block,
 	 * net.minecraft.item.ItemStack)
 	 */
@@ -42,9 +42,10 @@ public class ItemModShovel extends ItemModTool
 	{
 		return block == Blocks.snow ? true : block == Blocks.snow_layer;
 	}
+
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see
 	 * steamcraft.common.items.equipment.ItemModTool#getDigSpeed(net.minecraft
 	 * .item.ItemStack, net.minecraft.block.Block, int)
@@ -55,11 +56,13 @@ public class ItemModShovel extends ItemModTool
 		if (this.isSteampowered())
 		{
 			NBTTagCompound tag = stack.getTagCompound();
-			if(tag.getBoolean("hasCanister"))
-			return (4.0F);
-			else return 0.1F;
+			if (tag.getBoolean("hasCanister"))
+				return (4.0F);
+			else
+				return 0.1F;
 		}
-		if (block != null && (block.getMaterial() == Material.iron || block.getMaterial() == Material.anvil || block.getMaterial() == Material.rock))
+		if ((block != null)
+				&& ((block.getMaterial() == Material.iron) || (block.getMaterial() == Material.anvil) || (block.getMaterial() == Material.rock)))
 		{
 			super.getDigSpeed(stack, block, metadata);
 		}

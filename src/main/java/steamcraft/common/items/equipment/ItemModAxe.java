@@ -22,7 +22,7 @@ public class ItemModAxe extends ItemModTool
 
 	/**
 	 * Instantiates a new item mod axe.
-	 *
+	 * 
 	 * @param toolMat
 	 *            the tool mat
 	 */
@@ -33,7 +33,7 @@ public class ItemModAxe extends ItemModTool
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see
 	 * steamcraft.common.items.equipment.ItemModTool#getDigSpeed(net.minecraft
 	 * .item.ItemStack, net.minecraft.block.Block, int)
@@ -44,11 +44,13 @@ public class ItemModAxe extends ItemModTool
 		if (this.isSteampowered())
 		{
 			NBTTagCompound tag = stack.getTagCompound();
-			if(tag.getBoolean("hasCanister"))
-			return (4.0F);
-			else return 0.1F;
+			if (tag.getBoolean("hasCanister"))
+				return (4.0F);
+			else
+				return 0.1F;
 		}
-		if (block != null && (block.getMaterial() == Material.wood || block.getMaterial() == Material.plants || block.getMaterial() == Material.vine))
+		if ((block != null)
+				&& ((block.getMaterial() == Material.wood) || (block.getMaterial() == Material.plants) || (block.getMaterial() == Material.vine)))
 		{
 			super.getDigSpeed(stack, block, metadata);
 		}

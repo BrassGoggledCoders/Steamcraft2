@@ -20,9 +20,9 @@ import cpw.mods.fml.relauncher.SideOnly;
 // TODO: Auto-generated Javadoc
 /**
  * Base class for drills.
- *
+ * 
  * @author Decebaldecebal
- *
+ * 
  */
 public class ItemDrill extends ItemModTool
 {
@@ -36,7 +36,7 @@ public class ItemDrill extends ItemModTool
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see
 	 * steamcraft.common.items.equipment.ItemCoreDrill#registerIcons(net.minecraft
 	 * .client.renderer.texture.IIconRegister)
@@ -50,7 +50,7 @@ public class ItemDrill extends ItemModTool
 
 	/**
 	 * Instantiates a new item drill.
-	 *
+	 * 
 	 * @param mat
 	 *            the mat
 	 */
@@ -59,12 +59,12 @@ public class ItemDrill extends ItemModTool
 		super(damageVsEntity, mat, blocksEffectiveAgainst);
 		this.setCreativeTab(Steamcraft.tabSC2);
 		this.toolMaterial = mat;
-		this.setMaxDamage(toolMaterial.getMaxUses());
+		this.setMaxDamage(this.toolMaterial.getMaxUses());
 	}
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see net.minecraft.item.Item#canHarvestBlock(net.minecraft.block.Block,
 	 * net.minecraft.item.ItemStack)
 	 */
@@ -85,7 +85,7 @@ public class ItemDrill extends ItemModTool
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see
 	 * boilerplate.common.RootItem#addInformation(net.minecraft.item.ItemStack,
 	 * net.minecraft.entity.player.EntityPlayer, java.util.List, boolean)
@@ -100,7 +100,7 @@ public class ItemDrill extends ItemModTool
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see net.minecraft.item.Item#hitEntity(net.minecraft.item.ItemStack,
 	 * net.minecraft.entity.EntityLivingBase,
 	 * net.minecraft.entity.EntityLivingBase)
@@ -117,7 +117,7 @@ public class ItemDrill extends ItemModTool
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see net.minecraft.item.Item#getDigSpeed(net.minecraft.item.ItemStack,
 	 * net.minecraft.block.Block, int)
 	 */
@@ -126,9 +126,10 @@ public class ItemDrill extends ItemModTool
 	{
 		return /* this.getEnergy(stack) != 0 && */this.canHarvestBlock(block, stack) ? this.getEfficiency() : 1.0F;
 	}
+
 	/**
 	 * Gets the efficiency.
-	 *
+	 * 
 	 * @return the efficiency
 	 */
 	public float getEfficiency()

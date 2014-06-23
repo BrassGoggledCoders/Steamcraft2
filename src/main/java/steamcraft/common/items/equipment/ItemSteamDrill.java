@@ -16,7 +16,6 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
-import steamcraft.common.config.ConfigItems;
 import steamcraft.common.lib.LibInfo;
 import boilerplate.client.ClientHelper;
 import boilerplate.common.utils.PlayerUtils;
@@ -32,11 +31,12 @@ public class ItemSteamDrill extends ItemDrill
 	private Random random = new Random();
 
 	/** The blocks effective against. */
-	public static Block[] blocksEffectiveAgainst = new Block[] { Blocks.cobblestone, Blocks.dirt, Blocks.stone, Blocks.sand, Blocks.clay, Blocks.ice, Blocks.snow, Blocks.netherrack, Blocks.grass };
+	public static Block[] blocksEffectiveAgainst = new Block[] { Blocks.cobblestone, Blocks.dirt, Blocks.stone, Blocks.sand, Blocks.clay, Blocks.ice,
+			Blocks.snow, Blocks.netherrack, Blocks.grass };
 
 	/**
 	 * Instantiates a new item steam drill.
-	 *
+	 * 
 	 * @param mat
 	 *            the mat
 	 */
@@ -47,7 +47,7 @@ public class ItemSteamDrill extends ItemDrill
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see
 	 * steamcraft.common.items.equipment.ItemDrill#addInformation(net.minecraft
 	 * .item.ItemStack, net.minecraft.entity.player.EntityPlayer,
@@ -83,7 +83,7 @@ public class ItemSteamDrill extends ItemDrill
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see
 	 * net.minecraft.item.Item#onBlockStartBreak(net.minecraft.item.ItemStack,
 	 * int, int, int, net.minecraft.entity.player.EntityPlayer)
@@ -157,7 +157,7 @@ public class ItemSteamDrill extends ItemDrill
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see
 	 * steamcraft.common.items.equipment.ItemDrill#onBlockDestroyed(net.minecraft
 	 * .item.ItemStack, net.minecraft.world.World, net.minecraft.block.Block,
@@ -166,21 +166,23 @@ public class ItemSteamDrill extends ItemDrill
 	@Override
 	public boolean onBlockDestroyed(ItemStack stack, World world, Block p_150894_3_, int x, int y, int z, EntityLivingBase living)
 	{
-		 if(living instanceof EntityPlayer)
-		 {
-			 for(int i=0; i<5; i++)
-			 consumeSteamFromCanister((EntityPlayer) living);
-			 stack.damageItem(1, living);
-			 world.playSoundAtEntity(living, LibInfo.PREFIX + "drill", 1.0F, 1.0F);
-			 world.spawnParticle("smoke", x + 0.5, y + 0.5, z + 0.5, this.random.nextGaussian(), this.random.nextGaussian(), this.random.nextGaussian());
-			 return true;
-		 }
-		 else return false;
+		if (living instanceof EntityPlayer)
+		{
+			for (int i = 0; i < 5; i++)
+				this.consumeSteamFromCanister((EntityPlayer) living);
+			stack.damageItem(1, living);
+			world.playSoundAtEntity(living, LibInfo.PREFIX + "drill", 1.0F, 1.0F);
+			world.spawnParticle("smoke", x + 0.5, y + 0.5, z + 0.5, this.random.nextGaussian(), this.random.nextGaussian(),
+					this.random.nextGaussian());
+			return true;
+		}
+		else
+			return false;
 	}
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see
 	 * net.minecraft.item.Item#onItemRightClick(net.minecraft.item.ItemStack,
 	 * net.minecraft.world.World, net.minecraft.entity.player.EntityPlayer)
@@ -206,7 +208,7 @@ public class ItemSteamDrill extends ItemDrill
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see
 	 * steamcraft.common.items.equipment.ItemDrill#canHarvestBlock(net.minecraft
 	 * .block.Block, net.minecraft.item.ItemStack)
@@ -228,7 +230,7 @@ public class ItemSteamDrill extends ItemDrill
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see
 	 * steamcraft.common.items.equipment.ItemDrill#hitEntity(net.minecraft.item
 	 * .ItemStack, net.minecraft.entity.EntityLivingBase,
@@ -244,7 +246,7 @@ public class ItemSteamDrill extends ItemDrill
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see
 	 * steamcraft.common.items.equipment.ItemDrill#getDigSpeed(net.minecraft
 	 * .item.ItemStack, net.minecraft.block.Block, int)

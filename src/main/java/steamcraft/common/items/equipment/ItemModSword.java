@@ -7,8 +7,6 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.EnumAction;
@@ -17,8 +15,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
-
-import com.google.common.collect.Multimap;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -32,7 +28,7 @@ public class ItemModSword extends ItemModTool
 
 	/**
 	 * Instantiates a new item mod sword.
-	 *
+	 * 
 	 * @param toolMat
 	 *            the tool mat
 	 */
@@ -42,11 +38,13 @@ public class ItemModSword extends ItemModTool
 		this.toolMaterial = toolMat;
 		this.maxStackSize = 1;
 		this.setMaxDamage(toolMat.getMaxUses());
+		
+		damageVsEntity = toolMat.getDamageVsEntity();
 	}
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see
 	 * steamcraft.common.items.equipment.ItemModTool#getDigSpeed(net.minecraft
 	 * .item.ItemStack, net.minecraft.block.Block, int)
@@ -61,14 +59,14 @@ public class ItemModSword extends ItemModTool
 		else
 		{
 			Material material = block.getMaterial();
-			return material != Material.plants && material != Material.vine && material != Material.coral && material != Material.leaves ? 1.0F
+			return (material != Material.plants) && (material != Material.vine) && (material != Material.coral) && (material != Material.leaves) ? 1.0F
 					: 1.5F;
 		}
 	}
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see
 	 * steamcraft.common.items.equipment.ItemModTool#onBlockDestroyed(net.minecraft
 	 * .item.ItemStack, net.minecraft.world.World, net.minecraft.block.Block,
@@ -87,7 +85,7 @@ public class ItemModSword extends ItemModTool
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see
 	 * net.minecraft.item.Item#getItemUseAction(net.minecraft.item.ItemStack)
 	 */
@@ -99,7 +97,7 @@ public class ItemModSword extends ItemModTool
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see
 	 * net.minecraft.item.Item#getMaxItemUseDuration(net.minecraft.item.ItemStack
 	 * )
@@ -112,7 +110,7 @@ public class ItemModSword extends ItemModTool
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see
 	 * steamcraft.common.items.equipment.ItemModTool#onItemRightClick(net.minecraft
 	 * .item.ItemStack, net.minecraft.world.World,
@@ -127,7 +125,7 @@ public class ItemModSword extends ItemModTool
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see net.minecraft.item.Item#canHarvestBlock(net.minecraft.block.Block,
 	 * net.minecraft.item.ItemStack)
 	 */
@@ -139,7 +137,7 @@ public class ItemModSword extends ItemModTool
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see
 	 * steamcraft.common.items.equipment.ItemModTool#getItemEnchantability()
 	 */
@@ -151,7 +149,7 @@ public class ItemModSword extends ItemModTool
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see
 	 * steamcraft.common.items.equipment.ItemModTool#getIsRepairable(net.minecraft
 	 * .item.ItemStack, net.minecraft.item.ItemStack)
@@ -162,22 +160,24 @@ public class ItemModSword extends ItemModTool
 		Item item = stack2.getItem();
 		return this.toolMaterial.func_150995_f() == item ? true : super.getIsRepairable(stack1, stack2);
 	}
+
 	@Override
 	public boolean onLeftClickEntity(ItemStack stack, EntityPlayer player, Entity entity)
 	{
 		if (this.isSteampowered())
 		{
 			NBTTagCompound tag = stack.getTagCompound();
-			if(tag.getBoolean("hasCanister"))
+			if (tag.getBoolean("hasCanister"))
 			{
-			entity.attackEntityFrom(DamageSource.causePlayerDamage(player), toolMaterial.getDamageVsEntity());
-			return true;
+				entity.attackEntityFrom(DamageSource.causePlayerDamage(player), this.toolMaterial.getDamageVsEntity());
+				return true;
 			}
-			else return false;
+			else
+				return false;
 		}
 		else
 		{
-			entity.attackEntityFrom(DamageSource.causePlayerDamage(player), toolMaterial.getDamageVsEntity());
+			entity.attackEntityFrom(DamageSource.causePlayerDamage(player), this.toolMaterial.getDamageVsEntity());
 			return true;
 		}
 	}
