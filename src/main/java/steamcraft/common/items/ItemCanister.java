@@ -60,6 +60,7 @@ public class ItemCanister extends BaseItem implements IFluidContainerItem
 	@Override
 	public void registerIcons(IIconRegister par1IconRegister)
 	{
+		itemIcon = par1IconRegister.registerIcon(LibInfo.PREFIX + "itemCanisterHalf");
 		emptyIcon = par1IconRegister.registerIcon(LibInfo.PREFIX + "itemCanisterEmpty");
 		halfIcon = par1IconRegister.registerIcon(LibInfo.PREFIX + "itemCanisterHalf");
 		fullIcon = par1IconRegister.registerIcon(LibInfo.PREFIX + "itemCanisterFull");
@@ -68,15 +69,15 @@ public class ItemCanister extends BaseItem implements IFluidContainerItem
 	 public IIcon getIcon(ItemStack stack, int renderPass, EntityPlayer player, ItemStack usingItem, int useRemaining)
 	 {
 		 ItemCanister canister = (ItemCanister) stack.getItem();
-	       if(canister.getFluidAmount(stack) == 0)
-	       {
-	    	   return emptyIcon;
-	       }
-	       else if(canister.getFluidAmount(stack) > 0)
-	       {
-	    	   return halfIcon;
-	       }
-	       else return fullIcon;
+	     if(canister.getFluidAmount(stack) == 0)
+	     {
+	    	 return emptyIcon;
+	     }
+	     else if(canister.getFluidAmount(stack) > 0)
+	     {
+	    	 return halfIcon;
+	     }
+	     else return fullIcon;
 	 }
 	/*
 	 * (non-Javadoc)
@@ -92,12 +93,12 @@ public class ItemCanister extends BaseItem implements IFluidContainerItem
 		l.add(new ItemStack(ConfigItems.itemCanisterSteam, 1, 0));
 		l.add(getFilledCanister());
 	}
-	
+
 	public ItemStack getFilledCanister()
 	{
 		ItemStack filled = new ItemStack(ConfigItems.itemCanisterSteam, 1, 0);
 		fill(filled, new FluidStack(FluidRegistry.getFluid("steam"), MAX_STEAM), true);
-		
+
 		return filled;
 	}
 
@@ -251,14 +252,14 @@ public class ItemCanister extends BaseItem implements IFluidContainerItem
 		}
 
 		FluidStack stack = FluidStack.loadFluidStackFromNBT(container.stackTagCompound.getCompoundTag("Fluid"));
-		
+
 		if (stack == null)
 		{
 			return null;
 		}
 
 		stack.amount = Math.min(stack.amount, maxDrain);
-		
+
 		if (doDrain)
 		{
 			if (maxDrain >= MAX_STEAM)
@@ -269,7 +270,7 @@ public class ItemCanister extends BaseItem implements IFluidContainerItem
 				{
 					container.stackTagCompound = null;
 				}
-				
+
 				return stack;
 			}
 
@@ -277,7 +278,7 @@ public class ItemCanister extends BaseItem implements IFluidContainerItem
 			fluidTag.setInteger("Amount", fluidTag.getInteger("Amount") - stack.amount);
 			container.stackTagCompound.setTag("Fluid", fluidTag);
 		}
-		
+
 		return stack;
 	}
 	/**
@@ -290,12 +291,12 @@ public class ItemCanister extends BaseItem implements IFluidContainerItem
 	public int getFluidAmount(ItemStack stack)
 	{
 		FluidStack fluid = this.getFluid(stack);
-		
+
 		if (fluid == null)
 		{
 			return 0;
 		}
-		
+
 		return fluid.amount;
 	}
 }

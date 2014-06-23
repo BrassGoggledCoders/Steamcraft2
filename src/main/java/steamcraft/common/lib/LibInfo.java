@@ -13,12 +13,16 @@
  */
 package steamcraft.common.lib;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 // TODO: Auto-generated Javadoc
 /**
  * A neat, tidy class for holding various bits of mod information.
- * 
+ *
  * @author Surseance (Johnny Eatmon)
- * 
+ *
  */
 public class LibInfo
 {
@@ -31,6 +35,8 @@ public class LibInfo
 
 	/** The Constant VERSION. */
 	public static final String VERSION = "PA2"; // major, minor, bugfix
+
+	public static final List<String> AUTHORS = Arrays.asList("Surseance", "decebaldecebal", "warlordjones", "Falkok15", "wierdude1999", "seanvanpelt2 & others");
 
 	/** The Constant CLIENT_PROXY. */
 	public static final String CLIENT_PROXY = "steamcraft.client.ClientProxy";

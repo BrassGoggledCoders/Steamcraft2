@@ -14,6 +14,7 @@
 package steamcraft.common;
 
 import java.io.File;
+import java.util.List;
 import java.util.logging.Level;
 
 import net.minecraft.creativetab.CreativeTabs;
@@ -92,6 +93,10 @@ public class Steamcraft
 	public void PreInit(FMLPreInitializationEvent event)
 	{
 		event.getModMetadata().version = LibInfo.VERSION;
+		event.getModMetadata().modId = LibInfo.ID;
+		event.getModMetadata().name = LibInfo.NAME;
+		event.getModMetadata().authorList = LibInfo.AUTHORS;
+		event.getModMetadata().credits = "Orginally created by Proloe, further development by Surseance and the BrassGoggledCoders";
 		this.directory = event.getModConfigurationDirectory();
 
 		LanguageRegistry.instance().getStringLocalization("itemGroup.steamcraft", "en_US");
