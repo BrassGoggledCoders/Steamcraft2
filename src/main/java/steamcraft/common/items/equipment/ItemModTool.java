@@ -141,9 +141,9 @@ public class ItemModTool extends BaseItem
 		if (!stack.hasTagCompound())
 			stack.setTagCompound(new NBTTagCompound());
 
-		if (stack.getTagCompound().getBoolean("hasCanister"))
+		if (this.isSteampowered())
 		{
-			if (this.isSteampowered() && (living instanceof EntityPlayer))
+			if (stack.getTagCompound().getBoolean("hasCanister") && (living instanceof EntityPlayer))
 			{
 				if (this.hasCanister((EntityPlayer) living))
 					this.consumeSteamFromCanister((EntityPlayer) living);
