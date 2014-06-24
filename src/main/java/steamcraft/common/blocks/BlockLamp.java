@@ -29,7 +29,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 // TODO: Auto-generated Javadoc
 /**
  * The Class BlockCosmeticSolid.
- * 
+ *
  * @author Surseance (Johnny Eatmon)
  */
 public class BlockLamp extends BlockRedstoneLight
@@ -43,7 +43,7 @@ public class BlockLamp extends BlockRedstoneLight
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.minecraft.block.Block#getIcon(int, int)
 	 */
 	@Override
@@ -55,7 +55,7 @@ public class BlockLamp extends BlockRedstoneLight
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.minecraft.block.Block#registerBlockIcons(net.minecraft.client.renderer
 	 * .texture.IIconRegister)
@@ -88,7 +88,7 @@ public class BlockLamp extends BlockRedstoneLight
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.minecraft.block.BlockRedstoneLight#onBlockAdded(net.minecraft.world
 	 * .World, int, int, int)
@@ -112,7 +112,7 @@ public class BlockLamp extends BlockRedstoneLight
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.minecraft.block.BlockRedstoneLight#onNeighborBlockChange(net.minecraft
 	 * .world.World, int, int, int, net.minecraft.block.Block)
@@ -122,7 +122,7 @@ public class BlockLamp extends BlockRedstoneLight
 	{
 		if (!world.isRemote)
 		{
-			if ((this.powered) && (!world.isBlockIndirectlyGettingPowered(x, y, z)))
+			if ((BlockLamp.powered) && (!world.isBlockIndirectlyGettingPowered(x, y, z)))
 			{
 				world.scheduleBlockUpdate(x, y, z, this, 4);
 				world.setBlock(x, y, z, ConfigBlocks.blockLamp, 1, 12);
@@ -136,7 +136,7 @@ public class BlockLamp extends BlockRedstoneLight
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.minecraft.block.BlockRedstoneLight#updateTick(net.minecraft.world
 	 * .World, int, int, int, java.util.Random)

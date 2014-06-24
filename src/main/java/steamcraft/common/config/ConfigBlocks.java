@@ -36,11 +36,12 @@ import steamcraft.common.blocks.BlockMetalItem;
 import steamcraft.common.blocks.BlockSlate;
 import steamcraft.common.blocks.BlockSlateItem;
 import steamcraft.common.blocks.machine.BlockArmorEditor;
+import steamcraft.common.blocks.machine.BlockCopperPipe;
 import steamcraft.common.blocks.machine.BlockDropHammerAnvil;
 import steamcraft.common.blocks.machine.BlockIntake;
 import steamcraft.common.blocks.machine.BlockSteamBoiler;
-import steamcraft.common.itemblocks.ItemBlockIntake;
 import steamcraft.common.tiles.TileArmorEditor;
+import steamcraft.common.tiles.TileCopperPipe;
 import steamcraft.common.tiles.TileCrystal;
 import steamcraft.common.tiles.TileDropHammer;
 import steamcraft.common.tiles.TileIntake;
@@ -127,7 +128,7 @@ public class ConfigBlocks
 	public static Block blockLamp;
 
 	/** The block intake. */
-	public static Block blockIntake;
+	public static Block blockIntake, blockCopperPipe;
 
 	/** The block armor editor. */
 	public static Block blockArmorEditor;
@@ -169,6 +170,7 @@ public class ConfigBlocks
 		blockBrassLog = new BlockBrassLog(Material.wood);
 		blockBrassLeaves = new BlockBrassLeaves(Material.iron);
 		blockIntake = new BlockIntake(Material.iron);
+		blockCopperPipe = new BlockCopperPipe(Material.iron).setBlockName("blockCopperPipe");
 		blockArmorEditor = new BlockArmorEditor(Material.iron);
 
 		steamFluid = new Fluid("steam").setGaseous(true).setTemperature(700).setDensity(-100).setViscosity(500).setLuminosity(1)
@@ -199,12 +201,13 @@ public class ConfigBlocks
 		//GameRegistry.registerBlock(blockDropHammerFrame, "BlockDropHammerFrame");
 		RegistryHelper.registerContainerBlock(blockCrystal, TileCrystal.class, "BlockCrystal");
 		RegistryHelper.registerContainerBlock(blockSteamBoiler, TileSteamBoiler.class, "BlockSteamBoiler");
-		
-		GameRegistry.registerBlock(blockIntake, ItemBlockIntake.class, "BlockIntake");
+
+		GameRegistry.registerBlock(blockIntake/*, ItemBlockIntake.class*/, "BlockIntake");
 		GameRegistry.registerTileEntity(TileIntake.class, "TEIntake");
-		
+
 		RegistryHelper.registerContainerBlock(blockArmorEditor, TileArmorEditor.class, "BlockArmorEditor");
 		RegistryHelper.registerContainerBlock(blockDropHammerAnvil, TileDropHammer.class, "BlockDropHammerAnvil");
+		RegistryHelper.registerContainerBlock(blockCopperPipe, TileCopperPipe.class, "BlockCopperPipe");
 		// RegistryHelper.registerContainerBlock(blockDropHammer,
 		// TileDropHammer.class, "BlockDropHammer");
 		// GameRegistry.registerBlock(blockDropHammer, "BlockDropHammer");

@@ -14,7 +14,6 @@
 package steamcraft.common;
 
 import java.io.File;
-import java.util.List;
 import java.util.logging.Level;
 
 import net.minecraft.creativetab.CreativeTabs;
@@ -30,7 +29,6 @@ import steamcraft.common.lib.CommandSteamcraft;
 import steamcraft.common.lib.CreativeTabSteamcraft;
 import steamcraft.common.lib.LibInfo;
 import steamcraft.common.lib.LoggerSteamcraft;
-import steamcraft.common.lib.VillageCreationHandler;
 import steamcraft.common.lib.events.EventHandlerSC2;
 import steamcraft.common.lib.world.SteamcraftWorldGenerator;
 import cpw.mods.fml.common.FMLCommonHandler;
@@ -48,7 +46,6 @@ import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
-import cpw.mods.fml.common.registry.VillagerRegistry;
 import cpw.mods.fml.relauncher.Side;
 
 // TODO: Auto-generated Javadoc
