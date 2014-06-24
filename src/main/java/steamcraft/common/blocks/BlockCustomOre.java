@@ -48,7 +48,7 @@ public class BlockCustomOre extends BaseBlock implements IHammerable
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(int side, final int metadata)
+	public IIcon getIcon(int side, int metadata)
 	{
 		return icon[metadata];
 	}
@@ -104,8 +104,10 @@ public class BlockCustomOre extends BaseBlock implements IHammerable
 	}
 
 	@Override
-	public ItemStack getOutput()
+	public ItemStack getOutput(int meta)
 	{
+		if(meta < 4)
 		return new ItemStack(ConfigItems.itemPowder);
+		else return null;
 	}
 }

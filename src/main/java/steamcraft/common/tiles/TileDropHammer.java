@@ -20,22 +20,20 @@ public class TileDropHammer extends TileEntity
 	public void updateEntity()
 	{
 		Block block = worldObj.getBlock(xCoord, yCoord+1, zCoord);
+		int meta = worldObj.getBlockMetadata(xCoord, yCoord+1, zCoord);
 		//if(worldObj.getBlock(xCoord, yCoord+1, zCoord) != Blocks.air)
 		//{
 			if(block instanceof IHammerable)
 			{
 				IHammerable hammerable = (IHammerable)worldObj.getBlock(xCoord, yCoord+1, zCoord);
 
-				if(hammerable.getOutput() != null)
+				if(hammerable.getOutput(meta) != null)
 				{
-					ItemStack output = hammerable.getOutput();
+					ItemStack output = hammerable.getOutput(meta);
 					Item outputItem = output.getItem();
-					int meta = worldObj.getBlockMetadata(xCoord, yCoord+1, zCoord);
-					if(meta < 4)
-					{
-					worldObj.spawnEntityInWorld(new EntityItem(worldObj, xCoord, yCoord+1, zCoord, new ItemStack(outputItem,2,meta)));
+					worldObj.spawnEntityInWorld(new EntityItem(worldObj, xCoord, yCoord+1, zCoord, new ItemStack(outputItem, 1, meta)));
+					worldObj.spawnEntityInWorld(new EntityItem(worldObj, xCoord, yCoord+1, zCoord, new ItemStack(outputItem, 1, meta)));
 					worldObj.setBlockToAir(xCoord, yCoord+1, zCoord);
-					}
 				}
 			}
 	}
