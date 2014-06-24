@@ -169,7 +169,7 @@ public class ConfigItems
 		initializeItems();
 	}
 
-	public static void initializeItems()
+	private static void initializeItems()
 	{
 		/*
 		 * itemAqualung = new ItemCustomArmor(Config.itemAqualungId,
@@ -216,28 +216,6 @@ public class ConfigItems
 		initializeGuns();
 		initializeMetals();
 		initializeOthers();
-	}
-
-	private static void registerItems()
-	{
-		/*registerItem(flintlockPistol, "ItemFlintlockPistol");
-		registerItem(matchlockPistol, "ItemMatchlockPistol");
-		registerItem(percussionCapPistol, "ItemPercussionCapPistol");*/
-
-		// RegistryHelper.registerToolSet(itemAxeEtherium, itemHoeEtherium,
-		// itemPickaxeEtherium, itemShovelEtherium, itemSwordEtherium,
-		// "Etherium");
-		// RegistryHelper.registerToolSet(itemAxeObsidian, itemHoeObsidian,
-		// itemPickaxeObsidian, itemShovelObsidian, itemSwordObsidian,
-		// "Obsidian");
-		// RegistryHelper.registerArmorSet(itemHelmetBrass, itemChestplateBrass,
-		// itemLegsBrass, itemBootsBrass, "Brass");
-		// RegistryHelper.registerArmorSet(itemObsidianHelmet,
-		// itemChestplateObsidian, itemLegsObsidian, itemBootsObsidian,
-		// "Obsidian");
-		// RegistryHelper.registerArmorSet(itemHelmetEtherium,
-		// itemChestplateEtherium, itemLegsEtherium, itemBootsEtherium,
-		// "Etherium");
 	}
 	
 	private static void initializeTools()
@@ -350,8 +328,6 @@ public class ConfigItems
 		registerItem(percussionCapRifle, "ItemPercussionCapRifle");
 	}
 	
-	private void
-
 	private static void initializeMetals()
 	{
 		itemIngot = new ItemIngot();
@@ -426,7 +402,7 @@ public class ConfigItems
 		itemHammer = new ItemHammer().setUnlocalizedName("itemHammer");
 		registerItem(itemHammer, "ItemHammer");
 		
-		spanner = new /* Really? */ItemChisel().setUnlocalizedName("spanner");
+		spanner = new ItemChisel().setUnlocalizedName("spanner");
 		registerItem(spanner, "ItemSpanner");
 	}
 	
@@ -438,5 +414,27 @@ public class ConfigItems
 	/* PostInit */
 	public static void postInit()
 	{
+	}
+	
+	private static void registerItems()
+	{
+		/*registerItem(flintlockPistol, "ItemFlintlockPistol");
+		registerItem(matchlockPistol, "ItemMatchlockPistol");
+		registerItem(percussionCapPistol, "ItemPercussionCapPistol");*/
+
+		// RegistryHelper.registerToolSet(itemAxeEtherium, itemHoeEtherium,
+		// itemPickaxeEtherium, itemShovelEtherium, itemSwordEtherium,
+		// "Etherium");
+		// RegistryHelper.registerToolSet(itemAxeObsidian, itemHoeObsidian,
+		// itemPickaxeObsidian, itemShovelObsidian, itemSwordObsidian,
+		// "Obsidian");
+		// RegistryHelper.registerArmorSet(itemHelmetBrass, itemChestplateBrass,
+		// itemLegsBrass, itemBootsBrass, "Brass");
+		// RegistryHelper.registerArmorSet(itemObsidianHelmet,
+		// itemChestplateObsidian, itemLegsObsidian, itemBootsObsidian,
+		// "Obsidian");
+		// RegistryHelper.registerArmorSet(itemHelmetEtherium,
+		// itemChestplateEtherium, itemLegsEtherium, itemBootsEtherium,
+		// "Etherium");
 	}
 }
