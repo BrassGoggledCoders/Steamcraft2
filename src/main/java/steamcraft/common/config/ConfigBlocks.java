@@ -175,13 +175,12 @@ public class ConfigBlocks
 		blockArmorEditor = new BlockArmorEditor(Material.iron);
 		blockTurbine = new BlockTurbine(Material.iron).setBlockName("blockTurbine");
 
-		/*steamFluid = new FluidSteam("steam");
-
+		steamFluid = new FluidSteam("steam");
 		if (!FluidRegistry.registerFluid(steamFluid) && !FluidRegistry.isFluidRegistered("steam"))
-			steamFluid = FluidRegistry.getFluid("steam");
+		steamFluid = FluidRegistry.getFluid("steam");
 
-		blockFluidSteam = new BlockFluidSteam(steamFluid, Material.water).setBlockName("steamFluid");*/
-		steamcraftSteamFluid = new FluidSteam("steam");
+		blockSteam = new BlockFluidSteam(steamFluid, Material.lava);
+		/*steamcraftSteamFluid = new FluidSteam("steam");
 		//if (!FluidRegistry.registerFluid(steamFluid) && !FluidRegistry.isFluidRegistered("steam"))
 		FluidRegistry.registerFluid(steamcraftSteamFluid);
 		steamFluid = FluidRegistry.getFluid("steam");
@@ -190,7 +189,7 @@ public class ConfigBlocks
 			steamFluid.setBlock(blockSteam);
 		} else {
 			blockSteam = steamFluid.getBlock();
-		}
+		}*/
 	}
 
 	/**
