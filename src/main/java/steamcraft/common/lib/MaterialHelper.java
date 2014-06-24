@@ -108,9 +108,10 @@ public class MaterialHelper
 	private static void initArmorMaterials()
 	{
 		// name, int durability, int[] reduction amounts, int enchantability
-		ARMOR_OBSIDIAN = EnumHelper.addArmorMaterial("ARMOR_OBSIDIAN", -1, new int[] { 1, 4, 3, 1 }, 7);
+		ARMOR_OBSIDIAN = EnumHelper.addArmorMaterial("ARMOR_OBSIDIAN", -1, new int[] { 1, 4, 3, 1 }, 5);
 		ARMOR_ETHERIUM = EnumHelper.addArmorMaterial("ARMOR_ETHERIUM", 40, new int[] { 4, 9, 8, 4 }, 18);
-		ARMOR_STEAM = EnumHelper.addArmorMaterial("ARMOR_STEAM", 33, new int[] { 1, 2, 2, 1 }, 10);
+		
+		//ARMOR_STEAM = EnumHelper.addArmorMaterial("ARMOR_STEAM", 33, new int[] { 1, 2, 2, 1 }, 10); How should this be implemented?
 
 		// Damage reduction (each 1 point is a half a shield on gui) of the
 		// piece index passed (0 = helmet, 1 = plate, 2 = legs and 3 = boots)
