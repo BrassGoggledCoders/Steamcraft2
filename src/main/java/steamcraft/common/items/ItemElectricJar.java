@@ -117,6 +117,7 @@ public class ItemElectricJar extends BaseItem implements IEnergyContainerItem
 			energy += energyReceived;
 			container.stackTagCompound.setInteger("Energy", energy);
 		}
+		updateJarDamage(container);
 		return energyReceived;
 	}
 
@@ -133,6 +134,7 @@ public class ItemElectricJar extends BaseItem implements IEnergyContainerItem
 			energy -= energyExtracted;
 			container.stackTagCompound.setInteger("Energy", energy);
 		}
+		updateJarDamage(container);
 		return energyExtracted;
 	}
 
@@ -149,5 +151,9 @@ public class ItemElectricJar extends BaseItem implements IEnergyContainerItem
 	public int getMaxEnergyStored(ItemStack container) {
 
 		return capacity;
+	}
+	private void updateJarDamage(ItemStack jar)
+	{
+		jar.setItemDamage(jar.getMaxDamage() - this.getEnergyStored(jar)/100);
 	}
 }
