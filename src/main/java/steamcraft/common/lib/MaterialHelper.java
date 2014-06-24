@@ -96,7 +96,7 @@ public class MaterialHelper
 		DRILL_STONE = EnumHelper.addToolMaterial("DRILL_STONE", 0, 197, 8.0F, 0.0F, 0);
 		DRILL_IRON = EnumHelper.addToolMaterial("DRILL_IRON", 0, 375, 12.0F, 0.0F, 0);
 		DRILL_EMERALD = EnumHelper.addToolMaterial("DRILL_EMERALD", 0, 2342, 16.0F, 0.0F, 0);
-		DRILL_GOLD = EnumHelper.addToolMaterial("DRILL_GOLD", 0, 48, 24.0F, 0.0F, 0);
+		DRILL_GOLD = EnumHelper.addToolMaterial("DRILL_GOLD", 0, 48, 16.0F, 0.0F, 0);
 		DRILL_STEAM = EnumHelper.addToolMaterial("DRILL_STEAM", 0, 482, 24.0F, 0.0F, 0);
 		DRILL_ETHERIUM = EnumHelper.addToolMaterial("DRILL_ETHERIUM", 0, 3518, 34.0F, 0.0F, 0);
 		DRILL_OBSIDIAN = EnumHelper.addToolMaterial("DRILL_OBSIDIAN", 0, -1, 6.0F, 0.0F, 0);
@@ -109,8 +109,8 @@ public class MaterialHelper
 	{
 		// name, int durability, int[] reduction amounts, int enchantability
 		ARMOR_OBSIDIAN = EnumHelper.addArmorMaterial("ARMOR_OBSIDIAN", -1, new int[] { 1, 4, 3, 1 }, 7);
-		ARMOR_ETHERIUM = EnumHelper.addArmorMaterial("ARMOR_ETHERIUM", 40, new int[] { 4, 9, 8, 4 }, 14);
-		ARMOR_STEAM = EnumHelper.addArmorMaterial("ARMOR_STEAM", 33, new int[] { 1, 2, 2, 1 }, 9);
+		ARMOR_ETHERIUM = EnumHelper.addArmorMaterial("ARMOR_ETHERIUM", 40, new int[] { 4, 9, 8, 4 }, 18);
+		ARMOR_STEAM = EnumHelper.addArmorMaterial("ARMOR_STEAM", 33, new int[] { 1, 2, 2, 1 }, 10);
 
 		// Damage reduction (each 1 point is a half a shield on gui) of the
 		// piece index passed (0 = helmet, 1 = plate, 2 = legs and 3 = boots)

@@ -70,6 +70,17 @@ public class ItemSteamDrill extends ItemDrill
 	}
 
 	@Override
+	public float getDigSpeed(ItemStack stack, Block block, int metadata)
+	{
+		float speed = super.getDigSpeed(stack, block, metadata);
+		
+		if(speed > 1.0f && stack.getTagCompound().getBoolean("active"))
+			return speed/3;
+		
+		return speed;
+	}
+	
+	@Override
 	public boolean onBlockStartBreak(ItemStack itemStack, int x, int y, int z, EntityPlayer player)
 	{
 		if (itemStack.getTagCompound().getBoolean("active"))
@@ -119,7 +130,6 @@ public class ItemSteamDrill extends ItemDrill
 
 								if (nblock.getBlockHardness(world, xPos, yPos, zPos) != 0.0D)
 									this.consumeSteamFromCanister(player);
-									//itemStack.damageItem(1, player);
 
 								if (!world.isRemote && (result != null))
 								{

@@ -253,11 +253,8 @@ public class ConfigItems
 		axeSteam = new ItemModAxe(MaterialHelper.TOOL_STEAM).setUnlocalizedName("itemAxeSteam");
 		hoeSteam = new ItemModHoe(MaterialHelper.TOOL_STEAM).setUnlocalizedName("itemHoeSteam");
 
-		registerItem(pickaxeSteam, "ItemPickAxeSteam");
-		registerItem(swordSteam, "ItemSwordSteam");
-		registerItem(shovelSteam, "ItemShovelSteam");
-		registerItem(axeSteam, "ItemAxeSteam");
-		registerItem(hoeSteam, "ItemHoeSteam");
+		RegistryHelper.registerToolSet(axeSteam, hoeSteam, pickaxeSteam, shovelSteam, 
+				swordSteam, "Steam", LibInfo.ID);
 		
 		//Etherium
 		itemPickaxeEtherium = new ItemModPickaxe(MaterialHelper.TOOL_ETHERIUM).setUnlocalizedName("itemPickaxeEtherium");
@@ -303,11 +300,17 @@ public class ConfigItems
 		itemLegsEtherium = new ItemNormalArmor(MaterialHelper.ARMOR_ETHERIUM, 0, 2).setUnlocalizedName("itemLegsEtherium");
 		itemBootsEtherium = new ItemNormalArmor(MaterialHelper.ARMOR_ETHERIUM, 0, 3).setUnlocalizedName("itemBootsEtherium");
 
+		RegistryHelper.registerArmorSet(itemHelmetEtherium, itemChestplateEtherium, itemLegsEtherium, itemBootsEtherium, 
+				"Etherium", LibInfo.ID);
+		
 		//Obsidian
 		itemObsidianHelmet = new ItemNormalArmor(MaterialHelper.ARMOR_OBSIDIAN, 0, 0).setUnlocalizedName("itemHelmetObsidian");
 		itemChestplateObsidian = new ItemNormalArmor(MaterialHelper.ARMOR_OBSIDIAN, 0, 1).setUnlocalizedName("itemChestplateObsidian");
 		itemLegsObsidian = new ItemNormalArmor(MaterialHelper.ARMOR_OBSIDIAN, 0, 2).setUnlocalizedName("itemLegsObsidian");
 		itemBootsObsidian = new ItemNormalArmor(MaterialHelper.ARMOR_OBSIDIAN, 0, 3).setUnlocalizedName("itemBootsObsidian");
+		
+		RegistryHelper.registerArmorSet(itemObsidianHelmet, itemChestplateObsidian, itemLegsObsidian, itemBootsObsidian, 
+				"Obsidian", LibInfo.ID);
 	}
 	
 	private static void initializeGuns()
@@ -430,14 +433,5 @@ public class ConfigItems
 		/*registerItem(flintlockPistol, "ItemFlintlockPistol");
 		registerItem(matchlockPistol, "ItemMatchlockPistol");
 		registerItem(percussionCapPistol, "ItemPercussionCapPistol");*/
-
-		// RegistryHelper.registerArmorSet(itemHelmetBrass, itemChestplateBrass,
-		// itemLegsBrass, itemBootsBrass, "Brass");
-		// RegistryHelper.registerArmorSet(itemObsidianHelmet,
-		// itemChestplateObsidian, itemLegsObsidian, itemBootsObsidian,
-		// "Obsidian");
-		// RegistryHelper.registerArmorSet(itemHelmetEtherium,
-		// itemChestplateEtherium, itemLegsEtherium, itemBootsEtherium,
-		// "Etherium");
 	}
 }
