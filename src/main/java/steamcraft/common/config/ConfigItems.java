@@ -20,6 +20,7 @@ import steamcraft.common.items.BaseItem;
 import steamcraft.common.items.ItemBrassGoggles;
 import steamcraft.common.items.ItemCanister;
 import steamcraft.common.items.ItemChisel;
+import steamcraft.common.items.ItemElectricJar;
 import steamcraft.common.items.ItemIngot;
 import steamcraft.common.items.ItemMachinePart;
 import steamcraft.common.items.ItemMultiParts;
@@ -130,7 +131,7 @@ public class ConfigItems
 	public static Item itemFullTeacup;
 
 	/** The item steam canister. */
-	public static Item itemSteamCanister;
+	public static Item itemSteamCanister, itemElectricJar;
 
 	/** The item musket round. */
 	public static Item itemMusketRound;
@@ -318,6 +319,7 @@ public class ConfigItems
 
 		// Canisters
 		itemCanisterSteam = new ItemCanister().setUnlocalizedName("itemCanisterSteam");
+		itemElectricJar = new ItemElectricJar().setUnlocalizedName("itemElectricJar");
 
 		itemIngot = new ItemIngot();
 		itemSheet = new ItemSheet();
@@ -391,6 +393,7 @@ public class ConfigItems
 	private static void registerItems()
 	{
 		GameRegistry.registerItem(itemCanisterSteam, "ItemCanisterSteam", LibInfo.ID);
+		GameRegistry.registerItem(itemElectricJar, "ItemElectricJar", LibInfo.ID);
 
 		GameRegistry.registerItem(itemIngot, "ItemIngot", LibInfo.ID);
 		GameRegistry.registerItem(itemResource, "ItemResource", LibInfo.ID);

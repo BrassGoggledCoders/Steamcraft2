@@ -37,6 +37,7 @@ import steamcraft.common.blocks.BlockSlate;
 import steamcraft.common.blocks.BlockSlateItem;
 import steamcraft.common.blocks.FluidSteam;
 import steamcraft.common.blocks.tiles.BlockArmorEditor;
+import steamcraft.common.blocks.tiles.BlockCharger;
 import steamcraft.common.blocks.tiles.BlockCopperPipe;
 import steamcraft.common.blocks.tiles.BlockDropHammerAnvil;
 import steamcraft.common.blocks.tiles.BlockIntake;
@@ -129,10 +130,7 @@ public class ConfigBlocks
 	public static Block blockLamp;
 
 	/** The block intake. */
-	public static Block blockIntake, blockCopperPipe;
-
-	/** The block armor editor. */
-	public static Block blockArmorEditor, blockTurbine;
+	public static Block blockIntake, blockCopperPipe, blockArmorEditor, blockTurbine, blockCharger;
 
 	// Render IDs
 	/** The block lightning rod ri. */
@@ -174,6 +172,7 @@ public class ConfigBlocks
 		blockCopperPipe = new BlockCopperPipe(Material.iron).setBlockName("blockCopperPipe");
 		blockArmorEditor = new BlockArmorEditor(Material.iron);
 		blockTurbine = new BlockTurbine(Material.iron).setBlockName("blockTurbine");
+		blockCharger = new BlockCharger(Material.iron).setBlockName("blockCharger");
 
 		steamFluid = new FluidSteam("steam");
 		if (!FluidRegistry.registerFluid(steamFluid) && !FluidRegistry.isFluidRegistered("steam"))
@@ -218,12 +217,8 @@ public class ConfigBlocks
 		RegistryHelper.registerContainerBlock(blockArmorEditor, TileArmorEditor.class, "BlockArmorEditor");
 		RegistryHelper.registerContainerBlock(blockDropHammerAnvil, TileDropHammer.class, "BlockDropHammerAnvil");
 		RegistryHelper.registerContainerBlock(blockCopperPipe, TileCopperPipe.class, "BlockCopperPipe");
-		RegistryHelper.registerContainerBlock(blockTurbine, TileTurbine.class, "BlockTurbin");
-		// RegistryHelper.registerContainerBlock(blockDropHammer,
-		// TileDropHammer.class, "BlockDropHammer");
-		// GameRegistry.registerBlock(blockDropHammer, "BlockDropHammer");
-		// GameRegistry.registerTileEntity(TileDropHammer.class,
-		// "TEDropHammer");
+		RegistryHelper.registerContainerBlock(blockTurbine, TileTurbine.class, "BlockTurbine");
+		//RegistryHelper.registerContainerBlock(blockCharger, TileCharger.class, "BlockCharger");
 		GameRegistry.registerBlock(blockMetal, BlockMetalItem.class, "BlockMetal");
 
 		GameRegistry.registerBlock(blockSteam, "blockSteam");

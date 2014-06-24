@@ -41,23 +41,23 @@ public class ItemCanister extends BaseItem implements IFluidContainerItem
     private static IIcon fullIcon;
 	public static final int MAX_STEAM = 10000;
 	public static final int MAX_STEAM_RATE = 20; // Maximum amount of steam that can be inserted into thiscanister per tick
-	
+
 	public ItemCanister()
 	{
 		super();
 		this.setMaxStackSize(1);
 		this.setMaxDamage(MAX_STEAM/100);
 	}
-	
+
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void registerIcons(IIconRegister par1IconRegister)
 	{
-		itemIcon = par1IconRegister.registerIcon(LibInfo.PREFIX + "itemCanisterHalf");
 		emptyIcon = par1IconRegister.registerIcon(LibInfo.PREFIX + "itemCanisterEmpty");
+		itemIcon = par1IconRegister.registerIcon(LibInfo.PREFIX + "itemCanisterHalf");
 		fullIcon = par1IconRegister.registerIcon(LibInfo.PREFIX + "itemCanisterFull");
 	}
-	
+
 	 @SideOnly(Side.CLIENT)
 	 public IIcon getIconFromDamage(int damage)
 	 {
@@ -80,7 +80,7 @@ public class ItemCanister extends BaseItem implements IFluidContainerItem
 	public ItemStack getFilledCanister()
 	{
 		ItemStack filled = new ItemStack(ConfigItems.itemCanisterSteam, 1, 0);
-		
+
 		fill(filled, new FluidStack(FluidRegistry.getFluid("steam"), MAX_STEAM), true);
 
 		return filled;
@@ -192,9 +192,9 @@ public class ItemCanister extends BaseItem implements IFluidContainerItem
 		}
 
 		container.stackTagCompound.setTag("Fluid", stack.writeToNBT(fluidTag));
-		
+
 		updateCanisterDamage(container);
-		
+
 		return filled;
 	}
 
@@ -235,17 +235,17 @@ public class ItemCanister extends BaseItem implements IFluidContainerItem
 		}
 
 		updateCanisterDamage(container);
-		
+
 		return stack;
 	}
-	
+
 	private void updateCanisterDamage(ItemStack canister)
 	{
 		FluidStack stack = FluidStack.loadFluidStackFromNBT(canister.stackTagCompound.getCompoundTag("Fluid"));
-		
+
 		canister.setItemDamage(canister.getMaxDamage() - stack.amount/100);
 	}
-	
+
 	/**
 	 * Gets the fluid amount.
 	 *
