@@ -13,6 +13,7 @@
  */
 package steamcraft.common.config;
 
+import boilerplate.common.RegistryHelper;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import steamcraft.common.Steamcraft;
@@ -223,6 +224,7 @@ public class ConfigItems
 		// Drills
 		drillCore = new BaseItem().setUnlocalizedName("itemDrillCore");
 		drillBase = new BaseItem().setUnlocalizedName("itemDrillBase");
+		
 		drillWood = new ItemDrill(MaterialHelper.DRILL_WOOD).setUnlocalizedName("itemDrillWood");
 		drillStone = new ItemDrill(MaterialHelper.DRILL_STONE).setUnlocalizedName("itemDrillStone");
 		drillIron = new ItemDrill(MaterialHelper.DRILL_IRON).setUnlocalizedName("itemDrillIron");
@@ -234,6 +236,7 @@ public class ConfigItems
 		
 		registerItem(drillCore, "ItemDrillCore");
 		registerItem(drillBase, "ItemDrillBase");
+		
 		registerItem(drillWood, "ItemDrillWood");
 		registerItem(drillStone, "ItemDrillStone");
 		registerItem(drillIron, "ItemDrillIron");
@@ -263,12 +266,18 @@ public class ConfigItems
 		itemAxeEtherium = new ItemModAxe(MaterialHelper.TOOL_ETHERIUM).setUnlocalizedName("itemAxeEtherium");
 		itemHoeEtherium = new ItemModHoe(MaterialHelper.TOOL_ETHERIUM).setUnlocalizedName("itemHoeEtherium");
 
+		RegistryHelper.registerToolSet(itemAxeEtherium, itemHoeEtherium, itemPickaxeEtherium, itemShovelEtherium, 
+				itemSwordEtherium, "Etherium", LibInfo.ID);
+		
 		//Obsidian
 		itemPickaxeObsidian = new ItemModPickaxe(MaterialHelper.TOOL_OBSIDIAN).setUnlocalizedName("itemPickaxeObsidian");
 		itemSwordObsidian = new ItemModSword(MaterialHelper.TOOL_OBSIDIAN).setUnlocalizedName("itemSwordObsidian");
 		itemShovelObsidian = new ItemModShovel(MaterialHelper.TOOL_OBSIDIAN).setUnlocalizedName("itemShovelObsidian");
 		itemAxeObsidian = new ItemModAxe(MaterialHelper.TOOL_OBSIDIAN).setUnlocalizedName("itemAxeObsidian");
 		itemHoeObsidian = new ItemModHoe(MaterialHelper.TOOL_OBSIDIAN).setUnlocalizedName("itemHoeObsidian");
+		
+		RegistryHelper.registerToolSet(itemAxeObsidian, itemHoeObsidian, itemPickaxeObsidian, itemShovelObsidian, 
+				itemSwordObsidian, "Obsidian", LibInfo.ID);
 	}
 
 	private static void initializeArmor()
@@ -422,12 +431,6 @@ public class ConfigItems
 		registerItem(matchlockPistol, "ItemMatchlockPistol");
 		registerItem(percussionCapPistol, "ItemPercussionCapPistol");*/
 
-		// RegistryHelper.registerToolSet(itemAxeEtherium, itemHoeEtherium,
-		// itemPickaxeEtherium, itemShovelEtherium, itemSwordEtherium,
-		// "Etherium");
-		// RegistryHelper.registerToolSet(itemAxeObsidian, itemHoeObsidian,
-		// itemPickaxeObsidian, itemShovelObsidian, itemSwordObsidian,
-		// "Obsidian");
 		// RegistryHelper.registerArmorSet(itemHelmetBrass, itemChestplateBrass,
 		// itemLegsBrass, itemBootsBrass, "Brass");
 		// RegistryHelper.registerArmorSet(itemObsidianHelmet,

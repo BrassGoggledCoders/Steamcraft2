@@ -68,10 +68,13 @@ public class ItemModTool extends BaseItem
 	@Override
     public void onCreated(ItemStack stack, World world, EntityPlayer player)
 	{
-		NBTTagCompound tag = new NBTTagCompound();
-		tag.setBoolean("hasCanister", true); //To make sure damage is reset when the tool is crafted
-
-		stack.setTagCompound(tag);
+		if(this.isSteampowered())
+		{
+			NBTTagCompound tag = new NBTTagCompound();
+			tag.setBoolean("hasCanister", true); //To make sure damage is reset when the tool is crafted
+	
+			stack.setTagCompound(tag);
+		}
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -84,6 +87,9 @@ public class ItemModTool extends BaseItem
 	@Override
 	public float getDigSpeed(ItemStack stack, Block block, int metadata)
 	{
+		if(this.isSteampowered() && !stack.getTagCompound().getBoolean("hasCanister"))
+			return 0.1F;
+			
 		for (Block element : blocksEffectiveAgainst)
 		{
 			if (element == block)
@@ -91,17 +97,24 @@ public class ItemModTool extends BaseItem
 				return this.efficiencyOnProperMaterial;
 			}
 		}
-		return 0.1F;
+		
+		return 1.0F;
 	}
 
 	@Override
 	public boolean hitEntity(ItemStack itemstack, EntityLivingBase living1, EntityLivingBase living2)
 	{
 		if (this.isSteampowered() && (living2 instanceof EntityPlayer))
+		{
 			if (this.hasCanister((EntityPlayer) living2))
+			{
 				this.consumeSteamFromCanister((EntityPlayer) living2);
-
-		if (this instanceof ItemModSword)
+				
+				if(itemstack.getItem() != ConfigItems.swordSteam)
+					this.consumeSteamFromCanister((EntityPlayer) living2);
+			}
+		}
+		else if (this instanceof ItemModSword)
 			itemstack.damageItem(1, living2);
 		else
 			itemstack.damageItem(2, living2);
@@ -139,9 +152,6 @@ public class ItemModTool extends BaseItem
 	public boolean onBlockDestroyed(ItemStack stack, World p_150894_2_, Block p_150894_3_, int p_150894_4_, int p_150894_5_, int p_150894_6_,
 			EntityLivingBase living)
 	{
-		if (!stack.hasTagCompound())
-			stack.setTagCompound(new NBTTagCompound());
-
 		if (this.isSteampowered())
 		{
 			if (stack.getTagCompound().getBoolean("hasCanister") && (living instanceof EntityPlayer))
@@ -158,7 +168,7 @@ public class ItemModTool extends BaseItem
 	@Override
 	public void addInformation(ItemStack itemStack, EntityPlayer entityPlayer, List list, boolean bool)
 	{
-		if (this.toolMaterial == MaterialHelper.TOOL_STEAM)
+		if (this.isSteampowered())
 		{
 			if (!itemStack.hasTagCompound())
 				itemStack.setTagCompound(new NBTTagCompound());
@@ -214,26 +224,27 @@ public class ItemModTool extends BaseItem
 	@Override
 	public void onUpdate(ItemStack itemStack, World par2World, Entity par3Entity, int par4, boolean par5)
 	{
-		if (!itemStack.hasTagCompound())
-			itemStack.setTagCompound(new NBTTagCompound());
-
-		NBTTagCompound tag = itemStack.getTagCompound();
-		if (par3Entity instanceof EntityPlayer)
+		if(this.isSteampowered())
 		{
-			boolean hasCanister = false;
-
-			if (this.hasCanister((EntityPlayer) par3Entity))
-				hasCanister = true;
-
-			if(hasCanister!=tag.getBoolean("hasCanister")) //For performance reason.Not sure if it's a good idea to change NBT data each tick...
+			NBTTagCompound tag = itemStack.getTagCompound();
+			
+			if (par3Entity instanceof EntityPlayer)
 			{
-				tag.setBoolean("hasCanister", hasCanister);
-				itemStack.setTagCompound(tag);
-
-				if(hasCanister)
-					changeToolDamage(itemStack, damageVsEntity);
-				else
-					changeToolDamage(itemStack, 1.0F);
+				boolean hasCanister = false;
+	
+				if (this.hasCanister((EntityPlayer) par3Entity))
+					hasCanister = true;
+	
+				if(hasCanister!=tag.getBoolean("hasCanister"))
+				{
+					tag.setBoolean("hasCanister", hasCanister);
+					itemStack.setTagCompound(tag);
+	
+					if(hasCanister)
+						changeToolDamage(itemStack, damageVsEntity);
+					else
+						changeToolDamage(itemStack, 1.0F);
+				}
 			}
 		}
 	}

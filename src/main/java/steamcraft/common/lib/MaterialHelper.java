@@ -86,10 +86,9 @@ public class MaterialHelper
 	{
 		// Tools
 
-		// name, int harvest level, int max uses, float efficiency, float,
-		// damage, int enchantability
-		TOOL_OBSIDIAN = EnumHelper.addToolMaterial("TOOL_OBSIDIAN", 4, -1, 3.0F, 6.5F, 7);
-		TOOL_ETHERIUM = EnumHelper.addToolMaterial("TOOL_ETHERIUM", 4, 2345, 10.5F, 9.5F, 14);
+		// name, int harvest level, int max uses, float efficiency, float, damage, int enchantability
+		TOOL_OBSIDIAN = EnumHelper.addToolMaterial("TOOL_OBSIDIAN", 4, -1, 3.0F, 6F, 7);
+		TOOL_ETHERIUM = EnumHelper.addToolMaterial("TOOL_ETHERIUM", 4, 2345, 10.5F, 7F, 14);
 		TOOL_STEAM = EnumHelper.addToolMaterial("TOOL_STEAM", 2, 1561, 12.0F, 0.0F, 0);
 
 		// DRILLS!
