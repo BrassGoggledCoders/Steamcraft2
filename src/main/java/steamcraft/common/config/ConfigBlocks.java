@@ -35,6 +35,7 @@ import steamcraft.common.blocks.BlockMetal;
 import steamcraft.common.blocks.BlockMetalItem;
 import steamcraft.common.blocks.BlockSlate;
 import steamcraft.common.blocks.BlockSlateItem;
+import steamcraft.common.blocks.FluidSteam;
 import steamcraft.common.blocks.tiles.BlockArmorEditor;
 import steamcraft.common.blocks.tiles.BlockCopperPipe;
 import steamcraft.common.blocks.tiles.BlockDropHammerAnvil;
@@ -103,9 +104,6 @@ public class ConfigBlocks
 	/** The block smog. */
 	public static Block blockSmog;
 
-	/** The block fluid steam. */
-	public static Block blockFluidSteam;
-
 	/** The block slate. */
 	public static Block blockSlate;
 
@@ -116,7 +114,7 @@ public class ConfigBlocks
 	public static Block blockDropHammerAnvil;
 
 	/** The steam fluid. */
-	public static Fluid steamFluid;
+	public static Fluid steamFluid, steamcraftSteamFluid;
 
 	/** The block steam. */
 	public static Block blockSteam;
@@ -177,13 +175,22 @@ public class ConfigBlocks
 		blockArmorEditor = new BlockArmorEditor(Material.iron);
 		blockTurbine = new BlockTurbine(Material.iron).setBlockName("blockTurbine");
 
-		steamFluid = new Fluid("steam").setGaseous(true).setTemperature(700).setDensity(-100).setViscosity(500).setLuminosity(1)
-				.setUnlocalizedName("steamFluid");
+		/*steamFluid = new FluidSteam("steam");
 
 		if (!FluidRegistry.registerFluid(steamFluid) && !FluidRegistry.isFluidRegistered("steam"))
 			steamFluid = FluidRegistry.getFluid("steam");
 
-		blockFluidSteam = new BlockFluidSteam(steamFluid, Material.water).setBlockName("steamFluid");
+		blockFluidSteam = new BlockFluidSteam(steamFluid, Material.water).setBlockName("steamFluid");*/
+		steamcraftSteamFluid = new FluidSteam("steam");
+		//if (!FluidRegistry.registerFluid(steamFluid) && !FluidRegistry.isFluidRegistered("steam"))
+		FluidRegistry.registerFluid(steamcraftSteamFluid);
+		steamFluid = FluidRegistry.getFluid("steam");
+		if (steamFluid.getBlock() == null) {
+			blockSteam = new BlockFluidSteam(steamFluid, Material.lava);
+			steamFluid.setBlock(blockSteam);
+		} else {
+			blockSteam = steamFluid.getBlock();
+		}
 	}
 
 	/**
@@ -220,7 +227,7 @@ public class ConfigBlocks
 		// "TEDropHammer");
 		GameRegistry.registerBlock(blockMetal, BlockMetalItem.class, "BlockMetal");
 
-		GameRegistry.registerBlock(blockFluidSteam, "blockFluidSteam");
+		GameRegistry.registerBlock(blockSteam, "blockSteam");
 		// RegistryHelper.registerContainerBlock(blockHatch, TileHatch.class,
 		// "BlockHatch");
 	}

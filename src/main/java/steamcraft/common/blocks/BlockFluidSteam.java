@@ -35,15 +35,10 @@ public class BlockFluidSteam extends BlockFluidClassic
 
 	/** The still icon. */
 	@SideOnly(Side.CLIENT)
-	protected IIcon stillIcon;
-
-	/** The flowing icon. */
-	@SideOnly(Side.CLIENT)
-	protected IIcon flowingIcon;
-
+	public static IIcon[] icon;
 	/**
 	 * Instantiates a new block fluid steam.
-	 * 
+	 *
 	 * @param fluid
 	 *            the fluid
 	 * @param material
@@ -56,35 +51,21 @@ public class BlockFluidSteam extends BlockFluidClassic
 		this.setCreativeTab(Steamcraft.tabSC2);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see net.minecraft.block.Block#getIcon(int, int)
-	 */
 	@Override
-	public IIcon getIcon(int side, int meta)
-	{
-		return ((side == 0) || (side == 1)) ? this.stillIcon : this.flowingIcon;
+	public IIcon getIcon(int side, int meta) {
+		return side != 0 && side != 1 ? this.icon[1] : this.icon[0];
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * net.minecraft.block.Block#registerBlockIcons(net.minecraft.client.renderer
-	 * .texture.IIconRegister)
-	 */
+	@Override
 	@SideOnly(Side.CLIENT)
-	@Override
-	public void registerBlockIcons(IIconRegister register)
-	{
-		this.stillIcon = register.registerIcon(LibInfo.PREFIX + "steamStill");
-		this.flowingIcon = register.registerIcon(LibInfo.PREFIX + "steamFlowing");
+	public void registerBlockIcons(IIconRegister iconRegister) {
+		this.icon = new IIcon[] {iconRegister.registerIcon(LibInfo.PREFIX + "steamStill"),
+				iconRegister.registerIcon(LibInfo.PREFIX + "steamFlowing")};
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.minecraftforge.fluids.BlockFluidBase#canDisplace(net.minecraft.world
 	 * .IBlockAccess, int, int, int)
@@ -101,7 +82,7 @@ public class BlockFluidSteam extends BlockFluidClassic
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.minecraftforge.fluids.BlockFluidBase#displaceIfPossible(net.minecraft
 	 * .world.World, int, int, int)
