@@ -1,24 +1,22 @@
-package steamcraft.common.blocks.machine;
+package steamcraft.common.blocks.tiles;
 
+import steamcraft.common.tiles.TileTurbine;
 import net.minecraft.block.material.Material;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-import steamcraft.common.tiles.TileCopperPipe;
 
-
-public class BlockCopperPipe extends BlockContainerMod
+public class BlockTurbine extends BlockContainerMod
 {
 
-	public BlockCopperPipe(Material mat)
+	public BlockTurbine(Material mat)
 	{
 		super(mat);
-
 	}
 
 	@Override
 	public TileEntity createNewTileEntity(World var1, int var2)
 	{
-		return new TileCopperPipe();
+		return new TileTurbine();
 	}
 
 }

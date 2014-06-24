@@ -1,4 +1,4 @@
-package steamcraft.common.blocks.machine;
+package steamcraft.common.blocks.tiles;
 
 import steamcraft.common.tiles.TileDropHammer;
 import net.minecraft.block.material.Material;

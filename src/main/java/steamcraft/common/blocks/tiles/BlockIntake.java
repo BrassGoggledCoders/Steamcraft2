@@ -11,7 +11,7 @@
  *
  * File created @ [Jun 23, 2014, 10:51:48 PM]
  */
-package steamcraft.common.blocks.machine;
+package steamcraft.common.blocks.tiles;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.tileentity.TileEntity;

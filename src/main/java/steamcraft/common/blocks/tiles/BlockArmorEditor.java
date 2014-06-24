@@ -1,7 +1,7 @@
 /*
  * 
  */
-package steamcraft.common.blocks.machine;
+package steamcraft.common.blocks.tiles;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;

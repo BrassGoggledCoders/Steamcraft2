@@ -11,7 +11,7 @@
  *
  * File created @ 23-May-2014
  */
-package steamcraft.common.blocks.machine;
+package steamcraft.common.blocks.tiles;
 
 import java.util.Random;
 

@@ -35,11 +35,12 @@ import steamcraft.common.blocks.BlockMetal;
 import steamcraft.common.blocks.BlockMetalItem;
 import steamcraft.common.blocks.BlockSlate;
 import steamcraft.common.blocks.BlockSlateItem;
-import steamcraft.common.blocks.machine.BlockArmorEditor;
-import steamcraft.common.blocks.machine.BlockCopperPipe;
-import steamcraft.common.blocks.machine.BlockDropHammerAnvil;
-import steamcraft.common.blocks.machine.BlockIntake;
-import steamcraft.common.blocks.machine.BlockSteamBoiler;
+import steamcraft.common.blocks.tiles.BlockArmorEditor;
+import steamcraft.common.blocks.tiles.BlockCopperPipe;
+import steamcraft.common.blocks.tiles.BlockDropHammerAnvil;
+import steamcraft.common.blocks.tiles.BlockIntake;
+import steamcraft.common.blocks.tiles.BlockSteamBoiler;
+import steamcraft.common.blocks.tiles.BlockTurbine;
 import steamcraft.common.itemblocks.ItemBlockIntake;
 import steamcraft.common.tiles.TileArmorEditor;
 import steamcraft.common.tiles.TileCopperPipe;
@@ -47,6 +48,7 @@ import steamcraft.common.tiles.TileCrystal;
 import steamcraft.common.tiles.TileDropHammer;
 import steamcraft.common.tiles.TileIntake;
 import steamcraft.common.tiles.TileSteamBoiler;
+import steamcraft.common.tiles.TileTurbine;
 import boilerplate.common.RegistryHelper;
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -132,7 +134,7 @@ public class ConfigBlocks
 	public static Block blockIntake, blockCopperPipe;
 
 	/** The block armor editor. */
-	public static Block blockArmorEditor;
+	public static Block blockArmorEditor, blockTurbine;
 
 	// Render IDs
 	/** The block lightning rod ri. */
@@ -173,6 +175,7 @@ public class ConfigBlocks
 		blockIntake = new BlockIntake(Material.iron);
 		blockCopperPipe = new BlockCopperPipe(Material.iron).setBlockName("blockCopperPipe");
 		blockArmorEditor = new BlockArmorEditor(Material.iron);
+		blockTurbine = new BlockTurbine(Material.iron).setBlockName("blockTurbine");
 
 		steamFluid = new Fluid("steam").setGaseous(true).setTemperature(700).setDensity(-100).setViscosity(500).setLuminosity(1)
 				.setUnlocalizedName("steamFluid");
@@ -209,6 +212,7 @@ public class ConfigBlocks
 		RegistryHelper.registerContainerBlock(blockArmorEditor, TileArmorEditor.class, "BlockArmorEditor");
 		RegistryHelper.registerContainerBlock(blockDropHammerAnvil, TileDropHammer.class, "BlockDropHammerAnvil");
 		RegistryHelper.registerContainerBlock(blockCopperPipe, TileCopperPipe.class, "BlockCopperPipe");
+		RegistryHelper.registerContainerBlock(blockTurbine, TileTurbine.class, "BlockTurbin");
 		// RegistryHelper.registerContainerBlock(blockDropHammer,
 		// TileDropHammer.class, "BlockDropHammer");
 		// GameRegistry.registerBlock(blockDropHammer, "BlockDropHammer");
