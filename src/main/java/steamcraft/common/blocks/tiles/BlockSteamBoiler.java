@@ -65,7 +65,7 @@ public class BlockSteamBoiler extends BlockContainerMod
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.minecraft.block.Block#damageDropped(int)
 	 */
 	@Override
@@ -76,7 +76,7 @@ public class BlockSteamBoiler extends BlockContainerMod
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.minecraft.block.Block#getIcon(int, int)
 	 */
 	@SideOnly(Side.CLIENT)
@@ -106,7 +106,7 @@ public class BlockSteamBoiler extends BlockContainerMod
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.minecraft.block.Block#registerBlockIcons(net.minecraft.client.renderer
 	 * .texture.IIconRegister)
@@ -123,7 +123,7 @@ public class BlockSteamBoiler extends BlockContainerMod
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.minecraft.block.Block#onBlockActivated(net.minecraft.world.World,
 	 * int, int, int, net.minecraft.entity.player.EntityPlayer, int, float,
@@ -149,7 +149,7 @@ public class BlockSteamBoiler extends BlockContainerMod
 
 	/**
 	 * Update furnace block state.
-	 * 
+	 *
 	 * @param par0
 	 *            the par0
 	 * @param par1World
@@ -188,7 +188,7 @@ public class BlockSteamBoiler extends BlockContainerMod
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.minecraft.block.Block#randomDisplayTick(net.minecraft.world.World,
 	 * int, int, int, java.util.Random)
@@ -231,7 +231,7 @@ public class BlockSteamBoiler extends BlockContainerMod
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.minecraft.block.ITileEntityProvider#createNewTileEntity(net.minecraft
 	 * .world.World, int)
@@ -244,7 +244,7 @@ public class BlockSteamBoiler extends BlockContainerMod
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * steamcraft.common.blocks.machine.BlockContainerMod#onBlockPlacedBy(net
 	 * .minecraft.world.World, int, int, int,
@@ -280,7 +280,7 @@ public class BlockSteamBoiler extends BlockContainerMod
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * steamcraft.common.blocks.machine.BlockContainerMod#breakBlock(net.minecraft
 	 * .world.World, int, int, int, net.minecraft.block.Block, int)
@@ -338,7 +338,7 @@ public class BlockSteamBoiler extends BlockContainerMod
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.minecraft.block.Block#hasComparatorInputOverride()
 	 */
 	@Override
@@ -349,7 +349,7 @@ public class BlockSteamBoiler extends BlockContainerMod
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.minecraft.block.Block#getComparatorInputOverride(net.minecraft.world
 	 * .World, int, int, int, int)

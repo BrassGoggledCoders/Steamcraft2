@@ -18,14 +18,19 @@ import java.util.Random;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import steamcraft.common.Steamcraft;
+import steamcraft.common.lib.LibInfo;
 import boilerplate.steamapi.machines.IMachine;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -33,6 +38,9 @@ import boilerplate.steamapi.machines.IMachine;
  */
 public abstract class BlockContainerMod extends BlockContainer
 {
+
+	/** The icon. */
+	IIcon icon;
 
 	/** The keep inventory. */
 	protected static boolean keepInventory = true;
@@ -45,7 +53,7 @@ public abstract class BlockContainerMod extends BlockContainer
 
 	/**
 	 * Instantiates a new block container mod.
-	 * 
+	 *
 	 * @param mat
 	 *            the mat
 	 */
@@ -58,7 +66,7 @@ public abstract class BlockContainerMod extends BlockContainer
 
 	/**
 	 * Gets the owner.
-	 * 
+	 *
 	 * @return the owner
 	 */
 	public String getOwner()
@@ -68,7 +76,7 @@ public abstract class BlockContainerMod extends BlockContainer
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.minecraft.block.Block#onBlockPlacedBy(net.minecraft.world.World,
 	 * int, int, int, net.minecraft.entity.EntityLivingBase,
 	 * net.minecraft.item.ItemStack)
@@ -86,7 +94,7 @@ public abstract class BlockContainerMod extends BlockContainer
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.minecraft.block.BlockContainer#breakBlock(net.minecraft.world.World,
 	 * int, int, int, net.minecraft.block.Block, int)
@@ -99,7 +107,7 @@ public abstract class BlockContainerMod extends BlockContainer
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.minecraft.block.Block#getLightValue(net.minecraft.world.IBlockAccess,
 	 * int, int, int)
@@ -115,5 +123,29 @@ public abstract class BlockContainerMod extends BlockContainer
 		}
 
 		return super.getLightValue(world, x, y, z);
+	}
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see
+	 * net.minecraft.block.Block#registerBlockIcons(net.minecraft.client.renderer
+	 * .texture.IIconRegister)
+	 */
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void registerBlockIcons(IIconRegister ir)
+	{
+		icon = ir.registerIcon(LibInfo.PREFIX + this.getUnlocalizedName().substring(5));
+	}
+
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see net.minecraft.block.Block#getIcon(int, int)
+	 */
+	@Override
+	public IIcon getIcon(int p_149691_1_, int p_149691_2_)
+	{
+		return icon;
 	}
 }
