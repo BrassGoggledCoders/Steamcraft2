@@ -48,20 +48,22 @@ public class LibInfo
 	public static final String PREFIX = "steamcraft:";
 
 	/** The Constant DEBUG. */
-	public static final boolean DEBUG = false;
+	//public static final boolean DEBUG = false;
 
 	/** The Constant VERSION_URL. */
 	public static final String VERSION_URL = /* "https://www.dropbox.com/s/36mpxgwjoanem32/version.txt" */"https://gist.githubusercontent.com/warlordjones/42644dbc6db776152367/raw/99d70c9382a61b88cb61a605a8f0dfd9bbb49079/gistfile1.txt";
 
 	/** Capes!. */
-	public static final String DEV_LIST = "https://www.dropbox.com/s/m7tn0tx7y7w630s/devs.txt";
+	//public static final String DEV_LIST = "https://www.dropbox.com/s/m7tn0tx7y7w630s/devs.txt";
 
 	/** The Constant DONATOR_LIST. */
-	public static final String DONATOR_LIST = "https://www.dropbox.com/s/pihl7ja8m9z2ybs/donators.txt";
+	//public static final String DONATOR_LIST = "https://www.dropbox.com/s/pihl7ja8m9z2ybs/donators.txt";
 
 	/** The Constant DEV_CAPE_IMG_URL. */
-	public static final String DEV_CAPE_IMG_URL = "https://dl.dropboxusercontent.com/u/34970176/SteamCraft%202/steamcraft_cape_MID_1.png";
+	//public static final String DEV_CAPE_IMG_URL = "https://dl.dropboxusercontent.com/u/34970176/SteamCraft%202/steamcraft_cape_MID_1.png";
 
 	/** The Constant DONATOR_CAPE_IMG_URL. */
-	public static final String DONATOR_CAPE_IMG_URL = "http://imgur.com/7O5dSL2";
+	//public static final String DONATOR_CAPE_IMG_URL = "http://imgur.com/7O5dSL2";
+
+	public static String[] metals = {"Aluminum", "Copper", "Tin", "Zinc", "Brass", "Bronze", "Steel", "CastIron"};
 }

@@ -69,6 +69,7 @@ tile.simpleCoalGenerator.name=Simple Coal Generator
 tile.blockDropHammer.name=Drop Hammer Anvil
 tile.blockDropHammerFrame.name=Drop Hammer Frame
 tile.blockIntake.name=Intake Block
+tile.blockIntake.desc=Generates 10 water/tick if a water source block is below it. Consumes the source block every 10 seconds. Automatically outputs to the block above it.
 
 #Items
 item.itemResource.0.name=Etherium Crystal

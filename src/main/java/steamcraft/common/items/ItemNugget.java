@@ -1,5 +1,5 @@
 /*
- * 
+ *
  */
 package steamcraft.common.items;
 
@@ -36,7 +36,7 @@ public class ItemNugget extends BaseItemWithMetadata
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.minecraft.item.Item#getSubItems(net.minecraft.item.Item,
 	 * net.minecraft.creativetab.CreativeTabs, java.util.List)
 	 */
@@ -52,7 +52,7 @@ public class ItemNugget extends BaseItemWithMetadata
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * steamcraft.common.items.BaseItem#registerIcons(net.minecraft.client.renderer
 	 * .texture.IIconRegister)
@@ -61,19 +61,15 @@ public class ItemNugget extends BaseItemWithMetadata
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister ir)
 	{
-		itemIcon[0] = ir.registerIcon(LibInfo.PREFIX + "itemNuggetAluminum");
-		itemIcon[1] = ir.registerIcon(LibInfo.PREFIX + "itemNuggetCopper");
-		itemIcon[2] = ir.registerIcon(LibInfo.PREFIX + "itemNuggetTin");
-		itemIcon[3] = ir.registerIcon(LibInfo.PREFIX + "itemNuggetZinc");
-		itemIcon[4] = ir.registerIcon(LibInfo.PREFIX + "itemNuggetBrass");
-		itemIcon[5] = ir.registerIcon(LibInfo.PREFIX + "itemNuggetBronze");
-		itemIcon[6] = ir.registerIcon(LibInfo.PREFIX + "itemNuggetSteel");
-		itemIcon[7] = ir.registerIcon(LibInfo.PREFIX + "itemNuggetCastIron");
+		for(int i=0; i<itemIcon.length; i++)
+		{
+			itemIcon[i] = ir.registerIcon(LibInfo.PREFIX +"metals/"+"itemNugget" + LibInfo.metals[i]);
+		}
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.minecraft.item.Item#getIconFromDamage(int)
 	 */
 	@Override

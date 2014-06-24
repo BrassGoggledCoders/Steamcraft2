@@ -28,7 +28,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 // TODO: Auto-generated Javadoc
 /**
  * The Class ItemIngot.
- * 
+ *
  * @author warlordjones
  */
 public class ItemIngot extends BaseItemWithMetadata
@@ -39,7 +39,7 @@ public class ItemIngot extends BaseItemWithMetadata
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.minecraft.item.Item#registerIcons(net.minecraft.client.renderer.texture
 	 * .IIconRegister)
@@ -48,14 +48,10 @@ public class ItemIngot extends BaseItemWithMetadata
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister ir)
 	{
-		itemIcon[0] = ir.registerIcon(LibInfo.PREFIX + "itemIngotAluminum");
-		itemIcon[1] = ir.registerIcon(LibInfo.PREFIX + "itemIngotCopper");
-		itemIcon[2] = ir.registerIcon(LibInfo.PREFIX + "itemIngotTin");
-		itemIcon[3] = ir.registerIcon(LibInfo.PREFIX + "itemIngotZinc");
-		itemIcon[4] = ir.registerIcon(LibInfo.PREFIX + "itemIngotBrass");
-		itemIcon[5] = ir.registerIcon(LibInfo.PREFIX + "itemIngotBronze");
-		itemIcon[6] = ir.registerIcon(LibInfo.PREFIX + "itemIngotSteel");
-		itemIcon[7] = ir.registerIcon(LibInfo.PREFIX + "itemIngotCastIron");
+		for(int i=0; i<itemIcon.length; i++)
+		{
+			itemIcon[i] = ir.registerIcon(LibInfo.PREFIX +"metals/"+"itemIngot" + LibInfo.metals[i]);
+		}
 	}
 
 	/**
@@ -70,7 +66,7 @@ public class ItemIngot extends BaseItemWithMetadata
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.minecraft.item.Item#getSubItems(net.minecraft.item.Item,
 	 * net.minecraft.creativetab.CreativeTabs, java.util.List)
 	 */
@@ -84,10 +80,9 @@ public class ItemIngot extends BaseItemWithMetadata
 			l.add(new ItemStack(ConfigItems.itemIngot, 1, var4));
 		}
 	}
-
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.minecraft.item.Item#getIconFromDamage(int)
 	 */
 	@Override

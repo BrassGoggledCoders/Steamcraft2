@@ -26,15 +26,11 @@ import steamcraft.common.blocks.BlockCastIronLamp;
 import steamcraft.common.blocks.BlockCastIronRailing;
 import steamcraft.common.blocks.BlockCrystal;
 import steamcraft.common.blocks.BlockCustomOre;
-import steamcraft.common.blocks.BlockCustomOreItem;
 import steamcraft.common.blocks.BlockEngravedSolid;
-import steamcraft.common.blocks.BlockEngravedSolidItem;
 import steamcraft.common.blocks.BlockFluidSteam;
 import steamcraft.common.blocks.BlockLamp;
 import steamcraft.common.blocks.BlockMetal;
-import steamcraft.common.blocks.BlockMetalItem;
 import steamcraft.common.blocks.BlockSlate;
-import steamcraft.common.blocks.BlockSlateItem;
 import steamcraft.common.blocks.FluidSteam;
 import steamcraft.common.blocks.tiles.BlockArmorEditor;
 import steamcraft.common.blocks.tiles.BlockCharger;
@@ -43,7 +39,11 @@ import steamcraft.common.blocks.tiles.BlockDropHammerAnvil;
 import steamcraft.common.blocks.tiles.BlockIntake;
 import steamcraft.common.blocks.tiles.BlockSteamBoiler;
 import steamcraft.common.blocks.tiles.BlockTurbine;
-import steamcraft.common.itemblocks.ItemBlockIntake;
+import steamcraft.common.itemblocks.ItemBlockCustomOre;
+import steamcraft.common.itemblocks.ItemBlockEngravedSolid;
+import steamcraft.common.itemblocks.ItemBlockMetal;
+import steamcraft.common.itemblocks.ItemBlockSlate;
+import steamcraft.common.itemblocks.ItemBlockWithDesc;
 import steamcraft.common.tiles.TileArmorEditor;
 import steamcraft.common.tiles.TileCopperPipe;
 import steamcraft.common.tiles.TileCrystal;
@@ -196,12 +196,12 @@ public class ConfigBlocks
 	 */
 	public static void registerBlocks()
 	{
-		GameRegistry.registerBlock(blockCustomOre, BlockCustomOreItem.class, "BlockCustomOre");
-		GameRegistry.registerBlock(blockSlate, BlockSlateItem.class, "BlockSlate");
+		GameRegistry.registerBlock(blockCustomOre, ItemBlockCustomOre.class, "BlockCustomOre");
+		GameRegistry.registerBlock(blockSlate, ItemBlockSlate.class, "BlockSlate");
 		GameRegistry.registerBlock(blockLamp, "BlockLamp");
 		GameRegistry.registerBlock(blockBrassLeaves, "BlockBrassLeaves");
 		GameRegistry.registerBlock(blockBrassLog, "BlockBrassLog");
-		GameRegistry.registerBlock(blockEngraved, BlockEngravedSolidItem.class, "BlockEngravedSolid");
+		GameRegistry.registerBlock(blockEngraved, ItemBlockEngravedSolid.class, "BlockEngravedSolid");
 		GameRegistry.registerBlock(blockCastIronFence, "BlockCastIronFence");
 		GameRegistry.registerBlock(blockCastIronGate, "BlockCastIronGate");
 		// GameRegistry.registerBlock(blockCastIronLampI, "BlockCastIronLampI");
@@ -211,7 +211,7 @@ public class ConfigBlocks
 		RegistryHelper.registerContainerBlock(blockCrystal, TileCrystal.class, "BlockCrystal");
 		RegistryHelper.registerContainerBlock(blockSteamBoiler, TileSteamBoiler.class, "BlockSteamBoiler");
 
-		GameRegistry.registerBlock(blockIntake, ItemBlockIntake.class, "BlockIntake");
+		GameRegistry.registerBlock(blockIntake, ItemBlockWithDesc.class, "BlockIntake");
 		GameRegistry.registerTileEntity(TileIntake.class, "TEIntake");
 
 		RegistryHelper.registerContainerBlock(blockArmorEditor, TileArmorEditor.class, "BlockArmorEditor");
@@ -219,7 +219,7 @@ public class ConfigBlocks
 		RegistryHelper.registerContainerBlock(blockCopperPipe, TileCopperPipe.class, "BlockCopperPipe");
 		RegistryHelper.registerContainerBlock(blockTurbine, TileTurbine.class, "BlockTurbine");
 		//RegistryHelper.registerContainerBlock(blockCharger, TileCharger.class, "BlockCharger");
-		GameRegistry.registerBlock(blockMetal, BlockMetalItem.class, "BlockMetal");
+		GameRegistry.registerBlock(blockMetal, ItemBlockMetal.class, "BlockMetal");
 
 		GameRegistry.registerBlock(blockSteam, "blockSteam");
 		// RegistryHelper.registerContainerBlock(blockHatch, TileHatch.class,

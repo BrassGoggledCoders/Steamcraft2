@@ -1,9 +1,12 @@
 /*
- * 
+ *
  */
 package steamcraft.common.items;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.IIcon;
 import steamcraft.common.Steamcraft;
 
 // TODO: Auto-generated Javadoc
@@ -12,7 +15,6 @@ import steamcraft.common.Steamcraft;
  */
 public class BaseItemWithMetadata extends BaseItem
 {
-
 	/**
 	 * Instantiates a new base item with metadata.
 	 */
@@ -25,7 +27,7 @@ public class BaseItemWithMetadata extends BaseItem
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.minecraft.item.ItemBlock#getUnlocalizedName(net.minecraft.item.ItemStack
 	 * )
@@ -35,8 +37,4 @@ public class BaseItemWithMetadata extends BaseItem
 	{
 		return super.getUnlocalizedName() + "." + is.getItemDamage();
 	}
-	/*
-	 * @Override public IIcon getIconFromDamage(int i) { if(itemIcon.length !=
-	 * 0) return itemIcon[i]; else return itemIcon[0]; }
-	 */
 }

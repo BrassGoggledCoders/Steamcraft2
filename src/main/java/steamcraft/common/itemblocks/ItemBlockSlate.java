@@ -9,27 +9,28 @@
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
  *
- * File created @ [3/15/14, 14:33]
+ * File created @ [13 Apr 2014, 09:44:47]
  */
-package steamcraft.common.blocks;
+package steamcraft.common.itemblocks;
 
 import net.minecraft.block.Block;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class BlockCustomOreItem.
+ * The Class BlockSlateItem.
  * 
- * @author Surseance (Johnny Eatmon)
+ * @author warlordjones
  */
-public class BlockCustomOreItem extends BaseItemBlockWithMetadata
+public class ItemBlockSlate extends BaseItemBlockWithMetadata
 {
+
 	/**
-	 * Instantiates a new block custom ore item.
+	 * Instantiates a new block slate item.
 	 * 
 	 * @param block
 	 *            the block
 	 */
-	public BlockCustomOreItem(final Block block)
+	public ItemBlockSlate(Block block)
 	{
 		super(block, block);
 	}

@@ -20,7 +20,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.MinecraftForge;
 import steamcraft.client.gui.GuiHandler;
 import steamcraft.common.config.Config;
-import steamcraft.common.config.ConfigAchievments;
+import steamcraft.common.config.ConfigAchievements;
 import steamcraft.common.config.ConfigBlocks;
 import steamcraft.common.config.ConfigEntities;
 import steamcraft.common.config.ConfigItems;
@@ -144,7 +144,7 @@ public class Steamcraft
 	public void init(FMLInitializationEvent event)
 	{
 		ConfigEntities.init();
-		ConfigAchievments.init();
+		ConfigAchievements.init();
 		// RegisterKeyBindings.init();
 		// NetworkRegistry.instance().registerGuiHandler(this.instance, new
 		// GuiHandler());

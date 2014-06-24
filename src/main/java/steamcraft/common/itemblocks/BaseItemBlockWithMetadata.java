@@ -1,11 +1,17 @@
 /*
- * 
+ *
  */
-package steamcraft.common.blocks;
+package steamcraft.common.itemblocks;
 
+import java.util.List;
+
+import boilerplate.client.ClientHelper;
+import boilerplate.common.utils.StringUtils;
 import net.minecraft.block.Block;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemBlockWithMetadata;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.StatCollector;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -13,10 +19,9 @@ import net.minecraft.item.ItemStack;
  */
 public class BaseItemBlockWithMetadata extends ItemBlockWithMetadata
 {
-
 	/**
 	 * Instantiates a new base item block with metadata.
-	 * 
+	 *
 	 * @param p_i45328_1_
 	 *            the p_i45328_1_
 	 * @param block
@@ -30,7 +35,7 @@ public class BaseItemBlockWithMetadata extends ItemBlockWithMetadata
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.minecraft.item.Item#getMetadata(int)
 	 */
 	@Override
@@ -41,7 +46,7 @@ public class BaseItemBlockWithMetadata extends ItemBlockWithMetadata
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.minecraft.item.ItemBlock#getUnlocalizedName(net.minecraft.item.ItemStack
 	 * )
