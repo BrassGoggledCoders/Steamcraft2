@@ -24,6 +24,7 @@ import steamcraft.common.items.ItemElectricJar;
 import steamcraft.common.items.ItemFirearm;
 import steamcraft.common.items.ItemIngot;
 import steamcraft.common.items.ItemMachinePart;
+import steamcraft.common.items.ItemMatch;
 import steamcraft.common.items.ItemMultiParts;
 import steamcraft.common.items.ItemNugget;
 import steamcraft.common.items.ItemParts;
@@ -158,6 +159,7 @@ public class ConfigItems
 	public static Item chisel;
 	public static Item spanner;
 	public static Item itemHammer;
+	public static Item itemMatch;
 
 	public static Item itemNugget;
 
@@ -285,11 +287,11 @@ public class ConfigItems
 		itemSteamJetpack = new ItemSteamJetpack(MaterialHelper.ARMOR_STEAM, 0, 1, (byte)5).setUnlocalizedName("itemSteamJetpack");
 		itemClockworkWings = new ItemClockworkWings(MaterialHelper.ARMOR_STEAM, 0, 1).setUnlocalizedName("itemClockworkWings");
 		itemSteamWingpack = new ItemSteamJetpack(MaterialHelper.ARMOR_STEAM, 0, 1, (byte)4).setUnlocalizedName("itemSteamWingpack");
-		
+
 		registerItem(itemClockworkWings, "ItemClockworkWings");
 		registerItem(itemSteamJetpack, "ItemSteamJetpack");
 		registerItem(itemSteamWingpack, "ItemSteamWingpack");
-		
+
 		// Brass
 		helmetBrass = new ItemBrassArmor(MaterialHelper.ARMOR_STEAM, 0, 0).setUnlocalizedName("itemHelmetBrass");
 		chestplateBrass = new ItemBrassArmor(MaterialHelper.ARMOR_STEAM, 0, 0).setUnlocalizedName("itemChestplateBrass");
@@ -331,12 +333,12 @@ public class ConfigItems
 		registerItem(itemPercussionCap, "ItemPercussionCap");
 
 		//Guns
-		flintlockMusket = new ItemFirearm(6, 60, itemMusketBall, null, false, "steamcraft:musket", "steamcraft:reload").setUnlocalizedName("flintlockmusket");
-		matchlockMusket = new ItemFirearm(7, 40, itemMusketBall, null, false, "steamcraft:musket", "steamcraft:reload").setUnlocalizedName("matchlockmusket");
-		percussionCapMusket = new ItemFirearm(8, 20, itemMusketBall, itemPercussionCap, true, "steamcraft:musket", "steamcraft:reload").setUnlocalizedName("percussionmusket");
-		flintlockRifle = new ItemFirearm(9, 60, itemRifleBullet, null, false, "steamcraft:rifle", "steamcraft:reload").setUnlocalizedName("flintlockrifle");
-		matchlockRifle = new ItemFirearm(10, 40, itemRifleBullet, null, false, "steamcraft:rifle", "steamcraft:reload").setUnlocalizedName("matchlockrifle");
-		percussionCapRifle = new ItemFirearm(11, 20, itemRifleBullet, itemPercussionCap, true, "steamcraft:rifle", "steamcraft:reload").setUnlocalizedName("percussionrifle");
+		flintlockMusket = new ItemFirearm(5, 60, itemMusketBall, null, false, "steamcraft:musket", "steamcraft:reload").setUnlocalizedName("itemFlintlockMusket");
+		matchlockMusket = new ItemFirearm(6, 40, itemMusketBall, itemMatch, true, "steamcraft:musket", "steamcraft:reload").setUnlocalizedName("itemMatchlockMusket");
+		percussionCapMusket = new ItemFirearm(7, 20, itemMusketBall, itemPercussionCap, true, "steamcraft:musket", "steamcraft:reload").setUnlocalizedName("itemPercussionMusket");
+		flintlockRifle = new ItemFirearm(8, 60, itemRifleBullet, null, false, "steamcraft:rifle", "steamcraft:reload").setUnlocalizedName("itemFlintlockRifle");
+		matchlockRifle = new ItemFirearm(9, 40, itemRifleBullet, itemMatch, true, "steamcraft:rifle", "steamcraft:reload").setUnlocalizedName("itemMatchlockRifle");
+		percussionCapRifle = new ItemFirearm(10, 20, itemRifleBullet, itemPercussionCap, true, "steamcraft:rifle", "steamcraft:reload").setUnlocalizedName("itemPercussionRifle");
 
 		registerItem(flintlockMusket, "ItemFlintlockMusket");
 		registerItem(matchlockMusket, "ItemMatchlockMusket");
@@ -422,6 +424,9 @@ public class ConfigItems
 
 		spanner = new ItemChisel().setUnlocalizedName("spanner");
 		registerItem(spanner, "ItemSpanner");
+
+		itemMatch = new ItemMatch().setUnlocalizedName("itemMatch");
+		registerItem(itemMatch, "ItemMatch");
 	}
 
 	private static void registerItem(Item item, String name)
