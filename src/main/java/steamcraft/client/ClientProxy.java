@@ -15,12 +15,14 @@ package steamcraft.client;
 
 import java.awt.Color;
 
+import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 import steamcraft.client.renderers.block.BlockCastIronLampRenderer;
 import steamcraft.client.renderers.block.BlockCrystalRenderer;
 import steamcraft.client.renderers.block.BlockHatchRenderer;
+import steamcraft.client.renderers.item.ModelBrassWings;
 import steamcraft.client.renderers.tile.TileCastIronLampRenderer;
 import steamcraft.client.renderers.tile.TileCrystalRenderer;
 import steamcraft.client.renderers.tile.TileHatchRenderer;
@@ -234,4 +236,23 @@ public class ClientProxy extends CommonProxy
 	 * 
 	 * return chest2; // Default, if the wrong ID is passed }
 	 */
+	
+	private static final ModelBrassWings chest1 = new ModelBrassWings(1.0F);
+	private static final ModelBrassWings legs1 = new ModelBrassWings(0.5F);
+	
+	@Override
+	public ModelBiped getWingsArmorModel(int id) 
+	{
+		switch (id) 
+		{
+			case 0:
+				return chest1;
+			case 1:
+				return legs1;
+			default:
+				break;
+		}
+	
+		return chest1; // Default, if the wrong ID is passed
+	}
 }

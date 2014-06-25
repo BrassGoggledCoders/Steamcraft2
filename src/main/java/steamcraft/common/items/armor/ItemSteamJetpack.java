@@ -1,5 +1,5 @@
 /**
- * This class was created by <Surseance> or his SC2 development team.
+ * This class was created by BrassGoggledCoders modding team. 
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -9,20 +9,24 @@
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
  *
- * File created @ [Apr 23, 2014, 10:26:03 PM]
+ * File created @ [Jun 23, 2014, 10:51:48 PM]
  */
 package steamcraft.common.items.armor;
 
 import java.util.List;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.model.ModelBiped;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
 import org.lwjgl.input.Keyboard;
 
+import steamcraft.common.Steamcraft;
 import steamcraft.common.config.ConfigItems;
 import steamcraft.common.items.ItemCanister;
 import cpw.mods.fml.relauncher.Side;
@@ -32,7 +36,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  * 
  * @author Decebaldecebal
  */
-public class ItemSteamJetpack extends ItemBrassArmor
+public class ItemSteamJetpack extends BaseArmor
 {
 	private static final byte steamPerTick = 5; // how much steam is used per tick
 
@@ -151,39 +155,49 @@ public class ItemSteamJetpack extends ItemBrassArmor
 		return hasCanister;
 	}
 
-	/*
-	 * Not sure if this is the right place for it
-	 * 
-	 * @Override
-	 * 
-	 * @SideOnly(Side.CLIENT) public ModelBiped getArmorModel(EntityLivingBase
-	 * entityLiving, ItemStack itemStack, int armorSlot) { ModelBiped armorModel
-	 * = new ModelBiped();
-	 * 
-	 * if(itemStack != null) { if(itemStack.getItem() instanceof
-	 * ItemSteamJetpack) { int type =
-	 * ((ItemArmor)itemStack.getItem()).armorType;
-	 * 
-	 * if(type == 1 || type == 3) { armorModel =
-	 * SC2.proxy.getWingsArmorModel(0); } else { armorModel =
-	 * SC2.proxy.getWingsArmorModel(1); } } if(armorModel != null) {
-	 * armorModel.bipedHead.showModel = armorSlot == 0;
-	 * armorModel.bipedHeadwear.showModel = armorSlot == 0;
-	 * armorModel.bipedBody.showModel = armorSlot == 1 || armorSlot == 2;
-	 * armorModel.bipedRightArm.showModel = armorSlot == 1;
-	 * armorModel.bipedLeftArm.showModel = armorSlot == 1;
-	 * armorModel.bipedRightLeg.showModel = armorSlot == 2 || armorSlot == 3;
-	 * armorModel.bipedLeftLeg.showModel = armorSlot == 2 || armorSlot == 3;
-	 * armorModel.isSneak = entityLiving.isSneaking(); armorModel.isRiding =
-	 * entityLiving.isRiding(); armorModel.isChild = entityLiving.isChild();
-	 * armorModel.heldItemRight = entityLiving.getCurrentItemOrArmor(0) != null
-	 * ? 1 :0;
-	 * 
-	 * if(entityLiving instanceof EntityPlayer) { armorModel.aimedBow =
-	 * ((EntityPlayer)entityLiving).getItemInUseDuration() > 2; }
-	 * 
-	 * return armorModel; } }
-	 * 
-	 * return null; }
-	 */
+	@Override
+	@SideOnly(Side.CLIENT)
+	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, int armorSlot) 
+	{
+		ModelBiped armorModel = new ModelBiped();
+
+		if(itemStack != null)
+		{
+			int type = ((ItemArmor)itemStack.getItem()).armorType;
+
+			if(type == 1 || type == 3)
+			{
+				armorModel = Steamcraft.proxy.getWingsArmorModel(0);
+			} 
+			else
+			{
+				armorModel = Steamcraft.proxy.getWingsArmorModel(1);
+			}
+			
+			if(armorModel != null)
+			{
+				armorModel.bipedHead.showModel = armorSlot == 0;
+				armorModel.bipedHeadwear.showModel = armorSlot == 0;
+				armorModel.bipedBody.showModel = armorSlot == 1 || armorSlot == 2;
+				armorModel.bipedRightArm.showModel = armorSlot == 1;
+				armorModel.bipedLeftArm.showModel = armorSlot == 1;
+				armorModel.bipedRightLeg.showModel = armorSlot == 2 || armorSlot == 3;
+				armorModel.bipedLeftLeg.showModel = armorSlot == 2 || armorSlot == 3;
+				armorModel.isSneak = entityLiving.isSneaking();
+				armorModel.isRiding = entityLiving.isRiding();
+				armorModel.isChild = entityLiving.isChild();
+				
+				//armorModel.heldItemRight = entityLiving.getCurrentItemOrArmor(0) != null ? 1 :0;
+
+				if(entityLiving instanceof EntityPlayer)
+				{
+					armorModel.aimedBow = ((EntityPlayer)entityLiving).getItemInUseDuration() > 2;
+				}
+
+				return armorModel;
+			}
+		}
+
+		return null;
+	}
 }
