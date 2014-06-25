@@ -21,9 +21,6 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-
-import org.lwjgl.input.Keyboard;
-
 import steamcraft.common.Steamcraft;
 import boilerplate.client.ClientHelper;
 import cpw.mods.fml.relauncher.Side;
@@ -67,17 +64,17 @@ public class ItemClockworkWings extends BaseArmor
 	{
 		if(!player.capabilities.allowFlying)
 		{
-			if(Minecraft.getMinecraft().currentScreen == null && Keyboard.isKeyDown(Minecraft.getMinecraft().gameSettings.keyBindJump.getKeyCode()))
+			if(Minecraft.getMinecraft().currentScreen == null && player.posY < 160 && Minecraft.getMinecraft().gameSettings.keyBindJump.isPressed())
 	    	{
 				player.addExhaustion(hungerPerTick);
 				
 	            if(player.motionY > 0.0D)
 	            {
-	                player.motionY += 0.08499999910593033D;
+	                player.motionY += 0.3D;
 	            } 
 	            else
 	            {
-	                player.motionY += 0.11699999910593033D;
+	                player.motionY += 0.4D;
 	            }
 	        }
             
@@ -85,12 +82,15 @@ public class ItemClockworkWings extends BaseArmor
 			{
 				player.addExhaustion(hungerPerTick/2);
 				player.motionY /= 1.4D;
+				
+				player.motionX *= 1.05D;
+				player.motionZ *= 1.05D;
 			}
 			
 			if (!player.onGround)
 			{
-				player.motionX *= 1.0399999618530273D;
-				player.motionZ *= 1.0399999618530273D;
+				player.motionX *= 1.04D;
+				player.motionZ *= 1.04D;
 			}
 			
 			if(player.fallDistance > 0)

@@ -89,7 +89,7 @@ public class ItemSteamJetpack extends BaseArmor
 		
 		if (!player.capabilities.allowFlying && hasCanister)
 		{
-			if ((Minecraft.getMinecraft().currentScreen == null) && Keyboard.isKeyDown(Minecraft.getMinecraft().gameSettings.keyBindJump.getKeyCode()))
+			if ((Minecraft.getMinecraft().currentScreen == null) && player.posY < 200 && Keyboard.isKeyDown(Minecraft.getMinecraft().gameSettings.keyBindJump.getKeyCode()))
 			{
 				consumeSteamFromCanister(player, steamPerTick);
 				
@@ -110,12 +110,15 @@ public class ItemSteamJetpack extends BaseArmor
 			{
 				consumeSteamFromCanister(player, (byte)(steamPerTick/2));
 				player.motionY /= 1.4D;
+				
+				player.motionX *= 1.05D;
+				player.motionZ *= 1.05D;
 			}
 			
 			if (!player.onGround)
 			{
-				player.motionX *= 1.0399999618530273D;
-				player.motionZ *= 1.0399999618530273D;
+				player.motionX *= 1.04D;
+				player.motionZ *= 1.04D;
 			}
 
 			if (player.fallDistance > 0)
