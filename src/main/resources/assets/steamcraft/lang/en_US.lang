@@ -11,6 +11,7 @@ tile.blockMetal.6.name=Steel Block
 tile.blockMetal.7.name=Cast-Iron Block
 tile.blockMetal.8.name=Uranium Block
 tile.blockMetal.9.name=Etherium Block
+tile.blockUranium.name=Uranium Block
 tile.blockBrassLog.name=Brass plated Log
 tile.blockBrassLeaves.name=Brass Leaves
 tile.blockLamp.name=Lamp

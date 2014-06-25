@@ -31,6 +31,7 @@ import steamcraft.common.blocks.BlockFluidSteam;
 import steamcraft.common.blocks.BlockLamp;
 import steamcraft.common.blocks.BlockMetal;
 import steamcraft.common.blocks.BlockSlate;
+import steamcraft.common.blocks.BlockUranium;
 import steamcraft.common.blocks.FluidSteam;
 import steamcraft.common.blocks.tiles.BlockArmorEditor;
 import steamcraft.common.blocks.tiles.BlockCharger;
@@ -85,7 +86,7 @@ public class ConfigBlocks
 	public static Block blockCastIronLampA;
 
 	/** The block metal. */
-	public static Block blockMetal;
+	public static Block blockMetal, blockUranium;
 
 	/** The block hatch. */
 	public static Block blockHatch;
@@ -166,6 +167,7 @@ public class ConfigBlocks
 		blockDropHammerAnvil = new BlockDropHammerAnvil(Material.anvil).setBlockName("blockDropHammerAnvil");
 		//blockDropHammerFrame = new BlockDropHammerFrame(Material.iron).setBlockName("blockDropHammerFrame");
 		blockMetal = new BlockMetal();
+		blockUranium = new BlockUranium(Material.iron).setBlockName("blockUranium");
 		blockBrassLog = new BlockBrassLog(Material.wood);
 		blockBrassLeaves = new BlockBrassLeaves(Material.iron);
 		blockIntake = new BlockIntake(Material.iron);
@@ -220,6 +222,7 @@ public class ConfigBlocks
 		RegistryHelper.registerContainerBlock(blockTurbine, TileTurbine.class, "BlockTurbine");
 		//RegistryHelper.registerContainerBlock(blockCharger, TileCharger.class, "BlockCharger");
 		GameRegistry.registerBlock(blockMetal, ItemBlockMetal.class, "BlockMetal");
+		GameRegistry.registerBlock(blockUranium, "BlockUranium");
 
 		GameRegistry.registerBlock(blockSteam, "blockSteam");
 		// RegistryHelper.registerContainerBlock(blockHatch, TileHatch.class,
