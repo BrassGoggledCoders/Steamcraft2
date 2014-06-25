@@ -1,5 +1,5 @@
 /**
- * This class was created by BrassGoggledCoders modding team. 
+ * This class was created by BrassGoggledCoders modding team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -32,13 +32,13 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 public class ItemClockworkWings extends BaseArmor
 {
-	private static final float hungerPerTick = 0.2F;
-	
+	private static final float hungerPerTick = 0.5F;
+
 	public ItemClockworkWings(ArmorMaterial mat, int renderIndex, int armorType)
 	{
 		super(mat, renderIndex, armorType);
 	}
-	
+
 	@SuppressWarnings("all")
 	@Override
 	public void addInformation(ItemStack itemStack, EntityPlayer entityPlayer, List list, boolean bool)
@@ -67,32 +67,32 @@ public class ItemClockworkWings extends BaseArmor
 			if(Minecraft.getMinecraft().currentScreen == null && player.posY < 160 && Minecraft.getMinecraft().gameSettings.keyBindJump.isPressed())
 	    	{
 				player.addExhaustion(hungerPerTick);
-				
+
 	            if(player.motionY > 0.0D)
 	            {
 	                player.motionY += 0.3D;
-	            } 
+	            }
 	            else
 	            {
 	                player.motionY += 0.4D;
 	            }
 	        }
-            
+
 			if ((player.motionY < 0.0D) && player.isSneaking())
 			{
 				player.addExhaustion(hungerPerTick/2);
 				player.motionY /= 1.4D;
-				
+
 				player.motionX *= 1.05D;
 				player.motionZ *= 1.05D;
 			}
-			
+
 			if (!player.onGround)
 			{
 				player.motionX *= 1.04D;
 				player.motionZ *= 1.04D;
 			}
-			
+
 			if(player.fallDistance > 0)
 			{
 				player.addExhaustion(hungerPerTick/4);
@@ -102,14 +102,14 @@ public class ItemClockworkWings extends BaseArmor
 	}
 	@Override
 	@SideOnly(Side.CLIENT)
-	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, int armorSlot) 
+	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, int armorSlot)
 	{
 		ModelBiped armorModel = new ModelBiped();
 
 		if(itemStack != null)
 		{
 			armorModel = Steamcraft.proxy.getWingsArmorModel(1);
-			
+
 			if(armorModel != null)
 			{
 				armorModel.bipedHead.showModel = armorSlot == 0;
@@ -122,7 +122,7 @@ public class ItemClockworkWings extends BaseArmor
 				armorModel.isSneak = entityLiving.isSneaking();
 				armorModel.isRiding = entityLiving.isRiding();
 				armorModel.isChild = entityLiving.isChild();
-				
+
 				//armorModel.heldItemRight = entityLiving.getCurrentItemOrArmor(0) != null ? 1 :0;
 
 				if(entityLiving instanceof EntityPlayer)
