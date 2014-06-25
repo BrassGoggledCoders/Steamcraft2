@@ -13,7 +13,6 @@
  */
 package steamcraft.common.config;
 
-import boilerplate.common.RegistryHelper;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import steamcraft.common.Steamcraft;
@@ -37,6 +36,7 @@ import steamcraft.common.items.ItemShrinkray;
 import steamcraft.common.items.ItemTeaSeed;
 import steamcraft.common.items.ItemWatch;
 import steamcraft.common.items.armor.ItemBrassArmor;
+import steamcraft.common.items.armor.ItemClockworkWings;
 import steamcraft.common.items.armor.ItemNormalArmor;
 import steamcraft.common.items.armor.ItemSteamJetpack;
 import steamcraft.common.items.tools.ItemDrill;
@@ -49,6 +49,7 @@ import steamcraft.common.items.tools.ItemModSword;
 import steamcraft.common.items.tools.ItemSteamDrill;
 import steamcraft.common.lib.LibInfo;
 import steamcraft.common.lib.MaterialHelper;
+import boilerplate.common.RegistryHelper;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 /**
@@ -69,6 +70,7 @@ public class ConfigItems
 	/* Armor */
 
 	// Jetpacks
+	public static Item itemClockworkWings;
 	public static Item itemSteamJetpack;
 
 	// Brass
@@ -280,7 +282,9 @@ public class ConfigItems
 	{
 		//Jetpacks
 		itemSteamJetpack = new ItemSteamJetpack(MaterialHelper.ARMOR_STEAM, 0, 1).setUnlocalizedName("itemSteamJetpack");
+		itemClockworkWings = new ItemClockworkWings(MaterialHelper.ARMOR_STEAM, 0, 1).setUnlocalizedName("itemClockworkWings");
 		
+		registerItem(itemClockworkWings, "ItemClockworkWings");
 		registerItem(itemSteamJetpack, "ItemSteamJetpack");
 		
 		// Brass

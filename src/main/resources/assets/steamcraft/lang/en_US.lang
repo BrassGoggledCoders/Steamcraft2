@@ -195,8 +195,9 @@ item.itemLegsObsidian.name=Obsidian Leggings
 item.itemBootsObsidian.name=Obsidian Boots
 item.brassMonocle.name=Brass Monocle
 item.brassWings.name=Brass Wings [NYI]
-item.itemSteamJetpack.name=Steam-Powered Jetpack [NYI]
-item.steamWings.name=Steam-Powered Wingpack [NYI]
+item.itemSteamJetpack.name=Steam-Powered Jetpack
+item.itemClockworkWings.name=Clock-Work Wings
+item.steamWings.name=Steam-Powered Wingpack
 item.pnematicBoots.name=Pnematic Boots
 
 #Parts
