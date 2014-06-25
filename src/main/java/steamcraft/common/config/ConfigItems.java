@@ -72,6 +72,7 @@ public class ConfigItems
 	// Jetpacks
 	public static Item itemClockworkWings;
 	public static Item itemSteamJetpack;
+	public static Item itemSteamWingpack;
 
 	// Brass
 	public static Item helmetBrass, chestplateBrass, legsBrass, bootsBrass;
@@ -281,11 +282,13 @@ public class ConfigItems
 	private static void initializeArmor()
 	{
 		//Jetpacks
-		itemSteamJetpack = new ItemSteamJetpack(MaterialHelper.ARMOR_STEAM, 0, 1).setUnlocalizedName("itemSteamJetpack");
+		itemSteamJetpack = new ItemSteamJetpack(MaterialHelper.ARMOR_STEAM, 0, 1, (byte)5).setUnlocalizedName("itemSteamJetpack");
 		itemClockworkWings = new ItemClockworkWings(MaterialHelper.ARMOR_STEAM, 0, 1).setUnlocalizedName("itemClockworkWings");
+		itemSteamWingpack = new ItemSteamJetpack(MaterialHelper.ARMOR_STEAM, 0, 1, (byte)4).setUnlocalizedName("itemSteamWingpack");
 		
 		registerItem(itemClockworkWings, "ItemClockworkWings");
 		registerItem(itemSteamJetpack, "ItemSteamJetpack");
+		registerItem(itemSteamWingpack, "ItemSteamWingpack");
 		
 		// Brass
 		helmetBrass = new ItemBrassArmor(MaterialHelper.ARMOR_STEAM, 0, 0).setUnlocalizedName("itemHelmetBrass");

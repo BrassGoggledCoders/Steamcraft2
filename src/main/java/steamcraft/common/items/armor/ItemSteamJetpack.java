@@ -19,7 +19,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
@@ -29,6 +28,7 @@ import org.lwjgl.input.Keyboard;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.config.ConfigItems;
 import steamcraft.common.items.ItemCanister;
+import boilerplate.client.ClientHelper;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -38,11 +38,12 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 public class ItemSteamJetpack extends BaseArmor
 {
-	private static final byte steamPerTick = 5; // how much steam is used per tick
+	private final byte steamPerTick;
 
-	public ItemSteamJetpack(ArmorMaterial mat, int renderIndex, int armorType)
+	public ItemSteamJetpack(ArmorMaterial mat, int renderIndex, int armorType, byte steam)
 	{
 		super(mat, renderIndex, armorType);
+		this.steamPerTick = steam;
 	}
 
 	@SuppressWarnings("all")
@@ -53,6 +54,20 @@ public class ItemSteamJetpack extends BaseArmor
 			itemStack.setTagCompound(new NBTTagCompound());
 
 		list.add("Canister Detected: " + String.valueOf(itemStack.getTagCompound().getBoolean("hasCanister")));
+		
+		if (descNeedsShift)
+		{
+			if (ClientHelper.isShiftKeyDown())
+			{
+				getWrappedDesc(list);
+			}
+			else
+				list.add(ClientHelper.shiftForInfo);
+		}
+		else
+		{
+			getWrappedDesc(list);
+		}
 	}
 	
 	@Override
@@ -89,6 +104,12 @@ public class ItemSteamJetpack extends BaseArmor
 
 				world.spawnParticle("smoke", player.posX, player.posY - 0.25D, player.posZ, 0.0D, 0.0D, 0.0D);
 
+			}
+			
+			if (this == ConfigItems.itemSteamWingpack && player.motionY < 0.0D && player.isSneaking())
+			{
+				consumeSteamFromCanister(player, (byte)(steamPerTick/2));
+				player.motionY /= 1.4D;
 			}
 			
 			if (!player.onGround)
@@ -157,9 +178,7 @@ public class ItemSteamJetpack extends BaseArmor
 
 		if(itemStack != null)
 		{
-			int type = ((ItemArmor)itemStack.getItem()).armorType;
-
-			if(type == 1 || type == 3)
+			if(this == ConfigItems.itemSteamJetpack)
 			{
 				armorModel = Steamcraft.proxy.getWingsArmorModel(0);
 			} 

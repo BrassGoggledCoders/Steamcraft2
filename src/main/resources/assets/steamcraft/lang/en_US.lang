@@ -194,10 +194,12 @@ item.itemChestplateObsidian.name=Obsidian Chestplate
 item.itemLegsObsidian.name=Obsidian Leggings
 item.itemBootsObsidian.name=Obsidian Boots
 item.brassMonocle.name=Brass Monocle
-item.brassWings.name=Brass Wings [NYI]
-item.itemSteamJetpack.name=Steam-Powered Jetpack
 item.itemClockworkWings.name=Clock-Work Wings
-item.steamWings.name=Steam-Powered Wingpack
+item.itemClockworkWings.desc=Wings that use hunger to lift you off the ground! Hold SHIFT to glide.
+item.itemSteamJetpack.name=Steam-Powered Jetpack
+item.itemSteamJetpack.desc=A simple jetpack that uses steam to work.
+item.itemSteamWingpack.name=Steam-Driven Wingpack
+item.itemSteamWingpack.desc=A combination of steam powered jetpack and wings that uses steam to work. Hold SHIFT to glide.
 item.pnematicBoots.name=Pnematic Boots
 
 #Parts
