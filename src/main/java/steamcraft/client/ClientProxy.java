@@ -17,6 +17,7 @@ import java.awt.Color;
 
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.multiplayer.WorldClient;
+import net.minecraft.client.renderer.entity.RenderSnowball;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 import steamcraft.client.renderers.block.BlockCastIronLampRenderer;
@@ -30,6 +31,8 @@ import steamcraft.common.CommonProxy;
 import steamcraft.common.KeyBindings;
 import steamcraft.common.KeyInputHandler;
 import steamcraft.common.config.ConfigBlocks;
+import steamcraft.common.config.ConfigItems;
+import steamcraft.common.entities.projectile.EntityBullet;
 import steamcraft.common.lib.Utils;
 import steamcraft.common.lib.events.EventHandlerDrawHighlight;
 import steamcraft.common.tiles.TileCastIronLamp;
@@ -48,7 +51,7 @@ import cpw.mods.fml.common.FMLCommonHandler;
 
 /**
  * The Class ClientProxy.
- * 
+ *
  * @author Surseance (Johnny Eatmon)
  */
 public class ClientProxy extends CommonProxy
@@ -59,7 +62,7 @@ public class ClientProxy extends CommonProxy
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see steamcraft.common.CommonProxy#registerKeys()
 	 */
 	@Override
@@ -71,28 +74,18 @@ public class ClientProxy extends CommonProxy
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see steamcraft.common.CommonProxy#registerDisplayInformation()
 	 */
 	@Override
 	public void registerDisplayInformation()
 	{
-		// TODO: Should be in boilerplate
-		RenderingRegistry.registerEntityRenderingHandler(EntityMinedBlock.class, new RenderMinedBlock());
-		ConfigBlocks.blockCrystalRI = RenderingRegistry.getNextAvailableRenderId();
-		ClientRegistry.bindTileEntitySpecialRenderer(TileCrystal.class, new TileCrystalRenderer());
-		RenderingRegistry.registerBlockHandler(new BlockCrystalRenderer());
-
-		ConfigBlocks.blockCastIronLampRI = RenderingRegistry.getNextAvailableRenderId();
-		ClientRegistry.bindTileEntitySpecialRenderer(TileCastIronLamp.class, new TileCastIronLampRenderer());
-		RenderingRegistry.registerBlockHandler(new BlockCastIronLampRenderer());
-
 		Utils.downloadCapes();
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see steamcraft.common.CommonProxy#registerRenderers()
 	 */
 	@Override
@@ -103,11 +96,22 @@ public class ClientProxy extends CommonProxy
 
 		RenderingRegistry.registerBlockHandler(new BlockCrystalRenderer());
 		RenderingRegistry.registerBlockHandler(new BlockHatchRenderer());
+
+		// TODO: Should be in boilerplate
+				RenderingRegistry.registerEntityRenderingHandler(EntityMinedBlock.class, new RenderMinedBlock());
+				ConfigBlocks.blockCrystalRI = RenderingRegistry.getNextAvailableRenderId();
+				ClientRegistry.bindTileEntitySpecialRenderer(TileCrystal.class, new TileCrystalRenderer());
+				RenderingRegistry.registerBlockHandler(new BlockCrystalRenderer());
+
+				ConfigBlocks.blockCastIronLampRI = RenderingRegistry.getNextAvailableRenderId();
+				ClientRegistry.bindTileEntitySpecialRenderer(TileCastIronLamp.class, new TileCastIronLampRenderer());
+				RenderingRegistry.registerBlockHandler(new BlockCastIronLampRenderer());
+		RenderingRegistry.registerEntityRenderingHandler(EntityBullet.class, new RenderSnowball(ConfigItems.itemMusketBall));
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see steamcraft.common.CommonProxy#getClientGuiElement(int,
 	 * net.minecraft.entity.player.EntityPlayer, net.minecraft.world.World, int,
 	 * int, int)
@@ -128,7 +132,7 @@ public class ClientProxy extends CommonProxy
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see steamcraft.common.CommonProxy#getClientWorld()
 	 */
 	@Override
@@ -148,7 +152,7 @@ public class ClientProxy extends CommonProxy
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see steamcraft.common.CommonProxy#rayFX(net.minecraft.world.World,
 	 * net.minecraft.entity.player.EntityPlayer, double, double, double, int,
 	 * boolean, float, java.lang.Object, int)
@@ -184,7 +188,7 @@ public class ClientProxy extends CommonProxy
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see steamcraft.common.CommonProxy#smokeFX(net.minecraft.world.World,
 	 * double, double, double, java.lang.Object)
 	 */
@@ -214,36 +218,36 @@ public class ClientProxy extends CommonProxy
 	/*
 	 * private static ModelBrassMonocle chest = new ModelBrassMonocle(1.0F);
 	 * private static ModelBrassMonocle legs = new ModelBrassMonocle(0.5F);
-	 * 
+	 *
 	 * @Override public ModelBiped getMonocleArmorModel(int id) { switch (id) {
 	 * case 0: return chest; case 1: return legs; default: break; }
-	 * 
+	 *
 	 * return chest; // Default, if the wrong ID is passed }
-	 * 
+	 *
 	 * /* private static ModelBrassWings chest1 = new ModelBrassWings(1.0F);
 	 * private static ModelBrassWings legs1 = new ModelBrassWings(0.5F);
-	 * 
+	 *
 	 * @Override public ModelBiped getWingsArmorModel(int id) { switch (id) {
 	 * case 0: return chest1; case 1: return legs1; default: break; }
-	 * 
+	 *
 	 * return chest1; // Default, if the wrong ID is passed }
-	 * 
+	 *
 	 * private static ModelCape chest2 = new ModelCape(1.0F); private static
 	 * ModelCape legs2 = new ModelCape(0.5F);
-	 * 
+	 *
 	 * @Override public ModelBiped getCapeArmorModel(int id) { switch(id) { case
 	 * 0: return chest2; case 1: return legs2; default: break; }
-	 * 
+	 *
 	 * return chest2; // Default, if the wrong ID is passed }
 	 */
-	
+
 	private static final ModelBrassWings chest1 = new ModelBrassWings(1.0F);
 	private static final ModelBrassWings legs1 = new ModelBrassWings(0.5F);
-	
+
 	@Override
-	public ModelBiped getWingsArmorModel(int id) 
+	public ModelBiped getWingsArmorModel(int id)
 	{
-		switch (id) 
+		switch (id)
 		{
 			case 0:
 				return chest1;
@@ -252,7 +256,7 @@ public class ClientProxy extends CommonProxy
 			default:
 				break;
 		}
-	
+
 		return chest1; // Default, if the wrong ID is passed
 	}
 }

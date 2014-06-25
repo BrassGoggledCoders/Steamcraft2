@@ -127,9 +127,6 @@ public class Steamcraft
 		ConfigBlocks.init();
 		ConfigItems.init();
 
-		proxy.registerDisplayInformation();
-		proxy.registerRenderers();
-
 		NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
 		//VillagerRegistry.instance().registerVillageCreationHandler(new VillageCreationHandler());
 	}
@@ -145,6 +142,9 @@ public class Steamcraft
 	{
 		ConfigEntities.init();
 		ConfigAchievements.init();
+
+		proxy.registerDisplayInformation();
+		proxy.registerRenderers();
 		// RegisterKeyBindings.init();
 		// NetworkRegistry.instance().registerGuiHandler(this.instance, new
 		// GuiHandler());
