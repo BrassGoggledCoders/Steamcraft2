@@ -41,7 +41,7 @@ public class ItemClockworkWings extends BaseArmor
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT) // Thank-you Forge for this method. Otherwise, I would have to use TickHandlers... (somebody DID use them...)
+	@SideOnly(Side.CLIENT)
 	public void onArmorTick(World world, EntityPlayer player, ItemStack stack)
 	{
 		if(!player.capabilities.allowFlying)
