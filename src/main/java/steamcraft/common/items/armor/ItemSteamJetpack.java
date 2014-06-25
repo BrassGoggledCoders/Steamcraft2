@@ -31,8 +31,6 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 public class ItemSteamJetpack extends ItemBrassArmor
 {
-
-	/** The Constant steamPerTick. */
 	private static final int steamPerTick = 5; // how much steam is used per tick
 
 	public ItemSteamJetpack(ArmorMaterial mat, int renderIndex, int armorType)

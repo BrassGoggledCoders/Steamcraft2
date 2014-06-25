@@ -1,7 +1,7 @@
 /*
  *
  */
-package steamcraft.common.items.equipment;
+package steamcraft.common.items.tools;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;

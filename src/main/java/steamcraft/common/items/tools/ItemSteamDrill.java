@@ -11,7 +11,7 @@
  *
  * File created @ [Jun 23, 2014, 10:51:48 PM]
  */
-package steamcraft.common.items.equipment;
+package steamcraft.common.items.tools;
 
 import java.util.List;
 import java.util.Random;

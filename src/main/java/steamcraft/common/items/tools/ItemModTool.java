@@ -1,4 +1,4 @@
-package steamcraft.common.items.equipment;
+package steamcraft.common.items.tools;
 
 import java.util.List;
 import java.util.UUID;
