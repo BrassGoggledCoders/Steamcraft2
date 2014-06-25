@@ -166,8 +166,9 @@ public class ConfigRecipes
 		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.hoeSteam), new Object[]{"PP "," I "," S ", 'I', new ItemStack(ConfigItems.itemIngot, 1, 4), 'P', new ItemStack(ConfigItems.itemSheet, 1, 6), 'S', Items.stick});
 
 		//Etherium
-		//RecipeUtils.addToolSet(new ItemStack(ConfigItems.itemResource, 1, 0), new ItemStack[]{new ItemStack(ConfigItems.ite)});
+		RecipeUtils.addToolSet(new ItemStack(ConfigItems.itemResource, 1, 0), new ItemStack[]{new ItemStack(ConfigItems.pickaxeEtherium), new ItemStack(ConfigItems.axeEtherium), new ItemStack(ConfigItems.shovelEtherium), new ItemStack(ConfigItems.shovelEtherium), new ItemStack(ConfigItems.hoeEtherium), new ItemStack(ConfigItems.swordEtherium)});
 		//Obsidian
+		RecipeUtils.addToolSet(new ItemStack(ConfigItems.itemResource, 1, 3), new ItemStack[]{new ItemStack(ConfigItems.pickaxeObsidian), new ItemStack(ConfigItems.axeObsidian), new ItemStack(ConfigItems.shovelObsidian), new ItemStack(ConfigItems.shovelObsidian), new ItemStack(ConfigItems.hoeObsidian), new ItemStack(ConfigItems.swordObsidian)});
 
 	}
 
