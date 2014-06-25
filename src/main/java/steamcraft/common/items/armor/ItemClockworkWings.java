@@ -13,17 +13,19 @@
  */
 package steamcraft.common.items.armor;
 
+import java.util.List;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
 import org.lwjgl.input.Keyboard;
 
 import steamcraft.common.Steamcraft;
+import boilerplate.client.ClientHelper;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -38,6 +40,25 @@ public class ItemClockworkWings extends BaseArmor
 	public ItemClockworkWings(ArmorMaterial mat, int renderIndex, int armorType)
 	{
 		super(mat, renderIndex, armorType);
+	}
+	
+	@SuppressWarnings("all")
+	@Override
+	public void addInformation(ItemStack itemStack, EntityPlayer entityPlayer, List list, boolean bool)
+	{
+		if (descNeedsShift)
+		{
+			if (ClientHelper.isShiftKeyDown())
+			{
+				getWrappedDesc(list);
+			}
+			else
+				list.add(ClientHelper.shiftForInfo);
+		}
+		else
+		{
+			getWrappedDesc(list);
+		}
 	}
 
 	@Override
@@ -87,16 +108,7 @@ public class ItemClockworkWings extends BaseArmor
 
 		if(itemStack != null)
 		{
-			int type = ((ItemArmor)itemStack.getItem()).armorType;
-
-			if(type == 1 || type == 3)
-			{
-				armorModel = Steamcraft.proxy.getWingsArmorModel(0);
-			} 
-			else
-			{
-				armorModel = Steamcraft.proxy.getWingsArmorModel(1);
-			}
+			armorModel = Steamcraft.proxy.getWingsArmorModel(1);
 			
 			if(armorModel != null)
 			{

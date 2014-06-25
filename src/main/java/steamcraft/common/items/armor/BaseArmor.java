@@ -54,7 +54,6 @@ public class BaseArmor extends ItemArmor
 			{
 				getWrappedDesc(list);
 			}
-
 		}
 	}
 
