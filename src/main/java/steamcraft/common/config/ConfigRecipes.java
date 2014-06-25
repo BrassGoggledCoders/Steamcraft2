@@ -220,7 +220,8 @@ public class ConfigRecipes
 		}
 		// Misc
 		GameRegistry.addSmelting(Blocks.iron_block, new ItemStack(ConfigBlocks.blockMetal, 1, 7), 0.2F);
-		GameRegistry.addSmelting(new ItemStack(ConfigItems.itemResource, 1, 6), new ItemStack(ConfigItems.itemResource, 3, 7), 0.5F);
+		GameRegistry.addSmelting(new ItemStack(ConfigItems.itemResource, 1, 6), new ItemStack(ConfigItems.itemResource, 1,5), 0.5F);
+		GameRegistry.addShapelessRecipe(new ItemStack(ConfigItems.itemMatch), new Object[]{new ItemStack(ConfigItems.itemResource, 1, 4), new ItemStack(Items.stick)});
 	}
 
 }

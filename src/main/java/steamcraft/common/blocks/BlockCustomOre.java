@@ -13,7 +13,9 @@
  */
 package steamcraft.common.blocks;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -22,6 +24,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
+import net.minecraft.world.World;
 import steamcraft.common.config.ConfigBlocks;
 import steamcraft.common.config.ConfigItems;
 import steamcraft.common.lib.LibInfo;
@@ -39,7 +42,7 @@ public class BlockCustomOre extends BaseBlock implements IHammerable
 {
 
 	/** The icon. */
-	private final IIcon[] icon = new IIcon[7];
+	private  IIcon[] icon = new IIcon[7];
 
 	/*
 	 * (non-Javadoc)
@@ -62,7 +65,7 @@ public class BlockCustomOre extends BaseBlock implements IHammerable
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(final IIconRegister ir)
+	public void registerBlockIcons( IIconRegister ir)
 	{
 		icon[0] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "oreAluminum");
 		icon[1] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "oreCopper");
@@ -95,7 +98,7 @@ public class BlockCustomOre extends BaseBlock implements IHammerable
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void getSubBlocks(final Item item, final CreativeTabs tab, final List l)
+	public void getSubBlocks( Item item,  CreativeTabs tab,  List l)
 	{
 		for (int var4 = 0; var4 < 7; ++var4)
 		{
@@ -110,4 +113,30 @@ public class BlockCustomOre extends BaseBlock implements IHammerable
 		return new ItemStack(ConfigItems.itemPowder);
 		else return null;
 	}
+	@Override
+	//Inefficient but works. Got a better way?
+    public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune)
+    {
+        ArrayList<ItemStack> drop = new ArrayList<ItemStack>();
+
+        switch (metadata) {
+        	case 4:
+        		//drop.remove(0);
+        		if(drop.size() == 0)
+        		drop.add(new ItemStack(ConfigItems.itemResource, 1, 4));
+            case 5:
+            	//drop.remove(0);
+            	if(drop.size() == 0)
+                drop.add(new ItemStack(ConfigItems.itemResource, 1, 1));
+            case 6:
+            	//drop.remove(0);
+            	if(drop.size() == 0)
+            	drop.add(new ItemStack(ConfigItems.itemResource, 1, 3));
+             default:
+            	if(drop.size() == 0)
+            	drop.add(0, new ItemStack(ConfigBlocks.blockCustomOre, 1, metadata));
+        }
+
+        return drop;
+    }
 }

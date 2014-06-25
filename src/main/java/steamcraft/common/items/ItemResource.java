@@ -50,12 +50,11 @@ public class ItemResource extends BaseItemWithMetadata
 	{
 		itemIcon[0] = ir.registerIcon(LibInfo.PREFIX + "itemCrystal");
 		itemIcon[1] = ir.registerIcon(LibInfo.PREFIX + "itemChemSalt");
-		itemIcon[2] = ir.registerIcon(LibInfo.PREFIX + "itemBornite");
-		itemIcon[3] = ir.registerIcon(LibInfo.PREFIX + "itemSlate");
-		itemIcon[4] = ir.registerIcon(LibInfo.PREFIX + "itemPhosphorus");
-		itemIcon[5] = ir.registerIcon(LibInfo.PREFIX + "itemUranium");
-		itemIcon[6] = ir.registerIcon(LibInfo.PREFIX + "itemPellet");
-		itemIcon[7] = ir.registerIcon(LibInfo.PREFIX + "itemTeaLeaves");
+		itemIcon[2] = ir.registerIcon(LibInfo.PREFIX + "itemSlate");
+		itemIcon[3] = ir.registerIcon(LibInfo.PREFIX + "itemPhosphorus");
+		itemIcon[4] = ir.registerIcon(LibInfo.PREFIX + "itemUranium");
+		itemIcon[5] = ir.registerIcon(LibInfo.PREFIX + "itemPellet");
+		itemIcon[6] = ir.registerIcon(LibInfo.PREFIX + "itemTeaLeaves");
 	}
 
 	/**

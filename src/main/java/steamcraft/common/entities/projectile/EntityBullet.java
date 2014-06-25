@@ -89,7 +89,7 @@ public class EntityBullet extends Entity implements IProjectile
 	 * @param world
 	 *            the world
 	 */
-	public EntityBullet(final World world)
+	public EntityBullet( World world)
 	{
 		super(world);
 		renderDistanceWeight = 10.0D;
@@ -108,7 +108,7 @@ public class EntityBullet extends Entity implements IProjectile
 	 * @param dz
 	 *            the dz
 	 */
-	public EntityBullet(final World world, final double dx, final double dy, final double dz)
+	public EntityBullet( World world,  double dx,  double dy,  double dz)
 	{
 		super(world);
 		renderDistanceWeight = 10.0D;
@@ -131,7 +131,7 @@ public class EntityBullet extends Entity implements IProjectile
 	 * @param frotP
 	 *            the frot p
 	 */
-	public EntityBullet(final World world, final EntityLivingBase shooter, final EntityLivingBase target, final float frotY, final float frotP)
+	public EntityBullet( World world,  EntityLivingBase shooter,  EntityLivingBase target,  float frotY,  float frotP)
 	{
 		super(world);
 		renderDistanceWeight = 10.0D;
@@ -143,10 +143,10 @@ public class EntityBullet extends Entity implements IProjectile
 		}
 
 		posY = shooter.posY + shooter.getEyeHeight() - 0.10000000149011612D;
-		final double dx = target.posX - shooter.posX;
-		final double dy = target.boundingBox.minY + target.height / 3.0F - posY;
-		final double dz = target.posZ - shooter.posZ;
-		final double magnitude = MathHelper.sqrt_double(dx * dx + dz * dz); // It's
+		 double dx = target.posX - shooter.posX;
+		 double dy = target.boundingBox.minY + target.height / 3.0F - posY;
+		 double dz = target.posZ - shooter.posZ;
+		 double magnitude = MathHelper.sqrt_double(dx * dx + dz * dz); // It's
 																			// a
 																			// magnitude
 																			// vector!
@@ -155,13 +155,13 @@ public class EntityBullet extends Entity implements IProjectile
 
 		if (magnitude >= 1.0E-7D)
 		{
-			final float fx = (float) (Math.atan2(dz, dx) * 180.0D / Math.PI) - 90.0F;
-			final float fy = (float) (-(Math.atan2(dy, magnitude) * 180.0D / Math.PI));
-			final double dlx = dx / magnitude;
-			final double dlz = dz / magnitude;
+			 float fx = (float) (Math.atan2(dz, dx) * 180.0D / Math.PI) - 90.0F;
+			 float fy = (float) (-(Math.atan2(dy, magnitude) * 180.0D / Math.PI));
+			 double dlx = dx / magnitude;
+			 double dlz = dz / magnitude;
 			setLocationAndAngles(shooter.posX + dlx, posY, shooter.posZ + dlz, fx, fy);
 			yOffset = 0.0F;
-			final float height = (float) magnitude * 0.2F;
+			 float height = (float) magnitude * 0.2F;
 			setThrowableHeading(dx, dy + height, dz, frotY, frotP);
 		}
 	}
@@ -178,7 +178,7 @@ public class EntityBullet extends Entity implements IProjectile
 	 * @param accuracy
 	 *            the accuracy
 	 */
-	public EntityBullet(final World world, final EntityLivingBase shooter, final int damage, final int accuracy)
+	public EntityBullet( World world,  EntityLivingBase shooter,  int damage,  int accuracy)
 	{
 		super(world);
 		renderDistanceWeight = 10.0D;
@@ -222,10 +222,10 @@ public class EntityBullet extends Entity implements IProjectile
 	 * double, float, float)
 	 */
 	@Override
-	public void setThrowableHeading(double dx, double dy, double dz, final float frotY, final float frotP)
+	public void setThrowableHeading(double dx, double dy, double dz,  float frotY,  float frotP)
 	{
-		final int accuracy = this.accuracy;
-		final float f2 = MathHelper.sqrt_double(dx * dx + dy * dy + dz * dz);
+		 int accuracy = this.accuracy;
+		 float f2 = MathHelper.sqrt_double(dx * dx + dy * dy + dz * dz);
 		dx /= f2;
 		dy /= f2;
 		dz /= f2;
@@ -238,7 +238,7 @@ public class EntityBullet extends Entity implements IProjectile
 		motionX = dx;
 		motionY = dy;
 		motionZ = dz;
-		final float magnitude = MathHelper.sqrt_double(dx * dx + dz * dz);
+		 float magnitude = MathHelper.sqrt_double(dx * dx + dz * dz);
 		prevRotationYaw = rotationYaw = (float) ((Math.atan2(dx, dz) * 180D) / 3.1415927410125732D);
 		prevRotationPitch = rotationPitch = (float) ((Math.atan2(dy, magnitude) * 180D) / 3.1415927410125732D);
 		timeTillDeath = 0;
@@ -252,7 +252,7 @@ public class EntityBullet extends Entity implements IProjectile
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void setPositionAndRotation2(final double dx, final double dy, final double dz, final float frotY, final float frotP, final int i)
+	public void setPositionAndRotation2( double dx,  double dy,  double dz,  float frotY,  float frotP,  int i)
 	{
 		setPosition(dx, dy, dz);
 		setRotation(frotY, frotP);
@@ -265,7 +265,7 @@ public class EntityBullet extends Entity implements IProjectile
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void setVelocity(final double dx, final double dy, final double dz)
+	public void setVelocity( double dx,  double dy,  double dz)
 	{
 		motionX = dx;
 		motionY = dy;
@@ -273,7 +273,7 @@ public class EntityBullet extends Entity implements IProjectile
 
 		if ((prevRotationPitch == 0.0F) && (prevRotationYaw == 0.0F))
 		{
-			final float magnitude = MathHelper.sqrt_double(dx * dx + dz * dz);
+			 float magnitude = MathHelper.sqrt_double(dx * dx + dz * dz);
 			prevRotationYaw = rotationYaw = (float) ((Math.atan2(dx, dz) * 180D) / 3.1415927410125732D);
 			prevRotationPitch = rotationPitch = (float) ((Math.atan2(dy, magnitude) * 180D) / 3.1415927410125732D);
 		}
@@ -296,7 +296,7 @@ public class EntityBullet extends Entity implements IProjectile
 
 		if (prevRotationPitch == 0.0F && prevRotationYaw == 0.0F)
 		{
-			final float magnitude = MathHelper.sqrt_double(motionX * motionX + motionZ * motionZ);
+			 float magnitude = MathHelper.sqrt_double(motionX * motionX + motionZ * motionZ);
 			prevRotationYaw = rotationYaw = (float) ((Math.atan2(motionX, motionZ) * 180D) / 3.1415927410125732D);
 			prevRotationPitch = rotationPitch = (float) ((Math.atan2(motionY, magnitude) * 180D) / 3.1415927410125732D);
 		}
@@ -308,7 +308,7 @@ public class EntityBullet extends Entity implements IProjectile
 
 		if (inGround)
 		{
-			final Block block = worldObj.getBlock(xTile, yTile, zTile);
+			 Block block = worldObj.getBlock(xTile, yTile, zTile);
 
 			if (block != inTile)
 			{
@@ -356,29 +356,29 @@ public class EntityBullet extends Entity implements IProjectile
 		}
 
 		Entity entity = null;
-		final List<?> entList = worldObj.getEntitiesWithinAABBExcludingEntity(this,
+		 List<?> entList = worldObj.getEntitiesWithinAABBExcludingEntity(this,
 				boundingBox.addCoord(motionX, motionY, motionZ).expand(1.0D, 1.0D, 1.0D));
 		double distance = 0.0D;
 
 		for (int listSize = 0; listSize < entList.size(); listSize++)
 		{
-			final Entity collidableEnt = (Entity) entList.get(listSize);
+			 Entity collidableEnt = (Entity) entList.get(listSize);
 
 			if (!collidableEnt.canBeCollidedWith() || collidableEnt == shootingEntity && flyTime < 5)
 			{
 				continue;
 			}
 
-			final float amount = 0.3F;
-			final AxisAlignedBB aaBB = collidableEnt.boundingBox.expand(amount, amount, amount);
-			final MovingObjectPosition objectInVector = aaBB.calculateIntercept(posVector, velVector);
+			 float amount = 0.3F;
+			 AxisAlignedBB aaBB = collidableEnt.boundingBox.expand(amount, amount, amount);
+			 MovingObjectPosition objectInVector = aaBB.calculateIntercept(posVector, velVector);
 
 			if (objectInVector == null)
 			{
 				continue;
 			}
 
-			final double distanceToObject = posVector.distanceTo(objectInVector.hitVec);
+			 double distanceToObject = posVector.distanceTo(objectInVector.hitVec);
 
 			if (distanceToObject < distance || distance == 0.0D) // Orthogonal
 																	// check
@@ -420,7 +420,7 @@ public class EntityBullet extends Entity implements IProjectile
 
 				if (inTile == Blocks.glass || inTile == Blocks.glowstone)
 				{
-					final Block block = inTile;
+					 Block block = inTile;
 					worldObj.playSoundEffect(xTile + 0.5D, yTile + 0.5D, zTile + 0.5D, block.stepSound.getBreakSound(), 1.0F, 1.0F);
 					worldObj.setBlockToAir(xTile, yTile, zTile);
 				}
@@ -429,7 +429,7 @@ public class EntityBullet extends Entity implements IProjectile
 					motionX = (float) (mop.hitVec.xCoord - posX);
 					motionY = (float) (mop.hitVec.yCoord - posY);
 					motionZ = (float) (mop.hitVec.zCoord - posZ);
-					final float magnitude = MathHelper.sqrt_double(motionX * motionX + motionY * motionY + motionZ * motionZ);
+					 float magnitude = MathHelper.sqrt_double(motionX * motionX + motionY * motionY + motionZ * motionZ);
 					posX -= (motionX / magnitude) * 0.05000000074505806D;
 					posY -= (motionY / magnitude) * 0.05000000074505806D;
 					posZ -= (motionZ / magnitude) * 0.05000000074505806D;
@@ -442,7 +442,7 @@ public class EntityBullet extends Entity implements IProjectile
 		posX += motionX * 3.0D;
 		posY += motionY * 3.0D;
 		posZ += motionZ * 3.0D;
-		final float magnitude = MathHelper.sqrt_double(motionX * motionX + motionZ * motionZ);
+		 float magnitude = MathHelper.sqrt_double(motionX * motionX + motionZ * motionZ);
 		rotationYaw = (float) ((Math.atan2(motionX, motionZ) * 180D) / 3.1415927410125732D);
 
 		for (rotationPitch = (float) ((Math.atan2(motionY, magnitude) * 180D) / 3.1415927410125732D); rotationPitch - prevRotationPitch < -180F; prevRotationPitch -= 360F)
@@ -463,7 +463,7 @@ public class EntityBullet extends Entity implements IProjectile
 
 		rotationPitch = prevRotationPitch + (rotationPitch - prevRotationPitch) * 0.2F;
 		rotationYaw = prevRotationYaw + (rotationYaw - prevRotationYaw) * 0.2F;
-		final float speed = 0.99F;
+		 float speed = 0.99F;
 
 		if (handleWaterMovement())
 		{
@@ -493,7 +493,7 @@ public class EntityBullet extends Entity implements IProjectile
 	 * )
 	 */
 	@Override
-	public void writeEntityToNBT(final NBTTagCompound tagCompound)
+	public void writeEntityToNBT( NBTTagCompound tagCompound)
 	{
 		tagCompound.setShort("xTile", (short) xTile);
 		tagCompound.setShort("yTile", (short) yTile);
@@ -510,7 +510,7 @@ public class EntityBullet extends Entity implements IProjectile
 	 * NBTTagCompound)
 	 */
 	@Override
-	public void readEntityFromNBT(final NBTTagCompound tagCompound)
+	public void readEntityFromNBT( NBTTagCompound tagCompound)
 	{
 		xTile = tagCompound.getShort("xTile");
 		yTile = tagCompound.getShort("yTile");
@@ -528,7 +528,7 @@ public class EntityBullet extends Entity implements IProjectile
 	 * player.EntityPlayer)
 	 */
 	@Override
-	public void onCollideWithPlayer(final EntityPlayer player)
+	public void onCollideWithPlayer( EntityPlayer player)
 	{
 		if (!worldObj.isRemote && inGround && arrowShake <= 0)
 		{
