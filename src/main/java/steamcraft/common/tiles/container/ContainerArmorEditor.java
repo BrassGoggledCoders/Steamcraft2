@@ -1,5 +1,5 @@
 /*
- * 
+ *
  */
 package steamcraft.common.tiles.container;
 
@@ -21,7 +21,7 @@ public class ContainerArmorEditor extends Container
 
 	/**
 	 * Instantiates a new container armor editor.
-	 * 
+	 *
 	 * @param player
 	 *            the player
 	 * @param tile
@@ -30,10 +30,13 @@ public class ContainerArmorEditor extends Container
 	public ContainerArmorEditor(InventoryPlayer player, TileArmorEditor tile)
 	{
 		this.tileent = tile;
-		this.addSlotToContainer(new Slot(tileent, 0, 42, 52));
+		/*this.addSlotToContainer(new Slot(tileent, 0, 42, 52));
 		this.addSlotToContainer(new Slot(tileent, 1, 132, 57));
-		this.addSlotToContainer(new Slot(tileent, 2, 132, 21));
+		this.addSlotToContainer(new Slot(tileent, 2, 132, 21));*/
+		this.addSlotToContainer(new Slot(tileent, 0, 111, 111));
 
+
+		//Hotbar + Inv
 		int var3;
 
 		for (var3 = 0; var3 < 3; ++var3)
@@ -52,7 +55,7 @@ public class ContainerArmorEditor extends Container
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.minecraft.inventory.Container#canInteractWith(net.minecraft.entity
 	 * .player.EntityPlayer)

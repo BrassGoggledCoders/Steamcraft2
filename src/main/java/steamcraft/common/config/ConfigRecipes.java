@@ -169,7 +169,6 @@ public class ConfigRecipes
 		RecipeUtils.addToolSet(new ItemStack(ConfigItems.itemResource, 1, 0), new ItemStack[]{new ItemStack(ConfigItems.pickaxeEtherium), new ItemStack(ConfigItems.axeEtherium), new ItemStack(ConfigItems.shovelEtherium), new ItemStack(ConfigItems.shovelEtherium), new ItemStack(ConfigItems.hoeEtherium), new ItemStack(ConfigItems.swordEtherium)});
 		//Obsidian
 		RecipeUtils.addToolSet(new ItemStack(ConfigItems.itemResource, 1, 3), new ItemStack[]{new ItemStack(ConfigItems.pickaxeObsidian), new ItemStack(ConfigItems.axeObsidian), new ItemStack(ConfigItems.shovelObsidian), new ItemStack(ConfigItems.shovelObsidian), new ItemStack(ConfigItems.hoeObsidian), new ItemStack(ConfigItems.swordObsidian)});
-
 	}
 
 	private static void initArmorRecipes()
@@ -186,6 +185,7 @@ public class ConfigRecipes
 	private static void initBlockRecipes()
 	{
 		GameRegistry.addShapedRecipe(new ItemStack(ConfigBlocks.blockSteamBoiler), new Object[]{"PPP","PFP","PPP", 'F', Blocks.furnace, 'P', new ItemStack(ConfigItems.itemSheet, 1, 4)});
+		//GameRegistry.addShapedRecipe(new ItemStack(ConfigBlocks.blockCopperTank), new Object[]{"PPP","P P","PPP", 'P', new ItemStack(ConfigItems.itemSheet, 1, 1)});
 	}
 
 	private static void initOtherRecipes()

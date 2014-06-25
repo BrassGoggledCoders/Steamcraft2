@@ -1,12 +1,14 @@
 /*
- * 
+ *
  */
 package steamcraft.common;
 
+import cpw.mods.fml.common.event.FMLInterModComms;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import steamcraft.common.config.ConfigBlocks;
 import steamcraft.common.config.ConfigItems;
+import steamcraft.common.lib.LibInfo;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -21,6 +23,12 @@ public class CompatabilityLayer
 	public static void init()
 	{
 		registerOreDictionaryEntries();
+		sendIMCMessages();
+	}
+
+	private static void sendIMCMessages()
+	{
+		FMLInterModComms.sendRuntimeMessage(LibInfo.ID, "VersionChecker", "addVersionCheck", LibInfo.VERSION_URL);
 	}
 
 	/**

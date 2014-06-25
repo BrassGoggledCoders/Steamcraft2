@@ -74,9 +74,6 @@ public class Steamcraft
 	/** The sc2 event handler. */
 	public EventHandlerSC2 sc2EventHandler;
 
-	// TODO: FIX!
-	// public EventHandlerDrawHighlight drawEventHandler;
-
 	/** The tab s c2. */
 	public static CreativeTabs tabSC2 = new CreativeTabSteamcraft(CreativeTabs.getNextID(), "steamcraft");
 
@@ -110,18 +107,13 @@ public class Steamcraft
 				Config.save();
 			}
 		}
-		// this.drawEventHandler = new EventHandlerDrawHighlight();
+		//TODO: Reimplement DrawEvent
 		sc2EventHandler = new EventHandlerSC2();
-
-		// MinecraftForge.EVENT_BUS.register(this.worldEventHandler);
 		MinecraftForge.EVENT_BUS.register(sc2EventHandler);
 		FMLCommonHandler.instance().bus().register(sc2EventHandler);
-		// MinecraftForge.EVENT_BUS.register(this.drawEventHandler);
 
-		// GameRegistry.registerFuelHandler(this.worldEventHandler);
-		// GameRegistry.registerCraftingHandler(this.worldEventHandler);
 		if (Config.generationEnabled)
-			GameRegistry.registerWorldGenerator(this.worldGen, 0);
+		GameRegistry.registerWorldGenerator(this.worldGen, 0);
 
 		Config.save();
 		ConfigBlocks.init();
@@ -145,6 +137,7 @@ public class Steamcraft
 
 		proxy.registerDisplayInformation();
 		proxy.registerRenderers();
+
 		// RegisterKeyBindings.init();
 		// NetworkRegistry.instance().registerGuiHandler(this.instance, new
 		// GuiHandler());
@@ -162,14 +155,11 @@ public class Steamcraft
 		FMLLog.fine(String.valueOf(Config.slateChance), "");
 		FMLLog.fine(String.valueOf(Config.slateHeight), "");
 		CompatabilityLayer.init();
-		// Dosn't work! >> BiomeDictionary.registerAllBiomes();
 		ConfigEntities.initEntitySpawns();
 		ConfigItems.postInit();
 		ConfigRecipes.init();
-		// LoggerSteamcraft.log(Level.INFO, "SC2 is " + event.getModState());
 		final ModContainer container = FMLCommonHandler.instance().findContainerFor(this);
 		LanguageRegistry.instance().loadLanguagesFor(container, Side.CLIENT);
-		FMLInterModComms.sendRuntimeMessage(LibInfo.ID, "VersionChecker", "addVersionCheck", LibInfo.VERSION_URL);
 	}
 
 	/**
