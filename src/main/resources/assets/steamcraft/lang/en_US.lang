@@ -75,12 +75,11 @@ tile.blockIntake.desc=Generates 10 water/tick if a water source block is below i
 #Items
 item.itemResource.0.name=Etherium Crystal
 item.itemResource.1.name=Sulfur
-item.itemResource.2.name=Purified Copper
-item.itemResource.3.name=Obsidian Slate
-item.itemResource.4.name=Phosphorus
-item.itemResource.5.name=Uranium
-item.itemResource.6.name=Uranium Pellets
-item.itemResource.7.name=Tea Leaves
+item.itemResource.2.name=Obsidian Slate
+item.itemResource.3.name=Phosphorus
+item.itemResource.4.name=Uranium
+item.itemResource.5.name=Uranium Pellets
+item.itemResource.6.name=Tea Leaves
 item.itemTeaSeed.name=Tea Seeds
 item.itemIngot.0.name=Aluminum Ingot
 item.itemIngot.1.name=Copper Ingot

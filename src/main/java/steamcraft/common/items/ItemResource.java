@@ -35,7 +35,7 @@ public class ItemResource extends BaseItemWithMetadata
 {
 	// @SideOnly(Side.CLIENT)
 	/** The item icon. */
-	IIcon[] itemIcon = new IIcon[8];
+	IIcon[] itemIcon = new IIcon[7];
 
 	/*
 	 * (non-Javadoc)
