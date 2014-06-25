@@ -1,6 +1,7 @@
 package steamcraft.common.items;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
@@ -49,7 +50,7 @@ public class ItemFirearm extends BaseItem
 		 */
 		if(!twoAmmo)
 		{
-			if (player.inventory.hasItem(ammo))
+			if (player.inventory.hasItem(ammo) && player.inventory.hasItem(Items.gunpowder))
 			{
 				World world = player.worldObj;
 
@@ -59,6 +60,7 @@ public class ItemFirearm extends BaseItem
 				if (count == this.getMaxItemUseDuration(stack) / 2)
 				{
 				player.inventory.consumeInventoryItem(ammo);
+				player.inventory.consumeInventoryItem(Items.gunpowder);
 
 				if (!world.isRemote)
 				{
@@ -71,7 +73,7 @@ public class ItemFirearm extends BaseItem
 		}
 		else
 		{
-			if (player.inventory.hasItem(ammo) && player.inventory.hasItem(ammo2))
+			if (player.inventory.hasItem(ammo) && player.inventory.hasItem(ammo2) && player.inventory.hasItem(Items.gunpowder))
 			{
 				World world = player.worldObj;
 
@@ -82,6 +84,7 @@ public class ItemFirearm extends BaseItem
 				{
 				player.inventory.consumeInventoryItem(ammo);
 				player.inventory.consumeInventoryItem(ammo2);
+				player.inventory.consumeInventoryItem(Items.gunpowder);
 
 				if (!world.isRemote)
 				{
