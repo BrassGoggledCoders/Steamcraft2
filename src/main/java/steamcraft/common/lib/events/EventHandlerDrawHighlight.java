@@ -88,7 +88,7 @@ public class EventHandlerDrawHighlight
 	public void onDrawBlockSelectionBox(DrawBlockHighlightEvent event)
 	{
 		if ((event.player.inventory.armorItemInSlot(3) != null)
-				&& (event.player.inventory.armorItemInSlot(3).getItem() == ConfigItems.itemBrassGoggles))
+				&& (event.player.inventory.armorItemInSlot(3).getItem() == ConfigItems.brassGoggles))
 		{
 			this.drawSelectionBox(event.player, event.target, 0, event.currentItem, event.partialTicks);
 			event.setCanceled(true);

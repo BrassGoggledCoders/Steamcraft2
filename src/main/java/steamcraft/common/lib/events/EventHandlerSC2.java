@@ -137,7 +137,7 @@ public class EventHandlerSC2
 			EntityPlayer player = (EntityPlayer) event.entityLiving;
 			ItemStack is = player.inventory.armorItemInSlot(3);
 
-			if ((is != null) && (is.getItem() == ConfigItems.itemBrassGoggles))
+			if ((is != null) && (is.getItem() == ConfigItems.brassGoggles))
 			{
 				player.addPotionEffect(new PotionEffect(Potion.nightVision.id, this.timer, 0));
 
@@ -146,7 +146,7 @@ public class EventHandlerSC2
 					this.timer = 400;
 				}
 			}
-			else if ((is == null) || (is.getItem() != ConfigItems.itemBrassGoggles))
+			else if ((is == null) || (is.getItem() != ConfigItems.brassGoggles))
 			{
 				player.removePotionEffect(Potion.nightVision.id);
 			}
@@ -180,7 +180,7 @@ public class EventHandlerSC2
 			ItemStack helmet = Minecraft.getMinecraft().thePlayer.inventory.armorItemInSlot(3);
 
 			if ((Minecraft.getMinecraft().gameSettings.thirdPersonView == 0) && (helmet != null)
-					&& (helmet.getItem() == ConfigItems.itemBrassGoggles))// &&
+					&& (helmet.getItem() == ConfigItems.brassGoggles))// &&
 			// KeyHandler.keyPressed)
 			{
 				Minecraft.getMinecraft().getTextureManager().bindTexture(EventHandlerSC2.overlay);
