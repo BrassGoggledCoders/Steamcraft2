@@ -25,9 +25,7 @@ import steamcraft.common.items.ItemCanister;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class ItemSteamJetpack.
  * 
  * @author Decebaldecebal
  */
@@ -35,32 +33,13 @@ public class ItemSteamJetpack extends ItemBrassArmor
 {
 
 	/** The Constant steamPerTick. */
-	private static final int steamPerTick = 5; // how much steam is uses per
-												// tick
+	private static final int steamPerTick = 5; // how much steam is used per tick
 
-	/**
-	 * Instantiates a new item steam jetpack.
-	 * 
-	 * @param mat
-	 *            the mat
-	 * @param renderIndex
-	 *            the render index
-	 * @param armorType
-	 *            the armor type
-	 */
 	public ItemSteamJetpack(ArmorMaterial mat, int renderIndex, int armorType)
 	{
 		super(mat, renderIndex, armorType);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * steamcraft.common.items.armor.ItemBrassArmor#onArmorTick(net.minecraft
-	 * .world.World, net.minecraft.entity.player.EntityPlayer,
-	 * net.minecraft.item.ItemStack)
-	 */
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void onArmorTick(World world, EntityPlayer player, ItemStack is)
@@ -100,13 +79,6 @@ public class ItemSteamJetpack extends ItemBrassArmor
 		}
 	}
 
-	/**
-	 * Can consume steam from canister.
-	 * 
-	 * @param player
-	 *            the player
-	 * @return true, if successful
-	 */
 	private boolean canConsumeSteamFromCanister(EntityPlayer player)
 	{
 		int i = 0;

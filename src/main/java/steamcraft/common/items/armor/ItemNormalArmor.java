@@ -22,43 +22,19 @@ import steamcraft.common.lib.MaterialHelper;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class ItemNormalArmor.
  * 
  * @author Decebaldecebal
  */
 public class ItemNormalArmor extends BaseArmor
 {
-
-	/** The material. */
-	ArmorMaterial material;
-
-	/**
-	 * Instantiates a new item normal armor.
-	 * 
-	 * @param mat
-	 *            the mat
-	 * @param renderIndex
-	 *            the render index
-	 * @param armorType
-	 *            the armor type
-	 */
 	public ItemNormalArmor(ArmorMaterial mat, int renderIndex, int armorType)
 	{
 		super(mat, renderIndex, armorType);
-		mat = material;
 		setMaxStackSize(1);
 		setCreativeTab(Steamcraft.tabSC2);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * net.minecraft.item.ItemArmor#registerIcons(net.minecraft.client.renderer
-	 * .texture.IIconRegister)
-	 */
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister icon)
@@ -66,18 +42,11 @@ public class ItemNormalArmor extends BaseArmor
 		itemIcon = icon.registerIcon(LibInfo.PREFIX + "armor/" + this.getUnlocalizedName().substring(5));
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * net.minecraft.item.Item#getArmorTexture(net.minecraft.item.ItemStack,
-	 * net.minecraft.entity.Entity, int, java.lang.String)
-	 */
 	@Override
 	@SideOnly(Side.CLIENT)
 	public String getArmorTexture(ItemStack is, Entity entity, int slot, String type)
 	{
-		if (material == MaterialHelper.ARMOR_ETHERIUM)
+		if (this.getArmorMaterial() == MaterialHelper.ARMOR_ETHERIUM)
 		{
 			return slot == 2 ? LibInfo.PREFIX + "textures/armor/etherium_2.png" : LibInfo.PREFIX + "textures/armor/etherium_1.png";
 		}
