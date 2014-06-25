@@ -57,29 +57,6 @@ public class ItemModPickaxe extends ItemModTool
 	}
 
 	@Override
-	protected boolean isSteampowered()
-	{
-		if (this.toolMaterial == MaterialHelper.TOOL_STEAM)
-		{
-			return true;
-		}
-		else if ((this.toolMaterial == MaterialHelper.DRILL_EMERALD) || (this.toolMaterial == MaterialHelper.DRILL_ETHERIUM)
-				|| (this.toolMaterial == MaterialHelper.DRILL_GOLD) || (this.toolMaterial == MaterialHelper.DRILL_IRON)
-				|| (this.toolMaterial == MaterialHelper.DRILL_OBSIDIAN) || (this.toolMaterial == MaterialHelper.DRILL_STEAM)
-				|| (this.toolMaterial == MaterialHelper.DRILL_STEAM) || (this.toolMaterial == MaterialHelper.DRILL_WOOD))
-			return true;
-		else
-			return false;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * steamcraft.common.items.equipment.ItemModTool#getDigSpeed(net.minecraft
-	 * .item.ItemStack, net.minecraft.block.Block, int)
-	 */
-	@Override
 	public float getDigSpeed(ItemStack stack, Block block, int metadata)
 	{
 		if (this.isSteampowered())

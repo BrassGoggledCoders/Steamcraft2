@@ -99,6 +99,8 @@ public class ItemModSword extends ItemModTool
 		Item item = stack2.getItem();
 		return this.toolMaterial.func_150995_f() == item ? true : super.getIsRepairable(stack1, stack2);
 	}
+	
+	/*
 	@Override
 	public boolean onLeftClickEntity(ItemStack stack, EntityPlayer player, Entity entity)
 	{
@@ -119,4 +121,5 @@ public class ItemModSword extends ItemModTool
 			return true;
 		}
 	}
+	*/
 }

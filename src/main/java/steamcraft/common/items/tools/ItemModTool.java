@@ -236,20 +236,20 @@ public class ItemModTool extends BaseItem
 					hasCanister = true;
 	
 				if(hasCanister!=tag.getBoolean("hasCanister"))
-				{
+				{						
 					tag.setBoolean("hasCanister", hasCanister);
 					itemStack.setTagCompound(tag);
 	
 					if(hasCanister)
 						changeToolDamage(itemStack, damageVsEntity);
 					else
-						changeToolDamage(itemStack, 1.0F);
+						changeToolDamage(itemStack, 1.0D);
 				}
 			}
 		}
 	}
 
-	private void changeToolDamage(ItemStack itemStack, float damage)
+	private void changeToolDamage(ItemStack itemStack, double damage)
 	{
 		addModifier(itemStack, SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName(), damage, 0);
 	}
