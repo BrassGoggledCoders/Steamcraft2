@@ -167,7 +167,10 @@ public class ConfigRecipes
 	
 		//Etherium
 		
+		
 		//Obsidian
+		
+		
 	}
 	
 	private static void initArmorRecipes()
