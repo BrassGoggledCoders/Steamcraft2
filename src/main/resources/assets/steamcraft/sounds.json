@@ -1,0 +1,10 @@
+{    
+    "drill.steam":
+    {
+        "category": "block",
+        "sounds":
+        [
+			"drill"
+        ]
+    }
+}

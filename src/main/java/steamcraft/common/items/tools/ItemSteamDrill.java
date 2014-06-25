@@ -17,6 +17,8 @@ import java.util.List;
 import java.util.Random;
 
 import net.minecraft.block.Block;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.audio.SoundCategory;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
@@ -155,7 +157,7 @@ public class ItemSteamDrill extends ItemDrill
 			this.consumeSteamFromCanister((EntityPlayer) living);
 			
 			stack.damageItem(1, living);
-			world.playSoundAtEntity(living, LibInfo.PREFIX + "drill", 1.0F, 1.0F);
+			world.playSoundAtEntity(living, LibInfo.PREFIX + "drill.steam", 0.6F, 1.0F);
 			world.spawnParticle("smoke", x + 0.5, y + 0.5, z + 0.5, this.random.nextGaussian(), this.random.nextGaussian(),
 					this.random.nextGaussian());
 			return true;
