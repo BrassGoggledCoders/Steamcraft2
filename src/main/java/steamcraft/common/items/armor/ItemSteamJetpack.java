@@ -13,9 +13,12 @@
  */
 package steamcraft.common.items.armor;
 
+import java.util.List;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
 import org.lwjgl.input.Keyboard;
@@ -31,23 +34,47 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 public class ItemSteamJetpack extends ItemBrassArmor
 {
-	private static final int steamPerTick = 5; // how much steam is used per tick
+	private static final byte steamPerTick = 5; // how much steam is used per tick
 
 	public ItemSteamJetpack(ArmorMaterial mat, int renderIndex, int armorType)
 	{
 		super(mat, renderIndex, armorType);
 	}
 
+	@SuppressWarnings("all")
+	@Override
+	public void addInformation(ItemStack itemStack, EntityPlayer entityPlayer, List list, boolean bool)
+	{
+		if (!itemStack.hasTagCompound())
+			itemStack.setTagCompound(new NBTTagCompound());
+
+		list.add("Canister Detected: " + String.valueOf(itemStack.getTagCompound().getBoolean("hasCanister")));
+	}
+	
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void onArmorTick(World world, EntityPlayer player, ItemStack is)
+	public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack)
 	{
-		if (!player.capabilities.allowFlying)
+		NBTTagCompound tag = itemStack.getTagCompound();
+		
+		boolean hasCanister = false;
+
+		if (this.hasCanister(player))
+			hasCanister = true;
+
+		if(hasCanister!=tag.getBoolean("hasCanister"))
+		{
+			tag.setBoolean("hasCanister", hasCanister);
+			itemStack.setTagCompound(tag);
+		}
+		
+		if (!player.capabilities.allowFlying && hasCanister)
 		{
 			if ((Minecraft.getMinecraft().currentScreen == null)
-					&& Keyboard.isKeyDown(Minecraft.getMinecraft().gameSettings.keyBindJump.getKeyCode()) && canConsumeSteamFromCanister(player))
+					&& Keyboard.isKeyDown(Minecraft.getMinecraft().gameSettings.keyBindJump.getKeyCode()))
 			{
-
+				consumeSteamFromCanister(player, steamPerTick);
+				
 				if (player.motionY > 0.0D)
 				{
 					player.motionY += 0.08499999910593033D;
@@ -72,39 +99,56 @@ public class ItemSteamJetpack extends ItemBrassArmor
 				player.motionZ *= 1.0399999618530273D;
 			}
 
-			if (player.fallDistance > 0 && canConsumeSteamFromCanister(player))
+			if (player.fallDistance > 0)
+			{
+				consumeSteamFromCanister(player, (byte)(steamPerTick/4));
 				player.fallDistance = 0;
+			}
+		}
+	}
+	
+	protected void consumeSteamFromCanister(EntityPlayer player, byte steam)
+	{
+		ItemStack[] mainInv = player.inventory.mainInventory;
+
+		for (ItemStack element : mainInv)
+		{
+			if ((element != null) && (element.getItem() == ConfigItems.itemCanisterSteam))
+			{
+				ItemCanister canister = (ItemCanister) element.getItem();
+				
+				if (canister.getFluidAmount(element) > steam)
+				{
+					canister.drain(element, steam, true);
+
+					return ;
+				}
+			}
 		}
 	}
 
-	private boolean canConsumeSteamFromCanister(EntityPlayer player)
+	protected boolean isCanisterEmpty(ItemStack stack)
 	{
-		int i = 0;
-		while (i < 36)
+		ItemCanister canister = (ItemCanister) stack.getItem();
+
+		if (canister.getFluidAmount(stack) <= steamPerTick)
+			return true;
+		else
+			return false;
+	}
+
+	protected boolean hasCanister(EntityPlayer player)
+	{
+		boolean hasCanister = false;
+		for (int i = 0; i != player.inventory.mainInventory.length; i++)
 		{
 			ItemStack[] mainInv = player.inventory.mainInventory;
 			if ((mainInv[i] != null) && (mainInv[i].getItem() == ConfigItems.itemCanisterSteam))
 			{
-				ItemCanister canister = (ItemCanister) mainInv[i].getItem();
-
-				if (!(getDamage(new ItemStack(canister)) == 0))
-				{
-					canister.drain(new ItemStack(canister), steamPerTick, true);
-
-					return true;
-				}
-				else
-				{
-					mainInv[i] = new ItemStack(ConfigItems.itemCanisterSteam);
-
-					return false;
-				}
+				hasCanister = hasCanister || !this.isCanisterEmpty(mainInv[i]);
 			}
-
-			i++;
 		}
-
-		return false;
+		return hasCanister;
 	}
 
 	/*
