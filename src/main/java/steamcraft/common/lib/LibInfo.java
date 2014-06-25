@@ -34,7 +34,7 @@ public class LibInfo
 	public static final String NAME = "Steamcraft 2";
 
 	/** The Constant VERSION. */
-	public static final String VERSION = "PA2"; // major, minor, bugfix
+	public static final String VERSION = "Alpha R1"; // major, minor, bugfix
 
 	public static final List<String> AUTHORS = Arrays.asList("Surseance", "decebaldecebal", "warlordjones", "Falkok15", "wierdude1999", "seanvanpelt2 & others");
 
