@@ -35,7 +35,7 @@ public class ItemMachinePart extends BaseItemWithMetadata
 {
 	// @SideOnly(Side.CLIENT)
 	/** The item icon. */
-	IIcon[] itemIcon = new IIcon[5];
+	IIcon[] itemIcon = new IIcon[6];
 
 	/*
 	 * (non-Javadoc)
@@ -53,6 +53,7 @@ public class ItemMachinePart extends BaseItemWithMetadata
 		itemIcon[2] = ir.registerIcon(LibInfo.PREFIX + "itemFan");
 		itemIcon[3] = ir.registerIcon(LibInfo.PREFIX + "itemTurbine");
 		itemIcon[4] = ir.registerIcon(LibInfo.PREFIX + "itemBulb");
+		itemIcon[5] = ir.registerIcon(LibInfo.PREFIX + "itemGrating");
 	}
 
 	/**

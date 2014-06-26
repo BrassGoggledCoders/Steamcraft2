@@ -186,12 +186,18 @@ public class ConfigRecipes
 	private static void initBlockRecipes()
 	{
 		GameRegistry.addShapedRecipe(new ItemStack(ConfigBlocks.blockSteamBoiler), new Object[]{"PPP","PFP","PPP", 'F', Blocks.furnace, 'P', new ItemStack(ConfigItems.itemSheet, 1, 4)});
+		GameRegistry.addShapedRecipe(new ItemStack(ConfigBlocks.blockIntake), new Object[]{"PGP","G G","PGP", 'G', new ItemStack(ConfigItems.itemMachinePart, 1, 5), 'P', new ItemStack(ConfigItems.itemSheet, 1, 4)});
+		GameRegistry.addShapedRecipe(new ItemStack(ConfigBlocks.blockIntake), new Object[]{"UUU","UUU","UUU", 'U', new ItemStack(ConfigItems.itemResource, 1, 4)});
 		//GameRegistry.addShapedRecipe(new ItemStack(ConfigBlocks.blockCopperTank), new Object[]{"PPP","P P","PPP", 'P', new ItemStack(ConfigItems.itemSheet, 1, 1)});
 	}
 
 	private static void initOtherRecipes()
 	{
 		GameRegistry.addShapelessRecipe(new ItemStack(ConfigItems.itemResource, 4, 3), new Object[]{Blocks.obsidian});
+
+		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.itemSteelParts, 1, 0), new Object[]{" P ", "PPP", " P ", 'P', new ItemStack(ConfigItems.itemSheet, 1, 6)});
+
+		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.itemMachinePart, 1, 5), new Object[]{"P P", " P ", "P P", 'P', new ItemStack(ConfigItems.itemSheet, 1, 6)});
 
 		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.itemCanisterSteam), new Object[]{"PPP","GGG","PPP", 'G', Blocks.glass_pane, 'P', new ItemStack(ConfigItems.itemSheet, 1, 4)});
 
@@ -207,7 +213,7 @@ public class ConfigRecipes
 		//Bronze Powder
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ConfigItems.itemPowder, 3, 5), new Object[] {"dustCopper", "dustCopper", "dustTin"}));
 		//Steel Powder
-		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.itemPowder, 1, 6), new Object[]{" C ", "CIC", " C ", 'C', new ItemStack(Items.coal), 'I', new ItemStack(Items.iron_ingot)});
+		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.itemPowder, 2, 6), new Object[]{" C ", "CIC", " C ", 'C', new ItemStack(Items.coal), 'I', new ItemStack(Items.iron_ingot)});
 		GameRegistry.addShapelessRecipe(new ItemStack(ConfigItems.itemMatch), new Object[]{new ItemStack(ConfigItems.itemResource, 1, 4), new ItemStack(Items.stick)});
 	}
 
