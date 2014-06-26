@@ -121,22 +121,15 @@ public class BlockCustomOre extends BaseBlock implements IHammerable
 
         switch (metadata) {
         	case 4:
-        		//drop.remove(0);
-        		//if(drop.size() == 0)
         		drop.add(new ItemStack(ConfigItems.itemResource, 1, 4));
         		break;
             case 5:
-            	//drop.remove(0);
-            	//if(drop.size() == 0)
                 drop.add(new ItemStack(ConfigItems.itemResource, 1, 1));
                 break;
             case 6:
-            	//drop.remove(0);
-            	//if(drop.size() == 0)
             	drop.add(new ItemStack(ConfigItems.itemResource, 1, 3));
             	break;
              default:
-            	//if(drop.size() == 0)
             	drop.add(0, new ItemStack(ConfigBlocks.blockCustomOre, 1, metadata));
             	break;
         }

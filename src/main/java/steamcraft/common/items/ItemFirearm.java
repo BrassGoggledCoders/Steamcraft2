@@ -20,6 +20,7 @@ package steamcraft.common.items;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
+import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -84,18 +85,6 @@ public class ItemFirearm extends BaseItem
 					world.playSoundAtEntity(player, this.reloadSound, 0.8F, 1.0F);
 
 			}
-			else if(tag.getBoolean("canFire"))
-			{
-				if (stack.getTagCompound().getShort("reloadTime") == 0 && player.inventory.hasItem(Items.gunpowder) && player.inventory.hasItem(ammo))
-					if(twoAmmo)
-					{
-						if(player.inventory.hasItem(ammo2))
-							shotBullet(stack, world, player);
-							player.inventory.consumeInventoryItem(ammo2);
-					}
-					else
-						shotBullet(stack, world, player);
-			}
 		}
 	}
 
@@ -125,9 +114,6 @@ public class ItemFirearm extends BaseItem
 
 		player.inventory.consumeInventoryItem(ammo);
 		player.inventory.consumeInventoryItem(Items.gunpowder);
-
-		if(twoAmmo)
-			player.inventory.consumeInventoryItem(ammo2);
 
 
 		if (!world.isRemote)
