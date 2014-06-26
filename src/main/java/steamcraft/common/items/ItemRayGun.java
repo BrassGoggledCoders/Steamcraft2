@@ -1,8 +1,21 @@
-/*
- * 
+/**
+ * This class was created by BrassGoggledCoders modding team. 
+ * This class is available as part of the Steamcraft 2 Mod for Minecraft.
+ *
+ * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
+ * (http://www.mod-buildcraft.com/MMPL-1.0.txt)
+ *
+ * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
+ * Steamcraft (c) Proloe 2011
+ * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
+ *
+ * File created @ [Jun 23, 2014, 10:51:48 PM]
  */
 package steamcraft.common.items;
 
+/**
+ * @author Surseance
+ */
 import java.awt.Color;
 import java.util.HashMap;
 import java.util.Random;
@@ -18,55 +31,26 @@ import steamcraft.common.lib.LibInfo;
 import boilerplate.common.utils.PlayerUtils;
 import boilerplate.common.utils.Utils;
 
-// TODO: Auto-generated Javadoc
-/**
- * The Class ItemRayGun.
- */
 public class ItemRayGun extends BaseItem
 {
-
-	/** The ray sound. */
-	String raySound;
-
-	/** The random. */
 	private Random random = new Random();
 
-	/** The ray. */
-	@SuppressWarnings("all")
-	static HashMap<String, Object> ray = new HashMap();
+	static HashMap<String, Object> ray = new HashMap<String, Object>();
+	static HashMap<String, Long> soundDelay = new HashMap<String, Long>();
 
-	/** The sound delay. */
-	@SuppressWarnings("all")
-	static HashMap<String, Long> soundDelay = new HashMap();
-
-	/**
-	 * Instantiates a new item ray gun.
-	 * 
-	 * @param raySound
-	 *            the ray sound
-	 */
 	public ItemRayGun(String raySound)
 	{
 		super();
-		this.raySound = raySound;
-		setMaxDamage(300);
-		setMaxStackSize(1);
-		setUnlocalizedName("itemRaygun");
+		this.setMaxDamage(300);
+		this.setMaxStackSize(1);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * net.minecraft.item.Item#onItemRightClick(net.minecraft.item.ItemStack,
-	 * net.minecraft.world.World, net.minecraft.entity.player.EntityPlayer)
-	 */
 	@SuppressWarnings("all")
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
 	{
-		MovingObjectPosition mop = PlayerUtils.getTargetBlock(world, player, false); // Grabs
-																						// vector
+		MovingObjectPosition mop = PlayerUtils.getTargetBlock(world, player, false); // Grabs vector
+
 		Vec3 vec3 = player.getLookVec();
 		double tx = player.posX + vec3.xCoord * 10.0D;
 		double ty = player.posY + vec3.yCoord * 10.0D;
@@ -86,7 +70,8 @@ public class ItemRayGun extends BaseItem
 		{
 			soundDelay.put(player.getCommandSenderName(), Long.valueOf(0L));
 		}
-		if ((!world.isRemote) && (soundDelay.get(player.getCommandSenderName()).longValue() < System.currentTimeMillis()))
+
+		if (!world.isRemote && soundDelay.get(player.getCommandSenderName()).longValue() < System.currentTimeMillis())
 		{
 			world.playSoundEffect(tx, ty, tz, LibInfo.PREFIX + "raygun", 0.35F, 1.0F);
 			soundDelay.put(player.getCommandSenderName(), Long.valueOf(System.currentTimeMillis() + 1200L));
@@ -103,11 +88,8 @@ public class ItemRayGun extends BaseItem
 
 		// Couldn't get this shit to work...maybe I was just having a bad day
 		/*
-		 * if(mop != null && mop.typeOfHit == EnumMovingObjectType.ENTITY) {
-		 * if(!(mop.entityHit instanceof EntityEnderman)) {
-		 * //mop.entityHit.setFire(500); System.out.println(mop.entityHit);
-		 * //DamageSource damage = DamageSource.causePlayerDamage(player);
-		 * stack.damageItem(1, player); } }
+		 * if(mop != null && mop.typeOfHit == EnumMovingObjectType.ENTITY) { if(!(mop.entityHit instanceof EntityEnderman)) { //mop.entityHit.setFire(500);
+		 * System.out.println(mop.entityHit); //DamageSource damage = DamageSource.causePlayerDamage(player); stack.damageItem(1, player); } }
 		 */
 		if (mop != null && mop.typeOfHit == MovingObjectPosition.MovingObjectType.BLOCK)
 		{
@@ -116,22 +98,14 @@ public class ItemRayGun extends BaseItem
 			int z = mop.blockZ;
 			// this.spawnParticles(world, x, y, z);
 
-			if (!world.isAirBlock(x, y, z) /* This bit is pretty important! */
-					&& !Utils.getBlockUnbreakable(world, x, y, z)) // Causes
-																	// unceremonious
-																	// destruction
-																	// & havoc
-																	// all over
-																	// the
-																	// place!
+			if (!world.isRemote && !world.isAirBlock(x, y, z) /* This bit is pretty important! */
+					&& !Utils.getBlockUnbreakable(world, x, y, z)) // Causes unceremonious destruction & havocall over the place!
 			{
-				// int randomInt = random.nextInt(5);
-
-				for (int i = x - random.nextInt(3); i < x + random.nextInt(3); i++)
+				for (int i = x - this.random.nextInt(3); i < x + this.random.nextInt(3); i++)
 				{
-					for (int j = y - random.nextInt(3); j < y + random.nextInt(3); j++)
+					for (int j = y - this.random.nextInt(3); j < y + this.random.nextInt(3); j++)
 					{
-						for (int k = z - random.nextInt(3); k < z + random.nextInt(3); k++)
+						for (int k = z - this.random.nextInt(3); k < z + this.random.nextInt(3); k++)
 						{
 							if (world.isAirBlock(i, j, k))
 							{

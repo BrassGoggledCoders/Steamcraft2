@@ -413,7 +413,7 @@ public class ConfigItems
 		itemPoppySeed = new BaseItem().setUnlocalizedName("itemPoppySeed").setCreativeTab(Steamcraft.tabSC2);
 		registerItem(itemPoppySeed, "ItemPoppySeed");
 
-		itemRayGun = new ItemRayGun(LibInfo.PREFIX + "raygun");
+		itemRayGun = new ItemRayGun(LibInfo.PREFIX + "raygun").setUnlocalizedName("itemRaygun");;
 		itemShrinkray = new ItemShrinkray(LibInfo.PREFIX + "shrinkray");
 
 		registerItem(itemRayGun, "ItemRayGun");

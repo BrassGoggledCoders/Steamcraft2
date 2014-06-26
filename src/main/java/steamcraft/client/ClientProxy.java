@@ -106,6 +106,7 @@ public class ClientProxy extends CommonProxy
 				ConfigBlocks.blockCastIronLampRI = RenderingRegistry.getNextAvailableRenderId();
 				ClientRegistry.bindTileEntitySpecialRenderer(TileCastIronLamp.class, new TileCastIronLampRenderer());
 				RenderingRegistry.registerBlockHandler(new BlockCastIronLampRenderer());
+				
 		RenderingRegistry.registerEntityRenderingHandler(EntityBullet.class, new RenderSnowball(ConfigItems.itemMusketBall));
 	}
 
