@@ -61,6 +61,14 @@ public class CompatabilityLayer
 		OreDictionary.registerOre("nuggetBronze", new ItemStack(ConfigItems.itemNugget, 1, 5));
 		OreDictionary.registerOre("nuggetCastIron", new ItemStack(ConfigItems.itemNugget, 1, 6));
 
+		OreDictHelper.registerOreWithAlts(new String[]{"dustAluminum", "dustAluminium"}, new ItemStack(ConfigItems.itemPowder, 1, 0));
+		OreDictionary.registerOre("dustCopper", new ItemStack(ConfigItems.itemPowder, 1, 1));
+		OreDictionary.registerOre("dustTin", new ItemStack(ConfigItems.itemPowder, 1, 2));
+		OreDictionary.registerOre("dustZinc", new ItemStack(ConfigItems.itemPowder, 1, 3));
+		OreDictionary.registerOre("dustBrass", new ItemStack(ConfigItems.itemPowder, 1, 4));
+		OreDictionary.registerOre("dustBronze", new ItemStack(ConfigItems.itemPowder, 1, 5));
+		OreDictionary.registerOre("dustCastIron", new ItemStack(ConfigItems.itemPowder, 1, 6));
+
 		OreDictHelper.registerOreWithAlts(new String[]{"oreAluminum", "oreAluminium"}, new ItemStack(ConfigBlocks.blockCustomOre, 1, 0));
 		OreDictionary.registerOre("oreCopper", new ItemStack(ConfigBlocks.blockCustomOre, 1, 1));
 		OreDictionary.registerOre("oreTin", new ItemStack(ConfigBlocks.blockCustomOre, 1, 2));
