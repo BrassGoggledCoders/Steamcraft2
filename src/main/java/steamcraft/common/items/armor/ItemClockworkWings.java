@@ -17,11 +17,13 @@ import java.util.List;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBiped;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import steamcraft.common.Steamcraft;
+import steamcraft.common.lib.LibInfo;
 import boilerplate.client.ClientHelper;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -136,5 +138,10 @@ public class ItemClockworkWings extends BaseArmor
 		}
 
 		return null;
+	}
+	@Override
+	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
+	{
+		return LibInfo.PREFIX + "textures/armor/brasswings.png";
 	}
 }

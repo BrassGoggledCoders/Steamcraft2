@@ -13,6 +13,9 @@
  */
 package steamcraft.common.lib;
 
+import java.util.Collections;
+import java.util.List;
+
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import steamcraft.common.config.ConfigItems;
@@ -22,7 +25,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 // TODO: Auto-generated Javadoc
 /**
  * The Class CreativeTabSteamcraft.
- * 
+ *
  * @author Surseance (Johnny Eatmon)
  */
 public class CreativeTabSteamcraft extends CreativeTabs
@@ -30,7 +33,7 @@ public class CreativeTabSteamcraft extends CreativeTabs
 
 	/**
 	 * Instantiates a new creative tab steamcraft.
-	 * 
+	 *
 	 * @param id
 	 *            the id
 	 * @param name
@@ -43,7 +46,7 @@ public class CreativeTabSteamcraft extends CreativeTabs
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.minecraft.creativetab.CreativeTabs#getTabIconItem()
 	 */
 	@Override

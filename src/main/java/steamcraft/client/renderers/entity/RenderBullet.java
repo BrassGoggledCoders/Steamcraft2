@@ -78,7 +78,6 @@ public class RenderBullet extends Render
 		final float f7 = 0.15625F;
 		final float f8 = (5 + i * 10) / 32F;
 		final float f9 = (10 + i * 10) / 32F;
-		//final float f10 = 0.05625F; TODO
 		final float f10 = 1F;
 		GL11.glEnable(32826 /* GL_RESCALE_NORMAL_EXT */);
 		final float f11 = 1.0F - frotP;
