@@ -1,5 +1,15 @@
-/*
- * 
+/**
+ * This class was created by BrassGoggledCoders modding team. 
+ * This class is available as part of the Steamcraft 2 Mod for Minecraft.
+ *
+ * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
+ * (http://www.mod-buildcraft.com/MMPL-1.0.txt)
+ *
+ * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
+ * Steamcraft (c) Proloe 2011
+ * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
+ *
+ * File created @ [Jun 23, 2014, 10:51:48 PM]
  */
 package steamcraft.common.items;
 
@@ -17,53 +27,27 @@ import boilerplate.common.entity.EntityMinedBlock;
 import boilerplate.common.utils.PlayerUtils;
 import boilerplate.common.utils.Utils;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class ItemShrinkray.
+ * @author Surseance
  */
 public class ItemShrinkray extends BaseItem
 {
+	static HashMap<String, Object> ray = new HashMap<String, Object>();
+	static HashMap<String, Long> soundDelay = new HashMap<String, Long>();
 
-	/** The ray sound. */
-	String raySound;
-
-	/** The ray. */
-	@SuppressWarnings("all")
-	static HashMap<String, Object> ray = new HashMap();
-
-	/** The sound delay. */
-	@SuppressWarnings("all")
-	static HashMap<String, Long> soundDelay = new HashMap();
-
-	/**
-	 * Instantiates a new item shrinkray.
-	 * 
-	 * @param raySound
-	 *            the ray sound
-	 */
 	public ItemShrinkray(String raySound)
 	{
 		super();
-		this.raySound = raySound;
-		setCreativeTab(Steamcraft.tabSC2);
 		setMaxDamage(150);
 		setMaxStackSize(1);
-		setUnlocalizedName("itemShrinkray");
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * net.minecraft.item.Item#onItemRightClick(net.minecraft.item.ItemStack,
-	 * net.minecraft.world.World, net.minecraft.entity.player.EntityPlayer)
-	 */
 	@SuppressWarnings("all")
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
 	{
-		MovingObjectPosition mop = PlayerUtils.getTargetBlock(world, player, false); // Grabs
-																						// vector
+		MovingObjectPosition mop = PlayerUtils.getTargetBlock(world, player, false); // Grabs vector
+		
 		Vec3 vec3 = player.getLookVec();
 		double tx = player.posX + vec3.xCoord * 10.0D;
 		double ty = player.posY + vec3.yCoord * 10.0D;

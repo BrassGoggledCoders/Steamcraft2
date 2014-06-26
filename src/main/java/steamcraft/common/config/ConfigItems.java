@@ -414,7 +414,7 @@ public class ConfigItems
 		registerItem(itemPoppySeed, "ItemPoppySeed");
 
 		itemRayGun = new ItemRayGun(LibInfo.PREFIX + "raygun").setUnlocalizedName("itemRaygun");;
-		itemShrinkray = new ItemShrinkray(LibInfo.PREFIX + "shrinkray");
+		itemShrinkray = new ItemShrinkray(LibInfo.PREFIX + "shrinkray").setUnlocalizedName("itemShrinkray");;
 
 		registerItem(itemRayGun, "ItemRayGun");
 		registerItem(itemShrinkray, "ItemShrinkray");
