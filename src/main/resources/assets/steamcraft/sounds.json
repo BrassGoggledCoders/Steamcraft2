@@ -26,12 +26,39 @@
         ]
     },
     
+    "rifle":
+    {
+        "category": "rifle",
+        "sounds":
+        [
+			"musket"
+        ]
+    },
+    
     "reload":
     {
         "category": "block",
         "sounds":
         [
 			"reload"
+        ]
+    },
+    
+    "hitflesh":
+    {
+        "category": "block",
+        "sounds":
+        [
+			"hitflesh"
+        ]
+    },
+    
+    "hitblock":
+    {
+        "category": "block",
+        "sounds":
+        [
+			"hitblock"
         ]
     }
 }
