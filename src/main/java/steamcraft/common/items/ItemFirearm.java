@@ -107,7 +107,6 @@ public class ItemFirearm extends BaseItem
 	{
 		NBTTagCompound tag = stack.getTagCompound();
 		tag.setShort("reloadTime", reloadTime);
-		//tag.setBoolean("canFire", false);
 		
 		stack.setTagCompound(tag);
 
