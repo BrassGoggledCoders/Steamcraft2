@@ -1,5 +1,5 @@
 /**
- * This class was created by BrassGoggledCoders modding team. 
+ * This class was created by BrassGoggledCoders modding team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -25,7 +25,6 @@ import steamcraft.common.items.ItemFirearm;
 import steamcraft.common.items.ItemIngot;
 import steamcraft.common.items.ItemMachinePart;
 import steamcraft.common.items.ItemMatch;
-import steamcraft.common.items.ItemMultiParts;
 import steamcraft.common.items.ItemNugget;
 import steamcraft.common.items.ItemParts;
 import steamcraft.common.items.ItemPipe;
@@ -165,7 +164,6 @@ public class ConfigItems
 
 	public static Item itemMachinePart;
 	public static Item itemCopperParts, itemBrassParts, itemSteelParts, itemIronParts;
-	public static Item itemCopperMultiParts, itemBrassMultiParts, itemSteelMultiParts, itemIronMultiParts;
 
 	/* Init */
 	public static void init()
@@ -346,8 +344,8 @@ public class ConfigItems
 		registerItem(flintlockRifle, "ItemFlintlockRifle");
 		registerItem(matchlockRifle, "ItemMatchlockRifle");
 		registerItem(percussionCapRifle, "ItemPercussionCapRifle");
-		
-		
+
+
 		itemRayGun = new ItemRayGun(LibInfo.PREFIX + "raygun").setUnlocalizedName("itemRaygun");;
 		itemShrinkray = new ItemShrinkray(LibInfo.PREFIX + "shrinkray").setUnlocalizedName("itemShrinkray");;
 
@@ -379,17 +377,6 @@ public class ConfigItems
 		registerItem(itemIronParts, "ItemIronParts");
 		registerItem(itemBrassParts, "ItemBrassParts");
 		registerItem(itemSteelParts, "ItemSteelParts");
-
-		// Multi
-		itemCopperMultiParts = ((ItemMultiParts) new ItemMultiParts().setUnlocalizedName("itemMultiPartsCopper")).setMaterial("copper");
-		itemIronMultiParts = ((ItemMultiParts) new ItemMultiParts().setUnlocalizedName("itemMultiPartsIron")).setMaterial("iron");
-		itemBrassMultiParts = ((ItemMultiParts) new ItemMultiParts().setUnlocalizedName("itemMultiPartsBrass")).setMaterial("brass");
-		itemSteelMultiParts = ((ItemMultiParts) new ItemMultiParts().setUnlocalizedName("itemMultiPartsSteel")).setMaterial("steel");
-
-		registerItem(itemCopperMultiParts, "ItemCopperMultiParts");
-		registerItem(itemIronMultiParts, "ItemIronMultiParts");
-		registerItem(itemBrassMultiParts, "ItemBrassMultiParts");
-		registerItem(itemSteelMultiParts, "ItemSteelMultiParts");
 	}
 
 	private static void initializeOthers()

@@ -35,7 +35,7 @@ public class ItemParts extends BaseItemWithMetadata
 {
 	// @SideOnly(Side.CLIENT)
 	/** The item icon. */
-	IIcon[] itemIcon = new IIcon[11];
+	IIcon[] itemIcon = new IIcon[10];
 	private String material;
 	/*
 	 * (non-Javadoc)
@@ -55,10 +55,9 @@ public class ItemParts extends BaseItemWithMetadata
 		itemIcon[4] = ir.registerIcon(LibInfo.PREFIX + "parts/"+ "item" + getMaterial() + "Nut");
 		itemIcon[5] = ir.registerIcon(LibInfo.PREFIX + "parts/"+ "item" + getMaterial() + "Bolt");
 		itemIcon[6] = ir.registerIcon(LibInfo.PREFIX + "parts/"+ "item" + getMaterial() + "Washer");
-		itemIcon[7] = ir.registerIcon(LibInfo.PREFIX + "parts/"+ "item" + getMaterial() + "Wire");
-		itemIcon[8] = ir.registerIcon(LibInfo.PREFIX + "parts/"+ "item" + getMaterial() + "Bearing");
-		itemIcon[9] = ir.registerIcon(LibInfo.PREFIX + "parts/"+ "item" + getMaterial() + "Screw");
-		itemIcon[10] = ir.registerIcon(LibInfo.PREFIX + "parts/"+ "item" + getMaterial() + "Nail");
+		itemIcon[7] = ir.registerIcon(LibInfo.PREFIX + "parts/"+ "item" + getMaterial() + "Bearing");
+		itemIcon[8] = ir.registerIcon(LibInfo.PREFIX + "parts/"+ "item" + getMaterial() + "Screw");
+		itemIcon[9] = ir.registerIcon(LibInfo.PREFIX + "parts/"+ "item" + getMaterial() + "Nail");
 	}
 
 	/**

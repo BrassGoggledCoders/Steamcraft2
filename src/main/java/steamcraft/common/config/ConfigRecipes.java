@@ -150,7 +150,7 @@ public class ConfigRecipes
 	{
 		//Drills
 
-		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.drillBase), new Object[]{"   ","IGI","III", 'I', new ItemStack(ConfigItems.itemIngot,1, 7), 'G', new ItemStack(ConfigItems.itemSteelMultiParts, 1, 0)});
+		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.drillBase), new Object[]{"   ","IGI","III", 'I', new ItemStack(ConfigItems.itemIngot,1, 7), 'G', new ItemStack(ConfigItems.itemSteelParts, 1, 0)});
 		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.drillCore), new Object[]{" D ","DDD"," B ", 'B', ConfigItems.drillBase, 'D', new ItemStack(ConfigItems.itemIngot, 1, 6)});
 
 		ItemStack[] drillMaterials = new ItemStack[]{new ItemStack(Items.diamond, 1), new ItemStack(ConfigItems.itemResource, 1, 0), new ItemStack(Items.gold_ingot, 1), new ItemStack(Items.iron_ingot, 1), new ItemStack(ConfigItems.itemResource, 1, 3), new ItemStack(ConfigItems.itemIngot, 1, 4), new ItemStack(Blocks.stone, 1), new ItemStack(Blocks.planks, 1)};

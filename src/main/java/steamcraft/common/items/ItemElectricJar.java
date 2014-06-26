@@ -39,10 +39,10 @@ public class ItemElectricJar extends BaseItem implements IEnergyContainerItem
 	 @SideOnly(Side.CLIENT)
 	 public IIcon getIconFromDamage(int damage)
 	 {
-		 if(damage == 0)
-			 return fullIcon;
-		 else if(damage == this.getMaxDamage())
-			 return emptyIcon;
+		// if(damage == 0)
+		//	 return fullIcon;
+		// else if(damage == this.getMaxDamage())
+		//	 return emptyIcon;
 		 return this.itemIcon;
 	 }
 		@SuppressWarnings("all")
