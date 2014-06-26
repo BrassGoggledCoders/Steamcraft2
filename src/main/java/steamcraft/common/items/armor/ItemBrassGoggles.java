@@ -1,9 +1,14 @@
 /*
- * 
+ *
  */
-package steamcraft.common.items;
+package steamcraft.common.items.armor;
 
-import steamcraft.common.items.armor.BaseArmor;
+import net.minecraft.entity.Entity;
+import net.minecraft.item.ItemStack;
+import steamcraft.common.lib.LibInfo;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 
 // TODO: Auto-generated Javadoc
 /**
@@ -14,7 +19,7 @@ public class ItemBrassGoggles extends BaseArmor
 
 	/**
 	 * Instantiates a new item brass goggles.
-	 * 
+	 *
 	 * @param mat
 	 *            the mat
 	 * @param p_i45325_2_
@@ -27,5 +32,11 @@ public class ItemBrassGoggles extends BaseArmor
 		super(mat, p_i45325_2_, p_i45325_3_);
 		setMaxStackSize(1);
 		setUnlocalizedName("itemBrassGoggles");
+	}
+	@Override
+	@SideOnly(Side.CLIENT)
+	public String getArmorTexture(ItemStack is, Entity entity, int slot, String type)
+	{
+		return LibInfo.PREFIX + "textures/armor/goggles.png";
 	}
 }

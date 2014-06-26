@@ -32,9 +32,9 @@ public class ItemElectricJar extends BaseItem implements IEnergyContainerItem
 	@Override
 	public void registerIcons(IIconRegister par1IconRegister)
 	{
-		emptyIcon = par1IconRegister.registerIcon(LibInfo.PREFIX + "itemElectricJarEmpty");
-		itemIcon = par1IconRegister.registerIcon(LibInfo.PREFIX + "itemElectricJarHalf");
-		fullIcon = par1IconRegister.registerIcon(LibInfo.PREFIX + "itemElectricJarFull");
+		//emptyIcon = par1IconRegister.registerIcon(LibInfo.PREFIX + "itemElectricJarEmpty");
+		itemIcon = par1IconRegister.registerIcon(LibInfo.PREFIX + "itemElectricJar");
+		//fullIcon = par1IconRegister.registerIcon(LibInfo.PREFIX + "itemElectricJarFull");
 	}
 	 @SideOnly(Side.CLIENT)
 	 public IIcon getIconFromDamage(int damage)
