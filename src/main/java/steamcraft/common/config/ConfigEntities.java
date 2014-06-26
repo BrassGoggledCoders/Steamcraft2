@@ -1,5 +1,5 @@
 /**
- * This class was created by <Surseance> or his SC2 development team. 
+ * This class was created by <Surseance> or his SC2 development team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -13,13 +13,14 @@
  */
 package steamcraft.common.config;
 
+import steamcraft.common.Steamcraft;
 import steamcraft.common.entities.projectile.EntityBullet;
 import cpw.mods.fml.common.registry.EntityRegistry;
 
 // TODO: Auto-generated Javadoc
 /**
  * The Class ConfigEntities.
- * 
+ *
  * @author Surseance (Johnny Eatmon)
  */
 public class ConfigEntities
@@ -30,9 +31,14 @@ public class ConfigEntities
 	 */
 	public static void init()
 	{
-		EntityRegistry.registerGlobalEntityID(EntityBullet.class, "Bullet", EntityRegistry.findGlobalUniqueEntityId());
-		// EntityRegistry.registerModEntity(EntityBullet.class, "Bullet",
-		// Config.entBulletId, Steamcraft.instance, 64, 20, true);
+		registerEntities();
+		//Should NEVER register entities globally
+		//EntityRegistry.registerGlobalEntityID(EntityBullet.class, "Bullet", EntityRegistry.findGlobalUniqueEntityId());
+	}
+
+	private static void registerEntities()
+	{
+		EntityRegistry.registerModEntity(EntityBullet.class, "Bullet", Config.entBulletId, Steamcraft.instance, 64, 20, true);
 	}
 
 	/**

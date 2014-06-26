@@ -199,7 +199,7 @@ public class EntityBullet extends Entity implements IProjectile
 		motionX = -MathHelper.sin(rotationYaw / 180.0F * (float) Math.PI) * MathHelper.cos(rotationPitch / 180.0F * (float) Math.PI);
 		motionZ = MathHelper.cos(rotationYaw / 180.0F * (float) Math.PI) * MathHelper.cos(rotationPitch / 180.0F * (float) Math.PI);
 		motionY = (-MathHelper.sin(rotationPitch / 180.0F * (float) Math.PI));
-		setThrowableHeading(motionX, motionY, motionZ, 1.5F, accuracy);
+		setThrowableHeading(motionX, motionY, motionZ, 1F, accuracy);
 		this.accuracy = accuracy;
 		this.damage = damage;
 	}

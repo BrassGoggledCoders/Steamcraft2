@@ -24,6 +24,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
+import steamcraft.common.config.ConfigItems;
 import steamcraft.common.entities.projectile.EntityBullet;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -130,7 +131,10 @@ public class ItemFirearm extends BaseItem
 
 
 		if (!world.isRemote)
-			world.spawnEntityInWorld(new EntityBullet(world, player, this.damage, 1));
+			if(this.ammo == ConfigItems.itemMusketBall)
+			world.spawnEntityInWorld(new EntityBullet(world, player, this.damage, 8));
+			else
+			world.spawnEntityInWorld(new EntityBullet(world, player, this.damage, 15));
 
 		world.playSoundAtEntity(player, this.fireSound, 0.6F, 1.0F);
 	}

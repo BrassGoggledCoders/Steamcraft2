@@ -1,5 +1,5 @@
 /**
- * This class was created by <Surseance> or his SC2 development team. 
+ * This class was created by <Surseance> or his SC2 development team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -29,7 +29,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 // TODO: Auto-generated Javadoc
 /**
  * The Class RenderBullet.
- * 
+ *
  * @author Surseance (Johnny Eatmon)
  */
 @SideOnly(Side.CLIENT)
@@ -41,7 +41,7 @@ public class RenderBullet extends Render
 
 	/**
 	 * Render bullet.
-	 * 
+	 *
 	 * @param bullet
 	 *            the bullet
 	 * @param dx
@@ -78,7 +78,8 @@ public class RenderBullet extends Render
 		final float f7 = 0.15625F;
 		final float f8 = (5 + i * 10) / 32F;
 		final float f9 = (10 + i * 10) / 32F;
-		final float f10 = 0.05625F;
+		//final float f10 = 0.05625F; TODO
+		final float f10 = 1F;
 		GL11.glEnable(32826 /* GL_RESCALE_NORMAL_EXT */);
 		final float f11 = 1.0F - frotP;
 
@@ -124,7 +125,7 @@ public class RenderBullet extends Render
 
 	/**
 	 * Gets the bullet texture.
-	 * 
+	 *
 	 * @param bullet
 	 *            the bullet
 	 * @return the bullet texture
@@ -136,7 +137,7 @@ public class RenderBullet extends Render
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.minecraft.client.renderer.entity.Render#getEntityTexture(net.minecraft
 	 * .entity.Entity)
@@ -149,7 +150,7 @@ public class RenderBullet extends Render
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.minecraft.client.renderer.entity.Render#doRender(net.minecraft.entity
 	 * .Entity, double, double, double, float, float)

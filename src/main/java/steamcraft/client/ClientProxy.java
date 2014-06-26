@@ -17,12 +17,12 @@ import java.awt.Color;
 
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.multiplayer.WorldClient;
-import net.minecraft.client.renderer.entity.RenderSnowball;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 import steamcraft.client.renderers.block.BlockCastIronLampRenderer;
 import steamcraft.client.renderers.block.BlockCrystalRenderer;
 import steamcraft.client.renderers.block.BlockHatchRenderer;
+import steamcraft.client.renderers.entity.RenderBullet;
 import steamcraft.client.renderers.item.ModelBrassWings;
 import steamcraft.client.renderers.tile.TileCastIronLampRenderer;
 import steamcraft.client.renderers.tile.TileCrystalRenderer;
@@ -31,7 +31,6 @@ import steamcraft.common.CommonProxy;
 import steamcraft.common.KeyBindings;
 import steamcraft.common.KeyInputHandler;
 import steamcraft.common.config.ConfigBlocks;
-import steamcraft.common.config.ConfigItems;
 import steamcraft.common.entities.projectile.EntityBullet;
 import steamcraft.common.lib.Utils;
 import steamcraft.common.lib.events.EventHandlerDrawHighlight;
@@ -98,7 +97,8 @@ public class ClientProxy extends CommonProxy
 		RenderingRegistry.registerBlockHandler(new BlockHatchRenderer());
 
 		// TODO: Should be in boilerplate
-				RenderingRegistry.registerEntityRenderingHandler(EntityMinedBlock.class, new RenderMinedBlock());
+		RenderingRegistry.registerEntityRenderingHandler(EntityMinedBlock.class, new RenderMinedBlock());
+
 				ConfigBlocks.blockCrystalRI = RenderingRegistry.getNextAvailableRenderId();
 				ClientRegistry.bindTileEntitySpecialRenderer(TileCrystal.class, new TileCrystalRenderer());
 				RenderingRegistry.registerBlockHandler(new BlockCrystalRenderer());
@@ -106,8 +106,8 @@ public class ClientProxy extends CommonProxy
 				ConfigBlocks.blockCastIronLampRI = RenderingRegistry.getNextAvailableRenderId();
 				ClientRegistry.bindTileEntitySpecialRenderer(TileCastIronLamp.class, new TileCastIronLampRenderer());
 				RenderingRegistry.registerBlockHandler(new BlockCastIronLampRenderer());
-				
-		
+
+		RenderingRegistry.registerEntityRenderingHandler(EntityBullet.class, new RenderBullet());
 	}
 
 	/*
