@@ -26,7 +26,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  * @author Surseance (Johnny Eatmon) & Falkok15
  */
 @SideOnly(Side.CLIENT)
-public class ModelBrassWings extends ModelBiped
+public class ModelJetpack extends ModelBiped
 {
 
 	/** The Shape1. */
@@ -80,129 +80,39 @@ public class ModelBrassWings extends ModelBiped
 	 * @param f
 	 *            the f
 	 */
-	public ModelBrassWings(final float f)
+	public ModelJetpack(final float f)
 	{
 		super(f, 0, 64, 32);
 		// textureWidth = 64; <-- these things are bullshit, they do nothing
 		// useful
 		// textureHeight = 32;
 		Shape1 = new ModelRenderer(this, 0, 0);
-		Shape1.addBox(0F, 0F, 0F, 4, 4, 2);
+		Shape1.addBox(5F, 0F, 0F, 4, 6, 2);
 		Shape1.setRotationPoint(-2F, 0F, 2F);
 		// Shape1.setRotationPoint(0F, 0F, 0F);
 		Shape1.setTextureSize(64, 32);
 		Shape1.mirror = true;
 		setRotation(Shape1, 0F, 0F, 0F);
-		Shape2 = new ModelRenderer(this, 12, 0);
-		Shape2.addBox(0F, 0F, 0F, 3, 1, 1);
-		Shape2.setRotationPoint(1.5F, 0.5F, 2.5F);
+		Shape2 = new ModelRenderer(this, 0, 0);
+		Shape2.addBox(-5F, 0F, 0F, 4, 6, 2);
+		Shape2.setRotationPoint(-2F, 0F, 2F);
+		// Shape1.setRotationPoint(0F, 0F, 0F);
 		Shape2.setTextureSize(64, 32);
 		Shape2.mirror = true;
-		setRotation(Shape2, 0F, 0F, -0.4363323F);
-		Shape3 = new ModelRenderer(this, 12, 0);
-		Shape3.addBox(0F, 0F, 0F, 3, 1, 1);
-		Shape3.setRotationPoint(1.5F, 2.5F, 2.5F);
+		setRotation(Shape2, 0F, 0F, 0F);
+		Shape3 = new ModelRenderer(this, 0, 0);
+		Shape3.addBox(-1F, 0F, 0F, 6, 2, 2);
+		Shape3.setRotationPoint(-2F, 0F, 2F);
+		// Shape1.setRotationPoint(0F, 0F, 0F);
 		Shape3.setTextureSize(64, 32);
 		Shape3.mirror = true;
-		setRotation(Shape3, 0F, 0F, -0.4363323F);
-		Shape6 = new ModelRenderer(this, 0, 6);
-		Shape6.addBox(0F, 0F, 0F, 1, 6, 1);
-		Shape6.setRotationPoint(4F, -0.8F, 2.5F);
-		Shape6.setTextureSize(64, 32);
-		Shape6.mirror = true;
-		setRotation(Shape6, 0F, 0F, 0F);
-		Shape7 = new ModelRenderer(this, 4, 6);
-		Shape7.addBox(0F, 0F, 0F, 4, 1, 1);
-		Shape7.setRotationPoint(4F, -1F, 2.5F);
-		Shape7.setTextureSize(64, 32);
-		Shape7.mirror = true;
-		setRotation(Shape7, 0F, 0F, -0.1745329F);
-		Shape4 = new ModelRenderer(this, 12, 2);
-		Shape4.addBox(-3F, 0F, 0F, 3, 1, 1);
-		Shape4.setRotationPoint(-1.5F, 0.5F, 2.5F);
-		Shape4.setTextureSize(64, 32);
-		Shape4.mirror = true;
-		setRotation(Shape4, 0F, 0F, 0.4363323F);
-		Shape5 = new ModelRenderer(this, 12, 2);
-		Shape5.addBox(-3F, 0F, 0F, 3, 1, 1);
-		Shape5.setRotationPoint(-1.5F, 2.5F, 2.5F);
-		Shape5.setTextureSize(64, 32);
-		Shape5.mirror = true;
-		setRotation(Shape5, 0F, 0F, 0.4363323F);
-		// Shape8.mirror = true;
-		Shape8 = new ModelRenderer(this, 0, 6);
-		Shape8.addBox(0F, 0F, 0F, 1, 6, 1);
-		Shape8.setRotationPoint(-5F, -0.8F, 2.5F);
-		Shape8.setTextureSize(64, 32);
-		Shape8.mirror = true;
-		setRotation(Shape8, 0F, 0F, 0F);
-		// Shape8.mirror = false;
-		// Shape9.mirror = true;
-		Shape9 = new ModelRenderer(this, 20, 0);
-		Shape9.addBox(-4F, 0F, 0F, 4, 1, 1);
-		Shape9.setRotationPoint(-4F, -1F, 2.5F);
-		Shape9.setTextureSize(64, 32);
-		Shape9.mirror = true;
-		setRotation(Shape9, 0F, 0F, 0.1745329F);
-		// Shape9.mirror = false;
-		// Shape10.mirror = true;
-		Shape10 = new ModelRenderer(this, 32, 0);
-		Shape10.addBox(0F, 0F, 0F, 4, 10, 0);
-		Shape10.setRotationPoint(4F, -1F, 3F);
-		Shape10.setTextureSize(64, 32);
-		Shape10.mirror = true;
-		setRotation(Shape10, 0F, 0F, 0F);
-		// Shape10.mirror = false;
-		Shape11 = new ModelRenderer(this, 32, 0);
-		Shape11.addBox(0F, 0F, 0F, 4, 10, 0);
-		Shape11.setRotationPoint(-8F, -1F, 3F);
-		Shape11.setTextureSize(64, 32);
-		Shape11.mirror = true;
-		setRotation(Shape11, 0F, 0F, 0F);
-		// Shape12.mirror = true;
-		Shape12 = new ModelRenderer(this, 6, 10);
-		Shape12.addBox(0F, 0F, 0F, 3, 3, 0);
-		Shape12.setRotationPoint(4F, 9F, 3F);
-		Shape12.setTextureSize(64, 32);
-		Shape12.mirror = true;
-		setRotation(Shape12, 0F, 0F, 0F);
-		// Shape12.mirror = false;
-		Shape13 = new ModelRenderer(this, 6, 10);
-		Shape13.addBox(0F, 0F, 0F, 3, 3, 0);
-		Shape13.setRotationPoint(-7F, 9F, 3F);
-		Shape13.setTextureSize(64, 32);
-		Shape13.mirror = true;
-		setRotation(Shape13, 0F, 0F, 0F);
-		Shape15 = new ModelRenderer(this, 20, 6);
-		Shape15.addBox(0F, 0F, 0F, 2, 2, 0);
-		Shape15.setRotationPoint(4F, 12F, 3F);
-		Shape15.setTextureSize(64, 32);
-		Shape15.mirror = true;
-		setRotation(Shape15, 0F, 0F, 0F);
-		// Shape14.mirror = true;
-		Shape14 = new ModelRenderer(this, 20, 6);
-		Shape14.addBox(0F, 0F, 0F, 2, 2, 0);
-		Shape14.setRotationPoint(-6F, 12F, 3F);
-		Shape14.setTextureSize(64, 32);
-		Shape14.mirror = true;
-		setRotation(Shape14, 0F, 0F, 0F);
+		setRotation(Shape3, 0F, 0F, 0F);
+
 		// Shape14.mirror = false;
 
 		bipedBody.addChild(Shape1);
 		bipedBody.addChild(Shape2);
 		bipedBody.addChild(Shape3);
-		bipedBody.addChild(Shape6);
-		bipedBody.addChild(Shape7);
-		bipedBody.addChild(Shape4);
-		bipedBody.addChild(Shape5);
-		bipedBody.addChild(Shape8);
-		bipedBody.addChild(Shape9);
-		bipedBody.addChild(Shape10);
-		bipedBody.addChild(Shape11);
-		bipedBody.addChild(Shape12);
-		bipedBody.addChild(Shape13);
-		bipedBody.addChild(Shape15);
-		bipedBody.addChild(Shape14);
 	}
 
 	/*

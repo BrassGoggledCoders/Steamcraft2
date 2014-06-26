@@ -26,7 +26,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  * @author Surseance (Johnny Eatmon) & Falkok15
  */
 @SideOnly(Side.CLIENT)
-public class ModelBrassWings extends ModelBiped
+public class ModelWingpack extends ModelBiped
 {
 
 	/** The Shape1. */
@@ -69,7 +69,7 @@ public class ModelBrassWings extends ModelBiped
 	ModelRenderer Shape13;
 
 	/** The Shape15. */
-	ModelRenderer Shape15;
+	ModelRenderer Shape15, Shape16, Shape17;
 
 	/** The Shape14. */
 	ModelRenderer Shape14;
@@ -80,7 +80,7 @@ public class ModelBrassWings extends ModelBiped
 	 * @param f
 	 *            the f
 	 */
-	public ModelBrassWings(final float f)
+	public ModelWingpack(final float f)
 	{
 		super(f, 0, 64, 32);
 		// textureWidth = 64; <-- these things are bullshit, they do nothing
@@ -187,6 +187,27 @@ public class ModelBrassWings extends ModelBiped
 		Shape14.mirror = true;
 		setRotation(Shape14, 0F, 0F, 0F);
 		// Shape14.mirror = false;
+		Shape15 = new ModelRenderer(this, 0, 0);
+		Shape15.addBox(5F, 0F, 0F, 4, 6, 2);
+		Shape15.setRotationPoint(-2F, 0F, 2F);
+		// Shape1.setRotationPoint(0F, 0F, 0F);
+		Shape15.setTextureSize(64, 32);
+		Shape15.mirror = true;
+		setRotation(Shape15, 0F, 0F, 0F);
+		Shape16 = new ModelRenderer(this, 0, 0);
+		Shape16.addBox(-5F, 0F, 0F, 4, 6, 2);
+		Shape16.setRotationPoint(-2F, 0F, 2F);
+		// Shape1.setRotationPoint(0F, 0F, 0F);
+		Shape16.setTextureSize(64, 32);
+		Shape16.mirror = true;
+		setRotation(Shape16, 0F, 0F, 0F);
+		Shape17 = new ModelRenderer(this, 0, 0);
+		Shape17.addBox(-1F, 0F, 0F, 6, 2, 2);
+		Shape17.setRotationPoint(-2F, 0F, 2F);
+		// Shape1.setRotationPoint(0F, 0F, 0F);
+		Shape17.setTextureSize(64, 172);
+		Shape17.mirror = true;
+		setRotation(Shape17, 0F, 0F, 0F);
 
 		bipedBody.addChild(Shape1);
 		bipedBody.addChild(Shape2);
@@ -203,6 +224,9 @@ public class ModelBrassWings extends ModelBiped
 		bipedBody.addChild(Shape13);
 		bipedBody.addChild(Shape15);
 		bipedBody.addChild(Shape14);
+		bipedBody.addChild(Shape15);
+		bipedBody.addChild(Shape16);
+		bipedBody.addChild(Shape17);
 	}
 
 	/*

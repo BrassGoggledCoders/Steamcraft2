@@ -24,6 +24,8 @@ import steamcraft.client.renderers.block.BlockCrystalRenderer;
 import steamcraft.client.renderers.block.BlockHatchRenderer;
 import steamcraft.client.renderers.entity.RenderBullet;
 import steamcraft.client.renderers.item.ModelBrassWings;
+import steamcraft.client.renderers.item.ModelJetpack;
+import steamcraft.client.renderers.item.ModelWingpack;
 import steamcraft.client.renderers.tile.TileCastIronLampRenderer;
 import steamcraft.client.renderers.tile.TileCrystalRenderer;
 import steamcraft.client.renderers.tile.TileHatchRenderer;
@@ -242,22 +244,51 @@ public class ClientProxy extends CommonProxy
 	 * return chest2; // Default, if the wrong ID is passed }
 	 */
 
-	private static final ModelBrassWings chest1 = new ModelBrassWings(1.0F);
-	private static final ModelBrassWings legs1 = new ModelBrassWings(0.5F);
-
 	@Override
 	public ModelBiped getWingsArmorModel(int id)
 	{
 		switch (id)
 		{
 			case 0:
-				return chest1;
+				return new ModelBrassWings(1.0F);
 			case 1:
-				return legs1;
+				return new ModelBrassWings(0.5F);
 			default:
 				break;
 		}
 
-		return chest1; // Default, if the wrong ID is passed
+		return new ModelBrassWings(1.0F); // Default, if the wrong ID is passed
+	}
+
+	@Override
+	public ModelBiped getJetpackArmorModel(int id)
+	{
+		switch (id)
+		{
+			case 0:
+				return new ModelJetpack(1.0F);
+			case 1:
+				return new ModelJetpack(0.5F);
+			default:
+				break;
+		}
+
+		return new ModelJetpack(1.0F);
+	}
+
+	@Override
+	public ModelBiped getWingpackArmorModel(int id)
+	{
+		switch (id)
+		{
+			case 0:
+				return new ModelWingpack(1.0F);
+			case 1:
+				return new ModelWingpack(0.5F);
+			default:
+				break;
+		}
+
+		return new ModelWingpack(1.0F);
 	}
 }

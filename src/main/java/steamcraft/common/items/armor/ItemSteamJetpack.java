@@ -1,5 +1,5 @@
 /**
- * This class was created by BrassGoggledCoders modding team. 
+ * This class was created by BrassGoggledCoders modding team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -17,6 +17,7 @@ import java.util.List;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBiped;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -28,12 +29,13 @@ import org.lwjgl.input.Keyboard;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.config.ConfigItems;
 import steamcraft.common.items.ItemCanister;
+import steamcraft.common.lib.LibInfo;
 import boilerplate.client.ClientHelper;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 /**
- * 
+ *
  * @author Decebaldecebal
  */
 public class ItemSteamJetpack extends BaseArmor
@@ -55,7 +57,7 @@ public class ItemSteamJetpack extends BaseArmor
 			itemStack.setTagCompound(new NBTTagCompound());
 
 		list.add("Canister Detected: " + String.valueOf(itemStack.getTagCompound().getBoolean("hasCanister")));
-		
+
 		if (descNeedsShift)
 		{
 			if (ClientHelper.isShiftKeyDown())
@@ -70,13 +72,13 @@ public class ItemSteamJetpack extends BaseArmor
 			getWrappedDesc(list);
 		}
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack)
 	{
 		NBTTagCompound tag = itemStack.getTagCompound();
-		
+
 		boolean hasCanister = false;
 
 		if (this.hasCanister(player))
@@ -87,13 +89,13 @@ public class ItemSteamJetpack extends BaseArmor
 			tag.setBoolean("hasCanister", hasCanister);
 			itemStack.setTagCompound(tag);
 		}
-		
+
 		if (!player.capabilities.allowFlying && hasCanister)
 		{
 			if ((Minecraft.getMinecraft().currentScreen == null) && player.posY < 200 && Keyboard.isKeyDown(Minecraft.getMinecraft().gameSettings.keyBindJump.getKeyCode()))
 			{
 				consumeSteamFromCanister(player, steamPerTick);
-				
+
 				if (player.motionY > 0.0D)
 				{
 					player.motionY += 0.08499999910593033D;
@@ -106,16 +108,16 @@ public class ItemSteamJetpack extends BaseArmor
 				world.spawnParticle("smoke", player.posX, player.posY - 0.25D, player.posZ, 0.0D, 0.0D, 0.0D);
 
 			}
-			
+
 			if (this == ConfigItems.itemSteamWingpack && player.motionY < 0.0D && player.isSneaking())
 			{
 				consumeSteamFromCanister(player, (byte)(steamPerTick/2));
 				player.motionY /= 1.4D;
-				
+
 				player.motionX *= 1.05D;
 				player.motionZ *= 1.05D;
 			}
-			
+
 			if (!player.onGround)
 			{
 				player.motionX *= 1.04D;
@@ -129,7 +131,7 @@ public class ItemSteamJetpack extends BaseArmor
 			}
 		}
 	}
-	
+
 	protected void consumeSteamFromCanister(EntityPlayer player, byte steam)
 	{
 		ItemStack[] mainInv = player.inventory.mainInventory;
@@ -139,7 +141,7 @@ public class ItemSteamJetpack extends BaseArmor
 			if ((element != null) && (element.getItem() == ConfigItems.itemCanisterSteam))
 			{
 				ItemCanister canister = (ItemCanister) element.getItem();
-				
+
 				if (canister.getFluidAmount(element) > steam)
 				{
 					canister.drain(element, steam, true);
@@ -176,7 +178,7 @@ public class ItemSteamJetpack extends BaseArmor
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, int armorSlot) 
+	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, int armorSlot)
 	{
 		ModelBiped armorModel = new ModelBiped();
 
@@ -184,13 +186,13 @@ public class ItemSteamJetpack extends BaseArmor
 		{
 			if(this == ConfigItems.itemSteamJetpack)
 			{
-				armorModel = Steamcraft.proxy.getWingsArmorModel(0);
-			} 
+				armorModel = Steamcraft.proxy.getJetpackArmorModel(1);
+			}
 			else
 			{
-				armorModel = Steamcraft.proxy.getWingsArmorModel(1);
+				armorModel = Steamcraft.proxy.getWingpackArmorModel(1);
 			}
-			
+
 			if(armorModel != null)
 			{
 				armorModel.bipedHead.showModel = armorSlot == 0;
@@ -203,7 +205,7 @@ public class ItemSteamJetpack extends BaseArmor
 				armorModel.isSneak = entityLiving.isSneaking();
 				armorModel.isRiding = entityLiving.isRiding();
 				armorModel.isChild = entityLiving.isChild();
-				
+
 				//armorModel.heldItemRight = entityLiving.getCurrentItemOrArmor(0) != null ? 1 :0;
 
 				if(entityLiving instanceof EntityPlayer)
@@ -216,5 +218,12 @@ public class ItemSteamJetpack extends BaseArmor
 		}
 
 		return null;
+	}
+	@Override
+	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
+	{
+		if(stack.getItem() == ConfigItems.itemSteamJetpack)
+		return LibInfo.PREFIX + "textures/armor/jetpack.png";
+		else return LibInfo.PREFIX + "textures/armor/wingpack.png";
 	}
 }
