@@ -43,6 +43,7 @@ public class ItemSteamJetpack extends BaseArmor
 	public ItemSteamJetpack(ArmorMaterial mat, int renderIndex, int armorType, byte steam)
 	{
 		super(mat, renderIndex, armorType);
+		this.setMaxDamage(0);
 		this.steamPerTick = steam;
 	}
 

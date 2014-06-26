@@ -37,6 +37,7 @@ public class ItemClockworkWings extends BaseArmor
 	public ItemClockworkWings(ArmorMaterial mat, int renderIndex, int armorType)
 	{
 		super(mat, renderIndex, armorType);
+		this.setMaxDamage(0);
 	}
 
 	@SuppressWarnings("all")

@@ -81,33 +81,25 @@ public class ItemFirearm extends BaseItem
 				
 				if(tag.getShort("reloadTime") == 10)	
 					world.playSoundAtEntity(player, this.reloadSound, 0.8F, 1.0F);
-					
-			}
-			else if(tag.getBoolean("canFire"))
-			{
-				if (stack.getTagCompound().getShort("reloadTime") == 0 && player.inventory.hasItem(Items.gunpowder) && player.inventory.hasItem(ammo))
-					if(twoAmmo)
-					{
-						if(player.inventory.hasItem(ammo2))
-							shotBullet(stack, world, player);
-					}
-					else
-						shotBullet(stack, world, player);
-			}
+			}				
 		}
 	}
 	
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
-	{
-		if(stack.getTagCompound().getShort("reloadTime") == 0)
-		{
-			NBTTagCompound tag = stack.getTagCompound();
-			tag.setBoolean("canFire", true);
-			
-			stack.setTagCompound(tag);
-		}
+	{		
+		NBTTagCompound tag = stack.getTagCompound();
 		
+		if (tag.getShort("reloadTime") == 0 && player.inventory.hasItem(Items.gunpowder) && player.inventory.hasItem(ammo))
+			if(twoAmmo)
+			{
+				if(player.inventory.hasItem(ammo2))
+					shotBullet(stack, world, player);
+			}
+			else
+				shotBullet(stack, world, player);
+		
+		//player.setItemInUse(stack, 10);
 		return stack;
 	}
 	
@@ -115,12 +107,15 @@ public class ItemFirearm extends BaseItem
 	{
 		NBTTagCompound tag = stack.getTagCompound();
 		tag.setShort("reloadTime", reloadTime);
-		tag.setBoolean("canFire", false);
+		//tag.setBoolean("canFire", false);
 		
 		stack.setTagCompound(tag);
 
 		player.inventory.consumeInventoryItem(ammo);
 		player.inventory.consumeInventoryItem(Items.gunpowder);
+		
+		if(twoAmmo)
+			player.inventory.consumeInventoryItem(ammo2);
 
 		if (!world.isRemote)
 			world.spawnEntityInWorld(new EntityBullet(world, player, this.damage, 1));

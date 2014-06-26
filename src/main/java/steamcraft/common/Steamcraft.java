@@ -16,6 +16,7 @@ package steamcraft.common;
 import java.io.File;
 import java.util.logging.Level;
 
+import net.minecraft.client.renderer.entity.RenderSnowball;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.MinecraftForge;
 import steamcraft.client.gui.GuiHandler;
@@ -25,12 +26,14 @@ import steamcraft.common.config.ConfigBlocks;
 import steamcraft.common.config.ConfigEntities;
 import steamcraft.common.config.ConfigItems;
 import steamcraft.common.config.ConfigRecipes;
+import steamcraft.common.entities.projectile.EntityBullet;
 import steamcraft.common.lib.CommandSteamcraft;
 import steamcraft.common.lib.CreativeTabSteamcraft;
 import steamcraft.common.lib.LibInfo;
 import steamcraft.common.lib.LoggerSteamcraft;
 import steamcraft.common.lib.events.EventHandlerSC2;
 import steamcraft.common.lib.world.SteamcraftWorldGenerator;
+import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.Mod;
@@ -44,6 +47,7 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import cpw.mods.fml.relauncher.Side;
@@ -91,6 +95,7 @@ public class Steamcraft
 		event.getModMetadata().name = LibInfo.NAME;
 		event.getModMetadata().authorList = LibInfo.AUTHORS;
 		event.getModMetadata().credits = "Orginally created by Proloe, further development by Surseance and the BrassGoggledCoders";
+		
 		this.directory = event.getModConfigurationDirectory();
 
 		LanguageRegistry.instance().getStringLocalization("itemGroup.steamcraft", "en_US");
@@ -113,7 +118,7 @@ public class Steamcraft
 		FMLCommonHandler.instance().bus().register(sc2EventHandler);
 
 		if (Config.generationEnabled)
-		GameRegistry.registerWorldGenerator(this.worldGen, 0);
+			GameRegistry.registerWorldGenerator(this.worldGen, 0);
 
 		Config.save();
 		ConfigBlocks.init();
@@ -121,6 +126,11 @@ public class Steamcraft
 
 		NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
 		//VillagerRegistry.instance().registerVillageCreationHandler(new VillageCreationHandler());
+		
+		EntityRegistry.registerModEntity(EntityBullet.class, "Gun Bullet", 0, Steamcraft.instance, 32, 10, true);
+		RenderingRegistry.registerEntityRenderingHandler(EntityBullet.class, new RenderSnowball(ConfigItems.itemMusketBall));
+		
+		proxy.registerRenderers();
 	}
 
 	/**
@@ -136,7 +146,6 @@ public class Steamcraft
 		ConfigAchievements.init();
 
 		proxy.registerDisplayInformation();
-		proxy.registerRenderers();
 
 		// RegisterKeyBindings.init();
 		// NetworkRegistry.instance().registerGuiHandler(this.instance, new
