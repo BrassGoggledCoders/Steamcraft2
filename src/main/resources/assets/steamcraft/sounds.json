@@ -28,10 +28,10 @@
     
     "rifle":
     {
-        "category": "rifle",
+        "category": "block",
         "sounds":
         [
-			"musket"
+			"rifle"
         ]
     },
     
