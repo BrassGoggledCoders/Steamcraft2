@@ -15,5 +15,23 @@
         [
 			"raygun"
         ]
+    },
+    
+    "musket":
+    {
+        "category": "block",
+        "sounds":
+        [
+			"musket"
+        ]
+    },
+    
+    "reload":
+    {
+        "category": "block",
+        "sounds":
+        [
+			"reload"
+        ]
     }
 }

@@ -1,5 +1,5 @@
 /**
- * This class was created by <Surseance> or his SC2 development team.
+ * This class was created by BrassGoggledCoders modding team. 
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -9,7 +9,7 @@
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
  *
- * File created @ [Mar 14, 2014, 1:29:42 PM]
+ * File created @ [Mar 14, 2014, 10:51:48 PM]
  */
 package steamcraft.common.config;
 
@@ -333,12 +333,12 @@ public class ConfigItems
 		registerItem(itemPercussionCap, "ItemPercussionCap");
 
 		//Guns
-		flintlockMusket = new ItemFirearm(5, 60, itemMusketBall, null, false, "steamcraft:musket", "steamcraft:reload").setUnlocalizedName("itemFlintlockMusket");
-		matchlockMusket = new ItemFirearm(6, 40, itemMusketBall, itemMatch, true, "steamcraft:musket", "steamcraft:reload").setUnlocalizedName("itemMatchlockMusket");
-		percussionCapMusket = new ItemFirearm(7, 20, itemMusketBall, itemPercussionCap, true, "steamcraft:musket", "steamcraft:reload").setUnlocalizedName("itemPercussionMusket");
-		flintlockRifle = new ItemFirearm(8, 60, itemRifleBullet, null, false, "steamcraft:rifle", "steamcraft:reload").setUnlocalizedName("itemFlintlockRifle");
-		matchlockRifle = new ItemFirearm(9, 40, itemRifleBullet, itemMatch, true, "steamcraft:rifle", "steamcraft:reload").setUnlocalizedName("itemMatchlockRifle");
-		percussionCapRifle = new ItemFirearm(10, 20, itemRifleBullet, itemPercussionCap, true, "steamcraft:rifle", "steamcraft:reload").setUnlocalizedName("itemPercussionRifle");
+		flintlockMusket = new ItemFirearm(5, 60, itemMusketBall, null, "steamcraft:musket", "steamcraft:reload").setUnlocalizedName("itemFlintlockMusket");
+		matchlockMusket = new ItemFirearm(6, 40, itemMusketBall, itemMatch, "steamcraft:musket", "steamcraft:reload").setUnlocalizedName("itemMatchlockMusket");
+		percussionCapMusket = new ItemFirearm(7, 20, itemMusketBall, itemPercussionCap, "steamcraft:musket", "steamcraft:reload").setUnlocalizedName("itemPercussionMusket");
+		flintlockRifle = new ItemFirearm(8, 60, itemRifleBullet, null, "steamcraft:rifle", "steamcraft:reload").setUnlocalizedName("itemFlintlockRifle");
+		matchlockRifle = new ItemFirearm(9, 40, itemRifleBullet, itemMatch, "steamcraft:rifle", "steamcraft:reload").setUnlocalizedName("itemMatchlockRifle");
+		percussionCapRifle = new ItemFirearm(10, 20, itemRifleBullet, itemPercussionCap, "steamcraft:rifle", "steamcraft:reload").setUnlocalizedName("itemPercussionRifle");
 
 		registerItem(flintlockMusket, "ItemFlintlockMusket");
 		registerItem(matchlockMusket, "ItemMatchlockMusket");
@@ -346,6 +346,13 @@ public class ConfigItems
 		registerItem(flintlockRifle, "ItemFlintlockRifle");
 		registerItem(matchlockRifle, "ItemMatchlockRifle");
 		registerItem(percussionCapRifle, "ItemPercussionCapRifle");
+		
+		
+		itemRayGun = new ItemRayGun(LibInfo.PREFIX + "raygun").setUnlocalizedName("itemRaygun");;
+		itemShrinkray = new ItemShrinkray(LibInfo.PREFIX + "shrinkray").setUnlocalizedName("itemShrinkray");;
+
+		registerItem(itemRayGun, "ItemRayGun");
+		registerItem(itemShrinkray, "ItemShrinkray");
 	}
 
 	private static void initializeMetals()
@@ -412,12 +419,6 @@ public class ConfigItems
 
 		itemPoppySeed = new BaseItem().setUnlocalizedName("itemPoppySeed").setCreativeTab(Steamcraft.tabSC2);
 		registerItem(itemPoppySeed, "ItemPoppySeed");
-
-		itemRayGun = new ItemRayGun(LibInfo.PREFIX + "raygun").setUnlocalizedName("itemRaygun");;
-		itemShrinkray = new ItemShrinkray(LibInfo.PREFIX + "shrinkray").setUnlocalizedName("itemShrinkray");;
-
-		registerItem(itemRayGun, "ItemRayGun");
-		registerItem(itemShrinkray, "ItemShrinkray");
 
 		itemHammer = new ItemHammer().setUnlocalizedName("itemHammer");
 		registerItem(itemHammer, "ItemHammer");
