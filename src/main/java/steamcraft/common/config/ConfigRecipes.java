@@ -18,6 +18,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
+import net.minecraftforge.oredict.ShapelessOreRecipe;
 import boilerplate.common.utils.recipe.RecipeUtils;
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -201,13 +202,13 @@ public class ConfigRecipes
 		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.itemShrinkray), new Object[] { " BB", "EBE", "  B", 'E', Items.diamond, 'B',
 				Items.iron_ingot });
 
-		GameRegistry.addShapelessRecipe(new ItemStack(ConfigItems.itemPowder, 3, 4), new Object[] { new ItemStack(ConfigItems.itemPowder, 2, 1),
-			new ItemStack(ConfigItems.itemPowder, 1, 3), new ItemStack(ConfigItems.itemPowder, 1, 3) });
-		GameRegistry.addShapelessRecipe(new ItemStack(ConfigItems.itemPowder, 3, 5), new Object[] { new ItemStack(ConfigItems.itemPowder, 2, 1),
-				new ItemStack(ConfigItems.itemPowder, 1, 2), new ItemStack(ConfigItems.itemPowder, 1, 2) });
-
+		//Brass Powder
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ConfigItems.itemPowder, 3, 4), new Object[] {"dustCopper", "dustCopper", "dustZinc"}));
+		//Bronze Powder
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ConfigItems.itemPowder, 3, 5), new Object[] {"dustCopper", "dustCopper", "dustTin"}));
+		//Steel Powder
 		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.itemPowder, 1, 6), new Object[]{" C ", "CIC", " C ", 'C', new ItemStack(Items.coal), 'I', new ItemStack(Items.iron_ingot)});
-
+		GameRegistry.addShapelessRecipe(new ItemStack(ConfigItems.itemMatch), new Object[]{new ItemStack(ConfigItems.itemResource, 1, 4), new ItemStack(Items.stick)});
 	}
 
 	public static void initializeSmeltingRecipes()
@@ -221,7 +222,6 @@ public class ConfigRecipes
 		// Misc
 		GameRegistry.addSmelting(Blocks.iron_block, new ItemStack(ConfigBlocks.blockMetal, 1, 7), 0.2F);
 		GameRegistry.addSmelting(new ItemStack(ConfigItems.itemResource, 1, 6), new ItemStack(ConfigItems.itemResource, 1,5), 0.5F);
-		GameRegistry.addShapelessRecipe(new ItemStack(ConfigItems.itemMatch), new Object[]{new ItemStack(ConfigItems.itemResource, 1, 4), new ItemStack(Items.stick)});
 	}
 
 }
