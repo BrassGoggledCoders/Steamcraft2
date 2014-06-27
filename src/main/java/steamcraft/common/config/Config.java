@@ -20,7 +20,7 @@ import net.minecraftforge.common.config.Configuration;
 // TODO: Auto-generated Javadoc
 /**
  * The Class Config.
- * 
+ *
  * @author Surseance (Johnny Eatmon)
  */
 public class Config
@@ -35,8 +35,11 @@ public class Config
 	/** The Constant CATEGORY_GEN_OPTIONS. */
 	public static final String CATEGORY_GEN_OPTIONS = "generation options";
 
+	public static final String CATEGORY_GENERAL = "general";
+
 	// Entities
 	/** The ent bullet id. */
+	//TODO: Remove (unneeded)
 	public static int entBulletId;
 
 	/* POWER TO THE END USER! Good heavens... */
@@ -145,9 +148,11 @@ public class Config
 	/** The slate gen enabled. */
 	public static boolean slateGenEnabled;
 
+	public static boolean partyPooper;
+
 	/**
 	 * Initialize.
-	 * 
+	 *
 	 * @param file
 	 *            the file
 	 */
@@ -200,6 +205,8 @@ public class Config
 		slateGenEnabled = config.get(CATEGORY_GEN_OPTIONS, "Slate Generation", true).getBoolean(true);
 		netherEtheriumCrystalGenEnabled = config.get(CATEGORY_GEN_OPTIONS, "Etherium Crystal Generation in the Nether", true).getBoolean(true);
 		endEtheriumCrystalGenEnabled = config.get(CATEGORY_GEN_OPTIONS, "Etherium Crystal Generation in the End", true).getBoolean(true);
+
+		partyPooper = config.get(CATEGORY_GENERAL, "Remove all little fun things from mod", false).getBoolean(false);
 	}
 
 	/**

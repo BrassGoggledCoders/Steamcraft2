@@ -30,7 +30,8 @@ import steamcraft.common.lib.CommandSteamcraft;
 import steamcraft.common.lib.CreativeTabSteamcraft;
 import steamcraft.common.lib.LibInfo;
 import steamcraft.common.lib.LoggerSteamcraft;
-import steamcraft.common.lib.events.EventHandlerSC2;
+import steamcraft.common.lib.events.EventHandlerFML;
+import steamcraft.common.lib.events.EventHandlerForge;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -49,7 +50,7 @@ import cpw.mods.fml.relauncher.Side;
 // TODO: Auto-generated Javadoc
 /**
  * The Class Steamcraft.
- * 
+ *
  * @author Surseance (Johnny Eatmon)
  */
 @Mod(modid = LibInfo.ID, name = LibInfo.NAME, version = LibInfo.VERSION, dependencies = "required-after:boilerplate")
@@ -69,14 +70,14 @@ public class Steamcraft
 	public File directory;
 
 	/** The sc2 event handler. */
-	public EventHandlerSC2 sc2EventHandler;
+	//public EventHandlerSC2 sc2EventHandler;
 
 	/** The tab s c2. */
 	public static CreativeTabs tabSC2 = new CreativeTabSteamcraft(CreativeTabs.getNextID(), "steamcraft");
 
 	/**
 	 * Pre init.
-	 * 
+	 *
 	 * @param event
 	 *            the event
 	 */
@@ -98,9 +99,8 @@ public class Steamcraft
 				Config.save();
 		}
 		// TODO: Reimplement DrawEvent
-		sc2EventHandler = new EventHandlerSC2();
-		MinecraftForge.EVENT_BUS.register(sc2EventHandler);
-		FMLCommonHandler.instance().bus().register(sc2EventHandler);
+		MinecraftForge.EVENT_BUS.register(new EventHandlerForge());
+		FMLCommonHandler.instance().bus().register(new EventHandlerFML());
 
 		if (Config.generationEnabled)
 			GameRegistry.registerWorldGenerator(worldGen, 0);
@@ -115,7 +115,7 @@ public class Steamcraft
 
 	/**
 	 * Inits the.
-	 * 
+	 *
 	 * @param event
 	 *            the event
 	 */
@@ -131,7 +131,7 @@ public class Steamcraft
 
 	/**
 	 * Post init.
-	 * 
+	 *
 	 * @param event
 	 *            the event
 	 */
@@ -152,7 +152,7 @@ public class Steamcraft
 
 	/**
 	 * Server starting.
-	 * 
+	 *
 	 * @param event
 	 *            the event
 	 */

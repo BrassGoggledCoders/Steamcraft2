@@ -153,7 +153,7 @@ public class ConfigRecipes
 		GameRegistry.addRecipe(new ItemStack(ConfigItems.itemPercussionCap), new Object[]{"GG", "II", 'I', new ItemStack(ConfigItems.itemIngot, 1, 4), 'G', Items.gunpowder});
 
 		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.itemRayGun), new Object[] { " BB", "EBE", "  B", 'E', Items.emerald, 'B', new ItemStack(ConfigItems.itemIngot, 1, 4)});
-		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.itemShrinkray), new Object[] { " BB", "EBE", "  B", 'E', Items.diamond, 'B', new ItemStack(ConfigItems.itemIngot, 1, 4)});
+		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.itemShrinkray), new Object[] { " BB", "EBE", "  B", 'E', Items.diamond, 'B', new ItemStack(ConfigItems.itemIngot, 1, 7)});
 	}
 
 	private static void initMetalsRecipes()

@@ -16,47 +16,44 @@ package steamcraft.common.lib.events;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
 import net.minecraftforge.event.entity.EntityEvent.EntityConstructing;
+import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.item.ItemTossEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 
 import org.lwjgl.opengl.GL11;
 
-import steamcraft.common.config.ConfigAchievements;
-import steamcraft.common.config.ConfigBlocks;
 import steamcraft.common.config.ConfigItems;
 import steamcraft.common.entities.EntityPlayerExtended;
-import steamcraft.common.items.ItemIngot;
-import steamcraft.common.items.ItemRayGun;
-import steamcraft.common.items.ItemSheet;
-import steamcraft.common.items.ItemShrinkray;
 import steamcraft.common.lib.LibInfo;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.common.gameevent.PlayerEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 // TODO: Auto-generated Javadoc
 /**
  * The Class EventHandlerSC2.
- * 
+ *
  * @author Decebaldecebal
  */
-public class EventHandlerSC2
+public class EventHandlerForge
 {
 
 	/**
 	 * Update player.
-	 * 
+	 *
 	 * @param event
 	 *            the event
 	 */
@@ -66,17 +63,17 @@ public class EventHandlerSC2
 		/*
 		 * if (event.entityLiving instanceof EntityPlayer) { EntityPlayer player
 		 * = (EntityPlayer) event.entityLiving;
-		 * 
+		 *
 		 * ItemStack legsSlot = player.inventory.armorItemInSlot(1);
-		 * 
+		 *
 		 * if (legsSlot != null) { if (legsSlot.getItem() ==
 		 * ConfigItems.itemLegBraces) { float distToFall = player.fallDistance;
-		 * 
+		 *
 		 * if (distToFall > 3.0F) { player.fallDistance = distToFall * 0.888F;
 		 * legsSlot.damageItem(1, player); } } }
-		 * 
+		 *
 		 * ItemStack bootsSlot = player.inventory.armorItemInSlot(0);
-		 * 
+		 *
 		 * if (bootsSlot != null) { if (!player.isInWater() && player.onGround
 		 * && bootsSlot.getItem() == ConfigItems.itemRollerSkates) {
 		 * player.moveEntityWithHeading(player.moveStrafing, player.moveForward
@@ -88,7 +85,7 @@ public class EventHandlerSC2
 
 	/**
 	 * Entity constructing.
-	 * 
+	 *
 	 * @param event
 	 *            the event
 	 */
@@ -101,7 +98,7 @@ public class EventHandlerSC2
 
 	/**
 	 * On item drop.
-	 * 
+	 *
 	 * @param event
 	 *            the event
 	 */
@@ -123,7 +120,7 @@ public class EventHandlerSC2
 
 	/**
 	 * Living update.
-	 * 
+	 *
 	 * @param event
 	 *            the event
 	 */
@@ -154,7 +151,7 @@ public class EventHandlerSC2
 
 	/**
 	 * On hud tick.
-	 * 
+	 *
 	 * @param event
 	 *            the event
 	 */
@@ -172,7 +169,7 @@ public class EventHandlerSC2
 			if ((Minecraft.getMinecraft().gameSettings.thirdPersonView == 0) && (helmet != null) && (helmet.getItem() == ConfigItems.brassGoggles))// &&
 			// KeyHandler.keyPressed)
 			{
-				Minecraft.getMinecraft().getTextureManager().bindTexture(EventHandlerSC2.overlay);
+				Minecraft.getMinecraft().getTextureManager().bindTexture(EventHandlerForge.overlay);
 				Tessellator tessellator = Tessellator.instance;
 				ScaledResolution scaledResolution = new ScaledResolution(Minecraft.getMinecraft().gameSettings,
 						Minecraft.getMinecraft().displayWidth, Minecraft.getMinecraft().displayHeight);
@@ -208,31 +205,5 @@ public class EventHandlerSC2
 		}
 		else
 			return;
-	}
-
-	/**
-	 * On item crafted.
-	 * 
-	 * @param event
-	 *            the event
-	 */
-	@SubscribeEvent
-	public void onItemCrafted(PlayerEvent.ItemCraftedEvent event)
-	{
-		if (event.crafting.getItem() instanceof ItemRayGun)
-			event.player.addStat(ConfigAchievements.raygunAchieve, 1);
-		else if (event.crafting.getItem() instanceof ItemShrinkray)
-			event.player.addStat(ConfigAchievements.shrinkrayAchieve, 1);
-		else if (event.crafting == new ItemStack(ConfigBlocks.blockSteamBoiler))
-			event.player.addStat(ConfigAchievements.boilerAchieve, 1);
-		else if (event.crafting.getItem() instanceof ItemSheet)
-			event.player.addStat(ConfigAchievements.sheetAchieve, 1);
-	}
-
-	@SubscribeEvent
-	public void onItemCrafted(PlayerEvent.ItemSmeltedEvent event)
-	{
-		if (event.smelting.getItem() instanceof ItemIngot)
-			event.player.addStat(ConfigAchievements.ingotAchieve, 1);
 	}
 }

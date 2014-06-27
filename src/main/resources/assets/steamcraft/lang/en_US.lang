@@ -269,3 +269,5 @@ item.itemMachinePart.8.name=Wire Coil
 itemGroup.steamcraft=Steamcraft 2
 #Key Category
 key.categories.sc2=Steamcraft 2
+#Chat
+chat.test=Test
