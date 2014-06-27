@@ -25,12 +25,12 @@ import steamcraft.common.config.ConfigBlocks;
 import steamcraft.common.config.ConfigEntities;
 import steamcraft.common.config.ConfigItems;
 import steamcraft.common.config.ConfigRecipes;
+import steamcraft.common.config.ConfigWorldGen;
 import steamcraft.common.lib.CommandSteamcraft;
 import steamcraft.common.lib.CreativeTabSteamcraft;
 import steamcraft.common.lib.LibInfo;
 import steamcraft.common.lib.LoggerSteamcraft;
 import steamcraft.common.lib.events.EventHandlerSC2;
-import steamcraft.common.lib.world.SteamcraftWorldGenerator;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -63,7 +63,7 @@ public class Steamcraft
 	public static Steamcraft instance;
 
 	/** The world gen. */
-	public SteamcraftWorldGenerator worldGen = new SteamcraftWorldGenerator();
+	public ConfigWorldGen worldGen = new ConfigWorldGen();
 
 	/** The directory. */
 	public File directory;
@@ -145,6 +145,9 @@ public class Steamcraft
 		ConfigRecipes.init();
 		final ModContainer container = FMLCommonHandler.instance().findContainerFor(this);
 		LanguageRegistry.instance().loadLanguagesFor(container, Side.CLIENT);
+
+		//if(ClientHelper.mc().currentScreen instanceof GuiMainMenu)
+		//SplashesHelper.hackSplashes((GuiMainMenu) ClientHelper.mc().currentScreen);
 	}
 
 	/**

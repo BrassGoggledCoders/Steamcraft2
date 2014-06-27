@@ -95,9 +95,9 @@ public class ConfigWorldGen implements IWorldGenerator
 					Blocks.stone);
 		if (Config.slateGenEnabled)
 		{
-			generateOre(world, random, chunkX, chunkZ, Config.slateChance, Config.slateHeight, 15, ConfigBlocks.blockSlate, 0, Blocks.stone);
-			generateOre(world, random, chunkX, chunkZ, Config.slateChance, Config.slateHeight, 15, ConfigBlocks.blockSlate, 1, Blocks.stone);
-			generateOre(world, random, chunkX, chunkZ, Config.slateChance, Config.slateHeight, 15, ConfigBlocks.blockSlate, 2, Blocks.stone);
+			generateOre(world, random, chunkX, chunkZ, Config.slateChance, Config.slateHeight, random.nextInt(30), ConfigBlocks.blockSlate, 0, Blocks.stone);
+			generateOre(world, random, chunkX, chunkZ, Config.slateChance, Config.slateHeight, random.nextInt(30), ConfigBlocks.blockSlate, 1, Blocks.stone);
+			generateOre(world, random, chunkX, chunkZ, Config.slateChance, Config.slateHeight, random.nextInt(30), ConfigBlocks.blockSlate, 2, Blocks.stone);
 		}
 	}
 
