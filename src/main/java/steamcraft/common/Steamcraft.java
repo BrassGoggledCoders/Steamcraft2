@@ -16,7 +16,6 @@ package steamcraft.common;
 import java.io.File;
 import java.util.logging.Level;
 
-import net.minecraft.client.renderer.entity.RenderSnowball;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.MinecraftForge;
 import steamcraft.client.gui.GuiHandler;
@@ -26,28 +25,23 @@ import steamcraft.common.config.ConfigBlocks;
 import steamcraft.common.config.ConfigEntities;
 import steamcraft.common.config.ConfigItems;
 import steamcraft.common.config.ConfigRecipes;
-import steamcraft.common.entities.projectile.EntityBullet;
 import steamcraft.common.lib.CommandSteamcraft;
 import steamcraft.common.lib.CreativeTabSteamcraft;
 import steamcraft.common.lib.LibInfo;
 import steamcraft.common.lib.LoggerSteamcraft;
 import steamcraft.common.lib.events.EventHandlerSC2;
 import steamcraft.common.lib.world.SteamcraftWorldGenerator;
-import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.ModContainer;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLInterModComms;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
-import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import cpw.mods.fml.relauncher.Side;
@@ -61,7 +55,6 @@ import cpw.mods.fml.relauncher.Side;
 @Mod(modid = LibInfo.ID, name = LibInfo.NAME, version = LibInfo.VERSION, dependencies = "required-after:boilerplate")
 public class Steamcraft
 {
-	/** The proxy. */
 	@SidedProxy(clientSide = LibInfo.CLIENT_PROXY, serverSide = LibInfo.COMMON_PROXY)
 	public static CommonProxy proxy;
 
@@ -88,14 +81,8 @@ public class Steamcraft
 	 *            the event
 	 */
 	@EventHandler
-	public void PreInit(FMLPreInitializationEvent event)
+	public void preInit(FMLPreInitializationEvent event)
 	{
-		event.getModMetadata().version = LibInfo.VERSION;
-		event.getModMetadata().modId = LibInfo.ID;
-		event.getModMetadata().name = LibInfo.NAME;
-		event.getModMetadata().authorList = LibInfo.AUTHORS;
-		event.getModMetadata().credits = "Orginally created by Proloe, further development by Surseance and the BrassGoggledCoders";
-		
 		this.directory = event.getModConfigurationDirectory();
 
 		LanguageRegistry.instance().getStringLocalization("itemGroup.steamcraft", "en_US");
@@ -118,19 +105,13 @@ public class Steamcraft
 		FMLCommonHandler.instance().bus().register(sc2EventHandler);
 
 		if (Config.generationEnabled)
-			GameRegistry.registerWorldGenerator(this.worldGen, 0);
+		GameRegistry.registerWorldGenerator(this.worldGen, 0);
 
-		Config.save();
 		ConfigBlocks.init();
 		ConfigItems.init();
 
 		NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
 		//VillagerRegistry.instance().registerVillageCreationHandler(new VillageCreationHandler());
-		
-		EntityRegistry.registerModEntity(EntityBullet.class, "Gun Bullet", 0, Steamcraft.instance, 32, 10, true);
-		RenderingRegistry.registerEntityRenderingHandler(EntityBullet.class, new RenderSnowball(ConfigItems.itemMusketBall));
-		
-		proxy.registerRenderers();
 	}
 
 	/**
@@ -146,10 +127,7 @@ public class Steamcraft
 		ConfigAchievements.init();
 
 		proxy.registerDisplayInformation();
-
-		// RegisterKeyBindings.init();
-		// NetworkRegistry.instance().registerGuiHandler(this.instance, new
-		// GuiHandler());
+		proxy.registerRenderers();
 	}
 
 	/**
@@ -161,8 +139,6 @@ public class Steamcraft
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event)
 	{
-		FMLLog.fine(String.valueOf(Config.slateChance), "");
-		FMLLog.fine(String.valueOf(Config.slateHeight), "");
 		CompatabilityLayer.init();
 		ConfigEntities.initEntitySpawns();
 		ConfigItems.postInit();
@@ -181,6 +157,5 @@ public class Steamcraft
 	public void serverStarting(final FMLServerStartingEvent event)
 	{
 		event.registerServerCommand(new CommandSteamcraft());
-		LoggerSteamcraft.log(Level.INFO, "Registering commands just for you");
 	}
 }

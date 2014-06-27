@@ -20,42 +20,22 @@ public class BaseBlock extends Block
 {
 
 	/** The icon. */
-	IIcon icon;
+	IIcon blockIcon;
 
-	/**
-	 * Instantiates a new base block.
-	 *
-	 * @param p_i45394_1_
-	 *            the p_i45394_1_
-	 */
 	public BaseBlock(Material p_i45394_1_)
 	{
 		super(p_i45394_1_);
 		setCreativeTab(Steamcraft.tabSC2);
 	}
-
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see
-	 * net.minecraft.block.Block#registerBlockIcons(net.minecraft.client.renderer
-	 * .texture.IIconRegister)
-	 */
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister ir)
 	{
-		icon = ir.registerIcon(LibInfo.PREFIX + this.getUnlocalizedName().substring(5));
+		blockIcon = ir.registerIcon(LibInfo.PREFIX + this.getUnlocalizedName().substring(5));
 	}
-
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see net.minecraft.block.Block#getIcon(int, int)
-	 */
 	@Override
-	public IIcon getIcon(int p_149691_1_, int p_149691_2_)
+	public IIcon getIcon(int side, int meta)
 	{
-		return icon;
+		return blockIcon;
 	}
 }
