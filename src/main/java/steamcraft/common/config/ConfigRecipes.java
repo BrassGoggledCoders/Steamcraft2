@@ -23,7 +23,7 @@ import boilerplate.common.utils.recipe.RecipeUtils;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 /**
- * 
+ *
  * @author Surseance (Johnny Eatmon)
  */
 public class ConfigRecipes
@@ -32,7 +32,6 @@ public class ConfigRecipes
 	public static void init()
 	{
 		initializeCraftingRecipes();
-
 		initializeSmeltingRecipes();
 	}
 
@@ -45,7 +44,7 @@ public class ConfigRecipes
 		initOtherRecipes();
 		// Blocks
 		/*
-		 * 
+		 *
 		 * GameRegistry.addRecipe(new ItemStack(ConfigBlocks.blockObsidianTile),
 		 * new Object[] {"XX", "XX", 'X', new ItemStack(Block.obsidian)});
 		 * GameRegistry.addShapedRecipe(new
@@ -56,7 +55,7 @@ public class ConfigRecipes
 		 * 9), new Object[]{new ItemStack(ConfigBlocks.blockUranium)});
 		 * GameRegistry.addShapelessRecipe(new ItemStack(ConfigItems.etherium,
 		 * 9), new Object[]{new ItemStack(ConfigBlocks.blockVolucite)});
-		 * 
+		 *
 		 * GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.lightBulb),
 		 * new Object[] {"ppp", "p p", "pcp", 'p', Block.thinGlass, 'c',
 		 * ConfigItems.copperWire}); //Duplicate Recipes are deliberate, until I
@@ -166,16 +165,11 @@ public class ConfigRecipes
 					drillMaterials[i] });
 
 		// Steam
-		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.swordSteam), new Object[] { " P ", " P ", " I ", 'I',
-				new ItemStack(ConfigItems.itemIngot, 1, 4), 'P', new ItemStack(ConfigItems.itemSheet, 1, 6), 'S', Items.stick });
-		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.pickaxeSteam), new Object[] { "PPP", " S ", " I ", 'I',
-				new ItemStack(ConfigItems.itemIngot, 1, 4), 'P', new ItemStack(ConfigItems.itemSheet, 1, 6), 'S', Items.stick });
-		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.shovelSteam), new Object[] { " P ", " S ", " I ", 'I',
-				new ItemStack(ConfigItems.itemIngot, 1, 4), 'P', new ItemStack(ConfigItems.itemSheet, 1, 6), 'S', Items.stick });
-		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.axeSteam), new Object[] { "PP ", "PI ", " S ", 'I',
-				new ItemStack(ConfigItems.itemIngot, 1, 4), 'P', new ItemStack(ConfigItems.itemSheet, 1, 6), 'S', Items.stick });
-		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.hoeSteam), new Object[] { "PP ", " I ", " S ", 'I',
-				new ItemStack(ConfigItems.itemIngot, 1, 4), 'P', new ItemStack(ConfigItems.itemSheet, 1, 6), 'S', Items.stick });
+		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.swordSteam), new Object[] { "II ", "IP ", "CSC",'I', new ItemStack(ConfigItems.itemSheet, 1, 6),'P', new ItemStack(ConfigItems.itemIngot, 1, 4), 'S', Items.stick, 'C', new ItemStack(ConfigItems.itemMachinePart, 1, 7) });
+		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.pickaxeSteam), new Object[] { "IPI", "CSC", " I ", 'R', new ItemStack(ConfigItems.itemMachinePart, 1, 9), 'P', new ItemStack(ConfigItems.itemIngot, 1, 4),'I', new ItemStack(ConfigItems.itemIngot, 1, 6), 'S', Items.stick, 'C', new ItemStack(ConfigItems.itemMachinePart, 1, 7)});
+		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.shovelSteam), new Object[] { "CPC", " S ", " R ", 'R', new ItemStack(ConfigItems.itemMachinePart, 1, 9), 'P', new ItemStack(ConfigItems.itemIngot, 1, 4),'I', new ItemStack(ConfigItems.itemIngot, 1, 6), 'S', Items.stick, 'C', new ItemStack(ConfigItems.itemMachinePart, 1, 7)});
+		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.axeSteam), new Object[] { "PIC", "PRC", " S ", 'R', new ItemStack(ConfigItems.itemMachinePart, 1, 9), 'P', new ItemStack(ConfigItems.itemIngot, 1, 4),'I', new ItemStack(ConfigItems.itemIngot, 1, 6), 'S', Items.stick, 'C', new ItemStack(ConfigItems.itemMachinePart, 1, 7)});
+		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.hoeSteam), new Object[] { "PIC", " R ", " S ", 'R', new ItemStack(ConfigItems.itemMachinePart, 1, 9), 'P', new ItemStack(ConfigItems.itemIngot, 1, 4),'I', new ItemStack(ConfigItems.itemIngot, 1, 6), 'S', Items.stick, 'C', new ItemStack(ConfigItems.itemMachinePart, 1, 7)});
 
 		// Etherium
 		RecipeUtils.addToolSet(new ItemStack(ConfigItems.itemResource, 1, 0), new ItemStack[] { new ItemStack(ConfigItems.pickaxeEtherium),
@@ -196,6 +190,10 @@ public class ConfigRecipes
 		// Obsidian
 		RecipeUtils.addArmorSet(new ItemStack(ConfigItems.itemResource, 1, 3), new ItemStack[] { new ItemStack(ConfigItems.helmetObsidian),
 				new ItemStack(ConfigItems.chestplateObsidian), new ItemStack(ConfigItems.legsObsidian), new ItemStack(ConfigItems.bootsObsidian) });
+
+		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.itemClockworkWings), new Object[]{"BCB", "WCW", "W W", 'B', new ItemStack(ConfigItems.itemIngot, 1, 4), 'C', new ItemStack(ConfigItems.itemMachinePart, 1, 7), 'W', Blocks.wool});
+		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.itemSteamJetpack), new Object[]{"BCB", "BIB", "   ", 'B', new ItemStack(ConfigItems.itemIngot, 1, 4), 'I', new ItemStack(ConfigItems.itemIngot, 1, 7), 'C', ConfigItems.itemCanisterSteam});
+		GameRegistry.addRecipe(new ItemStack(ConfigItems.itemSteamWingpack), new Object[]{"W", "P", 'P', ConfigItems.itemSteamJetpack, 'W', ConfigItems.itemClockworkWings});
 	}
 
 	private static void initBlockRecipes()
@@ -214,7 +212,7 @@ public class ConfigRecipes
 
 	private static void initOtherRecipes()
 	{
-		GameRegistry.addShapelessRecipe(new ItemStack(ConfigItems.itemResource, 4, 3), new Object[] { Blocks.obsidian });
+		GameRegistry.addShapelessRecipe(new ItemStack(ConfigItems.itemResource, 4, 2), new Object[] { Blocks.obsidian });
 
 		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.itemSteelParts, 1, 0), new Object[] { " P ", "PPP", " P ", 'P',
 				new ItemStack(ConfigItems.itemSheet, 1, 6) });
@@ -225,8 +223,8 @@ public class ConfigRecipes
 		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.itemCanisterSteam), new Object[] { "PPP", "GGG", "PPP", 'G', Blocks.glass_pane, 'P',
 				new ItemStack(ConfigItems.itemSheet, 1, 4) });
 
-		GameRegistry.addRecipe(new ItemStack(ConfigItems.itemHammer), new Object[] { "III", " H ", " H ", 'I',
-				new ItemStack(ConfigItems.itemIngot, 1, 7), 'H', Items.stick });
+		GameRegistry.addRecipe(new ItemStack(ConfigItems.itemHammer), new Object[] { "III", " H ", " C ", 'I',
+				new ItemStack(ConfigItems.itemIngot, 1, 7), 'H', Items.stick, 'C', new ItemStack(ConfigItems.itemMachinePart, 1, 9) });
 		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.itemRayGun), new Object[] { " BB", "EBE", "  B", 'E', Items.emerald, 'B',
 				Items.iron_ingot });
 		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.itemShrinkray), new Object[] { " BB", "EBE", "  B", 'E', Items.diamond, 'B',
@@ -243,6 +241,12 @@ public class ConfigRecipes
 				'I', new ItemStack(Items.iron_ingot) });
 		GameRegistry.addShapelessRecipe(new ItemStack(ConfigItems.itemMatch), new Object[] { new ItemStack(ConfigItems.itemResource, 1, 4),
 				new ItemStack(Items.stick) });
+
+		GameRegistry.addRecipe(new ItemStack(ConfigBlocks.blockSlate,4,6), "SS", "SS", 'S', new ItemStack(ConfigBlocks.blockSlate, 1, 0));
+		GameRegistry.addRecipe(new ItemStack(ConfigBlocks.blockSlate,4,7), "SS", "SS", 'S', new ItemStack(ConfigBlocks.blockSlate, 1, 1));
+		GameRegistry.addRecipe(new ItemStack(ConfigBlocks.blockSlate,4,8), "SS", "SS", 'S', new ItemStack(ConfigBlocks.blockSlate, 1, 2));
+
+		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.itemMachinePart, 1, 9),"  X", " X ", "X  ",'X', new ItemStack(ConfigItems.itemIngot, 1, 7));
 	}
 
 	public static void initializeSmeltingRecipes()
@@ -256,6 +260,10 @@ public class ConfigRecipes
 		// Misc
 		GameRegistry.addSmelting(Blocks.iron_block, new ItemStack(ConfigBlocks.blockMetal, 1, 7), 0.2F);
 		GameRegistry.addSmelting(new ItemStack(ConfigItems.itemResource, 1, 6), new ItemStack(ConfigItems.itemResource, 1, 5), 0.5F);
+
+		GameRegistry.addSmelting(new ItemStack(ConfigBlocks.blockSlate, 1, 3), new ItemStack(ConfigBlocks.blockSlate, 1, 0), 0.3F);
+		GameRegistry.addSmelting(new ItemStack(ConfigBlocks.blockSlate, 1, 4), new ItemStack(ConfigBlocks.blockSlate, 1, 1), 0.3F);
+		GameRegistry.addSmelting(new ItemStack(ConfigBlocks.blockSlate, 1, 5), new ItemStack(ConfigBlocks.blockSlate, 1, 2), 0.3F);
 	}
 
 }
