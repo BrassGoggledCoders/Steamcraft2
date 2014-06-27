@@ -1,5 +1,5 @@
 /*
- * 
+ *
  */
 package steamcraft.common.blocks;
 
@@ -24,11 +24,11 @@ public class BaseBlock extends Block
 
 	/**
 	 * Instantiates a new base block.
-	 * 
+	 *
 	 * @param p_i45394_1_
 	 *            the p_i45394_1_
 	 */
-	protected BaseBlock(Material p_i45394_1_)
+	public BaseBlock(Material p_i45394_1_)
 	{
 		super(p_i45394_1_);
 		setCreativeTab(Steamcraft.tabSC2);
@@ -36,7 +36,7 @@ public class BaseBlock extends Block
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.minecraft.block.Block#registerBlockIcons(net.minecraft.client.renderer
 	 * .texture.IIconRegister)
@@ -50,7 +50,7 @@ public class BaseBlock extends Block
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.minecraft.block.Block#getIcon(int, int)
 	 */
 	@Override
