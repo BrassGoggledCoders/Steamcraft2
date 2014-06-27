@@ -13,9 +13,6 @@
  */
 package steamcraft.common.lib;
 
-import java.util.Collections;
-import java.util.List;
-
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import steamcraft.common.config.ConfigItems;

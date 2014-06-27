@@ -1,9 +1,9 @@
 package steamcraft.common.blocks.tiles;
 
-import steamcraft.common.tiles.TileTurbine;
 import net.minecraft.block.material.Material;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+import steamcraft.common.tiles.TileTurbine;
 
 public class BlockTurbine extends BlockContainerMod
 {

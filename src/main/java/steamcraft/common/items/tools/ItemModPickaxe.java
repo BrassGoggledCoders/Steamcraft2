@@ -8,7 +8,6 @@ import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import steamcraft.common.lib.MaterialHelper;
 
 // TODO: Auto-generated Javadoc
 /**

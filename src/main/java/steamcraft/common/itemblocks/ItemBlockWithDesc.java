@@ -2,13 +2,13 @@ package steamcraft.common.itemblocks;
 
 import java.util.List;
 
-import boilerplate.client.ClientHelper;
-import boilerplate.common.utils.StringUtils;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
+import boilerplate.client.ClientHelper;
+import boilerplate.common.utils.StringUtils;
 
 public class ItemBlockWithDesc extends ItemBlock
 {
