@@ -144,8 +144,6 @@ public class ConfigItems
 	public static Item itemEmptyTeacup;
 	public static Item itemFullTeacup;
 
-	public static Item itemMusketRound;
-
 	public static Item itemBucketSteam;
 
 	public static Item itemPipe;

@@ -39,9 +39,9 @@ import cpw.mods.fml.relauncher.SideOnly;
  * NOTE: Please do not tamper with this file unless you know vectors and
  * trigonometric functions very well. Thank you. I have, however, cleaned up the
  * code to make things easier to understand.
- * 
+ *
  * @author Surseance (Johnny Eatmon)
- * 
+ *
  */
 public class EntityBullet extends Entity implements IProjectile
 {
@@ -84,7 +84,7 @@ public class EntityBullet extends Entity implements IProjectile
 
 	/**
 	 * Instantiates a new entity bullet.
-	 * 
+	 *
 	 * @param world
 	 *            the world
 	 */
@@ -97,7 +97,7 @@ public class EntityBullet extends Entity implements IProjectile
 
 	/**
 	 * Instantiates a new entity bullet.
-	 * 
+	 *
 	 * @param world
 	 *            the world
 	 * @param dx
@@ -118,7 +118,7 @@ public class EntityBullet extends Entity implements IProjectile
 
 	/**
 	 * Instantiates a new entity bullet.
-	 * 
+	 *
 	 * @param world
 	 *            the world
 	 * @param shooter
@@ -165,7 +165,7 @@ public class EntityBullet extends Entity implements IProjectile
 
 	/**
 	 * Instantiates a new entity bullet.
-	 * 
+	 *
 	 * @param world
 	 *            the world
 	 * @param shooter
@@ -201,7 +201,7 @@ public class EntityBullet extends Entity implements IProjectile
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.minecraft.entity.Entity#entityInit()
 	 */
 	@Override
@@ -212,7 +212,7 @@ public class EntityBullet extends Entity implements IProjectile
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.minecraft.entity.IProjectile#setThrowableHeading(double, double,
 	 * double, float, float)
 	 */
@@ -241,7 +241,7 @@ public class EntityBullet extends Entity implements IProjectile
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.minecraft.entity.Entity#setPositionAndRotation2(double, double,
 	 * double, float, float, int)
 	 */
@@ -255,7 +255,7 @@ public class EntityBullet extends Entity implements IProjectile
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.minecraft.entity.Entity#setVelocity(double, double, double)
 	 */
 	@Override
@@ -276,7 +276,7 @@ public class EntityBullet extends Entity implements IProjectile
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.minecraft.entity.Entity#onUpdate()
 	 */
 	@Override
@@ -462,7 +462,7 @@ public class EntityBullet extends Entity implements IProjectile
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.minecraft.entity.Entity#writeEntityToNBT(net.minecraft.nbt.NBTTagCompound
 	 * )
@@ -480,7 +480,7 @@ public class EntityBullet extends Entity implements IProjectile
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.minecraft.entity.Entity#readEntityFromNBT(net.minecraft.nbt.
 	 * NBTTagCompound)
 	 */
@@ -497,33 +497,7 @@ public class EntityBullet extends Entity implements IProjectile
 
 	/*
 	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * net.minecraft.entity.Entity#onCollideWithPlayer(net.minecraft.entity.
-	 * player.EntityPlayer)
-	 */
-	@Override
-	public void onCollideWithPlayer(EntityPlayer player)
-	{
-		if (!worldObj.isRemote && inGround && (arrowShake <= 0))
-		{
-			boolean flag = (canBePickedUp == 1) || ((canBePickedUp == 2) && player.capabilities.isCreativeMode);
-
-			if ((canBePickedUp == 1) && !player.inventory.addItemStackToInventory(new ItemStack(ConfigItems.itemMusketRound, 1)))
-				flag = false;
-
-			if (flag)
-			{
-				playSound("random.pop", 0.2F, (((rand.nextFloat() - rand.nextFloat()) * 0.7F) + 1.0F) * 2.0F);
-				player.onItemPickup(this, 1);
-				setDead();
-			}
-		}
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.minecraft.entity.Entity#canTriggerWalking()
 	 */
 	@Override
@@ -534,7 +508,7 @@ public class EntityBullet extends Entity implements IProjectile
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.minecraft.entity.Entity#getShadowSize()
 	 */
 	@Override
@@ -546,7 +520,7 @@ public class EntityBullet extends Entity implements IProjectile
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.minecraft.entity.Entity#canAttackWithItem()
 	 */
 	@Override
