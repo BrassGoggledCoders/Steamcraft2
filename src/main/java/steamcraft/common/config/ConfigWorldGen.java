@@ -26,7 +26,7 @@ import cpw.mods.fml.common.IWorldGenerator;
 // TODO: Auto-generated Javadoc
 /**
  * The Class SteamcraftWorldGenerator.
- * 
+ *
  * @authors Surseance & warlordjones
  */
 public class ConfigWorldGen implements IWorldGenerator
@@ -34,7 +34,7 @@ public class ConfigWorldGen implements IWorldGenerator
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see cpw.mods.fml.common.IWorldGenerator#generate(java.util.Random, int,
 	 * int, net.minecraft.world.World, net.minecraft.world.chunk.IChunkProvider,
 	 * net.minecraft.world.chunk.IChunkProvider)
@@ -65,7 +65,7 @@ public class ConfigWorldGen implements IWorldGenerator
 	// TODO: Add Config Options for ore vein size
 	/**
 	 * Generate surface.
-	 * 
+	 *
 	 * @param world
 	 *            the world
 	 * @param random
@@ -95,18 +95,18 @@ public class ConfigWorldGen implements IWorldGenerator
 					Blocks.stone);
 		if (Config.slateGenEnabled)
 		{
-			generateOre(world, random, chunkX, chunkZ, Config.slateChance, Config.slateHeight, random.nextInt(30), ConfigBlocks.blockSlate, 0,
+			generateOre(world, random, chunkX, chunkZ, Config.slateChance, Config.slateHeight, 30, ConfigBlocks.blockSlate, 0,
 					Blocks.stone);
-			generateOre(world, random, chunkX, chunkZ, Config.slateChance, Config.slateHeight, random.nextInt(30), ConfigBlocks.blockSlate, 1,
+			generateOre(world, random, chunkX, chunkZ, Config.slateChance, Config.slateHeight, 30, ConfigBlocks.blockSlate, 1,
 					Blocks.stone);
-			generateOre(world, random, chunkX, chunkZ, Config.slateChance, Config.slateHeight, random.nextInt(30), ConfigBlocks.blockSlate, 2,
+			generateOre(world, random, chunkX, chunkZ, Config.slateChance, Config.slateHeight, 30, ConfigBlocks.blockSlate, 2,
 					Blocks.stone);
 		}
 	}
 
 	/**
 	 * Generate ore.
-	 * 
+	 *
 	 * @param world
 	 *            the world
 	 * @param random
@@ -143,7 +143,7 @@ public class ConfigWorldGen implements IWorldGenerator
 
 	/**
 	 * Generate nether.
-	 * 
+	 *
 	 * @param world
 	 *            the world
 	 * @param random
@@ -162,7 +162,7 @@ public class ConfigWorldGen implements IWorldGenerator
 
 	/**
 	 * Generate end.
-	 * 
+	 *
 	 * @param world
 	 *            the world
 	 * @param random

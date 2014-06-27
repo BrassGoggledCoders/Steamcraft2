@@ -13,6 +13,7 @@
  */
 package steamcraft.common.blocks;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.block.Block;
@@ -22,7 +23,9 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
+import net.minecraft.world.World;
 import steamcraft.common.config.ConfigBlocks;
+import steamcraft.common.config.ConfigItems;
 import steamcraft.common.lib.LibInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -30,7 +33,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 // TODO: Auto-generated Javadoc
 /**
  * The Class BlockSlate.
- * 
+ *
  * @author warlordjones
  */
 public class BlockSlate extends BaseBlock
@@ -53,7 +56,7 @@ public class BlockSlate extends BaseBlock
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.minecraft.block.Block#getIcon(int, int)
 	 */
 	@Override
@@ -65,7 +68,7 @@ public class BlockSlate extends BaseBlock
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.minecraft.block.Block#registerBlockIcons(net.minecraft.client.renderer
 	 * .texture.IIconRegister)
@@ -91,7 +94,7 @@ public class BlockSlate extends BaseBlock
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.minecraft.item.Item#getSubItems(net.minecraft.item.Item,
 	 * net.minecraft.creativetab.CreativeTabs, java.util.List)
 	 */
@@ -102,5 +105,28 @@ public class BlockSlate extends BaseBlock
 	{
 		for (int var4 = 0; var4 < 8; ++var4)
 			l.add(new ItemStack(ConfigBlocks.blockSlate, 1, var4));
+	}
+	@Override
+	public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune)
+	{
+		ArrayList<ItemStack> drop = new ArrayList<ItemStack>();
+
+		switch (metadata)
+		{
+		case 0:
+			drop.add(new ItemStack(ConfigBlocks.blockSlate, 1, 3));
+			break;
+		case 1:
+			drop.add(new ItemStack(ConfigBlocks.blockSlate, 1, 4));
+			break;
+		case 2:
+			drop.add(new ItemStack(ConfigBlocks.blockSlate, 1, 5));
+			break;
+		default:
+			drop.add(0, new ItemStack(ConfigBlocks.blockSlate, 1, metadata));
+			break;
+		}
+
+		return drop;
 	}
 }
