@@ -18,8 +18,8 @@ public class ItemHammer extends BaseItem
 	 */
 	public ItemHammer()
 	{
-		this.setMaxStackSize(1);
-		this.setMaxDamage(ToolMaterial.IRON.getMaxUses());
+		setMaxStackSize(1);
+		setMaxDamage(ToolMaterial.IRON.getMaxUses());
 	}
 
 	/*

@@ -21,7 +21,7 @@ import cpw.mods.fml.common.FMLLog;
 // TODO: Auto-generated Javadoc
 /**
  * The Class LoggerSteamcraft.
- *
+ * 
  * @author Surseance (Johnny Eatmon)
  */
 public class LoggerSteamcraft
@@ -40,7 +40,7 @@ public class LoggerSteamcraft
 
 	/**
 	 * Log.
-	 *
+	 * 
 	 * @param level
 	 *            the level
 	 * @param message

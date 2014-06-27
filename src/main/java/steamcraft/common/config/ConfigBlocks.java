@@ -59,7 +59,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 // TODO: Auto-generated Javadoc
 /**
  * The Class ConfigBlocks.
- *
+ * 
  * @author Surseance (Johnny Eatmon)
  */
 public class ConfigBlocks
@@ -166,7 +166,8 @@ public class ConfigBlocks
 		// blockDropHammer = new
 		// BlockDropHammer(Material.anvil).setBlockName("blockDropHammer");
 		blockDropHammerAnvil = new BlockDropHammerAnvil(Material.anvil).setBlockName("blockDropHammerAnvil");
-		//blockDropHammerFrame = new BlockDropHammerFrame(Material.iron).setBlockName("blockDropHammerFrame");
+		// blockDropHammerFrame = new
+		// BlockDropHammerFrame(Material.iron).setBlockName("blockDropHammerFrame");
 		blockMetal = new BlockMetal();
 		blockUranium = new BlockUranium(Material.iron).setBlockName("blockUranium");
 		blockEtherium = new BaseBlock(Material.iron).setBlockName("blockEtherium");
@@ -182,7 +183,7 @@ public class ConfigBlocks
 
 		steamFluid = new FluidSteam("steam");
 		if (!FluidRegistry.registerFluid(steamFluid) && !FluidRegistry.isFluidRegistered("steam"))
-		steamFluid = FluidRegistry.getFluid("steam");
+			steamFluid = FluidRegistry.getFluid("steam");
 
 		blockSteam = new BlockFluidSteam(steamFluid, Material.lava);
 	}
@@ -203,7 +204,8 @@ public class ConfigBlocks
 		// GameRegistry.registerBlock(blockCastIronLampI, "BlockCastIronLampI");
 		// GameRegistry.registerBlock(blockCastIronLampA, "BlockCastIronLampA");
 		// GameRegistry.registerBlock(blockFluidSteam, "BlockFluidSteam");
-		//GameRegistry.registerBlock(blockDropHammerFrame, "BlockDropHammerFrame");
+		// GameRegistry.registerBlock(blockDropHammerFrame,
+		// "BlockDropHammerFrame");
 		RegistryHelper.registerContainerBlock(blockCrystal, TileCrystal.class, "BlockCrystal");
 		RegistryHelper.registerContainerBlock(blockSteamBoiler, TileSteamBoiler.class, "BlockSteamBoiler");
 
@@ -216,7 +218,8 @@ public class ConfigBlocks
 		GameRegistry.registerBlock(blockCopperTank, "BlockCopperTank");
 		GameRegistry.registerBlock(blockCopperWire, "BlockCopperWire");
 		RegistryHelper.registerContainerBlock(blockTurbine, TileTurbine.class, "BlockTurbine");
-		//RegistryHelper.registerContainerBlock(blockCharger, TileCharger.class, "BlockCharger");
+		// RegistryHelper.registerContainerBlock(blockCharger,
+		// TileCharger.class, "BlockCharger");
 		GameRegistry.registerBlock(blockMetal, ItemBlockMetal.class, "BlockMetal");
 		GameRegistry.registerBlock(blockUranium, "BlockUranium");
 

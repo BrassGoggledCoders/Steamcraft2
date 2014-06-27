@@ -31,7 +31,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 // TODO: Auto-generated Javadoc
 /**
  * The Class Utils.
- *
+ * 
  * @author Surseance (Johnny Eatmon)
  */
 public class Utils
@@ -45,7 +45,7 @@ public class Utils
 
 	/**
 	 * Check for updated version.
-	 *
+	 * 
 	 * @param name
 	 *            the name
 	 * @param version
@@ -64,9 +64,7 @@ public class Utils
 			newestVersion = newVersion;
 
 			if (version.compareTo(newVersion) != 0)
-			{
 				return true;
-			}
 		} catch (Exception e)
 		{
 			LoggerSteamcraft.log(Level.FINEST, "Could not establish a connection to Dropbox.com; no worries!");
@@ -84,7 +82,6 @@ public class Utils
 		String[] developers = getUsersFromUrl("https://www.dropbox.com/s/m7tn0tx7y7w630s/devs.txt");
 
 		for (String username : developers)
-		{
 			try
 			{
 				ThreadDownloadImageData imageData = new ThreadDownloadImageData("https://www.dropbox.com/s/cicvp1u0kq9xtbp/steamcraft_cape_1.png",
@@ -94,7 +91,6 @@ public class Utils
 			{
 				LoggerSteamcraft.log(Level.INFO, "Unable to load capes");
 			}
-		}
 
 		// String donators[] = getUsersFromUrl(LibInfo.DONATOR_LIST);
 		/*
@@ -109,7 +105,7 @@ public class Utils
 
 	/**
 	 * Gets the users from url.
-	 *
+	 * 
 	 * @param url
 	 *            the url
 	 * @return the users from url
@@ -123,9 +119,7 @@ public class Utils
 			String line;
 
 			while ((line = urlReader.readLine()) != null)
-			{
 				list.add(line);
-			}
 
 			return list.toArray(new String[list.size()]);
 		} catch (Exception e)

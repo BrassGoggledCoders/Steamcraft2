@@ -55,29 +55,23 @@ public class ItemTeaSeed extends BaseItem implements IPlantable
 			final float hitX, final float hitY, final float hitZ)
 	{
 		if (side != 1)
-		{
 			return false;
-		}
 		else if (player.canPlayerEdit(x, y, z, side, is) && player.canPlayerEdit(x, y + 1, z, side, is))
 		{
 			world.getBlock(x, y, z);
 			final Block soil = Blocks.farmland;
 
-			if (soil != null && soil.canSustainPlant(world, x, y, z, ForgeDirection.UP, this) && world.isAirBlock(x, y + 1, z))
+			if ((soil != null) && soil.canSustainPlant(world, x, y, z, ForgeDirection.UP, this) && world.isAirBlock(x, y + 1, z))
 			{
 				world.setBlockToAir(x, y + 1, z);
 				--is.stackSize;
 				return true;
 			}
 			else
-			{
 				return false;
-			}
 		}
 		else
-		{
 			return false;
-		}
 	}
 
 	/*

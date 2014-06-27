@@ -34,18 +34,18 @@ import cpw.mods.fml.relauncher.SideOnly;
 // TODO: Auto-generated Javadoc
 /**
  * The Class BlockCustomOre.
- *
+ * 
  * @author Surseance (Johnny Eatmon)
  */
 public class BlockCustomOre extends BaseBlock implements IHammerable
 {
 
 	/** The icon. */
-	private  IIcon[] icon = new IIcon[7];
+	private IIcon[] icon = new IIcon[7];
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see net.minecraft.block.Block#getIcon(int, int)
 	 */
 	@Override
@@ -57,14 +57,14 @@ public class BlockCustomOre extends BaseBlock implements IHammerable
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see
 	 * net.minecraft.block.Block#registerBlockIcons(net.minecraft.client.renderer
 	 * .texture.IIconRegister)
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons( IIconRegister ir)
+	public void registerBlockIcons(IIconRegister ir)
 	{
 		icon[0] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "oreAluminum");
 		icon[1] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "oreCopper");
@@ -87,44 +87,46 @@ public class BlockCustomOre extends BaseBlock implements IHammerable
 		setStepSound(Block.soundTypeStone);
 		setTickRandomly(true);
 	}
+
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void getSubBlocks( Item item,  CreativeTabs tab,  List l)
+	public void getSubBlocks(Item item, CreativeTabs tab, List l)
 	{
 		for (int var4 = 0; var4 < 7; ++var4)
-		{
 			l.add(new ItemStack(ConfigBlocks.blockCustomOre, 1, var4));
-		}
 	}
 
 	@Override
 	public ItemStack getOutput(int meta)
 	{
-		if(meta < 4)
-		return new ItemStack(ConfigItems.itemPowder);
-		else return null;
+		if (meta < 4)
+			return new ItemStack(ConfigItems.itemPowder);
+		else
+			return null;
 	}
+
 	@Override
-    public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune)
-    {
-        ArrayList<ItemStack> drop = new ArrayList<ItemStack>();
+	public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune)
+	{
+		ArrayList<ItemStack> drop = new ArrayList<ItemStack>();
 
-        switch (metadata) {
-        	case 4:
-        		drop.add(new ItemStack(ConfigItems.itemResource, 1, 4));
-        		break;
-            case 5:
-                drop.add(new ItemStack(ConfigItems.itemResource, 1, 1));
-                break;
-            case 6:
-            	drop.add(new ItemStack(ConfigItems.itemResource, 1, 3));
-            	break;
-             default:
-            	drop.add(0, new ItemStack(ConfigBlocks.blockCustomOre, 1, metadata));
-            	break;
-        }
+		switch (metadata)
+		{
+		case 4:
+			drop.add(new ItemStack(ConfigItems.itemResource, 1, 4));
+			break;
+		case 5:
+			drop.add(new ItemStack(ConfigItems.itemResource, 1, 1));
+			break;
+		case 6:
+			drop.add(new ItemStack(ConfigItems.itemResource, 1, 3));
+			break;
+		default:
+			drop.add(0, new ItemStack(ConfigBlocks.blockCustomOre, 1, metadata));
+			break;
+		}
 
-        return drop;
-    }
+		return drop;
+	}
 }

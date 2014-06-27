@@ -46,13 +46,9 @@ public class ItemNormalArmor extends BaseArmor
 	@SideOnly(Side.CLIENT)
 	public String getArmorTexture(ItemStack is, Entity entity, int slot, String type)
 	{
-		if (this.getArmorMaterial() == MaterialHelper.ARMOR_ETHERIUM)
-		{
+		if (getArmorMaterial() == MaterialHelper.ARMOR_ETHERIUM)
 			return slot == 2 ? LibInfo.PREFIX + "textures/armor/etherium_2.png" : LibInfo.PREFIX + "textures/armor/etherium_1.png";
-		}
 		else
-		{
 			return slot == 2 ? LibInfo.PREFIX + "textures/armor/obsidian_2.png" : LibInfo.PREFIX + "textures/armor/obsidian_1.png";
-		}
 	}
 }

@@ -111,9 +111,7 @@ public abstract class NetworkTile extends TileEntity
 		super.updateEntity();
 
 		if ((!worldObj.isRemote) && (isMarkedForResend()))
-		{
 			setMarkedForResend(false);
-		}
 	}
 
 	/**

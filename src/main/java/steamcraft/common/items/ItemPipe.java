@@ -74,8 +74,6 @@ public class ItemPipe extends BaseItem
 	public void getSubItems(final Item item, final CreativeTabs tab, final List l)
 	{
 		for (int var4 = 0; var4 < 1; ++var4)
-		{
 			l.add(new ItemStack(ConfigItems.itemPipe, 1, var4));
-		}
 	}
 }

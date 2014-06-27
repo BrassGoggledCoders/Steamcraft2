@@ -27,7 +27,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 // TODO: Auto-generated Javadoc
 /**
  * The Class ItemResource.
- *
+ * 
  * @author Surseance (Johnny Eatmon)
  */
 public class ItemParts extends BaseItemWithMetadata
@@ -36,9 +36,10 @@ public class ItemParts extends BaseItemWithMetadata
 	/** The item icon. */
 	IIcon[] itemIcon = new IIcon[10];
 	private String material;
+
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see
 	 * net.minecraft.item.Item#registerIcons(net.minecraft.client.renderer.texture
 	 * .IIconRegister)
@@ -47,16 +48,16 @@ public class ItemParts extends BaseItemWithMetadata
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister ir)
 	{
-		itemIcon[0] = ir.registerIcon(LibInfo.PREFIX + "parts/"+ "item" + getMaterial() + "Gear");
-		itemIcon[1] = ir.registerIcon(LibInfo.PREFIX + "parts/"+ "item" + getMaterial() + "Sprocket");
-		itemIcon[2] = ir.registerIcon(LibInfo.PREFIX + "parts/"+ "item" + getMaterial() + "Spring");
-		itemIcon[3] = ir.registerIcon(LibInfo.PREFIX + "parts/"+ "item" + getMaterial() + "Thread");
-		itemIcon[4] = ir.registerIcon(LibInfo.PREFIX + "parts/"+ "item" + getMaterial() + "Nut");
-		itemIcon[5] = ir.registerIcon(LibInfo.PREFIX + "parts/"+ "item" + getMaterial() + "Bolt");
-		itemIcon[6] = ir.registerIcon(LibInfo.PREFIX + "parts/"+ "item" + getMaterial() + "Washer");
-		itemIcon[7] = ir.registerIcon(LibInfo.PREFIX + "parts/"+ "item" + getMaterial() + "Bearing");
-		itemIcon[8] = ir.registerIcon(LibInfo.PREFIX + "parts/"+ "item" + getMaterial() + "Screw");
-		itemIcon[9] = ir.registerIcon(LibInfo.PREFIX + "parts/"+ "item" + getMaterial() + "Nail");
+		itemIcon[0] = ir.registerIcon(LibInfo.PREFIX + "parts/" + "item" + getMaterial() + "Gear");
+		itemIcon[1] = ir.registerIcon(LibInfo.PREFIX + "parts/" + "item" + getMaterial() + "Sprocket");
+		itemIcon[2] = ir.registerIcon(LibInfo.PREFIX + "parts/" + "item" + getMaterial() + "Spring");
+		itemIcon[3] = ir.registerIcon(LibInfo.PREFIX + "parts/" + "item" + getMaterial() + "Thread");
+		itemIcon[4] = ir.registerIcon(LibInfo.PREFIX + "parts/" + "item" + getMaterial() + "Nut");
+		itemIcon[5] = ir.registerIcon(LibInfo.PREFIX + "parts/" + "item" + getMaterial() + "Bolt");
+		itemIcon[6] = ir.registerIcon(LibInfo.PREFIX + "parts/" + "item" + getMaterial() + "Washer");
+		itemIcon[7] = ir.registerIcon(LibInfo.PREFIX + "parts/" + "item" + getMaterial() + "Bearing");
+		itemIcon[8] = ir.registerIcon(LibInfo.PREFIX + "parts/" + "item" + getMaterial() + "Screw");
+		itemIcon[9] = ir.registerIcon(LibInfo.PREFIX + "parts/" + "item" + getMaterial() + "Nail");
 	}
 
 	/**
@@ -70,7 +71,7 @@ public class ItemParts extends BaseItemWithMetadata
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see net.minecraft.item.Item#getSubItems(net.minecraft.item.Item,
 	 * net.minecraft.creativetab.CreativeTabs, java.util.List)
 	 */
@@ -80,14 +81,12 @@ public class ItemParts extends BaseItemWithMetadata
 	public void getSubItems(Item item, CreativeTabs tab, List l)
 	{
 		for (int var4 = 0; var4 < itemIcon.length; ++var4)
-		{
 			l.add(new ItemStack(this, 1, var4));
-		}
 	}
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see net.minecraft.item.Item#getIconFromDamage(int)
 	 */
 	@Override

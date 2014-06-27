@@ -65,7 +65,7 @@ public class BlockSteamBoiler extends BlockContainerMod
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see net.minecraft.block.Block#damageDropped(int)
 	 */
 	@Override
@@ -76,7 +76,7 @@ public class BlockSteamBoiler extends BlockContainerMod
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see net.minecraft.block.Block#getIcon(int, int)
 	 */
 	@SideOnly(Side.CLIENT)
@@ -84,29 +84,25 @@ public class BlockSteamBoiler extends BlockContainerMod
 	public IIcon getIcon(int side, int meta)
 	{
 		if (side == (meta - 7))
-		{
-			return this.iconFrontActive;
-		}
+			return iconFrontActive;
 		if (((meta == 0) && (side == 3)) || (side == meta))
-		{
-			return this.iconFront;
-		}
+			return iconFront;
 		switch (side)
 		{
 		case 0:
-			return this.iconTop; // bottom
+			return iconTop; // bottom
 
 		case 1:
-			return this.iconTop; // top
+			return iconTop; // top
 
 		default:
-			return this.blockIcon; // sides
+			return blockIcon; // sides
 		}
 	}
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see
 	 * net.minecraft.block.Block#registerBlockIcons(net.minecraft.client.renderer
 	 * .texture.IIconRegister)
@@ -115,15 +111,15 @@ public class BlockSteamBoiler extends BlockContainerMod
 	@Override
 	public void registerBlockIcons(IIconRegister icon)
 	{
-		this.blockIcon = icon.registerIcon(LibInfo.PREFIX + "blockSteamBoilerSide");
-		this.iconFront = icon.registerIcon(LibInfo.PREFIX + "blockSteamBoilerFrontInactive");
-		this.iconFrontActive = icon.registerIcon(LibInfo.PREFIX + "blockSteamBoilerFrontActive");
-		this.iconTop = icon.registerIcon(LibInfo.PREFIX + "blockSteamBoilerTop");
+		blockIcon = icon.registerIcon(LibInfo.PREFIX + "blockSteamBoilerSide");
+		iconFront = icon.registerIcon(LibInfo.PREFIX + "blockSteamBoilerFrontInactive");
+		iconFrontActive = icon.registerIcon(LibInfo.PREFIX + "blockSteamBoilerFrontActive");
+		iconTop = icon.registerIcon(LibInfo.PREFIX + "blockSteamBoilerTop");
 	}
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see
 	 * net.minecraft.block.Block#onBlockActivated(net.minecraft.world.World,
 	 * int, int, int, net.minecraft.entity.player.EntityPlayer, int, float,
@@ -149,7 +145,7 @@ public class BlockSteamBoiler extends BlockContainerMod
 
 	/**
 	 * Update furnace block state.
-	 *
+	 * 
 	 * @param par0
 	 *            the par0
 	 * @param par1World
@@ -169,13 +165,9 @@ public class BlockSteamBoiler extends BlockContainerMod
 		keepInventory = true;
 
 		if (par0)
-		{
 			par1World.setBlockMetadataWithNotify(par2, par3, par4, var5 + 7, 2);
-		}
 		else
-		{
 			par1World.setBlockMetadataWithNotify(par2, par3, par4, var5 - 7, 2);
-		}
 
 		keepInventory = false;
 
@@ -188,7 +180,7 @@ public class BlockSteamBoiler extends BlockContainerMod
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see
 	 * net.minecraft.block.Block#randomDisplayTick(net.minecraft.world.World,
 	 * int, int, int, java.util.Random)
@@ -231,7 +223,7 @@ public class BlockSteamBoiler extends BlockContainerMod
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see
 	 * net.minecraft.block.ITileEntityProvider#createNewTileEntity(net.minecraft
 	 * .world.World, int)
@@ -244,7 +236,7 @@ public class BlockSteamBoiler extends BlockContainerMod
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see
 	 * steamcraft.common.blocks.machine.BlockContainerMod#onBlockPlacedBy(net
 	 * .minecraft.world.World, int, int, int,
@@ -256,31 +248,23 @@ public class BlockSteamBoiler extends BlockContainerMod
 		int l = MathHelper.floor_double(((living.rotationYaw * 4.0F) / 360.0F) + 0.5D) & 3;
 
 		if (l == 0)
-		{
 			world.setBlockMetadataWithNotify(x, y, z, 2, 2);
-		}
 
 		if (l == 1)
-		{
 			world.setBlockMetadataWithNotify(x, y, z, 5, 2);
-		}
 
 		if (l == 2)
-		{
 			world.setBlockMetadataWithNotify(x, y, z, 3, 2);
-		}
 
 		if (l == 3)
-		{
 			world.setBlockMetadataWithNotify(x, y, z, 4, 2);
-		}
 
 		super.onBlockPlacedBy(world, x, y, z, living, stack);
 	}
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see
 	 * steamcraft.common.blocks.machine.BlockContainerMod#breakBlock(net.minecraft
 	 * .world.World, int, int, int, net.minecraft.block.Block, int)
@@ -293,44 +277,38 @@ public class BlockSteamBoiler extends BlockContainerMod
 			TileSteamBoiler var7 = (TileSteamBoiler) par1World.getTileEntity(par2, par3, par4);
 
 			if (var7 != null)
-			{
 				for (int var8 = 0; var8 < var7.getSizeInventory(); ++var8)
 				{
 					ItemStack var9 = var7.getStackInSlot(var8);
 
 					if (var9 != null)
 					{
-						float var10 = (this.random.nextFloat() * 0.8F) + 0.1F;
-						float var11 = (this.random.nextFloat() * 0.8F) + 0.1F;
-						float var12 = (this.random.nextFloat() * 0.8F) + 0.1F;
+						float var10 = (random.nextFloat() * 0.8F) + 0.1F;
+						float var11 = (random.nextFloat() * 0.8F) + 0.1F;
+						float var12 = (random.nextFloat() * 0.8F) + 0.1F;
 
 						while (var9.stackSize > 0)
 						{
-							int var13 = this.random.nextInt(21) + 10;
+							int var13 = random.nextInt(21) + 10;
 
 							if (var13 > var9.stackSize)
-							{
 								var13 = var9.stackSize;
-							}
 
 							var9.stackSize -= var13;
 							EntityItem var14 = new EntityItem(par1World, par2 + var10, par3 + var11, par4 + var12, new ItemStack(var9.getItem(),
 									var13, var9.getItemDamage()));
 
 							if (var9.hasTagCompound())
-							{
 								var14.getEntityItem().setTagCompound((NBTTagCompound) var9.getTagCompound().copy());
-							}
 
 							float var15 = 0.05F;
-							var14.motionX = (float) this.random.nextGaussian() * var15;
-							var14.motionY = ((float) this.random.nextGaussian() * var15) + 0.2F;
-							var14.motionZ = (float) this.random.nextGaussian() * var15;
+							var14.motionX = (float) random.nextGaussian() * var15;
+							var14.motionY = ((float) random.nextGaussian() * var15) + 0.2F;
+							var14.motionZ = (float) random.nextGaussian() * var15;
 							par1World.spawnEntityInWorld(var14);
 						}
 					}
 				}
-			}
 		}
 
 		super.breakBlock(par1World, par2, par3, par4, block, par6);
@@ -338,7 +316,7 @@ public class BlockSteamBoiler extends BlockContainerMod
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see net.minecraft.block.Block#hasComparatorInputOverride()
 	 */
 	@Override
@@ -349,7 +327,7 @@ public class BlockSteamBoiler extends BlockContainerMod
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see
 	 * net.minecraft.block.Block#getComparatorInputOverride(net.minecraft.world
 	 * .World, int, int, int, int)

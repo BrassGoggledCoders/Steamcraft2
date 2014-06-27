@@ -21,25 +21,23 @@ public class ItemModSword extends ItemModTool
 
 	/**
 	 * Instantiates a new item mod sword.
-	 *
+	 * 
 	 * @param toolMat
 	 *            the tool mat
 	 */
 	public ItemModSword(ToolMaterial toolMat)
 	{
 		super(toolMat.getDamageVsEntity() + 4.0F, toolMat, blocksEffectiveAgainst);
-		this.toolMaterial = toolMat;
-		this.maxStackSize = 1;
-		this.setMaxDamage(toolMat.getMaxUses());
+		toolMaterial = toolMat;
+		maxStackSize = 1;
+		setMaxDamage(toolMat.getMaxUses());
 	}
 
 	@Override
 	public float getDigSpeed(ItemStack stack, Block block, int metadata)
 	{
 		if (block == Blocks.web)
-		{
 			return 15.0F;
-		}
 		else
 		{
 			Material material = block.getMaterial();
@@ -52,9 +50,7 @@ public class ItemModSword extends ItemModTool
 	public boolean onBlockDestroyed(ItemStack stack, World world, Block block, int x, int y, int z, EntityLivingBase living)
 	{
 		if (block.getBlockHardness(world, x, y, z) != 0.0D)
-		{
 			stack.damageItem(2, living);
-		}
 
 		return true;
 	}
@@ -74,7 +70,7 @@ public class ItemModSword extends ItemModTool
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
 	{
-		player.setItemInUse(stack, this.getMaxItemUseDuration(stack));
+		player.setItemInUse(stack, getMaxItemUseDuration(stack));
 		return stack;
 	}
 
@@ -87,36 +83,23 @@ public class ItemModSword extends ItemModTool
 	@Override
 	public int getItemEnchantability()
 	{
-		return this.toolMaterial.getEnchantability();
+		return toolMaterial.getEnchantability();
 	}
 
 	@Override
 	public boolean getIsRepairable(ItemStack stack1, ItemStack stack2)
 	{
 		Item item = stack2.getItem();
-		return this.toolMaterial.func_150995_f() == item ? true : super.getIsRepairable(stack1, stack2);
+		return toolMaterial.func_150995_f() == item ? true : super.getIsRepairable(stack1, stack2);
 	}
-	
+
 	/*
-	@Override
-	public boolean onLeftClickEntity(ItemStack stack, EntityPlayer player, Entity entity)
-	{
-		if (this.isSteampowered())
-		{
-			NBTTagCompound tag = stack.getTagCompound();
-			if (tag.getBoolean("hasCanister"))
-			{
-				entity.attackEntityFrom(DamageSource.causePlayerDamage(player), this.toolMaterial.getDamageVsEntity());
-				return true;
-			}
-			else
-				return false;
-		}
-		else
-		{
-			entity.attackEntityFrom(DamageSource.causePlayerDamage(player), this.toolMaterial.getDamageVsEntity());
-			return true;
-		}
-	}
-	*/
+	 * @Override public boolean onLeftClickEntity(ItemStack stack, EntityPlayer
+	 * player, Entity entity) { if (this.isSteampowered()) { NBTTagCompound tag
+	 * = stack.getTagCompound(); if (tag.getBoolean("hasCanister")) {
+	 * entity.attackEntityFrom(DamageSource.causePlayerDamage(player),
+	 * this.toolMaterial.getDamageVsEntity()); return true; } else return false;
+	 * } else { entity.attackEntityFrom(DamageSource.causePlayerDamage(player),
+	 * this.toolMaterial.getDamageVsEntity()); return true; } }
+	 */
 }

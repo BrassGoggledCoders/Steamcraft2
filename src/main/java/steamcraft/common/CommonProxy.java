@@ -23,7 +23,7 @@ import cpw.mods.fml.common.network.IGuiHandler;
 // TODO: Auto-generated Javadoc
 /**
  * The Class CommonProxy.
- *
+ * 
  * @author Surseance (Johnny Eatmon)
  */
 public class CommonProxy implements IGuiHandler
@@ -45,7 +45,7 @@ public class CommonProxy implements IGuiHandler
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see cpw.mods.fml.common.network.IGuiHandler#getClientGuiElement(int,
 	 * net.minecraft.entity.player.EntityPlayer, net.minecraft.world.World, int,
 	 * int, int)
@@ -58,7 +58,7 @@ public class CommonProxy implements IGuiHandler
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see cpw.mods.fml.common.network.IGuiHandler#getServerGuiElement(int,
 	 * net.minecraft.entity.player.EntityPlayer, net.minecraft.world.World, int,
 	 * int, int)
@@ -79,7 +79,7 @@ public class CommonProxy implements IGuiHandler
 
 	/**
 	 * Gets the client world.
-	 *
+	 * 
 	 * @return the client world
 	 */
 	public World getClientWorld()
@@ -89,7 +89,7 @@ public class CommonProxy implements IGuiHandler
 
 	/**
 	 * Adds the s c2 capes.
-	 *
+	 * 
 	 * @return the object
 	 */
 	public Object addSC2Capes()
@@ -99,7 +99,7 @@ public class CommonProxy implements IGuiHandler
 
 	/**
 	 * Ray fx.
-	 *
+	 * 
 	 * @param world
 	 *            the world
 	 * @param player
@@ -132,7 +132,7 @@ public class CommonProxy implements IGuiHandler
 
 	/**
 	 * Smoke fx.
-	 *
+	 * 
 	 * @param world
 	 *            the world
 	 * @param dx
@@ -152,7 +152,7 @@ public class CommonProxy implements IGuiHandler
 
 	/**
 	 * Gets the monocle armor model.
-	 *
+	 * 
 	 * @param id
 	 *            the id
 	 * @return the monocle armor model
@@ -164,7 +164,7 @@ public class CommonProxy implements IGuiHandler
 
 	/**
 	 * Gets the wings armor model.
-	 *
+	 * 
 	 * @param id
 	 *            the id
 	 * @return the wings armor model
@@ -176,7 +176,7 @@ public class CommonProxy implements IGuiHandler
 
 	/**
 	 * Gets the wings armor model.
-	 *
+	 * 
 	 * @param id
 	 *            the id
 	 * @return the wings armor model
@@ -188,7 +188,7 @@ public class CommonProxy implements IGuiHandler
 
 	/**
 	 * Gets the wings armor model.
-	 *
+	 * 
 	 * @param id
 	 *            the id
 	 * @return the wings armor model
@@ -198,10 +198,9 @@ public class CommonProxy implements IGuiHandler
 		return null;
 	}
 
-
 	/**
 	 * Gets the cape armor model.
-	 *
+	 * 
 	 * @param id
 	 *            the id
 	 * @return the cape armor model

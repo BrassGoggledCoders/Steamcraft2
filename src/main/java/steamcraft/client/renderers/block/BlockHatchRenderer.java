@@ -26,7 +26,7 @@ import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 // TODO: Auto-generated Javadoc
 /**
  * The Class BlockHatchRenderer.
- *
+ * 
  * @author warlordjones
  */
 public class BlockHatchRenderer implements ISimpleBlockRenderingHandler
@@ -37,24 +37,29 @@ public class BlockHatchRenderer implements ISimpleBlockRenderingHandler
 		GL11.glRotatef(90.0F, 0.0F, 1.0F, 0.0F);
 		GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
 		new TileHatch();
-		// TileEntityRenderer.instance.renderTileEntityAt(te, 0.0D, 0.0D, 0.0D, 0.0F);
+		// TileEntityRenderer.instance.renderTileEntityAt(te, 0.0D, 0.0D, 0.0D,
+		// 0.0F);
 		GL11.glEnable(32826);
 	}
+
 	@Override
 	public boolean renderWorldBlock(final IBlockAccess world, final int x, final int y, final int z, final Block block, final int modelID,
 			final RenderBlocks renderer)
 	{
 		return true;
 	}
+
 	public boolean shouldRender3DInInventory()
 	{
 		return true;
 	}
+
 	@Override
 	public int getRenderId()
 	{
 		return ConfigBlocks.blockHatchRI;
 	}
+
 	@Override
 	public boolean shouldRender3DInInventory(final int modelId)
 	{

@@ -53,7 +53,7 @@ import boilerplate.common.RegistryHelper;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 /**
- *
+ * 
  * @author Surseance (Johnny Eatmon)
  */
 public class ConfigItems
@@ -130,9 +130,9 @@ public class ConfigItems
 	public static Item itemElectricJar;
 
 	// Guns/Ammo
-	public static Item flintlockMusket,matchlockMusket,percussionCapMusket;
-	public static Item flintlockRifle, matchlockRifle,percussionCapRifle;
-	public static Item flintlockPistol,matchlockPistol,percussionCapPistol;
+	public static Item flintlockMusket, matchlockMusket, percussionCapMusket;
+	public static Item flintlockRifle, matchlockRifle, percussionCapRifle;
+	public static Item flintlockPistol, matchlockPistol, percussionCapPistol;
 
 	public static Item itemMusketBall, itemRifleBullet, itemPercussionCap;
 	public static Item itemGunPart;
@@ -177,41 +177,36 @@ public class ConfigItems
 		/*
 		 * itemAqualung = new ItemCustomArmor(Config.itemAqualungId,
 		 * MaterialHelper.STEAM_ARMOR, 0, 1).setUnlocalizedName("itemAqualung");
-		 * registerItem(itemAqualung, "ItemAqualung");
-		 * itemLegBraces = new ItemCustomArmor(Config.itemLegBracesId,
-		 * MaterialHelper.STEAM_ARMOR, 0,
-		 * 2).setUnlocalizedName("itemLegBraces");
-		 * registerItem(itemLegBraces, "ItemLegBraces",
-		 * LibInfo.ID); itemRollerSkates = new
-		 * ItemCustomArmor(Config.itemRollerSkatesId,
+		 * registerItem(itemAqualung, "ItemAqualung"); itemLegBraces = new
+		 * ItemCustomArmor(Config.itemLegBracesId, MaterialHelper.STEAM_ARMOR,
+		 * 0, 2).setUnlocalizedName("itemLegBraces");
+		 * registerItem(itemLegBraces, "ItemLegBraces", LibInfo.ID);
+		 * itemRollerSkates = new ItemCustomArmor(Config.itemRollerSkatesId,
 		 * MaterialHelper.STEAM_ARMOR, 0,
 		 * 3).setUnlocalizedName("itemRollerSkates");
-		 * registerItem(itemRollerSkates, "ItemRollerSkates",
-		 * LibInfo.ID);
-		 *
-		 *
-		 *
+		 * registerItem(itemRollerSkates, "ItemRollerSkates", LibInfo.ID);
+		 * 
+		 * 
+		 * 
 		 * //More Items itemTeacupEmpty = new
 		 * ItemTeacup(Config.itemTeacupEmptyId, 0, 0.0F,
 		 * false).setUnlocalizedName("itemTeacupEmpty");
-		 * registerItem(itemTeacupEmpty, "ItemTeacupEmpty",
-		 * LibInfo.ID); itemTeacupFull = new ItemTeacup(Config.itemTeacupFullId,
-		 * 4, 0.9F, false).setUnlocalizedName("itemTeacupFull");
-		 * registerItem(itemTeacupFull, "ItemTeacupFull",
-		 * LibInfo.ID); itemKettleEmpty = new
-		 * ItemKettle(Config.itemKettleEmptyId,
+		 * registerItem(itemTeacupEmpty, "ItemTeacupEmpty", LibInfo.ID);
+		 * itemTeacupFull = new ItemTeacup(Config.itemTeacupFullId, 4, 0.9F,
+		 * false).setUnlocalizedName("itemTeacupFull");
+		 * registerItem(itemTeacupFull, "ItemTeacupFull", LibInfo.ID);
+		 * itemKettleEmpty = new ItemKettle(Config.itemKettleEmptyId,
 		 * 300).setUnlocalizedName("itemKettleEmpty");
-		 * registerItem(itemTeacupFull, "ItemKettleEmpty",
-		 * LibInfo.ID); itemKettleHot = new ItemKettle(Config.itemKettleHotId,
+		 * registerItem(itemTeacupFull, "ItemKettleEmpty", LibInfo.ID);
+		 * itemKettleHot = new ItemKettle(Config.itemKettleHotId,
 		 * 300).setUnlocalizedName("itemKettleHot");
-		 * registerItem(itemTeacupFull, "ItemKettleHot",
-		 * LibInfo.ID); itemKettleCold = new ItemKettle(Config.itemKettleColdId,
+		 * registerItem(itemTeacupFull, "ItemKettleHot", LibInfo.ID);
+		 * itemKettleCold = new ItemKettle(Config.itemKettleColdId,
 		 * 300).setUnlocalizedName("itemKettleCold");
-		 * registerItem(itemTeacupFull, "ItemKettleCold",
-		 * LibInfo.ID); itemGunParts = new
+		 * registerItem(itemTeacupFull, "ItemKettleCold", LibInfo.ID);
+		 * itemGunParts = new
 		 * ItemFirearmParts(Config.itemGunPartsId).setUnlocalizedName
-		 * ("itemGunParts"); registerItem(itemGunParts,
-		 * "ItemFirearmParts");
+		 * ("itemGunParts"); registerItem(itemGunParts, "ItemFirearmParts");
 		 */
 
 		initializeTools();
@@ -248,43 +243,40 @@ public class ConfigItems
 		registerItem(drillObsidian, "ItemDrillObsidian");
 		registerItem(drillSteam, "ItemDrillSteam");
 
-		//Steam
+		// Steam
 		pickaxeSteam = new ItemModPickaxe(MaterialHelper.TOOL_STEAM).setUnlocalizedName("itemPickaxeSteam");
 		swordSteam = new ItemModSword(MaterialHelper.TOOL_STEAM).setUnlocalizedName("itemSwordSteam");
 		shovelSteam = new ItemModShovel(MaterialHelper.TOOL_STEAM).setUnlocalizedName("itemShovelSteam");
 		axeSteam = new ItemModAxe(MaterialHelper.TOOL_STEAM).setUnlocalizedName("itemAxeSteam");
 		hoeSteam = new ItemModHoe(MaterialHelper.TOOL_STEAM).setUnlocalizedName("itemHoeSteam");
 
-		RegistryHelper.registerToolSet(axeSteam, hoeSteam, pickaxeSteam, shovelSteam,
-				swordSteam, "Steam", LibInfo.ID);
+		RegistryHelper.registerToolSet(axeSteam, hoeSteam, pickaxeSteam, shovelSteam, swordSteam, "Steam", LibInfo.ID);
 
-		//Etherium
+		// Etherium
 		pickaxeEtherium = new ItemModPickaxe(MaterialHelper.TOOL_ETHERIUM).setUnlocalizedName("itemPickaxeEtherium");
 		swordEtherium = new ItemModSword(MaterialHelper.TOOL_ETHERIUM).setUnlocalizedName("itemSwordEtherium");
 		shovelEtherium = new ItemModShovel(MaterialHelper.TOOL_ETHERIUM).setUnlocalizedName("itemShovelEtherium");
 		axeEtherium = new ItemModAxe(MaterialHelper.TOOL_ETHERIUM).setUnlocalizedName("itemAxeEtherium");
 		hoeEtherium = new ItemModHoe(MaterialHelper.TOOL_ETHERIUM).setUnlocalizedName("itemHoeEtherium");
 
-		RegistryHelper.registerToolSet(axeEtherium, hoeEtherium, pickaxeEtherium, shovelEtherium,
-				swordEtherium, "Etherium", LibInfo.ID);
+		RegistryHelper.registerToolSet(axeEtherium, hoeEtherium, pickaxeEtherium, shovelEtherium, swordEtherium, "Etherium", LibInfo.ID);
 
-		//Obsidian
+		// Obsidian
 		pickaxeObsidian = new ItemModPickaxe(MaterialHelper.TOOL_OBSIDIAN).setUnlocalizedName("itemPickaxeObsidian");
 		swordObsidian = new ItemModSword(MaterialHelper.TOOL_OBSIDIAN).setUnlocalizedName("itemSwordObsidian");
 		shovelObsidian = new ItemModShovel(MaterialHelper.TOOL_OBSIDIAN).setUnlocalizedName("itemShovelObsidian");
 		axeObsidian = new ItemModAxe(MaterialHelper.TOOL_OBSIDIAN).setUnlocalizedName("itemAxeObsidian");
 		hoeObsidian = new ItemModHoe(MaterialHelper.TOOL_OBSIDIAN).setUnlocalizedName("itemHoeObsidian");
 
-		RegistryHelper.registerToolSet(axeObsidian, hoeObsidian, pickaxeObsidian, shovelObsidian,
-				swordObsidian, "Obsidian", LibInfo.ID);
+		RegistryHelper.registerToolSet(axeObsidian, hoeObsidian, pickaxeObsidian, shovelObsidian, swordObsidian, "Obsidian", LibInfo.ID);
 	}
 
 	private static void initializeArmor()
 	{
-		//Jetpacks
-		itemSteamJetpack = new ItemSteamJetpack(MaterialHelper.ARMOR_STEAM, 0, 1, (byte)5).setUnlocalizedName("itemSteamJetpack");
+		// Jetpacks
+		itemSteamJetpack = new ItemSteamJetpack(MaterialHelper.ARMOR_STEAM, 0, 1, (byte) 5).setUnlocalizedName("itemSteamJetpack");
 		itemClockworkWings = new ItemClockworkWings(MaterialHelper.ARMOR_STEAM, 0, 1).setUnlocalizedName("itemClockworkWings");
-		itemSteamWingpack = new ItemSteamJetpack(MaterialHelper.ARMOR_STEAM, 0, 1, (byte)4).setUnlocalizedName("itemSteamWingpack");
+		itemSteamWingpack = new ItemSteamJetpack(MaterialHelper.ARMOR_STEAM, 0, 1, (byte) 4).setUnlocalizedName("itemSteamWingpack");
 
 		registerItem(itemClockworkWings, "ItemClockworkWings");
 		registerItem(itemSteamJetpack, "ItemSteamJetpack");
@@ -300,28 +292,26 @@ public class ConfigItems
 
 		registerItem(brassGoggles, "ItemBrassGoggles");
 
-		//Etherium
+		// Etherium
 		helmetEtherium = new ItemNormalArmor(MaterialHelper.ARMOR_ETHERIUM, 0, 0).setUnlocalizedName("itemHelmetEtherium");
 		chestplateEtherium = new ItemNormalArmor(MaterialHelper.ARMOR_ETHERIUM, 0, 1).setUnlocalizedName("itemChestplateEtherium");
 		legsEtherium = new ItemNormalArmor(MaterialHelper.ARMOR_ETHERIUM, 0, 2).setUnlocalizedName("itemLegsEtherium");
 		bootsEtherium = new ItemNormalArmor(MaterialHelper.ARMOR_ETHERIUM, 0, 3).setUnlocalizedName("itemBootsEtherium");
 
-		RegistryHelper.registerArmorSet(helmetEtherium, chestplateEtherium, legsEtherium, bootsEtherium,
-				"Etherium", LibInfo.ID);
+		RegistryHelper.registerArmorSet(helmetEtherium, chestplateEtherium, legsEtherium, bootsEtherium, "Etherium", LibInfo.ID);
 
-		//Obsidian
+		// Obsidian
 		helmetObsidian = new ItemNormalArmor(MaterialHelper.ARMOR_OBSIDIAN, 0, 0).setUnlocalizedName("itemHelmetObsidian");
 		chestplateObsidian = new ItemNormalArmor(MaterialHelper.ARMOR_OBSIDIAN, 0, 1).setUnlocalizedName("itemChestplateObsidian");
 		legsObsidian = new ItemNormalArmor(MaterialHelper.ARMOR_OBSIDIAN, 0, 2).setUnlocalizedName("itemLegsObsidian");
 		bootsObsidian = new ItemNormalArmor(MaterialHelper.ARMOR_OBSIDIAN, 0, 3).setUnlocalizedName("itemBootsObsidian");
 
-		RegistryHelper.registerArmorSet(helmetObsidian, chestplateObsidian, legsObsidian, bootsObsidian,
-				"Obsidian", LibInfo.ID);
+		RegistryHelper.registerArmorSet(helmetObsidian, chestplateObsidian, legsObsidian, bootsObsidian, "Obsidian", LibInfo.ID);
 	}
 
 	private static void initializeGuns()
 	{
-		//Ammo
+		// Ammo
 		itemMusketBall = new BaseItem().setUnlocalizedName("itemMusketBall");
 		itemRifleBullet = new BaseItem().setUnlocalizedName("itemRifleBullet");
 		itemPercussionCap = new BaseItem().setUnlocalizedName("itemPercussionCap");
@@ -330,13 +320,19 @@ public class ConfigItems
 		registerItem(itemRifleBullet, "ItemRifleBullet");
 		registerItem(itemPercussionCap, "ItemPercussionCap");
 
-		//Guns
-		flintlockMusket = new ItemFirearm(5, 60, itemMusketBall, null, "steamcraft:musket", "steamcraft:reload").setUnlocalizedName("itemFlintlockMusket");
-		matchlockMusket = new ItemFirearm(6, 40, itemMusketBall, itemMatch, "steamcraft:musket", "steamcraft:reload").setUnlocalizedName("itemMatchlockMusket");
-		percussionCapMusket = new ItemFirearm(7, 20, itemMusketBall, itemPercussionCap, "steamcraft:musket", "steamcraft:reload").setUnlocalizedName("itemPercussionMusket");
-		flintlockRifle = new ItemFirearm(8, 60, itemRifleBullet, null, "steamcraft:rifle", "steamcraft:reload").setUnlocalizedName("itemFlintlockRifle");
-		matchlockRifle = new ItemFirearm(9, 40, itemRifleBullet, itemMatch, "steamcraft:rifle", "steamcraft:reload").setUnlocalizedName("itemMatchlockRifle");
-		percussionCapRifle = new ItemFirearm(10, 20, itemRifleBullet, itemPercussionCap, "steamcraft:rifle", "steamcraft:reload").setUnlocalizedName("itemPercussionRifle");
+		// Guns
+		flintlockMusket = new ItemFirearm(5, 60, itemMusketBall, null, "steamcraft:musket", "steamcraft:reload")
+				.setUnlocalizedName("itemFlintlockMusket");
+		matchlockMusket = new ItemFirearm(6, 40, itemMusketBall, itemMatch, "steamcraft:musket", "steamcraft:reload")
+				.setUnlocalizedName("itemMatchlockMusket");
+		percussionCapMusket = new ItemFirearm(7, 20, itemMusketBall, itemPercussionCap, "steamcraft:musket", "steamcraft:reload")
+				.setUnlocalizedName("itemPercussionMusket");
+		flintlockRifle = new ItemFirearm(8, 60, itemRifleBullet, null, "steamcraft:rifle", "steamcraft:reload")
+				.setUnlocalizedName("itemFlintlockRifle");
+		matchlockRifle = new ItemFirearm(9, 40, itemRifleBullet, itemMatch, "steamcraft:rifle", "steamcraft:reload")
+				.setUnlocalizedName("itemMatchlockRifle");
+		percussionCapRifle = new ItemFirearm(10, 20, itemRifleBullet, itemPercussionCap, "steamcraft:rifle", "steamcraft:reload")
+				.setUnlocalizedName("itemPercussionRifle");
 
 		registerItem(flintlockMusket, "ItemFlintlockMusket");
 		registerItem(matchlockMusket, "ItemMatchlockMusket");
@@ -345,9 +341,10 @@ public class ConfigItems
 		registerItem(matchlockRifle, "ItemMatchlockRifle");
 		registerItem(percussionCapRifle, "ItemPercussionCapRifle");
 
-
-		itemRayGun = new ItemRayGun(LibInfo.PREFIX + "raygun").setUnlocalizedName("itemRaygun");;
-		itemShrinkray = new ItemShrinkray(LibInfo.PREFIX + "shrinkray").setUnlocalizedName("itemShrinkray");;
+		itemRayGun = new ItemRayGun(LibInfo.PREFIX + "raygun").setUnlocalizedName("itemRaygun");
+		;
+		itemShrinkray = new ItemShrinkray(LibInfo.PREFIX + "shrinkray").setUnlocalizedName("itemShrinkray");
+		;
 
 		registerItem(itemRayGun, "ItemRayGun");
 		registerItem(itemShrinkray, "ItemShrinkray");
@@ -429,8 +426,10 @@ public class ConfigItems
 
 	private static void registerItems()
 	{
-		/*registerItem(flintlockPistol, "ItemFlintlockPistol");
-		registerItem(matchlockPistol, "ItemMatchlockPistol");
-		registerItem(percussionCapPistol, "ItemPercussionCapPistol");*/
+		/*
+		 * registerItem(flintlockPistol, "ItemFlintlockPistol");
+		 * registerItem(matchlockPistol, "ItemMatchlockPistol");
+		 * registerItem(percussionCapPistol, "ItemPercussionCapPistol");
+		 */
 	}
 }

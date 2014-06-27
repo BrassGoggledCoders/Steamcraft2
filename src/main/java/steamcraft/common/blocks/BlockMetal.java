@@ -97,9 +97,7 @@ public class BlockMetal extends Block
 		setCreativeTab(Steamcraft.tabSC2);
 
 		if (powered)
-		{
 			setLightLevel(0.98F);
-		}
 	}
 
 	/*
@@ -113,9 +111,7 @@ public class BlockMetal extends Block
 	public void onEntityCollidedWithBlock(final World world, final int x, final int y, final int z, final Entity entity)
 	{
 		if ((world.getBlock(x, y, z) == this) && (world.getBlockMetadata(x, y, z) == 8))
-		{
 			entity.attackEntityFrom(DamageSource.magic, 1);
-		}
 	}
 
 	/*
@@ -130,9 +126,7 @@ public class BlockMetal extends Block
 	public void randomDisplayTick(final World world, final int x, final int y, final int z, final Random random)
 	{
 		if ((world.getBlock(x, y, z) == this) && (world.getBlockMetadata(x, y, z) == 8))
-		{
 			EffectUtils.sparkle(world, x, y, z, "reddust");
-		}
 	}
 
 	/*
@@ -147,8 +141,6 @@ public class BlockMetal extends Block
 	public void getSubBlocks(final Item item, final CreativeTabs tab, final List l)
 	{
 		for (int var4 = 0; var4 < 8; ++var4)
-		{
 			l.add(new ItemStack(ConfigBlocks.blockMetal, 1, var4));
-		}
 	}
 }

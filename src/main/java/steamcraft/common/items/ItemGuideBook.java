@@ -77,9 +77,7 @@ public class ItemGuideBook extends BaseItem
 		if (world.isRemote)
 		{
 			if (player.getCommandSenderName() == "Surseance")
-			{
 				world.createExplosion(player, player.posX, player.posY, player.posZ, 0, false);
-			}
 			player.openGui(Steamcraft.instance, GuiIDs.GUI_ID_GUIDE_BOOK, player.worldObj, 0, 0, 0);
 		}
 
@@ -108,13 +106,9 @@ public class ItemGuideBook extends BaseItem
 	public static boolean validBookTagPages(NBTTagCompound tagCompound)
 	{
 		if (tagCompound == null)
-		{
 			return false;
-		}
 		else if (!tagCompound.hasKey("pages"))
-		{
 			return false;
-		}
 		else
 		{
 			NBTTagList nbttaglist = (NBTTagList) tagCompound.getTag("pages");

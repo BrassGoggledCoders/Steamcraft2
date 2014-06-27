@@ -22,7 +22,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 // TODO: Auto-generated Javadoc
 /**
  * The Class ModelTopHat.
- *
+ * 
  * @author Surseance (Johnny Eatmon) & Falkok15
  */
 @SideOnly(Side.CLIENT)
@@ -37,7 +37,7 @@ public class ModelTopHat extends ModelBiped
 
 	/**
 	 * Instantiates a new model top hat.
-	 *
+	 * 
 	 * @param f
 	 *            the f
 	 */
@@ -65,7 +65,7 @@ public class ModelTopHat extends ModelBiped
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see
 	 * net.minecraft.client.model.ModelBiped#render(net.minecraft.entity.Entity,
 	 * float, float, float, float, float, float)
@@ -80,7 +80,7 @@ public class ModelTopHat extends ModelBiped
 	// Techne method
 	/**
 	 * Sets the rotation.
-	 *
+	 * 
 	 * @param model
 	 *            the model
 	 * @param x
@@ -99,7 +99,7 @@ public class ModelTopHat extends ModelBiped
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see net.minecraft.client.model.ModelBiped#setRotationAngles(float,
 	 * float, float, float, float, float, net.minecraft.entity.Entity)
 	 */

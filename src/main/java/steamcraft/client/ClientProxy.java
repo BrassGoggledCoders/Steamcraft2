@@ -42,17 +42,17 @@ import cpw.mods.fml.client.registry.RenderingRegistry;
 
 /**
  * The Class ClientProxy.
- *
+ * 
  * @author Surseance (Johnny Eatmon)
  */
 public class ClientProxy extends CommonProxy
 {
-	//public EventHandlerDrawHighlight drawEventHandler;
+	// public EventHandlerDrawHighlight drawEventHandler;
 
 	@Override
 	public void registerKeys()
 	{
-		//FMLCommonHandler.instance().bus().register(new KeyInputHandler());
+		// FMLCommonHandler.instance().bus().register(new KeyInputHandler());
 		KeyBindings.registerKeys();
 	}
 
@@ -75,35 +75,37 @@ public class ClientProxy extends CommonProxy
 
 	private void registerBlockRenderers()
 	{
-		//Crystal
+		// Crystal
 		ClientRegistry.bindTileEntitySpecialRenderer(TileCrystal.class, new TileCrystalRenderer());
 		ConfigBlocks.blockCrystalRI = RenderingRegistry.getNextAvailableRenderId();
 		ClientRegistry.bindTileEntitySpecialRenderer(TileCrystal.class, new TileCrystalRenderer());
 		RenderingRegistry.registerBlockHandler(new BlockCrystalRenderer());
 
-		/*Cast Iron Lamp
-		ConfigBlocks.blockCastIronLampRI = RenderingRegistry.getNextAvailableRenderId();
-		ClientRegistry.bindTileEntitySpecialRenderer(TileCastIronLamp.class, new TileCastIronLampRenderer());
-		RenderingRegistry.registerBlockHandler(new BlockCastIronLampRenderer());*/
+		/*
+		 * Cast Iron Lamp ConfigBlocks.blockCastIronLampRI =
+		 * RenderingRegistry.getNextAvailableRenderId();
+		 * ClientRegistry.bindTileEntitySpecialRenderer(TileCastIronLamp.class,
+		 * new TileCastIronLampRenderer());
+		 * RenderingRegistry.registerBlockHandler(new
+		 * BlockCastIronLampRenderer());
+		 */
 
-		//Hatch
-		//ClientRegistry.bindTileEntitySpecialRenderer(TileHatch.class, new TileHatchRenderer());
-		//RenderingRegistry.registerBlockHandler(new BlockHatchRenderer());
+		// Hatch
+		// ClientRegistry.bindTileEntitySpecialRenderer(TileHatch.class, new
+		// TileHatchRenderer());
+		// RenderingRegistry.registerBlockHandler(new BlockHatchRenderer());
 	}
-	//TODO Any reason for this method?
-	/*@Override
-	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
-	{
-		if ((world instanceof WorldClient))
-		{
-			switch (ID)
-			{
 
-			}
-		}
-
-		return null;
-	}*/
+	// TODO Any reason for this method?
+	/*
+	 * @Override public Object getClientGuiElement(int ID, EntityPlayer player,
+	 * World world, int x, int y, int z) { if ((world instanceof WorldClient)) {
+	 * switch (ID) {
+	 * 
+	 * } }
+	 * 
+	 * return null; }
+	 */
 	@Override
 	public World getClientWorld()
 	{
@@ -126,9 +128,7 @@ public class ClientProxy extends CommonProxy
 		Color color = rayColor;
 
 		if (input instanceof FXRaygun)
-		{
 			ray = (FXRaygun) input;
-		}
 		if ((ray == null) || (ray.isDead))
 		{
 			ray = new FXRaygun(world, player, dx, dy, dz, color.getRed() / 255.0F, color.getGreen() / 255.0F, color.getBlue() / 255.0F, 9);
@@ -147,7 +147,6 @@ public class ClientProxy extends CommonProxy
 		return ray;
 	}
 
-
 	@Override
 	public Object smokeFX(World world, double dx, double dy, double dz, Object input)
 	{
@@ -155,18 +154,14 @@ public class ClientProxy extends CommonProxy
 		Color color = Color.BLUE;
 
 		if (input instanceof FXSmoke)
-		{
 			smoke = (FXSmoke) input;
-		}
 		if ((smoke == null) || (smoke.isDead))
 		{
 			smoke = new FXSmoke(world, dx, dy, dz, color.getBlue() / 255.0F, color.getBlue() / 255.0F, color.getBlue() / 255.0F);
 			FMLClientHandler.instance().getClient().effectRenderer.addEffect(smoke);
 		}
 		else
-		{
 			smoke.onUpdate();
-		}
 
 		return smoke;
 	}
@@ -174,26 +169,26 @@ public class ClientProxy extends CommonProxy
 	/*
 	 * private static ModelBrassMonocle chest = new ModelBrassMonocle(1.0F);
 	 * private static ModelBrassMonocle legs = new ModelBrassMonocle(0.5F);
-	 *
+	 * 
 	 * @Override public ModelBiped getMonocleArmorModel(int id) { switch (id) {
 	 * case 0: return chest; case 1: return legs; default: break; }
-	 *
+	 * 
 	 * return chest; // Default, if the wrong ID is passed }
-	 *
+	 * 
 	 * /* private static ModelBrassWings chest1 = new ModelBrassWings(1.0F);
 	 * private static ModelBrassWings legs1 = new ModelBrassWings(0.5F);
-	 *
+	 * 
 	 * @Override public ModelBiped getWingsArmorModel(int id) { switch (id) {
 	 * case 0: return chest1; case 1: return legs1; default: break; }
-	 *
+	 * 
 	 * return chest1; // Default, if the wrong ID is passed }
-	 *
+	 * 
 	 * private static ModelCape chest2 = new ModelCape(1.0F); private static
 	 * ModelCape legs2 = new ModelCape(0.5F);
-	 *
+	 * 
 	 * @Override public ModelBiped getCapeArmorModel(int id) { switch(id) { case
 	 * 0: return chest2; case 1: return legs2; default: break; }
-	 *
+	 * 
 	 * return chest2; // Default, if the wrong ID is passed }
 	 */
 
@@ -202,12 +197,12 @@ public class ClientProxy extends CommonProxy
 	{
 		switch (id)
 		{
-			case 0:
-				return new ModelBrassWings(1.0F);
-			case 1:
-				return new ModelBrassWings(0.5F);
-			default:
-				break;
+		case 0:
+			return new ModelBrassWings(1.0F);
+		case 1:
+			return new ModelBrassWings(0.5F);
+		default:
+			break;
 		}
 
 		return new ModelBrassWings(1.0F); // Default, if the wrong ID is passed
@@ -218,12 +213,12 @@ public class ClientProxy extends CommonProxy
 	{
 		switch (id)
 		{
-			case 0:
-				return new ModelJetpack(1.0F);
-			case 1:
-				return new ModelJetpack(0.5F);
-			default:
-				break;
+		case 0:
+			return new ModelJetpack(1.0F);
+		case 1:
+			return new ModelJetpack(0.5F);
+		default:
+			break;
 		}
 
 		return new ModelJetpack(1.0F);
@@ -234,12 +229,12 @@ public class ClientProxy extends CommonProxy
 	{
 		switch (id)
 		{
-			case 0:
-				return new ModelWingpack(1.0F);
-			case 1:
-				return new ModelWingpack(0.5F);
-			default:
-				break;
+		case 0:
+			return new ModelWingpack(1.0F);
+		case 1:
+			return new ModelWingpack(0.5F);
+		default:
+			break;
 		}
 
 		return new ModelWingpack(1.0F);

@@ -16,8 +16,9 @@ public class TileCopperTank extends TileEntity implements IFluidHandler
 	{
 		super();
 
-		this.tank = new FluidTank(null, 10000);
+		tank = new FluidTank(null, 10000);
 	}
+
 	@Override
 	public int fill(ForgeDirection from, FluidStack resource, boolean doFill)
 	{

@@ -24,7 +24,7 @@ public class BaseItemWithMetadata extends BaseItem
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see
 	 * net.minecraft.item.ItemBlock#getUnlocalizedName(net.minecraft.item.ItemStack
 	 * )

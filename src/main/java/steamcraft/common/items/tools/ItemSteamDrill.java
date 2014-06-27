@@ -31,12 +31,12 @@ import boilerplate.common.utils.PlayerUtils;
 
 /**
  * @author decebaldecebal
- *
+ * 
  */
 public class ItemSteamDrill extends ItemDrill
 {
 	private Random random = new Random();
-	
+
 	public ItemSteamDrill(ToolMaterial mat)
 	{
 		super(mat);
@@ -47,13 +47,13 @@ public class ItemSteamDrill extends ItemDrill
 	public void addInformation(ItemStack itemStack, EntityPlayer entityPlayer, List list, boolean bool)
 	{
 		super.addInformation(itemStack, entityPlayer, list, bool);
-		
+
 		if (!ClientHelper.isShiftKeyDown())
 		{
 			list.add(ClientHelper.shiftForInfo);
 			return;
 		}
-		
+
 		if (itemStack.getTagCompound().getBoolean("active"))
 		{
 			list.add("\u00A7c" + "Active");
@@ -73,13 +73,13 @@ public class ItemSteamDrill extends ItemDrill
 	public float getDigSpeed(ItemStack stack, Block block, int metadata)
 	{
 		float speed = super.getDigSpeed(stack, block, metadata);
-		
-		if(speed > 1.0f && stack.getTagCompound().getBoolean("active"))
-			return speed/3;
-		
+
+		if ((speed > 1.0f) && stack.getTagCompound().getBoolean("active"))
+			return speed / 3;
+
 		return speed;
 	}
-	
+
 	@Override
 	public boolean onBlockStartBreak(ItemStack itemStack, int x, int y, int z, EntityPlayer player)
 	{
@@ -91,30 +91,29 @@ public class ItemSteamDrill extends ItemDrill
 
 			if (mop == null)
 				return super.onBlockStartBreak(itemStack, x, y, z, player);
-			
+
 			int xRange = 1;
 			int yRange = 1;
 			int zRange = 1;
 			switch (mop.sideHit)
 			{
-				case 0:
-				case 1:
-					yRange = 0;
+			case 0:
+			case 1:
+				yRange = 0;
 				break;
-				
-				case 2:
-				case 3:
-					zRange = 0;
+
+			case 2:
+			case 3:
+				zRange = 0;
 				break;
-				
-				case 4:
-				case 5:
-					xRange = 0;
+
+			case 4:
+			case 5:
+				xRange = 0;
 				break;
 			}
 			Block block = world.getBlock(x, y, z);
-			if ((block != null) && (block.getBlockHardness(world, x, y, z) != 0) && this.canHarvestBlock(block, itemStack))
-			{
+			if ((block != null) && (block.getBlockHardness(world, x, y, z) != 0) && canHarvestBlock(block, itemStack))
 				for (int xPos = x - xRange; xPos <= (x + xRange); xPos++)
 					for (int yPos = y - yRange; yPos <= (y + yRange); yPos++)
 						for (int zPos = z - zRange; zPos <= (z + zRange); zPos++)
@@ -125,11 +124,11 @@ public class ItemSteamDrill extends ItemDrill
 							{
 								int meta = world.getBlockMetadata(xPos, yPos, zPos);
 
-								ItemStack result = new ItemStack(nblock.getItemDropped(meta, this.random, 0), nblock.quantityDropped(meta, 0,
-										this.random), nblock.damageDropped(meta));
+								ItemStack result = new ItemStack(nblock.getItemDropped(meta, random, 0), nblock.quantityDropped(meta, 0, random),
+										nblock.damageDropped(meta));
 
 								if (nblock.getBlockHardness(world, xPos, yPos, zPos) != 0.0D)
-									this.consumeSteamFromCanister(player);
+									consumeSteamFromCanister(player);
 
 								if (!world.isRemote && (result != null))
 								{
@@ -141,9 +140,8 @@ public class ItemSteamDrill extends ItemDrill
 								// block.getIdFromBlock(block) + (meta << 12));
 							}
 						}
-			}
 		}
-		
+
 		return false;
 	}
 
@@ -152,15 +150,14 @@ public class ItemSteamDrill extends ItemDrill
 	{
 		if (living instanceof EntityPlayer)
 		{
-			this.consumeSteamFromCanister((EntityPlayer) living);
-			
+			consumeSteamFromCanister((EntityPlayer) living);
+
 			stack.damageItem(1, living);
 			world.playSoundAtEntity(living, LibInfo.PREFIX + "drill.steam", 0.6F, 1.0F);
-			world.spawnParticle("smoke", x + 0.5, y + 0.5, z + 0.5, this.random.nextGaussian(), this.random.nextGaussian(),
-					this.random.nextGaussian());
+			world.spawnParticle("smoke", x + 0.5, y + 0.5, z + 0.5, random.nextGaussian(), random.nextGaussian(), random.nextGaussian());
 			return true;
 		}
-		
+
 		return false;
 	}
 
@@ -170,25 +167,25 @@ public class ItemSteamDrill extends ItemDrill
 		if (player.isSneaking())
 		{
 			NBTTagCompound tag = itemStack.getTagCompound();
-			
+
 			if (tag.getBoolean("active"))
 				tag.setBoolean("active", false);
-			else if(tag.getBoolean("hasCanister"))
+			else if (tag.getBoolean("hasCanister"))
 				tag.setBoolean("active", true);
-			
+
 			itemStack.setTagCompound(tag);
 		}
 		return itemStack;
 	}
-	
+
 	@Override
 	public void onUpdate(ItemStack itemStack, World par2World, Entity par3Entity, int par4, boolean par5)
 	{
 		super.onUpdate(itemStack, par2World, par3Entity, par4, par5);
-		
+
 		NBTTagCompound tag = itemStack.getTagCompound();
-		
-		if(tag.getBoolean("active") && !tag.getBoolean("hasCanister"))
+
+		if (tag.getBoolean("active") && !tag.getBoolean("hasCanister"))
 		{
 			tag.setBoolean("active", false);
 			itemStack.setTagCompound(tag);

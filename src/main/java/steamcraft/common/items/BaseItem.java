@@ -22,7 +22,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * 
- * @author warlordjones 
+ * @author warlordjones
  */
 public class BaseItem extends RootItem
 {

@@ -53,7 +53,7 @@ public abstract class BlockContainerMod extends BlockContainer
 
 	/**
 	 * Instantiates a new block container mod.
-	 *
+	 * 
 	 * @param mat
 	 *            the mat
 	 */
@@ -66,7 +66,7 @@ public abstract class BlockContainerMod extends BlockContainer
 
 	/**
 	 * Gets the owner.
-	 *
+	 * 
 	 * @return the owner
 	 */
 	public String getOwner()
@@ -76,7 +76,7 @@ public abstract class BlockContainerMod extends BlockContainer
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see net.minecraft.block.Block#onBlockPlacedBy(net.minecraft.world.World,
 	 * int, int, int, net.minecraft.entity.EntityLivingBase,
 	 * net.minecraft.item.ItemStack)
@@ -87,14 +87,12 @@ public abstract class BlockContainerMod extends BlockContainer
 		super.onBlockPlacedBy(world, x, y, z, entityLiving, is);
 
 		if (entityLiving instanceof EntityPlayer)
-		{
 			owner = owner + ((EntityPlayer) entityLiving).getCommandSenderName();
-		}
 	}
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see
 	 * net.minecraft.block.BlockContainer#breakBlock(net.minecraft.world.World,
 	 * int, int, int, net.minecraft.block.Block, int)
@@ -107,7 +105,7 @@ public abstract class BlockContainerMod extends BlockContainer
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see
 	 * net.minecraft.block.Block#getLightValue(net.minecraft.world.IBlockAccess,
 	 * int, int, int)
@@ -117,16 +115,15 @@ public abstract class BlockContainerMod extends BlockContainer
 	{
 		TileEntity te = world.getTileEntity(x, y, z);
 
-		if (te instanceof IMachine && ((IMachine) te).isActive())
-		{
+		if ((te instanceof IMachine) && ((IMachine) te).isActive())
 			return super.getLightValue(world, x, y, z) + 8;
-		}
 
 		return super.getLightValue(world, x, y, z);
 	}
+
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see
 	 * net.minecraft.block.Block#registerBlockIcons(net.minecraft.client.renderer
 	 * .texture.IIconRegister)
@@ -135,12 +132,12 @@ public abstract class BlockContainerMod extends BlockContainer
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister ir)
 	{
-		icon = ir.registerIcon(LibInfo.PREFIX + this.getUnlocalizedName().substring(5));
+		icon = ir.registerIcon(LibInfo.PREFIX + getUnlocalizedName().substring(5));
 	}
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see net.minecraft.block.Block#getIcon(int, int)
 	 */
 	@Override

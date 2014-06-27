@@ -32,21 +32,23 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * The Class ItemCanister.
- *
+ * 
  * @author Decebaldecebal
  */
 public class ItemCanister extends BaseItem implements IFluidContainerItem
 {
 	private static IIcon emptyIcon;
-    private static IIcon fullIcon;
+	private static IIcon fullIcon;
 	public static final int MAX_STEAM = 10000;
-	public static final int MAX_STEAM_RATE = 20; // Maximum amount of steam that can be inserted into thiscanister per tick
+	public static final int MAX_STEAM_RATE = 20; // Maximum amount of steam that
+													// can be inserted into
+													// thiscanister per tick
 
 	public ItemCanister()
 	{
 		super();
-		this.setMaxStackSize(1);
-		this.setMaxDamage(MAX_STEAM/100);
+		setMaxStackSize(1);
+		setMaxDamage(MAX_STEAM / 100);
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -58,15 +60,16 @@ public class ItemCanister extends BaseItem implements IFluidContainerItem
 		fullIcon = par1IconRegister.registerIcon(LibInfo.PREFIX + "itemCanisterFull");
 	}
 
-	 @SideOnly(Side.CLIENT)
-	 public IIcon getIconFromDamage(int damage)
-	 {
-		 if(damage == 0)
-			 return fullIcon;
-		 else if(damage == this.getMaxDamage())
-			 return emptyIcon;
-		 return this.itemIcon;
-	 }
+	@Override
+	@SideOnly(Side.CLIENT)
+	public IIcon getIconFromDamage(int damage)
+	{
+		if (damage == 0)
+			return fullIcon;
+		else if (damage == this.getMaxDamage())
+			return emptyIcon;
+		return itemIcon;
+	}
 
 	@SuppressWarnings("all")
 	@Override
@@ -91,7 +94,7 @@ public class ItemCanister extends BaseItem implements IFluidContainerItem
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean flag)
 	{
-		FluidStack fluid = this.getFluid(stack);
+		FluidStack fluid = getFluid(stack);
 		if ((fluid != null) && (fluid.amount > 0))
 		{
 			String str = fluid.getFluid().getName();
@@ -101,18 +104,14 @@ public class ItemCanister extends BaseItem implements IFluidContainerItem
 			list.add("(That's about " + (amount / 1000) + " buckets)");
 		}
 		else
-		{
 			list.add("Empty");
-		}
 	}
 
 	@Override
 	public FluidStack getFluid(ItemStack container)
 	{
 		if ((container.stackTagCompound == null) || !container.stackTagCompound.hasKey("Fluid"))
-		{
 			return null;
-		}
 		return FluidStack.loadFluidStackFromNBT(container.stackTagCompound.getCompoundTag("Fluid"));
 	}
 
@@ -126,36 +125,26 @@ public class ItemCanister extends BaseItem implements IFluidContainerItem
 	public int fill(ItemStack container, FluidStack resource, boolean doFill)
 	{
 		if (resource == null)
-		{
 			return 0;
-		}
 
 		if (!doFill)
 		{
 			if ((container.stackTagCompound == null) || !container.stackTagCompound.hasKey("Fluid"))
-			{
 				return Math.min(MAX_STEAM, resource.amount);
-			}
 
 			FluidStack stack = FluidStack.loadFluidStackFromNBT(container.stackTagCompound.getCompoundTag("Fluid"));
 
 			if (stack == null)
-			{
 				return Math.min(MAX_STEAM, resource.amount);
-			}
 
 			if (!stack.isFluidEqual(resource))
-			{
 				return 0;
-			}
 
 			return Math.min(MAX_STEAM - stack.amount, resource.amount);
 		}
 
 		if (container.stackTagCompound == null)
-		{
 			container.stackTagCompound = new NBTTagCompound();
-		}
 
 		if (!container.stackTagCompound.hasKey("Fluid"))
 		{
@@ -176,9 +165,7 @@ public class ItemCanister extends BaseItem implements IFluidContainerItem
 		FluidStack stack = FluidStack.loadFluidStackFromNBT(fluidTag);
 
 		if (!stack.isFluidEqual(resource))
-		{
 			return 0;
-		}
 
 		int filled = MAX_STEAM - stack.amount;
 		if (resource.amount < filled)
@@ -187,9 +174,7 @@ public class ItemCanister extends BaseItem implements IFluidContainerItem
 			filled = resource.amount;
 		}
 		else
-		{
 			stack.amount = MAX_STEAM;
-		}
 
 		container.stackTagCompound.setTag("Fluid", stack.writeToNBT(fluidTag));
 
@@ -202,16 +187,12 @@ public class ItemCanister extends BaseItem implements IFluidContainerItem
 	public FluidStack drain(ItemStack container, int maxDrain, boolean doDrain)
 	{
 		if ((container.stackTagCompound == null) || !container.stackTagCompound.hasKey("Fluid"))
-		{
 			return null;
-		}
 
 		FluidStack stack = FluidStack.loadFluidStackFromNBT(container.stackTagCompound.getCompoundTag("Fluid"));
 
 		if (stack == null)
-		{
 			return null;
-		}
 
 		stack.amount = Math.min(stack.amount, maxDrain);
 
@@ -222,9 +203,7 @@ public class ItemCanister extends BaseItem implements IFluidContainerItem
 				container.stackTagCompound.removeTag("Fluid");
 
 				if (container.stackTagCompound.hasNoTags())
-				{
 					container.stackTagCompound = null;
-				}
 
 				return stack;
 			}
@@ -243,24 +222,22 @@ public class ItemCanister extends BaseItem implements IFluidContainerItem
 	{
 		FluidStack stack = FluidStack.loadFluidStackFromNBT(canister.stackTagCompound.getCompoundTag("Fluid"));
 
-		canister.setItemDamage(canister.getMaxDamage() - stack.amount/100);
+		canister.setItemDamage(canister.getMaxDamage() - (stack.amount / 100));
 	}
 
 	/**
 	 * Gets the fluid amount.
-	 *
+	 * 
 	 * @param stack
 	 *            the stack
 	 * @return the fluid amount
 	 */
 	public int getFluidAmount(ItemStack stack)
 	{
-		FluidStack fluid = this.getFluid(stack);
+		FluidStack fluid = getFluid(stack);
 
 		if (fluid == null)
-		{
 			return 0;
-		}
 
 		return fluid.amount;
 	}

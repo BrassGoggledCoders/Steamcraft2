@@ -26,43 +26,43 @@ import net.minecraftforge.fluids.IFluidHandler;
 
 /**
  * @author decebaldecebal
- *
+ * 
  */
 public class TileIntake extends TileEntity implements IFluidHandler
 {
 	private static byte waterPerTick = 30;
 	private static byte exportAmountPerTick = 30;
-	
+
 	private FluidTank waterTank;
 	private short tickSinceLastConsume = 0;
 
 	public TileIntake()
 	{
-		this.waterTank = new FluidTank(new FluidStack(FluidRegistry.WATER, 0), 5000);
+		waterTank = new FluidTank(new FluidStack(FluidRegistry.WATER, 0), 5000);
 	}
 
 	@Override
 	public void updateEntity()
 	{
 		super.updateEntity();
-		if (this.worldObj.getBlock(this.xCoord, this.yCoord - 1, this.zCoord) == Blocks.water 
-				&& this.worldObj.getBlockMetadata(this.xCoord, this.yCoord - 1, this.zCoord) == 0)
+		if ((worldObj.getBlock(xCoord, yCoord - 1, zCoord) == Blocks.water) && (worldObj.getBlockMetadata(xCoord, yCoord - 1, zCoord) == 0))
 		{
-			this.waterTank.fill(new FluidStack(FluidRegistry.WATER, waterPerTick), true);
+			waterTank.fill(new FluidStack(FluidRegistry.WATER, waterPerTick), true);
 			tickSinceLastConsume++;
-			
-			if(tickSinceLastConsume == 200)
+
+			if (tickSinceLastConsume == 200)
 			{
 				tickSinceLastConsume = 0;
-				this.worldObj.setBlockToAir(this.xCoord, this.yCoord - 1, this.zCoord);
+				worldObj.setBlockToAir(xCoord, yCoord - 1, zCoord);
 			}
 		}
-		
-		if(this.worldObj.getTileEntity(this.xCoord, this.yCoord + 1, this.zCoord)!=null
-			&& this.worldObj.getTileEntity(this.xCoord, this.yCoord + 1, this.zCoord) instanceof IFluidHandler)
+
+		if ((worldObj.getTileEntity(xCoord, yCoord + 1, zCoord) != null)
+				&& (worldObj.getTileEntity(xCoord, yCoord + 1, zCoord) instanceof IFluidHandler))
 		{
-			IFluidHandler export = (IFluidHandler)this.worldObj.getTileEntity(this.xCoord, this.yCoord + 1, this.zCoord);
-			waterTank.drain(export.fill(ForgeDirection.DOWN, new FluidStack(FluidRegistry.WATER, Math.min(waterTank.getFluidAmount(), exportAmountPerTick)), true), true);
+			IFluidHandler export = (IFluidHandler) worldObj.getTileEntity(xCoord, yCoord + 1, zCoord);
+			waterTank.drain(export.fill(ForgeDirection.DOWN,
+					new FluidStack(FluidRegistry.WATER, Math.min(waterTank.getFluidAmount(), exportAmountPerTick)), true), true);
 		}
 	}
 
@@ -70,50 +70,46 @@ public class TileIntake extends TileEntity implements IFluidHandler
 	public void readFromNBT(NBTTagCompound tag)
 	{
 		super.readFromNBT(tag);
-		this.waterTank.setFluid(new FluidStack(FluidRegistry.getFluid("water"), tag.getShort("waterLevel")));
-		this.tickSinceLastConsume = tag.getShort("consumeTicks");
+		waterTank.setFluid(new FluidStack(FluidRegistry.getFluid("water"), tag.getShort("waterLevel")));
+		tickSinceLastConsume = tag.getShort("consumeTicks");
 	}
 
 	@Override
 	public void writeToNBT(NBTTagCompound tag)
 	{
 		super.writeToNBT(tag);
-		tag.setShort("waterLevel", (short) this.waterTank.getFluidAmount());
+		tag.setShort("waterLevel", (short) waterTank.getFluidAmount());
 		tag.setShort("consumeTicks", tickSinceLastConsume);
 	}
 
 	@Override
 	public FluidStack drain(ForgeDirection from, FluidStack resource, boolean doDrain)
 	{
-		if (resource == null || !resource.isFluidEqual(this.waterTank.getFluid()))
-		{
+		if ((resource == null) || !resource.isFluidEqual(waterTank.getFluid()))
 			return null;
-		}
-		
-		return this.waterTank.drain(resource.amount, doDrain);
+
+		return waterTank.drain(resource.amount, doDrain);
 	}
 
 	@Override
 	public FluidStack drain(ForgeDirection from, int maxDrain, boolean doDrain)
 	{
-		return this.waterTank.drain(maxDrain, doDrain);
+		return waterTank.drain(maxDrain, doDrain);
 	}
 
 	@Override
 	public boolean canDrain(ForgeDirection from, Fluid fluid)
 	{
 		if (fluid == FluidRegistry.WATER)
-		{
 			return true;
-		}
-		
+
 		return false;
 	}
 
 	@Override
 	public FluidTankInfo[] getTankInfo(ForgeDirection from)
 	{
-		return new FluidTankInfo[] { this.waterTank.getInfo() };
+		return new FluidTankInfo[] { waterTank.getInfo() };
 	}
 
 	@Override
@@ -121,7 +117,7 @@ public class TileIntake extends TileEntity implements IFluidHandler
 	{
 		return false;
 	}
-	
+
 	@Override
 	public int fill(ForgeDirection from, FluidStack resource, boolean doFill)
 	{

@@ -28,7 +28,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 // TODO: Auto-generated Javadoc
 /**
  * The Class ItemChisel.
- *
+ * 
  * @author Surseance (Johnny Eatmon)
  */
 public class ItemChisel extends BaseItem
@@ -36,7 +36,7 @@ public class ItemChisel extends BaseItem
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see
 	 * net.minecraft.item.Item#registerIcons(net.minecraft.client.renderer.texture
 	 * .IIconRegister)
@@ -59,7 +59,7 @@ public class ItemChisel extends BaseItem
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see net.minecraft.item.Item#onItemUse(net.minecraft.item.ItemStack,
 	 * net.minecraft.entity.player.EntityPlayer, net.minecraft.world.World, int,
 	 * int, int, int, float, float, float)

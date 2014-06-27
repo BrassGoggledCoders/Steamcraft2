@@ -94,14 +94,10 @@ public class InventoryVanity implements IInventory
 				is = is.splitStack(amount);
 
 				if (is.stackSize == 0)
-				{
 					setInventorySlotContents(slot, null);
-				}
 			}
 			else
-			{
 				setInventorySlotContents(slot, null);
-			}
 
 			markDirty();
 		}
@@ -120,9 +116,7 @@ public class InventoryVanity implements IInventory
 		final ItemStack is = getStackInSlot(slot);
 
 		if (is != null)
-		{
 			setInventorySlotContents(slot, null);
-		}
 
 		return is;
 	}
@@ -138,10 +132,8 @@ public class InventoryVanity implements IInventory
 	{
 		inventory[slot] = is;
 
-		if (is != null && is.stackSize > getInventoryStackLimit())
-		{
+		if ((is != null) && (is.stackSize > getInventoryStackLimit()))
 			is.stackSize = getInventoryStackLimit();
-		}
 
 		markDirty();
 	}
@@ -197,7 +189,6 @@ public class InventoryVanity implements IInventory
 		final NBTTagList tagList = new NBTTagList();
 
 		for (int i = 0; i < getSizeInventory(); ++i)
-		{
 			if (getStackInSlot(i) != null)
 			{
 				final NBTTagCompound newTagCompound = new NBTTagCompound();
@@ -205,7 +196,6 @@ public class InventoryVanity implements IInventory
 				getStackInSlot(i).writeToNBT(newTagCompound);
 				tagList.appendTag(newTagCompound);
 			}
-		}
 
 		// We're storing our items in a custom tag list using our 'tagName' from
 		// above
@@ -229,10 +219,8 @@ public class InventoryVanity implements IInventory
 			// tagAt(int) has changed to getCompoundTagAt(int)
 			NBTTagCompound item = items.getCompoundTagAt(i);
 			byte slot = item.getByte("Slot");
-			if (slot >= 0 && slot < getSizeInventory())
-			{
+			if ((slot >= 0) && (slot < getSizeInventory()))
 				inventory[slot] = ItemStack.loadItemStackFromNBT(item);
-			}
 		}
 	}
 
@@ -277,12 +265,8 @@ public class InventoryVanity implements IInventory
 	public void markDirty()
 	{
 		for (int slot = 0; slot < getSizeInventory(); ++slot)
-		{
-			if (getStackInSlot(slot) != null && getStackInSlot(slot).stackSize == 0)
-			{
+			if ((getStackInSlot(slot) != null) && (getStackInSlot(slot).stackSize == 0))
 				setInventorySlotContents(slot, null);
-			}
-		}
 	}
 
 	/*

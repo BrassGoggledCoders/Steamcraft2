@@ -29,9 +29,9 @@ public class ItemModHoe extends ItemModTool
 	public ItemModHoe(ToolMaterial toolMat)
 	{
 		super(1F, toolMat, blocksEffectiveAgainst);
-		this.maxStackSize = 1;
-		this.setMaxDamage(toolMat.getMaxUses());
-		this.toolMaterial = toolMat;
+		maxStackSize = 1;
+		setMaxDamage(toolMat.getMaxUses());
+		toolMaterial = toolMat;
 	}
 
 	/*
@@ -45,22 +45,20 @@ public class ItemModHoe extends ItemModTool
 	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int l, float f1, float f2, float f3)
 	{
 		if (player.canPlayerEdit(x, y, z, l, stack))
-		{
-			if (this.isSteampowered())
+			if (isSteampowered())
 			{
 				NBTTagCompound tag = stack.getTagCompound();
 				if (tag.getBoolean("hasCanister"))
 				{
-					this.executeHoeAction(stack, player, world, x, y, z, l, f1, f2, f3);
+					executeHoeAction(stack, player, world, x, y, z, l, f1, f2, f3);
 					return true;
 				}
 			}
 			else
 			{
-				this.executeHoeAction(stack, player, world, x, y, z, l, f1, f2, f3);
+				executeHoeAction(stack, player, world, x, y, z, l, f1, f2, f3);
 				return true;
 			}
-		}
 		return false;
 	}
 

@@ -108,7 +108,7 @@ public class ItemBrassArmor extends BaseArmor
 	@Override
 	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
 	{
-		this.modules.put("aqualung", true);
+		modules.put("aqualung", true);
 		return par1ItemStack;
 	}
 
@@ -190,18 +190,11 @@ public class ItemBrassArmor extends BaseArmor
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack is)
 	{
-		if (modules.get("aqualung") != null && this.modules.get("aqualung").equals("true"))
-		{
+		if ((modules.get("aqualung") != null) && modules.get("aqualung").equals("true"))
 			if (player.getAir() <= 0)
 			{
 				player.setAir(300);
 				is.damageItem(4, player); // tweak the damage taken a bit
 			}
-		}
-		/*
-		 * else if (is.getItem() == ConfigItems.itemLegBraces) { if
-		 * (player.fallDistance > 3.0F) { player.fallDistance *= 0.888F;
-		 * is.damageItem(1, player); } }
-		 */
 	}
 }

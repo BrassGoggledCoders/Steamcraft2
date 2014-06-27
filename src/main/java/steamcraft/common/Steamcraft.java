@@ -49,7 +49,7 @@ import cpw.mods.fml.relauncher.Side;
 // TODO: Auto-generated Javadoc
 /**
  * The Class Steamcraft.
- *
+ * 
  * @author Surseance (Johnny Eatmon)
  */
 @Mod(modid = LibInfo.ID, name = LibInfo.NAME, version = LibInfo.VERSION, dependencies = "required-after:boilerplate")
@@ -76,14 +76,14 @@ public class Steamcraft
 
 	/**
 	 * Pre init.
-	 *
+	 * 
 	 * @param event
 	 *            the event
 	 */
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{
-		this.directory = event.getModConfigurationDirectory();
+		directory = event.getModConfigurationDirectory();
 
 		LanguageRegistry.instance().getStringLocalization("itemGroup.steamcraft", "en_US");
 		try
@@ -95,28 +95,27 @@ public class Steamcraft
 		} finally
 		{
 			if (Config.config != null)
-			{
 				Config.save();
-			}
 		}
-		//TODO: Reimplement DrawEvent
+		// TODO: Reimplement DrawEvent
 		sc2EventHandler = new EventHandlerSC2();
 		MinecraftForge.EVENT_BUS.register(sc2EventHandler);
 		FMLCommonHandler.instance().bus().register(sc2EventHandler);
 
 		if (Config.generationEnabled)
-		GameRegistry.registerWorldGenerator(this.worldGen, 0);
+			GameRegistry.registerWorldGenerator(worldGen, 0);
 
 		ConfigBlocks.init();
 		ConfigItems.init();
 
 		NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
-		//VillagerRegistry.instance().registerVillageCreationHandler(new VillageCreationHandler());
+		// VillagerRegistry.instance().registerVillageCreationHandler(new
+		// VillageCreationHandler());
 	}
 
 	/**
 	 * Inits the.
-	 *
+	 * 
 	 * @param event
 	 *            the event
 	 */
@@ -132,7 +131,7 @@ public class Steamcraft
 
 	/**
 	 * Post init.
-	 *
+	 * 
 	 * @param event
 	 *            the event
 	 */
@@ -146,13 +145,14 @@ public class Steamcraft
 		final ModContainer container = FMLCommonHandler.instance().findContainerFor(this);
 		LanguageRegistry.instance().loadLanguagesFor(container, Side.CLIENT);
 
-		//if(ClientHelper.mc().currentScreen instanceof GuiMainMenu)
-		//SplashesHelper.hackSplashes((GuiMainMenu) ClientHelper.mc().currentScreen);
+		// if(ClientHelper.mc().currentScreen instanceof GuiMainMenu)
+		// SplashesHelper.hackSplashes((GuiMainMenu)
+		// ClientHelper.mc().currentScreen);
 	}
 
 	/**
 	 * Server starting.
-	 *
+	 * 
 	 * @param event
 	 *            the event
 	 */

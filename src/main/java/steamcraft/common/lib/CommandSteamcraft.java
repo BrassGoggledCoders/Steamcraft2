@@ -22,7 +22,7 @@ import net.minecraft.command.ICommandSender;
 // TODO: Auto-generated Javadoc
 /**
  * The Class CommandSteamcraft.
- *
+ * 
  * @author Surseance (Johnny Eatmon)
  */
 public class CommandSteamcraft extends CommandBase
@@ -36,14 +36,14 @@ public class CommandSteamcraft extends CommandBase
 	 */
 	public CommandSteamcraft()
 	{
-		this.aliases = new ArrayList<String>();
-		this.aliases.add("steamcraft");
-		this.aliases.add("sc");
+		aliases = new ArrayList<String>();
+		aliases.add("steamcraft");
+		aliases.add("sc");
 	}
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see
 	 * net.minecraft.command.CommandBase#canCommandSenderUseCommand(net.minecraft
 	 * .command.ICommandSender)
@@ -56,7 +56,7 @@ public class CommandSteamcraft extends CommandBase
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see net.minecraft.command.ICommand#getCommandName()
 	 */
 	@Override
@@ -67,7 +67,7 @@ public class CommandSteamcraft extends CommandBase
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see
 	 * net.minecraft.command.ICommand#getCommandUsage(net.minecraft.command.
 	 * ICommandSender)
@@ -80,7 +80,7 @@ public class CommandSteamcraft extends CommandBase
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see net.minecraft.command.ICommand#processCommand(net.minecraft.command.
 	 * ICommandSender, java.lang.String[])
 	 */
@@ -90,7 +90,7 @@ public class CommandSteamcraft extends CommandBase
 		/*
 		 * ChatMessageComponent chat = sender.(); String prefix =
 		 * EnumChatFormatting.GOLD + " [Steamcraft] ";
-		 *
+		 * 
 		 * if (parameters.length < 1) {
 		 * sender.addChatMessage(chat.appendText(prefix +
 		 * EnumChatFormatting.LIGHT_PURPLE + "Welcome to Steamcraft 2!")); }
@@ -105,7 +105,7 @@ public class CommandSteamcraft extends CommandBase
 		 * EnumChatFormatting.LIGHT_PURPLE + "-- the running mod version" +
 		 * EnumChatFormatting.GOLD + "/sc2 update" +
 		 * EnumChatFormatting.LIGHT_PURPLE + "-- checks for latest version"));
-		 *
+		 * 
 		 * } else if (parameters[0].equalsIgnoreCase("version")) {
 		 * sender.addChatMessage(chat.appendText(prefix +
 		 * EnumChatFormatting.LIGHT_PURPLE + "Steamcraft 2 v" + LibInfo.VERSION

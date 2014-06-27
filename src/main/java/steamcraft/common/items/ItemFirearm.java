@@ -45,15 +45,15 @@ public class ItemFirearm extends BaseItem
 	{
 		super();
 		this.damage = damage;
-		this.reloadTime = (short)reloadTime;
-		this.twoAmmo = ammo2 != null;
+		this.reloadTime = (short) reloadTime;
+		twoAmmo = ammo2 != null;
 
 		this.ammo = ammo;
 		this.ammo2 = ammo2;
 
 		this.fireSound = fireSound;
 		this.reloadSound = reloadSound;
-		this.setMaxStackSize(1);
+		setMaxStackSize(1);
 	}
 
 	@Override
@@ -66,22 +66,22 @@ public class ItemFirearm extends BaseItem
 	@Override
 	public void onUpdate(ItemStack stack, World world, Entity entity, int par4, boolean par5)
 	{
-		if(entity instanceof EntityPlayer && ((EntityPlayer) entity).getCurrentEquippedItem() == stack)
+		if ((entity instanceof EntityPlayer) && (((EntityPlayer) entity).getCurrentEquippedItem() == stack))
 		{
 			EntityPlayer player = (EntityPlayer) entity;
 
-			if(!stack.hasTagCompound())
+			if (!stack.hasTagCompound())
 				stack.setTagCompound(new NBTTagCompound());
 
 			NBTTagCompound tag = stack.getTagCompound();
 
-			if(tag.getShort("reloadTime") > 0)
+			if (tag.getShort("reloadTime") > 0)
 			{
-				tag.setShort("reloadTime", (short)(tag.getShort("reloadTime")-1));
+				tag.setShort("reloadTime", (short) (tag.getShort("reloadTime") - 1));
 				stack.setTagCompound(tag);
 
-				if(tag.getShort("reloadTime") == 10)
-					world.playSoundAtEntity(player, this.reloadSound, 0.8F, 1.0F);
+				if (tag.getShort("reloadTime") == 10)
+					world.playSoundAtEntity(player, reloadSound, 0.8F, 1.0F);
 
 			}
 		}
@@ -92,12 +92,12 @@ public class ItemFirearm extends BaseItem
 	{
 		NBTTagCompound tag = stack.getTagCompound();
 
-		if (tag.getShort("reloadTime") == 0 && player.inventory.hasItem(Items.gunpowder) && player.inventory.hasItem(ammo))
-			if(twoAmmo)
+		if ((tag.getShort("reloadTime") == 0) && player.inventory.hasItem(Items.gunpowder) && player.inventory.hasItem(ammo))
+			if (twoAmmo)
 			{
-				if(player.inventory.hasItem(ammo2))
+				if (player.inventory.hasItem(ammo2))
 					shotBullet(stack, world, player);
-					player.inventory.consumeInventoryItem(ammo2);
+				player.inventory.consumeInventoryItem(ammo2);
 			}
 			else
 				shotBullet(stack, world, player);
@@ -114,13 +114,12 @@ public class ItemFirearm extends BaseItem
 		player.inventory.consumeInventoryItem(ammo);
 		player.inventory.consumeInventoryItem(Items.gunpowder);
 
-
 		if (!world.isRemote)
-			if(this.ammo == ConfigItems.itemMusketBall)
-			world.spawnEntityInWorld(new EntityBullet(world, player, this.damage, 8));
+			if (ammo == ConfigItems.itemMusketBall)
+				world.spawnEntityInWorld(new EntityBullet(world, player, damage, 8));
 			else
-			world.spawnEntityInWorld(new EntityBullet(world, player, this.damage, 15));
+				world.spawnEntityInWorld(new EntityBullet(world, player, damage, 15));
 
-		world.playSoundAtEntity(player, this.fireSound, 0.6F, 1.0F);
+		world.playSoundAtEntity(player, fireSound, 0.6F, 1.0F);
 	}
 }

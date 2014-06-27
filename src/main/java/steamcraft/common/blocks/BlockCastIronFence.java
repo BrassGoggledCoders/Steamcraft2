@@ -24,7 +24,7 @@ import steamcraft.common.lib.LibInfo;
 // TODO: Auto-generated Javadoc
 /**
  * The Class BlockCastIronFence.
- *
+ * 
  * @author Surseance (Johnny Eatmon)
  */
 public class BlockCastIronFence extends BlockFence
@@ -42,19 +42,16 @@ public class BlockCastIronFence extends BlockFence
 		setStepSound(Block.soundTypeMetal);
 		setCreativeTab(Steamcraft.tabSC2);
 	}
+
 	@Override
 	public boolean canConnectFenceTo(final IBlockAccess world, final int x, final int y, final int z)
 	{
 		final Block block = world.getBlock(x, y, z);
 
 		if ((block != this) && (block != ConfigBlocks.blockCastIronGate))
-		{
 			return ((block != null) && (block.getMaterial().isOpaque()) && (block.renderAsNormalBlock()) ? block.getMaterial() != Material.cactus
 					: false);
-		}
 		else
-		{
 			return true;
-		}
 	}
 }

@@ -22,7 +22,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 // TODO: Auto-generated Javadoc
 /**
  * The Class ModelBrassMonocle.
- *
+ * 
  * @author Surseance (Johnny Eatmon) & Falkok15
  */
 @SideOnly(Side.CLIENT)
@@ -34,7 +34,7 @@ public class ModelBrassMonocle extends ModelBiped
 
 	/**
 	 * Instantiates a new model brass monocle.
-	 *
+	 * 
 	 * @param f
 	 *            the f
 	 */
@@ -88,6 +88,7 @@ public class ModelBrassMonocle extends ModelBiped
 		bipedHead.addChild(Shape5);
 
 	}
+
 	@Override
 	public void render(final Entity entity, final float f1, final float f2, final float f3, final float f4, final float f5, final float f6)
 	{
@@ -102,6 +103,7 @@ public class ModelBrassMonocle extends ModelBiped
 		model.rotateAngleY = y;
 		model.rotateAngleZ = z;
 	}
+
 	@Override
 	public void setRotationAngles(final float f1, final float f2, final float f3, final float f4, final float f5, final float f6, final Entity entity)
 	{

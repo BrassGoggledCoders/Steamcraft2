@@ -30,7 +30,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author decebaldecebal
- *
+ * 
  */
 public class ItemClockworkWings extends BaseArmor
 {
@@ -39,7 +39,7 @@ public class ItemClockworkWings extends BaseArmor
 	public ItemClockworkWings(ArmorMaterial mat, int renderIndex, int armorType)
 	{
 		super(mat, renderIndex, armorType);
-		this.setMaxDamage(0);
+		setMaxDamage(0);
 	}
 
 	@SuppressWarnings("all")
@@ -49,41 +49,34 @@ public class ItemClockworkWings extends BaseArmor
 		if (descNeedsShift)
 		{
 			if (ClientHelper.isShiftKeyDown())
-			{
 				getWrappedDesc(list);
-			}
 			else
 				list.add(ClientHelper.shiftForInfo);
 		}
 		else
-		{
 			getWrappedDesc(list);
-		}
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void onArmorTick(World world, EntityPlayer player, ItemStack stack)
 	{
-		if(!player.capabilities.allowFlying)
+		if (!player.capabilities.allowFlying)
 		{
-			if(Minecraft.getMinecraft().currentScreen == null && player.posY < 160 && Minecraft.getMinecraft().gameSettings.keyBindJump.isPressed())
-	    	{
+			if ((Minecraft.getMinecraft().currentScreen == null) && (player.posY < 160)
+					&& Minecraft.getMinecraft().gameSettings.keyBindJump.isPressed())
+			{
 				player.addExhaustion(hungerPerTick);
 
-	            if(player.motionY > 0.0D)
-	            {
-	                player.motionY += 0.3D;
-	            }
-	            else
-	            {
-	                player.motionY += 0.4D;
-	            }
-	        }
+				if (player.motionY > 0.0D)
+					player.motionY += 0.3D;
+				else
+					player.motionY += 0.4D;
+			}
 
 			if ((player.motionY < 0.0D) && player.isSneaking())
 			{
-				player.addExhaustion(hungerPerTick/2);
+				player.addExhaustion(hungerPerTick / 2);
 				player.motionY /= 1.4D;
 
 				player.motionX *= 1.05D;
@@ -96,42 +89,42 @@ public class ItemClockworkWings extends BaseArmor
 				player.motionZ *= 1.04D;
 			}
 
-			if(player.fallDistance > 0)
+			if (player.fallDistance > 0)
 			{
-				player.addExhaustion(hungerPerTick/4);
+				player.addExhaustion(hungerPerTick / 4);
 				player.fallDistance = 0;
 			}
 		}
 	}
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, int armorSlot)
 	{
 		ModelBiped armorModel = new ModelBiped();
 
-		if(itemStack != null)
+		if (itemStack != null)
 		{
 			armorModel = Steamcraft.proxy.getWingsArmorModel(1);
 
-			if(armorModel != null)
+			if (armorModel != null)
 			{
 				armorModel.bipedHead.showModel = armorSlot == 0;
 				armorModel.bipedHeadwear.showModel = armorSlot == 0;
-				armorModel.bipedBody.showModel = armorSlot == 1 || armorSlot == 2;
+				armorModel.bipedBody.showModel = (armorSlot == 1) || (armorSlot == 2);
 				armorModel.bipedRightArm.showModel = armorSlot == 1;
 				armorModel.bipedLeftArm.showModel = armorSlot == 1;
-				armorModel.bipedRightLeg.showModel = armorSlot == 2 || armorSlot == 3;
-				armorModel.bipedLeftLeg.showModel = armorSlot == 2 || armorSlot == 3;
+				armorModel.bipedRightLeg.showModel = (armorSlot == 2) || (armorSlot == 3);
+				armorModel.bipedLeftLeg.showModel = (armorSlot == 2) || (armorSlot == 3);
 				armorModel.isSneak = entityLiving.isSneaking();
 				armorModel.isRiding = entityLiving.isRiding();
 				armorModel.isChild = entityLiving.isChild();
 
-				//armorModel.heldItemRight = entityLiving.getCurrentItemOrArmor(0) != null ? 1 :0;
+				// armorModel.heldItemRight =
+				// entityLiving.getCurrentItemOrArmor(0) != null ? 1 :0;
 
-				if(entityLiving instanceof EntityPlayer)
-				{
-					armorModel.aimedBow = ((EntityPlayer)entityLiving).getItemInUseDuration() > 2;
-				}
+				if (entityLiving instanceof EntityPlayer)
+					armorModel.aimedBow = ((EntityPlayer) entityLiving).getItemInUseDuration() > 2;
 
 				return armorModel;
 			}
@@ -139,6 +132,7 @@ public class ItemClockworkWings extends BaseArmor
 
 		return null;
 	}
+
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
 	{

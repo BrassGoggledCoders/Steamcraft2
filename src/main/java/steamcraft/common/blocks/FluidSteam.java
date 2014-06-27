@@ -13,10 +13,10 @@ public class FluidSteam extends Fluid
 		setViscosity(500);
 		setLuminosity(1);
 		setUnlocalizedName("steamFluid");
-		//registerBlockIcons(null);
+		// registerBlockIcons(null);
 		setIcons(stillIcon, flowingIcon);
-		//setStillIcon(BlockFluidSteam.icon[1]);
-		//setStillIcon(BlockFluidSteam.icon[0]);
+		// setStillIcon(BlockFluidSteam.icon[1]);
+		// setStillIcon(BlockFluidSteam.icon[0]);
 	}
 
 }

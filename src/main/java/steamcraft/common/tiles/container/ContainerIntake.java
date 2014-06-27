@@ -32,6 +32,6 @@ public class ContainerIntake
 	 */
 	public ContainerIntake(InventoryPlayer player, TileIntake tile)
 	{
-		this.tile_entity = tile;
+		tile_entity = tile;
 	}
 }

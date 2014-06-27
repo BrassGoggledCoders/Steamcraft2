@@ -48,7 +48,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 // TODO: Auto-generated Javadoc
 /**
  * The Class EventHandlerSC2.
- *
+ * 
  * @author Decebaldecebal
  */
 public class EventHandlerSC2
@@ -56,7 +56,7 @@ public class EventHandlerSC2
 
 	/**
 	 * Update player.
-	 *
+	 * 
 	 * @param event
 	 *            the event
 	 */
@@ -66,17 +66,17 @@ public class EventHandlerSC2
 		/*
 		 * if (event.entityLiving instanceof EntityPlayer) { EntityPlayer player
 		 * = (EntityPlayer) event.entityLiving;
-		 *
+		 * 
 		 * ItemStack legsSlot = player.inventory.armorItemInSlot(1);
-		 *
+		 * 
 		 * if (legsSlot != null) { if (legsSlot.getItem() ==
 		 * ConfigItems.itemLegBraces) { float distToFall = player.fallDistance;
-		 *
+		 * 
 		 * if (distToFall > 3.0F) { player.fallDistance = distToFall * 0.888F;
 		 * legsSlot.damageItem(1, player); } } }
-		 *
+		 * 
 		 * ItemStack bootsSlot = player.inventory.armorItemInSlot(0);
-		 *
+		 * 
 		 * if (bootsSlot != null) { if (!player.isInWater() && player.onGround
 		 * && bootsSlot.getItem() == ConfigItems.itemRollerSkates) {
 		 * player.moveEntityWithHeading(player.moveStrafing, player.moveForward
@@ -88,7 +88,7 @@ public class EventHandlerSC2
 
 	/**
 	 * Entity constructing.
-	 *
+	 * 
 	 * @param event
 	 *            the event
 	 */
@@ -96,14 +96,12 @@ public class EventHandlerSC2
 	public void entityConstructing(EntityConstructing event)
 	{
 		if (event.entity instanceof EntityPlayer)
-		{
 			EntityPlayerExtended.register((EntityPlayer) event.entity);
-		}
 	}
 
 	/**
 	 * On item drop.
-	 *
+	 * 
 	 * @param event
 	 *            the event
 	 */
@@ -125,7 +123,7 @@ public class EventHandlerSC2
 
 	/**
 	 * Living update.
-	 *
+	 * 
 	 * @param event
 	 *            the event
 	 */
@@ -139,22 +137,16 @@ public class EventHandlerSC2
 
 			if ((is != null) && (is.getItem() == ConfigItems.brassGoggles))
 			{
-				player.addPotionEffect(new PotionEffect(Potion.nightVision.id, this.timer, 0));
+				player.addPotionEffect(new PotionEffect(Potion.nightVision.id, timer, 0));
 
-				if (this.timer <= 220)
-				{
-					this.timer = 400;
-				}
+				if (timer <= 220)
+					timer = 400;
 			}
 			else if ((is == null) || (is.getItem() != ConfigItems.brassGoggles))
-			{
 				player.removePotionEffect(Potion.nightVision.id);
-			}
 		}
 		else if (!(event.entityLiving instanceof EntityPlayer))
-		{
 			event.entityLiving.removePotionEffect(Potion.nightVision.id);
-		}
 	}
 
 	/** The overlay. */
@@ -162,7 +154,7 @@ public class EventHandlerSC2
 
 	/**
 	 * On hud tick.
-	 *
+	 * 
 	 * @param event
 	 *            the event
 	 */
@@ -173,14 +165,11 @@ public class EventHandlerSC2
 		if (event.type == ElementType.HELMET)
 		{
 			if ((Minecraft.getMinecraft().thePlayer == null) || (Minecraft.getMinecraft().currentScreen != null))
-			{
 				return;
-			}
 
 			ItemStack helmet = Minecraft.getMinecraft().thePlayer.inventory.armorItemInSlot(3);
 
-			if ((Minecraft.getMinecraft().gameSettings.thirdPersonView == 0) && (helmet != null)
-					&& (helmet.getItem() == ConfigItems.brassGoggles))// &&
+			if ((Minecraft.getMinecraft().gameSettings.thirdPersonView == 0) && (helmet != null) && (helmet.getItem() == ConfigItems.brassGoggles))// &&
 			// KeyHandler.keyPressed)
 			{
 				Minecraft.getMinecraft().getTextureManager().bindTexture(EventHandlerSC2.overlay);
@@ -218,14 +207,12 @@ public class EventHandlerSC2
 			}
 		}
 		else
-		{
 			return;
-		}
 	}
 
 	/**
 	 * On item crafted.
-	 *
+	 * 
 	 * @param event
 	 *            the event
 	 */
@@ -233,28 +220,19 @@ public class EventHandlerSC2
 	public void onItemCrafted(PlayerEvent.ItemCraftedEvent event)
 	{
 		if (event.crafting.getItem() instanceof ItemRayGun)
-		{
 			event.player.addStat(ConfigAchievements.raygunAchieve, 1);
-		}
 		else if (event.crafting.getItem() instanceof ItemShrinkray)
-		{
 			event.player.addStat(ConfigAchievements.shrinkrayAchieve, 1);
-		}
-		else if(event.crafting == new ItemStack(ConfigBlocks.blockSteamBoiler))
-		{
+		else if (event.crafting == new ItemStack(ConfigBlocks.blockSteamBoiler))
 			event.player.addStat(ConfigAchievements.boilerAchieve, 1);
-		}
 		else if (event.crafting.getItem() instanceof ItemSheet)
-		{
 			event.player.addStat(ConfigAchievements.sheetAchieve, 1);
-		}
 	}
+
 	@SubscribeEvent
 	public void onItemCrafted(PlayerEvent.ItemSmeltedEvent event)
 	{
-		if(event.smelting.getItem() instanceof ItemIngot)
-		{
+		if (event.smelting.getItem() instanceof ItemIngot)
 			event.player.addStat(ConfigAchievements.ingotAchieve, 1);
-		}
 	}
 }

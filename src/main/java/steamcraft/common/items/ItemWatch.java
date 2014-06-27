@@ -51,13 +51,9 @@ public class ItemWatch extends BaseItem
 	public void addInformation(final ItemStack is, final EntityPlayer player, @SuppressWarnings("rawtypes") final List list, final boolean flag)
 	{
 		if (flag)
-		{
 			list.add("");
-		}
 		else
-		{
 			list.add("On right-click, this item");
-		}
 		list.add("will display the in-game time");
 		list.add("and the real-world time");
 	}

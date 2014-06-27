@@ -17,16 +17,17 @@ public class BlockUranium extends BaseBlock
 		super(p_i45394_1_);
 
 	}
+
 	@Override
 	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)
 	{
-			entity.attackEntityFrom(DamageSource.magic, 5);
+		entity.attackEntityFrom(DamageSource.magic, 5);
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(World world, int x, int y, int z, Random random)
 	{
-			EffectUtils.sparkle(world, x, y, z, "reddust");
+		EffectUtils.sparkle(world, x, y, z, "reddust");
 	}
 }

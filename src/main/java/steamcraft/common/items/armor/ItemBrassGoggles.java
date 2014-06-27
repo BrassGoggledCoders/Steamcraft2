@@ -9,7 +9,6 @@ import steamcraft.common.lib.LibInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-
 // TODO: Auto-generated Javadoc
 /**
  * The Class ItemBrassGoggles.
@@ -19,7 +18,7 @@ public class ItemBrassGoggles extends BaseArmor
 
 	/**
 	 * Instantiates a new item brass goggles.
-	 *
+	 * 
 	 * @param mat
 	 *            the mat
 	 * @param p_i45325_2_
@@ -33,6 +32,7 @@ public class ItemBrassGoggles extends BaseArmor
 		setMaxStackSize(1);
 		setUnlocalizedName("itemBrassGoggles");
 	}
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public String getArmorTexture(ItemStack is, Entity entity, int slot, String type)

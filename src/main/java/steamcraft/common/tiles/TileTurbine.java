@@ -7,7 +7,8 @@ import cofh.api.energy.IEnergyHandler;
 
 public class TileTurbine extends TileEntity implements IEnergyHandler
 {
-	 protected EnergyStorage storage = new EnergyStorage(10000);
+	protected EnergyStorage storage = new EnergyStorage(10000);
+
 	@Override
 	public void updateEntity()
 	{
@@ -26,24 +27,27 @@ public class TileTurbine extends TileEntity implements IEnergyHandler
 		return 0;
 	}
 
+	@Override
 	public int extractEnergy(ForgeDirection from, int maxExtract, boolean simulate)
 	{
-	  return this.storage.extractEnergy(Math.min(transferLimit(), maxExtract), simulate);
+		return storage.extractEnergy(Math.min(transferLimit(), maxExtract), simulate);
 	}
 
+	@Override
 	public int getEnergyStored(ForgeDirection from)
-	  {
-	    return this.storage.getEnergyStored();
-	  }
+	{
+		return storage.getEnergyStored();
+	}
 
+	@Override
+	public int getMaxEnergyStored(ForgeDirection from)
+	{
+		return storage.getMaxEnergyStored();
+	}
 
-	  public int getMaxEnergyStored(ForgeDirection from)
-	  {
-	    return this.storage.getMaxEnergyStored();
-	  }
-	  public int transferLimit()
-	  {
-	    return this.storage.getMaxEnergyStored();
-	  }
+	public int transferLimit()
+	{
+		return storage.getMaxEnergyStored();
+	}
 
 }

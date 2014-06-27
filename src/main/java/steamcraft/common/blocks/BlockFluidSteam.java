@@ -36,9 +36,10 @@ public class BlockFluidSteam extends BlockFluidClassic
 	/** The still icon. */
 	@SideOnly(Side.CLIENT)
 	public static IIcon[] icon;
+
 	/**
 	 * Instantiates a new block fluid steam.
-	 *
+	 * 
 	 * @param fluid
 	 *            the fluid
 	 * @param material
@@ -47,25 +48,26 @@ public class BlockFluidSteam extends BlockFluidClassic
 	public BlockFluidSteam(Fluid fluid, Material material)
 	{
 		super(fluid, material);
-		this.setBlockName("steamFluidBlock");
-		this.setCreativeTab(Steamcraft.tabSC2);
+		setBlockName("steamFluidBlock");
+		setCreativeTab(Steamcraft.tabSC2);
 	}
 
 	@Override
-	public IIcon getIcon(int side, int meta) {
-		return side != 0 && side != 1 ? this.icon[1] : this.icon[0];
+	public IIcon getIcon(int side, int meta)
+	{
+		return (side != 0) && (side != 1) ? icon[1] : icon[0];
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister iconRegister) {
-		this.icon = new IIcon[] {iconRegister.registerIcon(LibInfo.PREFIX + "steamStill"),
-				iconRegister.registerIcon(LibInfo.PREFIX + "steamFlowing")};
+	public void registerBlockIcons(IIconRegister iconRegister)
+	{
+		icon = new IIcon[] { iconRegister.registerIcon(LibInfo.PREFIX + "steamStill"), iconRegister.registerIcon(LibInfo.PREFIX + "steamFlowing") };
 	}
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see
 	 * net.minecraftforge.fluids.BlockFluidBase#canDisplace(net.minecraft.world
 	 * .IBlockAccess, int, int, int)
@@ -74,15 +76,13 @@ public class BlockFluidSteam extends BlockFluidClassic
 	public boolean canDisplace(IBlockAccess world, int x, int y, int z)
 	{
 		if (ItemStackUtils.getBlockMaterial(world, x, y, z).isLiquid())
-		{
 			return false;
-		}
 		return super.canDisplace(world, x, y, z);
 	}
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see
 	 * net.minecraftforge.fluids.BlockFluidBase#displaceIfPossible(net.minecraft
 	 * .world.World, int, int, int)
@@ -91,9 +91,7 @@ public class BlockFluidSteam extends BlockFluidClassic
 	public boolean displaceIfPossible(World world, int x, int y, int z)
 	{
 		if (ItemStackUtils.getBlockMaterial(world, x, y, z).isLiquid())
-		{
 			return false;
-		}
 		return super.displaceIfPossible(world, x, y, z);
 	}
 }

@@ -5,7 +5,6 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import steamcraft.common.tiles.TileCopperPipe;
 
-
 public class BlockCopperPipe extends BlockContainerMod
 {
 

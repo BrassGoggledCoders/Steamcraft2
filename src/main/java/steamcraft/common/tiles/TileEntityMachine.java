@@ -44,7 +44,7 @@ public abstract class TileEntityMachine extends TileEntity implements ISidedInve
 	 */
 	public TileEntityMachine(byte invSize)
 	{
-		this.inventory = new ItemStack[invSize];
+		inventory = new ItemStack[invSize];
 	}
 
 	/*
@@ -59,17 +59,15 @@ public abstract class TileEntityMachine extends TileEntity implements ISidedInve
 		super.readFromNBT(tag);
 
 		NBTTagList nbttaglist = (NBTTagList) tag.getTag("Items");
-		this.inventory = new ItemStack[this.getSizeInventory()];
+		inventory = new ItemStack[getSizeInventory()];
 
 		for (int i = 0; i < nbttaglist.tagCount(); ++i)
 		{
 			NBTTagCompound nbttagcompound1 = nbttaglist.getCompoundTagAt(i);
 			byte b0 = nbttagcompound1.getByte("Slot");
 
-			if ((b0 >= 0) && (b0 < this.inventory.length))
-			{
-				this.inventory[b0] = ItemStack.loadItemStackFromNBT(nbttagcompound1);
-			}
+			if ((b0 >= 0) && (b0 < inventory.length))
+				inventory[b0] = ItemStack.loadItemStackFromNBT(nbttagcompound1);
 		}
 	}
 
@@ -86,16 +84,14 @@ public abstract class TileEntityMachine extends TileEntity implements ISidedInve
 
 		NBTTagList nbttaglist = new NBTTagList();
 
-		for (int i = 0; i < this.inventory.length; ++i)
-		{
-			if (this.inventory[i] != null)
+		for (int i = 0; i < inventory.length; ++i)
+			if (inventory[i] != null)
 			{
 				NBTTagCompound nbttagcompound1 = new NBTTagCompound();
 				nbttagcompound1.setByte("Slot", (byte) i);
-				this.inventory[i].writeToNBT(nbttagcompound1);
+				inventory[i].writeToNBT(nbttagcompound1);
 				nbttaglist.appendTag(nbttagcompound1);
 			}
-		}
 
 		tag.setTag("Items", nbttaglist);
 	}
@@ -108,7 +104,7 @@ public abstract class TileEntityMachine extends TileEntity implements ISidedInve
 	@Override
 	public int getSizeInventory()
 	{
-		return this.inventory.length;
+		return inventory.length;
 	}
 
 	/*
@@ -119,7 +115,7 @@ public abstract class TileEntityMachine extends TileEntity implements ISidedInve
 	@Override
 	public ItemStack getStackInSlot(int par1)
 	{
-		return this.inventory[par1];
+		return inventory[par1];
 	}
 
 	/*
@@ -130,32 +126,28 @@ public abstract class TileEntityMachine extends TileEntity implements ISidedInve
 	@Override
 	public ItemStack decrStackSize(int par1, int par2)
 	{
-		if (this.inventory[par1] != null)
+		if (inventory[par1] != null)
 		{
 			ItemStack var3;
 
-			if (this.inventory[par1].stackSize <= par2)
+			if (inventory[par1].stackSize <= par2)
 			{
-				var3 = this.inventory[par1];
-				this.inventory[par1] = null;
+				var3 = inventory[par1];
+				inventory[par1] = null;
 				return var3;
 			}
 			else
 			{
-				var3 = this.inventory[par1].splitStack(par2);
+				var3 = inventory[par1].splitStack(par2);
 
-				if (this.inventory[par1].stackSize == 0)
-				{
-					this.inventory[par1] = null;
-				}
+				if (inventory[par1].stackSize == 0)
+					inventory[par1] = null;
 
 				return var3;
 			}
 		}
 		else
-		{
 			return null;
-		}
 	}
 
 	/*
@@ -166,16 +158,14 @@ public abstract class TileEntityMachine extends TileEntity implements ISidedInve
 	@Override
 	public ItemStack getStackInSlotOnClosing(int par1)
 	{
-		if (this.inventory[par1] != null)
+		if (inventory[par1] != null)
 		{
-			ItemStack var2 = this.inventory[par1];
-			this.inventory[par1] = null;
+			ItemStack var2 = inventory[par1];
+			inventory[par1] = null;
 			return var2;
 		}
 		else
-		{
 			return null;
-		}
 	}
 
 	/*
@@ -187,12 +177,10 @@ public abstract class TileEntityMachine extends TileEntity implements ISidedInve
 	@Override
 	public void setInventorySlotContents(int par1, ItemStack par2ItemStack)
 	{
-		this.inventory[par1] = par2ItemStack;
+		inventory[par1] = par2ItemStack;
 
-		if ((par2ItemStack != null) && (par2ItemStack.stackSize > this.getInventoryStackLimit()))
-		{
-			par2ItemStack.stackSize = this.getInventoryStackLimit();
-		}
+		if ((par2ItemStack != null) && (par2ItemStack.stackSize > getInventoryStackLimit()))
+			par2ItemStack.stackSize = getInventoryStackLimit();
 	}
 
 	/*
@@ -216,8 +204,8 @@ public abstract class TileEntityMachine extends TileEntity implements ISidedInve
 	@Override
 	public boolean isUseableByPlayer(EntityPlayer player)
 	{
-		return this.worldObj.getTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false : player.getDistanceSq(this.xCoord + 0.5D,
-				this.yCoord + 0.5D, this.zCoord + 0.5D) <= 64.0D;
+		return worldObj.getTileEntity(xCoord, yCoord, zCoord) != this ? false
+				: player.getDistanceSq(xCoord + 0.5D, yCoord + 0.5D, zCoord + 0.5D) <= 64.0D;
 	}
 
 	/*
@@ -286,7 +274,7 @@ public abstract class TileEntityMachine extends TileEntity implements ISidedInve
 	@Override
 	public String getInventoryName()
 	{
-		return this.getInventoryName();
+		return getInventoryName();
 	}
 
 	/*

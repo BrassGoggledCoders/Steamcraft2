@@ -22,7 +22,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 // TODO: Auto-generated Javadoc
 /**
  * The Class ModelBrassWings.
- *
+ * 
  * @author Surseance (Johnny Eatmon) & Falkok15
  */
 @SideOnly(Side.CLIENT)
@@ -30,12 +30,11 @@ public class ModelBrassWings extends ModelBiped
 {
 
 	/** The Shape1. */
-	ModelRenderer Shape1, Shape2,Shape3, Shape4, Shape5, Shape6, Shape7, Shape8, Shape9, Shape10,
-	Shape11, Shape12, Shape13, Shape15, Shape14;
+	ModelRenderer Shape1, Shape2, Shape3, Shape4, Shape5, Shape6, Shape7, Shape8, Shape9, Shape10, Shape11, Shape12, Shape13, Shape15, Shape14;
 
 	/**
 	 * Instantiates a new model brass wings.
-	 *
+	 * 
 	 * @param f
 	 *            the f
 	 */
@@ -163,6 +162,7 @@ public class ModelBrassWings extends ModelBiped
 		bipedBody.addChild(Shape15);
 		bipedBody.addChild(Shape14);
 	}
+
 	@Override
 	public void render(final Entity entity, final float f, final float f1, final float f2, final float f3, final float f4, final float f5)
 	{
@@ -177,6 +177,7 @@ public class ModelBrassWings extends ModelBiped
 		model.rotateAngleY = y;
 		model.rotateAngleZ = z;
 	}
+
 	@Override
 	public void setRotationAngles(final float f, final float f1, final float f2, final float f3, final float f4, final float f5, final Entity entity)
 	{

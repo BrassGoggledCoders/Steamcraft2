@@ -35,7 +35,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 /**
- *
+ * 
  * @author Decebaldecebal
  */
 public class ItemSteamJetpack extends BaseArmor
@@ -45,8 +45,8 @@ public class ItemSteamJetpack extends BaseArmor
 	public ItemSteamJetpack(ArmorMaterial mat, int renderIndex, int armorType, byte steam)
 	{
 		super(mat, renderIndex, armorType);
-		this.setMaxDamage(0);
-		this.steamPerTick = steam;
+		setMaxDamage(0);
+		steamPerTick = steam;
 	}
 
 	@SuppressWarnings("all")
@@ -61,16 +61,12 @@ public class ItemSteamJetpack extends BaseArmor
 		if (descNeedsShift)
 		{
 			if (ClientHelper.isShiftKeyDown())
-			{
 				getWrappedDesc(list);
-			}
 			else
 				list.add(ClientHelper.shiftForInfo);
 		}
 		else
-		{
 			getWrappedDesc(list);
-		}
 	}
 
 	@Override
@@ -81,10 +77,10 @@ public class ItemSteamJetpack extends BaseArmor
 
 		boolean hasCanister = false;
 
-		if (this.hasCanister(player))
+		if (hasCanister(player))
 			hasCanister = true;
 
-		if(hasCanister!=tag.getBoolean("hasCanister"))
+		if (hasCanister != tag.getBoolean("hasCanister"))
 		{
 			tag.setBoolean("hasCanister", hasCanister);
 			itemStack.setTagCompound(tag);
@@ -92,26 +88,23 @@ public class ItemSteamJetpack extends BaseArmor
 
 		if (!player.capabilities.allowFlying && hasCanister)
 		{
-			if ((Minecraft.getMinecraft().currentScreen == null) && player.posY < 200 && Keyboard.isKeyDown(Minecraft.getMinecraft().gameSettings.keyBindJump.getKeyCode()))
+			if ((Minecraft.getMinecraft().currentScreen == null) && (player.posY < 200)
+					&& Keyboard.isKeyDown(Minecraft.getMinecraft().gameSettings.keyBindJump.getKeyCode()))
 			{
 				consumeSteamFromCanister(player, steamPerTick);
 
 				if (player.motionY > 0.0D)
-				{
 					player.motionY += 0.08499999910593033D;
-				}
 				else
-				{
 					player.motionY += 0.11699999910593033D;
-				}
 
 				world.spawnParticle("smoke", player.posX, player.posY - 0.25D, player.posZ, 0.0D, 0.0D, 0.0D);
 
 			}
 
-			if (this == ConfigItems.itemSteamWingpack && player.motionY < 0.0D && player.isSneaking())
+			if ((this == ConfigItems.itemSteamWingpack) && (player.motionY < 0.0D) && player.isSneaking())
 			{
-				consumeSteamFromCanister(player, (byte)(steamPerTick/2));
+				consumeSteamFromCanister(player, (byte) (steamPerTick / 2));
 				player.motionY /= 1.4D;
 
 				player.motionX *= 1.05D;
@@ -126,7 +119,7 @@ public class ItemSteamJetpack extends BaseArmor
 
 			if (player.fallDistance > 0)
 			{
-				consumeSteamFromCanister(player, (byte)(steamPerTick/4));
+				consumeSteamFromCanister(player, (byte) (steamPerTick / 4));
 				player.fallDistance = 0;
 			}
 		}
@@ -137,7 +130,6 @@ public class ItemSteamJetpack extends BaseArmor
 		ItemStack[] mainInv = player.inventory.mainInventory;
 
 		for (ItemStack element : mainInv)
-		{
 			if ((element != null) && (element.getItem() == ConfigItems.itemCanisterSteam))
 			{
 				ItemCanister canister = (ItemCanister) element.getItem();
@@ -146,10 +138,9 @@ public class ItemSteamJetpack extends BaseArmor
 				{
 					canister.drain(element, steam, true);
 
-					return ;
+					return;
 				}
 			}
-		}
 	}
 
 	protected boolean isCanisterEmpty(ItemStack stack)
@@ -169,9 +160,7 @@ public class ItemSteamJetpack extends BaseArmor
 		{
 			ItemStack[] mainInv = player.inventory.mainInventory;
 			if ((mainInv[i] != null) && (mainInv[i].getItem() == ConfigItems.itemCanisterSteam))
-			{
-				hasCanister = hasCanister || !this.isCanisterEmpty(mainInv[i]);
-			}
+				hasCanister = hasCanister || !isCanisterEmpty(mainInv[i]);
 		}
 		return hasCanister;
 	}
@@ -182,36 +171,31 @@ public class ItemSteamJetpack extends BaseArmor
 	{
 		ModelBiped armorModel = new ModelBiped();
 
-		if(itemStack != null)
+		if (itemStack != null)
 		{
-			if(this == ConfigItems.itemSteamJetpack)
-			{
+			if (this == ConfigItems.itemSteamJetpack)
 				armorModel = Steamcraft.proxy.getJetpackArmorModel(1);
-			}
 			else
-			{
 				armorModel = Steamcraft.proxy.getWingpackArmorModel(1);
-			}
 
-			if(armorModel != null)
+			if (armorModel != null)
 			{
 				armorModel.bipedHead.showModel = armorSlot == 0;
 				armorModel.bipedHeadwear.showModel = armorSlot == 0;
-				armorModel.bipedBody.showModel = armorSlot == 1 || armorSlot == 2;
+				armorModel.bipedBody.showModel = (armorSlot == 1) || (armorSlot == 2);
 				armorModel.bipedRightArm.showModel = armorSlot == 1;
 				armorModel.bipedLeftArm.showModel = armorSlot == 1;
-				armorModel.bipedRightLeg.showModel = armorSlot == 2 || armorSlot == 3;
-				armorModel.bipedLeftLeg.showModel = armorSlot == 2 || armorSlot == 3;
+				armorModel.bipedRightLeg.showModel = (armorSlot == 2) || (armorSlot == 3);
+				armorModel.bipedLeftLeg.showModel = (armorSlot == 2) || (armorSlot == 3);
 				armorModel.isSneak = entityLiving.isSneaking();
 				armorModel.isRiding = entityLiving.isRiding();
 				armorModel.isChild = entityLiving.isChild();
 
-				//armorModel.heldItemRight = entityLiving.getCurrentItemOrArmor(0) != null ? 1 :0;
+				// armorModel.heldItemRight =
+				// entityLiving.getCurrentItemOrArmor(0) != null ? 1 :0;
 
-				if(entityLiving instanceof EntityPlayer)
-				{
-					armorModel.aimedBow = ((EntityPlayer)entityLiving).getItemInUseDuration() > 2;
-				}
+				if (entityLiving instanceof EntityPlayer)
+					armorModel.aimedBow = ((EntityPlayer) entityLiving).getItemInUseDuration() > 2;
 
 				return armorModel;
 			}
@@ -219,11 +203,13 @@ public class ItemSteamJetpack extends BaseArmor
 
 		return null;
 	}
+
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
 	{
-		if(stack.getItem() == ConfigItems.itemSteamJetpack)
-		return LibInfo.PREFIX + "textures/armor/jetpack.png";
-		else return LibInfo.PREFIX + "textures/armor/wingpack.png";
+		if (stack.getItem() == ConfigItems.itemSteamJetpack)
+			return LibInfo.PREFIX + "textures/armor/jetpack.png";
+		else
+			return LibInfo.PREFIX + "textures/armor/wingpack.png";
 	}
 }

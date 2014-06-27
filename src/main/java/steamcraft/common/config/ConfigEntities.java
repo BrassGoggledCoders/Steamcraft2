@@ -20,7 +20,7 @@ import cpw.mods.fml.common.registry.EntityRegistry;
 // TODO: Auto-generated Javadoc
 /**
  * The Class ConfigEntities.
- *
+ * 
  * @author Surseance (Johnny Eatmon)
  */
 public class ConfigEntities
@@ -32,8 +32,9 @@ public class ConfigEntities
 	public static void init()
 	{
 		registerEntities();
-		//Should NEVER register entities globally
-		//EntityRegistry.registerGlobalEntityID(EntityBullet.class, "Bullet", EntityRegistry.findGlobalUniqueEntityId());
+		// Should NEVER register entities globally
+		// EntityRegistry.registerGlobalEntityID(EntityBullet.class, "Bullet",
+		// EntityRegistry.findGlobalUniqueEntityId());
 	}
 
 	private static void registerEntities()

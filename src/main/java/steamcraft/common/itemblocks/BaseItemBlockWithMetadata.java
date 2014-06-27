@@ -15,7 +15,7 @@ public class BaseItemBlockWithMetadata extends ItemBlockWithMetadata
 {
 	/**
 	 * Instantiates a new base item block with metadata.
-	 *
+	 * 
 	 * @param p_i45328_1_
 	 *            the p_i45328_1_
 	 * @param block
@@ -29,7 +29,7 @@ public class BaseItemBlockWithMetadata extends ItemBlockWithMetadata
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see net.minecraft.item.Item#getMetadata(int)
 	 */
 	@Override
@@ -40,7 +40,7 @@ public class BaseItemBlockWithMetadata extends ItemBlockWithMetadata
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see
 	 * net.minecraft.item.ItemBlock#getUnlocalizedName(net.minecraft.item.ItemStack
 	 * )

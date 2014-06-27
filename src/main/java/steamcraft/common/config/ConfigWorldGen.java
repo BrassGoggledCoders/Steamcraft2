@@ -26,7 +26,7 @@ import cpw.mods.fml.common.IWorldGenerator;
 // TODO: Auto-generated Javadoc
 /**
  * The Class SteamcraftWorldGenerator.
- *
+ * 
  * @authors Surseance & warlordjones
  */
 public class ConfigWorldGen implements IWorldGenerator
@@ -34,7 +34,7 @@ public class ConfigWorldGen implements IWorldGenerator
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see cpw.mods.fml.common.IWorldGenerator#generate(java.util.Random, int,
 	 * int, net.minecraft.world.World, net.minecraft.world.chunk.IChunkProvider,
 	 * net.minecraft.world.chunk.IChunkProvider)
@@ -49,15 +49,15 @@ public class ConfigWorldGen implements IWorldGenerator
 		{
 		case -1:
 			if (Config.netherGenerationEnabled)
-			generateNether(world, random, blockChunkX, blockChunkZ);
+				generateNether(world, random, blockChunkX, blockChunkZ);
 			break;
 		case 0:
 			if (Config.overworldGenerationEnabled)
-			generateSurface(world, random, blockChunkX, blockChunkZ);
+				generateSurface(world, random, blockChunkX, blockChunkZ);
 			break;
 		case 1:
 			if (Config.endGenerationEnabled)
-			generateEnd(world, random, blockChunkX, blockChunkZ);
+				generateEnd(world, random, blockChunkX, blockChunkZ);
 			break;
 		}
 	}
@@ -65,7 +65,7 @@ public class ConfigWorldGen implements IWorldGenerator
 	// TODO: Add Config Options for ore vein size
 	/**
 	 * Generate surface.
-	 *
+	 * 
 	 * @param world
 	 *            the world
 	 * @param random
@@ -95,15 +95,18 @@ public class ConfigWorldGen implements IWorldGenerator
 					Blocks.stone);
 		if (Config.slateGenEnabled)
 		{
-			generateOre(world, random, chunkX, chunkZ, Config.slateChance, Config.slateHeight, random.nextInt(30), ConfigBlocks.blockSlate, 0, Blocks.stone);
-			generateOre(world, random, chunkX, chunkZ, Config.slateChance, Config.slateHeight, random.nextInt(30), ConfigBlocks.blockSlate, 1, Blocks.stone);
-			generateOre(world, random, chunkX, chunkZ, Config.slateChance, Config.slateHeight, random.nextInt(30), ConfigBlocks.blockSlate, 2, Blocks.stone);
+			generateOre(world, random, chunkX, chunkZ, Config.slateChance, Config.slateHeight, random.nextInt(30), ConfigBlocks.blockSlate, 0,
+					Blocks.stone);
+			generateOre(world, random, chunkX, chunkZ, Config.slateChance, Config.slateHeight, random.nextInt(30), ConfigBlocks.blockSlate, 1,
+					Blocks.stone);
+			generateOre(world, random, chunkX, chunkZ, Config.slateChance, Config.slateHeight, random.nextInt(30), ConfigBlocks.blockSlate, 2,
+					Blocks.stone);
 		}
 	}
 
 	/**
 	 * Generate ore.
-	 *
+	 * 
 	 * @param world
 	 *            the world
 	 * @param random
@@ -140,7 +143,7 @@ public class ConfigWorldGen implements IWorldGenerator
 
 	/**
 	 * Generate nether.
-	 *
+	 * 
 	 * @param world
 	 *            the world
 	 * @param random
@@ -159,7 +162,7 @@ public class ConfigWorldGen implements IWorldGenerator
 
 	/**
 	 * Generate end.
-	 *
+	 * 
 	 * @param world
 	 *            the world
 	 * @param random

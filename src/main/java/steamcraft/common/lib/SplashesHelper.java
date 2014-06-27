@@ -21,7 +21,7 @@ import cpw.mods.fml.relauncher.ReflectionHelper;
 // TODO: Auto-generated Javadoc
 /**
  * The Class SplashesHelper.
- *
+ * 
  * @author Surseance (Johnny Eatmon)
  */
 public class SplashesHelper
@@ -63,7 +63,7 @@ public class SplashesHelper
 
 	/**
 	 * Hack splashes.
-	 *
+	 * 
 	 * @param menu
 	 *            the menu
 	 */

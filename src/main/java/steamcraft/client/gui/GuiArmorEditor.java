@@ -28,7 +28,7 @@ public class GuiArmorEditor extends GuiContainer
 
 	/**
 	 * Instantiates a new gui armor editor.
-	 *
+	 * 
 	 * @param player
 	 *            the player
 	 * @param tile
@@ -39,16 +39,17 @@ public class GuiArmorEditor extends GuiContainer
 		super(new ContainerArmorEditor(player, tile));
 		this.tile = tile;
 	}
+
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float par1, int par2, int par3)
 	{
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 
-		this.mc.renderEngine.bindTexture(guitexture);
-		int var5 = (this.width - this.xSize) / 2;
-		int var6 = (this.height - this.ySize) / 2;
-		this.drawTexturedModalRect(var5, var6, 0, 0, this.xSize, this.ySize);
-		this.drawTexturedModalRect(var5 + 8, var6 + 24, 176, 14, 20, 49);
-		this.drawTexturedModalRect(var5 + 74, var6 + 24, 176, 14, 20, 49);
+		mc.renderEngine.bindTexture(guitexture);
+		int var5 = (width - xSize) / 2;
+		int var6 = (height - ySize) / 2;
+		drawTexturedModalRect(var5, var6, 0, 0, xSize, ySize);
+		drawTexturedModalRect(var5 + 8, var6 + 24, 176, 14, 20, 49);
+		drawTexturedModalRect(var5 + 74, var6 + 24, 176, 14, 20, 49);
 	}
 }

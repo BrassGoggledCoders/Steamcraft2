@@ -17,101 +17,114 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class ItemElectricJar extends BaseItem implements IEnergyContainerItem
 {
 	private static IIcon emptyIcon;
-    private static IIcon fullIcon;
+	private static IIcon fullIcon;
 	protected int capacity;
 	protected int maxReceive;
 	protected int maxExtract;
 
 	public ItemElectricJar()
 	{
-		setMaxDamage(capacity/100);
+		setMaxDamage(capacity / 100);
 	}
+
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void registerIcons(IIconRegister par1IconRegister)
 	{
-		//emptyIcon = par1IconRegister.registerIcon(LibInfo.PREFIX + "itemElectricJarEmpty");
+		// emptyIcon = par1IconRegister.registerIcon(LibInfo.PREFIX +
+		// "itemElectricJarEmpty");
 		itemIcon = par1IconRegister.registerIcon(LibInfo.PREFIX + "itemElectricJar");
-		//fullIcon = par1IconRegister.registerIcon(LibInfo.PREFIX + "itemElectricJarFull");
+		// fullIcon = par1IconRegister.registerIcon(LibInfo.PREFIX +
+		// "itemElectricJarFull");
 	}
-	 @SideOnly(Side.CLIENT)
-	 public IIcon getIconFromDamage(int damage)
-	 {
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public IIcon getIconFromDamage(int damage)
+	{
 		// if(damage == 0)
-		//	 return fullIcon;
+		// return fullIcon;
 		// else if(damage == this.getMaxDamage())
-		//	 return emptyIcon;
-		 return this.itemIcon;
-	 }
-		@SuppressWarnings("all")
-		@Override
-		@SideOnly(Side.CLIENT)
-		public void getSubItems(Item item, CreativeTabs tab, List l)
-		{
-			l.add(new ItemStack(ConfigItems.itemElectricJar, 1, this.getMaxDamage()));
-			l.add(getFilledCanister());
-		}
+		// return emptyIcon;
+		return itemIcon;
+	}
 
-		public ItemStack getFilledCanister()
-		{
-			ItemStack filled = new ItemStack(ConfigItems.itemElectricJar, 1, 0);
+	@SuppressWarnings("all")
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void getSubItems(Item item, CreativeTabs tab, List l)
+	{
+		l.add(new ItemStack(ConfigItems.itemElectricJar, 1, this.getMaxDamage()));
+		l.add(getFilledCanister());
+	}
 
-			receiveEnergy(filled, capacity, true);
+	public ItemStack getFilledCanister()
+	{
+		ItemStack filled = new ItemStack(ConfigItems.itemElectricJar, 1, 0);
 
-			return filled;
-		}
+		receiveEnergy(filled, capacity, true);
 
+		return filled;
+	}
 
-	public ItemElectricJar(int capacity) {
+	public ItemElectricJar(int capacity)
+	{
 
 		this(capacity, capacity, capacity);
 	}
 
-	public ItemElectricJar(int capacity, int maxTransfer) {
+	public ItemElectricJar(int capacity, int maxTransfer)
+	{
 
 		this(capacity, maxTransfer, maxTransfer);
 	}
 
-	public ItemElectricJar(int capacity, int maxReceive, int maxExtract) {
+	public ItemElectricJar(int capacity, int maxReceive, int maxExtract)
+	{
 
 		this.capacity = capacity;
 		this.maxReceive = maxReceive;
 		this.maxExtract = maxExtract;
 	}
 
-	public ItemElectricJar setCapacity(int capacity) {
+	public ItemElectricJar setCapacity(int capacity)
+	{
 
 		this.capacity = capacity;
 		return this;
 	}
 
-	public void setMaxTransfer(int maxTransfer) {
+	public void setMaxTransfer(int maxTransfer)
+	{
 
 		setMaxReceive(maxTransfer);
 		setMaxExtract(maxTransfer);
 	}
 
-	public void setMaxReceive(int maxReceive) {
+	public void setMaxReceive(int maxReceive)
+	{
 
 		this.maxReceive = maxReceive;
 	}
 
-	public void setMaxExtract(int maxExtract) {
+	public void setMaxExtract(int maxExtract)
+	{
 
 		this.maxExtract = maxExtract;
 	}
 
 	/* IEnergyContainerItem */
 	@Override
-	public int receiveEnergy(ItemStack container, int maxReceive, boolean simulate) {
+	public int receiveEnergy(ItemStack container, int maxReceive, boolean simulate)
+	{
 
-		if (container.stackTagCompound == null) {
+		if (container.stackTagCompound == null)
 			container.stackTagCompound = new NBTTagCompound();
-		}
 		int energy = container.stackTagCompound.getInteger("Energy");
 		int energyReceived = Math.min(capacity - energy, Math.min(this.maxReceive, maxReceive));
 
-		if (!simulate) {
+		if (!simulate)
+		{
 			energy += energyReceived;
 			container.stackTagCompound.setInteger("Energy", energy);
 		}
@@ -120,15 +133,16 @@ public class ItemElectricJar extends BaseItem implements IEnergyContainerItem
 	}
 
 	@Override
-	public int extractEnergy(ItemStack container, int maxExtract, boolean simulate) {
+	public int extractEnergy(ItemStack container, int maxExtract, boolean simulate)
+	{
 
-		if (container.stackTagCompound == null || !container.stackTagCompound.hasKey("Energy")) {
+		if ((container.stackTagCompound == null) || !container.stackTagCompound.hasKey("Energy"))
 			return 0;
-		}
 		int energy = container.stackTagCompound.getInteger("Energy");
 		int energyExtracted = Math.min(energy, Math.min(this.maxExtract, maxExtract));
 
-		if (!simulate) {
+		if (!simulate)
+		{
 			energy -= energyExtracted;
 			container.stackTagCompound.setInteger("Energy", energy);
 		}
@@ -137,21 +151,23 @@ public class ItemElectricJar extends BaseItem implements IEnergyContainerItem
 	}
 
 	@Override
-	public int getEnergyStored(ItemStack container) {
+	public int getEnergyStored(ItemStack container)
+	{
 
-		if (container.stackTagCompound == null || !container.stackTagCompound.hasKey("Energy")) {
+		if ((container.stackTagCompound == null) || !container.stackTagCompound.hasKey("Energy"))
 			return 0;
-		}
 		return container.stackTagCompound.getInteger("Energy");
 	}
 
 	@Override
-	public int getMaxEnergyStored(ItemStack container) {
+	public int getMaxEnergyStored(ItemStack container)
+	{
 
 		return capacity;
 	}
+
 	private void updateJarDamage(ItemStack jar)
 	{
-		jar.setItemDamage(jar.getMaxDamage() - this.getEnergyStored(jar)/100);
+		jar.setItemDamage(jar.getMaxDamage() - (getEnergyStored(jar) / 100));
 	}
 }

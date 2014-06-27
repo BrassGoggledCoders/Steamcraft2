@@ -28,7 +28,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 // TODO: Auto-generated Javadoc
 /**
  * The Class ItemResource.
- *
+ * 
  * @author Surseance (Johnny Eatmon)
  */
 public class ItemMachinePart extends BaseItemWithMetadata
@@ -39,7 +39,7 @@ public class ItemMachinePart extends BaseItemWithMetadata
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see
 	 * net.minecraft.item.Item#registerIcons(net.minecraft.client.renderer.texture
 	 * .IIconRegister)
@@ -70,7 +70,7 @@ public class ItemMachinePart extends BaseItemWithMetadata
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see net.minecraft.item.Item#getSubItems(net.minecraft.item.Item,
 	 * net.minecraft.creativetab.CreativeTabs, java.util.List)
 	 */
@@ -80,14 +80,12 @@ public class ItemMachinePart extends BaseItemWithMetadata
 	public void getSubItems(Item item, CreativeTabs tab, List l)
 	{
 		for (int var4 = 0; var4 < itemIcon.length; ++var4)
-		{
 			l.add(new ItemStack(ConfigItems.itemMachinePart, 1, var4));
-		}
 	}
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see net.minecraft.item.Item#getIconFromDamage(int)
 	 */
 	@Override

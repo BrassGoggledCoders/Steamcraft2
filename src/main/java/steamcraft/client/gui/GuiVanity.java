@@ -29,7 +29,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 // TODO: Auto-generated Javadoc
 /**
  * The Class GuiVanity.
- *
+ * 
  * @author warlordjones
  */
 @SideOnly(Side.CLIENT)
@@ -59,6 +59,7 @@ public class GuiVanity extends GuiContainer
 		super(new ContainerVanity(player, inventoryPlayer, inventoryCustom));
 		inventory = inventoryCustom;
 	}
+
 	@Override
 	public void drawScreen(final int x, final int y, final float scale)
 	{
@@ -66,14 +67,19 @@ public class GuiVanity extends GuiContainer
 		xSize_lo = x;
 		ySize_lo = y;
 	}
+
 	@Override
 	protected void drawGuiContainerForegroundLayer(final int x, final int y)
 	{
 		final String s = inventory.getInventoryName();
 		fontRendererObj.drawString(s, xSize - fontRendererObj.getStringWidth(s) - 8, 5, 4210752);
-		fontRendererObj.drawString("container.inventory", 120, ySize - 92, 4210752); // TODO: Something happened here
+		fontRendererObj.drawString("container.inventory", 120, ySize - 92, 4210752); // TODO:
+																						// Something
+																						// happened
+																						// here
 		fontRendererObj.drawString("Thanks, coolAlias!", xSize + 35, ySize + 34, 2000);
 	}
+
 	@Override
 	protected void drawGuiContainerBackgroundLayer(final float scale, final int par2, final int par3)
 	{

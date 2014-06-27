@@ -177,29 +177,17 @@ public class BlockCastIronLamp extends BlockContainer
 			final float hitZ, final int metadata)
 	{
 		if (side == 0)
-		{
 			world.setBlockMetadataWithNotify(i, j, k, 6, 2);
-		}
 		if (side == 1)
-		{
 			world.setBlockMetadataWithNotify(i, j, k, 5, 2);
-		}
 		if (side == 2)
-		{
 			world.setBlockMetadataWithNotify(i, j, k, 4, 2);
-		}
 		if (side == 3)
-		{
 			world.setBlockMetadataWithNotify(i, j, k, 3, 2);
-		}
 		if (side == 4)
-		{
 			world.setBlockMetadataWithNotify(i, j, k, 2, 2);
-		}
 		if (side == 5)
-		{
 			world.setBlockMetadataWithNotify(i, j, k, 1, 2);
-		}
 
 		return metadata;
 	}
@@ -229,17 +217,11 @@ public class BlockCastIronLamp extends BlockContainer
 		if (!world.isRemote)
 		{
 			if (powered && !world.isBlockIndirectlyGettingPowered(x, y, z))
-			{
 				world.scheduleBlockUpdate(x, y, z, this, 4);
-			}
 			else if (!powered && world.isBlockIndirectlyGettingPowered(x, y, z))
-			{
 				world.setBlock(x, y, z, ConfigBlocks.blockCastIronLampA, 0, 2);
-			}
 			if (world.getBlockMetadata(x, y, z) == 0)
-			{
 				super.onBlockAdded(world, x, y, z);
-			}
 
 			world.notifyBlocksOfNeighborChange(x, y - 1, z, this);
 			world.notifyBlocksOfNeighborChange(x, y + 1, z, this);
@@ -288,14 +270,10 @@ public class BlockCastIronLamp extends BlockContainer
 		super.updateTick(world, x, y, z, random);
 
 		if (world.getBlockMetadata(x, y, z) == 0)
-		{
 			onBlockAdded(world, x, y, z);
-		}
 
 		if (!world.isRemote && powered && !world.isBlockIndirectlyGettingPowered(x, y, z))
-		{
 			world.setBlock(x, y, z, ConfigBlocks.blockCastIronLampI, 0, 2);
-		}
 	}
 
 	/*
@@ -311,13 +289,9 @@ public class BlockCastIronLamp extends BlockContainer
 		if (!world.isRemote)
 		{
 			if (powered && !world.isBlockIndirectlyGettingPowered(x, y, z))
-			{
 				world.scheduleBlockUpdate(x, y, z, this, tickRate(world));
-			}
 			else if (!powered && world.isBlockIndirectlyGettingPowered(x, y, z))
-			{
 				world.setBlock(x, y, z, ConfigBlocks.blockCastIronLampA, 0, 2);
-			}
 
 			if (dropIfCantStay(world, x, y, z))
 			{
@@ -325,25 +299,15 @@ public class BlockCastIronLamp extends BlockContainer
 				boolean flag = false;
 
 				if (metadata == 1)
-				{
 					flag = true;
-				}
 				if (metadata == 2)
-				{
 					flag = true;
-				}
 				if (metadata == 3)
-				{
 					flag = true;
-				}
 				if (metadata == 4)
-				{
 					flag = true;
-				}
 				if (metadata == 5)
-				{
 					flag = true;
-				}
 
 				if (flag)
 				{
@@ -378,9 +342,7 @@ public class BlockCastIronLamp extends BlockContainer
 			return false;
 		}
 		else
-		{
 			return true;
-		}
 	}
 
 	// @Override
@@ -423,38 +385,26 @@ public class BlockCastIronLamp extends BlockContainer
 	public void randomDisplayTick(final World world, final int x, final int j, final int z, final Random random)
 	{
 		if (!powered)
-		{
 			return;
-		}
 		else
 		{
 			final int l = world.getBlockMetadata(x, j, z);
-			final double d = x + 0.5F + (random.nextFloat() - 0.5F) * 0.20000000000000001D;
-			final double d1 = j + 1.0F + (random.nextFloat() - 0.5F) * 0.20000000000000001D;
-			final double d2 = z + 0.5F + (random.nextFloat() - 0.5F) * 0.20000000000000001D;
+			final double d = x + 0.5F + ((random.nextFloat() - 0.5F) * 0.20000000000000001D);
+			final double d1 = j + 1.0F + ((random.nextFloat() - 0.5F) * 0.20000000000000001D);
+			final double d2 = z + 0.5F + ((random.nextFloat() - 0.5F) * 0.20000000000000001D);
 			final double d3 = 0.2199999988079071D;
 			final double d4 = 0.27000001072883606D;
 
 			if (l == 1)
-			{
 				world.spawnParticle("reddust", d - d4, d1 + d3, d2, -1.0D, 0.7D, 1.0D);
-			}
 			else if (l == 2)
-			{
 				world.spawnParticle("reddust", d + d4, d1 + d3, d2, -1.0D, 0.7D, 1.0D);
-			}
 			else if (l == 3)
-			{
 				world.spawnParticle("reddust", d, d1 + d3, d2 - d4, -1.0D, 0.7D, 1.0D);
-			}
 			else if (l == 4)
-			{
 				world.spawnParticle("reddust", d, d1 + d3, d2 + d4, -1.0D, 0.7D, 1.0D);
-			}
 			else
-			{
 				world.spawnParticle("reddust", d, d1, d2, -1.0D, 0.7D, 1.0D);
-			}
 		}
 	}
 }

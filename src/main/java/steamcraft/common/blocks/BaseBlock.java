@@ -27,12 +27,14 @@ public class BaseBlock extends Block
 		super(p_i45394_1_);
 		setCreativeTab(Steamcraft.tabSC2);
 	}
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister ir)
 	{
-		blockIcon = ir.registerIcon(LibInfo.PREFIX + this.getUnlocalizedName().substring(5));
+		blockIcon = ir.registerIcon(LibInfo.PREFIX + getUnlocalizedName().substring(5));
 	}
+
 	@Override
 	public IIcon getIcon(int side, int meta)
 	{

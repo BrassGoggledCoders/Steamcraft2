@@ -22,7 +22,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 // TODO: Auto-generated Javadoc
 /**
  * The Class ModelBrassWings.
- *
+ * 
  * @author Surseance (Johnny Eatmon) & Falkok15
  */
 @SideOnly(Side.CLIENT)
@@ -76,7 +76,7 @@ public class ModelWingpack extends ModelBiped
 
 	/**
 	 * Instantiates a new model brass wings.
-	 *
+	 * 
 	 * @param f
 	 *            the f
 	 */
@@ -231,7 +231,7 @@ public class ModelWingpack extends ModelBiped
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see
 	 * net.minecraft.client.model.ModelBiped#render(net.minecraft.entity.Entity,
 	 * float, float, float, float, float, float)
@@ -246,7 +246,7 @@ public class ModelWingpack extends ModelBiped
 	// Techne method
 	/**
 	 * Sets the rotation.
-	 *
+	 * 
 	 * @param model
 	 *            the model
 	 * @param x
@@ -265,7 +265,7 @@ public class ModelWingpack extends ModelBiped
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see net.minecraft.client.model.ModelBiped#setRotationAngles(float,
 	 * float, float, float, float, float, net.minecraft.entity.Entity)
 	 */
