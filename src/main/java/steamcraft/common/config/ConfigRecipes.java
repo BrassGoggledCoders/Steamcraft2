@@ -39,6 +39,7 @@ public class ConfigRecipes
 	{
 		initMetalsRecipes();
 		initToolsRecipes();
+		initGunRecipes();
 		initArmorRecipes();
 		initBlockRecipes();
 		initOtherRecipes();
@@ -132,6 +133,24 @@ public class ConfigRecipes
 		 */
 	}
 
+	private static void initGunRecipes()
+	{
+		//Gun Parts
+		GameRegistry.addRecipe(new ItemStack(ConfigItems.itemGunPart, 1, 0), new Object[]{"WWW", " WW", 'W', Blocks.planks});
+		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.itemGunPart, 1, 1), new Object[]{"III", "   ", "III", 'I', Items.iron_ingot});
+		GameRegistry.addShapelessRecipe(new ItemStack(ConfigItems.itemGunPart, 1, 2), new Object[]{new ItemStack(ConfigItems.itemGunPart, 1, 1), ConfigItems.itemChisel});
+		GameRegistry.addRecipe(new ItemStack(ConfigItems.itemGunPart, 1, 3), new Object[]{"  I", " II", 'I', Items.iron_ingot});
+		//Actual Guns
+		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.flintlockMusket), new Object[]{" FL", " B ", " S ", 'S', new ItemStack(ConfigItems.itemGunPart, 1, 0), 'B', new ItemStack(ConfigItems.itemGunPart, 1, 1), new ItemStack(ConfigItems.itemGunPart, 1, 3), 'F', Items.flint});
+		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.matchlockMusket), new Object[]{" FL", " B ", " S ", 'S', new ItemStack(ConfigItems.itemGunPart, 1, 0), 'B', new ItemStack(ConfigItems.itemGunPart, 1, 1), new ItemStack(ConfigItems.itemGunPart, 1, 3), 'F', ConfigItems.itemMatch});
+		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.percussionCapMusket), new Object[]{" FL", " B ", " S ", 'S', new ItemStack(ConfigItems.itemGunPart, 1, 0), 'B', new ItemStack(ConfigItems.itemGunPart, 1, 1), new ItemStack(ConfigItems.itemGunPart, 1, 3), 'F', ConfigItems.itemPercussionCap});
+		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.flintlockRifle), new Object[]{" FL", " B ", " S ", 'S', new ItemStack(ConfigItems.itemGunPart, 1, 0), 'B', new ItemStack(ConfigItems.itemGunPart, 1, 2), new ItemStack(ConfigItems.itemGunPart, 1, 3), 'F', Items.flint});
+		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.matchlockRifle), new Object[]{" FL", " B ", " S ", 'S', new ItemStack(ConfigItems.itemGunPart, 1, 0), 'B', new ItemStack(ConfigItems.itemGunPart, 1, 2), new ItemStack(ConfigItems.itemGunPart, 1, 3), 'F', ConfigItems.itemMatch});
+		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.percussionCapRifle), new Object[]{" FL", " B ", " S ", 'S', new ItemStack(ConfigItems.itemGunPart, 1, 0), 'B', new ItemStack(ConfigItems.itemGunPart, 1, 2), new ItemStack(ConfigItems.itemGunPart, 1, 3), 'F', ConfigItems.itemPercussionCap});
+		//Ammo
+
+	}
+
 	private static void initMetalsRecipes()
 	{
 		for (int meta = 0; meta < 8; meta++)
@@ -208,6 +227,8 @@ public class ConfigRecipes
 		// ItemStack(ConfigBlocks.blockCopperTank), new
 		// Object[]{"PPP","P P","PPP", 'P', new ItemStack(ConfigItems.itemSheet,
 		// 1, 1)});
+		GameRegistry.addRecipe(new ItemStack(ConfigBlocks.blockCastIronFence), new Object[]{"RRR", "RRR", 'R', new ItemStack(ConfigItems.itemMachinePart, 1, 9)});
+		GameRegistry.addRecipe(new ItemStack(ConfigBlocks.blockCastIronGate), new Object[]{"RIR", "RIR", 'R', new ItemStack(ConfigItems.itemMachinePart, 1, 9), 'I', new ItemStack(ConfigItems.itemIngot, 1, 7)});
 	}
 
 	private static void initOtherRecipes()
@@ -247,6 +268,8 @@ public class ConfigRecipes
 		GameRegistry.addRecipe(new ItemStack(ConfigBlocks.blockSlate,4,8), "SS", "SS", 'S', new ItemStack(ConfigBlocks.blockSlate, 1, 2));
 
 		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.itemMachinePart, 1, 9),"  X", " X ", "X  ",'X', new ItemStack(ConfigItems.itemIngot, 1, 7));
+
+		GameRegistry.addRecipe(new ItemStack(ConfigItems.itemChisel), new Object[]{" I", " S", 'I', Items.iron_ingot, 'S', Items.stick});
 	}
 
 	public static void initializeSmeltingRecipes()

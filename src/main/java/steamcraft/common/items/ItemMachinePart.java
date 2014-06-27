@@ -28,18 +28,18 @@ import cpw.mods.fml.relauncher.SideOnly;
 // TODO: Auto-generated Javadoc
 /**
  * The Class ItemResource.
- * 
+ *
  * @author Surseance (Johnny Eatmon)
  */
 public class ItemMachinePart extends BaseItemWithMetadata
 {
 	// @SideOnly(Side.CLIENT)
 	/** The item icon. */
-	IIcon[] itemIcon = new IIcon[9];
+	IIcon[] itemIcon = new IIcon[10];
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.minecraft.item.Item#registerIcons(net.minecraft.client.renderer.texture
 	 * .IIconRegister)
@@ -57,6 +57,7 @@ public class ItemMachinePart extends BaseItemWithMetadata
 		itemIcon[6] = ir.registerIcon(LibInfo.PREFIX + "itemGeneratorAssembly");
 		itemIcon[7] = ir.registerIcon(LibInfo.PREFIX + "itemClockworkMechanism");
 		itemIcon[8] = ir.registerIcon(LibInfo.PREFIX + "itemWireCoil");
+		itemIcon[9] = ir.registerIcon(LibInfo.PREFIX + "itemCastIronRod");
 	}
 
 	/**
@@ -70,7 +71,7 @@ public class ItemMachinePart extends BaseItemWithMetadata
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.minecraft.item.Item#getSubItems(net.minecraft.item.Item,
 	 * net.minecraft.creativetab.CreativeTabs, java.util.List)
 	 */
@@ -85,7 +86,7 @@ public class ItemMachinePart extends BaseItemWithMetadata
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.minecraft.item.Item#getIconFromDamage(int)
 	 */
 	@Override

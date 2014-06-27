@@ -127,10 +127,10 @@ item.itemMatch.name=Match
 item.itemMatch.desc=Basically a single-use flint and steel
 
 #Guns
-item.smoothbarrel.name=Smooth Barrel
-item.rifledbarrel.name=Rifled Barrel
-item.woodenstock.name=Wooden Stock
-item.itemPercussionLock.name=Percussion Lock
+item.itemGunPart.0.name=Wooden Stock
+item.itemGunPart.1.name=Smooth Barrel
+item.itemGunPart.2.name=Rifled Barrel
+item.itemGunPart.3.name=Firing Lock
 item.itemFlintlockMusket.name=Flintlock Musket
 item.itemFlintlockMusket.desc=Smooth-bore weapon. Ammunition: Musket Ball. Also requires Gunpowder
 item.itemMatchlockMusket.name=Matchlock Musket

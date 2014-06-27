@@ -21,6 +21,7 @@ import steamcraft.common.items.ItemCanister;
 import steamcraft.common.items.ItemChisel;
 import steamcraft.common.items.ItemElectricJar;
 import steamcraft.common.items.ItemFirearm;
+import steamcraft.common.items.ItemGunPart;
 import steamcraft.common.items.ItemIngot;
 import steamcraft.common.items.ItemMachinePart;
 import steamcraft.common.items.ItemMatch;
@@ -53,13 +54,13 @@ import boilerplate.common.RegistryHelper;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 /**
- * 
+ *
  * @author Surseance (Johnny Eatmon)
  */
 public class ConfigItems
 {
 	// Item Tools(sort of)
-	public static Item itemResource, itemIngot, itemSheet, itemPowder;
+	public static Item itemResource, itemIngot, itemSheet, itemPowder, itemCopperWire;
 
 	public static Item itemWatch;
 
@@ -135,7 +136,6 @@ public class ConfigItems
 	public static Item flintlockPistol, matchlockPistol, percussionCapPistol;
 
 	public static Item itemMusketBall, itemRifleBullet, itemPercussionCap;
-	public static Item itemGunPart;
 
 	public static Item itemColdKettle;
 	public static Item itemHotKettle;
@@ -162,7 +162,7 @@ public class ConfigItems
 
 	public static Item itemNugget;
 
-	public static Item itemMachinePart;
+	public static Item itemMachinePart, itemGunPart;
 	public static Item itemCopperParts, itemBrassParts, itemSteelParts, itemIronParts;
 
 	/* Init */
@@ -185,9 +185,9 @@ public class ConfigItems
 		 * MaterialHelper.STEAM_ARMOR, 0,
 		 * 3).setUnlocalizedName("itemRollerSkates");
 		 * registerItem(itemRollerSkates, "ItemRollerSkates", LibInfo.ID);
-		 * 
-		 * 
-		 * 
+		 *
+		 *
+		 *
 		 * //More Items itemTeacupEmpty = new
 		 * ItemTeacup(Config.itemTeacupEmptyId, 0, 0.0F,
 		 * false).setUnlocalizedName("itemTeacupEmpty");
@@ -342,9 +342,7 @@ public class ConfigItems
 		registerItem(percussionCapRifle, "ItemPercussionCapRifle");
 
 		itemRayGun = new ItemRayGun(LibInfo.PREFIX + "raygun").setUnlocalizedName("itemRaygun");
-		;
 		itemShrinkray = new ItemShrinkray(LibInfo.PREFIX + "shrinkray").setUnlocalizedName("itemShrinkray");
-		;
 
 		registerItem(itemRayGun, "ItemRayGun");
 		registerItem(itemShrinkray, "ItemShrinkray");
@@ -364,12 +362,14 @@ public class ConfigItems
 
 		// Simple
 		itemMachinePart = new ItemMachinePart().setUnlocalizedName("itemMachinePart");
+		itemGunPart = new ItemGunPart().setUnlocalizedName("itemGunPart");
 		itemCopperParts = ((ItemParts) new ItemParts().setUnlocalizedName("itemPartsCopper")).setMaterial("copper");
 		itemIronParts = ((ItemParts) new ItemParts().setUnlocalizedName("itemPartsIron")).setMaterial("iron");
 		itemBrassParts = ((ItemParts) new ItemParts().setUnlocalizedName("itemPartsBrass")).setMaterial("brass");
 		itemSteelParts = ((ItemParts) new ItemParts().setUnlocalizedName("itemPartsSteel")).setMaterial("steel");
 
 		registerItem(itemMachinePart, "ItemMachinePart");
+		registerItem(itemGunPart, "ItemGunPart");
 		registerItem(itemCopperParts, "ItemCopperParts");
 		registerItem(itemIronParts, "ItemIronParts");
 		registerItem(itemBrassParts, "ItemBrassParts");
@@ -412,6 +412,9 @@ public class ConfigItems
 
 		itemMatch = new ItemMatch().setUnlocalizedName("itemMatch");
 		registerItem(itemMatch, "ItemMatch");
+
+		itemCopperWire = new BaseItem().setUnlocalizedName("itemCopperWire");
+		registerItem(itemCopperWire, "ItemCopperWire");
 	}
 
 	private static void registerItem(Item item, String name)
