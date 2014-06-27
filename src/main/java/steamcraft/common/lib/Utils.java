@@ -37,7 +37,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 // TODO: Auto-generated Javadoc
 /**
  * The Class Utils.
- * 
+ *
  * @author Surseance (Johnny Eatmon)
  */
 public class Utils
@@ -51,7 +51,7 @@ public class Utils
 
 	/**
 	 * Check for updated version.
-	 * 
+	 *
 	 * @param name
 	 *            the name
 	 * @param version
@@ -115,7 +115,7 @@ public class Utils
 
 	/**
 	 * Gets the users from url.
-	 * 
+	 *
 	 * @param url
 	 *            the url
 	 * @return the users from url
@@ -142,30 +142,4 @@ public class Utils
 			return list.toArray(new String[list.size()]);
 		}
 	}
-
-	/**
-	 * Fill bucket.
-	 * 
-	 * @param world
-	 *            the world
-	 * @param mop
-	 *            the mop
-	 * @return the item stack
-	 */
-	@SuppressWarnings("unused")
-	private ItemStack fillBucket(World world, MovingObjectPosition mop)
-	{
-		Block block = world.getBlock(mop.blockX, mop.blockY, mop.blockZ);
-
-		if ((block == ConfigBlocks.blockSteam) && (world.getBlockMetadata(mop.blockX, mop.blockY, mop.blockZ) == 0))
-		{
-			world.setBlockToAir(mop.blockX, mop.blockY, mop.blockZ);
-			return new ItemStack(ConfigItems.itemBucketSteam);
-		}
-		else
-		{
-			return null;
-		}
-	}
-
 }

@@ -22,7 +22,7 @@ import cpw.mods.fml.relauncher.ReflectionHelper;
 // TODO: Auto-generated Javadoc
 /**
  * The Class SplashesHelper.
- * 
+ *
  * @author Surseance (Johnny Eatmon)
  */
 public class SplashesHelper
@@ -64,38 +64,13 @@ public class SplashesHelper
 
 	/**
 	 * Hack splashes.
-	 * 
+	 *
 	 * @param menu
 	 *            the menu
 	 */
 	public static void hackSplashes(GuiMainMenu menu)
 	{
-		if (menu == lastHacked)
-		{
-			return;
-		}
-
-		lastHacked = menu;
-		LoggerSteamcraft.log(Level.FINEST, "Hacking main menu splashes");
-		final Random random = new Random();
-
-		if (Utils.checkForUpdatedVersion(LibInfo.NAME, LibInfo.VERSION) && (random.nextInt(2) == 0))
-		{
-			try
-			{
-				ReflectionHelper.setPrivateValue(GuiMainMenu.class, menu, 2, "Update SC2!");
-			} catch (final Throwable t)
-			{
-			}
-		}
-		else if (random.nextInt(4) == 0)
-		{
-			try
-			{
-				ReflectionHelper.setPrivateValue(GuiMainMenu.class, menu, 2, splashes[random.nextInt(splashes.length)]);
-			} catch (final Throwable t)
-			{
-			}
-		}
+		Random random = new Random();
+		ReflectionHelper.setPrivateValue(GuiMainMenu.class, menu, 2, splashes[random.nextInt(splashes.length)]);
 	}
 }

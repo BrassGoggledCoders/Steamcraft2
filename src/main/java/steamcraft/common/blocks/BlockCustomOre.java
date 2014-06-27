@@ -88,13 +88,6 @@ public class BlockCustomOre extends BaseBlock implements IHammerable
 		setStepSound(Block.soundTypeStone);
 		setTickRandomly(true);
 	}
-
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see net.minecraft.item.Item#getSubItems(net.minecraft.item.Item,
-	 * net.minecraft.creativetab.CreativeTabs, java.util.List)
-	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	@SideOnly(Side.CLIENT)
@@ -114,7 +107,6 @@ public class BlockCustomOre extends BaseBlock implements IHammerable
 		else return null;
 	}
 	@Override
-	//Inefficient but works. Got a better way?
     public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune)
     {
         ArrayList<ItemStack> drop = new ArrayList<ItemStack>();
