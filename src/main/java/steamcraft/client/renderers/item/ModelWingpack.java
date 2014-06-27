@@ -241,21 +241,6 @@ public class ModelWingpack extends ModelBiped
 	{
 		super.render(entity, f, f1, f2, f3, f4, f5);
 		setRotationAngles(f, f1, f2, f3, f4, f5, entity);
-		// Shape1.render(f5);
-		// Shape2.render(f5);
-		// Shape3.render(f5);
-		// Shape6.render(f5);
-		// Shape7.render(f5);
-		// Shape4.render(f5);
-		// Shape5.render(f5);
-		// Shape8.render(f5);
-		// Shape9.render(f5);
-		// Shape10.render(f5);
-		// Shape11.render(f5);
-		// Shape12.render(f5);
-		// Shape13.render(f5);
-		// Shape15.render(f5);
-		// Shape14.render(f5);
 	}
 
 	// Techne method

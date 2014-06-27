@@ -1,5 +1,5 @@
 /*
- * 
+ *
  */
 package steamcraft.client.gui;
 
@@ -28,7 +28,7 @@ public class GuiArmorEditor extends GuiContainer
 
 	/**
 	 * Instantiates a new gui armor editor.
-	 * 
+	 *
 	 * @param player
 	 *            the player
 	 * @param tile
@@ -39,25 +39,6 @@ public class GuiArmorEditor extends GuiContainer
 		super(new ContainerArmorEditor(player, tile));
 		this.tile = tile;
 	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see net.minecraft.client.gui.inventory.GuiContainer#
-	 * drawGuiContainerForegroundLayer(int, int)
-	 */
-	@Override
-	protected void drawGuiContainerForegroundLayer(int par1, int par2)
-	{
-		// fontRenderer.drawString("Inventory", 8, ySize - 96 + 2, 4210752);
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see net.minecraft.client.gui.inventory.GuiContainer#
-	 * drawGuiContainerBackgroundLayer(float, int, int)
-	 */
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float par1, int par2, int par3)
 	{

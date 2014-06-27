@@ -114,62 +114,20 @@ public class ModelJetpack extends ModelBiped
 		bipedBody.addChild(Shape2);
 		bipedBody.addChild(Shape3);
 	}
-
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see
-	 * net.minecraft.client.model.ModelBiped#render(net.minecraft.entity.Entity,
-	 * float, float, float, float, float, float)
-	 */
 	@Override
 	public void render(final Entity entity, final float f, final float f1, final float f2, final float f3, final float f4, final float f5)
 	{
 		super.render(entity, f, f1, f2, f3, f4, f5);
 		setRotationAngles(f, f1, f2, f3, f4, f5, entity);
-		// Shape1.render(f5);
-		// Shape2.render(f5);
-		// Shape3.render(f5);
-		// Shape6.render(f5);
-		// Shape7.render(f5);
-		// Shape4.render(f5);
-		// Shape5.render(f5);
-		// Shape8.render(f5);
-		// Shape9.render(f5);
-		// Shape10.render(f5);
-		// Shape11.render(f5);
-		// Shape12.render(f5);
-		// Shape13.render(f5);
-		// Shape15.render(f5);
-		// Shape14.render(f5);
 	}
 
 	// Techne method
-	/**
-	 * Sets the rotation.
-	 *
-	 * @param model
-	 *            the model
-	 * @param x
-	 *            the x
-	 * @param y
-	 *            the y
-	 * @param z
-	 *            the z
-	 */
 	private void setRotation(final ModelRenderer model, final float x, final float y, final float z)
 	{
 		model.rotateAngleX = x;
 		model.rotateAngleY = y;
 		model.rotateAngleZ = z;
 	}
-
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see net.minecraft.client.model.ModelBiped#setRotationAngles(float,
-	 * float, float, float, float, float, net.minecraft.entity.Entity)
-	 */
 	@Override
 	public void setRotationAngles(final float f, final float f1, final float f2, final float f3, final float f4, final float f5, final Entity entity)
 	{

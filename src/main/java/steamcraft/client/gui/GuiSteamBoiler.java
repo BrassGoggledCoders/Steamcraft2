@@ -31,7 +31,7 @@ import steamcraft.common.tiles.container.ContainerSteamBoiler;
 // TODO: Auto-generated Javadoc
 /**
  * The Class GuiSteamBoiler.
- * 
+ *
  * @author Decebaldecebal
  */
 public class GuiSteamBoiler extends GuiContainer
@@ -45,7 +45,7 @@ public class GuiSteamBoiler extends GuiContainer
 
 	/**
 	 * Instantiates a new gui steam boiler.
-	 * 
+	 *
 	 * @param player
 	 *            the player
 	 * @param tile
@@ -56,25 +56,6 @@ public class GuiSteamBoiler extends GuiContainer
 		super(new ContainerSteamBoiler(player, tile));
 		this.tile = tile;
 	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see net.minecraft.client.gui.inventory.GuiContainer#
-	 * drawGuiContainerForegroundLayer(int, int)
-	 */
-	@Override
-	protected void drawGuiContainerForegroundLayer(int par1, int par2)
-	{
-		// fontRenderer.drawString("Inventory", 8, ySize - 96 + 2, 4210752);
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see net.minecraft.client.gui.inventory.GuiContainer#
-	 * drawGuiContainerBackgroundLayer(float, int, int)
-	 */
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float par1, int par2, int par3)
 	{
@@ -98,23 +79,6 @@ public class GuiSteamBoiler extends GuiContainer
 		this.drawTexturedModalRect(var5 + 8, var6 + 24, 176, 14, 20, 49);
 		this.drawTexturedModalRect(var5 + 74, var6 + 24, 176, 14, 20, 49);
 	}
-
-	/**
-	 * Draw fluid.
-	 * 
-	 * @param fluid
-	 *            the fluid
-	 * @param level
-	 *            the level
-	 * @param x
-	 *            the x
-	 * @param y
-	 *            the y
-	 * @param width
-	 *            the width
-	 * @param height
-	 *            the height
-	 */
 	private void drawFluid(FluidStack fluid, int level, int x, int y, int width, int height)
 	{
 		if ((fluid == null) || (fluid.getFluid() == null))
@@ -124,7 +88,6 @@ public class GuiSteamBoiler extends GuiContainer
 
 		IIcon icon = fluid.getFluid().getBlock().getIcon(0, 0);
 		this.mc.renderEngine.bindTexture(TextureMap.locationBlocksTexture);
-		// RenderUtils.setGLColorFromInt(fluid.getFluid().getColor(fluid));
 		int fullX = width / 16;
 		int fullY = height / 16;
 		int lastX = width - (fullX * 16);
@@ -154,23 +117,6 @@ public class GuiSteamBoiler extends GuiContainer
 		}
 		this.drawCutIcon(icon, x + (fullX * 16), y + (fullY * 16), lastX, lastY, fullLvl == fullY ? lastLvl : 0);
 	}
-
-	/**
-	 * Draw cut icon.
-	 * 
-	 * @param icon
-	 *            the icon
-	 * @param x
-	 *            the x
-	 * @param y
-	 *            the y
-	 * @param width
-	 *            the width
-	 * @param height
-	 *            the height
-	 * @param cut
-	 *            the cut
-	 */
 	private void drawCutIcon(IIcon icon, int x, int y, int width, int height, int cut)
 	{
 		Tessellator tess = Tessellator.instance;

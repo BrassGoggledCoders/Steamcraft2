@@ -185,7 +185,6 @@ public class ConfigBlocks
 		steamFluid = FluidRegistry.getFluid("steam");
 
 		blockSteam = new BlockFluidSteam(steamFluid, Material.lava);
-
 	}
 
 	/**

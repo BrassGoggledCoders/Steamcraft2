@@ -216,7 +216,6 @@ public class CommonProxy implements IGuiHandler
 	 */
 	public void registerKeys()
 	{
-		// TODO Auto-generated method stub
 
 	}
 }

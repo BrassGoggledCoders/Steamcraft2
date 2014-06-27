@@ -27,19 +27,11 @@ import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 // TODO: Auto-generated Javadoc
 /**
  * The Class BlockHatchRenderer.
- * 
+ *
  * @author warlordjones
  */
 public class BlockDropHammerRenderer implements ISimpleBlockRenderingHandler
 {
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler#
-	 * renderInventoryBlock(net.minecraft.block.Block, int, int,
-	 * net.minecraft.client.renderer.RenderBlocks)
-	 */
 	@Override
 	public void renderInventoryBlock(final Block block, final int metadata, final int modelID, final RenderBlocks renderer)
 	{
@@ -49,54 +41,20 @@ public class BlockDropHammerRenderer implements ISimpleBlockRenderingHandler
 		TileEntityRendererDispatcher.instance.renderTileEntityAt(te, te.xCoord, te.yCoord, te.zCoord, 0.0F);
 		GL11.glEnable(32826);
 	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler#renderWorldBlock
-	 * (net.minecraft.world.IBlockAccess, int, int, int,
-	 * net.minecraft.block.Block, int,
-	 * net.minecraft.client.renderer.RenderBlocks)
-	 */
 	@Override
 	public boolean renderWorldBlock(final IBlockAccess world, final int x, final int y, final int z, final Block block, final int modelID,
 			final RenderBlocks renderer)
 	{
 		return true;
 	}
-
-	/**
-	 * Should render3 d in inventory.
-	 * 
-	 * @return true, if successful
-	 */
-	public boolean shouldRender3DInInventory()
-	{
-		return true;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler#getRenderId()
-	 */
 	@Override
 	public int getRenderId()
 	{
 		return ConfigBlocks.blockDropHammerRI;
 	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler#
-	 * shouldRender3DInInventory(int)
-	 */
 	@Override
-	public boolean shouldRender3DInInventory(final int modelId)
+	public boolean shouldRender3DInInventory(int modelId)
 	{
-		return false;
+		return true;
 	}
 }

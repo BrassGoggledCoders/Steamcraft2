@@ -1,5 +1,5 @@
 /**
- * This class was created by <Surseance> or his SC2 development team. 
+ * This class was created by <Surseance> or his SC2 development team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -22,7 +22,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 // TODO: Auto-generated Javadoc
 /**
  * The Class ModelTopHat.
- * 
+ *
  * @author Surseance (Johnny Eatmon) & Falkok15
  */
 @SideOnly(Side.CLIENT)
@@ -37,7 +37,7 @@ public class ModelTopHat extends ModelBiped
 
 	/**
 	 * Instantiates a new model top hat.
-	 * 
+	 *
 	 * @param f
 	 *            the f
 	 */
@@ -65,7 +65,7 @@ public class ModelTopHat extends ModelBiped
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.minecraft.client.model.ModelBiped#render(net.minecraft.entity.Entity,
 	 * float, float, float, float, float, float)
@@ -75,14 +75,12 @@ public class ModelTopHat extends ModelBiped
 	{
 		super.render(entity, f, f1, f2, f3, f4, f5);
 		setRotationAngles(f, f1, f2, f3, f4, f5, entity);
-		// Shape1.render(f5);
-		// Shape2.render(f5);
 	}
 
 	// Techne method
 	/**
 	 * Sets the rotation.
-	 * 
+	 *
 	 * @param model
 	 *            the model
 	 * @param x
@@ -101,7 +99,7 @@ public class ModelTopHat extends ModelBiped
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.minecraft.client.model.ModelBiped#setRotationAngles(float,
 	 * float, float, float, float, float, net.minecraft.entity.Entity)
 	 */

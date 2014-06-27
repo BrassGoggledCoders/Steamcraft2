@@ -26,7 +26,6 @@ import steamcraft.common.lib.LibInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class RenderBullet.
  *
@@ -35,26 +34,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class RenderBullet extends Render
 {
-
-	/** The Constant bulletTex. */
 	private static final ResourceLocation bulletTex = new ResourceLocation(LibInfo.PREFIX + "textures/projectiles/musketball.png");
 
-	/**
-	 * Render bullet.
-	 *
-	 * @param bullet
-	 *            the bullet
-	 * @param dx
-	 *            the dx
-	 * @param dy
-	 *            the dy
-	 * @param dz
-	 *            the dz
-	 * @param frotY
-	 *            the frot y
-	 * @param frotP
-	 *            the frot p
-	 */
 	public void renderBullet(final EntityBullet bullet, final double dx, final double dy, final double dz, final float frotY, final float frotP)
 	{
 		bindEntityTexture(bullet);
@@ -133,27 +114,11 @@ public class RenderBullet extends Render
 	{
 		return bulletTex;
 	}
-
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see
-	 * net.minecraft.client.renderer.entity.Render#getEntityTexture(net.minecraft
-	 * .entity.Entity)
-	 */
 	@Override
 	protected ResourceLocation getEntityTexture(final Entity entity)
 	{
 		return getBulletTexture((EntityBullet) entity);
 	}
-
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see
-	 * net.minecraft.client.renderer.entity.Render#doRender(net.minecraft.entity
-	 * .Entity, double, double, double, float, float)
-	 */
 	@Override
 	public void doRender(final Entity entity, final double dx, final double dy, final double dz, final float frotY, final float frotP)
 	{

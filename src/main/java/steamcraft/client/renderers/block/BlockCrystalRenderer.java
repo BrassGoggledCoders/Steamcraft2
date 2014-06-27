@@ -1,5 +1,5 @@
 /**
- * This class was created by <Surseance> or his SC2 development team. 
+ * This class was created by <Surseance> or his SC2 development team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -27,19 +27,11 @@ import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 // TODO: Auto-generated Javadoc
 /**
  * The Class BlockCrystalRenderer.
- * 
+ *
  * @author Surseance (Johnny Eatmon)
  */
 public class BlockCrystalRenderer implements ISimpleBlockRenderingHandler
 {
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler#
-	 * renderInventoryBlock(net.minecraft.block.Block, int, int,
-	 * net.minecraft.client.renderer.RenderBlocks)
-	 */
 	@Override
 	public void renderInventoryBlock(final Block block, final int metadata, final int modelID, final RenderBlocks renderer)
 	{
@@ -49,41 +41,17 @@ public class BlockCrystalRenderer implements ISimpleBlockRenderingHandler
 		TileEntityRendererDispatcher.instance.renderTileEntityAt(te, 0.0D, 0.0D, 0.0D, 0.0F);
 		GL11.glEnable(32826);
 	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler#renderWorldBlock
-	 * (net.minecraft.world.IBlockAccess, int, int, int,
-	 * net.minecraft.block.Block, int,
-	 * net.minecraft.client.renderer.RenderBlocks)
-	 */
 	@Override
 	public boolean renderWorldBlock(final IBlockAccess world, final int x, final int y, final int z, final Block block, final int modelID,
 			final RenderBlocks renderer)
 	{
 		return true;
 	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler#
-	 * shouldRender3DInInventory(int)
-	 */
 	@Override
 	public boolean shouldRender3DInInventory(final int i)
 	{
 		return true;
 	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler#getRenderId()
-	 */
 	@Override
 	public int getRenderId()
 	{

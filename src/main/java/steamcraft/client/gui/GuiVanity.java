@@ -29,7 +29,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 // TODO: Auto-generated Javadoc
 /**
  * The Class GuiVanity.
- * 
+ *
  * @author warlordjones
  */
 @SideOnly(Side.CLIENT)
@@ -54,32 +54,11 @@ public class GuiVanity extends GuiContainer
 	/** The inventory. */
 	private final InventoryVanity inventory;
 
-	/**
-	 * Instantiates a new gui vanity.
-	 * 
-	 * @param player
-	 *            the player
-	 * @param inventoryPlayer
-	 *            the inventory player
-	 * @param inventoryCustom
-	 *            the inventory custom
-	 */
 	public GuiVanity(final EntityPlayer player, final InventoryPlayer inventoryPlayer, final InventoryVanity inventoryCustom)
 	{
 		super(new ContainerVanity(player, inventoryPlayer, inventoryCustom));
 		inventory = inventoryCustom;
 	}
-
-	/**
-	 * Draws the screen and all the components in it.
-	 * 
-	 * @param x
-	 *            the x
-	 * @param y
-	 *            the y
-	 * @param scale
-	 *            the scale
-	 */
 	@Override
 	public void drawScreen(final int x, final int y, final float scale)
 	{
@@ -87,39 +66,14 @@ public class GuiVanity extends GuiContainer
 		xSize_lo = x;
 		ySize_lo = y;
 	}
-
-	/**
-	 * Draw the foreground layer for the GuiContainer (everything in front of
-	 * the items).
-	 * 
-	 * @param x
-	 *            the x
-	 * @param y
-	 *            the y
-	 */
 	@Override
 	protected void drawGuiContainerForegroundLayer(final int x, final int y)
 	{
 		final String s = inventory.getInventoryName();
 		fontRendererObj.drawString(s, xSize - fontRendererObj.getStringWidth(s) - 8, 5, 4210752);
-		fontRendererObj.drawString("container.inventory", 120, ySize - 92, 4210752); // TODO:
-																						// Something
-																						// happened
-																						// here
+		fontRendererObj.drawString("container.inventory", 120, ySize - 92, 4210752); // TODO: Something happened here
 		fontRendererObj.drawString("Thanks, coolAlias!", xSize + 35, ySize + 34, 2000);
 	}
-
-	/**
-	 * Draw the background layer for the GuiContainer (everything behind the
-	 * items).
-	 * 
-	 * @param scale
-	 *            the scale
-	 * @param par2
-	 *            the par2
-	 * @param par3
-	 *            the par3
-	 */
 	@Override
 	protected void drawGuiContainerBackgroundLayer(final float scale, final int par2, final int par3)
 	{

@@ -16,29 +16,21 @@ package steamcraft.client;
 import java.awt.Color;
 
 import net.minecraft.client.model.ModelBiped;
-import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
-import steamcraft.client.renderers.block.BlockCastIronLampRenderer;
 import steamcraft.client.renderers.block.BlockCrystalRenderer;
-import steamcraft.client.renderers.block.BlockHatchRenderer;
 import steamcraft.client.renderers.entity.RenderBullet;
 import steamcraft.client.renderers.item.ModelBrassWings;
 import steamcraft.client.renderers.item.ModelJetpack;
 import steamcraft.client.renderers.item.ModelWingpack;
-import steamcraft.client.renderers.tile.TileCastIronLampRenderer;
 import steamcraft.client.renderers.tile.TileCrystalRenderer;
-import steamcraft.client.renderers.tile.TileHatchRenderer;
 import steamcraft.common.CommonProxy;
 import steamcraft.common.KeyBindings;
 import steamcraft.common.KeyInputHandler;
 import steamcraft.common.config.ConfigBlocks;
 import steamcraft.common.entities.projectile.EntityBullet;
 import steamcraft.common.lib.Utils;
-import steamcraft.common.lib.events.EventHandlerDrawHighlight;
-import steamcraft.common.tiles.TileCastIronLamp;
 import steamcraft.common.tiles.TileCrystal;
-import steamcraft.common.tiles.TileHatch;
 import boilerplate.client.fx.FXRaygun;
 import boilerplate.client.fx.FXSmoke;
 import boilerplate.client.renderers.block.RenderMinedBlock;
@@ -57,15 +49,8 @@ import cpw.mods.fml.common.FMLCommonHandler;
  */
 public class ClientProxy extends CommonProxy
 {
+	//public EventHandlerDrawHighlight drawEventHandler;
 
-	/** The draw event handler. */
-	public EventHandlerDrawHighlight drawEventHandler;
-
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see steamcraft.common.CommonProxy#registerKeys()
-	 */
 	@Override
 	public void registerKeys()
 	{
@@ -73,53 +58,42 @@ public class ClientProxy extends CommonProxy
 		KeyBindings.registerKeys();
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see steamcraft.common.CommonProxy#registerDisplayInformation()
-	 */
 	@Override
 	public void registerDisplayInformation()
 	{
 		Utils.downloadCapes();
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see steamcraft.common.CommonProxy#registerRenderers()
-	 */
 	@Override
 	public void registerRenderers()
 	{
-		ClientRegistry.bindTileEntitySpecialRenderer(TileCrystal.class, new TileCrystalRenderer());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileHatch.class, new TileHatchRenderer());
-
-		RenderingRegistry.registerBlockHandler(new BlockCrystalRenderer());
-		RenderingRegistry.registerBlockHandler(new BlockHatchRenderer());
+		registerBlockRenderers();
 
 		// TODO: Should be in boilerplate
 		RenderingRegistry.registerEntityRenderingHandler(EntityMinedBlock.class, new RenderMinedBlock());
 
-				ConfigBlocks.blockCrystalRI = RenderingRegistry.getNextAvailableRenderId();
-				ClientRegistry.bindTileEntitySpecialRenderer(TileCrystal.class, new TileCrystalRenderer());
-				RenderingRegistry.registerBlockHandler(new BlockCrystalRenderer());
-
-				ConfigBlocks.blockCastIronLampRI = RenderingRegistry.getNextAvailableRenderId();
-				ClientRegistry.bindTileEntitySpecialRenderer(TileCastIronLamp.class, new TileCastIronLampRenderer());
-				RenderingRegistry.registerBlockHandler(new BlockCastIronLampRenderer());
-
 		RenderingRegistry.registerEntityRenderingHandler(EntityBullet.class, new RenderBullet());
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see steamcraft.common.CommonProxy#getClientGuiElement(int,
-	 * net.minecraft.entity.player.EntityPlayer, net.minecraft.world.World, int,
-	 * int, int)
-	 */
-	@Override
+	private void registerBlockRenderers()
+	{
+		//Crystal
+		ClientRegistry.bindTileEntitySpecialRenderer(TileCrystal.class, new TileCrystalRenderer());
+		ConfigBlocks.blockCrystalRI = RenderingRegistry.getNextAvailableRenderId();
+		ClientRegistry.bindTileEntitySpecialRenderer(TileCrystal.class, new TileCrystalRenderer());
+		RenderingRegistry.registerBlockHandler(new BlockCrystalRenderer());
+
+		/*Cast Iron Lamp
+		ConfigBlocks.blockCastIronLampRI = RenderingRegistry.getNextAvailableRenderId();
+		ClientRegistry.bindTileEntitySpecialRenderer(TileCastIronLamp.class, new TileCastIronLampRenderer());
+		RenderingRegistry.registerBlockHandler(new BlockCastIronLampRenderer());*/
+
+		//Hatch
+		//ClientRegistry.bindTileEntitySpecialRenderer(TileHatch.class, new TileHatchRenderer());
+		//RenderingRegistry.registerBlockHandler(new BlockHatchRenderer());
+	}
+	//TODO Any reason for this method?
+	/*@Override
 	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
 	{
 		if ((world instanceof WorldClient))
@@ -131,13 +105,7 @@ public class ClientProxy extends CommonProxy
 		}
 
 		return null;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see steamcraft.common.CommonProxy#getClientWorld()
-	 */
+	}*/
 	@Override
 	public World getClientWorld()
 	{
@@ -152,14 +120,6 @@ public class ClientProxy extends CommonProxy
 	 */
 
 	// ========== Warning: PAIN IN THE ASS MATERIAL ========== //
-
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see steamcraft.common.CommonProxy#rayFX(net.minecraft.world.World,
-	 * net.minecraft.entity.player.EntityPlayer, double, double, double, int,
-	 * boolean, float, java.lang.Object, int)
-	 */
 	@Override
 	public Object rayFX(World world, EntityPlayer player, double dx, double dy, double dz, int type, boolean reverse, float endMod, Object input,
 			int impact, Color rayColor)
@@ -189,12 +149,7 @@ public class ClientProxy extends CommonProxy
 		return ray;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see steamcraft.common.CommonProxy#smokeFX(net.minecraft.world.World,
-	 * double, double, double, java.lang.Object)
-	 */
+
 	@Override
 	public Object smokeFX(World world, double dx, double dy, double dz, Object input)
 	{
