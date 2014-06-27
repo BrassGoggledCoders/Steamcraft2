@@ -1,4 +1,4 @@
-Steamcraft 2 for Minecraft 1.6.4
+Steamcraft 2 for Minecraft 1.7.2
 ================================
 Please read the wiki for articles relating to the features in this mod.
 
