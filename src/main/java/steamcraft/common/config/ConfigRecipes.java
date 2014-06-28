@@ -248,7 +248,7 @@ public class ConfigRecipes
 		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.itemMachinePart, 1, 5), new Object[] { "P P", " P ", "P P", 'P',
 				new ItemStack(ConfigItems.itemSheet, 1, 6) });
 
-		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.itemCanisterSteam), new Object[] { "PPP", "GGG", "PPP", 'G', Blocks.glass_pane, 'P',
+		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.itemCanisterSteam, 1, ConfigItems.itemCanisterSteam.getMaxDamage()), new Object[] { "PPP", "GGG", "PPP", 'G', Blocks.glass_pane, 'P',
 				new ItemStack(ConfigItems.itemSheet, 1, 4) });
 
 		GameRegistry.addRecipe(new ItemStack(ConfigItems.itemHammer), new Object[] { "III", " H ", " C ", 'I',

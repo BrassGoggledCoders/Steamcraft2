@@ -378,7 +378,7 @@ public class ConfigItems
 	{
 		// Containers
 		itemCanisterSteam = new ItemCanister().setUnlocalizedName("itemCanisterSteam");
-		itemElectricJar = new ItemElectricJar().setUnlocalizedName("itemElectricJar");
+		itemElectricJar = new ItemElectricJar(100000, 400).setUnlocalizedName("itemElectricJar");
 
 		registerItem(itemCanisterSteam, "ItemCanisterSteam");
 		registerItem(itemElectricJar, "ItemElectricJar");
