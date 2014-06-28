@@ -1,6 +1,5 @@
 package steamcraft.common.tiles;
 
-import boilerplate.steamapi.machines.BloomeryRecipes;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
@@ -13,11 +12,11 @@ import net.minecraft.item.ItemHoe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.item.ItemTool;
-import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import steamcraft.common.blocks.tiles.BlockBloomery;
+import boilerplate.steamapi.machines.BloomeryRecipes;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -234,7 +233,6 @@ public class TileBloomery extends TileEntity implements IInventory
 	                if (this.furnaceBurnTime > 0)
 	                {
 	                    flag1 = true;
-
 	                    if (this.furnaceItemStacks[0] != null)
 	                    {
 	                        --this.furnaceItemStacks[0].stackSize;
@@ -287,12 +285,12 @@ public class TileBloomery extends TileEntity implements IInventory
 	        }
 	        else
 	        {
-	            ItemStack itemstack = BloomeryRecipes.smelting().getSmeltingResult(this.furnaceItemStacks[2]);
+	        	ItemStack itemstack = BloomeryRecipes.smelting().getSmeltingResult(this.furnaceItemStacks[2]);
 	            if (itemstack == null) return false;
-	            if (this.furnaceItemStacks[2] == null) return true;
-	            if (!this.furnaceItemStacks[2].isItemEqual(itemstack)) return false;
-	            int result = furnaceItemStacks[2].stackSize + itemstack.stackSize;
-	            return result <= getInventoryStackLimit() && result <= this.furnaceItemStacks[2].getMaxStackSize(); //Forge BugFix: Make it respect stack sizes properly.
+	            if (this.furnaceItemStacks[3] == null) return true;
+	            if (!this.furnaceItemStacks[3].isItemEqual(itemstack)) return false;
+	            int result = furnaceItemStacks[3].stackSize + itemstack.stackSize;
+	            return result <= getInventoryStackLimit() && result <= this.furnaceItemStacks[3].getMaxStackSize(); //Forge BugFix: Make it respect stack sizes properly.
 	        }
 	    }
 
@@ -303,7 +301,7 @@ public class TileBloomery extends TileEntity implements IInventory
 	    {
 	        if (this.canSmelt())
 	        {
-	            ItemStack itemstack = FurnaceRecipes.smelting().getSmeltingResult(this.furnaceItemStacks[2]);
+	            ItemStack itemstack = BloomeryRecipes.smelting().getSmeltingResult(this.furnaceItemStacks[2]);
 
 	            if (this.furnaceItemStacks[2] == null)
 	            {
