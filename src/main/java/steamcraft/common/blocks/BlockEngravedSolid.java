@@ -119,8 +119,8 @@ public class BlockEngravedSolid extends Block
 	@Override
 	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)
 	{
-		if ((world.getBlock(x, y, z) == this) && (world.getBlockMetadata(x, y, z) == 7))
-			entity.attackEntityFrom(DamageSource.magic, 1);
+	//	if ((world.getBlock(x, y, z) == this) && (world.getBlockMetadata(x, y, z) == 7))
+	//		entity.attackEntityFrom(DamageSource.magic, 1);
 	}
 
 	/*
@@ -134,8 +134,8 @@ public class BlockEngravedSolid extends Block
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(World world, int x, int y, int z, Random random)
 	{
-		if ((world.getBlock(x, y, z) == this) && (world.getBlockMetadata(x, y, z) == 7))
-			EffectUtils.sparkle(world, x, y, z, "reddust");
+	//	if ((world.getBlock(x, y, z) == this) && (world.getBlockMetadata(x, y, z) == 7))
+	//		EffectUtils.sparkle(world, x, y, z, "reddust");
 	}
 
 	/*
@@ -149,7 +149,7 @@ public class BlockEngravedSolid extends Block
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(Item item, CreativeTabs tab, List l)
 	{
-		for (int var4 = 0; var4 < 8; ++var4)
+		for (int var4 = 0; var4 < icon.length; ++var4)
 			l.add(new ItemStack(ConfigBlocks.blockEngraved, 1, var4));
 	}
 
