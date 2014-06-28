@@ -35,6 +35,7 @@ import steamcraft.common.blocks.BlockSlate;
 import steamcraft.common.blocks.BlockUranium;
 import steamcraft.common.blocks.FluidSteam;
 import steamcraft.common.blocks.tiles.BlockArmorEditor;
+import steamcraft.common.blocks.tiles.BlockBloomery;
 import steamcraft.common.blocks.tiles.BlockCharger;
 import steamcraft.common.blocks.tiles.BlockCopperPipe;
 import steamcraft.common.blocks.tiles.BlockDropHammerAnvil;
@@ -47,6 +48,7 @@ import steamcraft.common.itemblocks.ItemBlockMetal;
 import steamcraft.common.itemblocks.ItemBlockSlate;
 import steamcraft.common.itemblocks.ItemBlockWithDesc;
 import steamcraft.common.tiles.TileArmorEditor;
+import steamcraft.common.tiles.TileBloomery;
 import steamcraft.common.tiles.TileCopperPipe;
 import steamcraft.common.tiles.TileCrystal;
 import steamcraft.common.tiles.TileDropHammer;
@@ -59,7 +61,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 // TODO: Auto-generated Javadoc
 /**
  * The Class ConfigBlocks.
- * 
+ *
  * @author Surseance (Johnny Eatmon)
  */
 public class ConfigBlocks
@@ -132,7 +134,7 @@ public class ConfigBlocks
 	public static Block blockLamp;
 
 	/** The block intake. */
-	public static Block blockIntake, blockCopperPipe, blockArmorEditor, blockTurbine, blockCharger;
+	public static Block blockIntake, blockCopperPipe, blockArmorEditor, blockTurbine, blockCharger, blockBloomery;
 
 	// Render IDs
 	/** The block lightning rod ri. */
@@ -168,6 +170,7 @@ public class ConfigBlocks
 		blockDropHammerAnvil = new BlockDropHammerAnvil(Material.anvil).setBlockName("blockDropHammerAnvil");
 		// blockDropHammerFrame = new
 		// BlockDropHammerFrame(Material.iron).setBlockName("blockDropHammerFrame");
+		blockBloomery = new BlockBloomery(Material.rock).setBlockName("blockBloomery");
 		blockMetal = new BlockMetal();
 		blockUranium = new BlockUranium(Material.iron).setBlockName("blockUranium");
 		blockEtherium = new BaseBlock(Material.iron).setBlockName("blockEtherium");
@@ -201,29 +204,28 @@ public class ConfigBlocks
 		GameRegistry.registerBlock(blockEngraved, ItemBlockEngravedSolid.class, "BlockEngravedSolid");
 		GameRegistry.registerBlock(blockCastIronFence, "BlockCastIronFence");
 		GameRegistry.registerBlock(blockCastIronGate, "BlockCastIronGate");
+		GameRegistry.registerBlock(blockMetal, ItemBlockMetal.class, "BlockMetal");
+		GameRegistry.registerBlock(blockUranium, "BlockUranium");
+		GameRegistry.registerBlock(blockSteam, "blockSteam");
 		// GameRegistry.registerBlock(blockCastIronLampI, "BlockCastIronLampI");
 		// GameRegistry.registerBlock(blockCastIronLampA, "BlockCastIronLampA");
 		// GameRegistry.registerBlock(blockFluidSteam, "BlockFluidSteam");
 		// GameRegistry.registerBlock(blockDropHammerFrame,
 		// "BlockDropHammerFrame");
+
 		RegistryHelper.registerContainerBlock(blockCrystal, TileCrystal.class, "BlockCrystal");
 		RegistryHelper.registerContainerBlock(blockSteamBoiler, TileSteamBoiler.class, "BlockSteamBoiler");
-
 		GameRegistry.registerBlock(blockIntake, ItemBlockWithDesc.class, "BlockIntake");
 		GameRegistry.registerTileEntity(TileIntake.class, "TEIntake");
-
 		RegistryHelper.registerContainerBlock(blockArmorEditor, TileArmorEditor.class, "BlockArmorEditor");
 		RegistryHelper.registerContainerBlock(blockDropHammerAnvil, TileDropHammer.class, "BlockDropHammerAnvil");
 		RegistryHelper.registerContainerBlock(blockCopperPipe, TileCopperPipe.class, "BlockCopperPipe");
+		RegistryHelper.registerContainerBlock(blockBloomery, TileBloomery.class, "BlockBloomery");
 		GameRegistry.registerBlock(blockCopperTank, "BlockCopperTank");
 		GameRegistry.registerBlock(blockCopperWire, "BlockCopperWire");
 		RegistryHelper.registerContainerBlock(blockTurbine, TileTurbine.class, "BlockTurbine");
 		// RegistryHelper.registerContainerBlock(blockCharger,
 		// TileCharger.class, "BlockCharger");
-		GameRegistry.registerBlock(blockMetal, ItemBlockMetal.class, "BlockMetal");
-		GameRegistry.registerBlock(blockUranium, "BlockUranium");
-
-		GameRegistry.registerBlock(blockSteam, "blockSteam");
 		// RegistryHelper.registerContainerBlock(blockHatch, TileHatch.class,
 		// "BlockHatch");
 	}

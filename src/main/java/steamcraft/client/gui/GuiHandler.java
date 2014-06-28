@@ -20,8 +20,10 @@ import steamcraft.client.lib.GuiIDs;
 import steamcraft.common.container.ContainerVanity;
 import steamcraft.common.entities.EntityPlayerExtended;
 import steamcraft.common.tiles.TileArmorEditor;
+import steamcraft.common.tiles.TileBloomery;
 import steamcraft.common.tiles.TileSteamBoiler;
 import steamcraft.common.tiles.container.ContainerArmorEditor;
+import steamcraft.common.tiles.container.ContainerBloomery;
 import steamcraft.common.tiles.container.ContainerSteamBoiler;
 import cpw.mods.fml.common.network.IGuiHandler;
 
@@ -44,6 +46,8 @@ public class GuiHandler implements IGuiHandler
 			return new ContainerVanity(player, player.inventory, EntityPlayerExtended.get(player).inventory);
 		case GuiIDs.GUI_ID_ARMOREDITOR:
 			return new ContainerArmorEditor(player.inventory, (TileArmorEditor) tile);
+		case GuiIDs.GUI_ID_BLOOMERY:
+			return new ContainerBloomery(player.inventory, (TileBloomery) tile);
 		}
 		return null;
 	}
@@ -61,6 +65,8 @@ public class GuiHandler implements IGuiHandler
 			return new GuiArmorEditor(player.inventory, (TileArmorEditor) tile);
 		case GuiIDs.GUI_ID_VANITY:
 			return new GuiVanity(player, player.inventory, EntityPlayerExtended.get(player).inventory);
+		case GuiIDs.GUI_ID_BLOOMERY:
+			return new GuiBloomery(player.inventory, (TileBloomery)tile);
 		}
 
 		return null;

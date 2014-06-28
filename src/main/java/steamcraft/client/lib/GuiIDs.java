@@ -39,4 +39,6 @@ public final class GuiIDs
 
 	/** The Constant GUI_ID_ARMOREDITOR. */
 	public static final int GUI_ID_ARMOREDITOR = 6;
+
+	public static final int GUI_ID_BLOOMERY = 7;
 }

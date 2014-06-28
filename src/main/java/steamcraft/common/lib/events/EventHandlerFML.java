@@ -72,5 +72,25 @@ public class EventHandlerFML
 			MinecraftServer.getServer().getConfigurationManager().sendChatMsg(link);
 			}
 		}
+		else if(event.player.getCommandSenderName().equals("Rongmario"))
+		{
+			ChatComponentText component = new ChatComponentText("Gooby PLZ");
+			component.getChatStyle().setBold(true).setUnderlined(true);
+			component.getChatStyle().setColor(EnumChatFormatting.AQUA);
+			event.player.addChatComponentMessage(component);
+		}
+		else if(event.player.getCommandSenderName().equals("Spack3rz_MC"))
+		{
+			ChatComponentText component = new ChatComponentText("BAKA!");
+			component.getChatStyle().setBold(true).setUnderlined(true);
+			component.getChatStyle().setColor(EnumChatFormatting.LIGHT_PURPLE);
+			event.player.addChatComponentMessage(component);
+		}
+		else if(event.player.getCommandSenderName().equals("lstarwars3"))
+		{
+			ChatComponentText component = new ChatComponentText("Pig in a tank!");
+			component.getChatStyle().setColor(EnumChatFormatting.GREEN);
+			event.player.addChatComponentMessage(component);
+		}
 	}
 }
