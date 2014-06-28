@@ -36,18 +36,18 @@ import cpw.mods.fml.relauncher.SideOnly;
 // TODO: Auto-generated Javadoc
 /**
  * The Class BlockEngravedSolid.
- * 
+ *
  * @author Surseance (Johnny Eatmon)
  */
 public class BlockEngravedSolid extends Block
 {
 
 	/** The icon. */
-	private IIcon[] icon = new IIcon[9];
+	private IIcon[] icon = new IIcon[14];
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.minecraft.block.Block#getIcon(int, int)
 	 */
 	@Override
@@ -59,7 +59,7 @@ public class BlockEngravedSolid extends Block
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.minecraft.block.Block#registerBlockIcons(net.minecraft.client.renderer
 	 * .texture.IIconRegister)
@@ -68,16 +68,20 @@ public class BlockEngravedSolid extends Block
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister ir)
 	{
-		icon[0] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedBrass");
-		icon[1] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedCastIron");
-		icon[2] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedDiamond");
-		icon[3] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedGold");
-		icon[4] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedIron");
-		icon[5] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedLapis");
-		icon[6] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedStone");
+		icon[0] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedAluminum");
+		icon[1] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedCopper");
+		icon[2] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedTin");
+		icon[3] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedZinc");
+		icon[4] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedBrass");
+		icon[5] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedBronze");
+		icon[6] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedCastIron");
 		icon[7] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedUranium");
 		icon[8] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedEtherium");
-		// TODO: Add engravings of aluminum, copper, zinc, tin...
+		icon[9] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedDiamond");
+		icon[10] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedGold");
+		icon[11] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedIron");
+		icon[12] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedLapis");
+		icon[13] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedStone");
 	}
 
 	/**
@@ -96,7 +100,7 @@ public class BlockEngravedSolid extends Block
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.minecraft.block.Block#damageDropped(int)
 	 */
 	@Override
@@ -107,7 +111,7 @@ public class BlockEngravedSolid extends Block
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.minecraft.block.Block#onEntityCollidedWithBlock(net.minecraft.world
 	 * .World, int, int, int, net.minecraft.entity.Entity)
@@ -121,7 +125,7 @@ public class BlockEngravedSolid extends Block
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.minecraft.block.Block#randomDisplayTick(net.minecraft.world.World,
 	 * int, int, int, java.util.Random)
@@ -136,7 +140,7 @@ public class BlockEngravedSolid extends Block
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.minecraft.item.Item#getSubItems(net.minecraft.item.Item,
 	 * net.minecraft.creativetab.CreativeTabs, java.util.List)
 	 */

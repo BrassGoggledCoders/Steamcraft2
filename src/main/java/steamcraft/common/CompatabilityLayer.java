@@ -77,8 +77,6 @@ public class CompatabilityLayer
 		OreDictionary.registerOre("oreBrimstone", new ItemStack(ConfigBlocks.blockCustomOre, 1, 5));
 		OreDictionary.registerOre("orePhosphate", new ItemStack(ConfigBlocks.blockCustomOre, 1, 6));
 
-		OreDictionary.registerOre("blockUranium", ConfigBlocks.blockUranium);
-
 		OreDictionary.registerOre("crystalEtherium", new ItemStack(ConfigItems.itemResource, 1, 0));
 		OreDictHelper.registerOreWithAlts(new String[] { "powderSulpher", "sulpher", "powderSulfur", "sulfur" }, new ItemStack(
 				ConfigItems.itemResource, 1, 1));

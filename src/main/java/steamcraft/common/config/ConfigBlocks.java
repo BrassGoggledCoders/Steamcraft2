@@ -172,8 +172,8 @@ public class ConfigBlocks
 		// BlockDropHammerFrame(Material.iron).setBlockName("blockDropHammerFrame");
 		blockBloomery = new BlockBloomery(Material.rock).setBlockName("blockBloomery");
 		blockMetal = new BlockMetal();
-		blockUranium = new BlockUranium(Material.iron).setBlockName("blockUranium");
-		blockEtherium = new BaseBlock(Material.iron).setBlockName("blockEtherium");
+		blockUranium = new BlockUranium(Material.iron);
+		blockEtherium = new BaseBlock(Material.iron).setBlockName("blockEtherium").setResistance(-1);
 		blockBrassLog = new BlockBrassLog(Material.wood);
 		blockBrassLeaves = new BlockBrassLeaves(Material.iron);
 		blockIntake = new BlockIntake(Material.iron);
@@ -206,10 +206,11 @@ public class ConfigBlocks
 		GameRegistry.registerBlock(blockCastIronGate, "BlockCastIronGate");
 		GameRegistry.registerBlock(blockMetal, ItemBlockMetal.class, "BlockMetal");
 		GameRegistry.registerBlock(blockUranium, "BlockUranium");
+		GameRegistry.registerBlock(blockEtherium, "BlockEtherium");
 		GameRegistry.registerBlock(blockSteam, "blockSteam");
 		// GameRegistry.registerBlock(blockCastIronLampI, "BlockCastIronLampI");
 		// GameRegistry.registerBlock(blockCastIronLampA, "BlockCastIronLampA");
-		// GameRegistry.registerBlock(blockFluidSteam, "BlockFluidSteam");
+		// GameRegistry.registerBlock(blockFuidSteam, "BlockFluidSteam");
 		// GameRegistry.registerBlock(blockDropHammerFrame,
 		// "BlockDropHammerFrame");
 

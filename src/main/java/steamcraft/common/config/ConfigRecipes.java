@@ -230,6 +230,8 @@ public class ConfigRecipes
 				new ItemStack(ConfigItems.itemMachinePart, 1, 5), 'P', new ItemStack(ConfigItems.itemSheet, 1, 4), 'B', Items.bucket });
 		GameRegistry.addShapedRecipe(new ItemStack(ConfigBlocks.blockUranium), new Object[] { "UUU", "UUU", "UUU", 'U',
 				new ItemStack(ConfigItems.itemResource, 1, 4) });
+		GameRegistry.addShapedRecipe(new ItemStack(ConfigBlocks.blockEtherium), new Object[] { "UUU", "UUU", "UUU", 'U',
+			new ItemStack(ConfigItems.itemResource, 1, 0) });
 		// GameRegistry.addShapedRecipe(new
 		// ItemStack(ConfigBlocks.blockCopperTank), new
 		// Object[]{"PPP","P P","PPP", 'P', new ItemStack(ConfigItems.itemSheet,

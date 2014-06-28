@@ -36,21 +36,21 @@ import cpw.mods.fml.relauncher.SideOnly;
 // TODO: Auto-generated Javadoc
 /**
  * The Class BlockMetal.
- * 
+ *
  * @author warlordjones
  */
 public class BlockMetal extends Block
 {
 
 	/** The icon. */
-	private final IIcon[] icon = new IIcon[10];
+	private final IIcon[] icon = new IIcon[8];
 
 	/** The powered. */
 	private boolean powered;
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.minecraft.block.Block#registerBlockIcons(net.minecraft.client.renderer
 	 * .texture.IIconRegister)
@@ -67,13 +67,11 @@ public class BlockMetal extends Block
 		icon[5] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockBronze");
 		icon[6] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockSteel");
 		icon[7] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockCastIron");
-		icon[8] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockUranium");
-		icon[9] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockEtherium");
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.minecraft.block.Block#getIcon(int, int)
 	 */
 	@Override
@@ -99,48 +97,12 @@ public class BlockMetal extends Block
 		if (powered)
 			setLightLevel(0.98F);
 	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * net.minecraft.block.Block#onEntityCollidedWithBlock(net.minecraft.world
-	 * .World, int, int, int, net.minecraft.entity.Entity)
-	 */
-	@Override
-	public void onEntityCollidedWithBlock(final World world, final int x, final int y, final int z, final Entity entity)
-	{
-		if ((world.getBlock(x, y, z) == this) && (world.getBlockMetadata(x, y, z) == 8))
-			entity.attackEntityFrom(DamageSource.magic, 1);
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * net.minecraft.block.Block#randomDisplayTick(net.minecraft.world.World,
-	 * int, int, int, java.util.Random)
-	 */
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void randomDisplayTick(final World world, final int x, final int y, final int z, final Random random)
-	{
-		if ((world.getBlock(x, y, z) == this) && (world.getBlockMetadata(x, y, z) == 8))
-			EffectUtils.sparkle(world, x, y, z, "reddust");
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see net.minecraft.item.Item#getSubItems(net.minecraft.item.Item,
-	 * net.minecraft.creativetab.CreativeTabs, java.util.List)
-	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(final Item item, final CreativeTabs tab, final List l)
 	{
-		for (int var4 = 0; var4 < 8; ++var4)
+		for (int var4 = 0; var4 < icon.length; ++var4)
 			l.add(new ItemStack(ConfigBlocks.blockMetal, 1, var4));
 	}
 }
