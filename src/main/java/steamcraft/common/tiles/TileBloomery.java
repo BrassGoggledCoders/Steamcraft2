@@ -1,5 +1,6 @@
 package steamcraft.common.tiles;
 
+import boilerplate.steamapi.machines.BloomeryRecipes;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
@@ -23,13 +24,16 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class TileBloomery extends TileEntity implements IInventory
 {
-		private static final int[] slotsTop = new int[] {0};
-	    private static final int[] slotsBottom = new int[] {2, 1};
-	    private static final int[] slotsSides = new int[] {1};
+		//The input slots
+		private static final int[] slotsTop = new int[] {1, 2};
+		//The Fuel slot
+	    private static final int[] slotsBottom = new int[] {0};
+	    //The Output
+	    private static final int[] slotsSides = new int[] {3};
 	    /**
 	     * The ItemStacks that hold the items currently being used in the furnace
 	     */
-	    private ItemStack[] furnaceItemStacks = new ItemStack[3];
+	    private ItemStack[] furnaceItemStacks = new ItemStack[4];
 	    /** The number of ticks that the furnace will keep burning */
 	    public int furnaceBurnTime;
 	    /**
@@ -38,8 +42,6 @@ public class TileBloomery extends TileEntity implements IInventory
 	    public int currentItemBurnTime;
 	    /** The number of ticks that the current item has been cooking for */
 	    public int furnaceCookTime;
-	    private String field_145958_o;
-
 	    /**
 	     * Returns the number of slots in the inventory.
 	     */
@@ -126,20 +128,7 @@ public class TileBloomery extends TileEntity implements IInventory
 	     */
 	    public String getInventoryName()
 	    {
-	        return this.hasCustomInventoryName() ? this.field_145958_o : "container.furnace";
-	    }
-
-	    /**
-	     * Returns if the inventory is named
-	     */
-	    public boolean hasCustomInventoryName()
-	    {
-	        return this.field_145958_o != null && this.field_145958_o.length() > 0;
-	    }
-
-	    public void func_145951_a(String p_145951_1_)
-	    {
-	        this.field_145958_o = p_145951_1_;
+	        return "Bloomery"/*LibInfo.PREFIX + "container.bloomery"*/;
 	    }
 
 	    public void readFromNBT(NBTTagCompound p_145839_1_)
@@ -162,11 +151,6 @@ public class TileBloomery extends TileEntity implements IInventory
 	        this.furnaceBurnTime = p_145839_1_.getShort("BurnTime");
 	        this.furnaceCookTime = p_145839_1_.getShort("CookTime");
 	        this.currentItemBurnTime = getItemBurnTime(this.furnaceItemStacks[1]);
-
-	        if (p_145839_1_.hasKey("CustomName", 8))
-	        {
-	            this.field_145958_o = p_145839_1_.getString("CustomName");
-	        }
 	    }
 
 	    public void writeToNBT(NBTTagCompound p_145841_1_)
@@ -188,11 +172,6 @@ public class TileBloomery extends TileEntity implements IInventory
 	        }
 
 	        p_145841_1_.setTag("Items", nbttaglist);
-
-	        if (this.hasCustomInventoryName())
-	        {
-	            p_145841_1_.setString("CustomName", this.field_145958_o);
-	        }
 	    }
 
 	    /**
@@ -250,19 +229,19 @@ public class TileBloomery extends TileEntity implements IInventory
 	        {
 	            if (this.furnaceBurnTime == 0 && this.canSmelt())
 	            {
-	                this.currentItemBurnTime = this.furnaceBurnTime = getItemBurnTime(this.furnaceItemStacks[1]);
+	                this.currentItemBurnTime = this.furnaceBurnTime = getItemBurnTime(this.furnaceItemStacks[0]);
 
 	                if (this.furnaceBurnTime > 0)
 	                {
 	                    flag1 = true;
 
-	                    if (this.furnaceItemStacks[1] != null)
+	                    if (this.furnaceItemStacks[0] != null)
 	                    {
-	                        --this.furnaceItemStacks[1].stackSize;
+	                        --this.furnaceItemStacks[0].stackSize;
 
-	                        if (this.furnaceItemStacks[1].stackSize == 0)
+	                        if (this.furnaceItemStacks[0].stackSize == 0)
 	                        {
-	                            this.furnaceItemStacks[1] = furnaceItemStacks[1].getItem().getContainerItem(furnaceItemStacks[1]);
+	                            this.furnaceItemStacks[0] = furnaceItemStacks[0].getItem().getContainerItem(furnaceItemStacks[0]);
 	                        }
 	                    }
 	                }
@@ -308,7 +287,7 @@ public class TileBloomery extends TileEntity implements IInventory
 	        }
 	        else
 	        {
-	            ItemStack itemstack = FurnaceRecipes.smelting().getSmeltingResult(this.furnaceItemStacks[0]);
+	            ItemStack itemstack = BloomeryRecipes.smelting().getSmeltingResult(this.furnaceItemStacks[2]);
 	            if (itemstack == null) return false;
 	            if (this.furnaceItemStacks[2] == null) return true;
 	            if (!this.furnaceItemStacks[2].isItemEqual(itemstack)) return false;
@@ -324,7 +303,7 @@ public class TileBloomery extends TileEntity implements IInventory
 	    {
 	        if (this.canSmelt())
 	        {
-	            ItemStack itemstack = FurnaceRecipes.smelting().getSmeltingResult(this.furnaceItemStacks[0]);
+	            ItemStack itemstack = FurnaceRecipes.smelting().getSmeltingResult(this.furnaceItemStacks[2]);
 
 	            if (this.furnaceItemStacks[2] == null)
 	            {
@@ -445,4 +424,10 @@ public class TileBloomery extends TileEntity implements IInventory
 	    {
 	        return par3 != 0 || par1 != 1 || par2ItemStack.getItem() == Items.bucket;
 	    }
+
+		@Override
+		public boolean hasCustomInventoryName()
+		{
+			return false;
+		}
 }

@@ -275,6 +275,9 @@ item.itemMachinePart.5.name=Grating
 item.itemMachinePart.6.name=Generator Assembly
 item.itemMachinePart.7.name=Clockwork Mechanism
 item.itemMachinePart.8.name=Wire Coil
+item.itemMachinePart.9.name=Cast Iron Shaft
+#Containers
+container.bloomery=Bloomery
 
 #Tabs
 itemGroup.steamcraft=Steamcraft 2

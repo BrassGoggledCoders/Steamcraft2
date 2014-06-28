@@ -16,7 +16,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class GuiBloomery extends GuiContainer
 {
-	 private static final ResourceLocation furnaceGuiTextures = new ResourceLocation(LibInfo.PREFIX+ "textures/gui/container/bloomery.png");
+	 private static final ResourceLocation furnaceGuiTextures = new ResourceLocation(LibInfo.PREFIX+ "textures/gui/bloomery.png");
 	    private TileBloomery tileFurnace;
 
 	    public GuiBloomery(InventoryPlayer par1InventoryPlayer, TileBloomery par2TileEntityFurnace)
@@ -47,7 +47,7 @@ public class GuiBloomery extends GuiContainer
 	        if (this.tileFurnace.isBurning())
 	        {
 	            i1 = this.tileFurnace.getBurnTimeRemainingScaled(12);
-	            this.drawTexturedModalRect(k + 56, l + 36 + 12 - i1, 176, 12 - i1, 14, i1 + 2);
+	            this.drawTexturedModalRect(k + 46, l + 36 + 12 - i1, 176, 12 - i1, 14, i1 + 2);
 	        }
 
 	        i1 = this.tileFurnace.getCookProgressScaled(24);

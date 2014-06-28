@@ -23,9 +23,14 @@ public class ContainerBloomery extends Container
 	    public ContainerBloomery(InventoryPlayer par1InventoryPlayer, TileBloomery par2TileEntityFurnace)
 	    {
 	        this.tileFurnace = par2TileEntityFurnace;
-	        this.addSlotToContainer(new Slot(par2TileEntityFurnace, 0, 56, 17));
-	        this.addSlotToContainer(new Slot(par2TileEntityFurnace, 1, 56, 53));
-	        this.addSlotToContainer(new SlotFurnace(par1InventoryPlayer.player, par2TileEntityFurnace, 2, 116, 35));
+	        //Fuel
+	        this.addSlotToContainer(new Slot(par2TileEntityFurnace, 0, 45, 53));
+	        //Slot 1 Top
+	        this.addSlotToContainer(new Slot(par2TileEntityFurnace, 1, 33, 17));
+	        //Slot 2 Top
+	        this.addSlotToContainer(new Slot(par2TileEntityFurnace, 2, 56, 17));
+	        //Output
+	        this.addSlotToContainer(new Slot(par2TileEntityFurnace, 3, 116, 35));
 	        int i;
 
 	        for (i = 0; i < 3; ++i)
