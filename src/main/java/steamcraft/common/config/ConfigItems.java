@@ -16,10 +16,10 @@ package steamcraft.common.config;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import steamcraft.common.Steamcraft;
+import steamcraft.common.items.BaseElectricItem;
 import steamcraft.common.items.BaseItem;
 import steamcraft.common.items.ItemCanister;
 import steamcraft.common.items.ItemChisel;
-import steamcraft.common.items.ItemElectricJar;
 import steamcraft.common.items.ItemFirearm;
 import steamcraft.common.items.ItemGunPart;
 import steamcraft.common.items.ItemIngot;
@@ -378,7 +378,7 @@ public class ConfigItems
 	{
 		// Containers
 		itemCanisterSteam = new ItemCanister().setUnlocalizedName("itemCanisterSteam");
-		itemElectricJar = new ItemElectricJar(100000, 400).setUnlocalizedName("itemElectricJar");
+		itemElectricJar = new BaseElectricItem(100000, 400).setUnlocalizedName("itemElectricJar");
 
 		registerItem(itemCanisterSteam, "ItemCanisterSteam");
 		registerItem(itemElectricJar, "ItemElectricJar");

@@ -46,8 +46,8 @@ public class BaseElectricItem extends BaseItem implements IEnergyContainerItem
 	@Override
 	public void getSubItems(Item item, CreativeTabs tab, List list)
     {
-		list.add(getChargedItem());
 		list.add(getUnchargedItem());
+		list.add(getChargedItem());
     }
 	
 	public ItemStack getUnchargedItem() 
