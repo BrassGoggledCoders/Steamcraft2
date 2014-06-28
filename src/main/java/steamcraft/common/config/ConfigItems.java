@@ -128,7 +128,12 @@ public class ConfigItems
 
 	// Containers
 	public static Item itemCanisterSteam;
-	public static Item itemElectricJar;
+	
+	public static Item itemElectricJarSmall;
+	public static Item itemElectricJarMedium;
+	public static Item itemElectricJarLarge;
+	public static Item itemElectricJarHuge;
+	;
 
 	// Guns/Ammo
 	public static Item flintlockMusket, matchlockMusket, percussionCapMusket;
@@ -378,10 +383,18 @@ public class ConfigItems
 	{
 		// Containers
 		itemCanisterSteam = new ItemCanister().setUnlocalizedName("itemCanisterSteam");
-		itemElectricJar = new BaseElectricItem(100000, 400).setUnlocalizedName("itemElectricJar");
+		
+		itemElectricJarSmall = new BaseElectricItem(100, 40, 80).setUnlocalizedName("itemElectricJarSmall");
+		itemElectricJarMedium = new BaseElectricItem(500, 125, 400).setUnlocalizedName("itemElectricJarMedium");
+		itemElectricJarLarge = new BaseElectricItem(2500, 750, 2000).setUnlocalizedName("itemElectricJarLarge");
+		itemElectricJarHuge = new BaseElectricItem(10000, 3000, 10000).setUnlocalizedName("itemElectricJarHuge");
 
 		registerItem(itemCanisterSteam, "ItemCanisterSteam");
-		registerItem(itemElectricJar, "ItemElectricJar");
+		
+		registerItem(itemElectricJarSmall, "ItemElectricJarSmall");
+		registerItem(itemElectricJarMedium, "ItemElectricJarMedium");
+		registerItem(itemElectricJarLarge, "ItemElectricJarLarge");
+		registerItem(itemElectricJarHuge, "ItemElectricJarHuge");
 
 		// Others
 		itemResource = new ItemResource().setUnlocalizedName("itemResource");

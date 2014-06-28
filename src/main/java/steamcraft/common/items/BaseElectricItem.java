@@ -30,13 +30,15 @@ import cofh.api.energy.IEnergyContainerItem;
 public class BaseElectricItem extends BaseItem implements IEnergyContainerItem
 {
 	protected int maxEnergy;
-	protected short maxTransfer;
+	protected short maxReceive;
+	protected short maxSend;
 	
-	public BaseElectricItem(int maxEnergy, int maxTransfer)
+	public BaseElectricItem(int maxEnergy, int maxReceive, int maxSend)
 	{
 		super();
-		this.maxEnergy = maxEnergy;
-		this.maxTransfer = (short)maxTransfer;
+		this.maxEnergy = maxEnergy*1000;
+		this.maxReceive = (short)maxReceive;
+		this.maxSend = (short)maxSend;
 		this.setMaxStackSize(1);
 		this.setMaxDamage(20);
 		this.setHasSubtypes(false);
@@ -78,7 +80,8 @@ public class BaseElectricItem extends BaseItem implements IEnergyContainerItem
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer entityplayer, List list, boolean flag) 
 	{
-		list.add("Energy: " + this.getEnergyStored(stack) + " / " + this.maxEnergy);
+		list.add("Energy: " + this.getEnergyStored(stack)/1000 + "k / " + this.maxEnergy/1000 + "k");
+		list.add("Transfer(in/out): " + this.maxReceive + " / " + this.maxSend);
 	}
 	
 	@Override
@@ -108,7 +111,7 @@ public class BaseElectricItem extends BaseItem implements IEnergyContainerItem
 	public int receiveEnergy(ItemStack itemStack, int maxReceive, boolean simulate)
 	{
 		int received = Math.min(this.maxEnergy - this.getEnergyStored(itemStack), maxReceive);
-		received = Math.min(received, this.maxTransfer);
+		received = Math.min(received, this.maxReceive);
 		
 		if(!simulate)
 			this.setEnergy(itemStack, this.getEnergyStored(itemStack) + received);
@@ -120,6 +123,7 @@ public class BaseElectricItem extends BaseItem implements IEnergyContainerItem
 	public int extractEnergy(ItemStack itemStack, int maxExtract, boolean simulate)
 	{
 		int extracted = Math.min(this.getEnergyStored(itemStack), maxExtract);
+		extracted = Math.min(extracted, this.maxSend);
 		
 		if(!simulate)
 			this.setEnergy(itemStack, this.getEnergyStored(itemStack) - extracted);
