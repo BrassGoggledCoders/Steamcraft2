@@ -2,36 +2,34 @@ package steamcraft.common.tiles.container;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.Slot;
+import net.minecraft.inventory.SlotFurnace;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
-import net.minecraft.tileentity.TileEntityFurnace;
 import steamcraft.common.tiles.TileBloomery;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class ContainerBloomery extends Container
 {
-	   private TileBloomery tileFurnace;
+	   	private TileBloomery tileBloomery;
 	    private int lastCookTime;
 	    private int lastBurnTime;
 	    private int lastItemBurnTime;
 
-	    public ContainerBloomery(InventoryPlayer par1InventoryPlayer, TileBloomery par2TileEntityFurnace)
+	    public ContainerBloomery(InventoryPlayer par1InventoryPlayer, TileBloomery par2TileEntityBloomery)
 	    {
-	        this.tileFurnace = par2TileEntityFurnace;
+	        this.tileBloomery = par2TileEntityBloomery;
 	        //Fuel
-	        this.addSlotToContainer(new Slot(par2TileEntityFurnace, 0, 45, 53));
+	        this.addSlotToContainer(new Slot(par2TileEntityBloomery, 0, 45, 53));
 	        //Slot 1 Top
-	        this.addSlotToContainer(new Slot(par2TileEntityFurnace, 1, 33, 17));
+	        this.addSlotToContainer(new Slot(par2TileEntityBloomery, 1, 33, 17));
 	        //Slot 2 Top
-	        this.addSlotToContainer(new Slot(par2TileEntityFurnace, 2, 56, 17));
+	        this.addSlotToContainer(new Slot(par2TileEntityBloomery, 2, 56, 17));
 	        //Output
-	        this.addSlotToContainer(new Slot(par2TileEntityFurnace, 3, 116, 35));
+	        this.addSlotToContainer(new SlotFurnace(par1InventoryPlayer.player, par2TileEntityBloomery, 3, 116, 35));
 	        int i;
 
 	        for (i = 0; i < 3; ++i)
@@ -51,9 +49,9 @@ public class ContainerBloomery extends Container
 	    public void addCraftingToCrafters(ICrafting par1ICrafting)
 	    {
 	        super.addCraftingToCrafters(par1ICrafting);
-	        par1ICrafting.sendProgressBarUpdate(this, 0, this.tileFurnace.furnaceCookTime);
-	        par1ICrafting.sendProgressBarUpdate(this, 1, this.tileFurnace.furnaceBurnTime);
-	        par1ICrafting.sendProgressBarUpdate(this, 2, this.tileFurnace.currentItemBurnTime);
+	        par1ICrafting.sendProgressBarUpdate(this, 0, this.tileBloomery.bloomeryCookTime);
+	        par1ICrafting.sendProgressBarUpdate(this, 1, this.tileBloomery.bloomeryBurnTime);
+	        par1ICrafting.sendProgressBarUpdate(this, 2, this.tileBloomery.currentItemBurnTime);
 	    }
 
 	    /**
@@ -67,25 +65,25 @@ public class ContainerBloomery extends Container
 	        {
 	            ICrafting icrafting = (ICrafting)this.crafters.get(i);
 
-	            if (this.lastCookTime != this.tileFurnace.furnaceCookTime)
+	            if (this.lastCookTime != this.tileBloomery.bloomeryCookTime)
 	            {
-	                icrafting.sendProgressBarUpdate(this, 0, this.tileFurnace.furnaceCookTime);
+	                icrafting.sendProgressBarUpdate(this, 0, this.tileBloomery.bloomeryCookTime);
 	            }
 
-	            if (this.lastBurnTime != this.tileFurnace.furnaceBurnTime)
+	            if (this.lastBurnTime != this.tileBloomery.bloomeryBurnTime)
 	            {
-	                icrafting.sendProgressBarUpdate(this, 1, this.tileFurnace.furnaceBurnTime);
+	                icrafting.sendProgressBarUpdate(this, 1, this.tileBloomery.bloomeryBurnTime);
 	            }
 
-	            if (this.lastItemBurnTime != this.tileFurnace.currentItemBurnTime)
+	            if (this.lastItemBurnTime != this.tileBloomery.currentItemBurnTime)
 	            {
-	                icrafting.sendProgressBarUpdate(this, 2, this.tileFurnace.currentItemBurnTime);
+	                icrafting.sendProgressBarUpdate(this, 2, this.tileBloomery.currentItemBurnTime);
 	            }
 	        }
 
-	        this.lastCookTime = this.tileFurnace.furnaceCookTime;
-	        this.lastBurnTime = this.tileFurnace.furnaceBurnTime;
-	        this.lastItemBurnTime = this.tileFurnace.currentItemBurnTime;
+	        this.lastCookTime = this.tileBloomery.bloomeryCookTime;
+	        this.lastBurnTime = this.tileBloomery.bloomeryBurnTime;
+	        this.lastItemBurnTime = this.tileBloomery.currentItemBurnTime;
 	    }
 
 	    @SideOnly(Side.CLIENT)
@@ -93,23 +91,23 @@ public class ContainerBloomery extends Container
 	    {
 	        if (par1 == 0)
 	        {
-	            this.tileFurnace.furnaceCookTime = par2;
+	            this.tileBloomery.bloomeryCookTime = par2;
 	        }
 
 	        if (par1 == 1)
 	        {
-	            this.tileFurnace.furnaceBurnTime = par2;
+	            this.tileBloomery.bloomeryBurnTime = par2;
 	        }
 
 	        if (par1 == 2)
 	        {
-	            this.tileFurnace.currentItemBurnTime = par2;
+	            this.tileBloomery.currentItemBurnTime = par2;
 	        }
 	    }
 
 	    public boolean canInteractWith(EntityPlayer par1EntityPlayer)
 	    {
-	        return this.tileFurnace.isUseableByPlayer(par1EntityPlayer);
+	        return this.tileBloomery.isUseableByPlayer(par1EntityPlayer);
 	    }
 
 	    /**
@@ -143,7 +141,7 @@ public class ContainerBloomery extends Container
 	                        return null;
 	                    }
 	                }
-	                else if (TileEntityFurnace.isItemFuel(itemstack1))
+	                else if (TileBloomery.isItemFuel(itemstack1))
 	                {
 	                    if (!this.mergeItemStack(itemstack1, 1, 2, false))
 	                    {

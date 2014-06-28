@@ -12,6 +12,7 @@ import net.minecraft.item.ItemHoe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.item.ItemTool;
+import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
@@ -30,23 +31,23 @@ public class TileBloomery extends TileEntity implements IInventory
 	    //The Output
 	    private static final int[] slotsSides = new int[] {3};
 	    /**
-	     * The ItemStacks that hold the items currently being used in the furnace
+	     * The ItemStacks that hold the items currently being used in the bloomery
 	     */
-	    private ItemStack[] furnaceItemStacks = new ItemStack[4];
-	    /** The number of ticks that the furnace will keep burning */
-	    public int furnaceBurnTime;
+	    private ItemStack[] bloomeryItemStacks = new ItemStack[4];
+	    /** The number of ticks that the bloomery will keep burning */
+	    public int bloomeryBurnTime;
 	    /**
-	     * The number of ticks that a fresh copy of the currently-burning item would keep the furnace burning for
+	     * The number of ticks that a fresh copy of the currently-burning item would keep the bloomery burning for
 	     */
 	    public int currentItemBurnTime;
 	    /** The number of ticks that the current item has been cooking for */
-	    public int furnaceCookTime;
+	    public int bloomeryCookTime;
 	    /**
 	     * Returns the number of slots in the inventory.
 	     */
 	    public int getSizeInventory()
 	    {
-	        return this.furnaceItemStacks.length;
+	        return this.bloomeryItemStacks.length;
 	    }
 
 	    /**
@@ -54,7 +55,7 @@ public class TileBloomery extends TileEntity implements IInventory
 	     */
 	    public ItemStack getStackInSlot(int par1)
 	    {
-	        return this.furnaceItemStacks[par1];
+	        return this.bloomeryItemStacks[par1];
 	    }
 
 	    /**
@@ -63,23 +64,23 @@ public class TileBloomery extends TileEntity implements IInventory
 	     */
 	    public ItemStack decrStackSize(int par1, int par2)
 	    {
-	        if (this.furnaceItemStacks[par1] != null)
+	        if (this.bloomeryItemStacks[par1] != null)
 	        {
 	            ItemStack itemstack;
 
-	            if (this.furnaceItemStacks[par1].stackSize <= par2)
+	            if (this.bloomeryItemStacks[par1].stackSize <= par2)
 	            {
-	                itemstack = this.furnaceItemStacks[par1];
-	                this.furnaceItemStacks[par1] = null;
+	                itemstack = this.bloomeryItemStacks[par1];
+	                this.bloomeryItemStacks[par1] = null;
 	                return itemstack;
 	            }
 	            else
 	            {
-	                itemstack = this.furnaceItemStacks[par1].splitStack(par2);
+	                itemstack = this.bloomeryItemStacks[par1].splitStack(par2);
 
-	                if (this.furnaceItemStacks[par1].stackSize == 0)
+	                if (this.bloomeryItemStacks[par1].stackSize == 0)
 	                {
-	                    this.furnaceItemStacks[par1] = null;
+	                    this.bloomeryItemStacks[par1] = null;
 	                }
 
 	                return itemstack;
@@ -97,10 +98,10 @@ public class TileBloomery extends TileEntity implements IInventory
 	     */
 	    public ItemStack getStackInSlotOnClosing(int par1)
 	    {
-	        if (this.furnaceItemStacks[par1] != null)
+	        if (this.bloomeryItemStacks[par1] != null)
 	        {
-	            ItemStack itemstack = this.furnaceItemStacks[par1];
-	            this.furnaceItemStacks[par1] = null;
+	            ItemStack itemstack = this.bloomeryItemStacks[par1];
+	            this.bloomeryItemStacks[par1] = null;
 	            return itemstack;
 	        }
 	        else
@@ -114,7 +115,7 @@ public class TileBloomery extends TileEntity implements IInventory
 	     */
 	    public void setInventorySlotContents(int par1, ItemStack par2ItemStack)
 	    {
-	        this.furnaceItemStacks[par1] = par2ItemStack;
+	        this.bloomeryItemStacks[par1] = par2ItemStack;
 
 	        if (par2ItemStack != null && par2ItemStack.stackSize > this.getInventoryStackLimit())
 	        {
@@ -134,38 +135,38 @@ public class TileBloomery extends TileEntity implements IInventory
 	    {
 	        super.readFromNBT(p_145839_1_);
 	        NBTTagList nbttaglist = p_145839_1_.getTagList("Items", 10);
-	        this.furnaceItemStacks = new ItemStack[this.getSizeInventory()];
+	        this.bloomeryItemStacks = new ItemStack[this.getSizeInventory()];
 
 	        for (int i = 0; i < nbttaglist.tagCount(); ++i)
 	        {
 	            NBTTagCompound nbttagcompound1 = nbttaglist.getCompoundTagAt(i);
 	            byte b0 = nbttagcompound1.getByte("Slot");
 
-	            if (b0 >= 0 && b0 < this.furnaceItemStacks.length)
+	            if (b0 >= 0 && b0 < this.bloomeryItemStacks.length)
 	            {
-	                this.furnaceItemStacks[b0] = ItemStack.loadItemStackFromNBT(nbttagcompound1);
+	                this.bloomeryItemStacks[b0] = ItemStack.loadItemStackFromNBT(nbttagcompound1);
 	            }
 	        }
 
-	        this.furnaceBurnTime = p_145839_1_.getShort("BurnTime");
-	        this.furnaceCookTime = p_145839_1_.getShort("CookTime");
-	        this.currentItemBurnTime = getItemBurnTime(this.furnaceItemStacks[1]);
+	        this.bloomeryBurnTime = p_145839_1_.getShort("BurnTime");
+	        this.bloomeryCookTime = p_145839_1_.getShort("CookTime");
+	        this.currentItemBurnTime = getItemBurnTime(this.bloomeryItemStacks[1]);
 	    }
 
 	    public void writeToNBT(NBTTagCompound p_145841_1_)
 	    {
 	        super.writeToNBT(p_145841_1_);
-	        p_145841_1_.setShort("BurnTime", (short)this.furnaceBurnTime);
-	        p_145841_1_.setShort("CookTime", (short)this.furnaceCookTime);
+	        p_145841_1_.setShort("BurnTime", (short)this.bloomeryBurnTime);
+	        p_145841_1_.setShort("CookTime", (short)this.bloomeryCookTime);
 	        NBTTagList nbttaglist = new NBTTagList();
 
-	        for (int i = 0; i < this.furnaceItemStacks.length; ++i)
+	        for (int i = 0; i < this.bloomeryItemStacks.length; ++i)
 	        {
-	            if (this.furnaceItemStacks[i] != null)
+	            if (this.bloomeryItemStacks[i] != null)
 	            {
 	                NBTTagCompound nbttagcompound1 = new NBTTagCompound();
 	                nbttagcompound1.setByte("Slot", (byte)i);
-	                this.furnaceItemStacks[i].writeToNBT(nbttagcompound1);
+	                this.bloomeryItemStacks[i].writeToNBT(nbttagcompound1);
 	                nbttaglist.appendTag(nbttagcompound1);
 	            }
 	        }
@@ -188,7 +189,7 @@ public class TileBloomery extends TileEntity implements IInventory
 	    @SideOnly(Side.CLIENT)
 	    public int getCookProgressScaled(int p_145953_1_)
 	    {
-	        return this.furnaceCookTime * p_145953_1_ / 200;
+	        return this.bloomeryCookTime * p_145953_1_ / 200;
 	    }
 
 	    /**
@@ -203,43 +204,43 @@ public class TileBloomery extends TileEntity implements IInventory
 	            this.currentItemBurnTime = 200;
 	        }
 
-	        return this.furnaceBurnTime * p_145955_1_ / this.currentItemBurnTime;
+	        return this.bloomeryBurnTime * p_145955_1_ / this.currentItemBurnTime;
 	    }
 
 	    /**
-	     * Furnace isBurning
+	     * Bloomery isBurning
 	     */
 	    public boolean isBurning()
 	    {
-	        return this.furnaceBurnTime > 0;
+	        return this.bloomeryBurnTime > 0;
 	    }
 
 	    public void updateEntity()
 	    {
-	        boolean flag = this.furnaceBurnTime > 0;
+	        boolean flag = this.bloomeryBurnTime > 0;
 	        boolean flag1 = false;
 
-	        if (this.furnaceBurnTime > 0)
+	        if (this.bloomeryBurnTime > 0)
 	        {
-	            --this.furnaceBurnTime;
+	            --this.bloomeryBurnTime;
 	        }
 
 	        if (!this.worldObj.isRemote)
 	        {
-	            if (this.furnaceBurnTime == 0 && this.canSmelt())
+	            if (this.bloomeryBurnTime == 0 && this.canSmelt())
 	            {
-	                this.currentItemBurnTime = this.furnaceBurnTime = getItemBurnTime(this.furnaceItemStacks[0]);
+	                this.currentItemBurnTime = this.bloomeryBurnTime = getItemBurnTime(this.bloomeryItemStacks[0]);
 
-	                if (this.furnaceBurnTime > 0)
+	                if (this.bloomeryBurnTime > 0)
 	                {
 	                    flag1 = true;
-	                    if (this.furnaceItemStacks[0] != null)
+	                    if (this.bloomeryItemStacks[0] != null)
 	                    {
-	                        --this.furnaceItemStacks[0].stackSize;
+	                        --this.bloomeryItemStacks[0].stackSize;
 
-	                        if (this.furnaceItemStacks[0].stackSize == 0)
+	                        if (this.bloomeryItemStacks[0].stackSize == 0)
 	                        {
-	                            this.furnaceItemStacks[0] = furnaceItemStacks[0].getItem().getContainerItem(furnaceItemStacks[0]);
+	                            this.bloomeryItemStacks[0] = bloomeryItemStacks[0].getItem().getContainerItem(bloomeryItemStacks[0]);
 	                        }
 	                    }
 	                }
@@ -247,24 +248,24 @@ public class TileBloomery extends TileEntity implements IInventory
 
 	            if (this.isBurning() && this.canSmelt())
 	            {
-	                ++this.furnaceCookTime;
+	                ++this.bloomeryCookTime;
 
-	                if (this.furnaceCookTime == 200)
+	                if (this.bloomeryCookTime == 200)
 	                {
-	                    this.furnaceCookTime = 0;
+	                    this.bloomeryCookTime = 0;
 	                    this.smeltItem();
 	                    flag1 = true;
 	                }
 	            }
 	            else
 	            {
-	                this.furnaceCookTime = 0;
+	                this.bloomeryCookTime = 0;
 	            }
 
-	            if (flag != this.furnaceBurnTime > 0)
+	            if (flag != this.bloomeryBurnTime > 0)
 	            {
 	                flag1 = true;
-	                BlockBloomery.updateFurnaceBlockState(this.furnaceBurnTime > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord);
+	                BlockBloomery.updateBloomeryBlockState(this.bloomeryBurnTime > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord);
 	            }
 	        }
 
@@ -275,54 +276,54 @@ public class TileBloomery extends TileEntity implements IInventory
 	    }
 
 	    /**
-	     * Returns true if the furnace can smelt an item, i.e. has a source item, destination stack isn't full, etc.
+	     * Returns true if the bloomery can smelt an item, i.e. has a source item, destination stack isn't full, etc.
 	     */
 	    private boolean canSmelt()
 	    {
-	        if (this.furnaceItemStacks[0] == null)
+	        if (this.bloomeryItemStacks[0] == null)
 	        {
 	            return false;
 	        }
 	        else
 	        {
-	        	ItemStack itemstack = BloomeryRecipes.smelting().getSmeltingResult(this.furnaceItemStacks[2]);
+	        	ItemStack itemstack = FurnaceRecipes.smelting().getSmeltingResult(this.bloomeryItemStacks[2]);
 	            if (itemstack == null) return false;
-	            if (this.furnaceItemStacks[3] == null) return true;
-	            if (!this.furnaceItemStacks[3].isItemEqual(itemstack)) return false;
-	            int result = furnaceItemStacks[3].stackSize + itemstack.stackSize;
-	            return result <= getInventoryStackLimit() && result <= this.furnaceItemStacks[3].getMaxStackSize(); //Forge BugFix: Make it respect stack sizes properly.
+	            if (this.bloomeryItemStacks[3] == null) return true;
+	            if (!this.bloomeryItemStacks[3].isItemEqual(itemstack)) return false;
+	            int result = bloomeryItemStacks[3].stackSize + itemstack.stackSize;
+	            return result <= getInventoryStackLimit() && result <= this.bloomeryItemStacks[3].getMaxStackSize(); //Forge BugFix: Make it respect stack sizes properly.
 	        }
 	    }
 
 	    /**
-	     * Turn one item from the furnace source stack into the appropriate smelted item in the furnace result stack
+	     * Turn one item from the bloomery source stack into the appropriate smelted item in the bloomery result stack
 	     */
 	    public void smeltItem()
 	    {
 	        if (this.canSmelt())
 	        {
-	            ItemStack itemstack = BloomeryRecipes.smelting().getSmeltingResult(this.furnaceItemStacks[2]);
+	            ItemStack itemstack = FurnaceRecipes.smelting().getSmeltingResult(this.bloomeryItemStacks[2]);
 
-	            if (this.furnaceItemStacks[2] == null)
+	            if (this.bloomeryItemStacks[3] == null)
 	            {
-	                this.furnaceItemStacks[2] = itemstack.copy();
+	                this.bloomeryItemStacks[3] = itemstack.copy();
 	            }
-	            else if (this.furnaceItemStacks[2].getItem() == itemstack.getItem())
+	            else if (this.bloomeryItemStacks[3].getItem() == itemstack.getItem())
 	            {
-	                this.furnaceItemStacks[2].stackSize += itemstack.stackSize; // Forge BugFix: Results may have multiple items
+	                this.bloomeryItemStacks[3].stackSize += itemstack.stackSize; // Forge BugFix: Results may have multiple items
 	            }
 
-	            --this.furnaceItemStacks[0].stackSize;
+	            --this.bloomeryItemStacks[0].stackSize;
 
-	            if (this.furnaceItemStacks[0].stackSize <= 0)
+	            if (this.bloomeryItemStacks[0].stackSize <= 0)
 	            {
-	                this.furnaceItemStacks[0] = null;
+	                this.bloomeryItemStacks[0] = null;
 	            }
 	        }
 	    }
 
 	    /**
-	     * Returns the number of ticks that the supplied fuel item will keep the furnace burning, or 0 if the item isn't
+	     * Returns the number of ticks that the supplied fuel item will keep the bloomery burning, or 0 if the item isn't
 	     * fuel
 	     */
 	    public static int getItemBurnTime(ItemStack p_145952_0_)
@@ -370,7 +371,7 @@ public class TileBloomery extends TileEntity implements IInventory
 	    public static boolean isItemFuel(ItemStack p_145954_0_)
 	    {
 	        /**
-	         * Returns the number of ticks that the supplied fuel item will keep the furnace burning, or 0 if the item isn't
+	         * Returns the number of ticks that the supplied fuel item will keep the bloomery burning, or 0 if the item isn't
 	         * fuel
 	         */
 	        return getItemBurnTime(p_145954_0_) > 0;

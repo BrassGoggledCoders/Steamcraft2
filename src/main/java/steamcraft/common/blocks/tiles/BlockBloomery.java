@@ -2,13 +2,6 @@ package steamcraft.common.blocks.tiles;
 
 import java.util.Random;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import steamcraft.client.lib.GuiIDs;
-import steamcraft.common.Steamcraft;
-import steamcraft.common.lib.LibInfo;
-import steamcraft.common.tiles.TileBloomery;
-import steamcraft.common.tiles.TileSteamBoiler;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -23,6 +16,12 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
+import steamcraft.client.lib.GuiIDs;
+import steamcraft.common.Steamcraft;
+import steamcraft.common.lib.LibInfo;
+import steamcraft.common.tiles.TileBloomery;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockBloomery extends BlockContainerMod
 {
@@ -124,7 +123,7 @@ public class BlockBloomery extends BlockContainerMod
 	}
 
 	/**
-	 * Update furnace block state.
+	 * Update bloomery block state.
 	 *
 	 * @param par0
 	 *            the par0
@@ -137,7 +136,7 @@ public class BlockBloomery extends BlockContainerMod
 	 * @param par4
 	 *            the par4
 	 */
-	public static void updateFurnaceBlockState(boolean par0, World par1World, int par2, int par3, int par4)
+	public static void updateBloomeryBlockState(boolean par0, World par1World, int par2, int par3, int par4)
 	{
 		int var5 = par1World.getBlockMetadata(par2, par3, par4);
 		TileEntity tileentity = par1World.getTileEntity(par2, par3, par4);
