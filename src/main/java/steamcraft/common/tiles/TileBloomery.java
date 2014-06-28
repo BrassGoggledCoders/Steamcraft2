@@ -280,7 +280,7 @@ public class TileBloomery extends TileEntity implements IInventory
 	     */
 	    private boolean canSmelt()
 	    {
-	        if (this.bloomeryItemStacks[0] == null)
+	        if (this.bloomeryItemStacks[2] == null || this.bloomeryItemStacks[0] == null)
 	        {
 	            return false;
 	        }

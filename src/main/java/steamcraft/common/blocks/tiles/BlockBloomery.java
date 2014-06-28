@@ -28,7 +28,7 @@ public class BlockBloomery extends BlockContainerMod
 
 	/** The icon top. */
 	@SideOnly(Side.CLIENT)
-	private IIcon iconTop;
+	private IIcon iconTop, iconTopActive;
 
 	/** The icon front. */
 	@SideOnly(Side.CLIENT)
@@ -71,11 +71,11 @@ public class BlockBloomery extends BlockContainerMod
 		switch (side)
 		{
 		case 0:
-			return iconTop; // bottom
-
+			return blockIcon; // bottom
 		case 1:
-			return iconTop; // top
-
+			if(meta > 7)
+			return iconTopActive;
+			else return iconTop;// top
 		default:
 			return blockIcon; // sides
 		}
@@ -95,7 +95,8 @@ public class BlockBloomery extends BlockContainerMod
 		blockIcon = icon.registerIcon(LibInfo.PREFIX + "blockBloomerySide");
 		iconFront = icon.registerIcon(LibInfo.PREFIX + "blockBloomeryFrontInactive");
 		iconFrontActive = icon.registerIcon(LibInfo.PREFIX + "blockBloomeryFrontActive");
-		iconTop = icon.registerIcon(LibInfo.PREFIX + "blockSteamBoilerSide");
+		iconTop = icon.registerIcon(LibInfo.PREFIX + "blockBloomeryTopInactive");
+		iconTopActive = icon.registerIcon(LibInfo.PREFIX + "blockBloomeryTopActive");
 	}
 
 	/*
