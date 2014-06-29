@@ -1,5 +1,5 @@
 /**
- * This class was created by BrassGoggledCoders modding team. 
+ * This class was created by BrassGoggledCoders modding team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -40,7 +40,6 @@ public class BloomeryRecipes
     private BloomeryRecipes()
     {
         this.addBloomeryRecipe(new ItemStack(Blocks.iron_ore), new ItemStack(Items.coal, 4), new ItemStack(ConfigItems.itemIngot, 1, 6));
-        this.addBloomeryRecipe(new ItemStack(Blocks.iron_ore), new ItemStack(Blocks.iron_ore), new ItemStack(ConfigItems.itemIngot, 2, 7));
     }
 
     public void addBloomeryRecipe(ItemStack input, ItemStack input2, ItemStack result)
@@ -49,11 +48,11 @@ public class BloomeryRecipes
     }
 
     public ItemStack getResult(ItemStack stack1, ItemStack stack2)
-    {		
+    {
 		ItemStack input[] = new ItemStack[2];
 		input[0] = stack1;
 		input[1] = stack2;
-		
+
         Iterator<Entry<ItemStack[], ItemStack>> iterator = this.recipeList.entrySet().iterator();
         Entry<?, ?> entry;
 
@@ -70,7 +69,7 @@ public class BloomeryRecipes
 
         return (ItemStack)entry.getValue();
     }
-    
+
     @SuppressWarnings("unchecked")
 	public ItemStack[] getSmeltingInputs(ItemStack output)
     {
@@ -80,22 +79,22 @@ public class BloomeryRecipes
          do
          {
         	 entry = (Entry<ItemStack[], ItemStack>) iterator.next();
-        	 
+
         	 if(entry.getValue().getItem() == output.getItem() && entry.getValue().getItemDamage() == output.getItemDamage())
         		 return (ItemStack[]) entry.getKey();
          }
          while(inputs == null);
-         
+
          return null;
     }
 
     private boolean checkItemsAgainstRecipes(ItemStack[] input1, ItemStack[] input2)
     {
-    	 return input2[0].getItem() == input1[0].getItem() && (input2[0].getItemDamage() == 32767 || input2[0].getItemDamage() == input1[0].getItemDamage()) && 
+    	 return input2[0].getItem() == input1[0].getItem() && (input2[0].getItemDamage() == 32767 || input2[0].getItemDamage() == input1[0].getItemDamage()) &&
          		input2[1].getItem() == input1[1].getItem() && (input2[1].getItemDamage() == 32767 || input2[1].getItemDamage() == input1[1].getItemDamage()) &&
          		input2[0].stackSize <= input1[0].stackSize && input2[1].stackSize <= input1[1].stackSize;
     }
-    
+
     /**
      * Not so good function but it does the job.
      * Don't tinker with this.Don't use it!
@@ -103,7 +102,7 @@ public class BloomeryRecipes
     public byte[] getStackSizeForInputs(ItemStack input1, ItemStack input2, ItemStack output)
     {
     	ItemStack[] inputs = getSmeltingInputs(output);
-    	
+
     	if(input1 != null)
     	{
 	    	if(input2 != null)

@@ -1,5 +1,5 @@
 /**
- * This class was created by BrassGoggledCoders modding team. 
+ * This class was created by BrassGoggledCoders modding team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -45,7 +45,7 @@ public class TileBloomery extends TileEntityMachine
 	public void readFromNBT(NBTTagCompound tag)
 	{
 		super.readFromNBT(tag);
-		
+
 		this.burnTime = tag.getShort("BurnTime");
 		this.cookTime = tag.getShort("CookTime");
 		this.currentItemBurnTime = tag.getShort("ItemBurnTime");
@@ -55,7 +55,7 @@ public class TileBloomery extends TileEntityMachine
 	public void writeToNBT(NBTTagCompound tag)
 	{
 		super.writeToNBT(tag);
-		
+
 		tag.setShort("BurnTime", (short) this.burnTime);
 		tag.setShort("CookTime", (short) this.cookTime);
 		tag.setShort("ItemBurnTime", (short) this.currentItemBurnTime);
@@ -64,7 +64,7 @@ public class TileBloomery extends TileEntityMachine
 	@SideOnly(Side.CLIENT)
 	public int getCookProgressScaled(int i)
 	{
-		return this.cookTime * i / 200;
+		return this.cookTime * i / 400;
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -103,7 +103,7 @@ public class TileBloomery extends TileEntityMachine
 				if (this.burnTime > 0)
 				{
 					flag1 = true;
-					
+
 					if (this.inventory[0] != null)
 					{
 						--this.inventory[0].stackSize;
@@ -118,7 +118,7 @@ public class TileBloomery extends TileEntityMachine
 			{
 				++this.cookTime;
 
-				if (this.cookTime == 200)
+				if (this.cookTime == 400)
 				{
 					this.cookTime = 0;
 					this.smeltItem();
@@ -144,7 +144,7 @@ public class TileBloomery extends TileEntityMachine
 		if (this.inventory[1] != null && this.inventory[2] != null)
 		{
 			ItemStack result = this.getRecipeResult();
-			
+
 			if(result != null)
 			{
 				if (this.inventory[3] == null)
@@ -152,8 +152,8 @@ public class TileBloomery extends TileEntityMachine
 				if (!this.inventory[3].isItemEqual(result))
 					return false;
 				int amount = inventory[3].stackSize + result.stackSize;
-				
-				return amount <= this.getInventoryStackLimit() && amount <= this.inventory[3].getMaxStackSize(); 
+
+				return amount <= this.getInventoryStackLimit() && amount <= this.inventory[3].getMaxStackSize();
 			}
 		}
 		return false;
@@ -169,16 +169,16 @@ public class TileBloomery extends TileEntityMachine
 				this.inventory[3] = result.copy();
 			else if (this.inventory[3].getItem() == result.getItem())
 				this.inventory[3].stackSize += result.stackSize;
-			
+
 			byte[] stackSizes = BloomeryRecipes.getInstance().getStackSizeForInputs(inventory[1], inventory[2], result);
-			
+
 			if(this.inventory[1]!=null)
 			{
 				this.inventory[1].stackSize -= stackSizes[0];
 				if (this.inventory[1].stackSize <= 0)
 					this.inventory[1] = null;
 			}
-			
+
 			if(this.inventory[2]!=null)
 			{
 				this.inventory[2].stackSize -= stackSizes[1];
@@ -191,13 +191,13 @@ public class TileBloomery extends TileEntityMachine
 	private ItemStack getRecipeResult()
 	{
 		ItemStack result = BloomeryRecipes.getInstance().getResult(this.inventory[1], this.inventory[2]);
-		
+
 		if (result == null)
 			result = BloomeryRecipes.getInstance().getResult(this.inventory[2], this.inventory[1]);
-		
+
 		return result;
 	}
-	
+
 	public static short getItemBurnTime(ItemStack stack)
 	{
 		if (stack == null)
