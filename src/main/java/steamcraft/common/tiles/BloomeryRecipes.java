@@ -12,16 +12,12 @@ import steamcraft.common.config.ConfigItems;
 
 public class BloomeryRecipes
 {
-    private static final BloomeryRecipes smeltingBase = new BloomeryRecipes();
-    /** The list of smelting results. */
-    private Map<ItemStack[], ItemStack> smeltingList = new HashMap<ItemStack[], ItemStack>();
+    private static final BloomeryRecipes instance = new BloomeryRecipes();
+    private Map<ItemStack[], ItemStack> recipeList = new HashMap<ItemStack[], ItemStack>();
 
-    /**
-     * Used to call methods addSmelting and getSmeltingResult.
-     */
-    public static BloomeryRecipes smelting()
+    public static BloomeryRecipes getInstance()
     {
-        return smeltingBase;
+        return instance;
     }
 
     private BloomeryRecipes()
@@ -32,35 +28,35 @@ public class BloomeryRecipes
 
     public void addBloomeryRecipe(ItemStack input, ItemStack input2, ItemStack result)
     {
-        this.smeltingList.put(new ItemStack[]{input, input2}, result);
+        this.recipeList.put(new ItemStack[]{input, input2}, result);
     }
 
-
-    /**
-     * Returns the smelting result of an item.
-     */
-    public ItemStack getSmeltingResult(ItemStack stack)
-    {
-        Iterator<?> iterator = this.smeltingList.entrySet().iterator();
+    public ItemStack getResult(ItemStack stack1, ItemStack stack2)
+    {		
+		ItemStack input[] = new ItemStack[2];
+		input[0] = stack1;
+		input[1] = stack2;
+		
+        Iterator<Entry<ItemStack[], ItemStack>> iterator = this.recipeList.entrySet().iterator();
         Entry<?, ?> entry;
-        ItemStack result = null;
-		do
+
+        do
         {
             if (!iterator.hasNext())
             {
                 return null;
             }
-            entry = (Entry)iterator.next();
-            if(entry.getKey() != null)
-            result = (ItemStack) entry.getValue();
-        }
-        while (result == null);
 
-        return (ItemStack) entry.getValue();
+            entry = (Entry<?, ?>)iterator.next();
+        }
+        while (!this.checkItemsAgainstRecipes(input, (ItemStack[])entry.getKey()));
+
+        return (ItemStack)entry.getValue();
     }
+    
     public ItemStack[] getSmeltingInputs(ItemStack output)
     {
-    	 Iterator<?> iterator = this.smeltingList.entrySet().iterator();
+    	 Iterator<?> iterator = this.recipeList.entrySet().iterator();
          Entry<?, ?> entry;
          ItemStack[] inputs = null;
          do
@@ -74,16 +70,14 @@ public class BloomeryRecipes
     }
 
 
-    private boolean func_151397_a(ItemStack p_151397_1_, ItemStack p_151397_2_)
+    private boolean checkItemsAgainstRecipes(ItemStack[] input1, ItemStack[] input2)
     {
-        return p_151397_2_.getItem() == p_151397_1_.getItem();
-        		/*&& (p_151397_2_.getItemDamage() == 32767
-        		|| p_151397_2_.getItemDamage()
-        		== p_151397_1_.getItemDamage());*/
+    	 return input2[0].getItem() == input1[0].getItem() && (input2[0].getItemDamage() == 32767 || input2[0].getItemDamage() == input1[0].getItemDamage()) && 
+         		input2[1].getItem() == input1[1].getItem() && (input2[1].getItemDamage() == 32767 || input2[1].getItemDamage() == input1[1].getItemDamage());
     }
 
     public Map<ItemStack[], ItemStack> getSmeltingList()
     {
-        return this.smeltingList;
+        return this.recipeList;
     }
 }

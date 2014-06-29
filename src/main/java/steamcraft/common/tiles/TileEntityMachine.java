@@ -24,7 +24,6 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 
-// TODO: Auto-generated Javadoc
 /**
  * Basic machine class.Every machine should extend this.
  * 
@@ -32,27 +31,13 @@ import net.minecraft.tileentity.TileEntity;
  */
 public abstract class TileEntityMachine extends TileEntity implements ISidedInventory
 {
-
-	/** The inventory. */
 	protected ItemStack[] inventory;
 
-	/**
-	 * Instantiates a new tile entity machine.
-	 * 
-	 * @param invSize
-	 *            the inv size
-	 */
 	public TileEntityMachine(byte invSize)
 	{
 		inventory = new ItemStack[invSize];
 	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see net.minecraft.tileentity.TileEntity#readFromNBT(net.minecraft.nbt.
-	 * NBTTagCompound)
-	 */
+	
 	@Override
 	public void readFromNBT(NBTTagCompound tag)
 	{
@@ -70,13 +55,7 @@ public abstract class TileEntityMachine extends TileEntity implements ISidedInve
 				inventory[b0] = ItemStack.loadItemStackFromNBT(nbttagcompound1);
 		}
 	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see net.minecraft.tileentity.TileEntity#writeToNBT(net.minecraft.nbt.
-	 * NBTTagCompound)
-	 */
+	
 	@Override
 	public void writeToNBT(NBTTagCompound tag)
 	{
@@ -96,33 +75,18 @@ public abstract class TileEntityMachine extends TileEntity implements ISidedInve
 		tag.setTag("Items", nbttaglist);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see net.minecraft.inventory.IInventory#getSizeInventory()
-	 */
 	@Override
 	public int getSizeInventory()
 	{
 		return inventory.length;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see net.minecraft.inventory.IInventory#getStackInSlot(int)
-	 */
 	@Override
 	public ItemStack getStackInSlot(int par1)
 	{
 		return inventory[par1];
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see net.minecraft.inventory.IInventory#decrStackSize(int, int)
-	 */
 	@Override
 	public ItemStack decrStackSize(int par1, int par2)
 	{
@@ -150,11 +114,6 @@ public abstract class TileEntityMachine extends TileEntity implements ISidedInve
 			return null;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see net.minecraft.inventory.IInventory#getStackInSlotOnClosing(int)
-	 */
 	@Override
 	public ItemStack getStackInSlotOnClosing(int par1)
 	{
@@ -168,12 +127,6 @@ public abstract class TileEntityMachine extends TileEntity implements ISidedInve
 			return null;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see net.minecraft.inventory.IInventory#setInventorySlotContents(int,
-	 * net.minecraft.item.ItemStack)
-	 */
 	@Override
 	public void setInventorySlotContents(int par1, ItemStack par2ItemStack)
 	{
@@ -183,118 +136,61 @@ public abstract class TileEntityMachine extends TileEntity implements ISidedInve
 			par2ItemStack.stackSize = getInventoryStackLimit();
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see net.minecraft.inventory.IInventory#getInventoryStackLimit()
-	 */
 	@Override
 	public int getInventoryStackLimit()
 	{
 		return 64;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * net.minecraft.inventory.IInventory#isUseableByPlayer(net.minecraft.entity
-	 * .player.EntityPlayer)
-	 */
 	@Override
 	public boolean isUseableByPlayer(EntityPlayer player)
 	{
-		return worldObj.getTileEntity(xCoord, yCoord, zCoord) != this ? false
-				: player.getDistanceSq(xCoord + 0.5D, yCoord + 0.5D, zCoord + 0.5D) <= 64.0D;
+		return worldObj.getTileEntity(xCoord, yCoord, zCoord) != this ? false : player.getDistanceSq(xCoord + 0.5D, yCoord + 0.5D, zCoord + 0.5D) <= 64.0D;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see net.minecraft.inventory.IInventory#isItemValidForSlot(int,
-	 * net.minecraft.item.ItemStack)
-	 */
 	@Override
 	public boolean isItemValidForSlot(int i, ItemStack itemstack)
 	{
 		return false;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * net.minecraft.inventory.ISidedInventory#getAccessibleSlotsFromSide(int)
-	 */
 	@Override
 	public int[] getAccessibleSlotsFromSide(int var1)
 	{
 		return null;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see net.minecraft.inventory.ISidedInventory#canInsertItem(int,
-	 * net.minecraft.item.ItemStack, int)
-	 */
 	@Override
 	public boolean canInsertItem(int i, ItemStack itemstack, int j)
 	{
 		return false;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see net.minecraft.inventory.ISidedInventory#canExtractItem(int,
-	 * net.minecraft.item.ItemStack, int)
-	 */
 	@Override
 	public boolean canExtractItem(int i, ItemStack itemstack, int j)
 	{
 		return false;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see net.minecraft.inventory.IInventory#closeInventory()
-	 */
-	@Override
-	public void closeInventory()
-	{
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see net.minecraft.inventory.IInventory#getInventoryName()
-	 */
 	@Override
 	public String getInventoryName()
 	{
-		return getInventoryName();
+		return "";
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see net.minecraft.inventory.IInventory#hasCustomInventoryName()
-	 */
 	@Override
 	public boolean hasCustomInventoryName()
 	{
 		return true;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see net.minecraft.inventory.IInventory#openInventory()
-	 */
 	@Override
 	public void openInventory()
+	{
+	}
+	
+	@Override
+	public void closeInventory()
 	{
 	}
 }
