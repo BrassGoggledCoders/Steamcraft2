@@ -15,6 +15,8 @@ package steamcraft.common.items;
 
 import java.util.List;
 
+import org.apache.commons.lang3.text.WordUtils;
+
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -27,7 +29,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 // TODO: Auto-generated Javadoc
 /**
  * The Class ItemResource.
- * 
+ *
  * @author Surseance (Johnny Eatmon)
  */
 public class ItemParts extends BaseItemWithMetadata
@@ -39,7 +41,7 @@ public class ItemParts extends BaseItemWithMetadata
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.minecraft.item.Item#registerIcons(net.minecraft.client.renderer.texture
 	 * .IIconRegister)
@@ -71,7 +73,7 @@ public class ItemParts extends BaseItemWithMetadata
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.minecraft.item.Item#getSubItems(net.minecraft.item.Item,
 	 * net.minecraft.creativetab.CreativeTabs, java.util.List)
 	 */
@@ -86,7 +88,7 @@ public class ItemParts extends BaseItemWithMetadata
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.minecraft.item.Item#getIconFromDamage(int)
 	 */
 	@Override
@@ -98,7 +100,7 @@ public class ItemParts extends BaseItemWithMetadata
 
 	public String getMaterial()
 	{
-		return material;
+		return WordUtils.capitalize(material);
 	}
 
 	public Item setMaterial(String material)

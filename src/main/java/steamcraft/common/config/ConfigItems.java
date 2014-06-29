@@ -128,7 +128,7 @@ public class ConfigItems
 
 	// Containers
 	public static Item itemCanisterSteam;
-	
+
 	public static Item itemElectricJarSmall;
 	public static Item itemElectricJarMedium;
 	public static Item itemElectricJarLarge;
@@ -366,10 +366,10 @@ public class ConfigItems
 		// Simple
 		itemMachinePart = new ItemMachinePart().setUnlocalizedName("itemMachinePart");
 		itemGunPart = new ItemGunPart().setUnlocalizedName("itemGunPart");
-		itemCopperParts = ((ItemParts) new ItemParts().setUnlocalizedName("itemPartsCopper")).setMaterial("copper");
-		itemIronParts = ((ItemParts) new ItemParts().setUnlocalizedName("itemPartsIron")).setMaterial("iron");
-		itemBrassParts = ((ItemParts) new ItemParts().setUnlocalizedName("itemPartsBrass")).setMaterial("brass");
-		itemSteelParts = ((ItemParts) new ItemParts().setUnlocalizedName("itemPartsSteel")).setMaterial("steel");
+		itemCopperParts = ((ItemParts) new ItemParts().setUnlocalizedName("itemPartsCopper")).setMaterial("Copper");
+		itemIronParts = ((ItemParts) new ItemParts().setUnlocalizedName("itemPartsIron")).setMaterial("Iron");
+		itemBrassParts = ((ItemParts) new ItemParts().setUnlocalizedName("itemPartsBrass")).setMaterial("Brass");
+		itemSteelParts = ((ItemParts) new ItemParts().setUnlocalizedName("itemPartsSteel")).setMaterial("Steel");
 
 		registerItem(itemMachinePart, "ItemMachinePart");
 		registerItem(itemGunPart, "ItemGunPart");
@@ -383,14 +383,14 @@ public class ConfigItems
 	{
 		// Containers
 		itemCanisterSteam = new ItemCanister().setUnlocalizedName("itemCanisterSteam");
-		
+
 		itemElectricJarSmall = new BaseElectricItem(100, 40, 80).setUnlocalizedName("itemElectricJarSmall");
 		itemElectricJarMedium = new BaseElectricItem(500, 125, 400).setUnlocalizedName("itemElectricJarMedium");
 		itemElectricJarLarge = new BaseElectricItem(2500, 750, 2000).setUnlocalizedName("itemElectricJarLarge");
 		itemElectricJarHuge = new BaseElectricItem(10000, 3000, 10000).setUnlocalizedName("itemElectricJarHuge");
 
 		registerItem(itemCanisterSteam, "ItemCanisterSteam");
-		
+
 		registerItem(itemElectricJarSmall, "ItemElectricJarSmall");
 		registerItem(itemElectricJarMedium, "ItemElectricJarMedium");
 		registerItem(itemElectricJarLarge, "ItemElectricJarLarge");
