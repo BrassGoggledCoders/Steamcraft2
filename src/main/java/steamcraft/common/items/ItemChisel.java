@@ -78,31 +78,31 @@ public class ItemChisel extends BaseItem
 		}
 		else if(block == ConfigBlocks.blockUranium)
 		{
-			world.setBlock(x, y, z, ConfigBlocks.blockEngraved, 8, 2);
+			world.setBlock(x, y, z, ConfigBlocks.blockEngraved, 7, 2);
 		}
 		else if(block == ConfigBlocks.blockEtherium)
 		{
-			world.setBlock(x, y, z, ConfigBlocks.blockEngraved, 9, 2);
+			world.setBlock(x, y, z, ConfigBlocks.blockEngraved, 8, 2);
 		}
 		else if(block == Blocks.diamond_block)
 		{
-			world.setBlock(x, y, z, ConfigBlocks.blockEngraved, 10, 2);
+			world.setBlock(x, y, z, ConfigBlocks.blockEngraved, 9, 2);
 		}
 		else if(block == Blocks.gold_block)
 		{
-			world.setBlock(x, y, z, ConfigBlocks.blockEngraved, 11, 2);
+			world.setBlock(x, y, z, ConfigBlocks.blockEngraved, 10, 2);
 		}
 		else if(block == Blocks.iron_block)
 		{
-			world.setBlock(x, y, z, ConfigBlocks.blockEngraved, 12, 2);
+			world.setBlock(x, y, z, ConfigBlocks.blockEngraved, 11, 2);
 		}
 		else if(block == Blocks.lapis_block)
 		{
-			world.setBlock(x, y, z, ConfigBlocks.blockEngraved, 13, 2);
+			world.setBlock(x, y, z, ConfigBlocks.blockEngraved, 12, 2);
 		}
 		else if(block == Blocks.stone)
 		{
-			world.setBlock(x, y, z, ConfigBlocks.blockEngraved, 14, 2);
+			world.setBlock(x, y, z, ConfigBlocks.blockEngraved, 13, 2);
 		}
 
 		Random random = world.rand;

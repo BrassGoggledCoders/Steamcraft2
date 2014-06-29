@@ -173,8 +173,8 @@ public class Config
 		tinChance = config.get(CATEGORY_GEN_OPTIONS, "Chance of Tin Ore Generation", 17).getInt();
 		zincChance = config.get(CATEGORY_GEN_OPTIONS, "Chance of Zinc Ore Generation", 15).getInt();
 		slateChance = config.get(CATEGORY_GEN_OPTIONS, "Chance of Slate Generation", 20).getInt();
-		netherEtheriumCrystalChance = config.get(CATEGORY_GEN_OPTIONS, "Chance of Etheruim Crystal Generation in the Nether", 3).getInt();
-		endEtheriumCrystalChance = config.get(CATEGORY_GEN_OPTIONS, "Chance of Etheruim Crystal Generation in the End", 3).getInt();
+		netherEtheriumCrystalChance = config.get(CATEGORY_GEN_OPTIONS, "Chance of Etheruim Crystal Generation in the Nether", 5).getInt();
+		endEtheriumCrystalChance = config.get(CATEGORY_GEN_OPTIONS, "Chance of Etheruim Crystal Generation in the End", 10).getInt();
 		uraniumHeight = config.get(CATEGORY_GEN_OPTIONS, "Height of Uranium Ore Generation", 24).getInt();
 		brimstoneHeight = config.get(CATEGORY_GEN_OPTIONS, "Height of Brimstone Ore Generation", 64).getInt();
 		borniteHeight = config.get(CATEGORY_GEN_OPTIONS, "Height of Bornite Ore Generation", 48).getInt();

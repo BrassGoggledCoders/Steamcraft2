@@ -172,11 +172,10 @@ public class ConfigRecipes
 	private static void initToolsRecipes()
 	{
 		// Drills
-
 		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.drillBase), new Object[] { "   ", "IGI", "III", 'I',
 				new ItemStack(ConfigItems.itemIngot, 1, 7), 'G', new ItemStack(ConfigItems.itemSteelParts, 1, 0) });
 		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.drillCore), new Object[] { " D ", "DDD", " B ", 'B', ConfigItems.drillBase, 'D',
-				new ItemStack(ConfigItems.itemIngot, 1, 1) });
+				new ItemStack(ConfigItems.itemIngot, 1, 0) });
 
 		ItemStack[] drillMaterials = new ItemStack[] { new ItemStack(Items.diamond, 1), new ItemStack(ConfigItems.itemResource, 1, 0),
 				new ItemStack(Items.gold_ingot, 1), new ItemStack(Items.iron_ingot, 1), new ItemStack(ConfigItems.itemResource, 1, 2),
@@ -246,13 +245,17 @@ public class ConfigRecipes
 
 		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.itemSteelParts, 1, 0), new Object[] { " P ", "PPP", " P ", 'P',
 				new ItemStack(ConfigItems.itemSheet, 1, 6) });
-		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.itemCopperParts, 1, 0), new Object[] { " P ", "P P", " P ", 'P',
+		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.itemSteelParts, 1, 1), new Object[] { " P ", "P P", " P ", 'P',
+			new ItemStack(ConfigItems.itemSheet, 1, 6) });
+		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.itemCopperParts, 1, 0), new Object[] { " P ", "PPP", " P ", 'P',
+			new ItemStack(ConfigItems.itemSheet, 1, 1) });
+		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.itemCopperParts, 1, 1), new Object[] { " P ", "P P", " P ", 'P',
 			new ItemStack(ConfigItems.itemSheet, 1, 1) });
 
-		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.itemMachinePart, 1, 2), new Object[] { "P P", " P ", "P P", 'P',
-				new ItemStack(ConfigItems.itemSheet, 1, 6) });
 		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.itemMachinePart, 1, 0),"  X", " X ", "X  ",'X', new ItemStack(ConfigItems.itemIngot, 1, 7));
-
+		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.itemMachinePart, 1, 1),"CPC", "S G","CPC",'P', new ItemStack(ConfigItems.itemSheet, 1, 4), 'G',new ItemStack(ConfigItems.itemSteelParts, 1, 0), 'S', new ItemStack(ConfigItems.itemCopperParts, 1, 1), 'C', new ItemStack(ConfigItems.itemMachinePart, 1, 0));
+		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.itemMachinePart, 1, 2), new Object[] { "P P", " P ", "P P", 'P',
+			new ItemStack(ConfigItems.itemSheet, 1, 6) });
 
 		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.itemCanisterSteam, 1, ConfigItems.itemCanisterSteam.getMaxDamage()), new Object[] { "PPP", "GGG", "PPP", 'G', Blocks.glass_pane, 'P',
 				new ItemStack(ConfigItems.itemSheet, 1, 4) });
