@@ -68,6 +68,7 @@ tile.blockCopperPipe.name=Copper Pipe
 tile.blockBloomery.name=Bloomery
 tile.blockBloomery.desc=Smelts iron ore into steel. Ore in the first slot, four coal in the second, and fuel in the bottom slot.
 tile.blockSteamBoiler.name=Steam Boiler
+tile.blockSteamBoiler.desc=Uses coal to heat water into steam.
 tile.copperWire.name=Copper Wire
 tile.lightningRod.name=Lightning Rod
 tile.steamfurnace.name=Steam Oven
@@ -125,6 +126,7 @@ item.itemNugget.6.name=Steel Nugget
 item.itemNugget.7.name=Cast Iron Nugget
 item.copperwire.name=Copper Wire
 item.itemWatch.name=Brass Pocket-Watch
+item.itemWatch.desc=On right-click, this item will display the in-game time and the real-world time
 
 item.itemCanisterSteam.name=Steam Canister
 item.itemCanisterGas.name=Compressed Gas Canister

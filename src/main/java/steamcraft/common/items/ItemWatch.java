@@ -19,13 +19,15 @@ import java.util.List;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 import steamcraft.common.Steamcraft;
 
 // TODO: Auto-generated Javadoc
 /**
  * The Class ItemWatch.
- * 
+ *
  * @author Surseance (Johnny Eatmon)
  */
 public class ItemWatch extends BaseItem
@@ -42,30 +44,11 @@ public class ItemWatch extends BaseItem
 
 	/*
 	 * (non-Javadoc)
-	 * 
-	 * @see net.minecraft.item.Item#addInformation(net.minecraft.item.ItemStack,
-	 * net.minecraft.entity.player.EntityPlayer, java.util.List, boolean)
-	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public void addInformation(final ItemStack is, final EntityPlayer player, @SuppressWarnings("rawtypes") final List list, final boolean flag)
-	{
-		if (flag)
-			list.add("");
-		else
-			list.add("On right-click, this item");
-		list.add("will display the in-game time");
-		list.add("and the real-world time");
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.minecraft.item.Item#onItemRightClick(net.minecraft.item.ItemStack,
 	 * net.minecraft.world.World, net.minecraft.entity.player.EntityPlayer)
 	 */
-	@SuppressWarnings("unused")
 	@Override
 	public ItemStack onItemRightClick(final ItemStack is, final World world, final EntityPlayer player)
 	{
@@ -74,20 +57,15 @@ public class ItemWatch extends BaseItem
 			final long mcTime = world.getTotalWorldTime();
 			final Calendar cal = Calendar.getInstance();
 			cal.getTime();
-			final SimpleDateFormat sdf = new SimpleDateFormat("HH:mm"); // hours
-																		// and
-																		// minutes,
-																		// subtract
-																		// twelve,
-																		// ya
-																		// pussy!
-			// System.out.println(sdf.format(cal.getTime()));
-			// formatter:off
+			final SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
 			String message = "MC Time: " + mcTime;
-			// player.sendChatToPlayer(ChatMessageComponent.createFromText(message).setColor(EnumChatFormatting.GOLD));
-			message = "Real-World Time: " + sdf.format(cal.getTime());
-			// player.sendChatToPlayer(ChatMessageComponent.createFromText(message).setColor(EnumChatFormatting.GOLD));
-			// formatter:on
+			ChatComponentText component = new ChatComponentText(message);
+			component.getChatStyle().setColor(EnumChatFormatting.GOLD);
+			player.addChatComponentMessage(component);
+			String message1 = "Real-World Time: " + sdf.format(cal.getTime());
+			ChatComponentText component1 = new ChatComponentText(message1);
+			component1.getChatStyle().setColor(EnumChatFormatting.GOLD);
+			player.addChatComponentMessage(component1);
 		}
 
 		return is;
