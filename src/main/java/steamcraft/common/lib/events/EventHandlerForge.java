@@ -104,16 +104,6 @@ public class EventHandlerForge
 		NBTTagCompound thrower = event.entityItem.getEntityData();
 		thrower.setString("thrower", event.player.getCommandSenderName());
 	}
-
-	/*
-	 * @ForgeSubscribe public void onPlayerLogIn(PlayerEvent. event) { if
-	 * (event.player.getCommandSenderName().equals("Surseance")) {
-	 * event.player.addExperience(10000); } }
-	 */
-
-	/** The timer. */
-	private int timer = 400;
-
 	/**
 	 * Living update.
 	 *
@@ -130,16 +120,14 @@ public class EventHandlerForge
 
 			if ((is != null) && (is.getItem() == ConfigItems.brassGoggles))
 			{
-				player.addPotionEffect(new PotionEffect(Potion.nightVision.id, timer, 0, true));
+				player.addPotionEffect(new PotionEffect(Potion.nightVision.id, 2, 0, true));
 
-				if (timer <= 220)
-					timer = 400;
 			}
-			else if ((is == null) || (is.getItem() != ConfigItems.brassGoggles))
-				player.removePotionEffect(Potion.nightVision.id);
+			//else if ((is == null) || (is.getItem() != ConfigItems.brassGoggles))
+			//	player.removePotionEffect(Potion.nightVision.id);
 		}
-		else if (!(event.entityLiving instanceof EntityPlayer))
-			event.entityLiving.removePotionEffect(Potion.nightVision.id);
+		///else if (!(event.entityLiving instanceof EntityPlayer))
+		//	event.entityLiving.removePotionEffect(Potion.nightVision.id);
 	}
 
 	/** The overlay. */
