@@ -130,7 +130,7 @@ public class EventHandlerForge
 
 			if ((is != null) && (is.getItem() == ConfigItems.brassGoggles))
 			{
-				player.addPotionEffect(new PotionEffect(Potion.nightVision.id, timer, 0));
+				player.addPotionEffect(new PotionEffect(Potion.nightVision.id, timer, 0, true));
 
 				if (timer <= 220)
 					timer = 400;
