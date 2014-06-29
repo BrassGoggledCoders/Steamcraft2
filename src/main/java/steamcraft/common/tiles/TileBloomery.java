@@ -152,13 +152,21 @@ public class TileBloomery extends TileEntityMachine
 			else if (this.inventory[3].getItem() == result.getItem())
 				this.inventory[3].stackSize += result.stackSize;
 			
-			--this.inventory[1].stackSize;
-			if (this.inventory[1].stackSize <= 0)
-				this.inventory[1] = null;
+			byte[] stackSizes = BloomeryRecipes.getInstance().getStackSizeForInputs(inventory[1], inventory[2], result);
 			
-			--this.inventory[2].stackSize;
-			if (this.inventory[2].stackSize <= 0)
-				this.inventory[2] = null;
+			if(this.inventory[1]!=null)
+			{
+				this.inventory[1].stackSize -= stackSizes[0];
+				if (this.inventory[1].stackSize <= 0)
+					this.inventory[1] = null;
+			}
+			
+			if(this.inventory[2]!=null)
+			{
+				this.inventory[2].stackSize -= stackSizes[1];
+				if (this.inventory[2].stackSize <= 0)
+					this.inventory[2] = null;
+			}
 		}
 	}
 

@@ -22,7 +22,7 @@ public class BloomeryRecipes
 
     private BloomeryRecipes()
     {
-        this.addBloomeryRecipe(new ItemStack(Blocks.iron_ore), new ItemStack(Items.coal), new ItemStack(ConfigItems.itemIngot, 1, 6));
+        this.addBloomeryRecipe(new ItemStack(Blocks.iron_ore), new ItemStack(Items.coal, 4), new ItemStack(ConfigItems.itemIngot, 1, 6));
         this.addBloomeryRecipe(new ItemStack(Blocks.iron_ore), new ItemStack(Blocks.iron_ore), new ItemStack(ConfigItems.itemIngot, 2, 7));
     }
 
@@ -54,26 +54,51 @@ public class BloomeryRecipes
         return (ItemStack)entry.getValue();
     }
     
-    public ItemStack[] getSmeltingInputs(ItemStack output)
+    @SuppressWarnings("unchecked")
+	public ItemStack[] getSmeltingInputs(ItemStack output)
     {
     	 Iterator<?> iterator = this.recipeList.entrySet().iterator();
-         Entry<?, ?> entry;
+    	 Entry<ItemStack[], ItemStack> entry;
          ItemStack[] inputs = null;
          do
          {
-        	 entry = (Entry<?, ?>) iterator.next();
-        	 if(entry.getValue() == output)
-        	inputs = (ItemStack[]) entry.getKey();
-        	 return (ItemStack[]) entry.getKey();
+        	 entry = (Entry<ItemStack[], ItemStack>) iterator.next();
+        	 
+        	 if(entry.getValue().getItem() == output.getItem() && entry.getValue().getItemDamage() == output.getItemDamage())
+        		 return (ItemStack[]) entry.getKey();
          }
          while(inputs == null);
+         
+         return null;
     }
-
 
     private boolean checkItemsAgainstRecipes(ItemStack[] input1, ItemStack[] input2)
     {
     	 return input2[0].getItem() == input1[0].getItem() && (input2[0].getItemDamage() == 32767 || input2[0].getItemDamage() == input1[0].getItemDamage()) && 
-         		input2[1].getItem() == input1[1].getItem() && (input2[1].getItemDamage() == 32767 || input2[1].getItemDamage() == input1[1].getItemDamage());
+         		input2[1].getItem() == input1[1].getItem() && (input2[1].getItemDamage() == 32767 || input2[1].getItemDamage() == input1[1].getItemDamage()) &&
+         		input2[0].stackSize <= input1[0].stackSize && input2[1].stackSize <= input1[1].stackSize;
+    }
+    
+    /**
+     * Not so good function but it does the job.
+     * Don't tinker with this.Don't use it!
+     */
+    public byte[] getStackSizeForInputs(ItemStack input1, ItemStack input2, ItemStack output)
+    {
+    	ItemStack[] inputs = getSmeltingInputs(output);
+    	
+    	if(input1 != null)
+    	{
+	    	if(input2 != null)
+	    		if(checkItemsAgainstRecipes(new ItemStack[]{input1, input2}, inputs))
+	    			return new byte[]{(byte) inputs[0].stackSize, (byte) inputs[1].stackSize};
+	    		else
+	    			return new byte[]{(byte) inputs[1].stackSize, (byte) inputs[0].stackSize};
+	    	else
+	    		return new byte[]{(byte)inputs[0].stackSize, (byte) 0};
+    	}
+    	else
+    		return new byte[]{(byte) 0, (byte)inputs[1].stackSize};
     }
 
     public Map<ItemStack[], ItemStack> getSmeltingList()
