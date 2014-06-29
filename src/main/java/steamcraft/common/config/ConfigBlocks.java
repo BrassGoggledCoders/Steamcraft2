@@ -219,7 +219,7 @@ public class ConfigBlocks
 		RegistryHelper.registerContainerBlock(blockCopperPipe, TileCopperPipe.class, "BlockCopperPipe");
 		RegistryHelper.registerContainerBlock(blockBloomery, TileBloomery.class, "BlockBloomery");
 		GameRegistry.registerBlock(blockCopperTank, "BlockCopperTank");
-		GameRegistry.registerBlock(blockCopperWire, "BlockCopperWire");
+		//GameRegistry.registerBlock(blockCopperWire, "BlockCopperWire");
 		RegistryHelper.registerContainerBlock(blockTurbine, TileTurbine.class, "BlockTurbine");
 		// RegistryHelper.registerContainerBlock(blockCharger,
 		// TileCharger.class, "BlockCharger");

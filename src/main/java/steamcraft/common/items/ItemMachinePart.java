@@ -35,7 +35,7 @@ public class ItemMachinePart extends BaseItemWithMetadata
 {
 	// @SideOnly(Side.CLIENT)
 	/** The item icon. */
-	IIcon[] itemIcon = new IIcon[10];
+	IIcon[] itemIcon = new IIcon[3];
 
 	/*
 	 * (non-Javadoc)
@@ -48,16 +48,16 @@ public class ItemMachinePart extends BaseItemWithMetadata
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister ir)
 	{
-		itemIcon[0] = ir.registerIcon(LibInfo.PREFIX + "itemMagnet");
-		itemIcon[1] = ir.registerIcon(LibInfo.PREFIX + "itemGenerator");
-		itemIcon[2] = ir.registerIcon(LibInfo.PREFIX + "itemFan");
-		itemIcon[3] = ir.registerIcon(LibInfo.PREFIX + "itemTurbine");
-		itemIcon[4] = ir.registerIcon(LibInfo.PREFIX + "itemBulb");
-		itemIcon[5] = ir.registerIcon(LibInfo.PREFIX + "itemGrating");
-		itemIcon[6] = ir.registerIcon(LibInfo.PREFIX + "itemGeneratorAssembly");
-		itemIcon[7] = ir.registerIcon(LibInfo.PREFIX + "itemClockworkMechanism");
-		itemIcon[8] = ir.registerIcon(LibInfo.PREFIX + "itemWireCoil");
-		itemIcon[9] = ir.registerIcon(LibInfo.PREFIX + "itemCastIronRod");
+		itemIcon[0] = ir.registerIcon(LibInfo.PREFIX + "itemCastIronRod");
+		itemIcon[1] = ir.registerIcon(LibInfo.PREFIX + "itemClockworkMechanism");
+		itemIcon[2] = ir.registerIcon(LibInfo.PREFIX + "itemGrating");
+		//itemIcon[3] = ir.registerIcon(LibInfo.PREFIX + "itemMagnet");
+		//itemIcon[4] = ir.registerIcon(LibInfo.PREFIX + "itemGenerator");
+		//itemIcon[5] = ir.registerIcon(LibInfo.PREFIX + "itemFan");
+		//itemIcon[6] = ir.registerIcon(LibInfo.PREFIX + "itemTurbine");
+		//itemIcon[7] = ir.registerIcon(LibInfo.PREFIX + "itemBulb");
+		//itemIcon[8] = ir.registerIcon(LibInfo.PREFIX + "itemGeneratorAssembly");
+		//itemIcon[9] = ir.registerIcon(LibInfo.PREFIX + "itemWireCoil");
 	}
 
 	/**

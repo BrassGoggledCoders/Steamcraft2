@@ -63,6 +63,9 @@ tile.blockCustomOre.6.name=Phosphate Ore
 tile.blockCrystal.name=Etherium Crystal
 
 #Machines
+tile.blockCopperTank.name=Copper Tank
+tile.blockCopperPipe.name=Copper Pipe
+tile.blockBloomery.name=Bloomery
 tile.blockSteamBoiler.name=Steam Boiler
 tile.copperWire.name=Copper Wire
 tile.lightningRod.name=Lightning Rod
@@ -266,16 +269,16 @@ item.itemPartsSteel.7.name=Steel Wire
 item.itemPartsSteel.8.name=Steel Bearing
 item.itemPartsSteel.9.name=Steel Screw
 item.itemPartsSteel.10.name=Steel Nail
-item.itemMachinePart.0.name=Magnet
-item.itemMachinePart.1.name=Generator
-item.itemMachinePart.2.name=Fan
-item.itemMachinePart.3.name=Turbine
+item.itemMachinePart.0.name=Cast Iron Shaft
+item.itemMachinePart.1.name=Clockwork Mechanism
+item.itemMachinePart.2.name=Grating
+item.itemMachinePart.4.name=Magnet
+item.itemMachinePart.5.name=Generator
+item.itemMachinePart.6.name=Fan
+item.itemMachinePart.8.name=Turbine
 item.itemMachinePart.4.name=Bulb
-item.itemMachinePart.5.name=Grating
 item.itemMachinePart.6.name=Generator Assembly
-item.itemMachinePart.7.name=Clockwork Mechanism
 item.itemMachinePart.8.name=Wire Coil
-item.itemMachinePart.9.name=Cast Iron Shaft
 #Containers
 container.bloomery=Bloomery
 
@@ -285,3 +288,15 @@ itemGroup.steamcraft=Steamcraft 2
 key.categories.sc2=Steamcraft 2
 #Chat
 chat.test=Test
+#Achieves
+achievement.raygunachieve=Lazer Pistol
+achievement.raygunachieve.desc=ZAAAP!
+achievement.shrinkrayachieve=Shrink-in-ator
+achievement.shrinkrayachieve.desc=Watch out for the Nefario Principle!
+achievement.boilerachieve=Hot'n'Wet Topic
+achievement.boilerachieve.desc=}:-]
+achievement.ingotachieve=Aquire Harderware
+achievement.ingotachieve.desc=Ore-Mazing!
+achievement.sheetachieve=P-TANG!
+achievement.sheetachieve.desc=Flatten and Crush
+
