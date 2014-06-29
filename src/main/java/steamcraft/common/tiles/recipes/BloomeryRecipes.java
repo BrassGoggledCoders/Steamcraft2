@@ -11,7 +11,7 @@
  *
  * File created @ [Jun 23, 2014, 10:51:48 PM]
  */
-package steamcraft.common.tiles;
+package steamcraft.common.tiles.recipes;
 
 import java.util.HashMap;
 import java.util.Iterator;
