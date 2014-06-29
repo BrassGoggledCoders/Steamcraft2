@@ -268,9 +268,6 @@ public class ConfigRecipes
 		// Bronze Powder
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ConfigItems.itemPowder, 3, 5), new Object[] { "dustCopper", "dustCopper",
 				"dustTin" }));
-		// Steel Powder
-		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.itemPowder, 2, 6), new Object[] { " C ", "CIC", " C ", 'C', new ItemStack(Items.coal),
-				'I', new ItemStack(Items.iron_ingot) });
 		GameRegistry.addShapelessRecipe(new ItemStack(ConfigItems.itemMatch), new Object[] { new ItemStack(ConfigItems.itemResource, 1, 3),
 				new ItemStack(Items.stick) });
 
