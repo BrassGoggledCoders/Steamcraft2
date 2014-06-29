@@ -62,18 +62,18 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 		{
 		  if(te.getWorldObj().getBlock(te.xCoord, te.yCoord+1, te.zCoord) == ConfigBlocks.blockCopperPipe){
 			  this.model.renderModel(0.0625F,0);
-      }else if(te.getWorldObj().getBlock(te.xCoord, te.yCoord-1, te.zCoord) == ConfigBlocks.blockCopperPipe){
+		  }else if(te.getWorldObj().getBlock(te.xCoord, te.yCoord-1, te.zCoord) == ConfigBlocks.blockCopperPipe){
               this.model.renderModel(0.0625F,1);
-      }else if(te.getWorldObj().getBlock(te.xCoord+1, te.yCoord, te.zCoord) == ConfigBlocks.blockCopperPipe){
+		  }else if(te.getWorldObj().getBlock(te.xCoord+1, te.yCoord, te.zCoord) == ConfigBlocks.blockCopperPipe){
               this.model.renderModel(0.0625F,2);
-      }else if(te.getWorldObj().getBlock(te.xCoord-1, te.yCoord, te.zCoord) == ConfigBlocks.blockCopperPipe){
+		  }else if(te.getWorldObj().getBlock(te.xCoord-1, te.yCoord, te.zCoord) == ConfigBlocks.blockCopperPipe){
               this.model.renderModel(0.0625F,3);
-      }else if(te.getWorldObj().getBlock(te.xCoord, te.yCoord, te.zCoord+1) == ConfigBlocks.blockCopperPipe){
+		  }else if(te.getWorldObj().getBlock(te.xCoord, te.yCoord, te.zCoord+1) == ConfigBlocks.blockCopperPipe){
               this.model.renderModel(0.0625F,4);
-      }else if(te.getWorldObj().getBlock(te.xCoord, te.yCoord, te.zCoord-1) == ConfigBlocks.blockCopperPipe){
+		  }else if(te.getWorldObj().getBlock(te.xCoord, te.yCoord, te.zCoord-1) == ConfigBlocks.blockCopperPipe){
               this.model.renderModel(0.0625F,5);
       	}
-      else this.model.renderModel(0.0625F,5);
+		  else this.model.renderModel(1, 3);;
       }
 		GL11.glPopMatrix();
 		GL11.glPopMatrix();

@@ -59,4 +59,5 @@ public class BlockCopperPipeRenderer implements ISimpleBlockRenderingHandler
 	{
 		return RenderIDs.blockCopperPipeRI;
 	}
+	
 }
