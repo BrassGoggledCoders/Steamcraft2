@@ -14,7 +14,7 @@ public class ConfigAchievements
 {
 
 	/** The shrinkray achieve. */
-	public static Achievement raygunAchieve, shrinkrayAchieve, boilerAchieve, oreAchieve, ingotAchieve, sheetAchieve;
+	public static Achievement raygunAchieve, shrinkrayAchieve, boilerAchieve, oreAchieve, ingotAchieve, sheetAchieve, intakeAchieve;
 
 	/** The sc2 achieve page. */
 	public static AchievementPage sc2AchievePage;
@@ -27,6 +27,7 @@ public class ConfigAchievements
 		ingotAchieve = new Achievement("achievement.ingot", "ingotachieve", 0, 0, ConfigItems.itemIngot, null).registerStat().initIndependentStat();
 		sheetAchieve = new Achievement("achievement.sheet", "sheetachieve", 2, 0, ConfigItems.itemSheet, ingotAchieve).registerStat();
 		boilerAchieve = new Achievement("achievement.boiler", "boilerachieve", 4, 0, ConfigBlocks.blockSteamBoiler, sheetAchieve).registerStat()/*.setSpecial()*/;
+		intakeAchieve = new Achievement("achievement.intake", "intakeachieve", 4, 0, ConfigBlocks.blockIntake, boilerAchieve).registerStat();
 
 		raygunAchieve = new Achievement("achievement.raygun", "raygunachieve", 0, 2, ConfigItems.itemRayGun, ingotAchieve).registerStat();
 		shrinkrayAchieve = new Achievement("achievement.shrinkray", "shrinkrayachieve", 0, -2, ConfigItems.itemShrinkray, ingotAchieve).registerStat();

@@ -6,6 +6,7 @@ import net.minecraft.event.HoverEvent;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
+import steamcraft.common.blocks.tiles.BlockIntake;
 import steamcraft.common.blocks.tiles.BlockSteamBoiler;
 import steamcraft.common.config.Config;
 import steamcraft.common.config.ConfigAchievements;
@@ -35,6 +36,8 @@ public class EventHandlerFML
 			event.player.addStat(ConfigAchievements.shrinkrayAchieve, 1);
 		else if (craftingBlock instanceof BlockSteamBoiler)
 			event.player.addStat(ConfigAchievements.boilerAchieve, 1);
+		else if (craftingBlock instanceof BlockIntake)
+			event.player.addStat(ConfigAchievements.intakeAchieve, 1);
 		else if (event.crafting.getItem() instanceof ItemSheet)
 			event.player.addStat(ConfigAchievements.sheetAchieve, 1);
 	}
