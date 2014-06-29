@@ -1,14 +1,14 @@
 package steamcraft.common.lib.events;
 
+import net.minecraft.block.Block;
 import net.minecraft.event.ClickEvent;
 import net.minecraft.event.HoverEvent;
-import net.minecraft.item.ItemStack;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
+import steamcraft.common.blocks.tiles.BlockSteamBoiler;
 import steamcraft.common.config.Config;
 import steamcraft.common.config.ConfigAchievements;
-import steamcraft.common.config.ConfigBlocks;
 import steamcraft.common.items.ItemIngot;
 import steamcraft.common.items.ItemRayGun;
 import steamcraft.common.items.ItemSheet;
@@ -27,11 +27,13 @@ public class EventHandlerFML
 	@SubscribeEvent
 	public void onItemCrafted(PlayerEvent.ItemCraftedEvent event)
 	{
+		Block craftingBlock = Block.getBlockFromItem(event.crafting.getItem());
+
 		if (event.crafting.getItem() instanceof ItemRayGun)
 			event.player.addStat(ConfigAchievements.raygunAchieve, 1);
 		else if (event.crafting.getItem() instanceof ItemShrinkray)
 			event.player.addStat(ConfigAchievements.shrinkrayAchieve, 1);
-		else if (event.crafting == new ItemStack(ConfigBlocks.blockSteamBoiler))
+		else if (craftingBlock instanceof BlockSteamBoiler)
 			event.player.addStat(ConfigAchievements.boilerAchieve, 1);
 		else if (event.crafting.getItem() instanceof ItemSheet)
 			event.player.addStat(ConfigAchievements.sheetAchieve, 1);

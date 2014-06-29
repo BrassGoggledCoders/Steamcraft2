@@ -24,22 +24,17 @@ public class ConfigAchievements
 	 */
 	public static void init()
 	{
-		raygunAchieve = new Achievement("achievement.raygun", "raygunachieve", 0, 0, ConfigItems.itemRayGun, null).registerStat()
-				.initIndependentStat();
-		shrinkrayAchieve = new Achievement("achievement.shrinkray", "shrinkrayachieve", 0, 2, ConfigItems.itemShrinkray, null).registerStat()
-				.initIndependentStat();
-		boilerAchieve = new Achievement("achievement.boiler", "boilerachieve", 0, 4, ConfigBlocks.blockSteamBoiler, null).registerStat()
-				.initIndependentStat();
+		ingotAchieve = new Achievement("achievement.ingot", "ingotachieve", 0, 0, ConfigItems.itemIngot, null).registerStat().initIndependentStat();
+		sheetAchieve = new Achievement("achievement.sheet", "sheetachieve", 2, 0, ConfigItems.itemSheet, ingotAchieve).registerStat();
+		boilerAchieve = new Achievement("achievement.boiler", "boilerachieve", 4, 0, ConfigBlocks.blockSteamBoiler, sheetAchieve).registerStat()/*.setSpecial()*/;
+
+		raygunAchieve = new Achievement("achievement.raygun", "raygunachieve", 0, 2, ConfigItems.itemRayGun, ingotAchieve).registerStat();
+		shrinkrayAchieve = new Achievement("achievement.shrinkray", "shrinkrayachieve", 0, -2, ConfigItems.itemShrinkray, ingotAchieve).registerStat();
 		// oreAchieve = new Achievement("achievement.ore", "oreachieve", 0, 6,
 		// ConfigBlocks.blockCustomOre,
 		// null).registerStat().initIndependentStat();
-		ingotAchieve = new Achievement("achievement.ingot", "ingotachieve", 0, 8, ConfigItems.itemIngot, null).registerStat().initIndependentStat();
-		sheetAchieve = new Achievement("achievement.sheet", "sheetachieve", 0, 10, ConfigItems.itemSheet, null).registerStat().initIndependentStat();
 
-		sc2AchievePage = new AchievementPage("Steamcraft 2", raygunAchieve, shrinkrayAchieve, boilerAchieve, /*
-																											 * oreAchieve
-																											 * ,
-																											 */ingotAchieve, sheetAchieve);
+		sc2AchievePage = new AchievementPage("Steamcraft 2", raygunAchieve, shrinkrayAchieve, boilerAchieve, ingotAchieve, sheetAchieve);
 		AchievementPage.registerAchievementPage(sc2AchievePage);
 	}
 
