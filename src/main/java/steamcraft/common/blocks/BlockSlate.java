@@ -102,7 +102,7 @@ public class BlockSlate extends BaseBlock
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(final Item item, final CreativeTabs tab, final List l)
 	{
-		for (int var4 = 0; var4 < 8; ++var4)
+		for (int var4 = 0; var4 < icon.length; ++var4)
 			l.add(new ItemStack(ConfigBlocks.blockSlate, 1, var4));
 	}
 	@Override
