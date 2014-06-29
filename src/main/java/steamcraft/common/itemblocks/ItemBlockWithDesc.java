@@ -39,7 +39,7 @@ public class ItemBlockWithDesc extends ItemBlock
 
 	public void getWrappedDesc(List<String> list)
 	{
-		String[] wrappedDesc = StringUtils.wrap(StatCollector.translateToLocal(getUnlocalizedName() + ".desc"), 30);
+		String[] wrappedDesc = StringUtils.wrap(StatCollector.translateToLocal(getUnlocalizedName() + ".desc"), 35);
 		for (String element : wrappedDesc)
 			list.add(element.trim());
 	}
