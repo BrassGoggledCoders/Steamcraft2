@@ -20,7 +20,7 @@ import net.minecraft.world.IBlockAccess;
 
 import org.lwjgl.opengl.GL11;
 
-import steamcraft.common.config.ConfigBlocks;
+import steamcraft.client.lib.RenderIDs;
 import steamcraft.common.tiles.TileCastIronLamp;
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 
@@ -58,6 +58,6 @@ public class BlockCastIronLampRenderer implements ISimpleBlockRenderingHandler
 	@Override
 	public int getRenderId()
 	{
-		return ConfigBlocks.blockCastIronLampRI;
+		return RenderIDs.blockCastIronLampRI;
 	}
 }

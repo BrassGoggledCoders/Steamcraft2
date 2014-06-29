@@ -24,6 +24,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import steamcraft.client.lib.RenderIDs;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.config.ConfigBlocks;
 import steamcraft.common.tiles.TileCastIronLamp;
@@ -33,7 +34,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 // TODO: Auto-generated Javadoc
 /**
  * The Class BlockCastIronLamp.
- * 
+ *
  * @author Surseance (Johnny Eatmon)
  */
 public class BlockCastIronLamp extends BlockContainer
@@ -47,7 +48,7 @@ public class BlockCastIronLamp extends BlockContainer
 
 	/**
 	 * Instantiates a new block cast iron lamp.
-	 * 
+	 *
 	 * @param flag
 	 *            the flag
 	 */
@@ -72,7 +73,7 @@ public class BlockCastIronLamp extends BlockContainer
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.minecraft.block.ITileEntityProvider#createNewTileEntity(net.minecraft
 	 * .world.World, int)
@@ -85,7 +86,7 @@ public class BlockCastIronLamp extends BlockContainer
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.minecraft.block.Block#shouldSideBeRendered(net.minecraft.world.
 	 * IBlockAccess, int, int, int, int)
 	 */
@@ -97,7 +98,7 @@ public class BlockCastIronLamp extends BlockContainer
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.minecraft.block.Block#tickRate(net.minecraft.world.World)
 	 */
 	@Override
@@ -108,7 +109,7 @@ public class BlockCastIronLamp extends BlockContainer
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.minecraft.block.Block#getCollisionBoundingBoxFromPool(net.minecraft
 	 * .world.World, int, int, int)
@@ -121,7 +122,7 @@ public class BlockCastIronLamp extends BlockContainer
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.minecraft.block.Block#getSelectedBoundingBoxFromPool(net.minecraft
 	 * .world.World, int, int, int)
@@ -135,18 +136,18 @@ public class BlockCastIronLamp extends BlockContainer
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.minecraft.block.Block#getRenderType()
 	 */
 	@Override
 	public int getRenderType()
 	{
-		return ConfigBlocks.blockCastIronLampRI;
+		return RenderIDs.blockCastIronLampRI;
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.minecraft.block.Block#renderAsNormalBlock()
 	 */
 	@Override
@@ -157,7 +158,7 @@ public class BlockCastIronLamp extends BlockContainer
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.minecraft.block.Block#isOpaqueCube()
 	 */
 	@Override
@@ -168,7 +169,7 @@ public class BlockCastIronLamp extends BlockContainer
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.minecraft.block.Block#onBlockPlaced(net.minecraft.world.World,
 	 * int, int, int, int, float, float, float, int)
 	 */
@@ -194,7 +195,7 @@ public class BlockCastIronLamp extends BlockContainer
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.minecraft.block.Block#canPlaceBlockAt(net.minecraft.world.World,
 	 * int, int, int)
 	 */
@@ -206,7 +207,7 @@ public class BlockCastIronLamp extends BlockContainer
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.minecraft.block.BlockContainer#onBlockAdded(net.minecraft.world.World
 	 * , int, int, int)
@@ -237,7 +238,7 @@ public class BlockCastIronLamp extends BlockContainer
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.minecraft.block.BlockContainer#breakBlock(net.minecraft.world.World,
 	 * int, int, int, net.minecraft.block.Block, int)
@@ -260,7 +261,7 @@ public class BlockCastIronLamp extends BlockContainer
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.minecraft.block.Block#updateTick(net.minecraft.world.World, int,
 	 * int, int, java.util.Random)
 	 */
@@ -278,7 +279,7 @@ public class BlockCastIronLamp extends BlockContainer
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.minecraft.block.Block#onNeighborBlockChange(net.minecraft.world.World
 	 * , int, int, int, net.minecraft.block.Block)
@@ -322,7 +323,7 @@ public class BlockCastIronLamp extends BlockContainer
 
 	/**
 	 * Drop if cant stay.
-	 * 
+	 *
 	 * @param world
 	 *            the world
 	 * @param x
@@ -348,7 +349,7 @@ public class BlockCastIronLamp extends BlockContainer
 	// @Override
 	/**
 	 * Id dropped.
-	 * 
+	 *
 	 * @param id
 	 *            the id
 	 * @param random
@@ -364,7 +365,7 @@ public class BlockCastIronLamp extends BlockContainer
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.minecraft.block.Block#canProvidePower()
 	 */
 	@Override
@@ -375,7 +376,7 @@ public class BlockCastIronLamp extends BlockContainer
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.minecraft.block.Block#randomDisplayTick(net.minecraft.world.World,
 	 * int, int, int, java.util.Random)

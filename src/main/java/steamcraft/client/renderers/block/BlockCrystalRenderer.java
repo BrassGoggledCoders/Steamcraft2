@@ -20,14 +20,14 @@ import net.minecraft.world.IBlockAccess;
 
 import org.lwjgl.opengl.GL11;
 
-import steamcraft.common.config.ConfigBlocks;
+import steamcraft.client.lib.RenderIDs;
 import steamcraft.common.tiles.TileCrystal;
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 
 // TODO: Auto-generated Javadoc
 /**
  * The Class BlockCrystalRenderer.
- * 
+ *
  * @author Surseance (Johnny Eatmon)
  */
 public class BlockCrystalRenderer implements ISimpleBlockRenderingHandler
@@ -58,6 +58,6 @@ public class BlockCrystalRenderer implements ISimpleBlockRenderingHandler
 	@Override
 	public int getRenderId()
 	{
-		return ConfigBlocks.blockCrystalRI;
+		return RenderIDs.blockCrystalRI;
 	}
 }

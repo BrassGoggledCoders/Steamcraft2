@@ -9,7 +9,7 @@
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
  *
- * File created @ [Apr 8, 2014, 3:25:48 PM]
+ * File created @ [3/15/14, 14:11]
  */
 package steamcraft.client.renderers.block;
 
@@ -21,29 +21,29 @@ import net.minecraft.world.IBlockAccess;
 import org.lwjgl.opengl.GL11;
 
 import steamcraft.client.lib.RenderIDs;
-import steamcraft.common.tiles.TileLightningRod;
+import steamcraft.common.tiles.TileCopperPipe;
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 
+// TODO: Auto-generated Javadoc
 /**
- * The Class BlockLightningRodRenderer.
- * 
+ * The Class BlockCrystalRenderer.
+ *
  * @author Surseance (Johnny Eatmon)
  */
-public class BlockLightningRodRenderer implements ISimpleBlockRenderingHandler
+public class BlockCopperPipeRenderer implements ISimpleBlockRenderingHandler
 {
 	@Override
 	public void renderInventoryBlock(final Block block, final int metadata, final int modelID, final RenderBlocks renderer)
 	{
 		GL11.glRotatef(90.0F, 0.0F, 1.0F, 0.0F);
 		GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
-		final TileLightningRod te = new TileLightningRod();
+		final TileCopperPipe te = new TileCopperPipe();
 		TileEntityRendererDispatcher.instance.renderTileEntityAt(te, 0.0D, 0.0D, 0.0D, 0.0F);
 		GL11.glEnable(32826);
 	}
 
 	@Override
-	public boolean renderWorldBlock(final IBlockAccess world, final int x, final int y, final int z, final Block block, final int modelID,
-			final RenderBlocks renderer)
+	public boolean renderWorldBlock(final IBlockAccess world, final int x, final int y, final int z, final Block block, final int modelID, final RenderBlocks renderer)
 	{
 		return true;
 	}
@@ -57,6 +57,6 @@ public class BlockLightningRodRenderer implements ISimpleBlockRenderingHandler
 	@Override
 	public int getRenderId()
 	{
-		return RenderIDs.blockLightningRodRI;
+		return RenderIDs.blockCopperPipeRI;
 	}
 }

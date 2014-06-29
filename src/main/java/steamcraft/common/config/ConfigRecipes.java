@@ -224,18 +224,18 @@ public class ConfigRecipes
 
 	private static void initBlockRecipes()
 	{
-		GameRegistry.addShapedRecipe(new ItemStack(ConfigBlocks.blockSteamBoiler), new Object[] { "PPP", "PFP", "PPP", 'F', Blocks.furnace, 'P',
-				new ItemStack(ConfigItems.itemSheet, 1, 4) });
+		GameRegistry.addShapedRecipe(new ItemStack(ConfigBlocks.blockSteamBoiler), new Object[] { "PPP", "TCT", "PFP", 'F', Blocks.furnace, 'P',
+				new ItemStack(ConfigItems.itemSheet, 1, 4), 'T', ConfigBlocks.blockCopperTank, 'C', ConfigBlocks.blockCopperPipe });
 		GameRegistry.addShapedRecipe(new ItemStack(ConfigBlocks.blockIntake), new Object[] { "PGP", "GBG", "PGP", 'G',
 				new ItemStack(ConfigItems.itemMachinePart, 1, 5), 'P', new ItemStack(ConfigItems.itemSheet, 1, 4), 'B', Items.bucket });
+		GameRegistry.addShapedRecipe(new ItemStack(ConfigBlocks.blockBloomery), new Object[]{"N N", "NFN", "NNN", 'F', Blocks.furnace, 'N', Blocks.nether_brick});
+		GameRegistry.addShapedRecipe(new ItemStack(ConfigBlocks.blockCopperPipe), new Object[]{"PPP", "   ", "PPP", 'P', new ItemStack(ConfigItems.itemSheet, 1, 1)});
+		GameRegistry.addShapedRecipe(new ItemStack(ConfigBlocks.blockCopperTank), new Object[]{"PPP", "P P", "PPP", 'P', new ItemStack(ConfigItems.itemSheet, 1, 1)});
+
 		GameRegistry.addShapedRecipe(new ItemStack(ConfigBlocks.blockUranium), new Object[] { "UUU", "UUU", "UUU", 'U',
 				new ItemStack(ConfigItems.itemResource, 1, 4) });
 		GameRegistry.addShapedRecipe(new ItemStack(ConfigBlocks.blockEtherium), new Object[] { "UUU", "UUU", "UUU", 'U',
 			new ItemStack(ConfigItems.itemResource, 1, 0) });
-		// GameRegistry.addShapedRecipe(new
-		// ItemStack(ConfigBlocks.blockCopperTank), new
-		// Object[]{"PPP","P P","PPP", 'P', new ItemStack(ConfigItems.itemSheet,
-		// 1, 1)});
 		GameRegistry.addRecipe(new ItemStack(ConfigBlocks.blockCastIronFence), new Object[]{"RRR", "RRR", 'R', new ItemStack(ConfigItems.itemMachinePart, 1, 9)});
 		GameRegistry.addRecipe(new ItemStack(ConfigBlocks.blockCastIronGate), new Object[]{"RIR", "RIR", 'R', new ItemStack(ConfigItems.itemMachinePart, 1, 9), 'I', new ItemStack(ConfigItems.itemIngot, 1, 7)});
 	}

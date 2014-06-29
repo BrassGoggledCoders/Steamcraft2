@@ -18,17 +18,20 @@ import java.awt.Color;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
+import steamcraft.client.lib.RenderIDs;
+import steamcraft.client.renderers.block.BlockCopperPipeRenderer;
 import steamcraft.client.renderers.block.BlockCrystalRenderer;
 import steamcraft.client.renderers.entity.RenderBullet;
 import steamcraft.client.renderers.item.ModelBrassWings;
 import steamcraft.client.renderers.item.ModelJetpack;
 import steamcraft.client.renderers.item.ModelWingpack;
+import steamcraft.client.renderers.tile.TileCopperPipeRenderer;
 import steamcraft.client.renderers.tile.TileCrystalRenderer;
 import steamcraft.common.CommonProxy;
 import steamcraft.common.KeyBindings;
-import steamcraft.common.config.ConfigBlocks;
 import steamcraft.common.entities.projectile.EntityBullet;
 import steamcraft.common.lib.Utils;
+import steamcraft.common.tiles.TileCopperPipe;
 import steamcraft.common.tiles.TileCrystal;
 import boilerplate.client.fx.FXRaygun;
 import boilerplate.client.fx.FXSmoke;
@@ -42,7 +45,7 @@ import cpw.mods.fml.client.registry.RenderingRegistry;
 
 /**
  * The Class ClientProxy.
- * 
+ *
  * @author Surseance (Johnny Eatmon)
  */
 public class ClientProxy extends CommonProxy
@@ -75,9 +78,13 @@ public class ClientProxy extends CommonProxy
 
 	private void registerBlockRenderers()
 	{
+		//Copper Pipe
+		RenderIDs.blockCopperPipeRI = RenderingRegistry.getNextAvailableRenderId();
+		ClientRegistry.bindTileEntitySpecialRenderer(TileCopperPipe.class, new TileCopperPipeRenderer());
+		RenderingRegistry.registerBlockHandler(new BlockCopperPipeRenderer());
+
 		// Crystal
-		ClientRegistry.bindTileEntitySpecialRenderer(TileCrystal.class, new TileCrystalRenderer());
-		ConfigBlocks.blockCrystalRI = RenderingRegistry.getNextAvailableRenderId();
+		RenderIDs.blockCrystalRI = RenderingRegistry.getNextAvailableRenderId();
 		ClientRegistry.bindTileEntitySpecialRenderer(TileCrystal.class, new TileCrystalRenderer());
 		RenderingRegistry.registerBlockHandler(new BlockCrystalRenderer());
 
@@ -101,9 +108,9 @@ public class ClientProxy extends CommonProxy
 	 * @Override public Object getClientGuiElement(int ID, EntityPlayer player,
 	 * World world, int x, int y, int z) { if ((world instanceof WorldClient)) {
 	 * switch (ID) {
-	 * 
+	 *
 	 * } }
-	 * 
+	 *
 	 * return null; }
 	 */
 	@Override
@@ -169,26 +176,26 @@ public class ClientProxy extends CommonProxy
 	/*
 	 * private static ModelBrassMonocle chest = new ModelBrassMonocle(1.0F);
 	 * private static ModelBrassMonocle legs = new ModelBrassMonocle(0.5F);
-	 * 
+	 *
 	 * @Override public ModelBiped getMonocleArmorModel(int id) { switch (id) {
 	 * case 0: return chest; case 1: return legs; default: break; }
-	 * 
+	 *
 	 * return chest; // Default, if the wrong ID is passed }
-	 * 
+	 *
 	 * /* private static ModelBrassWings chest1 = new ModelBrassWings(1.0F);
 	 * private static ModelBrassWings legs1 = new ModelBrassWings(0.5F);
-	 * 
+	 *
 	 * @Override public ModelBiped getWingsArmorModel(int id) { switch (id) {
 	 * case 0: return chest1; case 1: return legs1; default: break; }
-	 * 
+	 *
 	 * return chest1; // Default, if the wrong ID is passed }
-	 * 
+	 *
 	 * private static ModelCape chest2 = new ModelCape(1.0F); private static
 	 * ModelCape legs2 = new ModelCape(0.5F);
-	 * 
+	 *
 	 * @Override public ModelBiped getCapeArmorModel(int id) { switch(id) { case
 	 * 0: return chest2; case 1: return legs2; default: break; }
-	 * 
+	 *
 	 * return chest2; // Default, if the wrong ID is passed }
 	 */
 

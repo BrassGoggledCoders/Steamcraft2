@@ -20,14 +20,14 @@ import net.minecraft.world.IBlockAccess;
 
 import org.lwjgl.opengl.GL11;
 
-import steamcraft.common.config.ConfigBlocks;
+import steamcraft.client.lib.RenderIDs;
 import steamcraft.common.tiles.TileDropHammer;
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 
 // TODO: Auto-generated Javadoc
 /**
  * The Class BlockHatchRenderer.
- * 
+ *
  * @author warlordjones
  */
 public class BlockDropHammerRenderer implements ISimpleBlockRenderingHandler
@@ -52,7 +52,7 @@ public class BlockDropHammerRenderer implements ISimpleBlockRenderingHandler
 	@Override
 	public int getRenderId()
 	{
-		return ConfigBlocks.blockDropHammerRI;
+		return RenderIDs.blockDropHammerRI;
 	}
 
 	@Override

@@ -136,10 +136,6 @@ public class ConfigBlocks
 	/** The block intake. */
 	public static Block blockIntake, blockCopperPipe, blockArmorEditor, blockTurbine, blockCharger, blockBloomery;
 
-	// Render IDs
-	/** The block lightning rod ri. */
-	public static int blockCastIronLampRI, blockCrystalRI, blockDropHammerRI, blockHatchRI, blockLightningRodRI;
-
 	/**
 	 * Inits the.
 	 */

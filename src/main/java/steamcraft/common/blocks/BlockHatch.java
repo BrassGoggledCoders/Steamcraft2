@@ -1,5 +1,5 @@
 /**
- * This class was created by <Surseance> or his SC2 development team. 
+ * This class was created by <Surseance> or his SC2 development team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -18,14 +18,14 @@ import net.minecraft.block.material.Material;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
+import steamcraft.client.lib.RenderIDs;
 import steamcraft.common.Steamcraft;
-import steamcraft.common.config.ConfigBlocks;
 import steamcraft.common.tiles.TileHatch;
 
 // TODO: Auto-generated Javadoc
 /**
  * The Class BlockHatch.
- * 
+ *
  * @author warlordjones
  */
 public class BlockHatch extends BlockContainer
@@ -36,7 +36,7 @@ public class BlockHatch extends BlockContainer
 
 	/**
 	 * Instantiates a new block hatch.
-	 * 
+	 *
 	 * @param par1
 	 *            the par1
 	 * @param mat
@@ -52,7 +52,7 @@ public class BlockHatch extends BlockContainer
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.minecraft.block.ITileEntityProvider#createNewTileEntity(net.minecraft
 	 * .world.World, int)
@@ -65,18 +65,18 @@ public class BlockHatch extends BlockContainer
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.minecraft.block.Block#getRenderType()
 	 */
 	@Override
 	public int getRenderType()
 	{
-		return ConfigBlocks.blockHatchRI;
+		return RenderIDs.blockHatchRI;
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.minecraft.block.Block#isOpaqueCube()
 	 */
 	@Override
@@ -87,7 +87,7 @@ public class BlockHatch extends BlockContainer
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.minecraft.block.Block#renderAsNormalBlock()
 	 */
 	@Override
