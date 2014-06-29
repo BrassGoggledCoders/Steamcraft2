@@ -123,7 +123,7 @@ public class TileBloomery extends TileEntityMachine
 
 	private boolean canSmelt()
 	{
-		if (this.inventory[1] != null || this.inventory[2] != null)
+		if (this.inventory[1] != null && this.inventory[2] != null)
 		{
 			ItemStack result = this.getRecipeResult();
 			

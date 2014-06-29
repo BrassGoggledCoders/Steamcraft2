@@ -112,7 +112,7 @@ public class ContainerBloomery extends Container
 	}
 
 	@Override
-	public ItemStack transferStackInSlot(EntityPlayer par1EntityPlayer, int par2)
+	public ItemStack transferStackInSlot(EntityPlayer player, int par2)
 	{
 		ItemStack itemstack = null;
 		Slot slot = (Slot) this.inventorySlots.get(par2);
@@ -124,7 +124,7 @@ public class ContainerBloomery extends Container
 
 			if (par2 == 3)
 			{
-				if (!this.mergeItemStack(itemstack1, 3, 39, true))
+				if (!this.mergeItemStack(itemstack1, 4, 40, true))
 					return null;
 
 				slot.onSlotChange(itemstack1, itemstack);
@@ -151,20 +151,14 @@ public class ContainerBloomery extends Container
 			}
 
 			if (itemstack1.stackSize == 0)
-			{
 				slot.putStack((ItemStack) null);
-			}
 			else
-			{
 				slot.onSlotChanged();
-			}
 
 			if (itemstack1.stackSize == itemstack.stackSize)
-			{
 				return null;
-			}
 
-			slot.onPickupFromSlot(par1EntityPlayer, itemstack1);
+			slot.onPickupFromSlot(player, itemstack1);
 		}
 
 		return itemstack;
