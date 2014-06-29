@@ -54,7 +54,6 @@ import steamcraft.common.tiles.TileDropHammer;
 import steamcraft.common.tiles.TileIntake;
 import steamcraft.common.tiles.TileSteamBoiler;
 import steamcraft.common.tiles.TileTurbine;
-import boilerplate.common.ItemBlockWithDesc;
 import boilerplate.common.RegistryHelper;
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -211,14 +210,12 @@ public class ConfigBlocks
 		// "BlockDropHammerFrame");
 
 		RegistryHelper.registerContainerBlock(blockCrystal, TileCrystal.class, "BlockCrystal");
-		RegistryHelper.registerContainerBlock(blockSteamBoiler, TileSteamBoiler.class, "BlockSteamBoiler");
-		GameRegistry.registerBlock(blockIntake, ItemBlockWithDesc.class, "BlockIntake");
-		GameRegistry.registerTileEntity(TileIntake.class, "TEIntake");
+		RegistryHelper.registerContainerBlockWithDesc(blockSteamBoiler, TileSteamBoiler.class, "BlockSteamBoiler");
+		RegistryHelper.registerContainerBlockWithDesc(blockIntake,TileIntake.class, "BlockIntake");
 		RegistryHelper.registerContainerBlock(blockArmorEditor, TileArmorEditor.class, "BlockArmorEditor");
 		RegistryHelper.registerContainerBlock(blockDropHammerAnvil, TileDropHammer.class, "BlockDropHammerAnvil");
 		RegistryHelper.registerContainerBlock(blockCopperPipe, TileCopperPipe.class, "BlockCopperPipe");
-		GameRegistry.registerBlock(blockBloomery, ItemBlockWithDesc.class, "BlockBloomery");
-		GameRegistry.registerTileEntity(TileBloomery.class, "TEBloomery");
+		RegistryHelper.registerContainerBlockWithDesc(blockBloomery, TileBloomery.class, "BlockBloomery");
 		GameRegistry.registerBlock(blockCopperTank, "BlockCopperTank");
 		//GameRegistry.registerBlock(blockCopperWire, "BlockCopperWire");
 		RegistryHelper.registerContainerBlock(blockTurbine, TileTurbine.class, "BlockTurbine");
