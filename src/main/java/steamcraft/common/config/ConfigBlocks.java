@@ -46,7 +46,6 @@ import steamcraft.common.itemblocks.ItemBlockCustomOre;
 import steamcraft.common.itemblocks.ItemBlockEngravedSolid;
 import steamcraft.common.itemblocks.ItemBlockMetal;
 import steamcraft.common.itemblocks.ItemBlockSlate;
-import steamcraft.common.itemblocks.ItemBlockWithDesc;
 import steamcraft.common.tiles.TileArmorEditor;
 import steamcraft.common.tiles.TileBloomery;
 import steamcraft.common.tiles.TileCopperPipe;
@@ -55,6 +54,7 @@ import steamcraft.common.tiles.TileDropHammer;
 import steamcraft.common.tiles.TileIntake;
 import steamcraft.common.tiles.TileSteamBoiler;
 import steamcraft.common.tiles.TileTurbine;
+import boilerplate.common.ItemBlockWithDesc;
 import boilerplate.common.RegistryHelper;
 import cpw.mods.fml.common.registry.GameRegistry;
 
