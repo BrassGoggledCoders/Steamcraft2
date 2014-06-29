@@ -66,6 +66,7 @@ tile.blockCrystal.name=Etherium Crystal
 tile.blockCopperTank.name=Copper Tank
 tile.blockCopperPipe.name=Copper Pipe
 tile.blockBloomery.name=Bloomery
+tile.blockBloomery.desc=Smelts two iron ore into a steel ingot. Due to the amount of carbon required to create steel, the fuel slot must contain at least four coal.
 tile.blockSteamBoiler.name=Steam Boiler
 tile.copperWire.name=Copper Wire
 tile.lightningRod.name=Lightning Rod
