@@ -238,8 +238,6 @@ public class BlockBloomery extends BlockContainerMod
 	@Override
 	public void breakBlock(World par1World, int par2, int par3, int par4, Block block, int par6)
 	{
-		if (!keepInventory)
-		{
 			TileBloomery var7 = (TileBloomery) par1World.getTileEntity(par2, par3, par4);
 
 			if (var7 != null)
@@ -275,7 +273,6 @@ public class BlockBloomery extends BlockContainerMod
 						}
 					}
 				}
-		}
 
 		super.breakBlock(par1World, par2, par3, par4, block, par6);
 	}

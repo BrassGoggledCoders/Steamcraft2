@@ -12,12 +12,11 @@ import net.minecraft.item.ItemHoe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.item.ItemTool;
-import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import steamcraft.common.blocks.tiles.BlockBloomery;
-import boilerplate.steamapi.machines.BloomeryRecipes;
+import steamcraft.common.config.ConfigItems;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -280,13 +279,15 @@ public class TileBloomery extends TileEntity implements IInventory
 	     */
 	    private boolean canSmelt()
 	    {
-	        if (this.bloomeryItemStacks[2] == null || this.bloomeryItemStacks[0] == null)
+	        if (this.bloomeryItemStacks[0] == null || this.bloomeryItemStacks[1] == null || this.bloomeryItemStacks[2] == null)
 	        {
 	            return false;
 	        }
 	        else
 	        {
-	        	ItemStack itemstack = FurnaceRecipes.smelting().getSmeltingResult(this.bloomeryItemStacks[2]);
+	        	ItemStack itemstack = BloomeryRecipes.smelting().getSmeltingResult(this.bloomeryItemStacks[1]);
+	            ItemStack[] inputs = BloomeryRecipes.smelting().getSmeltingInputs(BloomeryRecipes.smelting().getSmeltingResult(itemstack));
+	            if(this.bloomeryItemStacks[1] == inputs[0] && this.bloomeryItemStacks[2] == inputs[1]) return true;
 	            if (itemstack == null) return false;
 	            if (this.bloomeryItemStacks[3] == null) return true;
 	            if (!this.bloomeryItemStacks[3].isItemEqual(itemstack)) return false;
@@ -302,7 +303,7 @@ public class TileBloomery extends TileEntity implements IInventory
 	    {
 	        if (this.canSmelt())
 	        {
-	            ItemStack itemstack = FurnaceRecipes.smelting().getSmeltingResult(this.bloomeryItemStacks[2]);
+	            ItemStack itemstack = BloomeryRecipes.smelting().getSmeltingResult(this.bloomeryItemStacks[1]);
 
 	            if (this.bloomeryItemStacks[3] == null)
 	            {
@@ -312,13 +313,18 @@ public class TileBloomery extends TileEntity implements IInventory
 	            {
 	                this.bloomeryItemStacks[3].stackSize += itemstack.stackSize; // Forge BugFix: Results may have multiple items
 	            }
+	            --this.bloomeryItemStacks[1].stackSize;
 
-	            --this.bloomeryItemStacks[0].stackSize;
-
-	            if (this.bloomeryItemStacks[0].stackSize <= 0)
+	            if (this.bloomeryItemStacks[1].stackSize <= 0)
 	            {
-	                this.bloomeryItemStacks[0] = null;
+	                this.bloomeryItemStacks[1] = null;
 	            }
+	            --this.bloomeryItemStacks[2].stackSize;
+
+		        if (this.bloomeryItemStacks[2].stackSize <= 0)
+		        {
+		           this.bloomeryItemStacks[2] = null;
+		        }
 	        }
 	    }
 
