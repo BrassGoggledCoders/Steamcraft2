@@ -28,18 +28,19 @@ import cpw.mods.fml.relauncher.SideOnly;
 // TODO: Auto-generated Javadoc
 /**
  * The Class ItemIngot.
- * 
+ *
  * @author warlordjones
  */
 public class ItemIngot extends BaseItemWithMetadata
 {
+	boolean descNeedsShift = false;
 	// @SideOnly(Side.CLIENT)
 	/** The item icon. */
 	IIcon[] itemIcon = new IIcon[8];
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.minecraft.item.Item#registerIcons(net.minecraft.client.renderer.texture
 	 * .IIconRegister)
@@ -64,7 +65,7 @@ public class ItemIngot extends BaseItemWithMetadata
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.minecraft.item.Item#getSubItems(net.minecraft.item.Item,
 	 * net.minecraft.creativetab.CreativeTabs, java.util.List)
 	 */
@@ -79,7 +80,7 @@ public class ItemIngot extends BaseItemWithMetadata
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.minecraft.item.Item#getIconFromDamage(int)
 	 */
 	@Override
