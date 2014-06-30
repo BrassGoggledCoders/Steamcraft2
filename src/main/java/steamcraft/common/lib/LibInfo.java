@@ -19,9 +19,9 @@ import java.util.List;
 // TODO: Auto-generated Javadoc
 /**
  * A neat, tidy class for holding various bits of mod information.
- * 
+ *
  * @author Surseance (Johnny Eatmon)
- * 
+ *
  */
 public class LibInfo
 {
@@ -33,7 +33,7 @@ public class LibInfo
 	public static final String NAME = "Steamcraft 2";
 
 	/** The Constant VERSION. */
-	public static final String VERSION = "Beta R1"; // major, minor, bugfix
+	public static final String VERSION = "Beta R1.1"; // major, minor, bugfix
 
 	public static final List<String> AUTHORS = Arrays.asList("Surseance", "decebaldecebal", "warlordjones", "Falkok15", "wierdude1999",
 			"seanvanpelt2 & others");
