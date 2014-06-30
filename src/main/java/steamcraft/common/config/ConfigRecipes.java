@@ -202,6 +202,7 @@ public class ConfigRecipes
 		RecipeUtils.addToolSet(new ItemStack(ConfigItems.itemResource, 1, 2), new ItemStack[] { new ItemStack(ConfigItems.pickaxeObsidian),
 				new ItemStack(ConfigItems.shovelObsidian),new ItemStack(ConfigItems.axeObsidian),
 				new ItemStack(ConfigItems.hoeObsidian), new ItemStack(ConfigItems.swordObsidian) });
+		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.itemSpanner), new Object[]{"I I", " I ", " I ", 'I', new ItemStack(ConfigItems.itemIngot, 1, 5)});
 	}
 
 	private static void initArmorRecipes()

@@ -19,6 +19,7 @@ import java.util.logging.Level;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.MinecraftForge;
 import steamcraft.client.gui.GuiHandler;
+import steamcraft.common.compat.CompatabilityLayer;
 import steamcraft.common.config.Config;
 import steamcraft.common.config.ConfigAchievements;
 import steamcraft.common.config.ConfigBlocks;

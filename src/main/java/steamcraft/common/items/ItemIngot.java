@@ -33,7 +33,6 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 public class ItemIngot extends BaseItemWithMetadata
 {
-	boolean descNeedsShift = false;
 	// @SideOnly(Side.CLIENT)
 	/** The item icon. */
 	IIcon[] itemIcon = new IIcon[8];

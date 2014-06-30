@@ -197,7 +197,7 @@ item.itemHoeObsidian.name=Obsidian Hoe
 item.itemShovelObsidian.name=Obsidian Shovel
 item.itemChisel.name=Chisel
 #item.itemChisel.desc=Right-Click to chisel mineral blocks
-item.spanner.name=Spanner
+item.itemSpanner.name=Spanner
 item.itemHammer.name=Hammer
 item.itemHammer.desc=Used for crushing ores and flattening plates
 

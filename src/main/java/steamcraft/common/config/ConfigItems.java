@@ -33,6 +33,7 @@ import steamcraft.common.items.ItemRayGun;
 import steamcraft.common.items.ItemResource;
 import steamcraft.common.items.ItemSheet;
 import steamcraft.common.items.ItemShrinkray;
+import steamcraft.common.items.ItemSpanner;
 import steamcraft.common.items.ItemTeaSeed;
 import steamcraft.common.items.ItemWatch;
 import steamcraft.common.items.armor.ItemBrassArmor;
@@ -158,8 +159,7 @@ public class ConfigItems
 	public static Item itemRayGun, itemShrinkray;
 
 	// Other
-	public static Item chisel;
-	public static Item spanner;
+	public static Item itemSpanner;
 	public static Item itemHammer;
 	public static Item itemMatch;
 
@@ -418,8 +418,8 @@ public class ConfigItems
 		itemHammer = new ItemHammer().setUnlocalizedName("itemHammer");
 		registerItem(itemHammer, "ItemHammer");
 
-		spanner = new ItemChisel().setUnlocalizedName("spanner");
-		registerItem(spanner, "ItemSpanner");
+		itemSpanner = new ItemSpanner().setUnlocalizedName("itemSpanner");
+		registerItem(itemSpanner, "ItemSpanner");
 
 		itemMatch = new ItemMatch().setUnlocalizedName("itemMatch");
 		registerItem(itemMatch, "ItemMatch");

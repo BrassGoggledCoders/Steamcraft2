@@ -1,7 +1,7 @@
 /*
  *
  */
-package steamcraft.common;
+package steamcraft.common.compat;
 
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
