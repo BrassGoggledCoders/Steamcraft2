@@ -81,60 +81,30 @@ public class ConfigItems
 	public static Item brassGoggles;
 
 	// Etherium
-	public static Item helmetEtherium;
-	public static Item chestplateEtherium;
-	public static Item legsEtherium;
-	public static Item bootsEtherium;
+	public static Item helmetEtherium, chestplateEtherium, legsEtherium, bootsEtherium;
 
 	// Obsidian
-	public static Item helmetObsidian;
-	public static Item chestplateObsidian;
-	public static Item legsObsidian;
-	public static Item bootsObsidian;
+	public static Item helmetObsidian, chestplateObsidian, legsObsidian, bootsObsidian;
 
 	// Drills
-	public static Item drillCore;
-	public static Item drillBase;
-	public static Item drillWood;
-	public static Item drillStone;
-	public static Item drillIron;
-	public static Item drillDiamond;
-	public static Item drillGold;
-	public static Item drillSteam;
-	public static Item drillEtherium;
-	public static Item drillObsidian;
+	public static Item drillCore, drillBase;
+	public static Item drillWood, drillStone, drillIron, drillDiamond, drillGold, drillSteam, drillEtherium, drillObsidian;
 
 	/* Tools */
 
 	// Steam
-	public static Item pickaxeSteam;
-	public static Item swordSteam;
-	public static Item shovelSteam;
-	public static Item axeSteam;
-	public static Item hoeSteam;
+	public static Item pickaxeSteam, swordSteam, shovelSteam, axeSteam, hoeSteam;
 
 	// Etherium
-	public static Item pickaxeEtherium;
-	public static Item swordEtherium;
-	public static Item shovelEtherium;
-	public static Item axeEtherium;
-	public static Item hoeEtherium;
+	public static Item pickaxeEtherium, swordEtherium, shovelEtherium, axeEtherium, hoeEtherium;
 
 	// Obsidian
-	public static Item pickaxeObsidian;
-	public static Item swordObsidian;
-	public static Item shovelObsidian;
-	public static Item axeObsidian;
-	public static Item hoeObsidian;
+	public static Item pickaxeObsidian, swordObsidian, shovelObsidian, axeObsidian, hoeObsidian;
 
 	// Containers
 	public static Item itemCanisterSteam;
 
-	public static Item itemElectricJarSmall;
-	public static Item itemElectricJarMedium;
-	public static Item itemElectricJarLarge;
-	public static Item itemElectricJarHuge;
-	;
+	public static Item itemElectricJarSmall, itemElectricJarMedium, itemElectricJarLarge, itemElectricJarHuge;
 
 	// Guns/Ammo
 	public static Item flintlockMusket, matchlockMusket, percussionCapMusket;
@@ -143,12 +113,9 @@ public class ConfigItems
 
 	public static Item itemMusketBall, itemRifleBullet, itemPercussionCap;
 
-	public static Item itemColdKettle;
-	public static Item itemHotKettle;
-	public static Item itemEmptyKettle;
+	public static Item itemColdKettle, itemHotKettle, itemEmptyKettle;
 
-	public static Item itemEmptyTeacup;
-	public static Item itemFullTeacup;
+	public static Item itemEmptyTeacup, itemFullTeacup;
 
 	public static Item itemBucketSteam;
 

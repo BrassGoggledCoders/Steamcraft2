@@ -66,18 +66,26 @@ import cpw.mods.fml.common.registry.GameRegistry;
  */
 public class ConfigBlocks
 {
-	public static Block blockCustomOre;
-
+	/* Decorative */
 	public static Block blockEngraved, blockEngravedVanilla;
+	
+	public static Block blockCastIronLampI;
+	public static Block blockCastIronLampA;
+	
 
 	public static Block blockCastIronFence, blockCastIronRailing;
+	
+	/* Ores */
+	public static Block blockCustomOre;
+
+
+
 
 	public static Block blockCastIronGate;
 
 	public static Block blockCrystal;
 
-	public static Block blockCastIronLampI;
-	public static Block blockCastIronLampA;
+
 
 	public static Block blockMetal, blockUranium, blockEtherium;
 
