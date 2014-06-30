@@ -25,6 +25,7 @@ import steamcraft.common.Steamcraft;
 import steamcraft.common.config.ConfigBlocks;
 import steamcraft.common.lib.LibInfo;
 import boilerplate.client.fx.FXSmoke;
+import boilerplate.steamapi.IChiselable;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -76,14 +77,6 @@ public class ItemChisel extends BaseItem
 		{
 			world.setBlock(x, y, z, ConfigBlocks.blockEngraved, world.getBlockMetadata(x, y, z), 2);
 		}
-		else if(block == ConfigBlocks.blockUranium)
-		{
-			world.setBlock(x, y, z, ConfigBlocks.blockEngraved, 7, 2);
-		}
-		else if(block == ConfigBlocks.blockEtherium)
-		{
-			world.setBlock(x, y, z, ConfigBlocks.blockEngraved, 8, 2);
-		}
 		else if(block == Blocks.diamond_block)
 		{
 			world.setBlock(x, y, z, ConfigBlocks.blockEngraved, 9, 2);
@@ -103,6 +96,12 @@ public class ItemChisel extends BaseItem
 		else if(block == Blocks.stone)
 		{
 			world.setBlock(x, y, z, ConfigBlocks.blockEngraved, 13, 2);
+		}
+		else if(block instanceof IChiselable)
+		{
+			Block newBlock = ((IChiselable) block).getChiseledVariant();
+			int meta = ((IChiselable) block).getChiseledVariantMeta();
+			world.setBlock(x, y, z, newBlock, meta, 2);
 		}
 
 		Random random = world.rand;
