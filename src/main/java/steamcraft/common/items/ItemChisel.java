@@ -73,35 +73,38 @@ public class ItemChisel extends BaseItem
 	{
 		Block block = world.getBlock(x, y, z);
 
-		if(block == ConfigBlocks.blockMetal)
+		if(block == Blocks.diamond_block)
 		{
-			world.setBlock(x, y, z, ConfigBlocks.blockEngraved, world.getBlockMetadata(x, y, z), 2);
-		}
-		else if(block == Blocks.diamond_block)
-		{
-			world.setBlock(x, y, z, ConfigBlocks.blockEngraved, 9, 2);
+			world.setBlock(x, y, z, ConfigBlocks.blockEngravedVanilla, 0, 2);
 		}
 		else if(block == Blocks.gold_block)
 		{
-			world.setBlock(x, y, z, ConfigBlocks.blockEngraved, 10, 2);
+			world.setBlock(x, y, z, ConfigBlocks.blockEngravedVanilla, 1, 2);
 		}
 		else if(block == Blocks.iron_block)
 		{
-			world.setBlock(x, y, z, ConfigBlocks.blockEngraved, 11, 2);
+			world.setBlock(x, y, z, ConfigBlocks.blockEngravedVanilla, 2, 2);
 		}
 		else if(block == Blocks.lapis_block)
 		{
-			world.setBlock(x, y, z, ConfigBlocks.blockEngraved, 12, 2);
+			world.setBlock(x, y, z, ConfigBlocks.blockEngravedVanilla, 3, 2);
 		}
 		else if(block == Blocks.stone)
 		{
-			world.setBlock(x, y, z, ConfigBlocks.blockEngraved, 13, 2);
+			world.setBlock(x, y, z, ConfigBlocks.blockEngravedVanilla, 4, 2);
 		}
 		else if(block instanceof IChiselable)
 		{
 			Block newBlock = ((IChiselable) block).getChiseledVariant();
 			int meta = ((IChiselable) block).getChiseledVariantMeta();
-			world.setBlock(x, y, z, newBlock, meta, 2);
+			if(meta == -1)
+			{
+				world.setBlock(x, y, z, newBlock, world.getBlockMetadata(x, y, z), 2);
+			}
+			else
+			{
+				world.setBlock(x, y, z, newBlock, meta, 2);
+			}
 		}
 
 		Random random = world.rand;

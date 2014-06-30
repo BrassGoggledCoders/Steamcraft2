@@ -28,6 +28,8 @@ import steamcraft.common.blocks.BlockCastIronRailing;
 import steamcraft.common.blocks.BlockCrystal;
 import steamcraft.common.blocks.BlockCustomOre;
 import steamcraft.common.blocks.BlockEngravedSolid;
+import steamcraft.common.blocks.BlockEngravedVanilla;
+import steamcraft.common.blocks.BlockEtherium;
 import steamcraft.common.blocks.BlockFluidSteam;
 import steamcraft.common.blocks.BlockLamp;
 import steamcraft.common.blocks.BlockMetal;
@@ -44,6 +46,7 @@ import steamcraft.common.blocks.tiles.BlockSteamBoiler;
 import steamcraft.common.blocks.tiles.BlockTurbine;
 import steamcraft.common.itemblocks.ItemBlockCustomOre;
 import steamcraft.common.itemblocks.ItemBlockEngravedSolid;
+import steamcraft.common.itemblocks.ItemBlockEngravedVanilla;
 import steamcraft.common.itemblocks.ItemBlockMetal;
 import steamcraft.common.itemblocks.ItemBlockSlate;
 import steamcraft.common.tiles.TileArmorEditor;
@@ -70,7 +73,7 @@ public class ConfigBlocks
 	public static Block blockCustomOre;
 
 	/** The block engraved. */
-	public static Block blockEngraved;
+	public static Block blockEngraved, blockEngravedVanilla;
 
 	/** The block cast iron fence. */
 	public static Block blockCastIronFence, blockCastIronRailing;
@@ -153,6 +156,7 @@ public class ConfigBlocks
 		blockSlate = new BlockSlate().setBlockName("blockSlate");
 		blockLamp = new BlockLamp();
 		blockEngraved = new BlockEngravedSolid();
+		blockEngravedVanilla = new BlockEngravedVanilla();
 		blockCastIronFence = new BlockCastIronFence();
 		blockCastIronGate = new BlockCastIronGate();
 		blockCastIronRailing = new BlockCastIronRailing(Material.iron);
@@ -168,7 +172,7 @@ public class ConfigBlocks
 		blockBloomery = new BlockBloomery(Material.rock).setBlockName("blockBloomery");
 		blockMetal = new BlockMetal();
 		blockUranium = new BlockUranium(Material.iron);
-		blockEtherium = new BaseBlock(Material.iron).setBlockName("blockEtherium").setResistance(-1);
+		blockEtherium = new BlockEtherium(Material.iron).setBlockName("blockEtherium").setResistance(-1);
 		blockBrassLog = new BlockBrassLog(Material.wood);
 		blockBrassLeaves = new BlockBrassLeaves(Material.iron);
 		blockIntake = new BlockIntake(Material.iron);
@@ -197,6 +201,7 @@ public class ConfigBlocks
 		GameRegistry.registerBlock(blockBrassLeaves, "BlockBrassLeaves");
 		GameRegistry.registerBlock(blockBrassLog, "BlockBrassLog");
 		GameRegistry.registerBlock(blockEngraved, ItemBlockEngravedSolid.class, "BlockEngravedSolid");
+		GameRegistry.registerBlock(blockEngravedVanilla, ItemBlockEngravedVanilla.class, "BlockEngravedVanilla");
 		GameRegistry.registerBlock(blockCastIronFence, "BlockCastIronFence");
 		GameRegistry.registerBlock(blockCastIronGate, "BlockCastIronGate");
 		GameRegistry.registerBlock(blockMetal, ItemBlockMetal.class, "BlockMetal");

@@ -44,6 +44,6 @@ public class BlockUranium extends BaseBlock implements IChiselable
 	@Override
 	public int getChiseledVariantMeta()
 	{
-		return 7;
+		return 8;
 	}
 }

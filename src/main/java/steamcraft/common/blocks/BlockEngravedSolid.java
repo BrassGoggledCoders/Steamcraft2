@@ -41,7 +41,7 @@ public class BlockEngravedSolid extends Block
 {
 
 	/** The icon. */
-	private IIcon[] icon = new IIcon[14];
+	private IIcon[] icon = new IIcon[10];
 
 	/*
 	 * (non-Javadoc)
@@ -72,18 +72,15 @@ public class BlockEngravedSolid extends Block
 		icon[3] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedZinc");
 		icon[4] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedBrass");
 		icon[5] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedBronze");
-		icon[6] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedCastIron");
-		icon[7] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedUranium");
-		icon[8] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedEtherium");
-		icon[9] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedDiamond");
-		icon[10] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedGold");
-		icon[11] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedIron");
-		icon[12] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedLapis");
-		icon[13] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedStone");
+		icon[6] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedSteel");
+		icon[7] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedCastIron");
+		icon[8] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedUranium");
+		icon[9] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedEtherium");
 	}
 
 	/**
 	 * Instantiates a new block engraved solid.
+	 * @param rock
 	 */
 	public BlockEngravedSolid()
 	{
@@ -102,9 +99,9 @@ public class BlockEngravedSolid extends Block
 	 * @see net.minecraft.block.Block#damageDropped(int)
 	 */
 	@Override
-	public int damageDropped(int id)
+	public int damageDropped(int meta)
 	{
-		return id;
+		return meta;
 	}
 
 	/*

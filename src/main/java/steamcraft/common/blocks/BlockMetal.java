@@ -25,6 +25,7 @@ import net.minecraft.util.IIcon;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.config.ConfigBlocks;
 import steamcraft.common.lib.LibInfo;
+import boilerplate.steamapi.IChiselable;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -34,7 +35,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  *
  * @author warlordjones
  */
-public class BlockMetal extends Block
+public class BlockMetal extends Block implements IChiselable
 {
 
 	/** The icon. */
@@ -99,5 +100,17 @@ public class BlockMetal extends Block
 	{
 		for (int var4 = 0; var4 < icon.length; ++var4)
 			l.add(new ItemStack(ConfigBlocks.blockMetal, 1, var4));
+	}
+
+	@Override
+	public Block getChiseledVariant()
+	{
+		return ConfigBlocks.blockEngraved;
+	}
+
+	@Override
+	public int getChiseledVariantMeta()
+	{
+		return -1;
 	}
 }
