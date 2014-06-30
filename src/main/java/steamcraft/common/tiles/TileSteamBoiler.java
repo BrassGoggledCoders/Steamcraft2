@@ -34,7 +34,7 @@ import steamcraft.common.items.ItemCanister;
 public class TileSteamBoiler extends BaseTileWithInventory implements IFluidHandler
 {
 	public static final int steamPerTick = 20;
-	private static final int waterPerTick = 30; 
+	private static final int waterPerTick = 5; //3x3 RC boiler is 5 water/tick and 1mb for 160mb steam?
 
 	public int furnaceBurnTime = 0;
 	public int currentItemBurnTime = 0;
