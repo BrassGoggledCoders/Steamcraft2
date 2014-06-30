@@ -109,6 +109,8 @@ public class ConfigBlocks
 
 	//Wood
 	public static Block blockBrassLog, blockBrassLeaves;
+	
+	public static Block blockTeaPlant, blockHatch;
 
 	public static void init()
 	{
