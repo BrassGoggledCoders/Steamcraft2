@@ -277,6 +277,8 @@ public class ConfigRecipes
 		GameRegistry.addRecipe(new ItemStack(ConfigBlocks.blockSlate,4,8), "SS", "SS", 'S', new ItemStack(ConfigBlocks.blockSlate, 1, 2));
 
 		GameRegistry.addRecipe(new ItemStack(ConfigItems.itemChisel), new Object[]{" I", " S", 'I', Items.iron_ingot, 'S', Items.stick});
+
+		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.itemWatch), new Object[]{"SPS", "PMP", "SPS", 'P', Blocks.glass_pane, 'M', new ItemStack(ConfigItems.itemMachinePart, 1, 1), 'S', new ItemStack(ConfigItems.itemSheet, 1, 4)});
 	}
 
 	public static void initializeSmeltingRecipes()
