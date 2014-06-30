@@ -60,96 +60,63 @@ import steamcraft.common.tiles.TileTurbine;
 import boilerplate.common.RegistryHelper;
 import cpw.mods.fml.common.registry.GameRegistry;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class ConfigBlocks.
- *
  * @author Surseance (Johnny Eatmon)
+ * 
  */
 public class ConfigBlocks
 {
-
-	/** The block custom ore. */
 	public static Block blockCustomOre;
 
-	/** The block engraved. */
 	public static Block blockEngraved, blockEngravedVanilla;
 
-	/** The block cast iron fence. */
 	public static Block blockCastIronFence, blockCastIronRailing;
 
-	/** The block cast iron gate. */
 	public static Block blockCastIronGate;
 
-	/** The block crystal. */
 	public static Block blockCrystal;
 
-	/** The block cast iron lamp i. */
 	public static Block blockCastIronLampI;
-
-	/** The block cast iron lamp a. */
 	public static Block blockCastIronLampA;
 
-	/** The block metal. */
 	public static Block blockMetal, blockUranium, blockEtherium;
 
-	/** The block hatch. */
 	public static Block blockHatch;
 
-	/** The block steam pipe. */
 	public static Block blockSteamPipe, blockCopperWire, blockCopperTank;
 
-	/** The block lamp i. */
 	public static Block blockLampI;
-
-	/** The block lamp a. */
 	public static Block blockLampA;
 
-	/** The block tea plant. */
 	public static Block blockTeaPlant;
 
-	/** The block smog. */
 	public static Block blockSmog;
 
-	/** The block slate. */
 	public static Block blockSlate;
 
-	/** The block steam boiler. */
 	public static Block blockSteamBoiler;
 
-	/** The block drop hammer frame. */
 	public static Block blockDropHammerAnvil;
 
-	/** The steam fluid. */
 	public static Fluid steamFluid, steamcraftSteamFluid;
 
-	/** The block steam. */
 	public static Block blockSteam;
 
-	/** The block obsidian tile stairs. */
 	public static BlockStairs blockObsidianTileStairs;
 
-	/** The block brass leaves. */
 	public static Block blockBrassLog, blockBrassLeaves;
 
-	/** The block lamp. */
 	public static Block blockLamp;
 
-	/** The block intake. */
 	public static Block blockIntake, blockCopperPipe, blockArmorEditor, blockTurbine, blockCharger, blockBloomery;
 
-	/**
-	 * Inits the.
-	 */
+
 	public static void init()
 	{
 		initializeBlocks();
 		registerBlocks();
 	}
 
-	/**
-	 * Initialize blocks.
-	 */
 	public static void initializeBlocks()
 	{
 		blockCustomOre = new BlockCustomOre();
