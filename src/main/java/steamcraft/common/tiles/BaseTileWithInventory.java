@@ -29,11 +29,11 @@ import net.minecraft.tileentity.TileEntity;
  * 
  * @author Decebaldecebal
  */
-public abstract class BaseTileEntity extends TileEntity implements ISidedInventory
+public abstract class BaseTileWithInventory extends TileEntity implements ISidedInventory
 {
 	protected ItemStack[] inventory;
 
-	public BaseTileEntity(byte invSize)
+	public BaseTileWithInventory(byte invSize)
 	{
 		inventory = new ItemStack[invSize];
 	}

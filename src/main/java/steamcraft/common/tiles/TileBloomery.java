@@ -26,7 +26,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  * @author warlordjones & decebaldecebal
  *
  */
-public class TileBloomery extends BaseTileEntity
+public class TileBloomery extends BaseTileWithInventory
 {
 	public TileBloomery()
 	{

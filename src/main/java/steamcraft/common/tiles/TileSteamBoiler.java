@@ -31,7 +31,7 @@ import steamcraft.common.items.ItemCanister;
  * @author Decebaldecebal
  * 
  */
-public class TileSteamBoiler extends BaseTileEntity implements IFluidHandler
+public class TileSteamBoiler extends BaseTileWithInventory implements IFluidHandler
 {
 	private static final int steamPerTick = 20; 
 	private static final int waterPerTick = 30; 
