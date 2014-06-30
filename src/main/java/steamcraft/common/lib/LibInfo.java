@@ -35,8 +35,7 @@ public class LibInfo
 	/** The Constant VERSION. */
 	public static final String VERSION = "Beta R1.1"; // major, minor, bugfix
 
-	public static final List<String> AUTHORS = Arrays.asList("Surseance", "decebaldecebal", "warlordjones", "Falkok15", "wierdude1999",
-			"seanvanpelt2 & others");
+	public static final List<String> AUTHORS = Arrays.asList("Surseance", "decebaldecebal", "warlordjones", "Falkok15", "wierdude1999", "seanvanpelt2 & others");
 
 	/** The Constant CLIENT_PROXY. */
 	public static final String CLIENT_PROXY = "steamcraft.client.ClientProxy";
