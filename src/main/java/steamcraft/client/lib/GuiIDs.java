@@ -41,4 +41,6 @@ public final class GuiIDs
 	public static final int GUI_ID_ARMOREDITOR = 6;
 
 	public static final int GUI_ID_BLOOMERY = 7;
+
+	public static final int GUI_ID_BATTERY = 8;
 }

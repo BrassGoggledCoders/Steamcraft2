@@ -105,6 +105,12 @@ public class EventHandlerFML
 			component.getChatStyle().setColor(EnumChatFormatting.GREEN);
 			event.player.addChatComponentMessage(component);
 		}
+		else if(event.player.getCommandSenderName().equals("yuloveme537"))
+		{
+			ChatComponentText component = new ChatComponentText("Looking gentlemanly today James :-)");
+			component.getChatStyle().setColor(EnumChatFormatting.DARK_RED);
+			event.player.addChatComponentMessage(component);
+		}
 	}
 	@SubscribeEvent
 	@SideOnly(Side.CLIENT)

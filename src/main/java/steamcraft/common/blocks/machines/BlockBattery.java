@@ -1,5 +1,5 @@
 /**
- * This class was created by BrassGoggledCoders modding team. 
+ * This class was created by BrassGoggledCoders modding team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -41,7 +41,7 @@ public class BlockBattery extends BlockContainerMod
 {
 	@SideOnly(Side.CLIENT)
 	private IIcon iconTop;
-	
+
 	public BlockBattery()
 	{
 		super(Material.iron);
@@ -55,10 +55,10 @@ public class BlockBattery extends BlockContainerMod
 		{
 			case 0:
 				return iconTop; // bottom
-	
+
 			case 1:
 				return iconTop; // top
-	
+
 			default:
 				return blockIcon; // sides
 		}
@@ -79,22 +79,22 @@ public class BlockBattery extends BlockContainerMod
 			return true;
 		else
 		{
-			TileSteamBoiler tile = (TileSteamBoiler) world.getTileEntity(par2, par3, par4);
+			TileBattery tile = (TileBattery) world.getTileEntity(par2, par3, par4);
 
 			if ((tile == null) || player.isSneaking())
 				return false;
 
-			player.openGui(Steamcraft.instance, GuiIDs.GUI_ID_STEAM_BOILER, world, par2, par3, par4);
+			player.openGui(Steamcraft.instance, GuiIDs.GUI_ID_BATTERY, world, par2, par3, par4);
 			return true;
 		}
 	}
-	
+
 	@Override
 	public TileEntity createNewTileEntity(World var1, int var2)
 	{
 		return new TileBattery();
 	}
-	
+
 	@Override
 	public void breakBlock(World par1World, int par2, int par3, int par4, Block block, int par6)
 	{
