@@ -151,7 +151,8 @@ public class ContainerBloomery extends Container
 				if (TileBloomery.isItemFuel(itemstack1))
 				{
 					if (!this.mergeItemStack(itemstack1, 0, 1, false))
-						return null;
+						if(!this.mergeItemStack(itemstack1, 1, 3, false))
+							return null;
 				}
 				else if (par2 >= 4 && par2 < 31)
 				{

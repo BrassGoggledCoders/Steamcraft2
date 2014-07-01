@@ -49,6 +49,7 @@ import steamcraft.common.itemblocks.ItemBlockEngravedVanilla;
 import steamcraft.common.itemblocks.ItemBlockMetal;
 import steamcraft.common.itemblocks.ItemBlockSlate;
 import steamcraft.common.tiles.TileArmorEditor;
+import steamcraft.common.tiles.TileBattery;
 import steamcraft.common.tiles.TileBloomery;
 import steamcraft.common.tiles.TileCopperPipe;
 import steamcraft.common.tiles.TileCrystal;
@@ -183,7 +184,7 @@ public class ConfigBlocks
 		blockBattery = new BlockBattery().setBlockName("blockBattery");
 		
 		RegistryHelper.registerContainerBlock(blockTurbine, TileTurbine.class, "BlockTurbine");
-		//RegistryHelper.registerContainerBlock(blockBattery, TileBattery.class, "BlockBattery");
+		RegistryHelper.registerContainerBlock(blockBattery, TileBattery.class, "BlockBattery");
 		
 		// Bloomery
 		blockBloomery = new BlockBloomery(Material.rock).setBlockName("blockBloomery");
