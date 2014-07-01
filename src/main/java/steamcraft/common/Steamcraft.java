@@ -25,6 +25,7 @@ import steamcraft.common.config.ConfigAchievements;
 import steamcraft.common.config.ConfigBlocks;
 import steamcraft.common.config.ConfigEntities;
 import steamcraft.common.config.ConfigItems;
+import steamcraft.common.config.ConfigKeyBindings;
 import steamcraft.common.config.ConfigRecipes;
 import steamcraft.common.config.ConfigWorldGen;
 import steamcraft.common.lib.CommandSteamcraft;

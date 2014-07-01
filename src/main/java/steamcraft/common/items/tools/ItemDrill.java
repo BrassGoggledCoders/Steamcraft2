@@ -9,6 +9,7 @@ import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemStack;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.LibInfo;
@@ -17,9 +18,9 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * Base class for drills.
- * 
+ *
  * @author Decebaldecebal
- * 
+ *
  */
 public class ItemDrill extends ItemModTool
 {

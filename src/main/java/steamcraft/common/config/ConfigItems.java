@@ -49,6 +49,7 @@ import steamcraft.common.items.tools.ItemModPickaxe;
 import steamcraft.common.items.tools.ItemModShovel;
 import steamcraft.common.items.tools.ItemModSword;
 import steamcraft.common.items.tools.ItemSteamDrill;
+import steamcraft.common.items.vanity.ItemTopHat;
 import steamcraft.common.lib.LibInfo;
 import steamcraft.common.lib.MaterialHelper;
 import boilerplate.common.RegistryHelper;
@@ -134,6 +135,8 @@ public class ConfigItems
 
 	public static Item itemMachinePart, itemGunPart;
 	public static Item itemCopperParts, itemBrassParts, itemSteelParts, itemIronParts;
+
+	public static Item itemTopHat;
 
 	/* Init */
 	public static void init()
@@ -393,6 +396,9 @@ public class ConfigItems
 
 		itemCopperWire = new BaseItem().setUnlocalizedName("itemCopperWire");
 		registerItem(itemCopperWire, "ItemCopperWire");
+
+		itemTopHat = new ItemTopHat().setUnlocalizedName("itemTopHat");
+		registerItem(itemTopHat, "ItemTopHat");
 	}
 
 	private static void registerItem(Item item, String name)

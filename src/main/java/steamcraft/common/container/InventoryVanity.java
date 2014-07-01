@@ -23,14 +23,13 @@ import net.minecraft.nbt.NBTTagList;
 // TODO: Auto-generated Javadoc
 /**
  * The Class InventoryVanity.
- * 
+ *
  * @author warlordjones
  */
 public class InventoryVanity implements IInventory
 {
 
 	/** The name for your custom inventory, possibly just "Inventory". */
-	@SuppressWarnings("unused")
 	private final String name = "Vanity Items";
 
 	/**
@@ -57,7 +56,7 @@ public class InventoryVanity implements IInventory
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.minecraft.inventory.IInventory#getSizeInventory()
 	 */
 	@Override
@@ -68,7 +67,7 @@ public class InventoryVanity implements IInventory
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.minecraft.inventory.IInventory#getStackInSlot(int)
 	 */
 	@Override
@@ -79,7 +78,7 @@ public class InventoryVanity implements IInventory
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.minecraft.inventory.IInventory#decrStackSize(int, int)
 	 */
 	@Override
@@ -107,7 +106,7 @@ public class InventoryVanity implements IInventory
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.minecraft.inventory.IInventory#getStackInSlotOnClosing(int)
 	 */
 	@Override
@@ -123,7 +122,7 @@ public class InventoryVanity implements IInventory
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.minecraft.inventory.IInventory#setInventorySlotContents(int,
 	 * net.minecraft.item.ItemStack)
 	 */
@@ -140,7 +139,7 @@ public class InventoryVanity implements IInventory
 
 	/**
 	 * Our custom slots are similar to armor - only one item per slot.
-	 * 
+	 *
 	 * @return the inventory stack limit
 	 */
 	@Override
@@ -151,7 +150,7 @@ public class InventoryVanity implements IInventory
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.minecraft.inventory.IInventory#isUseableByPlayer(net.minecraft.entity
 	 * .player.EntityPlayer)
@@ -165,7 +164,7 @@ public class InventoryVanity implements IInventory
 	/**
 	 * This method doesn't seem to do what it claims to do, as items can still
 	 * be left-clicked and placed in the inventory even when this returns false.
-	 * 
+	 *
 	 * @param slot
 	 *            the slot
 	 * @param itemstack
@@ -180,7 +179,7 @@ public class InventoryVanity implements IInventory
 
 	/**
 	 * Write to nbt.
-	 * 
+	 *
 	 * @param tagCompound
 	 *            the tag compound
 	 */
@@ -205,7 +204,7 @@ public class InventoryVanity implements IInventory
 
 	/**
 	 * Read from nbt.
-	 * 
+	 *
 	 * @param compound
 	 *            the compound
 	 */
@@ -226,28 +225,22 @@ public class InventoryVanity implements IInventory
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.minecraft.inventory.IInventory#closeInventory()
 	 */
 	@Override
 	public void closeInventory()
 	{
 	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see net.minecraft.inventory.IInventory#getInventoryName()
-	 */
 	@Override
 	public String getInventoryName()
 	{
-		return getInventoryName();
+		return name;
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.minecraft.inventory.IInventory#hasCustomInventoryName()
 	 */
 	@Override
@@ -258,7 +251,7 @@ public class InventoryVanity implements IInventory
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.minecraft.inventory.IInventory#markDirty()
 	 */
 	@Override
@@ -271,7 +264,7 @@ public class InventoryVanity implements IInventory
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.minecraft.inventory.IInventory#openInventory()
 	 */
 	@Override

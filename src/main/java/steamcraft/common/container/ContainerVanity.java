@@ -24,7 +24,7 @@ import net.minecraft.item.ItemStack;
 // TODO: Auto-generated Javadoc
 /**
  * The Class ContainerVanity.
- * 
+ *
  * @author warlordjones
  */
 public class ContainerVanity extends Container
@@ -36,7 +36,7 @@ public class ContainerVanity extends Container
 
 	/**
 	 * Instantiates a new container vanity.
-	 * 
+	 *
 	 * @param player
 	 *            the player
 	 * @param inventoryPlayer
@@ -72,7 +72,7 @@ public class ContainerVanity extends Container
 	/**
 	 * This should always return true, since custom inventory can be accessed
 	 * from anywhere.
-	 * 
+	 *
 	 * @param player
 	 *            the player
 	 * @return true, if successful
@@ -88,7 +88,7 @@ public class ContainerVanity extends Container
 	 * you will crash when someone does that. Basically the same as every other
 	 * container I make, since I define the same constant indices for all of
 	 * them
-	 * 
+	 *
 	 * @param player
 	 *            the player
 	 * @param slots
@@ -129,15 +129,7 @@ public class ContainerVanity extends Container
 				if (!mergeItemStack(is, ARMOR_START + type, ARMOR_START + type + 1, false))
 					return null;
 			}
-			else if ((slots >= INV_START) && (slots < HOTBAR_START)) // item
-																		// in
-																		// player's
-																		// inventory,
-																		// but
-																		// not
-																		// in
-																		// action
-																		// bar
+			else if ((slots >= INV_START) && (slots < HOTBAR_START))
 			{
 				if (!mergeItemStack(is, HOTBAR_START, HOTBAR_START + 1, false))
 					return null;

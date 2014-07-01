@@ -1,6 +1,8 @@
 package steamcraft.common.lib.events;
 
 import net.minecraft.block.Block;
+import net.minecraft.client.Minecraft;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.event.ClickEvent;
 import net.minecraft.event.HoverEvent;
 import net.minecraft.server.MinecraftServer;
@@ -8,13 +10,17 @@ import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
 import steamcraft.common.blocks.machines.BlockIntake;
 import steamcraft.common.blocks.machines.BlockSteamBoiler;
+import steamcraft.client.lib.GuiIDs;
+import steamcraft.common.Steamcraft;
 import steamcraft.common.config.Config;
 import steamcraft.common.config.ConfigAchievements;
+import steamcraft.common.config.ConfigKeyBindings;
 import steamcraft.common.items.ItemIngot;
 import steamcraft.common.items.ItemRayGun;
 import steamcraft.common.items.ItemSheet;
 import steamcraft.common.items.ItemShrinkray;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.gameevent.InputEvent.KeyInputEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent;
 
 public class EventHandlerFML
@@ -96,6 +102,17 @@ public class EventHandlerFML
 			ChatComponentText component = new ChatComponentText("Pig in a tank!");
 			component.getChatStyle().setColor(EnumChatFormatting.GREEN);
 			event.player.addChatComponentMessage(component);
+		}
+	}
+	@SubscribeEvent
+	public void KeyInputEvent(KeyInputEvent event)
+	{
+		if(ConfigKeyBindings.vanity.isPressed()) {
+			if(Minecraft.getMinecraft().currentScreen == null)
+			{
+				EntityPlayer p = Minecraft.getMinecraft().thePlayer;
+				p.openGui(Steamcraft.instance, GuiIDs.GUI_ID_VANITY, p.worldObj, (int) p.posX, (int) p.posY, (int) p.posZ);
+			}
 		}
 	}
 }

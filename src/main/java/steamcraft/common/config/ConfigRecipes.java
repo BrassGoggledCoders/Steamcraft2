@@ -262,7 +262,7 @@ public class ConfigRecipes
 				new ItemStack(ConfigItems.itemSheet, 1, 4) });
 
 		GameRegistry.addRecipe(new ItemStack(ConfigItems.itemHammer), new Object[] { "III", " H ", " C ", 'I',
-				new ItemStack(ConfigItems.itemIngot, 1, 7), 'H', Items.stick, 'C', new ItemStack(ConfigItems.itemMachinePart, 1, 9) });
+				new ItemStack(ConfigItems.itemIngot, 1, 7), 'H', Items.stick, 'C', new ItemStack(ConfigItems.itemMachinePart, 1, 0) });
 		// Brass Powder
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ConfigItems.itemPowder, 3, 4), new Object[] { "dustCopper", "dustCopper",
 				"dustZinc" }));

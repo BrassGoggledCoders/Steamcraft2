@@ -18,11 +18,15 @@ import java.util.List;
 
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
+import net.minecraft.event.ClickEvent;
+import net.minecraft.util.ChatComponentStyle;
+import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.EnumChatFormatting;
 
 // TODO: Auto-generated Javadoc
 /**
  * The Class CommandSteamcraft.
- * 
+ *
  * @author Surseance (Johnny Eatmon)
  */
 public class CommandSteamcraft extends CommandBase
@@ -43,7 +47,7 @@ public class CommandSteamcraft extends CommandBase
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.minecraft.command.CommandBase#canCommandSenderUseCommand(net.minecraft
 	 * .command.ICommandSender)
@@ -56,7 +60,7 @@ public class CommandSteamcraft extends CommandBase
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.minecraft.command.ICommand#getCommandName()
 	 */
 	@Override
@@ -67,7 +71,7 @@ public class CommandSteamcraft extends CommandBase
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.minecraft.command.ICommand#getCommandUsage(net.minecraft.command.
 	 * ICommandSender)
@@ -80,50 +84,53 @@ public class CommandSteamcraft extends CommandBase
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.minecraft.command.ICommand#processCommand(net.minecraft.command.
 	 * ICommandSender, java.lang.String[])
 	 */
 	@Override
 	public void processCommand(ICommandSender sender, String[] parameters)
 	{
-		/*
-		 * ChatMessageComponent chat = sender.(); String prefix =
-		 * EnumChatFormatting.GOLD + " [Steamcraft] ";
-		 * 
-		 * if (parameters.length < 1) {
-		 * sender.addChatMessage(chat.appendText(prefix +
-		 * EnumChatFormatting.LIGHT_PURPLE + "Welcome to Steamcraft 2!")); }
-		 * else if (parameters.length == 1) { if
-		 * (parameters[0].equalsIgnoreCase("help")) {
-		 * sender.addChatMessage(chat.appendText(EnumChatFormatting.RED +
-		 * " =-=-=-" + prefix + EnumChatFormatting.RED + "-=-=-=")); /*
-		 * EnumChatFormatting.GOLD + "\r/sc2" + EnumChatFormatting.LIGHT_PURPLE
-		 * + "-- the main mod function" + EnumChatFormatting.GOLD + "/sc2 help"
-		 * + EnumChatFormatting.LIGHT_PURPLE + "-- displays this list" +
-		 * EnumChatFormatting.GOLD + "/sc2 version" +
-		 * EnumChatFormatting.LIGHT_PURPLE + "-- the running mod version" +
-		 * EnumChatFormatting.GOLD + "/sc2 update" +
-		 * EnumChatFormatting.LIGHT_PURPLE + "-- checks for latest version"));
-		 * 
-		 * } else if (parameters[0].equalsIgnoreCase("version")) {
-		 * sender.addChatMessage(chat.appendText(prefix +
-		 * EnumChatFormatting.LIGHT_PURPLE + "Steamcraft 2 v" + LibInfo.VERSION
-		 * + " for MC v1.7.2")); } else if
-		 * (parameters[0].equalsIgnoreCase("debug") &&
-		 * this.isDeveloper(sender.getCommandSenderName())) { boolean debug =
-		 * LibInfo.DEBUG; sender.addChatMessage(chat.appendText(prefix +
-		 * EnumChatFormatting.LIGHT_PURPLE + "Debug mode for is set to: " +
-		 * debug)); } else if (parameters[0].equalsIgnoreCase("update")) { if
-		 * (Utils.checkForUpdatedVersion(LibInfo.NAME, LibInfo.VERSION)) {
-		 * sender.addChatMessage(chat.appendText(prefix +
-		 * EnumChatFormatting.LIGHT_PURPLE + "Version " + Utils.newestVersion +
-		 * " of SC2 is now available!")); } else {
-		 * sender.addChatMessage(chat.appendText(prefix +
-		 * EnumChatFormatting.LIGHT_PURPLE +
-		 * "You are running the latest version")); } } else {
-		 * sender.addChatMessage(chat.appendText(prefix + EnumChatFormatting.RED
-		 * + "Not a valid command!")); } }
-		 */
+		ChatComponentText prefix = new ChatComponentText(" [Steamcraft] ");
+		prefix.getChatStyle().setColor(EnumChatFormatting.GOLD);
+
+		if (parameters.length < 1)
+		{
+			sender.addChatMessage(prefix.appendSibling(new ChatComponentText("Welcome to Steamcraft 2!")/*.setChatStyle(EnumChatFormatting.LIGHT_PURPLE)*/));
+		}
+		else if (parameters.length == 1)
+		{
+			if(parameters[0].equalsIgnoreCase("help"))
+			{
+				sender.addChatMessage(new ChatComponentText("version -- returns current SC2 version"));
+				sender.addChatMessage(new ChatComponentText("contact -- returns current SC2 version"));
+			}
+			else if (parameters[0].equalsIgnoreCase("version"))
+			{
+				ChatComponentText version = new ChatComponentText("Steamcraft 2 " + LibInfo.VERSION + " for MC v1.7.2");
+				sender.addChatMessage(prefix.appendSibling(version));
+			}
+			else if (parameters[0].equalsIgnoreCase("contact"))
+			{
+				ChatComponentText contact = new ChatComponentText("Contact Information");
+				sender.addChatMessage(prefix.appendSibling(contact));
+				ChatComponentText twitter = new ChatComponentText("Twitter");
+				twitter.getChatStyle().setColor(EnumChatFormatting.BLUE);
+				twitter.getChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://twitter.com/brasscoders"));
+				sender.addChatMessage(twitter);
+				ChatComponentText email = new ChatComponentText("Email");
+				email.getChatStyle().setColor(EnumChatFormatting.RED);
+				email.getChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "mailto:brasscoders@gmail.com"));
+				sender.addChatMessage(email);
+				ChatComponentText git = new ChatComponentText("Github");
+				git.getChatStyle().setColor(EnumChatFormatting.GRAY);
+				git.getChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://github.com/BrassGoggledCoders"));
+				sender.addChatMessage(git);
+			}
+			else
+			{
+				sender.addChatMessage(prefix.appendText("Not a valid sub-command! Run /sc2 help for help!"));
+			}
+		}
 	}
 }

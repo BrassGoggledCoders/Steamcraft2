@@ -26,7 +26,7 @@ import steamcraft.client.renderers.item.ModelJetpack;
 import steamcraft.client.renderers.item.ModelWingpack;
 import steamcraft.client.renderers.tile.TileCrystalRenderer;
 import steamcraft.common.CommonProxy;
-import steamcraft.common.KeyBindings;
+import steamcraft.common.config.ConfigKeyBindings;
 import steamcraft.common.entities.projectile.EntityBullet;
 import steamcraft.common.lib.Utils;
 import steamcraft.common.tiles.TileCrystal;
@@ -37,6 +37,7 @@ import boilerplate.common.entity.EntityMinedBlock;
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
+import cpw.mods.fml.common.FMLCommonHandler;
 
 // TODO: Auto-generated Javadoc
 
@@ -52,8 +53,7 @@ public class ClientProxy extends CommonProxy
 	@Override
 	public void registerKeys()
 	{
-		// FMLCommonHandler.instance().bus().register(new KeyInputHandler());
-		KeyBindings.registerKeys();
+		FMLCommonHandler.instance().bus().register(new ConfigKeyBindings());
 	}
 
 	@Override
