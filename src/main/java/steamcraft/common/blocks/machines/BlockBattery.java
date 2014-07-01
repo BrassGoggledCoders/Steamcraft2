@@ -69,7 +69,7 @@ public class BlockBattery extends BlockContainerMod
 	public void registerBlockIcons(IIconRegister icon)
 	{
 		blockIcon = icon.registerIcon(LibInfo.PREFIX + "blockBatterySide");
-		iconTop = icon.registerIcon(LibInfo.PREFIX + "blockSteamBoilerTop");
+		iconTop = icon.registerIcon(LibInfo.PREFIX + "blockBatteryTop");
 	}
 
 	@Override
