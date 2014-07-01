@@ -1,4 +1,4 @@
-package steamcraft.common.blocks.tiles;
+package steamcraft.common.blocks.machines;
 
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;

@@ -1,17 +1,4 @@
-/**
- * This class was created by <Surseance> or his SC2 development team.
- * This class is available as part of the Steamcraft 2 Mod for Minecraft.
- *
- * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
- * (http://www.mod-buildcraft.com/MMPL-1.0.txt)
- *
- * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
- * Steamcraft (c) Proloe 2011
- * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- *
- * File created @ 23-May-2014
- */
-package steamcraft.common.blocks.tiles;
+package steamcraft.common.blocks.machines;
 
 import java.util.Random;
 
@@ -32,20 +19,16 @@ import net.minecraft.world.World;
 import steamcraft.client.lib.GuiIDs;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.LibInfo;
-import steamcraft.common.tiles.TileSteamBoiler;
+import steamcraft.common.tiles.TileBloomery;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-// TODO: Auto-generated Javadoc
-/**
- * The Class BlockSteamBoiler.
- */
-public class BlockSteamBoiler extends BlockContainerMod
+public class BlockBloomery extends BlockContainerMod
 {
 
 	/** The icon top. */
 	@SideOnly(Side.CLIENT)
-	private IIcon iconTop;
+	private IIcon iconTop, iconTopActive;
 
 	/** The icon front. */
 	@SideOnly(Side.CLIENT)
@@ -55,19 +38,17 @@ public class BlockSteamBoiler extends BlockContainerMod
 	@SideOnly(Side.CLIENT)
 	private IIcon iconFrontActive;
 
-	/**
-	 * Instantiates a new block steam boiler.
-	 */
-	public BlockSteamBoiler()
+	public BlockBloomery(Material mat)
 	{
-		super(Material.iron);
+		super(mat);
+		// TODO Auto-generated constructor stub
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see net.minecraft.block.Block#damageDropped(int)
-	 */
+	@Override
+	public TileEntity createNewTileEntity(World var1, int var2)
+	{
+		return new TileBloomery();
+	}
 	@Override
 	public int damageDropped(int metadata)
 	{
@@ -76,7 +57,7 @@ public class BlockSteamBoiler extends BlockContainerMod
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.minecraft.block.Block#getIcon(int, int)
 	 */
 	@SideOnly(Side.CLIENT)
@@ -90,11 +71,11 @@ public class BlockSteamBoiler extends BlockContainerMod
 		switch (side)
 		{
 		case 0:
-			return iconTop; // bottom
-
+			return blockIcon; // bottom
 		case 1:
-			return iconTop; // top
-
+			if(meta > 7)
+			return iconTopActive;
+			else return iconTop;// top
 		default:
 			return blockIcon; // sides
 		}
@@ -102,7 +83,7 @@ public class BlockSteamBoiler extends BlockContainerMod
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.minecraft.block.Block#registerBlockIcons(net.minecraft.client.renderer
 	 * .texture.IIconRegister)
@@ -111,15 +92,16 @@ public class BlockSteamBoiler extends BlockContainerMod
 	@Override
 	public void registerBlockIcons(IIconRegister icon)
 	{
-		blockIcon = icon.registerIcon(LibInfo.PREFIX + "blockSteamBoilerSide");
-		iconFront = icon.registerIcon(LibInfo.PREFIX + "blockSteamBoilerFrontInactive");
-		iconFrontActive = icon.registerIcon(LibInfo.PREFIX + "blockSteamBoilerFrontActive");
-		iconTop = icon.registerIcon(LibInfo.PREFIX + "blockSteamBoilerTop");
+		blockIcon = icon.registerIcon(LibInfo.PREFIX + "blockBloomerySide");
+		iconFront = icon.registerIcon(LibInfo.PREFIX + "blockBloomeryFrontInactive");
+		iconFrontActive = icon.registerIcon(LibInfo.PREFIX + "blockBloomeryFrontActive");
+		iconTop = icon.registerIcon(LibInfo.PREFIX + "blockBloomeryTopInactive");
+		iconTopActive = icon.registerIcon(LibInfo.PREFIX + "blockBloomeryTopActive");
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.minecraft.block.Block#onBlockActivated(net.minecraft.world.World,
 	 * int, int, int, net.minecraft.entity.player.EntityPlayer, int, float,
@@ -132,20 +114,18 @@ public class BlockSteamBoiler extends BlockContainerMod
 			return true;
 		else
 		{
-			TileSteamBoiler tile = (TileSteamBoiler) world.getTileEntity(par2, par3, par4);
+			TileBloomery tile = (TileBloomery) world.getTileEntity(par2, par3, par4);
 
 			if ((tile == null) || player.isSneaking())
 				return false;
-
-			System.out.println("works1");
-			player.openGui(Steamcraft.instance, GuiIDs.GUI_ID_STEAM_BOILER, world, par2, par3, par4);
+			player.openGui(Steamcraft.instance, GuiIDs.GUI_ID_BLOOMERY, world, par2, par3, par4);
 			return true;
 		}
 	}
 
 	/**
-	 * Update furnace block state.
-	 * 
+	 * Update bloomery block state.
+	 *
 	 * @param par0
 	 *            the par0
 	 * @param par1World
@@ -157,7 +137,7 @@ public class BlockSteamBoiler extends BlockContainerMod
 	 * @param par4
 	 *            the par4
 	 */
-	public static void updateFurnaceBlockState(boolean par0, World par1World, int par2, int par3, int par4)
+	public static void updateBloomeryBlockState(boolean par0, World par1World, int par2, int par3, int par4)
 	{
 		int var5 = par1World.getBlockMetadata(par2, par3, par4);
 		TileEntity tileentity = par1World.getTileEntity(par2, par3, par4);
@@ -180,7 +160,7 @@ public class BlockSteamBoiler extends BlockContainerMod
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.minecraft.block.Block#randomDisplayTick(net.minecraft.world.World,
 	 * int, int, int, java.util.Random)
@@ -220,23 +200,9 @@ public class BlockSteamBoiler extends BlockContainerMod
 			}
 		}
 	}
-
 	/*
 	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * net.minecraft.block.ITileEntityProvider#createNewTileEntity(net.minecraft
-	 * .world.World, int)
-	 */
-	@Override
-	public TileEntity createNewTileEntity(World par1World, int metadata)
-	{
-		return new TileSteamBoiler();
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * steamcraft.common.blocks.machine.BlockContainerMod#onBlockPlacedBy(net
 	 * .minecraft.world.World, int, int, int,
@@ -264,7 +230,7 @@ public class BlockSteamBoiler extends BlockContainerMod
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * steamcraft.common.blocks.machine.BlockContainerMod#breakBlock(net.minecraft
 	 * .world.World, int, int, int, net.minecraft.block.Block, int)
@@ -272,9 +238,7 @@ public class BlockSteamBoiler extends BlockContainerMod
 	@Override
 	public void breakBlock(World par1World, int par2, int par3, int par4, Block block, int par6)
 	{
-		if (!keepInventory)
-		{
-			TileSteamBoiler var7 = (TileSteamBoiler) par1World.getTileEntity(par2, par3, par4);
+			TileBloomery var7 = (TileBloomery) par1World.getTileEntity(par2, par3, par4);
 
 			if (var7 != null)
 				for (int var8 = 0; var8 < var7.getSizeInventory(); ++var8)
@@ -309,14 +273,13 @@ public class BlockSteamBoiler extends BlockContainerMod
 						}
 					}
 				}
-		}
 
 		super.breakBlock(par1World, par2, par3, par4, block, par6);
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.minecraft.block.Block#hasComparatorInputOverride()
 	 */
 	@Override
@@ -327,7 +290,7 @@ public class BlockSteamBoiler extends BlockContainerMod
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.minecraft.block.Block#getComparatorInputOverride(net.minecraft.world
 	 * .World, int, int, int, int)

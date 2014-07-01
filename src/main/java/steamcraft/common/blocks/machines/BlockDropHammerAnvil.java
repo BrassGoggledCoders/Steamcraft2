@@ -1,14 +1,14 @@
-package steamcraft.common.blocks.tiles;
+package steamcraft.common.blocks.machines;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-import steamcraft.common.tiles.TileTurbine;
+import steamcraft.common.tiles.TileDropHammer;
 
-public class BlockTurbine extends BlockContainerMod
+public class BlockDropHammerAnvil extends BlockContainerMod
 {
 
-	public BlockTurbine(Material mat)
+	public BlockDropHammerAnvil(Material mat)
 	{
 		super(mat);
 	}
@@ -16,7 +16,6 @@ public class BlockTurbine extends BlockContainerMod
 	@Override
 	public TileEntity createNewTileEntity(World var1, int var2)
 	{
-		return new TileTurbine();
+		return new TileDropHammer();
 	}
-
 }

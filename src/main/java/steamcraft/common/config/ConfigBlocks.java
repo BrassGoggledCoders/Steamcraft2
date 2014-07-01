@@ -35,14 +35,14 @@ import steamcraft.common.blocks.BlockMetal;
 import steamcraft.common.blocks.BlockSlate;
 import steamcraft.common.blocks.BlockUranium;
 import steamcraft.common.blocks.FluidSteam;
-import steamcraft.common.blocks.tiles.BlockArmorEditor;
-import steamcraft.common.blocks.tiles.BlockBloomery;
-import steamcraft.common.blocks.tiles.BlockCharger;
-import steamcraft.common.blocks.tiles.BlockCopperPipe;
-import steamcraft.common.blocks.tiles.BlockDropHammerAnvil;
-import steamcraft.common.blocks.tiles.BlockIntake;
-import steamcraft.common.blocks.tiles.BlockSteamBoiler;
-import steamcraft.common.blocks.tiles.BlockTurbine;
+import steamcraft.common.blocks.machines.BlockArmorEditor;
+import steamcraft.common.blocks.machines.BlockBattery;
+import steamcraft.common.blocks.machines.BlockBloomery;
+import steamcraft.common.blocks.machines.BlockCopperPipe;
+import steamcraft.common.blocks.machines.BlockDropHammerAnvil;
+import steamcraft.common.blocks.machines.BlockIntake;
+import steamcraft.common.blocks.machines.BlockSteamBoiler;
+import steamcraft.common.blocks.machines.BlockTurbine;
 import steamcraft.common.itemblocks.ItemBlockCustomOre;
 import steamcraft.common.itemblocks.ItemBlockEngravedSolid;
 import steamcraft.common.itemblocks.ItemBlockEngravedVanilla;
@@ -180,7 +180,7 @@ public class ConfigBlocks
 		
 		// Energy related
 		blockTurbine = new BlockTurbine(Material.iron).setBlockName("blockTurbine");
-		blockBattery = new BlockCharger(Material.iron).setBlockName("blockCharger");
+		blockBattery = new BlockBattery(Material.iron).setBlockName("blockBattery");
 		
 		RegistryHelper.registerContainerBlock(blockTurbine, TileTurbine.class, "BlockTurbine");
 		//RegistryHelper.registerContainerBlock(blockBattery, TileBattery.class, "BlockBattery");

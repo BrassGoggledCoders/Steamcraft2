@@ -1,4 +1,4 @@
-package steamcraft.common.blocks.tiles;
+package steamcraft.common.blocks.machines;
 
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;

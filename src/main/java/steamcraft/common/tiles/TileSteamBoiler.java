@@ -24,7 +24,7 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTank;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
-import steamcraft.common.blocks.tiles.BlockSteamBoiler;
+import steamcraft.common.blocks.machines.BlockSteamBoiler;
 import steamcraft.common.items.ItemCanister;
 
 /**
