@@ -2,12 +2,12 @@ package steamcraft.common.blocks;
 
 import java.util.Random;
 
-import steamcraft.common.config.ConfigBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
+import steamcraft.common.config.ConfigBlocks;
 import boilerplate.client.utils.EffectUtils;
 import boilerplate.steamapi.IChiselable;
 import cpw.mods.fml.relauncher.Side;

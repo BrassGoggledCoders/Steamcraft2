@@ -1,8 +1,8 @@
 package steamcraft.common.blocks;
 
-import steamcraft.common.config.ConfigBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import steamcraft.common.config.ConfigBlocks;
 import boilerplate.steamapi.IChiselable;
 
 public class BlockEtherium extends BaseBlock implements IChiselable
