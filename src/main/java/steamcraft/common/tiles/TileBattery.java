@@ -13,14 +13,33 @@
  */
 package steamcraft.common.tiles;
 
+import net.minecraft.nbt.NBTTagCompound;
+import cofh.api.energy.EnergyStorage;
+
 /**
  * @author decebaldecebal
  *
  */
 public class TileBattery extends BaseTileWithInventory
 {
+	private EnergyStorage buffer = new EnergyStorage(10000, 1000);
+	
 	public TileBattery()
 	{
 		super((byte) 6);
+	}
+	
+	@Override
+	public void readFromNBT(NBTTagCompound tag)
+	{
+		super.readFromNBT(tag);
+		buffer.readFromNBT(tag);
+	}
+
+	@Override
+	public void writeToNBT(NBTTagCompound tag)
+	{
+		super.writeToNBT(tag);
+		buffer.writeToNBT(tag);
 	}
 }
