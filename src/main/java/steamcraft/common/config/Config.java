@@ -150,6 +150,10 @@ public class Config
 
 	public static boolean partyPooper;
 
+	public static boolean brassTreeGenEnabled;
+
+	public static int brassTreeGenChance;
+
 	/**
 	 * Initialize.
 	 *
@@ -175,6 +179,7 @@ public class Config
 		slateChance = config.get(CATEGORY_GEN_OPTIONS, "Chance of Slate Generation", 20).getInt();
 		netherEtheriumCrystalChance = config.get(CATEGORY_GEN_OPTIONS, "Chance of Etheruim Crystal Generation in the Nether", 5).getInt();
 		endEtheriumCrystalChance = config.get(CATEGORY_GEN_OPTIONS, "Chance of Etheruim Crystal Generation in the End", 10).getInt();
+		brassTreeGenChance = config.get(CATEGORY_GEN_OPTIONS, "Chance of Brass Tree Generation", 20).getInt();
 		uraniumHeight = config.get(CATEGORY_GEN_OPTIONS, "Height of Uranium Ore Generation", 24).getInt();
 		brimstoneHeight = config.get(CATEGORY_GEN_OPTIONS, "Height of Brimstone Ore Generation", 64).getInt();
 		borniteHeight = config.get(CATEGORY_GEN_OPTIONS, "Height of Bornite Ore Generation", 48).getInt();
@@ -205,6 +210,8 @@ public class Config
 		slateGenEnabled = config.get(CATEGORY_GEN_OPTIONS, "Slate Generation", true).getBoolean(true);
 		netherEtheriumCrystalGenEnabled = config.get(CATEGORY_GEN_OPTIONS, "Etherium Crystal Generation in the Nether", true).getBoolean(true);
 		endEtheriumCrystalGenEnabled = config.get(CATEGORY_GEN_OPTIONS, "Etherium Crystal Generation in the End", true).getBoolean(true);
+
+		brassTreeGenEnabled = config.get(CATEGORY_GEN_OPTIONS, "Brass Tree Gen", true).getBoolean(true);
 
 		partyPooper = config.get(CATEGORY_GENERAL, "Remove all little fun things from mod", false).getBoolean(false);
 	}

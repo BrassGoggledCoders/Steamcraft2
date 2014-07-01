@@ -17,6 +17,7 @@ import java.io.File;
 import java.util.logging.Level;
 
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.MinecraftForge;
 import steamcraft.client.gui.GuiHandler;
 import steamcraft.common.compat.CompatabilityLayer;
@@ -25,7 +26,6 @@ import steamcraft.common.config.ConfigAchievements;
 import steamcraft.common.config.ConfigBlocks;
 import steamcraft.common.config.ConfigEntities;
 import steamcraft.common.config.ConfigItems;
-import steamcraft.common.config.ConfigKeyBindings;
 import steamcraft.common.config.ConfigRecipes;
 import steamcraft.common.config.ConfigWorldGen;
 import steamcraft.common.lib.CommandSteamcraft;
@@ -67,6 +67,8 @@ public class Steamcraft
 
 	/** The world gen. */
 	public ConfigWorldGen worldGen = new ConfigWorldGen();
+
+	public static BiomeGenBase biomeBrassForest;
 
 	/** The directory. */
 	public File directory;
@@ -129,6 +131,8 @@ public class Steamcraft
 
 		proxy.registerDisplayInformation();
 		proxy.registerRenderers();
+
+		//biomeBrassForest = new BiomeGenBrassForest(Config.biomeIDBrassForest).setBiomeName("Brass Forest");
 	}
 
 	/**

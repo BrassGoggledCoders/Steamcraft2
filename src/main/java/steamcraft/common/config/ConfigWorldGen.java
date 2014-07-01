@@ -19,8 +19,12 @@ import java.util.Random;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
+import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenMinable;
+import net.minecraftforge.common.BiomeDictionary;
+import net.minecraftforge.common.BiomeDictionary.Type;
+import steamcraft.common.worldgen.WorldGenBrassTree;
 import cpw.mods.fml.common.IWorldGenerator;
 
 // TODO: Auto-generated Javadoc
@@ -101,6 +105,18 @@ public class ConfigWorldGen implements IWorldGenerator
 					Blocks.stone);
 			generateOre(world, random, chunkX, chunkZ, Config.slateChance, Config.slateHeight, 30, ConfigBlocks.blockSlate, 2,
 					Blocks.stone);
+		}
+		BiomeGenBase biome = world.getBiomeGenForCoords(chunkX, chunkZ);
+		if(Config.brassTreeGenEnabled && BiomeDictionary.isBiomeOfType(biome, Type.FOREST))
+		{
+			for (int n = 0; n < Config.brassTreeGenChance; n++)
+			{
+				int X = chunkX + random.nextInt(16);
+				int Z = chunkZ + random.nextInt(16);
+				int Y = random.nextInt(70);
+
+				new WorldGenBrassTree(false).generate(world, random, X, Y, Z);
+			}
 		}
 	}
 
