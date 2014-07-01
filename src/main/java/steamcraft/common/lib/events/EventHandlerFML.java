@@ -8,10 +8,10 @@ import net.minecraft.event.HoverEvent;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
-import steamcraft.common.blocks.machines.BlockIntake;
-import steamcraft.common.blocks.machines.BlockSteamBoiler;
 import steamcraft.client.lib.GuiIDs;
 import steamcraft.common.Steamcraft;
+import steamcraft.common.blocks.machines.BlockIntake;
+import steamcraft.common.blocks.machines.BlockSteamBoiler;
 import steamcraft.common.config.Config;
 import steamcraft.common.config.ConfigAchievements;
 import steamcraft.common.config.ConfigKeyBindings;
@@ -22,6 +22,8 @@ import steamcraft.common.items.ItemShrinkray;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.InputEvent.KeyInputEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class EventHandlerFML
 {
@@ -105,6 +107,7 @@ public class EventHandlerFML
 		}
 	}
 	@SubscribeEvent
+	@SideOnly(Side.CLIENT)
 	public void KeyInputEvent(KeyInputEvent event)
 	{
 		if(ConfigKeyBindings.vanity.isPressed()) {

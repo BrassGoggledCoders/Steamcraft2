@@ -13,7 +13,8 @@ public class ItemTopHat extends BaseItem implements IVanityItem
 	@Override
 	public ModelBase getVanityItemModel()
 	{
-		return new ModelTopHat(1);
+		//return new ModelTopHat(1);
+		return null;
 	}
 
 	@Override
