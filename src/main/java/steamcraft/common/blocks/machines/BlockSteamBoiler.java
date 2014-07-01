@@ -40,10 +40,8 @@ public class BlockSteamBoiler extends BlockContainerMod
 {
 	@SideOnly(Side.CLIENT)
 	private IIcon iconTop;
-
 	@SideOnly(Side.CLIENT)
 	private IIcon iconFront;
-
 	@SideOnly(Side.CLIENT)
 	private IIcon iconFrontActive;
 
@@ -101,13 +99,12 @@ public class BlockSteamBoiler extends BlockContainerMod
 			if ((tile == null) || player.isSneaking())
 				return false;
 
-			System.out.println("works1");
 			player.openGui(Steamcraft.instance, GuiIDs.GUI_ID_STEAM_BOILER, world, par2, par3, par4);
 			return true;
 		}
 	}
 
-	public static void updateFurnaceBlockState(boolean par0, World par1World, int par2, int par3, int par4)
+	public static void updateBlockState(boolean par0, World par1World, int par2, int par3, int par4)
 	{
 		int var5 = par1World.getBlockMetadata(par2, par3, par4);
 		TileEntity tileentity = par1World.getTileEntity(par2, par3, par4);

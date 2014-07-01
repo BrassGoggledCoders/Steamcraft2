@@ -143,7 +143,7 @@ public class TileSteamBoiler extends BaseTileWithInventory implements IFluidHand
 			if (var1 != (furnaceBurnTime > 0))
 			{
 				var2 = true;
-				BlockSteamBoiler.updateFurnaceBlockState(furnaceBurnTime > 0, worldObj, xCoord, yCoord, zCoord);
+				BlockSteamBoiler.updateBlockState(furnaceBurnTime > 0, worldObj, xCoord, yCoord, zCoord);
 			}
 		}
 
