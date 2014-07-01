@@ -1,5 +1,5 @@
 /**
- * This class was created by <Surseance> or his SC2 development team.
+ * This class was created by BrassGoggledCoders modding team. 
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -9,7 +9,7 @@
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
  *
- * File created @ 23-May-2014
+ * File created @ [May 23, 2014, 1:55:12 PM]
  */
 package steamcraft.common.blocks.machines;
 
@@ -36,49 +36,28 @@ import steamcraft.common.tiles.TileSteamBoiler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-// TODO: Auto-generated Javadoc
-/**
- * The Class BlockSteamBoiler.
- */
 public class BlockSteamBoiler extends BlockContainerMod
 {
-
-	/** The icon top. */
 	@SideOnly(Side.CLIENT)
 	private IIcon iconTop;
 
-	/** The icon front. */
 	@SideOnly(Side.CLIENT)
 	private IIcon iconFront;
 
-	/** The icon front active. */
 	@SideOnly(Side.CLIENT)
 	private IIcon iconFrontActive;
 
-	/**
-	 * Instantiates a new block steam boiler.
-	 */
 	public BlockSteamBoiler()
 	{
 		super(Material.iron);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see net.minecraft.block.Block#damageDropped(int)
-	 */
 	@Override
 	public int damageDropped(int metadata)
 	{
 		return 0;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see net.minecraft.block.Block#getIcon(int, int)
-	 */
 	@SideOnly(Side.CLIENT)
 	@Override
 	public IIcon getIcon(int side, int meta)
@@ -100,13 +79,6 @@ public class BlockSteamBoiler extends BlockContainerMod
 		}
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * net.minecraft.block.Block#registerBlockIcons(net.minecraft.client.renderer
-	 * .texture.IIconRegister)
-	 */
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void registerBlockIcons(IIconRegister icon)
@@ -117,14 +89,6 @@ public class BlockSteamBoiler extends BlockContainerMod
 		iconTop = icon.registerIcon(LibInfo.PREFIX + "blockSteamBoilerTop");
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * net.minecraft.block.Block#onBlockActivated(net.minecraft.world.World,
-	 * int, int, int, net.minecraft.entity.player.EntityPlayer, int, float,
-	 * float, float)
-	 */
 	@Override
 	public boolean onBlockActivated(World world, int par2, int par3, int par4, EntityPlayer player, int par6, float par7, float par8, float par9)
 	{
@@ -143,20 +107,6 @@ public class BlockSteamBoiler extends BlockContainerMod
 		}
 	}
 
-	/**
-	 * Update furnace block state.
-	 * 
-	 * @param par0
-	 *            the par0
-	 * @param par1World
-	 *            the par1 world
-	 * @param par2
-	 *            the par2
-	 * @param par3
-	 *            the par3
-	 * @param par4
-	 *            the par4
-	 */
 	public static void updateFurnaceBlockState(boolean par0, World par1World, int par2, int par3, int par4)
 	{
 		int var5 = par1World.getBlockMetadata(par2, par3, par4);
@@ -178,13 +128,6 @@ public class BlockSteamBoiler extends BlockContainerMod
 		}
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * net.minecraft.block.Block#randomDisplayTick(net.minecraft.world.World,
-	 * int, int, int, java.util.Random)
-	 */
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(World world, int par2, int par3, int par4, Random par5Random)
@@ -221,27 +164,12 @@ public class BlockSteamBoiler extends BlockContainerMod
 		}
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * net.minecraft.block.ITileEntityProvider#createNewTileEntity(net.minecraft
-	 * .world.World, int)
-	 */
 	@Override
 	public TileEntity createNewTileEntity(World par1World, int metadata)
 	{
 		return new TileSteamBoiler();
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * steamcraft.common.blocks.machine.BlockContainerMod#onBlockPlacedBy(net
-	 * .minecraft.world.World, int, int, int,
-	 * net.minecraft.entity.EntityLivingBase, net.minecraft.item.ItemStack)
-	 */
 	@Override
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase living, ItemStack stack)
 	{
@@ -262,13 +190,6 @@ public class BlockSteamBoiler extends BlockContainerMod
 		super.onBlockPlacedBy(world, x, y, z, living, stack);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * steamcraft.common.blocks.machine.BlockContainerMod#breakBlock(net.minecraft
-	 * .world.World, int, int, int, net.minecraft.block.Block, int)
-	 */
 	@Override
 	public void breakBlock(World par1World, int par2, int par3, int par4, Block block, int par6)
 	{
@@ -314,24 +235,12 @@ public class BlockSteamBoiler extends BlockContainerMod
 		super.breakBlock(par1World, par2, par3, par4, block, par6);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see net.minecraft.block.Block#hasComparatorInputOverride()
-	 */
 	@Override
 	public boolean hasComparatorInputOverride()
 	{
 		return true;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * net.minecraft.block.Block#getComparatorInputOverride(net.minecraft.world
-	 * .World, int, int, int, int)
-	 */
 	@Override
 	public int getComparatorInputOverride(World par1World, int par2, int par3, int par4, int par5)
 	{

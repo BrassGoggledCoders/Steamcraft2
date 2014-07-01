@@ -8,9 +8,9 @@ import steamcraft.common.tiles.TileTurbine;
 public class BlockTurbine extends BlockContainerMod
 {
 
-	public BlockTurbine(Material mat)
+	public BlockTurbine()
 	{
-		super(mat);
+		super(Material.iron);
 	}
 
 	@Override

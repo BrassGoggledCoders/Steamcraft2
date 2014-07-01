@@ -24,10 +24,9 @@ import steamcraft.common.tiles.TileIntake;
  */
 public class BlockIntake extends BlockContainerMod
 {
-	public BlockIntake(Material p_i45394_1_)
+	public BlockIntake()
 	{
-		super(p_i45394_1_);
-		setBlockName("blockIntake");
+		super(Material.iron);
 	}
 
 	@Override

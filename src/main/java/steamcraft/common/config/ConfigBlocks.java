@@ -173,14 +173,14 @@ public class ConfigBlocks
 	{
 		// Steam related
 		blockSteamBoiler = new BlockSteamBoiler().setBlockName("blockSteamBoiler");
-		blockIntake = new BlockIntake(Material.iron);
+		blockIntake = new BlockIntake().setBlockName("blockIntake");
 		
 		RegistryHelper.registerContainerBlockWithDesc(blockSteamBoiler, TileSteamBoiler.class, "BlockSteamBoiler");
 		RegistryHelper.registerContainerBlockWithDesc(blockIntake,TileIntake.class, "BlockIntake");
 		
 		// Energy related
-		blockTurbine = new BlockTurbine(Material.iron).setBlockName("blockTurbine");
-		blockBattery = new BlockBattery(Material.iron).setBlockName("blockBattery");
+		blockTurbine = new BlockTurbine().setBlockName("blockTurbine");
+		blockBattery = new BlockBattery().setBlockName("blockBattery");
 		
 		RegistryHelper.registerContainerBlock(blockTurbine, TileTurbine.class, "BlockTurbine");
 		//RegistryHelper.registerContainerBlock(blockBattery, TileBattery.class, "BlockBattery");
