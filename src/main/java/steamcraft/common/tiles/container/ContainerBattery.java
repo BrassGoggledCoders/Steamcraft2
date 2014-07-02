@@ -9,7 +9,7 @@ public class ContainerBattery extends Container
 {
 	public ContainerBattery(InventoryPlayer inventory, TileBattery tile)
 	{
-		// TODO Auto-generated constructor stub
+
 	}
 
 	@Override
