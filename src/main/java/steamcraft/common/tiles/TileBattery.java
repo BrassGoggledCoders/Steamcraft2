@@ -19,6 +19,8 @@ import net.minecraftforge.common.util.ForgeDirection;
 import cofh.api.energy.EnergyStorage;
 import cofh.api.energy.IEnergyContainerItem;
 import cofh.api.energy.IEnergyHandler;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author decebaldecebal
@@ -28,8 +30,6 @@ public class TileBattery extends BaseTileWithInventory implements IEnergyHandler
 {
 	private static int initialEnergy = 1000000;
 	private static short initialTransferRate = 400;
-	
-	private byte ticksTillUpdate = 0;
 	
 	public int totalEnergy = 0;
 	public int maxEnergy = 0;
@@ -56,22 +56,39 @@ public class TileBattery extends BaseTileWithInventory implements IEnergyHandler
 		buffer.writeToNBT(tag);
 	}
 	
+	@SideOnly(Side.CLIENT)
+	public int getEnergyScaled(int par1)
+	{
+		return (this.totalEnergy+buffer.getEnergyStored())*1000 / (this.maxEnergy+initialEnergy) / par1;
+	}
+	
 	@Override
 	public void updateEntity()
 	{
 		if (!worldObj.isRemote)
 		{
-			ticksTillUpdate++;
-			
-			if(ticksTillUpdate > 100)
+			if(buffer.getEnergyStored()!=0)
+				this.chargeItems();
+		}
+	}
+	
+	private void chargeItems()
+	{		
+		for(ItemStack stack : inventory)
+		{
+			if(stack!=null)
 			{
-				ticksTillUpdate = 0;
-				updateEnergyFromInv();
+				IEnergyContainerItem item = (IEnergyContainerItem) stack.getItem();
+				
+				buffer.modifyEnergyStored(-item.receiveEnergy(stack, buffer.getEnergyStored(), false));
+				
+				if(buffer.getEnergyStored()==0)
+					break;
 			}
 		}
 	}
 	
-	private void updateEnergyFromInv()
+	public void updateEnergyFromInv()
 	{
 		this.maxEnergy = 0;
 		this.totalEnergy = 0;

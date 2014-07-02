@@ -1,5 +1,5 @@
 /**
- * This class was created by <Surseance> or his SC2 development team.
+ * This class was created by BrassGoggledCoders modding team. 
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -9,7 +9,7 @@
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
  *
- * File created @ 23-May-2014
+ * File created @ [May 23, 2014, 3:07:44 PM]
  */
 package steamcraft.client.gui;
 
@@ -29,9 +29,9 @@ import steamcraft.common.tiles.container.ContainerBloomery;
 import steamcraft.common.tiles.container.ContainerSteamBoiler;
 import cpw.mods.fml.common.network.IGuiHandler;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class GuiHandler.
+ * @author Surseanca
+ * 
  */
 public class GuiHandler implements IGuiHandler
 {
@@ -42,16 +42,16 @@ public class GuiHandler implements IGuiHandler
 
 		switch (id)
 		{
-		case GuiIDs.GUI_ID_STEAM_BOILER:
-			return new ContainerSteamBoiler(player.inventory, (TileSteamBoiler) tile);
-		case GuiIDs.GUI_ID_VANITY:
-			return new ContainerVanity(player, player.inventory, EntityPlayerExtended.get(player).inventory);
-		case GuiIDs.GUI_ID_ARMOREDITOR:
-			return new ContainerArmorEditor(player.inventory, (TileArmorEditor) tile);
-		case GuiIDs.GUI_ID_BLOOMERY:
-			return new ContainerBloomery(player.inventory, (TileBloomery) tile);
-		case GuiIDs.GUI_ID_BATTERY:
-			return new ContainerBattery(player.inventory, (TileBattery) tile);
+			case GuiIDs.GUI_ID_STEAM_BOILER:
+				return new ContainerSteamBoiler(player.inventory, (TileSteamBoiler) tile);
+			case GuiIDs.GUI_ID_VANITY:
+				return new ContainerVanity(player, player.inventory, EntityPlayerExtended.get(player).inventory);
+			case GuiIDs.GUI_ID_ARMOREDITOR:
+				return new ContainerArmorEditor(player.inventory, (TileArmorEditor) tile);
+			case GuiIDs.GUI_ID_BLOOMERY:
+				return new ContainerBloomery(player.inventory, (TileBloomery) tile);
+			case GuiIDs.GUI_ID_BATTERY:
+				return new ContainerBattery(player.inventory, (TileBattery) tile);
 		}
 		return null;
 	}

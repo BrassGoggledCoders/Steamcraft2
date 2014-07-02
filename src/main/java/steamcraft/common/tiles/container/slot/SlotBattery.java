@@ -17,6 +17,7 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import steamcraft.common.items.ItemElectricJar;
+import steamcraft.common.tiles.TileBattery;
 
 /**
  * @author decebaldecebal
@@ -24,9 +25,13 @@ import steamcraft.common.items.ItemElectricJar;
  */
 public class SlotBattery extends Slot
 {
-	public SlotBattery(IInventory par1iInventory, int par2, int par3, int par4)
+	TileBattery tile;
+	
+	public SlotBattery(IInventory inv, int par2, int par3, int par4)
 	{
-		super(par1iInventory, par2, par3, par4);
+		super(inv, par2, par3, par4);
+		
+		tile = (TileBattery) inv;
 	}
 
 	@Override
@@ -35,5 +40,13 @@ public class SlotBattery extends Slot
 		if (stack.getItem() instanceof ItemElectricJar)
 			return true;
 		return false;
+	}
+	
+	@Override
+	public void onSlotChange(ItemStack stack1, ItemStack stack2)
+	{
+		super.onSlotChange(stack1, stack2);
+		
+		tile.updateEnergyFromInv();
 	}
 }

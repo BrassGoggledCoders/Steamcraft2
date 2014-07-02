@@ -19,13 +19,9 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntityFurnace;
-import net.minecraftforge.fluids.FluidContainerRegistry;
-import net.minecraftforge.fluids.FluidRegistry;
-import net.minecraftforge.fluids.FluidStack;
-import steamcraft.common.config.ConfigItems;
 import steamcraft.common.tiles.TileBattery;
 import steamcraft.common.tiles.container.slot.SlotBattery;
+import cofh.api.energy.IEnergyContainerItem;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -45,12 +41,12 @@ public class ContainerBattery extends Container
 	{
 		tile_entity = tile;
 		
-		addSlotToContainer(new SlotBattery(tile, 0, 42, 52));
-		addSlotToContainer(new SlotBattery(tile, 1, 132, 57));
-		addSlotToContainer(new SlotBattery(tile, 2, 132, 21));
-		addSlotToContainer(new SlotBattery(tile, 3, 132, 21));
-		addSlotToContainer(new SlotBattery(tile, 4, 132, 21));
-		addSlotToContainer(new SlotBattery(tile, 5, 132, 21));
+		addSlotToContainer(new SlotBattery(tile, 0, 98, 22));
+		addSlotToContainer(new SlotBattery(tile, 1, 116, 22));
+		addSlotToContainer(new SlotBattery(tile, 2, 134, 22));
+		addSlotToContainer(new SlotBattery(tile, 3, 98, 40));
+		addSlotToContainer(new SlotBattery(tile, 4, 116, 40));
+		addSlotToContainer(new SlotBattery(tile, 5, 134, 40));
 
 		int var3;
 
@@ -125,43 +121,20 @@ public class ContainerBattery extends Container
 			ItemStack var5 = var4.getStack();
 			var3 = var5.copy();
 
-			if (par2 > 2)
+			if (par2 > 5)
 			{
-				FluidStack liquid = FluidContainerRegistry.getFluidForFilledItem(var5);
-
-				if ((liquid != null) && (liquid.getFluid() == FluidRegistry.WATER))
+				if (var5.getItem() instanceof IEnergyContainerItem)
 				{
-					if (!mergeItemStack(var5, 1, 2, false))
-						return null;
-				}
-				else if (TileEntityFurnace.getItemBurnTime(var5) > 0)
-				{
-					if (!mergeItemStack(var5, 0, 1, false))
-						if ((par2 >= 3) && (par2 < 30))
-						{
-							if (!mergeItemStack(var5, 30, 39, false))
+					if (!mergeItemStack(var5, 0, 5, false))
+							if (!mergeItemStack(var5, 33, 42, false))
 								return null;
-						}
-						else if ((par2 >= 30) && (par2 < 39) && !mergeItemStack(var5, 3, 30, false))
-							return null;
 				}
-				else if (var5.getItem() == ConfigItems.itemCanisterSteam)
-				{
-					if (!mergeItemStack(var5, 2, 3, false))
-						if ((par2 >= 3) && (par2 < 30))
-						{
-							if (!mergeItemStack(var5, 30, 39, false))
-								return null;
-						}
-						else if ((par2 >= 30) && (par2 < 39) && !mergeItemStack(var5, 3, 30, false))
-							return null;
-				}
-				else if ((par2 >= 3) && (par2 < 30) && !mergeItemStack(var5, 30, 39, false))
+				else if ((par2 >= 6) && (par2 < 33) && !mergeItemStack(var5, 33, 42, false))
 					return null;
-				else if ((par2 >= 30) && (par2 < 39) && !mergeItemStack(var5, 3, 30, false))
+				else if ((par2 >= 33) && (par2 < 42) && !mergeItemStack(var5, 6, 33, false))
 					return null;
 			}
-			else if (!mergeItemStack(var5, 3, 39, false))
+			else if (!mergeItemStack(var5, 6, 42, false))
 				return null;
 
 			if (var5.stackSize == 0)
