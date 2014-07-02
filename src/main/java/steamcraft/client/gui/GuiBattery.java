@@ -52,6 +52,12 @@ public class GuiBattery extends GuiContainer
 		int var8 = tile.getEnergyScaled(31);
 		this.drawTexturedModalRect(var5 + 12, var6 + 64 - var8, 176, 54 - var8, 16, var8 + 1);
 		
+		
+	}
+	
+	@Override
+	protected void drawGuiContainerForegroundLayer(int par1, int par2) 
+	{
 		this.drawString(fontRendererObj, "Energy: ", 40, 10, -16777216);
 	}
 }

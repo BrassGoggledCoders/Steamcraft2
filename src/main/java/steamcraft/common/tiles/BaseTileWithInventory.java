@@ -25,7 +25,7 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 
 /**
- * Basic machine class.Every machine should extend this.
+ * Basic machine class.Every machine that has an inventory should extend this.
  * 
  * @author Decebaldecebal
  */

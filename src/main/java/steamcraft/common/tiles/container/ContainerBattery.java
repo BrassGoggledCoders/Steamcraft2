@@ -34,6 +34,7 @@ public class ContainerBattery extends Container
 	private int lastTotalEnergy = 0;
 	private int lastMaxEnergy = 0;
 	private short lastTransferRate = 0;
+	private int lastBufferEnergy;
 	
 	TileBattery tile_entity;
 	
@@ -66,6 +67,7 @@ public class ContainerBattery extends Container
 		crafting.sendProgressBarUpdate(this, 0, tile_entity.totalEnergy);
 		crafting.sendProgressBarUpdate(this, 1, tile_entity.maxEnergy);
 		crafting.sendProgressBarUpdate(this, 2, tile_entity.transferRate);
+		crafting.sendProgressBarUpdate(this, 3, tile_entity.buffer.getEnergyStored());
 	}
 
 	@Override
@@ -85,11 +87,15 @@ public class ContainerBattery extends Container
 			
 			if (lastTransferRate != tile_entity.transferRate)
 				var2.sendProgressBarUpdate(this, 2, tile_entity.transferRate);
+			
+			if (lastBufferEnergy != tile_entity.buffer.getEnergyStored())
+				var2.sendProgressBarUpdate(this, 3, tile_entity.buffer.getEnergyStored());
 		}
 
 		lastTotalEnergy = tile_entity.totalEnergy;
 		lastMaxEnergy = tile_entity.maxEnergy;
 		lastTransferRate = tile_entity.transferRate;
+		lastBufferEnergy = tile_entity.buffer.getEnergyStored();
 	}
 
 	@Override
@@ -102,6 +108,8 @@ public class ContainerBattery extends Container
 			tile_entity.maxEnergy = par2;
 		else if (par1 == 2)
 			tile_entity.transferRate = (short) par2;
+		else if (par1 == 3)
+			tile_entity.buffer.setEnergyStored(par2);
 	}
 	
 	@Override
@@ -125,16 +133,16 @@ public class ContainerBattery extends Container
 			{
 				if (var5.getItem() instanceof IEnergyContainerItem)
 				{
-					if (!mergeItemStack(var5, 0, 5, false))
+					if (!mergeItemStack(var5, 0, 6, false))
 							if (!mergeItemStack(var5, 33, 42, false))
 								return null;
 				}
-				else if ((par2 >= 6) && (par2 < 33) && !mergeItemStack(var5, 33, 42, false))
+				else if ((par2 >= 6) && (par2 < 34) && !mergeItemStack(var5, 34, 43, false))
 					return null;
-				else if ((par2 >= 33) && (par2 < 42) && !mergeItemStack(var5, 6, 33, false))
+				else if ((par2 >= 34) && (par2 < 43) && !mergeItemStack(var5, 6, 34, false))
 					return null;
 			}
-			else if (!mergeItemStack(var5, 6, 42, false))
+			else if (!mergeItemStack(var5, 6, 43, false))
 				return null;
 
 			if (var5.stackSize == 0)

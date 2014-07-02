@@ -35,7 +35,7 @@ public class TileBattery extends BaseTileWithInventory implements IEnergyHandler
 	public int maxEnergy = 0;
 	public short transferRate = initialTransferRate;
 	
-	private EnergyStorage buffer = new EnergyStorage(initialEnergy, initialTransferRate);
+	public EnergyStorage buffer = new EnergyStorage(initialEnergy, initialTransferRate);
 	
 	public TileBattery()
 	{
@@ -145,8 +145,6 @@ public class TileBattery extends BaseTileWithInventory implements IEnergyHandler
 					usedEnergy += item.receiveEnergy(stack, maxReceive, simulate);
 					maxReceive -= usedEnergy;
 				}
-				else
-					break;
 			}
 		}
 	
@@ -192,5 +190,11 @@ public class TileBattery extends BaseTileWithInventory implements IEnergyHandler
 	public int getMaxEnergyStored(ForgeDirection from)
 	{
 		return buffer.getMaxEnergyStored() + this.maxEnergy;
+	}
+	
+	@Override
+	public String getInventoryName()
+	{
+		return "Battery";
 	}
 }
