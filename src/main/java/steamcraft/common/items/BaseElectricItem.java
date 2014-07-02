@@ -33,7 +33,7 @@ public class BaseElectricItem extends BaseItem implements IEnergyContainerItem
 	protected short maxReceive;
 	protected short maxSend;
 	
-	public BaseElectricItem(int maxEnergy, int maxReceive, int maxSend)
+	public BaseElectricItem(int maxEnergy, int maxSend, int maxReceive)
 	{
 		super();
 		this.maxEnergy = maxEnergy*1000;
