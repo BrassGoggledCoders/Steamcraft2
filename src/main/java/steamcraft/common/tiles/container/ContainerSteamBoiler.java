@@ -28,41 +28,23 @@ import steamcraft.common.tiles.TileSteamBoiler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class ContainerSteamBoiler.
- * 
  * @author Decebaldecebal
+ * 
  */
 public class ContainerSteamBoiler extends Container
 {
-
-	/** The tile_entity. */
 	protected TileSteamBoiler tile_entity;
 
-	/** The last burn time. */
 	private int lastBurnTime = 0;
-
-	/** The last item burn time. */
 	private int lastItemBurnTime = 0;
-
-	/** The last steam level. */
 	private int lastSteamLevel = 0;
-
-	/** The last water level. */
 	private int lastWaterLevel = 0;
 
-	/**
-	 * Instantiates a new container steam boiler.
-	 * 
-	 * @param player
-	 *            the player
-	 * @param tile
-	 *            the tile
-	 */
 	public ContainerSteamBoiler(InventoryPlayer player, TileSteamBoiler tile)
 	{
 		tile_entity = tile;
+		
 		addSlotToContainer(new Slot(tile, 0, 42, 52));
 		addSlotToContainer(new Slot(tile, 1, 132, 57)
 		{
@@ -95,13 +77,6 @@ public class ContainerSteamBoiler extends Container
 			addSlotToContainer(new Slot(player, var3, 8 + (var3 * 18), 142));
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * net.minecraft.inventory.Container#addCraftingToCrafters(net.minecraft
-	 * .inventory.ICrafting)
-	 */
 	@Override
 	public void addCraftingToCrafters(ICrafting par1ICrafting)
 	{
@@ -112,11 +87,6 @@ public class ContainerSteamBoiler extends Container
 		par1ICrafting.sendProgressBarUpdate(this, 3, tile_entity.waterTank.getFluidAmount());
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see net.minecraft.inventory.Container#detectAndSendChanges()
-	 */
 	@Override
 	public void detectAndSendChanges()
 	{
@@ -145,11 +115,6 @@ public class ContainerSteamBoiler extends Container
 		lastWaterLevel = tile_entity.waterTank.getFluidAmount();
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see net.minecraft.inventory.Container#updateProgressBar(int, int)
-	 */
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void updateProgressBar(int par1, int par2)
@@ -164,26 +129,12 @@ public class ContainerSteamBoiler extends Container
 			tile_entity.waterTank.setFluid(new FluidStack(FluidRegistry.getFluid("water"), par2));
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * net.minecraft.inventory.Container#canInteractWith(net.minecraft.entity
-	 * .player.EntityPlayer)
-	 */
 	@Override
 	public boolean canInteractWith(EntityPlayer par1EntityPlayer)
 	{
 		return tile_entity.isUseableByPlayer(par1EntityPlayer);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * net.minecraft.inventory.Container#transferStackInSlot(net.minecraft.entity
-	 * .player.EntityPlayer, int)
-	 */
 	@Override
 	public ItemStack transferStackInSlot(EntityPlayer par1EntityPlayer, int par2)
 	{

@@ -29,11 +29,11 @@ public class TileBattery extends BaseTileWithInventory implements IEnergyHandler
 	private static int initialEnergy = 1000000;
 	private static short initialTransferRate = 400;
 	
-	private short ticksTillUpdate = 0;
+	private byte ticksTillUpdate = 0;
 	
-	private int totalEnergy = 0;
-	private int maxEnergy = 0;
-	private short transferRate = initialTransferRate;
+	public int totalEnergy = 0;
+	public int maxEnergy = 0;
+	public short transferRate = initialTransferRate;
 	
 	private EnergyStorage buffer = new EnergyStorage(initialEnergy, initialTransferRate);
 	
@@ -63,7 +63,7 @@ public class TileBattery extends BaseTileWithInventory implements IEnergyHandler
 		{
 			ticksTillUpdate++;
 			
-			if(ticksTillUpdate > 200)
+			if(ticksTillUpdate > 100)
 			{
 				ticksTillUpdate = 0;
 				updateEnergyFromInv();
@@ -102,16 +102,8 @@ public class TileBattery extends BaseTileWithInventory implements IEnergyHandler
 			default:
 				this.transferRate = 10000;
 		}
-	}
-	
-	private int getEnergyFromItems()
-	{
-		return 0;
-	}
-	
-	private int getMaxEnergyFromItems()
-	{
-		return 0;
+		
+		buffer.setMaxTransfer(this.transferRate);
 	}
 	
 	@Override
@@ -123,24 +115,65 @@ public class TileBattery extends BaseTileWithInventory implements IEnergyHandler
 	@Override
 	public int receiveEnergy(ForgeDirection from, int maxReceive, boolean simulate)
 	{
-		return 0;
+		int usedEnergy = 0;
+		
+		for(ItemStack stack : inventory)
+		{
+			if(stack!=null)
+			{
+				IEnergyContainerItem item = (IEnergyContainerItem) stack.getItem();
+				
+				if(maxReceive > 0)
+				{
+					usedEnergy += item.receiveEnergy(stack, maxReceive, simulate);
+					maxReceive -= usedEnergy;
+				}
+				else
+					break;
+			}
+		}
+	
+		if(maxReceive != 0)
+			usedEnergy += buffer.receiveEnergy(maxReceive, simulate);
+			
+		return usedEnergy;
 	}
 	
 	@Override
 	public int extractEnergy(ForgeDirection from, int maxExtract, boolean simulate)
 	{
-		return 0;
+		int usedEnergy = buffer.extractEnergy(maxExtract, simulate);
+		maxExtract -= usedEnergy;
+		
+		if(maxExtract != 0)
+			for(ItemStack stack : inventory)
+			{
+				if(stack!=null)
+				{
+					IEnergyContainerItem item = (IEnergyContainerItem) stack.getItem();
+					
+					if(maxExtract > 0)
+					{
+						usedEnergy += item.receiveEnergy(stack, maxExtract, simulate);
+						maxExtract -= usedEnergy;
+					}
+					else
+						break;
+				}
+			}
+		
+		return usedEnergy;
 	}
 
 	@Override
 	public int getEnergyStored(ForgeDirection from)
 	{
-		return buffer.getEnergyStored() + getEnergyFromItems();
+		return buffer.getEnergyStored() + this.totalEnergy;
 	}
 
 	@Override
 	public int getMaxEnergyStored(ForgeDirection from)
 	{
-		return buffer.getMaxEnergyStored() + getMaxEnergyFromItems();
+		return buffer.getMaxEnergyStored() + this.maxEnergy;
 	}
 }
