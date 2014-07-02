@@ -34,7 +34,7 @@ import cofh.api.energy.IEnergyHandler;
 public class TileTurbine extends TileEntity implements IFluidHandler, IEnergyHandler
 {
 	private static byte steamPerTick = TileSteamBoiler.steamPerTick/2;
-	private static byte RFPerTick = 127; //Same as RC ratio of 1 MJ/5 steam
+	private static byte RFPerTick = 100; //Same as RC ratio of 1 MJ/5 steam
 	
 	private FluidTank steamTank = new FluidTank(new FluidStack(FluidRegistry.getFluid("steam"), 0), 10000);
 	

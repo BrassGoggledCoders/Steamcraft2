@@ -58,6 +58,6 @@ public class GuiBattery extends GuiContainer
 	@Override
 	protected void drawGuiContainerForegroundLayer(int par1, int par2) 
 	{
-		this.drawString(fontRendererObj, "Energy: ", 40, 10, -16777216);
+		this.drawString(fontRendererObj, "Energy: ", 40, 10, -16);
 	}
 }

@@ -142,34 +142,6 @@ public class TileBattery extends BaseTileWithInventory implements IEnergyHandler
 	@Override
 	public int receiveEnergy(ForgeDirection from, int maxReceive, boolean simulate)
 	{
-		/*
-		int usedEnergy = 0;
-		
-		for(ItemStack stack : inventory)
-		{
-			if(stack!=null)
-			{
-				IEnergyContainerItem item = (IEnergyContainerItem) stack.getItem();
-				
-				if(maxReceive > 0)
-				{
-					usedEnergy += item.receiveEnergy(stack, maxReceive, simulate);
-					maxReceive -= usedEnergy;
-				}
-				else
-					break;
-			}
-		}
-	
-		System.out.println("," + maxReceive + ";" + usedEnergy);
-		
-		if(maxReceive != 0)
-			usedEnergy += buffer.receiveEnergy(maxReceive, simulate);
-			
-		*/
-		
-		System.out.print(":" + buffer.getEnergyStored());
-		
 		return buffer.receiveEnergy(maxReceive, simulate);
 	}
 	
