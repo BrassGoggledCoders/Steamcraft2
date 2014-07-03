@@ -29,7 +29,6 @@ import steamcraft.client.lib.GuiIDs;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.LibInfo;
 import steamcraft.common.tiles.TileBattery;
-import steamcraft.common.tiles.TileSteamBoiler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -98,44 +97,41 @@ public class BlockBattery extends BlockContainerMod
 	@Override
 	public void breakBlock(World par1World, int par2, int par3, int par4, Block block, int par6)
 	{
-		if (!keepInventory)
-		{
-			TileSteamBoiler var7 = (TileSteamBoiler) par1World.getTileEntity(par2, par3, par4);
+		TileBattery var7 = (TileBattery) par1World.getTileEntity(par2, par3, par4);
 
-			if (var7 != null)
-				for (int var8 = 0; var8 < var7.getSizeInventory(); ++var8)
+		if (var7 != null)
+			for (int var8 = 0; var8 < var7.getSizeInventory(); ++var8)
+			{
+				ItemStack var9 = var7.getStackInSlot(var8);
+
+				if (var9 != null)
 				{
-					ItemStack var9 = var7.getStackInSlot(var8);
+					float var10 = (random.nextFloat() * 0.8F) + 0.1F;
+					float var11 = (random.nextFloat() * 0.8F) + 0.1F;
+					float var12 = (random.nextFloat() * 0.8F) + 0.1F;
 
-					if (var9 != null)
+					while (var9.stackSize > 0)
 					{
-						float var10 = (random.nextFloat() * 0.8F) + 0.1F;
-						float var11 = (random.nextFloat() * 0.8F) + 0.1F;
-						float var12 = (random.nextFloat() * 0.8F) + 0.1F;
+						int var13 = random.nextInt(21) + 10;
 
-						while (var9.stackSize > 0)
-						{
-							int var13 = random.nextInt(21) + 10;
+						if (var13 > var9.stackSize)
+							var13 = var9.stackSize;
 
-							if (var13 > var9.stackSize)
-								var13 = var9.stackSize;
+						var9.stackSize -= var13;
+						EntityItem var14 = new EntityItem(par1World, par2 + var10, par3 + var11, par4 + var12, new ItemStack(var9.getItem(),
+								var13, var9.getItemDamage()));
 
-							var9.stackSize -= var13;
-							EntityItem var14 = new EntityItem(par1World, par2 + var10, par3 + var11, par4 + var12, new ItemStack(var9.getItem(),
-									var13, var9.getItemDamage()));
+						if (var9.hasTagCompound())
+							var14.getEntityItem().setTagCompound((NBTTagCompound) var9.getTagCompound().copy());
 
-							if (var9.hasTagCompound())
-								var14.getEntityItem().setTagCompound((NBTTagCompound) var9.getTagCompound().copy());
-
-							float var15 = 0.05F;
-							var14.motionX = (float) random.nextGaussian() * var15;
-							var14.motionY = ((float) random.nextGaussian() * var15) + 0.2F;
-							var14.motionZ = (float) random.nextGaussian() * var15;
-							par1World.spawnEntityInWorld(var14);
-						}
+						float var15 = 0.05F;
+						var14.motionX = (float) random.nextGaussian() * var15;
+						var14.motionY = ((float) random.nextGaussian() * var15) + 0.2F;
+						var14.motionZ = (float) random.nextGaussian() * var15;
+						par1World.spawnEntityInWorld(var14);
 					}
 				}
-		}
+			}
 
 		super.breakBlock(par1World, par2, par3, par4, block, par6);
 	}

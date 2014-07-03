@@ -30,6 +30,8 @@ public class TileBattery extends BaseTileWithInventory implements IEnergyHandler
 {
 	private static int initialEnergy = 1000000;
 	private static short initialTransferRate = 400;
+
+	private byte ticksSinceUpdate = 0;
 	
 	public int totalEnergy = 0;
 	public int maxEnergy = 0;
@@ -67,7 +69,15 @@ public class TileBattery extends BaseTileWithInventory implements IEnergyHandler
 	{
 		if (!worldObj.isRemote)
 		{
-			if(buffer.getEnergyStored()!=0)
+			ticksSinceUpdate++;
+			
+			if(ticksSinceUpdate > 100)
+			{
+				ticksSinceUpdate = 0;
+				updateEnergyFromInv();
+			}
+			
+			if(buffer.getEnergyStored() > 0)
 				this.chargeItems();
 		}
 	}
@@ -82,7 +92,7 @@ public class TileBattery extends BaseTileWithInventory implements IEnergyHandler
 				
 				buffer.modifyEnergyStored(-item.receiveEnergy(stack, buffer.getEnergyStored(), false));
 				
-				if(buffer.getEnergyStored()==0)
+				if(buffer.getEnergyStored() < 0)
 					break;
 			}
 		}
@@ -132,6 +142,7 @@ public class TileBattery extends BaseTileWithInventory implements IEnergyHandler
 	@Override
 	public int receiveEnergy(ForgeDirection from, int maxReceive, boolean simulate)
 	{
+		/*
 		int usedEnergy = 0;
 		
 		for(ItemStack stack : inventory)
@@ -145,13 +156,21 @@ public class TileBattery extends BaseTileWithInventory implements IEnergyHandler
 					usedEnergy += item.receiveEnergy(stack, maxReceive, simulate);
 					maxReceive -= usedEnergy;
 				}
+				else
+					break;
 			}
 		}
 	
+		System.out.println("," + maxReceive + ";" + usedEnergy);
+		
 		if(maxReceive != 0)
 			usedEnergy += buffer.receiveEnergy(maxReceive, simulate);
 			
-		return usedEnergy;
+		*/
+		
+		System.out.print(":" + buffer.getEnergyStored());
+		
+		return buffer.receiveEnergy(maxReceive, simulate);
 	}
 	
 	@Override

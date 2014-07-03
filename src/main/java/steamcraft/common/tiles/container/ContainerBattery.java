@@ -137,12 +137,12 @@ public class ContainerBattery extends Container
 							if (!mergeItemStack(var5, 33, 42, false))
 								return null;
 				}
-				else if ((par2 >= 6) && (par2 < 34) && !mergeItemStack(var5, 34, 43, false))
+				else if ((par2 >= 6) && (par2 < 33) && !mergeItemStack(var5, 33, 42, false))
 					return null;
-				else if ((par2 >= 34) && (par2 < 43) && !mergeItemStack(var5, 6, 34, false))
+				else if ((par2 >= 33) && (par2 < 42) && !mergeItemStack(var5, 6, 33, false))
 					return null;
 			}
-			else if (!mergeItemStack(var5, 6, 43, false))
+			else if (!mergeItemStack(var5, 6, 42, false))
 				return null;
 
 			if (var5.stackSize == 0)
