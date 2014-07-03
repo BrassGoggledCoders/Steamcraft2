@@ -37,6 +37,14 @@ public class CompatabilityLayer
 	 */
 	private static void registerOreDictionaryEntries()
 	{
+		OreDictHelper.registerOreWithAlts(new String[] { "oreAluminum", "oreAluminium" }, new ItemStack(ConfigBlocks.blockCustomOre, 1, 0));
+		OreDictionary.registerOre("oreCopper", new ItemStack(ConfigBlocks.blockCustomOre, 1, 1));
+		OreDictionary.registerOre("oreTin", new ItemStack(ConfigBlocks.blockCustomOre, 1, 2));
+		OreDictionary.registerOre("oreZinc", new ItemStack(ConfigBlocks.blockCustomOre, 1, 3));
+		OreDictionary.registerOre("oreBrass", new ItemStack(ConfigBlocks.blockCustomOre, 1, 4));
+		OreDictionary.registerOre("oreBronze", new ItemStack(ConfigBlocks.blockCustomOre, 1, 5));
+		OreDictionary.registerOre("oreCastIron", new ItemStack(ConfigBlocks.blockCustomOre, 1, 6));
+
 		OreDictHelper.registerOreWithAlts(new String[] { "ingotAluminum", "ingotAluminium" }, new ItemStack(ConfigItems.itemIngot, 1, 0));
 		OreDictionary.registerOre("ingotCopper", new ItemStack(ConfigItems.itemIngot, 1, 1));
 		OreDictionary.registerOre("ingotTin", new ItemStack(ConfigItems.itemIngot, 1, 2));
