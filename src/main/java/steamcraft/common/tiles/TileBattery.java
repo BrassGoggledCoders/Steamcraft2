@@ -13,8 +13,11 @@
  */
 package steamcraft.common.tiles;
 
+import java.util.EnumSet;
+
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
 import cofh.api.energy.EnergyStorage;
 import cofh.api.energy.IEnergyContainerItem;
@@ -29,7 +32,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class TileBattery extends BaseTileWithInventory implements IEnergyHandler
 {
 	private static int initialEnergy = 1000000;
-	private static short initialTransferRate = 400;
+	private static short initialTransferRate = 1000;
 
 	private byte ticksSinceUpdate = 0;
 	
@@ -79,6 +82,25 @@ public class TileBattery extends BaseTileWithInventory implements IEnergyHandler
 			
 			if(buffer.getEnergyStored() > 0)
 				this.chargeItems();
+			
+			if(buffer.getEnergyStored() >= this.transferRate)
+			{
+				short outputEnergy = (short) this.extractEnergy(ForgeDirection.UNKNOWN, this.transferRate, true);
+				
+				for (ForgeDirection direction : EnumSet.allOf(ForgeDirection.class))
+					if(outputEnergy > 0)
+					{
+						TileEntity tileEntity = worldObj.getTileEntity(xCoord - direction.offsetX, yCoord - direction.offsetY, zCoord - direction.offsetZ);
+						
+						if(tileEntity instanceof IEnergyHandler)
+						{
+							outputEnergy -= this.extractEnergy(ForgeDirection.UNKNOWN, 
+									 ((IEnergyHandler) tileEntity).receiveEnergy(direction.getOpposite(), outputEnergy, false), false);
+						}
+					}
+					else
+						break;
+			}
 		}
 	}
 	

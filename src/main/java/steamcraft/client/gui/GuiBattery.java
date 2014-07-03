@@ -50,10 +50,8 @@ public class GuiBattery extends GuiContainer
 		int var6 = (height - ySize) / 2;
 		drawTexturedModalRect(var5, var6, 0, 0, xSize, ySize);
 		
-		int var8 = tile.getEnergyScaled(31);
-		this.drawTexturedModalRect(var5 + 12, var6 + 64 - var8, 176, 54 - var8, 16, var8 + 1);
-		
-		
+		int var8 = tile.getEnergyScaled(16);
+		this.drawTexturedModalRect(var5 + 12, var6 + 64 - var8, 176, 56 - var8, 16, var8 + 1);
 	}
 	
 	@Override
