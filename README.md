@@ -31,7 +31,6 @@ _Artists:_
 * seanvanpelt2: logo creator, artist
 
 _Testers/Other:_
-* calebmanley: support
 * Rongmario: support, possible alpha/beta tester (I had no time to commit, come on :P)
 * seanvanpelt2: alpha/beta tester
 
@@ -40,6 +39,6 @@ _Ex-Coders:_
 
 ***
 
-Email: warlordjones@gmail.com <br/>
-Twitter: www.twitter.com/jacknife98 <br/>
+Email: brasscoders@gmail.com <br/>
+Twitter: www.twitter.com/brasscoders <br/>
 Skype: arona.jones <br/>
