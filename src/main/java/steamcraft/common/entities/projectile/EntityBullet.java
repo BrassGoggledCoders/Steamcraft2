@@ -321,8 +321,8 @@ public class EntityBullet extends Entity implements IProjectile
 		else
 			flyTime++;
 
-		Vec3 posVector = worldObj.getWorldVec3Pool().getVecFromPool(posX, posY, posZ);
-		Vec3 velVector = worldObj.getWorldVec3Pool().getVecFromPool(posX + motionX, posY + motionY, posZ + motionZ);
+		Vec3 posVector = Vec3.createVectorHelper(posX, posY, posZ);
+		Vec3 velVector = Vec3.createVectorHelper(posX + motionX, posY + motionY, posZ + motionZ);
 		MovingObjectPosition mop = worldObj.rayTraceBlocks(posVector, velVector, false); // TODO:
 																							// missing
 																							// a
@@ -332,11 +332,11 @@ public class EntityBullet extends Entity implements IProjectile
 																							// this
 																							// is
 																							// affected
-		posVector = worldObj.getWorldVec3Pool().getVecFromPool(posX, posY, posZ);
-		velVector = worldObj.getWorldVec3Pool().getVecFromPool(posX + motionX, posY + motionY, posZ + motionZ);
+		posVector = Vec3.createVectorHelper(posX, posY, posZ);
+		velVector = Vec3.createVectorHelper(posX + motionX, posY + motionY, posZ + motionZ);
 
 		if (mop != null)
-			velVector = worldObj.getWorldVec3Pool().getVecFromPool(mop.hitVec.xCoord, mop.hitVec.yCoord, mop.hitVec.zCoord);
+			velVector = Vec3.createVectorHelper(mop.hitVec.xCoord, mop.hitVec.yCoord, mop.hitVec.zCoord);
 
 		Entity entity = null;
 		List<?> entList = worldObj.getEntitiesWithinAABBExcludingEntity(this, boundingBox.addCoord(motionX, motionY, motionZ)

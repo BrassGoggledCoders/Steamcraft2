@@ -63,7 +63,7 @@ public class EventHandlerDrawHighlight
 	public void renderOverlay(RenderGameOverlayEvent.Text event)
 	{
 		Minecraft mc = Minecraft.getMinecraft();
-		ScaledResolution res = new ScaledResolution(mc.gameSettings, mc.displayWidth, mc.displayHeight);
+		ScaledResolution res = new ScaledResolution(mc, mc.displayWidth, mc.displayHeight);
 		FontRenderer fontRenderer = mc.fontRenderer;
 		res.getScaledWidth();
 		res.getScaledHeight();

@@ -84,8 +84,8 @@ public class Utils
 		for (String username : developers)
 			try
 			{
-				ThreadDownloadImageData imageData = new ThreadDownloadImageData("https://www.dropbox.com/s/cicvp1u0kq9xtbp/steamcraft_cape_1.png",
-						null, null);
+				ThreadDownloadImageData imageData = new ThreadDownloadImageData(null, "https://www.dropbox.com/s/cicvp1u0kq9xtbp/steamcraft_cape_1.png",
+						null, null); //Probably doesn't work...
 				Minecraft.getMinecraft().getTextureManager().loadTexture((new ResourceLocation("cloaks/" + username)), imageData);
 			} catch (Exception e)
 			{

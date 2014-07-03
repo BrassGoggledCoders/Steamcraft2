@@ -49,7 +49,7 @@ public class ItemRayGun extends BaseItem
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
 	{
-		MovingObjectPosition mop = PlayerUtils.getTargetBlock(world, player, false); // Grabs
+		MovingObjectPosition mop = PlayerUtils.getTargetBlock(world, player, true, 5.0D); // Grabs
 																						// vector
 
 		Vec3 vec3 = player.getLookVec();

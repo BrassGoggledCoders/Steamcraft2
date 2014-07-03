@@ -87,7 +87,7 @@ public class ItemSteamDrill extends ItemDrill
 		{
 			World world = player.worldObj;
 
-			MovingObjectPosition mop = PlayerUtils.getTargetBlock(world, player, false);
+			MovingObjectPosition mop = PlayerUtils.getTargetBlock(world, player, true, 5.0D);
 
 			if (mop == null)
 				return super.onBlockStartBreak(itemStack, x, y, z, player);

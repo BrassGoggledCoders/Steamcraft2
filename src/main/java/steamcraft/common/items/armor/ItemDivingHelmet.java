@@ -47,7 +47,7 @@ public class ItemDivingHelmet extends BaseArmor
 		{
 			Minecraft.getMinecraft().getTextureManager().bindTexture(overlay);
 			Tessellator tessellator = Tessellator.instance;
-			ScaledResolution scaledResolution = new ScaledResolution(Minecraft.getMinecraft().gameSettings,
+			ScaledResolution scaledResolution = new ScaledResolution(Minecraft.getMinecraft(),
 					Minecraft.getMinecraft().displayWidth, Minecraft.getMinecraft().displayHeight);
 			int width = scaledResolution.getScaledWidth();
 			int height = scaledResolution.getScaledHeight();
