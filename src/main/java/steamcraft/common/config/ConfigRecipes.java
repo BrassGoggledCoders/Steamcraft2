@@ -164,8 +164,10 @@ public class ConfigRecipes
 
 			GameRegistry.addShapelessRecipe(new ItemStack(ConfigItems.itemSheet, 1, meta), new Object[] {
 					new ItemStack(ConfigItems.itemIngot, 1, meta), new ItemStack(ConfigItems.itemHammer, 1, OreDictionary.WILDCARD_VALUE) });
-			GameRegistry.addShapelessRecipe(new ItemStack(ConfigItems.itemPowder, 2, meta), new Object[] {
-					new ItemStack(ConfigBlocks.blockCustomOre, 1, meta), new ItemStack(ConfigItems.itemHammer, 1, OreDictionary.WILDCARD_VALUE) });
+		}
+		for(int meta = 0; meta < 4; meta++)
+		{
+			GameRegistry.addShapelessRecipe(new ItemStack(ConfigItems.itemPowder, 2, meta), new Object[] {new ItemStack(ConfigBlocks.blockCustomOre, 1, meta), new ItemStack(ConfigItems.itemHammer, 1, OreDictionary.WILDCARD_VALUE) });
 		}
 	}
 
