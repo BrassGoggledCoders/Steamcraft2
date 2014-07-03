@@ -13,6 +13,7 @@
  */
 package steamcraft.common.itemblocks;
 
+import boilerplate.common.BaseItemBlockWithMetadata;
 import net.minecraft.block.Block;
 
 // TODO: Auto-generated Javadoc

@@ -1,5 +1,6 @@
 package steamcraft.common.itemblocks;
 
+import boilerplate.common.BaseItemBlockWithMetadata;
 import net.minecraft.block.Block;
 
 public class ItemBlockEngravedVanilla extends BaseItemBlockWithMetadata

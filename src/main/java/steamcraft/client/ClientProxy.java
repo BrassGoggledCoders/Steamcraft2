@@ -20,16 +20,19 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 import steamcraft.client.lib.RenderIDs;
 import steamcraft.client.renderers.block.BlockCrystalRenderer;
+import steamcraft.client.renderers.block.BlockLightningRodRenderer;
 import steamcraft.client.renderers.entity.RenderBullet;
 import steamcraft.client.renderers.item.ModelBrassWings;
 import steamcraft.client.renderers.item.ModelJetpack;
 import steamcraft.client.renderers.item.ModelWingpack;
 import steamcraft.client.renderers.tile.TileCrystalRenderer;
+import steamcraft.client.renderers.tile.TileLightningRodRenderer;
 import steamcraft.common.CommonProxy;
 import steamcraft.common.config.ConfigKeyBindings;
 import steamcraft.common.entities.projectile.EntityBullet;
 import steamcraft.common.lib.Utils;
 import steamcraft.common.tiles.TileCrystal;
+import steamcraft.common.tiles.TileLightningRod;
 import boilerplate.client.fx.FXRaygun;
 import boilerplate.client.fx.FXSmoke;
 import boilerplate.client.renderers.block.RenderMinedBlock;
@@ -84,6 +87,11 @@ public class ClientProxy extends CommonProxy
 		RenderIDs.blockCrystalRI = RenderingRegistry.getNextAvailableRenderId();
 		ClientRegistry.bindTileEntitySpecialRenderer(TileCrystal.class, new TileCrystalRenderer());
 		RenderingRegistry.registerBlockHandler(new BlockCrystalRenderer());
+
+		// Crystal
+		RenderIDs.blockLightningRodRI = RenderingRegistry.getNextAvailableRenderId();
+		ClientRegistry.bindTileEntitySpecialRenderer(TileLightningRod.class, new TileLightningRodRenderer());
+		RenderingRegistry.registerBlockHandler(new BlockLightningRodRenderer());
 
 		/*
 		 * Cast Iron Lamp ConfigBlocks.blockCastIronLampRI =

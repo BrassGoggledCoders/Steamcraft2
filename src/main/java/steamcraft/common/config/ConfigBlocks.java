@@ -31,6 +31,7 @@ import steamcraft.common.blocks.BlockEngravedVanilla;
 import steamcraft.common.blocks.BlockEtherium;
 import steamcraft.common.blocks.BlockFluidSteam;
 import steamcraft.common.blocks.BlockLamp;
+import steamcraft.common.blocks.BlockLightningRod;
 import steamcraft.common.blocks.BlockMetal;
 import steamcraft.common.blocks.BlockSlate;
 import steamcraft.common.blocks.BlockUranium;
@@ -55,6 +56,7 @@ import steamcraft.common.tiles.TileCopperPipe;
 import steamcraft.common.tiles.TileCrystal;
 import steamcraft.common.tiles.TileDropHammer;
 import steamcraft.common.tiles.TileIntake;
+import steamcraft.common.tiles.TileLightningRod;
 import steamcraft.common.tiles.TileSteamBoiler;
 import steamcraft.common.tiles.TileTurbine;
 import boilerplate.common.RegistryHelper;
@@ -62,23 +64,23 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 /**
  * @author Surseance (Johnny Eatmon)
- * 
+ *
  */
 public class ConfigBlocks
 {
 	/* Decorative */
-	
+
 	//Engraved Blocks
 	public static Block blockEngraved, blockEngravedVanilla;
-	
+
 	//Cast Iron
 	public static Block blockCastIronLampI, blockCastIronLampA;
 	public static Block blockCastIronFence, blockCastIronGate, blockCastIronRailing;
-	
+
 	public static Block blockLamp;
-	
+
 	/* Ores */
-	
+
 	public static Block blockCustomOre;
 	public static Block blockSlate;
 
@@ -86,31 +88,31 @@ public class ConfigBlocks
 	public static Block blockMetal, blockUranium, blockEtherium;
 
 	/* Machines */
-	
-	public static Block blockSteamBoiler, blockIntake;
-	public static Block blockTurbine, blockBattery;
-	
+
+	public static Block blockSteamBoiler, blockIntake, blockTurbine, blockBattery;
+	public static Block blockLightningRod;
+
 	public static Block blockBloomery;
- 
+
 	public static Block blockArmorEditor;
-	
+
 	public static Block blockCopperPipe, blockCopperWire;
 	public static Block blockCopperTank;
-	
+
 	/* Fluids */
-	
+
 	public static Fluid steamFluid;
 	public static Block blockSteam;
-	
+
 	/* Others */
-	
+
 	public static Block blockCrystal;
 
 	public static Block blockDropHammerAnvil;
 
 	//Wood
 	public static Block blockBrassLog, blockBrassLeaves;
-	
+
 	public static Block blockTeaPlant, blockHatch;
 
 	public static void init()
@@ -127,15 +129,15 @@ public class ConfigBlocks
 		// Ores
 		blockCustomOre = new BlockCustomOre();
 		blockSlate = new BlockSlate().setBlockName("blockSlate");
-		
+
 		GameRegistry.registerBlock(blockCustomOre, ItemBlockCustomOre.class, "BlockCustomOre");
 		GameRegistry.registerBlock(blockSlate, ItemBlockSlate.class, "BlockSlate");
-		
+
 		// Metals
 		blockMetal = new BlockMetal();
 		blockUranium = new BlockUranium(Material.iron);
 		blockEtherium = new BlockEtherium(Material.iron).setBlockName("blockEtherium").setResistance(-1);
-		
+
 		GameRegistry.registerBlock(blockMetal, ItemBlockMetal.class, "BlockMetal");
 		GameRegistry.registerBlock(blockUranium, "BlockUranium");
 		GameRegistry.registerBlock(blockEtherium, "BlockEtherium");
@@ -146,101 +148,103 @@ public class ConfigBlocks
 		// Engraved Blocks
 		blockEngraved = new BlockEngravedSolid();
 		blockEngravedVanilla = new BlockEngravedVanilla();
-		
+
 		GameRegistry.registerBlock(blockEngraved, ItemBlockEngravedSolid.class, "BlockEngravedSolid");
 		GameRegistry.registerBlock(blockEngravedVanilla, ItemBlockEngravedVanilla.class, "BlockEngravedVanilla");
-		
+
 		// Cast Iron
 		blockCastIronLampI = new BlockCastIronLamp(false).setBlockName("blockCastIronLampOff");
 		blockCastIronLampA = new BlockCastIronLamp(true).setBlockName("blockCastIronLampOn");
-		
+
 		// GameRegistry.registerBlock(blockCastIronLampI, "BlockCastIronLampI");
 		// GameRegistry.registerBlock(blockCastIronLampA, "BlockCastIronLampA");
-		
+
 		blockCastIronFence = new BlockCastIronFence();
 		blockCastIronGate = new BlockCastIronGate();
 		blockCastIronRailing = new BlockCastIronRailing(Material.iron);
-		
+
 		GameRegistry.registerBlock(blockCastIronFence, "BlockCastIronFence");
 		GameRegistry.registerBlock(blockCastIronGate, "BlockCastIronGate");
 		GameRegistry.registerBlock(blockCastIronRailing, "BlockCaseIronRailing");
-		
+
 		blockLamp = new BlockLamp();
-		
+
 		GameRegistry.registerBlock(blockLamp, "BlockLamp");
 	}
-	
+
 	private static void initializeMachines()
 	{
 		// Steam related
 		blockSteamBoiler = new BlockSteamBoiler().setBlockName("blockSteamBoiler");
 		blockIntake = new BlockIntake().setBlockName("blockIntake");
-		
+
 		RegistryHelper.registerContainerBlockWithDesc(blockSteamBoiler, TileSteamBoiler.class, "BlockSteamBoiler");
 		RegistryHelper.registerContainerBlockWithDesc(blockIntake,TileIntake.class, "BlockIntake");
-		
+
 		// Energy related
 		blockTurbine = new BlockTurbine().setBlockName("blockTurbine");
 		blockBattery = new BlockBattery().setBlockName("blockBattery");
-		
+		blockLightningRod = new BlockLightningRod(Material.iron).setBlockName("blockLightningRod");
+
 		RegistryHelper.registerContainerBlock(blockTurbine, TileTurbine.class, "BlockTurbine");
 		RegistryHelper.registerContainerBlock(blockBattery, TileBattery.class, "BlockBattery");
-		
+		RegistryHelper.registerContainerBlockWithDesc(blockLightningRod, TileLightningRod.class, "BlockLightningRod");
+
 		// Bloomery
 		blockBloomery = new BlockBloomery(Material.rock).setBlockName("blockBloomery");
-		
+
 		RegistryHelper.registerContainerBlockWithDesc(blockBloomery, TileBloomery.class, "BlockBloomery");
-		
+
 		// Armor Editor
 		blockArmorEditor = new BlockArmorEditor(Material.iron);
-		
+
 		RegistryHelper.registerContainerBlock(blockArmorEditor, TileArmorEditor.class, "BlockArmorEditor");
-		
+
 		// Pipes
 		blockCopperPipe = new BlockCopperPipe(Material.iron).setBlockName("blockCopperPipe");
-		
+
 		RegistryHelper.registerContainerBlock(blockCopperPipe, TileCopperPipe.class, "BlockCopperPipe");
-		
+
 		// Wires
 		blockCopperWire = new BaseBlock(Material.iron).setBlockName("blockCopperWire");
-		
+
 		//GameRegistry.registerBlock(blockCopperWire, "BlockCopperWire");
-		
+
 		// Tanks
 		blockCopperTank = new BaseBlock(Material.iron).setBlockName("blockCopperTank");
-		
+
 		GameRegistry.registerBlock(blockCopperTank, "BlockCopperTank");
 	}
-	
+
 	private static void initializeFluids()
 	{
 		// Steam
 		steamFluid = new FluidSteam("steam");
-		
+
 		if (!FluidRegistry.registerFluid(steamFluid) && !FluidRegistry.isFluidRegistered("steam"))
 			steamFluid = FluidRegistry.getFluid("steam");
 
 		blockSteam = new BlockFluidSteam(steamFluid, Material.lava);
-		
+
 		GameRegistry.registerBlock(blockSteam, "blockSteam");
 	}
-	
+
 	private static void initializeOthers()
 	{
 		blockCrystal = new BlockCrystal();
-		
+
 		RegistryHelper.registerContainerBlock(blockCrystal, TileCrystal.class, "BlockCrystal");
-		
+
 		//Wood
 		blockBrassLog = new BlockBrassLog(Material.wood);
 		blockBrassLeaves = new BlockBrassLeaves(Material.iron);
-		
+
 		GameRegistry.registerBlock(blockBrassLog, "BlockBrassLog");
 		GameRegistry.registerBlock(blockBrassLeaves, "BlockBrassLeaves");
-		
+
 		blockDropHammerAnvil = new BlockDropHammerAnvil(Material.anvil).setBlockName("blockDropHammerAnvil");
-		
+
 		RegistryHelper.registerContainerBlock(blockDropHammerAnvil, TileDropHammer.class, "BlockDropHammerAnvil");
 	}
-	
+
 }

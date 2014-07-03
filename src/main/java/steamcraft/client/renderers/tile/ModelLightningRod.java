@@ -1,5 +1,5 @@
 /**
- * This class was created by <Surseance> or his SC2 development team. 
+ * This class was created by <Surseance> or his SC2 development team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -22,7 +22,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 // TODO: Auto-generated Javadoc
 /**
  * The Class ModelLightningRod.
- * 
+ *
  * @author Surseance (Johnny Eatmon) & Falkok15
  */
 @SideOnly(Side.CLIENT)
@@ -228,7 +228,7 @@ public class ModelLightningRod extends ModelBase
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.minecraft.client.model.ModelBase#render(net.minecraft.entity.Entity,
 	 * float, float, float, float, float, float)
@@ -264,7 +264,7 @@ public class ModelLightningRod extends ModelBase
 	// Techne method
 	/**
 	 * Sets the rotation.
-	 * 
+	 *
 	 * @param model
 	 *            the model
 	 * @param x
@@ -283,7 +283,7 @@ public class ModelLightningRod extends ModelBase
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.minecraft.client.model.ModelBase#setRotationAngles(float, float,
 	 * float, float, float, float, net.minecraft.entity.Entity)
 	 */
