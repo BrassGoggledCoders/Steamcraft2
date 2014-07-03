@@ -13,6 +13,7 @@
  */
 package steamcraft.common.config;
 
+import steamcraft.common.lib.LibInfo;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -167,7 +168,8 @@ public class ConfigRecipes
 		}
 		for(int meta = 0; meta < 4; meta++)
 		{
-			GameRegistry.addShapelessRecipe(new ItemStack(ConfigItems.itemPowder, 2, meta), new Object[] {new ItemStack(ConfigBlocks.blockCustomOre, 1, meta), new ItemStack(ConfigItems.itemHammer, 1, OreDictionary.WILDCARD_VALUE) });
+
+			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ConfigItems.itemPowder, 2, meta), new Object[] {"ore" + LibInfo.metals[meta], new ItemStack(ConfigItems.itemHammer, 1, OreDictionary.WILDCARD_VALUE)}));
 		}
 	}
 
