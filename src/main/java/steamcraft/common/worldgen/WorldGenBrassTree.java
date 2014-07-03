@@ -2,7 +2,6 @@ package steamcraft.common.worldgen;
 
 import java.util.Random;
 
-import steamcraft.common.config.ConfigBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSapling;
 import net.minecraft.init.Blocks;
@@ -10,6 +9,7 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenBigTree;
 import net.minecraftforge.common.util.ForgeDirection;
+import steamcraft.common.config.ConfigBlocks;
 
 public class WorldGenBrassTree extends WorldGenBigTree
 {

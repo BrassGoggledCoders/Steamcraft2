@@ -1,9 +1,9 @@
 package steamcraft.common.blocks.machines;
 
-import steamcraft.common.tiles.TileCopperTank;
 import net.minecraft.block.material.Material;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+import steamcraft.common.tiles.TileCopperTank;
 
 public class BlockCopperTank extends BlockContainerMod
 {

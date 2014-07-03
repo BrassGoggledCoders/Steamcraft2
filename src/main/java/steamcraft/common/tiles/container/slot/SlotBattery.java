@@ -1,5 +1,5 @@
 /**
- * This class was created by BrassGoggledCoders modding team. 
+ * This class was created by BrassGoggledCoders modding team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -13,10 +13,10 @@
  */
 package steamcraft.common.tiles.container.slot;
 
-import steamcraft.common.config.ConfigItems;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
+import steamcraft.common.items.ItemElectricJar;
 
 /**
  * @author decebaldecebal
@@ -28,11 +28,11 @@ public class SlotBattery extends Slot
 	{
 		super(par1iInventory, par2, par3, par4);
 	}
-	
+
 	@Override
 	public boolean isItemValid(ItemStack stack)
 	{
-		if (stack.getItem() == ConfigItems.itemCanisterSteam)
+		if (stack.getItem() instanceof ItemElectricJar)
 			return true;
 		return false;
 	}

@@ -20,6 +20,7 @@ import steamcraft.common.items.BaseElectricItem;
 import steamcraft.common.items.BaseItem;
 import steamcraft.common.items.ItemCanister;
 import steamcraft.common.items.ItemChisel;
+import steamcraft.common.items.ItemElectricJar;
 import steamcraft.common.items.ItemFirearm;
 import steamcraft.common.items.ItemGunPart;
 import steamcraft.common.items.ItemIngot;
@@ -354,10 +355,10 @@ public class ConfigItems
 		// Containers
 		itemCanisterSteam = new ItemCanister().setUnlocalizedName("itemCanisterSteam");
 
-		itemElectricJarSmall = new BaseElectricItem(100, 40, 80).setUnlocalizedName("itemElectricJarSmall");
-		itemElectricJarMedium = new BaseElectricItem(500, 125, 400).setUnlocalizedName("itemElectricJarMedium");
-		itemElectricJarLarge = new BaseElectricItem(2500, 750, 2000).setUnlocalizedName("itemElectricJarLarge");
-		itemElectricJarHuge = new BaseElectricItem(10000, 3000, 10000).setUnlocalizedName("itemElectricJarHuge");
+		itemElectricJarSmall = new ItemElectricJar(100, 40, 80).setUnlocalizedName("itemElectricJarSmall");
+		itemElectricJarMedium = new ItemElectricJar(500, 125, 400).setUnlocalizedName("itemElectricJarMedium");
+		itemElectricJarLarge = new ItemElectricJar(2500, 750, 2000).setUnlocalizedName("itemElectricJarLarge");
+		itemElectricJarHuge = new ItemElectricJar(10000, 3000, 10000).setUnlocalizedName("itemElectricJarHuge");
 
 		registerItem(itemCanisterSteam, "ItemCanisterSteam");
 
@@ -409,14 +410,6 @@ public class ConfigItems
 	/* PostInit */
 	public static void postInit()
 	{
-	}
 
-	private static void registerItems()
-	{
-		/*
-		 * registerItem(flintlockPistol, "ItemFlintlockPistol");
-		 * registerItem(matchlockPistol, "ItemMatchlockPistol");
-		 * registerItem(percussionCapPistol, "ItemPercussionCapPistol");
-		 */
 	}
 }

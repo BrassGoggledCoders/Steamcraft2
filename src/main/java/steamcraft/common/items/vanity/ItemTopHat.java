@@ -2,7 +2,6 @@ package steamcraft.common.items.vanity;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.util.ResourceLocation;
-import steamcraft.client.renderers.item.ModelTopHat;
 import steamcraft.common.items.BaseItem;
 import steamcraft.common.lib.LibInfo;
 import boilerplate.steamapi.vanity.EnumVanityType;
