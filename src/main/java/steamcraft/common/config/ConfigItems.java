@@ -16,7 +16,6 @@ package steamcraft.common.config;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import steamcraft.common.Steamcraft;
-import steamcraft.common.items.BaseElectricItem;
 import steamcraft.common.items.BaseItem;
 import steamcraft.common.items.ItemCanister;
 import steamcraft.common.items.ItemChisel;
@@ -40,6 +39,7 @@ import steamcraft.common.items.ItemWatch;
 import steamcraft.common.items.armor.ItemBrassArmor;
 import steamcraft.common.items.armor.ItemBrassGoggles;
 import steamcraft.common.items.armor.ItemClockworkWings;
+import steamcraft.common.items.armor.ItemDivingHelmet;
 import steamcraft.common.items.armor.ItemNormalArmor;
 import steamcraft.common.items.armor.ItemSteamJetpack;
 import steamcraft.common.items.tools.ItemDrill;
@@ -80,7 +80,7 @@ public class ConfigItems
 
 	// Brass
 	public static Item helmetBrass, chestplateBrass, legsBrass, bootsBrass;
-	public static Item brassGoggles;
+	public static Item brassGoggles, itemDivingHelmet;
 
 	// Etherium
 	public static Item helmetEtherium, chestplateEtherium, legsEtherium, bootsEtherium;
@@ -263,8 +263,10 @@ public class ConfigItems
 		bootsBrass = new ItemBrassArmor(MaterialHelper.ARMOR_STEAM, 0, 0).setUnlocalizedName("itemBootsBrass");
 
 		brassGoggles = new ItemBrassGoggles(ItemArmor.ArmorMaterial.CHAIN, 0, 0);
+		itemDivingHelmet = new ItemDivingHelmet(ItemArmor.ArmorMaterial.CHAIN, 0, 0);
 
 		registerItem(brassGoggles, "ItemBrassGoggles");
+		registerItem(itemDivingHelmet, "ItemDivingHelmet");
 
 		// Etherium
 		helmetEtherium = new ItemNormalArmor(MaterialHelper.ARMOR_ETHERIUM, 0, 0).setUnlocalizedName("itemHelmetEtherium");

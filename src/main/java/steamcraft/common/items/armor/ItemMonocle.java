@@ -19,7 +19,7 @@ import steamcraft.common.Steamcraft;
 // TODO: Auto-generated Javadoc
 /**
  * The Class ItemMonocle.
- * 
+ *
  * @author Surseance (Johnny Eatmon)
  */
 public class ItemMonocle extends BaseArmor
@@ -27,7 +27,7 @@ public class ItemMonocle extends BaseArmor
 
 	/**
 	 * Instantiates a new item monocle.
-	 * 
+	 *
 	 * @param armorMat
 	 *            the armor mat
 	 * @param armorType
@@ -39,23 +39,22 @@ public class ItemMonocle extends BaseArmor
 	{
 		super(armorMat, armorType, renderIndex);
 		setMaxStackSize(1);
-		setCreativeTab(Steamcraft.tabSC2);
 	}
 
 	/*
 	 * @Override
-	 * 
+	 *
 	 * @SideOnly(Side.CLIENT) public ModelBiped getArmorModel(EntityLivingBase
 	 * living, ItemStack is, int slot) { ModelBiped armorModel = new
 	 * ModelBiped();
-	 * 
+	 *
 	 * if (is != null) { if (is.getItem() instanceof ItemMonocle) { int type =
 	 * ((ItemArmor)is.getItem()).armorType;
-	 * 
+	 *
 	 * if (type == 1 || type == 3) { armorModel =
 	 * Steamcraft.proxy.getMonocleArmorModel(0); } else { armorModel =
 	 * Steamcraft.proxy.getMonocleArmorModel(1); } }
-	 * 
+	 *
 	 * if (armorModel != null) { armorModel.bipedHead.showModel = slot == 0;
 	 * armorModel.bipedHeadwear.showModel = slot == 0;
 	 * armorModel.bipedBody.showModel = slot == 1 || slot == 2;
@@ -67,12 +66,12 @@ public class ItemMonocle extends BaseArmor
 	 * living.isRiding(); armorModel.isChild = living.isChild();
 	 * armorModel.heldItemRight = living.getCurrentItemOrArmor(0) != null ? 1 :
 	 * 0;
-	 * 
+	 *
 	 * if (living instanceof EntityPlayer) { armorModel.aimedBow =
 	 * ((EntityPlayer)living).getItemInUseDuration() > 2; }
-	 * 
+	 *
 	 * return armorModel; } }
-	 * 
+	 *
 	 * return null; }
 	 */
 }

@@ -1,6 +1,3 @@
-/*
- *
- */
 package steamcraft.common.items.armor;
 
 import net.minecraft.client.Minecraft;
@@ -10,6 +7,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.World;
 
 import org.lwjgl.opengl.GL11;
 
@@ -18,29 +16,15 @@ import steamcraft.common.lib.LibInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-// TODO: Auto-generated Javadoc
-/**
- * The Class ItemBrassGoggles.
- */
-public class ItemBrassGoggles extends BaseArmor
+public class ItemDivingHelmet extends BaseArmor
 {
 
-	/**
-	 * Instantiates a new item brass goggles.
-	 *
-	 * @param mat
-	 *            the mat
-	 * @param p_i45325_2_
-	 *            the p_i45325_2_
-	 * @param p_i45325_3_
-	 *            the p_i45325_3_
-	 */
-	public ItemBrassGoggles(ArmorMaterial mat, int p_i45325_2_, int p_i45325_3_)
+	public ItemDivingHelmet(ArmorMaterial p_i45325_1_, int p_i45325_2_, int p_i45325_3_)
 	{
-		super(mat, p_i45325_2_, p_i45325_3_);
-		setUnlocalizedName("itemBrassGoggles");
-	}
+		super(p_i45325_1_, p_i45325_2_, p_i45325_3_);
+		setUnlocalizedName("itemDivingHelmet");
 
+	}
 	@Override
 	@SideOnly(Side.CLIENT)
 	public String getArmorTexture(ItemStack is, Entity entity, int slot, String type)
@@ -48,7 +32,7 @@ public class ItemBrassGoggles extends BaseArmor
 		return LibInfo.PREFIX + "textures/armor/divinghelmet.png";
 	}
 	/** The overlay. */
-	private static ResourceLocation overlay = new ResourceLocation(LibInfo.PREFIX + "textures/misc/goggles.png");
+	private static ResourceLocation overlay = new ResourceLocation(LibInfo.PREFIX + "textures/misc/divinghelmet.png");
 
 	@SideOnly(Side.CLIENT)
 	public void renderHelmetOverlay(ItemStack stack, EntityPlayer player, ScaledResolution resolution, float partialTicks, boolean hasScreen, int mouseX, int mouseY)
@@ -58,7 +42,7 @@ public class ItemBrassGoggles extends BaseArmor
 
 		ItemStack helmet = Minecraft.getMinecraft().thePlayer.inventory.armorItemInSlot(3);
 
-		if ((Minecraft.getMinecraft().gameSettings.thirdPersonView == 0) && (helmet != null) && (helmet.getItem() == ConfigItems.brassGoggles))// &&
+		if ((Minecraft.getMinecraft().gameSettings.thirdPersonView == 0) && (helmet != null) && (helmet.getItem() == ConfigItems.itemDivingHelmet))// &&
 		// KeyHandler.keyPressed)
 		{
 			Minecraft.getMinecraft().getTextureManager().bindTexture(overlay);
@@ -95,4 +79,14 @@ public class ItemBrassGoggles extends BaseArmor
 			 */
 		}
 	}
+	@Override
+	public void onArmorTick(World world, EntityPlayer player, ItemStack is)
+	{
+		if (player.getAir() <= 0)
+		{
+			player.setAir(300);
+			is.damageItem(4, player); // tweak the damage taken a bit
+		}
+	}
+
 }
