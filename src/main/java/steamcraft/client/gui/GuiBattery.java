@@ -18,6 +18,7 @@ import org.lwjgl.opengl.GL11;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.common.util.ForgeDirection;
 import steamcraft.common.lib.LibInfo;
 import steamcraft.common.tiles.TileBattery;
 import steamcraft.common.tiles.container.ContainerBattery;
@@ -58,6 +59,24 @@ public class GuiBattery extends GuiContainer
 	@Override
 	protected void drawGuiContainerForegroundLayer(int par1, int par2) 
 	{
-		this.drawString(fontRendererObj, "Energy: ", 40, 10, -16);
+		this.drawString(fontRendererObj, "Energy: ", 26, 10, -1);
+		this.drawString(fontRendererObj, getEnergyUnits(tile.getEnergyStored(ForgeDirection.UNKNOWN)) + 
+				"/" + getEnergyUnits(tile.getMaxEnergyStored(ForgeDirection.UNKNOWN)) + " RF", 30, 20, -1);
+		
+		this.drawString(fontRendererObj, "Transfer: ", 26, 30, -1);
+		this.drawString(fontRendererObj, tile.transferRate + " RF", 30, 40, -1);
+	}
+	
+	private String getEnergyUnits(int number)
+	{
+		number/=1000;
+		
+		if(number>=1000)
+		{
+			number/=1000;
+			return number + "M";
+		}
+		
+		return number + "K";
 	}
 }
