@@ -1,5 +1,5 @@
 /**
- * This class was created by <Surseance> or his SC2 development team.
+ * This class was created by BrassGoggledCoders modding team. 
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -9,7 +9,7 @@
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
  *
- * File created @ 23-May-2014
+ * File created @ [May 23, 2014, 3:07:44 PM]
  */
 package steamcraft.common.blocks;
 
@@ -26,25 +26,15 @@ import boilerplate.common.utils.ItemStackUtils;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class BlockFluidSteam.
+ * @author Decebaldecebal
+ * 
  */
 public class BlockFluidSteam extends BlockFluidClassic
 {
-
-	/** The still icon. */
 	@SideOnly(Side.CLIENT)
-	public static IIcon[] icon;
+	public static IIcon iconFlowing;
 
-	/**
-	 * Instantiates a new block fluid steam.
-	 * 
-	 * @param fluid
-	 *            the fluid
-	 * @param material
-	 *            the material
-	 */
 	public BlockFluidSteam(Fluid fluid, Material material)
 	{
 		super(fluid, material);
@@ -55,23 +45,17 @@ public class BlockFluidSteam extends BlockFluidClassic
 	@Override
 	public IIcon getIcon(int side, int meta)
 	{
-		return (side != 0) && (side != 1) ? icon[1] : icon[0];
+		return (side != 0) && (side != 1) ? iconFlowing : blockIcon;
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister iconRegister)
 	{
-		icon = new IIcon[] { iconRegister.registerIcon(LibInfo.PREFIX + "steamStill"), iconRegister.registerIcon(LibInfo.PREFIX + "steamFlowing") };
+		blockIcon = iconRegister.registerIcon(LibInfo.PREFIX + "steamStill");
+		iconFlowing = iconRegister.registerIcon(LibInfo.PREFIX + "steamFlowing");
 	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * net.minecraftforge.fluids.BlockFluidBase#canDisplace(net.minecraft.world
-	 * .IBlockAccess, int, int, int)
-	 */
+	
 	@Override
 	public boolean canDisplace(IBlockAccess world, int x, int y, int z)
 	{
@@ -80,13 +64,6 @@ public class BlockFluidSteam extends BlockFluidClassic
 		return super.canDisplace(world, x, y, z);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * net.minecraftforge.fluids.BlockFluidBase#displaceIfPossible(net.minecraft
-	 * .world.World, int, int, int)
-	 */
 	@Override
 	public boolean displaceIfPossible(World world, int x, int y, int z)
 	{
