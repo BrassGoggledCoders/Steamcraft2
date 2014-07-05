@@ -66,10 +66,6 @@ public class ConfigRecipes
 		 * new Object[] {"bgb", "gcg", "bgb", 'b', new
 		 * ItemStack(ConfigItems.ingotsMetal, 1, 5), 'g', Block.thinGlass, 'c',
 		 * new ItemStack(ConfigItems.pileParts, 1, 2)});
-		 * GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.brassWatch),
-		 * new Object[] {"bgb", "gcg", "bgb", 'b', new
-		 * ItemStack(ConfigItems.ingotsMetal, 1, 5), 'g', Block.thinGlass, 'c',
-		 * new ItemStack(ConfigItems.pileParts, 1, 2)});
 		 * GameRegistry.addShapedRecipe(new
 		 * ItemStack(ConfigItems.canisterEmpty), new Object[]{" a ", "a a",
 		 * " a ", 'a', new ItemStack(ConfigItems.ingotsMetal, 1, 0)});

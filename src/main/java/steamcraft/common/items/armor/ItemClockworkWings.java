@@ -30,11 +30,11 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author decebaldecebal
- * 
+ *
  */
 public class ItemClockworkWings extends BaseArmor
 {
-	private static final float hungerPerTick = 0.5F;
+	private static final float hungerPerTick = 1F;
 
 	public ItemClockworkWings(ArmorMaterial mat, int renderIndex, int armorType)
 	{
@@ -63,8 +63,7 @@ public class ItemClockworkWings extends BaseArmor
 	{
 		if (!player.capabilities.allowFlying)
 		{
-			if ((Minecraft.getMinecraft().currentScreen == null) && (player.posY < 160)
-					&& Minecraft.getMinecraft().gameSettings.keyBindJump.isPressed())
+			if ((Minecraft.getMinecraft().currentScreen == null) && (player.posY < 160) && Minecraft.getMinecraft().gameSettings.keyBindJump.isPressed())
 			{
 				player.addExhaustion(hungerPerTick);
 
@@ -89,11 +88,7 @@ public class ItemClockworkWings extends BaseArmor
 				player.motionZ *= 1.04D;
 			}
 
-			if (player.fallDistance > 0)
-			{
-				player.addExhaustion(hungerPerTick / 4);
-				player.fallDistance = 0;
-			}
+			player.fallDistance = 0;
 		}
 	}
 
