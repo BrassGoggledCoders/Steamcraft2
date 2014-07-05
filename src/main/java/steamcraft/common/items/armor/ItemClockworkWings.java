@@ -61,7 +61,7 @@ public class ItemClockworkWings extends BaseArmor
 	@SideOnly(Side.CLIENT)
 	public void onArmorTick(World world, EntityPlayer player, ItemStack stack)
 	{
-		if (!player.capabilities.allowFlying)
+		if (!player.capabilities.allowFlying && player.getFoodStats().getFoodLevel() != 0)
 		{
 			if ((Minecraft.getMinecraft().currentScreen == null) && (player.posY < 160) && Minecraft.getMinecraft().gameSettings.keyBindJump.isPressed())
 			{
@@ -87,7 +87,7 @@ public class ItemClockworkWings extends BaseArmor
 				player.motionX *= 1.04D;
 				player.motionZ *= 1.04D;
 			}
-
+			//Workaround
 			player.fallDistance = 0;
 		}
 	}

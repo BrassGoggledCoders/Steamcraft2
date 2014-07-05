@@ -1,5 +1,5 @@
 /**
- * This class was created by BrassGoggledCoders modding team. 
+ * This class was created by BrassGoggledCoders modding team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -13,6 +13,9 @@
  */
 package steamcraft.common.tiles;
 
+import java.util.Random;
+
+import steamcraft.common.lib.LibInfo;
 import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -26,7 +29,7 @@ import net.minecraftforge.fluids.IFluidHandler;
 
 /**
  * @author decebaldecebal
- * 
+ *
  */
 public class TileIntake extends TileEntity implements IFluidHandler
 {
@@ -64,6 +67,11 @@ public class TileIntake extends TileEntity implements IFluidHandler
 			waterTank.drain(export.fill(ForgeDirection.DOWN,
 					new FluidStack(FluidRegistry.WATER, Math.min(waterTank.getFluidAmount(), exportAmountPerTick)), true), true);
 		}
+		Random random = new Random();
+		if(waterTank.getFluidAmount() > 0)
+		worldObj.spawnParticle("dripWater", xCoord + random.nextDouble(), yCoord + random.nextDouble(), zCoord + random.nextDouble(), random.nextDouble(), -0.5D, random.nextDouble());
+		if(random.nextInt(100) == 0)
+		worldObj.playSound(xCoord, yCoord, zCoord, LibInfo.PREFIX + "intake", 1F, 1F, true);
 	}
 
 	@Override
