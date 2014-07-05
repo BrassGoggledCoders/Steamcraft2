@@ -86,51 +86,7 @@ public class ConfigRecipes
 		 * ItemStack(Blocks.double_plant, 1, 2)}); GameRegistry.addRecipe(new
 		 * ItemStack(ConfigItems.itemPipe, 1, 1), new Object[] {new
 		 * ItemStack(ConfigItems.itemPipe), new
-		 * ItemStack(ConfigItems.itemPoppySeed)}); //Parts //There MUST be a
-		 * neater/shorter way to do this??? GameRegistry.addShapelessRecipe(new
-		 * ItemStack(ConfigItems.pileParts, 1, 0), new Object[] {new
-		 * ItemStack(ConfigItems.partsBrass,1,OreDictionary.WILDCARD_VALUE),new
-		 * ItemStack(ConfigItems.partsBrass,1,OreDictionary.WILDCARD_VALUE),new
-		 * ItemStack(ConfigItems.partsBrass,1,OreDictionary.WILDCARD_VALUE),new
-		 * ItemStack(ConfigItems.partsBrass,1,OreDictionary.WILDCARD_VALUE),new
-		 * ItemStack(ConfigItems.partsBrass,1,OreDictionary.WILDCARD_VALUE),new
-		 * ItemStack(ConfigItems.partsBrass,1,OreDictionary.WILDCARD_VALUE),new
-		 * ItemStack(ConfigItems.partsBrass,1,OreDictionary.WILDCARD_VALUE),new
-		 * ItemStack(ConfigItems.partsBrass,1,OreDictionary.WILDCARD_VALUE),new
-		 * ItemStack(ConfigItems.partsBrass,1,OreDictionary.WILDCARD_VALUE)});
-		 * GameRegistry.addShapelessRecipe(new ItemStack(ConfigItems.pileParts,
-		 * 1, 1),new Object[] {new
-		 * ItemStack(ConfigItems.partsSteel,1,OreDictionary.WILDCARD_VALUE),new
-		 * ItemStack(ConfigItems.partsSteel,1,OreDictionary.WILDCARD_VALUE),new
-		 * ItemStack(ConfigItems.partsSteel,1,OreDictionary.WILDCARD_VALUE),new
-		 * ItemStack(ConfigItems.partsSteel,1,OreDictionary.WILDCARD_VALUE),new
-		 * ItemStack(ConfigItems.partsSteel,1,OreDictionary.WILDCARD_VALUE),new
-		 * ItemStack(ConfigItems.partsSteel,1,OreDictionary.WILDCARD_VALUE),new
-		 * ItemStack(ConfigItems.partsSteel,1,OreDictionary.WILDCARD_VALUE),new
-		 * ItemStack(ConfigItems.partsSteel,1,OreDictionary.WILDCARD_VALUE),new
-		 * ItemStack(ConfigItems.partsSteel,1,OreDictionary.WILDCARD_VALUE)});
-		 * GameRegistry.addShapelessRecipe(new ItemStack(ConfigItems.pileParts,
-		 * 1, 2),new Object[] {new
-		 * ItemStack(ConfigItems.partsCopper,1,OreDictionary.WILDCARD_VALUE),new
-		 * ItemStack(ConfigItems.partsCopper,1,OreDictionary.WILDCARD_VALUE),new
-		 * ItemStack(ConfigItems.partsCopper,1,OreDictionary.WILDCARD_VALUE),new
-		 * ItemStack(ConfigItems.partsCopper,1,OreDictionary.WILDCARD_VALUE),new
-		 * ItemStack(ConfigItems.partsCopper,1,OreDictionary.WILDCARD_VALUE),new
-		 * ItemStack(ConfigItems.partsCopper,1,OreDictionary.WILDCARD_VALUE),new
-		 * ItemStack(ConfigItems.partsCopper,1,OreDictionary.WILDCARD_VALUE),new
-		 * ItemStack(ConfigItems.partsCopper,1,OreDictionary.WILDCARD_VALUE),new
-		 * ItemStack(ConfigItems.partsCopper,1,OreDictionary.WILDCARD_VALUE)});
-		 * GameRegistry.addShapelessRecipe(new ItemStack(ConfigItems.pileParts,
-		 * 1, 3),new Object[] {new
-		 * ItemStack(ConfigItems.partsIron,1,OreDictionary.WILDCARD_VALUE),new
-		 * ItemStack(ConfigItems.partsIron,1,OreDictionary.WILDCARD_VALUE),new
-		 * ItemStack(ConfigItems.partsIron,1,OreDictionary.WILDCARD_VALUE),new
-		 * ItemStack(ConfigItems.partsIron,1,OreDictionary.WILDCARD_VALUE),new
-		 * ItemStack(ConfigItems.partsIron,1,OreDictionary.WILDCARD_VALUE),new
-		 * ItemStack(ConfigItems.partsIron,1,OreDictionary.WILDCARD_VALUE),new
-		 * ItemStack(ConfigItems.partsIron,1,OreDictionary.WILDCARD_VALUE),new
-		 * ItemStack(ConfigItems.partsIron,1,OreDictionary.WILDCARD_VALUE),new
-		 * ItemStack(ConfigItems.partsIron,1,OreDictionary.WILDCARD_VALUE)});
+		 * ItemStack(ConfigItems.itemPoppySeed)});
 		 */
 	}
 
@@ -220,7 +176,7 @@ public class ConfigRecipes
 				new ItemStack(ConfigItems.chestplateObsidian), new ItemStack(ConfigItems.legsObsidian), new ItemStack(ConfigItems.bootsObsidian) });
 
 		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.itemClockworkWings), new Object[]{"BCB", "WCW", "W W", 'B', new ItemStack(ConfigItems.itemIngot, 1, 4), 'C', new ItemStack(ConfigItems.itemMachinePart, 1, 1), 'W', Blocks.wool});
-		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.itemSteamJetpack), new Object[]{"BCB", "BIB", "BCB", 'B', new ItemStack(ConfigItems.itemIngot, 1, 4), 'I', new ItemStack(ConfigItems.itemIngot, 1, 7), 'C', ConfigItems.itemCanisterSteam});
+		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.itemSteamJetpack), new Object[]{"CSC", "BSB", "B B", 'B', new ItemStack(ConfigItems.itemIngot, 1, 4), 'S', new ItemStack(ConfigItems.itemIngot, 1, 6), 'C', new ItemStack(ConfigItems.itemCanisterSteam, 1, OreDictionary.WILDCARD_VALUE)});
 		GameRegistry.addRecipe(new ItemStack(ConfigItems.itemSteamWingpack), new Object[]{"LWL", "RBR","SPS", 'P', ConfigItems.itemSteamJetpack, 'W', ConfigItems.itemClockworkWings, 'R', new ItemStack(ConfigItems.itemMachinePart, 1, 0), 'B', Items.slime_ball, 'L', Items.leather, 'S', Items.string});
 
 		GameRegistry.addRecipe(new ItemStack(ConfigItems.brassGoggles), new Object[]{"BBB", "GBG", "BBB", 'B', new ItemStack(ConfigItems.itemIngot, 1, 4), 'G', Blocks.glass_pane});
@@ -256,9 +212,11 @@ public class ConfigRecipes
 			new ItemStack(ConfigItems.itemSheet, 1, 1) });
 		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.itemCopperParts, 1, 1), new Object[] { " P ", "P P", " P ", 'P',
 			new ItemStack(ConfigItems.itemSheet, 1, 1) });
+		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.itemIronParts, 1, 0), new Object[] { " P ", "PPP", " P ", 'P', Items.iron_ingot });
+		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.itemIronParts, 1, 1), new Object[] { " P ", "P P", " P ", 'P', Items.iron_ingot });
 
 		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.itemMachinePart, 1, 0),"  X", " X ", "X  ",'X', new ItemStack(ConfigItems.itemIngot, 1, 7));
-		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.itemMachinePart, 1, 1),"CPC", "S G","CPC",'P', new ItemStack(ConfigItems.itemSheet, 1, 4), 'G',new ItemStack(ConfigItems.itemSteelParts, 1, 0), 'S', new ItemStack(ConfigItems.itemCopperParts, 1, 1), 'C', new ItemStack(ConfigItems.itemMachinePart, 1, 0));
+		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.itemMachinePart, 1, 1),"CPC", "S G","CPC",'P', new ItemStack(ConfigItems.itemSheet, 1, 4), 'G',new ItemStack(ConfigItems.itemIronParts, 1, 0), 'S', new ItemStack(ConfigItems.itemCopperParts, 1, 1), 'C', new ItemStack(ConfigItems.itemMachinePart, 1, 0));
 		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.itemMachinePart, 1, 2), new Object[] { "P P", " P ", "P P", 'P',
 			new ItemStack(ConfigItems.itemSheet, 1, 6) });
 

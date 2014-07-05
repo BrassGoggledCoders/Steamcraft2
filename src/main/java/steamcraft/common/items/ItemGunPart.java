@@ -35,7 +35,7 @@ public class ItemGunPart extends BaseItemWithMetadata
 {
 	// @SideOnly(Side.CLIENT)
 	/** The item icon. */
-	IIcon[] itemIcon = new IIcon[4];
+	IIcon[] itemIcon = new IIcon[9];
 
 	/*
 	 * (non-Javadoc)
@@ -52,6 +52,11 @@ public class ItemGunPart extends BaseItemWithMetadata
 		itemIcon[1] = ir.registerIcon(LibInfo.PREFIX + "itemMusketBarrel");
 		itemIcon[2] = ir.registerIcon(LibInfo.PREFIX + "itemRifleBarrel");
 		itemIcon[3] = ir.registerIcon(LibInfo.PREFIX + "itemLock");
+		itemIcon[4] = ir.registerIcon(LibInfo.PREFIX + "itemBrassGunShell");
+		itemIcon[5] = ir.registerIcon(LibInfo.PREFIX + "itemCastIronGunShell");
+		itemIcon[6] = ir.registerIcon(LibInfo.PREFIX + "itemGreenFocus");
+		itemIcon[7] = ir.registerIcon(LibInfo.PREFIX + "itemBlueFocus");
+		itemIcon[8] = ir.registerIcon(LibInfo.PREFIX + "itemPowerCore");
 	}
 
 	/**
