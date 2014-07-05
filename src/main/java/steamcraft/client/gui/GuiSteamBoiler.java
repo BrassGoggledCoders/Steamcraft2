@@ -49,24 +49,22 @@ public class GuiSteamBoiler extends GuiContainer
 	protected void drawGuiContainerBackgroundLayer(float par1, int par2, int par3)
 	{
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-
+		
 		mc.renderEngine.bindTexture(guitexture);
-		int var5 = (width - xSize) / 2;
-		int var6 = (height - ySize) / 2;
-		drawTexturedModalRect(var5, var6, 0, 0, xSize, ySize);
+		drawTexturedModalRect(guiLeft, guiTop, 0, 0, xSize, ySize);
 
 		if (tile.isBurning())
 		{
 			int burnTime = tile.getBurnTimeRemainingScaled(12);
-			drawTexturedModalRect(var5 + 43, (var6 + 48) - burnTime, 176, 12 - burnTime, 14, burnTime + 2);
+			drawTexturedModalRect(guiLeft + 43, (guiTop + 48) - burnTime, 176, 12 - burnTime, 14, burnTime + 2);
 		}
 
-		drawFluid(new FluidStack(FluidRegistry.getFluid("water"), 0), tile.getScaledWaterLevel(60), var5 + 8, var6 + 18, 20, 60);
-		drawFluid(new FluidStack(FluidRegistry.getFluid("steam"), 0), tile.getScaledSteamLevel(60), var5 + 74, var6 + 18, 32, 60);
+		drawFluid(new FluidStack(FluidRegistry.getFluid("water"), 0), tile.getScaledWaterLevel(60), guiLeft + 8, guiTop + 18, 20, 60);
+		drawFluid(new FluidStack(FluidRegistry.getFluid("steam"), 0), tile.getScaledSteamLevel(60), guiLeft + 74, guiTop + 18, 32, 60);
 
 		mc.renderEngine.bindTexture(guitexture);
-		drawTexturedModalRect(var5 + 8, var6 + 24, 176, 14, 20, 49);
-		drawTexturedModalRect(var5 + 74, var6 + 24, 176, 14, 20, 49);
+		drawTexturedModalRect(guiLeft + 8, guiTop + 24, 176, 14, 20, 49);
+		drawTexturedModalRect(guiLeft + 74, guiTop + 24, 176, 14, 20, 49);
 	}
 
 	private void drawFluid(FluidStack fluid, int level, int x, int y, int width, int height)

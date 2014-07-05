@@ -44,14 +44,12 @@ public class GuiBattery extends GuiContainer
 	protected void drawGuiContainerBackgroundLayer(float var1, int var2, int var3)
 	{
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-
+		
 		mc.renderEngine.bindTexture(guitexture);
-		int var5 = (width - xSize) / 2;
-		int var6 = (height - ySize) / 2;
-		drawTexturedModalRect(var5, var6, 0, 0, xSize, ySize);
+		drawTexturedModalRect(guiLeft, guiTop, 0, 0, xSize, ySize);
 		
 		int var8 = tile.getEnergyScaled(16);
-		this.drawTexturedModalRect(var5 + 12, var6 + 64 - var8, 176, 56 - var8, 16, var8 + 1);
+		this.drawTexturedModalRect(guiLeft + 12, guiTop + 64 - var8, 176, 56 - var8, 16, var8 + 1);
 	}
 	
 	@Override
