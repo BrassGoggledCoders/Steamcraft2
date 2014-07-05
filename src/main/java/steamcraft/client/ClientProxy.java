@@ -22,6 +22,7 @@ import steamcraft.client.lib.RenderIDs;
 import steamcraft.client.renderers.block.BlockCrystalRenderer;
 import steamcraft.client.renderers.block.BlockLightningRodRenderer;
 import steamcraft.client.renderers.entity.RenderBullet;
+import steamcraft.client.renderers.entity.RenderSmallLightningBolt;
 import steamcraft.client.renderers.item.ModelBrassWings;
 import steamcraft.client.renderers.item.ModelJetpack;
 import steamcraft.client.renderers.item.ModelWingpack;
@@ -30,6 +31,7 @@ import steamcraft.client.renderers.tile.TileLightningRodRenderer;
 import steamcraft.common.CommonProxy;
 import steamcraft.common.config.ConfigKeyBindings;
 import steamcraft.common.entities.projectile.EntityBullet;
+import steamcraft.common.entities.projectile.EntitySmallLightningBolt;
 import steamcraft.common.lib.Utils;
 import steamcraft.common.tiles.TileCrystal;
 import steamcraft.common.tiles.TileLightningRod;
@@ -74,6 +76,7 @@ public class ClientProxy extends CommonProxy
 		RenderingRegistry.registerEntityRenderingHandler(EntityMinedBlock.class, new RenderMinedBlock());
 
 		RenderingRegistry.registerEntityRenderingHandler(EntityBullet.class, new RenderBullet());
+		RenderingRegistry.registerEntityRenderingHandler(EntitySmallLightningBolt.class, new RenderSmallLightningBolt());
 	}
 
 	private void registerBlockRenderers()

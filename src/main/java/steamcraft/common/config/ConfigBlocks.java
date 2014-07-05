@@ -24,6 +24,7 @@ import steamcraft.common.blocks.BlockCastIronFence;
 import steamcraft.common.blocks.BlockCastIronGate;
 import steamcraft.common.blocks.BlockCastIronLamp;
 import steamcraft.common.blocks.BlockCastIronRailing;
+import steamcraft.common.blocks.BlockCopperWire;
 import steamcraft.common.blocks.BlockCrystal;
 import steamcraft.common.blocks.BlockCustomOre;
 import steamcraft.common.blocks.BlockEngravedSolid;
@@ -53,6 +54,7 @@ import steamcraft.common.tiles.TileArmorEditor;
 import steamcraft.common.tiles.TileBattery;
 import steamcraft.common.tiles.TileBloomery;
 import steamcraft.common.tiles.TileCopperPipe;
+import steamcraft.common.tiles.TileCopperWire;
 import steamcraft.common.tiles.TileCrystal;
 import steamcraft.common.tiles.TileDropHammer;
 import steamcraft.common.tiles.TileIntake;
@@ -206,9 +208,9 @@ public class ConfigBlocks
 		RegistryHelper.registerContainerBlock(blockCopperPipe, TileCopperPipe.class, "BlockCopperPipe");
 
 		// Wires
-		blockCopperWire = new BaseBlock(Material.iron).setBlockName("blockCopperWire");
+		blockCopperWire = new BlockCopperWire(Material.iron).setBlockName("blockCopperWire");
 
-		//GameRegistry.registerBlock(blockCopperWire, "BlockCopperWire");
+		RegistryHelper.registerContainerBlock(blockCopperWire, TileCopperWire.class, "BlockCopperWire");
 
 		// Tanks
 		blockCopperTank = new BaseBlock(Material.iron).setBlockName("blockCopperTank");

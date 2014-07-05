@@ -13,9 +13,13 @@
  */
 package steamcraft.common.tiles;
 
+import java.util.Random;
+
 import net.minecraft.entity.effect.EntityLightningBolt;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
+import cofh.api.energy.EnergyStorage;
 import cofh.api.energy.IEnergyHandler;
 
 /**
@@ -25,13 +29,21 @@ import cofh.api.energy.IEnergyHandler;
  */
 public class TileLightningRod extends TileEntity implements IEnergyHandler
 {
+	private EnergyStorage buffer = new EnergyStorage(30000, 10000);
+
 	@Override
 	public void updateEntity()
 	{
 		if(worldObj.getWorldInfo().isThundering() && worldObj.canBlockSeeTheSky(xCoord, yCoord, zCoord))
 		{
-			for(int i=0; i<100; i++)
-			worldObj.spawnEntityInWorld((new EntityLightningBolt(worldObj, xCoord, yCoord, zCoord)));
+			Random random = new Random();
+			int chance = random.nextInt(500);
+			if(chance == 0)
+			{
+				worldObj.addWeatherEffect((new EntityLightningBolt(worldObj, xCoord, yCoord, zCoord)));
+				buffer.receiveEnergy(10000, false);
+				System.out.print(buffer.getEnergyStored());
+			}
 		}
 	}
 	@Override
@@ -43,25 +55,39 @@ public class TileLightningRod extends TileEntity implements IEnergyHandler
 	@Override
 	public int receiveEnergy(ForgeDirection from, int maxReceive, boolean simulate)
 	{
-		return 0;
+		return buffer.receiveEnergy(maxReceive, simulate);
 	}
 
 	@Override
 	public int extractEnergy(ForgeDirection from, int maxExtract, boolean simulate)
 	{
-		return 0;
+		return buffer.extractEnergy(maxExtract, simulate);
 	}
 
 	@Override
 	public int getEnergyStored(ForgeDirection from)
 	{
-		return 0;
+		return buffer.getEnergyStored();
 	}
 
 	@Override
 	public int getMaxEnergyStored(ForgeDirection from)
 	{
-		return 0;
+		return buffer.getMaxEnergyStored();
+	}
+
+	@Override
+	public void readFromNBT(NBTTagCompound tag)
+	{
+		super.readFromNBT(tag);
+		buffer.readFromNBT(tag);
+	}
+
+	@Override
+	public void writeToNBT(NBTTagCompound tag)
+	{
+		super.writeToNBT(tag);
+		buffer.writeToNBT(tag);
 	}
 
 }

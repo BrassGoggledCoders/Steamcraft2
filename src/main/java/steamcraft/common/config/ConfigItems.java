@@ -23,6 +23,7 @@ import steamcraft.common.items.ItemElectricJar;
 import steamcraft.common.items.ItemFirearm;
 import steamcraft.common.items.ItemGunPart;
 import steamcraft.common.items.ItemIngot;
+import steamcraft.common.items.ItemLightningGun;
 import steamcraft.common.items.ItemMachinePart;
 import steamcraft.common.items.ItemMatch;
 import steamcraft.common.items.ItemNugget;
@@ -125,7 +126,7 @@ public class ConfigItems
 
 	public static Item itemPoppySeed;
 
-	public static Item itemRayGun, itemShrinkray;
+	public static Item itemRayGun, itemShrinkray, itemLightningGun;
 
 	// Other
 	public static Item itemSpanner;
@@ -319,9 +320,11 @@ public class ConfigItems
 
 		itemRayGun = new ItemRayGun(LibInfo.PREFIX + "raygun").setUnlocalizedName("itemRaygun");
 		itemShrinkray = new ItemShrinkray(LibInfo.PREFIX + "shrinkray").setUnlocalizedName("itemShrinkray");
+		itemLightningGun = new ItemLightningGun(LibInfo.PREFIX + "lightninggun").setUnlocalizedName("itemLightningGun");
 
 		registerItem(itemRayGun, "ItemRayGun");
 		registerItem(itemShrinkray, "ItemShrinkray");
+		registerItem(itemLightningGun, "ItemLightningGun");
 	}
 
 	private static void initializeMetals()
