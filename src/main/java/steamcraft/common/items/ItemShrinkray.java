@@ -47,8 +47,7 @@ public class ItemShrinkray extends BaseItem
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
 	{
-		MovingObjectPosition mop = PlayerUtils.getTargetBlock(world, player, true, 5.0D); // Grabs
-																						// vector
+		MovingObjectPosition mop = PlayerUtils.getTargetBlock(world, player, true, 10);
 
 		Vec3 vec3 = player.getLookVec();
 		double tx = player.posX + (vec3.xCoord * 10.0D);

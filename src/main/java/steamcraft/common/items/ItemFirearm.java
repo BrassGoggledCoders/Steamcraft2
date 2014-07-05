@@ -58,13 +58,6 @@ public class ItemFirearm extends BaseItem
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
-	public boolean isFull3D()
-	{
-		return true;
-	}
-
-	@Override
 	public void onUpdate(ItemStack stack, World world, Entity entity, int par4, boolean par5)
 	{
 		if ((entity instanceof EntityPlayer) && (((EntityPlayer) entity).getCurrentEquippedItem() == stack))
