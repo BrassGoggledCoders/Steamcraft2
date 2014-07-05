@@ -8,4 +8,5 @@ public class RenderIDs
 	public static int blockHatchRI;
 	public static int blockLightningRodRI;
 	public static int blockCopperPipeRI;
+	public static int blockTeslaCoilRI;
 }

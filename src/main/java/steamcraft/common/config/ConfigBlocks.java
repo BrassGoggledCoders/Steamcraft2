@@ -35,6 +35,7 @@ import steamcraft.common.blocks.BlockLamp;
 import steamcraft.common.blocks.BlockLightningRod;
 import steamcraft.common.blocks.BlockMetal;
 import steamcraft.common.blocks.BlockSlate;
+import steamcraft.common.blocks.BlockTeslaCoil;
 import steamcraft.common.blocks.BlockUranium;
 import steamcraft.common.blocks.FluidSteam;
 import steamcraft.common.blocks.machines.BlockArmorEditor;
@@ -60,6 +61,7 @@ import steamcraft.common.tiles.TileDropHammer;
 import steamcraft.common.tiles.TileIntake;
 import steamcraft.common.tiles.TileLightningRod;
 import steamcraft.common.tiles.TileSteamBoiler;
+import steamcraft.common.tiles.TileTeslaCoil;
 import steamcraft.common.tiles.TileTurbine;
 import boilerplate.common.RegistryHelper;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -92,7 +94,7 @@ public class ConfigBlocks
 	/* Machines */
 
 	public static Block blockSteamBoiler, blockIntake, blockTurbine, blockBattery;
-	public static Block blockLightningRod;
+	public static Block blockLightningRod, blockTeslaCoil;
 
 	public static Block blockBloomery;
 
@@ -187,10 +189,12 @@ public class ConfigBlocks
 		blockTurbine = new BlockTurbine().setBlockName("blockTurbine");
 		blockBattery = new BlockBattery().setBlockName("blockBattery");
 		blockLightningRod = new BlockLightningRod(Material.iron).setBlockName("blockLightningRod");
+		blockTeslaCoil = new BlockTeslaCoil(Material.iron).setBlockName("blockTeslaCoil");
 
 		RegistryHelper.registerContainerBlock(blockTurbine, TileTurbine.class, "BlockTurbine");
 		RegistryHelper.registerContainerBlock(blockBattery, TileBattery.class, "BlockBattery");
 		RegistryHelper.registerContainerBlockWithDesc(blockLightningRod, TileLightningRod.class, "BlockLightningRod");
+		RegistryHelper.registerContainerBlockWithDesc(blockTeslaCoil, TileTeslaCoil.class, "BlockTeslaCoil");
 
 		// Bloomery
 		blockBloomery = new BlockBloomery(Material.rock).setBlockName("blockBloomery");
