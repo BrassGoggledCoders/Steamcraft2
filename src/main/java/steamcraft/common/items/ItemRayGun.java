@@ -1,5 +1,5 @@
 /**
- * This class was created by BrassGoggledCoders modding team. 
+ * This class was created by BrassGoggledCoders modding team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -43,13 +43,14 @@ public class ItemRayGun extends BaseItem
 		super();
 		setMaxDamage(300);
 		setMaxStackSize(1);
+		setFull3D();
 	}
 
 	@SuppressWarnings("all")
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
 	{
-		MovingObjectPosition mop = PlayerUtils.getTargetBlock(world, player, true, 5.0D); // Grabs
+		MovingObjectPosition mop = PlayerUtils.getTargetBlock(world, player, true, 10.0D); // Grabs
 																						// vector
 
 		Vec3 vec3 = player.getLookVec();

@@ -54,6 +54,7 @@ public class ItemFirearm extends BaseItem
 		this.fireSound = fireSound;
 		this.reloadSound = reloadSound;
 		setMaxStackSize(1);
+		setFull3D();
 	}
 
 	@Override

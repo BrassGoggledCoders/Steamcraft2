@@ -38,6 +38,7 @@ public class ItemLightningGun extends BaseItem
 		super();
 		setMaxDamage(300);
 		setMaxStackSize(1);
+		setFull3D();
 	}
 
 	@SuppressWarnings("all")
