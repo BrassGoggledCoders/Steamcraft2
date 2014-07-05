@@ -97,6 +97,12 @@ public class ConfigRecipes
 		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.itemGunPart, 1, 1), new Object[]{"III", "   ", "III", 'I', Items.iron_ingot});
 		GameRegistry.addShapelessRecipe(new ItemStack(ConfigItems.itemGunPart, 1, 2), new Object[]{new ItemStack(ConfigItems.itemGunPart, 1, 1), ConfigItems.itemChisel});
 		GameRegistry.addRecipe(new ItemStack(ConfigItems.itemGunPart, 1, 3), new Object[]{"  I", " II", 'I', Items.iron_ingot});
+		GameRegistry.addRecipe(new ItemStack(ConfigItems.itemGunPart, 1, 4), new Object[]{"III", " II", 'I', new ItemStack(ConfigItems.itemIngot, 1, 4)});
+		GameRegistry.addRecipe(new ItemStack(ConfigItems.itemGunPart, 1, 5), new Object[]{" II", " II", "  I", 'I', new ItemStack(ConfigItems.itemIngot, 1, 7)});
+		GameRegistry.addRecipe(new ItemStack(ConfigItems.itemGunPart, 1, 6), new Object[]{"IGI", "GSG", "IGI", 'I', new ItemStack(ConfigItems.itemSheet, 1, 4), 'G', Blocks.glass_pane, 'S', Items.emerald});
+		GameRegistry.addRecipe(new ItemStack(ConfigItems.itemGunPart, 1, 7), new Object[]{"IGI", "GSG", "IGI", 'I', new ItemStack(ConfigItems.itemSheet, 1, 4), 'G', Blocks.glass_pane, 'S', Items.diamond});
+		GameRegistry.addRecipe(new ItemStack(ConfigItems.itemGunPart, 1, 8), new Object[]{"SSS", "SES","SSS", 'E', new ItemStack(ConfigItems.itemResource, 1, 0), 'S', new ItemStack(ConfigItems.itemResource, 1, 2)});
+		GameRegistry.addRecipe(new ItemStack(ConfigItems.itemGunPart, 1, 9), new Object[]{"SPS", "PNP","SPS", 'S', new ItemStack(ConfigItems.itemResource, 1, 2), 'P', new ItemStack(ConfigItems.itemGunPart, 1, 8), 'N', Items.nether_star});
 		//Actual Guns
 		GameRegistry.addRecipe(new ItemStack(ConfigItems.flintlockMusket), new Object[]{" FL", " B ", " S ", 'S', new ItemStack(ConfigItems.itemGunPart, 1, 0), 'B', new ItemStack(ConfigItems.itemGunPart, 1, 1), 'L', new ItemStack(ConfigItems.itemGunPart, 1, 3), 'F', Items.flint});
 		GameRegistry.addRecipe(new ItemStack(ConfigItems.matchlockMusket), new Object[]{" FL", " B ", " S ", 'S', new ItemStack(ConfigItems.itemGunPart, 1, 0), 'B', new ItemStack(ConfigItems.itemGunPart, 1, 1), 'L',new ItemStack(ConfigItems.itemGunPart, 1, 3), 'F', ConfigItems.itemMatch});
@@ -109,8 +115,8 @@ public class ConfigRecipes
 		GameRegistry.addRecipe(new ItemStack(ConfigItems.itemRifleBullet, 4), new Object[]{" S "," C "," G ", 'S', new ItemStack(ConfigItems.itemIngot, 1, 6), 'C', new ItemStack(ConfigItems.itemSheet, 1, 4), 'G', Items.gunpowder});
 		GameRegistry.addRecipe(new ItemStack(ConfigItems.itemPercussionCap), new Object[]{"GG", "II", 'I', new ItemStack(ConfigItems.itemIngot, 1, 4), 'G', Items.gunpowder});
 
-		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.itemRayGun), new Object[] { " BB", "EBE", "  B", 'E', Items.emerald, 'B', new ItemStack(ConfigItems.itemIngot, 1, 4)});
-		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.itemShrinkray), new Object[] { " BB", "EBE", "  B", 'E', Items.diamond, 'B', new ItemStack(ConfigItems.itemIngot, 1, 7)});
+		GameRegistry.addRecipe(new ItemStack(ConfigItems.itemRayGun), new Object[] { "FSP", 'F', new ItemStack(ConfigItems.itemGunPart, 1, 6), 'S', new ItemStack(ConfigItems.itemGunPart, 1, 4), 'P', new ItemStack(ConfigItems.itemGunPart, 1, 8)});
+		GameRegistry.addRecipe(new ItemStack(ConfigItems.itemShrinkray), new Object[] { "FSP", 'F', new ItemStack(ConfigItems.itemGunPart, 1, 7), 'S', new ItemStack(ConfigItems.itemGunPart, 1, 5), 'P', new ItemStack(ConfigItems.itemGunPart, 1, 9)});
 	}
 
 	private static void initMetalsRecipes()
@@ -119,8 +125,8 @@ public class ConfigRecipes
 		{
 			RecipeUtils.addMetalRecipes(ConfigBlocks.blockMetal, ConfigItems.itemIngot, ConfigItems.itemNugget, meta);
 
-			GameRegistry.addShapelessRecipe(new ItemStack(ConfigItems.itemSheet, 1, meta), new Object[] {
-					new ItemStack(ConfigItems.itemIngot, 1, meta), new ItemStack(ConfigItems.itemHammer, 1, OreDictionary.WILDCARD_VALUE) });
+			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ConfigItems.itemSheet, 1, meta), new Object[] {
+					"ingot" + LibInfo.metals[meta], new ItemStack(ConfigItems.itemHammer, 1, OreDictionary.WILDCARD_VALUE)}));
 		}
 		for(int meta = 0; meta < 4; meta++)
 		{
