@@ -1,5 +1,5 @@
 /**
- * This class was created by BrassGoggledCoders modding team.
+ * This class was created by BrassGoggledCoders modding team. 
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -8,14 +8,13 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- *
- * File created @ [Jun 23, 2014, 10:51:48 PM]
+ * 
  */
 package steamcraft.common.items;
 
 /**
- *
- * @author warlordjones
+ * @author warlordjones & Decebaldecebal
+ * 
  */
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -44,21 +43,21 @@ public class ItemFirearm extends BaseItem
 		super();
 		this.damage = damage;
 		this.reloadTime = (short) reloadTime;
-		twoAmmo = ammo2 != null;
+		this.twoAmmo = ammo2 != null;
 
 		this.ammo = ammo;
 		this.ammo2 = ammo2;
 
 		this.fireSound = fireSound;
 		this.reloadSound = reloadSound;
-		setMaxStackSize(1);
-		setFull3D();
+		this.setMaxStackSize(1);
+		this.setFull3D();
 	}
 
 	@Override
 	public void onUpdate(ItemStack stack, World world, Entity entity, int par4, boolean par5)
 	{
-		if ((entity instanceof EntityPlayer) && (((EntityPlayer) entity).getCurrentEquippedItem() == stack))
+		if (entity instanceof EntityPlayer && ((EntityPlayer) entity).getCurrentEquippedItem() == stack)
 		{
 			EntityPlayer player = (EntityPlayer) entity;
 
@@ -73,7 +72,7 @@ public class ItemFirearm extends BaseItem
 				stack.setTagCompound(tag);
 
 				if (tag.getShort("reloadTime") == 10)
-					world.playSoundAtEntity(player, reloadSound, 0.8F, 1.0F);
+					world.playSoundAtEntity(player, this.reloadSound, 0.8F, 1.0F);
 
 			}
 		}
@@ -84,34 +83,34 @@ public class ItemFirearm extends BaseItem
 	{
 		NBTTagCompound tag = stack.getTagCompound();
 
-		if ((tag.getShort("reloadTime") == 0) && player.inventory.hasItem(Items.gunpowder) && player.inventory.hasItem(ammo))
-			if (twoAmmo)
+		if (tag.getShort("reloadTime") == 0 && player.inventory.hasItem(Items.gunpowder) && player.inventory.hasItem(this.ammo))
+			if (this.twoAmmo)
 			{
-				if (player.inventory.hasItem(ammo2))
-					shotBullet(stack, world, player);
-				player.inventory.consumeInventoryItem(ammo2);
+				if (player.inventory.hasItem(this.ammo2))
+					this.shotBullet(stack, world, player);
+				player.inventory.consumeInventoryItem(this.ammo2);
 			}
 			else
-				shotBullet(stack, world, player);
+				this.shotBullet(stack, world, player);
 		return stack;
 	}
 
 	private void shotBullet(ItemStack stack, World world, EntityPlayer player)
 	{
 		NBTTagCompound tag = stack.getTagCompound();
-		tag.setShort("reloadTime", reloadTime);
+		tag.setShort("reloadTime", this.reloadTime);
 		tag.setBoolean("canFire", false);
 		stack.setTagCompound(tag);
 
-		player.inventory.consumeInventoryItem(ammo);
+		player.inventory.consumeInventoryItem(this.ammo);
 		player.inventory.consumeInventoryItem(Items.gunpowder);
 
 		if (!world.isRemote)
-			if (ammo == ConfigItems.itemMusketBall)
-				world.spawnEntityInWorld(new EntityBullet(world, player, damage, 8));
+			if (this.ammo == ConfigItems.itemMusketBall)
+				world.spawnEntityInWorld(new EntityBullet(world, player, this.damage, 8));
 			else
-				world.spawnEntityInWorld(new EntityBullet(world, player, damage, 15));
+				world.spawnEntityInWorld(new EntityBullet(world, player, this.damage, 15));
 
-		world.playSoundAtEntity(player, fireSound, 0.6F, 1.0F);
+		world.playSoundAtEntity(player, this.fireSound, 0.6F, 1.0F);
 	}
 }

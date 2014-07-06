@@ -8,8 +8,7 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- *
- * File created @ [Jun 23, 2014, 10:51:48 PM]
+ * 
  */
 package steamcraft.common.items;
 
@@ -21,21 +20,21 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 /**
- * 
  * @author warlordjones
+ * 
  */
 public class BaseItem extends RootItem
 {
 	public BaseItem()
 	{
 		super();
-		setCreativeTab(Steamcraft.tabSC2);
+		this.setCreativeTab(Steamcraft.tabSC2);
 	}
 
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void registerIcons(IIconRegister par1IconRegister)
 	{
-		itemIcon = par1IconRegister.registerIcon(LibInfo.PREFIX + this.getUnlocalizedName().substring(5));
+		this.itemIcon = par1IconRegister.registerIcon(LibInfo.PREFIX + this.getUnlocalizedName().substring(5));
 	}
 }

@@ -1,5 +1,5 @@
 /**
- * This class was created by <Surseance> or his SC2 development team.
+ * This class was created by BrassGoggledCoders modding team. 
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -8,8 +8,7 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- *
- * File created @ [3/18/14, 12:17]
+ * 
  */
 package steamcraft.common.items;
 
@@ -25,74 +24,50 @@ import steamcraft.common.lib.LibInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class ItemResource.
- *
- * @author Surseance (Johnny Eatmon)
+ * @author Surseance
+ * 
  */
 public class ItemGunPart extends BaseItemWithMetadata
 {
-	// @SideOnly(Side.CLIENT)
-	/** The item icon. */
+	@SideOnly(Side.CLIENT)
 	IIcon[] itemIcon = new IIcon[10];
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see
-	 * net.minecraft.item.Item#registerIcons(net.minecraft.client.renderer.texture
-	 * .IIconRegister)
-	 */
+	public ItemGunPart()
+	{
+		super();
+		this.setMaxStackSize(64);
+	}
+	
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister ir)
 	{
-		itemIcon[0] = ir.registerIcon(LibInfo.PREFIX + "itemStock");
-		itemIcon[1] = ir.registerIcon(LibInfo.PREFIX + "itemMusketBarrel");
-		itemIcon[2] = ir.registerIcon(LibInfo.PREFIX + "itemRifleBarrel");
-		itemIcon[3] = ir.registerIcon(LibInfo.PREFIX + "itemLock");
-		itemIcon[4] = ir.registerIcon(LibInfo.PREFIX + "itemBrassGunFrame");
-		itemIcon[5] = ir.registerIcon(LibInfo.PREFIX + "itemCastIronGunFrame");
-		itemIcon[6] = ir.registerIcon(LibInfo.PREFIX + "itemGreenFocus");
-		itemIcon[7] = ir.registerIcon(LibInfo.PREFIX + "itemBlueFocus");
-		itemIcon[8] = ir.registerIcon(LibInfo.PREFIX + "itemPowerCore");
-		itemIcon[9] = ir.registerIcon(LibInfo.PREFIX + "itemOverchargedPowerCore");
+		this.itemIcon[0] = ir.registerIcon(LibInfo.PREFIX + "itemStock");
+		this.itemIcon[1] = ir.registerIcon(LibInfo.PREFIX + "itemMusketBarrel");
+		this.itemIcon[2] = ir.registerIcon(LibInfo.PREFIX + "itemRifleBarrel");
+		this.itemIcon[3] = ir.registerIcon(LibInfo.PREFIX + "itemLock");
+		this.itemIcon[4] = ir.registerIcon(LibInfo.PREFIX + "itemBrassGunFrame");
+		this.itemIcon[5] = ir.registerIcon(LibInfo.PREFIX + "itemCastIronGunFrame");
+		this.itemIcon[6] = ir.registerIcon(LibInfo.PREFIX + "itemGreenFocus");
+		this.itemIcon[7] = ir.registerIcon(LibInfo.PREFIX + "itemBlueFocus");
+		this.itemIcon[8] = ir.registerIcon(LibInfo.PREFIX + "itemPowerCore");
+		this.itemIcon[9] = ir.registerIcon(LibInfo.PREFIX + "itemOverchargedPowerCore");
 	}
 
-	/**
-	 * Instantiates a new item resource.
-	 */
-	public ItemGunPart()
-	{
-		super();
-		setMaxStackSize(64);
-	}
-
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see net.minecraft.item.Item#getSubItems(net.minecraft.item.Item,
-	 * net.minecraft.creativetab.CreativeTabs, java.util.List)
-	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(Item item, CreativeTabs tab, List l)
 	{
-		for (int var4 = 0; var4 < itemIcon.length; ++var4)
+		for (int var4 = 0; var4 < this.itemIcon.length; ++var4)
 			l.add(new ItemStack(ConfigItems.itemGunPart, 1, var4));
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see net.minecraft.item.Item#getIconFromDamage(int)
-	 */
 	@Override
 	@SideOnly(Side.CLIENT)
 	public IIcon getIconFromDamage(int itemDamage)
 	{
-		return itemIcon[itemDamage];
+		return this.itemIcon[itemDamage];
 	}
 }

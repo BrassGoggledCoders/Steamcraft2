@@ -1,4 +1,13 @@
-/*
+/**
+ * This class was created by BrassGoggledCoders modding team. 
+ * This class is available as part of the Steamcraft 2 Mod for Minecraft.
+ *
+ * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
+ * (http://www.mod-buildcraft.com/MMPL-1.0.txt)
+ *
+ * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
+ * Steamcraft (c) Proloe 2011
+ * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
  * 
  */
 package steamcraft.common.items;
@@ -17,33 +26,22 @@ import steamcraft.common.config.ConfigItems;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class ItemPipe.
+ * @author warlordjones
+ *
  */
 public class ItemPipe extends BaseItem
 {
-
-	/**
-	 * Instantiates a new item pipe.
-	 */
 	public ItemPipe()
 	{
 		super();
-		setUnlocalizedName("itemPipe");
-		setHasSubtypes(true);
-		setCreativeTab(Steamcraft.tabSC2);
-		setMaxDamage(100);
-		setMaxStackSize(1);
+		this.setUnlocalizedName("itemPipe");
+		this.setHasSubtypes(true);
+		this.setCreativeTab(Steamcraft.tabSC2);
+		this.setMaxDamage(100);
+		this.setMaxStackSize(1);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see net.minecraft.item.Item#onItemUse(net.minecraft.item.ItemStack,
-	 * net.minecraft.entity.player.EntityPlayer, net.minecraft.world.World, int,
-	 * int, int, int, float, float, float)
-	 */
 	@Override
 	public boolean onItemUse(ItemStack is, EntityPlayer player, World par3World, int par4, int par5, int par6, int par7, float par8, float par9,
 			float par10)
@@ -55,20 +53,14 @@ public class ItemPipe extends BaseItem
 			player.addPotionEffect(new PotionEffect(Potion.weakness.id, 100, 1));
 			player.addPotionEffect(new PotionEffect(Potion.regeneration.id, 10, 1));
 			player.addPotionEffect(new PotionEffect(Potion.blindness.id, 10, 1));
-			setDamage(is, 1);
+			this.setDamage(is, 1);
 			return true;
 		}
 		else
 			return false;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see net.minecraft.item.Item#getSubItems(net.minecraft.item.Item,
-	 * net.minecraft.creativetab.CreativeTabs, java.util.List)
-	 */
-	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@SuppressWarnings({"all"})
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(final Item item, final CreativeTabs tab, final List l)

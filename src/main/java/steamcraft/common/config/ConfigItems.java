@@ -329,7 +329,7 @@ public class ConfigItems
 
 	private static void initializeMetals()
 	{
-		itemIngot = new ItemIngot();
+		itemIngot = new ItemIngot().setUnlocalizedName("itemIngot");
 		itemNugget = new ItemNugget();
 		itemSheet = new ItemSheet();
 		itemPowder = new ItemPowder();

@@ -1,5 +1,5 @@
 /**
- * This class was created by <Surseance> or his SC2 development team.
+ * This class was created by BrassGoggledCoders modding team. 
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -8,8 +8,7 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- *
- * File created @ [Mar 20, 2014, 10:41:55 AM]
+ * 
  */
 package steamcraft.common.items;
 
@@ -31,24 +30,21 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 /**
- * The Class ItemCanister.
+ * @author Decebaldecebal & warlordjones
  * 
- * @author Decebaldecebal
  */
 public class ItemCanister extends BaseItem implements IFluidContainerItem
 {
 	private static IIcon emptyIcon;
 	private static IIcon fullIcon;
 	public static final int MAX_STEAM = 10000;
-	public static final int MAX_STEAM_RATE = 20; // Maximum amount of steam that
-													// can be inserted into
-													// thiscanister per tick
+	public static final int MAX_STEAM_RATE = 20;
 
 	public ItemCanister()
 	{
 		super();
-		setMaxStackSize(1);
-		setMaxDamage(MAX_STEAM / 100);
+		this.setMaxStackSize(1);
+		this.setMaxDamage(MAX_STEAM / 100);
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -56,7 +52,7 @@ public class ItemCanister extends BaseItem implements IFluidContainerItem
 	public void registerIcons(IIconRegister par1IconRegister)
 	{
 		emptyIcon = par1IconRegister.registerIcon(LibInfo.PREFIX + "itemCanisterEmpty");
-		itemIcon = par1IconRegister.registerIcon(LibInfo.PREFIX + "itemCanisterHalf");
+		this.itemIcon = par1IconRegister.registerIcon(LibInfo.PREFIX + "itemCanisterHalf");
 		fullIcon = par1IconRegister.registerIcon(LibInfo.PREFIX + "itemCanisterFull");
 	}
 
@@ -68,7 +64,7 @@ public class ItemCanister extends BaseItem implements IFluidContainerItem
 			return fullIcon;
 		else if (damage == this.getMaxDamage())
 			return emptyIcon;
-		return itemIcon;
+		return this.itemIcon;
 	}
 
 	@SuppressWarnings("all")
@@ -77,14 +73,14 @@ public class ItemCanister extends BaseItem implements IFluidContainerItem
 	public void getSubItems(Item item, CreativeTabs tab, List l)
 	{
 		l.add(new ItemStack(ConfigItems.itemCanisterSteam, 1, this.getMaxDamage()));
-		l.add(getFilledCanister());
+		l.add(this.getFilledCanister());
 	}
 
 	public ItemStack getFilledCanister()
 	{
 		ItemStack filled = new ItemStack(ConfigItems.itemCanisterSteam, 1, 0);
 
-		fill(filled, new FluidStack(FluidRegistry.getFluid("steam"), MAX_STEAM), true);
+		this.fill(filled, new FluidStack(FluidRegistry.getFluid("steam"), MAX_STEAM), true);
 
 		return filled;
 	}
@@ -94,14 +90,14 @@ public class ItemCanister extends BaseItem implements IFluidContainerItem
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean flag)
 	{
-		FluidStack fluid = getFluid(stack);
-		if ((fluid != null) && (fluid.amount > 0))
+		FluidStack fluid = this.getFluid(stack);
+		if (fluid != null && fluid.amount > 0)
 		{
 			String str = fluid.getFluid().getName();
 			int amount = fluid.amount;
 
 			list.add("Holding " + amount + "mB of " + str);
-			list.add("(That's about " + (amount / 1000) + " buckets)");
+			list.add("(That's about " + amount / 1000 + " buckets)");
 		}
 		else
 			list.add("Empty");
@@ -110,7 +106,7 @@ public class ItemCanister extends BaseItem implements IFluidContainerItem
 	@Override
 	public FluidStack getFluid(ItemStack container)
 	{
-		if ((container.stackTagCompound == null) || !container.stackTagCompound.hasKey("Fluid"))
+		if (container.stackTagCompound == null || !container.stackTagCompound.hasKey("Fluid"))
 			return null;
 		return FluidStack.loadFluidStackFromNBT(container.stackTagCompound.getCompoundTag("Fluid"));
 	}
@@ -129,7 +125,7 @@ public class ItemCanister extends BaseItem implements IFluidContainerItem
 
 		if (!doFill)
 		{
-			if ((container.stackTagCompound == null) || !container.stackTagCompound.hasKey("Fluid"))
+			if (container.stackTagCompound == null || !container.stackTagCompound.hasKey("Fluid"))
 				return Math.min(MAX_STEAM, resource.amount);
 
 			FluidStack stack = FluidStack.loadFluidStackFromNBT(container.stackTagCompound.getCompoundTag("Fluid"));
@@ -178,7 +174,7 @@ public class ItemCanister extends BaseItem implements IFluidContainerItem
 
 		container.stackTagCompound.setTag("Fluid", stack.writeToNBT(fluidTag));
 
-		updateCanisterDamage(container);
+		this.updateCanisterDamage(container);
 
 		return filled;
 	}
@@ -186,7 +182,7 @@ public class ItemCanister extends BaseItem implements IFluidContainerItem
 	@Override
 	public FluidStack drain(ItemStack container, int maxDrain, boolean doDrain)
 	{
-		if ((container.stackTagCompound == null) || !container.stackTagCompound.hasKey("Fluid"))
+		if (container.stackTagCompound == null || !container.stackTagCompound.hasKey("Fluid"))
 			return null;
 
 		FluidStack stack = FluidStack.loadFluidStackFromNBT(container.stackTagCompound.getCompoundTag("Fluid"));
@@ -213,7 +209,7 @@ public class ItemCanister extends BaseItem implements IFluidContainerItem
 			container.stackTagCompound.setTag("Fluid", fluidTag);
 		}
 
-		updateCanisterDamage(container);
+		this.updateCanisterDamage(container);
 
 		return stack;
 	}
@@ -222,19 +218,12 @@ public class ItemCanister extends BaseItem implements IFluidContainerItem
 	{
 		FluidStack stack = FluidStack.loadFluidStackFromNBT(canister.stackTagCompound.getCompoundTag("Fluid"));
 
-		canister.setItemDamage(canister.getMaxDamage() - (stack.amount / 100));
+		canister.setItemDamage(canister.getMaxDamage() - stack.amount / 100);
 	}
 
-	/**
-	 * Gets the fluid amount.
-	 * 
-	 * @param stack
-	 *            the stack
-	 * @return the fluid amount
-	 */
 	public int getFluidAmount(ItemStack stack)
 	{
-		FluidStack fluid = getFluid(stack);
+		FluidStack fluid = this.getFluid(stack);
 
 		if (fluid == null)
 			return 0;

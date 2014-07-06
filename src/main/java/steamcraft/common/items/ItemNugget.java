@@ -1,5 +1,14 @@
-/*
+/**
+ * This class was created by BrassGoggledCoders modding team. 
+ * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
+ * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
+ * (http://www.mod-buildcraft.com/MMPL-1.0.txt)
+ *
+ * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
+ * Steamcraft (c) Proloe 2011
+ * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
+ * 
  */
 package steamcraft.common.items;
 
@@ -15,31 +24,22 @@ import steamcraft.common.lib.LibInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class ItemNugget.
+ * @author warlordjones
+ *
  */
 public class ItemNugget extends BaseItemWithMetadata
 {
-
-	/** The item icon. */
+	@SideOnly(Side.CLIENT)
 	IIcon[] itemIcon = new IIcon[8];
 
-	/**
-	 * Instantiates a new item nugget.
-	 */
 	public ItemNugget()
 	{
 		super();
-		setUnlocalizedName("itemNugget");
+		this.setUnlocalizedName("itemNugget");
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see net.minecraft.item.Item#getSubItems(net.minecraft.item.Item,
-	 * net.minecraft.creativetab.CreativeTabs, java.util.List)
-	 */
+	@SuppressWarnings("all")
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(Item item, CreativeTabs tab, List list)
@@ -48,31 +48,19 @@ public class ItemNugget extends BaseItemWithMetadata
 			list.add(new ItemStack(ConfigItems.itemNugget, 1, var4));
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * steamcraft.common.items.BaseItem#registerIcons(net.minecraft.client.renderer
-	 * .texture.IIconRegister)
-	 */
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister ir)
 	{
-		for (int i = 0; i < itemIcon.length; i++)
-			itemIcon[i] = ir.registerIcon(LibInfo.PREFIX + "metals/" + "itemNugget" + LibInfo.metals[i]);
+		for (int i = 0; i < this.itemIcon.length; i++)
+			this.itemIcon[i] = ir.registerIcon(LibInfo.PREFIX + "metals/" + "itemNugget" + LibInfo.metals[i]);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see net.minecraft.item.Item#getIconFromDamage(int)
-	 */
 	@Override
 	@SideOnly(Side.CLIENT)
 	public IIcon getIconFromDamage(int itemDamage)
 	{
-		return itemIcon[itemDamage];
+		return this.itemIcon[itemDamage];
 	}
 
 }

@@ -1,5 +1,5 @@
 /**
- * This class was created by <Surseance> or his SC2 development team.
+ * This class was created by BrassGoggledCoders modding team. 
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -8,8 +8,7 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- *
- * File created @ [3/18/14, 12:17]
+ * 
  */
 package steamcraft.common.items;
 
@@ -25,49 +24,29 @@ import steamcraft.common.lib.LibInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-// TODO: Auto-generated Javadoc
-/**
- * The Class ItemIngot.
- *
+/** 
  * @author warlordjones
+ * 
  */
 public class ItemIngot extends BaseItemWithMetadata
 {
-	// @SideOnly(Side.CLIENT)
-	/** The item icon. */
+	@SideOnly(Side.CLIENT)
 	IIcon[] itemIcon = new IIcon[8];
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see
-	 * net.minecraft.item.Item#registerIcons(net.minecraft.client.renderer.texture
-	 * .IIconRegister)
-	 */
+	public ItemIngot()
+	{
+		super();
+		this.setMaxStackSize(64);
+	}
+	
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister ir)
 	{
-		for (int i = 0; i < itemIcon.length; i++)
-			itemIcon[i] = ir.registerIcon(LibInfo.PREFIX + "metals/" + "itemIngot" + LibInfo.metals[i]);
+		for (int i = 0; i < this.itemIcon.length; i++)
+			this.itemIcon[i] = ir.registerIcon(LibInfo.PREFIX + "metals/" + "itemIngot" + LibInfo.metals[i]);
 	}
 
-	/**
-	 * Instantiates a new item ingot.
-	 */
-	public ItemIngot()
-	{
-		super();
-		setMaxStackSize(64);
-		setUnlocalizedName("itemIngot");
-	}
-
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see net.minecraft.item.Item#getSubItems(net.minecraft.item.Item,
-	 * net.minecraft.creativetab.CreativeTabs, java.util.List)
-	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	@SideOnly(Side.CLIENT)
@@ -77,15 +56,10 @@ public class ItemIngot extends BaseItemWithMetadata
 			l.add(new ItemStack(ConfigItems.itemIngot, 1, var4));
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see net.minecraft.item.Item#getIconFromDamage(int)
-	 */
 	@Override
 	@SideOnly(Side.CLIENT)
 	public IIcon getIconFromDamage(int itemDamage)
 	{
-		return itemIcon[itemDamage];
+		return this.itemIcon[itemDamage];
 	}
 }

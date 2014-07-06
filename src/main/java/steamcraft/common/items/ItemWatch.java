@@ -1,5 +1,5 @@
 /**
- * This class was created by <Surseance> or his SC2 development team.
+ * This class was created by BrassGoggledCoders modding team. 
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -8,8 +8,7 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- *
- * File created @ [Mar 20, 2014, 9:54:34 AM]
+ * 
  */
 package steamcraft.common.items;
 
@@ -23,31 +22,18 @@ import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 import steamcraft.common.Steamcraft;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class ItemWatch.
+ * @author Surseance
  *
- * @author Surseance (Johnny Eatmon)
  */
 public class ItemWatch extends BaseItem
 {
-
-	/**
-	 * Instantiates a new item watch.
-	 */
 	public ItemWatch()
 	{
-		setMaxStackSize(1);
-		setCreativeTab(Steamcraft.tabSC2);
+		this.setMaxStackSize(1);
+		this.setCreativeTab(Steamcraft.tabSC2);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see
-	 * net.minecraft.item.Item#onItemRightClick(net.minecraft.item.ItemStack,
-	 * net.minecraft.world.World, net.minecraft.entity.player.EntityPlayer)
-	 */
 	@Override
 	public ItemStack onItemRightClick(final ItemStack is, final World world, final EntityPlayer player)
 	{

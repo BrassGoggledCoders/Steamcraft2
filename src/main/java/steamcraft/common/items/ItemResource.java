@@ -1,5 +1,5 @@
 /**
- * This class was created by <Surseance> or his SC2 development team.
+ * This class was created by BrassGoggledCoders modding team. 
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -8,8 +8,7 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- *
- * File created @ [3/18/14, 12:17]
+ * 
  */
 package steamcraft.common.items;
 
@@ -25,71 +24,47 @@ import steamcraft.common.lib.LibInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class ItemResource.
- * 
- * @author Surseance (Johnny Eatmon)
+ * @author warlordjones
+ *
  */
 public class ItemResource extends BaseItemWithMetadata
 {
-	// @SideOnly(Side.CLIENT)
-	/** The item icon. */
+	@SideOnly(Side.CLIENT)
 	IIcon[] itemIcon = new IIcon[7];
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * net.minecraft.item.Item#registerIcons(net.minecraft.client.renderer.texture
-	 * .IIconRegister)
-	 */
+	
+	public ItemResource()
+	{
+		super();
+		this.setMaxStackSize(64);
+	}
+	
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister ir)
 	{
-		itemIcon[0] = ir.registerIcon(LibInfo.PREFIX + "itemCrystal");
-		itemIcon[1] = ir.registerIcon(LibInfo.PREFIX + "itemChemSalt");
-		itemIcon[2] = ir.registerIcon(LibInfo.PREFIX + "itemSlate");
-		itemIcon[3] = ir.registerIcon(LibInfo.PREFIX + "itemPhosphorus");
-		itemIcon[4] = ir.registerIcon(LibInfo.PREFIX + "itemUranium");
-		itemIcon[5] = ir.registerIcon(LibInfo.PREFIX + "itemPellet");
-		itemIcon[6] = ir.registerIcon(LibInfo.PREFIX + "itemTeaLeaves");
+		this.itemIcon[0] = ir.registerIcon(LibInfo.PREFIX + "itemCrystal");
+		this.itemIcon[1] = ir.registerIcon(LibInfo.PREFIX + "itemChemSalt");
+		this.itemIcon[2] = ir.registerIcon(LibInfo.PREFIX + "itemSlate");
+		this.itemIcon[3] = ir.registerIcon(LibInfo.PREFIX + "itemPhosphorus");
+		this.itemIcon[4] = ir.registerIcon(LibInfo.PREFIX + "itemUranium");
+		this.itemIcon[5] = ir.registerIcon(LibInfo.PREFIX + "itemPellet");
+		this.itemIcon[6] = ir.registerIcon(LibInfo.PREFIX + "itemTeaLeaves");
 	}
 
-	/**
-	 * Instantiates a new item resource.
-	 */
-	public ItemResource()
-	{
-		super();
-		setMaxStackSize(64);
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see net.minecraft.item.Item#getSubItems(net.minecraft.item.Item,
-	 * net.minecraft.creativetab.CreativeTabs, java.util.List)
-	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(Item item, CreativeTabs tab, List l)
 	{
-		for (int var4 = 0; var4 < itemIcon.length; ++var4)
+		for (int var4 = 0; var4 < this.itemIcon.length; ++var4)
 			l.add(new ItemStack(ConfigItems.itemResource, 1, var4));
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see net.minecraft.item.Item#getIconFromDamage(int)
-	 */
 	@Override
 	@SideOnly(Side.CLIENT)
 	public IIcon getIconFromDamage(int itemDamage)
 	{
-		return itemIcon[itemDamage];
+		return this.itemIcon[itemDamage];
 	}
 }
