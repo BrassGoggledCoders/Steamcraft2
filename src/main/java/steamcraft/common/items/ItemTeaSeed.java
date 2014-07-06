@@ -1,5 +1,5 @@
 /**
- * This class was created by BrassGoggledCoders modding team. 
+ * This class was created by BrassGoggledCoders modding team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -8,7 +8,7 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- * 
+ *
  */
 package steamcraft.common.items;
 
@@ -35,46 +35,44 @@ public class ItemTeaSeed extends BaseItem implements IPlantable
 		super();
 		this.setMaxStackSize(64);
 		this.setCreativeTab(Steamcraft.tabSC2);
+		setUnlocalizedName("itemTeaSeed");
 	}
 
 	@Override
-	public boolean onItemUse(final ItemStack is, final EntityPlayer player, final World world, final int x, final int y, final int z, final int side,
-			final float hitX, final float hitY, final float hitZ)
+	public boolean onItemUse( ItemStack is,  EntityPlayer player,  World world,  int x,  int y,  int z,  int side,
+			 float hitX,  float hitY,  float hitZ)
 	{
 		if (side != 1)
-			return false;
+		return false;
 		else if (player.canPlayerEdit(x, y, z, side, is) && player.canPlayerEdit(x, y + 1, z, side, is))
 		{
-			world.getBlock(x, y, z);
-			final Block soil = Blocks.farmland;
+			 Block soil = world.getBlock(x, y, z);
 
 			if (soil != null && soil.canSustainPlant(world, x, y, z, ForgeDirection.UP, this) && world.isAirBlock(x, y + 1, z))
 			{
-				world.setBlockToAir(x, y + 1, z);
-				--is.stackSize;
+				world.setBlock(x, y+1, z, getPlant(world,x,y,z), getPlantMetadata(world, x, y, z), 2);
+				player.inventory.consumeInventoryItem(is.getItem());
 				return true;
 			}
-			else
-				return false;
+			else return false;
 		}
-		else
-			return false;
+		else return false;
 	}
 
 	@Override
-	public Block getPlant(final IBlockAccess world, final int x, final int y, final int z)
+	public Block getPlant( IBlockAccess world,  int x,  int y,  int z)
 	{
 		return ConfigBlocks.blockTeaPlant;
 	}
 
 	@Override
-	public int getPlantMetadata(final IBlockAccess world, final int x, final int y, final int z)
+	public int getPlantMetadata( IBlockAccess world,  int x,  int y,  int z)
 	{
 		return 0;
 	}
 
 	@Override
-	public EnumPlantType getPlantType(final IBlockAccess world, final int x, final int y, final int z)
+	public EnumPlantType getPlantType( IBlockAccess world,  int x,  int y,  int z)
 	{
 		return EnumPlantType.Crop;
 	}
