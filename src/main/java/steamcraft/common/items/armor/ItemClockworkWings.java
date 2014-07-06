@@ -1,5 +1,5 @@
 /**
- * This class was created by BrassGoggledCoders modding team.
+ * This class was created by BrassGoggledCoders modding team. 
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -8,8 +8,7 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- *
- * File created @ [Jun 25, 2014, 12:21:52 PM]
+ * 
  */
 package steamcraft.common.items.armor;
 
@@ -30,31 +29,31 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author decebaldecebal
- *
+ * 
  */
 public class ItemClockworkWings extends BaseArmor
 {
 	private static final float hungerPerTick = 1F;
 
-	public ItemClockworkWings(ArmorMaterial mat, int renderIndex, int armorType)
+	public ItemClockworkWings(ArmorMaterial mat, int renderIndex, int type)
 	{
-		super(mat, renderIndex, armorType);
-		setMaxDamage(0);
+		super(mat, renderIndex, type);
+		this.setMaxDamage(0);
 	}
 
 	@SuppressWarnings("all")
 	@Override
 	public void addInformation(ItemStack itemStack, EntityPlayer entityPlayer, List list, boolean bool)
 	{
-		if (descNeedsShift)
+		if (this.descNeedsShift)
 		{
 			if (ClientHelper.isShiftKeyDown())
-				getWrappedDesc(list);
+				this.getWrappedDesc(list);
 			else
 				list.add(ClientHelper.shiftForInfo);
 		}
 		else
-			getWrappedDesc(list);
+			this.getWrappedDesc(list);
 	}
 
 	@Override
@@ -63,7 +62,7 @@ public class ItemClockworkWings extends BaseArmor
 	{
 		if (!player.capabilities.allowFlying && player.getFoodStats().getFoodLevel() != 0)
 		{
-			if ((Minecraft.getMinecraft().currentScreen == null) && (player.posY < 160) && Minecraft.getMinecraft().gameSettings.keyBindJump.isPressed())
+			if (Minecraft.getMinecraft().currentScreen == null && player.posY < 160 && Minecraft.getMinecraft().gameSettings.keyBindJump.isPressed())
 			{
 				player.addExhaustion(hungerPerTick);
 
@@ -73,7 +72,7 @@ public class ItemClockworkWings extends BaseArmor
 					player.motionY += 0.4D;
 			}
 
-			if ((player.motionY < 0.0D) && player.isSneaking())
+			if (player.motionY < 0.0D && player.isSneaking())
 			{
 				player.addExhaustion(hungerPerTick / 2);
 				player.motionY /= 1.4D;
@@ -87,7 +86,7 @@ public class ItemClockworkWings extends BaseArmor
 				player.motionX *= 1.04D;
 				player.motionZ *= 1.04D;
 			}
-			//Workaround
+			
 			player.fallDistance = 0;
 		}
 	}
@@ -106,17 +105,14 @@ public class ItemClockworkWings extends BaseArmor
 			{
 				armorModel.bipedHead.showModel = armorSlot == 0;
 				armorModel.bipedHeadwear.showModel = armorSlot == 0;
-				armorModel.bipedBody.showModel = (armorSlot == 1) || (armorSlot == 2);
+				armorModel.bipedBody.showModel = armorSlot == 1 || armorSlot == 2;
 				armorModel.bipedRightArm.showModel = armorSlot == 1;
 				armorModel.bipedLeftArm.showModel = armorSlot == 1;
-				armorModel.bipedRightLeg.showModel = (armorSlot == 2) || (armorSlot == 3);
-				armorModel.bipedLeftLeg.showModel = (armorSlot == 2) || (armorSlot == 3);
+				armorModel.bipedRightLeg.showModel = armorSlot == 2 || armorSlot == 3;
+				armorModel.bipedLeftLeg.showModel = armorSlot == 2 || armorSlot == 3;
 				armorModel.isSneak = entityLiving.isSneaking();
 				armorModel.isRiding = entityLiving.isRiding();
 				armorModel.isChild = entityLiving.isChild();
-
-				// armorModel.heldItemRight =
-				// entityLiving.getCurrentItemOrArmor(0) != null ? 1 :0;
 
 				if (entityLiving instanceof EntityPlayer)
 					armorModel.aimedBow = ((EntityPlayer) entityLiving).getItemInUseDuration() > 2;

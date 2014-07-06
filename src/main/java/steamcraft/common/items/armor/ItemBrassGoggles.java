@@ -1,5 +1,14 @@
-/*
+/**
+ * This class was created by BrassGoggledCoders modding team. 
+ * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
+ * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
+ * (http://www.mod-buildcraft.com/MMPL-1.0.txt)
+ *
+ * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
+ * Steamcraft (c) Proloe 2011
+ * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
+ * 
  */
 package steamcraft.common.items.armor;
 
@@ -18,27 +27,17 @@ import steamcraft.common.lib.LibInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class ItemBrassGoggles.
+ * @author Surseance
+ *
  */
 public class ItemBrassGoggles extends BaseArmor
 {
-
-	/**
-	 * Instantiates a new item brass goggles.
-	 *
-	 * @param mat
-	 *            the mat
-	 * @param p_i45325_2_
-	 *            the p_i45325_2_
-	 * @param p_i45325_3_
-	 *            the p_i45325_3_
-	 */
-	public ItemBrassGoggles(ArmorMaterial mat, int p_i45325_2_, int p_i45325_3_)
+	private static ResourceLocation overlay = new ResourceLocation(LibInfo.PREFIX + "textures/misc/goggles.png");
+	
+	public ItemBrassGoggles(ArmorMaterial mat, int renderIndex, int type)
 	{
-		super(mat, p_i45325_2_, p_i45325_3_);
-		setUnlocalizedName("itemBrassGoggles");
+		super(mat, renderIndex, type);
 	}
 
 	@Override
@@ -47,18 +46,18 @@ public class ItemBrassGoggles extends BaseArmor
 	{
 		return LibInfo.PREFIX + "textures/armor/divinghelmet.png";
 	}
-	/** The overlay. */
-	private static ResourceLocation overlay = new ResourceLocation(LibInfo.PREFIX + "textures/misc/goggles.png");
 
+	@Override
 	@SideOnly(Side.CLIENT)
-	public void renderHelmetOverlay(ItemStack stack, EntityPlayer player, ScaledResolution resolution, float partialTicks, boolean hasScreen, int mouseX, int mouseY)
+	public void renderHelmetOverlay(ItemStack stack, EntityPlayer player, ScaledResolution resolution, float partialTicks, boolean hasScreen, int mouseX,
+			int mouseY)
 	{
-		if ((Minecraft.getMinecraft().thePlayer == null) || (Minecraft.getMinecraft().currentScreen != null))
+		if (Minecraft.getMinecraft().thePlayer == null || Minecraft.getMinecraft().currentScreen != null)
 			return;
 
 		ItemStack helmet = Minecraft.getMinecraft().thePlayer.inventory.armorItemInSlot(3);
 
-		if ((Minecraft.getMinecraft().gameSettings.thirdPersonView == 0) && (helmet != null) && (helmet.getItem() == ConfigItems.brassGoggles))// &&
+		if (Minecraft.getMinecraft().gameSettings.thirdPersonView == 0 && helmet != null && helmet.getItem() == ConfigItems.brassGoggles)// &&
 		// KeyHandler.keyPressed)
 		{
 			Minecraft.getMinecraft().getTextureManager().bindTexture(overlay);
@@ -87,11 +86,8 @@ public class ItemBrassGoggles extends BaseArmor
 			GL11.glDisable(GL11.GL_BLEND);
 
 			/*
-			 * if (!mc.gameSettings.hideGUI || mc.currentScreen != null) {
-			 * int x = (Mouse.getX() * width) / mc.displayWidth; int y =
-			 * height - (Mouse.getY() * height) / mc.displayHeight - 1;
-			 * mc.ingameGUI.renderGameOverlay(0.0F, mc.currentScreen !=
-			 * null, x, y); }
+			 * if (!mc.gameSettings.hideGUI || mc.currentScreen != null) { int x = (Mouse.getX() * width) / mc.displayWidth; int y = height - (Mouse.getY() *
+			 * height) / mc.displayHeight - 1; mc.ingameGUI.renderGameOverlay(0.0F, mc.currentScreen != null, x, y); }
 			 */
 		}
 	}

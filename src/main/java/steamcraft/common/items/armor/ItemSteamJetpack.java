@@ -1,5 +1,5 @@
 /**
- * This class was created by BrassGoggledCoders modding team.
+ * This class was created by BrassGoggledCoders modding team. 
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -8,8 +8,7 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- *
- * File created @ [Jun 23, 2014, 10:51:48 PM]
+ * 
  */
 package steamcraft.common.items.armor;
 
@@ -35,8 +34,8 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 /**
- * 
  * @author Decebaldecebal
+ * 
  */
 public class ItemSteamJetpack extends BaseArmor
 {
@@ -45,8 +44,8 @@ public class ItemSteamJetpack extends BaseArmor
 	public ItemSteamJetpack(ArmorMaterial mat, int renderIndex, int armorType, byte steam)
 	{
 		super(mat, renderIndex, armorType);
-		setMaxDamage(0);
-		steamPerTick = steam;
+		this.setMaxDamage(0);
+		this.steamPerTick = steam;
 	}
 
 	@SuppressWarnings("all")
@@ -58,15 +57,15 @@ public class ItemSteamJetpack extends BaseArmor
 
 		list.add("Canister Detected: " + String.valueOf(itemStack.getTagCompound().getBoolean("hasCanister")));
 
-		if (descNeedsShift)
+		if (this.descNeedsShift)
 		{
 			if (ClientHelper.isShiftKeyDown())
-				getWrappedDesc(list);
+				this.getWrappedDesc(list);
 			else
 				list.add(ClientHelper.shiftForInfo);
 		}
 		else
-			getWrappedDesc(list);
+			this.getWrappedDesc(list);
 	}
 
 	@Override
@@ -77,7 +76,7 @@ public class ItemSteamJetpack extends BaseArmor
 
 		boolean hasCanister = false;
 
-		if (hasCanister(player))
+		if (this.hasCanister(player))
 			hasCanister = true;
 
 		if (hasCanister != tag.getBoolean("hasCanister"))
@@ -88,10 +87,10 @@ public class ItemSteamJetpack extends BaseArmor
 
 		if (!player.capabilities.allowFlying && hasCanister)
 		{
-			if ((Minecraft.getMinecraft().currentScreen == null) && (player.posY < 200)
+			if (Minecraft.getMinecraft().currentScreen == null && player.posY < 200
 					&& Keyboard.isKeyDown(Minecraft.getMinecraft().gameSettings.keyBindJump.getKeyCode()))
 			{
-				consumeSteamFromCanister(player, steamPerTick);
+				this.consumeSteamFromCanister(player, this.steamPerTick);
 
 				if (player.motionY > 0.0D)
 					player.motionY += 0.08499999910593033D;
@@ -102,9 +101,9 @@ public class ItemSteamJetpack extends BaseArmor
 
 			}
 
-			if ((this == ConfigItems.itemSteamWingpack) && (player.motionY < 0.0D) && player.isSneaking())
+			if (this == ConfigItems.itemSteamWingpack && player.motionY < 0.0D && player.isSneaking())
 			{
-				consumeSteamFromCanister(player, (byte) (steamPerTick / 2));
+				this.consumeSteamFromCanister(player, (byte) (this.steamPerTick / 2));
 				player.motionY /= 1.4D;
 
 				player.motionX *= 1.05D;
@@ -119,7 +118,7 @@ public class ItemSteamJetpack extends BaseArmor
 
 			if (player.fallDistance > 0)
 			{
-				consumeSteamFromCanister(player, (byte) (steamPerTick / 4));
+				this.consumeSteamFromCanister(player, (byte) (this.steamPerTick / 4));
 				player.fallDistance = 0;
 			}
 		}
@@ -130,7 +129,7 @@ public class ItemSteamJetpack extends BaseArmor
 		ItemStack[] mainInv = player.inventory.mainInventory;
 
 		for (ItemStack element : mainInv)
-			if ((element != null) && (element.getItem() == ConfigItems.itemCanisterSteam))
+			if (element != null && element.getItem() == ConfigItems.itemCanisterSteam)
 			{
 				ItemCanister canister = (ItemCanister) element.getItem();
 
@@ -147,7 +146,7 @@ public class ItemSteamJetpack extends BaseArmor
 	{
 		ItemCanister canister = (ItemCanister) stack.getItem();
 
-		if (canister.getFluidAmount(stack) <= steamPerTick)
+		if (canister.getFluidAmount(stack) <= this.steamPerTick)
 			return true;
 		else
 			return false;
@@ -159,8 +158,8 @@ public class ItemSteamJetpack extends BaseArmor
 		for (int i = 0; i != player.inventory.mainInventory.length; i++)
 		{
 			ItemStack[] mainInv = player.inventory.mainInventory;
-			if ((mainInv[i] != null) && (mainInv[i].getItem() == ConfigItems.itemCanisterSteam))
-				hasCanister = hasCanister || !isCanisterEmpty(mainInv[i]);
+			if (mainInv[i] != null && mainInv[i].getItem() == ConfigItems.itemCanisterSteam)
+				hasCanister = hasCanister || !this.isCanisterEmpty(mainInv[i]);
 		}
 		return hasCanister;
 	}
@@ -182,11 +181,11 @@ public class ItemSteamJetpack extends BaseArmor
 			{
 				armorModel.bipedHead.showModel = armorSlot == 0;
 				armorModel.bipedHeadwear.showModel = armorSlot == 0;
-				armorModel.bipedBody.showModel = (armorSlot == 1) || (armorSlot == 2);
+				armorModel.bipedBody.showModel = armorSlot == 1 || armorSlot == 2;
 				armorModel.bipedRightArm.showModel = armorSlot == 1;
 				armorModel.bipedLeftArm.showModel = armorSlot == 1;
-				armorModel.bipedRightLeg.showModel = (armorSlot == 2) || (armorSlot == 3);
-				armorModel.bipedLeftLeg.showModel = (armorSlot == 2) || (armorSlot == 3);
+				armorModel.bipedRightLeg.showModel = armorSlot == 2 || armorSlot == 3;
+				armorModel.bipedLeftLeg.showModel = armorSlot == 2 || armorSlot == 3;
 				armorModel.isSneak = entityLiving.isSneaking();
 				armorModel.isRiding = entityLiving.isRiding();
 				armorModel.isChild = entityLiving.isChild();
