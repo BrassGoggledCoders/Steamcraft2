@@ -1,5 +1,5 @@
 /*
- * 
+ *
  */
 package steamcraft.common.blocks.machines;
 
@@ -27,7 +27,7 @@ public class BlockArmorEditor extends BlockContainerMod
 
 	/**
 	 * Instantiates a new block armor editor.
-	 * 
+	 *
 	 * @param p_i45394_1_
 	 *            the p_i45394_1_
 	 */
@@ -39,7 +39,7 @@ public class BlockArmorEditor extends BlockContainerMod
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.minecraft.block.ITileEntityProvider#createNewTileEntity(net.minecraft
 	 * .world.World, int)
@@ -47,12 +47,12 @@ public class BlockArmorEditor extends BlockContainerMod
 	@Override
 	public TileEntity createNewTileEntity(World var1, int var2)
 	{
-		return new TileArmorEditor();
+		return new TileArmorEditor((byte) 22);
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.minecraft.block.Block#onBlockActivated(net.minecraft.world.World,
 	 * int, int, int, net.minecraft.entity.player.EntityPlayer, int, float,
@@ -77,7 +77,7 @@ public class BlockArmorEditor extends BlockContainerMod
 
 	/**
 	 * Update furnace block state.
-	 * 
+	 *
 	 * @param par0
 	 *            the par0
 	 * @param par1World
@@ -112,7 +112,7 @@ public class BlockArmorEditor extends BlockContainerMod
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * steamcraft.common.blocks.machine.BlockContainerMod#breakBlock(net.minecraft
 	 * .world.World, int, int, int, net.minecraft.block.Block, int)
@@ -164,7 +164,7 @@ public class BlockArmorEditor extends BlockContainerMod
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.minecraft.block.Block#hasComparatorInputOverride()
 	 */
 	@Override
@@ -175,7 +175,7 @@ public class BlockArmorEditor extends BlockContainerMod
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.minecraft.block.Block#getComparatorInputOverride(net.minecraft.world
 	 * .World, int, int, int, int)

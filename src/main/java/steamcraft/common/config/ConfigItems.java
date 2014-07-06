@@ -43,6 +43,7 @@ import steamcraft.common.items.armor.ItemClockworkWings;
 import steamcraft.common.items.armor.ItemDivingHelmet;
 import steamcraft.common.items.armor.ItemNormalArmor;
 import steamcraft.common.items.armor.ItemSteamJetpack;
+import steamcraft.common.items.modules.ItemAqualung;
 import steamcraft.common.items.tools.ItemDrill;
 import steamcraft.common.items.tools.ItemHammer;
 import steamcraft.common.items.tools.ItemModAxe;
@@ -139,6 +140,9 @@ public class ConfigItems
 	public static Item itemCopperParts, itemBrassParts, itemSteelParts, itemIronParts;
 
 	public static Item itemTopHat;
+
+	//Modules
+	public static Item itemAqualung;
 
 	/* Init */
 	public static void init()
@@ -259,9 +263,11 @@ public class ConfigItems
 
 		// Brass
 		helmetBrass = new ItemBrassArmor(MaterialHelper.ARMOR_STEAM, 0, 0).setUnlocalizedName("itemHelmetBrass");
-		chestplateBrass = new ItemBrassArmor(MaterialHelper.ARMOR_STEAM, 0, 0).setUnlocalizedName("itemChestplateBrass");
-		legsBrass = new ItemBrassArmor(MaterialHelper.ARMOR_STEAM, 0, 0).setUnlocalizedName("itemLegsBrass");
-		bootsBrass = new ItemBrassArmor(MaterialHelper.ARMOR_STEAM, 0, 0).setUnlocalizedName("itemBootsBrass");
+		chestplateBrass = new ItemBrassArmor(MaterialHelper.ARMOR_STEAM, 0, 1).setUnlocalizedName("itemChestplateBrass");
+		legsBrass = new ItemBrassArmor(MaterialHelper.ARMOR_STEAM, 0, 2).setUnlocalizedName("itemLegsBrass");
+		bootsBrass = new ItemBrassArmor(MaterialHelper.ARMOR_STEAM, 0, 3).setUnlocalizedName("itemBootsBrass");
+
+		RegistryHelper.registerArmorSet(helmetBrass, chestplateBrass, legsBrass, bootsBrass, "Brass", LibInfo.ID);
 
 		brassGoggles = new ItemBrassGoggles(ItemArmor.ArmorMaterial.CHAIN, 0, 0).setUnlocalizedName("itemBrassGoggles");
 		itemDivingHelmet = new ItemDivingHelmet(ItemArmor.ArmorMaterial.CHAIN, 0, 0).setUnlocalizedName("itemDivingHelmet");
@@ -405,6 +411,9 @@ public class ConfigItems
 
 		itemTopHat = new ItemTopHat().setUnlocalizedName("itemTopHat");
 		registerItem(itemTopHat, "ItemTopHat");
+
+		itemAqualung = new ItemAqualung().setUnlocalizedName("itemAqualung");
+		registerItem(itemAqualung, "ItemAqualung");
 	}
 
 	private static void registerItem(Item item, String name)

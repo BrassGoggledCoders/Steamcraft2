@@ -28,7 +28,7 @@ public class GuiArmorEditor extends GuiContainer
 
 	/**
 	 * Instantiates a new gui armor editor.
-	 * 
+	 *
 	 * @param player
 	 *            the player
 	 * @param tile
@@ -49,7 +49,5 @@ public class GuiArmorEditor extends GuiContainer
 		int var5 = (width - xSize) / 2;
 		int var6 = (height - ySize) / 2;
 		drawTexturedModalRect(var5, var6, 0, 0, xSize, ySize);
-		drawTexturedModalRect(var5 + 8, var6 + 24, 176, 14, 20, 49);
-		drawTexturedModalRect(var5 + 74, var6 + 24, 176, 14, 20, 49);
 	}
 }
