@@ -8,8 +8,7 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- *
- * File created @ [May 23, 2014, 1:55:12 PM]
+ * 
  */
 package steamcraft.common.blocks.machines;
 
@@ -36,14 +35,14 @@ import steamcraft.common.tiles.TileSteamBoiler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+/**
+ * @author decebaldecebal
+ *
+ */
 public class BlockSteamBoiler extends BlockContainerMod
 {
 	@SideOnly(Side.CLIENT)
-	private IIcon iconTop;
-	@SideOnly(Side.CLIENT)
-	private IIcon iconFront;
-	@SideOnly(Side.CLIENT)
-	private IIcon iconFrontActive;
+	private IIcon iconTop, iconFront, iconFrontActive;
 
 	public BlockSteamBoiler()
 	{
