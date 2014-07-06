@@ -27,6 +27,7 @@ import steamcraft.client.renderers.entity.RenderSmallLightningBolt;
 import steamcraft.client.renderers.item.ModelBrassWings;
 import steamcraft.client.renderers.item.ModelJetpack;
 import steamcraft.client.renderers.item.ModelWingpack;
+import steamcraft.client.renderers.tile.TileCopperPipeRenderer;
 import steamcraft.client.renderers.tile.TileCrystalRenderer;
 import steamcraft.client.renderers.tile.TileLightningRodRenderer;
 import steamcraft.client.renderers.tile.TileTeslaCoilRenderer;
@@ -35,6 +36,7 @@ import steamcraft.common.config.ConfigKeyBindings;
 import steamcraft.common.entities.projectile.EntityBullet;
 import steamcraft.common.entities.projectile.EntitySmallLightningBolt;
 import steamcraft.common.lib.Utils;
+import steamcraft.common.tiles.TileCopperPipe;
 import steamcraft.common.tiles.TileCrystal;
 import steamcraft.common.tiles.TileLightningRod;
 import steamcraft.common.tiles.TileTeslaCoil;
@@ -83,7 +85,7 @@ public class ClientProxy extends CommonProxy
 	{
 		//Copper Pipe
 		//RenderIDs.blockCopperPipeRI = RenderingRegistry.getNextAvailableRenderId();
-		//ClientRegistry.bindTileEntitySpecialRenderer(TileCopperPipe.class, new TileCopperPipeRenderer());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileCopperPipe.class, new TileCopperPipeRenderer());
 		//RenderingRegistry.registerBlockHandler(new BlockCopperPipeRenderer());
 
 		// Crystal

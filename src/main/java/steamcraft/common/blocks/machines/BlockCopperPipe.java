@@ -14,7 +14,6 @@ package steamcraft.common.blocks.machines;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import steamcraft.common.tiles.TileCopperPipe;
 
@@ -27,6 +26,11 @@ public class BlockCopperPipe extends BlockContainerMod
 	public BlockCopperPipe(Material mat)
 	{
 		super(mat);
+		
+		float pixel = 1/16f;
+		
+		this.setBlockBounds(4*pixel, 4*pixel, 4*pixel, 1-4*pixel, 1-4*pixel, 1-4*pixel);
+		this.useNeighborBrightness = true;
 	}
 
 	@Override
@@ -47,6 +51,13 @@ public class BlockCopperPipe extends BlockContainerMod
 		return false;
 	}
 
+	@Override
+	public int getRenderType()
+	{
+		return -1;
+	}
+	
+	/*
 	@Override
 	public void setBlockBoundsBasedOnState(IBlockAccess par1IBlockAccess, int x, int y, int z)
 	{
@@ -78,4 +89,5 @@ public class BlockCopperPipe extends BlockContainerMod
 
 		this.setBlockBounds(minx, miny, minz, maxx, maxy, maxz);
 	}
+	*/
 }

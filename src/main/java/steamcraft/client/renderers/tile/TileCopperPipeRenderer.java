@@ -12,67 +12,52 @@
  */
 package steamcraft.client.renderers.tile;
 
-import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
-import steamcraft.common.config.ConfigBlocks;
+import steamcraft.common.lib.LibInfo;
 
 /**
- * @author warlordjones
+ * @author Decebaldecebal
  * 
  */
 public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 {
-	private final ModelCopperPipe model;
-
-	public TileCopperPipeRenderer()
-	{
-		this.model = new ModelCopperPipe();
-	}
-
+	ResourceLocation texture = new ResourceLocation(LibInfo.PREFIX + "textures/blocks/blockCopperPipe.png");
+	
+	static float pixel = 1F/16F/2F;
+	static float tPixel = 1F/32F;
+	
 	@Override
-	public void renderTileEntityAt(final TileEntity te, final double dx, final double dy, final double dz, final float scale)
+	public void renderTileEntityAt(TileEntity tile, double transX, double transY, double transZ,  float f)
+	{		
+		GL11.glTranslated(transX, transY, transZ);
+		GL11.glDisable(GL11.GL_LIGHTING);
+		
+		this.bindTexture(texture);
+		
+		drawCore(tile);
+
+		GL11.glEnable(GL11.GL_LIGHTING);
+		
+		GL11.glTranslated(-transX, -transY, -transZ);
+	}
+	
+	public void drawCore(TileEntity tile)
 	{
-		GL11.glPushMatrix();
-		GL11.glTranslatef((float) dx + 0.5F, (float) dy + 1.5F, (float) dz + 0.5F);
-		final ResourceLocation crystal = new ResourceLocation("steamcraft:textures/blocks/metal/blockCopper.png");
-		Minecraft.getMinecraft().renderEngine.bindTexture(crystal);
-		GL11.glPushMatrix();
-		GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
-		if (te.hasWorldObj())
+		Tessellator tess = Tessellator.instance;
+		
+		tess.startDrawingQuads();
 		{
-			if (te.getWorldObj().getBlock(te.xCoord, te.yCoord + 1, te.zCoord) == ConfigBlocks.blockCopperPipe)
-			{
-				this.model.renderModel(0.0625F, 0);
-			}
-			else if (te.getWorldObj().getBlock(te.xCoord, te.yCoord - 1, te.zCoord) == ConfigBlocks.blockCopperPipe)
-			{
-				this.model.renderModel(0.0625F, 1);
-			}
-			else if (te.getWorldObj().getBlock(te.xCoord + 1, te.yCoord, te.zCoord) == ConfigBlocks.blockCopperPipe)
-			{
-				this.model.renderModel(0.0625F, 2);
-			}
-			else if (te.getWorldObj().getBlock(te.xCoord - 1, te.yCoord, te.zCoord) == ConfigBlocks.blockCopperPipe)
-			{
-				this.model.renderModel(0.0625F, 3);
-			}
-			else if (te.getWorldObj().getBlock(te.xCoord, te.yCoord, te.zCoord + 1) == ConfigBlocks.blockCopperPipe)
-			{
-				this.model.renderModel(0.0625F, 4);
-			}
-			else if (te.getWorldObj().getBlock(te.xCoord, te.yCoord, te.zCoord - 1) == ConfigBlocks.blockCopperPipe)
-			{
-				this.model.renderModel(0.0625F, 5);
-			}
-			else
-				this.model.renderModel(1, 3);;
+			tess.addVertexWithUV(1-8*pixel, 8*pixel, 1-8*pixel, 8*tPixel, 8*tPixel);
+			tess.addVertexWithUV(1-8*pixel, 1-8*pixel, 1-8*pixel, 8*tPixel, 0*tPixel);
+			tess.addVertexWithUV(8*pixel, 1-8*pixel, 1-8*pixel, 0*tPixel, 0*tPixel);
+			tess.addVertexWithUV(8*pixel, 8*pixel, 1-8*pixel, 0*tPixel, 8*tPixel);
 		}
-		GL11.glPopMatrix();
-		GL11.glPopMatrix();
+		tess.draw();
 	}
 }
