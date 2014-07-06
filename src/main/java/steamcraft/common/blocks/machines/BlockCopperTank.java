@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package steamcraft.common.blocks.machines;
 
 import net.minecraft.block.material.Material;

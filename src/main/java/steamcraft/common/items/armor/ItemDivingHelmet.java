@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package steamcraft.common.items.armor;
 
 import net.minecraft.client.Minecraft;

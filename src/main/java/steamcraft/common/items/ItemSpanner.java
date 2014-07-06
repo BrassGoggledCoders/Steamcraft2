@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package steamcraft.common.items;
 
 import net.minecraft.block.Block;

@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package steamcraft.common.lib.events;
 
 import net.minecraft.block.Block;

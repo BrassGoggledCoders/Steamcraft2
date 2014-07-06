@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package steamcraft.common.items;
 
 public class ItemElectricJar extends BaseElectricItem

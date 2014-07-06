@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package steamcraft.common.config;
 
 import net.minecraft.client.settings.KeyBinding;

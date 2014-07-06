@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package steamcraft.common.worldgen;
 
 import java.util.Random;

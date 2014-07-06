@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package steamcraft.common.lib;
 
 import net.minecraft.util.DamageSource;

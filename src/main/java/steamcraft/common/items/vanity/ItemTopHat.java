@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package steamcraft.common.items.vanity;
 
 import net.minecraft.client.model.ModelBase;

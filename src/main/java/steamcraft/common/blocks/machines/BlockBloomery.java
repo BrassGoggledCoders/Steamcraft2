@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package steamcraft.common.blocks.machines;
 
 import java.util.Random;

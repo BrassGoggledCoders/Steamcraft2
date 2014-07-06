@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package steamcraft.common.items.modules;
 
 import steamcraft.common.items.BaseItem;

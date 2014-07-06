@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package steamcraft.common.worldgen;
 
 import net.minecraft.world.biome.BiomeGenBase;
