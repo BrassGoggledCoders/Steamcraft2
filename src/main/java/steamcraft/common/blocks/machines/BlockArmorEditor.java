@@ -47,7 +47,7 @@ public class BlockArmorEditor extends BlockContainerMod
 	@Override
 	public TileEntity createNewTileEntity(World var1, int var2)
 	{
-		return new TileArmorEditor((byte) 22);
+		return new TileArmorEditor();
 	}
 
 	/*

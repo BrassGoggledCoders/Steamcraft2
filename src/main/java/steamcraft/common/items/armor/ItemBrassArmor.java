@@ -1,5 +1,5 @@
 /**
- * This class was created by <Surseance> or his SC2 development team.
+ * This class was created by BrassGoggledCoders modding team. 
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -8,8 +8,7 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- *
- * File created @ [Apr 4, 2014, 11:14:50 PM]
+ * 
  */
 package steamcraft.common.items.armor;
 
@@ -32,50 +31,24 @@ import boilerplate.steamapi.IModule;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class ItemCustomArmor.
- *
  * @author warlordjones
+ * 
  */
 public class ItemBrassArmor extends BaseArmor
 {
-
-	/** The icon. */
+	@SideOnly(Side.CLIENT)
 	private IIcon[] icon = new IIcon[3];
-
-	/** The mat. */
-	ItemArmor.ArmorMaterial mat;
-
-	/** The modules. */
-	@SuppressWarnings("rawtypes")
+	
 	List<Item> modules = new ArrayList<Item>();
 
-	/**
-	 * Instantiates a new item custom armor.
-	 *
-	 * @param armorMat
-	 *            the armor mat
-	 * @param renderIndex
-	 *            the render index
-	 * @param armorType
-	 *            the armor type
-	 */
 	public ItemBrassArmor(ItemArmor.ArmorMaterial armorMat, int renderIndex, int armorType)
 	{
 		super(armorMat, renderIndex, armorType);
 		setMaxStackSize(1);
-		mat = armorMat;
 		setCreativeTab(Steamcraft.tabSC2);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see
-	 * net.minecraft.item.ItemArmor#registerIcons(net.minecraft.client.renderer
-	 * .texture.IIconRegister)
-	 */
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister ir)
@@ -83,13 +56,6 @@ public class ItemBrassArmor extends BaseArmor
 		itemIcon = ir.registerIcon(LibInfo.PREFIX + "armor/" + this.getUnlocalizedName().substring(5));
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see
-	 * net.minecraft.item.Item#getArmorTexture(net.minecraft.item.ItemStack,
-	 * net.minecraft.entity.Entity, int, java.lang.String)
-	 */
 	@Override
 	@SideOnly(Side.CLIENT)
 	public String getArmorTexture(ItemStack is, Entity entity, int slot, String type)
@@ -97,18 +63,6 @@ public class ItemBrassArmor extends BaseArmor
 		return type != null ? LibInfo.PREFIX + "textures/armor/" + type + ".png" : null;
 	}
 
-	/**
-	 * Called whenever this item is equipped and the right mouse button is
-	 * pressed. Args: itemStack, world, entityPlayer
-	 *
-	 * @param par1ItemStack
-	 *            the par1 item stack
-	 * @param par2World
-	 *            the par2 world
-	 * @param par3EntityPlayer
-	 *            the par3 entity player
-	 * @return the item stack
-	 */
 	@Override
 	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
 	{
@@ -116,12 +70,6 @@ public class ItemBrassArmor extends BaseArmor
 		return par1ItemStack;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see net.minecraft.item.Item#addInformation(net.minecraft.item.ItemStack,
-	 * net.minecraft.entity.player.EntityPlayer, java.util.List, boolean)
-	 */
 	@SuppressWarnings("all")
 	@Override
 	// TODO: Make module-sensitive
@@ -190,12 +138,6 @@ public class ItemBrassArmor extends BaseArmor
 		}
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see net.minecraft.item.Item#onArmorTick(net.minecraft.world.World,
-	 * net.minecraft.entity.player.EntityPlayer, net.minecraft.item.ItemStack)
-	 */
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack is)
 	{
