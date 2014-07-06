@@ -1,5 +1,5 @@
 /**
- * This class was created by <Surseance> or his SC2 development team.
+ * This class was created by BrassGoggledCoders modding team. 
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -8,8 +8,7 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- *
- * File created @ [Mar 12, 2014, 4:14:26 PM]
+ * 
  */
 package steamcraft.common.lib;
 
@@ -18,9 +17,9 @@ import java.util.List;
 
 /**
  * A neat, tidy class for holding various bits of mod information.
- *
- * @author Surseance (Johnny Eatmon)
- *
+ * 
+ * @author Surseance
+ * 
  */
 public class LibInfo
 {
@@ -28,16 +27,14 @@ public class LibInfo
 	public static final String NAME = "Steamcraft 2";
 	public static final String VERSION = "Beta R1.2";
 
-	public static final List<String> AUTHORS = Arrays.asList("warlordjones", "decebaldecebal",  "Falkok15", "wierdude1999", "seanvanpelt2 & others");
+	public static final List<String> AUTHORS = Arrays.asList("warlordjones", "decebaldecebal", "Falkok15", "wierdude1999", "seanvanpelt2 & others");
 
 	public static final String CLIENT_PROXY = "steamcraft.client.ClientProxy";
 	public static final String COMMON_PROXY = "steamcraft.common.CommonProxy";
 
 	public static final String PREFIX = "steamcraft:";
 
-	// public static final boolean DEBUG = false;
-
-	public static final String VERSION_URL = /* "https://www.dropbox.com/s/36mpxgwjoanem32/version.txt" */"https://gist.githubusercontent.com/warlordjones/42644dbc6db776152367/raw/99d70c9382a61b88cb61a605a8f0dfd9bbb49079/gistfile1.txt";
+	public static final String VERSION_URL = "https://gist.githubusercontent.com/warlordjones/42644dbc6db776152367/raw/99d70c9382a61b88cb61a605a8f0dfd9bbb49079/gistfile1.txt";
 
 	/** Capes!. */
 	// public static final String DEV_LIST =

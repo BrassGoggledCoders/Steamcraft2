@@ -1,5 +1,5 @@
 /**
- * This class was created by <Surseance> or his SC2 development team.
+ * This class was created by BrassGoggledCoders modding team. 
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -8,8 +8,7 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- *
- * File created @ [Apr 13, 2014, 7:26:06 PM]
+ * 
  */
 package steamcraft.common.lib.events;
 
@@ -26,21 +25,12 @@ import steamcraft.common.config.ConfigItems;
 import steamcraft.common.entities.EntityPlayerExtended;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class EventHandlerSC2.
+ * @author warlordjones
  *
- * @author Decebaldecebal
  */
 public class EventHandlerForge
 {
-
-	/**
-	 * Update player.
-	 *
-	 * @param event
-	 *            the event
-	 */
 	@SubscribeEvent
 	public void updatePlayer(LivingEvent.LivingUpdateEvent event)
 	{
@@ -67,12 +57,7 @@ public class EventHandlerForge
 		 */
 	}
 
-	/**
-	 * Entity constructing.
-	 *
-	 * @param event
-	 *            the event
-	 */
+
 	@SubscribeEvent
 	public void entityConstructing(EntityConstructing event)
 	{
@@ -80,24 +65,13 @@ public class EventHandlerForge
 			EntityPlayerExtended.register((EntityPlayer) event.entity);
 	}
 
-	/**
-	 * On item drop.
-	 *
-	 * @param event
-	 *            the event
-	 */
 	@SubscribeEvent
 	public void onItemDrop(ItemTossEvent event)
 	{
 		NBTTagCompound thrower = event.entityItem.getEntityData();
 		thrower.setString("thrower", event.player.getCommandSenderName());
 	}
-	/**
-	 * Living update.
-	 *
-	 * @param event
-	 *            the event
-	 */
+
 	@SubscribeEvent
 	public void livingUpdate(LivingUpdateEvent event)
 	{
@@ -109,7 +83,6 @@ public class EventHandlerForge
 			if ((is != null) && (is.getItem() == ConfigItems.brassGoggles))
 			{
 				player.addPotionEffect(new PotionEffect(Potion.nightVision.id, 2, 0, true));
-
 			}
 		}
 	}

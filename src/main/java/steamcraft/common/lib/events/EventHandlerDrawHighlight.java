@@ -1,5 +1,5 @@
 /**
- * This class was created by <Surseance> or his SC2 development team.
+ * This class was created by BrassGoggledCoders modding team. 
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -8,8 +8,7 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- *
- * File created @ [Apr 5, 2014, 2:40:25 PM]
+ * 
  */
 package steamcraft.common.lib.events;
 
@@ -37,27 +36,17 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class EventHandlerDrawHighlight.
+ * What does this class do??
  * 
- * @author Surseance (Johnny Eatmon)
+ * @author Surseance
+ * 
  */
 public class EventHandlerDrawHighlight
 {
-
-	/** The block. */
 	Block block;
-
-	/** The z. */
 	int x, y, z;
 
-	/**
-	 * Render overlay.
-	 * 
-	 * @param event
-	 *            the event
-	 */
 	@SubscribeEvent(priority = EventPriority.HIGH)
 	@SideOnly(Side.CLIENT)
 	public void renderOverlay(RenderGameOverlayEvent.Text event)
@@ -68,28 +57,22 @@ public class EventHandlerDrawHighlight
 		res.getScaledWidth();
 		res.getScaledHeight();
 		mc.entityRenderer.setupOverlayRendering();
-		String text = "Name: " + block.getLocalizedName();
+		String text = "Name: " + this.block.getLocalizedName();
 		int posX = 5;
 		int posY = 5;
 		int posY2 = 15;
 		int color = 0xCCFF00;
 		fontRenderer.drawString(text, posX, posY, color);
-		fontRenderer.drawString("Block: " + block.getUnlocalizedName(), posX, posY2, color);
+		fontRenderer.drawString("Block: " + this.block.getUnlocalizedName(), posX, posY2, color);
 	}
 
-	/**
-	 * On draw block selection box.
-	 * 
-	 * @param event
-	 *            the event
-	 */
 	@SubscribeEvent
 	@SideOnly(Side.CLIENT)
 	public void onDrawBlockSelectionBox(DrawBlockHighlightEvent event)
 	{
-		if ((event.player.inventory.armorItemInSlot(3) != null) && (event.player.inventory.armorItemInSlot(3).getItem() == ConfigItems.brassGoggles))
+		if (event.player.inventory.armorItemInSlot(3) != null && event.player.inventory.armorItemInSlot(3).getItem() == ConfigItems.brassGoggles)
 		{
-			drawSelectionBox(event.player, event.target, 0, event.currentItem, event.partialTicks);
+			this.drawSelectionBox(event.player, event.target, 0, event.currentItem, event.partialTicks);
 			event.setCanceled(true);
 		}
 
@@ -116,26 +99,12 @@ public class EventHandlerDrawHighlight
 		GL11.glVertex3f(1.0F, 1.0F, -1F);
 		GL11.glEnd();
 
-		block = event.player.worldObj.getBlock(event.target.blockX, event.target.blockY, event.target.blockZ);
+		this.block = event.player.worldObj.getBlock(event.target.blockX, event.target.blockY, event.target.blockZ);
 	}
 
-	/**
-	 * Draw selection box.
-	 * 
-	 * @param player
-	 *            the player
-	 * @param mop
-	 *            the mop
-	 * @param i
-	 *            the i
-	 * @param is
-	 *            the is
-	 * @param partialTicks
-	 *            the partial ticks
-	 */
 	private void drawSelectionBox(EntityPlayer player, MovingObjectPosition mop, int i, ItemStack is, float partialTicks)
 	{
-		if ((i == 0) && (mop.typeOfHit == MovingObjectType.BLOCK))
+		if (i == 0 && mop.typeOfHit == MovingObjectType.BLOCK)
 		{
 			GL11.glEnable(GL11.GL_BLEND);
 			// OpenGlHelper.glBlendFunc(770, 771, 1, 0);
@@ -149,10 +118,10 @@ public class EventHandlerDrawHighlight
 			if (block != Blocks.air)
 			{
 				block.setBlockBoundsBasedOnState(player.worldObj, mop.blockX, mop.blockY, mop.blockZ);
-				double dx = player.lastTickPosX + ((player.posX - player.lastTickPosX) * partialTicks);
-				double dy = player.lastTickPosY + ((player.posY - player.lastTickPosY) * partialTicks);
-				double dz = player.lastTickPosZ + ((player.posZ - player.lastTickPosZ) * partialTicks);
-				drawOutlinedBoundingBox(block.getSelectedBoundingBoxFromPool(player.worldObj, mop.blockX, mop.blockY, mop.blockZ)
+				double dx = player.lastTickPosX + (player.posX - player.lastTickPosX) * partialTicks;
+				double dy = player.lastTickPosY + (player.posY - player.lastTickPosY) * partialTicks;
+				double dz = player.lastTickPosZ + (player.posZ - player.lastTickPosZ) * partialTicks;
+				this.drawOutlinedBoundingBox(block.getSelectedBoundingBoxFromPool(player.worldObj, mop.blockX, mop.blockY, mop.blockZ)
 						.expand(offset, offset, offset).getOffsetBoundingBox(-dx, -dy, -dz));
 			}
 
@@ -161,7 +130,7 @@ public class EventHandlerDrawHighlight
 			GL11.glDisable(GL11.GL_BLEND);
 		}
 
-		if ((i == 0) && (mop.typeOfHit == MovingObjectType.ENTITY))
+		if (i == 0 && mop.typeOfHit == MovingObjectType.ENTITY)
 		{
 			GL11.glEnable(GL11.GL_BLEND);
 			// OpenGlHelper.glBlendFunc(770, 771, 1, 0);
@@ -175,10 +144,10 @@ public class EventHandlerDrawHighlight
 			if (entity != null)
 			{
 				entity.setPosition(entity.posX, entity.posY, entity.posZ);
-				double dx = player.lastTickPosX + ((player.posX - player.lastTickPosX) * partialTicks);
-				double dy = player.lastTickPosY + ((player.posY - player.lastTickPosY) * partialTicks);
-				double dz = player.lastTickPosZ + ((player.posZ - player.lastTickPosZ) * partialTicks);
-				drawOutlinedBoundingBox(entity.boundingBox.expand(offset, offset, offset).getOffsetBoundingBox(-dx, -dy, -dz));
+				double dx = player.lastTickPosX + (player.posX - player.lastTickPosX) * partialTicks;
+				double dy = player.lastTickPosY + (player.posY - player.lastTickPosY) * partialTicks;
+				double dz = player.lastTickPosZ + (player.posZ - player.lastTickPosZ) * partialTicks;
+				this.drawOutlinedBoundingBox(entity.boundingBox.expand(offset, offset, offset).getOffsetBoundingBox(-dx, -dy, -dz));
 			}
 
 			GL11.glDepthMask(true);
@@ -187,12 +156,6 @@ public class EventHandlerDrawHighlight
 		}
 	}
 
-	/**
-	 * Draw outlined bounding box.
-	 * 
-	 * @param aaBB
-	 *            the aa bb
-	 */
 	private void drawOutlinedBoundingBox(AxisAlignedBB aaBB)
 	{
 		Tessellator tessellator = Tessellator.instance;
