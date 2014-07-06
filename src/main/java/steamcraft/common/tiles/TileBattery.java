@@ -74,7 +74,7 @@ public class TileBattery extends BaseTileWithInventory implements IEnergyHandler
 		{
 			ticksSinceUpdate++;
 			
-			if(ticksSinceUpdate > 100)
+			if(ticksSinceUpdate > 50)
 			{
 				ticksSinceUpdate = 0;
 				updateEnergyFromInv();
@@ -145,9 +145,11 @@ public class TileBattery extends BaseTileWithInventory implements IEnergyHandler
 			case 0:
 			case 1:
 				this.transferRate = initialTransferRate;
+			break;
 			case 2:
 			case 3:
 				this.transferRate = 2500;
+			break;
 			default:
 				this.transferRate = 10000;
 		}
