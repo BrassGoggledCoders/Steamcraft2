@@ -12,9 +12,9 @@
  */
 package steamcraft.common.tiles;
 
-import steamcraft.common.config.ConfigBlocks;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
+import steamcraft.common.config.ConfigBlocks;
 
 /**
  * @author Decebaldecebal
@@ -37,29 +37,64 @@ public class TileCopperPipe extends TileEntity
 		else
 			connections[0] = null;
 		
-		if(worldObj.getTileEntity(xCoord, yCoord - 1, zCoord) instanceof TileCopperPipe)
+		if(worldObj.getBlock(xCoord, yCoord - 1, zCoord) == ConfigBlocks.blockCopperPipe)
 			connections[1] = ForgeDirection.DOWN;
 		else
 			connections[1] = null;
 		
-		if(worldObj.getTileEntity(xCoord, yCoord, zCoord - 1) instanceof TileCopperPipe)
-			connections[2] = ForgeDirection.NORTH;
+		if(worldObj.getBlock(xCoord, yCoord, zCoord + 1) == ConfigBlocks.blockCopperPipe)
+			connections[2] = ForgeDirection.SOUTH;
 		else
 			connections[2] = null;
 		
-		if(worldObj.getTileEntity(xCoord, yCoord, zCoord + 1) instanceof TileCopperPipe)
-			connections[3] = ForgeDirection.SOUTH;
+		if(worldObj.getBlock(xCoord, yCoord, zCoord - 1) == ConfigBlocks.blockCopperPipe)
+			connections[3] = ForgeDirection.NORTH;
 		else
 			connections[3] = null;
 		
-		if(worldObj.getTileEntity(xCoord + 1, yCoord, zCoord) instanceof TileCopperPipe)
+		if(worldObj.getBlock(xCoord + 1, yCoord, zCoord) == ConfigBlocks.blockCopperPipe)
 			connections[4] = ForgeDirection.EAST;
 		else
 			connections[4] = null;
 		
-		if(worldObj.getTileEntity(xCoord - 1, yCoord, zCoord) instanceof TileCopperPipe)
+		if(worldObj.getBlock(xCoord - 1, yCoord, zCoord) == ConfigBlocks.blockCopperPipe)
 			connections[5] = ForgeDirection.WEST;
 		else
 			connections[5] = null;
+	}
+	
+	public ForgeDirection onlyOneOpposite()
+	{
+		ForgeDirection main = null;
+		boolean isOpposite = false;
+		
+		for(ForgeDirection dir : connections)
+		{
+			if(main==null && dir!=null)
+				main = dir;
+			
+			if(dir!=null && main!=dir)
+				if(!areDirectionsOpposite(main, dir) && !areDirectionsOpposite(dir, main))
+					return null;
+				else
+					isOpposite = true;
+		}
+		
+		if(isOpposite)
+			return main;
+		
+		return null;
+	}
+	
+	private boolean areDirectionsOpposite(ForgeDirection dir1, ForgeDirection dir2)
+	{
+		if(dir1 == ForgeDirection.UP && dir2 == ForgeDirection.DOWN)
+			return true;
+		if(dir1 == ForgeDirection.SOUTH && dir2 == ForgeDirection.NORTH)
+			return true;
+		if(dir1 == ForgeDirection.EAST && dir2 == ForgeDirection.WEST)
+			return true;
+		
+		return false;
 	}
 }
