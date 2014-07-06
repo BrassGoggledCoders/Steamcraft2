@@ -14,6 +14,7 @@ package steamcraft.common.blocks.machines;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import steamcraft.common.tiles.TileCopperPipe;
@@ -24,11 +25,11 @@ import steamcraft.common.tiles.TileCopperPipe;
  */
 public class BlockCopperPipe extends BlockContainerMod
 {
+	static float pixel = 1/16f;
+	
 	public BlockCopperPipe(Material mat)
 	{
 		super(mat);
-		
-		float pixel = 1/16f;
 		
 		this.setBlockBounds(6*pixel, 6*pixel, 6*pixel, 1-6*pixel, 1-6*pixel, 1-6*pixel);
 		this.useNeighborBrightness = true;
@@ -71,6 +72,40 @@ public class BlockCopperPipe extends BlockContainerMod
 			tile.updateConnections();
 		}
 	}
+	
+	@Override
+	public AxisAlignedBB getSelectedBoundingBoxFromPool(World world, int x, int y, int z)
+	{
+		return getBoundingBox(world, x, y, z);
+	}
+	
+	@Override
+	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z)
+	{
+		return getBoundingBox(world, x, y, z);
+	}
+	
+	private AxisAlignedBB getBoundingBox(World world, int x, int y, int z)
+	{
+		TileCopperPipe pipe = (TileCopperPipe) world.getTileEntity(x, y, z);
+		
+		if(pipe!=null)
+		{
+			float minX = 6*pixel-(pipe.connections[5]!=null ? 6*pixel : 0);
+			float maxX = 1-6*pixel+(pipe.connections[4]!=null ? 6*pixel : 0);
+			
+			float minY = 6*pixel-(pipe.connections[1]!=null ? 6*pixel : 0);
+			float maxY = 1-6*pixel+(pipe.connections[0]!=null ? 6*pixel : 0);
+			
+			float minZ = 6*pixel-(pipe.connections[3]!=null ? 6*pixel : 0);
+			float maxZ = 1-6*pixel+(pipe.connections[2]!=null ? 6*pixel : 0);
+			
+			this.setBlockBounds(minX, minY, minZ, maxX, maxY, maxZ);
+		}
+		
+		return AxisAlignedBB.getBoundingBox(x+this.minX, y+this.minY, z+this.minZ, x+this.maxX, y+this.maxY, z+this.maxZ);
+	}
+	
 	/*
 	@Override
 	public void setBlockBoundsBasedOnState(IBlockAccess par1IBlockAccess, int x, int y, int z)
