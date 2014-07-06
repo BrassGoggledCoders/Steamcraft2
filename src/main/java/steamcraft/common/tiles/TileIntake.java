@@ -15,7 +15,6 @@ package steamcraft.common.tiles;
 
 import java.util.Random;
 
-import steamcraft.common.lib.LibInfo;
 import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -26,6 +25,7 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTank;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
+import steamcraft.common.lib.LibInfo;
 
 /**
  * @author decebaldecebal

@@ -26,8 +26,6 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import steamcraft.common.config.ConfigItems;
 import steamcraft.common.entities.projectile.EntityBullet;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemFirearm extends BaseItem
 {

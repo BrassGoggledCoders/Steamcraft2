@@ -21,7 +21,6 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
-import steamcraft.common.entities.projectile.EntityBullet;
 import steamcraft.common.entities.projectile.EntitySmallLightningBolt;
 import steamcraft.common.lib.LibInfo;
 import cpw.mods.fml.relauncher.Side;

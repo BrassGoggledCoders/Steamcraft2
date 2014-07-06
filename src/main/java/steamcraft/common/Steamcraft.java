@@ -17,7 +17,6 @@ import java.io.File;
 import java.util.logging.Level;
 
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.util.DamageSource;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.MinecraftForge;
 import steamcraft.client.gui.GuiHandler;

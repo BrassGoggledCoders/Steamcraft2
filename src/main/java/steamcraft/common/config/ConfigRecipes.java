@@ -13,13 +13,13 @@
  */
 package steamcraft.common.config;
 
-import steamcraft.common.lib.LibInfo;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
+import steamcraft.common.lib.LibInfo;
 import boilerplate.common.utils.recipe.RecipeUtils;
 import cpw.mods.fml.common.registry.GameRegistry;
 

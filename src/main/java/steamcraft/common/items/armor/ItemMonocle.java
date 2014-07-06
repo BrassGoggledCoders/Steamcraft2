@@ -14,7 +14,6 @@
 package steamcraft.common.items.armor;
 
 import net.minecraft.item.ItemArmor;
-import steamcraft.common.Steamcraft;
 
 // TODO: Auto-generated Javadoc
 /**

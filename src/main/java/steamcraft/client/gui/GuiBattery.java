@@ -13,12 +13,13 @@
  */
 package steamcraft.client.gui;
 
-import org.lwjgl.opengl.GL11;
-
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.util.ForgeDirection;
+
+import org.lwjgl.opengl.GL11;
+
 import steamcraft.common.lib.LibInfo;
 import steamcraft.common.tiles.TileBattery;
 import steamcraft.common.tiles.container.ContainerBattery;
