@@ -47,12 +47,9 @@ import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.FMLCommonHandler;
 
-// TODO: Auto-generated Javadoc
-
 /**
- * The Class ClientProxy.
- *
  * @author Surseance (Johnny Eatmon)
+ * 
  */
 public class ClientProxy extends CommonProxy
 {
@@ -117,30 +114,12 @@ public class ClientProxy extends CommonProxy
 		// RenderingRegistry.registerBlockHandler(new BlockHatchRenderer());
 	}
 
-	// TODO Any reason for this method?
-	/*
-	 * @Override public Object getClientGuiElement(int ID, EntityPlayer player,
-	 * World world, int x, int y, int z) { if ((world instanceof WorldClient)) {
-	 * switch (ID) {
-	 *
-	 * } }
-	 *
-	 * return null; }
-	 */
 	@Override
 	public World getClientWorld()
 	{
 		return FMLClientHandler.instance().getClient().theWorld;
 	}
 
-	/*
-	 * public void registerKeyBindings() { KeyBinding[] key = { new
-	 * KeyBinding("", 00) }; boolean[] repeat = { false };
-	 * KeyBindingRegistry.registerKeyBinding(new SCKeyHandler(key, repeat));
-	 * super.registerKeyBindings(); }
-	 */
-
-	// ========== Warning: PAIN IN THE ASS MATERIAL ========== //
 	@Override
 	public Object rayFX(World world, EntityPlayer player, double dx, double dy, double dz, int type, boolean reverse, float endMod, Object input,
 			int impact, Color rayColor)
@@ -187,32 +166,6 @@ public class ClientProxy extends CommonProxy
 		return smoke;
 	}
 
-	/*
-	 * private static ModelBrassMonocle chest = new ModelBrassMonocle(1.0F);
-	 * private static ModelBrassMonocle legs = new ModelBrassMonocle(0.5F);
-	 *
-	 * @Override public ModelBiped getMonocleArmorModel(int id) { switch (id) {
-	 * case 0: return chest; case 1: return legs; default: break; }
-	 *
-	 * return chest; // Default, if the wrong ID is passed }
-	 *
-	 * /* private static ModelBrassWings chest1 = new ModelBrassWings(1.0F);
-	 * private static ModelBrassWings legs1 = new ModelBrassWings(0.5F);
-	 *
-	 * @Override public ModelBiped getWingsArmorModel(int id) { switch (id) {
-	 * case 0: return chest1; case 1: return legs1; default: break; }
-	 *
-	 * return chest1; // Default, if the wrong ID is passed }
-	 *
-	 * private static ModelCape chest2 = new ModelCape(1.0F); private static
-	 * ModelCape legs2 = new ModelCape(0.5F);
-	 *
-	 * @Override public ModelBiped getCapeArmorModel(int id) { switch(id) { case
-	 * 0: return chest2; case 1: return legs2; default: break; }
-	 *
-	 * return chest2; // Default, if the wrong ID is passed }
-	 */
-
 	@Override
 	public ModelBiped getWingsArmorModel(int id)
 	{
@@ -226,7 +179,7 @@ public class ClientProxy extends CommonProxy
 			break;
 		}
 
-		return new ModelBrassWings(1.0F); // Default, if the wrong ID is passed
+		return new ModelBrassWings(1.0F);
 	}
 
 	@Override

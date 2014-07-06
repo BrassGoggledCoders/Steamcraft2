@@ -3,16 +3,14 @@
  */
 package steamcraft.common.blocks.machines;
 
-import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import steamcraft.common.tiles.TileCopperPipe;
 
-public class BlockCopperPipe extends BlockContainerMod implements ITileEntityProvider
+public class BlockCopperPipe extends BlockContainerMod
 {
-
 	public BlockCopperPipe(Material mat)
 	{
 		super(mat);
@@ -24,33 +22,13 @@ public class BlockCopperPipe extends BlockContainerMod implements ITileEntityPro
 	{
 		return new TileCopperPipe();
 	}
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see net.minecraft.block.Block#getRenderType()
-	 */
-	/*@Override
-	public int getRenderType()
-	{
-		return RenderIDs.blockCopperPipeRI;
-	}*/
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see net.minecraft.block.Block#isOpaqueCube()
-	 */
 	@Override
 	public boolean isOpaqueCube()
 	{
 		return false;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see net.minecraft.block.Block#renderAsNormalBlock()
-	 */
 	@Override
 	public boolean renderAsNormalBlock()
 	{
@@ -90,6 +68,4 @@ public class BlockCopperPipe extends BlockContainerMod implements ITileEntityPro
 
 		this.setBlockBounds(minx, miny, minz, maxx, maxy, maxz);
 	}
-
-
 }

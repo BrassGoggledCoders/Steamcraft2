@@ -49,11 +49,9 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import cpw.mods.fml.relauncher.Side;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class Steamcraft.
- *
  * @author Surseance (Johnny Eatmon)
+ * 
  */
 @Mod(modid = LibInfo.ID, name = LibInfo.NAME, version = LibInfo.VERSION, dependencies = "required-after:boilerplate")
 public class Steamcraft
@@ -61,30 +59,17 @@ public class Steamcraft
 	@SidedProxy(clientSide = LibInfo.CLIENT_PROXY, serverSide = LibInfo.COMMON_PROXY)
 	public static CommonProxy proxy;
 
-	/** The instance. */
 	@Instance(LibInfo.ID)
 	public static Steamcraft instance;
 
-	/** The world gen. */
 	public ConfigWorldGen worldGen = new ConfigWorldGen();
 
 	public static BiomeGenBase biomeBrassForest;
 
-	/** The directory. */
 	public File directory;
 
-	/** The sc2 event handler. */
-	//public EventHandlerSC2 sc2EventHandler;
-
-	/** The tab s c2. */
 	public static CreativeTabs tabSC2 = new CreativeTabSteamcraft(CreativeTabs.getNextID(), "steamcraft");
 
-	/**
-	 * Pre init.
-	 *
-	 * @param event
-	 *            the event
-	 */
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{
@@ -102,6 +87,7 @@ public class Steamcraft
 			if (Config.config != null)
 				Config.save();
 		}
+		
 		// TODO: Reimplement DrawEvent
 		MinecraftForge.EVENT_BUS.register(new EventHandlerForge());
 		FMLCommonHandler.instance().bus().register(new EventHandlerFML());
@@ -117,12 +103,6 @@ public class Steamcraft
 		// VillageCreationHandler());
 	}
 
-	/**
-	 * Inits the.
-	 *
-	 * @param event
-	 *            the event
-	 */
 	@EventHandler
 	public void init(FMLInitializationEvent event)
 	{
@@ -135,12 +115,6 @@ public class Steamcraft
 		//biomeBrassForest = new BiomeGenBrassForest(Config.biomeIDBrassForest).setBiomeName("Brass Forest");
 	}
 
-	/**
-	 * Post init.
-	 *
-	 * @param event
-	 *            the event
-	 */
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event)
 	{
@@ -156,12 +130,6 @@ public class Steamcraft
 		// ClientHelper.mc().currentScreen);
 	}
 
-	/**
-	 * Server starting.
-	 *
-	 * @param event
-	 *            the event
-	 */
 	@Mod.EventHandler
 	public void serverStarting(final FMLServerStartingEvent event)
 	{

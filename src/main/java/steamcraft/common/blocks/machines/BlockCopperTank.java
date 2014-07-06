@@ -20,5 +20,4 @@ public class BlockCopperTank extends BlockContainerMod
 	{
 		return new TileCopperTank();
 	}
-
 }
