@@ -8,8 +8,7 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- *
- * File created @ [Jun 23, 2014, 10:51:48 PM]
+ * 
  */
 package steamcraft.common.items.tools;
 
@@ -74,7 +73,7 @@ public class ItemSteamDrill extends ItemDrill
 	{
 		float speed = super.getDigSpeed(stack, block, metadata);
 
-		if ((speed > 1.0f) && stack.getTagCompound().getBoolean("active"))
+		if (speed > 1.0f && stack.getTagCompound().getBoolean("active"))
 			return speed / 3;
 
 		return speed;
@@ -113,10 +112,10 @@ public class ItemSteamDrill extends ItemDrill
 				break;
 			}
 			Block block = world.getBlock(x, y, z);
-			if ((block != null) && (block.getBlockHardness(world, x, y, z) != 0) && canHarvestBlock(block, itemStack))
-				for (int xPos = x - xRange; xPos <= (x + xRange); xPos++)
-					for (int yPos = y - yRange; yPos <= (y + yRange); yPos++)
-						for (int zPos = z - zRange; zPos <= (z + zRange); zPos++)
+			if (block != null && block.getBlockHardness(world, x, y, z) != 0 && this.canHarvestBlock(block, itemStack))
+				for (int xPos = x - xRange; xPos <= x + xRange; xPos++)
+					for (int yPos = y - yRange; yPos <= y + yRange; yPos++)
+						for (int zPos = z - zRange; zPos <= z + zRange; zPos++)
 						{
 							Block nblock = world.getBlock(xPos, yPos, zPos);
 
@@ -124,20 +123,17 @@ public class ItemSteamDrill extends ItemDrill
 							{
 								int meta = world.getBlockMetadata(xPos, yPos, zPos);
 
-								ItemStack result = new ItemStack(nblock.getItemDropped(meta, random, 0), nblock.quantityDropped(meta, 0, random),
+								ItemStack result = new ItemStack(nblock.getItemDropped(meta, this.random, 0), nblock.quantityDropped(meta, 0, this.random),
 										nblock.damageDropped(meta));
 
 								if (nblock.getBlockHardness(world, xPos, yPos, zPos) != 0.0D)
-									consumeSteamFromCanister(player);
+									this.consumeSteamFromCanister(player);
 
-								if (!world.isRemote && (result != null))
+								if (!world.isRemote && result != null)
 								{
 									world.setBlockToAir(xPos, yPos, zPos);
 									world.spawnEntityInWorld(new EntityItem(world, xPos + 0.5, yPos + 0.5, zPos + 0.5, result.copy()));
 								}
-								// Broke
-								// world.playAuxSFX(2001, xPos, yPos, zPos,
-								// block.getIdFromBlock(block) + (meta << 12));
 							}
 						}
 		}
@@ -150,11 +146,11 @@ public class ItemSteamDrill extends ItemDrill
 	{
 		if (living instanceof EntityPlayer)
 		{
-			consumeSteamFromCanister((EntityPlayer) living);
+			this.consumeSteamFromCanister((EntityPlayer) living);
 
 			stack.damageItem(1, living);
 			world.playSoundAtEntity(living, LibInfo.PREFIX + "drill.steam", 0.6F, 1.0F);
-			world.spawnParticle("smoke", x + 0.5, y + 0.5, z + 0.5, random.nextGaussian(), random.nextGaussian(), random.nextGaussian());
+			world.spawnParticle("smoke", x + 0.5, y + 0.5, z + 0.5, this.random.nextGaussian(), this.random.nextGaussian(), this.random.nextGaussian());
 			return true;
 		}
 

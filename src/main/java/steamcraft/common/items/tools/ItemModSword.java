@@ -1,5 +1,14 @@
-/*
+/**
+ * This class was created by BrassGoggledCoders modding team. 
+ * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
+ * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
+ * (http://www.mod-buildcraft.com/MMPL-1.0.txt)
+ *
+ * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
+ * Steamcraft (c) Proloe 2011
+ * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
+ * 
  */
 package steamcraft.common.items.tools;
 
@@ -13,24 +22,17 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
+/**
+ * @author Surseance
+ *
+ */
 public class ItemModSword extends ItemModTool
 {
-
-	/** The tool material. */
-	protected ToolMaterial toolMaterial;
-
-	/**
-	 * Instantiates a new item mod sword.
-	 * 
-	 * @param toolMat
-	 *            the tool mat
-	 */
 	public ItemModSword(ToolMaterial toolMat)
 	{
 		super(toolMat.getDamageVsEntity() + 4.0F, toolMat, blocksEffectiveAgainst);
-		toolMaterial = toolMat;
-		maxStackSize = 1;
-		setMaxDamage(toolMat.getMaxUses());
+		this.maxStackSize = 1;
+		this.setMaxDamage(toolMat.getMaxUses());
 	}
 
 	@Override
@@ -41,7 +43,7 @@ public class ItemModSword extends ItemModTool
 		else
 		{
 			Material material = block.getMaterial();
-			return (material != Material.plants) && (material != Material.vine) && (material != Material.coral) && (material != Material.leaves) ? 1.0F
+			return material != Material.plants && material != Material.vine && material != Material.coral && material != Material.leaves ? 1.0F
 					: 1.5F;
 		}
 	}
@@ -70,7 +72,7 @@ public class ItemModSword extends ItemModTool
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
 	{
-		player.setItemInUse(stack, getMaxItemUseDuration(stack));
+		player.setItemInUse(stack, this.getMaxItemUseDuration(stack));
 		return stack;
 	}
 
@@ -83,23 +85,13 @@ public class ItemModSword extends ItemModTool
 	@Override
 	public int getItemEnchantability()
 	{
-		return toolMaterial.getEnchantability();
+		return this.toolMaterial.getEnchantability();
 	}
 
 	@Override
 	public boolean getIsRepairable(ItemStack stack1, ItemStack stack2)
 	{
 		Item item = stack2.getItem();
-		return toolMaterial.func_150995_f() == item ? true : super.getIsRepairable(stack1, stack2);
+		return this.toolMaterial.func_150995_f() == item ? true : super.getIsRepairable(stack1, stack2);
 	}
-
-	/*
-	 * @Override public boolean onLeftClickEntity(ItemStack stack, EntityPlayer
-	 * player, Entity entity) { if (this.isSteampowered()) { NBTTagCompound tag
-	 * = stack.getTagCompound(); if (tag.getBoolean("hasCanister")) {
-	 * entity.attackEntityFrom(DamageSource.causePlayerDamage(player),
-	 * this.toolMaterial.getDamageVsEntity()); return true; } else return false;
-	 * } else { entity.attackEntityFrom(DamageSource.causePlayerDamage(player),
-	 * this.toolMaterial.getDamageVsEntity()); return true; } }
-	 */
 }

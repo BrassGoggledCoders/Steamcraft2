@@ -18,6 +18,8 @@ import net.minecraft.client.gui.GuiMainMenu;
 import cpw.mods.fml.relauncher.ReflectionHelper;
 
 /**
+ * Not actually doing anything.
+ * 
  * @author Surseance
  * 
  */

@@ -1,4 +1,13 @@
-/*
+/**
+ * This class was created by BrassGoggledCoders modding team. 
+ * This class is available as part of the Steamcraft 2 Mod for Minecraft.
+ *
+ * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
+ * (http://www.mod-buildcraft.com/MMPL-1.0.txt)
+ *
+ * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
+ * Steamcraft (c) Proloe 2011
+ * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
  * 
  */
 package steamcraft.common.items.tools;
@@ -6,28 +15,18 @@ package steamcraft.common.items.tools;
 import net.minecraft.item.ItemStack;
 import steamcraft.common.items.BaseItem;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class ItemHammer.
+ * @author warlordjones
+ * 
  */
 public class ItemHammer extends BaseItem
 {
-
-	/**
-	 * Instantiates a new item hammer.
-	 */
 	public ItemHammer()
 	{
-		setMaxStackSize(1);
-		setMaxDamage(ToolMaterial.IRON.getMaxUses());
+		this.setMaxStackSize(1);
+		this.setMaxDamage(ToolMaterial.IRON.getMaxUses());
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * net.minecraft.item.Item#getContainerItem(net.minecraft.item.ItemStack)
-	 */
 	@Override
 	public ItemStack getContainerItem(ItemStack ist)
 	{
@@ -38,26 +37,12 @@ public class ItemHammer extends BaseItem
 		return ist;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see net.minecraft.item.Item#hasContainerItem()
-	 */
 	@Override
 	public boolean hasContainerItem()
 	{
 		return true;
 	}
 
-	/**
-	 * If this returns true, after a recipe involving this item is crafted the
-	 * container item will be added to the player's inventory instead of
-	 * remaining in the crafting grid.
-	 * 
-	 * @param par1ItemStack
-	 *            the par1 item stack
-	 * @return true, if successful
-	 */
 	@Override
 	public boolean doesContainerItemLeaveCraftingGrid(ItemStack par1ItemStack)
 	{

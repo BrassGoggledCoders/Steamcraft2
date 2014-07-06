@@ -1,5 +1,14 @@
-/*
+/**
+ * This class was created by BrassGoggledCoders modding team. 
+ * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
+ * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
+ * (http://www.mod-buildcraft.com/MMPL-1.0.txt)
+ *
+ * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
+ * Steamcraft (c) Proloe 2011
+ * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
+ * 
  */
 package steamcraft.common.items.tools;
 
@@ -17,9 +26,9 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * Base class for drills.
- *
+ * 
  * @author Decebaldecebal
- *
+ * 
  */
 public class ItemDrill extends ItemModTool
 {
@@ -28,8 +37,8 @@ public class ItemDrill extends ItemModTool
 	public ItemDrill(ToolMaterial mat)
 	{
 		super(1.0F, mat, blocksEffectiveAgainst);
-		setCreativeTab(Steamcraft.tabSC2);
-		toolMaterial = mat;
+		this.setCreativeTab(Steamcraft.tabSC2);
+		this.toolMaterial = mat;
 		// this.setMaxDamage(this.toolMaterial.getMaxUses());
 	}
 
@@ -37,7 +46,7 @@ public class ItemDrill extends ItemModTool
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister icon)
 	{
-		itemIcon = icon.registerIcon(LibInfo.PREFIX + "tools/" + this.getUnlocalizedName().substring(5));
+		this.itemIcon = icon.registerIcon(LibInfo.PREFIX + "tools/" + this.getUnlocalizedName().substring(5));
 
 		blocksEffectiveAgainst = new Block[] { Blocks.cobblestone, Blocks.dirt, Blocks.stone, Blocks.sand, Blocks.clay, Blocks.ice, Blocks.snow,
 				Blocks.netherrack, Blocks.grass, Blocks.gravel };
@@ -60,6 +69,6 @@ public class ItemDrill extends ItemModTool
 	{
 		super.addInformation(stack, player, list, flag);
 
-		list.add("Efficiency: " + toolMaterial.getEfficiencyOnProperMaterial());
+		list.add("Efficiency: " + this.toolMaterial.getEfficiencyOnProperMaterial());
 	}
 }
