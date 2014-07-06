@@ -1,5 +1,5 @@
 /**
- * This class was created by <Surseance> or his SC2 development team.
+ * This class was created by BrassGoggledCoders modding team. 
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -8,8 +8,7 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- *
- * File created @ [Mar 14, 2014, 11:02:06 AM]
+ * 
  */
 package steamcraft.common.lib;
 
@@ -28,30 +27,16 @@ import net.minecraft.util.ResourceLocation;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class Utils.
+ * @author Surseance
  * 
- * @author Surseance (Johnny Eatmon)
  */
 public class Utils
 {
-
-	/** The random. */
 	public Random random = new Random();
 
-	/** The newest version. */
 	static String newestVersion;
 
-	/**
-	 * Check for updated version.
-	 * 
-	 * @param name
-	 *            the name
-	 * @param version
-	 *            the version
-	 * @return true, if successful
-	 */
 	public static boolean checkForUpdatedVersion(String name, String version)
 	{
 		try
@@ -73,9 +58,6 @@ public class Utils
 		return false;
 	}
 
-	/**
-	 * Download capes.
-	 */
 	@SideOnly(Side.CLIENT)
 	public static void downloadCapes()
 	{
@@ -100,13 +82,6 @@ public class Utils
 		 */
 	}
 
-	/**
-	 * Gets the users from url.
-	 * 
-	 * @param url
-	 *            the url
-	 * @return the users from url
-	 */
 	private static String[] getUsersFromUrl(String url)
 	{
 		ArrayList<String> list = new ArrayList<String>();
