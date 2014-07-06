@@ -1,5 +1,5 @@
 /**
- * This class was created by BrassGoggledCoders modding team.
+ * This class was created by BrassGoggledCoders modding team. 
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -8,8 +8,7 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- *
- * File created @ [Jul 1, 2014, 1:55:12 PM]
+ * 
  */
 package steamcraft.common.blocks.machines;
 
@@ -34,7 +33,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author decebaldecebal
- *
+ * 
  */
 public class BlockBattery extends BlockContainerMod
 {
@@ -52,14 +51,14 @@ public class BlockBattery extends BlockContainerMod
 	{
 		switch (side)
 		{
-			case 0:
-				return iconTop; // bottom
+		case 0:
+			return this.iconTop; // bottom
 
-			case 1:
-				return iconTop; // top
+		case 1:
+			return this.iconTop; // top
 
-			default:
-				return blockIcon; // sides
+		default:
+			return this.blockIcon; // sides
 		}
 	}
 
@@ -67,8 +66,8 @@ public class BlockBattery extends BlockContainerMod
 	@Override
 	public void registerBlockIcons(IIconRegister icon)
 	{
-		blockIcon = icon.registerIcon(LibInfo.PREFIX + "blockBatterySide");
-		iconTop = icon.registerIcon(LibInfo.PREFIX + "blockBatteryTop");
+		this.blockIcon = icon.registerIcon(LibInfo.PREFIX + "blockBatterySide");
+		this.iconTop = icon.registerIcon(LibInfo.PREFIX + "blockBatteryTop");
 	}
 
 	@Override
@@ -80,7 +79,7 @@ public class BlockBattery extends BlockContainerMod
 		{
 			TileBattery tile = (TileBattery) world.getTileEntity(par2, par3, par4);
 
-			if ((tile == null) || player.isSneaking())
+			if (tile == null || player.isSneaking())
 				return false;
 
 			player.openGui(Steamcraft.instance, GuiIDs.GUI_ID_BATTERY, world, par2, par3, par4);
@@ -106,13 +105,13 @@ public class BlockBattery extends BlockContainerMod
 
 				if (var9 != null)
 				{
-					float var10 = (random.nextFloat() * 0.8F) + 0.1F;
-					float var11 = (random.nextFloat() * 0.8F) + 0.1F;
-					float var12 = (random.nextFloat() * 0.8F) + 0.1F;
+					float var10 = this.random.nextFloat() * 0.8F + 0.1F;
+					float var11 = this.random.nextFloat() * 0.8F + 0.1F;
+					float var12 = this.random.nextFloat() * 0.8F + 0.1F;
 
 					while (var9.stackSize > 0)
 					{
-						int var13 = random.nextInt(21) + 10;
+						int var13 = this.random.nextInt(21) + 10;
 
 						if (var13 > var9.stackSize)
 							var13 = var9.stackSize;
@@ -125,9 +124,9 @@ public class BlockBattery extends BlockContainerMod
 							var14.getEntityItem().setTagCompound((NBTTagCompound) var9.getTagCompound().copy());
 
 						float var15 = 0.05F;
-						var14.motionX = (float) random.nextGaussian() * var15;
-						var14.motionY = ((float) random.nextGaussian() * var15) + 0.2F;
-						var14.motionZ = (float) random.nextGaussian() * var15;
+						var14.motionX = (float) this.random.nextGaussian() * var15;
+						var14.motionY = (float) this.random.nextGaussian() * var15 + 0.2F;
+						var14.motionZ = (float) this.random.nextGaussian() * var15;
 						par1World.spawnEntityInWorld(var14);
 					}
 				}

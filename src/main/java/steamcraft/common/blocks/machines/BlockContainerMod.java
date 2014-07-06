@@ -1,5 +1,5 @@
 /**
- * This class was created by <Surseance> or his SC2 development team.
+ * This class was created by BrassGoggledCoders modding team. 
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -8,8 +8,7 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- *
- * File created @ 23-May-2014
+ * 
  */
 package steamcraft.common.blocks.machines;
 
@@ -60,8 +59,8 @@ public abstract class BlockContainerMod extends BlockContainer
 	protected BlockContainerMod(Material mat)
 	{
 		super(mat);
-		setCreativeTab(Steamcraft.tabSC2);
-		setHardness(5.0F);
+		this.setCreativeTab(Steamcraft.tabSC2);
+		this.setHardness(5.0F);
 	}
 
 	/**
@@ -76,9 +75,7 @@ public abstract class BlockContainerMod extends BlockContainer
 
 	/*
 	 * (non-Javadoc)
-	 * 
-	 * @see net.minecraft.block.Block#onBlockPlacedBy(net.minecraft.world.World,
-	 * int, int, int, net.minecraft.entity.EntityLivingBase,
+	 * @see net.minecraft.block.Block#onBlockPlacedBy(net.minecraft.world.World, int, int, int, net.minecraft.entity.EntityLivingBase,
 	 * net.minecraft.item.ItemStack)
 	 */
 	@Override
@@ -92,10 +89,7 @@ public abstract class BlockContainerMod extends BlockContainer
 
 	/*
 	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * net.minecraft.block.BlockContainer#breakBlock(net.minecraft.world.World,
-	 * int, int, int, net.minecraft.block.Block, int)
+	 * @see net.minecraft.block.BlockContainer#breakBlock(net.minecraft.world.World, int, int, int, net.minecraft.block.Block, int)
 	 */
 	@Override
 	public void breakBlock(World world, int x, int y, int z, Block block, int metadata)
@@ -105,17 +99,14 @@ public abstract class BlockContainerMod extends BlockContainer
 
 	/*
 	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * net.minecraft.block.Block#getLightValue(net.minecraft.world.IBlockAccess,
-	 * int, int, int)
+	 * @see net.minecraft.block.Block#getLightValue(net.minecraft.world.IBlockAccess, int, int, int)
 	 */
 	@Override
 	public int getLightValue(IBlockAccess world, int x, int y, int z)
 	{
 		TileEntity te = world.getTileEntity(x, y, z);
 
-		if ((te instanceof IMachine) && ((IMachine) te).isActive())
+		if (te instanceof IMachine && ((IMachine) te).isActive())
 			return super.getLightValue(world, x, y, z) + 8;
 
 		return super.getLightValue(world, x, y, z);
@@ -123,26 +114,22 @@ public abstract class BlockContainerMod extends BlockContainer
 
 	/*
 	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * net.minecraft.block.Block#registerBlockIcons(net.minecraft.client.renderer
-	 * .texture.IIconRegister)
+	 * @see net.minecraft.block.Block#registerBlockIcons(net.minecraft.client.renderer .texture.IIconRegister)
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister ir)
 	{
-		icon = ir.registerIcon(LibInfo.PREFIX + getUnlocalizedName().substring(5));
+		this.icon = ir.registerIcon(LibInfo.PREFIX + this.getUnlocalizedName().substring(5));
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * 
 	 * @see net.minecraft.block.Block#getIcon(int, int)
 	 */
 	@Override
 	public IIcon getIcon(int p_149691_1_, int p_149691_2_)
 	{
-		return icon;
+		return this.icon;
 	}
 }

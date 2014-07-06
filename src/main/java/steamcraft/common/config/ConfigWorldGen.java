@@ -1,5 +1,5 @@
 /**
- * This class was created by <Surseance> or his SC2 development team.
+ * This class was created by BrassGoggledCoders modding team. 
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -8,10 +8,8 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- *
- * File created @ 23-May-2014
+ * 
  */
-
 package steamcraft.common.config;
 
 import java.util.Random;
@@ -27,20 +25,13 @@ import net.minecraftforge.common.BiomeDictionary.Type;
 import steamcraft.common.worldgen.WorldGenBrassTree;
 import cpw.mods.fml.common.IWorldGenerator;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class SteamcraftWorldGenerator.
- * 
  * @authors Surseance & warlordjones
+ * 
  */
 public class ConfigWorldGen implements IWorldGenerator
 {
 
-	/*
-	 * (non-Javadoc)
-	 * @see cpw.mods.fml.common.IWorldGenerator#generate(java.util.Random, int, int, net.minecraft.world.World, net.minecraft.world.chunk.IChunkProvider,
-	 * net.minecraft.world.chunk.IChunkProvider)
-	 */
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider generator, IChunkProvider chunk)
 	{
@@ -64,19 +55,6 @@ public class ConfigWorldGen implements IWorldGenerator
 		}
 	}
 
-	// TODO: Add Config Options for ore vein size
-	/**
-	 * Generate surface.
-	 * 
-	 * @param world
-	 *            the world
-	 * @param random
-	 *            the random
-	 * @param chunkX
-	 *            the chunk x
-	 * @param chunkZ
-	 *            the chunk z
-	 */
 	private void generateSurface(World world, Random random, int chunkX, int chunkZ)
 	{
 		if (Config.aluminumOreGenEnabled)
@@ -118,30 +96,6 @@ public class ConfigWorldGen implements IWorldGenerator
 		}
 	}
 
-	/**
-	 * Generate ore.
-	 * 
-	 * @param world
-	 *            the world
-	 * @param random
-	 *            the random
-	 * @param chunkX
-	 *            the chunk x
-	 * @param chunkZ
-	 *            the chunk z
-	 * @param chance
-	 *            the chance
-	 * @param height
-	 *            the height
-	 * @param blocks
-	 *            the blocks
-	 * @param ore
-	 *            the ore
-	 * @param meta
-	 *            the meta
-	 * @param blockToGenIn
-	 *            the block to gen in
-	 */
 	private void generateOre(World world, Random random, int chunkX, int chunkZ, int chance, int height, int blocks, Block ore, int meta,
 			Block blockToGenIn)
 	{
@@ -155,18 +109,6 @@ public class ConfigWorldGen implements IWorldGenerator
 		}
 	}
 
-	/**
-	 * Generate nether.
-	 * 
-	 * @param world
-	 *            the world
-	 * @param random
-	 *            the random
-	 * @param chunkX
-	 *            the chunk x
-	 * @param chunkZ
-	 *            the chunk z
-	 */
 	private void generateNether(World world, Random random, int chunkX, int chunkZ)
 	{
 		if (Config.netherEtheriumCrystalGenEnabled)
@@ -174,18 +116,6 @@ public class ConfigWorldGen implements IWorldGenerator
 					ConfigBlocks.blockCrystal, 0, Blocks.netherrack);
 	}
 
-	/**
-	 * Generate end.
-	 * 
-	 * @param world
-	 *            the world
-	 * @param random
-	 *            the random
-	 * @param chunkX
-	 *            the chunk x
-	 * @param chunkZ
-	 *            the chunk z
-	 */
 	private void generateEnd(final World world, final Random random, final int chunkX, final int chunkZ)
 	{
 		if (Config.endEtheriumCrystalGenEnabled)

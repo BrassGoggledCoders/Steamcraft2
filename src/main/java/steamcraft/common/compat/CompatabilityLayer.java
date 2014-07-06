@@ -1,5 +1,14 @@
-/*
+/**
+ * This class was created by BrassGoggledCoders modding team. 
+ * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
+ * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
+ * (http://www.mod-buildcraft.com/MMPL-1.0.txt)
+ *
+ * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
+ * Steamcraft (c) Proloe 2011
+ * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
+ * 
  */
 package steamcraft.common.compat;
 
@@ -11,16 +20,12 @@ import steamcraft.common.lib.LibInfo;
 import boilerplate.common.OreDictHelper;
 import cpw.mods.fml.common.event.FMLInterModComms;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class CompatabilityLayer.
+ * @author warlordjones
+ *
  */
 public class CompatabilityLayer
 {
-
-	/**
-	 * Inits the.
-	 */
 	public static void init()
 	{
 		registerOreDictionaryEntries();
@@ -32,9 +37,6 @@ public class CompatabilityLayer
 		FMLInterModComms.sendRuntimeMessage(LibInfo.ID, "VersionChecker", "addVersionCheck", LibInfo.VERSION_URL);
 	}
 
-	/**
-	 * Register ore dictionary entries.
-	 */
 	private static void registerOreDictionaryEntries()
 	{
 
