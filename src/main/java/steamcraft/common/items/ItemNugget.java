@@ -33,12 +33,6 @@ public class ItemNugget extends BaseItemWithMetadata
 	@SideOnly(Side.CLIENT)
 	IIcon[] itemIcon = new IIcon[8];
 
-	public ItemNugget()
-	{
-		super();
-		this.setUnlocalizedName("itemNugget");
-	}
-
 	@SuppressWarnings("all")
 	@Override
 	@SideOnly(Side.CLIENT)

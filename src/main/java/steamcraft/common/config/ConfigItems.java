@@ -1,5 +1,5 @@
 /**
- * This class was created by BrassGoggledCoders modding team.
+ * This class was created by BrassGoggledCoders modding team. 
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -8,8 +8,7 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- *
- * File created @ [Mar 14, 2014, 10:51:48 PM]
+ * 
  */
 package steamcraft.common.config;
 
@@ -59,8 +58,8 @@ import boilerplate.common.RegistryHelper;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 /**
- *
- * @author Surseance (Johnny Eatmon)
+ * @author Surseance
+ * 
  */
 public class ConfigItems
 {
@@ -153,41 +152,6 @@ public class ConfigItems
 
 	private static void initializeItems()
 	{
-		/*
-		 * itemAqualung = new ItemCustomArmor(Config.itemAqualungId,
-		 * MaterialHelper.STEAM_ARMOR, 0, 1).setUnlocalizedName("itemAqualung");
-		 * registerItem(itemAqualung, "ItemAqualung"); itemLegBraces = new
-		 * ItemCustomArmor(Config.itemLegBracesId, MaterialHelper.STEAM_ARMOR,
-		 * 0, 2).setUnlocalizedName("itemLegBraces");
-		 * registerItem(itemLegBraces, "ItemLegBraces", LibInfo.ID);
-		 * itemRollerSkates = new ItemCustomArmor(Config.itemRollerSkatesId,
-		 * MaterialHelper.STEAM_ARMOR, 0,
-		 * 3).setUnlocalizedName("itemRollerSkates");
-		 * registerItem(itemRollerSkates, "ItemRollerSkates", LibInfo.ID);
-		 *
-		 *
-		 *
-		 * //More Items itemTeacupEmpty = new
-		 * ItemTeacup(Config.itemTeacupEmptyId, 0, 0.0F,
-		 * false).setUnlocalizedName("itemTeacupEmpty");
-		 * registerItem(itemTeacupEmpty, "ItemTeacupEmpty", LibInfo.ID);
-		 * itemTeacupFull = new ItemTeacup(Config.itemTeacupFullId, 4, 0.9F,
-		 * false).setUnlocalizedName("itemTeacupFull");
-		 * registerItem(itemTeacupFull, "ItemTeacupFull", LibInfo.ID);
-		 * itemKettleEmpty = new ItemKettle(Config.itemKettleEmptyId,
-		 * 300).setUnlocalizedName("itemKettleEmpty");
-		 * registerItem(itemTeacupFull, "ItemKettleEmpty", LibInfo.ID);
-		 * itemKettleHot = new ItemKettle(Config.itemKettleHotId,
-		 * 300).setUnlocalizedName("itemKettleHot");
-		 * registerItem(itemTeacupFull, "ItemKettleHot", LibInfo.ID);
-		 * itemKettleCold = new ItemKettle(Config.itemKettleColdId,
-		 * 300).setUnlocalizedName("itemKettleCold");
-		 * registerItem(itemTeacupFull, "ItemKettleCold", LibInfo.ID);
-		 * itemGunParts = new
-		 * ItemFirearmParts(Config.itemGunPartsId).setUnlocalizedName
-		 * ("itemGunParts"); registerItem(itemGunParts, "ItemFirearmParts");
-		 */
-
 		initializeTools();
 		initializeArmor();
 		initializeGuns();
@@ -336,9 +300,9 @@ public class ConfigItems
 	private static void initializeMetals()
 	{
 		itemIngot = new ItemIngot().setUnlocalizedName("itemIngot");
-		itemNugget = new ItemNugget();
-		itemSheet = new ItemSheet();
-		itemPowder = new ItemPowder();
+		itemNugget = new ItemNugget().setUnlocalizedName("itemNugget");
+		itemSheet = new ItemSheet().setUnlocalizedName("itemSheet");
+		itemPowder = new ItemPowder().setUnlocalizedName("itemPowder");
 
 		registerItem(itemIngot, "ItemIngot");
 		registerItem(itemNugget, "ItemMetalNugget");

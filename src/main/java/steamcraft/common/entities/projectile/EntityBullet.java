@@ -1,5 +1,5 @@
 /**
- * This class was created by <Surseance> or his SC2 development team.
+ * This class was created by BrassGoggledCoders modding team. 
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -8,8 +8,7 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- *
- * File created @ [Apr 8, 2014, 1:42:11 PM]
+ * 
  */
 package steamcraft.common.entities.projectile;
 
@@ -19,7 +18,6 @@ import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.IProjectile;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
@@ -32,314 +30,203 @@ import steamcraft.common.lib.LibInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-// TODO: Auto-generated Javadoc
 /**
- * NOTE: Please do not tamper with this file unless you know vectors and
- * trigonometric functions very well. Thank you. I have, however, cleaned up the
- * code to make things easier to understand.
- *
+ * NOTE: Please do not tamper with this file unless you know vectors and trigonometric functions very well. Thank you. I have, however, cleaned up the code to
+ * make things easier to understand.
+ * 
  * @author Surseance (Johnny Eatmon)
- *
+ * 
  */
 public class EntityBullet extends Entity implements IProjectile
 {
-
-	/** The x tile. */
 	private int xTile = -1;
-
-	/** The y tile. */
 	private int yTile = -1;
-
-	/** The z tile. */
 	private int zTile = -1;
 
-	/** The in tile. */
 	private Block inTile;
-
-	/** The in ground. */
 	private boolean inGround;
 
-	/** The can be picked up. */
-	private int canBePickedUp;
-
-	/** The arrow shake. */
 	public int arrowShake;
 
-	/** The shooting entity. */
 	private Entity shootingEntity;
 
-	/** The time till death. */
 	private int timeTillDeath;
-
-	/** The fly time. */
 	private int flyTime;
 
-	/** The damage. */
 	private int damage;
-
-	/** The accuracy. */
 	private int accuracy;
 
-	/**
-	 * Instantiates a new entity bullet.
-	 *
-	 * @param world
-	 *            the world
-	 */
 	public EntityBullet(World world)
 	{
 		super(world);
-		renderDistanceWeight = 10.0D;
-		setSize(0.5F, 0.5F);
+		this.renderDistanceWeight = 10.0D;
+		this.setSize(0.5F, 0.5F);
 	}
 
-	/**
-	 * Instantiates a new entity bullet.
-	 *
-	 * @param world
-	 *            the world
-	 * @param dx
-	 *            the dx
-	 * @param dy
-	 *            the dy
-	 * @param dz
-	 *            the dz
-	 */
 	public EntityBullet(World world, double dx, double dy, double dz)
 	{
 		super(world);
-		renderDistanceWeight = 10.0D;
-		setSize(0.5F, 0.5F);
-		setPosition(dx, dy, dz);
-		yOffset = 0.0F;
+		this.renderDistanceWeight = 10.0D;
+		this.setSize(0.5F, 0.5F);
+		this.setPosition(dx, dy, dz);
+		this.yOffset = 0.0F;
 	}
 
-	/**
-	 * Instantiates a new entity bullet.
-	 *
-	 * @param world
-	 *            the world
-	 * @param shooter
-	 *            the shooter
-	 * @param target
-	 *            the target
-	 * @param frotY
-	 *            the frot y
-	 * @param frotP
-	 *            the frot p
-	 */
 	public EntityBullet(World world, EntityLivingBase shooter, EntityLivingBase target, float frotY, float frotP)
 	{
 		super(world);
-		renderDistanceWeight = 10.0D;
-		shootingEntity = shooter;
+		this.renderDistanceWeight = 10.0D;
+		this.shootingEntity = shooter;
 
-		if (shooter instanceof EntityPlayer)
-			canBePickedUp = 1;
-
-		posY = (shooter.posY + shooter.getEyeHeight()) - 0.10000000149011612D;
+		this.posY = shooter.posY + shooter.getEyeHeight() - 0.10000000149011612D;
 		double dx = target.posX - shooter.posX;
-		double dy = (target.boundingBox.minY + (target.height / 3.0F)) - posY;
+		double dy = target.boundingBox.minY + target.height / 3.0F - this.posY;
 		double dz = target.posZ - shooter.posZ;
-		double magnitude = MathHelper.sqrt_double((dx * dx) + (dz * dz)); // It's
-																			// a
-																			// magnitude
-																			// vector!
-																			// Yay,
-																			// math!
+		double magnitude = MathHelper.sqrt_double(dx * dx + dz * dz); 
 
 		if (magnitude >= 1.0E-7D)
 		{
-			float fx = (float) ((Math.atan2(dz, dx) * 180.0D) / Math.PI) - 90.0F;
-			float fy = (float) (-((Math.atan2(dy, magnitude) * 180.0D) / Math.PI));
+			float fx = (float) (Math.atan2(dz, dx) * 180.0D / Math.PI) - 90.0F;
+			float fy = (float) -(Math.atan2(dy, magnitude) * 180.0D / Math.PI);
 			double dlx = dx / magnitude;
 			double dlz = dz / magnitude;
-			setLocationAndAngles(shooter.posX + dlx, posY, shooter.posZ + dlz, fx, fy);
-			yOffset = 0.0F;
+			this.setLocationAndAngles(shooter.posX + dlx, this.posY, shooter.posZ + dlz, fx, fy);
+			this.yOffset = 0.0F;
 			float height = (float) magnitude * 0.2F;
-			setThrowableHeading(dx, dy + height, dz, frotY, frotP);
+			this.setThrowableHeading(dx, dy + height, dz, frotY, frotP);
 		}
 	}
 
-	/**
-	 * Instantiates a new entity bullet.
-	 *
-	 * @param world
-	 *            the world
-	 * @param shooter
-	 *            the shooter
-	 * @param damage
-	 *            the damage
-	 * @param accuracy
-	 *            the accuracy
-	 */
 	public EntityBullet(World world, EntityLivingBase shooter, int damage, int accuracy)
 	{
 		super(world);
-		renderDistanceWeight = 10.0D;
-		shootingEntity = shooter;
+		this.renderDistanceWeight = 10.0D;
+		this.shootingEntity = shooter;
 
-		if (shooter instanceof EntityPlayer)
-			canBePickedUp = 1;
 
-		setSize(0.5F, 0.5F);
-		setLocationAndAngles(shooter.posX, shooter.posY + shooter.getEyeHeight(), shooter.posZ, shooter.rotationYaw, shooter.rotationPitch);
-		posX -= MathHelper.cos((rotationYaw / 180.0F) * (float) Math.PI) * 0.16F;
-		posY -= 0.10000000149011612D;
-		posZ -= MathHelper.sin((rotationYaw / 180.0F) * (float) Math.PI) * 0.16F;
-		setPosition(posX, posY, posZ);
-		yOffset = 0.0F;
-		motionX = -MathHelper.sin((rotationYaw / 180.0F) * (float) Math.PI) * MathHelper.cos((rotationPitch / 180.0F) * (float) Math.PI);
-		motionZ = MathHelper.cos((rotationYaw / 180.0F) * (float) Math.PI) * MathHelper.cos((rotationPitch / 180.0F) * (float) Math.PI);
-		motionY = (-MathHelper.sin((rotationPitch / 180.0F) * (float) Math.PI));
-		setThrowableHeading(motionX, motionY, motionZ, 1F, accuracy);
+		this.setSize(0.5F, 0.5F);
+		this.setLocationAndAngles(shooter.posX, shooter.posY + shooter.getEyeHeight(), shooter.posZ, shooter.rotationYaw, shooter.rotationPitch);
+		this.posX -= MathHelper.cos(this.rotationYaw / 180.0F * (float) Math.PI) * 0.16F;
+		this.posY -= 0.10000000149011612D;
+		this.posZ -= MathHelper.sin(this.rotationYaw / 180.0F * (float) Math.PI) * 0.16F;
+		this.setPosition(this.posX, this.posY, this.posZ);
+		this.yOffset = 0.0F;
+		this.motionX = -MathHelper.sin(this.rotationYaw / 180.0F * (float) Math.PI) * MathHelper.cos(this.rotationPitch / 180.0F * (float) Math.PI);
+		this.motionZ = MathHelper.cos(this.rotationYaw / 180.0F * (float) Math.PI) * MathHelper.cos(this.rotationPitch / 180.0F * (float) Math.PI);
+		this.motionY = -MathHelper.sin(this.rotationPitch / 180.0F * (float) Math.PI);
+		this.setThrowableHeading(this.motionX, this.motionY, this.motionZ, 1F, accuracy);
 		this.accuracy = accuracy;
 		this.damage = damage;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see net.minecraft.entity.Entity#entityInit()
-	 */
 	@Override
 	protected void entityInit()
 	{
 		// dataWatcher.addObject(Config.entBulletId, Byte.valueOf((byte) 0));
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see net.minecraft.entity.IProjectile#setThrowableHeading(double, double,
-	 * double, float, float)
-	 */
 	@Override
 	public void setThrowableHeading(double dx, double dy, double dz, float frotY, float frotP)
 	{
 		int accuracy = this.accuracy;
-		float f2 = MathHelper.sqrt_double((dx * dx) + (dy * dy) + (dz * dz));
+		float f2 = MathHelper.sqrt_double(dx * dx + dy * dy + dz * dz);
 		dx /= f2;
 		dy /= f2;
 		dz /= f2;
-		dx += (rand.nextGaussian() * 0.0034999998323619365D * frotP * accuracy) / 5;
-		dy += (rand.nextGaussian() * 0.0034999998323619365D * frotP * accuracy) / 5;
-		dz += (rand.nextGaussian() * 0.0034999998323619365D * frotP * accuracy) / 5;
+		dx += this.rand.nextGaussian() * 0.0034999998323619365D * frotP * accuracy / 5;
+		dy += this.rand.nextGaussian() * 0.0034999998323619365D * frotP * accuracy / 5;
+		dz += this.rand.nextGaussian() * 0.0034999998323619365D * frotP * accuracy / 5;
 		dx *= frotY;
 		dy *= frotY;
 		dz *= frotY;
-		motionX = dx;
-		motionY = dy;
-		motionZ = dz;
-		float magnitude = MathHelper.sqrt_double((dx * dx) + (dz * dz));
-		prevRotationYaw = rotationYaw = (float) ((Math.atan2(dx, dz) * 180D) / 3.1415927410125732D);
-		prevRotationPitch = rotationPitch = (float) ((Math.atan2(dy, magnitude) * 180D) / 3.1415927410125732D);
-		timeTillDeath = 0;
+		this.motionX = dx;
+		this.motionY = dy;
+		this.motionZ = dz;
+		float magnitude = MathHelper.sqrt_double(dx * dx + dz * dz);
+		this.prevRotationYaw = this.rotationYaw = (float) (Math.atan2(dx, dz) * 180D / 3.1415927410125732D);
+		this.prevRotationPitch = this.rotationPitch = (float) (Math.atan2(dy, magnitude) * 180D / 3.1415927410125732D);
+		this.timeTillDeath = 0;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see net.minecraft.entity.Entity#setPositionAndRotation2(double, double,
-	 * double, float, float, int)
-	 */
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void setPositionAndRotation2(double dx, double dy, double dz, float frotY, float frotP, int i)
 	{
-		setPosition(dx, dy, dz);
-		setRotation(frotY, frotP);
+		this.setPosition(dx, dy, dz);
+		this.setRotation(frotY, frotP);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see net.minecraft.entity.Entity#setVelocity(double, double, double)
-	 */
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void setVelocity(double dx, double dy, double dz)
 	{
-		motionX = dx;
-		motionY = dy;
-		motionZ = dz;
+		this.motionX = dx;
+		this.motionY = dy;
+		this.motionZ = dz;
 
-		if ((prevRotationPitch == 0.0F) && (prevRotationYaw == 0.0F))
+		if (this.prevRotationPitch == 0.0F && this.prevRotationYaw == 0.0F)
 		{
-			float magnitude = MathHelper.sqrt_double((dx * dx) + (dz * dz));
-			prevRotationYaw = rotationYaw = (float) ((Math.atan2(dx, dz) * 180D) / 3.1415927410125732D);
-			prevRotationPitch = rotationPitch = (float) ((Math.atan2(dy, magnitude) * 180D) / 3.1415927410125732D);
+			float magnitude = MathHelper.sqrt_double(dx * dx + dz * dz);
+			this.prevRotationYaw = this.rotationYaw = (float) (Math.atan2(dx, dz) * 180D / 3.1415927410125732D);
+			this.prevRotationPitch = this.rotationPitch = (float) (Math.atan2(dy, magnitude) * 180D / 3.1415927410125732D);
 		}
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see net.minecraft.entity.Entity#onUpdate()
-	 */
 	@Override
 	public void onUpdate()
 	{
 		super.onUpdate();
 
-		if (flyTime > 1000)
-			setDead();
+		if (this.flyTime > 1000)
+			this.setDead();
 
-		if ((prevRotationPitch == 0.0F) && (prevRotationYaw == 0.0F))
+		if (this.prevRotationPitch == 0.0F && this.prevRotationYaw == 0.0F)
 		{
-			float magnitude = MathHelper.sqrt_double((motionX * motionX) + (motionZ * motionZ));
-			prevRotationYaw = rotationYaw = (float) ((Math.atan2(motionX, motionZ) * 180D) / 3.1415927410125732D);
-			prevRotationPitch = rotationPitch = (float) ((Math.atan2(motionY, magnitude) * 180D) / 3.1415927410125732D);
+			float magnitude = MathHelper.sqrt_double(this.motionX * this.motionX + this.motionZ * this.motionZ);
+			this.prevRotationYaw = this.rotationYaw = (float) (Math.atan2(this.motionX, this.motionZ) * 180D / 3.1415927410125732D);
+			this.prevRotationPitch = this.rotationPitch = (float) (Math.atan2(this.motionY, magnitude) * 180D / 3.1415927410125732D);
 		}
 
-		if (arrowShake > 0)
-			arrowShake--;
+		if (this.arrowShake > 0)
+			this.arrowShake--;
 
-		if (inGround)
+		if (this.inGround)
 		{
-			Block block = worldObj.getBlock(xTile, yTile, zTile);
+			Block block = this.worldObj.getBlock(this.xTile, this.yTile, this.zTile);
 
-			if (block != inTile)
+			if (block != this.inTile)
 			{
-				inGround = false;
-				motionX *= rand.nextFloat() * 0.2F;
-				motionY *= rand.nextFloat() * 0.2F;
-				motionZ *= rand.nextFloat() * 0.2F;
-				timeTillDeath = 0;
-				flyTime = 0;
+				this.inGround = false;
+				this.motionX *= this.rand.nextFloat() * 0.2F;
+				this.motionY *= this.rand.nextFloat() * 0.2F;
+				this.motionZ *= this.rand.nextFloat() * 0.2F;
+				this.timeTillDeath = 0;
+				this.flyTime = 0;
 			}
 			else
 			{
-				timeTillDeath++;
+				this.timeTillDeath++;
 
-				if (timeTillDeath == 1200)
-					setDead();
+				if (this.timeTillDeath == 1200)
+					this.setDead();
 
 				return;
 			}
 		}
 		else
-			flyTime++;
+			this.flyTime++;
 
-		Vec3 posVector = Vec3.createVectorHelper(posX, posY, posZ);
-		Vec3 velVector = Vec3.createVectorHelper(posX + motionX, posY + motionY, posZ + motionZ);
-		MovingObjectPosition mop = worldObj.rayTraceBlocks(posVector, velVector, false); // TODO:
-																							// missing
-																							// a
-																							// true,
-																							// check
-																							// how
-																							// this
-																							// is
-																							// affected
-		posVector = Vec3.createVectorHelper(posX, posY, posZ);
-		velVector = Vec3.createVectorHelper(posX + motionX, posY + motionY, posZ + motionZ);
+		Vec3 posVector = Vec3.createVectorHelper(this.posX, this.posY, this.posZ);
+		Vec3 velVector = Vec3.createVectorHelper(this.posX + this.motionX, this.posY + this.motionY, this.posZ + this.motionZ);
+		MovingObjectPosition mop = this.worldObj.rayTraceBlocks(posVector, velVector, false); // TODO: missing a true, check how this is affected
+		posVector = Vec3.createVectorHelper(this.posX, this.posY, this.posZ);
+		velVector = Vec3.createVectorHelper(this.posX + this.motionX, this.posY + this.motionY, this.posZ + this.motionZ);
 
 		if (mop != null)
 			velVector = Vec3.createVectorHelper(mop.hitVec.xCoord, mop.hitVec.yCoord, mop.hitVec.zCoord);
 
 		Entity entity = null;
-		List<?> entList = worldObj.getEntitiesWithinAABBExcludingEntity(this, boundingBox.addCoord(motionX, motionY, motionZ)
+		List<?> entList = this.worldObj.getEntitiesWithinAABBExcludingEntity(this, this.boundingBox.addCoord(this.motionX, this.motionY, this.motionZ)
 				.expand(1.0D, 1.0D, 1.0D));
 		double distance = 0.0D;
 
@@ -347,7 +234,7 @@ public class EntityBullet extends Entity implements IProjectile
 		{
 			Entity collidableEnt = (Entity) entList.get(listSize);
 
-			if (!collidableEnt.canBeCollidedWith() || ((collidableEnt == shootingEntity) && (flyTime < 5)))
+			if (!collidableEnt.canBeCollidedWith() || collidableEnt == this.shootingEntity && this.flyTime < 5)
 				continue;
 
 			float amount = 0.3F;
@@ -359,8 +246,7 @@ public class EntityBullet extends Entity implements IProjectile
 
 			double distanceToObject = posVector.distanceTo(objectInVector.hitVec);
 
-			if ((distanceToObject < distance) || (distance == 0.0D)) // Orthogonal
-																		// check
+			if (distanceToObject < distance || distance == 0.0D)
 			{
 				entity = collidableEnt;
 				distance = distanceToObject;
@@ -373,75 +259,75 @@ public class EntityBullet extends Entity implements IProjectile
 		if (mop != null)
 			if (mop.entityHit != null)
 			{
-				if (mop.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, this), damage))
+				if (mop.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, this), this.damage))
 				{
-					worldObj.playSoundAtEntity(this, LibInfo.PREFIX + "hitflesh", 1.0F, 1.2F / ((rand.nextFloat() * 0.2F) + 0.9F));
-					setDead();
+					this.worldObj.playSoundAtEntity(this, LibInfo.PREFIX + "hitflesh", 1.0F, 1.2F / (this.rand.nextFloat() * 0.2F + 0.9F));
+					this.setDead();
 				}
 				else
 				{
-					motionX *= 0.10000000149011612D;
-					motionY *= 0.10000000149011612D;
-					motionZ *= 0.10000000149011612D;
-					flyTime = 0;
-					setDead();
+					this.motionX *= 0.10000000149011612D;
+					this.motionY *= 0.10000000149011612D;
+					this.motionZ *= 0.10000000149011612D;
+					this.flyTime = 0;
+					this.setDead();
 				}
 			}
 			else
 			{
-				xTile = mop.blockX;
-				yTile = mop.blockY;
-				zTile = mop.blockZ;
-				inTile = worldObj.getBlock(xTile, yTile, zTile);
+				this.xTile = mop.blockX;
+				this.yTile = mop.blockY;
+				this.zTile = mop.blockZ;
+				this.inTile = this.worldObj.getBlock(this.xTile, this.yTile, this.zTile);
 
-				if ((inTile == Blocks.glass) || (inTile == Blocks.glowstone))
+				if (this.inTile == Blocks.glass || this.inTile == Blocks.glowstone)
 				{
-					Block block = inTile;
-					worldObj.playSoundEffect(xTile + 0.5D, yTile + 0.5D, zTile + 0.5D, block.stepSound.getBreakSound(), 1.0F, 1.0F);
-					worldObj.setBlockToAir(xTile, yTile, zTile);
+					Block block = this.inTile;
+					this.worldObj.playSoundEffect(this.xTile + 0.5D, this.yTile + 0.5D, this.zTile + 0.5D, block.stepSound.getBreakSound(), 1.0F, 1.0F);
+					this.worldObj.setBlockToAir(this.xTile, this.yTile, this.zTile);
 				}
 				else
 				{
-					motionX = (float) (mop.hitVec.xCoord - posX);
-					motionY = (float) (mop.hitVec.yCoord - posY);
-					motionZ = (float) (mop.hitVec.zCoord - posZ);
-					float magnitude = MathHelper.sqrt_double((motionX * motionX) + (motionY * motionY) + (motionZ * motionZ));
-					posX -= (motionX / magnitude) * 0.05000000074505806D;
-					posY -= (motionY / magnitude) * 0.05000000074505806D;
-					posZ -= (motionZ / magnitude) * 0.05000000074505806D;
-					worldObj.playSoundAtEntity(this, LibInfo.PREFIX + "hitblock", 1.0F, 1.0F);
-					setDead();
+					this.motionX = (float) (mop.hitVec.xCoord - this.posX);
+					this.motionY = (float) (mop.hitVec.yCoord - this.posY);
+					this.motionZ = (float) (mop.hitVec.zCoord - this.posZ);
+					float magnitude = MathHelper.sqrt_double(this.motionX * this.motionX + this.motionY * this.motionY + this.motionZ * this.motionZ);
+					this.posX -= this.motionX / magnitude * 0.05000000074505806D;
+					this.posY -= this.motionY / magnitude * 0.05000000074505806D;
+					this.posZ -= this.motionZ / magnitude * 0.05000000074505806D;
+					this.worldObj.playSoundAtEntity(this, LibInfo.PREFIX + "hitblock", 1.0F, 1.0F);
+					this.setDead();
 				}
 			}
 
-		posX += motionX * 3.0D;
-		posY += motionY * 3.0D;
-		posZ += motionZ * 3.0D;
-		float magnitude = MathHelper.sqrt_double((motionX * motionX) + (motionZ * motionZ));
-		rotationYaw = (float) ((Math.atan2(motionX, motionZ) * 180D) / 3.1415927410125732D);
+		this.posX += this.motionX * 3.0D;
+		this.posY += this.motionY * 3.0D;
+		this.posZ += this.motionZ * 3.0D;
+		float magnitude = MathHelper.sqrt_double(this.motionX * this.motionX + this.motionZ * this.motionZ);
+		this.rotationYaw = (float) (Math.atan2(this.motionX, this.motionZ) * 180D / 3.1415927410125732D);
 
-		for (rotationPitch = (float) ((Math.atan2(motionY, magnitude) * 180D) / 3.1415927410125732D); (rotationPitch - prevRotationPitch) < -180F; prevRotationPitch -= 360F)
+		for (this.rotationPitch = (float) (Math.atan2(this.motionY, magnitude) * 180D / 3.1415927410125732D); this.rotationPitch - this.prevRotationPitch < -180F; this.prevRotationPitch -= 360F)
 		{
 		}
 
-		for (; (rotationPitch - prevRotationPitch) >= 180F; prevRotationPitch += 360F)
+		for (; this.rotationPitch - this.prevRotationPitch >= 180F; this.prevRotationPitch += 360F)
 		{
 		}
 
-		for (; (rotationYaw - prevRotationYaw) < -180F; prevRotationYaw -= 360F)
+		for (; this.rotationYaw - this.prevRotationYaw < -180F; this.prevRotationYaw -= 360F)
 		{
 		}
 
-		for (; (rotationYaw - prevRotationYaw) >= 180F; prevRotationYaw += 360F)
+		for (; this.rotationYaw - this.prevRotationYaw >= 180F; this.prevRotationYaw += 360F)
 		{
 		}
 
-		rotationPitch = prevRotationPitch + ((rotationPitch - prevRotationPitch) * 0.2F);
-		rotationYaw = prevRotationYaw + ((rotationYaw - prevRotationYaw) * 0.2F);
+		this.rotationPitch = this.prevRotationPitch + (this.rotationPitch - this.prevRotationPitch) * 0.2F;
+		this.rotationYaw = this.prevRotationYaw + (this.rotationYaw - this.prevRotationYaw) * 0.2F;
 		float speed = 0.99F;
 
-		if (handleWaterMovement())
-			setDead();
+		if (this.handleWaterMovement())
+			this.setDead();
 		// Bullets can't go through water, silly!
 		// for(int k = 0; k < 4; k++)
 		// {
@@ -452,63 +338,40 @@ public class EntityBullet extends Entity implements IProjectile
 		// }
 		// f3 = 0.8F;
 
-		motionX *= speed;
-		motionY *= speed;
-		motionZ *= speed;
-		setPosition(posX, posY, posZ);
+		this.motionX *= speed;
+		this.motionY *= speed;
+		this.motionZ *= speed;
+		this.setPosition(this.posX, this.posY, this.posZ);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see
-	 * net.minecraft.entity.Entity#writeEntityToNBT(net.minecraft.nbt.NBTTagCompound
-	 * )
-	 */
 	@Override
 	public void writeEntityToNBT(NBTTagCompound tagCompound)
 	{
-		tagCompound.setShort("xTile", (short) xTile);
-		tagCompound.setShort("yTile", (short) yTile);
-		tagCompound.setShort("zTile", (short) zTile);
+		tagCompound.setShort("xTile", (short) this.xTile);
+		tagCompound.setShort("yTile", (short) this.yTile);
+		tagCompound.setShort("zTile", (short) this.zTile);
 		// tagCompound.setByte("inTile", (byte)this.inTile.getI);
-		tagCompound.setByte("shake", (byte) arrowShake);
-		tagCompound.setByte("inGround", (byte) (inGround ? 1 : 0));
+		tagCompound.setByte("shake", (byte) this.arrowShake);
+		tagCompound.setByte("inGround", (byte) (this.inGround ? 1 : 0));
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see net.minecraft.entity.Entity#readEntityFromNBT(net.minecraft.nbt.
-	 * NBTTagCompound)
-	 */
 	@Override
 	public void readEntityFromNBT(NBTTagCompound tagCompound)
 	{
-		xTile = tagCompound.getShort("xTile");
-		yTile = tagCompound.getShort("yTile");
-		zTile = tagCompound.getShort("zTile");
+		this.xTile = tagCompound.getShort("xTile");
+		this.yTile = tagCompound.getShort("yTile");
+		this.zTile = tagCompound.getShort("zTile");
 		// this.inTile = tagCompound.getByte("inTile") & 0xff;
-		arrowShake = tagCompound.getByte("shake") & 0xff;
-		inGround = tagCompound.getByte("inGround") == 1;
+		this.arrowShake = tagCompound.getByte("shake") & 0xff;
+		this.inGround = tagCompound.getByte("inGround") == 1;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see net.minecraft.entity.Entity#canTriggerWalking()
-	 */
 	@Override
 	protected boolean canTriggerWalking()
 	{
 		return false;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see net.minecraft.entity.Entity#getShadowSize()
-	 */
 	@Override
 	@SideOnly(Side.CLIENT)
 	public float getShadowSize()
@@ -516,11 +379,6 @@ public class EntityBullet extends Entity implements IProjectile
 		return 0.0F;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see net.minecraft.entity.Entity#canAttackWithItem()
-	 */
 	@Override
 	public boolean canAttackWithItem()
 	{

@@ -1,5 +1,5 @@
 /**
- * This class was created by <Surseance> or his SC2 development team.
+ * This class was created by BrassGoggledCoders modding team. 
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -8,8 +8,7 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- *
- * File created @ [Apr 8, 2014, 12:43:08 PM]
+ * 
  */
 package steamcraft.common.container;
 
@@ -21,40 +20,24 @@ import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemBucket;
 import net.minecraft.item.ItemStack;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class ContainerVanity.
- *
  * @author warlordjones
+ * 
  */
 public class ContainerVanity extends Container
 {
 
-	/** The Constant HOTBAR_END. */
 	private static final int ARMOR_START = InventoryVanity.INV_SIZE, ARMOR_END = ARMOR_START + 3, INV_START = ARMOR_END + 1,
 			INV_END = INV_START + 26, HOTBAR_START = INV_END + 1, HOTBAR_END = HOTBAR_START + 8;
 
-	/**
-	 * Instantiates a new container vanity.
-	 *
-	 * @param player
-	 *            the player
-	 * @param inventoryPlayer
-	 *            the inventory player
-	 * @param inventoryCustom
-	 *            the inventory custom
-	 */
 	public ContainerVanity(final EntityPlayer player, final InventoryPlayer inventoryPlayer, final InventoryVanity inventoryCustom)
 	{
 		// Custom Slots
 		// TODO: Import classes
 		/*
-		 * addSlotToContainer(new SlotHead(inventoryCustom, 0, 25, 8));
-		 * addSlotToContainer(new SlotTunic(inventoryCustom, 1, 25, 26));
-		 * addSlotToContainer(new SlotLeggings(inventoryCustom, 2, 25, 44));
-		 * addSlotToContainer(new SlotBoots(inventoryCustom, 3, 25, 62));
-		 * addSlotToContainer(new SlotHat(inventoryCustom, 5, 45, 8));
-		 * addSlotToContainer(new SlotCape(inventoryCustom, 4, 45, 26));
+		 * addSlotToContainer(new SlotHead(inventoryCustom, 0, 25, 8)); addSlotToContainer(new SlotTunic(inventoryCustom, 1, 25, 26)); addSlotToContainer(new
+		 * SlotLeggings(inventoryCustom, 2, 25, 44)); addSlotToContainer(new SlotBoots(inventoryCustom, 3, 25, 62)); addSlotToContainer(new
+		 * SlotHat(inventoryCustom, 5, 45, 8)); addSlotToContainer(new SlotCape(inventoryCustom, 4, 45, 26));
 		 */
 
 		// Inventory
@@ -62,46 +45,26 @@ public class ContainerVanity extends Container
 
 		for (i = 0; i < 3; ++i)
 			for (int j = 0; j < 9; ++j)
-				addSlotToContainer(new Slot(inventoryPlayer, j + (i * 9) + 9, 8 + (j * 18), 84 + (i * 18)));
+				this.addSlotToContainer(new Slot(inventoryPlayer, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
 
 		// Hotbar
 		for (i = 0; i < 9; ++i)
-			addSlotToContainer(new Slot(inventoryPlayer, i, 8 + (i * 18), 142));
+			this.addSlotToContainer(new Slot(inventoryPlayer, i, 8 + i * 18, 142));
 	}
 
-	/**
-	 * This should always return true, since custom inventory can be accessed
-	 * from anywhere.
-	 *
-	 * @param player
-	 *            the player
-	 * @return true, if successful
-	 */
 	@Override
 	public boolean canInteractWith(final EntityPlayer player)
 	{
 		return true;
 	}
 
-	/**
-	 * Called when a player shift-clicks on a slot. You must override this or
-	 * you will crash when someone does that. Basically the same as every other
-	 * container I make, since I define the same constant indices for all of
-	 * them
-	 *
-	 * @param player
-	 *            the player
-	 * @param slots
-	 *            the slots
-	 * @return the item stack
-	 */
 	@Override
 	public ItemStack transferStackInSlot(final EntityPlayer player, final int slots)
 	{
 		ItemStack isCopy = null;
-		final Slot slot = (Slot) inventorySlots.get(slots);
+		final Slot slot = (Slot) this.inventorySlots.get(slots);
 
-		if ((slot != null) && slot.getHasStack())
+		if (slot != null && slot.getHasStack())
 		{
 			final ItemStack is = slot.getStack();
 			isCopy = is.copy();
@@ -110,7 +73,7 @@ public class ContainerVanity extends Container
 			if (slots < INV_START)
 			{
 				// try to place in player inventory / action bar
-				if (!mergeItemStack(is, INV_START, HOTBAR_END + 1, true))
+				if (!this.mergeItemStack(is, INV_START, HOTBAR_END + 1, true))
 					return null;
 
 				slot.onSlotChange(is, isCopy);
@@ -119,23 +82,23 @@ public class ContainerVanity extends Container
 															// custom
 			// item
 			{
-				if (!mergeItemStack(is, 0, InventoryVanity.INV_SIZE, false))
+				if (!this.mergeItemStack(is, 0, InventoryVanity.INV_SIZE, false))
 					return null;
 			}
 			else if (is.getItem() instanceof ItemArmor) // if item is
 														// armor
 			{
 				final int type = ((ItemArmor) is.getItem()).armorType;
-				if (!mergeItemStack(is, ARMOR_START + type, ARMOR_START + type + 1, false))
+				if (!this.mergeItemStack(is, ARMOR_START + type, ARMOR_START + type + 1, false))
 					return null;
 			}
-			else if ((slots >= INV_START) && (slots < HOTBAR_START))
+			else if (slots >= INV_START && slots < HOTBAR_START)
 			{
-				if (!mergeItemStack(is, HOTBAR_START, HOTBAR_START + 1, false))
+				if (!this.mergeItemStack(is, HOTBAR_START, HOTBAR_START + 1, false))
 					return null;
 			}
-			else if ((slots >= HOTBAR_START) && (slots < (HOTBAR_END + 1)))
-				if (!mergeItemStack(is, INV_START, INV_END + 1, false))
+			else if (slots >= HOTBAR_START && slots < HOTBAR_END + 1)
+				if (!this.mergeItemStack(is, INV_START, INV_END + 1, false))
 					return null;
 
 			if (is.stackSize == 0)

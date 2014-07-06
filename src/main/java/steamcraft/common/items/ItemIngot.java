@@ -32,12 +32,6 @@ public class ItemIngot extends BaseItemWithMetadata
 {
 	@SideOnly(Side.CLIENT)
 	IIcon[] itemIcon = new IIcon[8];
-
-	public ItemIngot()
-	{
-		super();
-		this.setMaxStackSize(64);
-	}
 	
 	@Override
 	@SideOnly(Side.CLIENT)

@@ -33,12 +33,6 @@ public class ItemSheet extends BaseItemWithMetadata
 	@SideOnly(Side.CLIENT)
 	IIcon[] itemIcon = new IIcon[8];
 
-	public ItemSheet()
-	{
-		super();
-		this.setUnlocalizedName("itemSheet");
-	}
-
 	@SuppressWarnings("all")
 	@Override
 	@SideOnly(Side.CLIENT)

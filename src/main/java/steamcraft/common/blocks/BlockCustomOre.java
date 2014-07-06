@@ -81,7 +81,6 @@ public class BlockCustomOre extends BaseBlock implements IHammerable
 	public BlockCustomOre()
 	{
 		super(Material.rock);
-		setBlockName("blockCustomOre");
 		setHardness(3.0F);
 		setResistance(6.0F);
 		setStepSound(Block.soundTypeStone);

@@ -30,7 +30,7 @@ import cpw.mods.fml.common.IWorldGenerator;
 // TODO: Auto-generated Javadoc
 /**
  * The Class SteamcraftWorldGenerator.
- *
+ * 
  * @authors Surseance & warlordjones
  */
 public class ConfigWorldGen implements IWorldGenerator
@@ -38,9 +38,7 @@ public class ConfigWorldGen implements IWorldGenerator
 
 	/*
 	 * (non-Javadoc)
-	 *
-	 * @see cpw.mods.fml.common.IWorldGenerator#generate(java.util.Random, int,
-	 * int, net.minecraft.world.World, net.minecraft.world.chunk.IChunkProvider,
+	 * @see cpw.mods.fml.common.IWorldGenerator#generate(java.util.Random, int, int, net.minecraft.world.World, net.minecraft.world.chunk.IChunkProvider,
 	 * net.minecraft.world.chunk.IChunkProvider)
 	 */
 	@Override
@@ -53,15 +51,15 @@ public class ConfigWorldGen implements IWorldGenerator
 		{
 		case -1:
 			if (Config.netherGenerationEnabled)
-				generateNether(world, random, blockChunkX, blockChunkZ);
+				this.generateNether(world, random, blockChunkX, blockChunkZ);
 			break;
 		case 0:
 			if (Config.overworldGenerationEnabled)
-				generateSurface(world, random, blockChunkX, blockChunkZ);
+				this.generateSurface(world, random, blockChunkX, blockChunkZ);
 			break;
 		case 1:
 			if (Config.endGenerationEnabled)
-				generateEnd(world, random, blockChunkX, blockChunkZ);
+				this.generateEnd(world, random, blockChunkX, blockChunkZ);
 			break;
 		}
 	}
@@ -69,7 +67,7 @@ public class ConfigWorldGen implements IWorldGenerator
 	// TODO: Add Config Options for ore vein size
 	/**
 	 * Generate surface.
-	 *
+	 * 
 	 * @param world
 	 *            the world
 	 * @param random
@@ -82,32 +80,32 @@ public class ConfigWorldGen implements IWorldGenerator
 	private void generateSurface(World world, Random random, int chunkX, int chunkZ)
 	{
 		if (Config.aluminumOreGenEnabled)
-			generateOre(world, random, chunkX, chunkZ, Config.aluminumChance, Config.aluminumHeight, 6, ConfigBlocks.blockCustomOre, 0, Blocks.stone);
+			this.generateOre(world, random, chunkX, chunkZ, Config.aluminumChance, Config.aluminumHeight, 6, ConfigBlocks.blockCustomOre, 0, Blocks.stone);
 		if (Config.copperOreGenEnabled)
-			generateOre(world, random, chunkX, chunkZ, Config.copperChance, Config.copperHeight, 4, ConfigBlocks.blockCustomOre, 1, Blocks.stone);
+			this.generateOre(world, random, chunkX, chunkZ, Config.copperChance, Config.copperHeight, 4, ConfigBlocks.blockCustomOre, 1, Blocks.stone);
 		if (Config.tinOreGenEnabled)
-			generateOre(world, random, chunkX, chunkZ, Config.tinChance, Config.tinHeight, 4, ConfigBlocks.blockCustomOre, 2, Blocks.stone);
+			this.generateOre(world, random, chunkX, chunkZ, Config.tinChance, Config.tinHeight, 4, ConfigBlocks.blockCustomOre, 2, Blocks.stone);
 		if (Config.zincOreGenEnabled)
-			generateOre(world, random, chunkX, chunkZ, Config.zincChance, Config.zincHeight, 3, ConfigBlocks.blockCustomOre, 3, Blocks.stone);
+			this.generateOre(world, random, chunkX, chunkZ, Config.zincChance, Config.zincHeight, 3, ConfigBlocks.blockCustomOre, 3, Blocks.stone);
 		if (Config.uraniumOreGenEnabled)
-			generateOre(world, random, chunkX, chunkZ, Config.uraniumChance, Config.uraniumHeight, 1, ConfigBlocks.blockCustomOre, 4, Blocks.stone);
+			this.generateOre(world, random, chunkX, chunkZ, Config.uraniumChance, Config.uraniumHeight, 1, ConfigBlocks.blockCustomOre, 4, Blocks.stone);
 		if (Config.brimstoneOreGenEnabled)
-			generateOre(world, random, chunkX, chunkZ, Config.brimstoneChance, Config.brimstoneHeight, 4, ConfigBlocks.blockCustomOre, 5,
+			this.generateOre(world, random, chunkX, chunkZ, Config.brimstoneChance, Config.brimstoneHeight, 4, ConfigBlocks.blockCustomOre, 5,
 					Blocks.stone);
 		if (Config.phosphateOreGenEnabled)
-			generateOre(world, random, chunkX, chunkZ, Config.phosphateChance, Config.phosphateHeight, 3, ConfigBlocks.blockCustomOre, 6,
+			this.generateOre(world, random, chunkX, chunkZ, Config.phosphateChance, Config.phosphateHeight, 3, ConfigBlocks.blockCustomOre, 6,
 					Blocks.stone);
 		if (Config.slateGenEnabled)
 		{
-			generateOre(world, random, chunkX, chunkZ, Config.slateChance, Config.slateHeight, 30, ConfigBlocks.blockSlate, 0,
+			this.generateOre(world, random, chunkX, chunkZ, Config.slateChance, Config.slateHeight, 30, ConfigBlocks.blockSlate, 0,
 					Blocks.stone);
-			generateOre(world, random, chunkX, chunkZ, Config.slateChance, Config.slateHeight, 30, ConfigBlocks.blockSlate, 1,
+			this.generateOre(world, random, chunkX, chunkZ, Config.slateChance, Config.slateHeight, 30, ConfigBlocks.blockSlate, 1,
 					Blocks.stone);
-			generateOre(world, random, chunkX, chunkZ, Config.slateChance, Config.slateHeight, 30, ConfigBlocks.blockSlate, 2,
+			this.generateOre(world, random, chunkX, chunkZ, Config.slateChance, Config.slateHeight, 30, ConfigBlocks.blockSlate, 2,
 					Blocks.stone);
 		}
 		BiomeGenBase biome = world.getBiomeGenForCoords(chunkX, chunkZ);
-		if(Config.brassTreeGenEnabled && BiomeDictionary.isBiomeOfType(biome, Type.FOREST))
+		if (Config.brassTreeGenEnabled && BiomeDictionary.isBiomeOfType(biome, Type.FOREST))
 		{
 			for (int n = 0; n < Config.brassTreeGenChance; n++)
 			{
@@ -122,7 +120,7 @@ public class ConfigWorldGen implements IWorldGenerator
 
 	/**
 	 * Generate ore.
-	 *
+	 * 
 	 * @param world
 	 *            the world
 	 * @param random
@@ -159,7 +157,7 @@ public class ConfigWorldGen implements IWorldGenerator
 
 	/**
 	 * Generate nether.
-	 *
+	 * 
 	 * @param world
 	 *            the world
 	 * @param random
@@ -172,13 +170,13 @@ public class ConfigWorldGen implements IWorldGenerator
 	private void generateNether(World world, Random random, int chunkX, int chunkZ)
 	{
 		if (Config.netherEtheriumCrystalGenEnabled)
-			generateOre(world, random, chunkX, chunkZ, Config.netherEtheriumCrystalChance, Config.netherEtheriumCrystalHeight, 15,
+			this.generateOre(world, random, chunkX, chunkZ, Config.netherEtheriumCrystalChance, Config.netherEtheriumCrystalHeight, 15,
 					ConfigBlocks.blockCrystal, 0, Blocks.netherrack);
 	}
 
 	/**
 	 * Generate end.
-	 *
+	 * 
 	 * @param world
 	 *            the world
 	 * @param random
@@ -191,7 +189,7 @@ public class ConfigWorldGen implements IWorldGenerator
 	private void generateEnd(final World world, final Random random, final int chunkX, final int chunkZ)
 	{
 		if (Config.endEtheriumCrystalGenEnabled)
-			generateOre(world, random, chunkX, chunkZ, Config.endEtheriumCrystalChance, Config.endEtheriumCrystalHeight, 15,
+			this.generateOre(world, random, chunkX, chunkZ, Config.endEtheriumCrystalChance, Config.endEtheriumCrystalHeight, 15,
 					ConfigBlocks.blockCrystal, 0, Blocks.end_stone);
 	}
 }

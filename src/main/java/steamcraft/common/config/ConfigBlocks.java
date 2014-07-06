@@ -1,5 +1,5 @@
 /**
- * This class was created by <Surseance> or his SC2 development team.
+ * This class was created by BrassGoggledCoders modding team. 
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -8,8 +8,7 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- *
- * File created @ [Mar 12, 2014, 5:03:06 PM]
+ * 
  */
 package steamcraft.common.config;
 
@@ -67,17 +66,17 @@ import boilerplate.common.RegistryHelper;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 /**
- * @author Surseance (Johnny Eatmon)
- *
+ * @author Surseance
+ * 
  */
 public class ConfigBlocks
 {
 	/* Decorative */
 
-	//Engraved Blocks
+	// Engraved Blocks
 	public static Block blockEngraved, blockEngravedVanilla;
 
-	//Cast Iron
+	// Cast Iron
 	public static Block blockCastIronLampI, blockCastIronLampA;
 	public static Block blockCastIronFence, blockCastIronGate, blockCastIronRailing;
 
@@ -88,7 +87,7 @@ public class ConfigBlocks
 	public static Block blockCustomOre;
 	public static Block blockSlate;
 
-	//Metals
+	// Metals
 	public static Block blockMetal, blockUranium, blockEtherium;
 
 	/* Machines */
@@ -114,7 +113,7 @@ public class ConfigBlocks
 
 	public static Block blockDropHammerAnvil;
 
-	//Wood
+	// Wood
 	public static Block blockBrassLog, blockBrassLeaves;
 
 	public static Block blockTeaPlant, blockHatch;
@@ -131,7 +130,7 @@ public class ConfigBlocks
 	private static void initializeOres()
 	{
 		// Ores
-		blockCustomOre = new BlockCustomOre();
+		blockCustomOre = new BlockCustomOre().setBlockName("blockCustomOre");
 		blockSlate = new BlockSlate().setBlockName("blockSlate");
 
 		GameRegistry.registerBlock(blockCustomOre, ItemBlockCustomOre.class, "BlockCustomOre");
@@ -183,7 +182,7 @@ public class ConfigBlocks
 		blockIntake = new BlockIntake().setBlockName("blockIntake");
 
 		RegistryHelper.registerContainerBlockWithDesc(blockSteamBoiler, TileSteamBoiler.class, "BlockSteamBoiler");
-		RegistryHelper.registerContainerBlockWithDesc(blockIntake,TileIntake.class, "BlockIntake");
+		RegistryHelper.registerContainerBlockWithDesc(blockIntake, TileIntake.class, "BlockIntake");
 
 		// Energy related
 		blockTurbine = new BlockTurbine().setBlockName("blockTurbine");
@@ -241,7 +240,7 @@ public class ConfigBlocks
 
 		RegistryHelper.registerContainerBlock(blockCrystal, TileCrystal.class, "BlockCrystal");
 
-		//Wood
+		// Wood
 		blockBrassLog = new BlockBrassLog(Material.wood);
 		blockBrassLeaves = new BlockBrassLeaves(Material.iron);
 

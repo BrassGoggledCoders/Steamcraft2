@@ -1,5 +1,5 @@
 /**
- * This class was created by <Surseance> or his SC2 development team.
+ * This class was created by BrassGoggledCoders modding team. 
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -8,29 +8,19 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- *
- * File created @ [9 Apr 2014, 09:54:21]
+ * 
  */
 package steamcraft.common.itemblocks;
 
 import net.minecraft.block.Block;
 import boilerplate.common.BaseItemBlockWithMetadata;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class BlockMetalItem.
- * 
  * @author warlordjones
+ *
  */
 public class ItemBlockMetal extends BaseItemBlockWithMetadata
 {
-
-	/**
-	 * Instantiates a new block metal item.
-	 * 
-	 * @param block
-	 *            the block
-	 */
 	public ItemBlockMetal(Block block)
 	{
 		super(block, block);

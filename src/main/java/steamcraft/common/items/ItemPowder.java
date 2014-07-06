@@ -33,12 +33,6 @@ public class ItemPowder extends BaseItemWithMetadata
 	@SideOnly(Side.CLIENT)
 	IIcon[] itemIcon = new IIcon[8];
 
-	public ItemPowder()
-	{
-		super();
-		this.setUnlocalizedName("itemPowder");
-	}
-
 	@SuppressWarnings("all")
 	@Override
 	@SideOnly(Side.CLIENT)
