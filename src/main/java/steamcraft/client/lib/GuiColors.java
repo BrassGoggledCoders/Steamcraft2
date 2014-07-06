@@ -44,9 +44,8 @@ public enum GuiColors
 	}
 	
 	@Override
-	public String toString() 
+	public String toString()
 	{
 		return "\u00a7" + Integer.toHexString(number);
 	}
-	
 }

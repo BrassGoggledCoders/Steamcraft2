@@ -13,6 +13,8 @@
  */
 package steamcraft.client.gui;
 
+import java.util.ArrayList;
+
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.texture.TextureMap;
@@ -21,9 +23,11 @@ import net.minecraft.util.IIcon;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.FluidTank;
 
 import org.lwjgl.opengl.GL11;
 
+import steamcraft.client.lib.GuiColors;
 import steamcraft.common.lib.LibInfo;
 import steamcraft.common.tiles.TileSteamBoiler;
 import steamcraft.common.tiles.container.ContainerSteamBoiler;
@@ -65,6 +69,30 @@ public class GuiSteamBoiler extends GuiContainer
 		mc.renderEngine.bindTexture(guitexture);
 		drawTexturedModalRect(guiLeft + 8, guiTop + 24, 176, 14, 20, 49);
 		drawTexturedModalRect(guiLeft + 74, guiTop + 24, 176, 14, 20, 49);
+	}
+	
+	@Override
+	protected void drawGuiContainerForegroundLayer(int x, int y)
+	{
+		if(y - guiTop >= 18 && y - guiTop <= 78)	
+			if(x - guiLeft >= 8 && x - guiLeft <= 28)
+				drawFluidInfo(tile.waterTank, x, y);
+			else if(x - guiLeft >= 74 && x - guiLeft <= 106)
+				drawFluidInfo(tile.steamTank, x, y);
+	}
+	
+	private void drawFluidInfo(FluidTank tank, int x, int y)
+	{
+		ArrayList<String> lines = new ArrayList<String>();
+		
+		if(tank.getFluid().getFluid() == FluidRegistry.WATER)
+			lines.add(GuiColors.LIGHTBLUE + "Water");
+		else
+			lines.add(GuiColors.GRAY + "Steam");
+		
+		lines.add(tank.getFluidAmount() + "/" + tank.getCapacity());
+		
+		drawHoveringText(lines, x - guiLeft, y - guiTop, fontRendererObj);
 	}
 
 	private void drawFluid(FluidStack fluid, int level, int x, int y, int width, int height)

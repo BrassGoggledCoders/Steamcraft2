@@ -113,7 +113,7 @@ public class TileSteamBoiler extends BaseTileWithInventory implements IFluidHand
 			if ((inventory[2] != null) && (inventory[2].getItem() instanceof ItemCanister))
 			{
 				ItemCanister canister = (ItemCanister) inventory[2].getItem();
-				if ((steamTank.getFluidAmount() > steamPerTick) && (canister.getFluidAmount(inventory[2]) != ItemCanister.MAX_STEAM))
+				if ((steamTank.getFluidAmount() >= steamPerTick) && (canister.getFluidAmount(inventory[2]) != ItemCanister.MAX_STEAM))
 				{
 					canister.fill(inventory[2], new FluidStack(FluidRegistry.getFluid("steam"), steamPerTick), true);
 					steamTank.drain(steamPerTick, true);

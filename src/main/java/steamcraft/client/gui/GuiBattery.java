@@ -41,7 +41,7 @@ public class GuiBattery extends GuiContainer
 	}
 
 	@Override
-	protected void drawGuiContainerBackgroundLayer(float var1, int var2, int var3)
+	protected void drawGuiContainerBackgroundLayer(float var1, int x, int y)
 	{
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 		
@@ -53,7 +53,7 @@ public class GuiBattery extends GuiContainer
 	}
 	
 	@Override
-	protected void drawGuiContainerForegroundLayer(int par1, int par2) 
+	protected void drawGuiContainerForegroundLayer(int x, int y) 
 	{
 		this.drawString(fontRendererObj, "Energy: ", 26, 10, -1);
 		this.drawString(fontRendererObj, getEnergyUnits(tile.getEnergyStored(ForgeDirection.UNKNOWN)) + 
