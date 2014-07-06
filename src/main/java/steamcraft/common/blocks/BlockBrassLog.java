@@ -23,7 +23,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class BlockBrassLog extends BlockLog
 {
@@ -33,22 +33,22 @@ public class BlockBrassLog extends BlockLog
 	public BlockBrassLog(Material p_i45394_1_)
 	{
 		super();
-		setCreativeTab(Steamcraft.tabSC2);
-		setBlockName("blockBrassLog");
+		this.setCreativeTab(Steamcraft.tabSC2);
+		this.setBlockName("blockBrassLog");
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	protected IIcon getSideIcon(int p_150163_1_)
 	{
-		return blockIcon;
+		return this.blockIcon;
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	protected IIcon getTopIcon(int p_150161_1_)
 	{
-		return iconTop;
+		return this.iconTop;
 	}
 
 	@Override
@@ -56,6 +56,6 @@ public class BlockBrassLog extends BlockLog
 	public void registerBlockIcons(final IIconRegister ir)
 	{
 		this.blockIcon = ir.registerIcon(LibInfo.PREFIX + "blockBrassLogSide");
-		iconTop = ir.registerIcon(LibInfo.PREFIX + "blockBrassLogTop");
+		this.iconTop = ir.registerIcon(LibInfo.PREFIX + "blockBrassLogTop");
 	}
 }

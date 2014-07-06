@@ -27,7 +27,6 @@ import steamcraft.common.items.ItemMachinePart;
 import steamcraft.common.items.ItemMatch;
 import steamcraft.common.items.ItemNugget;
 import steamcraft.common.items.ItemParts;
-import steamcraft.common.items.ItemPipe;
 import steamcraft.common.items.ItemPowder;
 import steamcraft.common.items.ItemRayGun;
 import steamcraft.common.items.ItemResource;
@@ -121,8 +120,6 @@ public class ConfigItems
 	public static Item itemEmptyTeacup, itemFullTeacup;
 
 	public static Item itemBucketSteam;
-
-	public static Item itemPipe;
 
 	public static Item itemPoppySeed;
 
@@ -354,9 +351,6 @@ public class ConfigItems
 
 		itemChisel = new ItemChisel().setUnlocalizedName("itemChisel");
 		registerItem(itemChisel, "ItemChisel");
-
-		itemPipe = new ItemPipe();
-		registerItem(itemPipe, "ItemPipe");
 
 		itemPoppySeed = new BaseItem().setUnlocalizedName("itemPoppySeed").setCreativeTab(Steamcraft.tabSC2);
 		registerItem(itemPoppySeed, "ItemPoppySeed");

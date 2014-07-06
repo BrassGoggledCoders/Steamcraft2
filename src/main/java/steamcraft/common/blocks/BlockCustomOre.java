@@ -45,34 +45,30 @@ public class BlockCustomOre extends BaseBlock implements IHammerable
 
 	/*
 	 * (non-Javadoc)
-	 * 
 	 * @see net.minecraft.block.Block#getIcon(int, int)
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(int side, int metadata)
 	{
-		return icon[metadata];
+		return this.icon[metadata];
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * net.minecraft.block.Block#registerBlockIcons(net.minecraft.client.renderer
-	 * .texture.IIconRegister)
+	 * @see net.minecraft.block.Block#registerBlockIcons(net.minecraft.client.renderer .texture.IIconRegister)
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister ir)
 	{
-		icon[0] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "oreAluminum");
-		icon[1] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "oreCopper");
-		icon[2] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "oreTin");
-		icon[3] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "oreZinc");
-		icon[4] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "oreUranite");
-		icon[5] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "oreBrimstone");
-		icon[6] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "orePhosphate");
+		this.icon[0] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "oreAluminum");
+		this.icon[1] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "oreCopper");
+		this.icon[2] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "oreTin");
+		this.icon[3] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "oreZinc");
+		this.icon[4] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "oreUranite");
+		this.icon[5] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "oreBrimstone");
+		this.icon[6] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "orePhosphate");
 	}
 
 	/**
@@ -81,10 +77,10 @@ public class BlockCustomOre extends BaseBlock implements IHammerable
 	public BlockCustomOre()
 	{
 		super(Material.rock);
-		setHardness(3.0F);
-		setResistance(6.0F);
-		setStepSound(Block.soundTypeStone);
-		setTickRandomly(true);
+		this.setHardness(3.0F);
+		this.setResistance(6.0F);
+		this.setStepSound(Block.soundTypeStone);
+		this.setTickRandomly(true);
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })

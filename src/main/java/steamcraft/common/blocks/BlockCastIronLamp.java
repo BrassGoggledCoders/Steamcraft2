@@ -1,5 +1,5 @@
 /**
- * This class was created by <Surseance> or his SC2 development team.
+ * This class was created by BrassGoggledCoders modding team. 
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -8,8 +8,7 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- *
- * File created @ [Apr 5, 2014, 8:29:50 PM]
+ * 
  */
 package steamcraft.common.blocks;
 
@@ -31,148 +30,83 @@ import steamcraft.common.tiles.TileCastIronLamp;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class BlockCastIronLamp.
- *
- * @author Surseance (Johnny Eatmon)
+ * @author Surseance
+ * 
  */
 public class BlockCastIronLamp extends BlockContainer
 {
-
-	/** The powered. */
 	public boolean powered;
-
-	/** The instance. */
 	public static Block instance;
 
-	/**
-	 * Instantiates a new block cast iron lamp.
-	 *
-	 * @param flag
-	 *            the flag
-	 */
-	public BlockCastIronLamp(final boolean flag)
+	public BlockCastIronLamp(boolean flag)
 	{
 		super(Material.circuits);
-		setHardness(0.0F);
-		setResistance(7.5F);
-		powered = flag;
-		setTickRandomly(true);
-		disableStats();
+		this.setHardness(0.0F);
+		this.setResistance(7.5F);
+		this.powered = flag;
+		this.setTickRandomly(true);
+		this.disableStats();
 		final float f = 0.25F;
-		setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, 1.0F, 0.5F + f);
-		setCreativeTab(Steamcraft.tabSC2);
+		this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, 1.0F, 0.5F + f);
+		this.setCreativeTab(Steamcraft.tabSC2);
 
 		if (flag)
 		{
-			setLightLevel(1.0F);
-			setCreativeTab((CreativeTabs) null);
+			this.setLightLevel(1.0F);
+			this.setCreativeTab((CreativeTabs) null);
 		}
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see
-	 * net.minecraft.block.ITileEntityProvider#createNewTileEntity(net.minecraft
-	 * .world.World, int)
-	 */
 	@Override
-	public TileEntity createNewTileEntity(final World world, final int metadata)
+	public TileEntity createNewTileEntity(World world, int metadata)
 	{
 		return new TileCastIronLamp();
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see net.minecraft.block.Block#shouldSideBeRendered(net.minecraft.world.
-	 * IBlockAccess, int, int, int, int)
-	 */
 	@Override
 	public boolean shouldSideBeRendered(final IBlockAccess world, final int x, final int y, final int z, final int side)
 	{
 		return false;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see net.minecraft.block.Block#tickRate(net.minecraft.world.World)
-	 */
 	@Override
 	public int tickRate(final World world)
 	{
 		return 10;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see
-	 * net.minecraft.block.Block#getCollisionBoundingBoxFromPool(net.minecraft
-	 * .world.World, int, int, int)
-	 */
 	@Override
 	public AxisAlignedBB getCollisionBoundingBoxFromPool(final World world, final int x, final int y, final int z)
 	{
 		return null;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see
-	 * net.minecraft.block.Block#getSelectedBoundingBoxFromPool(net.minecraft
-	 * .world.World, int, int, int)
-	 */
 	@Override
 	public AxisAlignedBB getSelectedBoundingBoxFromPool(final World world, final int x, final int y, final int z)
 	{
-		setBlockBoundsBasedOnState(world, x, y, z);
+		this.setBlockBoundsBasedOnState(world, x, y, z);
 		return super.getSelectedBoundingBoxFromPool(world, x, y, z);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see net.minecraft.block.Block#getRenderType()
-	 */
 	@Override
 	public int getRenderType()
 	{
 		return RenderIDs.blockCastIronLampRI;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see net.minecraft.block.Block#renderAsNormalBlock()
-	 */
 	@Override
 	public boolean renderAsNormalBlock()
 	{
 		return false;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see net.minecraft.block.Block#isOpaqueCube()
-	 */
 	@Override
 	public boolean isOpaqueCube()
 	{
 		return false;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see net.minecraft.block.Block#onBlockPlaced(net.minecraft.world.World,
-	 * int, int, int, int, float, float, float, int)
-	 */
 	@Override
 	public int onBlockPlaced(final World world, final int i, final int j, final int k, final int side, final float hitX, final float hitY,
 			final float hitZ, final int metadata)
@@ -193,33 +127,20 @@ public class BlockCastIronLamp extends BlockContainer
 		return metadata;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see net.minecraft.block.Block#canPlaceBlockAt(net.minecraft.world.World,
-	 * int, int, int)
-	 */
 	@Override
 	public boolean canPlaceBlockAt(final World world, final int x, final int y, final int z)
 	{
-		return (world.getBlock(x, y - 1, z) != Blocks.air) ? true : false;
+		return world.getBlock(x, y - 1, z) != Blocks.air ? true : false;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see
-	 * net.minecraft.block.BlockContainer#onBlockAdded(net.minecraft.world.World
-	 * , int, int, int)
-	 */
 	@Override
 	public void onBlockAdded(final World world, final int x, final int y, final int z)
 	{
 		if (!world.isRemote)
 		{
-			if (powered && !world.isBlockIndirectlyGettingPowered(x, y, z))
+			if (this.powered && !world.isBlockIndirectlyGettingPowered(x, y, z))
 				world.scheduleBlockUpdate(x, y, z, this, 4);
-			else if (!powered && world.isBlockIndirectlyGettingPowered(x, y, z))
+			else if (!this.powered && world.isBlockIndirectlyGettingPowered(x, y, z))
 				world.setBlock(x, y, z, ConfigBlocks.blockCastIronLampA, 0, 2);
 			if (world.getBlockMetadata(x, y, z) == 0)
 				super.onBlockAdded(world, x, y, z);
@@ -233,20 +154,13 @@ public class BlockCastIronLamp extends BlockContainer
 			world.notifyBlocksOfNeighborChange(x, y, z, this);
 		}
 
-		dropIfCantStay(world, x, y, z);
+		this.dropIfCantStay(world, x, y, z);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see
-	 * net.minecraft.block.BlockContainer#breakBlock(net.minecraft.world.World,
-	 * int, int, int, net.minecraft.block.Block, int)
-	 */
 	@Override
 	public void breakBlock(final World world, final int x, final int y, final int z, final Block block, final int metadata)
 	{
-		if (powered)
+		if (this.powered)
 		{
 			world.notifyBlocksOfNeighborChange(x, y - 1, z, this);
 			world.notifyBlocksOfNeighborChange(x, y + 1, z, this);
@@ -259,42 +173,29 @@ public class BlockCastIronLamp extends BlockContainer
 		super.breakBlock(world, x, y, z, block, metadata);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see net.minecraft.block.Block#updateTick(net.minecraft.world.World, int,
-	 * int, int, java.util.Random)
-	 */
 	@Override
 	public void updateTick(final World world, final int x, final int y, final int z, final Random random)
 	{
 		super.updateTick(world, x, y, z, random);
 
 		if (world.getBlockMetadata(x, y, z) == 0)
-			onBlockAdded(world, x, y, z);
+			this.onBlockAdded(world, x, y, z);
 
-		if (!world.isRemote && powered && !world.isBlockIndirectlyGettingPowered(x, y, z))
+		if (!world.isRemote && this.powered && !world.isBlockIndirectlyGettingPowered(x, y, z))
 			world.setBlock(x, y, z, ConfigBlocks.blockCastIronLampI, 0, 2);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see
-	 * net.minecraft.block.Block#onNeighborBlockChange(net.minecraft.world.World
-	 * , int, int, int, net.minecraft.block.Block)
-	 */
 	@Override
 	public void onNeighborBlockChange(final World world, final int x, final int y, final int z, final Block block)
 	{
 		if (!world.isRemote)
 		{
-			if (powered && !world.isBlockIndirectlyGettingPowered(x, y, z))
-				world.scheduleBlockUpdate(x, y, z, this, tickRate(world));
-			else if (!powered && world.isBlockIndirectlyGettingPowered(x, y, z))
+			if (this.powered && !world.isBlockIndirectlyGettingPowered(x, y, z))
+				world.scheduleBlockUpdate(x, y, z, this, this.tickRate(world));
+			else if (!this.powered && world.isBlockIndirectlyGettingPowered(x, y, z))
 				world.setBlock(x, y, z, ConfigBlocks.blockCastIronLampA, 0, 2);
 
-			if (dropIfCantStay(world, x, y, z))
+			if (this.dropIfCantStay(world, x, y, z))
 			{
 				final int metadata = world.getBlockMetadata(x, y, z);
 				boolean flag = false;
@@ -321,22 +222,9 @@ public class BlockCastIronLamp extends BlockContainer
 		super.onNeighborBlockChange(world, x, y, z, block);
 	}
 
-	/**
-	 * Drop if cant stay.
-	 *
-	 * @param world
-	 *            the world
-	 * @param x
-	 *            the x
-	 * @param y
-	 *            the y
-	 * @param z
-	 *            the z
-	 * @return true, if successful
-	 */
 	private boolean dropIfCantStay(final World world, final int x, final int y, final int z)
 	{
-		if (!canPlaceBlockAt(world, x, y, z))
+		if (!this.canPlaceBlockAt(world, x, y, z))
 		{
 			this.dropBlockAsItem(world, x, y, z, world.getBlockMetadata(x, y, z), 1);
 			world.setBlockToAir(x, y, z);
@@ -346,53 +234,24 @@ public class BlockCastIronLamp extends BlockContainer
 			return true;
 	}
 
-	// @Override
-	/**
-	 * Id dropped.
-	 *
-	 * @param id
-	 *            the id
-	 * @param random
-	 *            the random
-	 * @param metadata
-	 *            the metadata
-	 * @return the int
-	 */
-	public int idDropped(final int id, final Random random, final int metadata)
-	{
-		return 0;// ConfigBlocks.blockCastIronLampI;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see net.minecraft.block.Block#canProvidePower()
-	 */
 	@Override
 	public boolean canProvidePower()
 	{
 		return false;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see
-	 * net.minecraft.block.Block#randomDisplayTick(net.minecraft.world.World,
-	 * int, int, int, java.util.Random)
-	 */
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(final World world, final int x, final int j, final int z, final Random random)
 	{
-		if (!powered)
+		if (!this.powered)
 			return;
 		else
 		{
 			final int l = world.getBlockMetadata(x, j, z);
-			final double d = x + 0.5F + ((random.nextFloat() - 0.5F) * 0.20000000000000001D);
-			final double d1 = j + 1.0F + ((random.nextFloat() - 0.5F) * 0.20000000000000001D);
-			final double d2 = z + 0.5F + ((random.nextFloat() - 0.5F) * 0.20000000000000001D);
+			final double d = x + 0.5F + (random.nextFloat() - 0.5F) * 0.20000000000000001D;
+			final double d1 = j + 1.0F + (random.nextFloat() - 0.5F) * 0.20000000000000001D;
+			final double d2 = z + 0.5F + (random.nextFloat() - 0.5F) * 0.20000000000000001D;
 			final double d3 = 0.2199999988079071D;
 			final double d4 = 0.27000001072883606D;
 

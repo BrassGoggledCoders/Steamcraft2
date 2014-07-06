@@ -34,7 +34,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 // TODO: Auto-generated Javadoc
 /**
  * The Class BlockEngravedSolid.
- *
+ * 
  * @author Surseance (Johnny Eatmon)
  */
 public class BlockEngravedSolid extends Block
@@ -45,57 +45,53 @@ public class BlockEngravedSolid extends Block
 
 	/*
 	 * (non-Javadoc)
-	 *
 	 * @see net.minecraft.block.Block#getIcon(int, int)
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(int side, int metadata)
 	{
-		return icon[metadata];
+		return this.icon[metadata];
 	}
 
 	/*
 	 * (non-Javadoc)
-	 *
-	 * @see
-	 * net.minecraft.block.Block#registerBlockIcons(net.minecraft.client.renderer
-	 * .texture.IIconRegister)
+	 * @see net.minecraft.block.Block#registerBlockIcons(net.minecraft.client.renderer .texture.IIconRegister)
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister ir)
 	{
-		icon[0] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedAluminum");
-		icon[1] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedCopper");
-		icon[2] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedTin");
-		icon[3] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedZinc");
-		icon[4] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedBrass");
-		icon[5] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedBronze");
-		icon[6] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedSteel");
-		icon[7] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedCastIron");
-		icon[8] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedUranium");
-		icon[9] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedEtherium");
+		this.icon[0] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedAluminum");
+		this.icon[1] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedCopper");
+		this.icon[2] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedTin");
+		this.icon[3] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedZinc");
+		this.icon[4] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedBrass");
+		this.icon[5] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedBronze");
+		this.icon[6] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedSteel");
+		this.icon[7] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedCastIron");
+		this.icon[8] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedUranium");
+		this.icon[9] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedEtherium");
 	}
 
 	/**
 	 * Instantiates a new block engraved solid.
+	 * 
 	 * @param rock
 	 */
 	public BlockEngravedSolid()
 	{
 		super(Material.rock);
-		setBlockName("blockEngravedSolid");
-		setHardness(3.0F);
-		setResistance(15.0F);
-		setStepSound(Block.soundTypeMetal);
-		setTickRandomly(true);
-		setCreativeTab(Steamcraft.tabSC2);
+		this.setBlockName("blockEngravedSolid");
+		this.setHardness(3.0F);
+		this.setResistance(15.0F);
+		this.setStepSound(Block.soundTypeMetal);
+		this.setTickRandomly(true);
+		this.setCreativeTab(Steamcraft.tabSC2);
 	}
 
 	/*
 	 * (non-Javadoc)
-	 *
 	 * @see net.minecraft.block.Block#damageDropped(int)
 	 */
 	@Override
@@ -106,45 +102,37 @@ public class BlockEngravedSolid extends Block
 
 	/*
 	 * (non-Javadoc)
-	 *
-	 * @see
-	 * net.minecraft.block.Block#onEntityCollidedWithBlock(net.minecraft.world
-	 * .World, int, int, int, net.minecraft.entity.Entity)
+	 * @see net.minecraft.block.Block#onEntityCollidedWithBlock(net.minecraft.world .World, int, int, int, net.minecraft.entity.Entity)
 	 */
 	@Override
 	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)
 	{
-	//	if ((world.getBlock(x, y, z) == this) && (world.getBlockMetadata(x, y, z) == 7))
-	//		entity.attackEntityFrom(DamageSource.magic, 1);
+		// if ((world.getBlock(x, y, z) == this) && (world.getBlockMetadata(x, y, z) == 7))
+		// entity.attackEntityFrom(DamageSource.magic, 1);
 	}
 
 	/*
 	 * (non-Javadoc)
-	 *
-	 * @see
-	 * net.minecraft.block.Block#randomDisplayTick(net.minecraft.world.World,
-	 * int, int, int, java.util.Random)
+	 * @see net.minecraft.block.Block#randomDisplayTick(net.minecraft.world.World, int, int, int, java.util.Random)
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(World world, int x, int y, int z, Random random)
 	{
-	//	if ((world.getBlock(x, y, z) == this) && (world.getBlockMetadata(x, y, z) == 7))
-	//		EffectUtils.sparkle(world, x, y, z, "reddust");
+		// if ((world.getBlock(x, y, z) == this) && (world.getBlockMetadata(x, y, z) == 7))
+		// EffectUtils.sparkle(world, x, y, z, "reddust");
 	}
 
 	/*
 	 * (non-Javadoc)
-	 *
-	 * @see net.minecraft.item.Item#getSubItems(net.minecraft.item.Item,
-	 * net.minecraft.creativetab.CreativeTabs, java.util.List)
+	 * @see net.minecraft.item.Item#getSubItems(net.minecraft.item.Item, net.minecraft.creativetab.CreativeTabs, java.util.List)
 	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(Item item, CreativeTabs tab, List l)
 	{
-		for (int var4 = 0; var4 < icon.length; ++var4)
+		for (int var4 = 0; var4 < this.icon.length; ++var4)
 			l.add(new ItemStack(ConfigBlocks.blockEngraved, 1, var4));
 	}
 

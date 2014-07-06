@@ -22,20 +22,20 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author Surseance
- *
+ * 
  */
 public class BaseBlock extends Block
 {
 	public BaseBlock(Material p_i45394_1_)
 	{
 		super(p_i45394_1_);
-		setCreativeTab(Steamcraft.tabSC2);
+		this.setCreativeTab(Steamcraft.tabSC2);
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister ir)
 	{
-		blockIcon = ir.registerIcon(LibInfo.PREFIX + getUnlocalizedName().substring(5));
+		this.blockIcon = ir.registerIcon(LibInfo.PREFIX + this.getUnlocalizedName().substring(5));
 	}
 }

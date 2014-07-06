@@ -32,7 +32,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 // TODO: Auto-generated Javadoc
 /**
  * The Class BlockMetal.
- *
+ * 
  * @author warlordjones
  */
 public class BlockMetal extends Block implements IChiselable
@@ -46,35 +46,31 @@ public class BlockMetal extends Block implements IChiselable
 
 	/*
 	 * (non-Javadoc)
-	 *
-	 * @see
-	 * net.minecraft.block.Block#registerBlockIcons(net.minecraft.client.renderer
-	 * .texture.IIconRegister)
+	 * @see net.minecraft.block.Block#registerBlockIcons(net.minecraft.client.renderer .texture.IIconRegister)
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(final IIconRegister ir)
 	{
-		icon[0] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockAluminum");
-		icon[1] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockCopper");
-		icon[2] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockTin");
-		icon[3] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockZinc");
-		icon[4] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockBrass");
-		icon[5] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockBronze");
-		icon[6] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockSteel");
-		icon[7] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockCastIron");
+		this.icon[0] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockAluminum");
+		this.icon[1] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockCopper");
+		this.icon[2] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockTin");
+		this.icon[3] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockZinc");
+		this.icon[4] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockBrass");
+		this.icon[5] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockBronze");
+		this.icon[6] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockSteel");
+		this.icon[7] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockCastIron");
 	}
 
 	/*
 	 * (non-Javadoc)
-	 *
 	 * @see net.minecraft.block.Block#getIcon(int, int)
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(final int side, final int metadata)
 	{
-		return icon[metadata];
+		return this.icon[metadata];
 	}
 
 	/**
@@ -83,22 +79,23 @@ public class BlockMetal extends Block implements IChiselable
 	public BlockMetal()
 	{
 		super(Material.iron);
-		setBlockName("blockMetal");
-		setHardness(3.0F);
-		setResistance(10.0F);
-		setStepSound(Block.soundTypeMetal);
-		setTickRandomly(true);
-		setCreativeTab(Steamcraft.tabSC2);
+		this.setBlockName("blockMetal");
+		this.setHardness(3.0F);
+		this.setResistance(10.0F);
+		this.setStepSound(Block.soundTypeMetal);
+		this.setTickRandomly(true);
+		this.setCreativeTab(Steamcraft.tabSC2);
 
-		if (powered)
-			setLightLevel(0.98F);
+		if (this.powered)
+			this.setLightLevel(0.98F);
 	}
+
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(final Item item, final CreativeTabs tab, final List l)
 	{
-		for (int var4 = 0; var4 < icon.length; ++var4)
+		for (int var4 = 0; var4 < this.icon.length; ++var4)
 			l.add(new ItemStack(ConfigBlocks.blockMetal, 1, var4));
 	}
 

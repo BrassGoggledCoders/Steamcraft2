@@ -1,5 +1,5 @@
 /**
- * This class was created by <Surseance> or his SC2 development team.
+ * This class was created by BrassGoggledCoders modding team. 
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -8,8 +8,7 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- *
- * File created @ [3/15/14, 11:32]
+ * 
  */
 package steamcraft.common.blocks;
 
@@ -21,20 +20,21 @@ import steamcraft.common.config.ConfigBlocks;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class BlockCastIronGate.
+ * @author Surseance
  * 
- * @author Surseance (Johnny Eatmon)
  */
 public class BlockCastIronGate extends BlockFenceGate
 {
+	public BlockCastIronGate()
+	{
+		this.setBlockName("blockCastIronGate");
+		this.setHardness(7.0F);
+		this.setResistance(20.0F);
+		this.setStepSound(Block.soundTypeMetal);
+		this.setCreativeTab(Steamcraft.tabSC2);
+	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see net.minecraft.block.BlockFenceGate#getIcon(int, int)
-	 */
 	@Override
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(final int side, final int metadata)
@@ -42,15 +42,4 @@ public class BlockCastIronGate extends BlockFenceGate
 		return ConfigBlocks.blockCastIronFence.getBlockTextureFromSide(side);
 	}
 
-	/**
-	 * Instantiates a new block cast iron gate.
-	 */
-	public BlockCastIronGate()
-	{
-		setBlockName("blockCastIronGate");
-		setHardness(7.0F);
-		setResistance(20.0F);
-		setStepSound(Block.soundTypeMetal);
-		setCreativeTab(Steamcraft.tabSC2);
-	}
 }

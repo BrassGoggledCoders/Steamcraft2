@@ -22,7 +22,6 @@ import steamcraft.common.blocks.BlockBrassLog;
 import steamcraft.common.blocks.BlockCastIronFence;
 import steamcraft.common.blocks.BlockCastIronGate;
 import steamcraft.common.blocks.BlockCastIronLamp;
-import steamcraft.common.blocks.BlockCastIronRailing;
 import steamcraft.common.blocks.BlockCopperWire;
 import steamcraft.common.blocks.BlockCrystal;
 import steamcraft.common.blocks.BlockCustomOre;
@@ -78,7 +77,7 @@ public class ConfigBlocks
 
 	// Cast Iron
 	public static Block blockCastIronLampI, blockCastIronLampA;
-	public static Block blockCastIronFence, blockCastIronGate, blockCastIronRailing;
+	public static Block blockCastIronFence, blockCastIronGate;
 
 	public static Block blockLamp;
 
@@ -164,11 +163,9 @@ public class ConfigBlocks
 
 		blockCastIronFence = new BlockCastIronFence();
 		blockCastIronGate = new BlockCastIronGate();
-		blockCastIronRailing = new BlockCastIronRailing(Material.iron);
 
 		GameRegistry.registerBlock(blockCastIronFence, "BlockCastIronFence");
 		GameRegistry.registerBlock(blockCastIronGate, "BlockCastIronGate");
-		GameRegistry.registerBlock(blockCastIronRailing, "BlockCaseIronRailing");
 
 		blockLamp = new BlockLamp();
 
