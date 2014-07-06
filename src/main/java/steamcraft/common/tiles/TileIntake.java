@@ -1,5 +1,5 @@
 /**
- * This class was created by BrassGoggledCoders modding team.
+ * This class was created by BrassGoggledCoders modding team. 
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -8,8 +8,7 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- *
- * File created @ [Jun 23, 2014, 10:51:48 PM]
+ * 
  */
 package steamcraft.common.tiles;
 
@@ -33,7 +32,7 @@ import steamcraft.common.lib.LibInfo;
  */
 public class TileIntake extends TileEntity implements IFluidHandler
 {
-	private static byte waterPerTick = 25; //Same as TE Aqueous Accumulator?
+	private static byte waterPerTick = 25; //Same as TE Aqueous Accumulator
 	private static byte exportAmountPerTick = 25;
 
 	private FluidTank waterTank;

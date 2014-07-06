@@ -8,8 +8,7 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- *
- * File created @ [Jun 30, 2014, 11:10:41 PM]
+ * 
  */
 package steamcraft.common.tiles;
 
@@ -34,7 +33,7 @@ import cofh.api.energy.IEnergyHandler;
 public class TileTurbine extends TileEntity implements IFluidHandler, IEnergyHandler
 {
 	private static byte steamPerTick = TileSteamBoiler.steamPerTick/2;
-	private static byte RFPerTick = 100; //Same as RC ratio of 1 MJ/5 steam
+	private static byte RFPerTick = 20; //Same as RC ratio of 1 MJ/5 steam
 	
 	private FluidTank steamTank = new FluidTank(new FluidStack(FluidRegistry.getFluid("steam"), 0), 10000);
 	
