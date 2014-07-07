@@ -1,7 +1,11 @@
 package steamcraft.common.items;
 
+import java.util.List;
+
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import steamcraft.common.config.ConfigItems;
@@ -10,13 +14,13 @@ import boilerplate.common.utils.ItemStackUtils;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemTeapot extends BaseItem
+public class ItemTeapot extends BaseItemWithMetadata
 {
+
 	public ItemTeapot()
 	{
 		super();
-		this.maxStackSize = 1;
-		this.setMaxDamage(10);
+		this.setMaxStackSize(1);
 		this.setNoRepair();
 		this.setFull3D();
 	}
@@ -25,7 +29,7 @@ public class ItemTeapot extends BaseItem
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister icon)
 	{
-		this.itemIcon = icon.registerIcon(LibInfo.ID + ":" + this.getUnlocalizedName().substring(5));
+		this.itemIcon = icon.registerIcon(LibInfo.PREFIX + this.getUnlocalizedName().substring(5));
 	}
 
 	@Override
@@ -35,15 +39,45 @@ public class ItemTeapot extends BaseItem
 			if(player.inventory.hasItem(ConfigItems.itemTeacup))
 			{
 				ItemStack itemstack = player.inventory.getStackInSlot(ItemStackUtils.getStackPosition(player.inventory, ConfigItems.itemTeacup));
-				if(itemstack.getItemDamage() < 2)
+				if(itemstack.getItemDamage() == 0)
 				{
-					int meta = itemstack.getItemDamage() + 1;
 					player.inventory.consumeInventoryItem(itemstack.getItem());
-					player.inventory.addItemStackToInventory(new ItemStack(ConfigItems.itemTeacup, 1, meta));
-					stack.damageItem(1, player);
+					player.inventory.addItemStackToInventory(new ItemStack(ConfigItems.itemTeacup, 1, 10));
+					//TODO
+					stack.setItemDamage(stack.getItemDamage() - 1);
 				}
 			}
 
 		return stack;
+	}
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void getSubItems(Item item, CreativeTabs tab, List l)
+	{
+		for (int var4 = 0; var4 < 13; ++var4)
+			l.add(new ItemStack(ConfigItems.itemTeapot, 1, var4));
+	}
+	@Override
+	// TODO: Make module-sensitive
+	public void addInformation(ItemStack stack, EntityPlayer player, List l, boolean flag)
+	{
+		if(stack.getItemDamage() == 0)
+		{
+			l.add("Empty");
+		}
+		else if(stack.getItemDamage() == 1)
+		{
+			l.add("Filled with Water");
+		}
+		else if(stack.getItemDamage() == 2)
+		{
+			l.add("Filled with Boiling Water");
+		}
+		else
+		{
+			l.add("Filled with Tea");
+			l.add(stack.getItemDamage()-2 + " cups remaining");
+		}
 	}
 }

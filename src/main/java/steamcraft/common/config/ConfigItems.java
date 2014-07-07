@@ -22,7 +22,6 @@ import steamcraft.common.items.ItemElectricJar;
 import steamcraft.common.items.ItemFirearm;
 import steamcraft.common.items.ItemGunPart;
 import steamcraft.common.items.ItemIngot;
-import steamcraft.common.items.ItemKettle;
 import steamcraft.common.items.ItemLightningGun;
 import steamcraft.common.items.ItemMachinePart;
 import steamcraft.common.items.ItemMatch;
@@ -145,7 +144,8 @@ public class ConfigItems
 	//Modules
 	public static Item itemAqualung;
 
-	public static Item itemKettle, itemTeapot, itemTeacup;
+	//Craft Teapot. Fill teapot with water. Add tealeaves. Craft cup. Right click with pot to fill cup.
+	public static Item itemTeapot, itemTeacup;
 
 	/* Init */
 	public static void init()
@@ -383,11 +383,9 @@ public class ConfigItems
 		itemTeaLeaf = new BaseItem().setUnlocalizedName("itemTeaLeaves");
 		registerItem(itemTeaLeaf, "ItemTeaLeaf");
 
-		itemKettle = new ItemKettle().setUnlocalizedName("itemKettle");
 		itemTeapot = new ItemTeapot().setUnlocalizedName("itemTeapot");
 		itemTeacup = new ItemTeacup().setUnlocalizedName("itemTeacup");
 
-		registerItem(itemKettle, "ItemKettle");
 		registerItem(itemTeapot, "ItemTeapot");
 		registerItem(itemTeacup, "ItemTeacup");
 	}

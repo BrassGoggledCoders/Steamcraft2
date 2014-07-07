@@ -270,12 +270,12 @@ public class ConfigRecipes
 		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.itemWatch), new Object[] { "SPS", "PMP", "SPS", 'P', Blocks.glass_pane, 'M',
 				new ItemStack(ConfigItems.itemMachinePart, 1, 1), 'S', new ItemStack(ConfigItems.itemSheet, 1, 4) });
 
-		GameRegistry.addRecipe(new ItemStack(ConfigItems.itemKettle, 1, 0), " CC", "CCC", " CC", 'C', new ItemStack(ConfigItems.itemIngot, 1, 7));
-		GameRegistry.addRecipe(new ItemStack(ConfigItems.itemKettle, 1, 10), "LLL","WKW","LLL", 'K', new ItemStack(ConfigItems.itemKettle), 'W', Items.water_bucket, 'L', ConfigItems.itemTeaLeaf);
+/*		GameRegistry.addRecipe(new ItemStack(ConfigItems.itemKettle, 1, 1), " CC", "CCC", " CC", 'C', new ItemStack(ConfigItems.itemIngot, 1, 7));
+		GameRegistry.addRecipe(new ItemStack(ConfigItems.itemKettle, 1, 11), "LLL","WKW","LLL", 'K', new ItemStack(ConfigItems.itemKettle, 1, 1), 'W', Items.water_bucket, 'L', ConfigItems.itemTeaLeaf);
 
-		GameRegistry.addRecipe(new ItemStack(ConfigItems.itemTeapot, 1, 10), "KT", 'K', new ItemStack(ConfigItems.itemKettle, 1, 10), 'T', new ItemStack(ConfigItems.itemTeapot,1, 0));
+		GameRegistry.addRecipe(new ItemStack(ConfigItems.itemTeapot, 1, 11), "KT", 'K', new ItemStack(ConfigItems.itemKettle, 1, 11), 'T', new ItemStack(ConfigItems.itemTeapot,1, 1));
 
-		GameRegistry.addRecipe(new ItemStack(ConfigItems.itemTeacup, 1, 0), "B B", " B ", 'B', Items.brick);
+		GameRegistry.addRecipe(new ItemStack(ConfigItems.itemTeacup, 1, 1), "B B", " B ", 'B', Items.brick);*/
 	}
 
 	public static void initializeSmeltingRecipes()
