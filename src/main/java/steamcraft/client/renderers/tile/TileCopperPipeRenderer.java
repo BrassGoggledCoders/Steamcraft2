@@ -49,16 +49,17 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 		ForgeDirection opposite = pipe.onlyOneOpposite(); 
 		
 		if(opposite!=null)
-		{
 			drawStraightConnection(opposite);
-		}
 		else
 		{
 			drawCore(pipe);
 
 			for(ForgeDirection dir : pipe.connections)
 				if(dir!=null)
-					drawConnection(dir);
+					if(pipe.canChangeState(dir) && pipe.isExtracting)
+						drawAlternateConnection(dir);
+					else
+						drawConnection(dir);
 		}
 		
 		GL11.glEnable(GL11.GL_LIGHTING);
@@ -144,6 +145,112 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 		GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
 	}
 	
+	private void drawAlternateConnection(ForgeDirection dir)
+	{
+		Tessellator tess = Tessellator.instance;
+		
+		tess.startDrawingQuads();
+		{
+			GL11.glTranslatef(0.5F, 0.5F, 0.5F);
+			if(dir == ForgeDirection.UP)
+			{
+				//ROTATE
+			}
+			else if(dir == ForgeDirection.DOWN)
+			{
+				GL11.glRotatef(180, 1, 0, 0);
+			}
+			else if(dir == ForgeDirection.SOUTH)
+			{
+				GL11.glRotatef(90, 1, 0, 0);
+			}
+			else if(dir == ForgeDirection.NORTH)
+			{
+				GL11.glRotatef(270, 1, 0, 0);
+			}
+			else if(dir == ForgeDirection.WEST)
+			{
+				GL11.glRotatef(90, 0, 0, 1);
+			}
+			else if(dir == ForgeDirection.EAST)
+			{
+				GL11.glRotatef(270, 0, 0, 1);
+			}
+			GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
+			
+			tess.addVertexWithUV(1-12*pixel, 1-12*pixel, 1-12*pixel, 0*tPixel, 6*tPixel);
+			tess.addVertexWithUV(1-12*pixel, 1, 1-12*pixel, 6*tPixel, 6*tPixel);
+			tess.addVertexWithUV(12*pixel, 1, 1-12*pixel, 6*tPixel, 0*tPixel);
+			tess.addVertexWithUV(12*pixel, 1-12*pixel, 1-12*pixel, 0*tPixel, 0*tPixel);
+			
+			tess.addVertexWithUV(12*pixel, 1-12*pixel, 12*pixel, 0*tPixel, 0*tPixel);
+			tess.addVertexWithUV(12*pixel, 1, 12*pixel, 6*tPixel, 0*tPixel);
+			tess.addVertexWithUV(1-12*pixel, 1, 12*pixel, 6*tPixel, 6*tPixel);
+			tess.addVertexWithUV(1-12*pixel, 1-12*pixel, 12*pixel, 0*tPixel, 6*tPixel);
+			
+			tess.addVertexWithUV(1-12*pixel, 1-12*pixel, 12*pixel, 0*tPixel, 0*tPixel);
+			tess.addVertexWithUV(1-12*pixel, 1, 12*pixel, 6*tPixel, 0*tPixel);
+			tess.addVertexWithUV(1-12*pixel, 1, 1-12*pixel, 6*tPixel, 6*tPixel);
+			tess.addVertexWithUV(1-12*pixel, 1-12*pixel, 1-12*pixel, 0*tPixel, 6*tPixel);
+			
+			tess.addVertexWithUV(12*pixel, 1-12*pixel, 1-12*pixel, 0*tPixel, 6*tPixel);
+			tess.addVertexWithUV(12*pixel, 1, 1-12*pixel, 6*tPixel, 6*tPixel);
+			tess.addVertexWithUV(12*pixel, 1, 12*pixel, 6*tPixel, 0*tPixel);
+			tess.addVertexWithUV(12*pixel, 1-12*pixel, 12*pixel, 0*tPixel, 0*tPixel);
+			
+			if(drawInside)
+			{
+				tess.addVertexWithUV(12*pixel, 1-12*pixel, 1-12*pixel, 0*tPixel, 0*tPixel);
+				tess.addVertexWithUV(12*pixel, 1, 1-12*pixel, 6*tPixel, 0*tPixel);
+				tess.addVertexWithUV(1-12*pixel, 1, 1-12*pixel, 6*tPixel, 6*tPixel);
+				tess.addVertexWithUV(1-12*pixel, 1-12*pixel, 1-12*pixel, 0*tPixel, 6*tPixel);
+				
+				tess.addVertexWithUV(1-12*pixel, 1-12*pixel, 12*pixel, 0*tPixel, 6*tPixel);
+				tess.addVertexWithUV(1-12*pixel, 1, 12*pixel, 6*tPixel, 6*tPixel);
+				tess.addVertexWithUV(12*pixel, 1, 12*pixel, 6*tPixel, 0*tPixel);
+				tess.addVertexWithUV(12*pixel, 1-12*pixel, 12*pixel, 0*tPixel, 0*tPixel);
+				
+				tess.addVertexWithUV(1-12*pixel, 1-12*pixel, 1-12*pixel, 0*tPixel, 6*tPixel);
+				tess.addVertexWithUV(1-12*pixel, 1, 1-12*pixel, 6*tPixel, 6*tPixel);
+				tess.addVertexWithUV(1-12*pixel, 1, 12*pixel, 6*tPixel, 0*tPixel);
+				tess.addVertexWithUV(1-12*pixel, 1-12*pixel, 12*pixel, 0*tPixel, 0*tPixel);
+				
+				tess.addVertexWithUV(12*pixel, 1-12*pixel, 12*pixel, 0*tPixel, 0*tPixel);
+				tess.addVertexWithUV(12*pixel, 1, 12*pixel, 6*tPixel, 0*tPixel);
+				tess.addVertexWithUV(12*pixel, 1, 1-12*pixel, 6*tPixel, 6*tPixel);
+				tess.addVertexWithUV(12*pixel, 1-12*pixel, 1-12*pixel, 0*tPixel, 6*tPixel);
+			}
+		}
+		
+		tess.draw();
+		
+		GL11.glTranslatef(0.5F, 0.5F, 0.5F);
+		if(dir == ForgeDirection.UP)
+		{
+			//ROTATE
+		}
+		else if(dir == ForgeDirection.DOWN)
+		{
+			GL11.glRotatef(-180, 1, 0, 0);
+		}
+		else if(dir == ForgeDirection.SOUTH)
+		{
+			GL11.glRotatef(-90, 1, 0, 0);
+		}
+		else if(dir == ForgeDirection.NORTH)
+		{
+			GL11.glRotatef(-270, 1, 0, 0);
+		}
+		else if(dir == ForgeDirection.WEST)
+		{
+			GL11.glRotatef(-90, 0, 0, 1);
+		}
+		else if(dir == ForgeDirection.EAST)
+		{
+			GL11.glRotatef(-270, 0, 0, 1);
+		}
+		GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
+	}
 	private void drawConnection(ForgeDirection dir)
 	{
 		Tessellator tess = Tessellator.instance;

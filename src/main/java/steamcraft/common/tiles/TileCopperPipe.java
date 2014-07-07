@@ -14,6 +14,7 @@ package steamcraft.common.tiles;
 
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
+import net.minecraftforge.fluids.IFluidHandler;
 import steamcraft.common.config.ConfigBlocks;
 
 /**
@@ -22,45 +23,74 @@ import steamcraft.common.config.ConfigBlocks;
  */
 public class TileCopperPipe extends TileEntity
 {
+	public boolean isExtracting = false;
+	
 	public ForgeDirection[] connections = new ForgeDirection[6];
 
+	public TileCopperPipe()
+	{
+		//this.updateConnections();
+	}
+	
 	@Override
 	public void updateEntity()
 	{
-		//updateConnections();
+	}
+	
+	public void changeExtracting(boolean val)
+	{
+		this.isExtracting = val;
 	}
 	
 	public void updateConnections()
 	{
-		if(worldObj.getBlock(xCoord, yCoord + 1, zCoord) == ConfigBlocks.blockCopperPipe)
+		if(canConnect(xCoord, yCoord + 1, zCoord))
 			connections[0] = ForgeDirection.UP;
 		else
 			connections[0] = null;
 		
-		if(worldObj.getBlock(xCoord, yCoord - 1, zCoord) == ConfigBlocks.blockCopperPipe)
+		if(canConnect(xCoord, yCoord - 1, zCoord))
 			connections[1] = ForgeDirection.DOWN;
 		else
 			connections[1] = null;
 		
-		if(worldObj.getBlock(xCoord, yCoord, zCoord + 1) == ConfigBlocks.blockCopperPipe)
+		if(canConnect(xCoord, yCoord, zCoord + 1))
 			connections[2] = ForgeDirection.SOUTH;
 		else
 			connections[2] = null;
 		
-		if(worldObj.getBlock(xCoord, yCoord, zCoord - 1) == ConfigBlocks.blockCopperPipe)
+		if(canConnect(xCoord, yCoord, zCoord - 1))
 			connections[3] = ForgeDirection.NORTH;
 		else
 			connections[3] = null;
 		
-		if(worldObj.getBlock(xCoord + 1, yCoord, zCoord) == ConfigBlocks.blockCopperPipe)
+		if(canConnect(xCoord + 1, yCoord, zCoord))
 			connections[4] = ForgeDirection.EAST;
 		else
 			connections[4] = null;
 		
-		if(worldObj.getBlock(xCoord - 1, yCoord, zCoord) == ConfigBlocks.blockCopperPipe)
+		if(canConnect(xCoord - 1, yCoord, zCoord))
 			connections[5] = ForgeDirection.WEST;
 		else
 			connections[5] = null;
+	}
+	
+	private boolean canConnect(int x, int y, int z)
+	{
+		return worldObj.getBlock(x, y, z) == ConfigBlocks.blockCopperPipe || isFluidHandler(x, y, z);
+	}
+	
+	private boolean isFluidHandler(int x, int y, int z)
+	{
+		return worldObj.getTileEntity(x, y, z) instanceof IFluidHandler;
+	}
+	
+	public boolean canChangeState(ForgeDirection dir)
+	{
+		if(worldObj.getBlock(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ) != ConfigBlocks.blockCopperPipe &&
+				isFluidHandler(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ))
+			return true;
+		return false;
 	}
 	
 	public ForgeDirection onlyOneOpposite()

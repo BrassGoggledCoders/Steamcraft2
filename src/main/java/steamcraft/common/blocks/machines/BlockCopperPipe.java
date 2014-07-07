@@ -13,6 +13,8 @@
 package steamcraft.common.blocks.machines;
 
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.IBlockAccess;
@@ -57,6 +59,17 @@ public class BlockCopperPipe extends BlockContainerMod
 	public int getRenderType()
 	{
 		return -1;
+	}
+	
+	@Override
+	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entityLiving, ItemStack is)
+	{
+		super.onBlockPlacedBy(world, x, y, z, entityLiving, is);
+
+		TileCopperPipe tile = (TileCopperPipe) world.getTileEntity(x, y, z);
+		
+		if(tile!=null)
+			tile.updateConnections();
 	}
 	
 	@Override
