@@ -270,12 +270,11 @@ public class ConfigRecipes
 		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.itemWatch), new Object[] { "SPS", "PMP", "SPS", 'P', Blocks.glass_pane, 'M',
 				new ItemStack(ConfigItems.itemMachinePart, 1, 1), 'S', new ItemStack(ConfigItems.itemSheet, 1, 4) });
 
-/*		GameRegistry.addRecipe(new ItemStack(ConfigItems.itemKettle, 1, 1), " CC", "CCC", " CC", 'C', new ItemStack(ConfigItems.itemIngot, 1, 7));
-		GameRegistry.addRecipe(new ItemStack(ConfigItems.itemKettle, 1, 11), "LLL","WKW","LLL", 'K', new ItemStack(ConfigItems.itemKettle, 1, 1), 'W', Items.water_bucket, 'L', ConfigItems.itemTeaLeaf);
+		GameRegistry.addRecipe(new ItemStack(ConfigItems.itemTeapot, 1, 0), "BB ", "B B", "BB ", 'B', Items.brick);
+		GameRegistry.addRecipe(new ItemStack(ConfigItems.itemTeapot, 1, 1), "PW", 'W', Items.water_bucket, 'P', new ItemStack(ConfigItems.itemTeapot, 1, 0));
+		GameRegistry.addRecipe(new ItemStack(ConfigItems.itemTeapot, 1, 3), "LLL","LPL","LLL", 'P', new ItemStack(ConfigItems.itemTeapot, 1, 2), 'L', ConfigItems.itemTeaLeaf);
 
-		GameRegistry.addRecipe(new ItemStack(ConfigItems.itemTeapot, 1, 11), "KT", 'K', new ItemStack(ConfigItems.itemKettle, 1, 11), 'T', new ItemStack(ConfigItems.itemTeapot,1, 1));
-
-		GameRegistry.addRecipe(new ItemStack(ConfigItems.itemTeacup, 1, 1), "B B", " B ", 'B', Items.brick);*/
+		GameRegistry.addRecipe(new ItemStack(ConfigItems.itemTeacup, 1, 1), "B B", " B ", 'B', Items.brick);
 	}
 
 	public static void initializeSmeltingRecipes()
@@ -294,6 +293,8 @@ public class ConfigRecipes
 		GameRegistry.addSmelting(new ItemStack(ConfigBlocks.blockSlate, 1, 3), new ItemStack(ConfigBlocks.blockSlate, 1, 0), 0.3F);
 		GameRegistry.addSmelting(new ItemStack(ConfigBlocks.blockSlate, 1, 4), new ItemStack(ConfigBlocks.blockSlate, 1, 1), 0.3F);
 		GameRegistry.addSmelting(new ItemStack(ConfigBlocks.blockSlate, 1, 5), new ItemStack(ConfigBlocks.blockSlate, 1, 2), 0.3F);
+
+		GameRegistry.addSmelting(new ItemStack(ConfigItems.itemTeapot, 1, 1), new ItemStack(ConfigItems.itemTeapot, 1, 2), 0);
 	}
 
 }
