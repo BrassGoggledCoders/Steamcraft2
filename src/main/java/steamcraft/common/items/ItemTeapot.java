@@ -80,6 +80,8 @@ public class ItemTeapot extends BaseItemWithMetadata
 		{
 			l.add("Filled with Tea");
 			l.add(stack.getItemDamage()-2 + " cups remaining");
+			l.add("Right-click with this to fill");
+			l.add("teacups in your inventory");
 		}
 	}
 	@Override
