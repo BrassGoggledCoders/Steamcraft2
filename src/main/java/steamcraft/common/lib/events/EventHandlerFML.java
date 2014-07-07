@@ -1,5 +1,5 @@
 /**
- * This class was created by BrassGoggledCoders modding team. 
+ * This class was created by BrassGoggledCoders modding team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -8,7 +8,7 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- * 
+ *
  */
 package steamcraft.common.lib.events;
 
@@ -26,11 +26,14 @@ import steamcraft.common.blocks.machines.BlockIntake;
 import steamcraft.common.blocks.machines.BlockSteamBoiler;
 import steamcraft.common.config.Config;
 import steamcraft.common.config.ConfigAchievements;
+import steamcraft.common.config.ConfigItems;
 import steamcraft.common.config.ConfigKeyBindings;
 import steamcraft.common.items.ItemIngot;
 import steamcraft.common.items.ItemRayGun;
 import steamcraft.common.items.ItemSheet;
 import steamcraft.common.items.ItemShrinkray;
+import steamcraft.common.items.armor.ItemClockworkWings;
+import steamcraft.common.items.armor.ItemSteamJetpack;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.InputEvent.KeyInputEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent;
@@ -39,7 +42,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 public class EventHandlerFML
 {
@@ -58,10 +61,17 @@ public class EventHandlerFML
 			event.player.addStat(ConfigAchievements.intakeAchieve, 1);
 		else if (event.crafting.getItem() instanceof ItemSheet)
 			event.player.addStat(ConfigAchievements.sheetAchieve, 1);
+		else if (event.crafting.getItem() instanceof ItemClockworkWings)
+			event.player.addStat(ConfigAchievements.wingsAchieve,1);
+		else if (event.crafting.getItem() instanceof ItemSteamJetpack)
+			event.player.addStat(ConfigAchievements.jetpackAchieve,1);
+		//TODO Dosn't work!
+		else if (event.crafting.getItem().equals(ConfigItems.itemSteamWingpack))
+			event.player.addStat(ConfigAchievements.wingpackAchieve,1);
 	}
 
 	@SubscribeEvent
-	public void onItemCrafted(PlayerEvent.ItemSmeltedEvent event)
+	public void onItemSmelted(PlayerEvent.ItemSmeltedEvent event)
 	{
 		if (event.smelting.getItem() instanceof ItemIngot)
 			event.player.addStat(ConfigAchievements.ingotAchieve, 1);

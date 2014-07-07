@@ -320,6 +320,12 @@ achievement.sheetachieve=P-TANG!
 achievement.sheetachieve.desc=Flatten and Crush
 achievement.teaachieve=Time for a Cuppa!
 achievement.teaachieve.desc=Slurp
+achievement.wingsachieve=Flappy Flap
+achievement.wingsachieve.desc=Be a flappy bird!
+achievement.jetpackachieve=Rocketman!
+achievement.jetpackachieve.desc=Woosh!
+achievement.wingpackachieve=Flap Woosh
+achievement.wingpackachieve.desc=Be a flappy bird with a rocket attached!
 #Damage Sources
 death.attack.steamcraft2.electrocution=%1$s was electrocuted!
 death.attack.steamcraft2.electrocution.player=%1$s was electrocuted!
