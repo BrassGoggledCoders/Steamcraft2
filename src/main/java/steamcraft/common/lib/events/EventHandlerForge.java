@@ -122,13 +122,20 @@ public class EventHandlerForge
 				res.getScaledWidth();
 				res.getScaledHeight();
 				mc.entityRenderer.setupOverlayRendering();
-				String text = "Name: " + this.block.getLocalizedName();
+				//String text = "Name: " + this.block.getLocalizedName().substring(5);
 				int posX = 5;
 				int posY = 5;
 				int posY2 = 15;
+				int posY3 = 25;
+				int posY4 = 35;
+				int posY5 = 45;
 				int color = 0xCCFF00;
-				fontRenderer.drawString(text, posX, posY, color);
-				fontRenderer.drawString("Block: " + this.block.getUnlocalizedName(), posX, posY2, color);
+				//fontRenderer.drawString(text, posX, posY, color);
+				fontRenderer.drawString("Block: " + this.block.getUnlocalizedName().substring(5), posX, posY, color);
+				fontRenderer.drawString("Metadata: " + this.block.getDamageValue(mc.theWorld, x, y, z), posX, posY2, color);
+				fontRenderer.drawString("Hardness: " + this.block.getBlockHardness(mc.theWorld, x, y, z), posX, posY3, color);
+				fontRenderer.drawString("Light Value: " + this.block.getLightValue(), posX, posY4, color);
+				//fontRenderer.drawString("Material: " + this.block.getMaterial(), posX, posY5, color);
 			}
 		//}
 	}
