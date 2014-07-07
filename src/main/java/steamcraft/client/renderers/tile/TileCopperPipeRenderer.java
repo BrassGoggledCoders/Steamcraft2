@@ -56,7 +56,7 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 
 			for(ForgeDirection dir : pipe.connections)
 				if(dir!=null)
-					if(pipe.canChangeState(dir) && pipe.isExtracting)
+					if(pipe.extract == dir)
 						drawAlternateConnection(dir);
 					else
 						drawConnection(dir);

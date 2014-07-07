@@ -12,8 +12,13 @@
  */
 package steamcraft.common.tiles;
 
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
+import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.FluidTank;
+import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
 import steamcraft.common.config.ConfigBlocks;
 
@@ -21,9 +26,11 @@ import steamcraft.common.config.ConfigBlocks;
  * @author Decebaldecebal
  * 
  */
-public class TileCopperPipe extends TileEntity
+public class TileCopperPipe extends TileEntity implements IFluidHandler
 {
-	public boolean isExtracting = false;
+	FluidTank tank = new FluidTank(500);
+	
+	public ForgeDirection extract = null;
 	
 	public ForgeDirection[] connections = new ForgeDirection[6];
 
@@ -35,11 +42,32 @@ public class TileCopperPipe extends TileEntity
 	@Override
 	public void updateEntity()
 	{
+		
 	}
 	
-	public void changeExtracting(boolean val)
+	@Override
+	public void writeToNBT(NBTTagCompound tag)
 	{
-		this.isExtracting = val;
+		super.writeToNBT(tag);
+		tank.writeToNBT(tag);
+	}
+	
+	@Override
+	public void readFromNBT(NBTTagCompound tag)
+	{
+		super.readFromNBT(tag);
+		tank.readFromNBT(tag);
+	}
+	
+	public void changeExtracting()
+	{
+		extract = null;
+		for(ForgeDirection dir : connections)
+			if(dir!=null && canChangeState(dir))
+			{
+				extract = dir;
+				break;
+			}
 	}
 	
 	public void updateConnections()
@@ -126,5 +154,41 @@ public class TileCopperPipe extends TileEntity
 			return true;
 		
 		return false;
+	}
+
+	@Override
+	public boolean canDrain(ForgeDirection from, Fluid fluid)
+	{
+		return false;
+	}
+
+	@Override
+	public boolean canFill(ForgeDirection from, Fluid fluid)
+	{
+		return false;
+	}
+
+	@Override
+	public FluidStack drain(ForgeDirection from, FluidStack resource, boolean doDrain)
+	{
+		return null;
+	}
+
+	@Override
+	public FluidStack drain(ForgeDirection from, int maxDrain, boolean doDrain)
+	{
+		return null;
+	}
+
+	@Override
+	public int fill(ForgeDirection from, FluidStack resource, boolean doFill)
+	{
+		return 0;
+	}
+
+	@Override
+	public FluidTankInfo[] getTankInfo(ForgeDirection from)
+	{
+		return null;
 	}
 }

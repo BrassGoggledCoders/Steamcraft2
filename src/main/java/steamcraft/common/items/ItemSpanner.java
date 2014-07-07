@@ -35,7 +35,7 @@ public class ItemSpanner extends BaseItem
 		{
 			TileCopperPipe pipe = (TileCopperPipe) world.getTileEntity(x, y, z);
 			
-			pipe.changeExtracting(!pipe.isExtracting);
+			pipe.changeExtracting();
 		}
 		else
 			block.rotateBlock(world, x, y, z, ForgeDirection.getOrientation(side));
