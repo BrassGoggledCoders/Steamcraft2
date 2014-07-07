@@ -35,7 +35,7 @@ public class ItemTeapot extends BaseItemWithMetadata
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
 	{
-				//ModLoader.getMinecraftInstance().thePlayer.triggerAchievement(mod_Steamcraft.ach_TimeForACuppa);
+			//ModLoader.getMinecraftInstance().thePlayer.triggerAchievement(mod_Steamcraft.ach_TimeForACuppa);
 			if(player.inventory.hasItem(ConfigItems.itemTeacup))
 			{
 				ItemStack itemstack = player.inventory.getStackInSlot(ItemStackUtils.getStackPosition(player.inventory, ConfigItems.itemTeacup));
@@ -61,7 +61,6 @@ public class ItemTeapot extends BaseItemWithMetadata
 			l.add(new ItemStack(ConfigItems.itemTeapot, 1, var4));
 	}
 	@Override
-	// TODO: Make module-sensitive
 	public void addInformation(ItemStack stack, EntityPlayer player, List l, boolean flag)
 	{
 		if(stack.getItemDamage() == 0)

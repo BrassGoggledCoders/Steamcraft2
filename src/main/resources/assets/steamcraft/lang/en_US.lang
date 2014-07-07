@@ -312,12 +312,14 @@ achievement.shrinkrayachieve=Shrink-in-ator
 achievement.shrinkrayachieve.desc=Watch out for the Nefario Principle!
 achievement.boilerachieve=Hot'n'Wet Topic
 achievement.boilerachieve.desc=}:-]
-achievement.boilerachieve=Ha, Sucker!
-achievement.boilerachieve.desc=Auto-Bucket 9000!
+achievement.intakeachieve=Ha, Sucker!
+achievement.intakeachieve.desc=Auto-Bucket 9000!
 achievement.ingotachieve=Aquire Harderware
 achievement.ingotachieve.desc=Ore-Mazing!
 achievement.sheetachieve=P-TANG!
 achievement.sheetachieve.desc=Flatten and Crush
+achievement.teaachieve=Time for a Cuppa!
+achievement.teaachieve.desc=Slurp
 #Damage Sources
 death.attack.steamcraft2.electrocution=%1$s was electrocuted!
 death.attack.steamcraft2.electrocution.player=%1$s was electrocuted!

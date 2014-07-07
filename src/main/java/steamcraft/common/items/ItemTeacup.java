@@ -11,6 +11,7 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
+import steamcraft.common.config.ConfigAchievements;
 import steamcraft.common.config.ConfigItems;
 import steamcraft.common.lib.LibInfo;
 import cpw.mods.fml.relauncher.Side;
@@ -41,6 +42,7 @@ public class ItemTeacup extends BaseItemWithMetadata
 		{
 			player.addPotionEffect(new PotionEffect(Potion.digSpeed.id, 50, 100));
 			stack.setItemDamage(stack.getItemDamage() - 1);
+			player.addStat(ConfigAchievements.teaAchieve, 1);
 		}
 		return stack;
 	}
