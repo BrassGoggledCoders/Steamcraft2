@@ -39,11 +39,13 @@ public class ItemTeapot extends BaseItemWithMetadata
 			if(player.inventory.hasItem(ConfigItems.itemTeacup))
 			{
 				ItemStack itemstack = player.inventory.getStackInSlot(ItemStackUtils.getStackPosition(player.inventory, ConfigItems.itemTeacup));
-				if(itemstack.getItemDamage() == 0)
+				if(itemstack.getItemDamage() == 0 && stack.getItemDamage() > 2)
 				{
 					player.inventory.consumeInventoryItem(itemstack.getItem());
 					player.inventory.addItemStackToInventory(new ItemStack(ConfigItems.itemTeacup, 1, 10));
-					//TODO
+					if(stack.getItemDamage() == 3)
+					stack.setItemDamage(0);
+					else
 					stack.setItemDamage(stack.getItemDamage() - 1);
 				}
 			}
@@ -79,5 +81,10 @@ public class ItemTeapot extends BaseItemWithMetadata
 			l.add("Filled with Tea");
 			l.add(stack.getItemDamage()-2 + " cups remaining");
 		}
+	}
+	@Override
+	public String getUnlocalizedName(ItemStack is)
+	{
+		return super.getUnlocalizedName();
 	}
 }
