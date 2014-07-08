@@ -50,9 +50,12 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 	@Override
 	public void updateEntity()
 	{
-		if(!worldObj.isRemote && isMaster)
+		if(!worldObj.isRemote)
 		{
 			System.out.println(network.size);
+			if(isMaster)
+			{
+				
 			/*
 			if(extract!=null && tank.getFluidAmount()!=tank.getCapacity())
 				if(worldObj.getTileEntity(xCoord+extract.offsetX, yCoord+extract.offsetY, zCoord+extract.offsetZ)!=null 
@@ -85,7 +88,9 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 			}
 			
 			*/
+			}
 		}
+		
 	}
 	
 	@Override
@@ -121,7 +126,7 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 	}
 	
 	public void updateConnections()
-	{		
+	{				
 		if(canConnect(xCoord, yCoord + 1, zCoord))
 		{
 			connections[0] = ForgeDirection.UP;
@@ -223,18 +228,30 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 	}
 	
 	private void updateNetworkToOthers(ForgeDirection ignore)
-	{
+	{		
 		for(ForgeDirection dir : connections)
 			if(dir!=null && dir!=ignore)
 			{
 				TileCopperPipe pipe = (TileCopperPipe) worldObj.getTileEntity(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ);
 				
-				if(pipe.isMaster)
-					pipe.isMaster = false;
-				
+				if(pipe.network!=null && pipe.network.size!=0)
+					pipe.network = null;
+
 				network.size++;
-				pipe.network = network;
-				pipe.updateNetworkToOthers(dir.getOpposite());
+				
+				if(pipe.network!=null)
+				{
+					if(pipe.isMaster)
+						pipe.isMaster = false;
+					
+					if(!pipe.network.equals(network))
+					{
+						pipe.network = network;
+						pipe.updateNetworkToOthers(dir.getOpposite());
+					}
+				}
+				else
+					pipe.network = network;
 			}
 	}
 	
