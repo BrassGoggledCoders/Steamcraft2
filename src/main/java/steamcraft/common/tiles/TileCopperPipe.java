@@ -121,7 +121,7 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 	}
 	
 	public void updateConnections()
-	{
+	{		
 		if(canConnect(xCoord, yCoord + 1, zCoord))
 		{
 			connections[0] = ForgeDirection.UP;
@@ -213,13 +213,12 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 				}
 			
 		}
-		else
+		else if(canChangeState(dir))
 		{
 			Coords temp = new Coords(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ);
 			
 			if(!network.outputs.contains(temp))
 				network.outputs.add(temp);
-			
 		}
 	}
 	
@@ -237,6 +236,46 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 				pipe.network = network;
 				pipe.updateNetworkToOthers(dir.getOpposite());
 			}
+	}
+	
+	public void removeFromNetwork()
+	{
+		if(network!=null)
+		{
+			network.size--;
+		
+			if(network.size==0)
+				network = null;
+			else
+			{
+				for(ForgeDirection dir : connections)
+					if(dir!=null)
+					{	
+						TileCopperPipe pipe = (TileCopperPipe) worldObj.getTileEntity(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ);
+					
+						pipe.network.size=0;
+						pipe.network = new FluidNetwork(1);
+						pipe.isMaster = true;
+						
+						if(dir==extract)
+							network.inputs.remove(new Coords(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ));
+						else if(canChangeState(dir))
+							network.outputs.remove(new Coords(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ));
+					}
+				
+				/*
+				if(isMaster)
+					for(ForgeDirection dir : connections)
+						if(dir!=null)
+						{
+							TileCopperPipe pipe = (TileCopperPipe) worldObj.getTileEntity(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ);
+							pipe.isMaster = true;
+							break;
+						}
+				*/
+				
+			}
+		}
 	}
 	
 	private boolean canConnect(int x, int y, int z)

@@ -12,6 +12,7 @@
  */
 package steamcraft.common.blocks.machines;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
@@ -84,6 +85,17 @@ public class BlockCopperPipe extends BlockContainerMod
 			tile = (TileCopperPipe) t;
 			tile.updateConnections();
 		}
+	}
+	
+	@Override
+	public void breakBlock(World world, int x, int y, int z, Block block, int metadata)
+	{
+		TileCopperPipe tile = (TileCopperPipe) world.getTileEntity(x, y, z);
+		
+		if(tile!=null)
+			tile.removeFromNetwork();
+		
+		super.breakBlock(world, x, y, z, block, metadata);
 	}
 	
 	@Override
