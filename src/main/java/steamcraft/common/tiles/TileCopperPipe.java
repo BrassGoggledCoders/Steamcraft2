@@ -12,6 +12,8 @@
  */
 package steamcraft.common.tiles;
 
+import java.util.ArrayList;
+
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
@@ -33,12 +35,12 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 	
 	private short ticksSinceLastDistribute = 0;
 	
-	FluidTank tank = new FluidTank(200);
-	
 	private ForgeDirection received = null;
 	public ForgeDirection extract = null;
 	public ForgeDirection[] connections = new ForgeDirection[6];
 
+	public FluidNetwork network;
+	
 	public TileCopperPipe()
 	{
 		//this.updateConnections();
@@ -49,6 +51,7 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 	{
 		if(!worldObj.isRemote)
 		{
+			/*
 			if(extract!=null && tank.getFluidAmount()!=tank.getCapacity())
 				if(worldObj.getTileEntity(xCoord+extract.offsetX, yCoord+extract.offsetY, zCoord+extract.offsetZ)!=null 
 				&& worldObj.getTileEntity(xCoord+extract.offsetX, yCoord+extract.offsetY, zCoord+extract.offsetZ) instanceof IFluidHandler
@@ -79,9 +82,8 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 							distributeFluidTo(dir, (short) Math.min(tank.getFluidAmount(), maxTransferPerTick));
 			}
 			
-			
-			
 			System.out.println(tank.getFluidAmount());
+			*/
 		}
 	}
 	
@@ -89,14 +91,14 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 	public void writeToNBT(NBTTagCompound tag)
 	{
 		super.writeToNBT(tag);
-		tank.writeToNBT(tag);
+		//tank.writeToNBT(tag);
 	}
 	
 	@Override
 	public void readFromNBT(NBTTagCompound tag)
 	{
 		super.readFromNBT(tag);
-		tank.readFromNBT(tag);
+		//tank.readFromNBT(tag);
 	}
 	
 	public void changeExtracting()
@@ -115,7 +117,10 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 	public void updateConnections()
 	{
 		if(canConnect(xCoord, yCoord + 1, zCoord))
+		{
 			connections[0] = ForgeDirection.UP;
+			updateNetwork(ForgeDirection.UP);
+		}
 		else
 			connections[0] = null;
 		
@@ -143,6 +148,43 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 			connections[5] = ForgeDirection.WEST;
 		else
 			connections[5] = null;
+	}
+	
+	public void updateNetwork(ForgeDirection dir)
+	{
+		TileEntity tile = worldObj.getTileEntity(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ);
+		
+		if(tile instanceof TileCopperPipe)
+		{
+			TileCopperPipe pipe = (TileCopperPipe) tile;
+			
+			if(network!=null)
+			{
+				if(network.size < pipe.network.size)
+				{
+					network = pipe.network;
+					network.size++;
+					
+					updateNetworkToOthers(dir);
+				}
+			}
+		}
+		
+		if(network==null)
+			network = new FluidNetwork(1);
+	}
+	
+	private void updateNetworkToOthers(ForgeDirection ignore)
+	{
+		for(ForgeDirection dir : connections)
+			if(dir!=null && dir!=ignore)
+			{
+				TileCopperPipe pipe = (TileCopperPipe) worldObj.getTileEntity(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ);
+				
+				network.size++;
+				pipe.network = network;
+				pipe.updateNetworkToOthers(dir.getOpposite());
+			}
 	}
 	
 	private boolean canConnect(int x, int y, int z)
@@ -207,6 +249,7 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 	@Override
 	public boolean canFill(ForgeDirection from, Fluid fluid)
 	{
+		/*
 		if(tank.getFluidAmount() == tank.getCapacity())
 			return false;
 		
@@ -214,6 +257,7 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 			return true;
 		else if(tank.getFluid().getFluid() == fluid)
 			return true;
+		*/
 		
 		return false;
 	}
@@ -233,6 +277,7 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 	@Override
 	public int fill(ForgeDirection from, FluidStack resource, boolean doFill)
 	{
+		/*
 		if(tank.getFluid()==null || (tank.getFluid()!=null && tank.getFluid().getFluid() == resource.getFluid()))
 		{
 			int amount = tank.fill(resource, doFill);
@@ -244,16 +289,19 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 			
 			return amount;
 		}
-
+		 */
 		return 0;
+
 	}
 
 	@Override
 	public FluidTankInfo[] getTankInfo(ForgeDirection from)
 	{
-		return new FluidTankInfo[]{tank.getInfo()};
+		//return new FluidTankInfo[]{tank.getInfo()};
+		return null;
 	}
 	
+	/*
 	private void distributeFluidTo(ForgeDirection to, short amount)
 	{
 		short transfered = 0;	
@@ -264,5 +312,33 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 			transfered += tile.fill(to.getOpposite(), new FluidStack(tank.getFluid(), amount), true);
 		
 		tank.drain(transfered, true);
+	}
+	*/
+	
+	public class FluidNetwork
+	{
+		FluidTank tank;
+		public int size;
+		
+		ArrayList<Coords> inputs = new ArrayList<Coords>();
+		ArrayList<Coords> outputs = new ArrayList<Coords>();
+		
+		public FluidNetwork(int size)
+		{
+			this.size = size;
+			this.tank = new FluidTank(200*size);
+		}
+	}
+	
+	public class Coords
+	{
+		int x, y, z;
+		
+		public Coords(int x, int y, int z)
+		{
+			this.x = x;
+			this.y = y;
+			this.z = z;
+		}
 	}
 }
