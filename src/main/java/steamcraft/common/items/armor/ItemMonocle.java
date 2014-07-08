@@ -12,12 +12,12 @@
  */
 package steamcraft.common.items.armor;
 
-import steamcraft.common.lib.LibInfo;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
+import steamcraft.common.lib.LibInfo;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author Surseance

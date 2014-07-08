@@ -12,9 +12,9 @@
  */
 package steamcraft.common.config;
 
-import steamcraft.common.lib.LibInfo;
 import net.minecraft.stats.Achievement;
 import net.minecraftforge.common.AchievementPage;
+import steamcraft.common.lib.LibInfo;
 
 /**
  * @author warlordjones

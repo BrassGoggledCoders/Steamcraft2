@@ -8,8 +8,7 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- *
- * File created @ [Jul 6, 2014, 10:24:45 AM]
+ * 
  */
 package steamcraft.client.lib;
 
