@@ -28,7 +28,9 @@ import steamcraft.common.config.ConfigBlocks;
  */
 public class TileCopperPipe extends TileEntity implements IFluidHandler
 {
-	FluidTank tank = new FluidTank(500);
+	private static byte maxExtractPerTick = TileSteamBoiler.steamPerTick;
+	
+	FluidTank tank = new FluidTank(200);
 	
 	public ForgeDirection extract = null;
 	
@@ -42,7 +44,28 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 	@Override
 	public void updateEntity()
 	{
-		
+		if(!worldObj.isRemote)
+		{
+			if(extract!=null && tank.getFluidAmount()!=tank.getCapacity())
+				if(worldObj.getTileEntity(xCoord+extract.offsetX, yCoord+extract.offsetY, zCoord+extract.offsetZ)!=null 
+				&& worldObj.getTileEntity(xCoord+extract.offsetX, yCoord+extract.offsetY, zCoord+extract.offsetZ) instanceof IFluidHandler
+				&& worldObj.getBlock(xCoord+extract.offsetX, yCoord+extract.offsetY, zCoord+extract.offsetZ)!=ConfigBlocks.blockCopperPipe)
+				{
+					IFluidHandler tile = (IFluidHandler) worldObj.getTileEntity(xCoord+extract.offsetX, yCoord+extract.offsetY, zCoord+extract.offsetZ);
+					
+					for(FluidTankInfo info : tile.getTankInfo(extract.getOpposite()))
+					{
+						if(info.fluid!=null && tile.canDrain(extract.getOpposite(), info.fluid.getFluid()))
+						{
+							int canFill = tank.fill(new FluidStack(info.fluid.getFluid(), maxExtractPerTick), false);
+							
+							tank.fill(tile.drain(extract.getOpposite(), canFill, true), true);
+						}
+					}
+				}
+			
+			System.out.println(tank.getFluidAmount());
+		}
 	}
 	
 	@Override
@@ -61,13 +84,15 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 	
 	public void changeExtracting()
 	{
-		extract = null;
-		for(ForgeDirection dir : connections)
-			if(dir!=null && canChangeState(dir))
-			{
-				extract = dir;
-				break;
-			}
+		if(extract!=null)
+			extract = null;
+		else
+			for(ForgeDirection dir : connections)
+				if(dir!=null && canChangeState(dir))
+				{
+					extract = dir;
+					break;
+				}
 	}
 	
 	public void updateConnections()

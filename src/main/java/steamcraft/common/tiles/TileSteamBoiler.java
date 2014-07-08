@@ -232,7 +232,7 @@ public class TileSteamBoiler extends BaseTileWithInventory implements IFluidHand
 	@Override
 	public boolean canDrain(ForgeDirection from, Fluid fluid)
 	{
-		if (fluid == FluidRegistry.getFluid("steam"))
+		if (fluid != FluidRegistry.WATER)
 			return true;
 		return false;
 	}

@@ -16,7 +16,6 @@ import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import net.minecraftforge.common.util.ForgeDirection;
 import steamcraft.common.config.ConfigBlocks;
 import steamcraft.common.tiles.TileCopperPipe;
 
@@ -37,8 +36,6 @@ public class ItemSpanner extends BaseItem
 			
 			pipe.changeExtracting();
 		}
-		else
-			block.rotateBlock(world, x, y, z, ForgeDirection.getOrientation(side));
 		
 		return true;
 	}

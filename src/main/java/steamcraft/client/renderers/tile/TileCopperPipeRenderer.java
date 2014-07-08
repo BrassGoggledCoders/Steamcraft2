@@ -48,7 +48,7 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 		
 		ForgeDirection opposite = pipe.onlyOneOpposite(); 
 		
-		if(opposite!=null)
+		if(opposite!=null && pipe.extract==null)
 			drawStraightConnection(opposite);
 		else
 		{
