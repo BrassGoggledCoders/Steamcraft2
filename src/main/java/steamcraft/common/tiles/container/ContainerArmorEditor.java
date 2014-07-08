@@ -1,5 +1,5 @@
 /**
- * This class was created by BrassGoggledCoders modding team. 
+ * This class was created by BrassGoggledCoders modding team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -8,7 +8,7 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- * 
+ *
  */
 package steamcraft.common.tiles.container;
 
@@ -43,16 +43,18 @@ public class ContainerArmorEditor extends Container
 		tileent = tile;
 		int var3;
 
-		addSlotToContainer(new SlotBrassArmor(tileent, 0, 10, 10));
+		//Armor Slot
+		addSlotToContainer(new SlotBrassArmor(tileent, 0, 0, 12));
 
-		for (var3 = 0; var3 < 7; ++var3)
+		//Input Slots Line 1
 			for (int var4 = 0; var4 < 13; ++var4)
-				addSlotToContainer(new SlotModule(tileent, 0, var4, var3));
+				addSlotToContainer(new SlotModule(tileent, var4 + 1, 10, var4 * 13));
 
+		//Inv
 		for (var3 = 0; var3 < 3; ++var3)
 			for (int var4 = 0; var4 < 9; ++var4)
 				addSlotToContainer(new Slot(player, var4 + (var3 * 9) + 9, 8 + (var4 * 18), 84 + (var3 * 18)));
-
+		//Hotbar
 		for (var3 = 0; var3 < 9; ++var3)
 			addSlotToContainer(new Slot(player, var3, 8 + (var3 * 18), 142));
 	}

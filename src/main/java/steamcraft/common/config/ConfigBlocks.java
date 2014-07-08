@@ -19,6 +19,7 @@ import net.minecraftforge.fluids.FluidRegistry;
 import steamcraft.common.blocks.BaseBlock;
 import steamcraft.common.blocks.BlockBrassLeaves;
 import steamcraft.common.blocks.BlockBrassLog;
+import steamcraft.common.blocks.BlockBrassPlaque;
 import steamcraft.common.blocks.BlockCastIronFence;
 import steamcraft.common.blocks.BlockCastIronGate;
 import steamcraft.common.blocks.BlockCastIronLamp;
@@ -53,6 +54,7 @@ import steamcraft.common.itemblocks.ItemBlockSlate;
 import steamcraft.common.tiles.TileArmorEditor;
 import steamcraft.common.tiles.TileBattery;
 import steamcraft.common.tiles.TileBloomery;
+import steamcraft.common.tiles.TileBrassPlaque;
 import steamcraft.common.tiles.TileCopperPipe;
 import steamcraft.common.tiles.TileCopperWire;
 import steamcraft.common.tiles.TileCrystal;
@@ -117,6 +119,8 @@ public class ConfigBlocks
 	public static Block blockBrassLog, blockBrassLeaves;
 
 	public static Block blockTeaPlant, blockHatch;
+
+	public static Block blockBrassPlaque;
 
 	public static void init()
 	{
@@ -251,6 +255,9 @@ public class ConfigBlocks
 
 		blockTeaPlant = new BlockTeaPlant().setBlockName("blockTeaPlant");
 		GameRegistry.registerBlock(blockTeaPlant, "BlockTeaPlant");
+
+		blockBrassPlaque = new BlockBrassPlaque(TileBrassPlaque.class, true).setBlockName("blockBrassPlaque");
+		RegistryHelper.registerContainerBlock(blockBrassPlaque, TileBrassPlaque.class, "BlockBrassPlaque");
 	}
 
 }
