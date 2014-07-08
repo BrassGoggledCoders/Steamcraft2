@@ -41,6 +41,7 @@ import steamcraft.common.items.armor.ItemBrassArmor;
 import steamcraft.common.items.armor.ItemBrassGoggles;
 import steamcraft.common.items.armor.ItemClockworkWings;
 import steamcraft.common.items.armor.ItemDivingHelmet;
+import steamcraft.common.items.armor.ItemMonocle;
 import steamcraft.common.items.armor.ItemNormalArmor;
 import steamcraft.common.items.armor.ItemSteamJetpack;
 import steamcraft.common.items.modules.ItemAqualung;
@@ -84,7 +85,7 @@ public class ConfigItems
 
 	// Brass
 	public static Item helmetBrass, chestplateBrass, legsBrass, bootsBrass;
-	public static Item brassGoggles, itemDivingHelmet;
+	public static Item brassGoggles, itemDivingHelmet, itemMonocle;
 
 	// Etherium
 	public static Item helmetEtherium, chestplateEtherium, legsEtherium, bootsEtherium;
@@ -238,10 +239,12 @@ public class ConfigItems
 		RegistryHelper.registerArmorSet(helmetBrass, chestplateBrass, legsBrass, bootsBrass, "Brass", LibInfo.ID);
 
 		brassGoggles = new ItemBrassGoggles(ItemArmor.ArmorMaterial.CHAIN, 0, 0).setUnlocalizedName("itemBrassGoggles");
+		itemMonocle = new ItemMonocle(ItemArmor.ArmorMaterial.CHAIN, 0, 0).setUnlocalizedName("itemMonocle");
 		itemDivingHelmet = new ItemDivingHelmet(ItemArmor.ArmorMaterial.CHAIN, 0, 0).setUnlocalizedName("itemDivingHelmet");
 
 		registerItem(brassGoggles, "ItemBrassGoggles");
 		registerItem(itemDivingHelmet, "ItemDivingHelmet");
+		registerItem(itemMonocle, "ItemMonocle");
 
 		// Etherium
 		helmetEtherium = new ItemNormalArmor(MaterialHelper.ARMOR_ETHERIUM, 0, 0).setUnlocalizedName("itemHelmetEtherium");

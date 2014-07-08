@@ -193,12 +193,10 @@ public class ConfigRecipes
 		GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.itemSteamJetpack), new Object[] { "CSC", "BSB", "B B", 'B',
 				new ItemStack(ConfigItems.itemIngot, 1, 4), 'S', new ItemStack(ConfigItems.itemIngot, 1, 6), 'C',
 				new ItemStack(ConfigItems.itemCanisterSteam, 1, OreDictionary.WILDCARD_VALUE) });
-		GameRegistry.addRecipe(new ItemStack(ConfigItems.itemSteamWingpack), new Object[] { "LWL", "RBR", "SPS", 'P', ConfigItems.itemSteamJetpack, 'W',
-				ConfigItems.itemClockworkWings, 'R', new ItemStack(ConfigItems.itemMachinePart, 1, 0), 'B', Items.slime_ball, 'L', Items.leather, 'S',
-				Items.string });
+		GameRegistry.addRecipe(new ItemStack(ConfigItems.itemSteamWingpack), new Object[] { "LWL", "RBR", "SPS", 'P', ConfigItems.itemSteamJetpack, 'W',ConfigItems.itemClockworkWings, 'R', new ItemStack(ConfigItems.itemMachinePart, 1, 0), 'B', Items.slime_ball, 'L', Items.leather, 'S',Items.string });
 
-		GameRegistry.addRecipe(new ItemStack(ConfigItems.brassGoggles), new Object[] { "BBB", "GBG", "BBB", 'B', new ItemStack(ConfigItems.itemIngot, 1, 4),
-				'G', Blocks.glass_pane });
+		GameRegistry.addRecipe(new ItemStack(ConfigItems.brassGoggles), new Object[] { "BBB", "GBG", "BBB", 'B', new ItemStack(ConfigItems.itemIngot, 1, 4),'G', Blocks.glass_pane });
+		GameRegistry.addRecipe(new ItemStack(ConfigItems.itemMonocle), new Object[] { " B ", "BGB", " BS", 'B', new ItemStack(ConfigItems.itemIngot, 1, 4),'G', Blocks.glass_pane, 'S', Items.string });
 	}
 
 	private static void initBlockRecipes()

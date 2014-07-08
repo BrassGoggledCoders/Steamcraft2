@@ -12,9 +12,6 @@
  */
 package steamcraft.common.lib.events;
 
-import org.lwjgl.opengl.GL11;
-import org.lwjgl.opengl.GL13;
-
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
@@ -36,6 +33,9 @@ import net.minecraftforge.event.entity.EntityEvent.EntityConstructing;
 import net.minecraftforge.event.entity.item.ItemTossEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
+
+import org.lwjgl.opengl.GL11;
+
 import steamcraft.common.config.ConfigItems;
 import steamcraft.common.entities.EntityPlayerExtended;
 import cpw.mods.fml.common.eventhandler.EventPriority;
@@ -105,6 +105,7 @@ public class EventHandlerForge
 		}
 	}
 	Block block;
+	Entity entity;
 	int x, y, z;
 
 	@SubscribeEvent(priority = EventPriority.HIGH)
@@ -115,7 +116,7 @@ public class EventHandlerForge
 		//{
 			Minecraft mc = Minecraft.getMinecraft();
 			ItemStack helmet = Minecraft.getMinecraft().thePlayer.inventory.armorItemInSlot(3);
-			if(helmet != null && helmet.getItem() == ConfigItems.brassGoggles)
+			if(helmet != null && helmet.getItem() == ConfigItems.itemMonocle)
 			{
 				ScaledResolution res = new ScaledResolution(mc, mc.displayWidth, mc.displayHeight);
 				FontRenderer fontRenderer = mc.fontRenderer;
@@ -128,13 +129,23 @@ public class EventHandlerForge
 				int posY2 = 15;
 				int posY3 = 25;
 				int posY4 = 35;
-				int posY5 = 45;
+				//int posY5 = 45;
 				int color = 0xCCFF00;
 				//fontRenderer.drawString(text, posX, posY, color);
-				fontRenderer.drawString("Block: " + this.block.getUnlocalizedName().substring(5), posX, posY, color);
-				fontRenderer.drawString("Metadata: " + this.block.getDamageValue(mc.theWorld, x, y, z), posX, posY2, color);
-				fontRenderer.drawString("Hardness: " + this.block.getBlockHardness(mc.theWorld, x, y, z), posX, posY3, color);
-				fontRenderer.drawString("Light Value: " + this.block.getLightValue(), posX, posY4, color);
+				if(block != null && block != Blocks.air)
+				{
+					fontRenderer.drawString("Block: " + this.block.getUnlocalizedName().substring(5), posX, posY, color);
+					fontRenderer.drawString("Metadata: " + this.block.getDamageValue(mc.theWorld, x, y, z), posX, posY2, color);
+					fontRenderer.drawString("Hardness: " + this.block.getBlockHardness(mc.theWorld, x, y, z), posX, posY3, color);
+					fontRenderer.drawString("Light Value: " + this.block.getLightValue(), posX, posY4, color);
+				}
+				if(entity != null)
+				{
+					String text = entity.getCommandSenderName();
+					fontRenderer.drawString("Entity: ", mc.displayWidth - 5 - text.length(), posY, color);
+					String text1 = Integer.toString(entity.getEntityId());
+					fontRenderer.drawString("Entity: ", mc.displayWidth - 5 - text1.length(), posY, color);
+				}
 				//fontRenderer.drawString("Material: " + this.block.getMaterial(), posX, posY5, color);
 			}
 		//}
@@ -145,6 +156,11 @@ public class EventHandlerForge
 	public void onDrawBlockSelectionBox(DrawBlockHighlightEvent event)
 	{
 		if (event.player.inventory.armorItemInSlot(3) != null && event.player.inventory.armorItemInSlot(3).getItem() == ConfigItems.brassGoggles)
+		{
+			this.drawSelectionBox(event.player, event.target, 0, event.currentItem, event.partialTicks);
+			event.setCanceled(true);
+		}
+		else if(event.player.inventory.armorItemInSlot(3) != null && event.player.inventory.armorItemInSlot(3).getItem() == ConfigItems.itemMonocle)
 		{
 			this.drawSelectionBox(event.player, event.target, 0, event.currentItem, event.partialTicks);
 			event.setCanceled(true);
@@ -174,6 +190,7 @@ public class EventHandlerForge
 		GL11.glEnd();*/
 
 		this.block = event.player.worldObj.getBlock(event.target.blockX, event.target.blockY, event.target.blockZ);
+		this.entity = event.player;
 	}
 
 	private void drawSelectionBox(EntityPlayer player, MovingObjectPosition mop, int i, ItemStack is, float partialTicks)
