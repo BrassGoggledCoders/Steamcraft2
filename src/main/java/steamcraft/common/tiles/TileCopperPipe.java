@@ -260,7 +260,7 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 
 		IFluidHandler tile = (IFluidHandler)worldObj.getTileEntity(xCoord+to.offsetX, yCoord+to.offsetY, zCoord+to.offsetZ);
 
-		if(tile.canFill(to.getOpposite(), tank.getFluid().getFluid()))
+		if(tile.canFill(to.getOpposite(), tank.getFluid()!=null ? tank.getFluid().getFluid() : null))
 			transfered += tile.fill(to.getOpposite(), new FluidStack(tank.getFluid(), amount), true);
 		
 		tank.drain(transfered, true);
