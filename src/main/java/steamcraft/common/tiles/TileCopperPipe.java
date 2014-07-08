@@ -29,7 +29,7 @@ import steamcraft.common.config.ConfigBlocks;
 public class TileCopperPipe extends TileEntity implements IFluidHandler
 {
 	private static byte maxExtractPerTick = TileSteamBoiler.steamPerTick;
-	private static byte maxTransferPerTick = TileSteamBoiler.steamPerTick*2;
+	private static byte maxTransferPerTick = 100;
 	
 	private short ticksSinceLastDistribute = 0;
 	
@@ -69,14 +69,17 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 			
 			ticksSinceLastDistribute++;
 			
-			if(ticksSinceLastDistribute > 5 && tank.getFluidAmount()!=0)
+			if(ticksSinceLastDistribute > 5)
 			{
 				ticksSinceLastDistribute = 0;
+				
+				if(tank.getFluidAmount()>0)
+					for(ForgeDirection dir : connections)
+						if(dir!=null && dir!=received)
+							distributeFluidTo(dir, (short) Math.min(tank.getFluidAmount(), maxTransferPerTick));
 			}
 			
-			for(ForgeDirection dir : connections)
-				if(dir!=null && dir!=received)
-					distributeFluidTo(dir);
+			
 			
 			System.out.println(tank.getFluidAmount());
 		}
@@ -251,21 +254,14 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 		return new FluidTankInfo[]{tank.getInfo()};
 	}
 	
-	private void distributeFluidTo(ForgeDirection to)
+	private void distributeFluidTo(ForgeDirection to, short amount)
 	{
-		short toTransfer = (short) tank.getFluidAmount();
-		short transfered = 0;
-		
-		if(toTransfer!=0 && to!=null)
-			{
-				IFluidHandler tile = (IFluidHandler)worldObj.getTileEntity(xCoord+to.offsetX, yCoord+to.offsetY, zCoord+to.offsetZ);
+		short transfered = 0;	
 
-				if(tile.canFill(to.getOpposite(), tank.getFluid().getFluid()))
-				{
-					transfered += tile.fill(to.getOpposite(), new FluidStack(tank.getFluid(), Math.min(toTransfer, maxTransferPerTick)), true);
-					toTransfer -= transfered;
-				}
-			}
+		IFluidHandler tile = (IFluidHandler)worldObj.getTileEntity(xCoord+to.offsetX, yCoord+to.offsetY, zCoord+to.offsetZ);
+
+		if(tile.canFill(to.getOpposite(), tank.getFluid().getFluid()))
+			transfered += tile.fill(to.getOpposite(), new FluidStack(tank.getFluid(), amount), true);
 		
 		tank.drain(transfered, true);
 	}
