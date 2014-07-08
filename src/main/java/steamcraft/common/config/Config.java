@@ -1,5 +1,5 @@
 /**
- * This class was created by BrassGoggledCoders modding team. 
+ * This class was created by BrassGoggledCoders modding team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -8,7 +8,7 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- * 
+ *
  */
 package steamcraft.common.config;
 
@@ -18,7 +18,7 @@ import net.minecraftforge.common.config.Configuration;
 
 /**
  * @author Surseance
- * 
+ *
  */
 public class Config
 {
@@ -30,7 +30,7 @@ public class Config
 
 	//Entities
 	public static int entBulletId;
-	
+
 	//Chances
 	public static int uraniumChance, brimstoneChance, borniteChance, phosphateChance, aluminumChance, copperChance, tinChance, zincChance;
 
@@ -87,8 +87,8 @@ public class Config
 		slateChance = config.get(CATEGORY_GEN_OPTIONS, "Chance of Slate Generation", 20).getInt();
 		netherEtheriumCrystalChance = config.get(CATEGORY_GEN_OPTIONS, "Chance of Etheruim Crystal Generation in the Nether", 5).getInt();
 		endEtheriumCrystalChance = config.get(CATEGORY_GEN_OPTIONS, "Chance of Etheruim Crystal Generation in the End", 10).getInt();
-		brassTreeGenChance = config.get(CATEGORY_GEN_OPTIONS, "Chance of Brass Tree Generation", 20).getInt();
-		
+		brassTreeGenChance = config.get(CATEGORY_GEN_OPTIONS, "Chance of Brass Tree Generation", 2).getInt();
+
 		//Heights
 		uraniumHeight = config.get(CATEGORY_GEN_OPTIONS, "Height of Uranium Ore Generation", 24).getInt();
 		brimstoneHeight = config.get(CATEGORY_GEN_OPTIONS, "Height of Brimstone Ore Generation", 64).getInt();
@@ -101,7 +101,7 @@ public class Config
 		slateHeight = config.get(CATEGORY_GEN_OPTIONS, "Height of Slate Generation", 65).getInt();
 		netherEtheriumCrystalHeight = config.get(CATEGORY_GEN_OPTIONS, "Height of Etherium Crystal Generation in the Nether", 100).getInt();
 		endEtheriumCrystalHeight = config.get(CATEGORY_GEN_OPTIONS, "Height of Etherium Crystal Generation in the End", 100).getInt();
-		
+
 		//Generation
 		generationEnabled = config.get(CATEGORY_GEN_OPTIONS, " ALL SC2 World Gen, everywhere", true).getBoolean(true);
 		overworldGenerationEnabled = config.get(CATEGORY_GEN_OPTIONS, "SC2 World Gen in the Overworld", true).getBoolean(true);
