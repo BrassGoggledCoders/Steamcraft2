@@ -29,11 +29,14 @@ import steamcraft.common.config.ConfigBlocks;
 public class TileCopperPipe extends TileEntity implements IFluidHandler
 {
 	private static byte maxExtractPerTick = TileSteamBoiler.steamPerTick;
+	private static byte maxTransferPerTick = TileSteamBoiler.steamPerTick*2;
+	
+	private short ticksSinceLastDistribute = 0;
 	
 	FluidTank tank = new FluidTank(200);
 	
+	private ForgeDirection received = null;
 	public ForgeDirection extract = null;
-	
 	public ForgeDirection[] connections = new ForgeDirection[6];
 
 	public TileCopperPipe()
@@ -63,6 +66,17 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 						}
 					}
 				}
+			
+			ticksSinceLastDistribute++;
+			
+			if(ticksSinceLastDistribute > 5 && tank.getFluidAmount()!=0)
+			{
+				ticksSinceLastDistribute = 0;
+			}
+			
+			for(ForgeDirection dir : connections)
+				if(dir!=null && dir!=received)
+					distributeFluidTo(dir);
 			
 			System.out.println(tank.getFluidAmount());
 		}
@@ -190,6 +204,14 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 	@Override
 	public boolean canFill(ForgeDirection from, Fluid fluid)
 	{
+		if(tank.getFluidAmount() == tank.getCapacity())
+			return false;
+		
+		if(tank.getFluid()==null)
+			return true;
+		else if(tank.getFluid().getFluid() == fluid)
+			return true;
+		
 		return false;
 	}
 
@@ -208,12 +230,43 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 	@Override
 	public int fill(ForgeDirection from, FluidStack resource, boolean doFill)
 	{
+		if(tank.getFluid()==null || (tank.getFluid()!=null && tank.getFluid().getFluid() == resource.getFluid()))
+		{
+			int amount = tank.fill(resource, doFill);
+			
+			if(amount > 0)
+				received = from;
+			else
+				received = null;
+			
+			return amount;
+		}
+
 		return 0;
 	}
 
 	@Override
 	public FluidTankInfo[] getTankInfo(ForgeDirection from)
 	{
-		return null;
+		return new FluidTankInfo[]{tank.getInfo()};
+	}
+	
+	private void distributeFluidTo(ForgeDirection to)
+	{
+		short toTransfer = (short) tank.getFluidAmount();
+		short transfered = 0;
+		
+		if(toTransfer!=0 && to!=null)
+			{
+				IFluidHandler tile = (IFluidHandler)worldObj.getTileEntity(xCoord+to.offsetX, yCoord+to.offsetY, zCoord+to.offsetZ);
+
+				if(tile.canFill(to.getOpposite(), tank.getFluid().getFluid()))
+				{
+					transfered += tile.fill(to.getOpposite(), new FluidStack(tank.getFluid(), Math.min(toTransfer, maxTransferPerTick)), true);
+					toTransfer -= transfered;
+				}
+			}
+		
+		tank.drain(transfered, true);
 	}
 }
