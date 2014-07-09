@@ -24,7 +24,6 @@ public class Config
 {
 	public static Configuration config;
 
-	public static final String CATEGORY_ENTITIES = "Entities";
 	public static final String CATEGORY_GEN_OPTIONS = "generation options";
 	public static final String CATEGORY_GENERAL = "general";
 
@@ -70,10 +69,6 @@ public class Config
 	public static void initialize(File file)
 	{
 		config = new Configuration(file);
-		config.addCustomCategoryComment("Entities", "Entity Ids");
-
-		int eIdx = 300;
-		entBulletId = config.get("Entities", "bullet", eIdx++).getInt();
 
 		//Chances
 		uraniumChance = config.get(CATEGORY_GEN_OPTIONS, "Chance of Uranium Ore Generation", 5).getInt();

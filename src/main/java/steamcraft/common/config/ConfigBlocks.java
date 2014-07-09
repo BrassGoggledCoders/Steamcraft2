@@ -36,6 +36,7 @@ import steamcraft.common.blocks.BlockMetal;
 import steamcraft.common.blocks.BlockSlate;
 import steamcraft.common.blocks.BlockTeaPlant;
 import steamcraft.common.blocks.BlockTeslaCoil;
+import steamcraft.common.blocks.BlockTimeBomb;
 import steamcraft.common.blocks.BlockUranium;
 import steamcraft.common.blocks.FluidSteam;
 import steamcraft.common.blocks.machines.BlockArmorEditor;
@@ -121,6 +122,8 @@ public class ConfigBlocks
 	public static Block blockTeaPlant, blockHatch;
 
 	public static Block blockBrassPlaque;
+
+	public static Block blockTimeBomb;
 
 	public static void init()
 	{
@@ -258,6 +261,9 @@ public class ConfigBlocks
 
 		blockBrassPlaque = new BlockBrassPlaque(TileBrassPlaque.class, true).setBlockName("blockBrassPlaque");
 		RegistryHelper.registerContainerBlock(blockBrassPlaque, TileBrassPlaque.class, "BlockBrassPlaque");
+
+		blockTimeBomb = new BlockTimeBomb(Material.tnt).setBlockName("blockTimeBomb");
+		GameRegistry.registerBlock(blockTimeBomb, "BlockTimeBomb");
 	}
 
 }
