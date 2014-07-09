@@ -227,6 +227,7 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 			}
 	}
 	
+	//maybe make the pipes distribute the fluid equally?
 	public void removeFromNetwork()
 	{
 		if(network!=null)
