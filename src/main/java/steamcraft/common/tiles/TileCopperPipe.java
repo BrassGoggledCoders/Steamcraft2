@@ -307,7 +307,7 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 					if(pipe.network!=network)
 						if(network!=null)
 						{
-							if(network.size < pipe.network.size && network.tank.getFluidAmount()==0)
+							if(network.size < pipe.network.size)
 							{
 								network = pipe.network;
 								network.changeSize(1);
@@ -532,9 +532,6 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 		FluidTank tank;
 		public int size;
 		
-		public int outputsSize;
-		public int inputsSize;
-
 		ArrayList<Coords> inputs = new ArrayList<Coords>();
 		ArrayList<Coords> outputs = new ArrayList<Coords>();
 
@@ -543,7 +540,6 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 		public FluidNetwork(int size)
 		{
 			this.size = size;
-			this.outputsSize = this.inputsSize = 0;
 			
 			this.tank = new FluidTank(200*size);
 		}
@@ -658,9 +654,6 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 			temp.setInteger("networkSize", size);
 			tank.writeToNBT(temp);
 			
-			temp.setInteger("outputSize", outputsSize);
-			temp.setInteger("inputSize", inputsSize);
-			
 			NBTTagCompound inputTag = new NBTTagCompound();
 			writeArrayListToNBT(inputTag, inputs);
 			temp.setTag("inputList", inputTag);
@@ -697,13 +690,10 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 		{
 			NBTTagCompound temp = tag.getCompoundTag("network");
 			
-			FluidNetwork network = new FluidNetwork(temp.getInteger("network"));
+			FluidNetwork network = new FluidNetwork(temp.getInteger("networkSize"));
 			
 			network.tank = new FluidTank(200*network.size);
 			network.tank.readFromNBT(temp);
-			
-			network.outputsSize = temp.getInteger("outputSize");
-			network.inputsSize = temp.getInteger("inputSize");
 			
 			readArrayListFromNBT(temp.getCompoundTag("inputList"), network.inputs);
 			readArrayListFromNBT(temp.getCompoundTag("outputList"), network.outputs);
