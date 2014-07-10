@@ -31,9 +31,6 @@ import steamcraft.common.config.ConfigBlocks;
  */
 public class TileCopperPipe extends TileEntity implements IFluidHandler
 {
-	private short ticksSinceLastDistribute = 0;
-
-	private ForgeDirection received = null;
 	public ForgeDirection extract = null;
 	public ForgeDirection[] connections = new ForgeDirection[6];
 
@@ -53,7 +50,6 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 			if(isMaster)
 				network.updateNetwork(this.worldObj);
 		}
-
 	}
 
 	@Override
@@ -100,7 +96,18 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 			updateNetwork(ForgeDirection.UP);
 		}
 		else
+		{
+			if(connections[0]!=null)
+			{
+				ForgeDirection dir = connections[0];
+				
+				Coords temp = new Coords(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ, dir.getOpposite());
+				
+				System.out.println(network.outputs.remove(temp));
+			}
+			
 			connections[0] = null;
+		}
 
 		if(canConnect(xCoord, yCoord - 1, zCoord))
 		{
@@ -108,7 +115,18 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 			updateNetwork(ForgeDirection.DOWN);
 		}
 		else
+		{
+			if(connections[1]!=null)
+			{
+				ForgeDirection dir = connections[1];
+				
+				Coords temp = new Coords(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ, dir.getOpposite());
+				
+				System.out.println(network.outputs.remove(temp));
+			}
+			
 			connections[1] = null;
+		}
 
 		if(canConnect(xCoord, yCoord, zCoord + 1))
 		{
@@ -116,7 +134,17 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 			updateNetwork(ForgeDirection.SOUTH);
 		}
 		else
+		{
+			if(connections[2]!=null)
+			{
+				ForgeDirection dir = connections[2];
+				
+				Coords temp = new Coords(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ, dir.getOpposite());
+				
+				System.out.println(network.outputs.remove(temp));
+			}
 			connections[2] = null;
+		}
 
 		if(canConnect(xCoord, yCoord, zCoord - 1))
 		{
@@ -124,7 +152,18 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 			updateNetwork(ForgeDirection.NORTH);
 		}
 		else
+		{
+			if(connections[3]!=null)
+			{
+				ForgeDirection dir = connections[3];
+				
+				Coords temp = new Coords(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ, dir.getOpposite());
+				
+				System.out.println(network.outputs.remove(temp));
+			}
+			
 			connections[3] = null;
+		}
 
 		if(canConnect(xCoord + 1, yCoord, zCoord))
 		{
@@ -132,7 +171,18 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 			updateNetwork(ForgeDirection.EAST);
 		}
 		else
+		{
+			if(connections[4]!=null)
+			{
+				ForgeDirection dir = connections[4];
+				
+				Coords temp = new Coords(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ, dir.getOpposite());
+				
+				System.out.println(network.outputs.remove(temp));
+			}
+			
 			connections[4] = null;
+		}
 
 		if(canConnect(xCoord - 1, yCoord, zCoord))
 		{
@@ -140,10 +190,24 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 			updateNetwork(ForgeDirection.WEST);
 		}
 		else
+		{
+			if(connections[5]!=null)
+			{
+				ForgeDirection dir = connections[5];
+				
+				Coords temp = new Coords(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ, dir.getOpposite());
+				
+				System.out.println(network.outputs.remove(temp));
+			}
+			
 			connections[5] = null;
+		}
 
 		if(extract!=null && !canChangeState(extract))
+		{
 			network.inputs.remove(new Coords(xCoord + extract.offsetX, yCoord + extract.offsetY, zCoord + extract.offsetZ, extract.getOpposite()));
+			extract=null;
+		}
 
 		if(network==null)
 		{
@@ -153,14 +217,19 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 
 		for(ForgeDirection dir : connections)
 		{
-			if(dir!=null && extract!=dir)
-				if(canChangeState(dir))
+			if(dir!=null && canChangeState(dir))
+			{
+				Coords temp = new Coords(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ, dir.getOpposite());
+				
+				if(extract!=dir)
 				{
-					Coords temp = new Coords(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ, dir.getOpposite());
-
 					if(!network.outputs.contains(temp))
 						network.outputs.add(temp);
 				}
+				else
+					if(!network.inputs.contains(temp))
+						network.inputs.add(temp);
+			}
 		}
 	}
 
@@ -172,59 +241,76 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 		{
 			TileCopperPipe pipe = (TileCopperPipe) tile;
 
-			if(pipe.network!=null && pipe.network!=network)
-				if(network!=null)
-				{
-					if(network.size < pipe.network.size)
+			if(pipe.network!=null)
+			{
+				if(pipe.network!=network)
+					if(network!=null)
 					{
-						network = pipe.network;
-						network.changeSize(1);
-
-						updateNetworkToOthers(dir);
+						if(network.size < pipe.network.size)
+						{
+							network = pipe.network;
+							network.changeSize(1);
+	
+							updateNetworkToOthers(dir);
+						}
+						else
+						{
+							pipe.network = network;
+							network.changeSize(1);
+	
+							pipe.updateNetworkToOthers(dir.getOpposite());
+						}
 					}
 					else
 					{
-						pipe.network = network;
+						network = pipe.network;
 						network.changeSize(1);
-
-						pipe.updateNetworkToOthers(dir.getOpposite());
 					}
-				}
-				else
-				{
-					network = pipe.network;
-					network.changeSize(1);
-				}
-
+			}
 		}
 	}
 
 	private void updateNetworkToOthers(ForgeDirection ignore)
 	{
 		for(ForgeDirection dir : connections)
-			if(dir!=null && dir!=ignore && !canChangeState(dir))
-			{
-				TileCopperPipe pipe = (TileCopperPipe) worldObj.getTileEntity(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ);
-
-				if(pipe.network!=null && pipe.network.size!=0)
-					pipe.network = null;
-
-				network.changeSize(1);
-
-				if(pipe.network!=null)
+			if(dir!=null && dir!=ignore)
+				if(!canChangeState(dir))
 				{
-					if(pipe.isMaster)
-						pipe.isMaster = false;
-
-					if(!pipe.network.equals(network))
+					TileCopperPipe pipe = (TileCopperPipe) worldObj.getTileEntity(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ);
+	
+					if(pipe.network!=null && pipe.network.size!=0)
+						pipe.network = null;
+	
+					network.changeSize(1);
+	
+					if(pipe.network!=null)
 					{
-						pipe.network = network;
-						pipe.updateNetworkToOthers(dir.getOpposite());
+						if(pipe.isMaster)
+							pipe.isMaster = false;
+	
+						if(!pipe.network.equals(network))
+						{
+							pipe.network = network;
+							pipe.updateNetworkToOthers(dir.getOpposite());
+						}
 					}
+					else
+						pipe.network = network;
 				}
-				else
-					pipe.network = network;
-			}
+				else 
+				{
+					Coords temp = new Coords(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ, dir.getOpposite());
+					
+					if(dir!=extract)
+					{
+						if(!network.outputs.contains(temp))
+							network.outputs.add(temp);
+					}
+					else
+						if(!network.inputs.contains(temp))
+							network.inputs.add(temp);
+				}
+					
 	}
 
 	//maybe make the pipes distribute the fluid equally?
@@ -239,19 +325,19 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 			else
 			{
 				for(ForgeDirection dir : connections)
-					if(dir!=null && !canChangeState(dir))
-					{
-						TileCopperPipe pipe = (TileCopperPipe) worldObj.getTileEntity(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ);
-
-						network.changeSize(-network.size);
-						pipe.network = new FluidNetwork(1);
-						pipe.isMaster = true;
-
-						if(dir==extract)
+					if(dir!=null)
+						if(!canChangeState(dir))
+						{
+							TileCopperPipe pipe = (TileCopperPipe) worldObj.getTileEntity(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ);
+	
+							network.changeSize(-network.size);
+							pipe.network = new FluidNetwork(1);
+							pipe.isMaster = true;
+						}
+						else if(dir==extract)
 							network.inputs.remove(new Coords(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ, dir.getOpposite()));
-						else if(canChangeState(dir))
+						else
 							network.outputs.remove(new Coords(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ, dir.getOpposite()));
-					}
 			}
 		}
 	}
@@ -397,6 +483,9 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 
 			if(ticksSinceLastUpdate > ticksTillUpdate)
 			{
+				if(tank.getFluidAmount() == 0)
+					tank.setFluid(null);
+				
 				System.out.println(tank.getFluidAmount());
 				ticksSinceLastUpdate = 0;
 
@@ -415,6 +504,7 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 					{
 						IFluidHandler tile = (IFluidHandler) world.getTileEntity(coords.x, coords.y, coords.z);
 						if(tile!=null)
+						{
 							for(FluidTankInfo info : tile.getTankInfo(coords.dir))
 							{
 								if(info.fluid!=null && tile.canDrain(coords.dir, info.fluid.getFluid()))
@@ -424,6 +514,7 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 									tank.fill(tile.drain(coords.dir, canFill, true), true);
 								}
 							}
+						}
 					}
 					else
 						break;
@@ -476,6 +567,18 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 			this.y = y;
 			this.z = z;
 			this.dir = dir;
+		}
+		
+		@Override
+		public boolean equals(Object obj)
+		{
+			if(obj instanceof Coords)
+			{
+				Coords coord = (Coords) obj;
+				if(x == coord.x && y==coord.y && z==coord.z && dir==coord.dir)
+					return true;
+			}
+			return false;
 		}
 	}
 }
