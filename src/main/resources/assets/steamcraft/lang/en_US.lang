@@ -85,7 +85,7 @@ tile.blockIntake.desc=Generates 10 water/tick if a water source block is below i
 tile.blockTurbine.name=Steam-Powered Turbine
 tile.blockTurbine.desc=Generates RF from steam. Uses 10 steam/tick to generate 20RF/Tick.
 tile.blockBattery.name=Battery Block
-tile.blockBattery.desc=Stores RF.
+tile.blockBattery.desc=Stores 400k RF. Transfers at 80RF/tick. Keep electric jars in the internal slots to increase battery input/output and capacity.
 
 #Items
 item.itemResource.0.name=Etherium Crystal
