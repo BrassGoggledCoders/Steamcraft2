@@ -195,8 +195,8 @@ public class ConfigBlocks
 		blockLightningRod = new BlockLightningRod(Material.iron).setBlockName("blockLightningRod");
 		blockTeslaCoil = new BlockTeslaCoil(Material.iron).setBlockName("blockTeslaCoil");
 
-		RegistryHelper.registerContainerBlock(blockTurbine, TileTurbine.class, "BlockTurbine");
-		RegistryHelper.registerContainerBlock(blockBattery, TileBattery.class, "BlockBattery");
+		RegistryHelper.registerContainerBlockWithDesc(blockTurbine, TileTurbine.class, "BlockTurbine");
+		RegistryHelper.registerContainerBlockWithDesc(blockBattery, TileBattery.class, "BlockBattery");
 		RegistryHelper.registerContainerBlockWithDesc(blockLightningRod, TileLightningRod.class, "BlockLightningRod");
 		RegistryHelper.registerContainerBlockWithDesc(blockTeslaCoil, TileTeslaCoil.class, "BlockTeslaCoil");
 
