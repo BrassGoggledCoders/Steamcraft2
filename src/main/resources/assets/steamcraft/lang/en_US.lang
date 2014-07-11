@@ -83,7 +83,7 @@ tile.blockDropHammerFrame.name=Drop Hammer Frame
 tile.blockIntake.name=Intake Block
 tile.blockIntake.desc=Generates 10 water/tick if a water source block is below it. Consumes the source block every 10 seconds. Automatically outputs to the block above it.
 tile.blockTurbine.name=Steam-Powered Turbine
-tile.blockTurbine.desc=Generates RF from steam.
+tile.blockTurbine.desc=Generates RF from steam. Uses 10 steam/tick to generate 20RF/Tick.
 tile.blockBattery.name=Battery Block
 tile.blockBattery.desc=Stores RF.
 
