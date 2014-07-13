@@ -1,5 +1,5 @@
 /**
- * This class was created by BrassGoggledCoders modding team. 
+ * This class was created by BrassGoggledCoders modding team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -8,7 +8,7 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- * 
+ *
  */
 package steamcraft.client;
 
@@ -18,6 +18,7 @@ import net.minecraft.client.model.ModelBiped;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 import steamcraft.client.lib.RenderIDs;
+import steamcraft.client.renderers.block.BlockBatteryRenderer;
 import steamcraft.client.renderers.block.BlockCrystalRenderer;
 import steamcraft.client.renderers.block.BlockLightningRodRenderer;
 import steamcraft.client.renderers.block.BlockTeslaCoilRenderer;
@@ -26,6 +27,7 @@ import steamcraft.client.renderers.entity.RenderSmallLightningBolt;
 import steamcraft.client.renderers.item.ModelBrassWings;
 import steamcraft.client.renderers.item.ModelJetpack;
 import steamcraft.client.renderers.item.ModelWingpack;
+import steamcraft.client.renderers.tile.TileBatteryRenderer;
 import steamcraft.client.renderers.tile.TileCopperPipeRenderer;
 import steamcraft.client.renderers.tile.TileCrystalRenderer;
 import steamcraft.client.renderers.tile.TileLightningRodRenderer;
@@ -35,6 +37,7 @@ import steamcraft.common.config.ConfigKeyBindings;
 import steamcraft.common.entities.projectile.EntityBullet;
 import steamcraft.common.entities.projectile.EntitySmallLightningBolt;
 import steamcraft.common.lib.Utils;
+import steamcraft.common.tiles.TileBattery;
 import steamcraft.common.tiles.TileCopperPipe;
 import steamcraft.common.tiles.TileCrystal;
 import steamcraft.common.tiles.TileLightningRod;
@@ -50,7 +53,7 @@ import cpw.mods.fml.common.FMLCommonHandler;
 
 /**
  * @author Surseance (Johnny Eatmon)
- * 
+ *
  */
 public class ClientProxy extends CommonProxy
 {
@@ -99,6 +102,10 @@ public class ClientProxy extends CommonProxy
 		RenderIDs.blockTeslaCoilRI = RenderingRegistry.getNextAvailableRenderId();
 		ClientRegistry.bindTileEntitySpecialRenderer(TileTeslaCoil.class, new TileTeslaCoilRenderer());
 		RenderingRegistry.registerBlockHandler(new BlockTeslaCoilRenderer());
+		//Battery
+		RenderIDs.blockBatteryRI = RenderingRegistry.getNextAvailableRenderId();
+		ClientRegistry.bindTileEntitySpecialRenderer(TileBattery.class, new TileBatteryRenderer());
+		RenderingRegistry.registerBlockHandler(new BlockBatteryRenderer());
 
 		/*
 		 * Cast Iron Lamp ConfigBlocks.blockCastIronLampRI =
