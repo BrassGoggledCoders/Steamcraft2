@@ -48,7 +48,7 @@ public class TileBatteryRenderer extends TileEntitySpecialRenderer
 	{
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float) dx + 0.5F, (float) dy + 1.5F, (float) dz + 0.5F);
-		ResourceLocation crystal = (new ResourceLocation(LibInfo.PREFIX.replace(":", ""), "textures/models/crystal.png"));
+		ResourceLocation crystal = (new ResourceLocation(LibInfo.PREFIX.replace(":", ""), "textures/models/batterybank.png"));
 		Minecraft.getMinecraft().renderEngine.bindTexture(crystal);
 		renderBattery(te, te.getWorldObj(), te.xCoord, te.yCoord, te.zCoord);
 		GL11.glPopMatrix();
@@ -56,8 +56,8 @@ public class TileBatteryRenderer extends TileEntitySpecialRenderer
 	public void renderBattery(TileEntity te, World world, int x, int y, int z)
 	{
 		GL11.glPushMatrix();
-		GL11.glScalef(1.5F, 1.5F, 1.5F);
-		GL11.glTranslatef(0, -0.8F, 0);
+		GL11.glScalef(1.3F, 1.5F, 1F);
+		GL11.glTranslatef(-0.1F, 0.05F, 0.25F);
 		GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
 		model.render((Entity)null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F, te);
 		GL11.glPopMatrix();

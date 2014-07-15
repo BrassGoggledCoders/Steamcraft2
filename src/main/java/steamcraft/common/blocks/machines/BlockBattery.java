@@ -44,6 +44,7 @@ public class BlockBattery extends BlockContainerMod
 	public BlockBattery()
 	{
 		super(Material.iron);
+		setBlockBounds(0.2F, 0, 0, 0.8F, 0.7F, 1);
 	}
 	@Override
 	public int getRenderType()
