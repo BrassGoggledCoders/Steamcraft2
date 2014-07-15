@@ -12,6 +12,8 @@
  */
 package steamcraft.common.config;
 
+import java.util.Random;
+
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -293,6 +295,8 @@ public class ConfigRecipes
 		GameRegistry.addSmelting(new ItemStack(ConfigBlocks.blockSlate, 1, 5), new ItemStack(ConfigBlocks.blockSlate, 1, 2), 0.3F);
 
 		GameRegistry.addSmelting(new ItemStack(ConfigItems.itemTeapot, 1, 1), new ItemStack(ConfigItems.itemTeapot, 1, 2), 0);
+		Random random = new Random();
+		GameRegistry.addSmelting(new ItemStack(ConfigBlocks.blockBrassLeaves), new ItemStack(ConfigItems.itemNugget, /*random.nextInt(10)*/6, 4), 0);
 	}
 
 }
