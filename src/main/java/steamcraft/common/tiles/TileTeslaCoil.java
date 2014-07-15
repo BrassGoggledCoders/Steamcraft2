@@ -16,9 +16,10 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
-import net.minecraft.block.Block;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import steamcraft.common.lib.DamageSourceHandler;
@@ -46,6 +47,21 @@ public class TileTeslaCoil extends TileEntity
 	    		player.attackEntityFrom(DamageSourceHandler.electrocution, 3);
 	    		Random random = new Random();
 	    		worldObj.spawnParticle("reddust", player.posX + random.nextFloat()/2, player.posY-0.5F + random.nextFloat()/2, player.posZ + random.nextFloat()/2, 0, 0, 0);
+	        }
+		}
+		else if(getWorldObj().getBlock(this.xCoord, this.yCoord-1, this.zCoord) == Blocks.emerald_block)
+		{
+			AxisAlignedBB axisalignedbb = AxisAlignedBB.getBoundingBox((double)xCoord - 5, (double)yCoord - 5, (double)zCoord - 5, (double)(xCoord + 5), (double)(yCoord + 5), (double)(zCoord + 5));
+	        List list = worldObj.getEntitiesWithinAABB(EntityVillager.class, axisalignedbb);
+	        Iterator iterator = list.iterator();
+	        EntityVillager villager;
+
+	        while (iterator.hasNext())
+	        {
+	            villager = (EntityVillager)iterator.next();
+	            villager.attackEntityFrom(DamageSourceHandler.electrocution, 3);
+	            Random random = new Random();
+	            worldObj.spawnParticle("reddust", villager.posX + random.nextFloat()/3, villager.posY + random.nextFloat()/3, villager.posZ + random.nextFloat()/3, 0, 0, 0);
 	        }
 		}
 		else
