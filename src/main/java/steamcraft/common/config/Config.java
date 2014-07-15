@@ -71,7 +71,7 @@ public class Config
 		config = new Configuration(file);
 
 		//Chances
-		uraniumChance = config.get(CATEGORY_GEN_OPTIONS, "Chance of Uranium Ore Generation", 5).getInt();
+		uraniumChance = config.get(CATEGORY_GEN_OPTIONS, "Chance of Uranium Ore Generation. Percentage chance per chunk", 5).getInt();
 		brimstoneChance = config.get(CATEGORY_GEN_OPTIONS, "Chance of Brimstone Ore Generation", 15).getInt();
 		borniteChance = config.get(CATEGORY_GEN_OPTIONS, "Chance of Bornite Ore Generation", 15).getInt();
 		phosphateChance = config.get(CATEGORY_GEN_OPTIONS, "Chance of Phosphate Ore Generation", 7).getInt();

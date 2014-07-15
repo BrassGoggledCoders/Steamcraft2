@@ -1,5 +1,5 @@
 /**
- * This class was created by BrassGoggledCoders modding team. 
+ * This class was created by BrassGoggledCoders modding team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -8,7 +8,7 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- * 
+ *
  */
 package steamcraft.common.config;
 
@@ -27,7 +27,7 @@ import cpw.mods.fml.common.IWorldGenerator;
 
 /**
  * @authors Surseance & warlordjones
- * 
+ *
  */
 public class ConfigWorldGen implements IWorldGenerator
 {
@@ -85,7 +85,9 @@ public class ConfigWorldGen implements IWorldGenerator
 		BiomeGenBase biome = world.getBiomeGenForCoords(chunkX, chunkZ);
 		if (Config.brassTreeGenEnabled && BiomeDictionary.isBiomeOfType(biome, Type.FOREST))
 		{
-			for (int n = 0; n < Config.brassTreeGenChance; n++)
+			Random rand = new Random();
+			int n = rand.nextInt(100);
+			if(n == Config.brassTreeGenChance)
 			{
 				int X = chunkX + random.nextInt(16);
 				int Z = chunkZ + random.nextInt(16);
@@ -99,7 +101,9 @@ public class ConfigWorldGen implements IWorldGenerator
 	private void generateOre(World world, Random random, int chunkX, int chunkZ, int chance, int height, int blocks, Block ore, int meta,
 			Block blockToGenIn)
 	{
-		for (int i = 0; i < chance; i++)
+		Random rand = new Random();
+		int n = rand.nextInt(100);
+		if(n == chance)
 		{
 			int oreXCoord = chunkX + random.nextInt(16);
 			int oreYCoord = random.nextInt(height);
