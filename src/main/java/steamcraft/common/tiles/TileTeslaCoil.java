@@ -1,5 +1,5 @@
 /**
- * This class was created by BrassGoggledCoders modding team. 
+ * This class was created by BrassGoggledCoders modding team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -8,13 +8,15 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- * 
+ *
  */
 package steamcraft.common.tiles;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.Random;
 
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
@@ -30,15 +32,28 @@ public class TileTeslaCoil extends TileEntity
 	public void updateEntity()
 	{
 		AxisAlignedBB axisalignedbb = AxisAlignedBB.getBoundingBox((double)xCoord - 5, (double)yCoord - 5, (double)zCoord - 5, (double)(xCoord + 5), (double)(yCoord + 5), (double)(zCoord + 5));
-        List list = worldObj.getEntitiesWithinAABB(EntityPlayer.class, axisalignedbb);
+        List list = worldObj.getEntitiesWithinAABB(EntityLiving.class, axisalignedbb);
         Iterator iterator = list.iterator();
-        EntityPlayer entityplayer;
+        EntityLiving living;
 
         while (iterator.hasNext())
         {
-            entityplayer = (EntityPlayer)iterator.next();
-            entityplayer.attackEntityFrom(DamageSourceHandler.electrocution, 4);
-            worldObj.spawnParticle("reddust", entityplayer.posX, entityplayer.posY, entityplayer.posZ, 0, 0, 0);
+            living = (EntityLiving)iterator.next();
+            living.attackEntityFrom(DamageSourceHandler.electrocution, 3);
+            Random random = new Random();
+            worldObj.spawnParticle("reddust", living.posX + random.nextFloat()/2, living.posY + random.nextFloat()/2, living.posZ + random.nextFloat()/2, 0, 0, 0);
+        }
+        AxisAlignedBB axisalignedbb2 = AxisAlignedBB.getBoundingBox((double)xCoord - 5, (double)yCoord - 5, (double)zCoord - 5, (double)(xCoord + 5), (double)(yCoord + 5), (double)(zCoord + 5));
+        List list2 = worldObj.getEntitiesWithinAABB(EntityPlayer.class, axisalignedbb2);
+        Iterator iterator2 = list2.iterator();
+        EntityPlayer player;
+
+        while (iterator2.hasNext())
+        {
+    		player = (EntityPlayer)iterator2.next();
+    		player.attackEntityFrom(DamageSourceHandler.electrocution, 3);
+    		Random random = new Random();
+    		worldObj.spawnParticle("reddust", player.posX + random.nextFloat()/2, player.posY-0.5F + random.nextFloat()/2, player.posZ + random.nextFloat()/2, 0, 0, 0);
         }
 	}
 }
