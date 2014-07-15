@@ -16,6 +16,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
+import net.minecraft.block.Block;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
@@ -28,32 +29,39 @@ import steamcraft.common.lib.DamageSourceHandler;
  */
 public class TileTeslaCoil extends TileEntity
 {
+
 	@Override
 	public void updateEntity()
 	{
-		AxisAlignedBB axisalignedbb = AxisAlignedBB.getBoundingBox((double)xCoord - 5, (double)yCoord - 5, (double)zCoord - 5, (double)(xCoord + 5), (double)(yCoord + 5), (double)(zCoord + 5));
-        List list = worldObj.getEntitiesWithinAABB(EntityLiving.class, axisalignedbb);
-        Iterator iterator = list.iterator();
-        EntityLiving living;
+		if(getWorldObj().isBlockIndirectlyGettingPowered(this.xCoord, this.yCoord, this.zCoord))
+		{
+	        AxisAlignedBB axisalignedbb2 = AxisAlignedBB.getBoundingBox((double)xCoord - 5, (double)yCoord - 5, (double)zCoord - 5, (double)(xCoord + 5), (double)(yCoord + 5), (double)(zCoord + 5));
+	        List list2 = worldObj.getEntitiesWithinAABB(EntityPlayer.class, axisalignedbb2);
+	        Iterator iterator2 = list2.iterator();
+	        EntityPlayer player;
 
-        while (iterator.hasNext())
-        {
-            living = (EntityLiving)iterator.next();
-            living.attackEntityFrom(DamageSourceHandler.electrocution, 3);
-            Random random = new Random();
-            worldObj.spawnParticle("reddust", living.posX + random.nextFloat()/2, living.posY + random.nextFloat()/2, living.posZ + random.nextFloat()/2, 0, 0, 0);
-        }
-        AxisAlignedBB axisalignedbb2 = AxisAlignedBB.getBoundingBox((double)xCoord - 5, (double)yCoord - 5, (double)zCoord - 5, (double)(xCoord + 5), (double)(yCoord + 5), (double)(zCoord + 5));
-        List list2 = worldObj.getEntitiesWithinAABB(EntityPlayer.class, axisalignedbb2);
-        Iterator iterator2 = list2.iterator();
-        EntityPlayer player;
+	        while (iterator2.hasNext())
+	        {
+	    		player = (EntityPlayer)iterator2.next();
+	    		player.attackEntityFrom(DamageSourceHandler.electrocution, 3);
+	    		Random random = new Random();
+	    		worldObj.spawnParticle("reddust", player.posX + random.nextFloat()/2, player.posY-0.5F + random.nextFloat()/2, player.posZ + random.nextFloat()/2, 0, 0, 0);
+	        }
+		}
+		else
+		{
+			AxisAlignedBB axisalignedbb = AxisAlignedBB.getBoundingBox((double)xCoord - 5, (double)yCoord - 5, (double)zCoord - 5, (double)(xCoord + 5), (double)(yCoord + 5), (double)(zCoord + 5));
+	        List list = worldObj.getEntitiesWithinAABB(EntityLiving.class, axisalignedbb);
+	        Iterator iterator = list.iterator();
+	        EntityLiving living;
 
-        while (iterator2.hasNext())
-        {
-    		player = (EntityPlayer)iterator2.next();
-    		player.attackEntityFrom(DamageSourceHandler.electrocution, 3);
-    		Random random = new Random();
-    		worldObj.spawnParticle("reddust", player.posX + random.nextFloat()/2, player.posY-0.5F + random.nextFloat()/2, player.posZ + random.nextFloat()/2, 0, 0, 0);
-        }
+	        while (iterator.hasNext())
+	        {
+	            living = (EntityLiving)iterator.next();
+	            living.attackEntityFrom(DamageSourceHandler.electrocution, 3);
+	            Random random = new Random();
+	            worldObj.spawnParticle("reddust", living.posX + random.nextFloat()/2, living.posY + random.nextFloat()/2, living.posZ + random.nextFloat()/2, 0, 0, 0);
+	        }
+		}
 	}
 }
