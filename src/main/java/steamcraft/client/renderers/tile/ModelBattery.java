@@ -9,7 +9,6 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.tileentity.TileEntity;
-import steamcraft.common.items.BaseElectricItem;
 import steamcraft.common.tiles.TileBattery;
 
 public class ModelBattery extends ModelBase
@@ -180,9 +179,9 @@ public class ModelBattery extends ModelBase
     if(tile != null)
     {
         TileBattery te = (TileBattery)tile;
-        ModelRenderer[] jars = { this.jar, this.jar2, this.jar3, this.jar4 };
-        ModelRenderer[] lids = { this.lid, this.lid2, this.lid3, this.lid4 };
-        ModelRenderer[] wires = { this.wire, this.wire2, this.wire3, this.wire4 };
+        ModelRenderer[] jars = { this.jar, this.jar2, this.jar3, this.jar4, jar5, jar6 };
+        ModelRenderer[] lids = { this.lid, this.lid2, this.lid3, this.lid4, lid5, lid6 };
+        ModelRenderer[] wires = { this.wire, this.wire2, this.wire3, this.wire4, wire5, wire6 };
           for (int i = 0; i < jars.length; i++)
           {
         	  if(te.inventory[i] != null)
