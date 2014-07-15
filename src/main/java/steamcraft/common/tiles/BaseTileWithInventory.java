@@ -1,5 +1,5 @@
 /**
- * This class was created by BrassGoggledCoders modding team. 
+ * This class was created by BrassGoggledCoders modding team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -8,7 +8,7 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- * 
+ *
  */
 package steamcraft.common.tiles;
 
@@ -21,19 +21,19 @@ import net.minecraft.tileentity.TileEntity;
 
 /**
  * Basic machine class.Every machine that has an inventory should extend this.
- * 
+ *
  * @author Decebaldecebal
- * 
+ *
  */
 public abstract class BaseTileWithInventory extends TileEntity implements ISidedInventory
 {
-	protected ItemStack[] inventory;
+	public ItemStack[] inventory;
 
 	public BaseTileWithInventory(byte invSize)
 	{
 		inventory = new ItemStack[invSize];
 	}
-	
+
 	@Override
 	public void readFromNBT(NBTTagCompound tag)
 	{
@@ -51,7 +51,7 @@ public abstract class BaseTileWithInventory extends TileEntity implements ISided
 				inventory[b0] = ItemStack.loadItemStackFromNBT(nbttagcompound1);
 		}
 	}
-	
+
 	@Override
 	public void writeToNBT(NBTTagCompound tag)
 	{
@@ -184,7 +184,7 @@ public abstract class BaseTileWithInventory extends TileEntity implements ISided
 	public void openInventory()
 	{
 	}
-	
+
 	@Override
 	public void closeInventory()
 	{

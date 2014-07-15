@@ -209,6 +209,6 @@ public class TileBattery extends BaseTileWithInventory implements IEnergyHandler
 	@Override
 	public String getInventoryName()
 	{
-		return "Battery";
+		return "Battery Bank";
 	}
 }

@@ -8,6 +8,9 @@ package steamcraft.client.renderers.tile;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
+import net.minecraft.tileentity.TileEntity;
+import steamcraft.common.items.BaseElectricItem;
+import steamcraft.common.tiles.TileBattery;
 
 public class ModelBattery extends ModelBase
 {
@@ -30,8 +33,8 @@ public class ModelBattery extends ModelBase
 
   public ModelBattery()
   {
-    textureWidth = 64;
-    textureHeight = 32;
+	  textureWidth = 64;
+	  textureHeight = 32;
 
       base = new ModelRenderer(this, 0, 0);
       base.addBox(0F, 0F, 0F, 2, 1, 16);
@@ -125,25 +128,29 @@ public class ModelBattery extends ModelBase
       setRotation(wire4, 0F, 0F, 0F);
   }
 
-  public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5)
+  public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5, TileEntity tile)
   {
     super.render(entity, f, f1, f2, f3, f4, f5);
     setRotationAngles(f, f1, f2, f3, f4, f5);
     base.render(f5);
     upright.render(f5);
     top.render(f5);
-    jar.render(f5);
-    lid.render(f5);
-    wire.render(f5);
-    jar2.render(f5);
-    lid2.render(f5);
-    wire2.render(f5);
-    jar3.render(f5);
-    lid3.render(f5);
-    wire3.render(f5);
-    jar4.render(f5);
-    lid4.render(f5);
-    wire4.render(f5);
+    if(tile != null)
+    {
+        TileBattery te = (TileBattery)tile;
+        ModelRenderer[] jars = { this.jar, this.jar2, this.jar3, this.jar4 };
+        ModelRenderer[] lids = { this.lid, this.lid2, this.lid3, this.lid4 };
+        ModelRenderer[] wires = { this.wire, this.wire2, this.wire3, this.wire4 };
+          for (int i = 0; i < jars.length; i++)
+          {
+        	  if(te.inventory[i] != null)
+        	  {
+        		  jars[i].render(f5);
+        		  lids[i].render(f5);
+        		  wires[i].render(f5);
+        	  }
+          }
+    }
   }
 
   private void setRotation(ModelRenderer model, float x, float y, float z)
