@@ -337,8 +337,9 @@ achievement.rodachieve.desc=FOR SCIENCE!
 achievement.zapachieve=KA-ZAAP!!
 achievement.zapachieve.desc=Power, UNLIMITED POWER!
 #Damage Sources
-death.attack.steamcraft2.electrocution=%1$s was electrocuted!
-death.attack.steamcraft2.electrocution.player=%1$s was electrocuted!
-death.attack.steamcraft2.bullet=%1$s was shot!
-death.attack.steamcraft2.bullet.player=%1$s was shot!
+death.attack.steamcraft2.electrocution=%1$s was electrocuted
+death.attack.steamcraft2.electrocution.player=%1$s was electrocuted
+death.attack.steamcraft2.bullet=%1$s was shot
+death.attack.steamcraft2.bullet.player=%1$s was shot by %2$s
+death.attack.steamcraft2.bullet.player.item=%1$s was shot by %2$s using %3$s
 
