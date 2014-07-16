@@ -22,18 +22,21 @@ import steamcraft.common.lib.LibInfo;
  */
 public class ConfigAchievements
 {
-	public static Achievement raygunAchieve, shrinkrayAchieve, boilerAchieve, ingotAchieve, sheetAchieve, intakeAchieve, teaAchieve, engraveAchieve, wingsAchieve, jetpackAchieve, wingpackAchieve, gogglesAchieve, gunAchieve;
+	public static Achievement raygunAchieve, shrinkrayAchieve, boilerAchieve, ingotAchieve, sheetAchieve, intakeAchieve, teaAchieve, engraveAchieve, wingsAchieve, jetpackAchieve, wingpackAchieve, gogglesAchieve, gunAchieve, turbineAchieve, rodAchieve, zapAchieve;
 
 	public static AchievementPage sc2AchievePage;
 
 	public static void init()
 	{
-		String prefix = LibInfo.ID + ".achievement.";
+		String prefix = LibInfo.ID + "achievement.";
 		ingotAchieve = new Achievement(prefix + "ingot", "ingotachieve", 0, 0, ConfigItems.itemIngot, null).registerStat().initIndependentStat();
 		sheetAchieve = new Achievement(prefix + "sheet", "sheetachieve", 2, 0, ConfigItems.itemSheet, ingotAchieve).registerStat();
 		boilerAchieve = new Achievement(prefix + "boiler", "boilerachieve", 4, 0, ConfigBlocks.blockSteamBoiler, sheetAchieve).registerStat()/* .setSpecial() */;
 		intakeAchieve = new Achievement(prefix + "intake", "intakeachieve", 6, 0, ConfigBlocks.blockIntake, boilerAchieve).registerStat();
 		teaAchieve = new Achievement(prefix + "tea", "teaachieve", -2, 0, ConfigItems.itemTeacup, null).registerStat().initIndependentStat();
+		turbineAchieve = new Achievement(prefix + "turbine", "turbineachieve", 0, 4, ConfigBlocks.blockTurbine, null).registerStat().initIndependentStat();
+		rodAchieve = new Achievement(prefix + "rod", "rodachieve", 2, 4, ConfigBlocks.blockLightningRod, turbineAchieve).registerStat();
+		zapAchieve = new Achievement(prefix + "zap", "zapachieve", 4, 4, ConfigBlocks.blockLightningRod, rodAchieve).registerStat();
 
 		wingsAchieve = new Achievement(prefix + "wings", "wingsachieve", 0, 10, ConfigItems.itemClockworkWings, null).registerStat().initIndependentStat();
 		jetpackAchieve = new Achievement(prefix + "jetpack", "jetpackachieve", 0, 8, ConfigItems.itemSteamJetpack, wingsAchieve).registerStat();
@@ -42,7 +45,7 @@ public class ConfigAchievements
 		raygunAchieve = new Achievement(prefix + "raygun", "raygunachieve", 0, 2, ConfigItems.itemRayGun, ingotAchieve).registerStat().setSpecial();
 		shrinkrayAchieve = new Achievement(prefix + "shrinkray", "shrinkrayachieve", 0, -2, ConfigItems.itemShrinkray, ingotAchieve).registerStat().setSpecial();
 
-		sc2AchievePage = new AchievementPage("Steamcraft 2", raygunAchieve, shrinkrayAchieve, boilerAchieve, ingotAchieve, sheetAchieve, intakeAchieve, teaAchieve, wingsAchieve, jetpackAchieve, wingpackAchieve/*, engraveAchieve, gogglesAchieve, gunAchieve*/);
+		sc2AchievePage = new AchievementPage("Steamcraft 2", raygunAchieve, shrinkrayAchieve, boilerAchieve, ingotAchieve, sheetAchieve, intakeAchieve, teaAchieve, wingsAchieve, jetpackAchieve, wingpackAchieve/*, engraveAchieve, gogglesAchieve, gunAchieve*/, turbineAchieve, rodAchieve, zapAchieve);
 		AchievementPage.registerAchievementPage(sc2AchievePage);
 	}
 

@@ -17,13 +17,16 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.event.ClickEvent;
 import net.minecraft.event.HoverEvent;
+import net.minecraft.item.ItemStack;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
 import steamcraft.client.lib.GuiIDs;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.blocks.machines.BlockIntake;
+import steamcraft.common.blocks.machines.BlockLightningRod;
 import steamcraft.common.blocks.machines.BlockSteamBoiler;
+import steamcraft.common.blocks.machines.BlockTurbine;
 import steamcraft.common.config.Config;
 import steamcraft.common.config.ConfigAchievements;
 import steamcraft.common.config.ConfigItems;
@@ -52,29 +55,33 @@ public class EventHandlerFML
 		Block craftingBlock = Block.getBlockFromItem(event.crafting.getItem());
 
 		if (event.crafting.getItem() instanceof ItemRayGun)
-			event.player.addStat(ConfigAchievements.raygunAchieve, 1);
+			event.player.triggerAchievement(ConfigAchievements.raygunAchieve);
 		else if (event.crafting.getItem() instanceof ItemShrinkray)
-			event.player.addStat(ConfigAchievements.shrinkrayAchieve, 1);
+			event.player.triggerAchievement(ConfigAchievements.shrinkrayAchieve);
 		else if (craftingBlock instanceof BlockSteamBoiler)
-			event.player.addStat(ConfigAchievements.boilerAchieve, 1);
+			event.player.triggerAchievement(ConfigAchievements.boilerAchieve);
 		else if (craftingBlock instanceof BlockIntake)
-			event.player.addStat(ConfigAchievements.intakeAchieve, 1);
+			event.player.triggerAchievement(ConfigAchievements.intakeAchieve);
+		else if (craftingBlock instanceof BlockTurbine)
+			event.player.triggerAchievement(ConfigAchievements.turbineAchieve);
+		else if (craftingBlock instanceof BlockLightningRod)
+			event.player.triggerAchievement(ConfigAchievements.rodAchieve);
 		else if (event.crafting.getItem() instanceof ItemSheet)
-			event.player.addStat(ConfigAchievements.sheetAchieve, 1);
+			event.player.triggerAchievement(ConfigAchievements.sheetAchieve);
 		else if (event.crafting.getItem() instanceof ItemClockworkWings)
-			event.player.addStat(ConfigAchievements.wingsAchieve,1);
+			event.player.triggerAchievement(ConfigAchievements.wingsAchieve);
 		else if (event.crafting.getItem() instanceof ItemSteamJetpack)
-			event.player.addStat(ConfigAchievements.jetpackAchieve,1);
+			event.player.triggerAchievement(ConfigAchievements.jetpackAchieve);
 		//TODO Dosn't work!
-		else if (event.crafting.getItem().equals(ConfigItems.itemSteamWingpack))
-			event.player.addStat(ConfigAchievements.wingpackAchieve,1);
+		else if (event.crafting.isItemEqual(new ItemStack(ConfigItems.itemSteamWingpack)))
+			event.player.triggerAchievement(ConfigAchievements.wingpackAchieve);
 	}
 
 	@SubscribeEvent
 	public void onItemSmelted(PlayerEvent.ItemSmeltedEvent event)
 	{
 		if (event.smelting.getItem() instanceof ItemIngot)
-			event.player.addStat(ConfigAchievements.ingotAchieve, 1);
+			event.player.triggerAchievement(ConfigAchievements.ingotAchieve);
 	}
 
 	@SubscribeEvent
