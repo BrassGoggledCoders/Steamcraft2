@@ -1,5 +1,5 @@
 /**
- * This class was created by BrassGoggledCoders modding team. 
+ * This class was created by BrassGoggledCoders modding team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -8,7 +8,7 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- * 
+ *
  */
 package steamcraft.common.entities.projectile;
 
@@ -21,11 +21,11 @@ import net.minecraft.entity.IProjectile;
 import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
+import steamcraft.common.lib.DamageSourceHandler;
 import steamcraft.common.lib.LibInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -33,9 +33,9 @@ import cpw.mods.fml.relauncher.SideOnly;
 /**
  * NOTE: Please do not tamper with this file unless you know vectors and trigonometric functions very well. Thank you. I have, however, cleaned up the code to
  * make things easier to understand.
- * 
+ *
  * @author Surseance (Johnny Eatmon)
- * 
+ *
  */
 public class EntityBullet extends Entity implements IProjectile
 {
@@ -82,7 +82,7 @@ public class EntityBullet extends Entity implements IProjectile
 		double dx = target.posX - shooter.posX;
 		double dy = target.boundingBox.minY + target.height / 3.0F - this.posY;
 		double dz = target.posZ - shooter.posZ;
-		double magnitude = MathHelper.sqrt_double(dx * dx + dz * dz); 
+		double magnitude = MathHelper.sqrt_double(dx * dx + dz * dz);
 
 		if (magnitude >= 1.0E-7D)
 		{
@@ -259,7 +259,7 @@ public class EntityBullet extends Entity implements IProjectile
 		if (mop != null)
 			if (mop.entityHit != null)
 			{
-				if (mop.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, this), this.damage))
+				if (mop.entityHit.attackEntityFrom(DamageSourceHandler.bullet, this.damage))
 				{
 					this.worldObj.playSoundAtEntity(this, LibInfo.PREFIX + "hitflesh", 1.0F, 1.2F / (this.rand.nextFloat() * 0.2F + 0.9F));
 					this.setDead();

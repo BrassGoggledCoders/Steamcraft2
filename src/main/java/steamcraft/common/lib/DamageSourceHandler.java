@@ -1,5 +1,5 @@
 /**
- * This class was created by BrassGoggledCoders modding team. 
+ * This class was created by BrassGoggledCoders modding team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -21,4 +21,5 @@ import net.minecraft.util.DamageSource;
 public class DamageSourceHandler
 {
 	public static DamageSource electrocution = new DamageSource(LibInfo.ID + ".electrocution").setDamageBypassesArmor().setDifficultyScaled();
+	public static DamageSource bullet = new DamageSource(LibInfo.ID + ".bullet").setDamageBypassesArmor();
 }
