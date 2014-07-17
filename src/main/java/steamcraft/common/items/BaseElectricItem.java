@@ -142,23 +142,4 @@ public class BaseElectricItem extends BaseItem implements IEnergyContainerItem
 	{
 		return this.maxEnergy;
 	}
-
-	public static boolean isJar(Item item)
-	{
-		if(item != null)
-		{
-			if(item == ConfigItems.itemElectricJarHuge)
-			return true;
-			else if(item == ConfigItems.itemElectricJarLarge)
-			return true;
-			else if(item == ConfigItems.itemElectricJarMedium)
-			return true;
-			else if(item == ConfigItems.itemElectricJarSmall)
-			return true;
-			else
-			return false;
-		}
-		else
-			return false;
-	}
 }

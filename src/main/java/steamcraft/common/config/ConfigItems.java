@@ -297,11 +297,12 @@ public class ConfigItems
 
 		itemRayGun = new ItemRayGun(LibInfo.PREFIX + "raygun").setUnlocalizedName("itemRaygun");
 		itemShrinkray = new ItemShrinkray(LibInfo.PREFIX + "shrinkray").setUnlocalizedName("itemShrinkray");
+		//TODO
 		itemLightningGun = new ItemLightningGun(LibInfo.PREFIX + "lightninggun").setUnlocalizedName("itemLightningGun");
 
 		registerItem(itemRayGun, "ItemRayGun");
 		registerItem(itemShrinkray, "ItemShrinkray");
-		registerItem(itemLightningGun, "ItemLightningGun");
+		//registerItem(itemLightningGun, "ItemLightningGun");
 	}
 
 	private static void initializeMetals()

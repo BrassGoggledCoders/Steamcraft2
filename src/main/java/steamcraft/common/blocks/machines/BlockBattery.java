@@ -1,5 +1,5 @@
 /**
- * This class was created by BrassGoggledCoders modding team.
+t * This class was created by BrassGoggledCoders modding team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.

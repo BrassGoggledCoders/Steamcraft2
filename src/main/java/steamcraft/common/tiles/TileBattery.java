@@ -93,8 +93,7 @@ public class TileBattery extends BaseTileWithInventory implements IEnergyHandler
 
 						if(tileEntity instanceof IEnergyHandler)
 						{
-							outputEnergy -= this.extractEnergy(ForgeDirection.UNKNOWN,
-									 ((IEnergyHandler) tileEntity).receiveEnergy(direction.getOpposite(), outputEnergy, false), false);
+							outputEnergy -= this.extractEnergy(ForgeDirection.UNKNOWN, ((IEnergyHandler) tileEntity).receiveEnergy(direction.getOpposite(), outputEnergy, false), false);
 						}
 					}
 					else
