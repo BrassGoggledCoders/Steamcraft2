@@ -572,7 +572,6 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 				if(tank.getFluidAmount() == 0)
 					tank.setFluid(null);
 				
-				System.out.println(tank.getFluidAmount());
 				ticksSinceLastUpdate = 0;
 
 				updateInputs(world);

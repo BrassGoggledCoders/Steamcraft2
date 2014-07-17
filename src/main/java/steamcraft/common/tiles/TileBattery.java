@@ -14,13 +14,13 @@ package steamcraft.common.tiles;
 
 import java.util.EnumSet;
 
-import boilerplate.common.BaseTileWithInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
+import steamcraft.common.items.ItemElectricJar;
+import boilerplate.common.BaseTileWithInventory;
 import cofh.api.energy.EnergyStorage;
-import cofh.api.energy.IEnergyContainerItem;
 import cofh.api.energy.IEnergyHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -64,7 +64,7 @@ public class TileBattery extends BaseTileWithInventory implements IEnergyHandler
 	@SideOnly(Side.CLIENT)
 	public int getEnergyScaled(int par1)
 	{
-		return (this.totalEnergy+buffer.getEnergyStored())*1000 / (this.maxEnergy+initialEnergy) / par1;
+		return ((this.totalEnergy+buffer.getEnergyStored()) / ((this.maxEnergy+initialEnergy)/1000)) / par1;
 	}
 
 	@Override
@@ -83,10 +83,10 @@ public class TileBattery extends BaseTileWithInventory implements IEnergyHandler
 			if(buffer.getEnergyStored() > 0)
 				this.chargeItems();
 
-			if(buffer.getEnergyStored() >= this.transferRate)
-			{
-				short outputEnergy = (short) this.extractEnergy(ForgeDirection.UNKNOWN, this.transferRate, true);
+			short outputEnergy = (short) this.extractEnergy(ForgeDirection.UNKNOWN, this.transferRate, true);
 
+			if(outputEnergy > 0)
+			{				
 				for (ForgeDirection direction : EnumSet.allOf(ForgeDirection.class))
 					if(outputEnergy > 0)
 					{
@@ -109,7 +109,7 @@ public class TileBattery extends BaseTileWithInventory implements IEnergyHandler
 		{
 			if(stack!=null)
 			{
-				IEnergyContainerItem item = (IEnergyContainerItem) stack.getItem();
+				ItemElectricJar item = (ItemElectricJar) stack.getItem();
 
 				buffer.modifyEnergyStored(-item.receiveEnergy(stack, buffer.getEnergyStored(), false));
 
@@ -123,36 +123,20 @@ public class TileBattery extends BaseTileWithInventory implements IEnergyHandler
 	{
 		this.maxEnergy = 0;
 		this.totalEnergy = 0;
-
-		byte i = 0;
+		this.transferRate = initialTransferRate;
 
 		for(ItemStack stack : inventory)
 		{
 			if(stack!=null)
 			{
-				i++;
-
-				IEnergyContainerItem item = (IEnergyContainerItem) stack.getItem();
+				ItemElectricJar item = (ItemElectricJar) stack.getItem();
 
 				this.maxEnergy += item.getMaxEnergyStored(stack);
 				this.totalEnergy += item.getEnergyStored(stack);
+				this.transferRate += item.getMaxSend();
 			}
 		}
-
-		switch(i)
-		{
-			case 0:
-			case 1:
-				this.transferRate = initialTransferRate;
-			break;
-			case 2:
-			case 3:
-				this.transferRate = 2500;
-			break;
-			default:
-				this.transferRate = 10000;
-		}
-
+		
 		buffer.setMaxTransfer(this.transferRate);
 	}
 
@@ -171,25 +155,29 @@ public class TileBattery extends BaseTileWithInventory implements IEnergyHandler
 	@Override
 	public int extractEnergy(ForgeDirection from, int maxExtract, boolean simulate)
 	{
-		int usedEnergy = buffer.extractEnergy(maxExtract, simulate);
-		maxExtract -= usedEnergy;
+		int usedEnergy = maxExtract;
+		maxExtract -= buffer.extractEnergy(maxExtract, simulate);
 
 		if(maxExtract != 0)
 			for(ItemStack stack : inventory)
 			{
 				if(stack!=null)
 				{
-					IEnergyContainerItem item = (IEnergyContainerItem) stack.getItem();
+					ItemElectricJar item = (ItemElectricJar) stack.getItem();
 
 					if(maxExtract > 0)
 					{
-						usedEnergy += item.receiveEnergy(stack, maxExtract, simulate);
-						maxExtract -= usedEnergy;
+						maxExtract -= item.extractEnergy(stack, maxExtract, simulate);
 					}
 					else
 						break;
 				}
 			}
+		
+		usedEnergy -= maxExtract;
+		
+		System.out.println("usedEn" + usedEnergy);
+		System.out.println("maxEx" + maxExtract);
 
 		return usedEnergy;
 	}

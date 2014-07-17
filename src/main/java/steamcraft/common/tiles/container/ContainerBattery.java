@@ -18,9 +18,9 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
+import steamcraft.common.items.ItemElectricJar;
 import steamcraft.common.tiles.TileBattery;
 import steamcraft.common.tiles.container.slot.SlotBattery;
-import cofh.api.energy.IEnergyContainerItem;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -130,7 +130,7 @@ public class ContainerBattery extends Container
 
 			if (par2 > 5)
 			{
-				if (var5.getItem() instanceof IEnergyContainerItem)
+				if (var5.getItem() instanceof ItemElectricJar)
 				{
 					if (!mergeItemStack(var5, 0, 6, false))
 							if (!mergeItemStack(var5, 33, 42, false))

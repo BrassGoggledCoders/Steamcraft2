@@ -22,4 +22,9 @@ public class ItemElectricJar extends BaseElectricItem
 	{
 		super(maxEnergy, maxReceive, maxSend);
 	}
+	
+	public short getMaxSend()
+	{
+		return this.maxSend;
+	}
 }
