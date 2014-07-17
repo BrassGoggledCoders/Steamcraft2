@@ -14,6 +14,7 @@ package steamcraft.common.tiles;
 
 import java.util.EnumSet;
 
+import boilerplate.common.BaseTileWithInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;

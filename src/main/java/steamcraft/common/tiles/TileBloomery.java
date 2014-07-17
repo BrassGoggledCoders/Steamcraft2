@@ -12,6 +12,7 @@
  */
 package steamcraft.common.tiles;
 
+import boilerplate.common.BaseTileWithInventory;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
