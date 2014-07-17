@@ -13,21 +13,18 @@
 package steamcraft.common.items;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockContainer;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import steamcraft.common.config.ConfigBlocks;
 import steamcraft.common.tiles.TileCopperPipe;
-import boilerplate.common.BaseTileWithInventory;
-import boilerplate.common.ItemBlockWithExtraData;
+import boilerplate.steamapi.UniversalWrench;
 
 /**
  * @author warlordjones
  *
  */
-public class ItemSpanner extends BaseItem
+public class ItemSpanner extends UniversalWrench
 {
 	@Override
 	public boolean onItemUse(ItemStack is, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ)
