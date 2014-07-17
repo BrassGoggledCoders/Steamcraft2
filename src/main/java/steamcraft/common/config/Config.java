@@ -14,8 +14,6 @@ package steamcraft.common.config;
 
 import java.io.File;
 
-import net.minecraftforge.common.config.Configuration;
-
 /**
  * @author Surseance
  *
@@ -23,11 +21,17 @@ import net.minecraftforge.common.config.Configuration;
 public class Config
 {
 	public static File configGeneral;
+	public static File configGen;
+	public static File configBalance;
 
 	public static void initialise(String configPath)
 	{
 		configGeneral = new File(configPath + "general.cfg");
+		configGen = new File(configPath + "generation.cfg");
+		configBalance = new File(configPath + "balance.cfg");
 
 		ConfigGeneral.initialize(configGeneral);
+		ConfigWorldGen.initialize(configGen);
+		ConfigBalance.initialize(configBalance);
 	}
 }

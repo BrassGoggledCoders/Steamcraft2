@@ -20,6 +20,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
+import steamcraft.common.config.ConfigBalance;
 import steamcraft.common.lib.LibInfo;
 import boilerplate.common.utils.recipe.RecipeUtils;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -82,8 +83,12 @@ public class InitRecipes
 				new ItemStack(InitItems.itemSheet, 1, 4), 'G', Blocks.glass_pane, 'S', Items.diamond });
 		GameRegistry.addRecipe(new ItemStack(InitItems.itemGunPart, 1, 8), new Object[] { "SSS", "SES", "SSS", 'E',
 				new ItemStack(InitItems.itemResource, 1, 0), 'S', new ItemStack(InitItems.itemResource, 1, 2) });
+		if(!ConfigBalance.cheaperCoreRecipe)
 		GameRegistry.addRecipe(new ItemStack(InitItems.itemGunPart, 1, 9), new Object[] { "SPS", "PNP", "SPS", 'S',
 				new ItemStack(InitItems.itemResource, 1, 2), 'P', new ItemStack(InitItems.itemGunPart, 1, 8), 'N', Items.nether_star });
+		else
+		GameRegistry.addRecipe(new ItemStack(InitItems.itemGunPart, 1, 9), new Object[] { "SPS", "PNP", "SPS", 'S',
+			new ItemStack(InitItems.itemResource, 1, 2), 'P', new ItemStack(InitItems.itemGunPart, 1, 8), 'N', Items.nether_star });
 		// Actual Guns
 		GameRegistry.addRecipe(new ItemStack(InitItems.flintlockMusket), new Object[] { " FL", " B ", " S ", 'S',
 				new ItemStack(InitItems.itemGunPart, 1, 0), 'B', new ItemStack(InitItems.itemGunPart, 1, 1), 'L',
@@ -128,7 +133,7 @@ public class InitRecipes
 		for (int meta = 0; meta < 4; meta++)
 		{
 
-			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(InitItems.itemPowder, 2, meta), new Object[] { "ore" + LibInfo.metals[meta],
+			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(InitItems.itemPowder, ConfigBalance.numberOfDustsFromOreHammering, meta), new Object[] { "ore" + LibInfo.metals[meta],
 					new ItemStack(InitItems.itemHammer, 1, OreDictionary.WILDCARD_VALUE) }));
 		}
 	}
