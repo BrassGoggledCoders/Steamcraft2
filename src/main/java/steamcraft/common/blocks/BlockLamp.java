@@ -19,8 +19,8 @@ import net.minecraft.block.BlockRedstoneLight;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
+import steamcraft.common.InitBlocks;
 import steamcraft.common.Steamcraft;
-import steamcraft.common.config.ConfigBlocks;
 import steamcraft.common.lib.LibInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -90,10 +90,10 @@ public class BlockLamp extends BlockRedstoneLight
 			if (BlockLamp.powered && !world.isBlockIndirectlyGettingPowered(x, y, z))
 			{
 				world.scheduleBlockUpdate(x, y, z, this, 4);
-				world.setBlock(x, y, z, ConfigBlocks.blockLamp, 1, 12);
+				world.setBlock(x, y, z, InitBlocks.blockLamp, 1, 12);
 			}
 			else if (!BlockLamp.powered && world.isBlockIndirectlyGettingPowered(x, y, z))
-				world.setBlock(x, y, z, ConfigBlocks.blockLamp, 1, 11);
+				world.setBlock(x, y, z, InitBlocks.blockLamp, 1, 11);
 	}
 
 	/*
@@ -107,10 +107,10 @@ public class BlockLamp extends BlockRedstoneLight
 			if (BlockLamp.powered && !world.isBlockIndirectlyGettingPowered(x, y, z))
 			{
 				world.scheduleBlockUpdate(x, y, z, this, 4);
-				world.setBlock(x, y, z, ConfigBlocks.blockLamp, 1, 12);
+				world.setBlock(x, y, z, InitBlocks.blockLamp, 1, 12);
 			}
 			else if (!BlockLamp.powered && world.isBlockIndirectlyGettingPowered(x, y, z))
-				world.setBlock(x, y, z, ConfigBlocks.blockLamp, 0, 11);
+				world.setBlock(x, y, z, InitBlocks.blockLamp, 0, 11);
 	}
 
 	/*
@@ -121,7 +121,7 @@ public class BlockLamp extends BlockRedstoneLight
 	public void updateTick(World world, int x, int y, int z, Random random)
 	{
 		if (!world.isRemote && BlockLamp.powered && !world.isBlockIndirectlyGettingPowered(x, y, z))
-			world.setBlock(x, y, z, ConfigBlocks.blockLamp, 0, 12);
+			world.setBlock(x, y, z, InitBlocks.blockLamp, 0, 12);
 	}
 
 }

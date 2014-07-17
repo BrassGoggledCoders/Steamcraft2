@@ -23,8 +23,8 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
-import steamcraft.common.config.ConfigAchievements;
-import steamcraft.common.config.ConfigItems;
+import steamcraft.common.InitAchievements;
+import steamcraft.common.InitItems;
 import steamcraft.common.lib.LibInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -54,7 +54,7 @@ public class ItemTeacup extends BaseItemWithMetadata
 		{
 			player.addPotionEffect(new PotionEffect(Potion.digSpeed.id, 50, 100));
 			stack.setItemDamage(stack.getItemDamage() - 1);
-			player.addStat(ConfigAchievements.teaAchieve, 1);
+			player.addStat(InitAchievements.teaAchieve, 1);
 		}
 		return stack;
 	}
@@ -64,7 +64,7 @@ public class ItemTeacup extends BaseItemWithMetadata
 	public void getSubItems(Item item, CreativeTabs tab, List l)
 	{
 		for (int var4 = 0; var4 < 11; ++var4)
-		l.add(new ItemStack(ConfigItems.itemTeacup, 1, var4));
+		l.add(new ItemStack(InitItems.itemTeacup, 1, var4));
 	}
 	@Override
 	// TODO: Make module-sensitive

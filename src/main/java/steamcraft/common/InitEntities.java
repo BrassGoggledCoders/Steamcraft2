@@ -10,9 +10,8 @@
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
  *
  */
-package steamcraft.common.config;
+package steamcraft.common;
 
-import steamcraft.common.Steamcraft;
 import steamcraft.common.entities.EntityTimeBomb;
 import steamcraft.common.entities.projectile.EntityBullet;
 import cpw.mods.fml.common.registry.EntityRegistry;
@@ -21,7 +20,7 @@ import cpw.mods.fml.common.registry.EntityRegistry;
  * @author Surseance
  *
  */
-public class ConfigEntities
+public class InitEntities
 {
 	public static void init()
 	{

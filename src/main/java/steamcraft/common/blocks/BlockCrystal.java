@@ -25,8 +25,8 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import steamcraft.client.lib.RenderIDs;
+import steamcraft.common.InitItems;
 import steamcraft.common.Steamcraft;
-import steamcraft.common.config.ConfigItems;
 import steamcraft.common.tiles.TileCrystal;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -97,6 +97,6 @@ public class BlockCrystal extends BlockContainer implements ITileEntityProvider
 	@Override
 	public Item getItemDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_)
 	{
-		return ConfigItems.itemResource;
+		return InitItems.itemResource;
 	}
 }

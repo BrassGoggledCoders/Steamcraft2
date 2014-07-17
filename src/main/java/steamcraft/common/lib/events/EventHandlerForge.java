@@ -36,7 +36,7 @@ import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 
 import org.lwjgl.opengl.GL11;
 
-import steamcraft.common.config.ConfigItems;
+import steamcraft.common.InitItems;
 import steamcraft.common.entities.EntityPlayerExtended;
 import cpw.mods.fml.common.eventhandler.EventPriority;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
@@ -98,7 +98,7 @@ public class EventHandlerForge
 			EntityPlayer player = (EntityPlayer) event.entityLiving;
 			ItemStack is = player.inventory.armorItemInSlot(3);
 
-			if ((is != null) && (is.getItem() == ConfigItems.brassGoggles))
+			if ((is != null) && (is.getItem() == InitItems.brassGoggles))
 			{
 				player.addPotionEffect(new PotionEffect(Potion.nightVision.id, 2, 0, true));
 			}
@@ -116,7 +116,7 @@ public class EventHandlerForge
 		//{
 			Minecraft mc = Minecraft.getMinecraft();
 			ItemStack helmet = Minecraft.getMinecraft().thePlayer.inventory.armorItemInSlot(3);
-			if(helmet != null && helmet.getItem() == ConfigItems.itemMonocle)
+			if(helmet != null && helmet.getItem() == InitItems.itemMonocle)
 			{
 				ScaledResolution res = new ScaledResolution(mc, mc.displayWidth, mc.displayHeight);
 				FontRenderer fontRenderer = mc.fontRenderer;
@@ -155,12 +155,12 @@ public class EventHandlerForge
 	@SideOnly(Side.CLIENT)
 	public void onDrawBlockSelectionBox(DrawBlockHighlightEvent event)
 	{
-		if (event.player.inventory.armorItemInSlot(3) != null && event.player.inventory.armorItemInSlot(3).getItem() == ConfigItems.brassGoggles)
+		if (event.player.inventory.armorItemInSlot(3) != null && event.player.inventory.armorItemInSlot(3).getItem() == InitItems.brassGoggles)
 		{
 			this.drawSelectionBox(event.player, event.target, 0, event.currentItem, event.partialTicks);
 			event.setCanceled(true);
 		}
-		else if(event.player.inventory.armorItemInSlot(3) != null && event.player.inventory.armorItemInSlot(3).getItem() == ConfigItems.itemMonocle)
+		else if(event.player.inventory.armorItemInSlot(3) != null && event.player.inventory.armorItemInSlot(3).getItem() == InitItems.itemMonocle)
 		{
 			this.drawSelectionBox(event.player, event.target, 0, event.currentItem, event.partialTicks);
 			event.setCanceled(true);

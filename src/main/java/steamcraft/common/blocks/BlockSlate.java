@@ -23,7 +23,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
-import steamcraft.common.config.ConfigBlocks;
+import steamcraft.common.InitBlocks;
 import steamcraft.common.lib.LibInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -96,7 +96,7 @@ public class BlockSlate extends BaseBlock
 	public void getSubBlocks(final Item item, final CreativeTabs tab, final List l)
 	{
 		for (int var4 = 0; var4 < this.icon.length; ++var4)
-			l.add(new ItemStack(ConfigBlocks.blockSlate, 1, var4));
+			l.add(new ItemStack(InitBlocks.blockSlate, 1, var4));
 	}
 
 	@Override
@@ -107,16 +107,16 @@ public class BlockSlate extends BaseBlock
 		switch (metadata)
 		{
 		case 0:
-			drop.add(new ItemStack(ConfigBlocks.blockSlate, 1, 3));
+			drop.add(new ItemStack(InitBlocks.blockSlate, 1, 3));
 			break;
 		case 1:
-			drop.add(new ItemStack(ConfigBlocks.blockSlate, 1, 4));
+			drop.add(new ItemStack(InitBlocks.blockSlate, 1, 4));
 			break;
 		case 2:
-			drop.add(new ItemStack(ConfigBlocks.blockSlate, 1, 5));
+			drop.add(new ItemStack(InitBlocks.blockSlate, 1, 5));
 			break;
 		default:
-			drop.add(0, new ItemStack(ConfigBlocks.blockSlate, 1, metadata));
+			drop.add(0, new ItemStack(InitBlocks.blockSlate, 1, metadata));
 			break;
 		}
 

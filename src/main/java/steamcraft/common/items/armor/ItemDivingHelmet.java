@@ -23,7 +23,7 @@ import net.minecraft.world.World;
 
 import org.lwjgl.opengl.GL11;
 
-import steamcraft.common.config.ConfigItems;
+import steamcraft.common.InitItems;
 import steamcraft.common.lib.LibInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -58,7 +58,7 @@ public class ItemDivingHelmet extends BaseArmor
 
 		ItemStack helmet = Minecraft.getMinecraft().thePlayer.inventory.armorItemInSlot(3);
 
-		if (Minecraft.getMinecraft().gameSettings.thirdPersonView == 0 && helmet != null && helmet.getItem() == ConfigItems.itemDivingHelmet)// &&
+		if (Minecraft.getMinecraft().gameSettings.thirdPersonView == 0 && helmet != null && helmet.getItem() == InitItems.itemDivingHelmet)// &&
 		// KeyHandler.keyPressed)
 		{
 			Minecraft.getMinecraft().getTextureManager().bindTexture(overlay);

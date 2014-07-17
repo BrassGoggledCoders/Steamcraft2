@@ -22,7 +22,7 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
-import steamcraft.common.config.ConfigItems;
+import steamcraft.common.InitItems;
 import steamcraft.common.lib.LibInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -57,7 +57,7 @@ public class ItemBrassGoggles extends BaseArmor
 
 		ItemStack helmet = Minecraft.getMinecraft().thePlayer.inventory.armorItemInSlot(3);
 
-		if (Minecraft.getMinecraft().gameSettings.thirdPersonView == 0 && helmet != null && helmet.getItem() == ConfigItems.brassGoggles)// &&
+		if (Minecraft.getMinecraft().gameSettings.thirdPersonView == 0 && helmet != null && helmet.getItem() == InitItems.brassGoggles)// &&
 		// KeyHandler.keyPressed)
 		{
 			Minecraft.getMinecraft().getTextureManager().bindTexture(overlay);

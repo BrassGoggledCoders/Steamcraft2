@@ -10,11 +10,10 @@
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
  *
  */
-package steamcraft.common.config;
+package steamcraft.common;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
-import steamcraft.common.Steamcraft;
 import steamcraft.common.items.BaseItem;
 import steamcraft.common.items.ItemCanister;
 import steamcraft.common.items.ItemChisel;
@@ -63,7 +62,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
  * @author Surseance
  *
  */
-public class ConfigItems
+public class InitItems
 {
 	// Item Tools(sort of)
 	public static Item itemResource, itemIngot, itemSheet, itemPowder, itemCopperWire;

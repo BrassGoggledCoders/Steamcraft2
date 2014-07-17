@@ -22,15 +22,15 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
 import steamcraft.client.lib.GuiIDs;
+import steamcraft.common.InitAchievements;
+import steamcraft.common.InitItems;
+import steamcraft.common.InitKeyBindings;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.blocks.machines.BlockIntake;
 import steamcraft.common.blocks.machines.BlockLightningRod;
 import steamcraft.common.blocks.machines.BlockSteamBoiler;
 import steamcraft.common.blocks.machines.BlockTurbine;
-import steamcraft.common.config.Config;
-import steamcraft.common.config.ConfigAchievements;
-import steamcraft.common.config.ConfigItems;
-import steamcraft.common.config.ConfigKeyBindings;
+import steamcraft.common.config.ConfigGeneral;
 import steamcraft.common.items.ItemIngot;
 import steamcraft.common.items.ItemRayGun;
 import steamcraft.common.items.ItemSheet;
@@ -55,33 +55,33 @@ public class EventHandlerFML
 		Block craftingBlock = Block.getBlockFromItem(event.crafting.getItem());
 
 		if (event.crafting.getItem() instanceof ItemRayGun)
-			event.player.triggerAchievement(ConfigAchievements.raygunAchieve);
+			event.player.triggerAchievement(InitAchievements.raygunAchieve);
 		else if (event.crafting.getItem() instanceof ItemShrinkray)
-			event.player.triggerAchievement(ConfigAchievements.shrinkrayAchieve);
+			event.player.triggerAchievement(InitAchievements.shrinkrayAchieve);
 		else if (craftingBlock instanceof BlockSteamBoiler)
-			event.player.triggerAchievement(ConfigAchievements.boilerAchieve);
+			event.player.triggerAchievement(InitAchievements.boilerAchieve);
 		else if (craftingBlock instanceof BlockIntake)
-			event.player.triggerAchievement(ConfigAchievements.intakeAchieve);
+			event.player.triggerAchievement(InitAchievements.intakeAchieve);
 		else if (craftingBlock instanceof BlockTurbine)
-			event.player.triggerAchievement(ConfigAchievements.turbineAchieve);
+			event.player.triggerAchievement(InitAchievements.turbineAchieve);
 		else if (craftingBlock instanceof BlockLightningRod)
-			event.player.triggerAchievement(ConfigAchievements.rodAchieve);
+			event.player.triggerAchievement(InitAchievements.rodAchieve);
 		else if (event.crafting.getItem() instanceof ItemSheet)
-			event.player.triggerAchievement(ConfigAchievements.sheetAchieve);
+			event.player.triggerAchievement(InitAchievements.sheetAchieve);
 		else if (event.crafting.getItem() instanceof ItemClockworkWings)
-			event.player.triggerAchievement(ConfigAchievements.wingsAchieve);
+			event.player.triggerAchievement(InitAchievements.wingsAchieve);
 		else if (event.crafting.getItem() instanceof ItemSteamJetpack)
-			event.player.triggerAchievement(ConfigAchievements.jetpackAchieve);
+			event.player.triggerAchievement(InitAchievements.jetpackAchieve);
 		//TODO Dosn't work!
-		else if (event.crafting.isItemEqual(new ItemStack(ConfigItems.itemSteamWingpack)))
-			event.player.triggerAchievement(ConfigAchievements.wingpackAchieve);
+		else if (event.crafting.isItemEqual(new ItemStack(InitItems.itemSteamWingpack)))
+			event.player.triggerAchievement(InitAchievements.wingpackAchieve);
 	}
 
 	@SubscribeEvent
 	public void onItemSmelted(PlayerEvent.ItemSmeltedEvent event)
 	{
 		if (event.smelting.getItem() instanceof ItemIngot)
-			event.player.triggerAchievement(ConfigAchievements.ingotAchieve);
+			event.player.triggerAchievement(InitAchievements.ingotAchieve);
 	}
 
 	@SubscribeEvent
@@ -104,7 +104,7 @@ public class EventHandlerFML
 			component.getChatStyle().setBold(true);
 			component.getChatStyle().setColor(EnumChatFormatting.GOLD);
 			event.player.addChatComponentMessage(component);
-			if (!Config.partyPooper)
+			if (!ConfigGeneral.partyPooper)
 			{
 				ChatComponentText link = new ChatComponentText("Welcome ClockwerkKaiser to the server!");
 				link.getChatStyle().setColor(EnumChatFormatting.YELLOW);
@@ -145,7 +145,7 @@ public class EventHandlerFML
 	@SideOnly(Side.CLIENT)
 	public void KeyInputEvent(KeyInputEvent event)
 	{
-		if (ConfigKeyBindings.vanity.isPressed())
+		if (InitKeyBindings.vanity.isPressed())
 		{
 			if (Minecraft.getMinecraft().currentScreen == null)
 			{

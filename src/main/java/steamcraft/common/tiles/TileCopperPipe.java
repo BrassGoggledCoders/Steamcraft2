@@ -27,7 +27,7 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTank;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
-import steamcraft.common.config.ConfigBlocks;
+import steamcraft.common.InitBlocks;
 
 /**
  * @author Decebaldecebal
@@ -357,7 +357,7 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 		{
 			for(ForgeDirection dir : connections)
 				if(dir!=null && dir!=ignore)			
-					if(worldObj.getBlock(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ) == ConfigBlocks.blockCopperPipe)
+					if(worldObj.getBlock(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ) == InitBlocks.blockCopperPipe)
 					{
 						TileCopperPipe pipe = (TileCopperPipe) worldObj.getTileEntity(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ);
 		
@@ -429,7 +429,7 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 
 	private boolean canConnect(int x, int y, int z)
 	{
-		return worldObj.getBlock(x, y, z) == ConfigBlocks.blockCopperPipe || isFluidHandler(x, y, z);
+		return worldObj.getBlock(x, y, z) == InitBlocks.blockCopperPipe || isFluidHandler(x, y, z);
 	}
 
 	private boolean isFluidHandler(int x, int y, int z)
@@ -439,7 +439,7 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 
 	public boolean canChangeState(ForgeDirection dir)
 	{
-		if(worldObj.getBlock(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ) != ConfigBlocks.blockCopperPipe &&
+		if(worldObj.getBlock(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ) != InitBlocks.blockCopperPipe &&
 				isFluidHandler(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ))
 			return true;
 		return false;

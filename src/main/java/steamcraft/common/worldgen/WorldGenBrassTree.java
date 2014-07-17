@@ -21,7 +21,7 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenBigTree;
 import net.minecraftforge.common.util.ForgeDirection;
-import steamcraft.common.config.ConfigBlocks;
+import steamcraft.common.InitBlocks;
 
 /**
  * @author warlordjones
@@ -221,7 +221,7 @@ public class WorldGenBrassTree extends WorldGenBigTree
 		for (int i1 = par2 + this.leafDistanceLimit; l < i1; ++l)
 		{
 			float f = this.leafSize(l - par2);
-			this.func_150529_a(par1, l, par3, f, (byte) 1, ConfigBlocks.blockBrassLeaves);
+			this.func_150529_a(par1, l, par3, f, (byte) 1, InitBlocks.blockBrassLeaves);
 		}
 	}
 
@@ -314,19 +314,19 @@ public class WorldGenBrassTree extends WorldGenBigTree
 		int l = this.basePos[2];
 		int[] aint = new int[] { i, j, l };
 		int[] aint1 = new int[] { i, k, l };
-		this.func_150530_a(aint, aint1, ConfigBlocks.blockBrassLog);
+		this.func_150530_a(aint, aint1, InitBlocks.blockBrassLog);
 
 		if (this.trunkSize == 2)
 		{
 			++aint[0];
 			++aint1[0];
-			this.func_150530_a(aint, aint1, ConfigBlocks.blockBrassLog);
+			this.func_150530_a(aint, aint1, InitBlocks.blockBrassLog);
 			++aint[2];
 			++aint1[2];
-			this.func_150530_a(aint, aint1, ConfigBlocks.blockBrassLog);
+			this.func_150530_a(aint, aint1, InitBlocks.blockBrassLog);
 			aint[0] += -1;
 			aint1[0] += -1;
-			this.func_150530_a(aint, aint1, ConfigBlocks.blockBrassLog);
+			this.func_150530_a(aint, aint1, InitBlocks.blockBrassLog);
 		}
 	}
 
@@ -344,7 +344,7 @@ public class WorldGenBrassTree extends WorldGenBigTree
 
 			if (this.leafNodeNeedsBase(k))
 			{
-				this.func_150530_a(aint, aint2, ConfigBlocks.blockBrassLog);
+				this.func_150530_a(aint, aint2, InitBlocks.blockBrassLog);
 			}
 		}
 	}

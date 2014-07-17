@@ -14,7 +14,7 @@ package steamcraft.common.lib;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
-import steamcraft.common.config.ConfigItems;
+import steamcraft.common.InitItems;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -33,6 +33,6 @@ public class CreativeTabSteamcraft extends CreativeTabs
 	@SideOnly(Side.CLIENT)
 	public Item getTabIconItem()
 	{
-		return ConfigItems.brassGoggles;
+		return InitItems.brassGoggles;
 	}
 }

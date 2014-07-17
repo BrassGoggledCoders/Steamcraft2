@@ -19,7 +19,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
-import steamcraft.common.config.ConfigItems;
+import steamcraft.common.InitItems;
 import steamcraft.common.lib.LibInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -62,7 +62,7 @@ public class ItemMachinePart extends BaseItemWithMetadata
 	public void getSubItems(Item item, CreativeTabs tab, List l)
 	{
 		for (int var4 = 0; var4 < this.itemIcon.length; ++var4)
-			l.add(new ItemStack(ConfigItems.itemMachinePart, 1, var4));
+			l.add(new ItemStack(InitItems.itemMachinePart, 1, var4));
 	}
 
 	@Override

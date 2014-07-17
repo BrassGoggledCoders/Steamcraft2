@@ -20,7 +20,7 @@ import java.util.Map.Entry;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import steamcraft.common.config.ConfigItems;
+import steamcraft.common.InitItems;
 
 /**
  * @author warlordjones & decebaldecebal
@@ -38,7 +38,7 @@ public class BloomeryRecipes
 
     private BloomeryRecipes()
     {
-        this.addBloomeryRecipe(new ItemStack(Blocks.iron_ore), new ItemStack(Items.coal, 4), new ItemStack(ConfigItems.itemIngot, 1, 6));
+        this.addBloomeryRecipe(new ItemStack(Blocks.iron_ore), new ItemStack(Items.coal, 4), new ItemStack(InitItems.itemIngot, 1, 6));
     }
 
     public void addBloomeryRecipe(ItemStack input, ItemStack input2, ItemStack result)

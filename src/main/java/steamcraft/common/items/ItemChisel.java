@@ -20,8 +20,8 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import steamcraft.common.InitBlocks;
 import steamcraft.common.Steamcraft;
-import steamcraft.common.config.ConfigBlocks;
 import steamcraft.common.lib.LibInfo;
 import boilerplate.client.fx.FXSmoke;
 import boilerplate.steamapi.IChiselable;
@@ -54,23 +54,23 @@ public class ItemChisel extends BaseItem
 
 		if (block == Blocks.diamond_block)
 		{
-			world.setBlock(x, y, z, ConfigBlocks.blockEngravedVanilla, 0, 2);
+			world.setBlock(x, y, z, InitBlocks.blockEngravedVanilla, 0, 2);
 		}
 		else if (block == Blocks.gold_block)
 		{
-			world.setBlock(x, y, z, ConfigBlocks.blockEngravedVanilla, 1, 2);
+			world.setBlock(x, y, z, InitBlocks.blockEngravedVanilla, 1, 2);
 		}
 		else if (block == Blocks.iron_block)
 		{
-			world.setBlock(x, y, z, ConfigBlocks.blockEngravedVanilla, 2, 2);
+			world.setBlock(x, y, z, InitBlocks.blockEngravedVanilla, 2, 2);
 		}
 		else if (block == Blocks.lapis_block)
 		{
-			world.setBlock(x, y, z, ConfigBlocks.blockEngravedVanilla, 3, 2);
+			world.setBlock(x, y, z, InitBlocks.blockEngravedVanilla, 3, 2);
 		}
 		else if (block == Blocks.stone)
 		{
-			world.setBlock(x, y, z, ConfigBlocks.blockEngravedVanilla, 4, 2);
+			world.setBlock(x, y, z, InitBlocks.blockEngravedVanilla, 4, 2);
 		}
 		else if (block instanceof IChiselable)
 		{

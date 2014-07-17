@@ -22,7 +22,7 @@ import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
-import steamcraft.common.config.ConfigItems;
+import steamcraft.common.InitItems;
 import steamcraft.common.tiles.TileSteamBoiler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -60,7 +60,7 @@ public class ContainerSteamBoiler extends Container
 			@Override
 			public boolean isItemValid(ItemStack stack)
 			{
-				if (stack.getItem() == ConfigItems.itemCanisterSteam)
+				if (stack.getItem() == InitItems.itemCanisterSteam)
 					return true;
 				return false;
 			}
@@ -165,7 +165,7 @@ public class ContainerSteamBoiler extends Container
 						else if ((par2 >= 30) && (par2 < 39) && !mergeItemStack(var5, 3, 30, false))
 							return null;
 				}
-				else if (var5.getItem() == ConfigItems.itemCanisterSteam)
+				else if (var5.getItem() == InitItems.itemCanisterSteam)
 				{
 					if (!mergeItemStack(var5, 2, 3, false))
 						if ((par2 >= 3) && (par2 < 30))

@@ -20,8 +20,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.util.ForgeDirection;
+import steamcraft.common.InitBlocks;
 import steamcraft.common.Steamcraft;
-import steamcraft.common.config.ConfigBlocks;
 
 /**
  * @author Surseance
@@ -61,7 +61,7 @@ public class ItemTeaSeed extends BaseItem implements IPlantable
 	@Override
 	public Block getPlant( IBlockAccess world,  int x,  int y,  int z)
 	{
-		return ConfigBlocks.blockTeaPlant;
+		return InitBlocks.blockTeaPlant;
 	}
 
 	@Override

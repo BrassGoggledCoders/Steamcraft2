@@ -22,7 +22,7 @@ import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
-import steamcraft.common.config.ConfigBlocks;
+import steamcraft.common.InitBlocks;
 import cofh.api.energy.EnergyStorage;
 import cofh.api.energy.IEnergyHandler;
 import cofh.api.energy.IEnergyStorage;
@@ -356,7 +356,7 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 		{
 			for(ForgeDirection dir : connections)
 				if(dir!=null && dir!=ignore)
-					if(worldObj.getBlock(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ) == ConfigBlocks.blockCopperWire)
+					if(worldObj.getBlock(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ) == InitBlocks.blockCopperWire)
 					{
 						TileCopperWire wire = (TileCopperWire) worldObj.getTileEntity(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ);
 
@@ -428,7 +428,7 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 
 	private boolean canConnect(int x, int y, int z)
 	{
-		return worldObj.getBlock(x, y, z) == ConfigBlocks.blockCopperWire || isEnergyHandler(x, y, z);
+		return worldObj.getBlock(x, y, z) == InitBlocks.blockCopperWire || isEnergyHandler(x, y, z);
 	}
 
 	private boolean isEnergyHandler(int x, int y, int z)
@@ -438,7 +438,7 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 
 	public boolean canChangeState(ForgeDirection dir)
 	{
-		if(worldObj.getBlock(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ) != ConfigBlocks.blockCopperWire &&
+		if(worldObj.getBlock(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ) != InitBlocks.blockCopperWire &&
 				isEnergyHandler(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ))
 			return true;
 		return false;

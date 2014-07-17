@@ -33,7 +33,7 @@ import steamcraft.client.renderers.tile.TileCrystalRenderer;
 import steamcraft.client.renderers.tile.TileLightningRodRenderer;
 import steamcraft.client.renderers.tile.TileTeslaCoilRenderer;
 import steamcraft.common.CommonProxy;
-import steamcraft.common.config.ConfigKeyBindings;
+import steamcraft.common.InitKeyBindings;
 import steamcraft.common.entities.projectile.EntityBullet;
 import steamcraft.common.entities.projectile.EntitySmallLightningBolt;
 import steamcraft.common.lib.Utils;
@@ -62,7 +62,7 @@ public class ClientProxy extends CommonProxy
 	@Override
 	public void registerKeys()
 	{
-		FMLCommonHandler.instance().bus().register(new ConfigKeyBindings());
+		FMLCommonHandler.instance().bus().register(new InitKeyBindings());
 	}
 
 	@Override

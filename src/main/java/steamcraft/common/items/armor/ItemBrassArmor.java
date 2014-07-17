@@ -23,8 +23,8 @@ import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
+import steamcraft.common.InitItems;
 import steamcraft.common.Steamcraft;
-import steamcraft.common.config.ConfigItems;
 import steamcraft.common.lib.LibInfo;
 import boilerplate.steamapi.EnumArmorEffectType;
 import boilerplate.steamapi.IModule;
@@ -65,7 +65,7 @@ public class ItemBrassArmor extends BaseArmor
 	@Override
 	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
 	{
-		modules.add(ConfigItems.itemAqualung);
+		modules.add(InitItems.itemAqualung);
 		return par1ItemStack;
 	}
 

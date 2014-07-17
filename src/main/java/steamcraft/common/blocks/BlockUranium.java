@@ -19,7 +19,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
-import steamcraft.common.config.ConfigBlocks;
+import steamcraft.common.InitBlocks;
 import boilerplate.client.utils.EffectUtils;
 import boilerplate.steamapi.IChiselable;
 import cpw.mods.fml.relauncher.Side;
@@ -50,7 +50,7 @@ public class BlockUranium extends BaseBlock implements IChiselable
 	@Override
 	public Block getChiseledVariant()
 	{
-		return ConfigBlocks.blockEngraved;
+		return InitBlocks.blockEngraved;
 	}
 
 	@Override

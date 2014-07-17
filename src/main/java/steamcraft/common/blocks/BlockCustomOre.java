@@ -23,8 +23,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
-import steamcraft.common.config.ConfigBlocks;
-import steamcraft.common.config.ConfigItems;
+import steamcraft.common.InitBlocks;
+import steamcraft.common.InitItems;
 import steamcraft.common.lib.LibInfo;
 import boilerplate.steamapi.machines.IHammerable;
 import cpw.mods.fml.relauncher.Side;
@@ -88,14 +88,14 @@ public class BlockCustomOre extends BaseBlock implements IHammerable
 	public void getSubBlocks(Item item, CreativeTabs tab, List l)
 	{
 		for (int var4 = 0; var4 < 7; ++var4)
-			l.add(new ItemStack(ConfigBlocks.blockCustomOre, 1, var4));
+			l.add(new ItemStack(InitBlocks.blockCustomOre, 1, var4));
 	}
 
 	@Override
 	public ItemStack getOutput(int meta)
 	{
 		if (meta < 4)
-			return new ItemStack(ConfigItems.itemPowder);
+			return new ItemStack(InitItems.itemPowder);
 		else
 			return null;
 	}
@@ -108,16 +108,16 @@ public class BlockCustomOre extends BaseBlock implements IHammerable
 		switch (metadata)
 		{
 		case 4:
-			drop.add(new ItemStack(ConfigItems.itemResource, 1, 4));
+			drop.add(new ItemStack(InitItems.itemResource, 1, 4));
 			break;
 		case 5:
-			drop.add(new ItemStack(ConfigItems.itemResource, 1, 1));
+			drop.add(new ItemStack(InitItems.itemResource, 1, 1));
 			break;
 		case 6:
-			drop.add(new ItemStack(ConfigItems.itemResource, 1, 3));
+			drop.add(new ItemStack(InitItems.itemResource, 1, 3));
 			break;
 		default:
-			drop.add(0, new ItemStack(ConfigBlocks.blockCustomOre, 1, metadata));
+			drop.add(0, new ItemStack(InitBlocks.blockCustomOre, 1, metadata));
 			break;
 		}
 

@@ -26,8 +26,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
+import steamcraft.common.InitItems;
 import steamcraft.common.Steamcraft;
-import steamcraft.common.config.ConfigItems;
 import steamcraft.common.items.BaseItem;
 import steamcraft.common.items.ItemCanister;
 import steamcraft.common.lib.LibInfo;
@@ -120,7 +120,7 @@ public class ItemModTool extends BaseItem
 			{
 				this.consumeSteamFromCanister((EntityPlayer) living2);
 
-				if (itemstack.getItem() != ConfigItems.swordSteam)
+				if (itemstack.getItem() != InitItems.swordSteam)
 					this.consumeSteamFromCanister((EntityPlayer) living2);
 			}
 		}
@@ -188,7 +188,7 @@ public class ItemModTool extends BaseItem
 		ItemStack[] mainInv = player.inventory.mainInventory;
 
 		for (ItemStack element : mainInv)
-			if (element != null && element.getItem() == ConfigItems.itemCanisterSteam)
+			if (element != null && element.getItem() == InitItems.itemCanisterSteam)
 			{
 				ItemCanister canister = (ItemCanister) element.getItem();
 
@@ -217,7 +217,7 @@ public class ItemModTool extends BaseItem
 		for (int i = 0; i != player.inventory.mainInventory.length; i++)
 		{
 			ItemStack[] mainInv = player.inventory.mainInventory;
-			if (mainInv[i] != null && mainInv[i].getItem() == ConfigItems.itemCanisterSteam)
+			if (mainInv[i] != null && mainInv[i].getItem() == InitItems.itemCanisterSteam)
 				hasCanister = hasCanister || !this.isCanisterEmpty(mainInv[i]);
 		}
 		return hasCanister;

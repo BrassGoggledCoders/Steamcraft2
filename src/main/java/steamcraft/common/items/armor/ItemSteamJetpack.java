@@ -25,8 +25,8 @@ import net.minecraft.world.World;
 
 import org.lwjgl.input.Keyboard;
 
+import steamcraft.common.InitItems;
 import steamcraft.common.Steamcraft;
-import steamcraft.common.config.ConfigItems;
 import steamcraft.common.items.ItemCanister;
 import steamcraft.common.lib.LibInfo;
 import boilerplate.client.ClientHelper;
@@ -101,7 +101,7 @@ public class ItemSteamJetpack extends BaseArmor
 
 			}
 
-			if (this == ConfigItems.itemSteamWingpack && player.motionY < 0.0D && player.isSneaking())
+			if (this == InitItems.itemSteamWingpack && player.motionY < 0.0D && player.isSneaking())
 			{
 				this.consumeSteamFromCanister(player, (byte) (this.steamPerTick / 2));
 				player.motionY /= 1.4D;
@@ -129,7 +129,7 @@ public class ItemSteamJetpack extends BaseArmor
 		ItemStack[] mainInv = player.inventory.mainInventory;
 
 		for (ItemStack element : mainInv)
-			if (element != null && element.getItem() == ConfigItems.itemCanisterSteam)
+			if (element != null && element.getItem() == InitItems.itemCanisterSteam)
 			{
 				ItemCanister canister = (ItemCanister) element.getItem();
 
@@ -158,7 +158,7 @@ public class ItemSteamJetpack extends BaseArmor
 		for (int i = 0; i != player.inventory.mainInventory.length; i++)
 		{
 			ItemStack[] mainInv = player.inventory.mainInventory;
-			if (mainInv[i] != null && mainInv[i].getItem() == ConfigItems.itemCanisterSteam)
+			if (mainInv[i] != null && mainInv[i].getItem() == InitItems.itemCanisterSteam)
 				hasCanister = hasCanister || !this.isCanisterEmpty(mainInv[i]);
 		}
 		return hasCanister;
@@ -172,7 +172,7 @@ public class ItemSteamJetpack extends BaseArmor
 
 		if (itemStack != null)
 		{
-			if (this == ConfigItems.itemSteamJetpack)
+			if (this == InitItems.itemSteamJetpack)
 				armorModel = Steamcraft.proxy.getJetpackArmorModel(1);
 			else
 				armorModel = Steamcraft.proxy.getWingpackArmorModel(1);
@@ -206,7 +206,7 @@ public class ItemSteamJetpack extends BaseArmor
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
 	{
-		if (stack.getItem() == ConfigItems.itemSteamJetpack)
+		if (stack.getItem() == InitItems.itemSteamJetpack)
 			return LibInfo.PREFIX + "textures/armor/jetpack.png";
 		else
 			return LibInfo.PREFIX + "textures/armor/wingpack.png";

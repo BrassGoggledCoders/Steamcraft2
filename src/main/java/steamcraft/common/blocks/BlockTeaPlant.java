@@ -22,7 +22,7 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.util.ForgeDirection;
-import steamcraft.common.config.ConfigItems;
+import steamcraft.common.InitItems;
 import steamcraft.common.lib.LibInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -131,12 +131,12 @@ import cpw.mods.fml.relauncher.SideOnly;
 	 @Override
 	 protected Item func_149866_i()
 	 {
-		 return ConfigItems.itemTeaSeed;
+		 return InitItems.itemTeaSeed;
 	 }
 	 @Override
 	 protected Item func_149865_P()
 	 {
-		 return ConfigItems.itemTeaLeaf;
+		 return InitItems.itemTeaLeaf;
 	 }
 	 @Override
 	 public Item getItemDropped(int meta, Random p_149650_2_, int p_149650_3_)

@@ -19,7 +19,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
-import steamcraft.common.config.ConfigItems;
+import steamcraft.common.InitItems;
 import steamcraft.common.lib.LibInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -38,7 +38,7 @@ public class ItemPowder extends BaseItemWithMetadata
 	public void getSubItems(Item item, CreativeTabs tab, List list)
 	{
 		for (int var4 = 0; var4 < 8; ++var4)
-			list.add(new ItemStack(ConfigItems.itemPowder, 1, var4));
+			list.add(new ItemStack(InitItems.itemPowder, 1, var4));
 	}
 
 	@Override

@@ -19,8 +19,8 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import steamcraft.common.InitBlocks;
 import steamcraft.common.Steamcraft;
-import steamcraft.common.config.ConfigBlocks;
 import steamcraft.common.lib.LibInfo;
 import steamcraft.common.tiles.TileCopperPipe;
 import boilerplate.steamapi.UniversalWrench;
@@ -41,7 +41,7 @@ public class ItemSpanner extends UniversalWrench
 	{
 		Block block = world.getBlock(x, y, z);
 
-		if(block == ConfigBlocks.blockCopperPipe)
+		if(block == InitBlocks.blockCopperPipe)
 		{
 			TileCopperPipe pipe = (TileCopperPipe) world.getTileEntity(x, y, z);
 

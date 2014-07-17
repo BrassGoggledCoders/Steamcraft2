@@ -10,7 +10,7 @@
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
  * 
  */
-package steamcraft.common.config;
+package steamcraft.common;
 
 import net.minecraft.client.settings.KeyBinding;
 
@@ -22,12 +22,12 @@ import cpw.mods.fml.client.registry.ClientRegistry;
  * @author warlordjones
  *
  */
-public class ConfigKeyBindings
+public class InitKeyBindings
 {
 	public static String keyCategory = "Steamcraft 2";
 	public static KeyBinding vanity = new KeyBinding("Vanity GUI", Keyboard.KEY_V, keyCategory);
 
-	public ConfigKeyBindings()
+	public InitKeyBindings()
 	{
 		ClientRegistry.registerKeyBinding(vanity);
 	}

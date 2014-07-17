@@ -21,8 +21,8 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
+import steamcraft.common.InitBlocks;
 import steamcraft.common.Steamcraft;
-import steamcraft.common.config.ConfigBlocks;
 import steamcraft.common.lib.LibInfo;
 import boilerplate.steamapi.IChiselable;
 import cpw.mods.fml.relauncher.Side;
@@ -95,13 +95,13 @@ public class BlockMetal extends Block implements IChiselable
 	public void getSubBlocks(final Item item, final CreativeTabs tab, final List l)
 	{
 		for (int var4 = 0; var4 < this.icon.length; ++var4)
-			l.add(new ItemStack(ConfigBlocks.blockMetal, 1, var4));
+			l.add(new ItemStack(InitBlocks.blockMetal, 1, var4));
 	}
 
 	@Override
 	public Block getChiseledVariant()
 	{
-		return ConfigBlocks.blockEngraved;
+		return InitBlocks.blockEngraved;
 	}
 
 	@Override

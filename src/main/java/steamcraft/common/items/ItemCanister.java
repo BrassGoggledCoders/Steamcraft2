@@ -24,7 +24,7 @@ import net.minecraft.util.IIcon;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidContainerItem;
-import steamcraft.common.config.ConfigItems;
+import steamcraft.common.InitItems;
 import steamcraft.common.lib.LibInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -72,13 +72,13 @@ public class ItemCanister extends BaseItem implements IFluidContainerItem
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(Item item, CreativeTabs tab, List l)
 	{
-		l.add(new ItemStack(ConfigItems.itemCanisterSteam, 1, this.getMaxDamage()));
+		l.add(new ItemStack(InitItems.itemCanisterSteam, 1, this.getMaxDamage()));
 		l.add(this.getFilledCanister());
 	}
 
 	public ItemStack getFilledCanister()
 	{
-		ItemStack filled = new ItemStack(ConfigItems.itemCanisterSteam, 1, 0);
+		ItemStack filled = new ItemStack(InitItems.itemCanisterSteam, 1, 0);
 
 		this.fill(filled, new FluidStack(FluidRegistry.getFluid("steam"), MAX_STEAM), true);
 

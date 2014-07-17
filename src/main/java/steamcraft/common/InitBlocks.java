@@ -10,7 +10,7 @@
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
  *
  */
-package steamcraft.common.config;
+package steamcraft.common;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -72,7 +72,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
  * @author Surseance
  *
  */
-public class ConfigBlocks
+public class InitBlocks
 {
 	/* Decorative */
 

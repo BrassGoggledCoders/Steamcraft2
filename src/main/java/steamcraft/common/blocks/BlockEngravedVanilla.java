@@ -19,7 +19,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
-import steamcraft.common.config.ConfigBlocks;
+import steamcraft.common.InitBlocks;
 import steamcraft.common.lib.LibInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -67,7 +67,7 @@ public class BlockEngravedVanilla extends BlockEngravedSolid
 	public void getSubBlocks(Item item, CreativeTabs tab, List l)
 	{
 		for (int var4 = 0; var4 < this.icon.length; ++var4)
-			l.add(new ItemStack(ConfigBlocks.blockEngravedVanilla, 1, var4));
+			l.add(new ItemStack(InitBlocks.blockEngravedVanilla, 1, var4));
 	}
 
 	/*

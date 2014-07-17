@@ -23,7 +23,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
-import steamcraft.common.config.ConfigItems;
+import steamcraft.common.InitItems;
 import steamcraft.common.entities.projectile.EntityBullet;
 
 public class ItemFirearm extends BaseItem
@@ -106,7 +106,7 @@ public class ItemFirearm extends BaseItem
 		player.inventory.consumeInventoryItem(Items.gunpowder);
 
 		if (!world.isRemote)
-			if (this.ammo == ConfigItems.itemMusketBall)
+			if (this.ammo == InitItems.itemMusketBall)
 				world.spawnEntityInWorld(new EntityBullet(world, player, this.damage, 8));
 			else
 				world.spawnEntityInWorld(new EntityBullet(world, player, this.damage, 15));

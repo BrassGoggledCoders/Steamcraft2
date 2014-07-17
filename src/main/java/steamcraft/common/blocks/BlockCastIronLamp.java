@@ -24,8 +24,8 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import steamcraft.client.lib.RenderIDs;
+import steamcraft.common.InitBlocks;
 import steamcraft.common.Steamcraft;
-import steamcraft.common.config.ConfigBlocks;
 import steamcraft.common.tiles.TileCastIronLamp;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -141,7 +141,7 @@ public class BlockCastIronLamp extends BlockContainer
 			if (this.powered && !world.isBlockIndirectlyGettingPowered(x, y, z))
 				world.scheduleBlockUpdate(x, y, z, this, 4);
 			else if (!this.powered && world.isBlockIndirectlyGettingPowered(x, y, z))
-				world.setBlock(x, y, z, ConfigBlocks.blockCastIronLampA, 0, 2);
+				world.setBlock(x, y, z, InitBlocks.blockCastIronLampA, 0, 2);
 			if (world.getBlockMetadata(x, y, z) == 0)
 				super.onBlockAdded(world, x, y, z);
 
@@ -182,7 +182,7 @@ public class BlockCastIronLamp extends BlockContainer
 			this.onBlockAdded(world, x, y, z);
 
 		if (!world.isRemote && this.powered && !world.isBlockIndirectlyGettingPowered(x, y, z))
-			world.setBlock(x, y, z, ConfigBlocks.blockCastIronLampI, 0, 2);
+			world.setBlock(x, y, z, InitBlocks.blockCastIronLampI, 0, 2);
 	}
 
 	@Override
@@ -193,7 +193,7 @@ public class BlockCastIronLamp extends BlockContainer
 			if (this.powered && !world.isBlockIndirectlyGettingPowered(x, y, z))
 				world.scheduleBlockUpdate(x, y, z, this, this.tickRate(world));
 			else if (!this.powered && world.isBlockIndirectlyGettingPowered(x, y, z))
-				world.setBlock(x, y, z, ConfigBlocks.blockCastIronLampA, 0, 2);
+				world.setBlock(x, y, z, InitBlocks.blockCastIronLampA, 0, 2);
 
 			if (this.dropIfCantStay(world, x, y, z))
 			{

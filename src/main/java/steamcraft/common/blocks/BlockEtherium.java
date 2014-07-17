@@ -14,7 +14,7 @@ package steamcraft.common.blocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import steamcraft.common.config.ConfigBlocks;
+import steamcraft.common.InitBlocks;
 import boilerplate.steamapi.IChiselable;
 
 public class BlockEtherium extends BaseBlock implements IChiselable
@@ -29,7 +29,7 @@ public class BlockEtherium extends BaseBlock implements IChiselable
 	@Override
 	public Block getChiseledVariant()
 	{
-		return ConfigBlocks.blockEngraved;
+		return InitBlocks.blockEngraved;
 	}
 
 	@Override

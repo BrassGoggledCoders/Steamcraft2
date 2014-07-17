@@ -20,8 +20,8 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.stats.StatList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
+import steamcraft.common.InitAchievements;
 import steamcraft.common.blocks.machines.BlockLightningRod;
-import steamcraft.common.config.ConfigAchievements;
 import cofh.api.energy.EnergyStorage;
 import cofh.api.energy.IEnergyHandler;
 
@@ -51,7 +51,7 @@ public class TileLightningRod extends TileEntity implements IEnergyHandler
 				buffer.receiveEnergy(10000, false);
 				System.out.print(buffer.getEnergyStored());
 				EntityPlayer player = worldObj.getPlayerEntityByName(block.getOwner().substring(5));
-				player.triggerAchievement(ConfigAchievements.zapAchieve);
+				player.triggerAchievement(InitAchievements.zapAchieve);
 			}
 		}
 	}
