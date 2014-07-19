@@ -12,7 +12,6 @@
  */
 package steamcraft.common.tiles;
 
-import boilerplate.common.BaseTileWithInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntityFurnace;
@@ -26,6 +25,7 @@ import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
 import steamcraft.common.blocks.machines.BlockSteamBoiler;
 import steamcraft.common.items.ItemCanister;
+import boilerplate.common.BaseTileWithInventory;
 
 /**
  * @author Decebaldecebal

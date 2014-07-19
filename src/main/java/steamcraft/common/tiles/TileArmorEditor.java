@@ -12,9 +12,9 @@
  */
 package steamcraft.common.tiles;
 
-import boilerplate.common.BaseTileWithInventory;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
+import boilerplate.common.BaseTileWithInventory;
 
 /**
  * @author warlordjones

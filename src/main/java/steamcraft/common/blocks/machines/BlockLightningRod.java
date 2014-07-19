@@ -13,9 +13,6 @@
 package steamcraft.common.blocks.machines;
 
 import net.minecraft.block.material.Material;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import steamcraft.client.lib.RenderIDs;

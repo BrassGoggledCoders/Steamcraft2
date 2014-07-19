@@ -3,8 +3,8 @@ package steamcraft.common.config;
 import java.io.File;
 import java.util.logging.Level;
 
-import steamcraft.common.lib.LoggerSteamcraft;
 import net.minecraftforge.common.config.Configuration;
+import steamcraft.common.lib.LoggerSteamcraft;
 
 public class ConfigWorldGen
 {

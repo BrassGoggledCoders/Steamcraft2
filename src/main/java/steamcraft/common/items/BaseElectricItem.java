@@ -14,7 +14,6 @@ package steamcraft.common.items;
 
 import java.util.List;
 
-import steamcraft.common.InitItems;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
