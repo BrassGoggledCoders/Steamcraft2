@@ -22,10 +22,10 @@ import steamcraft.common.compat.CompatabilityLayer;
 import steamcraft.common.config.Config;
 import steamcraft.common.config.ConfigWorldGen;
 import steamcraft.common.lib.CommandSteamcraft;
-import steamcraft.common.lib.CreativeTabSteamcraft;
 import steamcraft.common.lib.LibInfo;
 import steamcraft.common.lib.events.EventHandlerFML;
 import steamcraft.common.lib.events.EventHandlerForge;
+import boilerplate.common.CreativeTabBase;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -60,7 +60,7 @@ public class Steamcraft
 
 	public File directory;
 
-	public static CreativeTabs tabSC2 = new CreativeTabSteamcraft(CreativeTabs.getNextID(), "steamcraft");
+	public static CreativeTabs tabSC2 = new CreativeTabBase(CreativeTabs.getNextID(), "steamcraft", InitItems.brassGoggles);
 
 	public static String configPath;
 
