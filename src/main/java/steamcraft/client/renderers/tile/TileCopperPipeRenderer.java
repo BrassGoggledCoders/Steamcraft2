@@ -130,46 +130,46 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 				tess.addVertexWithUV(12*pixel, 1, 1-12*pixel, 27*tPixel, 6*tPixel);
 				tess.addVertexWithUV(12*pixel, 0, 1-12*pixel, 11*tPixel, 6*tPixel);
 			}
+		}
+		tess.draw();
 			
-			//Draw fluid
-			if(pipe.network!=null)
+		//Draw fluid
+		if(pipe.network!=null)
+		{
+			if(pipe.network.tank.getFluid()!=null)
 			{
-				System.out.println("works");
-				
-				if(pipe.network.tank.getFluid()!=null)
+				tess.startDrawingQuads();
 				{
-					System.out.println("works1");
-					
 					IIcon icon = pipe.network.tank.getFluid().getFluid().getBlock().getIcon(0, 0);
 					this.bindTexture(TextureMap.locationBlocksTexture);
 					
-					tess.addVertexWithUV(1-12*pixel, 0, 1-12*pixel, icon.getMinU(), icon.getMaxV());
-					tess.addVertexWithUV(1-12*pixel, 1, 1-12*pixel, icon.getMaxU(), icon.getMaxV());
-					tess.addVertexWithUV(12*pixel, 1, 1-12*pixel, icon.getMaxU(), icon.getMinV());
-					tess.addVertexWithUV(12*pixel, 0, 1-12*pixel, icon.getMinU(), icon.getMinV());
+					tess.addVertexWithUV(1-13*pixel, 0, 1-13*pixel, icon.getMinU(), icon.getMaxV());
+					tess.addVertexWithUV(1-13*pixel, 1, 1-13*pixel, icon.getMaxU(), icon.getMaxV());
+					tess.addVertexWithUV(13*pixel, 1, 1-13*pixel, icon.getMaxU(), icon.getMinV());
+					tess.addVertexWithUV(13*pixel, 0, 1-13*pixel, icon.getMinU(), icon.getMinV());
 					
-					tess.addVertexWithUV(12*pixel, 0, 12*pixel, 11*tPixel, 0*tPixel);
-					tess.addVertexWithUV(12*pixel, 1, 12*pixel, 27*tPixel, 0*tPixel);
-					tess.addVertexWithUV(1-12*pixel, 1, 12*pixel, 27*tPixel, 6*tPixel);
-					tess.addVertexWithUV(1-12*pixel, 0, 12*pixel, 11*tPixel, 6*tPixel);
+					tess.addVertexWithUV(13*pixel, 0, 13*pixel, icon.getMinU(), icon.getMinV());
+					tess.addVertexWithUV(13*pixel, 1, 13*pixel, icon.getMaxU(), icon.getMinV());
+					tess.addVertexWithUV(1-13*pixel, 1, 13*pixel, icon.getMaxU(), icon.getMaxV());
+					tess.addVertexWithUV(1-13*pixel, 0, 13*pixel, icon.getMinU(), icon.getMaxV());
 					
-					tess.addVertexWithUV(1-12*pixel, 0, 12*pixel, 11*tPixel, 0*tPixel);
-					tess.addVertexWithUV(1-12*pixel, 1, 12*pixel, 27*tPixel, 0*tPixel);
-					tess.addVertexWithUV(1-12*pixel, 1, 1-12*pixel, 27*tPixel, 6*tPixel);
-					tess.addVertexWithUV(1-12*pixel, 0, 1-12*pixel, 11*tPixel, 6*tPixel);
+					tess.addVertexWithUV(1-13*pixel, 0, 13*pixel, icon.getMinU(), icon.getMinV());
+					tess.addVertexWithUV(1-13*pixel, 1, 13*pixel, icon.getMaxU(), icon.getMinV());
+					tess.addVertexWithUV(1-13*pixel, 1, 1-13*pixel, icon.getMaxU(), icon.getMaxV());
+					tess.addVertexWithUV(1-13*pixel, 0, 1-13*pixel, icon.getMinU(), icon.getMaxV());
 					
-					tess.addVertexWithUV(12*pixel, 0, 1-12*pixel, 11*tPixel, 6*tPixel);
-					tess.addVertexWithUV(12*pixel, 1, 1-12*pixel, 27*tPixel, 6*tPixel);
-					tess.addVertexWithUV(12*pixel, 1, 12*pixel, 27*tPixel, 0*tPixel);
-					tess.addVertexWithUV(12*pixel, 0, 12*pixel, 11*tPixel, 0*tPixel);
+					tess.addVertexWithUV(13*pixel, 0, 1-13*pixel, icon.getMinU(), icon.getMaxV());
+					tess.addVertexWithUV(13*pixel, 1, 1-13*pixel, icon.getMaxU(), icon.getMaxV());
+					tess.addVertexWithUV(13*pixel, 1, 13*pixel, icon.getMaxU(), icon.getMinV());
+					tess.addVertexWithUV(13*pixel, 0, 13*pixel, icon.getMinU(), icon.getMinV());
 				}
+				tess.draw();
+				
+				this.bindTexture(texture);
 			}
-			
-			
-			this.bindTexture(texture);
 		}
 		
-		tess.draw();
+		
 		
 		GL11.glTranslatef(0.5F, 0.5F, 0.5F);
 
@@ -181,6 +181,7 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 		{
 			GL11.glRotatef(-90, 0, 0, 1);
 		}
+		
 		GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
 	}
 	
