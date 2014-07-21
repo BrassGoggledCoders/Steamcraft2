@@ -44,7 +44,8 @@ public class TileCopperPipe extends TileEntity
 	@Override
 	public void updateEntity()
 	{
-		if(!worldObj.isRemote && isMaster)
+		//if(!worldObj.isRemote)
+			if(isMaster)
 			network.updateNetwork(this.worldObj);
 	}
 
@@ -139,7 +140,7 @@ public class TileCopperPipe extends TileEntity
 	{
 		if(extract!=null)
 		{
-			if(!worldObj.isRemote)
+			//if(!worldObj.isRemote)
 				network.inputs.remove(new Coords(xCoord + extract.offsetX, yCoord + extract.offsetY, zCoord + extract.offsetZ, extract.getOpposite()));
 			
 			extract = null;
@@ -150,7 +151,7 @@ public class TileCopperPipe extends TileEntity
 				{
 					extract = dir;
 
-					if(!worldObj.isRemote)
+					//if(!worldObj.isRemote)
 					{
 						Coords temp = new Coords(xCoord + extract.offsetX, yCoord + extract.offsetY, zCoord + extract.offsetZ, extract.getOpposite());
 	
@@ -171,7 +172,7 @@ public class TileCopperPipe extends TileEntity
 		}
 		else
 		{
-			if(connections[0]!=null && !worldObj.isRemote)
+			if(connections[0]!=null )//&& !worldObj.isRemote)
 			{
 				ForgeDirection dir = connections[0];
 				
@@ -190,7 +191,7 @@ public class TileCopperPipe extends TileEntity
 		}
 		else
 		{
-			if(connections[1]!=null && !worldObj.isRemote)
+			if(connections[1]!=null )//&& !worldObj.isRemote)
 			{
 				ForgeDirection dir = connections[1];
 				
@@ -209,7 +210,7 @@ public class TileCopperPipe extends TileEntity
 		}
 		else
 		{
-			if(connections[2]!=null && !worldObj.isRemote)
+			if(connections[2]!=null )//&& !worldObj.isRemote)
 			{
 				ForgeDirection dir = connections[2];
 				
@@ -227,7 +228,7 @@ public class TileCopperPipe extends TileEntity
 		}
 		else
 		{
-			if(connections[3]!=null && !worldObj.isRemote)
+			if(connections[3]!=null )//&& !worldObj.isRemote)
 			{
 				ForgeDirection dir = connections[3];
 				
@@ -246,7 +247,7 @@ public class TileCopperPipe extends TileEntity
 		}
 		else
 		{
-			if(connections[4]!=null && !worldObj.isRemote)
+			if(connections[4]!=null )//&& !worldObj.isRemote)
 			{
 				ForgeDirection dir = connections[4];
 				
@@ -265,7 +266,7 @@ public class TileCopperPipe extends TileEntity
 		}
 		else
 		{
-			if(connections[5]!=null && !worldObj.isRemote)
+			if(connections[5]!=null )//&& !worldObj.isRemote)
 			{
 				ForgeDirection dir = connections[5];
 				
@@ -277,8 +278,8 @@ public class TileCopperPipe extends TileEntity
 			connections[5] = null;
 		}
 
-		if(!worldObj.isRemote)
-		{
+		//if(!worldObj.isRemote)
+		//{
 			if(network==null)
 			{
 				network = new FluidNetwork(1);
@@ -307,13 +308,13 @@ public class TileCopperPipe extends TileEntity
 							network.inputs.add(temp);
 				}
 			}
-		}
+		//}
 	}
 
 	public void updateNetwork(ForgeDirection dir)
 	{
-		if(!worldObj.isRemote)
-		{
+		//if(!worldObj.isRemote)
+		//{
 			TileEntity tile = worldObj.getTileEntity(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ);
 	
 			if(tile instanceof TileCopperPipe)
@@ -347,13 +348,13 @@ public class TileCopperPipe extends TileEntity
 						}
 				}
 			}
-		}
+		//}
 	}
 
 	private void updateNetworkToOthers(ForgeDirection ignore)
 	{
-		if(!worldObj.isRemote)
-		{
+		//if(!worldObj.isRemote)
+		//{
 			for(ForgeDirection dir : connections)
 				if(dir!=null && dir!=ignore)			
 					if(worldObj.getBlock(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ) == InitBlocks.blockCopperPipe)
@@ -392,13 +393,13 @@ public class TileCopperPipe extends TileEntity
 							if(!network.inputs.contains(temp))
 								network.inputs.add(temp);
 					}	
-		}
+		//}
 	}
 
 	public void removeFromNetwork()
 	{
-		if(!worldObj.isRemote)
-		{
+		//if(!worldObj.isRemote)
+		//{
 			if(network!=null)
 			{
 				network.changeSize(-1);
@@ -423,7 +424,7 @@ public class TileCopperPipe extends TileEntity
 								network.outputs.remove(new Coords(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ, dir.getOpposite()));
 				}
 			}
-		}
+		//}
 	}
 
 	private boolean canConnect(int x, int y, int z)
@@ -501,6 +502,7 @@ public class TileCopperPipe extends TileEntity
 			this.tank = new FluidTank(200*size);
 		}
 		
+		/*
 		@Override
 		public boolean equals(Object obj)
 		{
@@ -514,6 +516,7 @@ public class TileCopperPipe extends TileEntity
 			}
 			return false;
 		}
+		*/
 
 		public void updateNetwork(World world)
 		{
