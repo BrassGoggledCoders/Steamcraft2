@@ -482,6 +482,8 @@ public class TileCopperPipe extends TileEntity
 
 	public static class FluidNetwork
 	{
+		public static final short capacityPerPipe = (short) 200;
+		
 		private static final byte ticksTillUpdate = 4;
 
 		private static final short maxExtractPerTile = 50*ticksTillUpdate;
@@ -499,7 +501,7 @@ public class TileCopperPipe extends TileEntity
 		{
 			this.size = size;
 			
-			this.tank = new FluidTank(200*size);
+			this.tank = new FluidTank(capacityPerPipe*size);
 		}
 		
 		/*
@@ -616,8 +618,12 @@ public class TileCopperPipe extends TileEntity
 
 		public void changeSize(int with)
 		{
+			FluidStack temp = tank.getFluid();
+			
 			this.size += with;
 			this.tank.setCapacity(200*size);
+			
+			this.tank.setFluid(temp);
 		}
 		
 		public void writeToNBT(NBTTagCompound tag)
