@@ -119,14 +119,14 @@ public class BlockCopperPipe extends BlockContainerMod
 		
 		if(pipe!=null)
 		{
-			float minX = 6*pixel-(pipe.connections[5]!=null ? 6*pixel : 0);
-			float maxX = 1-6*pixel+(pipe.connections[4]!=null ? 6*pixel : 0);
+			float minX = 5*pixel-(pipe.connections[5]!=null ? 5*pixel : 0);
+			float maxX = 1-5*pixel+(pipe.connections[4]!=null ? 5*pixel : 0);
 			
-			float minY = 6*pixel-(pipe.connections[1]!=null ? 6*pixel : 0);
-			float maxY = 1-6*pixel+(pipe.connections[0]!=null ? 6*pixel : 0);
+			float minY = 5*pixel-(pipe.connections[1]!=null ? 5*pixel : 0);
+			float maxY = 1-5*pixel+(pipe.connections[0]!=null ? 5*pixel : 0);
 			
-			float minZ = 6*pixel-(pipe.connections[3]!=null ? 6*pixel : 0);
-			float maxZ = 1-6*pixel+(pipe.connections[2]!=null ? 6*pixel : 0);
+			float minZ = 5*pixel-(pipe.connections[3]!=null ? 5*pixel : 0);
+			float maxZ = 1-5*pixel+(pipe.connections[2]!=null ? 5*pixel : 0);
 			
 			this.setBlockBounds(minX, minY, minZ, maxX, maxY, maxZ);
 		}

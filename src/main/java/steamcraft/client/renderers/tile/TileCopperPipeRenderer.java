@@ -59,9 +59,9 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 			for(ForgeDirection dir : pipe.connections)
 				if(dir!=null)
 					if(pipe.extract == dir)
-						drawAlternateConnection(dir);
+						drawAlternateConnection(dir, pipe);
 					else
-						drawConnection(dir);
+						drawConnection(dir, pipe);
 		}
 		
 		GL11.glEnable(GL11.GL_LIGHTING);
@@ -133,7 +133,6 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 		}
 		tess.draw();
 			
-		//Draw fluid
 		if(pipe.network!=null)
 		{
 			if(pipe.network.tank.getFluid()!=null)
@@ -168,9 +167,7 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 				this.bindTexture(texture);
 			}
 		}
-		
-		
-		
+
 		GL11.glTranslatef(0.5F, 0.5F, 0.5F);
 
 		if(dir == ForgeDirection.SOUTH || dir == ForgeDirection.NORTH)
@@ -185,7 +182,7 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 		GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
 	}
 	
-	private void drawAlternateConnection(ForgeDirection dir)
+	private void drawAlternateConnection(ForgeDirection dir, TileCopperPipe pipe)
 	{
 		Tessellator tess = Tessellator.instance;
 		
@@ -261,8 +258,66 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 				tess.addVertexWithUV(12*pixel, 1-12*pixel, 1-12*pixel, 0*tPixel, 6*tPixel);
 			}
 		}
-		
 		tess.draw();
+		/*
+		if(pipe.network!=null)
+		{
+			if(pipe.network.tank.getFluid()!=null)
+			{
+				tess.startDrawingQuads();
+				{
+					IIcon icon = pipe.network.tank.getFluid().getFluid().getBlock().getIcon(0, 0);
+					this.bindTexture(TextureMap.locationBlocksTexture);
+
+					if(drawInside)
+					{
+						tess.addVertexWithUV(12*pixel, 1-12*pixel, 1-12*pixel, icon.getMinU(),  icon.getMinV());
+						tess.addVertexWithUV(12*pixel, 1, 1-12*pixel, icon.getMaxU(),  icon.getMinV());
+						tess.addVertexWithUV(1-12*pixel, 1, 1-12*pixel, icon.getMaxU(),  icon.getMaxV());
+						tess.addVertexWithUV(1-12*pixel, 1-12*pixel, 1-12*pixel, icon.getMinU(),  icon.getMaxV());
+						
+						tess.addVertexWithUV(1-12*pixel, 1-12*pixel, 12*pixel, icon.getMinU(),  icon.getMaxV());
+						tess.addVertexWithUV(1-12*pixel, 1, 12*pixel, icon.getMaxU(),  icon.getMaxV());
+						tess.addVertexWithUV(12*pixel, 1, 12*pixel, icon.getMaxU(),  icon.getMinV());
+						tess.addVertexWithUV(12*pixel, 1-12*pixel, 12*pixel, icon.getMinU(),  icon.getMinV());
+						
+						tess.addVertexWithUV(1-12*pixel, 1-12*pixel, 1-12*pixel, icon.getMinU(),  icon.getMaxV());
+						tess.addVertexWithUV(1-12*pixel, 1, 1-12*pixel, icon.getMaxU(),  icon.getMaxV());
+						tess.addVertexWithUV(1-12*pixel, 1, 12*pixel, icon.getMaxU(),  icon.getMinV());
+						tess.addVertexWithUV(1-12*pixel, 1-12*pixel, 12*pixel, icon.getMinU(),  icon.getMinV());
+						
+						tess.addVertexWithUV(12*pixel, 1-12*pixel, 12*pixel, icon.getMinU(),  icon.getMinV());
+						tess.addVertexWithUV(12*pixel, 1, 12*pixel, icon.getMaxU(),  icon.getMinV());
+						tess.addVertexWithUV(12*pixel, 1, 1-12*pixel, icon.getMaxU(),  icon.getMaxV());
+						tess.addVertexWithUV(12*pixel, 1-12*pixel, 1-12*pixel, icon.getMinU(),  icon.getMaxV());
+					}
+					
+					tess.addVertexWithUV(1-13*pixel, 0, 1-13*pixel, icon.getMinU(), icon.getMaxV());
+					tess.addVertexWithUV(1-13*pixel, 1, 1-13*pixel, icon.getMaxU(), icon.getMaxV());
+					tess.addVertexWithUV(13*pixel, 1, 1-13*pixel, icon.getMaxU(), icon.getMinV());
+					tess.addVertexWithUV(13*pixel, 0, 1-13*pixel, icon.getMinU(), icon.getMinV());
+					
+					tess.addVertexWithUV(13*pixel, 0, 13*pixel, icon.getMinU(), icon.getMinV());
+					tess.addVertexWithUV(13*pixel, 1, 13*pixel, icon.getMaxU(), icon.getMinV());
+					tess.addVertexWithUV(1-13*pixel, 1, 13*pixel, icon.getMaxU(), icon.getMaxV());
+					tess.addVertexWithUV(1-13*pixel, 0, 13*pixel, icon.getMinU(), icon.getMaxV());
+					
+					tess.addVertexWithUV(1-13*pixel, 0, 13*pixel, icon.getMinU(), icon.getMinV());
+					tess.addVertexWithUV(1-13*pixel, 1, 13*pixel, icon.getMaxU(), icon.getMinV());
+					tess.addVertexWithUV(1-13*pixel, 1, 1-13*pixel, icon.getMaxU(), icon.getMaxV());
+					tess.addVertexWithUV(1-13*pixel, 0, 1-13*pixel, icon.getMinU(), icon.getMaxV());
+					
+					tess.addVertexWithUV(13*pixel, 0, 1-13*pixel, icon.getMinU(), icon.getMaxV());
+					tess.addVertexWithUV(13*pixel, 1, 1-13*pixel, icon.getMaxU(), icon.getMaxV());
+					tess.addVertexWithUV(13*pixel, 1, 13*pixel, icon.getMaxU(), icon.getMinV());
+					tess.addVertexWithUV(13*pixel, 0, 13*pixel, icon.getMinU(), icon.getMinV());
+				}
+				tess.draw();
+				
+				this.bindTexture(texture);
+			}
+		}
+		*/
 		
 		GL11.glTranslatef(0.5F, 0.5F, 0.5F);
 		if(dir == ForgeDirection.UP)
@@ -291,7 +346,8 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 		}
 		GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
 	}
-	private void drawConnection(ForgeDirection dir)
+	
+	private void drawConnection(ForgeDirection dir, TileCopperPipe pipe)
 	{
 		Tessellator tess = Tessellator.instance;
 		
@@ -367,8 +423,42 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 				tess.addVertexWithUV(12*pixel, 1-12*pixel, 1-12*pixel, 6*tPixel, 6*tPixel);
 			}
 		}
-		
 		tess.draw();
+		
+		if(pipe.network!=null)
+		{
+			if(pipe.network.tank.getFluid()!=null)
+			{
+				tess.startDrawingQuads();
+				{
+					IIcon icon = pipe.network.tank.getFluid().getFluid().getBlock().getIcon(0, 0);
+					this.bindTexture(TextureMap.locationBlocksTexture);
+					
+					tess.addVertexWithUV(1-13*pixel, 1-13*pixel, 1-13*pixel, icon.getMinU(), icon.getMaxV());
+					tess.addVertexWithUV(1-13*pixel, 1, 1-13*pixel, icon.getMaxU(), icon.getMaxV());
+					tess.addVertexWithUV(13*pixel, 1, 1-13*pixel, icon.getMaxU(), icon.getMinV());
+					tess.addVertexWithUV(13*pixel, 1-13*pixel, 1-13*pixel, icon.getMinU(), icon.getMinV());
+					
+					tess.addVertexWithUV(13*pixel, 1-13*pixel, 13*pixel, icon.getMinU(), icon.getMinV());
+					tess.addVertexWithUV(13*pixel, 1, 13*pixel, icon.getMaxU(), icon.getMinV());
+					tess.addVertexWithUV(1-13*pixel, 1, 13*pixel, icon.getMaxU(), icon.getMaxV());
+					tess.addVertexWithUV(1-13*pixel, 1-13*pixel, 13*pixel, icon.getMinU(), icon.getMaxV());
+					
+					tess.addVertexWithUV(1-13*pixel, 1-13*pixel, 13*pixel, icon.getMinU(), icon.getMinV());
+					tess.addVertexWithUV(1-13*pixel, 1, 13*pixel, icon.getMaxU(), icon.getMinV());
+					tess.addVertexWithUV(1-13*pixel, 1, 1-13*pixel, icon.getMaxU(), icon.getMaxV());
+					tess.addVertexWithUV(1-13*pixel, 1-13*pixel, 1-13*pixel, icon.getMinU(), icon.getMaxV());
+					
+					tess.addVertexWithUV(13*pixel, 1-13*pixel, 1-13*pixel, icon.getMinU(), icon.getMaxV());
+					tess.addVertexWithUV(13*pixel, 1, 1-13*pixel, icon.getMaxU(), icon.getMaxV());
+					tess.addVertexWithUV(13*pixel, 1, 13*pixel, icon.getMaxU(), icon.getMinV());
+					tess.addVertexWithUV(13*pixel, 1-13*pixel, 13*pixel, icon.getMinU(), icon.getMinV());
+				}
+				tess.draw();
+				
+				this.bindTexture(texture);
+			}
+		}
 		
 		GL11.glTranslatef(0.5F, 0.5F, 0.5F);
 		if(dir == ForgeDirection.UP)
