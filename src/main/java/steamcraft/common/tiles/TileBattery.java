@@ -175,9 +175,6 @@ public class TileBattery extends BaseTileWithInventory implements IEnergyHandler
 			}
 		
 		usedEnergy -= maxExtract;
-		
-		System.out.println("usedEn" + usedEnergy);
-		System.out.println("maxEx" + maxExtract);
 
 		return usedEnergy;
 	}

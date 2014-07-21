@@ -22,7 +22,6 @@ import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
-import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTank;
 import net.minecraftforge.fluids.FluidTankInfo;
@@ -33,7 +32,7 @@ import steamcraft.common.InitBlocks;
  * @author Decebaldecebal
  *
  */
-public class TileCopperPipe extends TileEntity implements IFluidHandler
+public class TileCopperPipe extends TileEntity
 {
 	public ForgeDirection extract = null;
 	public ForgeDirection[] connections = new ForgeDirection[6];
@@ -480,67 +479,6 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 		return false;
 	}
 
-	@Override
-	public boolean canDrain(ForgeDirection from, Fluid fluid)
-	{
-		return false;
-	}
-
-	@Override
-	public boolean canFill(ForgeDirection from, Fluid fluid)
-	{
-		/*
-		if(tank.getFluidAmount() == tank.getCapacity())
-			return false;
-
-		if(tank.getFluid()==null)
-			return true;
-		else if(tank.getFluid().getFluid() == fluid)
-			return true;
-		*/
-
-		return false;
-	}
-
-	@Override
-	public FluidStack drain(ForgeDirection from, FluidStack resource, boolean doDrain)
-	{
-		return null;
-	}
-
-	@Override
-	public FluidStack drain(ForgeDirection from, int maxDrain, boolean doDrain)
-	{
-		return null;
-	}
-
-	@Override
-	public int fill(ForgeDirection from, FluidStack resource, boolean doFill)
-	{
-		/*
-		if(tank.getFluid()==null || (tank.getFluid()!=null && tank.getFluid().getFluid() == resource.getFluid()))
-		{
-			int amount = tank.fill(resource, doFill);
-
-			if(amount > 0)
-				received = from;
-			else
-				received = null;
-
-			return amount;
-		}
-		 */
-		return 0;
-
-	}
-
-	@Override
-	public FluidTankInfo[] getTankInfo(ForgeDirection from)
-	{
-		//return new FluidTankInfo[]{tank.getInfo()};
-		return null;
-	}
-
 	public static class FluidNetwork
 	{
 		private static final byte ticksTillUpdate = 4;
@@ -548,7 +486,7 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 		private static final short maxExtractPerTile = 50*ticksTillUpdate;
 		private static final short maxTransferPerTile = 100*ticksTillUpdate;
 
-		FluidTank tank;
+		public FluidTank tank;
 		public int size;
 		
 		ArrayList<Coords> inputs = new ArrayList<Coords>();
@@ -561,6 +499,20 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 			this.size = size;
 			
 			this.tank = new FluidTank(200*size);
+		}
+		
+		@Override
+		public boolean equals(Object obj)
+		{
+			if(obj instanceof FluidNetwork)
+			{
+				FluidNetwork net = (FluidNetwork) obj;
+				
+				if(net.tank.getFluid().equals(this.tank.getFluid()) && net.tank.getCapacity() == this.tank.getCapacity())
+					if(net.size == this.size && net.inputs.equals(this.inputs) && net.outputs.equals(this.outputs))
+						return true;
+			}
+			return false;
 		}
 
 		public void updateNetwork(World world)

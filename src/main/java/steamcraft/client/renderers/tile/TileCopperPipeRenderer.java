@@ -13,8 +13,10 @@
 package steamcraft.client.renderers.tile;
 
 import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.IIcon;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.util.ForgeDirection;
 
@@ -49,7 +51,7 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 		ForgeDirection opposite = pipe.onlyOneOpposite(); 
 		
 		if(opposite!=null && pipe.extract==null)
-			drawStraightConnection(opposite);
+			drawStraightConnection(opposite, pipe);
 		else
 		{
 			drawCore(pipe);
@@ -67,7 +69,7 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 		GL11.glTranslated(-transX, -transY, -transZ);
 	}
 	
-	private void drawStraightConnection(ForgeDirection dir)
+	private void drawStraightConnection(ForgeDirection dir, TileCopperPipe pipe)
 	{
 		Tessellator tess = Tessellator.instance;
 		
@@ -86,7 +88,7 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 
 			GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
 			
-			tess.addVertexWithUV(1-12*pixel, 0l, 1-12*pixel, 11*tPixel, 6*tPixel);
+			tess.addVertexWithUV(1-12*pixel, 0, 1-12*pixel, 11*tPixel, 6*tPixel);
 			tess.addVertexWithUV(1-12*pixel, 1, 1-12*pixel, 27*tPixel, 6*tPixel);
 			tess.addVertexWithUV(12*pixel, 1, 1-12*pixel, 27*tPixel, 0*tPixel);
 			tess.addVertexWithUV(12*pixel, 0, 1-12*pixel, 11*tPixel, 0*tPixel);
@@ -105,7 +107,7 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 			tess.addVertexWithUV(12*pixel, 1, 1-12*pixel, 27*tPixel, 6*tPixel);
 			tess.addVertexWithUV(12*pixel, 1, 12*pixel, 27*tPixel, 0*tPixel);
 			tess.addVertexWithUV(12*pixel, 0, 12*pixel, 11*tPixel, 0*tPixel);
-			
+						
 			if(drawInside)
 			{
 				tess.addVertexWithUV(12*pixel, 0, 1-12*pixel, 11*tPixel, 0*tPixel);
@@ -128,6 +130,17 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 				tess.addVertexWithUV(12*pixel, 1, 1-12*pixel, 27*tPixel, 6*tPixel);
 				tess.addVertexWithUV(12*pixel, 0, 1-12*pixel, 11*tPixel, 6*tPixel);
 			}
+			
+			//Draw fluid
+			if(pipe.network!=null && pipe.network.tank.getFluid()!=null)
+			{
+				IIcon icon = pipe.network.tank.getFluid().getFluid().getBlock().getIcon(0, 0);
+				this.bindTexture(TextureMap.locationBlocksTexture);
+				drawCutIcon(icon, 1-12*pixel, 0, 1-12*pixel, 20, 20, 0);
+			}
+			
+			
+			this.bindTexture(texture);
 		}
 		
 		tess.draw();
@@ -143,6 +156,17 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 			GL11.glRotatef(-90, 0, 0, 1);
 		}
 		GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
+	}
+	
+	private void drawCutIcon(IIcon icon, float x, float y, float z, int width, int height, int cut)
+	{
+		Tessellator tess = Tessellator.instance;
+		tess.startDrawingQuads();
+		tess.addVertexWithUV(x, y + height, z, icon.getMinU(), icon.getInterpolatedV(height));
+		tess.addVertexWithUV(x + width, y + height, z, icon.getInterpolatedU(width), icon.getInterpolatedV(height));
+		tess.addVertexWithUV(x + width, y + cut, z, icon.getInterpolatedU(width), icon.getInterpolatedV(cut));
+		tess.addVertexWithUV(x, y + cut, z, icon.getMinU(), icon.getInterpolatedV(cut));
+		tess.draw();
 	}
 	
 	private void drawAlternateConnection(ForgeDirection dir)
