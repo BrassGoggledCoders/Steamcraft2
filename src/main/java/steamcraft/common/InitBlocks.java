@@ -40,6 +40,7 @@ import steamcraft.common.blocks.FluidSteam;
 import steamcraft.common.blocks.machines.BlockArmorEditor;
 import steamcraft.common.blocks.machines.BlockBattery;
 import steamcraft.common.blocks.machines.BlockBloomery;
+import steamcraft.common.blocks.machines.BlockCharger;
 import steamcraft.common.blocks.machines.BlockCopperPipe;
 import steamcraft.common.blocks.machines.BlockDropHammerAnvil;
 import steamcraft.common.blocks.machines.BlockIntake;
@@ -56,6 +57,7 @@ import steamcraft.common.tiles.TileArmorEditor;
 import steamcraft.common.tiles.TileBattery;
 import steamcraft.common.tiles.TileBloomery;
 import steamcraft.common.tiles.TileBrassPlaque;
+import steamcraft.common.tiles.TileCharger;
 import steamcraft.common.tiles.TileCopperPipe;
 import steamcraft.common.tiles.TileCopperWire;
 import steamcraft.common.tiles.TileCrystal;
@@ -95,7 +97,7 @@ public class InitBlocks
 
 	/* Machines */
 
-	public static Block blockSteamBoiler, blockIntake, blockTurbine, blockBattery;
+	public static Block blockSteamBoiler, blockIntake, blockTurbine, blockBattery, blockCharger;
 	public static Block blockLightningRod, blockTeslaCoil;
 
 	public static Block blockBloomery;
@@ -194,11 +196,13 @@ public class InitBlocks
 		blockBattery = new BlockBattery().setBlockName("blockBattery");
 		blockLightningRod = new BlockLightningRod(Material.iron).setBlockName("blockLightningRod");
 		blockTeslaCoil = new BlockTeslaCoil(Material.iron).setBlockName("blockTeslaCoil");
+		blockCharger = new BlockCharger().setBlockName("blockCharger");
 
 		RegistryHelper.registerContainerBlockWithDesc(blockTurbine, TileTurbine.class, "BlockTurbine");
 		RegistryHelper.registerContainerBlockWithDesc(blockBattery, TileBattery.class, "BlockBattery");
 		RegistryHelper.registerContainerBlockWithDesc(blockLightningRod, TileLightningRod.class, "BlockLightningRod");
 		RegistryHelper.registerContainerBlockWithDesc(blockTeslaCoil, TileTeslaCoil.class, "BlockTeslaCoil");
+		RegistryHelper.registerContainerBlockWithDesc(blockCharger, TileCharger.class, "BlockCharger");
 
 		// Bloomery
 		blockBloomery = new BlockBloomery(Material.rock).setBlockName("blockBloomery");

@@ -25,10 +25,9 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import steamcraft.client.lib.GuiIDs;
-import steamcraft.client.lib.RenderIDs;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.LibInfo;
-import steamcraft.common.tiles.TileBattery;
+import steamcraft.common.tiles.TileCharger;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -36,32 +35,27 @@ import cpw.mods.fml.relauncher.SideOnly;
  * @author decebaldecebal
  *
  */
-public class BlockBattery extends BlockContainerMod
+public class BlockCharger extends BlockContainerMod
 {
-	@SideOnly(Side.CLIENT)
-	private IIcon iconTop;
 
-	public BlockBattery()
+	public BlockCharger()
 	{
 		super(Material.iron);
 		setBlockBounds(0.2F, 0, 0, 0.8F, 0.7F, 1);
 	}
+
+	@SideOnly(Side.CLIENT)
 	@Override
-	public int getRenderType()
+	public IIcon getIcon(int side, int meta)
 	{
-		return RenderIDs.blockBatteryRI;
+		return this.blockIcon;
 	}
 
+	@SideOnly(Side.CLIENT)
 	@Override
-	public boolean isOpaqueCube()
+	public void registerBlockIcons(IIconRegister icon)
 	{
-		return false;
-	}
-
-	@Override
-	public boolean renderAsNormalBlock()
-	{
-		return false;
+		this.blockIcon = icon.registerIcon(LibInfo.PREFIX + "blockChargerSide");
 	}
 
 	@Override
@@ -71,12 +65,12 @@ public class BlockBattery extends BlockContainerMod
 			return true;
 		else
 		{
-			TileBattery tile = (TileBattery) world.getTileEntity(par2, par3, par4);
+			TileCharger tile = (TileCharger) world.getTileEntity(par2, par3, par4);
 
 			if (tile == null || player.isSneaking())
 				return false;
 
-			player.openGui(Steamcraft.instance, GuiIDs.GUI_ID_BATTERY, world, par2, par3, par4);
+			player.openGui(Steamcraft.instance, GuiIDs.GUI_ID_CHARGER, world, par2, par3, par4);
 			return true;
 		}
 	}
@@ -84,13 +78,13 @@ public class BlockBattery extends BlockContainerMod
 	@Override
 	public TileEntity createNewTileEntity(World var1, int var2)
 	{
-		return new TileBattery();
+		return new TileCharger();
 	}
 
 	@Override
 	public void breakBlock(World par1World, int par2, int par3, int par4, Block block, int par6)
 	{
-		TileBattery var7 = (TileBattery) par1World.getTileEntity(par2, par3, par4);
+		TileCharger var7 = (TileCharger) par1World.getTileEntity(par2, par3, par4);
 
 		if (var7 != null)
 			for (int var8 = 0; var8 < var7.getSizeInventory(); ++var8)

@@ -1,5 +1,5 @@
 /**
- * This class was created by BrassGoggledCoders modding team. 
+ * This class was created by BrassGoggledCoders modding team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -8,7 +8,7 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- * 
+ *
  */
 package steamcraft.client.gui;
 
@@ -21,16 +21,18 @@ import steamcraft.common.entities.EntityPlayerExtended;
 import steamcraft.common.tiles.TileArmorEditor;
 import steamcraft.common.tiles.TileBattery;
 import steamcraft.common.tiles.TileBloomery;
+import steamcraft.common.tiles.TileCharger;
 import steamcraft.common.tiles.TileSteamBoiler;
 import steamcraft.common.tiles.container.ContainerArmorEditor;
 import steamcraft.common.tiles.container.ContainerBattery;
 import steamcraft.common.tiles.container.ContainerBloomery;
+import steamcraft.common.tiles.container.ContainerCharger;
 import steamcraft.common.tiles.container.ContainerSteamBoiler;
 import cpw.mods.fml.common.network.IGuiHandler;
 
 /**
  * @author Surseanca
- * 
+ *
  */
 public class GuiHandler implements IGuiHandler
 {
@@ -51,6 +53,8 @@ public class GuiHandler implements IGuiHandler
 				return new ContainerBloomery(player.inventory, (TileBloomery) tile);
 			case GuiIDs.GUI_ID_BATTERY:
 				return new ContainerBattery(player.inventory, (TileBattery) tile);
+			case GuiIDs.GUI_ID_CHARGER:
+				return new ContainerCharger(player.inventory, (TileCharger) tile);
 		}
 		return null;
 	}
@@ -72,6 +76,8 @@ public class GuiHandler implements IGuiHandler
 			return new GuiBloomery(player.inventory, (TileBloomery)tile);
 		case GuiIDs.GUI_ID_BATTERY:
 			return new GuiBattery(player.inventory, (TileBattery)tile);
+		case GuiIDs.GUI_ID_CHARGER:
+			return new ContainerCharger(player.inventory, (TileCharger) tile);
 		}
 
 		return null;
