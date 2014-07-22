@@ -170,6 +170,9 @@ public class TileCopperPipe extends TileEntity
 
 	public void updateConnections()
 	{
+		if(worldObj.isRemote)
+			System.out.println(xCoord + " " + yCoord + " " + zCoord);
+		
 		if(canConnect(xCoord, yCoord + 1, zCoord))
 		{
 			connections[0] = ForgeDirection.UP;
@@ -291,7 +294,9 @@ public class TileCopperPipe extends TileEntity
 		
 		if(!worldObj.isRemote) 
 		{
-				if(extract!=null && !canChangeState(extract))
+			System.out.println(network);
+			
+			if(extract!=null && !canChangeState(extract))
 			{
 				network.inputs.remove(new Coords(xCoord + extract.offsetX, yCoord + extract.offsetY, zCoord + extract.offsetZ, extract.getOpposite()));
 				extract=null;
@@ -417,7 +422,14 @@ public class TileCopperPipe extends TileEntity
 								TileCopperPipe pipe = (TileCopperPipe) worldObj.getTileEntity(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ);
 		
 								network.changeSize(-network.size);
-								pipe.network = new FluidNetwork(1);							
+								
+								pipe.network = new FluidNetwork(1);
+								pipe.network.tank = network.tank;
+								
+								if(network.tank.getFluid()!=null)
+									pipe.network.tank.setFluid(new FluidStack(network.tank.getFluid(), 
+											network.tank.getFluidAmount() - FluidNetwork.capacityPerPipe));
+									
 								pipe.isMaster = true;
 							}
 							else if(dir==extract)
@@ -529,6 +541,8 @@ public class TileCopperPipe extends TileEntity
 
 			if(ticksSinceLastUpdate > ticksTillUpdate)
 			{
+				System.out.println(this.tank.getFluidAmount());
+				
 				if(tank.getFluidAmount() == 0)
 					tank.setFluid(null);
 				
@@ -629,13 +643,9 @@ public class TileCopperPipe extends TileEntity
 		}
 
 		public void changeSize(int with)
-		{
-			FluidStack temp = tank.getFluid();
-			
+		{			
 			this.size += with;
 			this.tank.setCapacity(200*size);
-			
-			this.tank.setFluid(temp);
 		}
 		
 		public void writeToNBT(NBTTagCompound tag)

@@ -379,8 +379,6 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 					
 					float level = pipe.network.fluidScaled;
 					
-					System.out.println(level + " a:" + pipe.network.tank.getFluidAmount() + " s:"  + pipe.network.size);
-					
 					tess.addVertexWithUV(1-15*pixel+level, 1-15*pixel, 1-15*pixel+level, icon.getMinU(), icon.getMaxV());
 					tess.addVertexWithUV(1-15*pixel+level, 1, 1-15*pixel+level, icon.getMaxU(), icon.getMaxV());
 					tess.addVertexWithUV(15*pixel-level, 1, 1-15*pixel+level, icon.getMaxU(), icon.getMinV());
