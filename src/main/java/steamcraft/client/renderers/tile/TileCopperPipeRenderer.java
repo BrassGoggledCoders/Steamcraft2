@@ -36,8 +36,8 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 	
 	boolean drawInside = true; //make this use a config file
 	
-	static float pixel = 1F/16F/2F;
-	static float tPixel = 1F/32F;
+	public static float pixel = 1F/16F/2F;
+	public static float tPixel = 1F/32F;
 	
 	@Override
 	public void renderTileEntityAt(TileEntity tile, double transX, double transY, double transZ,  float f)

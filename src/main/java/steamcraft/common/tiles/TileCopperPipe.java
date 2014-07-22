@@ -26,6 +26,7 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTank;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
+import steamcraft.client.renderers.tile.TileCopperPipeRenderer;
 import steamcraft.common.InitBlocks;
 
 /**
@@ -491,6 +492,7 @@ public class TileCopperPipe extends TileEntity
 
 		public FluidTank tank;
 		public int size;
+		public float fluidScaled;
 		
 		ArrayList<Coords> inputs = new ArrayList<Coords>();
 		ArrayList<Coords> outputs = new ArrayList<Coords>();
@@ -502,6 +504,11 @@ public class TileCopperPipe extends TileEntity
 			this.size = size;
 			
 			this.tank = new FluidTank(capacityPerPipe*size);
+		}
+		
+		public float getFluidScaled()
+		{
+			return 0f;
 		}
 		
 		/*
@@ -533,6 +540,8 @@ public class TileCopperPipe extends TileEntity
 
 				updateInputs(world);
 				updateOutputs(world);
+				
+				float fluidScaled = (float)(tank.getFluidAmount()/(float)size)/FluidNetwork.capacityPerPipe*(2*TileCopperPipeRenderer.pixel);
 			}
 		}
 
