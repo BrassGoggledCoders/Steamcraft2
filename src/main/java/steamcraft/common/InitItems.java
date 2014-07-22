@@ -44,7 +44,7 @@ import steamcraft.common.items.armor.ItemMonocle;
 import steamcraft.common.items.armor.ItemNormalArmor;
 import steamcraft.common.items.armor.ItemSteamJetpack;
 import steamcraft.common.items.modules.ItemAqualung;
-import steamcraft.common.items.tools.ItemDrill;
+import steamcraft.common.items.tools.ItemElectricDrill;
 import steamcraft.common.items.tools.ItemHammer;
 import steamcraft.common.items.tools.ItemModAxe;
 import steamcraft.common.items.tools.ItemModHoe;
@@ -169,13 +169,13 @@ public class InitItems
 		drillCore = new BaseItem().setUnlocalizedName("itemDrillCore");
 		drillBase = new BaseItem().setUnlocalizedName("itemDrillBase");
 
-		drillWood = new ItemDrill(MaterialHelper.DRILL_WOOD).setUnlocalizedName("itemDrillWood");
-		drillStone = new ItemDrill(MaterialHelper.DRILL_STONE).setUnlocalizedName("itemDrillStone");
-		drillIron = new ItemDrill(MaterialHelper.DRILL_IRON).setUnlocalizedName("itemDrillIron");
-		drillDiamond = new ItemDrill(MaterialHelper.DRILL_EMERALD).setUnlocalizedName("itemDrillDiamond");
-		drillGold = new ItemDrill(MaterialHelper.DRILL_GOLD).setUnlocalizedName("itemDrillGold");
-		drillEtherium = new ItemDrill(MaterialHelper.DRILL_ETHERIUM).setUnlocalizedName("itemDrillEtherium");
-		drillObsidian = new ItemDrill(MaterialHelper.DRILL_OBSIDIAN).setUnlocalizedName("itemDrillObsidian");
+		drillWood = new ItemElectricDrill(MaterialHelper.DRILL_WOOD).setUnlocalizedName("itemDrillWood");
+		drillStone = new ItemElectricDrill(MaterialHelper.DRILL_STONE).setUnlocalizedName("itemDrillStone");
+		drillIron = new ItemElectricDrill(MaterialHelper.DRILL_IRON).setUnlocalizedName("itemDrillIron");
+		drillDiamond = new ItemElectricDrill(MaterialHelper.DRILL_EMERALD).setUnlocalizedName("itemDrillDiamond");
+		drillGold = new ItemElectricDrill(MaterialHelper.DRILL_GOLD).setUnlocalizedName("itemDrillGold");
+		drillEtherium = new ItemElectricDrill(MaterialHelper.DRILL_ETHERIUM).setUnlocalizedName("itemDrillEtherium");
+		drillObsidian = new ItemElectricDrill(MaterialHelper.DRILL_OBSIDIAN).setUnlocalizedName("itemDrillObsidian");
 		drillSteam = new ItemSteamDrill(MaterialHelper.DRILL_STEAM).setUnlocalizedName("itemDrillSteam");
 
 		registerItem(drillCore, "ItemDrillCore");

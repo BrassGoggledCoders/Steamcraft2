@@ -1,5 +1,5 @@
 /**
- * This class was created by BrassGoggledCoders modding team. 
+ * This class was created by BrassGoggledCoders modding team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -8,7 +8,7 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- * 
+ *
  */
 package steamcraft.common.items.tools;
 
@@ -41,7 +41,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author Surseance
- * 
+ *
  */
 public class ItemModTool extends BaseItem
 {
@@ -134,12 +134,7 @@ public class ItemModTool extends BaseItem
 
 	protected boolean isSteampowered()
 	{
-		if (this.toolMaterial == MaterialHelper.TOOL_STEAM)
-			return true;
-		else if (this.toolMaterial == MaterialHelper.DRILL_EMERALD || this.toolMaterial == MaterialHelper.DRILL_ETHERIUM
-				|| this.toolMaterial == MaterialHelper.DRILL_GOLD || this.toolMaterial == MaterialHelper.DRILL_IRON
-				|| this.toolMaterial == MaterialHelper.DRILL_OBSIDIAN || this.toolMaterial == MaterialHelper.DRILL_STEAM
-				|| this.toolMaterial == MaterialHelper.DRILL_STEAM || this.toolMaterial == MaterialHelper.DRILL_WOOD)
+		if (this.toolMaterial == MaterialHelper.TOOL_STEAM || this.toolMaterial == MaterialHelper.DRILL_STEAM)
 			return true;
 		else
 			return false;

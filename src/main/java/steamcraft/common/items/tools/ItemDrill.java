@@ -1,5 +1,5 @@
 /**
- * This class was created by BrassGoggledCoders modding team. 
+ * This class was created by BrassGoggledCoders modding team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -8,7 +8,7 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- * 
+ *
  */
 package steamcraft.common.items.tools;
 
@@ -26,13 +26,16 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * Base class for drills.
- * 
+ *
  * @author Decebaldecebal
- * 
+ *
  */
 public class ItemDrill extends ItemModTool
 {
 	protected ToolMaterial toolMaterial;
+
+	static Block[] blocksEffectiveAgainst = new Block[] { Blocks.cobblestone, Blocks.dirt, Blocks.stone, Blocks.sand, Blocks.clay, Blocks.ice, Blocks.snow,
+			Blocks.netherrack, Blocks.grass, Blocks.gravel };
 
 	public ItemDrill(ToolMaterial mat)
 	{
@@ -48,15 +51,14 @@ public class ItemDrill extends ItemModTool
 	{
 		this.itemIcon = icon.registerIcon(LibInfo.PREFIX + "tools/" + this.getUnlocalizedName().substring(5));
 
-		blocksEffectiveAgainst = new Block[] { Blocks.cobblestone, Blocks.dirt, Blocks.stone, Blocks.sand, Blocks.clay, Blocks.ice, Blocks.snow,
-				Blocks.netherrack, Blocks.grass, Blocks.gravel };
+
 	}
 
 	@SuppressWarnings("all")
 	@Override
 	public boolean canHarvestBlock(Block block, ItemStack stack)
 	{
-		for (Block element : ItemModTool.blocksEffectiveAgainst)
+		for (Block element : ItemDrill.blocksEffectiveAgainst)
 			if (element == block)
 				return true;
 
