@@ -137,12 +137,12 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 		{
 			if(pipe.network.tank.getFluid()!=null)
 			{
+				float level = pipe.network.fluidScaled;
+
 				tess.startDrawingQuads();
 				{
 					IIcon icon = pipe.network.tank.getFluid().getFluid().getBlock().getIcon(0, 0);
 					this.bindTexture(TextureMap.locationBlocksTexture);
-
-					float level = pipe.network.fluidScaled;
 					
 					tess.addVertexWithUV(1-15*pixel+level, 0, 1-15*pixel+level, icon.getMinU(), icon.getMaxV());
 					tess.addVertexWithUV(1-15*pixel+level, 1, 1-15*pixel+level, icon.getMaxU(), icon.getMaxV());
@@ -371,13 +371,13 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 		if(pipe.network!=null)
 		{
 			if(pipe.network.tank.getFluid()!=null)
-			{
+			{				
+				float level = pipe.network.fluidScaled;
+				
 				tess.startDrawingQuads();
 				{
 					IIcon icon = pipe.network.tank.getFluid().getFluid().getBlock().getIcon(0, 0);
 					this.bindTexture(TextureMap.locationBlocksTexture);
-					
-					float level = pipe.network.fluidScaled;
 					
 					tess.addVertexWithUV(1-15*pixel+level, 1-15*pixel, 1-15*pixel+level, icon.getMinU(), icon.getMaxV());
 					tess.addVertexWithUV(1-15*pixel+level, 1, 1-15*pixel+level, icon.getMaxU(), icon.getMaxV());

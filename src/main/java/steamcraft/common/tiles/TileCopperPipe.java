@@ -14,7 +14,6 @@ package steamcraft.common.tiles;
 
 import java.util.ArrayList;
 
-import cpw.mods.fml.common.network.NetworkRegistry.TargetPoint;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.network.NetworkManager;
@@ -31,6 +30,7 @@ import steamcraft.client.renderers.tile.TileCopperPipeRenderer;
 import steamcraft.common.InitBlocks;
 import steamcraft.common.InitPackets;
 import steamcraft.common.packets.FluidNetworkPacket;
+import cpw.mods.fml.common.network.NetworkRegistry.TargetPoint;
 
 /**
  * @author Decebaldecebal
@@ -48,8 +48,11 @@ public class TileCopperPipe extends TileEntity
 	@Override
 	public void updateEntity()
 	{
-		if(!worldObj.isRemote && isMaster)
-			network.updateNetwork(this);
+		if(!worldObj.isRemote)
+			if(isMaster)
+				network.updateNetwork(this);
+			else if(network==null)
+				updateConnections();
 	}
 
 	@Override
@@ -169,10 +172,7 @@ public class TileCopperPipe extends TileEntity
 	}
 
 	public void updateConnections()
-	{
-		if(worldObj.isRemote)
-			System.out.println(xCoord + " " + yCoord + " " + zCoord);
-		
+	{		
 		if(canConnect(xCoord, yCoord + 1, zCoord))
 		{
 			connections[0] = ForgeDirection.UP;
@@ -285,7 +285,7 @@ public class TileCopperPipe extends TileEntity
 			
 			connections[5] = null;
 		}
-
+		
 		if(network==null)
 		{
 			network = new FluidNetwork(1);
@@ -293,7 +293,7 @@ public class TileCopperPipe extends TileEntity
 		}
 		
 		if(!worldObj.isRemote) 
-		{
+		{			
 			System.out.println(network);
 			
 			if(extract!=null && !canChangeState(extract))
@@ -319,52 +319,72 @@ public class TileCopperPipe extends TileEntity
 				}
 			}
 		}
+		
+		if(!worldObj.isRemote)
+		{
+			System.out.println(network);
+			System.out.println(network.inputs.size() + "   " + network.outputs.size());
+		}
 	}
 
 	public void updateNetwork(ForgeDirection dir)
 	{
-		//if(!worldObj.isRemote)
-		//{
-			TileEntity tile = worldObj.getTileEntity(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ);
-	
-			if(tile instanceof TileCopperPipe)
+		TileEntity tile = worldObj.getTileEntity(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ);
+
+		if(tile instanceof TileCopperPipe)
+		{
+			TileCopperPipe pipe = (TileCopperPipe) tile;
+
+			if(pipe.network!=null)
 			{
-				TileCopperPipe pipe = (TileCopperPipe) tile;
-	
-				if(pipe.network!=null)
-				{
-					if(pipe.network!=network)
-						if(network!=null)
-						{
-							if(network.size < pipe.network.size)
-							{
-								network = pipe.network;
-								network.changeSize(1);
-		
-								updateNetworkToOthers(dir);
-							}
-							else
-							{
-								pipe.network = network;
-								network.changeSize(1);
-		
-								pipe.updateNetworkToOthers(dir.getOpposite());
-							}
-						}
-						else
+				if(pipe.network!=network)
+					if(network!=null)
+					{
+						if(network.size < pipe.network.size)
 						{
 							network = pipe.network;
 							network.changeSize(1);
+
+							updateNetworkToOthers(dir);
 						}
-				}
+						else
+						{
+							pipe.network = network;
+							network.changeSize(1);
+
+							pipe.updateNetworkToOthers(dir.getOpposite());
+						}
+					}
+					else
+					{
+						network = pipe.network;
+						network.changeSize(1);
+					}
 			}
-		//}
+		}
+		
+		/*
+ 			FluidNetwork temp = new FluidNetwork(1);
+					
+			temp.inputs = new ArrayList<Coords>(network.inputs);
+			temp.inputs.addAll(pipe.network.inputs);
+			
+			temp.outputs = new ArrayList<Coords>(network.outputs);
+			temp.outputs.addAll(pipe.network.outputs);
+			
+			if(network.tank.getFluid()!=null)
+				temp.tank.setFluid(new FluidStack(network.tank.getFluid(), network.tank.getFluidAmount() + pipe.network.tank.getFluidAmount()));
+			else if(pipe.network.tank.getFluid()!=null)
+				temp.tank.setFluid(new FluidStack(pipe.network.tank.getFluid(), network.tank.getFluidAmount() + pipe.network.tank.getFluidAmount()));
+			
+			network = temp;
+		 */
 	}
 
 	private void updateNetworkToOthers(ForgeDirection ignore)
 	{
 		for(ForgeDirection dir : connections)
-			if(dir!=null && dir!=ignore)			
+			if(dir!=null && dir!=ignore)
 				if(worldObj.getBlock(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ) == InitBlocks.blockCopperPipe)
 				{
 					TileCopperPipe pipe = (TileCopperPipe) worldObj.getTileEntity(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ);
@@ -540,9 +560,7 @@ public class TileCopperPipe extends TileEntity
 			ticksSinceLastUpdate++;
 
 			if(ticksSinceLastUpdate > ticksTillUpdate)
-			{
-				System.out.println(this.tank.getFluidAmount());
-				
+			{				
 				if(tank.getFluidAmount() == 0)
 					tank.setFluid(null);
 				
@@ -550,10 +568,14 @@ public class TileCopperPipe extends TileEntity
 
 				updateInputs(pipe.worldObj);
 				updateOutputs(pipe.worldObj);
+
 				
 				if(tank.getFluid()!=null)
 				{
 					fluidScaled = (float)(tank.getFluidAmount()/(float)size)/FluidNetwork.capacityPerPipe*(2*TileCopperPipeRenderer.pixel);
+					
+					if(fluidScaled > 2*TileCopperPipeRenderer.pixel)
+						fluidScaled = 2*TileCopperPipeRenderer.pixel;
 					
 					InitPackets.network.sendToAllAround(new FluidNetworkPacket(pipe.worldObj.provider.dimensionId, pipe.xCoord, pipe.yCoord, pipe.zCoord, 
 							fluidScaled, tank.getFluid().getFluid().getName()), 
