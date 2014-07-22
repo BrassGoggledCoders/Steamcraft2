@@ -19,6 +19,7 @@ import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import steamcraft.common.tiles.TileBattery;
+import steamcraft.common.tiles.TileCharger;
 import steamcraft.common.tiles.container.slot.SlotBattery;
 import boilerplate.common.IEnergyItem;
 import cpw.mods.fml.relauncher.Side;

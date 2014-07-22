@@ -77,7 +77,7 @@ public class GuiHandler implements IGuiHandler
 		case GuiIDs.GUI_ID_BATTERY:
 			return new GuiBattery(player.inventory, (TileBattery)tile);
 		case GuiIDs.GUI_ID_CHARGER:
-			return new ContainerCharger(player.inventory, (TileCharger) tile);
+			return new GuiCharger(player.inventory, (TileCharger) tile);
 		}
 
 		return null;
