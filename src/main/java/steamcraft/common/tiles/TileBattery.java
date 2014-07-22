@@ -21,6 +21,7 @@ import net.minecraftforge.common.util.ForgeDirection;
 import steamcraft.common.items.ItemElectricJar;
 import boilerplate.common.BaseTileWithInventory;
 import cofh.api.energy.EnergyStorage;
+import cofh.api.energy.IEnergyContainerItem;
 import cofh.api.energy.IEnergyHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -86,7 +87,7 @@ public class TileBattery extends BaseTileWithInventory implements IEnergyHandler
 			short outputEnergy = (short) this.extractEnergy(ForgeDirection.UNKNOWN, this.transferRate, true);
 
 			if(outputEnergy > 0)
-			{				
+			{
 				for (ForgeDirection direction : EnumSet.allOf(ForgeDirection.class))
 					if(outputEnergy > 0)
 					{
@@ -109,7 +110,7 @@ public class TileBattery extends BaseTileWithInventory implements IEnergyHandler
 		{
 			if(stack!=null)
 			{
-				ItemElectricJar item = (ItemElectricJar) stack.getItem();
+				IEnergyContainerItem item = (IEnergyContainerItem) stack.getItem();
 
 				buffer.modifyEnergyStored(-item.receiveEnergy(stack, buffer.getEnergyStored(), false));
 
@@ -136,7 +137,7 @@ public class TileBattery extends BaseTileWithInventory implements IEnergyHandler
 				this.transferRate += item.getMaxSend();
 			}
 		}
-		
+
 		buffer.setMaxTransfer(this.transferRate);
 	}
 
@@ -163,7 +164,7 @@ public class TileBattery extends BaseTileWithInventory implements IEnergyHandler
 			{
 				if(stack!=null)
 				{
-					ItemElectricJar item = (ItemElectricJar) stack.getItem();
+					IEnergyContainerItem item = (IEnergyContainerItem) stack.getItem();
 
 					if(maxExtract > 0)
 					{
@@ -173,7 +174,7 @@ public class TileBattery extends BaseTileWithInventory implements IEnergyHandler
 						break;
 				}
 			}
-		
+
 		usedEnergy -= maxExtract;
 
 		return usedEnergy;

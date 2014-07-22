@@ -12,6 +12,8 @@
  */
 package steamcraft.common.items;
 
+import boilerplate.common.BaseElectricItem;
+
 /**
  * @author warlordjones
  *
