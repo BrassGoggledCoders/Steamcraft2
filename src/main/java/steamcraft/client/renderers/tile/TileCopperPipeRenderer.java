@@ -24,7 +24,6 @@ import org.lwjgl.opengl.GL11;
 
 import steamcraft.common.lib.LibInfo;
 import steamcraft.common.tiles.TileCopperPipe;
-import steamcraft.common.tiles.TileCopperPipe.FluidNetwork;
 
 /**
  * @author Decebaldecebal
@@ -143,7 +142,7 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 					IIcon icon = pipe.network.tank.getFluid().getFluid().getBlock().getIcon(0, 0);
 					this.bindTexture(TextureMap.locationBlocksTexture);
 
-					float level = (float)(pipe.network.tank.getFluidAmount()/(float)pipe.network.size)/FluidNetwork.capacityPerPipe*(2*pixel);
+					float level = pipe.network.fluidScaled;
 					
 					tess.addVertexWithUV(1-15*pixel+level, 0, 1-15*pixel+level, icon.getMinU(), icon.getMaxV());
 					tess.addVertexWithUV(1-15*pixel+level, 1, 1-15*pixel+level, icon.getMaxU(), icon.getMaxV());
@@ -378,7 +377,7 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 					IIcon icon = pipe.network.tank.getFluid().getFluid().getBlock().getIcon(0, 0);
 					this.bindTexture(TextureMap.locationBlocksTexture);
 					
-					float level = (float)(pipe.network.tank.getFluidAmount()/(float)pipe.network.size)/FluidNetwork.capacityPerPipe*(2*pixel);
+					float level = pipe.network.fluidScaled;
 					
 					System.out.println(level + " a:" + pipe.network.tank.getFluidAmount() + " s:"  + pipe.network.size);
 					
