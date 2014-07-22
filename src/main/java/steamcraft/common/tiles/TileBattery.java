@@ -18,7 +18,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
-import steamcraft.common.items.electric.ItemElectricStorage;
+import boilerplate.common.IEnergyItem;
 import boilerplate.common.baseclasses.BaseTileWithInventory;
 import cofh.api.energy.EnergyStorage;
 import cofh.api.energy.IEnergyContainerItem;
@@ -110,7 +110,7 @@ public class TileBattery extends BaseTileWithInventory implements IEnergyHandler
 		{
 			if(stack!=null)
 			{
-				IEnergyContainerItem item = (IEnergyContainerItem) stack.getItem();
+				IEnergyItem item = (IEnergyItem) stack.getItem();
 
 				buffer.modifyEnergyStored(-item.receiveEnergy(stack, buffer.getEnergyStored(), false));
 
@@ -130,7 +130,7 @@ public class TileBattery extends BaseTileWithInventory implements IEnergyHandler
 		{
 			if(stack!=null)
 			{
-				ItemElectricStorage item = (ItemElectricStorage) stack.getItem();
+				IEnergyItem item = (IEnergyItem) stack.getItem();
 
 				this.maxEnergy += item.getMaxEnergyStored(stack);
 				this.totalEnergy += item.getEnergyStored(stack);
@@ -164,7 +164,7 @@ public class TileBattery extends BaseTileWithInventory implements IEnergyHandler
 			{
 				if(stack!=null)
 				{
-					IEnergyContainerItem item = (IEnergyContainerItem) stack.getItem();
+					IEnergyItem item = (IEnergyItem) stack.getItem();
 
 					if(maxExtract > 0)
 					{

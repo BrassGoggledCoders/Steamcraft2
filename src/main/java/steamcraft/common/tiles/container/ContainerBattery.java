@@ -1,5 +1,5 @@
 /**
- * This class was created by BrassGoggledCoders modding team. 
+ * This class was created by BrassGoggledCoders modding team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -8,7 +8,7 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- * 
+ *
  */
 package steamcraft.common.tiles.container;
 
@@ -18,9 +18,9 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
-import steamcraft.common.items.electric.ItemElectricStorage;
 import steamcraft.common.tiles.TileBattery;
 import steamcraft.common.tiles.container.slot.SlotBattery;
+import boilerplate.common.IEnergyItem;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -34,13 +34,13 @@ public class ContainerBattery extends Container
 	private int lastMaxEnergy = 0;
 	private short lastTransferRate = 0;
 	private int lastBufferEnergy;
-	
+
 	TileBattery tile_entity;
-	
+
 	public ContainerBattery(InventoryPlayer player, TileBattery tile)
 	{
 		tile_entity = tile;
-		
+
 		addSlotToContainer(new SlotBattery(tile, 0, 98, 22));
 		addSlotToContainer(new SlotBattery(tile, 1, 116, 22));
 		addSlotToContainer(new SlotBattery(tile, 2, 134, 22));
@@ -57,12 +57,12 @@ public class ContainerBattery extends Container
 		for (var3 = 0; var3 < 9; ++var3)
 			addSlotToContainer(new Slot(player, var3, 8 + (var3 * 18), 142));
 	}
-	
+
 	@Override
 	public void addCraftingToCrafters(ICrafting crafting)
 	{
 		super.addCraftingToCrafters(crafting);
-		
+
 		crafting.sendProgressBarUpdate(this, 0, tile_entity.totalEnergy);
 		crafting.sendProgressBarUpdate(this, 1, tile_entity.maxEnergy);
 		crafting.sendProgressBarUpdate(this, 2, tile_entity.transferRate);
@@ -80,13 +80,13 @@ public class ContainerBattery extends Container
 
 			if (lastTotalEnergy != tile_entity.totalEnergy)
 				var2.sendProgressBarUpdate(this, 0, tile_entity.totalEnergy);
-			
+
 			if (lastMaxEnergy != tile_entity.maxEnergy)
 				var2.sendProgressBarUpdate(this, 1, tile_entity.maxEnergy);
-			
+
 			if (lastTransferRate != tile_entity.transferRate)
 				var2.sendProgressBarUpdate(this, 2, tile_entity.transferRate);
-			
+
 			if (lastBufferEnergy != tile_entity.buffer.getEnergyStored())
 				var2.sendProgressBarUpdate(this, 3, tile_entity.buffer.getEnergyStored());
 		}
@@ -110,13 +110,13 @@ public class ContainerBattery extends Container
 		else if (par1 == 3)
 			tile_entity.buffer.setEnergyStored(par2);
 	}
-	
+
 	@Override
 	public boolean canInteractWith(EntityPlayer par1EntityPlayer)
 	{
 		return tile_entity.isUseableByPlayer(par1EntityPlayer);
 	}
-	
+
 	@Override
 	public ItemStack transferStackInSlot(EntityPlayer par1EntityPlayer, int par2)
 	{
@@ -130,7 +130,7 @@ public class ContainerBattery extends Container
 
 			if (par2 > 5)
 			{
-				if (var5.getItem() instanceof ItemElectricStorage)
+				if (var5.getItem() instanceof IEnergyItem)
 				{
 					if (!mergeItemStack(var5, 0, 6, false))
 							if (!mergeItemStack(var5, 33, 42, false))
