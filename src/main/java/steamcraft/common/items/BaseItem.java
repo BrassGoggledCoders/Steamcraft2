@@ -15,7 +15,7 @@ package steamcraft.common.items;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.LibInfo;
-import boilerplate.common.RootItem;
+import boilerplate.common.baseclasses.RootItem;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 

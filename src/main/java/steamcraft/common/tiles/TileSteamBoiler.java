@@ -25,7 +25,7 @@ import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
 import steamcraft.common.blocks.machines.BlockSteamBoiler;
 import steamcraft.common.items.ItemCanister;
-import boilerplate.common.BaseTileWithInventory;
+import boilerplate.common.baseclasses.BaseTileWithInventory;
 
 /**
  * @author Decebaldecebal

@@ -27,7 +27,7 @@ import steamcraft.common.InitItems;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.entities.projectile.EntityBullet;
 import steamcraft.common.lib.LibInfo;
-import boilerplate.common.BaseFirearm;
+import boilerplate.common.baseclasses.BaseFirearm;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 

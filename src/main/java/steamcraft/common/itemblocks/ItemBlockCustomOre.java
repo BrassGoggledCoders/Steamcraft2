@@ -13,7 +13,7 @@
 package steamcraft.common.itemblocks;
 
 import net.minecraft.block.Block;
-import boilerplate.common.BaseItemBlockWithMetadata;
+import boilerplate.common.baseclasses.BaseItemBlockWithMetadata;
 
 /**
  * @author warlordjones

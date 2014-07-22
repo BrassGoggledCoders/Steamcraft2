@@ -17,7 +17,7 @@ import net.minecraftforge.oredict.OreDictionary;
 import steamcraft.common.InitBlocks;
 import steamcraft.common.InitItems;
 import steamcraft.common.lib.LibInfo;
-import boilerplate.common.OreDictHelper;
+import boilerplate.common.utils.helpers.OreDictHelper;
 import cpw.mods.fml.common.event.FMLInterModComms;
 
 /**

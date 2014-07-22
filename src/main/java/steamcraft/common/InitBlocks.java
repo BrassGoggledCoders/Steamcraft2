@@ -65,7 +65,7 @@ import steamcraft.common.tiles.TileLightningRod;
 import steamcraft.common.tiles.TileSteamBoiler;
 import steamcraft.common.tiles.TileTeslaCoil;
 import steamcraft.common.tiles.TileTurbine;
-import boilerplate.common.RegistryHelper;
+import boilerplate.common.utils.helpers.RegistryHelper;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 /**

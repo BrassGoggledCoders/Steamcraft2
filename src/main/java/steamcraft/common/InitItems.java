@@ -17,7 +17,6 @@ import net.minecraft.item.ItemArmor;
 import steamcraft.common.items.BaseItem;
 import steamcraft.common.items.ItemCanister;
 import steamcraft.common.items.ItemChisel;
-import steamcraft.common.items.ItemElectricJar;
 import steamcraft.common.items.ItemFirearm;
 import steamcraft.common.items.ItemGunPart;
 import steamcraft.common.items.ItemIngot;
@@ -43,6 +42,7 @@ import steamcraft.common.items.armor.ItemDivingHelmet;
 import steamcraft.common.items.armor.ItemMonocle;
 import steamcraft.common.items.armor.ItemNormalArmor;
 import steamcraft.common.items.armor.ItemSteamJetpack;
+import steamcraft.common.items.electric.ItemElectricJar;
 import steamcraft.common.items.modules.ItemAqualung;
 import steamcraft.common.items.tools.ItemElectricDrill;
 import steamcraft.common.items.tools.ItemHammer;
@@ -55,7 +55,7 @@ import steamcraft.common.items.tools.ItemSteamDrill;
 import steamcraft.common.items.vanity.ItemTopHat;
 import steamcraft.common.lib.LibInfo;
 import steamcraft.common.lib.MaterialHelper;
-import boilerplate.common.RegistryHelper;
+import boilerplate.common.utils.helpers.RegistryHelper;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 /**

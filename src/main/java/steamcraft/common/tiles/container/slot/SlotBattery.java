@@ -15,7 +15,7 @@ package steamcraft.common.tiles.container.slot;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
-import steamcraft.common.items.ItemElectricJar;
+import steamcraft.common.items.electric.ItemElectricJar;
 import steamcraft.common.tiles.TileBattery;
 
 /**

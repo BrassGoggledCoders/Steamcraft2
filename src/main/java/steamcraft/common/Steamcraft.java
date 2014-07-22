@@ -25,7 +25,7 @@ import steamcraft.common.lib.CommandSteamcraft;
 import steamcraft.common.lib.LibInfo;
 import steamcraft.common.lib.events.EventHandlerFML;
 import steamcraft.common.lib.events.EventHandlerForge;
-import boilerplate.common.CreativeTabBase;
+import boilerplate.common.baseclasses.CreativeTabBase;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;

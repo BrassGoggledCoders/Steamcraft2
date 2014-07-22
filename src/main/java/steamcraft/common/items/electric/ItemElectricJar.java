@@ -10,9 +10,9 @@
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
  *
  */
-package steamcraft.common.items;
+package steamcraft.common.items.electric;
 
-import boilerplate.common.BaseElectricItem;
+import boilerplate.common.baseclasses.BaseElectricItem;
 
 /**
  * @author warlordjones
@@ -23,10 +23,5 @@ public class ItemElectricJar extends BaseElectricItem
 	public ItemElectricJar(int maxEnergy, int maxReceive, int maxSend)
 	{
 		super(maxEnergy, maxReceive, maxSend);
-	}
-	
-	public short getMaxSend()
-	{
-		return this.maxSend;
 	}
 }
