@@ -15,7 +15,7 @@ package steamcraft.common.tiles.container.slot;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
-import steamcraft.common.items.electric.ItemElectricJar;
+import steamcraft.common.items.electric.ItemElectricStorage;
 import steamcraft.common.tiles.TileBattery;
 
 /**
@@ -36,7 +36,7 @@ public class SlotBattery extends Slot
 	@Override
 	public boolean isItemValid(ItemStack stack)
 	{
-		if (stack.getItem() instanceof ItemElectricJar)
+		if (stack.getItem() instanceof ItemElectricStorage)
 			return true;
 		return false;
 	}

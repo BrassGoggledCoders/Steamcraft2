@@ -12,16 +12,28 @@
  */
 package steamcraft.common.items.electric;
 
+import net.minecraft.client.renderer.texture.IIconRegister;
+import steamcraft.common.Steamcraft;
+import steamcraft.common.lib.LibInfo;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import boilerplate.common.baseclasses.BaseElectricItem;
 
 /**
  * @author warlordjones
  *
  */
-public class ItemElectricJar extends BaseElectricItem
+public class ItemElectricStorage extends BaseElectricItem
 {
-	public ItemElectricJar(int maxEnergy, int maxReceive, int maxSend)
+	public ItemElectricStorage(int maxEnergy, int maxReceive, int maxSend)
 	{
 		super(maxEnergy, maxReceive, maxSend);
+		this.setCreativeTab(Steamcraft.tabSC2);
+	}
+	@SideOnly(Side.CLIENT)
+	@Override
+	public void registerIcons(IIconRegister par1IconRegister)
+	{
+		this.itemIcon = par1IconRegister.registerIcon(LibInfo.PREFIX + this.getUnlocalizedName().substring(5));
 	}
 }
