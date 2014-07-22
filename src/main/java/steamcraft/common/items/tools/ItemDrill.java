@@ -50,8 +50,6 @@ public class ItemDrill extends ItemModTool
 	public void registerIcons(IIconRegister icon)
 	{
 		this.itemIcon = icon.registerIcon(LibInfo.PREFIX + "tools/" + this.getUnlocalizedName().substring(5));
-
-
 	}
 
 	@SuppressWarnings("all")

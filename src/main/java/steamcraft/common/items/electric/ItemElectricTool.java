@@ -1,34 +1,29 @@
-package steamcraft.common.items.tools;
+package steamcraft.common.items.electric;
 
 import java.util.List;
 import java.util.Random;
 
 import net.minecraft.block.Block;
-import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
-import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
-import steamcraft.common.items.electric.ItemElectricTool;
-import steamcraft.common.lib.LibInfo;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import steamcraft.common.items.tools.ItemModTool;
+import boilerplate.common.IEnergyItem;
 
-public class ItemElectricDrill extends ItemElectricTool
+public class ItemElectricTool extends ItemModTool implements IEnergyItem
 {
 	private Random random = new Random();
-	protected int maxEnergy = 80;
-	protected short maxReceive = 80;
-	protected short maxSend = 80;
-	protected int energyPerBlock = 1000;
+	protected int maxEnergy = 0;
+	protected short maxReceive = 0;
+	protected short maxSend = 0;
+	protected int energyPerBlock = 0;
 
-	public ItemElectricDrill(ToolMaterial mat)
+	protected ItemElectricTool(float damage, ToolMaterial toolMat, Block[] blockArray)
 	{
-		super(1, mat, ItemDrill.blocksEffectiveAgainst);
+		super(damage, toolMat, blockArray);
 		this.maxEnergy = maxEnergy * 1000;
 		this.maxReceive = (short) maxReceive;
 		this.maxSend = (short) maxSend;
@@ -74,7 +69,6 @@ public class ItemElectricDrill extends ItemElectricTool
 	{
 		list.add("Energy: " + this.getEnergyStored(stack) / 1000 + "k / " + this.maxEnergy / 1000 + "k");
 		list.add("Transfer(in/out): " + this.maxReceive + " / " + this.maxSend);
-		list.add("Efficiency: " + this.toolMaterial.getEfficiencyOnProperMaterial());
 	}
 
 	@Override
@@ -135,37 +129,9 @@ public class ItemElectricDrill extends ItemElectricTool
 	{
 		return this.maxEnergy;
 	}
-
-	@Override
-	public boolean onBlockDestroyed(ItemStack stack, World world, Block p_150894_3_, int x, int y, int z, EntityLivingBase living)
+	public short getMaxSend()
 	{
-		if (living instanceof EntityPlayer)
-		{
-			this.extractEnergy(stack, this.energyPerBlock, false);
-
-			stack.damageItem(1, living);
-			world.playSoundAtEntity(living, LibInfo.PREFIX + "drill.steam", 0.6F, 1.0F);
-			world.spawnParticle("smoke", x + 0.5, y + 0.5, z + 0.5, this.random.nextGaussian(), this.random.nextGaussian(), this.random.nextGaussian());
-			return true;
-		}
-
-		return false;
-	}
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerIcons(IIconRegister icon)
-	{
-		this.itemIcon = icon.registerIcon(LibInfo.PREFIX + "tools/" + this.getUnlocalizedName().substring(5));
+		return this.maxSend;
 	}
 
-	@SuppressWarnings("all")
-	@Override
-	public boolean canHarvestBlock(Block block, ItemStack stack)
-	{
-		for (Block element : ItemDrill.blocksEffectiveAgainst)
-			if (element == block)
-				return true;
-
-		return false;
-	}
 }
