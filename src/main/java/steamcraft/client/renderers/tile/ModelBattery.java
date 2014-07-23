@@ -176,15 +176,22 @@ public class ModelBattery extends ModelBase
     base.render(f5);
     upright.render(f5);
     top.render(f5);
+
+    TileBattery te = (TileBattery)tile;
+    ModelRenderer[] jars = { this.jar, this.jar2, this.jar3, this.jar4, jar5, jar6 };
+    ModelRenderer[] lids = { this.lid, this.lid2, this.lid3, this.lid4, lid5, lid6 };
+    ModelRenderer[] wires = { this.wire, this.wire2, this.wire3, this.wire4, wire5, wire6 };
     if(tile != null)
     {
-        TileBattery te = (TileBattery)tile;
-        ModelRenderer[] jars = { this.jar, this.jar2, this.jar3, this.jar4, jar5, jar6 };
-        ModelRenderer[] lids = { this.lid, this.lid2, this.lid3, this.lid4, lid5, lid6 };
-        ModelRenderer[] wires = { this.wire, this.wire2, this.wire3, this.wire4, wire5, wire6 };
           for (int i = 0; i < jars.length; i++)
           {
         	  if(te.inventory[i] != null)
+        	  {
+        		  jars[i].render(f5);
+        		  lids[i].render(f5);
+        		  wires[i].render(f5);
+        	  }
+        	  if(te.inventory == null)
         	  {
         		  jars[i].render(f5);
         		  lids[i].render(f5);
