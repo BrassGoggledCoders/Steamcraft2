@@ -10,7 +10,7 @@
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
  *
  */
-package steamcraft.common.items;
+package steamcraft.common.items.electric;
 
 /**
  * @author Surseance
@@ -18,26 +18,31 @@ package steamcraft.common.items;
  */
 import java.awt.Color;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Random;
 
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import steamcraft.common.Steamcraft;
+import steamcraft.common.items.BaseItem;
 import steamcraft.common.lib.LibInfo;
+import boilerplate.common.IEnergyItem;
 import boilerplate.common.utils.PlayerUtils;
 import boilerplate.common.utils.Utils;
-import cofh.api.energy.IEnergyContainerItem;
 
-public class ItemRayGun extends BaseItem implements IEnergyContainerItem
+public class ItemRayGun extends BaseItem implements IEnergyItem
 {
 	int energyPerUse = 500;
-	int maxEnergy = 800000;
-	int maxReceive = 50;
+	int maxEnergy = 50;
+	short maxReceive = 50;
+	short maxSend = 50;
 
 	private Random random = new Random();
 
@@ -47,10 +52,14 @@ public class ItemRayGun extends BaseItem implements IEnergyContainerItem
 	public ItemRayGun(String raySound)
 	{
 		super();
+		this.maxEnergy = maxEnergy * 1000;
+		this.maxReceive = (short) maxReceive;
+		this.maxSend = (short) maxSend;
 		this.setMaxStackSize(1);
 		this.setFull3D();
+		this.setMaxDamage(20);
+		this.setHasSubtypes(false);
 	}
-
 	@SuppressWarnings("all")
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
@@ -109,68 +118,128 @@ public class ItemRayGun extends BaseItem implements IEnergyContainerItem
 								{
 									world.setBlock(i, j, k, Blocks.fire);
 									extractEnergy(stack, energyPerUse, false);
+
 								}
 								else if (world.getBlock(i, j, k) == Blocks.snow)
 								{
 									world.setBlock(i, j, k, Blocks.flowing_water);
 									extractEnergy(stack, energyPerUse, false);
+
 								}
 								if (world.getBlock(i, j, k) == Blocks.snow_layer)
 								{
 									world.setBlock(i, j, k, Blocks.flowing_water);
 									extractEnergy(stack, energyPerUse, false);
+
 								}
 								if (world.getBlock(i, j, k) == Blocks.sand)
 								{
 									world.setBlock(i, j, k, Blocks.glass);
 									extractEnergy(stack, energyPerUse, false);
+
 								}
 								if (world.getBlock(i, j, k) == Blocks.netherrack)
 								{
 									world.setBlock(i, j, k, Blocks.flowing_lava);
 									extractEnergy(stack, energyPerUse, false);
+
 								}
 							}
 			}
 		}
 		return stack;
 	}
+	@SuppressWarnings("all")
 	@Override
-	public int receiveEnergy(ItemStack container, int maxReceive, boolean simulate) {
-
-		if (container.stackTagCompound == null) {
-			container.stackTagCompound = new NBTTagCompound();
-		}
-		int energy = container.stackTagCompound.getInteger("Energy");
-		int energyReceived = Math.min(maxEnergy - energy, Math.min(this.maxReceive, maxReceive));
-
-		if (!simulate) {
-			energy += energyReceived;
-			container.stackTagCompound.setInteger("Energy", energy);
-		}
-		return energyReceived;
-	}
-
-	@Override
-	public int extractEnergy(ItemStack container, int maxExtract, boolean simulate) {
-
-		if (container.stackTagCompound == null || !container.stackTagCompound.hasKey("Energy")) {
-			return 0;
-		}
-		int energy = container.stackTagCompound.getInteger("Energy");
-		int energyExtracted = Math.min(energy, Math.min(this.energyPerUse, maxExtract));
-
-		if (!simulate) {
-			energy -= energyExtracted;
-			container.stackTagCompound.setInteger("Energy", energy);
-		}
-		return energyExtracted;
-	}
-
-	@Override
-	public int getEnergyStored(ItemStack container)
+	public void getSubItems(Item item, CreativeTabs tab, List list)
 	{
-		return container.stackTagCompound.getInteger("Energy");
+		list.add(this.getUnchargedItem());
+		list.add(this.getChargedItem());
+	}
+
+	public ItemStack getUnchargedItem()
+	{
+		ItemStack uncharged = new ItemStack(this, 1, 20);
+
+		NBTTagCompound tag = new NBTTagCompound();
+		tag.setInteger("energy", 0);
+
+		uncharged.setTagCompound(tag);
+
+		return uncharged.copy();
+	}
+
+	public ItemStack getChargedItem()
+	{
+		ItemStack charged = new ItemStack(this, 1, 0);
+
+		NBTTagCompound tag = new NBTTagCompound();
+		tag.setInteger("energy", this.maxEnergy);
+
+		charged.setTagCompound(tag);
+
+		return charged.copy();
+	}
+
+	@SuppressWarnings("all")
+	@Override
+	public void addInformation(ItemStack stack, EntityPlayer entityplayer, List list, boolean flag)
+	{
+		list.add("Energy: " + this.getEnergyStored(stack) / 1000 + "k / " + this.maxEnergy / 1000 + "k");
+		list.add("Transfer(in/out): " + this.maxReceive + " / " + this.maxSend);
+	}
+
+	@Override
+	public void onCreated(ItemStack stack, World par2World, EntityPlayer par3EntityPlayer)
+	{
+		stack = this.getUnchargedItem();
+	}
+
+	public void setEnergy(ItemStack stack, int energy)
+	{
+		NBTTagCompound tag = stack.getTagCompound();
+
+		if (energy < 0)
+			energy = 0;
+
+		if (energy > this.maxEnergy)
+			energy = this.maxEnergy;
+
+		stack.setItemDamage(20 - energy * 20 / this.maxEnergy);
+
+		tag.setInteger("energy", energy);
+
+		stack.setTagCompound(tag);
+	}
+
+	@Override
+	public int receiveEnergy(ItemStack itemStack, int maxReceive, boolean simulate)
+	{
+		int received = Math.min(this.maxEnergy - this.getEnergyStored(itemStack), maxReceive);
+		received = Math.min(received, this.maxReceive);
+
+		if (!simulate)
+			this.setEnergy(itemStack, this.getEnergyStored(itemStack) + received);
+
+		return received;
+	}
+
+	@Override
+	public int extractEnergy(ItemStack itemStack, int maxExtract, boolean simulate)
+	{
+		int extracted = Math.min(this.getEnergyStored(itemStack), maxExtract);
+		extracted = Math.min(extracted, this.maxSend);
+
+		if (!simulate)
+			this.setEnergy(itemStack, this.getEnergyStored(itemStack) - extracted);
+
+		return extracted;
+	}
+
+	@Override
+	public int getEnergyStored(ItemStack itemStack)
+	{
+		return itemStack.getTagCompound().getInteger("energy");
 	}
 
 	@Override
@@ -178,5 +247,8 @@ public class ItemRayGun extends BaseItem implements IEnergyContainerItem
 	{
 		return this.maxEnergy;
 	}
-
+	public short getMaxSend()
+	{
+		return this.maxSend;
+	}
 }
