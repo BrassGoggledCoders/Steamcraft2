@@ -15,11 +15,8 @@ package steamcraft.common.packets;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.World;
-import net.minecraftforge.fluids.FluidRegistry;
-import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.common.util.ForgeDirection;
 import steamcraft.common.tiles.TileCopperPipe;
-import steamcraft.common.tiles.TileCopperPipe.FluidNetwork;
-import cpw.mods.fml.common.network.ByteBufUtils;
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
 import cpw.mods.fml.common.network.simpleimpl.MessageContext;
@@ -28,22 +25,20 @@ import cpw.mods.fml.common.network.simpleimpl.MessageContext;
  * @author decebaldecebal
  *
  */
-public class FluidNetworkPacket implements IMessage
+public class CopperPipePacket implements IMessage
 {
-	private float fluidScaled;
 	private int worldId, x, y, z;
-	private String fluidName;
+	ForgeDirection[] connections;
 	
-	public FluidNetworkPacket(){} //REQUIRED
+	public CopperPipePacket(){} //REQUIRED
 	
-	public FluidNetworkPacket(int worldId, int x, int y, int z, float fluidScaled, String fluidName)
+	public CopperPipePacket(int worldId, int x, int y, int z, ForgeDirection[] connections)
 	{
 		this.worldId = worldId;
 		this.x = x;
 		this.y = y;
 		this.z = z;
-		this.fluidScaled = fluidScaled;
-		this.fluidName = fluidName;
+		this.connections = connections;
 	}
 	
 	@Override
@@ -53,10 +48,15 @@ public class FluidNetworkPacket implements IMessage
 		x = buf.readInt();
 		y = buf.readInt();
 		z = buf.readInt();
-		fluidScaled = buf.readFloat();
-		fluidName = ByteBufUtils.readUTF8String(buf);
+		for(int i = 0; i<6; i++)
+		{
+			connections[i] = ForgeDirection.getOrientation(buf.readByte());
+			
+			if(connections[i]==ForgeDirection.UNKNOWN)
+				connections[i] = null;
+		}
 	}
-
+	
 	@Override
 	public void toBytes(ByteBuf buf)
 	{
@@ -64,14 +64,47 @@ public class FluidNetworkPacket implements IMessage
 		buf.writeInt(x);
 		buf.writeInt(y);
 		buf.writeInt(z);
-		buf.writeFloat(fluidScaled);
-		ByteBufUtils.writeUTF8String(buf, fluidName);
+		for(int i = 0;i<6;i++)
+			buf.writeByte(directionToByte(connections[i]));
 	}
 	
-	public static class FluidNetworkPacketHandler implements IMessageHandler<FluidNetworkPacket, IMessage>
+	private static byte directionToByte(ForgeDirection dir)
+	{
+		byte index = -1;
+		
+		if(dir!=null)
+			switch(dir)
+			{
+				case DOWN:
+					index = 0;
+				break;
+				case UP:
+					index = 1;
+				break;
+				case NORTH:
+					index = 2;
+				break;
+				case SOUTH:
+					index = 3;
+				break;
+				case WEST:
+					index = 4;
+				break;
+				case EAST:
+					index = 5;
+				break;
+				default:
+					index = -1;
+				break;
+			}
+		
+		return index;
+	}
+	
+	public static class CopperPipePacketHandler implements IMessageHandler<CopperPipePacket, IMessage>
 	{
 		@Override
-		public IMessage onMessage(FluidNetworkPacket message, MessageContext ctx)
+		public IMessage onMessage(CopperPipePacket message, MessageContext ctx)
 		{
 			World world = Minecraft.getMinecraft().theWorld;
 			
@@ -79,15 +112,10 @@ public class FluidNetworkPacket implements IMessage
 			{
 				TileCopperPipe pipe = (TileCopperPipe) world.getTileEntity(message.x, message.y, message.z);
 				
-				if(pipe.network==null)
-					pipe.network = new FluidNetwork(1);
-				
-				pipe.network.fluidScaled = message.fluidScaled;
-				pipe.network.tank.setFluid(new FluidStack(FluidRegistry.getFluid(message.fluidName), 0));
+				pipe.connections = message.connections;
 			}
 			
 			return null;
 		}
-		
 	}
 }

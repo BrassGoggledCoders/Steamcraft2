@@ -28,6 +28,7 @@ import net.minecraftforge.fluids.IFluidHandler;
 import steamcraft.client.renderers.tile.TileCopperPipeRenderer;
 import steamcraft.common.InitBlocks;
 import steamcraft.common.InitPackets;
+import steamcraft.common.packets.CopperPipePacket;
 import steamcraft.common.packets.FluidNetworkPacket;
 import cpw.mods.fml.common.network.NetworkRegistry.TargetPoint;
 
@@ -195,41 +196,9 @@ public class TileCopperPipe extends TileEntity
 		connections[i] = null;
 	}
 	
-	private void updateGraphicalConnections()
-	{
-		if(canConnect(ForgeDirection.UP))
-			connections[0] = ForgeDirection.UP;
-		else
-			connections[0] = null;
-		
-		if(canConnect(ForgeDirection.DOWN))
-			connections[1] = ForgeDirection.DOWN;
-		else
-			connections[1] = null;
-		
-		if(canConnect(ForgeDirection.SOUTH))
-			connections[2] = ForgeDirection.SOUTH;
-		else
-			connections[2] = null;
-		
-		if(canConnect(ForgeDirection.NORTH))
-			connections[3] = ForgeDirection.NORTH;
-		else
-			connections[3] = null;
-		
-		if(canConnect(ForgeDirection.EAST))
-			connections[4] = ForgeDirection.EAST;
-		else
-			connections[4] = null;
-		
-		if(canConnect(ForgeDirection.WEST))
-			connections[5] = ForgeDirection.WEST;
-		else
-			connections[5] = null;
-	}
-	
 	public void updateConnections()
 	{		
+		
 		System.out.println("coords " + xCoord + " " + yCoord + " " + zCoord);
 		if(canConnect(ForgeDirection.UP))
 		{
@@ -285,7 +254,7 @@ public class TileCopperPipe extends TileEntity
 			this.isMaster = true;
 		}
 		
-		if(!worldObj.isRemote) 
+		if(!worldObj.isRemote)
 		{						
 			if(extract!=null && !isFluidHandler(extract))
 			{
@@ -310,6 +279,9 @@ public class TileCopperPipe extends TileEntity
 				}
 			}
 		}
+		
+		if(!worldObj.isRemote)
+			updateClient();
 	}
 	
 	public boolean updateNetwork(ForgeDirection dir)
@@ -381,11 +353,6 @@ public class TileCopperPipe extends TileEntity
 							return false;
 					}
 				}
-				else if(worldObj.isRemote)
-				{
-					pipe.updateGraphicalConnections(); //happens on the client because breakBlock is only called on the server;another way to do this is to sync using
-					//packets but I think that will be much more inefficient
-				}
 			}
 			else if(network!=null)
 			{
@@ -429,7 +396,7 @@ public class TileCopperPipe extends TileEntity
 							}
 							pipe.isMaster = true;
 							
-							//pipe.updateConnections(); //should be called by the onNeighborChange function
+							pipe.updateClient();
 						}
 			}
 			else
@@ -485,6 +452,18 @@ public class TileCopperPipe extends TileEntity
 			return true;
 
 		return false;
+	}
+	
+	private void updateClient()
+	{
+		if(network!=null)
+		{
+			NBTTagCompound tag = new NBTTagCompound();
+			network.tank.writeToNBT(tag);
+			
+			InitPackets.network.sendToAllAround(new CopperPipePacket(worldObj.provider.dimensionId, xCoord, yCoord, zCoord, connections), 
+					new TargetPoint(worldObj.provider.dimensionId, xCoord, yCoord, zCoord, 100));
+		}
 	}
 
 	public static class FluidNetwork

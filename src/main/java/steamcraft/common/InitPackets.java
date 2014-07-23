@@ -12,6 +12,8 @@
  */
 package steamcraft.common;
 
+import steamcraft.common.packets.CopperPipePacket;
+import steamcraft.common.packets.CopperPipePacket.CopperPipePacketHandler;
 import steamcraft.common.packets.FluidNetworkPacket;
 import steamcraft.common.packets.FluidNetworkPacket.FluidNetworkPacketHandler;
 import cpw.mods.fml.common.network.NetworkRegistry;
@@ -32,6 +34,7 @@ public class InitPackets
 	{
 		network = NetworkRegistry.INSTANCE.newSimpleChannel("steamcraft2");
 		
+		network.registerMessage(CopperPipePacketHandler.class, CopperPipePacket.class, packetId++, Side.CLIENT);
 		network.registerMessage(FluidNetworkPacketHandler.class, FluidNetworkPacket.class, packetId++, Side.CLIENT);
 	}
 }
