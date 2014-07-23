@@ -15,9 +15,9 @@ package steamcraft.common.items.electric;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.LibInfo;
+import boilerplate.common.baseclasses.BaseElectricItem;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import boilerplate.common.baseclasses.BaseElectricItem;
 
 /**
  * @author warlordjones

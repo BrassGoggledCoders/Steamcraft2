@@ -20,7 +20,6 @@ import net.minecraftforge.common.util.ForgeDirection;
 import org.lwjgl.opengl.GL11;
 
 import steamcraft.common.lib.LibInfo;
-import steamcraft.common.tiles.TileBattery;
 import steamcraft.common.tiles.TileCharger;
 import steamcraft.common.tiles.container.ContainerCharger;
 
