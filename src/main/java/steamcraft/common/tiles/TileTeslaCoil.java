@@ -12,6 +12,7 @@
  */
 package steamcraft.common.tiles;
 
+import java.util.EnumSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
@@ -41,6 +42,23 @@ public class TileTeslaCoil extends TileEntity implements IEnergyHandler
 	@Override
 	public void updateEntity()
 	{
+		short inputEnergy = (short) this.receiveEnergy(ForgeDirection.UNKNOWN, this.RFPerTick, true);
+
+		if(inputEnergy > 0)
+		{
+			for (ForgeDirection direction : EnumSet.allOf(ForgeDirection.class))
+				if(inputEnergy > 0)
+				{
+					TileEntity tileEntity = worldObj.getTileEntity(xCoord - direction.offsetX, yCoord - direction.offsetY, zCoord - direction.offsetZ);
+
+					if(tileEntity instanceof IEnergyHandler)
+					{
+						inputEnergy -= this.receiveEnergy(ForgeDirection.UNKNOWN, ((IEnergyHandler) tileEntity).extractEnergy(direction.getOpposite(), inputEnergy, false), false);
+					}
+				}
+				else
+					break;
+		}
 		if(buffer.getEnergyStored() > RFPerTick)
 		{
 			if(getWorldObj().isBlockIndirectlyGettingPowered(this.xCoord, this.yCoord, this.zCoord) && buffer.getEnergyStored() > RFPerZap)
