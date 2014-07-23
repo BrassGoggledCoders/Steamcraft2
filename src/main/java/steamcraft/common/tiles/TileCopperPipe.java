@@ -21,7 +21,6 @@ import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
-import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTank;
 import net.minecraftforge.fluids.FluidTankInfo;
@@ -52,17 +51,12 @@ public class TileCopperPipe extends TileEntity
 		{
 			if(network.updateNetworkForPipes)
 			{
-				System.out.println("works2");
 				network.updateNetworkForPipes = false;
 				this.updateConnections();
 			}
 			else if(!worldObj.isRemote)
 				network.updateNetwork(this);
 		}
-		/*
-			else if(network==null)
-				updateConnections(false);
-				*/
 	}
 
 	@Override
@@ -187,43 +181,103 @@ public class TileCopperPipe extends TileEntity
 				}
 	}
 
+	private void removeConnections(int i)
+	{		
+		if(connections[i]!=null && !worldObj.isRemote)
+		{
+			ForgeDirection dir = connections[i];
+
+			Coords temp = new Coords(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ, dir.getOpposite());
+
+			network.outputs.remove(temp);
+		}
+
+		connections[i] = null;
+	}
+	
+	private void updateGraphicalConnections()
+	{
+		if(canConnect(ForgeDirection.UP))
+			connections[0] = ForgeDirection.UP;
+		else
+			connections[0] = null;
+		
+		if(canConnect(ForgeDirection.DOWN))
+			connections[1] = ForgeDirection.DOWN;
+		else
+			connections[1] = null;
+		
+		if(canConnect(ForgeDirection.SOUTH))
+			connections[2] = ForgeDirection.SOUTH;
+		else
+			connections[2] = null;
+		
+		if(canConnect(ForgeDirection.NORTH))
+			connections[3] = ForgeDirection.NORTH;
+		else
+			connections[3] = null;
+		
+		if(canConnect(ForgeDirection.EAST))
+			connections[4] = ForgeDirection.EAST;
+		else
+			connections[4] = null;
+		
+		if(canConnect(ForgeDirection.WEST))
+			connections[5] = ForgeDirection.WEST;
+		else
+			connections[5] = null;
+	}
+	
 	public void updateConnections()
 	{		
+		System.out.println("coords " + xCoord + " " + yCoord + " " + zCoord);
 		if(canConnect(ForgeDirection.UP))
 		{
 			if(updateNetwork(ForgeDirection.UP))
 				connections[0] = ForgeDirection.UP;
 		}
+		else
+			removeConnections(0);
 
 		if(canConnect(ForgeDirection.DOWN))
 		{
 			if(updateNetwork(ForgeDirection.DOWN))
 				connections[1] = ForgeDirection.DOWN;
 		}
+		else
+			removeConnections(1);
 
 		if(canConnect(ForgeDirection.SOUTH))
 		{
-			connections[2] = ForgeDirection.SOUTH;
-			updateNetwork(ForgeDirection.SOUTH);
+			if(updateNetwork(ForgeDirection.SOUTH))
+				connections[2] = ForgeDirection.SOUTH;
 		}
+		else
+			removeConnections(2);
 
 		if(canConnect(ForgeDirection.NORTH))
 		{
-			connections[3] = ForgeDirection.NORTH;
-			updateNetwork(ForgeDirection.NORTH);
+			if(updateNetwork(ForgeDirection.NORTH))
+				connections[3] = ForgeDirection.NORTH;
 		}
+		else
+			removeConnections(3);
 
 		if(canConnect(ForgeDirection.EAST))
 		{
-			connections[4] = ForgeDirection.EAST;
-			updateNetwork(ForgeDirection.EAST);
+			if(updateNetwork(ForgeDirection.EAST))
+				connections[4] = ForgeDirection.EAST;
 		}
+		else
+			removeConnections(4);
 
 		if(canConnect(ForgeDirection.WEST))
 		{
-			connections[5] = ForgeDirection.WEST;
-			updateNetwork(ForgeDirection.WEST);
+			if(updateNetwork(ForgeDirection.WEST))
+				connections[5] = ForgeDirection.WEST;
 		}
+		else
+			removeConnections(5);
 		
 		if(network==null)
 		{
@@ -256,12 +310,6 @@ public class TileCopperPipe extends TileEntity
 				}
 			}
 		}
-		
-		if(!worldObj.isRemote)
-		{
-			System.out.println(network);
-			System.out.println(network.inputs.size() + "   " + network.outputs.size());
-		}
 	}
 	
 	public boolean updateNetwork(ForgeDirection dir)
@@ -274,8 +322,6 @@ public class TileCopperPipe extends TileEntity
 
 			if(pipe.network!=null)//Should only happen on world load
 			{
-				System.out.println(pipe.network.equals(network));
-				
 				if(!pipe.network.equals(network))
 				{
 					if(network==null)
@@ -292,8 +338,8 @@ public class TileCopperPipe extends TileEntity
 							FluidNetwork temp = network;
 							
 							pipe.network = network = pipe.network.tank.getFluid()!=null ? pipe.network : network;
-								
-							System.out.println(network.equals(temp));
+							
+							network.changeSize(1);
 							
 							if(!temp.equals(network))
 							{
@@ -315,6 +361,8 @@ public class TileCopperPipe extends TileEntity
 								pipe.isMaster = false;
 								pipe.network = network;
 								pipe.network.tank.setFluid(fluid);
+								
+								network.changeSize(1);
 							}
 							else
 							{
@@ -322,17 +370,24 @@ public class TileCopperPipe extends TileEntity
 								network = pipe.network;
 								network.tank.setFluid(fluid);
 								
+								network.changeSize(1);
+								
 								updateConnections();
 							}
 							
 							pipe.updateConnections();
 						}
 						else
-							return false; //can't join networks because they have different fluids
+							return false;
 					}
 				}
+				else if(worldObj.isRemote)
+				{
+					pipe.updateGraphicalConnections(); //happens on the client because breakBlock is only called on the server;another way to do this is to sync using
+					//packets but I think that will be much more inefficient
+				}
 			}
-			else
+			else if(network!=null)
 			{
 				pipe.isMaster = false;
 				pipe.network = network;
@@ -342,102 +397,43 @@ public class TileCopperPipe extends TileEntity
 		}
 
 		return true;
-		
-		/*
- 			FluidNetwork temp = new FluidNetwork(1);
-					
-			temp.inputs = new ArrayList<Coords>(network.inputs);
-			temp.inputs.addAll(pipe.network.inputs);
-			
-			temp.outputs = new ArrayList<Coords>(network.outputs);
-			temp.outputs.addAll(pipe.network.outputs);
-			
-			if(network.tank.getFluid()!=null)
-				temp.tank.setFluid(new FluidStack(network.tank.getFluid(), network.tank.getFluidAmount() + pipe.network.tank.getFluidAmount()));
-			else if(pipe.network.tank.getFluid()!=null)
-				temp.tank.setFluid(new FluidStack(pipe.network.tank.getFluid(), network.tank.getFluidAmount() + pipe.network.tank.getFluidAmount()));
-			
-			network = temp;
-		 */
 	}
 
-	private void updateNetworkToOthers(ForgeDirection ignore)
+	public void removeFromNetwork() //only called server side
 	{
-		for(ForgeDirection dir : connections)
-			if(dir!=null && dir!=ignore)
-				if(worldObj.getBlock(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ) == InitBlocks.blockCopperPipe)
-				{
-					TileCopperPipe pipe = (TileCopperPipe) worldObj.getTileEntity(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ);
-	
-					if(pipe.network!=null && pipe.network.size!=0)
-						pipe.network = null;
-	
-					network.changeSize(1);
-	
-					if(pipe.network!=null)
-					{
-						if(pipe.isMaster)
-							pipe.isMaster = false;
-	
-						if(!pipe.network.equals(network))
-						{
-							pipe.network = network;
-							pipe.updateNetworkToOthers(dir.getOpposite());
-						}
-					}
-					else
-						pipe.network = network;
-				}
-				else if(!worldObj.isRemote && isFluidHandler(dir))
-				{
-					Coords temp = new Coords(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ, dir.getOpposite());
-					
-					if(dir!=extract)
-					{
-						if(!network.outputs.contains(temp))
-							network.outputs.add(temp);
-					}
-					else
-						if(!network.inputs.contains(temp))
-							network.inputs.add(temp);
-				}	
-	}
-
-	public void removeFromNetwork()
-	{
-		if(!worldObj.isRemote)
+		if(network!=null)
 		{
-			if(network!=null)
+			network.changeSize(-1);
+
+			if(network.size!=0)
 			{
-				network.changeSize(-1);
+				for(ForgeDirection dir : connections)
+					if(dir!=null)
+						if(isCopperPipe(dir))
+						{
+							TileCopperPipe pipe = (TileCopperPipe) worldObj.getTileEntity(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ);
 	
-				if(network.size==0)
-					network = null;
-				else
-				{
-					for(ForgeDirection dir : connections)
-						if(dir!=null)
-							if(isCopperPipe(dir))
+							pipe.network.changeSize(-pipe.network.size);
+							
+							pipe.network = new FluidNetwork(1);
+							
+							if(network!=null)
 							{
-								TileCopperPipe pipe = (TileCopperPipe) worldObj.getTileEntity(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ);
-		
-								network.changeSize(-network.size);
-								
-								pipe.network = new FluidNetwork(1);
 								pipe.network.tank = network.tank;
 								
 								if(network.tank.getFluid()!=null)
 									pipe.network.tank.setFluid(new FluidStack(network.tank.getFluid(), 
 											network.tank.getFluidAmount() - FluidNetwork.capacityPerPipe));
-									
-								pipe.isMaster = true;
+								
+								network = null;
 							}
-							else if(dir==extract)
-								network.inputs.remove(new Coords(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ, dir.getOpposite()));
-							else
-								network.outputs.remove(new Coords(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ, dir.getOpposite()));
-				}
+							pipe.isMaster = true;
+							
+							//pipe.updateConnections(); //should be called by the onNeighborChange function
+						}
 			}
+			else
+				network = null;
 		}
 	}
 	
@@ -532,7 +528,7 @@ public class TileCopperPipe extends TileEntity
 				
 				ticksSinceLastUpdate = 0;
 
-				updateInputs(pipe.worldObj);				
+				updateInputs(pipe.worldObj);			
 				updateOutputs(pipe);
 			}
 		}

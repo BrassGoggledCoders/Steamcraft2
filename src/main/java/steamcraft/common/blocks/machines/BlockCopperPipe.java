@@ -20,6 +20,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import steamcraft.common.InitBlocks;
 import steamcraft.common.tiles.TileCopperPipe;
 
 /**
@@ -67,38 +68,37 @@ public class BlockCopperPipe extends BlockContainerMod
 	{
 		super.onBlockPlacedBy(world, x, y, z, entityLiving, is);
 
+		System.out.println("third");
+		
 		TileCopperPipe tile = (TileCopperPipe) world.getTileEntity(x, y, z);
 		
 		if(tile!=null)
+		{
+			tile.network = null;
 			tile.updateConnections();
+		}
 	}
 	
 	@Override
 	public void onNeighborChange(IBlockAccess world, int x, int y, int z, int tileX, int tileY, int tileZ)
-	{	
-		/*
-		TileCopperPipe tile = (TileCopperPipe) world.getTileEntity(x, y, z);
-		tile.updateConnections();
-			
-		TileEntity t = world.getTileEntity(tileX, tileY, tileZ);
-		if(t!=null && t instanceof TileCopperPipe)
+	{		
+		if(world.getBlock(tileX, tileY, tileZ) != InitBlocks.blockCopperPipe)
 		{
-			tile = (TileCopperPipe) t;
+			System.out.println("second");
+			
+			TileCopperPipe tile = (TileCopperPipe) world.getTileEntity(x, y, z);
 			tile.updateConnections();
 		}
-		*/
 	}
 	
 	@Override
-	public void breakBlock(World world, int x, int y, int z, Block block, int metadata)
+	public void breakBlock(World world, int x, int y, int z, Block block, int metadata) //only SERVER side for some reason...
 	{
-		if(!world.isRemote)
-		{
-			TileCopperPipe tile = (TileCopperPipe) world.getTileEntity(x, y, z);
-			
-			if(tile!=null)
-				tile.removeFromNetwork();
-		}
+		System.out.println("first");
+		TileCopperPipe tile = (TileCopperPipe) world.getTileEntity(x, y, z);
+		
+		if(tile!=null)
+			tile.removeFromNetwork();
 		
 		super.breakBlock(world, x, y, z, block, metadata);
 	}
