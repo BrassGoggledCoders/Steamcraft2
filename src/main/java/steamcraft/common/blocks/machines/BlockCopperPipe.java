@@ -76,6 +76,7 @@ public class BlockCopperPipe extends BlockContainerMod
 	@Override
 	public void onNeighborChange(IBlockAccess world, int x, int y, int z, int tileX, int tileY, int tileZ)
 	{	
+		/*
 		TileCopperPipe tile = (TileCopperPipe) world.getTileEntity(x, y, z);
 		tile.updateConnections();
 			
@@ -85,6 +86,7 @@ public class BlockCopperPipe extends BlockContainerMod
 			tile = (TileCopperPipe) t;
 			tile.updateConnections();
 		}
+		*/
 	}
 	
 	@Override

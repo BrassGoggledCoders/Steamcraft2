@@ -135,10 +135,10 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 			
 		if(pipe.network!=null)
 		{
-			if(pipe.network.tank.getFluid()!=null)
-			{
-				float level = pipe.network.fluidScaled;
+			float level = pipe.network.fluidScaled;
 
+			if(pipe.network.tank.getFluid()!=null && level > 0)
+			{
 				tess.startDrawingQuads();
 				{
 					IIcon icon = pipe.network.tank.getFluid().getFluid().getBlock().getIcon(0, 0);
@@ -370,10 +370,10 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 		
 		if(pipe.network!=null)
 		{
-			if(pipe.network.tank.getFluid()!=null)
+			float level = pipe.network.fluidScaled;
+			
+			if(pipe.network.tank.getFluid()!=null && level > 0)
 			{				
-				float level = pipe.network.fluidScaled;
-				
 				tess.startDrawingQuads();
 				{
 					IIcon icon = pipe.network.tank.getFluid().getFluid().getBlock().getIcon(0, 0);
