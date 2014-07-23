@@ -65,12 +65,6 @@ public abstract class BlockContainerMod extends BlockContainer
 	}
 
 	@Override
-	public void breakBlock(World world, int x, int y, int z, Block block, int metadata)
-	{
-		super.breakBlock(world, x, y, z, block, metadata);
-	}
-
-	@Override
 	public int getLightValue(IBlockAccess world, int x, int y, int z)
 	{
 		TileEntity te = world.getTileEntity(x, y, z);

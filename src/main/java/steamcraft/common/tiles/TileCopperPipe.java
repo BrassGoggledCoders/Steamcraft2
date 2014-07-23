@@ -155,7 +155,7 @@ public class TileCopperPipe extends TileEntity
 		}
 		else
 			for(ForgeDirection dir : connections)
-				if(dir!=null && canChangeState(dir))
+				if(dir!=null && isFluidHandler(dir))
 				{
 					extract = dir;
 
@@ -173,7 +173,7 @@ public class TileCopperPipe extends TileEntity
 
 	public void updateConnections()
 	{		
-		if(canConnect(xCoord, yCoord + 1, zCoord))
+		if(canConnect(ForgeDirection.UP))
 		{
 			connections[0] = ForgeDirection.UP;
 			updateNetwork(ForgeDirection.UP);
@@ -192,7 +192,7 @@ public class TileCopperPipe extends TileEntity
 			connections[0] = null;
 		}
 
-		if(canConnect(xCoord, yCoord - 1, zCoord))
+		if(canConnect(ForgeDirection.DOWN))
 		{
 			connections[1] = ForgeDirection.DOWN;
 			updateNetwork(ForgeDirection.DOWN);
@@ -211,7 +211,7 @@ public class TileCopperPipe extends TileEntity
 			connections[1] = null;
 		}
 
-		if(canConnect(xCoord, yCoord, zCoord + 1))
+		if(canConnect(ForgeDirection.SOUTH))
 		{
 			connections[2] = ForgeDirection.SOUTH;
 			updateNetwork(ForgeDirection.SOUTH);
@@ -229,7 +229,7 @@ public class TileCopperPipe extends TileEntity
 			connections[2] = null;
 		}
 
-		if(canConnect(xCoord, yCoord, zCoord - 1))
+		if(canConnect(ForgeDirection.NORTH))
 		{
 			connections[3] = ForgeDirection.NORTH;
 			updateNetwork(ForgeDirection.NORTH);
@@ -248,7 +248,7 @@ public class TileCopperPipe extends TileEntity
 			connections[3] = null;
 		}
 
-		if(canConnect(xCoord + 1, yCoord, zCoord))
+		if(canConnect(ForgeDirection.EAST))
 		{
 			connections[4] = ForgeDirection.EAST;
 			updateNetwork(ForgeDirection.EAST);
@@ -267,7 +267,7 @@ public class TileCopperPipe extends TileEntity
 			connections[4] = null;
 		}
 
-		if(canConnect(xCoord - 1, yCoord, zCoord))
+		if(canConnect(ForgeDirection.WEST))
 		{
 			connections[5] = ForgeDirection.WEST;
 			updateNetwork(ForgeDirection.WEST);
@@ -296,7 +296,7 @@ public class TileCopperPipe extends TileEntity
 		{			
 			System.out.println(network);
 			
-			if(extract!=null && !canChangeState(extract))
+			if(extract!=null && !isFluidHandler(extract))
 			{
 				network.inputs.remove(new Coords(xCoord + extract.offsetX, yCoord + extract.offsetY, zCoord + extract.offsetZ, extract.getOpposite()));
 				extract=null;
@@ -304,7 +304,7 @@ public class TileCopperPipe extends TileEntity
 	
 			for(ForgeDirection dir : connections)
 			{
-				if(dir!=null && canChangeState(dir))
+				if(dir!=null && isFluidHandler(dir))
 				{
 					Coords temp = new Coords(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ, dir.getOpposite());
 					
@@ -408,7 +408,7 @@ public class TileCopperPipe extends TileEntity
 					else
 						pipe.network = network;
 				}
-				else if(!worldObj.isRemote && canChangeState(dir))
+				else if(!worldObj.isRemote && isFluidHandler(dir))
 				{
 					Coords temp = new Coords(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ, dir.getOpposite());
 					
@@ -437,7 +437,7 @@ public class TileCopperPipe extends TileEntity
 				{
 					for(ForgeDirection dir : connections)
 						if(dir!=null)
-							if(!canChangeState(dir))
+							if(isCopperPipe(dir))
 							{
 								TileCopperPipe pipe = (TileCopperPipe) worldObj.getTileEntity(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ);
 		
@@ -460,23 +460,20 @@ public class TileCopperPipe extends TileEntity
 			}
 		}
 	}
-
-	private boolean canConnect(int x, int y, int z)
+	
+	private boolean canConnect(ForgeDirection dir)
 	{
-		return worldObj.getBlock(x, y, z) == InitBlocks.blockCopperPipe || isFluidHandler(x, y, z);
+		return isCopperPipe(dir) || isFluidHandler(dir);
+	}
+	
+	private boolean isCopperPipe(ForgeDirection dir)
+	{
+		return worldObj.getBlock(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ) == InitBlocks.blockCopperPipe;
 	}
 
-	private boolean isFluidHandler(int x, int y, int z)
+	private boolean isFluidHandler(ForgeDirection dir)
 	{
-		return worldObj.getTileEntity(x, y, z) instanceof IFluidHandler;
-	}
-
-	public boolean canChangeState(ForgeDirection dir)
-	{
-		if(worldObj.getBlock(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ) != InitBlocks.blockCopperPipe &&
-				isFluidHandler(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ))
-			return true;
-		return false;
+		return worldObj.getTileEntity(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ) instanceof IFluidHandler;
 	}
 
 	public ForgeDirection onlyOneOpposite()
