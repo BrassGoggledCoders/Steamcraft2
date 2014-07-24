@@ -1,5 +1,5 @@
 /**
- * This class was created by BrassGoggledCoders modding team. 
+ * This class was created by BrassGoggledCoders modding team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -8,7 +8,7 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- * 
+ *
  */
 package steamcraft.common.blocks.machines;
 
@@ -25,6 +25,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import steamcraft.client.lib.GuiIDs;
+import steamcraft.client.lib.RenderIDs;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.LibInfo;
 import steamcraft.common.tiles.TileCharger;
@@ -41,9 +42,24 @@ public class BlockCharger extends BlockContainerMod
 	public BlockCharger()
 	{
 		super(Material.iron);
-		setBlockBounds(0.2F, 0, 0, 0.8F, 0.7F, 1);
+	}
+	@Override
+	public int getRenderType()
+	{
+		return RenderIDs.blockChargerRI;
 	}
 
+	@Override
+	public boolean isOpaqueCube()
+	{
+		return false;
+	}
+
+	@Override
+	public boolean renderAsNormalBlock()
+	{
+		return false;
+	}
 	@SideOnly(Side.CLIENT)
 	@Override
 	public IIcon getIcon(int side, int meta)

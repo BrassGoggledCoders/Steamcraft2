@@ -22,4 +22,5 @@ public class RenderIDs
 	public static int blockCopperPipeRI;
 	public static int blockTeslaCoilRI;
 	public static int blockBatteryRI;
+	public static int blockChargerRI;
 }

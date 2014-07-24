@@ -19,6 +19,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 import steamcraft.client.lib.RenderIDs;
 import steamcraft.client.renderers.block.BlockBatteryRenderer;
+import steamcraft.client.renderers.block.BlockChargerRenderer;
 import steamcraft.client.renderers.block.BlockCrystalRenderer;
 import steamcraft.client.renderers.block.BlockLightningRodRenderer;
 import steamcraft.client.renderers.block.BlockTeslaCoilRenderer;
@@ -28,6 +29,7 @@ import steamcraft.client.renderers.item.ModelBrassWings;
 import steamcraft.client.renderers.item.ModelJetpack;
 import steamcraft.client.renderers.item.ModelWingpack;
 import steamcraft.client.renderers.tile.TileBatteryRenderer;
+import steamcraft.client.renderers.tile.TileChargerRenderer;
 import steamcraft.client.renderers.tile.TileCopperPipeRenderer;
 import steamcraft.client.renderers.tile.TileCrystalRenderer;
 import steamcraft.client.renderers.tile.TileLightningRodRenderer;
@@ -38,6 +40,7 @@ import steamcraft.common.entities.projectile.EntityBullet;
 import steamcraft.common.entities.projectile.EntitySmallLightningBolt;
 import steamcraft.common.lib.Utils;
 import steamcraft.common.tiles.TileBattery;
+import steamcraft.common.tiles.TileCharger;
 import steamcraft.common.tiles.TileCopperPipe;
 import steamcraft.common.tiles.TileCrystal;
 import steamcraft.common.tiles.TileLightningRod;
@@ -106,6 +109,10 @@ public class ClientProxy extends CommonProxy
 		RenderIDs.blockBatteryRI = RenderingRegistry.getNextAvailableRenderId();
 		ClientRegistry.bindTileEntitySpecialRenderer(TileBattery.class, new TileBatteryRenderer());
 		RenderingRegistry.registerBlockHandler(new BlockBatteryRenderer());
+		//Charger
+		RenderIDs.blockChargerRI = RenderingRegistry.getNextAvailableRenderId();
+		ClientRegistry.bindTileEntitySpecialRenderer(TileCharger.class, new TileChargerRenderer());
+		RenderingRegistry.registerBlockHandler(new BlockChargerRenderer());
 
 		/*
 		 * Cast Iron Lamp ConfigBlocks.blockCastIronLampRI =
