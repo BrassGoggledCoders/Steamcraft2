@@ -64,15 +64,15 @@ public class InitWorldGen implements IWorldGenerator
 		
 		if (ConfigWorldGen.copperOreGenEnabled)
 			this.generateOre(world, random, chunkX, chunkZ, ConfigWorldGen.copperCluster, ConfigWorldGen.copperHeightMin,  ConfigWorldGen.copperHeightMax, 
-					5, InitBlocks.blockCustomOre, 1, Blocks.stone);
+					7, InitBlocks.blockCustomOre, 1, Blocks.stone);
 		
 		if (ConfigWorldGen.tinOreGenEnabled)
 			this.generateOre(world, random, chunkX, chunkZ, ConfigWorldGen.tinCluster, ConfigWorldGen.tinHeightMin, ConfigWorldGen.tinHeightMax, 
-					5, InitBlocks.blockCustomOre, 2, Blocks.stone);
+					7, InitBlocks.blockCustomOre, 2, Blocks.stone);
 		
 		if (ConfigWorldGen.zincOreGenEnabled)
 			this.generateOre(world, random, chunkX, chunkZ, ConfigWorldGen.zincCluster, ConfigWorldGen.zincHeightMin, ConfigWorldGen.zincHeightMax, 
-					4, InitBlocks.blockCustomOre, 3, Blocks.stone);
+					5, InitBlocks.blockCustomOre, 3, Blocks.stone);
 		
 		if (ConfigWorldGen.uraniumOreGenEnabled)
 			this.generateOre(world, random, chunkX, chunkZ, ConfigWorldGen.uraniumCluster, ConfigWorldGen.uraniumHeightMin, ConfigWorldGen.uraniumHeightMax, 
@@ -81,6 +81,7 @@ public class InitWorldGen implements IWorldGenerator
 		if (ConfigWorldGen.brimstoneOreGenEnabled)
 			this.generateOre(world, random, chunkX, chunkZ, ConfigWorldGen.brimstoneCluster, ConfigWorldGen.brimstoneHeightMin, ConfigWorldGen.brimstoneHeightMax, 
 					3, InitBlocks.blockCustomOre, 5, Blocks.stone);
+		
 		if (ConfigWorldGen.phosphateOreGenEnabled)
 			this.generateOre(world, random, chunkX, chunkZ, ConfigWorldGen.phosphateCluster, ConfigWorldGen.phosphateHeightMin, ConfigWorldGen.phosphateHeightMax, 
 					3, InitBlocks.blockCustomOre, 6, Blocks.stone);
