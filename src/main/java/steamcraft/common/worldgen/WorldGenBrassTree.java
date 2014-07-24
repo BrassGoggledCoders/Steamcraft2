@@ -55,7 +55,7 @@ public class WorldGenBrassTree extends WorldGenBigTree
 	}
 
 	void generateLeafNodeList()
-	{
+    {
 		this.height = (int) (this.heightLimit * this.heightAttenuation);
 
 		if (this.height >= this.heightLimit)

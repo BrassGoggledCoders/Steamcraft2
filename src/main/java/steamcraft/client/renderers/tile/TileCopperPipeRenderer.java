@@ -33,7 +33,8 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 {
 	ResourceLocation texture = new ResourceLocation(LibInfo.PREFIX + "textures/blocks/blockCopperPipe.png");
 	
-	boolean drawInside = true; //make this use a config file
+	public static boolean drawInside = true;
+	public static boolean drawFluid = true;
 	
 	public static float pixel = 1F/16F/2F;
 	public static float tPixel = 1F/32F;
@@ -133,7 +134,7 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 		}
 		tess.draw();
 			
-		if(pipe.network!=null)
+		if(drawFluid && pipe.network!=null)
 		{
 			float level = pipe.network.fluidScaled;
 
@@ -368,7 +369,7 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 		}
 		tess.draw();
 		
-		if(pipe.network!=null)
+		if(drawFluid && pipe.network!=null)
 		{
 			float level = pipe.network.fluidScaled;
 			
