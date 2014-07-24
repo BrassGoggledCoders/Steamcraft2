@@ -4,7 +4,6 @@ import java.io.File;
 import java.util.logging.Level;
 
 import net.minecraftforge.common.config.Configuration;
-import steamcraft.client.renderers.tile.TileCopperPipeRenderer;
 import steamcraft.common.lib.LoggerSteamcraft;
 
 public class ConfigGeneral
@@ -15,6 +14,8 @@ public class ConfigGeneral
 	public static final String CATEGORY_CLIENT = "client";
 
 	public static boolean partyPooper;
+	public static boolean drawFluid;
+	public static boolean drawInside;
 
 	public static void initialize(File configFile)
 	{
@@ -25,8 +26,8 @@ public class ConfigGeneral
 
 			partyPooper = config.get(CATEGORY_GENERAL, "Remove all little fun things from mod :(", false).getBoolean(false);
 			
-			TileCopperPipeRenderer.drawFluid = config.get(CATEGORY_CLIENT, "Render fluid inside copper pipes", true).getBoolean(true);
-			TileCopperPipeRenderer.drawInside = config.get(CATEGORY_CLIENT, "Render the insides of copper pipes", true).getBoolean(true);
+			drawFluid = config.get(CATEGORY_CLIENT, "Render fluid inside blocks", true).getBoolean(true);
+			drawInside = config.get(CATEGORY_CLIENT, "Render the insides of blocks", true).getBoolean(true);
 		}
 		catch (Exception e)
 		{

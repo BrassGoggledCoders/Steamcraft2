@@ -21,7 +21,6 @@ import net.minecraftforge.common.util.ForgeDirection;
 import boilerplate.common.IEnergyItem;
 import boilerplate.common.baseclasses.BaseTileWithInventory;
 import cofh.api.energy.EnergyStorage;
-import cofh.api.energy.IEnergyContainerItem;
 import cofh.api.energy.IEnergyHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

@@ -22,6 +22,7 @@ import net.minecraftforge.common.util.ForgeDirection;
 
 import org.lwjgl.opengl.GL11;
 
+import steamcraft.common.config.ConfigGeneral;
 import steamcraft.common.lib.LibInfo;
 import steamcraft.common.tiles.TileCopperPipe;
 
@@ -32,9 +33,6 @@ import steamcraft.common.tiles.TileCopperPipe;
 public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 {
 	ResourceLocation texture = new ResourceLocation(LibInfo.PREFIX + "textures/blocks/blockCopperPipe.png");
-	
-	public static boolean drawInside = true;
-	public static boolean drawFluid = true;
 	
 	public static float pixel = 1F/16F/2F;
 	public static float tPixel = 1F/32F;
@@ -109,7 +107,7 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 			tess.addVertexWithUV(12*pixel, 1, 12*pixel, 27*tPixel, 0*tPixel);
 			tess.addVertexWithUV(12*pixel, 0, 12*pixel, 11*tPixel, 0*tPixel);
 						
-			if(drawInside)
+			if(ConfigGeneral.drawInside)
 			{
 				tess.addVertexWithUV(12*pixel, 0, 1-12*pixel, 11*tPixel, 0*tPixel);
 				tess.addVertexWithUV(12*pixel, 1, 1-12*pixel, 27*tPixel, 0*tPixel);
@@ -134,7 +132,7 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 		}
 		tess.draw();
 			
-		if(drawFluid && pipe.network!=null)
+		if(ConfigGeneral.drawFluid && pipe.network!=null)
 		{
 			float level = pipe.network.fluidScaled;
 
@@ -238,7 +236,7 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 			tess.addVertexWithUV(12*pixel, 1, 12*pixel, 6*tPixel, 0*tPixel);
 			tess.addVertexWithUV(12*pixel, 1-12*pixel, 12*pixel, 0*tPixel, 0*tPixel);
 			
-			if(drawInside)
+			if(ConfigGeneral.drawInside)
 			{
 				tess.addVertexWithUV(12*pixel, 1-12*pixel, 1-12*pixel, 0*tPixel, 0*tPixel);
 				tess.addVertexWithUV(12*pixel, 1, 1-12*pixel, 6*tPixel, 0*tPixel);
@@ -344,7 +342,7 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 			tess.addVertexWithUV(12*pixel, 1, 12*pixel, 11*tPixel, 0*tPixel);
 			tess.addVertexWithUV(12*pixel, 1-12*pixel, 12*pixel, 6*tPixel, 0*tPixel);
 			
-			if(drawInside)
+			if(ConfigGeneral.drawInside)
 			{
 				tess.addVertexWithUV(12*pixel, 1-12*pixel, 1-12*pixel, 6*tPixel, 0*tPixel);
 				tess.addVertexWithUV(12*pixel, 1, 1-12*pixel, 11*tPixel, 0*tPixel);
@@ -369,7 +367,7 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 		}
 		tess.draw();
 		
-		if(drawFluid && pipe.network!=null)
+		if(ConfigGeneral.drawFluid && pipe.network!=null)
 		{
 			float level = pipe.network.fluidScaled;
 			
@@ -447,7 +445,7 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 				tess.addVertexWithUV(1-12*pixel, 12*pixel, 12*pixel, 0*tPixel, 0*tPixel);
 				tess.addVertexWithUV(1-12*pixel, 12*pixel, 1-12*pixel, 0*tPixel, 6*tPixel);
 				
-				if(drawInside)
+				if(ConfigGeneral.drawInside)
 				{		
 					tess.addVertexWithUV(1-12*pixel, 12*pixel, 1-12*pixel, 0*tPixel, 6*tPixel);
 					tess.addVertexWithUV(1-12*pixel, 12*pixel, 12*pixel, 0*tPixel, 0*tPixel);
@@ -463,7 +461,7 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 				tess.addVertexWithUV(12*pixel, 1-12*pixel, 12*pixel, 0*tPixel, 0*tPixel);
 				tess.addVertexWithUV(12*pixel, 1-12*pixel, 1-12*pixel, 0*tPixel, 6*tPixel);
 				
-				if(drawInside)
+				if(ConfigGeneral.drawInside)
 				{		
 					tess.addVertexWithUV(12*pixel, 1-12*pixel, 1-12*pixel, 0*tPixel, 6*tPixel);
 					tess.addVertexWithUV(12*pixel, 1-12*pixel, 12*pixel, 0*tPixel, 0*tPixel);
@@ -479,7 +477,7 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 				tess.addVertexWithUV(1-12*pixel, 1-12*pixel, 12*pixel, 0*tPixel, 0*tPixel);
 				tess.addVertexWithUV(1-12*pixel, 12*pixel, 12*pixel, 0*tPixel, 6*tPixel);
 				
-				if(drawInside)
+				if(ConfigGeneral.drawInside)
 				{		
 					tess.addVertexWithUV(1-12*pixel, 12*pixel, 12*pixel, 0*tPixel, 6*tPixel);
 					tess.addVertexWithUV(1-12*pixel, 1-12*pixel, 12*pixel, 0*tPixel, 0*tPixel);
@@ -495,7 +493,7 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 				tess.addVertexWithUV(12*pixel, 1-12*pixel, 1-12*pixel, 0*tPixel, 0*tPixel);
 				tess.addVertexWithUV(12*pixel, 12*pixel, 1-12*pixel, 0*tPixel, 6*tPixel);
 				
-				if(drawInside)
+				if(ConfigGeneral.drawInside)
 				{				
 					tess.addVertexWithUV(12*pixel, 12*pixel, 1-12*pixel, 0*tPixel, 6*tPixel);
 					tess.addVertexWithUV(12*pixel, 1-12*pixel, 1-12*pixel, 0*tPixel, 0*tPixel);
@@ -511,7 +509,7 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 				tess.addVertexWithUV(12*pixel, 1-12*pixel, 12*pixel, 0*tPixel, 0*tPixel);
 				tess.addVertexWithUV(12*pixel, 12*pixel, 12*pixel, 0*tPixel, 6*tPixel);
 				
-				if(drawInside)
+				if(ConfigGeneral.drawInside)
 				{		
 					tess.addVertexWithUV(12*pixel, 12*pixel, 12*pixel, 0*tPixel, 6*tPixel);
 					tess.addVertexWithUV(12*pixel, 1-12*pixel, 12*pixel, 0*tPixel, 0*tPixel);
@@ -527,7 +525,7 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 				tess.addVertexWithUV(1-12*pixel, 1-12*pixel, 1-12*pixel, 0*tPixel, 0*tPixel);
 				tess.addVertexWithUV(1-12*pixel, 12*pixel, 1-12*pixel, 0*tPixel, 6*tPixel);
 				
-				if(drawInside)
+				if(ConfigGeneral.drawInside)
 				{		
 					tess.addVertexWithUV(1-12*pixel, 12*pixel, 1-12*pixel, 0*tPixel, 6*tPixel);
 					tess.addVertexWithUV(1-12*pixel, 1-12*pixel, 1-12*pixel, 0*tPixel, 0*tPixel);
