@@ -294,8 +294,8 @@ public class InitItems
 		registerItem(matchlockRifle, "ItemMatchlockRifle");
 		registerItem(percussionCapRifle, "ItemPercussionCapRifle");
 
-		itemRayGun = new ItemRayGun(LibInfo.PREFIX + "raygun").setUnlocalizedName("itemRaygun");
-		itemShrinkray = new ItemShrinkray(LibInfo.PREFIX + "shrinkray").setUnlocalizedName("itemShrinkray");
+		itemRayGun = new ItemRayGun(LibInfo.PREFIX + "raygun", 50, 50, 50).setUnlocalizedName("itemRaygun");
+		itemShrinkray = new ItemShrinkray(LibInfo.PREFIX + "shrinkray", 50, 50, 100).setUnlocalizedName("itemShrinkray");
 		//TODO
 		itemLightningGun = new ItemLightningGun(LibInfo.PREFIX + "lightninggun").setUnlocalizedName("itemLightningGun");
 
