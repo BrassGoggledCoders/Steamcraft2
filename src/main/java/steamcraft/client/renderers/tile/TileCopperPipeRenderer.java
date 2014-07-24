@@ -439,7 +439,55 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 		
 		tess.startDrawingQuads();
 		{
+			if(tile.connections[0]==null)
+			{
+				tess.addVertexWithUV(12*pixel, 12*pixel, 1-12*pixel, 6*tPixel, 6*tPixel);
+				tess.addVertexWithUV(12*pixel, 12*pixel, 12*pixel, 6*tPixel, 0*tPixel);
+				tess.addVertexWithUV(1-12*pixel, 12*pixel, 12*pixel, 0*tPixel, 0*tPixel);
+				tess.addVertexWithUV(1-12*pixel, 12*pixel, 1-12*pixel, 0*tPixel, 6*tPixel);
+				
+				if(drawInside)
+				{		
+					tess.addVertexWithUV(1-12*pixel, 12*pixel, 1-12*pixel, 0*tPixel, 6*tPixel);
+					tess.addVertexWithUV(1-12*pixel, 12*pixel, 12*pixel, 0*tPixel, 0*tPixel);
+					tess.addVertexWithUV(12*pixel, 12*pixel, 12*pixel, 6*tPixel, 0*tPixel);
+					tess.addVertexWithUV(12*pixel, 12*pixel, 1-12*pixel, 6*tPixel, 6*tPixel);
+				}
+			}
+			
+			if(tile.connections[1]==null)
+			{
+				tess.addVertexWithUV(1-12*pixel, 1-12*pixel, 1-12*pixel, 6*tPixel, 6*tPixel);
+				tess.addVertexWithUV(1-12*pixel, 1-12*pixel, 12*pixel, 6*tPixel, 0*tPixel);
+				tess.addVertexWithUV(12*pixel, 1-12*pixel, 12*pixel, 0*tPixel, 0*tPixel);
+				tess.addVertexWithUV(12*pixel, 1-12*pixel, 1-12*pixel, 0*tPixel, 6*tPixel);
+				
+				if(drawInside)
+				{		
+					tess.addVertexWithUV(12*pixel, 1-12*pixel, 1-12*pixel, 0*tPixel, 6*tPixel);
+					tess.addVertexWithUV(12*pixel, 1-12*pixel, 12*pixel, 0*tPixel, 0*tPixel);
+					tess.addVertexWithUV(1-12*pixel, 1-12*pixel, 12*pixel, 6*tPixel, 0*tPixel);
+					tess.addVertexWithUV(1-12*pixel, 1-12*pixel, 1-12*pixel, 6*tPixel, 6*tPixel);
+				}
+			}
+			
 			if(tile.connections[2]==null)
+			{
+				tess.addVertexWithUV(12*pixel, 12*pixel, 12*pixel, 6*tPixel, 6*tPixel);
+				tess.addVertexWithUV(12*pixel, 1-12*pixel, 12*pixel, 6*tPixel, 0*tPixel);
+				tess.addVertexWithUV(1-12*pixel, 1-12*pixel, 12*pixel, 0*tPixel, 0*tPixel);
+				tess.addVertexWithUV(1-12*pixel, 12*pixel, 12*pixel, 0*tPixel, 6*tPixel);
+				
+				if(drawInside)
+				{		
+					tess.addVertexWithUV(1-12*pixel, 12*pixel, 12*pixel, 0*tPixel, 6*tPixel);
+					tess.addVertexWithUV(1-12*pixel, 1-12*pixel, 12*pixel, 0*tPixel, 0*tPixel);
+					tess.addVertexWithUV(12*pixel, 1-12*pixel, 12*pixel, 6*tPixel, 0*tPixel);
+					tess.addVertexWithUV(12*pixel, 12*pixel, 12*pixel, 6*tPixel, 6*tPixel);
+				}
+			}
+			
+			if(tile.connections[3]==null)
 			{
 				tess.addVertexWithUV(1-12*pixel, 12*pixel, 1-12*pixel, 6*tPixel, 6*tPixel);
 				tess.addVertexWithUV(1-12*pixel, 1-12*pixel, 1-12*pixel, 6*tPixel, 0*tPixel);
@@ -457,38 +505,6 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 			
 			if(tile.connections[4]==null)
 			{
-				tess.addVertexWithUV(1-12*pixel, 12*pixel, 12*pixel, 6*tPixel, 6*tPixel);
-				tess.addVertexWithUV(1-12*pixel, 1-12*pixel, 12*pixel, 6*tPixel, 0*tPixel);
-				tess.addVertexWithUV(1-12*pixel, 1-12*pixel, 1-12*pixel, 0*tPixel, 0*tPixel);
-				tess.addVertexWithUV(1-12*pixel, 12*pixel, 1-12*pixel, 0*tPixel, 6*tPixel);
-				
-				if(drawInside)
-				{		
-					tess.addVertexWithUV(1-12*pixel, 12*pixel, 1-12*pixel, 0*tPixel, 6*tPixel);
-					tess.addVertexWithUV(1-12*pixel, 1-12*pixel, 1-12*pixel, 0*tPixel, 0*tPixel);
-					tess.addVertexWithUV(1-12*pixel, 1-12*pixel, 12*pixel, 6*tPixel, 0*tPixel);
-					tess.addVertexWithUV(1-12*pixel, 12*pixel, 12*pixel, 6*tPixel, 6*tPixel);
-				}
-			}
-
-			if(tile.connections[3]==null)
-			{
-				tess.addVertexWithUV(12*pixel, 12*pixel, 12*pixel, 6*tPixel, 6*tPixel);
-				tess.addVertexWithUV(12*pixel, 1-12*pixel, 12*pixel, 6*tPixel, 0*tPixel);
-				tess.addVertexWithUV(1-12*pixel, 1-12*pixel, 12*pixel, 0*tPixel, 0*tPixel);
-				tess.addVertexWithUV(1-12*pixel, 12*pixel, 12*pixel, 0*tPixel, 6*tPixel);
-				
-				if(drawInside)
-				{		
-					tess.addVertexWithUV(1-12*pixel, 12*pixel, 12*pixel, 0*tPixel, 6*tPixel);
-					tess.addVertexWithUV(1-12*pixel, 1-12*pixel, 12*pixel, 0*tPixel, 0*tPixel);
-					tess.addVertexWithUV(12*pixel, 1-12*pixel, 12*pixel, 6*tPixel, 0*tPixel);
-					tess.addVertexWithUV(12*pixel, 12*pixel, 12*pixel, 6*tPixel, 6*tPixel);
-				}
-			}
-			
-			if(tile.connections[5]==null)
-			{
 				tess.addVertexWithUV(12*pixel, 12*pixel, 1-12*pixel, 6*tPixel, 6*tPixel);
 				tess.addVertexWithUV(12*pixel, 1-12*pixel, 1-12*pixel, 6*tPixel, 0*tPixel);
 				tess.addVertexWithUV(12*pixel, 1-12*pixel, 12*pixel, 0*tPixel, 0*tPixel);
@@ -503,37 +519,19 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 				}
 			}
 			
-			//Top
-			if(tile.connections[0]==null)
+			if(tile.connections[5]==null)
 			{
-				tess.addVertexWithUV(1-12*pixel, 1-12*pixel, 1-12*pixel, 6*tPixel, 6*tPixel);
+				tess.addVertexWithUV(1-12*pixel, 12*pixel, 12*pixel, 6*tPixel, 6*tPixel);
 				tess.addVertexWithUV(1-12*pixel, 1-12*pixel, 12*pixel, 6*tPixel, 0*tPixel);
-				tess.addVertexWithUV(12*pixel, 1-12*pixel, 12*pixel, 0*tPixel, 0*tPixel);
-				tess.addVertexWithUV(12*pixel, 1-12*pixel, 1-12*pixel, 0*tPixel, 6*tPixel);
-				
-				if(drawInside)
-				{		
-					tess.addVertexWithUV(12*pixel, 1-12*pixel, 1-12*pixel, 0*tPixel, 6*tPixel);
-					tess.addVertexWithUV(12*pixel, 1-12*pixel, 12*pixel, 0*tPixel, 0*tPixel);
-					tess.addVertexWithUV(1-12*pixel, 1-12*pixel, 12*pixel, 6*tPixel, 0*tPixel);
-					tess.addVertexWithUV(1-12*pixel, 1-12*pixel, 1-12*pixel, 6*tPixel, 6*tPixel);
-				}
-			}
-			
-			//Bottom
-			if(tile.connections[1]==null)
-			{
-				tess.addVertexWithUV(12*pixel, 12*pixel, 1-12*pixel, 6*tPixel, 6*tPixel);
-				tess.addVertexWithUV(12*pixel, 12*pixel, 12*pixel, 6*tPixel, 0*tPixel);
-				tess.addVertexWithUV(1-12*pixel, 12*pixel, 12*pixel, 0*tPixel, 0*tPixel);
+				tess.addVertexWithUV(1-12*pixel, 1-12*pixel, 1-12*pixel, 0*tPixel, 0*tPixel);
 				tess.addVertexWithUV(1-12*pixel, 12*pixel, 1-12*pixel, 0*tPixel, 6*tPixel);
 				
 				if(drawInside)
 				{		
 					tess.addVertexWithUV(1-12*pixel, 12*pixel, 1-12*pixel, 0*tPixel, 6*tPixel);
-					tess.addVertexWithUV(1-12*pixel, 12*pixel, 12*pixel, 0*tPixel, 0*tPixel);
-					tess.addVertexWithUV(12*pixel, 12*pixel, 12*pixel, 6*tPixel, 0*tPixel);
-					tess.addVertexWithUV(12*pixel, 12*pixel, 1-12*pixel, 6*tPixel, 6*tPixel);
+					tess.addVertexWithUV(1-12*pixel, 1-12*pixel, 1-12*pixel, 0*tPixel, 0*tPixel);
+					tess.addVertexWithUV(1-12*pixel, 1-12*pixel, 12*pixel, 6*tPixel, 0*tPixel);
+					tess.addVertexWithUV(1-12*pixel, 12*pixel, 12*pixel, 6*tPixel, 6*tPixel);
 				}
 			}
 		}

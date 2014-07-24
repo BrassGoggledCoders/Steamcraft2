@@ -48,6 +48,9 @@ public class CopperPipePacket implements IMessage
 		x = buf.readInt();
 		y = buf.readInt();
 		z = buf.readInt();
+		
+		connections = new ForgeDirection[6];
+		
 		for(int i = 0; i<6; i++)
 		{
 			connections[i] = ForgeDirection.getOrientation(buf.readByte());

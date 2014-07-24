@@ -198,52 +198,50 @@ public class TileCopperPipe extends TileEntity
 	
 	public void updateConnections()
 	{		
-		
-		System.out.println("coords " + xCoord + " " + yCoord + " " + zCoord);
-		if(canConnect(ForgeDirection.UP))
+		if(canConnect(ForgeDirection.DOWN))
 		{
-			if(updateNetwork(ForgeDirection.UP))
-				connections[0] = ForgeDirection.UP;
+			if(updateNetwork(ForgeDirection.DOWN))
+				connections[0] = ForgeDirection.DOWN;
 		}
 		else
 			removeConnections(0);
 
-		if(canConnect(ForgeDirection.DOWN))
+		if(canConnect(ForgeDirection.UP))
 		{
-			if(updateNetwork(ForgeDirection.DOWN))
-				connections[1] = ForgeDirection.DOWN;
+			if(updateNetwork(ForgeDirection.UP))
+				connections[1] = ForgeDirection.UP;
 		}
 		else
 			removeConnections(1);
 
-		if(canConnect(ForgeDirection.SOUTH))
+		if(canConnect(ForgeDirection.NORTH))
 		{
-			if(updateNetwork(ForgeDirection.SOUTH))
-				connections[2] = ForgeDirection.SOUTH;
+			if(updateNetwork(ForgeDirection.NORTH))
+				connections[2] = ForgeDirection.NORTH;
 		}
 		else
 			removeConnections(2);
 
-		if(canConnect(ForgeDirection.NORTH))
+		if(canConnect(ForgeDirection.SOUTH))
 		{
-			if(updateNetwork(ForgeDirection.NORTH))
-				connections[3] = ForgeDirection.NORTH;
+			if(updateNetwork(ForgeDirection.SOUTH))
+				connections[3] = ForgeDirection.SOUTH;
 		}
 		else
 			removeConnections(3);
 
-		if(canConnect(ForgeDirection.EAST))
+		if(canConnect(ForgeDirection.WEST))
 		{
-			if(updateNetwork(ForgeDirection.EAST))
-				connections[4] = ForgeDirection.EAST;
+			if(updateNetwork(ForgeDirection.WEST))
+				connections[4] = ForgeDirection.WEST;
 		}
 		else
 			removeConnections(4);
 
-		if(canConnect(ForgeDirection.WEST))
+		if(canConnect(ForgeDirection.EAST))
 		{
-			if(updateNetwork(ForgeDirection.WEST))
-				connections[5] = ForgeDirection.WEST;
+			if(updateNetwork(ForgeDirection.EAST))
+				connections[5] = ForgeDirection.EAST;
 		}
 		else
 			removeConnections(5);
@@ -278,10 +276,9 @@ public class TileCopperPipe extends TileEntity
 							network.inputs.add(temp);
 				}
 			}
-		}
-		
-		if(!worldObj.isRemote)
+			
 			updateClient();
+		}
 	}
 	
 	public boolean updateNetwork(ForgeDirection dir)
@@ -353,6 +350,8 @@ public class TileCopperPipe extends TileEntity
 							return false;
 					}
 				}
+				else
+					pipe.updateOneConnection(dir.getOpposite()); //happens if you have multiple pipes next to each other
 			}
 			else if(network!=null)
 			{
@@ -364,6 +363,38 @@ public class TileCopperPipe extends TileEntity
 		}
 
 		return true;
+	}
+	
+	public void updateOneConnection(ForgeDirection dir)
+	{
+		int index = 0;
+		
+		switch(dir)
+		{
+			case DOWN:
+				index = 0;
+			break;
+			case UP:
+				index = 1;
+			break;
+			case NORTH:
+				index = 2;
+			break;
+			case SOUTH:
+				index = 3;
+			break;
+			case WEST:
+				index = 4;
+			break;
+			case EAST:
+				index = 5;
+			break;
+			default:
+				index = -1;
+			break;
+		}
+		
+		connections[index] = dir;
 	}
 
 	public void removeFromNetwork() //only called server side
@@ -497,10 +528,10 @@ public class TileCopperPipe extends TileEntity
 		{
 			ticksSinceLastUpdate++;
 
-			if(ticksSinceLastUpdate == 3)
+			if(ticksSinceLastUpdate == ticksTillUpdate/2)
 				updateClient(pipe);
 			
-			if(ticksSinceLastUpdate > ticksTillUpdate)
+			if(ticksSinceLastUpdate == ticksTillUpdate)
 			{				
 				if(tank.getFluidAmount() == 0)
 					tank.setFluid(null);
