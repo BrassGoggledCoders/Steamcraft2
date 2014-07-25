@@ -44,12 +44,16 @@ public class ContainerArmorEditor extends Container
 		int var3;
 
 		//Armor Slot
-		addSlotToContainer(new SlotBrassArmor(tileent, 0, 0, 12));
-
+		addSlotToContainer(new SlotBrassArmor(tileent, 0, 8, 34));
 		//Input Slots Line 1
-			for (int var4 = 0; var4 < 13; ++var4)
-				addSlotToContainer(new SlotModule(tileent, var4 + 1, 10, var4 * 13));
-
+			for (int var4 = 0; var4 < 7; ++var4)
+				addSlotToContainer(new SlotModule(tileent, var4 + 10, 44 + (var4 * 18), 16));
+		//Input Slots Line 2
+		for (int var4 = 0; var4 < 7; ++var4)
+			addSlotToContainer(new SlotModule(tileent, var4 + 20, 44 + (var4 * 18), 34));
+		//Input Slots Line 3
+				for (int var4 = 0; var4 < 7; ++var4)
+					addSlotToContainer(new SlotModule(tileent, var4 + 30, 44 + (var4 * 18), 52));
 		//Inv
 		for (var3 = 0; var3 < 3; ++var3)
 			for (int var4 = 0; var4 < 9; ++var4)
@@ -58,14 +62,6 @@ public class ContainerArmorEditor extends Container
 		for (var3 = 0; var3 < 9; ++var3)
 			addSlotToContainer(new Slot(player, var3, 8 + (var3 * 18), 142));
 	}
-
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see
-	 * net.minecraft.inventory.Container#canInteractWith(net.minecraft.entity
-	 * .player.EntityPlayer)
-	 */
 	@Override
 	public boolean canInteractWith(EntityPlayer var1)
 	{
