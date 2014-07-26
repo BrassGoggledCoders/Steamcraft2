@@ -37,7 +37,11 @@ import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import org.lwjgl.opengl.GL11;
 
 import steamcraft.common.InitItems;
+import steamcraft.common.Steamcraft;
+import steamcraft.common.config.Config;
 import steamcraft.common.entities.EntityPlayerExtended;
+import steamcraft.common.lib.LibInfo;
+import cpw.mods.fml.client.event.ConfigChangedEvent;
 import cpw.mods.fml.common.eventhandler.EventPriority;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.relauncher.Side;
@@ -275,4 +279,9 @@ public class EventHandlerForge
 		tessellator.addVertex(aaBB.minX, aaBB.maxY, aaBB.maxZ);
 		tessellator.draw();
 	}
+	   @SubscribeEvent
+	    public void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent eventArgs) {
+	        if(eventArgs.modID.equals(LibInfo.ID))
+	            Config.initialise(Steamcraft.configPath);
+	    }
 }
