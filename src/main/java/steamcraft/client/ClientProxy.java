@@ -49,6 +49,7 @@ import boilerplate.client.fx.FXRaygun;
 import boilerplate.client.fx.FXSmoke;
 import boilerplate.client.renderers.block.RenderMinedBlock;
 import boilerplate.common.entity.EntityMinedBlock;
+import cpw.mods.fml.client.CustomModLoadingErrorDisplayException;
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
@@ -227,5 +228,10 @@ public class ClientProxy extends CommonProxy
 		}
 
 		return new ModelWingpack(1.0F);
+	}
+
+	public static void throwDerpException()
+	{
+		throw new NoBoilerplateError();
 	}
 }
