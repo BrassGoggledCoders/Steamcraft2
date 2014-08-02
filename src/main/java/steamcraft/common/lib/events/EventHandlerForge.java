@@ -18,6 +18,8 @@ import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.monster.EntitySkeleton;
+import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
@@ -33,6 +35,7 @@ import net.minecraftforge.event.entity.EntityEvent.EntityConstructing;
 import net.minecraftforge.event.entity.item.ItemTossEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
+import net.minecraftforge.event.entity.living.LivingSpawnEvent;
 
 import org.lwjgl.opengl.GL11;
 
@@ -284,4 +287,39 @@ public class EventHandlerForge
 	        if(eventArgs.modID.equals(LibInfo.ID))
 	            Config.initialise(Steamcraft.configPath);
 	    }
+	   @SubscribeEvent
+		public void onLivingSpawn(LivingSpawnEvent event)
+		{
+			double chance = event.world.rand.nextDouble();
+			int armorType = event.world.rand.nextInt(2);
+
+			//if(chance < 0.8)
+			//{
+				if(event.entityLiving instanceof EntityZombie || event.entityLiving instanceof EntitySkeleton)
+				{
+					int sword = event.world.rand.nextInt(100);
+					int helmet = event.world.rand.nextInt(100);
+					int chestplate = event.world.rand.nextInt(100);
+					int leggings = event.world.rand.nextInt(100);
+					int boots = event.world.rand.nextInt(100);
+
+					if(armorType == 0)
+					{
+						if(event.entityLiving instanceof EntityZombie && sword < 50) event.entityLiving.setCurrentItemOrArmor(0, new ItemStack(InitItems.swordEtherium));
+						if(helmet < 50) event.entityLiving.setCurrentItemOrArmor(1, new ItemStack(InitItems.helmetEtherium));
+						if(chestplate < 50) event.entityLiving.setCurrentItemOrArmor(2, new ItemStack(InitItems.chestplateEtherium));
+						if(leggings < 50) event.entityLiving.setCurrentItemOrArmor(3, new ItemStack(InitItems.legsEtherium));
+						if(boots < 50) event.entityLiving.setCurrentItemOrArmor(4, new ItemStack(InitItems.bootsEtherium));
+					}
+					else if(armorType == 1)
+					{
+						if(event.entityLiving instanceof EntityZombie && sword < 50) event.entityLiving.setCurrentItemOrArmor(0, new ItemStack(InitItems.swordObsidian));
+						if(helmet < 50) event.entityLiving.setCurrentItemOrArmor(1, new ItemStack(InitItems.helmetObsidian));
+						if(chestplate < 50) event.entityLiving.setCurrentItemOrArmor(2, new ItemStack(InitItems.chestplateObsidian));
+						if(leggings < 50) event.entityLiving.setCurrentItemOrArmor(3, new ItemStack(InitItems.legsObsidian));
+						if(boots < 50) event.entityLiving.setCurrentItemOrArmor(4, new ItemStack(InitItems.bootsObsidian));
+					}
+				}
+			//}
+		}
 }
