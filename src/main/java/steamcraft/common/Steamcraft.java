@@ -54,8 +54,6 @@ public class Steamcraft
 	@Instance(LibInfo.ID)
 	public static Steamcraft instance;
 
-
-
 	public InitWorldGen worldGen = new InitWorldGen();
 
 	public static BiomeGenBase biomeBrassForest;

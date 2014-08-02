@@ -14,13 +14,8 @@ package steamcraft.client.renderers.block;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;
-import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
 import net.minecraft.world.IBlockAccess;
-
-import org.lwjgl.opengl.GL11;
-
 import steamcraft.client.lib.RenderIDs;
-import steamcraft.common.tiles.TileCopperPipe;
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 
 // TODO: Auto-generated Javadoc
