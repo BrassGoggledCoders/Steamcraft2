@@ -30,7 +30,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 public class ItemMachinePart extends BaseItemWithMetadata
 {
-	IIcon[] itemIcon = new IIcon[3];
+	IIcon[] itemIcon = new IIcon[7];
 
 	public ItemMachinePart()
 	{

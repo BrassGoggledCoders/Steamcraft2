@@ -10,7 +10,7 @@
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
  *
  */
-package steamcraft.common.blocks;
+package steamcraft.common.blocks.machines;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -20,7 +20,6 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import steamcraft.common.blocks.machines.BlockContainerMod;
 import steamcraft.common.tiles.TileCopperWire;
 
 /**
