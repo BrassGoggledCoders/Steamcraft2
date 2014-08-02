@@ -33,6 +33,7 @@ import steamcraft.common.items.ItemTeaSeed;
 import steamcraft.common.items.ItemTeacup;
 import steamcraft.common.items.ItemTeapot;
 import steamcraft.common.items.ItemWatch;
+import steamcraft.common.items.ItemWithCraftingDurability;
 import steamcraft.common.items.armor.ItemBrassArmor;
 import steamcraft.common.items.armor.ItemBrassGoggles;
 import steamcraft.common.items.armor.ItemClockworkWings;
@@ -45,7 +46,6 @@ import steamcraft.common.items.electric.ItemRayGun;
 import steamcraft.common.items.electric.ItemShrinkray;
 import steamcraft.common.items.modules.ItemAqualung;
 import steamcraft.common.items.tools.ItemElectricDrill;
-import steamcraft.common.items.tools.ItemHammer;
 import steamcraft.common.items.tools.ItemModAxe;
 import steamcraft.common.items.tools.ItemModHoe;
 import steamcraft.common.items.tools.ItemModPickaxe;
@@ -131,7 +131,7 @@ public class InitItems
 
 	// Other
 	public static Item itemSpanner;
-	public static Item itemHammer;
+	public static Item itemHammer, itemDrawplate;
 	public static Item itemMatch;
 
 	public static Item itemNugget;
@@ -365,8 +365,11 @@ public class InitItems
 		itemPoppySeed = new BaseItem().setUnlocalizedName("itemPoppySeed").setCreativeTab(Steamcraft.tabSC2);
 		registerItem(itemPoppySeed, "ItemPoppySeed");
 
-		itemHammer = new ItemHammer().setUnlocalizedName("itemHammer");
+		itemHammer = new ItemWithCraftingDurability().setUnlocalizedName("itemHammer");
 		registerItem(itemHammer, "ItemHammer");
+
+		itemDrawplate = new ItemWithCraftingDurability().setUnlocalizedName("itemDrawplate");
+		registerItem(itemDrawplate, "ItemDrawplate");
 
 		itemSpanner = new ItemSpanner().setUnlocalizedName("itemSpanner");
 		registerItem(itemSpanner, "ItemSpanner");

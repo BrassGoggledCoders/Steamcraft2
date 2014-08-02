@@ -218,6 +218,7 @@ public class InitRecipes
 				new ItemStack(InitItems.itemSheet, 1, 1) });
 		GameRegistry.addShapedRecipe(new ItemStack(InitBlocks.blockCopperTank), new Object[] { "PPP", "P P", "PPP", 'P',
 				new ItemStack(InitItems.itemSheet, 1, 1) });
+		GameRegistry.addShapedRecipe(new ItemStack(InitBlocks.blockBattery), new Object[]{"CCC", "WCW", "CCC", 'C', new ItemStack(InitItems.itemIngot, 1, 7), 'W', InitBlocks.blockCopperWire});
 
 		GameRegistry.addShapedRecipe(new ItemStack(InitBlocks.blockUranium), new Object[] { "UUU", "UUU", "UUU", 'U',
 				new ItemStack(InitItems.itemResource, 1, 4) });
@@ -250,6 +251,8 @@ public class InitRecipes
 						InitItems.itemMachinePart, 1, 0));
 		GameRegistry.addShapedRecipe(new ItemStack(InitItems.itemMachinePart, 1, 2), new Object[] { "P P", " P ", "P P", 'P',
 				new ItemStack(InitItems.itemSheet, 1, 6) });
+
+		GameRegistry.addRecipe(new ItemStack(InitBlocks.blockCopperWire), new Object[]{"CD", 'C', new ItemStack(InitItems.itemIngot, 1, 1), 'D', InitItems.itemDrawplate});
 
 		GameRegistry.addShapedRecipe(new ItemStack(InitItems.itemCanisterSteam, 1, InitItems.itemCanisterSteam.getMaxDamage()), new Object[] { "PPP",
 				"GGG", "PPP", 'G', Blocks.glass_pane, 'P',

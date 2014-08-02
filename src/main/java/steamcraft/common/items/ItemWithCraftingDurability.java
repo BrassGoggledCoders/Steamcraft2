@@ -10,18 +10,17 @@
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
  * 
  */
-package steamcraft.common.items.tools;
+package steamcraft.common.items;
 
 import net.minecraft.item.ItemStack;
-import steamcraft.common.items.BaseItem;
 
 /**
  * @author warlordjones
  * 
  */
-public class ItemHammer extends BaseItem
+public class ItemWithCraftingDurability extends BaseItem
 {
-	public ItemHammer()
+	public ItemWithCraftingDurability()
 	{
 		this.setMaxStackSize(1);
 		this.setMaxDamage(ToolMaterial.IRON.getMaxUses());

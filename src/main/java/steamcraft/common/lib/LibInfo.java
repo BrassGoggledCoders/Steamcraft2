@@ -48,6 +48,6 @@ public class LibInfo
 
 	// public static final String DONATOR_CAPE_IMG_URL =
 	// "http://imgur.com/7O5dSL2";
-
+	//									0			1		2		3		4		5			6			7
 	public static String[] metals = { "Aluminum", "Copper", "Tin", "Zinc", "Brass", "Bronze", "Steel", "CastIron" };
 }
