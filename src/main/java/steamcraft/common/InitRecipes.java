@@ -133,7 +133,7 @@ public class InitRecipes
 		for (int meta = 0; meta < 4; meta++)
 		{
 
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemPowder, ConfigBalance.numberOfDustsFromOreHammering, meta), new Object[] { "ore" + LibInfo.metals[meta],
+			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(InitItems.itemPowder, ConfigBalance.numberOfDustsFromOreHammering, meta), new Object[] { "ore" + LibInfo.metals[meta],
 					new ItemStack(InitItems.itemHammer, 1, OreDictionary.WILDCARD_VALUE) }));
 		}
 	}
@@ -209,7 +209,7 @@ public class InitRecipes
 	{
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockSteamBoiler), new Object[] { "PPP", "TCT", "PFP", 'F', Blocks.furnace, 'P',
 				"plateBrass", 'T', InitBlocks.blockCopperTank, 'C', InitBlocks.blockCopperPipe }));
-		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(InitBlocks.blockIntake), new Object[] { "PGP", "GBG", "PGP", 'G',
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockIntake), new Object[] { "PGP", "GBG", "PGP", 'G',
 				new ItemStack(InitItems.itemMachinePart, 1, 2), 'P', "plateBrass", 'B', Items.bucket }));
 		GameRegistry.addShapedRecipe(new ItemStack(InitBlocks.blockBloomery), new Object[] { "N N", "NFN", "NNN", 'F', Blocks.furnace, 'N',
 				Blocks.nether_brick });
@@ -260,10 +260,10 @@ public class InitRecipes
 		GameRegistry.addRecipe(new ItemStack(InitItems.itemHammer), new Object[] { "III", " H ", " C ", 'I',
 				new ItemStack(InitItems.itemIngot, 1, 7), 'H', Items.stick, 'C', new ItemStack(InitItems.itemMachinePart, 1, 0) });
 		// Brass Powder
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemPowder, 3, 4), new Object[] { "dustCopper", "dustCopper",
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(InitItems.itemPowder, 3, 4), new Object[] { "dustCopper", "dustCopper",
 				"dustZinc" }));
 		// Bronze Powder
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemPowder, 3, 5), new Object[] { "dustCopper", "dustCopper",
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(InitItems.itemPowder, 3, 5), new Object[] { "dustCopper", "dustCopper",
 				"dustTin" }));
 		GameRegistry.addShapelessRecipe(new ItemStack(InitItems.itemMatch), new Object[] { new ItemStack(InitItems.itemResource, 1, 3),
 				new ItemStack(Items.stick) });
