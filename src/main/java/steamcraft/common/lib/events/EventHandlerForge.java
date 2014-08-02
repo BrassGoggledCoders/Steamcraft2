@@ -293,8 +293,8 @@ public class EventHandlerForge
 			double chance = event.world.rand.nextDouble();
 			int armorType = event.world.rand.nextInt(2);
 
-			//if(chance < 0.8)
-			//{
+			if(chance < 0.2)
+			{
 				if(event.entityLiving instanceof EntityZombie || event.entityLiving instanceof EntitySkeleton)
 				{
 					int sword = event.world.rand.nextInt(100);
@@ -320,6 +320,6 @@ public class EventHandlerForge
 						if(boots < 50) event.entityLiving.setCurrentItemOrArmor(4, new ItemStack(InitItems.bootsObsidian));
 					}
 				}
-			//}
+			}
 		}
 }
