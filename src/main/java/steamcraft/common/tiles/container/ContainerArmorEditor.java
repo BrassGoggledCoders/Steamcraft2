@@ -12,10 +12,13 @@
  */
 package steamcraft.common.tiles.container;
 
+import boilerplate.steamapi.IModule;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
+import net.minecraft.item.ItemStack;
+import steamcraft.common.items.armor.ItemBrassArmor;
 import steamcraft.common.tiles.TileArmorEditor;
 import steamcraft.common.tiles.container.slot.SlotBrassArmor;
 import steamcraft.common.tiles.container.slot.SlotModule;
@@ -67,5 +70,18 @@ public class ContainerArmorEditor extends Container
 	{
 		return true;
 	}
-
+	@Override
+	/**
+     * args: slotID, itemStack to put in slot
+     */
+    public void putStackInSlot(int slot, ItemStack stack)
+    {
+		if(slot == 0)
+		{
+			ItemBrassArmor armor = (ItemBrassArmor)stack.getItem();
+			for(int i=0;i<armor.modules.size();i++)
+			this.inventorySlots.set(i, (IModule)armor.modules.get(i));
+		}
+        this.getSlot(slot).putStack(stack);
+    }
 }

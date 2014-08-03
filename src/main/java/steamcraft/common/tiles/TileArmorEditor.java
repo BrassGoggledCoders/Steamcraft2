@@ -14,7 +14,11 @@ package steamcraft.common.tiles;
 
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTBase;
+import net.minecraft.nbt.NBTTagList;
+import steamcraft.common.items.armor.ItemBrassArmor;
 import boilerplate.common.baseclasses.BaseTileWithInventory;
+import boilerplate.steamapi.IModule;
 
 /**
  * @author warlordjones
@@ -43,5 +47,26 @@ public class TileArmorEditor extends BaseTileWithInventory implements IInventory
 	{
 		return "Armor Editor";
 	}
+	@Override
+    public void updateEntity()
+    {
+		if(this.inventory[0] != null && this.inventory[0].getItem() instanceof ItemBrassArmor)
+		{
+			for(int i=1; i<17;i++)
+			{
+				if(inventory[i] != null)
+				{
+					ItemBrassArmor armor = (ItemBrassArmor) this.inventory[0].getItem();
+					IModule module = (IModule) this.inventory[i].getItem();
+					if(!armor.modules.contains(module))
+					armor.modules.add(module);
+						//inventory[0].stackTagCompound.setString(/*"module" + i, module.getName()*/"potato", "potato");
+							//.setString("module" +i,module.getName());
+					//inventory[i] = null;
+				}
+			}
+		}
+    }
+
 
 }

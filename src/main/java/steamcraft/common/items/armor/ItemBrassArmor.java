@@ -18,12 +18,11 @@ import java.util.List;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
-import steamcraft.common.InitItems;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.LibInfo;
 import boilerplate.steamapi.EnumArmorEffectType;
@@ -39,7 +38,7 @@ public class ItemBrassArmor extends BaseArmor
 {
 	private IIcon[] icon = new IIcon[3];
 
-	List<Item> modules = new ArrayList<Item>();
+	public List<IModule> modules = new ArrayList<IModule>();
 
 	public ItemBrassArmor(ItemArmor.ArmorMaterial armorMat, int renderIndex, int armorType)
 	{
@@ -62,16 +61,8 @@ public class ItemBrassArmor extends BaseArmor
 		return type != null ? LibInfo.PREFIX + "textures/armor/" + type + ".png" : null;
 	}
 
-	@Override
-	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
-	{
-		modules.add(InitItems.itemAqualung);
-		return par1ItemStack;
-	}
-
 	@SuppressWarnings("all")
 	@Override
-	// TODO: Make module-sensitive
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean flag)
 	{
 		// if(!ClientHelper.isShiftKeyDown())
@@ -140,6 +131,7 @@ public class ItemBrassArmor extends BaseArmor
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack is)
 	{
+		//System.out.print(modules);
 		for(int i=0; i<modules.size(); i++)
 		{
 			if(((IModule)modules.get(i)).getArmorEffectType() == EnumArmorEffectType.ONTICK)
@@ -147,5 +139,25 @@ public class ItemBrassArmor extends BaseArmor
 				((IModule)modules.get(i)).getArmorEffect(world, player, is);
 			}
 		}
+	}
+	/*@Override
+	public void onUpdate(ItemStack stack, World p_77663_2_, Entity p_77663_3_, int p_77663_4_, boolean p_77663_5_)
+	{
+		for(int i = 0; i < modules.size(); i++)
+		{
+			//stack.stackTagCompound.setString("module" + i, modules.get(i).getName());
+			modules.set(i, getModuleFromName(stack.stackTagCompound.getString("module" + 1)));
+		}
+	}*/
+
+	private IModule getModuleFromName(String string)
+	{
+		for(int i = 0; i < modules.size(); i++)
+		{
+			if(modules.get(i).getName() == string)
+			return modules.get(i);
+			else return null;
+		}
+		return null;
 	}
 }
