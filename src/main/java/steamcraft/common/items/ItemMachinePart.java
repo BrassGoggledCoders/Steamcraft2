@@ -42,13 +42,13 @@ public class ItemMachinePart extends BaseItemWithMetadata
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister ir)
 	{
-		this.itemIcon[0] = ir.registerIcon(LibInfo.PREFIX + "itemCastIronRod");
-		this.itemIcon[1] = ir.registerIcon(LibInfo.PREFIX + "itemClockworkMechanism");
-		this.itemIcon[2] = ir.registerIcon(LibInfo.PREFIX + "itemGrating");
+		itemIcon[0] = ir.registerIcon(LibInfo.PREFIX + "itemCastIronRod");
+		itemIcon[1] = ir.registerIcon(LibInfo.PREFIX + "itemClockworkMechanism");
+		itemIcon[2] = ir.registerIcon(LibInfo.PREFIX + "itemGrating");
 		itemIcon[3] = ir.registerIcon(LibInfo.PREFIX + "itemMagnet");
 		itemIcon[4] = ir.registerIcon(LibInfo.PREFIX + "itemGenerator");
 		itemIcon[5] = ir.registerIcon(LibInfo.PREFIX + "itemFan");
-		itemIcon[6] = ir.registerIcon(LibInfo.PREFIX + "itemTurbine");
+		itemIcon[6] = ir.registerIcon(LibInfo.PREFIX + "itemWireCoil");
 		//itemIcon[7] = ir.registerIcon(LibInfo.PREFIX + "itemCapacitor");
 		//itemIcon[9] = ir.registerIcon(LibInfo.PREFIX + "itemWireCoil");
 	}
