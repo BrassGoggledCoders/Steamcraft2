@@ -1,5 +1,5 @@
 /**
- * This class was created by BrassGoggledCoders modding team. 
+ * This class was created by BrassGoggledCoders modding team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -8,7 +8,7 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- * 
+ *
  */
 package steamcraft.common.tiles;
 
@@ -34,9 +34,9 @@ public class TileTurbine extends TileEntity implements IFluidHandler, IEnergyHan
 {
 	private static byte steamPerTick = TileSteamBoiler.steamPerTick/2;
 	private static byte RFPerTick = 20; //Same as RC ratio of 1 MJ/5 steam
-	
+
 	private FluidTank steamTank = new FluidTank(new FluidStack(FluidRegistry.getFluid("steam"), 0), 500);
-	
+
 	private EnergyStorage buffer = new EnergyStorage(10000, RFPerTick);
 
 	@Override
@@ -53,10 +53,10 @@ public class TileTurbine extends TileEntity implements IFluidHandler, IEnergyHan
 	{
 		super.writeToNBT(tag);
 		buffer.writeToNBT(tag);
-		
+
 		tag.setShort("steamLevel", (short) steamTank.getFluidAmount());
 	}
-	
+
 	@Override
 	public void updateEntity()
 	{
@@ -65,33 +65,33 @@ public class TileTurbine extends TileEntity implements IFluidHandler, IEnergyHan
 			if(steamTank.getFluidAmount() >= steamPerTick)
 				if(this.buffer.receiveEnergy(RFPerTick, false) == RFPerTick)
 					this.steamTank.drain(steamPerTick, true);
-		
+
 			if(buffer.getEnergyStored() >= RFPerTick)
 			{
 				byte usedEnergy = 0;
 				byte outputEnergy = RFPerTick;
-				
+
 				for (ForgeDirection direction : EnumSet.allOf(ForgeDirection.class))
 					if(outputEnergy > 0)
 					{
 						TileEntity tileEntity = worldObj.getTileEntity(xCoord - direction.offsetX, yCoord - direction.offsetY, zCoord - direction.offsetZ);
-						
-						if(tileEntity instanceof IEnergyHandler) 
+
+						if(tileEntity instanceof IEnergyHandler)
 						{
 							 usedEnergy += ((IEnergyHandler) tileEntity).receiveEnergy(direction.getOpposite(), outputEnergy, false);
 							 outputEnergy -= usedEnergy;
 						}
 					}
-				
+
 				this.buffer.modifyEnergyStored(-usedEnergy);
 			}
 		}
 	}
-	
+
 	@Override
 	public int fill(ForgeDirection from, FluidStack resource, boolean doFill)
 	{
-		if(resource.getFluid() == FluidRegistry.getFluid("steam"))
+		if(resource.getFluid() == FluidRegistry.getFluid("steam") && from != ForgeDirection.UP)
 			return this.steamTank.fill(resource, doFill);
 		return 0;
 	}

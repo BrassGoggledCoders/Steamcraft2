@@ -61,7 +61,7 @@ public class TileArmorEditor extends BaseTileWithInventory implements IInventory
 						{
 							if(armor.armorType ==  module.getApplicablePiece())
 							{
-							armor.modules.add(module);
+								armor.modules.add(module);
 							}
 						}
 						else armor.modules.add(module);
