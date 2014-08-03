@@ -46,7 +46,8 @@ public class CompatabilityLayer
 		OreDictionary.registerOre("ingotZinc", new ItemStack(InitItems.itemIngot, 1, 3));
 		OreDictionary.registerOre("ingotBrass", new ItemStack(InitItems.itemIngot, 1, 4));
 		OreDictionary.registerOre("ingotBronze", new ItemStack(InitItems.itemIngot, 1, 5));
-		OreDictionary.registerOre("ingotCastIron", new ItemStack(InitItems.itemIngot, 1, 6));
+		OreDictionary.registerOre("ingotSteel", new ItemStack(InitItems.itemIngot, 1, 6));
+		OreDictionary.registerOre("ingotCastIron", new ItemStack(InitItems.itemIngot, 1, 7));
 
 		OreDictHelper.registerOreWithAlts(new String[] { "plateAluminum", "plateAluminium" }, new ItemStack(InitItems.itemSheet, 1, 0));
 		OreDictionary.registerOre("plateCopper", new ItemStack(InitItems.itemSheet, 1, 1));
@@ -54,7 +55,8 @@ public class CompatabilityLayer
 		OreDictionary.registerOre("plateZinc", new ItemStack(InitItems.itemSheet, 1, 3));
 		OreDictionary.registerOre("plateBrass", new ItemStack(InitItems.itemSheet, 1, 4));
 		OreDictionary.registerOre("plateBronze", new ItemStack(InitItems.itemSheet, 1, 5));
-		OreDictionary.registerOre("plateCastIron", new ItemStack(InitItems.itemSheet, 1, 6));
+		OreDictionary.registerOre("plateSteel", new ItemStack(InitItems.itemIngot, 1, 6));
+		OreDictionary.registerOre("plateCastIron", new ItemStack(InitItems.itemSheet, 1, 7));
 
 		OreDictHelper.registerOreWithAlts(new String[] { "nuggetAluminum", "nuggetAluminium" }, new ItemStack(InitItems.itemNugget, 1, 0));
 		OreDictionary.registerOre("nuggetCopper", new ItemStack(InitItems.itemNugget, 1, 1));
@@ -62,7 +64,8 @@ public class CompatabilityLayer
 		OreDictionary.registerOre("nuggetZinc", new ItemStack(InitItems.itemNugget, 1, 3));
 		OreDictionary.registerOre("nuggetBrass", new ItemStack(InitItems.itemNugget, 1, 4));
 		OreDictionary.registerOre("nuggetBronze", new ItemStack(InitItems.itemNugget, 1, 5));
-		OreDictionary.registerOre("nuggetCastIron", new ItemStack(InitItems.itemNugget, 1, 6));
+		OreDictionary.registerOre("nuggetSteel", new ItemStack(InitItems.itemIngot, 1, 6));
+		OreDictionary.registerOre("nuggetCastIron", new ItemStack(InitItems.itemNugget, 1, 7));
 
 		OreDictHelper.registerOreWithAlts(new String[] { "dustAluminum", "dustAluminium" }, new ItemStack(InitItems.itemPowder, 1, 0));
 		OreDictionary.registerOre("dustCopper", new ItemStack(InitItems.itemPowder, 1, 1));
@@ -70,7 +73,8 @@ public class CompatabilityLayer
 		OreDictionary.registerOre("dustZinc", new ItemStack(InitItems.itemPowder, 1, 3));
 		OreDictionary.registerOre("dustBrass", new ItemStack(InitItems.itemPowder, 1, 4));
 		OreDictionary.registerOre("dustBronze", new ItemStack(InitItems.itemPowder, 1, 5));
-		OreDictionary.registerOre("dustCastIron", new ItemStack(InitItems.itemPowder, 1, 6));
+		OreDictionary.registerOre("dustSteel", new ItemStack(InitItems.itemIngot, 1, 6));
+		OreDictionary.registerOre("dustCastIron", new ItemStack(InitItems.itemPowder, 1, 7));
 
 		OreDictHelper.registerOreWithAlts(new String[] { "oreAluminum", "oreAluminium" }, new ItemStack(InitBlocks.blockCustomOre, 1, 0));
 		OreDictionary.registerOre("oreCopper", new ItemStack(InitBlocks.blockCustomOre, 1, 1));
