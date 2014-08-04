@@ -44,4 +44,6 @@ public final class GuiIDs
 	public static final int GUI_ID_BATTERY = 8;
 
 	public static final int GUI_ID_CHARGER = 9;
+
+	public static final int GUI_ID_TIMEBOMB = 10;
 }

@@ -67,6 +67,7 @@ import steamcraft.common.tiles.TileIntake;
 import steamcraft.common.tiles.TileLightningRod;
 import steamcraft.common.tiles.TileSteamBoiler;
 import steamcraft.common.tiles.TileTeslaCoil;
+import steamcraft.common.tiles.TileTimeBomb;
 import steamcraft.common.tiles.TileTurbine;
 import boilerplate.common.utils.helpers.RegistryHelper;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -270,7 +271,7 @@ public class InitBlocks
 		RegistryHelper.registerContainerBlock(blockBrassPlaque, TileBrassPlaque.class, "BlockBrassPlaque");
 
 		blockTimeBomb = new BlockTimeBomb(Material.tnt).setBlockName("blockTimeBomb");
-		GameRegistry.registerBlock(blockTimeBomb, "BlockTimeBomb");
+		RegistryHelper.registerContainerBlock(blockTimeBomb, TileTimeBomb.class, "BlockTimeBomb");
 	}
 
 }

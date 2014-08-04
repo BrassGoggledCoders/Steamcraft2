@@ -23,11 +23,13 @@ import steamcraft.common.tiles.TileBattery;
 import steamcraft.common.tiles.TileBloomery;
 import steamcraft.common.tiles.TileCharger;
 import steamcraft.common.tiles.TileSteamBoiler;
+import steamcraft.common.tiles.TileTimeBomb;
 import steamcraft.common.tiles.container.ContainerArmorEditor;
 import steamcraft.common.tiles.container.ContainerBattery;
 import steamcraft.common.tiles.container.ContainerBloomery;
 import steamcraft.common.tiles.container.ContainerCharger;
 import steamcraft.common.tiles.container.ContainerSteamBoiler;
+import steamcraft.common.tiles.container.ContainerTimeBomb;
 import cpw.mods.fml.common.network.IGuiHandler;
 
 /**
@@ -55,6 +57,8 @@ public class GuiHandler implements IGuiHandler
 				return new ContainerBattery(player.inventory, (TileBattery) tile);
 			case GuiIDs.GUI_ID_CHARGER:
 				return new ContainerCharger(player.inventory, (TileCharger) tile);
+			case GuiIDs.GUI_ID_TIMEBOMB:
+				return new ContainerTimeBomb(player.inventory, (TileTimeBomb) tile);
 		}
 		return null;
 	}
@@ -78,6 +82,8 @@ public class GuiHandler implements IGuiHandler
 			return new GuiBattery(player.inventory, (TileBattery)tile);
 		case GuiIDs.GUI_ID_CHARGER:
 			return new GuiCharger(player.inventory, (TileCharger) tile);
+		case GuiIDs.GUI_ID_TIMEBOMB:
+			return new GuiTimeBomb(player.inventory, (TileTimeBomb) tile);
 		}
 
 		return null;
