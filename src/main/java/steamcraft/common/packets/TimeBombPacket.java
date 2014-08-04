@@ -32,7 +32,10 @@ public class TimeBombPacket implements IMessage
 
 	public TimeBombPacket(int time, int x, int y, int z)
 	{
-
+		this.time = time;
+		this.x = x;
+		this.y = y;
+		this.z = z;
 	}
 
 	@Override
@@ -64,7 +67,7 @@ public class TimeBombPacket implements IMessage
 			{
 				TileTimeBomb bomb = (TileTimeBomb) world.getTileEntity(message.x, message.y, message.z);
 
-				bomb.setTime(message.time);;
+				bomb.setTime(message.time);
 			}
 
 			return null;

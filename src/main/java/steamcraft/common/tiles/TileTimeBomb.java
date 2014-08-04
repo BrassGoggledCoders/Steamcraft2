@@ -9,7 +9,7 @@ import steamcraft.common.entities.EntityTimeBomb;
 
 public class TileTimeBomb extends TileEntity
 {
-	private int time = 0000;
+	private int time;
 	@Override
 	public void updateEntity()
 	{
