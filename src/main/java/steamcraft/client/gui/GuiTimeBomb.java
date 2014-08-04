@@ -32,6 +32,10 @@ public class GuiTimeBomb extends GuiContainer
 		this.player = inv.player;
 		//
 	}
+	@Override
+	protected void drawGuiContainerForegroundLayer(int p_146979_1_, int p_146979_2_) {
+		this.fontRendererObj.drawString("Time Bomb", this.xSize - 2, this.ySize - 124, 4210752);
+	}
 
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float p_146976_1_, int p_146976_2_, int p_146976_3_)
@@ -39,13 +43,13 @@ public class GuiTimeBomb extends GuiContainer
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 
 		mc.renderEngine.bindTexture(guitexture);
-		final int x = (width - xSize) / 2;
-		final int y = (height - ySize) / 2;
-		drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
+		//final int x = (width - xSize) / 2;
+		//final int y = (height - ySize) / 2;
+		drawTexturedModalRect(guiLeft, guiTop, 0, 0, xSize, ySize);
 
-		this.drawTexturedModalRect(x + 59, y + 20, 0, this.ySize + 0, 110, 16);
+		this.drawTexturedModalRect(guiLeft + 59, guiTop + 20, 0, this.ySize + 0, 110, 16);
 
-        this.drawTexturedModalRect(x + 99, y + 45, this.xSize, 0, 28, 21);
+        this.drawTexturedModalRect(guiLeft + 99, guiTop + 45, this.xSize, 0, 28, 21);
 
 		mc.renderEngine.bindTexture(guitexture);
 	}
@@ -69,14 +73,19 @@ public class GuiTimeBomb extends GuiContainer
         Keyboard.enableRepeatEvents(false);
     }
 	@Override
-	public void keyTyped(char c, int p_73869_2_)
+	public void keyTyped(char c, int pos)
     {
-        if (this.text.textboxKeyTyped(c, p_73869_2_))
+		if(!Character.isDigit(c))
+		{
+			text.setText("");
+		}
+
+        if (this.text.textboxKeyTyped(c, pos))
         {
             this.updateTime();
         }
 
-        super.keyTyped(c, p_73869_2_);
+        super.keyTyped(c, pos);
     }
 	private void updateTime()
     {
