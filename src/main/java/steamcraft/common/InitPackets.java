@@ -39,11 +39,16 @@ public class InitPackets
 	public static void init()
 	{
 		network = NetworkRegistry.INSTANCE.newSimpleChannel("steamcraft2");
-
+	}
+	public static void initServerPackets()
+	{
+		network.registerMessage(TimeBombPacketHandler.class, TimeBombPacket.class, packetId++, Side.SERVER);
+	}
+	public static void initClientPackets()
+	{
 		network.registerMessage(CopperPipePacketHandler.class, CopperPipePacket.class, packetId++, Side.CLIENT);
 		network.registerMessage(FluidNetworkPacketHandler.class, FluidNetworkPacket.class, packetId++, Side.CLIENT);
 		network.registerMessage(CopperWirePacketHandler.class, CopperWirePacket.class, packetId++, Side.CLIENT);
 		network.registerMessage(EnergyNetworkPacketHandler.class, EnergyNetworkPacket.class, packetId++, Side.CLIENT);
-		network.registerMessage(TimeBombPacketHandler.class, TimeBombPacket.class, packetId++, Side.SERVER);
 	}
 }

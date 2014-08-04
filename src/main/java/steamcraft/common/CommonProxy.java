@@ -1,5 +1,5 @@
 /**
- * This class was created by BrassGoggledCoders modding team. 
+ * This class was created by BrassGoggledCoders modding team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -8,7 +8,7 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- * 
+ *
  */
 package steamcraft.common;
 
@@ -22,7 +22,7 @@ import cpw.mods.fml.common.network.IGuiHandler;
 // TODO: Auto-generated Javadoc
 /**
  * The Class CommonProxy.
- * 
+ *
  * @author Surseance (Johnny Eatmon)
  */
 public class CommonProxy implements IGuiHandler
@@ -41,10 +41,14 @@ public class CommonProxy implements IGuiHandler
 	public void registerRenderers()
 	{
 	}
+	public void initPackets()
+	{
+		InitPackets.initServerPackets();
+	}
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see cpw.mods.fml.common.network.IGuiHandler#getClientGuiElement(int,
 	 * net.minecraft.entity.player.EntityPlayer, net.minecraft.world.World, int,
 	 * int, int)
@@ -57,7 +61,7 @@ public class CommonProxy implements IGuiHandler
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see cpw.mods.fml.common.network.IGuiHandler#getServerGuiElement(int,
 	 * net.minecraft.entity.player.EntityPlayer, net.minecraft.world.World, int,
 	 * int, int)
@@ -78,7 +82,7 @@ public class CommonProxy implements IGuiHandler
 
 	/**
 	 * Gets the client world.
-	 * 
+	 *
 	 * @return the client world
 	 */
 	public World getClientWorld()
@@ -88,7 +92,7 @@ public class CommonProxy implements IGuiHandler
 
 	/**
 	 * Adds the s c2 capes.
-	 * 
+	 *
 	 * @return the object
 	 */
 	public Object addSC2Capes()
@@ -98,7 +102,7 @@ public class CommonProxy implements IGuiHandler
 
 	/**
 	 * Ray fx.
-	 * 
+	 *
 	 * @param world
 	 *            the world
 	 * @param player
@@ -131,7 +135,7 @@ public class CommonProxy implements IGuiHandler
 
 	/**
 	 * Smoke fx.
-	 * 
+	 *
 	 * @param world
 	 *            the world
 	 * @param dx
@@ -151,7 +155,7 @@ public class CommonProxy implements IGuiHandler
 
 	/**
 	 * Gets the monocle armor model.
-	 * 
+	 *
 	 * @param id
 	 *            the id
 	 * @return the monocle armor model
@@ -163,7 +167,7 @@ public class CommonProxy implements IGuiHandler
 
 	/**
 	 * Gets the wings armor model.
-	 * 
+	 *
 	 * @param id
 	 *            the id
 	 * @return the wings armor model
@@ -175,7 +179,7 @@ public class CommonProxy implements IGuiHandler
 
 	/**
 	 * Gets the wings armor model.
-	 * 
+	 *
 	 * @param id
 	 *            the id
 	 * @return the wings armor model
@@ -187,7 +191,7 @@ public class CommonProxy implements IGuiHandler
 
 	/**
 	 * Gets the wings armor model.
-	 * 
+	 *
 	 * @param id
 	 *            the id
 	 * @return the wings armor model
@@ -199,7 +203,7 @@ public class CommonProxy implements IGuiHandler
 
 	/**
 	 * Gets the cape armor model.
-	 * 
+	 *
 	 * @param id
 	 *            the id
 	 * @return the cape armor model

@@ -37,6 +37,7 @@ import steamcraft.client.renderers.tile.TileLightningRodRenderer;
 import steamcraft.client.renderers.tile.TileTeslaCoilRenderer;
 import steamcraft.common.CommonProxy;
 import steamcraft.common.InitKeyBindings;
+import steamcraft.common.InitPackets;
 import steamcraft.common.entities.projectile.EntityBullet;
 import steamcraft.common.entities.projectile.EntitySmallLightningBolt;
 import steamcraft.common.lib.Utils;
@@ -230,5 +231,10 @@ public class ClientProxy extends CommonProxy
 		}
 
 		return new ModelWingpack(1.0F);
+	}
+	@Override
+	public void initPackets()
+	{
+		InitPackets.initClientPackets();
 	}
 }

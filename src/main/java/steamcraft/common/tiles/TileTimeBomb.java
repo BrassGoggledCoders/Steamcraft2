@@ -16,7 +16,7 @@ public class TileTimeBomb extends TileEntity
 		Calendar cal = Calendar.getInstance();
     	cal.getTime();
     	SimpleDateFormat sdf = new SimpleDateFormat("HHmm");
-    	//System.out.println(sdf.format(cal.getTime()));
+    	System.out.println(time);
     	if(Integer.parseInt(sdf.format(cal.getTime())) == time)
     	{
     		System.out.print("BANG!");
