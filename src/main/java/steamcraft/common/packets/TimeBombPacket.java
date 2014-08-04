@@ -15,6 +15,7 @@ package steamcraft.common.packets;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.World;
+import net.minecraftforge.common.DimensionManager;
 import steamcraft.common.tiles.TileTimeBomb;
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
@@ -26,16 +27,21 @@ import cpw.mods.fml.common.network.simpleimpl.MessageContext;
  */
 public class TimeBombPacket implements IMessage
 {
-	public int time, x, y, z;
+	public static int worldId;
+	public int time;
+	public int x;
+	public int y;
+	public int z;
 
 	public TimeBombPacket(){} //REQUIRED
 
-	public TimeBombPacket(int time, int x, int y, int z)
+	public TimeBombPacket(int time, int x, int y, int z, int worldObj)
 	{
 		this.time = time;
 		this.x = x;
 		this.y = y;
 		this.z = z;
+		TimeBombPacket.worldId = worldId;
 	}
 
 	@Override
@@ -45,6 +51,7 @@ public class TimeBombPacket implements IMessage
 		x  = buf.readInt();
 		y = buf.readInt();
 		z = buf.readInt();
+		worldId = buf.readInt();
 	}
 
 	@Override
@@ -54,6 +61,7 @@ public class TimeBombPacket implements IMessage
 		buf.writeInt(x);
 		buf.writeInt(y);
 		buf.writeInt(z);
+		buf.writeInt(worldId);
 	}
 
 	public static class TimeBombPacketHandler implements IMessageHandler<TimeBombPacket, IMessage>
@@ -61,11 +69,11 @@ public class TimeBombPacket implements IMessage
 		@Override
 		public IMessage onMessage(TimeBombPacket message, MessageContext ctx)
 		{
-			World world = Minecraft.getMinecraft().theWorld;
+			World world = DimensionManager.getWorld(worldId);
 
 			if(world.getTileEntity(message.x, message.y, message.z) instanceof TileTimeBomb)
 			{
-				TileTimeBomb bomb = (TileTimeBomb) world.getTileEntity(message.x, message.y, message.z);
+				TileTimeBomb bomb = (TileTimeBomb)world.getTileEntity(message.x, message.y, message.z);
 
 				bomb.setTime(message.time);
 			}

@@ -90,8 +90,6 @@ public class Steamcraft
 		NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
 
 		InitPackets.init();
-		proxy.initPackets();
-
 		// VillagerRegistry.instance().registerVillageCreationHandler(new
 		// VillageCreationHandler());
 	}

@@ -41,11 +41,6 @@ public class CommonProxy implements IGuiHandler
 	public void registerRenderers()
 	{
 	}
-	public void initPackets()
-	{
-		InitPackets.initServerPackets();
-	}
-
 	/*
 	 * (non-Javadoc)
 	 *

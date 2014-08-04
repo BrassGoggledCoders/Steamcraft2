@@ -15,6 +15,7 @@ package steamcraft.common.packets;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.World;
+import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import steamcraft.common.tiles.TileCopperWire;
@@ -31,7 +32,10 @@ import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 public class EnergyNetworkPacket implements IMessage
 {
 	private float fluidScaled;
-	private int worldId, x, y, z;
+	private static int worldId;
+	private int x;
+	private int y;
+	private int z;
 	private String fluidName;
 
 	public EnergyNetworkPacket(){} //REQUIRED
@@ -73,7 +77,7 @@ public class EnergyNetworkPacket implements IMessage
 		@Override
 		public IMessage onMessage(EnergyNetworkPacket message, MessageContext ctx)
 		{
-			World world = Minecraft.getMinecraft().theWorld;
+			World world = DimensionManager.getWorld(worldId);
 
 			if(world.getTileEntity(message.x, message.y, message.z) instanceof TileCopperWire)
 			{

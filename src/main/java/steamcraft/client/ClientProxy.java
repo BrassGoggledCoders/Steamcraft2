@@ -232,9 +232,4 @@ public class ClientProxy extends CommonProxy
 
 		return new ModelWingpack(1.0F);
 	}
-	@Override
-	public void initPackets()
-	{
-		InitPackets.initClientPackets();
-	}
 }

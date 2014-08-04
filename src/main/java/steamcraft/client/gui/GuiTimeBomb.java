@@ -2,6 +2,7 @@ package steamcraft.client.gui;
 
 import net.minecraft.client.gui.GuiTextField;
 import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
 
@@ -20,6 +21,7 @@ public class GuiTimeBomb extends GuiContainer
 
 	private GuiTextField text;
 	private ContainerTimeBomb container;
+	private EntityPlayer player;
 
 	TileTimeBomb tile;
 	public GuiTimeBomb(InventoryPlayer inv, TileTimeBomb tile)
@@ -27,6 +29,7 @@ public class GuiTimeBomb extends GuiContainer
 		super(new ContainerTimeBomb(inv, tile));
 		this.tile = tile;
 		this.container = (ContainerTimeBomb) this.inventorySlots;
+		this.player = inv.player;
 		//
 	}
 
@@ -86,7 +89,7 @@ public class GuiTimeBomb extends GuiContainer
 		if(s.length() == 4)
 		//{
 		//this.container.updateTime(s);
-		InitPackets.network.sendToServer(new TimeBombPacket(Integer.parseInt(s), this.tile.xCoord, this.tile.yCoord, this.tile.zCoord));
+		InitPackets.network.sendToServer(new TimeBombPacket(Integer.parseInt(s), this.tile.xCoord, this.tile.yCoord, this.tile.zCoord, player.dimension));
 		//}
 		//this.mc.thePlayer.sendQueue.addToSendQueue(new C17PacketCustomPayload("SC2|TimeUpdate", s.getBytes(Charsets.UTF_8)));
     }
