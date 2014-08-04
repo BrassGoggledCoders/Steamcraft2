@@ -12,18 +12,26 @@
  */
 package steamcraft.common.blocks;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import steamcraft.client.lib.GuiIDs;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.blocks.machines.BlockContainerMod;
+import steamcraft.common.lib.LibInfo;
 import steamcraft.common.tiles.TileSteamBoiler;
 import steamcraft.common.tiles.TileTimeBomb;
 
 public class BlockTimeBomb extends BlockContainerMod
 {
+	@SideOnly(Side.CLIENT)
+	private IIcon iconEnd;
+
     public BlockTimeBomb(Material p_i45394_1_)
 	{
 		super(p_i45394_1_);
@@ -49,6 +57,27 @@ public class BlockTimeBomb extends BlockContainerMod
 			player.openGui(Steamcraft.instance, GuiIDs.GUI_ID_TIMEBOMB, world, par2, par3, par4);
 			return true;
 		}
+	}
+	@SideOnly(Side.CLIENT)
+	@Override
+	public IIcon getIcon(int side, int meta)
+	{
+		switch (side)
+		{
+			case 1:
+				return this.iconEnd; //top
+			default:
+				return this.blockIcon; // sides
+		}
+	}
+
+	@SideOnly(Side.CLIENT)
+	@Override
+	public void registerBlockIcons(IIconRegister icon)
+	{
+		this.blockIcon = icon.registerIcon(LibInfo.PREFIX + "blockTimebomb");
+		this.iconEnd = icon.registerIcon(LibInfo.PREFIX + "blockTimebombTop");
+		//this.iconTop = icon.registerIcon(LibInfo.PREFIX + "blockSteamBoilerTop");
 	}
 
 }
