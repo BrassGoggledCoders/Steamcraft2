@@ -26,6 +26,8 @@ public class GuiTimeBomb extends GuiContainer
 	{
 		super(new ContainerTimeBomb(inv, tile));
 		this.tile = tile;
+		this.container = (ContainerTimeBomb) this.inventorySlots;
+		//text.setText(String.valueOf(tile.getTime()));
 	}
 
 	@Override
@@ -37,6 +39,10 @@ public class GuiTimeBomb extends GuiContainer
 		final int x = (width - xSize) / 2;
 		final int y = (height - ySize) / 2;
 		drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
+
+		this.drawTexturedModalRect(x + 59, y + 20, 0, this.ySize + 0, 110, 16);
+
+        this.drawTexturedModalRect(x + 99, y + 45, this.xSize, 0, 28, 21);
 
 		mc.renderEngine.bindTexture(guitexture);
 	}
@@ -59,22 +65,45 @@ public class GuiTimeBomb extends GuiContainer
         Keyboard.enableRepeatEvents(false);
     }
 	@Override
-	protected void keyTyped(char p_73869_1_, int p_73869_2_)
+	public void keyTyped(char c, int p_73869_2_)
     {
-        if (this.text.textboxKeyTyped(p_73869_1_, p_73869_2_))
+        if (this.text.textboxKeyTyped(c, p_73869_2_))
         {
             this.updateTime();
         }
-        else
-        {
-            super.keyTyped(p_73869_1_, p_73869_2_);
-        }
+
+        super.keyTyped(c, p_73869_2_);
     }
 	private void updateTime()
     {
-		String s = text.getText();
+		String s = "0000";
 
-        this.container.updateTime(s);
+		if(text != null)
+		{
+			s = text.getText();
+		}
+		if(s.length() == 4)
+		this.container.updateTime(s);
         this.mc.thePlayer.sendQueue.addToSendQueue(new C17PacketCustomPayload("SC2|TimeUpdate", s.getBytes(Charsets.UTF_8)));
     }
+	  /**
+     * Called when the mouse is clicked.
+     */
+    protected void mouseClicked(int p_73864_1_, int p_73864_2_, int p_73864_3_)
+    {
+        super.mouseClicked(p_73864_1_, p_73864_2_, p_73864_3_);
+        this.text.mouseClicked(p_73864_1_, p_73864_2_, p_73864_3_);
+    }
+    /**
+     * Draws the screen and all the components in it.
+     */
+    public void drawScreen(int p_73863_1_, int p_73863_2_, float p_73863_3_)
+    {
+        super.drawScreen(p_73863_1_, p_73863_2_, p_73863_3_);
+        GL11.glDisable(GL11.GL_LIGHTING);
+        GL11.glDisable(GL11.GL_BLEND);
+        this.text.drawTextBox();
+    }
+
+
 }
