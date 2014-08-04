@@ -23,6 +23,7 @@ import steamcraft.common.blocks.BlockBrassPlaque;
 import steamcraft.common.blocks.BlockCastIronFence;
 import steamcraft.common.blocks.BlockCastIronGate;
 import steamcraft.common.blocks.BlockCastIronLamp;
+import steamcraft.common.blocks.BlockCastIronRailing;
 import steamcraft.common.blocks.BlockCrystal;
 import steamcraft.common.blocks.BlockCustomOre;
 import steamcraft.common.blocks.BlockEngravedSolid;
@@ -83,7 +84,7 @@ public class InitBlocks
 
 	// Cast Iron
 	public static Block blockCastIronLampI, blockCastIronLampA;
-	public static Block blockCastIronFence, blockCastIronGate;
+	public static Block blockCastIronFence, blockCastIronGate, blockCastIronRailing;
 
 	public static Block blockLamp;
 
@@ -173,9 +174,11 @@ public class InitBlocks
 
 		blockCastIronFence = new BlockCastIronFence();
 		blockCastIronGate = new BlockCastIronGate();
+		blockCastIronRailing = new BlockCastIronRailing(Material.anvil).setBlockName("blockCastIronRailing");
 
 		GameRegistry.registerBlock(blockCastIronFence, "BlockCastIronFence");
 		GameRegistry.registerBlock(blockCastIronGate, "BlockCastIronGate");
+		GameRegistry.registerBlock(blockCastIronRailing, "BlockCastIronRailing");
 
 		blockLamp = new BlockLamp();
 

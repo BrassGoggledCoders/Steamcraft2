@@ -22,6 +22,7 @@ import steamcraft.client.renderers.block.BlockBatteryRenderer;
 import steamcraft.client.renderers.block.BlockChargerRenderer;
 import steamcraft.client.renderers.block.BlockCrystalRenderer;
 import steamcraft.client.renderers.block.BlockLightningRodRenderer;
+import steamcraft.client.renderers.block.BlockRailingRenderer;
 import steamcraft.client.renderers.block.BlockTeslaCoilRenderer;
 import steamcraft.client.renderers.entity.RenderBullet;
 import steamcraft.client.renderers.entity.RenderSmallLightningBolt;
@@ -49,7 +50,6 @@ import boilerplate.client.fx.FXRaygun;
 import boilerplate.client.fx.FXSmoke;
 import boilerplate.client.renderers.block.RenderMinedBlock;
 import boilerplate.common.entity.EntityMinedBlock;
-import cpw.mods.fml.client.CustomModLoadingErrorDisplayException;
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
@@ -115,6 +115,8 @@ public class ClientProxy extends CommonProxy
 		ClientRegistry.bindTileEntitySpecialRenderer(TileCharger.class, new TileChargerRenderer());
 		RenderingRegistry.registerBlockHandler(new BlockChargerRenderer());
 
+		RenderIDs.blockCastIronRailingRI = RenderingRegistry.getNextAvailableRenderId();
+		RenderingRegistry.registerBlockHandler(new BlockRailingRenderer());
 		/*
 		 * Cast Iron Lamp ConfigBlocks.blockCastIronLampRI =
 		 * RenderingRegistry.getNextAvailableRenderId();
@@ -228,10 +230,5 @@ public class ClientProxy extends CommonProxy
 		}
 
 		return new ModelWingpack(1.0F);
-	}
-
-	public static void throwDerpException()
-	{
-		throw new NoBoilerplateError();
 	}
 }
