@@ -10,7 +10,9 @@ import org.apache.commons.io.Charsets;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 
+import steamcraft.common.InitPackets;
 import steamcraft.common.lib.LibInfo;
+import steamcraft.common.packets.TimeBombPacket;
 import steamcraft.common.tiles.TileTimeBomb;
 import steamcraft.common.tiles.container.ContainerTimeBomb;
 
@@ -27,7 +29,7 @@ public class GuiTimeBomb extends GuiContainer
 		super(new ContainerTimeBomb(inv, tile));
 		this.tile = tile;
 		this.container = (ContainerTimeBomb) this.inventorySlots;
-		//text.setText(String.valueOf(tile.getTime()));
+		//
 	}
 
 	@Override
@@ -57,6 +59,7 @@ public class GuiTimeBomb extends GuiContainer
 	    text.setDisabledTextColour(-1);
 	    text.setEnableBackgroundDrawing(false);
 	    text.setMaxStringLength(4);
+	    text.setText(String.valueOf(tile.getTime()));
     }
 	@Override
     public void onGuiClosed()
@@ -83,8 +86,11 @@ public class GuiTimeBomb extends GuiContainer
 			s = text.getText();
 		}
 		if(s.length() == 4)
-		this.container.updateTime(s);
-        this.mc.thePlayer.sendQueue.addToSendQueue(new C17PacketCustomPayload("SC2|TimeUpdate", s.getBytes(Charsets.UTF_8)));
+		//{
+		//this.container.updateTime(s);
+		InitPackets.network.sendToServer(new TimeBombPacket(Integer.parseInt(s), this.tile.xCoord, this.tile.yCoord, this.tile.zCoord));
+		//}
+		//this.mc.thePlayer.sendQueue.addToSendQueue(new C17PacketCustomPayload("SC2|TimeUpdate", s.getBytes(Charsets.UTF_8)));
     }
 	  /**
      * Called when the mouse is clicked.

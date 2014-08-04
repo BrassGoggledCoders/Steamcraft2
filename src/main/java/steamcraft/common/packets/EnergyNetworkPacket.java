@@ -68,7 +68,7 @@ public class EnergyNetworkPacket implements IMessage
 		ByteBufUtils.writeUTF8String(buf, fluidName);
 	}
 
-	public static class FluidNetworkPacketHandler implements IMessageHandler<EnergyNetworkPacket, IMessage>
+	public static class EnergyNetworkPacketHandler implements IMessageHandler<EnergyNetworkPacket, IMessage>
 	{
 		@Override
 		public IMessage onMessage(EnergyNetworkPacket message, MessageContext ctx)

@@ -1,5 +1,5 @@
 /**
- * This class was created by BrassGoggledCoders modding team. 
+ * This class was created by BrassGoggledCoders modding team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -16,7 +16,7 @@ import io.netty.buffer.ByteBuf;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
-import steamcraft.common.tiles.TileCopperPipe;
+import steamcraft.common.tiles.TileCopperWire;
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
 import cpw.mods.fml.common.network.simpleimpl.MessageContext;
@@ -29,9 +29,9 @@ public class CopperWirePacket implements IMessage
 {
 	private int worldId, x, y, z;
 	ForgeDirection[] connections;
-	
+
 	public CopperWirePacket(){} //REQUIRED
-	
+
 	public CopperWirePacket(int worldId, int x, int y, int z, ForgeDirection[] connections)
 	{
 		this.worldId = worldId;
@@ -40,7 +40,7 @@ public class CopperWirePacket implements IMessage
 		this.z = z;
 		this.connections = connections;
 	}
-	
+
 	@Override
 	public void fromBytes(ByteBuf buf)
 	{
@@ -48,18 +48,18 @@ public class CopperWirePacket implements IMessage
 		x = buf.readInt();
 		y = buf.readInt();
 		z = buf.readInt();
-		
+
 		connections = new ForgeDirection[6];
-		
+
 		for(int i = 0; i<6; i++)
 		{
 			connections[i] = ForgeDirection.getOrientation(buf.readByte());
-			
+
 			if(connections[i]==ForgeDirection.UNKNOWN)
 				connections[i] = null;
 		}
 	}
-	
+
 	@Override
 	public void toBytes(ByteBuf buf)
 	{
@@ -70,11 +70,11 @@ public class CopperWirePacket implements IMessage
 		for(int i = 0;i<6;i++)
 			buf.writeByte(directionToByte(connections[i]));
 	}
-	
+
 	private static byte directionToByte(ForgeDirection dir)
 	{
 		byte index = -1;
-		
+
 		if(dir!=null)
 			switch(dir)
 			{
@@ -100,24 +100,24 @@ public class CopperWirePacket implements IMessage
 					index = -1;
 				break;
 			}
-		
+
 		return index;
 	}
-	
-	public static class CopperPipePacketHandler implements IMessageHandler<CopperWirePacket, IMessage>
+
+	public static class CopperWirePacketHandler implements IMessageHandler<CopperWirePacket, IMessage>
 	{
 		@Override
 		public IMessage onMessage(CopperWirePacket message, MessageContext ctx)
 		{
 			World world = Minecraft.getMinecraft().theWorld;
-			
-			if(world.getTileEntity(message.x, message.y, message.z) instanceof TileCopperPipe)
+
+			if(world.getTileEntity(message.x, message.y, message.z) instanceof TileCopperWire)
 			{
-				TileCopperPipe pipe = (TileCopperPipe) world.getTileEntity(message.x, message.y, message.z);
-				
+				TileCopperWire pipe = (TileCopperWire) world.getTileEntity(message.x, message.y, message.z);
+
 				pipe.connections = message.connections;
 			}
-			
+
 			return null;
 		}
 	}
