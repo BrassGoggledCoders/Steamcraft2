@@ -40,21 +40,23 @@ public class ItemElectricDrill extends ItemElectricTool
 	public ItemElectricDrill(ToolMaterial mat)
 	{
 		super(1, mat, ItemDrill.blocksEffectiveAgainst);
-		this.maxEnergy = maxEnergy * 1000;
-		this.maxReceive = (short) maxReceive;
-		this.maxSend = (short) maxSend;
-		this.setMaxStackSize(1);
-		this.setMaxDamage(20);
-		this.setHasSubtypes(false);
+		maxEnergy = maxEnergy * 1000;
+		maxReceive = maxReceive;
+		maxSend = maxSend;
+		setMaxStackSize(1);
+		setMaxDamage(20);
+		setHasSubtypes(false);
 	}
+
 	@SuppressWarnings("all")
 	@Override
 	public void getSubItems(Item item, CreativeTabs tab, List list)
 	{
-		list.add(this.getUnchargedItem());
-		list.add(this.getChargedItem());
+		list.add(getUnchargedItem());
+		list.add(getChargedItem());
 	}
 
+	@Override
 	public ItemStack getUnchargedItem()
 	{
 		ItemStack uncharged = new ItemStack(this, 1, 20);
@@ -67,12 +69,13 @@ public class ItemElectricDrill extends ItemElectricTool
 		return uncharged.copy();
 	}
 
+	@Override
 	public ItemStack getChargedItem()
 	{
 		ItemStack charged = new ItemStack(this, 1, 0);
 
 		NBTTagCompound tag = new NBTTagCompound();
-		tag.setInteger("energy", this.maxEnergy);
+		tag.setInteger("energy", maxEnergy);
 
 		charged.setTagCompound(tag);
 
@@ -83,17 +86,18 @@ public class ItemElectricDrill extends ItemElectricTool
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer entityplayer, List list, boolean flag)
 	{
-		list.add("Energy: " + this.getEnergyStored(stack) / 1000 + "k / " + this.maxEnergy / 1000 + "k");
-		list.add("Transfer(in/out): " + this.maxReceive + " / " + this.maxSend);
-		list.add("Efficiency: " + this.toolMaterial.getEfficiencyOnProperMaterial());
+		list.add("Energy: " + (getEnergyStored(stack) / 1000) + "k / " + (maxEnergy / 1000) + "k");
+		list.add("Transfer(in/out): " + maxReceive + " / " + maxSend);
+		list.add("Efficiency: " + toolMaterial.getEfficiencyOnProperMaterial());
 	}
 
 	@Override
 	public void onCreated(ItemStack stack, World par2World, EntityPlayer par3EntityPlayer)
 	{
-		stack = this.getUnchargedItem();
+		stack = getUnchargedItem();
 	}
 
+	@Override
 	public void setEnergy(ItemStack stack, int energy)
 	{
 		NBTTagCompound tag = stack.getTagCompound();
@@ -101,10 +105,10 @@ public class ItemElectricDrill extends ItemElectricTool
 		if (energy < 0)
 			energy = 0;
 
-		if (energy > this.maxEnergy)
-			energy = this.maxEnergy;
+		if (energy > maxEnergy)
+			energy = maxEnergy;
 
-		stack.setItemDamage(20 - energy * 20 / this.maxEnergy);
+		stack.setItemDamage(20 - ((energy * 20) / maxEnergy));
 
 		tag.setInteger("energy", energy);
 
@@ -114,11 +118,11 @@ public class ItemElectricDrill extends ItemElectricTool
 	@Override
 	public int receiveEnergy(ItemStack itemStack, int maxReceive, boolean simulate)
 	{
-		int received = Math.min(this.maxEnergy - this.getEnergyStored(itemStack), maxReceive);
+		int received = Math.min(maxEnergy - getEnergyStored(itemStack), maxReceive);
 		received = Math.min(received, this.maxReceive);
 
 		if (!simulate)
-			this.setEnergy(itemStack, this.getEnergyStored(itemStack) + received);
+			setEnergy(itemStack, getEnergyStored(itemStack) + received);
 
 		return received;
 	}
@@ -126,11 +130,11 @@ public class ItemElectricDrill extends ItemElectricTool
 	@Override
 	public int extractEnergy(ItemStack itemStack, int maxExtract, boolean simulate)
 	{
-		int extracted = Math.min(this.getEnergyStored(itemStack), maxExtract);
-		extracted = Math.min(extracted, this.maxSend);
+		int extracted = Math.min(getEnergyStored(itemStack), maxExtract);
+		extracted = Math.min(extracted, maxSend);
 
 		if (!simulate)
-			this.setEnergy(itemStack, this.getEnergyStored(itemStack) - extracted);
+			setEnergy(itemStack, getEnergyStored(itemStack) - extracted);
 
 		return extracted;
 	}
@@ -144,7 +148,7 @@ public class ItemElectricDrill extends ItemElectricTool
 	@Override
 	public int getMaxEnergyStored(ItemStack container)
 	{
-		return this.maxEnergy;
+		return maxEnergy;
 	}
 
 	@Override
@@ -152,21 +156,22 @@ public class ItemElectricDrill extends ItemElectricTool
 	{
 		if (living instanceof EntityPlayer)
 		{
-			this.extractEnergy(stack, this.energyPerBlock, false);
+			extractEnergy(stack, energyPerBlock, false);
 
 			stack.damageItem(1, living);
 			world.playSoundAtEntity(living, LibInfo.PREFIX + "drill.steam", 0.6F, 1.0F);
-			world.spawnParticle("smoke", x + 0.5, y + 0.5, z + 0.5, this.random.nextGaussian(), this.random.nextGaussian(), this.random.nextGaussian());
+			world.spawnParticle("smoke", x + 0.5, y + 0.5, z + 0.5, random.nextGaussian(), random.nextGaussian(), random.nextGaussian());
 			return true;
 		}
 
 		return false;
 	}
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister icon)
 	{
-		this.itemIcon = icon.registerIcon(LibInfo.PREFIX + "tools/" + this.getUnlocalizedName().substring(5));
+		itemIcon = icon.registerIcon(LibInfo.PREFIX + "tools/" + this.getUnlocalizedName().substring(5));
 	}
 
 	@SuppressWarnings("all")

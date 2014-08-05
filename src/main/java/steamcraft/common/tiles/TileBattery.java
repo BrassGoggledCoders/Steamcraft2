@@ -27,7 +27,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author decebaldecebal
- *
+ * 
  */
 public class TileBattery extends BaseTileWithInventory implements IEnergyHandler
 {
@@ -64,7 +64,7 @@ public class TileBattery extends BaseTileWithInventory implements IEnergyHandler
 	@SideOnly(Side.CLIENT)
 	public int getEnergyScaled(int par1)
 	{
-		return ((this.totalEnergy+buffer.getEnergyStored()) / ((this.maxEnergy+initialEnergy)/1000)) / par1;
+		return ((totalEnergy + buffer.getEnergyStored()) / ((maxEnergy + initialEnergy) / 1000)) / par1;
 	}
 
 	@Override
@@ -74,70 +74,64 @@ public class TileBattery extends BaseTileWithInventory implements IEnergyHandler
 		{
 			ticksSinceUpdate++;
 
-			if(ticksSinceUpdate > 50)
+			if (ticksSinceUpdate > 50)
 			{
 				ticksSinceUpdate = 0;
 				updateEnergyFromInv();
 			}
 
-			if(buffer.getEnergyStored() > 0)
-				this.chargeItems();
+			if (buffer.getEnergyStored() > 0)
+				chargeItems();
 
-			short outputEnergy = (short) this.extractEnergy(ForgeDirection.UNKNOWN, this.transferRate, true);
+			short outputEnergy = (short) extractEnergy(ForgeDirection.UNKNOWN, transferRate, true);
 
-			if(outputEnergy > 0)
-			{
+			if (outputEnergy > 0)
 				for (ForgeDirection direction : EnumSet.allOf(ForgeDirection.class))
-					if(outputEnergy > 0)
+					if (outputEnergy > 0)
 					{
-						TileEntity tileEntity = worldObj.getTileEntity(xCoord - direction.offsetX, yCoord - direction.offsetY, zCoord - direction.offsetZ);
+						TileEntity tileEntity = worldObj.getTileEntity(xCoord - direction.offsetX, yCoord - direction.offsetY, zCoord
+								- direction.offsetZ);
 
-						if(tileEntity instanceof IEnergyHandler)
-						{
-							outputEnergy -= this.extractEnergy(ForgeDirection.UNKNOWN, ((IEnergyHandler) tileEntity).receiveEnergy(direction.getOpposite(), outputEnergy, false), false);
-						}
+						if (tileEntity instanceof IEnergyHandler)
+							outputEnergy -= extractEnergy(ForgeDirection.UNKNOWN,
+									((IEnergyHandler) tileEntity).receiveEnergy(direction.getOpposite(), outputEnergy, false), false);
 					}
 					else
 						break;
-			}
 		}
 	}
 
 	private void chargeItems()
 	{
-		for(ItemStack stack : inventory)
-		{
-			if(stack!=null)
+		for (ItemStack stack : inventory)
+			if (stack != null)
 			{
 				IEnergyItem item = (IEnergyItem) stack.getItem();
 
 				buffer.modifyEnergyStored(-item.receiveEnergy(stack, buffer.getEnergyStored(), false));
 
-				if(buffer.getEnergyStored() < 0)
+				if (buffer.getEnergyStored() < 0)
 					break;
 			}
-		}
 	}
 
 	public void updateEnergyFromInv()
 	{
-		this.maxEnergy = 0;
-		this.totalEnergy = 0;
-		this.transferRate = initialTransferRate;
+		maxEnergy = 0;
+		totalEnergy = 0;
+		transferRate = initialTransferRate;
 
-		for(ItemStack stack : inventory)
-		{
-			if(stack!=null)
+		for (ItemStack stack : inventory)
+			if (stack != null)
 			{
 				IEnergyItem item = (IEnergyItem) stack.getItem();
 
-				this.maxEnergy += item.getMaxEnergyStored(stack);
-				this.totalEnergy += item.getEnergyStored(stack);
-				this.transferRate += item.getMaxSend();
+				maxEnergy += item.getMaxEnergyStored(stack);
+				totalEnergy += item.getEnergyStored(stack);
+				transferRate += item.getMaxSend();
 			}
-		}
 
-		buffer.setMaxTransfer(this.transferRate);
+		buffer.setMaxTransfer(transferRate);
 	}
 
 	@Override
@@ -158,21 +152,17 @@ public class TileBattery extends BaseTileWithInventory implements IEnergyHandler
 		int usedEnergy = maxExtract;
 		maxExtract -= buffer.extractEnergy(maxExtract, simulate);
 
-		if(maxExtract != 0)
-			for(ItemStack stack : inventory)
-			{
-				if(stack!=null)
+		if (maxExtract != 0)
+			for (ItemStack stack : inventory)
+				if (stack != null)
 				{
 					IEnergyItem item = (IEnergyItem) stack.getItem();
 
-					if(maxExtract > 0)
-					{
+					if (maxExtract > 0)
 						maxExtract -= item.extractEnergy(stack, maxExtract, simulate);
-					}
 					else
 						break;
 				}
-			}
 
 		usedEnergy -= maxExtract;
 
@@ -182,13 +172,13 @@ public class TileBattery extends BaseTileWithInventory implements IEnergyHandler
 	@Override
 	public int getEnergyStored(ForgeDirection from)
 	{
-		return buffer.getEnergyStored() + this.totalEnergy;
+		return buffer.getEnergyStored() + totalEnergy;
 	}
 
 	@Override
 	public int getMaxEnergyStored(ForgeDirection from)
 	{
-		return buffer.getMaxEnergyStored() + this.maxEnergy;
+		return buffer.getMaxEnergyStored() + maxEnergy;
 	}
 
 	@Override

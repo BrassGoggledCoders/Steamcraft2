@@ -26,7 +26,7 @@ import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 // TODO: Auto-generated Javadoc
 /**
  * The Class BlockHatchRenderer.
- *
+ * 
  * @author warlordjones
  */
 public class BlockDropHammerRenderer implements ISimpleBlockRenderingHandler

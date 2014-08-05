@@ -28,7 +28,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class ItemParts extends BaseItemWithMetadata
 {
@@ -39,31 +39,31 @@ public class ItemParts extends BaseItemWithMetadata
 	public ItemParts()
 	{
 		super();
-		this.setMaxStackSize(64);
+		setMaxStackSize(64);
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister ir)
 	{
-		this.itemIcon[0] = ir.registerIcon(LibInfo.PREFIX + "parts/" + "item" + this.getMaterial() + "Gear");
-		this.itemIcon[1] = ir.registerIcon(LibInfo.PREFIX + "parts/" + "item" + this.getMaterial() + "Sprocket");
-		this.itemIcon[2] = ir.registerIcon(LibInfo.PREFIX + "parts/" + "item" + this.getMaterial() + "Spring");
-		this.itemIcon[3] = ir.registerIcon(LibInfo.PREFIX + "parts/" + "item" + this.getMaterial() + "Thread");
-		this.itemIcon[4] = ir.registerIcon(LibInfo.PREFIX + "parts/" + "item" + this.getMaterial() + "Nut");
-		this.itemIcon[5] = ir.registerIcon(LibInfo.PREFIX + "parts/" + "item" + this.getMaterial() + "Bolt");
-		this.itemIcon[6] = ir.registerIcon(LibInfo.PREFIX + "parts/" + "item" + this.getMaterial() + "Washer");
-		this.itemIcon[7] = ir.registerIcon(LibInfo.PREFIX + "parts/" + "item" + this.getMaterial() + "Bearing");
-		this.itemIcon[8] = ir.registerIcon(LibInfo.PREFIX + "parts/" + "item" + this.getMaterial() + "Screw");
-		this.itemIcon[9] = ir.registerIcon(LibInfo.PREFIX + "parts/" + "item" + this.getMaterial() + "Nail");
+		itemIcon[0] = ir.registerIcon(LibInfo.PREFIX + "parts/" + "item" + getMaterial() + "Gear");
+		itemIcon[1] = ir.registerIcon(LibInfo.PREFIX + "parts/" + "item" + getMaterial() + "Sprocket");
+		itemIcon[2] = ir.registerIcon(LibInfo.PREFIX + "parts/" + "item" + getMaterial() + "Spring");
+		itemIcon[3] = ir.registerIcon(LibInfo.PREFIX + "parts/" + "item" + getMaterial() + "Thread");
+		itemIcon[4] = ir.registerIcon(LibInfo.PREFIX + "parts/" + "item" + getMaterial() + "Nut");
+		itemIcon[5] = ir.registerIcon(LibInfo.PREFIX + "parts/" + "item" + getMaterial() + "Bolt");
+		itemIcon[6] = ir.registerIcon(LibInfo.PREFIX + "parts/" + "item" + getMaterial() + "Washer");
+		itemIcon[7] = ir.registerIcon(LibInfo.PREFIX + "parts/" + "item" + getMaterial() + "Bearing");
+		itemIcon[8] = ir.registerIcon(LibInfo.PREFIX + "parts/" + "item" + getMaterial() + "Screw");
+		itemIcon[9] = ir.registerIcon(LibInfo.PREFIX + "parts/" + "item" + getMaterial() + "Nail");
 	}
 
-	@SuppressWarnings({"all"})
+	@SuppressWarnings({ "all" })
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(Item item, CreativeTabs tab, List l)
 	{
-		for (int var4 = 0; var4 < this.itemIcon.length; ++var4)
+		for (int var4 = 0; var4 < itemIcon.length; ++var4)
 			l.add(new ItemStack(this, 1, var4));
 	}
 
@@ -71,12 +71,12 @@ public class ItemParts extends BaseItemWithMetadata
 	@SideOnly(Side.CLIENT)
 	public IIcon getIconFromDamage(int itemDamage)
 	{
-		return this.itemIcon[itemDamage];
+		return itemIcon[itemDamage];
 	}
 
 	public String getMaterial()
 	{
-		return WordUtils.capitalize(this.material);
+		return WordUtils.capitalize(material);
 	}
 
 	public Item setMaterial(String material)

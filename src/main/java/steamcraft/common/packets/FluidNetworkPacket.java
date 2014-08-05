@@ -13,7 +13,6 @@
 package steamcraft.common.packets;
 
 import io.netty.buffer.ByteBuf;
-import net.minecraft.client.Minecraft;
 import net.minecraft.world.World;
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.fluids.FluidRegistry;
@@ -27,7 +26,7 @@ import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 
 /**
  * @author decebaldecebal
- *
+ * 
  */
 public class FluidNetworkPacket implements IMessage
 {
@@ -38,11 +37,13 @@ public class FluidNetworkPacket implements IMessage
 	private int z;
 	private String fluidName;
 
-	public FluidNetworkPacket(){} //REQUIRED
+	public FluidNetworkPacket()
+	{
+	} // REQUIRED
 
 	public FluidNetworkPacket(int worldId, int x, int y, int z, float fluidScaled, String fluidName)
 	{
-		this.worldId = worldId;
+		FluidNetworkPacket.worldId = worldId;
 		this.x = x;
 		this.y = y;
 		this.z = z;
@@ -79,11 +80,11 @@ public class FluidNetworkPacket implements IMessage
 		{
 			World world = DimensionManager.getWorld(worldId);
 
-			if(world.getTileEntity(message.x, message.y, message.z) instanceof TileCopperPipe)
+			if (world.getTileEntity(message.x, message.y, message.z) instanceof TileCopperPipe)
 			{
 				TileCopperPipe pipe = (TileCopperPipe) world.getTileEntity(message.x, message.y, message.z);
 
-				if(pipe.network==null)
+				if (pipe.network == null)
 					pipe.network = new FluidNetwork(1);
 
 				pipe.network.fluidScaled = message.fluidScaled;

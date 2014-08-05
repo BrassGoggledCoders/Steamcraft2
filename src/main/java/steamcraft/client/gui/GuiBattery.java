@@ -30,7 +30,7 @@ import steamcraft.common.tiles.container.ContainerBattery;
 public class GuiBattery extends GuiContainer
 {
 	private static ResourceLocation guitexture = new ResourceLocation(LibInfo.PREFIX + "textures/gui/battery.png");
-	
+
 	private TileBattery tile;
 
 	public GuiBattery(InventoryPlayer inventory, TileBattery tile)
@@ -44,35 +44,36 @@ public class GuiBattery extends GuiContainer
 	protected void drawGuiContainerBackgroundLayer(float var1, int x, int y)
 	{
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-		
+
 		mc.renderEngine.bindTexture(guitexture);
 		drawTexturedModalRect(guiLeft, guiTop, 0, 0, xSize, ySize);
-		
+
 		int var8 = tile.getEnergyScaled(16);
-		this.drawTexturedModalRect(guiLeft + 12, guiTop + 64 - var8, 176, 56 - var8, 16, var8 + 1);
+		drawTexturedModalRect(guiLeft + 12, (guiTop + 64) - var8, 176, 56 - var8, 16, var8 + 1);
 	}
-	
+
 	@Override
-	protected void drawGuiContainerForegroundLayer(int x, int y) 
+	protected void drawGuiContainerForegroundLayer(int x, int y)
 	{
-		this.drawString(fontRendererObj, "Energy: ", 26, 10, -1);
-		this.drawString(fontRendererObj, getEnergyUnits(tile.getEnergyStored(ForgeDirection.UNKNOWN)) + 
-				"/" + getEnergyUnits(tile.getMaxEnergyStored(ForgeDirection.UNKNOWN)) + " RF", 30, 20, -1);
-		
-		this.drawString(fontRendererObj, "Transfer: ", 26, 30, -1);
-		this.drawString(fontRendererObj, tile.transferRate + " RF", 30, 40, -1);
+		drawString(fontRendererObj, "Energy: ", 26, 10, -1);
+		drawString(fontRendererObj,
+				getEnergyUnits(tile.getEnergyStored(ForgeDirection.UNKNOWN)) + "/" + getEnergyUnits(tile.getMaxEnergyStored(ForgeDirection.UNKNOWN))
+						+ " RF", 30, 20, -1);
+
+		drawString(fontRendererObj, "Transfer: ", 26, 30, -1);
+		drawString(fontRendererObj, tile.transferRate + " RF", 30, 40, -1);
 	}
-	
+
 	private String getEnergyUnits(int number)
 	{
-		number/=1000;
-		
-		if(number>=1000)
+		number /= 1000;
+
+		if (number >= 1000)
 		{
-			number/=1000;
+			number /= 1000;
 			return number + "M";
 		}
-		
+
 		return number + "K";
 	}
 }

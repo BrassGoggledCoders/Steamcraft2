@@ -13,7 +13,6 @@
 package steamcraft.common.packets;
 
 import io.netty.buffer.ByteBuf;
-import net.minecraft.client.Minecraft;
 import net.minecraft.world.World;
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.util.ForgeDirection;
@@ -24,7 +23,7 @@ import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 
 /**
  * @author decebaldecebal
- *
+ * 
  */
 public class CopperPipePacket implements IMessage
 {
@@ -34,11 +33,13 @@ public class CopperPipePacket implements IMessage
 	private int z;
 	ForgeDirection[] connections;
 
-	public CopperPipePacket(){} //REQUIRED
+	public CopperPipePacket()
+	{
+	} // REQUIRED
 
 	public CopperPipePacket(int worldId, int x, int y, int z, ForgeDirection[] connections)
 	{
-		this.worldId = worldId;
+		CopperPipePacket.worldId = worldId;
 		this.x = x;
 		this.y = y;
 		this.z = z;
@@ -55,11 +56,11 @@ public class CopperPipePacket implements IMessage
 
 		connections = new ForgeDirection[6];
 
-		for(int i = 0; i<6; i++)
+		for (int i = 0; i < 6; i++)
 		{
 			connections[i] = ForgeDirection.getOrientation(buf.readByte());
 
-			if(connections[i]==ForgeDirection.UNKNOWN)
+			if (connections[i] == ForgeDirection.UNKNOWN)
 				connections[i] = null;
 		}
 	}
@@ -71,7 +72,7 @@ public class CopperPipePacket implements IMessage
 		buf.writeInt(x);
 		buf.writeInt(y);
 		buf.writeInt(z);
-		for(int i = 0;i<6;i++)
+		for (int i = 0; i < 6; i++)
 			buf.writeByte(directionToByte(connections[i]));
 	}
 
@@ -79,29 +80,29 @@ public class CopperPipePacket implements IMessage
 	{
 		byte index = -1;
 
-		if(dir!=null)
-			switch(dir)
+		if (dir != null)
+			switch (dir)
 			{
-				case DOWN:
-					index = 0;
+			case DOWN:
+				index = 0;
 				break;
-				case UP:
-					index = 1;
+			case UP:
+				index = 1;
 				break;
-				case NORTH:
-					index = 2;
+			case NORTH:
+				index = 2;
 				break;
-				case SOUTH:
-					index = 3;
+			case SOUTH:
+				index = 3;
 				break;
-				case WEST:
-					index = 4;
+			case WEST:
+				index = 4;
 				break;
-				case EAST:
-					index = 5;
+			case EAST:
+				index = 5;
 				break;
-				default:
-					index = -1;
+			default:
+				index = -1;
 				break;
 			}
 
@@ -115,7 +116,7 @@ public class CopperPipePacket implements IMessage
 		{
 			World world = DimensionManager.getWorld(worldId);
 
-			if(world.getTileEntity(message.x, message.y, message.z) instanceof TileCopperPipe)
+			if (world.getTileEntity(message.x, message.y, message.z) instanceof TileCopperPipe)
 			{
 				TileCopperPipe pipe = (TileCopperPipe) world.getTileEntity(message.x, message.y, message.z);
 

@@ -32,32 +32,32 @@ public class SplashesHelper
 			"Configuration File!",
 			"Guns!",
 			"Coffee & Tea Time!",
-			
+
 			// Credits
 			"SC2 by Surseance & Team!", "SC2 by Surseance & Team!", "SC2 by Surseance & Team!", "SC2 by Surseance & Team!",
 			"SC2 by Surseance & Team!", "SC2 by Surseance & Team!", "SC2 by Surseance & Team!", "SC2 by Surseance & Team!",
 			"SC2 by Surseance & Team!", "SC2 by Surseance & Team!", "Modded by Steampunk Masters!",
 			"Broken by The Codebreaker himself!",
-			
+
 			// The Mod
 			"Steamcraft 2 v" + LibInfo.VERSION, "Steamcraft 2 v" + LibInfo.VERSION,
 			"Steamcraft 2 v" + LibInfo.VERSION,
-			
+
 			// Satire
 			"ArrayIndexOutOfBoundsException", "WIP", "Warning: May Contain Null Pointers!",
 			"Warp Core Breach!",
-			
+
 			// Random
 			"Beam me up, Scotty!", "Sodium Peroxide", "In 1492...", "299,792,458 m/s", "Watch your language!", "E = mc^2", "Don't press the button!",
 			"Press the button!", "Ssssssssssssssss!", "#selfie", "Who's that POKEMON?",
-			
+
 			// Advice
 			"Kick out the funk!", "Read the README!", "Check for monsters under your bed!", "Don't do Drugs!",
-			
+
 			// Also Try...
 			"Also try Thaumcraft 4!", "Also try Ars Magica 2!", "Also try Pixelmon, if you like remote hacking of your server",
 			"Also try taking a break once in a while!",
-			
+
 			// Pieces of Code
 			"while(true) {}", "Integer.toString()", };
 

@@ -38,7 +38,7 @@ public class TileTeslaCoilRenderer extends TileEntitySpecialRenderer
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer#
 	 * renderTileEntityAt(net.minecraft.tileentity.TileEntity, double, double,
 	 * double, float)

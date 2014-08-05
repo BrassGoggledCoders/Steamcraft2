@@ -43,18 +43,14 @@ public class ConfigGeneral
 			drawInside = config.get(CATEGORY_CLIENT, "Render the insides of blocks", true).getBoolean(true);
 
 			armorSpawnChance = config.get(CATEGORY_GENERAL, "Spawn Chance of our Armor on Zombies/Skeletons (0-1)", 0.2D).getDouble();
-		}
-		catch (Exception e)
+		} catch (Exception e)
 		{
 			LoggerSteamcraft.log(Level.SEVERE, "Failed to load configuration file:" + e);
-		}
-		finally
+		} finally
 		{
-			if (config.hasChanged()) {
+			if (config.hasChanged())
 				config.save();
-			}
 		}
 	}
-
 
 }

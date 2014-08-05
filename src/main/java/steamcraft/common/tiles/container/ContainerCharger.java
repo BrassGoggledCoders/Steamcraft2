@@ -26,7 +26,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author decebaldecebal
- *
+ * 
  */
 public class ContainerCharger extends Container
 {
@@ -133,8 +133,8 @@ public class ContainerCharger extends Container
 				if (var5.getItem() instanceof IEnergyItem)
 				{
 					if (!mergeItemStack(var5, 0, 6, false))
-							if (!mergeItemStack(var5, 33, 42, false))
-								return null;
+						if (!mergeItemStack(var5, 33, 42, false))
+							return null;
 				}
 				else if ((par2 >= 6) && (par2 < 33) && !mergeItemStack(var5, 33, 42, false))
 					return null;

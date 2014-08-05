@@ -41,7 +41,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author Surseance
- *
+ * 
  */
 public class ItemModTool extends BaseItem
 {
@@ -54,13 +54,13 @@ public class ItemModTool extends BaseItem
 	protected ItemModTool(float damage, ToolMaterial toolMat, Block[] blockArray)
 	{
 		super();
-		this.setCreativeTab(Steamcraft.tabSC2);
-		this.toolMaterial = toolMat;
+		setCreativeTab(Steamcraft.tabSC2);
+		toolMaterial = toolMat;
 		blocksEffectiveAgainst = blockArray;
-		this.maxStackSize = 1;
-		this.efficiencyOnProperMaterial = toolMat.getEfficiencyOnProperMaterial();
-		this.damageVsEntity = damage;
-		this.setFull3D();
+		maxStackSize = 1;
+		efficiencyOnProperMaterial = toolMat.getEfficiencyOnProperMaterial();
+		damageVsEntity = damage;
+		setFull3D();
 	}
 
 	@SuppressWarnings("all")
@@ -68,7 +68,7 @@ public class ItemModTool extends BaseItem
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(Item item, CreativeTabs tab, List l)
 	{
-		if (this.isSteampowered())
+		if (isSteampowered())
 		{
 			ItemStack stack = new ItemStack(this, 1, 0);
 			NBTTagCompound tag = new NBTTagCompound();
@@ -82,7 +82,7 @@ public class ItemModTool extends BaseItem
 	@Override
 	public void onCreated(ItemStack stack, World world, EntityPlayer player)
 	{
-		if (this.isSteampowered())
+		if (isSteampowered())
 		{
 			NBTTagCompound tag = new NBTTagCompound();
 			tag.setBoolean("hasCanister", true);
@@ -95,18 +95,18 @@ public class ItemModTool extends BaseItem
 	@Override
 	public void registerIcons(IIconRegister par1IconRegister)
 	{
-		this.itemIcon = par1IconRegister.registerIcon(LibInfo.PREFIX + "tools/" + this.getUnlocalizedName().substring(5));
+		itemIcon = par1IconRegister.registerIcon(LibInfo.PREFIX + "tools/" + this.getUnlocalizedName().substring(5));
 	}
 
 	@Override
 	public float getDigSpeed(ItemStack stack, Block block, int metadata)
 	{
-		if (this.isSteampowered() && !stack.getTagCompound().getBoolean("hasCanister"))
+		if (isSteampowered() && !stack.getTagCompound().getBoolean("hasCanister"))
 			return 0.1F;
 
 		for (Block element : blocksEffectiveAgainst)
 			if (element == block)
-				return this.efficiencyOnProperMaterial;
+				return efficiencyOnProperMaterial;
 
 		return 1.0F;
 	}
@@ -114,14 +114,14 @@ public class ItemModTool extends BaseItem
 	@Override
 	public boolean hitEntity(ItemStack itemstack, EntityLivingBase living1, EntityLivingBase living2)
 	{
-		if (this.isSteampowered() && living2 instanceof EntityPlayer)
+		if (isSteampowered() && (living2 instanceof EntityPlayer))
 		{
-			if (this.hasCanister((EntityPlayer) living2))
+			if (hasCanister((EntityPlayer) living2))
 			{
-				this.consumeSteamFromCanister((EntityPlayer) living2);
+				consumeSteamFromCanister((EntityPlayer) living2);
 
 				if (itemstack.getItem() != InitItems.swordSteam)
-					this.consumeSteamFromCanister((EntityPlayer) living2);
+					consumeSteamFromCanister((EntityPlayer) living2);
 			}
 		}
 		else if (this instanceof ItemModSword)
@@ -134,7 +134,7 @@ public class ItemModTool extends BaseItem
 
 	protected boolean isSteampowered()
 	{
-		if (this.toolMaterial == MaterialHelper.TOOL_STEAM || this.toolMaterial == MaterialHelper.DRILL_STEAM)
+		if ((toolMaterial == MaterialHelper.TOOL_STEAM) || (toolMaterial == MaterialHelper.DRILL_STEAM))
 			return true;
 		else
 			return false;
@@ -143,24 +143,24 @@ public class ItemModTool extends BaseItem
 	@Override
 	public int getItemEnchantability()
 	{
-		return this.toolMaterial.getEnchantability();
+		return toolMaterial.getEnchantability();
 	}
 
 	@Override
 	public boolean getIsRepairable(ItemStack stack1, ItemStack stack2)
 	{
 		Item item = stack2.getItem();
-		return this.toolMaterial.func_150995_f() == item ? true : super.getIsRepairable(stack1, stack2);
+		return toolMaterial.func_150995_f() == item ? true : super.getIsRepairable(stack1, stack2);
 	}
 
 	@Override
 	public boolean onBlockDestroyed(ItemStack stack, World p_150894_2_, Block p_150894_3_, int p_150894_4_, int p_150894_5_, int p_150894_6_,
 			EntityLivingBase living)
 	{
-		if (this.isSteampowered())
-			if (stack.getTagCompound().getBoolean("hasCanister") && living instanceof EntityPlayer)
-				if (this.hasCanister((EntityPlayer) living))
-					this.consumeSteamFromCanister((EntityPlayer) living);
+		if (isSteampowered())
+			if (stack.getTagCompound().getBoolean("hasCanister") && (living instanceof EntityPlayer))
+				if (hasCanister((EntityPlayer) living))
+					consumeSteamFromCanister((EntityPlayer) living);
 		stack.damageItem(1, living);
 		return true;
 	}
@@ -169,7 +169,7 @@ public class ItemModTool extends BaseItem
 	@Override
 	public void addInformation(ItemStack itemStack, EntityPlayer entityPlayer, List list, boolean bool)
 	{
-		if (this.isSteampowered())
+		if (isSteampowered())
 		{
 			if (!itemStack.hasTagCompound())
 				itemStack.setTagCompound(new NBTTagCompound());
@@ -183,7 +183,7 @@ public class ItemModTool extends BaseItem
 		ItemStack[] mainInv = player.inventory.mainInventory;
 
 		for (ItemStack element : mainInv)
-			if (element != null && element.getItem() == InitItems.itemCanisterSteam)
+			if ((element != null) && (element.getItem() == InitItems.itemCanisterSteam))
 			{
 				ItemCanister canister = (ItemCanister) element.getItem();
 
@@ -212,8 +212,8 @@ public class ItemModTool extends BaseItem
 		for (int i = 0; i != player.inventory.mainInventory.length; i++)
 		{
 			ItemStack[] mainInv = player.inventory.mainInventory;
-			if (mainInv[i] != null && mainInv[i].getItem() == InitItems.itemCanisterSteam)
-				hasCanister = hasCanister || !this.isCanisterEmpty(mainInv[i]);
+			if ((mainInv[i] != null) && (mainInv[i].getItem() == InitItems.itemCanisterSteam))
+				hasCanister = hasCanister || !isCanisterEmpty(mainInv[i]);
 		}
 		return hasCanister;
 	}
@@ -221,7 +221,7 @@ public class ItemModTool extends BaseItem
 	@Override
 	public void onUpdate(ItemStack itemStack, World par2World, Entity par3Entity, int par4, boolean par5)
 	{
-		if (this.isSteampowered())
+		if (isSteampowered())
 		{
 			NBTTagCompound tag = itemStack.getTagCompound();
 
@@ -229,7 +229,7 @@ public class ItemModTool extends BaseItem
 			{
 				boolean hasCanister = false;
 
-				if (this.hasCanister((EntityPlayer) par3Entity))
+				if (hasCanister((EntityPlayer) par3Entity))
 					hasCanister = true;
 
 				if (hasCanister != tag.getBoolean("hasCanister"))
@@ -238,9 +238,9 @@ public class ItemModTool extends BaseItem
 					itemStack.setTagCompound(tag);
 
 					if (hasCanister)
-						this.changeToolDamage(itemStack, this.damageVsEntity);
+						changeToolDamage(itemStack, damageVsEntity);
 					else
-						this.changeToolDamage(itemStack, 1.0D);
+						changeToolDamage(itemStack, 1.0D);
 				}
 			}
 		}
@@ -257,7 +257,7 @@ public class ItemModTool extends BaseItem
 	{
 		Multimap multimap = super.getItemAttributeModifiers();
 		multimap.put(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName(), new AttributeModifier(field_111210_e, "Tool modifier",
-				this.damageVsEntity, 0));
+				damageVsEntity, 0));
 		return multimap;
 	}
 }

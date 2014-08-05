@@ -20,7 +20,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class CreativeTabSteamcraft extends CreativeTabBase
 {

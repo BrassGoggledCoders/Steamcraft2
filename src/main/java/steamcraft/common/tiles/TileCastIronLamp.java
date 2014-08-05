@@ -22,6 +22,6 @@ public class TileCastIronLamp extends TileEntity
 {
 	public TileCastIronLamp()
 	{
-		
+
 	}
 }

@@ -27,10 +27,9 @@ import cofh.api.energy.EnergyStorage;
 import cofh.api.energy.IEnergyHandler;
 import cofh.api.energy.IEnergyStorage;
 
-
 /**
  * @author warlordjones
- *
+ * 
  */
 public class TileCopperWire extends TileEntity implements IEnergyHandler
 {
@@ -44,8 +43,8 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 	@Override
 	public void updateEntity()
 	{
-		if(!worldObj.isRemote && isMaster)
-			network.updateNetwork(this.worldObj);
+		if (!worldObj.isRemote && isMaster)
+			network.updateNetwork(worldObj);
 	}
 
 	@Override
@@ -57,37 +56,38 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 
 		tag.setBoolean("master", isMaster);
 
-		if(isMaster)
+		if (isMaster)
 			network.writeToNBT(tag);
 	}
 
 	private static void writeDirectionToNBT(NBTTagCompound tag, ForgeDirection dir)
 	{
-		byte index = -1;;
+		byte index = -1;
+		;
 
-		if(dir!=null)
-			switch(dir)
+		if (dir != null)
+			switch (dir)
 			{
-				case DOWN:
-					index = 0;
+			case DOWN:
+				index = 0;
 				break;
-				case UP:
-					index = 1;
+			case UP:
+				index = 1;
 				break;
-				case NORTH:
-					index = 2;
+			case NORTH:
+				index = 2;
 				break;
-				case SOUTH:
-					index = 3;
+			case SOUTH:
+				index = 3;
 				break;
-				case WEST:
-					index = 4;
+			case WEST:
+				index = 4;
 				break;
-				case EAST:
-					index = 5;
+			case EAST:
+				index = 5;
 				break;
-				default:
-					index = -1;
+			default:
+				index = -1;
 				break;
 			}
 
@@ -103,7 +103,7 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 
 		isMaster = tag.getBoolean("master");
 
-		if(isMaster)
+		if (isMaster)
 			network = EnergyNetwork.readFromNBT(tag);
 	}
 
@@ -113,7 +113,7 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 
 		ForgeDirection dir = ForgeDirection.getOrientation(index);
 
-		if(dir==ForgeDirection.UNKNOWN)
+		if (dir == ForgeDirection.UNKNOWN)
 			dir = null;
 
 		return dir;
@@ -137,20 +137,21 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 
 	public void changeExtracting()
 	{
-		if(extract!=null)
+		if (extract != null)
 		{
-			if(!worldObj.isRemote)
-				network.inputs.remove(new Coords(xCoord + extract.offsetX, yCoord + extract.offsetY, zCoord + extract.offsetZ, extract.getOpposite()));
+			if (!worldObj.isRemote)
+				network.inputs
+						.remove(new Coords(xCoord + extract.offsetX, yCoord + extract.offsetY, zCoord + extract.offsetZ, extract.getOpposite()));
 
 			extract = null;
 		}
 		else
-			for(ForgeDirection dir : connections)
-				if(dir!=null && canChangeState(dir))
+			for (ForgeDirection dir : connections)
+				if ((dir != null) && canChangeState(dir))
 				{
 					extract = dir;
 
-					if(!worldObj.isRemote)
+					if (!worldObj.isRemote)
 					{
 						Coords temp = new Coords(xCoord + extract.offsetX, yCoord + extract.offsetY, zCoord + extract.offsetZ, extract.getOpposite());
 
@@ -164,14 +165,14 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 
 	public void updateConnections()
 	{
-		if(canConnect(xCoord, yCoord + 1, zCoord))
+		if (canConnect(xCoord, yCoord + 1, zCoord))
 		{
 			connections[0] = ForgeDirection.UP;
 			updateNetwork(ForgeDirection.UP);
 		}
 		else
 		{
-			if(connections[0]!=null && !worldObj.isRemote)
+			if ((connections[0] != null) && !worldObj.isRemote)
 			{
 				ForgeDirection dir = connections[0];
 
@@ -183,14 +184,14 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 			connections[0] = null;
 		}
 
-		if(canConnect(xCoord, yCoord - 1, zCoord))
+		if (canConnect(xCoord, yCoord - 1, zCoord))
 		{
 			connections[1] = ForgeDirection.DOWN;
 			updateNetwork(ForgeDirection.DOWN);
 		}
 		else
 		{
-			if(connections[1]!=null && !worldObj.isRemote)
+			if ((connections[1] != null) && !worldObj.isRemote)
 			{
 				ForgeDirection dir = connections[1];
 
@@ -202,14 +203,14 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 			connections[1] = null;
 		}
 
-		if(canConnect(xCoord, yCoord, zCoord + 1))
+		if (canConnect(xCoord, yCoord, zCoord + 1))
 		{
 			connections[2] = ForgeDirection.SOUTH;
 			updateNetwork(ForgeDirection.SOUTH);
 		}
 		else
 		{
-			if(connections[2]!=null && !worldObj.isRemote)
+			if ((connections[2] != null) && !worldObj.isRemote)
 			{
 				ForgeDirection dir = connections[2];
 
@@ -220,14 +221,14 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 			connections[2] = null;
 		}
 
-		if(canConnect(xCoord, yCoord, zCoord - 1))
+		if (canConnect(xCoord, yCoord, zCoord - 1))
 		{
 			connections[3] = ForgeDirection.NORTH;
 			updateNetwork(ForgeDirection.NORTH);
 		}
 		else
 		{
-			if(connections[3]!=null && !worldObj.isRemote)
+			if ((connections[3] != null) && !worldObj.isRemote)
 			{
 				ForgeDirection dir = connections[3];
 
@@ -239,14 +240,14 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 			connections[3] = null;
 		}
 
-		if(canConnect(xCoord + 1, yCoord, zCoord))
+		if (canConnect(xCoord + 1, yCoord, zCoord))
 		{
 			connections[4] = ForgeDirection.EAST;
 			updateNetwork(ForgeDirection.EAST);
 		}
 		else
 		{
-			if(connections[4]!=null && !worldObj.isRemote)
+			if ((connections[4] != null) && !worldObj.isRemote)
 			{
 				ForgeDirection dir = connections[4];
 
@@ -258,14 +259,14 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 			connections[4] = null;
 		}
 
-		if(canConnect(xCoord - 1, yCoord, zCoord))
+		if (canConnect(xCoord - 1, yCoord, zCoord))
 		{
 			connections[5] = ForgeDirection.WEST;
 			updateNetwork(ForgeDirection.WEST);
 		}
 		else
 		{
-			if(connections[5]!=null && !worldObj.isRemote)
+			if ((connections[5] != null) && !worldObj.isRemote)
 			{
 				ForgeDirection dir = connections[5];
 
@@ -277,55 +278,52 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 			connections[5] = null;
 		}
 
-		if(!worldObj.isRemote)
+		if (!worldObj.isRemote)
 		{
-			if(network==null)
+			if (network == null)
 			{
 				network = new EnergyNetwork(1);
-				this.isMaster = true;
+				isMaster = true;
 			}
 
-			if(extract!=null && !canChangeState(extract))
+			if ((extract != null) && !canChangeState(extract))
 			{
-				network.inputs.remove(new Coords(xCoord + extract.offsetX, yCoord + extract.offsetY, zCoord + extract.offsetZ, extract.getOpposite()));
-				extract=null;
+				network.inputs
+						.remove(new Coords(xCoord + extract.offsetX, yCoord + extract.offsetY, zCoord + extract.offsetZ, extract.getOpposite()));
+				extract = null;
 			}
 
-			for(ForgeDirection dir : connections)
-			{
-				if(dir!=null && canChangeState(dir))
+			for (ForgeDirection dir : connections)
+				if ((dir != null) && canChangeState(dir))
 				{
 					Coords temp = new Coords(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ, dir.getOpposite());
 
-					if(extract!=dir)
+					if (extract != dir)
 					{
-						if(!network.outputs.contains(temp))
+						if (!network.outputs.contains(temp))
 							network.outputs.add(temp);
 					}
-					else
-						if(!network.inputs.contains(temp))
-							network.inputs.add(temp);
+					else if (!network.inputs.contains(temp))
+						network.inputs.add(temp);
 				}
-			}
 		}
 	}
 
 	public void updateNetwork(ForgeDirection dir)
 	{
-		if(!worldObj.isRemote)
+		if (!worldObj.isRemote)
 		{
 			TileEntity tile = worldObj.getTileEntity(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ);
 
-			if(tile instanceof TileCopperWire)
+			if (tile instanceof TileCopperWire)
 			{
 				TileCopperWire wire = (TileCopperWire) tile;
 
-				if(wire.network!=null)
-				{
-					if(wire.network!=network)
-						if(network!=null)
+				if (wire.network != null)
+					if (wire.network != network)
+						if (network != null)
 						{
-							if(network.size < wire.network.size)
+							if (network.size < wire.network.size)
 							{
 								network = wire.network;
 								network.changeSize(1);
@@ -345,32 +343,31 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 							network = wire.network;
 							network.changeSize(1);
 						}
-				}
 			}
 		}
 	}
 
 	private void updateNetworkToOthers(ForgeDirection ignore)
 	{
-		if(!worldObj.isRemote)
-		{
-			for(ForgeDirection dir : connections)
-				if(dir!=null && dir!=ignore)
-					if(worldObj.getBlock(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ) == InitBlocks.blockCopperWire)
+		if (!worldObj.isRemote)
+			for (ForgeDirection dir : connections)
+				if ((dir != null) && (dir != ignore))
+					if (worldObj.getBlock(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ) == InitBlocks.blockCopperWire)
 					{
-						TileCopperWire wire = (TileCopperWire) worldObj.getTileEntity(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ);
+						TileCopperWire wire = (TileCopperWire) worldObj.getTileEntity(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord
+								+ dir.offsetZ);
 
-						if(wire.network!=null && wire.network.size!=0)
+						if ((wire.network != null) && (wire.network.size != 0))
 							wire.network = null;
 
 						network.changeSize(1);
 
-						if(wire.network!=null)
+						if (wire.network != null)
 						{
-							if(wire.isMaster)
+							if (wire.isMaster)
 								wire.isMaster = false;
 
-							if(!wire.network.equals(network))
+							if (!wire.network.equals(network))
 							{
 								wire.network = network;
 								wire.updateNetworkToOthers(dir.getOpposite());
@@ -379,56 +376,53 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 						else
 							wire.network = network;
 					}
-					else if(canChangeState(dir))
+					else if (canChangeState(dir))
 					{
 						Coords temp = new Coords(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ, dir.getOpposite());
 
-						if(dir!=extract)
+						if (dir != extract)
 						{
-							if(!network.outputs.contains(temp))
+							if (!network.outputs.contains(temp))
 								network.outputs.add(temp);
 						}
-						else
-							if(!network.inputs.contains(temp))
-								network.inputs.add(temp);
+						else if (!network.inputs.contains(temp))
+							network.inputs.add(temp);
 					}
-		}
 	}
 
 	public void removeFromNetwork()
 	{
-		if(!worldObj.isRemote)
-		{
-			if(network!=null)
+		if (!worldObj.isRemote)
+			if (network != null)
 			{
 				network.changeSize(-1);
 
-				if(network.size==0)
+				if (network.size == 0)
 					network = null;
 				else
-				{
-					for(ForgeDirection dir : connections)
-						if(dir!=null)
-							if(!canChangeState(dir))
+					for (ForgeDirection dir : connections)
+						if (dir != null)
+							if (!canChangeState(dir))
 							{
-								TileCopperWire wire = (TileCopperWire) worldObj.getTileEntity(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ);
+								TileCopperWire wire = (TileCopperWire) worldObj.getTileEntity(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord
+										+ dir.offsetZ);
 
 								network.changeSize(-network.size);
 								wire.network = new EnergyNetwork(1);
 								wire.isMaster = true;
 							}
-							else if(dir==extract)
-								network.inputs.remove(new Coords(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ, dir.getOpposite()));
+							else if (dir == extract)
+								network.inputs
+										.remove(new Coords(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ, dir.getOpposite()));
 							else
-								network.outputs.remove(new Coords(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ, dir.getOpposite()));
-				}
+								network.outputs
+										.remove(new Coords(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ, dir.getOpposite()));
 			}
-		}
 	}
 
 	private boolean canConnect(int x, int y, int z)
 	{
-		return worldObj.getBlock(x, y, z) == InitBlocks.blockCopperWire || isEnergyHandler(x, y, z);
+		return (worldObj.getBlock(x, y, z) == InitBlocks.blockCopperWire) || isEnergyHandler(x, y, z);
 	}
 
 	private boolean isEnergyHandler(int x, int y, int z)
@@ -438,8 +432,8 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 
 	public boolean canChangeState(ForgeDirection dir)
 	{
-		if(worldObj.getBlock(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ) != InitBlocks.blockCopperWire &&
-				isEnergyHandler(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ))
+		if ((worldObj.getBlock(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ) != InitBlocks.blockCopperWire)
+				&& isEnergyHandler(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ))
 			return true;
 		return false;
 	}
@@ -449,19 +443,19 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 		ForgeDirection main = null;
 		boolean isOpposite = false;
 
-		for(ForgeDirection dir : connections)
+		for (ForgeDirection dir : connections)
 		{
-			if(main==null && dir!=null)
+			if ((main == null) && (dir != null))
 				main = dir;
 
-			if(dir!=null && main!=dir)
-				if(!areDirectionsOpposite(main, dir) && !areDirectionsOpposite(dir, main))
+			if ((dir != null) && (main != dir))
+				if (!areDirectionsOpposite(main, dir) && !areDirectionsOpposite(dir, main))
 					return null;
 				else
 					isOpposite = true;
 		}
 
-		if(isOpposite)
+		if (isOpposite)
 			return main;
 
 		return null;
@@ -469,11 +463,11 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 
 	private boolean areDirectionsOpposite(ForgeDirection dir1, ForgeDirection dir2)
 	{
-		if(dir1 == ForgeDirection.UP && dir2 == ForgeDirection.DOWN)
+		if ((dir1 == ForgeDirection.UP) && (dir2 == ForgeDirection.DOWN))
 			return true;
-		if(dir1 == ForgeDirection.SOUTH && dir2 == ForgeDirection.NORTH)
+		if ((dir1 == ForgeDirection.SOUTH) && (dir2 == ForgeDirection.NORTH))
 			return true;
-		if(dir1 == ForgeDirection.EAST && dir2 == ForgeDirection.WEST)
+		if ((dir1 == ForgeDirection.EAST) && (dir2 == ForgeDirection.WEST))
 			return true;
 
 		return false;
@@ -489,17 +483,13 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 	public int receiveEnergy(ForgeDirection from, int maxReceive, boolean simulate)
 	{
 		/*
-		if(buffer.getEnergy()==null || (buffer.getEnergy()!=null && buffer.getEnergy().getEnergy() == resource.getEnergy()))
-		{
-			int amount = buffer.fill(resource, doFill);
-
-			if(amount > 0)
-				received = from;
-			else
-				received = null;
-
-			return amount;
-		}
+		 * if(buffer.getEnergy()==null || (buffer.getEnergy()!=null &&
+		 * buffer.getEnergy().getEnergy() == resource.getEnergy())) { int amount
+		 * = buffer.fill(resource, doFill);
+		 * 
+		 * if(amount > 0) received = from; else received = null;
+		 * 
+		 * return amount; }
 		 */
 		return 0;
 
@@ -509,8 +499,8 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 	{
 		private static final byte ticksTillUpdate = 4;
 
-		private static final short maxExtractPerTile = 50*ticksTillUpdate;
-		private static final short maxTransferPerTile = 100*ticksTillUpdate;
+		private static final short maxExtractPerTile = 50 * ticksTillUpdate;
+		private static final short maxTransferPerTile = 100 * ticksTillUpdate;
 
 		public IEnergyStorage buffer;
 		public int size;
@@ -524,14 +514,14 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 		{
 			this.size = size;
 
-			this.buffer = new EnergyStorage(200*size);
+			buffer = new EnergyStorage(200 * size);
 		}
 
 		public void updateNetwork(World world)
 		{
 			ticksSinceLastUpdate++;
 
-			if(ticksSinceLastUpdate > ticksTillUpdate)
+			if (ticksSinceLastUpdate > ticksTillUpdate)
 			{
 				ticksSinceLastUpdate = 0;
 
@@ -545,33 +535,31 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 			int distribute = 0;
 			int tempSize = inputs.size();
 
-			for(Coords coords : inputs)
+			for (Coords coords : inputs)
 			{
-				if(tempSize!=0)
-					distribute = (buffer.getMaxEnergyStored()-buffer.getEnergyStored())/tempSize;
+				if (tempSize != 0)
+					distribute = (buffer.getMaxEnergyStored() - buffer.getEnergyStored()) / tempSize;
 				else
 					break;
 
-				if(coords!=null)
-				{
-					if(buffer.getEnergyStored()!=buffer.getMaxEnergyStored())
+				if (coords != null)
+					if (buffer.getEnergyStored() != buffer.getMaxEnergyStored())
 					{
-						if(world.getTileEntity(coords.x, coords.y, coords.z) instanceof IEnergyHandler)
+						if (world.getTileEntity(coords.x, coords.y, coords.z) instanceof IEnergyHandler)
 						{
 							IEnergyHandler tile = (IEnergyHandler) world.getTileEntity(coords.x, coords.y, coords.z);
-							if(tile!=null)
+							if (tile != null)
 							{
-										int canFill = buffer.receiveEnergy(tile.getEnergyStored(coords.dir), true);
+								int canFill = buffer.receiveEnergy(tile.getEnergyStored(coords.dir), true);
 
-										buffer.receiveEnergy(tile.extractEnergy(coords.dir, canFill, false), false);
+								buffer.receiveEnergy(tile.extractEnergy(coords.dir, canFill, false), false);
 
-										tempSize--;
+								tempSize--;
 							}
 						}
 					}
 					else
 						break;
-				}
 			}
 		}
 
@@ -580,26 +568,25 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 			int distribute = 0;
 			int tempSize = outputs.size();
 
-			for(Coords coords : outputs)
+			for (Coords coords : outputs)
 			{
-				if(tempSize!=0)
-					distribute = buffer.getEnergyStored()/tempSize;
+				if (tempSize != 0)
+					distribute = buffer.getEnergyStored() / tempSize;
 				else
 					break;
 
-				if(coords!=null)
-				{
-					if(buffer.getEnergyStored()>0)
+				if (coords != null)
+					if (buffer.getEnergyStored() > 0)
 					{
-						if(world.getTileEntity(coords.x, coords.y, coords.z) instanceof IEnergyHandler)
+						if (world.getTileEntity(coords.x, coords.y, coords.z) instanceof IEnergyHandler)
 						{
 							IEnergyHandler tile = (IEnergyHandler) world.getTileEntity(coords.x, coords.y, coords.z);
 
-							if(tile!=null)
+							if (tile != null)
 							{
 								short transfered = 0;
 
-								transfered = (short) tile.receiveEnergy(coords.dir, this.maxTransferPerTile, false);
+								transfered = (short) tile.receiveEnergy(coords.dir, maxTransferPerTile, false);
 
 								buffer.extractEnergy(transfered, false);
 
@@ -609,13 +596,12 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 					}
 					else
 						break;
-				}
 			}
 		}
 
 		public void changeSize(int with)
 		{
-			this.size += with;
+			size += with;
 		}
 
 		public void writeToNBT(NBTTagCompound tag)
@@ -639,10 +625,10 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 		{
 			NBTTagList tagList = new NBTTagList();
 
-			for(int i=0;i<list.size();i++)
+			for (int i = 0; i < list.size(); i++)
 			{
 				Coords temp = list.get(i);
-				if(temp!=null)
+				if (temp != null)
 				{
 					NBTTagCompound coordTag = new NBTTagCompound();
 
@@ -662,8 +648,8 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 
 			EnergyNetwork buffer = new EnergyNetwork(temp.getInteger("bufferSize"));
 
-			buffer.buffer = new EnergyStorage(200*buffer.size);
-			buffer.readFromNBT(temp);
+			buffer.buffer = new EnergyStorage(200 * buffer.size);
+			EnergyNetwork.readFromNBT(temp);
 
 			readArrayListFromNBT(temp.getCompoundTag("inputList"), buffer.inputs);
 			readArrayListFromNBT(temp.getCompoundTag("outputList"), buffer.outputs);
@@ -700,10 +686,10 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 		@Override
 		public boolean equals(Object obj)
 		{
-			if(obj instanceof Coords)
+			if (obj instanceof Coords)
 			{
 				Coords coord = (Coords) obj;
-				if(x == coord.x && y==coord.y && z==coord.z && dir==coord.dir)
+				if ((x == coord.x) && (y == coord.y) && (z == coord.z) && (dir == coord.dir))
 					return true;
 			}
 			return false;

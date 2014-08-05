@@ -31,47 +31,51 @@ public class BlockEngravedVanilla extends BlockEngravedSolid
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see net.minecraft.block.Block#getIcon(int, int)
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(int side, int metadata)
 	{
-		return this.icon[metadata];
+		return icon[metadata];
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister ir)
 	{
-		this.icon[0] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedDiamond");
-		this.icon[1] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedGold");
-		this.icon[2] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedIron");
-		this.icon[3] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedLapis");
-		this.icon[4] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedStone");
+		icon[0] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedDiamond");
+		icon[1] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedGold");
+		icon[2] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedIron");
+		icon[3] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedLapis");
+		icon[4] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedStone");
 	}
 
 	public BlockEngravedVanilla()
 	{
 		super();
-		this.setBlockName("blockEngravedVanilla");
+		setBlockName("blockEngravedVanilla");
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * @see net.minecraft.item.Item#getSubItems(net.minecraft.item.Item, net.minecraft.creativetab.CreativeTabs, java.util.List)
+	 * 
+	 * @see net.minecraft.item.Item#getSubItems(net.minecraft.item.Item,
+	 * net.minecraft.creativetab.CreativeTabs, java.util.List)
 	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(Item item, CreativeTabs tab, List l)
 	{
-		for (int var4 = 0; var4 < this.icon.length; ++var4)
+		for (int var4 = 0; var4 < icon.length; ++var4)
 			l.add(new ItemStack(InitBlocks.blockEngravedVanilla, 1, var4));
 	}
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see net.minecraft.block.Block#damageDropped(int)
 	 */
 	@Override

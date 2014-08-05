@@ -45,8 +45,8 @@ public abstract class BlockContainerMod extends BlockContainer
 	protected BlockContainerMod(Material mat)
 	{
 		super(mat);
-		this.setCreativeTab(Steamcraft.tabSC2);
-		this.setHardness(5.0F);
+		setCreativeTab(Steamcraft.tabSC2);
+		setHardness(5.0F);
 	}
 
 	public String getOwner()
@@ -68,7 +68,7 @@ public abstract class BlockContainerMod extends BlockContainer
 	{
 		TileEntity te = world.getTileEntity(x, y, z);
 
-		if (te instanceof IMachine && ((IMachine) te).isActive())
+		if ((te instanceof IMachine) && ((IMachine) te).isActive())
 			return super.getLightValue(world, x, y, z) + 8;
 
 		return super.getLightValue(world, x, y, z);
@@ -78,6 +78,6 @@ public abstract class BlockContainerMod extends BlockContainer
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister ir)
 	{
-		this.blockIcon = ir.registerIcon(LibInfo.PREFIX + this.getUnlocalizedName().substring(5));
+		blockIcon = ir.registerIcon(LibInfo.PREFIX + getUnlocalizedName().substring(5));
 	}
 }

@@ -26,15 +26,15 @@ public class ConfigWorldGen
 	public static final String CATEGORY_GEN_CLUSTERS = "clusters per chunk";
 	public static final String CATEGORY_GEN_HEIGHT = "heights";
 
-	//Generation
+	// Generation
 	public static boolean generationEnabled;
 
 	public static boolean overworldGenerationEnabled;
 	public static boolean netherGenerationEnabled;
 	public static boolean endGenerationEnabled;
 
-	public static boolean uraniumOreGenEnabled, brimstoneOreGenEnabled, borniteOreGenEnabled, phosphateOreGenEnabled, aluminumOreGenEnabled, copperOreGenEnabled,
-		tinOreGenEnabled, zincOreGenEnabled;
+	public static boolean uraniumOreGenEnabled, brimstoneOreGenEnabled, borniteOreGenEnabled, phosphateOreGenEnabled, aluminumOreGenEnabled,
+			copperOreGenEnabled, tinOreGenEnabled, zincOreGenEnabled;
 
 	public static boolean netherEtheriumCrystalGenEnabled;
 	public static boolean endEtheriumCrystalGenEnabled;
@@ -43,7 +43,7 @@ public class ConfigWorldGen
 
 	public static boolean brassTreeGenEnabled;
 
-	//Clusters
+	// Clusters
 	public static int uraniumCluster, brimstoneCluster, borniteCluster, phosphateCluster, aluminumCluster, copperCluster, tinCluster, zincCluster;
 
 	public static int netherEtheriumCrystalCluster;
@@ -53,18 +53,18 @@ public class ConfigWorldGen
 
 	public static int brassTreeGenCluster;
 
-	//Heights Max
-	public static int uraniumHeightMax, brimstoneHeightMax, borniteHeightMax, phosphateHeightMax, aluminumHeightMax, copperHeightMax,
-	tinHeightMax, zincHeightMax;
+	// Heights Max
+	public static int uraniumHeightMax, brimstoneHeightMax, borniteHeightMax, phosphateHeightMax, aluminumHeightMax, copperHeightMax, tinHeightMax,
+			zincHeightMax;
 
 	public static int netherEtheriumCrystalHeightMax;
 	public static int endEtheriumCrystalHeightMax;
 
 	public static int slateHeightMax;
 
-	//Heights Min
-	public static int uraniumHeightMin, brimstoneHeightMin, borniteHeightMin, phosphateHeightMin, aluminumHeightMin, copperHeightMin,
-		tinHeightMin, zincHeightMin;
+	// Heights Min
+	public static int uraniumHeightMin, brimstoneHeightMin, borniteHeightMin, phosphateHeightMin, aluminumHeightMin, copperHeightMin, tinHeightMin,
+			zincHeightMin;
 
 	public static int netherEtheriumCrystalHeightMin;
 	public static int endEtheriumCrystalHeightMin;
@@ -78,7 +78,7 @@ public class ConfigWorldGen
 		{
 			config.load();
 
-			//Generation
+			// Generation
 			generationEnabled = config.get(CATEGORY_GEN_OPTIONS, "ALL SC2 World Gen, everywhere", true).getBoolean(true);
 
 			overworldGenerationEnabled = config.get(CATEGORY_GEN_OPTIONS, "All Overworld Generation", true).getBoolean(true);
@@ -99,7 +99,7 @@ public class ConfigWorldGen
 
 			brassTreeGenEnabled = config.get(CATEGORY_GEN_OPTIONS, "Brass Tree Gen", true).getBoolean(true);
 
-			//Clusters
+			// Clusters
 			uraniumCluster = config.get(CATEGORY_GEN_CLUSTERS, "Uranium Ore", 1).getInt();
 			brimstoneCluster = config.get(CATEGORY_GEN_CLUSTERS, "Brimstone Ore", 5).getInt();
 			borniteCluster = config.get(CATEGORY_GEN_CLUSTERS, "Bornite Ore", 7).getInt();
@@ -113,7 +113,7 @@ public class ConfigWorldGen
 			endEtheriumCrystalCluster = config.get(CATEGORY_GEN_CLUSTERS, "Etheruim Crystal (End)", 10).getInt();
 			brassTreeGenCluster = config.get(CATEGORY_GEN_CLUSTERS, "Brass Tree (Forest Type Biomes Only)", 2).getInt();
 
-			//Heights
+			// Heights
 			uraniumHeightMax = config.get(CATEGORY_GEN_HEIGHT, "Uranium Ore Max", 24).getInt();
 			uraniumHeightMin = config.get(CATEGORY_GEN_HEIGHT, "Uranium Ore Min", 4).getInt();
 
@@ -146,18 +146,14 @@ public class ConfigWorldGen
 
 			endEtheriumCrystalHeightMax = config.get(CATEGORY_GEN_HEIGHT, "Etherium Crystal Max (End)", 100).getInt();
 			endEtheriumCrystalHeightMin = config.get(CATEGORY_GEN_HEIGHT, "Etherium Crystal Min (End)", 20).getInt();
-		}
-		catch (Exception e)
+		} catch (Exception e)
 		{
 			LoggerSteamcraft.log(Level.SEVERE, "Failed to load configuration file:" + e);
-		}
-		finally
+		} finally
 		{
-			if (config.hasChanged()) {
+			if (config.hasChanged())
 				config.save();
-			}
 		}
 	}
-
 
 }

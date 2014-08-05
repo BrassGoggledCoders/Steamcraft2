@@ -13,11 +13,8 @@
 package steamcraft.common.packets;
 
 import io.netty.buffer.ByteBuf;
-import net.minecraft.client.Minecraft;
 import net.minecraft.world.World;
 import net.minecraftforge.common.DimensionManager;
-import net.minecraftforge.fluids.FluidRegistry;
-import net.minecraftforge.fluids.FluidStack;
 import steamcraft.common.tiles.TileCopperWire;
 import steamcraft.common.tiles.TileCopperWire.EnergyNetwork;
 import cpw.mods.fml.common.network.ByteBufUtils;
@@ -27,7 +24,7 @@ import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 
 /**
  * @author decebaldecebal
- *
+ * 
  */
 public class EnergyNetworkPacket implements IMessage
 {
@@ -38,11 +35,13 @@ public class EnergyNetworkPacket implements IMessage
 	private int z;
 	private String fluidName;
 
-	public EnergyNetworkPacket(){} //REQUIRED
+	public EnergyNetworkPacket()
+	{
+	} // REQUIRED
 
 	public EnergyNetworkPacket(int worldId, int x, int y, int z, float fluidScaled, String fluidName)
 	{
-		this.worldId = worldId;
+		EnergyNetworkPacket.worldId = worldId;
 		this.x = x;
 		this.y = y;
 		this.z = z;
@@ -79,15 +78,16 @@ public class EnergyNetworkPacket implements IMessage
 		{
 			World world = DimensionManager.getWorld(worldId);
 
-			if(world.getTileEntity(message.x, message.y, message.z) instanceof TileCopperWire)
+			if (world.getTileEntity(message.x, message.y, message.z) instanceof TileCopperWire)
 			{
 				TileCopperWire pipe = (TileCopperWire) world.getTileEntity(message.x, message.y, message.z);
 
-				if(pipe.network==null)
+				if (pipe.network == null)
 					pipe.network = new EnergyNetwork(1);
 
-				//pipe.network.fluidScaled = message.fluidScaled;
-				//pipe.network.buffer.(new FluidStack(FluidRegistry.getFluid(message.fluidName), 0));
+				// pipe.network.fluidScaled = message.fluidScaled;
+				// pipe.network.buffer.(new
+				// FluidStack(FluidRegistry.getFluid(message.fluidName), 0));
 			}
 
 			return null;

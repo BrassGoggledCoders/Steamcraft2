@@ -24,15 +24,15 @@ import net.minecraft.world.World;
 
 /**
  * @author Surseance
- *
+ * 
  */
 public class ItemModSword extends ItemModTool
 {
 	public ItemModSword(ToolMaterial toolMat)
 	{
 		super(toolMat.getDamageVsEntity() + 4.0F, toolMat, blocksEffectiveAgainst);
-		this.maxStackSize = 1;
-		this.setMaxDamage(toolMat.getMaxUses());
+		maxStackSize = 1;
+		setMaxDamage(toolMat.getMaxUses());
 	}
 
 	@Override
@@ -43,7 +43,7 @@ public class ItemModSword extends ItemModTool
 		else
 		{
 			Material material = block.getMaterial();
-			return material != Material.plants && material != Material.vine && material != Material.coral && material != Material.leaves ? 1.0F
+			return (material != Material.plants) && (material != Material.vine) && (material != Material.coral) && (material != Material.leaves) ? 1.0F
 					: 1.5F;
 		}
 	}
@@ -72,7 +72,7 @@ public class ItemModSword extends ItemModTool
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
 	{
-		player.setItemInUse(stack, this.getMaxItemUseDuration(stack));
+		player.setItemInUse(stack, getMaxItemUseDuration(stack));
 		return stack;
 	}
 
@@ -85,13 +85,13 @@ public class ItemModSword extends ItemModTool
 	@Override
 	public int getItemEnchantability()
 	{
-		return this.toolMaterial.getEnchantability();
+		return toolMaterial.getEnchantability();
 	}
 
 	@Override
 	public boolean getIsRepairable(ItemStack stack1, ItemStack stack2)
 	{
 		Item item = stack2.getItem();
-		return this.toolMaterial.func_150995_f() == item ? true : super.getIsRepairable(stack1, stack2);
+		return toolMaterial.func_150995_f() == item ? true : super.getIsRepairable(stack1, stack2);
 	}
 }

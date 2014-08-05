@@ -25,7 +25,7 @@ import steamcraft.common.tiles.container.ContainerCharger;
 
 /**
  * @author Decebaldecebal
- *
+ * 
  */
 public class GuiCharger extends GuiContainer
 {
@@ -37,7 +37,7 @@ public class GuiCharger extends GuiContainer
 	{
 		super(new ContainerCharger(inventory, tile2));
 
-		this.tile = tile2;
+		tile = tile2;
 	}
 
 	@Override
@@ -49,27 +49,28 @@ public class GuiCharger extends GuiContainer
 		drawTexturedModalRect(guiLeft, guiTop, 0, 0, xSize, ySize);
 
 		int var8 = tile.getEnergyScaled(16);
-		this.drawTexturedModalRect(guiLeft + 12, guiTop + 64 - var8, 176, 56 - var8, 16, var8 + 1);
+		drawTexturedModalRect(guiLeft + 12, (guiTop + 64) - var8, 176, 56 - var8, 16, var8 + 1);
 	}
 
 	@Override
 	protected void drawGuiContainerForegroundLayer(int x, int y)
 	{
-		this.drawString(fontRendererObj, "Energy: ", 26, 10, -1);
-		this.drawString(fontRendererObj, getEnergyUnits(tile.getEnergyStored(ForgeDirection.UNKNOWN)) +
-				"/" + getEnergyUnits(tile.getMaxEnergyStored(ForgeDirection.UNKNOWN)) + " RF", 30, 20, -1);
+		drawString(fontRendererObj, "Energy: ", 26, 10, -1);
+		drawString(fontRendererObj,
+				getEnergyUnits(tile.getEnergyStored(ForgeDirection.UNKNOWN)) + "/" + getEnergyUnits(tile.getMaxEnergyStored(ForgeDirection.UNKNOWN))
+						+ " RF", 30, 20, -1);
 
-		this.drawString(fontRendererObj, "Transfer: ", 26, 30, -1);
-		this.drawString(fontRendererObj, tile.transferRate + " RF", 30, 40, -1);
+		drawString(fontRendererObj, "Transfer: ", 26, 30, -1);
+		drawString(fontRendererObj, TileCharger.transferRate + " RF", 30, 40, -1);
 	}
 
 	private String getEnergyUnits(int number)
 	{
-		number/=1000;
+		number /= 1000;
 
-		if(number>=1000)
+		if (number >= 1000)
 		{
-			number/=1000;
+			number /= 1000;
 			return number + "M";
 		}
 

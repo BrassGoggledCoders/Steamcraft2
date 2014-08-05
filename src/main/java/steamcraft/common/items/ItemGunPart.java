@@ -26,7 +26,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author Surseance
- *
+ * 
  */
 public class ItemGunPart extends BaseItemWithMetadata
 {
@@ -35,23 +35,23 @@ public class ItemGunPart extends BaseItemWithMetadata
 	public ItemGunPart()
 	{
 		super();
-		this.setMaxStackSize(64);
+		setMaxStackSize(64);
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister ir)
 	{
-		this.itemIcon[0] = ir.registerIcon(LibInfo.PREFIX + "itemStock");
-		this.itemIcon[1] = ir.registerIcon(LibInfo.PREFIX + "itemMusketBarrel");
-		this.itemIcon[2] = ir.registerIcon(LibInfo.PREFIX + "itemRifleBarrel");
-		this.itemIcon[3] = ir.registerIcon(LibInfo.PREFIX + "itemLock");
-		this.itemIcon[4] = ir.registerIcon(LibInfo.PREFIX + "itemBrassGunFrame");
-		this.itemIcon[5] = ir.registerIcon(LibInfo.PREFIX + "itemCastIronGunFrame");
-		this.itemIcon[6] = ir.registerIcon(LibInfo.PREFIX + "itemGreenFocus");
-		this.itemIcon[7] = ir.registerIcon(LibInfo.PREFIX + "itemBlueFocus");
-		this.itemIcon[8] = ir.registerIcon(LibInfo.PREFIX + "itemPowerCore");
-		this.itemIcon[9] = ir.registerIcon(LibInfo.PREFIX + "itemOverchargedPowerCore");
+		itemIcon[0] = ir.registerIcon(LibInfo.PREFIX + "itemStock");
+		itemIcon[1] = ir.registerIcon(LibInfo.PREFIX + "itemMusketBarrel");
+		itemIcon[2] = ir.registerIcon(LibInfo.PREFIX + "itemRifleBarrel");
+		itemIcon[3] = ir.registerIcon(LibInfo.PREFIX + "itemLock");
+		itemIcon[4] = ir.registerIcon(LibInfo.PREFIX + "itemBrassGunFrame");
+		itemIcon[5] = ir.registerIcon(LibInfo.PREFIX + "itemCastIronGunFrame");
+		itemIcon[6] = ir.registerIcon(LibInfo.PREFIX + "itemGreenFocus");
+		itemIcon[7] = ir.registerIcon(LibInfo.PREFIX + "itemBlueFocus");
+		itemIcon[8] = ir.registerIcon(LibInfo.PREFIX + "itemPowerCore");
+		itemIcon[9] = ir.registerIcon(LibInfo.PREFIX + "itemOverchargedPowerCore");
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
@@ -59,7 +59,7 @@ public class ItemGunPart extends BaseItemWithMetadata
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(Item item, CreativeTabs tab, List l)
 	{
-		for (int var4 = 0; var4 < this.itemIcon.length; ++var4)
+		for (int var4 = 0; var4 < itemIcon.length; ++var4)
 			l.add(new ItemStack(InitItems.itemGunPart, 1, var4));
 	}
 
@@ -67,6 +67,6 @@ public class ItemGunPart extends BaseItemWithMetadata
 	@SideOnly(Side.CLIENT)
 	public IIcon getIconFromDamage(int itemDamage)
 	{
-		return this.itemIcon[itemDamage];
+		return itemIcon[itemDamage];
 	}
 }

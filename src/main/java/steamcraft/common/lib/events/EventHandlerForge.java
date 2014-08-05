@@ -52,7 +52,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class EventHandlerForge
 {
@@ -62,17 +62,17 @@ public class EventHandlerForge
 		/*
 		 * if (event.entityLiving instanceof EntityPlayer) { EntityPlayer player
 		 * = (EntityPlayer) event.entityLiving;
-		 *
+		 * 
 		 * ItemStack legsSlot = player.inventory.armorItemInSlot(1);
-		 *
+		 * 
 		 * if (legsSlot != null) { if (legsSlot.getItem() ==
 		 * ConfigItems.itemLegBraces) { float distToFall = player.fallDistance;
-		 *
+		 * 
 		 * if (distToFall > 3.0F) { player.fallDistance = distToFall * 0.888F;
 		 * legsSlot.damageItem(1, player); } } }
-		 *
+		 * 
 		 * ItemStack bootsSlot = player.inventory.armorItemInSlot(0);
-		 *
+		 * 
 		 * if (bootsSlot != null) { if (!player.isInWater() && player.onGround
 		 * && bootsSlot.getItem() == ConfigItems.itemRollerSkates) {
 		 * player.moveEntityWithHeading(player.moveStrafing, player.moveForward
@@ -81,7 +81,6 @@ public class EventHandlerForge
 		 * ConfigItems.itemRollerSkates) { player.stepHeight = 0.5F; } }
 		 */
 	}
-
 
 	@SubscribeEvent
 	public void entityConstructing(EntityConstructing event)
@@ -106,11 +105,10 @@ public class EventHandlerForge
 			ItemStack is = player.inventory.armorItemInSlot(3);
 
 			if ((is != null) && (is.getItem() == InitItems.brassGoggles))
-			{
 				player.addPotionEffect(new PotionEffect(Potion.nightVision.id, 2, 0, true));
-			}
 		}
 	}
+
 	Block block;
 	Entity entity;
 	int x, y, z;
@@ -119,90 +117,89 @@ public class EventHandlerForge
 	@SideOnly(Side.CLIENT)
 	public void renderOverlay(RenderGameOverlayEvent.Text event)
 	{
-		//if (event.player.inventory.armorItemInSlot(3) != null && event.player.inventory.armorItemInSlot(3).getItem() == ConfigItems.brassGoggles)
-		//{
-			Minecraft mc = Minecraft.getMinecraft();
-			ItemStack helmet = Minecraft.getMinecraft().thePlayer.inventory.armorItemInSlot(3);
-			if(helmet != null && helmet.getItem() == InitItems.itemMonocle)
+		// if (event.player.inventory.armorItemInSlot(3) != null &&
+		// event.player.inventory.armorItemInSlot(3).getItem() ==
+		// ConfigItems.brassGoggles)
+		// {
+		Minecraft mc = Minecraft.getMinecraft();
+		ItemStack helmet = Minecraft.getMinecraft().thePlayer.inventory.armorItemInSlot(3);
+		if ((helmet != null) && (helmet.getItem() == InitItems.itemMonocle))
+		{
+			ScaledResolution res = new ScaledResolution(mc, mc.displayWidth, mc.displayHeight);
+			FontRenderer fontRenderer = mc.fontRenderer;
+			res.getScaledWidth();
+			res.getScaledHeight();
+			mc.entityRenderer.setupOverlayRendering();
+			// String text = "Name: " +
+			// this.block.getLocalizedName().substring(5);
+			int posX = 5;
+			int posY = 5;
+			int posY2 = 15;
+			int posY3 = 25;
+			int posY4 = 35;
+			// int posY5 = 45;
+			int color = 0xCCFF00;
+			// fontRenderer.drawString(text, posX, posY, color);
+			if ((block != null) && (block != Blocks.air))
 			{
-				ScaledResolution res = new ScaledResolution(mc, mc.displayWidth, mc.displayHeight);
-				FontRenderer fontRenderer = mc.fontRenderer;
-				res.getScaledWidth();
-				res.getScaledHeight();
-				mc.entityRenderer.setupOverlayRendering();
-				//String text = "Name: " + this.block.getLocalizedName().substring(5);
-				int posX = 5;
-				int posY = 5;
-				int posY2 = 15;
-				int posY3 = 25;
-				int posY4 = 35;
-				//int posY5 = 45;
-				int color = 0xCCFF00;
-				//fontRenderer.drawString(text, posX, posY, color);
-				if(block != null && block != Blocks.air)
-				{
-					fontRenderer.drawString("Block: " + this.block.getUnlocalizedName().substring(5), posX, posY, color);
-					fontRenderer.drawString("Metadata: " + this.block.getDamageValue(mc.theWorld, x, y, z), posX, posY2, color);
-					fontRenderer.drawString("Hardness: " + this.block.getBlockHardness(mc.theWorld, x, y, z), posX, posY3, color);
-					fontRenderer.drawString("Light Value: " + this.block.getLightValue(), posX, posY4, color);
-				}
-				if(entity != null)
-				{
-					String text = entity.getCommandSenderName();
-					fontRenderer.drawString("Entity: ", mc.displayWidth - 5 - text.length(), posY, color);
-					String text1 = Integer.toString(entity.getEntityId());
-					fontRenderer.drawString("Entity: ", mc.displayWidth - 5 - text1.length(), posY, color);
-				}
-				//fontRenderer.drawString("Material: " + this.block.getMaterial(), posX, posY5, color);
+				fontRenderer.drawString("Block: " + block.getUnlocalizedName().substring(5), posX, posY, color);
+				fontRenderer.drawString("Metadata: " + block.getDamageValue(mc.theWorld, x, y, z), posX, posY2, color);
+				fontRenderer.drawString("Hardness: " + block.getBlockHardness(mc.theWorld, x, y, z), posX, posY3, color);
+				fontRenderer.drawString("Light Value: " + block.getLightValue(), posX, posY4, color);
 			}
-		//}
+			if (entity != null)
+			{
+				String text = entity.getCommandSenderName();
+				fontRenderer.drawString("Entity: ", mc.displayWidth - 5 - text.length(), posY, color);
+				String text1 = Integer.toString(entity.getEntityId());
+				fontRenderer.drawString("Entity: ", mc.displayWidth - 5 - text1.length(), posY, color);
+			}
+			// fontRenderer.drawString("Material: " + this.block.getMaterial(),
+			// posX, posY5, color);
+		}
+		// }
 	}
 
 	@SubscribeEvent
 	@SideOnly(Side.CLIENT)
 	public void onDrawBlockSelectionBox(DrawBlockHighlightEvent event)
 	{
-		if (event.player.inventory.armorItemInSlot(3) != null && event.player.inventory.armorItemInSlot(3).getItem() == InitItems.brassGoggles)
+		if ((event.player.inventory.armorItemInSlot(3) != null) && (event.player.inventory.armorItemInSlot(3).getItem() == InitItems.brassGoggles))
 		{
-			this.drawSelectionBox(event.player, event.target, 0, event.currentItem, event.partialTicks);
+			drawSelectionBox(event.player, event.target, 0, event.currentItem, event.partialTicks);
 			event.setCanceled(true);
 		}
-		else if(event.player.inventory.armorItemInSlot(3) != null && event.player.inventory.armorItemInSlot(3).getItem() == InitItems.itemMonocle)
+		else if ((event.player.inventory.armorItemInSlot(3) != null)
+				&& (event.player.inventory.armorItemInSlot(3).getItem() == InitItems.itemMonocle))
 		{
-			this.drawSelectionBox(event.player, event.target, 0, event.currentItem, event.partialTicks);
+			drawSelectionBox(event.player, event.target, 0, event.currentItem, event.partialTicks);
 			event.setCanceled(true);
 		}
 
-		/*Minecraft mc = Minecraft.getMinecraft();
-		GL13.glActiveTexture(GL13.GL_TEXTURE1);
-		GL13.glActiveTexture(GL13.GL_TEXTURE2);
-		GL13.glActiveTexture(GL13.GL_TEXTURE0);
-		GL11.glMatrixMode(GL11.GL_PROJECTION);
-		GL11.glLoadIdentity();
-		GL11.glOrtho(-1D, 1.0D, -1D, 1.0D, 1.0D, 40D);
-		GL11.glMatrixMode(GL11.GL_MODELVIEW);
-		GL11.glLoadIdentity();
-		GL11.glViewport(0, 0, mc.displayWidth, mc.displayHeight);
-		GL11.glClear(17664);
-		GL11.glColor3f(1.0F, 1.0F, 1.0F);
-		GL11.glBegin(GL11.GL_QUADS);
-		GL11.glTexCoord2f(0.0F, 1.0F);
-		GL11.glVertex3f(-1F, 1.0F, -1F);
-		GL11.glTexCoord2f(0.0F, 0.0F);
-		GL11.glVertex3f(-1F, -1F, -1F);
-		GL11.glTexCoord2f(1.0F, 0.0F);
-		GL11.glVertex3f(1.0F, -1F, -1F);
-		GL11.glTexCoord2f(1.0F, 1.0F);
-		GL11.glVertex3f(1.0F, 1.0F, -1F);
-		GL11.glEnd();*/
+		/*
+		 * Minecraft mc = Minecraft.getMinecraft();
+		 * GL13.glActiveTexture(GL13.GL_TEXTURE1);
+		 * GL13.glActiveTexture(GL13.GL_TEXTURE2);
+		 * GL13.glActiveTexture(GL13.GL_TEXTURE0);
+		 * GL11.glMatrixMode(GL11.GL_PROJECTION); GL11.glLoadIdentity();
+		 * GL11.glOrtho(-1D, 1.0D, -1D, 1.0D, 1.0D, 40D);
+		 * GL11.glMatrixMode(GL11.GL_MODELVIEW); GL11.glLoadIdentity();
+		 * GL11.glViewport(0, 0, mc.displayWidth, mc.displayHeight);
+		 * GL11.glClear(17664); GL11.glColor3f(1.0F, 1.0F, 1.0F);
+		 * GL11.glBegin(GL11.GL_QUADS); GL11.glTexCoord2f(0.0F, 1.0F);
+		 * GL11.glVertex3f(-1F, 1.0F, -1F); GL11.glTexCoord2f(0.0F, 0.0F);
+		 * GL11.glVertex3f(-1F, -1F, -1F); GL11.glTexCoord2f(1.0F, 0.0F);
+		 * GL11.glVertex3f(1.0F, -1F, -1F); GL11.glTexCoord2f(1.0F, 1.0F);
+		 * GL11.glVertex3f(1.0F, 1.0F, -1F); GL11.glEnd();
+		 */
 
-		this.block = event.player.worldObj.getBlock(event.target.blockX, event.target.blockY, event.target.blockZ);
-		this.entity = event.player;
+		block = event.player.worldObj.getBlock(event.target.blockX, event.target.blockY, event.target.blockZ);
+		entity = event.player;
 	}
 
 	private void drawSelectionBox(EntityPlayer player, MovingObjectPosition mop, int i, ItemStack is, float partialTicks)
 	{
-		if (i == 0 && mop.typeOfHit == MovingObjectType.BLOCK)
+		if ((i == 0) && (mop.typeOfHit == MovingObjectType.BLOCK))
 		{
 			GL11.glEnable(GL11.GL_BLEND);
 			// OpenGlHelper.glBlendFunc(770, 771, 1, 0);
@@ -216,10 +213,10 @@ public class EventHandlerForge
 			if (block != Blocks.air)
 			{
 				block.setBlockBoundsBasedOnState(player.worldObj, mop.blockX, mop.blockY, mop.blockZ);
-				double dx = player.lastTickPosX + (player.posX - player.lastTickPosX) * partialTicks;
-				double dy = player.lastTickPosY + (player.posY - player.lastTickPosY) * partialTicks;
-				double dz = player.lastTickPosZ + (player.posZ - player.lastTickPosZ) * partialTicks;
-				this.drawOutlinedBoundingBox(block.getSelectedBoundingBoxFromPool(player.worldObj, mop.blockX, mop.blockY, mop.blockZ)
+				double dx = player.lastTickPosX + ((player.posX - player.lastTickPosX) * partialTicks);
+				double dy = player.lastTickPosY + ((player.posY - player.lastTickPosY) * partialTicks);
+				double dz = player.lastTickPosZ + ((player.posZ - player.lastTickPosZ) * partialTicks);
+				drawOutlinedBoundingBox(block.getSelectedBoundingBoxFromPool(player.worldObj, mop.blockX, mop.blockY, mop.blockZ)
 						.expand(offset, offset, offset).getOffsetBoundingBox(-dx, -dy, -dz));
 			}
 
@@ -228,7 +225,7 @@ public class EventHandlerForge
 			GL11.glDisable(GL11.GL_BLEND);
 		}
 
-		if (i == 0 && mop.typeOfHit == MovingObjectType.ENTITY)
+		if ((i == 0) && (mop.typeOfHit == MovingObjectType.ENTITY))
 		{
 			GL11.glEnable(GL11.GL_BLEND);
 			// OpenGlHelper.glBlendFunc(770, 771, 1, 0);
@@ -242,10 +239,10 @@ public class EventHandlerForge
 			if (entity != null)
 			{
 				entity.setPosition(entity.posX, entity.posY, entity.posZ);
-				double dx = player.lastTickPosX + (player.posX - player.lastTickPosX) * partialTicks;
-				double dy = player.lastTickPosY + (player.posY - player.lastTickPosY) * partialTicks;
-				double dz = player.lastTickPosZ + (player.posZ - player.lastTickPosZ) * partialTicks;
-				this.drawOutlinedBoundingBox(entity.boundingBox.expand(offset, offset, offset).getOffsetBoundingBox(-dx, -dy, -dz));
+				double dx = player.lastTickPosX + ((player.posX - player.lastTickPosX) * partialTicks);
+				double dy = player.lastTickPosY + ((player.posY - player.lastTickPosY) * partialTicks);
+				double dz = player.lastTickPosZ + ((player.posZ - player.lastTickPosZ) * partialTicks);
+				drawOutlinedBoundingBox(entity.boundingBox.expand(offset, offset, offset).getOffsetBoundingBox(-dx, -dy, -dz));
 			}
 
 			GL11.glDepthMask(true);
@@ -282,44 +279,55 @@ public class EventHandlerForge
 		tessellator.addVertex(aaBB.minX, aaBB.maxY, aaBB.maxZ);
 		tessellator.draw();
 	}
-	   @SubscribeEvent
-	    public void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent eventArgs) {
-	        if(eventArgs.modID.equals(LibInfo.ID))
-	            Config.initialise(Steamcraft.configPath);
-	    }
-	   @SubscribeEvent
-		public void onLivingSpawn(LivingSpawnEvent event)
-		{
-			double chance = event.world.rand.nextDouble();
-			int armorType = event.world.rand.nextInt(2);
 
-			if(chance < 0.2)
+	@SubscribeEvent
+	public void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent eventArgs)
+	{
+		if (eventArgs.modID.equals(LibInfo.ID))
+			Config.initialise(Steamcraft.configPath);
+	}
+
+	@SubscribeEvent
+	public void onLivingSpawn(LivingSpawnEvent event)
+	{
+		double chance = event.world.rand.nextDouble();
+		int armorType = event.world.rand.nextInt(2);
+
+		if (chance < 0.2)
+			if ((event.entityLiving instanceof EntityZombie) || (event.entityLiving instanceof EntitySkeleton))
 			{
-				if(event.entityLiving instanceof EntityZombie || event.entityLiving instanceof EntitySkeleton)
-				{
-					int sword = event.world.rand.nextInt(100);
-					int helmet = event.world.rand.nextInt(100);
-					int chestplate = event.world.rand.nextInt(100);
-					int leggings = event.world.rand.nextInt(100);
-					int boots = event.world.rand.nextInt(100);
+				int sword = event.world.rand.nextInt(100);
+				int helmet = event.world.rand.nextInt(100);
+				int chestplate = event.world.rand.nextInt(100);
+				int leggings = event.world.rand.nextInt(100);
+				int boots = event.world.rand.nextInt(100);
 
-					if(armorType == 0)
-					{
-						if(event.entityLiving instanceof EntityZombie && sword < 50) event.entityLiving.setCurrentItemOrArmor(0, new ItemStack(InitItems.swordEtherium));
-						if(helmet < 50) event.entityLiving.setCurrentItemOrArmor(1, new ItemStack(InitItems.helmetEtherium));
-						if(chestplate < 50) event.entityLiving.setCurrentItemOrArmor(2, new ItemStack(InitItems.chestplateEtherium));
-						if(leggings < 50) event.entityLiving.setCurrentItemOrArmor(3, new ItemStack(InitItems.legsEtherium));
-						if(boots < 50) event.entityLiving.setCurrentItemOrArmor(4, new ItemStack(InitItems.bootsEtherium));
-					}
-					else if(armorType == 1)
-					{
-						if(event.entityLiving instanceof EntityZombie && sword < 50) event.entityLiving.setCurrentItemOrArmor(0, new ItemStack(InitItems.swordObsidian));
-						if(helmet < 50) event.entityLiving.setCurrentItemOrArmor(1, new ItemStack(InitItems.helmetObsidian));
-						if(chestplate < 50) event.entityLiving.setCurrentItemOrArmor(2, new ItemStack(InitItems.chestplateObsidian));
-						if(leggings < 50) event.entityLiving.setCurrentItemOrArmor(3, new ItemStack(InitItems.legsObsidian));
-						if(boots < 50) event.entityLiving.setCurrentItemOrArmor(4, new ItemStack(InitItems.bootsObsidian));
-					}
+				if (armorType == 0)
+				{
+					if ((event.entityLiving instanceof EntityZombie) && (sword < 50))
+						event.entityLiving.setCurrentItemOrArmor(0, new ItemStack(InitItems.swordEtherium));
+					if (helmet < 50)
+						event.entityLiving.setCurrentItemOrArmor(1, new ItemStack(InitItems.helmetEtherium));
+					if (chestplate < 50)
+						event.entityLiving.setCurrentItemOrArmor(2, new ItemStack(InitItems.chestplateEtherium));
+					if (leggings < 50)
+						event.entityLiving.setCurrentItemOrArmor(3, new ItemStack(InitItems.legsEtherium));
+					if (boots < 50)
+						event.entityLiving.setCurrentItemOrArmor(4, new ItemStack(InitItems.bootsEtherium));
+				}
+				else if (armorType == 1)
+				{
+					if ((event.entityLiving instanceof EntityZombie) && (sword < 50))
+						event.entityLiving.setCurrentItemOrArmor(0, new ItemStack(InitItems.swordObsidian));
+					if (helmet < 50)
+						event.entityLiving.setCurrentItemOrArmor(1, new ItemStack(InitItems.helmetObsidian));
+					if (chestplate < 50)
+						event.entityLiving.setCurrentItemOrArmor(2, new ItemStack(InitItems.chestplateObsidian));
+					if (leggings < 50)
+						event.entityLiving.setCurrentItemOrArmor(3, new ItemStack(InitItems.legsObsidian));
+					if (boots < 50)
+						event.entityLiving.setCurrentItemOrArmor(4, new ItemStack(InitItems.bootsObsidian));
 				}
 			}
-		}
+	}
 }

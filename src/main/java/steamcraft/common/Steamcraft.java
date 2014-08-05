@@ -17,7 +17,6 @@ import java.io.File;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.MinecraftForge;
-import steamcraft.client.ClientProxy;
 import steamcraft.client.gui.GuiHandler;
 import steamcraft.common.compat.CompatabilityLayer;
 import steamcraft.common.config.Config;
@@ -28,7 +27,6 @@ import steamcraft.common.lib.LibInfo;
 import steamcraft.common.lib.events.EventHandlerFML;
 import steamcraft.common.lib.events.EventHandlerForge;
 import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -45,7 +43,7 @@ import cpw.mods.fml.relauncher.Side;
 
 /**
  * @author Surseance (Johnny Eatmon)
- *
+ * 
  */
 @Mod(modid = LibInfo.ID, name = LibInfo.NAME, version = LibInfo.VERSION, dependencies = "required-after:boilerplate")
 public class Steamcraft
@@ -103,7 +101,8 @@ public class Steamcraft
 		proxy.registerDisplayInformation();
 		proxy.registerRenderers();
 
-		//biomeBrassForest = new BiomeGenBrassForest(Config.biomeIDBrassForest).setBiomeName("Brass Forest");
+		// biomeBrassForest = new
+		// BiomeGenBrassForest(Config.biomeIDBrassForest).setBiomeName("Brass Forest");
 	}
 
 	@EventHandler

@@ -25,53 +25,54 @@ import steamcraft.common.Steamcraft;
 
 /**
  * @author Surseance
- *
+ * 
  */
 public class ItemTeaSeed extends BaseItem implements IPlantable
 {
 	public ItemTeaSeed()
 	{
 		super();
-		this.setMaxStackSize(64);
-		this.setCreativeTab(Steamcraft.tabSC2);
+		setMaxStackSize(64);
+		setCreativeTab(Steamcraft.tabSC2);
 		setUnlocalizedName("itemTeaSeed");
 	}
 
 	@Override
-	public boolean onItemUse( ItemStack is,  EntityPlayer player,  World world,  int x,  int y,  int z,  int side,
-			 float hitX,  float hitY,  float hitZ)
+	public boolean onItemUse(ItemStack is, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ)
 	{
 		if (side != 1)
-		return false;
+			return false;
 		else if (player.canPlayerEdit(x, y, z, side, is) && player.canPlayerEdit(x, y + 1, z, side, is))
 		{
-			 Block soil = world.getBlock(x, y, z);
+			Block soil = world.getBlock(x, y, z);
 
-			if (soil != null && soil.canSustainPlant(world, x, y, z, ForgeDirection.UP, this) && world.isAirBlock(x, y + 1, z))
+			if ((soil != null) && soil.canSustainPlant(world, x, y, z, ForgeDirection.UP, this) && world.isAirBlock(x, y + 1, z))
 			{
-				world.setBlock(x, y+1, z, getPlant(world,x,y,z), getPlantMetadata(world, x, y, z), 2);
+				world.setBlock(x, y + 1, z, getPlant(world, x, y, z), getPlantMetadata(world, x, y, z), 2);
 				player.inventory.consumeInventoryItem(is.getItem());
 				return true;
 			}
-			else return false;
+			else
+				return false;
 		}
-		else return false;
+		else
+			return false;
 	}
 
 	@Override
-	public Block getPlant( IBlockAccess world,  int x,  int y,  int z)
+	public Block getPlant(IBlockAccess world, int x, int y, int z)
 	{
 		return InitBlocks.blockTeaPlant;
 	}
 
 	@Override
-	public int getPlantMetadata( IBlockAccess world,  int x,  int y,  int z)
+	public int getPlantMetadata(IBlockAccess world, int x, int y, int z)
 	{
 		return 0;
 	}
 
 	@Override
-	public EnumPlantType getPlantType( IBlockAccess world,  int x,  int y,  int z)
+	public EnumPlantType getPlantType(IBlockAccess world, int x, int y, int z)
 	{
 		return EnumPlantType.Crop;
 	}

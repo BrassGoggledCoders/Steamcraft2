@@ -60,7 +60,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 /**
  * @author Surseance
- *
+ * 
  */
 public class InitItems
 {
@@ -141,10 +141,11 @@ public class InitItems
 
 	public static Item itemTopHat;
 
-	//Modules
+	// Modules
 	public static Item itemAqualung;
 
-	//Craft Teapot. Fill teapot with water. Add tealeaves. Craft cup. Right click with pot to fill cup.
+	// Craft Teapot. Fill teapot with water. Add tealeaves. Craft cup. Right
+	// click with pot to fill cup.
 	public static Item itemTeapot, itemTeacup;
 
 	/* Init */
@@ -296,12 +297,12 @@ public class InitItems
 
 		itemRayGun = new ItemRayGun(LibInfo.PREFIX + "raygun", 50, 50, 50).setUnlocalizedName("itemRaygun");
 		itemShrinkray = new ItemShrinkray(LibInfo.PREFIX + "shrinkray", 50, 50, 100).setUnlocalizedName("itemShrinkray");
-		//TODO
+		// TODO
 		itemLightningGun = new ItemLightningGun(LibInfo.PREFIX + "lightninggun").setUnlocalizedName("itemLightningGun");
 
 		registerItem(itemRayGun, "ItemRayGun");
 		registerItem(itemShrinkray, "ItemShrinkray");
-		//registerItem(itemLightningGun, "ItemLightningGun");
+		// registerItem(itemLightningGun, "ItemLightningGun");
 	}
 
 	private static void initializeMetals()

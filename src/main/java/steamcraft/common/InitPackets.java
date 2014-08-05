@@ -28,7 +28,7 @@ import cpw.mods.fml.relauncher.Side;
 
 /**
  * @author decebaldecebal
- *
+ * 
  */
 public class InitPackets
 {

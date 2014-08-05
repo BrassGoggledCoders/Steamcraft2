@@ -45,7 +45,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class EventHandlerFML
 {
@@ -72,7 +72,7 @@ public class EventHandlerFML
 			event.player.triggerAchievement(InitAchievements.wingsAchieve);
 		else if (event.crafting.getItem() instanceof ItemSteamJetpack)
 			event.player.triggerAchievement(InitAchievements.jetpackAchieve);
-		//TODO Dosn't work!
+		// TODO Dosn't work!
 		else if (event.crafting.isItemEqual(new ItemStack(InitItems.itemSteamWingpack)))
 			event.player.triggerAchievement(InitAchievements.wingpackAchieve);
 	}
@@ -109,7 +109,8 @@ public class EventHandlerFML
 				ChatComponentText link = new ChatComponentText("Welcome ClockwerkKaiser to the server!");
 				link.getChatStyle().setColor(EnumChatFormatting.YELLOW);
 				link.getChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "www.twitch.tv/ClockwerkKaiser"));
-				link.getChatStyle().setChatHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ChatComponentText("Click me to go to Clock's Twitch!")));
+				link.getChatStyle().setChatHoverEvent(
+						new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ChatComponentText("Click me to go to Clock's Twitch!")));
 				MinecraftServer.getServer().getConfigurationManager().sendChatMsg(link);
 			}
 		}
@@ -146,12 +147,10 @@ public class EventHandlerFML
 	public void KeyInputEvent(KeyInputEvent event)
 	{
 		if (InitKeyBindings.vanity.isPressed())
-		{
 			if (Minecraft.getMinecraft().currentScreen == null)
 			{
 				EntityPlayer p = Minecraft.getMinecraft().thePlayer;
 				p.openGui(Steamcraft.instance, GuiIDs.GUI_ID_VANITY, p.worldObj, (int) p.posX, (int) p.posY, (int) p.posZ);
 			}
-		}
 	}
 }

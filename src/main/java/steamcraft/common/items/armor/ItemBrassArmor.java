@@ -20,7 +20,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import steamcraft.common.Steamcraft;
@@ -32,7 +31,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class ItemBrassArmor extends BaseArmor
 {
@@ -74,90 +73,35 @@ public class ItemBrassArmor extends BaseArmor
 		if (stack != null)
 		{
 			list.add("Modules:");
-			for(int i=0; i<modules.size(); i++)
-			{
-				list.add(((IModule)modules.get(i)).getName());
-			}
-			/*
-			 * if (stack.getItem() == ConfigItems.itemBrassGoggles) {
-			 * list.add("It is a violation of");
-			 * list.add("the law of steampunk");
-			 * list.add("to fly without these."); // TODO: Make this work to
-			 * help seeing underwater + at night
-			 * list.add("Helps with seeing things."); } else if (stack.getItem()
-			 * == ConfigItems.itemAqualung) {
-			 * list.add("This allows underwater breathing");
-			 * list.add("for as long as the durability lasts."); } else if
-			 * (stack.getItem() == ConfigItems.itemLegBraces) {
-			 * list.add("A set of mechanical pistons");
-			 * list.add("and rods to help reduce damage");
-			 * list.add("substained from falling."); } else if (stack.getItem()
-			 * == ConfigItems.itemRollerSkates) {
-			 * list.add("Increases movement speed."); } else if (stack.getItem()
-			 * == ConfigItems.itemSteamJetpack) {
-			 * list.add("Steam-powered Flight!");
-			 * list.add("Uses steam from canisters."); } else if(stack.getItem()
-			 * == ConfigItems.itemPneumaticBoots) {
-			 * list.add("A set of pistons strapped");
-			 * list.add("to your feet increase the");
-			 * list.add("height of jumps");
-			 * list.add("Also allows automatic step up"); list.add("one-block");
-			 * } else if(stack.getItem() == ModArmors.brassWings) {
-			 * list.add("Hand-Powered Flight - uses Hunger"); //TODO: Implement
-			 * this!
-			 * list.add("Can also be used to glide - without using power"); } /*
-			 * else if(stack.getItem() == ModArmors.steamWings) {
-			 * list.add("A combination of the jetpack and wings");
-			 * list.add("Uses fuel. No flight limit.");
-			 * list.add("Is also able to glide"); } else if(stack.getItem() ==
-			 * ModArmors.climbingClaws) {
-			 * list.add("Allows you to grip onto and slide down walls"); } else
-			 * if(stack.getItem() == ModArmors.jetBoots) {
-			 * list.add("Pseudo Flight");
-			 * list.add("It's really a very large jump");
-			 * list.add("Uses power from canisters"); } else if(stack.getItem()
-			 * == ModArmors.stilts) { list.add("Be three blocks tall!");
-			 * list.add("A little inconvient indoors");
-			 * list.add("Good for wading through water"); } else
-			 * if(stack.getItem() == ModArmors.reactivePistonPlate) {
-			 * list.add("Pistons attached to this chestplate");
-			 * list.add("push back mobs that attack you") }
-			 *
-			 * else { list.add("This armour has no documented abilities."); }
-			 */
+			for (int i = 0; i < modules.size(); i++)
+				list.add(modules.get(i).getName());
 		}
 	}
 
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack is)
 	{
-		//System.out.print(modules);
-		for(int i=0; i<modules.size(); i++)
-		{
-			if(((IModule)modules.get(i)).getArmorEffectType() == EnumArmorEffectType.ONTICK)
-			{
-				((IModule)modules.get(i)).getArmorEffect(world, player, is);
-			}
-		}
+		// System.out.print(modules);
+		for (int i = 0; i < modules.size(); i++)
+			if (modules.get(i).getArmorEffectType() == EnumArmorEffectType.ONTICK)
+				modules.get(i).getArmorEffect(world, player, is);
 	}
-	/*@Override
-	public void onUpdate(ItemStack stack, World p_77663_2_, Entity p_77663_3_, int p_77663_4_, boolean p_77663_5_)
-	{
-		for(int i = 0; i < modules.size(); i++)
-		{
-			//stack.stackTagCompound.setString("module" + i, modules.get(i).getName());
-			modules.set(i, getModuleFromName(stack.stackTagCompound.getString("module" + 1)));
-		}
-	}*/
+
+	/*
+	 * @Override public void onUpdate(ItemStack stack, World p_77663_2_, Entity
+	 * p_77663_3_, int p_77663_4_, boolean p_77663_5_) { for(int i = 0; i <
+	 * modules.size(); i++) { //stack.stackTagCompound.setString("module" + i,
+	 * modules.get(i).getName()); modules.set(i,
+	 * getModuleFromName(stack.stackTagCompound.getString("module" + 1))); } }
+	 */
 
 	private IModule getModuleFromName(String string)
 	{
-		for(int i = 0; i < modules.size(); i++)
-		{
-			if(modules.get(i).getName() == string)
-			return modules.get(i);
-			else return null;
-		}
+		for (int i = 0; i < modules.size(); i++)
+			if (modules.get(i).getName() == string)
+				return modules.get(i);
+			else
+				return null;
 		return null;
 	}
 }

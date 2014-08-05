@@ -27,43 +27,45 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class ItemSpanner extends UniversalWrench
 {
 	public ItemSpanner()
 	{
 		super();
-		this.setCreativeTab(Steamcraft.tabSC2);
+		setCreativeTab(Steamcraft.tabSC2);
 	}
+
 	@Override
 	public boolean onItemUse(ItemStack is, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ)
 	{
 		Block block = world.getBlock(x, y, z);
 
-		if(block == InitBlocks.blockCopperPipe)
+		if (block == InitBlocks.blockCopperPipe)
 		{
 			TileCopperPipe pipe = (TileCopperPipe) world.getTileEntity(x, y, z);
 
 			pipe.changeExtracting();
 		}
-		//TODO
-		/*if(world.getTileEntity(x, y, z) instanceof BaseTileWithInventory)
-		{
-			BaseTileWithInventory tile = (BaseTileWithInventory) world.getTileEntity(x, y, z);
-			BlockContainer container = (BlockContainer) world.getBlock(x, y, z);
-			Item itemblock = new ItemBlockWithExtraData(container, new Object[]{tile.inventory});
-			player.inventory.addItemStackToInventory(new ItemStack(itemblock));
-			world.setBlockToAir(x, y, z);
-			world.setTileEntity(x, y, z, null);
-		}*/
+		// TODO
+		/*
+		 * if(world.getTileEntity(x, y, z) instanceof BaseTileWithInventory) {
+		 * BaseTileWithInventory tile = (BaseTileWithInventory)
+		 * world.getTileEntity(x, y, z); BlockContainer container =
+		 * (BlockContainer) world.getBlock(x, y, z); Item itemblock = new
+		 * ItemBlockWithExtraData(container, new Object[]{tile.inventory});
+		 * player.inventory.addItemStackToInventory(new ItemStack(itemblock));
+		 * world.setBlockToAir(x, y, z); world.setTileEntity(x, y, z, null); }
+		 */
 		return true;
 
 	}
+
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void registerIcons(IIconRegister par1IconRegister)
 	{
-		this.itemIcon = par1IconRegister.registerIcon(LibInfo.PREFIX + this.getUnlocalizedName().substring(5));
+		itemIcon = par1IconRegister.registerIcon(LibInfo.PREFIX + this.getUnlocalizedName().substring(5));
 	}
 }

@@ -44,7 +44,7 @@ public class GuiSteamBoiler extends GuiContainer
 	public GuiSteamBoiler(InventoryPlayer player, TileSteamBoiler tile)
 	{
 		super(new ContainerSteamBoiler(player, tile));
-		
+
 		this.tile = tile;
 	}
 
@@ -52,7 +52,7 @@ public class GuiSteamBoiler extends GuiContainer
 	protected void drawGuiContainerBackgroundLayer(float par1, int par2, int par3)
 	{
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-		
+
 		mc.renderEngine.bindTexture(guitexture);
 		drawTexturedModalRect(guiLeft, guiTop, 0, 0, xSize, ySize);
 
@@ -69,28 +69,28 @@ public class GuiSteamBoiler extends GuiContainer
 		drawTexturedModalRect(guiLeft + 8, guiTop + 24, 176, 14, 20, 49);
 		drawTexturedModalRect(guiLeft + 74, guiTop + 24, 176, 14, 20, 49);
 	}
-	
+
 	@Override
 	protected void drawGuiContainerForegroundLayer(int x, int y)
 	{
-		if(y - guiTop >= 18 && y - guiTop <= 78)	
-			if(x - guiLeft >= 8 && x - guiLeft <= 28)
+		if (((y - guiTop) >= 18) && ((y - guiTop) <= 78))
+			if (((x - guiLeft) >= 8) && ((x - guiLeft) <= 28))
 				drawFluidInfo(tile.waterTank, x, y);
-			else if(x - guiLeft >= 74 && x - guiLeft <= 106)
+			else if (((x - guiLeft) >= 74) && ((x - guiLeft) <= 106))
 				drawFluidInfo(tile.steamTank, x, y);
 	}
-	
+
 	private void drawFluidInfo(FluidTank tank, int x, int y)
 	{
 		ArrayList<String> lines = new ArrayList<String>();
-		
-		if(tank.getFluid().getFluid() == FluidRegistry.WATER)
+
+		if (tank.getFluid().getFluid() == FluidRegistry.WATER)
 			lines.add(GuiColors.LIGHTBLUE + "Water");
 		else
 			lines.add(GuiColors.GRAY + "Steam");
-		
+
 		lines.add(tank.getFluidAmount() + "/" + tank.getCapacity());
-		
+
 		drawHoveringText(lines, x - guiLeft, y - guiTop, fontRendererObj);
 	}
 

@@ -30,117 +30,112 @@ import cpw.mods.fml.relauncher.SideOnly;
 /**
  * @author Surseance (Johnny Eatmon)
  */
- public class BlockTeaPlant extends BlockCrops implements IPlantable
- {
-	 IIcon[] iconArray = new IIcon[2];
+public class BlockTeaPlant extends BlockCrops implements IPlantable
+{
+	IIcon[] iconArray = new IIcon[2];
 
-	 @Override
-	 @SideOnly(Side.CLIENT)
-	 public IIcon getIcon(int side, int meta)
-	 {
-		   if (meta < 0 || meta > 1)
-	        {
-	            meta = 1;
-	        }
-		 return iconArray[meta];
-	 }
+	@Override
+	@SideOnly(Side.CLIENT)
+	public IIcon getIcon(int side, int meta)
+	{
+		if ((meta < 0) || (meta > 1))
+			meta = 1;
+		return iconArray[meta];
+	}
 
-	 @Override
-	 @SideOnly(Side.CLIENT)
-	 public void registerBlockIcons(IIconRegister ir)
-	 {
-		 this.iconArray[0] = ir.registerIcon(LibInfo.PREFIX + this.getUnlocalizedName().substring(5) + "_0");
-		 this.iconArray[1] = ir.registerIcon(LibInfo.PREFIX + this.getUnlocalizedName().substring(5) + "_1");
-	 }
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void registerBlockIcons(IIconRegister ir)
+	{
+		iconArray[0] = ir.registerIcon(LibInfo.PREFIX + getUnlocalizedName().substring(5) + "_0");
+		iconArray[1] = ir.registerIcon(LibInfo.PREFIX + getUnlocalizedName().substring(5) + "_1");
+	}
 
-	 public BlockTeaPlant()
-	 {
-		 super();
-		 this.setHardness(0.0F);
-		 this.setResistance(0.0F);
-		 this.setStepSound(Block.soundTypeGrass);
-		 this.setTickRandomly(true);
-		 this.disableStats();
-		 this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.15F, 1.0F);
-	 }
+	public BlockTeaPlant()
+	{
+		super();
+		setHardness(0.0F);
+		setResistance(0.0F);
+		setStepSound(Block.soundTypeGrass);
+		setTickRandomly(true);
+		disableStats();
+		setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.15F, 1.0F);
+	}
 
-	 @Override
-	 public void updateTick(World world, int x, int y, int z, Random random)
-	 {
-		 super.updateTick(world, x, y, z, random);
+	@Override
+	public void updateTick(World world, int x, int y, int z, Random random)
+	{
+		super.updateTick(world, x, y, z, random);
 
-		 if (world.getBlockLightValue(x, y + 1, z) >= 9)
-		 {
-		 int metadata = world.getBlockMetadata(x, y, z);
+		if (world.getBlockLightValue(x, y + 1, z) >= 9)
+		{
+			int metadata = world.getBlockMetadata(x, y, z);
 
-		 if (metadata < 1)
-		 {
-		 float growthRate = this.getGrowthRate(world, x, y, z);
+			if (metadata < 1)
+			{
+				float growthRate = getGrowthRate(world, x, y, z);
 
-		 if (random.nextInt((int)(15.0F / growthRate) + 1) == 0)
-		 {
-		 ++metadata;
-		 world.setBlockMetadataWithNotify(x, y, z, metadata, 1);
-		 }
-		 }
-		 }
-	 }
+				if (random.nextInt((int) (15.0F / growthRate) + 1) == 0)
+				{
+					++metadata;
+					world.setBlockMetadataWithNotify(x, y, z, metadata, 1);
+				}
+			}
+		}
+	}
 
-	 public void fertilize(World world, int x, int y, int z)
-	 {
-		 world.setBlockMetadataWithNotify(x, y, z, 1, 2);
-	 }
+	public void fertilize(World world, int x, int y, int z)
+	{
+		world.setBlockMetadataWithNotify(x, y, z, 1, 2);
+	}
 
-	 private float getGrowthRate(World world, int x, int y, int z)
-	 {
-		 float f = 1.0F;
+	private float getGrowthRate(World world, int x, int y, int z)
+	{
+		float f = 1.0F;
 
-		 for(int l1 = x - 1; l1 <= x + 1; ++l1)
-		 {
-		 for(int i3 = z - 1; i3 <= z + 1; ++i3)
-		 {
-		 Block block = world.getBlock(l1, y - 1, i3);
-		 float growthRate = 0.0F;
+		for (int l1 = x - 1; l1 <= (x + 1); ++l1)
+			for (int i3 = z - 1; i3 <= (z + 1); ++i3)
+			{
+				Block block = world.getBlock(l1, y - 1, i3);
+				float growthRate = 0.0F;
 
-		 if(block.canSustainPlant(world, l1, y - 1, i3, ForgeDirection.UP, this))
-		 {
-		 growthRate = 1.0F;
+				if (block.canSustainPlant(world, l1, y - 1, i3, ForgeDirection.UP, this))
+				{
+					growthRate = 1.0F;
 
-		 if(block.isFertile(world, l1, y - 1, i3))
-		 {
-		 growthRate = 3.0F;
-		 }
-		 }
-		 if(l1 != x || i3 != z)
-		 {
-		 growthRate /= 4.0F;
-		 }
+					if (block.isFertile(world, l1, y - 1, i3))
+						growthRate = 3.0F;
+				}
+				if ((l1 != x) || (i3 != z))
+					growthRate /= 4.0F;
 
-		 f += growthRate;
-		 }
-	 }
+				f += growthRate;
+			}
 
-	 return f;
-	 }
+		return f;
+	}
 
-	 @Override
-	 public int getRenderType()
-	 {
-		 return 6;
-	 }
-	 @Override
-	 protected Item func_149866_i()
-	 {
-		 return InitItems.itemTeaSeed;
-	 }
-	 @Override
-	 protected Item func_149865_P()
-	 {
-		 return InitItems.itemTeaLeaf;
-	 }
-	 @Override
-	 public Item getItemDropped(int meta, Random p_149650_2_, int p_149650_3_)
-	 {
-		 return meta != 0 ? this.func_149865_P() : this.func_149866_i();
-	 }
+	@Override
+	public int getRenderType()
+	{
+		return 6;
+	}
+
+	@Override
+	protected Item func_149866_i()
+	{
+		return InitItems.itemTeaSeed;
+	}
+
+	@Override
+	protected Item func_149865_P()
+	{
+		return InitItems.itemTeaLeaf;
+	}
+
+	@Override
+	public Item getItemDropped(int meta, Random p_149650_2_, int p_149650_3_)
+	{
+		return meta != 0 ? func_149865_P() : func_149866_i();
+	}
 }

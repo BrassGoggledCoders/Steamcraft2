@@ -32,38 +32,39 @@ public class ItemTeapot extends BaseItemWithMetadata
 	public ItemTeapot()
 	{
 		super();
-		this.setMaxStackSize(1);
-		this.setNoRepair();
-		this.setFull3D();
+		setMaxStackSize(1);
+		setNoRepair();
+		setFull3D();
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister icon)
 	{
-		this.itemIcon = icon.registerIcon(LibInfo.PREFIX + this.getUnlocalizedName().substring(5));
+		itemIcon = icon.registerIcon(LibInfo.PREFIX + this.getUnlocalizedName().substring(5));
 	}
 
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
 	{
-			//ModLoader.getMinecraftInstance().thePlayer.triggerAchievement(mod_Steamcraft.ach_TimeForACuppa);
-			if(player.inventory.hasItem(InitItems.itemTeacup))
+		// ModLoader.getMinecraftInstance().thePlayer.triggerAchievement(mod_Steamcraft.ach_TimeForACuppa);
+		if (player.inventory.hasItem(InitItems.itemTeacup))
+		{
+			ItemStack itemstack = player.inventory.getStackInSlot(ItemStackUtils.getStackPosition(player.inventory, InitItems.itemTeacup));
+			if ((itemstack.getItemDamage() == 0) && (stack.getItemDamage() > 2))
 			{
-				ItemStack itemstack = player.inventory.getStackInSlot(ItemStackUtils.getStackPosition(player.inventory, InitItems.itemTeacup));
-				if(itemstack.getItemDamage() == 0 && stack.getItemDamage() > 2)
-				{
-					player.inventory.consumeInventoryItem(itemstack.getItem());
-					player.inventory.addItemStackToInventory(new ItemStack(InitItems.itemTeacup, 1, 10));
-					if(stack.getItemDamage() == 3)
+				player.inventory.consumeInventoryItem(itemstack.getItem());
+				player.inventory.addItemStackToInventory(new ItemStack(InitItems.itemTeacup, 1, 10));
+				if (stack.getItemDamage() == 3)
 					stack.setItemDamage(0);
-					else
+				else
 					stack.setItemDamage(stack.getItemDamage() - 1);
-				}
 			}
+		}
 
 		return stack;
 	}
+
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	@SideOnly(Side.CLIENT)
@@ -72,29 +73,25 @@ public class ItemTeapot extends BaseItemWithMetadata
 		for (int var4 = 0; var4 < 13; ++var4)
 			l.add(new ItemStack(InitItems.itemTeapot, 1, var4));
 	}
+
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player, List l, boolean flag)
 	{
-		if(stack.getItemDamage() == 0)
-		{
+		if (stack.getItemDamage() == 0)
 			l.add("Empty");
-		}
-		else if(stack.getItemDamage() == 1)
-		{
+		else if (stack.getItemDamage() == 1)
 			l.add("Filled with Water");
-		}
-		else if(stack.getItemDamage() == 2)
-		{
+		else if (stack.getItemDamage() == 2)
 			l.add("Filled with Boiling Water");
-		}
 		else
 		{
 			l.add("Filled with Tea");
-			l.add(stack.getItemDamage()-2 + " cups remaining");
+			l.add((stack.getItemDamage() - 2) + " cups remaining");
 			l.add("Right-click with this to fill");
 			l.add("teacups in your inventory");
 		}
 	}
+
 	@Override
 	public String getUnlocalizedName(ItemStack is)
 	{

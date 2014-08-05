@@ -32,7 +32,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author decebaldecebal
- *
+ * 
  */
 public class BlockBattery extends BlockContainerMod
 {
@@ -44,6 +44,7 @@ public class BlockBattery extends BlockContainerMod
 		super(Material.iron);
 		setBlockBounds(0.2F, 0, 0, 0.8F, 0.7F, 1);
 	}
+
 	@Override
 	public int getRenderType()
 	{
@@ -71,7 +72,7 @@ public class BlockBattery extends BlockContainerMod
 		{
 			TileBattery tile = (TileBattery) world.getTileEntity(par2, par3, par4);
 
-			if (tile == null || player.isSneaking())
+			if ((tile == null) || player.isSneaking())
 				return false;
 
 			player.openGui(Steamcraft.instance, GuiIDs.GUI_ID_BATTERY, world, par2, par3, par4);
@@ -97,28 +98,28 @@ public class BlockBattery extends BlockContainerMod
 
 				if (var9 != null)
 				{
-					float var10 = this.random.nextFloat() * 0.8F + 0.1F;
-					float var11 = this.random.nextFloat() * 0.8F + 0.1F;
-					float var12 = this.random.nextFloat() * 0.8F + 0.1F;
+					float var10 = (random.nextFloat() * 0.8F) + 0.1F;
+					float var11 = (random.nextFloat() * 0.8F) + 0.1F;
+					float var12 = (random.nextFloat() * 0.8F) + 0.1F;
 
 					while (var9.stackSize > 0)
 					{
-						int var13 = this.random.nextInt(21) + 10;
+						int var13 = random.nextInt(21) + 10;
 
 						if (var13 > var9.stackSize)
 							var13 = var9.stackSize;
 
 						var9.stackSize -= var13;
-						EntityItem var14 = new EntityItem(par1World, par2 + var10, par3 + var11, par4 + var12, new ItemStack(var9.getItem(),
-								var13, var9.getItemDamage()));
+						EntityItem var14 = new EntityItem(par1World, par2 + var10, par3 + var11, par4 + var12, new ItemStack(var9.getItem(), var13,
+								var9.getItemDamage()));
 
 						if (var9.hasTagCompound())
 							var14.getEntityItem().setTagCompound((NBTTagCompound) var9.getTagCompound().copy());
 
 						float var15 = 0.05F;
-						var14.motionX = (float) this.random.nextGaussian() * var15;
-						var14.motionY = (float) this.random.nextGaussian() * var15 + 0.2F;
-						var14.motionZ = (float) this.random.nextGaussian() * var15;
+						var14.motionX = (float) random.nextGaussian() * var15;
+						var14.motionY = ((float) random.nextGaussian() * var15) + 0.2F;
+						var14.motionZ = (float) random.nextGaussian() * var15;
 						par1World.spawnEntityInWorld(var14);
 					}
 				}

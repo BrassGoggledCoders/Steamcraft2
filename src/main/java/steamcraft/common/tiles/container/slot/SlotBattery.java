@@ -20,7 +20,7 @@ import boilerplate.common.IEnergyItem;
 
 /**
  * @author decebaldecebal
- *
+ * 
  */
 public class SlotBattery extends Slot
 {

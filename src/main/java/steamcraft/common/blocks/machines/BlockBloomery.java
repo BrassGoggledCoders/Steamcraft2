@@ -37,7 +37,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class BlockBloomery extends BlockContainerMod
 {
@@ -66,21 +66,21 @@ public class BlockBloomery extends BlockContainerMod
 	@Override
 	public IIcon getIcon(int side, int meta)
 	{
-		if (side == meta - 7)
-			return this.iconFrontActive;
-		if (meta == 0 && side == 3 || side == meta)
-			return this.iconFront;
+		if (side == (meta - 7))
+			return iconFrontActive;
+		if (((meta == 0) && (side == 3)) || (side == meta))
+			return iconFront;
 		switch (side)
 		{
 		case 0:
-			return this.blockIcon; // bottom
+			return blockIcon; // bottom
 		case 1:
 			if (meta > 7)
-				return this.iconTopActive;
+				return iconTopActive;
 			else
-				return this.iconTop;// top
+				return iconTop;// top
 		default:
-			return this.blockIcon; // sides
+			return blockIcon; // sides
 		}
 	}
 
@@ -88,11 +88,11 @@ public class BlockBloomery extends BlockContainerMod
 	@Override
 	public void registerBlockIcons(IIconRegister icon)
 	{
-		this.blockIcon = icon.registerIcon(LibInfo.PREFIX + "blockBloomerySide");
-		this.iconFront = icon.registerIcon(LibInfo.PREFIX + "blockBloomeryFrontInactive");
-		this.iconFrontActive = icon.registerIcon(LibInfo.PREFIX + "blockBloomeryFrontActive");
-		this.iconTop = icon.registerIcon(LibInfo.PREFIX + "blockBloomeryTopInactive");
-		this.iconTopActive = icon.registerIcon(LibInfo.PREFIX + "blockBloomeryTopActive");
+		blockIcon = icon.registerIcon(LibInfo.PREFIX + "blockBloomerySide");
+		iconFront = icon.registerIcon(LibInfo.PREFIX + "blockBloomeryFrontInactive");
+		iconFrontActive = icon.registerIcon(LibInfo.PREFIX + "blockBloomeryFrontActive");
+		iconTop = icon.registerIcon(LibInfo.PREFIX + "blockBloomeryTopInactive");
+		iconTopActive = icon.registerIcon(LibInfo.PREFIX + "blockBloomeryTopActive");
 	}
 
 	@Override
@@ -104,7 +104,7 @@ public class BlockBloomery extends BlockContainerMod
 		{
 			TileBloomery tile = (TileBloomery) world.getTileEntity(par2, par3, par4);
 
-			if (tile == null || player.isSneaking())
+			if ((tile == null) || player.isSneaking())
 				return false;
 			player.openGui(Steamcraft.instance, GuiIDs.GUI_ID_BLOOMERY, world, par2, par3, par4);
 			return true;
@@ -140,27 +140,27 @@ public class BlockBloomery extends BlockContainerMod
 		if (l >= 7)
 		{
 			float f = par2 + 0.5F;
-			float f1 = par3 + 0.0F + par5Random.nextFloat() * 6.0F / 16.0F;
+			float f1 = par3 + 0.0F + ((par5Random.nextFloat() * 6.0F) / 16.0F);
 			float f2 = par4 + 0.5F;
 			float f3 = 0.52F;
-			float f4 = par5Random.nextFloat() * 0.6F - 0.3F;
+			float f4 = (par5Random.nextFloat() * 0.6F) - 0.3F;
 
-			if (l == 4 || l == 11)
+			if ((l == 4) || (l == 11))
 			{
 				world.spawnParticle("smoke", f - f3, f1, f2 + f4, 0.0D, 0.0D, 0.0D);
 				world.spawnParticle("flame", f - f3, f1, f2 + f4, 0.0D, 0.0D, 0.0D);
 			}
-			else if (l == 5 || l == 12)
+			else if ((l == 5) || (l == 12))
 			{
 				world.spawnParticle("smoke", f + f3, f1, f2 + f4, 0.0D, 0.0D, 0.0D);
 				world.spawnParticle("flame", f + f3, f1, f2 + f4, 0.0D, 0.0D, 0.0D);
 			}
-			else if (l == 2 || l == 9)
+			else if ((l == 2) || (l == 9))
 			{
 				world.spawnParticle("smoke", f + f4, f1, f2 - f3, 0.0D, 0.0D, 0.0D);
 				world.spawnParticle("flame", f + f4, f1, f2 - f3, 0.0D, 0.0D, 0.0D);
 			}
-			else if (l == 3 || l == 10)
+			else if ((l == 3) || (l == 10))
 			{
 				world.spawnParticle("smoke", f + f4, f1, f2 + f3, 0.0D, 0.0D, 0.0D);
 				world.spawnParticle("flame", f + f4, f1, f2 + f3, 0.0D, 0.0D, 0.0D);
@@ -171,7 +171,7 @@ public class BlockBloomery extends BlockContainerMod
 	@Override
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase living, ItemStack stack)
 	{
-		int l = MathHelper.floor_double(living.rotationYaw * 4.0F / 360.0F + 0.5D) & 3;
+		int l = MathHelper.floor_double(((living.rotationYaw * 4.0F) / 360.0F) + 0.5D) & 3;
 
 		if (l == 0)
 			world.setBlockMetadataWithNotify(x, y, z, 2, 2);
@@ -200,28 +200,28 @@ public class BlockBloomery extends BlockContainerMod
 
 				if (var9 != null)
 				{
-					float var10 = this.random.nextFloat() * 0.8F + 0.1F;
-					float var11 = this.random.nextFloat() * 0.8F + 0.1F;
-					float var12 = this.random.nextFloat() * 0.8F + 0.1F;
+					float var10 = (random.nextFloat() * 0.8F) + 0.1F;
+					float var11 = (random.nextFloat() * 0.8F) + 0.1F;
+					float var12 = (random.nextFloat() * 0.8F) + 0.1F;
 
 					while (var9.stackSize > 0)
 					{
-						int var13 = this.random.nextInt(21) + 10;
+						int var13 = random.nextInt(21) + 10;
 
 						if (var13 > var9.stackSize)
 							var13 = var9.stackSize;
 
 						var9.stackSize -= var13;
-						EntityItem var14 = new EntityItem(par1World, par2 + var10, par3 + var11, par4 + var12, new ItemStack(var9.getItem(),
-								var13, var9.getItemDamage()));
+						EntityItem var14 = new EntityItem(par1World, par2 + var10, par3 + var11, par4 + var12, new ItemStack(var9.getItem(), var13,
+								var9.getItemDamage()));
 
 						if (var9.hasTagCompound())
 							var14.getEntityItem().setTagCompound((NBTTagCompound) var9.getTagCompound().copy());
 
 						float var15 = 0.05F;
-						var14.motionX = (float) this.random.nextGaussian() * var15;
-						var14.motionY = (float) this.random.nextGaussian() * var15 + 0.2F;
-						var14.motionZ = (float) this.random.nextGaussian() * var15;
+						var14.motionX = (float) random.nextGaussian() * var15;
+						var14.motionY = ((float) random.nextGaussian() * var15) + 0.2F;
+						var14.motionZ = (float) random.nextGaussian() * var15;
 						par1World.spawnEntityInWorld(var14);
 					}
 				}

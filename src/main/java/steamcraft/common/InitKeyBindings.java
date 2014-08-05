@@ -20,7 +20,7 @@ import cpw.mods.fml.client.registry.ClientRegistry;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class InitKeyBindings
 {

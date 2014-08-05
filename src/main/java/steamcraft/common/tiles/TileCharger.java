@@ -27,7 +27,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author decebaldecebal
- *
+ * 
  */
 public class TileCharger extends BaseTileWithInventory implements IEnergyHandler
 {
@@ -67,43 +67,39 @@ public class TileCharger extends BaseTileWithInventory implements IEnergyHandler
 		if (!worldObj.isRemote)
 		{
 
-			if(buffer.getEnergyStored() > 0)
-				this.chargeItems();
+			if (buffer.getEnergyStored() > 0)
+				chargeItems();
 
-			short inputEnergy = (short) this.extractEnergy(ForgeDirection.UNKNOWN, this.transferRate, true);
+			short inputEnergy = (short) extractEnergy(ForgeDirection.UNKNOWN, transferRate, true);
 
-			if(inputEnergy > 0)
-			{
+			if (inputEnergy > 0)
 				for (ForgeDirection direction : EnumSet.allOf(ForgeDirection.class))
-					if(inputEnergy > 0)
+					if (inputEnergy > 0)
 					{
-						TileEntity tileEntity = worldObj.getTileEntity(xCoord - direction.offsetX, yCoord - direction.offsetY, zCoord - direction.offsetZ);
+						TileEntity tileEntity = worldObj.getTileEntity(xCoord - direction.offsetX, yCoord - direction.offsetY, zCoord
+								- direction.offsetZ);
 
-						if(tileEntity instanceof IEnergyHandler)
-						{
-							inputEnergy -= this.receiveEnergy(ForgeDirection.UNKNOWN, ((IEnergyHandler) tileEntity).extractEnergy(direction.getOpposite(), inputEnergy, false), false);
-						}
+						if (tileEntity instanceof IEnergyHandler)
+							inputEnergy -= receiveEnergy(ForgeDirection.UNKNOWN,
+									((IEnergyHandler) tileEntity).extractEnergy(direction.getOpposite(), inputEnergy, false), false);
 					}
 					else
 						break;
-			}
 		}
 	}
 
 	private void chargeItems()
 	{
-		for(ItemStack stack : inventory)
-		{
-			if(stack!=null)
+		for (ItemStack stack : inventory)
+			if (stack != null)
 			{
 				IEnergyItem item = (IEnergyItem) stack.getItem();
 
 				buffer.modifyEnergyStored(-item.receiveEnergy(stack, buffer.getEnergyStored(), false));
 
-				if(buffer.getEnergyStored() < 0)
+				if (buffer.getEnergyStored() < 0)
 					break;
 			}
-		}
 	}
 
 	@Override

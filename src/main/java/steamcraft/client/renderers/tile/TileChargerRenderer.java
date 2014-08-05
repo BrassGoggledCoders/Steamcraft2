@@ -29,7 +29,7 @@ import boilerplate.client.renderers.RenderFloatingItem;
 // TODO: Auto-generated Javadoc
 /**
  * The Class TileCrystalRenderer.
- *
+ * 
  * @author Surseance (Johnny Eatmon)
  */
 public class TileChargerRenderer extends TileEntitySpecialRenderer
@@ -45,12 +45,12 @@ public class TileChargerRenderer extends TileEntitySpecialRenderer
 	public TileChargerRenderer()
 	{
 		model = new ModelCharger();
-		this.itemRenderer = new RenderFloatingItem(false, false);
+		itemRenderer = new RenderFloatingItem(false, false);
 	}
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer#
 	 * renderTileEntityAt(net.minecraft.tileentity.TileEntity, double, double,
 	 * double, float)
@@ -66,7 +66,7 @@ public class TileChargerRenderer extends TileEntitySpecialRenderer
 		GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
 		model.render((Entity) null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
 		EntityItem itemToRender = new EntityItem(te.getWorldObj(), dx, dy + 1, dz, new ItemStack(Items.apple));
-		itemRenderer.render(itemToRender,(float) dx, (float)dy+7, (float)dz);
+		itemRenderer.render(itemToRender, (float) dx, (float) dy + 7, (float) dz);
 		GL11.glPopMatrix();
 		GL11.glPopMatrix();
 	}

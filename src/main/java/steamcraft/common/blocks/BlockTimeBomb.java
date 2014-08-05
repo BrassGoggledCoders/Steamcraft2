@@ -12,8 +12,6 @@
  */
 package steamcraft.common.blocks;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
@@ -24,15 +22,16 @@ import steamcraft.client.lib.GuiIDs;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.blocks.machines.BlockContainerMod;
 import steamcraft.common.lib.LibInfo;
-import steamcraft.common.tiles.TileSteamBoiler;
 import steamcraft.common.tiles.TileTimeBomb;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockTimeBomb extends BlockContainerMod
 {
 	@SideOnly(Side.CLIENT)
 	private IIcon iconEnd;
 
-    public BlockTimeBomb(Material p_i45394_1_)
+	public BlockTimeBomb(Material p_i45394_1_)
 	{
 		super(p_i45394_1_);
 	}
@@ -42,6 +41,7 @@ public class BlockTimeBomb extends BlockContainerMod
 	{
 		return new TileTimeBomb();
 	}
+
 	@Override
 	public boolean onBlockActivated(World world, int par2, int par3, int par4, EntityPlayer player, int par6, float par7, float par8, float par9)
 	{
@@ -51,23 +51,24 @@ public class BlockTimeBomb extends BlockContainerMod
 		{
 			TileTimeBomb tile = (TileTimeBomb) world.getTileEntity(par2, par3, par4);
 
-			if (tile == null || player.isSneaking())
+			if ((tile == null) || player.isSneaking())
 				return false;
 
 			player.openGui(Steamcraft.instance, GuiIDs.GUI_ID_TIMEBOMB, world, par2, par3, par4);
 			return true;
 		}
 	}
+
 	@SideOnly(Side.CLIENT)
 	@Override
 	public IIcon getIcon(int side, int meta)
 	{
 		switch (side)
 		{
-			case 1:
-				return this.iconEnd; //top
-			default:
-				return this.blockIcon; // sides
+		case 1:
+			return iconEnd; // top
+		default:
+			return blockIcon; // sides
 		}
 	}
 
@@ -75,9 +76,10 @@ public class BlockTimeBomb extends BlockContainerMod
 	@Override
 	public void registerBlockIcons(IIconRegister icon)
 	{
-		this.blockIcon = icon.registerIcon(LibInfo.PREFIX + "blockTimebomb");
-		this.iconEnd = icon.registerIcon(LibInfo.PREFIX + "blockTimebombTop");
-		//this.iconTop = icon.registerIcon(LibInfo.PREFIX + "blockSteamBoilerTop");
+		blockIcon = icon.registerIcon(LibInfo.PREFIX + "blockTimebomb");
+		iconEnd = icon.registerIcon(LibInfo.PREFIX + "blockTimebombTop");
+		// this.iconTop = icon.registerIcon(LibInfo.PREFIX +
+		// "blockSteamBoilerTop");
 	}
 
 }

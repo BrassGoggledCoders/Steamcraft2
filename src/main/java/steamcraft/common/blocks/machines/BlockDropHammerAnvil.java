@@ -19,7 +19,7 @@ import steamcraft.common.tiles.TileDropHammer;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class BlockDropHammerAnvil extends BlockContainerMod
 {

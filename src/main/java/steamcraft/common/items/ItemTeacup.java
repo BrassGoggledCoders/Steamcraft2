@@ -36,10 +36,11 @@ public class ItemTeacup extends BaseItemWithMetadata
 	public ItemTeacup()
 	{
 		super();
-		this.setMaxStackSize(1);
-		this.setNoRepair();
-		this.setFull3D();
+		setMaxStackSize(1);
+		setNoRepair();
+		setFull3D();
 	}
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister icon)
@@ -47,10 +48,11 @@ public class ItemTeacup extends BaseItemWithMetadata
 		itemIcon[0] = icon.registerIcon(LibInfo.PREFIX + this.getUnlocalizedName().substring(5) + "Empty");
 		itemIcon[1] = icon.registerIcon(LibInfo.PREFIX + this.getUnlocalizedName().substring(5) + "Full");
 	}
+
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
 	{
-		if(stack.getItemDamage() > 0)
+		if (stack.getItemDamage() > 0)
 		{
 			player.addPotionEffect(new PotionEffect(Potion.digSpeed.id, 50, 100));
 			stack.setItemDamage(stack.getItemDamage() - 1);
@@ -58,42 +60,45 @@ public class ItemTeacup extends BaseItemWithMetadata
 		}
 		return stack;
 	}
+
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(Item item, CreativeTabs tab, List l)
 	{
 		for (int var4 = 0; var4 < 11; ++var4)
-		l.add(new ItemStack(InitItems.itemTeacup, 1, var4));
+			l.add(new ItemStack(InitItems.itemTeacup, 1, var4));
 	}
+
 	@Override
 	// TODO: Make module-sensitive
 	public void addInformation(ItemStack stack, EntityPlayer player, List l, boolean flag)
 	{
-		if(stack.getItemDamage() == 0)
-		{
+		if (stack.getItemDamage() == 0)
 			l.add("Empty");
-		}
 		else
 		{
 			l.add("Filled with Tea");
 			l.add(stack.getItemDamage() + " sips remaining");
 		}
 	}
+
 	@Override
 	public String getUnlocalizedName(ItemStack is)
 	{
 		return super.getUnlocalizedName();
 	}
 
-    /**
-     * Gets an icon index based on an item's damage value
-     */
-    @SideOnly(Side.CLIENT)
-    public IIcon getIconFromDamage(int meta)
-    {
-    	if(meta == 0)
-        return itemIcon[0];
-    	else return itemIcon[1];
-    }
+	/**
+	 * Gets an icon index based on an item's damage value
+	 */
+	@Override
+	@SideOnly(Side.CLIENT)
+	public IIcon getIconFromDamage(int meta)
+	{
+		if (meta == 0)
+			return itemIcon[0];
+		else
+			return itemIcon[1];
+	}
 }

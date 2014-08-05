@@ -37,10 +37,8 @@ public class ItemAqualung extends BaseItem implements IModule
 	@Override
 	public void getArmorEffect(World world, EntityPlayer player, ItemStack stack)
 	{
-		if(player.getAir() < 0)
-		{
+		if (player.getAir() < 0)
 			player.setAir(300);
-		}
 	}
 
 	@Override

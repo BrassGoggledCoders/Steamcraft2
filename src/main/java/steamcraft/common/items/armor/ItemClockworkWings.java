@@ -38,31 +38,32 @@ public class ItemClockworkWings extends BaseArmor
 	public ItemClockworkWings(ArmorMaterial mat, int renderIndex, int type)
 	{
 		super(mat, renderIndex, type);
-		this.setMaxDamage(0);
+		setMaxDamage(0);
 	}
 
 	@SuppressWarnings("all")
 	@Override
 	public void addInformation(ItemStack itemStack, EntityPlayer entityPlayer, List list, boolean bool)
 	{
-		if (this.descNeedsShift)
+		if (descNeedsShift)
 		{
 			if (ClientHelper.isShiftKeyDown())
-				this.getWrappedDesc(list);
+				getWrappedDesc(list);
 			else
 				list.add(ClientHelper.shiftForInfo);
 		}
 		else
-			this.getWrappedDesc(list);
+			getWrappedDesc(list);
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void onArmorTick(World world, EntityPlayer player, ItemStack stack)
 	{
-		if (!player.capabilities.allowFlying && player.getFoodStats().getFoodLevel() != 0)
+		if (!player.capabilities.allowFlying && (player.getFoodStats().getFoodLevel() != 0))
 		{
-			if (Minecraft.getMinecraft().currentScreen == null && player.posY < 160 && Minecraft.getMinecraft().gameSettings.keyBindJump.isPressed())
+			if ((Minecraft.getMinecraft().currentScreen == null) && (player.posY < 160)
+					&& Minecraft.getMinecraft().gameSettings.keyBindJump.isPressed())
 			{
 				player.addExhaustion(hungerPerTick);
 
@@ -72,7 +73,7 @@ public class ItemClockworkWings extends BaseArmor
 					player.motionY += 0.4D;
 			}
 
-			if (player.motionY < 0.0D && player.isSneaking())
+			if ((player.motionY < 0.0D) && player.isSneaking())
 			{
 				player.addExhaustion(hungerPerTick / 2);
 				player.motionY /= 1.4D;
@@ -86,7 +87,7 @@ public class ItemClockworkWings extends BaseArmor
 				player.motionX *= 1.04D;
 				player.motionZ *= 1.04D;
 			}
-			
+
 			player.fallDistance = 0;
 		}
 	}
@@ -105,11 +106,11 @@ public class ItemClockworkWings extends BaseArmor
 			{
 				armorModel.bipedHead.showModel = armorSlot == 0;
 				armorModel.bipedHeadwear.showModel = armorSlot == 0;
-				armorModel.bipedBody.showModel = armorSlot == 1 || armorSlot == 2;
+				armorModel.bipedBody.showModel = (armorSlot == 1) || (armorSlot == 2);
 				armorModel.bipedRightArm.showModel = armorSlot == 1;
 				armorModel.bipedLeftArm.showModel = armorSlot == 1;
-				armorModel.bipedRightLeg.showModel = armorSlot == 2 || armorSlot == 3;
-				armorModel.bipedLeftLeg.showModel = armorSlot == 2 || armorSlot == 3;
+				armorModel.bipedRightLeg.showModel = (armorSlot == 2) || (armorSlot == 3);
+				armorModel.bipedLeftLeg.showModel = (armorSlot == 2) || (armorSlot == 3);
 				armorModel.isSneak = entityLiving.isSneaking();
 				armorModel.isRiding = entityLiving.isRiding();
 				armorModel.isChild = entityLiving.isChild();

@@ -17,7 +17,7 @@ import steamcraft.common.lib.LibInfo;
 
 /**
  * @author decebaldecebal
- *
+ * 
  */
 public class TileCopperTankRenderer
 {

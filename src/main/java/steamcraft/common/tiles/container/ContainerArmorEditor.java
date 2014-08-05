@@ -12,7 +12,6 @@
  */
 package steamcraft.common.tiles.container;
 
-import boilerplate.steamapi.IModule;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -35,7 +34,7 @@ public class ContainerArmorEditor extends Container
 
 	/**
 	 * Instantiates a new container armor editor.
-	 *
+	 * 
 	 * @param player
 	 *            the player
 	 * @param tile
@@ -46,42 +45,44 @@ public class ContainerArmorEditor extends Container
 		tileent = tile;
 		int var3;
 
-		//Armor Slot
+		// Armor Slot
 		addSlotToContainer(new SlotBrassArmor(tileent, 0, 8, 34));
-		//Input Slots Line 1
-			for (int var4 = 0; var4 < 7; ++var4)
-				addSlotToContainer(new SlotModule(tileent, var4 + 10, 44 + (var4 * 18), 16));
-		//Input Slots Line 2
+		// Input Slots Line 1
+		for (int var4 = 0; var4 < 7; ++var4)
+			addSlotToContainer(new SlotModule(tileent, var4 + 10, 44 + (var4 * 18), 16));
+		// Input Slots Line 2
 		for (int var4 = 0; var4 < 7; ++var4)
 			addSlotToContainer(new SlotModule(tileent, var4 + 20, 44 + (var4 * 18), 34));
-		//Input Slots Line 3
-				for (int var4 = 0; var4 < 7; ++var4)
-					addSlotToContainer(new SlotModule(tileent, var4 + 30, 44 + (var4 * 18), 52));
-		//Inv
+		// Input Slots Line 3
+		for (int var4 = 0; var4 < 7; ++var4)
+			addSlotToContainer(new SlotModule(tileent, var4 + 30, 44 + (var4 * 18), 52));
+		// Inv
 		for (var3 = 0; var3 < 3; ++var3)
 			for (int var4 = 0; var4 < 9; ++var4)
 				addSlotToContainer(new Slot(player, var4 + (var3 * 9) + 9, 8 + (var4 * 18), 84 + (var3 * 18)));
-		//Hotbar
+		// Hotbar
 		for (var3 = 0; var3 < 9; ++var3)
 			addSlotToContainer(new Slot(player, var3, 8 + (var3 * 18), 142));
 	}
+
 	@Override
 	public boolean canInteractWith(EntityPlayer var1)
 	{
 		return true;
 	}
+
 	@Override
 	/**
-     * args: slotID, itemStack to put in slot
-     */
-    public void putStackInSlot(int slot, ItemStack stack)
-    {
-		if(slot == 0)
+	 * args: slotID, itemStack to put in slot
+	 */
+	public void putStackInSlot(int slot, ItemStack stack)
+	{
+		if (slot == 0)
 		{
-			ItemBrassArmor armor = (ItemBrassArmor)stack.getItem();
-			for(int i=0;i<armor.modules.size();i++)
-			this.inventorySlots.set(i, (IModule)armor.modules.get(i));
+			ItemBrassArmor armor = (ItemBrassArmor) stack.getItem();
+			for (int i = 0; i < armor.modules.size(); i++)
+				inventorySlots.set(i, armor.modules.get(i));
 		}
-        this.getSlot(slot).putStack(stack);
-    }
+		getSlot(slot).putStack(stack);
+	}
 }

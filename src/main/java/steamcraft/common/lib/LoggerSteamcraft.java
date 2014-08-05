@@ -19,7 +19,7 @@ import cpw.mods.fml.common.FMLLog;
 
 /**
  * @author Surseance
- *
+ * 
  */
 public class LoggerSteamcraft
 {

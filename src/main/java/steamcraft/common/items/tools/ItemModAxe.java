@@ -20,7 +20,7 @@ import net.minecraft.nbt.NBTTagCompound;
 
 /**
  * @author Surseance
- *
+ * 
  */
 public class ItemModAxe extends ItemModTool
 {
@@ -35,7 +35,7 @@ public class ItemModAxe extends ItemModTool
 	@Override
 	public float getDigSpeed(ItemStack stack, Block block, int metadata)
 	{
-		if (this.isSteampowered())
+		if (isSteampowered())
 		{
 			NBTTagCompound tag = stack.getTagCompound();
 			if (tag.getBoolean("hasCanister"))
@@ -43,10 +43,10 @@ public class ItemModAxe extends ItemModTool
 			else
 				return 0.1F;
 		}
-		if (block != null
-				&& (block.getMaterial() == Material.wood || block.getMaterial() == Material.plants || block.getMaterial() == Material.vine))
+		if ((block != null)
+				&& ((block.getMaterial() == Material.wood) || (block.getMaterial() == Material.plants) || (block.getMaterial() == Material.vine)))
 			super.getDigSpeed(stack, block, metadata);
 
-		return this.efficiencyOnProperMaterial;
+		return efficiencyOnProperMaterial;
 	}
 }

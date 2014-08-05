@@ -24,14 +24,14 @@ import steamcraft.common.Steamcraft;
 
 /**
  * @author Surseance
- *
+ * 
  */
 public class ItemWatch extends BaseItem
 {
 	public ItemWatch()
 	{
-		this.setMaxStackSize(1);
-		this.setCreativeTab(Steamcraft.tabSC2);
+		setMaxStackSize(1);
+		setCreativeTab(Steamcraft.tabSC2);
 	}
 
 	@Override

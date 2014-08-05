@@ -28,11 +28,11 @@ import steamcraft.common.lib.LibInfo;
 
 /**
  * @author decebaldecebal
- *
+ * 
  */
 public class TileIntake extends TileEntity implements IFluidHandler
 {
-	private static byte waterPerTick = 25; //Same as TE Aqueous Accumulator
+	private static byte waterPerTick = 25; // Same as TE Aqueous Accumulator
 	private static byte exportAmountPerTick = 25;
 
 	private FluidTank waterTank;
@@ -67,10 +67,11 @@ public class TileIntake extends TileEntity implements IFluidHandler
 					new FluidStack(FluidRegistry.WATER, Math.min(waterTank.getFluidAmount(), exportAmountPerTick)), true), true);
 		}
 		Random random = new Random();
-		if(waterTank.getFluidAmount() > 0)
-		worldObj.spawnParticle("dripWater", xCoord + random.nextDouble(), yCoord + random.nextDouble(), zCoord + random.nextDouble(), random.nextDouble(), -0.5D, random.nextDouble());
-		if(random.nextInt(100) == 0)
-		worldObj.playSound(xCoord, yCoord, zCoord, LibInfo.PREFIX + "intake", 1F, 1F, true);
+		if (waterTank.getFluidAmount() > 0)
+			worldObj.spawnParticle("dripWater", xCoord + random.nextDouble(), yCoord + random.nextDouble(), zCoord + random.nextDouble(),
+					random.nextDouble(), -0.5D, random.nextDouble());
+		if (random.nextInt(100) == 0)
+			worldObj.playSound(xCoord, yCoord, zCoord, LibInfo.PREFIX + "intake", 1F, 1F, true);
 	}
 
 	@Override
@@ -92,7 +93,7 @@ public class TileIntake extends TileEntity implements IFluidHandler
 	@Override
 	public FluidStack drain(ForgeDirection from, FluidStack resource, boolean doDrain)
 	{
-		if (resource == null || !resource.isFluidEqual(waterTank.getFluid()))
+		if ((resource == null) || !resource.isFluidEqual(waterTank.getFluid()))
 			return null;
 
 		return waterTank.drain(resource.amount, doDrain);

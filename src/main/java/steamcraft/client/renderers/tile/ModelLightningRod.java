@@ -21,7 +21,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 // TODO: Auto-generated Javadoc
 /**
  * The Class ModelLightningRod.
- *
+ * 
  * @author Surseance (Johnny Eatmon) & Falkok15
  */
 @SideOnly(Side.CLIENT)
@@ -227,7 +227,7 @@ public class ModelLightningRod extends ModelBase
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see
 	 * net.minecraft.client.model.ModelBase#render(net.minecraft.entity.Entity,
 	 * float, float, float, float, float, float)
@@ -263,7 +263,7 @@ public class ModelLightningRod extends ModelBase
 	// Techne method
 	/**
 	 * Sets the rotation.
-	 *
+	 * 
 	 * @param model
 	 *            the model
 	 * @param x
@@ -282,7 +282,7 @@ public class ModelLightningRod extends ModelBase
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see net.minecraft.client.model.ModelBase#setRotationAngles(float, float,
 	 * float, float, float, float, net.minecraft.entity.Entity)
 	 */

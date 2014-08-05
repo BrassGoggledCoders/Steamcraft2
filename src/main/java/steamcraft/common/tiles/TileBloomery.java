@@ -24,7 +24,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author warlordjones & decebaldecebal
- *
+ * 
  */
 public class TileBloomery extends BaseTileWithInventory
 {
@@ -46,9 +46,9 @@ public class TileBloomery extends BaseTileWithInventory
 	{
 		super.readFromNBT(tag);
 
-		this.burnTime = tag.getShort("BurnTime");
-		this.cookTime = tag.getShort("CookTime");
-		this.currentItemBurnTime = tag.getShort("ItemBurnTime");
+		burnTime = tag.getShort("BurnTime");
+		cookTime = tag.getShort("CookTime");
+		currentItemBurnTime = tag.getShort("ItemBurnTime");
 	}
 
 	@Override
@@ -56,104 +56,100 @@ public class TileBloomery extends BaseTileWithInventory
 	{
 		super.writeToNBT(tag);
 
-		tag.setShort("BurnTime", (short) this.burnTime);
-		tag.setShort("CookTime", (short) this.cookTime);
-		tag.setShort("ItemBurnTime", (short) this.currentItemBurnTime);
+		tag.setShort("BurnTime", burnTime);
+		tag.setShort("CookTime", cookTime);
+		tag.setShort("ItemBurnTime", currentItemBurnTime);
 	}
 
 	@SideOnly(Side.CLIENT)
 	public int getCookProgressScaled(int i)
 	{
-		return this.cookTime * i / 400;
+		return (cookTime * i) / 400;
 	}
 
 	@SideOnly(Side.CLIENT)
 	public int getBurnTimeRemainingScaled(int i)
 	{
-		if (this.currentItemBurnTime == 0)
-		{
-			this.currentItemBurnTime = 200;
-		}
+		if (currentItemBurnTime == 0)
+			currentItemBurnTime = 200;
 
-		return this.burnTime * i / this.currentItemBurnTime;
+		return (burnTime * i) / currentItemBurnTime;
 	}
 
 	public boolean isBurning()
 	{
-		return this.burnTime > 0;
+		return burnTime > 0;
 	}
 
 	@Override
 	public void updateEntity()
 	{
-		boolean flag = this.burnTime > 0;
+		boolean flag = burnTime > 0;
 		boolean flag1 = false;
 
-		if (this.burnTime > 0)
-		{
-			--this.burnTime;
-		}
+		if (burnTime > 0)
+			--burnTime;
 
-		if (!this.worldObj.isRemote)
+		if (!worldObj.isRemote)
 		{
-			if (this.burnTime == 0 && this.canSmelt())
+			if ((burnTime == 0) && canSmelt())
 			{
-				this.currentItemBurnTime = this.burnTime = getItemBurnTime(this.inventory[0]);
+				currentItemBurnTime = burnTime = getItemBurnTime(inventory[0]);
 
-				if (this.burnTime > 0)
+				if (burnTime > 0)
 				{
 					flag1 = true;
 
-					if (this.inventory[0] != null)
+					if (inventory[0] != null)
 					{
-						--this.inventory[0].stackSize;
+						--inventory[0].stackSize;
 
-						if (this.inventory[0].stackSize == 0)
-							this.inventory[0] = inventory[0].getItem().getContainerItem(inventory[0]);
+						if (inventory[0].stackSize == 0)
+							inventory[0] = inventory[0].getItem().getContainerItem(inventory[0]);
 					}
 				}
 			}
 
-			if (this.isBurning() && this.canSmelt())
+			if (isBurning() && canSmelt())
 			{
-				++this.cookTime;
+				++cookTime;
 
-				if (this.cookTime == 400)
+				if (cookTime == 400)
 				{
-					this.cookTime = 0;
-					this.smeltItem();
+					cookTime = 0;
+					smeltItem();
 					flag1 = true;
 				}
 			}
 			else
-				this.cookTime = 0;
+				cookTime = 0;
 
-			if (flag != this.burnTime > 0)
+			if (flag != (burnTime > 0))
 			{
 				flag1 = true;
-				BlockBloomery.updateBloomeryBlockState(this.burnTime > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord);
+				BlockBloomery.updateBloomeryBlockState(burnTime > 0, worldObj, xCoord, yCoord, zCoord);
 			}
 		}
 
 		if (flag1)
-			this.markDirty();
+			markDirty();
 	}
 
 	private boolean canSmelt()
 	{
-		if (this.inventory[1] != null && this.inventory[2] != null)
+		if ((inventory[1] != null) && (inventory[2] != null))
 		{
-			ItemStack result = this.getRecipeResult();
+			ItemStack result = getRecipeResult();
 
-			if(result != null)
+			if (result != null)
 			{
-				if (this.inventory[3] == null)
+				if (inventory[3] == null)
 					return true;
-				if (!this.inventory[3].isItemEqual(result))
+				if (!inventory[3].isItemEqual(result))
 					return false;
 				int amount = inventory[3].stackSize + result.stackSize;
 
-				return amount <= this.getInventoryStackLimit() && amount <= this.inventory[3].getMaxStackSize();
+				return (amount <= getInventoryStackLimit()) && (amount <= inventory[3].getMaxStackSize());
 			}
 		}
 		return false;
@@ -161,39 +157,39 @@ public class TileBloomery extends BaseTileWithInventory
 
 	public void smeltItem()
 	{
-		if (this.canSmelt())
+		if (canSmelt())
 		{
-			ItemStack result = this.getRecipeResult();
+			ItemStack result = getRecipeResult();
 
-			if (this.inventory[3] == null)
-				this.inventory[3] = result.copy();
-			else if (this.inventory[3].getItem() == result.getItem())
-				this.inventory[3].stackSize += result.stackSize;
+			if (inventory[3] == null)
+				inventory[3] = result.copy();
+			else if (inventory[3].getItem() == result.getItem())
+				inventory[3].stackSize += result.stackSize;
 
 			byte[] stackSizes = BloomeryRecipes.getInstance().getStackSizeForInputs(inventory[1], inventory[2], result);
 
-			if(this.inventory[1]!=null)
+			if (inventory[1] != null)
 			{
-				this.inventory[1].stackSize -= stackSizes[0];
-				if (this.inventory[1].stackSize <= 0)
-					this.inventory[1] = null;
+				inventory[1].stackSize -= stackSizes[0];
+				if (inventory[1].stackSize <= 0)
+					inventory[1] = null;
 			}
 
-			if(this.inventory[2]!=null)
+			if (inventory[2] != null)
 			{
-				this.inventory[2].stackSize -= stackSizes[1];
-				if (this.inventory[2].stackSize <= 0)
-					this.inventory[2] = null;
+				inventory[2].stackSize -= stackSizes[1];
+				if (inventory[2].stackSize <= 0)
+					inventory[2] = null;
 			}
 		}
 	}
 
 	private ItemStack getRecipeResult()
 	{
-		ItemStack result = BloomeryRecipes.getInstance().getResult(this.inventory[1], this.inventory[2]);
+		ItemStack result = BloomeryRecipes.getInstance().getResult(inventory[1], inventory[2]);
 
 		if (result == null)
-			result = BloomeryRecipes.getInstance().getResult(this.inventory[2], this.inventory[1]);
+			result = BloomeryRecipes.getInstance().getResult(inventory[2], inventory[1]);
 
 		return result;
 	}
@@ -211,7 +207,6 @@ public class TileBloomery extends BaseTileWithInventory
 		return getItemBurnTime(stack) > 0;
 	}
 
-
 	@Override
 	public boolean isItemValidForSlot(int par1, ItemStack par2ItemStack)
 	{
@@ -227,13 +222,13 @@ public class TileBloomery extends BaseTileWithInventory
 	@Override
 	public boolean canInsertItem(int par1, ItemStack par2ItemStack, int par3)
 	{
-		return this.isItemValidForSlot(par1, par2ItemStack);
+		return isItemValidForSlot(par1, par2ItemStack);
 	}
 
 	@Override
 	public boolean canExtractItem(int par1, ItemStack par2ItemStack, int par3)
 	{
-		return par3 != 0 || par1 != 1 || par2ItemStack.getItem() == Items.bucket;
+		return (par3 != 0) || (par1 != 1) || (par2ItemStack.getItem() == Items.bucket);
 	}
 
 	@Override

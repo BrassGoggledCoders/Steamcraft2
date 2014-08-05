@@ -28,12 +28,12 @@ import cofh.api.energy.IEnergyHandler;
 
 /**
  * @author decebaldecebal
- *
+ * 
  */
 public class TileTurbine extends TileEntity implements IFluidHandler, IEnergyHandler
 {
-	private static byte steamPerTick = TileSteamBoiler.steamPerTick/2;
-	private static byte RFPerTick = 20; //Same as RC ratio of 1 MJ/5 steam
+	private static byte steamPerTick = TileSteamBoiler.steamPerTick / 2;
+	private static byte RFPerTick = 20; // Same as RC ratio of 1 MJ/5 steam
 
 	private FluidTank steamTank = new FluidTank(new FluidStack(FluidRegistry.getFluid("steam"), 0), 500);
 
@@ -62,28 +62,29 @@ public class TileTurbine extends TileEntity implements IFluidHandler, IEnergyHan
 	{
 		if (!worldObj.isRemote)
 		{
-			if(steamTank.getFluidAmount() >= steamPerTick)
-				if(this.buffer.receiveEnergy(RFPerTick, false) == RFPerTick)
-					this.steamTank.drain(steamPerTick, true);
+			if (steamTank.getFluidAmount() >= steamPerTick)
+				if (buffer.receiveEnergy(RFPerTick, false) == RFPerTick)
+					steamTank.drain(steamPerTick, true);
 
-			if(buffer.getEnergyStored() >= RFPerTick)
+			if (buffer.getEnergyStored() >= RFPerTick)
 			{
 				byte usedEnergy = 0;
 				byte outputEnergy = RFPerTick;
 
 				for (ForgeDirection direction : EnumSet.allOf(ForgeDirection.class))
-					if(outputEnergy > 0)
+					if (outputEnergy > 0)
 					{
-						TileEntity tileEntity = worldObj.getTileEntity(xCoord - direction.offsetX, yCoord - direction.offsetY, zCoord - direction.offsetZ);
+						TileEntity tileEntity = worldObj.getTileEntity(xCoord - direction.offsetX, yCoord - direction.offsetY, zCoord
+								- direction.offsetZ);
 
-						if(tileEntity instanceof IEnergyHandler)
+						if (tileEntity instanceof IEnergyHandler)
 						{
-							 usedEnergy += ((IEnergyHandler) tileEntity).receiveEnergy(direction.getOpposite(), outputEnergy, false);
-							 outputEnergy -= usedEnergy;
+							usedEnergy += ((IEnergyHandler) tileEntity).receiveEnergy(direction.getOpposite(), outputEnergy, false);
+							outputEnergy -= usedEnergy;
 						}
 					}
 
-				this.buffer.modifyEnergyStored(-usedEnergy);
+				buffer.modifyEnergyStored(-usedEnergy);
 			}
 		}
 	}
@@ -91,8 +92,8 @@ public class TileTurbine extends TileEntity implements IFluidHandler, IEnergyHan
 	@Override
 	public int fill(ForgeDirection from, FluidStack resource, boolean doFill)
 	{
-		if(resource.getFluid() == FluidRegistry.getFluid("steam") && from != ForgeDirection.UP)
-			return this.steamTank.fill(resource, doFill);
+		if ((resource.getFluid() == FluidRegistry.getFluid("steam")) && (from != ForgeDirection.UP))
+			return steamTank.fill(resource, doFill);
 		return 0;
 	}
 
@@ -111,7 +112,7 @@ public class TileTurbine extends TileEntity implements IFluidHandler, IEnergyHan
 	@Override
 	public boolean canFill(ForgeDirection from, Fluid fluid)
 	{
-		if(fluid == FluidRegistry.getFluid("steam"))
+		if (fluid == FluidRegistry.getFluid("steam"))
 			return true;
 		return false;
 	}

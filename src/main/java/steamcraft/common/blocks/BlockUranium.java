@@ -30,7 +30,7 @@ public class BlockUranium extends BaseBlock implements IChiselable
 	public BlockUranium(Material p_i45394_1_)
 	{
 		super(p_i45394_1_);
-		this.setBlockName("blockUranium");
+		setBlockName("blockUranium");
 
 	}
 

@@ -26,22 +26,22 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * Base class for drills.
- *
+ * 
  * @author Decebaldecebal
- *
+ * 
  */
 public class ItemDrill extends ItemModTool
 {
 	protected ToolMaterial toolMaterial;
 
-	static Block[] blocksEffectiveAgainst = new Block[] { Blocks.cobblestone, Blocks.dirt, Blocks.stone, Blocks.sand, Blocks.clay, Blocks.ice, Blocks.snow,
-			Blocks.netherrack, Blocks.grass, Blocks.gravel };
+	static Block[] blocksEffectiveAgainst = new Block[] { Blocks.cobblestone, Blocks.dirt, Blocks.stone, Blocks.sand, Blocks.clay, Blocks.ice,
+			Blocks.snow, Blocks.netherrack, Blocks.grass, Blocks.gravel };
 
 	public ItemDrill(ToolMaterial mat)
 	{
 		super(1.0F, mat, blocksEffectiveAgainst);
-		this.setCreativeTab(Steamcraft.tabSC2);
-		this.toolMaterial = mat;
+		setCreativeTab(Steamcraft.tabSC2);
+		toolMaterial = mat;
 		// this.setMaxDamage(this.toolMaterial.getMaxUses());
 	}
 
@@ -49,7 +49,7 @@ public class ItemDrill extends ItemModTool
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister icon)
 	{
-		this.itemIcon = icon.registerIcon(LibInfo.PREFIX + "tools/" + this.getUnlocalizedName().substring(5));
+		itemIcon = icon.registerIcon(LibInfo.PREFIX + "tools/" + this.getUnlocalizedName().substring(5));
 	}
 
 	@SuppressWarnings("all")
@@ -69,6 +69,6 @@ public class ItemDrill extends ItemModTool
 	{
 		super.addInformation(stack, player, list, flag);
 
-		list.add("Efficiency: " + this.toolMaterial.getEfficiencyOnProperMaterial());
+		list.add("Efficiency: " + toolMaterial.getEfficiencyOnProperMaterial());
 	}
 }

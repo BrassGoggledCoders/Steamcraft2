@@ -20,7 +20,7 @@ import steamcraft.common.tiles.TileArmorEditor;
 
 /**
  * @author decebaldecebal
- *
+ * 
  */
 public class SlotBrassArmor extends Slot
 {

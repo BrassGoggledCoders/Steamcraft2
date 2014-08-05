@@ -27,15 +27,15 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * The Class RenderBullet.
- *
+ * 
  * @author Surseance (Johnny Eatmon)
  */
 @SideOnly(Side.CLIENT)
 public class RenderSmallLightningBolt extends Render
 {
-	private static  ResourceLocation bulletTex = new ResourceLocation(LibInfo.PREFIX + "textures/projectiles/bolt.png");
+	private static ResourceLocation bulletTex = new ResourceLocation(LibInfo.PREFIX + "textures/projectiles/bolt.png");
 
-	public void renderBullet( EntitySmallLightningBolt entity,  double dx,  double dy,  double dz,  float frotY,  float frotP)
+	public void renderBullet(EntitySmallLightningBolt entity, double dx, double dy, double dz, float frotY, float frotP)
 	{
 		bindEntityTexture(entity);
 
@@ -46,23 +46,23 @@ public class RenderSmallLightningBolt extends Render
 		GL11.glTranslatef((float) dx, (float) dy, (float) dz);
 		GL11.glRotatef((entity.prevRotationYaw + ((entity.rotationYaw - entity.prevRotationYaw) * frotP)) - 90F, 0.0F, 1.0F, 0.0F);
 		GL11.glRotatef(entity.prevRotationPitch + ((entity.rotationPitch - entity.prevRotationPitch) * frotP), 0.0F, 0.0F, 1.0F);
-		 Tessellator tessellator = Tessellator.instance;
-		 int i = 0;
-		 float f2 = 0.0F;
-		 float f3 = 0.5F;
-		 float f4 = (0 + (i * 10)) / 32F;
-		 float f5 = (5 + (i * 10)) / 32F;
-		 float f6 = 0.0F;
-		 float f7 = 0.15625F;
-		 float f8 = (5 + (i * 10)) / 32F;
-		 float f9 = (10 + (i * 10)) / 32F;
-		 float f10 = 1F;
+		Tessellator tessellator = Tessellator.instance;
+		int i = 0;
+		float f2 = 0.0F;
+		float f3 = 0.5F;
+		float f4 = (0 + (i * 10)) / 32F;
+		float f5 = (5 + (i * 10)) / 32F;
+		float f6 = 0.0F;
+		float f7 = 0.15625F;
+		float f8 = (5 + (i * 10)) / 32F;
+		float f9 = (10 + (i * 10)) / 32F;
+		float f10 = 1F;
 		GL11.glEnable(32826 /* GL_RESCALE_NORMAL_EXT */);
-		 float f11 = 1.0F - frotP;
+		float f11 = 1.0F - frotP;
 
 		if (f11 > 0.0F)
 		{
-			 float f12 = -MathHelper.sin(f11 * 3F) * f11;
+			float f12 = -MathHelper.sin(f11 * 3F) * f11;
 			GL11.glRotatef(f12, 0.0F, 0.0F, 1.0F);
 		}
 
@@ -102,24 +102,24 @@ public class RenderSmallLightningBolt extends Render
 
 	/**
 	 * Gets the bullet texture.
-	 *
+	 * 
 	 * @param entity
 	 *            the bullet
 	 * @return the bullet texture
 	 */
-	protected ResourceLocation getBulletTexture( EntitySmallLightningBolt entity)
+	protected ResourceLocation getBulletTexture(EntitySmallLightningBolt entity)
 	{
 		return bulletTex;
 	}
 
 	@Override
-	protected ResourceLocation getEntityTexture( Entity entity)
+	protected ResourceLocation getEntityTexture(Entity entity)
 	{
 		return getBulletTexture((EntitySmallLightningBolt) entity);
 	}
 
 	@Override
-	public void doRender( Entity entity,  double dx,  double dy,  double dz,  float frotY,  float frotP)
+	public void doRender(Entity entity, double dx, double dy, double dz, float frotY, float frotP)
 	{
 		renderBullet((EntitySmallLightningBolt) entity, dx, dy, dz, frotY, frotP);
 	}

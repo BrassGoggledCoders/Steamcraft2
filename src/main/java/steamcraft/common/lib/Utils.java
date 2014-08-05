@@ -66,8 +66,10 @@ public class Utils
 		for (String username : developers)
 			try
 			{
-				ThreadDownloadImageData imageData = new ThreadDownloadImageData(null, "https://www.dropbox.com/s/cicvp1u0kq9xtbp/steamcraft_cape_1.png",
-						null, null); // Probably doesn't work...
+				ThreadDownloadImageData imageData = new ThreadDownloadImageData(null,
+						"https://www.dropbox.com/s/cicvp1u0kq9xtbp/steamcraft_cape_1.png", null, null); // Probably
+																										// doesn't
+																										// work...
 				Minecraft.getMinecraft().getTextureManager().loadTexture(new ResourceLocation("cloaks/" + username), imageData);
 			} catch (Exception e)
 			{
@@ -76,8 +78,11 @@ public class Utils
 
 		// String donators[] = getUsersFromUrl(LibInfo.DONATOR_LIST);
 		/*
-		 * for (String username : donators) { try { ThreadDownloadImageData imageData = new ThreadDownloadImageData(LibInfo.DONATOR_CAPE_URL, null, null);
-		 * Minecraft.getMinecraft().renderEngine.loadTexture(new ResourceLocation(("cloaks/" + username)), ((ITextureObject)imageData)); } catch (Exception e) {
+		 * for (String username : donators) { try { ThreadDownloadImageData
+		 * imageData = new ThreadDownloadImageData(LibInfo.DONATOR_CAPE_URL,
+		 * null, null); Minecraft.getMinecraft().renderEngine.loadTexture(new
+		 * ResourceLocation(("cloaks/" + username)),
+		 * ((ITextureObject)imageData)); } catch (Exception e) {
 		 * LoggerSteamcraft.log(Level.INFO, "Unable to load capes"); } }
 		 */
 	}

@@ -29,11 +29,11 @@ public class BlockCastIronFence extends BlockFence
 	public BlockCastIronFence()
 	{
 		super(LibInfo.PREFIX + "metal/" + "blockCastIron", Material.iron);
-		this.setBlockName("blockCastIronFence");
-		this.setHardness(4.5F);
-		this.setResistance(20.0F);
-		this.setStepSound(Block.soundTypeMetal);
-		this.setCreativeTab(Steamcraft.tabSC2);
+		setBlockName("blockCastIronFence");
+		setHardness(4.5F);
+		setResistance(20.0F);
+		setStepSound(Block.soundTypeMetal);
+		setCreativeTab(Steamcraft.tabSC2);
 	}
 
 	@Override
@@ -41,9 +41,8 @@ public class BlockCastIronFence extends BlockFence
 	{
 		final Block block = world.getBlock(x, y, z);
 
-		if (block != this && block != InitBlocks.blockCastIronGate)
-			return block != null && block.getMaterial().isOpaque() && block.renderAsNormalBlock() ? block.getMaterial() != Material.cactus
-					: false;
+		if ((block != this) && (block != InitBlocks.blockCastIronGate))
+			return (block != null) && block.getMaterial().isOpaque() && block.renderAsNormalBlock() ? block.getMaterial() != Material.cactus : false;
 		else
 			return true;
 	}

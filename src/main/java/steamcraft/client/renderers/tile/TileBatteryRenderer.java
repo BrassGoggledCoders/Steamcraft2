@@ -26,14 +26,14 @@ import steamcraft.common.lib.LibInfo;
 // TODO: Auto-generated Javadoc
 /**
  * The Class TileCrystalRenderer.
- *
+ * 
  * @author Surseance (Johnny Eatmon)
  */
 public class TileBatteryRenderer extends TileEntitySpecialRenderer
 {
 
 	/** The model. */
-	private  ModelBattery model;
+	private ModelBattery model;
 
 	/**
 	 * Instantiates a new tile crystal renderer.
@@ -44,7 +44,7 @@ public class TileBatteryRenderer extends TileEntitySpecialRenderer
 	}
 
 	@Override
-	public void renderTileEntityAt(TileEntity te,  double dx,  double dy,  double dz,  float scale)
+	public void renderTileEntityAt(TileEntity te, double dx, double dy, double dz, float scale)
 	{
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float) dx + 0.5F, (float) dy + 1.5F, (float) dz + 0.5F);
@@ -53,13 +53,14 @@ public class TileBatteryRenderer extends TileEntitySpecialRenderer
 		renderBattery(te, te.getWorldObj(), te.xCoord, te.yCoord, te.zCoord);
 		GL11.glPopMatrix();
 	}
+
 	public void renderBattery(TileEntity te, World world, int x, int y, int z)
 	{
 		GL11.glPushMatrix();
 		GL11.glScalef(1.3F, 1.5F, 1F);
 		GL11.glTranslatef(-0.1F, 0.05F, 0.25F);
 		GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
-		model.render((Entity)null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F, te);
+		model.render((Entity) null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F, te);
 		GL11.glPopMatrix();
 	}
 }

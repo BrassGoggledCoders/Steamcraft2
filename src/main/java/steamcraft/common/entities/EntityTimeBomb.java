@@ -18,18 +18,20 @@ import net.minecraft.world.World;
 
 public class EntityTimeBomb extends EntityTNTPrimed
 {
-	 public int fuse;
+	public int fuse;
 
 	public EntityTimeBomb(World p_i1730_1_)
 	{
 		super(p_i1730_1_);
 		// TODO Auto-generated constructor stub
 	}
+
 	public EntityTimeBomb(World p_i1730_1_, double p_i1730_2_, double p_i1730_4_, double p_i1730_6_, EntityLivingBase p_i1730_8_)
 	{
 		super(p_i1730_1_, p_i1730_2_, p_i1730_4_, p_i1730_6_, p_i1730_8_);
 		// TODO Auto-generated constructor stub
 	}
+
 	public EntityTimeBomb(World p_i1730_1_, double p_i1730_2_, double p_i1730_4_, double p_i1730_6_, EntityLivingBase p_i1730_8_, int fuse)
 	{
 		super(p_i1730_1_, p_i1730_2_, p_i1730_4_, p_i1730_6_, p_i1730_8_);

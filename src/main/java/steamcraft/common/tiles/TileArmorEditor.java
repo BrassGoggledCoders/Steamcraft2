@@ -20,14 +20,15 @@ import boilerplate.steamapi.IModule;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class TileArmorEditor extends BaseTileWithInventory implements IInventory
 {
 	public TileArmorEditor()
 	{
-		super((byte)44);
+		super((byte) 44);
 	}
+
 	@Override
 	public boolean canInsertItem(int i, ItemStack itemstack, int j)
 	{
@@ -45,33 +46,29 @@ public class TileArmorEditor extends BaseTileWithInventory implements IInventory
 	{
 		return "Armor Editor";
 	}
-	@Override
-    public void updateEntity()
-    {
-		if(this.inventory[0] != null && this.inventory[0].getItem() instanceof ItemBrassArmor)
-		{
-			for(int i=1; i<17;i++)
-			{
-				if(inventory[i] != null)
-				{
-					ItemBrassArmor armor = (ItemBrassArmor) this.inventory[0].getItem();
-					IModule module = (IModule) this.inventory[i].getItem();
-					if(!armor.modules.contains(module))
-						if(armor.armorType != -1)
-						{
-							if(armor.armorType ==  module.getApplicablePiece())
-							{
-								armor.modules.add(module);
-							}
-						}
-						else armor.modules.add(module);
-						//inventory[0].stackTagCompound.setString(/*"module" + i, module.getName()*/"potato", "potato");
-							//.setString("module" +i,module.getName());
-					//inventory[i] = null;
-				}
-			}
-		}
-    }
 
+	@Override
+	public void updateEntity()
+	{
+		if ((inventory[0] != null) && (inventory[0].getItem() instanceof ItemBrassArmor))
+			for (int i = 1; i < 17; i++)
+				if (inventory[i] != null)
+				{
+					ItemBrassArmor armor = (ItemBrassArmor) inventory[0].getItem();
+					IModule module = (IModule) inventory[i].getItem();
+					if (!armor.modules.contains(module))
+						if (armor.armorType != -1)
+						{
+							if (armor.armorType == module.getApplicablePiece())
+								armor.modules.add(module);
+						}
+						else
+							armor.modules.add(module);
+					// inventory[0].stackTagCompound.setString(/*"module" + i,
+					// module.getName()*/"potato", "potato");
+					// .setString("module" +i,module.getName());
+					// inventory[i] = null;
+				}
+	}
 
 }

@@ -16,7 +16,7 @@ import net.minecraft.tileentity.TileEntity;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class TileCrystal extends TileEntity
 {

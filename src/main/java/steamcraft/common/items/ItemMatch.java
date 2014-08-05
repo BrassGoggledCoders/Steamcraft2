@@ -19,7 +19,7 @@ import net.minecraft.world.World;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class ItemMatch extends BaseItem
 {
@@ -51,7 +51,7 @@ public class ItemMatch extends BaseItem
 		{
 			if (par3World.isAirBlock(par4, par5, par6))
 			{
-				par3World.playSoundEffect(par4 + 0.5D, par5 + 0.5D, par6 + 0.5D, "fire.ignite", 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
+				par3World.playSoundEffect(par4 + 0.5D, par5 + 0.5D, par6 + 0.5D, "fire.ignite", 1.0F, (itemRand.nextFloat() * 0.4F) + 0.8F);
 				par3World.setBlock(par4, par5, par6, Blocks.fire);
 			}
 

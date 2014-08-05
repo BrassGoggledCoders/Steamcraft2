@@ -33,29 +33,29 @@ public class BlockBrassLog extends BlockLog
 	public BlockBrassLog(Material p_i45394_1_)
 	{
 		super();
-		this.setCreativeTab(Steamcraft.tabSC2);
-		this.setBlockName("blockBrassLog");
+		setCreativeTab(Steamcraft.tabSC2);
+		setBlockName("blockBrassLog");
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	protected IIcon getSideIcon(int p_150163_1_)
 	{
-		return this.blockIcon;
+		return blockIcon;
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	protected IIcon getTopIcon(int p_150161_1_)
 	{
-		return this.iconTop;
+		return iconTop;
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(final IIconRegister ir)
 	{
-		this.blockIcon = ir.registerIcon(LibInfo.PREFIX + "blockBrassLogSide");
-		this.iconTop = ir.registerIcon(LibInfo.PREFIX + "blockBrassLogTop");
+		blockIcon = ir.registerIcon(LibInfo.PREFIX + "blockBrassLogSide");
+		iconTop = ir.registerIcon(LibInfo.PREFIX + "blockBrassLogTop");
 	}
 }

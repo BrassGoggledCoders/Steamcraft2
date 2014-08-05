@@ -28,11 +28,11 @@ public class BlockCastIronGate extends BlockFenceGate
 {
 	public BlockCastIronGate()
 	{
-		this.setBlockName("blockCastIronGate");
-		this.setHardness(7.0F);
-		this.setResistance(20.0F);
-		this.setStepSound(Block.soundTypeMetal);
-		this.setCreativeTab(Steamcraft.tabSC2);
+		setBlockName("blockCastIronGate");
+		setHardness(7.0F);
+		setResistance(20.0F);
+		setStepSound(Block.soundTypeMetal);
+		setCreativeTab(Steamcraft.tabSC2);
 	}
 
 	@Override

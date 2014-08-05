@@ -17,7 +17,7 @@ import boilerplate.common.baseclasses.BaseItemBlockWithMetadata;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class ItemBlockSlate extends BaseItemBlockWithMetadata
 {

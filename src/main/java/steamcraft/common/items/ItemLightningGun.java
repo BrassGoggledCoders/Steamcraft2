@@ -32,16 +32,16 @@ public class ItemLightningGun extends BaseItem
 	public ItemLightningGun(String raySound)
 	{
 		super();
-		this.setMaxDamage(300);
-		this.setMaxStackSize(1);
-		this.setFull3D();
+		setMaxDamage(300);
+		setMaxStackSize(1);
+		setFull3D();
 	}
 
 	@SuppressWarnings("all")
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
 	{
-		MovingObjectPosition mop = this.getMovingObjectPositionFromPlayer(world, player, true);
+		MovingObjectPosition mop = getMovingObjectPositionFromPlayer(world, player, true);
 		world.spawnEntityInWorld(new EntitySmallLightningBolt(world, player, 100, 8));
 		stack.damageItem(1, player);
 

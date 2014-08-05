@@ -30,12 +30,12 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class ItemDivingHelmet extends BaseArmor
 {
 	private static ResourceLocation overlay = new ResourceLocation(LibInfo.PREFIX + "textures/misc/divinghelmet.png");
-	
+
 	public ItemDivingHelmet(ArmorMaterial mat, int renderIndex, int type)
 	{
 		super(mat, renderIndex, type);
@@ -50,21 +50,21 @@ public class ItemDivingHelmet extends BaseArmor
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void renderHelmetOverlay(ItemStack stack, EntityPlayer player, ScaledResolution resolution, float partialTicks, boolean hasScreen, int mouseX,
-			int mouseY)
+	public void renderHelmetOverlay(ItemStack stack, EntityPlayer player, ScaledResolution resolution, float partialTicks, boolean hasScreen,
+			int mouseX, int mouseY)
 	{
-		if (Minecraft.getMinecraft().thePlayer == null || Minecraft.getMinecraft().currentScreen != null)
+		if ((Minecraft.getMinecraft().thePlayer == null) || (Minecraft.getMinecraft().currentScreen != null))
 			return;
 
 		ItemStack helmet = Minecraft.getMinecraft().thePlayer.inventory.armorItemInSlot(3);
 
-		if (Minecraft.getMinecraft().gameSettings.thirdPersonView == 0 && helmet != null && helmet.getItem() == InitItems.itemDivingHelmet)// &&
+		if ((Minecraft.getMinecraft().gameSettings.thirdPersonView == 0) && (helmet != null) && (helmet.getItem() == InitItems.itemDivingHelmet))// &&
 		// KeyHandler.keyPressed)
 		{
 			Minecraft.getMinecraft().getTextureManager().bindTexture(overlay);
 			Tessellator tessellator = Tessellator.instance;
-			ScaledResolution scaledResolution = new ScaledResolution(Minecraft.getMinecraft(),
-					Minecraft.getMinecraft().displayWidth, Minecraft.getMinecraft().displayHeight);
+			ScaledResolution scaledResolution = new ScaledResolution(Minecraft.getMinecraft(), Minecraft.getMinecraft().displayWidth,
+					Minecraft.getMinecraft().displayHeight);
 			int width = scaledResolution.getScaledWidth();
 			int height = scaledResolution.getScaledHeight();
 
@@ -87,8 +87,11 @@ public class ItemDivingHelmet extends BaseArmor
 			GL11.glDisable(GL11.GL_BLEND);
 
 			/*
-			 * if (!mc.gameSettings.hideGUI || mc.currentScreen != null) { int x = (Mouse.getX() * width) / mc.displayWidth; int y = height - (Mouse.getY() *
-			 * height) / mc.displayHeight - 1; mc.ingameGUI.renderGameOverlay(0.0F, mc.currentScreen != null, x, y); }
+			 * if (!mc.gameSettings.hideGUI || mc.currentScreen != null) { int x
+			 * = (Mouse.getX() * width) / mc.displayWidth; int y = height -
+			 * (Mouse.getY() * height) / mc.displayHeight - 1;
+			 * mc.ingameGUI.renderGameOverlay(0.0F, mc.currentScreen != null, x,
+			 * y); }
 			 */
 		}
 	}

@@ -26,7 +26,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class ItemMachinePart extends BaseItemWithMetadata
 {
@@ -35,7 +35,7 @@ public class ItemMachinePart extends BaseItemWithMetadata
 	public ItemMachinePart()
 	{
 		super();
-		this.setMaxStackSize(64);
+		setMaxStackSize(64);
 	}
 
 	@Override
@@ -49,18 +49,16 @@ public class ItemMachinePart extends BaseItemWithMetadata
 		itemIcon[4] = ir.registerIcon(LibInfo.PREFIX + "itemGenerator");
 		itemIcon[5] = ir.registerIcon(LibInfo.PREFIX + "itemFan");
 		itemIcon[6] = ir.registerIcon(LibInfo.PREFIX + "itemWireCoil");
-		//itemIcon[7] = ir.registerIcon(LibInfo.PREFIX + "itemCapacitor");
-		//itemIcon[9] = ir.registerIcon(LibInfo.PREFIX + "itemWireCoil");
+		// itemIcon[7] = ir.registerIcon(LibInfo.PREFIX + "itemCapacitor");
+		// itemIcon[9] = ir.registerIcon(LibInfo.PREFIX + "itemWireCoil");
 	}
-
-
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(Item item, CreativeTabs tab, List l)
 	{
-		for (int var4 = 0; var4 < this.itemIcon.length; ++var4)
+		for (int var4 = 0; var4 < itemIcon.length; ++var4)
 			l.add(new ItemStack(InitItems.itemMachinePart, 1, var4));
 	}
 
@@ -68,6 +66,6 @@ public class ItemMachinePart extends BaseItemWithMetadata
 	@SideOnly(Side.CLIENT)
 	public IIcon getIconFromDamage(int itemDamage)
 	{
-		return this.itemIcon[itemDamage];
+		return itemIcon[itemDamage];
 	}
 }

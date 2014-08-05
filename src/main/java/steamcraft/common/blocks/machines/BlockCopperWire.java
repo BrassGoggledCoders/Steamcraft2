@@ -24,17 +24,17 @@ import steamcraft.common.tiles.TileCopperWire;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class BlockCopperWire extends BlockContainerMod
 {
-	static float pixel = 1/16f;
+	static float pixel = 1 / 16f;
 
 	public BlockCopperWire(Material p_i45394_1_)
 	{
 		super(p_i45394_1_);
-		this.setBlockBounds(6*pixel, 6*pixel, 6*pixel, 1-6*pixel, 1-6*pixel, 1-6*pixel);
-		this.useNeighborBrightness = true;
+		setBlockBounds(6 * pixel, 6 * pixel, 6 * pixel, 1 - (6 * pixel), 1 - (6 * pixel), 1 - (6 * pixel));
+		useNeighborBrightness = true;
 	}
 
 	@Override
@@ -42,6 +42,7 @@ public class BlockCopperWire extends BlockContainerMod
 	{
 		return new TileCopperWire();
 	}
+
 	@Override
 	public boolean isOpaqueCube()
 	{
@@ -67,7 +68,7 @@ public class BlockCopperWire extends BlockContainerMod
 
 		TileCopperWire tile = (TileCopperWire) world.getTileEntity(x, y, z);
 
-		if(tile!=null)
+		if (tile != null)
 			tile.updateConnections();
 	}
 
@@ -78,7 +79,7 @@ public class BlockCopperWire extends BlockContainerMod
 		tile.updateConnections();
 
 		TileEntity t = world.getTileEntity(tileX, tileY, tileZ);
-		if(t!=null && t instanceof TileCopperWire)
+		if ((t != null) && (t instanceof TileCopperWire))
 		{
 			tile = (TileCopperWire) t;
 			tile.updateConnections();
@@ -88,11 +89,11 @@ public class BlockCopperWire extends BlockContainerMod
 	@Override
 	public void breakBlock(World world, int x, int y, int z, Block block, int metadata)
 	{
-		if(!world.isRemote)
+		if (!world.isRemote)
 		{
 			TileCopperWire tile = (TileCopperWire) world.getTileEntity(x, y, z);
 
-			if(tile!=null)
+			if (tile != null)
 				tile.removeFromNetwork();
 		}
 
@@ -115,20 +116,20 @@ public class BlockCopperWire extends BlockContainerMod
 	{
 		TileCopperWire wire = (TileCopperWire) world.getTileEntity(x, y, z);
 
-		if(wire!=null)
+		if (wire != null)
 		{
-			float minX = 6*pixel-(wire.connections[5]!=null ? 6*pixel : 0);
-			float maxX = 1-6*pixel+(wire.connections[4]!=null ? 6*pixel : 0);
+			float minX = (6 * pixel) - (wire.connections[5] != null ? 6 * pixel : 0);
+			float maxX = (1 - (6 * pixel)) + (wire.connections[4] != null ? 6 * pixel : 0);
 
-			float minY = 6*pixel-(wire.connections[1]!=null ? 6*pixel : 0);
-			float maxY = 1-6*pixel+(wire.connections[0]!=null ? 6*pixel : 0);
+			float minY = (6 * pixel) - (wire.connections[1] != null ? 6 * pixel : 0);
+			float maxY = (1 - (6 * pixel)) + (wire.connections[0] != null ? 6 * pixel : 0);
 
-			float minZ = 6*pixel-(wire.connections[3]!=null ? 6*pixel : 0);
-			float maxZ = 1-6*pixel+(wire.connections[2]!=null ? 6*pixel : 0);
+			float minZ = (6 * pixel) - (wire.connections[3] != null ? 6 * pixel : 0);
+			float maxZ = (1 - (6 * pixel)) + (wire.connections[2] != null ? 6 * pixel : 0);
 
-			this.setBlockBounds(minX, minY, minZ, maxX, maxY, maxZ);
+			setBlockBounds(minX, minY, minZ, maxX, maxY, maxZ);
 		}
 
-		return AxisAlignedBB.getBoundingBox(x+this.minX, y+this.minY, z+this.minZ, x+this.maxX, y+this.maxY, z+this.maxZ);
+		return AxisAlignedBB.getBoundingBox(x + minX, y + minY, z + minZ, x + maxX, y + maxY, z + maxZ);
 	}
 }

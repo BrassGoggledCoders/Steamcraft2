@@ -28,12 +28,12 @@ import net.minecraft.util.EnumChatFormatting;
 public class CommandSteamcraft extends CommandBase
 {
 	private List<String> aliases;
-	
+
 	public CommandSteamcraft()
 	{
-		this.aliases = new ArrayList<String>();
-		this.aliases.add("steamcraft");
-		this.aliases.add("sc");
+		aliases = new ArrayList<String>();
+		aliases.add("steamcraft");
+		aliases.add("sc");
 	}
 
 	@Override
@@ -61,11 +61,16 @@ public class CommandSteamcraft extends CommandBase
 		prefix.getChatStyle().setColor(EnumChatFormatting.GOLD);
 
 		if (parameters.length < 1)
-		{
-			sender.addChatMessage(prefix.appendSibling(new ChatComponentText("Welcome to Steamcraft 2!")/* .setChatStyle(EnumChatFormatting.LIGHT_PURPLE) */));
-		}
+			sender.addChatMessage(prefix.appendSibling(new ChatComponentText("Welcome to Steamcraft 2!")/*
+																										 * .
+																										 * setChatStyle
+																										 * (
+																										 * EnumChatFormatting
+																										 * .
+																										 * LIGHT_PURPLE
+																										 * )
+																										 */));
 		else if (parameters.length == 1)
-		{
 			if (parameters[0].equalsIgnoreCase("help"))
 			{
 				sender.addChatMessage(new ChatComponentText("version -- returns current SC2 version"));
@@ -94,9 +99,6 @@ public class CommandSteamcraft extends CommandBase
 				sender.addChatMessage(git);
 			}
 			else
-			{
 				sender.addChatMessage(prefix.appendText("Not a valid sub-command! Run /sc2 help for help!"));
-			}
-		}
 	}
 }

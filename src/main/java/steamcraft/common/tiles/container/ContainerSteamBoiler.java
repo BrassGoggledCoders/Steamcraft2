@@ -43,7 +43,7 @@ public class ContainerSteamBoiler extends Container
 	public ContainerSteamBoiler(InventoryPlayer player, TileSteamBoiler tile)
 	{
 		tile_entity = tile;
-		
+
 		addSlotToContainer(new Slot(tile, 0, 42, 52));
 		addSlotToContainer(new Slot(tile, 1, 132, 57)
 		{

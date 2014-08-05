@@ -20,7 +20,7 @@ import boilerplate.steamapi.IModule;
 
 /**
  * @author decebaldecebal
- *
+ * 
  */
 public class SlotModule extends Slot
 {

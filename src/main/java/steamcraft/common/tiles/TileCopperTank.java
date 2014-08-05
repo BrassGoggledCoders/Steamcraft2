@@ -22,12 +22,12 @@ import net.minecraftforge.fluids.IFluidHandler;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class TileCopperTank extends TileEntity implements IFluidHandler
 {
 	public static int capacity = 20000;
-	
+
 	public FluidTank tank;
 
 	public TileCopperTank()
@@ -44,7 +44,7 @@ public class TileCopperTank extends TileEntity implements IFluidHandler
 	@Override
 	public FluidStack drain(ForgeDirection from, FluidStack resource, boolean doDrain)
 	{
-		if (resource == null || !resource.isFluidEqual(tank.getFluid()))
+		if ((resource == null) || !resource.isFluidEqual(tank.getFluid()))
 			return null;
 
 		return tank.drain(resource.amount, doDrain);
@@ -71,7 +71,7 @@ public class TileCopperTank extends TileEntity implements IFluidHandler
 	@Override
 	public FluidTankInfo[] getTankInfo(ForgeDirection from)
 	{
-		return new FluidTankInfo[]{tank.getInfo()};
+		return new FluidTankInfo[] { tank.getInfo() };
 	}
 
 }

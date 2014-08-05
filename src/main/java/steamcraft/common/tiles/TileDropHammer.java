@@ -21,7 +21,7 @@ import boilerplate.steamapi.machines.IHammerable;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class TileDropHammer extends TileEntity
 {

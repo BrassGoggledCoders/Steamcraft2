@@ -21,7 +21,7 @@ import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 // TODO: Auto-generated Javadoc
 /**
  * The Class BlockCrystalRenderer.
- *
+ * 
  * @author Surseance (Johnny Eatmon)
  */
 public class BlockCopperPipeRenderer implements ISimpleBlockRenderingHandler
@@ -33,7 +33,8 @@ public class BlockCopperPipeRenderer implements ISimpleBlockRenderingHandler
 	}
 
 	@Override
-	public boolean renderWorldBlock(final IBlockAccess world, final int x, final int y, final int z, final Block block, final int modelID, final RenderBlocks renderer)
+	public boolean renderWorldBlock(final IBlockAccess world, final int x, final int y, final int z, final Block block, final int modelID,
+			final RenderBlocks renderer)
 	{
 		return true;
 	}

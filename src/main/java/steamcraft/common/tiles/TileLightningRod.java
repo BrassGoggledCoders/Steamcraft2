@@ -26,7 +26,7 @@ import cofh.api.energy.IEnergyHandler;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class TileLightningRod extends TileEntity implements IEnergyHandler
 {
@@ -37,14 +37,14 @@ public class TileLightningRod extends TileEntity implements IEnergyHandler
 	@Override
 	public void updateEntity()
 	{
-		if(this.getWorldObj() != null)
-		block = (BlockLightningRod) getWorldObj().getBlock(xCoord, yCoord, zCoord);
+		if (getWorldObj() != null)
+			block = (BlockLightningRod) getWorldObj().getBlock(xCoord, yCoord, zCoord);
 
-		if(worldObj.getWorldInfo().isThundering() && worldObj.canBlockSeeTheSky(xCoord, yCoord, zCoord))
+		if (worldObj.getWorldInfo().isThundering() && worldObj.canBlockSeeTheSky(xCoord, yCoord, zCoord))
 		{
 			Random random = new Random();
 			int chance = random.nextInt(500);
-			if(chance == 0)
+			if (chance == 0)
 			{
 				worldObj.addWeatherEffect((new EntityLightningBolt(worldObj, xCoord, yCoord, zCoord)));
 				buffer.receiveEnergy(10000, false);
@@ -54,6 +54,7 @@ public class TileLightningRod extends TileEntity implements IEnergyHandler
 			}
 		}
 	}
+
 	@Override
 	public boolean canConnectEnergy(ForgeDirection from)
 	{

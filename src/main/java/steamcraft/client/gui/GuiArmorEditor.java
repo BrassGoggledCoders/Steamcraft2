@@ -37,7 +37,7 @@ public class GuiArmorEditor extends GuiContainer
 
 	/**
 	 * Instantiates a new gui armor editor.
-	 *
+	 * 
 	 * @param player
 	 *            the player
 	 * @param tile

@@ -25,7 +25,7 @@ import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 
 /**
  * The Class BlockLightningRodRenderer.
- *
+ * 
  * @author Surseance (Johnny Eatmon)
  */
 public class BlockLightningRodRenderer implements ISimpleBlockRenderingHandler

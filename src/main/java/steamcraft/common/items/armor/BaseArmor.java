@@ -37,15 +37,15 @@ public class BaseArmor extends ItemArmor
 	public BaseArmor(ArmorMaterial mat, int renderIndex, int type)
 	{
 		super(mat, renderIndex, type);
-		this.setCreativeTab(Steamcraft.tabSC2);
-		this.setMaxStackSize(1);
+		setCreativeTab(Steamcraft.tabSC2);
+		setMaxStackSize(1);
 	}
 
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void registerIcons(IIconRegister par1IconRegister)
 	{
-		this.itemIcon = par1IconRegister.registerIcon(LibInfo.PREFIX + "armor/" + this.getUnlocalizedName().substring(5));
+		itemIcon = par1IconRegister.registerIcon(LibInfo.PREFIX + "armor/" + this.getUnlocalizedName().substring(5));
 	}
 
 	@SuppressWarnings("all")
@@ -54,15 +54,15 @@ public class BaseArmor extends ItemArmor
 	public void addInformation(ItemStack parO1ItemStack, EntityPlayer par2EntityPlayer, List list, boolean par4)
 	{
 		if (!StatCollector.translateToLocal(this.getUnlocalizedName() + ".desc").contains("item."))
-			if (this.descNeedsShift)
+			if (descNeedsShift)
 			{
 				if (ClientHelper.isShiftKeyDown())
-					this.getWrappedDesc(list);
+					getWrappedDesc(list);
 				else
 					list.add(ClientHelper.shiftForInfo);
 			}
 			else
-				this.getWrappedDesc(list);
+				getWrappedDesc(list);
 	}
 
 	@SuppressWarnings("all")

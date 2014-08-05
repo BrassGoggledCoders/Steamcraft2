@@ -37,7 +37,6 @@ import steamcraft.client.renderers.tile.TileLightningRodRenderer;
 import steamcraft.client.renderers.tile.TileTeslaCoilRenderer;
 import steamcraft.common.CommonProxy;
 import steamcraft.common.InitKeyBindings;
-import steamcraft.common.InitPackets;
 import steamcraft.common.entities.projectile.EntityBullet;
 import steamcraft.common.entities.projectile.EntitySmallLightningBolt;
 import steamcraft.common.lib.Utils;
@@ -58,7 +57,7 @@ import cpw.mods.fml.common.FMLCommonHandler;
 
 /**
  * @author Surseance (Johnny Eatmon)
- *
+ * 
  */
 public class ClientProxy extends CommonProxy
 {
@@ -90,10 +89,12 @@ public class ClientProxy extends CommonProxy
 
 	private void registerBlockRenderers()
 	{
-		//Copper Pipe
-		//RenderIDs.blockCopperPipeRI = RenderingRegistry.getNextAvailableRenderId();
+		// Copper Pipe
+		// RenderIDs.blockCopperPipeRI =
+		// RenderingRegistry.getNextAvailableRenderId();
 		ClientRegistry.bindTileEntitySpecialRenderer(TileCopperPipe.class, new TileCopperPipeRenderer());
-		//RenderingRegistry.registerBlockHandler(new BlockCopperPipeRenderer());
+		// RenderingRegistry.registerBlockHandler(new
+		// BlockCopperPipeRenderer());
 
 		// Crystal
 		RenderIDs.blockCrystalRI = RenderingRegistry.getNextAvailableRenderId();
@@ -103,15 +104,15 @@ public class ClientProxy extends CommonProxy
 		RenderIDs.blockLightningRodRI = RenderingRegistry.getNextAvailableRenderId();
 		ClientRegistry.bindTileEntitySpecialRenderer(TileLightningRod.class, new TileLightningRodRenderer());
 		RenderingRegistry.registerBlockHandler(new BlockLightningRodRenderer());
-		//TeslaCoil
+		// TeslaCoil
 		RenderIDs.blockTeslaCoilRI = RenderingRegistry.getNextAvailableRenderId();
 		ClientRegistry.bindTileEntitySpecialRenderer(TileTeslaCoil.class, new TileTeslaCoilRenderer());
 		RenderingRegistry.registerBlockHandler(new BlockTeslaCoilRenderer());
-		//Battery
+		// Battery
 		RenderIDs.blockBatteryRI = RenderingRegistry.getNextAvailableRenderId();
 		ClientRegistry.bindTileEntitySpecialRenderer(TileBattery.class, new TileBatteryRenderer());
 		RenderingRegistry.registerBlockHandler(new BlockBatteryRenderer());
-		//Charger
+		// Charger
 		RenderIDs.blockChargerRI = RenderingRegistry.getNextAvailableRenderId();
 		ClientRegistry.bindTileEntitySpecialRenderer(TileCharger.class, new TileChargerRenderer());
 		RenderingRegistry.registerBlockHandler(new BlockChargerRenderer());

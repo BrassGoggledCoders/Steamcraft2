@@ -34,7 +34,7 @@ import cpw.mods.fml.common.network.IGuiHandler;
 
 /**
  * @author Surseanca
- *
+ * 
  */
 public class GuiHandler implements IGuiHandler
 {
@@ -45,20 +45,20 @@ public class GuiHandler implements IGuiHandler
 
 		switch (id)
 		{
-			case GuiIDs.GUI_ID_STEAM_BOILER:
-				return new ContainerSteamBoiler(player.inventory, (TileSteamBoiler) tile);
-			case GuiIDs.GUI_ID_VANITY:
-				return new ContainerVanity(player, player.inventory, EntityPlayerExtended.get(player).inventory);
-			case GuiIDs.GUI_ID_ARMOREDITOR:
-				return new ContainerArmorEditor(player.inventory, (TileArmorEditor) tile);
-			case GuiIDs.GUI_ID_BLOOMERY:
-				return new ContainerBloomery(player.inventory, (TileBloomery) tile);
-			case GuiIDs.GUI_ID_BATTERY:
-				return new ContainerBattery(player.inventory, (TileBattery) tile);
-			case GuiIDs.GUI_ID_CHARGER:
-				return new ContainerCharger(player.inventory, (TileCharger) tile);
-			case GuiIDs.GUI_ID_TIMEBOMB:
-				return new ContainerTimeBomb(player.inventory, (TileTimeBomb) tile);
+		case GuiIDs.GUI_ID_STEAM_BOILER:
+			return new ContainerSteamBoiler(player.inventory, (TileSteamBoiler) tile);
+		case GuiIDs.GUI_ID_VANITY:
+			return new ContainerVanity(player, player.inventory, EntityPlayerExtended.get(player).inventory);
+		case GuiIDs.GUI_ID_ARMOREDITOR:
+			return new ContainerArmorEditor(player.inventory, (TileArmorEditor) tile);
+		case GuiIDs.GUI_ID_BLOOMERY:
+			return new ContainerBloomery(player.inventory, (TileBloomery) tile);
+		case GuiIDs.GUI_ID_BATTERY:
+			return new ContainerBattery(player.inventory, (TileBattery) tile);
+		case GuiIDs.GUI_ID_CHARGER:
+			return new ContainerCharger(player.inventory, (TileCharger) tile);
+		case GuiIDs.GUI_ID_TIMEBOMB:
+			return new ContainerTimeBomb(player.inventory, (TileTimeBomb) tile);
 		}
 		return null;
 	}
@@ -77,9 +77,9 @@ public class GuiHandler implements IGuiHandler
 		case GuiIDs.GUI_ID_VANITY:
 			return new GuiVanity(player, player.inventory, EntityPlayerExtended.get(player).inventory);
 		case GuiIDs.GUI_ID_BLOOMERY:
-			return new GuiBloomery(player.inventory, (TileBloomery)tile);
+			return new GuiBloomery(player.inventory, (TileBloomery) tile);
 		case GuiIDs.GUI_ID_BATTERY:
-			return new GuiBattery(player.inventory, (TileBattery)tile);
+			return new GuiBattery(player.inventory, (TileBattery) tile);
 		case GuiIDs.GUI_ID_CHARGER:
 			return new GuiCharger(player.inventory, (TileCharger) tile);
 		case GuiIDs.GUI_ID_TIMEBOMB:
