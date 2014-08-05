@@ -28,7 +28,7 @@ import cpw.mods.fml.common.IWorldGenerator;
 
 /**
  * @authors Surseance & warlordjones
- * 
+ *
  */
 public class InitWorldGen implements IWorldGenerator
 {
@@ -95,7 +95,7 @@ public class InitWorldGen implements IWorldGenerator
 			BiomeGenBase biome = world.getBiomeGenForCoords(chunkX, chunkZ);
 
 			if (BiomeDictionary.isBiomeOfType(biome, Type.FOREST))
-				for (int i = 0; i < ConfigWorldGen.brassTreeGenCluster; i++)
+				for (float i = 0; i < ConfigWorldGen.brassTreeGenCluster; i++)
 				{
 					int X = chunkX + random.nextInt(16);
 					int Z = chunkZ + random.nextInt(16);

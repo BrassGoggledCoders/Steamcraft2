@@ -111,7 +111,7 @@ public class ConfigWorldGen
 			slateCluster = config.get(CATEGORY_GEN_CLUSTERS, "Slate", 5).getInt();
 			netherEtheriumCrystalCluster = config.get(CATEGORY_GEN_CLUSTERS, "Etheruim Crystal (Nether)", 5).getInt();
 			endEtheriumCrystalCluster = config.get(CATEGORY_GEN_CLUSTERS, "Etheruim Crystal (End)", 10).getInt();
-			brassTreeGenCluster = config.get(CATEGORY_GEN_CLUSTERS, "Brass Tree (Forest Type Biomes Only)", 1).getInt();
+			brassTreeGenCluster = config.get(CATEGORY_GEN_CLUSTERS, "Brass Tree (Forest Type Biomes Only)", 0.2).getInt();
 
 			// Heights
 			uraniumHeightMax = config.get(CATEGORY_GEN_HEIGHT, "Uranium Ore Max", 24).getInt();
