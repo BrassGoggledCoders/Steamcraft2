@@ -1,5 +1,5 @@
 /**
- * This class was created by BrassGoggledCoders modding team.
+ * This class was created by BrassGoggledCoders modding team. 
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -13,8 +13,8 @@
 package steamcraft.common.packets;
 
 import io.netty.buffer.ByteBuf;
+import net.minecraft.client.Minecraft;
 import net.minecraft.world.World;
-import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.util.ForgeDirection;
 import steamcraft.common.tiles.TileCopperPipe;
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
@@ -23,29 +23,24 @@ import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 
 /**
  * @author decebaldecebal
- * 
+ *
  */
 public class CopperPipePacket implements IMessage
 {
-	private static int worldId;
-	private int x;
-	private int y;
-	private int z;
+	private int worldId, x, y, z;
 	ForgeDirection[] connections;
-
-	public CopperPipePacket()
-	{
-	} // REQUIRED
-
+	
+	public CopperPipePacket(){} //REQUIRED
+	
 	public CopperPipePacket(int worldId, int x, int y, int z, ForgeDirection[] connections)
 	{
-		CopperPipePacket.worldId = worldId;
+		this.worldId = worldId;
 		this.x = x;
 		this.y = y;
 		this.z = z;
 		this.connections = connections;
 	}
-
+	
 	@Override
 	public void fromBytes(ByteBuf buf)
 	{
@@ -53,18 +48,18 @@ public class CopperPipePacket implements IMessage
 		x = buf.readInt();
 		y = buf.readInt();
 		z = buf.readInt();
-
+		
 		connections = new ForgeDirection[6];
-
-		for (int i = 0; i < 6; i++)
+		
+		for(int i = 0; i<6; i++)
 		{
 			connections[i] = ForgeDirection.getOrientation(buf.readByte());
-
-			if (connections[i] == ForgeDirection.UNKNOWN)
+			
+			if(connections[i]==ForgeDirection.UNKNOWN)
 				connections[i] = null;
 		}
 	}
-
+	
 	@Override
 	public void toBytes(ByteBuf buf)
 	{
@@ -72,16 +67,16 @@ public class CopperPipePacket implements IMessage
 		buf.writeInt(x);
 		buf.writeInt(y);
 		buf.writeInt(z);
-		for (int i = 0; i < 6; i++)
+		for(int i = 0;i<6;i++)
 			buf.writeByte(directionToByte(connections[i]));
 	}
-
+	
 	private static byte directionToByte(ForgeDirection dir)
 	{
 		byte index = -1;
-
-		if (dir != null)
-			switch (dir)
+		
+		if(dir!=null)
+			switch(dir)
 			{
 				case DOWN:
 					index = 0;
@@ -105,24 +100,24 @@ public class CopperPipePacket implements IMessage
 					index = -1;
 				break;
 			}
-
+		
 		return index;
 	}
-
+	
 	public static class CopperPipePacketHandler implements IMessageHandler<CopperPipePacket, IMessage>
 	{
 		@Override
 		public IMessage onMessage(CopperPipePacket message, MessageContext ctx)
 		{
-			World world = DimensionManager.getWorld(worldId);
-
-			if (world.getTileEntity(message.x, message.y, message.z) instanceof TileCopperPipe)
+			World world = Minecraft.getMinecraft().theWorld;
+			
+			if(world.getTileEntity(message.x, message.y, message.z) instanceof TileCopperPipe)
 			{
 				TileCopperPipe pipe = (TileCopperPipe) world.getTileEntity(message.x, message.y, message.z);
-
+				
 				pipe.connections = message.connections;
 			}
-
+			
 			return null;
 		}
 	}

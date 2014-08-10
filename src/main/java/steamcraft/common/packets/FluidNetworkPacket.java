@@ -1,5 +1,5 @@
 /**
- * This class was created by BrassGoggledCoders modding team.
+ * This class was created by BrassGoggledCoders modding team. 
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -13,8 +13,8 @@
 package steamcraft.common.packets;
 
 import io.netty.buffer.ByteBuf;
+import net.minecraft.client.Minecraft;
 import net.minecraft.world.World;
-import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import steamcraft.common.tiles.TileCopperPipe;
@@ -26,29 +26,26 @@ import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 
 /**
  * @author decebaldecebal
- * 
+ *
  */
 public class FluidNetworkPacket implements IMessage
 {
 	private float fluidScaled;
-	private static int worldId;
-	private int x;
-	private int y;
-	private int z;
+	private int worldId, x, y, z;
 	private String fluidName;
-
-	public FluidNetworkPacket(){} // REQUIRED
-
+	
+	public FluidNetworkPacket(){} //REQUIRED
+	
 	public FluidNetworkPacket(int worldId, int x, int y, int z, float fluidScaled, String fluidName)
 	{
-		FluidNetworkPacket.worldId = worldId;
+		this.worldId = worldId;
 		this.x = x;
 		this.y = y;
 		this.z = z;
 		this.fluidScaled = fluidScaled;
 		this.fluidName = fluidName;
 	}
-
+	
 	@Override
 	public void fromBytes(ByteBuf buf)
 	{
@@ -70,27 +67,27 @@ public class FluidNetworkPacket implements IMessage
 		buf.writeFloat(fluidScaled);
 		ByteBufUtils.writeUTF8String(buf, fluidName);
 	}
-
+	
 	public static class FluidNetworkPacketHandler implements IMessageHandler<FluidNetworkPacket, IMessage>
 	{
 		@Override
 		public IMessage onMessage(FluidNetworkPacket message, MessageContext ctx)
 		{
-			World world = DimensionManager.getWorld(worldId);
-
-			if (world.getTileEntity(message.x, message.y, message.z) instanceof TileCopperPipe)
+			World world = Minecraft.getMinecraft().theWorld;
+			
+			if(world.getTileEntity(message.x, message.y, message.z) instanceof TileCopperPipe)
 			{
 				TileCopperPipe pipe = (TileCopperPipe) world.getTileEntity(message.x, message.y, message.z);
-
-				if (pipe.network == null)
+				
+				if(pipe.network==null)
 					pipe.network = new FluidNetwork(1);
-
+				
 				pipe.network.fluidScaled = message.fluidScaled;
 				pipe.network.tank.setFluid(new FluidStack(FluidRegistry.getFluid(message.fluidName), 0));
 			}
-
+			
 			return null;
 		}
-
+		
 	}
 }
