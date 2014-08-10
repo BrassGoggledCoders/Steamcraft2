@@ -35,8 +35,8 @@ public class BlockCopperPipe extends BlockContainerMod
 	{
 		super(mat);
 
-		setBlockBounds(6 * pixel, 6 * pixel, 6 * pixel, 1 - (6 * pixel), 1 - (6 * pixel), 1 - (6 * pixel));
-		useNeighborBrightness = true;
+		this.setBlockBounds(5 * pixel, 5 * pixel, 5 * pixel, 1 - 5 * pixel, 1 - 5 * pixel, 1 - 5 * pixel);
+		this.useNeighborBrightness = true;
 	}
 
 	@Override
@@ -88,12 +88,7 @@ public class BlockCopperPipe extends BlockContainerMod
 	}
 
 	@Override
-	public void breakBlock(World world, int x, int y, int z, Block block, int metadata) // only
-																						// SERVER
-																						// side
-																						// for
-																						// some
-																						// reason...
+	public void breakBlock(World world, int x, int y, int z, Block block, int metadata) // only SERVER side for some reason...
 	{
 		TileCopperPipe tile = (TileCopperPipe) world.getTileEntity(x, y, z);
 
@@ -106,13 +101,13 @@ public class BlockCopperPipe extends BlockContainerMod
 	@Override
 	public AxisAlignedBB getSelectedBoundingBoxFromPool(World world, int x, int y, int z)
 	{
-		return getBoundingBox(world, x, y, z);
+		return this.getBoundingBox(world, x, y, z);
 	}
 
 	@Override
 	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z)
 	{
-		return getBoundingBox(world, x, y, z);
+		return this.getBoundingBox(world, x, y, z);
 	}
 
 	private AxisAlignedBB getBoundingBox(World world, int x, int y, int z)
@@ -121,41 +116,18 @@ public class BlockCopperPipe extends BlockContainerMod
 
 		if (pipe != null)
 		{
-			float minX = (5 * pixel) - (pipe.connections[4] != null ? 5 * pixel : 0);
-			float maxX = (1 - (5 * pixel)) + (pipe.connections[5] != null ? 5 * pixel : 0);
+			float minX = 5 * pixel - (pipe.connections[4] != null ? 5 * pixel : 0);
+			float maxX = 1 - 5 * pixel + (pipe.connections[5] != null ? 5 * pixel : 0);
 
-			float minY = (5 * pixel) - (pipe.connections[0] != null ? 5 * pixel : 0);
-			float maxY = (1 - (5 * pixel)) + (pipe.connections[1] != null ? 5 * pixel : 0);
+			float minY = 5 * pixel - (pipe.connections[0] != null ? 5 * pixel : 0);
+			float maxY = 1 - 5 * pixel + (pipe.connections[1] != null ? 5 * pixel : 0);
 
-			float minZ = (5 * pixel) - (pipe.connections[2] != null ? 5 * pixel : 0);
-			float maxZ = (1 - (5 * pixel)) + (pipe.connections[3] != null ? 5 * pixel : 0);
+			float minZ = 5 * pixel - (pipe.connections[2] != null ? 5 * pixel : 0);
+			float maxZ = 1 - 5 * pixel + (pipe.connections[3] != null ? 5 * pixel : 0);
 
-			setBlockBounds(minX, minY, minZ, maxX, maxY, maxZ);
+			this.setBlockBounds(minX, minY, minZ, maxX, maxY, maxZ);
 		}
 
-		return AxisAlignedBB.getBoundingBox(x + minX, y + minY, z + minZ, x + maxX, y + maxY, z + maxZ);
+		return AxisAlignedBB.getBoundingBox(x + this.minX, y + this.minY, z + this.minZ, x + this.maxX, y + this.maxY, z + this.maxZ);
 	}
-
-	/*
-	 * @Override public void setBlockBoundsBasedOnState(IBlockAccess
-	 * par1IBlockAccess, int x, int y, int z) { this.setBlockBounds(0.33F, 0.2F,
-	 * 0.33F, 0.67F, 0.53F, 0.67F); float minx = (float) this.minX; float maxx =
-	 * (float) this.maxX; float miny = (float) this.minY; float maxy = (float)
-	 * this.maxY; float minz = (float) this.minZ; float maxz = (float)
-	 * this.maxZ;
-	 * 
-	 * if (par1IBlockAccess.getBlock(x - 1, y, z) == this) minx = 0;
-	 * 
-	 * if (par1IBlockAccess.getBlock(x + 1, y, z) == this) maxx = 1;
-	 * 
-	 * if (par1IBlockAccess.getBlock(x, y - 1, z) == this) miny = 0;
-	 * 
-	 * if (par1IBlockAccess.getBlock(x, y + 1, z) == this) maxy = 1;
-	 * 
-	 * if (par1IBlockAccess.getBlock(x, y, z - 1) == this) minz = 0;
-	 * 
-	 * if (par1IBlockAccess.getBlock(x, y, z + 1) == this) maxz = 1;
-	 * 
-	 * this.setBlockBounds(minx, miny, minz, maxx, maxy, maxz); }
-	 */
 }

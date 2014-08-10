@@ -106,13 +106,13 @@ public class InitWorldGen implements IWorldGenerator
 		}
 	}
 
-	private void generateOre(World world, Random random, int chunkX, int chunkZ, int blockPerChunk, int minHeight, int MaxHeight, int blocks,
+	private void generateOre(World world, Random random, int chunkX, int chunkZ, int blockPerChunk, int minHeight, int maxHeight, int blocks,
 			Block ore, int meta, Block blockToGenIn)
 	{
 		for (int i = 0; i < blockPerChunk; i++)
 		{
 			int oreXCoord = chunkX + random.nextInt(16);
-			int oreYCoord = minHeight + random.nextInt(MaxHeight - minHeight);
+			int oreYCoord = minHeight + random.nextInt(maxHeight - minHeight);
 			int oreZCoord = chunkZ + random.nextInt(16);
 
 			new WorldGenMinable(ore, meta, blocks, blockToGenIn).generate(world, random, oreXCoord, oreYCoord, oreZCoord);

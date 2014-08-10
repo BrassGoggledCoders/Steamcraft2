@@ -20,6 +20,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import steamcraft.common.InitBlocks;
 import steamcraft.common.tiles.TileCopperWire;
 
 /**
@@ -33,12 +34,13 @@ public class BlockCopperWire extends BlockContainerMod
 	public BlockCopperWire(Material p_i45394_1_)
 	{
 		super(p_i45394_1_);
+		
 		setBlockBounds(6 * pixel, 6 * pixel, 6 * pixel, 1 - (6 * pixel), 1 - (6 * pixel), 1 - (6 * pixel));
 		useNeighborBrightness = true;
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World p_149915_1_, int p_149915_2_)
+	public TileEntity createNewTileEntity(World world, int p_149915_2_)
 	{
 		return new TileCopperWire();
 	}
@@ -69,19 +71,18 @@ public class BlockCopperWire extends BlockContainerMod
 		TileCopperWire tile = (TileCopperWire) world.getTileEntity(x, y, z);
 
 		if (tile != null)
+		{
+			tile.network = null;
 			tile.updateConnections();
+		}
 	}
 
 	@Override
 	public void onNeighborChange(IBlockAccess world, int x, int y, int z, int tileX, int tileY, int tileZ)
 	{
-		TileCopperWire tile = (TileCopperWire) world.getTileEntity(x, y, z);
-		tile.updateConnections();
-
-		TileEntity t = world.getTileEntity(tileX, tileY, tileZ);
-		if ((t != null) && (t instanceof TileCopperWire))
+		if (world.getBlock(tileX, tileY, tileZ) != InitBlocks.blockCopperWire)
 		{
-			tile = (TileCopperWire) t;
+			TileCopperWire tile = (TileCopperWire) world.getTileEntity(x, y, z);
 			tile.updateConnections();
 		}
 	}
@@ -89,13 +90,10 @@ public class BlockCopperWire extends BlockContainerMod
 	@Override
 	public void breakBlock(World world, int x, int y, int z, Block block, int metadata)
 	{
-		if (!world.isRemote)
-		{
-			TileCopperWire tile = (TileCopperWire) world.getTileEntity(x, y, z);
+		TileCopperWire tile = (TileCopperWire) world.getTileEntity(x, y, z);
 
-			if (tile != null)
-				tile.removeFromNetwork();
-		}
+		if (tile != null)
+			tile.removeFromNetwork();
 
 		super.breakBlock(world, x, y, z, block, metadata);
 	}
@@ -103,13 +101,13 @@ public class BlockCopperWire extends BlockContainerMod
 	@Override
 	public AxisAlignedBB getSelectedBoundingBoxFromPool(World world, int x, int y, int z)
 	{
-		return getBoundingBox(world, x, y, z);
+		return this.getBoundingBox(world, x, y, z);
 	}
 
 	@Override
 	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z)
 	{
-		return getBoundingBox(world, x, y, z);
+		return this.getBoundingBox(world, x, y, z);
 	}
 
 	private AxisAlignedBB getBoundingBox(World world, int x, int y, int z)
