@@ -13,8 +13,8 @@
 package steamcraft.common.packets;
 
 import io.netty.buffer.ByteBuf;
+import net.minecraft.client.Minecraft;
 import net.minecraft.world.World;
-import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.util.ForgeDirection;
 import steamcraft.common.tiles.TileCopperWire;
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
@@ -27,10 +27,7 @@ import cpw.mods.fml.common.network.simpleimpl.MessageContext;
  */
 public class CopperWirePacket implements IMessage
 {
-	private static int worldId;
-	private int x;
-	private int y;
-	private int z;
+	private int worldId, x, y, z;
 	ForgeDirection[] connections;
 
 	public CopperWirePacket()
@@ -39,7 +36,7 @@ public class CopperWirePacket implements IMessage
 
 	public CopperWirePacket(int worldId, int x, int y, int z, ForgeDirection[] connections)
 	{
-		CopperWirePacket.worldId = worldId;
+		this.worldId = worldId;
 		this.x = x;
 		this.y = y;
 		this.z = z;
@@ -49,31 +46,31 @@ public class CopperWirePacket implements IMessage
 	@Override
 	public void fromBytes(ByteBuf buf)
 	{
-		worldId = buf.readInt();
-		x = buf.readInt();
-		y = buf.readInt();
-		z = buf.readInt();
+		this.worldId = buf.readInt();
+		this.x = buf.readInt();
+		this.y = buf.readInt();
+		this.z = buf.readInt();
 
-		connections = new ForgeDirection[6];
+		this.connections = new ForgeDirection[6];
 
 		for (int i = 0; i < 6; i++)
 		{
-			connections[i] = ForgeDirection.getOrientation(buf.readByte());
+			this.connections[i] = ForgeDirection.getOrientation(buf.readByte());
 
-			if (connections[i] == ForgeDirection.UNKNOWN)
-				connections[i] = null;
+			if (this.connections[i] == ForgeDirection.UNKNOWN)
+				this.connections[i] = null;
 		}
 	}
 
 	@Override
 	public void toBytes(ByteBuf buf)
 	{
-		buf.writeInt(worldId);
-		buf.writeInt(x);
-		buf.writeInt(y);
-		buf.writeInt(z);
+		buf.writeInt(this.worldId);
+		buf.writeInt(this.x);
+		buf.writeInt(this.y);
+		buf.writeInt(this.z);
 		for (int i = 0; i < 6; i++)
-			buf.writeByte(directionToByte(connections[i]));
+			buf.writeByte(directionToByte(this.connections[i]));
 	}
 
 	private static byte directionToByte(ForgeDirection dir)
@@ -83,26 +80,26 @@ public class CopperWirePacket implements IMessage
 		if (dir != null)
 			switch (dir)
 			{
-				case DOWN:
-					index = 0;
+			case DOWN:
+				index = 0;
 				break;
-				case UP:
-					index = 1;
+			case UP:
+				index = 1;
 				break;
-				case NORTH:
-					index = 2;
+			case NORTH:
+				index = 2;
 				break;
-				case SOUTH:
-					index = 3;
+			case SOUTH:
+				index = 3;
 				break;
-				case WEST:
-					index = 4;
+			case WEST:
+				index = 4;
 				break;
-				case EAST:
-					index = 5;
+			case EAST:
+				index = 5;
 				break;
-				default:
-					index = -1;
+			default:
+				index = -1;
 				break;
 			}
 
@@ -114,7 +111,7 @@ public class CopperWirePacket implements IMessage
 		@Override
 		public IMessage onMessage(CopperWirePacket message, MessageContext ctx)
 		{
-			World world = DimensionManager.getWorld(worldId);
+			World world = Minecraft.getMinecraft().theWorld;
 
 			if (world.getTileEntity(message.x, message.y, message.z) instanceof TileCopperWire)
 			{

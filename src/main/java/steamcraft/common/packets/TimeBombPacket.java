@@ -26,7 +26,7 @@ import cpw.mods.fml.common.network.simpleimpl.MessageContext;
  */
 public class TimeBombPacket implements IMessage
 {
-	public static int worldId;
+	public int worldId;
 	public int time;
 	public int x;
 	public int y;
@@ -36,14 +36,14 @@ public class TimeBombPacket implements IMessage
 	{
 	} // REQUIRED
 
-	public TimeBombPacket(int time, int x, int y, int z, int worldObj)
+	public TimeBombPacket(int time, int x, int y, int z, int worldId)
 	{
 		this.time = time;
 		this.x = x;
 		this.y = y;
 		this.z = z;
 		
-		TimeBombPacket.worldId = worldId;
+		this.worldId = worldId;
 	}
 
 	@Override
@@ -71,7 +71,7 @@ public class TimeBombPacket implements IMessage
 		@Override
 		public IMessage onMessage(TimeBombPacket message, MessageContext ctx)
 		{
-			World world = DimensionManager.getWorld(worldId);
+			World world = DimensionManager.getWorld(message.worldId);
 
 			if (world.getTileEntity(message.x, message.y, message.z) instanceof TileTimeBomb)
 			{

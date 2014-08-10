@@ -26,16 +26,18 @@ import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 
 /**
  * @author decebaldecebal
- *
+ * 
  */
 public class FluidNetworkPacket implements IMessage
 {
 	private float fluidScaled;
 	private int worldId, x, y, z;
 	private String fluidName;
-	
-	public FluidNetworkPacket(){} //REQUIRED
-	
+
+	public FluidNetworkPacket()
+	{
+	} // REQUIRED
+
 	public FluidNetworkPacket(int worldId, int x, int y, int z, float fluidScaled, String fluidName)
 	{
 		this.worldId = worldId;
@@ -45,29 +47,29 @@ public class FluidNetworkPacket implements IMessage
 		this.fluidScaled = fluidScaled;
 		this.fluidName = fluidName;
 	}
-	
+
 	@Override
 	public void fromBytes(ByteBuf buf)
 	{
-		worldId = buf.readInt();
-		x = buf.readInt();
-		y = buf.readInt();
-		z = buf.readInt();
-		fluidScaled = buf.readFloat();
-		fluidName = ByteBufUtils.readUTF8String(buf);
+		this.worldId = buf.readInt();
+		this.x = buf.readInt();
+		this.y = buf.readInt();
+		this.z = buf.readInt();
+		this.fluidScaled = buf.readFloat();
+		this.fluidName = ByteBufUtils.readUTF8String(buf);
 	}
 
 	@Override
 	public void toBytes(ByteBuf buf)
 	{
-		buf.writeInt(worldId);
-		buf.writeInt(x);
-		buf.writeInt(y);
-		buf.writeInt(z);
-		buf.writeFloat(fluidScaled);
-		ByteBufUtils.writeUTF8String(buf, fluidName);
+		buf.writeInt(this.worldId);
+		buf.writeInt(this.x);
+		buf.writeInt(this.y);
+		buf.writeInt(this.z);
+		buf.writeFloat(this.fluidScaled);
+		ByteBufUtils.writeUTF8String(buf, this.fluidName);
 	}
-	
+
 	public static class FluidNetworkPacketHandler implements IMessageHandler<FluidNetworkPacket, IMessage>
 	{
 		@Override
@@ -75,19 +77,19 @@ public class FluidNetworkPacket implements IMessage
 		{
 			World world = Minecraft.getMinecraft().theWorld;
 			
-			if(world.getTileEntity(message.x, message.y, message.z) instanceof TileCopperPipe)
+			if (world.getTileEntity(message.x, message.y, message.z) instanceof TileCopperPipe)
 			{
 				TileCopperPipe pipe = (TileCopperPipe) world.getTileEntity(message.x, message.y, message.z);
-				
-				if(pipe.network==null)
+
+				if (pipe.network == null)
 					pipe.network = new FluidNetwork(1);
-				
+
 				pipe.network.fluidScaled = message.fluidScaled;
 				pipe.network.tank.setFluid(new FluidStack(FluidRegistry.getFluid(message.fluidName), 0));
 			}
-			
+
 			return null;
 		}
-		
+
 	}
 }

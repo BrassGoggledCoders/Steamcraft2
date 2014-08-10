@@ -13,8 +13,8 @@
 package steamcraft.common.packets;
 
 import io.netty.buffer.ByteBuf;
+import net.minecraft.client.Minecraft;
 import net.minecraft.world.World;
-import net.minecraftforge.common.DimensionManager;
 import steamcraft.common.tiles.TileCopperWire;
 import steamcraft.common.tiles.TileCopperWire.EnergyNetwork;
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
@@ -28,16 +28,15 @@ import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 public class EnergyNetworkPacket implements IMessage
 {
 	private float energyScaled;
-	private static int worldId;
-	private int x;
-	private int y;
-	private int z;
+	private int worldId, x, y, z;
 
-	public EnergyNetworkPacket(){} // REQUIRED
-	
+	public EnergyNetworkPacket()
+	{
+	} // REQUIRED
+
 	public EnergyNetworkPacket(int worldId, int x, int y, int z, float fluidScaled)
 	{
-		EnergyNetworkPacket.worldId = worldId;
+		this.worldId = worldId;
 		this.x = x;
 		this.y = y;
 		this.z = z;
@@ -48,20 +47,20 @@ public class EnergyNetworkPacket implements IMessage
 	public void fromBytes(ByteBuf buf)
 	{
 		worldId = buf.readInt();
-		x = buf.readInt();
-		y = buf.readInt();
-		z = buf.readInt();
-		energyScaled = buf.readFloat();
+		this.x = buf.readInt();
+		this.y = buf.readInt();
+		this.z = buf.readInt();
+		this.energyScaled = buf.readFloat();
 	}
 
 	@Override
 	public void toBytes(ByteBuf buf)
 	{
 		buf.writeInt(worldId);
-		buf.writeInt(x);
-		buf.writeInt(y);
-		buf.writeInt(z);
-		buf.writeFloat(energyScaled);
+		buf.writeInt(this.x);
+		buf.writeInt(this.y);
+		buf.writeInt(this.z);
+		buf.writeFloat(this.energyScaled);
 	}
 
 	public static class EnergyNetworkPacketHandler implements IMessageHandler<EnergyNetworkPacket, IMessage>
@@ -69,7 +68,7 @@ public class EnergyNetworkPacket implements IMessage
 		@Override
 		public IMessage onMessage(EnergyNetworkPacket message, MessageContext ctx)
 		{
-			World world = DimensionManager.getWorld(worldId);
+			World world = Minecraft.getMinecraft().theWorld;
 
 			if (world.getTileEntity(message.x, message.y, message.z) instanceof TileCopperWire)
 			{
