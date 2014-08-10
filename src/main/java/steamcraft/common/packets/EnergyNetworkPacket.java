@@ -17,7 +17,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.DimensionManager;
 import steamcraft.common.tiles.TileCopperWire;
 import steamcraft.common.tiles.TileCopperWire.EnergyNetwork;
-import cpw.mods.fml.common.network.ByteBufUtils;
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
 import cpw.mods.fml.common.network.simpleimpl.MessageContext;
@@ -28,25 +27,21 @@ import cpw.mods.fml.common.network.simpleimpl.MessageContext;
  */
 public class EnergyNetworkPacket implements IMessage
 {
-	private float fluidScaled;
+	private float energyScaled;
 	private static int worldId;
 	private int x;
 	private int y;
 	private int z;
-	private String fluidName;
 
-	public EnergyNetworkPacket()
-	{
-	} // REQUIRED
-
-	public EnergyNetworkPacket(int worldId, int x, int y, int z, float fluidScaled, String fluidName)
+	public EnergyNetworkPacket(){} // REQUIRED
+	
+	public EnergyNetworkPacket(int worldId, int x, int y, int z, float fluidScaled)
 	{
 		EnergyNetworkPacket.worldId = worldId;
 		this.x = x;
 		this.y = y;
 		this.z = z;
-		this.fluidScaled = fluidScaled;
-		this.fluidName = fluidName;
+		this.energyScaled = fluidScaled;
 	}
 
 	@Override
@@ -56,8 +51,7 @@ public class EnergyNetworkPacket implements IMessage
 		x = buf.readInt();
 		y = buf.readInt();
 		z = buf.readInt();
-		fluidScaled = buf.readFloat();
-		fluidName = ByteBufUtils.readUTF8String(buf);
+		energyScaled = buf.readFloat();
 	}
 
 	@Override
@@ -67,8 +61,7 @@ public class EnergyNetworkPacket implements IMessage
 		buf.writeInt(x);
 		buf.writeInt(y);
 		buf.writeInt(z);
-		buf.writeFloat(fluidScaled);
-		ByteBufUtils.writeUTF8String(buf, fluidName);
+		buf.writeFloat(energyScaled);
 	}
 
 	public static class EnergyNetworkPacketHandler implements IMessageHandler<EnergyNetworkPacket, IMessage>
@@ -80,14 +73,12 @@ public class EnergyNetworkPacket implements IMessage
 
 			if (world.getTileEntity(message.x, message.y, message.z) instanceof TileCopperWire)
 			{
-				TileCopperWire pipe = (TileCopperWire) world.getTileEntity(message.x, message.y, message.z);
+				TileCopperWire wire = (TileCopperWire) world.getTileEntity(message.x, message.y, message.z);
 
-				if (pipe.network == null)
-					pipe.network = new EnergyNetwork(1);
+				if (wire.network == null)
+					wire.network = new EnergyNetwork(1);
 
-				// pipe.network.fluidScaled = message.fluidScaled;
-				// pipe.network.buffer.(new
-				// FluidStack(FluidRegistry.getFluid(message.fluidName), 0));
+				wire.network.energyScaled = message.energyScaled;
 			}
 
 			return null;

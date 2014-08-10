@@ -29,12 +29,7 @@ public class InitEntities
 
 	private static void registerEntities()
 	{
-		EntityRegistry.registerModEntity(EntityBullet.class, "Bullet", 0/*
-																		 * This
-																		 * ID is
-																		 * internal
-																		 * !
-																		 */, Steamcraft.instance, 64, 20, true);
+		EntityRegistry.registerModEntity(EntityBullet.class, "Bullet", 0, Steamcraft.instance, 64, 20, true);
 		EntityRegistry.registerModEntity(EntityTimeBomb.class, "Bullet", 1, Steamcraft.instance, 64, 20, true);
 	}
 

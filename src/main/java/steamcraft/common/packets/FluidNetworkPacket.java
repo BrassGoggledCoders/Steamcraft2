@@ -37,9 +37,7 @@ public class FluidNetworkPacket implements IMessage
 	private int z;
 	private String fluidName;
 
-	public FluidNetworkPacket()
-	{
-	} // REQUIRED
+	public FluidNetworkPacket(){} // REQUIRED
 
 	public FluidNetworkPacket(int worldId, int x, int y, int z, float fluidScaled, String fluidName)
 	{

@@ -42,6 +42,7 @@ public class TimeBombPacket implements IMessage
 		this.x = x;
 		this.y = y;
 		this.z = z;
+		
 		TimeBombPacket.worldId = worldId;
 	}
 

@@ -21,6 +21,7 @@ import steamcraft.common.InitBlocks;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.LibInfo;
 import steamcraft.common.tiles.TileCopperPipe;
+import steamcraft.common.tiles.TileCopperWire;
 import boilerplate.steamapi.UniversalWrench;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -34,7 +35,7 @@ public class ItemSpanner extends UniversalWrench
 	public ItemSpanner()
 	{
 		super();
-		setCreativeTab(Steamcraft.tabSC2);
+		this.setCreativeTab(Steamcraft.tabSC2);
 	}
 
 	@Override
@@ -42,11 +43,17 @@ public class ItemSpanner extends UniversalWrench
 	{
 		Block block = world.getBlock(x, y, z);
 
-		if (block == InitBlocks.blockCopperPipe)
+		if(block == InitBlocks.blockCopperPipe)
 		{
 			TileCopperPipe pipe = (TileCopperPipe) world.getTileEntity(x, y, z);
 
 			pipe.changeExtracting();
+		}
+		else if(block == InitBlocks.blockCopperWire)
+		{
+			TileCopperWire wire = (TileCopperWire) world.getTileEntity(x, y, z);
+
+			wire.changeExtracting();
 		}
 		// TODO
 		/*
@@ -66,6 +73,6 @@ public class ItemSpanner extends UniversalWrench
 	@Override
 	public void registerIcons(IIconRegister par1IconRegister)
 	{
-		itemIcon = par1IconRegister.registerIcon(LibInfo.PREFIX + this.getUnlocalizedName().substring(5));
+		this.itemIcon = par1IconRegister.registerIcon(LibInfo.PREFIX + this.getUnlocalizedName().substring(5));
 	}
 }

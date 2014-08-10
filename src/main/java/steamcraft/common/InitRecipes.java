@@ -12,8 +12,6 @@
  */
 package steamcraft.common;
 
-import java.util.Random;
-
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -330,15 +328,7 @@ public class InitRecipes
 		GameRegistry.addSmelting(new ItemStack(InitBlocks.blockSlate, 1, 5), new ItemStack(InitBlocks.blockSlate, 1, 2), 0.3F);
 
 		GameRegistry.addSmelting(new ItemStack(InitItems.itemTeapot, 1, 1), new ItemStack(InitItems.itemTeapot, 1, 2), 0);
-		Random random = new Random();
-		GameRegistry.addSmelting(new ItemStack(InitBlocks.blockBrassLeaves), new ItemStack(InitItems.itemNugget, /*
-																												 * random
-																												 * .
-																												 * nextInt
-																												 * (
-																												 * 10
-																												 * )
-																												 */6, 4), 0);
+		
+		GameRegistry.addSmelting(new ItemStack(InitBlocks.blockBrassLeaves), new ItemStack(InitItems.itemNugget, 6, 4), 0);
 	}
-
 }

@@ -67,13 +67,14 @@ tile.blockCrystal.name=Etherium Crystal
 #Machines
 tile.blockCopperTank.name=Copper Tank
 tile.blockCopperPipe.name=Copper Pipe
+tile.blockCopperWire.name=Copper Wire
+
 tile.blockBloomery.name=Bloomery
 tile.blockBloomery.desc=Smelts iron ore into steel. Ore in the first slot, four coal in the second, and fuel in the bottom slot.
 tile.blockSteamBoiler.name=Steam Boiler
 tile.blockSteamBoiler.desc=Uses coal to heat water into steam.
 tile.blockLightningRod.name=Lightning Rod
 tile.blockLightningRod.desc=NYI. Attracts lightning during a storm. Generate huge amounts of power, FOR SCIENCE!
-tile.copperWire.name=Copper Wire
 tile.lightningRod.name=Lightning Rod
 tile.steamfurnace.name=Steam Oven
 tile.chemfurnace.name=Chemical Furnace

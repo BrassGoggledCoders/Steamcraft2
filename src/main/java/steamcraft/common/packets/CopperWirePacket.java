@@ -83,26 +83,26 @@ public class CopperWirePacket implements IMessage
 		if (dir != null)
 			switch (dir)
 			{
-			case DOWN:
-				index = 0;
+				case DOWN:
+					index = 0;
 				break;
-			case UP:
-				index = 1;
+				case UP:
+					index = 1;
 				break;
-			case NORTH:
-				index = 2;
+				case NORTH:
+					index = 2;
 				break;
-			case SOUTH:
-				index = 3;
+				case SOUTH:
+					index = 3;
 				break;
-			case WEST:
-				index = 4;
+				case WEST:
+					index = 4;
 				break;
-			case EAST:
-				index = 5;
+				case EAST:
+					index = 5;
 				break;
-			default:
-				index = -1;
+				default:
+					index = -1;
 				break;
 			}
 
@@ -118,9 +118,9 @@ public class CopperWirePacket implements IMessage
 
 			if (world.getTileEntity(message.x, message.y, message.z) instanceof TileCopperWire)
 			{
-				TileCopperWire pipe = (TileCopperWire) world.getTileEntity(message.x, message.y, message.z);
+				TileCopperWire wire = (TileCopperWire) world.getTileEntity(message.x, message.y, message.z);
 
-				pipe.connections = message.connections;
+				wire.connections = message.connections;
 			}
 
 			return null;

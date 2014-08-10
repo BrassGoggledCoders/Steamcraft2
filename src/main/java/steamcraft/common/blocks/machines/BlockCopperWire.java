@@ -116,14 +116,14 @@ public class BlockCopperWire extends BlockContainerMod
 
 		if (wire != null)
 		{
-			float minX = (6 * pixel) - (wire.connections[5] != null ? 6 * pixel : 0);
-			float maxX = (1 - (6 * pixel)) + (wire.connections[4] != null ? 6 * pixel : 0);
+			float minX = (6 * pixel) - (wire.connections[4] != null ? 6 * pixel : 0);
+			float maxX = (1 - (6 * pixel)) + (wire.connections[5] != null ? 6 * pixel : 0);
 
-			float minY = (6 * pixel) - (wire.connections[1] != null ? 6 * pixel : 0);
-			float maxY = (1 - (6 * pixel)) + (wire.connections[0] != null ? 6 * pixel : 0);
+			float minY = (6 * pixel) - (wire.connections[0] != null ? 6 * pixel : 0);
+			float maxY = (1 - (6 * pixel)) + (wire.connections[1] != null ? 6 * pixel : 0);
 
-			float minZ = (6 * pixel) - (wire.connections[3] != null ? 6 * pixel : 0);
-			float maxZ = (1 - (6 * pixel)) + (wire.connections[2] != null ? 6 * pixel : 0);
+			float minZ = (6 * pixel) - (wire.connections[2] != null ? 6 * pixel : 0);
+			float maxZ = (1 - (6 * pixel)) + (wire.connections[3] != null ? 6 * pixel : 0);
 
 			setBlockBounds(minX, minY, minZ, maxX, maxY, maxZ);
 		}

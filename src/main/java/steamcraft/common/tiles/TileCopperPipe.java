@@ -159,8 +159,7 @@ public class TileCopperPipe extends TileEntity
 		if (extract != null)
 		{
 			if (!worldObj.isRemote)
-				network.inputs
-						.remove(new Coords(xCoord + extract.offsetX, yCoord + extract.offsetY, zCoord + extract.offsetZ, extract.getOpposite()));
+				network.inputs.remove(new Coords(xCoord + extract.offsetX, yCoord + extract.offsetY, zCoord + extract.offsetZ, extract.getOpposite()));
 
 			extract = null;
 		}
@@ -346,13 +345,7 @@ public class TileCopperPipe extends TileEntity
 						return false;
 				}
 				else
-					pipe.updateOneConnection(dir.getOpposite()); // happens if
-																	// you have
-																	// multiple
-																	// pipes
-																	// next to
-																	// each
-																	// other
+					pipe.updateOneConnection(dir.getOpposite()); // happens if you have	pipes next to each other
 			}
 			else if (network != null)
 			{
@@ -491,9 +484,6 @@ public class TileCopperPipe extends TileEntity
 	{
 		if (network != null)
 		{
-			NBTTagCompound tag = new NBTTagCompound();
-			network.tank.writeToNBT(tag);
-
 			InitPackets.network.sendToAllAround(new CopperPipePacket(worldObj.provider.dimensionId, xCoord, yCoord, zCoord, connections),
 					new TargetPoint(worldObj.provider.dimensionId, xCoord, yCoord, zCoord, 100));
 		}
@@ -585,8 +575,7 @@ public class TileCopperPipe extends TileEntity
 								for (FluidTankInfo info : tile.getTankInfo(coords.dir))
 									if ((info.fluid != null) && tile.canDrain(coords.dir, info.fluid.getFluid()))
 									{
-										int canFill = tank
-												.fill(new FluidStack(info.fluid.getFluid(), Math.min(distribute, maxExtractPerTile)), false);
+										int canFill = tank.fill(new FluidStack(info.fluid.getFluid(), Math.min(distribute, maxExtractPerTile)), false);
 
 										tank.fill(tile.drain(coords.dir, canFill, true), true);
 
@@ -624,8 +613,7 @@ public class TileCopperPipe extends TileEntity
 								short transfered = 0;
 
 								if (tile.canFill(coords.dir, tank.getFluid().getFluid()))
-									transfered = (short) tile.fill(coords.dir,
-											new FluidStack(tank.getFluid(), Math.min(distribute, maxTransferPerTile)), true);
+									transfered = (short) tile.fill(coords.dir, new FluidStack(tank.getFluid(), Math.min(distribute, maxTransferPerTile)), true);
 
 								tank.drain(transfered, true);
 
@@ -645,7 +633,7 @@ public class TileCopperPipe extends TileEntity
 		public void changeSize(int with)
 		{
 			size += with;
-			tank.setCapacity(200 * size);
+			tank.setCapacity(capacityPerPipe * size);
 		}
 
 		public void writeToNBT(NBTTagCompound tag)
@@ -664,7 +652,7 @@ public class TileCopperPipe extends TileEntity
 			FluidNetwork network = new FluidNetwork(1);
 
 			network.updateNetworkForPipes = true;
-			network.tank = new FluidTank(200 * network.size);
+			network.tank = new FluidTank(capacityPerPipe * network.size);
 			network.tank.readFromNBT(temp);
 
 			return network;
