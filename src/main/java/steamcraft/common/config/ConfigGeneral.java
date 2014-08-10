@@ -37,10 +37,10 @@ public class ConfigGeneral
 		{
 			config.load();
 
-			partyPooper = config.get(CATEGORY_GENERAL, "Remove all little fun things from mod :(", false).getBoolean(false);
+			partyPooper = config.get(CATEGORY_GENERAL, "Remove all little fun things from mod :(", false).getBoolean();
 
-			drawFluid = config.get(CATEGORY_CLIENT, "Render fluid inside blocks", true).getBoolean(true);
-			drawInside = config.get(CATEGORY_CLIENT, "Render the insides of blocks", true).getBoolean(true);
+			drawFluid = config.get(CATEGORY_CLIENT, "Render fluid inside blocks", true).getBoolean();
+			drawInside = config.get(CATEGORY_CLIENT, "Render the insides of blocks", true).getBoolean();
 
 			armorSpawnChance = config.get(CATEGORY_GENERAL, "Spawn Chance of our Armor on Zombies/Skeletons (0-1)", 0.2D).getDouble();
 		} catch (Exception e)

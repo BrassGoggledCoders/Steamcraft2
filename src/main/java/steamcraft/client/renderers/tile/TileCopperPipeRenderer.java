@@ -43,24 +43,24 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 		GL11.glTranslated(transX, transY, transZ);
 		GL11.glDisable(GL11.GL_LIGHTING);
 
-		bindTexture(texture);
+		this.bindTexture(this.texture);
 
 		TileCopperPipe pipe = (TileCopperPipe) tile;
 
 		ForgeDirection opposite = pipe.onlyOneOpposite();
 
-		if ((opposite != null) && (pipe.extract == null))
-			drawStraightConnection(opposite, pipe);
+		if (opposite != null && pipe.extract == null)
+			this.drawStraightConnection(opposite, pipe);
 		else
 		{
-			drawCore(pipe);
+			this.drawCore(pipe);
 
 			for (ForgeDirection dir : pipe.connections)
 				if (dir != null)
 					if (pipe.extract == dir)
-						drawAlternateConnection(dir, pipe);
+						this.drawAlternateConnection(dir, pipe);
 					else
-						drawConnection(dir, pipe);
+						this.drawConnection(dir, pipe);
 		}
 
 		GL11.glEnable(GL11.GL_LIGHTING);
@@ -76,100 +76,100 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 		{
 			GL11.glTranslatef(0.5F, 0.5F, 0.5F);
 
-			if ((dir == ForgeDirection.SOUTH) || (dir == ForgeDirection.NORTH))
+			if (dir == ForgeDirection.SOUTH || dir == ForgeDirection.NORTH)
 				GL11.glRotatef(90, 1, 0, 0);
-			else if ((dir == ForgeDirection.WEST) || (dir == ForgeDirection.EAST))
+			else if (dir == ForgeDirection.WEST || dir == ForgeDirection.EAST)
 				GL11.glRotatef(90, 0, 0, 1);
 
 			GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
 
-			tess.addVertexWithUV(1 - (12 * pixel), 0, 1 - (12 * pixel), 11 * tPixel, 6 * tPixel);
-			tess.addVertexWithUV(1 - (12 * pixel), 1, 1 - (12 * pixel), 27 * tPixel, 6 * tPixel);
-			tess.addVertexWithUV(12 * pixel, 1, 1 - (12 * pixel), 27 * tPixel, 0 * tPixel);
-			tess.addVertexWithUV(12 * pixel, 0, 1 - (12 * pixel), 11 * tPixel, 0 * tPixel);
+			tess.addVertexWithUV(1 - 12 * pixel, 0, 1 - 12 * pixel, 11 * tPixel, 6 * tPixel);
+			tess.addVertexWithUV(1 - 12 * pixel, 1, 1 - 12 * pixel, 27 * tPixel, 6 * tPixel);
+			tess.addVertexWithUV(12 * pixel, 1, 1 - 12 * pixel, 27 * tPixel, 0 * tPixel);
+			tess.addVertexWithUV(12 * pixel, 0, 1 - 12 * pixel, 11 * tPixel, 0 * tPixel);
 
 			tess.addVertexWithUV(12 * pixel, 0, 12 * pixel, 11 * tPixel, 0 * tPixel);
 			tess.addVertexWithUV(12 * pixel, 1, 12 * pixel, 27 * tPixel, 0 * tPixel);
-			tess.addVertexWithUV(1 - (12 * pixel), 1, 12 * pixel, 27 * tPixel, 6 * tPixel);
-			tess.addVertexWithUV(1 - (12 * pixel), 0, 12 * pixel, 11 * tPixel, 6 * tPixel);
+			tess.addVertexWithUV(1 - 12 * pixel, 1, 12 * pixel, 27 * tPixel, 6 * tPixel);
+			tess.addVertexWithUV(1 - 12 * pixel, 0, 12 * pixel, 11 * tPixel, 6 * tPixel);
 
-			tess.addVertexWithUV(1 - (12 * pixel), 0, 12 * pixel, 11 * tPixel, 0 * tPixel);
-			tess.addVertexWithUV(1 - (12 * pixel), 1, 12 * pixel, 27 * tPixel, 0 * tPixel);
-			tess.addVertexWithUV(1 - (12 * pixel), 1, 1 - (12 * pixel), 27 * tPixel, 6 * tPixel);
-			tess.addVertexWithUV(1 - (12 * pixel), 0, 1 - (12 * pixel), 11 * tPixel, 6 * tPixel);
+			tess.addVertexWithUV(1 - 12 * pixel, 0, 12 * pixel, 11 * tPixel, 0 * tPixel);
+			tess.addVertexWithUV(1 - 12 * pixel, 1, 12 * pixel, 27 * tPixel, 0 * tPixel);
+			tess.addVertexWithUV(1 - 12 * pixel, 1, 1 - 12 * pixel, 27 * tPixel, 6 * tPixel);
+			tess.addVertexWithUV(1 - 12 * pixel, 0, 1 - 12 * pixel, 11 * tPixel, 6 * tPixel);
 
-			tess.addVertexWithUV(12 * pixel, 0, 1 - (12 * pixel), 11 * tPixel, 6 * tPixel);
-			tess.addVertexWithUV(12 * pixel, 1, 1 - (12 * pixel), 27 * tPixel, 6 * tPixel);
+			tess.addVertexWithUV(12 * pixel, 0, 1 - 12 * pixel, 11 * tPixel, 6 * tPixel);
+			tess.addVertexWithUV(12 * pixel, 1, 1 - 12 * pixel, 27 * tPixel, 6 * tPixel);
 			tess.addVertexWithUV(12 * pixel, 1, 12 * pixel, 27 * tPixel, 0 * tPixel);
 			tess.addVertexWithUV(12 * pixel, 0, 12 * pixel, 11 * tPixel, 0 * tPixel);
 
 			if (ConfigGeneral.drawInside)
 			{
-				tess.addVertexWithUV(12 * pixel, 0, 1 - (12 * pixel), 11 * tPixel, 0 * tPixel);
-				tess.addVertexWithUV(12 * pixel, 1, 1 - (12 * pixel), 27 * tPixel, 0 * tPixel);
-				tess.addVertexWithUV(1 - (12 * pixel), 1, 1 - (12 * pixel), 27 * tPixel, 6 * tPixel);
-				tess.addVertexWithUV(1 - (12 * pixel), 0, 1 - (12 * pixel), 11 * tPixel, 6 * tPixel);
+				tess.addVertexWithUV(12 * pixel, 0, 1 - 12 * pixel, 11 * tPixel, 0 * tPixel);
+				tess.addVertexWithUV(12 * pixel, 1, 1 - 12 * pixel, 27 * tPixel, 0 * tPixel);
+				tess.addVertexWithUV(1 - 12 * pixel, 1, 1 - 12 * pixel, 27 * tPixel, 6 * tPixel);
+				tess.addVertexWithUV(1 - 12 * pixel, 0, 1 - 12 * pixel, 11 * tPixel, 6 * tPixel);
 
-				tess.addVertexWithUV(1 - (12 * pixel), 0, 12 * pixel, 11 * tPixel, 6 * tPixel);
-				tess.addVertexWithUV(1 - (12 * pixel), 1, 12 * pixel, 27 * tPixel, 6 * tPixel);
+				tess.addVertexWithUV(1 - 12 * pixel, 0, 12 * pixel, 11 * tPixel, 6 * tPixel);
+				tess.addVertexWithUV(1 - 12 * pixel, 1, 12 * pixel, 27 * tPixel, 6 * tPixel);
 				tess.addVertexWithUV(12 * pixel, 1, 12 * pixel, 27 * tPixel, 0 * tPixel);
 				tess.addVertexWithUV(12 * pixel, 0, 12 * pixel, 11 * tPixel, 0 * tPixel);
 
-				tess.addVertexWithUV(1 - (12 * pixel), 0, 1 - (12 * pixel), 11 * tPixel, 6 * tPixel);
-				tess.addVertexWithUV(1 - (12 * pixel), 1, 1 - (12 * pixel), 27 * tPixel, 6 * tPixel);
-				tess.addVertexWithUV(1 - (12 * pixel), 1, 12 * pixel, 27 * tPixel, 0 * tPixel);
-				tess.addVertexWithUV(1 - (12 * pixel), 0, 12 * pixel, 11 * tPixel, 0 * tPixel);
+				tess.addVertexWithUV(1 - 12 * pixel, 0, 1 - 12 * pixel, 11 * tPixel, 6 * tPixel);
+				tess.addVertexWithUV(1 - 12 * pixel, 1, 1 - 12 * pixel, 27 * tPixel, 6 * tPixel);
+				tess.addVertexWithUV(1 - 12 * pixel, 1, 12 * pixel, 27 * tPixel, 0 * tPixel);
+				tess.addVertexWithUV(1 - 12 * pixel, 0, 12 * pixel, 11 * tPixel, 0 * tPixel);
 
 				tess.addVertexWithUV(12 * pixel, 0, 12 * pixel, 11 * tPixel, 0 * tPixel);
 				tess.addVertexWithUV(12 * pixel, 1, 12 * pixel, 27 * tPixel, 0 * tPixel);
-				tess.addVertexWithUV(12 * pixel, 1, 1 - (12 * pixel), 27 * tPixel, 6 * tPixel);
-				tess.addVertexWithUV(12 * pixel, 0, 1 - (12 * pixel), 11 * tPixel, 6 * tPixel);
+				tess.addVertexWithUV(12 * pixel, 1, 1 - 12 * pixel, 27 * tPixel, 6 * tPixel);
+				tess.addVertexWithUV(12 * pixel, 0, 1 - 12 * pixel, 11 * tPixel, 6 * tPixel);
 			}
 		}
 		tess.draw();
 
-		if (ConfigGeneral.drawFluid && (pipe.network != null))
+		if (ConfigGeneral.drawFluid && pipe.network != null)
 		{
 			float level = pipe.network.fluidScaled;
 
-			if ((pipe.network.tank.getFluid() != null) && (level > 0))
+			if (pipe.network.tank.getFluid() != null && level > 0)
 			{
 				tess.startDrawingQuads();
 				{
 					IIcon icon = pipe.network.tank.getFluid().getFluid().getBlock().getIcon(0, 0);
-					bindTexture(TextureMap.locationBlocksTexture);
+					this.bindTexture(TextureMap.locationBlocksTexture);
 
-					tess.addVertexWithUV((1 - (15 * pixel)) + level, 0, (1 - (15 * pixel)) + level, icon.getMinU(), icon.getMaxV());
-					tess.addVertexWithUV((1 - (15 * pixel)) + level, 1, (1 - (15 * pixel)) + level, icon.getMaxU(), icon.getMaxV());
-					tess.addVertexWithUV((15 * pixel) - level, 1, (1 - (15 * pixel)) + level, icon.getMaxU(), icon.getMinV());
-					tess.addVertexWithUV((15 * pixel) - level, 0, (1 - (15 * pixel)) + level, icon.getMinU(), icon.getMinV());
+					tess.addVertexWithUV(1 - 15 * pixel + level, 0, 1 - 15 * pixel + level, icon.getMinU(), icon.getMaxV());
+					tess.addVertexWithUV(1 - 15 * pixel + level, 1, 1 - 15 * pixel + level, icon.getMaxU(), icon.getMaxV());
+					tess.addVertexWithUV(15 * pixel - level, 1, 1 - 15 * pixel + level, icon.getMaxU(), icon.getMinV());
+					tess.addVertexWithUV(15 * pixel - level, 0, 1 - 15 * pixel + level, icon.getMinU(), icon.getMinV());
 
-					tess.addVertexWithUV((15 * pixel) - level, 0, (15 * pixel) - level, icon.getMinU(), icon.getMinV());
-					tess.addVertexWithUV((15 * pixel) - level, 1, (15 * pixel) - level, icon.getMaxU(), icon.getMinV());
-					tess.addVertexWithUV((1 - (15 * pixel)) + level, 1, (15 * pixel) - level, icon.getMaxU(), icon.getMaxV());
-					tess.addVertexWithUV((1 - (15 * pixel)) + level, 0, (15 * pixel) - level, icon.getMinU(), icon.getMaxV());
+					tess.addVertexWithUV(15 * pixel - level, 0, 15 * pixel - level, icon.getMinU(), icon.getMinV());
+					tess.addVertexWithUV(15 * pixel - level, 1, 15 * pixel - level, icon.getMaxU(), icon.getMinV());
+					tess.addVertexWithUV(1 - 15 * pixel + level, 1, 15 * pixel - level, icon.getMaxU(), icon.getMaxV());
+					tess.addVertexWithUV(1 - 15 * pixel + level, 0, 15 * pixel - level, icon.getMinU(), icon.getMaxV());
 
-					tess.addVertexWithUV((1 - (15 * pixel)) + level, 0, (15 * pixel) - level, icon.getMinU(), icon.getMinV());
-					tess.addVertexWithUV((1 - (15 * pixel)) + level, 1, (15 * pixel) - level, icon.getMaxU(), icon.getMinV());
-					tess.addVertexWithUV((1 - (15 * pixel)) + level, 1, (1 - (15 * pixel)) + level, icon.getMaxU(), icon.getMaxV());
-					tess.addVertexWithUV((1 - (15 * pixel)) + level, 0, (1 - (15 * pixel)) + level, icon.getMinU(), icon.getMaxV());
+					tess.addVertexWithUV(1 - 15 * pixel + level, 0, 15 * pixel - level, icon.getMinU(), icon.getMinV());
+					tess.addVertexWithUV(1 - 15 * pixel + level, 1, 15 * pixel - level, icon.getMaxU(), icon.getMinV());
+					tess.addVertexWithUV(1 - 15 * pixel + level, 1, 1 - 15 * pixel + level, icon.getMaxU(), icon.getMaxV());
+					tess.addVertexWithUV(1 - 15 * pixel + level, 0, 1 - 15 * pixel + level, icon.getMinU(), icon.getMaxV());
 
-					tess.addVertexWithUV((15 * pixel) - level, 0, (1 - (15 * pixel)) + level, icon.getMinU(), icon.getMaxV());
-					tess.addVertexWithUV((15 * pixel) - level, 1, (1 - (15 * pixel)) + level, icon.getMaxU(), icon.getMaxV());
-					tess.addVertexWithUV((15 * pixel) - level, 1, (15 * pixel) - level, icon.getMaxU(), icon.getMinV());
-					tess.addVertexWithUV((15 * pixel) - level, 0, (15 * pixel) - level, icon.getMinU(), icon.getMinV());
+					tess.addVertexWithUV(15 * pixel - level, 0, 1 - 15 * pixel + level, icon.getMinU(), icon.getMaxV());
+					tess.addVertexWithUV(15 * pixel - level, 1, 1 - 15 * pixel + level, icon.getMaxU(), icon.getMaxV());
+					tess.addVertexWithUV(15 * pixel - level, 1, 15 * pixel - level, icon.getMaxU(), icon.getMinV());
+					tess.addVertexWithUV(15 * pixel - level, 0, 15 * pixel - level, icon.getMinU(), icon.getMinV());
 				}
 				tess.draw();
 
-				bindTexture(texture);
+				this.bindTexture(this.texture);
 			}
 		}
 
 		GL11.glTranslatef(0.5F, 0.5F, 0.5F);
 
-		if ((dir == ForgeDirection.SOUTH) || (dir == ForgeDirection.NORTH))
+		if (dir == ForgeDirection.SOUTH || dir == ForgeDirection.NORTH)
 			GL11.glRotatef(-90, 1, 0, 0);
-		else if ((dir == ForgeDirection.WEST) || (dir == ForgeDirection.EAST))
+		else if (dir == ForgeDirection.WEST || dir == ForgeDirection.EAST)
 			GL11.glRotatef(-90, 0, 0, 1);
 
 		GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
@@ -198,47 +198,47 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 				GL11.glRotatef(270, 0, 0, 1);
 			GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
 
-			tess.addVertexWithUV(1 - (12 * pixel), 1 - (12 * pixel), 1 - (12 * pixel), 0 * tPixel, 6 * tPixel);
-			tess.addVertexWithUV(1 - (12 * pixel), 1, 1 - (12 * pixel), 6 * tPixel, 6 * tPixel);
-			tess.addVertexWithUV(12 * pixel, 1, 1 - (12 * pixel), 6 * tPixel, 0 * tPixel);
-			tess.addVertexWithUV(12 * pixel, 1 - (12 * pixel), 1 - (12 * pixel), 0 * tPixel, 0 * tPixel);
+			tess.addVertexWithUV(1 - 12 * pixel, 1 - 12 * pixel, 1 - 12 * pixel, 0 * tPixel, 6 * tPixel);
+			tess.addVertexWithUV(1 - 12 * pixel, 1, 1 - 12 * pixel, 6 * tPixel, 6 * tPixel);
+			tess.addVertexWithUV(12 * pixel, 1, 1 - 12 * pixel, 6 * tPixel, 0 * tPixel);
+			tess.addVertexWithUV(12 * pixel, 1 - 12 * pixel, 1 - 12 * pixel, 0 * tPixel, 0 * tPixel);
 
-			tess.addVertexWithUV(12 * pixel, 1 - (12 * pixel), 12 * pixel, 0 * tPixel, 0 * tPixel);
+			tess.addVertexWithUV(12 * pixel, 1 - 12 * pixel, 12 * pixel, 0 * tPixel, 0 * tPixel);
 			tess.addVertexWithUV(12 * pixel, 1, 12 * pixel, 6 * tPixel, 0 * tPixel);
-			tess.addVertexWithUV(1 - (12 * pixel), 1, 12 * pixel, 6 * tPixel, 6 * tPixel);
-			tess.addVertexWithUV(1 - (12 * pixel), 1 - (12 * pixel), 12 * pixel, 0 * tPixel, 6 * tPixel);
+			tess.addVertexWithUV(1 - 12 * pixel, 1, 12 * pixel, 6 * tPixel, 6 * tPixel);
+			tess.addVertexWithUV(1 - 12 * pixel, 1 - 12 * pixel, 12 * pixel, 0 * tPixel, 6 * tPixel);
 
-			tess.addVertexWithUV(1 - (12 * pixel), 1 - (12 * pixel), 12 * pixel, 0 * tPixel, 0 * tPixel);
-			tess.addVertexWithUV(1 - (12 * pixel), 1, 12 * pixel, 6 * tPixel, 0 * tPixel);
-			tess.addVertexWithUV(1 - (12 * pixel), 1, 1 - (12 * pixel), 6 * tPixel, 6 * tPixel);
-			tess.addVertexWithUV(1 - (12 * pixel), 1 - (12 * pixel), 1 - (12 * pixel), 0 * tPixel, 6 * tPixel);
+			tess.addVertexWithUV(1 - 12 * pixel, 1 - 12 * pixel, 12 * pixel, 0 * tPixel, 0 * tPixel);
+			tess.addVertexWithUV(1 - 12 * pixel, 1, 12 * pixel, 6 * tPixel, 0 * tPixel);
+			tess.addVertexWithUV(1 - 12 * pixel, 1, 1 - 12 * pixel, 6 * tPixel, 6 * tPixel);
+			tess.addVertexWithUV(1 - 12 * pixel, 1 - 12 * pixel, 1 - 12 * pixel, 0 * tPixel, 6 * tPixel);
 
-			tess.addVertexWithUV(12 * pixel, 1 - (12 * pixel), 1 - (12 * pixel), 0 * tPixel, 6 * tPixel);
-			tess.addVertexWithUV(12 * pixel, 1, 1 - (12 * pixel), 6 * tPixel, 6 * tPixel);
+			tess.addVertexWithUV(12 * pixel, 1 - 12 * pixel, 1 - 12 * pixel, 0 * tPixel, 6 * tPixel);
+			tess.addVertexWithUV(12 * pixel, 1, 1 - 12 * pixel, 6 * tPixel, 6 * tPixel);
 			tess.addVertexWithUV(12 * pixel, 1, 12 * pixel, 6 * tPixel, 0 * tPixel);
-			tess.addVertexWithUV(12 * pixel, 1 - (12 * pixel), 12 * pixel, 0 * tPixel, 0 * tPixel);
+			tess.addVertexWithUV(12 * pixel, 1 - 12 * pixel, 12 * pixel, 0 * tPixel, 0 * tPixel);
 
 			if (ConfigGeneral.drawInside)
 			{
-				tess.addVertexWithUV(12 * pixel, 1 - (12 * pixel), 1 - (12 * pixel), 0 * tPixel, 0 * tPixel);
-				tess.addVertexWithUV(12 * pixel, 1, 1 - (12 * pixel), 6 * tPixel, 0 * tPixel);
-				tess.addVertexWithUV(1 - (12 * pixel), 1, 1 - (12 * pixel), 6 * tPixel, 6 * tPixel);
-				tess.addVertexWithUV(1 - (12 * pixel), 1 - (12 * pixel), 1 - (12 * pixel), 0 * tPixel, 6 * tPixel);
+				tess.addVertexWithUV(12 * pixel, 1 - 12 * pixel, 1 - 12 * pixel, 0 * tPixel, 0 * tPixel);
+				tess.addVertexWithUV(12 * pixel, 1, 1 - 12 * pixel, 6 * tPixel, 0 * tPixel);
+				tess.addVertexWithUV(1 - 12 * pixel, 1, 1 - 12 * pixel, 6 * tPixel, 6 * tPixel);
+				tess.addVertexWithUV(1 - 12 * pixel, 1 - 12 * pixel, 1 - 12 * pixel, 0 * tPixel, 6 * tPixel);
 
-				tess.addVertexWithUV(1 - (12 * pixel), 1 - (12 * pixel), 12 * pixel, 0 * tPixel, 6 * tPixel);
-				tess.addVertexWithUV(1 - (12 * pixel), 1, 12 * pixel, 6 * tPixel, 6 * tPixel);
+				tess.addVertexWithUV(1 - 12 * pixel, 1 - 12 * pixel, 12 * pixel, 0 * tPixel, 6 * tPixel);
+				tess.addVertexWithUV(1 - 12 * pixel, 1, 12 * pixel, 6 * tPixel, 6 * tPixel);
 				tess.addVertexWithUV(12 * pixel, 1, 12 * pixel, 6 * tPixel, 0 * tPixel);
-				tess.addVertexWithUV(12 * pixel, 1 - (12 * pixel), 12 * pixel, 0 * tPixel, 0 * tPixel);
+				tess.addVertexWithUV(12 * pixel, 1 - 12 * pixel, 12 * pixel, 0 * tPixel, 0 * tPixel);
 
-				tess.addVertexWithUV(1 - (12 * pixel), 1 - (12 * pixel), 1 - (12 * pixel), 0 * tPixel, 6 * tPixel);
-				tess.addVertexWithUV(1 - (12 * pixel), 1, 1 - (12 * pixel), 6 * tPixel, 6 * tPixel);
-				tess.addVertexWithUV(1 - (12 * pixel), 1, 12 * pixel, 6 * tPixel, 0 * tPixel);
-				tess.addVertexWithUV(1 - (12 * pixel), 1 - (12 * pixel), 12 * pixel, 0 * tPixel, 0 * tPixel);
+				tess.addVertexWithUV(1 - 12 * pixel, 1 - 12 * pixel, 1 - 12 * pixel, 0 * tPixel, 6 * tPixel);
+				tess.addVertexWithUV(1 - 12 * pixel, 1, 1 - 12 * pixel, 6 * tPixel, 6 * tPixel);
+				tess.addVertexWithUV(1 - 12 * pixel, 1, 12 * pixel, 6 * tPixel, 0 * tPixel);
+				tess.addVertexWithUV(1 - 12 * pixel, 1 - 12 * pixel, 12 * pixel, 0 * tPixel, 0 * tPixel);
 
-				tess.addVertexWithUV(12 * pixel, 1 - (12 * pixel), 12 * pixel, 0 * tPixel, 0 * tPixel);
+				tess.addVertexWithUV(12 * pixel, 1 - 12 * pixel, 12 * pixel, 0 * tPixel, 0 * tPixel);
 				tess.addVertexWithUV(12 * pixel, 1, 12 * pixel, 6 * tPixel, 0 * tPixel);
-				tess.addVertexWithUV(12 * pixel, 1, 1 - (12 * pixel), 6 * tPixel, 6 * tPixel);
-				tess.addVertexWithUV(12 * pixel, 1 - (12 * pixel), 1 - (12 * pixel), 0 * tPixel, 6 * tPixel);
+				tess.addVertexWithUV(12 * pixel, 1, 1 - 12 * pixel, 6 * tPixel, 6 * tPixel);
+				tess.addVertexWithUV(12 * pixel, 1 - 12 * pixel, 1 - 12 * pixel, 0 * tPixel, 6 * tPixel);
 			}
 		}
 		tess.draw();
@@ -284,85 +284,85 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 				GL11.glRotatef(270, 0, 0, 1);
 			GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
 
-			tess.addVertexWithUV(1 - (12 * pixel), 1 - (12 * pixel), 1 - (12 * pixel), 6 * tPixel, 6 * tPixel);
-			tess.addVertexWithUV(1 - (12 * pixel), 1, 1 - (12 * pixel), 11 * tPixel, 6 * tPixel);
-			tess.addVertexWithUV(12 * pixel, 1, 1 - (12 * pixel), 11 * tPixel, 0 * tPixel);
-			tess.addVertexWithUV(12 * pixel, 1 - (12 * pixel), 1 - (12 * pixel), 6 * tPixel, 0 * tPixel);
+			tess.addVertexWithUV(1 - 12 * pixel, 1 - 12 * pixel, 1 - 12 * pixel, 6 * tPixel, 6 * tPixel);
+			tess.addVertexWithUV(1 - 12 * pixel, 1, 1 - 12 * pixel, 11 * tPixel, 6 * tPixel);
+			tess.addVertexWithUV(12 * pixel, 1, 1 - 12 * pixel, 11 * tPixel, 0 * tPixel);
+			tess.addVertexWithUV(12 * pixel, 1 - 12 * pixel, 1 - 12 * pixel, 6 * tPixel, 0 * tPixel);
 
-			tess.addVertexWithUV(12 * pixel, 1 - (12 * pixel), 12 * pixel, 6 * tPixel, 0 * tPixel);
+			tess.addVertexWithUV(12 * pixel, 1 - 12 * pixel, 12 * pixel, 6 * tPixel, 0 * tPixel);
 			tess.addVertexWithUV(12 * pixel, 1, 12 * pixel, 11 * tPixel, 0 * tPixel);
-			tess.addVertexWithUV(1 - (12 * pixel), 1, 12 * pixel, 11 * tPixel, 6 * tPixel);
-			tess.addVertexWithUV(1 - (12 * pixel), 1 - (12 * pixel), 12 * pixel, 6 * tPixel, 6 * tPixel);
+			tess.addVertexWithUV(1 - 12 * pixel, 1, 12 * pixel, 11 * tPixel, 6 * tPixel);
+			tess.addVertexWithUV(1 - 12 * pixel, 1 - 12 * pixel, 12 * pixel, 6 * tPixel, 6 * tPixel);
 
-			tess.addVertexWithUV(1 - (12 * pixel), 1 - (12 * pixel), 12 * pixel, 6 * tPixel, 0 * tPixel);
-			tess.addVertexWithUV(1 - (12 * pixel), 1, 12 * pixel, 11 * tPixel, 0 * tPixel);
-			tess.addVertexWithUV(1 - (12 * pixel), 1, 1 - (12 * pixel), 11 * tPixel, 6 * tPixel);
-			tess.addVertexWithUV(1 - (12 * pixel), 1 - (12 * pixel), 1 - (12 * pixel), 6 * tPixel, 6 * tPixel);
+			tess.addVertexWithUV(1 - 12 * pixel, 1 - 12 * pixel, 12 * pixel, 6 * tPixel, 0 * tPixel);
+			tess.addVertexWithUV(1 - 12 * pixel, 1, 12 * pixel, 11 * tPixel, 0 * tPixel);
+			tess.addVertexWithUV(1 - 12 * pixel, 1, 1 - 12 * pixel, 11 * tPixel, 6 * tPixel);
+			tess.addVertexWithUV(1 - 12 * pixel, 1 - 12 * pixel, 1 - 12 * pixel, 6 * tPixel, 6 * tPixel);
 
-			tess.addVertexWithUV(12 * pixel, 1 - (12 * pixel), 1 - (12 * pixel), 6 * tPixel, 6 * tPixel);
-			tess.addVertexWithUV(12 * pixel, 1, 1 - (12 * pixel), 11 * tPixel, 6 * tPixel);
+			tess.addVertexWithUV(12 * pixel, 1 - 12 * pixel, 1 - 12 * pixel, 6 * tPixel, 6 * tPixel);
+			tess.addVertexWithUV(12 * pixel, 1, 1 - 12 * pixel, 11 * tPixel, 6 * tPixel);
 			tess.addVertexWithUV(12 * pixel, 1, 12 * pixel, 11 * tPixel, 0 * tPixel);
-			tess.addVertexWithUV(12 * pixel, 1 - (12 * pixel), 12 * pixel, 6 * tPixel, 0 * tPixel);
+			tess.addVertexWithUV(12 * pixel, 1 - 12 * pixel, 12 * pixel, 6 * tPixel, 0 * tPixel);
 
 			if (ConfigGeneral.drawInside)
 			{
-				tess.addVertexWithUV(12 * pixel, 1 - (12 * pixel), 1 - (12 * pixel), 6 * tPixel, 0 * tPixel);
-				tess.addVertexWithUV(12 * pixel, 1, 1 - (12 * pixel), 11 * tPixel, 0 * tPixel);
-				tess.addVertexWithUV(1 - (12 * pixel), 1, 1 - (12 * pixel), 11 * tPixel, 6 * tPixel);
-				tess.addVertexWithUV(1 - (12 * pixel), 1 - (12 * pixel), 1 - (12 * pixel), 6 * tPixel, 6 * tPixel);
+				tess.addVertexWithUV(12 * pixel, 1 - 12 * pixel, 1 - 12 * pixel, 6 * tPixel, 0 * tPixel);
+				tess.addVertexWithUV(12 * pixel, 1, 1 - 12 * pixel, 11 * tPixel, 0 * tPixel);
+				tess.addVertexWithUV(1 - 12 * pixel, 1, 1 - 12 * pixel, 11 * tPixel, 6 * tPixel);
+				tess.addVertexWithUV(1 - 12 * pixel, 1 - 12 * pixel, 1 - 12 * pixel, 6 * tPixel, 6 * tPixel);
 
-				tess.addVertexWithUV(1 - (12 * pixel), 1 - (12 * pixel), 12 * pixel, 6 * tPixel, 6 * tPixel);
-				tess.addVertexWithUV(1 - (12 * pixel), 1, 12 * pixel, 11 * tPixel, 6 * tPixel);
+				tess.addVertexWithUV(1 - 12 * pixel, 1 - 12 * pixel, 12 * pixel, 6 * tPixel, 6 * tPixel);
+				tess.addVertexWithUV(1 - 12 * pixel, 1, 12 * pixel, 11 * tPixel, 6 * tPixel);
 				tess.addVertexWithUV(12 * pixel, 1, 12 * pixel, 11 * tPixel, 0 * tPixel);
-				tess.addVertexWithUV(12 * pixel, 1 - (12 * pixel), 12 * pixel, 6 * tPixel, 0 * tPixel);
+				tess.addVertexWithUV(12 * pixel, 1 - 12 * pixel, 12 * pixel, 6 * tPixel, 0 * tPixel);
 
-				tess.addVertexWithUV(1 - (12 * pixel), 1 - (12 * pixel), 1 - (12 * pixel), 6 * tPixel, 6 * tPixel);
-				tess.addVertexWithUV(1 - (12 * pixel), 1, 1 - (12 * pixel), 11 * tPixel, 6 * tPixel);
-				tess.addVertexWithUV(1 - (12 * pixel), 1, 12 * pixel, 11 * tPixel, 0 * tPixel);
-				tess.addVertexWithUV(1 - (12 * pixel), 1 - (12 * pixel), 12 * pixel, 6 * tPixel, 0 * tPixel);
+				tess.addVertexWithUV(1 - 12 * pixel, 1 - 12 * pixel, 1 - 12 * pixel, 6 * tPixel, 6 * tPixel);
+				tess.addVertexWithUV(1 - 12 * pixel, 1, 1 - 12 * pixel, 11 * tPixel, 6 * tPixel);
+				tess.addVertexWithUV(1 - 12 * pixel, 1, 12 * pixel, 11 * tPixel, 0 * tPixel);
+				tess.addVertexWithUV(1 - 12 * pixel, 1 - 12 * pixel, 12 * pixel, 6 * tPixel, 0 * tPixel);
 
-				tess.addVertexWithUV(12 * pixel, 1 - (12 * pixel), 12 * pixel, 6 * tPixel, 0 * tPixel);
+				tess.addVertexWithUV(12 * pixel, 1 - 12 * pixel, 12 * pixel, 6 * tPixel, 0 * tPixel);
 				tess.addVertexWithUV(12 * pixel, 1, 12 * pixel, 11 * tPixel, 0 * tPixel);
-				tess.addVertexWithUV(12 * pixel, 1, 1 - (12 * pixel), 11 * tPixel, 6 * tPixel);
-				tess.addVertexWithUV(12 * pixel, 1 - (12 * pixel), 1 - (12 * pixel), 6 * tPixel, 6 * tPixel);
+				tess.addVertexWithUV(12 * pixel, 1, 1 - 12 * pixel, 11 * tPixel, 6 * tPixel);
+				tess.addVertexWithUV(12 * pixel, 1 - 12 * pixel, 1 - 12 * pixel, 6 * tPixel, 6 * tPixel);
 			}
 		}
 		tess.draw();
 
-		if (ConfigGeneral.drawFluid && (pipe.network != null))
+		if (ConfigGeneral.drawFluid && pipe.network != null)
 		{
 			float level = pipe.network.fluidScaled;
 
-			if ((pipe.network.tank.getFluid() != null) && (level > 0))
+			if (pipe.network.tank.getFluid() != null && level > 0)
 			{
 				tess.startDrawingQuads();
 				{
 					IIcon icon = pipe.network.tank.getFluid().getFluid().getBlock().getIcon(0, 0);
-					bindTexture(TextureMap.locationBlocksTexture);
+					this.bindTexture(TextureMap.locationBlocksTexture);
 
-					tess.addVertexWithUV((1 - (15 * pixel)) + level, 1 - (15 * pixel), (1 - (15 * pixel)) + level, icon.getMinU(), icon.getMaxV());
-					tess.addVertexWithUV((1 - (15 * pixel)) + level, 1, (1 - (15 * pixel)) + level, icon.getMaxU(), icon.getMaxV());
-					tess.addVertexWithUV((15 * pixel) - level, 1, (1 - (15 * pixel)) + level, icon.getMaxU(), icon.getMinV());
-					tess.addVertexWithUV((15 * pixel) - level, 1 - (15 * pixel), (1 - (15 * pixel)) + level, icon.getMinU(), icon.getMinV());
+					tess.addVertexWithUV(1 - 15 * pixel + level, 1 - 15 * pixel, 1 - 15 * pixel + level, icon.getMinU(), icon.getMaxV());
+					tess.addVertexWithUV(1 - 15 * pixel + level, 1, 1 - 15 * pixel + level, icon.getMaxU(), icon.getMaxV());
+					tess.addVertexWithUV(15 * pixel - level, 1, 1 - 15 * pixel + level, icon.getMaxU(), icon.getMinV());
+					tess.addVertexWithUV(15 * pixel - level, 1 - 15 * pixel, 1 - 15 * pixel + level, icon.getMinU(), icon.getMinV());
 
-					tess.addVertexWithUV((15 * pixel) - level, 1 - (15 * pixel), (15 * pixel) - level, icon.getMinU(), icon.getMinV());
-					tess.addVertexWithUV((15 * pixel) - level, 1, (15 * pixel) - level, icon.getMaxU(), icon.getMinV());
-					tess.addVertexWithUV((1 - (15 * pixel)) + level, 1, (15 * pixel) - level, icon.getMaxU(), icon.getMaxV());
-					tess.addVertexWithUV((1 - (15 * pixel)) + level, 1 - (15 * pixel), (15 * pixel) - level, icon.getMinU(), icon.getMaxV());
+					tess.addVertexWithUV(15 * pixel - level, 1 - 15 * pixel, 15 * pixel - level, icon.getMinU(), icon.getMinV());
+					tess.addVertexWithUV(15 * pixel - level, 1, 15 * pixel - level, icon.getMaxU(), icon.getMinV());
+					tess.addVertexWithUV(1 - 15 * pixel + level, 1, 15 * pixel - level, icon.getMaxU(), icon.getMaxV());
+					tess.addVertexWithUV(1 - 15 * pixel + level, 1 - 15 * pixel, 15 * pixel - level, icon.getMinU(), icon.getMaxV());
 
-					tess.addVertexWithUV((1 - (15 * pixel)) + level, 1 - (15 * pixel), (15 * pixel) - level, icon.getMinU(), icon.getMinV());
-					tess.addVertexWithUV((1 - (15 * pixel)) + level, 1, (15 * pixel) - level, icon.getMaxU(), icon.getMinV());
-					tess.addVertexWithUV((1 - (15 * pixel)) + level, 1, (1 - (15 * pixel)) + level, icon.getMaxU(), icon.getMaxV());
-					tess.addVertexWithUV((1 - (15 * pixel)) + level, 1 - (15 * pixel), (1 - (15 * pixel)) + level, icon.getMinU(), icon.getMaxV());
+					tess.addVertexWithUV(1 - 15 * pixel + level, 1 - 15 * pixel, 15 * pixel - level, icon.getMinU(), icon.getMinV());
+					tess.addVertexWithUV(1 - 15 * pixel + level, 1, 15 * pixel - level, icon.getMaxU(), icon.getMinV());
+					tess.addVertexWithUV(1 - 15 * pixel + level, 1, 1 - 15 * pixel + level, icon.getMaxU(), icon.getMaxV());
+					tess.addVertexWithUV(1 - 15 * pixel + level, 1 - 15 * pixel, 1 - 15 * pixel + level, icon.getMinU(), icon.getMaxV());
 
-					tess.addVertexWithUV((15 * pixel) - level, 1 - (15 * pixel), (1 - (15 * pixel)) + level, icon.getMinU(), icon.getMaxV());
-					tess.addVertexWithUV((15 * pixel) - level, 1, (1 - (15 * pixel)) + level, icon.getMaxU(), icon.getMaxV());
-					tess.addVertexWithUV((15 * pixel) - level, 1, (15 * pixel) - level, icon.getMaxU(), icon.getMinV());
-					tess.addVertexWithUV((15 * pixel) - level, 1 - (15 * pixel), (15 * pixel) - level, icon.getMinU(), icon.getMinV());
+					tess.addVertexWithUV(15 * pixel - level, 1 - 15 * pixel, 1 - 15 * pixel + level, icon.getMinU(), icon.getMaxV());
+					tess.addVertexWithUV(15 * pixel - level, 1, 1 - 15 * pixel + level, icon.getMaxU(), icon.getMaxV());
+					tess.addVertexWithUV(15 * pixel - level, 1, 15 * pixel - level, icon.getMaxU(), icon.getMinV());
+					tess.addVertexWithUV(15 * pixel - level, 1 - 15 * pixel, 15 * pixel - level, icon.getMinU(), icon.getMinV());
 				}
 				tess.draw();
 
-				bindTexture(texture);
+				this.bindTexture(this.texture);
 			}
 		}
 
@@ -392,97 +392,97 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 		{
 			if (tile.connections[0] == null)
 			{
-				tess.addVertexWithUV(12 * pixel, 12 * pixel, 1 - (12 * pixel), 6 * tPixel, 6 * tPixel);
+				tess.addVertexWithUV(12 * pixel, 12 * pixel, 1 - 12 * pixel, 6 * tPixel, 6 * tPixel);
 				tess.addVertexWithUV(12 * pixel, 12 * pixel, 12 * pixel, 6 * tPixel, 0 * tPixel);
-				tess.addVertexWithUV(1 - (12 * pixel), 12 * pixel, 12 * pixel, 0 * tPixel, 0 * tPixel);
-				tess.addVertexWithUV(1 - (12 * pixel), 12 * pixel, 1 - (12 * pixel), 0 * tPixel, 6 * tPixel);
+				tess.addVertexWithUV(1 - 12 * pixel, 12 * pixel, 12 * pixel, 0 * tPixel, 0 * tPixel);
+				tess.addVertexWithUV(1 - 12 * pixel, 12 * pixel, 1 - 12 * pixel, 0 * tPixel, 6 * tPixel);
 
 				if (ConfigGeneral.drawInside)
 				{
-					tess.addVertexWithUV(1 - (12 * pixel), 12 * pixel, 1 - (12 * pixel), 0 * tPixel, 6 * tPixel);
-					tess.addVertexWithUV(1 - (12 * pixel), 12 * pixel, 12 * pixel, 0 * tPixel, 0 * tPixel);
+					tess.addVertexWithUV(1 - 12 * pixel, 12 * pixel, 1 - 12 * pixel, 0 * tPixel, 6 * tPixel);
+					tess.addVertexWithUV(1 - 12 * pixel, 12 * pixel, 12 * pixel, 0 * tPixel, 0 * tPixel);
 					tess.addVertexWithUV(12 * pixel, 12 * pixel, 12 * pixel, 6 * tPixel, 0 * tPixel);
-					tess.addVertexWithUV(12 * pixel, 12 * pixel, 1 - (12 * pixel), 6 * tPixel, 6 * tPixel);
+					tess.addVertexWithUV(12 * pixel, 12 * pixel, 1 - 12 * pixel, 6 * tPixel, 6 * tPixel);
 				}
 			}
 
 			if (tile.connections[1] == null)
 			{
-				tess.addVertexWithUV(1 - (12 * pixel), 1 - (12 * pixel), 1 - (12 * pixel), 6 * tPixel, 6 * tPixel);
-				tess.addVertexWithUV(1 - (12 * pixel), 1 - (12 * pixel), 12 * pixel, 6 * tPixel, 0 * tPixel);
-				tess.addVertexWithUV(12 * pixel, 1 - (12 * pixel), 12 * pixel, 0 * tPixel, 0 * tPixel);
-				tess.addVertexWithUV(12 * pixel, 1 - (12 * pixel), 1 - (12 * pixel), 0 * tPixel, 6 * tPixel);
+				tess.addVertexWithUV(1 - 12 * pixel, 1 - 12 * pixel, 1 - 12 * pixel, 6 * tPixel, 6 * tPixel);
+				tess.addVertexWithUV(1 - 12 * pixel, 1 - 12 * pixel, 12 * pixel, 6 * tPixel, 0 * tPixel);
+				tess.addVertexWithUV(12 * pixel, 1 - 12 * pixel, 12 * pixel, 0 * tPixel, 0 * tPixel);
+				tess.addVertexWithUV(12 * pixel, 1 - 12 * pixel, 1 - 12 * pixel, 0 * tPixel, 6 * tPixel);
 
 				if (ConfigGeneral.drawInside)
 				{
-					tess.addVertexWithUV(12 * pixel, 1 - (12 * pixel), 1 - (12 * pixel), 0 * tPixel, 6 * tPixel);
-					tess.addVertexWithUV(12 * pixel, 1 - (12 * pixel), 12 * pixel, 0 * tPixel, 0 * tPixel);
-					tess.addVertexWithUV(1 - (12 * pixel), 1 - (12 * pixel), 12 * pixel, 6 * tPixel, 0 * tPixel);
-					tess.addVertexWithUV(1 - (12 * pixel), 1 - (12 * pixel), 1 - (12 * pixel), 6 * tPixel, 6 * tPixel);
+					tess.addVertexWithUV(12 * pixel, 1 - 12 * pixel, 1 - 12 * pixel, 0 * tPixel, 6 * tPixel);
+					tess.addVertexWithUV(12 * pixel, 1 - 12 * pixel, 12 * pixel, 0 * tPixel, 0 * tPixel);
+					tess.addVertexWithUV(1 - 12 * pixel, 1 - 12 * pixel, 12 * pixel, 6 * tPixel, 0 * tPixel);
+					tess.addVertexWithUV(1 - 12 * pixel, 1 - 12 * pixel, 1 - 12 * pixel, 6 * tPixel, 6 * tPixel);
 				}
 			}
 
 			if (tile.connections[2] == null)
 			{
 				tess.addVertexWithUV(12 * pixel, 12 * pixel, 12 * pixel, 6 * tPixel, 6 * tPixel);
-				tess.addVertexWithUV(12 * pixel, 1 - (12 * pixel), 12 * pixel, 6 * tPixel, 0 * tPixel);
-				tess.addVertexWithUV(1 - (12 * pixel), 1 - (12 * pixel), 12 * pixel, 0 * tPixel, 0 * tPixel);
-				tess.addVertexWithUV(1 - (12 * pixel), 12 * pixel, 12 * pixel, 0 * tPixel, 6 * tPixel);
+				tess.addVertexWithUV(12 * pixel, 1 - 12 * pixel, 12 * pixel, 6 * tPixel, 0 * tPixel);
+				tess.addVertexWithUV(1 - 12 * pixel, 1 - 12 * pixel, 12 * pixel, 0 * tPixel, 0 * tPixel);
+				tess.addVertexWithUV(1 - 12 * pixel, 12 * pixel, 12 * pixel, 0 * tPixel, 6 * tPixel);
 
 				if (ConfigGeneral.drawInside)
 				{
-					tess.addVertexWithUV(1 - (12 * pixel), 12 * pixel, 12 * pixel, 0 * tPixel, 6 * tPixel);
-					tess.addVertexWithUV(1 - (12 * pixel), 1 - (12 * pixel), 12 * pixel, 0 * tPixel, 0 * tPixel);
-					tess.addVertexWithUV(12 * pixel, 1 - (12 * pixel), 12 * pixel, 6 * tPixel, 0 * tPixel);
+					tess.addVertexWithUV(1 - 12 * pixel, 12 * pixel, 12 * pixel, 0 * tPixel, 6 * tPixel);
+					tess.addVertexWithUV(1 - 12 * pixel, 1 - 12 * pixel, 12 * pixel, 0 * tPixel, 0 * tPixel);
+					tess.addVertexWithUV(12 * pixel, 1 - 12 * pixel, 12 * pixel, 6 * tPixel, 0 * tPixel);
 					tess.addVertexWithUV(12 * pixel, 12 * pixel, 12 * pixel, 6 * tPixel, 6 * tPixel);
 				}
 			}
 
 			if (tile.connections[3] == null)
 			{
-				tess.addVertexWithUV(1 - (12 * pixel), 12 * pixel, 1 - (12 * pixel), 6 * tPixel, 6 * tPixel);
-				tess.addVertexWithUV(1 - (12 * pixel), 1 - (12 * pixel), 1 - (12 * pixel), 6 * tPixel, 0 * tPixel);
-				tess.addVertexWithUV(12 * pixel, 1 - (12 * pixel), 1 - (12 * pixel), 0 * tPixel, 0 * tPixel);
-				tess.addVertexWithUV(12 * pixel, 12 * pixel, 1 - (12 * pixel), 0 * tPixel, 6 * tPixel);
+				tess.addVertexWithUV(1 - 12 * pixel, 12 * pixel, 1 - 12 * pixel, 6 * tPixel, 6 * tPixel);
+				tess.addVertexWithUV(1 - 12 * pixel, 1 - 12 * pixel, 1 - 12 * pixel, 6 * tPixel, 0 * tPixel);
+				tess.addVertexWithUV(12 * pixel, 1 - 12 * pixel, 1 - 12 * pixel, 0 * tPixel, 0 * tPixel);
+				tess.addVertexWithUV(12 * pixel, 12 * pixel, 1 - 12 * pixel, 0 * tPixel, 6 * tPixel);
 
 				if (ConfigGeneral.drawInside)
 				{
-					tess.addVertexWithUV(12 * pixel, 12 * pixel, 1 - (12 * pixel), 0 * tPixel, 6 * tPixel);
-					tess.addVertexWithUV(12 * pixel, 1 - (12 * pixel), 1 - (12 * pixel), 0 * tPixel, 0 * tPixel);
-					tess.addVertexWithUV(1 - (12 * pixel), 1 - (12 * pixel), 1 - (12 * pixel), 6 * tPixel, 0 * tPixel);
-					tess.addVertexWithUV(1 - (12 * pixel), 12 * pixel, 1 - (12 * pixel), 6 * tPixel, 6 * tPixel);
+					tess.addVertexWithUV(12 * pixel, 12 * pixel, 1 - 12 * pixel, 0 * tPixel, 6 * tPixel);
+					tess.addVertexWithUV(12 * pixel, 1 - 12 * pixel, 1 - 12 * pixel, 0 * tPixel, 0 * tPixel);
+					tess.addVertexWithUV(1 - 12 * pixel, 1 - 12 * pixel, 1 - 12 * pixel, 6 * tPixel, 0 * tPixel);
+					tess.addVertexWithUV(1 - 12 * pixel, 12 * pixel, 1 - 12 * pixel, 6 * tPixel, 6 * tPixel);
 				}
 			}
 
 			if (tile.connections[4] == null)
 			{
-				tess.addVertexWithUV(12 * pixel, 12 * pixel, 1 - (12 * pixel), 6 * tPixel, 6 * tPixel);
-				tess.addVertexWithUV(12 * pixel, 1 - (12 * pixel), 1 - (12 * pixel), 6 * tPixel, 0 * tPixel);
-				tess.addVertexWithUV(12 * pixel, 1 - (12 * pixel), 12 * pixel, 0 * tPixel, 0 * tPixel);
+				tess.addVertexWithUV(12 * pixel, 12 * pixel, 1 - 12 * pixel, 6 * tPixel, 6 * tPixel);
+				tess.addVertexWithUV(12 * pixel, 1 - 12 * pixel, 1 - 12 * pixel, 6 * tPixel, 0 * tPixel);
+				tess.addVertexWithUV(12 * pixel, 1 - 12 * pixel, 12 * pixel, 0 * tPixel, 0 * tPixel);
 				tess.addVertexWithUV(12 * pixel, 12 * pixel, 12 * pixel, 0 * tPixel, 6 * tPixel);
 
 				if (ConfigGeneral.drawInside)
 				{
 					tess.addVertexWithUV(12 * pixel, 12 * pixel, 12 * pixel, 0 * tPixel, 6 * tPixel);
-					tess.addVertexWithUV(12 * pixel, 1 - (12 * pixel), 12 * pixel, 0 * tPixel, 0 * tPixel);
-					tess.addVertexWithUV(12 * pixel, 1 - (12 * pixel), 1 - (12 * pixel), 6 * tPixel, 0 * tPixel);
-					tess.addVertexWithUV(12 * pixel, 12 * pixel, 1 - (12 * pixel), 6 * tPixel, 6 * tPixel);
+					tess.addVertexWithUV(12 * pixel, 1 - 12 * pixel, 12 * pixel, 0 * tPixel, 0 * tPixel);
+					tess.addVertexWithUV(12 * pixel, 1 - 12 * pixel, 1 - 12 * pixel, 6 * tPixel, 0 * tPixel);
+					tess.addVertexWithUV(12 * pixel, 12 * pixel, 1 - 12 * pixel, 6 * tPixel, 6 * tPixel);
 				}
 			}
 
 			if (tile.connections[5] == null)
 			{
-				tess.addVertexWithUV(1 - (12 * pixel), 12 * pixel, 12 * pixel, 6 * tPixel, 6 * tPixel);
-				tess.addVertexWithUV(1 - (12 * pixel), 1 - (12 * pixel), 12 * pixel, 6 * tPixel, 0 * tPixel);
-				tess.addVertexWithUV(1 - (12 * pixel), 1 - (12 * pixel), 1 - (12 * pixel), 0 * tPixel, 0 * tPixel);
-				tess.addVertexWithUV(1 - (12 * pixel), 12 * pixel, 1 - (12 * pixel), 0 * tPixel, 6 * tPixel);
+				tess.addVertexWithUV(1 - 12 * pixel, 12 * pixel, 12 * pixel, 6 * tPixel, 6 * tPixel);
+				tess.addVertexWithUV(1 - 12 * pixel, 1 - 12 * pixel, 12 * pixel, 6 * tPixel, 0 * tPixel);
+				tess.addVertexWithUV(1 - 12 * pixel, 1 - 12 * pixel, 1 - 12 * pixel, 0 * tPixel, 0 * tPixel);
+				tess.addVertexWithUV(1 - 12 * pixel, 12 * pixel, 1 - 12 * pixel, 0 * tPixel, 6 * tPixel);
 
 				if (ConfigGeneral.drawInside)
 				{
-					tess.addVertexWithUV(1 - (12 * pixel), 12 * pixel, 1 - (12 * pixel), 0 * tPixel, 6 * tPixel);
-					tess.addVertexWithUV(1 - (12 * pixel), 1 - (12 * pixel), 1 - (12 * pixel), 0 * tPixel, 0 * tPixel);
-					tess.addVertexWithUV(1 - (12 * pixel), 1 - (12 * pixel), 12 * pixel, 6 * tPixel, 0 * tPixel);
-					tess.addVertexWithUV(1 - (12 * pixel), 12 * pixel, 12 * pixel, 6 * tPixel, 6 * tPixel);
+					tess.addVertexWithUV(1 - 12 * pixel, 12 * pixel, 1 - 12 * pixel, 0 * tPixel, 6 * tPixel);
+					tess.addVertexWithUV(1 - 12 * pixel, 1 - 12 * pixel, 1 - 12 * pixel, 0 * tPixel, 0 * tPixel);
+					tess.addVertexWithUV(1 - 12 * pixel, 1 - 12 * pixel, 12 * pixel, 6 * tPixel, 0 * tPixel);
+					tess.addVertexWithUV(1 - 12 * pixel, 12 * pixel, 12 * pixel, 6 * tPixel, 6 * tPixel);
 				}
 			}
 		}
