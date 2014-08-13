@@ -33,7 +33,7 @@ import cpw.mods.fml.common.network.NetworkRegistry.TargetPoint;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 public class TileCopperWire extends TileEntity
 {
@@ -255,7 +255,7 @@ public class TileCopperWire extends TileEntity
 			if ((extract != null) && !isEnergyHandler(extract))
 			{
 				network.inputs.remove(new Coords(xCoord + extract.offsetX, yCoord + extract.offsetY, zCoord + extract.offsetZ, extract.getOpposite()));
-				
+
 				extract = null;
 			}
 
@@ -455,7 +455,7 @@ public class TileCopperWire extends TileEntity
 
 	private void updateClient()
 	{
-		if (network != null)
+		if (network != null && worldObj.isRemote)
 		{
 			InitPackets.network.sendToAllAround(new CopperWirePacket(worldObj.provider.dimensionId, xCoord, yCoord, zCoord, connections),
 					new TargetPoint(worldObj.provider.dimensionId, xCoord, yCoord, zCoord, 100));
@@ -465,13 +465,13 @@ public class TileCopperWire extends TileEntity
 	public static class EnergyNetwork
 	{
 		public static final short capacityPerWire = (short) 2500;
-		
+
 		private static final byte ticksTillUpdate = 2;
 
 		private static final short maxTransferPerTile = 2500 * ticksTillUpdate; //can transmit a max of 2500RF/t
 
 		public boolean updateNetworkForWires = false;
-		
+
 		public EnergyStorage buffer;
 		public int size;
 		public float energyScaled;
@@ -503,17 +503,17 @@ public class TileCopperWire extends TileEntity
 				updateOutputs(wire);
 			}
 		}
-		
+
 		private void updateClient(TileCopperWire wire)
 		{
-			energyScaled = (buffer.getEnergyStored() / (float) size / EnergyNetwork.capacityPerWire) * (2 * TileCopperWireRenderer.pixel);
+				energyScaled = (buffer.getEnergyStored() / (float) size / EnergyNetwork.capacityPerWire) * (2 * TileCopperWireRenderer.pixel);
 
-			if (energyScaled > (2 * TileCopperWireRenderer.pixel))
-				energyScaled = 2 * TileCopperWireRenderer.pixel;
+				if (energyScaled > (2 * TileCopperWireRenderer.pixel))
+					energyScaled = 2 * TileCopperWireRenderer.pixel;
 
-			InitPackets.network.sendToAllAround(new EnergyNetworkPacket(wire.worldObj.provider.dimensionId, wire.xCoord, wire.yCoord, wire.zCoord,
-					energyScaled), new TargetPoint(wire.worldObj.provider.dimensionId, wire.xCoord, wire.yCoord, wire.zCoord, 100));
-	
+				InitPackets.network.sendToAllAround(new EnergyNetworkPacket(wire.worldObj.provider.dimensionId, wire.xCoord, wire.yCoord, wire.zCoord,
+						energyScaled), new TargetPoint(wire.worldObj.provider.dimensionId, wire.xCoord, wire.yCoord, wire.zCoord, 100));
+
 		}
 
 		private void updateInputs(World world)
@@ -580,7 +580,7 @@ public class TileCopperWire extends TileEntity
 					}
 					else
 						break;
-				
+
 				if (tempSize == (outputs.size() / 2))
 					updateClient(wire);
 			}

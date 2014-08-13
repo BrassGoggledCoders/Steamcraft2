@@ -1,5 +1,5 @@
 /**
- * This class was created by BrassGoggledCoders modding team. 
+ * This class was created by BrassGoggledCoders modding team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -20,10 +20,12 @@ import steamcraft.common.tiles.TileCopperPipe;
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
 import cpw.mods.fml.common.network.simpleimpl.MessageContext;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author decebaldecebal
- * 
+ *
  */
 public class CopperPipePacket implements IMessage
 {
@@ -109,6 +111,7 @@ public class CopperPipePacket implements IMessage
 	public static class CopperPipePacketHandler implements IMessageHandler<CopperPipePacket, IMessage>
 	{
 		@Override
+		@SideOnly(Side.CLIENT)
 		public IMessage onMessage(CopperPipePacket message, MessageContext ctx)
 		{
 			World world = Minecraft.getMinecraft().theWorld;

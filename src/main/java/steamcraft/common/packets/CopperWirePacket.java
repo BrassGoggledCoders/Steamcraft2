@@ -20,10 +20,12 @@ import steamcraft.common.tiles.TileCopperWire;
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
 import cpw.mods.fml.common.network.simpleimpl.MessageContext;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author decebaldecebal
- * 
+ *
  */
 public class CopperWirePacket implements IMessage
 {
@@ -109,6 +111,7 @@ public class CopperWirePacket implements IMessage
 	public static class CopperWirePacketHandler implements IMessageHandler<CopperWirePacket, IMessage>
 	{
 		@Override
+		@SideOnly(Side.CLIENT)
 		public IMessage onMessage(CopperWirePacket message, MessageContext ctx)
 		{
 			World world = Minecraft.getMinecraft().theWorld;

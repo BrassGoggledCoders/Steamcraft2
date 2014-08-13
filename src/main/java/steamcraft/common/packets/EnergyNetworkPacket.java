@@ -20,10 +20,12 @@ import steamcraft.common.tiles.TileCopperWire.EnergyNetwork;
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
 import cpw.mods.fml.common.network.simpleimpl.MessageContext;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author decebaldecebal
- * 
+ *
  */
 public class EnergyNetworkPacket implements IMessage
 {
@@ -66,6 +68,7 @@ public class EnergyNetworkPacket implements IMessage
 	public static class EnergyNetworkPacketHandler implements IMessageHandler<EnergyNetworkPacket, IMessage>
 	{
 		@Override
+		@SideOnly(Side.CLIENT)
 		public IMessage onMessage(EnergyNetworkPacket message, MessageContext ctx)
 		{
 			World world = Minecraft.getMinecraft().theWorld;
