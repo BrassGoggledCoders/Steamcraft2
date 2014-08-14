@@ -26,7 +26,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 /**
  * @author Surseance
- * 
+ *
  */
 public class InitRecipes
 {
@@ -238,6 +238,10 @@ public class InitRecipes
 				new Object[] { "PPP", "P P", "PPP", 'P', "plateCopper" }));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockBattery), new Object[] { "CCC", "WCW", "CCC", 'C', "ingotCastIron",
 				'W', InitBlocks.blockCopperWire }));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockCopperWire),
+				new Object[] {"III", 'I', "ingotCopper" }));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockTeslaCoil),
+				new Object[] {"WRW","WRW","III", 'I', "ingotCastIron", 'W', new ItemStack(InitItems.itemMachinePart, 1, 6), 'R', new ItemStack(InitItems.itemMachinePart, 1, 0) }));
 
 		GameRegistry.addShapedRecipe(new ItemStack(InitBlocks.blockUranium), new Object[] { "UUU", "UUU", "UUU", 'U',
 				new ItemStack(InitItems.itemResource, 1, 4) });
@@ -247,6 +251,8 @@ public class InitRecipes
 				new ItemStack(InitItems.itemMachinePart, 1, 0) });
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockCastIronGate), new Object[] { "RIR", "RIR", 'R',
 				new ItemStack(InitItems.itemMachinePart, 1, 0), 'I', "ingotCastIron" }));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockCastIronRailing),
+				new Object[] {"III","III", 'I', "ingotCastIron" }));
 	}
 
 	private static void initOtherRecipes()
@@ -328,7 +334,7 @@ public class InitRecipes
 		GameRegistry.addSmelting(new ItemStack(InitBlocks.blockSlate, 1, 5), new ItemStack(InitBlocks.blockSlate, 1, 2), 0.3F);
 
 		GameRegistry.addSmelting(new ItemStack(InitItems.itemTeapot, 1, 1), new ItemStack(InitItems.itemTeapot, 1, 2), 0);
-		
+
 		GameRegistry.addSmelting(new ItemStack(InitBlocks.blockBrassLeaves), new ItemStack(InitItems.itemNugget, 6, 4), 0);
 	}
 }

@@ -1,5 +1,5 @@
 /**
- * This class was created by BrassGoggledCoders modding team. 
+ * This class was created by BrassGoggledCoders modding team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -8,7 +8,7 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- * 
+ *
  */
 package steamcraft.client.renderers.tile;
 
@@ -25,30 +25,32 @@ import org.lwjgl.opengl.GL11;
 import steamcraft.common.config.ConfigGeneral;
 import steamcraft.common.lib.LibInfo;
 import steamcraft.common.tiles.TileCopperPipe;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author Decebaldecebal
- * 
+ *
  */
 public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 {
 	ResourceLocation texture = new ResourceLocation(LibInfo.PREFIX + "textures/blocks/blockCopperPipe.png");
-	
+
 	public static float pixel = 1F/16F/2F;
 	public static float tPixel = 1F/32F;
-	
+
 	@Override
 	public void renderTileEntityAt(TileEntity tile, double transX, double transY, double transZ,  float f)
-	{		
+	{
 		GL11.glTranslated(transX, transY, transZ);
 		GL11.glDisable(GL11.GL_LIGHTING);
-		
+
 		this.bindTexture(texture);
-		
+
 		TileCopperPipe pipe = (TileCopperPipe) tile;
-		
+
 		ForgeDirection opposite = pipe.onlyOneOpposite();
-		
+
 		if(opposite!=null && pipe.extract==null)
 			drawStraightConnection(opposite, pipe);
 		else
@@ -62,20 +64,20 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 					else
 						drawConnection(dir, pipe);
 		}
-		
+
 		GL11.glEnable(GL11.GL_LIGHTING);
-		
+
 		GL11.glTranslated(-transX, -transY, -transZ);
 	}
-	
+	@SideOnly(Side.CLIENT)
 	private void drawStraightConnection(ForgeDirection dir, TileCopperPipe pipe)
 	{
 		Tessellator tess = Tessellator.instance;
-		
+
 		tess.startDrawingQuads();
 		{
 			GL11.glTranslatef(0.5F, 0.5F, 0.5F);
-			
+
 			if(dir == ForgeDirection.SOUTH || dir == ForgeDirection.NORTH)
 			{
 				GL11.glRotatef(90, 1, 0, 0);
@@ -86,27 +88,27 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 			}
 
 			GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
-			
+
 			tess.addVertexWithUV(1-12*pixel, 0, 1-12*pixel, 11*tPixel, 6*tPixel);
 			tess.addVertexWithUV(1-12*pixel, 1, 1-12*pixel, 27*tPixel, 6*tPixel);
 			tess.addVertexWithUV(12*pixel, 1, 1-12*pixel, 27*tPixel, 0*tPixel);
 			tess.addVertexWithUV(12*pixel, 0, 1-12*pixel, 11*tPixel, 0*tPixel);
-			
+
 			tess.addVertexWithUV(12*pixel, 0, 12*pixel, 11*tPixel, 0*tPixel);
 			tess.addVertexWithUV(12*pixel, 1, 12*pixel, 27*tPixel, 0*tPixel);
 			tess.addVertexWithUV(1-12*pixel, 1, 12*pixel, 27*tPixel, 6*tPixel);
 			tess.addVertexWithUV(1-12*pixel, 0, 12*pixel, 11*tPixel, 6*tPixel);
-			
+
 			tess.addVertexWithUV(1-12*pixel, 0, 12*pixel, 11*tPixel, 0*tPixel);
 			tess.addVertexWithUV(1-12*pixel, 1, 12*pixel, 27*tPixel, 0*tPixel);
 			tess.addVertexWithUV(1-12*pixel, 1, 1-12*pixel, 27*tPixel, 6*tPixel);
 			tess.addVertexWithUV(1-12*pixel, 0, 1-12*pixel, 11*tPixel, 6*tPixel);
-			
+
 			tess.addVertexWithUV(12*pixel, 0, 1-12*pixel, 11*tPixel, 6*tPixel);
 			tess.addVertexWithUV(12*pixel, 1, 1-12*pixel, 27*tPixel, 6*tPixel);
 			tess.addVertexWithUV(12*pixel, 1, 12*pixel, 27*tPixel, 0*tPixel);
 			tess.addVertexWithUV(12*pixel, 0, 12*pixel, 11*tPixel, 0*tPixel);
-						
+
 			if(ConfigGeneral.drawInside)
 			{
 				tess.addVertexWithUV(12*pixel, 0, 1-12*pixel, 11*tPixel, 0*tPixel);
@@ -123,7 +125,7 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 				tess.addVertexWithUV(1-12*pixel, 1, 1-12*pixel, 27*tPixel, 6*tPixel);
 				tess.addVertexWithUV(1-12*pixel, 1, 12*pixel, 27*tPixel, 0*tPixel);
 				tess.addVertexWithUV(1-12*pixel, 0, 12*pixel, 11*tPixel, 0*tPixel);
-				
+
 				tess.addVertexWithUV(12*pixel, 0, 12*pixel, 11*tPixel, 0*tPixel);
 				tess.addVertexWithUV(12*pixel, 1, 12*pixel, 27*tPixel, 0*tPixel);
 				tess.addVertexWithUV(12*pixel, 1, 1-12*pixel, 27*tPixel, 6*tPixel);
@@ -131,7 +133,7 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 			}
 		}
 		tess.draw();
-			
+
 		if(ConfigGeneral.drawFluid && pipe.network!=null)
 		{
 			float level = pipe.network.fluidScaled;
@@ -142,29 +144,29 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 				{
 					IIcon icon = pipe.network.tank.getFluid().getFluid().getBlock().getIcon(0, 0);
 					this.bindTexture(TextureMap.locationBlocksTexture);
-					
+
 					tess.addVertexWithUV(1-15*pixel+level, 0, 1-15*pixel+level, icon.getMinU(), icon.getMaxV());
 					tess.addVertexWithUV(1-15*pixel+level, 1, 1-15*pixel+level, icon.getMaxU(), icon.getMaxV());
 					tess.addVertexWithUV(15*pixel-level, 1, 1-15*pixel+level, icon.getMaxU(), icon.getMinV());
 					tess.addVertexWithUV(15*pixel-level, 0, 1-15*pixel+level, icon.getMinU(), icon.getMinV());
-					
+
 					tess.addVertexWithUV(15*pixel-level, 0, 15*pixel-level, icon.getMinU(), icon.getMinV());
 					tess.addVertexWithUV(15*pixel-level, 1, 15*pixel-level, icon.getMaxU(), icon.getMinV());
 					tess.addVertexWithUV(1-15*pixel+level, 1, 15*pixel-level, icon.getMaxU(), icon.getMaxV());
 					tess.addVertexWithUV(1-15*pixel+level, 0, 15*pixel-level, icon.getMinU(), icon.getMaxV());
-					
+
 					tess.addVertexWithUV(1-15*pixel+level, 0, 15*pixel-level, icon.getMinU(), icon.getMinV());
 					tess.addVertexWithUV(1-15*pixel+level, 1, 15*pixel-level, icon.getMaxU(), icon.getMinV());
 					tess.addVertexWithUV(1-15*pixel+level, 1, 1-15*pixel+level, icon.getMaxU(), icon.getMaxV());
 					tess.addVertexWithUV(1-15*pixel+level, 0, 1-15*pixel+level, icon.getMinU(), icon.getMaxV());
-					
+
 					tess.addVertexWithUV(15*pixel-level, 0, 1-15*pixel+level, icon.getMinU(), icon.getMaxV());
 					tess.addVertexWithUV(15*pixel-level, 1, 1-15*pixel+level, icon.getMaxU(), icon.getMaxV());
 					tess.addVertexWithUV(15*pixel-level, 1, 15*pixel-level, icon.getMaxU(), icon.getMinV());
 					tess.addVertexWithUV(15*pixel-level, 0, 15*pixel-level, icon.getMinU(), icon.getMinV());
 				}
 				tess.draw();
-				
+
 				this.bindTexture(texture);
 			}
 		}
@@ -179,14 +181,14 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 		{
 			GL11.glRotatef(-90, 0, 0, 1);
 		}
-		
+
 		GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
 	}
-	
+	@SideOnly(Side.CLIENT)
 	private void drawAlternateConnection(ForgeDirection dir, TileCopperPipe pipe)
 	{
 		Tessellator tess = Tessellator.instance;
-		
+
 		tess.startDrawingQuads();
 		{
 			GL11.glTranslatef(0.5F, 0.5F, 0.5F);
@@ -215,44 +217,44 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 				GL11.glRotatef(270, 0, 0, 1);
 			}
 			GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
-			
+
 			tess.addVertexWithUV(1-12*pixel, 1-12*pixel, 1-12*pixel, 0*tPixel, 6*tPixel);
 			tess.addVertexWithUV(1-12*pixel, 1, 1-12*pixel, 6*tPixel, 6*tPixel);
 			tess.addVertexWithUV(12*pixel, 1, 1-12*pixel, 6*tPixel, 0*tPixel);
 			tess.addVertexWithUV(12*pixel, 1-12*pixel, 1-12*pixel, 0*tPixel, 0*tPixel);
-			
+
 			tess.addVertexWithUV(12*pixel, 1-12*pixel, 12*pixel, 0*tPixel, 0*tPixel);
 			tess.addVertexWithUV(12*pixel, 1, 12*pixel, 6*tPixel, 0*tPixel);
 			tess.addVertexWithUV(1-12*pixel, 1, 12*pixel, 6*tPixel, 6*tPixel);
 			tess.addVertexWithUV(1-12*pixel, 1-12*pixel, 12*pixel, 0*tPixel, 6*tPixel);
-			
+
 			tess.addVertexWithUV(1-12*pixel, 1-12*pixel, 12*pixel, 0*tPixel, 0*tPixel);
 			tess.addVertexWithUV(1-12*pixel, 1, 12*pixel, 6*tPixel, 0*tPixel);
 			tess.addVertexWithUV(1-12*pixel, 1, 1-12*pixel, 6*tPixel, 6*tPixel);
 			tess.addVertexWithUV(1-12*pixel, 1-12*pixel, 1-12*pixel, 0*tPixel, 6*tPixel);
-			
+
 			tess.addVertexWithUV(12*pixel, 1-12*pixel, 1-12*pixel, 0*tPixel, 6*tPixel);
 			tess.addVertexWithUV(12*pixel, 1, 1-12*pixel, 6*tPixel, 6*tPixel);
 			tess.addVertexWithUV(12*pixel, 1, 12*pixel, 6*tPixel, 0*tPixel);
 			tess.addVertexWithUV(12*pixel, 1-12*pixel, 12*pixel, 0*tPixel, 0*tPixel);
-			
+
 			if(ConfigGeneral.drawInside)
 			{
 				tess.addVertexWithUV(12*pixel, 1-12*pixel, 1-12*pixel, 0*tPixel, 0*tPixel);
 				tess.addVertexWithUV(12*pixel, 1, 1-12*pixel, 6*tPixel, 0*tPixel);
 				tess.addVertexWithUV(1-12*pixel, 1, 1-12*pixel, 6*tPixel, 6*tPixel);
 				tess.addVertexWithUV(1-12*pixel, 1-12*pixel, 1-12*pixel, 0*tPixel, 6*tPixel);
-				
+
 				tess.addVertexWithUV(1-12*pixel, 1-12*pixel, 12*pixel, 0*tPixel, 6*tPixel);
 				tess.addVertexWithUV(1-12*pixel, 1, 12*pixel, 6*tPixel, 6*tPixel);
 				tess.addVertexWithUV(12*pixel, 1, 12*pixel, 6*tPixel, 0*tPixel);
 				tess.addVertexWithUV(12*pixel, 1-12*pixel, 12*pixel, 0*tPixel, 0*tPixel);
-				
+
 				tess.addVertexWithUV(1-12*pixel, 1-12*pixel, 1-12*pixel, 0*tPixel, 6*tPixel);
 				tess.addVertexWithUV(1-12*pixel, 1, 1-12*pixel, 6*tPixel, 6*tPixel);
 				tess.addVertexWithUV(1-12*pixel, 1, 12*pixel, 6*tPixel, 0*tPixel);
 				tess.addVertexWithUV(1-12*pixel, 1-12*pixel, 12*pixel, 0*tPixel, 0*tPixel);
-				
+
 				tess.addVertexWithUV(12*pixel, 1-12*pixel, 12*pixel, 0*tPixel, 0*tPixel);
 				tess.addVertexWithUV(12*pixel, 1, 12*pixel, 6*tPixel, 0*tPixel);
 				tess.addVertexWithUV(12*pixel, 1, 1-12*pixel, 6*tPixel, 6*tPixel);
@@ -260,7 +262,7 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 			}
 		}
 		tess.draw();
-		
+
 		GL11.glTranslatef(0.5F, 0.5F, 0.5F);
 		if(dir == ForgeDirection.UP)
 		{
@@ -288,11 +290,11 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 		}
 		GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
 	}
-	
+	@SideOnly(Side.CLIENT)
 	private void drawConnection(ForgeDirection dir, TileCopperPipe pipe)
 	{
 		Tessellator tess = Tessellator.instance;
-		
+
 		tess.startDrawingQuads();
 		{
 			GL11.glTranslatef(0.5F, 0.5F, 0.5F);
@@ -321,27 +323,27 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 				GL11.glRotatef(270, 0, 0, 1);
 			}
 			GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
-			
+
 			tess.addVertexWithUV(1-12*pixel, 1-12*pixel, 1-12*pixel, 6*tPixel, 6*tPixel);
 			tess.addVertexWithUV(1-12*pixel, 1, 1-12*pixel, 11*tPixel, 6*tPixel);
 			tess.addVertexWithUV(12*pixel, 1, 1-12*pixel, 11*tPixel, 0*tPixel);
 			tess.addVertexWithUV(12*pixel, 1-12*pixel, 1-12*pixel, 6*tPixel, 0*tPixel);
-			
+
 			tess.addVertexWithUV(12*pixel, 1-12*pixel, 12*pixel, 6*tPixel, 0*tPixel);
 			tess.addVertexWithUV(12*pixel, 1, 12*pixel, 11*tPixel, 0*tPixel);
 			tess.addVertexWithUV(1-12*pixel, 1, 12*pixel, 11*tPixel, 6*tPixel);
 			tess.addVertexWithUV(1-12*pixel, 1-12*pixel, 12*pixel, 6*tPixel, 6*tPixel);
-			
+
 			tess.addVertexWithUV(1-12*pixel, 1-12*pixel, 12*pixel, 6*tPixel, 0*tPixel);
 			tess.addVertexWithUV(1-12*pixel, 1, 12*pixel, 11*tPixel, 0*tPixel);
 			tess.addVertexWithUV(1-12*pixel, 1, 1-12*pixel, 11*tPixel, 6*tPixel);
 			tess.addVertexWithUV(1-12*pixel, 1-12*pixel, 1-12*pixel, 6*tPixel, 6*tPixel);
-			
+
 			tess.addVertexWithUV(12*pixel, 1-12*pixel, 1-12*pixel, 6*tPixel, 6*tPixel);
 			tess.addVertexWithUV(12*pixel, 1, 1-12*pixel, 11*tPixel, 6*tPixel);
 			tess.addVertexWithUV(12*pixel, 1, 12*pixel, 11*tPixel, 0*tPixel);
 			tess.addVertexWithUV(12*pixel, 1-12*pixel, 12*pixel, 6*tPixel, 0*tPixel);
-			
+
 			if(ConfigGeneral.drawInside)
 			{
 				tess.addVertexWithUV(12*pixel, 1-12*pixel, 1-12*pixel, 6*tPixel, 0*tPixel);
@@ -358,7 +360,7 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 				tess.addVertexWithUV(1-12*pixel, 1, 1-12*pixel, 11*tPixel, 6*tPixel);
 				tess.addVertexWithUV(1-12*pixel, 1, 12*pixel, 11*tPixel, 0*tPixel);
 				tess.addVertexWithUV(1-12*pixel, 1-12*pixel, 12*pixel, 6*tPixel, 0*tPixel);
-				
+
 				tess.addVertexWithUV(12*pixel, 1-12*pixel, 12*pixel, 6*tPixel, 0*tPixel);
 				tess.addVertexWithUV(12*pixel, 1, 12*pixel, 11*tPixel, 0*tPixel);
 				tess.addVertexWithUV(12*pixel, 1, 1-12*pixel, 11*tPixel, 6*tPixel);
@@ -366,44 +368,44 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 			}
 		}
 		tess.draw();
-		
+
 		if(ConfigGeneral.drawFluid && pipe.network!=null)
 		{
 			float level = pipe.network.fluidScaled;
-			
+
 			if(pipe.network.tank.getFluid()!=null && level > 0)
-			{				
+			{
 				tess.startDrawingQuads();
 				{
 					IIcon icon = pipe.network.tank.getFluid().getFluid().getBlock().getIcon(0, 0);
 					this.bindTexture(TextureMap.locationBlocksTexture);
-					
+
 					tess.addVertexWithUV(1-15*pixel+level, 1-15*pixel, 1-15*pixel+level, icon.getMinU(), icon.getMaxV());
 					tess.addVertexWithUV(1-15*pixel+level, 1, 1-15*pixel+level, icon.getMaxU(), icon.getMaxV());
 					tess.addVertexWithUV(15*pixel-level, 1, 1-15*pixel+level, icon.getMaxU(), icon.getMinV());
 					tess.addVertexWithUV(15*pixel-level, 1-15*pixel, 1-15*pixel+level, icon.getMinU(), icon.getMinV());
-					
+
 					tess.addVertexWithUV(15*pixel-level, 1-15*pixel, 15*pixel-level, icon.getMinU(), icon.getMinV());
 					tess.addVertexWithUV(15*pixel-level, 1, 15*pixel-level, icon.getMaxU(), icon.getMinV());
 					tess.addVertexWithUV(1-15*pixel+level, 1, 15*pixel-level, icon.getMaxU(), icon.getMaxV());
 					tess.addVertexWithUV(1-15*pixel+level, 1-15*pixel, 15*pixel-level, icon.getMinU(), icon.getMaxV());
-					
+
 					tess.addVertexWithUV(1-15*pixel+level, 1-15*pixel, 15*pixel-level, icon.getMinU(), icon.getMinV());
 					tess.addVertexWithUV(1-15*pixel+level, 1, 15*pixel-level, icon.getMaxU(), icon.getMinV());
 					tess.addVertexWithUV(1-15*pixel+level, 1, 1-15*pixel+level, icon.getMaxU(), icon.getMaxV());
 					tess.addVertexWithUV(1-15*pixel+level, 1-15*pixel, 1-15*pixel+level, icon.getMinU(), icon.getMaxV());
-					
+
 					tess.addVertexWithUV(15*pixel-level, 1-15*pixel, 1-15*pixel+level, icon.getMinU(), icon.getMaxV());
 					tess.addVertexWithUV(15*pixel-level, 1, 1-15*pixel+level, icon.getMaxU(), icon.getMaxV());
 					tess.addVertexWithUV(15*pixel-level, 1, 15*pixel-level, icon.getMaxU(), icon.getMinV());
 					tess.addVertexWithUV(15*pixel-level, 1-15*pixel, 15*pixel-level, icon.getMinU(), icon.getMinV());
 				}
 				tess.draw();
-				
+
 				this.bindTexture(texture);
 			}
 		}
-		
+
 		GL11.glTranslatef(0.5F, 0.5F, 0.5F);
 		if(dir == ForgeDirection.UP)
 		{
@@ -431,11 +433,11 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 		}
 		GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
 	}
-	
+	@SideOnly(Side.CLIENT)
 	private void drawCore(TileCopperPipe tile)
 	{
 		Tessellator tess = Tessellator.instance;
-		
+
 		tess.startDrawingQuads();
 		{
 			if(tile.connections[0]==null)
@@ -444,89 +446,89 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 				tess.addVertexWithUV(12*pixel, 12*pixel, 12*pixel, 6*tPixel, 0*tPixel);
 				tess.addVertexWithUV(1-12*pixel, 12*pixel, 12*pixel, 0*tPixel, 0*tPixel);
 				tess.addVertexWithUV(1-12*pixel, 12*pixel, 1-12*pixel, 0*tPixel, 6*tPixel);
-				
+
 				if(ConfigGeneral.drawInside)
-				{		
+				{
 					tess.addVertexWithUV(1-12*pixel, 12*pixel, 1-12*pixel, 0*tPixel, 6*tPixel);
 					tess.addVertexWithUV(1-12*pixel, 12*pixel, 12*pixel, 0*tPixel, 0*tPixel);
 					tess.addVertexWithUV(12*pixel, 12*pixel, 12*pixel, 6*tPixel, 0*tPixel);
 					tess.addVertexWithUV(12*pixel, 12*pixel, 1-12*pixel, 6*tPixel, 6*tPixel);
 				}
 			}
-			
+
 			if(tile.connections[1]==null)
 			{
 				tess.addVertexWithUV(1-12*pixel, 1-12*pixel, 1-12*pixel, 6*tPixel, 6*tPixel);
 				tess.addVertexWithUV(1-12*pixel, 1-12*pixel, 12*pixel, 6*tPixel, 0*tPixel);
 				tess.addVertexWithUV(12*pixel, 1-12*pixel, 12*pixel, 0*tPixel, 0*tPixel);
 				tess.addVertexWithUV(12*pixel, 1-12*pixel, 1-12*pixel, 0*tPixel, 6*tPixel);
-				
+
 				if(ConfigGeneral.drawInside)
-				{		
+				{
 					tess.addVertexWithUV(12*pixel, 1-12*pixel, 1-12*pixel, 0*tPixel, 6*tPixel);
 					tess.addVertexWithUV(12*pixel, 1-12*pixel, 12*pixel, 0*tPixel, 0*tPixel);
 					tess.addVertexWithUV(1-12*pixel, 1-12*pixel, 12*pixel, 6*tPixel, 0*tPixel);
 					tess.addVertexWithUV(1-12*pixel, 1-12*pixel, 1-12*pixel, 6*tPixel, 6*tPixel);
 				}
 			}
-			
+
 			if(tile.connections[2]==null)
 			{
 				tess.addVertexWithUV(12*pixel, 12*pixel, 12*pixel, 6*tPixel, 6*tPixel);
 				tess.addVertexWithUV(12*pixel, 1-12*pixel, 12*pixel, 6*tPixel, 0*tPixel);
 				tess.addVertexWithUV(1-12*pixel, 1-12*pixel, 12*pixel, 0*tPixel, 0*tPixel);
 				tess.addVertexWithUV(1-12*pixel, 12*pixel, 12*pixel, 0*tPixel, 6*tPixel);
-				
+
 				if(ConfigGeneral.drawInside)
-				{		
+				{
 					tess.addVertexWithUV(1-12*pixel, 12*pixel, 12*pixel, 0*tPixel, 6*tPixel);
 					tess.addVertexWithUV(1-12*pixel, 1-12*pixel, 12*pixel, 0*tPixel, 0*tPixel);
 					tess.addVertexWithUV(12*pixel, 1-12*pixel, 12*pixel, 6*tPixel, 0*tPixel);
 					tess.addVertexWithUV(12*pixel, 12*pixel, 12*pixel, 6*tPixel, 6*tPixel);
 				}
 			}
-			
+
 			if(tile.connections[3]==null)
 			{
 				tess.addVertexWithUV(1-12*pixel, 12*pixel, 1-12*pixel, 6*tPixel, 6*tPixel);
 				tess.addVertexWithUV(1-12*pixel, 1-12*pixel, 1-12*pixel, 6*tPixel, 0*tPixel);
 				tess.addVertexWithUV(12*pixel, 1-12*pixel, 1-12*pixel, 0*tPixel, 0*tPixel);
 				tess.addVertexWithUV(12*pixel, 12*pixel, 1-12*pixel, 0*tPixel, 6*tPixel);
-				
+
 				if(ConfigGeneral.drawInside)
-				{				
+				{
 					tess.addVertexWithUV(12*pixel, 12*pixel, 1-12*pixel, 0*tPixel, 6*tPixel);
 					tess.addVertexWithUV(12*pixel, 1-12*pixel, 1-12*pixel, 0*tPixel, 0*tPixel);
 					tess.addVertexWithUV(1-12*pixel, 1-12*pixel, 1-12*pixel, 6*tPixel, 0*tPixel);
 					tess.addVertexWithUV(1-12*pixel, 12*pixel, 1-12*pixel, 6*tPixel, 6*tPixel);
 				}
 			}
-			
+
 			if(tile.connections[4]==null)
 			{
 				tess.addVertexWithUV(12*pixel, 12*pixel, 1-12*pixel, 6*tPixel, 6*tPixel);
 				tess.addVertexWithUV(12*pixel, 1-12*pixel, 1-12*pixel, 6*tPixel, 0*tPixel);
 				tess.addVertexWithUV(12*pixel, 1-12*pixel, 12*pixel, 0*tPixel, 0*tPixel);
 				tess.addVertexWithUV(12*pixel, 12*pixel, 12*pixel, 0*tPixel, 6*tPixel);
-				
+
 				if(ConfigGeneral.drawInside)
-				{		
+				{
 					tess.addVertexWithUV(12*pixel, 12*pixel, 12*pixel, 0*tPixel, 6*tPixel);
 					tess.addVertexWithUV(12*pixel, 1-12*pixel, 12*pixel, 0*tPixel, 0*tPixel);
 					tess.addVertexWithUV(12*pixel, 1-12*pixel, 1-12*pixel, 6*tPixel, 0*tPixel);
 					tess.addVertexWithUV(12*pixel, 12*pixel, 1-12*pixel, 6*tPixel, 6*tPixel);
 				}
 			}
-			
+
 			if(tile.connections[5]==null)
 			{
 				tess.addVertexWithUV(1-12*pixel, 12*pixel, 12*pixel, 6*tPixel, 6*tPixel);
 				tess.addVertexWithUV(1-12*pixel, 1-12*pixel, 12*pixel, 6*tPixel, 0*tPixel);
 				tess.addVertexWithUV(1-12*pixel, 1-12*pixel, 1-12*pixel, 0*tPixel, 0*tPixel);
 				tess.addVertexWithUV(1-12*pixel, 12*pixel, 1-12*pixel, 0*tPixel, 6*tPixel);
-				
+
 				if(ConfigGeneral.drawInside)
-				{		
+				{
 					tess.addVertexWithUV(1-12*pixel, 12*pixel, 1-12*pixel, 0*tPixel, 6*tPixel);
 					tess.addVertexWithUV(1-12*pixel, 1-12*pixel, 1-12*pixel, 0*tPixel, 0*tPixel);
 					tess.addVertexWithUV(1-12*pixel, 1-12*pixel, 12*pixel, 6*tPixel, 0*tPixel);
