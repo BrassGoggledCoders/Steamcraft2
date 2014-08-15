@@ -44,14 +44,14 @@ public class TileLightningRod extends TileEntity implements IEnergyHandler
 		if (worldObj.getWorldInfo().isThundering() && worldObj.canBlockSeeTheSky(xCoord, yCoord, zCoord))
 		{
 			Random random = new Random();
-			int chance = random.nextInt(500);
+			int chance = random.nextInt(1000);
 			if (chance == 0)
 			{
 				worldObj.addWeatherEffect((new EntityLightningBolt(worldObj, xCoord, yCoord, zCoord)));
 				buffer.receiveEnergy(10000, false);
 				System.out.print(buffer.getEnergyStored());
 				//Todo - fix
-				if(!MinecraftServer.getServer().isDedicatedServer())
+				/*if(!MinecraftServer.getServer().isDedicatedServer())
 				{
 					EntityPlayer player = worldObj.getClosestPlayer(xCoord, yCoord, zCoord, -1);
 				}
@@ -63,7 +63,7 @@ public class TileLightningRod extends TileEntity implements IEnergyHandler
 						if(player != null)
 						player.triggerAchievement(InitAchievements.zapAchieve);
 					}
-				}
+				}*/
 			}
 		}
 	}

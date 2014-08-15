@@ -18,7 +18,7 @@ import steamcraft.common.lib.LibInfo;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 public class InitAchievements
 {
@@ -43,7 +43,7 @@ public class InitAchievements
 		turbineAchieve = new Achievement(prefix + "turbine", "turbineachieve", 0, 4, InitBlocks.blockTurbine, null).registerStat()
 				.initIndependentStat();
 		rodAchieve = new Achievement(prefix + "rod", "rodachieve", 2, 4, InitBlocks.blockLightningRod, turbineAchieve).registerStat();
-		zapAchieve = new Achievement(prefix + "zap", "zapachieve", 4, 4, InitBlocks.blockLightningRod, rodAchieve).registerStat();
+		//zapAchieve = new Achievement(prefix + "zap", "zapachieve", 4, 4, InitBlocks.blockLightningRod, rodAchieve).registerStat();
 
 		wingsAchieve = new Achievement(prefix + "wings", "wingsachieve", 0, 10, InitItems.itemClockworkWings, null).registerStat()
 				.initIndependentStat();
@@ -55,14 +55,7 @@ public class InitAchievements
 				.setSpecial();
 
 		sc2AchievePage = new AchievementPage("Steamcraft 2", raygunAchieve, shrinkrayAchieve, boilerAchieve, ingotAchieve, sheetAchieve,
-				intakeAchieve, teaAchieve, wingsAchieve, jetpackAchieve, wingpackAchieve/*
-																						 * ,
-																						 * engraveAchieve
-																						 * ,
-																						 * gogglesAchieve
-																						 * ,
-																						 * gunAchieve
-																						 */, turbineAchieve, rodAchieve, zapAchieve);
+				intakeAchieve, teaAchieve, wingsAchieve, jetpackAchieve, wingpackAchieve, turbineAchieve, rodAchieve);
 		AchievementPage.registerAchievementPage(sc2AchievePage);
 	}
 

@@ -14,6 +14,7 @@ package steamcraft.common.blocks.machines;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -21,11 +22,12 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import steamcraft.common.InitBlocks;
+import steamcraft.common.lib.DamageSourceHandler;
 import steamcraft.common.tiles.TileCopperWire;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 public class BlockCopperWire extends BlockContainerMod
 {
@@ -34,8 +36,8 @@ public class BlockCopperWire extends BlockContainerMod
 	public BlockCopperWire(Material p_i45394_1_)
 	{
 		super(p_i45394_1_);
-		
-		setBlockBounds(6 * pixel, 6 * pixel, 6 * pixel, 1 - (6 * pixel), 1 - (6 * pixel), 1 - (6 * pixel));
+
+		setBlockBounds(6 * pixel, 4 * pixel, 6 * pixel, 1 - (6 * pixel), 1 - (4 * pixel), 1 - (6 * pixel));
 		useNeighborBrightness = true;
 	}
 
@@ -130,4 +132,8 @@ public class BlockCopperWire extends BlockContainerMod
 
 		return AxisAlignedBB.getBoundingBox(x + minX, y + minY, z + minZ, x + maxX, y + maxY, z + maxZ);
 	}
+	public void onEntityCollidedWithBlock(World p_149670_1_, int p_149670_2_, int p_149670_3_, int p_149670_4_, Entity entity) {
+		entity.attackEntityFrom(DamageSourceHandler.electrocution, 0.5F);
+	}
+
 }
