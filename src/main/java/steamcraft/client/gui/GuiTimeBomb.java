@@ -1,5 +1,5 @@
 /**
- * This class was created by BrassGoggledCoders modding team. 
+ * This class was created by BrassGoggledCoders modding team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -8,10 +8,11 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- * 
+ *
  */
 package steamcraft.client.gui;
 
+import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiTextField;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.EntityPlayer;
@@ -29,11 +30,13 @@ import steamcraft.common.tiles.container.ContainerTimeBomb;
 
 public class GuiTimeBomb extends GuiContainer
 {
+
 	private static ResourceLocation guitexture = new ResourceLocation(LibInfo.PREFIX + "textures/gui/timebomb.png");
 
 	private GuiTextField text;
 	private ContainerTimeBomb container;
 	private EntityPlayer player;
+	private GuiTimeBomb.ChangeButton timeChangeButton;
 
 	TileTimeBomb tile;
 
@@ -138,6 +141,16 @@ public class GuiTimeBomb extends GuiContainer
 		GL11.glDisable(GL11.GL_LIGHTING);
 		GL11.glDisable(GL11.GL_BLEND);
 		text.drawTextBox();
+	}
+	public class ChangeButton extends GuiButton
+	{
+
+		public ChangeButton(int p_i1021_1_, int p_i1021_2_, int p_i1021_3_, int p_i1021_4_, int p_i1021_5_, String p_i1021_6_)
+		{
+			super(p_i1021_1_, p_i1021_2_, p_i1021_3_, p_i1021_4_, p_i1021_5_, p_i1021_6_);
+			// TODO Auto-generated constructor stub
+		}
+
 	}
 
 }

@@ -65,7 +65,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 public class InitItems
 {
 	// Item Tools(sort of)
-	public static Item itemResource, itemIngot, itemSheet, itemPowder, itemCopperWire;
+	public static Item itemResource, itemIngot, itemSheet, itemPowder;
 
 	public static Item itemWatch;
 
@@ -377,9 +377,6 @@ public class InitItems
 
 		itemMatch = new ItemMatch().setUnlocalizedName("itemMatch");
 		registerItem(itemMatch, "ItemMatch");
-
-		itemCopperWire = new BaseItem().setUnlocalizedName("itemCopperWire");
-		registerItem(itemCopperWire, "ItemCopperWire");
 
 		itemTopHat = new ItemTopHat().setUnlocalizedName("itemTopHat");
 		registerItem(itemTopHat, "ItemTopHat");
