@@ -18,6 +18,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
@@ -55,8 +56,7 @@ public class TileCopperPipe extends TileEntity
 				network.updateNetworkForPipes = false;
 				this.updateConnections();
 			}
-			else if(!worldObj.isRemote)
-				network.updateNetwork(this);
+			network.updateNetwork(this);
 		}
 	}
 
@@ -545,22 +545,25 @@ public class TileCopperPipe extends TileEntity
 
 		private void updateClient(TileCopperPipe pipe)
 		{
-			if(tank.getFluid()!=null)
+			if(!MinecraftServer.getServer().isDedicatedServer())
 			{
-				fluidScaled = (float)(tank.getFluidAmount()/(float)size)/FluidNetwork.capacityPerPipe*(2*TileCopperPipeRenderer.pixel);
+				if(tank.getFluid()!=null)
+				{
+					fluidScaled = (float)(tank.getFluidAmount()/(float)size)/FluidNetwork.capacityPerPipe*(2*TileCopperPipeRenderer.pixel);
 
-				if(fluidScaled > 2*TileCopperPipeRenderer.pixel)
-					fluidScaled = 2*TileCopperPipeRenderer.pixel;
+					if(fluidScaled > 2*TileCopperPipeRenderer.pixel)
+						fluidScaled = 2*TileCopperPipeRenderer.pixel;
 
-				InitPackets.network.sendToAllAround(new FluidNetworkPacket(pipe.worldObj.provider.dimensionId, pipe.xCoord, pipe.yCoord, pipe.zCoord,
-						fluidScaled, tank.getFluid().getFluid().getName()),
-						new TargetPoint(pipe.worldObj.provider.dimensionId, pipe.xCoord, pipe.yCoord, pipe.zCoord, 100));
-			}
-			else
-			{
-				InitPackets.network.sendToAllAround(new FluidNetworkPacket(pipe.worldObj.provider.dimensionId, pipe.xCoord, pipe.yCoord, pipe.zCoord,
-						0, "water"),
-						new TargetPoint(pipe.worldObj.provider.dimensionId, pipe.xCoord, pipe.yCoord, pipe.zCoord, 100));
+					InitPackets.network.sendToAllAround(new FluidNetworkPacket(pipe.worldObj.provider.dimensionId, pipe.xCoord, pipe.yCoord, pipe.zCoord,
+							fluidScaled, tank.getFluid().getFluid().getName()),
+							new TargetPoint(pipe.worldObj.provider.dimensionId, pipe.xCoord, pipe.yCoord, pipe.zCoord, 100));
+				}
+				else
+				{
+					InitPackets.network.sendToAllAround(new FluidNetworkPacket(pipe.worldObj.provider.dimensionId, pipe.xCoord, pipe.yCoord, pipe.zCoord,
+							0, "water"),
+							new TargetPoint(pipe.worldObj.provider.dimensionId, pipe.xCoord, pipe.yCoord, pipe.zCoord, 100));
+				}
 			}
 		}
 

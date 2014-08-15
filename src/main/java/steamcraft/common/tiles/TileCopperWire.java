@@ -18,6 +18,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
@@ -53,8 +54,7 @@ public class TileCopperWire extends TileEntity
 				network.updateNetworkForWires = false;
 				updateConnections();
 			}
-			else if (!worldObj.isRemote)
-				network.updateNetwork(this);
+			network.updateNetwork(this);
 	}
 
 	@Override
@@ -455,7 +455,7 @@ public class TileCopperWire extends TileEntity
 
 	private void updateClient()
 	{
-		if (network != null && worldObj.isRemote)
+		if (network != null && !MinecraftServer.getServer().isDedicatedServer())
 		{
 			InitPackets.network.sendToAllAround(new CopperWirePacket(worldObj.provider.dimensionId, xCoord, yCoord, zCoord, connections),
 					new TargetPoint(worldObj.provider.dimensionId, xCoord, yCoord, zCoord, 100));
@@ -506,6 +506,8 @@ public class TileCopperWire extends TileEntity
 
 		private void updateClient(TileCopperWire wire)
 		{
+			if(!MinecraftServer.getServer().isDedicatedServer())
+			{
 				energyScaled = (buffer.getEnergyStored() / (float) size / EnergyNetwork.capacityPerWire) * (2 * TileCopperWireRenderer.pixel);
 
 				if (energyScaled > (2 * TileCopperWireRenderer.pixel))
@@ -513,7 +515,7 @@ public class TileCopperWire extends TileEntity
 
 				InitPackets.network.sendToAllAround(new EnergyNetworkPacket(wire.worldObj.provider.dimensionId, wire.xCoord, wire.yCoord, wire.zCoord,
 						energyScaled), new TargetPoint(wire.worldObj.provider.dimensionId, wire.xCoord, wire.yCoord, wire.zCoord, 100));
-
+			}
 		}
 
 		private void updateInputs(World world)

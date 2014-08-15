@@ -31,13 +31,13 @@ import cofh.api.energy.IEnergyHandler;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 public class TileTeslaCoil extends TileEntity implements IEnergyHandler
 {
-	private static byte RFPerTick = 50;
-	private static byte RFPerZap = 100;
-	private EnergyStorage buffer = new EnergyStorage(1000, RFPerTick);
+	private static int RFPerTick = 500;
+	private static int RFPerZap = 1000;
+	private EnergyStorage buffer = new EnergyStorage(5000, RFPerTick);
 
 	@Override
 	public void updateEntity()
@@ -54,10 +54,17 @@ public class TileTeslaCoil extends TileEntity implements IEnergyHandler
 					if (tileEntity instanceof IEnergyHandler)
 						inputEnergy -= receiveEnergy(ForgeDirection.UNKNOWN,
 								((IEnergyHandler) tileEntity).extractEnergy(direction.getOpposite(), inputEnergy, false), false);
+
+					TileEntity tileEntity2 = worldObj
+							.getTileEntity(xCoord + direction.offsetX, yCoord + direction.offsetY, zCoord + direction.offsetZ);
+
+					if (tileEntity instanceof IEnergyHandler)
+						inputEnergy -= receiveEnergy(ForgeDirection.UNKNOWN,
+								((IEnergyHandler) tileEntity).extractEnergy(direction.getOpposite(), inputEnergy, false), false);
 				}
 				else
 					break;
-		if (buffer.getEnergyStored() > RFPerTick)
+		if (buffer.getEnergyStored() > RFPerZap)
 		{
 			if (getWorldObj().isBlockIndirectlyGettingPowered(xCoord, yCoord, zCoord) && (buffer.getEnergyStored() > RFPerZap))
 			{

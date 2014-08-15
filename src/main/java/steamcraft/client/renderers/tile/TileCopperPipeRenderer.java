@@ -25,8 +25,6 @@ import org.lwjgl.opengl.GL11;
 import steamcraft.common.config.ConfigGeneral;
 import steamcraft.common.lib.LibInfo;
 import steamcraft.common.tiles.TileCopperPipe;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author Decebaldecebal
@@ -69,7 +67,7 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 
 		GL11.glTranslated(-transX, -transY, -transZ);
 	}
-	@SideOnly(Side.CLIENT)
+
 	private void drawStraightConnection(ForgeDirection dir, TileCopperPipe pipe)
 	{
 		Tessellator tess = Tessellator.instance;
@@ -184,7 +182,7 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 
 		GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
 	}
-	@SideOnly(Side.CLIENT)
+
 	private void drawAlternateConnection(ForgeDirection dir, TileCopperPipe pipe)
 	{
 		Tessellator tess = Tessellator.instance;
@@ -290,7 +288,7 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 		}
 		GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
 	}
-	@SideOnly(Side.CLIENT)
+
 	private void drawConnection(ForgeDirection dir, TileCopperPipe pipe)
 	{
 		Tessellator tess = Tessellator.instance;
@@ -433,7 +431,7 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 		}
 		GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
 	}
-	@SideOnly(Side.CLIENT)
+
 	private void drawCore(TileCopperPipe tile)
 	{
 		Tessellator tess = Tessellator.instance;

@@ -17,6 +17,7 @@ import java.util.Random;
 import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
 import steamcraft.common.InitAchievements;
@@ -26,7 +27,7 @@ import cofh.api.energy.IEnergyHandler;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 public class TileLightningRod extends TileEntity implements IEnergyHandler
 {
@@ -49,8 +50,20 @@ public class TileLightningRod extends TileEntity implements IEnergyHandler
 				worldObj.addWeatherEffect((new EntityLightningBolt(worldObj, xCoord, yCoord, zCoord)));
 				buffer.receiveEnergy(10000, false);
 				System.out.print(buffer.getEnergyStored());
-				EntityPlayer player = worldObj.getPlayerEntityByName(block.getOwner().substring(5));
-				player.triggerAchievement(InitAchievements.zapAchieve);
+				//Todo - fix
+				if(!MinecraftServer.getServer().isDedicatedServer())
+				{
+					EntityPlayer player = worldObj.getClosestPlayer(xCoord, yCoord, zCoord, -1);
+				}
+				else
+				{
+					if(block.getOwner().substring(5) != null)
+					{
+						EntityPlayer player = worldObj.getPlayerEntityByName(block.getOwner().substring(5));
+						if(player != null)
+						player.triggerAchievement(InitAchievements.zapAchieve);
+					}
+				}
 			}
 		}
 	}
