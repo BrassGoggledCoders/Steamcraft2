@@ -88,8 +88,7 @@ public class InitRecipes
 	{
 		// Gun Parts
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemGunPart, 1, 0), new Object[] { "WWW", " WW", 'W', "plankWood" }));
-		GameRegistry
-				.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemGunPart, 1, 1), new Object[] { "III", "   ", "III", 'I', "ingotIron" }));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemGunPart, 1, 1), new Object[] { "III", "   ", "III", 'I', "ingotIron" }));
 		GameRegistry.addShapelessRecipe(new ItemStack(InitItems.itemGunPart, 1, 2), new Object[] { new ItemStack(InitItems.itemGunPart, 1, 1),
 				InitItems.itemChisel });
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemGunPart, 1, 3), new Object[] { "  I", " II", 'I', "ingotIron" }));
@@ -108,6 +107,8 @@ public class InitRecipes
 		else
 			GameRegistry.addRecipe(new ItemStack(InitItems.itemGunPart, 1, 9), new Object[] { "SPS", "PNP", "SPS", 'S',
 					new ItemStack(InitItems.itemResource, 1, 2), 'P', new ItemStack(InitItems.itemGunPart, 1, 8), 'N', Items.nether_star });
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemGunPart, 1, 10), new Object[] { " II", "   ", " II", 'I', "ingotIron" }));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemGunPart, 1, 11), new Object[] { " WW", "  W", 'W', "plankWood" }));
 		// Actual Guns
 		GameRegistry.addRecipe(new ItemStack(InitItems.flintlockMusket), new Object[] { " FL", " B ", " S ", 'S',
 				new ItemStack(InitItems.itemGunPart, 1, 0), 'B', new ItemStack(InitItems.itemGunPart, 1, 1), 'L',
@@ -127,6 +128,15 @@ public class InitRecipes
 		GameRegistry.addRecipe(new ItemStack(InitItems.percussionCapRifle), new Object[] { " FL", " B ", " S ", 'S',
 				new ItemStack(InitItems.itemGunPart, 1, 0), 'B', new ItemStack(InitItems.itemGunPart, 1, 2), 'L',
 				new ItemStack(InitItems.itemGunPart, 1, 3), 'F', InitItems.itemPercussionCap });
+		GameRegistry.addRecipe(new ItemStack(InitItems.flintlockPistol), new Object[] { " FL", " B ", " S ", 'S',
+			new ItemStack(InitItems.itemGunPart, 1, 11), 'B', new ItemStack(InitItems.itemGunPart, 1, 10), 'L',
+			new ItemStack(InitItems.itemGunPart, 1, 3), 'F', Items.flint });
+		GameRegistry.addRecipe(new ItemStack(InitItems.matchlockPistol), new Object[] { " FL", " B ", " S ", 'S',
+			new ItemStack(InitItems.itemGunPart, 1, 11), 'B', new ItemStack(InitItems.itemGunPart, 1, 10), 'L',
+			new ItemStack(InitItems.itemGunPart, 1, 3), 'F', InitItems.itemMatch });
+		GameRegistry.addRecipe(new ItemStack(InitItems.percussionCapPistol), new Object[] { " FL", " B ", " S ", 'S',
+			new ItemStack(InitItems.itemGunPart, 1, 11), 'B', new ItemStack(InitItems.itemGunPart, 1, 10), 'L',
+			new ItemStack(InitItems.itemGunPart, 1, 3), 'F', InitItems.itemPercussionCap });
 		// Ammo
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemMusketBall, 4), new Object[] { "II", "II", 'I', "ingotIron" }));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemRifleBullet, 4), new Object[] { " S ", " C ", " G ", 'S',

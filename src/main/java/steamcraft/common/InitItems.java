@@ -60,7 +60,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 /**
  * @author Surseance
- * 
+ *
  */
 public class InitItems
 {
@@ -287,6 +287,12 @@ public class InitItems
 				.setUnlocalizedName("itemMatchlockRifle");
 		percussionCapRifle = new ItemFirearm(10, 20, itemRifleBullet, itemPercussionCap, "steamcraft:rifle", "steamcraft:reload")
 				.setUnlocalizedName("itemPercussionRifle");
+		flintlockPistol = new ItemFirearm(3, 40, itemMusketBall, null, "steamcraft:Pistol", "steamcraft:reload")
+		.setUnlocalizedName("itemFlintlockPistol");
+		matchlockPistol = new ItemFirearm(3, 30, itemMusketBall, itemMatch, "steamcraft:Pistol", "steamcraft:reload")
+		.setUnlocalizedName("itemMatchlockPistol");
+		percussionCapPistol = new ItemFirearm(3, 20, itemMusketBall, itemPercussionCap, "steamcraft:Pistol", "steamcraft:reload")
+		.setUnlocalizedName("itemPercussionPistol");
 
 		registerItem(flintlockMusket, "ItemFlintlockMusket");
 		registerItem(matchlockMusket, "ItemMatchlockMusket");
@@ -294,6 +300,9 @@ public class InitItems
 		registerItem(flintlockRifle, "ItemFlintlockRifle");
 		registerItem(matchlockRifle, "ItemMatchlockRifle");
 		registerItem(percussionCapRifle, "ItemPercussionCapRifle");
+		registerItem(flintlockPistol, "ItemFlintlockPistol");
+		registerItem(matchlockPistol, "ItemMatchlockPistol");
+		registerItem(percussionCapPistol, "ItemPercussionCapPistol");
 
 		itemRayGun = new ItemRayGun(LibInfo.PREFIX + "raygun", 50, 50, 50).setUnlocalizedName("itemRaygun");
 		itemShrinkray = new ItemShrinkray(LibInfo.PREFIX + "shrinkray", 50, 50, 100).setUnlocalizedName("itemShrinkray");

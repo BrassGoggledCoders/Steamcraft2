@@ -127,24 +127,6 @@ public class TileCopperWireRenderer extends TileEntitySpecialRenderer
 		}
 		tess.draw();
 
-		/*
-		 * if (ConfigGeneral.drawFluid && (wire.network != null)) { float level = wire.network.fluidScaled; if ((wire.network.tank.getFluid() != null) && (level
-		 * > 0)) { tess.startDrawingQuads(); { IIcon icon = wire.network.tank.getFluid().getFluid().getBlock().getIcon(0, 0);
-		 * bindTexture(TextureMap.locationBlocksTexture); tess.addVertexWithUV((1 - (15 * pixel)) + level, 0, (1 - (15 * pixel)) + level, icon.getMinU(),
-		 * icon.getMaxV()); tess.addVertexWithUV((1 - (15 * pixel)) + level, 1, (1 - (15 * pixel)) + level, icon.getMaxU(), icon.getMaxV());
-		 * tess.addVertexWithUV((15 * pixel) - level, 1, (1 - (15 * pixel)) + level, icon.getMaxU(), icon.getMinV()); tess.addVertexWithUV((15 * pixel) - level,
-		 * 0, (1 - (15 * pixel)) + level, icon.getMinU(), icon.getMinV()); tess.addVertexWithUV((15 * pixel) - level, 0, (15 * pixel) - level, icon.getMinU(),
-		 * icon.getMinV()); tess.addVertexWithUV((15 * pixel) - level, 1, (15 * pixel) - level, icon.getMaxU(), icon.getMinV()); tess.addVertexWithUV((1 - (15 *
-		 * pixel)) + level, 1, (15 * pixel) - level, icon.getMaxU(), icon.getMaxV()); tess.addVertexWithUV((1 - (15 * pixel)) + level, 0, (15 * pixel) - level,
-		 * icon.getMinU(), icon.getMaxV()); tess.addVertexWithUV((1 - (15 * pixel)) + level, 0, (15 * pixel) - level, icon.getMinU(), icon.getMinV());
-		 * tess.addVertexWithUV((1 - (15 * pixel)) + level, 1, (15 * pixel) - level, icon.getMaxU(), icon.getMinV()); tess.addVertexWithUV((1 - (15 * pixel)) +
-		 * level, 1, (1 - (15 * pixel)) + level, icon.getMaxU(), icon.getMaxV()); tess.addVertexWithUV((1 - (15 * pixel)) + level, 0, (1 - (15 * pixel)) +
-		 * level, icon.getMinU(), icon.getMaxV()); tess.addVertexWithUV((15 * pixel) - level, 0, (1 - (15 * pixel)) + level, icon.getMinU(), icon.getMaxV());
-		 * tess.addVertexWithUV((15 * pixel) - level, 1, (1 - (15 * pixel)) + level, icon.getMaxU(), icon.getMaxV()); tess.addVertexWithUV((15 * pixel) - level,
-		 * 1, (15 * pixel) - level, icon.getMaxU(), icon.getMinV()); tess.addVertexWithUV((15 * pixel) - level, 0, (15 * pixel) - level, icon.getMinU(),
-		 * icon.getMinV()); } tess.draw(); bindTexture(texture); } }
-		 */
-
 		GL11.glTranslatef(0.5F, 0.5F, 0.5F);
 
 		if (dir == ForgeDirection.SOUTH || dir == ForgeDirection.NORTH)
@@ -308,25 +290,6 @@ public class TileCopperWireRenderer extends TileEntitySpecialRenderer
 			}
 		}
 		tess.draw();
-
-		/*
-		 * if (ConfigGeneral.drawFluid && (wire.network != null)) { float level = wire.network.fluidScaled; if ((wire.network.tank.getFluid() != null) && (level
-		 * > 0)) { tess.startDrawingQuads(); { IIcon icon = wire.network.tank.getFluid().getFluid().getBlock().getIcon(0, 0);
-		 * bindTexture(TextureMap.locationBlocksTexture); tess.addVertexWithUV((1 - (15 * pixel)) + level, 1 - (15 * pixel), (1 - (15 * pixel)) + level,
-		 * icon.getMinU(), icon.getMaxV()); tess.addVertexWithUV((1 - (15 * pixel)) + level, 1, (1 - (15 * pixel)) + level, icon.getMaxU(), icon.getMaxV());
-		 * tess.addVertexWithUV((15 * pixel) - level, 1, (1 - (15 * pixel)) + level, icon.getMaxU(), icon.getMinV()); tess.addVertexWithUV((15 * pixel) - level,
-		 * 1 - (15 * pixel), (1 - (15 * pixel)) + level, icon.getMinU(), icon.getMinV()); tess.addVertexWithUV((15 * pixel) - level, 1 - (15 * pixel), (15 *
-		 * pixel) - level, icon.getMinU(), icon.getMinV()); tess.addVertexWithUV((15 * pixel) - level, 1, (15 * pixel) - level, icon.getMaxU(), icon.getMinV());
-		 * tess.addVertexWithUV((1 - (15 * pixel)) + level, 1, (15 * pixel) - level, icon.getMaxU(), icon.getMaxV()); tess.addVertexWithUV((1 - (15 * pixel)) +
-		 * level, 1 - (15 * pixel), (15 * pixel) - level, icon.getMinU(), icon.getMaxV()); tess.addVertexWithUV((1 - (15 * pixel)) + level, 1 - (15 * pixel),
-		 * (15 * pixel) - level, icon.getMinU(), icon.getMinV()); tess.addVertexWithUV((1 - (15 * pixel)) + level, 1, (15 * pixel) - level, icon.getMaxU(),
-		 * icon.getMinV()); tess.addVertexWithUV((1 - (15 * pixel)) + level, 1, (1 - (15 * pixel)) + level, icon.getMaxU(), icon.getMaxV());
-		 * tess.addVertexWithUV((1 - (15 * pixel)) + level, 1 - (15 * pixel), (1 - (15 * pixel)) + level, icon.getMinU(), icon.getMaxV());
-		 * tess.addVertexWithUV((15 * pixel) - level, 1 - (15 * pixel), (1 - (15 * pixel)) + level, icon.getMinU(), icon.getMaxV()); tess.addVertexWithUV((15 *
-		 * pixel) - level, 1, (1 - (15 * pixel)) + level, icon.getMaxU(), icon.getMaxV()); tess.addVertexWithUV((15 * pixel) - level, 1, (15 * pixel) - level,
-		 * icon.getMaxU(), icon.getMinV()); tess.addVertexWithUV((15 * pixel) - level, 1 - (15 * pixel), (15 * pixel) - level, icon.getMinU(), icon.getMinV());
-		 * } tess.draw(); bindTexture(texture); } }
-		 */
 
 		GL11.glTranslatef(0.5F, 0.5F, 0.5F);
 		if (dir == ForgeDirection.UP)

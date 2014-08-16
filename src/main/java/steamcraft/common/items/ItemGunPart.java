@@ -26,11 +26,11 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author Surseance
- * 
+ *
  */
 public class ItemGunPart extends BaseItemWithMetadata
 {
-	IIcon[] itemIcon = new IIcon[10];
+	IIcon[] itemIcon = new IIcon[12];
 
 	public ItemGunPart()
 	{
@@ -52,6 +52,8 @@ public class ItemGunPart extends BaseItemWithMetadata
 		itemIcon[7] = ir.registerIcon(LibInfo.PREFIX + "itemBlueFocus");
 		itemIcon[8] = ir.registerIcon(LibInfo.PREFIX + "itemPowerCore");
 		itemIcon[9] = ir.registerIcon(LibInfo.PREFIX + "itemOverchargedPowerCore");
+		itemIcon[10] = ir.registerIcon(LibInfo.PREFIX + "itemPistolBarrel");
+		itemIcon[11] = ir.registerIcon(LibInfo.PREFIX + "itemShortStock");
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
