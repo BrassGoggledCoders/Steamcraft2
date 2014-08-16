@@ -42,8 +42,8 @@ public class TileCastIronLampRenderer extends TileEntitySpecialRenderer
 	 */
 	public TileCastIronLampRenderer()
 	{
-		lampModelTop = new ModelCastIronLampTop();
-		lampModelSide = new ModelCastIronLampSide();
+		this.lampModelTop = new ModelCastIronLampTop();
+		this.lampModelSide = new ModelCastIronLampSide();
 	}
 
 	/*
@@ -83,8 +83,8 @@ public class TileCastIronLampRenderer extends TileEntitySpecialRenderer
 		Minecraft.getMinecraft().renderEngine.bindTexture(crystal);
 		GL11.glPushMatrix();
 		GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
-		lampModelTop.render((Entity) null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
-		lampModelSide.render((Entity) null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
+		this.lampModelTop.render((Entity) null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
+		this.lampModelSide.render((Entity) null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
 		GL11.glPopMatrix();
 		GL11.glPopMatrix();
 

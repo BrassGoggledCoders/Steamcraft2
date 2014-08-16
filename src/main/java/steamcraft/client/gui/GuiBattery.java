@@ -45,23 +45,24 @@ public class GuiBattery extends GuiContainer
 	{
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 
-		mc.renderEngine.bindTexture(guitexture);
-		drawTexturedModalRect(guiLeft, guiTop, 0, 0, xSize, ySize);
+		this.mc.renderEngine.bindTexture(guitexture);
+		this.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize);
 
-		int var8 = tile.getEnergyScaled(16);
-		drawTexturedModalRect(guiLeft + 12, (guiTop + 64) - var8, 176, 56 - var8, 16, var8 + 1);
+		int var8 = this.tile.getEnergyScaled(16);
+		this.drawTexturedModalRect(this.guiLeft + 12, (this.guiTop + 64) - var8, 176, 56 - var8, 16, var8 + 1);
 	}
 
 	@Override
 	protected void drawGuiContainerForegroundLayer(int x, int y)
 	{
-		drawString(fontRendererObj, "Energy: ", 26, 10, -1);
-		drawString(fontRendererObj,
-				getEnergyUnits(tile.getEnergyStored(ForgeDirection.UNKNOWN)) + "/" + getEnergyUnits(tile.getMaxEnergyStored(ForgeDirection.UNKNOWN))
-						+ " RF", 30, 20, -1);
+		this.drawString(this.fontRendererObj, "Energy: ", 26, 10, -1);
+		this.drawString(
+				this.fontRendererObj,
+				this.getEnergyUnits(this.tile.getEnergyStored(ForgeDirection.UNKNOWN)) + "/"
+						+ this.getEnergyUnits(this.tile.getMaxEnergyStored(ForgeDirection.UNKNOWN)) + " RF", 30, 20, -1);
 
-		drawString(fontRendererObj, "Transfer: ", 26, 30, -1);
-		drawString(fontRendererObj, tile.transferRate + " RF", 30, 40, -1);
+		this.drawString(this.fontRendererObj, "Transfer: ", 26, 30, -1);
+		this.drawString(this.fontRendererObj, this.tile.transferRate + " RF", 30, 40, -1);
 	}
 
 	private String getEnergyUnits(int number)

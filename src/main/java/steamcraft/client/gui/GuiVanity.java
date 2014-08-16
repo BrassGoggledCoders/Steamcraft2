@@ -56,36 +56,36 @@ public class GuiVanity extends GuiContainer
 	public GuiVanity(final EntityPlayer player, final InventoryPlayer inventoryPlayer, final InventoryVanity inventoryCustom)
 	{
 		super(new ContainerVanity(player, inventoryPlayer, inventoryCustom));
-		inventory = inventoryCustom;
+		this.inventory = inventoryCustom;
 	}
 
 	@Override
 	public void drawScreen(final int x, final int y, final float scale)
 	{
 		super.drawScreen(x, y, scale);
-		xSize_lo = x;
-		ySize_lo = y;
+		this.xSize_lo = x;
+		this.ySize_lo = y;
 	}
 
 	@Override
 	protected void drawGuiContainerForegroundLayer(final int x, final int y)
 	{
-		final String s = inventory.getInventoryName();
-		fontRendererObj.drawString(s, xSize - fontRendererObj.getStringWidth(s) - 8, 5, 4210752);
-		fontRendererObj.drawString("container.inventory", 120, ySize - 92, 4210752); // TODO:
-																						// Something
-																						// happened
-																						// here
-		fontRendererObj.drawString("Thanks, coolAlias!", xSize + 35, ySize + 34, 2000);
+		final String s = this.inventory.getInventoryName();
+		this.fontRendererObj.drawString(s, this.xSize - this.fontRendererObj.getStringWidth(s) - 8, 5, 4210752);
+		this.fontRendererObj.drawString("container.inventory", 120, this.ySize - 92, 4210752); // TODO:
+		// Something
+		// happened
+		// here
+		this.fontRendererObj.drawString("Thanks, coolAlias!", this.xSize + 35, this.ySize + 34, 2000);
 	}
 
 	@Override
 	protected void drawGuiContainerBackgroundLayer(final float scale, final int par2, final int par3)
 	{
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-		mc.getTextureManager().bindTexture(iconLocation);
-		final int x = (width - xSize) / 2;
-		final int y = (height - ySize) / 2;
-		drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
+		this.mc.getTextureManager().bindTexture(iconLocation);
+		final int x = (this.width - this.xSize) / 2;
+		final int y = (this.height - this.ySize) / 2;
+		this.drawTexturedModalRect(x, y, 0, 0, this.xSize, this.ySize);
 	}
 }

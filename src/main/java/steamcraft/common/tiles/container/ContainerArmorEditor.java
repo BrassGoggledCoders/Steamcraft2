@@ -42,27 +42,27 @@ public class ContainerArmorEditor extends Container
 	 */
 	public ContainerArmorEditor(InventoryPlayer player, TileArmorEditor tile)
 	{
-		tileent = tile;
+		this.tileent = tile;
 		int var3;
 
 		// Armor Slot
-		addSlotToContainer(new SlotBrassArmor(tileent, 0, 8, 34));
+		this.addSlotToContainer(new SlotBrassArmor(this.tileent, 0, 8, 34));
 		// Input Slots Line 1
 		for (int var4 = 0; var4 < 7; ++var4)
-			addSlotToContainer(new SlotModule(tileent, var4 + 10, 44 + (var4 * 18), 16));
+			this.addSlotToContainer(new SlotModule(this.tileent, var4 + 10, 44 + (var4 * 18), 16));
 		// Input Slots Line 2
 		for (int var4 = 0; var4 < 7; ++var4)
-			addSlotToContainer(new SlotModule(tileent, var4 + 20, 44 + (var4 * 18), 34));
+			this.addSlotToContainer(new SlotModule(this.tileent, var4 + 20, 44 + (var4 * 18), 34));
 		// Input Slots Line 3
 		for (int var4 = 0; var4 < 7; ++var4)
-			addSlotToContainer(new SlotModule(tileent, var4 + 30, 44 + (var4 * 18), 52));
+			this.addSlotToContainer(new SlotModule(this.tileent, var4 + 30, 44 + (var4 * 18), 52));
 		// Inv
 		for (var3 = 0; var3 < 3; ++var3)
 			for (int var4 = 0; var4 < 9; ++var4)
-				addSlotToContainer(new Slot(player, var4 + (var3 * 9) + 9, 8 + (var4 * 18), 84 + (var3 * 18)));
+				this.addSlotToContainer(new Slot(player, var4 + (var3 * 9) + 9, 8 + (var4 * 18), 84 + (var3 * 18)));
 		// Hotbar
 		for (var3 = 0; var3 < 9; ++var3)
-			addSlotToContainer(new Slot(player, var3, 8 + (var3 * 18), 142));
+			this.addSlotToContainer(new Slot(player, var3, 8 + (var3 * 18), 142));
 	}
 
 	@Override
@@ -81,8 +81,8 @@ public class ContainerArmorEditor extends Container
 		{
 			ItemBrassArmor armor = (ItemBrassArmor) stack.getItem();
 			for (int i = 0; i < armor.modules.size(); i++)
-				inventorySlots.set(i, armor.modules.get(i));
+				this.inventorySlots.set(i, armor.modules.get(i));
 		}
-		getSlot(slot).putStack(stack);
+		this.getSlot(slot).putStack(stack);
 	}
 }

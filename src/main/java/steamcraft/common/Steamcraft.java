@@ -67,7 +67,7 @@ public class Steamcraft
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{
-		directory = event.getModConfigurationDirectory();
+		this.directory = event.getModConfigurationDirectory();
 
 		LanguageRegistry.instance().getStringLocalization("itemGroup.steamcraft", "en_US");
 
@@ -80,7 +80,7 @@ public class Steamcraft
 		FMLCommonHandler.instance().bus().register(new EventHandlerFML());
 
 		if (ConfigWorldGen.generationEnabled)
-			GameRegistry.registerWorldGenerator(worldGen, 0);
+			GameRegistry.registerWorldGenerator(this.worldGen, 0);
 
 		InitBlocks.init();
 		InitItems.init();

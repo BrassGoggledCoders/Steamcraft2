@@ -25,7 +25,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author decebaldecebal
- *
+ * 
  */
 public class CopperPipePacket implements IMessage
 {

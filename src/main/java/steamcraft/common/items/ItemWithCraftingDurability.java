@@ -22,8 +22,8 @@ public class ItemWithCraftingDurability extends BaseItem
 {
 	public ItemWithCraftingDurability()
 	{
-		setMaxStackSize(1);
-		setMaxDamage(ToolMaterial.IRON.getMaxUses());
+		this.setMaxStackSize(1);
+		this.setMaxDamage(ToolMaterial.IRON.getMaxUses());
 	}
 
 	@Override

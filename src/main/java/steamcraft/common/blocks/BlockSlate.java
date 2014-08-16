@@ -46,10 +46,10 @@ public class BlockSlate extends BaseBlock
 	public BlockSlate()
 	{
 		super(Material.rock);
-		setHardness(3.0F);
-		setResistance(10.0F);
-		setStepSound(Block.soundTypeStone);
-		setBlockName("blockSlate");
+		this.setHardness(3.0F);
+		this.setResistance(10.0F);
+		this.setStepSound(Block.soundTypeStone);
+		this.setBlockName("blockSlate");
 	}
 
 	/*
@@ -61,7 +61,7 @@ public class BlockSlate extends BaseBlock
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(final int side, final int metadata)
 	{
-		return icon[metadata];
+		return this.icon[metadata];
 	}
 
 	/*
@@ -76,17 +76,17 @@ public class BlockSlate extends BaseBlock
 	public void registerBlockIcons(final IIconRegister ir)
 	{
 		// Raw
-		icon[0] = ir.registerIcon(LibInfo.PREFIX + "blockSlateRawBlue");
-		icon[1] = ir.registerIcon(LibInfo.PREFIX + "blockSlateRawBlack");
-		icon[2] = ir.registerIcon(LibInfo.PREFIX + "blockSlateRawRed");
+		this.icon[0] = ir.registerIcon(LibInfo.PREFIX + "blockSlateRawBlue");
+		this.icon[1] = ir.registerIcon(LibInfo.PREFIX + "blockSlateRawBlack");
+		this.icon[2] = ir.registerIcon(LibInfo.PREFIX + "blockSlateRawRed");
 		// Cobble
-		icon[3] = ir.registerIcon(LibInfo.PREFIX + "blockSlateCobbleBlue");
-		icon[4] = ir.registerIcon(LibInfo.PREFIX + "blockSlateCobbleBlack");
-		icon[5] = ir.registerIcon(LibInfo.PREFIX + "blockSlateCobbleRed");
+		this.icon[3] = ir.registerIcon(LibInfo.PREFIX + "blockSlateCobbleBlue");
+		this.icon[4] = ir.registerIcon(LibInfo.PREFIX + "blockSlateCobbleBlack");
+		this.icon[5] = ir.registerIcon(LibInfo.PREFIX + "blockSlateCobbleRed");
 		// Brick
-		icon[6] = ir.registerIcon(LibInfo.PREFIX + "blockSlateBrickBlue");
-		icon[7] = ir.registerIcon(LibInfo.PREFIX + "blockSlateBrickBlack");
-		icon[8] = ir.registerIcon(LibInfo.PREFIX + "blockSlateBrickRed");
+		this.icon[6] = ir.registerIcon(LibInfo.PREFIX + "blockSlateBrickBlue");
+		this.icon[7] = ir.registerIcon(LibInfo.PREFIX + "blockSlateBrickBlack");
+		this.icon[8] = ir.registerIcon(LibInfo.PREFIX + "blockSlateBrickRed");
 		// Polished
 	}
 
@@ -101,7 +101,7 @@ public class BlockSlate extends BaseBlock
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(final Item item, final CreativeTabs tab, final List l)
 	{
-		for (int var4 = 0; var4 < icon.length; ++var4)
+		for (int var4 = 0; var4 < this.icon.length; ++var4)
 			l.add(new ItemStack(InitBlocks.blockSlate, 1, var4));
 	}
 

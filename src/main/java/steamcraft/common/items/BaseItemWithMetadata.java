@@ -24,8 +24,8 @@ public class BaseItemWithMetadata extends BaseItem
 	public BaseItemWithMetadata()
 	{
 		super();
-		setHasSubtypes(true);
-		setCreativeTab(Steamcraft.tabSC2);
+		this.setHasSubtypes(true);
+		this.setCreativeTab(Steamcraft.tabSC2);
 	}
 
 	@Override

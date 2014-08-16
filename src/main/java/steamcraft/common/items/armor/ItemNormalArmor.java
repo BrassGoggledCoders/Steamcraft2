@@ -30,22 +30,22 @@ public class ItemNormalArmor extends BaseArmor
 	public ItemNormalArmor(ArmorMaterial mat, int renderIndex, int armorType)
 	{
 		super(mat, renderIndex, armorType);
-		setMaxStackSize(1);
-		setCreativeTab(Steamcraft.tabSC2);
+		this.setMaxStackSize(1);
+		this.setCreativeTab(Steamcraft.tabSC2);
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister icon)
 	{
-		itemIcon = icon.registerIcon(LibInfo.PREFIX + "armor/" + this.getUnlocalizedName().substring(5));
+		this.itemIcon = icon.registerIcon(LibInfo.PREFIX + "armor/" + this.getUnlocalizedName().substring(5));
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public String getArmorTexture(ItemStack is, Entity entity, int slot, String type)
 	{
-		if (getArmorMaterial() == MaterialHelper.ARMOR_ETHERIUM)
+		if (this.getArmorMaterial() == MaterialHelper.ARMOR_ETHERIUM)
 			return slot == 2 ? LibInfo.PREFIX + "textures/armor/etherium_2.png" : LibInfo.PREFIX + "textures/armor/etherium_1.png";
 		else
 			return slot == 2 ? LibInfo.PREFIX + "textures/armor/obsidian_2.png" : LibInfo.PREFIX + "textures/armor/obsidian_1.png";

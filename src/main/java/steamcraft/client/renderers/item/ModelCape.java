@@ -46,36 +46,36 @@ public class ModelCape extends ModelBiped
 	public ModelCape(final float f)
 	{
 		super(f, 0, 64, 32);
-		Shape1 = new ModelRenderer(this, 46, 0);
-		Shape1.addBox(-4F, 0F, 0F, 8, 14, 1);
-		Shape1.setRotationPoint(0F, 0F, 2F);
-		Shape1.setTextureSize(64, 32);
-		Shape1.mirror = true;
-		setRotation(Shape1, 0.1745329F, 0F, 0F);
-		Shape1.mirror = false;
-		Shape2 = new ModelRenderer(this, 0, 0);
-		Shape2.addBox(0F, 0F, 0F, 9, 1, 5);
-		Shape2.setRotationPoint(-4.5F, 11F, -2.5F);
-		Shape2.setTextureSize(64, 32);
-		Shape2.mirror = true;
-		setRotation(Shape2, 0F, 0F, 0F);
-		Shape3 = new ModelRenderer(this, 0, 8);
-		Shape3.addBox(0F, 0F, 0F, 2, 2, 1);
-		Shape3.setRotationPoint(-1F, 10.5F, -3F);
-		Shape3.setTextureSize(64, 32);
-		Shape3.mirror = true;
-		setRotation(Shape3, 0F, 0F, 0F);
+		this.Shape1 = new ModelRenderer(this, 46, 0);
+		this.Shape1.addBox(-4F, 0F, 0F, 8, 14, 1);
+		this.Shape1.setRotationPoint(0F, 0F, 2F);
+		this.Shape1.setTextureSize(64, 32);
+		this.Shape1.mirror = true;
+		this.setRotation(this.Shape1, 0.1745329F, 0F, 0F);
+		this.Shape1.mirror = false;
+		this.Shape2 = new ModelRenderer(this, 0, 0);
+		this.Shape2.addBox(0F, 0F, 0F, 9, 1, 5);
+		this.Shape2.setRotationPoint(-4.5F, 11F, -2.5F);
+		this.Shape2.setTextureSize(64, 32);
+		this.Shape2.mirror = true;
+		this.setRotation(this.Shape2, 0F, 0F, 0F);
+		this.Shape3 = new ModelRenderer(this, 0, 8);
+		this.Shape3.addBox(0F, 0F, 0F, 2, 2, 1);
+		this.Shape3.setRotationPoint(-1F, 10.5F, -3F);
+		this.Shape3.setTextureSize(64, 32);
+		this.Shape3.mirror = true;
+		this.setRotation(this.Shape3, 0F, 0F, 0F);
 
-		bipedBody.addChild(Shape1);
-		bipedBody.addChild(Shape2);
-		bipedBody.addChild(Shape3);
+		this.bipedBody.addChild(this.Shape1);
+		this.bipedBody.addChild(this.Shape2);
+		this.bipedBody.addChild(this.Shape3);
 	}
 
 	@Override
 	public void render(final Entity entity, final float f, final float f1, final float f2, final float f3, final float f4, final float f5)
 	{
 		super.render(entity, f, f1, f2, f3, f4, f5);
-		setRotationAngles(f, f1, f2, f3, f4, f5, entity);
+		this.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
 	}
 
 	// Techne method

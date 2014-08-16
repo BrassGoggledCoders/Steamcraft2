@@ -30,7 +30,7 @@ public class SlotBattery extends Slot
 	{
 		super(inv, par2, par3, par4);
 
-		tile = (TileBattery) inv;
+		this.tile = (TileBattery) inv;
 	}
 
 	@Override
@@ -46,6 +46,6 @@ public class SlotBattery extends Slot
 	{
 		super.onSlotChange(stack1, stack2);
 
-		tile.updateEnergyFromInv();
+		this.tile.updateEnergyFromInv();
 	}
 }

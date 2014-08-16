@@ -15,19 +15,16 @@ package steamcraft.common.tiles;
 import java.util.Random;
 
 import net.minecraft.entity.effect.EntityLightningBolt;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.server.MinecraftServer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
-import steamcraft.common.InitAchievements;
 import steamcraft.common.blocks.machines.BlockLightningRod;
 import cofh.api.energy.EnergyStorage;
 import cofh.api.energy.IEnergyHandler;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class TileLightningRod extends TileEntity implements IEnergyHandler
 {
@@ -38,32 +35,29 @@ public class TileLightningRod extends TileEntity implements IEnergyHandler
 	@Override
 	public void updateEntity()
 	{
-		if (getWorldObj() != null)
-			block = (BlockLightningRod) getWorldObj().getBlock(xCoord, yCoord, zCoord);
+		if (this.getWorldObj() != null)
+			this.block = (BlockLightningRod) this.getWorldObj().getBlock(this.xCoord, this.yCoord, this.zCoord);
 
-		if (worldObj.getWorldInfo().isThundering() && worldObj.canBlockSeeTheSky(xCoord, yCoord, zCoord))
+		if (this.worldObj.getWorldInfo().isThundering() && this.worldObj.canBlockSeeTheSky(this.xCoord, this.yCoord, this.zCoord))
 		{
 			Random random = new Random();
 			int chance = random.nextInt(1000);
 			if (chance == 0)
 			{
-				worldObj.addWeatherEffect((new EntityLightningBolt(worldObj, xCoord, yCoord, zCoord)));
-				buffer.receiveEnergy(10000, false);
-				System.out.print(buffer.getEnergyStored());
-				//Todo - fix
-				/*if(!MinecraftServer.getServer().isDedicatedServer())
-				{
-					EntityPlayer player = worldObj.getClosestPlayer(xCoord, yCoord, zCoord, -1);
-				}
-				else
-				{
-					if(block.getOwner().substring(5) != null)
-					{
-						EntityPlayer player = worldObj.getPlayerEntityByName(block.getOwner().substring(5));
-						if(player != null)
-						player.triggerAchievement(InitAchievements.zapAchieve);
-					}
-				}*/
+				this.worldObj.addWeatherEffect((new EntityLightningBolt(this.worldObj, this.xCoord, this.yCoord, this.zCoord)));
+				this.buffer.receiveEnergy(10000, false);
+				System.out.print(this.buffer.getEnergyStored());
+				// Todo - fix
+				/*
+				 * if(!MinecraftServer.getServer().isDedicatedServer()) {
+				 * EntityPlayer player = worldObj.getClosestPlayer(xCoord,
+				 * yCoord, zCoord, -1); } else {
+				 * if(block.getOwner().substring(5) != null) { EntityPlayer
+				 * player =
+				 * worldObj.getPlayerEntityByName(block.getOwner().substring
+				 * (5)); if(player != null)
+				 * player.triggerAchievement(InitAchievements.zapAchieve); } }
+				 */
 			}
 		}
 	}
@@ -77,39 +71,39 @@ public class TileLightningRod extends TileEntity implements IEnergyHandler
 	@Override
 	public int receiveEnergy(ForgeDirection from, int maxReceive, boolean simulate)
 	{
-		return buffer.receiveEnergy(maxReceive, simulate);
+		return this.buffer.receiveEnergy(maxReceive, simulate);
 	}
 
 	@Override
 	public int extractEnergy(ForgeDirection from, int maxExtract, boolean simulate)
 	{
-		return buffer.extractEnergy(maxExtract, simulate);
+		return this.buffer.extractEnergy(maxExtract, simulate);
 	}
 
 	@Override
 	public int getEnergyStored(ForgeDirection from)
 	{
-		return buffer.getEnergyStored();
+		return this.buffer.getEnergyStored();
 	}
 
 	@Override
 	public int getMaxEnergyStored(ForgeDirection from)
 	{
-		return buffer.getMaxEnergyStored();
+		return this.buffer.getMaxEnergyStored();
 	}
 
 	@Override
 	public void readFromNBT(NBTTagCompound tag)
 	{
 		super.readFromNBT(tag);
-		buffer.readFromNBT(tag);
+		this.buffer.readFromNBT(tag);
 	}
 
 	@Override
 	public void writeToNBT(NBTTagCompound tag)
 	{
 		super.writeToNBT(tag);
-		buffer.writeToNBT(tag);
+		this.buffer.writeToNBT(tag);
 	}
 
 }

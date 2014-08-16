@@ -32,28 +32,28 @@ public class TileCopperTank extends TileEntity implements IFluidHandler
 
 	public TileCopperTank()
 	{
-		tank = new FluidTank(null, capacity);
+		this.tank = new FluidTank(null, capacity);
 	}
 
 	@Override
 	public int fill(ForgeDirection from, FluidStack resource, boolean doFill)
 	{
-		return tank.fill(resource, doFill);
+		return this.tank.fill(resource, doFill);
 	}
 
 	@Override
 	public FluidStack drain(ForgeDirection from, FluidStack resource, boolean doDrain)
 	{
-		if ((resource == null) || !resource.isFluidEqual(tank.getFluid()))
+		if ((resource == null) || !resource.isFluidEqual(this.tank.getFluid()))
 			return null;
 
-		return tank.drain(resource.amount, doDrain);
+		return this.tank.drain(resource.amount, doDrain);
 	}
 
 	@Override
 	public FluidStack drain(ForgeDirection from, int maxDrain, boolean doDrain)
 	{
-		return tank.drain(maxDrain, doDrain);
+		return this.tank.drain(maxDrain, doDrain);
 	}
 
 	@Override
@@ -71,7 +71,7 @@ public class TileCopperTank extends TileEntity implements IFluidHandler
 	@Override
 	public FluidTankInfo[] getTankInfo(ForgeDirection from)
 	{
-		return new FluidTankInfo[] { tank.getInfo() };
+		return new FluidTankInfo[] { this.tank.getInfo() };
 	}
 
 }

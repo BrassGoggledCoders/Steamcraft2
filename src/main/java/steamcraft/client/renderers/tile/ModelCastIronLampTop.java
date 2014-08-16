@@ -53,36 +53,36 @@ public class ModelCastIronLampTop extends ModelBase
 	 */
 	public ModelCastIronLampTop()
 	{
-		bracket = new ModelRenderer(this, 24, 3);
-		bracket.addBox(-1F, 0F, -7.5F, 2, 3, 2);
+		this.bracket = new ModelRenderer(this, 24, 3);
+		this.bracket.addBox(-1F, 0F, -7.5F, 2, 3, 2);
 		// Bracket.setPosition(-1F, 0F, -1F);
 
-		bracketWide = new ModelRenderer(this, 12, 13);
-		bracketWide.addBox(-2F, 0F, -8.5F, 4, 3, 4);
+		this.bracketWide = new ModelRenderer(this, 12, 13);
+		this.bracketWide.addBox(-2F, 0F, -8.5F, 4, 3, 4);
 		// Bracket.setPosition(-1F, 0F, -1F);
 
-		crossbarLeft = new ModelRenderer(this, 11, 16);
-		crossbarLeft.addBox(0F, 1F, -7.5F, 7, 2, 2);
+		this.crossbarLeft = new ModelRenderer(this, 11, 16);
+		this.crossbarLeft.addBox(0F, 1F, -7.5F, 7, 2, 2);
 		// Bracket.setPosition(-1F, 0F, -1F);
 
-		crossbarRight = new ModelRenderer(this, 11, 16);
-		crossbarRight.addBox(-7F, 1F, -7.5F, 7, 2, 2);
+		this.crossbarRight = new ModelRenderer(this, 11, 16);
+		this.crossbarRight.addBox(-7F, 1F, -7.5F, 7, 2, 2);
 		// Bracket.setPosition(-1F, 0F, -1F);
 
-		lowerLamp = new ModelRenderer(this, 40, 13);
-		lowerLamp.addBox(-3F, -4F, -9.5F, 6, 4, 6);
+		this.lowerLamp = new ModelRenderer(this, 40, 13);
+		this.lowerLamp.addBox(-3F, -4F, -9.5F, 6, 4, 6);
 		// LowerLamp.setPosition(-3F, 3F, -3F);
 
-		upperLamp = new ModelRenderer(this, 31, 0);
-		upperLamp.addBox(-4F, -9F, -10.5F, 8, 5, 8);
+		this.upperLamp = new ModelRenderer(this, 31, 0);
+		this.upperLamp.addBox(-4F, -9F, -10.5F, 8, 5, 8);
 		// UpperLamp.setPosition(-4F, 7F, -4F);
 
-		top = new ModelRenderer(this, 0, 8);
-		top.addBox(-5F, -11F, -11.5F, 10, 2, 10);
+		this.top = new ModelRenderer(this, 0, 8);
+		this.top.addBox(-5F, -11F, -11.5F, 10, 2, 10);
 		// Top.setPosition(-5F, 12F, -5F);
 
-		topPeak = new ModelRenderer(this, 0, 0);
-		topPeak.addBox(-3F, -13F, -9.5F, 6, 2, 6);
+		this.topPeak = new ModelRenderer(this, 0, 0);
+		this.topPeak.addBox(-3F, -13F, -9.5F, 6, 2, 6);
 		// TopPeak.setPosition(-3F, 14F, -3F);
 	}
 
@@ -91,13 +91,13 @@ public class ModelCastIronLampTop extends ModelBase
 	 */
 	public void renderSign()
 	{
-		bracket.render(0.1F);
-		bracketWide.render(0.1F);
-		crossbarLeft.render(0.1F);
-		crossbarRight.render(0.1F);
-		lowerLamp.render(0.1F);
-		top.render(0.1F);
-		topPeak.render(0.1F);
-		upperLamp.render(0.1F);
+		this.bracket.render(0.1F);
+		this.bracketWide.render(0.1F);
+		this.crossbarLeft.render(0.1F);
+		this.crossbarRight.render(0.1F);
+		this.lowerLamp.render(0.1F);
+		this.top.render(0.1F);
+		this.topPeak.render(0.1F);
+		this.upperLamp.render(0.1F);
 	}
 }

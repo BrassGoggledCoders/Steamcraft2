@@ -38,12 +38,12 @@ public class BloomeryRecipes
 
 	private BloomeryRecipes()
 	{
-		addBloomeryRecipe(new ItemStack(Blocks.iron_ore), new ItemStack(Items.coal, 4), new ItemStack(InitItems.itemIngot, 1, 6));
+		this.addBloomeryRecipe(new ItemStack(Blocks.iron_ore), new ItemStack(Items.coal, 4), new ItemStack(InitItems.itemIngot, 1, 6));
 	}
 
 	public void addBloomeryRecipe(ItemStack input, ItemStack input2, ItemStack result)
 	{
-		recipeList.put(new ItemStack[] { input, input2 }, result);
+		this.recipeList.put(new ItemStack[] { input, input2 }, result);
 	}
 
 	public ItemStack getResult(ItemStack stack1, ItemStack stack2)
@@ -52,7 +52,7 @@ public class BloomeryRecipes
 		input[0] = stack1;
 		input[1] = stack2;
 
-		Iterator<Entry<ItemStack[], ItemStack>> iterator = recipeList.entrySet().iterator();
+		Iterator<Entry<ItemStack[], ItemStack>> iterator = this.recipeList.entrySet().iterator();
 		Entry<?, ?> entry;
 
 		do
@@ -61,7 +61,7 @@ public class BloomeryRecipes
 				return null;
 
 			entry = iterator.next();
-		} while (!checkItemsAgainstRecipes(input, (ItemStack[]) entry.getKey()));
+		} while (!this.checkItemsAgainstRecipes(input, (ItemStack[]) entry.getKey()));
 
 		return (ItemStack) entry.getValue();
 	}
@@ -69,7 +69,7 @@ public class BloomeryRecipes
 	@SuppressWarnings("unchecked")
 	public ItemStack[] getSmeltingInputs(ItemStack output)
 	{
-		Iterator<?> iterator = recipeList.entrySet().iterator();
+		Iterator<?> iterator = this.recipeList.entrySet().iterator();
 		Entry<ItemStack[], ItemStack> entry;
 		ItemStack[] inputs = null;
 		do
@@ -98,12 +98,12 @@ public class BloomeryRecipes
 	 */
 	public byte[] getStackSizeForInputs(ItemStack input1, ItemStack input2, ItemStack output)
 	{
-		ItemStack[] inputs = getSmeltingInputs(output);
+		ItemStack[] inputs = this.getSmeltingInputs(output);
 
 		if (input1 != null)
 		{
 			if (input2 != null)
-				if (checkItemsAgainstRecipes(new ItemStack[] { input1, input2 }, inputs))
+				if (this.checkItemsAgainstRecipes(new ItemStack[] { input1, input2 }, inputs))
 					return new byte[] { (byte) inputs[0].stackSize, (byte) inputs[1].stackSize };
 				else
 					return new byte[] { (byte) inputs[1].stackSize, (byte) inputs[0].stackSize };
@@ -116,6 +116,6 @@ public class BloomeryRecipes
 
 	public Map<ItemStack[], ItemStack> getSmeltingList()
 	{
-		return recipeList;
+		return this.recipeList;
 	}
 }

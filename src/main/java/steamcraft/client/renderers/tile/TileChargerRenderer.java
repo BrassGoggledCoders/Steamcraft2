@@ -44,8 +44,8 @@ public class TileChargerRenderer extends TileEntitySpecialRenderer
 	 */
 	public TileChargerRenderer()
 	{
-		model = new ModelCharger();
-		itemRenderer = new RenderFloatingItem(false, false);
+		this.model = new ModelCharger();
+		this.itemRenderer = new RenderFloatingItem(false, false);
 	}
 
 	/*
@@ -64,9 +64,9 @@ public class TileChargerRenderer extends TileEntitySpecialRenderer
 		Minecraft.getMinecraft().renderEngine.bindTexture(crystal);
 		GL11.glPushMatrix();
 		GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
-		model.render((Entity) null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
+		this.model.render((Entity) null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
 		EntityItem itemToRender = new EntityItem(te.getWorldObj(), dx, dy + 1, dz, new ItemStack(Items.apple));
-		itemRenderer.render(itemToRender, (float) dx, (float) dy + 7, (float) dz);
+		this.itemRenderer.render(itemToRender, (float) dx, (float) dy + 7, (float) dz);
 		GL11.glPopMatrix();
 		GL11.glPopMatrix();
 	}

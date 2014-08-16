@@ -40,26 +40,26 @@ public class BlockTeaPlant extends BlockCrops implements IPlantable
 	{
 		if ((meta < 0) || (meta > 1))
 			meta = 1;
-		return iconArray[meta];
+		return this.iconArray[meta];
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister ir)
 	{
-		iconArray[0] = ir.registerIcon(LibInfo.PREFIX + getUnlocalizedName().substring(5) + "_0");
-		iconArray[1] = ir.registerIcon(LibInfo.PREFIX + getUnlocalizedName().substring(5) + "_1");
+		this.iconArray[0] = ir.registerIcon(LibInfo.PREFIX + this.getUnlocalizedName().substring(5) + "_0");
+		this.iconArray[1] = ir.registerIcon(LibInfo.PREFIX + this.getUnlocalizedName().substring(5) + "_1");
 	}
 
 	public BlockTeaPlant()
 	{
 		super();
-		setHardness(0.0F);
-		setResistance(0.0F);
-		setStepSound(Block.soundTypeGrass);
-		setTickRandomly(true);
-		disableStats();
-		setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.15F, 1.0F);
+		this.setHardness(0.0F);
+		this.setResistance(0.0F);
+		this.setStepSound(Block.soundTypeGrass);
+		this.setTickRandomly(true);
+		this.disableStats();
+		this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.15F, 1.0F);
 	}
 
 	@Override
@@ -73,7 +73,7 @@ public class BlockTeaPlant extends BlockCrops implements IPlantable
 
 			if (metadata < 1)
 			{
-				float growthRate = getGrowthRate(world, x, y, z);
+				float growthRate = this.getGrowthRate(world, x, y, z);
 
 				if (random.nextInt((int) (15.0F / growthRate) + 1) == 0)
 				{
@@ -136,6 +136,6 @@ public class BlockTeaPlant extends BlockCrops implements IPlantable
 	@Override
 	public Item getItemDropped(int meta, Random p_149650_2_, int p_149650_3_)
 	{
-		return meta != 0 ? func_149865_P() : func_149866_i();
+		return meta != 0 ? this.func_149865_P() : this.func_149866_i();
 	}
 }

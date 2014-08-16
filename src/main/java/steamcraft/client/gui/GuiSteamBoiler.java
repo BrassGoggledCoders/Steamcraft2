@@ -53,31 +53,33 @@ public class GuiSteamBoiler extends GuiContainer
 	{
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 
-		mc.renderEngine.bindTexture(guitexture);
-		drawTexturedModalRect(guiLeft, guiTop, 0, 0, xSize, ySize);
+		this.mc.renderEngine.bindTexture(guitexture);
+		this.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize);
 
-		if (tile.isBurning())
+		if (this.tile.isBurning())
 		{
-			int burnTime = tile.getBurnTimeRemainingScaled(12);
-			drawTexturedModalRect(guiLeft + 43, (guiTop + 48) - burnTime, 176, 12 - burnTime, 14, burnTime + 2);
+			int burnTime = this.tile.getBurnTimeRemainingScaled(12);
+			this.drawTexturedModalRect(this.guiLeft + 43, (this.guiTop + 48) - burnTime, 176, 12 - burnTime, 14, burnTime + 2);
 		}
 
-		drawFluid(new FluidStack(FluidRegistry.getFluid("water"), 0), tile.getScaledWaterLevel(60), guiLeft + 8, guiTop + 18, 20, 60);
-		drawFluid(new FluidStack(FluidRegistry.getFluid("steam"), 0), tile.getScaledSteamLevel(60), guiLeft + 74, guiTop + 18, 32, 60);
+		this.drawFluid(new FluidStack(FluidRegistry.getFluid("water"), 0), this.tile.getScaledWaterLevel(60), this.guiLeft + 8, this.guiTop + 18, 20,
+				60);
+		this.drawFluid(new FluidStack(FluidRegistry.getFluid("steam"), 0), this.tile.getScaledSteamLevel(60), this.guiLeft + 74, this.guiTop + 18,
+				32, 60);
 
-		mc.renderEngine.bindTexture(guitexture);
-		drawTexturedModalRect(guiLeft + 8, guiTop + 24, 176, 14, 20, 49);
-		drawTexturedModalRect(guiLeft + 74, guiTop + 24, 176, 14, 20, 49);
+		this.mc.renderEngine.bindTexture(guitexture);
+		this.drawTexturedModalRect(this.guiLeft + 8, this.guiTop + 24, 176, 14, 20, 49);
+		this.drawTexturedModalRect(this.guiLeft + 74, this.guiTop + 24, 176, 14, 20, 49);
 	}
 
 	@Override
 	protected void drawGuiContainerForegroundLayer(int x, int y)
 	{
-		if (((y - guiTop) >= 18) && ((y - guiTop) <= 78))
-			if (((x - guiLeft) >= 8) && ((x - guiLeft) <= 28))
-				drawFluidInfo(tile.waterTank, x, y);
-			else if (((x - guiLeft) >= 74) && ((x - guiLeft) <= 106))
-				drawFluidInfo(tile.steamTank, x, y);
+		if (((y - this.guiTop) >= 18) && ((y - this.guiTop) <= 78))
+			if (((x - this.guiLeft) >= 8) && ((x - this.guiLeft) <= 28))
+				this.drawFluidInfo(this.tile.waterTank, x, y);
+			else if (((x - this.guiLeft) >= 74) && ((x - this.guiLeft) <= 106))
+				this.drawFluidInfo(this.tile.steamTank, x, y);
 	}
 
 	private void drawFluidInfo(FluidTank tank, int x, int y)
@@ -91,7 +93,7 @@ public class GuiSteamBoiler extends GuiContainer
 
 		lines.add(tank.getFluidAmount() + "/" + tank.getCapacity());
 
-		drawHoveringText(lines, x - guiLeft, y - guiTop, fontRendererObj);
+		this.drawHoveringText(lines, x - this.guiLeft, y - this.guiTop, this.fontRendererObj);
 	}
 
 	private void drawFluid(FluidStack fluid, int level, int x, int y, int width, int height)
@@ -100,7 +102,7 @@ public class GuiSteamBoiler extends GuiContainer
 			return;
 
 		IIcon icon = fluid.getFluid().getBlock().getIcon(0, 0);
-		mc.renderEngine.bindTexture(TextureMap.locationBlocksTexture);
+		this.mc.renderEngine.bindTexture(TextureMap.locationBlocksTexture);
 		int fullX = width / 16;
 		int fullY = height / 16;
 		int lastX = width - (fullX * 16);
@@ -110,23 +112,23 @@ public class GuiSteamBoiler extends GuiContainer
 		for (int i = 0; i < fullX; i++)
 			for (int j = 0; j < fullY; j++)
 				if (j >= fullLvl)
-					drawCutIcon(icon, x + (i * 16), y + (j * 16), 16, 16, j == fullLvl ? lastLvl : 0);
+					this.drawCutIcon(icon, x + (i * 16), y + (j * 16), 16, 16, j == fullLvl ? lastLvl : 0);
 		for (int i = 0; i < fullX; i++)
-			drawCutIcon(icon, x + (i * 16), y + (fullY * 16), 16, lastY, fullLvl == fullY ? lastLvl : 0);
+			this.drawCutIcon(icon, x + (i * 16), y + (fullY * 16), 16, lastY, fullLvl == fullY ? lastLvl : 0);
 		for (int i = 0; i < fullY; i++)
 			if (i >= fullLvl)
-				drawCutIcon(icon, x + (fullX * 16), y + (i * 16), lastX, 16, i == fullLvl ? lastLvl : 0);
-		drawCutIcon(icon, x + (fullX * 16), y + (fullY * 16), lastX, lastY, fullLvl == fullY ? lastLvl : 0);
+				this.drawCutIcon(icon, x + (fullX * 16), y + (i * 16), lastX, 16, i == fullLvl ? lastLvl : 0);
+		this.drawCutIcon(icon, x + (fullX * 16), y + (fullY * 16), lastX, lastY, fullLvl == fullY ? lastLvl : 0);
 	}
 
 	private void drawCutIcon(IIcon icon, int x, int y, int width, int height, int cut)
 	{
 		Tessellator tess = Tessellator.instance;
 		tess.startDrawingQuads();
-		tess.addVertexWithUV(x, y + height, zLevel, icon.getMinU(), icon.getInterpolatedV(height));
-		tess.addVertexWithUV(x + width, y + height, zLevel, icon.getInterpolatedU(width), icon.getInterpolatedV(height));
-		tess.addVertexWithUV(x + width, y + cut, zLevel, icon.getInterpolatedU(width), icon.getInterpolatedV(cut));
-		tess.addVertexWithUV(x, y + cut, zLevel, icon.getMinU(), icon.getInterpolatedV(cut));
+		tess.addVertexWithUV(x, y + height, this.zLevel, icon.getMinU(), icon.getInterpolatedV(height));
+		tess.addVertexWithUV(x + width, y + height, this.zLevel, icon.getInterpolatedU(width), icon.getInterpolatedV(height));
+		tess.addVertexWithUV(x + width, y + cut, this.zLevel, icon.getInterpolatedU(width), icon.getInterpolatedV(cut));
+		tess.addVertexWithUV(x, y + cut, this.zLevel, icon.getMinU(), icon.getInterpolatedV(cut));
 		tess.draw();
 	}
 }

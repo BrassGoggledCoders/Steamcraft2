@@ -30,7 +30,7 @@ public class SlotModule extends Slot
 	{
 		super(inv, par2, par3, par4);
 
-		tile = (TileArmorEditor) inv;
+		this.tile = (TileArmorEditor) inv;
 	}
 
 	@Override

@@ -36,20 +36,20 @@ public class ItemElectricTool extends ItemModTool implements IEnergyItem
 	protected ItemElectricTool(float damage, ToolMaterial toolMat, Block[] blockArray)
 	{
 		super(damage, toolMat, blockArray);
-		maxEnergy = maxEnergy * 1000;
-		maxReceive = maxReceive;
-		maxSend = maxSend;
-		setMaxStackSize(1);
-		setMaxDamage(20);
-		setHasSubtypes(false);
+		this.maxEnergy = this.maxEnergy * 1000;
+		this.maxReceive = this.maxReceive;
+		this.maxSend = this.maxSend;
+		this.setMaxStackSize(1);
+		this.setMaxDamage(20);
+		this.setHasSubtypes(false);
 	}
 
 	@SuppressWarnings("all")
 	@Override
 	public void getSubItems(Item item, CreativeTabs tab, List list)
 	{
-		list.add(getUnchargedItem());
-		list.add(getChargedItem());
+		list.add(this.getUnchargedItem());
+		list.add(this.getChargedItem());
 	}
 
 	public ItemStack getUnchargedItem()
@@ -69,7 +69,7 @@ public class ItemElectricTool extends ItemModTool implements IEnergyItem
 		ItemStack charged = new ItemStack(this, 1, 0);
 
 		NBTTagCompound tag = new NBTTagCompound();
-		tag.setInteger("energy", maxEnergy);
+		tag.setInteger("energy", this.maxEnergy);
 
 		charged.setTagCompound(tag);
 
@@ -80,14 +80,14 @@ public class ItemElectricTool extends ItemModTool implements IEnergyItem
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer entityplayer, List list, boolean flag)
 	{
-		list.add("Energy: " + (getEnergyStored(stack) / 1000) + "k / " + (maxEnergy / 1000) + "k");
-		list.add("Transfer(in/out): " + maxReceive + " / " + maxSend);
+		list.add("Energy: " + (this.getEnergyStored(stack) / 1000) + "k / " + (this.maxEnergy / 1000) + "k");
+		list.add("Transfer(in/out): " + this.maxReceive + " / " + this.maxSend);
 	}
 
 	@Override
 	public void onCreated(ItemStack stack, World par2World, EntityPlayer par3EntityPlayer)
 	{
-		stack = getUnchargedItem();
+		stack = this.getUnchargedItem();
 	}
 
 	public void setEnergy(ItemStack stack, int energy)
@@ -97,10 +97,10 @@ public class ItemElectricTool extends ItemModTool implements IEnergyItem
 		if (energy < 0)
 			energy = 0;
 
-		if (energy > maxEnergy)
-			energy = maxEnergy;
+		if (energy > this.maxEnergy)
+			energy = this.maxEnergy;
 
-		stack.setItemDamage(20 - ((energy * 20) / maxEnergy));
+		stack.setItemDamage(20 - ((energy * 20) / this.maxEnergy));
 
 		tag.setInteger("energy", energy);
 
@@ -110,11 +110,11 @@ public class ItemElectricTool extends ItemModTool implements IEnergyItem
 	@Override
 	public int receiveEnergy(ItemStack itemStack, int maxReceive, boolean simulate)
 	{
-		int received = Math.min(maxEnergy - getEnergyStored(itemStack), maxReceive);
+		int received = Math.min(this.maxEnergy - this.getEnergyStored(itemStack), maxReceive);
 		received = Math.min(received, this.maxReceive);
 
 		if (!simulate)
-			setEnergy(itemStack, getEnergyStored(itemStack) + received);
+			this.setEnergy(itemStack, this.getEnergyStored(itemStack) + received);
 
 		return received;
 	}
@@ -122,11 +122,11 @@ public class ItemElectricTool extends ItemModTool implements IEnergyItem
 	@Override
 	public int extractEnergy(ItemStack itemStack, int maxExtract, boolean simulate)
 	{
-		int extracted = Math.min(getEnergyStored(itemStack), maxExtract);
-		extracted = Math.min(extracted, maxSend);
+		int extracted = Math.min(this.getEnergyStored(itemStack), maxExtract);
+		extracted = Math.min(extracted, this.maxSend);
 
 		if (!simulate)
-			setEnergy(itemStack, getEnergyStored(itemStack) - extracted);
+			this.setEnergy(itemStack, this.getEnergyStored(itemStack) - extracted);
 
 		return extracted;
 	}
@@ -140,13 +140,13 @@ public class ItemElectricTool extends ItemModTool implements IEnergyItem
 	@Override
 	public int getMaxEnergyStored(ItemStack container)
 	{
-		return maxEnergy;
+		return this.maxEnergy;
 	}
 
 	@Override
 	public short getMaxSend()
 	{
-		return maxSend;
+		return this.maxSend;
 	}
 
 }

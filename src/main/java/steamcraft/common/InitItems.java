@@ -60,7 +60,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 /**
  * @author Surseance
- *
+ * 
  */
 public class InitItems
 {
@@ -288,11 +288,11 @@ public class InitItems
 		percussionCapRifle = new ItemFirearm(10, 20, itemRifleBullet, itemPercussionCap, "steamcraft:rifle", "steamcraft:reload")
 				.setUnlocalizedName("itemPercussionRifle");
 		flintlockPistol = new ItemFirearm(3, 40, itemMusketBall, null, "steamcraft:Pistol", "steamcraft:reload")
-		.setUnlocalizedName("itemFlintlockPistol");
+				.setUnlocalizedName("itemFlintlockPistol");
 		matchlockPistol = new ItemFirearm(3, 30, itemMusketBall, itemMatch, "steamcraft:Pistol", "steamcraft:reload")
-		.setUnlocalizedName("itemMatchlockPistol");
+				.setUnlocalizedName("itemMatchlockPistol");
 		percussionCapPistol = new ItemFirearm(3, 20, itemMusketBall, itemPercussionCap, "steamcraft:Pistol", "steamcraft:reload")
-		.setUnlocalizedName("itemPercussionPistol");
+				.setUnlocalizedName("itemPercussionPistol");
 
 		registerItem(flintlockMusket, "ItemFlintlockMusket");
 		registerItem(matchlockMusket, "ItemMatchlockMusket");

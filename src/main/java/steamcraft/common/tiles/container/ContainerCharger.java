@@ -39,23 +39,23 @@ public class ContainerCharger extends Container
 
 	public ContainerCharger(InventoryPlayer player, TileCharger tile)
 	{
-		tile_entity = tile;
+		this.tile_entity = tile;
 
-		addSlotToContainer(new SlotCharger(tile, 0, 98, 22));
-		addSlotToContainer(new SlotCharger(tile, 1, 116, 22));
-		addSlotToContainer(new SlotCharger(tile, 2, 134, 22));
-		addSlotToContainer(new SlotCharger(tile, 3, 98, 40));
-		addSlotToContainer(new SlotCharger(tile, 4, 116, 40));
-		addSlotToContainer(new SlotCharger(tile, 5, 134, 40));
+		this.addSlotToContainer(new SlotCharger(tile, 0, 98, 22));
+		this.addSlotToContainer(new SlotCharger(tile, 1, 116, 22));
+		this.addSlotToContainer(new SlotCharger(tile, 2, 134, 22));
+		this.addSlotToContainer(new SlotCharger(tile, 3, 98, 40));
+		this.addSlotToContainer(new SlotCharger(tile, 4, 116, 40));
+		this.addSlotToContainer(new SlotCharger(tile, 5, 134, 40));
 
 		int var3;
 
 		for (var3 = 0; var3 < 3; ++var3)
 			for (int var4 = 0; var4 < 9; ++var4)
-				addSlotToContainer(new Slot(player, var4 + (var3 * 9) + 9, 8 + (var4 * 18), 84 + (var3 * 18)));
+				this.addSlotToContainer(new Slot(player, var4 + (var3 * 9) + 9, 8 + (var4 * 18), 84 + (var3 * 18)));
 
 		for (var3 = 0; var3 < 9; ++var3)
-			addSlotToContainer(new Slot(player, var3, 8 + (var3 * 18), 142));
+			this.addSlotToContainer(new Slot(player, var3, 8 + (var3 * 18), 142));
 	}
 
 	@Override
@@ -63,10 +63,10 @@ public class ContainerCharger extends Container
 	{
 		super.addCraftingToCrafters(crafting);
 
-		crafting.sendProgressBarUpdate(this, 0, tile_entity.buffer.getEnergyStored());
-		crafting.sendProgressBarUpdate(this, 1, tile_entity.buffer.getMaxEnergyStored());
+		crafting.sendProgressBarUpdate(this, 0, this.tile_entity.buffer.getEnergyStored());
+		crafting.sendProgressBarUpdate(this, 1, this.tile_entity.buffer.getMaxEnergyStored());
 		crafting.sendProgressBarUpdate(this, 2, TileCharger.transferRate);
-		crafting.sendProgressBarUpdate(this, 3, tile_entity.buffer.getEnergyStored());
+		crafting.sendProgressBarUpdate(this, 3, this.tile_entity.buffer.getEnergyStored());
 	}
 
 	@Override
@@ -74,27 +74,27 @@ public class ContainerCharger extends Container
 	{
 		super.detectAndSendChanges();
 
-		for (int var1 = 0; var1 < crafters.size(); ++var1)
+		for (int var1 = 0; var1 < this.crafters.size(); ++var1)
 		{
-			ICrafting var2 = (ICrafting) crafters.get(var1);
+			ICrafting var2 = (ICrafting) this.crafters.get(var1);
 
-			if (lastTotalEnergy != tile_entity.buffer.getEnergyStored())
-				var2.sendProgressBarUpdate(this, 0, tile_entity.buffer.getEnergyStored());
+			if (this.lastTotalEnergy != this.tile_entity.buffer.getEnergyStored())
+				var2.sendProgressBarUpdate(this, 0, this.tile_entity.buffer.getEnergyStored());
 
-			if (lastMaxEnergy != tile_entity.buffer.getMaxEnergyStored())
-				var2.sendProgressBarUpdate(this, 1, tile_entity.buffer.getMaxEnergyStored());
+			if (this.lastMaxEnergy != this.tile_entity.buffer.getMaxEnergyStored())
+				var2.sendProgressBarUpdate(this, 1, this.tile_entity.buffer.getMaxEnergyStored());
 
-			if (lastTransferRate != TileCharger.transferRate)
+			if (this.lastTransferRate != TileCharger.transferRate)
 				var2.sendProgressBarUpdate(this, 2, TileCharger.transferRate);
 
-			if (lastBufferEnergy != tile_entity.buffer.getEnergyStored())
-				var2.sendProgressBarUpdate(this, 3, tile_entity.buffer.getEnergyStored());
+			if (this.lastBufferEnergy != this.tile_entity.buffer.getEnergyStored())
+				var2.sendProgressBarUpdate(this, 3, this.tile_entity.buffer.getEnergyStored());
 		}
 
-		lastTotalEnergy = tile_entity.buffer.getEnergyStored();
-		lastMaxEnergy = tile_entity.buffer.getMaxEnergyStored();
-		lastTransferRate = TileCharger.transferRate;
-		lastBufferEnergy = tile_entity.buffer.getEnergyStored();
+		this.lastTotalEnergy = this.tile_entity.buffer.getEnergyStored();
+		this.lastMaxEnergy = this.tile_entity.buffer.getMaxEnergyStored();
+		this.lastTransferRate = TileCharger.transferRate;
+		this.lastBufferEnergy = this.tile_entity.buffer.getEnergyStored();
 	}
 
 	@Override
@@ -102,26 +102,26 @@ public class ContainerCharger extends Container
 	public void updateProgressBar(int par1, int par2)
 	{
 		if (par1 == 0)
-			par2 = tile_entity.buffer.getEnergyStored();
+			par2 = this.tile_entity.buffer.getEnergyStored();
 		else if (par1 == 1)
-			par2 = tile_entity.buffer.getMaxEnergyStored();
+			par2 = this.tile_entity.buffer.getMaxEnergyStored();
 		else if (par1 == 2)
 			TileCharger.transferRate = (short) par2;
 		else if (par1 == 3)
-			tile_entity.buffer.setEnergyStored(par2);
+			this.tile_entity.buffer.setEnergyStored(par2);
 	}
 
 	@Override
 	public boolean canInteractWith(EntityPlayer par1EntityPlayer)
 	{
-		return tile_entity.isUseableByPlayer(par1EntityPlayer);
+		return this.tile_entity.isUseableByPlayer(par1EntityPlayer);
 	}
 
 	@Override
 	public ItemStack transferStackInSlot(EntityPlayer par1EntityPlayer, int par2)
 	{
 		ItemStack var3 = null;
-		Slot var4 = (Slot) inventorySlots.get(par2);
+		Slot var4 = (Slot) this.inventorySlots.get(par2);
 
 		if ((var4 != null) && var4.getHasStack())
 		{
@@ -132,16 +132,16 @@ public class ContainerCharger extends Container
 			{
 				if (var5.getItem() instanceof IEnergyItem)
 				{
-					if (!mergeItemStack(var5, 0, 6, false))
-						if (!mergeItemStack(var5, 33, 42, false))
+					if (!this.mergeItemStack(var5, 0, 6, false))
+						if (!this.mergeItemStack(var5, 33, 42, false))
 							return null;
 				}
-				else if ((par2 >= 6) && (par2 < 33) && !mergeItemStack(var5, 33, 42, false))
+				else if ((par2 >= 6) && (par2 < 33) && !this.mergeItemStack(var5, 33, 42, false))
 					return null;
-				else if ((par2 >= 33) && (par2 < 42) && !mergeItemStack(var5, 6, 33, false))
+				else if ((par2 >= 33) && (par2 < 42) && !this.mergeItemStack(var5, 6, 33, false))
 					return null;
 			}
-			else if (!mergeItemStack(var5, 6, 42, false))
+			else if (!this.mergeItemStack(var5, 6, 42, false))
 				return null;
 
 			if (var5.stackSize == 0)

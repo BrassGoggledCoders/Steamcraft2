@@ -29,7 +29,7 @@ import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 // TODO: Auto-generated Javadoc
 /**
  * The Class BlockCrystalRenderer.
- * 
+ *
  * @author Surseance (Johnny Eatmon)
  */
 public class BlockRailingRenderer implements ISimpleBlockRenderingHandler

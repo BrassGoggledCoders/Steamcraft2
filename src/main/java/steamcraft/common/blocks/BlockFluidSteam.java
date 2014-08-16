@@ -37,21 +37,21 @@ public class BlockFluidSteam extends BlockFluidClassic
 	public BlockFluidSteam(Fluid fluid, Material material)
 	{
 		super(fluid, material);
-		setBlockName("steamFluidBlock");
-		setCreativeTab(Steamcraft.tabSC2);
+		this.setBlockName("steamFluidBlock");
+		this.setCreativeTab(Steamcraft.tabSC2);
 	}
 
 	@Override
 	public IIcon getIcon(int side, int meta)
 	{
-		return (side != 0) && (side != 1) ? iconFlowing : blockIcon;
+		return (side != 0) && (side != 1) ? iconFlowing : this.blockIcon;
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister iconRegister)
 	{
-		blockIcon = iconRegister.registerIcon(LibInfo.PREFIX + "steamStill");
+		this.blockIcon = iconRegister.registerIcon(LibInfo.PREFIX + "steamStill");
 		iconFlowing = iconRegister.registerIcon(LibInfo.PREFIX + "steamFlowing");
 	}
 

@@ -35,19 +35,19 @@ public class ItemResource extends BaseItemWithMetadata
 	public ItemResource()
 	{
 		super();
-		setMaxStackSize(64);
+		this.setMaxStackSize(64);
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister ir)
 	{
-		itemIcon[0] = ir.registerIcon(LibInfo.PREFIX + "itemCrystal");
-		itemIcon[1] = ir.registerIcon(LibInfo.PREFIX + "itemChemSalt");
-		itemIcon[2] = ir.registerIcon(LibInfo.PREFIX + "itemSlate");
-		itemIcon[3] = ir.registerIcon(LibInfo.PREFIX + "itemPhosphorus");
-		itemIcon[4] = ir.registerIcon(LibInfo.PREFIX + "itemUranium");
-		itemIcon[5] = ir.registerIcon(LibInfo.PREFIX + "itemPellet");
+		this.itemIcon[0] = ir.registerIcon(LibInfo.PREFIX + "itemCrystal");
+		this.itemIcon[1] = ir.registerIcon(LibInfo.PREFIX + "itemChemSalt");
+		this.itemIcon[2] = ir.registerIcon(LibInfo.PREFIX + "itemSlate");
+		this.itemIcon[3] = ir.registerIcon(LibInfo.PREFIX + "itemPhosphorus");
+		this.itemIcon[4] = ir.registerIcon(LibInfo.PREFIX + "itemUranium");
+		this.itemIcon[5] = ir.registerIcon(LibInfo.PREFIX + "itemPellet");
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
@@ -55,7 +55,7 @@ public class ItemResource extends BaseItemWithMetadata
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(Item item, CreativeTabs tab, List l)
 	{
-		for (int var4 = 0; var4 < itemIcon.length; ++var4)
+		for (int var4 = 0; var4 < this.itemIcon.length; ++var4)
 			l.add(new ItemStack(InitItems.itemResource, 1, var4));
 	}
 
@@ -63,6 +63,6 @@ public class ItemResource extends BaseItemWithMetadata
 	@SideOnly(Side.CLIENT)
 	public IIcon getIconFromDamage(int itemDamage)
 	{
-		return itemIcon[itemDamage];
+		return this.itemIcon[itemDamage];
 	}
 }

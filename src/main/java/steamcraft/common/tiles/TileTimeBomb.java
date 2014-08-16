@@ -29,12 +29,12 @@ public class TileTimeBomb extends TileEntity
 		Calendar cal = Calendar.getInstance();
 		cal.getTime();
 		SimpleDateFormat sdf = new SimpleDateFormat("HHmm");
-		System.out.println(time);
-		if (Integer.parseInt(sdf.format(cal.getTime())) == time)
+		System.out.println(this.time);
+		if (Integer.parseInt(sdf.format(cal.getTime())) == this.time)
 		{
 			System.out.print("BANG!");
-			worldObj.setBlockToAir(xCoord, yCoord, zCoord);
-			worldObj.spawnEntityInWorld(new EntityTimeBomb(worldObj, xCoord, yCoord, zCoord, null, 0));
+			this.worldObj.setBlockToAir(this.xCoord, this.yCoord, this.zCoord);
+			this.worldObj.spawnEntityInWorld(new EntityTimeBomb(this.worldObj, this.xCoord, this.yCoord, this.zCoord, null, 0));
 		}
 	}
 
@@ -42,19 +42,19 @@ public class TileTimeBomb extends TileEntity
 	public void readFromNBT(NBTTagCompound nbt)
 	{
 		super.readFromNBT(nbt);
-		setTime(nbt.getInteger("time"));
+		this.setTime(nbt.getInteger("time"));
 	}
 
 	@Override
 	public void writeToNBT(NBTTagCompound nbt)
 	{
 		super.writeToNBT(nbt);
-		nbt.setInteger("time", getTime());
+		nbt.setInteger("time", this.getTime());
 	}
 
 	public int getTime()
 	{
-		return time;
+		return this.time;
 	}
 
 	public void setTime(int time)

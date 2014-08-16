@@ -31,8 +31,8 @@ public class ItemModSword extends ItemModTool
 	public ItemModSword(ToolMaterial toolMat)
 	{
 		super(toolMat.getDamageVsEntity() + 4.0F, toolMat, blocksEffectiveAgainst);
-		maxStackSize = 1;
-		setMaxDamage(toolMat.getMaxUses());
+		this.maxStackSize = 1;
+		this.setMaxDamage(toolMat.getMaxUses());
 	}
 
 	@Override
@@ -72,7 +72,7 @@ public class ItemModSword extends ItemModTool
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
 	{
-		player.setItemInUse(stack, getMaxItemUseDuration(stack));
+		player.setItemInUse(stack, this.getMaxItemUseDuration(stack));
 		return stack;
 	}
 
@@ -85,13 +85,13 @@ public class ItemModSword extends ItemModTool
 	@Override
 	public int getItemEnchantability()
 	{
-		return toolMaterial.getEnchantability();
+		return this.toolMaterial.getEnchantability();
 	}
 
 	@Override
 	public boolean getIsRepairable(ItemStack stack1, ItemStack stack2)
 	{
 		Item item = stack2.getItem();
-		return toolMaterial.func_150995_f() == item ? true : super.getIsRepairable(stack1, stack2);
+		return this.toolMaterial.func_150995_f() == item ? true : super.getIsRepairable(stack1, stack2);
 	}
 }

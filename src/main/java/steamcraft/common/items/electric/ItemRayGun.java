@@ -51,17 +51,17 @@ public class ItemRayGun extends ItemElectricConsumer implements IEnergyItem
 		this.maxEnergy = maxEnergy * 1000;
 		this.maxReceive = (short) maxReceive;
 		this.maxSend = (short) maxSend;
-		setMaxStackSize(1);
-		setFull3D();
-		setMaxDamage(20);
-		setHasSubtypes(false);
+		this.setMaxStackSize(1);
+		this.setFull3D();
+		this.setMaxDamage(20);
+		this.setHasSubtypes(false);
 	}
 
 	@SuppressWarnings("all")
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
 	{
-		if (getEnergyStored(stack) > energyPerUse)
+		if (this.getEnergyStored(stack) > this.energyPerUse)
 		{
 			MovingObjectPosition mop = PlayerUtils.getTargetBlock(world, player, true, 20);
 
@@ -110,38 +110,38 @@ public class ItemRayGun extends ItemElectricConsumer implements IEnergyItem
 				// this.spawnParticles(world, x, y, z);
 
 				if (!world.isRemote && !world.isAirBlock(x, y, z) && !Utils.getBlockUnbreakable(world, x, y, z))
-					for (int i = x - random.nextInt(3); i < (x + random.nextInt(3)); i++)
-						for (int j = y - random.nextInt(3); j < (y + random.nextInt(3)); j++)
-							for (int k = z - random.nextInt(3); k < (z + random.nextInt(3)); k++)
+					for (int i = x - this.random.nextInt(3); i < (x + this.random.nextInt(3)); i++)
+						for (int j = y - this.random.nextInt(3); j < (y + this.random.nextInt(3)); j++)
+							for (int k = z - this.random.nextInt(3); k < (z + this.random.nextInt(3)); k++)
 							{
 								if (world.isAirBlock(i, j, k))
 								{
 									world.setBlock(i, j, k, Blocks.fire);
-									extractEnergy(stack, energyPerUse, false);
+									this.extractEnergy(stack, this.energyPerUse, false);
 
 								}
 								else if (world.getBlock(i, j, k) == Blocks.snow)
 								{
 									world.setBlock(i, j, k, Blocks.flowing_water);
-									extractEnergy(stack, energyPerUse, false);
+									this.extractEnergy(stack, this.energyPerUse, false);
 
 								}
 								if (world.getBlock(i, j, k) == Blocks.snow_layer)
 								{
 									world.setBlock(i, j, k, Blocks.flowing_water);
-									extractEnergy(stack, energyPerUse, false);
+									this.extractEnergy(stack, this.energyPerUse, false);
 
 								}
 								if (world.getBlock(i, j, k) == Blocks.sand)
 								{
 									world.setBlock(i, j, k, Blocks.glass);
-									extractEnergy(stack, energyPerUse, false);
+									this.extractEnergy(stack, this.energyPerUse, false);
 
 								}
 								if (world.getBlock(i, j, k) == Blocks.netherrack)
 								{
 									world.setBlock(i, j, k, Blocks.flowing_lava);
-									extractEnergy(stack, energyPerUse, false);
+									this.extractEnergy(stack, this.energyPerUse, false);
 
 								}
 							}

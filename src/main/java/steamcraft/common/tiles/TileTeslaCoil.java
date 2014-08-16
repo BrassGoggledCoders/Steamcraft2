@@ -31,7 +31,7 @@ import cofh.api.energy.IEnergyHandler;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class TileTeslaCoil extends TileEntity implements IEnergyHandler
 {
@@ -42,35 +42,36 @@ public class TileTeslaCoil extends TileEntity implements IEnergyHandler
 	@Override
 	public void updateEntity()
 	{
-		short inputEnergy = (short) receiveEnergy(ForgeDirection.UNKNOWN, RFPerTick, true);
+		short inputEnergy = (short) this.receiveEnergy(ForgeDirection.UNKNOWN, RFPerTick, true);
 
 		if (inputEnergy > 0)
 			for (ForgeDirection direction : EnumSet.allOf(ForgeDirection.class))
 				if (inputEnergy > 0)
 				{
-					TileEntity tileEntity = worldObj
-							.getTileEntity(xCoord - direction.offsetX, yCoord - direction.offsetY, zCoord - direction.offsetZ);
+					TileEntity tileEntity = this.worldObj.getTileEntity(this.xCoord - direction.offsetX, this.yCoord - direction.offsetY, this.zCoord
+							- direction.offsetZ);
 
 					if (tileEntity instanceof IEnergyHandler)
-						inputEnergy -= receiveEnergy(ForgeDirection.UNKNOWN,
+						inputEnergy -= this.receiveEnergy(ForgeDirection.UNKNOWN,
 								((IEnergyHandler) tileEntity).extractEnergy(direction.getOpposite(), inputEnergy, false), false);
 
-					TileEntity tileEntity2 = worldObj
-							.getTileEntity(xCoord + direction.offsetX, yCoord + direction.offsetY, zCoord + direction.offsetZ);
+					TileEntity tileEntity2 = this.worldObj.getTileEntity(this.xCoord + direction.offsetX, this.yCoord + direction.offsetY,
+							this.zCoord + direction.offsetZ);
 
 					if (tileEntity instanceof IEnergyHandler)
-						inputEnergy -= receiveEnergy(ForgeDirection.UNKNOWN,
+						inputEnergy -= this.receiveEnergy(ForgeDirection.UNKNOWN,
 								((IEnergyHandler) tileEntity).extractEnergy(direction.getOpposite(), inputEnergy, false), false);
 				}
 				else
 					break;
-		if (buffer.getEnergyStored() > RFPerZap)
+		if (this.buffer.getEnergyStored() > RFPerZap)
 		{
-			if (getWorldObj().isBlockIndirectlyGettingPowered(xCoord, yCoord, zCoord) && (buffer.getEnergyStored() > RFPerZap))
+			if (this.getWorldObj().isBlockIndirectlyGettingPowered(this.xCoord, this.yCoord, this.zCoord)
+					&& (this.buffer.getEnergyStored() > RFPerZap))
 			{
-				AxisAlignedBB axisalignedbb2 = AxisAlignedBB.getBoundingBox((double) xCoord - 5, (double) yCoord - 5, (double) zCoord - 5,
-						xCoord + 5, yCoord + 5, zCoord + 5);
-				List list2 = worldObj.getEntitiesWithinAABB(EntityPlayer.class, axisalignedbb2);
+				AxisAlignedBB axisalignedbb2 = AxisAlignedBB.getBoundingBox((double) this.xCoord - 5, (double) this.yCoord - 5,
+						(double) this.zCoord - 5, this.xCoord + 5, this.yCoord + 5, this.zCoord + 5);
+				List list2 = this.worldObj.getEntitiesWithinAABB(EntityPlayer.class, axisalignedbb2);
 				Iterator iterator2 = list2.iterator();
 				EntityPlayer player;
 
@@ -79,16 +80,17 @@ public class TileTeslaCoil extends TileEntity implements IEnergyHandler
 					player = (EntityPlayer) iterator2.next();
 					player.attackEntityFrom(DamageSourceHandler.electrocution, 3);
 					Random random = new Random();
-					worldObj.spawnParticle("reddust", player.posX + (random.nextFloat() / 2), (player.posY - 0.5F) + (random.nextFloat() / 2),
+					this.worldObj.spawnParticle("reddust", player.posX + (random.nextFloat() / 2), (player.posY - 0.5F) + (random.nextFloat() / 2),
 							player.posZ + (random.nextFloat() / 2), 0, 0, 0);
-					buffer.extractEnergy(RFPerZap, false);
+					this.buffer.extractEnergy(RFPerZap, false);
 				}
 			}
-			else if ((getWorldObj().getBlock(xCoord, yCoord - 1, zCoord) == Blocks.emerald_block) && (buffer.getEnergyStored() > RFPerZap))
+			else if ((this.getWorldObj().getBlock(this.xCoord, this.yCoord - 1, this.zCoord) == Blocks.emerald_block)
+					&& (this.buffer.getEnergyStored() > RFPerZap))
 			{
-				AxisAlignedBB axisalignedbb = AxisAlignedBB.getBoundingBox((double) xCoord - 5, (double) yCoord - 5, (double) zCoord - 5, xCoord + 5,
-						yCoord + 5, zCoord + 5);
-				List list = worldObj.getEntitiesWithinAABB(EntityVillager.class, axisalignedbb);
+				AxisAlignedBB axisalignedbb = AxisAlignedBB.getBoundingBox((double) this.xCoord - 5, (double) this.yCoord - 5,
+						(double) this.zCoord - 5, this.xCoord + 5, this.yCoord + 5, this.zCoord + 5);
+				List list = this.worldObj.getEntitiesWithinAABB(EntityVillager.class, axisalignedbb);
 				Iterator iterator = list.iterator();
 				EntityVillager villager;
 
@@ -97,16 +99,16 @@ public class TileTeslaCoil extends TileEntity implements IEnergyHandler
 					villager = (EntityVillager) iterator.next();
 					villager.attackEntityFrom(DamageSourceHandler.electrocution, 3);
 					Random random = new Random();
-					worldObj.spawnParticle("reddust", villager.posX + (random.nextFloat() / 3), villager.posY + (random.nextFloat() / 3),
+					this.worldObj.spawnParticle("reddust", villager.posX + (random.nextFloat() / 3), villager.posY + (random.nextFloat() / 3),
 							villager.posZ + (random.nextFloat() / 3), 0, 0, 0);
-					buffer.extractEnergy(RFPerZap, false);
+					this.buffer.extractEnergy(RFPerZap, false);
 				}
 			}
-			else if (buffer.getEnergyStored() > RFPerZap)
+			else if (this.buffer.getEnergyStored() > RFPerZap)
 			{
-				AxisAlignedBB axisalignedbb = AxisAlignedBB.getBoundingBox((double) xCoord - 5, (double) yCoord - 5, (double) zCoord - 5, xCoord + 5,
-						yCoord + 5, zCoord + 5);
-				List list = worldObj.getEntitiesWithinAABB(EntityLiving.class, axisalignedbb);
+				AxisAlignedBB axisalignedbb = AxisAlignedBB.getBoundingBox((double) this.xCoord - 5, (double) this.yCoord - 5,
+						(double) this.zCoord - 5, this.xCoord + 5, this.yCoord + 5, this.zCoord + 5);
+				List list = this.worldObj.getEntitiesWithinAABB(EntityLiving.class, axisalignedbb);
 				Iterator iterator = list.iterator();
 				EntityLiving living;
 
@@ -115,12 +117,12 @@ public class TileTeslaCoil extends TileEntity implements IEnergyHandler
 					living = (EntityLiving) iterator.next();
 					living.attackEntityFrom(DamageSourceHandler.electrocution, 3);
 					Random random = new Random();
-					worldObj.spawnParticle("reddust", living.posX + (random.nextFloat() / 2), living.posY + (random.nextFloat() / 2), living.posZ
-							+ (random.nextFloat() / 2), 0, 0, 0);
-					buffer.extractEnergy(RFPerZap, false);
+					this.worldObj.spawnParticle("reddust", living.posX + (random.nextFloat() / 2), living.posY + (random.nextFloat() / 2),
+							living.posZ + (random.nextFloat() / 2), 0, 0, 0);
+					this.buffer.extractEnergy(RFPerZap, false);
 				}
 			}
-			buffer.extractEnergy(RFPerTick, false);
+			this.buffer.extractEnergy(RFPerTick, false);
 		}
 	}
 
@@ -128,14 +130,14 @@ public class TileTeslaCoil extends TileEntity implements IEnergyHandler
 	public void readFromNBT(NBTTagCompound tag)
 	{
 		super.readFromNBT(tag);
-		buffer.readFromNBT(tag);
+		this.buffer.readFromNBT(tag);
 	}
 
 	@Override
 	public void writeToNBT(NBTTagCompound tag)
 	{
 		super.writeToNBT(tag);
-		buffer.writeToNBT(tag);
+		this.buffer.writeToNBT(tag);
 	}
 
 	@Override
@@ -147,7 +149,7 @@ public class TileTeslaCoil extends TileEntity implements IEnergyHandler
 	@Override
 	public int receiveEnergy(ForgeDirection from, int maxReceive, boolean simulate)
 	{
-		return buffer.receiveEnergy(maxReceive, simulate);
+		return this.buffer.receiveEnergy(maxReceive, simulate);
 	}
 
 	@Override
@@ -159,12 +161,12 @@ public class TileTeslaCoil extends TileEntity implements IEnergyHandler
 	@Override
 	public int getEnergyStored(ForgeDirection from)
 	{
-		return buffer.getEnergyStored();
+		return this.buffer.getEnergyStored();
 	}
 
 	@Override
 	public int getMaxEnergyStored(ForgeDirection from)
 	{
-		return buffer.getMaxEnergyStored();
+		return this.buffer.getMaxEnergyStored();
 	}
 }

@@ -40,19 +40,19 @@ public class InventoryVanity implements IInventory
 	@Override
 	public int getSizeInventory()
 	{
-		return inventory.length;
+		return this.inventory.length;
 	}
 
 	@Override
 	public ItemStack getStackInSlot(final int slot)
 	{
-		return inventory[slot];
+		return this.inventory[slot];
 	}
 
 	@Override
 	public ItemStack decrStackSize(final int slot, final int amount)
 	{
-		ItemStack is = getStackInSlot(slot);
+		ItemStack is = this.getStackInSlot(slot);
 
 		if (is != null)
 		{
@@ -61,12 +61,12 @@ public class InventoryVanity implements IInventory
 				is = is.splitStack(amount);
 
 				if (is.stackSize == 0)
-					setInventorySlotContents(slot, null);
+					this.setInventorySlotContents(slot, null);
 			}
 			else
-				setInventorySlotContents(slot, null);
+				this.setInventorySlotContents(slot, null);
 
-			markDirty();
+			this.markDirty();
 		}
 
 		return is;
@@ -75,10 +75,10 @@ public class InventoryVanity implements IInventory
 	@Override
 	public ItemStack getStackInSlotOnClosing(final int slot)
 	{
-		final ItemStack is = getStackInSlot(slot);
+		final ItemStack is = this.getStackInSlot(slot);
 
 		if (is != null)
-			setInventorySlotContents(slot, null);
+			this.setInventorySlotContents(slot, null);
 
 		return is;
 	}
@@ -86,12 +86,12 @@ public class InventoryVanity implements IInventory
 	@Override
 	public void setInventorySlotContents(final int slot, final ItemStack is)
 	{
-		inventory[slot] = is;
+		this.inventory[slot] = is;
 
-		if ((is != null) && (is.stackSize > getInventoryStackLimit()))
-			is.stackSize = getInventoryStackLimit();
+		if ((is != null) && (is.stackSize > this.getInventoryStackLimit()))
+			is.stackSize = this.getInventoryStackLimit();
 
-		markDirty();
+		this.markDirty();
 	}
 
 	@Override
@@ -116,33 +116,33 @@ public class InventoryVanity implements IInventory
 	{
 		final NBTTagList tagList = new NBTTagList();
 
-		for (int i = 0; i < getSizeInventory(); ++i)
-			if (getStackInSlot(i) != null)
+		for (int i = 0; i < this.getSizeInventory(); ++i)
+			if (this.getStackInSlot(i) != null)
 			{
 				final NBTTagCompound newTagCompound = new NBTTagCompound();
 				newTagCompound.setByte("Slot", (byte) i);
-				getStackInSlot(i).writeToNBT(newTagCompound);
+				this.getStackInSlot(i).writeToNBT(newTagCompound);
 				tagList.appendTag(newTagCompound);
 			}
 
 		// We're storing our items in a custom tag list using our 'tagName' from
 		// above
 		// to prevent potential conflicts
-		tagCompound.setTag(tagName, tagList);
+		tagCompound.setTag(this.tagName, tagList);
 	}
 
 	public void readFromNBT(NBTTagCompound compound)
 	{
 		// now you must include the NBTBase type ID when getting the list;
 		// NBTTagCompound's ID is 10
-		NBTTagList items = compound.getTagList(tagName, compound.getId());
+		NBTTagList items = compound.getTagList(this.tagName, compound.getId());
 		for (int i = 0; i < items.tagCount(); ++i)
 		{
 			// tagAt(int) has changed to getCompoundTagAt(int)
 			NBTTagCompound item = items.getCompoundTagAt(i);
 			byte slot = item.getByte("Slot");
-			if ((slot >= 0) && (slot < getSizeInventory()))
-				inventory[slot] = ItemStack.loadItemStackFromNBT(item);
+			if ((slot >= 0) && (slot < this.getSizeInventory()))
+				this.inventory[slot] = ItemStack.loadItemStackFromNBT(item);
 		}
 	}
 
@@ -154,7 +154,7 @@ public class InventoryVanity implements IInventory
 	@Override
 	public String getInventoryName()
 	{
-		return name;
+		return this.name;
 	}
 
 	@Override
@@ -166,9 +166,9 @@ public class InventoryVanity implements IInventory
 	@Override
 	public void markDirty()
 	{
-		for (int slot = 0; slot < getSizeInventory(); ++slot)
-			if ((getStackInSlot(slot) != null) && (getStackInSlot(slot).stackSize == 0))
-				setInventorySlotContents(slot, null);
+		for (int slot = 0; slot < this.getSizeInventory(); ++slot)
+			if ((this.getStackInSlot(slot) != null) && (this.getStackInSlot(slot).stackSize == 0))
+				this.setInventorySlotContents(slot, null);
 	}
 
 	@Override

@@ -35,20 +35,20 @@ public class ItemMachinePart extends BaseItemWithMetadata
 	public ItemMachinePart()
 	{
 		super();
-		setMaxStackSize(64);
+		this.setMaxStackSize(64);
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister ir)
 	{
-		itemIcon[0] = ir.registerIcon(LibInfo.PREFIX + "itemCastIronRod");
-		itemIcon[1] = ir.registerIcon(LibInfo.PREFIX + "itemClockworkMechanism");
-		itemIcon[2] = ir.registerIcon(LibInfo.PREFIX + "itemGrating");
-		itemIcon[3] = ir.registerIcon(LibInfo.PREFIX + "itemMagnet");
-		itemIcon[4] = ir.registerIcon(LibInfo.PREFIX + "itemGenerator");
-		itemIcon[5] = ir.registerIcon(LibInfo.PREFIX + "itemFan");
-		itemIcon[6] = ir.registerIcon(LibInfo.PREFIX + "itemWireCoil");
+		this.itemIcon[0] = ir.registerIcon(LibInfo.PREFIX + "itemCastIronRod");
+		this.itemIcon[1] = ir.registerIcon(LibInfo.PREFIX + "itemClockworkMechanism");
+		this.itemIcon[2] = ir.registerIcon(LibInfo.PREFIX + "itemGrating");
+		this.itemIcon[3] = ir.registerIcon(LibInfo.PREFIX + "itemMagnet");
+		this.itemIcon[4] = ir.registerIcon(LibInfo.PREFIX + "itemGenerator");
+		this.itemIcon[5] = ir.registerIcon(LibInfo.PREFIX + "itemFan");
+		this.itemIcon[6] = ir.registerIcon(LibInfo.PREFIX + "itemWireCoil");
 		// itemIcon[7] = ir.registerIcon(LibInfo.PREFIX + "itemCapacitor");
 		// itemIcon[9] = ir.registerIcon(LibInfo.PREFIX + "itemWireCoil");
 	}
@@ -58,7 +58,7 @@ public class ItemMachinePart extends BaseItemWithMetadata
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(Item item, CreativeTabs tab, List l)
 	{
-		for (int var4 = 0; var4 < itemIcon.length; ++var4)
+		for (int var4 = 0; var4 < this.itemIcon.length; ++var4)
 			l.add(new ItemStack(InitItems.itemMachinePart, 1, var4));
 	}
 
@@ -66,6 +66,6 @@ public class ItemMachinePart extends BaseItemWithMetadata
 	@SideOnly(Side.CLIENT)
 	public IIcon getIconFromDamage(int itemDamage)
 	{
-		return itemIcon[itemDamage];
+		return this.itemIcon[itemDamage];
 	}
 }

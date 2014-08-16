@@ -42,15 +42,15 @@ public class ItemBrassArmor extends BaseArmor
 	public ItemBrassArmor(ItemArmor.ArmorMaterial armorMat, int renderIndex, int armorType)
 	{
 		super(armorMat, renderIndex, armorType);
-		setMaxStackSize(1);
-		setCreativeTab(Steamcraft.tabSC2);
+		this.setMaxStackSize(1);
+		this.setCreativeTab(Steamcraft.tabSC2);
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister ir)
 	{
-		itemIcon = ir.registerIcon(LibInfo.PREFIX + "armor/" + this.getUnlocalizedName().substring(5));
+		this.itemIcon = ir.registerIcon(LibInfo.PREFIX + "armor/" + this.getUnlocalizedName().substring(5));
 	}
 
 	@Override
@@ -73,8 +73,8 @@ public class ItemBrassArmor extends BaseArmor
 		if (stack != null)
 		{
 			list.add("Modules:");
-			for (int i = 0; i < modules.size(); i++)
-				list.add(modules.get(i).getName());
+			for (int i = 0; i < this.modules.size(); i++)
+				list.add(this.modules.get(i).getName());
 		}
 	}
 
@@ -82,9 +82,9 @@ public class ItemBrassArmor extends BaseArmor
 	public void onArmorTick(World world, EntityPlayer player, ItemStack is)
 	{
 		// System.out.print(modules);
-		for (int i = 0; i < modules.size(); i++)
-			if (modules.get(i).getArmorEffectType() == EnumArmorEffectType.ONTICK)
-				modules.get(i).getArmorEffect(world, player, is);
+		for (int i = 0; i < this.modules.size(); i++)
+			if (this.modules.get(i).getArmorEffectType() == EnumArmorEffectType.ONTICK)
+				this.modules.get(i).getArmorEffect(world, player, is);
 	}
 
 	/*
@@ -97,9 +97,9 @@ public class ItemBrassArmor extends BaseArmor
 
 	private IModule getModuleFromName(String string)
 	{
-		for (int i = 0; i < modules.size(); i++)
-			if (modules.get(i).getName() == string)
-				return modules.get(i);
+		for (int i = 0; i < this.modules.size(); i++)
+			if (this.modules.get(i).getName() == string)
+				return this.modules.get(i);
 			else
 				return null;
 		return null;

@@ -67,20 +67,20 @@ public class BlockBloomery extends BlockContainerMod
 	public IIcon getIcon(int side, int meta)
 	{
 		if (side == (meta - 7))
-			return iconFrontActive;
+			return this.iconFrontActive;
 		if (((meta == 0) && (side == 3)) || (side == meta))
-			return iconFront;
+			return this.iconFront;
 		switch (side)
 		{
 		case 0:
-			return blockIcon; // bottom
+			return this.blockIcon; // bottom
 		case 1:
 			if (meta > 7)
-				return iconTopActive;
+				return this.iconTopActive;
 			else
-				return iconTop;// top
+				return this.iconTop;// top
 		default:
-			return blockIcon; // sides
+			return this.blockIcon; // sides
 		}
 	}
 
@@ -88,11 +88,11 @@ public class BlockBloomery extends BlockContainerMod
 	@Override
 	public void registerBlockIcons(IIconRegister icon)
 	{
-		blockIcon = icon.registerIcon(LibInfo.PREFIX + "blockBloomerySide");
-		iconFront = icon.registerIcon(LibInfo.PREFIX + "blockBloomeryFrontInactive");
-		iconFrontActive = icon.registerIcon(LibInfo.PREFIX + "blockBloomeryFrontActive");
-		iconTop = icon.registerIcon(LibInfo.PREFIX + "blockBloomeryTopInactive");
-		iconTopActive = icon.registerIcon(LibInfo.PREFIX + "blockBloomeryTopActive");
+		this.blockIcon = icon.registerIcon(LibInfo.PREFIX + "blockBloomerySide");
+		this.iconFront = icon.registerIcon(LibInfo.PREFIX + "blockBloomeryFrontInactive");
+		this.iconFrontActive = icon.registerIcon(LibInfo.PREFIX + "blockBloomeryFrontActive");
+		this.iconTop = icon.registerIcon(LibInfo.PREFIX + "blockBloomeryTopInactive");
+		this.iconTopActive = icon.registerIcon(LibInfo.PREFIX + "blockBloomeryTopActive");
 	}
 
 	@Override
@@ -200,13 +200,13 @@ public class BlockBloomery extends BlockContainerMod
 
 				if (var9 != null)
 				{
-					float var10 = (random.nextFloat() * 0.8F) + 0.1F;
-					float var11 = (random.nextFloat() * 0.8F) + 0.1F;
-					float var12 = (random.nextFloat() * 0.8F) + 0.1F;
+					float var10 = (this.random.nextFloat() * 0.8F) + 0.1F;
+					float var11 = (this.random.nextFloat() * 0.8F) + 0.1F;
+					float var12 = (this.random.nextFloat() * 0.8F) + 0.1F;
 
 					while (var9.stackSize > 0)
 					{
-						int var13 = random.nextInt(21) + 10;
+						int var13 = this.random.nextInt(21) + 10;
 
 						if (var13 > var9.stackSize)
 							var13 = var9.stackSize;
@@ -219,9 +219,9 @@ public class BlockBloomery extends BlockContainerMod
 							var14.getEntityItem().setTagCompound((NBTTagCompound) var9.getTagCompound().copy());
 
 						float var15 = 0.05F;
-						var14.motionX = (float) random.nextGaussian() * var15;
-						var14.motionY = ((float) random.nextGaussian() * var15) + 0.2F;
-						var14.motionZ = (float) random.nextGaussian() * var15;
+						var14.motionX = (float) this.random.nextGaussian() * var15;
+						var14.motionY = ((float) this.random.nextGaussian() * var15) + 0.2F;
+						var14.motionZ = (float) this.random.nextGaussian() * var15;
 						par1World.spawnEntityInWorld(var14);
 					}
 				}

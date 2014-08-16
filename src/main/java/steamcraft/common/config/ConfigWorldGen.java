@@ -74,7 +74,7 @@ public class ConfigWorldGen
 	public static void initialize(File configFile)
 	{
 		config = new Configuration(configFile);
-		
+
 		try
 		{
 			config.load();
@@ -147,12 +147,10 @@ public class ConfigWorldGen
 
 			endEtheriumCrystalHeightMax = config.get(CATEGORY_GEN_HEIGHT, "Etherium Crystal Max (End)", 100).getInt();
 			endEtheriumCrystalHeightMin = config.get(CATEGORY_GEN_HEIGHT, "Etherium Crystal Min (End)", 20).getInt();
-		} 
-		catch (Exception e)
+		} catch (Exception e)
 		{
 			LoggerSteamcraft.log(Level.SEVERE, "Failed to load configuration file:" + e);
-		} 
-		finally
+		} finally
 		{
 			if (config.hasChanged())
 				config.save();

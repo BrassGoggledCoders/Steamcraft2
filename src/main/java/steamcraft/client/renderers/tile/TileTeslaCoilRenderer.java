@@ -33,7 +33,7 @@ public class TileTeslaCoilRenderer extends TileEntitySpecialRenderer
 	 */
 	public TileTeslaCoilRenderer()
 	{
-		model = new ModelCrystal();
+		this.model = new ModelCrystal();
 	}
 
 	/*
@@ -52,7 +52,7 @@ public class TileTeslaCoilRenderer extends TileEntitySpecialRenderer
 		Minecraft.getMinecraft().renderEngine.bindTexture(crystal);
 		GL11.glPushMatrix();
 		GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
-		model.render((Entity) null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
+		this.model.render((Entity) null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
 		GL11.glPopMatrix();
 		GL11.glPopMatrix();
 	}

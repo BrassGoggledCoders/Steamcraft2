@@ -27,7 +27,7 @@ import steamcraft.common.tiles.TileCopperWire;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class BlockCopperWire extends BlockContainerMod
 {
@@ -37,8 +37,8 @@ public class BlockCopperWire extends BlockContainerMod
 	{
 		super(p_i45394_1_);
 
-		setBlockBounds(6 * pixel, 4 * pixel, 6 * pixel, 1 - (6 * pixel), 1 - (4 * pixel), 1 - (6 * pixel));
-		useNeighborBrightness = true;
+		this.setBlockBounds(6 * pixel, 4 * pixel, 6 * pixel, 1 - (6 * pixel), 1 - (4 * pixel), 1 - (6 * pixel));
+		this.useNeighborBrightness = true;
 	}
 
 	@Override
@@ -127,12 +127,15 @@ public class BlockCopperWire extends BlockContainerMod
 			float minZ = (6 * pixel) - (wire.connections[2] != null ? 6 * pixel : 0);
 			float maxZ = (1 - (6 * pixel)) + (wire.connections[3] != null ? 6 * pixel : 0);
 
-			setBlockBounds(minX, minY, minZ, maxX, maxY, maxZ);
+			this.setBlockBounds(minX, minY, minZ, maxX, maxY, maxZ);
 		}
 
-		return AxisAlignedBB.getBoundingBox(x + minX, y + minY, z + minZ, x + maxX, y + maxY, z + maxZ);
+		return AxisAlignedBB.getBoundingBox(x + this.minX, y + this.minY, z + this.minZ, x + this.maxX, y + this.maxY, z + this.maxZ);
 	}
-	public void onEntityCollidedWithBlock(World p_149670_1_, int p_149670_2_, int p_149670_3_, int p_149670_4_, Entity entity) {
+
+	@Override
+	public void onEntityCollidedWithBlock(World p_149670_1_, int p_149670_2_, int p_149670_3_, int p_149670_4_, Entity entity)
+	{
 		entity.attackEntityFrom(DamageSourceHandler.electrocution, 0.5F);
 	}
 

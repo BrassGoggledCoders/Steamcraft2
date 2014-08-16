@@ -25,17 +25,17 @@ import steamcraft.common.tiles.TileCopperPipe;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class BlockCopperPipe extends BlockContainerMod
 {
-	static float pixel = 1/16f;
-	
+	static float pixel = 1 / 16f;
+
 	public BlockCopperPipe(Material mat)
 	{
 		super(mat);
-		
-		this.setBlockBounds(6*pixel, 6*pixel, 6*pixel, 1-6*pixel, 1-6*pixel, 1-6*pixel);
+
+		this.setBlockBounds(6 * pixel, 6 * pixel, 6 * pixel, 1 - (6 * pixel), 1 - (6 * pixel), 1 - (6 * pixel));
 		this.useNeighborBrightness = true;
 	}
 
@@ -62,106 +62,100 @@ public class BlockCopperPipe extends BlockContainerMod
 	{
 		return -1;
 	}
-	
+
 	@Override
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entityLiving, ItemStack is)
 	{
 		super.onBlockPlacedBy(world, x, y, z, entityLiving, is);
-		
+
 		TileCopperPipe tile = (TileCopperPipe) world.getTileEntity(x, y, z);
-		
-		if(tile!=null)
+
+		if (tile != null)
 		{
 			tile.network = null;
 			tile.updateConnections();
 		}
 	}
-	
+
 	@Override
 	public void onNeighborChange(IBlockAccess world, int x, int y, int z, int tileX, int tileY, int tileZ)
-	{		
-		if(world.getBlock(tileX, tileY, tileZ) != InitBlocks.blockCopperPipe)
+	{
+		if (world.getBlock(tileX, tileY, tileZ) != InitBlocks.blockCopperPipe)
 		{
 			TileCopperPipe tile = (TileCopperPipe) world.getTileEntity(x, y, z);
 			tile.updateConnections();
 		}
 	}
-	
+
 	@Override
-	public void breakBlock(World world, int x, int y, int z, Block block, int metadata) //only SERVER side for some reason...
+	public void breakBlock(World world, int x, int y, int z, Block block, int metadata) // only
+																						// SERVER
+																						// side
+																						// for
+																						// some
+																						// reason...
 	{
 		TileCopperPipe tile = (TileCopperPipe) world.getTileEntity(x, y, z);
-		
-		if(tile!=null)
+
+		if (tile != null)
 			tile.removeFromNetwork();
-		
+
 		super.breakBlock(world, x, y, z, block, metadata);
 	}
-	
+
 	@Override
 	public AxisAlignedBB getSelectedBoundingBoxFromPool(World world, int x, int y, int z)
 	{
-		return getBoundingBox(world, x, y, z);
+		return this.getBoundingBox(world, x, y, z);
 	}
-	
+
 	@Override
 	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z)
 	{
-		return getBoundingBox(world, x, y, z);
+		return this.getBoundingBox(world, x, y, z);
 	}
-	
+
 	private AxisAlignedBB getBoundingBox(World world, int x, int y, int z)
 	{
 		TileCopperPipe pipe = (TileCopperPipe) world.getTileEntity(x, y, z);
-		
-		if(pipe!=null)
+
+		if (pipe != null)
 		{
-			float minX = 5*pixel-(pipe.connections[4]!=null ? 5*pixel : 0);
-			float maxX = 1-5*pixel+(pipe.connections[5]!=null ? 5*pixel : 0);
-			
-			float minY = 5*pixel-(pipe.connections[0]!=null ? 5*pixel : 0);
-			float maxY = 1-5*pixel+(pipe.connections[1]!=null ? 5*pixel : 0);
-			
-			float minZ = 5*pixel-(pipe.connections[2]!=null ? 5*pixel : 0);
-			float maxZ = 1-5*pixel+(pipe.connections[3]!=null ? 5*pixel : 0);
-			
+			float minX = (5 * pixel) - (pipe.connections[4] != null ? 5 * pixel : 0);
+			float maxX = (1 - (5 * pixel)) + (pipe.connections[5] != null ? 5 * pixel : 0);
+
+			float minY = (5 * pixel) - (pipe.connections[0] != null ? 5 * pixel : 0);
+			float maxY = (1 - (5 * pixel)) + (pipe.connections[1] != null ? 5 * pixel : 0);
+
+			float minZ = (5 * pixel) - (pipe.connections[2] != null ? 5 * pixel : 0);
+			float maxZ = (1 - (5 * pixel)) + (pipe.connections[3] != null ? 5 * pixel : 0);
+
 			this.setBlockBounds(minX, minY, minZ, maxX, maxY, maxZ);
 		}
-		
-		return AxisAlignedBB.getBoundingBox(x+this.minX, y+this.minY, z+this.minZ, x+this.maxX, y+this.maxY, z+this.maxZ);
+
+		return AxisAlignedBB.getBoundingBox(x + this.minX, y + this.minY, z + this.minZ, x + this.maxX, y + this.maxY, z + this.maxZ);
 	}
-	
+
 	/*
-	@Override
-	public void setBlockBoundsBasedOnState(IBlockAccess par1IBlockAccess, int x, int y, int z)
-	{
-		this.setBlockBounds(0.33F, 0.2F, 0.33F, 0.67F, 0.53F, 0.67F);
-		float minx = (float) this.minX;
-		float maxx = (float) this.maxX;
-		float miny = (float) this.minY;
-		float maxy = (float) this.maxY;
-		float minz = (float) this.minZ;
-		float maxz = (float) this.maxZ;
-
-		if (par1IBlockAccess.getBlock(x - 1, y, z) == this)
-			minx = 0;
-
-		if (par1IBlockAccess.getBlock(x + 1, y, z) == this)
-			maxx = 1;
-
-		if (par1IBlockAccess.getBlock(x, y - 1, z) == this)
-			miny = 0;
-
-		if (par1IBlockAccess.getBlock(x, y + 1, z) == this)
-			maxy = 1;
-
-		if (par1IBlockAccess.getBlock(x, y, z - 1) == this)
-			minz = 0;
-
-		if (par1IBlockAccess.getBlock(x, y, z + 1) == this)
-			maxz = 1;
-
-		this.setBlockBounds(minx, miny, minz, maxx, maxy, maxz);
-	}
-	*/
+	 * @Override public void setBlockBoundsBasedOnState(IBlockAccess
+	 * par1IBlockAccess, int x, int y, int z) { this.setBlockBounds(0.33F, 0.2F,
+	 * 0.33F, 0.67F, 0.53F, 0.67F); float minx = (float) this.minX; float maxx =
+	 * (float) this.maxX; float miny = (float) this.minY; float maxy = (float)
+	 * this.maxY; float minz = (float) this.minZ; float maxz = (float)
+	 * this.maxZ;
+	 * 
+	 * if (par1IBlockAccess.getBlock(x - 1, y, z) == this) minx = 0;
+	 * 
+	 * if (par1IBlockAccess.getBlock(x + 1, y, z) == this) maxx = 1;
+	 * 
+	 * if (par1IBlockAccess.getBlock(x, y - 1, z) == this) miny = 0;
+	 * 
+	 * if (par1IBlockAccess.getBlock(x, y + 1, z) == this) maxy = 1;
+	 * 
+	 * if (par1IBlockAccess.getBlock(x, y, z - 1) == this) minz = 0;
+	 * 
+	 * if (par1IBlockAccess.getBlock(x, y, z + 1) == this) maxz = 1;
+	 * 
+	 * this.setBlockBounds(minx, miny, minz, maxx, maxy, maxz); }
+	 */
 }

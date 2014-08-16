@@ -32,41 +32,41 @@ public class ModelTeslaCoil extends ModelBase
 
 	public ModelTeslaCoil()
 	{
-		center = new ModelRenderer(this, 0, 0);
-		center.addBox(-1.5F, 7.5F, -1.5F, 3, 15, 3, 0);
+		this.center = new ModelRenderer(this, 0, 0);
+		this.center.addBox(-1.5F, 7.5F, -1.5F, 3, 15, 3, 0);
 
-		top = new ModelRenderer(this, 0, 0);
-		top.addBox(-2.5F, 4.5F, -2.5F, 5, 5, 5, 0);
+		this.top = new ModelRenderer(this, 0, 0);
+		this.top.addBox(-2.5F, 4.5F, -2.5F, 5, 5, 5, 0);
 
-		fin1 = new ModelRenderer(this, 0, 0);
-		fin1.addBox(-3.5F, 11.0F, -3.5F, 7, 2, 7, 0);
+		this.fin1 = new ModelRenderer(this, 0, 0);
+		this.fin1.addBox(-3.5F, 11.0F, -3.5F, 7, 2, 7, 0);
 
-		fin2 = new ModelRenderer(this, 0, 0);
-		fin2.addBox(-4.5F, 15.0F, -4.5F, 9, 2, 9, 0);
+		this.fin2 = new ModelRenderer(this, 0, 0);
+		this.fin2.addBox(-4.5F, 15.0F, -4.5F, 9, 2, 9, 0);
 
-		fin3 = new ModelRenderer(this, 0, 0);
-		fin3.addBox(-5.5F, 19.0F, -5.5F, 11, 2, 11, 0);
+		this.fin3 = new ModelRenderer(this, 0, 0);
+		this.fin3.addBox(-5.5F, 19.0F, -5.5F, 11, 2, 11, 0);
 
 	}
 
 	public void render(final float f, final float f1, final float f2, final float f3, final float f4, final float f5)
 	{
 		this.setRotationAngles(f, f1, f2, f3, f4, f5);
-		center.render(f5);
-		top.render(f5);
-		fin1.render(f5);
-		fin2.render(f5);
-		fin3.render(f5);
+		this.center.render(f5);
+		this.top.render(f5);
+		this.fin1.render(f5);
+		this.fin2.render(f5);
+		this.fin3.render(f5);
 	}
 
 	public void renderModel(final float f, final float f1, final float f2, final float f3, final float f4, final float f5)
 	{
 		this.setRotationAngles(f, f1, f2, f3, f4, f5);
-		center.render(f5);
-		top.render(f5);
-		fin1.render(f5);
-		fin2.render(f5);
-		fin3.render(f5);
+		this.center.render(f5);
+		this.top.render(f5);
+		this.fin1.render(f5);
+		this.fin2.render(f5);
+		this.fin3.render(f5);
 	}
 
 	// Method you're going to want to override:

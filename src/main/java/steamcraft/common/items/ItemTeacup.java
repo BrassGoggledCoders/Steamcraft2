@@ -36,17 +36,17 @@ public class ItemTeacup extends BaseItemWithMetadata
 	public ItemTeacup()
 	{
 		super();
-		setMaxStackSize(1);
-		setNoRepair();
-		setFull3D();
+		this.setMaxStackSize(1);
+		this.setNoRepair();
+		this.setFull3D();
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister icon)
 	{
-		itemIcon[0] = icon.registerIcon(LibInfo.PREFIX + this.getUnlocalizedName().substring(5) + "Empty");
-		itemIcon[1] = icon.registerIcon(LibInfo.PREFIX + this.getUnlocalizedName().substring(5) + "Full");
+		this.itemIcon[0] = icon.registerIcon(LibInfo.PREFIX + this.getUnlocalizedName().substring(5) + "Empty");
+		this.itemIcon[1] = icon.registerIcon(LibInfo.PREFIX + this.getUnlocalizedName().substring(5) + "Full");
 	}
 
 	@Override
@@ -98,8 +98,8 @@ public class ItemTeacup extends BaseItemWithMetadata
 	public IIcon getIconFromDamage(int meta)
 	{
 		if (meta == 0)
-			return itemIcon[0];
+			return this.itemIcon[0];
 		else
-			return itemIcon[1];
+			return this.itemIcon[1];
 	}
 }

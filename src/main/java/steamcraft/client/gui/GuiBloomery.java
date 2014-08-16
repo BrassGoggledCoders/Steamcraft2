@@ -34,15 +34,16 @@ public class GuiBloomery extends GuiContainer
 	public GuiBloomery(InventoryPlayer par1InventoryPlayer, TileBloomery par2TileEntityFurnace)
 	{
 		super(new ContainerBloomery(par1InventoryPlayer, par2TileEntityFurnace));
-		tileFurnace = par2TileEntityFurnace;
+		this.tileFurnace = par2TileEntityFurnace;
 	}
 
 	@Override
 	protected void drawGuiContainerForegroundLayer(int p_146979_1_, int p_146979_2_)
 	{
-		String s = tileFurnace.hasCustomInventoryName() ? tileFurnace.getInventoryName() : I18n.format(tileFurnace.getInventoryName(), new Object[0]);
-		fontRendererObj.drawString(s, (xSize / 2) - (fontRendererObj.getStringWidth(s) / 2), 6, 4210752);
-		fontRendererObj.drawString(I18n.format("container.inventory", new Object[0]), 8, (ySize - 96) + 2, 4210752);
+		String s = this.tileFurnace.hasCustomInventoryName() ? this.tileFurnace.getInventoryName() : I18n.format(this.tileFurnace.getInventoryName(),
+				new Object[0]);
+		this.fontRendererObj.drawString(s, (this.xSize / 2) - (this.fontRendererObj.getStringWidth(s) / 2), 6, 4210752);
+		this.fontRendererObj.drawString(I18n.format("container.inventory", new Object[0]), 8, (this.ySize - 96) + 2, 4210752);
 	}
 
 	@Override
@@ -50,18 +51,18 @@ public class GuiBloomery extends GuiContainer
 	{
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 
-		mc.getTextureManager().bindTexture(furnaceGuiTextures);
-		drawTexturedModalRect(guiLeft, guiTop, 0, 0, xSize, ySize);
+		this.mc.getTextureManager().bindTexture(furnaceGuiTextures);
+		this.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize);
 
 		int i1;
 
-		if (tileFurnace.isBurning())
+		if (this.tileFurnace.isBurning())
 		{
-			i1 = tileFurnace.getBurnTimeRemainingScaled(12);
-			drawTexturedModalRect(guiLeft + 46, (guiTop + 36 + 12) - i1, 176, 12 - i1, 14, i1 + 2);
+			i1 = this.tileFurnace.getBurnTimeRemainingScaled(12);
+			this.drawTexturedModalRect(this.guiLeft + 46, (this.guiTop + 36 + 12) - i1, 176, 12 - i1, 14, i1 + 2);
 		}
 
-		i1 = tileFurnace.getCookProgressScaled(24);
-		drawTexturedModalRect(guiLeft + 79, guiTop + 34, 176, 14, i1 + 1, 16);
+		i1 = this.tileFurnace.getCookProgressScaled(24);
+		this.drawTexturedModalRect(this.guiLeft + 79, this.guiTop + 34, 176, 14, i1 + 1, 16);
 	}
 }

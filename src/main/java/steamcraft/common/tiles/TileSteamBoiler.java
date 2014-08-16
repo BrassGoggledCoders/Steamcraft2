@@ -47,8 +47,8 @@ public class TileSteamBoiler extends BaseTileWithInventory implements IFluidHand
 	{
 		super((byte) 3);
 
-		waterTank = new FluidTank(new FluidStack(FluidRegistry.WATER, 0), 5000);
-		steamTank = new FluidTank(new FluidStack(FluidRegistry.getFluid("steam"), 0), 10000);
+		this.waterTank = new FluidTank(new FluidStack(FluidRegistry.WATER, 0), 5000);
+		this.steamTank = new FluidTank(new FluidStack(FluidRegistry.getFluid("steam"), 0), 10000);
 	}
 
 	@Override
@@ -56,10 +56,10 @@ public class TileSteamBoiler extends BaseTileWithInventory implements IFluidHand
 	{
 		super.readFromNBT(tag);
 
-		furnaceBurnTime = tag.getShort("BurnTime");
-		currentItemBurnTime = tag.getShort("ItemTime");
-		steamTank.setFluid(new FluidStack(FluidRegistry.getFluid("steam"), tag.getShort("steamLevel")));
-		waterTank.setFluid(new FluidStack(FluidRegistry.getFluid("water"), tag.getShort("waterLevel")));
+		this.furnaceBurnTime = tag.getShort("BurnTime");
+		this.currentItemBurnTime = tag.getShort("ItemTime");
+		this.steamTank.setFluid(new FluidStack(FluidRegistry.getFluid("steam"), tag.getShort("steamLevel")));
+		this.waterTank.setFluid(new FluidStack(FluidRegistry.getFluid("water"), tag.getShort("waterLevel")));
 	}
 
 	@Override
@@ -67,23 +67,23 @@ public class TileSteamBoiler extends BaseTileWithInventory implements IFluidHand
 	{
 		super.writeToNBT(tag);
 
-		tag.setShort("BurnTime", (short) furnaceBurnTime);
-		tag.setShort("ItemTime", (short) currentItemBurnTime);
-		tag.setShort("steamLevel", (short) steamTank.getFluidAmount());
-		tag.setShort("waterLevel", (short) waterTank.getFluidAmount());
+		tag.setShort("BurnTime", (short) this.furnaceBurnTime);
+		tag.setShort("ItemTime", (short) this.currentItemBurnTime);
+		tag.setShort("steamLevel", (short) this.steamTank.getFluidAmount());
+		tag.setShort("waterLevel", (short) this.waterTank.getFluidAmount());
 	}
 
 	public int getBurnTimeRemainingScaled(int par1)
 	{
-		if (currentItemBurnTime == 0)
-			currentItemBurnTime = 200;
+		if (this.currentItemBurnTime == 0)
+			this.currentItemBurnTime = 200;
 
-		return (furnaceBurnTime * par1) / currentItemBurnTime;
+		return (this.furnaceBurnTime * par1) / this.currentItemBurnTime;
 	}
 
 	public boolean isBurning()
 	{
-		return furnaceBurnTime > 0;
+		return this.furnaceBurnTime > 0;
 	}
 
 	@Override
@@ -91,83 +91,83 @@ public class TileSteamBoiler extends BaseTileWithInventory implements IFluidHand
 	{
 		super.updateEntity();
 
-		boolean var1 = furnaceBurnTime > 0;
+		boolean var1 = this.furnaceBurnTime > 0;
 		boolean var2 = false;
 
-		if (!worldObj.isRemote)
+		if (!this.worldObj.isRemote)
 		{
-			if (inventory[1] != null)
+			if (this.inventory[1] != null)
 			{
-				FluidStack liquid = FluidContainerRegistry.getFluidForFilledItem(inventory[1]);
+				FluidStack liquid = FluidContainerRegistry.getFluidForFilledItem(this.inventory[1]);
 
-				if ((liquid != null) && (waterTank.fill(new FluidStack(FluidRegistry.getFluid("water"), liquid.amount), false) == liquid.amount))
+				if ((liquid != null) && (this.waterTank.fill(new FluidStack(FluidRegistry.getFluid("water"), liquid.amount), false) == liquid.amount))
 					if (liquid.getFluid() == FluidRegistry.WATER)
 					{
-						waterTank.fill(new FluidStack(FluidRegistry.getFluid("water"), liquid.amount), true);
+						this.waterTank.fill(new FluidStack(FluidRegistry.getFluid("water"), liquid.amount), true);
 
-						if (inventory[1].stackSize > 1)
-							inventory[1].stackSize--;
+						if (this.inventory[1].stackSize > 1)
+							this.inventory[1].stackSize--;
 						else
-							inventory[1] = inventory[1].getItem().getContainerItem(inventory[1]);
+							this.inventory[1] = this.inventory[1].getItem().getContainerItem(this.inventory[1]);
 					}
 			}
-			if ((inventory[2] != null) && (inventory[2].getItem() instanceof ItemCanister))
+			if ((this.inventory[2] != null) && (this.inventory[2].getItem() instanceof ItemCanister))
 			{
-				ItemCanister canister = (ItemCanister) inventory[2].getItem();
-				if ((steamTank.getFluidAmount() >= steamPerTick) && (canister.getFluidAmount(inventory[2]) != ItemCanister.MAX_STEAM))
+				ItemCanister canister = (ItemCanister) this.inventory[2].getItem();
+				if ((this.steamTank.getFluidAmount() >= steamPerTick) && (canister.getFluidAmount(this.inventory[2]) != ItemCanister.MAX_STEAM))
 				{
-					canister.fill(inventory[2], new FluidStack(FluidRegistry.getFluid("steam"), steamPerTick), true);
-					steamTank.drain(steamPerTick, true);
+					canister.fill(this.inventory[2], new FluidStack(FluidRegistry.getFluid("steam"), steamPerTick), true);
+					this.steamTank.drain(steamPerTick, true);
 				}
 			}
 
-			if ((getItemBurnTime() > 0) && (furnaceBurnTime == 0) && (waterTank.getFluidAmount() >= waterPerTick)
-					&& (steamTank.fill(new FluidStack(FluidRegistry.getFluid("steam"), steamPerTick), false) > 0))
+			if ((this.getItemBurnTime() > 0) && (this.furnaceBurnTime == 0) && (this.waterTank.getFluidAmount() >= waterPerTick)
+					&& (this.steamTank.fill(new FluidStack(FluidRegistry.getFluid("steam"), steamPerTick), false) > 0))
 			{
-				currentItemBurnTime = furnaceBurnTime = getItemBurnTime() / 4;
+				this.currentItemBurnTime = this.furnaceBurnTime = this.getItemBurnTime() / 4;
 
-				if (inventory[0].stackSize == 1)
-					inventory[0] = inventory[0].getItem().getContainerItem(inventory[0]);
+				if (this.inventory[0].stackSize == 1)
+					this.inventory[0] = this.inventory[0].getItem().getContainerItem(this.inventory[0]);
 				else
-					--inventory[0].stackSize;
+					--this.inventory[0].stackSize;
 			}
 
-			if ((furnaceBurnTime > 0) && (waterTank.getFluidAmount() >= waterPerTick) && (steamTank.getFluidAmount() <= 10000))
+			if ((this.furnaceBurnTime > 0) && (this.waterTank.getFluidAmount() >= waterPerTick) && (this.steamTank.getFluidAmount() <= 10000))
 			{
-				steamTank.fill(new FluidStack(FluidRegistry.getFluid("steam"), steamPerTick), true);
-				furnaceBurnTime--;
-				waterTank.drain(waterPerTick, true);
+				this.steamTank.fill(new FluidStack(FluidRegistry.getFluid("steam"), steamPerTick), true);
+				this.furnaceBurnTime--;
+				this.waterTank.drain(waterPerTick, true);
 			}
 			else
-				furnaceBurnTime = 0;
+				this.furnaceBurnTime = 0;
 
-			if (var1 != (furnaceBurnTime > 0))
+			if (var1 != (this.furnaceBurnTime > 0))
 			{
 				var2 = true;
-				BlockSteamBoiler.updateBlockState(furnaceBurnTime > 0, worldObj, xCoord, yCoord, zCoord);
+				BlockSteamBoiler.updateBlockState(this.furnaceBurnTime > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord);
 			}
 		}
 
 		if (var2)
-			markDirty();
+			this.markDirty();
 	}
 
 	private int getItemBurnTime()
 	{
-		if (inventory[0] == null)
+		if (this.inventory[0] == null)
 			return 0;
 
-		return TileEntityFurnace.getItemBurnTime(inventory[0]);
+		return TileEntityFurnace.getItemBurnTime(this.inventory[0]);
 	}
 
 	public int getScaledWaterLevel(int i)
 	{
-		return waterTank.getFluid() != null ? (int) (((float) waterTank.getFluid().amount / (float) waterTank.getCapacity()) * i) : 0;
+		return this.waterTank.getFluid() != null ? (int) (((float) this.waterTank.getFluid().amount / (float) this.waterTank.getCapacity()) * i) : 0;
 	}
 
 	public int getScaledSteamLevel(int i)
 	{
-		return steamTank.getFluid() != null ? (int) (((float) steamTank.getFluid().amount / (float) steamTank.getCapacity()) * i) : 0;
+		return this.steamTank.getFluid() != null ? (int) (((float) this.steamTank.getFluid().amount / (float) this.steamTank.getCapacity()) * i) : 0;
 	}
 
 	@Override
@@ -204,7 +204,7 @@ public class TileSteamBoiler extends BaseTileWithInventory implements IFluidHand
 	public int fill(ForgeDirection from, FluidStack resource, boolean doFill)
 	{
 		if (resource.getFluid() == FluidRegistry.WATER)
-			return waterTank.fill(resource, doFill);
+			return this.waterTank.fill(resource, doFill);
 
 		return 0;
 	}
@@ -212,15 +212,15 @@ public class TileSteamBoiler extends BaseTileWithInventory implements IFluidHand
 	@Override
 	public FluidStack drain(ForgeDirection from, FluidStack resource, boolean doDrain)
 	{
-		if ((resource == null) || !resource.isFluidEqual(steamTank.getFluid()))
+		if ((resource == null) || !resource.isFluidEqual(this.steamTank.getFluid()))
 			return null;
-		return steamTank.drain(resource.amount, doDrain);
+		return this.steamTank.drain(resource.amount, doDrain);
 	}
 
 	@Override
 	public FluidStack drain(ForgeDirection from, int maxDrain, boolean doDrain)
 	{
-		return steamTank.drain(maxDrain, doDrain);
+		return this.steamTank.drain(maxDrain, doDrain);
 	}
 
 	@Override
@@ -242,6 +242,6 @@ public class TileSteamBoiler extends BaseTileWithInventory implements IFluidHand
 	@Override
 	public FluidTankInfo[] getTankInfo(ForgeDirection from)
 	{
-		return new FluidTankInfo[] { steamTank.getInfo(), waterTank.getInfo() };
+		return new FluidTankInfo[] { this.steamTank.getInfo(), this.waterTank.getInfo() };
 	}
 }

@@ -22,7 +22,7 @@ import cpw.mods.fml.common.event.FMLInterModComms;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class CompatabilityLayer
 {
@@ -92,13 +92,13 @@ public class CompatabilityLayer
 		OreDictionary.registerOre("ingotUranium", new ItemStack(InitItems.itemResource, 1, 4));
 		OreDictionary.registerOre("pelletUranium", new ItemStack(InitItems.itemResource, 1, 5));
 
-		OreDictionary.registerOre("partCastIronRod", new ItemStack(InitItems.itemMachinePart,1,0));
-		OreDictionary.registerOre("partClockworkMechanism", new ItemStack(InitItems.itemMachinePart,1,1));
-		OreDictionary.registerOre("partGrating", new ItemStack(InitItems.itemMachinePart,1,2));
-		OreDictionary.registerOre("partMagnet", new ItemStack(InitItems.itemMachinePart,1,3));
-		OreDictionary.registerOre("partGenerator", new ItemStack(InitItems.itemMachinePart,1,4));
-		OreDictionary.registerOre("partFan", new ItemStack(InitItems.itemMachinePart,1,5));
-		OreDictionary.registerOre("partWireCoil", new ItemStack(InitItems.itemMachinePart,1,6));
+		OreDictionary.registerOre("partCastIronRod", new ItemStack(InitItems.itemMachinePart, 1, 0));
+		OreDictionary.registerOre("partClockworkMechanism", new ItemStack(InitItems.itemMachinePart, 1, 1));
+		OreDictionary.registerOre("partGrating", new ItemStack(InitItems.itemMachinePart, 1, 2));
+		OreDictionary.registerOre("partMagnet", new ItemStack(InitItems.itemMachinePart, 1, 3));
+		OreDictionary.registerOre("partGenerator", new ItemStack(InitItems.itemMachinePart, 1, 4));
+		OreDictionary.registerOre("partFan", new ItemStack(InitItems.itemMachinePart, 1, 5));
+		OreDictionary.registerOre("partWireCoil", new ItemStack(InitItems.itemMachinePart, 1, 6));
 
 	}
 }

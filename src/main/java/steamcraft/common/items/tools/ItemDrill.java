@@ -40,8 +40,8 @@ public class ItemDrill extends ItemModTool
 	public ItemDrill(ToolMaterial mat)
 	{
 		super(1.0F, mat, blocksEffectiveAgainst);
-		setCreativeTab(Steamcraft.tabSC2);
-		toolMaterial = mat;
+		this.setCreativeTab(Steamcraft.tabSC2);
+		this.toolMaterial = mat;
 		// this.setMaxDamage(this.toolMaterial.getMaxUses());
 	}
 
@@ -49,7 +49,7 @@ public class ItemDrill extends ItemModTool
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister icon)
 	{
-		itemIcon = icon.registerIcon(LibInfo.PREFIX + "tools/" + this.getUnlocalizedName().substring(5));
+		this.itemIcon = icon.registerIcon(LibInfo.PREFIX + "tools/" + this.getUnlocalizedName().substring(5));
 	}
 
 	@SuppressWarnings("all")
@@ -69,6 +69,6 @@ public class ItemDrill extends ItemModTool
 	{
 		super.addInformation(stack, player, list, flag);
 
-		list.add("Efficiency: " + toolMaterial.getEfficiencyOnProperMaterial());
+		list.add("Efficiency: " + this.toolMaterial.getEfficiencyOnProperMaterial());
 	}
 }

@@ -24,7 +24,7 @@ public class BlockLightningRod extends BlockContainerMod
 	public BlockLightningRod(Material mat)
 	{
 		super(mat);
-		setBlockBounds(0.3F, 0, 0.3F, 0.7F, 2.0F, 0.7F);
+		this.setBlockBounds(0.3F, 0, 0.3F, 0.7F, 2.0F, 0.7F);
 	}
 
 	@Override

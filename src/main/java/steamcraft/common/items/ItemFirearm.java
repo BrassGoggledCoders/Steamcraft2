@@ -36,33 +36,33 @@ public class ItemFirearm extends BaseFirearm
 	public ItemFirearm(int damage, int reloadTime, Item ammo, Item ammo2, String fireSound, String reloadSound)
 	{
 		super(damage, reloadTime, ammo, ammo2, fireSound, reloadSound);
-		setCreativeTab(Steamcraft.tabSC2);
+		this.setCreativeTab(Steamcraft.tabSC2);
 	}
 
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void registerIcons(IIconRegister par1IconRegister)
 	{
-		itemIcon = par1IconRegister.registerIcon(LibInfo.PREFIX + this.getUnlocalizedName().substring(5));
+		this.itemIcon = par1IconRegister.registerIcon(LibInfo.PREFIX + this.getUnlocalizedName().substring(5));
 	}
 
 	@Override
 	protected void shotBullet(ItemStack stack, World world, EntityPlayer player)
 	{
 		NBTTagCompound tag = stack.getTagCompound();
-		tag.setShort("reloadTime", reloadTime);
+		tag.setShort("reloadTime", this.reloadTime);
 		tag.setBoolean("canFire", false);
 		stack.setTagCompound(tag);
 
-		player.inventory.consumeInventoryItem(ammo);
+		player.inventory.consumeInventoryItem(this.ammo);
 		player.inventory.consumeInventoryItem(Items.gunpowder);
 
 		if (!world.isRemote)
-			if (ammo == InitItems.itemMusketBall)
-				world.spawnEntityInWorld(new EntityBullet(world, player, damage, 8));
+			if (this.ammo == InitItems.itemMusketBall)
+				world.spawnEntityInWorld(new EntityBullet(world, player, this.damage, 8));
 			else
-				world.spawnEntityInWorld(new EntityBullet(world, player, damage, 15));
+				world.spawnEntityInWorld(new EntityBullet(world, player, this.damage, 15));
 
-		world.playSoundAtEntity(player, fireSound, 0.6F, 1.0F);
+		world.playSoundAtEntity(player, this.fireSound, 0.6F, 1.0F);
 	}
 }

@@ -140,18 +140,18 @@ public class EventHandlerForge
 			// int posY5 = 45;
 			int color = 0xCCFF00;
 			// fontRenderer.drawString(text, posX, posY, color);
-			if ((block != null) && (block != Blocks.air))
+			if ((this.block != null) && (this.block != Blocks.air))
 			{
-				fontRenderer.drawString("Block: " + block.getUnlocalizedName().substring(5), posX, posY, color);
-				fontRenderer.drawString("Metadata: " + block.getDamageValue(mc.theWorld, x, y, z), posX, posY2, color);
-				fontRenderer.drawString("Hardness: " + block.getBlockHardness(mc.theWorld, x, y, z), posX, posY3, color);
-				fontRenderer.drawString("Light Value: " + block.getLightValue(), posX, posY4, color);
+				fontRenderer.drawString("Block: " + this.block.getUnlocalizedName().substring(5), posX, posY, color);
+				fontRenderer.drawString("Metadata: " + this.block.getDamageValue(mc.theWorld, this.x, this.y, this.z), posX, posY2, color);
+				fontRenderer.drawString("Hardness: " + this.block.getBlockHardness(mc.theWorld, this.x, this.y, this.z), posX, posY3, color);
+				fontRenderer.drawString("Light Value: " + this.block.getLightValue(), posX, posY4, color);
 			}
-			if (entity != null)
+			if (this.entity != null)
 			{
-				String text = entity.getCommandSenderName();
+				String text = this.entity.getCommandSenderName();
 				fontRenderer.drawString("Entity: ", mc.displayWidth - 5 - text.length(), posY, color);
-				String text1 = Integer.toString(entity.getEntityId());
+				String text1 = Integer.toString(this.entity.getEntityId());
 				fontRenderer.drawString("Entity: ", mc.displayWidth - 5 - text1.length(), posY, color);
 			}
 			// fontRenderer.drawString("Material: " + this.block.getMaterial(),
@@ -166,13 +166,13 @@ public class EventHandlerForge
 	{
 		if ((event.player.inventory.armorItemInSlot(3) != null) && (event.player.inventory.armorItemInSlot(3).getItem() == InitItems.brassGoggles))
 		{
-			drawSelectionBox(event.player, event.target, 0, event.currentItem, event.partialTicks);
+			this.drawSelectionBox(event.player, event.target, 0, event.currentItem, event.partialTicks);
 			event.setCanceled(true);
 		}
 		else if ((event.player.inventory.armorItemInSlot(3) != null)
 				&& (event.player.inventory.armorItemInSlot(3).getItem() == InitItems.itemMonocle))
 		{
-			drawSelectionBox(event.player, event.target, 0, event.currentItem, event.partialTicks);
+			this.drawSelectionBox(event.player, event.target, 0, event.currentItem, event.partialTicks);
 			event.setCanceled(true);
 		}
 
@@ -193,8 +193,8 @@ public class EventHandlerForge
 		 * GL11.glVertex3f(1.0F, 1.0F, -1F); GL11.glEnd();
 		 */
 
-		block = event.player.worldObj.getBlock(event.target.blockX, event.target.blockY, event.target.blockZ);
-		entity = event.player;
+		this.block = event.player.worldObj.getBlock(event.target.blockX, event.target.blockY, event.target.blockZ);
+		this.entity = event.player;
 	}
 
 	private void drawSelectionBox(EntityPlayer player, MovingObjectPosition mop, int i, ItemStack is, float partialTicks)
@@ -216,7 +216,7 @@ public class EventHandlerForge
 				double dx = player.lastTickPosX + ((player.posX - player.lastTickPosX) * partialTicks);
 				double dy = player.lastTickPosY + ((player.posY - player.lastTickPosY) * partialTicks);
 				double dz = player.lastTickPosZ + ((player.posZ - player.lastTickPosZ) * partialTicks);
-				drawOutlinedBoundingBox(block.getSelectedBoundingBoxFromPool(player.worldObj, mop.blockX, mop.blockY, mop.blockZ)
+				this.drawOutlinedBoundingBox(block.getSelectedBoundingBoxFromPool(player.worldObj, mop.blockX, mop.blockY, mop.blockZ)
 						.expand(offset, offset, offset).getOffsetBoundingBox(-dx, -dy, -dz));
 			}
 
@@ -242,7 +242,7 @@ public class EventHandlerForge
 				double dx = player.lastTickPosX + ((player.posX - player.lastTickPosX) * partialTicks);
 				double dy = player.lastTickPosY + ((player.posY - player.lastTickPosY) * partialTicks);
 				double dz = player.lastTickPosZ + ((player.posZ - player.lastTickPosZ) * partialTicks);
-				drawOutlinedBoundingBox(entity.boundingBox.expand(offset, offset, offset).getOffsetBoundingBox(-dx, -dy, -dz));
+				this.drawOutlinedBoundingBox(entity.boundingBox.expand(offset, offset, offset).getOffsetBoundingBox(-dx, -dy, -dz));
 			}
 
 			GL11.glDepthMask(true);

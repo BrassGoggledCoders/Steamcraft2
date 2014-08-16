@@ -71,7 +71,7 @@ public class GuiGuideBook extends GuiScreen
 	private int blocksIndex = 0;
 
 	/** The book total pages. */
-	private int bookTotalPages = itemsIndex + featureIndex + blocksIndex;
+	private int bookTotalPages = this.itemsIndex + this.featureIndex + this.blocksIndex;
 
 	/*
 	 * public GuiGuideBook(EntityPlayer player, ItemStack stack) { this.player =

@@ -49,11 +49,11 @@ public class BlockTurbine extends BlockContainerMod
 		switch (side)
 		{
 		case 0:
-			return iconEnd; // bottom
+			return this.iconEnd; // bottom
 		case 1:
-			return iconEnd; // top
+			return this.iconEnd; // top
 		default:
-			return blockIcon; // sides
+			return this.blockIcon; // sides
 		}
 	}
 
@@ -61,8 +61,8 @@ public class BlockTurbine extends BlockContainerMod
 	@Override
 	public void registerBlockIcons(IIconRegister icon)
 	{
-		blockIcon = icon.registerIcon(LibInfo.PREFIX + "metal/blockSteel");
-		iconEnd = icon.registerIcon(LibInfo.PREFIX + "blockTurbine");
+		this.blockIcon = icon.registerIcon(LibInfo.PREFIX + "metal/blockSteel");
+		this.iconEnd = icon.registerIcon(LibInfo.PREFIX + "blockTurbine");
 		// this.iconTop = icon.registerIcon(LibInfo.PREFIX +
 		// "blockSteamBoilerTop");
 	}

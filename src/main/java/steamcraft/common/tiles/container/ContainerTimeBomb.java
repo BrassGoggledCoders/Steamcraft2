@@ -29,10 +29,10 @@ public class ContainerTimeBomb extends Container
 
 		for (var3 = 0; var3 < 3; ++var3)
 			for (int var4 = 0; var4 < 9; ++var4)
-				addSlotToContainer(new Slot(inventory, var4 + (var3 * 9) + 9, 8 + (var4 * 18), 84 + (var3 * 18)));
+				this.addSlotToContainer(new Slot(inventory, var4 + (var3 * 9) + 9, 8 + (var4 * 18), 84 + (var3 * 18)));
 
 		for (var3 = 0; var3 < 9; ++var3)
-			addSlotToContainer(new Slot(inventory, var3, 8 + (var3 * 18), 142));
+			this.addSlotToContainer(new Slot(inventory, var3, 8 + (var3 * 18), 142));
 	}
 
 	@Override
@@ -43,7 +43,7 @@ public class ContainerTimeBomb extends Container
 
 	public void updateTime(String s)
 	{
-		tile.setTime(Integer.parseInt(s));
+		this.tile.setTime(Integer.parseInt(s));
 	}
 
 }

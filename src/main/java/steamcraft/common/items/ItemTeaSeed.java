@@ -32,9 +32,9 @@ public class ItemTeaSeed extends BaseItem implements IPlantable
 	public ItemTeaSeed()
 	{
 		super();
-		setMaxStackSize(64);
-		setCreativeTab(Steamcraft.tabSC2);
-		setUnlocalizedName("itemTeaSeed");
+		this.setMaxStackSize(64);
+		this.setCreativeTab(Steamcraft.tabSC2);
+		this.setUnlocalizedName("itemTeaSeed");
 	}
 
 	@Override
@@ -48,7 +48,7 @@ public class ItemTeaSeed extends BaseItem implements IPlantable
 
 			if ((soil != null) && soil.canSustainPlant(world, x, y, z, ForgeDirection.UP, this) && world.isAirBlock(x, y + 1, z))
 			{
-				world.setBlock(x, y + 1, z, getPlant(world, x, y, z), getPlantMetadata(world, x, y, z), 2);
+				world.setBlock(x, y + 1, z, this.getPlant(world, x, y, z), this.getPlantMetadata(world, x, y, z), 2);
 				player.inventory.consumeInventoryItem(is.getItem());
 				return true;
 			}

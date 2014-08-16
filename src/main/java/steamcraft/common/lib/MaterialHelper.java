@@ -18,7 +18,7 @@ import net.minecraftforge.common.util.EnumHelper;
 
 /**
  * @author Decebaldecebal
- *
+ * 
  */
 public class MaterialHelper
 {

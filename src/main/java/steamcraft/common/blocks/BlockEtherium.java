@@ -23,7 +23,7 @@ public class BlockEtherium extends BaseBlock implements IChiselable
 	public BlockEtherium(Material p_i45394_1_)
 	{
 		super(p_i45394_1_);
-		setBlockName("blockEtherium");
+		this.setBlockName("blockEtherium");
 	}
 
 	@Override

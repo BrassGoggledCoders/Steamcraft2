@@ -50,12 +50,12 @@ public class TileArmorEditor extends BaseTileWithInventory implements IInventory
 	@Override
 	public void updateEntity()
 	{
-		if ((inventory[0] != null) && (inventory[0].getItem() instanceof ItemBrassArmor))
+		if ((this.inventory[0] != null) && (this.inventory[0].getItem() instanceof ItemBrassArmor))
 			for (int i = 1; i < 17; i++)
-				if (inventory[i] != null)
+				if (this.inventory[i] != null)
 				{
-					ItemBrassArmor armor = (ItemBrassArmor) inventory[0].getItem();
-					IModule module = (IModule) inventory[i].getItem();
+					ItemBrassArmor armor = (ItemBrassArmor) this.inventory[0].getItem();
+					IModule module = (IModule) this.inventory[i].getItem();
 					if (!armor.modules.contains(module))
 						if (armor.armorType != -1)
 						{

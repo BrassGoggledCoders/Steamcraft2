@@ -48,11 +48,11 @@ public class ContainerVanity extends Container
 
 		for (i = 0; i < 3; ++i)
 			for (int j = 0; j < 9; ++j)
-				addSlotToContainer(new Slot(inventoryPlayer, j + (i * 9) + 9, 8 + (j * 18), 84 + (i * 18)));
+				this.addSlotToContainer(new Slot(inventoryPlayer, j + (i * 9) + 9, 8 + (j * 18), 84 + (i * 18)));
 
 		// Hotbar
 		for (i = 0; i < 9; ++i)
-			addSlotToContainer(new Slot(inventoryPlayer, i, 8 + (i * 18), 142));
+			this.addSlotToContainer(new Slot(inventoryPlayer, i, 8 + (i * 18), 142));
 	}
 
 	@Override
@@ -65,7 +65,7 @@ public class ContainerVanity extends Container
 	public ItemStack transferStackInSlot(final EntityPlayer player, final int slots)
 	{
 		ItemStack isCopy = null;
-		final Slot slot = (Slot) inventorySlots.get(slots);
+		final Slot slot = (Slot) this.inventorySlots.get(slots);
 
 		if ((slot != null) && slot.getHasStack())
 		{
@@ -76,7 +76,7 @@ public class ContainerVanity extends Container
 			if (slots < INV_START)
 			{
 				// try to place in player inventory / action bar
-				if (!mergeItemStack(is, INV_START, HOTBAR_END + 1, true))
+				if (!this.mergeItemStack(is, INV_START, HOTBAR_END + 1, true))
 					return null;
 
 				slot.onSlotChange(is, isCopy);
@@ -85,23 +85,23 @@ public class ContainerVanity extends Container
 															// custom
 			// item
 			{
-				if (!mergeItemStack(is, 0, InventoryVanity.INV_SIZE, false))
+				if (!this.mergeItemStack(is, 0, InventoryVanity.INV_SIZE, false))
 					return null;
 			}
 			else if (is.getItem() instanceof ItemArmor) // if item is
 														// armor
 			{
 				final int type = ((ItemArmor) is.getItem()).armorType;
-				if (!mergeItemStack(is, ARMOR_START + type, ARMOR_START + type + 1, false))
+				if (!this.mergeItemStack(is, ARMOR_START + type, ARMOR_START + type + 1, false))
 					return null;
 			}
 			else if ((slots >= INV_START) && (slots < HOTBAR_START))
 			{
-				if (!mergeItemStack(is, HOTBAR_START, HOTBAR_START + 1, false))
+				if (!this.mergeItemStack(is, HOTBAR_START, HOTBAR_START + 1, false))
 					return null;
 			}
 			else if ((slots >= HOTBAR_START) && (slots < (HOTBAR_END + 1)))
-				if (!mergeItemStack(is, INV_START, INV_END + 1, false))
+				if (!this.mergeItemStack(is, INV_START, INV_END + 1, false))
 					return null;
 
 			if (is.stackSize == 0)

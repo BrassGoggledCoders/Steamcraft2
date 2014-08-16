@@ -35,16 +35,16 @@ public class ContainerBloomery extends Container
 
 	public ContainerBloomery(InventoryPlayer playerInv, TileBloomery tileEntity)
 	{
-		tileBloomery = tileEntity;
+		this.tileBloomery = tileEntity;
 
 		// Fuel
-		addSlotToContainer(new Slot(tileEntity, 0, 45, 53));
+		this.addSlotToContainer(new Slot(tileEntity, 0, 45, 53));
 		// Input 1
-		addSlotToContainer(new Slot(tileEntity, 1, 33, 17));
+		this.addSlotToContainer(new Slot(tileEntity, 1, 33, 17));
 		// Input 2
-		addSlotToContainer(new Slot(tileEntity, 2, 56, 17));
+		this.addSlotToContainer(new Slot(tileEntity, 2, 56, 17));
 		// Output
-		addSlotToContainer(new Slot(tileEntity, 3, 116, 35)
+		this.addSlotToContainer(new Slot(tileEntity, 3, 116, 35)
 		{
 			@Override
 			public boolean isItemValid(ItemStack stack)
@@ -57,19 +57,19 @@ public class ContainerBloomery extends Container
 
 		for (i = 0; i < 3; ++i)
 			for (int j = 0; j < 9; ++j)
-				addSlotToContainer(new Slot(playerInv, j + (i * 9) + 9, 8 + (j * 18), 84 + (i * 18)));
+				this.addSlotToContainer(new Slot(playerInv, j + (i * 9) + 9, 8 + (j * 18), 84 + (i * 18)));
 
 		for (i = 0; i < 9; ++i)
-			addSlotToContainer(new Slot(playerInv, i, 8 + (i * 18), 142));
+			this.addSlotToContainer(new Slot(playerInv, i, 8 + (i * 18), 142));
 	}
 
 	@Override
 	public void addCraftingToCrafters(ICrafting crafting)
 	{
 		super.addCraftingToCrafters(crafting);
-		crafting.sendProgressBarUpdate(this, 0, tileBloomery.cookTime);
-		crafting.sendProgressBarUpdate(this, 1, tileBloomery.burnTime);
-		crafting.sendProgressBarUpdate(this, 2, tileBloomery.currentItemBurnTime);
+		crafting.sendProgressBarUpdate(this, 0, this.tileBloomery.cookTime);
+		crafting.sendProgressBarUpdate(this, 1, this.tileBloomery.burnTime);
+		crafting.sendProgressBarUpdate(this, 2, this.tileBloomery.currentItemBurnTime);
 	}
 
 	@Override
@@ -77,23 +77,23 @@ public class ContainerBloomery extends Container
 	{
 		super.detectAndSendChanges();
 
-		for (int i = 0; i < crafters.size(); ++i)
+		for (int i = 0; i < this.crafters.size(); ++i)
 		{
-			ICrafting icrafting = (ICrafting) crafters.get(i);
+			ICrafting icrafting = (ICrafting) this.crafters.get(i);
 
-			if (lastCookTime != tileBloomery.cookTime)
-				icrafting.sendProgressBarUpdate(this, 0, tileBloomery.cookTime);
+			if (this.lastCookTime != this.tileBloomery.cookTime)
+				icrafting.sendProgressBarUpdate(this, 0, this.tileBloomery.cookTime);
 
-			if (lastBurnTime != tileBloomery.burnTime)
-				icrafting.sendProgressBarUpdate(this, 1, tileBloomery.burnTime);
+			if (this.lastBurnTime != this.tileBloomery.burnTime)
+				icrafting.sendProgressBarUpdate(this, 1, this.tileBloomery.burnTime);
 
-			if (lastItemBurnTime != tileBloomery.currentItemBurnTime)
-				icrafting.sendProgressBarUpdate(this, 2, tileBloomery.currentItemBurnTime);
+			if (this.lastItemBurnTime != this.tileBloomery.currentItemBurnTime)
+				icrafting.sendProgressBarUpdate(this, 2, this.tileBloomery.currentItemBurnTime);
 		}
 
-		lastCookTime = tileBloomery.cookTime;
-		lastBurnTime = tileBloomery.burnTime;
-		lastItemBurnTime = tileBloomery.currentItemBurnTime;
+		this.lastCookTime = this.tileBloomery.cookTime;
+		this.lastBurnTime = this.tileBloomery.burnTime;
+		this.lastItemBurnTime = this.tileBloomery.currentItemBurnTime;
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -103,15 +103,15 @@ public class ContainerBloomery extends Container
 		switch (par1)
 		{
 		case 0:
-			tileBloomery.cookTime = (short) par2;
+			this.tileBloomery.cookTime = (short) par2;
 			break;
 
 		case 1:
-			tileBloomery.burnTime = (short) par2;
+			this.tileBloomery.burnTime = (short) par2;
 			break;
 
 		case 2:
-			tileBloomery.currentItemBurnTime = (short) par2;
+			this.tileBloomery.currentItemBurnTime = (short) par2;
 			break;
 		}
 	}
@@ -119,14 +119,14 @@ public class ContainerBloomery extends Container
 	@Override
 	public boolean canInteractWith(EntityPlayer player)
 	{
-		return tileBloomery.isUseableByPlayer(player);
+		return this.tileBloomery.isUseableByPlayer(player);
 	}
 
 	@Override
 	public ItemStack transferStackInSlot(EntityPlayer player, int par2)
 	{
 		ItemStack itemstack = null;
-		Slot slot = (Slot) inventorySlots.get(par2);
+		Slot slot = (Slot) this.inventorySlots.get(par2);
 
 		if ((slot != null) && slot.getHasStack())
 		{
@@ -135,7 +135,7 @@ public class ContainerBloomery extends Container
 
 			if (par2 == 3)
 			{
-				if (!mergeItemStack(itemstack1, 4, 40, true))
+				if (!this.mergeItemStack(itemstack1, 4, 40, true))
 					return null;
 
 				slot.onSlotChange(itemstack1, itemstack);
@@ -144,20 +144,20 @@ public class ContainerBloomery extends Container
 			{
 				if (TileBloomery.isItemFuel(itemstack1))
 				{
-					if (!mergeItemStack(itemstack1, 0, 1, false))
-						if (!mergeItemStack(itemstack1, 1, 3, false))
+					if (!this.mergeItemStack(itemstack1, 0, 1, false))
+						if (!this.mergeItemStack(itemstack1, 1, 3, false))
 							return null;
 				}
 				else if ((par2 >= 4) && (par2 < 31))
 				{
-					if (!mergeItemStack(itemstack1, 1, 3, false))
-						if (!mergeItemStack(itemstack1, 31, 40, false))
+					if (!this.mergeItemStack(itemstack1, 1, 3, false))
+						if (!this.mergeItemStack(itemstack1, 31, 40, false))
 							return null;
 				}
-				else if ((par2 >= 31) && (par2 < 40) && !mergeItemStack(itemstack1, 4, 31, false))
+				else if ((par2 >= 31) && (par2 < 40) && !this.mergeItemStack(itemstack1, 4, 31, false))
 					return null;
 			}
-			else if (!mergeItemStack(itemstack1, 4, 40, false))
+			else if (!this.mergeItemStack(itemstack1, 4, 40, false))
 				return null;
 
 			if (itemstack1.stackSize == 0)

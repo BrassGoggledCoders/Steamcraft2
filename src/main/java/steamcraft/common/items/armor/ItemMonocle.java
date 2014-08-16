@@ -28,7 +28,7 @@ public class ItemMonocle extends BaseArmor
 	public ItemMonocle(final ItemArmor.ArmorMaterial armorMat, final int armorType, final int renderIndex)
 	{
 		super(armorMat, armorType, renderIndex);
-		setMaxStackSize(1);
+		this.setMaxStackSize(1);
 	}
 
 	@Override

@@ -45,42 +45,42 @@ public class TileCharger extends BaseTileWithInventory implements IEnergyHandler
 	public void readFromNBT(NBTTagCompound tag)
 	{
 		super.readFromNBT(tag);
-		buffer.readFromNBT(tag);
+		this.buffer.readFromNBT(tag);
 	}
 
 	@Override
 	public void writeToNBT(NBTTagCompound tag)
 	{
 		super.writeToNBT(tag);
-		buffer.writeToNBT(tag);
+		this.buffer.writeToNBT(tag);
 	}
 
 	@SideOnly(Side.CLIENT)
 	public int getEnergyScaled(int par1)
 	{
-		return ((buffer.getEnergyStored()) / buffer.getMaxEnergyStored()) / par1;
+		return ((this.buffer.getEnergyStored()) / this.buffer.getMaxEnergyStored()) / par1;
 	}
 
 	@Override
 	public void updateEntity()
 	{
-		if (!worldObj.isRemote)
+		if (!this.worldObj.isRemote)
 		{
 
-			if (buffer.getEnergyStored() > 0)
-				chargeItems();
+			if (this.buffer.getEnergyStored() > 0)
+				this.chargeItems();
 
-			short inputEnergy = (short) extractEnergy(ForgeDirection.UNKNOWN, transferRate, true);
+			short inputEnergy = (short) this.extractEnergy(ForgeDirection.UNKNOWN, transferRate, true);
 
 			if (inputEnergy > 0)
 				for (ForgeDirection direction : EnumSet.allOf(ForgeDirection.class))
 					if (inputEnergy > 0)
 					{
-						TileEntity tileEntity = worldObj.getTileEntity(xCoord - direction.offsetX, yCoord - direction.offsetY, zCoord
-								- direction.offsetZ);
+						TileEntity tileEntity = this.worldObj.getTileEntity(this.xCoord - direction.offsetX, this.yCoord - direction.offsetY,
+								this.zCoord - direction.offsetZ);
 
 						if (tileEntity instanceof IEnergyHandler)
-							inputEnergy -= receiveEnergy(ForgeDirection.UNKNOWN,
+							inputEnergy -= this.receiveEnergy(ForgeDirection.UNKNOWN,
 									((IEnergyHandler) tileEntity).extractEnergy(direction.getOpposite(), inputEnergy, false), false);
 					}
 					else
@@ -90,14 +90,14 @@ public class TileCharger extends BaseTileWithInventory implements IEnergyHandler
 
 	private void chargeItems()
 	{
-		for (ItemStack stack : inventory)
+		for (ItemStack stack : this.inventory)
 			if (stack != null)
 			{
 				IEnergyItem item = (IEnergyItem) stack.getItem();
 
-				buffer.modifyEnergyStored(-item.receiveEnergy(stack, buffer.getEnergyStored(), false));
+				this.buffer.modifyEnergyStored(-item.receiveEnergy(stack, this.buffer.getEnergyStored(), false));
 
-				if (buffer.getEnergyStored() < 0)
+				if (this.buffer.getEnergyStored() < 0)
 					break;
 			}
 	}
@@ -111,14 +111,14 @@ public class TileCharger extends BaseTileWithInventory implements IEnergyHandler
 	@Override
 	public int receiveEnergy(ForgeDirection from, int maxReceive, boolean simulate)
 	{
-		return buffer.receiveEnergy(maxReceive, simulate);
+		return this.buffer.receiveEnergy(maxReceive, simulate);
 	}
 
 	@Override
 	public int extractEnergy(ForgeDirection from, int maxExtract, boolean simulate)
 	{
 		int usedEnergy = maxExtract;
-		maxExtract -= buffer.extractEnergy(maxExtract, simulate);
+		maxExtract -= this.buffer.extractEnergy(maxExtract, simulate);
 
 		usedEnergy -= maxExtract;
 
@@ -128,13 +128,13 @@ public class TileCharger extends BaseTileWithInventory implements IEnergyHandler
 	@Override
 	public int getEnergyStored(ForgeDirection from)
 	{
-		return buffer.getEnergyStored();
+		return this.buffer.getEnergyStored();
 	}
 
 	@Override
 	public int getMaxEnergyStored(ForgeDirection from)
 	{
-		return buffer.getMaxEnergyStored();
+		return this.buffer.getMaxEnergyStored();
 	}
 
 	@Override

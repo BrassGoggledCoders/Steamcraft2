@@ -28,13 +28,13 @@ public class BaseItem extends RootItem
 	public BaseItem()
 	{
 		super();
-		setCreativeTab(Steamcraft.tabSC2);
+		this.setCreativeTab(Steamcraft.tabSC2);
 	}
 
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void registerIcons(IIconRegister par1IconRegister)
 	{
-		itemIcon = par1IconRegister.registerIcon(LibInfo.PREFIX + this.getUnlocalizedName().substring(5));
+		this.itemIcon = par1IconRegister.registerIcon(LibInfo.PREFIX + this.getUnlocalizedName().substring(5));
 	}
 }

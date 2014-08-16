@@ -32,16 +32,16 @@ public class ItemTeapot extends BaseItemWithMetadata
 	public ItemTeapot()
 	{
 		super();
-		setMaxStackSize(1);
-		setNoRepair();
-		setFull3D();
+		this.setMaxStackSize(1);
+		this.setNoRepair();
+		this.setFull3D();
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister icon)
 	{
-		itemIcon = icon.registerIcon(LibInfo.PREFIX + this.getUnlocalizedName().substring(5));
+		this.itemIcon = icon.registerIcon(LibInfo.PREFIX + this.getUnlocalizedName().substring(5));
 	}
 
 	@Override

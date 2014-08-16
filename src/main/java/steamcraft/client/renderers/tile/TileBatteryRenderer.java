@@ -40,7 +40,7 @@ public class TileBatteryRenderer extends TileEntitySpecialRenderer
 	 */
 	public TileBatteryRenderer()
 	{
-		model = new ModelBattery();
+		this.model = new ModelBattery();
 	}
 
 	@Override
@@ -50,7 +50,7 @@ public class TileBatteryRenderer extends TileEntitySpecialRenderer
 		GL11.glTranslatef((float) dx + 0.5F, (float) dy + 1.5F, (float) dz + 0.5F);
 		ResourceLocation crystal = (new ResourceLocation(LibInfo.PREFIX.replace(":", ""), "textures/models/batterybank.png"));
 		Minecraft.getMinecraft().renderEngine.bindTexture(crystal);
-		renderBattery(te, te.getWorldObj(), te.xCoord, te.yCoord, te.zCoord);
+		this.renderBattery(te, te.getWorldObj(), te.xCoord, te.yCoord, te.zCoord);
 		GL11.glPopMatrix();
 	}
 
@@ -60,7 +60,7 @@ public class TileBatteryRenderer extends TileEntitySpecialRenderer
 		GL11.glScalef(1.3F, 1.5F, 1F);
 		GL11.glTranslatef(-0.1F, 0.05F, 0.25F);
 		GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
-		model.render((Entity) null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F, te);
+		this.model.render((Entity) null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F, te);
 		GL11.glPopMatrix();
 	}
 }

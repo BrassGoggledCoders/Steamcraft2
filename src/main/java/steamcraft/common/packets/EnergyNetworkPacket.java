@@ -25,7 +25,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author decebaldecebal
- *
+ * 
  */
 public class EnergyNetworkPacket implements IMessage
 {
@@ -48,7 +48,7 @@ public class EnergyNetworkPacket implements IMessage
 	@Override
 	public void fromBytes(ByteBuf buf)
 	{
-		worldId = buf.readInt();
+		this.worldId = buf.readInt();
 		this.x = buf.readInt();
 		this.y = buf.readInt();
 		this.z = buf.readInt();
@@ -58,7 +58,7 @@ public class EnergyNetworkPacket implements IMessage
 	@Override
 	public void toBytes(ByteBuf buf)
 	{
-		buf.writeInt(worldId);
+		buf.writeInt(this.worldId);
 		buf.writeInt(this.x);
 		buf.writeInt(this.y);
 		buf.writeInt(this.z);

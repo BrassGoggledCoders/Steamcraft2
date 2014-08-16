@@ -44,8 +44,8 @@ public class ItemSteamJetpack extends BaseArmor
 	public ItemSteamJetpack(ArmorMaterial mat, int renderIndex, int armorType, byte steam)
 	{
 		super(mat, renderIndex, armorType);
-		setMaxDamage(0);
-		steamPerTick = steam;
+		this.setMaxDamage(0);
+		this.steamPerTick = steam;
 	}
 
 	@SuppressWarnings("all")
@@ -57,15 +57,15 @@ public class ItemSteamJetpack extends BaseArmor
 
 		list.add("Canister Detected: " + String.valueOf(itemStack.getTagCompound().getBoolean("hasCanister")));
 
-		if (descNeedsShift)
+		if (this.descNeedsShift)
 		{
 			if (ClientHelper.isShiftKeyDown())
-				getWrappedDesc(list);
+				this.getWrappedDesc(list);
 			else
 				list.add(ClientHelper.shiftForInfo);
 		}
 		else
-			getWrappedDesc(list);
+			this.getWrappedDesc(list);
 	}
 
 	@Override
@@ -76,7 +76,7 @@ public class ItemSteamJetpack extends BaseArmor
 
 		boolean hasCanister = false;
 
-		if (hasCanister(player))
+		if (this.hasCanister(player))
 			hasCanister = true;
 
 		if (hasCanister != tag.getBoolean("hasCanister"))
@@ -90,7 +90,7 @@ public class ItemSteamJetpack extends BaseArmor
 			if ((Minecraft.getMinecraft().currentScreen == null) && (player.posY < 200)
 					&& Keyboard.isKeyDown(Minecraft.getMinecraft().gameSettings.keyBindJump.getKeyCode()))
 			{
-				consumeSteamFromCanister(player, steamPerTick);
+				this.consumeSteamFromCanister(player, this.steamPerTick);
 
 				if (player.motionY > 0.0D)
 					player.motionY += 0.08499999910593033D;
@@ -103,7 +103,7 @@ public class ItemSteamJetpack extends BaseArmor
 
 			if ((this == InitItems.itemSteamWingpack) && (player.motionY < 0.0D) && player.isSneaking())
 			{
-				consumeSteamFromCanister(player, (byte) (steamPerTick / 2));
+				this.consumeSteamFromCanister(player, (byte) (this.steamPerTick / 2));
 				player.motionY /= 1.4D;
 
 				player.motionX *= 1.05D;
@@ -118,7 +118,7 @@ public class ItemSteamJetpack extends BaseArmor
 
 			if (player.fallDistance > 0)
 			{
-				consumeSteamFromCanister(player, (byte) (steamPerTick / 4));
+				this.consumeSteamFromCanister(player, (byte) (this.steamPerTick / 4));
 				player.fallDistance = 0;
 			}
 		}
@@ -146,7 +146,7 @@ public class ItemSteamJetpack extends BaseArmor
 	{
 		ItemCanister canister = (ItemCanister) stack.getItem();
 
-		if (canister.getFluidAmount(stack) <= steamPerTick)
+		if (canister.getFluidAmount(stack) <= this.steamPerTick)
 			return true;
 		else
 			return false;
@@ -159,7 +159,7 @@ public class ItemSteamJetpack extends BaseArmor
 		{
 			ItemStack[] mainInv = player.inventory.mainInventory;
 			if ((mainInv[i] != null) && (mainInv[i].getItem() == InitItems.itemCanisterSteam))
-				hasCanister = hasCanister || !isCanisterEmpty(mainInv[i]);
+				hasCanister = hasCanister || !this.isCanisterEmpty(mainInv[i]);
 		}
 		return hasCanister;
 	}

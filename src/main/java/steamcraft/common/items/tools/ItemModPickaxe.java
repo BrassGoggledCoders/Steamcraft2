@@ -37,23 +37,23 @@ public class ItemModPickaxe extends ItemModTool
 	@Override
 	public boolean canHarvestBlock(Block par1Block, ItemStack itemstack)
 	{
-		return par1Block == Blocks.obsidian ? toolMaterial.getHarvestLevel() == 3
+		return par1Block == Blocks.obsidian ? this.toolMaterial.getHarvestLevel() == 3
 				: (par1Block != Blocks.diamond_block) && (par1Block != Blocks.diamond_ore) ? (par1Block != Blocks.emerald_ore)
 						&& (par1Block != Blocks.emerald_block) ? (par1Block != Blocks.gold_block) && (par1Block != Blocks.gold_ore) ? (par1Block != Blocks.iron_block)
 						&& (par1Block != Blocks.iron_ore) ? (par1Block != Blocks.lapis_block) && (par1Block != Blocks.lapis_ore) ? par1Block != Blocks.redstone_ore ? par1Block
 						.getMaterial() == Material.rock ? true : par1Block.getMaterial() == Material.iron ? true
-						: par1Block.getMaterial() == Material.anvil : toolMaterial.getHarvestLevel() >= 2
-						: toolMaterial.getHarvestLevel() >= 1
-						: toolMaterial.getHarvestLevel() >= 1
-						: toolMaterial.getHarvestLevel() >= 2
-						: toolMaterial.getHarvestLevel() >= 2
-						: toolMaterial.getHarvestLevel() >= 2;
+						: par1Block.getMaterial() == Material.anvil : this.toolMaterial.getHarvestLevel() >= 2
+						: this.toolMaterial.getHarvestLevel() >= 1
+						: this.toolMaterial.getHarvestLevel() >= 1
+						: this.toolMaterial.getHarvestLevel() >= 2
+						: this.toolMaterial.getHarvestLevel() >= 2
+						: this.toolMaterial.getHarvestLevel() >= 2;
 	}
 
 	@Override
 	public float getDigSpeed(ItemStack stack, Block block, int metadata)
 	{
-		if (isSteampowered())
+		if (this.isSteampowered())
 		{
 			NBTTagCompound tag = stack.getTagCompound();
 			if (tag.getBoolean("hasCanister"))
@@ -65,6 +65,6 @@ public class ItemModPickaxe extends ItemModTool
 				&& ((block.getMaterial() == Material.iron) || (block.getMaterial() == Material.anvil) || (block.getMaterial() == Material.rock)))
 			super.getDigSpeed(stack, block, metadata);
 
-		return efficiencyOnProperMaterial;
+		return this.efficiencyOnProperMaterial;
 	}
 }

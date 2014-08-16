@@ -37,7 +37,7 @@ public class RenderSmallLightningBolt extends Render
 
 	public void renderBullet(EntitySmallLightningBolt entity, double dx, double dy, double dz, float frotY, float frotP)
 	{
-		bindEntityTexture(entity);
+		this.bindEntityTexture(entity);
 
 		if ((entity.prevRotationYaw == 0.0F) && (entity.prevRotationPitch == 0.0F))
 			return;
@@ -115,12 +115,12 @@ public class RenderSmallLightningBolt extends Render
 	@Override
 	protected ResourceLocation getEntityTexture(Entity entity)
 	{
-		return getBulletTexture((EntitySmallLightningBolt) entity);
+		return this.getBulletTexture((EntitySmallLightningBolt) entity);
 	}
 
 	@Override
 	public void doRender(Entity entity, double dx, double dy, double dz, float frotY, float frotP)
 	{
-		renderBullet((EntitySmallLightningBolt) entity, dx, dy, dz, frotY, frotP);
+		this.renderBullet((EntitySmallLightningBolt) entity, dx, dy, dz, frotY, frotP);
 	}
 }

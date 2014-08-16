@@ -80,7 +80,7 @@ public class ClientProxy extends CommonProxy
 	@Override
 	public void registerRenderers()
 	{
-		registerBlockRenderers();
+		this.registerBlockRenderers();
 
 		// TODO: Should be in boilerplate
 		RenderingRegistry.registerEntityRenderingHandler(EntityMinedBlock.class, new RenderMinedBlock());

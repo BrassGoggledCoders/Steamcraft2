@@ -30,7 +30,7 @@ public class SlotCharger extends Slot
 	{
 		super(inv, par2, par3, par4);
 
-		tile = (TileCharger) inv;
+		this.tile = (TileCharger) inv;
 	}
 
 	@Override

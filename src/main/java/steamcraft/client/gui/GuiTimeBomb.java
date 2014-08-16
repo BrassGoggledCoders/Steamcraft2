@@ -44,15 +44,15 @@ public class GuiTimeBomb extends GuiContainer
 	{
 		super(new ContainerTimeBomb(inv, tile));
 		this.tile = tile;
-		container = (ContainerTimeBomb) inventorySlots;
-		player = inv.player;
+		this.container = (ContainerTimeBomb) this.inventorySlots;
+		this.player = inv.player;
 		//
 	}
 
 	@Override
 	protected void drawGuiContainerForegroundLayer(int p_146979_1_, int p_146979_2_)
 	{
-		fontRendererObj.drawString("Time Bomb", xSize - 2, ySize - 124, 4210752);
+		this.fontRendererObj.drawString("Time Bomb", this.xSize - 2, this.ySize - 124, 4210752);
 	}
 
 	@Override
@@ -60,30 +60,30 @@ public class GuiTimeBomb extends GuiContainer
 	{
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 
-		mc.renderEngine.bindTexture(guitexture);
+		this.mc.renderEngine.bindTexture(guitexture);
 		// final int x = (width - xSize) / 2;
 		// final int y = (height - ySize) / 2;
-		drawTexturedModalRect(guiLeft, guiTop, 0, 0, xSize, ySize);
+		this.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize);
 
-		drawTexturedModalRect(guiLeft + 59, guiTop + 20, 0, ySize + 0, 110, 16);
+		this.drawTexturedModalRect(this.guiLeft + 59, this.guiTop + 20, 0, this.ySize + 0, 110, 16);
 
-		drawTexturedModalRect(guiLeft + 99, guiTop + 45, xSize, 0, 28, 21);
+		this.drawTexturedModalRect(this.guiLeft + 99, this.guiTop + 45, this.xSize, 0, 28, 21);
 
-		mc.renderEngine.bindTexture(guitexture);
+		this.mc.renderEngine.bindTexture(guitexture);
 	}
 
 	@Override
 	public void initGui()
 	{
 		Keyboard.enableRepeatEvents(true);
-		int i = (width - xSize) / 2;
-		int j = (height - ySize) / 2;
-		text = new GuiTextField(fontRendererObj, i + 62, j + 24, 103, 12);
-		text.setTextColor(-1);
-		text.setDisabledTextColour(-1);
-		text.setEnableBackgroundDrawing(false);
-		text.setMaxStringLength(4);
-		text.setText(String.valueOf(tile.getTime()));
+		int i = (this.width - this.xSize) / 2;
+		int j = (this.height - this.ySize) / 2;
+		this.text = new GuiTextField(this.fontRendererObj, i + 62, j + 24, 103, 12);
+		this.text.setTextColor(-1);
+		this.text.setDisabledTextColour(-1);
+		this.text.setEnableBackgroundDrawing(false);
+		this.text.setMaxStringLength(4);
+		this.text.setText(String.valueOf(this.tile.getTime()));
 	}
 
 	@Override
@@ -97,10 +97,10 @@ public class GuiTimeBomb extends GuiContainer
 	public void keyTyped(char c, int pos)
 	{
 		if (!Character.isDigit(c))
-			text.setText("");
+			this.text.setText("");
 
-		if (text.textboxKeyTyped(c, pos))
-			updateTime();
+		if (this.text.textboxKeyTyped(c, pos))
+			this.updateTime();
 
 		super.keyTyped(c, pos);
 	}
@@ -109,12 +109,13 @@ public class GuiTimeBomb extends GuiContainer
 	{
 		String s = "0000";
 
-		if (text != null)
-			s = text.getText();
+		if (this.text != null)
+			s = this.text.getText();
 		if (s.length() == 4)
 			// {
 			// this.container.updateTime(s);
-			InitPackets.network.sendToServer(new TimeBombPacket(Integer.parseInt(s), tile.xCoord, tile.yCoord, tile.zCoord, player.dimension));
+			InitPackets.network.sendToServer(new TimeBombPacket(Integer.parseInt(s), this.tile.xCoord, this.tile.yCoord, this.tile.zCoord,
+					this.player.dimension));
 		// }
 		// this.mc.thePlayer.sendQueue.addToSendQueue(new
 		// C17PacketCustomPayload("SC2|TimeUpdate",
@@ -128,7 +129,7 @@ public class GuiTimeBomb extends GuiContainer
 	protected void mouseClicked(int p_73864_1_, int p_73864_2_, int p_73864_3_)
 	{
 		super.mouseClicked(p_73864_1_, p_73864_2_, p_73864_3_);
-		text.mouseClicked(p_73864_1_, p_73864_2_, p_73864_3_);
+		this.text.mouseClicked(p_73864_1_, p_73864_2_, p_73864_3_);
 	}
 
 	/**
@@ -140,8 +141,9 @@ public class GuiTimeBomb extends GuiContainer
 		super.drawScreen(p_73863_1_, p_73863_2_, p_73863_3_);
 		GL11.glDisable(GL11.GL_LIGHTING);
 		GL11.glDisable(GL11.GL_BLEND);
-		text.drawTextBox();
+		this.text.drawTextBox();
 	}
+
 	public class ChangeButton extends GuiButton
 	{
 

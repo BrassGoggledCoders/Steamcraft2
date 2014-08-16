@@ -112,7 +112,7 @@ public class ItemSteamDrill extends ItemDrill
 				break;
 			}
 			Block block = world.getBlock(x, y, z);
-			if ((block != null) && (block.getBlockHardness(world, x, y, z) != 0) && canHarvestBlock(block, itemStack))
+			if ((block != null) && (block.getBlockHardness(world, x, y, z) != 0) && this.canHarvestBlock(block, itemStack))
 				for (int xPos = x - xRange; xPos <= (x + xRange); xPos++)
 					for (int yPos = y - yRange; yPos <= (y + yRange); yPos++)
 						for (int zPos = z - zRange; zPos <= (z + zRange); zPos++)
@@ -123,11 +123,11 @@ public class ItemSteamDrill extends ItemDrill
 							{
 								int meta = world.getBlockMetadata(xPos, yPos, zPos);
 
-								ItemStack result = new ItemStack(nblock.getItemDropped(meta, random, 0), nblock.quantityDropped(meta, 0, random),
-										nblock.damageDropped(meta));
+								ItemStack result = new ItemStack(nblock.getItemDropped(meta, this.random, 0), nblock.quantityDropped(meta, 0,
+										this.random), nblock.damageDropped(meta));
 
 								if (nblock.getBlockHardness(world, xPos, yPos, zPos) != 0.0D)
-									consumeSteamFromCanister(player);
+									this.consumeSteamFromCanister(player);
 
 								if (!world.isRemote && (result != null))
 								{
@@ -146,11 +146,12 @@ public class ItemSteamDrill extends ItemDrill
 	{
 		if (living instanceof EntityPlayer)
 		{
-			consumeSteamFromCanister((EntityPlayer) living);
+			this.consumeSteamFromCanister((EntityPlayer) living);
 
 			stack.damageItem(1, living);
 			world.playSoundAtEntity(living, LibInfo.PREFIX + "drill.steam", 0.6F, 1.0F);
-			world.spawnParticle("smoke", x + 0.5, y + 0.5, z + 0.5, random.nextGaussian(), random.nextGaussian(), random.nextGaussian());
+			world.spawnParticle("smoke", x + 0.5, y + 0.5, z + 0.5, this.random.nextGaussian(), this.random.nextGaussian(),
+					this.random.nextGaussian());
 			return true;
 		}
 

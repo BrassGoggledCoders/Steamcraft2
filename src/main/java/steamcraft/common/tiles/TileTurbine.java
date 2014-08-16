@@ -43,30 +43,30 @@ public class TileTurbine extends TileEntity implements IFluidHandler, IEnergyHan
 	public void readFromNBT(NBTTagCompound tag)
 	{
 		super.readFromNBT(tag);
-		buffer.readFromNBT(tag);
+		this.buffer.readFromNBT(tag);
 
-		steamTank.setFluid(new FluidStack(FluidRegistry.getFluid("steam"), tag.getShort("steamLevel")));
+		this.steamTank.setFluid(new FluidStack(FluidRegistry.getFluid("steam"), tag.getShort("steamLevel")));
 	}
 
 	@Override
 	public void writeToNBT(NBTTagCompound tag)
 	{
 		super.writeToNBT(tag);
-		buffer.writeToNBT(tag);
+		this.buffer.writeToNBT(tag);
 
-		tag.setShort("steamLevel", (short) steamTank.getFluidAmount());
+		tag.setShort("steamLevel", (short) this.steamTank.getFluidAmount());
 	}
 
 	@Override
 	public void updateEntity()
 	{
-		if (!worldObj.isRemote)
+		if (!this.worldObj.isRemote)
 		{
-			if (steamTank.getFluidAmount() >= steamPerTick)
-				if (buffer.receiveEnergy(RFPerTick, false) == RFPerTick)
-					steamTank.drain(steamPerTick, true);
+			if (this.steamTank.getFluidAmount() >= steamPerTick)
+				if (this.buffer.receiveEnergy(RFPerTick, false) == RFPerTick)
+					this.steamTank.drain(steamPerTick, true);
 
-			if (buffer.getEnergyStored() >= RFPerTick)
+			if (this.buffer.getEnergyStored() >= RFPerTick)
 			{
 				byte usedEnergy = 0;
 				byte outputEnergy = RFPerTick;
@@ -74,8 +74,8 @@ public class TileTurbine extends TileEntity implements IFluidHandler, IEnergyHan
 				for (ForgeDirection direction : EnumSet.allOf(ForgeDirection.class))
 					if (outputEnergy > 0)
 					{
-						TileEntity tileEntity = worldObj.getTileEntity(xCoord - direction.offsetX, yCoord - direction.offsetY, zCoord
-								- direction.offsetZ);
+						TileEntity tileEntity = this.worldObj.getTileEntity(this.xCoord - direction.offsetX, this.yCoord - direction.offsetY,
+								this.zCoord - direction.offsetZ);
 
 						if (tileEntity instanceof IEnergyHandler)
 						{
@@ -84,7 +84,7 @@ public class TileTurbine extends TileEntity implements IFluidHandler, IEnergyHan
 						}
 					}
 
-				buffer.modifyEnergyStored(-usedEnergy);
+				this.buffer.modifyEnergyStored(-usedEnergy);
 			}
 		}
 	}
@@ -93,7 +93,7 @@ public class TileTurbine extends TileEntity implements IFluidHandler, IEnergyHan
 	public int fill(ForgeDirection from, FluidStack resource, boolean doFill)
 	{
 		if ((resource.getFluid() == FluidRegistry.getFluid("steam")) && (from != ForgeDirection.UP))
-			return steamTank.fill(resource, doFill);
+			return this.steamTank.fill(resource, doFill);
 		return 0;
 	}
 
@@ -126,7 +126,7 @@ public class TileTurbine extends TileEntity implements IFluidHandler, IEnergyHan
 	@Override
 	public FluidTankInfo[] getTankInfo(ForgeDirection from)
 	{
-		return new FluidTankInfo[] { steamTank.getInfo() };
+		return new FluidTankInfo[] { this.steamTank.getInfo() };
 	}
 
 	@Override
@@ -144,18 +144,18 @@ public class TileTurbine extends TileEntity implements IFluidHandler, IEnergyHan
 	@Override
 	public int extractEnergy(ForgeDirection from, int maxExtract, boolean simulate)
 	{
-		return buffer.extractEnergy(maxExtract, simulate);
+		return this.buffer.extractEnergy(maxExtract, simulate);
 	}
 
 	@Override
 	public int getEnergyStored(ForgeDirection from)
 	{
-		return buffer.getEnergyStored();
+		return this.buffer.getEnergyStored();
 	}
 
 	@Override
 	public int getMaxEnergyStored(ForgeDirection from)
 	{
-		return buffer.getMaxEnergyStored();
+		return this.buffer.getMaxEnergyStored();
 	}
 }

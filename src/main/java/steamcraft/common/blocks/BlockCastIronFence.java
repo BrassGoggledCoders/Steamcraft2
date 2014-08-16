@@ -29,11 +29,11 @@ public class BlockCastIronFence extends BlockFence
 	public BlockCastIronFence()
 	{
 		super(LibInfo.PREFIX + "metal/" + "blockCastIron", Material.iron);
-		setBlockName("blockCastIronFence");
-		setHardness(4.5F);
-		setResistance(20.0F);
-		setStepSound(Block.soundTypeMetal);
-		setCreativeTab(Steamcraft.tabSC2);
+		this.setBlockName("blockCastIronFence");
+		this.setHardness(4.5F);
+		this.setResistance(20.0F);
+		this.setStepSound(Block.soundTypeMetal);
+		this.setCreativeTab(Steamcraft.tabSC2);
 	}
 
 	@Override

@@ -30,8 +30,8 @@ public class ItemWatch extends BaseItem
 {
 	public ItemWatch()
 	{
-		setMaxStackSize(1);
-		setCreativeTab(Steamcraft.tabSC2);
+		this.setMaxStackSize(1);
+		this.setCreativeTab(Steamcraft.tabSC2);
 	}
 
 	@Override

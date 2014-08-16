@@ -38,13 +38,13 @@ public class ItemChisel extends BaseItem
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister ir)
 	{
-		itemIcon = ir.registerIcon(LibInfo.PREFIX + "itemChisel");
+		this.itemIcon = ir.registerIcon(LibInfo.PREFIX + "itemChisel");
 	}
 
 	public ItemChisel()
 	{
-		setMaxStackSize(1);
-		setMaxDamage(20);
+		this.setMaxStackSize(1);
+		this.setMaxDamage(20);
 	}
 
 	@Override

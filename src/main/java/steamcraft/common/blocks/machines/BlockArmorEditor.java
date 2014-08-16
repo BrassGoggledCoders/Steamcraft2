@@ -36,7 +36,7 @@ public class BlockArmorEditor extends BlockContainerMod
 	public BlockArmorEditor(Material mat)
 	{
 		super(mat);
-		setBlockName("blockArmorEditor");
+		this.setBlockName("blockArmorEditor");
 	}
 
 	@Override
@@ -97,13 +97,13 @@ public class BlockArmorEditor extends BlockContainerMod
 
 					if (var9 != null)
 					{
-						float var10 = (random.nextFloat() * 0.8F) + 0.1F;
-						float var11 = (random.nextFloat() * 0.8F) + 0.1F;
-						float var12 = (random.nextFloat() * 0.8F) + 0.1F;
+						float var10 = (this.random.nextFloat() * 0.8F) + 0.1F;
+						float var11 = (this.random.nextFloat() * 0.8F) + 0.1F;
+						float var12 = (this.random.nextFloat() * 0.8F) + 0.1F;
 
 						while (var9.stackSize > 0)
 						{
-							int var13 = random.nextInt(21) + 10;
+							int var13 = this.random.nextInt(21) + 10;
 
 							if (var13 > var9.stackSize)
 								var13 = var9.stackSize;
@@ -116,9 +116,9 @@ public class BlockArmorEditor extends BlockContainerMod
 								var14.getEntityItem().setTagCompound((NBTTagCompound) var9.getTagCompound().copy());
 
 							float var15 = 0.05F;
-							var14.motionX = (float) random.nextGaussian() * var15;
-							var14.motionY = ((float) random.nextGaussian() * var15) + 0.2F;
-							var14.motionZ = (float) random.nextGaussian() * var15;
+							var14.motionX = (float) this.random.nextGaussian() * var15;
+							var14.motionY = ((float) this.random.nextGaussian() * var15) + 0.2F;
+							var14.motionZ = (float) this.random.nextGaussian() * var15;
 							par1World.spawnEntityInWorld(var14);
 						}
 					}

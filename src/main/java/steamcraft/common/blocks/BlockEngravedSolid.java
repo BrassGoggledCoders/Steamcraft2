@@ -51,7 +51,7 @@ public class BlockEngravedSolid extends Block
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(int side, int metadata)
 	{
-		return icon[metadata];
+		return this.icon[metadata];
 	}
 
 	/*
@@ -65,16 +65,16 @@ public class BlockEngravedSolid extends Block
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister ir)
 	{
-		icon[0] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedAluminum");
-		icon[1] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedCopper");
-		icon[2] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedTin");
-		icon[3] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedZinc");
-		icon[4] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedBrass");
-		icon[5] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedBronze");
-		icon[6] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedSteel");
-		icon[7] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedCastIron");
-		icon[8] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedUranium");
-		icon[9] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedEtherium");
+		this.icon[0] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedAluminum");
+		this.icon[1] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedCopper");
+		this.icon[2] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedTin");
+		this.icon[3] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedZinc");
+		this.icon[4] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedBrass");
+		this.icon[5] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedBronze");
+		this.icon[6] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedSteel");
+		this.icon[7] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedCastIron");
+		this.icon[8] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedUranium");
+		this.icon[9] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedEtherium");
 	}
 
 	/**
@@ -85,12 +85,12 @@ public class BlockEngravedSolid extends Block
 	public BlockEngravedSolid()
 	{
 		super(Material.rock);
-		setBlockName("blockEngravedSolid");
-		setHardness(3.0F);
-		setResistance(15.0F);
-		setStepSound(Block.soundTypeMetal);
-		setTickRandomly(true);
-		setCreativeTab(Steamcraft.tabSC2);
+		this.setBlockName("blockEngravedSolid");
+		this.setHardness(3.0F);
+		this.setResistance(15.0F);
+		this.setStepSound(Block.soundTypeMetal);
+		this.setTickRandomly(true);
+		this.setCreativeTab(Steamcraft.tabSC2);
 	}
 
 	/*
@@ -146,7 +146,7 @@ public class BlockEngravedSolid extends Block
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(Item item, CreativeTabs tab, List l)
 	{
-		for (int var4 = 0; var4 < icon.length; ++var4)
+		for (int var4 = 0; var4 < this.icon.length; ++var4)
 			l.add(new ItemStack(InitBlocks.blockEngraved, 1, var4));
 	}
 

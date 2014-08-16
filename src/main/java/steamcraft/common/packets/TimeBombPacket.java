@@ -42,28 +42,28 @@ public class TimeBombPacket implements IMessage
 		this.x = x;
 		this.y = y;
 		this.z = z;
-		
+
 		this.worldId = worldId;
 	}
 
 	@Override
 	public void fromBytes(ByteBuf buf)
 	{
-		time = buf.readInt();
-		x = buf.readInt();
-		y = buf.readInt();
-		z = buf.readInt();
-		worldId = buf.readInt();
+		this.time = buf.readInt();
+		this.x = buf.readInt();
+		this.y = buf.readInt();
+		this.z = buf.readInt();
+		this.worldId = buf.readInt();
 	}
 
 	@Override
 	public void toBytes(ByteBuf buf)
 	{
-		buf.writeInt(time);
-		buf.writeInt(x);
-		buf.writeInt(y);
-		buf.writeInt(z);
-		buf.writeInt(worldId);
+		buf.writeInt(this.time);
+		buf.writeInt(this.x);
+		buf.writeInt(this.y);
+		buf.writeInt(this.z);
+		buf.writeInt(this.worldId);
 	}
 
 	public static class TimeBombPacketHandler implements IMessageHandler<TimeBombPacket, IMessage>

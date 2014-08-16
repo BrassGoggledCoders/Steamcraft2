@@ -31,9 +31,9 @@ public class CommandSteamcraft extends CommandBase
 
 	public CommandSteamcraft()
 	{
-		aliases = new ArrayList<String>();
-		aliases.add("steamcraft");
-		aliases.add("sc");
+		this.aliases = new ArrayList<String>();
+		this.aliases.add("steamcraft");
+		this.aliases.add("sc");
 	}
 
 	@Override

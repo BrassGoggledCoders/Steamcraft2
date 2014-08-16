@@ -49,7 +49,7 @@ public class BlockLamp extends BlockRedstoneLight
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(int side, int metadata)
 	{
-		return icon[metadata];
+		return this.icon[metadata];
 	}
 
 	/*
@@ -63,8 +63,8 @@ public class BlockLamp extends BlockRedstoneLight
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister ir)
 	{
-		icon[0] = ir.registerIcon(LibInfo.PREFIX + "blockLampOff");
-		icon[1] = ir.registerIcon(LibInfo.PREFIX + "blockLampOn");
+		this.icon[0] = ir.registerIcon(LibInfo.PREFIX + "blockLampOff");
+		this.icon[1] = ir.registerIcon(LibInfo.PREFIX + "blockLampOn");
 	}
 
 	/**
@@ -73,14 +73,14 @@ public class BlockLamp extends BlockRedstoneLight
 	public BlockLamp()
 	{
 		super(powered);
-		setBlockName("blockLamp");
-		setHardness(3.0F);
-		setResistance(10.0F);
-		setStepSound(Block.soundTypeStone);
-		setCreativeTab(Steamcraft.tabSC2);
+		this.setBlockName("blockLamp");
+		this.setHardness(3.0F);
+		this.setResistance(10.0F);
+		this.setStepSound(Block.soundTypeStone);
+		this.setCreativeTab(Steamcraft.tabSC2);
 
 		if (powered)
-			setLightLevel(0.98F);
+			this.setLightLevel(0.98F);
 	}
 
 	/*

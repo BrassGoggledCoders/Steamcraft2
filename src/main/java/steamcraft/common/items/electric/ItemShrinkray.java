@@ -47,17 +47,17 @@ public class ItemShrinkray extends ItemElectricConsumer implements IEnergyItem
 		this.maxEnergy = maxEnergy * 1000;
 		this.maxReceive = (short) maxReceive;
 		this.maxSend = (short) maxSend;
-		setMaxStackSize(1);
-		setFull3D();
-		setMaxDamage(20);
-		setHasSubtypes(false);
+		this.setMaxStackSize(1);
+		this.setFull3D();
+		this.setMaxDamage(20);
+		this.setHasSubtypes(false);
 	}
 
 	@SuppressWarnings("all")
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
 	{
-		if (getEnergyStored(stack) > energyPerUse)
+		if (this.getEnergyStored(stack) > this.energyPerUse)
 		{
 			MovingObjectPosition mop = PlayerUtils.getTargetBlock(world, player, true, 10);
 
@@ -112,7 +112,7 @@ public class ItemShrinkray extends ItemElectricConsumer implements IEnergyItem
 					// world.spawnEntityInWorld(new EntityItem(world, x, y, z,
 					// drops));
 					world.setBlockToAir(x, y, z);
-					extractEnergy(stack, energyPerUse, false);
+					this.extractEnergy(stack, this.energyPerUse, false);
 				}
 			}
 		}

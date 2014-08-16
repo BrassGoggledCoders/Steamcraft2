@@ -38,22 +38,22 @@ public class ItemClockworkWings extends BaseArmor
 	public ItemClockworkWings(ArmorMaterial mat, int renderIndex, int type)
 	{
 		super(mat, renderIndex, type);
-		setMaxDamage(0);
+		this.setMaxDamage(0);
 	}
 
 	@SuppressWarnings("all")
 	@Override
 	public void addInformation(ItemStack itemStack, EntityPlayer entityPlayer, List list, boolean bool)
 	{
-		if (descNeedsShift)
+		if (this.descNeedsShift)
 		{
 			if (ClientHelper.isShiftKeyDown())
-				getWrappedDesc(list);
+				this.getWrappedDesc(list);
 			else
 				list.add(ClientHelper.shiftForInfo);
 		}
 		else
-			getWrappedDesc(list);
+			this.getWrappedDesc(list);
 	}
 
 	@Override

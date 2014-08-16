@@ -45,15 +45,15 @@ public class ItemNugget extends BaseItemWithMetadata
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister ir)
 	{
-		for (int i = 0; i < itemIcon.length; i++)
-			itemIcon[i] = ir.registerIcon(LibInfo.PREFIX + "metals/" + "itemNugget" + LibInfo.metals[i]);
+		for (int i = 0; i < this.itemIcon.length; i++)
+			this.itemIcon[i] = ir.registerIcon(LibInfo.PREFIX + "metals/" + "itemNugget" + LibInfo.metals[i]);
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public IIcon getIconFromDamage(int itemDamage)
 	{
-		return itemIcon[itemDamage];
+		return this.itemIcon[itemDamage];
 	}
 
 }

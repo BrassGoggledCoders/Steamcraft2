@@ -37,7 +37,7 @@ public class RenderBullet extends Render
 
 	public void renderBullet(final EntityBullet bullet, final double dx, final double dy, final double dz, final float frotY, final float frotP)
 	{
-		bindEntityTexture(bullet);
+		this.bindEntityTexture(bullet);
 
 		if ((bullet.prevRotationYaw == 0.0F) && (bullet.prevRotationPitch == 0.0F))
 			return;
@@ -115,12 +115,12 @@ public class RenderBullet extends Render
 	@Override
 	protected ResourceLocation getEntityTexture(final Entity entity)
 	{
-		return getBulletTexture((EntityBullet) entity);
+		return this.getBulletTexture((EntityBullet) entity);
 	}
 
 	@Override
 	public void doRender(final Entity entity, final double dx, final double dy, final double dz, final float frotY, final float frotP)
 	{
-		renderBullet((EntityBullet) entity, dx, dy, dz, frotY, frotP);
+		this.renderBullet((EntityBullet) entity, dx, dy, dz, frotY, frotP);
 	}
 }

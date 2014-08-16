@@ -66,9 +66,9 @@ public class BlockTimeBomb extends BlockContainerMod
 		switch (side)
 		{
 		case 1:
-			return iconEnd; // top
+			return this.iconEnd; // top
 		default:
-			return blockIcon; // sides
+			return this.blockIcon; // sides
 		}
 	}
 
@@ -76,8 +76,8 @@ public class BlockTimeBomb extends BlockContainerMod
 	@Override
 	public void registerBlockIcons(IIconRegister icon)
 	{
-		blockIcon = icon.registerIcon(LibInfo.PREFIX + "blockTimebomb");
-		iconEnd = icon.registerIcon(LibInfo.PREFIX + "blockTimebombTop");
+		this.blockIcon = icon.registerIcon(LibInfo.PREFIX + "blockTimebomb");
+		this.iconEnd = icon.registerIcon(LibInfo.PREFIX + "blockTimebombTop");
 		// this.iconTop = icon.registerIcon(LibInfo.PREFIX +
 		// "blockSteamBoilerTop");
 	}

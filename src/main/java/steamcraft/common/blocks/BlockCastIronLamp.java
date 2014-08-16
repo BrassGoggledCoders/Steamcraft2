@@ -42,19 +42,19 @@ public class BlockCastIronLamp extends BlockContainer
 	public BlockCastIronLamp(boolean flag)
 	{
 		super(Material.circuits);
-		setHardness(0.0F);
-		setResistance(7.5F);
-		powered = flag;
-		setTickRandomly(true);
-		disableStats();
+		this.setHardness(0.0F);
+		this.setResistance(7.5F);
+		this.powered = flag;
+		this.setTickRandomly(true);
+		this.disableStats();
 		final float f = 0.25F;
-		setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, 1.0F, 0.5F + f);
-		setCreativeTab(Steamcraft.tabSC2);
+		this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, 1.0F, 0.5F + f);
+		this.setCreativeTab(Steamcraft.tabSC2);
 
 		if (flag)
 		{
-			setLightLevel(1.0F);
-			setCreativeTab((CreativeTabs) null);
+			this.setLightLevel(1.0F);
+			this.setCreativeTab((CreativeTabs) null);
 		}
 	}
 
@@ -85,7 +85,7 @@ public class BlockCastIronLamp extends BlockContainer
 	@Override
 	public AxisAlignedBB getSelectedBoundingBoxFromPool(final World world, final int x, final int y, final int z)
 	{
-		setBlockBoundsBasedOnState(world, x, y, z);
+		this.setBlockBoundsBasedOnState(world, x, y, z);
 		return super.getSelectedBoundingBoxFromPool(world, x, y, z);
 	}
 
@@ -138,9 +138,9 @@ public class BlockCastIronLamp extends BlockContainer
 	{
 		if (!world.isRemote)
 		{
-			if (powered && !world.isBlockIndirectlyGettingPowered(x, y, z))
+			if (this.powered && !world.isBlockIndirectlyGettingPowered(x, y, z))
 				world.scheduleBlockUpdate(x, y, z, this, 4);
-			else if (!powered && world.isBlockIndirectlyGettingPowered(x, y, z))
+			else if (!this.powered && world.isBlockIndirectlyGettingPowered(x, y, z))
 				world.setBlock(x, y, z, InitBlocks.blockCastIronLampA, 0, 2);
 			if (world.getBlockMetadata(x, y, z) == 0)
 				super.onBlockAdded(world, x, y, z);
@@ -154,13 +154,13 @@ public class BlockCastIronLamp extends BlockContainer
 			world.notifyBlocksOfNeighborChange(x, y, z, this);
 		}
 
-		dropIfCantStay(world, x, y, z);
+		this.dropIfCantStay(world, x, y, z);
 	}
 
 	@Override
 	public void breakBlock(final World world, final int x, final int y, final int z, final Block block, final int metadata)
 	{
-		if (powered)
+		if (this.powered)
 		{
 			world.notifyBlocksOfNeighborChange(x, y - 1, z, this);
 			world.notifyBlocksOfNeighborChange(x, y + 1, z, this);
@@ -179,9 +179,9 @@ public class BlockCastIronLamp extends BlockContainer
 		super.updateTick(world, x, y, z, random);
 
 		if (world.getBlockMetadata(x, y, z) == 0)
-			onBlockAdded(world, x, y, z);
+			this.onBlockAdded(world, x, y, z);
 
-		if (!world.isRemote && powered && !world.isBlockIndirectlyGettingPowered(x, y, z))
+		if (!world.isRemote && this.powered && !world.isBlockIndirectlyGettingPowered(x, y, z))
 			world.setBlock(x, y, z, InitBlocks.blockCastIronLampI, 0, 2);
 	}
 
@@ -190,12 +190,12 @@ public class BlockCastIronLamp extends BlockContainer
 	{
 		if (!world.isRemote)
 		{
-			if (powered && !world.isBlockIndirectlyGettingPowered(x, y, z))
-				world.scheduleBlockUpdate(x, y, z, this, tickRate(world));
-			else if (!powered && world.isBlockIndirectlyGettingPowered(x, y, z))
+			if (this.powered && !world.isBlockIndirectlyGettingPowered(x, y, z))
+				world.scheduleBlockUpdate(x, y, z, this, this.tickRate(world));
+			else if (!this.powered && world.isBlockIndirectlyGettingPowered(x, y, z))
 				world.setBlock(x, y, z, InitBlocks.blockCastIronLampA, 0, 2);
 
-			if (dropIfCantStay(world, x, y, z))
+			if (this.dropIfCantStay(world, x, y, z))
 			{
 				final int metadata = world.getBlockMetadata(x, y, z);
 				boolean flag = false;
@@ -224,7 +224,7 @@ public class BlockCastIronLamp extends BlockContainer
 
 	private boolean dropIfCantStay(final World world, final int x, final int y, final int z)
 	{
-		if (!canPlaceBlockAt(world, x, y, z))
+		if (!this.canPlaceBlockAt(world, x, y, z))
 		{
 			this.dropBlockAsItem(world, x, y, z, world.getBlockMetadata(x, y, z), 1);
 			world.setBlockToAir(x, y, z);
@@ -244,7 +244,7 @@ public class BlockCastIronLamp extends BlockContainer
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(final World world, final int x, final int j, final int z, final Random random)
 	{
-		if (!powered)
+		if (!this.powered)
 			return;
 		else
 		{

@@ -27,8 +27,8 @@ import steamcraft.common.container.InventoryVanity;
  * 
  */
 public class EntityPlayerExtended implements IExtendedEntityProperties // TODO:
-																		// Add
-																		// packets
+// Add
+// packets
 {
 	public final static String EXT_PROP_NAME = "EntityPlayerExtended";
 
@@ -56,14 +56,14 @@ public class EntityPlayerExtended implements IExtendedEntityProperties // TODO:
 	{
 		final NBTTagCompound properties = new NBTTagCompound();
 		tagCompound.setTag(EXT_PROP_NAME, properties);
-		inventory.writeToNBT(properties);
+		this.inventory.writeToNBT(properties);
 	}
 
 	@Override
 	public void loadNBTData(final NBTTagCompound tagCompound)
 	{
 		final NBTTagCompound properties = (NBTTagCompound) tagCompound.getTag(EXT_PROP_NAME);
-		inventory.readFromNBT(properties);
+		this.inventory.readFromNBT(properties);
 	}
 
 	@Override
@@ -88,7 +88,7 @@ public class EntityPlayerExtended implements IExtendedEntityProperties // TODO:
 		// baOutputStream.toByteArray());
 
 		// We only want to send from the server to the client
-		if (!player.worldObj.isRemote)
+		if (!this.player.worldObj.isRemote)
 		{
 		}
 	}

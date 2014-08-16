@@ -32,7 +32,7 @@ public class BlockDropHammerFrame extends Block
 	public BlockDropHammerFrame(Material mat)
 	{
 		super(mat);
-		setCreativeTab(Steamcraft.tabSC2);
+		this.setCreativeTab(Steamcraft.tabSC2);
 	}
 
 }

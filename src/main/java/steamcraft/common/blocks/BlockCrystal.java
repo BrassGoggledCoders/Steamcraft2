@@ -44,11 +44,11 @@ public class BlockCrystal extends BlockContainer implements ITileEntityProvider
 	public BlockCrystal()
 	{
 		super(Material.glass);
-		setBlockName("blockCrystal");
-		setHardness(8.5F);
-		setResistance(-1);
-		setStepSound(Block.soundTypeGlass);
-		setCreativeTab(Steamcraft.tabSC2);
+		this.setBlockName("blockCrystal");
+		this.setHardness(8.5F);
+		this.setResistance(-1);
+		this.setStepSound(Block.soundTypeGlass);
+		this.setCreativeTab(Steamcraft.tabSC2);
 	}
 
 	@Override
