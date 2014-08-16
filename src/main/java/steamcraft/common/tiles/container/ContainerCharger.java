@@ -26,7 +26,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author decebaldecebal
- * 
+ *
  */
 public class ContainerCharger extends Container
 {
@@ -42,11 +42,6 @@ public class ContainerCharger extends Container
 		this.tile_entity = tile;
 
 		this.addSlotToContainer(new SlotCharger(tile, 0, 98, 22));
-		this.addSlotToContainer(new SlotCharger(tile, 1, 116, 22));
-		this.addSlotToContainer(new SlotCharger(tile, 2, 134, 22));
-		this.addSlotToContainer(new SlotCharger(tile, 3, 98, 40));
-		this.addSlotToContainer(new SlotCharger(tile, 4, 116, 40));
-		this.addSlotToContainer(new SlotCharger(tile, 5, 134, 40));
 
 		int var3;
 
