@@ -20,7 +20,7 @@ import boilerplate.steamapi.IModule;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 public class TileArmorEditor extends BaseTileWithInventory implements IInventory
 {
@@ -56,14 +56,14 @@ public class TileArmorEditor extends BaseTileWithInventory implements IInventory
 				{
 					ItemBrassArmor armor = (ItemBrassArmor) this.inventory[0].getItem();
 					IModule module = (IModule) this.inventory[i].getItem();
-					if (!armor.modules.contains(module))
+					if (!armor.modules.containsKey(module.getName()))
 						if (armor.armorType != -1)
 						{
 							if (armor.armorType == module.getApplicablePiece())
-								armor.modules.add(module);
+								armor.modules.put(module.getName(), module);
 						}
 						else
-							armor.modules.add(module);
+							armor.modules.put(module.getName(), module);
 					// inventory[0].stackTagCompound.setString(/*"module" + i,
 					// module.getName()*/"potato", "potato");
 					// .setString("module" +i,module.getName());

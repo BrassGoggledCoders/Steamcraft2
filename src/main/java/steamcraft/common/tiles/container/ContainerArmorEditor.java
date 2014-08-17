@@ -34,7 +34,7 @@ public class ContainerArmorEditor extends Container
 
 	/**
 	 * Instantiates a new container armor editor.
-	 * 
+	 *
 	 * @param player
 	 *            the player
 	 * @param tile
@@ -71,10 +71,10 @@ public class ContainerArmorEditor extends Container
 		return true;
 	}
 
-	@Override
+	/*@Override
 	/**
 	 * args: slotID, itemStack to put in slot
-	 */
+
 	public void putStackInSlot(int slot, ItemStack stack)
 	{
 		if (slot == 0)
@@ -84,5 +84,5 @@ public class ContainerArmorEditor extends Container
 				this.inventorySlots.set(i, armor.modules.get(i));
 		}
 		this.getSlot(slot).putStack(stack);
-	}
+	}*/
 }
