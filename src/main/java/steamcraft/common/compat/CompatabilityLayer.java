@@ -22,7 +22,7 @@ import cpw.mods.fml.common.event.FMLInterModComms;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 public class CompatabilityLayer
 {
@@ -30,6 +30,7 @@ public class CompatabilityLayer
 	{
 		registerOreDictionaryEntries();
 		sendIMCMessages();
+		ForgeHooks.init();
 	}
 
 	private static void sendIMCMessages()
