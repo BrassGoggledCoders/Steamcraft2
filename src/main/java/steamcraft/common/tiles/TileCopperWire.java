@@ -48,9 +48,9 @@ public class TileCopperWire extends TileEntity
 	@Override
 	public void updateEntity()
 	{
-		if (this.isMaster)
+		if(this.isMaster)
 		{
-			if (this.network.updateNetworkForWires)
+			if(this.network.updateNetworkForWires)
 			{
 				this.network.updateNetworkForWires = false;
 				this.updateConnections();

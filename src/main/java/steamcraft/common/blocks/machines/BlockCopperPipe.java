@@ -1,5 +1,5 @@
 /**
- * This class was created by BrassGoggledCoders modding team. 
+ * This class was created by BrassGoggledCoders modding team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -8,7 +8,7 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- * 
+ *
  */
 package steamcraft.common.blocks.machines;
 
@@ -25,7 +25,7 @@ import steamcraft.common.tiles.TileCopperPipe;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 public class BlockCopperPipe extends BlockContainerMod
 {
@@ -35,7 +35,7 @@ public class BlockCopperPipe extends BlockContainerMod
 	{
 		super(mat);
 
-		this.setBlockBounds(6 * pixel, 6 * pixel, 6 * pixel, 1 - (6 * pixel), 1 - (6 * pixel), 1 - (6 * pixel));
+		this.setBlockBounds(6 * pixel, 4 * pixel, 6 * pixel, 1 - (6 * pixel), 1 - (4 * pixel), 1 - (6 * pixel));
 		this.useNeighborBrightness = true;
 	}
 
@@ -143,19 +143,19 @@ public class BlockCopperPipe extends BlockContainerMod
 	 * (float) this.maxX; float miny = (float) this.minY; float maxy = (float)
 	 * this.maxY; float minz = (float) this.minZ; float maxz = (float)
 	 * this.maxZ;
-	 * 
+	 *
 	 * if (par1IBlockAccess.getBlock(x - 1, y, z) == this) minx = 0;
-	 * 
+	 *
 	 * if (par1IBlockAccess.getBlock(x + 1, y, z) == this) maxx = 1;
-	 * 
+	 *
 	 * if (par1IBlockAccess.getBlock(x, y - 1, z) == this) miny = 0;
-	 * 
+	 *
 	 * if (par1IBlockAccess.getBlock(x, y + 1, z) == this) maxy = 1;
-	 * 
+	 *
 	 * if (par1IBlockAccess.getBlock(x, y, z - 1) == this) minz = 0;
-	 * 
+	 *
 	 * if (par1IBlockAccess.getBlock(x, y, z + 1) == this) maxz = 1;
-	 * 
+	 *
 	 * this.setBlockBounds(minx, miny, minz, maxx, maxy, maxz); }
 	 */
 }
