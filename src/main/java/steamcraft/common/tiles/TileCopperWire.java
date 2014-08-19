@@ -34,7 +34,7 @@ import cpw.mods.fml.common.network.NetworkRegistry.TargetPoint;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 public class TileCopperWire extends TileEntity
 {
@@ -49,12 +49,14 @@ public class TileCopperWire extends TileEntity
 	public void updateEntity()
 	{
 		if (this.isMaster)
+		{
 			if (this.network.updateNetworkForWires)
 			{
 				this.network.updateNetworkForWires = false;
 				this.updateConnections();
 			}
-		this.network.updateNetwork(this);
+			this.network.updateNetwork(this);
+		}
 	}
 
 	@Override
