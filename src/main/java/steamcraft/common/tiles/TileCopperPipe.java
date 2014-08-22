@@ -456,7 +456,7 @@ public class TileCopperPipe extends TileEntity
 		return this.worldObj.getBlock(this.xCoord + dir.offsetX, this.yCoord + dir.offsetY, this.zCoord + dir.offsetZ) == InitBlocks.blockCopperPipe;
 	}
 
-	private boolean isFluidHandler(ForgeDirection dir)
+	public boolean isFluidHandler(ForgeDirection dir)
 	{
 		return this.worldObj.getTileEntity(this.xCoord + dir.offsetX, this.yCoord + dir.offsetY, this.zCoord + dir.offsetZ) instanceof IFluidHandler;
 	}
