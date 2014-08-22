@@ -40,6 +40,8 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 	@Override
 	public void renderTileEntityAt(TileEntity tile, double transX, double transY, double transZ, float f)
 	{
+		GL11.glPushMatrix();
+		 
 		GL11.glTranslated(transX, transY, transZ);
 		GL11.glDisable(GL11.GL_LIGHTING);
 
@@ -66,6 +68,8 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 		GL11.glEnable(GL11.GL_LIGHTING);
 
 		GL11.glTranslated(-transX, -transY, -transZ);
+		
+		GL11.glPopMatrix();
 	}
 
 	private void drawStraightConnection(ForgeDirection dir, TileCopperPipe pipe)

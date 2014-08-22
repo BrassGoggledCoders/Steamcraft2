@@ -37,6 +37,8 @@ public class TileCopperWireRenderer extends TileEntitySpecialRenderer
 	@Override
 	public void renderTileEntityAt(TileEntity tile, double transX, double transY, double transZ, float f)
 	{
+		GL11.glPushMatrix();
+		
 		GL11.glTranslated(transX, transY, transZ);
 		GL11.glDisable(GL11.GL_LIGHTING);
 
@@ -63,7 +65,8 @@ public class TileCopperWireRenderer extends TileEntitySpecialRenderer
 		GL11.glEnable(GL11.GL_LIGHTING);
 
 		GL11.glTranslated(-transX, -transY + -3F, -transZ);
-
+		
+		GL11.glPopMatrix();
 	}
 
 	private void drawStraightConnection(ForgeDirection dir, TileCopperWire wire)
