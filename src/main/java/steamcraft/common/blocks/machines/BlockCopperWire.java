@@ -138,5 +138,4 @@ public class BlockCopperWire extends BlockContainerMod
 	{
 		entity.attackEntityFrom(DamageSourceHandler.electrocution, 0.5F);
 	}
-
 }

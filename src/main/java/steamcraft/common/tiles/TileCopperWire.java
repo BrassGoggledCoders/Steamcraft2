@@ -33,8 +33,8 @@ import cofh.api.energy.IEnergyHandler;
 import cpw.mods.fml.common.network.NetworkRegistry.TargetPoint;
 
 /**
- * @author warlordjones
- *
+ * @author decebaldecebal
+ * 
  */
 public class TileCopperWire extends TileEntity
 {
@@ -48,9 +48,9 @@ public class TileCopperWire extends TileEntity
 	@Override
 	public void updateEntity()
 	{
-		if(this.isMaster)
+		if (this.isMaster)
 		{
-			if(this.network.updateNetworkForWires)
+			if (this.network.updateNetworkForWires)
 			{
 				this.network.updateNetworkForWires = false;
 				this.updateConnections();
@@ -74,8 +74,7 @@ public class TileCopperWire extends TileEntity
 
 	private static void writeDirectionToNBT(NBTTagCompound tag, ForgeDirection dir)
 	{
-		byte index = -1;
-		;
+		byte index = -1;;
 
 		if (dir != null)
 			switch (dir)
@@ -167,7 +166,7 @@ public class TileCopperWire extends TileEntity
 		}
 		else
 			for (ForgeDirection dir : this.connections)
-				if ((dir != null) && this.isEnergyHandler(dir))
+				if (dir != null && this.isEnergyHandler(dir))
 				{
 					this.extract = dir;
 
@@ -186,7 +185,7 @@ public class TileCopperWire extends TileEntity
 
 	private void removeConnections(int i)
 	{
-		if ((this.connections[i] != null) && !this.worldObj.isRemote)
+		if (this.connections[i] != null && !this.worldObj.isRemote)
 		{
 			ForgeDirection dir = this.connections[i];
 
@@ -256,7 +255,7 @@ public class TileCopperWire extends TileEntity
 
 		if (!this.worldObj.isRemote)
 		{
-			if ((this.extract != null) && !this.isEnergyHandler(this.extract))
+			if (this.extract != null && !this.isEnergyHandler(this.extract))
 			{
 				this.network.inputs.remove(new Coords(this.xCoord + this.extract.offsetX, this.yCoord + this.extract.offsetY, this.zCoord
 						+ this.extract.offsetZ, this.extract.getOpposite()));
@@ -265,7 +264,7 @@ public class TileCopperWire extends TileEntity
 			}
 
 			for (ForgeDirection dir : this.connections)
-				if ((dir != null) && this.isEnergyHandler(dir))
+				if (dir != null && this.isEnergyHandler(dir))
 				{
 					Coords temp = new Coords(this.xCoord + dir.offsetX, this.yCoord + dir.offsetY, this.zCoord + dir.offsetZ, dir.getOpposite());
 
@@ -328,12 +327,7 @@ public class TileCopperWire extends TileEntity
 					}
 				}
 				else
-					wire.updateOneConnection(dir.getOpposite()); // happens if
-																	// you have
-																	// wires
-																	// next to
-																	// each
-																	// other
+					wire.updateOneConnection(dir.getOpposite());
 			}
 			else if (this.network != null)
 			{
@@ -351,27 +345,27 @@ public class TileCopperWire extends TileEntity
 
 		switch (dir)
 		{
-		case DOWN:
-			index = 0;
-			break;
-		case UP:
-			index = 1;
-			break;
-		case NORTH:
-			index = 2;
-			break;
-		case SOUTH:
-			index = 3;
-			break;
-		case WEST:
-			index = 4;
-			break;
-		case EAST:
-			index = 5;
-			break;
-		default:
-			index = -1;
-			break;
+			case DOWN:
+				index = 0;
+				break;
+			case UP:
+				index = 1;
+				break;
+			case NORTH:
+				index = 2;
+				break;
+			case SOUTH:
+				index = 3;
+				break;
+			case WEST:
+				index = 4;
+				break;
+			case EAST:
+				index = 5;
+				break;
+			default:
+				index = -1;
+				break;
 		}
 
 		this.connections[index] = dir;
@@ -435,10 +429,10 @@ public class TileCopperWire extends TileEntity
 
 		for (ForgeDirection dir : this.connections)
 		{
-			if ((main == null) && (dir != null))
+			if (main == null && dir != null)
 				main = dir;
 
-			if ((dir != null) && (main != dir))
+			if (dir != null && main != dir)
 				if (!this.areDirectionsOpposite(main, dir) && !this.areDirectionsOpposite(dir, main))
 					return null;
 				else
@@ -453,11 +447,11 @@ public class TileCopperWire extends TileEntity
 
 	private boolean areDirectionsOpposite(ForgeDirection dir1, ForgeDirection dir2)
 	{
-		if ((dir1 == ForgeDirection.UP) && (dir2 == ForgeDirection.DOWN))
+		if (dir1 == ForgeDirection.UP && dir2 == ForgeDirection.DOWN)
 			return true;
-		if ((dir1 == ForgeDirection.SOUTH) && (dir2 == ForgeDirection.NORTH))
+		if (dir1 == ForgeDirection.SOUTH && dir2 == ForgeDirection.NORTH)
 			return true;
-		if ((dir1 == ForgeDirection.EAST) && (dir2 == ForgeDirection.WEST))
+		if (dir1 == ForgeDirection.EAST && dir2 == ForgeDirection.WEST)
 			return true;
 
 		return false;
@@ -465,7 +459,7 @@ public class TileCopperWire extends TileEntity
 
 	private void updateClient()
 	{
-		if ((this.network != null) && !MinecraftServer.getServer().isDedicatedServer())
+		if (this.network != null && !MinecraftServer.getServer().isDedicatedServer())
 		{
 			InitPackets.network.sendToAllAround(new CopperWirePacket(this.worldObj.provider.dimensionId, this.xCoord, this.yCoord, this.zCoord,
 					this.connections), new TargetPoint(this.worldObj.provider.dimensionId, this.xCoord, this.yCoord, this.zCoord, 100));
@@ -478,12 +472,7 @@ public class TileCopperWire extends TileEntity
 
 		private static final byte ticksTillUpdate = 2;
 
-		private static final short maxTransferPerTile = 2500 * ticksTillUpdate; // can
-																				// transmit
-																				// a
-																				// max
-																				// of
-																				// 2500RF/t
+		private static final short maxTransferPerTile = 2500 * ticksTillUpdate; // can transmit a max of 2500RF/t
 
 		public boolean updateNetworkForWires = false;
 
@@ -507,7 +496,7 @@ public class TileCopperWire extends TileEntity
 		{
 			this.ticksSinceLastUpdate++;
 
-			if (this.ticksSinceLastUpdate == (ticksTillUpdate / 2))
+			if (this.ticksSinceLastUpdate == ticksTillUpdate / 2)
 				this.updateClient(wire);
 
 			if (this.ticksSinceLastUpdate == ticksTillUpdate)
@@ -523,10 +512,10 @@ public class TileCopperWire extends TileEntity
 		{
 			if (!MinecraftServer.getServer().isDedicatedServer())
 			{
-				this.energyScaled = (this.buffer.getEnergyStored() / (float) this.size / EnergyNetwork.capacityPerWire)
+				this.energyScaled = this.buffer.getEnergyStored() / (float) this.size / EnergyNetwork.capacityPerWire
 						* (2 * TileCopperWireRenderer.pixel);
 
-				if (this.energyScaled > (2 * TileCopperWireRenderer.pixel))
+				if (this.energyScaled > 2 * TileCopperWireRenderer.pixel)
 					this.energyScaled = 2 * TileCopperWireRenderer.pixel;
 
 				InitPackets.network.sendToAllAround(new EnergyNetworkPacket(wire.worldObj.provider.dimensionId, wire.xCoord, wire.yCoord,
@@ -600,7 +589,7 @@ public class TileCopperWire extends TileEntity
 					else
 						break;
 
-				if (tempSize == (this.outputs.size() / 2))
+				if (tempSize == this.outputs.size() / 2)
 					this.updateClient(wire);
 			}
 		}

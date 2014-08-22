@@ -75,7 +75,7 @@ public class CopperPipePacket implements IMessage
 			buf.writeByte(directionToByte(this.connections[i]));
 	}
 
-	private static byte directionToByte(ForgeDirection dir)
+	public static byte directionToByte(ForgeDirection dir)
 	{
 		byte index = -1;
 

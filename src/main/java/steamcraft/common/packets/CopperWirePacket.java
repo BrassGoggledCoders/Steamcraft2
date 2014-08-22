@@ -72,40 +72,7 @@ public class CopperWirePacket implements IMessage
 		buf.writeInt(this.y);
 		buf.writeInt(this.z);
 		for (int i = 0; i < 6; i++)
-			buf.writeByte(directionToByte(this.connections[i]));
-	}
-
-	private static byte directionToByte(ForgeDirection dir)
-	{
-		byte index = -1;
-
-		if (dir != null)
-			switch (dir)
-			{
-			case DOWN:
-				index = 0;
-				break;
-			case UP:
-				index = 1;
-				break;
-			case NORTH:
-				index = 2;
-				break;
-			case SOUTH:
-				index = 3;
-				break;
-			case WEST:
-				index = 4;
-				break;
-			case EAST:
-				index = 5;
-				break;
-			default:
-				index = -1;
-				break;
-			}
-
-		return index;
+			buf.writeByte(CopperPipePacket.directionToByte(this.connections[i]));
 	}
 
 	public static class CopperWirePacketHandler implements IMessageHandler<CopperWirePacket, IMessage>
