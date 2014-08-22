@@ -339,6 +339,8 @@ achievement.rodachieve=Natural Flux
 achievement.rodachieve.desc=FOR SCIENCE!
 achievement.zapachieve=KA-ZAAP!!
 achievement.zapachieve.desc=Power, UNLIMITED POWER!
+achievement.creatorachieve=To Meet Your Maker
+achievement.creatorachieve.desc=Oppa Gmod Style
 #Damage Sources
 death.attack.steamcraft2.electrocution=%1$s was electrocuted
 death.attack.steamcraft2.electrocution.player=%1$s was electrocuted

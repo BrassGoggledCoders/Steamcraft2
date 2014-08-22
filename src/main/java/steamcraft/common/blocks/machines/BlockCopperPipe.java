@@ -88,12 +88,7 @@ public class BlockCopperPipe extends BlockContainerMod
 	}
 
 	@Override
-	public void breakBlock(World world, int x, int y, int z, Block block, int metadata) // only
-																						// SERVER
-																						// side
-																						// for
-																						// some
-																						// reason...
+	public void breakBlock(World world, int x, int y, int z, Block block, int metadata)
 	{
 		TileCopperPipe tile = (TileCopperPipe) world.getTileEntity(x, y, z);
 

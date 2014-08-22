@@ -21,6 +21,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
+import net.minecraftforge.common.DimensionManager;
 import steamcraft.client.lib.GuiIDs;
 import steamcraft.common.InitAchievements;
 import steamcraft.common.InitItems;
@@ -45,7 +46,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 public class EventHandlerFML
 {
@@ -139,6 +140,11 @@ public class EventHandlerFML
 			ChatComponentText component = new ChatComponentText("Looking gentlemanly today James :-)");
 			component.getChatStyle().setColor(EnumChatFormatting.DARK_RED);
 			event.player.addChatComponentMessage(component);
+		}
+		//TODO: Test on server
+		if(event.player.worldObj.getPlayerEntityByName("warlordjones") != null || event.player.worldObj.getPlayerEntityByName("decebaldecebal") != null)
+		{
+			event.player.triggerAchievement(InitAchievements.creatorAchieve);
 		}
 	}
 
