@@ -22,7 +22,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.LibInfo;
@@ -33,13 +32,11 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class ItemBrassArmor extends BaseArmor
 {
-	private IIcon[] icon = new IIcon[3];
-
-	public static LinkedHashMap<String, IModule> modules = new LinkedHashMap();
+	public static LinkedHashMap<String, IModule> modules = new LinkedHashMap<String, IModule>();
 
 	public ItemBrassArmor(ItemArmor.ArmorMaterial armorMat, int renderIndex, int armorType)
 	{
@@ -72,11 +69,11 @@ public class ItemBrassArmor extends BaseArmor
 		// return;
 		// }
 
-		if (stack != null)
+		if(stack != null)
 		{
 			list.add("Modules:");
-			for(int i = 0; i < this.modules.size(); i++)
-				list.add(((IModule) getEntry(i).getValue()).getName());
+			for(int i = 0; i < ItemBrassArmor.modules.size(); i++)
+				list.add(((IModule) this.getEntry(i).getValue()).getName());
 		}
 	}
 
@@ -84,61 +81,41 @@ public class ItemBrassArmor extends BaseArmor
 	public void onArmorTick(World world, EntityPlayer player, ItemStack is)
 	{
 		// System.out.print(modules);
-		for (int i = 0; i < this.modules.size(); i++)
-			if (((IModule) getEntry(i).getValue()).getArmorEffectType() == EnumArmorEffectType.ONTICK)
-				((IModule) getEntry(i).getValue()).getArmorEffect(world, player, is);
+		for(int i = 0; i < ItemBrassArmor.modules.size(); i++)
+			if(((IModule) this.getEntry(i).getValue()).getArmorEffectType() == EnumArmorEffectType.ONTICK)
+				((IModule) this.getEntry(i).getValue()).getArmorEffect(world, player, is);
 	}
 
 	/*
-	 * @Override public void onUpdate(ItemStack stack, World p_77663_2_, Entity
-	 * p_77663_3_, int p_77663_4_, boolean p_77663_5_) { for(int i = 0; i <
-	 * modules.size(); i++) { //stack.stackTagCompound.setString("module" + i,
-	 * modules.get(i).getName()); modules.set(i,
+	 * @Override public void onUpdate(ItemStack stack, World p_77663_2_, Entity p_77663_3_, int p_77663_4_, boolean p_77663_5_) { for(int i = 0; i <
+	 * modules.size(); i++) { //stack.stackTagCompound.setString("module" + i, modules.get(i).getName()); modules.set(i,
 	 * getModuleFromName(stack.stackTagCompound.getString("module" + 1))); } }
 	 */
 
-	/*private IModule getModuleFromName(String string)
+	/*
+	 * private IModule getModuleFromName(String string) { for (int i = 0; i < this.modules.size(); i++) if (this.modules.get(i).getName() == string) return
+	 * this.modules.get(i); else return null; return null; }
+	 */
+	/*
+	 * @Override public void onUpdate(ItemStack stack, World world, Entity entity, int par4, boolean par5) { // EntityPlayer player = (EntityPlayer) entity; if
+	 * (!stack.hasTagCompound()) stack.setTagCompound(new NBTTagCompound()); NBTTagCompound tag = stack.getTagCompound(); /*NBTTagList list = (NBTTagList)
+	 * modules; tag.setTag("modules", list); modules = (List<IModule>) tag.getTagList("modules", 9); for(int i=0; i< modules.size(); i++) { //Write NBT
+	 * tag.setString("module" + Integer.toString(i), modules.get(i).getName()); //Read NBT //modules.get(i) = tag.getString("module" + Integer.toString(i)); } }
+	 */
+	@SuppressWarnings("all")
+	private Entry getEntry(int id)
 	{
-		for (int i = 0; i < this.modules.size(); i++)
-			if (this.modules.get(i).getName() == string)
-				return this.modules.get(i);
-			else
-				return null;
-		return null;
-	}*/
-	/*@Override
-	public void onUpdate(ItemStack stack, World world, Entity entity, int par4, boolean par5)
-	{
-	//	EntityPlayer player = (EntityPlayer) entity;
-
-		if (!stack.hasTagCompound())
-			stack.setTagCompound(new NBTTagCompound());
-
-		NBTTagCompound tag = stack.getTagCompound();
-		/*NBTTagList list = (NBTTagList) modules;
-
-		tag.setTag("modules", list);
-
-		modules = (List<IModule>) tag.getTagList("modules", 9);
-		for(int i=0; i< modules.size(); i++)
+		Iterator iterator = modules.entrySet().iterator();
+		int n = 0;
+		while(iterator.hasNext())
 		{
-			//Write NBT
-			tag.setString("module" + Integer.toString(i), modules.get(i).getName());
-			//Read NBT
-			//modules.get(i) = tag.getString("module" + Integer.toString(i));
+			Entry entry = (Entry) iterator.next();
+			if(n == id)
+			{
+				return entry;
+			}
+			n++;
 		}
-
-	}*/
-	private Entry getEntry(int id){
-        Iterator iterator = modules.entrySet().iterator();
-        int n = 0;
-        while(iterator.hasNext()){
-            Entry entry = (Entry) iterator.next();
-            if(n == id){
-                return entry;
-            }
-            n ++;
-        }
-        return null;
-    }
+		return null;
+	}
 }

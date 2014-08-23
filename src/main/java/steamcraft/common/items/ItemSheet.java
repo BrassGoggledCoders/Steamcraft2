@@ -37,7 +37,7 @@ public class ItemSheet extends BaseItemWithMetadata
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(Item item, CreativeTabs tab, List list)
 	{
-		for (int var4 = 0; var4 < 8; ++var4)
+		for(int var4 = 0; var4 < 8; ++var4)
 			list.add(new ItemStack(InitItems.itemSheet, 1, var4));
 	}
 
@@ -45,7 +45,7 @@ public class ItemSheet extends BaseItemWithMetadata
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister ir)
 	{
-		for (int i = 0; i < this.itemIcon.length; i++)
+		for(int i = 0; i < this.itemIcon.length; i++)
 			this.itemIcon[i] = ir.registerIcon(LibInfo.PREFIX + "metals/" + "itemSheet" + LibInfo.metals[i]);
 	}
 

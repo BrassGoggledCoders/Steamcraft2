@@ -13,7 +13,6 @@
 package steamcraft.common.items;
 
 import net.minecraft.item.ItemStack;
-import steamcraft.common.Steamcraft;
 
 /**
  * @author warlordjones
@@ -25,7 +24,6 @@ public class BaseItemWithMetadata extends BaseItem
 	{
 		super();
 		this.setHasSubtypes(true);
-		this.setCreativeTab(Steamcraft.tabSC2);
 	}
 
 	@Override

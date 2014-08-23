@@ -30,7 +30,7 @@ public class ItemWithCraftingDurability extends BaseItem
 	public ItemStack getContainerItem(ItemStack ist)
 	{
 		ist.setItemDamage(ist.getItemDamage() + 1);
-		if (ist.getItemDamage() > ist.getMaxDamage())
+		if(ist.getItemDamage() > ist.getMaxDamage())
 			ist = null;
 
 		return ist;

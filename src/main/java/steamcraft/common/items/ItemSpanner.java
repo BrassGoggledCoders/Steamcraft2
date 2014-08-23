@@ -43,13 +43,13 @@ public class ItemSpanner extends UniversalWrench
 	{
 		Block block = world.getBlock(x, y, z);
 
-		if (block == InitBlocks.blockCopperPipe)
+		if(block == InitBlocks.blockCopperPipe)
 		{
 			TileCopperPipe pipe = (TileCopperPipe) world.getTileEntity(x, y, z);
 
 			pipe.changeExtracting();
 		}
-		else if (block == InitBlocks.blockCopperWire)
+		else if(block == InitBlocks.blockCopperWire)
 		{
 			TileCopperWire wire = (TileCopperWire) world.getTileEntity(x, y, z);
 
@@ -57,13 +57,10 @@ public class ItemSpanner extends UniversalWrench
 		}
 		// TODO
 		/*
-		 * if(world.getTileEntity(x, y, z) instanceof BaseTileWithInventory) {
-		 * BaseTileWithInventory tile = (BaseTileWithInventory)
-		 * world.getTileEntity(x, y, z); BlockContainer container =
-		 * (BlockContainer) world.getBlock(x, y, z); Item itemblock = new
-		 * ItemBlockWithExtraData(container, new Object[]{tile.inventory});
-		 * player.inventory.addItemStackToInventory(new ItemStack(itemblock));
-		 * world.setBlockToAir(x, y, z); world.setTileEntity(x, y, z, null); }
+		 * if(world.getTileEntity(x, y, z) instanceof BaseTileWithInventory) { BaseTileWithInventory tile = (BaseTileWithInventory) world.getTileEntity(x, y,
+		 * z); BlockContainer container = (BlockContainer) world.getBlock(x, y, z); Item itemblock = new ItemBlockWithExtraData(container, new
+		 * Object[]{tile.inventory}); player.inventory.addItemStackToInventory(new ItemStack(itemblock)); world.setBlockToAir(x, y, z); world.setTileEntity(x,
+		 * y, z, null); }
 		 */
 		return true;
 

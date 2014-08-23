@@ -57,8 +57,8 @@ public class ItemFirearm extends BaseFirearm
 		player.inventory.consumeInventoryItem(this.ammo);
 		player.inventory.consumeInventoryItem(Items.gunpowder);
 
-		if (!world.isRemote)
-			if (this.ammo == InitItems.itemMusketBall)
+		if(!world.isRemote)
+			if(this.ammo == InitItems.itemMusketBall)
 				world.spawnEntityInWorld(new EntityBullet(world, player, this.damage, 8));
 			else
 				world.spawnEntityInWorld(new EntityBullet(world, player, this.damage, 15));

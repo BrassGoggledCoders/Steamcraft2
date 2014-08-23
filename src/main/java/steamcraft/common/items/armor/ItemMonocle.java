@@ -37,28 +37,4 @@ public class ItemMonocle extends BaseArmor
 	{
 		return LibInfo.PREFIX + "textures/armor/monocle.png";
 	}
-
-	/*
-	 * @Override
-	 * 
-	 * @SideOnly(Side.CLIENT) public ModelBiped getArmorModel(EntityLivingBase
-	 * living, ItemStack is, int slot) { ModelBiped armorModel = new
-	 * ModelBiped(); if (is != null) { if (is.getItem() instanceof ItemMonocle)
-	 * { int type = ((ItemArmor)is.getItem()).armorType; if (type == 1 || type
-	 * == 3) { armorModel = Steamcraft.proxy.getMonocleArmorModel(0); } else {
-	 * armorModel = Steamcraft.proxy.getMonocleArmorModel(1); } } if (armorModel
-	 * != null) { armorModel.bipedHead.showModel = slot == 0;
-	 * armorModel.bipedHeadwear.showModel = slot == 0;
-	 * armorModel.bipedBody.showModel = slot == 1 || slot == 2;
-	 * armorModel.bipedRightArm.showModel = slot == 1;
-	 * armorModel.bipedLeftArm.showModel = slot == 1;
-	 * armorModel.bipedRightLeg.showModel = slot == 2 || slot == 3;
-	 * armorModel.bipedLeftLeg.showModel = slot == 2 || slot == 3;
-	 * armorModel.isSneak = living.isSneaking(); armorModel.isRiding =
-	 * living.isRiding(); armorModel.isChild = living.isChild();
-	 * armorModel.heldItemRight = living.getCurrentItemOrArmor(0) != null ? 1 :
-	 * 0; if (living instanceof EntityPlayer) { armorModel.aimedBow =
-	 * ((EntityPlayer)living).getItemInUseDuration() > 2; } return armorModel; }
-	 * } return null; }
-	 */
 }

@@ -52,13 +52,12 @@ public class ItemBrassGoggles extends BaseArmor
 	public void renderHelmetOverlay(ItemStack stack, EntityPlayer player, ScaledResolution resolution, float partialTicks, boolean hasScreen,
 			int mouseX, int mouseY)
 	{
-		if ((Minecraft.getMinecraft().thePlayer == null) || (Minecraft.getMinecraft().currentScreen != null))
+		if(Minecraft.getMinecraft().thePlayer == null || Minecraft.getMinecraft().currentScreen != null)
 			return;
 
 		ItemStack helmet = Minecraft.getMinecraft().thePlayer.inventory.armorItemInSlot(3);
 
-		if ((Minecraft.getMinecraft().gameSettings.thirdPersonView == 0) && (helmet != null) && (helmet.getItem() == InitItems.brassGoggles))// &&
-		// KeyHandler.keyPressed)
+		if(Minecraft.getMinecraft().gameSettings.thirdPersonView == 0 && helmet != null && helmet.getItem() == InitItems.brassGoggles)
 		{
 			Minecraft.getMinecraft().getTextureManager().bindTexture(overlay);
 			Tessellator tessellator = Tessellator.instance;
@@ -69,9 +68,7 @@ public class ItemBrassGoggles extends BaseArmor
 
 			GL11.glDisable(GL11.GL_DEPTH_TEST);
 			GL11.glDepthMask(false);
-			// GL11.glEnable(GL11.GL_BLEND);
-			// GL11.glBlendFunc(GL11.GL_DST_COLOR, GL11.GL_SRC_COLOR);
-			// GL11.glColor3f(1.0F, 1.0F, 1.0F);
+
 			GL11.glDisable(GL11.GL_ALPHA_TEST);
 			GL11.glClearDepth(1.0D);
 			tessellator.startDrawingQuads();
@@ -84,14 +81,6 @@ public class ItemBrassGoggles extends BaseArmor
 			GL11.glEnable(GL11.GL_DEPTH_TEST);
 			GL11.glEnable(GL11.GL_ALPHA_TEST);
 			GL11.glDisable(GL11.GL_BLEND);
-
-			/*
-			 * if (!mc.gameSettings.hideGUI || mc.currentScreen != null) { int x
-			 * = (Mouse.getX() * width) / mc.displayWidth; int y = height -
-			 * (Mouse.getY() * height) / mc.displayHeight - 1;
-			 * mc.ingameGUI.renderGameOverlay(0.0F, mc.currentScreen != null, x,
-			 * y); }
-			 */
 		}
 	}
 }

@@ -52,7 +52,7 @@ public class ItemTeacup extends BaseItemWithMetadata
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
 	{
-		if (stack.getItemDamage() > 0)
+		if(stack.getItemDamage() > 0)
 		{
 			player.addPotionEffect(new PotionEffect(Potion.digSpeed.id, 50, 100));
 			player.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 50, 100));
@@ -67,15 +67,16 @@ public class ItemTeacup extends BaseItemWithMetadata
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(Item item, CreativeTabs tab, List l)
 	{
-		for (int var4 = 0; var4 < 11; ++var4)
-			l.add(new ItemStack(InitItems.itemTeacup, 1, var4));
+		l.add(new ItemStack(InitItems.itemTeacup, 1, 0));
+	
+		l.add(new ItemStack(InitItems.itemTeacup, 1, 10));
 	}
 
+	@SuppressWarnings("all")
 	@Override
-	// TODO: Make module-sensitive
 	public void addInformation(ItemStack stack, EntityPlayer player, List l, boolean flag)
 	{
-		if (stack.getItemDamage() == 0)
+		if(stack.getItemDamage() == 0)
 			l.add("Empty");
 		else
 		{
@@ -90,14 +91,11 @@ public class ItemTeacup extends BaseItemWithMetadata
 		return super.getUnlocalizedName();
 	}
 
-	/**
-	 * Gets an icon index based on an item's damage value
-	 */
 	@Override
 	@SideOnly(Side.CLIENT)
 	public IIcon getIconFromDamage(int meta)
 	{
-		if (meta == 0)
+		if(meta == 0)
 			return this.itemIcon[0];
 		else
 			return this.itemIcon[1];

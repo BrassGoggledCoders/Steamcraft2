@@ -53,12 +53,12 @@ public class ItemDivingHelmet extends BaseArmor
 	public void renderHelmetOverlay(ItemStack stack, EntityPlayer player, ScaledResolution resolution, float partialTicks, boolean hasScreen,
 			int mouseX, int mouseY)
 	{
-		if ((Minecraft.getMinecraft().thePlayer == null) || (Minecraft.getMinecraft().currentScreen != null))
+		if(Minecraft.getMinecraft().thePlayer == null || Minecraft.getMinecraft().currentScreen != null)
 			return;
 
 		ItemStack helmet = Minecraft.getMinecraft().thePlayer.inventory.armorItemInSlot(3);
 
-		if ((Minecraft.getMinecraft().gameSettings.thirdPersonView == 0) && (helmet != null) && (helmet.getItem() == InitItems.itemDivingHelmet))// &&
+		if(Minecraft.getMinecraft().gameSettings.thirdPersonView == 0 && helmet != null && helmet.getItem() == InitItems.itemDivingHelmet)// &&
 		// KeyHandler.keyPressed)
 		{
 			Minecraft.getMinecraft().getTextureManager().bindTexture(overlay);
@@ -87,11 +87,8 @@ public class ItemDivingHelmet extends BaseArmor
 			GL11.glDisable(GL11.GL_BLEND);
 
 			/*
-			 * if (!mc.gameSettings.hideGUI || mc.currentScreen != null) { int x
-			 * = (Mouse.getX() * width) / mc.displayWidth; int y = height -
-			 * (Mouse.getY() * height) / mc.displayHeight - 1;
-			 * mc.ingameGUI.renderGameOverlay(0.0F, mc.currentScreen != null, x,
-			 * y); }
+			 * if (!mc.gameSettings.hideGUI || mc.currentScreen != null) { int x = (Mouse.getX() * width) / mc.displayWidth; int y = height - (Mouse.getY() *
+			 * height) / mc.displayHeight - 1; mc.ingameGUI.renderGameOverlay(0.0F, mc.currentScreen != null, x, y); }
 			 */
 		}
 	}
@@ -99,7 +96,7 @@ public class ItemDivingHelmet extends BaseArmor
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack is)
 	{
-		if (player.getAir() <= 0)
+		if(player.getAir() <= 0)
 		{
 			player.setAir(300);
 			is.damageItem(4, player); // tweak the damage taken a bit

@@ -53,10 +53,10 @@ public class BaseArmor extends ItemArmor
 	@Override
 	public void addInformation(ItemStack parO1ItemStack, EntityPlayer par2EntityPlayer, List list, boolean par4)
 	{
-		if (!StatCollector.translateToLocal(this.getUnlocalizedName() + ".desc").contains("item."))
-			if (this.descNeedsShift)
+		if(!StatCollector.translateToLocal(this.getUnlocalizedName() + ".desc").contains("item."))
+			if(this.descNeedsShift)
 			{
-				if (ClientHelper.isShiftKeyDown())
+				if(ClientHelper.isShiftKeyDown())
 					this.getWrappedDesc(list);
 				else
 					list.add(ClientHelper.shiftForInfo);
@@ -69,7 +69,7 @@ public class BaseArmor extends ItemArmor
 	public void getWrappedDesc(List list)
 	{
 		String[] wrappedDesc = StringUtils.wrap(StatCollector.translateToLocal(this.getUnlocalizedName() + ".desc"), 30);
-		for (String element : wrappedDesc)
+		for(String element : wrappedDesc)
 			list.add(element.trim());
 	}
 }
