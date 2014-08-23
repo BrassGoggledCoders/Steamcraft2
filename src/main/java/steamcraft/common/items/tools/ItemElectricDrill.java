@@ -43,14 +43,14 @@ public class ItemElectricDrill extends ItemElectricTool
 	public void addInformation(ItemStack stack, EntityPlayer entityplayer, List list, boolean flag)
 	{
 		super.addInformation(stack, entityplayer, list, flag);
-		
+
 		list.add("Efficiency: " + this.toolMaterial.getEfficiencyOnProperMaterial());
 	}
 
 	@Override
 	public boolean onBlockDestroyed(ItemStack stack, World world, Block p_150894_3_, int x, int y, int z, EntityLivingBase living)
 	{
-		if (living instanceof EntityPlayer)
+		if(living instanceof EntityPlayer)
 		{
 			this.setEnergy(stack, this.getEnergyStored(stack) - this.energyPerBlock);
 
@@ -73,8 +73,8 @@ public class ItemElectricDrill extends ItemElectricTool
 	@Override
 	public boolean canHarvestBlock(Block block, ItemStack stack)
 	{
-		for (Block element : ItemDrill.effectiveBlocks)
-			if (element == block)
+		for(Block element : ItemDrill.effectiveBlocks)
+			if(element == block)
 				return true;
 
 		return false;
