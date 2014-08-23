@@ -27,6 +27,7 @@ import steamcraft.common.InitBlocks;
  * @author warlordjones
  * 
  */
+@SuppressWarnings("all")
 public class WorldGenBrassTree extends WorldGenBigTree
 {
 	static final byte[] otherCoordPairs = new byte[] { (byte) 2, (byte) 0, (byte) 0, (byte) 1, (byte) 2, (byte) 1 };
