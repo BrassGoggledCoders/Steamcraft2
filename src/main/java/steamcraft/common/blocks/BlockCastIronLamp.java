@@ -24,9 +24,8 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import steamcraft.client.lib.RenderIDs;
-import steamcraft.common.InitBlocks;
+import steamcraft.client.renderers.tile.TileCastIronLampRenderer.TileCastIronLamp;
 import steamcraft.common.Steamcraft;
-import steamcraft.common.tiles.TileCastIronLamp;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 

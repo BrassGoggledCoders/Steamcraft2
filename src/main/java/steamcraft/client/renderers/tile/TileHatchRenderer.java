@@ -69,4 +69,12 @@ public class TileHatchRenderer extends TileEntitySpecialRenderer
 		GL11.glPopMatrix();
 	}
 
+
+	public static class TileHatch extends TileEntity
+	{
+		public TileHatch()
+		{
+			
+		}
+	}
 }

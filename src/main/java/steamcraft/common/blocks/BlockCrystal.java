@@ -25,9 +25,9 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import steamcraft.client.lib.RenderIDs;
+import steamcraft.client.renderers.tile.TileCrystalRenderer.TileCrystal;
 import steamcraft.common.InitItems;
 import steamcraft.common.Steamcraft;
-import steamcraft.common.tiles.TileCrystal;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 

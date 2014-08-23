@@ -93,4 +93,12 @@ public class TileCastIronLampRenderer extends TileEntitySpecialRenderer
 		GL11.glPopMatrix();
 		GL11.glPopMatrix();
 	}
+	
+	public static class TileCastIronLamp extends TileEntity
+	{
+		public TileCastIronLamp()
+		{
+
+		}
+	}
 }

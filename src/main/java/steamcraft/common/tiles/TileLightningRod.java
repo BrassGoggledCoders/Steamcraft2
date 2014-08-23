@@ -26,7 +26,7 @@ import cofh.api.energy.IEnergyHandler;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class TileLightningRod extends TileEntity implements IEnergyHandler
 {
@@ -37,19 +37,19 @@ public class TileLightningRod extends TileEntity implements IEnergyHandler
 	@Override
 	public void updateEntity()
 	{
-		if (this.getWorldObj() != null)
+		if(this.getWorldObj() != null)
 			this.block = (BlockLightningRod) this.getWorldObj().getBlock(this.xCoord, this.yCoord, this.zCoord);
 
-		if (this.worldObj.getWorldInfo().isThundering() && this.worldObj.canBlockSeeTheSky(this.xCoord, this.yCoord, this.zCoord))
+		if(this.worldObj.getWorldInfo().isThundering() && this.worldObj.canBlockSeeTheSky(this.xCoord, this.yCoord, this.zCoord))
 		{
 			Random random = new Random();
 			int chance = random.nextInt(1000);
-			if (chance == 0)
+			if(chance == 0)
 			{
-				this.worldObj.addWeatherEffect((new EntityLightningBolt(this.worldObj, this.xCoord, this.yCoord, this.zCoord)));
+				this.worldObj.addWeatherEffect(new EntityLightningBolt(this.worldObj, this.xCoord, this.yCoord, this.zCoord));
 				this.buffer.receiveEnergy(10000, false);
 				System.out.print(this.buffer.getEnergyStored());
-				EntityPlayer player = worldObj.getClosestPlayer(xCoord,yCoord, zCoord, -1);
+				EntityPlayer player = this.worldObj.getClosestPlayer(this.xCoord, this.yCoord, this.zCoord, -1);
 				player.triggerAchievement(InitAchievements.zapAchieve);
 			}
 		}

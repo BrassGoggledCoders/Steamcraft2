@@ -32,11 +32,11 @@ public class TileDropHammer extends TileEntity
 		int meta = this.worldObj.getBlockMetadata(this.xCoord, this.yCoord + 1, this.zCoord);
 		// if(worldObj.getBlock(xCoord, yCoord+1, zCoord) != Blocks.air)
 		// {
-		if (block instanceof IHammerable)
+		if(block instanceof IHammerable)
 		{
 			IHammerable hammerable = (IHammerable) this.worldObj.getBlock(this.xCoord, this.yCoord + 1, this.zCoord);
 
-			if (hammerable.getOutput(meta) != null)
+			if(hammerable.getOutput(meta) != null)
 			{
 				ItemStack output = hammerable.getOutput(meta);
 				Item outputItem = output.getItem();
