@@ -18,72 +18,32 @@ import net.minecraft.entity.Entity;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class ModelBrassWings.
+ * @author Surseance
  * 
- * @author Surseance (Johnny Eatmon) & Falkok15
  */
 @SideOnly(Side.CLIENT)
 public class ModelJetpack extends ModelBiped
 {
-
-	/** The Shape1. */
 	ModelRenderer Shape1;
-
-	/** The Shape2. */
 	ModelRenderer Shape2;
-
-	/** The Shape3. */
 	ModelRenderer Shape3;
-
-	/** The Shape6. */
-	ModelRenderer Shape6;
-
-	/** The Shape7. */
-	ModelRenderer Shape7;
-
-	/** The Shape4. */
 	ModelRenderer Shape4;
-
-	/** The Shape5. */
 	ModelRenderer Shape5;
-
-	/** The Shape8. */
+	ModelRenderer Shape6;
+	ModelRenderer Shape7;
 	ModelRenderer Shape8;
-
-	/** The Shape9. */
 	ModelRenderer Shape9;
-
-	/** The Shape10. */
 	ModelRenderer Shape10;
-
-	/** The Shape11. */
 	ModelRenderer Shape11;
-
-	/** The Shape12. */
 	ModelRenderer Shape12;
-
-	/** The Shape13. */
 	ModelRenderer Shape13;
-
-	/** The Shape15. */
+	ModelRenderer Shape14;
 	ModelRenderer Shape15;
 
-	/** The Shape14. */
-	ModelRenderer Shape14;
-
-	/**
-	 * Instantiates a new model brass wings.
-	 * 
-	 * @param f
-	 *            the f
-	 */
 	public ModelJetpack(final float f)
 	{
 		super(f, 0, 64, 32);
-		// textureWidth = 64; <-- these things are bullshit, they do nothing
-		// useful
 		// textureHeight = 32;
 		this.Shape1 = new ModelRenderer(this, 0, 0);
 		this.Shape1.addBox(5F, 0F, 0F, 4, 6, 2);
@@ -121,7 +81,6 @@ public class ModelJetpack extends ModelBiped
 		this.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
 	}
 
-	// Techne method
 	private void setRotation(final ModelRenderer model, final float x, final float y, final float z)
 	{
 		model.rotateAngleX = x;

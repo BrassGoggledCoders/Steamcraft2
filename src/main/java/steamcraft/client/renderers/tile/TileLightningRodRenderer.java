@@ -23,27 +23,19 @@ import org.lwjgl.opengl.GL11;
 import steamcraft.client.renderers.models.ModelLightningRod;
 import steamcraft.common.lib.LibInfo;
 
+/**
+ * @author Surseance
+ *
+ */
 public class TileLightningRodRenderer extends TileEntitySpecialRenderer
 {
-
-	/** The model. */
 	private final ModelLightningRod model;
 
-	/**
-	 * Instantiates a new tile crystal renderer.
-	 */
 	public TileLightningRodRenderer()
 	{
 		this.model = new ModelLightningRod();
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer#
-	 * renderTileEntityAt(net.minecraft.tileentity.TileEntity, double, double,
-	 * double, float)
-	 */
 	@Override
 	public void renderTileEntityAt(final TileEntity te, final double dx, final double dy, final double dz, final float scale)
 	{

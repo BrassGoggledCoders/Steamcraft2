@@ -38,7 +38,7 @@ public class TileCopperWireRenderer extends TileEntitySpecialRenderer
 	public void renderTileEntityAt(TileEntity tile, double transX, double transY, double transZ, float f)
 	{
 		GL11.glPushMatrix();
-		
+
 		GL11.glTranslated(transX, transY, transZ);
 		GL11.glDisable(GL11.GL_LIGHTING);
 
@@ -48,15 +48,15 @@ public class TileCopperWireRenderer extends TileEntitySpecialRenderer
 
 		ForgeDirection opposite = wire.onlyOneOpposite();
 
-		if (opposite != null && wire.extract == null)
+		if(opposite != null && wire.extract == null)
 			this.drawStraightConnection(opposite, wire);
 		else
 		{
 			this.drawCore(wire);
 
-			for (ForgeDirection dir : wire.connections)
-				if (dir != null)
-					if (wire.extract == dir)
+			for(ForgeDirection dir : wire.connections)
+				if(dir != null)
+					if(wire.extract == dir)
 						this.drawAlternateConnection(dir, wire);
 					else
 						this.drawConnection(dir, wire);
@@ -65,7 +65,7 @@ public class TileCopperWireRenderer extends TileEntitySpecialRenderer
 		GL11.glEnable(GL11.GL_LIGHTING);
 
 		GL11.glTranslated(-transX, -transY + -3F, -transZ);
-		
+
 		GL11.glPopMatrix();
 	}
 
@@ -77,9 +77,9 @@ public class TileCopperWireRenderer extends TileEntitySpecialRenderer
 		{
 			GL11.glTranslatef(0.5F, 0.5F, 0.5F);
 
-			if (dir == ForgeDirection.SOUTH || dir == ForgeDirection.NORTH)
+			if(dir == ForgeDirection.SOUTH || dir == ForgeDirection.NORTH)
 				GL11.glRotatef(90, 1, 0, 0);
-			else if (dir == ForgeDirection.WEST || dir == ForgeDirection.EAST)
+			else if(dir == ForgeDirection.WEST || dir == ForgeDirection.EAST)
 				GL11.glRotatef(90, 0, 0, 1);
 
 			GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
@@ -108,9 +108,9 @@ public class TileCopperWireRenderer extends TileEntitySpecialRenderer
 
 		GL11.glTranslatef(0.5F, 0.5F, 0.5F);
 
-		if (dir == ForgeDirection.SOUTH || dir == ForgeDirection.NORTH)
+		if(dir == ForgeDirection.SOUTH || dir == ForgeDirection.NORTH)
 			GL11.glRotatef(-90, 1, 0, 0);
-		else if (dir == ForgeDirection.WEST || dir == ForgeDirection.EAST)
+		else if(dir == ForgeDirection.WEST || dir == ForgeDirection.EAST)
 			GL11.glRotatef(-90, 0, 0, 1);
 
 		GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
@@ -123,19 +123,19 @@ public class TileCopperWireRenderer extends TileEntitySpecialRenderer
 		tess.startDrawingQuads();
 		{
 			GL11.glTranslatef(0.5F, 0.5F, 0.5F);
-			if (dir == ForgeDirection.UP)
+			if(dir == ForgeDirection.UP)
 			{
 				// ROTATE
 			}
-			else if (dir == ForgeDirection.DOWN)
+			else if(dir == ForgeDirection.DOWN)
 				GL11.glRotatef(180, 1, 0, 0);
-			else if (dir == ForgeDirection.SOUTH)
+			else if(dir == ForgeDirection.SOUTH)
 				GL11.glRotatef(90, 1, 0, 0);
-			else if (dir == ForgeDirection.NORTH)
+			else if(dir == ForgeDirection.NORTH)
 				GL11.glRotatef(270, 1, 0, 0);
-			else if (dir == ForgeDirection.WEST)
+			else if(dir == ForgeDirection.WEST)
 				GL11.glRotatef(90, 0, 0, 1);
-			else if (dir == ForgeDirection.EAST)
+			else if(dir == ForgeDirection.EAST)
 				GL11.glRotatef(270, 0, 0, 1);
 			GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
 
@@ -162,19 +162,19 @@ public class TileCopperWireRenderer extends TileEntitySpecialRenderer
 		tess.draw();
 
 		GL11.glTranslatef(0.5F, 0.5F, 0.5F);
-		if (dir == ForgeDirection.UP)
+		if(dir == ForgeDirection.UP)
 		{
 			// ROTATE
 		}
-		else if (dir == ForgeDirection.DOWN)
+		else if(dir == ForgeDirection.DOWN)
 			GL11.glRotatef(-180, 1, 0, 0);
-		else if (dir == ForgeDirection.SOUTH)
+		else if(dir == ForgeDirection.SOUTH)
 			GL11.glRotatef(-90, 1, 0, 0);
-		else if (dir == ForgeDirection.NORTH)
+		else if(dir == ForgeDirection.NORTH)
 			GL11.glRotatef(-270, 1, 0, 0);
-		else if (dir == ForgeDirection.WEST)
+		else if(dir == ForgeDirection.WEST)
 			GL11.glRotatef(-90, 0, 0, 1);
-		else if (dir == ForgeDirection.EAST)
+		else if(dir == ForgeDirection.EAST)
 			GL11.glRotatef(-270, 0, 0, 1);
 		GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
 	}
@@ -186,19 +186,19 @@ public class TileCopperWireRenderer extends TileEntitySpecialRenderer
 		tess.startDrawingQuads();
 		{
 			GL11.glTranslatef(0.5F, 0.5F, 0.5F);
-			if (dir == ForgeDirection.UP)
+			if(dir == ForgeDirection.UP)
 			{
 				// ROTATE
 			}
-			else if (dir == ForgeDirection.DOWN)
+			else if(dir == ForgeDirection.DOWN)
 				GL11.glRotatef(180, 1, 0, 0);
-			else if (dir == ForgeDirection.SOUTH)
+			else if(dir == ForgeDirection.SOUTH)
 				GL11.glRotatef(90, 1, 0, 0);
-			else if (dir == ForgeDirection.NORTH)
+			else if(dir == ForgeDirection.NORTH)
 				GL11.glRotatef(270, 1, 0, 0);
-			else if (dir == ForgeDirection.WEST)
+			else if(dir == ForgeDirection.WEST)
 				GL11.glRotatef(90, 0, 0, 1);
-			else if (dir == ForgeDirection.EAST)
+			else if(dir == ForgeDirection.EAST)
 				GL11.glRotatef(270, 0, 0, 1);
 			GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
 
@@ -225,19 +225,19 @@ public class TileCopperWireRenderer extends TileEntitySpecialRenderer
 		tess.draw();
 
 		GL11.glTranslatef(0.5F, 0.5F, 0.5F);
-		if (dir == ForgeDirection.UP)
+		if(dir == ForgeDirection.UP)
 		{
 			// ROTATE
 		}
-		else if (dir == ForgeDirection.DOWN)
+		else if(dir == ForgeDirection.DOWN)
 			GL11.glRotatef(-180, 1, 0, 0);
-		else if (dir == ForgeDirection.SOUTH)
+		else if(dir == ForgeDirection.SOUTH)
 			GL11.glRotatef(-90, 1, 0, 0);
-		else if (dir == ForgeDirection.NORTH)
+		else if(dir == ForgeDirection.NORTH)
 			GL11.glRotatef(-270, 1, 0, 0);
-		else if (dir == ForgeDirection.WEST)
+		else if(dir == ForgeDirection.WEST)
 			GL11.glRotatef(-90, 0, 0, 1);
-		else if (dir == ForgeDirection.EAST)
+		else if(dir == ForgeDirection.EAST)
 			GL11.glRotatef(-270, 0, 0, 1);
 		GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
 	}
@@ -248,7 +248,7 @@ public class TileCopperWireRenderer extends TileEntitySpecialRenderer
 
 		tess.startDrawingQuads();
 		{
-			if (tile.connections[0] == null)
+			if(tile.connections[0] == null)
 			{
 				tess.addVertexWithUV(12 * pixel, 12 * pixel, 1 - 12 * pixel, 6 * tPixel, 6 * tPixel);
 				tess.addVertexWithUV(12 * pixel, 12 * pixel, 12 * pixel, 6 * tPixel, 0 * tPixel);
@@ -256,7 +256,7 @@ public class TileCopperWireRenderer extends TileEntitySpecialRenderer
 				tess.addVertexWithUV(1 - 12 * pixel, 12 * pixel, 1 - 12 * pixel, 0 * tPixel, 6 * tPixel);
 			}
 
-			if (tile.connections[1] == null)
+			if(tile.connections[1] == null)
 			{
 				tess.addVertexWithUV(1 - 12 * pixel, 1 - 12 * pixel, 1 - 12 * pixel, 6 * tPixel, 6 * tPixel);
 				tess.addVertexWithUV(1 - 12 * pixel, 1 - 12 * pixel, 12 * pixel, 6 * tPixel, 0 * tPixel);
@@ -264,7 +264,7 @@ public class TileCopperWireRenderer extends TileEntitySpecialRenderer
 				tess.addVertexWithUV(12 * pixel, 1 - 12 * pixel, 1 - 12 * pixel, 0 * tPixel, 6 * tPixel);
 			}
 
-			if (tile.connections[2] == null)
+			if(tile.connections[2] == null)
 			{
 				tess.addVertexWithUV(12 * pixel, 12 * pixel, 12 * pixel, 6 * tPixel, 6 * tPixel);
 				tess.addVertexWithUV(12 * pixel, 1 - 12 * pixel, 12 * pixel, 6 * tPixel, 0 * tPixel);
@@ -272,7 +272,7 @@ public class TileCopperWireRenderer extends TileEntitySpecialRenderer
 				tess.addVertexWithUV(1 - 12 * pixel, 12 * pixel, 12 * pixel, 0 * tPixel, 6 * tPixel);
 			}
 
-			if (tile.connections[3] == null)
+			if(tile.connections[3] == null)
 			{
 				tess.addVertexWithUV(1 - 12 * pixel, 12 * pixel, 1 - 12 * pixel, 6 * tPixel, 6 * tPixel);
 				tess.addVertexWithUV(1 - 12 * pixel, 1 - 12 * pixel, 1 - 12 * pixel, 6 * tPixel, 0 * tPixel);
@@ -280,7 +280,7 @@ public class TileCopperWireRenderer extends TileEntitySpecialRenderer
 				tess.addVertexWithUV(12 * pixel, 12 * pixel, 1 - 12 * pixel, 0 * tPixel, 6 * tPixel);
 			}
 
-			if (tile.connections[4] == null)
+			if(tile.connections[4] == null)
 			{
 				tess.addVertexWithUV(12 * pixel, 12 * pixel, 1 - 12 * pixel, 6 * tPixel, 6 * tPixel);
 				tess.addVertexWithUV(12 * pixel, 1 - 12 * pixel, 1 - 12 * pixel, 6 * tPixel, 0 * tPixel);
@@ -288,7 +288,7 @@ public class TileCopperWireRenderer extends TileEntitySpecialRenderer
 				tess.addVertexWithUV(12 * pixel, 12 * pixel, 12 * pixel, 0 * tPixel, 6 * tPixel);
 			}
 
-			if (tile.connections[5] == null)
+			if(tile.connections[5] == null)
 			{
 				tess.addVertexWithUV(1 - 12 * pixel, 12 * pixel, 12 * pixel, 6 * tPixel, 6 * tPixel);
 				tess.addVertexWithUV(1 - 12 * pixel, 1 - 12 * pixel, 12 * pixel, 6 * tPixel, 0 * tPixel);

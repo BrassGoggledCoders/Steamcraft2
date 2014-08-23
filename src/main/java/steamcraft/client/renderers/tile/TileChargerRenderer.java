@@ -27,35 +27,23 @@ import steamcraft.common.lib.LibInfo;
 import steamcraft.common.tiles.TileCharger;
 import boilerplate.client.renderers.RenderFloatingItem;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class TileCrystalRenderer.
- *
- * @author Surseance (Johnny Eatmon)
+ * @author Surseance
+ * 
  */
 public class TileChargerRenderer extends TileEntitySpecialRenderer
 {
-
-	/** The model. */
+	@SuppressWarnings("unused")
 	private final ModelCharger model;
+	@SuppressWarnings("unused")
 	private RenderFloatingItem itemRenderer;
 
-	/**
-	 * Instantiates a new tile crystal renderer.
-	 */
 	public TileChargerRenderer()
 	{
 		this.model = new ModelCharger();
 		this.itemRenderer = new RenderFloatingItem(false, false);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer#
-	 * renderTileEntityAt(net.minecraft.tileentity.TileEntity, double, double,
-	 * double, float)
-	 */
 	@Override
 	public void renderTileEntityAt(final TileEntity te, final double dx, final double dy, final double dz, final float scale)
 	{

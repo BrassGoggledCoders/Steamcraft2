@@ -25,25 +25,13 @@ import steamcraft.common.lib.LibInfo;
 
 public class TileTeslaCoilRenderer extends TileEntitySpecialRenderer
 {
-
-	/** The model. */
 	private final ModelCrystal model;
 
-	/**
-	 * Instantiates a new tile crystal renderer.
-	 */
 	public TileTeslaCoilRenderer()
 	{
 		this.model = new ModelCrystal();
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer#
-	 * renderTileEntityAt(net.minecraft.tileentity.TileEntity, double, double,
-	 * double, float)
-	 */
 	@Override
 	public void renderTileEntityAt(final TileEntity te, final double dx, final double dy, final double dz, final float scale)
 	{

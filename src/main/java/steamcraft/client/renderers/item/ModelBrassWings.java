@@ -18,25 +18,15 @@ import net.minecraft.entity.Entity;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class ModelBrassWings.
+ * @author Surseance
  * 
- * @author Surseance (Johnny Eatmon) & Falkok15
  */
 @SideOnly(Side.CLIENT)
 public class ModelBrassWings extends ModelBiped
 {
-
-	/** The Shape1. */
 	ModelRenderer Shape1, Shape2, Shape3, Shape4, Shape5, Shape6, Shape7, Shape8, Shape9, Shape10, Shape11, Shape12, Shape13, Shape15, Shape14;
 
-	/**
-	 * Instantiates a new model brass wings.
-	 * 
-	 * @param f
-	 *            the f
-	 */
 	public ModelBrassWings(final float f)
 	{
 		super(f, 0, 64, 32);
@@ -169,7 +159,6 @@ public class ModelBrassWings extends ModelBiped
 		this.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
 	}
 
-	// Techne method
 	private void setRotation(final ModelRenderer model, final float x, final float y, final float z)
 	{
 		model.rotateAngleX = x;

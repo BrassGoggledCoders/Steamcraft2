@@ -18,25 +18,15 @@ import net.minecraft.entity.Entity;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-// TODO: Auto-generated Javadoc
-/**
- * The Class ModelBrassMonocle.
- * 
+/** 
  * @author Surseance (Johnny Eatmon) & Falkok15
+ * 
  */
 @SideOnly(Side.CLIENT)
 public class ModelBrassMonocle extends ModelBiped
 {
-
-	/** The Shape1. */
 	ModelRenderer Shape1, Shape2, Shape3, Shape4, Shape5;
 
-	/**
-	 * Instantiates a new model brass monocle.
-	 * 
-	 * @param f
-	 *            the f
-	 */
 	public ModelBrassMonocle(final float f)
 	{
 		super(f, 0, 64, 32);
@@ -95,7 +85,6 @@ public class ModelBrassMonocle extends ModelBiped
 		this.setRotationAngles(f1, f2, f3, f4, f5, f6, entity);
 	}
 
-	// Techne method
 	private void setRotation(final ModelRenderer model, final float x, final float y, final float z)
 	{
 		model.rotateAngleX = x;

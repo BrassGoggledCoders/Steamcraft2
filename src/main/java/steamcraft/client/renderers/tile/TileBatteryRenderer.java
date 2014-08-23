@@ -24,21 +24,14 @@ import org.lwjgl.opengl.GL11;
 import steamcraft.client.renderers.models.ModelBattery;
 import steamcraft.common.lib.LibInfo;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class TileCrystalRenderer.
+ * @author warlordjones
  * 
- * @author Surseance (Johnny Eatmon)
  */
 public class TileBatteryRenderer extends TileEntitySpecialRenderer
 {
-
-	/** The model. */
 	private ModelBattery model;
 
-	/**
-	 * Instantiates a new tile crystal renderer.
-	 */
 	public TileBatteryRenderer()
 	{
 		this.model = new ModelBattery();
@@ -49,7 +42,7 @@ public class TileBatteryRenderer extends TileEntitySpecialRenderer
 	{
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float) dx + 0.5F, (float) dy + 1.5F, (float) dz + 0.5F);
-		ResourceLocation crystal = (new ResourceLocation(LibInfo.PREFIX.replace(":", ""), "textures/models/batterybank.png"));
+		ResourceLocation crystal = new ResourceLocation(LibInfo.PREFIX.replace(":", ""), "textures/models/batterybank.png");
 		Minecraft.getMinecraft().renderEngine.bindTexture(crystal);
 		this.renderBattery(te, te.getWorldObj(), te.xCoord, te.yCoord, te.zCoord);
 		GL11.glPopMatrix();
