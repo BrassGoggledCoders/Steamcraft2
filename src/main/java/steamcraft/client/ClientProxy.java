@@ -22,6 +22,7 @@ import steamcraft.client.renderers.block.BlockBatteryRenderer;
 import steamcraft.client.renderers.block.BlockCastIronLampRenderer;
 import steamcraft.client.renderers.block.BlockChargerRenderer;
 import steamcraft.client.renderers.block.BlockCrystalRenderer;
+import steamcraft.client.renderers.block.BlockHatchRenderer;
 import steamcraft.client.renderers.block.BlockLightningRodRenderer;
 import steamcraft.client.renderers.block.BlockRailingRenderer;
 import steamcraft.client.renderers.block.BlockTeslaCoilRenderer;
@@ -36,6 +37,7 @@ import steamcraft.client.renderers.tile.TileChargerRenderer;
 import steamcraft.client.renderers.tile.TileCopperPipeRenderer;
 import steamcraft.client.renderers.tile.TileCopperWireRenderer;
 import steamcraft.client.renderers.tile.TileCrystalRenderer;
+import steamcraft.client.renderers.tile.TileHatchRenderer;
 import steamcraft.client.renderers.tile.TileLightningRodRenderer;
 import steamcraft.client.renderers.tile.TileTeslaCoilRenderer;
 import steamcraft.common.CommonProxy;
@@ -49,6 +51,7 @@ import steamcraft.common.tiles.TileCharger;
 import steamcraft.common.tiles.TileCopperPipe;
 import steamcraft.common.tiles.TileCopperWire;
 import steamcraft.common.tiles.TileCrystal;
+import steamcraft.common.tiles.TileHatch;
 import steamcraft.common.tiles.TileLightningRod;
 import steamcraft.common.tiles.TileTeslaCoil;
 import boilerplate.client.fx.FXRaygun;
@@ -126,6 +129,10 @@ public class ClientProxy extends CommonProxy
 		RenderIDs.blockCastIronLampRI = RenderingRegistry.getNextAvailableRenderId();
 		ClientRegistry.bindTileEntitySpecialRenderer(TileCastIronLamp.class, new TileCastIronLampRenderer());
 		RenderingRegistry.registerBlockHandler(new BlockCastIronLampRenderer());
+		//Hatch
+		RenderIDs.blockHatchRI = RenderingRegistry.getNextAvailableRenderId();
+		ClientRegistry.bindTileEntitySpecialRenderer(TileHatch.class, new TileHatchRenderer());
+		RenderingRegistry.registerBlockHandler(new BlockHatchRenderer());
 	}
 
 	@Override

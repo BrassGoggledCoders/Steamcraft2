@@ -29,6 +29,7 @@ import steamcraft.common.blocks.BlockEngravedSolid;
 import steamcraft.common.blocks.BlockEngravedVanilla;
 import steamcraft.common.blocks.BlockEtherium;
 import steamcraft.common.blocks.BlockFluidSteam;
+import steamcraft.common.blocks.BlockHatch;
 import steamcraft.common.blocks.BlockLamp;
 import steamcraft.common.blocks.BlockMetal;
 import steamcraft.common.blocks.BlockSlate;
@@ -61,6 +62,7 @@ import steamcraft.common.tiles.TileCopperPipe;
 import steamcraft.common.tiles.TileCopperWire;
 import steamcraft.common.tiles.TileCrystal;
 import steamcraft.common.tiles.TileDropHammer;
+import steamcraft.common.tiles.TileHatch;
 import steamcraft.common.tiles.TileIntake;
 import steamcraft.common.tiles.TileLightningRod;
 import steamcraft.common.tiles.TileSteamBoiler;
@@ -263,6 +265,9 @@ public class InitBlocks
 
 		blockTimeBomb = new BlockTimeBomb(Material.tnt).setBlockName("blockTimeBomb");
 		RegistryHelper.registerContainerBlock(blockTimeBomb, TileTimeBomb.class, "BlockTimeBomb");
+
+		blockHatch = new BlockHatch().setBlockName("blockHatch");
+		RegistryHelper.registerContainerBlock(blockHatch, TileHatch.class, "BlockHatch");
 	}
 
 }
