@@ -59,8 +59,11 @@ public class TileHatchRenderer extends TileEntitySpecialRenderer
 		Minecraft.getMinecraft().renderEngine.bindTexture(hatch);
 		GL11.glPushMatrix();
 		GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
-		if(metadata < 3)
-		GL11.glRotatef(90F, 1.0F, 0.0F, 0.0F);
+		if(metadata > 3)
+		{
+			GL11.glRotatef(90F, 1.0F, 0.0F, 0.0F);
+			GL11.glTranslatef(0F, 0F, 1F);
+		}
 		this.model.render(0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
 		GL11.glPopMatrix();
 		GL11.glPopMatrix();
