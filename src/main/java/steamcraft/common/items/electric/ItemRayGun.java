@@ -24,7 +24,6 @@ import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.LibInfo;
-import boilerplate.common.IEnergyItem;
 import boilerplate.common.utils.PlayerUtils;
 import boilerplate.common.utils.Utils;
 
@@ -33,12 +32,9 @@ import boilerplate.common.utils.Utils;
  * 
  */
 
-public class ItemRayGun extends ItemElectricConsumer implements IEnergyItem
+public class ItemRayGun extends ElectricItem
 {
-	int energyPerUse = 500;
-	int maxEnergy = 50;
-	short maxReceive = 50;
-	short maxSend = 50;
+	static short energyPerUse = 500;
 
 	private Random random = new Random();
 
@@ -48,9 +44,6 @@ public class ItemRayGun extends ItemElectricConsumer implements IEnergyItem
 	public ItemRayGun(String raySound, int maxEnergy, int maxReceive, int maxSend)
 	{
 		super(maxEnergy, maxReceive, maxSend);
-		this.maxEnergy = maxEnergy * 1000;
-		this.maxReceive = (short) maxReceive;
-		this.maxSend = (short) maxSend;
 		this.setMaxStackSize(1);
 		this.setFull3D();
 		this.setMaxDamage(20);

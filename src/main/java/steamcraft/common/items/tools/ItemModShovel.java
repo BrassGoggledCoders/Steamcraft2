@@ -41,16 +41,16 @@ public class ItemModShovel extends ItemModTool
 	@Override
 	public float getDigSpeed(ItemStack stack, Block block, int metadata)
 	{
-		if (this.isSteampowered())
+		if(this.isSteampowered())
 		{
 			NBTTagCompound tag = stack.getTagCompound();
-			if (tag.getBoolean("hasCanister"))
+			if(tag.getBoolean("hasCanister"))
 				return 4.0F;
 			else
 				return 0.1F;
 		}
-		if ((block != null)
-				&& ((block.getMaterial() == Material.iron) || (block.getMaterial() == Material.anvil) || (block.getMaterial() == Material.rock)))
+		if(block != null
+				&& (block.getMaterial() == Material.iron || block.getMaterial() == Material.anvil || block.getMaterial() == Material.rock))
 			super.getDigSpeed(stack, block, metadata);
 
 		return this.efficiencyOnProperMaterial;

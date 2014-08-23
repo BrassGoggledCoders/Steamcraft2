@@ -41,7 +41,7 @@ import steamcraft.common.items.armor.ItemDivingHelmet;
 import steamcraft.common.items.armor.ItemMonocle;
 import steamcraft.common.items.armor.ItemNormalArmor;
 import steamcraft.common.items.armor.ItemSteamJetpack;
-import steamcraft.common.items.electric.ItemElectricStorage;
+import steamcraft.common.items.electric.ElectricItem;
 import steamcraft.common.items.electric.ItemRayGun;
 import steamcraft.common.items.electric.ItemShrinkray;
 import steamcraft.common.items.modules.ItemAqualung;
@@ -304,8 +304,8 @@ public class InitItems
 		registerItem(matchlockPistol, "ItemMatchlockPistol");
 		registerItem(percussionCapPistol, "ItemPercussionCapPistol");
 
-		itemRayGun = new ItemRayGun(LibInfo.PREFIX + "raygun", 50, 50, 50).setUnlocalizedName("itemRaygun");
-		itemShrinkray = new ItemShrinkray(LibInfo.PREFIX + "shrinkray", 50, 50, 100).setUnlocalizedName("itemShrinkray");
+		itemRayGun = new ItemRayGun(LibInfo.PREFIX + "raygun", 50, 400, 0).setUnlocalizedName("itemRaygun");
+		itemShrinkray = new ItemShrinkray(LibInfo.PREFIX + "shrinkray", 50, 400, 0).setUnlocalizedName("itemShrinkray");
 		// TODO
 		itemLightningGun = new ItemLightningGun(LibInfo.PREFIX + "lightninggun").setUnlocalizedName("itemLightningGun");
 
@@ -347,10 +347,10 @@ public class InitItems
 		// Containers
 		itemCanisterSteam = new ItemCanister().setUnlocalizedName("itemCanisterSteam");
 
-		itemElectricJarSmall = new ItemElectricStorage(100, 40, 80).setUnlocalizedName("itemElectricJarSmall");
-		itemElectricJarMedium = new ItemElectricStorage(500, 125, 400).setUnlocalizedName("itemElectricJarMedium");
-		itemElectricJarLarge = new ItemElectricStorage(2500, 750, 2000).setUnlocalizedName("itemElectricJarLarge");
-		itemElectricJarHuge = new ItemElectricStorage(10000, 3000, 10000).setUnlocalizedName("itemElectricJarHuge");
+		itemElectricJarSmall = new ElectricItem(100, 40, 80).setUnlocalizedName("itemElectricJarSmall");
+		itemElectricJarMedium = new ElectricItem(500, 125, 400).setUnlocalizedName("itemElectricJarMedium");
+		itemElectricJarLarge = new ElectricItem(2500, 750, 2000).setUnlocalizedName("itemElectricJarLarge");
+		itemElectricJarHuge = new ElectricItem(10000, 3000, 10000).setUnlocalizedName("itemElectricJarHuge");
 
 		registerItem(itemCanisterSteam, "ItemCanisterSteam");
 

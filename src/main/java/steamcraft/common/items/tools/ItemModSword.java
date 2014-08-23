@@ -30,7 +30,7 @@ public class ItemModSword extends ItemModTool
 {
 	public ItemModSword(ToolMaterial toolMat)
 	{
-		super(toolMat.getDamageVsEntity() + 4.0F, toolMat, new Block[]{});
+		super(toolMat.getDamageVsEntity() + 4.0F, toolMat, new Block[] {});
 		this.maxStackSize = 1;
 		this.setMaxDamage(toolMat.getMaxUses());
 	}
@@ -38,12 +38,12 @@ public class ItemModSword extends ItemModTool
 	@Override
 	public float getDigSpeed(ItemStack stack, Block block, int metadata)
 	{
-		if (block == Blocks.web)
+		if(block == Blocks.web)
 			return 15.0F;
 		else
 		{
 			Material material = block.getMaterial();
-			return (material != Material.plants) && (material != Material.vine) && (material != Material.coral) && (material != Material.leaves) ? 1.0F
+			return material != Material.plants && material != Material.vine && material != Material.coral && material != Material.leaves ? 1.0F
 					: 1.5F;
 		}
 	}
@@ -51,7 +51,7 @@ public class ItemModSword extends ItemModTool
 	@Override
 	public boolean onBlockDestroyed(ItemStack stack, World world, Block block, int x, int y, int z, EntityLivingBase living)
 	{
-		if (block.getBlockHardness(world, x, y, z) != 0.0D)
+		if(block.getBlockHardness(world, x, y, z) != 0.0D)
 			stack.damageItem(2, living);
 
 		return true;

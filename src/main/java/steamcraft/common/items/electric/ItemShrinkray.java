@@ -22,7 +22,6 @@ import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.LibInfo;
-import boilerplate.common.IEnergyItem;
 import boilerplate.common.entity.EntityMinedBlock;
 import boilerplate.common.utils.PlayerUtils;
 import boilerplate.common.utils.Utils;
@@ -31,12 +30,9 @@ import boilerplate.common.utils.Utils;
  * @author Surseance
  * 
  */
-public class ItemShrinkray extends ItemElectricConsumer implements IEnergyItem
+public class ItemShrinkray extends ElectricItem
 {
-	int energyPerUse = 1000;
-	int maxEnergy = 50;
-	short maxReceive = 50;
-	short maxSend = 50;
+	static short energyPerUse = 1000;
 
 	static HashMap<String, Object> ray = new HashMap<String, Object>();
 	static HashMap<String, Long> soundDelay = new HashMap<String, Long>();
@@ -44,9 +40,6 @@ public class ItemShrinkray extends ItemElectricConsumer implements IEnergyItem
 	public ItemShrinkray(String raySound, int maxEnergy, int maxReceive, int maxSend)
 	{
 		super(maxEnergy, maxReceive, maxSend);
-		this.maxEnergy = maxEnergy * 1000;
-		this.maxReceive = (short) maxReceive;
-		this.maxSend = (short) maxSend;
 		this.setMaxStackSize(1);
 		this.setFull3D();
 		this.setMaxDamage(20);

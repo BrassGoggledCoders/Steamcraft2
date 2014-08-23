@@ -15,6 +15,7 @@ package steamcraft.common.items.electric;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.LibInfo;
+import boilerplate.common.baseclasses.BaseElectricItem;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -22,9 +23,9 @@ import cpw.mods.fml.relauncher.SideOnly;
  * @author warlordjones
  * 
  */
-public class ItemElectricConsumer extends ItemElectricStorage
+public class ElectricItem extends BaseElectricItem
 {
-	public ItemElectricConsumer(int maxEnergy, int maxReceive, int maxSend)
+	public ElectricItem(int maxEnergy, int maxReceive, int maxSend)
 	{
 		super(maxEnergy, maxReceive, maxSend);
 		this.setCreativeTab(Steamcraft.tabSC2);
