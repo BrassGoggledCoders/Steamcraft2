@@ -34,12 +34,12 @@ public class ItemDrill extends ItemModTool
 {
 	protected ToolMaterial toolMaterial;
 
-	static Block[] blocksEffectiveAgainst = new Block[] { Blocks.cobblestone, Blocks.dirt, Blocks.stone, Blocks.sand, Blocks.clay, Blocks.ice,
+	static Block[] effectiveBlocks = new Block[] { Blocks.cobblestone, Blocks.dirt, Blocks.stone, Blocks.sand, Blocks.clay, Blocks.ice,
 			Blocks.snow, Blocks.netherrack, Blocks.grass, Blocks.gravel };
 
 	public ItemDrill(ToolMaterial mat)
 	{
-		super(1.0F, mat, blocksEffectiveAgainst);
+		super(1.0F, mat, effectiveBlocks);
 		this.setCreativeTab(Steamcraft.tabSC2);
 		this.toolMaterial = mat;
 	}
@@ -55,7 +55,7 @@ public class ItemDrill extends ItemModTool
 	@Override
 	public boolean canHarvestBlock(Block block, ItemStack stack)
 	{
-		for(Block element : ItemDrill.blocksEffectiveAgainst)
+		for(Block element : ItemDrill.effectiveBlocks)
 			if(element == block)
 				return true;
 

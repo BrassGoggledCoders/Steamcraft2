@@ -13,7 +13,6 @@
 package steamcraft.common.items.electric;
 
 import java.util.List;
-import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
@@ -27,18 +26,15 @@ import boilerplate.common.IEnergyItem;
 
 public class ItemElectricTool extends ItemModTool implements IEnergyItem
 {
-	private Random random = new Random();
 	protected int maxEnergy = 0;
 	protected short maxReceive = 0;
-	protected short maxSend = 0;
 	protected int energyPerBlock = 0;
 
-	protected ItemElectricTool(float damage, ToolMaterial toolMat, Block[] blockArray)
+	protected ItemElectricTool(float damage, ToolMaterial toolMat, Block[] blockArray, int maxEnergy, int maxReceive)
 	{
 		super(damage, toolMat, blockArray);
-		this.maxEnergy = this.maxEnergy * 1000;
-		this.maxReceive = this.maxReceive;
-		this.maxSend = this.maxSend;
+		this.maxEnergy = maxEnergy * 1000;
+		this.maxReceive = (short)maxReceive;
 		this.setMaxStackSize(1);
 		this.setMaxDamage(20);
 		this.setHasSubtypes(false);
@@ -81,7 +77,7 @@ public class ItemElectricTool extends ItemModTool implements IEnergyItem
 	public void addInformation(ItemStack stack, EntityPlayer entityplayer, List list, boolean flag)
 	{
 		list.add("Energy: " + (this.getEnergyStored(stack) / 1000) + "k / " + (this.maxEnergy / 1000) + "k");
-		list.add("Transfer(in/out): " + this.maxReceive + " / " + this.maxSend);
+		list.add("Transfer(in): " + this.maxReceive);
 	}
 
 	@Override
@@ -122,13 +118,7 @@ public class ItemElectricTool extends ItemModTool implements IEnergyItem
 	@Override
 	public int extractEnergy(ItemStack itemStack, int maxExtract, boolean simulate)
 	{
-		int extracted = Math.min(this.getEnergyStored(itemStack), maxExtract);
-		extracted = Math.min(extracted, this.maxSend);
-
-		if (!simulate)
-			this.setEnergy(itemStack, this.getEnergyStored(itemStack) - extracted);
-
-		return extracted;
+		return 0;
 	}
 
 	@Override
@@ -146,7 +136,6 @@ public class ItemElectricTool extends ItemModTool implements IEnergyItem
 	@Override
 	public short getMaxSend()
 	{
-		return this.maxSend;
+		return 0;
 	}
-
 }

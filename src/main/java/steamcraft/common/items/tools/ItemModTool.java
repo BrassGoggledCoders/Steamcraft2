@@ -46,7 +46,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class ItemModTool extends BaseItem
 {
 	public static final int steamForRepair = 20;
-	protected static Block[] blocksEffectiveAgainst;
+	protected Block[] blocksEffectiveAgainst;
 	public float efficiencyOnProperMaterial = 4.0F;
 	public float damageVsEntity;
 	protected ToolMaterial toolMaterial;
@@ -56,7 +56,7 @@ public class ItemModTool extends BaseItem
 		super();
 		this.setCreativeTab(Steamcraft.tabSC2);
 		this.toolMaterial = toolMat;
-		blocksEffectiveAgainst = blockArray;
+		this.blocksEffectiveAgainst = blockArray;
 		this.maxStackSize = 1;
 		this.efficiencyOnProperMaterial = toolMat.getEfficiencyOnProperMaterial();
 		this.damageVsEntity = damage;
