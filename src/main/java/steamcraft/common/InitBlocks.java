@@ -51,11 +51,6 @@ import steamcraft.common.blocks.machines.BlockLightningRod;
 import steamcraft.common.blocks.machines.BlockSteamBoiler;
 import steamcraft.common.blocks.machines.BlockTeslaCoil;
 import steamcraft.common.blocks.machines.BlockTurbine;
-import steamcraft.common.itemblocks.ItemBlockCustomOre;
-import steamcraft.common.itemblocks.ItemBlockEngravedSolid;
-import steamcraft.common.itemblocks.ItemBlockEngravedVanilla;
-import steamcraft.common.itemblocks.ItemBlockMetal;
-import steamcraft.common.itemblocks.ItemBlockSlate;
 import steamcraft.common.tiles.TileArmorEditor;
 import steamcraft.common.tiles.TileBattery;
 import steamcraft.common.tiles.TileBloomery;
@@ -69,6 +64,7 @@ import steamcraft.common.tiles.TileSteamBoiler;
 import steamcraft.common.tiles.TileTeslaCoil;
 import steamcraft.common.tiles.TileTimeBomb;
 import steamcraft.common.tiles.TileTurbine;
+import boilerplate.common.baseclasses.BaseItemBlockWithMetadata;
 import boilerplate.common.utils.helpers.RegistryHelper;
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -142,15 +138,15 @@ public class InitBlocks
 		blockCustomOre = new BlockCustomOre().setBlockName("blockCustomOre");
 		blockSlate = new BlockSlate().setBlockName("blockSlate");
 
-		GameRegistry.registerBlock(blockCustomOre, ItemBlockCustomOre.class, "BlockCustomOre");
-		GameRegistry.registerBlock(blockSlate, ItemBlockSlate.class, "BlockSlate");
+		GameRegistry.registerBlock(blockCustomOre, BaseItemBlockWithMetadata.class, "BlockCustomOre");
+		GameRegistry.registerBlock(blockSlate, BaseItemBlockWithMetadata.class, "BlockSlate");
 
 		// Metals
 		blockMetal = new BlockMetal();
 		blockUranium = new BlockUranium(Material.iron);
 		blockEtherium = new BlockEtherium(Material.iron).setBlockName("blockEtherium").setResistance(-1);
 
-		GameRegistry.registerBlock(blockMetal, ItemBlockMetal.class, "BlockMetal");
+		GameRegistry.registerBlock(blockMetal, BaseItemBlockWithMetadata.class, "BlockMetal");
 		GameRegistry.registerBlock(blockUranium, "BlockUranium");
 		GameRegistry.registerBlock(blockEtherium, "BlockEtherium");
 	}
@@ -161,8 +157,8 @@ public class InitBlocks
 		blockEngraved = new BlockEngravedSolid();
 		blockEngravedVanilla = new BlockEngravedVanilla();
 
-		GameRegistry.registerBlock(blockEngraved, ItemBlockEngravedSolid.class, "BlockEngravedSolid");
-		GameRegistry.registerBlock(blockEngravedVanilla, ItemBlockEngravedVanilla.class, "BlockEngravedVanilla");
+		GameRegistry.registerBlock(blockEngraved, BaseItemBlockWithMetadata.class, "BlockEngravedSolid");
+		GameRegistry.registerBlock(blockEngravedVanilla, BaseItemBlockWithMetadata.class, "BlockEngravedVanilla");
 
 		// Cast Iron
 		blockCastIronLamp = new BlockCastIronLamp().setBlockName("blockCastIronLamp");
