@@ -64,16 +64,16 @@ public class TileBloomery extends BaseTileWithInventory
 	@SideOnly(Side.CLIENT)
 	public int getCookProgressScaled(int i)
 	{
-		return (this.cookTime * i) / 400;
+		return this.cookTime * i / 400;
 	}
 
 	@SideOnly(Side.CLIENT)
 	public int getBurnTimeRemainingScaled(int i)
 	{
-		if (this.currentItemBurnTime == 0)
+		if(this.currentItemBurnTime == 0)
 			this.currentItemBurnTime = 200;
 
-		return (this.burnTime * i) / this.currentItemBurnTime;
+		return this.burnTime * i / this.currentItemBurnTime;
 	}
 
 	public boolean isBurning()
@@ -87,34 +87,34 @@ public class TileBloomery extends BaseTileWithInventory
 		boolean flag = this.burnTime > 0;
 		boolean flag1 = false;
 
-		if (this.burnTime > 0)
+		if(this.burnTime > 0)
 			--this.burnTime;
 
-		if (!this.worldObj.isRemote)
+		if(!this.worldObj.isRemote)
 		{
-			if ((this.burnTime == 0) && this.canSmelt())
+			if(this.burnTime == 0 && this.canSmelt())
 			{
 				this.currentItemBurnTime = this.burnTime = getItemBurnTime(this.inventory[0]);
 
-				if (this.burnTime > 0)
+				if(this.burnTime > 0)
 				{
 					flag1 = true;
 
-					if (this.inventory[0] != null)
+					if(this.inventory[0] != null)
 					{
 						--this.inventory[0].stackSize;
 
-						if (this.inventory[0].stackSize == 0)
+						if(this.inventory[0].stackSize == 0)
 							this.inventory[0] = this.inventory[0].getItem().getContainerItem(this.inventory[0]);
 					}
 				}
 			}
 
-			if (this.isBurning() && this.canSmelt())
+			if(this.isBurning() && this.canSmelt())
 			{
 				++this.cookTime;
 
-				if (this.cookTime == 400)
+				if(this.cookTime == 400)
 				{
 					this.cookTime = 0;
 					this.smeltItem();
@@ -124,32 +124,32 @@ public class TileBloomery extends BaseTileWithInventory
 			else
 				this.cookTime = 0;
 
-			if (flag != (this.burnTime > 0))
+			if(flag != this.burnTime > 0)
 			{
 				flag1 = true;
 				BlockBloomery.updateBloomeryBlockState(this.burnTime > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord);
 			}
 		}
 
-		if (flag1)
+		if(flag1)
 			this.markDirty();
 	}
 
 	private boolean canSmelt()
 	{
-		if ((this.inventory[1] != null) && (this.inventory[2] != null))
+		if(this.inventory[1] != null && this.inventory[2] != null)
 		{
 			ItemStack result = this.getRecipeResult();
 
-			if (result != null)
+			if(result != null)
 			{
-				if (this.inventory[3] == null)
+				if(this.inventory[3] == null)
 					return true;
-				if (!this.inventory[3].isItemEqual(result))
+				if(!this.inventory[3].isItemEqual(result))
 					return false;
 				int amount = this.inventory[3].stackSize + result.stackSize;
 
-				return (amount <= this.getInventoryStackLimit()) && (amount <= this.inventory[3].getMaxStackSize());
+				return amount <= this.getInventoryStackLimit() && amount <= this.inventory[3].getMaxStackSize();
 			}
 		}
 		return false;
@@ -157,28 +157,28 @@ public class TileBloomery extends BaseTileWithInventory
 
 	public void smeltItem()
 	{
-		if (this.canSmelt())
+		if(this.canSmelt())
 		{
 			ItemStack result = this.getRecipeResult();
 
-			if (this.inventory[3] == null)
+			if(this.inventory[3] == null)
 				this.inventory[3] = result.copy();
-			else if (this.inventory[3].getItem() == result.getItem())
+			else if(this.inventory[3].getItem() == result.getItem())
 				this.inventory[3].stackSize += result.stackSize;
 
 			byte[] stackSizes = BloomeryRecipes.getInstance().getStackSizeForInputs(this.inventory[1], this.inventory[2], result);
 
-			if (this.inventory[1] != null)
+			if(this.inventory[1] != null)
 			{
 				this.inventory[1].stackSize -= stackSizes[0];
-				if (this.inventory[1].stackSize <= 0)
+				if(this.inventory[1].stackSize <= 0)
 					this.inventory[1] = null;
 			}
 
-			if (this.inventory[2] != null)
+			if(this.inventory[2] != null)
 			{
 				this.inventory[2].stackSize -= stackSizes[1];
-				if (this.inventory[2].stackSize <= 0)
+				if(this.inventory[2].stackSize <= 0)
 					this.inventory[2] = null;
 			}
 		}
@@ -188,7 +188,7 @@ public class TileBloomery extends BaseTileWithInventory
 	{
 		ItemStack result = BloomeryRecipes.getInstance().getResult(this.inventory[1], this.inventory[2]);
 
-		if (result == null)
+		if(result == null)
 			result = BloomeryRecipes.getInstance().getResult(this.inventory[2], this.inventory[1]);
 
 		return result;
@@ -196,7 +196,7 @@ public class TileBloomery extends BaseTileWithInventory
 
 	public static short getItemBurnTime(ItemStack stack)
 	{
-		if (stack == null)
+		if(stack == null)
 			return 0;
 		else
 			return (short) TileEntityFurnace.getItemBurnTime(stack);
@@ -228,7 +228,7 @@ public class TileBloomery extends BaseTileWithInventory
 	@Override
 	public boolean canExtractItem(int par1, ItemStack par2ItemStack, int par3)
 	{
-		return (par3 != 0) || (par1 != 1) || (par2ItemStack.getItem() == Items.bucket);
+		return par3 != 0 || par1 != 1 || par2ItemStack.getItem() == Items.bucket;
 	}
 
 	@Override

@@ -36,7 +36,7 @@ public class SlotCharger extends Slot
 	@Override
 	public boolean isItemValid(ItemStack stack)
 	{
-		if (stack.getItem() instanceof IEnergyItem)
+		if(stack.getItem() instanceof IEnergyItem)
 			return true;
 		return false;
 	}

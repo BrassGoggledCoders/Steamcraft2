@@ -20,7 +20,7 @@ import boilerplate.steamapi.IModule;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class TileArmorEditor extends BaseTileWithInventory implements IInventory
 {
@@ -50,20 +50,20 @@ public class TileArmorEditor extends BaseTileWithInventory implements IInventory
 	@Override
 	public void updateEntity()
 	{
-		if ((this.inventory[0] != null) && (this.inventory[0].getItem() instanceof ItemBrassArmor))
-			for (int i = 1; i < 17; i++)
-				if (this.inventory[i] != null)
+		if(this.inventory[0] != null && this.inventory[0].getItem() instanceof ItemBrassArmor)
+			for(int i = 1; i < 17; i++)
+				if(this.inventory[i] != null)
 				{
 					ItemBrassArmor armor = (ItemBrassArmor) this.inventory[0].getItem();
 					IModule module = (IModule) this.inventory[i].getItem();
-					if (!armor.modules.containsKey(module.getName()))
-						if (armor.armorType != -1)
+					if(!ItemBrassArmor.modules.containsKey(module.getName()))
+						if(armor.armorType != -1)
 						{
-							if (armor.armorType == module.getApplicablePiece())
-								armor.modules.put(module.getName(), module);
+							if(armor.armorType == module.getApplicablePiece())
+								ItemBrassArmor.modules.put(module.getName(), module);
 						}
 						else
-							armor.modules.put(module.getName(), module);
+							ItemBrassArmor.modules.put(module.getName(), module);
 					// inventory[0].stackTagCompound.setString(/*"module" + i,
 					// module.getName()*/"potato", "potato");
 					// .setString("module" +i,module.getName());
