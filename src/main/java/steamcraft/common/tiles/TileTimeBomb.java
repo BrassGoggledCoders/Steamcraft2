@@ -29,10 +29,9 @@ public class TileTimeBomb extends TileEntity
 		Calendar cal = Calendar.getInstance();
 		cal.getTime();
 		SimpleDateFormat sdf = new SimpleDateFormat("HHmm");
-		System.out.println(this.time);
-		if (Integer.parseInt(sdf.format(cal.getTime())) == this.time)
+
+		if(Integer.parseInt(sdf.format(cal.getTime())) == this.time)
 		{
-			System.out.print("BANG!");
 			this.worldObj.setBlockToAir(this.xCoord, this.yCoord, this.zCoord);
 			this.worldObj.spawnEntityInWorld(new EntityTimeBomb(this.worldObj, this.xCoord, this.yCoord, this.zCoord, null, 0));
 		}

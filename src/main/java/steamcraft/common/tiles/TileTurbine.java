@@ -28,7 +28,7 @@ import cofh.api.energy.IEnergyHandler;
 
 /**
  * @author decebaldecebal
- *
+ * 
  */
 public class TileTurbine extends TileEntity implements IFluidHandler, IEnergyHandler
 {
@@ -60,24 +60,24 @@ public class TileTurbine extends TileEntity implements IFluidHandler, IEnergyHan
 	@Override
 	public void updateEntity()
 	{
-		if (!this.worldObj.isRemote)
+		if(!this.worldObj.isRemote)
 		{
-			if (this.steamTank.getFluidAmount() >= steamPerTick)
-				if (this.buffer.receiveEnergy(RFPerTick, false) == RFPerTick)
+			if(this.steamTank.getFluidAmount() >= steamPerTick)
+				if(this.buffer.receiveEnergy(RFPerTick, false) == RFPerTick)
 					this.steamTank.drain(steamPerTick, true);
 
-			if (this.buffer.getEnergyStored() >= RFPerTick)
+			if(this.buffer.getEnergyStored() >= RFPerTick)
 			{
 				byte usedEnergy = 0;
 				byte outputEnergy = RFPerTick;
 
-				for (ForgeDirection direction : EnumSet.allOf(ForgeDirection.class))
-					if (outputEnergy > 0)
+				for(ForgeDirection direction : EnumSet.allOf(ForgeDirection.class))
+					if(outputEnergy > 0)
 					{
 						TileEntity tileEntity = this.worldObj.getTileEntity(this.xCoord - direction.offsetX, this.yCoord - direction.offsetY,
 								this.zCoord - direction.offsetZ);
 
-						if (tileEntity instanceof IEnergyHandler)
+						if(tileEntity instanceof IEnergyHandler)
 						{
 							usedEnergy += ((IEnergyHandler) tileEntity).receiveEnergy(direction.getOpposite(), outputEnergy, false);
 							outputEnergy -= usedEnergy;
@@ -92,7 +92,7 @@ public class TileTurbine extends TileEntity implements IFluidHandler, IEnergyHan
 	@Override
 	public int fill(ForgeDirection from, FluidStack resource, boolean doFill)
 	{
-		if ((resource.getFluid() == FluidRegistry.getFluid("steam")))
+		if(resource.getFluid() == FluidRegistry.getFluid("steam"))
 			return this.steamTank.fill(resource, doFill);
 		return 0;
 	}
@@ -112,7 +112,7 @@ public class TileTurbine extends TileEntity implements IFluidHandler, IEnergyHan
 	@Override
 	public boolean canFill(ForgeDirection from, Fluid fluid)
 	{
-		if (fluid == FluidRegistry.getFluid("steam") && (from != ForgeDirection.DOWN))
+		if(fluid == FluidRegistry.getFluid("steam") && from != ForgeDirection.DOWN)
 			return true;
 		return false;
 	}
@@ -133,8 +133,9 @@ public class TileTurbine extends TileEntity implements IFluidHandler, IEnergyHan
 	public boolean canConnectEnergy(ForgeDirection from)
 	{
 		if(from == ForgeDirection.DOWN)
-		return true;
-		else return false;
+			return true;
+		else
+			return false;
 	}
 
 	@Override
