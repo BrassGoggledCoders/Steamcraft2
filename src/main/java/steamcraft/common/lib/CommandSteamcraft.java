@@ -60,28 +60,20 @@ public class CommandSteamcraft extends CommandBase
 		ChatComponentText prefix = new ChatComponentText(" [Steamcraft] ");
 		prefix.getChatStyle().setColor(EnumChatFormatting.GOLD);
 
-		if (parameters.length < 1)
-			sender.addChatMessage(prefix.appendSibling(new ChatComponentText("Welcome to Steamcraft 2!")/*
-																										 * .
-																										 * setChatStyle
-																										 * (
-																										 * EnumChatFormatting
-																										 * .
-																										 * LIGHT_PURPLE
-																										 * )
-																										 */));
-		else if (parameters.length == 1)
-			if (parameters[0].equalsIgnoreCase("help"))
+		if(parameters.length < 1)
+			sender.addChatMessage(prefix.appendSibling(new ChatComponentText("Welcome to Steamcraft 2!")));
+		else if(parameters.length == 1)
+			if(parameters[0].equalsIgnoreCase("help"))
 			{
 				sender.addChatMessage(new ChatComponentText("version -- returns current SC2 version"));
 				sender.addChatMessage(new ChatComponentText("contact -- returns current SC2 version"));
 			}
-			else if (parameters[0].equalsIgnoreCase("version"))
+			else if(parameters[0].equalsIgnoreCase("version"))
 			{
 				ChatComponentText version = new ChatComponentText("Steamcraft 2 " + LibInfo.VERSION + " for MC v1.7.2");
 				sender.addChatMessage(prefix.appendSibling(version));
 			}
-			else if (parameters[0].equalsIgnoreCase("contact"))
+			else if(parameters[0].equalsIgnoreCase("contact"))
 			{
 				ChatComponentText contact = new ChatComponentText("Contact Information");
 				sender.addChatMessage(prefix.appendSibling(contact));

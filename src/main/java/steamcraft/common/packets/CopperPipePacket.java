@@ -55,11 +55,11 @@ public class CopperPipePacket implements IMessage
 
 		this.connections = new ForgeDirection[6];
 
-		for (int i = 0; i < 6; i++)
+		for(int i = 0; i < 6; i++)
 		{
 			this.connections[i] = ForgeDirection.getOrientation(buf.readByte());
 
-			if (this.connections[i] == ForgeDirection.UNKNOWN)
+			if(this.connections[i] == ForgeDirection.UNKNOWN)
 				this.connections[i] = null;
 		}
 	}
@@ -71,7 +71,7 @@ public class CopperPipePacket implements IMessage
 		buf.writeInt(this.x);
 		buf.writeInt(this.y);
 		buf.writeInt(this.z);
-		for (int i = 0; i < 6; i++)
+		for(int i = 0; i < 6; i++)
 			buf.writeByte(directionToByte(this.connections[i]));
 	}
 
@@ -79,30 +79,30 @@ public class CopperPipePacket implements IMessage
 	{
 		byte index = -1;
 
-		if (dir != null)
-			switch (dir)
+		if(dir != null)
+			switch(dir)
 			{
-			case DOWN:
-				index = 0;
-				break;
-			case UP:
-				index = 1;
-				break;
-			case NORTH:
-				index = 2;
-				break;
-			case SOUTH:
-				index = 3;
-				break;
-			case WEST:
-				index = 4;
-				break;
-			case EAST:
-				index = 5;
-				break;
-			default:
-				index = -1;
-				break;
+				case DOWN:
+					index = 0;
+					break;
+				case UP:
+					index = 1;
+					break;
+				case NORTH:
+					index = 2;
+					break;
+				case SOUTH:
+					index = 3;
+					break;
+				case WEST:
+					index = 4;
+					break;
+				case EAST:
+					index = 5;
+					break;
+				default:
+					index = -1;
+					break;
 			}
 
 		return index;
@@ -116,7 +116,7 @@ public class CopperPipePacket implements IMessage
 		{
 			World world = Minecraft.getMinecraft().theWorld;
 
-			if (world.getTileEntity(message.x, message.y, message.z) instanceof TileCopperPipe)
+			if(world.getTileEntity(message.x, message.y, message.z) instanceof TileCopperPipe)
 			{
 				TileCopperPipe pipe = (TileCopperPipe) world.getTileEntity(message.x, message.y, message.z);
 

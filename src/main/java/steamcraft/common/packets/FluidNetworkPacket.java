@@ -80,11 +80,11 @@ public class FluidNetworkPacket implements IMessage
 		{
 			World world = Minecraft.getMinecraft().theWorld;
 
-			if (world.getTileEntity(message.x, message.y, message.z) instanceof TileCopperPipe)
+			if(world.getTileEntity(message.x, message.y, message.z) instanceof TileCopperPipe)
 			{
 				TileCopperPipe pipe = (TileCopperPipe) world.getTileEntity(message.x, message.y, message.z);
 
-				if (pipe.network == null)
+				if(pipe.network == null)
 					pipe.network = new FluidNetwork(1);
 
 				pipe.network.fluidScaled = message.fluidScaled;

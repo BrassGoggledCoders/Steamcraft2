@@ -36,18 +36,5 @@ public class LibInfo
 
 	public static final String VERSION_URL = "https://gist.githubusercontent.com/warlordjones/42644dbc6db776152367/raw/99d70c9382a61b88cb61a605a8f0dfd9bbb49079/gistfile1.txt";
 
-	/** Capes!. */
-	// public static final String DEV_LIST =
-	// "https://www.dropbox.com/s/m7tn0tx7y7w630s/devs.txt";
-
-	// public static final String DONATOR_LIST =
-	// "https://www.dropbox.com/s/pihl7ja8m9z2ybs/donators.txt";
-
-	// public static final String DEV_CAPE_IMG_URL =
-	// "https://dl.dropboxusercontent.com/u/34970176/SteamCraft%202/steamcraft_cape_MID_1.png";
-
-	// public static final String DONATOR_CAPE_IMG_URL =
-	// "http://imgur.com/7O5dSL2";
-	// 0 1 2 3 4 5 6 7
 	public static String[] metals = { "Aluminum", "Copper", "Tin", "Zinc", "Brass", "Bronze", "Steel", "CastIron" };
 }

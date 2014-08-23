@@ -73,11 +73,11 @@ public class EnergyNetworkPacket implements IMessage
 		{
 			World world = Minecraft.getMinecraft().theWorld;
 
-			if (world.getTileEntity(message.x, message.y, message.z) instanceof TileCopperWire)
+			if(world.getTileEntity(message.x, message.y, message.z) instanceof TileCopperWire)
 			{
 				TileCopperWire wire = (TileCopperWire) world.getTileEntity(message.x, message.y, message.z);
 
-				if (wire.network == null)
+				if(wire.network == null)
 					wire.network = new EnergyNetwork(1);
 
 				wire.network.energyScaled = message.energyScaled;

@@ -31,6 +31,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  * @author Surseance
  * 
  */
+@Deprecated
 public class Utils
 {
 	public Random random = new Random();
@@ -48,9 +49,10 @@ public class Utils
 			String newVersion = prop.getProperty(name);
 			newestVersion = newVersion;
 
-			if (version.compareTo(newVersion) != 0)
+			if(version.compareTo(newVersion) != 0)
 				return true;
-		} catch (Exception e)
+		}
+		catch(Exception e)
 		{
 			LoggerSteamcraft.log(Level.FINEST, "Could not establish a connection to Dropbox.com; no worries!");
 		}
@@ -63,28 +65,17 @@ public class Utils
 	{
 		String[] developers = getUsersFromUrl("https://www.dropbox.com/s/m7tn0tx7y7w630s/devs.txt");
 
-		for (String username : developers)
+		for(String username : developers)
 			try
 			{
 				ThreadDownloadImageData imageData = new ThreadDownloadImageData(null,
-						"https://www.dropbox.com/s/cicvp1u0kq9xtbp/steamcraft_cape_1.png", null, null); // Probably
-																										// doesn't
-																										// work...
+						"https://www.dropbox.com/s/cicvp1u0kq9xtbp/steamcraft_cape_1.png", null, null);
 				Minecraft.getMinecraft().getTextureManager().loadTexture(new ResourceLocation("cloaks/" + username), imageData);
-			} catch (Exception e)
+			}
+			catch(Exception e)
 			{
 				LoggerSteamcraft.log(Level.INFO, "Unable to load capes");
 			}
-
-		// String donators[] = getUsersFromUrl(LibInfo.DONATOR_LIST);
-		/*
-		 * for (String username : donators) { try { ThreadDownloadImageData
-		 * imageData = new ThreadDownloadImageData(LibInfo.DONATOR_CAPE_URL,
-		 * null, null); Minecraft.getMinecraft().renderEngine.loadTexture(new
-		 * ResourceLocation(("cloaks/" + username)),
-		 * ((ITextureObject)imageData)); } catch (Exception e) {
-		 * LoggerSteamcraft.log(Level.INFO, "Unable to load capes"); } }
-		 */
 	}
 
 	private static String[] getUsersFromUrl(String url)
@@ -95,11 +86,12 @@ public class Utils
 			BufferedReader urlReader = new BufferedReader(new InputStreamReader(new URL(url).openStream()));
 			String line;
 
-			while ((line = urlReader.readLine()) != null)
+			while((line = urlReader.readLine()) != null)
 				list.add(line);
 
 			return list.toArray(new String[list.size()]);
-		} catch (Exception e)
+		}
+		catch(Exception e)
 		{
 			e.printStackTrace();
 			LoggerSteamcraft.log(Level.INFO, "Unable to connect to Dropbox");

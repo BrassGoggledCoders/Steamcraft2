@@ -73,7 +73,7 @@ public class TimeBombPacket implements IMessage
 		{
 			World world = DimensionManager.getWorld(message.worldId);
 
-			if (world.getTileEntity(message.x, message.y, message.z) instanceof TileTimeBomb)
+			if(world.getTileEntity(message.x, message.y, message.z) instanceof TileTimeBomb)
 			{
 				TileTimeBomb bomb = (TileTimeBomb) world.getTileEntity(message.x, message.y, message.z);
 

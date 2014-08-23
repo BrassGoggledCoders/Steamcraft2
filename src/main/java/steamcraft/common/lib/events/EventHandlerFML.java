@@ -17,7 +17,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.event.ClickEvent;
 import net.minecraft.event.HoverEvent;
-import net.minecraft.item.ItemStack;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
@@ -45,7 +44,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class EventHandlerFML
 {
@@ -54,40 +53,39 @@ public class EventHandlerFML
 	{
 		Block craftingBlock = Block.getBlockFromItem(event.crafting.getItem());
 
-		if (event.crafting.getItem() instanceof ItemRayGun)
+		if(event.crafting.getItem() instanceof ItemRayGun)
 			event.player.triggerAchievement(InitAchievements.raygunAchieve);
-		else if (event.crafting.getItem() instanceof ItemShrinkray)
+		else if(event.crafting.getItem() instanceof ItemShrinkray)
 			event.player.triggerAchievement(InitAchievements.shrinkrayAchieve);
-		else if (craftingBlock instanceof BlockSteamBoiler)
+		else if(craftingBlock instanceof BlockSteamBoiler)
 			event.player.triggerAchievement(InitAchievements.boilerAchieve);
-		else if (craftingBlock instanceof BlockIntake)
+		else if(craftingBlock instanceof BlockIntake)
 			event.player.triggerAchievement(InitAchievements.intakeAchieve);
-		else if (craftingBlock instanceof BlockTurbine)
+		else if(craftingBlock instanceof BlockTurbine)
 			event.player.triggerAchievement(InitAchievements.turbineAchieve);
-		else if (craftingBlock instanceof BlockLightningRod)
+		else if(craftingBlock instanceof BlockLightningRod)
 			event.player.triggerAchievement(InitAchievements.rodAchieve);
-		else if (event.crafting.getItem() instanceof ItemSheet)
+		else if(event.crafting.getItem() instanceof ItemSheet)
 			event.player.triggerAchievement(InitAchievements.sheetAchieve);
-		else if (event.crafting.getItem() instanceof ItemClockworkWings)
+		else if(event.crafting.getItem() instanceof ItemClockworkWings)
 			event.player.triggerAchievement(InitAchievements.wingsAchieve);
-		else if (event.crafting.getItem() instanceof ItemSteamJetpack)
+		else if(event.crafting.getItem() instanceof ItemSteamJetpack)
 			event.player.triggerAchievement(InitAchievements.jetpackAchieve);
-		// TODO Dosn't work!
-		else if (event.crafting.isItemEqual(new ItemStack(InitItems.itemSteamWingpack)))
+		else if(event.crafting.getItem().getUnlocalizedName().equals(InitItems.itemSteamWingpack.getUnlocalizedName()))
 			event.player.triggerAchievement(InitAchievements.wingpackAchieve);
 	}
 
 	@SubscribeEvent
 	public void onItemSmelted(PlayerEvent.ItemSmeltedEvent event)
 	{
-		if (event.smelting.getItem() instanceof ItemIngot)
+		if(event.smelting.getItem() instanceof ItemIngot)
 			event.player.triggerAchievement(InitAchievements.ingotAchieve);
 	}
 
 	@SubscribeEvent
 	public void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event)
 	{
-		if (event.player.getCommandSenderName().equals("warlordjones"))
+		if(event.player.getCommandSenderName().equals("warlordjones"))
 		{
 			ChatComponentText component = new ChatComponentText("Encrypted Connection to Stark Secure Server #1 Established");
 			component.getChatStyle().setBold(true);
@@ -98,13 +96,13 @@ public class EventHandlerFML
 			component1.getChatStyle().setColor(EnumChatFormatting.GREEN);
 			event.player.addChatComponentMessage(component1);
 		}
-		else if (event.player.getCommandSenderName().equals("WGSXFrank"))
+		else if(event.player.getCommandSenderName().equals("WGSXFrank"))
 		{
 			ChatComponentText component = new ChatComponentText("Your Clockwerk Empire awaits!");
 			component.getChatStyle().setBold(true);
 			component.getChatStyle().setColor(EnumChatFormatting.GOLD);
 			event.player.addChatComponentMessage(component);
-			if (!ConfigGeneral.partyPooper)
+			if(!ConfigGeneral.partyPooper)
 			{
 				ChatComponentText link = new ChatComponentText("Welcome ClockwerkKaiser to the server!");
 				link.getChatStyle().setColor(EnumChatFormatting.YELLOW);
@@ -114,33 +112,33 @@ public class EventHandlerFML
 				MinecraftServer.getServer().getConfigurationManager().sendChatMsg(link);
 			}
 		}
-		else if (event.player.getCommandSenderName().equals("Rongmario"))
+		else if(event.player.getCommandSenderName().equals("Rongmario"))
 		{
 			ChatComponentText component = new ChatComponentText("Gooby PLZ");
 			component.getChatStyle().setBold(true).setUnderlined(true);
 			component.getChatStyle().setColor(EnumChatFormatting.AQUA);
 			event.player.addChatComponentMessage(component);
 		}
-		else if (event.player.getCommandSenderName().equals("Spack3rz_MC"))
+		else if(event.player.getCommandSenderName().equals("Spack3rz_MC"))
 		{
 			ChatComponentText component = new ChatComponentText("BAKA!");
 			component.getChatStyle().setBold(true).setUnderlined(true);
 			component.getChatStyle().setColor(EnumChatFormatting.LIGHT_PURPLE);
 			event.player.addChatComponentMessage(component);
 		}
-		else if (event.player.getCommandSenderName().equals("lstarwars3"))
+		else if(event.player.getCommandSenderName().equals("lstarwars3"))
 		{
 			ChatComponentText component = new ChatComponentText("Pig in a tank!");
 			component.getChatStyle().setColor(EnumChatFormatting.GREEN);
 			event.player.addChatComponentMessage(component);
 		}
-		else if (event.player.getCommandSenderName().equals("yuloveme537"))
+		else if(event.player.getCommandSenderName().equals("yuloveme537"))
 		{
 			ChatComponentText component = new ChatComponentText("Looking gentlemanly today James :-)");
 			component.getChatStyle().setColor(EnumChatFormatting.DARK_RED);
 			event.player.addChatComponentMessage(component);
 		}
-		//TODO: Test on server
+		// TODO: Test on server
 		if(event.player.worldObj.getPlayerEntityByName("warlordjones") != null || event.player.worldObj.getPlayerEntityByName("decebaldecebal") != null)
 		{
 			event.player.triggerAchievement(InitAchievements.creatorAchieve);
@@ -151,8 +149,8 @@ public class EventHandlerFML
 	@SideOnly(Side.CLIENT)
 	public void KeyInputEvent(KeyInputEvent event)
 	{
-		if (InitKeyBindings.vanity.isPressed())
-			if (Minecraft.getMinecraft().currentScreen == null)
+		if(InitKeyBindings.vanity.isPressed())
+			if(Minecraft.getMinecraft().currentScreen == null)
 			{
 				EntityPlayer p = Minecraft.getMinecraft().thePlayer;
 				p.openGui(Steamcraft.instance, GuiIDs.GUI_ID_VANITY, p.worldObj, (int) p.posX, (int) p.posY, (int) p.posZ);

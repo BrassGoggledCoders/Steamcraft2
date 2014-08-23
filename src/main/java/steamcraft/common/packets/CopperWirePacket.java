@@ -55,11 +55,11 @@ public class CopperWirePacket implements IMessage
 
 		this.connections = new ForgeDirection[6];
 
-		for (int i = 0; i < 6; i++)
+		for(int i = 0; i < 6; i++)
 		{
 			this.connections[i] = ForgeDirection.getOrientation(buf.readByte());
 
-			if (this.connections[i] == ForgeDirection.UNKNOWN)
+			if(this.connections[i] == ForgeDirection.UNKNOWN)
 				this.connections[i] = null;
 		}
 	}
@@ -71,7 +71,7 @@ public class CopperWirePacket implements IMessage
 		buf.writeInt(this.x);
 		buf.writeInt(this.y);
 		buf.writeInt(this.z);
-		for (int i = 0; i < 6; i++)
+		for(int i = 0; i < 6; i++)
 			buf.writeByte(CopperPipePacket.directionToByte(this.connections[i]));
 	}
 
@@ -83,7 +83,7 @@ public class CopperWirePacket implements IMessage
 		{
 			World world = Minecraft.getMinecraft().theWorld;
 
-			if (world.getTileEntity(message.x, message.y, message.z) instanceof TileCopperWire)
+			if(world.getTileEntity(message.x, message.y, message.z) instanceof TileCopperWire)
 			{
 				TileCopperWire wire = (TileCopperWire) world.getTileEntity(message.x, message.y, message.z);
 

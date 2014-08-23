@@ -120,7 +120,7 @@ public class Steamcraft
 		// ClientHelper.mc().currentScreen);
 	}
 
-	@Mod.EventHandler
+	@EventHandler
 	public void serverStarting(final FMLServerStartingEvent event)
 	{
 		event.registerServerCommand(new CommandSteamcraft());
