@@ -31,9 +31,9 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.MovingObjectPosition.MovingObjectType;
 import net.minecraftforge.client.event.DrawBlockHighlightEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
+import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.event.entity.EntityEvent.EntityConstructing;
 import net.minecraftforge.event.entity.item.ItemTossEvent;
-import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.living.LivingSpawnEvent;
 
@@ -44,6 +44,7 @@ import steamcraft.common.Steamcraft;
 import steamcraft.common.config.Config;
 import steamcraft.common.entities.EntityPlayerExtended;
 import steamcraft.common.lib.LibInfo;
+import cofh.api.energy.IEnergyHandler;
 import cpw.mods.fml.client.event.ConfigChangedEvent;
 import cpw.mods.fml.common.eventhandler.EventPriority;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
@@ -52,36 +53,10 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 public class EventHandlerForge
 {
-	@SubscribeEvent
-	public void updatePlayer(LivingEvent.LivingUpdateEvent event)
-	{
-		/*
-		 * if (event.entityLiving instanceof EntityPlayer) { EntityPlayer player
-		 * = (EntityPlayer) event.entityLiving;
-		 * 
-		 * ItemStack legsSlot = player.inventory.armorItemInSlot(1);
-		 * 
-		 * if (legsSlot != null) { if (legsSlot.getItem() ==
-		 * ConfigItems.itemLegBraces) { float distToFall = player.fallDistance;
-		 * 
-		 * if (distToFall > 3.0F) { player.fallDistance = distToFall * 0.888F;
-		 * legsSlot.damageItem(1, player); } } }
-		 * 
-		 * ItemStack bootsSlot = player.inventory.armorItemInSlot(0);
-		 * 
-		 * if (bootsSlot != null) { if (!player.isInWater() && player.onGround
-		 * && bootsSlot.getItem() == ConfigItems.itemRollerSkates) {
-		 * player.moveEntityWithHeading(player.moveStrafing, player.moveForward
-		 * * 0.8F); player.jumpMovementFactor = 0.03F; player.stepHeight = 0.0F;
-		 * } } else if (bootsSlot == null || bootsSlot.getItem() !=
-		 * ConfigItems.itemRollerSkates) { player.stepHeight = 0.5F; } }
-		 */
-	}
-
 	@SubscribeEvent
 	public void entityConstructing(EntityConstructing event)
 	{
@@ -137,6 +112,7 @@ public class EventHandlerForge
 			int posY2 = 15;
 			int posY3 = 25;
 			int posY4 = 35;
+			int posY5 = 45;
 			// int posY5 = 45;
 			int color = 0xCCFF00;
 			// fontRenderer.drawString(text, posX, posY, color);
@@ -146,13 +122,22 @@ public class EventHandlerForge
 				fontRenderer.drawString("Metadata: " + this.block.getDamageValue(mc.theWorld, this.x, this.y, this.z), posX, posY2, color);
 				fontRenderer.drawString("Hardness: " + this.block.getBlockHardness(mc.theWorld, this.x, this.y, this.z), posX, posY3, color);
 				fontRenderer.drawString("Light Value: " + this.block.getLightValue(), posX, posY4, color);
+				//TODO
+				if(mc.theWorld.getTileEntity(x, y, z) != null)
+				{
+					if(mc.theWorld.getTileEntity(x, y, z) instanceof IEnergyHandler)
+					{
+						IEnergyHandler energytile = (IEnergyHandler) mc.theWorld.getTileEntity(x, y, z);
+						fontRenderer.drawString("Energy: " + Integer.toString(energytile.getEnergyStored(ForgeDirection.UP)) + "/" + Integer.toString(energytile.getMaxEnergyStored(ForgeDirection.UP)) + "RF", posX, posY5, color);
+					}
+				}
 			}
 			if (this.entity != null)
 			{
 				String text = this.entity.getCommandSenderName();
 				fontRenderer.drawString("Entity: ", mc.displayWidth - 5 - text.length(), posY, color);
 				String text1 = Integer.toString(this.entity.getEntityId());
-				fontRenderer.drawString("Entity: ", mc.displayWidth - 5 - text1.length(), posY, color);
+				fontRenderer.drawString("ID: ", mc.displayWidth - 5 - text1.length(), posY, color);
 			}
 			// fontRenderer.drawString("Material: " + this.block.getMaterial(),
 			// posX, posY5, color);

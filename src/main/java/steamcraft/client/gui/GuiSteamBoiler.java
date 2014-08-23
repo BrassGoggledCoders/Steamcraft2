@@ -26,10 +26,10 @@ import net.minecraftforge.fluids.FluidTank;
 
 import org.lwjgl.opengl.GL11;
 
-import steamcraft.client.lib.GuiColors;
 import steamcraft.common.lib.LibInfo;
 import steamcraft.common.tiles.TileSteamBoiler;
 import steamcraft.common.tiles.container.ContainerSteamBoiler;
+import boilerplate.client.utils.GuiColors;
 
 /**
  * @author Decebaldecebal

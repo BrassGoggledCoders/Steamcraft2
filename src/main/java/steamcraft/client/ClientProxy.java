@@ -59,12 +59,10 @@ import cpw.mods.fml.common.FMLCommonHandler;
 
 /**
  * @author Surseance (Johnny Eatmon)
- * 
+ *
  */
 public class ClientProxy extends CommonProxy
 {
-	// public EventHandlerDrawHighlight drawEventHandler;
-
 	@Override
 	public void registerKeys()
 	{
@@ -81,8 +79,11 @@ public class ClientProxy extends CommonProxy
 	public void registerRenderers()
 	{
 		this.registerBlockRenderers();
+		this.registerEntityRenderers();
+	}
 
-		// TODO: Should be in boilerplate
+	private void registerEntityRenderers()
+	{
 		RenderingRegistry.registerEntityRenderingHandler(EntityMinedBlock.class, new RenderMinedBlock());
 
 		RenderingRegistry.registerEntityRenderingHandler(EntityBullet.class, new RenderBullet());
@@ -91,10 +92,10 @@ public class ClientProxy extends CommonProxy
 
 	private void registerBlockRenderers()
 	{
-		// Copper Pipe/Wire
+		//Copper Pipe
 		ClientRegistry.bindTileEntitySpecialRenderer(TileCopperPipe.class, new TileCopperPipeRenderer());
+		//Copper Wire
 		ClientRegistry.bindTileEntitySpecialRenderer(TileCopperWire.class, new TileCopperWireRenderer());
-
 		// Crystal
 		RenderIDs.blockCrystalRI = RenderingRegistry.getNextAvailableRenderId();
 		ClientRegistry.bindTileEntitySpecialRenderer(TileCrystal.class, new TileCrystalRenderer());
@@ -115,22 +116,9 @@ public class ClientProxy extends CommonProxy
 		RenderIDs.blockChargerRI = RenderingRegistry.getNextAvailableRenderId();
 		ClientRegistry.bindTileEntitySpecialRenderer(TileCharger.class, new TileChargerRenderer());
 		RenderingRegistry.registerBlockHandler(new BlockChargerRenderer());
-
+		//Cast Iron Railing
 		RenderIDs.blockCastIronRailingRI = RenderingRegistry.getNextAvailableRenderId();
 		RenderingRegistry.registerBlockHandler(new BlockRailingRenderer());
-		/*
-		 * Cast Iron Lamp ConfigBlocks.blockCastIronLampRI =
-		 * RenderingRegistry.getNextAvailableRenderId();
-		 * ClientRegistry.bindTileEntitySpecialRenderer(TileCastIronLamp.class,
-		 * new TileCastIronLampRenderer());
-		 * RenderingRegistry.registerBlockHandler(new
-		 * BlockCastIronLampRenderer());
-		 */
-
-		// Hatch
-		// ClientRegistry.bindTileEntitySpecialRenderer(TileHatch.class, new
-		// TileHatchRenderer());
-		// RenderingRegistry.registerBlockHandler(new BlockHatchRenderer());
 	}
 
 	@Override

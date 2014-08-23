@@ -21,7 +21,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
-import net.minecraftforge.common.DimensionManager;
 import steamcraft.client.lib.GuiIDs;
 import steamcraft.common.InitAchievements;
 import steamcraft.common.InitItems;

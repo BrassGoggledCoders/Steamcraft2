@@ -18,32 +18,19 @@ package steamcraft.client.lib;
  */
 public final class GuiIDs
 {
-	/** The Constant GUI_ID_NUKE_OVEN. */
-	public static final int GUI_ID_NUKE_OVEN = 0;
+	public static final int GUI_ID_STEAM_BOILER = 0;
 
-	/** The Constant GUI_ID_CHEM_OVEN. */
-	public static final int GUI_ID_CHEM_OVEN = 1;
+	public static final int GUI_ID_DROP_HAMMER = 1;
 
-	/** The Constant GUI_ID_STEAM_OVEN. */
-	public static final int GUI_ID_STEAM_BOILER = 2;
+	public static final int GUI_ID_VANITY = 2;
 
-	/** The Constant GUI_ID_GUIDE_BOOK. */
-	public static final int GUI_ID_GUIDE_BOOK = 3;
+	public static final int GUI_ID_ARMOREDITOR = 3;
 
-	/** The Constant GUI_ID_DROP_HAMMER. */
-	public static final int GUI_ID_DROP_HAMMER = 4;
+	public static final int GUI_ID_BLOOMERY = 4;
 
-	/** The Constant GUI_ID_VANITY. */
-	public static final int GUI_ID_VANITY = 5;
+	public static final int GUI_ID_BATTERY = 5;
 
-	/** The Constant GUI_ID_ARMOREDITOR. */
-	public static final int GUI_ID_ARMOREDITOR = 6;
+	public static final int GUI_ID_CHARGER = 6;
 
-	public static final int GUI_ID_BLOOMERY = 7;
-
-	public static final int GUI_ID_BATTERY = 8;
-
-	public static final int GUI_ID_CHARGER = 9;
-
-	public static final int GUI_ID_TIMEBOMB = 10;
+	public static final int GUI_ID_TIMEBOMB = 7;
 }

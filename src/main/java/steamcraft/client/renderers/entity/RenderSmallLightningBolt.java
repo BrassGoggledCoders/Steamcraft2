@@ -1,5 +1,5 @@
 /**
- * This class was created by BrassGoggledCoders modding team. 
+ * This class was created by BrassGoggledCoders modding team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -8,7 +8,7 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- * 
+ *
  */
 package steamcraft.client.renderers.entity;
 
@@ -27,9 +27,10 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * The Class RenderBullet.
- * 
+ *
  * @author Surseance (Johnny Eatmon)
  */
+//TODO
 @SideOnly(Side.CLIENT)
 public class RenderSmallLightningBolt extends Render
 {
@@ -102,7 +103,7 @@ public class RenderSmallLightningBolt extends Render
 
 	/**
 	 * Gets the bullet texture.
-	 * 
+	 *
 	 * @param entity
 	 *            the bullet
 	 * @return the bullet texture
