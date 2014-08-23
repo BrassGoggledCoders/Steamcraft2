@@ -407,10 +407,4 @@ public class InitItems
 	{
 		GameRegistry.registerItem(item, name, LibInfo.ID);
 	}
-
-	/* PostInit */
-	public static void postInit()
-	{
-
-	}
 }

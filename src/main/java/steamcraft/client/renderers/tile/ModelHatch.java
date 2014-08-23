@@ -15,39 +15,21 @@ package steamcraft.client.renderers.tile;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 
-// TODO
 /**
- * The Class ModelHatch.
- *
  * @author warlordjones
+ * 
  */
 public class ModelHatch extends ModelBase
 {
-
-	/** The base. */
 	public ModelRenderer base;
-
-	/** The center. */
 	public ModelRenderer center;
-
-	/** The hatch. */
 	public ModelRenderer hatch;
 
-	/** The spoke. */
 	public ModelRenderer spoke;
-
-	/** The spoke1. */
 	public ModelRenderer spoke1;
-
-	/** The spoke2. */
 	public ModelRenderer spoke2;
-
-	/** The spoke3. */
 	public ModelRenderer spoke3;
 
-	/**
-	 * Instantiates a new model hatch.
-	 */
 	public ModelHatch()
 	{
 		this.base = new ModelRenderer(this, 0, 0);
@@ -72,22 +54,6 @@ public class ModelHatch extends ModelBase
 
 	}
 
-	/**
-	 * Render.
-	 *
-	 * @param f
-	 *            the f
-	 * @param f1
-	 *            the f1
-	 * @param f2
-	 *            the f2
-	 * @param f3
-	 *            the f3
-	 * @param f4
-	 *            the f4
-	 * @param f5
-	 *            the f5
-	 */
 	public void render(final float f, final float f1, final float f2, final float f3, final float f4, final float f5)
 	{
 		this.setRotationAngles(f, f1, f2, f3, f4, f5);
@@ -99,26 +65,9 @@ public class ModelHatch extends ModelBase
 		this.spoke2.render(f5);
 		this.spoke3.render(f5);
 	}
-
-	// Method you're going to want to override:
-	/**
-	 * Sets the rotation angles.
-	 *
-	 * @param f
-	 *            the f
-	 * @param f1
-	 *            the f1
-	 * @param f2
-	 *            the f2
-	 * @param f3
-	 *            the f3
-	 * @param f4
-	 *            the f4
-	 * @param f5
-	 *            the f5
-	 */
+	
 	public void setRotationAngles(final float f, final float f1, final float f2, final float f3, final float f4, final float f5)
 	{
+		
 	}
-
 }

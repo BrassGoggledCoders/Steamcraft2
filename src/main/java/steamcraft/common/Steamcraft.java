@@ -42,7 +42,7 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 import cpw.mods.fml.relauncher.Side;
 
 /**
- * @author Surseance (Johnny Eatmon)
+ * @author Surseance
  * 
  */
 @Mod(modid = LibInfo.ID, name = LibInfo.NAME, version = LibInfo.VERSION, dependencies = "required-after:boilerplate")
@@ -79,7 +79,7 @@ public class Steamcraft
 		MinecraftForge.EVENT_BUS.register(new EventHandlerForge());
 		FMLCommonHandler.instance().bus().register(new EventHandlerFML());
 
-		if (ConfigWorldGen.generationEnabled)
+		if(ConfigWorldGen.generationEnabled)
 			GameRegistry.registerWorldGenerator(this.worldGen, 0);
 
 		InitBlocks.init();
@@ -88,8 +88,6 @@ public class Steamcraft
 		NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
 
 		InitPackets.init();
-		// VillagerRegistry.instance().registerVillageCreationHandler(new
-		// VillageCreationHandler());
 	}
 
 	@EventHandler
@@ -100,24 +98,15 @@ public class Steamcraft
 
 		proxy.registerDisplayInformation();
 		proxy.registerRenderers();
-
-		// biomeBrassForest = new
-		// BiomeGenBrassForest(Config.biomeIDBrassForest).setBiomeName("Brass Forest");
 	}
 
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event)
 	{
 		CompatabilityLayer.init();
-		InitEntities.initEntitySpawns();
-		InitItems.postInit();
 		InitRecipes.init();
 		final ModContainer container = FMLCommonHandler.instance().findContainerFor(this);
 		LanguageRegistry.instance().loadLanguagesFor(container, Side.CLIENT);
-
-		// if(ClientHelper.mc().currentScreen instanceof GuiMainMenu)
-		// SplashesHelper.hackSplashes((GuiMainMenu)
-		// ClientHelper.mc().currentScreen);
 	}
 
 	@EventHandler

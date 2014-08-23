@@ -21,9 +21,12 @@ import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.tileentity.TileEntity;
 
+/**
+ * @author warlordjones
+ *
+ */
 public class ModelCharger extends ModelBase
 {
-	// fields
 	ModelRenderer base;
 
 	public ModelCharger()

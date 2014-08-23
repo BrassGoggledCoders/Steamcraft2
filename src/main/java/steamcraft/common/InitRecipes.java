@@ -46,41 +46,22 @@ public class InitRecipes
 		initOtherRecipes();
 		// Blocks
 		/*
-		 * GameRegistry.addRecipe(new ItemStack(ConfigBlocks.blockObsidianTile),
-		 * new Object[] {"XX", "XX", 'X', new ItemStack(Block.obsidian)});
-		 * GameRegistry.addShapedRecipe(new
-		 * ItemStack(ConfigBlocks.castIronLampOff), new Object[] {"ccc", "flf",
-		 * " f ", 'c', new ItemStack(ConfigItems.ingotsMetal, 1, 4), 'f',
-		 * ConfigBlocks.railingCastIron, 'l', ConfigItems.lightBulb}); //Items
-		 * GameRegistry.addShapelessRecipe(new ItemStack(ConfigItems.uraniumOre,
-		 * 9), new Object[]{new ItemStack(ConfigBlocks.blockUranium)});
-		 * GameRegistry.addShapelessRecipe(new ItemStack(ConfigItems.etherium,
-		 * 9), new Object[]{new ItemStack(ConfigBlocks.blockVolucite)});
-		 * GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.lightBulb),
-		 * new Object[] {"ppp", "p p", "pcp", 'p', Block.thinGlass, 'c',
-		 * ConfigItems.copperWire}); //Duplicate Recipes are deliberate, until I
-		 * find a better way to be able to use copper or iron partPiles ;)
-		 * GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.brassWatch),
-		 * new Object[] {"bgb", "gcg", "bgb", 'b', new
-		 * ItemStack(ConfigItems.ingotsMetal, 1, 5), 'g', Block.thinGlass, 'c',
-		 * new ItemStack(ConfigItems.pileParts, 1, 2)});
-		 * GameRegistry.addShapedRecipe(new
-		 * ItemStack(ConfigItems.canisterEmpty), new Object[]{" a ", "a a",
-		 * " a ", 'a', new ItemStack(ConfigItems.ingotsMetal, 1, 0)});
-		 * GameRegistry.addShapedRecipe(new ItemStack(ModTools.drillBase), new
-		 * Object[]{"   ", "ccc", " c ", 'c', new
-		 * ItemStack(ConfigItems.ingotsMetal, 1, 4)});
-		 * GameRegistry.addShapelessRecipe(new ItemStack(ConfigItems.guideBook),
-		 * new Object[] {Item.book, ConfigItems.lightBulb});
-		 * GameRegistry.addRecipe(new ItemStack(ModTools.chisel), new Object[]
-		 * {"   ", " i ", " s ", 'i', new ItemStack(Item.ingotIron), 's', new
-		 * ItemStack(Item.stick)}); GameRegistry.addRecipe(new
-		 * ItemStack(ConfigItems.itemPoppySeed), new Object[] {new
-		 * ItemStack(Blocks.double_plant, 1, 2), new
-		 * ItemStack(Blocks.double_plant, 1, 2)}); GameRegistry.addRecipe(new
-		 * ItemStack(ConfigItems.itemPipe, 1, 1), new Object[] {new
-		 * ItemStack(ConfigItems.itemPipe), new
-		 * ItemStack(ConfigItems.itemPoppySeed)});
+		 * GameRegistry.addRecipe(new ItemStack(ConfigBlocks.blockObsidianTile), new Object[] {"XX", "XX", 'X', new ItemStack(Block.obsidian)});
+		 * GameRegistry.addShapedRecipe(new ItemStack(ConfigBlocks.castIronLampOff), new Object[] {"ccc", "flf", " f ", 'c', new
+		 * ItemStack(ConfigItems.ingotsMetal, 1, 4), 'f', ConfigBlocks.railingCastIron, 'l', ConfigItems.lightBulb}); //Items
+		 * GameRegistry.addShapelessRecipe(new ItemStack(ConfigItems.uraniumOre, 9), new Object[]{new ItemStack(ConfigBlocks.blockUranium)});
+		 * GameRegistry.addShapelessRecipe(new ItemStack(ConfigItems.etherium, 9), new Object[]{new ItemStack(ConfigBlocks.blockVolucite)});
+		 * GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.lightBulb), new Object[] {"ppp", "p p", "pcp", 'p', Block.thinGlass, 'c',
+		 * ConfigItems.copperWire}); //Duplicate Recipes are deliberate, until I find a better way to be able to use copper or iron partPiles ;)
+		 * GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.brassWatch), new Object[] {"bgb", "gcg", "bgb", 'b', new ItemStack(ConfigItems.ingotsMetal, 1,
+		 * 5), 'g', Block.thinGlass, 'c', new ItemStack(ConfigItems.pileParts, 1, 2)}); GameRegistry.addShapedRecipe(new ItemStack(ConfigItems.canisterEmpty),
+		 * new Object[]{" a ", "a a", " a ", 'a', new ItemStack(ConfigItems.ingotsMetal, 1, 0)}); GameRegistry.addShapedRecipe(new
+		 * ItemStack(ModTools.drillBase), new Object[]{"   ", "ccc", " c ", 'c', new ItemStack(ConfigItems.ingotsMetal, 1, 4)});
+		 * GameRegistry.addShapelessRecipe(new ItemStack(ConfigItems.guideBook), new Object[] {Item.book, ConfigItems.lightBulb}); GameRegistry.addRecipe(new
+		 * ItemStack(ModTools.chisel), new Object[] {"   ", " i ", " s ", 'i', new ItemStack(Item.ingotIron), 's', new ItemStack(Item.stick)});
+		 * GameRegistry.addRecipe(new ItemStack(ConfigItems.itemPoppySeed), new Object[] {new ItemStack(Blocks.double_plant, 1, 2), new
+		 * ItemStack(Blocks.double_plant, 1, 2)}); GameRegistry.addRecipe(new ItemStack(ConfigItems.itemPipe, 1, 1), new Object[] {new
+		 * ItemStack(ConfigItems.itemPipe), new ItemStack(ConfigItems.itemPoppySeed)});
 		 */
 	}
 
@@ -102,7 +83,7 @@ public class InitRecipes
 				'G', "paneGlass", 'S', "gemDiamond" }));
 		GameRegistry.addRecipe(new ItemStack(InitItems.itemGunPart, 1, 8), new Object[] { "SSS", "SES", "SSS", 'E',
 				new ItemStack(InitItems.itemResource, 1, 0), 'S', new ItemStack(InitItems.itemResource, 1, 2) });
-		if (!ConfigBalance.cheaperCoreRecipe)
+		if(!ConfigBalance.cheaperCoreRecipe)
 			GameRegistry.addRecipe(new ItemStack(InitItems.itemGunPart, 1, 9), new Object[] { "SPS", "PNP", "SPS", 'S',
 					new ItemStack(InitItems.itemResource, 1, 2), 'P', new ItemStack(InitItems.itemGunPart, 1, 8), 'N', Items.nether_star });
 		else
@@ -154,14 +135,14 @@ public class InitRecipes
 
 	private static void initMetalsRecipes()
 	{
-		for (int meta = 0; meta < 8; meta++)
+		for(int meta = 0; meta < 8; meta++)
 		{
 			RecipeUtils.addMetalRecipes(InitBlocks.blockMetal, InitItems.itemIngot, InitItems.itemNugget, meta);
 
 			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(InitItems.itemSheet, 1, meta), new Object[] { "ingot" + LibInfo.metals[meta],
 					new ItemStack(InitItems.itemHammer, 1, OreDictionary.WILDCARD_VALUE) }));
 		}
-		for (int meta = 0; meta < 4; meta++)
+		for(int meta = 0; meta < 4; meta++)
 			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(InitItems.itemPowder, ConfigBalance.numberOfDustsFromOreHammering, meta),
 					new Object[] { "ore" + LibInfo.metals[meta], new ItemStack(InitItems.itemHammer, 1, OreDictionary.WILDCARD_VALUE) }));
 	}
@@ -179,7 +160,7 @@ public class InitRecipes
 		Item[] drills = new Item[] { InitItems.drillDiamond, InitItems.drillEtherium, InitItems.drillGold, InitItems.drillIron,
 				InitItems.drillObsidian, InitItems.drillSteam, InitItems.drillStone, InitItems.drillWood };
 
-		for (int i = 0; i < drillMaterials.length; i++)
+		for(int i = 0; i < drillMaterials.length; i++)
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(drills[i]), new Object[] { " M ", "MMM", " C ", 'C', InitItems.drillCore, 'M',
 					drillMaterials[i] }));
 
@@ -340,7 +321,7 @@ public class InitRecipes
 	public static void initializeSmeltingRecipes()
 	{
 		// Ores ---> Ingots
-		for (int meta = 0; meta < 5; meta++)
+		for(int meta = 0; meta < 5; meta++)
 		{
 			GameRegistry.addSmelting(new ItemStack(InitBlocks.blockCustomOre, 1, meta), new ItemStack(InitItems.itemIngot, 1, meta), 0.3F);
 			GameRegistry.addSmelting(new ItemStack(InitItems.itemPowder, 1, meta), new ItemStack(InitItems.itemIngot, 1, meta), 0.3F);

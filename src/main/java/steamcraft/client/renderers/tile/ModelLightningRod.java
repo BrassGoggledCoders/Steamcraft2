@@ -15,84 +15,34 @@ package steamcraft.client.renderers.tile;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class ModelLightningRod.
+ * @author Surseance
  * 
- * @author Surseance (Johnny Eatmon) & Falkok15
  */
-@SideOnly(Side.CLIENT)
 public class ModelLightningRod extends ModelBase
 {
-
-	/** The Shape1. */
 	ModelRenderer Shape1;
-
-	/** The Shape2. */
 	ModelRenderer Shape2;
-
-	/** The Shape3. */
 	ModelRenderer Shape3;
-
-	/** The Shape4. */
 	ModelRenderer Shape4;
-
-	/** The Shape5. */
 	ModelRenderer Shape5;
-
-	/** The Shape6. */
 	ModelRenderer Shape6;
-
-	/** The Shape7. */
 	ModelRenderer Shape7;
-
-	/** The Shape8. */
 	ModelRenderer Shape8;
-
-	/** The Shape9. */
 	ModelRenderer Shape9;
-
-	/** The Shape10. */
 	ModelRenderer Shape10;
-
-	/** The Shape11. */
 	ModelRenderer Shape11;
-
-	/** The Shape12. */
 	ModelRenderer Shape12;
-
-	/** The Shape13. */
 	ModelRenderer Shape13;
-
-	/** The Shape14. */
 	ModelRenderer Shape14;
-
-	/** The Shape15. */
 	ModelRenderer Shape15;
-
-	/** The Shape16. */
 	ModelRenderer Shape16;
-
-	/** The Shape17. */
 	ModelRenderer Shape17;
-
-	/** The Shape18. */
 	ModelRenderer Shape18;
-
-	/** The Shape19. */
 	ModelRenderer Shape19;
-
-	/** The Shape20. */
 	ModelRenderer Shape20;
 
-	// ModelRenderer Shape20;
-
-	/**
-	 * Instantiates a new model lightning rod.
-	 */
 	public ModelLightningRod()
 	{
 		this.textureWidth = 64;
@@ -225,13 +175,6 @@ public class ModelLightningRod extends ModelBase
 		this.setRotation(this.Shape20, 0F, 0F, 0.5235988F);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * net.minecraft.client.model.ModelBase#render(net.minecraft.entity.Entity,
-	 * float, float, float, float, float, float)
-	 */
 	@Override
 	public void render(final Entity entity, final float f, final float f1, final float f2, final float f3, final float f4, final float f5)
 	{
@@ -260,19 +203,6 @@ public class ModelLightningRod extends ModelBase
 		this.Shape20.render(f5);
 	}
 
-	// Techne method
-	/**
-	 * Sets the rotation.
-	 * 
-	 * @param model
-	 *            the model
-	 * @param x
-	 *            the x
-	 * @param y
-	 *            the y
-	 * @param z
-	 *            the z
-	 */
 	private void setRotation(final ModelRenderer model, final float x, final float y, final float z)
 	{
 		model.rotateAngleX = x;
@@ -280,12 +210,6 @@ public class ModelLightningRod extends ModelBase
 		model.rotateAngleZ = z;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see net.minecraft.client.model.ModelBase#setRotationAngles(float, float,
-	 * float, float, float, float, net.minecraft.entity.Entity)
-	 */
 	@Override
 	public void setRotationAngles(final float f, final float f1, final float f2, final float f3, final float f4, final float f5, final Entity entity)
 	{

@@ -22,6 +22,10 @@ import net.minecraft.entity.Entity;
 import net.minecraft.tileentity.TileEntity;
 import steamcraft.common.tiles.TileBattery;
 
+/**
+ * @author warlordjones
+ *
+ */
 public class ModelBattery extends ModelBase
 {
 	// fields
@@ -192,16 +196,16 @@ public class ModelBattery extends ModelBase
 		ModelRenderer[] jars = { this.jar, this.jar2, this.jar3, this.jar4, this.jar5, this.jar6 };
 		ModelRenderer[] lids = { this.lid, this.lid2, this.lid3, this.lid4, this.lid5, this.lid6 };
 		ModelRenderer[] wires = { this.wire, this.wire2, this.wire3, this.wire4, this.wire5, this.wire6 };
-		if (tile != null)
-			for (int i = 0; i < jars.length; i++)
+		if(tile != null)
+			for(int i = 0; i < jars.length; i++)
 			{
-				if (te.inventory[i] != null)
+				if(te.inventory[i] != null)
 				{
 					jars[i].render(f5);
 					lids[i].render(f5);
 					wires[i].render(f5);
 				}
-				if (te.inventory == null)
+				if(te.inventory == null)
 				{
 					jars[i].render(f5);
 					lids[i].render(f5);
