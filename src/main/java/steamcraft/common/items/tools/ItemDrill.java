@@ -42,7 +42,6 @@ public class ItemDrill extends ItemModTool
 		super(1.0F, mat, blocksEffectiveAgainst);
 		this.setCreativeTab(Steamcraft.tabSC2);
 		this.toolMaterial = mat;
-		// this.setMaxDamage(this.toolMaterial.getMaxUses());
 	}
 
 	@Override
@@ -56,8 +55,8 @@ public class ItemDrill extends ItemModTool
 	@Override
 	public boolean canHarvestBlock(Block block, ItemStack stack)
 	{
-		for (Block element : ItemDrill.blocksEffectiveAgainst)
-			if (element == block)
+		for(Block element : ItemDrill.blocksEffectiveAgainst)
+			if(element == block)
 				return true;
 
 		return false;

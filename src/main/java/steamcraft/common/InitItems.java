@@ -170,13 +170,13 @@ public class InitItems
 		drillCore = new BaseItem().setUnlocalizedName("itemDrillCore");
 		drillBase = new BaseItem().setUnlocalizedName("itemDrillBase");
 
-		drillWood = new ItemElectricDrill(MaterialHelper.DRILL_WOOD).setUnlocalizedName("itemDrillWood");
-		drillStone = new ItemElectricDrill(MaterialHelper.DRILL_STONE).setUnlocalizedName("itemDrillStone");
-		drillIron = new ItemElectricDrill(MaterialHelper.DRILL_IRON).setUnlocalizedName("itemDrillIron");
-		drillDiamond = new ItemElectricDrill(MaterialHelper.DRILL_EMERALD).setUnlocalizedName("itemDrillDiamond");
-		drillGold = new ItemElectricDrill(MaterialHelper.DRILL_GOLD).setUnlocalizedName("itemDrillGold");
-		drillEtherium = new ItemElectricDrill(MaterialHelper.DRILL_ETHERIUM).setUnlocalizedName("itemDrillEtherium");
-		drillObsidian = new ItemElectricDrill(MaterialHelper.DRILL_OBSIDIAN).setUnlocalizedName("itemDrillObsidian");
+		drillWood = new ItemElectricDrill(MaterialHelper.DRILL_WOOD, 40, 80).setUnlocalizedName("itemDrillWood");
+		drillStone = new ItemElectricDrill(MaterialHelper.DRILL_STONE, 80, 80).setUnlocalizedName("itemDrillStone");
+		drillIron = new ItemElectricDrill(MaterialHelper.DRILL_IRON, 100, 200).setUnlocalizedName("itemDrillIron");
+		drillDiamond = new ItemElectricDrill(MaterialHelper.DRILL_DIAMOND, 200, 300).setUnlocalizedName("itemDrillDiamond");
+		drillGold = new ItemElectricDrill(MaterialHelper.DRILL_GOLD, 100, 300).setUnlocalizedName("itemDrillGold");
+		drillEtherium = new ItemElectricDrill(MaterialHelper.DRILL_ETHERIUM, 400, 1000).setUnlocalizedName("itemDrillEtherium");
+		drillObsidian = new ItemElectricDrill(MaterialHelper.DRILL_OBSIDIAN, 250, 500).setUnlocalizedName("itemDrillObsidian");
 		drillSteam = new ItemSteamDrill(MaterialHelper.DRILL_STEAM).setUnlocalizedName("itemDrillSteam");
 
 		registerItem(drillCore, "ItemDrillCore");

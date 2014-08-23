@@ -31,7 +31,7 @@ public class MaterialHelper
 	public static ToolMaterial DRILL_WOOD;
 	public static ToolMaterial DRILL_STONE;
 	public static ToolMaterial DRILL_IRON;
-	public static ToolMaterial DRILL_EMERALD;
+	public static ToolMaterial DRILL_DIAMOND;
 	public static ToolMaterial DRILL_GOLD;
 	public static ToolMaterial DRILL_STEAM;
 	public static ToolMaterial DRILL_ETHERIUM;
@@ -59,7 +59,7 @@ public class MaterialHelper
 		DRILL_WOOD = EnumHelper.addToolMaterial("DRILL_WOOD", 0, 89, 4.0F, 0.0F, 0);
 		DRILL_STONE = EnumHelper.addToolMaterial("DRILL_STONE", 0, 197, 8.0F, 0.0F, 0);
 		DRILL_IRON = EnumHelper.addToolMaterial("DRILL_IRON", 0, 375, 12.0F, 0.0F, 0);
-		DRILL_EMERALD = EnumHelper.addToolMaterial("DRILL_EMERALD", 0, 2342, 16.0F, 0.0F, 0);
+		DRILL_DIAMOND = EnumHelper.addToolMaterial("DRILL_EMERALD", 0, 2342, 16.0F, 0.0F, 0);
 		DRILL_GOLD = EnumHelper.addToolMaterial("DRILL_GOLD", 0, 48, 16.0F, 0.0F, 0);
 		DRILL_STEAM = EnumHelper.addToolMaterial("DRILL_STEAM", 0, 482, 24.0F, 0.0F, 0);
 		DRILL_ETHERIUM = EnumHelper.addToolMaterial("DRILL_ETHERIUM", 0, 3518, 34.0F, 0.0F, 0);

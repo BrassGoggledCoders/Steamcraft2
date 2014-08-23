@@ -34,15 +34,13 @@ public class ItemElectricDrill extends ItemElectricTool
 	private Random random = new Random();
 	protected int maxEnergy = 80;
 	protected short maxReceive = 80;
-	protected short maxSend = 80;
-	protected int energyPerBlock = 1000;
+	protected int energyPerBlock = 400;
 
-	public ItemElectricDrill(ToolMaterial mat)
+	public ItemElectricDrill(ToolMaterial mat, int maxEnergy, int maxReceive)
 	{
 		super(1, mat, ItemDrill.blocksEffectiveAgainst);
-		this.maxEnergy = this.maxEnergy * 1000;
-		this.maxReceive = this.maxReceive;
-		this.maxSend = this.maxSend;
+		this.maxEnergy = maxEnergy * 1000;
+		this.maxReceive = (short)maxReceive;
 		this.setMaxStackSize(1);
 		this.setMaxDamage(20);
 		this.setHasSubtypes(false);
@@ -130,13 +128,7 @@ public class ItemElectricDrill extends ItemElectricTool
 	@Override
 	public int extractEnergy(ItemStack itemStack, int maxExtract, boolean simulate)
 	{
-		int extracted = Math.min(this.getEnergyStored(itemStack), maxExtract);
-		extracted = Math.min(extracted, this.maxSend);
-
-		if (!simulate)
-			this.setEnergy(itemStack, this.getEnergyStored(itemStack) - extracted);
-
-		return extracted;
+		return 0;
 	}
 
 	@Override
