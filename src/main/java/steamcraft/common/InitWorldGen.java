@@ -59,36 +59,36 @@ public class InitWorldGen implements IWorldGenerator
 	private void generateSurface(World world, Random random, int chunkX, int chunkZ)
 	{
 		if (ConfigWorldGen.aluminumOreGenEnabled)
-			this.generateOre(world, random, chunkX, chunkZ, ConfigWorldGen.aluminumCluster, ConfigWorldGen.aluminumHeightMin,
-					ConfigWorldGen.aluminumHeightMax, 4, InitBlocks.blockCustomOre, 0, Blocks.stone);
+			this.generateOre(world, random, chunkX, chunkZ, ConfigWorldGen.aluminumCluster, 20, 40, 
+					4, InitBlocks.blockCustomOre, 0, Blocks.stone);
 
 		if (ConfigWorldGen.copperOreGenEnabled)
-			this.generateOre(world, random, chunkX, chunkZ, ConfigWorldGen.copperCluster, ConfigWorldGen.copperHeightMin,
-					ConfigWorldGen.copperHeightMax, 7, InitBlocks.blockCustomOre, 1, Blocks.stone);
+			this.generateOre(world, random, chunkX, chunkZ, ConfigWorldGen.copperCluster, 22,
+					45, 7, InitBlocks.blockCustomOre, 1, Blocks.stone);
 
 		if (ConfigWorldGen.tinOreGenEnabled)
-			this.generateOre(world, random, chunkX, chunkZ, ConfigWorldGen.tinCluster, ConfigWorldGen.tinHeightMin, ConfigWorldGen.tinHeightMax, 7,
-					InitBlocks.blockCustomOre, 2, Blocks.stone);
+			this.generateOre(world, random, chunkX, chunkZ, ConfigWorldGen.tinCluster, 22, 45, 
+					7, InitBlocks.blockCustomOre, 2, Blocks.stone);
 
 		if (ConfigWorldGen.zincOreGenEnabled)
-			this.generateOre(world, random, chunkX, chunkZ, ConfigWorldGen.zincCluster, ConfigWorldGen.zincHeightMin, ConfigWorldGen.zincHeightMax,
+			this.generateOre(world, random, chunkX, chunkZ, ConfigWorldGen.zincCluster, 20, 36,
 					5, InitBlocks.blockCustomOre, 3, Blocks.stone);
 
 		if (ConfigWorldGen.uraniumOreGenEnabled)
-			this.generateOre(world, random, chunkX, chunkZ, ConfigWorldGen.uraniumCluster, ConfigWorldGen.uraniumHeightMin,
-					ConfigWorldGen.uraniumHeightMax, 1, InitBlocks.blockCustomOre, 4, Blocks.stone);
+			this.generateOre(world, random, chunkX, chunkZ, ConfigWorldGen.uraniumCluster, 4, 24, 
+					1, InitBlocks.blockCustomOre, 4, Blocks.stone);
 
 		if (ConfigWorldGen.brimstoneOreGenEnabled)
-			this.generateOre(world, random, chunkX, chunkZ, ConfigWorldGen.brimstoneCluster, ConfigWorldGen.brimstoneHeightMin,
-					ConfigWorldGen.brimstoneHeightMax, 3, InitBlocks.blockCustomOre, 5, Blocks.stone);
+			this.generateOre(world, random, chunkX, chunkZ, ConfigWorldGen.brimstoneCluster, 20, 64, 
+					3, InitBlocks.blockCustomOre, 5, Blocks.stone);
 
 		if (ConfigWorldGen.phosphateOreGenEnabled)
-			this.generateOre(world, random, chunkX, chunkZ, ConfigWorldGen.phosphateCluster, ConfigWorldGen.phosphateHeightMin,
-					ConfigWorldGen.phosphateHeightMax, 3, InitBlocks.blockCustomOre, 6, Blocks.stone);
+			this.generateOre(world, random, chunkX, chunkZ, ConfigWorldGen.phosphateCluster, 20, 36,
+					3, InitBlocks.blockCustomOre, 6, Blocks.stone);
 
 		if (ConfigWorldGen.slateGenEnabled)
-			this.generateOre(world, random, chunkX, chunkZ, ConfigWorldGen.slateCluster, ConfigWorldGen.slateHeightMin,
-					ConfigWorldGen.slateHeightMax, 40, InitBlocks.blockSlate, 0, Blocks.stone);
+			this.generateOre(world, random, chunkX, chunkZ, ConfigWorldGen.slateCluster, 40, 70,
+					40, InitBlocks.blockSlate, 0, Blocks.stone);
 
 		if (ConfigWorldGen.brassTreeGenEnabled)
 		{
@@ -122,15 +122,14 @@ public class InitWorldGen implements IWorldGenerator
 	private void generateNether(World world, Random random, int chunkX, int chunkZ)
 	{
 		if (ConfigWorldGen.netherEtheriumCrystalGenEnabled)
-			this.generateOre(world, random, chunkX, chunkZ, ConfigWorldGen.netherEtheriumCrystalCluster,
-					ConfigWorldGen.netherEtheriumCrystalHeightMin, ConfigWorldGen.netherEtheriumCrystalHeightMax, 15, InitBlocks.blockCrystal, 0,
-					Blocks.netherrack);
+			this.generateOre(world, random, chunkX, chunkZ, ConfigWorldGen.netherEtheriumCrystalCluster, 30, 120, 
+					15, InitBlocks.blockCrystal, 0, Blocks.netherrack);
 	}
 
 	private void generateEnd(final World world, final Random random, final int chunkX, final int chunkZ)
 	{
 		if (ConfigWorldGen.endEtheriumCrystalGenEnabled)
-			this.generateOre(world, random, chunkX, chunkZ, ConfigWorldGen.endEtheriumCrystalCluster, ConfigWorldGen.endEtheriumCrystalHeightMin,
-					ConfigWorldGen.endEtheriumCrystalHeightMax, 15, InitBlocks.blockCrystal, 0, Blocks.end_stone);
+			this.generateOre(world, random, chunkX, chunkZ, ConfigWorldGen.endEtheriumCrystalCluster, 20, 100,
+					15, InitBlocks.blockCrystal, 0, Blocks.end_stone);
 	}
 }

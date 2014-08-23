@@ -44,7 +44,7 @@ public class ConfigWorldGen
 	public static boolean brassTreeGenEnabled;
 
 	// Clusters
-	public static int uraniumCluster, brimstoneCluster, borniteCluster, phosphateCluster, aluminumCluster, copperCluster, tinCluster, zincCluster;
+	public static int uraniumCluster, brimstoneCluster, phosphateCluster, aluminumCluster, copperCluster, tinCluster, zincCluster;
 
 	public static int netherEtheriumCrystalCluster;
 	public static int endEtheriumCrystalCluster;
@@ -52,24 +52,6 @@ public class ConfigWorldGen
 	public static int slateCluster;
 
 	public static int brassTreeGenCluster;
-
-	// Heights Max
-	public static int uraniumHeightMax, brimstoneHeightMax, borniteHeightMax, phosphateHeightMax, aluminumHeightMax, copperHeightMax, tinHeightMax,
-			zincHeightMax;
-
-	public static int netherEtheriumCrystalHeightMax;
-	public static int endEtheriumCrystalHeightMax;
-
-	public static int slateHeightMax;
-
-	// Heights Min
-	public static int uraniumHeightMin, brimstoneHeightMin, borniteHeightMin, phosphateHeightMin, aluminumHeightMin, copperHeightMin, tinHeightMin,
-			zincHeightMin;
-
-	public static int netherEtheriumCrystalHeightMin;
-	public static int endEtheriumCrystalHeightMin;
-
-	public static int slateHeightMin;
 
 	public static void initialize(File configFile)
 	{
@@ -103,7 +85,6 @@ public class ConfigWorldGen
 			// Clusters
 			uraniumCluster = config.get(CATEGORY_GEN_CLUSTERS, "Uranium Ore", 1).getInt();
 			brimstoneCluster = config.get(CATEGORY_GEN_CLUSTERS, "Brimstone Ore", 5).getInt();
-			borniteCluster = config.get(CATEGORY_GEN_CLUSTERS, "Bornite Ore", 7).getInt();
 			phosphateCluster = config.get(CATEGORY_GEN_CLUSTERS, "Phosphate Ore", 7).getInt();
 			aluminumCluster = config.get(CATEGORY_GEN_CLUSTERS, "Aluminum Ore", 10).getInt();
 			copperCluster = config.get(CATEGORY_GEN_CLUSTERS, "Copper Ore", 15).getInt();
@@ -113,46 +94,14 @@ public class ConfigWorldGen
 			netherEtheriumCrystalCluster = config.get(CATEGORY_GEN_CLUSTERS, "Etheruim Crystal (Nether)", 5).getInt();
 			endEtheriumCrystalCluster = config.get(CATEGORY_GEN_CLUSTERS, "Etheruim Crystal (End)", 10).getInt();
 			brassTreeGenCluster = config.get(CATEGORY_GEN_CLUSTERS, "Brass Tree (Forest Type Biomes Only)", 1).getInt();
-
-			// Heights
-			uraniumHeightMax = config.get(CATEGORY_GEN_HEIGHT, "Uranium Ore Max", 24).getInt();
-			uraniumHeightMin = config.get(CATEGORY_GEN_HEIGHT, "Uranium Ore Min", 4).getInt();
-
-			brimstoneHeightMax = config.get(CATEGORY_GEN_HEIGHT, "Brimstone Ore Max", 64).getInt();
-			brimstoneHeightMin = config.get(CATEGORY_GEN_HEIGHT, "Brimstone Ore Min", 20).getInt();
-
-			borniteHeightMax = config.get(CATEGORY_GEN_HEIGHT, "Bornite Ore Max", 48).getInt();
-			borniteHeightMin = config.get(CATEGORY_GEN_HEIGHT, "Bornite Ore Min", 26).getInt();
-
-			phosphateHeightMax = config.get(CATEGORY_GEN_HEIGHT, "Phosphate Ore Max", 36).getInt();
-			phosphateHeightMin = config.get(CATEGORY_GEN_HEIGHT, "Phosphate Ore Min", 20).getInt();
-
-			aluminumHeightMax = config.get(CATEGORY_GEN_HEIGHT, "Aluminum Ore Max", 40).getInt();
-			aluminumHeightMin = config.get(CATEGORY_GEN_HEIGHT, "Aluminum Ore Min", 20).getInt();
-
-			copperHeightMax = config.get(CATEGORY_GEN_HEIGHT, "Copper Ore Max", 45).getInt();
-			copperHeightMin = config.get(CATEGORY_GEN_HEIGHT, "Copper Ore Min", 22).getInt();
-
-			tinHeightMax = config.get(CATEGORY_GEN_HEIGHT, "Tin Ore Max", 45).getInt();
-			tinHeightMin = config.get(CATEGORY_GEN_HEIGHT, "Tin Ore Min", 22).getInt();
-
-			zincHeightMax = config.get(CATEGORY_GEN_HEIGHT, "Zinc Ore Max", 36).getInt();
-			zincHeightMin = config.get(CATEGORY_GEN_HEIGHT, "Zinc Ore Min", 20).getInt();
-
-			slateHeightMax = config.get(CATEGORY_GEN_HEIGHT, "Slate Max", 70).getInt();
-			slateHeightMin = config.get(CATEGORY_GEN_HEIGHT, "Slate Min", 40).getInt();
-
-			netherEtheriumCrystalHeightMax = config.get(CATEGORY_GEN_HEIGHT, "Etherium Crystal Max (Nether)", 120).getInt();
-			netherEtheriumCrystalHeightMin = config.get(CATEGORY_GEN_HEIGHT, "Etherium Crystal Min (Nether)", 30).getInt();
-
-			endEtheriumCrystalHeightMax = config.get(CATEGORY_GEN_HEIGHT, "Etherium Crystal Max (End)", 100).getInt();
-			endEtheriumCrystalHeightMin = config.get(CATEGORY_GEN_HEIGHT, "Etherium Crystal Min (End)", 20).getInt();
-		} catch (Exception e)
+		}
+		catch(Exception e)
 		{
 			LoggerSteamcraft.log(Level.SEVERE, "Failed to load configuration file:" + e);
-		} finally
+		}
+		finally
 		{
-			if (config.hasChanged())
+			if(config.hasChanged())
 				config.save();
 		}
 	}

@@ -36,12 +36,14 @@ public class ConfigBalance
 			cheaperCoreRecipe = config.get(CATEGORY_RECIPE_OPTIONS, "Use diamond instead of nether star in Overcharged Core Recipe", false)
 					.getBoolean(false);
 			numberOfDustsFromOreHammering = config.get(CATEGORY_RECIPE_OPTIONS, "Number of dusts produced from hammering an ore block", 2).getInt();
-		} catch (Exception e)
+		}
+		catch(Exception e)
 		{
 			LoggerSteamcraft.log(Level.SEVERE, "Failed to load configuration file:" + e);
-		} finally
+		}
+		finally
 		{
-			if (config.hasChanged())
+			if(config.hasChanged())
 				config.save();
 		}
 	}
