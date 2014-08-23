@@ -27,11 +27,11 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author decebaldecebal
- * 
+ *
  */
 public class TileBattery extends BaseTileWithInventory implements IEnergyHandler
 {
-	private static int initialEnergy = 400000;
+	private static int initialEnergy = 0;
 	private static short initialTransferRate = 80;
 
 	private byte ticksSinceUpdate = 0;
