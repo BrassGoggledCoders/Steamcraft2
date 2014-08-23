@@ -28,7 +28,7 @@ import cofh.api.energy.IEnergyHandler;
 
 /**
  * @author decebaldecebal
- * 
+ *
  */
 public class TileTurbine extends TileEntity implements IFluidHandler, IEnergyHandler
 {
@@ -92,7 +92,7 @@ public class TileTurbine extends TileEntity implements IFluidHandler, IEnergyHan
 	@Override
 	public int fill(ForgeDirection from, FluidStack resource, boolean doFill)
 	{
-		if ((resource.getFluid() == FluidRegistry.getFluid("steam")) && (from != ForgeDirection.UP))
+		if ((resource.getFluid() == FluidRegistry.getFluid("steam")))
 			return this.steamTank.fill(resource, doFill);
 		return 0;
 	}
@@ -112,7 +112,7 @@ public class TileTurbine extends TileEntity implements IFluidHandler, IEnergyHan
 	@Override
 	public boolean canFill(ForgeDirection from, Fluid fluid)
 	{
-		if (fluid == FluidRegistry.getFluid("steam"))
+		if (fluid == FluidRegistry.getFluid("steam") && (from != ForgeDirection.DOWN))
 			return true;
 		return false;
 	}
@@ -132,7 +132,9 @@ public class TileTurbine extends TileEntity implements IFluidHandler, IEnergyHan
 	@Override
 	public boolean canConnectEnergy(ForgeDirection from)
 	{
+		if(from == ForgeDirection.DOWN)
 		return true;
+		else return false;
 	}
 
 	@Override

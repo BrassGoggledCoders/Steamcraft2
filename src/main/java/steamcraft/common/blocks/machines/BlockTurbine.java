@@ -24,12 +24,12 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author decebaldecebal
- * 
+ *
  */
 public class BlockTurbine extends BlockContainerMod
 {
 	@SideOnly(Side.CLIENT)
-	private IIcon iconEnd;
+	private IIcon iconTop;
 
 	public BlockTurbine()
 	{
@@ -48,10 +48,8 @@ public class BlockTurbine extends BlockContainerMod
 	{
 		switch (side)
 		{
-		case 0:
-			return this.iconEnd; // bottom
 		case 1:
-			return this.iconEnd; // top
+			return this.iconTop; // top
 		default:
 			return this.blockIcon; // sides
 		}
@@ -61,8 +59,8 @@ public class BlockTurbine extends BlockContainerMod
 	@Override
 	public void registerBlockIcons(IIconRegister icon)
 	{
-		this.blockIcon = icon.registerIcon(LibInfo.PREFIX + "metal/blockSteel");
-		this.iconEnd = icon.registerIcon(LibInfo.PREFIX + "blockTurbine");
+		this.blockIcon = icon.registerIcon(LibInfo.PREFIX + "blockTurbine");
+		this.iconTop = icon.registerIcon(LibInfo.PREFIX + "blockTurbineTop");
 		// this.iconTop = icon.registerIcon(LibInfo.PREFIX +
 		// "blockSteamBoilerTop");
 	}
