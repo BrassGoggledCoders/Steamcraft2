@@ -75,7 +75,7 @@ public class BlockBattery extends BlockContainerMod
 			if(tile == null || player.isSneaking())
 				return false;
 
-			player.openGui(Steamcraft.instance, GuiIDs.GUI_ID_BATTERY, world, par2, par3, par4);
+			player.openGui(Steamcraft.instance, GuiIDs.BATTERY, world, par2, par3, par4);
 			return true;
 		}
 	}

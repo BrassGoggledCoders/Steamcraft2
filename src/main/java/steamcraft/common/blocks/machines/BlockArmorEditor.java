@@ -56,7 +56,7 @@ public class BlockArmorEditor extends BlockContainerMod
 			if(tile == null || player.isSneaking())
 				return false;
 
-			player.openGui(Steamcraft.instance, GuiIDs.GUI_ID_ARMOREDITOR, world, par2, par3, par4);
+			player.openGui(Steamcraft.instance, GuiIDs.ARMOR_EDITOR, world, par2, par3, par4);
 			return true;
 		}
 	}

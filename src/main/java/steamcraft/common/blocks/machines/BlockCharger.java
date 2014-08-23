@@ -88,7 +88,7 @@ public class BlockCharger extends BlockContainerMod
 			if(tile == null || player.isSneaking())
 				return false;
 
-			player.openGui(Steamcraft.instance, GuiIDs.GUI_ID_CHARGER, world, par2, par3, par4);
+			player.openGui(Steamcraft.instance, GuiIDs.CHARGER, world, par2, par3, par4);
 			return true;
 		}
 	}

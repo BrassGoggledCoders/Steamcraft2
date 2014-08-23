@@ -106,7 +106,7 @@ public class BlockBloomery extends BlockContainerMod
 
 			if(tile == null || player.isSneaking())
 				return false;
-			player.openGui(Steamcraft.instance, GuiIDs.GUI_ID_BLOOMERY, world, par2, par3, par4);
+			player.openGui(Steamcraft.instance, GuiIDs.BLOOMERY, world, par2, par3, par4);
 			return true;
 		}
 	}

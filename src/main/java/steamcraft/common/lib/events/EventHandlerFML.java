@@ -153,7 +153,7 @@ public class EventHandlerFML
 			if(Minecraft.getMinecraft().currentScreen == null)
 			{
 				EntityPlayer p = Minecraft.getMinecraft().thePlayer;
-				p.openGui(Steamcraft.instance, GuiIDs.GUI_ID_VANITY, p.worldObj, (int) p.posX, (int) p.posY, (int) p.posZ);
+				p.openGui(Steamcraft.instance, GuiIDs.VANITY, p.worldObj, (int) p.posX, (int) p.posY, (int) p.posZ);
 			}
 	}
 }
