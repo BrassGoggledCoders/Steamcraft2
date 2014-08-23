@@ -1,5 +1,5 @@
 /**
- * This class was created by BrassGoggledCoders modding team. 
+ * This class was created by BrassGoggledCoders modding team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -8,7 +8,7 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- * 
+ *
  */
 package steamcraft.client.renderers.tile;
 
@@ -25,7 +25,7 @@ import steamcraft.common.lib.LibInfo;
 // TODO: Auto-generated Javadoc
 /**
  * The Class TileCastIronLampRenderer.
- * 
+ *
  * @author Surseance (Johnny Eatmon)
  */
 public class TileCastIronLampRenderer extends TileEntitySpecialRenderer
@@ -48,7 +48,7 @@ public class TileCastIronLampRenderer extends TileEntitySpecialRenderer
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer#
 	 * renderTileEntityAt(net.minecraft.tileentity.TileEntity, double, double,
 	 * double, float)
@@ -60,6 +60,10 @@ public class TileCastIronLampRenderer extends TileEntitySpecialRenderer
 		final int metadata = te.getBlockMetadata();
 		float rot = 0.0F; // f3 - 1.0F;
 
+		/*if (metadata == 0)
+			rot = 180.0F;
+		if (metadata == 1)
+			rot = 180.0F;*/
 		if (metadata == 2)
 			rot = 180.0F;
 		if (metadata == 4)
@@ -68,6 +72,7 @@ public class TileCastIronLampRenderer extends TileEntitySpecialRenderer
 			rot = -90.0F;
 		if (metadata == 6)
 			rot = 180.0F;
+
 
 		GL11.glPushMatrix();
 		final float height = 0.6666667F;
@@ -87,51 +92,5 @@ public class TileCastIronLampRenderer extends TileEntitySpecialRenderer
 		this.lampModelSide.render((Entity) null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
 		GL11.glPopMatrix();
 		GL11.glPopMatrix();
-
-		/*
-		 * GL11.glTranslatef(0.0F, -0.3125F, -0.4375F);
-		 * 
-		 * /* if ((block == Blocks.redstone_torch)) {
-		 * lampModelTop.bracketWide.showModel = false;
-		 * lampModelTop.crossbarLeft.showModel = false;
-		 * lampModelTop.crossbarRight.showModel = false;
-		 * lampModelSide.crossbarLeft.showModel = false;
-		 * lampModelSide.crossbarRight.showModel = false; } else if (block ==
-		 * Blocks.torch) { lampModelTop.bracketWide.showModel = true;
-		 * lampModelTop.crossbarLeft.showModel = true;
-		 * lampModelTop.crossbarRight.showModel = true;
-		 * lampModelSide.crossbarLeft.showModel = true;
-		 * lampModelSide.crossbarRight.showModel = true; }
-		 * 
-		 * // Renders the textures based on torch state ResourceLocation lampOn
-		 * = (new ResourceLocation(LibInfo.PREFIX.replace(":", ""),
-		 * "textures/models/lampon.png")); ResourceLocation lampOff = (new
-		 * ResourceLocation(LibInfo.PREFIX.replace(":", ""),
-		 * "textures/models/lampoff.png"));
-		 * 
-		 * if (block == ConfigBlocks.blockCastIronLampA) {
-		 * Minecraft.getMinecraft().renderEngine.bindTexture(lampOn); } else if
-		 * (block == ConfigBlocks.blockCastIronLampI) {
-		 * Minecraft.getMinecraft().renderEngine.bindTexture(lampOff); }
-		 * 
-		 * GL11.glPushMatrix(); GL11.glScalef(f1, -f1, -f1);
-		 * 
-		 * if (metadata == 5 || metadata == 6) { lampModelTop.renderSign(); }
-		 * else { lampModelSide.renderSign(); }
-		 * 
-		 * GL11.glPopMatrix(); float f4 = 0.01666667F * f1;
-		 * GL11.glTranslatef(0.0F, 0.5F * f1, 0.07F * f1); GL11.glScalef(f4,
-		 * -f4, f4); GL11.glNormal3f(0.0F, 0.0F, -1F * f4);
-		 * GL11.glDepthMask(false); GL11.glDepthMask(true); GL11.glColor4f(1.0F,
-		 * 1.0F, 1.0F, 1.0F); GL11.glPopMatrix();
-		 */
 	}
-
-	/*
-	 * @Override protected void bindTexture(ResourceLocation resource) {
-	 * TextureManager texturemanager = this.tileEntityRenderer.renderEngine;
-	 * 
-	 * if(texturemanager != null) {
-	 * texturemanager.bindTexture(TextureMap.locationBlocksTexture); } }
-	 */
 }
