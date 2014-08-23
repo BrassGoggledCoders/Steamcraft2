@@ -49,9 +49,9 @@ public class TileCopperPipe extends TileEntity
 	@Override
 	public void updateEntity()
 	{
-		if (this.isMaster)
+		if(this.isMaster)
 		{
-			if (this.network.updateNetworkForPipes)
+			if(this.network.updateNetworkForPipes)
 			{
 				this.network.updateNetworkForPipes = false;
 				this.updateConnections();
@@ -69,7 +69,7 @@ public class TileCopperPipe extends TileEntity
 
 		tag.setBoolean("master", this.isMaster);
 
-		if (this.isMaster)
+		if(this.isMaster)
 			this.network.writeToNBT(tag);
 	}
 
@@ -77,30 +77,30 @@ public class TileCopperPipe extends TileEntity
 	{
 		byte index = -1;;
 
-		if (dir != null)
-			switch (dir)
+		if(dir != null)
+			switch(dir)
 			{
-			case DOWN:
-				index = 0;
-				break;
-			case UP:
-				index = 1;
-				break;
-			case NORTH:
-				index = 2;
-				break;
-			case SOUTH:
-				index = 3;
-				break;
-			case WEST:
-				index = 4;
-				break;
-			case EAST:
-				index = 5;
-				break;
-			default:
-				index = -1;
-				break;
+				case DOWN:
+					index = 0;
+					break;
+				case UP:
+					index = 1;
+					break;
+				case NORTH:
+					index = 2;
+					break;
+				case SOUTH:
+					index = 3;
+					break;
+				case WEST:
+					index = 4;
+					break;
+				case EAST:
+					index = 5;
+					break;
+				default:
+					index = -1;
+					break;
 			}
 
 		tag.setByte("dirIndex", index);
@@ -115,7 +115,7 @@ public class TileCopperPipe extends TileEntity
 
 		this.isMaster = tag.getBoolean("master");
 
-		if (this.isMaster)
+		if(this.isMaster)
 			this.network = FluidNetwork.readFromNBT(tag);
 	}
 
@@ -125,7 +125,7 @@ public class TileCopperPipe extends TileEntity
 
 		ForgeDirection dir = ForgeDirection.getOrientation(index);
 
-		if (dir == ForgeDirection.UNKNOWN)
+		if(dir == ForgeDirection.UNKNOWN)
 			dir = null;
 
 		return dir;
@@ -148,7 +148,7 @@ public class TileCopperPipe extends TileEntity
 		this.extract = readDirectionFromNBT(packet.func_148857_g());
 		this.isMaster = packet.func_148857_g().getBoolean("master");
 
-		if (this.isMaster)
+		if(this.isMaster)
 		{
 			this.network = new FluidNetwork(1);
 			this.network.updateNetworkForPipes = true;
@@ -157,21 +157,21 @@ public class TileCopperPipe extends TileEntity
 
 	public void changeExtracting()
 	{
-		if (this.extract != null)
+		if(this.extract != null)
 		{
-			if (!this.worldObj.isRemote)
+			if(!this.worldObj.isRemote)
 				this.network.inputs.remove(new Coords(this.xCoord + this.extract.offsetX, this.yCoord + this.extract.offsetY, this.zCoord
 						+ this.extract.offsetZ, this.extract.getOpposite()));
 
 			this.extract = null;
 		}
 		else
-			for (ForgeDirection dir : this.connections)
-				if (dir != null && this.isFluidHandler(dir))
+			for(ForgeDirection dir : this.connections)
+				if(dir != null && this.isFluidHandler(dir))
 				{
 					this.extract = dir;
 
-					if (!this.worldObj.isRemote)
+					if(!this.worldObj.isRemote)
 					{
 						Coords temp = new Coords(this.xCoord + this.extract.offsetX, this.yCoord + this.extract.offsetY, this.zCoord
 								+ this.extract.offsetZ, this.extract.getOpposite());
@@ -186,7 +186,7 @@ public class TileCopperPipe extends TileEntity
 
 	private void removeConnections(int i)
 	{
-		if (this.connections[i] != null && !this.worldObj.isRemote)
+		if(this.connections[i] != null && !this.worldObj.isRemote)
 		{
 			ForgeDirection dir = this.connections[i];
 
@@ -200,81 +200,81 @@ public class TileCopperPipe extends TileEntity
 
 	public void updateConnections()
 	{
-		if (this.canConnect(ForgeDirection.DOWN))
+		if(this.canConnect(ForgeDirection.DOWN))
 		{
-			if (this.updateNetwork(ForgeDirection.DOWN))
+			if(this.updateNetwork(ForgeDirection.DOWN))
 				this.connections[0] = ForgeDirection.DOWN;
 		}
 		else
 			this.removeConnections(0);
 
-		if (this.canConnect(ForgeDirection.UP))
+		if(this.canConnect(ForgeDirection.UP))
 		{
-			if (this.updateNetwork(ForgeDirection.UP))
+			if(this.updateNetwork(ForgeDirection.UP))
 				this.connections[1] = ForgeDirection.UP;
 		}
 		else
 			this.removeConnections(1);
 
-		if (this.canConnect(ForgeDirection.NORTH))
+		if(this.canConnect(ForgeDirection.NORTH))
 		{
-			if (this.updateNetwork(ForgeDirection.NORTH))
+			if(this.updateNetwork(ForgeDirection.NORTH))
 				this.connections[2] = ForgeDirection.NORTH;
 		}
 		else
 			this.removeConnections(2);
 
-		if (this.canConnect(ForgeDirection.SOUTH))
+		if(this.canConnect(ForgeDirection.SOUTH))
 		{
-			if (this.updateNetwork(ForgeDirection.SOUTH))
+			if(this.updateNetwork(ForgeDirection.SOUTH))
 				this.connections[3] = ForgeDirection.SOUTH;
 		}
 		else
 			this.removeConnections(3);
 
-		if (this.canConnect(ForgeDirection.WEST))
+		if(this.canConnect(ForgeDirection.WEST))
 		{
-			if (this.updateNetwork(ForgeDirection.WEST))
+			if(this.updateNetwork(ForgeDirection.WEST))
 				this.connections[4] = ForgeDirection.WEST;
 		}
 		else
 			this.removeConnections(4);
 
-		if (this.canConnect(ForgeDirection.EAST))
+		if(this.canConnect(ForgeDirection.EAST))
 		{
-			if (this.updateNetwork(ForgeDirection.EAST))
+			if(this.updateNetwork(ForgeDirection.EAST))
 				this.connections[5] = ForgeDirection.EAST;
 		}
 		else
 			this.removeConnections(5);
 
-		if (this.network == null)
+		if(this.network == null)
 		{
 			this.network = new FluidNetwork(1);
 			this.isMaster = true;
 		}
 
-		if (!this.worldObj.isRemote)
+		if(!this.worldObj.isRemote)
 		{
-			if (this.extract != null && !this.isFluidHandler(this.extract))
+			if(this.extract != null && !this.isFluidHandler(this.extract))
 			{
 				this.network.inputs.remove(new Coords(this.xCoord + this.extract.offsetX, this.yCoord + this.extract.offsetY, this.zCoord
 						+ this.extract.offsetZ, this.extract.getOpposite()));
 				this.extract = null;
 			}
 
-			for (ForgeDirection dir : this.connections)
+			for(ForgeDirection dir : this.connections)
 			{
-				if (dir != null && this.isFluidHandler(dir))
+				if(dir != null && this.isFluidHandler(dir))
 				{
 					Coords temp = new Coords(this.xCoord + dir.offsetX, this.yCoord + dir.offsetY, this.zCoord + dir.offsetZ, dir.getOpposite());
 
-					if (this.extract != dir)
+					if(this.extract != dir)
 					{
-						if (!this.network.outputs.contains(temp))
+						if(!this.network.outputs.contains(temp))
 							this.network.outputs.add(temp);
 					}
-					else if (!this.network.inputs.contains(temp))
+					else if(!this.network.inputs.contains(temp))
 						this.network.inputs.add(temp);
 				}
 			}
@@ -287,15 +287,15 @@ public class TileCopperPipe extends TileEntity
 	{
 		TileEntity tile = this.worldObj.getTileEntity(this.xCoord + dir.offsetX, this.yCoord + dir.offsetY, this.zCoord + dir.offsetZ);
 
-		if (tile instanceof TileCopperPipe)
+		if(tile instanceof TileCopperPipe)
 		{
 			TileCopperPipe pipe = (TileCopperPipe) tile;
 
-			if (pipe.network != null)// Should only happen on world load
+			if(pipe.network != null)// Should only happen on world load
 			{
-				if (!pipe.network.equals(this.network))
+				if(!pipe.network.equals(this.network))
 				{
-					if (this.network == null)
+					if(this.network == null)
 					{
 						this.network = pipe.network;
 						this.network.changeSize(1);
@@ -304,7 +304,7 @@ public class TileCopperPipe extends TileEntity
 					}
 					else
 					{
-						if (this.network.tank.getFluid() == null || pipe.network.tank.getFluid() == null)
+						if(this.network.tank.getFluid() == null || pipe.network.tank.getFluid() == null)
 						{
 							FluidNetwork temp = this.network;
 
@@ -312,7 +312,7 @@ public class TileCopperPipe extends TileEntity
 
 							this.network.changeSize(1);
 
-							if (!temp.equals(this.network))
+							if(!temp.equals(this.network))
 							{
 								this.isMaster = false;
 								this.updateConnections();
@@ -323,12 +323,12 @@ public class TileCopperPipe extends TileEntity
 							pipe.updateConnections();
 
 						}
-						else if (this.network.tank.getFluid().getFluid().equals(pipe.network.tank.getFluid().getFluid()))
+						else if(this.network.tank.getFluid().getFluid().equals(pipe.network.tank.getFluid().getFluid()))
 						{
 							FluidStack fluid = new FluidStack(this.network.tank.getFluid(), this.network.tank.getFluidAmount()
 									+ pipe.network.tank.getFluidAmount());
 
-							if (this.network.size > pipe.network.size)
+							if(this.network.size > pipe.network.size)
 							{
 								pipe.isMaster = false;
 								pipe.network = this.network;
@@ -356,7 +356,7 @@ public class TileCopperPipe extends TileEntity
 				else
 					pipe.updateOneConnection(dir.getOpposite()); // happens if you have multiple pipes next to each other
 			}
-			else if (this.network != null)
+			else if(this.network != null)
 			{
 				pipe.isMaster = false;
 				pipe.network = this.network;
@@ -372,7 +372,7 @@ public class TileCopperPipe extends TileEntity
 	{
 		int index = 0;
 
-		switch (dir)
+		switch(dir)
 		{
 			case DOWN:
 				index = 0;
@@ -402,15 +402,15 @@ public class TileCopperPipe extends TileEntity
 
 	public void removeFromNetwork() // only called server side
 	{
-		if (this.network != null)
+		if(this.network != null)
 		{
 			this.network.changeSize(-1);
 
-			if (this.network.size != 0)
+			if(this.network.size != 0)
 			{
-				for (ForgeDirection dir : this.connections)
-					if (dir != null)
-						if (this.isCopperPipe(dir))
+				for(ForgeDirection dir : this.connections)
+					if(dir != null)
+						if(this.isCopperPipe(dir))
 						{
 							TileCopperPipe pipe = (TileCopperPipe) this.worldObj.getTileEntity(this.xCoord + dir.offsetX, this.yCoord + dir.offsetY,
 									this.zCoord + dir.offsetZ);
@@ -419,11 +419,11 @@ public class TileCopperPipe extends TileEntity
 
 							pipe.network = new FluidNetwork(1);
 
-							if (this.network != null)
+							if(this.network != null)
 							{
 								pipe.network.tank = this.network.tank;
 
-								if (this.network.tank.getFluid() != null)
+								if(this.network.tank.getFluid() != null)
 									pipe.network.tank.setFluid(new FluidStack(this.network.tank.getFluid(), this.network.tank.getFluidAmount()
 											- FluidNetwork.capacityPerPipe));
 
@@ -459,19 +459,19 @@ public class TileCopperPipe extends TileEntity
 		ForgeDirection main = null;
 		boolean isOpposite = false;
 
-		for (ForgeDirection dir : this.connections)
+		for(ForgeDirection dir : this.connections)
 		{
-			if (main == null && dir != null)
+			if(main == null && dir != null)
 				main = dir;
 
-			if (dir != null && main != dir)
-				if (!this.areDirectionsOpposite(main, dir) && !this.areDirectionsOpposite(dir, main))
+			if(dir != null && main != dir)
+				if(!this.areDirectionsOpposite(main, dir) && !this.areDirectionsOpposite(dir, main))
 					return null;
 				else
 					isOpposite = true;
 		}
 
-		if (isOpposite)
+		if(isOpposite)
 			return main;
 
 		return null;
@@ -479,11 +479,11 @@ public class TileCopperPipe extends TileEntity
 
 	private boolean areDirectionsOpposite(ForgeDirection dir1, ForgeDirection dir2)
 	{
-		if (dir1 == ForgeDirection.UP && dir2 == ForgeDirection.DOWN)
+		if(dir1 == ForgeDirection.UP && dir2 == ForgeDirection.DOWN)
 			return true;
-		if (dir1 == ForgeDirection.SOUTH && dir2 == ForgeDirection.NORTH)
+		if(dir1 == ForgeDirection.SOUTH && dir2 == ForgeDirection.NORTH)
 			return true;
-		if (dir1 == ForgeDirection.EAST && dir2 == ForgeDirection.WEST)
+		if(dir1 == ForgeDirection.EAST && dir2 == ForgeDirection.WEST)
 			return true;
 
 		return false;
@@ -491,7 +491,7 @@ public class TileCopperPipe extends TileEntity
 
 	private void updateClient()
 	{
-		if (this.network != null && this.worldObj.isRemote)
+		if(this.network != null && this.worldObj.isRemote)
 		{
 			NBTTagCompound tag = new NBTTagCompound();
 			this.network.tank.writeToNBT(tag);
@@ -532,12 +532,12 @@ public class TileCopperPipe extends TileEntity
 		{
 			this.ticksSinceLastUpdate++;
 
-			if (this.ticksSinceLastUpdate == ticksTillUpdate / 2)
+			if(this.ticksSinceLastUpdate == ticksTillUpdate / 2)
 				this.updateClient(pipe);
 
-			if (this.ticksSinceLastUpdate == ticksTillUpdate)
+			if(this.ticksSinceLastUpdate == ticksTillUpdate)
 			{
-				if (this.tank.getFluidAmount() == 0)
+				if(this.tank.getFluidAmount() == 0)
 					this.tank.setFluid(null);
 
 				this.ticksSinceLastUpdate = 0;
@@ -549,14 +549,14 @@ public class TileCopperPipe extends TileEntity
 
 		private void updateClient(TileCopperPipe pipe)
 		{
-			if (!MinecraftServer.getServer().isDedicatedServer())
+			if(!MinecraftServer.getServer().isDedicatedServer())
 			{
-				if (this.tank.getFluid() != null)
+				if(this.tank.getFluid() != null)
 				{
 					this.fluidScaled = this.tank.getFluidAmount() / (float) this.size / FluidNetwork.capacityPerPipe
 							* (2 * TileCopperPipeRenderer.pixel);
 
-					if (this.fluidScaled > 2 * TileCopperPipeRenderer.pixel)
+					if(this.fluidScaled > 2 * TileCopperPipeRenderer.pixel)
 						this.fluidScaled = 2 * TileCopperPipeRenderer.pixel;
 
 					InitPackets.network.sendToAllAround(new FluidNetworkPacket(pipe.worldObj.provider.dimensionId, pipe.xCoord, pipe.yCoord,
@@ -577,25 +577,25 @@ public class TileCopperPipe extends TileEntity
 			int distribute = 0;
 			int tempSize = this.inputs.size();
 
-			for (Coords coords : this.inputs)
+			for(Coords coords : this.inputs)
 			{
-				if (tempSize != 0)
+				if(tempSize != 0)
 					distribute = (this.tank.getCapacity() - this.tank.getFluidAmount()) / tempSize;
 				else
 					break;
 
-				if (coords != null)
+				if(coords != null)
 				{
-					if (this.tank.getFluidAmount() != this.tank.getCapacity())
+					if(this.tank.getFluidAmount() != this.tank.getCapacity())
 					{
-						if (world.getTileEntity(coords.x, coords.y, coords.z) instanceof IFluidHandler)
+						if(world.getTileEntity(coords.x, coords.y, coords.z) instanceof IFluidHandler)
 						{
 							IFluidHandler tile = (IFluidHandler) world.getTileEntity(coords.x, coords.y, coords.z);
-							if (tile != null)
+							if(tile != null)
 							{
-								for (FluidTankInfo info : tile.getTankInfo(coords.dir))
+								for(FluidTankInfo info : tile.getTankInfo(coords.dir))
 								{
-									if (info.fluid != null && tile.canDrain(coords.dir, info.fluid.getFluid()))
+									if(info.fluid != null && tile.canDrain(coords.dir, info.fluid.getFluid()))
 									{
 										int canFill = this.tank.fill(new FluidStack(info.fluid.getFluid(), Math.min(distribute, maxExtractPerTile)),
 												false);
@@ -619,26 +619,26 @@ public class TileCopperPipe extends TileEntity
 			int distribute = 0;
 			int tempSize = this.outputs.size();
 
-			for (Coords coords : this.outputs)
+			for(Coords coords : this.outputs)
 			{
-				if (tempSize != 0)
+				if(tempSize != 0)
 					distribute = this.tank.getFluidAmount() / tempSize;
 				else
 					break;
 
-				if (coords != null)
+				if(coords != null)
 				{
-					if (this.tank.getFluidAmount() > 0)
+					if(this.tank.getFluidAmount() > 0)
 					{
-						if (pipe.worldObj.getTileEntity(coords.x, coords.y, coords.z) instanceof IFluidHandler)
+						if(pipe.worldObj.getTileEntity(coords.x, coords.y, coords.z) instanceof IFluidHandler)
 						{
 							IFluidHandler tile = (IFluidHandler) pipe.worldObj.getTileEntity(coords.x, coords.y, coords.z);
 
-							if (tile != null)
+							if(tile != null)
 							{
 								short transfered = 0;
 
-								if (tile.canFill(coords.dir, this.tank.getFluid().getFluid()))
+								if(tile.canFill(coords.dir, this.tank.getFluid().getFluid()))
 									transfered = (short) tile.fill(coords.dir,
 											new FluidStack(this.tank.getFluid(), Math.min(distribute, maxTransferPerTile)), true);
 
@@ -651,7 +651,7 @@ public class TileCopperPipe extends TileEntity
 					else
 						break;
 
-					if (tempSize == this.outputs.size() / 2)
+					if(tempSize == this.outputs.size() / 2)
 						this.updateClient(pipe);
 				}
 			}
@@ -702,10 +702,10 @@ public class TileCopperPipe extends TileEntity
 		@Override
 		public boolean equals(Object obj)
 		{
-			if (obj instanceof Coords)
+			if(obj instanceof Coords)
 			{
 				Coords coord = (Coords) obj;
-				if (this.x == coord.x && this.y == coord.y && this.z == coord.z && this.dir == coord.dir)
+				if(this.x == coord.x && this.y == coord.y && this.z == coord.z && this.dir == coord.dir)
 					return true;
 			}
 			return false;
