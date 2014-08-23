@@ -23,11 +23,9 @@ import steamcraft.client.lib.RenderIDs;
 import steamcraft.client.renderers.tile.TileHatchRenderer.TileHatch;
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class BlockCrystalRenderer.
- *
- * @author Surseance (Johnny Eatmon)
+ * @author Surseance
+ * 
  */
 public class BlockHatchRenderer implements ISimpleBlockRenderingHandler
 {

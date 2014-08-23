@@ -24,9 +24,8 @@ import steamcraft.common.tiles.TileTeslaCoil;
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 
 /**
- * The Class BlockTeslaCoilRenderer.
- * 
  * @author Surseance (Johnny Eatmon)
+ * 
  */
 public class BlockTeslaCoilRenderer implements ISimpleBlockRenderingHandler
 {

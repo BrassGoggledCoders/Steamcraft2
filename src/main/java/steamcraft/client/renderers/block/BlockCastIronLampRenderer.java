@@ -22,22 +22,21 @@ import steamcraft.client.lib.RenderIDs;
 import steamcraft.client.renderers.tile.TileCastIronLampRenderer.TileCastIronLamp;
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class BlockCastIronLampRenderer.
- *
- * @author Surseance (Johnny Eatmon)
+ * @author Surseance
+ * 
  */
 public class BlockCastIronLampRenderer implements ISimpleBlockRenderingHandler
 {
+	@SuppressWarnings("unused")
 	@Override
 	public void renderInventoryBlock(final Block block, final int metadata, final int modelID, final RenderBlocks renderer)
 	{
 		GL11.glRotatef(90.0F, 0.0F, 1.0F, 0.0F);
 		GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
 		final TileCastIronLamp te = new TileCastIronLamp();
-		//TODO
-		//TileEntityRendererDispatcher.instance.renderTileEntityAt(te, te.xCoord, te.yCoord, te.zCoord, 0.0F);
+		// TODO
+		// TileEntityRendererDispatcher.instance.renderTileEntityAt(te, te.xCoord, te.yCoord, te.zCoord, 0.0F);
 		GL11.glEnable(32826);
 	}
 

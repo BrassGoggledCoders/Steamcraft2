@@ -23,11 +23,9 @@ import steamcraft.client.lib.RenderIDs;
 import steamcraft.common.tiles.TileCharger;
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class BlockCrystalRenderer.
+ * @author warlordjones
  * 
- * @author Surseance (Johnny Eatmon)
  */
 public class BlockChargerRenderer implements ISimpleBlockRenderingHandler
 {
