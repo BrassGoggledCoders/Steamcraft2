@@ -26,9 +26,8 @@ import steamcraft.common.container.InventoryVanity;
  * @author warlordjones
  * 
  */
-public class EntityPlayerExtended implements IExtendedEntityProperties // TODO:
-// Add
-// packets
+// TODO: Add packets
+public class EntityPlayerExtended implements IExtendedEntityProperties
 {
 	public final static String EXT_PROP_NAME = "EntityPlayerExtended";
 
@@ -71,6 +70,7 @@ public class EntityPlayerExtended implements IExtendedEntityProperties // TODO:
 	{
 	}
 
+	@SuppressWarnings("all")
 	public final void sync()
 	{
 		final ByteArrayOutputStream baOutputStream = new ByteArrayOutputStream(8);
@@ -78,7 +78,8 @@ public class EntityPlayerExtended implements IExtendedEntityProperties // TODO:
 		try
 		{
 			// dOutputStream.writeInt(PacketHandler.PACKET_EXTENDED_PROPERTIES);
-		} catch (final Exception ex)
+		}
+		catch(final Exception ex)
 		{
 			ex.printStackTrace();
 		}
@@ -88,7 +89,7 @@ public class EntityPlayerExtended implements IExtendedEntityProperties // TODO:
 		// baOutputStream.toByteArray());
 
 		// We only want to send from the server to the client
-		if (!this.player.worldObj.isRemote)
+		if(!this.player.worldObj.isRemote)
 		{
 		}
 	}

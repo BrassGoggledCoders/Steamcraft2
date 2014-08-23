@@ -35,24 +35,21 @@ public class ContainerVanity extends Container
 		// Custom Slots
 		// TODO: Import classes
 		/*
-		 * addSlotToContainer(new SlotHead(inventoryCustom, 0, 25, 8));
-		 * addSlotToContainer(new SlotTunic(inventoryCustom, 1, 25, 26));
-		 * addSlotToContainer(new SlotLeggings(inventoryCustom, 2, 25, 44));
-		 * addSlotToContainer(new SlotBoots(inventoryCustom, 3, 25, 62));
-		 * addSlotToContainer(new SlotHat(inventoryCustom, 5, 45, 8));
-		 * addSlotToContainer(new SlotCape(inventoryCustom, 4, 45, 26));
+		 * addSlotToContainer(new SlotHead(inventoryCustom, 0, 25, 8)); addSlotToContainer(new SlotTunic(inventoryCustom, 1, 25, 26)); addSlotToContainer(new
+		 * SlotLeggings(inventoryCustom, 2, 25, 44)); addSlotToContainer(new SlotBoots(inventoryCustom, 3, 25, 62)); addSlotToContainer(new
+		 * SlotHat(inventoryCustom, 5, 45, 8)); addSlotToContainer(new SlotCape(inventoryCustom, 4, 45, 26));
 		 */
 
 		// Inventory
 		int i;
 
-		for (i = 0; i < 3; ++i)
-			for (int j = 0; j < 9; ++j)
-				this.addSlotToContainer(new Slot(inventoryPlayer, j + (i * 9) + 9, 8 + (j * 18), 84 + (i * 18)));
+		for(i = 0; i < 3; ++i)
+			for(int j = 0; j < 9; ++j)
+				this.addSlotToContainer(new Slot(inventoryPlayer, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
 
 		// Hotbar
-		for (i = 0; i < 9; ++i)
-			this.addSlotToContainer(new Slot(inventoryPlayer, i, 8 + (i * 18), 142));
+		for(i = 0; i < 9; ++i)
+			this.addSlotToContainer(new Slot(inventoryPlayer, i, 8 + i * 18, 142));
 	}
 
 	@Override
@@ -67,49 +64,46 @@ public class ContainerVanity extends Container
 		ItemStack isCopy = null;
 		final Slot slot = (Slot) this.inventorySlots.get(slots);
 
-		if ((slot != null) && slot.getHasStack())
+		if(slot != null && slot.getHasStack())
 		{
 			final ItemStack is = slot.getStack();
 			isCopy = is.copy();
 
 			// Either armor slot or custom item slot was clicked
-			if (slots < INV_START)
+			if(slots < INV_START)
 			{
 				// try to place in player inventory / action bar
-				if (!this.mergeItemStack(is, INV_START, HOTBAR_END + 1, true))
+				if(!this.mergeItemStack(is, INV_START, HOTBAR_END + 1, true))
 					return null;
 
 				slot.onSlotChange(is, isCopy);
 			}
-			else if (is.getItem() instanceof ItemBucket) // if item is our
-															// custom
-			// item
+			else if(is.getItem() instanceof ItemBucket) // if item is our custom item
 			{
-				if (!this.mergeItemStack(is, 0, InventoryVanity.INV_SIZE, false))
+				if(!this.mergeItemStack(is, 0, InventoryVanity.INV_SIZE, false))
 					return null;
 			}
-			else if (is.getItem() instanceof ItemArmor) // if item is
-														// armor
+			else if(is.getItem() instanceof ItemArmor) // if item is armor
 			{
 				final int type = ((ItemArmor) is.getItem()).armorType;
-				if (!this.mergeItemStack(is, ARMOR_START + type, ARMOR_START + type + 1, false))
+				if(!this.mergeItemStack(is, ARMOR_START + type, ARMOR_START + type + 1, false))
 					return null;
 			}
-			else if ((slots >= INV_START) && (slots < HOTBAR_START))
+			else if(slots >= INV_START && slots < HOTBAR_START)
 			{
-				if (!this.mergeItemStack(is, HOTBAR_START, HOTBAR_START + 1, false))
+				if(!this.mergeItemStack(is, HOTBAR_START, HOTBAR_START + 1, false))
 					return null;
 			}
-			else if ((slots >= HOTBAR_START) && (slots < (HOTBAR_END + 1)))
-				if (!this.mergeItemStack(is, INV_START, INV_END + 1, false))
+			else if(slots >= HOTBAR_START && slots < HOTBAR_END + 1)
+				if(!this.mergeItemStack(is, INV_START, INV_END + 1, false))
 					return null;
 
-			if (is.stackSize == 0)
+			if(is.stackSize == 0)
 				slot.putStack((ItemStack) null);
 			else
 				slot.onSlotChanged();
 
-			if (is.stackSize == isCopy.stackSize)
+			if(is.stackSize == isCopy.stackSize)
 				return null;
 
 			slot.onPickupFromSlot(player, is);
