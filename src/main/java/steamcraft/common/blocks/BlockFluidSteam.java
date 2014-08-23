@@ -44,7 +44,7 @@ public class BlockFluidSteam extends BlockFluidClassic
 	@Override
 	public IIcon getIcon(int side, int meta)
 	{
-		return (side != 0) && (side != 1) ? iconFlowing : this.blockIcon;
+		return side != 0 && side != 1 ? iconFlowing : this.blockIcon;
 	}
 
 	@Override
@@ -58,7 +58,7 @@ public class BlockFluidSteam extends BlockFluidClassic
 	@Override
 	public boolean canDisplace(IBlockAccess world, int x, int y, int z)
 	{
-		if (ItemStackUtils.getBlockMaterial(world, x, y, z).isLiquid())
+		if(ItemStackUtils.getBlockMaterial(world, x, y, z).isLiquid())
 			return false;
 		return super.canDisplace(world, x, y, z);
 	}
@@ -66,7 +66,7 @@ public class BlockFluidSteam extends BlockFluidClassic
 	@Override
 	public boolean displaceIfPossible(World world, int x, int y, int z)
 	{
-		if (ItemStackUtils.getBlockMaterial(world, x, y, z).isLiquid())
+		if(ItemStackUtils.getBlockMaterial(world, x, y, z).isLiquid())
 			return false;
 		return super.displaceIfPossible(world, x, y, z);
 	}

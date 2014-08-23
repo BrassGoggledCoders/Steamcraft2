@@ -31,20 +31,20 @@ public class ConfigWorldGen
 	public static boolean overworldGenerationEnabled;
 	public static boolean netherGenerationEnabled;
 	public static boolean endGenerationEnabled;
-	
+
 	public static boolean brassTreeGenEnabled;
 
-	public static boolean aluminumOreGenEnabled, copperOreGenEnabled, tinOreGenEnabled, zincOreGenEnabled, 
-	uraniumOreGenEnabled, brimstoneOreGenEnabled, phosphateOreGenEnabled;
+	public static boolean aluminumOreGenEnabled, copperOreGenEnabled, tinOreGenEnabled, zincOreGenEnabled,
+			uraniumOreGenEnabled, brimstoneOreGenEnabled, phosphateOreGenEnabled;
 
 	public static boolean netherEtheriumCrystalGenEnabled;
 	public static boolean endEtheriumCrystalGenEnabled;
 
 	public static boolean slateGenEnabled;
-	
+
 	// Cluster size
 	public static int brassTreeGenCluster;
-	
+
 	public static int aluminumCluster, copperCluster, tinCluster, zincCluster, uraniumCluster, brimstoneCluster, phosphateCluster;
 
 	public static int netherEtheriumCrystalCluster;
@@ -66,7 +66,7 @@ public class ConfigWorldGen
 			overworldGenerationEnabled = config.get(CATEGORY_GEN_OPTIONS, "All Overworld Generation", true).getBoolean(true);
 			netherGenerationEnabled = config.get(CATEGORY_GEN_OPTIONS, "All Nether Generation", true).getBoolean(true);
 			endGenerationEnabled = config.get(CATEGORY_GEN_OPTIONS, "All End Generation", true).getBoolean(true);
-			
+
 			brassTreeGenEnabled = config.get(CATEGORY_GEN_OPTIONS, "Brass Tree Gen", true).getBoolean(true);
 
 			aluminumOreGenEnabled = config.get(CATEGORY_GEN_OPTIONS, "Aluminum Ore", true).getBoolean(true);
@@ -77,13 +77,13 @@ public class ConfigWorldGen
 			brimstoneOreGenEnabled = config.get(CATEGORY_GEN_OPTIONS, "Brimstone Ore", true).getBoolean(true);
 			phosphateOreGenEnabled = config.get(CATEGORY_GEN_OPTIONS, "Phosphate Ore", true).getBoolean(true);
 			slateGenEnabled = config.get(CATEGORY_GEN_OPTIONS, "Slate", true).getBoolean(true);
-			
+
 			netherEtheriumCrystalGenEnabled = config.get(CATEGORY_GEN_OPTIONS, "Etherium Crystal (Nether)", true).getBoolean(true);
 			endEtheriumCrystalGenEnabled = config.get(CATEGORY_GEN_OPTIONS, "Etherium Crystal (End)", true).getBoolean(true);
 
 			// Cluster size
 			brassTreeGenCluster = config.get(CATEGORY_GEN_CLUSTERS, "Brass Tree (Forest Type Biomes Only)", 1).getInt();
-			
+
 			aluminumCluster = config.get(CATEGORY_GEN_CLUSTERS, "Aluminum Ore", 4).getInt();
 			copperCluster = config.get(CATEGORY_GEN_CLUSTERS, "Copper Ore", 7).getInt();
 			tinCluster = config.get(CATEGORY_GEN_CLUSTERS, "Tin Ore", 7).getInt();
@@ -92,7 +92,7 @@ public class ConfigWorldGen
 			brimstoneCluster = config.get(CATEGORY_GEN_CLUSTERS, "Brimstone Ore", 3).getInt();
 			phosphateCluster = config.get(CATEGORY_GEN_CLUSTERS, "Phosphate Ore", 3).getInt();
 			slateCluster = config.get(CATEGORY_GEN_CLUSTERS, "Slate", 30).getInt();
-			
+
 			netherEtheriumCrystalCluster = config.get(CATEGORY_GEN_CLUSTERS, "Etheruim Crystal (Nether)", 5).getInt();
 			endEtheriumCrystalCluster = config.get(CATEGORY_GEN_CLUSTERS, "Etheruim Crystal (End)", 10).getInt();
 		}

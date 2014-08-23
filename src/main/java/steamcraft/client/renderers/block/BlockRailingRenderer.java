@@ -64,7 +64,7 @@ public class BlockRailingRenderer implements ISimpleBlockRenderingHandler
 		}
 
 		tessellator.setColorOpaque_F(f, f1, f2);
-		IIcon iicon = railing.blockIcon;
+		IIcon iicon = railing.getIcon(0, 0);
 		IIcon iicon1 = railing.icon;
 
 		double d21 = iicon.getMinU();

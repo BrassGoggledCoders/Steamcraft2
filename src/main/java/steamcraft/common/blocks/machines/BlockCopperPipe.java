@@ -25,7 +25,7 @@ import steamcraft.common.tiles.TileCopperPipe;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class BlockCopperPipe extends BlockContainerMod
 {
@@ -35,7 +35,7 @@ public class BlockCopperPipe extends BlockContainerMod
 	{
 		super(mat);
 
-		this.setBlockBounds(6 * pixel, 4 * pixel, 6 * pixel, 1 - (6 * pixel), 1 - (4 * pixel), 1 - (6 * pixel));
+		this.setBlockBounds(6 * pixel, 4 * pixel, 6 * pixel, 1 - 6 * pixel, 1 - 4 * pixel, 1 - 6 * pixel);
 		this.useNeighborBrightness = true;
 	}
 
@@ -70,7 +70,7 @@ public class BlockCopperPipe extends BlockContainerMod
 
 		TileCopperPipe tile = (TileCopperPipe) world.getTileEntity(x, y, z);
 
-		if (tile != null)
+		if(tile != null)
 		{
 			tile.network = null;
 			tile.updateConnections();
@@ -80,7 +80,7 @@ public class BlockCopperPipe extends BlockContainerMod
 	@Override
 	public void onNeighborChange(IBlockAccess world, int x, int y, int z, int tileX, int tileY, int tileZ)
 	{
-		if (world.getBlock(tileX, tileY, tileZ) != InitBlocks.blockCopperPipe)
+		if(world.getBlock(tileX, tileY, tileZ) != InitBlocks.blockCopperPipe)
 		{
 			TileCopperPipe tile = (TileCopperPipe) world.getTileEntity(x, y, z);
 			tile.updateConnections();
@@ -92,7 +92,7 @@ public class BlockCopperPipe extends BlockContainerMod
 	{
 		TileCopperPipe tile = (TileCopperPipe) world.getTileEntity(x, y, z);
 
-		if (tile != null)
+		if(tile != null)
 			tile.removeFromNetwork();
 
 		super.breakBlock(world, x, y, z, block, metadata);
@@ -114,16 +114,16 @@ public class BlockCopperPipe extends BlockContainerMod
 	{
 		TileCopperPipe pipe = (TileCopperPipe) world.getTileEntity(x, y, z);
 
-		if (pipe != null)
+		if(pipe != null)
 		{
-			float minX = (5 * pixel) - (pipe.connections[4] != null ? 5 * pixel : 0);
-			float maxX = (1 - (5 * pixel)) + (pipe.connections[5] != null ? 5 * pixel : 0);
+			float minX = 5 * pixel - (pipe.connections[4] != null ? 5 * pixel : 0);
+			float maxX = 1 - 5 * pixel + (pipe.connections[5] != null ? 5 * pixel : 0);
 
-			float minY = (5 * pixel) - (pipe.connections[0] != null ? 5 * pixel : 0);
-			float maxY = (1 - (5 * pixel)) + (pipe.connections[1] != null ? 5 * pixel : 0);
+			float minY = 5 * pixel - (pipe.connections[0] != null ? 5 * pixel : 0);
+			float maxY = 1 - 5 * pixel + (pipe.connections[1] != null ? 5 * pixel : 0);
 
-			float minZ = (5 * pixel) - (pipe.connections[2] != null ? 5 * pixel : 0);
-			float maxZ = (1 - (5 * pixel)) + (pipe.connections[3] != null ? 5 * pixel : 0);
+			float minZ = 5 * pixel - (pipe.connections[2] != null ? 5 * pixel : 0);
+			float maxZ = 1 - 5 * pixel + (pipe.connections[3] != null ? 5 * pixel : 0);
 
 			this.setBlockBounds(minX, minY, minZ, maxX, maxY, maxZ);
 		}

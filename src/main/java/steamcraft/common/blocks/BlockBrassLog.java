@@ -34,7 +34,6 @@ public class BlockBrassLog extends BlockLog
 	{
 		super();
 		this.setCreativeTab(Steamcraft.tabSC2);
-		this.setBlockName("blockBrassLog");
 	}
 
 	@Override

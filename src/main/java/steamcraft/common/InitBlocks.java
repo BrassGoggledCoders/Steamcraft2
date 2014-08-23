@@ -19,7 +19,6 @@ import net.minecraftforge.fluids.FluidRegistry;
 import steamcraft.client.renderers.tile.TileCrystalRenderer.TileCrystal;
 import steamcraft.client.renderers.tile.TileHatchRenderer.TileHatch;
 import steamcraft.common.blocks.BaseBlock;
-import steamcraft.common.blocks.BlockBrassLeaves;
 import steamcraft.common.blocks.BlockBrassLog;
 import steamcraft.common.blocks.BlockCastIronFence;
 import steamcraft.common.blocks.BlockCastIronGate;
@@ -165,8 +164,8 @@ public class InitBlocks
 
 		GameRegistry.registerBlock(blockCastIronLamp, "BlockCastIronLamp");
 
-		blockCastIronFence = new BlockCastIronFence();
-		blockCastIronGate = new BlockCastIronGate();
+		blockCastIronFence = new BlockCastIronFence().setBlockName("blockCastIronFence");
+		blockCastIronGate = new BlockCastIronGate().setBlockName("blockCastIronGate");;
 		blockCastIronRailing = new BlockCastIronRailing(Material.anvil).setBlockName("blockCastIronRailing");
 
 		GameRegistry.registerBlock(blockCastIronFence, "BlockCastIronFence");
@@ -241,13 +240,13 @@ public class InitBlocks
 
 	private static void initializeOthers()
 	{
-		blockCrystal = new BlockCrystal();
+		blockCrystal = new BlockCrystal().setBlockName("blockCrystal");;
 
 		RegistryHelper.registerContainerBlock(blockCrystal, TileCrystal.class, "BlockCrystal");
 
 		// Wood
-		blockBrassLog = new BlockBrassLog(Material.wood);
-		blockBrassLeaves = new BlockBrassLeaves(Material.iron);
+		blockBrassLog = new BlockBrassLog(Material.wood).setBlockName("blockBrassLog");
+		blockBrassLeaves = new BaseBlock(Material.iron).setBlockName("blockBrassLeaves");
 
 		GameRegistry.registerBlock(blockBrassLog, "BlockBrassLog");
 		GameRegistry.registerBlock(blockBrassLeaves, "BlockBrassLeaves");

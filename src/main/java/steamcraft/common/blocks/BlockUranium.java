@@ -25,13 +25,16 @@ import boilerplate.steamapi.IChiselable;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+/**
+ * @author warlordjones
+ *
+ */
 public class BlockUranium extends BaseBlock implements IChiselable
 {
 	public BlockUranium(Material p_i45394_1_)
 	{
 		super(p_i45394_1_);
 		this.setBlockName("blockUranium");
-
 	}
 
 	@Override

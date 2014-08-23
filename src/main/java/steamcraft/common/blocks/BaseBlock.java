@@ -26,9 +26,9 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 public class BaseBlock extends Block
 {
-	public BaseBlock(Material p_i45394_1_)
+	public BaseBlock(Material mat)
 	{
-		super(p_i45394_1_);
+		super(mat);
 		this.setCreativeTab(Steamcraft.tabSC2);
 	}
 

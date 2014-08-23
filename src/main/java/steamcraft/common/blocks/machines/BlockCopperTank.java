@@ -40,21 +40,18 @@ public class BlockCopperTank extends BlockContainerMod
 		return new TileCopperTank();
 	}
 
-	/**
-	 * Called upon block activation (right click on the block.)
-	 */
 	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int sideIThink, float posXClickedIThink,
 			float p_149727_8_, float posZClickedIThink)
 	{
 		TileCopperTank tank = (TileCopperTank) world.getTileEntity(x, y, z);
 		FluidTankInfo[] info = tank.getTankInfo(ForgeDirection.getOrientation(sideIThink));
-		if (player.getHeldItem().getItem() instanceof ItemFluidContainer)
+		if(player.getHeldItem().getItem() instanceof ItemFluidContainer)
 		{
 			ItemFluidContainer container = (ItemFluidContainer) player.getHeldItem().getItem();
-			if ((player.getHeldItem().getItem() instanceof ItemFluidContainer) && (info[0].fluid != null))
+			if(player.getHeldItem().getItem() instanceof ItemFluidContainer && info[0].fluid != null)
 				return true;
-			else if ((container.getFluid(new ItemStack(container)) != null) && (info[0].capacity != TileCopperTank.capacity))
+			else if(container.getFluid(new ItemStack(container)) != null && info[0].capacity != TileCopperTank.capacity)
 			{
 				container.drain(new ItemStack(container), 1000, true);
 				tank.fill(ForgeDirection.getOrientation(sideIThink), new FluidStack(container.getFluid(new ItemStack(container)), 1000), true);

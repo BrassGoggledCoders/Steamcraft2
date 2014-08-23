@@ -16,7 +16,6 @@ import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
-import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.particle.EffectRenderer;
 import net.minecraft.entity.EnumCreatureType;
@@ -35,16 +34,11 @@ import cpw.mods.fml.relauncher.SideOnly;
  * @author Surseance
  * 
  */
-public class BlockCrystal extends BlockContainer implements ITileEntityProvider
+public class BlockCrystal extends BlockContainer
 {
-
-	/**
-	 * Instantiates a new block crystal.
-	 */
 	public BlockCrystal()
 	{
 		super(Material.glass);
-		this.setBlockName("blockCrystal");
 		this.setHardness(8.5F);
 		this.setResistance(-1);
 		this.setStepSound(Block.soundTypeGlass);

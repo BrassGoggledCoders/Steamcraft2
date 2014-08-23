@@ -28,28 +28,30 @@ import boilerplate.steamapi.IChiselable;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class BlockMetal.
- * 
  * @author warlordjones
+ * 
  */
 public class BlockMetal extends Block implements IChiselable
 {
-
-	/** The icon. */
 	private final IIcon[] icon = new IIcon[8];
 
-	/** The powered. */
 	private boolean powered;
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * net.minecraft.block.Block#registerBlockIcons(net.minecraft.client.renderer
-	 * .texture.IIconRegister)
-	 */
+	public BlockMetal()
+	{
+		super(Material.iron);
+		this.setBlockName("blockMetal");
+		this.setHardness(3.0F);
+		this.setResistance(10.0F);
+		this.setStepSound(Block.soundTypeMetal);
+		this.setTickRandomly(true);
+		this.setCreativeTab(Steamcraft.tabSC2);
+
+		if (this.powered)
+			this.setLightLevel(0.98F);
+	}
+	
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(final IIconRegister ir)
@@ -64,33 +66,11 @@ public class BlockMetal extends Block implements IChiselable
 		this.icon[7] = ir.registerIcon(LibInfo.PREFIX + "metal/" + "blockCastIron");
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see net.minecraft.block.Block#getIcon(int, int)
-	 */
 	@Override
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(final int side, final int metadata)
 	{
 		return this.icon[metadata];
-	}
-
-	/**
-	 * Instantiates a new block metal.
-	 */
-	public BlockMetal()
-	{
-		super(Material.iron);
-		this.setBlockName("blockMetal");
-		this.setHardness(3.0F);
-		this.setResistance(10.0F);
-		this.setStepSound(Block.soundTypeMetal);
-		this.setTickRandomly(true);
-		this.setCreativeTab(Steamcraft.tabSC2);
-
-		if (this.powered)
-			this.setLightLevel(0.98F);
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })

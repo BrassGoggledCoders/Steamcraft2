@@ -48,13 +48,13 @@ public class BlockArmorEditor extends BlockContainerMod
 	@Override
 	public boolean onBlockActivated(World world, int par2, int par3, int par4, EntityPlayer player, int par6, float par7, float par8, float par9)
 	{
-		if (world.isRemote)
+		if(world.isRemote)
 			return true;
 		else
 		{
 			TileArmorEditor tile = (TileArmorEditor) world.getTileEntity(par2, par3, par4);
 
-			if ((tile == null) || player.isSneaking())
+			if(tile == null || player.isSneaking())
 				return false;
 
 			player.openGui(Steamcraft.instance, GuiIDs.GUI_ID_ARMOREDITOR, world, par2, par3, par4);
@@ -69,14 +69,14 @@ public class BlockArmorEditor extends BlockContainerMod
 
 		keepInventory = true;
 
-		if (par0)
+		if(par0)
 			par1World.setBlockMetadataWithNotify(par2, par3, par4, var5 + 7, 2);
 		else
 			par1World.setBlockMetadataWithNotify(par2, par3, par4, var5 - 7, 2);
 
 		keepInventory = false;
 
-		if (tileentity != null)
+		if(tileentity != null)
 		{
 			tileentity.validate();
 			par1World.setTileEntity(par2, par3, par4, tileentity);
@@ -86,38 +86,38 @@ public class BlockArmorEditor extends BlockContainerMod
 	@Override
 	public void breakBlock(World par1World, int par2, int par3, int par4, Block block, int par6)
 	{
-		if (!keepInventory)
+		if(!keepInventory)
 		{
 			TileSteamBoiler var7 = (TileSteamBoiler) par1World.getTileEntity(par2, par3, par4);
 
-			if (var7 != null)
-				for (int var8 = 0; var8 < var7.getSizeInventory(); ++var8)
+			if(var7 != null)
+				for(int var8 = 0; var8 < var7.getSizeInventory(); ++var8)
 				{
 					ItemStack var9 = var7.getStackInSlot(var8);
 
-					if (var9 != null)
+					if(var9 != null)
 					{
-						float var10 = (this.random.nextFloat() * 0.8F) + 0.1F;
-						float var11 = (this.random.nextFloat() * 0.8F) + 0.1F;
-						float var12 = (this.random.nextFloat() * 0.8F) + 0.1F;
+						float var10 = this.random.nextFloat() * 0.8F + 0.1F;
+						float var11 = this.random.nextFloat() * 0.8F + 0.1F;
+						float var12 = this.random.nextFloat() * 0.8F + 0.1F;
 
-						while (var9.stackSize > 0)
+						while(var9.stackSize > 0)
 						{
 							int var13 = this.random.nextInt(21) + 10;
 
-							if (var13 > var9.stackSize)
+							if(var13 > var9.stackSize)
 								var13 = var9.stackSize;
 
 							var9.stackSize -= var13;
 							EntityItem var14 = new EntityItem(par1World, par2 + var10, par3 + var11, par4 + var12, new ItemStack(var9.getItem(),
 									var13, var9.getItemDamage()));
 
-							if (var9.hasTagCompound())
+							if(var9.hasTagCompound())
 								var14.getEntityItem().setTagCompound((NBTTagCompound) var9.getTagCompound().copy());
 
 							float var15 = 0.05F;
 							var14.motionX = (float) this.random.nextGaussian() * var15;
-							var14.motionY = ((float) this.random.nextGaussian() * var15) + 0.2F;
+							var14.motionY = (float) this.random.nextGaussian() * var15 + 0.2F;
 							var14.motionZ = (float) this.random.nextGaussian() * var15;
 							par1World.spawnEntityInWorld(var14);
 						}

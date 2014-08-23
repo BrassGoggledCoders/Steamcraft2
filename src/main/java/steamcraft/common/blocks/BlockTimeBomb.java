@@ -26,6 +26,10 @@ import steamcraft.common.tiles.TileTimeBomb;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+/**
+ * @author warlordjones
+ *
+ */
 public class BlockTimeBomb extends BlockContainerMod
 {
 	@SideOnly(Side.CLIENT)
@@ -45,13 +49,13 @@ public class BlockTimeBomb extends BlockContainerMod
 	@Override
 	public boolean onBlockActivated(World world, int par2, int par3, int par4, EntityPlayer player, int par6, float par7, float par8, float par9)
 	{
-		if (world.isRemote)
+		if(world.isRemote)
 			return true;
 		else
 		{
 			TileTimeBomb tile = (TileTimeBomb) world.getTileEntity(par2, par3, par4);
 
-			if ((tile == null) || player.isSneaking())
+			if(tile == null || player.isSneaking())
 				return false;
 
 			player.openGui(Steamcraft.instance, GuiIDs.GUI_ID_TIMEBOMB, world, par2, par3, par4);
@@ -63,12 +67,12 @@ public class BlockTimeBomb extends BlockContainerMod
 	@Override
 	public IIcon getIcon(int side, int meta)
 	{
-		switch (side)
+		switch(side)
 		{
-		case 1:
-			return this.iconEnd; // top
-		default:
-			return this.blockIcon; // sides
+			case 1:
+				return this.iconEnd; // top
+			default:
+				return this.blockIcon; // sides
 		}
 	}
 
@@ -78,8 +82,6 @@ public class BlockTimeBomb extends BlockContainerMod
 	{
 		this.blockIcon = icon.registerIcon(LibInfo.PREFIX + "blockTimebomb");
 		this.iconEnd = icon.registerIcon(LibInfo.PREFIX + "blockTimebombTop");
-		// this.iconTop = icon.registerIcon(LibInfo.PREFIX +
-		// "blockSteamBoilerTop");
 	}
 
 }

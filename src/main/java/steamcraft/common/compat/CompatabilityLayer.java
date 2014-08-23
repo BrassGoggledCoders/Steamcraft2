@@ -22,7 +22,7 @@ import cpw.mods.fml.common.event.FMLInterModComms;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class CompatabilityLayer
 {

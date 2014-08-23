@@ -37,7 +37,7 @@ public class BlockCopperWire extends BlockContainerMod
 	{
 		super(p_i45394_1_);
 
-		this.setBlockBounds(6 * pixel, 4 * pixel, 6 * pixel, 1 - (6 * pixel), 1 - (4 * pixel), 1 - (6 * pixel));
+		this.setBlockBounds(6 * pixel, 4 * pixel, 6 * pixel, 1 - 6 * pixel, 1 - 4 * pixel, 1 - 6 * pixel);
 		this.useNeighborBrightness = true;
 	}
 
@@ -72,7 +72,7 @@ public class BlockCopperWire extends BlockContainerMod
 
 		TileCopperWire tile = (TileCopperWire) world.getTileEntity(x, y, z);
 
-		if (tile != null)
+		if(tile != null)
 		{
 			tile.network = null;
 			tile.updateConnections();
@@ -82,7 +82,7 @@ public class BlockCopperWire extends BlockContainerMod
 	@Override
 	public void onNeighborChange(IBlockAccess world, int x, int y, int z, int tileX, int tileY, int tileZ)
 	{
-		if (world.getBlock(tileX, tileY, tileZ) != InitBlocks.blockCopperWire)
+		if(world.getBlock(tileX, tileY, tileZ) != InitBlocks.blockCopperWire)
 		{
 			TileCopperWire tile = (TileCopperWire) world.getTileEntity(x, y, z);
 			tile.updateConnections();
@@ -94,7 +94,7 @@ public class BlockCopperWire extends BlockContainerMod
 	{
 		TileCopperWire tile = (TileCopperWire) world.getTileEntity(x, y, z);
 
-		if (tile != null)
+		if(tile != null)
 			tile.removeFromNetwork();
 
 		super.breakBlock(world, x, y, z, block, metadata);
@@ -116,16 +116,16 @@ public class BlockCopperWire extends BlockContainerMod
 	{
 		TileCopperWire wire = (TileCopperWire) world.getTileEntity(x, y, z);
 
-		if (wire != null)
+		if(wire != null)
 		{
-			float minX = (6 * pixel) - (wire.connections[4] != null ? 6 * pixel : 0);
-			float maxX = (1 - (6 * pixel)) + (wire.connections[5] != null ? 6 * pixel : 0);
+			float minX = 6 * pixel - (wire.connections[4] != null ? 6 * pixel : 0);
+			float maxX = 1 - 6 * pixel + (wire.connections[5] != null ? 6 * pixel : 0);
 
-			float minY = (6 * pixel) - (wire.connections[0] != null ? 6 * pixel : 0);
-			float maxY = (1 - (6 * pixel)) + (wire.connections[1] != null ? 6 * pixel : 0);
+			float minY = 6 * pixel - (wire.connections[0] != null ? 6 * pixel : 0);
+			float maxY = 1 - 6 * pixel + (wire.connections[1] != null ? 6 * pixel : 0);
 
-			float minZ = (6 * pixel) - (wire.connections[2] != null ? 6 * pixel : 0);
-			float maxZ = (1 - (6 * pixel)) + (wire.connections[3] != null ? 6 * pixel : 0);
+			float minZ = 6 * pixel - (wire.connections[2] != null ? 6 * pixel : 0);
+			float maxZ = 1 - 6 * pixel + (wire.connections[3] != null ? 6 * pixel : 0);
 
 			this.setBlockBounds(minX, minY, minZ, maxX, maxY, maxZ);
 		}

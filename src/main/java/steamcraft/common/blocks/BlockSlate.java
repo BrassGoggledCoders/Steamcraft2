@@ -28,21 +28,14 @@ import steamcraft.common.lib.LibInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class BlockSlate.
- * 
  * @author warlordjones
+ * 
  */
 public class BlockSlate extends BaseBlock
 {
-
-	/** The icon. */
 	private final IIcon[] icon = new IIcon[9];
 
-	/**
-	 * Instantiates a new block slate.
-	 */
 	public BlockSlate()
 	{
 		super(Material.rock);
@@ -52,11 +45,6 @@ public class BlockSlate extends BaseBlock
 		this.setBlockName("blockSlate");
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see net.minecraft.block.Block#getIcon(int, int)
-	 */
 	@Override
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(final int side, final int metadata)
@@ -64,13 +52,6 @@ public class BlockSlate extends BaseBlock
 		return this.icon[metadata];
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * net.minecraft.block.Block#registerBlockIcons(net.minecraft.client.renderer
-	 * .texture.IIconRegister)
-	 */
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(final IIconRegister ir)
@@ -90,18 +71,12 @@ public class BlockSlate extends BaseBlock
 		// Polished
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see net.minecraft.item.Item#getSubItems(net.minecraft.item.Item,
-	 * net.minecraft.creativetab.CreativeTabs, java.util.List)
-	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(final Item item, final CreativeTabs tab, final List l)
 	{
-		for (int var4 = 0; var4 < this.icon.length; ++var4)
+		for(int var4 = 0; var4 < this.icon.length; ++var4)
 			l.add(new ItemStack(InitBlocks.blockSlate, 1, var4));
 	}
 
@@ -110,20 +85,20 @@ public class BlockSlate extends BaseBlock
 	{
 		ArrayList<ItemStack> drop = new ArrayList<ItemStack>();
 
-		switch (metadata)
+		switch(metadata)
 		{
-		case 0:
-			drop.add(new ItemStack(InitBlocks.blockSlate, 1, 3));
-			break;
-		case 1:
-			drop.add(new ItemStack(InitBlocks.blockSlate, 1, 4));
-			break;
-		case 2:
-			drop.add(new ItemStack(InitBlocks.blockSlate, 1, 5));
-			break;
-		default:
-			drop.add(0, new ItemStack(InitBlocks.blockSlate, 1, metadata));
-			break;
+			case 0:
+				drop.add(new ItemStack(InitBlocks.blockSlate, 1, 3));
+				break;
+			case 1:
+				drop.add(new ItemStack(InitBlocks.blockSlate, 1, 4));
+				break;
+			case 2:
+				drop.add(new ItemStack(InitBlocks.blockSlate, 1, 5));
+				break;
+			default:
+				drop.add(0, new ItemStack(InitBlocks.blockSlate, 1, metadata));
+				break;
 		}
 
 		return drop;

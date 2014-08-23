@@ -30,23 +30,23 @@ import boilerplate.steamapi.machines.IHammerable;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class BlockCustomOre.
+ * @author Surseance
  * 
- * @author Surseance (Johnny Eatmon)
  */
 public class BlockCustomOre extends BaseBlock implements IHammerable
 {
-
-	/** The icon. */
 	private IIcon[] icon = new IIcon[7];
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see net.minecraft.block.Block#getIcon(int, int)
-	 */
+	public BlockCustomOre()
+	{
+		super(Material.rock);
+		this.setHardness(3.0F);
+		this.setResistance(6.0F);
+		this.setStepSound(Block.soundTypeStone);
+		this.setTickRandomly(true);
+	}
+	
 	@Override
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(int side, int metadata)
@@ -54,13 +54,6 @@ public class BlockCustomOre extends BaseBlock implements IHammerable
 		return this.icon[metadata];
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * net.minecraft.block.Block#registerBlockIcons(net.minecraft.client.renderer
-	 * .texture.IIconRegister)
-	 */
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister ir)
@@ -74,31 +67,20 @@ public class BlockCustomOre extends BaseBlock implements IHammerable
 		this.icon[6] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "orePhosphate");
 	}
 
-	/**
-	 * Instantiates a new block custom ore.
-	 */
-	public BlockCustomOre()
-	{
-		super(Material.rock);
-		this.setHardness(3.0F);
-		this.setResistance(6.0F);
-		this.setStepSound(Block.soundTypeStone);
-		this.setTickRandomly(true);
-	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(Item item, CreativeTabs tab, List l)
 	{
-		for (int var4 = 0; var4 < 7; ++var4)
+		for(int var4 = 0; var4 < 7; ++var4)
 			l.add(new ItemStack(InitBlocks.blockCustomOre, 1, var4));
 	}
 
 	@Override
 	public ItemStack getOutput(int meta)
 	{
-		if (meta < 4)
+		if(meta < 4)
 			return new ItemStack(InitItems.itemPowder);
 		else
 			return null;
@@ -109,20 +91,20 @@ public class BlockCustomOre extends BaseBlock implements IHammerable
 	{
 		ArrayList<ItemStack> drop = new ArrayList<ItemStack>();
 
-		switch (metadata)
+		switch(metadata)
 		{
-		case 4:
-			drop.add(new ItemStack(InitItems.itemResource, 1, 4));
-			break;
-		case 5:
-			drop.add(new ItemStack(InitItems.itemResource, 1, 1));
-			break;
-		case 6:
-			drop.add(new ItemStack(InitItems.itemResource, 1, 3));
-			break;
-		default:
-			drop.add(0, new ItemStack(InitBlocks.blockCustomOre, 1, metadata));
-			break;
+			case 4:
+				drop.add(new ItemStack(InitItems.itemResource, 1, 4));
+				break;
+			case 5:
+				drop.add(new ItemStack(InitItems.itemResource, 1, 1));
+				break;
+			case 6:
+				drop.add(new ItemStack(InitItems.itemResource, 1, 3));
+				break;
+			default:
+				drop.add(0, new ItemStack(InitBlocks.blockCustomOre, 1, metadata));
+				break;
 		}
 
 		return drop;

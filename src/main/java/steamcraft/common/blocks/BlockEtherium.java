@@ -17,12 +17,15 @@ import net.minecraft.block.material.Material;
 import steamcraft.common.InitBlocks;
 import boilerplate.steamapi.IChiselable;
 
+/**
+ * @author Surseance
+ *
+ */
 public class BlockEtherium extends BaseBlock implements IChiselable
 {
-
-	public BlockEtherium(Material p_i45394_1_)
+	public BlockEtherium(Material mat)
 	{
-		super(p_i45394_1_);
+		super(mat);
 		this.setBlockName("blockEtherium");
 	}
 
@@ -37,5 +40,4 @@ public class BlockEtherium extends BaseBlock implements IChiselable
 	{
 		return 9;
 	}
-
 }

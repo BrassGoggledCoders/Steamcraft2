@@ -18,6 +18,10 @@ import net.minecraft.world.World;
 import steamcraft.client.lib.RenderIDs;
 import steamcraft.common.tiles.TileTeslaCoil;
 
+/**
+ * @author warlordjones
+ * 
+ */
 public class BlockTeslaCoil extends BlockContainerMod
 {
 	public BlockTeslaCoil(Material mat)

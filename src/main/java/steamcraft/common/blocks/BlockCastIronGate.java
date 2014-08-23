@@ -28,7 +28,7 @@ public class BlockCastIronGate extends BlockFenceGate
 {
 	public BlockCastIronGate()
 	{
-		this.setBlockName("blockCastIronGate");
+		super();
 		this.setHardness(7.0F);
 		this.setResistance(20.0F);
 		this.setStepSound(Block.soundTypeMetal);

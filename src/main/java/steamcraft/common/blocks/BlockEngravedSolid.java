@@ -13,40 +13,39 @@
 package steamcraft.common.blocks;
 
 import java.util.List;
-import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
-import net.minecraft.world.World;
 import steamcraft.common.InitBlocks;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.LibInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class BlockEngravedSolid.
+ * @author Surseance
  * 
- * @author Surseance (Johnny Eatmon)
  */
 public class BlockEngravedSolid extends Block
 {
-
-	/** The icon. */
 	private IIcon[] icon = new IIcon[10];
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see net.minecraft.block.Block#getIcon(int, int)
-	 */
+	public BlockEngravedSolid()
+	{
+		super(Material.rock);
+		this.setBlockName("blockEngravedSolid");
+		this.setHardness(3.0F);
+		this.setResistance(15.0F);
+		this.setStepSound(Block.soundTypeMetal);
+		this.setTickRandomly(true);
+		this.setCreativeTab(Steamcraft.tabSC2);
+	}
+	
 	@Override
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(int side, int metadata)
@@ -54,13 +53,6 @@ public class BlockEngravedSolid extends Block
 		return this.icon[metadata];
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * net.minecraft.block.Block#registerBlockIcons(net.minecraft.client.renderer
-	 * .texture.IIconRegister)
-	 */
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister ir)
@@ -77,71 +69,13 @@ public class BlockEngravedSolid extends Block
 		this.icon[9] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedEtherium");
 	}
 
-	/**
-	 * Instantiates a new block engraved solid.
-	 * 
-	 * @param rock
-	 */
-	public BlockEngravedSolid()
-	{
-		super(Material.rock);
-		this.setBlockName("blockEngravedSolid");
-		this.setHardness(3.0F);
-		this.setResistance(15.0F);
-		this.setStepSound(Block.soundTypeMetal);
-		this.setTickRandomly(true);
-		this.setCreativeTab(Steamcraft.tabSC2);
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see net.minecraft.block.Block#damageDropped(int)
-	 */
 	@Override
 	public int damageDropped(int meta)
 	{
 		return meta;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * net.minecraft.block.Block#onEntityCollidedWithBlock(net.minecraft.world
-	 * .World, int, int, int, net.minecraft.entity.Entity)
-	 */
-	@Override
-	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)
-	{
-		// if ((world.getBlock(x, y, z) == this) && (world.getBlockMetadata(x,
-		// y, z) == 7))
-		// entity.attackEntityFrom(DamageSource.magic, 1);
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * net.minecraft.block.Block#randomDisplayTick(net.minecraft.world.World,
-	 * int, int, int, java.util.Random)
-	 */
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void randomDisplayTick(World world, int x, int y, int z, Random random)
-	{
-		// if ((world.getBlock(x, y, z) == this) && (world.getBlockMetadata(x,
-		// y, z) == 7))
-		// EffectUtils.sparkle(world, x, y, z, "reddust");
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see net.minecraft.item.Item#getSubItems(net.minecraft.item.Item,
-	 * net.minecraft.creativetab.CreativeTabs, java.util.List)
-	 */
-	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@SuppressWarnings("all")
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(Item item, CreativeTabs tab, List l)

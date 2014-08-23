@@ -24,7 +24,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author decebaldecebal
- *
+ * 
  */
 public class BlockTurbine extends BlockContainerMod
 {
@@ -46,12 +46,12 @@ public class BlockTurbine extends BlockContainerMod
 	@Override
 	public IIcon getIcon(int side, int meta)
 	{
-		switch (side)
+		switch(side)
 		{
-		case 1:
-			return this.iconTop; // top
-		default:
-			return this.blockIcon; // sides
+			case 1:
+				return this.iconTop; // top
+			default:
+				return this.blockIcon; // sides
 		}
 	}
 

@@ -59,7 +59,7 @@ public abstract class BlockContainerMod extends BlockContainer
 	{
 		super.onBlockPlacedBy(world, x, y, z, entityLiving, is);
 
-		if (entityLiving instanceof EntityPlayer)
+		if(entityLiving instanceof EntityPlayer)
 			owner = owner + ((EntityPlayer) entityLiving).getCommandSenderName();
 	}
 
@@ -68,7 +68,7 @@ public abstract class BlockContainerMod extends BlockContainer
 	{
 		TileEntity te = world.getTileEntity(x, y, z);
 
-		if ((te instanceof IMachine) && ((IMachine) te).isActive())
+		if(te instanceof IMachine && ((IMachine) te).isActive())
 			return super.getLightValue(world, x, y, z) + 8;
 
 		return super.getLightValue(world, x, y, z);

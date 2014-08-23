@@ -28,7 +28,8 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 /**
- * @author Surseance (Johnny Eatmon)
+ * @author Surseance
+ * 
  */
 public class BlockTeaPlant extends BlockCrops implements IPlantable
 {
@@ -38,7 +39,7 @@ public class BlockTeaPlant extends BlockCrops implements IPlantable
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(int side, int meta)
 	{
-		if ((meta < 0) || (meta > 1))
+		if(meta < 0 || meta > 1)
 			meta = 1;
 		return this.iconArray[meta];
 	}
@@ -67,15 +68,15 @@ public class BlockTeaPlant extends BlockCrops implements IPlantable
 	{
 		super.updateTick(world, x, y, z, random);
 
-		if (world.getBlockLightValue(x, y + 1, z) >= 9)
+		if(world.getBlockLightValue(x, y + 1, z) >= 9)
 		{
 			int metadata = world.getBlockMetadata(x, y, z);
 
-			if (metadata < 1)
+			if(metadata < 1)
 			{
 				float growthRate = this.getGrowthRate(world, x, y, z);
 
-				if (random.nextInt((int) (15.0F / growthRate) + 1) == 0)
+				if(random.nextInt((int) (15.0F / growthRate) + 1) == 0)
 				{
 					++metadata;
 					world.setBlockMetadataWithNotify(x, y, z, metadata, 1);
@@ -93,20 +94,20 @@ public class BlockTeaPlant extends BlockCrops implements IPlantable
 	{
 		float f = 1.0F;
 
-		for (int l1 = x - 1; l1 <= (x + 1); ++l1)
-			for (int i3 = z - 1; i3 <= (z + 1); ++i3)
+		for(int l1 = x - 1; l1 <= x + 1; ++l1)
+			for(int i3 = z - 1; i3 <= z + 1; ++i3)
 			{
 				Block block = world.getBlock(l1, y - 1, i3);
 				float growthRate = 0.0F;
 
-				if (block.canSustainPlant(world, l1, y - 1, i3, ForgeDirection.UP, this))
+				if(block.canSustainPlant(world, l1, y - 1, i3, ForgeDirection.UP, this))
 				{
 					growthRate = 1.0F;
 
-					if (block.isFertile(world, l1, y - 1, i3))
+					if(block.isFertile(world, l1, y - 1, i3))
 						growthRate = 3.0F;
 				}
-				if ((l1 != x) || (i3 != z))
+				if(l1 != x || i3 != z)
 					growthRate /= 4.0F;
 
 				f += growthRate;
