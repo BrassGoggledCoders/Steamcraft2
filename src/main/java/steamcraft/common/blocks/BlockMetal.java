@@ -41,7 +41,6 @@ public class BlockMetal extends Block implements IChiselable
 	public BlockMetal()
 	{
 		super(Material.iron);
-		this.setBlockName("blockMetal");
 		this.setHardness(3.0F);
 		this.setResistance(10.0F);
 		this.setStepSound(Block.soundTypeMetal);

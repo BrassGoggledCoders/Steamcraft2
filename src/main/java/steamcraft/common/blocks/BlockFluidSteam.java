@@ -37,7 +37,6 @@ public class BlockFluidSteam extends BlockFluidClassic
 	public BlockFluidSteam(Fluid fluid, Material material)
 	{
 		super(fluid, material);
-		this.setBlockName("steamFluidBlock");
 		this.setCreativeTab(Steamcraft.tabSC2);
 	}
 

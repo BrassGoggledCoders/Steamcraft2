@@ -36,7 +36,6 @@ public class BlockArmorEditor extends BlockContainerMod
 	public BlockArmorEditor(Material mat)
 	{
 		super(mat);
-		this.setBlockName("blockArmorEditor");
 	}
 
 	@Override

@@ -38,7 +38,6 @@ public class BlockEngravedSolid extends Block
 	public BlockEngravedSolid()
 	{
 		super(Material.rock);
-		this.setBlockName("blockEngravedSolid");
 		this.setHardness(3.0F);
 		this.setResistance(15.0F);
 		this.setStepSound(Block.soundTypeMetal);

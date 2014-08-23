@@ -141,9 +141,9 @@ public class InitBlocks
 		GameRegistry.registerBlock(blockSlate, BaseItemBlockWithMetadata.class, "BlockSlate");
 
 		// Metals
-		blockMetal = new BlockMetal();
-		blockUranium = new BlockUranium(Material.iron);
-		blockEtherium = new BlockEtherium(Material.iron).setBlockName("blockEtherium").setResistance(-1);
+		blockMetal = new BlockMetal().setBlockName("blockMetal");;
+		blockUranium = new BlockUranium(Material.iron).setBlockName("blockUranium");
+		blockEtherium = new BlockEtherium(Material.iron).setBlockName("blockEtherium");
 
 		GameRegistry.registerBlock(blockMetal, BaseItemBlockWithMetadata.class, "BlockMetal");
 		GameRegistry.registerBlock(blockUranium, "BlockUranium");
@@ -153,8 +153,8 @@ public class InitBlocks
 	private static void initializeDecorative()
 	{
 		// Engraved Blocks
-		blockEngraved = new BlockEngravedSolid();
-		blockEngravedVanilla = new BlockEngravedVanilla();
+		blockEngraved = new BlockEngravedSolid().setBlockName("blockEngravedSolid");;
+		blockEngravedVanilla = new BlockEngravedVanilla().setBlockName("blockEngravedVanilla");;
 
 		GameRegistry.registerBlock(blockEngraved, BaseItemBlockWithMetadata.class, "BlockEngravedSolid");
 		GameRegistry.registerBlock(blockEngravedVanilla, BaseItemBlockWithMetadata.class, "BlockEngravedVanilla");
@@ -172,7 +172,7 @@ public class InitBlocks
 		GameRegistry.registerBlock(blockCastIronGate, "BlockCastIronGate");
 		GameRegistry.registerBlock(blockCastIronRailing, "BlockCastIronRailing");
 
-		blockLamp = new BlockLamp();
+		blockLamp = new BlockLamp().setBlockName("blockLamp");;
 
 		GameRegistry.registerBlock(blockLamp, "BlockLamp");
 	}
@@ -205,7 +205,7 @@ public class InitBlocks
 		RegistryHelper.registerContainerBlockWithDesc(blockBloomery, TileBloomery.class, "BlockBloomery");
 
 		// Armor Editor
-		blockArmorEditor = new BlockArmorEditor(Material.iron);
+		blockArmorEditor = new BlockArmorEditor(Material.iron).setBlockName("blockArmorEditor");;
 
 		RegistryHelper.registerContainerBlock(blockArmorEditor, TileArmorEditor.class, "BlockArmorEditor");
 
@@ -228,12 +228,12 @@ public class InitBlocks
 	private static void initializeFluids()
 	{
 		// Steam
-		steamFluid = new FluidSteam("steam");
+		steamFluid = new FluidSteam("steam").setUnlocalizedName("steamFluid");;
 
 		if (!FluidRegistry.registerFluid(steamFluid) && !FluidRegistry.isFluidRegistered("steam"))
 			steamFluid = FluidRegistry.getFluid("steam");
 
-		blockSteam = new BlockFluidSteam(steamFluid, Material.lava);
+		blockSteam = new BlockFluidSteam(steamFluid, Material.lava).setBlockName("steamFluidBlock");;
 
 		GameRegistry.registerBlock(blockSteam, "blockSteam");
 	}

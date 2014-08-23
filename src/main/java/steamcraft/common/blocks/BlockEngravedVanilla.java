@@ -35,7 +35,6 @@ public class BlockEngravedVanilla extends BlockEngravedSolid
 	public BlockEngravedVanilla()
 	{
 		super();
-		this.setBlockName("blockEngravedVanilla");
 	}
 	
 	@Override

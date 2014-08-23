@@ -28,7 +28,6 @@ public class FluidSteam extends Fluid
 		this.setDensity(-100);
 		this.setViscosity(500);
 		this.setLuminosity(1);
-		this.setUnlocalizedName("steamFluid");
 		this.setIcons(this.stillIcon, this.flowingIcon);
 	}
 

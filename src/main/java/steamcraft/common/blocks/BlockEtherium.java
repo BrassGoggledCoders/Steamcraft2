@@ -26,7 +26,7 @@ public class BlockEtherium extends BaseBlock implements IChiselable
 	public BlockEtherium(Material mat)
 	{
 		super(mat);
-		this.setBlockName("blockEtherium");
+		this.setResistance(-1);
 	}
 
 	@Override

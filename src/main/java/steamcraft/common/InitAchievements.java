@@ -19,7 +19,7 @@ import steamcraft.common.lib.LibInfo;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class InitAchievements
 {
