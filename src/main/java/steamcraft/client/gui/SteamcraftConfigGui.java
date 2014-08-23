@@ -19,6 +19,7 @@ import cpw.mods.fml.client.config.GuiConfig;
 
 public class SteamcraftConfigGui extends GuiConfig
 {
+	@SuppressWarnings("all")
 	public SteamcraftConfigGui(GuiScreen parent)
 	{
 		super(parent, new ConfigElement(ConfigGeneral.config.getCategory(ConfigGeneral.CATEGORY_GENERAL)).getChildElements(), "Steamcraft 2", false,

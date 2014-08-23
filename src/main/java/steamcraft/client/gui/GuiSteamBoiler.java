@@ -32,7 +32,7 @@ import steamcraft.common.tiles.container.ContainerSteamBoiler;
 import boilerplate.client.utils.GuiColors;
 
 /**
- * @author Decebaldecebal
+ * @author decebaldecebal
  * 
  */
 public class GuiSteamBoiler extends GuiContainer
@@ -56,10 +56,10 @@ public class GuiSteamBoiler extends GuiContainer
 		this.mc.renderEngine.bindTexture(guitexture);
 		this.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize);
 
-		if (this.tile.isBurning())
+		if(this.tile.isBurning())
 		{
 			int burnTime = this.tile.getBurnTimeRemainingScaled(12);
-			this.drawTexturedModalRect(this.guiLeft + 43, (this.guiTop + 48) - burnTime, 176, 12 - burnTime, 14, burnTime + 2);
+			this.drawTexturedModalRect(this.guiLeft + 43, this.guiTop + 48 - burnTime, 176, 12 - burnTime, 14, burnTime + 2);
 		}
 
 		this.drawFluid(new FluidStack(FluidRegistry.getFluid("water"), 0), this.tile.getScaledWaterLevel(60), this.guiLeft + 8, this.guiTop + 18, 20,
@@ -75,10 +75,10 @@ public class GuiSteamBoiler extends GuiContainer
 	@Override
 	protected void drawGuiContainerForegroundLayer(int x, int y)
 	{
-		if (((y - this.guiTop) >= 18) && ((y - this.guiTop) <= 78))
-			if (((x - this.guiLeft) >= 8) && ((x - this.guiLeft) <= 28))
+		if(y - this.guiTop >= 18 && y - this.guiTop <= 78)
+			if(x - this.guiLeft >= 8 && x - this.guiLeft <= 28)
 				this.drawFluidInfo(this.tile.waterTank, x, y);
-			else if (((x - this.guiLeft) >= 74) && ((x - this.guiLeft) <= 106))
+			else if(x - this.guiLeft >= 74 && x - this.guiLeft <= 106)
 				this.drawFluidInfo(this.tile.steamTank, x, y);
 	}
 
@@ -86,7 +86,7 @@ public class GuiSteamBoiler extends GuiContainer
 	{
 		ArrayList<String> lines = new ArrayList<String>();
 
-		if (tank.getFluid().getFluid() == FluidRegistry.WATER)
+		if(tank.getFluid().getFluid() == FluidRegistry.WATER)
 			lines.add(GuiColors.LIGHTBLUE + "Water");
 		else
 			lines.add(GuiColors.GRAY + "Steam");
@@ -98,27 +98,27 @@ public class GuiSteamBoiler extends GuiContainer
 
 	private void drawFluid(FluidStack fluid, int level, int x, int y, int width, int height)
 	{
-		if ((fluid == null) || (fluid.getFluid() == null))
+		if(fluid == null || fluid.getFluid() == null)
 			return;
 
 		IIcon icon = fluid.getFluid().getBlock().getIcon(0, 0);
 		this.mc.renderEngine.bindTexture(TextureMap.locationBlocksTexture);
 		int fullX = width / 16;
 		int fullY = height / 16;
-		int lastX = width - (fullX * 16);
-		int lastY = height - (fullY * 16);
+		int lastX = width - fullX * 16;
+		int lastY = height - fullY * 16;
 		int fullLvl = (height - level) / 16;
-		int lastLvl = (height - level) - (fullLvl * 16);
-		for (int i = 0; i < fullX; i++)
-			for (int j = 0; j < fullY; j++)
-				if (j >= fullLvl)
-					this.drawCutIcon(icon, x + (i * 16), y + (j * 16), 16, 16, j == fullLvl ? lastLvl : 0);
-		for (int i = 0; i < fullX; i++)
-			this.drawCutIcon(icon, x + (i * 16), y + (fullY * 16), 16, lastY, fullLvl == fullY ? lastLvl : 0);
-		for (int i = 0; i < fullY; i++)
-			if (i >= fullLvl)
-				this.drawCutIcon(icon, x + (fullX * 16), y + (i * 16), lastX, 16, i == fullLvl ? lastLvl : 0);
-		this.drawCutIcon(icon, x + (fullX * 16), y + (fullY * 16), lastX, lastY, fullLvl == fullY ? lastLvl : 0);
+		int lastLvl = height - level - fullLvl * 16;
+		for(int i = 0; i < fullX; i++)
+			for(int j = 0; j < fullY; j++)
+				if(j >= fullLvl)
+					this.drawCutIcon(icon, x + i * 16, y + j * 16, 16, 16, j == fullLvl ? lastLvl : 0);
+		for(int i = 0; i < fullX; i++)
+			this.drawCutIcon(icon, x + i * 16, y + fullY * 16, 16, lastY, fullLvl == fullY ? lastLvl : 0);
+		for(int i = 0; i < fullY; i++)
+			if(i >= fullLvl)
+				this.drawCutIcon(icon, x + fullX * 16, y + i * 16, lastX, 16, i == fullLvl ? lastLvl : 0);
+		this.drawCutIcon(icon, x + fullX * 16, y + fullY * 16, lastX, lastY, fullLvl == fullY ? lastLvl : 0);
 	}
 
 	private void drawCutIcon(IIcon icon, int x, int y, int width, int height, int cut)

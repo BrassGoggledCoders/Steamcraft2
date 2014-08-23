@@ -28,14 +28,20 @@ import steamcraft.common.packets.TimeBombPacket;
 import steamcraft.common.tiles.TileTimeBomb;
 import steamcraft.common.tiles.container.ContainerTimeBomb;
 
+/**
+ * @author warlordjones
+ *
+ */
 public class GuiTimeBomb extends GuiContainer
 {
 
 	private static ResourceLocation guitexture = new ResourceLocation(LibInfo.PREFIX + "textures/gui/timebomb.png");
 
 	private GuiTextField text;
+	@SuppressWarnings("unused")
 	private ContainerTimeBomb container;
 	private EntityPlayer player;
+	@SuppressWarnings("unused")
 	private GuiTimeBomb.ChangeButton timeChangeButton;
 
 	TileTimeBomb tile;
@@ -96,10 +102,10 @@ public class GuiTimeBomb extends GuiContainer
 	@Override
 	public void keyTyped(char c, int pos)
 	{
-		if (!Character.isDigit(c))
+		if(!Character.isDigit(c))
 			this.text.setText("");
 
-		if (this.text.textboxKeyTyped(c, pos))
+		if(this.text.textboxKeyTyped(c, pos))
 			this.updateTime();
 
 		super.keyTyped(c, pos);
@@ -109,9 +115,9 @@ public class GuiTimeBomb extends GuiContainer
 	{
 		String s = "0000";
 
-		if (this.text != null)
+		if(this.text != null)
 			s = this.text.getText();
-		if (s.length() == 4)
+		if(s.length() == 4)
 			// {
 			// this.container.updateTime(s);
 			InitPackets.network.sendToServer(new TimeBombPacket(Integer.parseInt(s), this.tile.xCoord, this.tile.yCoord, this.tile.zCoord,
@@ -146,11 +152,9 @@ public class GuiTimeBomb extends GuiContainer
 
 	public class ChangeButton extends GuiButton
 	{
-
 		public ChangeButton(int p_i1021_1_, int p_i1021_2_, int p_i1021_3_, int p_i1021_4_, int p_i1021_5_, String p_i1021_6_)
 		{
 			super(p_i1021_1_, p_i1021_2_, p_i1021_3_, p_i1021_4_, p_i1021_5_, p_i1021_6_);
-			// TODO Auto-generated constructor stub
 		}
 
 	}

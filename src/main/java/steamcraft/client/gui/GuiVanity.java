@@ -25,32 +25,21 @@ import steamcraft.common.lib.LibInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-// TODO
 /**
- * The Class GuiVanity.
- *
  * @author warlordjones
+ * 
  */
 @SideOnly(Side.CLIENT)
 public class GuiVanity extends GuiContainer
 {
-	/**
-	 * x size of the inventory window in pixels. Defined as float, passed as int
-	 */
 	@SuppressWarnings("unused")
 	private float xSize_lo;
 
-	/**
-	 * y size of the inventory window in pixels. Defined as float, passed as
-	 * int.
-	 */
 	@SuppressWarnings("unused")
 	private float ySize_lo;
 
-	/** The Constant iconLocation. */
 	private static final ResourceLocation iconLocation = new ResourceLocation(LibInfo.PREFIX + "textures/gui/vanity.png");
 
-	/** The inventory. */
 	private final InventoryVanity inventory;
 
 	public GuiVanity(final EntityPlayer player, final InventoryPlayer inventoryPlayer, final InventoryVanity inventoryCustom)
@@ -73,9 +62,7 @@ public class GuiVanity extends GuiContainer
 		final String s = this.inventory.getInventoryName();
 		this.fontRendererObj.drawString(s, this.xSize - this.fontRendererObj.getStringWidth(s) - 8, 5, 4210752);
 		this.fontRendererObj.drawString("container.inventory", 120, this.ySize - 92, 4210752); // TODO:
-		// Something
-		// happened
-		// here
+
 		this.fontRendererObj.drawString("Thanks, coolAlias!", this.xSize + 35, this.ySize + 34, 2000);
 	}
 

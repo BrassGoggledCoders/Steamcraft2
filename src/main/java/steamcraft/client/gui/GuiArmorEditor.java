@@ -22,27 +22,17 @@ import steamcraft.common.lib.LibInfo;
 import steamcraft.common.tiles.TileArmorEditor;
 import steamcraft.common.tiles.container.ContainerArmorEditor;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class GuiArmorEditor.
+ * @author warlordjones
+ *
  */
 public class GuiArmorEditor extends GuiContainer
 {
-
-	/** The Constant guitexture. */
 	private static ResourceLocation guitexture = new ResourceLocation(LibInfo.PREFIX + "textures/gui/armoreditor.png");
 
-	/** The tile. */
+	@SuppressWarnings("unused")
 	private TileArmorEditor tile;
 
-	/**
-	 * Instantiates a new gui armor editor.
-	 * 
-	 * @param player
-	 *            the player
-	 * @param tile
-	 *            the tile
-	 */
 	public GuiArmorEditor(InventoryPlayer player, TileArmorEditor tile)
 	{
 		super(new ContainerArmorEditor(player, tile));

@@ -65,8 +65,9 @@ import cpw.mods.fml.common.FMLCommonHandler;
 
 /**
  * @author Surseance (Johnny Eatmon)
- *
+ * 
  */
+@SuppressWarnings("deprecation")
 public class ClientProxy extends CommonProxy
 {
 	@Override
@@ -98,9 +99,9 @@ public class ClientProxy extends CommonProxy
 
 	private void registerBlockRenderers()
 	{
-		//Copper Pipe
+		// Copper Pipe
 		ClientRegistry.bindTileEntitySpecialRenderer(TileCopperPipe.class, new TileCopperPipeRenderer());
-		//Copper Wire
+		// Copper Wire
 		ClientRegistry.bindTileEntitySpecialRenderer(TileCopperWire.class, new TileCopperWireRenderer());
 		// Crystal
 		RenderIDs.blockCrystalRI = RenderingRegistry.getNextAvailableRenderId();
@@ -122,14 +123,14 @@ public class ClientProxy extends CommonProxy
 		RenderIDs.blockChargerRI = RenderingRegistry.getNextAvailableRenderId();
 		ClientRegistry.bindTileEntitySpecialRenderer(TileCharger.class, new TileChargerRenderer());
 		RenderingRegistry.registerBlockHandler(new BlockChargerRenderer());
-		//Cast Iron Railing
+		// Cast Iron Railing
 		RenderIDs.blockCastIronRailingRI = RenderingRegistry.getNextAvailableRenderId();
 		RenderingRegistry.registerBlockHandler(new BlockRailingRenderer());
-		//Cast Iron Lamp TODO
+		// Cast Iron Lamp TODO
 		RenderIDs.blockCastIronLampRI = RenderingRegistry.getNextAvailableRenderId();
 		ClientRegistry.bindTileEntitySpecialRenderer(TileCastIronLamp.class, new TileCastIronLampRenderer());
 		RenderingRegistry.registerBlockHandler(new BlockCastIronLampRenderer());
-		//Hatch
+		// Hatch
 		RenderIDs.blockHatchRI = RenderingRegistry.getNextAvailableRenderId();
 		ClientRegistry.bindTileEntitySpecialRenderer(TileHatch.class, new TileHatchRenderer());
 		RenderingRegistry.registerBlockHandler(new BlockHatchRenderer());
@@ -148,9 +149,9 @@ public class ClientProxy extends CommonProxy
 		FXRaygun ray = null;
 		Color color = rayColor;
 
-		if (input instanceof FXRaygun)
+		if(input instanceof FXRaygun)
 			ray = (FXRaygun) input;
-		if ((ray == null) || (ray.isDead))
+		if(ray == null || ray.isDead)
 		{
 			ray = new FXRaygun(world, player, dx, dy, dz, color.getRed() / 255.0F, color.getGreen() / 255.0F, color.getBlue() / 255.0F, 9);
 			ray.setType(type);
@@ -174,9 +175,9 @@ public class ClientProxy extends CommonProxy
 		FXSmoke smoke = null;
 		Color color = Color.BLUE;
 
-		if (input instanceof FXSmoke)
+		if(input instanceof FXSmoke)
 			smoke = (FXSmoke) input;
-		if ((smoke == null) || (smoke.isDead))
+		if(smoke == null || smoke.isDead)
 		{
 			smoke = new FXSmoke(world, dx, dy, dz, color.getBlue() / 255.0F, color.getBlue() / 255.0F, color.getBlue() / 255.0F);
 			FMLClientHandler.instance().getClient().effectRenderer.addEffect(smoke);
@@ -190,14 +191,14 @@ public class ClientProxy extends CommonProxy
 	@Override
 	public ModelBiped getWingsArmorModel(int id)
 	{
-		switch (id)
+		switch(id)
 		{
-		case 0:
-			return new ModelBrassWings(1.0F);
-		case 1:
-			return new ModelBrassWings(0.5F);
-		default:
-			break;
+			case 0:
+				return new ModelBrassWings(1.0F);
+			case 1:
+				return new ModelBrassWings(0.5F);
+			default:
+				break;
 		}
 
 		return new ModelBrassWings(1.0F);
@@ -206,14 +207,14 @@ public class ClientProxy extends CommonProxy
 	@Override
 	public ModelBiped getJetpackArmorModel(int id)
 	{
-		switch (id)
+		switch(id)
 		{
-		case 0:
-			return new ModelJetpack(1.0F);
-		case 1:
-			return new ModelJetpack(0.5F);
-		default:
-			break;
+			case 0:
+				return new ModelJetpack(1.0F);
+			case 1:
+				return new ModelJetpack(0.5F);
+			default:
+				break;
 		}
 
 		return new ModelJetpack(1.0F);
@@ -222,14 +223,14 @@ public class ClientProxy extends CommonProxy
 	@Override
 	public ModelBiped getWingpackArmorModel(int id)
 	{
-		switch (id)
+		switch(id)
 		{
-		case 0:
-			return new ModelWingpack(1.0F);
-		case 1:
-			return new ModelWingpack(0.5F);
-		default:
-			break;
+			case 0:
+				return new ModelWingpack(1.0F);
+			case 1:
+				return new ModelWingpack(0.5F);
+			default:
+				break;
 		}
 
 		return new ModelWingpack(1.0F);
