@@ -31,8 +31,8 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 public class TileBattery extends BaseTileWithInventory implements IEnergyHandler
 {
-	private static int initialEnergy = 0;
-	private static short initialTransferRate = 80;
+	private static int initialEnergy = 5000;
+	private static short initialTransferRate = 40;
 
 	private byte ticksSinceUpdate = 0;
 
@@ -64,7 +64,9 @@ public class TileBattery extends BaseTileWithInventory implements IEnergyHandler
 	@SideOnly(Side.CLIENT)
 	public int getEnergyScaled(int par1)
 	{
+		//if(maxEnergy > 0)
 		return ((this.totalEnergy + this.buffer.getEnergyStored()) / ((this.maxEnergy + initialEnergy) / 1000)) / par1;
+		//else return 0;
 	}
 
 	@Override
