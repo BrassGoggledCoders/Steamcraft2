@@ -10,11 +10,18 @@
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
  *
  */
-package steamcraft.client.gui;
+package steamcraft.client;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+import steamcraft.client.gui.GuiArmorEditor;
+import steamcraft.client.gui.GuiBattery;
+import steamcraft.client.gui.GuiBloomery;
+import steamcraft.client.gui.GuiCharger;
+import steamcraft.client.gui.GuiSteamBoiler;
+import steamcraft.client.gui.GuiTimeBomb;
+import steamcraft.client.gui.GuiVanity;
 import steamcraft.client.lib.GuiIDs;
 import steamcraft.common.container.ContainerVanity;
 import steamcraft.common.entities.EntityPlayerExtended;
