@@ -1,5 +1,5 @@
 /**
- * This class was created by BrassGoggledCoders modding team. 
+ * This class was created by BrassGoggledCoders modding team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -8,7 +8,7 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- * 
+ *
  */
 package steamcraft.common.blocks;
 
@@ -32,26 +32,25 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author Surseance
- * 
+ *
  */
 public class BlockCastIronLamp extends BlockContainer
 {
 	public boolean powered;
 	public static Block instance;
 
-	public BlockCastIronLamp(boolean flag)
+	public BlockCastIronLamp()
 	{
 		super(Material.circuits);
 		this.setHardness(0.0F);
 		this.setResistance(7.5F);
-		this.powered = flag;
 		this.setTickRandomly(true);
 		this.disableStats();
 		final float f = 0.25F;
 		this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, 1.0F, 0.5F + f);
 		this.setCreativeTab(Steamcraft.tabSC2);
 
-		if (flag)
+		if (powered)
 		{
 			this.setLightLevel(1.0F);
 			this.setCreativeTab((CreativeTabs) null);
@@ -141,7 +140,8 @@ public class BlockCastIronLamp extends BlockContainer
 			if (this.powered && !world.isBlockIndirectlyGettingPowered(x, y, z))
 				world.scheduleBlockUpdate(x, y, z, this, 4);
 			else if (!this.powered && world.isBlockIndirectlyGettingPowered(x, y, z))
-				world.setBlock(x, y, z, InitBlocks.blockCastIronLampA, 0, 2);
+				//world.setBlock(x, y, z, InitBlocks.blockCastIronLampA, 0, 2);
+				this.powered = true;
 			if (world.getBlockMetadata(x, y, z) == 0)
 				super.onBlockAdded(world, x, y, z);
 
@@ -182,7 +182,7 @@ public class BlockCastIronLamp extends BlockContainer
 			this.onBlockAdded(world, x, y, z);
 
 		if (!world.isRemote && this.powered && !world.isBlockIndirectlyGettingPowered(x, y, z))
-			world.setBlock(x, y, z, InitBlocks.blockCastIronLampI, 0, 2);
+			this.powered = false;
 	}
 
 	@Override
@@ -193,7 +193,7 @@ public class BlockCastIronLamp extends BlockContainer
 			if (this.powered && !world.isBlockIndirectlyGettingPowered(x, y, z))
 				world.scheduleBlockUpdate(x, y, z, this, this.tickRate(world));
 			else if (!this.powered && world.isBlockIndirectlyGettingPowered(x, y, z))
-				world.setBlock(x, y, z, InitBlocks.blockCastIronLampA, 0, 2);
+				this.powered = true;
 
 			if (this.dropIfCantStay(world, x, y, z))
 			{

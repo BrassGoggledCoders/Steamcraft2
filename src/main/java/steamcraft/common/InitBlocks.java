@@ -76,13 +76,11 @@ import cpw.mods.fml.common.registry.GameRegistry;
  */
 public class InitBlocks
 {
-	/* Decorative */
-
 	// Engraved Blocks
 	public static Block blockEngraved, blockEngravedVanilla;
 
 	// Cast Iron
-	public static Block blockCastIronLampI, blockCastIronLampA;
+	public static Block blockCastIronLamp;
 	public static Block blockCastIronFence, blockCastIronGate, blockCastIronRailing;
 
 	public static Block blockLamp;
@@ -165,11 +163,9 @@ public class InitBlocks
 		GameRegistry.registerBlock(blockEngravedVanilla, ItemBlockEngravedVanilla.class, "BlockEngravedVanilla");
 
 		// Cast Iron
-		blockCastIronLampI = new BlockCastIronLamp(false).setBlockName("blockCastIronLampOff");
-		blockCastIronLampA = new BlockCastIronLamp(true).setBlockName("blockCastIronLampOn");
+		blockCastIronLamp = new BlockCastIronLamp().setBlockName("blockCastIronLamp");
 
-		// GameRegistry.registerBlock(blockCastIronLampI, "BlockCastIronLampI");
-		// GameRegistry.registerBlock(blockCastIronLampA, "BlockCastIronLampA");
+		GameRegistry.registerBlock(blockCastIronLamp, "BlockCastIronLamp");
 
 		blockCastIronFence = new BlockCastIronFence();
 		blockCastIronGate = new BlockCastIronGate();
