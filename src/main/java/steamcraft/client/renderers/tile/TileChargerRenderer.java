@@ -22,6 +22,7 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
+import steamcraft.client.renderers.models.ModelCharger;
 import steamcraft.common.lib.LibInfo;
 import steamcraft.common.tiles.TileCharger;
 import boilerplate.client.renderers.RenderFloatingItem;

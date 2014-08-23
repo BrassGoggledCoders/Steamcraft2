@@ -19,6 +19,7 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
+import steamcraft.client.renderers.models.ModelHatch;
 import steamcraft.common.lib.LibInfo;
 
 // TODO: Auto-generated Javadoc

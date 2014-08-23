@@ -20,6 +20,7 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
+import steamcraft.client.renderers.models.ModelLightningRod;
 import steamcraft.common.lib.LibInfo;
 
 public class TileLightningRodRenderer extends TileEntitySpecialRenderer

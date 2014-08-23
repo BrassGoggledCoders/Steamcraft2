@@ -20,6 +20,7 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
+import steamcraft.client.renderers.models.ModelCrystal;
 import steamcraft.common.lib.LibInfo;
 
 // TODO: Auto-generated Javadoc
