@@ -1,5 +1,5 @@
 /**
- * This class was created by BrassGoggledCoders modding team. 
+ * This class was created by BrassGoggledCoders modding team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -8,13 +8,18 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- * 
+ *
  */
 package steamcraft.common.items.armor;
 
+import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
+import net.minecraft.world.World;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.LibInfo;
 import steamcraft.common.lib.MaterialHelper;
@@ -23,7 +28,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author Decebaldecebal
- * 
+ *
  */
 public class ItemNormalArmor extends BaseArmor
 {
@@ -50,4 +55,18 @@ public class ItemNormalArmor extends BaseArmor
 		else
 			return slot == 2 ? LibInfo.PREFIX + "textures/armor/obsidian_2.png" : LibInfo.PREFIX + "textures/armor/obsidian_1.png";
 	}
+	@Override
+	public void onArmorTick(World world, EntityPlayer player, ItemStack is)
+	{
+		if(this.getArmorMaterial() == MaterialHelper.ARMOR_OBSIDIAN)
+		{
+			player.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 20, 3));
+			//TODO Make sink in water?
+			if(player.isInWater())
+			{
+				player.motionY--;
+			}
+		}
+	}
+
 }

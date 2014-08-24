@@ -28,10 +28,12 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author Surseance
- * 
+ *
  */
 public class BlockHatch extends BlockTrapDoor implements ITileEntityProvider
 {
+	public static boolean disableValidation = true;
+
 	public BlockHatch()
 	{
 		super(Material.anvil);

@@ -20,11 +20,12 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
 import steamcraft.client.renderers.models.ModelHatch;
+import steamcraft.common.blocks.BlockHatch;
 import steamcraft.common.lib.LibInfo;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 public class TileHatchRenderer extends TileEntitySpecialRenderer
 {
@@ -38,15 +39,15 @@ public class TileHatchRenderer extends TileEntitySpecialRenderer
 	@Override
 	public void renderTileEntityAt(final TileEntity te, final double dx, final double dy, final double dz, final float scale)
 	{
-		te.getWorldObj().getBlock(te.xCoord, te.yCoord, te.zCoord);
-		final int metadata = te.getBlockMetadata();
+
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float) dx + 0.5F, (float) dy, (float) dz + 0.5F);
 		final ResourceLocation hatch = (new ResourceLocation(LibInfo.PREFIX + "textures/models/modelHatch.png"));
 		Minecraft.getMinecraft().renderEngine.bindTexture(hatch);
 		GL11.glPushMatrix();
 		GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
-		if(metadata > 3)
+		//TODO
+		if(BlockHatch.func_150118_d(te.getWorldObj().getBlockMetadata(te.xCoord, te.yCoord, te.zCoord)))
 		{
 			GL11.glRotatef(90F, 1.0F, 0.0F, 0.0F);
 			GL11.glTranslatef(0F, 0F, 1F);
@@ -61,7 +62,7 @@ public class TileHatchRenderer extends TileEntitySpecialRenderer
 	{
 		public TileHatch()
 		{
-			
+
 		}
 	}
 }

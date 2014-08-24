@@ -25,7 +25,7 @@ import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 
 /**
  * @author Surseance
- * 
+ *
  */
 public class BlockHatchRenderer implements ISimpleBlockRenderingHandler
 {
@@ -35,7 +35,8 @@ public class BlockHatchRenderer implements ISimpleBlockRenderingHandler
 		GL11.glRotatef(90.0F, 0.0F, 1.0F, 0.0F);
 		GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
 		final TileHatch te = new TileHatch();
-		TileEntityRendererDispatcher.instance.renderTileEntityAt(te, 0.0D, 0.0D, 0.0D, 0.0F);
+		//TODO
+		//TileEntityRendererDispatcher.instance.renderTileEntityAt(te, 0.0D, 0.0D, 0.0D, 0.0F);
 		GL11.glEnable(32826);
 	}
 
