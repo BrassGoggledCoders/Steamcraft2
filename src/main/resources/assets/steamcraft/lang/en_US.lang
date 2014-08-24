@@ -223,9 +223,11 @@ item.itemShovelObsidian.name=Obsidian Shovel
 item.itemChisel.name=Chisel
 #item.itemChisel.desc=Right-Click to chisel mineral blocks
 item.itemSpanner.name=Spanner
-item.itemSpanner.desc=Can be used to set pipes/wires to extracting. Also works as a BC wrench.
+item.itemSpanner.desc=Can be used to set pipes/wires to extracting. Also works as a BC wrench
 item.itemHammer.name=Hammer
 item.itemHammer.desc=Used for crushing ores and flattening plates
+item.itemDrawplate.name=Drawplate
+item.itemDrawplate.desc=Used for creating wire
 
 #Armors
 item.itemHelmetBrass.name=Brass Helmet

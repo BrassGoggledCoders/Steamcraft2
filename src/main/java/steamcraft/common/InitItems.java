@@ -60,7 +60,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 /**
  * @author Surseance
- * 
+ *
  */
 public class InitItems
 {
@@ -122,10 +122,6 @@ public class InitItems
 	public static Item itemColdKettle, itemHotKettle, itemEmptyKettle;
 
 	public static Item itemEmptyTeacup, itemFullTeacup;
-
-	public static Item itemBucketSteam;
-
-	public static Item itemPoppySeed;
 
 	public static Item itemRayGun, itemShrinkray, itemLightningGun;
 
@@ -371,9 +367,6 @@ public class InitItems
 
 		itemChisel = new ItemChisel().setUnlocalizedName("itemChisel");
 		registerItem(itemChisel, "ItemChisel");
-
-		itemPoppySeed = new BaseItem().setUnlocalizedName("itemPoppySeed").setCreativeTab(Steamcraft.tabSC2);
-		registerItem(itemPoppySeed, "ItemPoppySeed");
 
 		itemHammer = new ItemWithCraftingDurability().setUnlocalizedName("itemHammer");
 		registerItem(itemHammer, "ItemHammer");
