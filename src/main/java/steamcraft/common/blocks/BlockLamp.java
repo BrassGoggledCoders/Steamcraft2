@@ -1,14 +1,14 @@
 /**
- * This class was created by BrassGoggledCoders modding team. 
+ * This class was created by BrassGoggledCoders modding team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
  * (http://www.mod-buildcraft.com/MMPL-1.0.txt)
  *
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
- * Steamcraft (c) Proloe 2011
+ * Steamcraft (c) Proloe 201
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- * 
+ *
  */
 package steamcraft.common.blocks;
 
@@ -27,7 +27,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author Surseance (Johnny Eatmon)
- * 
+ *
  */
 public class BlockLamp extends BlockRedstoneLight
 {
@@ -46,7 +46,7 @@ public class BlockLamp extends BlockRedstoneLight
 		if(powered)
 			this.setLightLevel(0.98F);
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(int side, int metadata)
@@ -69,10 +69,10 @@ public class BlockLamp extends BlockRedstoneLight
 			if(BlockLamp.powered && !world.isBlockIndirectlyGettingPowered(x, y, z))
 			{
 				world.scheduleBlockUpdate(x, y, z, this, 4);
-				world.setBlock(x, y, z, InitBlocks.blockLamp, 1, 12);
+				world.setBlock(x, y, z, InitBlocks.blockLamp, 1, 0);
 			}
 			else if(!BlockLamp.powered && world.isBlockIndirectlyGettingPowered(x, y, z))
-				world.setBlock(x, y, z, InitBlocks.blockLamp, 1, 11);
+				world.setBlock(x, y, z, InitBlocks.blockLamp, 1, 1);
 	}
 
 	@Override
@@ -82,16 +82,16 @@ public class BlockLamp extends BlockRedstoneLight
 			if(BlockLamp.powered && !world.isBlockIndirectlyGettingPowered(x, y, z))
 			{
 				world.scheduleBlockUpdate(x, y, z, this, 4);
-				world.setBlock(x, y, z, InitBlocks.blockLamp, 1, 12);
+				world.setBlock(x, y, z, InitBlocks.blockLamp, 1, 0);
 			}
 			else if(!BlockLamp.powered && world.isBlockIndirectlyGettingPowered(x, y, z))
-				world.setBlock(x, y, z, InitBlocks.blockLamp, 0, 11);
+				world.setBlock(x, y, z, InitBlocks.blockLamp, 0, 1);
 	}
 
 	@Override
 	public void updateTick(World world, int x, int y, int z, Random random)
 	{
 		if(!world.isRemote && BlockLamp.powered && !world.isBlockIndirectlyGettingPowered(x, y, z))
-			world.setBlock(x, y, z, InitBlocks.blockLamp, 0, 12);
+			world.setBlock(x, y, z, InitBlocks.blockLamp, 0, 0);
 	}
 }

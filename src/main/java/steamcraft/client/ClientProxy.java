@@ -65,7 +65,7 @@ import cpw.mods.fml.common.FMLCommonHandler;
 
 /**
  * @author Surseance (Johnny Eatmon)
- * 
+ *
  */
 @SuppressWarnings("deprecation")
 public class ClientProxy extends CommonProxy
@@ -79,7 +79,7 @@ public class ClientProxy extends CommonProxy
 	@Override
 	public void registerDisplayInformation()
 	{
-		Utils.downloadCapes();
+		//Utils.downloadCapes();
 	}
 
 	@Override

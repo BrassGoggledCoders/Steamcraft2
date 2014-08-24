@@ -17,7 +17,6 @@ import java.util.Random;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
@@ -25,17 +24,18 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import steamcraft.client.lib.RenderIDs;
 import steamcraft.client.renderers.tile.TileCastIronLampRenderer.TileCastIronLamp;
+import steamcraft.common.InitBlocks;
 import steamcraft.common.Steamcraft;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author Surseance
- * 
+ *
  */
 public class BlockCastIronLamp extends BlockContainer
 {
-	public boolean powered;
+	public static boolean powered;
 	public static Block instance;
 
 	public BlockCastIronLamp()
@@ -49,23 +49,14 @@ public class BlockCastIronLamp extends BlockContainer
 		this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, 1.0F, 0.5F + f);
 		this.setCreativeTab(Steamcraft.tabSC2);
 
-		if(this.powered)
-		{
-			this.setLightLevel(1.0F);
-			this.setCreativeTab((CreativeTabs) null);
-		}
+		if(powered)
+		this.setLightLevel(1.0F);
 	}
 
 	@Override
 	public TileEntity createNewTileEntity(World world, int metadata)
 	{
 		return new TileCastIronLamp();
-	}
-
-	@Override
-	public boolean shouldSideBeRendered(final IBlockAccess world, final int x, final int y, final int z, final int side)
-	{
-		return false;
 	}
 
 	@Override
@@ -130,97 +121,38 @@ public class BlockCastIronLamp extends BlockContainer
 	{
 		return world.getBlock(x, y - 1, z) != Blocks.air ? true : false;
 	}
-
 	@Override
-	public void onBlockAdded(final World world, final int x, final int y, final int z)
+	public void onBlockAdded(World world, int x, int y, int z)
 	{
 		if(!world.isRemote)
-		{
-			if(this.powered && !world.isBlockIndirectlyGettingPowered(x, y, z))
-				world.scheduleBlockUpdate(x, y, z, this, 4);
-			else if(!this.powered && world.isBlockIndirectlyGettingPowered(x, y, z))
-				// world.setBlock(x, y, z, InitBlocks.blockCastIronLampA, 0, 2);
-				this.powered = true;
-			if(world.getBlockMetadata(x, y, z) == 0)
-				super.onBlockAdded(world, x, y, z);
-
-			world.notifyBlocksOfNeighborChange(x, y - 1, z, this);
-			world.notifyBlocksOfNeighborChange(x, y + 1, z, this);
-			world.notifyBlocksOfNeighborChange(x - 1, y, z, this);
-			world.notifyBlocksOfNeighborChange(x + 1, y, z, this);
-			world.notifyBlocksOfNeighborChange(x, y, z - 1, this);
-			world.notifyBlocksOfNeighborChange(x, y, z + 1, this);
-			world.notifyBlocksOfNeighborChange(x, y, z, this);
-		}
-
-		this.dropIfCantStay(world, x, y, z);
-	}
-
-	@Override
-	public void breakBlock(final World world, final int x, final int y, final int z, final Block block, final int metadata)
-	{
-		if(this.powered)
-		{
-			world.notifyBlocksOfNeighborChange(x, y - 1, z, this);
-			world.notifyBlocksOfNeighborChange(x, y + 1, z, this);
-			world.notifyBlocksOfNeighborChange(x - 1, y, z, this);
-			world.notifyBlocksOfNeighborChange(x + 1, y, z, this);
-			world.notifyBlocksOfNeighborChange(x, y, z - 1, this);
-			world.notifyBlocksOfNeighborChange(x, y, z + 1, this);
-		}
-
-		super.breakBlock(world, x, y, z, block, metadata);
-	}
-
-	@Override
-	public void updateTick(final World world, final int x, final int y, final int z, final Random random)
-	{
-		super.updateTick(world, x, y, z, random);
-
-		if(world.getBlockMetadata(x, y, z) == 0)
-			this.onBlockAdded(world, x, y, z);
-
-		if(!world.isRemote && this.powered && !world.isBlockIndirectlyGettingPowered(x, y, z))
-			this.powered = false;
-	}
-
-	@Override
-	public void onNeighborBlockChange(final World world, final int x, final int y, final int z, final Block block)
-	{
-		if(!world.isRemote)
-		{
-			if(this.powered && !world.isBlockIndirectlyGettingPowered(x, y, z))
-				world.scheduleBlockUpdate(x, y, z, this, this.tickRate(world));
-			else if(!this.powered && world.isBlockIndirectlyGettingPowered(x, y, z))
-				this.powered = true;
-
-			if(this.dropIfCantStay(world, x, y, z))
+			if(BlockCastIronLamp.powered && !world.isBlockIndirectlyGettingPowered(x, y, z))
 			{
-				final int metadata = world.getBlockMetadata(x, y, z);
-				boolean flag = false;
-
-				if(metadata == 1)
-					flag = true;
-				if(metadata == 2)
-					flag = true;
-				if(metadata == 3)
-					flag = true;
-				if(metadata == 4)
-					flag = true;
-				if(metadata == 5)
-					flag = true;
-
-				if(flag)
-				{
-					this.dropBlockAsItem(world, x, y, z, world.getBlockMetadata(x, y, z), 1);
-					world.setBlockToAir(x, y, z);
-				}
+				world.scheduleBlockUpdate(x, y, z, this, 4);
+				world.setBlock(x, y, z, InitBlocks.blockCastIronLamp, 1, world.getBlockMetadata(x, y, z) + 10);
 			}
-		}
-
-		super.onNeighborBlockChange(world, x, y, z, block);
+			else if(!BlockCastIronLamp.powered && world.isBlockIndirectlyGettingPowered(x, y, z))
+				world.setBlock(x, y, z, InitBlocks.blockCastIronLamp, 1, world.getBlockMetadata(x, y, z) + 10);
 	}
 
+	@Override
+	public void onNeighborBlockChange(World world, int x, int y, int z, Block p_149695_5_)
+	{
+		if(!world.isRemote)
+			if(BlockCastIronLamp.powered && !world.isBlockIndirectlyGettingPowered(x, y, z))
+			{
+				world.scheduleBlockUpdate(x, y, z, this, 4);
+				world.setBlock(x, y, z, InitBlocks.blockCastIronLamp, 1, world.getBlockMetadata(x, y, z) + 10);
+			}
+			else if(!BlockCastIronLamp.powered && world.isBlockIndirectlyGettingPowered(x, y, z))
+				world.setBlock(x, y, z, InitBlocks.blockCastIronLamp, 0, world.getBlockMetadata(x, y, z) + 10);
+	}
+
+	@Override
+	public void updateTick(World world, int x, int y, int z, Random random)
+	{
+		if(!world.isRemote && BlockCastIronLamp.powered && !world.isBlockIndirectlyGettingPowered(x, y, z))
+			world.setBlock(x, y, z, InitBlocks.blockCastIronLamp, 0, world.getBlockMetadata(x, y, z) + 10);
+	}
 	private boolean dropIfCantStay(final World world, final int x, final int y, final int z)
 	{
 		if(!this.canPlaceBlockAt(world, x, y, z))
