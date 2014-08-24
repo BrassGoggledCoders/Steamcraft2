@@ -26,20 +26,15 @@ import cofh.api.energy.IEnergyHandler;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 public class TileLightningRod extends TileEntity implements IEnergyHandler
 {
 	private EnergyStorage buffer = new EnergyStorage(30000, 10000);
 
-	BlockLightningRod block;
-
 	@Override
 	public void updateEntity()
 	{
-		if(this.getWorldObj() != null)
-			this.block = (BlockLightningRod) this.getWorldObj().getBlock(this.xCoord, this.yCoord, this.zCoord);
-
 		if(this.worldObj.getWorldInfo().isThundering() && this.worldObj.canBlockSeeTheSky(this.xCoord, this.yCoord, this.zCoord))
 		{
 			Random random = new Random();
