@@ -12,7 +12,6 @@
  */
 package steamcraft.common.items.armor;
 
-import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -58,10 +57,9 @@ public class ItemNormalArmor extends BaseArmor
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack is)
 	{
-		if(this.getArmorMaterial() == MaterialHelper.ARMOR_OBSIDIAN)
+		if(this.getArmorMaterial() == MaterialHelper.ARMOR_OBSIDIAN && !player.capabilities.isCreativeMode)
 		{
 			player.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 20, 3));
-			//TODO Make sink in water?
 			if(player.isInWater())
 			{
 				player.motionY--;
