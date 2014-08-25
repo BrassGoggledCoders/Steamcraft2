@@ -144,10 +144,10 @@ item.itemCanisterSteam.name=Steam Canister
 item.itemCanisterGas.name=Compressed Gas Canister
 item.itemCanisterEmpty.name=Empty Canister
 
-item.itemElectricJarSmall.name=Small Electric Jar
-item.itemElectricJarMedium.name=Medium Electric Jar
-item.itemElectricJarLarge.name=Large Electric Jar
-item.itemElectricJarHuge.name=Huge Electric Jar
+item.itemElectricJarSmall.name=Electric Jar (Copper Electrodes)
+item.itemElectricJarMedium.name=Electric Jar (Gold Electrodes)
+item.itemElectricJarLarge.name=Electric Jar (Brass Electrodes)
+item.itemElectricJarHuge.name=Electric Jar (Steel Electrodes)
 
 item.guidebook.name=SteamCraft2 Guidebook
 item.steamBucket.name=Steam Bucket
