@@ -146,9 +146,9 @@ item.itemCanisterGas.name=Compressed Gas Canister
 item.itemCanisterEmpty.name=Empty Canister
 
 item.itemElectricJarSmall.name=Electric Jar (Copper Electrodes)
-item.itemElectricJarMedium.name=Electric Jar (Gold Electrodes)
-item.itemElectricJarLarge.name=Electric Jar (Brass Electrodes)
-item.itemElectricJarHuge.name=Electric Jar (Steel Electrodes)
+item.itemElectricJarMedium.name=Electric Jar (Gold-Plated Electrodes)
+item.itemElectricJarLarge.name=Electric Jar (Plated)
+item.itemElectricJarHuge.name=Electric Jar (Crystalline Glass)
 
 item.guidebook.name=SteamCraft2 Guidebook
 item.steamBucket.name=Steam Bucket
