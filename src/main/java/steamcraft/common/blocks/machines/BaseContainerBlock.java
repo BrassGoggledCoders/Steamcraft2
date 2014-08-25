@@ -12,6 +12,7 @@
  */
 package steamcraft.common.blocks.machines;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 import net.minecraft.block.Block;
@@ -19,6 +20,7 @@ import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -26,6 +28,7 @@ import net.minecraft.world.World;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.LibInfo;
 import boilerplate.common.baseclasses.BaseTileWithInventory;
+import cofh.api.block.IDismantleable;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -33,7 +36,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  * @author decebaldecebal
  * 
  */
-public abstract class BaseContainerBlock extends BlockContainer
+public abstract class BaseContainerBlock extends BlockContainer implements IDismantleable
 {
 	protected static boolean keepInventory = true;
 
@@ -102,4 +105,24 @@ public abstract class BaseContainerBlock extends BlockContainer
 		super.breakBlock(par1World, par2, par3, par4, block, par6);
 	}
 
+	@Override
+	public ArrayList<ItemStack> dismantleBlock(EntityPlayer player, World world, int x, int y, int z, boolean returnDrops)
+	{
+		this.breakBlock(world, x, y, z, this, 0);
+		
+		ArrayList<ItemStack> localArrayList = new ArrayList<ItemStack>();
+		localArrayList.add(new ItemStack(this));
+		
+		return localArrayList;
+
+	}
+
+	@Override
+	public boolean canDismantle(EntityPlayer player, World world, int x, int y, int z)
+	{
+		if(world.getTileEntity(x, y, z) != null && world.getTileEntity(x, y, z) instanceof BaseTileWithInventory)
+			return true;
+
+		return false;
+	}
 }
