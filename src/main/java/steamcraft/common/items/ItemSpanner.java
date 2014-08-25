@@ -22,7 +22,7 @@ import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.LibInfo;
 import steamcraft.common.tiles.TileCopperPipe;
 import steamcraft.common.tiles.TileCopperWire;
-import boilerplate.steamapi.UniversalWrench;
+import boilerplate.common.baseclasses.UniversalWrench;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 

@@ -24,7 +24,7 @@ import steamcraft.common.InitBlocks;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.LibInfo;
 import boilerplate.client.fx.FXSmoke;
-import boilerplate.steamapi.IChiselable;
+import boilerplate.steamapi.block.IChiselable;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 

@@ -16,7 +16,7 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import steamcraft.common.tiles.TileArmorEditor;
-import boilerplate.steamapi.IModule;
+import boilerplate.steamapi.IArmorModule;
 
 /**
  * @author decebaldecebal
@@ -36,7 +36,7 @@ public class SlotModule extends Slot
 	@Override
 	public boolean isItemValid(ItemStack stack)
 	{
-		if(stack.getItem() instanceof IModule)
+		if(stack.getItem() instanceof IArmorModule)
 			return true;
 		return false;
 	}

@@ -16,7 +16,7 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import steamcraft.common.items.armor.ItemBrassArmor;
 import boilerplate.common.baseclasses.BaseTileWithInventory;
-import boilerplate.steamapi.IModule;
+import boilerplate.steamapi.IArmorModule;
 
 /**
  * @author warlordjones
@@ -55,7 +55,7 @@ public class TileArmorEditor extends BaseTileWithInventory implements IInventory
 				if(this.inventory[i] != null)
 				{
 					ItemBrassArmor armor = (ItemBrassArmor) this.inventory[0].getItem();
-					IModule module = (IModule) this.inventory[i].getItem();
+					IArmorModule module = (IArmorModule) this.inventory[i].getItem();
 					if(!ItemBrassArmor.modules.containsKey(module.getName()))
 						if(armor.armorType != -1)
 						{

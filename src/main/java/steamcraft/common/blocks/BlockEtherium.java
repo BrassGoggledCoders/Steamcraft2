@@ -15,7 +15,7 @@ package steamcraft.common.blocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import steamcraft.common.InitBlocks;
-import boilerplate.steamapi.IChiselable;
+import boilerplate.steamapi.block.IChiselable;
 
 /**
  * @author Surseance

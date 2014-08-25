@@ -21,7 +21,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 import steamcraft.common.InitBlocks;
 import boilerplate.client.utils.EffectUtils;
-import boilerplate.steamapi.IChiselable;
+import boilerplate.steamapi.block.IChiselable;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 

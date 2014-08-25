@@ -26,7 +26,7 @@ import net.minecraft.world.World;
 import steamcraft.common.InitBlocks;
 import steamcraft.common.InitItems;
 import steamcraft.common.lib.LibInfo;
-import boilerplate.steamapi.machines.IHammerable;
+import boilerplate.steamapi.block.IHammerable;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 

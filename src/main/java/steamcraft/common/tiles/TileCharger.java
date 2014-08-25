@@ -19,7 +19,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
 import boilerplate.common.baseclasses.BaseTileWithInventory;
-import boilerplate.steamapi.items.IEnergyItem;
+import boilerplate.steamapi.item.IEnergyItem;
 import cofh.api.energy.EnergyStorage;
 import cofh.api.energy.IEnergyHandler;
 import cpw.mods.fml.relauncher.Side;

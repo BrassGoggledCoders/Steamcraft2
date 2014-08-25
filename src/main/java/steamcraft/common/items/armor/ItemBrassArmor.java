@@ -25,8 +25,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.LibInfo;
-import boilerplate.steamapi.EnumArmorEffectType;
-import boilerplate.steamapi.IModule;
+import boilerplate.steamapi.IArmorModule;
+import boilerplate.steamapi.IArmorModule.EnumArmorEffectType;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -36,7 +36,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 public class ItemBrassArmor extends BaseArmor
 {
-	public static LinkedHashMap<String, IModule> modules = new LinkedHashMap<String, IModule>();
+	public static LinkedHashMap<String, IArmorModule> modules = new LinkedHashMap<String, IArmorModule>();
 
 	public ItemBrassArmor(ItemArmor.ArmorMaterial armorMat, int renderIndex, int armorType)
 	{
@@ -73,7 +73,7 @@ public class ItemBrassArmor extends BaseArmor
 		{
 			list.add("Modules:");
 			for(int i = 0; i < ItemBrassArmor.modules.size(); i++)
-				list.add(((IModule) this.getEntry(i).getValue()).getName());
+				list.add(((IArmorModule) this.getEntry(i).getValue()).getName());
 		}
 	}
 
@@ -82,8 +82,8 @@ public class ItemBrassArmor extends BaseArmor
 	{
 		// System.out.print(modules);
 		for(int i = 0; i < ItemBrassArmor.modules.size(); i++)
-			if(((IModule) this.getEntry(i).getValue()).getArmorEffectType() == EnumArmorEffectType.ONTICK)
-				((IModule) this.getEntry(i).getValue()).getArmorEffect(world, player, is);
+			if(((IArmorModule) this.getEntry(i).getValue()).getArmorEffectType() == EnumArmorEffectType.ONTICK)
+				((IArmorModule) this.getEntry(i).getValue()).getArmorEffect(world, player, is);
 	}
 
 	/*

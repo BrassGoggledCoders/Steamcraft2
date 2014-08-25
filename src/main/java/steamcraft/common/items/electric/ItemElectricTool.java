@@ -22,7 +22,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import steamcraft.common.items.tools.ItemModTool;
-import boilerplate.steamapi.items.IEnergyItem;
+import boilerplate.steamapi.item.IEnergyItem;
 
 public class ItemElectricTool extends ItemModTool implements IEnergyItem
 {

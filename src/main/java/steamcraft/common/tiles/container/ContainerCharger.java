@@ -20,7 +20,7 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import steamcraft.common.tiles.TileCharger;
 import steamcraft.common.tiles.container.slot.SlotCharger;
-import boilerplate.steamapi.items.IEnergyItem;
+import boilerplate.steamapi.item.IEnergyItem;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
