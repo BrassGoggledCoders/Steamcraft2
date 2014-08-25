@@ -125,9 +125,9 @@ public class ClientProxy extends CommonProxy
 		RenderIDs.blockCastIronRailingRI = RenderingRegistry.getNextAvailableRenderId();
 		RenderingRegistry.registerBlockHandler(new BlockRailingRenderer());
 		// Cast Iron Lamp TODO
-		RenderIDs.blockCastIronLampRI = RenderingRegistry.getNextAvailableRenderId();
-		ClientRegistry.bindTileEntitySpecialRenderer(TileCastIronLamp.class, new TileCastIronLampRenderer());
-		RenderingRegistry.registerBlockHandler(new BlockCastIronLampRenderer());
+		//RenderIDs.blockCastIronLampRI = RenderingRegistry.getNextAvailableRenderId();
+		//ClientRegistry.bindTileEntitySpecialRenderer(TileCastIronLamp.class, new TileCastIronLampRenderer());
+		//RenderingRegistry.registerBlockHandler(new BlockCastIronLampRenderer());
 		// Hatch
 		RenderIDs.blockHatchRI = RenderingRegistry.getNextAvailableRenderId();
 		ClientRegistry.bindTileEntitySpecialRenderer(TileHatch.class, new TileHatchRenderer());

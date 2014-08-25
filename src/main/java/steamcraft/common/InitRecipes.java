@@ -230,7 +230,7 @@ public class InitRecipes
 
 	private static void initOtherRecipes()
 	{
-		GameRegistry.addShapelessRecipe(new ItemStack(InitItems.itemResource, 4, 2), new Object[] { Blocks.obsidian });
+		GameRegistry.addShapelessRecipe(new ItemStack(InitItems.itemResource, 1, 2), new Object[] { new ItemStack(Blocks.obsidian, 9) });
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemSteelParts, 1, 0), new Object[] { " P ", "PPP", " P ", 'P',
 				"plateSteel" }));

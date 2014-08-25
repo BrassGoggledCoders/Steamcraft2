@@ -53,6 +53,7 @@ tile.blockSlate.5.name=Red Slate Cobblestone
 tile.blockSlate.6.name=Blue Slate Bricks
 tile.blockSlate.7.name=Black Slate Bricks
 tile.blockSlate.8.name=Red Slate Bricks
+tile.blockTimeBomb.name=Time Bomb
 
 #Ores
 tile.blockCustomOre.0.name=Aluminum Ore

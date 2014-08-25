@@ -53,7 +53,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 public class EventHandlerForge
 {
@@ -250,10 +250,10 @@ public class EventHandlerForge
 	@SubscribeEvent
 	public void onLivingSpawn(LivingSpawnEvent event)
 	{
-		double chance = event.world.rand.nextDouble();
+		int chance = event.world.rand.nextInt(100);
 		int armorType = event.world.rand.nextInt(2);
 
-		if(chance < 0.2)
+		if(chance < 5)
 			if(event.entityLiving instanceof EntityZombie || event.entityLiving instanceof EntitySkeleton)
 			{
 				int sword = event.world.rand.nextInt(100);

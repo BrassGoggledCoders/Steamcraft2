@@ -69,10 +69,10 @@ public class BlockLamp extends BlockRedstoneLight
 			if(BlockLamp.powered && !world.isBlockIndirectlyGettingPowered(x, y, z))
 			{
 				world.scheduleBlockUpdate(x, y, z, this, 4);
-				world.setBlock(x, y, z, InitBlocks.blockLamp, 1, 0);
+				world.setBlock(x, y, z, InitBlocks.blockLamp, 0, 2);
 			}
 			else if(!BlockLamp.powered && world.isBlockIndirectlyGettingPowered(x, y, z))
-				world.setBlock(x, y, z, InitBlocks.blockLamp, 1, 1);
+				world.setBlock(x, y, z, InitBlocks.blockLamp, 1, 2);
 	}
 
 	@Override
@@ -82,16 +82,16 @@ public class BlockLamp extends BlockRedstoneLight
 			if(BlockLamp.powered && !world.isBlockIndirectlyGettingPowered(x, y, z))
 			{
 				world.scheduleBlockUpdate(x, y, z, this, 4);
-				world.setBlock(x, y, z, InitBlocks.blockLamp, 1, 0);
+				world.setBlock(x, y, z, InitBlocks.blockLamp, 0, 2);
 			}
 			else if(!BlockLamp.powered && world.isBlockIndirectlyGettingPowered(x, y, z))
-				world.setBlock(x, y, z, InitBlocks.blockLamp, 0, 1);
+				world.setBlock(x, y, z, InitBlocks.blockLamp, 1, 2);
 	}
 
 	@Override
 	public void updateTick(World world, int x, int y, int z, Random random)
 	{
 		if(!world.isRemote && BlockLamp.powered && !world.isBlockIndirectlyGettingPowered(x, y, z))
-			world.setBlock(x, y, z, InitBlocks.blockLamp, 0, 0);
+			world.setBlock(x, y, z, InitBlocks.blockLamp, 1, 2);
 	}
 }
