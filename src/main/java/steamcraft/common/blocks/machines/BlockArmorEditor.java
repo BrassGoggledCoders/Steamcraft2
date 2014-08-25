@@ -31,7 +31,7 @@ import steamcraft.common.tiles.TileSteamBoiler;
  * @author warlordjones
  * 
  */
-public class BlockArmorEditor extends BlockContainerMod
+public class BlockArmorEditor extends BaseContainerBlock
 {
 	public BlockArmorEditor(Material mat)
 	{

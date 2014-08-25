@@ -27,7 +27,7 @@ import steamcraft.common.tiles.TileCopperTank;
  * @author warlordjones
  * 
  */
-public class BlockCopperTank extends BlockContainerMod
+public class BlockCopperTank extends BaseContainerBlock
 {
 	public BlockCopperTank(Material mat)
 	{

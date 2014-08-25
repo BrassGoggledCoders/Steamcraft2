@@ -20,7 +20,7 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import steamcraft.client.lib.GuiIDs;
 import steamcraft.common.Steamcraft;
-import steamcraft.common.blocks.machines.BlockContainerMod;
+import steamcraft.common.blocks.machines.BaseContainerBlock;
 import steamcraft.common.lib.LibInfo;
 import steamcraft.common.tiles.TileTimeBomb;
 import cpw.mods.fml.relauncher.Side;
@@ -30,7 +30,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  * @author warlordjones
  *
  */
-public class BlockTimeBomb extends BlockContainerMod
+public class BlockTimeBomb extends BaseContainerBlock
 {
 	@SideOnly(Side.CLIENT)
 	private IIcon iconEnd;

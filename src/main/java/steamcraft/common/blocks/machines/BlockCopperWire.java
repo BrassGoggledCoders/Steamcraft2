@@ -29,7 +29,7 @@ import steamcraft.common.tiles.TileCopperWire;
  * @author warlordjones
  * 
  */
-public class BlockCopperWire extends BlockContainerMod
+public class BlockCopperWire extends BaseContainerBlock
 {
 	static float pixel = 1 / 16f;
 

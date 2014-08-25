@@ -21,7 +21,7 @@ import steamcraft.common.tiles.TileIntake;
  * @author decebaldecebal
  * 
  */
-public class BlockIntake extends BlockContainerMod
+public class BlockIntake extends BaseContainerBlock
 {
 	public BlockIntake()
 	{

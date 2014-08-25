@@ -18,7 +18,7 @@ import net.minecraft.world.World;
 import steamcraft.client.lib.RenderIDs;
 import steamcraft.common.tiles.TileLightningRod;
 
-public class BlockLightningRod extends BlockContainerMod
+public class BlockLightningRod extends BaseContainerBlock
 {
 
 	public BlockLightningRod(Material mat)

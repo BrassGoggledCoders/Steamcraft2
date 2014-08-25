@@ -39,7 +39,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  * @author decebaldecebal
  * 
  */
-public class BlockSteamBoiler extends BlockContainerMod
+public class BlockSteamBoiler extends BaseContainerBlock
 {
 	@SideOnly(Side.CLIENT)
 	private IIcon iconTop, iconFront, iconFrontActive;

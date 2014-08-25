@@ -16,7 +16,7 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import steamcraft.common.items.armor.ItemBrassArmor;
 import boilerplate.common.baseclasses.BaseTileWithInventory;
-import boilerplate.steamapi.IArmorModule;
+import boilerplate.steamapi.item.IArmorModule;
 
 /**
  * @author warlordjones

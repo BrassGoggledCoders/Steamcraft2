@@ -22,7 +22,7 @@ import steamcraft.common.tiles.TileTeslaCoil;
  * @author warlordjones
  * 
  */
-public class BlockTeslaCoil extends BlockContainerMod
+public class BlockTeslaCoil extends BaseContainerBlock
 {
 	public BlockTeslaCoil(Material mat)
 	{

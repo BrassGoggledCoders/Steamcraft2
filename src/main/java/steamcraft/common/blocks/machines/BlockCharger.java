@@ -36,7 +36,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  * @author decebaldecebal
  * 
  */
-public class BlockCharger extends BlockContainerMod
+public class BlockCharger extends BaseContainerBlock
 {
 
 	public BlockCharger()

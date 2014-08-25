@@ -21,7 +21,7 @@ import steamcraft.common.tiles.TileDropHammer;
  * @author warlordjones
  * 
  */
-public class BlockDropHammerAnvil extends BlockContainerMod
+public class BlockDropHammerAnvil extends BaseContainerBlock
 {
 
 	public BlockDropHammerAnvil(Material mat)

@@ -39,7 +39,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  * @author warlordjones
  * 
  */
-public class BlockBloomery extends BlockContainerMod
+public class BlockBloomery extends BaseContainerBlock
 {
 
 	@SideOnly(Side.CLIENT)

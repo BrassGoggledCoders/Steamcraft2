@@ -27,7 +27,7 @@ import steamcraft.common.tiles.TileCopperPipe;
  * @author warlordjones
  * 
  */
-public class BlockCopperPipe extends BlockContainerMod
+public class BlockCopperPipe extends BaseContainerBlock
 {
 	static float pixel = 1 / 16f;
 

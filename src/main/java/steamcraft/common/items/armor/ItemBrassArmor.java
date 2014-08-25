@@ -25,8 +25,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.LibInfo;
-import boilerplate.steamapi.IArmorModule;
-import boilerplate.steamapi.IArmorModule.EnumArmorEffectType;
+import boilerplate.steamapi.item.IArmorModule;
+import boilerplate.steamapi.item.IArmorModule.EnumArmorEffectType;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 

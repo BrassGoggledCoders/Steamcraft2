@@ -26,7 +26,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  * @author decebaldecebal
  * 
  */
-public class BlockTurbine extends BlockContainerMod
+public class BlockTurbine extends BaseContainerBlock
 {
 	@SideOnly(Side.CLIENT)
 	private IIcon iconTop;

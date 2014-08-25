@@ -16,7 +16,7 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import steamcraft.common.tiles.TileArmorEditor;
-import boilerplate.steamapi.IArmorModule;
+import boilerplate.steamapi.item.IArmorModule;
 
 /**
  * @author decebaldecebal
