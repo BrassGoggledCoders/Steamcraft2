@@ -1,5 +1,5 @@
 /**
- * This class was created by BrassGoggledCoders modding team. 
+ * This class was created by BrassGoggledCoders modding team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -8,7 +8,7 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- * 
+ *
  */
 package steamcraft.client.renderers.tile;
 
@@ -20,16 +20,16 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
-import steamcraft.client.renderers.models.ModelCrystal;
+import steamcraft.client.renderers.models.ModelTeslaCoil;
 import steamcraft.common.lib.LibInfo;
 
 public class TileTeslaCoilRenderer extends TileEntitySpecialRenderer
 {
-	private final ModelCrystal model;
+	private final ModelTeslaCoil model;
 
 	public TileTeslaCoilRenderer()
 	{
-		this.model = new ModelCrystal();
+		this.model = new ModelTeslaCoil();
 	}
 
 	@Override

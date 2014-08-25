@@ -1,5 +1,5 @@
 /**
- * This class was created by BrassGoggledCoders modding team. 
+ * This class was created by BrassGoggledCoders modding team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -8,7 +8,7 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- * 
+ *
  */
 package steamcraft.common.items;
 
@@ -30,7 +30,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author Surseance
- * 
+ *
  */
 public class ItemChisel extends BaseItem
 {
@@ -62,6 +62,8 @@ public class ItemChisel extends BaseItem
 			world.setBlock(x, y, z, InitBlocks.blockEngravedVanilla, 3, 2);
 		else if(block == Blocks.stone)
 			world.setBlock(x, y, z, InitBlocks.blockEngravedVanilla, 4, 2);
+		else if(block == Blocks.redstone_lamp)
+			world.setBlock(x, y, z, InitBlocks.blockLamp, 0, 2);
 		else if(block instanceof IChiselable)
 		{
 			Block newBlock = ((IChiselable) block).getChiseledVariant();
