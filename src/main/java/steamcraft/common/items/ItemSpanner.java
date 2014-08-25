@@ -55,13 +55,7 @@ public class ItemSpanner extends UniversalWrench
 
 			wire.changeExtracting();
 		}
-		// TODO
-		/*
-		 * if(world.getTileEntity(x, y, z) instanceof BaseTileWithInventory) { BaseTileWithInventory tile = (BaseTileWithInventory) world.getTileEntity(x, y,
-		 * z); BlockContainer container = (BlockContainer) world.getBlock(x, y, z); Item itemblock = new ItemBlockWithExtraData(container, new
-		 * Object[]{tile.inventory}); player.inventory.addItemStackToInventory(new ItemStack(itemblock)); world.setBlockToAir(x, y, z); world.setTileEntity(x,
-		 * y, z, null); }
-		 */
+
 		return true;
 
 	}
