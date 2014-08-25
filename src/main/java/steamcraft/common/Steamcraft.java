@@ -110,7 +110,7 @@ public class Steamcraft
 	}
 
 	@EventHandler
-	public void serverStarting(final FMLServerStartingEvent event)
+	public void serverStarting(FMLServerStartingEvent event)
 	{
 		event.registerServerCommand(new CommandSteamcraft());
 	}

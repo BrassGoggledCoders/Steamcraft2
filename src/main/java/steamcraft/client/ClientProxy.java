@@ -63,7 +63,7 @@ import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.FMLCommonHandler;
 
 /**
- * @author Surseance (Johnny Eatmon)
+ * @author Surseance
  *
  */
 public class ClientProxy extends CommonProxy
