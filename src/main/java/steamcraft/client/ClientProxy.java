@@ -47,7 +47,6 @@ import steamcraft.common.CommonProxy;
 import steamcraft.common.InitKeyBindings;
 import steamcraft.common.entities.projectile.EntityBullet;
 import steamcraft.common.entities.projectile.EntitySmallLightningBolt;
-import steamcraft.common.lib.Utils;
 import steamcraft.common.tiles.TileBattery;
 import steamcraft.common.tiles.TileCharger;
 import steamcraft.common.tiles.TileCopperPipe;
@@ -67,7 +66,6 @@ import cpw.mods.fml.common.FMLCommonHandler;
  * @author Surseance (Johnny Eatmon)
  *
  */
-@SuppressWarnings("deprecation")
 public class ClientProxy extends CommonProxy
 {
 	@Override
