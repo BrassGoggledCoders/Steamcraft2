@@ -14,7 +14,10 @@ package steamcraft.common.blocks;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
@@ -23,6 +26,7 @@ import steamcraft.common.Steamcraft;
 import steamcraft.common.blocks.machines.BaseContainerBlock;
 import steamcraft.common.lib.LibInfo;
 import steamcraft.common.tiles.TileTimeBomb;
+import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -83,5 +87,15 @@ public class BlockTimeBomb extends BaseContainerBlock
 		this.blockIcon = icon.registerIcon(LibInfo.PREFIX + "blockTimebomb");
 		this.iconEnd = icon.registerIcon(LibInfo.PREFIX + "blockTimebombTop");
 	}
+	@Override
+	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase ent, ItemStack stack)
+	{
+		if(ent != null && ent instanceof EntityPlayer)
+		{
+			EntityPlayer player = (EntityPlayer)ent;
+			FMLLog.info("Time Bomb placed at X: " + Integer.toString(x) + " Y: " + Integer.toString(y) + " Z: " + Integer.toString(z) + " by player: " + player.getCommandSenderName(), "");
+		}
+	}
+
 
 }
