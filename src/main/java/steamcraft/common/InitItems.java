@@ -140,8 +140,6 @@ public class InitItems
 	// Modules
 	public static Item itemAqualung;
 
-	// Craft Teapot. Fill teapot with water. Add tealeaves. Craft cup. Right
-	// click with pot to fill cup.
 	public static Item itemTeapot, itemTeacup;
 
 	/* Init */
