@@ -1,5 +1,5 @@
 /**
- * This class was created by BrassGoggledCoders modding team. 
+ * This class was created by BrassGoggledCoders modding team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -8,7 +8,7 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- * 
+ *
  */
 package steamcraft.client.renderers.entity;
 
@@ -27,7 +27,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author Surseance
- * 
+ *
  */
 @SideOnly(Side.CLIENT)
 public class RenderBullet extends Render
@@ -55,7 +55,7 @@ public class RenderBullet extends Render
 		final float f7 = 0.15625F;
 		final float f8 = (5 + i * 10) / 32F;
 		final float f9 = (10 + i * 10) / 32F;
-		final float f10 = 1F;
+		final float f10 = 0.3F;
 		GL11.glEnable(32826 /* GL_RESCALE_NORMAL_EXT */);
 		final float f11 = 1.0F - frotP;
 

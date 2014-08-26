@@ -32,7 +32,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author Surseance (Johnny Eatmon)
- * 
+ *
  */
 public class EntityBullet extends Entity implements IProjectile
 {
@@ -41,9 +41,6 @@ public class EntityBullet extends Entity implements IProjectile
 	private int zTile = -1;
 
 	private Block inTile;
-	private boolean inGround;
-
-	public int arrowShake;
 
 	private Entity shootingEntity;
 
@@ -184,39 +181,11 @@ public class EntityBullet extends Entity implements IProjectile
 			this.prevRotationYaw = this.rotationYaw = (float) (Math.atan2(this.motionX, this.motionZ) * 180D / 3.1415927410125732D);
 			this.prevRotationPitch = this.rotationPitch = (float) (Math.atan2(this.motionY, magnitude) * 180D / 3.1415927410125732D);
 		}
-
-		if(this.arrowShake > 0)
-			this.arrowShake--;
-
-		if(this.inGround)
-		{
-			Block block = this.worldObj.getBlock(this.xTile, this.yTile, this.zTile);
-
-			if(block != this.inTile)
-			{
-				this.inGround = false;
-				this.motionX *= this.rand.nextFloat() * 0.2F;
-				this.motionY *= this.rand.nextFloat() * 0.2F;
-				this.motionZ *= this.rand.nextFloat() * 0.2F;
-				this.timeTillDeath = 0;
-				this.flyTime = 0;
-			}
-			else
-			{
-				this.timeTillDeath++;
-
-				if(this.timeTillDeath == 1200)
-					this.setDead();
-
-				return;
-			}
-		}
-		else
-			this.flyTime++;
+		this.flyTime++;
 
 		Vec3 posVector = Vec3.createVectorHelper(this.posX, this.posY, this.posZ);
 		Vec3 velVector = Vec3.createVectorHelper(this.posX + this.motionX, this.posY + this.motionY, this.posZ + this.motionZ);
-		MovingObjectPosition mop = this.worldObj.rayTraceBlocks(posVector, velVector, false); 
+		MovingObjectPosition mop = this.worldObj.rayTraceBlocks(posVector, velVector, false);
 
 		posVector = Vec3.createVectorHelper(this.posX, this.posY, this.posZ);
 		velVector = Vec3.createVectorHelper(this.posX + this.motionX, this.posY + this.motionY, this.posZ + this.motionZ);
@@ -329,20 +298,16 @@ public class EntityBullet extends Entity implements IProjectile
 
 		if(this.handleWaterMovement())
 			this.setDead();
-		// Bullets can't go through water, silly!
-		// for(int k = 0; k < 4; k++)
-		// {
-		// float f6 = 0.25F;
-		// worldObj.spawnParticle("bubble", posX - motionX * (double)f6,
-		// posY - motionY * (double)f6, posZ - motionZ * (double)f6,
-		// motionX, motionY, motionZ);
-		// }
-		// f3 = 0.8F;
 
 		this.motionX *= speed;
 		this.motionY *= speed;
 		this.motionZ *= speed;
 		this.setPosition(this.posX, this.posY, this.posZ);
+
+		if(this.worldObj.isRemote)
+		{
+			worldObj.spawnParticle("explode", this.posX, this.posY, this.posZ, 0, 0, 0);
+		}
 	}
 
 	@Override
@@ -351,9 +316,6 @@ public class EntityBullet extends Entity implements IProjectile
 		tagCompound.setShort("xTile", (short) this.xTile);
 		tagCompound.setShort("yTile", (short) this.yTile);
 		tagCompound.setShort("zTile", (short) this.zTile);
-		// tagCompound.setByte("inTile", (byte)this.inTile.getI);
-		tagCompound.setByte("shake", (byte) this.arrowShake);
-		tagCompound.setByte("inGround", (byte) (this.inGround ? 1 : 0));
 	}
 
 	@Override
@@ -362,9 +324,6 @@ public class EntityBullet extends Entity implements IProjectile
 		this.xTile = tagCompound.getShort("xTile");
 		this.yTile = tagCompound.getShort("yTile");
 		this.zTile = tagCompound.getShort("zTile");
-		// this.inTile = tagCompound.getByte("inTile") & 0xff;
-		this.arrowShake = tagCompound.getByte("shake") & 0xff;
-		this.inGround = tagCompound.getByte("inGround") == 1;
 	}
 
 	@Override

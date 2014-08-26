@@ -57,11 +57,15 @@ public class ItemFirearm extends BaseFirearm
 		player.inventory.consumeInventoryItem(this.ammo);
 		player.inventory.consumeInventoryItem(Items.gunpowder);
 
-		if(!world.isRemote)
+		//if(!world.isRemote)
+		//Hmm, hopefully this won't cause too many problems,
+		///it seems to fix invis issue (obviously :P). Temporary.
+		//{
 			if(this.ammo == InitItems.itemMusketBall)
 				world.spawnEntityInWorld(new EntityBullet(world, player, this.damage, 8));
 			else
 				world.spawnEntityInWorld(new EntityBullet(world, player, this.damage, 15));
+		//}
 
 		world.playSoundAtEntity(player, this.fireSound, 0.6F, 1.0F);
 	}
