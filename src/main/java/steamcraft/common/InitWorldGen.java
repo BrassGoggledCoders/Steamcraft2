@@ -28,7 +28,7 @@ import cpw.mods.fml.common.IWorldGenerator;
 
 /**
  * @authors Surseance & warlordjones
- * 
+ *
  */
 public class InitWorldGen implements IWorldGenerator
 {
@@ -87,8 +87,14 @@ public class InitWorldGen implements IWorldGenerator
 					ConfigWorldGen.phosphateCluster, InitBlocks.blockCustomOre, 6, Blocks.stone);
 
 		if(ConfigWorldGen.slateGenEnabled)
+		{
 			this.generateOre(world, random, chunkX, chunkZ, 1, 40, 70,
 					ConfigWorldGen.slateCluster, InitBlocks.blockSlate, 0, Blocks.stone);
+			this.generateOre(world, random, chunkX, chunkZ, 1, 40, 70,
+					ConfigWorldGen.slateCluster, InitBlocks.blockSlate, 1, Blocks.stone);
+			this.generateOre(world, random, chunkX, chunkZ, 1, 40, 70,
+					ConfigWorldGen.slateCluster, InitBlocks.blockSlate, 2, Blocks.stone);
+		}
 
 		if(ConfigWorldGen.brassTreeGenEnabled)
 		{
