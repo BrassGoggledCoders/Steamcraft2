@@ -25,11 +25,11 @@ import steamcraft.common.tiles.container.ContainerCharger;
 
 /**
  * @author decebaldecebal
- * 
+ *
  */
 public class GuiCharger extends GuiContainer
 {
-	private static ResourceLocation guitexture = new ResourceLocation(LibInfo.PREFIX + "textures/gui/battery.png");
+	private static ResourceLocation guitexture = new ResourceLocation(LibInfo.PREFIX + "textures/gui/charger.png");
 
 	private TileCharger tile;
 
