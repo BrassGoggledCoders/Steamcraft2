@@ -18,11 +18,12 @@ import steamcraft.common.InitBlocks;
 import steamcraft.common.InitItems;
 import steamcraft.common.lib.LibInfo;
 import boilerplate.common.utils.helpers.OreDictHelper;
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.event.FMLInterModComms;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 public class CompatabilityLayer
 {
@@ -31,6 +32,8 @@ public class CompatabilityLayer
 		registerOreDictionaryEntries();
 		sendIMCMessages();
 		ForgeHooks.init();
+		if(Loader.isModLoaded("MineFactoryReloaded"))
+		MFRCompat.init();
 	}
 
 	private static void sendIMCMessages()
