@@ -248,11 +248,10 @@ public class EntityBullet extends Entity implements IProjectile
 				this.zTile = mop.blockZ;
 				this.inTile = this.worldObj.getBlock(this.xTile, this.yTile, this.zTile);
 
-				if(this.inTile == Blocks.glass || this.inTile == Blocks.glowstone || this.inTile == Blocks.glass_pane || this.inTile == Blocks.ice)
+				if(this.inTile == Blocks.glass || this.inTile == Blocks.glowstone || this.inTile == Blocks.glass_pane || this.inTile == Blocks.ice || this.inTile == Blocks.stained_glass || this.inTile == Blocks.stained_glass_pane)
 				{
 					Block block = this.inTile;
-					this.worldObj.playSoundEffect(this.xTile + 0.5D, this.yTile + 0.5D, this.zTile + 0.5D, block.stepSound.getBreakSound(), 1.0F,
-							1.0F);
+					this.worldObj.playSoundEffect(this.xTile + 0.5D, this.yTile + 0.5D, this.zTile + 0.5D, block.stepSound.getBreakSound(), 1.0F,1.0F);
 					this.worldObj.setBlockToAir(this.xTile, this.yTile, this.zTile);
 				}
 				else

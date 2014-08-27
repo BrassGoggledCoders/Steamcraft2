@@ -44,7 +44,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 public class EventHandlerFML
 {
@@ -136,6 +136,12 @@ public class EventHandlerFML
 		{
 			ChatComponentText component = new ChatComponentText("Looking gentlemanly today James :-)");
 			component.getChatStyle().setColor(EnumChatFormatting.DARK_RED);
+			event.player.addChatComponentMessage(component);
+		}
+		else if(event.player.getCommandSenderName().equals("DocArcane"))
+		{
+			ChatComponentText component = new ChatComponentText("Welcome, Lord of the Mole People!");
+			component.getChatStyle().setColor(EnumChatFormatting.GRAY);
 			event.player.addChatComponentMessage(component);
 		}
 		// TODO: Test on server
