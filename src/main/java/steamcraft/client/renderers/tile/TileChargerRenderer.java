@@ -36,13 +36,10 @@ public class TileChargerRenderer extends TileEntitySpecialRenderer
 {
 	@SuppressWarnings("unused")
 	private final ModelCharger model;
-	@SuppressWarnings("unused")
-	private RenderFloatingItem itemRenderer;
 
 	public TileChargerRenderer()
 	{
 		this.model = new ModelCharger();
-		this.itemRenderer = new RenderFloatingItem(false, false);
 	}
 
 	@Override
@@ -62,15 +59,7 @@ public class TileChargerRenderer extends TileEntitySpecialRenderer
 		if(tile.inventory[0] != null)
 		{
 			GL11.glPushMatrix();
-			EntityItem entItem = new EntityItem(Minecraft.getMinecraft().thePlayer.getEntityWorld(), 0D, 0D, 0D, tile.inventory[0]);
-			//Without the below line, the item will spazz out
-			entItem.hoverStart = 0.0F;
-			RenderItem.renderInFrame = true;
-			GL11.glTranslatef((float)dx + 0.5F, (float)dy + 0.3F, (float)dz + 0.3F);
-			GL11.glRotatef(180, 0, 5.5F, 1);
-			GL11.glScalef(1.6F, 1.6F, 1.6F);
-			RenderManager.instance.renderEntityWithPosYaw(entItem, 0.0D, 0.0D, 0.0D, 0.0F, 0.0F);
-			RenderItem.renderInFrame = false;
+			RenderFloatingItem.render(dx, dy, dz, tile.inventory[0]);
 			GL11.glPopMatrix();
 		}
 	}
