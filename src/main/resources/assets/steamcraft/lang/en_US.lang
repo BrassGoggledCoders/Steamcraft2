@@ -90,6 +90,8 @@ tile.blockBattery.name=Battery Bank
 tile.blockBattery.desc=Stores 400k RF. Transfers at 80RF/tick. Keep electric jars in the internal slots to increase battery input/output and capacity.
 tile.blockTeslaCoil.name=Tesla Coil
 tile.blockTeslaCoil.desc=Uses 500RF/tick and 1000RF/damage to electrocute any living entity in a 5x5x5 area around it. Applying a redstone signal will make it target players instead. Placing an emerald block under the coil will cause it to only target villagers.
+tile.blockCharger.name=Charger
+tile.blockCharger.desc=Charges items placed inside it
 
 #Items
 item.itemResource.0.name=Etherium Crystal
