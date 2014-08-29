@@ -545,7 +545,7 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 		{
 			this.ticksSinceLastUpdate++;
 
-			if(this.ticksSinceLastUpdate == ticksTillUpdate / 2)
+			//if(this.ticksSinceLastUpdate == ticksTillUpdate / 2)
 				this.updateClient(wire);
 
 			if(this.ticksSinceLastUpdate == ticksTillUpdate)

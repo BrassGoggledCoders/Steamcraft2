@@ -594,7 +594,7 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 		{
 			this.ticksSinceLastUpdate++;
 
-			if(this.ticksSinceLastUpdate == ticksTillUpdate / 2)
+			//if(this.ticksSinceLastUpdate == ticksTillUpdate / 2)
 				this.updateClient(pipe);
 
 			if(this.ticksSinceLastUpdate == ticksTillUpdate)
