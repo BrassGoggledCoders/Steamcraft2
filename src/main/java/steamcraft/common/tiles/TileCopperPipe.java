@@ -22,6 +22,7 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
+import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTank;
 import net.minecraftforge.fluids.FluidTankInfo;
@@ -34,10 +35,10 @@ import steamcraft.common.packets.FluidNetworkPacket;
 import cpw.mods.fml.common.network.NetworkRegistry.TargetPoint;
 
 /**
- * @author Decebaldecebal
+ * @author decebaldecebal
  * 
  */
-public class TileCopperPipe extends TileEntity
+public class TileCopperPipe extends TileEntity implements IFluidHandler
 {
 	public ForgeDirection extract = null;
 	public ForgeDirection[] connections = new ForgeDirection[6];
@@ -501,6 +502,64 @@ public class TileCopperPipe extends TileEntity
 		}
 	}
 
+
+	@Override
+	public boolean canDrain(ForgeDirection from, Fluid fluid)
+	{
+		return from == extract && (this.network.tank.getFluid()==null || this.network.tank.getFluid().getFluid() == fluid);
+	}
+
+	@Override
+	public boolean canFill(ForgeDirection from, Fluid fluid)
+	{
+		return from != extract && (this.network.tank.getFluid()==null || this.network.tank.getFluid().getFluid() == fluid);
+	}
+
+	@Override
+	public FluidStack drain(ForgeDirection from, FluidStack resource, boolean doDrain)
+	{
+		if(from != extract && network.tank.getFluid()!=null && network.tank.getFluid().isFluidEqual(resource)) 
+		{
+			int amount = Math.min(resource.amount, FluidNetwork.maxTransferPerTile/FluidNetwork.ticksTillUpdate);
+			
+			return network.tank.drain(amount, doDrain);
+		}
+		
+		return null;
+	}
+
+	@Override
+	public FluidStack drain(ForgeDirection from, int maxDrain, boolean doDrain)
+	{
+		if(from != extract && network.tank.getFluid()!=null)
+		{
+			int amount = Math.min(maxDrain, FluidNetwork.maxTransferPerTile/FluidNetwork.ticksTillUpdate);
+			
+			return network.tank.drain(amount, doDrain);
+		}
+		
+		return null;
+	}
+
+	@Override
+	public int fill(ForgeDirection from, FluidStack resource, boolean doFill)
+	{
+		if(extract == from)
+		{
+			int amount = Math.min(resource.amount, FluidNetwork.maxExtractPerTile/FluidNetwork.ticksTillUpdate);
+			
+			return network.tank.fill(new FluidStack(resource, amount), doFill);
+		}
+		
+		return 0;
+	}
+
+	@Override
+	public FluidTankInfo[] getTankInfo(ForgeDirection from)
+	{
+		return new FluidTankInfo[] { network.tank.getInfo() };
+	}
+	
 	public static class FluidNetwork
 	{
 		public static final short capacityPerPipe = (short) 200;
