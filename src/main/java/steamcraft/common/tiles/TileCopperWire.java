@@ -474,7 +474,7 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 	@Override
 	public int receiveEnergy(ForgeDirection from, int maxReceive, boolean simulate)
 	{
-		if(from == this.extract)
+		if(from == this.extract && network != null)
 		{
 			int amount = Math.min(maxReceive, EnergyNetwork.maxTransferPerTile / EnergyNetwork.ticksTillUpdate);
 
@@ -487,7 +487,7 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 	@Override
 	public int extractEnergy(ForgeDirection from, int maxExtract, boolean simulate)
 	{
-		if(from != this.extract)
+		if(from != this.extract && network != null)
 		{
 			int amount = Math.min(maxExtract, EnergyNetwork.maxTransferPerTile / EnergyNetwork.ticksTillUpdate);
 
@@ -500,13 +500,19 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 	@Override
 	public int getEnergyStored(ForgeDirection from)
 	{
-		return this.network.buffer.getEnergyStored();
+		if(network != null)
+			return this.network.buffer.getEnergyStored();
+		
+		return 0;
 	}
 
 	@Override
 	public int getMaxEnergyStored(ForgeDirection from)
 	{
-		return this.network.buffer.getMaxEnergyStored();
+		if(network != null)
+			return this.network.buffer.getMaxEnergyStored();
+		
+		return 0;
 	}
 
 	public static class EnergyNetwork

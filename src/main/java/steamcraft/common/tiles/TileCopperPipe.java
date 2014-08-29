@@ -506,19 +506,19 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 	@Override
 	public boolean canDrain(ForgeDirection from, Fluid fluid)
 	{
-		return from == extract && (this.network.tank.getFluid()==null || this.network.tank.getFluid().getFluid() == fluid);
+		return from == extract && network!=null && (this.network.tank.getFluid()==null || this.network.tank.getFluid().getFluid() == fluid);
 	}
 
 	@Override
 	public boolean canFill(ForgeDirection from, Fluid fluid)
 	{
-		return from != extract && (this.network.tank.getFluid()==null || this.network.tank.getFluid().getFluid() == fluid);
+		return from != extract && network!=null && (this.network.tank.getFluid()==null || this.network.tank.getFluid().getFluid() == fluid);
 	}
 
 	@Override
 	public FluidStack drain(ForgeDirection from, FluidStack resource, boolean doDrain)
 	{
-		if(from != extract && network.tank.getFluid()!=null && network.tank.getFluid().isFluidEqual(resource)) 
+		if(from != extract && network != null && network.tank.getFluid()!=null && network.tank.getFluid().isFluidEqual(resource)) 
 		{
 			int amount = Math.min(resource.amount, FluidNetwork.maxTransferPerTile/FluidNetwork.ticksTillUpdate);
 			
@@ -531,7 +531,7 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 	@Override
 	public FluidStack drain(ForgeDirection from, int maxDrain, boolean doDrain)
 	{
-		if(from != extract && network.tank.getFluid()!=null)
+		if(from != extract && network != null && network.tank.getFluid()!=null)
 		{
 			int amount = Math.min(maxDrain, FluidNetwork.maxTransferPerTile/FluidNetwork.ticksTillUpdate);
 			
@@ -544,7 +544,7 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 	@Override
 	public int fill(ForgeDirection from, FluidStack resource, boolean doFill)
 	{
-		if(extract == from)
+		if(extract == from && network != null)
 		{
 			int amount = Math.min(resource.amount, FluidNetwork.maxExtractPerTile/FluidNetwork.ticksTillUpdate);
 			
