@@ -36,7 +36,7 @@ import cpw.mods.fml.common.network.NetworkRegistry.TargetPoint;
  * @author decebaldecebal
  * 
  */
-public class TileCopperWire extends TileEntity
+public class TileCopperWire extends TileEntity implements IEnergyHandler
 {
 	public ForgeDirection extract = null;
 	public ForgeDirection[] connections = new ForgeDirection[6];
@@ -192,8 +192,14 @@ public class TileCopperWire extends TileEntity
 			Coords temp = new Coords(this.xCoord + dir.offsetX, this.yCoord + dir.offsetY, this.zCoord + dir.offsetZ, dir.getOpposite());
 
 			this.network.outputs.remove(temp);
+			
+			if(this.connections[i] == extract)
+				this.network.inputs.remove(temp);
 		}
 
+		if(extract == connections[i])
+			this.extract = null;
+		
 		this.connections[i] = null;
 	}
 
@@ -255,14 +261,6 @@ public class TileCopperWire extends TileEntity
 
 		if(!this.worldObj.isRemote)
 		{
-			if(this.extract != null && !this.isEnergyHandler(this.extract))
-			{
-				this.network.inputs.remove(new Coords(this.xCoord + this.extract.offsetX, this.yCoord + this.extract.offsetY, this.zCoord
-						+ this.extract.offsetZ, this.extract.getOpposite()));
-
-				this.extract = null;
-			}
-
 			for(ForgeDirection dir : this.connections)
 				if(dir != null && this.isEnergyHandler(dir))
 				{
@@ -420,7 +418,7 @@ public class TileCopperWire extends TileEntity
 	public boolean isEnergyHandler(ForgeDirection dir)
 	{
 		return this.worldObj.getTileEntity(this.xCoord + dir.offsetX, this.yCoord + dir.offsetY, this.zCoord + dir.offsetZ) instanceof IEnergyHandler
-				&& !isCopperWire(dir);
+				&& !this.isCopperWire(dir);
 	}
 
 	public ForgeDirection onlyOneOpposite()
@@ -465,6 +463,50 @@ public class TileCopperWire extends TileEntity
 			InitPackets.network.sendToAllAround(new CopperWirePacket(this.worldObj.provider.dimensionId, this.xCoord, this.yCoord, this.zCoord,
 					this.connections), new TargetPoint(this.worldObj.provider.dimensionId, this.xCoord, this.yCoord, this.zCoord, 100));
 		}
+	}
+
+	@Override
+	public boolean canConnectEnergy(ForgeDirection from)
+	{
+		return true;
+	}
+
+	@Override
+	public int receiveEnergy(ForgeDirection from, int maxReceive, boolean simulate)
+	{
+		if(from == this.extract)
+		{
+			int amount = Math.min(maxReceive, EnergyNetwork.maxTransferPerTile / EnergyNetwork.ticksTillUpdate);
+
+			return this.network.buffer.receiveEnergy(amount, simulate);
+		}
+
+		return 0;
+	}
+
+	@Override
+	public int extractEnergy(ForgeDirection from, int maxExtract, boolean simulate)
+	{
+		if(from != this.extract)
+		{
+			int amount = Math.min(maxExtract, EnergyNetwork.maxTransferPerTile / EnergyNetwork.ticksTillUpdate);
+
+			return this.network.buffer.extractEnergy(amount, simulate);
+		}
+
+		return 0;
+	}
+
+	@Override
+	public int getEnergyStored(ForgeDirection from)
+	{
+		return this.network.buffer.getEnergyStored();
+	}
+
+	@Override
+	public int getMaxEnergyStored(ForgeDirection from)
+	{
+		return this.network.buffer.getMaxEnergyStored();
 	}
 
 	public static class EnergyNetwork
@@ -543,6 +585,7 @@ public class TileCopperWire extends TileEntity
 						if(world.getTileEntity(coords.x, coords.y, coords.z) instanceof IEnergyHandler)
 						{
 							IEnergyHandler tile = (IEnergyHandler) world.getTileEntity(coords.x, coords.y, coords.z);
+							
 							if(tile != null)
 							{
 								int canFill = tile.extractEnergy(coords.dir, Math.min(distribute, maxTransferPerTile), true);

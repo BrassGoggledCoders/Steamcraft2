@@ -194,7 +194,13 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 			Coords temp = new Coords(this.xCoord + dir.offsetX, this.yCoord + dir.offsetY, this.zCoord + dir.offsetZ, dir.getOpposite());
 
 			this.network.outputs.remove(temp);
+			
+			if(this.connections[i] == extract)
+				this.network.inputs.remove(temp);
 		}
+		
+		if(extract == connections[i])
+			this.extract = null;
 
 		this.connections[i] = null;
 	}
@@ -257,13 +263,6 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 
 		if(!this.worldObj.isRemote)
 		{
-			if(this.extract != null && !this.isFluidHandler(this.extract))
-			{
-				this.network.inputs.remove(new Coords(this.xCoord + this.extract.offsetX, this.yCoord + this.extract.offsetY, this.zCoord
-						+ this.extract.offsetZ, this.extract.getOpposite()));
-				this.extract = null;
-			}
-
 			for(ForgeDirection dir : this.connections)
 			{
 				if(dir != null && this.isFluidHandler(dir))
