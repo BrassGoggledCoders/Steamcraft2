@@ -513,7 +513,7 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 	{
 		public static final short capacityPerWire = (short) 2500;
 
-		private static final byte ticksTillUpdate = 2;
+		private static final byte ticksTillUpdate = 1;
 
 		private static final short maxTransferPerTile = 2500 * ticksTillUpdate; // can transmit a max of 2500RF/t
 

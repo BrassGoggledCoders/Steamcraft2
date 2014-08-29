@@ -567,7 +567,7 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 	{
 		public static final short capacityPerPipe = (short) 200;
 
-		private static final byte ticksTillUpdate = 4;
+		private static final byte ticksTillUpdate = 1;
 
 		private static final short maxExtractPerTile = 50 * ticksTillUpdate;
 		private static final short maxTransferPerTile = 100 * ticksTillUpdate;
