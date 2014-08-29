@@ -558,7 +558,10 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 	@Override
 	public FluidTankInfo[] getTankInfo(ForgeDirection from)
 	{
-		return new FluidTankInfo[] { network.tank.getInfo() };
+		if(network != null)
+			return new FluidTankInfo[] { network.tank.getInfo() };
+		
+		return null;
 	}
 	
 	public static class FluidNetwork

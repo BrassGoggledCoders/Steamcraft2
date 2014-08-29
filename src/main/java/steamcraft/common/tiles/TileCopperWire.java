@@ -417,9 +417,10 @@ public class TileCopperWire extends TileEntity
 		return this.worldObj.getBlock(this.xCoord + dir.offsetX, this.yCoord + dir.offsetY, this.zCoord + dir.offsetZ) == InitBlocks.blockCopperWire;
 	}
 
-	private boolean isEnergyHandler(ForgeDirection dir)
+	public boolean isEnergyHandler(ForgeDirection dir)
 	{
-		return this.worldObj.getTileEntity(this.xCoord + dir.offsetX, this.yCoord + dir.offsetY, this.zCoord + dir.offsetZ) instanceof IEnergyHandler;
+		return this.worldObj.getTileEntity(this.xCoord + dir.offsetX, this.yCoord + dir.offsetY, this.zCoord + dir.offsetZ) instanceof IEnergyHandler
+				&& !isCopperWire(dir);
 	}
 
 	public ForgeDirection onlyOneOpposite()

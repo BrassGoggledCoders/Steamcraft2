@@ -158,6 +158,37 @@ public class TileCopperWireRenderer extends TileEntitySpecialRenderer
 			tess.addVertexWithUV(12 * pixel, 1, 1 - 12 * pixel, 6 * tPixel, 6 * tPixel);
 			tess.addVertexWithUV(12 * pixel, 1, 12 * pixel, 6 * tPixel, 0 * tPixel);
 			tess.addVertexWithUV(12 * pixel, 1 - 12 * pixel, 12 * pixel, 0 * tPixel, 0 * tPixel);
+			
+			// The actual new connection
+			tess.addVertexWithUV(1 - 10 * pixel, 1, 1 - 10 * pixel, 0 * tPixel, 14 * tPixel);
+			tess.addVertexWithUV(1 - 10 * pixel, 1, 10 * pixel, 8 * tPixel, 14 * tPixel);
+			tess.addVertexWithUV(10 * pixel, 1, 10 * pixel, 8 * tPixel, 7 * tPixel);
+			tess.addVertexWithUV(10 * pixel, 1, 1 - 10 * pixel, 0 * tPixel, 7 * tPixel);
+
+			tess.addVertexWithUV(10 * pixel, 1 - 4 * pixel, 1 - 10 * pixel, 0 * tPixel, 7 * tPixel);
+			tess.addVertexWithUV(10 * pixel, 1 - 4 * pixel, 10 * pixel, 8 * tPixel, 7 * tPixel);
+			tess.addVertexWithUV(1 - 10 * pixel, 1 - 4 * pixel, 10 * pixel, 8 * tPixel, 14 * tPixel);
+			tess.addVertexWithUV(1 - 10 * pixel, 1 - 4 * pixel, 1 - 10 * pixel, 0 * tPixel, 14 * tPixel);
+
+			tess.addVertexWithUV(1 - 10 * pixel, 1, 10 * pixel, 0 * tPixel, 8 * tPixel);
+			tess.addVertexWithUV(1 - 10 * pixel, 1 - 4 * pixel, 10 * pixel, 0 * tPixel, 10 * tPixel);
+			tess.addVertexWithUV(10 * pixel, 1 - 4 * pixel, 10 * pixel, 8 * tPixel, 10 * tPixel);
+			tess.addVertexWithUV(10 * pixel, 1, 10 * pixel, 8 * tPixel, 8 * tPixel);
+
+			tess.addVertexWithUV(10 * pixel, 1, 1 - 10 * pixel, 8 * tPixel, 8 * tPixel);
+			tess.addVertexWithUV(10 * pixel, 1 - 4 * pixel, 1 - 10 * pixel, 8 * tPixel, 10 * tPixel);
+			tess.addVertexWithUV(1 - 10 * pixel, 1 - 4 * pixel, 1 - 10 * pixel, 0 * tPixel, 10 * tPixel);
+			tess.addVertexWithUV(1 - 10 * pixel, 1, 1 - 10 * pixel, 0 * tPixel, 8 * tPixel);
+
+			tess.addVertexWithUV(10 * pixel, 1, 10 * pixel, 0 * tPixel, 8 * tPixel);
+			tess.addVertexWithUV(10 * pixel, 1 - 4 * pixel, 10 * pixel, 0 * tPixel, 10 * tPixel);
+			tess.addVertexWithUV(10 * pixel, 1 - 4 * pixel, 1 - 10 * pixel, 8 * tPixel, 10 * tPixel);
+			tess.addVertexWithUV(10 * pixel, 1, 1 - 10 * pixel, 8 * tPixel, 8 * tPixel);
+
+			tess.addVertexWithUV(1 - 10 * pixel, 1, 1 - 10 * pixel, 8 * tPixel, 8 * tPixel);
+			tess.addVertexWithUV(1 - 10 * pixel, 1 - 4 * pixel, 1 - 10 * pixel, 8 * tPixel, 10 * tPixel);
+			tess.addVertexWithUV(1 - 10 * pixel, 1 - 4 * pixel, 10 * pixel, 0 * tPixel, 10 * tPixel);
+			tess.addVertexWithUV(1 - 10 * pixel, 1, 10 * pixel, 0 * tPixel, 8 * tPixel);
 		}
 		tess.draw();
 
