@@ -80,7 +80,7 @@ public class InitBlocks
 	public static Block blockCastIronLamp;
 	public static Block blockCastIronFence, blockCastIronGate, blockCastIronRailing;
 
-	public static Block blockLamp;
+	public static Block blockLamp, blockLampOn;
 
 	/* Ores */
 
@@ -172,9 +172,11 @@ public class InitBlocks
 		GameRegistry.registerBlock(blockCastIronGate, "BlockCastIronGate");
 		GameRegistry.registerBlock(blockCastIronRailing, "BlockCastIronRailing");
 
-		blockLamp = new BlockLamp().setBlockName("blockLamp");;
+		blockLamp = new BlockLamp(false).setBlockName("blockLamp");
+		blockLampOn = new BlockLamp(true).setBlockName("blockLamp");
 
 		GameRegistry.registerBlock(blockLamp, "BlockLamp");
+		GameRegistry.registerBlock(blockLampOn, "BlockLampOn");
 	}
 
 	private static void initializeMachines()
