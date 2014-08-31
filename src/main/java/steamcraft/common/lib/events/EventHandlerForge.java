@@ -13,6 +13,7 @@
 package steamcraft.common.lib.events;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockContainer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.ScaledResolution;
@@ -26,6 +27,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.MovingObjectPosition.MovingObjectType;
@@ -37,6 +39,7 @@ import net.minecraftforge.event.entity.item.ItemTossEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.living.LivingSpawnEvent;
 
+import org.apache.commons.lang3.StringUtils;
 import org.lwjgl.opengl.GL11;
 
 import steamcraft.common.InitItems;
@@ -44,6 +47,7 @@ import steamcraft.common.Steamcraft;
 import steamcraft.common.config.Config;
 import steamcraft.common.entities.EntityPlayerExtended;
 import steamcraft.common.lib.LibInfo;
+import boilerplate.common.baseclasses.BaseTileWithInventory;
 import cofh.api.energy.IEnergyHandler;
 import cpw.mods.fml.client.event.ConfigChangedEvent;
 import cpw.mods.fml.common.eventhandler.EventPriority;
@@ -86,6 +90,7 @@ public class EventHandlerForge
 
 	Block block;
 	Entity entity;
+	TileEntity tile;
 	int x, y, z;
 
 	@SubscribeEvent(priority = EventPriority.HIGH)
@@ -108,6 +113,7 @@ public class EventHandlerForge
 			int posY3 = 25;
 			int posY4 = 35;
 			int posY5 = 45;
+			int posY6 = 55;
 
 			int color = 0xCCFF00;
 
@@ -118,14 +124,31 @@ public class EventHandlerForge
 				fontRenderer.drawString("Hardness: " + this.block.getBlockHardness(mc.theWorld, this.x, this.y, this.z), posX, posY3, color);
 				fontRenderer.drawString("Light Value: " + this.block.getLightValue(), posX, posY4, color);
 				// TODO
-				if(mc.theWorld.getTileEntity(this.x, this.y, this.z) != null)
+				if(this.block instanceof BlockContainer)
 				{
-					if(mc.theWorld.getTileEntity(this.x, this.y, this.z) instanceof IEnergyHandler)
+					if(tile instanceof IEnergyHandler)
 					{
-						IEnergyHandler energytile = (IEnergyHandler) mc.theWorld.getTileEntity(this.x, this.y, this.z);
+						IEnergyHandler energytile = (IEnergyHandler) tile;
 						fontRenderer.drawString(
 								"Energy: " + Integer.toString(energytile.getEnergyStored(ForgeDirection.UP)) + "/"
 										+ Integer.toString(energytile.getMaxEnergyStored(ForgeDirection.UP)) + "RF", posX, posY5, color);
+					}
+					//TODO
+					if(tile instanceof BaseTileWithInventory)
+					{
+						BaseTileWithInventory te = (BaseTileWithInventory)tile;
+
+						if(te.inventory.length < 0)
+						{
+
+							String[] names = new String[te.inventory.length];
+
+							for(int i = 0; i < te.inventory.length; i++)
+							{
+								names[i] = te.inventory[i].getUnlocalizedName();
+							}
+							fontRenderer.drawSplitString("Inventory: " + StringUtils.join(names, ","), posX, posY6, color, 20);
+						}
 					}
 				}
 			}
@@ -157,6 +180,7 @@ public class EventHandlerForge
 
 		this.block = event.player.worldObj.getBlock(event.target.blockX, event.target.blockY, event.target.blockZ);
 		this.entity = event.player;
+		this.tile = event.player.worldObj.getTileEntity(event.target.blockX, event.target.blockY, event.target.blockZ);
 	}
 
 	private void drawSelectionBox(EntityPlayer player, MovingObjectPosition mop, int i, ItemStack is, float partialTicks)
