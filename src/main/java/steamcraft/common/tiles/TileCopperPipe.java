@@ -57,6 +57,7 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 				this.network.updateNetworkForPipes = false;
 				this.updateConnections();
 			}
+			
 			this.network.updateNetwork(this);
 		}
 	}
@@ -492,7 +493,7 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 
 	private void updateClient()
 	{
-		if(this.network != null && this.worldObj.isRemote)
+		if(this.network != null && !MinecraftServer.getServer().isDedicatedServer())
 		{
 			NBTTagCompound tag = new NBTTagCompound();
 			this.network.tank.writeToNBT(tag);

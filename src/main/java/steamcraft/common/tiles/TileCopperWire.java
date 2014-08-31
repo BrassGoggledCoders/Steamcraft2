@@ -18,7 +18,6 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
-import net.minecraft.server.MinecraftServer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
@@ -421,44 +420,9 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 				&& !this.isCopperWire(dir);
 	}
 
-	public ForgeDirection onlyOneOpposite()
-	{
-		ForgeDirection main = null;
-		boolean isOpposite = false;
-
-		for(ForgeDirection dir : this.connections)
-		{
-			if(main == null && dir != null)
-				main = dir;
-
-			if(dir != null && main != dir)
-				if(!this.areDirectionsOpposite(main, dir) && !this.areDirectionsOpposite(dir, main))
-					return null;
-				else
-					isOpposite = true;
-		}
-
-		if(isOpposite)
-			return main;
-
-		return null;
-	}
-
-	private boolean areDirectionsOpposite(ForgeDirection dir1, ForgeDirection dir2)
-	{
-		if(dir1 == ForgeDirection.UP && dir2 == ForgeDirection.DOWN)
-			return true;
-		if(dir1 == ForgeDirection.SOUTH && dir2 == ForgeDirection.NORTH)
-			return true;
-		if(dir1 == ForgeDirection.EAST && dir2 == ForgeDirection.WEST)
-			return true;
-
-		return false;
-	}
-
 	private void updateClient()
 	{
-		if(this.network != null && !MinecraftServer.getServer().isDedicatedServer())
+		if(this.network != null && !this.worldObj.isRemote)
 		{
 			InitPackets.network.sendToAllAround(new CopperWirePacket(this.worldObj.provider.dimensionId, this.xCoord, this.yCoord, this.zCoord,
 					this.connections), new TargetPoint(this.worldObj.provider.dimensionId, this.xCoord, this.yCoord, this.zCoord, 100));
@@ -559,7 +523,7 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 
 		private void updateClient(TileCopperWire wire)
 		{
-			if(!MinecraftServer.getServer().isDedicatedServer())
+			if(!wire.worldObj.isRemote)
 			{
 				this.energyScaled = this.buffer.getEnergyStored() / (float) this.size / EnergyNetwork.capacityPerWire
 						* (2 * TileCopperWireRenderer.pixel);

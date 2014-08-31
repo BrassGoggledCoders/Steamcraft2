@@ -75,6 +75,8 @@ public class BlockCopperPipe extends BaseContainerBlock
 			tile.network = null;
 			tile.updateConnections();
 		}
+		
+		System.out.println("placed");
 	}
 
 	@Override
@@ -85,6 +87,8 @@ public class BlockCopperPipe extends BaseContainerBlock
 			TileCopperPipe tile = (TileCopperPipe) world.getTileEntity(x, y, z);
 			tile.updateConnections();
 		}
+		
+		System.out.println("neighbor" + x + " " + y + " " + z);
 	}
 
 	@Override
