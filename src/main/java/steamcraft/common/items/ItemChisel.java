@@ -64,6 +64,8 @@ public class ItemChisel extends BaseItem
 			world.setBlock(x, y, z, InitBlocks.blockEngravedVanilla, 4, 2);
 		else if(block == Blocks.redstone_lamp)
 			world.setBlock(x, y, z, InitBlocks.blockLamp, 0, 2);
+		else if(block == Blocks.lit_redstone_lamp)
+			world.setBlock(x, y, z, InitBlocks.blockLampOn, 0, 2);
 		else if(block instanceof IChiselable)
 		{
 			Block newBlock = ((IChiselable) block).getChiseledVariant();
