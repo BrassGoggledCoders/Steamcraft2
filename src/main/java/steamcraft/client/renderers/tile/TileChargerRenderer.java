@@ -13,11 +13,8 @@
 package steamcraft.client.renderers.tile;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.entity.RenderItem;
-import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.item.EntityItem;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 
@@ -59,8 +56,12 @@ public class TileChargerRenderer extends TileEntitySpecialRenderer
 		if(tile.inventory[0] != null)
 		{
 			GL11.glPushMatrix();
-			RenderFloatingItem.render(dx, dy, dz, tile.inventory[0]);
+			RenderFloatingItem.render(dx + 0.5F, dy + 0.3F, dz + 0.5F, 0.5F, 0, 0, tile.inventory[0]);
 			GL11.glPopMatrix();
+
+			//GL11.glPushMatrix();
+			//RenderFloatingItem.render(dx + 0.5F, dy + 0.3F, dz + 0.5F, 10, 0, 0, tile.inventory[0]);
+			//GL11.glPopMatrix();
 		}
 	}
 }
