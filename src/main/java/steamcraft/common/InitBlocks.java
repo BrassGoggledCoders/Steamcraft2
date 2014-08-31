@@ -26,6 +26,7 @@ import steamcraft.common.blocks.BlockCastIronLamp;
 import steamcraft.common.blocks.BlockCastIronRailing;
 import steamcraft.common.blocks.BlockCrystal;
 import steamcraft.common.blocks.BlockCustomOre;
+import steamcraft.common.blocks.BlockDummy;
 import steamcraft.common.blocks.BlockEngravedSolid;
 import steamcraft.common.blocks.BlockEngravedVanilla;
 import steamcraft.common.blocks.BlockEtherium;
@@ -121,6 +122,8 @@ public class InitBlocks
 	public static Block blockBrassPlaque;
 
 	public static Block blockTimeBomb;
+
+	public static Block blockDummy;
 
 	public static void init()
 	{
@@ -265,6 +268,9 @@ public class InitBlocks
 
 		blockHatch = new BlockHatch().setBlockName("blockHatch");
 		RegistryHelper.registerContainerBlock(blockHatch, TileHatch.class, "BlockHatch");
+
+		blockDummy = new BlockDummy(Material.anvil).setBlockName("blockDummy");
+		GameRegistry.registerBlock(blockDummy, "BlockDummy");
 	}
 
 }

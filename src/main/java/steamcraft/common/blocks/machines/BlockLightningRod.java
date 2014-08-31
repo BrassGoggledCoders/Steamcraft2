@@ -12,10 +12,15 @@
  */
 package steamcraft.common.blocks.machines;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import steamcraft.client.lib.RenderIDs;
+import steamcraft.common.InitBlocks;
+import steamcraft.common.blocks.BlockDummy;
 import steamcraft.common.tiles.TileLightningRod;
 
 public class BlockLightningRod extends BaseContainerBlock
@@ -24,7 +29,7 @@ public class BlockLightningRod extends BaseContainerBlock
 	public BlockLightningRod(Material mat)
 	{
 		super(mat);
-		this.setBlockBounds(0.3F, 0, 0.3F, 0.7F, 2.0F, 0.7F);
+		this.setBlockBounds(0.3F, 0, 0.3F, 0.7F, 1.0F, 0.7F);
 	}
 
 	@Override
@@ -50,5 +55,15 @@ public class BlockLightningRod extends BaseContainerBlock
 	{
 		return false;
 	}
-
+	/*public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase p_149689_5_, ItemStack p_149689_6_) {
+		world.setBlock(x, y+1, z, InitBlocks.blockDummy);
+	}
+	@Override
+	public void onNeighborBlockChange(World world, int x, int y, int z, Block block)
+	{
+		if(block.isAir(world, x, y, z))
+		{
+			this.breakBlock(world, x, y, z, this, 0);
+		}
+	}*/
 }
