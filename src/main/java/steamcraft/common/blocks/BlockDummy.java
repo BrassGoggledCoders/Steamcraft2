@@ -39,7 +39,4 @@ public class BlockDummy extends Block
 	{
 		return false;
 	}
-
-
-
 }

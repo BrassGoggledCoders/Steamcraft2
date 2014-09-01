@@ -15,6 +15,7 @@ package steamcraft.common.blocks.machines;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
@@ -29,7 +30,7 @@ public class BlockLightningRod extends BaseContainerBlock
 	public BlockLightningRod(Material mat)
 	{
 		super(mat);
-		this.setBlockBounds(0.3F, 0, 0.3F, 0.7F, 1.0F, 0.7F);
+		this.setBlockBounds(0.3F, 0, 0.3F, 0.7F, 2.0F, 0.7F);
 	}
 
 	@Override
@@ -61,9 +62,17 @@ public class BlockLightningRod extends BaseContainerBlock
 	@Override
 	public void onNeighborBlockChange(World world, int x, int y, int z, Block block)
 	{
-		if(block.isAir(world, x, y, z))
+		if(block.isAir(world, x, y+1, z))
 		{
-			this.breakBlock(world, x, y, z, this, 0);
+			this.dropBlockAsItem(world, x, y, z, new ItemStack(block));
+			world.setBlockToAir(x, y, z);
 		}
-	}*/
+	}
+	 /**
+     * Called when the block is attempted to be harvested
+
+    public void onBlockHarvested(World world, int x, int y, int z, int p_149681_5_, EntityPlayer p_149681_6_)
+    {
+    	world.setBlockToAir(x, y+1, z);
+    }*/
 }

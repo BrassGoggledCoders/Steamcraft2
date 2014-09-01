@@ -1,5 +1,5 @@
 /**
- * This class was created by BrassGoggledCoders modding team. 
+ * This class was created by BrassGoggledCoders modding team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -8,7 +8,7 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- * 
+ *
  */
 package steamcraft.common.tiles;
 
@@ -21,7 +21,7 @@ import boilerplate.steamapi.block.IHammerable;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 public class TileDropHammer extends TileEntity
 {
@@ -40,10 +40,13 @@ public class TileDropHammer extends TileEntity
 			{
 				ItemStack output = hammerable.getOutput(meta);
 				Item outputItem = output.getItem();
-				this.worldObj.spawnEntityInWorld(new EntityItem(this.worldObj, this.xCoord, this.yCoord + 1, this.zCoord, new ItemStack(outputItem,
+				if(!worldObj.isRemote)
+				{
+					this.worldObj.spawnEntityInWorld(new EntityItem(this.worldObj, this.xCoord, this.yCoord + 1, this.zCoord, new ItemStack(outputItem,
 						1, meta)));
-				this.worldObj.spawnEntityInWorld(new EntityItem(this.worldObj, this.xCoord, this.yCoord + 1, this.zCoord, new ItemStack(outputItem,
+					this.worldObj.spawnEntityInWorld(new EntityItem(this.worldObj, this.xCoord, this.yCoord + 1, this.zCoord, new ItemStack(outputItem,
 						1, meta)));
+				}
 				this.worldObj.setBlockToAir(this.xCoord, this.yCoord + 1, this.zCoord);
 			}
 		}
