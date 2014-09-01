@@ -129,13 +129,13 @@ public class InitWorldGen implements IWorldGenerator
 	{
 		if(ConfigWorldGen.netherEtheriumCrystalGenEnabled)
 			this.generateOre(world, random, chunkX, chunkZ, ConfigWorldGen.netherEtheriumCrystalCluster, 30, 120,
-					15, InitBlocks.blockCrystal, 0, Blocks.netherrack);
+					3, InitBlocks.blockCrystal, 0, Blocks.netherrack);
 	}
 
 	private void generateEnd(final World world, final Random random, final int chunkX, final int chunkZ)
 	{
 		if(ConfigWorldGen.endEtheriumCrystalGenEnabled)
 			this.generateOre(world, random, chunkX, chunkZ, ConfigWorldGen.endEtheriumCrystalCluster, 20, 100,
-					15, InitBlocks.blockCrystal, 0, Blocks.end_stone);
+					5, InitBlocks.blockCrystal, 0, Blocks.end_stone);
 	}
 }

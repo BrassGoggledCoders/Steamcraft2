@@ -274,10 +274,10 @@ public class EventHandlerForge
 	@SubscribeEvent
 	public void onLivingSpawn(LivingSpawnEvent event)
 	{
-		int chance = event.world.rand.nextInt(100);
+		int chance = event.world.rand.nextInt(1000);
 		int armorType = event.world.rand.nextInt(2);
 
-		if(chance < 5)
+		if(chance < 1)
 			if(event.entityLiving instanceof EntityZombie || event.entityLiving instanceof EntitySkeleton)
 			{
 				int sword = event.world.rand.nextInt(100);

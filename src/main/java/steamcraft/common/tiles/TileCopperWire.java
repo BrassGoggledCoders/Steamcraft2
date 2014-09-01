@@ -523,7 +523,7 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 
 		private void updateClient(TileCopperWire wire)
 		{
-			if(!wire.worldObj.isRemote)
+			if(wire.worldObj.isRemote)
 			{
 				this.energyScaled = this.buffer.getEnergyStored() / (float) this.size / EnergyNetwork.capacityPerWire
 						* (2 * TileCopperWireRenderer.pixel);

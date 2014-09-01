@@ -215,6 +215,8 @@ public class InitRecipes
 				'F', "partFan", 'G', "partGenerator" }));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockLightningRod), new Object[] { " R ", "CRC", "SSS", 'S',
 				"ingotSteel", 'R', "partCastIronRod", 'C', "plateCopper" }));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockCharger), new Object[] { "PPP", "IWI", "PPP", 'I',
+			"ingotSteel", 'S', "plateSteel", 'W', InitBlocks.blockCopperWire }));
 
 		GameRegistry.addShapedRecipe(new ItemStack(InitBlocks.blockUranium), new Object[] { "UUU", "UUU", "UUU", 'U',
 				new ItemStack(InitItems.itemResource, 1, 4) });
@@ -230,7 +232,7 @@ public class InitRecipes
 
 	private static void initOtherRecipes()
 	{
-		GameRegistry.addShapelessRecipe(new ItemStack(InitItems.itemResource, 1, 2), new Object[] { new ItemStack(Blocks.obsidian, 9) });
+		GameRegistry.addShapedRecipe(new ItemStack(InitItems.itemResource, 1, 2), new Object[] { "XXX", "XXX", "XXX", 'X', new ItemStack(Blocks.obsidian)});
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemSteelParts, 1, 0), new Object[] { " P ", "PPP", " P ", 'P',
 				"plateSteel" }));

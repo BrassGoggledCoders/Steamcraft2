@@ -145,7 +145,7 @@ public class EventHandlerFML
 			event.player.addChatComponentMessage(component);
 		}
 		// TODO: Test on server
-		if(event.player.worldObj.getPlayerEntityByName("warlordjones") != null || event.player.worldObj.getPlayerEntityByName("decebaldecebal") != null)
+		if(event.player.worldObj.getPlayerEntityByName("warlordjones") != null || event.player.worldObj.getPlayerEntityByName("decebaldecebal") != null /*&& event.player.getCommandSenderName() != "warlordjones" && event.player.getCommandSenderName() != "decebaldecebal"*/)
 		{
 			event.player.triggerAchievement(InitAchievements.creatorAchieve);
 		}

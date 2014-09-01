@@ -36,7 +36,7 @@ import cpw.mods.fml.common.network.NetworkRegistry.TargetPoint;
 
 /**
  * @author decebaldecebal
- * 
+ *
  */
 public class TileCopperPipe extends TileEntity implements IFluidHandler
 {
@@ -57,7 +57,7 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 				this.network.updateNetworkForPipes = false;
 				this.updateConnections();
 			}
-			
+
 			this.network.updateNetwork(this);
 		}
 	}
@@ -195,11 +195,11 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 			Coords temp = new Coords(this.xCoord + dir.offsetX, this.yCoord + dir.offsetY, this.zCoord + dir.offsetZ, dir.getOpposite());
 
 			this.network.outputs.remove(temp);
-			
+
 			if(this.connections[i] == extract)
 				this.network.inputs.remove(temp);
 		}
-		
+
 		if(extract == connections[i])
 			this.extract = null;
 
@@ -452,7 +452,7 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 
 	public boolean isFluidHandler(ForgeDirection dir)
 	{
-		return this.worldObj.getTileEntity(this.xCoord + dir.offsetX, this.yCoord + dir.offsetY, this.zCoord + dir.offsetZ) instanceof IFluidHandler 
+		return this.worldObj.getTileEntity(this.xCoord + dir.offsetX, this.yCoord + dir.offsetY, this.zCoord + dir.offsetZ) instanceof IFluidHandler
 				&& !isCopperPipe(dir);
 	}
 
@@ -519,13 +519,13 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 	@Override
 	public FluidStack drain(ForgeDirection from, FluidStack resource, boolean doDrain)
 	{
-		if(from != extract && network != null && network.tank.getFluid()!=null && network.tank.getFluid().isFluidEqual(resource)) 
+		if(from != extract && network != null && network.tank.getFluid()!=null && network.tank.getFluid().isFluidEqual(resource))
 		{
 			int amount = Math.min(resource.amount, FluidNetwork.maxTransferPerTile/FluidNetwork.ticksTillUpdate);
-			
+
 			return network.tank.drain(amount, doDrain);
 		}
-		
+
 		return null;
 	}
 
@@ -535,10 +535,10 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 		if(from != extract && network != null && network.tank.getFluid()!=null)
 		{
 			int amount = Math.min(maxDrain, FluidNetwork.maxTransferPerTile/FluidNetwork.ticksTillUpdate);
-			
+
 			return network.tank.drain(amount, doDrain);
 		}
-		
+
 		return null;
 	}
 
@@ -548,10 +548,10 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 		if(extract == from && network != null)
 		{
 			int amount = Math.min(resource.amount, FluidNetwork.maxExtractPerTile/FluidNetwork.ticksTillUpdate);
-			
+
 			return network.tank.fill(new FluidStack(resource, amount), doFill);
 		}
-		
+
 		return 0;
 	}
 
@@ -560,10 +560,10 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 	{
 		if(network != null)
 			return new FluidTankInfo[] { network.tank.getInfo() };
-		
+
 		return null;
 	}
-	
+
 	public static class FluidNetwork
 	{
 		public static final short capacityPerPipe = (short) 200;
@@ -612,7 +612,7 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 
 		private void updateClient(TileCopperPipe pipe)
 		{
-			if(!MinecraftServer.getServer().isDedicatedServer())
+			if(pipe.worldObj.isRemote)
 			{
 				if(this.tank.getFluid() != null)
 				{
