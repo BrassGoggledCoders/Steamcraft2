@@ -12,18 +12,19 @@
  */
 package steamcraft.common.items.armor;
 
-import java.util.Iterator;
-import java.util.LinkedHashMap;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
 
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTBase;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
 import net.minecraft.world.World;
+import net.minecraftforge.common.util.Constants;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.LibInfo;
 import boilerplate.steamapi.item.IArmorModule;
@@ -37,14 +38,14 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 public class ItemBrassArmor extends BaseArmor
 {
-	public static Map<String, IArmorModule> modules;
+	public static ArrayList<String> moduleNames = new ArrayList<String>();
+	public static ArrayList<IArmorModule> modules = new ArrayList<IArmorModule>();
 
 	public ItemBrassArmor(ItemArmor.ArmorMaterial armorMat, int renderIndex, int armorType)
 	{
 		super(armorMat, renderIndex, armorType);
 		this.setMaxStackSize(1);
 		this.setCreativeTab(Steamcraft.tabSC2);
-		modules = new LinkedHashMap<String, IArmorModule>();
 	}
 
 	@Override
@@ -65,12 +66,6 @@ public class ItemBrassArmor extends BaseArmor
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean flag)
 	{
-		// if(!ClientHelper.isShiftKeyDown())
-		// {
-		// list.add(ClientHelper.shiftForInfo);
-		// return;
-		// }
-
 		if(stack != null)
 		{
 			list.add("Modules:");
@@ -88,9 +83,43 @@ public class ItemBrassArmor extends BaseArmor
 				modules.get(i).getArmorEffect(world, player, is);
 		}
 	}
-	public ItemBrassArmor putModuleInMap(String key, IArmorModule value)
+	public void writeToNBT(NBTTagCompound comp)
 	{
-		modules.put(key, value);
-		return this;
+	 //super.writeToNBT(comp);
+	 NBTTagList tagList = new NBTTagList();
+	 for(int i = 0; i < modules.size(); i++)
+	 {
+	  IArmorModule module = modules.get(i);
+	  if(module != null)
+	  {
+	   NBTTagCompound tag = new NBTTagCompound();
+	   tag.setString("ModuleName" + i, module.getName());
+	   tagList.appendTag(tag);
+	  }
+	 }
+	 comp.setTag("ModuleNameList", tagList);
+	}
+
+	public void readFromNBT(NBTTagCompound comp)
+	{
+	 //super.readFromNBT(comp);
+	 NBTTagList tagList = comp.getTagList("ModuleNameList", Constants.NBT.TAG_LIST);
+	 for(int i = 0; i < tagList.tagCount(); i++)
+	 {
+	  NBTTagCompound tag = tagList.getCompoundTagAt(i);
+	  String s = tag.getString("ModuleName" + i);
+
+	  modules.add(i, modules.get(i));
+	 }
+	}
+	@Override
+	public void onUpdate(ItemStack stack, World world, Entity entity, int par4, boolean par5)
+	{
+
+		if(!stack.hasTagCompound())
+		stack.setTagCompound(new NBTTagCompound());
+
+		stack.writeToNBT(stack.stackTagCompound);
+		stack.readFromNBT(stack.stackTagCompound);
 	}
 }
