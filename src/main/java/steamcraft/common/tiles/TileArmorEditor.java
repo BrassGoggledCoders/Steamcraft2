@@ -56,18 +56,14 @@ public class TileArmorEditor extends BaseTileWithInventory implements IInventory
 				{
 					ItemBrassArmor armor = (ItemBrassArmor) this.inventory[0].getItem();
 					IArmorModule module = (IArmorModule) this.inventory[i].getItem();
-					if(!armor.getModuleMap(armor).containsKey(module.getName()))
-						if(armor.armorType != -1)
+					if(!ItemBrassArmor.modules.containsKey(module.getName()))
+						if(module.getApplicablePiece() != -1)
 						{
 							if(armor.armorType == module.getApplicablePiece())
-								armor.getModuleMap(armor).put(module.getName(), module);
+								armor.putModuleInMap(module.getName(), module);
 						}
 						else
-							armor.getModuleMap(armor).put(module.getName(), module);
-					// inventory[0].stackTagCompound.setString(/*"module" + i,
-					// module.getName()*/"potato", "potato");
-					// .setString("module" +i,module.getName());
-					// inventory[i] = null;
+							armor.putModuleInMap(module.getName(), module);
 				}
 	}
 

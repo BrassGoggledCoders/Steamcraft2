@@ -15,6 +15,7 @@ package steamcraft.common.items.armor;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
 
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -24,7 +25,6 @@ import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import steamcraft.common.Steamcraft;
-import steamcraft.common.items.modules.ItemAqualung;
 import steamcraft.common.lib.LibInfo;
 import boilerplate.steamapi.item.IArmorModule;
 import boilerplate.steamapi.item.IArmorModule.EnumArmorEffectType;
@@ -37,7 +37,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 public class ItemBrassArmor extends BaseArmor
 {
-	private LinkedHashMap<String, IArmorModule> modules;
+	public static Map<String, IArmorModule> modules;
 
 	public ItemBrassArmor(ItemArmor.ArmorMaterial armorMat, int renderIndex, int armorType)
 	{
@@ -74,37 +74,23 @@ public class ItemBrassArmor extends BaseArmor
 		if(stack != null)
 		{
 			list.add("Modules:");
-			for(int i = 0; i < getModuleMap((ItemBrassArmor) stack.getItem()).size(); i++)
-				list.add(((IArmorModule) this.getEntry(i, (ItemBrassArmor) stack.getItem()).getValue()).getName());
+			for(int i = 0; i < modules.size(); i++)
+				list.add(modules.get(i).getName());
 		}
 	}
 
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack is)
 	{
-		for(int i = 0; i < getModuleMap((ItemBrassArmor) is.getItem()).size(); i++)
-			if(((IArmorModule) this.getEntry(i, (ItemBrassArmor) is.getItem()).getValue()).getArmorEffectType() == EnumArmorEffectType.ONTICK)
-				((IArmorModule) this.getEntry(i, (ItemBrassArmor) is.getItem()).getValue()).getArmorEffect(world, player, is);
-	}
-	@SuppressWarnings("all")
-	private Entry getEntry(int id, ItemBrassArmor armor)
-	{
-		Iterator iterator = getModuleMap(armor).entrySet().iterator();
-		int n = 0;
-		while(iterator.hasNext())
+		for(int i = 0; i < modules.size(); i++)
 		{
-			Entry entry = (Entry) iterator.next();
-			if(n == id)
-			{
-				return entry;
-			}
-			n++;
+			if(modules.get(i).getArmorEffectType() != null && modules.get(i).getArmorEffectType() == EnumArmorEffectType.ONTICK)
+				modules.get(i).getArmorEffect(world, player, is);
 		}
-		return null;
 	}
-
-	public LinkedHashMap<String, IArmorModule> getModuleMap(ItemBrassArmor armor)
+	public ItemBrassArmor putModuleInMap(String key, IArmorModule value)
 	{
-		return armor.modules;
+		modules.put(key, value);
+		return this;
 	}
 }
