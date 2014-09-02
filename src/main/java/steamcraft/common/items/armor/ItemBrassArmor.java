@@ -12,20 +12,19 @@
  */
 package steamcraft.common.items.armor;
 
-import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map.Entry;
 
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTBase;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
 import net.minecraft.world.World;
-import net.minecraftforge.common.util.Constants;
 import steamcraft.common.Steamcraft;
+import steamcraft.common.items.modules.ItemAqualung;
 import steamcraft.common.lib.LibInfo;
 import boilerplate.steamapi.item.IArmorModule;
 import boilerplate.steamapi.item.IArmorModule.EnumArmorEffectType;
@@ -38,14 +37,14 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 public class ItemBrassArmor extends BaseArmor
 {
-	public static ArrayList<String> moduleNames = new ArrayList<String>();
-	public static ArrayList<IArmorModule> modules = new ArrayList<IArmorModule>();
+	private LinkedHashMap<String, IArmorModule> modules;
 
 	public ItemBrassArmor(ItemArmor.ArmorMaterial armorMat, int renderIndex, int armorType)
 	{
 		super(armorMat, renderIndex, armorType);
 		this.setMaxStackSize(1);
 		this.setCreativeTab(Steamcraft.tabSC2);
+		modules = new LinkedHashMap<String, IArmorModule>();
 	}
 
 	@Override
@@ -66,59 +65,46 @@ public class ItemBrassArmor extends BaseArmor
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean flag)
 	{
+		// if(!ClientHelper.isShiftKeyDown())
+		// {
+		// list.add(ClientHelper.shiftForInfo);
+		// return;
+		// }
+
 		if(stack != null)
 		{
 			list.add("Modules:");
-			for(int i = 0; i < modules.size(); i++)
-				list.add(modules.get(i).getName());
+			for(int i = 0; i < getModuleMap((ItemBrassArmor) stack.getItem()).size(); i++)
+				list.add(((IArmorModule) this.getEntry(i, (ItemBrassArmor) stack.getItem()).getValue()).getName());
 		}
 	}
 
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack is)
 	{
-		for(int i = 0; i < modules.size(); i++)
+		for(int i = 0; i < getModuleMap((ItemBrassArmor) is.getItem()).size(); i++)
+			if(((IArmorModule) this.getEntry(i, (ItemBrassArmor) is.getItem()).getValue()).getArmorEffectType() == EnumArmorEffectType.ONTICK)
+				((IArmorModule) this.getEntry(i, (ItemBrassArmor) is.getItem()).getValue()).getArmorEffect(world, player, is);
+	}
+	@SuppressWarnings("all")
+	private Entry getEntry(int id, ItemBrassArmor armor)
+	{
+		Iterator iterator = getModuleMap(armor).entrySet().iterator();
+		int n = 0;
+		while(iterator.hasNext())
 		{
-			if(modules.get(i).getArmorEffectType() != null && modules.get(i).getArmorEffectType() == EnumArmorEffectType.ONTICK)
-				modules.get(i).getArmorEffect(world, player, is);
+			Entry entry = (Entry) iterator.next();
+			if(n == id)
+			{
+				return entry;
+			}
+			n++;
 		}
-	}
-	public void writeToNBT(NBTTagCompound comp)
-	{
-	 //super.writeToNBT(comp);
-	 NBTTagList tagList = new NBTTagList();
-	 for(int i = 0; i < modules.size(); i++)
-	 {
-	  IArmorModule module = modules.get(i);
-	  if(module != null)
-	  {
-	   NBTTagCompound tag = new NBTTagCompound();
-	   tag.setString("ModuleName" + i, module.getName());
-	   tagList.appendTag(tag);
-	  }
-	 }
-	 comp.setTag("ModuleNameList", tagList);
+		return null;
 	}
 
-	public void readFromNBT(NBTTagCompound comp)
+	public LinkedHashMap<String, IArmorModule> getModuleMap(ItemBrassArmor armor)
 	{
-	 //super.readFromNBT(comp);
-	 NBTTagList tagList = comp.getTagList("ModuleNameList", Constants.NBT.TAG_LIST);
-	 for(int i = 0; i < tagList.tagCount(); i++)
-	 {
-	  NBTTagCompound tag = tagList.getCompoundTagAt(i);
-	  String s = tag.getString("ModuleName" + i);
-
-	  modules.add(i, modules.get(i));
-	 }
-	}
-	@Override
-	public void onUpdate(ItemStack stack, World world, Entity entity, int par4, boolean par5)
-	{
-
-		if(!stack.hasTagCompound())
-		stack.setTagCompound(new NBTTagCompound());
-
-		stack.readFromNBT(stack.stackTagCompound);
+		return armor.modules;
 	}
 }

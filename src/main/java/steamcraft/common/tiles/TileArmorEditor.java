@@ -14,7 +14,6 @@ package steamcraft.common.tiles;
 
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import steamcraft.common.items.armor.ItemBrassArmor;
 import boilerplate.common.baseclasses.BaseTileWithInventory;
 import boilerplate.steamapi.item.IArmorModule;
@@ -56,20 +55,19 @@ public class TileArmorEditor extends BaseTileWithInventory implements IInventory
 				if(this.inventory[i] != null)
 				{
 					ItemBrassArmor armor = (ItemBrassArmor) this.inventory[0].getItem();
-					ItemStack armorstack = this.inventory[0];
 					IArmorModule module = (IArmorModule) this.inventory[i].getItem();
-					if(!armor.modules.contains(module))
-						if(module.getApplicablePiece() != -1)
+					if(!armor.getModuleMap(armor).containsKey(module.getName()))
+						if(armor.armorType != -1)
 						{
 							if(armor.armorType == module.getApplicablePiece())
-								armor.modules.add(module);
-								armor.moduleNames.add(module.getName());
-								armorstack.writeToNBT(armorstack.stackTagCompound);
+								armor.getModuleMap(armor).put(module.getName(), module);
 						}
 						else
-							armor.modules.add(module);
-							armor.moduleNames.add(module.getName());
-							armorstack.writeToNBT(armorstack.stackTagCompound);
+							armor.getModuleMap(armor).put(module.getName(), module);
+					// inventory[0].stackTagCompound.setString(/*"module" + i,
+					// module.getName()*/"potato", "potato");
+					// .setString("module" +i,module.getName());
+					// inventory[i] = null;
 				}
 	}
 
