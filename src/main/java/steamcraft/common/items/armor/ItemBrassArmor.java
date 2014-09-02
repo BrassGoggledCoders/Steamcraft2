@@ -119,7 +119,6 @@ public class ItemBrassArmor extends BaseArmor
 		if(!stack.hasTagCompound())
 		stack.setTagCompound(new NBTTagCompound());
 
-		stack.writeToNBT(stack.stackTagCompound);
 		stack.readFromNBT(stack.stackTagCompound);
 	}
 }
