@@ -1,5 +1,5 @@
 /**
- * This class was created by BrassGoggledCoders modding team. 
+ * This class was created by BrassGoggledCoders modding team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -8,7 +8,7 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- * 
+ *
  */
 package steamcraft.common.container;
 
@@ -19,10 +19,11 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemBucket;
 import net.minecraft.item.ItemStack;
+import steamcraft.common.tiles.container.slot.SlotVanity;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 public class ContainerVanity extends Container
 {
@@ -34,11 +35,12 @@ public class ContainerVanity extends Container
 	{
 		// Custom Slots
 		// TODO: Import classes
-		/*
-		 * addSlotToContainer(new SlotHead(inventoryCustom, 0, 25, 8)); addSlotToContainer(new SlotTunic(inventoryCustom, 1, 25, 26)); addSlotToContainer(new
-		 * SlotLeggings(inventoryCustom, 2, 25, 44)); addSlotToContainer(new SlotBoots(inventoryCustom, 3, 25, 62)); addSlotToContainer(new
-		 * SlotHat(inventoryCustom, 5, 45, 8)); addSlotToContainer(new SlotCape(inventoryCustom, 4, 45, 26));
-		 */
+		 addSlotToContainer(new SlotVanity(inventoryCustom, 0, 25, 8));
+		 addSlotToContainer(new SlotVanity(inventoryCustom, 1, 25, 26));
+		 addSlotToContainer(new SlotVanity(inventoryCustom, 2, 25, 44));
+		 addSlotToContainer(new SlotVanity(inventoryCustom, 3, 25, 62));
+		 addSlotToContainer(new SlotVanity(inventoryCustom, 5, 45, 8));
+		 addSlotToContainer(new SlotVanity(inventoryCustom, 4, 45, 26));
 
 		// Inventory
 		int i;

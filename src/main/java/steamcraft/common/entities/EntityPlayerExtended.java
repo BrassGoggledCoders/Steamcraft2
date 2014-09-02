@@ -1,5 +1,5 @@
 /**
- * This class was created by BrassGoggledCoders modding team. 
+ * This class was created by BrassGoggledCoders modding team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -8,7 +8,7 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- * 
+ *
  */
 package steamcraft.common.entities;
 
@@ -24,14 +24,14 @@ import steamcraft.common.container.InventoryVanity;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 // TODO: Add packets
 public class EntityPlayerExtended implements IExtendedEntityProperties
 {
 	public final static String EXT_PROP_NAME = "EntityPlayerExtended";
 
-	public final InventoryVanity inventory = new InventoryVanity();
+	private final InventoryVanity inventory = new InventoryVanity();
 
 	private final EntityPlayer player;
 
@@ -68,6 +68,11 @@ public class EntityPlayerExtended implements IExtendedEntityProperties
 	@Override
 	public void init(final Entity entity, final World world)
 	{
+	}
+
+	public InventoryVanity getInventory()
+	{
+		return inventory;
 	}
 
 	@SuppressWarnings("all")

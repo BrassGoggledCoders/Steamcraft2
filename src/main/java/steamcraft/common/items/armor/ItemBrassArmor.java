@@ -24,6 +24,7 @@ import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import steamcraft.common.Steamcraft;
+import steamcraft.common.items.modules.ItemAqualung;
 import steamcraft.common.lib.LibInfo;
 import boilerplate.steamapi.item.IArmorModule;
 import boilerplate.steamapi.item.IArmorModule.EnumArmorEffectType;
@@ -32,17 +33,18 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 public class ItemBrassArmor extends BaseArmor
 {
-	public static LinkedHashMap<String, IArmorModule> modules = new LinkedHashMap<String, IArmorModule>();
+	private LinkedHashMap<String, IArmorModule> modules;
 
 	public ItemBrassArmor(ItemArmor.ArmorMaterial armorMat, int renderIndex, int armorType)
 	{
 		super(armorMat, renderIndex, armorType);
 		this.setMaxStackSize(1);
 		this.setCreativeTab(Steamcraft.tabSC2);
+		modules = new LinkedHashMap<String, IArmorModule>();
 	}
 
 	@Override
@@ -72,40 +74,22 @@ public class ItemBrassArmor extends BaseArmor
 		if(stack != null)
 		{
 			list.add("Modules:");
-			for(int i = 0; i < ItemBrassArmor.modules.size(); i++)
-				list.add(((IArmorModule) this.getEntry(i).getValue()).getName());
+			for(int i = 0; i < getModuleMap((ItemBrassArmor) stack.getItem()).size(); i++)
+				list.add(((IArmorModule) this.getEntry(i, (ItemBrassArmor) stack.getItem()).getValue()).getName());
 		}
 	}
 
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack is)
 	{
-		// System.out.print(modules);
-		for(int i = 0; i < ItemBrassArmor.modules.size(); i++)
-			if(((IArmorModule) this.getEntry(i).getValue()).getArmorEffectType() == EnumArmorEffectType.ONTICK)
-				((IArmorModule) this.getEntry(i).getValue()).getArmorEffect(world, player, is);
+		for(int i = 0; i < getModuleMap((ItemBrassArmor) is.getItem()).size(); i++)
+			if(((IArmorModule) this.getEntry(i, (ItemBrassArmor) is.getItem()).getValue()).getArmorEffectType() == EnumArmorEffectType.ONTICK)
+				((IArmorModule) this.getEntry(i, (ItemBrassArmor) is.getItem()).getValue()).getArmorEffect(world, player, is);
 	}
-
-	/*
-	 * @Override public void onUpdate(ItemStack stack, World p_77663_2_, Entity p_77663_3_, int p_77663_4_, boolean p_77663_5_) { for(int i = 0; i <
-	 * modules.size(); i++) { //stack.stackTagCompound.setString("module" + i, modules.get(i).getName()); modules.set(i,
-	 * getModuleFromName(stack.stackTagCompound.getString("module" + 1))); } }
-	 */
-
-	/*
-	 * private IModule getModuleFromName(String string) { for (int i = 0; i < this.modules.size(); i++) if (this.modules.get(i).getName() == string) return
-	 * this.modules.get(i); else return null; return null; }
-	 */
-	/*
-	 * @Override public void onUpdate(ItemStack stack, World world, Entity entity, int par4, boolean par5) { // EntityPlayer player = (EntityPlayer) entity; if
-	 * (!stack.hasTagCompound()) stack.setTagCompound(new NBTTagCompound()); NBTTagCompound tag = stack.getTagCompound(); /*NBTTagList list = (NBTTagList)
-	 * modules; tag.setTag("modules", list); modules = (List<IModule>) tag.getTagList("modules", 9); for(int i=0; i< modules.size(); i++) { //Write NBT
-	 * tag.setString("module" + Integer.toString(i), modules.get(i).getName()); //Read NBT //modules.get(i) = tag.getString("module" + Integer.toString(i)); } }
-	 */
 	@SuppressWarnings("all")
-	private Entry getEntry(int id)
+	private Entry getEntry(int id, ItemBrassArmor armor)
 	{
-		Iterator iterator = modules.entrySet().iterator();
+		Iterator iterator = getModuleMap(armor).entrySet().iterator();
 		int n = 0;
 		while(iterator.hasNext())
 		{
@@ -117,5 +101,10 @@ public class ItemBrassArmor extends BaseArmor
 			n++;
 		}
 		return null;
+	}
+
+	public LinkedHashMap<String, IArmorModule> getModuleMap(ItemBrassArmor armor)
+	{
+		return armor.modules;
 	}
 }

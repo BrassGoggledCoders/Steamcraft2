@@ -41,7 +41,7 @@ import cpw.mods.fml.common.network.IGuiHandler;
 
 /**
  * @author Surseance
- * 
+ *
  */
 public class GuiHandler implements IGuiHandler
 {
@@ -55,7 +55,7 @@ public class GuiHandler implements IGuiHandler
 			case GuiIDs.STEAM_BOILER:
 				return new ContainerSteamBoiler(player.inventory, (TileSteamBoiler) tile);
 			case GuiIDs.VANITY:
-				return new ContainerVanity(player, player.inventory, EntityPlayerExtended.get(player).inventory);
+				return new ContainerVanity(player, player.inventory, EntityPlayerExtended.get(player).getInventory());
 			case GuiIDs.ARMOR_EDITOR:
 				return new ContainerArmorEditor(player.inventory, (TileArmorEditor) tile);
 			case GuiIDs.BLOOMERY:
@@ -82,7 +82,7 @@ public class GuiHandler implements IGuiHandler
 			case GuiIDs.ARMOR_EDITOR:
 				return new GuiArmorEditor(player.inventory, (TileArmorEditor) tile);
 			case GuiIDs.VANITY:
-				return new GuiVanity(player, player.inventory, EntityPlayerExtended.get(player).inventory);
+				return new GuiVanity(player, player.inventory, EntityPlayerExtended.get(player).getInventory());
 			case GuiIDs.BLOOMERY:
 				return new GuiBloomery(player.inventory, (TileBloomery) tile);
 			case GuiIDs.BATTERY:

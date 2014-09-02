@@ -33,6 +33,8 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.MovingObjectPosition.MovingObjectType;
 import net.minecraftforge.client.event.DrawBlockHighlightEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
+import net.minecraftforge.client.event.RenderPlayerEvent;
+import net.minecraftforge.common.IExtendedEntityProperties;
 import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.event.entity.EntityEvent.EntityConstructing;
 import net.minecraftforge.event.entity.item.ItemTossEvent;
@@ -45,6 +47,7 @@ import org.lwjgl.opengl.GL11;
 import steamcraft.common.InitItems;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.config.Config;
+import steamcraft.common.container.InventoryVanity;
 import steamcraft.common.entities.EntityPlayerExtended;
 import steamcraft.common.lib.LibInfo;
 import boilerplate.common.baseclasses.BaseTileWithInventory;
@@ -313,5 +316,17 @@ public class EventHandlerForge
 						event.entityLiving.setCurrentItemOrArmor(4, new ItemStack(InitItems.bootsObsidian));
 				}
 			}
+	}
+	@SubscribeEvent
+	public void onRenderPlayer(RenderPlayerEvent event)
+	{
+		IExtendedEntityProperties props = event.entityPlayer.getExtendedProperties(EntityPlayerExtended.EXT_PROP_NAME);
+		InventoryVanity inventory = ((EntityPlayerExtended) props).getInventory();
+		EntityPlayer player = event.entityPlayer;
+
+		if(inventory.getSizeInventory() != 0)
+		{
+			player.rotationYaw++;
+		}
 	}
 }

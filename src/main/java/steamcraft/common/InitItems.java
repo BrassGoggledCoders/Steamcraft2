@@ -60,7 +60,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 /**
  * @author Surseance
- * 
+ *
  */
 public class InitItems
 {
@@ -168,7 +168,7 @@ public class InitItems
 		drillStone = new ItemElectricDrill(MaterialHelper.DRILL_STONE, 80, 80).setUnlocalizedName("itemDrillStone");
 		drillIron = new ItemElectricDrill(MaterialHelper.DRILL_IRON, 100, 200).setUnlocalizedName("itemDrillIron");
 		drillDiamond = new ItemElectricDrill(MaterialHelper.DRILL_DIAMOND, 200, 300).setUnlocalizedName("itemDrillDiamond");
-		drillGold = new ItemElectricDrill(MaterialHelper.DRILL_GOLD, 100, 300).setUnlocalizedName("itemDrillGold");
+		drillGold = new ItemElectricDrill(MaterialHelper.DRILL_GOLD, 80, 500).setUnlocalizedName("itemDrillGold");
 		drillEtherium = new ItemElectricDrill(MaterialHelper.DRILL_ETHERIUM, 400, 1000).setUnlocalizedName("itemDrillEtherium");
 		drillObsidian = new ItemElectricDrill(MaterialHelper.DRILL_OBSIDIAN, 250, 500).setUnlocalizedName("itemDrillObsidian");
 		drillSteam = new ItemSteamDrill(MaterialHelper.DRILL_STEAM).setUnlocalizedName("itemDrillSteam");
