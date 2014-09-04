@@ -38,7 +38,7 @@ public class TileCharger extends BaseTileWithInventory implements IEnergyHandler
 
 	public TileCharger()
 	{
-		super((byte) 1);
+		super(1);
 	}
 
 	@Override

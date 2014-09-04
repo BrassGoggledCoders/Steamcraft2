@@ -27,7 +27,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author decebaldecebal
- * 
+ *
  */
 public class TileBattery extends BaseTileWithInventory implements IEnergyHandler
 {
@@ -44,7 +44,7 @@ public class TileBattery extends BaseTileWithInventory implements IEnergyHandler
 
 	public TileBattery()
 	{
-		super((byte) 6);
+		super(6);
 	}
 
 	@Override
