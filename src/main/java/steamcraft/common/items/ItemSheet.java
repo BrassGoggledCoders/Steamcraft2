@@ -16,19 +16,22 @@ import java.util.List;
 
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
+import net.minecraft.world.World;
 import steamcraft.common.InitItems;
 import steamcraft.common.lib.LibInfo;
+import boilerplate.steamapi.item.IArmorModule;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author warlordjones
- * 
+ *
  */
-public class ItemSheet extends BaseItemWithMetadata
+public class ItemSheet extends BaseItemWithMetadata implements IArmorModule
 {
 	IIcon[] itemIcon = new IIcon[8];
 
@@ -54,5 +57,29 @@ public class ItemSheet extends BaseItemWithMetadata
 	public IIcon getIconFromDamage(int itemDamage)
 	{
 		return this.itemIcon[itemDamage];
+	}
+
+	@Override
+	public int getApplicablePiece()
+	{
+		return -1;
+	}
+
+	@Override
+	public String getName()
+	{
+		return "Plate";
+	}
+
+	@Override
+	public void getArmorEffect(World world, EntityPlayer player, ItemStack stack)
+	{
+		System.out.print("Test!");
+	}
+
+	@Override
+	public EnumArmorEffectType getArmorEffectType()
+	{
+		return EnumArmorEffectType.ONTICK;
 	}
 }

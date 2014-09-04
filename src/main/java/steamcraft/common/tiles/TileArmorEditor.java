@@ -61,9 +61,11 @@ public class TileArmorEditor extends BaseTileWithInventory implements IInventory
 						{
 							if(armor.armorType == module.getApplicablePiece())
 								armor.getModuleMap(armor).put(module.getName(), module);
+								armor.saveMapToNBT(inventory[0].stackTagCompound);
 						}
 						else
 							armor.getModuleMap(armor).put(module.getName(), module);
+							armor.saveMapToNBT(inventory[0].stackTagCompound);
 					// inventory[0].stackTagCompound.setString(/*"module" + i,
 					// module.getName()*/"potato", "potato");
 					// .setString("module" +i,module.getName());
