@@ -12,8 +12,13 @@
  */
 package steamcraft.common.tiles;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+
 import net.minecraft.inventory.IInventory;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import steamcraft.common.items.armor.ItemBrassArmor;
 import boilerplate.common.baseclasses.BaseTileWithInventory;
 import boilerplate.steamapi.item.IArmorModule;
@@ -50,27 +55,43 @@ public class TileArmorEditor extends BaseTileWithInventory implements IInventory
 	@Override
 	public void updateEntity()
 	{
-		if(this.inventory[0] != null && this.inventory[0].getItem() instanceof ItemBrassArmor)
+		if(this.worldObj.isRemote) return;
+		if(this.inventory[0] != null && this.inventory[0].getItem() instanceof ItemBrassArmor && inventory[1] != null)
+		{
+			Item armor = inventory[0].getItem();
+			NBTTagCompound tagCompound = ItemBrassArmor.getOrCreateTagCompound(inventory[0]);
+
+			ArrayList<String> installedModules = new ArrayList<String>();
+
+			for(int f = 0; f < tagCompound.getInteger("moduleCount"); f++)
+			{
+				installedModules.add(tagCompound.getString("module" + f));
+				tagCompound.removeTag("module" + f);
+			}
+
 			for(int i = 1; i < 17; i++)
-				if(this.inventory[i] != null)
+			{
+				if(this.inventory[i] != null && inventory[i].getItem() instanceof IArmorModule)
 				{
-					ItemBrassArmor armor = (ItemBrassArmor) this.inventory[0].getItem();
-					IArmorModule module = (IArmorModule) this.inventory[i].getItem();
-					if(!armor.getModuleMap(armor).containsKey(module.getName()))
-						if(armor.armorType != -1)
-						{
-							if(armor.armorType == module.getApplicablePiece())
-								armor.getModuleMap(armor).put(module.getName(), module);
-								armor.saveMapToNBT(inventory[0].stackTagCompound);
-						}
-						else
-							armor.getModuleMap(armor).put(module.getName(), module);
-							armor.saveMapToNBT(inventory[0].stackTagCompound);
-					// inventory[0].stackTagCompound.setString(/*"module" + i,
-					// module.getName()*/"potato", "potato");
-					// .setString("module" +i,module.getName());
-					// inventory[i] = null;
+					IArmorModule module = (IArmorModule)inventory[i].getItem();
+
+					if (module instanceof IArmorModule && !installedModules.contains(module.getModuleId()))
+					{
+						installedModules.add(module.getModuleId());
+						setInventorySlotContents(i, null);
+					}
 				}
+			}
+
+			Iterator<String> iterator = installedModules.iterator();
+			int objects = 0;
+			while (iterator.hasNext())
+			{
+				tagCompound.setString("module" + objects, iterator.next());
+				objects++;
+			}
+			tagCompound.setInteger("moduleCount", objects);
+		}
 	}
 
 }

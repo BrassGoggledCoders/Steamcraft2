@@ -24,6 +24,12 @@ import boilerplate.steamapi.item.IArmorModule;
  */
 public class ItemAqualung extends BaseItem implements IArmorModule
 {
+	public ItemAqualung()
+	{
+		super();
+		ModuleRegistry.registerModule(this);
+	}
+
 	@Override
 	public int getApplicablePiece()
 	{
@@ -37,7 +43,13 @@ public class ItemAqualung extends BaseItem implements IArmorModule
 	}
 
 	@Override
-	public void getArmorEffect(World world, EntityPlayer player, ItemStack stack)
+	public String getModuleId()
+	{
+		return "aqualung";
+	}
+
+	@Override
+	public void applyArmorEffect(World world, EntityPlayer player, ItemStack stack)
 	{
 		if(player.getAir() < 0)
 			player.setAir(300);

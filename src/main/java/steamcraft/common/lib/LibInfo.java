@@ -17,9 +17,9 @@ import java.util.List;
 
 /**
  * A neat, tidy class for holding various bits of mod information.
- * 
+ *
  * @author Surseance
- * 
+ *
  */
 public class LibInfo
 {
@@ -27,7 +27,7 @@ public class LibInfo
 	public static final String NAME = "Steamcraft 2";
 	public static final String VERSION = "Beta R2";
 
-	public static final List<String> AUTHORS = Arrays.asList("warlordjones", "decebaldecebal", "Falkok15", "wierdude1999", "seanvanpelt2 & others");
+	public static final List<String> AUTHORS = Arrays.asList("warlordjones", "decebaldecebal", "Falkok15", "wierdude1999", "domi1819", "seanvanpelt2 & others");
 
 	public static final String CLIENT_PROXY = "steamcraft.client.ClientProxy";
 	public static final String COMMON_PROXY = "steamcraft.common.CommonProxy";
