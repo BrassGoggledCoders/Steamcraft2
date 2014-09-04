@@ -13,10 +13,7 @@
 package steamcraft.common.lib;
 
 import net.minecraft.item.Item;
-import steamcraft.common.InitItems;
 import boilerplate.common.baseclasses.CreativeTabBase;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author warlordjones
@@ -27,12 +24,5 @@ public class CreativeTabSteamcraft extends CreativeTabBase
 	public CreativeTabSteamcraft(int id, String name, Item icon)
 	{
 		super(id, name, icon);
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public Item getTabIconItem()
-	{
-		return InitItems.brassGoggles;
 	}
 }
