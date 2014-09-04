@@ -17,6 +17,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import steamcraft.common.items.BaseItem;
 import boilerplate.steamapi.item.IArmorModule;
+import boilerplate.steamapi.item.ModuleRegistry;
 
 /**
  * @author warlordjones

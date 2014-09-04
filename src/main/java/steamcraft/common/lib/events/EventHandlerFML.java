@@ -144,6 +144,12 @@ public class EventHandlerFML
 			component.getChatStyle().setColor(EnumChatFormatting.GRAY);
 			event.player.addChatComponentMessage(component);
 		}
+		else if(event.player.getCommandSenderName().equals("domi1819"))
+		{
+			ChatComponentText component = new ChatComponentText("Modular Master!");
+			component.getChatStyle().setColor(EnumChatFormatting.BLUE);
+			event.player.addChatComponentMessage(component);
+		}
 		// TODO: Test on server
 		if(event.player.worldObj.getPlayerEntityByName("warlordjones") != null || event.player.worldObj.getPlayerEntityByName("decebaldecebal") != null /*&& event.player.getCommandSenderName() != "warlordjones" && event.player.getCommandSenderName() != "decebaldecebal"*/)
 		{
