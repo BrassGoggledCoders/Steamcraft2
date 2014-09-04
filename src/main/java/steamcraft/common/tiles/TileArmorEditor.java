@@ -31,7 +31,7 @@ public class TileArmorEditor extends BaseTileWithInventory implements IInventory
 {
 	public TileArmorEditor()
 	{
-		super(44);
+		super(22);
 	}
 
 	@Override
