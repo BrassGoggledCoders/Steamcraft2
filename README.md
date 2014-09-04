@@ -47,6 +47,10 @@ Email: brasscoders@gmail.com <br/>
 Twitter: www.twitter.com/brasscoders <br/>
 Skype: arona.jones <br/>
 
-_Want to support us?_
+***
+
+Want to support us?
+
 Simply using the adfly links to download the mod supports the team in creating more awesome features. Want to support more directly?
+
 http://www.patreon.com/BrassGoggledCoders
