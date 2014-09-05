@@ -29,10 +29,13 @@ public class ConfigBalance
 
 	public static void initialize(File configFile)
 	{
-		config = new Configuration(configFile);
+		if(config == null)
+			config = new Configuration(configFile);
+		
 		try
 		{
 			config.load();
+			
 			cheaperCoreRecipe = config.get(CATEGORY_RECIPE_OPTIONS, "Use diamond instead of nether star in Overcharged Core Recipe", false)
 					.getBoolean(false);
 			numberOfDustsFromOreHammering = config.get(CATEGORY_RECIPE_OPTIONS, "Number of dusts produced from hammering an ore block", 2).getInt();
@@ -47,5 +50,4 @@ public class ConfigBalance
 				config.save();
 		}
 	}
-
 }

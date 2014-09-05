@@ -268,9 +268,9 @@ public class EventHandlerForge
 	}
 
 	@SubscribeEvent
-	public void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent eventArgs)
+	public void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent event)
 	{
-		if(eventArgs.modID.equals(LibInfo.ID))
+		if(event.modID.equalsIgnoreCase(LibInfo.ID))
 			Config.initialise(Steamcraft.configPath);
 	}
 
