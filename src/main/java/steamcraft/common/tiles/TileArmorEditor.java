@@ -79,15 +79,26 @@ public class TileArmorEditor extends BaseTileWithInventory implements IInventory
 
 					if (module instanceof IArmorModule && !installedModules.contains(module.getModuleId()) && module.getApplicablePiece() == -1)
 					{
-						installedModules.add(module.getModuleId());
-						setInventorySlotContents(i, null);
+						Iterator it = module.getListOfIncompatibleModules().iterator();
+						while(it.hasNext())
+						{
+							if(!installedModules.contains(it.next()))
+							{
+								installedModules.add(module.getModuleId());
+								setInventorySlotContents(i, null);
+							}
+						}
 					}
 					else if(module instanceof IArmorModule && !installedModules.contains(module.getModuleId()))
 					{
-						if(module.getApplicablePiece() == brassarmor.armorType)
+						Iterator it = module.getListOfIncompatibleModules().iterator();
+						while(it.hasNext())
 						{
-							installedModules.add(module.getModuleId());
-							setInventorySlotContents(i, null);
+							if(!installedModules.contains(it.next()))
+							{
+								installedModules.add(module.getModuleId());
+								setInventorySlotContents(i, null);
+							}
 						}
 					}
 				}
