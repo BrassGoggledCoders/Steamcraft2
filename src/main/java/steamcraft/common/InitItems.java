@@ -45,6 +45,7 @@ import steamcraft.common.items.electric.ElectricItem;
 import steamcraft.common.items.electric.ItemRayGun;
 import steamcraft.common.items.electric.ItemShrinkray;
 import steamcraft.common.items.modules.ItemAqualung;
+import steamcraft.common.items.modules.ItemReactivePistonPlating;
 import steamcraft.common.items.tools.ItemElectricDrill;
 import steamcraft.common.items.tools.ItemModAxe;
 import steamcraft.common.items.tools.ItemModHoe;
@@ -138,7 +139,7 @@ public class InitItems
 	public static Item itemTopHat;
 
 	// Modules
-	public static Item itemAqualung;
+	public static Item itemAqualung, itemPistonPlating;
 
 	public static Item itemTeapot, itemTeacup;
 
@@ -383,6 +384,9 @@ public class InitItems
 
 		itemAqualung = new ItemAqualung().setUnlocalizedName("itemAqualung");
 		registerItem(itemAqualung, "ItemAqualung");
+
+		itemPistonPlating = new ItemReactivePistonPlating().setUnlocalizedName("itemPistonPlating");
+		registerItem(itemPistonPlating, "ItemPistonPlating");
 
 		itemTeaLeaf = new BaseItem().setUnlocalizedName("itemTeaLeaves");
 		registerItem(itemTeaLeaf, "ItemTeaLeaf");

@@ -12,8 +12,12 @@
  */
 package steamcraft.common.items.modules;
 
+import java.util.List;
+
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 import steamcraft.common.items.BaseItem;
 import boilerplate.steamapi.item.IArmorModule;
@@ -23,9 +27,9 @@ import boilerplate.steamapi.item.ModuleRegistry;
  * @author warlordjones
  *
  */
-public class ItemAqualung extends BaseItem implements IArmorModule
+public class ItemReactivePistonPlating extends BaseItem implements IArmorModule
 {
-	public ItemAqualung()
+	public ItemReactivePistonPlating()
 	{
 		super();
 		ModuleRegistry.registerModule(this);
@@ -41,20 +45,34 @@ public class ItemAqualung extends BaseItem implements IArmorModule
 	@Override
 	public String getName()
 	{
-		return "Aqualung";
+		return "Reactive Piston Plating";
 	}
 
 	@Override
 	public String getModuleId()
 	{
-		return "aqualung";
+		return "pistonplating";
 	}
 
 	@Override
 	public void applyArmorEffect(World world, EntityPlayer player, ItemStack stack)
 	{
-		if(player.getAir() < 0)
-			player.setAir(300);
+		AxisAlignedBB axisalignedbb = null;
+		axisalignedbb = player.boundingBox.expand(1.0D, 0.5D, 1.0D);
+		List list = world.getEntitiesWithinAABBExcludingEntity(player, axisalignedbb);
+
+        if (list != null)
+        {
+            for (int i = 0; i < list.size(); ++i)
+            {
+                Entity entity = (Entity)list.get(i);
+
+                if (!entity.isDead)
+                {
+                    entity.setVelocity(-entity.motionX, 0.5F, -entity.motionY);
+                }
+            }
+        }
 	}
 
 	@Override
