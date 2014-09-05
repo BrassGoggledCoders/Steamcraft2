@@ -55,10 +55,12 @@ public class TileArmorEditor extends BaseTileWithInventory implements IInventory
 	@Override
 	public void updateEntity()
 	{
+		//TODO Removability
 		if(this.worldObj.isRemote) return;
 		if(this.inventory[0] != null && this.inventory[0].getItem() instanceof ItemBrassArmor && inventory[1] != null)
 		{
 			Item armor = inventory[0].getItem();
+			ItemBrassArmor brassarmor = (ItemBrassArmor)armor;
 			NBTTagCompound tagCompound = ItemBrassArmor.getOrCreateTagCompound(inventory[0]);
 
 			ArrayList<String> installedModules = new ArrayList<String>();
@@ -75,10 +77,18 @@ public class TileArmorEditor extends BaseTileWithInventory implements IInventory
 				{
 					IArmorModule module = (IArmorModule)inventory[i].getItem();
 
-					if (module instanceof IArmorModule && !installedModules.contains(module.getModuleId()))
+					if (module instanceof IArmorModule && !installedModules.contains(module.getModuleId()) && module.getApplicablePiece() == -1)
 					{
 						installedModules.add(module.getModuleId());
 						setInventorySlotContents(i, null);
+					}
+					else
+					{
+						if(module.getApplicablePiece() == brassarmor.armorType)
+						{
+							installedModules.add(module.getModuleId());
+							setInventorySlotContents(i, null);
+						}
 					}
 				}
 			}
