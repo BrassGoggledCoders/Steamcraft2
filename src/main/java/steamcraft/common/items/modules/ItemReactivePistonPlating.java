@@ -59,7 +59,7 @@ public class ItemReactivePistonPlating extends BaseItem implements IArmorModule
 	public void applyArmorEffect(World world, EntityPlayer player, ItemStack stack)
 	{
 		AxisAlignedBB axisalignedbb = null;
-		axisalignedbb = player.boundingBox.expand(0.2D, 0.2D, 0.2D);
+		axisalignedbb = player.boundingBox.expand(1.0D, 0.5D, 1.0D);
 		List list = world.getEntitiesWithinAABBExcludingEntity(player, axisalignedbb);
 
 	        if (list != null)
