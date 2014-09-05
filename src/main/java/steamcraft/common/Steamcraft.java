@@ -12,10 +12,7 @@
  */
 package steamcraft.common;
 
-import java.io.File;
-
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.MinecraftForge;
 import steamcraft.client.GuiHandler;
 import steamcraft.common.compat.CompatabilityLayer;
@@ -26,6 +23,7 @@ import steamcraft.common.lib.CreativeTabSteamcraft;
 import steamcraft.common.lib.LibInfo;
 import steamcraft.common.lib.events.EventHandlerFML;
 import steamcraft.common.lib.events.EventHandlerForge;
+import steamcraft.common.worldgen.WorldGenSteamcraft;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -54,12 +52,6 @@ public class Steamcraft
 	@Instance(LibInfo.ID)
 	public static Steamcraft instance;
 
-	public InitWorldGen worldGen = new InitWorldGen();
-
-	public static BiomeGenBase biomeBrassForest;
-
-	public File directory;
-
 	public static CreativeTabs tabSC2 = new CreativeTabSteamcraft(CreativeTabs.getNextID(), "steamcraft", InitItems.brassGoggles);
 
 	public static String configPath;
@@ -67,8 +59,6 @@ public class Steamcraft
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{
-		this.directory = event.getModConfigurationDirectory();
-
 		LanguageRegistry.instance().getStringLocalization("itemGroup.steamcraft", "en_US");
 
 		configPath = event.getModConfigurationDirectory() + "/sc2/";
@@ -80,7 +70,7 @@ public class Steamcraft
 		FMLCommonHandler.instance().bus().register(new EventHandlerFML());
 
 		if(ConfigWorldGen.generationEnabled)
-			GameRegistry.registerWorldGenerator(this.worldGen, 0);
+			GameRegistry.registerWorldGenerator(new WorldGenSteamcraft(), 1);
 
 		InitBlocks.init();
 		InitItems.init();

@@ -10,7 +10,7 @@
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
  *
  */
-package steamcraft.common;
+package steamcraft.common.worldgen;
 
 import java.util.Random;
 
@@ -22,15 +22,15 @@ import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenMinable;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeDictionary.Type;
+import steamcraft.common.InitBlocks;
 import steamcraft.common.config.ConfigWorldGen;
-import steamcraft.common.worldgen.WorldGenBrassTree;
 import cpw.mods.fml.common.IWorldGenerator;
 
 /**
  * @authors Surseance & warlordjones
  *
  */
-public class InitWorldGen implements IWorldGenerator
+public class WorldGenSteamcraft implements IWorldGenerator
 {
 
 	@Override
