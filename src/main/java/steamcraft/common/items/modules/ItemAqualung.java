@@ -12,6 +12,8 @@
  */
 package steamcraft.common.items.modules;
 
+import java.util.ArrayList;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
@@ -61,6 +63,12 @@ public class ItemAqualung extends BaseItem implements IArmorModule
 	public EnumArmorEffectType getArmorEffectType()
 	{
 		return EnumArmorEffectType.ONTICK;
+	}
+
+	@Override
+	public ArrayList<IArmorModule> getListOfIncompatibleModules()
+	{
+		return null;
 	}
 
 }

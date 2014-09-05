@@ -12,6 +12,7 @@
  */
 package steamcraft.common.items.modules;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.entity.Entity;
@@ -80,6 +81,11 @@ public class ItemReactivePistonPlating extends BaseItem implements IArmorModule
 	public EnumArmorEffectType getArmorEffectType()
 	{
 		return EnumArmorEffectType.ONTICK;
+	}
+	@Override
+	public ArrayList<IArmorModule> getListOfIncompatibleModules()
+	{
+		return null;
 	}
 
 }

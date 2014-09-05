@@ -12,6 +12,8 @@
  */
 package steamcraft.common.items.modules;
 
+import java.util.ArrayList;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
@@ -71,6 +73,11 @@ public class ItemEmergencyTank extends BaseItem implements IArmorModule
 	public EnumArmorEffectType getArmorEffectType()
 	{
 		return EnumArmorEffectType.ONTICK;
+	}
+	@Override
+	public ArrayList<IArmorModule> getListOfIncompatibleModules()
+	{
+		return null;
 	}
 
 }
