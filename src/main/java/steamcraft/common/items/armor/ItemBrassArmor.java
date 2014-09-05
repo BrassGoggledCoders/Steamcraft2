@@ -66,7 +66,17 @@ public class ItemBrassArmor extends BaseArmor
 		if(stack != null)
 		{
 			list.add("Modules:");
-			//TODO
+			NBTTagCompound nbt = getOrCreateTagCompound(stack);
+
+			for(int i = 0; i < nbt.getInteger("moduleCount"); i++)
+			{
+				IArmorModule module = ModuleRegistry.getModule(nbt.getString("module" + i));
+
+				if(module != null)
+				{
+					list.add(module.getName());
+				}
+			}
 		}
 	}
 
