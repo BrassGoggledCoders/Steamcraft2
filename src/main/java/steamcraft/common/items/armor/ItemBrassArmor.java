@@ -21,12 +21,11 @@ import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
-import net.minecraftforge.common.util.Constants;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.LibInfo;
 import boilerplate.steamapi.item.IArmorModule;
-import boilerplate.steamapi.item.ModuleRegistry;
 import boilerplate.steamapi.item.IArmorModule.EnumArmorEffectType;
+import boilerplate.steamapi.item.ModuleRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 

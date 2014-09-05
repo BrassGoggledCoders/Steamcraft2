@@ -41,7 +41,7 @@ import cpw.mods.fml.relauncher.Side;
 
 /**
  * @author Surseance
- * 
+ *
  */
 @Mod(modid = LibInfo.ID, name = LibInfo.NAME, version = LibInfo.VERSION, dependencies = "required-after:boilerplate")
 public class Steamcraft

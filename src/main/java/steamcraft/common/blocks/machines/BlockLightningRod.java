@@ -12,16 +12,10 @@
  */
 package steamcraft.common.blocks.machines;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import steamcraft.client.lib.RenderIDs;
-import steamcraft.common.InitBlocks;
-import steamcraft.common.blocks.BlockDummy;
 import steamcraft.common.tiles.TileLightningRod;
 
 public class BlockLightningRod extends BaseContainerBlock
