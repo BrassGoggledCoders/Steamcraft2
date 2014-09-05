@@ -15,6 +15,7 @@ package steamcraft.common.items.modules;
 import java.util.List;
 
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
@@ -61,18 +62,18 @@ public class ItemReactivePistonPlating extends BaseItem implements IArmorModule
 		axisalignedbb = player.boundingBox.expand(1.0D, 0.5D, 1.0D);
 		List list = world.getEntitiesWithinAABBExcludingEntity(player, axisalignedbb);
 
-        if (list != null)
-        {
-            for (int i = 0; i < list.size(); ++i)
-            {
-                Entity entity = (Entity)list.get(i);
+	        if (list != null)
+	        {
+	            for (int i = 0; i < list.size(); ++i)
+	            {
+	                Entity entity = (Entity)list.get(i);
 
-                if (!entity.isDead)
-                {
-                    entity.setVelocity(-entity.motionX, 0.5F, -entity.motionY);
-                }
-            }
-        }
+	                if (!entity.isDead && entity instanceof EntityLiving)
+	                {
+	                    entity.setVelocity(-entity.motionX, 0.3F, -entity.motionY);
+	                }
+	            }
+	        }
 	}
 
 	@Override
