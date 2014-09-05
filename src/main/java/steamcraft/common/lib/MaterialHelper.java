@@ -70,6 +70,6 @@ public class MaterialHelper
 	{
 		ARMOR_OBSIDIAN = EnumHelper.addArmorMaterial("ARMOR_OBSIDIAN", -1, new int[] { 5, 8, 8, 5 }, 5);
 		ARMOR_ETHERIUM = EnumHelper.addArmorMaterial("ARMOR_ETHERIUM", 40, new int[] { 4, 8, 7, 3 }, 18);
-		ARMOR_STEAM = EnumHelper.addArmorMaterial("ARMOR_STEAM", 33, new int[] { 1, 2, 2, 1 }, 0);
+		ARMOR_STEAM = EnumHelper.addArmorMaterial("ARMOR_STEAM", -1, new int[] { 1, 1, 1, 1 }, 0);
 	}
 }
