@@ -86,9 +86,10 @@ public class ItemReactivePistonPlating extends BaseItem implements IArmorModule
 	@Override
 	public ArrayList<IArmorModule> getListOfIncompatibleModules()
 	{
-		ArrayList incompats = new ArrayList();
-		incompats.add(InitItems.itemAqualung);
-		return incompats;
+		//ArrayList incompats = new ArrayList();
+		//incompats.add(InitItems.itemAqualung);
+		//return incompats;
+		return null;
 	}
 
 }

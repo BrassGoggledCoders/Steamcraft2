@@ -145,6 +145,8 @@ item.itemNugget.7.name=Cast Iron Nugget
 item.copperwire.name=Copper Wire
 item.itemWatch.name=Brass Pocket-Watch
 item.itemWatch.desc=On right-click, this item will display the in-game time and the real-world time
+item.itemSlimeRubber.name=Slime-Based Rubber
+item.itemSlimeRubber.desc=Congealed Slime. Still a bit sticky.
 
 item.itemCanisterSteam.name=Steam Canister
 item.itemCanisterGas.name=Compressed Gas Canister

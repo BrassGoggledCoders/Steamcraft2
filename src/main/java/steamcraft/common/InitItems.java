@@ -75,7 +75,7 @@ public class InitItems
 
 	public static Item itemChisel;
 
-	public static Item itemTeaLeaf;
+	public static Item itemTeaLeaf, itemSlimeRubber;
 
 	/* Armor */
 
@@ -394,6 +394,9 @@ public class InitItems
 
 		itemTeaLeaf = new BaseItem().setUnlocalizedName("itemTeaLeaves");
 		registerItem(itemTeaLeaf, "ItemTeaLeaf");
+
+		itemSlimeRubber = new BaseItem().setUnlocalizedName("itemSlimeRubber");
+		registerItem(itemSlimeRubber, "ItemSlimeRubber");
 
 		itemTeapot = new ItemTeapot().setUnlocalizedName("itemTeapot");
 		itemTeacup = new ItemTeacup().setUnlocalizedName("itemTeacup");
