@@ -20,12 +20,13 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import steamcraft.client.lib.RenderIDs;
 import steamcraft.common.InitBlocks;
 import steamcraft.common.tiles.TileCopperPipe;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 public class BlockCopperPipe extends BaseContainerBlock
 {
@@ -60,7 +61,7 @@ public class BlockCopperPipe extends BaseContainerBlock
 	@Override
 	public int getRenderType()
 	{
-		return -1;
+		return RenderIDs.blockCopperPipeRI;
 	}
 
 	@Override
@@ -71,7 +72,7 @@ public class BlockCopperPipe extends BaseContainerBlock
 		if(!world.isRemote)
 		{
 			TileCopperPipe tile = (TileCopperPipe) world.getTileEntity(x, y, z);
-	
+
 			if(tile != null)
 			{
 				tile.network = null;
