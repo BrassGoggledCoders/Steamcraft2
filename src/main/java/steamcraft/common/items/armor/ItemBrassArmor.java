@@ -14,6 +14,7 @@ package steamcraft.common.items.armor;
 
 import java.util.List;
 
+import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -95,12 +96,6 @@ public class ItemBrassArmor extends BaseArmor
 		}
 	}
 
-	@Override
-	public void onUpdate(ItemStack stack, World world, Entity entity, int par4, boolean par5)
-	{
-
-	}
-
 	public static NBTTagCompound getOrCreateTagCompound(ItemStack is)
 	{
 		if (!is.hasTagCompound())
@@ -110,5 +105,22 @@ public class ItemBrassArmor extends BaseArmor
 		}
 
 		return is.getTagCompound();
+	}
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void renderHelmetOverlay(ItemStack stack, EntityPlayer player, ScaledResolution resolution, float partialTicks, boolean hasScreen,
+			int mouseX, int mouseY)
+	{
+		NBTTagCompound nbt = getOrCreateTagCompound(stack);
+
+		for(int i = 0; i < nbt.getInteger("moduleCount"); i++)
+		{
+			IArmorModule module = ModuleRegistry.getModule(nbt.getString("module" + i));
+
+			if(module != null && module.getArmorEffectType() == EnumArmorEffectType.HUD)
+			{
+				module.applyArmorEffect(player.worldObj, player, stack);
+			}
+		}
 	}
 }
