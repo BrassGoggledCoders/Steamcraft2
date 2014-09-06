@@ -317,6 +317,7 @@ public class EventHandlerForge
 			}
 	}
 	@SubscribeEvent
+	@SideOnly(Side.CLIENT)
 	public void onRenderPlayer(RenderPlayerEvent event)
 	{
 		IExtendedEntityProperties props = event.entityPlayer.getExtendedProperties(EntityPlayerExtended.EXT_PROP_NAME);
