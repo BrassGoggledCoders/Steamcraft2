@@ -47,6 +47,7 @@ import steamcraft.common.items.electric.ItemShrinkray;
 import steamcraft.common.items.modules.ItemAqualung;
 import steamcraft.common.items.modules.ItemEmergencyTank;
 import steamcraft.common.items.modules.ItemReactivePistonPlating;
+import steamcraft.common.items.modules.ItemWatchDisplay;
 import steamcraft.common.items.tools.ItemElectricDrill;
 import steamcraft.common.items.tools.ItemModAxe;
 import steamcraft.common.items.tools.ItemModHoe;
@@ -140,7 +141,7 @@ public class InitItems
 	public static Item itemTopHat;
 
 	// Modules
-	public static Item itemAqualung, itemPistonPlating, itemTank;
+	public static Item itemAqualung, itemPistonPlating, itemTank, itemWatchDisplay;
 
 	public static Item itemTeapot, itemTeacup;
 
@@ -391,6 +392,9 @@ public class InitItems
 
 		itemTank = new ItemEmergencyTank().setUnlocalizedName("itemEmergencyTank");
 		registerItem(itemTank, "ItemEmergencyTank");
+
+		itemWatchDisplay = new ItemWatchDisplay().setUnlocalizedName("itemWatchDisplay");
+		registerItem(itemWatchDisplay, "ItemWatchDisplay");
 
 		itemTeaLeaf = new BaseItem().setUnlocalizedName("itemTeaLeaves");
 		registerItem(itemTeaLeaf, "ItemTeaLeaf");
