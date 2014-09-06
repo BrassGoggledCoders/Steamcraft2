@@ -20,6 +20,8 @@ import net.minecraft.world.World;
 import steamcraft.client.lib.RenderIDs;
 import steamcraft.client.renderers.block.BlockBatteryRenderer;
 import steamcraft.client.renderers.block.BlockChargerRenderer;
+import steamcraft.client.renderers.block.BlockCopperPipeRenderer;
+import steamcraft.client.renderers.block.BlockCopperWireRenderer;
 import steamcraft.client.renderers.block.BlockCrystalRenderer;
 import steamcraft.client.renderers.block.BlockHatchRenderer;
 import steamcraft.client.renderers.block.BlockLightningRodRenderer;
@@ -95,9 +97,13 @@ public class ClientProxy extends CommonProxy
 	private void registerBlockRenderers()
 	{
 		// Copper Pipe
+		RenderIDs.blockCopperPipeRI = RenderingRegistry.getNextAvailableRenderId();
 		ClientRegistry.bindTileEntitySpecialRenderer(TileCopperPipe.class, new TileCopperPipeRenderer());
+		RenderingRegistry.registerBlockHandler(new BlockCopperPipeRenderer());
 		// Copper Wire
+		RenderIDs.blockCopperWireRI = RenderingRegistry.getNextAvailableRenderId();
 		ClientRegistry.bindTileEntitySpecialRenderer(TileCopperWire.class, new TileCopperWireRenderer());
+		RenderingRegistry.registerBlockHandler(new BlockCopperWireRenderer());
 		// Crystal
 		RenderIDs.blockCrystalRI = RenderingRegistry.getNextAvailableRenderId();
 		ClientRegistry.bindTileEntitySpecialRenderer(TileCrystal.class, new TileCrystalRenderer());
