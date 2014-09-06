@@ -208,7 +208,6 @@ public class InitRecipes
 				new Object[] { "PPP", "P P", "PPP", 'P', "plateCopper" }));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockBattery), new Object[] { "CCC", "WCW", "CCC", 'C', "ingotCastIron",
 				'W', InitBlocks.blockCopperWire }));
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockCopperWire), new Object[] { "III", 'I', "ingotCopper" }));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockTeslaCoil), new Object[] { "WRW", "WRW", "III", 'I',
 				"ingotCastIron", 'W', "partWireCoil", 'R', "partCastIronRod" }));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockTurbine), new Object[] { "S S", "FGF", "SFS", 'S', "ingotSteel",
@@ -267,6 +266,8 @@ public class InitRecipes
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockCopperWire), new Object[] { "CD", 'C', "ingotCopper", 'D',
 				InitItems.itemDrawplate }));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemDrawplate), new Object[] { "S S"," S ", "S S", 'S', "plateCastIron"}));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemCanisterSteam, 1, InitItems.itemCanisterSteam.getMaxDamage()),
 				new Object[] { "PPP", "GGG", "PPP", 'G', "paneGlass", 'P', "plateBrass" }));
