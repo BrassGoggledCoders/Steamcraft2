@@ -58,19 +58,8 @@ public class ItemEmergencyTank extends BaseItem implements IArmorModule
 	@Override
 	public void applyArmorEffect(World world, EntityPlayer player, ItemStack stack)
 	{
-		FMLLog.fine(Boolean.toString(player.isBurning()), Boolean.toString(player.isBurning()));
-		//if(player.isBurning())
-		//{
-			//Hmm. Dosn't work.
-			//FMLLog.bigWarning("OW!", "OW!");
-		//	world.setBlock(player.serverPosX, player.serverPosY + 2, player.serverPosZ, Blocks.flowing_water, 2, 12);
-			//player.extinguish();
-			//for(float i = 0; i < 1; i += 0.1F)
-			//{
-			//	world.spawnParticle("splash", player.posX + i + world.rand.nextFloat(), player.posY + i + world.rand.nextFloat(), player.posZ + i + world.rand.nextFloat(), 0, 0, 0);
-			//	world.spawnParticle("splash", player.posX - i - world.rand.nextFloat(), player.posY - i - world.rand.nextFloat(), player.posZ - i - world.rand.nextFloat(), 0, 0, 0);
-			//}
-		//}
+		if(player.isBurning() && world.getBlock((int)Math.round(player.posX), (int)Math.round(player.posY), (int)Math.round(player.posZ)) == Blocks.air)
+		world.setBlock((int)Math.round(player.posX), (int)Math.round(player.posY), (int)Math.round(player.posZ), Blocks.flowing_water, 2, 2);
 	}
 
 	@Override
