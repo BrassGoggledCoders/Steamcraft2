@@ -31,7 +31,6 @@ import boilerplate.client.renderers.RenderFloatingItem;
  */
 public class TileChargerRenderer extends TileEntitySpecialRenderer
 {
-	@SuppressWarnings("unused")
 	private final ModelCharger model;
 
 	public TileChargerRenderer()

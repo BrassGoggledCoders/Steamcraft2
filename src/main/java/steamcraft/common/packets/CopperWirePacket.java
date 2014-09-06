@@ -29,16 +29,15 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 public class CopperWirePacket implements IMessage
 {
-	private int worldId, x, y, z;
+	private int x, y, z;
 	ForgeDirection[] connections;
 
 	public CopperWirePacket()
 	{
 	} // REQUIRED
 
-	public CopperWirePacket(int worldId, int x, int y, int z, ForgeDirection[] connections)
+	public CopperWirePacket(int x, int y, int z, ForgeDirection[] connections)
 	{
-		this.worldId = worldId;
 		this.x = x;
 		this.y = y;
 		this.z = z;
@@ -48,7 +47,6 @@ public class CopperWirePacket implements IMessage
 	@Override
 	public void fromBytes(ByteBuf buf)
 	{
-		this.worldId = buf.readInt();
 		this.x = buf.readInt();
 		this.y = buf.readInt();
 		this.z = buf.readInt();
@@ -67,7 +65,6 @@ public class CopperWirePacket implements IMessage
 	@Override
 	public void toBytes(ByteBuf buf)
 	{
-		buf.writeInt(this.worldId);
 		buf.writeInt(this.x);
 		buf.writeInt(this.y);
 		buf.writeInt(this.z);

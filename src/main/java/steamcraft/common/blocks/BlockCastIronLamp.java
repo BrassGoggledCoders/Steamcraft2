@@ -152,6 +152,8 @@ public class BlockCastIronLamp extends BlockContainer
 		if(!world.isRemote && BlockCastIronLamp.powered && !world.isBlockIndirectlyGettingPowered(x, y, z))
 			world.setBlock(x, y, z, InitBlocks.blockCastIronLamp, 0, world.getBlockMetadata(x, y, z) + 10);
 	}
+	
+	@SuppressWarnings("unused")
 	private boolean dropIfCantStay(final World world, final int x, final int y, final int z)
 	{
 		if(!this.canPlaceBlockAt(world, x, y, z))
@@ -174,7 +176,7 @@ public class BlockCastIronLamp extends BlockContainer
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(final World world, final int x, final int j, final int z, final Random random)
 	{
-		if(!this.powered)
+		if(!powered)
 			return;
 		else
 		{

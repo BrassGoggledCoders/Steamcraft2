@@ -18,7 +18,6 @@ import steamcraft.common.InitBlocks;
 import steamcraft.common.InitItems;
 import steamcraft.common.lib.LibInfo;
 import boilerplate.common.utils.helpers.OreDictHelper;
-import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.event.FMLInterModComms;
 
 /**

@@ -12,14 +12,12 @@
  */
 package steamcraft.common;
 
+import steamcraft.common.packets.CopperPipeFluidPacket;
+import steamcraft.common.packets.CopperPipeFluidPacket.FluidNetworkPacketHandler;
 import steamcraft.common.packets.CopperPipePacket;
 import steamcraft.common.packets.CopperPipePacket.CopperPipePacketHandler;
 import steamcraft.common.packets.CopperWirePacket;
 import steamcraft.common.packets.CopperWirePacket.CopperWirePacketHandler;
-import steamcraft.common.packets.EnergyNetworkPacket;
-import steamcraft.common.packets.EnergyNetworkPacket.EnergyNetworkPacketHandler;
-import steamcraft.common.packets.CopperPipeFluidPacket;
-import steamcraft.common.packets.CopperPipeFluidPacket.FluidNetworkPacketHandler;
 import steamcraft.common.packets.TimeBombPacket;
 import steamcraft.common.packets.TimeBombPacket.TimeBombPacketHandler;
 import cpw.mods.fml.common.network.NetworkRegistry;
@@ -46,6 +44,5 @@ public class InitPackets
 		network.registerMessage(FluidNetworkPacketHandler.class, CopperPipeFluidPacket.class, packetId++, Side.CLIENT);
 
 		network.registerMessage(CopperWirePacketHandler.class, CopperWirePacket.class, packetId++, Side.CLIENT);
-		network.registerMessage(EnergyNetworkPacketHandler.class, EnergyNetworkPacket.class, packetId++, Side.CLIENT);
 	}
 }

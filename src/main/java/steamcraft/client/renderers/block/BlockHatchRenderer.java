@@ -28,6 +28,7 @@ import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
  */
 public class BlockHatchRenderer implements ISimpleBlockRenderingHandler
 {
+	@SuppressWarnings("unused")
 	@Override
 	public void renderInventoryBlock(final Block block, final int metadata, final int modelID, final RenderBlocks renderer)
 	{

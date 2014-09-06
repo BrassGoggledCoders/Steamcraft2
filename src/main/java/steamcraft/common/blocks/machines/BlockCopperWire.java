@@ -70,12 +70,15 @@ public class BlockCopperWire extends BaseContainerBlock
 	{
 		super.onBlockPlacedBy(world, x, y, z, entityLiving, is);
 
-		TileCopperWire tile = (TileCopperWire) world.getTileEntity(x, y, z);
-
-		if(tile != null)
+		if(!world.isRemote)
 		{
-			tile.network = null;
-			tile.updateConnections();
+			TileCopperWire tile = (TileCopperWire) world.getTileEntity(x, y, z);
+			
+			if(tile != null)
+			{
+				tile.network = null;
+				tile.updateConnections();
+			}
 		}
 	}
 
