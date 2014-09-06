@@ -47,8 +47,13 @@ import steamcraft.common.items.electric.ItemShrinkray;
 import steamcraft.common.items.modules.ItemAqualung;
 import steamcraft.common.items.modules.ItemClimbingSpikes;
 import steamcraft.common.items.modules.ItemEmergencyTank;
+import steamcraft.common.items.modules.ItemFlippers;
 import steamcraft.common.items.modules.ItemLegBraces;
+import steamcraft.common.items.modules.ItemLifeVest;
+import steamcraft.common.items.modules.ItemParachute;
+import steamcraft.common.items.modules.ItemPistonBoots;
 import steamcraft.common.items.modules.ItemReactivePistonPlating;
+import steamcraft.common.items.modules.ItemRollerSkates;
 import steamcraft.common.items.modules.ItemSpringHeels;
 import steamcraft.common.items.modules.ItemWatchDisplay;
 import steamcraft.common.items.tools.ItemElectricDrill;
@@ -144,7 +149,8 @@ public class InitItems
 	public static Item itemTopHat;
 
 	// Modules
-	public static Item itemAqualung, itemPistonPlating, itemTank, itemWatchDisplay, itemClimbingSpikes, itemLegBraces, itemSpringHeels;
+	public static Item itemAqualung, itemPistonPlating, itemTank, itemWatchDisplay, itemClimbingSpikes
+	, itemLegBraces, itemSpringHeels, itemRollerSkates, itemParachute, itemFlippers, itemLifeVest, itemPistonBoots;
 
 	public static Item itemTeapot, itemTeacup;
 
@@ -407,6 +413,21 @@ public class InitItems
 
 		itemSpringHeels = new ItemSpringHeels().setUnlocalizedName("itemSpringHeels");
 		registerItem(itemSpringHeels, "ItemSpringHeels");
+
+		itemRollerSkates = new ItemRollerSkates().setUnlocalizedName("itemRollerSkates");
+		registerItem(itemRollerSkates, "ItemRollerSkates");
+
+		itemParachute = new ItemParachute().setUnlocalizedName("itemParachute");
+		registerItem(itemParachute, "ItemParachute");
+
+		itemFlippers = new ItemFlippers().setUnlocalizedName("itemFlippers");
+		registerItem(itemFlippers, "ItemFlippers");
+
+		itemLifeVest = new ItemLifeVest().setUnlocalizedName("itemLifeVest");
+		registerItem(itemLifeVest, "ItemLifeVest");
+
+		itemPistonBoots = new ItemPistonBoots().setUnlocalizedName("itemPistonBoots");
+		registerItem(itemPistonBoots, "ItemPistonBoots");
 
 		itemTeaLeaf = new BaseItem().setUnlocalizedName("itemTeaLeaves");
 		registerItem(itemTeaLeaf, "ItemTeaLeaf");
