@@ -45,8 +45,11 @@ import steamcraft.common.items.electric.ElectricItem;
 import steamcraft.common.items.electric.ItemRayGun;
 import steamcraft.common.items.electric.ItemShrinkray;
 import steamcraft.common.items.modules.ItemAqualung;
+import steamcraft.common.items.modules.ItemClimbingSpikes;
 import steamcraft.common.items.modules.ItemEmergencyTank;
+import steamcraft.common.items.modules.ItemLegBraces;
 import steamcraft.common.items.modules.ItemReactivePistonPlating;
+import steamcraft.common.items.modules.ItemSpringHeels;
 import steamcraft.common.items.modules.ItemWatchDisplay;
 import steamcraft.common.items.tools.ItemElectricDrill;
 import steamcraft.common.items.tools.ItemModAxe;
@@ -141,7 +144,7 @@ public class InitItems
 	public static Item itemTopHat;
 
 	// Modules
-	public static Item itemAqualung, itemPistonPlating, itemTank, itemWatchDisplay;
+	public static Item itemAqualung, itemPistonPlating, itemTank, itemWatchDisplay, itemClimbingSpikes, itemLegBraces, itemSpringHeels;
 
 	public static Item itemTeapot, itemTeacup;
 
@@ -395,6 +398,15 @@ public class InitItems
 
 		itemWatchDisplay = new ItemWatchDisplay().setUnlocalizedName("itemWatchDisplay");
 		registerItem(itemWatchDisplay, "ItemWatchDisplay");
+
+		itemClimbingSpikes = new ItemClimbingSpikes().setUnlocalizedName("itemClimbingSpikes");
+		registerItem(itemClimbingSpikes, "ItemClimbingSpikes");
+
+		itemLegBraces = new ItemLegBraces().setUnlocalizedName("itemLegBraces");
+		registerItem(itemLegBraces, "ItemLegBraces");
+
+		itemSpringHeels = new ItemSpringHeels().setUnlocalizedName("itemSpringHeels");
+		registerItem(itemSpringHeels, "ItemSpringHeels");
 
 		itemTeaLeaf = new BaseItem().setUnlocalizedName("itemTeaLeaves");
 		registerItem(itemTeaLeaf, "ItemTeaLeaf");
