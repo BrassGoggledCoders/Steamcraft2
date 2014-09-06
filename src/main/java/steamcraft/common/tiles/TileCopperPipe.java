@@ -27,7 +27,6 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTank;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
-import steamcraft.client.renderers.tile.TileCopperPipeRenderer;
 import steamcraft.common.InitBlocks;
 import steamcraft.common.InitPackets;
 import steamcraft.common.packets.CopperPipeFluidPacket;

@@ -14,12 +14,10 @@ package steamcraft.common.items.modules;
 
 import java.util.ArrayList;
 
-import cpw.mods.fml.common.FMLLog;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import net.minecraftforge.common.DimensionManager;
 import steamcraft.common.items.BaseItem;
 import boilerplate.steamapi.item.IArmorModule;
 import boilerplate.steamapi.item.ModuleRegistry;
