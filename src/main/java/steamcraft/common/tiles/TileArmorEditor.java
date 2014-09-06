@@ -32,7 +32,7 @@ public class TileArmorEditor extends BaseTileWithInventory implements IInventory
 {
 	public TileArmorEditor()
 	{
-		super(23);
+		super(3);
 	}
 
 	@Override
@@ -71,23 +71,20 @@ public class TileArmorEditor extends BaseTileWithInventory implements IInventory
 				installedModules.add(tagCompound.getString("module" + f));
 				tagCompound.removeTag("module" + f);
 			}
-			for(int i = 2; i < 18; i++)
-			{
-				if(this.inventory[i] != null && inventory[i].getItem() instanceof IArmorModule)
+				if(this.inventory[2] != null && inventory[2].getItem() instanceof IArmorModule)
 				{
-					IArmorModule module = (IArmorModule)inventory[i].getItem();
+					IArmorModule module = (IArmorModule)inventory[2].getItem();
 
 					if (module instanceof IArmorModule && !installedModules.contains(module.getModuleId()) && module.getApplicablePiece() == -1)
 					{
 								installedModules.add(module.getModuleId());
-								setInventorySlotContents(i, null);
+								setInventorySlotContents(2, null);
 					}
 					else if(module instanceof IArmorModule && !installedModules.contains(module.getModuleId()) && module.getApplicablePiece() == brassarmor.armorType)
 					{
 								installedModules.add(module.getModuleId());
-								setInventorySlotContents(i, null);
+								setInventorySlotContents(2, null);
 					}
-				}
 			}
 			Iterator<String> iterator = installedModules.iterator();
 			int objects = 0;
@@ -110,9 +107,9 @@ public class TileArmorEditor extends BaseTileWithInventory implements IInventory
 			for(int i = 0; i < installedModules.size(); i++)
 			{
 				Item module = (Item)ModuleRegistry.getModule(installedModules.get(i));
-				if(this.inventory[i + 1] == null && module != null)
+				if(this.inventory[2] == null && module != null)
 				{
-					setInventorySlotContents(i + 1, new ItemStack(module));
+					setInventorySlotContents(2, new ItemStack(module));
 					installedModules.remove(i);
 				}
 			}

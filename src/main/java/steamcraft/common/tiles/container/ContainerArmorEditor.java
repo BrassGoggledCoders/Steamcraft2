@@ -41,16 +41,11 @@ public class ContainerArmorEditor extends Container
 		this.tileent = tile;
 		int var3;
 
-		this.addSlotToContainer(new SlotBrassArmor(this.tileent, 0, 8, 34));
+		this.addSlotToContainer(new SlotBrassArmor(this.tileent, 0, 62, 12));
 
-		this.addSlotToContainer(new SlotBrassArmor(this.tileent, 1, 8, 54));
+		this.addSlotToContainer(new SlotBrassArmor(this.tileent, 1, 62, 48));
 
-		for(int var4 = 0; var4 < 7; ++var4)
-			this.addSlotToContainer(new SlotModule(this.tileent, var4 + 2, 44 + var4 * 18, 16));
-		for(int var4 = 0; var4 < 7; ++var4)
-			this.addSlotToContainer(new SlotModule(this.tileent, 8 + var4, 44 + var4 * 18, 34));
-		for(int var4 = 0; var4 < 7; ++var4)
-			this.addSlotToContainer(new SlotModule(this.tileent, 15 + var4, 44 + var4 * 18, 52));
+		this.addSlotToContainer(new SlotModule(this.tileent, 2, 100, 30));
 
 		for(var3 = 0; var3 < 3; ++var3)
 			for(int var4 = 0; var4 < 9; ++var4)
