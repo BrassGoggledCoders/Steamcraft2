@@ -45,8 +45,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.lwjgl.opengl.GL11;
 
 import steamcraft.common.InitItems;
-import steamcraft.common.Steamcraft;
-import steamcraft.common.config.Config;
 import steamcraft.common.config.ConfigBalance;
 import steamcraft.common.container.InventoryVanity;
 import steamcraft.common.entities.EntityPlayerExtended;

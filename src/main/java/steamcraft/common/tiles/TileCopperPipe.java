@@ -15,10 +15,10 @@ package steamcraft.common.tiles;
 import java.util.ArrayList;
 
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
-import net.minecraft.server.MinecraftServer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
@@ -30,9 +30,11 @@ import net.minecraftforge.fluids.IFluidHandler;
 import steamcraft.client.renderers.tile.TileCopperPipeRenderer;
 import steamcraft.common.InitBlocks;
 import steamcraft.common.InitPackets;
+import steamcraft.common.packets.CopperPipeFluidPacket;
 import steamcraft.common.packets.CopperPipePacket;
-import steamcraft.common.packets.FluidNetworkPacket;
 import cpw.mods.fml.common.network.NetworkRegistry.TargetPoint;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author decebaldecebal
@@ -40,25 +42,55 @@ import cpw.mods.fml.common.network.NetworkRegistry.TargetPoint;
  */
 public class TileCopperPipe extends TileEntity implements IFluidHandler
 {
+	public FluidNetwork network;
+	public boolean isMaster = false;
+	
+	public Fluid fluidInPipe;
+	public float fluidScaled = 0;
+	
 	public ForgeDirection extract = null;
 	public ForgeDirection[] connections = new ForgeDirection[6];
-
-	public FluidNetwork network;
-
-	public boolean isMaster = false;
 
 	@Override
 	public void updateEntity()
 	{
-		if(this.isMaster)
+		if(!worldObj.isRemote) //Yeah, I know...You would think this method is called only on the server-side, but when the world is loaded, it is called once
+			//see the onDataPacket function.
 		{
-			if(this.network.updateNetworkForPipes)
+			if(this.isMaster)
 			{
-				this.network.updateNetworkForPipes = false;
-				this.updateConnections();
+				if(this.network.updateNetworkForPipes) //If I put the second if statement on the server only in the onDataPacket function, 
+					//this WILL crash without the if checking for the server world, which means that this is called somewhere on the client, somehow...
+				{
+					this.network.updateNetworkForPipes = false;
+					this.updateConnections();
+				}
+	
+				this.network.updateNetwork(this);
 			}
-
-			this.network.updateNetwork(this);
+			
+			if(network != null && network.fluidScaled != fluidScaled)
+				updateClientFluid();
+		}
+	}
+	
+	private void updateClientFluid()
+	{
+		if(network.tank.getFluid() != null)
+		{
+			this.fluidScaled = network.fluidScaled; 
+					
+			InitPackets.network.sendToAllAround(new CopperPipeFluidPacket(this.xCoord, this.yCoord, this.zCoord, 
+					network.fluidScaled, network.tank.getFluid().getFluid().getName()), new TargetPoint(
+							this.worldObj.provider.dimensionId, this.xCoord, this.yCoord, this.zCoord, 100));
+		}
+		else
+		{
+			this.fluidScaled = 0;
+			
+			InitPackets.network
+					.sendToAllAround(new CopperPipeFluidPacket(this.xCoord, this.yCoord, this.zCoord,
+							0, "water"), new TargetPoint(this.worldObj.provider.dimensionId, this.xCoord, this.yCoord, this.zCoord, 100));
 		}
 	}
 
@@ -77,7 +109,7 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 
 	private static void writeDirectionToNBT(NBTTagCompound tag, ForgeDirection dir)
 	{
-		byte index = -1;;
+		byte index = -1;
 
 		if(dir != null)
 			switch(dir)
@@ -140,6 +172,20 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 
 		writeDirectionToNBT(tag, this.extract);
 		tag.setBoolean("master", this.isMaster);
+		
+		NBTTagList connections = new NBTTagList();
+		
+		for(int i=0; i < 6;i++)
+			if(this.connections[i]!=null)
+			{
+				NBTTagCompound conn = new NBTTagCompound();
+				conn.setByte("index", (byte)i);
+				writeDirectionToNBT(conn, this.connections[i]);
+				
+				connections.appendTag(conn);
+			}
+
+		tag.setTag("connections", connections);
 
 		return new S35PacketUpdateTileEntity(this.xCoord, this.yCoord, this.zCoord, 1, tag);
 	}
@@ -149,14 +195,27 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 	{
 		this.extract = readDirectionFromNBT(packet.func_148857_g());
 		this.isMaster = packet.func_148857_g().getBoolean("master");
-
-		if(this.isMaster)
+	
+		if(worldObj.isRemote)
+		{
+			this.connections = new ForgeDirection[6];
+			
+			NBTTagList connections = (NBTTagList) packet.func_148857_g().getTag("connections");
+			
+			for(int i = 0; i < connections.tagCount();i++)
+			{
+				NBTTagCompound tag = connections.getCompoundTagAt(i);
+				
+				this.connections[tag.getByte("index")] = readDirectionFromNBT(tag);
+			}
+		}
+		else if(this.isMaster)
 		{
 			this.network = new FluidNetwork(1);
 			this.network.updateNetworkForPipes = true;
 		}
 	}
-
+	
 	public void changeExtracting()
 	{
 		if(this.extract != null)
@@ -208,68 +267,68 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 
 	public void updateConnections()
 	{
-		if(this.canConnect(ForgeDirection.DOWN))
+		if(!worldObj.isRemote)
 		{
-			if(this.updateNetwork(ForgeDirection.DOWN))
-				this.connections[0] = ForgeDirection.DOWN;
-		}
-		else
-			this.removeConnections(0);
+			if(this.canConnect(ForgeDirection.DOWN))
+			{
+				if(this.updateNetwork(ForgeDirection.DOWN))
+					this.connections[0] = ForgeDirection.DOWN;
+			}
+			else
+				this.removeConnections(0);
+	
+			if(this.canConnect(ForgeDirection.UP))
+			{
+				if(this.updateNetwork(ForgeDirection.UP))
+					this.connections[1] = ForgeDirection.UP;
+			}
+			else
+				this.removeConnections(1);
+	
+			if(this.canConnect(ForgeDirection.NORTH))
+			{
+				if(this.updateNetwork(ForgeDirection.NORTH))
+					this.connections[2] = ForgeDirection.NORTH;
+			}
+			else
+				this.removeConnections(2);
+	
+			if(this.canConnect(ForgeDirection.SOUTH))
+			{
+				if(this.updateNetwork(ForgeDirection.SOUTH))
+					this.connections[3] = ForgeDirection.SOUTH;
+			}
+			else
+				this.removeConnections(3);
+	
+			if(this.canConnect(ForgeDirection.WEST))
+			{
+				if(this.updateNetwork(ForgeDirection.WEST))
+					this.connections[4] = ForgeDirection.WEST;
+			}
+			else
+				this.removeConnections(4);
+	
+			if(this.canConnect(ForgeDirection.EAST))
+			{
+				if(this.updateNetwork(ForgeDirection.EAST))
+					this.connections[5] = ForgeDirection.EAST;
+			}
+			else
+				this.removeConnections(5);
+	
+			if(this.network == null)
+			{
+				this.network = new FluidNetwork(1);
+				this.isMaster = true;
+			}
 
-		if(this.canConnect(ForgeDirection.UP))
-		{
-			if(this.updateNetwork(ForgeDirection.UP))
-				this.connections[1] = ForgeDirection.UP;
-		}
-		else
-			this.removeConnections(1);
-
-		if(this.canConnect(ForgeDirection.NORTH))
-		{
-			if(this.updateNetwork(ForgeDirection.NORTH))
-				this.connections[2] = ForgeDirection.NORTH;
-		}
-		else
-			this.removeConnections(2);
-
-		if(this.canConnect(ForgeDirection.SOUTH))
-		{
-			if(this.updateNetwork(ForgeDirection.SOUTH))
-				this.connections[3] = ForgeDirection.SOUTH;
-		}
-		else
-			this.removeConnections(3);
-
-		if(this.canConnect(ForgeDirection.WEST))
-		{
-			if(this.updateNetwork(ForgeDirection.WEST))
-				this.connections[4] = ForgeDirection.WEST;
-		}
-		else
-			this.removeConnections(4);
-
-		if(this.canConnect(ForgeDirection.EAST))
-		{
-			if(this.updateNetwork(ForgeDirection.EAST))
-				this.connections[5] = ForgeDirection.EAST;
-		}
-		else
-			this.removeConnections(5);
-
-		if(this.network == null)
-		{
-			this.network = new FluidNetwork(1);
-			this.isMaster = true;
-		}
-
-		if(!this.worldObj.isRemote)
-		{
 			for(ForgeDirection dir : this.connections)
 			{
 				if(dir != null && this.isFluidHandler(dir))
 				{
 					Coords temp = new Coords(this.xCoord + dir.offsetX, this.yCoord + dir.offsetY, this.zCoord + dir.offsetZ, dir.getOpposite());
-
+	
 					if(this.extract != dir)
 					{
 						if(!this.network.outputs.contains(temp))
@@ -279,11 +338,20 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 						this.network.inputs.add(temp);
 				}
 			}
-
-			this.updateClient();
+	
+			this.updateClientConnections();
 		}
 	}
 
+	private void updateClientConnections()
+	{
+		if(this.network != null)
+		{
+			InitPackets.network.sendToAllAround(new CopperPipePacket(this.xCoord, this.yCoord, this.zCoord,
+					this.connections), new TargetPoint(this.worldObj.provider.dimensionId, this.xCoord, this.yCoord, this.zCoord, 100));
+		}
+	}
+	
 	public boolean updateNetwork(ForgeDirection dir)
 	{
 		TileEntity tile = this.worldObj.getTileEntity(this.xCoord + dir.offsetX, this.yCoord + dir.offsetY, this.zCoord + dir.offsetZ);
@@ -399,9 +467,11 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 		}
 
 		this.connections[index] = dir;
+		
+		updateClientConnections();
 	}
 
-	public void removeFromNetwork() // only called server side
+	public void removeFromNetwork()
 	{
 		if(this.network != null)
 		{
@@ -432,14 +502,14 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 							}
 							pipe.isMaster = true;
 
-							pipe.updateClient();
+							pipe.updateConnections();
 						}
 			}
 			else
 				this.network = null;
 		}
 	}
-
+	
 	private boolean canConnect(ForgeDirection dir)
 	{
 		return this.isCopperPipe(dir) || this.isFluidHandler(dir);
@@ -456,6 +526,7 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 				&& !isCopperPipe(dir);
 	}
 
+	@SideOnly(Side.CLIENT)
 	public ForgeDirection onlyOneOpposite()
 	{
 		ForgeDirection main = null;
@@ -479,6 +550,7 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 		return null;
 	}
 
+	@SideOnly(Side.CLIENT)
 	private boolean areDirectionsOpposite(ForgeDirection dir1, ForgeDirection dir2)
 	{
 		if(dir1 == ForgeDirection.UP && dir2 == ForgeDirection.DOWN)
@@ -489,18 +561,6 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 			return true;
 
 		return false;
-	}
-
-	private void updateClient()
-	{
-		if(this.network != null && !MinecraftServer.getServer().isDedicatedServer())
-		{
-			NBTTagCompound tag = new NBTTagCompound();
-			this.network.tank.writeToNBT(tag);
-
-			InitPackets.network.sendToAllAround(new CopperPipePacket(this.worldObj.provider.dimensionId, this.xCoord, this.yCoord, this.zCoord,
-					this.connections), new TargetPoint(this.worldObj.provider.dimensionId, this.xCoord, this.yCoord, this.zCoord, 100));
-		}
 	}
 
 
@@ -594,10 +654,9 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 		public void updateNetwork(TileCopperPipe pipe)
 		{
 			this.ticksSinceLastUpdate++;
-
-			//if(this.ticksSinceLastUpdate == ticksTillUpdate / 2)
-				this.updateClient(pipe);
-
+			
+			updateFluidScaled();
+			
 			if(this.ticksSinceLastUpdate == ticksTillUpdate)
 			{
 				if(this.tank.getFluidAmount() == 0)
@@ -610,31 +669,20 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 			}
 		}
 
-		private void updateClient(TileCopperPipe pipe)
+		private void updateFluidScaled()
 		{
-			if(pipe.worldObj.isRemote)
+			if(this.tank.getFluid() != null)
 			{
-				if(this.tank.getFluid() != null)
-				{
-					this.fluidScaled = this.tank.getFluidAmount() / (float) this.size / FluidNetwork.capacityPerPipe
-							* (2 * TileCopperPipeRenderer.pixel);
-
-					if(this.fluidScaled > 2 * TileCopperPipeRenderer.pixel)
-						this.fluidScaled = 2 * TileCopperPipeRenderer.pixel;
-
-					InitPackets.network.sendToAllAround(new FluidNetworkPacket(pipe.worldObj.provider.dimensionId, pipe.xCoord, pipe.yCoord,
-							pipe.zCoord, this.fluidScaled, this.tank.getFluid().getFluid().getName()), new TargetPoint(
-							pipe.worldObj.provider.dimensionId, pipe.xCoord, pipe.yCoord, pipe.zCoord, 100));
-				}
-				else
-				{
-					InitPackets.network
-							.sendToAllAround(new FluidNetworkPacket(pipe.worldObj.provider.dimensionId, pipe.xCoord, pipe.yCoord, pipe.zCoord, 0,
-									"water"), new TargetPoint(pipe.worldObj.provider.dimensionId, pipe.xCoord, pipe.yCoord, pipe.zCoord, 100));
-				}
+				this.fluidScaled = this.tank.getFluidAmount() / (float) this.size / FluidNetwork.capacityPerPipe * (2 * TileCopperPipeRenderer.pixel);
+				
+				if(this.fluidScaled > 2 * TileCopperPipeRenderer.pixel)
+					this.fluidScaled = 2 * TileCopperPipeRenderer.pixel;
 			}
-		}
+			else
+				this.fluidScaled = 0;
 
+		}
+		
 		private void updateInputs(World world)
 		{
 			int distribute = 0;
@@ -715,7 +763,7 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 						break;
 
 					if(tempSize == this.outputs.size() / 2)
-						this.updateClient(pipe);
+						updateFluidScaled();
 				}
 			}
 		}

@@ -68,15 +68,16 @@ public class BlockCopperPipe extends BaseContainerBlock
 	{
 		super.onBlockPlacedBy(world, x, y, z, entityLiving, is);
 
-		TileCopperPipe tile = (TileCopperPipe) world.getTileEntity(x, y, z);
-
-		if(tile != null)
+		if(!world.isRemote)
 		{
-			tile.network = null;
-			tile.updateConnections();
+			TileCopperPipe tile = (TileCopperPipe) world.getTileEntity(x, y, z);
+	
+			if(tile != null)
+			{
+				tile.network = null;
+				tile.updateConnections();
+			}
 		}
-		
-		System.out.println("placed");
 	}
 
 	@Override
@@ -87,8 +88,6 @@ public class BlockCopperPipe extends BaseContainerBlock
 			TileCopperPipe tile = (TileCopperPipe) world.getTileEntity(x, y, z);
 			tile.updateConnections();
 		}
-		
-		System.out.println("neighbor" + x + " " + y + " " + z);
 	}
 
 	@Override
