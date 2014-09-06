@@ -14,10 +14,12 @@ package steamcraft.common.items.modules;
 
 import java.util.ArrayList;
 
+import cpw.mods.fml.common.FMLLog;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import net.minecraftforge.common.DimensionManager;
 import steamcraft.common.items.BaseItem;
 import boilerplate.steamapi.item.IArmorModule;
 import boilerplate.steamapi.item.ModuleRegistry;
@@ -56,17 +58,19 @@ public class ItemEmergencyTank extends BaseItem implements IArmorModule
 	@Override
 	public void applyArmorEffect(World world, EntityPlayer player, ItemStack stack)
 	{
-		if(player.isBurning())
-		{
+		FMLLog.fine(Boolean.toString(player.isBurning()), Boolean.toString(player.isBurning()));
+		//if(player.isBurning())
+		//{
 			//Hmm. Dosn't work.
-			//player.worldObj.setBlock(player.serverPosX, player.serverPosY+1, player.serverPosZ, Blocks.flowing_water);
-			player.extinguish();
-			for(float i = 0; i < 1; i += 0.1F)
-			{
-				world.spawnParticle("splash", player.posX + i + world.rand.nextFloat(), player.posY + i + world.rand.nextFloat(), player.posZ + i + world.rand.nextFloat(), 0, 0, 0);
-				world.spawnParticle("splash", player.posX - i - world.rand.nextFloat(), player.posY - i - world.rand.nextFloat(), player.posZ - i - world.rand.nextFloat(), 0, 0, 0);
-			}
-		}
+			//FMLLog.bigWarning("OW!", "OW!");
+		//	world.setBlock(player.serverPosX, player.serverPosY + 2, player.serverPosZ, Blocks.flowing_water, 2, 12);
+			//player.extinguish();
+			//for(float i = 0; i < 1; i += 0.1F)
+			//{
+			//	world.spawnParticle("splash", player.posX + i + world.rand.nextFloat(), player.posY + i + world.rand.nextFloat(), player.posZ + i + world.rand.nextFloat(), 0, 0, 0);
+			//	world.spawnParticle("splash", player.posX - i - world.rand.nextFloat(), player.posY - i - world.rand.nextFloat(), player.posZ - i - world.rand.nextFloat(), 0, 0, 0);
+			//}
+		//}
 	}
 
 	@Override
