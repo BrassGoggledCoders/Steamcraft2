@@ -31,6 +31,7 @@ public class LibInfo
 
 	public static final String CLIENT_PROXY = "steamcraft.client.ClientProxy";
 	public static final String COMMON_PROXY = "steamcraft.common.CommonProxy";
+	public static final String CONFIG_GUI = "steamcraft.client.gui.GuiFactorySteamcraft";
 
 	public static final String PREFIX = "steamcraft:";
 

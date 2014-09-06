@@ -14,15 +14,22 @@ package steamcraft.client.gui;
 
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraftforge.common.config.ConfigElement;
-import steamcraft.common.config.ConfigGeneral;
+import steamcraft.common.config.ConfigBalance;
+import steamcraft.common.lib.LibInfo;
 import cpw.mods.fml.client.config.GuiConfig;
 
-public class SteamcraftConfigGui extends GuiConfig
+/**
+ * 
+ * @author decebaldecebal
+ *
+ */
+public class GuiConfigSteamcraft extends GuiConfig
 {
 	@SuppressWarnings("all")
-	public SteamcraftConfigGui(GuiScreen parent)
+	public GuiConfigSteamcraft(GuiScreen parent)
 	{
-		super(parent, new ConfigElement(ConfigGeneral.config.getCategory(ConfigGeneral.CATEGORY_GENERAL)).getChildElements(), "Steamcraft 2", false,
-				false, GuiConfig.getAbridgedConfigPath(ConfigGeneral.config.toString()));
+		super(parent, new ConfigElement(ConfigBalance.config.getCategory(ConfigBalance.CATEGORY_RECIPE_OPTIONS)).getChildElements(), LibInfo.ID, 
+				ConfigBalance.configId, false, false, GuiConfig.getAbridgedConfigPath(ConfigBalance.config.toString()));
+		
 	}
 }

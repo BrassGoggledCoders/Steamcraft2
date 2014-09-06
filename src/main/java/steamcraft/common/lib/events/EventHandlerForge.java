@@ -47,6 +47,7 @@ import org.lwjgl.opengl.GL11;
 import steamcraft.common.InitItems;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.config.Config;
+import steamcraft.common.config.ConfigBalance;
 import steamcraft.common.container.InventoryVanity;
 import steamcraft.common.entities.EntityPlayerExtended;
 import steamcraft.common.lib.LibInfo;
@@ -270,8 +271,8 @@ public class EventHandlerForge
 	@SubscribeEvent
 	public void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent event)
 	{
-		if(event.modID.equalsIgnoreCase(LibInfo.ID))
-			Config.initialise(Steamcraft.configPath);
+		if(event.modID.equalsIgnoreCase(LibInfo.ID) && event.configID.equalsIgnoreCase(ConfigBalance.configId))
+			ConfigBalance.loadConfiguration();
 	}
 
 	@SubscribeEvent
