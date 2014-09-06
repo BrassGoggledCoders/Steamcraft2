@@ -22,6 +22,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import steamcraft.common.items.armor.ItemBrassArmor;
 import boilerplate.common.baseclasses.BaseTileWithInventory;
 import boilerplate.steamapi.item.IArmorModule;
+import boilerplate.steamapi.item.ModuleRegistry;
 
 /**
  * @author warlordjones
@@ -31,7 +32,7 @@ public class TileArmorEditor extends BaseTileWithInventory implements IInventory
 {
 	public TileArmorEditor()
 	{
-		super(22);
+		super(23);
 	}
 
 	@Override
@@ -55,23 +56,22 @@ public class TileArmorEditor extends BaseTileWithInventory implements IInventory
 	@Override
 	public void updateEntity()
 	{
-		//TODO Removability
+		ArrayList<String> installedModules = new ArrayList<String>();
+
 		if(this.worldObj.isRemote) return;
-		if(this.inventory[0] != null && this.inventory[0].getItem() instanceof ItemBrassArmor && inventory[1] != null)
+		//Addition
+		if(this.inventory[0] != null && this.inventory[0].getItem() instanceof ItemBrassArmor && inventory[2] != null)
 		{
+			NBTTagCompound tagCompound = ItemBrassArmor.getOrCreateTagCompound(inventory[0]);
 			Item armor = inventory[0].getItem();
 			ItemBrassArmor brassarmor = (ItemBrassArmor)armor;
-			NBTTagCompound tagCompound = ItemBrassArmor.getOrCreateTagCompound(inventory[0]);
-
-			ArrayList<String> installedModules = new ArrayList<String>();
 
 			for(int f = 0; f < tagCompound.getInteger("moduleCount"); f++)
 			{
 				installedModules.add(tagCompound.getString("module" + f));
 				tagCompound.removeTag("module" + f);
 			}
-
-			for(int i = 1; i < 17; i++)
+			for(int i = 2; i < 18; i++)
 			{
 				if(this.inventory[i] != null && inventory[i].getItem() instanceof IArmorModule)
 				{
@@ -79,31 +79,43 @@ public class TileArmorEditor extends BaseTileWithInventory implements IInventory
 
 					if (module instanceof IArmorModule && !installedModules.contains(module.getModuleId()) && module.getApplicablePiece() == -1)
 					{
-						//Iterator it = module.getListOfIncompatibleModules().iterator();
-						//while(it.hasNext())
-						//{
-						//	if(!installedModules.contains(it.next()))
-						//	{
 								installedModules.add(module.getModuleId());
 								setInventorySlotContents(i, null);
-						//	}
-						//}
 					}
 					else if(module instanceof IArmorModule && !installedModules.contains(module.getModuleId()) && module.getApplicablePiece() == brassarmor.armorType)
 					{
-						//Iterator it = module.getListOfIncompatibleModules().iterator();
-						//while(it.hasNext())
-						//{
-						//	if(!installedModules.contains(it.next()))
-						//	{
 								installedModules.add(module.getModuleId());
 								setInventorySlotContents(i, null);
-						//	}
-						//}
 					}
 				}
 			}
-
+			Iterator<String> iterator = installedModules.iterator();
+			int objects = 0;
+			while (iterator.hasNext())
+			{
+				tagCompound.setString("module" + objects, iterator.next());
+				objects++;
+			}
+			tagCompound.setInteger("moduleCount", objects);
+		}
+		//Removal
+		if(this.inventory[1] != null && this.inventory[1].getItem() instanceof ItemBrassArmor)
+		{
+			NBTTagCompound tagCompound = ItemBrassArmor.getOrCreateTagCompound(inventory[1]);
+			for(int f = 0; f < tagCompound.getInteger("moduleCount"); f++)
+			{
+				installedModules.add(tagCompound.getString("module" + f));
+				tagCompound.removeTag("module" + f);
+			}
+			for(int i = 0; i < installedModules.size(); i++)
+			{
+				Item module = (Item)ModuleRegistry.getModule(installedModules.get(i));
+				if(this.inventory[i + 1] == null && module != null)
+				{
+					setInventorySlotContents(i + 1, new ItemStack(module));
+					installedModules.remove(i);
+				}
+			}
 			Iterator<String> iterator = installedModules.iterator();
 			int objects = 0;
 			while (iterator.hasNext())
@@ -114,5 +126,4 @@ public class TileArmorEditor extends BaseTileWithInventory implements IInventory
 			tagCompound.setInteger("moduleCount", objects);
 		}
 	}
-
 }

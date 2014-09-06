@@ -12,10 +12,18 @@
  */
 package steamcraft.common.tiles.container;
 
+import java.util.ArrayList;
+
+import boilerplate.steamapi.item.IArmorModule;
+import boilerplate.steamapi.item.ModuleRegistry;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import steamcraft.common.items.armor.ItemBrassArmor;
 import steamcraft.common.tiles.TileArmorEditor;
 import steamcraft.common.tiles.container.slot.SlotBrassArmor;
 import steamcraft.common.tiles.container.slot.SlotModule;
@@ -35,12 +43,14 @@ public class ContainerArmorEditor extends Container
 
 		this.addSlotToContainer(new SlotBrassArmor(this.tileent, 0, 8, 34));
 
+		this.addSlotToContainer(new SlotBrassArmor(this.tileent, 1, 8, 54));
+
 		for(int var4 = 0; var4 < 7; ++var4)
-			this.addSlotToContainer(new SlotModule(this.tileent, var4 + 1, 44 + var4 * 18, 16));
+			this.addSlotToContainer(new SlotModule(this.tileent, var4 + 2, 44 + var4 * 18, 16));
 		for(int var4 = 0; var4 < 7; ++var4)
-			this.addSlotToContainer(new SlotModule(this.tileent, 7 + var4, 44 + var4 * 18, 34));
+			this.addSlotToContainer(new SlotModule(this.tileent, 8 + var4, 44 + var4 * 18, 34));
 		for(int var4 = 0; var4 < 7; ++var4)
-			this.addSlotToContainer(new SlotModule(this.tileent, 14 + var4, 44 + var4 * 18, 52));
+			this.addSlotToContainer(new SlotModule(this.tileent, 15 + var4, 44 + var4 * 18, 52));
 
 		for(var3 = 0; var3 < 3; ++var3)
 			for(int var4 = 0; var4 < 9; ++var4)

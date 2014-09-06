@@ -36,8 +36,6 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 public class ItemBrassArmor extends BaseArmor
 {
-	//private static LinkedHashMap<String, IArmorModule> modules = new LinkedHashMap<String, IArmorModule>();
-
 	public ItemBrassArmor(ItemArmor.ArmorMaterial armorMat, int renderIndex, int armorType)
 	{
 		super(armorMat, renderIndex, armorType);

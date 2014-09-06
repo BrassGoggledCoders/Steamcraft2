@@ -15,6 +15,7 @@ package steamcraft.common.lib;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraftforge.common.util.EnumHelper;
+import steamcraft.common.items.armor.ItemBrassArmor;
 
 /**
  * @author Decebaldecebal
