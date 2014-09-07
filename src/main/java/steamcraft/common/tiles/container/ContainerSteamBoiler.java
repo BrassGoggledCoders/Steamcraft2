@@ -1,5 +1,5 @@
 /**
- * This class was created by BrassGoggledCoders modding team. 
+ * This class was created by BrassGoggledCoders modding team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -8,13 +8,12 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- * 
+ *
  */
 package steamcraft.common.tiles.container;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
@@ -24,16 +23,17 @@ import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import steamcraft.common.InitItems;
 import steamcraft.common.tiles.TileSteamBoiler;
+import boilerplate.common.baseclasses.BaseContainer;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author Decebaldecebal
- * 
+ *
  */
-public class ContainerSteamBoiler extends Container
+public class ContainerSteamBoiler extends BaseContainer
 {
-	protected TileSteamBoiler tile_entity;
+	protected TileSteamBoiler tileent;
 
 	private int lastBurnTime = 0;
 	private int lastItemBurnTime = 0;
@@ -42,7 +42,8 @@ public class ContainerSteamBoiler extends Container
 
 	public ContainerSteamBoiler(InventoryPlayer player, TileSteamBoiler tile)
 	{
-		this.tile_entity = tile;
+		this.tileent = tile;
+		BaseContainer.setTile(tileent);
 
 		this.addSlotToContainer(new Slot(tile, 0, 42, 52));
 		this.addSlotToContainer(new Slot(tile, 1, 132, 57)
@@ -80,10 +81,10 @@ public class ContainerSteamBoiler extends Container
 	public void addCraftingToCrafters(ICrafting par1ICrafting)
 	{
 		super.addCraftingToCrafters(par1ICrafting);
-		par1ICrafting.sendProgressBarUpdate(this, 0, this.tile_entity.furnaceBurnTime);
-		par1ICrafting.sendProgressBarUpdate(this, 1, this.tile_entity.currentItemBurnTime);
-		par1ICrafting.sendProgressBarUpdate(this, 2, this.tile_entity.steamTank.getFluidAmount());
-		par1ICrafting.sendProgressBarUpdate(this, 3, this.tile_entity.waterTank.getFluidAmount());
+		par1ICrafting.sendProgressBarUpdate(this, 0, this.tileent.furnaceBurnTime);
+		par1ICrafting.sendProgressBarUpdate(this, 1, this.tileent.currentItemBurnTime);
+		par1ICrafting.sendProgressBarUpdate(this, 2, this.tileent.steamTank.getFluidAmount());
+		par1ICrafting.sendProgressBarUpdate(this, 3, this.tileent.waterTank.getFluidAmount());
 	}
 
 	@Override
@@ -95,23 +96,23 @@ public class ContainerSteamBoiler extends Container
 		{
 			ICrafting var2 = (ICrafting) this.crafters.get(var1);
 
-			if(this.lastBurnTime != this.tile_entity.furnaceBurnTime)
-				var2.sendProgressBarUpdate(this, 0, this.tile_entity.furnaceBurnTime);
+			if(this.lastBurnTime != this.tileent.furnaceBurnTime)
+				var2.sendProgressBarUpdate(this, 0, this.tileent.furnaceBurnTime);
 
-			if(this.lastItemBurnTime != this.tile_entity.currentItemBurnTime)
-				var2.sendProgressBarUpdate(this, 1, this.tile_entity.currentItemBurnTime);
+			if(this.lastItemBurnTime != this.tileent.currentItemBurnTime)
+				var2.sendProgressBarUpdate(this, 1, this.tileent.currentItemBurnTime);
 
-			if(this.lastSteamLevel != this.tile_entity.steamTank.getFluidAmount())
-				var2.sendProgressBarUpdate(this, 2, this.tile_entity.steamTank.getFluidAmount());
+			if(this.lastSteamLevel != this.tileent.steamTank.getFluidAmount())
+				var2.sendProgressBarUpdate(this, 2, this.tileent.steamTank.getFluidAmount());
 
-			if(this.lastWaterLevel != this.tile_entity.waterTank.getFluidAmount())
-				var2.sendProgressBarUpdate(this, 3, this.tile_entity.waterTank.getFluidAmount());
+			if(this.lastWaterLevel != this.tileent.waterTank.getFluidAmount())
+				var2.sendProgressBarUpdate(this, 3, this.tileent.waterTank.getFluidAmount());
 		}
 
-		this.lastBurnTime = this.tile_entity.furnaceBurnTime;
-		this.lastItemBurnTime = this.tile_entity.currentItemBurnTime;
-		this.lastSteamLevel = this.tile_entity.steamTank.getFluidAmount();
-		this.lastWaterLevel = this.tile_entity.waterTank.getFluidAmount();
+		this.lastBurnTime = this.tileent.furnaceBurnTime;
+		this.lastItemBurnTime = this.tileent.currentItemBurnTime;
+		this.lastSteamLevel = this.tileent.steamTank.getFluidAmount();
+		this.lastWaterLevel = this.tileent.waterTank.getFluidAmount();
 	}
 
 	@Override
@@ -119,19 +120,19 @@ public class ContainerSteamBoiler extends Container
 	public void updateProgressBar(int par1, int par2)
 	{
 		if(par1 == 0)
-			this.tile_entity.furnaceBurnTime = par2;
+			this.tileent.furnaceBurnTime = par2;
 		else if(par1 == 1)
-			this.tile_entity.currentItemBurnTime = par2;
+			this.tileent.currentItemBurnTime = par2;
 		else if(par1 == 2)
-			this.tile_entity.steamTank.setFluid(new FluidStack(FluidRegistry.getFluid("steam"), par2));
+			this.tileent.steamTank.setFluid(new FluidStack(FluidRegistry.getFluid("steam"), par2));
 		else if(par1 == 3)
-			this.tile_entity.waterTank.setFluid(new FluidStack(FluidRegistry.getFluid("water"), par2));
+			this.tileent.waterTank.setFluid(new FluidStack(FluidRegistry.getFluid("water"), par2));
 	}
 
 	@Override
 	public boolean canInteractWith(EntityPlayer par1EntityPlayer)
 	{
-		return this.tile_entity.isUseableByPlayer(par1EntityPlayer);
+		return this.tileent.isUseableByPlayer(par1EntityPlayer);
 	}
 
 	@Override

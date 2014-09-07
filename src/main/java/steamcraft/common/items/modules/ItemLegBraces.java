@@ -23,7 +23,7 @@ import boilerplate.steamapi.item.ModuleRegistry;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 public class ItemLegBraces extends BaseItem implements IArmorModule
 {

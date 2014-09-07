@@ -12,25 +12,29 @@
  */
 package steamcraft.common.tiles.container;
 
+import boilerplate.common.baseclasses.BaseContainer;
+import boilerplate.common.baseclasses.BaseTileWithInventory;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
+import net.minecraft.item.ItemStack;
 import steamcraft.common.tiles.TileArmorEditor;
 import steamcraft.common.tiles.container.slot.SlotBrassArmor;
 import steamcraft.common.tiles.container.slot.SlotModule;
 
 /**
  * @author warlordjones
- * 
+ *
  */
-public class ContainerArmorEditor extends Container
+public class ContainerArmorEditor extends BaseContainer
 {
 	protected TileArmorEditor tileent;
 
 	public ContainerArmorEditor(InventoryPlayer player, TileArmorEditor tile)
 	{
 		this.tileent = tile;
+		BaseContainer.setTile(tileent);
 		int var3;
 
 		this.addSlotToContainer(new SlotBrassArmor(this.tileent, 0, 62, 12));
@@ -44,11 +48,5 @@ public class ContainerArmorEditor extends Container
 				this.addSlotToContainer(new Slot(player, var4 + (var3 * 9) + 9, 8 + (var4 * 18), 84 + (var3 * 18)));
 		for(var3 = 0; var3 < 9; ++var3)
 			this.addSlotToContainer(new Slot(player, var3, 8 + (var3 * 18), 142));
-	}
-
-	@Override
-	public boolean canInteractWith(EntityPlayer var1)
-	{
-		return true;
 	}
 }

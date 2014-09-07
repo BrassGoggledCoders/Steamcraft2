@@ -14,32 +14,33 @@ package steamcraft.common.tiles.container;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import steamcraft.common.tiles.TileCharger;
 import steamcraft.common.tiles.container.slot.SlotCharger;
+import boilerplate.common.baseclasses.BaseContainer;
 import boilerplate.steamapi.item.IEnergyItem;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author decebaldecebal
- * 
+ *
  */
-public class ContainerCharger extends Container
+public class ContainerCharger extends BaseContainer
 {
 	private int lastTotalEnergy = 0;
 	private int lastMaxEnergy = 0;
 	private short lastTransferRate = 0;
 	private int lastBufferEnergy;
 
-	TileCharger tile_entity;
+	TileCharger tileent;
 
 	public ContainerCharger(InventoryPlayer player, TileCharger tile)
 	{
-		this.tile_entity = tile;
+		this.tileent = tile;
+		BaseContainer.setTile(tileent);
 
 		this.addSlotToContainer(new SlotCharger(tile, 0, 98, 22));
 
@@ -58,10 +59,10 @@ public class ContainerCharger extends Container
 	{
 		super.addCraftingToCrafters(crafting);
 
-		crafting.sendProgressBarUpdate(this, 0, this.tile_entity.buffer.getEnergyStored());
-		crafting.sendProgressBarUpdate(this, 1, this.tile_entity.buffer.getMaxEnergyStored());
+		crafting.sendProgressBarUpdate(this, 0, this.tileent.buffer.getEnergyStored());
+		crafting.sendProgressBarUpdate(this, 1, this.tileent.buffer.getMaxEnergyStored());
 		crafting.sendProgressBarUpdate(this, 2, TileCharger.transferRate);
-		crafting.sendProgressBarUpdate(this, 3, this.tile_entity.buffer.getEnergyStored());
+		crafting.sendProgressBarUpdate(this, 3, this.tileent.buffer.getEnergyStored());
 	}
 
 	@Override
@@ -73,23 +74,23 @@ public class ContainerCharger extends Container
 		{
 			ICrafting var2 = (ICrafting) this.crafters.get(var1);
 
-			if(this.lastTotalEnergy != this.tile_entity.buffer.getEnergyStored())
-				var2.sendProgressBarUpdate(this, 0, this.tile_entity.buffer.getEnergyStored());
+			if(this.lastTotalEnergy != this.tileent.buffer.getEnergyStored())
+				var2.sendProgressBarUpdate(this, 0, this.tileent.buffer.getEnergyStored());
 
-			if(this.lastMaxEnergy != this.tile_entity.buffer.getMaxEnergyStored())
-				var2.sendProgressBarUpdate(this, 1, this.tile_entity.buffer.getMaxEnergyStored());
+			if(this.lastMaxEnergy != this.tileent.buffer.getMaxEnergyStored())
+				var2.sendProgressBarUpdate(this, 1, this.tileent.buffer.getMaxEnergyStored());
 
 			if(this.lastTransferRate != TileCharger.transferRate)
 				var2.sendProgressBarUpdate(this, 2, TileCharger.transferRate);
 
-			if(this.lastBufferEnergy != this.tile_entity.buffer.getEnergyStored())
-				var2.sendProgressBarUpdate(this, 3, this.tile_entity.buffer.getEnergyStored());
+			if(this.lastBufferEnergy != this.tileent.buffer.getEnergyStored())
+				var2.sendProgressBarUpdate(this, 3, this.tileent.buffer.getEnergyStored());
 		}
 
-		this.lastTotalEnergy = this.tile_entity.buffer.getEnergyStored();
-		this.lastMaxEnergy = this.tile_entity.buffer.getMaxEnergyStored();
+		this.lastTotalEnergy = this.tileent.buffer.getEnergyStored();
+		this.lastMaxEnergy = this.tileent.buffer.getMaxEnergyStored();
 		this.lastTransferRate = TileCharger.transferRate;
-		this.lastBufferEnergy = this.tile_entity.buffer.getEnergyStored();
+		this.lastBufferEnergy = this.tileent.buffer.getEnergyStored();
 	}
 
 	@Override
@@ -97,19 +98,19 @@ public class ContainerCharger extends Container
 	public void updateProgressBar(int par1, int par2)
 	{
 		if(par1 == 0)
-			par2 = this.tile_entity.buffer.getEnergyStored();
+			par2 = this.tileent.buffer.getEnergyStored();
 		else if(par1 == 1)
-			par2 = this.tile_entity.buffer.getMaxEnergyStored();
+			par2 = this.tileent.buffer.getMaxEnergyStored();
 		else if(par1 == 2)
 			TileCharger.transferRate = (short) par2;
 		else if(par1 == 3)
-			this.tile_entity.buffer.setEnergyStored(par2);
+			this.tileent.buffer.setEnergyStored(par2);
 	}
 
 	@Override
 	public boolean canInteractWith(EntityPlayer par1EntityPlayer)
 	{
-		return this.tile_entity.isUseableByPlayer(par1EntityPlayer);
+		return this.tileent.isUseableByPlayer(par1EntityPlayer);
 	}
 
 	@Override

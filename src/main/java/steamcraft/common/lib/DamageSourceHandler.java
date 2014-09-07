@@ -16,10 +16,10 @@ import net.minecraft.util.DamageSource;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 public class DamageSourceHandler
 {
 	public static DamageSource electrocution = new DamageSource(LibInfo.ID + ".electrocution").setDamageBypassesArmor().setDifficultyScaled();
-	public static DamageSource bullet = new DamageSource(LibInfo.ID + ".bullet").setDamageBypassesArmor().setProjectile();
+	public static DamageSource bullet = new DamageSource(LibInfo.ID + ".bullet").setProjectile();
 }

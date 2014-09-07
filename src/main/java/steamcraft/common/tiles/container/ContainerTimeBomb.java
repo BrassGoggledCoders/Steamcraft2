@@ -20,11 +20,11 @@ import steamcraft.common.tiles.TileTimeBomb;
 
 public class ContainerTimeBomb extends Container
 {
-	TileTimeBomb tile;
+	TileTimeBomb tileent;
 
 	public ContainerTimeBomb(InventoryPlayer inventory, TileTimeBomb tile)
 	{
-		this.tile = tile;
+		this.tileent = tile;
 		int var3;
 
 		for(var3 = 0; var3 < 3; ++var3)
@@ -43,7 +43,7 @@ public class ContainerTimeBomb extends Container
 
 	public void updateTime(String s)
 	{
-		this.tile.setTime(Integer.parseInt(s));
+		this.tileent.setTime(Integer.parseInt(s));
 	}
 
 }

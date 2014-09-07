@@ -1,5 +1,5 @@
 /**
- * This class was created by BrassGoggledCoders modding team. 
+ * This class was created by BrassGoggledCoders modding team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -8,34 +8,35 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- * 
+ *
  */
 package steamcraft.common.tiles.container;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import steamcraft.common.tiles.TileBloomery;
+import boilerplate.common.baseclasses.BaseContainer;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author warlordjones & decebaldecebal
- * 
+ *
  */
-public class ContainerBloomery extends Container
+public class ContainerBloomery extends BaseContainer
 {
-	private TileBloomery tileBloomery;
+	private TileBloomery tileent;
 	private short lastCookTime;
 	private short lastBurnTime;
 	private short lastItemBurnTime;
 
 	public ContainerBloomery(InventoryPlayer playerInv, TileBloomery tileEntity)
 	{
-		this.tileBloomery = tileEntity;
+		this.tileent = tileEntity;
+		BaseContainer.setTile(tileent);
 
 		// Fuel
 		this.addSlotToContainer(new Slot(tileEntity, 0, 45, 53));
@@ -66,9 +67,9 @@ public class ContainerBloomery extends Container
 	public void addCraftingToCrafters(ICrafting crafting)
 	{
 		super.addCraftingToCrafters(crafting);
-		crafting.sendProgressBarUpdate(this, 0, this.tileBloomery.cookTime);
-		crafting.sendProgressBarUpdate(this, 1, this.tileBloomery.burnTime);
-		crafting.sendProgressBarUpdate(this, 2, this.tileBloomery.currentItemBurnTime);
+		crafting.sendProgressBarUpdate(this, 0, this.tileent.cookTime);
+		crafting.sendProgressBarUpdate(this, 1, this.tileent.burnTime);
+		crafting.sendProgressBarUpdate(this, 2, this.tileent.currentItemBurnTime);
 	}
 
 	@Override
@@ -80,19 +81,19 @@ public class ContainerBloomery extends Container
 		{
 			ICrafting icrafting = (ICrafting) this.crafters.get(i);
 
-			if(this.lastCookTime != this.tileBloomery.cookTime)
-				icrafting.sendProgressBarUpdate(this, 0, this.tileBloomery.cookTime);
+			if(this.lastCookTime != this.tileent.cookTime)
+				icrafting.sendProgressBarUpdate(this, 0, this.tileent.cookTime);
 
-			if(this.lastBurnTime != this.tileBloomery.burnTime)
-				icrafting.sendProgressBarUpdate(this, 1, this.tileBloomery.burnTime);
+			if(this.lastBurnTime != this.tileent.burnTime)
+				icrafting.sendProgressBarUpdate(this, 1, this.tileent.burnTime);
 
-			if(this.lastItemBurnTime != this.tileBloomery.currentItemBurnTime)
-				icrafting.sendProgressBarUpdate(this, 2, this.tileBloomery.currentItemBurnTime);
+			if(this.lastItemBurnTime != this.tileent.currentItemBurnTime)
+				icrafting.sendProgressBarUpdate(this, 2, this.tileent.currentItemBurnTime);
 		}
 
-		this.lastCookTime = this.tileBloomery.cookTime;
-		this.lastBurnTime = this.tileBloomery.burnTime;
-		this.lastItemBurnTime = this.tileBloomery.currentItemBurnTime;
+		this.lastCookTime = this.tileent.cookTime;
+		this.lastBurnTime = this.tileent.burnTime;
+		this.lastItemBurnTime = this.tileent.currentItemBurnTime;
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -102,15 +103,15 @@ public class ContainerBloomery extends Container
 		switch(par1)
 		{
 			case 0:
-				this.tileBloomery.cookTime = (short) par2;
+				this.tileent.cookTime = (short) par2;
 				break;
 
 			case 1:
-				this.tileBloomery.burnTime = (short) par2;
+				this.tileent.burnTime = (short) par2;
 				break;
 
 			case 2:
-				this.tileBloomery.currentItemBurnTime = (short) par2;
+				this.tileent.currentItemBurnTime = (short) par2;
 				break;
 		}
 	}
@@ -118,7 +119,7 @@ public class ContainerBloomery extends Container
 	@Override
 	public boolean canInteractWith(EntityPlayer player)
 	{
-		return this.tileBloomery.isUseableByPlayer(player);
+		return this.tileent.isUseableByPlayer(player);
 	}
 
 	@Override
