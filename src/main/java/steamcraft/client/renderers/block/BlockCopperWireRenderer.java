@@ -21,7 +21,6 @@ import net.minecraftforge.common.util.ForgeDirection;
 import org.lwjgl.opengl.GL11;
 
 import steamcraft.client.lib.RenderIDs;
-import steamcraft.client.renderers.tile.TileCopperWireRenderer;
 import steamcraft.common.tiles.TileCopperWire;
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 
@@ -36,9 +35,12 @@ public class BlockCopperWireRenderer implements ISimpleBlockRenderingHandler
 	{
 		GL11.glRotatef(90.0F, 0.0F, 1.0F, 0.0F);
 		GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
+		
 		final TileCopperWire te = new TileCopperWire();
+		
 		for(int i = 0; i < ForgeDirection.VALID_DIRECTIONS.length; i++)
-		te.connections[i] = ForgeDirection.VALID_DIRECTIONS[i];
+			te.connections[i] = ForgeDirection.VALID_DIRECTIONS[i];
+		
 		TileEntityRendererDispatcher.instance.renderTileEntityAt(te, 0.0D, 0.0D, 0.0D, 0.0F);
 		GL11.glEnable(32826);
 	}

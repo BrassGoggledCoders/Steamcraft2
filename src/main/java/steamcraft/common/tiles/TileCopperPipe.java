@@ -55,13 +55,11 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 	@Override
 	public void updateEntity()
 	{
-		if(!worldObj.isRemote) //Yeah, I know...You would think this method is called only on the server-side, but when the world is loaded, it is called once
-			//see the onDataPacket function.
+		if(!worldObj.isRemote)
 		{
 			if(this.isMaster)
 			{
-				if(this.network.updateNetworkForPipes) //If I put the second if statement on the server only in the onDataPacket function,
-					//this WILL crash without the if checking for the server world, which means that this is called somewhere on the client, somehow...
+				if(this.network.updateNetworkForPipes)
 				{
 					this.network.updateNetworkForPipes = false;
 					this.updateConnections();
@@ -69,7 +67,7 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 
 				this.network.updateNetwork(this);
 			}
-
+			
 			if(network != null && network.fluidScaled != fluidScaled)
 				updateClientFluid();
 		}
@@ -83,15 +81,14 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 
 			InitPackets.network.sendToAllAround(new CopperPipeFluidPacket(this.xCoord, this.yCoord, this.zCoord,
 					network.fluidScaled, network.tank.getFluid().getFluid().getName()), new TargetPoint(
-							this.worldObj.provider.dimensionId, this.xCoord, this.yCoord, this.zCoord, 100));
+							this.worldObj.provider.dimensionId, this.xCoord, this.yCoord, this.zCoord, 50));
 		}
 		else
 		{
 			this.fluidScaled = 0;
 
-			InitPackets.network
-					.sendToAllAround(new CopperPipeFluidPacket(this.xCoord, this.yCoord, this.zCoord,
-							0, "water"), new TargetPoint(this.worldObj.provider.dimensionId, this.xCoord, this.yCoord, this.zCoord, 100));
+			InitPackets.network.sendToAllAround(new CopperPipeFluidPacket(this.xCoord, this.yCoord, this.zCoord,
+					0, "water"), new TargetPoint(this.worldObj.provider.dimensionId, this.xCoord, this.yCoord, this.zCoord, 50));
 		}
 	}
 
@@ -172,7 +169,6 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 		NBTTagCompound tag = new NBTTagCompound();
 
 		writeDirectionToNBT(tag, this.extract);
-		tag.setBoolean("master", this.isMaster);
 
 		NBTTagList connections = new NBTTagList();
 
@@ -195,25 +191,16 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 	public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity packet)
 	{
 		this.extract = readDirectionFromNBT(packet.func_148857_g());
-		this.isMaster = packet.func_148857_g().getBoolean("master");
+		
+		this.connections = new ForgeDirection[6];
 
-		if(worldObj.isRemote)
+		NBTTagList connections = (NBTTagList) packet.func_148857_g().getTag("connections");
+
+		for(int i = 0; i < connections.tagCount();i++)
 		{
-			this.connections = new ForgeDirection[6];
+			NBTTagCompound tag = connections.getCompoundTagAt(i);
 
-			NBTTagList connections = (NBTTagList) packet.func_148857_g().getTag("connections");
-
-			for(int i = 0; i < connections.tagCount();i++)
-			{
-				NBTTagCompound tag = connections.getCompoundTagAt(i);
-
-				this.connections[tag.getByte("index")] = readDirectionFromNBT(tag);
-			}
-		}
-		else if(this.isMaster)
-		{
-			this.network = new FluidNetwork(1);
-			this.network.updateNetworkForPipes = true;
+			this.connections[tag.getByte("index")] = readDirectionFromNBT(tag);
 		}
 	}
 
@@ -638,7 +625,7 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 
 		public FluidTank tank;
 		public int size;
-		public float fluidScaled;
+		public float fluidScaled = 0;
 
 		ArrayList<Coords> inputs = new ArrayList<Coords>();
 		ArrayList<Coords> outputs = new ArrayList<Coords>();
@@ -790,9 +777,8 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 
 			FluidNetwork network = new FluidNetwork(1);
 
-			network.updateNetworkForPipes = true;
-			network.tank = new FluidTank(200 * network.size);
 			network.tank.readFromNBT(temp);
+			network.updateNetworkForPipes = true;
 
 			return network;
 		}

@@ -137,7 +137,6 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 		NBTTagCompound tag = new NBTTagCompound();
 
 		writeDirectionToNBT(tag, this.extract);
-		tag.setBoolean("master", this.isMaster);
 
 		NBTTagList connections = new NBTTagList();
 		
@@ -160,25 +159,16 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 	public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity packet)
 	{
 		this.extract = readDirectionFromNBT(packet.func_148857_g());
-		this.isMaster = packet.func_148857_g().getBoolean("master");
-
-		if(worldObj.isRemote)
+		
+		this.connections = new ForgeDirection[6];
+		
+		NBTTagList connections = (NBTTagList) packet.func_148857_g().getTag("connections");
+		
+		for(int i = 0; i < connections.tagCount();i++)
 		{
-			this.connections = new ForgeDirection[6];
+			NBTTagCompound tag = connections.getCompoundTagAt(i);
 			
-			NBTTagList connections = (NBTTagList) packet.func_148857_g().getTag("connections");
-			
-			for(int i = 0; i < connections.tagCount();i++)
-			{
-				NBTTagCompound tag = connections.getCompoundTagAt(i);
-				
-				this.connections[tag.getByte("index")] = readDirectionFromNBT(tag);
-			}
-		}
-		else if(this.isMaster)
-		{
-			this.network = new EnergyNetwork(1);
-			this.network.updateNetworkForWires = true;
+			this.connections[tag.getByte("index")] = readDirectionFromNBT(tag);
 		}
 	}
 
