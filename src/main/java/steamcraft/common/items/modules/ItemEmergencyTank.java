@@ -24,7 +24,7 @@ import boilerplate.steamapi.item.ModuleRegistry;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class ItemEmergencyTank extends BaseItem implements IArmorModule
 {
@@ -56,8 +56,8 @@ public class ItemEmergencyTank extends BaseItem implements IArmorModule
 	@Override
 	public void applyArmorEffect(World world, EntityPlayer player, ItemStack stack)
 	{
-		if(player.isBurning() && world.getBlock((int)Math.round(player.posX), (int)Math.round(player.posY), (int)Math.round(player.posZ)) == Blocks.air)
-		world.setBlock((int)Math.round(player.posX), (int)Math.round(player.posY), (int)Math.round(player.posZ), Blocks.flowing_water, 2, 2);
+		if(player.isBurning() && (world.getBlock((int) Math.round(player.posX), (int) Math.round(player.posY), (int) Math.round(player.posZ)) == Blocks.air))
+			world.setBlock((int) Math.round(player.posX), (int) Math.round(player.posY), (int) Math.round(player.posZ), Blocks.flowing_water, 2, 2);
 	}
 
 	@Override
@@ -65,6 +65,7 @@ public class ItemEmergencyTank extends BaseItem implements IArmorModule
 	{
 		return EnumArmorEffectType.ONTICK;
 	}
+
 	@Override
 	public ArrayList<IArmorModule> getListOfIncompatibleModules()
 	{

@@ -13,7 +13,6 @@
 package steamcraft.common.items.modules;
 
 import java.util.ArrayList;
-import java.util.Vector;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -24,7 +23,7 @@ import boilerplate.steamapi.item.ModuleRegistry;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class ItemFlippers extends BaseItem implements IArmorModule
 {
@@ -73,9 +72,9 @@ public class ItemFlippers extends BaseItem implements IArmorModule
 	@Override
 	public ArrayList<IArmorModule> getListOfIncompatibleModules()
 	{
-		//ArrayList incompats = new ArrayList();
-		//incompats.add(InitItems.itemPistonPlating);
-		//return incompats;
+		// ArrayList incompats = new ArrayList();
+		// incompats.add(InitItems.itemPistonPlating);
+		// return incompats;
 		return null;
 	}
 

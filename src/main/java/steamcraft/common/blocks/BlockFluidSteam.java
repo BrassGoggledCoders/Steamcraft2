@@ -43,7 +43,7 @@ public class BlockFluidSteam extends BlockFluidClassic
 	@Override
 	public IIcon getIcon(int side, int meta)
 	{
-		return side != 0 && side != 1 ? iconFlowing : this.blockIcon;
+		return (side != 0) && (side != 1) ? iconFlowing : this.blockIcon;
 	}
 
 	@Override

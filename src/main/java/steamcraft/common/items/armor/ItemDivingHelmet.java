@@ -53,12 +53,12 @@ public class ItemDivingHelmet extends BaseArmor
 	public void renderHelmetOverlay(ItemStack stack, EntityPlayer player, ScaledResolution resolution, float partialTicks, boolean hasScreen,
 			int mouseX, int mouseY)
 	{
-		if(Minecraft.getMinecraft().thePlayer == null || Minecraft.getMinecraft().currentScreen != null)
+		if((Minecraft.getMinecraft().thePlayer == null) || (Minecraft.getMinecraft().currentScreen != null))
 			return;
 
 		ItemStack helmet = Minecraft.getMinecraft().thePlayer.inventory.armorItemInSlot(3);
 
-		if(Minecraft.getMinecraft().gameSettings.thirdPersonView == 0 && helmet != null && helmet.getItem() == InitItems.itemDivingHelmet)// &&
+		if((Minecraft.getMinecraft().gameSettings.thirdPersonView == 0) && (helmet != null) && (helmet.getItem() == InitItems.itemDivingHelmet))// &&
 		// KeyHandler.keyPressed)
 		{
 			Minecraft.getMinecraft().getTextureManager().bindTexture(overlay);

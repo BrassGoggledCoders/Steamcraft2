@@ -24,7 +24,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author warlordjones & decebaldecebal
- *
+ * 
  */
 public class TileBloomery extends BaseTileWithInventory
 {
@@ -64,7 +64,7 @@ public class TileBloomery extends BaseTileWithInventory
 	@SideOnly(Side.CLIENT)
 	public int getCookProgressScaled(int i)
 	{
-		return this.cookTime * i / 400;
+		return (this.cookTime * i) / 400;
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -73,7 +73,7 @@ public class TileBloomery extends BaseTileWithInventory
 		if(this.currentItemBurnTime == 0)
 			this.currentItemBurnTime = 200;
 
-		return this.burnTime * i / this.currentItemBurnTime;
+		return (this.burnTime * i) / this.currentItemBurnTime;
 	}
 
 	public boolean isBurning()
@@ -92,7 +92,7 @@ public class TileBloomery extends BaseTileWithInventory
 
 		if(!this.worldObj.isRemote)
 		{
-			if(this.burnTime == 0 && this.canSmelt())
+			if((this.burnTime == 0) && this.canSmelt())
 			{
 				this.currentItemBurnTime = this.burnTime = getItemBurnTime(this.inventory[0]);
 
@@ -124,7 +124,7 @@ public class TileBloomery extends BaseTileWithInventory
 			else
 				this.cookTime = 0;
 
-			if(flag != this.burnTime > 0)
+			if(flag != (this.burnTime > 0))
 			{
 				flag1 = true;
 				BlockBloomery.updateBloomeryBlockState(this.burnTime > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord);
@@ -137,7 +137,7 @@ public class TileBloomery extends BaseTileWithInventory
 
 	private boolean canSmelt()
 	{
-		if(this.inventory[1] != null && this.inventory[2] != null)
+		if((this.inventory[1] != null) && (this.inventory[2] != null))
 		{
 			ItemStack result = this.getRecipeResult();
 
@@ -149,7 +149,7 @@ public class TileBloomery extends BaseTileWithInventory
 					return false;
 				int amount = this.inventory[3].stackSize + result.stackSize;
 
-				return amount <= this.getInventoryStackLimit() && amount <= this.inventory[3].getMaxStackSize();
+				return (amount <= this.getInventoryStackLimit()) && (amount <= this.inventory[3].getMaxStackSize());
 			}
 		}
 		return false;
@@ -228,7 +228,7 @@ public class TileBloomery extends BaseTileWithInventory
 	@Override
 	public boolean canExtractItem(int par1, ItemStack par2ItemStack, int par3)
 	{
-		return par3 != 0 || par1 != 1 || par2ItemStack.getItem() == Items.bucket;
+		return (par3 != 0) || (par1 != 1) || (par2ItemStack.getItem() == Items.bucket);
 	}
 
 	@Override

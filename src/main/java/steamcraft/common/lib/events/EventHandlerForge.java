@@ -59,7 +59,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class EventHandlerForge
 {
@@ -85,7 +85,7 @@ public class EventHandlerForge
 			EntityPlayer player = (EntityPlayer) event.entityLiving;
 			ItemStack is = player.inventory.armorItemInSlot(3);
 
-			if(is != null && is.getItem() == InitItems.brassGoggles)
+			if((is != null) && (is.getItem() == InitItems.brassGoggles))
 				player.addPotionEffect(new PotionEffect(Potion.nightVision.id, 2, 0, true));
 		}
 	}
@@ -101,7 +101,7 @@ public class EventHandlerForge
 	{
 		Minecraft mc = Minecraft.getMinecraft();
 		ItemStack helmet = Minecraft.getMinecraft().thePlayer.inventory.armorItemInSlot(3);
-		if(helmet != null && helmet.getItem() == InitItems.itemMonocle)
+		if((helmet != null) && (helmet.getItem() == InitItems.itemMonocle))
 		{
 			ScaledResolution res = new ScaledResolution(mc, mc.displayWidth, mc.displayHeight);
 			FontRenderer fontRenderer = mc.fontRenderer;
@@ -119,7 +119,7 @@ public class EventHandlerForge
 
 			int color = 0xCCFF00;
 
-			if(this.block != null && this.block != Blocks.air)
+			if((this.block != null) && (this.block != Blocks.air))
 			{
 				fontRenderer.drawString("Block: " + this.block.getUnlocalizedName().substring(5), posX, posY, color);
 				fontRenderer.drawString("Metadata: " + this.block.getDamageValue(mc.theWorld, this.x, this.y, this.z), posX, posY2, color);
@@ -128,17 +128,17 @@ public class EventHandlerForge
 				// TODO
 				if(this.block instanceof BlockContainer)
 				{
-					if(tile instanceof IEnergyHandler)
+					if(this.tile instanceof IEnergyHandler)
 					{
-						IEnergyHandler energytile = (IEnergyHandler) tile;
+						IEnergyHandler energytile = (IEnergyHandler) this.tile;
 						fontRenderer.drawString(
 								"Energy: " + Integer.toString(energytile.getEnergyStored(ForgeDirection.UP)) + "/"
 										+ Integer.toString(energytile.getMaxEnergyStored(ForgeDirection.UP)) + "RF", posX, posY5, color);
 					}
-					//TODO
-					if(tile instanceof BaseTileWithInventory)
+					// TODO
+					if(this.tile instanceof BaseTileWithInventory)
 					{
-						BaseTileWithInventory te = (BaseTileWithInventory)tile;
+						BaseTileWithInventory te = (BaseTileWithInventory) this.tile;
 
 						if(te.inventory.length < 0)
 						{
@@ -168,13 +168,13 @@ public class EventHandlerForge
 	@SideOnly(Side.CLIENT)
 	public void onDrawBlockSelectionBox(DrawBlockHighlightEvent event)
 	{
-		if(event.player.inventory.armorItemInSlot(3) != null && event.player.inventory.armorItemInSlot(3).getItem() == InitItems.brassGoggles)
+		if((event.player.inventory.armorItemInSlot(3) != null) && (event.player.inventory.armorItemInSlot(3).getItem() == InitItems.brassGoggles))
 		{
 			this.drawSelectionBox(event.player, event.target, 0, event.currentItem, event.partialTicks);
 			event.setCanceled(true);
 		}
-		else if(event.player.inventory.armorItemInSlot(3) != null
-				&& event.player.inventory.armorItemInSlot(3).getItem() == InitItems.itemMonocle)
+		else if((event.player.inventory.armorItemInSlot(3) != null)
+				&& (event.player.inventory.armorItemInSlot(3).getItem() == InitItems.itemMonocle))
 		{
 			this.drawSelectionBox(event.player, event.target, 0, event.currentItem, event.partialTicks);
 			event.setCanceled(true);
@@ -187,7 +187,7 @@ public class EventHandlerForge
 
 	private void drawSelectionBox(EntityPlayer player, MovingObjectPosition mop, int i, ItemStack is, float partialTicks)
 	{
-		if(i == 0 && mop.typeOfHit == MovingObjectType.BLOCK)
+		if((i == 0) && (mop.typeOfHit == MovingObjectType.BLOCK))
 		{
 			GL11.glEnable(GL11.GL_BLEND);
 			GL11.glColor4f(0.0F, 1.0F, 0.0F, 1.0F);
@@ -200,9 +200,9 @@ public class EventHandlerForge
 			if(block != Blocks.air)
 			{
 				block.setBlockBoundsBasedOnState(player.worldObj, mop.blockX, mop.blockY, mop.blockZ);
-				double dx = player.lastTickPosX + (player.posX - player.lastTickPosX) * partialTicks;
-				double dy = player.lastTickPosY + (player.posY - player.lastTickPosY) * partialTicks;
-				double dz = player.lastTickPosZ + (player.posZ - player.lastTickPosZ) * partialTicks;
+				double dx = player.lastTickPosX + ((player.posX - player.lastTickPosX) * partialTicks);
+				double dy = player.lastTickPosY + ((player.posY - player.lastTickPosY) * partialTicks);
+				double dz = player.lastTickPosZ + ((player.posZ - player.lastTickPosZ) * partialTicks);
 				this.drawOutlinedBoundingBox(block.getSelectedBoundingBoxFromPool(player.worldObj, mop.blockX, mop.blockY, mop.blockZ)
 						.expand(offset, offset, offset).getOffsetBoundingBox(-dx, -dy, -dz));
 			}
@@ -212,7 +212,7 @@ public class EventHandlerForge
 			GL11.glDisable(GL11.GL_BLEND);
 		}
 
-		if(i == 0 && mop.typeOfHit == MovingObjectType.ENTITY)
+		if((i == 0) && (mop.typeOfHit == MovingObjectType.ENTITY))
 		{
 			GL11.glEnable(GL11.GL_BLEND);
 			GL11.glColor4f(0.0F, 1.0F, 0.0F, 1.0F);
@@ -225,9 +225,9 @@ public class EventHandlerForge
 			if(entity != null)
 			{
 				entity.setPosition(entity.posX, entity.posY, entity.posZ);
-				double dx = player.lastTickPosX + (player.posX - player.lastTickPosX) * partialTicks;
-				double dy = player.lastTickPosY + (player.posY - player.lastTickPosY) * partialTicks;
-				double dz = player.lastTickPosZ + (player.posZ - player.lastTickPosZ) * partialTicks;
+				double dx = player.lastTickPosX + ((player.posX - player.lastTickPosX) * partialTicks);
+				double dy = player.lastTickPosY + ((player.posY - player.lastTickPosY) * partialTicks);
+				double dz = player.lastTickPosZ + ((player.posZ - player.lastTickPosZ) * partialTicks);
 				this.drawOutlinedBoundingBox(entity.boundingBox.expand(offset, offset, offset).getOffsetBoundingBox(-dx, -dy, -dz));
 			}
 
@@ -280,7 +280,7 @@ public class EventHandlerForge
 		int armorType = event.world.rand.nextInt(2);
 
 		if(chance < 1)
-			if(event.entityLiving instanceof EntityZombie || event.entityLiving instanceof EntitySkeleton)
+			if((event.entityLiving instanceof EntityZombie) || (event.entityLiving instanceof EntitySkeleton))
 			{
 				int sword = event.world.rand.nextInt(100);
 				int helmet = event.world.rand.nextInt(100);
@@ -290,7 +290,7 @@ public class EventHandlerForge
 
 				if(armorType == 0)
 				{
-					if(event.entityLiving instanceof EntityZombie && sword < 50)
+					if((event.entityLiving instanceof EntityZombie) && (sword < 50))
 						event.entityLiving.setCurrentItemOrArmor(0, new ItemStack(InitItems.swordEtherium));
 					if(helmet < 50)
 						event.entityLiving.setCurrentItemOrArmor(1, new ItemStack(InitItems.helmetEtherium));
@@ -303,7 +303,7 @@ public class EventHandlerForge
 				}
 				else if(armorType == 1)
 				{
-					if(event.entityLiving instanceof EntityZombie && sword < 50)
+					if((event.entityLiving instanceof EntityZombie) && (sword < 50))
 						event.entityLiving.setCurrentItemOrArmor(0, new ItemStack(InitItems.swordObsidian));
 					if(helmet < 50)
 						event.entityLiving.setCurrentItemOrArmor(1, new ItemStack(InitItems.helmetObsidian));
@@ -316,6 +316,7 @@ public class EventHandlerForge
 				}
 			}
 	}
+
 	@SubscribeEvent
 	@SideOnly(Side.CLIENT)
 	public void onRenderPlayer(RenderPlayerEvent event)

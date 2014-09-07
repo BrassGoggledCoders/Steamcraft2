@@ -26,7 +26,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author Surseance
- *
+ * 
  */
 public class BlockEngravedVanilla extends BlockEngravedSolid
 {
@@ -36,7 +36,7 @@ public class BlockEngravedVanilla extends BlockEngravedSolid
 	{
 		super();
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(int side, int metadata)

@@ -76,7 +76,7 @@ public class BloomeryRecipes
 		{
 			entry = (Entry<ItemStack[], ItemStack>) iterator.next();
 
-			if(entry.getValue().getItem() == output.getItem() && entry.getValue().getItemDamage() == output.getItemDamage())
+			if((entry.getValue().getItem() == output.getItem()) && (entry.getValue().getItemDamage() == output.getItemDamage()))
 				return entry.getKey();
 		}while(inputs == null);
 
@@ -85,11 +85,11 @@ public class BloomeryRecipes
 
 	private boolean checkItemsAgainstRecipes(ItemStack[] input1, ItemStack[] input2)
 	{
-		return input2[0].getItem() == input1[0].getItem()
-				&& (input2[0].getItemDamage() == 32767 || input2[0].getItemDamage() == input1[0].getItemDamage())
-				&& input2[1].getItem() == input1[1].getItem()
-				&& (input2[1].getItemDamage() == 32767 || input2[1].getItemDamage() == input1[1].getItemDamage())
-				&& input2[0].stackSize <= input1[0].stackSize && input2[1].stackSize <= input1[1].stackSize;
+		return (input2[0].getItem() == input1[0].getItem())
+				&& ((input2[0].getItemDamage() == 32767) || (input2[0].getItemDamage() == input1[0].getItemDamage()))
+				&& (input2[1].getItem() == input1[1].getItem())
+				&& ((input2[1].getItemDamage() == 32767) || (input2[1].getItemDamage() == input1[1].getItemDamage()))
+				&& (input2[0].stackSize <= input1[0].stackSize) && (input2[1].stackSize <= input1[1].stackSize);
 	}
 
 	/**

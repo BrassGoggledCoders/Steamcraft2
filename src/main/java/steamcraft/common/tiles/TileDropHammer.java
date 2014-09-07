@@ -21,7 +21,7 @@ import boilerplate.steamapi.block.IHammerable;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class TileDropHammer extends TileEntity
 {
@@ -40,12 +40,12 @@ public class TileDropHammer extends TileEntity
 			{
 				ItemStack output = hammerable.getOutput(meta);
 				Item outputItem = output.getItem();
-				if(!worldObj.isRemote)
+				if(!this.worldObj.isRemote)
 				{
 					this.worldObj.spawnEntityInWorld(new EntityItem(this.worldObj, this.xCoord, this.yCoord + 1, this.zCoord, new ItemStack(outputItem,
-						1, meta)));
+							1, meta)));
 					this.worldObj.spawnEntityInWorld(new EntityItem(this.worldObj, this.xCoord, this.yCoord + 1, this.zCoord, new ItemStack(outputItem,
-						1, meta)));
+							1, meta)));
 				}
 				this.worldObj.setBlockToAir(this.xCoord, this.yCoord + 1, this.zCoord);
 			}

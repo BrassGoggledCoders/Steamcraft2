@@ -76,7 +76,7 @@ public class ItemElectricTool extends ItemModTool implements IEnergyItem
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer entityplayer, List list, boolean flag)
 	{
-		list.add("Energy: " + this.getEnergyStored(stack) / 1000 + "k / " + this.maxEnergy / 1000 + "k");
+		list.add("Energy: " + (this.getEnergyStored(stack) / 1000) + "k / " + (this.maxEnergy / 1000) + "k");
 		list.add("Transfer(in): " + this.maxReceive);
 	}
 
@@ -96,7 +96,7 @@ public class ItemElectricTool extends ItemModTool implements IEnergyItem
 		if(energy > this.maxEnergy)
 			energy = this.maxEnergy;
 
-		stack.setItemDamage(20 - energy * 20 / this.maxEnergy);
+		stack.setItemDamage(20 - ((energy * 20) / this.maxEnergy));
 
 		tag.setInteger("energy", energy);
 

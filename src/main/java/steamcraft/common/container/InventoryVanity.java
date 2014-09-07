@@ -54,13 +54,13 @@ public class InventoryVanity implements IInventory
 	{
 		ItemStack is = this.getStackInSlot(slot);
 
-		if (is != null)
+		if(is != null)
 		{
-			if (is.stackSize > amount)
+			if(is.stackSize > amount)
 			{
 				is = is.splitStack(amount);
 
-				if (is.stackSize == 0)
+				if(is.stackSize == 0)
 					this.setInventorySlotContents(slot, null);
 			}
 			else
@@ -77,7 +77,7 @@ public class InventoryVanity implements IInventory
 	{
 		final ItemStack is = this.getStackInSlot(slot);
 
-		if (is != null)
+		if(is != null)
 			this.setInventorySlotContents(slot, null);
 
 		return is;
@@ -88,7 +88,7 @@ public class InventoryVanity implements IInventory
 	{
 		this.inventory[slot] = is;
 
-		if ((is != null) && (is.stackSize > this.getInventoryStackLimit()))
+		if((is != null) && (is.stackSize > this.getInventoryStackLimit()))
 			is.stackSize = this.getInventoryStackLimit();
 
 		this.markDirty();
@@ -116,8 +116,8 @@ public class InventoryVanity implements IInventory
 	{
 		final NBTTagList tagList = new NBTTagList();
 
-		for (int i = 0; i < this.getSizeInventory(); ++i)
-			if (this.getStackInSlot(i) != null)
+		for(int i = 0; i < this.getSizeInventory(); ++i)
+			if(this.getStackInSlot(i) != null)
 			{
 				final NBTTagCompound newTagCompound = new NBTTagCompound();
 				newTagCompound.setByte("Slot", (byte) i);
@@ -136,12 +136,12 @@ public class InventoryVanity implements IInventory
 		// now you must include the NBTBase type ID when getting the list;
 		// NBTTagCompound's ID is 10
 		NBTTagList items = compound.getTagList(this.tagName, compound.getId());
-		for (int i = 0; i < items.tagCount(); ++i)
+		for(int i = 0; i < items.tagCount(); ++i)
 		{
 			// tagAt(int) has changed to getCompoundTagAt(int)
 			NBTTagCompound item = items.getCompoundTagAt(i);
 			byte slot = item.getByte("Slot");
-			if ((slot >= 0) && (slot < this.getSizeInventory()))
+			if((slot >= 0) && (slot < this.getSizeInventory()))
 				this.inventory[slot] = ItemStack.loadItemStackFromNBT(item);
 		}
 	}
@@ -166,8 +166,8 @@ public class InventoryVanity implements IInventory
 	@Override
 	public void markDirty()
 	{
-		for (int slot = 0; slot < this.getSizeInventory(); ++slot)
-			if ((this.getStackInSlot(slot) != null) && (this.getStackInSlot(slot).stackSize == 0))
+		for(int slot = 0; slot < this.getSizeInventory(); ++slot)
+			if((this.getStackInSlot(slot) != null) && (this.getStackInSlot(slot).stackSize == 0))
 				this.setInventorySlotContents(slot, null);
 	}
 

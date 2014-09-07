@@ -25,7 +25,7 @@ import cofh.api.energy.IEnergyHandler;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class TileLightningRod extends TileEntity implements IEnergyHandler
 {

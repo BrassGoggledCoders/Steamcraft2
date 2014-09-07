@@ -19,7 +19,7 @@ import boilerplate.steamapi.block.IChiselable;
 
 /**
  * @author Surseance
- *
+ * 
  */
 public class BlockEtherium extends BaseBlock implements IChiselable
 {

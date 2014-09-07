@@ -1,5 +1,6 @@
 /**
  * This class was created by BrassGoggledCoders modding team.
+ *
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -23,7 +24,7 @@ import net.minecraft.world.World;
  * 
  */
 public class CommonProxy
-{	
+{
 	public void registerDisplayInformation()
 	{
 	}
@@ -31,7 +32,7 @@ public class CommonProxy
 	public void registerRenderers()
 	{
 	}
-	
+
 	public World getClientWorld()
 	{
 		return null;

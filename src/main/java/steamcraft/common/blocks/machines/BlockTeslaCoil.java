@@ -20,14 +20,14 @@ import steamcraft.common.tiles.TileTeslaCoil;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class BlockTeslaCoil extends BaseContainerBlock
 {
 	public BlockTeslaCoil(Material mat)
 	{
 		super(mat);
-		setBlockBounds(0.2F, 0, 0.2F, 0.8F, 1.3F, 0.8F);
+		this.setBlockBounds(0.2F, 0, 0.2F, 0.8F, 1.3F, 0.8F);
 	}
 
 	@Override

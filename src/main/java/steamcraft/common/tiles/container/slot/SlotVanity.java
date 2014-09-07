@@ -20,7 +20,7 @@ import boilerplate.steamapi.vanity.IVanityItem;
 
 /**
  * @author decebaldecebal
- *
+ * 
  */
 public class SlotVanity extends Slot
 {

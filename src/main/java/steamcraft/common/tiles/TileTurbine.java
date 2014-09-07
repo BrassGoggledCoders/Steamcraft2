@@ -28,7 +28,7 @@ import cofh.api.energy.IEnergyHandler;
 
 /**
  * @author decebaldecebal
- *
+ * 
  */
 public class TileTurbine extends TileEntity implements IFluidHandler, IEnergyHandler
 {
@@ -112,7 +112,7 @@ public class TileTurbine extends TileEntity implements IFluidHandler, IEnergyHan
 	@Override
 	public boolean canFill(ForgeDirection from, Fluid fluid)
 	{
-		if(fluid == FluidRegistry.getFluid("steam") && from != ForgeDirection.DOWN)
+		if((fluid == FluidRegistry.getFluid("steam")) && (from != ForgeDirection.DOWN))
 			return true;
 		return false;
 	}
@@ -148,8 +148,9 @@ public class TileTurbine extends TileEntity implements IFluidHandler, IEnergyHan
 	public int extractEnergy(ForgeDirection from, int maxExtract, boolean simulate)
 	{
 		if(from == ForgeDirection.DOWN)
-		return this.buffer.extractEnergy(maxExtract, simulate);
-		else return 0;
+			return this.buffer.extractEnergy(maxExtract, simulate);
+		else
+			return 0;
 	}
 
 	@Override

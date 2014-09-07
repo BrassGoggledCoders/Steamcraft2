@@ -30,7 +30,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author Surseance
- *
+ * 
  */
 public class ItemChisel extends BaseItem
 {

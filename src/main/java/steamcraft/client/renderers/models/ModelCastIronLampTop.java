@@ -24,13 +24,12 @@ public class ModelCastIronLampTop extends ModelBase
 	public ModelRenderer bracket;
 	public ModelRenderer bracketWide;
 
-
 	public ModelRenderer crossbarLeft;
 	public ModelRenderer crossbarRight;
 
 	public ModelRenderer lowerLamp;
 	public ModelRenderer upperLamp;
-	
+
 	public ModelRenderer top;
 	public ModelRenderer topPeak;
 

@@ -26,7 +26,7 @@ import boilerplate.steamapi.item.ModuleRegistry;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class TileArmorEditor extends BaseTileWithInventory implements IInventory
 {
@@ -58,47 +58,49 @@ public class TileArmorEditor extends BaseTileWithInventory implements IInventory
 	{
 		ArrayList<String> installedModules = new ArrayList<String>();
 
-		if(this.worldObj.isRemote) return;
-		//Addition
-		if(this.inventory[0] != null && this.inventory[0].getItem() instanceof ItemBrassArmor && inventory[2] != null)
+		if(this.worldObj.isRemote)
+			return;
+		// Addition
+		if((this.inventory[0] != null) && (this.inventory[0].getItem() instanceof ItemBrassArmor) && (this.inventory[2] != null))
 		{
-			NBTTagCompound tagCompound = ItemBrassArmor.getOrCreateTagCompound(inventory[0]);
-			Item armor = inventory[0].getItem();
-			ItemBrassArmor brassarmor = (ItemBrassArmor)armor;
+			NBTTagCompound tagCompound = ItemBrassArmor.getOrCreateTagCompound(this.inventory[0]);
+			Item armor = this.inventory[0].getItem();
+			ItemBrassArmor brassarmor = (ItemBrassArmor) armor;
 
 			for(int f = 0; f < tagCompound.getInteger("moduleCount"); f++)
 			{
 				installedModules.add(tagCompound.getString("module" + f));
 				tagCompound.removeTag("module" + f);
 			}
-				if(this.inventory[2] != null && inventory[2].getItem() instanceof IArmorModule)
-				{
-					IArmorModule module = (IArmorModule)inventory[2].getItem();
+			if((this.inventory[2] != null) && (this.inventory[2].getItem() instanceof IArmorModule))
+			{
+				IArmorModule module = (IArmorModule) this.inventory[2].getItem();
 
-					if (module instanceof IArmorModule && !installedModules.contains(module.getModuleId()) && module.getApplicablePiece() == -1)
-					{
-								installedModules.add(module.getModuleId());
-								setInventorySlotContents(2, null);
-					}
-					else if(module instanceof IArmorModule && !installedModules.contains(module.getModuleId()) && module.getApplicablePiece() == brassarmor.armorType)
-					{
-								installedModules.add(module.getModuleId());
-								setInventorySlotContents(2, null);
-					}
+				if((module instanceof IArmorModule) && !installedModules.contains(module.getModuleId()) && (module.getApplicablePiece() == -1))
+				{
+					installedModules.add(module.getModuleId());
+					this.setInventorySlotContents(2, null);
+				}
+				else if((module instanceof IArmorModule) && !installedModules.contains(module.getModuleId())
+						&& (module.getApplicablePiece() == brassarmor.armorType))
+				{
+					installedModules.add(module.getModuleId());
+					this.setInventorySlotContents(2, null);
+				}
 			}
 			Iterator<String> iterator = installedModules.iterator();
 			int objects = 0;
-			while (iterator.hasNext())
+			while(iterator.hasNext())
 			{
 				tagCompound.setString("module" + objects, iterator.next());
 				objects++;
 			}
 			tagCompound.setInteger("moduleCount", objects);
 		}
-		//Removal
-		if(this.inventory[1] != null && this.inventory[1].getItem() instanceof ItemBrassArmor)
+		// Removal
+		if((this.inventory[1] != null) && (this.inventory[1].getItem() instanceof ItemBrassArmor))
 		{
-			NBTTagCompound tagCompound = ItemBrassArmor.getOrCreateTagCompound(inventory[1]);
+			NBTTagCompound tagCompound = ItemBrassArmor.getOrCreateTagCompound(this.inventory[1]);
 			for(int f = 0; f < tagCompound.getInteger("moduleCount"); f++)
 			{
 				installedModules.add(tagCompound.getString("module" + f));
@@ -106,16 +108,16 @@ public class TileArmorEditor extends BaseTileWithInventory implements IInventory
 			}
 			for(int i = 0; i < installedModules.size(); i++)
 			{
-				Item module = (Item)ModuleRegistry.getModule(installedModules.get(i));
-				if(this.inventory[2] == null && module != null)
+				Item module = (Item) ModuleRegistry.getModule(installedModules.get(i));
+				if((this.inventory[2] == null) && (module != null))
 				{
-					setInventorySlotContents(2, new ItemStack(module));
+					this.setInventorySlotContents(2, new ItemStack(module));
 					installedModules.remove(i);
 				}
 			}
 			Iterator<String> iterator = installedModules.iterator();
 			int objects = 0;
-			while (iterator.hasNext())
+			while(iterator.hasNext())
 			{
 				tagCompound.setString("module" + objects, iterator.next());
 				objects++;

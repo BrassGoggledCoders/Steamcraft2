@@ -63,7 +63,7 @@ import cpw.mods.fml.common.FMLCommonHandler;
 
 /**
  * @author Surseance
- *
+ * 
  */
 public class ClientProxy extends CommonProxy
 {
@@ -76,7 +76,7 @@ public class ClientProxy extends CommonProxy
 	@Override
 	public void registerDisplayInformation()
 	{
-		//Utils.downloadCapes();
+		// Utils.downloadCapes();
 	}
 
 	@Override
@@ -128,9 +128,9 @@ public class ClientProxy extends CommonProxy
 		RenderIDs.blockCastIronRailingRI = RenderingRegistry.getNextAvailableRenderId();
 		RenderingRegistry.registerBlockHandler(new BlockRailingRenderer());
 		// Cast Iron Lamp TODO
-		//RenderIDs.blockCastIronLampRI = RenderingRegistry.getNextAvailableRenderId();
-		//ClientRegistry.bindTileEntitySpecialRenderer(TileCastIronLamp.class, new TileCastIronLampRenderer());
-		//RenderingRegistry.registerBlockHandler(new BlockCastIronLampRenderer());
+		// RenderIDs.blockCastIronLampRI = RenderingRegistry.getNextAvailableRenderId();
+		// ClientRegistry.bindTileEntitySpecialRenderer(TileCastIronLamp.class, new TileCastIronLampRenderer());
+		// RenderingRegistry.registerBlockHandler(new BlockCastIronLampRenderer());
 		// Hatch
 		RenderIDs.blockHatchRI = RenderingRegistry.getNextAvailableRenderId();
 		ClientRegistry.bindTileEntitySpecialRenderer(TileHatch.class, new TileHatchRenderer());
@@ -152,7 +152,7 @@ public class ClientProxy extends CommonProxy
 
 		if(input instanceof FXRaygun)
 			ray = (FXRaygun) input;
-		if(ray == null || ray.isDead)
+		if((ray == null) || ray.isDead)
 		{
 			ray = new FXRaygun(world, player, dx, dy, dz, color.getRed() / 255.0F, color.getGreen() / 255.0F, color.getBlue() / 255.0F, 9);
 			ray.setType(type);
@@ -178,7 +178,7 @@ public class ClientProxy extends CommonProxy
 
 		if(input instanceof FXSmoke)
 			smoke = (FXSmoke) input;
-		if(smoke == null || smoke.isDead)
+		if((smoke == null) || smoke.isDead)
 		{
 			smoke = new FXSmoke(world, dx, dy, dz, color.getBlue() / 255.0F, color.getBlue() / 255.0F, color.getBlue() / 255.0F);
 			FMLClientHandler.instance().getClient().effectRenderer.addEffect(smoke);

@@ -70,10 +70,10 @@ public class ContainerSteamBoiler extends Container
 
 		for(var3 = 0; var3 < 3; ++var3)
 			for(int var4 = 0; var4 < 9; ++var4)
-				this.addSlotToContainer(new Slot(player, var4 + var3 * 9 + 9, 8 + var4 * 18, 84 + var3 * 18));
+				this.addSlotToContainer(new Slot(player, var4 + (var3 * 9) + 9, 8 + (var4 * 18), 84 + (var3 * 18)));
 
 		for(var3 = 0; var3 < 9; ++var3)
-			this.addSlotToContainer(new Slot(player, var3, 8 + var3 * 18, 142));
+			this.addSlotToContainer(new Slot(player, var3, 8 + (var3 * 18), 142));
 	}
 
 	@Override
@@ -140,7 +140,7 @@ public class ContainerSteamBoiler extends Container
 		ItemStack var3 = null;
 		Slot var4 = (Slot) this.inventorySlots.get(par2);
 
-		if(var4 != null && var4.getHasStack())
+		if((var4 != null) && var4.getHasStack())
 		{
 			ItemStack var5 = var4.getStack();
 			var3 = var5.copy();
@@ -149,7 +149,7 @@ public class ContainerSteamBoiler extends Container
 			{
 				FluidStack liquid = FluidContainerRegistry.getFluidForFilledItem(var5);
 
-				if(liquid != null && liquid.getFluid() == FluidRegistry.WATER)
+				if((liquid != null) && (liquid.getFluid() == FluidRegistry.WATER))
 				{
 					if(!this.mergeItemStack(var5, 1, 2, false))
 						return null;
@@ -157,28 +157,28 @@ public class ContainerSteamBoiler extends Container
 				else if(TileEntityFurnace.getItemBurnTime(var5) > 0)
 				{
 					if(!this.mergeItemStack(var5, 0, 1, false))
-						if(par2 >= 3 && par2 < 30)
+						if((par2 >= 3) && (par2 < 30))
 						{
 							if(!this.mergeItemStack(var5, 30, 39, false))
 								return null;
 						}
-						else if(par2 >= 30 && par2 < 39 && !this.mergeItemStack(var5, 3, 30, false))
+						else if((par2 >= 30) && (par2 < 39) && !this.mergeItemStack(var5, 3, 30, false))
 							return null;
 				}
 				else if(var5.getItem() == InitItems.itemCanisterSteam)
 				{
 					if(!this.mergeItemStack(var5, 2, 3, false))
-						if(par2 >= 3 && par2 < 30)
+						if((par2 >= 3) && (par2 < 30))
 						{
 							if(!this.mergeItemStack(var5, 30, 39, false))
 								return null;
 						}
-						else if(par2 >= 30 && par2 < 39 && !this.mergeItemStack(var5, 3, 30, false))
+						else if((par2 >= 30) && (par2 < 39) && !this.mergeItemStack(var5, 3, 30, false))
 							return null;
 				}
-				else if(par2 >= 3 && par2 < 30 && !this.mergeItemStack(var5, 30, 39, false))
+				else if((par2 >= 3) && (par2 < 30) && !this.mergeItemStack(var5, 30, 39, false))
 					return null;
-				else if(par2 >= 30 && par2 < 39 && !this.mergeItemStack(var5, 3, 30, false))
+				else if((par2 >= 30) && (par2 < 39) && !this.mergeItemStack(var5, 3, 30, false))
 					return null;
 			}
 			else if(!this.mergeItemStack(var5, 3, 39, false))

@@ -44,7 +44,7 @@ public class TileCopperTank extends TileEntity implements IFluidHandler
 	@Override
 	public FluidStack drain(ForgeDirection from, FluidStack resource, boolean doDrain)
 	{
-		if(resource == null || !resource.isFluidEqual(this.tank.getFluid()))
+		if((resource == null) || !resource.isFluidEqual(this.tank.getFluid()))
 			return null;
 
 		return this.tank.drain(resource.amount, doDrain);

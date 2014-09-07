@@ -13,15 +13,18 @@ public class BlockDummy extends Block
 		super(blockMaterial);
 
 	}
+
 	@Override
 	public void onNeighborBlockChange(World world, int x, int y, int z, Block block)
 	{
-		if(world.getBlock(x, y-1, z) instanceof BlockLightningRod)
+		if(world.getBlock(x, y - 1, z) instanceof BlockLightningRod)
 		{
 			this.setBlockBounds(0.3F, 0, 0.3F, 0.7F, 1.0F, 0.7F);
 		}
-		else world.setBlockToAir(x, y, z);
+		else
+			world.setBlockToAir(x, y, z);
 	}
+
 	@Override
 	public int getRenderType()
 	{

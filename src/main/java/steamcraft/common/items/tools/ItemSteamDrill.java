@@ -73,7 +73,7 @@ public class ItemSteamDrill extends ItemDrill
 	{
 		float speed = super.getDigSpeed(stack, block, metadata);
 
-		if(speed > 1.0f && stack.getTagCompound().getBoolean("active"))
+		if((speed > 1.0f) && stack.getTagCompound().getBoolean("active"))
 			return speed / 3;
 
 		return speed;
@@ -112,10 +112,10 @@ public class ItemSteamDrill extends ItemDrill
 					break;
 			}
 			Block block = world.getBlock(x, y, z);
-			if(block != null && block.getBlockHardness(world, x, y, z) != 0 && this.canHarvestBlock(block, itemStack))
-				for(int xPos = x - xRange; xPos <= x + xRange; xPos++)
-					for(int yPos = y - yRange; yPos <= y + yRange; yPos++)
-						for(int zPos = z - zRange; zPos <= z + zRange; zPos++)
+			if((block != null) && (block.getBlockHardness(world, x, y, z) != 0) && this.canHarvestBlock(block, itemStack))
+				for(int xPos = x - xRange; xPos <= (x + xRange); xPos++)
+					for(int yPos = y - yRange; yPos <= (y + yRange); yPos++)
+						for(int zPos = z - zRange; zPos <= (z + zRange); zPos++)
 						{
 							Block nblock = world.getBlock(xPos, yPos, zPos);
 
@@ -129,7 +129,7 @@ public class ItemSteamDrill extends ItemDrill
 								if(nblock.getBlockHardness(world, xPos, yPos, zPos) != 0.0D)
 									this.consumeSteamFromCanister(player);
 
-								if(!world.isRemote && result != null)
+								if(!world.isRemote && (result != null))
 								{
 									world.setBlockToAir(xPos, yPos, zPos);
 									world.spawnEntityInWorld(new EntityItem(world, xPos + 0.5, yPos + 0.5, zPos + 0.5, result.copy()));

@@ -40,8 +40,8 @@ public class BlockCastIronFence extends BlockFence
 	{
 		final Block block = world.getBlock(x, y, z);
 
-		if(block != this && block != InitBlocks.blockCastIronGate)
-			return block != null && block.getMaterial().isOpaque() && block.renderAsNormalBlock() ? block.getMaterial() != Material.cactus : false;
+		if((block != this) && (block != InitBlocks.blockCastIronGate))
+			return (block != null) && block.getMaterial().isOpaque() && block.renderAsNormalBlock() ? block.getMaterial() != Material.cactus : false;
 		else
 			return true;
 	}

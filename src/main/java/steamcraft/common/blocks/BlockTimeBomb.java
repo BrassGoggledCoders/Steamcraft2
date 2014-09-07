@@ -31,7 +31,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class BlockTimeBomb extends BaseContainerBlock
 {
@@ -58,7 +58,7 @@ public class BlockTimeBomb extends BaseContainerBlock
 		{
 			TileTimeBomb tile = (TileTimeBomb) world.getTileEntity(par2, par3, par4);
 
-			if(tile == null || player.isSneaking())
+			if((tile == null) || player.isSneaking())
 				return false;
 
 			player.openGui(Steamcraft.instance, GuiIDs.TIMEBOMB, world, par2, par3, par4);
@@ -86,15 +86,17 @@ public class BlockTimeBomb extends BaseContainerBlock
 		this.blockIcon = icon.registerIcon(LibInfo.PREFIX + "blockTimebomb");
 		this.iconEnd = icon.registerIcon(LibInfo.PREFIX + "blockTimebombTop");
 	}
+
 	@Override
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase ent, ItemStack stack)
 	{
-		if(ent != null && ent instanceof EntityPlayer)
+		if((ent != null) && (ent instanceof EntityPlayer))
 		{
-			EntityPlayer player = (EntityPlayer)ent;
-			FMLLog.info("Time Bomb placed at X: " + Integer.toString(x) + " Y: " + Integer.toString(y) + " Z: " + Integer.toString(z) + " by player: " + player.getCommandSenderName(), "");
+			EntityPlayer player = (EntityPlayer) ent;
+			FMLLog.info(
+					"Time Bomb placed at X: " + Integer.toString(x) + " Y: " + Integer.toString(y) + " Z: " + Integer.toString(z) + " by player: "
+							+ player.getCommandSenderName(), "");
 		}
 	}
-
 
 }

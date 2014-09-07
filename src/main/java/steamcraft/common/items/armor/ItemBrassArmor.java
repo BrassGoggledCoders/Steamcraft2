@@ -32,7 +32,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class ItemBrassArmor extends BaseArmor
 {
@@ -87,7 +87,7 @@ public class ItemBrassArmor extends BaseArmor
 		{
 			IArmorModule module = ModuleRegistry.getModule(nbt.getString("module" + i));
 
-			if(module != null && module.getArmorEffectType() == EnumArmorEffectType.ONTICK)
+			if((module != null) && (module.getArmorEffectType() == EnumArmorEffectType.ONTICK))
 			{
 				module.applyArmorEffect(world, player, is);
 			}
@@ -96,7 +96,7 @@ public class ItemBrassArmor extends BaseArmor
 
 	public static NBTTagCompound getOrCreateTagCompound(ItemStack is)
 	{
-		if (!is.hasTagCompound())
+		if(!is.hasTagCompound())
 		{
 			is.setTagCompound(new NBTTagCompound());
 			is.getTagCompound().setInteger("moduleCount", 0);
@@ -104,6 +104,7 @@ public class ItemBrassArmor extends BaseArmor
 
 		return is.getTagCompound();
 	}
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void renderHelmetOverlay(ItemStack stack, EntityPlayer player, ScaledResolution resolution, float partialTicks, boolean hasScreen,
@@ -115,7 +116,7 @@ public class ItemBrassArmor extends BaseArmor
 		{
 			IArmorModule module = ModuleRegistry.getModule(nbt.getString("module" + i));
 
-			if(module != null && module.getArmorEffectType() == EnumArmorEffectType.HUD)
+			if((module != null) && (module.getArmorEffectType() == EnumArmorEffectType.HUD))
 			{
 				module.applyArmorEffect(player.worldObj, player, stack);
 			}

@@ -27,7 +27,7 @@ import boilerplate.steamapi.item.ModuleRegistry;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class ItemReactivePistonPlating extends BaseItem implements IArmorModule
 {
@@ -63,18 +63,18 @@ public class ItemReactivePistonPlating extends BaseItem implements IArmorModule
 		axisalignedbb = player.boundingBox.expand(1.0D, 0.5D, 1.0D);
 		List list = world.getEntitiesWithinAABBExcludingEntity(player, axisalignedbb);
 
-	        if (list != null)
-	        {
-	            for (int i = 0; i < list.size(); ++i)
-	            {
-	                Entity entity = (Entity)list.get(i);
+		if(list != null)
+		{
+			for(int i = 0; i < list.size(); ++i)
+			{
+				Entity entity = (Entity) list.get(i);
 
-	                if (!entity.isDead && entity instanceof EntityLiving)
-	                {
-	                    entity.setVelocity(-entity.motionX - 0.3F, 0.3F, -entity.motionZ - 0.3F);
-	                }
-	            }
-	        }
+				if(!entity.isDead && (entity instanceof EntityLiving))
+				{
+					entity.setVelocity(-entity.motionX - 0.3F, 0.3F, -entity.motionZ - 0.3F);
+				}
+			}
+		}
 	}
 
 	@Override
@@ -82,12 +82,13 @@ public class ItemReactivePistonPlating extends BaseItem implements IArmorModule
 	{
 		return EnumArmorEffectType.ONTICK;
 	}
+
 	@Override
 	public ArrayList<IArmorModule> getListOfIncompatibleModules()
 	{
-		//ArrayList incompats = new ArrayList();
-		//incompats.add(InitItems.itemAqualung);
-		//return incompats;
+		// ArrayList incompats = new ArrayList();
+		// incompats.add(InitItems.itemAqualung);
+		// return incompats;
 		return null;
 	}
 

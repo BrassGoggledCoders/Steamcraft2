@@ -49,9 +49,9 @@ public class BlockCopperTank extends BaseContainerBlock
 		if(player.getHeldItem().getItem() instanceof ItemFluidContainer)
 		{
 			ItemFluidContainer container = (ItemFluidContainer) player.getHeldItem().getItem();
-			if(player.getHeldItem().getItem() instanceof ItemFluidContainer && info[0].fluid != null)
+			if((player.getHeldItem().getItem() instanceof ItemFluidContainer) && (info[0].fluid != null))
 				return true;
-			else if(container.getFluid(new ItemStack(container)) != null && info[0].capacity != TileCopperTank.capacity)
+			else if((container.getFluid(new ItemStack(container)) != null) && (info[0].capacity != TileCopperTank.capacity))
 			{
 				container.drain(new ItemStack(container), 1000, true);
 				tank.fill(ForgeDirection.getOrientation(sideIThink), new FluidStack(container.getFluid(new ItemStack(container)), 1000), true);

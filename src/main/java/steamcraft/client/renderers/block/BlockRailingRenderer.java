@@ -47,15 +47,15 @@ public class BlockRailingRenderer implements ISimpleBlockRenderingHandler
 		Tessellator tessellator = Tessellator.instance;
 		tessellator.setBrightness(block.getMixedBrightnessForBlock(world, x, y, z));
 		int i1 = block.colorMultiplier(world, x, y, z);
-		float f = (i1 >> 16 & 255) / 255.0F;
-		float f1 = (i1 >> 8 & 255) / 255.0F;
+		float f = ((i1 >> 16) & 255) / 255.0F;
+		float f1 = ((i1 >> 8) & 255) / 255.0F;
 		float f2 = (i1 & 255) / 255.0F;
 
 		if(EntityRenderer.anaglyphEnable)
 		{
-			float f3 = (f * 30.0F + f1 * 59.0F + f2 * 11.0F) / 100.0F;
-			float f4 = (f * 30.0F + f1 * 70.0F) / 100.0F;
-			float f5 = (f * 30.0F + f2 * 70.0F) / 100.0F;
+			float f3 = ((f * 30.0F) + (f1 * 59.0F) + (f2 * 11.0F)) / 100.0F;
+			float f4 = ((f * 30.0F) + (f1 * 70.0F)) / 100.0F;
+			float f5 = ((f * 30.0F) + (f2 * 70.0F)) / 100.0F;
 			f = f3;
 			f1 = f4;
 			f2 = f5;
@@ -81,9 +81,9 @@ public class BlockRailingRenderer implements ISimpleBlockRenderingHandler
 		double d12 = z;
 		double d13 = z + 0.5D;
 		double d14 = z + 1;
-		double d15 = x + 0.5D - 0.0625D;
+		double d15 = (x + 0.5D) - 0.0625D;
 		double d16 = x + 0.5D + 0.0625D;
-		double d17 = z + 0.5D - 0.0625D;
+		double d17 = (z + 0.5D) - 0.0625D;
 		double d18 = z + 0.5D + 0.0625D;
 		boolean flag = railing.canPaneConnectTo(world, x, y, z - 1, NORTH);
 		boolean flag1 = railing.canPaneConnectTo(world, x, y, z + 1, SOUTH);
@@ -117,7 +117,7 @@ public class BlockRailingRenderer implements ISimpleBlockRenderingHandler
 					tessellator.addVertexWithUV(d10, y + 1, d18, d5, d6);
 				}
 
-				if(flag4 || y < l - 1 && world.isAirBlock(x - 1, y + 1, z))
+				if(flag4 || ((y < (l - 1)) && world.isAirBlock(x - 1, y + 1, z)))
 				{
 					tessellator.addVertexWithUV(d9, y + 1 + 0.01D, d18, d5, d7);
 					tessellator.addVertexWithUV(d10, y + 1 + 0.01D, d18, d5, d8);
@@ -129,7 +129,7 @@ public class BlockRailingRenderer implements ISimpleBlockRenderingHandler
 					tessellator.addVertexWithUV(d10, y + 1 + 0.01D, d17, d4, d7);
 				}
 
-				if(flag5 || y > 1 && world.isAirBlock(x - 1, y - 1, z))
+				if(flag5 || ((y > 1) && world.isAirBlock(x - 1, y - 1, z)))
 				{
 					tessellator.addVertexWithUV(d9, y - 0.01D, d18, d5, d7);
 					tessellator.addVertexWithUV(d10, y - 0.01D, d18, d5, d8);
@@ -164,7 +164,7 @@ public class BlockRailingRenderer implements ISimpleBlockRenderingHandler
 					tessellator.addVertexWithUV(d10, y + 1, d17, d5, d6);
 				}
 
-				if(flag4 || y < l - 1 && world.isAirBlock(x + 1, y + 1, z))
+				if(flag4 || ((y < (l - 1)) && world.isAirBlock(x + 1, y + 1, z)))
 				{
 					tessellator.addVertexWithUV(d10, y + 1 + 0.01D, d18, d5, d6);
 					tessellator.addVertexWithUV(d11, y + 1 + 0.01D, d18, d5, d7);
@@ -176,7 +176,7 @@ public class BlockRailingRenderer implements ISimpleBlockRenderingHandler
 					tessellator.addVertexWithUV(d11, y + 1 + 0.01D, d17, d4, d6);
 				}
 
-				if(flag5 || y > 1 && world.isAirBlock(x + 1, y - 1, z))
+				if(flag5 || ((y > 1) && world.isAirBlock(x + 1, y - 1, z)))
 				{
 					tessellator.addVertexWithUV(d10, y - 0.01D, d18, d5, d6);
 					tessellator.addVertexWithUV(d11, y - 0.01D, d18, d5, d7);
@@ -213,7 +213,7 @@ public class BlockRailingRenderer implements ISimpleBlockRenderingHandler
 			}
 			else
 			{
-				if(y < l - 1 && world.isAirBlock(x - 1, y + 1, z))
+				if((y < (l - 1)) && world.isAirBlock(x - 1, y + 1, z))
 				{
 					tessellator.addVertexWithUV(d9, y + 1 + 0.01D, d18, d5, d7);
 					tessellator.addVertexWithUV(d10, y + 1 + 0.01D, d18, d5, d8);
@@ -225,7 +225,7 @@ public class BlockRailingRenderer implements ISimpleBlockRenderingHandler
 					tessellator.addVertexWithUV(d10, y + 1 + 0.01D, d17, d4, d7);
 				}
 
-				if(y < l - 1 && world.isAirBlock(x + 1, y + 1, z))
+				if((y < (l - 1)) && world.isAirBlock(x + 1, y + 1, z))
 				{
 					tessellator.addVertexWithUV(d10, y + 1 + 0.01D, d18, d5, d6);
 					tessellator.addVertexWithUV(d11, y + 1 + 0.01D, d18, d5, d7);
@@ -251,7 +251,7 @@ public class BlockRailingRenderer implements ISimpleBlockRenderingHandler
 			}
 			else
 			{
-				if(y > 1 && world.isAirBlock(x - 1, y - 1, z))
+				if((y > 1) && world.isAirBlock(x - 1, y - 1, z))
 				{
 					tessellator.addVertexWithUV(d9, y - 0.01D, d18, d5, d7);
 					tessellator.addVertexWithUV(d10, y - 0.01D, d18, d5, d8);
@@ -263,7 +263,7 @@ public class BlockRailingRenderer implements ISimpleBlockRenderingHandler
 					tessellator.addVertexWithUV(d10, y - 0.01D, d17, d4, d7);
 				}
 
-				if(y > 1 && world.isAirBlock(x + 1, y - 1, z))
+				if((y > 1) && world.isAirBlock(x + 1, y - 1, z))
 				{
 					tessellator.addVertexWithUV(d10, y - 0.01D, d18, d5, d6);
 					tessellator.addVertexWithUV(d11, y - 0.01D, d18, d5, d7);
@@ -302,7 +302,7 @@ public class BlockRailingRenderer implements ISimpleBlockRenderingHandler
 					tessellator.addVertexWithUV(d15, y + 1, d13, d5, d6);
 				}
 
-				if(flag4 || y < l - 1 && world.isAirBlock(x, y + 1, z - 1))
+				if(flag4 || ((y < (l - 1)) && world.isAirBlock(x, y + 1, z - 1)))
 				{
 					tessellator.addVertexWithUV(d15, y + 1 + 0.005D, d12, d5, d6);
 					tessellator.addVertexWithUV(d15, y + 1 + 0.005D, d13, d5, d7);
@@ -314,7 +314,7 @@ public class BlockRailingRenderer implements ISimpleBlockRenderingHandler
 					tessellator.addVertexWithUV(d16, y + 1 + 0.005D, d13, d4, d6);
 				}
 
-				if(flag5 || y > 1 && world.isAirBlock(x, y - 1, z - 1))
+				if(flag5 || ((y > 1) && world.isAirBlock(x, y - 1, z - 1)))
 				{
 					tessellator.addVertexWithUV(d15, y - 0.005D, d12, d5, d6);
 					tessellator.addVertexWithUV(d15, y - 0.005D, d13, d5, d7);
@@ -349,7 +349,7 @@ public class BlockRailingRenderer implements ISimpleBlockRenderingHandler
 					tessellator.addVertexWithUV(d16, y + 1, d13, d5, d6);
 				}
 
-				if(flag4 || y < l - 1 && world.isAirBlock(x, y + 1, z + 1))
+				if(flag4 || ((y < (l - 1)) && world.isAirBlock(x, y + 1, z + 1)))
 				{
 					tessellator.addVertexWithUV(d15, y + 1 + 0.005D, d13, d4, d7);
 					tessellator.addVertexWithUV(d15, y + 1 + 0.005D, d14, d4, d8);
@@ -361,7 +361,7 @@ public class BlockRailingRenderer implements ISimpleBlockRenderingHandler
 					tessellator.addVertexWithUV(d16, y + 1 + 0.005D, d14, d5, d7);
 				}
 
-				if(flag5 || y > 1 && world.isAirBlock(x, y - 1, z + 1))
+				if(flag5 || ((y > 1) && world.isAirBlock(x, y - 1, z + 1)))
 				{
 					tessellator.addVertexWithUV(d15, y - 0.005D, d13, d4, d7);
 					tessellator.addVertexWithUV(d15, y - 0.005D, d14, d4, d8);
@@ -398,7 +398,7 @@ public class BlockRailingRenderer implements ISimpleBlockRenderingHandler
 			}
 			else
 			{
-				if(y < l - 1 && world.isAirBlock(x, y + 1, z - 1))
+				if((y < (l - 1)) && world.isAirBlock(x, y + 1, z - 1))
 				{
 					tessellator.addVertexWithUV(d15, y + 1 + 0.005D, d12, d5, d6);
 					tessellator.addVertexWithUV(d15, y + 1 + 0.005D, d13, d5, d7);
@@ -410,7 +410,7 @@ public class BlockRailingRenderer implements ISimpleBlockRenderingHandler
 					tessellator.addVertexWithUV(d16, y + 1 + 0.005D, d13, d4, d6);
 				}
 
-				if(y < l - 1 && world.isAirBlock(x, y + 1, z + 1))
+				if((y < (l - 1)) && world.isAirBlock(x, y + 1, z + 1))
 				{
 					tessellator.addVertexWithUV(d15, y + 1 + 0.005D, d13, d4, d7);
 					tessellator.addVertexWithUV(d15, y + 1 + 0.005D, d14, d4, d8);
@@ -436,7 +436,7 @@ public class BlockRailingRenderer implements ISimpleBlockRenderingHandler
 			}
 			else
 			{
-				if(y > 1 && world.isAirBlock(x, y - 1, z - 1))
+				if((y > 1) && world.isAirBlock(x, y - 1, z - 1))
 				{
 					tessellator.addVertexWithUV(d15, y - 0.005D, d12, d5, d6);
 					tessellator.addVertexWithUV(d15, y - 0.005D, d13, d5, d7);
@@ -448,7 +448,7 @@ public class BlockRailingRenderer implements ISimpleBlockRenderingHandler
 					tessellator.addVertexWithUV(d16, y - 0.005D, d13, d4, d6);
 				}
 
-				if(y > 1 && world.isAirBlock(x, y - 1, z + 1))
+				if((y > 1) && world.isAirBlock(x, y - 1, z + 1))
 				{
 					tessellator.addVertexWithUV(d15, y - 0.005D, d13, d4, d7);
 					tessellator.addVertexWithUV(d15, y - 0.005D, d14, d4, d8);

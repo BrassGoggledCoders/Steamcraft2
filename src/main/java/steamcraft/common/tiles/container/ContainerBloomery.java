@@ -57,9 +57,9 @@ public class ContainerBloomery extends Container
 
 		for(i = 0; i < 3; ++i)
 			for(int j = 0; j < 9; ++j)
-				this.addSlotToContainer(new Slot(playerInv, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
+				this.addSlotToContainer(new Slot(playerInv, j + (i * 9) + 9, 8 + (j * 18), 84 + (i * 18)));
 		for(i = 0; i < 9; ++i)
-			this.addSlotToContainer(new Slot(playerInv, i, 8 + i * 18, 142));
+			this.addSlotToContainer(new Slot(playerInv, i, 8 + (i * 18), 142));
 	}
 
 	@Override
@@ -127,7 +127,7 @@ public class ContainerBloomery extends Container
 		ItemStack itemstack = null;
 		Slot slot = (Slot) this.inventorySlots.get(par2);
 
-		if(slot != null && slot.getHasStack())
+		if((slot != null) && slot.getHasStack())
 		{
 			ItemStack itemstack1 = slot.getStack();
 			itemstack = itemstack1.copy();
@@ -139,7 +139,7 @@ public class ContainerBloomery extends Container
 
 				slot.onSlotChange(itemstack1, itemstack);
 			}
-			else if(par2 != 2 && par2 != 1 && par2 != 0)
+			else if((par2 != 2) && (par2 != 1) && (par2 != 0))
 			{
 				if(TileBloomery.isItemFuel(itemstack1))
 				{
@@ -147,13 +147,13 @@ public class ContainerBloomery extends Container
 						if(!this.mergeItemStack(itemstack1, 1, 3, false))
 							return null;
 				}
-				else if(par2 >= 4 && par2 < 31)
+				else if((par2 >= 4) && (par2 < 31))
 				{
 					if(!this.mergeItemStack(itemstack1, 1, 3, false))
 						if(!this.mergeItemStack(itemstack1, 31, 40, false))
 							return null;
 				}
-				else if(par2 >= 31 && par2 < 40 && !this.mergeItemStack(itemstack1, 4, 31, false))
+				else if((par2 >= 31) && (par2 < 40) && !this.mergeItemStack(itemstack1, 4, 31, false))
 					return null;
 			}
 			else if(!this.mergeItemStack(itemstack1, 4, 40, false))

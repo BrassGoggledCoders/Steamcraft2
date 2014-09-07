@@ -25,7 +25,7 @@ import steamcraft.common.lib.LibInfo;
 
 /**
  * @author Surseance
- *
+ * 
  */
 public class TileLightningRodRenderer extends TileEntitySpecialRenderer
 {

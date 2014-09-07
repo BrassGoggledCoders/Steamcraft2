@@ -65,9 +65,9 @@ public class ModelHatch extends ModelBase
 		this.spoke2.render(f5);
 		this.spoke3.render(f5);
 	}
-	
+
 	public void setRotationAngles(final float f, final float f1, final float f2, final float f3, final float f4, final float f5)
 	{
-		
+
 	}
 }

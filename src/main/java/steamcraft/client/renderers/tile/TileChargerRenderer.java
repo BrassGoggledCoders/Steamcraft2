@@ -27,7 +27,7 @@ import boilerplate.client.renderers.RenderFloatingItem;
 
 /**
  * @author Surseance
- *
+ * 
  */
 public class TileChargerRenderer extends TileEntitySpecialRenderer
 {
@@ -41,7 +41,7 @@ public class TileChargerRenderer extends TileEntitySpecialRenderer
 	@Override
 	public void renderTileEntityAt(final TileEntity te, final double dx, final double dy, final double dz, final float scale)
 	{
-		TileCharger tile = (TileCharger)te;
+		TileCharger tile = (TileCharger) te;
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float) dx + 0.5F, (float) dy + 1.5F, (float) dz + 0.5F);
 		final ResourceLocation crystal = (new ResourceLocation(LibInfo.PREFIX.replace(":", ""), "textures/models/charger.png"));
@@ -60,9 +60,9 @@ public class TileChargerRenderer extends TileEntitySpecialRenderer
 			RenderFloatingItem.render(dx + 0.5F, dy + 0.3F, dz + 0.5F, 0.5F, 0, 0, tile.inventory[0]);
 			GL11.glPopMatrix();
 
-			//GL11.glPushMatrix();
-			//RenderFloatingItem.render(dx + 0.5F, dy + 0.3F, dz + 0.5F, 10, 0, 0, tile.inventory[0]);
-			//GL11.glPopMatrix();
+			// GL11.glPushMatrix();
+			// RenderFloatingItem.render(dx + 0.5F, dy + 0.3F, dz + 0.5F, 10, 0, 0, tile.inventory[0]);
+			// GL11.glPopMatrix();
 		}
 	}
 }

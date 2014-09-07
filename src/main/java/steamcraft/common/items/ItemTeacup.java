@@ -68,7 +68,7 @@ public class ItemTeacup extends BaseItemWithMetadata
 	public void getSubItems(Item item, CreativeTabs tab, List l)
 	{
 		l.add(new ItemStack(InitItems.itemTeacup, 1, 0));
-	
+
 		l.add(new ItemStack(InitItems.itemTeacup, 1, 10));
 	}
 

@@ -39,23 +39,23 @@ public class RenderSmallLightningBolt extends Render
 	{
 		this.bindEntityTexture(entity);
 
-		if(entity.prevRotationYaw == 0.0F && entity.prevRotationPitch == 0.0F)
+		if((entity.prevRotationYaw == 0.0F) && (entity.prevRotationPitch == 0.0F))
 			return;
 
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float) dx, (float) dy, (float) dz);
-		GL11.glRotatef(entity.prevRotationYaw + (entity.rotationYaw - entity.prevRotationYaw) * frotP - 90F, 0.0F, 1.0F, 0.0F);
-		GL11.glRotatef(entity.prevRotationPitch + (entity.rotationPitch - entity.prevRotationPitch) * frotP, 0.0F, 0.0F, 1.0F);
+		GL11.glRotatef((entity.prevRotationYaw + ((entity.rotationYaw - entity.prevRotationYaw) * frotP)) - 90F, 0.0F, 1.0F, 0.0F);
+		GL11.glRotatef(entity.prevRotationPitch + ((entity.rotationPitch - entity.prevRotationPitch) * frotP), 0.0F, 0.0F, 1.0F);
 		Tessellator tessellator = Tessellator.instance;
 		int i = 0;
 		float f2 = 0.0F;
 		float f3 = 0.5F;
-		float f4 = (0 + i * 10) / 32F;
-		float f5 = (5 + i * 10) / 32F;
+		float f4 = (0 + (i * 10)) / 32F;
+		float f5 = (5 + (i * 10)) / 32F;
 		float f6 = 0.0F;
 		float f7 = 0.15625F;
-		float f8 = (5 + i * 10) / 32F;
-		float f9 = (10 + i * 10) / 32F;
+		float f8 = (5 + (i * 10)) / 32F;
+		float f9 = (10 + (i * 10)) / 32F;
 		float f10 = 1F;
 		GL11.glEnable(32826 /* GL_RESCALE_NORMAL_EXT */);
 		float f11 = 1.0F - frotP;

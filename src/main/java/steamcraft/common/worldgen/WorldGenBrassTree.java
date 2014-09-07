@@ -62,13 +62,13 @@ public class WorldGenBrassTree extends WorldGenBigTree
 		if(this.height >= this.heightLimit)
 			this.height = this.heightLimit - 1;
 
-		int i = (int) (1.382D + Math.pow(this.leafDensity * this.heightLimit / 13.0D, 2.0D));
+		int i = (int) (1.382D + Math.pow((this.leafDensity * this.heightLimit) / 13.0D, 2.0D));
 
 		if(i < 1)
 			i = 1;
 
 		int[][] aint = new int[i * this.heightLimit][4];
-		int j = this.basePos[1] + this.heightLimit - this.leafDistanceLimit;
+		int j = (this.basePos[1] + this.heightLimit) - this.leafDistanceLimit;
 		int k = 1;
 		int l = this.basePos[1] + this.height;
 		int i1 = j - this.basePos[1];
@@ -94,8 +94,8 @@ public class WorldGenBrassTree extends WorldGenBigTree
 				{
 					double d1 = this.scaleWidth * f * (this.rand.nextFloat() + 0.328D);
 					double d2 = this.rand.nextFloat() * 2.0D * Math.PI;
-					int k1 = MathHelper.floor_double(d1 * Math.sin(d2) + this.basePos[0] + d0);
-					int l1 = MathHelper.floor_double(d1 * Math.cos(d2) + this.basePos[2] + d0);
+					int k1 = MathHelper.floor_double((d1 * Math.sin(d2)) + this.basePos[0] + d0);
+					int l1 = MathHelper.floor_double((d1 * Math.cos(d2)) + this.basePos[2] + d0);
 					int[] aint1 = new int[] { k1, j, l1 };
 					int[] aint2 = new int[] { k1, j + this.leafDistanceLimit, l1 };
 
@@ -106,7 +106,7 @@ public class WorldGenBrassTree extends WorldGenBigTree
 								+ Math.pow(Math.abs(this.basePos[2] - aint1[2]), 2.0D));
 						double d4 = d3 * this.branchSlope;
 
-						if(aint1[1] - d4 > l)
+						if((aint1[1] - d4) > l)
 							aint3[1] = l;
 						else
 							aint3[1] = (int) (aint1[1] - d4);
@@ -150,7 +150,7 @@ public class WorldGenBrassTree extends WorldGenBigTree
 			{
 				double d0 = Math.pow(Math.abs(i1) + 0.5D, 2.0D) + Math.pow(Math.abs(j1) + 0.5D, 2.0D);
 
-				if(d0 > p_150529_4_ * p_150529_4_)
+				if(d0 > (p_150529_4_ * p_150529_4_))
 					++j1;
 				else
 				{
@@ -171,12 +171,12 @@ public class WorldGenBrassTree extends WorldGenBigTree
 
 	float layerSize(int par1)
 	{
-		if(par1 < this.heightLimit * 0.3D)
+		if(par1 < (this.heightLimit * 0.3D))
 			return -1.618F;
 		else
 		{
 			float f = this.heightLimit / 2.0F;
-			float f1 = this.heightLimit / 2.0F - par1;
+			float f1 = (this.heightLimit / 2.0F) - par1;
 			float f2;
 
 			if(f1 == 0.0F)
@@ -193,7 +193,7 @@ public class WorldGenBrassTree extends WorldGenBigTree
 
 	float leafSize(int par1)
 	{
-		return par1 >= 0 && par1 < this.leafDistanceLimit ? par1 != 0 && par1 != this.leafDistanceLimit - 1 ? 3.0F : 2.0F : -1.0F;
+		return (par1 >= 0) && (par1 < this.leafDistanceLimit) ? (par1 != 0) && (par1 != (this.leafDistanceLimit - 1)) ? 3.0F : 2.0F : -1.0F;
 	}
 
 	void generateLeafNode(int par1, int par2, int par3)
@@ -240,8 +240,8 @@ public class WorldGenBrassTree extends WorldGenBigTree
 			for(int j = aint2[b1] + b4; i != j; i += b4)
 			{
 				aint3[b1] = MathHelper.floor_double(p_150530_1_[b1] + i + 0.5D);
-				aint3[b2] = MathHelper.floor_double(p_150530_1_[b2] + i * d0 + 0.5D);
-				aint3[b3] = MathHelper.floor_double(p_150530_1_[b3] + i * d1 + 0.5D);
+				aint3[b2] = MathHelper.floor_double(p_150530_1_[b2] + (i * d0) + 0.5D);
+				aint3[b3] = MathHelper.floor_double(p_150530_1_[b3] + (i * d1) + 0.5D);
 				byte b5 = 0;
 				int k = Math.abs(aint3[0] - p_150530_1_[0]);
 				int l = Math.abs(aint3[2] - p_150530_1_[2]);
@@ -273,7 +273,7 @@ public class WorldGenBrassTree extends WorldGenBigTree
 
 	boolean leafNodeNeedsBase(int par1)
 	{
-		return par1 >= this.heightLimit * 0.2D;
+		return par1 >= (this.heightLimit * 0.2D);
 	}
 
 	void generateTrunk()
@@ -353,8 +353,8 @@ public class WorldGenBrassTree extends WorldGenBigTree
 			for(j = aint2[b1] + b4; i != j; i += b4)
 			{
 				aint3[b1] = par1ArrayOfInteger[b1] + i;
-				aint3[b2] = MathHelper.floor_double(par1ArrayOfInteger[b2] + i * d0);
-				aint3[b3] = MathHelper.floor_double(par1ArrayOfInteger[b3] + i * d1);
+				aint3[b2] = MathHelper.floor_double(par1ArrayOfInteger[b2] + (i * d0));
+				aint3[b3] = MathHelper.floor_double(par1ArrayOfInteger[b3] + (i * d1));
 				Block block = this.worldObj.getBlock(aint3[0], aint3[1], aint3[2]);
 
 				if(!this.isReplaceable(this.worldObj, aint3[0], aint3[1], aint3[2]))
@@ -368,7 +368,7 @@ public class WorldGenBrassTree extends WorldGenBigTree
 	boolean validTreeLocation()
 	{
 		int[] aint = new int[] { this.basePos[0], this.basePos[1], this.basePos[2] };
-		int[] aint1 = new int[] { this.basePos[0], this.basePos[1] + this.heightLimit - 1, this.basePos[2] };
+		int[] aint1 = new int[] { this.basePos[0], (this.basePos[1] + this.heightLimit) - 1, this.basePos[2] };
 		Block block = this.worldObj.getBlock(this.basePos[0], this.basePos[1] - 1, this.basePos[2]);
 
 		boolean isSoil = block.canSustainPlant(this.worldObj, this.basePos[0], this.basePos[1] - 1, this.basePos[2], ForgeDirection.UP,

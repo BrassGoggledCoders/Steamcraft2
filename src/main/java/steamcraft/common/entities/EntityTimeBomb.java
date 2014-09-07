@@ -26,6 +26,7 @@ public class EntityTimeBomb extends EntityTNTPrimed
 
 		this.fuse = fuse;
 	}
+
 	public EntityTimeBomb(World p_i1730_1_)
 	{
 		super(p_i1730_1_);

@@ -21,15 +21,15 @@ import cpw.mods.fml.client.config.GuiConfig;
 /**
  * 
  * @author decebaldecebal
- *
+ * 
  */
 public class GuiConfigSteamcraft extends GuiConfig
 {
 	@SuppressWarnings("all")
 	public GuiConfigSteamcraft(GuiScreen parent)
 	{
-		super(parent, new ConfigElement(ConfigBalance.config.getCategory(ConfigBalance.CATEGORY_RECIPE_OPTIONS)).getChildElements(), LibInfo.ID, 
+		super(parent, new ConfigElement(ConfigBalance.config.getCategory(ConfigBalance.CATEGORY_RECIPE_OPTIONS)).getChildElements(), LibInfo.ID,
 				ConfigBalance.configId, false, false, GuiConfig.getAbridgedConfigPath(ConfigBalance.config.toString()));
-		
+
 	}
 }

@@ -30,7 +30,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author Surseance
- *
+ * 
  */
 public class BlockCastIronLamp extends BlockContainer
 {
@@ -49,7 +49,7 @@ public class BlockCastIronLamp extends BlockContainer
 		this.setCreativeTab(Steamcraft.tabSC2);
 
 		if(powered)
-		this.setLightLevel(1.0F);
+			this.setLightLevel(1.0F);
 	}
 
 	@Override
@@ -120,6 +120,7 @@ public class BlockCastIronLamp extends BlockContainer
 	{
 		return world.getBlock(x, y - 1, z) != Blocks.air ? true : false;
 	}
+
 	@Override
 	public void onBlockAdded(World world, int x, int y, int z)
 	{
@@ -152,7 +153,7 @@ public class BlockCastIronLamp extends BlockContainer
 		if(!world.isRemote && BlockCastIronLamp.powered && !world.isBlockIndirectlyGettingPowered(x, y, z))
 			world.setBlock(x, y, z, InitBlocks.blockCastIronLamp, 0, world.getBlockMetadata(x, y, z) + 10);
 	}
-	
+
 	@SuppressWarnings("unused")
 	private boolean dropIfCantStay(final World world, final int x, final int y, final int z)
 	{
@@ -181,9 +182,9 @@ public class BlockCastIronLamp extends BlockContainer
 		else
 		{
 			final int l = world.getBlockMetadata(x, j, z);
-			final double d = x + 0.5F + (random.nextFloat() - 0.5F) * 0.20000000000000001D;
-			final double d1 = j + 1.0F + (random.nextFloat() - 0.5F) * 0.20000000000000001D;
-			final double d2 = z + 0.5F + (random.nextFloat() - 0.5F) * 0.20000000000000001D;
+			final double d = x + 0.5F + ((random.nextFloat() - 0.5F) * 0.20000000000000001D);
+			final double d1 = j + 1.0F + ((random.nextFloat() - 0.5F) * 0.20000000000000001D);
+			final double d2 = z + 0.5F + ((random.nextFloat() - 0.5F) * 0.20000000000000001D);
 			final double d3 = 0.2199999988079071D;
 			final double d4 = 0.27000001072883606D;
 

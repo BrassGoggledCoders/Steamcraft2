@@ -39,7 +39,7 @@ public class BlockTeaPlant extends BlockCrops implements IPlantable
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(int side, int meta)
 	{
-		if(meta < 0 || meta > 1)
+		if((meta < 0) || (meta > 1))
 			meta = 1;
 		return this.iconArray[meta];
 	}
@@ -94,8 +94,8 @@ public class BlockTeaPlant extends BlockCrops implements IPlantable
 	{
 		float f = 1.0F;
 
-		for(int l1 = x - 1; l1 <= x + 1; ++l1)
-			for(int i3 = z - 1; i3 <= z + 1; ++i3)
+		for(int l1 = x - 1; l1 <= (x + 1); ++l1)
+			for(int i3 = z - 1; i3 <= (z + 1); ++i3)
 			{
 				Block block = world.getBlock(l1, y - 1, i3);
 				float growthRate = 0.0F;
@@ -107,7 +107,7 @@ public class BlockTeaPlant extends BlockCrops implements IPlantable
 					if(block.isFertile(world, l1, y - 1, i3))
 						growthRate = 3.0F;
 				}
-				if(l1 != x || i3 != z)
+				if((l1 != x) || (i3 != z))
 					growthRate /= 4.0F;
 
 				f += growthRate;

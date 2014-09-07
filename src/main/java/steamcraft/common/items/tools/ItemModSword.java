@@ -43,7 +43,7 @@ public class ItemModSword extends ItemModTool
 		else
 		{
 			Material material = block.getMaterial();
-			return material != Material.plants && material != Material.vine && material != Material.coral && material != Material.leaves ? 1.0F
+			return (material != Material.plants) && (material != Material.vine) && (material != Material.coral) && (material != Material.leaves) ? 1.0F
 					: 1.5F;
 		}
 	}

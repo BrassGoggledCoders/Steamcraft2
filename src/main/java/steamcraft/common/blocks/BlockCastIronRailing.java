@@ -45,13 +45,13 @@ public class BlockCastIronRailing extends BaseBlock
 	{
 		super(mat);
 	}
-	
+
 	@Override
 	public boolean isOpaqueCube()
 	{
 		return false;
 	}
-	
+
 	@Override
 	public boolean renderAsNormalBlock()
 	{
@@ -178,7 +178,7 @@ public class BlockCastIronRailing extends BaseBlock
 
 	public boolean canPaneConnectTo(IBlockAccess world, int x, int y, int z, ForgeDirection dir)
 	{
-		return world.isSideSolid(x, y, z, dir.getOpposite(), false) || world.getBlock(x, y, z) instanceof BlockCastIronGate
-				|| world.getBlock(x, y, z) instanceof BlockCastIronFence || world.getBlock(x, y, z) instanceof BlockCastIronRailing;
+		return world.isSideSolid(x, y, z, dir.getOpposite(), false) || (world.getBlock(x, y, z) instanceof BlockCastIronGate)
+				|| (world.getBlock(x, y, z) instanceof BlockCastIronFence) || (world.getBlock(x, y, z) instanceof BlockCastIronRailing);
 	}
 }

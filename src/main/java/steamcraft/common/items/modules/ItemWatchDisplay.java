@@ -29,7 +29,7 @@ import boilerplate.steamapi.item.ModuleRegistry;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class ItemWatchDisplay extends BaseItem implements IArmorModule
 {
@@ -61,7 +61,7 @@ public class ItemWatchDisplay extends BaseItem implements IArmorModule
 	@Override
 	public void applyArmorEffect(World world, EntityPlayer player, ItemStack stack)
 	{
-		if(Minecraft.getMinecraft().thePlayer == null || Minecraft.getMinecraft().currentScreen != null)
+		if((Minecraft.getMinecraft().thePlayer == null) || (Minecraft.getMinecraft().currentScreen != null))
 			return;
 
 		ItemStack helmet = Minecraft.getMinecraft().thePlayer.inventory.armorItemInSlot(3);
@@ -97,9 +97,9 @@ public class ItemWatchDisplay extends BaseItem implements IArmorModule
 	@Override
 	public ArrayList<IArmorModule> getListOfIncompatibleModules()
 	{
-		//ArrayList incompats = new ArrayList();
-		//incompats.add(InitItems.itemPistonPlating);
-		//return incompats;
+		// ArrayList incompats = new ArrayList();
+		// incompats.add(InitItems.itemPistonPlating);
+		// return incompats;
 		return null;
 	}
 

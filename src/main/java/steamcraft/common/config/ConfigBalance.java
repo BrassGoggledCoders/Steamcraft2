@@ -19,7 +19,7 @@ import net.minecraftforge.common.config.Configuration;
 public class ConfigBalance
 {
 	public static String configId = "configBalance";
-	
+
 	public static Configuration config;
 
 	public static final String CATEGORY_RECIPE_OPTIONS = "recipe balance options";
@@ -31,18 +31,18 @@ public class ConfigBalance
 	{
 		if(config == null)
 			config = new Configuration(configFile);
-		
+
 		config.load();
-		
+
 		loadConfiguration();
 	}
-	
+
 	public static void loadConfiguration()
 	{
 		cheaperCoreRecipe = config.get(CATEGORY_RECIPE_OPTIONS, "Use diamond instead of nether star in Overcharged Core Recipe", false)
 				.getBoolean(false);
 		numberOfDustsFromOreHammering = config.get(CATEGORY_RECIPE_OPTIONS, "Number of dusts produced from hammering an ore block", 2).getInt();
-		
+
 		if(config.hasChanged())
 			config.save();
 	}

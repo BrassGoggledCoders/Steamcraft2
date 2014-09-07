@@ -46,7 +46,7 @@ public class BlockCustomOre extends BaseBlock implements IHammerable
 		this.setStepSound(Block.soundTypeStone);
 		this.setTickRandomly(true);
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(int side, int metadata)
@@ -66,7 +66,6 @@ public class BlockCustomOre extends BaseBlock implements IHammerable
 		this.icon[5] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "oreBrimstone");
 		this.icon[6] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "orePhosphate");
 	}
-
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override

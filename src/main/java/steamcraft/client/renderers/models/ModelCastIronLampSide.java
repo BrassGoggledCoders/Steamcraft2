@@ -17,7 +17,7 @@ import net.minecraft.client.model.ModelRenderer;
 
 /**
  * @author Surseance
- *
+ * 
  */
 public class ModelCastIronLampSide extends ModelBase
 {

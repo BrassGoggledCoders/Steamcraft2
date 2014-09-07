@@ -23,7 +23,7 @@ import boilerplate.steamapi.item.ModuleRegistry;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class ItemAqualung extends BaseItem implements IArmorModule
 {
@@ -68,9 +68,9 @@ public class ItemAqualung extends BaseItem implements IArmorModule
 	@Override
 	public ArrayList<IArmorModule> getListOfIncompatibleModules()
 	{
-		//ArrayList incompats = new ArrayList();
-		//incompats.add(InitItems.itemPistonPlating);
-		//return incompats;
+		// ArrayList incompats = new ArrayList();
+		// incompats.add(InitItems.itemPistonPlating);
+		// return incompats;
 		return null;
 	}
 

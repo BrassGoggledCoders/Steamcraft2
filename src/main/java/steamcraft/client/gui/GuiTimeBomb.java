@@ -30,7 +30,7 @@ import steamcraft.common.tiles.container.ContainerTimeBomb;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class GuiTimeBomb extends GuiContainer
 {

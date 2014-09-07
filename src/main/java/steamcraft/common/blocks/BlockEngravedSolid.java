@@ -44,7 +44,7 @@ public class BlockEngravedSolid extends Block
 		this.setTickRandomly(true);
 		this.setCreativeTab(Steamcraft.tabSC2);
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(int side, int metadata)
@@ -79,7 +79,7 @@ public class BlockEngravedSolid extends Block
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(Item item, CreativeTabs tab, List l)
 	{
-		for (int var4 = 0; var4 < this.icon.length; ++var4)
+		for(int var4 = 0; var4 < this.icon.length; ++var4)
 			l.add(new ItemStack(InitBlocks.blockEngraved, 1, var4));
 	}
 

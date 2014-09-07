@@ -27,7 +27,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author decebaldecebal
- *
+ * 
  */
 public class TileCharger extends BaseTileWithInventory implements IEnergyHandler
 {

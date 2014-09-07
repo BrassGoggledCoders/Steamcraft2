@@ -48,7 +48,7 @@ public class BlockArmorEditor extends BaseContainerBlock
 		{
 			TileArmorEditor tile = (TileArmorEditor) world.getTileEntity(par2, par3, par4);
 
-			if(tile == null || player.isSneaking())
+			if((tile == null) || player.isSneaking())
 				return false;
 
 			player.openGui(Steamcraft.instance, GuiIDs.ARMOR_EDITOR, world, par2, par3, par4);

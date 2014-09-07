@@ -15,7 +15,6 @@ package steamcraft.common.items.modules;
 import java.util.ArrayList;
 
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import steamcraft.common.items.BaseItem;
@@ -24,7 +23,7 @@ import boilerplate.steamapi.item.ModuleRegistry;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class ItemLegBraces extends BaseItem implements IArmorModule
 {
@@ -58,7 +57,7 @@ public class ItemLegBraces extends BaseItem implements IArmorModule
 	{
 		final float distToFall = player.fallDistance;
 
-		if (distToFall > 3.0F)
+		if(distToFall > 3.0F)
 		{
 			player.fallDistance = distToFall * 0.888F;
 		}
@@ -69,6 +68,7 @@ public class ItemLegBraces extends BaseItem implements IArmorModule
 	{
 		return EnumArmorEffectType.ONTICK;
 	}
+
 	@Override
 	public ArrayList<IArmorModule> getListOfIncompatibleModules()
 	{

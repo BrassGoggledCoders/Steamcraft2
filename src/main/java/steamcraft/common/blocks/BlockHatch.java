@@ -28,7 +28,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author Surseance
- *
+ * 
  */
 public class BlockHatch extends BlockTrapDoor implements ITileEntityProvider
 {

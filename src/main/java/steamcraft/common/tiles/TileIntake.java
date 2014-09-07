@@ -47,8 +47,8 @@ public class TileIntake extends TileEntity implements IFluidHandler
 	public void updateEntity()
 	{
 		super.updateEntity();
-		if(this.worldObj.getBlock(this.xCoord, this.yCoord - 1, this.zCoord) == Blocks.water
-				&& this.worldObj.getBlockMetadata(this.xCoord, this.yCoord - 1, this.zCoord) == 0)
+		if((this.worldObj.getBlock(this.xCoord, this.yCoord - 1, this.zCoord) == Blocks.water)
+				&& (this.worldObj.getBlockMetadata(this.xCoord, this.yCoord - 1, this.zCoord) == 0))
 		{
 			this.waterTank.fill(new FluidStack(FluidRegistry.WATER, waterPerTick), true);
 			this.tickSinceLastConsume++;
@@ -60,8 +60,8 @@ public class TileIntake extends TileEntity implements IFluidHandler
 			}
 		}
 
-		if(this.worldObj.getTileEntity(this.xCoord, this.yCoord + 1, this.zCoord) != null
-				&& this.worldObj.getTileEntity(this.xCoord, this.yCoord + 1, this.zCoord) instanceof IFluidHandler)
+		if((this.worldObj.getTileEntity(this.xCoord, this.yCoord + 1, this.zCoord) != null)
+				&& (this.worldObj.getTileEntity(this.xCoord, this.yCoord + 1, this.zCoord) instanceof IFluidHandler))
 		{
 			IFluidHandler export = (IFluidHandler) this.worldObj.getTileEntity(this.xCoord, this.yCoord + 1, this.zCoord);
 			this.waterTank.drain(
@@ -95,7 +95,7 @@ public class TileIntake extends TileEntity implements IFluidHandler
 	@Override
 	public FluidStack drain(ForgeDirection from, FluidStack resource, boolean doDrain)
 	{
-		if(resource == null || !resource.isFluidEqual(this.waterTank.getFluid()))
+		if((resource == null) || !resource.isFluidEqual(this.waterTank.getFluid()))
 			return null;
 
 		return this.waterTank.drain(resource.amount, doDrain);

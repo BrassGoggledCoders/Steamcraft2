@@ -41,7 +41,7 @@ import cpw.mods.fml.common.network.IGuiHandler;
 
 /**
  * @author Surseance
- *
+ * 
  */
 public class GuiHandler implements IGuiHandler
 {

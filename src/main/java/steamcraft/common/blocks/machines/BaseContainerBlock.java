@@ -63,7 +63,7 @@ public abstract class BaseContainerBlock extends BlockContainer implements IDism
 		{
 			TileEntity tile = par1World.getTileEntity(par2, par3, par4);
 
-			if(tile != null && tile instanceof BaseTileWithInventory)
+			if((tile != null) && (tile instanceof BaseTileWithInventory))
 			{
 				BaseTileWithInventory invTile = (BaseTileWithInventory) tile;
 
@@ -73,9 +73,9 @@ public abstract class BaseContainerBlock extends BlockContainer implements IDism
 
 					if(var9 != null)
 					{
-						float var10 = this.random.nextFloat() * 0.8F + 0.1F;
-						float var11 = this.random.nextFloat() * 0.8F + 0.1F;
-						float var12 = this.random.nextFloat() * 0.8F + 0.1F;
+						float var10 = (this.random.nextFloat() * 0.8F) + 0.1F;
+						float var11 = (this.random.nextFloat() * 0.8F) + 0.1F;
+						float var12 = (this.random.nextFloat() * 0.8F) + 0.1F;
 
 						while(var9.stackSize > 0)
 						{
@@ -93,7 +93,7 @@ public abstract class BaseContainerBlock extends BlockContainer implements IDism
 
 							float var15 = 0.05F;
 							var14.motionX = (float) this.random.nextGaussian() * var15;
-							var14.motionY = (float) this.random.nextGaussian() * var15 + 0.2F;
+							var14.motionY = ((float) this.random.nextGaussian() * var15) + 0.2F;
 							var14.motionZ = (float) this.random.nextGaussian() * var15;
 							par1World.spawnEntityInWorld(var14);
 						}
@@ -109,10 +109,10 @@ public abstract class BaseContainerBlock extends BlockContainer implements IDism
 	public ArrayList<ItemStack> dismantleBlock(EntityPlayer player, World world, int x, int y, int z, boolean returnDrops)
 	{
 		this.breakBlock(world, x, y, z, this, 0);
-		
+
 		ArrayList<ItemStack> localArrayList = new ArrayList<ItemStack>();
 		localArrayList.add(new ItemStack(this));
-		
+
 		return localArrayList;
 
 	}
@@ -120,7 +120,7 @@ public abstract class BaseContainerBlock extends BlockContainer implements IDism
 	@Override
 	public boolean canDismantle(EntityPlayer player, World world, int x, int y, int z)
 	{
-		if(world.getTileEntity(x, y, z) != null && world.getTileEntity(x, y, z) instanceof BaseTileWithInventory)
+		if((world.getTileEntity(x, y, z) != null) && (world.getTileEntity(x, y, z) instanceof BaseTileWithInventory))
 			return true;
 
 		return false;

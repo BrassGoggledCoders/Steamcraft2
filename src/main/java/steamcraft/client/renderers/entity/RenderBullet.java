@@ -27,7 +27,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author Surseance
- *
+ * 
  */
 @SideOnly(Side.CLIENT)
 public class RenderBullet extends Render
@@ -38,23 +38,23 @@ public class RenderBullet extends Render
 	{
 		this.bindEntityTexture(bullet);
 
-		if(bullet.prevRotationYaw == 0.0F && bullet.prevRotationPitch == 0.0F)
+		if((bullet.prevRotationYaw == 0.0F) && (bullet.prevRotationPitch == 0.0F))
 			return;
 
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float) dx, (float) dy, (float) dz);
-		GL11.glRotatef(bullet.prevRotationYaw + (bullet.rotationYaw - bullet.prevRotationYaw) * frotP - 90F, 0.0F, 1.0F, 0.0F);
-		GL11.glRotatef(bullet.prevRotationPitch + (bullet.rotationPitch - bullet.prevRotationPitch) * frotP, 0.0F, 0.0F, 1.0F);
+		GL11.glRotatef((bullet.prevRotationYaw + ((bullet.rotationYaw - bullet.prevRotationYaw) * frotP)) - 90F, 0.0F, 1.0F, 0.0F);
+		GL11.glRotatef(bullet.prevRotationPitch + ((bullet.rotationPitch - bullet.prevRotationPitch) * frotP), 0.0F, 0.0F, 1.0F);
 		final Tessellator tessellator = Tessellator.instance;
 		final int i = 0;
 		final float f2 = 0.0F;
 		final float f3 = 0.5F;
-		final float f4 = (0 + i * 10) / 32F;
-		final float f5 = (5 + i * 10) / 32F;
+		final float f4 = (0 + (i * 10)) / 32F;
+		final float f5 = (5 + (i * 10)) / 32F;
 		final float f6 = 0.0F;
 		final float f7 = 0.15625F;
-		final float f8 = (5 + i * 10) / 32F;
-		final float f9 = (10 + i * 10) / 32F;
+		final float f8 = (5 + (i * 10)) / 32F;
+		final float f9 = (10 + (i * 10)) / 32F;
 		final float f10 = 0.3F;
 		GL11.glEnable(32826 /* GL_RESCALE_NORMAL_EXT */);
 		final float f11 = 1.0F - frotP;

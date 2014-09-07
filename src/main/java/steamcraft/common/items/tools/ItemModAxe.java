@@ -43,8 +43,8 @@ public class ItemModAxe extends ItemModTool
 			else
 				return 0.1F;
 		}
-		if(block != null
-				&& (block.getMaterial() == Material.wood || block.getMaterial() == Material.plants || block.getMaterial() == Material.vine))
+		if((block != null)
+				&& ((block.getMaterial() == Material.wood) || (block.getMaterial() == Material.plants) || (block.getMaterial() == Material.vine)))
 			super.getDigSpeed(stack, block, metadata);
 
 		return this.efficiencyOnProperMaterial;

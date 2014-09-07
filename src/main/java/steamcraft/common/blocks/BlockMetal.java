@@ -47,10 +47,10 @@ public class BlockMetal extends Block implements IChiselable
 		this.setTickRandomly(true);
 		this.setCreativeTab(Steamcraft.tabSC2);
 
-		if (this.powered)
+		if(this.powered)
 			this.setLightLevel(0.98F);
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(final IIconRegister ir)
@@ -77,7 +77,7 @@ public class BlockMetal extends Block implements IChiselable
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(final Item item, final CreativeTabs tab, final List l)
 	{
-		for (int var4 = 0; var4 < this.icon.length; ++var4)
+		for(int var4 = 0; var4 < this.icon.length; ++var4)
 			l.add(new ItemStack(InitBlocks.blockMetal, 1, var4));
 	}
 

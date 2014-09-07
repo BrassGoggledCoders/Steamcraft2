@@ -50,23 +50,11 @@ public class BlockLightningRod extends BaseContainerBlock
 	{
 		return false;
 	}
-	/*public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase p_149689_5_, ItemStack p_149689_6_) {
-		world.setBlock(x, y+1, z, InitBlocks.blockDummy);
-	}
-	@Override
-	public void onNeighborBlockChange(World world, int x, int y, int z, Block block)
-	{
-		if(block.isAir(world, x, y+1, z))
-		{
-			this.dropBlockAsItem(world, x, y, z, new ItemStack(block));
-			world.setBlockToAir(x, y, z);
-		}
-	}
-	 /**
-     * Called when the block is attempted to be harvested
-
-    public void onBlockHarvested(World world, int x, int y, int z, int p_149681_5_, EntityPlayer p_149681_6_)
-    {
-    	world.setBlockToAir(x, y+1, z);
-    }*/
+	/*
+	 * public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase p_149689_5_, ItemStack p_149689_6_) { world.setBlock(x, y+1, z,
+	 * InitBlocks.blockDummy); }
+	 * @Override public void onNeighborBlockChange(World world, int x, int y, int z, Block block) { if(block.isAir(world, x, y+1, z)) {
+	 * this.dropBlockAsItem(world, x, y, z, new ItemStack(block)); world.setBlockToAir(x, y, z); } } /** Called when the block is attempted to be harvested
+	 * public void onBlockHarvested(World world, int x, int y, int z, int p_149681_5_, EntityPlayer p_149681_6_) { world.setBlockToAir(x, y+1, z); }
+	 */
 }

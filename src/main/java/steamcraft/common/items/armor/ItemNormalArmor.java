@@ -27,7 +27,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author Decebaldecebal
- *
+ * 
  */
 public class ItemNormalArmor extends BaseArmor
 {
@@ -54,10 +54,11 @@ public class ItemNormalArmor extends BaseArmor
 		else
 			return slot == 2 ? LibInfo.PREFIX + "textures/armor/obsidian_2.png" : LibInfo.PREFIX + "textures/armor/obsidian_1.png";
 	}
+
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack is)
 	{
-		if(this.getArmorMaterial() == MaterialHelper.ARMOR_OBSIDIAN && !player.capabilities.isCreativeMode)
+		if((this.getArmorMaterial() == MaterialHelper.ARMOR_OBSIDIAN) && !player.capabilities.isCreativeMode)
 		{
 			player.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 20, 3));
 			if(player.isInWater())

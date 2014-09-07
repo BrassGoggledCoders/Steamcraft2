@@ -44,7 +44,7 @@ public class ItemTeaSeed extends BaseItem implements IPlantable
 		{
 			Block soil = world.getBlock(x, y, z);
 
-			if(soil != null && soil.canSustainPlant(world, x, y, z, ForgeDirection.UP, this) && world.isAirBlock(x, y + 1, z))
+			if((soil != null) && soil.canSustainPlant(world, x, y, z, ForgeDirection.UP, this) && world.isAirBlock(x, y + 1, z))
 			{
 				world.setBlock(x, y + 1, z, this.getPlant(world, x, y, z), this.getPlantMetadata(world, x, y, z), 2);
 				player.inventory.consumeInventoryItem(is.getItem());

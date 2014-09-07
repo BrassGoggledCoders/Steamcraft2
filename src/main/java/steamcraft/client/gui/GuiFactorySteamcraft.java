@@ -20,7 +20,7 @@ import cpw.mods.fml.client.IModGuiFactory;
 
 /**
  * @author decebaldecebal
- *
+ * 
  */
 public class GuiFactorySteamcraft implements IModGuiFactory
 {
@@ -47,5 +47,5 @@ public class GuiFactorySteamcraft implements IModGuiFactory
 	{
 		return null;
 	}
-	
+
 }

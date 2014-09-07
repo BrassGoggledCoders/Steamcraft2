@@ -22,7 +22,7 @@ import cpw.mods.fml.common.event.FMLInterModComms;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class CompatabilityLayer
 {
@@ -31,8 +31,8 @@ public class CompatabilityLayer
 		registerOreDictionaryEntries();
 		sendIMCMessages();
 		ForgeHooks.init();
-		//if(Loader.isModLoaded("MineFactoryReloaded"))
-		//MFRCompat.init();
+		// if(Loader.isModLoaded("MineFactoryReloaded"))
+		// MFRCompat.init();
 	}
 
 	private static void sendIMCMessages()
@@ -94,7 +94,7 @@ public class CompatabilityLayer
 		OreDictionary.registerOre("powderPhosphorus", new ItemStack(InitItems.itemResource, 1, 3));
 		OreDictionary.registerOre("ingotUranium", new ItemStack(InitItems.itemResource, 1, 4));
 		OreDictionary.registerOre("pelletUranium", new ItemStack(InitItems.itemResource, 1, 5));
-		OreDictHelper.registerOreWithAlts(new String[] { "itemRubber", "barRubber", "rawRubber"}, new ItemStack(InitItems.itemSlimeRubber));
+		OreDictHelper.registerOreWithAlts(new String[] { "itemRubber", "barRubber", "rawRubber" }, new ItemStack(InitItems.itemSlimeRubber));
 
 		OreDictionary.registerOre("partCastIronRod", new ItemStack(InitItems.itemMachinePart, 1, 0));
 		OreDictionary.registerOre("partClockworkMechanism", new ItemStack(InitItems.itemMachinePart, 1, 1));

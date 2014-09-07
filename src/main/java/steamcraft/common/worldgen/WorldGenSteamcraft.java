@@ -28,7 +28,7 @@ import cpw.mods.fml.common.IWorldGenerator;
 
 /**
  * @authors Surseance & warlordjones
- *
+ * 
  */
 public class WorldGenSteamcraft implements IWorldGenerator
 {

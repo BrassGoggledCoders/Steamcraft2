@@ -25,7 +25,7 @@ import steamcraft.common.tiles.container.ContainerCharger;
 
 /**
  * @author decebaldecebal
- *
+ * 
  */
 public class GuiCharger extends GuiContainer
 {
@@ -49,7 +49,7 @@ public class GuiCharger extends GuiContainer
 		this.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize);
 
 		int var8 = this.tile.getEnergyScaled(16);
-		this.drawTexturedModalRect(this.guiLeft + 12, this.guiTop + 64 - var8, 176, 56 - var8, 16, var8 + 1);
+		this.drawTexturedModalRect(this.guiLeft + 12, (this.guiTop + 64) - var8, 176, 56 - var8, 16, var8 + 1);
 	}
 
 	@Override

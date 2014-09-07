@@ -114,7 +114,7 @@ public class ItemModTool extends BaseItem
 	@Override
 	public boolean hitEntity(ItemStack itemstack, EntityLivingBase living1, EntityLivingBase living2)
 	{
-		if(this.isSteampowered() && living2 instanceof EntityPlayer)
+		if(this.isSteampowered() && (living2 instanceof EntityPlayer))
 		{
 			if(this.hasCanister((EntityPlayer) living2))
 			{
@@ -134,7 +134,7 @@ public class ItemModTool extends BaseItem
 
 	protected boolean isSteampowered()
 	{
-		if(this.toolMaterial == MaterialHelper.TOOL_STEAM || this.toolMaterial == MaterialHelper.DRILL_STEAM)
+		if((this.toolMaterial == MaterialHelper.TOOL_STEAM) || (this.toolMaterial == MaterialHelper.DRILL_STEAM))
 			return true;
 		else
 			return false;
@@ -158,7 +158,7 @@ public class ItemModTool extends BaseItem
 			EntityLivingBase living)
 	{
 		if(this.isSteampowered())
-			if(stack.getTagCompound().getBoolean("hasCanister") && living instanceof EntityPlayer)
+			if(stack.getTagCompound().getBoolean("hasCanister") && (living instanceof EntityPlayer))
 				if(this.hasCanister((EntityPlayer) living))
 					this.consumeSteamFromCanister((EntityPlayer) living);
 		stack.damageItem(1, living);
@@ -183,7 +183,7 @@ public class ItemModTool extends BaseItem
 		ItemStack[] mainInv = player.inventory.mainInventory;
 
 		for(ItemStack element : mainInv)
-			if(element != null && element.getItem() == InitItems.itemCanisterSteam)
+			if((element != null) && (element.getItem() == InitItems.itemCanisterSteam))
 			{
 				ItemCanister canister = (ItemCanister) element.getItem();
 
@@ -212,7 +212,7 @@ public class ItemModTool extends BaseItem
 		for(int i = 0; i != player.inventory.mainInventory.length; i++)
 		{
 			ItemStack[] mainInv = player.inventory.mainInventory;
-			if(mainInv[i] != null && mainInv[i].getItem() == InitItems.itemCanisterSteam)
+			if((mainInv[i] != null) && (mainInv[i].getItem() == InitItems.itemCanisterSteam))
 				hasCanister = hasCanister || !this.isCanisterEmpty(mainInv[i]);
 		}
 		return hasCanister;

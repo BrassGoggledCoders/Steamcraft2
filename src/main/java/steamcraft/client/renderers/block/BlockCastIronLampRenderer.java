@@ -24,7 +24,7 @@ import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 
 /**
  * @author Surseance
- *
+ * 
  */
 public class BlockCastIronLampRenderer implements ISimpleBlockRenderingHandler
 {
@@ -36,7 +36,7 @@ public class BlockCastIronLampRenderer implements ISimpleBlockRenderingHandler
 		GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
 		final TileCastIronLamp te = new TileCastIronLamp();
 		// TODO
-		//TileEntityRendererDispatcher.instance.renderTileEntityAt(te, te.xCoord, te.yCoord, te.zCoord, 0.0F);
+		// TileEntityRendererDispatcher.instance.renderTileEntityAt(te, te.xCoord, te.yCoord, te.zCoord, 0.0F);
 		GL11.glEnable(32826);
 	}
 

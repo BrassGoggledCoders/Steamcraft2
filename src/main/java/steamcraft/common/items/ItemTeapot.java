@@ -50,7 +50,7 @@ public class ItemTeapot extends BaseItemWithMetadata
 		if(player.inventory.hasItem(InitItems.itemTeacup))
 		{
 			ItemStack itemstack = player.inventory.getStackInSlot(ItemStackUtils.getStackPosition(player.inventory, InitItems.itemTeacup));
-			if(itemstack.getItemDamage() == 0 && stack.getItemDamage() > 2)
+			if((itemstack.getItemDamage() == 0) && (stack.getItemDamage() > 2))
 			{
 				player.inventory.consumeInventoryItem(itemstack.getItem());
 				player.inventory.addItemStackToInventory(new ItemStack(InitItems.itemTeacup, 1, 10));
@@ -71,7 +71,7 @@ public class ItemTeapot extends BaseItemWithMetadata
 	{
 		for(int var4 = 0; var4 < 4; ++var4)
 			l.add(new ItemStack(InitItems.itemTeapot, 1, var4));
-		
+
 		l.add(new ItemStack(InitItems.itemTeapot, 1, 12));
 	}
 
@@ -88,7 +88,7 @@ public class ItemTeapot extends BaseItemWithMetadata
 		else
 		{
 			l.add("Filled with Tea");
-			l.add(stack.getItemDamage() - 2 + " cups remaining");
+			l.add((stack.getItemDamage() - 2) + " cups remaining");
 			l.add("Right-click with this to fill");
 			l.add("teacups in your inventory");
 		}

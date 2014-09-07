@@ -68,7 +68,7 @@ public class BlockBattery extends BaseContainerBlock
 		{
 			TileBattery tile = (TileBattery) world.getTileEntity(par2, par3, par4);
 
-			if(tile == null || player.isSneaking())
+			if((tile == null) || player.isSneaking())
 				return false;
 
 			player.openGui(Steamcraft.instance, GuiIDs.BATTERY, world, par2, par3, par4);

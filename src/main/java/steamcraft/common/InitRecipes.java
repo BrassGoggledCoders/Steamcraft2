@@ -26,7 +26,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 /**
  * @author Surseance
- *
+ * 
  */
 public class InitRecipes
 {
@@ -185,7 +185,8 @@ public class InitRecipes
 				new ItemStack(InitItems.itemIngot, 1, 4), 'S', new ItemStack(InitItems.itemIngot, 1, 6), 'C',
 				new ItemStack(InitItems.itemCanisterSteam, 1, OreDictionary.WILDCARD_VALUE) }));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemSteamWingpack), new Object[] { "LWL", "RBR", "SPS", 'P',
-				InitItems.itemSteamJetpack, 'W', InitItems.itemClockworkWings, 'R', "partCastIronRod", 'B', new ItemStack(InitItems.itemGunPart, 1, 8), 'L', Items.leather,
+				InitItems.itemSteamJetpack, 'W', InitItems.itemClockworkWings, 'R', "partCastIronRod", 'B', new ItemStack(InitItems.itemGunPart, 1, 8), 'L',
+				Items.leather,
 				'S', Items.string }));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.brassGoggles), new Object[] { "BBB", "GBG", "BBB", 'B', "ingotBrass", 'G',
@@ -215,7 +216,7 @@ public class InitRecipes
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockLightningRod), new Object[] { " R ", "CRC", "SSS", 'S',
 				"ingotSteel", 'R', "partCastIronRod", 'C', "plateCopper" }));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockCharger), new Object[] { "PPP", "IWI", "PPP", 'I',
-			"ingotSteel", 'S', "plateSteel", 'W', InitBlocks.blockCopperWire }));
+				"ingotSteel", 'S', "plateSteel", 'W', InitBlocks.blockCopperWire }));
 
 		GameRegistry.addShapedRecipe(new ItemStack(InitBlocks.blockUranium), new Object[] { "UUU", "UUU", "UUU", 'U',
 				new ItemStack(InitItems.itemResource, 1, 4) });
@@ -231,7 +232,7 @@ public class InitRecipes
 
 	private static void initOtherRecipes()
 	{
-		GameRegistry.addShapedRecipe(new ItemStack(InitItems.itemResource, 1, 2), new Object[] { "XXX", "XXX", "XXX", 'X', new ItemStack(Blocks.obsidian)});
+		GameRegistry.addShapedRecipe(new ItemStack(InitItems.itemResource, 1, 2), new Object[] { "XXX", "XXX", "XXX", 'X', new ItemStack(Blocks.obsidian) });
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemSteelParts, 1, 0), new Object[] { " P ", "PPP", " P ", 'P',
 				"plateSteel" }));
@@ -267,7 +268,7 @@ public class InitRecipes
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockCopperWire), new Object[] { "CD", 'C', "ingotCopper", 'D',
 				InitItems.itemDrawplate }));
 
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemDrawplate), new Object[] { "S S"," S ", "S S", 'S', "plateCastIron"}));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemDrawplate), new Object[] { "S S", " S ", "S S", 'S', "plateCastIron" }));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemCanisterSteam, 1, InitItems.itemCanisterSteam.getMaxDamage()),
 				new Object[] { "PPP", "GGG", "PPP", 'G', "paneGlass", 'P', "plateBrass" }));
@@ -301,10 +302,14 @@ public class InitRecipes
 
 		GameRegistry.addRecipe(new ItemStack(InitItems.itemTeacup, 1, 1), "B B", " B ", 'B', Items.brick);
 
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemElectricJarSmall), new Object[] { "SIS", "GIG", "GGG", 'S', InitItems.itemSlimeRubber, 'I', "ingotCopper", 'G', Blocks.glass }));
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemElectricJarMedium), new Object[] { "I I", "IJI", "I I", 'S', InitItems.itemSlimeRubber, 'I', "ingotGold", 'G', Blocks.glass, 'J', InitItems.itemElectricJarSmall }));
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemElectricJarLarge), new Object[] { "CSC", "SJS", "CSC", 'S', "plateSteel", 'C', "plateCastIron", 'G', Blocks.glass, 'J', InitItems.itemElectricJarMedium }));
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemElectricJarHuge), new Object[] { "GGG", "GJG", "GGG", 'S', InitItems.itemSlimeRubber, 'I', "ingotSteel", 'G', Items.diamond, 'J', InitItems.itemElectricJarHuge }));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemElectricJarSmall), new Object[] { "SIS", "GIG", "GGG", 'S',
+				InitItems.itemSlimeRubber, 'I', "ingotCopper", 'G', Blocks.glass }));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemElectricJarMedium), new Object[] { "I I", "IJI", "I I", 'S',
+				InitItems.itemSlimeRubber, 'I', "ingotGold", 'G', Blocks.glass, 'J', InitItems.itemElectricJarSmall }));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemElectricJarLarge), new Object[] { "CSC", "SJS", "CSC", 'S', "plateSteel", 'C',
+				"plateCastIron", 'G', Blocks.glass, 'J', InitItems.itemElectricJarMedium }));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemElectricJarHuge), new Object[] { "GGG", "GJG", "GGG", 'S',
+				InitItems.itemSlimeRubber, 'I', "ingotSteel", 'G', Items.diamond, 'J', InitItems.itemElectricJarHuge }));
 	}
 
 	public static void initializeSmeltingRecipes()

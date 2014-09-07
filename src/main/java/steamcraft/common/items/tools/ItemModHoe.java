@@ -27,7 +27,7 @@ public class ItemModHoe extends ItemModTool
 {
 	public ItemModHoe(ToolMaterial toolMat)
 	{
-		super(1F, toolMat, new Block[]{});
+		super(1F, toolMat, new Block[] {});
 		this.maxStackSize = 1;
 		this.setMaxDamage(toolMat.getMaxUses());
 	}
@@ -57,7 +57,7 @@ public class ItemModHoe extends ItemModTool
 	{
 		Block i1 = world.getBlock(i, j, k);
 
-		if(l != 0 && world.isAirBlock(i, j, k) && i1 == Blocks.grass || i1 == Blocks.dirt)
+		if(((l != 0) && world.isAirBlock(i, j, k) && (i1 == Blocks.grass)) || (i1 == Blocks.dirt))
 		{
 			Block block = Blocks.farmland;
 			world.playSoundEffect(i + 0.5F, j + 0.5F, k + 0.5F, block.stepSound.getBreakSound(), (block.stepSound.getVolume() + 1.0F) / 2.0F,

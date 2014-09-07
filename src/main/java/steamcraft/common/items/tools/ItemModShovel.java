@@ -49,8 +49,8 @@ public class ItemModShovel extends ItemModTool
 			else
 				return 0.1F;
 		}
-		if(block != null
-				&& (block.getMaterial() == Material.iron || block.getMaterial() == Material.anvil || block.getMaterial() == Material.rock))
+		if((block != null)
+				&& ((block.getMaterial() == Material.iron) || (block.getMaterial() == Material.anvil) || (block.getMaterial() == Material.rock)))
 			super.getDigSpeed(stack, block, metadata);
 
 		return this.efficiencyOnProperMaterial;

@@ -14,7 +14,6 @@ package steamcraft.common.items.modules;
 
 import java.util.ArrayList;
 
-import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
@@ -24,7 +23,7 @@ import boilerplate.steamapi.item.ModuleRegistry;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class ItemClimbingSpikes extends BaseItem implements IArmorModule
 {
@@ -62,37 +61,37 @@ public class ItemClimbingSpikes extends BaseItem implements IArmorModule
 
 			float f5 = 0.15F;
 
-            if (player.motionX < (double)(-f5))
-            {
-                player.motionX = (double)(-f5);
-            }
+			if(player.motionX < (-f5))
+			{
+				player.motionX = (-f5);
+			}
 
-            if (player.motionX > (double)f5)
-            {
-                player.motionX = (double)f5;
-            }
+			if(player.motionX > f5)
+			{
+				player.motionX = f5;
+			}
 
-            if (player.motionZ < (double)(-f5))
-            {
-                player.motionZ = (double)(-f5);
-            }
+			if(player.motionZ < (-f5))
+			{
+				player.motionZ = (-f5);
+			}
 
-            if (player.motionZ > (double)f5)
-            {
-                player.motionZ = (double)f5;
-            }
+			if(player.motionZ > f5)
+			{
+				player.motionZ = f5;
+			}
 
-            if (player.motionY < -0.15D)
-            {
-                player.motionY = -0.15D;
-            }
+			if(player.motionY < -0.15D)
+			{
+				player.motionY = -0.15D;
+			}
 
-            if (player.isSneaking() && player.motionY < 0.0D)
-            {
-                player.motionY = 0.0D;
-            }
+			if(player.isSneaking() && (player.motionY < 0.0D))
+			{
+				player.motionY = 0.0D;
+			}
 
-            player.fallDistance = 0.0F;
+			player.fallDistance = 0.0F;
 		}
 	}
 
@@ -105,9 +104,9 @@ public class ItemClimbingSpikes extends BaseItem implements IArmorModule
 	@Override
 	public ArrayList<IArmorModule> getListOfIncompatibleModules()
 	{
-		//ArrayList incompats = new ArrayList();
-		//incompats.add(InitItems.itemPistonPlating);
-		//return incompats;
+		// ArrayList incompats = new ArrayList();
+		// incompats.add(InitItems.itemPistonPlating);
+		// return incompats;
 		return null;
 	}
 

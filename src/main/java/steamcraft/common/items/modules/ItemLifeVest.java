@@ -15,7 +15,6 @@ package steamcraft.common.items.modules;
 import java.util.ArrayList;
 
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import steamcraft.common.items.BaseItem;
@@ -24,7 +23,7 @@ import boilerplate.steamapi.item.ModuleRegistry;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class ItemLifeVest extends BaseItem implements IArmorModule
 {
@@ -56,10 +55,10 @@ public class ItemLifeVest extends BaseItem implements IArmorModule
 	@Override
 	public void applyArmorEffect(World world, EntityPlayer player, ItemStack stack)
 	{
-		if (player.isInWater() && player.motionY < 0.0D)
-        {
-            player.motionY += 0.1F;
-        }
+		if(player.isInWater() && (player.motionY < 0.0D))
+		{
+			player.motionY += 0.1F;
+		}
 	}
 
 	@Override
@@ -67,6 +66,7 @@ public class ItemLifeVest extends BaseItem implements IArmorModule
 	{
 		return EnumArmorEffectType.ONTICK;
 	}
+
 	@Override
 	public ArrayList<IArmorModule> getListOfIncompatibleModules()
 	{
