@@ -18,6 +18,7 @@ import steamcraft.common.items.BaseItem;
 import steamcraft.common.items.ItemCanister;
 import steamcraft.common.items.ItemChisel;
 import steamcraft.common.items.ItemFirearm;
+import steamcraft.common.items.ItemGrappleGun;
 import steamcraft.common.items.ItemGunPart;
 import steamcraft.common.items.ItemIngot;
 import steamcraft.common.items.ItemLightningGun;
@@ -153,6 +154,8 @@ public class InitItems
 			, itemLegBraces, itemSpringHeels, itemRollerSkates, itemParachute, itemFlippers, itemLifeVest, itemPistonBoots;
 
 	public static Item itemTeapot, itemTeacup;
+	
+	public static Item itemGrappleGun;
 
 	/* Init */
 	public static void init()
@@ -440,6 +443,9 @@ public class InitItems
 
 		registerItem(itemTeapot, "ItemTeapot");
 		registerItem(itemTeacup, "ItemTeacup");
+		
+		itemGrappleGun = new ItemGrappleGun().setUnlocalizedName("itemGrappleGun");
+		registerItem(itemGrappleGun, "ItemGrappleGun");
 	}
 
 	private static void registerItem(Item item, String name)

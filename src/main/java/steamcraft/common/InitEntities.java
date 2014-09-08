@@ -12,13 +12,14 @@
  */
 package steamcraft.common;
 
+import steamcraft.common.entities.EntityGrapplingHook;
 import steamcraft.common.entities.EntityTimeBomb;
 import steamcraft.common.entities.projectile.EntityBullet;
 import cpw.mods.fml.common.registry.EntityRegistry;
 
 /**
  * @author Surseance
- * 
+ *
  */
 public class InitEntities
 {
@@ -30,6 +31,7 @@ public class InitEntities
 	private static void registerEntities()
 	{
 		EntityRegistry.registerModEntity(EntityBullet.class, "Bullet", 0, Steamcraft.instance, 64, 20, true);
+		EntityRegistry.registerModEntity(EntityGrapplingHook.class, "GrapplingHook", 0, Steamcraft.instance, 64, 20, true);
 		EntityRegistry.registerModEntity(EntityTimeBomb.class, "TimeBomb", 1, Steamcraft.instance, 64, 20, true);
 	}
 }
