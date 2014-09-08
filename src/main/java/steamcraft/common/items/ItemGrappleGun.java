@@ -12,6 +12,14 @@ public class ItemGrappleGun extends BaseItem
      */
     public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
     {
+    	if (player.fishEntity != null)
+        {
+            int i = player.fishEntity.func_146034_e();
+            stack.damageItem(i, player);
+            player.swingItem();
+        }
+        else
+        {
             world.playSoundAtEntity(player, "random.bow", 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
 
             if (!world.isRemote)
@@ -20,7 +28,7 @@ public class ItemGrappleGun extends BaseItem
             }
 
             player.swingItem();
-
+        }
         return stack;
     }
 
