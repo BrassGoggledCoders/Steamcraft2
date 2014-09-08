@@ -28,6 +28,7 @@ import steamcraft.client.renderers.block.BlockLightningRodRenderer;
 import steamcraft.client.renderers.block.BlockRailingRenderer;
 import steamcraft.client.renderers.block.BlockTeslaCoilRenderer;
 import steamcraft.client.renderers.entity.RenderBullet;
+import steamcraft.client.renderers.entity.RenderGrapplingHook;
 import steamcraft.client.renderers.entity.RenderSmallLightningBolt;
 import steamcraft.client.renderers.item.ModelBrassWings;
 import steamcraft.client.renderers.item.ModelJetpack;
@@ -44,6 +45,7 @@ import steamcraft.client.renderers.tile.TileLightningRodRenderer;
 import steamcraft.client.renderers.tile.TileTeslaCoilRenderer;
 import steamcraft.common.CommonProxy;
 import steamcraft.common.InitKeyBindings;
+import steamcraft.common.entities.EntityGrapplingHook;
 import steamcraft.common.entities.projectile.EntityBullet;
 import steamcraft.common.entities.projectile.EntitySmallLightningBolt;
 import steamcraft.common.tiles.TileBattery;
@@ -63,7 +65,7 @@ import cpw.mods.fml.common.FMLCommonHandler;
 
 /**
  * @author Surseance
- * 
+ *
  */
 public class ClientProxy extends CommonProxy
 {
@@ -91,6 +93,7 @@ public class ClientProxy extends CommonProxy
 		RenderingRegistry.registerEntityRenderingHandler(EntityMinedBlock.class, new RenderMinedBlock());
 
 		RenderingRegistry.registerEntityRenderingHandler(EntityBullet.class, new RenderBullet());
+		RenderingRegistry.registerEntityRenderingHandler(EntityGrapplingHook.class, new RenderGrapplingHook());
 		RenderingRegistry.registerEntityRenderingHandler(EntitySmallLightningBolt.class, new RenderSmallLightningBolt());
 	}
 
