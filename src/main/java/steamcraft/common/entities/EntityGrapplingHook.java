@@ -2,6 +2,7 @@ package steamcraft.common.entities;
 
 import java.util.List;
 
+import steamcraft.common.InitItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -168,7 +169,6 @@ public class EntityGrapplingHook extends EntityFishHook
 	     */
 	    public void onUpdate()
 	    {
-	        super.onUpdate();
 
 	        if (this.field_146055_aB > 0)
 	        {
@@ -188,7 +188,7 @@ public class EntityGrapplingHook extends EntityFishHook
 	            {
 	                ItemStack itemstack = this.player.getCurrentEquippedItem();
 
-	                if (this.player.isDead || !this.player.isEntityAlive() || itemstack == null || itemstack.getItem() != Items.fishing_rod || this.getDistanceSqToEntity(this.player) > 1024.0D)
+	                if (!this.player.isEntityAlive() || itemstack == null || itemstack.getItem() != InitItems.itemGrappleGun || this.getDistanceSqToEntity(this.player) > 1024.0D)
 	                {
 	                    this.setDead();
 	                    this.player.fishEntity = null;

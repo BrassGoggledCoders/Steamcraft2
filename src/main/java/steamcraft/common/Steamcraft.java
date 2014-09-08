@@ -41,7 +41,7 @@ import cpw.mods.fml.relauncher.Side;
 
 /**
  * @author Surseance
- * 
+ *
  */
 @Mod(modid = LibInfo.ID, name = LibInfo.NAME, version = LibInfo.VERSION, guiFactory = LibInfo.CONFIG_GUI, dependencies = "required-after:boilerplate")
 public class Steamcraft
@@ -52,7 +52,7 @@ public class Steamcraft
 	@Instance(LibInfo.ID)
 	public static Steamcraft instance;
 
-	public static CreativeTabs tabSC2 = new CreativeTabSteamcraft(CreativeTabs.getNextID(), "steamcraft", InitItems.brassGoggles);
+	public static CreativeTabs tabSC2 = new CreativeTabSteamcraft(CreativeTabs.getNextID(), "steamcraft");
 
 	public static String configPath;
 
