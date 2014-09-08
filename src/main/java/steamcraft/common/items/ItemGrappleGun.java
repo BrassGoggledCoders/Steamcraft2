@@ -7,14 +7,20 @@ import steamcraft.common.entities.EntityGrapplingHook;
 
 public class ItemGrappleGun extends BaseItem
 {
+	public EntityGrapplingHook hook;
+
+	public ItemGrappleGun()
+	{
+		hook = null;
+	}
 	 /**
      * Called whenever this item is equipped and the right mouse button is pressed. Args: itemStack, world, entityPlayer
      */
     public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
     {
-    	if (player.fishEntity != null)
+    	if (hook != null)
         {
-            int i = player.fishEntity.func_146034_e();
+            int i = hook.func_146034_e();
             stack.damageItem(i, player);
             player.swingItem();
         }
@@ -24,7 +30,7 @@ public class ItemGrappleGun extends BaseItem
 
             if (!world.isRemote)
             {
-                world.spawnEntityInWorld(new EntityGrapplingHook(world, player));
+                world.spawnEntityInWorld(new EntityGrapplingHook(world, player, this));
             }
 
             player.swingItem();

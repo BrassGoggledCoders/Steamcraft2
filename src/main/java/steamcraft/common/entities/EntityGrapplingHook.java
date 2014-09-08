@@ -6,7 +6,6 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.projectile.EntityFishHook;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
@@ -15,12 +14,12 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
-import net.minecraft.world.WorldServer;
 import steamcraft.common.InitItems;
+import steamcraft.common.items.ItemGrappleGun;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class EntityGrapplingHook extends EntityFishHook
+public class EntityGrapplingHook extends Entity
 {
 	    private int xTile;
 	    private int yTile;
@@ -38,11 +37,12 @@ public class EntityGrapplingHook extends EntityFishHook
 	    private double hookPitch;
 	    private int rotationIncrements;
 	    @SideOnly(Side.CLIENT)
-	    private double field_146061_aH;
+	    private double clientMotionX;
 	    @SideOnly(Side.CLIENT)
-	    private double field_146052_aI;
+	    private double clientMotionY;
 	    @SideOnly(Side.CLIENT)
-	    private double field_146053_aJ;
+	    private double clientMotionZ;
+	    private ItemGrappleGun gun;
 
 	    public EntityGrapplingHook(World world)
 	    {
@@ -61,20 +61,20 @@ public class EntityGrapplingHook extends EntityFishHook
 	        this.setPosition(x, y, z);
 	        this.ignoreFrustumCheck = true;
 	        this.player = player;
-	        player.fishEntity = this;
 	    }
 
-	    public EntityGrapplingHook(World p_i1766_1_, EntityPlayer p_i1766_2_)
+	    public EntityGrapplingHook(World world, EntityPlayer player, ItemGrappleGun gun)
 	    {
-	        super(p_i1766_1_);
+	        super(world);
+	        this.gun = gun;
 	        this.xTile = -1;
 	        this.yTile = -1;
 	        this.zTile = -1;
 	        this.ignoreFrustumCheck = true;
-	        this.player = p_i1766_2_;
-	        this.player.fishEntity = this;
+	        this.player = player;
+	        gun.hook = this;
 	        this.setSize(0.25F, 0.25F);
-	        this.setLocationAndAngles(p_i1766_2_.posX, p_i1766_2_.posY + 1.62D - (double)p_i1766_2_.yOffset, p_i1766_2_.posZ, p_i1766_2_.rotationYaw, p_i1766_2_.rotationPitch);
+	        this.setLocationAndAngles(player.posX, player.posY + 1.62D - (double)player.yOffset, player.posZ, player.rotationYaw, player.rotationPitch);
 	        this.posX -= (double)(MathHelper.cos(this.rotationYaw / 180.0F * (float)Math.PI) * 0.16F);
 	        this.posY -= 0.10000000149011612D;
 	        this.posZ -= (double)(MathHelper.sin(this.rotationYaw / 180.0F * (float)Math.PI) * 0.16F);
@@ -88,7 +88,7 @@ public class EntityGrapplingHook extends EntityFishHook
 	    }
 
 	    protected void entityInit() {}
-
+	    //On Cast
 	    public void func_146035_c(double p_146035_1_, double p_146035_3_, double p_146035_5_, float p_146035_7_, float p_146035_8_)
 	    {
 	        float f2 = MathHelper.sqrt_double(p_146035_1_ * p_146035_1_ + p_146035_3_ * p_146035_3_ + p_146035_5_ * p_146035_5_);
@@ -115,11 +115,11 @@ public class EntityGrapplingHook extends EntityFishHook
 	     * length * 64 * renderDistanceWeight Args: distance
 	     */
 	    @SideOnly(Side.CLIENT)
-	    public boolean isInRangeToRenderDist(double p_70112_1_)
+	    public boolean isInRangeToRenderDist(double distance)
 	    {
 	        double d1 = this.boundingBox.getAverageEdgeLength() * 4.0D;
 	        d1 *= 64.0D;
-	        return p_70112_1_ < d1 * d1;
+	        return distance < d1 * d1;
 	    }
 
 	    /**
@@ -135,9 +135,9 @@ public class EntityGrapplingHook extends EntityFishHook
 	        this.hookYaw = (double)p_70056_7_;
 	        this.hookPitch = (double)p_70056_8_;
 	        this.rotationIncrements = p_70056_9_;
-	        this.motionX = this.field_146061_aH;
-	        this.motionY = this.field_146052_aI;
-	        this.motionZ = this.field_146053_aJ;
+	        this.motionX = this.clientMotionX;
+	        this.motionY = this.clientMotionY;
+	        this.motionZ = this.clientMotionZ;
 	    }
 
 	    /**
@@ -146,9 +146,9 @@ public class EntityGrapplingHook extends EntityFishHook
 	    @SideOnly(Side.CLIENT)
 	    public void setVelocity(double p_70016_1_, double p_70016_3_, double p_70016_5_)
 	    {
-	        this.field_146061_aH = this.motionX = p_70016_1_;
-	        this.field_146052_aI = this.motionY = p_70016_3_;
-	        this.field_146053_aJ = this.motionZ = p_70016_5_;
+	        this.clientMotionX = this.motionX = p_70016_1_;
+	        this.clientMotionY = this.motionY = p_70016_3_;
+	        this.clientMotionZ = this.motionZ = p_70016_5_;
 	    }
 
 	    /**
@@ -156,7 +156,6 @@ public class EntityGrapplingHook extends EntityFishHook
 	     */
 	    public void onUpdate()
 	    {
-
 	        if (this.rotationIncrements > 0)
 	        {
 	            double d7 = this.posX + (this.posX - this.posX) / (double)this.rotationIncrements;
@@ -178,7 +177,7 @@ public class EntityGrapplingHook extends EntityFishHook
 	                if (!this.player.isEntityAlive() || itemstack == null || itemstack.getItem() != InitItems.itemGrappleGun || this.getDistanceSqToEntity(this.player) > 1024.0D)
 	                {
 	                    this.setDead();
-	                    this.player.fishEntity = null;
+	                    gun.hook = null;
 	                    return;
 	                }
 
@@ -331,22 +330,6 @@ public class EntityGrapplingHook extends EntityFishHook
 	                    }
 	                }
 
-	                if (!this.worldObj.isRemote && d10 > 0.0D)
-	                {
-	                    WorldServer worldserver = (WorldServer)this.worldObj;
-	                    int k = 1;
-
-	                    if (this.rand.nextFloat() < 0.25F && this.worldObj.canLightningStrikeAt(MathHelper.floor_double(this.posX), MathHelper.floor_double(this.posY) + 1, MathHelper.floor_double(this.posZ)))
-	                    {
-	                        k = 2;
-	                    }
-
-	                    if (this.rand.nextFloat() < 0.5F && !this.worldObj.canBlockSeeTheSky(MathHelper.floor_double(this.posX), MathHelper.floor_double(this.posY) + 1, MathHelper.floor_double(this.posZ)))
-	                    {
-	                        --k;
-	                    }
-	                }
-
 	                d2 = d10 * 2.0D - 1.0D;
 	                this.motionY += 0.03999999910593033D * d2;
 
@@ -367,13 +350,13 @@ public class EntityGrapplingHook extends EntityFishHook
 	    /**
 	     * (abstract) Protected helper method to write subclass entity data to NBT.
 	     */
-	    public void writeEntityToNBT(NBTTagCompound p_70014_1_)
+	    public void writeEntityToNBT(NBTTagCompound comp)
 	    {
-	        p_70014_1_.setShort("xTile", (short)this.xTile);
-	        p_70014_1_.setShort("yTile", (short)this.yTile);
-	        p_70014_1_.setShort("zTile", (short)this.zTile);
-	        p_70014_1_.setByte("inTile", (byte)Block.getIdFromBlock(this.block));
-	        p_70014_1_.setByte("inGround", (byte)(this.inGround ? 1 : 0));
+	        comp.setShort("xTile", (short)this.xTile);
+	        comp.setShort("yTile", (short)this.yTile);
+	        comp.setShort("zTile", (short)this.zTile);
+	        comp.setByte("inTile", (byte)Block.getIdFromBlock(this.block));
+	        comp.setByte("inGround", (byte)(this.inGround ? 1 : 0));
 	    }
 
 	    /**
@@ -393,7 +376,7 @@ public class EntityGrapplingHook extends EntityFishHook
 	    {
 	        return 0.0F;
 	    }
-
+	    //Retract Hook and Calculate Damage
 	    public int func_146034_e()
 	    {
 	        if (this.worldObj.isRemote)
@@ -402,19 +385,34 @@ public class EntityGrapplingHook extends EntityFishHook
 	        }
 	        else
 	        {
-	            byte b0 = 0;
+	            byte damageTaken = 0;
 
 	            if (this.caughtEntity != null)
 	            {
-	                double d0 = this.player.posX - this.posX;
-	                double d2 = this.player.posY - this.posY;
-	                double d4 = this.player.posZ - this.posZ;
-	                double d6 = (double)MathHelper.sqrt_double(d0 * d0 + d2 * d2 + d4 * d4);
-	                double d8 = 0.1D;
-	                this.caughtEntity.motionX += d0 * d8;
-	                this.caughtEntity.motionY += d2 * d8 + (double)MathHelper.sqrt_double(d6) * 0.08D;
-	                this.caughtEntity.motionZ += d4 * d8;
-	                b0 = 3;
+	            	if(caughtEntity.height < player.height)
+	            	{
+		                double d0 = this.player.posX - this.posX;
+		                double d2 = this.player.posY - this.posY;
+		                double d4 = this.player.posZ - this.posZ;
+		                double d6 = (double)MathHelper.sqrt_double(d0 * d0 + d2 * d2 + d4 * d4);
+		                double d8 = 0.3D;
+		                this.caughtEntity.motionX += d0 * d8;
+		                this.caughtEntity.motionY += d2 * d8 + (double)MathHelper.sqrt_double(d6) * 0.08D;
+		                this.caughtEntity.motionZ += d4 * d8;
+		                damageTaken = 3;
+	            	}
+	            	else
+	            	{
+	            		double d0 = this.player.posX - this.posX;
+		                double d2 = this.player.posY - this.posY;
+		                double d4 = this.player.posZ - this.posZ;
+		                double d6 = (double)MathHelper.sqrt_double(d0 * d0 + d2 * d2 + d4 * d4);
+		                double d8 = 0.3D;
+		                player.motionX += -(d0 * d8);
+		                player.motionY += -(d2 * d8 + (double)MathHelper.sqrt_double(d6) * 0.08D);
+		                player.motionZ += -(d4 * d8);
+		                damageTaken = 3;
+	            	}
 	            }
 	              /*  double d1 = this.player.posX - this.posX;
 	                double d3 = this.player.posY - this.posY;
@@ -428,12 +426,12 @@ public class EntityGrapplingHook extends EntityFishHook
 
 	            if (this.inGround)
 	            {
-	                b0 = 2;
+	                damageTaken = 2;
 	            }
 
 	            this.setDead();
-	            this.player.fishEntity = null;
-	            return b0;
+	            gun.hook = null;
+	            return damageTaken;
 	        }
 	    }
 
@@ -446,7 +444,7 @@ public class EntityGrapplingHook extends EntityFishHook
 
 	        if (this.player != null)
 	        {
-	            this.player.fishEntity = null;
+	            gun.hook = null;
 	        }
 	    }
 }
