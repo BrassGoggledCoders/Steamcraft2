@@ -84,15 +84,15 @@ public class ItemElectricTool extends ItemModTool implements IEnergyItem
 	@Override
 	public void onCreated(ItemStack stack, World par2World, EntityPlayer par3EntityPlayer)
 	{
-		if(!stack.hasTagCompound())
-		{
-			stack.setTagCompound(new NBTTagCompound());
-		}
-		stack.getTagCompound().setInteger("energy", this.maxEnergy);
+    	setEnergy(stack, 0);
 	}
 
 	public void setEnergy(ItemStack stack, int energy)
 	{
+		if(!stack.hasTagCompound())
+		{
+			stack.setTagCompound(new NBTTagCompound());
+		}
 		NBTTagCompound tag = stack.getTagCompound();
 
 		if(energy < 0)
