@@ -14,6 +14,7 @@ package steamcraft.common;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
+import steamcraft.common.config.ConfigGeneral;
 import steamcraft.common.items.BaseItem;
 import steamcraft.common.items.ItemCanister;
 import steamcraft.common.items.ItemChisel;
@@ -72,7 +73,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 /**
  * @author Surseance
- * 
+ *
  */
 public class InitItems
 {
@@ -154,7 +155,7 @@ public class InitItems
 			, itemLegBraces, itemSpringHeels, itemRollerSkates, itemParachute, itemFlippers, itemLifeVest, itemPistonBoots;
 
 	public static Item itemTeapot, itemTeacup;
-	
+
 	public static Item itemGrappleGun;
 
 	/* Init */
@@ -355,18 +356,20 @@ public class InitItems
 	{
 		// Containers
 		itemCanisterSteam = new ItemCanister().setUnlocalizedName("itemCanisterSteam");
+		registerItem(itemCanisterSteam, "ItemCanisterSteam");
 
 		itemElectricJarSmall = new ElectricItem(100, 40, 80).setUnlocalizedName("itemElectricJarSmall");
 		itemElectricJarMedium = new ElectricItem(500, 125, 400).setUnlocalizedName("itemElectricJarMedium");
 		itemElectricJarLarge = new ElectricItem(2500, 750, 2000).setUnlocalizedName("itemElectricJarLarge");
 		itemElectricJarHuge = new ElectricItem(10000, 3000, 10000).setUnlocalizedName("itemElectricJarHuge");
 
-		registerItem(itemCanisterSteam, "ItemCanisterSteam");
-
-		registerItem(itemElectricJarSmall, "ItemElectricJarSmall");
-		registerItem(itemElectricJarMedium, "ItemElectricJarMedium");
-		registerItem(itemElectricJarLarge, "ItemElectricJarLarge");
-		registerItem(itemElectricJarHuge, "ItemElectricJarHuge");
+		if(ConfigGeneral.registerJars)
+		{
+			registerItem(itemElectricJarSmall, "ItemElectricJarSmall");
+			registerItem(itemElectricJarMedium, "ItemElectricJarMedium");
+			registerItem(itemElectricJarLarge, "ItemElectricJarLarge");
+			registerItem(itemElectricJarHuge, "ItemElectricJarHuge");
+		}
 
 		// Others
 		itemResource = new ItemResource().setUnlocalizedName("itemResource");
@@ -443,7 +446,7 @@ public class InitItems
 
 		registerItem(itemTeapot, "ItemTeapot");
 		registerItem(itemTeacup, "ItemTeacup");
-		
+
 		itemGrappleGun = new ItemGrappleGun().setUnlocalizedName("itemGrappleGun");
 		registerItem(itemGrappleGun, "ItemGrappleGun");
 	}

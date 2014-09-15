@@ -30,6 +30,8 @@ public class ConfigGeneral
 	public static boolean drawInside;
 	public static double armorSpawnChance;
 
+	public static boolean registerJars;
+
 	public static void initialize(File configFile)
 	{
 		config = new Configuration(configFile);
@@ -38,10 +40,12 @@ public class ConfigGeneral
 			config.load();
 
 			partyPooper = config.get(CATEGORY_GENERAL, "Remove all little fun things from mod :(", false).getBoolean();
-			armorSpawnChance = config.get(CATEGORY_GENERAL, "Spawn Chance of our Armor on Zombies/Skeletons (0-1)", 0.2D).getDouble();
+			armorSpawnChance = config.get(CATEGORY_GENERAL, "Spawn Chance of our Armor on Zombies/Skeletons (0.0-1.0)", 0.2D).getDouble();
 
 			drawFluid = config.get(CATEGORY_CLIENT, "Render fluid inside blocks", true).getBoolean();
 			drawInside = config.get(CATEGORY_CLIENT, "Render the insides of blocks", true).getBoolean();
+
+			registerJars = config.get(CATEGORY_CLIENT, "Electric Jars Enabled", true).getBoolean();
 		}
 		catch(Exception e)
 		{

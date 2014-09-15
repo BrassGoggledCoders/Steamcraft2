@@ -1,5 +1,5 @@
 /**
- * This class was created by BrassGoggledCoders modding team. 
+ * This class was created by BrassGoggledCoders modding team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -8,7 +8,7 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- * 
+ *
  */
 package steamcraft.common.items.electric;
 
@@ -44,34 +44,35 @@ public class ItemElectricTool extends ItemModTool implements IEnergyItem
 	@Override
 	public void getSubItems(Item item, CreativeTabs tab, List list)
 	{
-		list.add(this.getUnchargedItem());
-		list.add(this.getChargedItem());
+		list.add(this.getUnchargedItem(item));
+		list.add(this.getChargedItem(item));
 	}
 
-	public ItemStack getUnchargedItem()
+	public ItemStack getUnchargedItem(Item item)
 	{
-		ItemStack uncharged = new ItemStack(this, 1, 20);
+		ItemStack uncharged = new ItemStack(item, 1, 20);
 
-		NBTTagCompound tag = new NBTTagCompound();
-		tag.setInteger("energy", 0);
-
-		uncharged.setTagCompound(tag);
+		if(!uncharged.hasTagCompound())
+		{
+			uncharged.setTagCompound(new NBTTagCompound());
+		}
+		uncharged.getTagCompound().setInteger("energy", 0);
 
 		return uncharged.copy();
 	}
 
-	public ItemStack getChargedItem()
+	public ItemStack getChargedItem(Item item)
 	{
-		ItemStack charged = new ItemStack(this, 1, 0);
+		ItemStack charged = new ItemStack(item, 1, 20);
 
-		NBTTagCompound tag = new NBTTagCompound();
-		tag.setInteger("energy", this.maxEnergy);
-
-		charged.setTagCompound(tag);
+		if(!charged.hasTagCompound())
+		{
+			charged.setTagCompound(new NBTTagCompound());
+		}
+		charged.getTagCompound().setInteger("energy", this.maxEnergy);
 
 		return charged.copy();
 	}
-
 	@SuppressWarnings("all")
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer entityplayer, List list, boolean flag)
@@ -83,7 +84,11 @@ public class ItemElectricTool extends ItemModTool implements IEnergyItem
 	@Override
 	public void onCreated(ItemStack stack, World par2World, EntityPlayer par3EntityPlayer)
 	{
-		stack = this.getUnchargedItem();
+		if(!stack.hasTagCompound())
+		{
+			stack.setTagCompound(new NBTTagCompound());
+		}
+		stack.getTagCompound().setInteger("energy", this.maxEnergy);
 	}
 
 	public void setEnergy(ItemStack stack, int energy)
