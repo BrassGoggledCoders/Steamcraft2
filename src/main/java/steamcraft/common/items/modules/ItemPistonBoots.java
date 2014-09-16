@@ -25,12 +25,11 @@ import org.lwjgl.input.Keyboard;
 
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.LibInfo;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import boilerplate.common.baseclasses.BaseModule;
 import boilerplate.steamapi.item.IArmorModule;
-import boilerplate.steamapi.item.IArmorModule.EnumArmorEffectType;
 import boilerplate.steamapi.item.ModuleRegistry;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author warlordjones

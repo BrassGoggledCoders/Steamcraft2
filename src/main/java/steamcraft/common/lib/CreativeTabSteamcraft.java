@@ -12,8 +12,8 @@
  */
 package steamcraft.common.lib;
 
-import steamcraft.common.InitItems;
 import net.minecraft.item.Item;
+import steamcraft.common.InitItems;
 import boilerplate.common.baseclasses.CreativeTabBase;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

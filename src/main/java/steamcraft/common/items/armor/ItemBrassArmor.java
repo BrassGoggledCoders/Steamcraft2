@@ -29,7 +29,6 @@ import steamcraft.common.items.electric.ElectricItem;
 import steamcraft.common.lib.LibInfo;
 import boilerplate.steamapi.item.IArmorModule;
 import boilerplate.steamapi.item.IArmorModule.EnumArmorEffectType;
-import boilerplate.steamapi.item.IEnergyItem;
 import boilerplate.steamapi.item.ModuleRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

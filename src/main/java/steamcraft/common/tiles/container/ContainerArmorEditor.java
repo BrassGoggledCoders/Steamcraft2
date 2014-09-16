@@ -12,16 +12,12 @@
  */
 package steamcraft.common.tiles.container;
 
-import boilerplate.common.baseclasses.BaseContainer;
-import boilerplate.common.baseclasses.BaseTileWithInventory;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
-import net.minecraft.item.ItemStack;
 import steamcraft.common.tiles.TileArmorEditor;
 import steamcraft.common.tiles.container.slot.SlotBrassArmor;
 import steamcraft.common.tiles.container.slot.SlotModule;
+import boilerplate.common.baseclasses.BaseContainer;
 
 /**
  * @author warlordjones

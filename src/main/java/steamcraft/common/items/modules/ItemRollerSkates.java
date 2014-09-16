@@ -14,20 +14,19 @@ package steamcraft.common.items.modules;
 
 import java.util.ArrayList;
 
-import steamcraft.common.Steamcraft;
-import steamcraft.common.lib.LibInfo;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
+import steamcraft.common.Steamcraft;
+import steamcraft.common.lib.LibInfo;
 import boilerplate.common.baseclasses.BaseModule;
 import boilerplate.steamapi.item.IArmorModule;
-import boilerplate.steamapi.item.IArmorModule.EnumArmorEffectType;
 import boilerplate.steamapi.item.ModuleRegistry;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author warlordjones
