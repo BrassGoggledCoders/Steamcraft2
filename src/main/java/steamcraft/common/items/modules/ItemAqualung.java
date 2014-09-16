@@ -23,7 +23,7 @@ import boilerplate.steamapi.item.ModuleRegistry;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 public class ItemAqualung extends BaseItem implements IArmorModule
 {
@@ -53,10 +53,14 @@ public class ItemAqualung extends BaseItem implements IArmorModule
 	}
 
 	@Override
-	public void applyArmorEffect(World world, EntityPlayer player, ItemStack stack)
+	public boolean applyArmorEffect(World world, EntityPlayer player, ItemStack stack)
 	{
 		if(player.getAir() < 0)
+		{
 			player.setAir(300);
+			return true;
+		}
+		return false;
 	}
 
 	@Override
@@ -72,6 +76,20 @@ public class ItemAqualung extends BaseItem implements IArmorModule
 		// incompats.add(InitItems.itemPistonPlating);
 		// return incompats;
 		return null;
+	}
+
+	@Override
+	public int getSteamConsumedOnEffect()
+	{
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getEnergyConsumedOnEffect()
+	{
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

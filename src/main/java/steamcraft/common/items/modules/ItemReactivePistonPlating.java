@@ -27,7 +27,7 @@ import boilerplate.steamapi.item.ModuleRegistry;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 public class ItemReactivePistonPlating extends BaseItem implements IArmorModule
 {
@@ -57,7 +57,7 @@ public class ItemReactivePistonPlating extends BaseItem implements IArmorModule
 	}
 
 	@Override
-	public void applyArmorEffect(World world, EntityPlayer player, ItemStack stack)
+	public boolean applyArmorEffect(World world, EntityPlayer player, ItemStack stack)
 	{
 		AxisAlignedBB axisalignedbb = null;
 		axisalignedbb = player.boundingBox.expand(1.0D, 0.5D, 1.0D);
@@ -72,9 +72,11 @@ public class ItemReactivePistonPlating extends BaseItem implements IArmorModule
 				if(!entity.isDead && (entity instanceof EntityLiving))
 				{
 					entity.setVelocity(-entity.motionX - 0.3F, 0.3F, -entity.motionZ - 0.3F);
+					return true;
 				}
 			}
 		}
+		return false;
 	}
 
 	@Override
@@ -92,4 +94,16 @@ public class ItemReactivePistonPlating extends BaseItem implements IArmorModule
 		return null;
 	}
 
+	@Override
+	public int getSteamConsumedOnEffect()
+	{
+		return 100;
+	}
+
+	@Override
+	public int getEnergyConsumedOnEffect()
+	{
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }

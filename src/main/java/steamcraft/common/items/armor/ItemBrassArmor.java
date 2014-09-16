@@ -22,17 +22,21 @@ import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
+import steamcraft.common.InitItems;
 import steamcraft.common.Steamcraft;
+import steamcraft.common.items.ItemCanister;
+import steamcraft.common.items.electric.ElectricItem;
 import steamcraft.common.lib.LibInfo;
 import boilerplate.steamapi.item.IArmorModule;
 import boilerplate.steamapi.item.IArmorModule.EnumArmorEffectType;
+import boilerplate.steamapi.item.IEnergyItem;
 import boilerplate.steamapi.item.ModuleRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 public class ItemBrassArmor extends BaseArmor
 {
@@ -89,7 +93,13 @@ public class ItemBrassArmor extends BaseArmor
 
 			if((module != null) && (module.getArmorEffectType() == EnumArmorEffectType.ONTICK))
 			{
-				module.applyArmorEffect(world, player, is);
+				if(isSteamAvailable(player, module.getSteamConsumedOnEffect()))
+				{
+					if(module.applyArmorEffect(world, player, is))
+					{
+						consumeSteamFromCanister(player, module.getSteamConsumedOnEffect());
+					}
+				}
 			}
 		}
 	}
@@ -121,5 +131,57 @@ public class ItemBrassArmor extends BaseArmor
 				module.applyArmorEffect(player.worldObj, player, stack);
 			}
 		}
+	}
+
+	protected void consumeSteamFromCanister(EntityPlayer player, int steamToDrain)
+	{
+		ItemStack[] mainInv = player.inventory.mainInventory;
+
+		for(ItemStack element : mainInv)
+			if((element != null) && (element.getItem() == InitItems.itemCanisterSteam))
+			{
+				ItemCanister canister = (ItemCanister) element.getItem();
+
+				if(canister.getFluidAmount(element) > steamToDrain)
+				{
+					canister.drain(element, steamToDrain, true);
+				}
+			}
+	}
+	protected boolean isSteamAvailable(EntityPlayer player, int steamToDrain)
+	{
+		ItemStack[] mainInv = player.inventory.mainInventory;
+
+		for(ItemStack element : mainInv)
+		{
+			if((element != null) && (element.getItem() == InitItems.itemCanisterSteam))
+			{
+				ItemCanister canister = (ItemCanister) element.getItem();
+
+				if(canister.getFluidAmount(element) >= steamToDrain)
+				{
+					return true;
+				}
+				else return false;
+			}
+		}
+		return false;
+	}
+	protected boolean consumeEnergyFromJar(EntityPlayer player, int toDrain)
+	{
+		ItemStack[] mainInv = player.inventory.mainInventory;
+
+		for(ItemStack element : mainInv)
+			if((element != null) && (element.getItem() instanceof ElectricItem))
+			{
+				IEnergyItem item = (IEnergyItem) element.getItem();
+				if(item.getEnergyStored(element) > toDrain)
+				{
+					item.extractEnergy(element, toDrain, true);
+					return true;
+				}
+				else return false;
+			}
+		return false;
 	}
 }

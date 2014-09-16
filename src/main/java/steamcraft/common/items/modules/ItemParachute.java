@@ -23,7 +23,7 @@ import boilerplate.steamapi.item.ModuleRegistry;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 public class ItemParachute extends BaseItem implements IArmorModule
 {
@@ -53,13 +53,15 @@ public class ItemParachute extends BaseItem implements IArmorModule
 	}
 
 	@Override
-	public void applyArmorEffect(World world, EntityPlayer player, ItemStack stack)
+	public boolean applyArmorEffect(World world, EntityPlayer player, ItemStack stack)
 	{
 		if(!player.onGround && (player.motionY < 0.0D) && (player.fallDistance > 5F))
 		{
 			player.motionY *= 0.8D;
 			player.fallDistance = 0.0F;
+			return true;
 		}
+		return false;
 	}
 
 	@Override
@@ -72,6 +74,20 @@ public class ItemParachute extends BaseItem implements IArmorModule
 	public ArrayList<IArmorModule> getListOfIncompatibleModules()
 	{
 		return null;
+	}
+
+	@Override
+	public int getSteamConsumedOnEffect()
+	{
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getEnergyConsumedOnEffect()
+	{
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

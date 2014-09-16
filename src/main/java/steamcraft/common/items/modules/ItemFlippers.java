@@ -53,14 +53,16 @@ public class ItemFlippers extends BaseItem implements IArmorModule
 	}
 
 	@Override
-	public void applyArmorEffect(World world, EntityPlayer player, ItemStack stack)
+	public boolean applyArmorEffect(World world, EntityPlayer player, ItemStack stack)
 	{
 		if(player.isInWater())
 		{
 			player.motionX *= 1.2D;
 			player.motionY *= 1.2D;
 			player.motionZ *= 1.2D;
+			return true;
 		}
+		return false;
 	}
 
 	@Override
@@ -76,6 +78,20 @@ public class ItemFlippers extends BaseItem implements IArmorModule
 		// incompats.add(InitItems.itemPistonPlating);
 		// return incompats;
 		return null;
+	}
+
+	@Override
+	public int getSteamConsumedOnEffect()
+	{
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getEnergyConsumedOnEffect()
+	{
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

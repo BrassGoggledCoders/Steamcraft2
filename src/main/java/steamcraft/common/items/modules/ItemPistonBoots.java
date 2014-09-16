@@ -14,6 +14,8 @@ package steamcraft.common.items.modules;
 
 import java.util.ArrayList;
 
+import org.lwjgl.input.Keyboard;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
@@ -25,7 +27,7 @@ import boilerplate.steamapi.item.ModuleRegistry;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 public class ItemPistonBoots extends BaseItem implements IArmorModule
 {
@@ -55,9 +57,14 @@ public class ItemPistonBoots extends BaseItem implements IArmorModule
 	}
 
 	@Override
-	public void applyArmorEffect(World world, EntityPlayer player, ItemStack stack)
+	public boolean applyArmorEffect(World world, EntityPlayer player, ItemStack stack)
 	{
 		player.addPotionEffect(new PotionEffect(Potion.jump.id, 20, 2));
+		if(Keyboard.isKeyDown(Keyboard.KEY_SPACE))
+		{
+			return true;
+		}
+		else return false;
 	}
 
 	@Override
@@ -73,6 +80,20 @@ public class ItemPistonBoots extends BaseItem implements IArmorModule
 		// incompats.add(InitItems.itemPistonPlating);
 		// return incompats;
 		return null;
+	}
+
+	@Override
+	public int getSteamConsumedOnEffect()
+	{
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getEnergyConsumedOnEffect()
+	{
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }
