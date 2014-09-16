@@ -115,8 +115,7 @@ public class ItemWatchDisplay extends BaseItem implements IArmorModule
 	@Override
 	public int getEnergyConsumedOnEffect()
 	{
-		// TODO Auto-generated method stub
-		return 0;
+		return 5;
 	}
 
 }

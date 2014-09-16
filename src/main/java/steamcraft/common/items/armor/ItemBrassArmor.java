@@ -93,12 +93,15 @@ public class ItemBrassArmor extends BaseArmor
 
 			if((module != null) && (module.getArmorEffectType() == EnumArmorEffectType.ONTICK))
 			{
-				if(isSteamAvailable(player, module.getSteamConsumedOnEffect()))
+				if(module.getSteamConsumedOnEffect() != 0 && isSteamAvailable(player, module.getSteamConsumedOnEffect()))
 				{
 					if(module.applyArmorEffect(world, player, is))
-					{
 						consumeSteamFromCanister(player, module.getSteamConsumedOnEffect());
-					}
+				}
+				if(module.getEnergyConsumedOnEffect() != 0 && isRFAvailable(player, module.getEnergyConsumedOnEffect()))
+				{
+					if(module.applyArmorEffect(world, player, is))
+						consumeRFFromJar(player, module.getEnergyConsumedOnEffect());
 				}
 			}
 		}
@@ -128,7 +131,16 @@ public class ItemBrassArmor extends BaseArmor
 
 			if((module != null) && (module.getArmorEffectType() == EnumArmorEffectType.HUD))
 			{
-				module.applyArmorEffect(player.worldObj, player, stack);
+				if(module.getSteamConsumedOnEffect() != 0 && isSteamAvailable(player, module.getSteamConsumedOnEffect()))
+				{
+					if(module.applyArmorEffect(player.getEntityWorld(), player, stack))
+						consumeSteamFromCanister(player, module.getSteamConsumedOnEffect());
+				}
+				if(module.getEnergyConsumedOnEffect() != 0 && isRFAvailable(player, module.getEnergyConsumedOnEffect()))
+				{
+					if(module.applyArmorEffect(player.getEntityWorld(), player, stack))
+						consumeRFFromJar(player, module.getEnergyConsumedOnEffect());
+				}
 			}
 		}
 	}
@@ -167,21 +179,38 @@ public class ItemBrassArmor extends BaseArmor
 		}
 		return false;
 	}
-	protected boolean consumeEnergyFromJar(EntityPlayer player, int toDrain)
+	protected void consumeRFFromJar(EntityPlayer player, int rfToDrain)
 	{
 		ItemStack[] mainInv = player.inventory.mainInventory;
 
 		for(ItemStack element : mainInv)
 			if((element != null) && (element.getItem() instanceof ElectricItem))
 			{
-				IEnergyItem item = (IEnergyItem) element.getItem();
-				if(item.getEnergyStored(element) > toDrain)
+				ElectricItem jar = (ElectricItem) element.getItem();
+
+				if(jar.getEnergyStored(element) >= rfToDrain)
 				{
-					item.extractEnergy(element, toDrain, true);
+					jar.extractEnergy(element, rfToDrain, false);
+				}
+			}
+	}
+	protected boolean isRFAvailable(EntityPlayer player, int rfToDrain)
+	{
+		ItemStack[] mainInv = player.inventory.mainInventory;
+
+		for(ItemStack element : mainInv)
+		{
+			if((element != null) && (element.getItem() instanceof ElectricItem))
+			{
+				ElectricItem jar = (ElectricItem) element.getItem();
+
+				if(jar.getEnergyStored(element) >= rfToDrain)
+				{
 					return true;
 				}
 				else return false;
 			}
+		}
 		return false;
 	}
 }
