@@ -14,28 +14,36 @@ package steamcraft.common.items.modules;
 
 import java.util.ArrayList;
 
-import org.lwjgl.input.Keyboard;
-
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
-import steamcraft.common.items.BaseItem;
+
+import org.lwjgl.input.Keyboard;
+
+import steamcraft.common.Steamcraft;
+import steamcraft.common.lib.LibInfo;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import boilerplate.common.baseclasses.BaseModule;
 import boilerplate.steamapi.item.IArmorModule;
+import boilerplate.steamapi.item.IArmorModule.EnumArmorEffectType;
 import boilerplate.steamapi.item.ModuleRegistry;
 
 /**
  * @author warlordjones
  *
  */
-public class ItemPistonBoots extends BaseItem implements IArmorModule
+public class ItemPistonBoots extends BaseModule
 {
 	public ItemPistonBoots()
 	{
 		super();
 		ModuleRegistry.registerModule(this);
 		this.setMaxStackSize(1);
+		this.setCreativeTab(Steamcraft.tabSC2);
 	}
 
 	@Override
@@ -94,6 +102,12 @@ public class ItemPistonBoots extends BaseItem implements IArmorModule
 	{
 		// TODO Auto-generated method stub
 		return 0;
+	}
+	@SideOnly(Side.CLIENT)
+	@Override
+	public void registerIcons(IIconRegister par1IconRegister)
+	{
+		this.itemIcon = par1IconRegister.registerIcon(LibInfo.PREFIX + this.getUnlocalizedName().substring(5));
 	}
 
 }

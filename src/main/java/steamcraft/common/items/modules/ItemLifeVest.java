@@ -14,24 +14,31 @@ package steamcraft.common.items.modules;
 
 import java.util.ArrayList;
 
+import steamcraft.common.Steamcraft;
+import steamcraft.common.lib.LibInfo;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import steamcraft.common.items.BaseItem;
+import boilerplate.common.baseclasses.BaseModule;
 import boilerplate.steamapi.item.IArmorModule;
+import boilerplate.steamapi.item.IArmorModule.EnumArmorEffectType;
 import boilerplate.steamapi.item.ModuleRegistry;
 
 /**
  * @author warlordjones
  *
  */
-public class ItemLifeVest extends BaseItem implements IArmorModule
+public class ItemLifeVest extends BaseModule
 {
 	public ItemLifeVest()
 	{
 		super();
 		ModuleRegistry.registerModule(this);
 		this.setMaxStackSize(1);
+		this.setCreativeTab(Steamcraft.tabSC2);
 	}
 
 	@Override
@@ -88,5 +95,10 @@ public class ItemLifeVest extends BaseItem implements IArmorModule
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
+	@SideOnly(Side.CLIENT)
+	@Override
+	public void registerIcons(IIconRegister par1IconRegister)
+	{
+		this.itemIcon = par1IconRegister.registerIcon(LibInfo.PREFIX + this.getUnlocalizedName().substring(5));
+	}
 }

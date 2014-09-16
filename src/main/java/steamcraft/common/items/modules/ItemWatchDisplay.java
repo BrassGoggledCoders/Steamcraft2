@@ -16,28 +16,35 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import steamcraft.common.Steamcraft;
+import steamcraft.common.lib.LibInfo;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import steamcraft.common.items.BaseItem;
+import boilerplate.common.baseclasses.BaseModule;
 import boilerplate.steamapi.item.IArmorModule;
+import boilerplate.steamapi.item.IArmorModule.EnumArmorEffectType;
 import boilerplate.steamapi.item.ModuleRegistry;
 
 /**
  * @author warlordjones
  *
  */
-public class ItemWatchDisplay extends BaseItem implements IArmorModule
+public class ItemWatchDisplay extends BaseModule
 {
 	public ItemWatchDisplay()
 	{
 		super();
 		ModuleRegistry.registerModule(this);
 		this.setMaxStackSize(1);
+		this.setCreativeTab(Steamcraft.tabSC2);
 	}
 
 	@Override
@@ -116,6 +123,12 @@ public class ItemWatchDisplay extends BaseItem implements IArmorModule
 	public int getEnergyConsumedOnEffect()
 	{
 		return 5;
+	}
+	@SideOnly(Side.CLIENT)
+	@Override
+	public void registerIcons(IIconRegister par1IconRegister)
+	{
+		this.itemIcon = par1IconRegister.registerIcon(LibInfo.PREFIX + this.getUnlocalizedName().substring(5));
 	}
 
 }
