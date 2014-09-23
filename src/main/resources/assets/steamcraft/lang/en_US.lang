@@ -75,14 +75,11 @@ tile.blockCopperWire.desc=Right-Click with Spanner to change to extracting mode.
 
 tile.blockBloomery.name=Bloomery
 tile.blockBloomery.desc=Smelts iron ore into steel. Ore in the first slot, four coal in the second, and fuel in the bottom slot.
+tile.blockBloomery.documentation=Smelts iron ore into steel. Ore in the first slot, four coal in the second, and fuel in the bottom slot.
 tile.blockSteamBoiler.name=Steam Boiler
 tile.blockSteamBoiler.desc=Uses coal to heat water into steam.
 tile.blockLightningRod.name=Lightning Rod
 tile.blockLightningRod.desc=Attracts lightning during a storm. Generate huge amounts of power, FOR SCIENCE!
-tile.lightningRod.name=Lightning Rod
-tile.steamfurnace.name=Steam Oven
-tile.chemfurnace.name=Chemical Furnace
-tile.nukefurnace.name=Nuclear Furnace
 tile.blockDropHammer.name=Drop Hammer Anvil
 tile.blockDropHammerFrame.name=Drop Hammer Frame
 tile.blockIntake.name=Intake Block
@@ -260,8 +257,8 @@ item.itemHelmetObsidian.desc=Heavy! Slows you down, and don't try swimming with 
 item.itemChestplateObsidian.desc=Heavy! Slows you down, and don't try swimming with it!
 item.itemLegsObsidian.desc=Heavy! Slows you down, and don't try swimming with it!
 item.itemBootsObsidian.desc=Heavy! Slows you down, and don't try swimming with it!
-item.itemMonocle.name=Brass Monocle
-item.itemClockworkWings.name=Clock-Work Wings
+item.itemMonocle.name=Monocle
+item.itemClockworkWings.name=Clockwork Wings
 item.itemClockworkWings.desc=Wings that use hunger to lift you off the ground! Hold SHIFT to glide.
 item.itemSteamJetpack.name=Steam-Powered Jetpack
 item.itemSteamJetpack.desc=A simple jetpack that uses steam to work.
@@ -388,4 +385,7 @@ death.attack.steamcraft2.electrocution.player=%1$s was electrocuted
 death.attack.steamcraft2.bullet=%1$s was shot
 death.attack.steamcraft2.bullet.player=%1$s was shot by %2$s
 death.attack.steamcraft2.bullet.player.item=%1$s was shot by %2$s using %3$s
+
+#Vanilla Docs
+tile.blockChest.name=For holding things.
 

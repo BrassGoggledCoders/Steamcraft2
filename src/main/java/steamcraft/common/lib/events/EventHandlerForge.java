@@ -30,6 +30,7 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.util.StatCollector;
 import net.minecraft.util.MovingObjectPosition.MovingObjectType;
 import net.minecraftforge.client.event.DrawBlockHighlightEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
@@ -45,6 +46,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.lwjgl.opengl.GL11;
 
 import steamcraft.common.InitItems;
+import steamcraft.common.blocks.BaseBlock;
 import steamcraft.common.config.ConfigBalance;
 import steamcraft.common.container.InventoryVanity;
 import steamcraft.common.entities.EntityPlayerExtended;
@@ -59,7 +61,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 public class EventHandlerForge
 {
@@ -116,6 +118,8 @@ public class EventHandlerForge
 			int posY4 = 35;
 			int posY5 = 45;
 			int posY6 = 55;
+			int posY7 = 65;
+			int posY8 = 75;
 
 			int color = 0xCCFF00;
 
@@ -153,6 +157,9 @@ public class EventHandlerForge
 						}
 					}
 				}
+				String docs = StatCollector.translateToLocal(block.getUnlocalizedName() + ".documentation");
+				if(!docs.contains("tile"))
+				 fontRenderer.drawSplitString(docs, posX, posY8, 100, color);
 			}
 			if(this.entity != null)
 			{
