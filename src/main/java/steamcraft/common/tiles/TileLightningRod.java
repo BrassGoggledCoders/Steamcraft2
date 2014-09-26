@@ -16,16 +16,20 @@ import java.util.Random;
 
 import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraftforge.common.BiomeDictionary;
+import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.common.util.ForgeDirection;
 import steamcraft.common.InitAchievements;
+import steamcraft.common.entities.EntityFleshGolem;
 import cofh.api.energy.EnergyStorage;
 import cofh.api.energy.IEnergyHandler;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 public class TileLightningRod extends TileEntity implements IEnergyHandler
 {
@@ -34,7 +38,7 @@ public class TileLightningRod extends TileEntity implements IEnergyHandler
 	@Override
 	public void updateEntity()
 	{
-		if(this.worldObj.getWorldInfo().isThundering() && this.worldObj.canBlockSeeTheSky(this.xCoord, this.yCoord, this.zCoord))
+		if(this.worldObj.getWorldInfo().isThundering() && this.worldObj.canBlockSeeTheSky(this.xCoord, this.yCoord, this.zCoord) && !BiomeDictionary.isBiomeOfType(worldObj.getBiomeGenForCoords(xCoord, zCoord), Type.SANDY))
 		{
 			Random random = new Random();
 			int chance = random.nextInt(1000);
@@ -45,6 +49,13 @@ public class TileLightningRod extends TileEntity implements IEnergyHandler
 				System.out.print(this.buffer.getEnergyStored());
 				EntityPlayer player = this.worldObj.getClosestPlayer(this.xCoord, this.yCoord, this.zCoord, -1);
 				player.triggerAchievement(InitAchievements.zapAchieve);
+
+				if(worldObj.getBlock(xCoord, yCoord - 1, zCoord) == Blocks.sand)
+				{
+					EntityFleshGolem golem = new EntityFleshGolem(worldObj);
+					golem.setPosition(xCoord, yCoord, zCoord);
+					worldObj.spawnEntityInWorld(golem);
+				}
 			}
 		}
 	}

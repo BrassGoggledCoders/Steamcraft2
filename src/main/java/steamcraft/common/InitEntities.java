@@ -12,6 +12,7 @@
  */
 package steamcraft.common;
 
+import steamcraft.common.entities.EntityFleshGolem;
 import steamcraft.common.entities.EntityGrapplingHook;
 import steamcraft.common.entities.EntityTimeBomb;
 import steamcraft.common.entities.projectile.EntityBullet;
@@ -31,7 +32,10 @@ public class InitEntities
 	private static void registerEntities()
 	{
 		EntityRegistry.registerModEntity(EntityBullet.class, "Bullet", 0, Steamcraft.instance, 64, 20, true);
-		EntityRegistry.registerModEntity(EntityGrapplingHook.class, "GrapplingHook", 0, Steamcraft.instance, 64, 20, true);
-		EntityRegistry.registerModEntity(EntityTimeBomb.class, "TimeBomb", 1, Steamcraft.instance, 64, 20, true);
+		EntityRegistry.registerModEntity(EntityGrapplingHook.class, "GrapplingHook", 1, Steamcraft.instance, 64, 20, true);
+		EntityRegistry.registerModEntity(EntityTimeBomb.class, "TimeBomb", 2, Steamcraft.instance, 64, 20, true);
+
+		//Mobs
+		EntityRegistry.registerModEntity(EntityFleshGolem.class, "FleshGolem", 3, Steamcraft.instance, 64, 20, true);
 	}
 }
