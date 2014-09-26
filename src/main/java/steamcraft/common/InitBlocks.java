@@ -70,7 +70,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 /**
  * @author Surseance
- * 
+ *
  */
 public class InitBlocks
 {
@@ -123,7 +123,7 @@ public class InitBlocks
 
 	public static Block blockTimeBomb;
 
-	public static Block blockDummy;
+	public static Block blockFlesh;
 
 	public static void init()
 	{
@@ -269,8 +269,8 @@ public class InitBlocks
 		blockHatch = new BlockHatch().setBlockName("blockHatch");
 		RegistryHelper.registerContainerBlock(blockHatch, TileHatch.class, "BlockHatch");
 
-		blockDummy = new BlockDummy(Material.anvil).setBlockName("blockDummy");
-		GameRegistry.registerBlock(blockDummy, "BlockDummy");
+		blockFlesh = new BaseBlock(Material.gourd).setBlockName("blockFlesh").setCreativeTab(Steamcraft.tabSC2);
+		GameRegistry.registerBlock(blockFlesh, "BlockFlesh");
 	}
 
 }

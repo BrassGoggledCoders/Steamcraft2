@@ -16,13 +16,13 @@ import java.util.Random;
 
 import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.common.util.ForgeDirection;
 import steamcraft.common.InitAchievements;
+import steamcraft.common.InitBlocks;
 import steamcraft.common.entities.EntityFleshGolem;
 import cofh.api.energy.EnergyStorage;
 import cofh.api.energy.IEnergyHandler;
@@ -50,7 +50,7 @@ public class TileLightningRod extends TileEntity implements IEnergyHandler
 				EntityPlayer player = this.worldObj.getClosestPlayer(this.xCoord, this.yCoord, this.zCoord, -1);
 				player.triggerAchievement(InitAchievements.zapAchieve);
 
-				if(worldObj.getBlock(xCoord, yCoord - 1, zCoord) == Blocks.sand)
+				if(worldObj.getBlock(xCoord, yCoord - 1, zCoord) == InitBlocks.blockCopperWire && worldObj.getBlock(xCoord, yCoord - 1, zCoord) == InitBlocks.blockFlesh && worldObj.getBlock(xCoord, yCoord - 2, zCoord) == InitBlocks.blockFlesh)
 				{
 					EntityFleshGolem golem = new EntityFleshGolem(worldObj);
 					golem.setPosition(xCoord, yCoord, zCoord);
@@ -63,7 +63,9 @@ public class TileLightningRod extends TileEntity implements IEnergyHandler
 	@Override
 	public boolean canConnectEnergy(ForgeDirection from)
 	{
-		return false;
+		if(from == ForgeDirection.DOWN)
+		return true;
+		else return false;
 	}
 
 	@Override

@@ -41,7 +41,6 @@ public class ModelFleshGolem extends ModelBase
         this.fleshGolemHead = (new ModelRenderer(this)).setTextureSize(short1, short2);
         this.fleshGolemHead.setRotationPoint(0.0F, 0.0F + p_i1162_2_, -2.0F);
         this.fleshGolemHead.setTextureOffset(0, 0).addBox(-4.0F, -12.0F, -5.5F, 8, 10, 8, p_i1162_1_);
-        this.fleshGolemHead.setTextureOffset(24, 0).addBox(-1.0F, -5.0F, -7.5F, 2, 4, 2, p_i1162_1_);
         this.fleshGolemBody = (new ModelRenderer(this)).setTextureSize(short1, short2);
         this.fleshGolemBody.setRotationPoint(0.0F, 0.0F + p_i1162_2_, 0.0F);
         this.fleshGolemBody.setTextureOffset(0, 40).addBox(-9.0F, -2.0F, -6.0F, 18, 12, 11, p_i1162_1_);
@@ -54,11 +53,11 @@ public class ModelFleshGolem extends ModelBase
         this.fleshGolemLeftArm.setTextureOffset(60, 58).addBox(9.0F, -2.5F, -3.0F, 4, 30, 6, p_i1162_1_);
         this.fleshGolemLeftLeg = (new ModelRenderer(this, 0, 22)).setTextureSize(short1, short2);
         this.fleshGolemLeftLeg.setRotationPoint(-4.0F, 18.0F + p_i1162_2_, 0.0F);
-        this.fleshGolemLeftLeg.setTextureOffset(37, 0).addBox(-3.5F, -3.0F, -3.0F, 6, 16, 5, p_i1162_1_);
+        this.fleshGolemLeftLeg.setTextureOffset(37, 0).addBox(-3.5F, -3.0F, 3.0F, 6, 16, 5, p_i1162_1_);
         this.fleshGolemRightLeg = (new ModelRenderer(this, 0, 22)).setTextureSize(short1, short2);
         this.fleshGolemRightLeg.mirror = true;
         this.fleshGolemRightLeg.setTextureOffset(60, 0).setRotationPoint(5.0F, 18.0F + p_i1162_2_, 0.0F);
-        this.fleshGolemRightLeg.addBox(-3.5F, -3.0F, -3.0F, 6, 16, 5, p_i1162_1_);
+        this.fleshGolemRightLeg.addBox(-3.5F, -3.0F, 3.0F, 6, 16, 5, p_i1162_1_);
     }
 
     /**
@@ -88,6 +87,7 @@ public class ModelFleshGolem extends ModelBase
         this.fleshGolemRightLeg.rotateAngleX = 1.5F * this.func_78172_a(p_78087_1_, 13.0F) * p_78087_2_;
         this.fleshGolemLeftLeg.rotateAngleY = 0.0F;
         this.fleshGolemRightLeg.rotateAngleY = 0.0F;
+        this.fleshGolemBody.rotateAngleX = 0.5F;
     }
 
     /**
