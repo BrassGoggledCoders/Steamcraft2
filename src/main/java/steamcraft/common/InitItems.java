@@ -18,6 +18,7 @@ import steamcraft.common.config.ConfigGeneral;
 import steamcraft.common.items.BaseItem;
 import steamcraft.common.items.ItemCanister;
 import steamcraft.common.items.ItemChisel;
+import steamcraft.common.items.ItemClockworkRocketLauncher;
 import steamcraft.common.items.ItemFirearm;
 import steamcraft.common.items.ItemGrappleGun;
 import steamcraft.common.items.ItemGunPart;
@@ -157,6 +158,8 @@ public class InitItems
 	public static Item itemTeapot, itemTeacup;
 
 	public static Item itemGrappleGun;
+
+	public static Item itemClockworkRocketLauncher, itemRocket;
 
 	/* Init */
 	public static void init()
@@ -299,9 +302,9 @@ public class InitItems
 				.setUnlocalizedName("itemPercussionRifle");
 		flintlockPistol = new ItemFirearm(3, 40, itemMusketBall, null, "steamcraft:Pistol", "steamcraft:reload")
 				.setUnlocalizedName("itemFlintlockPistol");
-		matchlockPistol = new ItemFirearm(3, 30, itemMusketBall, itemMatch, "steamcraft:Pistol", "steamcraft:reload")
+		matchlockPistol = new ItemFirearm(3, 30, itemMusketBall, itemMatch, "steamcraft:pistol", "steamcraft:reload")
 				.setUnlocalizedName("itemMatchlockPistol");
-		percussionCapPistol = new ItemFirearm(3, 20, itemMusketBall, itemPercussionCap, "steamcraft:Pistol", "steamcraft:reload")
+		percussionCapPistol = new ItemFirearm(3, 20, itemMusketBall, itemPercussionCap, "steamcraft:pistol", "steamcraft:reload")
 				.setUnlocalizedName("itemPercussionPistol");
 
 		registerItem(flintlockMusket, "ItemFlintlockMusket");
@@ -322,6 +325,12 @@ public class InitItems
 		registerItem(itemRayGun, "ItemRayGun");
 		registerItem(itemShrinkray, "ItemShrinkray");
 		// registerItem(itemLightningGun, "ItemLightningGun");
+
+		itemRocket = new BaseItem().setUnlocalizedName("itemClockworkRocket").setCreativeTab(Steamcraft.tabSC2);
+		itemClockworkRocketLauncher = new ItemClockworkRocketLauncher(100, itemRocket, "steamcraft:rocket", "steamcraft:reload");
+
+		registerItem(itemRocket, "ItemRocket");
+		registerItem(itemClockworkRocketLauncher, "ItemClockworkRocketLauncher");
 	}
 
 	private static void initializeMetals()
