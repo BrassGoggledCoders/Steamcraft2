@@ -15,7 +15,6 @@ package steamcraft.common.blocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.util.StatCollector;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.LibInfo;
 import cpw.mods.fml.relauncher.Side;

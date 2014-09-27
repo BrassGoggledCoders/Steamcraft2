@@ -30,8 +30,8 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.MovingObjectPosition;
-import net.minecraft.util.StatCollector;
 import net.minecraft.util.MovingObjectPosition.MovingObjectType;
+import net.minecraft.util.StatCollector;
 import net.minecraftforge.client.event.DrawBlockHighlightEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderPlayerEvent;
@@ -46,7 +46,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.lwjgl.opengl.GL11;
 
 import steamcraft.common.InitItems;
-import steamcraft.common.blocks.BaseBlock;
 import steamcraft.common.config.ConfigBalance;
 import steamcraft.common.container.InventoryVanity;
 import steamcraft.common.entities.EntityPlayerExtended;

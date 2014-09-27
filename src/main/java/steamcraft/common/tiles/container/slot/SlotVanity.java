@@ -15,22 +15,18 @@ package steamcraft.common.tiles.container.slot;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
-import steamcraft.common.tiles.TileArmorEditor;
 import boilerplate.steamapi.vanity.IVanityItem;
 
 /**
  * @author decebaldecebal
- * 
+ *
  */
 public class SlotVanity extends Slot
 {
-	TileArmorEditor tile;
 
 	public SlotVanity(IInventory inv, int par2, int par3, int par4)
 	{
 		super(inv, par2, par3, par4);
-
-		this.tile = (TileArmorEditor) inv;
 	}
 
 	@Override

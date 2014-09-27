@@ -26,7 +26,6 @@ import steamcraft.common.blocks.BlockCastIronLamp;
 import steamcraft.common.blocks.BlockCastIronRailing;
 import steamcraft.common.blocks.BlockCrystal;
 import steamcraft.common.blocks.BlockCustomOre;
-import steamcraft.common.blocks.BlockDummy;
 import steamcraft.common.blocks.BlockEngravedSolid;
 import steamcraft.common.blocks.BlockEngravedVanilla;
 import steamcraft.common.blocks.BlockEtherium;
