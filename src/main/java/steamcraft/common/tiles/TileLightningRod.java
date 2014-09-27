@@ -50,7 +50,7 @@ public class TileLightningRod extends TileEntity implements IEnergyHandler
 				EntityPlayer player = this.worldObj.getClosestPlayer(this.xCoord, this.yCoord, this.zCoord, -1);
 				player.triggerAchievement(InitAchievements.zapAchieve);
 
-				if(worldObj.getBlock(xCoord, yCoord - 1, zCoord) == InitBlocks.blockCopperWire && worldObj.getBlock(xCoord, yCoord - 1, zCoord) == InitBlocks.blockFlesh && worldObj.getBlock(xCoord, yCoord - 2, zCoord) == InitBlocks.blockFlesh)
+				if(worldObj.getBlock(xCoord, yCoord - 1, zCoord) == InitBlocks.blockCopperWire && worldObj.getBlock(xCoord, yCoord - 2, zCoord) == InitBlocks.blockFlesh && worldObj.getBlock(xCoord, yCoord - 3, zCoord) == InitBlocks.blockFlesh)
 				{
 					EntityFleshGolem golem = new EntityFleshGolem(worldObj);
 					golem.setPosition(xCoord, yCoord, zCoord);
