@@ -14,14 +14,20 @@ public class TileSawmill extends TileEntity
 		{
 			if(worldObj.getBlock(xCoord -1, yCoord, zCoord) == InitBlocks.blockPlankStack)
 			{
+				int meta = worldObj.getBlockMetadata(xCoord + 1, yCoord, zCoord);
+				worldObj.setBlockToAir(xCoord + 1, yCoord, zCoord);
+
 				BlockPlankStack stack = (BlockPlankStack) worldObj.getBlock(xCoord - 1, yCoord, zCoord);
+				stack.setPlankMeta(meta);
 				stack.setNumStoredPlanks(stack.getNumStoredPlanks() + 6);
-				worldObj.setBlockToAir(xCoord + 1, yCoord, zCoord);
 			}
-			else
+			else if(worldObj.isAirBlock(xCoord - 1, yCoord, zCoord))
 			{
-				worldObj.setBlock(xCoord - 1, yCoord, zCoord, InitBlocks.blockPlankStack);
+				int meta = worldObj.getBlockMetadata(xCoord + 1, yCoord, zCoord);
 				worldObj.setBlockToAir(xCoord + 1, yCoord, zCoord);
+				worldObj.setBlock(xCoord - 1, yCoord, zCoord, InitBlocks.blockPlankStack);
+				BlockPlankStack stack = (BlockPlankStack) worldObj.getBlock(xCoord - 1, yCoord, zCoord);
+				stack.setPlankMeta(meta);
 			}
 		}
 	}

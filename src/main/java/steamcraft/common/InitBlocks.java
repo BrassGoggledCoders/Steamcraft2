@@ -280,6 +280,7 @@ public class InitBlocks
 		GameRegistry.registerBlock(blockFlesh, "BlockFlesh");
 
 		blockPlankStack = new BlockPlankStack(Material.wood).setBlockName("blockPlankStack").setCreativeTab(Steamcraft.tabSC2);
+		GameRegistry.registerBlock(blockPlankStack, "BlockPlankStack");
 	}
 
 }
