@@ -61,6 +61,7 @@ import steamcraft.common.tiles.TileCopperWire;
 import steamcraft.common.tiles.TileDropHammer;
 import steamcraft.common.tiles.TileIntake;
 import steamcraft.common.tiles.TileLightningRod;
+import steamcraft.common.tiles.TilePlankStack;
 import steamcraft.common.tiles.TileSawmill;
 import steamcraft.common.tiles.TileSteamBoiler;
 import steamcraft.common.tiles.TileTeslaCoil;
@@ -280,7 +281,7 @@ public class InitBlocks
 		GameRegistry.registerBlock(blockFlesh, "BlockFlesh");
 
 		blockPlankStack = new BlockPlankStack(Material.wood).setBlockName("blockPlankStack").setCreativeTab(Steamcraft.tabSC2);
-		GameRegistry.registerBlock(blockPlankStack, "BlockPlankStack");
+		RegistryHelper.registerContainerBlock(blockPlankStack, TilePlankStack.class, "BlockPlankStack");
 	}
 
 }
