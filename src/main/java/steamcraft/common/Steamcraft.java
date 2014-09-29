@@ -41,7 +41,7 @@ import cpw.mods.fml.relauncher.Side;
 
 /**
  * @author Surseance
- * 
+ *
  */
 @Mod(modid = LibInfo.ID, name = LibInfo.NAME, version = LibInfo.VERSION, guiFactory = LibInfo.CONFIG_GUI, dependencies = "required-after:boilerplate")
 public class Steamcraft
@@ -65,7 +65,6 @@ public class Steamcraft
 
 		Config.initialise(configPath);
 
-		// TODO: Reimplement DrawEvent
 		MinecraftForge.EVENT_BUS.register(new EventHandlerForge());
 		FMLCommonHandler.instance().bus().register(new EventHandlerFML());
 
