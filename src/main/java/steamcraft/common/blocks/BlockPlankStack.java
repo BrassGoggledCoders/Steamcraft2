@@ -8,7 +8,7 @@ import net.minecraft.item.Item;
 
 public class BlockPlankStack extends BaseBlock
 {
-	private int numStoredPlanks = 1;
+	private int numStoredPlanks = 6;
 
 	public BlockPlankStack(Material mat)
 	{

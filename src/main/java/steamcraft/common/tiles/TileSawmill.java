@@ -15,7 +15,7 @@ public class TileSawmill extends TileEntity
 			if(worldObj.getBlock(xCoord -1, yCoord, zCoord) == InitBlocks.blockPlankStack)
 			{
 				BlockPlankStack stack = (BlockPlankStack) worldObj.getBlock(xCoord - 1, yCoord, zCoord);
-				stack.setNumStoredPlanks(stack.getNumStoredPlanks() + 1);
+				stack.setNumStoredPlanks(stack.getNumStoredPlanks() + 6);
 				worldObj.setBlockToAir(xCoord + 1, yCoord, zCoord);
 			}
 			else
