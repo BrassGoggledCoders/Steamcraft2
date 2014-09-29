@@ -26,7 +26,7 @@ import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 
 /**
  * @author Surseance
- *
+ * 
  */
 public class BlockCopperWireRenderer implements ISimpleBlockRenderingHandler
 {
@@ -35,12 +35,12 @@ public class BlockCopperWireRenderer implements ISimpleBlockRenderingHandler
 	{
 		GL11.glRotatef(90.0F, 0.0F, 1.0F, 0.0F);
 		GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
-		
+
 		final TileCopperWire te = new TileCopperWire();
-		
+
 		for(int i = 0; i < ForgeDirection.VALID_DIRECTIONS.length; i++)
 			te.connections[i] = ForgeDirection.VALID_DIRECTIONS[i];
-		
+
 		TileEntityRendererDispatcher.instance.renderTileEntityAt(te, 0.0D, 0.0D, 0.0D, 0.0F);
 		GL11.glEnable(32826);
 	}

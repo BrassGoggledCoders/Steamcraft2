@@ -29,7 +29,7 @@ import cofh.api.energy.IEnergyHandler;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class TileLightningRod extends TileEntity implements IEnergyHandler
 {
@@ -38,7 +38,8 @@ public class TileLightningRod extends TileEntity implements IEnergyHandler
 	@Override
 	public void updateEntity()
 	{
-		if(this.worldObj.getWorldInfo().isThundering() && this.worldObj.canBlockSeeTheSky(this.xCoord, this.yCoord, this.zCoord) && !BiomeDictionary.isBiomeOfType(worldObj.getBiomeGenForCoords(xCoord, zCoord), Type.SANDY))
+		if(this.worldObj.getWorldInfo().isThundering() && this.worldObj.canBlockSeeTheSky(this.xCoord, this.yCoord, this.zCoord)
+				&& !BiomeDictionary.isBiomeOfType(this.worldObj.getBiomeGenForCoords(this.xCoord, this.zCoord), Type.SANDY))
 		{
 			Random random = new Random();
 			int chance = random.nextInt(1000);
@@ -50,15 +51,18 @@ public class TileLightningRod extends TileEntity implements IEnergyHandler
 				EntityPlayer player = this.worldObj.getClosestPlayer(this.xCoord, this.yCoord, this.zCoord, -1);
 				player.triggerAchievement(InitAchievements.zapAchieve);
 
-				if(worldObj.getBlock(xCoord, yCoord - 1, zCoord) == InitBlocks.blockCopperWire && worldObj.getBlock(xCoord, yCoord - 2, zCoord) == InitBlocks.blockFlesh && worldObj.getBlock(xCoord, yCoord - 3, zCoord) == InitBlocks.blockFlesh)
-				//if(StructureHelper.isStructureValid(worldObj, xCoord, yCoord - 2, zCoord, 2, 3, 2, new Block[]{InitBlocks.blockFlesh, InitBlocks.blockFlesh, InitBlocks.blockCopperWire}))
+				if((this.worldObj.getBlock(this.xCoord, this.yCoord - 1, this.zCoord) == InitBlocks.blockCopperWire)
+						&& (this.worldObj.getBlock(this.xCoord, this.yCoord - 2, this.zCoord) == InitBlocks.blockFlesh)
+						&& (this.worldObj.getBlock(this.xCoord, this.yCoord - 3, this.zCoord) == InitBlocks.blockFlesh))
+				// if(StructureHelper.isStructureValid(worldObj, xCoord, yCoord - 2, zCoord, 2, 3, 2, new Block[]{InitBlocks.blockFlesh, InitBlocks.blockFlesh,
+				// InitBlocks.blockCopperWire}))
 				{
-					EntityFleshGolem golem = new EntityFleshGolem(worldObj);
-					golem.setPosition(xCoord, yCoord, zCoord);
-					worldObj.spawnEntityInWorld(golem);
-					worldObj.setBlockToAir(xCoord, yCoord - 1, zCoord);
-					worldObj.setBlockToAir(xCoord, yCoord - 2, zCoord);
-					worldObj.setBlockToAir(xCoord, yCoord - 3, zCoord);
+					EntityFleshGolem golem = new EntityFleshGolem(this.worldObj);
+					golem.setPosition(this.xCoord, this.yCoord, this.zCoord);
+					this.worldObj.spawnEntityInWorld(golem);
+					this.worldObj.setBlockToAir(this.xCoord, this.yCoord - 1, this.zCoord);
+					this.worldObj.setBlockToAir(this.xCoord, this.yCoord - 2, this.zCoord);
+					this.worldObj.setBlockToAir(this.xCoord, this.yCoord - 3, this.zCoord);
 				}
 			}
 		}
@@ -68,8 +72,9 @@ public class TileLightningRod extends TileEntity implements IEnergyHandler
 	public boolean canConnectEnergy(ForgeDirection from)
 	{
 		if(from == ForgeDirection.DOWN)
-		return true;
-		else return false;
+			return true;
+		else
+			return false;
 	}
 
 	@Override

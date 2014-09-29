@@ -20,7 +20,7 @@ import cpw.mods.fml.common.registry.EntityRegistry;
 
 /**
  * @author Surseance
- *
+ * 
  */
 public class InitEntities
 {
@@ -35,7 +35,7 @@ public class InitEntities
 		EntityRegistry.registerModEntity(EntityGrapplingHook.class, "GrapplingHook", 1, Steamcraft.instance, 64, 20, true);
 		EntityRegistry.registerModEntity(EntityTimeBomb.class, "TimeBomb", 2, Steamcraft.instance, 64, 20, true);
 
-		//Mobs
+		// Mobs
 		EntityRegistry.registerModEntity(EntityFleshGolem.class, "FleshGolem", 3, Steamcraft.instance, 64, 20, true);
 	}
 }

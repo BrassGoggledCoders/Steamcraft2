@@ -26,7 +26,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author decebaldecebal
- *
+ * 
  */
 public class ContainerCharger extends BaseContainer
 {
@@ -40,7 +40,7 @@ public class ContainerCharger extends BaseContainer
 	public ContainerCharger(InventoryPlayer player, TileCharger tile)
 	{
 		this.tileent = tile;
-		BaseContainer.setTile(tileent);
+		BaseContainer.setTile(this.tileent);
 
 		this.addSlotToContainer(new SlotCharger(tile, 0, 98, 22));
 

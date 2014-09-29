@@ -20,7 +20,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class CreativeTabSteamcraft extends CreativeTabBase
 {
@@ -28,6 +28,8 @@ public class CreativeTabSteamcraft extends CreativeTabBase
 	{
 		super(id, name);
 	}
+
+	@Override
 	@SideOnly(Side.CLIENT)
 	public Item getTabIconItem()
 	{

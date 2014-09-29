@@ -24,7 +24,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author warlordjones & decebaldecebal
- *
+ * 
  */
 public class ContainerBloomery extends BaseContainer
 {
@@ -36,7 +36,7 @@ public class ContainerBloomery extends BaseContainer
 	public ContainerBloomery(InventoryPlayer playerInv, TileBloomery tileEntity)
 	{
 		this.tileent = tileEntity;
-		BaseContainer.setTile(tileent);
+		BaseContainer.setTile(this.tileent);
 
 		// Fuel
 		this.addSlotToContainer(new Slot(tileEntity, 0, 45, 53));

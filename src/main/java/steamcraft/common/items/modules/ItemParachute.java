@@ -28,7 +28,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class ItemParachute extends BaseModule
 {
@@ -95,6 +95,7 @@ public class ItemParachute extends BaseModule
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void registerIcons(IIconRegister par1IconRegister)

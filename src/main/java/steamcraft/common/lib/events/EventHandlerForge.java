@@ -60,7 +60,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class EventHandlerForge
 {
@@ -156,9 +156,9 @@ public class EventHandlerForge
 						}
 					}
 				}
-				String docs = StatCollector.translateToLocal(block.getUnlocalizedName() + ".documentation");
+				String docs = StatCollector.translateToLocal(this.block.getUnlocalizedName() + ".documentation");
 				if(!docs.contains("tile"))
-				 fontRenderer.drawSplitString(docs, posX, posY8, 100, color);
+					fontRenderer.drawSplitString(docs, posX, posY8, 100, color);
 			}
 			if(this.entity != null)
 			{

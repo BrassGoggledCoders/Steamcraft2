@@ -21,7 +21,7 @@ import boilerplate.common.baseclasses.BaseContainer;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class ContainerArmorEditor extends BaseContainer
 {
@@ -30,7 +30,7 @@ public class ContainerArmorEditor extends BaseContainer
 	public ContainerArmorEditor(InventoryPlayer player, TileArmorEditor tile)
 	{
 		this.tileent = tile;
-		BaseContainer.setTile(tileent);
+		BaseContainer.setTile(this.tileent);
 		int var3;
 
 		this.addSlotToContainer(new SlotBrassArmor(this.tileent, 0, 62, 12));

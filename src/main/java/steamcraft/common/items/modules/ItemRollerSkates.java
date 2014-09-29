@@ -30,7 +30,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class ItemRollerSkates extends BaseModule
 {
@@ -95,6 +95,7 @@ public class ItemRollerSkates extends BaseModule
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void registerIcons(IIconRegister par1IconRegister)

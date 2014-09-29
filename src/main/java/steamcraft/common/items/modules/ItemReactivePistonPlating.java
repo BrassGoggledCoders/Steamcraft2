@@ -32,7 +32,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class ItemReactivePistonPlating extends BaseModule
 {
@@ -112,6 +112,7 @@ public class ItemReactivePistonPlating extends BaseModule
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void registerIcons(IIconRegister par1IconRegister)

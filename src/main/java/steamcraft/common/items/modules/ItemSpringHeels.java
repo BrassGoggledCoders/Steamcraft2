@@ -28,7 +28,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class ItemSpringHeels extends BaseModule
 {
@@ -63,8 +63,9 @@ public class ItemSpringHeels extends BaseModule
 	{
 		player.stepHeight = 1F;
 		if(player.isCollidedHorizontally)
-		return true;
-		else return false;
+			return true;
+		else
+			return false;
 	}
 
 	@Override
@@ -95,6 +96,7 @@ public class ItemSpringHeels extends BaseModule
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void registerIcons(IIconRegister par1IconRegister)

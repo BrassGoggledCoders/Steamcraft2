@@ -35,7 +35,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class ItemBrassArmor extends BaseArmor
 {
@@ -92,15 +92,15 @@ public class ItemBrassArmor extends BaseArmor
 
 			if((module != null) && (module.getArmorEffectType() == EnumArmorEffectType.ONTICK))
 			{
-				if(module.getSteamConsumedOnEffect() != 0 && isSteamAvailable(player, module.getSteamConsumedOnEffect()))
+				if((module.getSteamConsumedOnEffect() != 0) && this.isSteamAvailable(player, module.getSteamConsumedOnEffect()))
 				{
 					if(module.applyArmorEffect(world, player, is))
-						consumeSteamFromCanister(player, module.getSteamConsumedOnEffect());
+						this.consumeSteamFromCanister(player, module.getSteamConsumedOnEffect());
 				}
-				if(module.getEnergyConsumedOnEffect() != 0 && isRFAvailable(player, module.getEnergyConsumedOnEffect()))
+				if((module.getEnergyConsumedOnEffect() != 0) && this.isRFAvailable(player, module.getEnergyConsumedOnEffect()))
 				{
 					if(module.applyArmorEffect(world, player, is))
-						consumeRFFromJar(player, module.getEnergyConsumedOnEffect());
+						this.consumeRFFromJar(player, module.getEnergyConsumedOnEffect());
 				}
 			}
 		}
@@ -130,15 +130,15 @@ public class ItemBrassArmor extends BaseArmor
 
 			if((module != null) && (module.getArmorEffectType() == EnumArmorEffectType.HUD))
 			{
-				if(module.getSteamConsumedOnEffect() != 0 && isSteamAvailable(player, module.getSteamConsumedOnEffect()))
+				if((module.getSteamConsumedOnEffect() != 0) && this.isSteamAvailable(player, module.getSteamConsumedOnEffect()))
 				{
 					if(module.applyArmorEffect(player.getEntityWorld(), player, stack))
-						consumeSteamFromCanister(player, module.getSteamConsumedOnEffect());
+						this.consumeSteamFromCanister(player, module.getSteamConsumedOnEffect());
 				}
-				if(module.getEnergyConsumedOnEffect() != 0 && isRFAvailable(player, module.getEnergyConsumedOnEffect()))
+				if((module.getEnergyConsumedOnEffect() != 0) && this.isRFAvailable(player, module.getEnergyConsumedOnEffect()))
 				{
 					if(module.applyArmorEffect(player.getEntityWorld(), player, stack))
-						consumeRFFromJar(player, module.getEnergyConsumedOnEffect());
+						this.consumeRFFromJar(player, module.getEnergyConsumedOnEffect());
 				}
 			}
 		}
@@ -159,6 +159,7 @@ public class ItemBrassArmor extends BaseArmor
 				}
 			}
 	}
+
 	protected boolean isSteamAvailable(EntityPlayer player, int steamToDrain)
 	{
 		ItemStack[] mainInv = player.inventory.mainInventory;
@@ -173,11 +174,13 @@ public class ItemBrassArmor extends BaseArmor
 				{
 					return true;
 				}
-				else return false;
+				else
+					return false;
 			}
 		}
 		return false;
 	}
+
 	protected void consumeRFFromJar(EntityPlayer player, int rfToDrain)
 	{
 		ItemStack[] mainInv = player.inventory.mainInventory;
@@ -193,6 +196,7 @@ public class ItemBrassArmor extends BaseArmor
 				}
 			}
 	}
+
 	protected boolean isRFAvailable(EntityPlayer player, int rfToDrain)
 	{
 		ItemStack[] mainInv = player.inventory.mainInventory;
@@ -207,7 +211,8 @@ public class ItemBrassArmor extends BaseArmor
 				{
 					return true;
 				}
-				else return false;
+				else
+					return false;
 			}
 		}
 		return false;

@@ -34,7 +34,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class ItemWatchDisplay extends BaseModule
 {
@@ -123,6 +123,7 @@ public class ItemWatchDisplay extends BaseModule
 	{
 		return 5;
 	}
+
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void registerIcons(IIconRegister par1IconRegister)

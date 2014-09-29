@@ -30,7 +30,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class EntityRocket extends Entity implements IProjectile
 {
@@ -107,9 +107,9 @@ public class EntityRocket extends Entity implements IProjectile
 		this.motionZ = MathHelper.cos((this.rotationYaw / 180.0F) * (float) Math.PI)
 				* MathHelper.cos((this.rotationPitch / 180.0F) * (float) Math.PI);
 		this.motionY = -MathHelper.sin((this.rotationPitch / 180.0F) * (float) Math.PI);
-		this.setThrowableHeading(this.motionX, this.motionY, this.motionZ, 1F, accuracy);
-		this.accuracy = accuracy;
-		this.damage = damage;
+		this.setThrowableHeading(this.motionX, this.motionY, this.motionZ, 1F, this.accuracy);
+		this.accuracy = this.accuracy;
+		this.damage = this.damage;
 	}
 
 	@Override
@@ -225,9 +225,9 @@ public class EntityRocket extends Entity implements IProjectile
 		if(mop != null)
 			if(mop.entityHit != null)
 			{
-					this.worldObj.createExplosion(this, xTile, yTile, zTile, 10, false);
-					this.worldObj.playSoundAtEntity(this, LibInfo.PREFIX + "hitflesh", 1.0F, 1.2F / ((this.rand.nextFloat() * 0.2F) + 0.9F));
-					this.setDead();
+				this.worldObj.createExplosion(this, this.xTile, this.yTile, this.zTile, 10, false);
+				this.worldObj.playSoundAtEntity(this, LibInfo.PREFIX + "hitflesh", 1.0F, 1.2F / ((this.rand.nextFloat() * 0.2F) + 0.9F));
+				this.setDead();
 			}
 			else
 			{
@@ -244,7 +244,7 @@ public class EntityRocket extends Entity implements IProjectile
 				this.posX -= (this.motionX / magnitude) * 0.05000000074505806D;
 				this.posY -= (this.motionY / magnitude) * 0.05000000074505806D;
 				this.posZ -= (this.motionZ / magnitude) * 0.05000000074505806D;
-				this.worldObj.createExplosion(this, xTile, yTile, zTile, 10, false);
+				this.worldObj.createExplosion(this, this.xTile, this.yTile, this.zTile, 10, false);
 				this.worldObj.playSoundAtEntity(this, LibInfo.PREFIX + "hitblock", 1.0F, 1.0F);
 				this.setDead();
 			}

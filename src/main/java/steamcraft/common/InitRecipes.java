@@ -26,7 +26,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 /**
  * @author Surseance
- *
+ * 
  */
 public class InitRecipes
 {
@@ -306,7 +306,8 @@ public class InitRecipes
 				InitItems.itemSlimeRubber, 'I', "ingotCopper", 'G', Blocks.glass }));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemElectricJarMedium, 1, 20), new Object[] { "I I", "IJI", "I I", 'S',
 				InitItems.itemSlimeRubber, 'I', "ingotGold", 'G', Blocks.glass, 'J', InitItems.itemElectricJarSmall }));
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemElectricJarLarge, 1, 20), new Object[] { "CSC", "SJS", "CSC", 'S', "plateSteel", 'C',
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemElectricJarLarge, 1, 20), new Object[] { "CSC", "SJS", "CSC", 'S', "plateSteel",
+				'C',
 				"plateCastIron", 'G', Blocks.glass, 'J', InitItems.itemElectricJarMedium }));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemElectricJarHuge, 1, 20), new Object[] { "GGG", "GJG", "GGG", 'S',
 				InitItems.itemSlimeRubber, 'I', "ingotSteel", 'G', Items.diamond, 'J', InitItems.itemElectricJarHuge }));

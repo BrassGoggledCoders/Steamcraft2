@@ -35,7 +35,7 @@ public class ItemClockworkRocketLauncher extends BaseFirearm
 	{
 		super(0, reloadTime, ammo, null, fireSound, reloadSound);
 		this.setCreativeTab(Steamcraft.tabSC2);
-		setUnlocalizedName("itemClockworkRocketLauncher");
+		this.setUnlocalizedName("itemClockworkRocketLauncher");
 	}
 
 	@SideOnly(Side.CLIENT)

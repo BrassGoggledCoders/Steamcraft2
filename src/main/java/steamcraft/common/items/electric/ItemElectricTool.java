@@ -73,6 +73,7 @@ public class ItemElectricTool extends ItemModTool implements IEnergyItem
 
 		return charged.copy();
 	}
+
 	@SuppressWarnings("all")
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer entityplayer, List list, boolean flag)
@@ -84,7 +85,7 @@ public class ItemElectricTool extends ItemModTool implements IEnergyItem
 	@Override
 	public void onCreated(ItemStack stack, World par2World, EntityPlayer par3EntityPlayer)
 	{
-    	setEnergy(stack, 0);
+		this.setEnergy(stack, 0);
 	}
 
 	public void setEnergy(ItemStack stack, int energy)

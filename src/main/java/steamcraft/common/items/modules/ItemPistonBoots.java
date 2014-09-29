@@ -33,7 +33,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class ItemPistonBoots extends BaseModule
 {
@@ -71,7 +71,8 @@ public class ItemPistonBoots extends BaseModule
 		{
 			return true;
 		}
-		else return false;
+		else
+			return false;
 	}
 
 	@Override
@@ -102,6 +103,7 @@ public class ItemPistonBoots extends BaseModule
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void registerIcons(IIconRegister par1IconRegister)
