@@ -33,6 +33,7 @@ import steamcraft.common.blocks.BlockFluidSteam;
 import steamcraft.common.blocks.BlockHatch;
 import steamcraft.common.blocks.BlockLamp;
 import steamcraft.common.blocks.BlockMetal;
+import steamcraft.common.blocks.BlockPlankStack;
 import steamcraft.common.blocks.BlockSlate;
 import steamcraft.common.blocks.BlockTeaPlant;
 import steamcraft.common.blocks.BlockTimeBomb;
@@ -47,6 +48,7 @@ import steamcraft.common.blocks.machines.BlockCopperWire;
 import steamcraft.common.blocks.machines.BlockDropHammerAnvil;
 import steamcraft.common.blocks.machines.BlockIntake;
 import steamcraft.common.blocks.machines.BlockLightningRod;
+import steamcraft.common.blocks.machines.BlockSawmill;
 import steamcraft.common.blocks.machines.BlockSteamBoiler;
 import steamcraft.common.blocks.machines.BlockTeslaCoil;
 import steamcraft.common.blocks.machines.BlockTurbine;
@@ -59,6 +61,7 @@ import steamcraft.common.tiles.TileCopperWire;
 import steamcraft.common.tiles.TileDropHammer;
 import steamcraft.common.tiles.TileIntake;
 import steamcraft.common.tiles.TileLightningRod;
+import steamcraft.common.tiles.TileSawmill;
 import steamcraft.common.tiles.TileSteamBoiler;
 import steamcraft.common.tiles.TileTeslaCoil;
 import steamcraft.common.tiles.TileTimeBomb;
@@ -95,6 +98,9 @@ public class InitBlocks
 	public static Block blockSteamBoiler, blockIntake, blockTurbine, blockBattery, blockCharger;
 	public static Block blockLightningRod, blockTeslaCoil;
 
+	public static Block blockDropHammerAnvil;
+	public static Block blockSaw;
+
 	public static Block blockBloomery;
 
 	public static Block blockArmorEditor;
@@ -111,7 +117,7 @@ public class InitBlocks
 
 	public static Block blockCrystal;
 
-	public static Block blockDropHammerAnvil;
+	public static Block blockPlankStack;
 
 	// Wood
 	public static Block blockBrassLog, blockBrassLeaves;
@@ -196,12 +202,14 @@ public class InitBlocks
 		blockLightningRod = new BlockLightningRod(Material.iron).setBlockName("blockLightningRod");
 		blockTeslaCoil = new BlockTeslaCoil(Material.iron).setBlockName("blockTeslaCoil");
 		blockCharger = new BlockCharger().setBlockName("blockCharger");
+		blockSaw = new BlockSawmill(Material.anvil).setBlockName("blockSawmill");
 
 		RegistryHelper.registerContainerBlockWithDesc(blockTurbine, TileTurbine.class, "BlockTurbine");
 		RegistryHelper.registerContainerBlockWithDesc(blockBattery, TileBattery.class, "BlockBattery");
 		RegistryHelper.registerContainerBlockWithDesc(blockLightningRod, TileLightningRod.class, "BlockLightningRod");
 		RegistryHelper.registerContainerBlockWithDesc(blockTeslaCoil, TileTeslaCoil.class, "BlockTeslaCoil");
 		RegistryHelper.registerContainerBlockWithDesc(blockCharger, TileCharger.class, "BlockCharger");
+		RegistryHelper.registerContainerBlockWithDesc(blockSaw, TileSawmill.class, "BlockSawmill");
 
 		// Bloomery
 		blockBloomery = new BlockBloomery(Material.rock).setBlockName("blockBloomery");
@@ -270,6 +278,8 @@ public class InitBlocks
 
 		blockFlesh = new BaseBlock(Material.gourd).setBlockName("blockFlesh").setCreativeTab(Steamcraft.tabSC2);
 		GameRegistry.registerBlock(blockFlesh, "BlockFlesh");
+
+		blockPlankStack = new BlockPlankStack(Material.wood).setBlockName("blockPlankStack").setCreativeTab(Steamcraft.tabSC2);
 	}
 
 }
