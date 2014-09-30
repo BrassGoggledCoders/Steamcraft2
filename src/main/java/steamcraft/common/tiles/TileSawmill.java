@@ -2,6 +2,7 @@ package steamcraft.common.tiles;
 
 import net.minecraft.block.BlockLog;
 import net.minecraft.block.BlockNewLog;
+import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntity;
 import steamcraft.common.InitBlocks;
 import steamcraft.common.blocks.BlockPlankStack;
@@ -11,7 +12,7 @@ public class TileSawmill extends TileEntity
 	@Override
 	public void updateEntity()
 	{
-		if(this.worldObj.getBlock(this.xCoord + 1, this.yCoord, this.zCoord) instanceof BlockLog)
+		if(this.worldObj.getBlock(this.xCoord + 1, this.yCoord, this.zCoord) == Blocks.log)
 		{
 			if(this.worldObj.isAirBlock(this.xCoord - 1, this.yCoord, this.zCoord))
 			{
@@ -22,7 +23,7 @@ public class TileSawmill extends TileEntity
 				worldObj.setBlockMetadataWithNotify(xCoord - 1, yCoord, zCoord, meta, 2);
 			}
 		}
-		else if(this.worldObj.getBlock(this.xCoord + 1, this.yCoord, this.zCoord) instanceof BlockNewLog)
+		else if(this.worldObj.getBlock(this.xCoord + 1, this.yCoord, this.zCoord) == Blocks.log2)
 		{
 			if(this.worldObj.isAirBlock(this.xCoord - 1, this.yCoord, this.zCoord))
 			{
