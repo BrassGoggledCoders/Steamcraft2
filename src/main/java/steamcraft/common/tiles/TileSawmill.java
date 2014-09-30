@@ -10,56 +10,32 @@ public class TileSawmill extends TileEntity
 	@Override
 	public void updateEntity()
 	{
-		if(blockMetadata == 0)
+		int logPosX = xCoord;
+		int logPosZ = zCoord;
+		int plankPosX = xCoord;
+		int plankPosZ = zCoord;
+		switch(blockMetadata)
 		{
-			if(this.worldObj.getBlock(this.xCoord + 1, this.yCoord, this.zCoord) == Blocks.log)
-			{
-				if(this.worldObj.isAirBlock(this.xCoord - 1, this.yCoord, this.zCoord))
-				{
-					int meta = this.worldObj.getBlockMetadata(this.xCoord + 1, this.yCoord, this.zCoord);
-					this.worldObj.setBlockToAir(this.xCoord + 1, this.yCoord, this.zCoord);
-					this.worldObj.setBlock(this.xCoord - 1, this.yCoord, this.zCoord, InitBlocks.blockPlankStack);
-					BlockPlankStack stack = (BlockPlankStack) this.worldObj.getBlock(this.xCoord - 1, this.yCoord, this.zCoord);
-					worldObj.setBlockMetadataWithNotify(xCoord - 1, yCoord, zCoord, meta, 2);
-				}
-			}
-			else if(this.worldObj.getBlock(this.xCoord + 1, this.yCoord, this.zCoord) == Blocks.log2)
-			{
-				if(this.worldObj.isAirBlock(this.xCoord - 1, this.yCoord, this.zCoord))
-				{
-					int meta = this.worldObj.getBlockMetadata(this.xCoord + 1, this.yCoord, this.zCoord);
-					this.worldObj.setBlockToAir(this.xCoord + 1, this.yCoord, this.zCoord);
-					this.worldObj.setBlock(this.xCoord - 1, this.yCoord, this.zCoord, InitBlocks.blockPlankStack);
-					BlockPlankStack stack = (BlockPlankStack) this.worldObj.getBlock(this.xCoord - 1, this.yCoord, this.zCoord);
-					//TODO
-					worldObj.setBlockMetadataWithNotify(xCoord - 1, yCoord, zCoord, meta + 4, 2);
-				}
-			}
+			case 0: logPosX = xCoord - 1; plankPosX = xCoord + 1;
+			break;
+			case 1: logPosX = xCoord + 1; plankPosX = xCoord - 1;
+			break;
+			case 2: logPosZ = zCoord - 1; plankPosZ = zCoord + 1;
+			break;
+			case 3: logPosZ = zCoord + 1; plankPosZ = zCoord - 1;
+			break;
 		}
-		else if(blockMetadata == 1)
+		if(this.worldObj.getBlock(logPosX, this.yCoord, logPosZ) == Blocks.log || this.worldObj.getBlock(logPosX, this.yCoord, logPosZ) == Blocks.log2)
 		{
-			if(this.worldObj.getBlock(this.xCoord, this.yCoord, this.zCoord + 1) == Blocks.log)
+			if(this.worldObj.isAirBlock(plankPosX, this.yCoord, plankPosZ))
 			{
-				if(this.worldObj.isAirBlock(this.xCoord, this.yCoord, this.zCoord - 1))
-				{
-					int meta = this.worldObj.getBlockMetadata(this.xCoord, this.yCoord, this.zCoord + 1);
-					this.worldObj.setBlockToAir(this.xCoord, this.yCoord, this.zCoord + 1);
-					this.worldObj.setBlock(this.xCoord, this.yCoord, this.zCoord - 1, InitBlocks.blockPlankStack);
-					BlockPlankStack stack = (BlockPlankStack) this.worldObj.getBlock(this.xCoord, this.yCoord, this.zCoord - 1);
-					worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord - 1, meta, 2);
-				}
-			}
-			else if(this.worldObj.getBlock(this.xCoord + 1, this.yCoord, this.zCoord) == Blocks.log2)
-			{
-				if(this.worldObj.isAirBlock(this.xCoord - 1, this.yCoord, this.zCoord))
-				{
-					int meta = this.worldObj.getBlockMetadata(this.xCoord, this.yCoord, this.zCoord + 1);
-					this.worldObj.setBlockToAir(this.xCoord, this.yCoord, this.zCoord + 1);
-					this.worldObj.setBlock(this.xCoord, this.yCoord, this.zCoord - 1, InitBlocks.blockPlankStack);
-					BlockPlankStack stack = (BlockPlankStack) this.worldObj.getBlock(this.xCoord, this.yCoord, this.zCoord - 1);
-					//TODO
-					worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord - 1, meta + 4, 2);
-				}
+				int meta = this.worldObj.getBlockMetadata(logPosX, this.yCoord, logPosZ);
+				this.worldObj.setBlockToAir(logPosX, this.yCoord, logPosZ);
+				this.worldObj.setBlock(plankPosX, this.yCoord, plankPosZ, InitBlocks.blockPlankStack);
+				BlockPlankStack stack = (BlockPlankStack) this.worldObj.getBlock(plankPosX, this.yCoord, plankPosZ);
+				if(this.worldObj.getBlock(logPosX, this.yCoord, logPosZ) == Blocks.log2)
+				worldObj.setBlockMetadataWithNotify(xCoord - 1, yCoord, zCoord, meta + 4, 2);
+				else worldObj.setBlockMetadataWithNotify(xCoord - 1, yCoord, zCoord, meta, 2);
 			}
 		}
 	}
