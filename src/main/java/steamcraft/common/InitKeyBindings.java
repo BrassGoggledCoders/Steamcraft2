@@ -12,11 +12,6 @@
  */
 package steamcraft.common;
 
-import net.minecraft.client.settings.KeyBinding;
-
-import org.lwjgl.input.Keyboard;
-
-import cpw.mods.fml.client.registry.ClientRegistry;
 
 /**
  * @author warlordjones

@@ -13,18 +13,13 @@
 package steamcraft.common.lib.events;
 
 import net.minecraft.block.Block;
-import net.minecraft.client.Minecraft;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.event.ClickEvent;
 import net.minecraft.event.HoverEvent;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
-import steamcraft.client.lib.GuiIDs;
 import steamcraft.common.InitAchievements;
 import steamcraft.common.InitItems;
-import steamcraft.common.InitKeyBindings;
-import steamcraft.common.Steamcraft;
 import steamcraft.common.blocks.machines.BlockIntake;
 import steamcraft.common.blocks.machines.BlockLightningRod;
 import steamcraft.common.blocks.machines.BlockSteamBoiler;

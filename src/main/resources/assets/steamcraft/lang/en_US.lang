@@ -54,6 +54,12 @@ tile.blockSlate.6.name=Blue Slate Bricks
 tile.blockSlate.7.name=Black Slate Bricks
 tile.blockSlate.8.name=Red Slate Bricks
 tile.blockTimeBomb.name=Time Bomb
+tile.blockPlankStack.0.name=Oak Plank Stack
+tile.blockPlankStack.1.name=Spruce Plank Stack
+tile.blockPlankStack.2.name=Birch Plank Stack
+tile.blockPlankStack.3.name=Jungle Plank Stack
+tile.blockPlankStack.4.name=Acacia Plank Stack
+tile.blockPlankStack.5.name=Dark Oak Plank Stack
 
 #Ores
 tile.blockCustomOre.0.name=Aluminum Ore
@@ -93,6 +99,8 @@ tile.blockTeslaCoil.desc=Uses 500RF/tick and 1000RF/damage to electrocute any li
 tile.blockCharger.name=Charger
 tile.blockCharger.desc=Charges items placed inside it
 tile.blockArmorEditor.name=Armor Editor
+tile.blockSawmill.name=Sawmill
+tile.blockSawmill.desc=Saws logs into six planks
 
 #Items
 item.itemResource.0.name=Etherium Crystal

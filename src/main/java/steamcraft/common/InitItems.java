@@ -14,7 +14,6 @@ package steamcraft.common;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
-import steamcraft.common.config.ConfigGeneral;
 import steamcraft.common.items.BaseItem;
 import steamcraft.common.items.ItemCanister;
 import steamcraft.common.items.ItemChisel;
@@ -74,7 +73,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 /**
  * @author Surseance
- * 
+ *
  */
 public class InitItems
 {
@@ -372,13 +371,10 @@ public class InitItems
 		itemElectricJarLarge = new ElectricItem(2500, 750, 2000).setUnlocalizedName("itemElectricJarLarge");
 		itemElectricJarHuge = new ElectricItem(10000, 3000, 10000).setUnlocalizedName("itemElectricJarHuge");
 
-		if(ConfigGeneral.registerJars)
-		{
-			registerItem(itemElectricJarSmall, "ItemElectricJarSmall");
-			registerItem(itemElectricJarMedium, "ItemElectricJarMedium");
-			registerItem(itemElectricJarLarge, "ItemElectricJarLarge");
-			registerItem(itemElectricJarHuge, "ItemElectricJarHuge");
-		}
+		registerItem(itemElectricJarSmall, "ItemElectricJarSmall");
+		registerItem(itemElectricJarMedium, "ItemElectricJarMedium");
+		registerItem(itemElectricJarLarge, "ItemElectricJarLarge");
+		registerItem(itemElectricJarHuge, "ItemElectricJarHuge");
 
 		// Others
 		itemResource = new ItemResource().setUnlocalizedName("itemResource");
@@ -462,6 +458,7 @@ public class InitItems
 
 	private static void registerItem(Item item, String name)
 	{
+		//TODO if(ConfigGeneral.nameBlacklist != null && !ConfigGeneral.nameBlacklist.contains(item.getUnlocalizedName()))
 		GameRegistry.registerItem(item, name, LibInfo.ID);
 	}
 }

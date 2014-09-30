@@ -1,27 +1,26 @@
 package steamcraft.common.blocks;
 
+import java.util.List;
 import java.util.Random;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.item.EntityFallingBlock;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+import steamcraft.common.InitBlocks;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.LibInfo;
-import steamcraft.common.tiles.TilePlankStack;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockPlankStack extends BlockContainer
+public class BlockPlankStack extends BaseBlock
 {
-	private int numStoredPlanks = 6;
-	private int plankMeta = 0;
+	//TODO: Use block metadata
 
 	public BlockPlankStack(Material mat)
 	{
@@ -42,13 +41,13 @@ public class BlockPlankStack extends BlockContainer
 	@Override
 	public int quantityDropped(Random p_149745_1_)
 	{
-		return this.getNumStoredPlanks();
+		return 6;
 	}
 
 	@Override
-	public int damageDropped(int p_149692_1_)
+	public int damageDropped(int meta)
 	{
-		return this.getPlankMeta();
+		return meta;
 	}
 
 	@Override
@@ -56,40 +55,89 @@ public class BlockPlankStack extends BlockContainer
 	{
 		return Item.getItemFromBlock(Blocks.planks);
 	}
+	   /**
+     * Called whenever the block is added into the world. Args: world, x, y, z
+     */
+    public void onBlockAdded(World p_149726_1_, int p_149726_2_, int p_149726_3_, int p_149726_4_)
+    {
+        p_149726_1_.scheduleBlockUpdate(p_149726_2_, p_149726_3_, p_149726_4_, this, this.tickRate(p_149726_1_));
+    }
 
-	public int getNumStoredPlanks()
-	{
-		return this.numStoredPlanks;
-	}
+    /**
+     * Lets the block know when one of its neighbor changes. Doesn't know which neighbor changed (coordinates passed are
+     * their own) Args: x, y, z, neighbor Block
+     */
+    public void onNeighborBlockChange(World p_149695_1_, int p_149695_2_, int p_149695_3_, int p_149695_4_, Block p_149695_5_)
+    {
+        p_149695_1_.scheduleBlockUpdate(p_149695_2_, p_149695_3_, p_149695_4_, this, this.tickRate(p_149695_1_));
+    }
 
-	public Block setNumStoredPlanks(int numStoredPlanks)
-	{
-		this.numStoredPlanks = numStoredPlanks;
-		return this;
-	}
+    /**
+     * Ticks the block if it's been scheduled
+     */
+    public void updateTick(World p_149674_1_, int p_149674_2_, int p_149674_3_, int p_149674_4_, Random p_149674_5_)
+    {
+        if (!p_149674_1_.isRemote)
+        {
+            this.func_149830_m(p_149674_1_, p_149674_2_, p_149674_3_, p_149674_4_);
+        }
+    }
 
-	public int getPlankMeta()
-	{
-		return this.plankMeta;
-	}
+    private void func_149830_m(World p_149830_1_, int p_149830_2_, int p_149830_3_, int p_149830_4_)
+    {
+        if (func_149831_e(p_149830_1_, p_149830_2_, p_149830_3_ - 1, p_149830_4_) && p_149830_3_ >= 0)
+        {
+            byte b0 = 32;
 
-	public Block setPlankMeta(int plankMeta)
-	{
-		this.plankMeta = plankMeta;
-		return this;
-	}
+            if (p_149830_1_.checkChunksExist(p_149830_2_ - b0, p_149830_3_ - b0, p_149830_4_ - b0, p_149830_2_ + b0, p_149830_3_ + b0, p_149830_4_ + b0))
+            {
+                if (!p_149830_1_.isRemote)
+                {
+                    EntityFallingBlock entityfallingblock = new EntityFallingBlock(p_149830_1_, (double)((float)p_149830_2_ + 0.5F), (double)((float)p_149830_3_ + 0.5F), (double)((float)p_149830_4_ + 0.5F), this, p_149830_1_.getBlockMetadata(p_149830_2_, p_149830_3_, p_149830_4_));
+                    this.func_149829_a(entityfallingblock);
+                    p_149830_1_.spawnEntityInWorld(entityfallingblock);
+                }
+            }
+        }
+    }
 
+    protected void func_149829_a(EntityFallingBlock p_149829_1_) {}
+
+    /**
+     * How many world ticks before ticking
+     */
+    public int tickRate(World p_149738_1_)
+    {
+        return 2;
+    }
+
+    public static boolean func_149831_e(World p_149831_0_, int p_149831_1_, int p_149831_2_, int p_149831_3_)
+    {
+        Block block = p_149831_0_.getBlock(p_149831_1_, p_149831_2_, p_149831_3_);
+
+        if (block.isAir(p_149831_0_, p_149831_1_, p_149831_2_, p_149831_3_))
+        {
+            return true;
+        }
+        else if (block == Blocks.fire)
+        {
+            return true;
+        }
+        else
+        {
+            Material material = block.getMaterial();
+            return material == Material.water ? true : material == Material.lava;
+        }
+    }
+
+    public void func_149828_a(World p_149828_1_, int p_149828_2_, int p_149828_3_, int p_149828_4_, int p_149828_5_) {}
+
+    @SuppressWarnings("all")
 	@Override
-	public TileEntity createNewTileEntity(World p_149915_1_, int p_149915_2_)
+	@SideOnly(Side.CLIENT)
+	public void getSubBlocks(Item item, CreativeTabs tab, List l)
 	{
-		return new TilePlankStack();
+		for(int var4 = 0; var4 < 6; ++var4)
+			l.add(new ItemStack(InitBlocks.blockPlankStack, 1, var4));
 	}
-
-	@Override
-	public void onBlockPlacedBy(World world, int p_149689_2_, int p_149689_3_, int p_149689_4_, EntityLivingBase p_149689_5_, ItemStack p_149689_6_)
-	{
-		this.setNumStoredPlanks(6);
-		this.setPlankMeta(0);
-	}
-
 }

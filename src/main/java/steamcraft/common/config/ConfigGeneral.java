@@ -13,6 +13,7 @@
 package steamcraft.common.config;
 
 import java.io.File;
+import java.util.List;
 import java.util.logging.Level;
 
 import net.minecraftforge.common.config.Configuration;
@@ -30,7 +31,9 @@ public class ConfigGeneral
 	public static boolean drawInside;
 	public static double armorSpawnChance;
 
-	public static boolean registerJars;
+	//public static boolean registerJars;
+
+	public static List<String> nameBlacklist;
 
 	public static void initialize(File configFile)
 	{
@@ -45,7 +48,11 @@ public class ConfigGeneral
 			drawFluid = config.get(CATEGORY_CLIENT, "Render fluid inside blocks", true).getBoolean();
 			drawInside = config.get(CATEGORY_CLIENT, "Render the insides of blocks", true).getBoolean();
 
-			registerJars = config.get(CATEGORY_CLIENT, "Electric Jars Enabled", true).getBoolean();
+			//registerJars = config.get(CATEGORY_CLIENT, "Electric Jars Enabled", true).getBoolean();
+
+			String[] blacklistArray = nameBlacklist.toArray(new String[]{});
+
+			blacklistArray = config.getStringList("Blacklist", CATEGORY_GENERAL, new String[]{"itemTeapot", "itemTwo", "itemThree"}, "Blacklist unlocalized Names of Items from our mod here to prevent them loading");
 		}
 		catch(Exception e)
 		{
