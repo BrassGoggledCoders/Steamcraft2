@@ -62,4 +62,16 @@ public class ItemClockworkRocketLauncher extends BaseFirearm
 
 		world.playSoundAtEntity(player, this.fireSound, 0.6F, 1.0F);
 	}
+	@Override
+	/**
+     * called when the player releases the use item button. Args: itemstack, world, entityplayer, itemInUseCount
+     */
+	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
+	{
+		NBTTagCompound tag = stack.getTagCompound();
+
+		if((tag.getShort("reloadTime") == 0) && player.inventory.hasItem(this.ammo))
+				this.shotBullet(stack, world, player);
+		return stack;
+	}
 }

@@ -326,7 +326,7 @@ public class InitItems
 		// registerItem(itemLightningGun, "ItemLightningGun");
 
 		itemRocket = new BaseItem().setUnlocalizedName("itemClockworkRocket").setCreativeTab(Steamcraft.tabSC2);
-		itemClockworkRocketLauncher = new ItemClockworkRocketLauncher(100, itemRocket, "steamcraft:rocket", "steamcraft:reload");
+		itemClockworkRocketLauncher = new ItemClockworkRocketLauncher(50, itemRocket, "steamcraft:rocket", "steamcraft:reload");
 
 		registerItem(itemRocket, "ItemRocket");
 		registerItem(itemClockworkRocketLauncher, "ItemClockworkRocketLauncher");
