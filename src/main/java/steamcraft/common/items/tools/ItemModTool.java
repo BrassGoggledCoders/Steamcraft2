@@ -41,7 +41,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author Surseance
- * 
+ *
  */
 public class ItemModTool extends BaseItem
 {
@@ -54,7 +54,6 @@ public class ItemModTool extends BaseItem
 	protected ItemModTool(float damage, ToolMaterial toolMat, Block[] blockArray)
 	{
 		super();
-		this.setCreativeTab(Steamcraft.tabSC2);
 		this.toolMaterial = toolMat;
 		this.blocksEffectiveAgainst = blockArray;
 		this.maxStackSize = 1;
@@ -77,6 +76,7 @@ public class ItemModTool extends BaseItem
 
 			l.add(stack);
 		}
+		else l.add(new ItemStack(item, 1));
 	}
 
 	@Override
@@ -253,9 +253,9 @@ public class ItemModTool extends BaseItem
 
 	@SuppressWarnings("all")
 	@Override
-	public Multimap getItemAttributeModifiers()
+	public Multimap getAttributeModifiers(ItemStack stack)
 	{
-		Multimap multimap = super.getItemAttributeModifiers();
+		Multimap multimap = super.getAttributeModifiers(stack);
 		multimap.put(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName(), new AttributeModifier(field_111210_e, "Tool modifier",
 				this.damageVsEntity, 0));
 		return multimap;
