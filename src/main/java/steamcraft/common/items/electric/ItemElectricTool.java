@@ -63,7 +63,7 @@ public class ItemElectricTool extends ItemModTool implements IEnergyItem
 
 	public ItemStack getChargedItem(Item item)
 	{
-		ItemStack charged = new ItemStack(item, 1, 20);
+		ItemStack charged = new ItemStack(item, 1, 1);
 
 		if(!charged.hasTagCompound())
 		{
