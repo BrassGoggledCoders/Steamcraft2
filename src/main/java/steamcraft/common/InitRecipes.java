@@ -26,7 +26,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 /**
  * @author Surseance
- * 
+ *
  */
 public class InitRecipes
 {
@@ -324,7 +324,7 @@ public class InitRecipes
 		// Misc
 		GameRegistry.addSmelting(Blocks.iron_block, new ItemStack(InitBlocks.blockMetal, 1, 7), 0.5F);
 		GameRegistry.addSmelting(Items.iron_ingot, new ItemStack(InitItems.itemIngot, 1, 7), 0.2F);
-		GameRegistry.addSmelting(new ItemStack(InitItems.itemResource, 1, 6), new ItemStack(InitItems.itemResource, 1, 5), 0.5F);
+		GameRegistry.addSmelting(new ItemStack(InitItems.itemResource, 1, 5), new ItemStack(InitItems.itemResource, 1, 4), 0.5F);
 
 		GameRegistry.addSmelting(new ItemStack(InitBlocks.blockSlate, 1, 3), new ItemStack(InitBlocks.blockSlate, 1, 0), 0.3F);
 		GameRegistry.addSmelting(new ItemStack(InitBlocks.blockSlate, 1, 4), new ItemStack(InitBlocks.blockSlate, 1, 1), 0.3F);

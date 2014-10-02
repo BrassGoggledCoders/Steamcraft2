@@ -24,6 +24,7 @@ import steamcraft.common.blocks.BlockCastIronFence;
 import steamcraft.common.blocks.BlockCastIronGate;
 import steamcraft.common.blocks.BlockCastIronLamp;
 import steamcraft.common.blocks.BlockCastIronRailing;
+import steamcraft.common.blocks.BlockCongealedSlime;
 import steamcraft.common.blocks.BlockCrystal;
 import steamcraft.common.blocks.BlockCustomOre;
 import steamcraft.common.blocks.BlockEngravedSolid;
@@ -129,6 +130,8 @@ public class InitBlocks
 	public static Block blockTimeBomb;
 
 	public static Block blockFlesh;
+
+	public static Block blockCongealedSlime;
 
 	public static void init()
 	{
@@ -281,6 +284,9 @@ public class InitBlocks
 
 		blockPlankStack = new BlockPlankStack(Material.wood).setBlockName("blockPlankStack").setCreativeTab(Steamcraft.tabSC2);
 		GameRegistry.registerBlock(blockPlankStack, BaseItemBlockWithMetadata.class, "BlockPlankStack");
+
+		blockCongealedSlime = new BlockCongealedSlime(Material.gourd).setBlockName("blockCongealedSlime").setCreativeTab(Steamcraft.tabSC2);
+		GameRegistry.registerBlock(blockCongealedSlime, "BlockCongealedSlime");
 	}
 
 }

@@ -68,7 +68,7 @@ import cpw.mods.fml.common.FMLCommonHandler;
 
 /**
  * @author Surseance
- * 
+ *
  */
 public class ClientProxy extends CommonProxy
 {
@@ -104,6 +104,10 @@ public class ClientProxy extends CommonProxy
 
 	private void registerBlockRenderers()
 	{
+		// Crystal
+		RenderIDs.blockCrystalRI = RenderingRegistry.getNextAvailableRenderId();
+		ClientRegistry.bindTileEntitySpecialRenderer(TileCrystal.class, new TileCrystalRenderer());
+		RenderingRegistry.registerBlockHandler(new BlockCrystalRenderer());
 		// Copper Pipe
 		RenderIDs.blockCopperPipeRI = RenderingRegistry.getNextAvailableRenderId();
 		ClientRegistry.bindTileEntitySpecialRenderer(TileCopperPipe.class, new TileCopperPipeRenderer());
@@ -112,10 +116,6 @@ public class ClientProxy extends CommonProxy
 		RenderIDs.blockCopperWireRI = RenderingRegistry.getNextAvailableRenderId();
 		ClientRegistry.bindTileEntitySpecialRenderer(TileCopperWire.class, new TileCopperWireRenderer());
 		RenderingRegistry.registerBlockHandler(new BlockCopperWireRenderer());
-		// Crystal
-		RenderIDs.blockCrystalRI = RenderingRegistry.getNextAvailableRenderId();
-		ClientRegistry.bindTileEntitySpecialRenderer(TileCrystal.class, new TileCrystalRenderer());
-		RenderingRegistry.registerBlockHandler(new BlockCrystalRenderer());
 		// Lightning Rod
 		RenderIDs.blockLightningRodRI = RenderingRegistry.getNextAvailableRenderId();
 		ClientRegistry.bindTileEntitySpecialRenderer(TileLightningRod.class, new TileLightningRodRenderer());
@@ -140,6 +140,7 @@ public class ClientProxy extends CommonProxy
 		// ClientRegistry.bindTileEntitySpecialRenderer(TileCastIronLamp.class, new TileCastIronLampRenderer());
 		// RenderingRegistry.registerBlockHandler(new BlockCastIronLampRenderer());
 		// Hatch
+		//Hatch
 		RenderIDs.blockHatchRI = RenderingRegistry.getNextAvailableRenderId();
 		ClientRegistry.bindTileEntitySpecialRenderer(TileHatch.class, new TileHatchRenderer());
 		RenderingRegistry.registerBlockHandler(new BlockHatchRenderer());
