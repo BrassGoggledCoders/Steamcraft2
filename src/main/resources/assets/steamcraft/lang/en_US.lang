@@ -205,6 +205,10 @@ item.itemRaygun.name=Ray Gun
 item.itemRaygun.desc=Causes destruction and havoc all over the place! Good for melting things
 item.itemShrinkray.name=Shrinkray
 item.itemShrinkray.desc=Shrinks blocks infinitely small. WARNING! Ray cannot enlarge objects. (Shrinking Process is probably irreversible)
+item.itemClockworkRocketLauncher.name=Clockwork Rocket Launcher
+item.itemClockworkRocketLauncher.desc=Ammunition: Rockets
+item.itemClockworkRocket.name=Rocket
+item.itemClockworkRocket.desc=Explosive!
 
 #Tools
 item.itemDrillCore.name=Drill Core
