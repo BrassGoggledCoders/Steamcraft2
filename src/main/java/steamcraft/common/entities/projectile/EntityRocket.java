@@ -68,7 +68,14 @@ public class EntityRocket extends BaseProjectileEntity
 		this.posX -= (this.motionX / magnitude) * 0.05000000074505806D;
 		this.posY -= (this.motionY / magnitude) * 0.05000000074505806D;
 		this.posZ -= (this.motionZ / magnitude) * 0.05000000074505806D;
-
+		switch(type)
+		{
+			case 1: this.worldObj.newExplosion(this, this.xTile, this.yTile, this.zTile, 5, true, false);
+			break;
+			case 2:
+			break;
+			default: this.worldObj.newExplosion(this, this.xTile, this.yTile, this.zTile, 5, false, true);
+		}
 		this.worldObj.playSoundAtEntity(this, LibInfo.PREFIX + "hitblock", 1.0F, 1.0F);
 		this.setDead();
 	}
