@@ -21,7 +21,7 @@ import cpw.mods.fml.common.registry.EntityRegistry;
 
 /**
  * @author Surseance
- *
+ * 
  */
 public class InitEntities
 {

@@ -24,32 +24,32 @@ import steamcraft.common.tiles.TileBattery;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 public class ModelBattery extends ModelBase
 {
 	// fields
-	ModelRenderer base;
-	ModelRenderer upright;
-	ModelRenderer top;
-	ModelRenderer jar;
-	ModelRenderer lid;
-	ModelRenderer wire;
-	ModelRenderer jar2;
-	ModelRenderer lid2;
-	ModelRenderer wire2;
-	ModelRenderer jar3;
-	ModelRenderer lid3;
-	ModelRenderer wire3;
-	ModelRenderer jar4;
-	ModelRenderer lid6;
-	ModelRenderer wire6;
-	ModelRenderer jar6;
-	ModelRenderer lid4;
-	ModelRenderer wire4;
-	ModelRenderer jar5;
-	ModelRenderer lid5;
-	ModelRenderer wire5;
+	private ModelRenderer base;
+	private ModelRenderer upright;
+	private ModelRenderer top;
+	private ModelRenderer jar;
+	private ModelRenderer lid;
+	private ModelRenderer wire;
+	private ModelRenderer jar2;
+	private ModelRenderer lid2;
+	private ModelRenderer wire2;
+	private ModelRenderer jar3;
+	private ModelRenderer lid3;
+	private ModelRenderer wire3;
+	private ModelRenderer jar4;
+	private ModelRenderer lid6;
+	private ModelRenderer wire6;
+	private ModelRenderer jar6;
+	private ModelRenderer lid4;
+	private ModelRenderer wire4;
+	private ModelRenderer jar5;
+	private ModelRenderer lid5;
+	private ModelRenderer wire5;
 
 	public ModelBattery()
 	{
@@ -221,7 +221,7 @@ public class ModelBattery extends ModelBase
 		model.rotateAngleZ = z;
 	}
 
-	public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5)
+	private void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5)
 	{
 		super.setRotationAngles(f, f1, f2, f3, f4, f5, null);
 	}

@@ -1,3 +1,15 @@
+/**
+ * This class was created by BrassGoggledCoders modding team. 
+ * This class is available as part of the Steamcraft 2 Mod for Minecraft.
+ *
+ * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
+ * (http://www.mod-buildcraft.com/MMPL-1.0.txt)
+ *
+ * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
+ * Steamcraft (c) Proloe 2011
+ * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
+ * 
+ */
 package steamcraft.common.tiles;
 
 import net.minecraft.init.Blocks;
@@ -10,22 +22,30 @@ public class TileSawmill extends TileEntity
 	@Override
 	public void updateEntity()
 	{
-		int logPosX = xCoord;
-		int logPosZ = zCoord;
-		int plankPosX = xCoord;
-		int plankPosZ = zCoord;
-		switch(blockMetadata)
+		int logPosX = this.xCoord;
+		int logPosZ = this.zCoord;
+		int plankPosX = this.xCoord;
+		int plankPosZ = this.zCoord;
+		switch(this.blockMetadata)
 		{
-			case 0: logPosX = xCoord - 1; plankPosX = xCoord + 1;
-			break;
-			case 1: logPosX = xCoord + 1; plankPosX = xCoord - 1;
-			break;
-			case 2: logPosZ = zCoord - 1; plankPosZ = zCoord + 1;
-			break;
-			case 3: logPosZ = zCoord + 1; plankPosZ = zCoord - 1;
-			break;
+			case 0:
+				logPosX = this.xCoord - 1;
+				plankPosX = this.xCoord + 1;
+				break;
+			case 1:
+				logPosX = this.xCoord + 1;
+				plankPosX = this.xCoord - 1;
+				break;
+			case 2:
+				logPosZ = this.zCoord - 1;
+				plankPosZ = this.zCoord + 1;
+				break;
+			case 3:
+				logPosZ = this.zCoord + 1;
+				plankPosZ = this.zCoord - 1;
+				break;
 		}
-		if(this.worldObj.getBlock(logPosX, this.yCoord, logPosZ) == Blocks.log || this.worldObj.getBlock(logPosX, this.yCoord, logPosZ) == Blocks.log2)
+		if((this.worldObj.getBlock(logPosX, this.yCoord, logPosZ) == Blocks.log) || (this.worldObj.getBlock(logPosX, this.yCoord, logPosZ) == Blocks.log2))
 		{
 			if(this.worldObj.isAirBlock(plankPosX, this.yCoord, plankPosZ))
 			{
@@ -34,8 +54,9 @@ public class TileSawmill extends TileEntity
 				this.worldObj.setBlock(plankPosX, this.yCoord, plankPosZ, InitBlocks.blockPlankStack);
 				BlockPlankStack stack = (BlockPlankStack) this.worldObj.getBlock(plankPosX, this.yCoord, plankPosZ);
 				if(this.worldObj.getBlock(logPosX, this.yCoord, logPosZ) == Blocks.log2)
-				worldObj.setBlockMetadataWithNotify(xCoord - 1, yCoord, zCoord, meta + 4, 2);
-				else worldObj.setBlockMetadataWithNotify(xCoord - 1, yCoord, zCoord, meta, 2);
+					this.worldObj.setBlockMetadataWithNotify(this.xCoord - 1, this.yCoord, this.zCoord, meta + 4, 2);
+				else
+					this.worldObj.setBlockMetadataWithNotify(this.xCoord - 1, this.yCoord, this.zCoord, meta, 2);
 			}
 		}
 	}

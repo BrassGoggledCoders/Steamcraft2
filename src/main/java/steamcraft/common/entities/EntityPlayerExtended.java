@@ -24,7 +24,7 @@ import steamcraft.common.container.InventoryVanity;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 // TODO: Add packets
 public class EntityPlayerExtended implements IExtendedEntityProperties
@@ -73,29 +73,5 @@ public class EntityPlayerExtended implements IExtendedEntityProperties
 	public InventoryVanity getInventory()
 	{
 		return this.inventory;
-	}
-
-	@SuppressWarnings("all")
-	public final void sync()
-	{
-		final ByteArrayOutputStream baOutputStream = new ByteArrayOutputStream(8);
-		final DataOutputStream dOutputStream = new DataOutputStream(baOutputStream);
-		try
-		{
-			// dOutputStream.writeInt(PacketHandler.PACKET_EXTENDED_PROPERTIES);
-		}
-		catch(final Exception ex)
-		{
-			ex.printStackTrace();
-		}
-
-		// Packet250CustomPayload packet = new
-		// Packet250CustomPayload(PacketHandler.SC2_CHANNEL,
-		// baOutputStream.toByteArray());
-
-		// We only want to send from the server to the client
-		if(!this.player.worldObj.isRemote)
-		{
-		}
 	}
 }

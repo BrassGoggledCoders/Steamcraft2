@@ -24,7 +24,7 @@ import boilerplate.common.baseclasses.BaseProjectileEntity;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class EntityRocket extends BaseProjectileEntity
 {
@@ -42,16 +42,20 @@ public class EntityRocket extends BaseProjectileEntity
 		super(world, shooter, 0, accuracy);
 		this.type = type;
 	}
+
 	@Override
 	public void onHitEntity(Entity entity)
 	{
-		switch(type)
+		switch(this.type)
 		{
-			case 1: this.worldObj.newExplosion(this, this.xTile, this.yTile, this.zTile, 5, true, false);
-			break;
-			case 2: entity.attackEntityFrom(DamageSourceHandler.rocket, 5F);
-			break;
-			default: this.worldObj.newExplosion(this, this.xTile, this.yTile, this.zTile, 5, false, true);
+			case 1:
+				this.worldObj.newExplosion(this, this.xTile, this.yTile, this.zTile, 5, true, false);
+				break;
+			case 2:
+				entity.attackEntityFrom(DamageSourceHandler.rocket, 5F);
+				break;
+			default:
+				this.worldObj.newExplosion(this, this.xTile, this.yTile, this.zTile, 5, false, true);
 		}
 		this.worldObj.playSoundAtEntity(this, LibInfo.PREFIX + "hitflesh", 1.0F, 1.2F / ((this.rand.nextFloat() * 0.2F) + 0.9F));
 		this.setDead();
@@ -68,20 +72,23 @@ public class EntityRocket extends BaseProjectileEntity
 		this.posX -= (this.motionX / magnitude) * 0.05000000074505806D;
 		this.posY -= (this.motionY / magnitude) * 0.05000000074505806D;
 		this.posZ -= (this.motionZ / magnitude) * 0.05000000074505806D;
-		switch(type)
+		switch(this.type)
 		{
-			case 1: this.worldObj.newExplosion(this, this.xTile, this.yTile, this.zTile, 5, true, false);
-			break;
+			case 1:
+				this.worldObj.newExplosion(this, this.xTile, this.yTile, this.zTile, 5, true, false);
+				break;
 			case 2:
-			break;
-			default: this.worldObj.newExplosion(this, this.xTile, this.yTile, this.zTile, 5, false, true);
+				break;
+			default:
+				this.worldObj.newExplosion(this, this.xTile, this.yTile, this.zTile, 5, false, true);
 		}
 		this.worldObj.playSoundAtEntity(this, LibInfo.PREFIX + "hitblock", 1.0F, 1.0F);
 		this.setDead();
 	}
+
 	@Override
 	protected void entityInit()
 	{
-		//See BaseProjectileEntity
+		// See BaseProjectileEntity
 	}
 }

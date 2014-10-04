@@ -32,7 +32,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class BlockFluidSteam extends BlockFluidClassic
 {
 	@SideOnly(Side.CLIENT)
-	public static IIcon iconFlowing;
+	private static IIcon iconFlowing;
 
 	public BlockFluidSteam(Fluid fluid, Material material)
 	{

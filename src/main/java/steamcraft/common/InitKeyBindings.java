@@ -12,18 +12,18 @@
  */
 package steamcraft.common;
 
-
 /**
  * @author warlordjones
- *
+ * 
  */
 public class InitKeyBindings
 {
 	public static String keyCategory = "Steamcraft 2";
-	//public static KeyBinding vanity = new KeyBinding("Vanity GUI", Keyboard.KEY_V, keyCategory);
+
+	// public static KeyBinding vanity = new KeyBinding("Vanity GUI", Keyboard.KEY_V, keyCategory);
 
 	public InitKeyBindings()
 	{
-		//ClientRegistry.registerKeyBinding(vanity);
+		// ClientRegistry.registerKeyBinding(vanity);
 	}
 }

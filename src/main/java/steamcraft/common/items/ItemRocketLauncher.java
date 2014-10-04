@@ -56,23 +56,24 @@ public class ItemRocketLauncher extends BaseFirearm
 
 		player.inventory.consumeInventoryItem(this.ammo);
 
-		if(!world.isRemote && InventoryUtils.getItemStackInInventory(player, stack) != null)
+		if(!world.isRemote && (InventoryUtils.getItemStackInInventory(player, stack) != null))
 		{
 			world.spawnEntityInWorld(new EntityRocket(world, player, InventoryUtils.getItemStackInInventory(player, stack).getItemDamage(), 10));
 		}
 
 		world.playSoundAtEntity(player, this.fireSound, 0.6F, 1.0F);
 	}
+
 	@Override
 	/**
-     * called when the player releases the use item button. Args: itemstack, world, entityplayer, itemInUseCount
-     */
+	 * called when the player releases the use item button. Args: itemstack, world, entityplayer, itemInUseCount
+	 */
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
 	{
 		NBTTagCompound tag = stack.getTagCompound();
 
-		if((tag.getShort("reloadTime") == 0) && player.inventory.hasItem(ammo))
-				this.shotBullet(stack, world, player);
+		if((tag.getShort("reloadTime") == 0) && player.inventory.hasItem(this.ammo))
+			this.shotBullet(stack, world, player);
 		return stack;
 	}
 }

@@ -40,7 +40,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author Surseance
- *
+ * 
  */
 public class ItemModTool extends BaseItem
 {
@@ -75,7 +75,8 @@ public class ItemModTool extends BaseItem
 
 			l.add(stack);
 		}
-		else l.add(new ItemStack(item, 1));
+		else
+			l.add(new ItemStack(item, 1));
 	}
 
 	@Override

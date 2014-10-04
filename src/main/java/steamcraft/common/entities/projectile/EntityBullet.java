@@ -25,7 +25,7 @@ import boilerplate.common.baseclasses.BaseProjectileEntity;
 
 /**
  * @author Surseance (Johnny Eatmon)
- *
+ * 
  */
 public class EntityBullet extends BaseProjectileEntity
 {
@@ -43,6 +43,7 @@ public class EntityBullet extends BaseProjectileEntity
 		super(world, shooter, damage, accuracy);
 		this.damage = damage;
 	}
+
 	@Override
 	public void onHitEntity(Entity entity)
 	{
@@ -84,9 +85,10 @@ public class EntityBullet extends BaseProjectileEntity
 			this.setDead();
 		}
 	}
+
 	@Override
 	protected void entityInit()
 	{
-		//See BaseProjectileEntity
+		// See BaseProjectileEntity
 	}
 }

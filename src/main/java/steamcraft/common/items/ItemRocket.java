@@ -26,7 +26,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class ItemRocket extends BaseItemWithMetadata
 {
@@ -37,7 +37,7 @@ public class ItemRocket extends BaseItemWithMetadata
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(Item item, CreativeTabs tab, List list)
 	{
-		for(int var4 = 0; var4 < itemIcon.length; ++var4)
+		for(int var4 = 0; var4 < this.itemIcon.length; ++var4)
 			list.add(new ItemStack(InitItems.itemRocket, 1, var4));
 	}
 

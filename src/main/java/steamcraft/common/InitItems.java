@@ -74,7 +74,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 /**
  * @author Surseance
- *
+ * 
  */
 public class InitItems
 {
@@ -153,7 +153,7 @@ public class InitItems
 
 	// Modules
 	public static Item itemAqualung, itemPistonPlating, itemTank, itemWatchDisplay, itemClimbingSpikes
-	, itemLegBraces, itemSpringHeels, itemRollerSkates, itemParachute, itemFlippers, itemLifeVest, itemPistonBoots;
+			, itemLegBraces, itemSpringHeels, itemRollerSkates, itemParachute, itemFlippers, itemLifeVest, itemPistonBoots;
 
 	public static Item itemTeapot, itemTeacup;
 
@@ -459,7 +459,7 @@ public class InitItems
 
 	private static void registerItem(Item item, String name)
 	{
-		//TODO if(ConfigGeneral.nameBlacklist != null && !ConfigGeneral.nameBlacklist.contains(item.getUnlocalizedName()))
+		// TODO if(ConfigGeneral.nameBlacklist != null && !ConfigGeneral.nameBlacklist.contains(item.getUnlocalizedName()))
 		GameRegistry.registerItem(item, name, LibInfo.ID);
 	}
 }

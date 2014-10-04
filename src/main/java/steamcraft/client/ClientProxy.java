@@ -68,7 +68,7 @@ import cpw.mods.fml.common.FMLCommonHandler;
 
 /**
  * @author Surseance
- *
+ * 
  */
 public class ClientProxy extends CommonProxy
 {
@@ -95,9 +95,9 @@ public class ClientProxy extends CommonProxy
 	{
 		RenderingRegistry.registerEntityRenderingHandler(EntityMinedBlock.class, new RenderMinedBlock());
 
-		RenderingRegistry.registerEntityRenderingHandler(EntityBullet.class, /*new RenderBullet()*/ new RenderSnowball(InitItems.itemMusketBall));
+		RenderingRegistry.registerEntityRenderingHandler(EntityBullet.class, /* new RenderBullet() */new RenderSnowball(InitItems.itemMusketBall));
 		RenderingRegistry.registerEntityRenderingHandler(EntityGrapplingHook.class, new RenderGrapplingHook());
-		RenderingRegistry.registerEntityRenderingHandler(EntityRocket.class, new RenderSnowball(InitItems.itemRocket)); //TODO
+		RenderingRegistry.registerEntityRenderingHandler(EntityRocket.class, new RenderSnowball(InitItems.itemRocket)); // TODO
 
 		RenderingRegistry.registerEntityRenderingHandler(EntityFleshGolem.class, new RenderFleshGolem(new ModelFleshGolem(), 0));
 	}
@@ -140,7 +140,7 @@ public class ClientProxy extends CommonProxy
 		// ClientRegistry.bindTileEntitySpecialRenderer(TileCastIronLamp.class, new TileCastIronLampRenderer());
 		// RenderingRegistry.registerBlockHandler(new BlockCastIronLampRenderer());
 		// Hatch
-		//Hatch
+		// Hatch
 		RenderIDs.blockHatchRI = RenderingRegistry.getNextAvailableRenderId();
 		ClientRegistry.bindTileEntitySpecialRenderer(TileHatch.class, new TileHatchRenderer());
 		RenderingRegistry.registerBlockHandler(new BlockHatchRenderer());
