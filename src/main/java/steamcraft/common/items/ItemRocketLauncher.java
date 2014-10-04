@@ -70,8 +70,6 @@ public class ItemRocketLauncher extends BaseFirearm
      */
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
 	{
-		//FMLLog.bigWarning(String.valueOf(stack.getItemDamage()), String.valueOf(stack.getItemDamage()));
-
 		NBTTagCompound tag = stack.getTagCompound();
 
 		if((tag.getShort("reloadTime") == 0) && player.inventory.hasItem(ammo))
