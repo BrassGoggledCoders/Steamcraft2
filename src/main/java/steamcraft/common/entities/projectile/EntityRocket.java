@@ -30,6 +30,13 @@ public class EntityRocket extends BaseProjectileEntity
 {
 	int type;
 
+	public EntityRocket(World world)
+	{
+		super(world);
+		this.renderDistanceWeight = 10.0D;
+		this.setSize(0.5F, 0.5F);
+	}
+
 	public EntityRocket(World world, EntityLivingBase shooter, int type, int accuracy)
 	{
 		super(world, shooter, 0, accuracy);

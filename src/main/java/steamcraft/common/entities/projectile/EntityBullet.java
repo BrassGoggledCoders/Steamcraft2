@@ -12,23 +12,16 @@
  */
 package steamcraft.common.entities.projectile;
 
-import java.util.List;
-
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Blocks;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
-import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import steamcraft.common.lib.DamageSourceHandler;
 import steamcraft.common.lib.LibInfo;
 import boilerplate.common.baseclasses.BaseProjectileEntity;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author Surseance (Johnny Eatmon)
@@ -37,6 +30,13 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class EntityBullet extends BaseProjectileEntity
 {
 	private int damage;
+
+	public EntityBullet(World world)
+	{
+		super(world);
+		this.renderDistanceWeight = 10.0D;
+		this.setSize(0.5F, 0.5F);
+	}
 
 	public EntityBullet(World world, EntityLivingBase shooter, int damage, int accuracy)
 	{

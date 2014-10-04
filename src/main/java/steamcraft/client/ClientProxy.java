@@ -28,7 +28,6 @@ import steamcraft.client.renderers.block.BlockHatchRenderer;
 import steamcraft.client.renderers.block.BlockLightningRodRenderer;
 import steamcraft.client.renderers.block.BlockRailingRenderer;
 import steamcraft.client.renderers.block.BlockTeslaCoilRenderer;
-import steamcraft.client.renderers.entity.RenderBullet;
 import steamcraft.client.renderers.entity.RenderFleshGolem;
 import steamcraft.client.renderers.entity.RenderGrapplingHook;
 import steamcraft.client.renderers.item.ModelBrassWings;
