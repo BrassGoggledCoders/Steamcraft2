@@ -15,6 +15,7 @@ package steamcraft.client;
 import java.awt.Color;
 
 import net.minecraft.client.model.ModelBiped;
+import net.minecraft.client.renderer.entity.RenderSnowball;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 import steamcraft.client.lib.RenderIDs;
@@ -30,7 +31,6 @@ import steamcraft.client.renderers.block.BlockTeslaCoilRenderer;
 import steamcraft.client.renderers.entity.RenderBullet;
 import steamcraft.client.renderers.entity.RenderFleshGolem;
 import steamcraft.client.renderers.entity.RenderGrapplingHook;
-import steamcraft.client.renderers.entity.RenderSmallLightningBolt;
 import steamcraft.client.renderers.item.ModelBrassWings;
 import steamcraft.client.renderers.item.ModelJetpack;
 import steamcraft.client.renderers.item.ModelWingpack;
@@ -46,11 +46,12 @@ import steamcraft.client.renderers.tile.TileHatchRenderer.TileHatch;
 import steamcraft.client.renderers.tile.TileLightningRodRenderer;
 import steamcraft.client.renderers.tile.TileTeslaCoilRenderer;
 import steamcraft.common.CommonProxy;
+import steamcraft.common.InitItems;
 import steamcraft.common.InitKeyBindings;
 import steamcraft.common.entities.EntityFleshGolem;
 import steamcraft.common.entities.EntityGrapplingHook;
 import steamcraft.common.entities.projectile.EntityBullet;
-import steamcraft.common.entities.projectile.EntitySmallLightningBolt;
+import steamcraft.common.entities.projectile.EntityRocket;
 import steamcraft.common.tiles.TileBattery;
 import steamcraft.common.tiles.TileCharger;
 import steamcraft.common.tiles.TileCopperPipe;
@@ -95,9 +96,9 @@ public class ClientProxy extends CommonProxy
 	{
 		RenderingRegistry.registerEntityRenderingHandler(EntityMinedBlock.class, new RenderMinedBlock());
 
-		RenderingRegistry.registerEntityRenderingHandler(EntityBullet.class, new RenderBullet());
+		RenderingRegistry.registerEntityRenderingHandler(EntityBullet.class, /*new RenderBullet()*/ new RenderSnowball(InitItems.itemMusketBall));
 		RenderingRegistry.registerEntityRenderingHandler(EntityGrapplingHook.class, new RenderGrapplingHook());
-		RenderingRegistry.registerEntityRenderingHandler(EntitySmallLightningBolt.class, new RenderSmallLightningBolt());
+		RenderingRegistry.registerEntityRenderingHandler(EntityRocket.class, new RenderSnowball(InitItems.itemRocket)); //TODO
 
 		RenderingRegistry.registerEntityRenderingHandler(EntityFleshGolem.class, new RenderFleshGolem(new ModelFleshGolem(), 0));
 	}

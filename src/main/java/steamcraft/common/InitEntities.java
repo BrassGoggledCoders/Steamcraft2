@@ -16,11 +16,12 @@ import steamcraft.common.entities.EntityFleshGolem;
 import steamcraft.common.entities.EntityGrapplingHook;
 import steamcraft.common.entities.EntityTimeBomb;
 import steamcraft.common.entities.projectile.EntityBullet;
+import steamcraft.common.entities.projectile.EntityRocket;
 import cpw.mods.fml.common.registry.EntityRegistry;
 
 /**
  * @author Surseance
- * 
+ *
  */
 public class InitEntities
 {
@@ -31,11 +32,14 @@ public class InitEntities
 
 	private static void registerEntities()
 	{
-		EntityRegistry.registerModEntity(EntityBullet.class, "Bullet", 0, Steamcraft.instance, 64, 20, true);
-		EntityRegistry.registerModEntity(EntityGrapplingHook.class, "GrapplingHook", 1, Steamcraft.instance, 64, 20, true);
-		EntityRegistry.registerModEntity(EntityTimeBomb.class, "TimeBomb", 2, Steamcraft.instance, 64, 20, true);
+		int entID = 0;
+
+		EntityRegistry.registerModEntity(EntityBullet.class, "Bullet", entID++, Steamcraft.instance, 64, 20, true);
+		EntityRegistry.registerModEntity(EntityGrapplingHook.class, "GrapplingHook", entID++, Steamcraft.instance, 64, 20, true);
+		EntityRegistry.registerModEntity(EntityTimeBomb.class, "TimeBomb", entID++, Steamcraft.instance, 64, 20, true);
+		EntityRegistry.registerModEntity(EntityRocket.class, "Rocket", entID++, Steamcraft.instance, 64, 10, true);
 
 		// Mobs
-		EntityRegistry.registerModEntity(EntityFleshGolem.class, "FleshGolem", 3, Steamcraft.instance, 64, 20, true);
+		EntityRegistry.registerModEntity(EntityFleshGolem.class, "FleshGolem", entID++, Steamcraft.instance, 64, 20, true);
 	}
 }

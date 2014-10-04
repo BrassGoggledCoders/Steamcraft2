@@ -16,14 +16,17 @@ import java.util.List;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.IProjectile;
+import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
+import steamcraft.common.lib.DamageSourceHandler;
 import steamcraft.common.lib.LibInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -45,8 +48,7 @@ public class EntityRocket extends Entity implements IProjectile
 	private int timeTillDeath;
 	private int flyTime;
 
-	private int damage;
-	private int accuracy;
+	private int type;
 
 	public EntityRocket(World world)
 	{
@@ -89,11 +91,12 @@ public class EntityRocket extends Entity implements IProjectile
 		}
 	}
 
-	public EntityRocket(World world, EntityLivingBase shooter)
+	public EntityRocket(World world, EntityLivingBase shooter, int type)
 	{
 		super(world);
 		this.renderDistanceWeight = 10.0D;
 		this.shootingEntity = shooter;
+		this.type = type;
 
 		this.setSize(0.5F, 0.5F);
 		this.setLocationAndAngles(shooter.posX, shooter.posY + shooter.getEyeHeight(), shooter.posZ, shooter.rotationYaw, shooter.rotationPitch);
@@ -107,7 +110,7 @@ public class EntityRocket extends Entity implements IProjectile
 		this.motionZ = MathHelper.cos((this.rotationYaw / 180.0F) * (float) Math.PI)
 				* MathHelper.cos((this.rotationPitch / 180.0F) * (float) Math.PI);
 		this.motionY = -MathHelper.sin((this.rotationPitch / 180.0F) * (float) Math.PI);
-		this.setThrowableHeading(this.motionX, this.motionY, this.motionZ, 1F, this.accuracy);
+		this.setThrowableHeading(this.motionX, this.motionY, this.motionZ, 1F, 10);
 	}
 
 	@Override
@@ -119,14 +122,13 @@ public class EntityRocket extends Entity implements IProjectile
 	@Override
 	public void setThrowableHeading(double dx, double dy, double dz, float frotY, float frotP)
 	{
-		int accuracy = this.accuracy;
 		float f2 = MathHelper.sqrt_double((dx * dx) + (dy * dy) + (dz * dz));
 		dx /= f2;
 		dy /= f2;
 		dz /= f2;
-		dx += (this.rand.nextGaussian() * 0.0034999998323619365D * frotP * accuracy) / 5;
-		dy += (this.rand.nextGaussian() * 0.0034999998323619365D * frotP * accuracy) / 5;
-		dz += (this.rand.nextGaussian() * 0.0034999998323619365D * frotP * accuracy) / 5;
+		dx += (this.rand.nextGaussian() * 0.0034999998323619365D * frotP * 10) / 5;
+		dy += (this.rand.nextGaussian() * 0.0034999998323619365D * frotP * 10) / 5;
+		dz += (this.rand.nextGaussian() * 0.0034999998323619365D * frotP * 10) / 5;
 		dx *= frotY;
 		dy *= frotY;
 		dz *= frotY;
@@ -223,7 +225,14 @@ public class EntityRocket extends Entity implements IProjectile
 		if(mop != null)
 			if(mop.entityHit != null)
 			{
-				this.worldObj.createExplosion(this, this.xTile, this.yTile, this.zTile, 5, true);
+				switch(type)
+				{
+					case 1: this.worldObj.newExplosion(this, this.xTile, this.yTile, this.zTile, 5, true, false);
+					break;
+					case 2: mop.entityHit.attackEntityFrom(DamageSourceHandler.rocket, 5F);
+					break;
+					default: this.worldObj.newExplosion(this, this.xTile, this.yTile, this.zTile, 5, false, true);
+				}
 				this.worldObj.playSoundAtEntity(this, LibInfo.PREFIX + "hitflesh", 1.0F, 1.2F / ((this.rand.nextFloat() * 0.2F) + 0.9F));
 				this.setDead();
 			}
@@ -242,7 +251,20 @@ public class EntityRocket extends Entity implements IProjectile
 				this.posX -= (this.motionX / magnitude) * 0.05000000074505806D;
 				this.posY -= (this.motionY / magnitude) * 0.05000000074505806D;
 				this.posZ -= (this.motionZ / magnitude) * 0.05000000074505806D;
-				this.worldObj.createExplosion(this, this.xTile, this.yTile, this.zTile, 5, true);
+				switch(type)
+				{
+					case 1: this.worldObj.newExplosion(this, this.xTile, this.yTile, this.zTile, 5, true, false);
+					break;
+					case 2: if((this.inTile == Blocks.glass) || (this.inTile == Blocks.glowstone) || (this.inTile == Blocks.glass_pane) || (this.inTile == Blocks.ice)
+							|| (this.inTile == Blocks.stained_glass) || (this.inTile == Blocks.stained_glass_pane))
+					{
+						Block block = this.inTile;
+						this.worldObj.playSoundEffect(this.xTile + 0.5D, this.yTile + 0.5D, this.zTile + 0.5D, block.stepSound.getBreakSound(), 1.0F, 1.0F);
+						this.worldObj.setBlockToAir(this.xTile, this.yTile, this.zTile);
+					}
+					break;
+					default: this.worldObj.newExplosion(this, this.xTile, this.yTile, this.zTile, 5, false, true);
+				}
 				this.worldObj.playSoundAtEntity(this, LibInfo.PREFIX + "hitblock", 1.0F, 1.0F);
 				this.setDead();
 			}

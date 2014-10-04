@@ -207,8 +207,13 @@ item.itemShrinkray.name=Shrinkray
 item.itemShrinkray.desc=Shrinks blocks infinitely small. WARNING! Ray cannot enlarge objects. (Shrinking Process is probably irreversible)
 item.itemClockworkRocketLauncher.name=Clockwork Rocket Launcher
 item.itemClockworkRocketLauncher.desc=Ammunition: Rockets
-item.itemClockworkRocket.name=Rocket
-item.itemClockworkRocket.desc=Explosive!
+item.itemClockworkRocket.0.name=Explosive Rocket
+item.itemClockworkRocket.0.desc=Standard High-Yield Explosive Rocket
+item.itemClockworkRocket.1.name=Incendiary Rocket
+item.itemClockworkRocket.1.desc=Fiery Explosion
+item.itemClockworkRocket.2.name=Depleted Uranium Tip Rocket
+item.itemClockworkRocket.2.desc=Armor-Piercing Shell
+
 
 #Tools
 item.itemDrillCore.name=Drill Core

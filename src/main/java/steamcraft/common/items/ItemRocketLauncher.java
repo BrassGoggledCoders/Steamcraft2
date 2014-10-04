@@ -26,12 +26,14 @@ import steamcraft.common.Steamcraft;
 import steamcraft.common.entities.projectile.EntityRocket;
 import steamcraft.common.lib.LibInfo;
 import boilerplate.common.baseclasses.BaseFirearm;
+import boilerplate.common.utils.InventoryUtils;
+import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemClockworkRocketLauncher extends BaseFirearm
+public class ItemRocketLauncher extends BaseFirearm
 {
-	public ItemClockworkRocketLauncher(int reloadTime, Item ammo, String fireSound, String reloadSound)
+	public ItemRocketLauncher(int reloadTime, Item ammo, String fireSound, String reloadSound)
 	{
 		super(0, reloadTime, ammo, null, fireSound, reloadSound);
 		this.setCreativeTab(Steamcraft.tabSC2);
@@ -55,9 +57,9 @@ public class ItemClockworkRocketLauncher extends BaseFirearm
 
 		player.inventory.consumeInventoryItem(this.ammo);
 
-		if(!world.isRemote)
+		if(!world.isRemote && InventoryUtils.getItemStackInInventory(player, stack) != null)
 		{
-			world.spawnEntityInWorld(new EntityRocket(world, player));
+			world.spawnEntityInWorld(new EntityRocket(world, player, InventoryUtils.getItemStackInInventory(player, stack).getItemDamage()));
 		}
 
 		world.playSoundAtEntity(player, this.fireSound, 0.6F, 1.0F);
@@ -68,9 +70,11 @@ public class ItemClockworkRocketLauncher extends BaseFirearm
      */
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
 	{
+		//FMLLog.bigWarning(String.valueOf(stack.getItemDamage()), String.valueOf(stack.getItemDamage()));
+
 		NBTTagCompound tag = stack.getTagCompound();
 
-		if((tag.getShort("reloadTime") == 0) && player.inventory.hasItem(this.ammo))
+		if((tag.getShort("reloadTime") == 0) && player.inventory.hasItem(ammo))
 				this.shotBullet(stack, world, player);
 		return stack;
 	}

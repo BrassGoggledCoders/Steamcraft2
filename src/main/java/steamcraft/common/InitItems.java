@@ -17,7 +17,6 @@ import net.minecraft.item.ItemArmor;
 import steamcraft.common.items.BaseItem;
 import steamcraft.common.items.ItemCanister;
 import steamcraft.common.items.ItemChisel;
-import steamcraft.common.items.ItemClockworkRocketLauncher;
 import steamcraft.common.items.ItemFirearm;
 import steamcraft.common.items.ItemGrappleGun;
 import steamcraft.common.items.ItemGunPart;
@@ -29,6 +28,8 @@ import steamcraft.common.items.ItemNugget;
 import steamcraft.common.items.ItemParts;
 import steamcraft.common.items.ItemPowder;
 import steamcraft.common.items.ItemResource;
+import steamcraft.common.items.ItemRocket;
+import steamcraft.common.items.ItemRocketLauncher;
 import steamcraft.common.items.ItemSheet;
 import steamcraft.common.items.ItemSpanner;
 import steamcraft.common.items.ItemTeaSeed;
@@ -152,7 +153,7 @@ public class InitItems
 
 	// Modules
 	public static Item itemAqualung, itemPistonPlating, itemTank, itemWatchDisplay, itemClimbingSpikes
-			, itemLegBraces, itemSpringHeels, itemRollerSkates, itemParachute, itemFlippers, itemLifeVest, itemPistonBoots;
+	, itemLegBraces, itemSpringHeels, itemRollerSkates, itemParachute, itemFlippers, itemLifeVest, itemPistonBoots;
 
 	public static Item itemTeapot, itemTeacup;
 
@@ -325,8 +326,8 @@ public class InitItems
 		registerItem(itemShrinkray, "ItemShrinkray");
 		// registerItem(itemLightningGun, "ItemLightningGun");
 
-		itemRocket = new BaseItem().setUnlocalizedName("itemClockworkRocket").setCreativeTab(Steamcraft.tabSC2);
-		itemClockworkRocketLauncher = new ItemClockworkRocketLauncher(50, itemRocket, "steamcraft:rocket", "steamcraft:reload");
+		itemRocket = new ItemRocket().setUnlocalizedName("itemClockworkRocket").setCreativeTab(Steamcraft.tabSC2);
+		itemClockworkRocketLauncher = new ItemRocketLauncher(50, itemRocket, "steamcraft:rocket", "steamcraft:reload");
 
 		registerItem(itemRocket, "ItemRocket");
 		registerItem(itemClockworkRocketLauncher, "ItemClockworkRocketLauncher");
