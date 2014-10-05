@@ -22,11 +22,13 @@ Developers & Credits:
 _Coders:_
 * warlordjones: leader(ish), author of the mod Steampunkery (which was merged into SC2), programmer; speciality: fancy, items/vanity system and breaking things
 * decebaldecebal: programmer; speciality: complicated tile entities, power systems, GUIs, cleanup
+* domi1918: Core Modular Armor System Author
 
 _Artists:_
 * Falkok15: modeler, texture-artist
 * wierdude1999: texture-artist
 * seanvanpelt2: logo creator, artist
+* frothiny: texture-artist
 
 _Testers/Other:_
 * Rongmario: support
@@ -37,18 +39,25 @@ _Testers/Other:_
 _Ex-Coders:_
 * Surseance: ex-leader(ish), programmer; speciality: uhhh...
 
+_Open Positions:_
+* Lorecrafter: Writing witty names for achievements, writing the lore for the planned documentation 'book'.
+* Documentor: Someone dedicated to documenting the cool features the programmers make would be awesome!
+* We could always do with more coders & texturers too.
+
+Contact at with the below methods to apply
+
 Looking for a Steamcraft2 Server?
-=====================
+=================================
 The whitelisted Brass Blocks steampunk server, with a small, friendly community would be happy to welcome any steampunk enthusiasts into it's ranks. For more information, go here: http://brassgoggles.co.uk/forum/index.php/topic,40250.0.html Warlordjones is one of the admins of this server, and can be regularly found there, when not modding.
 
-***
-
+Contact Us
+==========
 Email: brasscoders@gmail.com <br/>
 Twitter: www.twitter.com/brasscoders <br/>
 Skype: arona.jones <br/>
 
-***
-
+Suppourt Us
+===========
 Want to support us?
 
 Simply using the adfly links to download the mod supports the team in creating more awesome features. Want to support more directly?
