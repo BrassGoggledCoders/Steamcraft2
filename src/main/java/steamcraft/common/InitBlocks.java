@@ -49,6 +49,7 @@ import steamcraft.common.blocks.machines.BlockCopperWire;
 import steamcraft.common.blocks.machines.BlockDropHammerAnvil;
 import steamcraft.common.blocks.machines.BlockIntake;
 import steamcraft.common.blocks.machines.BlockLightningRod;
+import steamcraft.common.blocks.machines.BlockNuclearBoiler;
 import steamcraft.common.blocks.machines.BlockSawmill;
 import steamcraft.common.blocks.machines.BlockSteamBoiler;
 import steamcraft.common.blocks.machines.BlockTeslaCoil;
@@ -62,6 +63,7 @@ import steamcraft.common.tiles.TileCopperWire;
 import steamcraft.common.tiles.TileDropHammer;
 import steamcraft.common.tiles.TileIntake;
 import steamcraft.common.tiles.TileLightningRod;
+import steamcraft.common.tiles.TileNuclearBoiler;
 import steamcraft.common.tiles.TileSawmill;
 import steamcraft.common.tiles.TileSteamBoiler;
 import steamcraft.common.tiles.TileTeslaCoil;
@@ -73,7 +75,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 /**
  * @author Surseance
- * 
+ *
  */
 public class InitBlocks
 {
@@ -96,7 +98,7 @@ public class InitBlocks
 
 	/* Machines */
 
-	public static Block blockSteamBoiler, blockIntake, blockTurbine, blockBattery, blockCharger;
+	public static Block blockSteamBoiler, blockNuclearBoiler, blockIntake, blockTurbine, blockBattery, blockCharger;
 	public static Block blockLightningRod, blockTeslaCoil;
 
 	public static Block blockDropHammerAnvil;
@@ -194,9 +196,11 @@ public class InitBlocks
 	{
 		// Steam related
 		blockSteamBoiler = new BlockSteamBoiler().setBlockName("blockSteamBoiler");
+		blockNuclearBoiler = new BlockNuclearBoiler().setBlockName("blockNuclearBoiler");
 		blockIntake = new BlockIntake().setBlockName("blockIntake");
 
 		RegistryHelper.registerContainerBlockWithDesc(blockSteamBoiler, TileSteamBoiler.class, "BlockSteamBoiler");
+		RegistryHelper.registerContainerBlockWithDesc(blockNuclearBoiler, TileNuclearBoiler.class, "BlockNuclearBoiler");
 		RegistryHelper.registerContainerBlockWithDesc(blockIntake, TileIntake.class, "BlockIntake");
 
 		// Energy related

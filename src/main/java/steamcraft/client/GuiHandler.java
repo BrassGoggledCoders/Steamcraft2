@@ -19,6 +19,7 @@ import steamcraft.client.gui.GuiArmorEditor;
 import steamcraft.client.gui.GuiBattery;
 import steamcraft.client.gui.GuiBloomery;
 import steamcraft.client.gui.GuiCharger;
+import steamcraft.client.gui.GuiNuclearBoiler;
 import steamcraft.client.gui.GuiSteamBoiler;
 import steamcraft.client.gui.GuiTimeBomb;
 import steamcraft.client.gui.GuiVanity;
@@ -29,19 +30,21 @@ import steamcraft.common.tiles.TileArmorEditor;
 import steamcraft.common.tiles.TileBattery;
 import steamcraft.common.tiles.TileBloomery;
 import steamcraft.common.tiles.TileCharger;
+import steamcraft.common.tiles.TileNuclearBoiler;
 import steamcraft.common.tiles.TileSteamBoiler;
 import steamcraft.common.tiles.TileTimeBomb;
 import steamcraft.common.tiles.container.ContainerArmorEditor;
 import steamcraft.common.tiles.container.ContainerBattery;
 import steamcraft.common.tiles.container.ContainerBloomery;
 import steamcraft.common.tiles.container.ContainerCharger;
+import steamcraft.common.tiles.container.ContainerNuclearBoiler;
 import steamcraft.common.tiles.container.ContainerSteamBoiler;
 import steamcraft.common.tiles.container.ContainerTimeBomb;
 import cpw.mods.fml.common.network.IGuiHandler;
 
 /**
  * @author Surseance
- * 
+ *
  */
 public class GuiHandler implements IGuiHandler
 {
@@ -54,6 +57,8 @@ public class GuiHandler implements IGuiHandler
 		{
 			case GuiIDs.STEAM_BOILER:
 				return new ContainerSteamBoiler(player.inventory, (TileSteamBoiler) tile);
+			case GuiIDs.NUKE_BOILER:
+				return new ContainerNuclearBoiler(player.inventory, (TileNuclearBoiler) tile);
 			case GuiIDs.VANITY:
 				return new ContainerVanity(player, player.inventory, EntityPlayerExtended.get(player).getInventory());
 			case GuiIDs.ARMOR_EDITOR:
@@ -79,6 +84,8 @@ public class GuiHandler implements IGuiHandler
 		{
 			case GuiIDs.STEAM_BOILER:
 				return new GuiSteamBoiler(player.inventory, (TileSteamBoiler) tile);
+			case GuiIDs.NUKE_BOILER:
+				return new GuiNuclearBoiler(player.inventory, (TileNuclearBoiler) tile);
 			case GuiIDs.ARMOR_EDITOR:
 				return new GuiArmorEditor(player.inventory, (TileArmorEditor) tile);
 			case GuiIDs.VANITY:
