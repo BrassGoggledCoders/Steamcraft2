@@ -26,6 +26,7 @@ import steamcraft.client.renderers.block.BlockCopperWireRenderer;
 import steamcraft.client.renderers.block.BlockCrystalRenderer;
 import steamcraft.client.renderers.block.BlockHatchRenderer;
 import steamcraft.client.renderers.block.BlockLightningRodRenderer;
+import steamcraft.client.renderers.block.BlockPlankStackRenderer;
 import steamcraft.client.renderers.block.BlockRailingRenderer;
 import steamcraft.client.renderers.block.BlockTeslaCoilRenderer;
 import steamcraft.client.renderers.entity.RenderFleshGolem;
@@ -68,7 +69,7 @@ import cpw.mods.fml.common.FMLCommonHandler;
 
 /**
  * @author Surseance
- * 
+ *
  */
 public class ClientProxy extends CommonProxy
 {
@@ -144,6 +145,9 @@ public class ClientProxy extends CommonProxy
 		RenderIDs.blockHatchRI = RenderingRegistry.getNextAvailableRenderId();
 		ClientRegistry.bindTileEntitySpecialRenderer(TileHatch.class, new TileHatchRenderer());
 		RenderingRegistry.registerBlockHandler(new BlockHatchRenderer());
+		//Plank Stack
+		RenderIDs.blockPlankStackRI = RenderingRegistry.getNextAvailableRenderId();
+		RenderingRegistry.registerBlockHandler(new BlockPlankStackRenderer());
 	}
 
 	@Override

@@ -25,4 +25,5 @@ public class RenderIDs
 	public static int blockChargerRI;
 	public static int blockCastIronRailingRI;
 	public static int blockCopperWireRI;
+	public static int blockPlankStackRI;
 }
