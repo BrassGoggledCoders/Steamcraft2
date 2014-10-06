@@ -79,7 +79,7 @@ public class BlockNuclearBoiler extends BaseContainerBlock
 	{
 		this.blockIcon = icon.registerIcon(LibInfo.PREFIX + "blockSteamBoilerSide");
 		this.iconFront = icon.registerIcon(LibInfo.PREFIX + "blockSteamBoilerFrontInactive");
-		this.iconFrontActive = icon.registerIcon(LibInfo.PREFIX + "blockSteamBoilerFrontActive");
+		this.iconFrontActive = icon.registerIcon(LibInfo.PREFIX + "blockNuclearBoilerFrontActive");
 		this.iconTop = icon.registerIcon(LibInfo.PREFIX + "blockSteamBoilerTop");
 	}
 
@@ -136,22 +136,22 @@ public class BlockNuclearBoiler extends BaseContainerBlock
 
 			if((l == 4) || (l == 11))
 			{
-				world.spawnParticle("smoke", f - f3, f1, f2 + f4, 0.0D, 0.0D, 0.0D);
+				world.spawnParticle("happyVillager", f - f3, f1, f2 + f4, 0.0D, 0.0D, 0.0D);
 				world.spawnParticle("flame", f - f3, f1, f2 + f4, 0.0D, 0.0D, 0.0D);
 			}
 			else if((l == 5) || (l == 12))
 			{
-				world.spawnParticle("smoke", f + f3, f1, f2 + f4, 0.0D, 0.0D, 0.0D);
+				world.spawnParticle("happyVillager", f + f3, f1, f2 + f4, 0.0D, 0.0D, 0.0D);
 				world.spawnParticle("flame", f + f3, f1, f2 + f4, 0.0D, 0.0D, 0.0D);
 			}
 			else if((l == 2) || (l == 9))
 			{
-				world.spawnParticle("smoke", f + f4, f1, f2 - f3, 0.0D, 0.0D, 0.0D);
+				world.spawnParticle("happyVillager", f + f4, f1, f2 - f3, 0.0D, 0.0D, 0.0D);
 				world.spawnParticle("flame", f + f4, f1, f2 - f3, 0.0D, 0.0D, 0.0D);
 			}
 			else if((l == 3) || (l == 10))
 			{
-				world.spawnParticle("smoke", f + f4, f1, f2 + f3, 0.0D, 0.0D, 0.0D);
+				world.spawnParticle("happyVillager", f + f4, f1, f2 + f3, 0.0D, 0.0D, 0.0D);
 				world.spawnParticle("flame", f + f4, f1, f2 + f3, 0.0D, 0.0D, 0.0D);
 			}
 		}
