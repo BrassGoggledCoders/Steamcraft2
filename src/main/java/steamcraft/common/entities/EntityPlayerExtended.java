@@ -12,9 +12,6 @@
  */
 package steamcraft.common.entities;
 
-import java.io.ByteArrayOutputStream;
-import java.io.DataOutputStream;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;

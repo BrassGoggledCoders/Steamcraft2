@@ -19,7 +19,6 @@ import net.minecraft.world.IBlockAccess;
 import org.lwjgl.opengl.GL11;
 
 import steamcraft.client.lib.RenderIDs;
-import steamcraft.client.renderers.tile.TileHatchRenderer.TileHatch;
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 
 /**

@@ -19,7 +19,6 @@ import net.minecraft.world.IBlockAccess;
 import org.lwjgl.opengl.GL11;
 
 import steamcraft.client.lib.RenderIDs;
-import steamcraft.client.renderers.tile.TileCastIronLampRenderer.TileCastIronLamp;
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 
 /**
