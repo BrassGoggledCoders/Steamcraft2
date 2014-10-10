@@ -19,11 +19,11 @@ import steamcraft.common.lib.LibInfo;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 public class InitAchievements
 {
-	public static Achievement raygunAchieve, shrinkrayAchieve, boilerAchieve, ingotAchieve, sheetAchieve, intakeAchieve, teaAchieve, engraveAchieve,
+	public static Achievement raygunAchieve, shrinkrayAchieve, boilerAchieve, nukeboilerAchieve, ingotAchieve, sheetAchieve, intakeAchieve, teaAchieve, engraveAchieve,
 			wingsAchieve, jetpackAchieve, wingpackAchieve, gogglesAchieve, gunAchieve, turbineAchieve, rodAchieve, zapAchieve, creatorAchieve;
 
 	public static AchievementPage sc2AchievePage;
@@ -34,10 +34,10 @@ public class InitAchievements
 		ingotAchieve = new Achievement(prefix + "ingot", "ingotachieve", 0, 0, InitItems.itemIngot, null).registerStat().initIndependentStat();
 		sheetAchieve = new Achievement(prefix + "sheet", "sheetachieve", 2, 0, InitItems.itemSheet, ingotAchieve).registerStat();
 		boilerAchieve = new Achievement(prefix + "boiler", "boilerachieve", 4, 0, InitBlocks.blockSteamBoiler, sheetAchieve).registerStat();
+		nukeboilerAchieve = new Achievement(prefix + "nukeboiler", "nukeboilerachieve", 6, 0, InitBlocks.blockNuclearBoiler, boilerAchieve).registerStat();
 		intakeAchieve = new Achievement(prefix + "intake", "intakeachieve", 6, 0, InitBlocks.blockIntake, boilerAchieve).registerStat();
 		teaAchieve = new Achievement(prefix + "tea", "teaachieve", -2, 0, InitItems.itemTeacup, null).registerStat().initIndependentStat();
-		turbineAchieve = new Achievement(prefix + "turbine", "turbineachieve", 0, 4, InitBlocks.blockTurbine, null).registerStat()
-				.initIndependentStat();
+		turbineAchieve = new Achievement(prefix + "turbine", "turbineachieve", 0, 4, InitBlocks.blockTurbine, null).registerStat().initIndependentStat();
 		rodAchieve = new Achievement(prefix + "rod", "rodachieve", 2, 4, InitBlocks.blockLightningRod, turbineAchieve).registerStat();
 		zapAchieve = new Achievement(prefix + "zap", "zapachieve", 4, 4, InitBlocks.blockLightningRod, rodAchieve).registerStat();
 
@@ -53,7 +53,7 @@ public class InitAchievements
 		creatorAchieve = new Achievement(prefix + "creator", "creatorachieve", 0, -5, Items.nether_star, null).registerStat().initIndependentStat();
 
 		sc2AchievePage = new AchievementPage("Steamcraft 2", raygunAchieve, shrinkrayAchieve, boilerAchieve, ingotAchieve, sheetAchieve,
-				intakeAchieve, teaAchieve, wingsAchieve, jetpackAchieve, wingpackAchieve, turbineAchieve, rodAchieve, creatorAchieve);
+				intakeAchieve, teaAchieve, wingsAchieve, jetpackAchieve, wingpackAchieve, turbineAchieve, rodAchieve, zapAchieve, creatorAchieve, nukeboilerAchieve);
 		AchievementPage.registerAchievementPage(sc2AchievePage);
 	}
 

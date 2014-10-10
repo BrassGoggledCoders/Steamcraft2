@@ -27,4 +27,5 @@ public final class GuiIDs
 	public static final int CHARGER = 6;
 	public static final int TIMEBOMB = 7;
 	public static final int NUKE_BOILER = 8;
+	public static final int PDA = 9;
 }

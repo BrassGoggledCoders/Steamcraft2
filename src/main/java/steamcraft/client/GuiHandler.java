@@ -12,6 +12,7 @@
  */
 package steamcraft.client;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
@@ -20,6 +21,7 @@ import steamcraft.client.gui.GuiBattery;
 import steamcraft.client.gui.GuiBloomery;
 import steamcraft.client.gui.GuiCharger;
 import steamcraft.client.gui.GuiNuclearBoiler;
+import steamcraft.client.gui.GuiPDA;
 import steamcraft.client.gui.GuiSteamBoiler;
 import steamcraft.client.gui.GuiTimeBomb;
 import steamcraft.client.gui.GuiVanity;
@@ -71,6 +73,8 @@ public class GuiHandler implements IGuiHandler
 				return new ContainerCharger(player.inventory, (TileCharger) tile);
 			case GuiIDs.TIMEBOMB:
 				return new ContainerTimeBomb(player.inventory, (TileTimeBomb) tile);
+			case GuiIDs.PDA:
+				return null;
 		}
 		return null;
 	}
@@ -98,6 +102,8 @@ public class GuiHandler implements IGuiHandler
 				return new GuiCharger(player.inventory, (TileCharger) tile);
 			case GuiIDs.TIMEBOMB:
 				return new GuiTimeBomb(player.inventory, (TileTimeBomb) tile);
+			case GuiIDs.PDA:
+				return new GuiPDA(null, Minecraft.getMinecraft().thePlayer.getStatFileWriter());
 		}
 
 		return null;

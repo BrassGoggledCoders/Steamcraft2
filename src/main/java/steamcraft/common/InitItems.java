@@ -25,6 +25,7 @@ import steamcraft.common.items.ItemLightningGun;
 import steamcraft.common.items.ItemMachinePart;
 import steamcraft.common.items.ItemMatch;
 import steamcraft.common.items.ItemNugget;
+import steamcraft.common.items.ItemPDA;
 import steamcraft.common.items.ItemParts;
 import steamcraft.common.items.ItemPowder;
 import steamcraft.common.items.ItemResource;
@@ -160,6 +161,8 @@ public class InitItems
 	public static Item itemGrappleGun;
 
 	public static Item itemClockworkRocketLauncher, itemRocket;
+	
+	public static Item itemPDA;
 
 	/* Init */
 	public static void init()
@@ -455,6 +458,9 @@ public class InitItems
 
 		itemGrappleGun = new ItemGrappleGun().setUnlocalizedName("itemGrappleGun");
 		registerItem(itemGrappleGun, "ItemGrappleGun");
+		
+		itemPDA = new ItemPDA().setUnlocalizedName("itemPDA");
+		registerItem(itemPDA, "ItemPDA");
 	}
 
 	private static void registerItem(Item item, String name)
