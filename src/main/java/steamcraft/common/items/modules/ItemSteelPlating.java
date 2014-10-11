@@ -30,9 +30,9 @@ import cpw.mods.fml.relauncher.SideOnly;
  * @author warlordjones
  *
  */
-public class ItemClimbingSpikes extends BaseModule
+public class ItemSteelPlating extends BaseModule
 {
-	public ItemClimbingSpikes()
+	public ItemSteelPlating()
 	{
 		super();
 		ModuleRegistry.registerModule(this);
@@ -43,70 +43,31 @@ public class ItemClimbingSpikes extends BaseModule
 	@Override
 	public int getApplicablePiece()
 	{
-		return 3;
+		return 1;
 	}
 
 	@Override
 	public String getName()
 	{
-		return "Climbing Spikes";
+		return "Steel Plating";
 	}
 
 	@Override
 	public String getModuleId()
 	{
-		return "spikes";
+		return "plating";
 	}
 
 	@Override
 	public boolean applyArmorEffect(World world, EntityPlayer player, ItemStack stack)
 	{
-		if(player.isCollidedHorizontally)
-		{
-			player.motionY = 0.2D;
-
-			float f5 = 0.15F;
-
-			if(player.motionX < (-f5))
-			{
-				player.motionX = (-f5);
-			}
-
-			if(player.motionX > f5)
-			{
-				player.motionX = f5;
-			}
-
-			if(player.motionZ < (-f5))
-			{
-				player.motionZ = (-f5);
-			}
-
-			if(player.motionZ > f5)
-			{
-				player.motionZ = f5;
-			}
-
-			if(player.motionY < -0.15D)
-			{
-				player.motionY = -0.15D;
-			}
-
-			if(player.isSneaking() && (player.motionY < 0.0D))
-			{
-				player.motionY = 0.0D;
-			}
-
-			player.fallDistance = 0.0F;
-			return true;
-		}
 		return false;
 	}
 
 	@Override
 	public EnumArmorEffectType getArmorEffectType()
 	{
-		return EnumArmorEffectType.ONTICK;
+		return EnumArmorEffectType.DEFENSIVE;
 	}
 
 	@Override
@@ -142,8 +103,6 @@ public class ItemClimbingSpikes extends BaseModule
 	@Override
 	public int getDefenseModifier()
 	{
-		// TODO Auto-generated method stub
-		return 0;
+		return 5;
 	}
-
 }

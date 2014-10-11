@@ -59,6 +59,7 @@ import steamcraft.common.items.modules.ItemPistonBoots;
 import steamcraft.common.items.modules.ItemReactivePistonPlating;
 import steamcraft.common.items.modules.ItemRollerSkates;
 import steamcraft.common.items.modules.ItemSpringHeels;
+import steamcraft.common.items.modules.ItemSteelPlating;
 import steamcraft.common.items.modules.ItemWatchDisplay;
 import steamcraft.common.items.tools.ItemElectricDrill;
 import steamcraft.common.items.tools.ItemModAxe;
@@ -75,7 +76,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 /**
  * @author Surseance
- * 
+ *
  */
 public class InitItems
 {
@@ -154,14 +155,15 @@ public class InitItems
 
 	// Modules
 	public static Item itemAqualung, itemPistonPlating, itemTank, itemWatchDisplay, itemClimbingSpikes
-			, itemLegBraces, itemSpringHeels, itemRollerSkates, itemParachute, itemFlippers, itemLifeVest, itemPistonBoots;
+			, itemLegBraces, itemSpringHeels, itemRollerSkates, itemParachute, itemFlippers, itemLifeVest,
+			itemPistonBoots, itemSteelPlating;
 
 	public static Item itemTeapot, itemTeacup;
 
 	public static Item itemGrappleGun;
 
 	public static Item itemClockworkRocketLauncher, itemRocket;
-	
+
 	public static Item itemPDA;
 
 	/* Init */
@@ -444,6 +446,9 @@ public class InitItems
 		itemPistonBoots = new ItemPistonBoots().setUnlocalizedName("itemPistonBoots");
 		registerItem(itemPistonBoots, "ItemPistonBoots");
 
+		itemSteelPlating = new ItemSteelPlating().setUnlocalizedName("itemSteelPlating");
+		registerItem(itemSteelPlating, "ItemSteelPlating");
+
 		itemTeaLeaf = new BaseItem().setUnlocalizedName("itemTeaLeaves");
 		registerItem(itemTeaLeaf, "ItemTeaLeaf");
 
@@ -458,7 +463,7 @@ public class InitItems
 
 		itemGrappleGun = new ItemGrappleGun().setUnlocalizedName("itemGrappleGun");
 		registerItem(itemGrappleGun, "ItemGrappleGun");
-		
+
 		itemPDA = new ItemPDA().setUnlocalizedName("itemPDA");
 		registerItem(itemPDA, "ItemPDA");
 	}

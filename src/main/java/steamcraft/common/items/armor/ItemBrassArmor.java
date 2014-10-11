@@ -17,11 +17,14 @@ import java.util.List;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
+import net.minecraftforge.common.ISpecialArmor;
 import steamcraft.common.InitItems;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.items.ItemCanister;
@@ -35,10 +38,11 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author warlordjones
- * 
+ *
  */
-public class ItemBrassArmor extends BaseArmor
+public class ItemBrassArmor extends BaseArmor implements ISpecialArmor
 {
+
 	public ItemBrassArmor(ItemArmor.ArmorMaterial armorMat, int renderIndex, int armorType)
 	{
 		super(armorMat, renderIndex, armorType);
@@ -217,4 +221,34 @@ public class ItemBrassArmor extends BaseArmor
 		}
 		return false;
 	}
+
+	@Override
+	public ArmorProperties getProperties(EntityLivingBase player, ItemStack armor, DamageSource source, double damage, int slot)
+	{
+		int priority = 0;
+		int absorbRatio = 0;
+		int absorbMax = 0;
+		NBTTagCompound nbt = getOrCreateTagCompound(armor);
+
+		for(int i = 0; i < nbt.getInteger("moduleCount"); i++)
+		{
+			IArmorModule module = ModuleRegistry.getModule(nbt.getString("module" + i));
+
+			if((module != null) && (module.getArmorEffectType() == EnumArmorEffectType.DEFENSIVE))
+			{
+				absorbRatio = module.getDefenseModifier();
+				absorbMax = 2 * module.getDefenseModifier();
+			}
+		}
+		return new ArmorProperties(priority, absorbRatio, absorbMax);
+	}
+
+	@Override
+	public int getArmorDisplay(EntityPlayer player, ItemStack armor, int slot)
+	{
+		return 0;
+	}
+
+	@Override
+	public void damageArmor(EntityLivingBase entity, ItemStack stack, DamageSource source, int damage, int slot) { }
 }

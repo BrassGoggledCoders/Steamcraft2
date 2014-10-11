@@ -29,7 +29,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 public class ItemEmergencyTank extends BaseModule
 {
@@ -101,5 +101,12 @@ public class ItemEmergencyTank extends BaseModule
 	public void registerIcons(IIconRegister par1IconRegister)
 	{
 		this.itemIcon = par1IconRegister.registerIcon(LibInfo.PREFIX + this.getUnlocalizedName().substring(5));
+	}
+
+	@Override
+	public int getDefenseModifier()
+	{
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }

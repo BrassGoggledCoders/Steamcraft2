@@ -26,7 +26,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 /**
  * @author Surseance
- * 
+ *
  */
 public class InitRecipes
 {
@@ -43,6 +43,7 @@ public class InitRecipes
 		initGunRecipes();
 		initArmorRecipes();
 		initBlockRecipes();
+		initModuleRecipes();
 		initOtherRecipes();
 	}
 
@@ -229,7 +230,21 @@ public class InitRecipes
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockCastIronRailing),
 				new Object[] { "III", "III", 'I', "ingotCastIron" }));
 	}
-
+	private static void initModuleRecipes()
+	{
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemAqualung), new Object[] { "LLI", "L L", "LLL", 'L',
+			Items.leather, 'I', "ingotIron"}));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemClimbingSpikes), new Object[] { " L ", "I I", 'L',
+			Items.leather_boots, 'I', "ingotIron"}));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemTank), new Object[] { "GGG", "GWG", "GGG", 'G',
+			Blocks.glass_pane, 'W', Items.water_bucket}));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemFlippers), new Object[] { " B ", "L L", 'L',
+			Items.leather, 'B', Items.leather_boots}));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemLegBraces), new Object[] { "PPP", "P P", "P P", 'P',
+			"plateCopper"}));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemLifeVest), new Object[] { "W W", "WWW", "WWW", 'W',
+			Blocks.wool}));
+	}
 	private static void initOtherRecipes()
 	{
 		GameRegistry.addShapedRecipe(new ItemStack(InitItems.itemResource, 1, 2), new Object[] { "XXX", "XXX", "XXX", 'X', new ItemStack(Blocks.obsidian) });

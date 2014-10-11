@@ -111,4 +111,11 @@ public class ItemPistonBoots extends BaseModule
 		this.itemIcon = par1IconRegister.registerIcon(LibInfo.PREFIX + this.getUnlocalizedName().substring(5));
 	}
 
+	@Override
+	public int getDefenseModifier()
+	{
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }
