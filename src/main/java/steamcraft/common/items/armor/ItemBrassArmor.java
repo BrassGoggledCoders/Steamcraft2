@@ -239,6 +239,11 @@ public class ItemBrassArmor extends BaseArmor implements ISpecialArmor
 				absorbRatio = module.getDefenseModifier();
 				absorbMax = 2 * module.getDefenseModifier();
 			}
+			if (source.isUnblockable())
+			{
+			    absorbMax = 0;
+			    absorbRatio = 0;
+			}
 		}
 		return new ArmorProperties(priority, absorbRatio, absorbMax);
 	}
