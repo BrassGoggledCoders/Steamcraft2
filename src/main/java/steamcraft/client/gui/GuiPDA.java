@@ -1,5 +1,6 @@
 package steamcraft.client.gui;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
@@ -12,6 +13,8 @@ import net.minecraft.client.gui.IProgressMeter;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraft.client.resources.I18n;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
 import net.minecraft.network.play.client.C16PacketClientStatus;
 import net.minecraft.stats.Achievement;
 import net.minecraft.stats.AchievementList;
@@ -19,13 +22,17 @@ import net.minecraft.stats.StatFileWriter;
 import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.StatCollector;
 import net.minecraftforge.common.AchievementPage;
 
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
+import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.LibInfo;
+import boilerplate.common.PDAEntry;
+import boilerplate.common.PDAEntry.EnumEntryType;
 
 public class GuiPDA extends GuiScreen implements IProgressMeter
 {
@@ -82,6 +89,33 @@ public class GuiPDA extends GuiScreen implements IProgressMeter
 	        this.buttonList.clear();
 	        this.buttonList.add(new GuiOptionButton(1, this.width / 2 + 24, this.height / 2 + 74, 80, 20, I18n.format("gui.done", new Object[0])));
 	        this.buttonList.add(button = new GuiButton(2, (width - field_146555_f) / 2 + 24, height / 2 + 74, 125, 20, AchievementPage.getTitle(currentPage)));
+
+	        Iterator iterator = Item.itemRegistry.iterator();
+
+	        while (iterator.hasNext())
+	        {
+	            Item item = (Item)iterator.next();
+
+	            if (item == null)
+	            {
+	                continue;
+	            }
+
+	            for (CreativeTabs tab : item.getCreativeTabs())
+	            {
+	                if (tab == Steamcraft.tabSC2)
+	                {
+	                    new PDAEntry(EnumEntryType.ITEMS, StatCollector.translateToLocal(item.getUnlocalizedName() + ".name"), StatCollector.translateToLocal(item.getUnlocalizedName() + ".documentation"));
+	                }
+	            }
+	        }
+	        for(int i = 0; i < PDAEntry.EntryRegistry.entries.size(); i++)
+	        {
+	        	PDAEntry entry = (PDAEntry)PDAEntry.EntryRegistry.entries.get(i);
+	        	if(entry == null) { continue; }
+
+	        	this.buttonList.add(new GuiButton(3 + i, (width - field_146555_f) / 2 + i, height / 2 + i, 20, 20, PDAEntry.getName()));
+	        }
 	    }
 
 	    protected void actionPerformed(GuiButton p_146284_1_)
@@ -260,7 +294,7 @@ public class GuiPDA extends GuiScreen implements IProgressMeter
 	    {
 	        int i = (this.width - this.field_146555_f) / 2;
 	        int j = (this.height - this.field_146557_g) / 2;
-	        
+
 	    }
 
 	    protected void func_146552_b(int p_146552_1_, int p_146552_2_, float p_146552_3_)
