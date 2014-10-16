@@ -1,0 +1,10 @@
+language: java
+jdk:
+- oraclejdk7
+deploy:
+  provider: releases
+  api_key:
+    secure: L7Ui0Sf28yTwtCbLCMYOJrBqdnwfH6aLNbR8BzL4JDaMoUQ6hfhcHC2Dv2bg/1eBMk7gJMobhlANVLW0swDr5lHRQwOYv2jPdbwrg7jSQUkszFWCwtgoMLqLBci/ubfQF03L0UOUt/Whdv+kqbKYQzdv5djQTqkNErk5kkNiw3g=
+  file: steamcraft.jar
+  on:
+    repo: BrassGoggledCoders/SteamCraft2
