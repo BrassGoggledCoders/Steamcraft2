@@ -16,14 +16,11 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.network.play.client.C16PacketClientStatus;
-import net.minecraft.stats.Achievement;
-import net.minecraft.stats.AchievementList;
 import net.minecraft.stats.StatFileWriter;
 import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
-import net.minecraftforge.common.AchievementPage;
 
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
@@ -33,13 +30,15 @@ import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.LibInfo;
 import boilerplate.common.PDAEntry;
 import boilerplate.common.PDAEntry.EnumEntryType;
+import boilerplate.common.PDAEntryList;
+import boilerplate.common.PDAPage;
 
 public class GuiPDA extends GuiScreen implements IProgressMeter
 {
-		private static final int field_146572_y = AchievementList.minDisplayColumn * 24 - 112;
-	    private static final int field_146571_z = AchievementList.minDisplayRow * 24 - 112;
-	    private static final int field_146559_A = AchievementList.maxDisplayColumn * 24 - 77;
-	    private static final int field_146560_B = AchievementList.maxDisplayRow * 24 - 77;
+		private static final int field_146572_y = PDAEntryList.minDisplayColumn * 24 - 112;
+	    private static final int field_146571_z = PDAEntryList.minDisplayRow * 24 - 112;
+	    private static final int field_146559_A = PDAEntryList.maxDisplayColumn * 24 - 77;
+	    private static final int field_146560_B = PDAEntryList.maxDisplayRow * 24 - 77;
 	    private static final ResourceLocation guiTexture = new ResourceLocation(LibInfo.PREFIX + "textures/gui/computer.png");
 	    protected GuiScreen field_146562_a;
 	    protected int field_146555_f = 256;
@@ -60,36 +59,22 @@ public class GuiPDA extends GuiScreen implements IProgressMeter
 
 	    private int currentPage = -1;
 	    private GuiButton button;
-	    private LinkedList<Achievement> minecraftAchievements = new LinkedList<Achievement>();
+	    private LinkedList<PDAEntry> pdaEntries = new LinkedList<PDAEntry>();
+		@Override
+		public void func_146509_g()
+		{
+			// TODO Auto-generated method stub
 
-	    public GuiPDA(GuiScreen p_i45026_1_, StatFileWriter p_i45026_2_)
+		}
+
+	    /*public GuiPDA(GuiScreen p_i45026_1_, StatFileWriter p_i45026_2_)
 	    {
 	        this.field_146562_a = p_i45026_1_;
 	        this.field_146556_E = p_i45026_2_;
 	        short short1 = 141;
 	        short short2 = 141;
-	        this.field_146569_s = this.field_146567_u = this.field_146565_w = (double)(AchievementList.openInventory.displayColumn * 24 - short1 / 2 - 12);
-	        this.field_146568_t = this.field_146566_v = this.field_146573_x = (double)(AchievementList.openInventory.displayRow * 24 - short2 / 2);
-	        minecraftAchievements.clear();
-	        for (Object achievement : AchievementList.achievementList)
-	        {
-	            if (!AchievementPage.isAchievementInPages((Achievement)achievement))
-	            {
-	                minecraftAchievements.add((Achievement)achievement);
-	            }
-	        }
-	    }
-
-	    /**
-	     * Adds the buttons (and other controls) to the screen in question.
-	     */
-	    public void initGui()
-	    {
-	        this.mc.getNetHandler().addToSendQueue(new C16PacketClientStatus(C16PacketClientStatus.EnumState.REQUEST_STATS));
-	        this.buttonList.clear();
-	        this.buttonList.add(new GuiOptionButton(1, this.width / 2 + 24, this.height / 2 + 74, 80, 20, I18n.format("gui.done", new Object[0])));
-	        this.buttonList.add(button = new GuiButton(2, (width - field_146555_f) / 2 + 24, height / 2 + 74, 125, 20, AchievementPage.getTitle(currentPage)));
-
+	        this.field_146569_s = this.field_146567_u = this.field_146565_w = (double)(PDAEntryList.openInventory.displayColumn * 24 - short1 / 2 - 12);
+	        this.field_146568_t = this.field_146566_v = this.field_146573_x = (double)(PDAEntryList.openInventory.displayRow * 24 - short2 / 2);
 	        Iterator iterator = Item.itemRegistry.iterator();
 
 	        while (iterator.hasNext())
@@ -105,13 +90,25 @@ public class GuiPDA extends GuiScreen implements IProgressMeter
 	            {
 	                if (tab == Steamcraft.tabSC2)
 	                {
-	                    new PDAEntry(EnumEntryType.ITEMS, StatCollector.translateToLocal(item.getUnlocalizedName() + ".name"), StatCollector.translateToLocal(item.getUnlocalizedName() + ".documentation"));
+	                    new PDAEntry(EnumEntryType.ITEMS, StatCollector.translateToLocal(item.getUnlocalizedName() + ".name"), StatCollector.translateToLocal(item.getUnlocalizedName() + ".documentation")).register();
 	                }
 	            }
 	        }
-	        for(int i = 0; i < PDAEntry.EntryRegistry.entries.size(); i++)
+	    }
+
+	    /**
+	     * Adds the buttons (and other controls) to the screen in question.
+
+	    public void initGui()
+	    {
+	        this.mc.getNetHandler().addToSendQueue(new C16PacketClientStatus(C16PacketClientStatus.EnumState.REQUEST_STATS));
+	        this.buttonList.clear();
+	        this.buttonList.add(new GuiOptionButton(1, this.width / 2 + 24, this.height / 2 + 74, 80, 20, I18n.format("gui.done", new Object[0])));
+	        this.buttonList.add(button = new GuiButton(2, (width - field_146555_f) / 2 + 24, height / 2 + 74, 125, 20, PDAPage.getTitle(currentPage)));
+
+	        for(int i = 0; i < pdaEntries.size(); i++)
 	        {
-	        	PDAEntry entry = (PDAEntry)PDAEntry.EntryRegistry.entries.get(i);
+	        	PDAEntry entry = pdaEntries.get(i);
 	        	if(entry == null) { continue; }
 
 	        	this.buttonList.add(new GuiButton(3 + i, (width - field_146555_f) / 2 + i, height / 2 + i, 20, 20, PDAEntry.getName()));
@@ -130,18 +127,18 @@ public class GuiPDA extends GuiScreen implements IProgressMeter
 	            if (p_146284_1_.id == 2)
 	            {
 	                currentPage++;
-	                if (currentPage >= AchievementPage.getAchievementPages().size())
+	                if (currentPage >= PDAPage.getPDAPages().size())
 	                {
 	                    currentPage = -1;
 	                }
-	                button.displayString = AchievementPage.getTitle(currentPage);
+	                button.displayString = PDAPage.getTitle(currentPage);
 	            }
 	        }
 	    }
 
 	    /**
 	     * Fired when a key is typed. This is the equivalent of KeyListener.keyTyped(KeyEvent e).
-	     */
+
 	    protected void keyTyped(char p_73869_1_, int p_73869_2_)
 	    {
 	        if (p_73869_2_ == this.mc.gameSettings.keyBindInventory.getKeyCode())
@@ -157,7 +154,7 @@ public class GuiPDA extends GuiScreen implements IProgressMeter
 
 	    /**
 	     * Draws the screen and all the components in it.
-	     */
+
 	    public void drawScreen(int p_73863_1_, int p_73863_2_, float p_73863_3_)
 	    {
 	        if (this.field_146558_F)
@@ -267,7 +264,7 @@ public class GuiPDA extends GuiScreen implements IProgressMeter
 
 	    /**
 	     * Called from the main game loop to update the screen.
-	     */
+
 	    public void updateScreen()
 	    {
 	        if (!this.field_146558_F)
@@ -364,20 +361,20 @@ public class GuiPDA extends GuiScreen implements IProgressMeter
 	        int j4;
 	        int l4;
 
-	        List<Achievement> achievementList = (currentPage == -1 ? minecraftAchievements : AchievementPage.getAchievementPage(currentPage).getAchievements());
-	        for (i3 = 0; i3 < achievementList.size(); ++i3)
+	        List<PDAEntry> pdaList = (currentPage == -1 ? pdaEntries : PDAPage.getPDAPage(currentPage).getPDAs());
+	        for (i3 = 0; i3 < pdaList.size(); ++i3)
 	        {
-	            Achievement achievement1 = achievementList.get(i3);
+	            PDAEntry pda1 = pdaList.get(i3);
 
-	            if (achievement1.parentAchievement != null && achievementList.contains(achievement1.parentAchievement))
+	            if (pda1.parentPDA != null && pdaList.contains(pda1.parentPDA))
 	            {
-	                j3 = achievement1.displayColumn * 24 - k + 11;
-	                k3 = achievement1.displayRow * 24 - l + 11;
-	                l4 = achievement1.parentAchievement.displayColumn * 24 - k + 11;
-	                int l3 = achievement1.parentAchievement.displayRow * 24 - l + 11;
-	                boolean flag5 = this.field_146556_E.hasAchievementUnlocked(achievement1);
-	                boolean flag6 = this.field_146556_E.canUnlockAchievement(achievement1);
-	                i4 = this.field_146556_E.func_150874_c(achievement1);
+	                j3 = pda1.displayColumn * 24 - k + 11;
+	                k3 = pda1.displayRow * 24 - l + 11;
+	                l4 = pda1.parentPDA.displayColumn * 24 - k + 11;
+	                int l3 = pda1.parentPDA.displayRow * 24 - l + 11;
+	                boolean flag5 = this.field_146556_E.hasPDAUnlocked(pda1);
+	                boolean flag6 = this.field_146556_E.canUnlockPDA(pda1);
+	                i4 = this.field_146556_E.func_150874_c(pda1);
 
 	                if (i4 <= 4)
 	                {
@@ -415,7 +412,7 @@ public class GuiPDA extends GuiScreen implements IProgressMeter
 	            }
 	        }
 
-	        Achievement achievement = null;
+	        PDAEntry pda = null;
 	        RenderItem renderitem = new RenderItem();
 	        float f4 = (float)(p_146552_1_ - k1) * this.field_146570_r;
 	        float f5 = (float)(p_146552_2_ - l1) * this.field_146570_r;
@@ -426,23 +423,23 @@ public class GuiPDA extends GuiScreen implements IProgressMeter
 	        int i5;
 	        int j5;
 
-	        for (l4 = 0; l4 < achievementList.size(); ++l4)
+	        for (l4 = 0; l4 < pdaList.size(); ++l4)
 	        {
-	            Achievement achievement2 = (Achievement)achievementList.get(l4);
-	            i5 = achievement2.displayColumn * 24 - k;
-	            j5 = achievement2.displayRow * 24 - l;
+	            PDAEntry pda2 = (PDAEntry)pdaList.get(l4);
+	            i5 = pda2.displayColumn * 24 - k;
+	            j5 = pda2.displayRow * 24 - l;
 
 	            if (i5 >= -24 && j5 >= -24 && (float)i5 <= 224.0F * this.field_146570_r && (float)j5 <= 155.0F * this.field_146570_r)
 	            {
-	                i4 = this.field_146556_E.func_150874_c(achievement2);
+	                i4 = this.field_146556_E.func_150874_c(pda2);
 	                float f6;
 
-	                if (this.field_146556_E.hasAchievementUnlocked(achievement2))
+	                if (this.field_146556_E.hasPDAUnlocked(pda2))
 	                {
 	                    f6 = 0.75F;
 	                    GL11.glColor4f(f6, f6, f6, 1.0F);
 	                }
-	                else if (this.field_146556_E.canUnlockAchievement(achievement2))
+	                else if (this.field_146556_E.canUnlockPDA(pda2))
 	                {
 	                    f6 = 1.0F;
 	                    GL11.glColor4f(f6, f6, f6, 1.0F);
@@ -470,7 +467,7 @@ public class GuiPDA extends GuiScreen implements IProgressMeter
 
 	                this.mc.getTextureManager().bindTexture(guiTexture);
 
-	                if (achievement2.getSpecial())
+	                if (pda2.getSpecial())
 	                {
 	                    this.drawTexturedModalRect(i5 - 2, j5 - 2, 26, 202, 26, 26);
 	                }
@@ -479,7 +476,7 @@ public class GuiPDA extends GuiScreen implements IProgressMeter
 	                    this.drawTexturedModalRect(i5 - 2, j5 - 2, 0, 202, 26, 26);
 	                }
 
-	                if (!this.field_146556_E.canUnlockAchievement(achievement2))
+	                if (!this.field_146556_E.canUnlockPDA(pda2))
 	                {
 	                    f6 = 0.1F;
 	                    GL11.glColor4f(f6, f6, f6, 1.0F);
@@ -488,11 +485,11 @@ public class GuiPDA extends GuiScreen implements IProgressMeter
 
 	                GL11.glEnable(GL11.GL_LIGHTING);
 	                GL11.glEnable(GL11.GL_CULL_FACE);
-	                renderitem.renderItemAndEffectIntoGUI(this.mc.fontRenderer, this.mc.getTextureManager(), achievement2.theItemStack, i5 + 3, j5 + 3);
+	                renderitem.renderItemAndEffectIntoGUI(this.mc.fontRenderer, this.mc.getTextureManager(), pda2.theItemStack, i5 + 3, j5 + 3);
 	                GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
 	                GL11.glDisable(GL11.GL_LIGHTING);
 
-	                if (!this.field_146556_E.canUnlockAchievement(achievement2))
+	                if (!this.field_146556_E.canUnlockPDA(pda2))
 	                {
 	                    renderitem.renderWithColor = true;
 	                }
@@ -501,7 +498,7 @@ public class GuiPDA extends GuiScreen implements IProgressMeter
 
 	                if (f4 >= (float)i5 && f4 <= (float)(i5 + 22) && f5 >= (float)j5 && f5 <= (float)(j5 + 22))
 	                {
-	                    achievement = achievement2;
+	                    pda = pda2;
 	                }
 	            }
 	        }
@@ -518,24 +515,24 @@ public class GuiPDA extends GuiScreen implements IProgressMeter
 	        GL11.glEnable(GL11.GL_TEXTURE_2D);
 	        super.drawScreen(p_146552_1_, p_146552_2_, p_146552_3_);
 
-	        if (achievement != null)
+	        if (pda != null)
 	        {
-	            String s1 = achievement.func_150951_e().getUnformattedText();
-	            String s2 = achievement.getDescription();
+	            String s1 = pda.func_150951_e().getUnformattedText();
+	            String s2 = pda.getDescription();
 	            i5 = p_146552_1_ + 12;
 	            j5 = p_146552_2_ - 4;
-	            i4 = this.field_146556_E.func_150874_c(achievement);
+	            i4 = this.field_146556_E.func_150874_c(pda);
 
-	            if (!this.field_146556_E.canUnlockAchievement(achievement))
+	            if (!this.field_146556_E.canUnlockPDA(pda))
 	            {
 	                String s;
 	                int k4;
 
 	                if (i4 == 3)
 	                {
-	                    s1 = I18n.format("achievement.unknown", new Object[0]);
+	                    s1 = I18n.format("pda.unknown", new Object[0]);
 	                    j4 = Math.max(this.fontRendererObj.getStringWidth(s1), 120);
-	                    s = (new ChatComponentTranslation("achievement.requires", new Object[] {achievement.parentAchievement.func_150951_e()})).getUnformattedText();
+	                    s = (new ChatComponentTranslation("pda.requires", new Object[] {pda.parentPDA.func_150951_e()})).getUnformattedText();
 	                    k4 = this.fontRendererObj.splitStringWidth(s, j4);
 	                    this.drawGradientRect(i5 - 3, j5 - 3, i5 + j4 + 3, j5 + k4 + 12 + 3, -1073741824, -1073741824);
 	                    this.fontRendererObj.drawSplitString(s, i5, j5 + 12, j4, -9416624);
@@ -543,7 +540,7 @@ public class GuiPDA extends GuiScreen implements IProgressMeter
 	                else if (i4 < 3)
 	                {
 	                    j4 = Math.max(this.fontRendererObj.getStringWidth(s1), 120);
-	                    s = (new ChatComponentTranslation("achievement.requires", new Object[] {achievement.parentAchievement.func_150951_e()})).getUnformattedText();
+	                    s = (new ChatComponentTranslation("pda.requires", new Object[] {pda.parentPDA.func_150951_e()})).getUnformattedText();
 	                    k4 = this.fontRendererObj.splitStringWidth(s, j4);
 	                    this.drawGradientRect(i5 - 3, j5 - 3, i5 + j4 + 3, j5 + k4 + 12 + 3, -1073741824, -1073741824);
 	                    this.fontRendererObj.drawSplitString(s, i5, j5 + 12, j4, -9416624);
@@ -558,7 +555,7 @@ public class GuiPDA extends GuiScreen implements IProgressMeter
 	                j4 = Math.max(this.fontRendererObj.getStringWidth(s1), 120);
 	                int k5 = this.fontRendererObj.splitStringWidth(s2, j4);
 
-	                if (this.field_146556_E.hasAchievementUnlocked(achievement))
+	                if (this.field_146556_E.hasPDAUnlocked(pda))
 	                {
 	                    k5 += 12;
 	                }
@@ -566,15 +563,15 @@ public class GuiPDA extends GuiScreen implements IProgressMeter
 	                this.drawGradientRect(i5 - 3, j5 - 3, i5 + j4 + 3, j5 + k5 + 3 + 12, -1073741824, -1073741824);
 	                this.fontRendererObj.drawSplitString(s2, i5, j5 + 12, j4, -6250336);
 
-	                if (this.field_146556_E.hasAchievementUnlocked(achievement))
+	                if (this.field_146556_E.hasPDAUnlocked(pda))
 	                {
-	                    this.fontRendererObj.drawStringWithShadow(I18n.format("achievement.taken", new Object[0]), i5, j5 + k5 + 4, -7302913);
+	                    this.fontRendererObj.drawStringWithShadow(I18n.format("pda.taken", new Object[0]), i5, j5 + k5 + 4, -7302913);
 	                }
 	            }
 
 	            if (s1 != null)
 	            {
-	                this.fontRendererObj.drawStringWithShadow(s1, i5, j5, this.field_146556_E.canUnlockAchievement(achievement) ? (achievement.getSpecial() ? -128 : -1) : (achievement.getSpecial() ? -8355776 : -8355712));
+	                this.fontRendererObj.drawStringWithShadow(s1, i5, j5, this.field_146556_E.canUnlockPDA(pda) ? (pda.getSpecial() ? -128 : -1) : (pda.getSpecial() ? -8355776 : -8355712));
 	            }
 	        }
 
@@ -585,9 +582,9 @@ public class GuiPDA extends GuiScreen implements IProgressMeter
 
 	    /**
 	     * Returns true if this GUI should pause the game when it is displayed in single-player
-	     */
+
 	    public boolean doesGuiPauseGame()
 	    {
 	        return !this.field_146558_F;
-	    }
+	    }*/
 }

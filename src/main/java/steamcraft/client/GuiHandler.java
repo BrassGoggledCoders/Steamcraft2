@@ -103,7 +103,7 @@ public class GuiHandler implements IGuiHandler
 			case GuiIDs.TIMEBOMB:
 				return new GuiTimeBomb(player.inventory, (TileTimeBomb) tile);
 			case GuiIDs.PDA:
-				return new GuiPDA(null, Minecraft.getMinecraft().thePlayer.getStatFileWriter());
+				return new GuiPDA();
 		}
 
 		return null;
