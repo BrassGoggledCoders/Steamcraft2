@@ -58,7 +58,7 @@ public class ItemRocketLauncher extends BaseFirearm
 
 		if(!world.isRemote && (InventoryUtils.getItemStackInInventory(player, stack) != null))
 		{
-			world.spawnEntityInWorld(new EntityRocket(world, player, InventoryUtils.getItemStackInInventory(player, stack).getItemDamage(), 10));
+			world.spawnEntityInWorld(new EntityRocket(world, player, /*InventoryUtils.getItemStackInInventory(player, stack).getItemDamage()*/2, 10));
 		}
 
 		world.playSoundAtEntity(player, this.fireSound, 0.6F, 1.0F);

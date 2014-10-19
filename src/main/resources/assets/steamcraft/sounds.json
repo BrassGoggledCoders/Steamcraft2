@@ -1,4 +1,4 @@
-{    
+{
     "drill.steam":
     {
         "category": "block",
@@ -7,7 +7,7 @@
 			"drill"
         ]
     },
-    
+
     "raygun":
     {
         "category": "block",
@@ -16,7 +16,7 @@
 			"raygun"
         ]
     },
-    
+
     "musket":
     {
         "category": "block",
@@ -25,7 +25,7 @@
 			"musket"
         ]
     },
-    
+
     "rifle":
     {
         "category": "block",
@@ -34,7 +34,7 @@
 			"rifle"
         ]
     },
-    
+
     "reload":
     {
         "category": "block",
@@ -43,7 +43,16 @@
 			"reload"
         ]
     },
-    
+
+    "rocket":
+    {
+        "category": "block",
+        "sounds":
+        [
+      "rocket"
+        ]
+    },
+
     "hitflesh":
     {
         "category": "block",
@@ -52,7 +61,7 @@
 			"hitflesh"
         ]
     },
-    
+
     "hitblock":
     {
         "category": "block",

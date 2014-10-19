@@ -24,11 +24,11 @@ import boilerplate.common.baseclasses.BaseProjectileEntity;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 public class EntityRocket extends BaseProjectileEntity
 {
-	int type;
+	private int type;
 
 	public EntityRocket(World world)
 	{
@@ -52,10 +52,11 @@ public class EntityRocket extends BaseProjectileEntity
 				this.worldObj.newExplosion(this, this.xTile, this.yTile, this.zTile, 5, true, false);
 				break;
 			case 2:
-				entity.attackEntityFrom(DamageSourceHandler.rocket, 5F);
+				entity.attackEntityFrom(DamageSourceHandler.rocket, 7F);
 				break;
 			default:
 				this.worldObj.newExplosion(this, this.xTile, this.yTile, this.zTile, 5, false, true);
+				break;
 		}
 		this.worldObj.playSoundAtEntity(this, LibInfo.PREFIX + "hitflesh", 1.0F, 1.2F / ((this.rand.nextFloat() * 0.2F) + 0.9F));
 		this.setDead();
@@ -78,9 +79,11 @@ public class EntityRocket extends BaseProjectileEntity
 				this.worldObj.newExplosion(this, this.xTile, this.yTile, this.zTile, 5, true, false);
 				break;
 			case 2:
+
 				break;
 			default:
 				this.worldObj.newExplosion(this, this.xTile, this.yTile, this.zTile, 5, false, true);
+				break;
 		}
 		this.worldObj.playSoundAtEntity(this, LibInfo.PREFIX + "hitblock", 1.0F, 1.0F);
 		this.setDead();
