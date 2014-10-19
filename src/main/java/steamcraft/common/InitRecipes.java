@@ -180,6 +180,10 @@ public class InitRecipes
 		RecipeUtils.addArmorSet(new ItemStack(InitItems.itemResource, 1, 2), new ItemStack[] { new ItemStack(InitItems.helmetObsidian),
 				new ItemStack(InitItems.chestplateObsidian), new ItemStack(InitItems.legsObsidian), new ItemStack(InitItems.bootsObsidian) });
 
+		// Brass
+				RecipeUtils.addArmorSet(new ItemStack(InitItems.itemSheet, 1, 4), new ItemStack[] { new ItemStack(InitItems.helmetBrass),
+						new ItemStack(InitItems.chestplateBrass), new ItemStack(InitItems.legsBrass), new ItemStack(InitItems.bootsBrass) });
+
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemClockworkWings), new Object[] { "BCB", "WCW", "W W", 'B',
 				new ItemStack(InitItems.itemIngot, 1, 4), 'C', "partClockworkMechanism", 'W', Blocks.wool }));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemSteamJetpack), new Object[] { "CSC", "BSB", "B B", 'B',

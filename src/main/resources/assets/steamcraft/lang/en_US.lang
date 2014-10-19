@@ -358,6 +358,8 @@ item.itemSpringHeels.name=Spring Heels Module
 item.itemSpringHeels.desc=Treat all blocks like stairs
 item.itemWatchDisplay.name=Time HUD Module
 item.itemWatchDisplay.desc=Shows in-game + real world time on your HUD
+item.itemSteelPlating.name=Steel Plating
+item.itemSteelPlating.desc=Simple Defensive Module
 
 #Containers
 container.bloomery=Bloomery
