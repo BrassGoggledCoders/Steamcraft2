@@ -248,6 +248,21 @@ public class InitRecipes
 			"plateCopper"}));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemLifeVest), new Object[] { "W W", "WWW", "WWW", 'W',
 			Blocks.wool}));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemParachute), new Object[] { "WWW", "W W", "S S", 'W',
+			Blocks.wool, 'S', Items.string}));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemPistonBoots), new Object[] { "   ", "CBC", "P P", 'P',
+			Blocks.piston, 'B', Items.leather_boots, 'C', "partClockworkMechanism"}));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemPistonPlating), new Object[] { "RPR", "PCP", "RPR", 'C',
+			Items.iron_chestplate, 'P', Blocks.piston, 'R', Items.redstone}));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemRollerSkates), new Object[] { "   ", " L ", "WRW", 'W',
+			Blocks.log, 'L', Items.leather_boots, 'R', "partCastIronRod"}));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemSpringHeels), new Object[] { "   ", " L ", "S S", 'S',
+			new ItemStack(InitItems.itemSteelParts, 1, 2), 'L', Items.leather_boots}));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemSteelPlating), new Object[] { "SSS", "SSS", "SSS", 'S',
+			"plateSteel"}));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemWatchDisplay), new Object[] { "GGG", "RCR", "III", 'I',
+		"ingotIron", "G", "paneGlass", 'R', Items.redstone}));
+
 	}
 	private static void initOtherRecipes()
 	{
