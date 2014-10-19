@@ -27,6 +27,7 @@ import steamcraft.common.entities.projectile.EntityRocket;
 import steamcraft.common.lib.LibInfo;
 import boilerplate.common.baseclasses.BaseFirearm;
 import boilerplate.common.utils.InventoryUtils;
+import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -58,7 +59,8 @@ public class ItemRocketLauncher extends BaseFirearm
 
 		if(!world.isRemote && (InventoryUtils.getItemStackInInventory(player, stack) != null))
 		{
-			world.spawnEntityInWorld(new EntityRocket(world, player, /*InventoryUtils.getItemStackInInventory(player, stack).getItemDamage()*/2, 10));
+			FMLLog.bigWarning(InventoryUtils.getItemStackInInventory(player, stack).getUnlocalizedName(), InventoryUtils.getItemStackInInventory(player, stack).getUnlocalizedName());
+			world.spawnEntityInWorld(new EntityRocket(world, player, InventoryUtils.getItemStackInInventory(player, stack).getItemDamage(), 10));
 		}
 
 		world.playSoundAtEntity(player, this.fireSound, 0.6F, 1.0F);

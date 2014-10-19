@@ -17,15 +17,15 @@ import java.util.List;
 
 /**
  * A neat, tidy class for holding various bits of mod information.
- * 
+ *
  * @author Surseance
- * 
+ *
  */
 public class LibInfo
 {
 	public static final String ID = "steamcraft2";
 	public static final String NAME = "Steamcraft 2";
-	public static final String VERSION = "Beta R2";
+	public static final String VERSION = "Beta R3";
 
 	public static final List<String> AUTHORS = Arrays.asList("warlordjones", "decebaldecebal", "Falkok15", "wierdude1999", "domi1819", "seanvanpelt2 & others");
 
