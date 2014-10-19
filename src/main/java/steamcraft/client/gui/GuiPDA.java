@@ -1,37 +1,15 @@
 package steamcraft.client.gui;
 
-import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.List;
-import java.util.Random;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiOptionButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.IProgressMeter;
-import net.minecraft.client.renderer.RenderHelper;
-import net.minecraft.client.renderer.entity.RenderItem;
-import net.minecraft.client.resources.I18n;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
-import net.minecraft.network.play.client.C16PacketClientStatus;
 import net.minecraft.stats.StatFileWriter;
-import net.minecraft.util.ChatComponentTranslation;
-import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.StatCollector;
-
-import org.lwjgl.input.Mouse;
-import org.lwjgl.opengl.GL11;
-import org.lwjgl.opengl.GL12;
-
-import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.LibInfo;
 import boilerplate.common.PDAEntry;
-import boilerplate.common.PDAEntry.EnumEntryType;
 import boilerplate.common.PDAEntryList;
-import boilerplate.common.PDAPage;
 
 public class GuiPDA extends GuiScreen implements IProgressMeter
 {

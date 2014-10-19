@@ -327,6 +327,7 @@ public class InitRecipes
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemElectricJarHuge, 1, 20), new Object[] { "GGG", "GJG", "GGG", 'S',
 				InitItems.itemSlimeRubber, 'I', "ingotSteel", 'G', Items.diamond, 'J', InitItems.itemElectricJarHuge }));
 		GameRegistry.addRecipe(new ItemStack(InitBlocks.blockFlesh), "ZZ", "ZZ", 'Z', Items.rotten_flesh);
+		GameRegistry.addRecipe(new ItemStack(InitBlocks.blockCongealedSlime), "RRR", "RRR", "RRR", 'R', InitItems.itemSlimeRubber);
 	}
 
 	public static void initializeSmeltingRecipes()

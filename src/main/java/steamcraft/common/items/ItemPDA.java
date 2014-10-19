@@ -1,10 +1,10 @@
 package steamcraft.common.items;
 
-import steamcraft.client.lib.GuiIDs;
-import steamcraft.common.Steamcraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import steamcraft.client.lib.GuiIDs;
+import steamcraft.common.Steamcraft;
 
 public class ItemPDA extends BaseItem
 {
