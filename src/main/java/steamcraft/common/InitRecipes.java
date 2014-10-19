@@ -261,7 +261,7 @@ public class InitRecipes
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemSteelPlating), new Object[] { "SSS", "SSS", "SSS", 'S',
 			"plateSteel"}));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemWatchDisplay), new Object[] { "GGG", "RCR", "III", 'I',
-		"ingotIron", "G", "paneGlass", 'R', Items.redstone, 'C', Items.clock}));
+		"ingotIron", 'G', "paneGlass", 'R', Items.redstone, 'C', Items.clock}));
 
 	}
 	private static void initOtherRecipes()
