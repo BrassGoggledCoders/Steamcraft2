@@ -222,6 +222,8 @@ public class InitRecipes
 				"ingotSteel", 'R', "partCastIronRod", 'C', "plateCopper" }));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockCharger), new Object[] { "PPP", "IWI", "PPP", 'I',
 				"ingotSteel", 'S', "plateSteel", 'W', InitBlocks.blockCopperWire }));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockArmorEditor), new Object[] { "PPP", "WWW", "PCP", 'W',
+			Blocks.crafting_table, 'P', "plateBrass", 'C', Blocks.chest }));
 
 		GameRegistry.addShapedRecipe(new ItemStack(InitBlocks.blockUranium), new Object[] { "UUU", "UUU", "UUU", 'U',
 				new ItemStack(InitItems.itemResource, 1, 4) });
