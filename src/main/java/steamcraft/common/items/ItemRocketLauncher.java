@@ -57,12 +57,11 @@ public class ItemRocketLauncher extends BaseFirearm
 
 		if(!world.isRemote)
 		{
-			player.inventory.consumeInventoryItem(this.ammo);
-			world.spawnEntityInWorld(new EntityRocket(world, player, 0, 10));
+			world.spawnEntityInWorld(new EntityRocket(world, player, ammo.getDamage(player.inventory.getStackInSlot(InventoryUtils.isInPlayerInventory(player, ammo))), 10));
 			world.playSoundAtEntity(player, this.fireSound, 0.6F, 1.0F);
 		}
+		player.inventory.consumeInventoryItem(this.ammo);
 	}
-
 	@Override
 	/**
 	 * called when the player releases the use item button. Args: itemstack, world, entityplayer, itemInUseCount

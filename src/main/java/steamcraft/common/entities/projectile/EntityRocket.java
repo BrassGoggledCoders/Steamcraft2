@@ -29,6 +29,7 @@ import boilerplate.common.baseclasses.BaseProjectileEntity;
 public class EntityRocket extends BaseProjectileEntity
 {
 	private int type;
+	EntityLivingBase shooter;
 
 	public EntityRocket(World world)
 	{
@@ -41,25 +42,27 @@ public class EntityRocket extends BaseProjectileEntity
 	{
 		super(world, shooter, 0, accuracy);
 		this.type = type;
+		shooter = this.shooter;
 	}
 
 	@Override
 	public void onHitEntity(Entity entity)
 	{
-		switch(this.type)
-		{
-			case 1:
-				this.worldObj.newExplosion(this, this.xTile, this.yTile, this.zTile, 5, true, false);
-				break;
-			case 2:
-				entity.attackEntityFrom(DamageSourceHandler.rocket, 7F);
-				break;
-			default:
-				this.worldObj.newExplosion(this, this.xTile, this.yTile, this.zTile, 5, false, true);
-				break;
-		}
-		this.worldObj.playSoundAtEntity(this, LibInfo.PREFIX + "hitflesh", 1.0F, 1.2F / ((this.rand.nextFloat() * 0.2F) + 0.9F));
-		this.setDead();
+			switch(this.type)
+			{
+				case 1:
+					entity.setFire(30);
+					break;
+				case 2:
+					entity.attackEntityFrom(DamageSourceHandler.rocket, 7F);
+					break;
+				default:
+					//TODO
+					//this.worldObj.newExplosion(this, entity.posX, entity.posY, entity.posZ, 5, false, true);
+					break;
+			}
+			this.worldObj.playSoundAtEntity(this, LibInfo.PREFIX + "hitflesh", 1.0F, 1.2F / ((this.rand.nextFloat() * 0.2F) + 0.9F));
+			this.setDead();
 	}
 
 	@Override
@@ -79,7 +82,7 @@ public class EntityRocket extends BaseProjectileEntity
 				this.worldObj.newExplosion(this, this.xTile, this.yTile, this.zTile, 5, true, false);
 				break;
 			case 2:
-
+				this.worldObj.newExplosion(this, this.xTile, this.yTile, this.zTile, 0, false, false);
 				break;
 			default:
 				this.worldObj.newExplosion(this, this.xTile, this.yTile, this.zTile, 5, false, true);
