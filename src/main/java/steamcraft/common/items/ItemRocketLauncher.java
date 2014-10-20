@@ -55,15 +55,12 @@ public class ItemRocketLauncher extends BaseFirearm
 		tag.setBoolean("canFire", false);
 		stack.setTagCompound(tag);
 
-		player.inventory.consumeInventoryItem(this.ammo);
-
-		if(!world.isRemote && (InventoryUtils.getItemStackInInventory(player, stack) != null))
+		if(!world.isRemote)
 		{
-			FMLLog.bigWarning(InventoryUtils.getItemStackInInventory(player, stack).getUnlocalizedName(), InventoryUtils.getItemStackInInventory(player, stack).getUnlocalizedName());
-			world.spawnEntityInWorld(new EntityRocket(world, player, InventoryUtils.getItemStackInInventory(player, stack).getItemDamage(), 10));
+			player.inventory.consumeInventoryItem(this.ammo);
+			world.spawnEntityInWorld(new EntityRocket(world, player, 0, 10));
+			world.playSoundAtEntity(player, this.fireSound, 0.6F, 1.0F);
 		}
-
-		world.playSoundAtEntity(player, this.fireSound, 0.6F, 1.0F);
 	}
 
 	@Override

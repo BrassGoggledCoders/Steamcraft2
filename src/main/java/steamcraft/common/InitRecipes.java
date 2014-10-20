@@ -108,11 +108,15 @@ public class InitRecipes
 				"ingotSteel", 'C', "plateBrass", 'G', Items.gunpowder }));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemPercussionCap), new Object[] { "GG", "II", 'I', "ingotBrass", 'G',
 				Items.gunpowder }));
-
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemRocket), new Object[] { " I ", "PTP", "PTP", 'I', "ingotIron", 'P',
+			"plateBrass", 'T', Blocks.tnt }));
+		//Other Guns
 		GameRegistry.addRecipe(new ItemStack(InitItems.itemRayGun, 1, 20), new Object[] { "FSP", 'F', new ItemStack(InitItems.itemGunPart, 1, 6), 'S',
 				new ItemStack(InitItems.itemGunPart, 1, 4), 'P', new ItemStack(InitItems.itemGunPart, 1, 8) });
 		GameRegistry.addRecipe(new ItemStack(InitItems.itemShrinkray, 1, 20), new Object[] { "FSP", 'F', new ItemStack(InitItems.itemGunPart, 1, 7), 'S',
 				new ItemStack(InitItems.itemGunPart, 1, 5), 'P', new ItemStack(InitItems.itemGunPart, 1, 9) });
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemClockworkRocketLauncher), new Object[] { "CCC", "  S","CCC", 'C', "plateCastIron", 'S',
+			new ItemStack(InitItems.itemGunPart, 1, 5)}));
 	}
 
 	private static void initMetalsRecipes()
