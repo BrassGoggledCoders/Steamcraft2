@@ -28,11 +28,11 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 public class ItemParts extends BaseItemWithMetadata
 {
-	IIcon[] itemIcon = new IIcon[10];
+	public IIcon[] itemIcon = new IIcon[10];
 
 	private String material;
 

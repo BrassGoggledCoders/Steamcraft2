@@ -16,13 +16,14 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import steamcraft.common.InitBlocks;
 import steamcraft.common.InitItems;
+import steamcraft.common.items.ItemParts;
 import steamcraft.common.lib.LibInfo;
 import boilerplate.common.utils.helpers.OreDictHelper;
 import cpw.mods.fml.common.event.FMLInterModComms;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 public class CompatabilityLayer
 {
@@ -103,6 +104,17 @@ public class CompatabilityLayer
 		OreDictionary.registerOre("partGenerator", new ItemStack(InitItems.itemMachinePart, 1, 4));
 		OreDictionary.registerOre("partFan", new ItemStack(InitItems.itemMachinePart, 1, 5));
 		OreDictionary.registerOre("partWireCoil", new ItemStack(InitItems.itemMachinePart, 1, 6));
+
+		String[] partType = new String[]{"Gear", "Sprocket", "Spring", "Thread",
+		"Nut", "Bolt", "Washer", "Bearing", "Screw", "Nail"};
+
+		for(int i = 0; i< 10; i++)
+		{
+			OreDictionary.registerOre("partCopper" + partType[i], new ItemStack(InitItems.itemCopperParts, 1, i));
+			OreDictionary.registerOre("partIron" + partType[i], new ItemStack(InitItems.itemIronParts, 1, i));
+			OreDictionary.registerOre("partBrass" + partType[i], new ItemStack(InitItems.itemBrassParts, 1, i));
+			OreDictionary.registerOre("partSteel" + partType[i], new ItemStack(InitItems.itemSteelParts, 1, i));
+		}
 
 	}
 }
