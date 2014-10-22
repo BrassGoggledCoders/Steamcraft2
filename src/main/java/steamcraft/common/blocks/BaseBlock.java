@@ -15,6 +15,9 @@ package steamcraft.common.blocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.util.IIcon;
+import net.minecraft.util.ResourceLocation;
+import steamcraft.client.lib.RenderIDs;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.LibInfo;
 import cpw.mods.fml.relauncher.Side;
@@ -22,10 +25,13 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author Surseance
- * 
+ *
  */
 public class BaseBlock extends Block
 {
+	public IIcon overlayIcon;
+	private int pass;
+
 	public BaseBlock(Material mat)
 	{
 		super(mat);
@@ -37,5 +43,24 @@ public class BaseBlock extends Block
 	public void registerBlockIcons(IIconRegister ir)
 	{
 		this.blockIcon = ir.registerIcon(LibInfo.PREFIX + this.getUnlocalizedName().substring(5));
+		this.overlayIcon = ir.registerIcon(LibInfo.PREFIX + "/overlay/pumpkin");
 	}
+	@Override
+	public boolean canRenderInPass(int pass)
+    {
+		pass = this.pass;
+		return true;
+    }
+	@Override
+	public IIcon getIcon(int p_149691_1_, int p_149691_2_)
+    {
+		if(pass == 0)
+		return blockIcon;
+		else return overlayIcon;
+    }
+	@Override
+	public int getRenderBlockPass()
+    {
+		return 1;
+    }
 }

@@ -26,4 +26,5 @@ public class RenderIDs
 	public static int blockCastIronRailingRI;
 	public static int blockCopperWireRI;
 	public static int blockPlankStackRI;
+	public static int holidayRI;
 }

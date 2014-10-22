@@ -29,6 +29,7 @@ import steamcraft.client.renderers.block.BlockLightningRodRenderer;
 import steamcraft.client.renderers.block.BlockPlankStackRenderer;
 import steamcraft.client.renderers.block.BlockRailingRenderer;
 import steamcraft.client.renderers.block.BlockTeslaCoilRenderer;
+import steamcraft.client.renderers.block.HolidayOverlayRenderer;
 import steamcraft.client.renderers.entity.RenderFleshGolem;
 import steamcraft.client.renderers.entity.RenderGrapplingHook;
 import steamcraft.client.renderers.item.ModelBrassWings;
@@ -148,6 +149,9 @@ public class ClientProxy extends CommonProxy
 		//Plank Stack
 		RenderIDs.blockPlankStackRI = RenderingRegistry.getNextAvailableRenderId();
 		RenderingRegistry.registerBlockHandler(new BlockPlankStackRenderer());
+		//Holiday
+		RenderIDs.holidayRI = RenderingRegistry.getNextAvailableRenderId();
+        RenderingRegistry.registerBlockHandler(new HolidayOverlayRenderer());
 	}
 
 	@Override
