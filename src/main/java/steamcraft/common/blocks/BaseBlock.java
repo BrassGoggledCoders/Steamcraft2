@@ -12,14 +12,16 @@
  */
 package steamcraft.common.blocks;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.util.IIcon;
-import net.minecraft.util.ResourceLocation;
-import steamcraft.client.lib.RenderIDs;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.LibInfo;
+import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -29,8 +31,8 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 public class BaseBlock extends Block
 {
-	public IIcon overlayIcon;
-	private int pass;
+	IIcon pumpkinIcon;
+	IIcon snowIcon;
 
 	public BaseBlock(Material mat)
 	{
@@ -43,24 +45,22 @@ public class BaseBlock extends Block
 	public void registerBlockIcons(IIconRegister ir)
 	{
 		this.blockIcon = ir.registerIcon(LibInfo.PREFIX + this.getUnlocalizedName().substring(5));
-		this.overlayIcon = ir.registerIcon(LibInfo.PREFIX + "/overlay/pumpkin");
+		this.pumpkinIcon = ir.registerIcon(LibInfo.PREFIX + "/overlays/pumpkin");
+		this.snowIcon = ir.registerIcon(LibInfo.PREFIX + "/overlays/snow");
 	}
-	@Override
-	public boolean canRenderInPass(int pass)
+	 /**
+     * Gets the block's texture. Args: side, meta
+     */
+    @SideOnly(Side.CLIENT)
+    public IIcon getIcon(int p_149691_1_, int p_149691_2_)
     {
-		pass = this.pass;
-		return true;
-    }
-	@Override
-	public IIcon getIcon(int p_149691_1_, int p_149691_2_)
-    {
-		if(pass == 0)
-		return blockIcon;
-		else return overlayIcon;
-    }
-	@Override
-	public int getRenderBlockPass()
-    {
-		return 1;
+    	/*final Calendar cal = Calendar.getInstance();
+		final SimpleDateFormat sdf = new SimpleDateFormat("ddMM");
+		if(sdf.format(cal.getTime()) == "2210")
+		{
+		FMLLog.bigWarning("Works", true);
+    	return pumpkinIcon;
+		}
+		else*/ return blockIcon;
     }
 }
