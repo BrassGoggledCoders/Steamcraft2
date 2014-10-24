@@ -20,6 +20,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 import steamcraft.client.lib.RenderIDs;
 import steamcraft.client.renderers.block.BlockBatteryRenderer;
+import steamcraft.client.renderers.block.BlockCastIronLampRenderer;
 import steamcraft.client.renderers.block.BlockChargerRenderer;
 import steamcraft.client.renderers.block.BlockCopperPipeRenderer;
 import steamcraft.client.renderers.block.BlockCopperWireRenderer;
@@ -36,6 +37,8 @@ import steamcraft.client.renderers.item.ModelJetpack;
 import steamcraft.client.renderers.item.ModelWingpack;
 import steamcraft.client.renderers.models.ModelFleshGolem;
 import steamcraft.client.renderers.tile.TileBatteryRenderer;
+import steamcraft.client.renderers.tile.TileCastIronLampRenderer;
+import steamcraft.client.renderers.tile.TileCastIronLampRenderer.TileCastIronLamp;
 import steamcraft.client.renderers.tile.TileChargerRenderer;
 import steamcraft.client.renderers.tile.TileCopperPipeRenderer;
 import steamcraft.client.renderers.tile.TileCopperWireRenderer;
@@ -136,11 +139,10 @@ public class ClientProxy extends CommonProxy
 		// Cast Iron Railing
 		RenderIDs.blockCastIronRailingRI = RenderingRegistry.getNextAvailableRenderId();
 		RenderingRegistry.registerBlockHandler(new BlockRailingRenderer());
-		// Cast Iron Lamp TODO
-		// RenderIDs.blockCastIronLampRI = RenderingRegistry.getNextAvailableRenderId();
-		// ClientRegistry.bindTileEntitySpecialRenderer(TileCastIronLamp.class, new TileCastIronLampRenderer());
-		// RenderingRegistry.registerBlockHandler(new BlockCastIronLampRenderer());
-		// Hatch
+		// Cast Iron Lamp
+		RenderIDs.blockCastIronLampRI = RenderingRegistry.getNextAvailableRenderId();
+		ClientRegistry.bindTileEntitySpecialRenderer(TileCastIronLamp.class, new TileCastIronLampRenderer());
+		RenderingRegistry.registerBlockHandler(new BlockCastIronLampRenderer());
 		// Hatch
 		RenderIDs.blockHatchRI = RenderingRegistry.getNextAvailableRenderId();
 		ClientRegistry.bindTileEntitySpecialRenderer(TileHatch.class, new TileHatchRenderer());

@@ -63,7 +63,7 @@ public class ModelCastIronLampSide extends ModelBase
 
 		this.upperLamp = new ModelRenderer(this, 31, 0);
 		this.upperLamp.addBox(-4F, -9F, -10.5F, 8, 5, 8);
-		// UpperLamp.setPosition(-4F, 7F, -4F);
+		//upperLamp.setPosition(-4F, 7F, -4F);
 
 		this.top = new ModelRenderer(this, 0, 8);
 		this.top.addBox(-5F, -11F, -11.5F, 10, 2, 10);

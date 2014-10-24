@@ -14,11 +14,13 @@ package steamcraft.client.renderers.block;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;
+import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
 import net.minecraft.world.IBlockAccess;
 
 import org.lwjgl.opengl.GL11;
 
 import steamcraft.client.lib.RenderIDs;
+import steamcraft.client.renderers.tile.TileCastIronLampRenderer.TileCastIronLamp;
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 
 /**
@@ -33,9 +35,9 @@ public class BlockCastIronLampRenderer implements ISimpleBlockRenderingHandler
 	{
 		GL11.glRotatef(90.0F, 0.0F, 1.0F, 0.0F);
 		GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
-		//final TileCastIronLamp te = new TileCastIronLamp();
-		// TODO
-		// TileEntityRendererDispatcher.instance.renderTileEntityAt(te, te.xCoord, te.yCoord, te.zCoord, 0.0F);
+		final TileCastIronLamp te = new TileCastIronLamp();
+		te.blockMetadata = 0;
+		TileEntityRendererDispatcher.instance.renderTileEntityAt(te, te.xCoord, te.yCoord, te.zCoord, 0.0F);
 		GL11.glEnable(32826);
 	}
 

@@ -83,7 +83,7 @@ public class InitBlocks
 	public static Block blockEngraved, blockEngravedVanilla;
 
 	// Cast Iron
-	public static Block blockCastIronLamp;
+	public static Block blockCastIronLamp, blockCastIronLampOn;
 	public static Block blockCastIronFence, blockCastIronGate, blockCastIronRailing;
 
 	public static Block blockLamp, blockLampOn;
@@ -173,9 +173,11 @@ public class InitBlocks
 		GameRegistry.registerBlock(blockEngravedVanilla, BaseItemBlockWithMetadata.class, "BlockEngravedVanilla");
 
 		// Cast Iron
-		blockCastIronLamp = new BlockCastIronLamp().setBlockName("blockCastIronLamp");
+		blockCastIronLamp = new BlockCastIronLamp(false).setBlockName("blockCastIronLamp");
+		blockCastIronLampOn = new BlockCastIronLamp(true).setBlockName("blockCastIronLampOn");
 
 		GameRegistry.registerBlock(blockCastIronLamp, "BlockCastIronLamp");
+		GameRegistry.registerBlock(blockCastIronLampOn, "BlockCastIronLampOn");
 
 		blockCastIronFence = new BlockCastIronFence().setBlockName("blockCastIronFence");
 		blockCastIronGate = new BlockCastIronGate().setBlockName("blockCastIronGate");;
