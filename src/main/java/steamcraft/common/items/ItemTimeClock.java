@@ -27,7 +27,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class ItemTimeClock extends BaseItem
 {
@@ -38,62 +38,76 @@ public class ItemTimeClock extends BaseItem
 		this.setMaxStackSize(1);
 		this.setCreativeTab(Steamcraft.tabSC2);
 	}
+
+	@Override
 	public EnumAction getItemUseAction(ItemStack p_77661_1_)
 	{
-	   return EnumAction.bow;
+		return EnumAction.bow;
 	}
-	 public int getMaxItemUseDuration(ItemStack p_77626_1_)
-	 {
-	   return 72000;
-	 }
-	 public void onPlayerStoppedUsing(ItemStack stack, World world, EntityPlayer player, int useCount) {
-		 if(!world.isRemote)
-		 {
+
+	@Override
+	public int getMaxItemUseDuration(ItemStack p_77626_1_)
+	{
+		return 72000;
+	}
+
+	@Override
+	public void onPlayerStoppedUsing(ItemStack stack, World world, EntityPlayer player, int useCount)
+	{
+		if(!world.isRemote)
+		{
 			if(useCount > 70000)
 			{
-				 if(ClientHelper.isShiftKeyDown())
-					{
-						world.setWorldTime(13000);
-						ChatComponentText text = new ChatComponentText("Time set to Night");
-						player.addChatComponentMessage(text);
-						player.playSound(LibInfo.PREFIX + "warp", 1, 1);
-					}
-					else
-					{
-						ChatComponentText text = new ChatComponentText("Time set to Day");
-						player.addChatComponentMessage(text);
-						world.setWorldTime(1000);
-						player.playSound(LibInfo.PREFIX + "warp", 1, 1);
-					}
-			 }
-			else player.playSound("minecraft:mob.wolf.whine", 1, 1);
-		 }
-	 }
-	 public ItemStack onEaten(ItemStack p_77654_1_, World p_77654_2_, EntityPlayer p_77654_3_)
-	    {
-	        return p_77654_1_;
-	    }
-	 public ItemStack onItemRightClick(ItemStack p_77659_1_, World p_77659_2_, EntityPlayer p_77659_3_)
-	    {
-	        p_77659_3_.setItemInUse(p_77659_1_, this.getMaxItemUseDuration(p_77659_1_));
-
-	        return p_77659_1_;
-	    }
-	 @SideOnly(Side.CLIENT)
-	    public IIcon getItemIconForUseDuration(int use)
-	    {
-		  if(use > 70000)
-		  {
-			  return readyIcon;
-		  }
-		  else return itemIcon;
-	    }
-
-		@SideOnly(Side.CLIENT)
-		@Override
-		public void registerIcons(IIconRegister ir)
-		{
-			itemIcon = ir.registerIcon(LibInfo.PREFIX + "itemTimeClock");
-			readyIcon = ir.registerIcon(LibInfo.PREFIX + "itemTimeClockReady");
+				if(ClientHelper.isShiftKeyDown())
+				{
+					world.setWorldTime(13000);
+					ChatComponentText text = new ChatComponentText("Time set to Night");
+					player.addChatComponentMessage(text);
+					player.playSound(LibInfo.PREFIX + "warp", 1, 1);
+				}
+				else
+				{
+					ChatComponentText text = new ChatComponentText("Time set to Day");
+					player.addChatComponentMessage(text);
+					world.setWorldTime(1000);
+					player.playSound(LibInfo.PREFIX + "warp", 1, 1);
+				}
+			}
+			else
+				player.playSound("minecraft:mob.wolf.whine", 1, 1);
 		}
+	}
+
+	@Override
+	public ItemStack onEaten(ItemStack p_77654_1_, World p_77654_2_, EntityPlayer p_77654_3_)
+	{
+		return p_77654_1_;
+	}
+
+	@Override
+	public ItemStack onItemRightClick(ItemStack p_77659_1_, World p_77659_2_, EntityPlayer p_77659_3_)
+	{
+		p_77659_3_.setItemInUse(p_77659_1_, this.getMaxItemUseDuration(p_77659_1_));
+
+		return p_77659_1_;
+	}
+
+	@SideOnly(Side.CLIENT)
+	public IIcon getItemIconForUseDuration(int use)
+	{
+		if(use > 70000)
+		{
+			return this.readyIcon;
+		}
+		else
+			return this.itemIcon;
+	}
+
+	@SideOnly(Side.CLIENT)
+	@Override
+	public void registerIcons(IIconRegister ir)
+	{
+		this.itemIcon = ir.registerIcon(LibInfo.PREFIX + "itemTimeClock");
+		this.readyIcon = ir.registerIcon(LibInfo.PREFIX + "itemTimeClockReady");
+	}
 }

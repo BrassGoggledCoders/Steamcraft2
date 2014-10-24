@@ -34,7 +34,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class ItemWatchDisplay extends BaseModule
 {

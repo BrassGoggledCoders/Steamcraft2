@@ -24,7 +24,7 @@ import boilerplate.common.baseclasses.BaseProjectileEntity;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class EntityRocket extends BaseProjectileEntity
 {
@@ -48,21 +48,21 @@ public class EntityRocket extends BaseProjectileEntity
 	@Override
 	public void onHitEntity(Entity entity)
 	{
-			switch(this.type)
-			{
-				case 1:
-					entity.setFire(30);
-					break;
-				case 2:
-					entity.attackEntityFrom(DamageSourceHandler.rocket, 7F);
-					break;
-				default:
-					//TODO
-					//this.worldObj.newExplosion(this, entity.posX, entity.posY, entity.posZ, 5, false, true);
-					break;
-			}
-			this.worldObj.playSoundAtEntity(this, LibInfo.PREFIX + "hitflesh", 1.0F, 1.2F / ((this.rand.nextFloat() * 0.2F) + 0.9F));
-			this.setDead();
+		switch(this.type)
+		{
+			case 1:
+				entity.setFire(30);
+				break;
+			case 2:
+				entity.attackEntityFrom(DamageSourceHandler.rocket, 7F);
+				break;
+			default:
+				// TODO
+				// this.worldObj.newExplosion(this, entity.posX, entity.posY, entity.posZ, 5, false, true);
+				break;
+		}
+		this.worldObj.playSoundAtEntity(this, LibInfo.PREFIX + "hitflesh", 1.0F, 1.2F / ((this.rand.nextFloat() * 0.2F) + 0.9F));
+		this.setDead();
 	}
 
 	@Override

@@ -13,12 +13,14 @@ public class ItemPDA extends BaseItem
 		super();
 		this.setMaxStackSize(1);
 	}
-    /**
-     * Called whenever this item is equipped and the right mouse button is pressed. Args: itemStack, world, entityPlayer
-     */
-    public ItemStack onItemRightClick(ItemStack p_77659_1_, World world, EntityPlayer player)
-    {
-    	player.openGui(Steamcraft.instance, GuiIDs.PDA, world, 0, 0, 0);
-        return p_77659_1_;
-    }
+
+	/**
+	 * Called whenever this item is equipped and the right mouse button is pressed. Args: itemStack, world, entityPlayer
+	 */
+	@Override
+	public ItemStack onItemRightClick(ItemStack p_77659_1_, World world, EntityPlayer player)
+	{
+		player.openGui(Steamcraft.instance, GuiIDs.PDA, world, 0, 0, 0);
+		return p_77659_1_;
+	}
 }

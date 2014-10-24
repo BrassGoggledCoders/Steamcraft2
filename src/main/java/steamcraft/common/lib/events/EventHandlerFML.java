@@ -42,7 +42,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class EventHandlerFML
 {
@@ -168,9 +168,11 @@ public class EventHandlerFML
 		 * p.openGui(Steamcraft.instance, GuiIDs.VANITY, p.worldObj, (int) p.posX, (int) p.posY, (int) p.posZ); }
 		 */
 	}
+
 	@SubscribeEvent
-    public void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent eventArgs) {
-        if(eventArgs.modID.equals("testmod"))
-            Config.initialise(Steamcraft.configPath);
-    }
+	public void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent eventArgs)
+	{
+		if(eventArgs.modID.equals("testmod"))
+			Config.initialise(Steamcraft.configPath);
+	}
 }

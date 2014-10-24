@@ -54,10 +54,10 @@ public class ConfigGeneral
 
 			// registerJars = config.get(CATEGORY_CLIENT, "Electric Jars Enabled", true).getBoolean();
 
-			//String[] blacklistArray = nameBlacklist.toArray(new String[] {});
+			// String[] blacklistArray = nameBlacklist.toArray(new String[] {});
 
-			//blacklistArray = config.getStringList("Blacklist", CATEGORY_GENERAL, new String[] { "itemTeapot", "itemTwo", "itemThree" },
-			//		"Blacklist unlocalized Names of Items from our mod here to prevent them loading");
+			// blacklistArray = config.getStringList("Blacklist", CATEGORY_GENERAL, new String[] { "itemTeapot", "itemTwo", "itemThree" },
+			// "Blacklist unlocalized Names of Items from our mod here to prevent them loading");
 		}
 		catch(Exception e)
 		{

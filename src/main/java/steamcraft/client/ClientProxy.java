@@ -72,7 +72,7 @@ import cpw.mods.fml.common.FMLCommonHandler;
 
 /**
  * @author Surseance
- *
+ * 
  */
 public class ClientProxy extends CommonProxy
 {
@@ -147,7 +147,7 @@ public class ClientProxy extends CommonProxy
 		RenderIDs.blockHatchRI = RenderingRegistry.getNextAvailableRenderId();
 		ClientRegistry.bindTileEntitySpecialRenderer(TileHatch.class, new TileHatchRenderer());
 		RenderingRegistry.registerBlockHandler(new BlockHatchRenderer());
-		//Plank Stack
+		// Plank Stack
 		RenderIDs.blockPlankStackRI = RenderingRegistry.getNextAvailableRenderId();
 		RenderingRegistry.registerBlockHandler(new BlockPlankStackRenderer());
 	}

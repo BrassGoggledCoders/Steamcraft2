@@ -29,7 +29,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author Decebaldecebal
- *
+ * 
  */
 public class ContainerNuclearBoiler extends BaseContainer
 {

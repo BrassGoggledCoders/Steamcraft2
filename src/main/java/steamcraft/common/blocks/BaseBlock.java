@@ -12,22 +12,18 @@
  */
 package steamcraft.common.blocks;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.util.IIcon;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.LibInfo;
-import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author Surseance
- *
+ * 
  */
 public class BaseBlock extends Block
 {
@@ -48,19 +44,17 @@ public class BaseBlock extends Block
 		this.pumpkinIcon = ir.registerIcon(LibInfo.PREFIX + "/overlays/pumpkin");
 		this.snowIcon = ir.registerIcon(LibInfo.PREFIX + "/overlays/snow");
 	}
-	 /**
-     * Gets the block's texture. Args: side, meta
-     */
-    @SideOnly(Side.CLIENT)
-    public IIcon getIcon(int p_149691_1_, int p_149691_2_)
-    {
-    	/*final Calendar cal = Calendar.getInstance();
-		final SimpleDateFormat sdf = new SimpleDateFormat("ddMM");
-		if(sdf.format(cal.getTime()) == "2210")
-		{
-		FMLLog.bigWarning("Works", true);
-    	return pumpkinIcon;
-		}
-		else*/ return blockIcon;
-    }
+
+	/**
+	 * Gets the block's texture. Args: side, meta
+	 */
+	@Override
+	@SideOnly(Side.CLIENT)
+	public IIcon getIcon(int p_149691_1_, int p_149691_2_)
+	{
+		/*
+		 * final Calendar cal = Calendar.getInstance(); final SimpleDateFormat sdf = new SimpleDateFormat("ddMM"); if(sdf.format(cal.getTime()) == "2210") {
+		 * FMLLog.bigWarning("Works", true); return pumpkinIcon; } else
+		 */return this.blockIcon;
+	}
 }

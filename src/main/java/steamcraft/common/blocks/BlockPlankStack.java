@@ -163,6 +163,7 @@ public class BlockPlankStack extends BaseBlock
 		for(int var4 = 0; var4 < 6; ++var4)
 			l.add(new ItemStack(InitBlocks.blockPlankStack, 1, var4));
 	}
+
 	@Override
 	public int getRenderType()
 	{

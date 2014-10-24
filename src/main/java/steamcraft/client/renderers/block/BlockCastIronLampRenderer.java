@@ -25,7 +25,7 @@ import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 
 /**
  * @author Surseance
- *
+ * 
  */
 public class BlockCastIronLampRenderer implements ISimpleBlockRenderingHandler
 {

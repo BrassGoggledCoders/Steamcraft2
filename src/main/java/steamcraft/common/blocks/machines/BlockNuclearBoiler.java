@@ -34,7 +34,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author decebaldecebal
- *
+ * 
  */
 public class BlockNuclearBoiler extends BaseContainerBlock
 {

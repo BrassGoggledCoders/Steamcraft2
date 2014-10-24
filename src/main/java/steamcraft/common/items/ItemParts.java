@@ -28,7 +28,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class ItemParts extends BaseItemWithMetadata
 {

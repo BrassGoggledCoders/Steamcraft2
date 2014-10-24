@@ -26,7 +26,7 @@ import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 
 /**
  * @author Surseance
- *
+ * 
  */
 public class BlockPlankStackRenderer implements ISimpleBlockRenderingHandler
 {
@@ -40,10 +40,10 @@ public class BlockPlankStackRenderer implements ISimpleBlockRenderingHandler
 	{
 		GL11.glPushMatrix();
 
-		//GL11.glTranslated(transX, transY, transZ);
+		// GL11.glTranslated(transX, transY, transZ);
 		GL11.glDisable(GL11.GL_LIGHTING);
 
-		Minecraft.getMinecraft().renderEngine.bindTexture(texture);
+		Minecraft.getMinecraft().renderEngine.bindTexture(this.texture);
 
 		Tessellator tess = Tessellator.instance;
 
@@ -60,7 +60,7 @@ public class BlockPlankStackRenderer implements ISimpleBlockRenderingHandler
 	public boolean renderWorldBlock(final IBlockAccess world, final int x, final int y, final int z, final Block block, final int modelID,
 			final RenderBlocks renderer)
 	{
-		renderInventoryBlock(block, world.getBlockMetadata(x, y, z), modelID, renderer);
+		this.renderInventoryBlock(block, world.getBlockMetadata(x, y, z), modelID, renderer);
 		return true;
 	}
 

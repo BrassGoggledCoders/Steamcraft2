@@ -14,7 +14,7 @@ package steamcraft.client.lib;
 
 /**
  * @author Surseance
- *
+ * 
  */
 public final class GuiIDs
 {

@@ -38,7 +38,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class ItemBrassArmor extends BaseArmor implements ISpecialArmor
 {
@@ -239,10 +239,10 @@ public class ItemBrassArmor extends BaseArmor implements ISpecialArmor
 				absorbRatio = module.getDefenseModifier();
 				absorbMax = 2 * module.getDefenseModifier();
 			}
-			if (source.isUnblockable())
+			if(source.isUnblockable())
 			{
-			    absorbMax = 0;
-			    absorbRatio = 0;
+				absorbMax = 0;
+				absorbRatio = 0;
 			}
 		}
 		return new ArmorProperties(priority, absorbRatio, absorbMax);
@@ -255,5 +255,7 @@ public class ItemBrassArmor extends BaseArmor implements ISpecialArmor
 	}
 
 	@Override
-	public void damageArmor(EntityLivingBase entity, ItemStack stack, DamageSource source, int damage, int slot) { }
+	public void damageArmor(EntityLivingBase entity, ItemStack stack, DamageSource source, int damage, int slot)
+	{
+	}
 }

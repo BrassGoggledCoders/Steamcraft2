@@ -19,11 +19,12 @@ import steamcraft.common.lib.LibInfo;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class InitAchievements
 {
-	public static Achievement raygunAchieve, shrinkrayAchieve, boilerAchieve, nukeboilerAchieve, ingotAchieve, sheetAchieve, intakeAchieve, teaAchieve, engraveAchieve,
+	public static Achievement raygunAchieve, shrinkrayAchieve, boilerAchieve, nukeboilerAchieve, ingotAchieve, sheetAchieve, intakeAchieve, teaAchieve,
+			engraveAchieve,
 			wingsAchieve, jetpackAchieve, wingpackAchieve, gogglesAchieve, gunAchieve, turbineAchieve, rodAchieve, zapAchieve, creatorAchieve;
 
 	public static AchievementPage sc2AchievePage;
@@ -53,7 +54,8 @@ public class InitAchievements
 		creatorAchieve = new Achievement(prefix + "creator", "creatorachieve", 0, -5, Items.nether_star, null).registerStat().initIndependentStat();
 
 		sc2AchievePage = new AchievementPage("Steamcraft 2", raygunAchieve, shrinkrayAchieve, boilerAchieve, ingotAchieve, sheetAchieve,
-				intakeAchieve, teaAchieve, wingsAchieve, jetpackAchieve, wingpackAchieve, turbineAchieve, rodAchieve, zapAchieve, creatorAchieve, nukeboilerAchieve);
+				intakeAchieve, teaAchieve, wingsAchieve, jetpackAchieve, wingpackAchieve, turbineAchieve, rodAchieve, zapAchieve, creatorAchieve,
+				nukeboilerAchieve);
 		AchievementPage.registerAchievementPage(sc2AchievePage);
 	}
 

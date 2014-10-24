@@ -27,7 +27,6 @@ import steamcraft.common.entities.projectile.EntityRocket;
 import steamcraft.common.lib.LibInfo;
 import boilerplate.common.baseclasses.BaseFirearm;
 import boilerplate.common.utils.InventoryUtils;
-import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -57,11 +56,13 @@ public class ItemRocketLauncher extends BaseFirearm
 
 		if(!world.isRemote)
 		{
-			world.spawnEntityInWorld(new EntityRocket(world, player, ammo.getDamage(player.inventory.getStackInSlot(InventoryUtils.isInPlayerInventory(player, ammo))), 10));
+			world.spawnEntityInWorld(new EntityRocket(world, player, this.ammo.getDamage(player.inventory.getStackInSlot(InventoryUtils.isInPlayerInventory(
+					player, this.ammo))), 10));
 			world.playSoundAtEntity(player, this.fireSound, 0.6F, 1.0F);
 		}
 		player.inventory.consumeInventoryItem(this.ammo);
 	}
+
 	@Override
 	/**
 	 * called when the player releases the use item button. Args: itemstack, world, entityplayer, itemInUseCount

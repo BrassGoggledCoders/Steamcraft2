@@ -25,7 +25,7 @@ import cpw.mods.fml.common.event.FMLInterModComms;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class CompatabilityLayer
 {
@@ -55,7 +55,7 @@ public class CompatabilityLayer
 		tag.setFloat("HandleModifier", 0.1f);
 		tag.setInteger("Reinforced", 1); // optional
 		tag.setString("Style", EnumChatFormatting.RED.toString()); // optional, color of the material text
-		tag.setInteger("Color", 16711935); //Color Integer (http://www.shodor.org/stella2java/rgbint.html is useful!)
+		tag.setInteger("Color", 16711935); // Color Integer (http://www.shodor.org/stella2java/rgbint.html is useful!)
 
 		FMLInterModComms.sendMessage("TConstruct", "addMaterial", tag);
 
@@ -137,10 +137,10 @@ public class CompatabilityLayer
 		OreDictionary.registerOre("partFan", new ItemStack(InitItems.itemMachinePart, 1, 5));
 		OreDictionary.registerOre("partWireCoil", new ItemStack(InitItems.itemMachinePart, 1, 6));
 
-		String[] partType = new String[]{"Gear", "Sprocket", "Spring", "Thread",
-		"Nut", "Bolt", "Washer", "Bearing", "Screw", "Nail"};
+		String[] partType = new String[] { "Gear", "Sprocket", "Spring", "Thread",
+				"Nut", "Bolt", "Washer", "Bearing", "Screw", "Nail" };
 
-		for(int i = 0; i< 10; i++)
+		for(int i = 0; i < 10; i++)
 		{
 			OreDictionary.registerOre("partCopper" + partType[i], new ItemStack(InitItems.itemCopperParts, 1, i));
 			OreDictionary.registerOre("partIron" + partType[i], new ItemStack(InitItems.itemIronParts, 1, i));

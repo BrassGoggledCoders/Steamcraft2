@@ -17,9 +17,9 @@ import java.util.List;
 
 /**
  * A neat, tidy class for holding various bits of mod information.
- *
+ * 
  * @author Surseance
- *
+ * 
  */
 public class LibInfo
 {

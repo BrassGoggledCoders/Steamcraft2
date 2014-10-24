@@ -15,7 +15,6 @@ package steamcraft.client.renderers.tile;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
-import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 
@@ -24,12 +23,11 @@ import org.lwjgl.opengl.GL11;
 import steamcraft.client.renderers.models.ModelCastIronLampSide;
 import steamcraft.client.renderers.models.ModelCastIronLampTop;
 import steamcraft.common.InitBlocks;
-import steamcraft.common.blocks.BlockSlate;
 import steamcraft.common.lib.LibInfo;
 
 /**
  * @author Surseance
- *
+ * 
  */
 public class TileCastIronLampRenderer extends TileEntitySpecialRenderer
 {
@@ -53,51 +51,51 @@ public class TileCastIronLampRenderer extends TileEntitySpecialRenderer
 		float f3 = 0.0F;
 		float f2 = 1.0F;
 
-		if (metadata == 2)
+		if(metadata == 2)
 		{
 			f3 = 180F;
 		}
 
-		if (metadata == 4)
+		if(metadata == 4)
 		{
 			f3 = 90F;
 		}
 
-		if (metadata == 3)
+		if(metadata == 3)
 		{
 			f3 = -90F;
 		}
 
-		if (metadata == 6)
+		if(metadata == 6)
 		{
 			f2 = 180F;
 		}
 
-		GL11.glTranslatef((float)dx + 0.5F, (float)dy + 0.75F * f1, (float)dz + 0.5F);
+		GL11.glTranslatef((float) dx + 0.5F, (float) dy + (0.75F * f1), (float) dz + 0.5F);
 		GL11.glRotatef(f3, 0.0F, 1.0F, 0.0F);
 
-		if (metadata == 6)
+		if(metadata == 6)
 		{
 			GL11.glRotatef(f2, 0.0F, 0.0F, 1.0F);
 		}
 
 		GL11.glTranslatef(0.0F, -0.3125F, -0.4375F);
 
-		lampModelTop.bracketWide.showModel = true;
-		lampModelTop.crossbarLeft.showModel = true;
-		lampModelTop.crossbarRight.showModel = true;
-		lampModelSide.crossbarLeft.showModel = true;
-		lampModelSide.crossbarRight.showModel = true;
+		this.lampModelTop.bracketWide.showModel = true;
+		this.lampModelTop.crossbarLeft.showModel = true;
+		this.lampModelTop.crossbarRight.showModel = true;
+		this.lampModelSide.crossbarLeft.showModel = true;
+		this.lampModelSide.crossbarRight.showModel = true;
 
 		// Renders the textures based on torch state
 		ResourceLocation lampOn = (new ResourceLocation(LibInfo.PREFIX + "textures/models/lampon.png"));
 		ResourceLocation lampOff = (new ResourceLocation(LibInfo.PREFIX + "textures/models/lampoff.png"));
 
-		if (block == InitBlocks.blockCastIronLampOn)
+		if(block == InitBlocks.blockCastIronLampOn)
 		{
 			Minecraft.getMinecraft().renderEngine.bindTexture(lampOn);
 		}
-		else if (block == InitBlocks.blockCastIronLamp)
+		else if(block == InitBlocks.blockCastIronLamp)
 		{
 			Minecraft.getMinecraft().renderEngine.bindTexture(lampOff);
 		}
@@ -105,13 +103,13 @@ public class TileCastIronLampRenderer extends TileEntitySpecialRenderer
 		GL11.glPushMatrix();
 		GL11.glScalef(f1, -f1, -f1);
 
-		if (metadata == 5 || metadata == 6)
+		if((metadata == 5) || (metadata == 6))
 		{
-			lampModelTop.renderSign();
+			this.lampModelTop.renderSign();
 		}
 		else
 		{
-			lampModelSide.renderSign();
+			this.lampModelSide.renderSign();
 		}
 
 		GL11.glPopMatrix();

@@ -33,7 +33,7 @@ import boilerplate.client.utils.GuiColors;
 
 /**
  * @author decebaldecebal
- *
+ * 
  */
 public class GuiNuclearBoiler extends GuiContainer
 {

@@ -24,7 +24,7 @@ import steamcraft.common.tiles.TileBattery;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class ModelBattery extends ModelBase
 {

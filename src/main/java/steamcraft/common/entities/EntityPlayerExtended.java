@@ -21,7 +21,7 @@ import steamcraft.common.container.InventoryVanity;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 // TODO: Add packets
 public class EntityPlayerExtended implements IExtendedEntityProperties

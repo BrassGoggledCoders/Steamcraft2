@@ -26,7 +26,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 /**
  * @author Surseance
- *
+ * 
  */
 public class InitRecipes
 {
@@ -109,18 +109,20 @@ public class InitRecipes
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemPercussionCap), new Object[] { "GG", "II", 'I', "ingotBrass", 'G',
 				Items.gunpowder }));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemRocket, 1, 0), new Object[] { " I ", "PTP", "PTP", 'I', "ingotIron", 'P',
-			"plateBrass", 'T', Blocks.tnt }));
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemRocket, 1, 1), new Object[] { " F ", "PTP", "PTP", 'I', Items.flint_and_steel, 'P',
-			"plateBrass", 'T', Blocks.tnt }));
+				"plateBrass", 'T', Blocks.tnt }));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemRocket, 1, 1), new Object[] { " F ", "PTP", "PTP", 'I', Items.flint_and_steel,
+				'P',
+				"plateBrass", 'T', Blocks.tnt }));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemRocket, 1, 2), new Object[] { " U ", "PTP", "PTP", 'U', "ingotUranium", 'P',
-			"plateBrass", 'T', Blocks.tnt }));
-		//Other Guns
+				"plateBrass", 'T', Blocks.tnt }));
+		// Other Guns
 		GameRegistry.addRecipe(new ItemStack(InitItems.itemRayGun, 1, 20), new Object[] { "FSP", 'F', new ItemStack(InitItems.itemGunPart, 1, 6), 'S',
 				new ItemStack(InitItems.itemGunPart, 1, 4), 'P', new ItemStack(InitItems.itemGunPart, 1, 8) });
 		GameRegistry.addRecipe(new ItemStack(InitItems.itemShrinkray, 1, 20), new Object[] { "FSP", 'F', new ItemStack(InitItems.itemGunPart, 1, 7), 'S',
 				new ItemStack(InitItems.itemGunPart, 1, 5), 'P', new ItemStack(InitItems.itemGunPart, 1, 9) });
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemClockworkRocketLauncher), new Object[] { "CCC", "  S","CCC", 'C', "plateCastIron", 'S',
-			new ItemStack(InitItems.itemGunPart, 1, 5)}));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemClockworkRocketLauncher), new Object[] { "CCC", "  S", "CCC", 'C',
+				"plateCastIron", 'S',
+				new ItemStack(InitItems.itemGunPart, 1, 5) }));
 	}
 
 	private static void initMetalsRecipes()
@@ -189,8 +191,8 @@ public class InitRecipes
 				new ItemStack(InitItems.chestplateObsidian), new ItemStack(InitItems.legsObsidian), new ItemStack(InitItems.bootsObsidian) });
 
 		// Brass
-				RecipeUtils.addArmorSet(new ItemStack(InitItems.itemSheet, 1, 4), new ItemStack[] { new ItemStack(InitItems.helmetBrass),
-						new ItemStack(InitItems.chestplateBrass), new ItemStack(InitItems.legsBrass), new ItemStack(InitItems.bootsBrass) });
+		RecipeUtils.addArmorSet(new ItemStack(InitItems.itemSheet, 1, 4), new ItemStack[] { new ItemStack(InitItems.helmetBrass),
+				new ItemStack(InitItems.chestplateBrass), new ItemStack(InitItems.legsBrass), new ItemStack(InitItems.bootsBrass) });
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemClockworkWings), new Object[] { "BCB", "WCW", "W W", 'B',
 				new ItemStack(InitItems.itemIngot, 1, 4), 'C', "partClockworkMechanism", 'W', Blocks.wool }));
@@ -231,7 +233,7 @@ public class InitRecipes
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockCharger), new Object[] { "PPP", "IWI", "PPP", 'I',
 				"ingotSteel", 'S', "plateSteel", 'W', InitBlocks.blockCopperWire }));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockArmorEditor), new Object[] { "PPP", "WWW", "PCP", 'W',
-			Blocks.crafting_table, 'P', "plateBrass", 'C', Blocks.chest }));
+				Blocks.crafting_table, 'P', "plateBrass", 'C', Blocks.chest }));
 
 		GameRegistry.addShapedRecipe(new ItemStack(InitBlocks.blockUranium), new Object[] { "UUU", "UUU", "UUU", 'U',
 				new ItemStack(InitItems.itemResource, 1, 4) });
@@ -244,36 +246,38 @@ public class InitRecipes
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockCastIronRailing),
 				new Object[] { "III", "III", 'I', "ingotCastIron" }));
 	}
+
 	private static void initModuleRecipes()
 	{
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemAqualung), new Object[] { "LLI", "L L", "LLL", 'L',
-			Items.leather, 'I', "ingotIron"}));
+				Items.leather, 'I', "ingotIron" }));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemClimbingSpikes), new Object[] { " L ", "I I", 'L',
-			Items.leather_boots, 'I', "ingotIron"}));
+				Items.leather_boots, 'I', "ingotIron" }));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemTank), new Object[] { "GGG", "GWG", "GGG", 'G',
-			Blocks.glass_pane, 'W', Items.water_bucket}));
+				Blocks.glass_pane, 'W', Items.water_bucket }));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemFlippers), new Object[] { " B ", "L L", 'L',
-			Items.leather, 'B', Items.leather_boots}));
+				Items.leather, 'B', Items.leather_boots }));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemLegBraces), new Object[] { "PPP", "P P", "P P", 'P',
-			"plateCopper"}));
+				"plateCopper" }));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemLifeVest), new Object[] { "W W", "WWW", "WWW", 'W',
-			Blocks.wool}));
+				Blocks.wool }));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemParachute), new Object[] { "WWW", "W W", "S S", 'W',
-			Blocks.wool, 'S', Items.string}));
+				Blocks.wool, 'S', Items.string }));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemPistonBoots), new Object[] { "   ", "CBC", "P P", 'P',
-			Blocks.piston, 'B', Items.leather_boots, 'C', "partClockworkMechanism"}));
+				Blocks.piston, 'B', Items.leather_boots, 'C', "partClockworkMechanism" }));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemPistonPlating), new Object[] { "RPR", "PCP", "RPR", 'C',
-			Items.iron_chestplate, 'P', Blocks.piston, 'R', Items.redstone}));
+				Items.iron_chestplate, 'P', Blocks.piston, 'R', Items.redstone }));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemRollerSkates), new Object[] { "   ", " L ", "WRW", 'W',
-			Blocks.log, 'L', Items.leather_boots, 'R', "partCastIronRod"}));
+				Blocks.log, 'L', Items.leather_boots, 'R', "partCastIronRod" }));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemSpringHeels), new Object[] { "   ", " L ", "S S", 'S',
-			new ItemStack(InitItems.itemSteelParts, 1, 2), 'L', Items.leather_boots}));
+				new ItemStack(InitItems.itemSteelParts, 1, 2), 'L', Items.leather_boots }));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemSteelPlating), new Object[] { "SSS", "SSS", "SSS", 'S',
-			"plateSteel"}));
+				"plateSteel" }));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemWatchDisplay), new Object[] { "GGG", "RCR", "III", 'I',
-		"ingotIron", 'G', "paneGlass", 'R', Items.redstone, 'C', Items.clock}));
+				"ingotIron", 'G', "paneGlass", 'R', Items.redstone, 'C', Items.clock }));
 
 	}
+
 	private static void initOtherRecipes()
 	{
 		GameRegistry.addShapedRecipe(new ItemStack(InitItems.itemResource, 1, 2), new Object[] { "XXX", "XXX", "XXX", 'X', new ItemStack(Blocks.obsidian) });
@@ -338,7 +342,7 @@ public class InitRecipes
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemWatch), new Object[] { "SPS", "PMP", "SPS", 'P', "paneGlass", 'M',
 				"partClockworkMechanism", 'S', "plateBrass" }));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemTimeClock), new Object[] { "DGD", "GWG", "DGD", 'G', Items.ghast_tear, 'W',
-			InitItems.itemWatch, 'D', Items.diamond }));
+				InitItems.itemWatch, 'D', Items.diamond }));
 
 		GameRegistry.addRecipe(new ItemStack(InitItems.itemTeapot, 1, 0), "BB ", "B B", "BB ", 'B', Items.brick);
 		GameRegistry.addRecipe(new ItemStack(InitItems.itemTeapot, 1, 1), "PW", 'W', Items.water_bucket, 'P', new ItemStack(InitItems.itemTeapot, 1,

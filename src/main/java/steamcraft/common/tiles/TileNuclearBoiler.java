@@ -29,7 +29,7 @@ import boilerplate.common.baseclasses.BaseTileWithInventory;
 
 /**
  * @author Decebaldecebal
- *
+ * 
  */
 public class TileNuclearBoiler extends BaseTileWithInventory implements IFluidHandler
 {
@@ -155,9 +155,12 @@ public class TileNuclearBoiler extends BaseTileWithInventory implements IFluidHa
 	private int getItemBurnTime()
 	{
 
-		if(this.inventory[0] == null) return 0;
-		else if(this.inventory[0].getItem() == InitItems.itemResource && this.inventory[0].getItemDamage() == 5) return 3000;
-		else return 0;
+		if(this.inventory[0] == null)
+			return 0;
+		else if((this.inventory[0].getItem() == InitItems.itemResource) && (this.inventory[0].getItemDamage() == 5))
+			return 3000;
+		else
+			return 0;
 	}
 
 	public int getScaledWaterLevel(int i)
@@ -181,7 +184,7 @@ public class TileNuclearBoiler extends BaseTileWithInventory implements IFluidHa
 	{
 		if((par1 == 1) && FluidContainerRegistry.isContainer(itemstack))
 			return true;
-		if((par1 == 0) && (getItemBurnTime() > 0))
+		if((par1 == 0) && (this.getItemBurnTime() > 0))
 			return true;
 		return false;
 	}
