@@ -36,6 +36,7 @@ import steamcraft.common.items.ItemSpanner;
 import steamcraft.common.items.ItemTeaSeed;
 import steamcraft.common.items.ItemTeacup;
 import steamcraft.common.items.ItemTeapot;
+import steamcraft.common.items.ItemTimeClock;
 import steamcraft.common.items.ItemWatch;
 import steamcraft.common.items.ItemWithCraftingDurability;
 import steamcraft.common.items.armor.ItemBrassArmor;
@@ -165,6 +166,8 @@ public class InitItems
 	public static Item itemClockworkRocketLauncher, itemRocket;
 
 	public static Item itemPDA;
+
+	public static Item itemTimeClock;
 
 	/* Init */
 	public static void init()
@@ -388,6 +391,9 @@ public class InitItems
 
 		itemWatch = new ItemWatch().setUnlocalizedName("itemWatch");
 		registerItem(itemWatch, "ItemWatch");
+
+		itemTimeClock = new ItemTimeClock().setUnlocalizedName("itemTimeClock");
+		registerItem(itemTimeClock, "ItemTimeClock");
 
 		itemTeaSeed = new ItemTeaSeed().setUnlocalizedName("itemTeaSeed");
 		registerItem(itemTeaSeed, "ItemTeaSeed");

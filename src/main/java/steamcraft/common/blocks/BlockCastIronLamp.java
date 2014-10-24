@@ -34,7 +34,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 public class BlockCastIronLamp extends BlockContainer
 {
-	public final boolean powered;
+	public  boolean powered;
 
 	public BlockCastIronLamp(boolean powered)
 	{
@@ -44,7 +44,7 @@ public class BlockCastIronLamp extends BlockContainer
 		this.setResistance(7.5F);
 		this.setTickRandomly(true);
 		this.disableStats();
-		final float f = 0.25F;
+		 float f = 0.25F;
 		this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, 1.0F, 0.5F + f);
 		this.setCreativeTab(Steamcraft.tabSC2);
 
@@ -59,19 +59,19 @@ public class BlockCastIronLamp extends BlockContainer
 	}
 
 	@Override
-	public int tickRate(final World world)
+	public int tickRate( World world)
 	{
 		return 10;
 	}
 
 	@Override
-	public AxisAlignedBB getCollisionBoundingBoxFromPool(final World world, final int x, final int y, final int z)
+	public AxisAlignedBB getCollisionBoundingBoxFromPool( World world,  int x,  int y,  int z)
 	{
 		return null;
 	}
 
 	@Override
-	public AxisAlignedBB getSelectedBoundingBoxFromPool(final World world, final int x, final int y, final int z)
+	public AxisAlignedBB getSelectedBoundingBoxFromPool( World world,  int x,  int y,  int z)
 	{
 		this.setBlockBoundsBasedOnState(world, x, y, z);
 		return super.getSelectedBoundingBoxFromPool(world, x, y, z);
@@ -96,8 +96,8 @@ public class BlockCastIronLamp extends BlockContainer
 	}
 
 	@Override
-	public int onBlockPlaced(final World world, final int i, final int j, final int k, final int side, final float hitX, final float hitY,
-			final float hitZ, final int metadata)
+	public int onBlockPlaced( World world,  int i,  int j,  int k, int side,  float hitX,  float hitY,
+			 float hitZ,  int metadata)
 	{
 		if(side == 0)
 			world.setBlockMetadataWithNotify(i, j, k, 6, 2);
@@ -116,7 +116,7 @@ public class BlockCastIronLamp extends BlockContainer
 	}
 
 	@Override
-	public boolean canPlaceBlockAt(final World world, final int x, final int y, final int z)
+	public boolean canPlaceBlockAt( World world,  int x,  int y,  int z)
 	{
 		return world.getBlock(x, y - 1, z) != Blocks.air ? true : false;
 	}
@@ -146,16 +146,8 @@ public class BlockCastIronLamp extends BlockContainer
 			else if(!powered && world.isBlockIndirectlyGettingPowered(x, y, z))
 				world.setBlock(x, y, z, InitBlocks.blockCastIronLampOn, 0, world.getBlockMetadata(x, y, z) + 10);
 	}
-
-	@Override
-	public void updateTick(World world, int x, int y, int z, Random random)
-	{
-		if(!world.isRemote && powered && !world.isBlockIndirectlyGettingPowered(x, y, z))
-			world.setBlock(x, y, z, InitBlocks.blockCastIronLamp, 0, world.getBlockMetadata(x, y, z) + 10);
-	}
-
 	@SuppressWarnings("unused")
-	private boolean dropIfCantStay(final World world, final int x, final int y, final int z)
+	private boolean dropIfCantStay( World world,  int x,  int y,  int z)
 	{
 		if(!this.canPlaceBlockAt(world, x, y, z))
 		{
@@ -175,18 +167,18 @@ public class BlockCastIronLamp extends BlockContainer
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void randomDisplayTick(final World world, final int x, final int j, final int z, final Random random)
+	public void randomDisplayTick( World world,  int x,  int j,  int z,  Random random)
 	{
 		if(!powered)
 			return;
 		else
 		{
-			final int l = world.getBlockMetadata(x, j, z);
-			final double d = x + 0.5F + ((random.nextFloat() - 0.5F) * 0.20000000000000001D);
-			final double d1 = j + 1.0F + ((random.nextFloat() - 0.5F) * 0.20000000000000001D);
-			final double d2 = z + 0.5F + ((random.nextFloat() - 0.5F) * 0.20000000000000001D);
-			final double d3 = 0.2199999988079071D;
-			final double d4 = 0.27000001072883606D;
+			 int l = world.getBlockMetadata(x, j, z);
+			 double d = x + 0.5F + ((random.nextFloat() - 0.5F) * 0.20000000000000001D);
+			 double d1 = j + 1.0F + ((random.nextFloat() - 0.5F) * 0.20000000000000001D);
+			 double d2 = z + 0.5F + ((random.nextFloat() - 0.5F) * 0.20000000000000001D);
+			 double d3 = 0.2199999988079071D;
+			 double d4 = 0.27000001072883606D;
 
 			if(l == 1)
 				world.spawnParticle("reddust", d - d4, d1 + d3, d2, -1.0D, 0.7D, 1.0D);

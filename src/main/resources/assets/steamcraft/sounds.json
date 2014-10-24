@@ -70,4 +70,12 @@
 			"hitblock"
         ]
     }
+ 	"warp":
+    {
+        "category": "block",
+        "sounds":
+        [
+			"warp"
+        ]
+    }
 }
