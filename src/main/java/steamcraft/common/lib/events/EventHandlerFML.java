@@ -35,14 +35,11 @@ import steamcraft.common.items.electric.ItemRayGun;
 import steamcraft.common.items.electric.ItemShrinkray;
 import cpw.mods.fml.client.event.ConfigChangedEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.common.gameevent.InputEvent.KeyInputEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 public class EventHandlerFML
 {
@@ -150,24 +147,20 @@ public class EventHandlerFML
 		}
 		// TODO: Test on server
 		if((event.player.worldObj.getPlayerEntityByName("warlordjones") != null)
-				|| (event.player.worldObj.getPlayerEntityByName("decebaldecebal") != null /*
-																						 * && event.player.getCommandSenderName() != "warlordjones" &&
-																						 * event.player.getCommandSenderName() != "decebaldecebal"
-																						 */))
+				|| (event.player.worldObj.getPlayerEntityByName("decebaldecebal") != null))
 		{
 			event.player.triggerAchievement(InitAchievements.creatorAchieve);
 		}
 	}
 
-	@SubscribeEvent
+	/*@SubscribeEvent
 	@SideOnly(Side.CLIENT)
 	public void KeyInputEvent(KeyInputEvent event)
 	{
-		/*
-		 * if(InitKeyBindings.vanity.isPressed()) if(Minecraft.getMinecraft().currentScreen == null) { EntityPlayer p = Minecraft.getMinecraft().thePlayer;
-		 * p.openGui(Steamcraft.instance, GuiIDs.VANITY, p.worldObj, (int) p.posX, (int) p.posY, (int) p.posZ); }
-		 */
-	}
+		 if(InitKeyBindings.vanity.isPressed()) if(Minecraft.getMinecraft().currentScreen == null) { EntityPlayer p = Minecraft.getMinecraft().thePlayer;
+		 p.openGui(Steamcraft.instance, GuiIDs.VANITY, p.worldObj, (int) p.posX, (int) p.posY, (int) p.posZ); }
+
+	}*/
 
 	@SubscribeEvent
 	public void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent eventArgs)

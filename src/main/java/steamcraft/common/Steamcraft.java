@@ -21,6 +21,7 @@ import steamcraft.common.config.ConfigWorldGen;
 import steamcraft.common.lib.CommandSteamcraft;
 import steamcraft.common.lib.CreativeTabSteamcraft;
 import steamcraft.common.lib.LibInfo;
+import steamcraft.common.lib.events.EventHandlerClient;
 import steamcraft.common.lib.events.EventHandlerFML;
 import steamcraft.common.lib.events.EventHandlerForge;
 import steamcraft.common.worldgen.WorldGenSteamcraft;
@@ -41,7 +42,7 @@ import cpw.mods.fml.relauncher.Side;
 
 /**
  * @author Surseance
- * 
+ *
  */
 @Mod(modid = LibInfo.ID, name = LibInfo.NAME, version = LibInfo.VERSION, guiFactory = LibInfo.CONFIG_GUI, dependencies = "required-after:boilerplate")
 public class Steamcraft
@@ -65,9 +66,6 @@ public class Steamcraft
 
 		Config.initialise(configPath);
 
-		MinecraftForge.EVENT_BUS.register(new EventHandlerForge());
-		FMLCommonHandler.instance().bus().register(new EventHandlerFML());
-
 		if(ConfigWorldGen.generationEnabled)
 			GameRegistry.registerWorldGenerator(new WorldGenSteamcraft(), 1);
 
@@ -77,6 +75,11 @@ public class Steamcraft
 		NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
 
 		InitPackets.init();
+
+		MinecraftForge.EVENT_BUS.register(new EventHandlerForge());
+		MinecraftForge.EVENT_BUS.register(new EventHandlerClient());
+		FMLCommonHandler.instance().bus().register(new EventHandlerClient());
+		FMLCommonHandler.instance().bus().register(new EventHandlerFML());
 	}
 
 	@EventHandler

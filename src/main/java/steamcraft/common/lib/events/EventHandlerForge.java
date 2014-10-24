@@ -15,6 +15,7 @@ package steamcraft.common.lib.events;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.EntityClientPlayerMP;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.Tessellator;
@@ -31,6 +32,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.MovingObjectPosition.MovingObjectType;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 import net.minecraftforge.client.event.DrawBlockHighlightEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
@@ -60,7 +62,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 public class EventHandlerForge
 {
@@ -70,7 +72,7 @@ public class EventHandlerForge
 		if(event.entity instanceof EntityPlayer)
 			EntityPlayerExtended.register((EntityPlayer) event.entity);
 	}
-
+	//TODO Why is this even here??
 	@SubscribeEvent
 	public void onItemDrop(ItemTossEvent event)
 	{
@@ -334,6 +336,41 @@ public class EventHandlerForge
 		if(inventory.getSizeInventory() != 0)
 		{
 			player.rotationYaw++;
+		}
+	}
+	//TODO Not transparent, for some reason
+	//private static ResourceLocation overlay = new ResourceLocation(LibInfo.PREFIX + "textures/misc/spyglass.png");
+	@SubscribeEvent
+	public void onRenderOverlay(RenderGameOverlayEvent event)
+	{
+		EntityClientPlayerMP player = Minecraft.getMinecraft().thePlayer;
+
+		if(player != null && Minecraft.getMinecraft().currentScreen == null &&
+				player.inventory.getCurrentItem() != null && player.inventory.
+				getCurrentItem().getItem() == InitItems.itemSpyglass && Minecraft.getMinecraft().gameSettings.thirdPersonView == 0)
+		{
+			//Minecraft.getMinecraft().getTextureManager().bindTexture(overlay);
+			Tessellator tessellator = Tessellator.instance;
+			ScaledResolution scaledResolution = new ScaledResolution(Minecraft.getMinecraft(), Minecraft.getMinecraft().displayWidth,
+					Minecraft.getMinecraft().displayHeight);
+			int width = scaledResolution.getScaledWidth();
+			int height = scaledResolution.getScaledHeight();
+
+			GL11.glDisable(GL11.GL_DEPTH_TEST);
+			GL11.glDepthMask(false);
+
+			GL11.glDisable(GL11.GL_ALPHA_TEST);
+			GL11.glClearDepth(1.0D);
+			tessellator.startDrawingQuads();
+			tessellator.addVertexWithUV(0.0D, height, 90.0D, 0.0D, 1.0D);
+			tessellator.addVertexWithUV(width, height, 90.0D, 1.0D, 1.0D);
+			tessellator.addVertexWithUV(width, 0.0D, 90.0D, 1.0D, 0.0D);
+			tessellator.addVertexWithUV(0.0D, 0.0D, 90.0D, 0.0D, 0.0D);
+			tessellator.draw();
+			GL11.glDepthMask(true);
+			GL11.glEnable(GL11.GL_DEPTH_TEST);
+			GL11.glEnable(GL11.GL_ALPHA_TEST);
+			GL11.glDisable(GL11.GL_BLEND);
 		}
 	}
 }

@@ -77,7 +77,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 /**
  * @author Surseance
- * 
+ *
  */
 public class InitItems
 {
@@ -168,6 +168,8 @@ public class InitItems
 	public static Item itemPDA;
 
 	public static Item itemTimeClock;
+
+	public static Item itemSpyglass;
 
 	/* Init */
 	public static void init()
@@ -472,6 +474,10 @@ public class InitItems
 
 		itemPDA = new ItemPDA().setUnlocalizedName("itemPDA");
 		registerItem(itemPDA, "ItemPDA");
+		//TODO overlay when held
+		itemSpyglass = new BaseItem().setUnlocalizedName("itemSpyglass");
+		registerItem(itemSpyglass, "ItemSpyglass");
+
 	}
 
 	private static void registerItem(Item item, String name)
