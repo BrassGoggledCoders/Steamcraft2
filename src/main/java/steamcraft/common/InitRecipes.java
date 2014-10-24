@@ -337,6 +337,8 @@ public class InitRecipes
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemWatch), new Object[] { "SPS", "PMP", "SPS", 'P', "paneGlass", 'M',
 				"partClockworkMechanism", 'S', "plateBrass" }));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemTimeClock), new Object[] { "DGD", "GWG", "DGD", 'G', Items.ghast_tear, 'W',
+			InitItems.itemWatch, 'D', Items.diamond }));
 
 		GameRegistry.addRecipe(new ItemStack(InitItems.itemTeapot, 1, 0), "BB ", "B B", "BB ", 'B', Items.brick);
 		GameRegistry.addRecipe(new ItemStack(InitItems.itemTeapot, 1, 1), "PW", 'W', Items.water_bucket, 'P', new ItemStack(InitItems.itemTeapot, 1,
