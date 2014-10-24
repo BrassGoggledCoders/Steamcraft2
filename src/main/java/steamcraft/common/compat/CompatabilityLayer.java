@@ -13,10 +13,12 @@
 package steamcraft.common.compat;
 
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraftforge.oredict.OreDictionary;
 import steamcraft.common.InitBlocks;
 import steamcraft.common.InitItems;
-import steamcraft.common.items.ItemParts;
+import steamcraft.common.config.ConfigGeneral;
 import steamcraft.common.lib.LibInfo;
 import boilerplate.common.utils.helpers.OreDictHelper;
 import cpw.mods.fml.common.event.FMLInterModComms;
@@ -39,6 +41,36 @@ public class CompatabilityLayer
 	private static void sendIMCMessages()
 	{
 		FMLInterModComms.sendRuntimeMessage(LibInfo.ID, "VersionChecker", "addVersionCheck", LibInfo.VERSION_URL);
+		sendTiConIMC();
+	}
+
+	private static void sendTiConIMC()
+	{
+		NBTTagCompound tag = new NBTTagCompound();
+		tag.setInteger("Id", ConfigGeneral.etheriumMaterialID); // Unique material ID. Reseved IDs: 0-40 Tinker, 41-45 Iguana Tinker Tweaks, 100-200 ExtraTiC
+		tag.setString("Name", "Etherium"); // Unique material name
+		tag.setInteger("Durability", 2000);
+		tag.setInteger("MiningSpeed", 500);
+		tag.setInteger("Attack", 5); // optional
+		tag.setFloat("HandleModifier", 0.1f);
+		tag.setInteger("Reinforced", 1); // optional
+		tag.setString("Style", EnumChatFormatting.RED.toString()); // optional, color of the material text
+		tag.setInteger("Color", 16711935); //Color Integer (http://www.shodor.org/stella2java/rgbint.html is useful!)
+
+		FMLInterModComms.sendMessage("TConstruct", "addMaterial", tag);
+
+		tag = new NBTTagCompound();
+		tag.setInteger("MaterialId", ConfigGeneral.etheriumMaterialID);
+		NBTTagCompound item = new NBTTagCompound();
+		(new ItemStack(InitItems.itemResource, 1, 0)).writeToNBT(item);
+		tag.setTag("Item", item);
+
+		item = new NBTTagCompound();
+		(new ItemStack(InitItems.itemResource, 1, 6)).writeToNBT(item);
+		tag.setTag("Shard", item);
+
+		tag.setInteger("Value", 2);
+		FMLInterModComms.sendMessage("TConstruct", "addPartBuilderMaterial", tag);
 	}
 
 	private static void registerOreDictionaryEntries()

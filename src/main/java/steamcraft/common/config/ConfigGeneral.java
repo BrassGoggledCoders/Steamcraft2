@@ -35,6 +35,8 @@ public class ConfigGeneral
 
 	public static List<String> nameBlacklist;
 
+	public static int etheriumMaterialID;
+
 	public static void initialize(File configFile)
 	{
 		config = new Configuration(configFile);
@@ -48,12 +50,14 @@ public class ConfigGeneral
 			drawFluid = config.get(CATEGORY_CLIENT, "Render fluid inside blocks", true).getBoolean();
 			drawInside = config.get(CATEGORY_CLIENT, "Render the insides of blocks", true).getBoolean();
 
+			etheriumMaterialID = config.get(CATEGORY_GENERAL, "Etherium Tool Material ID for Tinker's Construct", 66).getInt();
+
 			// registerJars = config.get(CATEGORY_CLIENT, "Electric Jars Enabled", true).getBoolean();
 
-			String[] blacklistArray = nameBlacklist.toArray(new String[] {});
+			//String[] blacklistArray = nameBlacklist.toArray(new String[] {});
 
-			blacklistArray = config.getStringList("Blacklist", CATEGORY_GENERAL, new String[] { "itemTeapot", "itemTwo", "itemThree" },
-					"Blacklist unlocalized Names of Items from our mod here to prevent them loading");
+			//blacklistArray = config.getStringList("Blacklist", CATEGORY_GENERAL, new String[] { "itemTeapot", "itemTwo", "itemThree" },
+			//		"Blacklist unlocalized Names of Items from our mod here to prevent them loading");
 		}
 		catch(Exception e)
 		{

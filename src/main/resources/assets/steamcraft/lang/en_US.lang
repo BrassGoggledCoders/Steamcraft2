@@ -112,6 +112,7 @@ item.itemResource.2.name=Obsidian Slate
 item.itemResource.3.name=Phosphorus
 item.itemResource.4.name=Uranium
 item.itemResource.5.name=Uranium Pellets
+item.itemResource.6.name=Etherium Crystal Shard
 item.itemTeaLeaves.name=Tea Leaf
 item.itemTeaSeed.name=Tea Seeds
 item.itemTeacup.name=Teacup
@@ -410,5 +411,8 @@ death.attack.steamcraft2.bullet.player.item=%1$s was shot by %2$s using %3$s
 
 #Vanilla Docs
 tile.chest.documentation=For holding things. Has 36 slots.
+
+#TiCon Material
+material.etherium=Etherium
 
 

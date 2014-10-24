@@ -26,11 +26,11 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 public class ItemResource extends BaseItemWithMetadata
 {
-	IIcon[] itemIcon = new IIcon[6];
+	IIcon[] itemIcon = new IIcon[7];
 
 	public ItemResource()
 	{
@@ -48,6 +48,7 @@ public class ItemResource extends BaseItemWithMetadata
 		this.itemIcon[3] = ir.registerIcon(LibInfo.PREFIX + "itemPhosphorus");
 		this.itemIcon[4] = ir.registerIcon(LibInfo.PREFIX + "itemUranium");
 		this.itemIcon[5] = ir.registerIcon(LibInfo.PREFIX + "itemPellet");
+		this.itemIcon[6] = ir.registerIcon(LibInfo.PREFIX + "itemCrystalShard");
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
