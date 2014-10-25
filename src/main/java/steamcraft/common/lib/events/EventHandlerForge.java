@@ -62,7 +62,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class EventHandlerForge
 {
@@ -72,7 +72,8 @@ public class EventHandlerForge
 		if(event.entity instanceof EntityPlayer)
 			EntityPlayerExtended.register((EntityPlayer) event.entity);
 	}
-	//TODO Why is this even here??
+
+	// TODO Why is this even here??
 	@SubscribeEvent
 	public void onItemDrop(ItemTossEvent event)
 	{
@@ -338,8 +339,10 @@ public class EventHandlerForge
 			player.rotationYaw++;
 		}
 	}
-	//TODO Not transparent, for some reason
-	//private static ResourceLocation overlay = new ResourceLocation(LibInfo.PREFIX + "textures/misc/spyglass.png");
+
+	// TODO Not transparent, for some reason
+	private static ResourceLocation overlay = new ResourceLocation(LibInfo.PREFIX + "textures/misc/spyglass.png");
+
 	@SubscribeEvent
 	public void onRenderOverlay(RenderGameOverlayEvent event)
 	{
@@ -347,9 +350,9 @@ public class EventHandlerForge
 
 		if(player != null && Minecraft.getMinecraft().currentScreen == null &&
 				player.inventory.getCurrentItem() != null && player.inventory.
-				getCurrentItem().getItem() == InitItems.itemSpyglass && Minecraft.getMinecraft().gameSettings.thirdPersonView == 0)
+						getCurrentItem().getItem() == InitItems.itemSpyglass && Minecraft.getMinecraft().gameSettings.thirdPersonView == 0)
 		{
-			//Minecraft.getMinecraft().getTextureManager().bindTexture(overlay);
+			Minecraft.getMinecraft().getTextureManager().bindTexture(overlay);
 			Tessellator tessellator = Tessellator.instance;
 			ScaledResolution scaledResolution = new ScaledResolution(Minecraft.getMinecraft(), Minecraft.getMinecraft().displayWidth,
 					Minecraft.getMinecraft().displayHeight);

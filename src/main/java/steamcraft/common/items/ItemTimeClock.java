@@ -14,6 +14,7 @@ package steamcraft.common.items;
 
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ChatComponentText;
@@ -64,6 +65,7 @@ public class ItemTimeClock extends BaseItem
 					ChatComponentText text = new ChatComponentText("Time set to Night");
 					player.addChatComponentMessage(text);
 					player.playSound(LibInfo.PREFIX + "warp", 1, 1);
+					player.inventory.consumeInventoryItem(Items.ender_eye);
 				}
 				else
 				{
@@ -71,6 +73,7 @@ public class ItemTimeClock extends BaseItem
 					player.addChatComponentMessage(text);
 					world.setWorldTime(1000);
 					player.playSound(LibInfo.PREFIX + "warp", 1, 1);
+					player.inventory.consumeInventoryItem(Items.ender_eye);
 				}
 			}
 			else
@@ -85,11 +88,12 @@ public class ItemTimeClock extends BaseItem
 	}
 
 	@Override
-	public ItemStack onItemRightClick(ItemStack p_77659_1_, World p_77659_2_, EntityPlayer p_77659_3_)
+	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
 	{
-		p_77659_3_.setItemInUse(p_77659_1_, this.getMaxItemUseDuration(p_77659_1_));
+		if(player.inventory.hasItem(Items.ender_eye))
+			player.setItemInUse(stack, this.getMaxItemUseDuration(stack));
 
-		return p_77659_1_;
+		return stack;
 	}
 
 	@SideOnly(Side.CLIENT)
