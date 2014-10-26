@@ -40,7 +40,7 @@ dependencies {
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
 
-	compile files("../Boilerplate/build/libs/boilerplate.jar")
+	compile files("build/boilerplate.jar")
 }
 
 processResources
