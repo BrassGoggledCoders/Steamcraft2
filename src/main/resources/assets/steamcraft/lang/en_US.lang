@@ -256,6 +256,9 @@ item.itemHammer.name=Hammer
 item.itemHammer.desc=Used for crushing ores and flattening plates
 item.itemDrawplate.name=Drawplate
 item.itemDrawplate.desc=Used for creating wire
+item.itemSpyglass.name=Spyglass
+item.itemSpyglass.desc=Zooms you in 3x
+
 
 #Armors
 item.itemHelmetBrass.name=Brass Helmet
@@ -363,6 +366,8 @@ item.itemWatchDisplay.name=Time HUD Module
 item.itemWatchDisplay.desc=Shows in-game + real world time on your HUD
 item.itemSteelPlating.name=Steel Plating
 item.itemSteelPlating.desc=Simple Defensive Module
+item.itemLastResort.name=Last Resort
+item.itemLastResort.desc=If you reach a heart, you explode, violently. Your items will not be destroyed.
 
 #Containers
 container.bloomery=Bloomery

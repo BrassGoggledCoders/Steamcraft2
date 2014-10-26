@@ -26,7 +26,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 /**
  * @author Surseance
- *
+ * 
  */
 public class InitRecipes
 {
@@ -209,7 +209,7 @@ public class InitRecipes
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemMonocle), new Object[] { " B ", "BGB", " BS", 'B', "ingotBrass", 'G',
 				"paneGlass", 'S', Items.string }));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemDivingHelmet), new Object[] { "PPP", "PGP", "PPP", 'P', "plateBrass", 'G',
-			"paneGlass"}));
+				"paneGlass" }));
 	}
 
 	private static void initBlockRecipes()
@@ -277,6 +277,8 @@ public class InitRecipes
 				"plateSteel" }));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemWatchDisplay), new Object[] { "GGG", "RCR", "III", 'I',
 				"ingotIron", 'G', "paneGlass", 'R', Items.redstone, 'C', Items.clock }));
+		// GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemLastResort), new Object[] { "TTT", "TCT", "TTT", 'T',
+		// Blocks.tnt, 'C', InitBlocks.blockCopperWire }));
 
 	}
 
@@ -366,7 +368,7 @@ public class InitRecipes
 		GameRegistry.addRecipe(new ItemStack(InitBlocks.blockFlesh), "ZZ", "ZZ", 'Z', Items.rotten_flesh);
 		GameRegistry.addRecipe(new ItemStack(InitBlocks.blockCongealedSlime), "RRR", "RRR", "RRR", 'R', InitItems.itemSlimeRubber);
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemSpyglass), new Object[] { "BGB", "W W", " G ", 'B', "ingotBrass", 'G',
-			"paneGlass", 'W', "plankWood" }));
+				"paneGlass", 'W', "plankWood" }));
 	}
 
 	public static void initializeSmeltingRecipes()

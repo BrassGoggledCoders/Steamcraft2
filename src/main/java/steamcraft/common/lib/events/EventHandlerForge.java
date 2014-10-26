@@ -340,11 +340,11 @@ public class EventHandlerForge
 		}
 	}
 
-	// TODO Not transparent, for some reason
+	// TODO It's on the chat event because that allows transparency
 	private static ResourceLocation overlay = new ResourceLocation(LibInfo.PREFIX + "textures/misc/spyglass.png");
 
 	@SubscribeEvent
-	public void onRenderOverlay(RenderGameOverlayEvent event)
+	public void onRenderOverlay(RenderGameOverlayEvent.Chat event)
 	{
 		EntityClientPlayerMP player = Minecraft.getMinecraft().thePlayer;
 
@@ -352,6 +352,9 @@ public class EventHandlerForge
 				player.inventory.getCurrentItem() != null && player.inventory.
 						getCurrentItem().getItem() == InitItems.itemSpyglass && Minecraft.getMinecraft().gameSettings.thirdPersonView == 0)
 		{
+			GL11.glDisable(GL11.GL_ALPHA_TEST);
+			GL11.glDisable(GL11.GL_DEPTH_TEST);
+
 			Minecraft.getMinecraft().getTextureManager().bindTexture(overlay);
 			Tessellator tessellator = Tessellator.instance;
 			ScaledResolution scaledResolution = new ScaledResolution(Minecraft.getMinecraft(), Minecraft.getMinecraft().displayWidth,
@@ -359,10 +362,8 @@ public class EventHandlerForge
 			int width = scaledResolution.getScaledWidth();
 			int height = scaledResolution.getScaledHeight();
 
-			GL11.glDisable(GL11.GL_DEPTH_TEST);
 			GL11.glDepthMask(false);
 
-			GL11.glDisable(GL11.GL_ALPHA_TEST);
 			GL11.glClearDepth(1.0D);
 			tessellator.startDrawingQuads();
 			tessellator.addVertexWithUV(0.0D, height, 90.0D, 0.0D, 1.0D);

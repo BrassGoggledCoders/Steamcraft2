@@ -46,6 +46,8 @@ public class CompatabilityLayer
 
 	private static void sendTiConIMC()
 	{
+		// TODO Zinc Tools & Melting
+
 		NBTTagCompound tag = new NBTTagCompound();
 		tag.setInteger("Id", ConfigGeneral.etheriumMaterialID); // Unique material ID. Reseved IDs: 0-40 Tinker, 41-45 Iguana Tinker Tweaks, 100-200 ExtraTiC
 		tag.setString("Name", "Etherium"); // Unique material name

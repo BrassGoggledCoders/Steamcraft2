@@ -53,6 +53,7 @@ import steamcraft.common.items.modules.ItemAqualung;
 import steamcraft.common.items.modules.ItemClimbingSpikes;
 import steamcraft.common.items.modules.ItemEmergencyTank;
 import steamcraft.common.items.modules.ItemFlippers;
+import steamcraft.common.items.modules.ItemLastResort;
 import steamcraft.common.items.modules.ItemLegBraces;
 import steamcraft.common.items.modules.ItemLifeVest;
 import steamcraft.common.items.modules.ItemParachute;
@@ -77,7 +78,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 /**
  * @author Surseance
- *
+ * 
  */
 public class InitItems
 {
@@ -157,7 +158,7 @@ public class InitItems
 	// Modules
 	public static Item itemAqualung, itemPistonPlating, itemTank, itemWatchDisplay, itemClimbingSpikes
 			, itemLegBraces, itemSpringHeels, itemRollerSkates, itemParachute, itemFlippers, itemLifeVest,
-			itemPistonBoots, itemSteelPlating;
+			itemPistonBoots, itemSteelPlating, itemLastResort;
 
 	public static Item itemTeapot, itemTeacup;
 
@@ -457,6 +458,9 @@ public class InitItems
 		itemSteelPlating = new ItemSteelPlating().setUnlocalizedName("itemSteelPlating");
 		registerItem(itemSteelPlating, "ItemSteelPlating");
 
+		itemLastResort = new ItemLastResort().setUnlocalizedName("itemLastResort");
+		registerItem(itemLastResort, "ItemLastResort");
+
 		itemTeaLeaf = new BaseItem().setUnlocalizedName("itemTeaLeaves");
 		registerItem(itemTeaLeaf, "ItemTeaLeaf");
 
@@ -474,7 +478,7 @@ public class InitItems
 
 		itemPDA = new ItemPDA().setUnlocalizedName("itemPDA");
 		registerItem(itemPDA, "ItemPDA");
-		//TODO overlay when held
+		// TODO overlay when held
 		itemSpyglass = new BaseItem().setUnlocalizedName("itemSpyglass");
 		registerItem(itemSpyglass, "ItemSpyglass");
 
