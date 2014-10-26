@@ -220,7 +220,7 @@ item.itemClockworkRocket.1.desc=Fiery Explosion
 item.itemClockworkRocket.2.name=Depleted Uranium Tip Rocket
 item.itemClockworkRocket.2.desc=Armor-Piercing Shell
 item.itemTimeClock.name=Chronometer of Time Manipulation
-item.itemTimeClock.desc=Manipulate the fabric of time! Right Click to set to day, Shift Right Click to set to night.
+item.itemTimeClock.desc=Manipulate the fabric of time! Right Click to set to day, Shift Right Click to set to night. Consumes one Ender Eye per use.
 
 #Tools
 item.itemDrillCore.name=Drill Core
