@@ -18,7 +18,6 @@ import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.entity.RenderSnowball;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
-import net.minecraftforge.common.MinecraftForge;
 import steamcraft.client.lib.RenderIDs;
 import steamcraft.client.renderers.block.BlockBatteryRenderer;
 import steamcraft.client.renderers.block.BlockCastIronLampRenderer;
@@ -51,12 +50,10 @@ import steamcraft.client.renderers.tile.TileLightningRodRenderer;
 import steamcraft.client.renderers.tile.TileTeslaCoilRenderer;
 import steamcraft.common.CommonProxy;
 import steamcraft.common.InitItems;
-import steamcraft.common.InitKeyBindings;
 import steamcraft.common.entities.EntityFleshGolem;
 import steamcraft.common.entities.EntityGrapplingHook;
 import steamcraft.common.entities.projectile.EntityBullet;
 import steamcraft.common.entities.projectile.EntityRocket;
-import steamcraft.common.lib.events.EventHandlerClient;
 import steamcraft.common.tiles.TileBattery;
 import steamcraft.common.tiles.TileCharger;
 import steamcraft.common.tiles.TileCopperPipe;
@@ -70,29 +67,20 @@ import boilerplate.common.entity.EntityMinedBlock;
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
-import cpw.mods.fml.common.FMLCommonHandler;
 
 /**
  * @author Surseance
- *
+ * 
  */
 public class ClientProxy extends CommonProxy
 {
-	@Override
-	public void registerKeys()
-	{
-		FMLCommonHandler.instance().bus().register(new InitKeyBindings());
-	}
-	@Override
-	public void registerEventHandlers()
-	{
-		MinecraftForge.EVENT_BUS.register(new EventHandlerClient());
-	}
+	/*
+	 * @Override public void registerKeys() { FMLCommonHandler.instance().bus().register(new InitKeyBindings()); }
+	 */
 
 	@Override
 	public void registerDisplayInformation()
 	{
-		// Utils.downloadCapes();
 	}
 
 	@Override

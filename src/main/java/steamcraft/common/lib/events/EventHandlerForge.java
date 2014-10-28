@@ -25,7 +25,6 @@ import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.tileentity.TileEntity;
@@ -40,7 +39,6 @@ import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.common.IExtendedEntityProperties;
 import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.event.entity.EntityEvent.EntityConstructing;
-import net.minecraftforge.event.entity.item.ItemTossEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.living.LivingSpawnEvent;
 
@@ -71,14 +69,6 @@ public class EventHandlerForge
 	{
 		if(event.entity instanceof EntityPlayer)
 			EntityPlayerExtended.register((EntityPlayer) event.entity);
-	}
-
-	// TODO Why is this even here??
-	@SubscribeEvent
-	public void onItemDrop(ItemTossEvent event)
-	{
-		NBTTagCompound thrower = event.entityItem.getEntityData();
-		thrower.setString("thrower", event.player.getCommandSenderName());
 	}
 
 	@SubscribeEvent
@@ -344,6 +334,7 @@ public class EventHandlerForge
 	private static ResourceLocation overlay = new ResourceLocation(LibInfo.PREFIX + "textures/misc/spyglass.png");
 
 	@SubscribeEvent
+	@SideOnly(Side.CLIENT)
 	public void onRenderOverlay(RenderGameOverlayEvent.Chat event)
 	{
 		EntityClientPlayerMP player = Minecraft.getMinecraft().thePlayer;

@@ -42,7 +42,7 @@ import cpw.mods.fml.relauncher.Side;
 
 /**
  * @author Surseance
- *
+ * 
  */
 @Mod(modid = LibInfo.ID, name = LibInfo.NAME, version = LibInfo.VERSION, guiFactory = LibInfo.CONFIG_GUI, dependencies = "required-after:boilerplate")
 public class Steamcraft
@@ -78,7 +78,6 @@ public class Steamcraft
 
 		MinecraftForge.EVENT_BUS.register(new EventHandlerForge());
 		MinecraftForge.EVENT_BUS.register(new EventHandlerClient());
-		FMLCommonHandler.instance().bus().register(new EventHandlerClient());
 		FMLCommonHandler.instance().bus().register(new EventHandlerFML());
 	}
 

@@ -21,7 +21,7 @@ import net.minecraft.world.World;
 
 /**
  * @author Surseance
- *
+ * 
  */
 public class CommonProxy
 {
@@ -80,11 +80,6 @@ public class CommonProxy
 	}
 
 	public void registerKeys()
-	{
-
-	}
-
-	public void registerEventHandlers()
 	{
 
 	}
