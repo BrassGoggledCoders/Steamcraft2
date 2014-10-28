@@ -379,7 +379,7 @@ public class InitRecipes
 			GameRegistry.addSmelting(new ItemStack(InitBlocks.blockCustomOre, 1, meta), new ItemStack(InitItems.itemIngot, 1, meta), 0.3F);
 		}
 		// Dusts ---> Ingots
-		for(int meta = 0; meta < 6; meta++)
+		for(int meta = 0; meta < 8; meta++)
 		{
 			GameRegistry.addSmelting(new ItemStack(InitItems.itemPowder, 1, meta), new ItemStack(InitItems.itemIngot, 1, meta), 0.3F);
 		}
