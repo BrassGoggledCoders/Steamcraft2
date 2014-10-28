@@ -75,10 +75,6 @@ public class Steamcraft
 		NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
 
 		InitPackets.init();
-
-		MinecraftForge.EVENT_BUS.register(new EventHandlerForge());
-		MinecraftForge.EVENT_BUS.register(new EventHandlerClient());
-		FMLCommonHandler.instance().bus().register(new EventHandlerFML());
 	}
 
 	@EventHandler
@@ -89,6 +85,10 @@ public class Steamcraft
 
 		proxy.registerDisplayInformation();
 		proxy.registerRenderers();
+
+		MinecraftForge.EVENT_BUS.register(new EventHandlerForge());
+		MinecraftForge.EVENT_BUS.register(new EventHandlerClient());
+		FMLCommonHandler.instance().bus().register(new EventHandlerFML());
 	}
 
 	@EventHandler
