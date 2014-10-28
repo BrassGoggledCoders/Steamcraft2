@@ -63,8 +63,8 @@ public class InitRecipes
 				'G', Blocks.glass_pane, 'S', "gemEmerald" }));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemGunPart, 1, 7), new Object[] { "IGI", "GSG", "IGI", 'I', "plateBrass",
 				'G', "paneGlass", 'S', "gemDiamond" }));
-		GameRegistry.addRecipe(new ItemStack(InitItems.itemGunPart, 1, 8), new Object[] { "SSS", "SES", "SSS", 'E',
-				new ItemStack(InitItems.itemResource, 1, 0), 'S', new ItemStack(InitItems.itemResource, 1, 2) });
+		GameRegistry.addRecipe(new ItemStack(InitItems.itemGunPart, 1, 8), new Object[] { "SSS", "SJS", "SSS", 'J',
+				InitItems.itemElectricJarSmall, 'S', new ItemStack(InitItems.itemResource, 1, 2) });
 		if(!ConfigBalance.cheaperCoreRecipe)
 			GameRegistry.addRecipe(new ItemStack(InitItems.itemGunPart, 1, 9), new Object[] { "SPS", "PNP", "SPS", 'S',
 					new ItemStack(InitItems.itemResource, 1, 2), 'P', new ItemStack(InitItems.itemGunPart, 1, 8), 'N', Items.nether_star });
@@ -110,7 +110,7 @@ public class InitRecipes
 				Items.gunpowder }));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemRocket, 1, 0), new Object[] { " I ", "PTP", "PTP", 'I', "ingotIron", 'P',
 				"plateBrass", 'T', Blocks.tnt }));
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemRocket, 1, 1), new Object[] { " F ", "PTP", "PTP", 'I', Items.flint_and_steel,
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemRocket, 1, 1), new Object[] { " F ", "PTP", "PTP", 'F', Items.flint_and_steel,
 				'P',
 				"plateBrass", 'T', Blocks.tnt }));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemRocket, 1, 2), new Object[] { " U ", "PTP", "PTP", 'U', "ingotUranium", 'P',
