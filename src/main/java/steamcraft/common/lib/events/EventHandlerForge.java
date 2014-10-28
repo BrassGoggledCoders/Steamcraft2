@@ -339,9 +339,9 @@ public class EventHandlerForge
 	{
 		EntityClientPlayerMP player = Minecraft.getMinecraft().thePlayer;
 
-		if(player != null && Minecraft.getMinecraft().currentScreen == null &&
-				player.inventory.getCurrentItem() != null && player.inventory.
-						getCurrentItem().getItem() == InitItems.itemSpyglass && Minecraft.getMinecraft().gameSettings.thirdPersonView == 0)
+		if((player != null) && (Minecraft.getMinecraft().currentScreen == null) &&
+				(player.inventory.getCurrentItem() != null) && (player.inventory.
+						getCurrentItem().getItem() == InitItems.itemSpyglass) && (Minecraft.getMinecraft().gameSettings.thirdPersonView == 0))
 		{
 			GL11.glDisable(GL11.GL_ALPHA_TEST);
 			GL11.glDisable(GL11.GL_DEPTH_TEST);

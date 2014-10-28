@@ -12,7 +12,7 @@ public class EventHandlerClient
 	@SideOnly(Side.CLIENT)
 	public void zoom(FOVUpdateEvent event)
 	{
-		if(event.entity.inventory.getCurrentItem() != null && event.entity.inventory.getCurrentItem().getItem() == InitItems.itemSpyglass)
+		if((event.entity.inventory.getCurrentItem() != null) && (event.entity.inventory.getCurrentItem().getItem() == InitItems.itemSpyglass))
 		{
 			event.newfov = 0.3F;
 		}

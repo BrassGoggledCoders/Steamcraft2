@@ -39,7 +39,7 @@ import cpw.mods.fml.common.gameevent.PlayerEvent;
 
 /**
  * @author warlordjones
- *
+ * 
  */
 public class EventHandlerFML
 {
@@ -153,14 +153,12 @@ public class EventHandlerFML
 		}
 	}
 
-	/*@SubscribeEvent
-	@SideOnly(Side.CLIENT)
-	public void KeyInputEvent(KeyInputEvent event)
-	{
-		 if(InitKeyBindings.vanity.isPressed()) if(Minecraft.getMinecraft().currentScreen == null) { EntityPlayer p = Minecraft.getMinecraft().thePlayer;
-		 p.openGui(Steamcraft.instance, GuiIDs.VANITY, p.worldObj, (int) p.posX, (int) p.posY, (int) p.posZ); }
-
-	}*/
+	/*
+	 * @SubscribeEvent
+	 * @SideOnly(Side.CLIENT) public void KeyInputEvent(KeyInputEvent event) { if(InitKeyBindings.vanity.isPressed()) if(Minecraft.getMinecraft().currentScreen
+	 * == null) { EntityPlayer p = Minecraft.getMinecraft().thePlayer; p.openGui(Steamcraft.instance, GuiIDs.VANITY, p.worldObj, (int) p.posX, (int) p.posY,
+	 * (int) p.posZ); } }
+	 */
 
 	@SubscribeEvent
 	public void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent eventArgs)
