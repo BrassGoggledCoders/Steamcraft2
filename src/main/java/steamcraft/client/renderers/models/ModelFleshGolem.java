@@ -15,9 +15,13 @@ package steamcraft.client.renderers.models;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
+
+import org.lwjgl.opengl.GL11;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+//TODO
 @SideOnly(Side.CLIENT)
 public class ModelFleshGolem extends ModelBase
 {
@@ -225,6 +229,8 @@ public class ModelFleshGolem extends ModelBase
 	{
 		super.render(entity, f, f1, f2, f3, f4, f5);
 		setRotationAngles(f, f1, f2, f3, f4, f5);
+		GL11.glScalef(1.5F, 1.5F, 2F);
+		GL11.glTranslatef(0, 0, 5F);
 		body1.render(f5);
 		body.render(f5);
 		rightarm.render(f5);
