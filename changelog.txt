@@ -1,0 +1,25 @@
+Key:
+++ Major Feature
++ Addition
+- Removal
+* Change
+# Bugfix
+
+Beta1: N/A
+Beta2: N/A
+Beta3:
+++ Modular Armour
++ Clockwork Rocket Launcher
++ Nuclear Fired Boiler
++ Congealed Slime Block - solid block version of cobwebs. No idea why I made that :P
++ Chronometer of Time Manipulation - uses eyes of ender to swap between night & day
++ Spyglass - 3x Zoom, kinda neat overlay too.
++ Flesh Golems! Still fairly work in progress, but placing two flesh blocks underneath a wire which is connected to a lightning rod (so, 2 x flesh, wire, rod, vertically) will spawn a flesh golem, which for now is just a weaker iron golem, when lightning hits the rod. Also, they are horrific o.0
+# Key Menu Crash fixed
+# Tools appear correctly in the Creative Inventory
+# Various Electrical System related bugs fixed
+# Many pipe bugs fixed
+Beta 3.1:
+* More depth/lighting on all metal textures
+# Fix ores -> ingot and dust -> ingot smelting
+# Fix forge yelling about our event handlers
