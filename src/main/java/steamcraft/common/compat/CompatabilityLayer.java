@@ -128,6 +128,14 @@ public class CompatabilityLayer
 			OreDictionary.registerOre("partBrass" + partType[i], new ItemStack(InitItems.itemBrassParts, 1, i));
 			OreDictionary.registerOre("partSteel" + partType[i], new ItemStack(InitItems.itemSteelParts, 1, i));
 		}
+		// Part Utils
+		for(int i = 0; i < 10; i++)
+		{
+			OreDictionary.registerOre("partTierOne", new ItemStack(InitItems.itemCopperParts, 1, i));
+			OreDictionary.registerOre("partTierOne", new ItemStack(InitItems.itemIronParts, 1, i));
+			OreDictionary.registerOre("partTierTwo", new ItemStack(InitItems.itemBrassParts, 1, i));
+			OreDictionary.registerOre("partTierTwo", new ItemStack(InitItems.itemSteelParts, 1, i));
+		}
 
 	}
 }
