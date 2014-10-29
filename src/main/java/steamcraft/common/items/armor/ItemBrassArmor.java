@@ -96,16 +96,7 @@ public class ItemBrassArmor extends BaseArmor implements ISpecialArmor
 
 			if((module != null) && (module.getArmorEffectType() == EnumArmorEffectType.ONTICK))
 			{
-				if((module.getSteamConsumedOnEffect() != 0) && this.isSteamAvailable(player, module.getSteamConsumedOnEffect()))
-				{
-					if(module.applyArmorEffect(world, player, is))
-						this.consumeSteamFromCanister(player, module.getSteamConsumedOnEffect());
-				}
-				if((module.getEnergyConsumedOnEffect() != 0) && this.isRFAvailable(player, module.getEnergyConsumedOnEffect()))
-				{
-					if(module.applyArmorEffect(world, player, is))
-						this.consumeRFFromJar(player, module.getEnergyConsumedOnEffect());
-				}
+				this.doEffects(module, player.getEntityWorld(), player, is);
 			}
 		}
 	}
@@ -134,18 +125,31 @@ public class ItemBrassArmor extends BaseArmor implements ISpecialArmor
 
 			if((module != null) && (module.getArmorEffectType() == EnumArmorEffectType.HUD))
 			{
-				if((module.getSteamConsumedOnEffect() != 0) && this.isSteamAvailable(player, module.getSteamConsumedOnEffect()))
-				{
-					if(module.applyArmorEffect(player.getEntityWorld(), player, stack))
-						this.consumeSteamFromCanister(player, module.getSteamConsumedOnEffect());
-				}
-				if((module.getEnergyConsumedOnEffect() != 0) && this.isRFAvailable(player, module.getEnergyConsumedOnEffect()))
-				{
-					if(module.applyArmorEffect(player.getEntityWorld(), player, stack))
-						this.consumeRFFromJar(player, module.getEnergyConsumedOnEffect());
-				}
+				this.doEffects(module, player.getEntityWorld(), player, stack);
 			}
 		}
+	}
+
+	private void doEffects(IArmorModule module, World world, EntityPlayer player, ItemStack is)
+	{
+		if(module.getSteamConsumedOnEffect() > 0)
+		{
+			if(this.isSteamAvailable(player, module.getSteamConsumedOnEffect()))
+			{
+				if(module.applyArmorEffect(world, player, is))
+					this.consumeSteamFromCanister(player, module.getSteamConsumedOnEffect());
+			}
+		}
+		else if(module.getEnergyConsumedOnEffect() > 0)
+		{
+			if(this.isRFAvailable(player, module.getEnergyConsumedOnEffect()))
+			{
+				if(module.applyArmorEffect(world, player, is))
+					this.consumeRFFromJar(player, module.getEnergyConsumedOnEffect());
+			}
+		}
+		else
+			module.applyArmorEffect(world, player, is);
 	}
 
 	protected void consumeSteamFromCanister(EntityPlayer player, int steamToDrain)

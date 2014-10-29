@@ -63,8 +63,7 @@ public class ItemLifeVest extends BaseModule
 	{
 		if(player.isInWater() && (player.motionY < 0.0D))
 		{
-			player.motionY += 0.1F;
-			return true;
+			player.motionY += 0.3F;
 		}
 		return false;
 	}
@@ -84,14 +83,12 @@ public class ItemLifeVest extends BaseModule
 	@Override
 	public int getSteamConsumedOnEffect()
 	{
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
 	public int getEnergyConsumedOnEffect()
 	{
-		// TODO Auto-generated method stub
 		return 0;
 	}
 

@@ -29,7 +29,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class BlockTurbine extends BaseContainerBlock
 {
 	@SideOnly(Side.CLIENT)
-	private IIcon iconTop;
+	private IIcon iconTop, iconBottom;
 
 	public BlockTurbine()
 	{
@@ -50,6 +50,8 @@ public class BlockTurbine extends BaseContainerBlock
 		{
 			case 1:
 				return this.iconTop; // top
+			case 2:
+				return this.iconBottom;
 			default:
 				return this.blockIcon; // sides
 		}
@@ -61,6 +63,7 @@ public class BlockTurbine extends BaseContainerBlock
 	{
 		this.blockIcon = icon.registerIcon(LibInfo.PREFIX + "blockTurbine");
 		this.iconTop = icon.registerIcon(LibInfo.PREFIX + "blockTurbineTop");
+		this.iconBottom = icon.registerIcon(LibInfo.PREFIX + "blockTurbineBottom");
 		// this.iconTop = icon.registerIcon(LibInfo.PREFIX +
 		// "blockSteamBoilerTop");
 	}
