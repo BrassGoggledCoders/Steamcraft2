@@ -89,7 +89,6 @@ public class InitBlocks
 	public static Block blockLamp, blockLampOn;
 
 	/* Ores */
-
 	public static Block blockCustomOre;
 	public static Block blockSlate;
 
@@ -97,7 +96,6 @@ public class InitBlocks
 	public static Block blockMetal, blockUranium, blockEtherium;
 
 	/* Machines */
-
 	public static Block blockSteamBoiler, blockNuclearBoiler, blockIntake, blockTurbine, blockBattery, blockCharger;
 	public static Block blockLightningRod, blockTeslaCoil;
 
@@ -289,7 +287,7 @@ public class InitBlocks
 		GameRegistry.registerBlock(blockFlesh, "BlockFlesh");
 
 		blockPlankStack = new BlockPlankStack(Material.wood).setBlockName("blockPlankStack").setCreativeTab(Steamcraft.tabSC2);
-		GameRegistry.registerBlock(blockPlankStack, BaseItemBlockWithMetadata.class, "BlockPlankStack");
+		// GameRegistry.registerBlock(blockPlankStack, BaseItemBlockWithMetadata.class, "BlockPlankStack");
 
 		blockCongealedSlime = new BlockCongealedSlime(Material.gourd).setBlockName("blockCongealedSlime").setCreativeTab(Steamcraft.tabSC2);
 		GameRegistry.registerBlock(blockCongealedSlime, "BlockCongealedSlime");
