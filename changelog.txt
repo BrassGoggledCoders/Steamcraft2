@@ -20,7 +20,9 @@ Beta3:
 # Various Electrical System related bugs fixed
 # Many pipe bugs fixed
 Beta 3.1:
++ Diving helmet applies night vision if you are underwater
 * More depth/lighting on all metal textures
 * New flesh golem model
+* Made the diving helmet overlay slightly less
 # Fix ores -> ingot and dust -> ingot smelting
 # Fix forge yelling about our event handlers
