@@ -231,12 +231,12 @@ public class InitBlocks
 		// Pipes
 		blockCopperPipe = new BlockCopperPipe(Material.iron).setBlockName("blockCopperPipe");
 
-		RegistryHelper.registerContainerBlock(blockCopperPipe, TileCopperPipe.class, "BlockCopperPipe");
+		RegistryHelper.registerContainerBlockWithDesc(blockCopperPipe, TileCopperPipe.class, "BlockCopperPipe");
 
 		// Wires
 		blockCopperWire = new BlockCopperWire(Material.iron).setBlockName("blockCopperWire");
 
-		RegistryHelper.registerContainerBlock(blockCopperWire, TileCopperWire.class, "BlockCopperWire");
+		RegistryHelper.registerContainerBlockWithDesc(blockCopperWire, TileCopperWire.class, "BlockCopperWire");
 
 		// Tanks
 		blockCopperTank = new BaseBlock(Material.iron).setBlockName("blockCopperTank");

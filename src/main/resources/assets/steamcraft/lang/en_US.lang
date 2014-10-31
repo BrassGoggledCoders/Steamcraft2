@@ -76,9 +76,9 @@ tile.blockCrystal.name=Etherium Crystal
 tile.blockCopperTank.name=Copper Tank
 tile.blockCopperTank.desc=Not yet Functional.
 tile.blockCopperPipe.name=Copper Pipe
-tile.blockCopperPipe.desc=Right-Click with Spanner to change to extracting mode.
+tile.blockCopperPipe.desc=Right-Click with Spanner to change to extracting (pulling out fluids) mode.
 tile.blockCopperWire.name=Copper Wire
-tile.blockCopperWire.desc=Right-Click with Spanner to change to extracting mode.
+tile.blockCopperWire.desc=Right-Click with Spanner to change to extracting (pulling out energy) mode.
 
 tile.blockBloomery.name=Bloomery
 tile.blockBloomery.desc=Smelts iron ore into steel. Ore in the first slot, four coal in the second, and fuel in the bottom slot.
