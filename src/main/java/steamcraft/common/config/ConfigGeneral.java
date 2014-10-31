@@ -37,6 +37,8 @@ public class ConfigGeneral
 
 	public static int etheriumMaterialID;
 
+	public static boolean naturalLightningStrikes;
+
 	public static void initialize(File configFile)
 	{
 		config = new Configuration(configFile);
@@ -50,14 +52,12 @@ public class ConfigGeneral
 			drawFluid = config.get(CATEGORY_CLIENT, "Render fluid inside blocks", true).getBoolean();
 			drawInside = config.get(CATEGORY_CLIENT, "Render the insides of blocks", true).getBoolean();
 
-			etheriumMaterialID = config.get(CATEGORY_GENERAL, "Etherium Tool Material ID for Tinker's Construct", 66).getInt();
+			etheriumMaterialID = config.get(CATEGORY_GENERAL, "Etherium Tool Material ID for Tinker's Construct Intergration", 66).getInt();
 
-			// registerJars = config.get(CATEGORY_CLIENT, "Electric Jars Enabled", true).getBoolean();
-
-			// String[] blacklistArray = nameBlacklist.toArray(new String[] {});
-
-			// blacklistArray = config.getStringList("Blacklist", CATEGORY_GENERAL, new String[] { "itemTeapot", "itemTwo", "itemThree" },
-			// "Blacklist unlocalized Names of Items from our mod here to prevent them loading");
+			naturalLightningStrikes = config
+					.get(CATEGORY_GENERAL,
+							"Lightning Strike behavior. If false, it will simulate strikes during stormy weather with a chance that can be set in the balance config. If true it will activate when any bolt hits it, which is a lot rarer than naturally.",
+							false).getBoolean(false);
 		}
 		catch(Exception e)
 		{
