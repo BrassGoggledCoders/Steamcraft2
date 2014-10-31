@@ -23,6 +23,7 @@ import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.common.util.ForgeDirection;
 import steamcraft.common.InitAchievements;
 import steamcraft.common.InitBlocks;
+import steamcraft.common.config.ConfigBalance;
 import steamcraft.common.entities.EntityFleshGolem;
 import cofh.api.energy.EnergyStorage;
 import cofh.api.energy.IEnergyHandler;
@@ -33,7 +34,7 @@ import cofh.api.energy.IEnergyHandler;
  */
 public class TileLightningRod extends TileEntity implements IEnergyHandler
 {
-	private EnergyStorage buffer = new EnergyStorage(30000, 10000);
+	private final EnergyStorage buffer = new EnergyStorage(30000, 10000);
 
 	@Override
 	public void updateEntity()
@@ -42,11 +43,11 @@ public class TileLightningRod extends TileEntity implements IEnergyHandler
 				&& !BiomeDictionary.isBiomeOfType(this.worldObj.getBiomeGenForCoords(this.xCoord, this.zCoord), Type.SANDY))
 		{
 			Random random = new Random();
-			int chance = random.nextInt(1000);
+			int chance = random.nextInt(ConfigBalance.lightningRodHitChance);
 			if(chance == 0)
 			{
 				this.worldObj.addWeatherEffect(new EntityLightningBolt(this.worldObj, this.xCoord, this.yCoord, this.zCoord));
-				this.buffer.receiveEnergy(10000, false);
+				this.buffer.receiveEnergy(ConfigBalance.lightningRodEnergyProduction, false);
 				System.out.print(this.buffer.getEnergyStored());
 				EntityPlayer player = this.worldObj.getClosestPlayer(this.xCoord, this.yCoord, this.zCoord, -1);
 				player.triggerAchievement(InitAchievements.zapAchieve);
@@ -54,8 +55,6 @@ public class TileLightningRod extends TileEntity implements IEnergyHandler
 				if((this.worldObj.getBlock(this.xCoord, this.yCoord - 1, this.zCoord) == InitBlocks.blockCopperWire)
 						&& (this.worldObj.getBlock(this.xCoord, this.yCoord - 2, this.zCoord) == InitBlocks.blockFlesh)
 						&& (this.worldObj.getBlock(this.xCoord, this.yCoord - 3, this.zCoord) == InitBlocks.blockFlesh))
-				// if(StructureHelper.isStructureValid(worldObj, xCoord, yCoord - 2, zCoord, 2, 3, 2, new Block[]{InitBlocks.blockFlesh, InitBlocks.blockFlesh,
-				// InitBlocks.blockCopperWire}))
 				{
 					EntityFleshGolem golem = new EntityFleshGolem(this.worldObj);
 					golem.setPosition(this.xCoord, this.yCoord, this.zCoord);
