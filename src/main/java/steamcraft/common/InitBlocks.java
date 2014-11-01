@@ -30,6 +30,7 @@ import steamcraft.common.blocks.BlockCustomOre;
 import steamcraft.common.blocks.BlockEngravedSolid;
 import steamcraft.common.blocks.BlockEngravedVanilla;
 import steamcraft.common.blocks.BlockEtherium;
+import steamcraft.common.blocks.BlockFissurePortal;
 import steamcraft.common.blocks.BlockFluidSteam;
 import steamcraft.common.blocks.BlockHatch;
 import steamcraft.common.blocks.BlockLamp;
@@ -132,6 +133,8 @@ public class InitBlocks
 	public static Block blockFlesh;
 
 	public static Block blockCongealedSlime;
+
+	public static Block blockFissurePortal;
 
 	public static void init()
 	{
@@ -291,6 +294,9 @@ public class InitBlocks
 
 		blockCongealedSlime = new BlockCongealedSlime(Material.gourd).setBlockName("blockCongealedSlime").setCreativeTab(Steamcraft.tabSC2);
 		GameRegistry.registerBlock(blockCongealedSlime, "BlockCongealedSlime");
+
+		blockFissurePortal = new BlockFissurePortal(Material.rock).setBlockName("blockFissurePortal");
+		GameRegistry.registerBlock(blockFissurePortal, "BlockFissurePortal");
 	}
 
 }

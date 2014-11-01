@@ -13,11 +13,16 @@
 package steamcraft.common;
 
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.MinecraftForge;
 import steamcraft.client.GuiHandler;
+import steamcraft.common.biomes.BiomeDepths;
 import steamcraft.common.compat.CompatabilityLayer;
 import steamcraft.common.config.Config;
+import steamcraft.common.config.ConfigGeneral;
 import steamcraft.common.config.ConfigWorldGen;
+import steamcraft.common.dimension.WorldProviderDeeps;
 import steamcraft.common.lib.CommandSteamcraft;
 import steamcraft.common.lib.CreativeTabSteamcraft;
 import steamcraft.common.lib.LibInfo;
@@ -57,6 +62,8 @@ public class Steamcraft
 
 	public static String configPath;
 
+	public static BiomeGenBase biomeDepths;
+
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{
@@ -89,6 +96,10 @@ public class Steamcraft
 		MinecraftForge.EVENT_BUS.register(new EventHandlerForge());
 		MinecraftForge.EVENT_BUS.register(new EventHandlerClient());
 		FMLCommonHandler.instance().bus().register(new EventHandlerFML());
+
+		DimensionManager.registerProviderType(ConfigGeneral.deepsDimensionID, WorldProviderDeeps.class, false);
+		DimensionManager.registerDimension(ConfigGeneral.deepsDimensionID, ConfigGeneral.deepsDimensionID);
+		biomeDepths = new BiomeDepths(ConfigGeneral.depthsBiomeID);
 	}
 
 	@EventHandler

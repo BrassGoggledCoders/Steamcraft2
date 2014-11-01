@@ -32,7 +32,11 @@ public class ConfigGeneral
 
 	public static int etheriumMaterialID;
 
+	public static int deepsDimensionID;
+
 	public static boolean naturalLightningStrikes;
+
+	public static int depthsBiomeID;
 
 	public static void initialize(File configFile)
 	{
@@ -53,6 +57,8 @@ public class ConfigGeneral
 					.get(CATEGORY_GENERAL,
 							"Lightning Strike behavior. If false, it will simulate strikes during stormy weather with a chance that can be set in the balance config. If true it will activate when any bolt hits it, which is a lot rarer than naturally.",
 							false).getBoolean(false);
+			deepsDimensionID = config.get(CATEGORY_GENERAL, "Dimension ID for the Deeps dimension", -8).getInt();
+			depthsBiomeID = config.get(CATEGORY_GENERAL, "Biome ID for Depths Biome", 230).getInt();
 		}
 		catch(Exception e)
 		{
