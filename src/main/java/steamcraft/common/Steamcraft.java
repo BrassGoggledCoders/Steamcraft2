@@ -100,12 +100,14 @@ public class Steamcraft
 		DimensionManager.registerProviderType(ConfigGeneral.deepsDimensionID, WorldProviderDeeps.class, false);
 		DimensionManager.registerDimension(ConfigGeneral.deepsDimensionID, ConfigGeneral.deepsDimensionID);
 		biomeDepths = new BiomeDepths(ConfigGeneral.depthsBiomeID);
+
+		CompatabilityLayer.init();
 	}
 
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event)
 	{
-		CompatabilityLayer.init();
+		CompatabilityLayer.postInit();
 		InitRecipes.init();
 		final ModContainer container = FMLCommonHandler.instance().findContainerFor(this);
 		LanguageRegistry.instance().loadLanguagesFor(container, Side.CLIENT);

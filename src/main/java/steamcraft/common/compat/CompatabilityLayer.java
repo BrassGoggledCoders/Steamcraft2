@@ -29,7 +29,7 @@ import cpw.mods.fml.common.event.FMLInterModComms;
  */
 public class CompatabilityLayer
 {
-	public static void init()
+	public static void postInit()
 	{
 		registerOreDictionaryEntries();
 		sendIMCMessages();
@@ -137,5 +137,11 @@ public class CompatabilityLayer
 			OreDictionary.registerOre("partTierTwo", new ItemStack(InitItems.itemSteelParts, 1, i));
 		}
 
+	}
+
+	public static void init()
+	{
+		// Thaumcraft
+		FMLInterModComms.sendMessage("Thaumcraft", "harvestStandardCrop", new ItemStack(InitBlocks.blockTeaPlant, 1, 1));
 	}
 }
