@@ -73,15 +73,12 @@ public class Steamcraft
 
 		Config.initialise(configPath);
 
-		if(ConfigWorldGen.generationEnabled)
-			GameRegistry.registerWorldGenerator(new WorldGenSteamcraft(), 1);
-
-		InitBlocks.init();
-		InitItems.init();
-
 		NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
 
 		InitPackets.init();
+
+		InitBlocks.init();
+		InitItems.init();
 	}
 
 	@EventHandler
@@ -96,6 +93,9 @@ public class Steamcraft
 		MinecraftForge.EVENT_BUS.register(new EventHandlerForge());
 		MinecraftForge.EVENT_BUS.register(new EventHandlerClient());
 		FMLCommonHandler.instance().bus().register(new EventHandlerFML());
+
+		if(ConfigWorldGen.generationEnabled)
+			GameRegistry.registerWorldGenerator(new WorldGenSteamcraft(), 1);
 
 		DimensionManager.registerProviderType(ConfigGeneral.deepsDimensionID, WorldProviderDeeps.class, false);
 		DimensionManager.registerDimension(ConfigGeneral.deepsDimensionID, ConfigGeneral.deepsDimensionID);
