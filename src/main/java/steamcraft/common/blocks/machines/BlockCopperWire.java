@@ -21,6 +21,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.common.util.ForgeDirection;
 import steamcraft.client.lib.RenderIDs;
 import steamcraft.common.InitBlocks;
 import steamcraft.common.lib.DamageSourceHandler;
@@ -138,8 +139,10 @@ public class BlockCopperWire extends BaseContainerBlock
 	}
 
 	@Override
-	public void onEntityCollidedWithBlock(World p_149670_1_, int p_149670_2_, int p_149670_3_, int p_149670_4_, Entity entity)
+	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)
 	{
-		entity.attackEntityFrom(DamageSourceHandler.electrocution, 0.5F);
+		TileCopperWire wire = (TileCopperWire) world.getTileEntity(x, y, z);
+		if(wire.getEnergyStored(ForgeDirection.UNKNOWN) != 0)
+			entity.attackEntityFrom(DamageSourceHandler.electrocution, 0.5F);
 	}
 }

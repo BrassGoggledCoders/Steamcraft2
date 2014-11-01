@@ -13,7 +13,6 @@
 package steamcraft.common.config;
 
 import java.io.File;
-import java.util.List;
 import java.util.logging.Level;
 
 import net.minecraftforge.common.config.Configuration;
@@ -30,10 +29,6 @@ public class ConfigGeneral
 	public static boolean drawFluid;
 	public static boolean drawInside;
 	public static double armorSpawnChance;
-
-	// public static boolean registerJars;
-
-	public static List<String> nameBlacklist;
 
 	public static int etheriumMaterialID;
 
