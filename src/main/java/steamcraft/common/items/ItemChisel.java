@@ -21,9 +21,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import steamcraft.common.InitBlocks;
-import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.LibInfo;
-import boilerplate.client.fx.FXSmoke;
 import boilerplate.steamapi.block.IChiselable;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -77,7 +75,7 @@ public class ItemChisel extends BaseItem
 		}
 
 		Random random = world.rand;
-		Steamcraft.proxy.smokeFX(world, x + random.nextFloat(), y + random.nextFloat(), z + random.nextFloat(), FXSmoke.class);
+		world.spawnParticle("smoke", x, y, z, 0, random.nextInt(3), 0);
 		is.damageItem(1, player);
 
 		return true;

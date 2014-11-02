@@ -61,7 +61,6 @@ import steamcraft.common.tiles.TileCopperWire;
 import steamcraft.common.tiles.TileLightningRod;
 import steamcraft.common.tiles.TileTeslaCoil;
 import boilerplate.client.fx.FXRaygun;
-import boilerplate.client.fx.FXSmoke;
 import boilerplate.client.renderers.block.RenderMinedBlock;
 import boilerplate.common.entity.EntityMinedBlock;
 import cpw.mods.fml.client.FMLClientHandler;
@@ -178,25 +177,6 @@ public class ClientProxy extends CommonProxy
 		}
 
 		return ray;
-	}
-
-	@Override
-	public Object smokeFX(World world, double dx, double dy, double dz, Object input)
-	{
-		FXSmoke smoke = null;
-		Color color = Color.BLUE;
-
-		if(input instanceof FXSmoke)
-			smoke = (FXSmoke) input;
-		if((smoke == null) || smoke.isDead)
-		{
-			smoke = new FXSmoke(world, dx, dy, dz, color.getBlue() / 255.0F, color.getBlue() / 255.0F, color.getBlue() / 255.0F);
-			FMLClientHandler.instance().getClient().effectRenderer.addEffect(smoke);
-		}
-		else
-			smoke.onUpdate();
-
-		return smoke;
 	}
 
 	@Override
