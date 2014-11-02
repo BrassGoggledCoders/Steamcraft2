@@ -70,7 +70,7 @@ tile.blockCustomOre.3.name=Zinc Ore
 tile.blockCustomOre.4.name=Uranite Ore
 tile.blockCustomOre.5.name=Brimstone Ore
 tile.blockCustomOre.6.name=Phosphate Ore
-tile.blockCrystal.name=Etherium Crystal
+tile.blockCrystal.name=Etherium Crystal Block
 
 #Machines
 tile.blockCopperTank.name=Copper Tank

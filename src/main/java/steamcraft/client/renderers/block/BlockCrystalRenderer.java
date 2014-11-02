@@ -14,13 +14,8 @@ package steamcraft.client.renderers.block;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;
-import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
 import net.minecraft.world.IBlockAccess;
-
-import org.lwjgl.opengl.GL11;
-
 import steamcraft.client.lib.RenderIDs;
-import steamcraft.client.renderers.tile.TileCrystalRenderer.TileCrystal;
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 
 /**
@@ -32,11 +27,7 @@ public class BlockCrystalRenderer implements ISimpleBlockRenderingHandler
 	@Override
 	public void renderInventoryBlock(final Block block, final int metadata, final int modelID, final RenderBlocks renderer)
 	{
-		GL11.glRotatef(90.0F, 0.0F, 1.0F, 0.0F);
-		GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
-		final TileCrystal te = new TileCrystal();
-		TileEntityRendererDispatcher.instance.renderTileEntityAt(te, 0.0D, 0.0D, 0.0D, 0.0F);
-		GL11.glEnable(32826);
+
 	}
 
 	@Override
@@ -47,7 +38,7 @@ public class BlockCrystalRenderer implements ISimpleBlockRenderingHandler
 	}
 
 	@Override
-	public boolean shouldRender3DInInventory(final int i)
+	public boolean shouldRender3DInInventory(int i)
 	{
 		return false;
 	}

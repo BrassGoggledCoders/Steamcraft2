@@ -102,10 +102,6 @@ public class ClientProxy extends CommonProxy
 
 	private void registerBlockRenderers()
 	{
-		// Crystal
-		RenderIDs.blockCrystalRI = RenderingRegistry.getNextAvailableRenderId();
-		ClientRegistry.bindTileEntitySpecialRenderer(TileCrystal.class, new TileCrystalRenderer());
-		RenderingRegistry.registerBlockHandler(new BlockCrystalRenderer());
 		// Copper Pipe
 		RenderIDs.blockCopperPipeRI = RenderingRegistry.getNextAvailableRenderId();
 		ClientRegistry.bindTileEntitySpecialRenderer(TileCopperPipe.class, new TileCopperPipeRenderer());
@@ -144,6 +140,10 @@ public class ClientProxy extends CommonProxy
 		// Plank Stack
 		RenderIDs.blockPlankStackRI = RenderingRegistry.getNextAvailableRenderId();
 		RenderingRegistry.registerBlockHandler(new BlockPlankStackRenderer());
+		// Crystal
+		RenderIDs.blockCrystalRI = RenderingRegistry.getNextAvailableRenderId();
+		ClientRegistry.bindTileEntitySpecialRenderer(TileCrystal.class, new TileCrystalRenderer());
+		RenderingRegistry.registerBlockHandler(new BlockCrystalRenderer());
 	}
 
 	@Override
