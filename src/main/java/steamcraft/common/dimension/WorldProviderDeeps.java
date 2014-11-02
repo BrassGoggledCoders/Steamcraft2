@@ -4,7 +4,6 @@ import net.minecraft.world.WorldProvider;
 import net.minecraft.world.biome.WorldChunkManagerHell;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.IChunkProvider;
-import net.minecraft.world.gen.ChunkProviderHell;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.config.ConfigGeneral;
 
@@ -50,8 +49,8 @@ public class WorldProviderDeeps extends WorldProvider
 	@Override
 	public IChunkProvider createChunkGenerator()
 	{
-		return new ChunkProviderHell(this.worldObj, this.worldObj.getSeed());
-		// return new ChunkProviderDeeps(this.worldObj, this.worldObj.getSeed());
+		// return new ChunkProviderHell(this.worldObj, this.worldObj.getSeed());
+		return new ChunkProviderDeeps(this.worldObj, this.worldObj.getSeed());
 	}
 
 	@Override
@@ -78,6 +77,6 @@ public class WorldProviderDeeps extends WorldProvider
 	@Override
 	public float calculateCelestialAngle(long p_76563_1_, float p_76563_3_)
 	{
-		return 0.5F;
+		return 1F;
 	}
 }
