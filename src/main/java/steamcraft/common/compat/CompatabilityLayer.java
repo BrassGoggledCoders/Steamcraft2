@@ -12,16 +12,21 @@
  */
 package steamcraft.common.compat;
 
+import net.minecraft.block.Block;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraftforge.oredict.OreDictionary;
 import steamcraft.common.InitBlocks;
 import steamcraft.common.InitItems;
 import steamcraft.common.config.ConfigGeneral;
+import steamcraft.common.items.compat.ItemSteamcraftCluster;
 import steamcraft.common.lib.LibInfo;
 import boilerplate.common.utils.helpers.IMCHelper;
 import boilerplate.common.utils.helpers.OreDictHelper;
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.event.FMLInterModComms;
+import cpw.mods.fml.common.registry.GameRegistry;
 
 /**
  * @author warlordjones
@@ -29,6 +34,8 @@ import cpw.mods.fml.common.event.FMLInterModComms;
  */
 public class CompatabilityLayer
 {
+	public static Item itemSteamcraftCluster;
+
 	public static void postInit()
 	{
 		registerOreDictionaryEntries();
@@ -143,5 +150,21 @@ public class CompatabilityLayer
 	{
 		// Thaumcraft
 		FMLInterModComms.sendMessage("Thaumcraft", "harvestStandardCrop", new ItemStack(InitBlocks.blockTeaPlant, 1, 1));
+		FMLInterModComms.sendMessage("Thaumcraft", "nativeCluster",
+				Block.getIdFromBlock(InitBlocks.blockCustomOre) + "," + 0 + "," + Item.getIdFromItem(CompatabilityLayer.itemSteamcraftCluster) + "," + 0
+						+ ",2.0");
+		FMLInterModComms.sendMessage("Thaumcraft", "nativeCluster",
+				Block.getIdFromBlock(InitBlocks.blockCustomOre) + "," + 2 + "," + Item.getIdFromItem(CompatabilityLayer.itemSteamcraftCluster) + "," + 1
+						+ ",2.0");
+	}
+
+	public static void initCompatItems()
+	{
+		itemSteamcraftCluster = new ItemSteamcraftCluster().setUnlocalizedName("itemSteamcraftCluster");
+
+		if(Loader.isModLoaded("Thaumcraft"))
+		{
+			GameRegistry.registerItem(itemSteamcraftCluster, "ItemSteamcraftCluster");
+		}
 	}
 }

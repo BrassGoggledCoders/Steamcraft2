@@ -79,6 +79,7 @@ public class Steamcraft
 
 		InitBlocks.init();
 		InitItems.init();
+		CompatabilityLayer.initCompatItems();
 	}
 
 	@EventHandler

@@ -369,6 +369,10 @@ item.itemSteelPlating.desc=Simple Defensive Module
 item.itemLastResort.name=Last Resort
 item.itemLastResort.desc=If you reach a heart, you explode, violently. Your items will not be destroyed.
 
+#Compat
+item.itemSteamcraftCluster.0.name=Native Aluminum Cluster
+item.itemSteamcraftCluster.1.name=Native Zinc Cluster
+
 #Containers
 container.bloomery=Bloomery
 

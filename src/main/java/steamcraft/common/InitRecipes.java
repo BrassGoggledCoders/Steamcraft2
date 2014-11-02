@@ -19,9 +19,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
+import steamcraft.common.compat.CompatabilityLayer;
 import steamcraft.common.config.ConfigBalance;
 import steamcraft.common.lib.LibInfo;
 import boilerplate.common.utils.recipe.RecipeUtils;
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 /**
@@ -45,6 +47,7 @@ public class InitRecipes
 		initBlockRecipes();
 		initModuleRecipes();
 		initOtherRecipes();
+		initCompatRecipes();
 	}
 
 	private static void initGunRecipes()
@@ -398,4 +401,16 @@ public class InitRecipes
 
 		GameRegistry.addSmelting(new ItemStack(Items.slime_ball), new ItemStack(InitItems.itemSlimeRubber), 0);
 	}
+
+	private static void initCompatRecipes()
+	{
+		// Thaumcraft
+		if(Loader.isModLoaded("Thaumcraft"))
+		{
+			GameRegistry.addSmelting(new ItemStack(CompatabilityLayer.itemSteamcraftCluster, 1, 0), new ItemStack(InitItems.itemIngot, 1, 0), 0);
+			GameRegistry.addSmelting(new ItemStack(CompatabilityLayer.itemSteamcraftCluster, 1, 1), new ItemStack(InitItems.itemIngot, 1, 3), 0);
+		}
+
+	}
+
 }
