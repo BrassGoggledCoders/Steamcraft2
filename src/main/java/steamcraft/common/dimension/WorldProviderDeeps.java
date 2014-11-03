@@ -5,11 +5,16 @@ import net.minecraft.world.biome.WorldChunkManagerHell;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.ChunkProviderGenerate;
+import net.minecraftforge.client.IRenderHandler;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.config.ConfigGeneral;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class WorldProviderDeeps extends WorldProvider
 {
+	IRenderHandler skyRenderer;
+
 	@Override
 	public String getDimensionName()
 	{
@@ -43,8 +48,8 @@ public class WorldProviderDeeps extends WorldProvider
 	{
 		this.dimensionId = ConfigGeneral.deepsDimensionID;
 		// TODO?
-		this.worldChunkMgr = new WorldChunkManagerHell(Steamcraft.biomeDepths, this.dimensionId);
-		this.hasNoSky = true;
+		this.worldChunkMgr = new WorldChunkManagerHell(Steamcraft.biomeDepths, 0F);
+		this.generateLightBrightnessTable();
 	}
 
 	@Override
@@ -79,5 +84,30 @@ public class WorldProviderDeeps extends WorldProvider
 	public float calculateCelestialAngle(long p_76563_1_, float p_76563_3_)
 	{
 		return 1F;
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public IRenderHandler getSkyRenderer()
+	{
+		return new DeepsSkyRenderer();
+	}
+
+	@Override
+	public float getCloudHeight()
+	{
+		return 3F;
+	}
+
+	@Override
+	protected void generateLightBrightnessTable()
+	{
+		float var1 = 0.1F;
+
+		for(int var2 = 0; var2 <= 15; ++var2)
+		{
+			float var3 = 1.0F - var2 / 15.0F;
+			this.lightBrightnessTable[var2] = (1.0F - var3) / (var3 * 3.0F + 1.0F) * (1.0F - var1) + var1;
+		}
 	}
 }
