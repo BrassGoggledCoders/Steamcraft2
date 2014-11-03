@@ -27,7 +27,6 @@ import steamcraft.common.blocks.BlockCastIronRailing;
 import steamcraft.common.blocks.BlockCompressedStone;
 import steamcraft.common.blocks.BlockCongealedSlime;
 import steamcraft.common.blocks.BlockCrystal;
-import steamcraft.common.blocks.BlockCustomOre;
 import steamcraft.common.blocks.BlockEngravedSolid;
 import steamcraft.common.blocks.BlockEngravedVanilla;
 import steamcraft.common.blocks.BlockEtherium;
@@ -38,6 +37,7 @@ import steamcraft.common.blocks.BlockLamp;
 import steamcraft.common.blocks.BlockMetal;
 import steamcraft.common.blocks.BlockPlankStack;
 import steamcraft.common.blocks.BlockSlate;
+import steamcraft.common.blocks.BlockSteamcraftOre;
 import steamcraft.common.blocks.BlockTeaPlant;
 import steamcraft.common.blocks.BlockTimeBomb;
 import steamcraft.common.blocks.BlockUranium;
@@ -149,10 +149,10 @@ public class InitBlocks
 	private static void initializeOres()
 	{
 		// Ores
-		blockCustomOre = new BlockCustomOre().setBlockName("blockCustomOre");
+		blockCustomOre = new BlockSteamcraftOre().setBlockName("blockSteamcraftOre");
 		blockSlate = new BlockSlate().setBlockName("blockSlate");
 
-		GameRegistry.registerBlock(blockCustomOre, BaseItemBlockWithMetadata.class, "BlockCustomOre");
+		GameRegistry.registerBlock(blockCustomOre, BaseItemBlockWithMetadata.class, "BlockSteamcraftOre");
 		GameRegistry.registerBlock(blockSlate, BaseItemBlockWithMetadata.class, "BlockSlate");
 
 		// Metals

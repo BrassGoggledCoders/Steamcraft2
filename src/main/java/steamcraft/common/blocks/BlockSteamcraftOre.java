@@ -34,11 +34,11 @@ import cpw.mods.fml.relauncher.SideOnly;
  * @author Surseance
  * 
  */
-public class BlockCustomOre extends BaseBlock implements IHammerable
+public class BlockSteamcraftOre extends BaseBlock implements IHammerable
 {
 	private IIcon[] icon = new IIcon[7];
 
-	public BlockCustomOre()
+	public BlockSteamcraftOre()
 	{
 		super(Material.rock);
 		this.setHardness(3.0F);

@@ -64,13 +64,13 @@ tile.blockCastIronLamp.name=Cast Iron Lamp
 tile.blockCompressedStone.name=Compressed Stone
 
 #Ores
-tile.blockCustomOre.0.name=Aluminum Ore
-tile.blockCustomOre.1.name=Copper Ore
-tile.blockCustomOre.2.name=Tin Ore
-tile.blockCustomOre.3.name=Zinc Ore
-tile.blockCustomOre.4.name=Uranite Ore
-tile.blockCustomOre.5.name=Brimstone Ore
-tile.blockCustomOre.6.name=Phosphate Ore
+tile.blockSteamcraftOre.0.name=Aluminum Ore
+tile.blockSteamcraftOre.1.name=Copper Ore
+tile.blockSteamcraftOre.2.name=Tin Ore
+tile.blockSteamcraftOre.3.name=Zinc Ore
+tile.blockSteamcraftOre.4.name=Uranite Ore
+tile.blockSteamcraftOre.5.name=Brimstone Ore
+tile.blockSteamcraftOre.6.name=Phosphate Ore
 tile.blockCrystal.name=Etherium Crystal Block
 
 #Machines
