@@ -4,7 +4,7 @@ Please read the wiki for articles relating to the features in this mod.
 
 About:
 ======
-Steamcraft 2 is a Minecraft mod that adds steampunk themed machinery, tools, armor, and weapons. 
+Steamcraft 2 is a Minecraft mod that adds steampunk themed machinery, tools, armor, and weapons.
 
 License:
 ========
@@ -12,10 +12,10 @@ This mod uses the MMPL v1.0. Please read it before doing anything else. Also, pl
 
 Committing Changes:
 ===================
-Anyone is welcome to make changes to this mod, but it must be said that we will not approve of 
+Anyone is welcome to make changes to this mod, but it must be said that we will not approve of
 every change if we deem that it does not fit the theme of the mod. Though the mod is open-source,
 we still possess the power of discretion. Yes, there is an API, but its details are not fully
-fleshed out/documented. Please give us some time before we make it suitable. Our API can be found here: https://github.com/BrassGoggledCoders/Boilerplate in the 'steamapi' packages. 
+fleshed out/documented. Please give us some time before we make it suitable. Our API can be found here: https://github.com/BrassGoggledCoders/Boilerplate in the 'steamapi' packages.
 
 Developers & Credits:
 =====================
@@ -35,6 +35,7 @@ _Testers/Other:_
 * seanvanpelt2: alpha/beta tester
 * The People of the Brass Blocks server: ideas/motivations
 * ClockwerkKaiser: Chief Motivator! :P
+* Some textures are edited versions of textures from the Painterly Pack
 
 _Ex-Coders:_
 * Surseance: ex-leader(ish), programmer; speciality: uhhh...
