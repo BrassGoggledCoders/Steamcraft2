@@ -4,7 +4,6 @@ import net.minecraft.world.WorldProvider;
 import net.minecraft.world.biome.WorldChunkManagerHell;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.IChunkProvider;
-import net.minecraft.world.gen.ChunkProviderGenerate;
 import net.minecraftforge.client.IRenderHandler;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.config.ConfigGeneral;
@@ -55,8 +54,8 @@ public class WorldProviderDeeps extends WorldProvider
 	@Override
 	public IChunkProvider createChunkGenerator()
 	{
-		return new ChunkProviderGenerate(this.worldObj, this.worldObj.getSeed(), false);
-		// return new ChunkProviderDeeps(this.worldObj, this.worldObj.getSeed());
+		// return new ChunkProviderGenerate(this.worldObj, this.worldObj.getSeed(), false);
+		return new ChunkProviderDeeps(this.worldObj, this.worldObj.getSeed(), false);
 	}
 
 	@Override
