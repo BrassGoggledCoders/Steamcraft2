@@ -1,13 +1,9 @@
 package steamcraft.common.dimension;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-import net.minecraft.crash.CrashReport;
-import net.minecraft.crash.CrashReportCategory;
-import net.minecraft.util.ReportedException;
 import net.minecraft.world.ChunkPosition;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldType;
@@ -16,106 +12,93 @@ import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.biome.WorldChunkManager;
 import net.minecraft.world.gen.layer.GenLayer;
 import net.minecraft.world.gen.layer.IntCache;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.terraingen.WorldTypeEvent;
 import steamcraft.common.Steamcraft;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class WorldChunkManagerDeeps extends WorldChunkManager
 {
-	public static ArrayList<BiomeGenBase> allowedBiomes = new ArrayList<BiomeGenBase>(Arrays.asList(Steamcraft.biomeDepths, Steamcraft.biomeDepthsF,
-			Steamcraft.biomeDepthsM));
-	private GenLayer genBiomes;
-	/** A GenLayer containing the indices into BiomeGenBase.biomeList[] */
-	private GenLayer biomeIndexLayer;
-	/** The BiomeCache object for this world. */
-	private final BiomeCache biomeCache;
-	/** A list of biomes that the player can spawn in. */
-	private final List biomesToSpawnIn;
+	private GenLayer myGenBiomes;
+	private GenLayer myBiomeIndexLayer;
+	private final BiomeCache myBiomeCache;
+	private final List<BiomeGenBase> myBiomesToSpawnIn;
 
 	protected WorldChunkManagerDeeps()
 	{
-		this.biomeCache = new BiomeCache(this);
-		this.biomesToSpawnIn = new ArrayList();
-		this.biomesToSpawnIn.addAll(allowedBiomes);
+		this.myBiomeCache = new BiomeCache(this);
+		this.myBiomesToSpawnIn = new ArrayList<BiomeGenBase>();
+		this.myBiomesToSpawnIn.add(Steamcraft.biomeDepths);
+		this.myBiomesToSpawnIn.add(Steamcraft.biomeDepthsF);
+		this.myBiomesToSpawnIn.add(Steamcraft.biomeDepthsM);
+		// this.myBiomesToSpawnIn.add(Main.TutorialBiome2);
+		// this.myBiomesToSpawnIn.add(Main.TutorialBiome3);
 	}
 
-	public WorldChunkManagerDeeps(long p_i1975_1_, WorldType p_i1975_3_)
+	public WorldChunkManagerDeeps(long seed, WorldType worldtype)
 	{
 		this();
-		GenLayer[] agenlayer = GenLayer.initializeAllBiomeGenerators(p_i1975_1_, p_i1975_3_);
-		agenlayer = getModdedBiomeGenerators(p_i1975_3_, p_i1975_1_, agenlayer);
-		this.genBiomes = agenlayer[0];
-		this.biomeIndexLayer = agenlayer[1];
+		GenLayer[] agenlayer = GenLayerDeeps.makeTheWorld(seed);
+		this.myGenBiomes = agenlayer[0];
+		this.myBiomeIndexLayer = agenlayer[1];
 	}
 
-	public WorldChunkManagerDeeps(World p_i1976_1_)
+	public WorldChunkManagerDeeps(World world)
 	{
-		this(p_i1976_1_.getSeed(), p_i1976_1_.getWorldInfo().getTerrainType());
+		this(world.getSeed(), world.provider.terrainType);
 	}
 
 	/**
 	 * Gets the list of valid biomes for the player to spawn in.
 	 */
 	@Override
-	public List getBiomesToSpawnIn()
+	public List<BiomeGenBase> getBiomesToSpawnIn()
 	{
-		return this.biomesToSpawnIn;
+		return this.myBiomesToSpawnIn;
 	}
 
 	/**
 	 * Returns the BiomeGenBase related to the x, z position on the world.
 	 */
 	@Override
-	public BiomeGenBase getBiomeGenAt(int p_76935_1_, int p_76935_2_)
+	public BiomeGenBase getBiomeGenAt(int x, int z)
 	{
-		return this.biomeCache.getBiomeGenAt(p_76935_1_, p_76935_2_);
+		BiomeGenBase biome = this.myBiomeCache.getBiomeGenAt(x, z);
+		if(biome == null)
+		{
+			return Steamcraft.biomeDepths;
+		}
+
+		return biome;
 	}
 
 	/**
 	 * Returns a list of rainfall values for the specified blocks. Args: listToReuse, x, z, width, length.
 	 */
 	@Override
-	public float[] getRainfall(float[] p_76936_1_, int p_76936_2_, int p_76936_3_, int p_76936_4_, int p_76936_5_)
+	public float[] getRainfall(float[] par1ArrayOfFloat, int par2, int par3, int par4, int par5)
 	{
 		IntCache.resetIntCache();
 
-		if(p_76936_1_ == null || p_76936_1_.length < p_76936_4_ * p_76936_5_)
+		if(par1ArrayOfFloat == null || par1ArrayOfFloat.length < par4 * par5)
 		{
-			p_76936_1_ = new float[p_76936_4_ * p_76936_5_];
+			par1ArrayOfFloat = new float[par4 * par5];
 		}
 
-		int[] aint = this.biomeIndexLayer.getInts(p_76936_2_, p_76936_3_, p_76936_4_, p_76936_5_);
+		int[] aint = this.myBiomeIndexLayer.getInts(par2, par3, par4, par5);
 
-		for(int i1 = 0; i1 < p_76936_4_ * p_76936_5_; ++i1)
+		for(int i1 = 0; i1 < par4 * par5; ++i1)
 		{
-			try
-			{
-				float f = BiomeGenBase.getBiome(aint[i1]).getIntRainfall() / 65536.0F;
+			float f = BiomeGenBase.getBiomeGenArray()[aint[i1]].getIntRainfall() / 65536.0F;
 
-				if(f > 1.0F)
-				{
-					f = 1.0F;
-				}
-
-				p_76936_1_[i1] = f;
-			}
-			catch(Throwable throwable)
+			if(f > 1.0F)
 			{
-				CrashReport crashreport = CrashReport.makeCrashReport(throwable, "Invalid Biome id");
-				CrashReportCategory crashreportcategory = crashreport.makeCategory("DownfallBlock");
-				crashreportcategory.addCrashSection("biome id", Integer.valueOf(i1));
-				crashreportcategory.addCrashSection("downfalls[] size", Integer.valueOf(p_76936_1_.length));
-				crashreportcategory.addCrashSection("x", Integer.valueOf(p_76936_2_));
-				crashreportcategory.addCrashSection("z", Integer.valueOf(p_76936_3_));
-				crashreportcategory.addCrashSection("w", Integer.valueOf(p_76936_4_));
-				crashreportcategory.addCrashSection("h", Integer.valueOf(p_76936_5_));
-				throw new ReportedException(crashreport);
+				f = 1.0F;
 			}
+
+			par1ArrayOfFloat[i1] = f;
 		}
 
-		return p_76936_1_;
+		return par1ArrayOfFloat;
 	}
 
 	/**
@@ -123,46 +106,69 @@ public class WorldChunkManagerDeeps extends WorldChunkManager
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public float getTemperatureAtHeight(float p_76939_1_, int p_76939_2_)
+	public float getTemperatureAtHeight(float par1, int par2)
 	{
-		return p_76939_1_;
+		return par1;
+	}
+
+	/**
+	 * Returns a list of temperatures to use for the specified blocks. Args: listToReuse, x, y, width, length
+	 */
+	public float[] getTemperatures(float[] par1ArrayOfFloat, int par2, int par3, int par4, int par5)
+	{
+		IntCache.resetIntCache();
+
+		if(par1ArrayOfFloat == null || par1ArrayOfFloat.length < par4 * par5)
+		{
+			par1ArrayOfFloat = new float[par4 * par5];
+		}
+
+		int[] aint = this.myBiomeIndexLayer.getInts(par2, par3, par4, par5);
+
+		for(int i1 = 0; i1 < par4 * par5; ++i1)
+		{
+			float f = Math.round(BiomeGenBase.getBiomeGenArray()[aint[i1]].temperature) / 65536.0F;
+
+			if(f > 1.0F)
+			{
+				f = 1.0F;
+			}
+
+			par1ArrayOfFloat[i1] = f;
+		}
+
+		return par1ArrayOfFloat;
 	}
 
 	/**
 	 * Returns an array of biomes for the location input.
 	 */
 	@Override
-	public BiomeGenBase[] getBiomesForGeneration(BiomeGenBase[] p_76937_1_, int p_76937_2_, int p_76937_3_, int p_76937_4_, int p_76937_5_)
+	public BiomeGenBase[] getBiomesForGeneration(BiomeGenBase[] par1ArrayOfBiomeGenBase, int par2, int par3, int par4, int par5)
 	{
 		IntCache.resetIntCache();
 
-		if(p_76937_1_ == null || p_76937_1_.length < p_76937_4_ * p_76937_5_)
+		if(par1ArrayOfBiomeGenBase == null || par1ArrayOfBiomeGenBase.length < par4 * par5)
 		{
-			p_76937_1_ = new BiomeGenBase[p_76937_4_ * p_76937_5_];
+			par1ArrayOfBiomeGenBase = new BiomeGenBase[par4 * par5];
 		}
 
-		int[] aint = this.genBiomes.getInts(p_76937_2_, p_76937_3_, p_76937_4_, p_76937_5_);
+		int[] aint = this.myGenBiomes.getInts(par2, par3, par4, par5);
 
-		try
+		for(int i = 0; i < par4 * par5; ++i)
 		{
-			for(int i1 = 0; i1 < p_76937_4_ * p_76937_5_; ++i1)
+			if(aint[i] >= 0)
 			{
-				p_76937_1_[i1] = BiomeGenBase.getBiome(aint[i1]);
+				par1ArrayOfBiomeGenBase[i] = BiomeGenBase.getBiomeGenArray()[aint[i]];
 			}
+			else
+			{
+				// Change this to a biome
+				par1ArrayOfBiomeGenBase[i] = Steamcraft.biomeDepths;
+			}
+		}
 
-			return p_76937_1_;
-		}
-		catch(Throwable throwable)
-		{
-			CrashReport crashreport = CrashReport.makeCrashReport(throwable, "Invalid Biome id");
-			CrashReportCategory crashreportcategory = crashreport.makeCategory("RawBiomeBlock");
-			crashreportcategory.addCrashSection("biomes[] size", Integer.valueOf(p_76937_1_.length));
-			crashreportcategory.addCrashSection("x", Integer.valueOf(p_76937_2_));
-			crashreportcategory.addCrashSection("z", Integer.valueOf(p_76937_3_));
-			crashreportcategory.addCrashSection("w", Integer.valueOf(p_76937_4_));
-			crashreportcategory.addCrashSection("h", Integer.valueOf(p_76937_5_));
-			throw new ReportedException(crashreport);
-		}
+		return par1ArrayOfBiomeGenBase;
 	}
 
 	/**
@@ -170,9 +176,9 @@ public class WorldChunkManagerDeeps extends WorldChunkManager
 	 * depth
 	 */
 	@Override
-	public BiomeGenBase[] loadBlockGeneratorData(BiomeGenBase[] p_76933_1_, int p_76933_2_, int p_76933_3_, int p_76933_4_, int p_76933_5_)
+	public BiomeGenBase[] loadBlockGeneratorData(BiomeGenBase[] par1ArrayOfBiomeGenBase, int par2, int par3, int par4, int par5)
 	{
-		return this.getBiomeGenAt(p_76933_1_, p_76933_2_, p_76933_3_, p_76933_4_, p_76933_5_, true);
+		return this.getBiomeGenAt(par1ArrayOfBiomeGenBase, par2, par3, par4, par5, true);
 	}
 
 	/**
@@ -180,31 +186,39 @@ public class WorldChunkManagerDeeps extends WorldChunkManager
 	 * loop in BiomeCacheBlock)
 	 */
 	@Override
-	public BiomeGenBase[] getBiomeGenAt(BiomeGenBase[] p_76931_1_, int p_76931_2_, int p_76931_3_, int p_76931_4_, int p_76931_5_, boolean p_76931_6_)
+	public BiomeGenBase[] getBiomeGenAt(BiomeGenBase[] par1ArrayOfBiomeGenBase, int x, int y, int width, int length, boolean cacheFlag)
 	{
 		IntCache.resetIntCache();
 
-		if(p_76931_1_ == null || p_76931_1_.length < p_76931_4_ * p_76931_5_)
+		if(par1ArrayOfBiomeGenBase == null || par1ArrayOfBiomeGenBase.length < width * length)
 		{
-			p_76931_1_ = new BiomeGenBase[p_76931_4_ * p_76931_5_];
+			par1ArrayOfBiomeGenBase = new BiomeGenBase[width * length];
 		}
 
-		if(p_76931_6_ && p_76931_4_ == 16 && p_76931_5_ == 16 && (p_76931_2_ & 15) == 0 && (p_76931_3_ & 15) == 0)
+		if(cacheFlag && width == 16 && length == 16 && (x & 15) == 0 && (y & 15) == 0)
 		{
-			BiomeGenBase[] abiomegenbase1 = this.biomeCache.getCachedBiomes(p_76931_2_, p_76931_3_);
-			System.arraycopy(abiomegenbase1, 0, p_76931_1_, 0, p_76931_4_ * p_76931_5_);
-			return p_76931_1_;
+			BiomeGenBase[] abiomegenbase1 = this.myBiomeCache.getCachedBiomes(x, y);
+			System.arraycopy(abiomegenbase1, 0, par1ArrayOfBiomeGenBase, 0, width * length);
+			return par1ArrayOfBiomeGenBase;
 		}
 		else
 		{
-			int[] aint = this.biomeIndexLayer.getInts(p_76931_2_, p_76931_3_, p_76931_4_, p_76931_5_);
+			int[] aint = this.myBiomeIndexLayer.getInts(x, y, width, length);
 
-			for(int i1 = 0; i1 < p_76931_4_ * p_76931_5_; ++i1)
+			for(int i = 0; i < width * length; ++i)
 			{
-				p_76931_1_[i1] = BiomeGenBase.getBiome(aint[i1]);
+				if(aint[i] >= 0)
+				{
+					par1ArrayOfBiomeGenBase[i] = BiomeGenBase.getBiomeGenArray()[aint[i]];
+				}
+				else
+				{
+					// Change this to a biome
+					par1ArrayOfBiomeGenBase[i] = Steamcraft.biomeDepths;
+				}
 			}
 
-			return p_76931_1_;
+			return par1ArrayOfBiomeGenBase;
 		}
 	}
 
@@ -212,55 +226,44 @@ public class WorldChunkManagerDeeps extends WorldChunkManager
 	 * checks given Chunk's Biomes against List of allowed ones
 	 */
 	@Override
-	public boolean areBiomesViable(int p_76940_1_, int p_76940_2_, int p_76940_3_, List p_76940_4_)
+	public boolean areBiomesViable(int par1, int par2, int par3, List par4List)
 	{
 		IntCache.resetIntCache();
-		int l = p_76940_1_ - p_76940_3_ >> 2;
-		int i1 = p_76940_2_ - p_76940_3_ >> 2;
-		int j1 = p_76940_1_ + p_76940_3_ >> 2;
-		int k1 = p_76940_2_ + p_76940_3_ >> 2;
+		int l = par1 - par3 >> 2;
+		int i1 = par2 - par3 >> 2;
+		int j1 = par1 + par3 >> 2;
+		int k1 = par2 + par3 >> 2;
 		int l1 = j1 - l + 1;
 		int i2 = k1 - i1 + 1;
-		int[] aint = this.genBiomes.getInts(l, i1, l1, i2);
+		int[] aint = this.myGenBiomes.getInts(l, i1, l1, i2);
 
-		try
+		for(int j2 = 0; j2 < l1 * i2; ++j2)
 		{
-			for(int j2 = 0; j2 < l1 * i2; ++j2)
+			BiomeGenBase biomegenbase = BiomeGenBase.getBiomeGenArray()[aint[j2]];
+
+			if(!par4List.contains(biomegenbase))
 			{
-				BiomeGenBase biomegenbase = BiomeGenBase.getBiome(aint[j2]);
-
-				if(!p_76940_4_.contains(biomegenbase))
-				{
-					return false;
-				}
+				return false;
 			}
+		}
 
-			return true;
-		}
-		catch(Throwable throwable)
-		{
-			CrashReport crashreport = CrashReport.makeCrashReport(throwable, "Invalid Biome id");
-			CrashReportCategory crashreportcategory = crashreport.makeCategory("Layer");
-			crashreportcategory.addCrashSection("Layer", this.genBiomes.toString());
-			crashreportcategory.addCrashSection("x", Integer.valueOf(p_76940_1_));
-			crashreportcategory.addCrashSection("z", Integer.valueOf(p_76940_2_));
-			crashreportcategory.addCrashSection("radius", Integer.valueOf(p_76940_3_));
-			crashreportcategory.addCrashSection("allowed", p_76940_4_);
-			throw new ReportedException(crashreport);
-		}
+		return true;
 	}
 
+	/**
+	 * Finds a valid position within a range, that is in one of the listed biomes. Searches {par1,par2} +-par3 blocks. Strongly favors positive y positions.
+	 */
 	@Override
-	public ChunkPosition findBiomePosition(int p_150795_1_, int p_150795_2_, int p_150795_3_, List p_150795_4_, Random p_150795_5_)
+	public ChunkPosition findBiomePosition(int par1, int par2, int par3, List par4List, Random par5Random)
 	{
 		IntCache.resetIntCache();
-		int l = p_150795_1_ - p_150795_3_ >> 2;
-		int i1 = p_150795_2_ - p_150795_3_ >> 2;
-		int j1 = p_150795_1_ + p_150795_3_ >> 2;
-		int k1 = p_150795_2_ + p_150795_3_ >> 2;
+		int l = par1 - par3 >> 2;
+		int i1 = par2 - par3 >> 2;
+		int j1 = par1 + par3 >> 2;
+		int k1 = par2 + par3 >> 2;
 		int l1 = j1 - l + 1;
 		int i2 = k1 - i1 + 1;
-		int[] aint = this.genBiomes.getInts(l, i1, l1, i2);
+		int[] aint = this.myGenBiomes.getInts(l, i1, l1, i2);
 		ChunkPosition chunkposition = null;
 		int j2 = 0;
 
@@ -268,9 +271,9 @@ public class WorldChunkManagerDeeps extends WorldChunkManager
 		{
 			int l2 = l + k2 % l1 << 2;
 			int i3 = i1 + k2 / l1 << 2;
-			BiomeGenBase biomegenbase = BiomeGenBase.getBiome(aint[k2]);
+			BiomeGenBase biomegenbase = BiomeGenBase.getBiomeGenArray()[aint[k2]];
 
-			if(p_150795_4_.contains(biomegenbase) && (chunkposition == null || p_150795_5_.nextInt(j2 + 1) == 0))
+			if(par4List.contains(biomegenbase) && (chunkposition == null || par5Random.nextInt(j2 + 1) == 0))
 			{
 				chunkposition = new ChunkPosition(l2, 0, i3);
 				++j2;
@@ -286,14 +289,6 @@ public class WorldChunkManagerDeeps extends WorldChunkManager
 	@Override
 	public void cleanupCache()
 	{
-		this.biomeCache.cleanupCache();
-	}
-
-	@Override
-	public GenLayer[] getModdedBiomeGenerators(WorldType worldType, long seed, GenLayer[] original)
-	{
-		WorldTypeEvent.InitBiomeGens event = new WorldTypeEvent.InitBiomeGens(worldType, seed, original);
-		MinecraftForge.TERRAIN_GEN_BUS.post(event);
-		return event.newBiomeGens;
+		this.myBiomeCache.cleanupCache();
 	}
 }
