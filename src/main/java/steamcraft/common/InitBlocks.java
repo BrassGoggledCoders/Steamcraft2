@@ -24,6 +24,7 @@ import steamcraft.common.blocks.BlockCastIronFence;
 import steamcraft.common.blocks.BlockCastIronGate;
 import steamcraft.common.blocks.BlockCastIronLamp;
 import steamcraft.common.blocks.BlockCastIronRailing;
+import steamcraft.common.blocks.BlockCompressedStone;
 import steamcraft.common.blocks.BlockCongealedSlime;
 import steamcraft.common.blocks.BlockCrystal;
 import steamcraft.common.blocks.BlockCustomOre;
@@ -134,7 +135,7 @@ public class InitBlocks
 
 	public static Block blockCongealedSlime;
 
-	public static Block blockFissurePortal;
+	public static Block blockFissurePortal, blockCompressedStone;
 
 	public static void init()
 	{
@@ -297,6 +298,9 @@ public class InitBlocks
 
 		blockFissurePortal = new BlockFissurePortal(Material.rock).setBlockName("blockFissurePortal");
 		GameRegistry.registerBlock(blockFissurePortal, "BlockFissurePortal");
+
+		blockCompressedStone = new BlockCompressedStone(Material.rock);
+		GameRegistry.registerBlock(blockCompressedStone, "BlockCompressedStone");
 	}
 
 }

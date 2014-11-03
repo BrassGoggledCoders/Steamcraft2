@@ -61,6 +61,7 @@ tile.blockPlankStack.5.name=Dark Oak Plank Stack
 tile.blockFlesh.name=Block of Flesh
 tile.blockCongealedSlime.name=Congealed Slime Block
 tile.blockCastIronLamp.name=Cast Iron Lamp
+tile.blockCompressedStone.name=Compressed Stone
 
 #Ores
 tile.blockCustomOre.0.name=Aluminum Ore
