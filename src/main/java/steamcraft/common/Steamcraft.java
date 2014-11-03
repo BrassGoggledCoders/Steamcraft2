@@ -17,7 +17,7 @@ import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.MinecraftForge;
 import steamcraft.client.GuiHandler;
-import steamcraft.common.biomes.BiomeDepths;
+import steamcraft.common.biomes.BiomeDepthsBase;
 import steamcraft.common.compat.CompatabilityLayer;
 import steamcraft.common.config.Config;
 import steamcraft.common.config.ConfigGeneral;
@@ -62,7 +62,7 @@ public class Steamcraft
 
 	public static String configPath;
 
-	public static BiomeGenBase biomeDepths;
+	public static BiomeGenBase biomeDepths, biomeDepthsF, biomeDepthsM;
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
@@ -100,7 +100,9 @@ public class Steamcraft
 
 		DimensionManager.registerProviderType(ConfigGeneral.deepsDimensionID, WorldProviderDeeps.class, false);
 		DimensionManager.registerDimension(ConfigGeneral.deepsDimensionID, ConfigGeneral.deepsDimensionID);
-		biomeDepths = new BiomeDepths(ConfigGeneral.depthsBiomeID);
+		biomeDepths = new BiomeDepthsBase(ConfigGeneral.depthsBiomeID);
+		biomeDepthsF = new BiomeDepthsBase(ConfigGeneral.depthsFBiomeID);
+		biomeDepthsM = new BiomeDepthsBase(ConfigGeneral.depthsMBiomeID);
 
 		CompatabilityLayer.init();
 	}

@@ -44,16 +44,17 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.terraingen.ChunkProviderEvent;
 import net.minecraftforge.event.terraingen.PopulateChunkEvent;
 import net.minecraftforge.event.terraingen.TerrainGen;
+import steamcraft.common.Steamcraft;
 import cpw.mods.fml.common.eventhandler.Event.Result;
 
 public class ChunkProviderDeeps implements IChunkProvider
 {
 	/** RNG. */
 	private final Random rand;
-	private NoiseGeneratorOctaves field_147431_j;
-	private NoiseGeneratorOctaves field_147432_k;
-	private NoiseGeneratorOctaves field_147429_l;
-	private NoiseGeneratorPerlin field_147430_m;
+	private NoiseGeneratorOctaves noiseGen1;
+	private NoiseGeneratorOctaves noiseGen2;
+	private NoiseGeneratorOctaves noiseGen3;
+	private NoiseGeneratorPerlin noiseGen4;
 	/** A NoiseGeneratorOctaves used in generating terrain */
 	public NoiseGeneratorOctaves noiseGen5;
 	/** A NoiseGeneratorOctaves used in generating terrain */
@@ -63,7 +64,7 @@ public class ChunkProviderDeeps implements IChunkProvider
 	private final World worldObj;
 	/** are map structures going to be generated (e.g. strongholds) */
 	private final boolean mapFeaturesEnabled;
-	private final WorldType field_147435_p;
+	private final WorldType worldType;
 	private final double[] field_147434_q;
 	private final float[] parabolicField;
 	private double[] stoneNoise = new double[256];
@@ -78,13 +79,12 @@ public class ChunkProviderDeeps implements IChunkProvider
 	/** Holds ravine generator */
 	private MapGenBase ravineGenerator = new MapGenRavine();
 	/** The biomes that are used to generate the chunk */
-	private BiomeGenBase[] biomesForGeneration;
+	public BiomeGenBase[] biomesForGeneration;
 	double[] field_147427_d;
 	double[] field_147428_e;
 	double[] field_147425_f;
 	double[] field_147426_g;
 	int[][] field_73219_j = new int[32][32];
-	private static final String __OBFID = "CL_00000396";
 
 	{
 		caveGenerator = TerrainGen.getModdedMapGen(caveGenerator, CAVE);
@@ -99,12 +99,12 @@ public class ChunkProviderDeeps implements IChunkProvider
 	{
 		this.worldObj = p_i2006_1_;
 		this.mapFeaturesEnabled = p_i2006_4_;
-		this.field_147435_p = p_i2006_1_.getWorldInfo().getTerrainType();
+		this.worldType = p_i2006_1_.getWorldInfo().getTerrainType();
 		this.rand = new Random(p_i2006_2_);
-		this.field_147431_j = new NoiseGeneratorOctaves(this.rand, 16);
-		this.field_147432_k = new NoiseGeneratorOctaves(this.rand, 16);
-		this.field_147429_l = new NoiseGeneratorOctaves(this.rand, 8);
-		this.field_147430_m = new NoiseGeneratorPerlin(this.rand, 4);
+		this.noiseGen1 = new NoiseGeneratorOctaves(this.rand, 16);
+		this.noiseGen2 = new NoiseGeneratorOctaves(this.rand, 16);
+		this.noiseGen3 = new NoiseGeneratorOctaves(this.rand, 8);
+		this.noiseGen4 = new NoiseGeneratorPerlin(this.rand, 4);
 		this.noiseGen5 = new NoiseGeneratorOctaves(this.rand, 10);
 		this.noiseGen6 = new NoiseGeneratorOctaves(this.rand, 16);
 		this.mobSpawnerNoise = new NoiseGeneratorOctaves(this.rand, 8);
@@ -120,23 +120,24 @@ public class ChunkProviderDeeps implements IChunkProvider
 			}
 		}
 
-		NoiseGenerator[] noiseGens = { field_147431_j, field_147432_k, field_147429_l, field_147430_m, noiseGen5, noiseGen6, mobSpawnerNoise };
+		NoiseGenerator[] noiseGens = { noiseGen1, noiseGen2, noiseGen3, noiseGen4, noiseGen5, noiseGen6, mobSpawnerNoise };
 		noiseGens = TerrainGen.getModdedNoiseGenerators(p_i2006_1_, this.rand, noiseGens);
-		this.field_147431_j = (NoiseGeneratorOctaves) noiseGens[0];
-		this.field_147432_k = (NoiseGeneratorOctaves) noiseGens[1];
-		this.field_147429_l = (NoiseGeneratorOctaves) noiseGens[2];
-		this.field_147430_m = (NoiseGeneratorPerlin) noiseGens[3];
+		this.noiseGen1 = (NoiseGeneratorOctaves) noiseGens[0];
+		this.noiseGen2 = (NoiseGeneratorOctaves) noiseGens[1];
+		this.noiseGen3 = (NoiseGeneratorOctaves) noiseGens[2];
+		this.noiseGen4 = (NoiseGeneratorPerlin) noiseGens[3];
 		this.noiseGen5 = (NoiseGeneratorOctaves) noiseGens[4];
 		this.noiseGen6 = (NoiseGeneratorOctaves) noiseGens[5];
 		this.mobSpawnerNoise = (NoiseGeneratorOctaves) noiseGens[6];
 	}
 
-	public void func_147424_a(int p_147424_1_, int p_147424_2_, Block[] p_147424_3_)
+	public void doBaseGeneration(int chunkCoordX, int chunkCoordZ, Block[] p_147424_3_)
 	{
 		byte b0 = 63;
-		this.biomesForGeneration = this.worldObj.getWorldChunkManager().getBiomesForGeneration(this.biomesForGeneration, p_147424_1_ * 4 - 2,
-				p_147424_2_ * 4 - 2, 10, 10);
-		this.func_147423_a(p_147424_1_ * 4, 0, p_147424_2_ * 4);
+		this.biomesForGeneration = this.worldObj.getWorldChunkManager().loadBlockGeneratorData(
+				new BiomeGenBase[] { Steamcraft.biomeDepthsF, Steamcraft.biomeDepthsM, Steamcraft.biomeDepths }, chunkCoordX * 16, chunkCoordZ * 16, 16,
+				16);
+		this.func_147423_a(chunkCoordX * 4, 0, chunkCoordZ * 4);
 
 		for(int k = 0; k < 4; ++k)
 		{
@@ -218,7 +219,7 @@ public class ChunkProviderDeeps implements IChunkProvider
 			return;
 
 		double d0 = 0.03125D;
-		this.stoneNoise = this.field_147430_m.func_151599_a(this.stoneNoise, p_147422_1_ * 16, p_147422_2_ * 16, 16, 16, d0 * 2.0D, d0 * 2.0D, 1.0D);
+		this.stoneNoise = this.noiseGen4.func_151599_a(this.stoneNoise, p_147422_1_ * 16, p_147422_2_ * 16, 16, 16, d0 * 2.0D, d0 * 2.0D, 1.0D);
 
 		for(int k = 0; k < 16; ++k)
 		{
@@ -250,9 +251,7 @@ public class ChunkProviderDeeps implements IChunkProvider
 		this.rand.setSeed(p_73154_1_ * 341873128712L + p_73154_2_ * 132897987541L);
 		Block[] ablock = new Block[65536];
 		byte[] abyte = new byte[65536];
-		this.func_147424_a(p_73154_1_, p_73154_2_, ablock);
-		this.biomesForGeneration = this.worldObj.getWorldChunkManager().loadBlockGeneratorData(this.biomesForGeneration, p_73154_1_ * 16, p_73154_2_ * 16, 16,
-				16);
+		this.doBaseGeneration(p_73154_1_, p_73154_2_, ablock);
 		this.replaceBlocksForBiome(p_73154_1_, p_73154_2_, ablock, abyte, this.biomesForGeneration);
 		this.caveGenerator.func_151539_a(this, this.worldObj, p_73154_1_, p_73154_2_, ablock);
 		this.ravineGenerator.func_151539_a(this, this.worldObj, p_73154_1_, p_73154_2_, ablock);
@@ -284,11 +283,11 @@ public class ChunkProviderDeeps implements IChunkProvider
 		double d2 = 512.0D;
 		double d3 = 512.0D;
 		this.field_147426_g = this.noiseGen6.generateNoiseOctaves(this.field_147426_g, p_147423_1_, p_147423_3_, 5, 5, 200.0D, 200.0D, 0.5D);
-		this.field_147427_d = this.field_147429_l.generateNoiseOctaves(this.field_147427_d, p_147423_1_, p_147423_2_, p_147423_3_, 5, 33, 5,
+		this.field_147427_d = this.noiseGen3.generateNoiseOctaves(this.field_147427_d, p_147423_1_, p_147423_2_, p_147423_3_, 5, 33, 5,
 				8.555150000000001D, 4.277575000000001D, 8.555150000000001D);
-		this.field_147428_e = this.field_147431_j.generateNoiseOctaves(this.field_147428_e, p_147423_1_, p_147423_2_, p_147423_3_, 5, 33, 5, 684.412D,
+		this.field_147428_e = this.noiseGen1.generateNoiseOctaves(this.field_147428_e, p_147423_1_, p_147423_2_, p_147423_3_, 5, 33, 5, 684.412D,
 				684.412D, 684.412D);
-		this.field_147425_f = this.field_147432_k.generateNoiseOctaves(this.field_147425_f, p_147423_1_, p_147423_2_, p_147423_3_, 5, 33, 5, 684.412D,
+		this.field_147425_f = this.noiseGen2.generateNoiseOctaves(this.field_147425_f, p_147423_1_, p_147423_2_, p_147423_3_, 5, 33, 5, 684.412D,
 				684.412D, 684.412D);
 		boolean flag1 = false;
 		boolean flag = false;
@@ -314,7 +313,7 @@ public class ChunkProviderDeeps implements IChunkProvider
 						float f3 = biomegenbase1.rootHeight;
 						float f4 = biomegenbase1.heightVariation;
 
-						if(this.field_147435_p == WorldType.AMPLIFIED && f3 > 0.0F)
+						if(this.worldType == WorldType.AMPLIFIED && f3 > 0.0F)
 						{
 							f3 = 1.0F + f3 * 2.0F;
 							f4 = 1.0F + f4 * 4.0F;

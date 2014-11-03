@@ -1,11 +1,9 @@
 package steamcraft.common.dimension;
 
 import net.minecraft.world.WorldProvider;
-import net.minecraft.world.biome.WorldChunkManagerHell;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraftforge.client.IRenderHandler;
-import steamcraft.common.Steamcraft;
 import steamcraft.common.config.ConfigGeneral;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -47,7 +45,7 @@ public class WorldProviderDeeps extends WorldProvider
 	{
 		this.dimensionId = ConfigGeneral.deepsDimensionID;
 		// TODO?
-		this.worldChunkMgr = new WorldChunkManagerHell(Steamcraft.biomeDepths, 0F);
+		this.worldChunkMgr = new WorldChunkManagerDeeps(worldObj);
 		this.generateLightBrightnessTable();
 	}
 
