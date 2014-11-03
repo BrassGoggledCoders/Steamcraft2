@@ -7,7 +7,6 @@ import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
-import steamcraft.common.InitBlocks;
 
 public class BiomeDepths extends BiomeGenBase
 {
@@ -19,7 +18,7 @@ public class BiomeDepths extends BiomeGenBase
 		this.fillerBlock = Blocks.dirt;
 		this.enableRain = false;
 		this.setHeight(new Height(1.5f, 1.8F));
-		this.setBiomeName("Depths");
+		this.setBiomeName("Inner Earth");
 		this.rootHeight = 2;
 	}
 
@@ -57,7 +56,7 @@ public class BiomeDepths extends BiomeGenBase
 
 				if(block2 != null && block2.getMaterial() != Material.air)
 				{
-					if(block2 == InitBlocks.blockCompressedStone)
+					if(block2 == Blocks.stone)
 					{
 						if(k == -1)
 						{

@@ -44,7 +44,6 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.terraingen.ChunkProviderEvent;
 import net.minecraftforge.event.terraingen.PopulateChunkEvent;
 import net.minecraftforge.event.terraingen.TerrainGen;
-import steamcraft.common.InitBlocks;
 import cpw.mods.fml.common.eventhandler.Event.Result;
 
 public class ChunkProviderDeeps implements IChunkProvider
@@ -184,7 +183,7 @@ public class ChunkProviderDeeps implements IChunkProvider
 							{
 								if((d15 += d16) > 0.0D)
 								{
-									p_147424_3_[j3 += short1] = InitBlocks.blockCompressedStone;
+									p_147424_3_[j3 += short1] = Blocks.stone;
 								}
 								else if(k2 * 8 + l2 < b0)
 								{
