@@ -130,8 +130,8 @@ public class ChunkProviderDeeps implements IChunkProvider
 	public void doBaseGeneration(int chunkCoordX, int chunkCoordZ, Block[] p_147424_3_)
 	{
 		byte b0 = 63;
-		this.biomesForGeneration = this.worldObj.getWorldChunkManager().getBiomesForGeneration(this.biomesForGeneration, chunkCoordX * 4 - 2,
-				chunkCoordZ * 4 - 2, 10, 10);
+		this.biomesForGeneration = this.worldObj.getWorldChunkManager().getBiomesForGeneration(this.biomesForGeneration, chunkCoordX * 16,
+				chunkCoordZ * 16, 16, 16);
 		this.func_147423_a(chunkCoordX * 4, 0, chunkCoordZ * 4);
 
 		for(int k = 0; k < 4; ++k)

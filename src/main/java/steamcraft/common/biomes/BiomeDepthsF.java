@@ -7,7 +7,7 @@ public class BiomeDepthsF extends BiomeDepthsBase
 	{
 		super(p_i1971_1_);
 		this.setBiomeName("Forested Inner Earth");
-		this.theBiomeDecorator.treesPerChunk = 10;
+		this.theBiomeDecorator.treesPerChunk = 50;
 		this.theBiomeDecorator.bigMushroomsPerChunk = 1;
 	}
 }

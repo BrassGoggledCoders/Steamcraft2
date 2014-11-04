@@ -30,8 +30,6 @@ public class WorldChunkManagerDeeps extends WorldChunkManager
 		this.myBiomesToSpawnIn.add(Steamcraft.biomeDepths);
 		this.myBiomesToSpawnIn.add(Steamcraft.biomeDepthsF);
 		this.myBiomesToSpawnIn.add(Steamcraft.biomeDepthsM);
-		// this.myBiomesToSpawnIn.add(Main.TutorialBiome2);
-		// this.myBiomesToSpawnIn.add(Main.TutorialBiome3);
 	}
 
 	public WorldChunkManagerDeeps(long seed, WorldType worldtype)
