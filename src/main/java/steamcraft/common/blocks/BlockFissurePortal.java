@@ -11,7 +11,7 @@ public class BlockFissurePortal extends BaseBlock
 	public BlockFissurePortal(Material mat)
 	{
 		super(mat);
-
+		this.setBlockUnbreakable();
 	}
 
 	@Override
