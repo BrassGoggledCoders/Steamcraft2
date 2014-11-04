@@ -107,4 +107,11 @@ public class WorldProviderDeeps extends WorldProvider
 			this.lightBrightnessTable[var2] = (1.0F - var3) / (var3 * 3.0F + 1.0F) * (1.0F - var1) + var1;
 		}
 	}
+
+	@Override
+	public String getSaveFolder()
+	{
+		return "DIM" + ConfigGeneral.deepsDimensionID;
+	}
+
 }

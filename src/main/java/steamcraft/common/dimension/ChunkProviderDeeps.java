@@ -8,7 +8,6 @@ import static net.minecraftforge.event.terraingen.InitMapGenEvent.EventType.STRO
 import static net.minecraftforge.event.terraingen.InitMapGenEvent.EventType.VILLAGE;
 import static net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType.ANIMALS;
 import static net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType.DUNGEON;
-import static net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType.ICE;
 import static net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType.LAKE;
 import static net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType.LAVA;
 
@@ -41,11 +40,8 @@ import net.minecraft.world.gen.structure.MapGenScatteredFeature;
 import net.minecraft.world.gen.structure.MapGenStronghold;
 import net.minecraft.world.gen.structure.MapGenVillage;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.terraingen.ChunkProviderEvent;
 import net.minecraftforge.event.terraingen.PopulateChunkEvent;
 import net.minecraftforge.event.terraingen.TerrainGen;
-import steamcraft.common.Steamcraft;
-import cpw.mods.fml.common.eventhandler.Event.Result;
 
 public class ChunkProviderDeeps implements IChunkProvider
 {
@@ -134,9 +130,8 @@ public class ChunkProviderDeeps implements IChunkProvider
 	public void doBaseGeneration(int chunkCoordX, int chunkCoordZ, Block[] p_147424_3_)
 	{
 		byte b0 = 63;
-		this.biomesForGeneration = this.worldObj.getWorldChunkManager().loadBlockGeneratorData(
-				new BiomeGenBase[] { Steamcraft.biomeDepthsF, Steamcraft.biomeDepthsM, Steamcraft.biomeDepths }, chunkCoordX * 16, chunkCoordZ * 16, 16,
-				16);
+		this.biomesForGeneration = this.worldObj.getWorldChunkManager().getBiomesForGeneration(this.biomesForGeneration, chunkCoordX * 4 - 2,
+				chunkCoordZ * 4 - 2, 10, 10);
 		this.func_147423_a(chunkCoordX * 4, 0, chunkCoordZ * 4);
 
 		for(int k = 0; k < 4; ++k)
@@ -212,11 +207,6 @@ public class ChunkProviderDeeps implements IChunkProvider
 
 	public void replaceBlocksForBiome(int p_147422_1_, int p_147422_2_, Block[] p_147422_3_, byte[] p_147422_4_, BiomeGenBase[] p_147422_5_)
 	{
-		ChunkProviderEvent.ReplaceBiomeBlocks event = new ChunkProviderEvent.ReplaceBiomeBlocks(this, p_147422_1_, p_147422_2_, p_147422_3_, p_147422_4_,
-				p_147422_5_, this.worldObj);
-		MinecraftForge.EVENT_BUS.post(event);
-		if(event.getResult() == Result.DENY)
-			return;
 
 		double d0 = 0.03125D;
 		this.stoneNoise = this.noiseGen4.func_151599_a(this.stoneNoise, p_147422_1_ * 16, p_147422_2_ * 16, 16, 16, d0 * 2.0D, d0 * 2.0D, 1.0D);
@@ -477,25 +467,6 @@ public class ChunkProviderDeeps implements IChunkProvider
 		}
 		k += 8;
 		l += 8;
-
-		doGen = TerrainGen.populate(p_73153_1_, worldObj, rand, p_73153_2_, p_73153_3_, flag, ICE);
-		for(k1 = 0; doGen && k1 < 16; ++k1)
-		{
-			for(l1 = 0; l1 < 16; ++l1)
-			{
-				i2 = this.worldObj.getPrecipitationHeight(k + k1, l + l1);
-
-				if(this.worldObj.isBlockFreezable(k1 + k, i2 - 1, l1 + l))
-				{
-					this.worldObj.setBlock(k1 + k, i2 - 1, l1 + l, Blocks.ice, 0, 2);
-				}
-
-				if(this.worldObj.func_147478_e(k1 + k, i2, l1 + l, true))
-				{
-					this.worldObj.setBlock(k1 + k, i2, l1 + l, Blocks.snow_layer, 0, 2);
-				}
-			}
-		}
 
 		MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Post(p_73153_1_, worldObj, rand, p_73153_2_, p_73153_3_, flag));
 
