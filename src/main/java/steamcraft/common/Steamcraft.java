@@ -98,11 +98,13 @@ public class Steamcraft
 		if(ConfigWorldGen.generationEnabled)
 			GameRegistry.registerWorldGenerator(new WorldGenSteamcraft(), 1);
 
-		DimensionManager.registerProviderType(ConfigGeneral.deepsDimensionID, WorldProviderDeeps.class, false);
-		DimensionManager.registerDimension(ConfigGeneral.deepsDimensionID, ConfigGeneral.deepsDimensionID);
+		// Biomes
 		biomeDepths = new BiomeDepthsBase(ConfigGeneral.depthsBiomeID);
 		biomeDepthsF = new BiomeDepthsBase(ConfigGeneral.depthsFBiomeID);
 		biomeDepthsM = new BiomeDepthsBase(ConfigGeneral.depthsMBiomeID);
+		// Dimension
+		DimensionManager.registerProviderType(ConfigGeneral.deepsDimensionID, WorldProviderDeeps.class, false);
+		DimensionManager.registerDimension(ConfigGeneral.deepsDimensionID, ConfigGeneral.deepsDimensionID);
 
 		CompatabilityLayer.init();
 	}

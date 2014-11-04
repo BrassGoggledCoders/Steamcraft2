@@ -236,25 +236,27 @@ public class ChunkProviderDeeps implements IChunkProvider
 	 * chunk seed
 	 */
 	@Override
-	public Chunk provideChunk(int p_73154_1_, int p_73154_2_)
+	public Chunk provideChunk(int chunkCoordX, int chunkCoordZ)
 	{
-		this.rand.setSeed(p_73154_1_ * 341873128712L + p_73154_2_ * 132897987541L);
+		this.rand.setSeed(chunkCoordX * 341873128712L + chunkCoordZ * 132897987541L);
 		Block[] ablock = new Block[65536];
 		byte[] abyte = new byte[65536];
-		this.doBaseGeneration(p_73154_1_, p_73154_2_, ablock);
-		this.replaceBlocksForBiome(p_73154_1_, p_73154_2_, ablock, abyte, this.biomesForGeneration);
-		this.caveGenerator.func_151539_a(this, this.worldObj, p_73154_1_, p_73154_2_, ablock);
-		this.ravineGenerator.func_151539_a(this, this.worldObj, p_73154_1_, p_73154_2_, ablock);
+		this.doBaseGeneration(chunkCoordX, chunkCoordZ, ablock);
+		this.biomesForGeneration = this.worldObj.getWorldChunkManager().getBiomesForGeneration(this.biomesForGeneration, chunkCoordX * 16,
+				chunkCoordZ * 16, 16, 16);
+		this.replaceBlocksForBiome(chunkCoordX, chunkCoordZ, ablock, abyte, this.biomesForGeneration);
+		this.caveGenerator.func_151539_a(this, this.worldObj, chunkCoordX, chunkCoordZ, ablock);
+		this.ravineGenerator.func_151539_a(this, this.worldObj, chunkCoordX, chunkCoordZ, ablock);
 
 		if(this.mapFeaturesEnabled)
 		{
-			this.mineshaftGenerator.func_151539_a(this, this.worldObj, p_73154_1_, p_73154_2_, ablock);
-			this.villageGenerator.func_151539_a(this, this.worldObj, p_73154_1_, p_73154_2_, ablock);
-			this.strongholdGenerator.func_151539_a(this, this.worldObj, p_73154_1_, p_73154_2_, ablock);
-			this.scatteredFeatureGenerator.func_151539_a(this, this.worldObj, p_73154_1_, p_73154_2_, ablock);
+			this.mineshaftGenerator.func_151539_a(this, this.worldObj, chunkCoordX, chunkCoordZ, ablock);
+			this.villageGenerator.func_151539_a(this, this.worldObj, chunkCoordX, chunkCoordZ, ablock);
+			this.strongholdGenerator.func_151539_a(this, this.worldObj, chunkCoordX, chunkCoordZ, ablock);
+			this.scatteredFeatureGenerator.func_151539_a(this, this.worldObj, chunkCoordX, chunkCoordZ, ablock);
 		}
 
-		Chunk chunk = new Chunk(this.worldObj, ablock, abyte, p_73154_1_, p_73154_2_);
+		Chunk chunk = new Chunk(this.worldObj, ablock, abyte, chunkCoordX, chunkCoordZ);
 		byte[] abyte1 = chunk.getBiomeArray();
 
 		for(int k = 0; k < abyte1.length; ++k)

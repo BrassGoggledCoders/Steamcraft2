@@ -157,12 +157,12 @@ public class WorldChunkManagerDeeps extends WorldChunkManager
 		{
 			if(aint[i] >= 0)
 			{
-				par1ArrayOfBiomeGenBase[i] = BiomeGenBase.getBiomeGenArray()[aint[i]];
+				par1ArrayOfBiomeGenBase[i] = BiomeGenBase.getBiome(aint[i]);
 			}
 			else
 			{
 				// Change this to a biome
-				par1ArrayOfBiomeGenBase[i] = Steamcraft.biomeDepths;
+				par1ArrayOfBiomeGenBase[i] = Steamcraft.biomeDepthsF;
 			}
 		}
 
@@ -207,12 +207,12 @@ public class WorldChunkManagerDeeps extends WorldChunkManager
 			{
 				if(aint[i] >= 0)
 				{
-					par1ArrayOfBiomeGenBase[i] = BiomeGenBase.getBiomeGenArray()[aint[i]];
+					par1ArrayOfBiomeGenBase[i] = BiomeGenBase.getBiome(aint[i]);
 				}
 				else
 				{
 					// Change this to a biome
-					par1ArrayOfBiomeGenBase[i] = Steamcraft.biomeDepths;
+					par1ArrayOfBiomeGenBase[i] = Steamcraft.biomeDepthsF;
 				}
 			}
 
@@ -237,7 +237,7 @@ public class WorldChunkManagerDeeps extends WorldChunkManager
 
 		for(int j2 = 0; j2 < l1 * i2; ++j2)
 		{
-			BiomeGenBase biomegenbase = BiomeGenBase.getBiomeGenArray()[aint[j2]];
+			BiomeGenBase biomegenbase = BiomeGenBase.getBiome(aint[j2]);
 
 			if(!par4List.contains(biomegenbase))
 			{
@@ -269,7 +269,7 @@ public class WorldChunkManagerDeeps extends WorldChunkManager
 		{
 			int l2 = l + k2 % l1 << 2;
 			int i3 = i1 + k2 / l1 << 2;
-			BiomeGenBase biomegenbase = BiomeGenBase.getBiomeGenArray()[aint[k2]];
+			BiomeGenBase biomegenbase = BiomeGenBase.getBiome(aint[k2]);
 
 			if(par4List.contains(biomegenbase) && (chunkposition == null || par5Random.nextInt(j2 + 1) == 0))
 			{

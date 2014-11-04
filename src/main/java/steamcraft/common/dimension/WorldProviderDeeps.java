@@ -4,6 +4,7 @@ import net.minecraft.world.WorldProvider;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraftforge.client.IRenderHandler;
+import net.minecraftforge.common.DimensionManager;
 import steamcraft.common.config.ConfigGeneral;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -45,14 +46,13 @@ public class WorldProviderDeeps extends WorldProvider
 	{
 		this.dimensionId = ConfigGeneral.deepsDimensionID;
 		// TODO?
-		this.worldChunkMgr = new WorldChunkManagerDeeps(worldObj);
+		this.worldChunkMgr = new WorldChunkManagerDeeps(worldObj.getSeed(), terrainType);
 		this.generateLightBrightnessTable();
 	}
 
 	@Override
 	public IChunkProvider createChunkGenerator()
 	{
-		// return new ChunkProviderGenerate(this.worldObj, this.worldObj.getSeed(), false);
 		return new ChunkProviderDeeps(this.worldObj, this.worldObj.getSeed(), false);
 	}
 
@@ -112,6 +112,17 @@ public class WorldProviderDeeps extends WorldProvider
 	public String getSaveFolder()
 	{
 		return "DIM" + ConfigGeneral.deepsDimensionID;
+	}
+
+	public static WorldProvider getProviderForDimension(int id)
+	{
+		return DimensionManager.createProviderFor(ConfigGeneral.deepsDimensionID);
+	}
+
+	@Override
+	public double getMovementFactor()
+	{
+		return Math.PI;
 	}
 
 }

@@ -4,7 +4,7 @@ import net.minecraft.world.gen.layer.GenLayer;
 import net.minecraft.world.gen.layer.GenLayerVoronoiZoom;
 import net.minecraft.world.gen.layer.GenLayerZoom;
 
-public class GenLayerDeeps extends GenLayer
+public abstract class GenLayerDeeps extends GenLayer
 {
 	public GenLayerDeeps(long seed)
 	{
@@ -30,12 +30,5 @@ public class GenLayerDeeps extends GenLayer
 		genlayervoronoizoom.initWorldGenSeed(seed);
 
 		return new GenLayer[] { biomes, genlayervoronoizoom };
-	}
-
-	@Override
-	public int[] getInts(int p_75904_1_, int p_75904_2_, int p_75904_3_, int p_75904_4_)
-	{
-		// TODO Auto-generated method stub
-		return null;
 	}
 }
