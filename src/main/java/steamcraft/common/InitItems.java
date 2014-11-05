@@ -12,6 +12,8 @@
  */
 package steamcraft.common;
 
+import java.io.File;
+
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import steamcraft.common.items.BaseItem;
@@ -73,6 +75,7 @@ import steamcraft.common.items.tools.ItemSteamDrill;
 import steamcraft.common.items.vanity.ItemTopHat;
 import steamcraft.common.lib.LibInfo;
 import steamcraft.common.lib.MaterialHelper;
+import boilerplate.common.baseclasses.LoreItem;
 import boilerplate.common.utils.helpers.RegistryHelper;
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -171,6 +174,8 @@ public class InitItems
 	public static Item itemTimeClock;
 
 	public static Item itemSpyglass;
+
+	public static Item itemLoreBook;
 
 	/* Init */
 	public static void init()
@@ -481,6 +486,9 @@ public class InitItems
 		// TODO overlay when held
 		itemSpyglass = new BaseItem().setUnlocalizedName("itemSpyglass");
 		registerItem(itemSpyglass, "ItemSpyglass");
+
+		itemLoreBook = new LoreItem("Test", "", new File("/assets/lang/en_US.lang")).setUnlocalizedName("itemLoreBook").setCreativeTab(Steamcraft.tabSC2);
+		registerItem(itemLoreBook, "ItemLoreBook");
 
 	}
 
