@@ -510,7 +510,8 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 
 	public boolean isFluidHandler(ForgeDirection dir)
 	{
-		return (this.worldObj.getTileEntity(this.xCoord + dir.offsetX, this.yCoord + dir.offsetY, this.zCoord + dir.offsetZ) instanceof IFluidHandler)
+		TileEntity te = this.worldObj.getTileEntity(this.xCoord + dir.offsetX, this.yCoord + dir.offsetY, this.zCoord + dir.offsetZ);
+		return (te instanceof IFluidHandler)
 				&& !this.isCopperPipe(dir);
 	}
 
