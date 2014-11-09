@@ -179,8 +179,8 @@ public class InitRecipes
 		RecipeUtils.addToolSet(new ItemStack(InitItems.itemResource, 1, 2), new ItemStack[] { new ItemStack(InitItems.pickaxeObsidian),
 				new ItemStack(InitItems.shovelObsidian), new ItemStack(InitItems.axeObsidian), new ItemStack(InitItems.hoeObsidian),
 				new ItemStack(InitItems.swordObsidian) });
-		GameRegistry.addShapedRecipe(new ItemStack(InitItems.itemSpanner), new Object[] { "I I", " I ", " I ", 'I',
-				new ItemStack(InitItems.itemIngot, 1, 5) });
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemSpanner), new Object[] { "P P", " P ", " P ", 'P',
+				"plateBronze" }));
 	}
 
 	private static void initArmorRecipes()
