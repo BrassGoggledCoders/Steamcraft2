@@ -93,7 +93,7 @@ public class WorldProviderDeeps extends WorldProvider
 	@Override
 	public float getCloudHeight()
 	{
-		return 3F;
+		return 6F;
 	}
 
 	@Override

@@ -415,12 +415,20 @@ achievement.zapachieve=KA-ZAAP!!
 achievement.zapachieve.desc=Power, UNLIMITED POWER!
 achievement.creatorachieve=To Meet Your Maker
 achievement.creatorachieve.desc=Oppa Gmod Style
+
 #Damage Sources
 death.attack.steamcraft2.electrocution=%1$s was electrocuted
 death.attack.steamcraft2.electrocution.player=%1$s was electrocuted
 death.attack.steamcraft2.bullet=%1$s was shot
 death.attack.steamcraft2.bullet.player=%1$s was shot by %2$s
 death.attack.steamcraft2.bullet.player.item=%1$s was shot by %2$s using %3$s
+
+#Biomes
+biome.steamcraft2.innerearth.name=Inner Earth
+biome.steamcraft2.innerearth.f.name=Forested Inner Earth
+biome.steamcraft2.innerearth.m.name=Mountainous Inner Earth
+biome.steamcraft2.innerearth.s.name=Mushroom Forested Inner Earth
+
 
 #Vanilla Docs
 tile.chest.documentation=For holding things. Has 36 slots.
