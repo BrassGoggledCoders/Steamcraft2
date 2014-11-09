@@ -1,5 +1,5 @@
 /**
- * This class was created by BrassGoggledCoders modding team. 
+ * This class was created by BrassGoggledCoders modding team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -8,7 +8,7 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- * 
+ *
  */
 package steamcraft.common.tiles.recipes;
 
@@ -29,7 +29,7 @@ import steamcraft.common.InitItems;
 public class BloomeryRecipes
 {
 	private static final BloomeryRecipes instance = new BloomeryRecipes();
-	private Map<ItemStack[], ItemStack> recipeList = new HashMap<ItemStack[], ItemStack>();
+	private final Map<ItemStack[], ItemStack> recipeList = new HashMap<ItemStack[], ItemStack>();
 
 	public static BloomeryRecipes getInstance()
 	{
@@ -38,7 +38,8 @@ public class BloomeryRecipes
 
 	private BloomeryRecipes()
 	{
-		this.addBloomeryRecipe(new ItemStack(Blocks.iron_ore), new ItemStack(Items.coal, 4), new ItemStack(InitItems.itemIngot, 1, 6));
+		this.addBloomeryRecipe(new ItemStack(Blocks.iron_ore), new ItemStack(Items.coal, 4), new ItemStack(InitItems.itemIngot, 2, 6));
+		this.addBloomeryRecipe(new ItemStack(Items.iron_ingot), new ItemStack(Items.coal, 4), new ItemStack(InitItems.itemIngot, 1, 6));
 	}
 
 	public void addBloomeryRecipe(ItemStack input, ItemStack input2, ItemStack result)
