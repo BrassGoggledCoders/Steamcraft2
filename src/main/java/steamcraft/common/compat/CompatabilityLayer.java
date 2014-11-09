@@ -130,10 +130,14 @@ public class CompatabilityLayer
 
 		for(int i = 0; i < 10; i++)
 		{
-			OreDictionary.registerOre("partCopper" + partType[i], new ItemStack(InitItems.itemCopperParts, 1, i));
-			OreDictionary.registerOre("partIron" + partType[i], new ItemStack(InitItems.itemIronParts, 1, i));
-			OreDictionary.registerOre("partBrass" + partType[i], new ItemStack(InitItems.itemBrassParts, 1, i));
-			OreDictionary.registerOre("partSteel" + partType[i], new ItemStack(InitItems.itemSteelParts, 1, i));
+			OreDictHelper.registerOreWithAlts(new String[] { "partCopper" + partType[i], partType[i].toLowerCase() + "Copper" }, new ItemStack(
+					InitItems.itemCopperParts, 1, i));
+			OreDictHelper.registerOreWithAlts(new String[] { "partIron" + partType[i], partType[i].toLowerCase() + "Copper" }, new ItemStack(
+					InitItems.itemIronParts, 1, i));
+			OreDictHelper.registerOreWithAlts(new String[] { "partBrass" + partType[i], partType[i].toLowerCase() + "Copper" }, new ItemStack(
+					InitItems.itemBrassParts, 1, i));
+			OreDictHelper.registerOreWithAlts(new String[] { "partSteel" + partType[i], partType[i].toLowerCase() + "Copper" }, new ItemStack(
+					InitItems.itemSteelParts, 1, i));
 		}
 		// Part Utils
 		for(int i = 0; i < 10; i++)
