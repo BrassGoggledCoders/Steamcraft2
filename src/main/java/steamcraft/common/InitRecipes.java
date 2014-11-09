@@ -321,7 +321,7 @@ public class InitRecipes
 				new ItemStack(InitBlocks.blockCopperWire), new ItemStack(InitBlocks.blockCopperWire), new ItemStack(InitBlocks.blockCopperWire) }));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockCopperWire), new Object[] { "CD", 'C', "ingotCopper", 'D',
-				InitItems.itemDrawplate }));
+				new ItemStack(InitItems.itemDrawplate, 1, OreDictionary.WILDCARD_VALUE) }));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemDrawplate), new Object[] { "S S", " S ", "S S", 'S', "plateCastIron" }));
 
