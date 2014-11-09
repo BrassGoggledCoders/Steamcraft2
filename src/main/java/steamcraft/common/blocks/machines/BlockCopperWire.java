@@ -12,10 +12,14 @@
  */
 package steamcraft.common.blocks.machines;
 
+import java.util.List;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
@@ -26,6 +30,8 @@ import steamcraft.client.lib.RenderIDs;
 import steamcraft.common.InitBlocks;
 import steamcraft.common.lib.DamageSourceHandler;
 import steamcraft.common.tiles.TileCopperWire;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author warlordjones
@@ -141,8 +147,21 @@ public class BlockCopperWire extends BaseContainerBlock
 	@Override
 	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)
 	{
-		TileCopperWire wire = (TileCopperWire) world.getTileEntity(x, y, z);
-		if(wire.getEnergyStored(ForgeDirection.UNKNOWN) != 0)
-			entity.attackEntityFrom(DamageSourceHandler.electrocution, 0.5F);
+		if(world.getBlockMetadata(x, y, z) == 0)
+		{
+			TileCopperWire wire = (TileCopperWire) world.getTileEntity(x, y, z);
+			if(wire.getEnergyStored(ForgeDirection.UNKNOWN) != 0)
+				entity.attackEntityFrom(DamageSourceHandler.electrocution, 0.5F);
+		}
 	}
+
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void getSubBlocks(final Item item, final CreativeTabs tab, final List l)
+	{
+		l.add(new ItemStack(InitBlocks.blockCopperWire, 1, 0));
+		l.add(new ItemStack(InitBlocks.blockCopperWire, 1, 1));
+	}
+
 }

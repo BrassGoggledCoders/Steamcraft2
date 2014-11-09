@@ -240,7 +240,7 @@ public class InitBlocks
 		// Wires
 		blockCopperWire = new BlockCopperWire(Material.iron).setBlockName("blockCopperWire");
 
-		RegistryHelper.registerContainerBlockWithDesc(blockCopperWire, TileCopperWire.class, "BlockCopperWire");
+		RegistryHelper.registerContainerBlockWithDescAndMeta(blockCopperWire, TileCopperWire.class, "BlockCopperWire");
 
 		// Tanks
 		blockCopperTank = new BaseBlock(Material.iron).setBlockName("blockCopperTank");

@@ -79,8 +79,10 @@ tile.blockCopperTank.name=Copper Tank
 tile.blockCopperTank.desc=Not yet Functional.
 tile.blockCopperPipe.name=Copper Pipe
 tile.blockCopperPipe.desc=Right-Click with Spanner to change to extracting (pulling out fluids) mode.
-tile.blockCopperWire.name=Copper Wire
-tile.blockCopperWire.desc=Right-Click with Spanner to change to extracting (pulling out energy) mode.
+tile.blockCopperWire.0.name=Copper Wire
+tile.blockCopperWire.desc=Right-Click with Spanner to change to extracting (pulling out energy) mode. Electrocutes you if you step on it while current is flowing
+tile.blockCopperWire.1.name=Insulated Copper Wire
+tile.blockCopperWire.1.desc=Right-Click with Spanner to change to extracting (pulling out energy) mode. Won't electrocute you!
 
 tile.blockBloomery.name=Bloomery
 tile.blockBloomery.desc=Smelts iron ore into steel. Ore in the first slot, four coal in the second, and fuel in the bottom slot.

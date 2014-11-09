@@ -30,6 +30,7 @@ import steamcraft.common.tiles.TileCopperWire;
 public class TileCopperWireRenderer extends TileEntitySpecialRenderer
 {
 	ResourceLocation texture = new ResourceLocation(LibInfo.PREFIX + "textures/blocks/blockCopperWire.png");
+	ResourceLocation texture1 = new ResourceLocation(LibInfo.PREFIX + "textures/blocks/blockInsulatedWire.png");
 
 	public static float pixel = 1F / 16F / 2F;
 	public static float tPixel = 1F / 32F;
@@ -42,10 +43,12 @@ public class TileCopperWireRenderer extends TileEntitySpecialRenderer
 		GL11.glTranslated(transX, transY, transZ);
 		GL11.glDisable(GL11.GL_LIGHTING);
 
-		this.bindTexture(this.texture);
-
 		TileCopperWire wire = (TileCopperWire) tile;
 
+		if(tile.getBlockMetadata() == 0)
+			this.bindTexture(this.texture);
+		else
+			this.bindTexture(this.texture1);
 		this.drawCore(wire);
 
 		for(ForgeDirection dir : wire.connections)
