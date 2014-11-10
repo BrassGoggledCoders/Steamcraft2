@@ -16,7 +16,9 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
+import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.oredict.OreDictionary;
+import steamcraft.common.InitBiomes;
 import steamcraft.common.InitBlocks;
 import steamcraft.common.InitItems;
 import steamcraft.common.config.ConfigGeneral;
@@ -147,7 +149,15 @@ public class CompatabilityLayer
 			OreDictionary.registerOre("partTierTwo", new ItemStack(InitItems.itemBrassParts, 1, i));
 			OreDictionary.registerOre("partTierTwo", new ItemStack(InitItems.itemSteelParts, 1, i));
 		}
+		registerBiomeTypes();
+	}
 
+	private static void registerBiomeTypes()
+	{
+		BiomeDictionary.registerBiomeType(InitBiomes.biomeDepths, BiomeDictionary.Type.HILLS);
+		BiomeDictionary.registerBiomeType(InitBiomes.biomeDepthsF, BiomeDictionary.Type.HILLS, BiomeDictionary.Type.FOREST);
+		BiomeDictionary.registerBiomeType(InitBiomes.biomeDepthsM, BiomeDictionary.Type.HILLS);
+		BiomeDictionary.registerBiomeType(InitBiomes.biomeDepthsS, BiomeDictionary.Type.HILLS, BiomeDictionary.Type.SPOOKY, BiomeDictionary.Type.FOREST);
 	}
 
 	public static void init()

@@ -13,15 +13,9 @@
 package steamcraft.common;
 
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.world.biome.BiomeGenBase;
-import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.MinecraftForge;
 import steamcraft.client.GuiHandler;
-import steamcraft.common.biomes.BiomeDepthsBase;
-import steamcraft.common.biomes.BiomeDepthsF;
-import steamcraft.common.biomes.BiomeDepthsM;
-import steamcraft.common.biomes.BiomeDepthsS;
 import steamcraft.common.compat.CompatabilityLayer;
 import steamcraft.common.config.Config;
 import steamcraft.common.config.ConfigGeneral;
@@ -66,8 +60,6 @@ public class Steamcraft
 
 	public static String configPath;
 
-	public static BiomeGenBase biomeDepths, biomeDepthsF, biomeDepthsM, biomeDepthsS;
-
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{
@@ -103,18 +95,12 @@ public class Steamcraft
 			GameRegistry.registerWorldGenerator(new WorldGenSteamcraft(), 1);
 
 		// Biomes
-		biomeDepths = new BiomeDepthsBase(ConfigGeneral.depthsBiomeID);
-		biomeDepthsF = new BiomeDepthsF(ConfigGeneral.depthsFBiomeID);
-		biomeDepthsM = new BiomeDepthsM(ConfigGeneral.depthsMBiomeID);
-		biomeDepthsS = new BiomeDepthsS(ConfigGeneral.depthsSBiomeID);
+
 		// Dimension
 		DimensionManager.registerProviderType(ConfigGeneral.deepsDimensionID, WorldProviderDeeps.class, false);
 		DimensionManager.registerDimension(ConfigGeneral.deepsDimensionID, ConfigGeneral.deepsDimensionID);
 
-		BiomeDictionary.registerBiomeType(biomeDepths, BiomeDictionary.Type.HILLS);
-		BiomeDictionary.registerBiomeType(biomeDepthsF, BiomeDictionary.Type.HILLS, BiomeDictionary.Type.FOREST);
-		BiomeDictionary.registerBiomeType(biomeDepthsM, BiomeDictionary.Type.HILLS);
-		BiomeDictionary.registerBiomeType(biomeDepthsS, BiomeDictionary.Type.HILLS, BiomeDictionary.Type.SPOOKY, BiomeDictionary.Type.FOREST);
+		InitBiomes.init();
 
 		CompatabilityLayer.init();
 	}

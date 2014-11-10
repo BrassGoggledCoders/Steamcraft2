@@ -33,6 +33,8 @@ import steamcraft.common.blocks.BlockEtherium;
 import steamcraft.common.blocks.BlockFissurePortal;
 import steamcraft.common.blocks.BlockFluidSteam;
 import steamcraft.common.blocks.BlockHatch;
+import steamcraft.common.blocks.BlockInfestedDirt;
+import steamcraft.common.blocks.BlockInfestedGrass;
 import steamcraft.common.blocks.BlockLamp;
 import steamcraft.common.blocks.BlockMetal;
 import steamcraft.common.blocks.BlockPlankStack;
@@ -136,6 +138,8 @@ public class InitBlocks
 	public static Block blockCongealedSlime;
 
 	public static Block blockFissurePortal, blockCompressedStone;
+
+	public static Block blockInfestedGrass, blockInfestedDirt;
 
 	public static void init()
 	{
@@ -301,6 +305,12 @@ public class InitBlocks
 
 		blockCompressedStone = new BlockCompressedStone(Material.rock);
 		GameRegistry.registerBlock(blockCompressedStone, "BlockCompressedStone");
+
+		blockInfestedGrass = new BlockInfestedGrass(Material.grass).setBlockName("blockInfestedGrass");
+		GameRegistry.registerBlock(blockInfestedGrass, "BlockInfestedGrass");
+
+		blockInfestedDirt = new BlockInfestedDirt(Material.ground).setBlockName("blockInfestedDirt");
+		GameRegistry.registerBlock(blockInfestedDirt, "BlockInfestedDirt");
 	}
 
 }

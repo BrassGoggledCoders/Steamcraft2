@@ -12,7 +12,7 @@ import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.biome.WorldChunkManager;
 import net.minecraft.world.gen.layer.GenLayer;
 import net.minecraft.world.gen.layer.IntCache;
-import steamcraft.common.Steamcraft;
+import steamcraft.common.InitBiomes;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -27,9 +27,11 @@ public class WorldChunkManagerDeeps extends WorldChunkManager
 	{
 		this.myBiomeCache = new BiomeCache(this);
 		this.myBiomesToSpawnIn = new ArrayList<BiomeGenBase>();
-		this.myBiomesToSpawnIn.add(Steamcraft.biomeDepths);
-		this.myBiomesToSpawnIn.add(Steamcraft.biomeDepthsF);
-		this.myBiomesToSpawnIn.add(Steamcraft.biomeDepthsM);
+		this.myBiomesToSpawnIn.add(InitBiomes.biomeDepths);
+		this.myBiomesToSpawnIn.add(InitBiomes.biomeDepthsF);
+		this.myBiomesToSpawnIn.add(InitBiomes.biomeDepthsM);
+		this.myBiomesToSpawnIn.add(InitBiomes.biomeDepthsS);
+		this.myBiomesToSpawnIn.add(InitBiomes.biomeDepthsI);
 	}
 
 	public WorldChunkManagerDeeps(long seed, WorldType worldtype)
@@ -63,7 +65,7 @@ public class WorldChunkManagerDeeps extends WorldChunkManager
 		BiomeGenBase biome = this.myBiomeCache.getBiomeGenAt(x, z);
 		if(biome == null)
 		{
-			return Steamcraft.biomeDepths;
+			return InitBiomes.biomeDepths;
 		}
 
 		return biome;
@@ -125,7 +127,7 @@ public class WorldChunkManagerDeeps extends WorldChunkManager
 
 		for(int i1 = 0; i1 < par4 * par5; ++i1)
 		{
-			float f = Math.round(BiomeGenBase.getBiomeGenArray()[aint[i1]].temperature) / 65536.0F;
+			float f = BiomeGenBase.getBiomeGenArray()[aint[i1]].temperature / 65536.0F;
 
 			if(f > 1.0F)
 			{
@@ -157,12 +159,12 @@ public class WorldChunkManagerDeeps extends WorldChunkManager
 		{
 			if(aint[i] >= 0)
 			{
-				par1ArrayOfBiomeGenBase[i] = BiomeGenBase.getBiome(aint[i]);
+				par1ArrayOfBiomeGenBase[i] = BiomeGenBase.getBiomeGenArray()[aint[i]];
 			}
 			else
 			{
 				// Change this to a biome
-				par1ArrayOfBiomeGenBase[i] = Steamcraft.biomeDepthsF;
+				par1ArrayOfBiomeGenBase[i] = InitBiomes.biomeDepths;
 			}
 		}
 
@@ -170,8 +172,8 @@ public class WorldChunkManagerDeeps extends WorldChunkManager
 	}
 
 	/**
-	 * Returns biomes to use for the blocks and loads the other data like temperature and humidity onto the WorldChunkManager Args: oldBiomeList, x, z, width,
-	 * depth
+	 * Returns biomes to use for the blocks and loads the other data like temperature and humidity onto the WorldChunkManager Args: oldgetBiomeGenArray(), x, z,
+	 * width, depth
 	 */
 	@Override
 	public BiomeGenBase[] loadBlockGeneratorData(BiomeGenBase[] par1ArrayOfBiomeGenBase, int par2, int par3, int par4, int par5)
@@ -207,12 +209,11 @@ public class WorldChunkManagerDeeps extends WorldChunkManager
 			{
 				if(aint[i] >= 0)
 				{
-					par1ArrayOfBiomeGenBase[i] = BiomeGenBase.getBiome(aint[i]);
+					par1ArrayOfBiomeGenBase[i] = BiomeGenBase.getBiomeGenArray()[aint[i]];
 				}
 				else
 				{
-					// Change this to a biome
-					par1ArrayOfBiomeGenBase[i] = Steamcraft.biomeDepthsF;
+					par1ArrayOfBiomeGenBase[i] = InitBiomes.biomeDepths;
 				}
 			}
 
@@ -237,7 +238,7 @@ public class WorldChunkManagerDeeps extends WorldChunkManager
 
 		for(int j2 = 0; j2 < l1 * i2; ++j2)
 		{
-			BiomeGenBase biomegenbase = BiomeGenBase.getBiome(aint[j2]);
+			BiomeGenBase biomegenbase = BiomeGenBase.getBiomeGenArray()[aint[j2]];
 
 			if(!par4List.contains(biomegenbase))
 			{
@@ -269,7 +270,7 @@ public class WorldChunkManagerDeeps extends WorldChunkManager
 		{
 			int l2 = l + k2 % l1 << 2;
 			int i3 = i1 + k2 / l1 << 2;
-			BiomeGenBase biomegenbase = BiomeGenBase.getBiome(aint[k2]);
+			BiomeGenBase biomegenbase = BiomeGenBase.getBiomeGenArray()[aint[k2]];
 
 			if(par4List.contains(biomegenbase) && (chunkposition == null || par5Random.nextInt(j2 + 1) == 0))
 			{

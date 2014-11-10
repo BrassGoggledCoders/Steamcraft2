@@ -26,3 +26,17 @@ Beta 3.1:
 * Made the diving helmet overlay slightly less
 # Fix ores -> ingot and dust -> ingot smelting
 # Fix forge yelling about our event handlers
+Beta 3.2:
++ Allow smelting of Iron Ingots in the Bloomery
++ Thaumcraft Golem compatibility for Tea
++ Thaumcraft Native Cluster suppourt for Zinc/Aluminum
+# New chisel texture, to prevent it being mixed up with Chisel's chisel.
+# Wire only electrocutes you if current is actually flowing through it
+# Fix a chisel crash
+# Fix Copper Pipe rendering as Copper Wire in inventory
+# Also register parts as "partType|Metal", to comply with TE etc
+# Use Bronze sheets instead of ingots for the spanner, so as not to conflict with Forestry's wrench
+# Drawplate works at any damage value. Whoops!
+Beta 4:
+++ The Deeps:
++ Insulated Copper Wire, won't electrocute you when stepped on while current is flowing

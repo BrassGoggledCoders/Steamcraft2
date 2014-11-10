@@ -12,6 +12,7 @@ public class BiomeDepthsBase extends BiomeGenBase
 	public BiomeDepthsBase(int p_i1971_1_)
 	{
 		super(p_i1971_1_);
+		this.spawnableMonsterList.clear();
 		this.topBlock = Blocks.grass;
 		this.fillerBlock = Blocks.dirt;
 		this.enableRain = false;
