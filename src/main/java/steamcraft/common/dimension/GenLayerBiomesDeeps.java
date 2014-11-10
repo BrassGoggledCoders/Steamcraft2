@@ -8,7 +8,7 @@ import steamcraft.common.InitBiomes;
 public class GenLayerBiomesDeeps extends GenLayer
 {
 	protected BiomeGenBase[] allowedBiomes = { InitBiomes.biomeDepths, InitBiomes.biomeDepthsF, InitBiomes.biomeDepthsM, InitBiomes.biomeDepthsS,
-			InitBiomes.biomeDepthsI };
+			InitBiomes.biomeDepthsI, InitBiomes.biomeDepthsO };
 
 	public GenLayerBiomesDeeps(long seed, GenLayer genlayer)
 	{

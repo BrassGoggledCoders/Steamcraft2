@@ -23,6 +23,7 @@ public abstract class GenLayerDeeps extends GenLayer
 		biomes = new GenLayerZoom(1003L, biomes);
 		biomes = new GenLayerZoom(1004L, biomes);
 		biomes = new GenLayerZoom(1005L, biomes);
+		biomes = new GenLayerZoom(1006L, biomes);
 
 		GenLayer genlayervoronoizoom = new GenLayerVoronoiZoom(10L, biomes);
 

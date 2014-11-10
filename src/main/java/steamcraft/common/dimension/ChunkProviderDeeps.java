@@ -42,6 +42,7 @@ import net.minecraft.world.gen.structure.MapGenVillage;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.terraingen.PopulateChunkEvent;
 import net.minecraftforge.event.terraingen.TerrainGen;
+import steamcraft.common.InitBiomes;
 
 public class ChunkProviderDeeps implements IChunkProvider
 {
@@ -179,7 +180,10 @@ public class ChunkProviderDeeps implements IChunkProvider
 							{
 								if((d15 += d16) > 0.0D)
 								{
-									p_147424_3_[j3 += short1] = Blocks.stone;
+									if(worldObj.getBiomeGenForCoords(chunkCoordX, chunkCoordZ) == InitBiomes.biomeDepthsO)
+										p_147424_3_[j3 += short1] = Blocks.water;
+									else
+										p_147424_3_[j3 += short1] = Blocks.stone;
 								}
 								else if(k2 * 8 + l2 < b0)
 								{

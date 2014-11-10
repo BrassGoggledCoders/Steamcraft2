@@ -16,7 +16,7 @@ public class BiomeDepthsBase extends BiomeGenBase
 		this.topBlock = Blocks.grass;
 		this.fillerBlock = Blocks.dirt;
 		this.enableRain = false;
-		this.setHeight(new Height(0.7F, 1.2F));
+		this.setHeight(new Height(1F, 1.3F));
 		this.setBiomeName(StatCollector.translateToLocal("biome.steamcraft2.innerearth.name"));
 		this.rootHeight = 2.5F;
 		this.func_76733_a(8045877);

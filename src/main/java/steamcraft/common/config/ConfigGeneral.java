@@ -36,7 +36,7 @@ public class ConfigGeneral
 
 	public static boolean naturalLightningStrikes;
 
-	public static int depthsBiomeID, depthsFBiomeID, depthsMBiomeID, depthsSBiomeID, depthsIBiomeID;
+	public static int depthsBiomeID, depthsFBiomeID, depthsMBiomeID, depthsSBiomeID, depthsIBiomeID, depthsOBiomeID;
 
 	public static void initialize(File configFile)
 	{
@@ -63,6 +63,7 @@ public class ConfigGeneral
 			depthsMBiomeID = config.get(CATEGORY_GENERAL, "Biome ID for Depths Mountains Biome", 231).getInt();
 			depthsSBiomeID = config.get(CATEGORY_GENERAL, "Biome ID for Depths Mushroom Forest Biome", 232).getInt();
 			depthsIBiomeID = config.get(CATEGORY_GENERAL, "Biome ID for Depths Infestation Biome", 233).getInt();
+			depthsOBiomeID = config.get(CATEGORY_GENERAL, "Biome ID for Depths Ocean Biome", 234).getInt();
 		}
 		catch(Exception e)
 		{

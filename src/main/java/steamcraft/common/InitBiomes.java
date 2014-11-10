@@ -6,11 +6,12 @@ import steamcraft.common.biomes.BiomeDepthsForest;
 import steamcraft.common.biomes.BiomeDepthsInfestation;
 import steamcraft.common.biomes.BiomeDepthsMountains;
 import steamcraft.common.biomes.BiomeDepthsMushrooms;
+import steamcraft.common.biomes.BiomeDepthsOcean;
 import steamcraft.common.config.ConfigGeneral;
 
 public class InitBiomes
 {
-	public static BiomeGenBase biomeDepths, biomeDepthsF, biomeDepthsM, biomeDepthsS, biomeDepthsI;
+	public static BiomeGenBase biomeDepths, biomeDepthsF, biomeDepthsM, biomeDepthsS, biomeDepthsI, biomeDepthsO;
 
 	public static void init()
 	{
@@ -19,5 +20,6 @@ public class InitBiomes
 		biomeDepthsM = new BiomeDepthsMountains(ConfigGeneral.depthsMBiomeID);
 		biomeDepthsS = new BiomeDepthsMushrooms(ConfigGeneral.depthsSBiomeID);
 		biomeDepthsI = new BiomeDepthsInfestation(ConfigGeneral.depthsIBiomeID);
+		biomeDepthsO = new BiomeDepthsOcean(ConfigGeneral.depthsOBiomeID);
 	}
 }
