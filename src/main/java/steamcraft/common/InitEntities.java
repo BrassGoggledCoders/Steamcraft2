@@ -15,6 +15,7 @@ package steamcraft.common;
 import steamcraft.common.entities.EntityFleshGolem;
 import steamcraft.common.entities.EntityGrapplingHook;
 import steamcraft.common.entities.EntityGrub;
+import steamcraft.common.entities.EntityLostMiner;
 import steamcraft.common.entities.EntityTimeBomb;
 import steamcraft.common.entities.projectile.EntityBullet;
 import steamcraft.common.entities.projectile.EntityRocket;
@@ -43,5 +44,6 @@ public class InitEntities
 		// Mobs
 		EntityRegistry.registerModEntity(EntityFleshGolem.class, "FleshGolem", entID++, Steamcraft.instance, 64, 20, true);
 		EntityRegistry.registerModEntity(EntityGrub.class, "Grub", entID++, Steamcraft.instance, 64, 20, true);
+		EntityRegistry.registerModEntity(EntityLostMiner.class, "LostMiner", entID++, Steamcraft.instance, 64, 20, true);
 	}
 }
