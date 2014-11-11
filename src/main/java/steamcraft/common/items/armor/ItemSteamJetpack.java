@@ -1,5 +1,5 @@
 /**
- * This class was created by BrassGoggledCoders modding team. 
+ * This class was created by BrassGoggledCoders modding team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -8,7 +8,7 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- * 
+ *
  */
 package steamcraft.common.items.armor;
 
@@ -22,9 +22,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
-
-import org.lwjgl.input.Keyboard;
-
 import steamcraft.common.InitItems;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.items.ItemCanister;
@@ -69,7 +66,6 @@ public class ItemSteamJetpack extends BaseArmor
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
 	public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack)
 	{
 		NBTTagCompound tag = itemStack.getTagCompound();
@@ -87,41 +83,49 @@ public class ItemSteamJetpack extends BaseArmor
 
 		if(!player.capabilities.allowFlying && hasCanister)
 		{
-			if((Minecraft.getMinecraft().currentScreen == null) && (player.posY < 200)
-					&& Keyboard.isKeyDown(Minecraft.getMinecraft().gameSettings.keyBindJump.getKeyCode()))
-			{
-				this.consumeSteamFromCanister(player, this.steamPerTick);
-
-				if(player.motionY > 0.0D)
-					player.motionY += 0.08499999910593033D;
-				else
-					player.motionY += 0.11699999910593033D;
-
-				world.spawnParticle("smoke", player.posX, player.posY - 0.25D, player.posZ, 0.0D, 0.0D, 0.0D);
-
-			}
-
-			if((this == InitItems.itemSteamWingpack) && (player.motionY < 0.0D) && player.isSneaking())
-			{
-				this.consumeSteamFromCanister(player, (byte) (this.steamPerTick / 2));
-				player.motionY /= 1.4D;
-
-				player.motionX *= 1.05D;
-				player.motionZ *= 1.05D;
-			}
-
-			if(!player.onGround)
-			{
-				player.motionX *= 1.04D;
-				player.motionZ *= 1.04D;
-			}
-
-			if(player.fallDistance > 0)
-			{
-				this.consumeSteamFromCanister(player, (byte) (this.steamPerTick / 4));
-				player.fallDistance = 0;
-			}
+			if(world.isRemote)
+				doFlying(world, player, itemStack);
 		}
+	}
+
+	@SideOnly(Side.CLIENT)
+	private void doFlying(World world, EntityPlayer player, ItemStack itemStack)
+	{
+		if(((player.posY < 200)
+		&& Minecraft.getMinecraft().gameSettings.keyBindJump.getIsKeyPressed()))
+		{
+			this.consumeSteamFromCanister(player, this.steamPerTick);
+
+			if(player.motionY > 0.0D)
+				player.motionY += 0.08499999910593033D;
+			else
+				player.motionY += 0.11699999910593033D;
+
+			world.spawnParticle("smoke", player.posX, player.posY - 0.25D, player.posZ, 0.0D, 0.0D, 0.0D);
+
+		}
+
+		if((this == InitItems.itemSteamWingpack) && (player.motionY < 0.0D) && player.isSneaking())
+		{
+			this.consumeSteamFromCanister(player, (byte) (this.steamPerTick / 2));
+			player.motionY /= 1.4D;
+
+			player.motionX *= 1.05D;
+			player.motionZ *= 1.05D;
+		}
+
+		if(!player.onGround)
+		{
+			player.motionX *= 1.04D;
+			player.motionZ *= 1.04D;
+		}
+
+		if(player.fallDistance > 0)
+		{
+			this.consumeSteamFromCanister(player, (byte) (this.steamPerTick / 4));
+			player.fallDistance = 0;
+		}
+
 	}
 
 	protected void consumeSteamFromCanister(EntityPlayer player, byte steam)
