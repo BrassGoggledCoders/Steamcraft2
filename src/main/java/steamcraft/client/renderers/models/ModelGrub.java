@@ -4,6 +4,8 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
+import org.lwjgl.opengl.GL11;
+
 public class ModelGrub extends ModelBase
 {
 	// fields
@@ -17,6 +19,7 @@ public class ModelGrub extends ModelBase
 	{
 		textureWidth = 64;
 		textureHeight = 32;
+		GL11.glTranslatef(0, -0.5F, 0);
 
 		body = new ModelRenderer(this, 0, 0);
 		body.addBox(0F, 0F, 0F, 5, 4, 6);
