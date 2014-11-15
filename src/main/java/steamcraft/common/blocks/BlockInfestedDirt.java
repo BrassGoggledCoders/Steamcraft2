@@ -13,10 +13,10 @@
 package steamcraft.common.blocks;
 
 import net.minecraft.block.material.Material;
-import net.minecraft.entity.monster.EntitySilverfish;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
+import steamcraft.common.entities.EntityGrub;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -45,10 +45,10 @@ public class BlockInfestedDirt extends BaseBlock
 	{
 		if(!world.isRemote && world.rand.nextInt(10) == 0)
 		{
-			EntitySilverfish entitysilverfish = new EntitySilverfish(world);
-			entitysilverfish.setLocationAndAngles(p_149664_2_ + 0.5D, p_149664_3_, p_149664_4_ + 0.5D, 0.0F, 0.0F);
-			world.spawnEntityInWorld(entitysilverfish);
-			entitysilverfish.spawnExplosionParticle();
+			EntityGrub grub = new EntityGrub(world);
+			grub.setLocationAndAngles(p_149664_2_ + 0.5D, p_149664_3_, p_149664_4_ + 0.5D, 0.0F, 0.0F);
+			world.spawnEntityInWorld(grub);
+			grub.spawnExplosionParticle();
 		}
 
 		super.onBlockDestroyedByPlayer(world, p_149664_2_, p_149664_3_, p_149664_4_, p_149664_5_);

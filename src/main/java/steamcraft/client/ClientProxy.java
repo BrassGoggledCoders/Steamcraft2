@@ -33,11 +33,13 @@ import steamcraft.client.renderers.block.BlockRailingRenderer;
 import steamcraft.client.renderers.block.BlockTeslaCoilRenderer;
 import steamcraft.client.renderers.entity.RenderFleshGolem;
 import steamcraft.client.renderers.entity.RenderGrapplingHook;
+import steamcraft.client.renderers.entity.RenderGrub;
 import steamcraft.client.renderers.entity.RenderLostMiner;
 import steamcraft.client.renderers.item.ModelBrassWings;
 import steamcraft.client.renderers.item.ModelJetpack;
 import steamcraft.client.renderers.item.ModelWingpack;
 import steamcraft.client.renderers.models.ModelFleshGolem;
+import steamcraft.client.renderers.models.ModelGrub;
 import steamcraft.client.renderers.tile.TileBatteryRenderer;
 import steamcraft.client.renderers.tile.TileCastIronLampRenderer;
 import steamcraft.client.renderers.tile.TileCastIronLampRenderer.TileCastIronLamp;
@@ -54,6 +56,7 @@ import steamcraft.common.CommonProxy;
 import steamcraft.common.InitItems;
 import steamcraft.common.entities.EntityFleshGolem;
 import steamcraft.common.entities.EntityGrapplingHook;
+import steamcraft.common.entities.EntityGrub;
 import steamcraft.common.entities.EntityLostMiner;
 import steamcraft.common.entities.projectile.EntityBullet;
 import steamcraft.common.entities.projectile.EntityRocket;
@@ -102,6 +105,7 @@ public class ClientProxy extends CommonProxy
 
 		RenderingRegistry.registerEntityRenderingHandler(EntityFleshGolem.class, new RenderFleshGolem(new ModelFleshGolem(), 0));
 		RenderingRegistry.registerEntityRenderingHandler(EntityLostMiner.class, new RenderLostMiner(new ModelZombie(), 0));
+		RenderingRegistry.registerEntityRenderingHandler(EntityGrub.class, new RenderGrub(new ModelGrub(), 0));
 	}
 
 	private void registerBlockRenderers()
