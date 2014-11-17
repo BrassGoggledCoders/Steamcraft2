@@ -37,14 +37,14 @@ public class TileBattery extends BaseTileWithInventory implements IEnergyHandler
 	private byte ticksSinceUpdate = 0;
 
 	public int totalEnergy = 0;
-	public int maxEnergy = 0;
+	public int maxEnergy = 20;
 	public short transferRate = initialTransferRate;
 
 	public EnergyStorage buffer = new EnergyStorage(initialEnergy, initialTransferRate);
 
 	public TileBattery()
 	{
-		super(6);
+		super(4);
 	}
 
 	@Override
@@ -174,13 +174,13 @@ public class TileBattery extends BaseTileWithInventory implements IEnergyHandler
 	@Override
 	public int getEnergyStored(ForgeDirection from)
 	{
-		return this.buffer.getEnergyStored(); // + this.totalEnergy;
+		return this.buffer.getEnergyStored() + this.totalEnergy;
 	}
 
 	@Override
 	public int getMaxEnergyStored(ForgeDirection from)
 	{
-		return this.buffer.getMaxEnergyStored(); // + this.maxEnergy;
+		return this.buffer.getMaxEnergyStored() + this.maxEnergy;
 	}
 
 	@Override
