@@ -434,9 +434,11 @@ biome.steamcraft2.innerearth.o.name=Inner Ocean
 #Entities
 entity.steamcraft2.grub.name=Grub
 
-
 #Vanilla Docs
 tile.chest.documentation=For holding things. Has 36 slots.
+
+#SC2 Docs
+tile.blockCopperWire.documentation=Copper wire is used for transfer of power between machines. The uninsulated version will electrocute you if you stand on it while current is flowing! The wire can transport a maximum of 2500RF/Tick. By default, the wire pushes power into connected blocks, so to allow it to withdraw power from power sources such as the lightning rod, you must right click it with the spanner.
 
 #TiCon Material
 material.etherium=Etherium
