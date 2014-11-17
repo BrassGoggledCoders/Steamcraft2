@@ -146,7 +146,7 @@ public class InitRecipes
 	{
 		// Drills
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.drillBase), new Object[] { "   ", "IGI", "III", 'I', "ingotSteel", 'G',
-				new ItemStack(InitItems.itemSteelParts, 1, 0) }));
+				"gearSteel" }));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.drillCore), new Object[] { " D ", "DDD", " B ", 'B', InitItems.drillBase,
 				'D', "ingotAluminum" }));
 
@@ -304,9 +304,10 @@ public class InitRecipes
 
 		GameRegistry.addShapedRecipe(new ItemStack(InitItems.itemMachinePart, 1, 0), "  X", " X ", "X  ", 'X', new ItemStack(InitItems.itemIngot, 1,
 				7));
-		GameRegistry.addShapedRecipe(new ItemStack(InitItems.itemMachinePart, 1, 1), "CPC", "S G", "CPC", 'P', new ItemStack(InitItems.itemSheet, 1,
-				4), 'G', new ItemStack(InitItems.itemIronParts, 1, 0), 'S', new ItemStack(InitItems.itemCopperParts, 1, 1), 'C', new ItemStack(
-				InitItems.itemMachinePart, 1, 0));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemMachinePart, 1, 1), "CPC", "S G", "CPC", 'P', new ItemStack(InitItems.itemSheet,
+				1,
+				4), 'G', "gearIron", 'S', new ItemStack(InitItems.itemCopperParts, 1, 1), 'C', new ItemStack(
+				InitItems.itemMachinePart, 1, 0)));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemMachinePart, 1, 2), new Object[] { "P P", " P ", "P P", 'P',
 				"ingotSteel" }));
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(InitItems.itemMachinePart, 1, 3), new Object[] {
@@ -320,8 +321,10 @@ public class InitRecipes
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(InitItems.itemMachinePart, 1, 6), new Object[] { "partCastIronRod",
 				new ItemStack(InitBlocks.blockCopperWire), new ItemStack(InitBlocks.blockCopperWire), new ItemStack(InitBlocks.blockCopperWire) }));
 
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockCopperWire), new Object[] { "CD", 'C', "ingotCopper", 'D',
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockCopperWire, 1, 0), new Object[] { "CD", 'C', "ingotCopper", 'D',
 				new ItemStack(InitItems.itemDrawplate, 1, OreDictionary.WILDCARD_VALUE) }));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockCopperWire, 3, 1), new Object[] { "WWW", "CCC", "WWW", 'C',
+				new ItemStack(InitBlocks.blockCopperWire, 1, 0), 'W', new ItemStack(Blocks.wool, 1, OreDictionary.WILDCARD_VALUE) }));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemDrawplate), new Object[] { "S S", " S ", "S S", 'S', "plateCastIron" }));
 
