@@ -174,13 +174,13 @@ public class TileBattery extends BaseTileWithInventory implements IEnergyHandler
 	@Override
 	public int getEnergyStored(ForgeDirection from)
 	{
-		return this.buffer.getEnergyStored() + this.totalEnergy;
+		return this.buffer.getEnergyStored(); // + this.totalEnergy;
 	}
 
 	@Override
 	public int getMaxEnergyStored(ForgeDirection from)
 	{
-		return this.buffer.getMaxEnergyStored() + this.maxEnergy;
+		return this.buffer.getMaxEnergyStored(); // + this.maxEnergy;
 	}
 
 	@Override
