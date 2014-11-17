@@ -37,7 +37,7 @@ public class TileBattery extends BaseTileWithInventory implements IEnergyHandler
 	private byte ticksSinceUpdate = 0;
 
 	public int totalEnergy = 0;
-	public int maxEnergy = 20;
+	public int maxEnergy = 0;
 	public short transferRate = initialTransferRate;
 
 	public EnergyStorage buffer = new EnergyStorage(initialEnergy, initialTransferRate);
