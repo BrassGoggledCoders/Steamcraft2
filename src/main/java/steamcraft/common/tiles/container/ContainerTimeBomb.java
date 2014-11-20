@@ -25,6 +25,7 @@ public class ContainerTimeBomb extends Container
 	public ContainerTimeBomb(InventoryPlayer inventory, TileTimeBomb tile)
 	{
 		this.tileent = tile;
+
 		int var3;
 
 		for(var3 = 0; var3 < 3; ++var3)
