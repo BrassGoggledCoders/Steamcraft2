@@ -44,9 +44,9 @@ public class ContainerBattery extends BaseContainer
 
 		this.addSlotToContainer(new SlotBattery(tile, 0, 98, 22));
 		this.addSlotToContainer(new SlotBattery(tile, 1, 116, 22));
-		this.addSlotToContainer(new SlotBattery(tile, 2, 134, 22));
-		this.addSlotToContainer(new SlotBattery(tile, 3, 98, 40));
-		// this.addSlotToContainer(new SlotBattery(tile, 4, 116, 40));
+		// this.addSlotToContainer(new SlotBattery(tile, 2, 134, 22));
+		this.addSlotToContainer(new SlotBattery(tile, 2, 98, 40));
+		this.addSlotToContainer(new SlotBattery(tile, 3, 116, 40));
 		// this.addSlotToContainer(new SlotBattery(tile, 5, 134, 40));
 
 		int var3;
