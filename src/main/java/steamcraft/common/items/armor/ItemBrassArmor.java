@@ -255,6 +255,16 @@ public class ItemBrassArmor extends BaseArmor implements ISpecialArmor
 	@Override
 	public int getArmorDisplay(EntityPlayer player, ItemStack armor, int slot)
 	{
+		NBTTagCompound nbt = getOrCreateTagCompound(armor);
+		for(int i = 0; i < nbt.getInteger("moduleCount"); i++)
+		{
+			IArmorModule module = ModuleRegistry.getModule(nbt.getString("module" + i));
+
+			if((module != null) && (module.getArmorEffectType() == EnumArmorEffectType.DEFENSIVE))
+			{
+				return module.getDefenseModifier();
+			}
+		}
 		return 0;
 	}
 
