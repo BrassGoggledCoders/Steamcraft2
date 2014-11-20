@@ -29,27 +29,21 @@ import steamcraft.common.tiles.TileBattery;
 public class ModelBattery extends ModelBase
 {
 	// fields
-	private ModelRenderer base;
-	private ModelRenderer upright;
-	private ModelRenderer top;
-	private ModelRenderer jar;
-	private ModelRenderer lid;
-	private ModelRenderer wire;
-	private ModelRenderer jar2;
-	private ModelRenderer lid2;
-	private ModelRenderer wire2;
-	private ModelRenderer jar3;
-	private ModelRenderer lid3;
-	private ModelRenderer wire3;
-	private ModelRenderer jar4;
-	private ModelRenderer lid6;
-	private ModelRenderer wire6;
-	private ModelRenderer jar6;
-	private ModelRenderer lid4;
-	private ModelRenderer wire4;
-	private ModelRenderer jar5;
-	private ModelRenderer lid5;
-	private ModelRenderer wire5;
+	private final ModelRenderer base;
+	private final ModelRenderer upright;
+	private final ModelRenderer top;
+	private final ModelRenderer jar;
+	private final ModelRenderer lid;
+	private final ModelRenderer wire;
+	private final ModelRenderer jar2;
+	private final ModelRenderer lid2;
+	private final ModelRenderer wire2;
+	private final ModelRenderer jar3;
+	private final ModelRenderer lid3;
+	private final ModelRenderer wire3;
+	private final ModelRenderer jar4;
+	private final ModelRenderer lid4;
+	private final ModelRenderer wire4;
 
 	public ModelBattery()
 	{
@@ -134,24 +128,6 @@ public class ModelBattery extends ModelBase
 		this.jar4.setTextureSize(64, 64);
 		this.jar4.mirror = true;
 		this.setRotation(this.jar4, 0F, 0F, 0F);
-		this.lid6 = new ModelRenderer(this, 36, 15);
-		this.lid6.addBox(0F, 0F, 0F, 2, 1, 2);
-		this.lid6.setRotationPoint(0F, 12F, -0.5F);
-		this.lid6.setTextureSize(64, 64);
-		this.lid6.mirror = true;
-		this.setRotation(this.lid6, 0F, 0F, 0F);
-		this.wire6 = new ModelRenderer(this, 36, 19);
-		this.wire6.addBox(0F, 0F, 0F, 2, 1, 1);
-		this.wire6.setRotationPoint(-0.5F, 11F, 0F);
-		this.wire6.setTextureSize(64, 64);
-		this.wire6.mirror = true;
-		this.setRotation(this.wire6, 0F, 0F, 0F);
-		this.jar6 = new ModelRenderer(this, 36, 7);
-		this.jar6.addBox(0F, 0F, 0F, 3, 4, 3);
-		this.jar6.setRotationPoint(-0.5F, 13F, -1F);
-		this.jar6.setTextureSize(64, 64);
-		this.jar6.mirror = true;
-		this.setRotation(this.jar6, 0F, 0F, 0F);
 		this.lid4 = new ModelRenderer(this, 36, 15);
 		this.lid4.addBox(0F, 0F, 0F, 2, 1, 2);
 		this.lid4.setRotationPoint(0F, 12F, -9.5F);
@@ -164,24 +140,6 @@ public class ModelBattery extends ModelBase
 		this.wire4.setTextureSize(64, 64);
 		this.wire4.mirror = true;
 		this.setRotation(this.wire4, 0F, 0F, 0F);
-		this.jar5 = new ModelRenderer(this, 36, 7);
-		this.jar5.addBox(0F, 0F, 0F, 3, 4, 3);
-		this.jar5.setRotationPoint(-0.5F, 13F, -5.5F);
-		this.jar5.setTextureSize(64, 64);
-		this.jar5.mirror = true;
-		this.setRotation(this.jar5, 0F, 0F, 0F);
-		this.lid5 = new ModelRenderer(this, 36, 15);
-		this.lid5.addBox(0F, 0F, 0F, 2, 1, 2);
-		this.lid5.setRotationPoint(0F, 12F, -5F);
-		this.lid5.setTextureSize(64, 64);
-		this.lid5.mirror = true;
-		this.setRotation(this.lid5, 0F, 0F, 0F);
-		this.wire5 = new ModelRenderer(this, 36, 19);
-		this.wire5.addBox(0F, 0F, 0F, 2, 1, 1);
-		this.wire5.setRotationPoint(-0.5F, 11F, -4.5F);
-		this.wire5.setTextureSize(64, 64);
-		this.wire5.mirror = true;
-		this.setRotation(this.wire5, 0F, 0F, 0F);
 	}
 
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5, TileEntity tile)
@@ -193,9 +151,9 @@ public class ModelBattery extends ModelBase
 		this.top.render(f5);
 
 		TileBattery te = (TileBattery) tile;
-		ModelRenderer[] jars = { this.jar, this.jar2, this.jar3, this.jar4, this.jar5, this.jar6 };
-		ModelRenderer[] lids = { this.lid, this.lid2, this.lid3, this.lid4, this.lid5, this.lid6 };
-		ModelRenderer[] wires = { this.wire, this.wire2, this.wire3, this.wire4, this.wire5, this.wire6 };
+		ModelRenderer[] jars = { this.jar, this.jar2, this.jar3, this.jar4 };
+		ModelRenderer[] lids = { this.lid, this.lid2, this.lid3, this.lid4 };
+		ModelRenderer[] wires = { this.wire, this.wire2, this.wire3, this.wire4 };
 		if(tile != null)
 			for(int i = 0; i < jars.length; i++)
 			{
