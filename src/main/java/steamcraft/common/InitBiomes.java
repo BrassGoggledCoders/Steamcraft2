@@ -1,13 +1,13 @@
 package steamcraft.common;
 
 import net.minecraft.world.biome.BiomeGenBase;
-import steamcraft.common.biomes.BiomeDepthsBase;
-import steamcraft.common.biomes.BiomeDepthsForest;
-import steamcraft.common.biomes.BiomeDepthsInfestation;
-import steamcraft.common.biomes.BiomeDepthsMountains;
-import steamcraft.common.biomes.BiomeDepthsMushrooms;
-import steamcraft.common.biomes.BiomeDepthsOcean;
 import steamcraft.common.config.ConfigGeneral;
+import steamcraft.common.worldgen.biomes.BiomeDepthsBase;
+import steamcraft.common.worldgen.biomes.BiomeDepthsForest;
+import steamcraft.common.worldgen.biomes.BiomeDepthsInfestation;
+import steamcraft.common.worldgen.biomes.BiomeDepthsMountains;
+import steamcraft.common.worldgen.biomes.BiomeDepthsMushrooms;
+import steamcraft.common.worldgen.biomes.BiomeDepthsOcean;
 
 public class InitBiomes
 {

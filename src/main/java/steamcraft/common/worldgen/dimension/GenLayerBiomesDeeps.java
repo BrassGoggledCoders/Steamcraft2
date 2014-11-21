@@ -1,4 +1,4 @@
-package steamcraft.common.dimension;
+package steamcraft.common.worldgen.dimension;
 
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.layer.GenLayer;

@@ -1,4 +1,4 @@
-package steamcraft.common.dimension;
+package steamcraft.common.worldgen.dimension;
 
 import java.util.ArrayList;
 import java.util.List;

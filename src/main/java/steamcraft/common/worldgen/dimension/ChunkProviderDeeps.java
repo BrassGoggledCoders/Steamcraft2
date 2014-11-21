@@ -1,4 +1,4 @@
-package steamcraft.common.dimension;
+package steamcraft.common.worldgen.dimension;
 
 import static net.minecraftforge.event.terraingen.InitMapGenEvent.EventType.CAVE;
 import static net.minecraftforge.event.terraingen.InitMapGenEvent.EventType.MINESHAFT;

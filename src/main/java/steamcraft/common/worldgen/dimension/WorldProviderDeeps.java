@@ -1,4 +1,4 @@
-package steamcraft.common.dimension;
+package steamcraft.common.worldgen.dimension;
 
 import net.minecraft.world.WorldProvider;
 import net.minecraft.world.chunk.Chunk;

@@ -1,4 +1,4 @@
-package steamcraft.common.biomes;
+package steamcraft.common.worldgen.biomes;
 
 import net.minecraft.util.StatCollector;
 import steamcraft.common.InitBlocks;
