@@ -62,6 +62,7 @@ public class WorldGenSteamcraft implements IWorldGenerator
 		}
 	}
 
+	// This can probably be done in Biome/Dimension gen classes
 	private void generateDeeps(World world, Random random, int blockChunkX, int blockChunkZ)
 	{
 		int X = blockChunkX + random.nextInt(16);

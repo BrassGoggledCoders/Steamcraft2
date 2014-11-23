@@ -15,8 +15,8 @@ public class BiomeDepthsBase extends BiomeGenBase
 	{
 		super(p_i1971_1_);
 		this.spawnableMonsterList.clear();
-		this.spawnableCaveCreatureList.add(new BiomeGenBase.SpawnListEntry(EntityLostMiner.class, 2, 1, 2));
-		this.spawnableCaveCreatureList.add(new BiomeGenBase.SpawnListEntry(EntityGrub.class, 4, 3, 6));
+		this.spawnableCaveCreatureList.add(new BiomeGenBase.SpawnListEntry(EntityLostMiner.class, 20, 1, 2));
+		this.spawnableCaveCreatureList.add(new BiomeGenBase.SpawnListEntry(EntityGrub.class, 40, 3, 6));
 		this.topBlock = Blocks.grass;
 		this.fillerBlock = Blocks.dirt;
 		this.enableRain = false;
