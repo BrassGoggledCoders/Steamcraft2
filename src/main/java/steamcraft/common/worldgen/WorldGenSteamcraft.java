@@ -23,6 +23,7 @@ import net.minecraft.world.gen.feature.WorldGenMinable;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeDictionary.Type;
 import steamcraft.common.InitBlocks;
+import steamcraft.common.config.ConfigGeneral;
 import steamcraft.common.config.ConfigWorldGen;
 import cpw.mods.fml.common.IWorldGenerator;
 
@@ -39,20 +40,37 @@ public class WorldGenSteamcraft implements IWorldGenerator
 		int blockChunkX = chunkX * 16;
 		int blockChunkZ = chunkZ * 16;
 
-		switch(world.provider.dimensionId)
+		if(world.provider.dimensionId == -1)
 		{
-			case -1:
-				if(ConfigWorldGen.netherGenerationEnabled)
-					this.generateNether(world, random, blockChunkX, blockChunkZ);
-				break;
-			case 0:
-				if(ConfigWorldGen.overworldGenerationEnabled)
-					this.generateSurface(world, random, blockChunkX, blockChunkZ);
-				break;
-			case 1:
-				if(ConfigWorldGen.endGenerationEnabled)
-					this.generateEnd(world, random, blockChunkX, blockChunkZ);
-				break;
+			if(ConfigWorldGen.netherGenerationEnabled)
+				this.generateNether(world, random, blockChunkX, blockChunkZ);
+		}
+		else if(world.provider.dimensionId == 0)
+		{
+			if(ConfigWorldGen.overworldGenerationEnabled)
+				this.generateSurface(world, random, blockChunkX, blockChunkZ);
+		}
+		else if(world.provider.dimensionId == 1)
+		{
+			if(ConfigWorldGen.endGenerationEnabled)
+				this.generateEnd(world, random, blockChunkX, blockChunkZ);
+		}
+		else if(world.provider.dimensionId == ConfigGeneral.deepsDimensionID)
+		{
+			if(ConfigWorldGen.deepsGenerationEnabled)
+				this.generateDeeps(world, random, blockChunkX, blockChunkZ);
+		}
+	}
+
+	private void generateDeeps(World world, Random random, int blockChunkX, int blockChunkZ)
+	{
+		int X = blockChunkX + random.nextInt(16);
+		int Z = blockChunkZ + random.nextInt(16);
+		int Y = random.nextInt(70);
+
+		for(int i = 0; i < 1; i++)
+		{
+			new WorldGenBrassTree(false).generate(world, random, X, Y, Z);
 		}
 	}
 

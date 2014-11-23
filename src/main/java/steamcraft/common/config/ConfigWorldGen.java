@@ -31,6 +31,7 @@ public class ConfigWorldGen
 	public static boolean overworldGenerationEnabled;
 	public static boolean netherGenerationEnabled;
 	public static boolean endGenerationEnabled;
+	public static boolean deepsGenerationEnabled;
 
 	public static boolean brassTreeGenEnabled;
 
@@ -66,6 +67,7 @@ public class ConfigWorldGen
 			overworldGenerationEnabled = config.get(CATEGORY_GEN_OPTIONS, "All Overworld Generation", true).getBoolean(true);
 			netherGenerationEnabled = config.get(CATEGORY_GEN_OPTIONS, "All Nether Generation", true).getBoolean(true);
 			endGenerationEnabled = config.get(CATEGORY_GEN_OPTIONS, "All End Generation", true).getBoolean(true);
+			deepsGenerationEnabled = config.get(CATEGORY_GEN_OPTIONS, "All Deeps Generation", true).getBoolean(true);
 
 			brassTreeGenEnabled = config.get(CATEGORY_GEN_OPTIONS, "Brass Tree Gen", true).getBoolean(true);
 
