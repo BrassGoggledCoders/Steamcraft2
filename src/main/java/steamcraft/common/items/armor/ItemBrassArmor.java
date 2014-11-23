@@ -22,6 +22,8 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ISpecialArmor;
@@ -89,6 +91,8 @@ public class ItemBrassArmor extends BaseArmor implements ISpecialArmor
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack is)
 	{
+		int combinedModuleWeight = 0;
+
 		NBTTagCompound nbt = getOrCreateTagCompound(is);
 
 		for(int i = 0; i < nbt.getInteger("moduleCount"); i++)
@@ -98,8 +102,10 @@ public class ItemBrassArmor extends BaseArmor implements ISpecialArmor
 			if((module != null) && (module.getArmorEffectType() == EnumArmorEffectType.ONTICK))
 			{
 				this.doEffects(module, player.getEntityWorld(), player, is);
+				combinedModuleWeight += module.getModuleWeight();
 			}
 		}
+		player.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 5, this.getSlownessLevelFromWeight(combinedModuleWeight), true));
 	}
 
 	public static NBTTagCompound getOrCreateTagCompound(ItemStack is)
@@ -274,5 +280,10 @@ public class ItemBrassArmor extends BaseArmor implements ISpecialArmor
 	@Override
 	public void damageArmor(EntityLivingBase entity, ItemStack stack, DamageSource source, int damage, int slot)
 	{
+	}
+
+	public int getSlownessLevelFromWeight(int weight)
+	{
+		return weight / 40;
 	}
 }

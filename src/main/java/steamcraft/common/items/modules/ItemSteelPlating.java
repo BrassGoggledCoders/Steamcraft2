@@ -117,4 +117,10 @@ public class ItemSteelPlating extends BaseDefensiveModule
 	{
 		return 5;
 	}
+
+	@Override
+	public int getModuleWeight()
+	{
+		return 10;
+	}
 }
