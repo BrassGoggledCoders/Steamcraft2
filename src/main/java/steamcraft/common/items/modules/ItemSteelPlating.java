@@ -43,7 +43,7 @@ public class ItemSteelPlating extends BaseDefensiveModule
 	@Override
 	public int getApplicablePiece()
 	{
-		return 1;
+		return -1;
 	}
 
 	@Override
