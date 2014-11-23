@@ -32,6 +32,7 @@ import steamcraft.common.items.electric.ElectricItem;
 import steamcraft.common.lib.LibInfo;
 import boilerplate.steamapi.item.IArmorModule;
 import boilerplate.steamapi.item.IArmorModule.EnumArmorEffectType;
+import boilerplate.steamapi.item.IDefensiveArmorModule;
 import boilerplate.steamapi.item.ModuleRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -240,8 +241,9 @@ public class ItemBrassArmor extends BaseArmor implements ISpecialArmor
 
 			if((module != null) && (module.getArmorEffectType() == EnumArmorEffectType.DEFENSIVE))
 			{
-				absorbRatio = module.getDefenseModifier();
-				absorbMax = 2 * module.getDefenseModifier();
+				IDefensiveArmorModule defmodule = (IDefensiveArmorModule) module;
+				absorbRatio = defmodule.getDamageAbsorbRatio();
+				absorbMax = defmodule.getMaxDamageAbsorb();
 			}
 			if(source.isUnblockable())
 			{
@@ -262,7 +264,8 @@ public class ItemBrassArmor extends BaseArmor implements ISpecialArmor
 
 			if((module != null) && (module.getArmorEffectType() == EnumArmorEffectType.DEFENSIVE))
 			{
-				return module.getDefenseModifier();
+				IDefensiveArmorModule defmodule = (IDefensiveArmorModule) module;
+				return defmodule.getArmorToDisplay();
 			}
 		}
 		return 0;

@@ -20,7 +20,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.LibInfo;
-import boilerplate.common.baseclasses.BaseModule;
+import boilerplate.common.baseclasses.BaseDefensiveModule;
 import boilerplate.steamapi.item.IArmorModule;
 import boilerplate.steamapi.item.ModuleRegistry;
 import cpw.mods.fml.relauncher.Side;
@@ -30,7 +30,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  * @author warlordjones
  * 
  */
-public class ItemSteelPlating extends BaseModule
+public class ItemSteelPlating extends BaseDefensiveModule
 {
 	public ItemSteelPlating()
 	{
@@ -101,7 +101,19 @@ public class ItemSteelPlating extends BaseModule
 	}
 
 	@Override
-	public int getDefenseModifier()
+	public int getMaxDamageAbsorb()
+	{
+		return 10;
+	}
+
+	@Override
+	public int getDamageAbsorbRatio()
+	{
+		return 5;
+	}
+
+	@Override
+	public int getArmorToDisplay()
 	{
 		return 5;
 	}
