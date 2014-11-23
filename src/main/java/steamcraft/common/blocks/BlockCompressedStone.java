@@ -9,8 +9,8 @@ public class BlockCompressedStone extends BaseBlock
 	{
 		super(mat);
 		this.setBlockName("blockCompressedStone");
-		setHardness(2.2F);
-		setResistance(15.0F);
+		this.setHardness(2.2F);
+		this.setResistance(15.0F);
 	}
 
 }

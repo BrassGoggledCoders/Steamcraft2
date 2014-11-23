@@ -84,7 +84,7 @@ public class ItemSteamJetpack extends BaseArmor
 		if(!player.capabilities.allowFlying && hasCanister)
 		{
 			if(world.isRemote)
-				doFlying(world, player, itemStack);
+				this.doFlying(world, player, itemStack);
 		}
 	}
 

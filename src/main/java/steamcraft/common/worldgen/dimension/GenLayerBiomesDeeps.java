@@ -31,7 +31,7 @@ public class GenLayerBiomesDeeps extends GenLayer
 			for(int dx = 0; dx < width; dx++)
 			{
 				this.initChunkSeed(dx + x, dz + z);
-				dest[(dx + dz * width)] = this.allowedBiomes[nextInt(this.allowedBiomes.length)].biomeID;
+				dest[(dx + (dz * width))] = this.allowedBiomes[this.nextInt(this.allowedBiomes.length)].biomeID;
 			}
 		}
 		return dest;

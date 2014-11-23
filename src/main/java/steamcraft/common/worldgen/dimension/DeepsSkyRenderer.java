@@ -41,9 +41,9 @@ public class DeepsSkyRenderer extends IRenderHandler
 		float f4;
 		if(mc.gameSettings.anaglyph)
 		{
-			float f5 = (f1 * 30.0F + f2 * 59.0F + f3 * 11.0F) / 100.0F;
-			float f6 = (f1 * 30.0F + f2 * 70.0F) / 100.0F;
-			f4 = (f1 * 30.0F + f3 * 70.0F) / 100.0F;
+			float f5 = ((f1 * 30.0F) + (f2 * 59.0F) + (f3 * 11.0F)) / 100.0F;
+			float f6 = ((f1 * 30.0F) + (f2 * 70.0F)) / 100.0F;
+			f4 = ((f1 * 30.0F) + (f3 * 70.0F)) / 100.0F;
 			f1 = f5;
 			f2 = f6;
 			f3 = f4;
@@ -78,9 +78,9 @@ public class DeepsSkyRenderer extends IRenderHandler
 			float f11;
 			if(mc.gameSettings.anaglyph)
 			{
-				f9 = (f4 * 30.0F + f7 * 59.0F + f8 * 11.0F) / 100.0F;
-				f10 = (f4 * 30.0F + f7 * 70.0F) / 100.0F;
-				f11 = (f4 * 30.0F + f8 * 70.0F) / 100.0F;
+				f9 = ((f4 * 30.0F) + (f7 * 59.0F) + (f8 * 11.0F)) / 100.0F;
+				f10 = ((f4 * 30.0F) + (f7 * 70.0F)) / 100.0F;
+				f11 = ((f4 * 30.0F) + (f8 * 70.0F)) / 100.0F;
 				f4 = f9;
 				f7 = f10;
 				f8 = f11;
@@ -92,7 +92,7 @@ public class DeepsSkyRenderer extends IRenderHandler
 			tessellator1.setColorRGBA_F(afloat[0], afloat[1], afloat[2], 0.0F);
 			for(int j = 0; j <= b0; ++j)
 			{
-				f11 = j * (float) Math.PI * 2.0F / b0;
+				f11 = (j * (float) Math.PI * 2.0F) / b0;
 				float f12 = MathHelper.sin(f11);
 				float f13 = MathHelper.cos(f11);
 				tessellator1.addVertex(f12 * 120.0F, f13 * 120.0F, -f13 * 40.0F * afloat[3]);
@@ -170,7 +170,7 @@ public class DeepsSkyRenderer extends IRenderHandler
 		}
 		if(world.provider.isSkyColored())
 		{
-			GL11.glColor3f(0.2F + 0.04F, f2 * 0.2F + 0.04F, f3 * 0.6F + 0.1F);
+			GL11.glColor3f(0.2F + 0.04F, (f2 * 0.2F) + 0.04F, (f3 * 0.6F) + 0.1F);
 		}
 		else
 		{

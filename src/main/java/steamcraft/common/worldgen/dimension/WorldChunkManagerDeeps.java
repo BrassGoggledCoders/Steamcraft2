@@ -80,14 +80,14 @@ public class WorldChunkManagerDeeps extends WorldChunkManager
 	{
 		IntCache.resetIntCache();
 
-		if(par1ArrayOfFloat == null || par1ArrayOfFloat.length < par4 * par5)
+		if((par1ArrayOfFloat == null) || (par1ArrayOfFloat.length < (par4 * par5)))
 		{
 			par1ArrayOfFloat = new float[par4 * par5];
 		}
 
 		int[] aint = this.myBiomeIndexLayer.getInts(par2, par3, par4, par5);
 
-		for(int i1 = 0; i1 < par4 * par5; ++i1)
+		for(int i1 = 0; i1 < (par4 * par5); ++i1)
 		{
 			float f = BiomeGenBase.getBiomeGenArray()[aint[i1]].getIntRainfall() / 65536.0F;
 
@@ -119,14 +119,14 @@ public class WorldChunkManagerDeeps extends WorldChunkManager
 	{
 		IntCache.resetIntCache();
 
-		if(par1ArrayOfFloat == null || par1ArrayOfFloat.length < par4 * par5)
+		if((par1ArrayOfFloat == null) || (par1ArrayOfFloat.length < (par4 * par5)))
 		{
 			par1ArrayOfFloat = new float[par4 * par5];
 		}
 
 		int[] aint = this.myBiomeIndexLayer.getInts(par2, par3, par4, par5);
 
-		for(int i1 = 0; i1 < par4 * par5; ++i1)
+		for(int i1 = 0; i1 < (par4 * par5); ++i1)
 		{
 			float f = BiomeGenBase.getBiomeGenArray()[aint[i1]].temperature / 65536.0F;
 
@@ -149,14 +149,14 @@ public class WorldChunkManagerDeeps extends WorldChunkManager
 	{
 		IntCache.resetIntCache();
 
-		if(par1ArrayOfBiomeGenBase == null || par1ArrayOfBiomeGenBase.length < par4 * par5)
+		if((par1ArrayOfBiomeGenBase == null) || (par1ArrayOfBiomeGenBase.length < (par4 * par5)))
 		{
 			par1ArrayOfBiomeGenBase = new BiomeGenBase[par4 * par5];
 		}
 
 		int[] aint = this.myGenBiomes.getInts(par2, par3, par4, par5);
 
-		for(int i = 0; i < par4 * par5; ++i)
+		for(int i = 0; i < (par4 * par5); ++i)
 		{
 			if(aint[i] >= 0)
 			{
@@ -191,12 +191,12 @@ public class WorldChunkManagerDeeps extends WorldChunkManager
 	{
 		IntCache.resetIntCache();
 
-		if(par1ArrayOfBiomeGenBase == null || par1ArrayOfBiomeGenBase.length < width * length)
+		if((par1ArrayOfBiomeGenBase == null) || (par1ArrayOfBiomeGenBase.length < (width * length)))
 		{
 			par1ArrayOfBiomeGenBase = new BiomeGenBase[width * length];
 		}
 
-		if(cacheFlag && width == 16 && length == 16 && (x & 15) == 0 && (y & 15) == 0)
+		if(cacheFlag && (width == 16) && (length == 16) && ((x & 15) == 0) && ((y & 15) == 0))
 		{
 			BiomeGenBase[] abiomegenbase1 = this.myBiomeCache.getCachedBiomes(x, y);
 			System.arraycopy(abiomegenbase1, 0, par1ArrayOfBiomeGenBase, 0, width * length);
@@ -206,7 +206,7 @@ public class WorldChunkManagerDeeps extends WorldChunkManager
 		{
 			int[] aint = this.myBiomeIndexLayer.getInts(x, y, width, length);
 
-			for(int i = 0; i < width * length; ++i)
+			for(int i = 0; i < (width * length); ++i)
 			{
 				if(aint[i] >= 0)
 				{
@@ -229,15 +229,15 @@ public class WorldChunkManagerDeeps extends WorldChunkManager
 	public boolean areBiomesViable(int par1, int par2, int par3, List par4List)
 	{
 		IntCache.resetIntCache();
-		int l = par1 - par3 >> 2;
-		int i1 = par2 - par3 >> 2;
-		int j1 = par1 + par3 >> 2;
-		int k1 = par2 + par3 >> 2;
-		int l1 = j1 - l + 1;
-		int i2 = k1 - i1 + 1;
+		int l = (par1 - par3) >> 2;
+		int i1 = (par2 - par3) >> 2;
+		int j1 = (par1 + par3) >> 2;
+		int k1 = (par2 + par3) >> 2;
+		int l1 = (j1 - l) + 1;
+		int i2 = (k1 - i1) + 1;
 		int[] aint = this.myGenBiomes.getInts(l, i1, l1, i2);
 
-		for(int j2 = 0; j2 < l1 * i2; ++j2)
+		for(int j2 = 0; j2 < (l1 * i2); ++j2)
 		{
 			BiomeGenBase biomegenbase = BiomeGenBase.getBiomeGenArray()[aint[j2]];
 
@@ -257,23 +257,23 @@ public class WorldChunkManagerDeeps extends WorldChunkManager
 	public ChunkPosition findBiomePosition(int par1, int par2, int par3, List par4List, Random par5Random)
 	{
 		IntCache.resetIntCache();
-		int l = par1 - par3 >> 2;
-		int i1 = par2 - par3 >> 2;
-		int j1 = par1 + par3 >> 2;
-		int k1 = par2 + par3 >> 2;
-		int l1 = j1 - l + 1;
-		int i2 = k1 - i1 + 1;
+		int l = (par1 - par3) >> 2;
+		int i1 = (par2 - par3) >> 2;
+		int j1 = (par1 + par3) >> 2;
+		int k1 = (par2 + par3) >> 2;
+		int l1 = (j1 - l) + 1;
+		int i2 = (k1 - i1) + 1;
 		int[] aint = this.myGenBiomes.getInts(l, i1, l1, i2);
 		ChunkPosition chunkposition = null;
 		int j2 = 0;
 
-		for(int k2 = 0; k2 < l1 * i2; ++k2)
+		for(int k2 = 0; k2 < (l1 * i2); ++k2)
 		{
-			int l2 = l + k2 % l1 << 2;
-			int i3 = i1 + k2 / l1 << 2;
+			int l2 = (l + (k2 % l1)) << 2;
+			int i3 = (i1 + (k2 / l1)) << 2;
 			BiomeGenBase biomegenbase = BiomeGenBase.getBiomeGenArray()[aint[k2]];
 
-			if(par4List.contains(biomegenbase) && (chunkposition == null || par5Random.nextInt(j2 + 1) == 0))
+			if(par4List.contains(biomegenbase) && ((chunkposition == null) || (par5Random.nextInt(j2 + 1) == 0)))
 			{
 				chunkposition = new ChunkPosition(l2, 0, i3);
 				++j2;

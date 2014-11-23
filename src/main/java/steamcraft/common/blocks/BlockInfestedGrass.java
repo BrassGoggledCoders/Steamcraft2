@@ -82,7 +82,7 @@ public class BlockInfestedGrass extends BlockInfestedDirt
 			}
 		}
 
-		return (l / 9 & 255) << 16 | (i1 / 9 & 255) << 8 | j1 / 9 & 255;
+		return (((l / 9) & 255) << 16) | (((i1 / 9) & 255) << 8) | ((j1 / 9) & 255);
 	}
 
 	@SideOnly(Side.CLIENT)

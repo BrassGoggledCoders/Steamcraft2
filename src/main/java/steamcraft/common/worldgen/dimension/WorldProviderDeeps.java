@@ -46,7 +46,7 @@ public class WorldProviderDeeps extends WorldProvider
 	{
 		this.dimensionId = ConfigGeneral.deepsDimensionID;
 		// TODO?
-		this.worldChunkMgr = new WorldChunkManagerDeeps(worldObj.getSeed(), terrainType);
+		this.worldChunkMgr = new WorldChunkManagerDeeps(this.worldObj.getSeed(), this.terrainType);
 		this.generateLightBrightnessTable();
 	}
 
@@ -103,8 +103,8 @@ public class WorldProviderDeeps extends WorldProvider
 
 		for(int var2 = 0; var2 <= 15; ++var2)
 		{
-			float var3 = 1.0F - var2 / 15.0F;
-			this.lightBrightnessTable[var2] = (1.0F - var3) / (var3 * 3.0F + 1.0F) * (1.0F - var1) + var1;
+			float var3 = 1.0F - (var2 / 15.0F);
+			this.lightBrightnessTable[var2] = (((1.0F - var3) / ((var3 * 3.0F) + 1.0F)) * (1.0F - var1)) + var1;
 		}
 	}
 

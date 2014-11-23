@@ -96,7 +96,7 @@ public class EntityGrub extends EntityMob
 		}
 		else
 		{
-			if(this.allySummonCooldown <= 0 && (p_70097_1_ instanceof EntityDamageSource || p_70097_1_ == DamageSource.magic))
+			if((this.allySummonCooldown <= 0) && ((p_70097_1_ instanceof EntityDamageSource) || (p_70097_1_ == DamageSource.magic)))
 			{
 				this.allySummonCooldown = 20;
 			}
@@ -111,8 +111,8 @@ public class EntityGrub extends EntityMob
 	@Override
 	protected void attackEntity(Entity p_70785_1_, float p_70785_2_)
 	{
-		if(this.attackTime <= 0 && p_70785_2_ < 1.2F && p_70785_1_.boundingBox.maxY > this.boundingBox.minY
-				&& p_70785_1_.boundingBox.minY < this.boundingBox.maxY)
+		if((this.attackTime <= 0) && (p_70785_2_ < 1.2F) && (p_70785_1_.boundingBox.maxY > this.boundingBox.minY)
+				&& (p_70785_1_.boundingBox.minY < this.boundingBox.maxY))
 		{
 			this.attackTime = 20;
 			this.attackEntityAsMob(p_70785_1_);
@@ -164,11 +164,11 @@ public class EntityGrub extends EntityMob
 					k = MathHelper.floor_double(this.posZ);
 					boolean flag = false;
 
-					for(int l = 0; !flag && l <= 5 && l >= -5; l = l <= 0 ? 1 - l : 0 - l)
+					for(int l = 0; !flag && (l <= 5) && (l >= -5); l = l <= 0 ? 1 - l : 0 - l)
 					{
-						for(i1 = 0; !flag && i1 <= 10 && i1 >= -10; i1 = i1 <= 0 ? 1 - i1 : 0 - i1)
+						for(i1 = 0; !flag && (i1 <= 10) && (i1 >= -10); i1 = i1 <= 0 ? 1 - i1 : 0 - i1)
 						{
-							for(int j1 = 0; !flag && j1 <= 10 && j1 >= -10; j1 = j1 <= 0 ? 1 - j1 : 0 - j1)
+							for(int j1 = 0; !flag && (j1 <= 10) && (j1 >= -10); j1 = j1 <= 0 ? 1 - j1 : 0 - j1)
 							{
 								if(this.worldObj.getBlock(i + i1, j + l, k + j1) == InitBlocks.blockInfestedGrass)
 								{
@@ -220,11 +220,11 @@ public class EntityGrub extends EntityMob
 				}
 			}
 
-			if(this.entityToAttack == null && !this.hasPath())
+			if((this.entityToAttack == null) && !this.hasPath())
 			{
 				this.updateWanderPath();
 			}
-			else if(this.entityToAttack != null && !this.hasPath())
+			else if((this.entityToAttack != null) && !this.hasPath())
 			{
 				this.entityToAttack = null;
 			}
