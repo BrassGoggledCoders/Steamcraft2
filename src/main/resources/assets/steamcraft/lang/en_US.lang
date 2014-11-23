@@ -433,6 +433,7 @@ biome.steamcraft2.innerearth.o.name=Inner Ocean
 
 #Entities
 entity.steamcraft2.grub.name=Grub
+entity.steamcraft2.lostminer.name=Lost Miner
 
 #Vanilla Docs
 tile.chest.documentation=For holding things. Has 36 slots.
