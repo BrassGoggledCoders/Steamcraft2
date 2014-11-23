@@ -3,6 +3,8 @@ package steamcraft.common.worldgen.biomes;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.biome.BiomeGenBase;
+import steamcraft.common.entities.EntityGrub;
+import steamcraft.common.entities.EntityLostMiner;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -13,6 +15,8 @@ public class BiomeDepthsBase extends BiomeGenBase
 	{
 		super(p_i1971_1_);
 		this.spawnableMonsterList.clear();
+		this.spawnableCaveCreatureList.add(new BiomeGenBase.SpawnListEntry(EntityLostMiner.class, 2, 1, 2));
+		this.spawnableCaveCreatureList.add(new BiomeGenBase.SpawnListEntry(EntityGrub.class, 4, 3, 6));
 		this.topBlock = Blocks.grass;
 		this.fillerBlock = Blocks.dirt;
 		this.enableRain = false;
