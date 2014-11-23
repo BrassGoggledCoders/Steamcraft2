@@ -103,19 +103,19 @@ public class ItemSteelPlating extends BaseDefensiveModule
 	@Override
 	public int getMaxDamageAbsorb()
 	{
-		return 10;
+		return 5;
 	}
 
 	@Override
 	public int getDamageAbsorbRatio()
 	{
-		return 5;
+		return 3;
 	}
 
 	@Override
 	public int getArmorToDisplay()
 	{
-		return 5;
+		return 3;
 	}
 
 	@Override
