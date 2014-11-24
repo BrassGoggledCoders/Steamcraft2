@@ -23,11 +23,11 @@ import steamcraft.common.InitBiomes;
 import steamcraft.common.InitBlocks;
 import steamcraft.common.InitItems;
 import steamcraft.common.config.ConfigGeneral;
-import steamcraft.common.items.compat.ItemSteamcraftCluster;
 import steamcraft.common.lib.LibInfo;
 import vazkii.botania.api.wiki.WikiHooks;
 import boilerplate.common.utils.helpers.IMCHelper;
 import boilerplate.common.utils.helpers.OreDictHelper;
+import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.event.FMLInterModComms;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -38,11 +38,11 @@ import cpw.mods.fml.common.registry.GameRegistry;
  */
 public class CompatabilityLayer
 {
-	public static Item itemSteamcraftCluster;
 
 	public static void postInit()
 	{
 		registerOreDictionaryEntries();
+		registerBiomeTypes();
 		sendIMCMessages();
 		ForgeHooks.init();
 		// if(Loader.isModLoaded("MineFactoryReloaded"))
@@ -50,19 +50,15 @@ public class CompatabilityLayer
 
 		if(Loader.isModLoaded("Botania"))
 		{
-			WikiHooks.registerModWiki(LibInfo.ID, new BotaniaWikiProvider("sc2.wikia.com/wiki/", "%20"));
-		}
-		if(Loader.isModLoaded("Thaumcraft"))
-		{
-			GameRegistry.registerItem(InitItems.itemThaumicMonocle, "ItemThaumicMonocle");
-			Item thaumometer = GameRegistry.findItem("Thaumcraft", "ItemThaumometer");
-			GameRegistry.addRecipe(new ShapedOreRecipe(InitItems.itemThaumicMonocle, new Object[] { " I ", "ITI", " I ", 'I', "ingotBrass", 'T',
-					thaumometer }));
+			FMLLog.info("[SteamCraft2]", "Botania Detected. Loading Flower Power Module");
+			WikiHooks.registerModWiki(LibInfo.ID, new BotaniaWikiProvider());
 		}
 	}
 
 	private static void sendIMCMessages()
 	{
+		if(Loader.isModLoaded("VersionChecker"))
+			FMLLog.info("[SteamCraft2]", "Poking VersionChecker");
 		FMLInterModComms.sendRuntimeMessage(LibInfo.ID, "VersionChecker", "addVersionCheck", LibInfo.VERSION_URL);
 		sendTiConIMC();
 	}
@@ -70,7 +66,8 @@ public class CompatabilityLayer
 	private static void sendTiConIMC()
 	{
 		// TODO Zinc Tools & Melting. Metal Block melting, without TiCon dep
-
+		if(Loader.isModLoaded("TConstruct"))
+			FMLLog.info("[SteamCraft2]", "TiCon Detected, adding Etherium Tool Material");
 		IMCHelper.addNewToolMaterial(ConfigGeneral.etheriumMaterialID, "Etherium", 2000, 500, 5, 0.1F, 1, EnumChatFormatting.RED.toString(), 16711935);
 
 		IMCHelper.addNewPartBuilderMaterial(ConfigGeneral.etheriumMaterialID, new ItemStack(InitItems.itemResource, 1, 0), new ItemStack(
@@ -79,7 +76,7 @@ public class CompatabilityLayer
 
 	private static void registerOreDictionaryEntries()
 	{
-
+		FMLLog.info("[SteamCraft2]", "Registering Thingies in OreDictionary");
 		OreDictHelper.registerOreWithAlts(new String[] { "ingotAluminum", "ingotAluminium" }, new ItemStack(InitItems.itemIngot, 1, 0));
 		OreDictionary.registerOre("ingotCopper", new ItemStack(InitItems.itemIngot, 1, 1));
 		OreDictionary.registerOre("ingotTin", new ItemStack(InitItems.itemIngot, 1, 2));
@@ -163,11 +160,11 @@ public class CompatabilityLayer
 			OreDictionary.registerOre("partTierTwo", new ItemStack(InitItems.itemBrassParts, 1, i));
 			OreDictionary.registerOre("partTierTwo", new ItemStack(InitItems.itemSteelParts, 1, i));
 		}
-		registerBiomeTypes();
 	}
 
 	private static void registerBiomeTypes()
 	{
+		FMLLog.info("[SteamCraft2]", "Registering Biome Dictionary entries");
 		BiomeDictionary.registerBiomeType(InitBiomes.biomeDepths, BiomeDictionary.Type.HILLS);
 		BiomeDictionary.registerBiomeType(InitBiomes.biomeDepthsF, BiomeDictionary.Type.HILLS, BiomeDictionary.Type.FOREST);
 		BiomeDictionary.registerBiomeType(InitBiomes.biomeDepthsM, BiomeDictionary.Type.HILLS);
@@ -179,20 +176,25 @@ public class CompatabilityLayer
 		// Thaumcraft
 		FMLInterModComms.sendMessage("Thaumcraft", "harvestStandardCrop", new ItemStack(InitBlocks.blockTeaPlant, 1, 1));
 		FMLInterModComms.sendMessage("Thaumcraft", "nativeCluster",
-				Block.getIdFromBlock(InitBlocks.blockCustomOre) + "," + 0 + "," + Item.getIdFromItem(CompatabilityLayer.itemSteamcraftCluster) + "," + 0
+				Block.getIdFromBlock(InitBlocks.blockCustomOre) + "," + 0 + "," + Item.getIdFromItem(InitItems.itemSteamcraftCluster) + "," + 0
 						+ ",2.0");
 		FMLInterModComms.sendMessage("Thaumcraft", "nativeCluster",
-				Block.getIdFromBlock(InitBlocks.blockCustomOre) + "," + 2 + "," + Item.getIdFromItem(CompatabilityLayer.itemSteamcraftCluster) + "," + 1
+				Block.getIdFromBlock(InitBlocks.blockCustomOre) + "," + 2 + "," + Item.getIdFromItem(InitItems.itemSteamcraftCluster) + "," + 1
 						+ ",2.0");
 	}
 
 	public static void initCompatItems()
 	{
-		itemSteamcraftCluster = new ItemSteamcraftCluster().setUnlocalizedName("itemSteamcraftCluster");
-
 		if(Loader.isModLoaded("Thaumcraft"))
 		{
-			GameRegistry.registerItem(itemSteamcraftCluster, "ItemSteamcraftCluster");
+			FMLLog.info("[SteamCraft2]", "Thaumcraft Detected. Loading Wizarding Module");
+
+			GameRegistry.registerItem(InitItems.itemSteamcraftCluster, "ItemSteamcraftCluster");
+
+			GameRegistry.registerItem(InitItems.itemThaumicMonocle, "ItemThaumicMonocle");
+			Item thaumometer = GameRegistry.findItem("Thaumcraft", "ItemThaumometer");
+			GameRegistry.addRecipe(new ShapedOreRecipe(InitItems.itemThaumicMonocle, new Object[] { " I ", "ITI", " I ", 'I', "ingotBrass", 'T',
+					thaumometer }));
 		}
 	}
 }

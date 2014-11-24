@@ -19,7 +19,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
-import steamcraft.common.compat.CompatabilityLayer;
 import steamcraft.common.config.ConfigBalance;
 import steamcraft.common.lib.LibInfo;
 import boilerplate.common.utils.recipe.RecipeUtils;
@@ -410,8 +409,8 @@ public class InitRecipes
 		// Thaumcraft
 		if(Loader.isModLoaded("Thaumcraft"))
 		{
-			GameRegistry.addSmelting(new ItemStack(CompatabilityLayer.itemSteamcraftCluster, 1, 0), new ItemStack(InitItems.itemIngot, 1, 0), 0);
-			GameRegistry.addSmelting(new ItemStack(CompatabilityLayer.itemSteamcraftCluster, 1, 1), new ItemStack(InitItems.itemIngot, 1, 3), 0);
+			GameRegistry.addSmelting(new ItemStack(InitItems.itemSteamcraftCluster, 1, 0), new ItemStack(InitItems.itemIngot, 1, 0), 0);
+			GameRegistry.addSmelting(new ItemStack(InitItems.itemSteamcraftCluster, 1, 1), new ItemStack(InitItems.itemIngot, 1, 3), 0);
 		}
 
 	}

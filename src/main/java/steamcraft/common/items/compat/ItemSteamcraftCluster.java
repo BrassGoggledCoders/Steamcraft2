@@ -19,7 +19,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
-import steamcraft.common.compat.CompatabilityLayer;
+import steamcraft.common.InitItems;
 import steamcraft.common.items.BaseItemWithMetadata;
 import steamcraft.common.lib.LibInfo;
 import cpw.mods.fml.relauncher.Side;
@@ -46,8 +46,8 @@ public class ItemSteamcraftCluster extends BaseItemWithMetadata
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(Item item, CreativeTabs tab, List l)
 	{
-		l.add(new ItemStack(CompatabilityLayer.itemSteamcraftCluster, 1, 0));
-		l.add(new ItemStack(CompatabilityLayer.itemSteamcraftCluster, 1, 1));
+		l.add(new ItemStack(InitItems.itemSteamcraftCluster, 1, 0));
+		l.add(new ItemStack(InitItems.itemSteamcraftCluster, 1, 1));
 	}
 
 	@Override

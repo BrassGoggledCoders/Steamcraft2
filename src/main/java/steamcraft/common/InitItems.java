@@ -48,6 +48,7 @@ import steamcraft.common.items.armor.ItemDivingHelmet;
 import steamcraft.common.items.armor.ItemMonocle;
 import steamcraft.common.items.armor.ItemNormalArmor;
 import steamcraft.common.items.armor.ItemSteamJetpack;
+import steamcraft.common.items.compat.ItemSteamcraftCluster;
 import steamcraft.common.items.compat.ItemThaumicMonocle;
 import steamcraft.common.items.electric.ElectricItem;
 import steamcraft.common.items.electric.ItemRayGun;
@@ -178,7 +179,7 @@ public class InitItems
 
 	public static Item itemLoreBook;
 
-	public static Item itemThaumicMonocle;
+	public static Item itemThaumicMonocle, itemSteamcraftCluster;
 
 	/* Init */
 	public static void init()
@@ -494,7 +495,9 @@ public class InitItems
 		registerItem(itemSpyglass, "ItemSpyglass");
 
 		itemLoreBook = new LoreItem("Test", "", new File("/assets/lang/en_US.lang")).setUnlocalizedName("itemLoreBook").setCreativeTab(Steamcraft.tabSC2);
-		registerItem(itemLoreBook, "ItemLoreBook");
+		// registerItem(itemLoreBook, "ItemLoreBook");
+
+		itemSteamcraftCluster = new ItemSteamcraftCluster().setUnlocalizedName("itemSteamcraftCluster");
 
 	}
 
