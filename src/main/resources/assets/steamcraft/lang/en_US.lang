@@ -133,7 +133,6 @@ item.itemIngot.4.name=Brass Ingot
 item.itemIngot.5.name=Bronze Ingot
 item.itemIngot.6.name=Steel Ingot
 item.itemIngot.7.name=Cast Iron Ingot
-#item.itemIngot.desc=Flatten with a drop hammer (or a manual hammer) to get sheet metal
 item.itemIngot.desc=Flatten with a hammer to get sheet metal
 item.itemPowder.0.name=Aluminum Powder
 item.itemPowder.1.name=Copper Powder
@@ -160,26 +159,18 @@ item.itemNugget.4.name=Brass Nugget
 item.itemNugget.5.name=Bronze Nugget
 item.itemNugget.6.name=Steel Nugget
 item.itemNugget.7.name=Cast Iron Nugget
-item.copperwire.name=Copper Wire
 item.itemWatch.name=Brass Pocket-Watch
 item.itemWatch.desc=On right-click, this item will display the in-game time and the real-world time
 item.itemSlimeRubber.name=Slime-Based Rubber
 item.itemSlimeRubber.desc=Congealed Slime. Still a bit sticky.
+item.itemMatch.name=Match
+item.itemMatch.desc=Basically a single-use flint and steel
 
-item.itemCanisterSteam.name=Steam Canister
-item.itemCanisterGas.name=Compressed Gas Canister
-item.itemCanisterEmpty.name=Empty Canister
 
 item.itemElectricJarSmall.name=Electric Jar (Copper Electrodes)
 item.itemElectricJarMedium.name=Electric Jar (Gold-Plated Electrodes)
 item.itemElectricJarLarge.name=Electric Jar (Plated)
 item.itemElectricJarHuge.name=Electric Jar (Crystalline Glass)
-
-item.guidebook.name=SteamCraft2 Guidebook
-item.steamBucket.name=Steam Bucket
-item.itemTeacupEmpty=Empty Teacup
-item.itemMatch.name=Match
-item.itemMatch.desc=Basically a single-use flint and steel
 
 #Guns
 item.itemGunPart.0.name=Wooden Stock
@@ -257,7 +248,7 @@ item.itemAxeObsidian.name=Obsidian Axe
 item.itemHoeObsidian.name=Obsidian Hoe
 item.itemShovelObsidian.name=Obsidian Shovel
 item.itemChisel.name=Chisel
-#item.itemChisel.desc=Right-Click to chisel mineral blocks
+item.itemChisel.desc=Right-Click to chisel mineral blocks
 item.itemSpanner.name=Spanner
 item.itemSpanner.desc=Can be used to set pipes/wires to extracting. Also works as a BC wrench
 item.itemHammer.name=Hammer
@@ -274,7 +265,7 @@ item.itemChestplateBrass.name=Brass Chestplate
 item.itemLegsBrass.name=Brass Greaves
 item.itemBootsBrass.name=Brass Boots
 item.itemBrassGoggles.name=Brass Goggles
-item.itemBrassGoggles.desc=It is a violation of the law of steampunk to fly without these. Helps with seeing things.
+item.itemBrassGoggles.desc=It is a violation of the law of steampunk to fly without these. Also helps with seeing things.
 item.aqualung.name=Aqualung
 item.pnematicBraces.name=Pneumatic Leg Braces
 item.rollerSkates.name=Roller Skates
@@ -380,6 +371,7 @@ item.itemLastResort.desc=If you reach a heart, you explode, violently. Your item
 #Compat
 item.itemSteamcraftCluster.0.name=Native Aluminum Cluster
 item.itemSteamcraftCluster.1.name=Native Zinc Cluster
+item.itemThaumicMonocle.name=Thaumic Monocle
 
 #Containers
 container.bloomery=Bloomery
