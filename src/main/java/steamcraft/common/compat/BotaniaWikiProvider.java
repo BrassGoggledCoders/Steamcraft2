@@ -28,8 +28,8 @@ public class BotaniaWikiProvider implements IWikiProvider
 		if(block == null)
 			return null;
 
-		if(meta != 0)
-			return StatCollector.translateToLocal(block.getUnlocalizedName() + meta + ".name");
+		if(!StatCollector.translateToLocal(block.getUnlocalizedName() + ".1" + ".name").contains(".name"))
+			return StatCollector.translateToLocal(block.getUnlocalizedName() + "." + meta + ".name");
 		else
 			return StatCollector.translateToLocal(block.getUnlocalizedName() + ".name");
 	}
