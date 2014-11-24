@@ -63,6 +63,10 @@ tile.blockCongealedSlime.name=Congealed Slime Block
 tile.blockCastIronLamp.name=Cast Iron Lamp
 tile.blockCompressedStone.name=Compressed Stone
 tile.blockFissurePortal.name=Portal to the Inner Earth!
+tile.blockInfestedDirt.name=Dirt
+tile.blockInfestedDirt.desc=Infested!
+tile.blockInfestedGrass.name=Grass
+tile.blockInfestedGrass.desc=Infested!
 
 #Ores
 tile.blockSteamcraftOre.0.name=Aluminum Ore
