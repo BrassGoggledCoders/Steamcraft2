@@ -48,6 +48,7 @@ import steamcraft.common.items.armor.ItemDivingHelmet;
 import steamcraft.common.items.armor.ItemMonocle;
 import steamcraft.common.items.armor.ItemNormalArmor;
 import steamcraft.common.items.armor.ItemSteamJetpack;
+import steamcraft.common.items.compat.ItemThaumicMonocle;
 import steamcraft.common.items.electric.ElectricItem;
 import steamcraft.common.items.electric.ItemRayGun;
 import steamcraft.common.items.electric.ItemShrinkray;
@@ -176,6 +177,8 @@ public class InitItems
 	public static Item itemSpyglass;
 
 	public static Item itemLoreBook;
+
+	public static Item itemThaumicMonocle;
 
 	/* Init */
 	public static void init()
@@ -462,6 +465,9 @@ public class InitItems
 
 		itemSteelPlating = new ItemSteelPlating().setUnlocalizedName("itemSteelPlating");
 		registerItem(itemSteelPlating, "ItemSteelPlating");
+
+		itemThaumicMonocle = new ItemThaumicMonocle().setUnlocalizedName("itemThaumicMonocle");
+		// Registered in CompatLayer
 
 		itemLastResort = new ItemLastResort().setUnlocalizedName("itemLastResort");
 		registerItem(itemLastResort, "ItemLastResort");

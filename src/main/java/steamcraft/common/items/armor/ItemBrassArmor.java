@@ -32,6 +32,8 @@ import steamcraft.common.Steamcraft;
 import steamcraft.common.items.ItemCanister;
 import steamcraft.common.items.electric.ElectricItem;
 import steamcraft.common.lib.LibInfo;
+import thaumcraft.api.IGoggles;
+import thaumcraft.api.nodes.IRevealer;
 import boilerplate.steamapi.item.IArmorModule;
 import boilerplate.steamapi.item.IArmorModule.EnumArmorEffectType;
 import boilerplate.steamapi.item.IDefensiveArmorModule;
@@ -43,7 +45,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  * @author warlordjones
  * 
  */
-public class ItemBrassArmor extends BaseArmor implements ISpecialArmor
+public class ItemBrassArmor extends BaseArmor implements ISpecialArmor, IGoggles, IRevealer
 {
 
 	public ItemBrassArmor(ItemArmor.ArmorMaterial armorMat, int renderIndex, int armorType)
@@ -285,5 +287,39 @@ public class ItemBrassArmor extends BaseArmor implements ISpecialArmor
 	public int getSlownessLevelFromWeight(int weight)
 	{
 		return weight / 40;
+	}
+
+	@Override
+	public boolean showNodes(ItemStack itemstack, EntityLivingBase player)
+	{
+		NBTTagCompound nbt = getOrCreateTagCompound(itemstack);
+		for(int i = 0; i < nbt.getInteger("moduleCount"); i++)
+		{
+			IArmorModule module = ModuleRegistry.getModule(nbt.getString("module" + i));
+
+			if((module != null) && (module.getArmorEffectType() == EnumArmorEffectType.SPECIAL))
+			{
+				if(module == InitItems.itemThaumicMonocle)
+					return true;
+			}
+		}
+		return false;
+	}
+
+	@Override
+	public boolean showIngamePopups(ItemStack itemstack, EntityLivingBase player)
+	{
+		NBTTagCompound nbt = getOrCreateTagCompound(itemstack);
+		for(int i = 0; i < nbt.getInteger("moduleCount"); i++)
+		{
+			IArmorModule module = ModuleRegistry.getModule(nbt.getString("module" + i));
+
+			if((module != null) && (module.getArmorEffectType() == EnumArmorEffectType.SPECIAL))
+			{
+				if(module == InitItems.itemThaumicMonocle)
+					return true;
+			}
+		}
+		return false;
 	}
 }

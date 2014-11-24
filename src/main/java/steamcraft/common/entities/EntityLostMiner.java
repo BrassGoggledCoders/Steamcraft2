@@ -21,6 +21,7 @@ public class EntityLostMiner extends EntityZombie
 	protected void addRandomArmor()
 	{
 		super.addRandomArmor();
+		// this.setCurrentItemOrArmor(3, new ItemStack(InitItems.itemMinerHelmet));
 
 		if(this.rand.nextFloat() < (0.5F))
 		{

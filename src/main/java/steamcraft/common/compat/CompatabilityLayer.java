@@ -18,12 +18,14 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.oredict.OreDictionary;
+import net.minecraftforge.oredict.ShapedOreRecipe;
 import steamcraft.common.InitBiomes;
 import steamcraft.common.InitBlocks;
 import steamcraft.common.InitItems;
 import steamcraft.common.config.ConfigGeneral;
 import steamcraft.common.items.compat.ItemSteamcraftCluster;
 import steamcraft.common.lib.LibInfo;
+import vazkii.botania.api.wiki.WikiHooks;
 import boilerplate.common.utils.helpers.IMCHelper;
 import boilerplate.common.utils.helpers.OreDictHelper;
 import cpw.mods.fml.common.Loader;
@@ -45,6 +47,18 @@ public class CompatabilityLayer
 		ForgeHooks.init();
 		// if(Loader.isModLoaded("MineFactoryReloaded"))
 		// MFRCompat.init();
+
+		if(Loader.isModLoaded("Botania"))
+		{
+			WikiHooks.registerModWiki(LibInfo.ID, new BotaniaWikiProvider("sc2.wikia.com/wiki/", "%20"));
+		}
+		if(Loader.isModLoaded("Thaumcraft"))
+		{
+			GameRegistry.registerItem(InitItems.itemThaumicMonocle, "ItemThaumicMonocle");
+			Item thaumometer = GameRegistry.findItem("Thaumcraft", "ItemThaumometer");
+			GameRegistry.addRecipe(new ShapedOreRecipe(InitItems.itemThaumicMonocle, new Object[] { " I ", "ITI", " I ", 'I', "ingotBrass", 'T',
+					thaumometer }));
+		}
 	}
 
 	private static void sendIMCMessages()
