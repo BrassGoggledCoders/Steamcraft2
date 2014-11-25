@@ -24,7 +24,6 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.common.util.ForgeDirection;
-import steamcraft.common.InitAchievements;
 import steamcraft.common.InitBlocks;
 import steamcraft.common.config.ConfigBalance;
 import steamcraft.common.config.ConfigGeneral;
@@ -54,7 +53,7 @@ public class TileLightningRod extends TileEntity implements IEnergyHandler
 				this.worldObj.addWeatherEffect(new EntityLightningBolt(this.worldObj, this.xCoord, this.yCoord, this.zCoord));
 				this.buffer.receiveEnergy(ConfigBalance.lightningRodEnergyProduction, false);
 				EntityPlayer player = this.worldObj.getClosestPlayer(this.xCoord, this.yCoord, this.zCoord, -1);
-				player.triggerAchievement(InitAchievements.zapAchieve);
+				// player.triggerAchievement(InitAchievements.zapAchieve);
 
 				if((this.worldObj.getBlock(this.xCoord, this.yCoord - 1, this.zCoord) == InitBlocks.blockCopperWire)
 						&& (this.worldObj.getBlock(this.xCoord, this.yCoord - 2, this.zCoord) == InitBlocks.blockFlesh)
