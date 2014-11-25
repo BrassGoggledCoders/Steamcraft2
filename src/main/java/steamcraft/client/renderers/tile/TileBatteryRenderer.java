@@ -30,7 +30,7 @@ import steamcraft.common.lib.LibInfo;
  */
 public class TileBatteryRenderer extends TileEntitySpecialRenderer
 {
-	private ModelBattery model;
+	private final ModelBattery model;
 
 	public TileBatteryRenderer()
 	{
@@ -54,7 +54,7 @@ public class TileBatteryRenderer extends TileEntitySpecialRenderer
 		GL11.glScalef(1.3F, 1.5F, 1F);
 		GL11.glTranslatef(-0.1F, 0.05F, 0.25F);
 		GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
-		this.model.render((Entity) null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F, te);
+		this.model.render((Entity) null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
 		GL11.glPopMatrix();
 	}
 }
