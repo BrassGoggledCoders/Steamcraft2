@@ -1,5 +1,5 @@
 /**
- * This class was created by BrassGoggledCoders modding team. 
+ * This class was created by BrassGoggledCoders modding team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -8,14 +8,12 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- * 
+ *
  */
 package steamcraft.common.blocks.machines;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.Container;
-import net.minecraft.inventory.IInventory;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
@@ -38,7 +36,7 @@ public class BlockBattery extends BaseContainerBlock
 	public BlockBattery()
 	{
 		super(Material.iron);
-		this.setBlockBounds(0.2F, 0, 0, 0.8F, 0.7F, 1);
+		// this.setBlockBounds(0.2F, 0, 0, 0.8F, 0.7F, 1);
 	}
 
 	@Override
@@ -89,8 +87,9 @@ public class BlockBattery extends BaseContainerBlock
 	}
 
 	@Override
-	public int getComparatorInputOverride(World par1World, int par2, int par3, int par4, int par5)
+	public int getComparatorInputOverride(World world, int par2, int par3, int par4, int par5)
 	{
-		return Container.calcRedstoneFromInventory((IInventory) par1World.getTileEntity(par2, par3, par4));
+		TileBattery tile = (TileBattery) world.getTileEntity(par2, par3, par4);
+		return tile.buffer.getEnergyStored() / 1000;
 	}
 }
