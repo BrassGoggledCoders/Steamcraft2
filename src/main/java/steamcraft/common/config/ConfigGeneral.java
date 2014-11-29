@@ -34,7 +34,7 @@ public class ConfigGeneral
 
 	public static int deepsDimensionID;
 
-	public static boolean naturalLightningStrikes;
+	public static boolean unnaturalLightningStrikes, naturalLightningStrikes, weather2LightningStrikes;
 
 	public static int depthsBiomeID, depthsFBiomeID, depthsMBiomeID, depthsSBiomeID, depthsIBiomeID, depthsOBiomeID;
 
@@ -53,10 +53,13 @@ public class ConfigGeneral
 
 			etheriumMaterialID = config.get(CATEGORY_GENERAL, "Etherium Tool Material ID for Tinker's Construct Intergration", 66).getInt();
 
-			naturalLightningStrikes = config
-					.get(CATEGORY_GENERAL,
-							"Lightning Strike behavior. If false, it will simulate strikes during stormy weather with a chance that can be set in the balance config (recommended). If true it will activate when any bolt hits it, which is a lot rarer than naturally.",
-							false).getBoolean(false);
+			String comment = "Lightning Strike behavior. It will simulate strikes during stormy weather with a chance that can be set in the balance config (recommended).";
+			unnaturalLightningStrikes = config.get(CATEGORY_GENERAL, comment, true).getBoolean();
+			comment = "Lightning Strike behavior. It will activate when any bolt hits it, which is a lot rarer than unnaturally.";
+			naturalLightningStrikes = config.get(CATEGORY_GENERAL, comment, true).getBoolean();
+			comment = "Lightning Strike behavior. It will activate when any Weather 2 bolt hits it.";
+			weather2LightningStrikes = config.get(CATEGORY_GENERAL, comment, true).getBoolean();
+
 			deepsDimensionID = config.get(CATEGORY_GENERAL, "Dimension ID for the Deeps dimension", -8).getInt();
 			depthsBiomeID = config.get(CATEGORY_GENERAL, "Biome ID for Depths Biome", 230).getInt();
 			depthsFBiomeID = config.get(CATEGORY_GENERAL, "Biome ID for Depths Forest Biome", 231).getInt();
