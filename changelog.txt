@@ -37,6 +37,15 @@ Beta 3.2:
 # Also register parts as "partType|Metal", to comply with TE etc
 # Use Bronze sheets instead of ingots for the spanner, so as not to conflict with Forestry's wrench
 # Drawplate works at any damage value. Whoops!
+Beta 3.3:
++ Etheric Field Distorters (EFDs) - better enderpearls
++ Botania Wiki support
++ Thaumcraft Goggles armour module
++ Insulated Copper Wire, won't electrocute you when stepped on while current is flowing
+* New battery bank renderer
+* Heavily nerf steel plating, and allow it to be applied to all armour pieces.
+# Fix lightning rod related crash
+# Fix Electric Jar names in NEI
+
 Beta 4:
 ++ The Deeps:
-+ Insulated Copper Wire, won't electrocute you when stepped on while current is flowing

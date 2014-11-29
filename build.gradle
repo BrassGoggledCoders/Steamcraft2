@@ -22,7 +22,7 @@ group= "steamcraft" // http://maven.apache.org/guides/mini/guide-naming-conventi
 archivesBaseName = "steamcraft"
 
 minecraft {
-    version = "1.7.10-10.13.0.1207"
+    version = "1.7.10-10.13.2.1240"
     runDir = "eclipse/assets"
 }
 
