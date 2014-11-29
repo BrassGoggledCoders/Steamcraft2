@@ -374,6 +374,9 @@ public class InitRecipes
 		GameRegistry.addRecipe(new ItemStack(InitBlocks.blockCongealedSlime), "RRR", "RRR", "RRR", 'R', InitItems.itemSlimeRubber);
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemSpyglass), new Object[] { "BGB", "W W", " G ", 'B', "ingotBrass", 'G',
 				"paneGlass", 'W', "plankWood" }));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemFieldManipulator, 4, 0), new Object[] { "BRB", "RER", "BRB", 'B', "nuggetBrass",
+				'E',
+				Items.ender_pearl, 'R', Items.redstone }));
 	}
 
 	public static void initializeSmeltingRecipes()

@@ -15,19 +15,15 @@ public class ItemFieldManipulator extends BaseItem
 	{
 		if(player.capabilities.isCreativeMode)
 		{
-			return stack;
-		}
-		else
-		{
 			--stack.stackSize;
-			world.playSoundAtEntity(player, "random.bow", 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
-
-			if(!world.isRemote)
-			{
-				world.spawnEntityInWorld(new EntityFieldManipulator(world, player));
-			}
-
-			return stack;
 		}
+		world.playSoundAtEntity(player, "random.bow", 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
+
+		if(!world.isRemote)
+		{
+			world.spawnEntityInWorld(new EntityFieldManipulator(world, player));
+		}
+
+		return stack;
 	}
 }
