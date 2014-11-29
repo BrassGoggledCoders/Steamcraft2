@@ -20,9 +20,6 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.tileentity.TileEntity;
-
-import org.lwjgl.opengl.GL11;
-
 import steamcraft.common.tiles.TileBattery;
 
 /**
@@ -157,42 +154,21 @@ public class ModelBattery extends ModelBase
 	// @Override
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5, TileEntity tile)
 	{
-		GL11.glTranslatef(-0.2F, -0.5F, -0.2F);
-		GL11.glScalef(1.2F, 1, 1);
 		this.upright4.render(f5);
-		this.jar1.render(f5);
-		this.wire13.render(f5);
 		this.base.render(f5);
-		this.wire6.render(f5);
-		this.wire14.render(f5);
 		this.upright1.render(f5);
-		this.wire8.render(f5);
 		this.base1.render(f5);
 		this.top1.render(f5);
-		this.wire12.render(f5);
-		this.lid2.render(f5);
-		this.jar4.render(f5);
-		this.lid4.render(f5);
-		this.wire2.render(f5);
 		this.top.render(f5);
 		this.upright2.render(f5);
 		this.upright3.render(f5);
-		this.wire7.render(f5);
-		this.wire11.render(f5);
-		this.jar3.render(f5);
-		this.jar2.render(f5);
-		this.wire1.render(f5);
-		this.lid1.render(f5);
-		this.wire4.render(f5);
 		this.upright.render(f5);
-		this.wire3.render(f5);
-		this.wire9.render(f5);
-		this.lid3.render(f5);
 
 		TileBattery te = (TileBattery) tile;
 		ModelRenderer[] jars = { this.jar1, this.jar2, this.jar3, this.jar4 };
 		ModelRenderer[] lids = { this.lid1, this.lid2, this.lid3, this.lid4 };
-		ModelRenderer[] wires = { this.wire1, this.wire2, this.wire3, this.wire4 };
+		ModelRenderer[] wires = { this.wire1, this.wire2, this.wire3, this.wire4, this.wire6, this.wire7, this.wire8, this.wire9, this.wire11, this.wire12,
+				this.wire13, this.wire14 };
 		if(tile != null)
 			for(int i = 0; i < jars.length; i++)
 			{
@@ -200,7 +176,8 @@ public class ModelBattery extends ModelBase
 				{
 					jars[i].render(f5);
 					lids[i].render(f5);
-					wires[i].render(f5);
+					for(int w = 0; w < wires.length; w++)
+						wires[w].render(f5);
 				}
 				if(te.inventory == null)
 				{
