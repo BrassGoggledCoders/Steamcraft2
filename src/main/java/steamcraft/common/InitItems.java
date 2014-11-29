@@ -19,6 +19,7 @@ import net.minecraft.item.ItemArmor;
 import steamcraft.common.items.BaseItem;
 import steamcraft.common.items.ItemCanister;
 import steamcraft.common.items.ItemChisel;
+import steamcraft.common.items.ItemFieldManipulator;
 import steamcraft.common.items.ItemFirearm;
 import steamcraft.common.items.ItemGrappleGun;
 import steamcraft.common.items.ItemGunPart;
@@ -180,6 +181,8 @@ public class InitItems
 	public static Item itemLoreBook;
 
 	public static Item itemThaumicMonocle, itemSteamcraftCluster;
+
+	public static Item itemFieldManipulator;
 
 	/* Init */
 	public static void init()
@@ -498,6 +501,9 @@ public class InitItems
 		// registerItem(itemLoreBook, "ItemLoreBook");
 
 		itemSteamcraftCluster = new ItemSteamcraftCluster().setUnlocalizedName("itemSteamcraftCluster");
+
+		itemFieldManipulator = new ItemFieldManipulator().setUnlocalizedName("itemFieldManipulator");
+		registerItem(itemFieldManipulator, "ItemFieldManipulator");
 
 	}
 

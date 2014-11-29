@@ -165,6 +165,8 @@ item.itemSlimeRubber.name=Slime-Based Rubber
 item.itemSlimeRubber.desc=Congealed Slime. Still a bit sticky.
 item.itemMatch.name=Match
 item.itemMatch.desc=Basically a single-use flint and steel
+item.itemFieldManipulator.name=Etheric Field Distorter
+item.itemFieldManipulator.desc=Bend the fabric of spacetime to your will, allowing you to travel between places near-instantaneously
 
 
 item.itemElectricJarSmall.name=Electric Jar (Copper Electrodes)

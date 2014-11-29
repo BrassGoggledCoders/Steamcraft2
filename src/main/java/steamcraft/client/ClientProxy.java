@@ -59,6 +59,7 @@ import steamcraft.common.entities.EntityGrapplingHook;
 import steamcraft.common.entities.EntityGrub;
 import steamcraft.common.entities.EntityLostMiner;
 import steamcraft.common.entities.projectile.EntityBullet;
+import steamcraft.common.entities.projectile.EntityFieldManipulator;
 import steamcraft.common.entities.projectile.EntityRocket;
 import steamcraft.common.tiles.TileBattery;
 import steamcraft.common.tiles.TileCharger;
@@ -100,6 +101,8 @@ public class ClientProxy extends CommonProxy
 		RenderingRegistry.registerEntityRenderingHandler(EntityMinedBlock.class, new RenderMinedBlock());
 
 		RenderingRegistry.registerEntityRenderingHandler(EntityBullet.class, /* new RenderBullet() */new RenderSnowball(InitItems.itemMusketBall));
+		RenderingRegistry.registerEntityRenderingHandler(EntityFieldManipulator.class, /* new RenderBullet() */new RenderSnowball(
+				InitItems.itemFieldManipulator));
 		RenderingRegistry.registerEntityRenderingHandler(EntityGrapplingHook.class, new RenderGrapplingHook());
 		RenderingRegistry.registerEntityRenderingHandler(EntityRocket.class, new RenderSnowball(InitItems.itemRocket)); // TODO
 
