@@ -12,12 +12,11 @@
  */
 package steamcraft.common.tiles;
 
-import java.util.Iterator;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 import net.minecraft.entity.effect.EntityLightningBolt;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
@@ -32,66 +31,90 @@ import cofh.api.energy.EnergyStorage;
 import cofh.api.energy.IEnergyHandler;
 
 /**
- * @author warlordjones
+ * @author warlordjones, MrIbby
  * 
  */
 public class TileLightningRod extends TileEntity implements IEnergyHandler
 {
 	private final EnergyStorage buffer = new EnergyStorage(30000, 10000);
+	private final ArrayList<EntityLightningBolt> unnaturalLightningBolts = new ArrayList<EntityLightningBolt>();
 
 	@Override
 	public void updateEntity()
 	{
+		boolean isLightningSpawned = false;
+
 		if(this.worldObj.getWorldInfo().isThundering() && this.worldObj.canBlockSeeTheSky(this.xCoord, this.yCoord, this.zCoord)
 				&& !BiomeDictionary.isBiomeOfType(this.worldObj.getBiomeGenForCoords(this.xCoord, this.zCoord), Type.SANDY)
-				&& !ConfigGeneral.naturalLightningStrikes)
+				&& ConfigGeneral.unnaturalLightningStrikes)
 		{
 			Random random = new Random();
 			int chance = random.nextInt(ConfigBalance.lightningRodHitChance);
 			if(chance == 0)
 			{
-				this.worldObj.addWeatherEffect(new EntityLightningBolt(this.worldObj, this.xCoord, this.yCoord, this.zCoord));
+				EntityLightningBolt lightningBolt = new EntityLightningBolt(this.worldObj, this.xCoord, this.yCoord, this.zCoord);
+				this.unnaturalLightningBolts.add(lightningBolt);
+				this.worldObj.addWeatherEffect(lightningBolt);
 				this.buffer.receiveEnergy(ConfigBalance.lightningRodEnergyProduction, false);
-				EntityPlayer player = this.worldObj.getClosestPlayer(this.xCoord, this.yCoord, this.zCoord, -1);
+				// EntityPlayer player = this.worldObj.getClosestPlayer(this.xCoord, this.yCoord, this.zCoord, -1);
 				// player.triggerAchievement(InitAchievements.zapAchieve);
-
-				if((this.worldObj.getBlock(this.xCoord, this.yCoord - 1, this.zCoord) == InitBlocks.blockCopperWire)
-						&& (this.worldObj.getBlock(this.xCoord, this.yCoord - 2, this.zCoord) == InitBlocks.blockFlesh)
-						&& (this.worldObj.getBlock(this.xCoord, this.yCoord - 3, this.zCoord) == InitBlocks.blockFlesh))
-				{
-					EntityFleshGolem golem = new EntityFleshGolem(this.worldObj);
-					golem.setPosition(this.xCoord, this.yCoord, this.zCoord);
-					this.worldObj.spawnEntityInWorld(golem);
-					this.worldObj.setBlockToAir(this.xCoord, this.yCoord - 1, this.zCoord);
-					this.worldObj.setBlockToAir(this.xCoord, this.yCoord - 2, this.zCoord);
-					this.worldObj.setBlockToAir(this.xCoord, this.yCoord - 3, this.zCoord);
-				}
+				isLightningSpawned = true;
 			}
 		}
-		else if(ConfigGeneral.naturalLightningStrikes)
-		{
-			System.out.print(2);
-			AxisAlignedBB axisalignedbb2 = AxisAlignedBB.getBoundingBox((double) this.xCoord - 1, (double) this.yCoord - 1,
-					(double) this.zCoord - 1, this.xCoord + 1, this.yCoord + 1, this.zCoord + 1);
-			List list2 = this.worldObj.getEntitiesWithinAABB(EntityLightningBolt.class, axisalignedbb2);
-			Iterator iterator2 = list2.iterator();
-			EntityLightningBolt bolt;
 
-			while(iterator2.hasNext())
+		if(ConfigGeneral.naturalLightningStrikes)
+		{
+			AxisAlignedBB axisalignedbb = AxisAlignedBB.getBoundingBox((double) this.xCoord - 1, (double) this.yCoord - 1,
+					(double) this.zCoord - 1, this.xCoord + 1, this.yCoord + 1, this.zCoord + 1);
+			List list = this.worldObj.getEntitiesWithinAABB(EntityLightningBolt.class, axisalignedbb);
+
+			if(!list.isEmpty())
+				isLightningSpawned = true;
+
+			for (Object obj : list)
 			{
-				bolt = (EntityLightningBolt) iterator2.next();
+				if(unnaturalLightningBolts.remove(obj))
+					continue;
 				this.buffer.receiveEnergy(ConfigBalance.lightningRodEnergyProduction, false);
 			}
+		}
+
+		if(ConfigGeneral.weather2LightningStrikes)
+		{
+			try
+			{
+				AxisAlignedBB axisalignedbb = AxisAlignedBB.getBoundingBox((double) this.xCoord - 1, (double) this.yCoord - 1,
+						(double) this.zCoord - 1, this.xCoord + 1, this.yCoord + 1, this.zCoord + 1);
+				List list = this.worldObj.getEntitiesWithinAABB(Class.forName("weather2.entity.EntityLightningBolt"), axisalignedbb);
+
+				if(!list.isEmpty())
+					isLightningSpawned = true;
+
+				for (Object obj : list)
+					this.buffer.receiveEnergy(ConfigBalance.lightningRodEnergyProduction, false);
+			}
+			catch(ClassNotFoundException exception)
+			{
+			}
+		}
+
+		if(isLightningSpawned && (this.worldObj.getBlock(this.xCoord, this.yCoord - 1, this.zCoord) == InitBlocks.blockCopperWire)
+				&& (this.worldObj.getBlock(this.xCoord, this.yCoord - 2, this.zCoord) == InitBlocks.blockFlesh)
+				&& (this.worldObj.getBlock(this.xCoord, this.yCoord - 3, this.zCoord) == InitBlocks.blockFlesh))
+		{
+			EntityFleshGolem golem = new EntityFleshGolem(this.worldObj);
+			golem.setPosition(this.xCoord, this.yCoord, this.zCoord);
+			this.worldObj.spawnEntityInWorld(golem);
+			this.worldObj.setBlockToAir(this.xCoord, this.yCoord - 1, this.zCoord);
+			this.worldObj.setBlockToAir(this.xCoord, this.yCoord - 2, this.zCoord);
+			this.worldObj.setBlockToAir(this.xCoord, this.yCoord - 3, this.zCoord);
 		}
 	}
 
 	@Override
 	public boolean canConnectEnergy(ForgeDirection from)
 	{
-		if(from == ForgeDirection.DOWN)
-			return true;
-		else
-			return false;
+		return from == ForgeDirection.DOWN;
 	}
 
 	@Override
