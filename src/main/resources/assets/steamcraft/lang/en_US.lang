@@ -173,6 +173,15 @@ item.itemElectricJarSmall.name=Electric Jar (Copper Electrodes)
 item.itemElectricJarMedium.name=Electric Jar (Gold-Plated Electrodes)
 item.itemElectricJarLarge.name=Electric Jar (Plated)
 item.itemElectricJarHuge.name=Electric Jar (Crystalline Glass)
+#For NEI
+item.itemElectricJarSmall.20.name=Electric Jar (Copper Electrodes)
+item.itemElectricJarMedium.20.name=Electric Jar (Gold-Plated Electrodes)
+item.itemElectricJarLarge.20.name=Electric Jar (Plated)
+item.itemElectricJarHuge.20.name=Electric Jar (Crystalline Glass)
+item.itemElectricJarSmall.0.name=Electric Jar (Copper Electrodes)
+item.itemElectricJarMedium.0.name=Electric Jar (Gold-Plated Electrodes)
+item.itemElectricJarLarge.0.name=Electric Jar (Plated)
+item.itemElectricJarHuge.0.name=Electric Jar (Crystalline Glass)
 
 #Guns
 item.itemGunPart.0.name=Wooden Stock
