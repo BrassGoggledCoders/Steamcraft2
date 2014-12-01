@@ -136,6 +136,8 @@ public class InitRecipes
 			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(InitItems.itemSheet, 1, meta), new Object[] { "ingot" + LibInfo.metals[meta],
 					new ItemStack(InitItems.itemHammer, 1, OreDictionary.WILDCARD_VALUE) }));
 		}
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(InitItems.itemPlateIron), new Object[] { "ingotIron",
+				new ItemStack(InitItems.itemHammer, 1, OreDictionary.WILDCARD_VALUE) }));
 		for(int meta = 0; meta < 4; meta++)
 			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(InitItems.itemPowder, ConfigBalance.numberOfDustsFromOreHammering, meta),
 					new Object[] { "ore" + LibInfo.metals[meta], new ItemStack(InitItems.itemHammer, 1, OreDictionary.WILDCARD_VALUE) }));
@@ -288,18 +290,18 @@ public class InitRecipes
 	{
 		GameRegistry.addShapedRecipe(new ItemStack(InitItems.itemResource, 1, 2), new Object[] { "XXX", "XXX", "XXX", 'X', new ItemStack(Blocks.obsidian) });
 
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemSteelParts, 1, 0), new Object[] { " P ", "PPP", " P ", 'P',
-				"plateSteel" }));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemSteelParts, 1, 0), new Object[] { " P ", "PIP", " P ", 'P',
+				"plateSteel", 'I', "ingotSteel" }));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemSteelParts, 1, 1), new Object[] { " P ", "P P", " P ", 'P',
 				"plateSteel" }));
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemCopperParts, 1, 0), new Object[] { " P ", "PPP", " P ", 'P',
-				new ItemStack(InitItems.itemSheet, 1, 1) }));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemCopperParts, 1, 0), new Object[] { " P ", "PIP", " P ", 'P',
+				"plateCopper", 'I', "ingotCopper" }));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemCopperParts, 1, 1), new Object[] { " P ", "P P", " P ", 'P',
-				new ItemStack(InitItems.itemSheet, 1, 1) }));
+				"plateCopper" }));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemIronParts, 1, 0),
-				new Object[] { " P ", "PPP", " P ", 'P', "ingotIron" }));
+				new Object[] { " P ", "PIP", " P ", 'I', "ingotIron", 'P', "plateIron" }));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemIronParts, 1, 1),
-				new Object[] { " P ", "P P", " P ", 'P', "ingotIron" }));
+				new Object[] { " P ", "P P", " P ", 'P', "plateIron" }));
 
 		GameRegistry.addShapedRecipe(new ItemStack(InitItems.itemMachinePart, 1, 0), "  X", " X ", "X  ", 'X', new ItemStack(InitItems.itemIngot, 1,
 				7));

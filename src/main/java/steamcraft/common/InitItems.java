@@ -184,6 +184,8 @@ public class InitItems
 
 	public static Item itemFieldManipulator;
 
+	public static Item itemPlateIron;
+
 	/* Init */
 	public static void init()
 	{
@@ -504,6 +506,9 @@ public class InitItems
 
 		itemFieldManipulator = new ItemFieldManipulator().setUnlocalizedName("itemFieldManipulator");
 		registerItem(itemFieldManipulator, "ItemFieldManipulator");
+
+		itemPlateIron = new BaseItem().setUnlocalizedName("itemSheetIron");
+		registerItem(itemPlateIron, "ItemPlateIron");
 
 	}
 

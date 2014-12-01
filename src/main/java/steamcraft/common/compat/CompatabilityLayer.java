@@ -92,8 +92,9 @@ public class CompatabilityLayer
 		OreDictionary.registerOre("plateZinc", new ItemStack(InitItems.itemSheet, 1, 3));
 		OreDictionary.registerOre("plateBrass", new ItemStack(InitItems.itemSheet, 1, 4));
 		OreDictionary.registerOre("plateBronze", new ItemStack(InitItems.itemSheet, 1, 5));
-		OreDictionary.registerOre("plateSteel", new ItemStack(InitItems.itemIngot, 1, 6));
+		OreDictionary.registerOre("plateSteel", new ItemStack(InitItems.itemSheet, 1, 6));
 		OreDictionary.registerOre("plateCastIron", new ItemStack(InitItems.itemSheet, 1, 7));
+		OreDictionary.registerOre("plateIron", new ItemStack(InitItems.itemPlateIron));
 
 		OreDictHelper.registerOreWithAlts(new String[] { "nuggetAluminum", "nuggetAluminium" }, new ItemStack(InitItems.itemNugget, 1, 0));
 		OreDictionary.registerOre("nuggetCopper", new ItemStack(InitItems.itemNugget, 1, 1));

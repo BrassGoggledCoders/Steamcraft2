@@ -151,6 +151,7 @@ item.itemSheet.4.name=Brass Sheet
 item.itemSheet.5.name=Bronze Sheet
 item.itemSheet.6.name=Steel Sheet
 item.itemSheet.7.name=Cast Iron Sheet
+item.itemSheetIron.name=Iron Sheet
 item.itemNugget.0.name=Aluminum Nugget
 item.itemNugget.1.name=Copper Nugget
 item.itemNugget.2.name=Tin Nugget
