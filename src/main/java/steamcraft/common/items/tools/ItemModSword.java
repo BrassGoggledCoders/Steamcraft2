@@ -28,11 +28,12 @@ import net.minecraft.world.World;
  */
 public class ItemModSword extends ItemModTool
 {
-	public ItemModSword(ToolMaterial toolMat)
+	public ItemModSword(ToolMaterial mat)
 	{
-		super(toolMat.getDamageVsEntity() + 4.0F, toolMat, new Block[] {});
+		super(mat.getDamageVsEntity() + 4.0F, mat, new Block[] {});
 		this.maxStackSize = 1;
-		this.setMaxDamage(toolMat.getMaxUses());
+		this.setMaxDamage(mat.getMaxUses());
+		setHarvestLevel("sword", mat.getHarvestLevel());
 	}
 
 	@Override

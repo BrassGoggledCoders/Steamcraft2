@@ -1,5 +1,5 @@
 /**
- * This class was created by BrassGoggledCoders modding team. 
+ * This class was created by BrassGoggledCoders modding team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -8,7 +8,7 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- * 
+ *
  */
 package steamcraft.common.items.tools;
 
@@ -29,9 +29,10 @@ public class ItemModPickaxe extends ItemModTool
 			Blocks.diamond_block, Blocks.ice, Blocks.netherrack, Blocks.lapis_block, Blocks.lapis_ore, Blocks.redstone_ore, Blocks.rail,
 			Blocks.detector_rail, Blocks.golden_rail, Blocks.activator_rail };
 
-	public ItemModPickaxe(ToolMaterial toolMat)
+	public ItemModPickaxe(ToolMaterial mat)
 	{
-		super(toolMat.getDamageVsEntity() + 1.0F, toolMat, blocksEffectiveAgainst);
+		super(mat.getDamageVsEntity() + 1.0F, mat, blocksEffectiveAgainst);
+		setHarvestLevel("pickaxe", mat.getHarvestLevel());
 	}
 
 	@Override

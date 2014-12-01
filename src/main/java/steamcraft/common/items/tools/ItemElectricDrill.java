@@ -1,5 +1,5 @@
 /**
- * This class was created by BrassGoggledCoders modding team. 
+ * This class was created by BrassGoggledCoders modding team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -8,7 +8,7 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- * 
+ *
  */
 package steamcraft.common.items.tools;
 
@@ -28,7 +28,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemElectricDrill extends ItemElectricTool
 {
-	private Random random = new Random();
+	private final Random random = new Random();
 	protected int maxEnergy = 80;
 	protected short maxReceive = 80;
 	protected int energyPerBlock = 400;
@@ -36,6 +36,8 @@ public class ItemElectricDrill extends ItemElectricTool
 	public ItemElectricDrill(ToolMaterial mat, int maxEnergy, int maxReceive)
 	{
 		super(1, mat, ItemDrill.effectiveBlocks, maxEnergy, maxReceive);
+		setHarvestLevel("pickaxe", mat.getHarvestLevel());
+		setHarvestLevel("shovel", mat.getHarvestLevel());
 	}
 
 	@SuppressWarnings("all")
