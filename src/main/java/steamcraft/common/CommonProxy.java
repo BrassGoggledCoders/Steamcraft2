@@ -89,8 +89,13 @@ public class CommonProxy
 	{
 		return null;
 	}
-	
+
 	public boolean isKeyPressed(int id)
+	{
+		return true;
+	}
+
+	public boolean isScreenEmpty()
 	{
 		return true;
 	}

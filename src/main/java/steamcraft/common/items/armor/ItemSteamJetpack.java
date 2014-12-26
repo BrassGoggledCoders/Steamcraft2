@@ -67,19 +67,20 @@ public class ItemSteamJetpack extends BaseArmor
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack)
 	{
-		if(!itemStack.hasTagCompound())
-			itemStack.setTagCompound(new NBTTagCompound());
-		
-		NBTTagCompound tag = itemStack.getTagCompound();
 		boolean hasCanister = this.hasCanister(player);
-
-		if(hasCanister != tag.getBoolean("hasCanister"))
-		{
-			tag.setBoolean("hasCanister", hasCanister);
-		}
 
 		if(!player.capabilities.allowFlying && hasCanister)
 		{
+			if(!itemStack.hasTagCompound())
+				itemStack.setTagCompound(new NBTTagCompound());
+			
+			NBTTagCompound tag = itemStack.getTagCompound();
+
+			if(hasCanister != tag.getBoolean("hasCanister"))
+			{
+				tag.setBoolean("hasCanister", hasCanister);
+			}
+			
 			if(((player.posY < 200) && Steamcraft.proxy.isKeyPressed(0)))
 			{
 				this.consumeSteamFromCanister(player, this.steamPerTick);

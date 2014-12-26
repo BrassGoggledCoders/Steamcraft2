@@ -14,12 +14,12 @@ package steamcraft.common.items.armor;
 
 import java.util.List;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.LibInfo;
@@ -57,13 +57,26 @@ public class ItemClockworkWings extends BaseArmor
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
 	public void onArmorTick(World world, EntityPlayer player, ItemStack stack)
 	{
 		if(!player.capabilities.allowFlying && (player.getFoodStats().getFoodLevel() != 0))
 		{
-			if((Minecraft.getMinecraft().currentScreen == null) && (player.posY < 160)
-					&& Minecraft.getMinecraft().gameSettings.keyBindJump.isPressed())
+			if(!stack.hasTagCompound())
+				stack.setTagCompound(new NBTTagCompound());
+			
+			NBTTagCompound tag = stack.getTagCompound();
+			boolean shouldBoost = Steamcraft.proxy.isKeyPressed(0);
+			boolean wasJumping = tag.getBoolean("isJumping");
+
+			if(shouldBoost)
+				if(wasJumping)
+					shouldBoost = false;
+				else
+					tag.setBoolean("isJumping", true);
+			else if(wasJumping)
+				tag.setBoolean("isJumping", false);
+			
+			if((Steamcraft.proxy.isScreenEmpty()) && (player.posY < 160) && shouldBoost)
 			{
 				player.addExhaustion(hungerPerTick);
 
@@ -88,7 +101,11 @@ public class ItemClockworkWings extends BaseArmor
 				player.motionZ *= 1.04D;
 			}
 
-			player.fallDistance = 0;
+			if(player.fallDistance > 0)
+			{
+				player.addExhaustion(hungerPerTick / 4);
+				player.fallDistance = 0;
+			}
 		}
 	}
 

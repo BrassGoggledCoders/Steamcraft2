@@ -230,7 +230,7 @@ public class ClientProxy extends CommonProxy
 
 		return new ModelWingpack(1.0F);
 	}
-	
+
 	@Override
 	public boolean isKeyPressed(int id)
 	{
@@ -244,5 +244,11 @@ public class ClientProxy extends CommonProxy
 		}
 
 		return false;
+	}
+
+	@Override
+	public boolean isScreenEmpty()
+	{
+		return Minecraft.getMinecraft().currentScreen == null;
 	}
 }
