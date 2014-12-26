@@ -63,8 +63,6 @@ public class Steamcraft
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{
-		LanguageRegistry.instance().getStringLocalization("itemGroup.steamcraft", "en_US");
-
 		configPath = event.getModConfigurationDirectory() + "/sc2/";
 
 		Config.initialise(configPath);
@@ -109,8 +107,6 @@ public class Steamcraft
 	{
 		CompatabilityLayer.postInit();
 		InitRecipes.init();
-		final ModContainer container = FMLCommonHandler.instance().findContainerFor(this);
-		LanguageRegistry.instance().loadLanguagesFor(container, Side.CLIENT);
 	}
 
 	@EventHandler

@@ -101,7 +101,7 @@ tile.blockTeslaCoil.name=Tesla Coil
 tile.blockTeslaCoil.desc=Uses 500RF/tick and 1000RF/damage to electrocute any living entity in a 5x5x5 area around it. Applying a redstone signal will make it target players instead. Placing an emerald block under the coil will cause it to only target villagers.
 tile.blockCharger.name=Charger
 tile.blockCharger.desc=Charges items placed inside it
-tile.blockArmorEditor.name=Armor Editor
+tile.blockArmorEditor.name=Armour Editor
 tile.blockSawmill.name=Sawmill
 tile.blockSawmill.desc=Saws logs into six planks
 
@@ -218,7 +218,7 @@ item.itemClockworkRocket.desc=Standard High-Yield Explosive Rocket
 item.itemClockworkRocket.1.name=Incendiary Rocket
 item.itemClockworkRocket.1.desc=Fiery Explosion
 item.itemClockworkRocket.2.name=Depleted Uranium Tip Rocket
-item.itemClockworkRocket.2.desc=Armor-Piercing Shell
+item.itemClockworkRocket.2.desc=Armour-Piercing Shell
 item.itemTimeClock.name=Chronometer of Time Manipulation
 item.itemTimeClock.desc=Manipulate the fabric of time! Right Click to set to day, Shift Right Click to set to night.
 
