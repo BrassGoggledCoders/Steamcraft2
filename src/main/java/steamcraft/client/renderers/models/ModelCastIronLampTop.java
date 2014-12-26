@@ -63,7 +63,7 @@ public class ModelCastIronLampTop extends ModelBase
 		this.top.addBox(-5F, -11F, -11.5F, 10, 2, 10);
 		// Top.setPosition(-5F, 12F, -5F);
 
-		this.topPeak = new ModelRenderer(this, 0, 0);
+		this.topPeak = new ModelRenderer(this);
 		this.topPeak.addBox(-3F, -13F, -9.5F, 6, 2, 6);
 		// TopPeak.setPosition(-3F, 14F, -3F);
 	}

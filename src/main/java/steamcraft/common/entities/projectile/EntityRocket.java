@@ -91,10 +91,4 @@ public class EntityRocket extends BaseProjectileEntity
 		this.worldObj.playSoundAtEntity(this, LibInfo.PREFIX + "hitblock", 1.0F, 1.0F);
 		this.setDead();
 	}
-
-	@Override
-	protected void entityInit()
-	{
-		// See BaseProjectileEntity
-	}
 }

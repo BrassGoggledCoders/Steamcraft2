@@ -80,7 +80,7 @@ public class ItemSteamJetpack extends BaseArmor
 
 		if(!player.capabilities.allowFlying && hasCanister)
 		{
-			if(((player.posY < 200) && Steamcraft.proxy.isKeyPressed("jump")))
+			if(((player.posY < 200) && Steamcraft.proxy.isKeyPressed(0)))
 			{
 				this.consumeSteamFromCanister(player, this.steamPerTick);
 

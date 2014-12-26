@@ -29,8 +29,8 @@ import steamcraft.common.tiles.TileCopperWire;
  */
 public class TileCopperWireRenderer extends TileEntitySpecialRenderer
 {
-	ResourceLocation texture = new ResourceLocation(LibInfo.PREFIX + "textures/blocks/blockCopperWire.png");
-	ResourceLocation texture1 = new ResourceLocation(LibInfo.PREFIX + "textures/blocks/blockInsulatedWire.png");
+	private static final ResourceLocation texture = new ResourceLocation(LibInfo.PREFIX + "textures/blocks/blockCopperWire.png");
+	private static final ResourceLocation texture1 = new ResourceLocation(LibInfo.PREFIX + "textures/blocks/blockInsulatedWire.png");
 
 	public static float pixel = 1F / 16F / 2F;
 	public static float tPixel = 1F / 32F;

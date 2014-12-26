@@ -62,10 +62,8 @@ public class GuiSteamBoiler extends GuiContainer
 			this.drawTexturedModalRect(this.guiLeft + 43, (this.guiTop + 48) - burnTime, 176, 12 - burnTime, 14, burnTime + 2);
 		}
 
-		this.drawFluid(new FluidStack(FluidRegistry.getFluid("water"), 0), this.tile.getScaledWaterLevel(60), this.guiLeft + 8, this.guiTop + 18, 20,
-				60);
-		this.drawFluid(new FluidStack(FluidRegistry.getFluid("steam"), 0), this.tile.getScaledSteamLevel(60), this.guiLeft + 74, this.guiTop + 18,
-				32, 60);
+		this.drawFluid(new FluidStack(FluidRegistry.getFluid("water"), 0), this.tile.getScaledWaterLevel(60), this.guiLeft + 8, this.guiTop + 18, 20, 60);
+		this.drawFluid(new FluidStack(FluidRegistry.getFluid("steam"), 0), this.tile.getScaledSteamLevel(60), this.guiLeft + 74, this.guiTop + 18, 32, 60);
 
 		this.mc.renderEngine.bindTexture(guitexture);
 		this.drawTexturedModalRect(this.guiLeft + 8, this.guiTop + 24, 176, 14, 20, 49);

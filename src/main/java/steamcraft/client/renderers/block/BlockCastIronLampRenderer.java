@@ -31,11 +31,11 @@ public class BlockCastIronLampRenderer implements ISimpleBlockRenderingHandler
 {
 	@SuppressWarnings("unused")
 	@Override
-	public void renderInventoryBlock(final Block block, final int metadata, final int modelID, final RenderBlocks renderer)
+	public void renderInventoryBlock(Block block, int metadata, int modelID, RenderBlocks renderer)
 	{
 		GL11.glRotatef(90.0F, 0.0F, 1.0F, 0.0F);
 		GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
-		final TileCastIronLamp te = new TileCastIronLamp();
+		TileCastIronLamp te = new TileCastIronLamp();
 		te.blockMetadata = 0;
 		te.blockType = block;
 		TileEntityRendererDispatcher.instance.renderTileEntityAt(te, te.xCoord, te.yCoord, te.zCoord, 0.0F);
@@ -43,14 +43,13 @@ public class BlockCastIronLampRenderer implements ISimpleBlockRenderingHandler
 	}
 
 	@Override
-	public boolean renderWorldBlock(final IBlockAccess world, final int x, final int y, final int z, final Block block, final int modelID,
-			final RenderBlocks renderer)
+	public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelID, RenderBlocks renderer)
 	{
 		return true;
 	}
 
 	@Override
-	public boolean shouldRender3DInInventory(final int i)
+	public boolean shouldRender3DInInventory(int i)
 	{
 		return true;
 	}

@@ -25,14 +25,13 @@ import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 public class BlockCrystalRenderer implements ISimpleBlockRenderingHandler
 {
 	@Override
-	public void renderInventoryBlock(final Block block, final int metadata, final int modelID, final RenderBlocks renderer)
+	public void renderInventoryBlock(Block block, int metadata, int modelID, RenderBlocks renderer)
 	{
 
 	}
 
 	@Override
-	public boolean renderWorldBlock(final IBlockAccess world, final int x, final int y, final int z, final Block block, final int modelID,
-			final RenderBlocks renderer)
+	public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelID, RenderBlocks renderer)
 	{
 		return true;
 	}

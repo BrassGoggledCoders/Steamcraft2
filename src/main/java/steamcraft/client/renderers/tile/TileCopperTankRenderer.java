@@ -19,7 +19,8 @@ import steamcraft.common.lib.LibInfo;
  * @author decebaldecebal
  * 
  */
+@Deprecated
 public class TileCopperTankRenderer
 {
-	ResourceLocation texture = new ResourceLocation(LibInfo.PREFIX + "textures/blocks/blockCopperTank.png");
+	private static final ResourceLocation texture = new ResourceLocation(LibInfo.PREFIX + "textures/blocks/blockCopperTank.png");
 }

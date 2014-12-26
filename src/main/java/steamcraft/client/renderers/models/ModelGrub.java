@@ -8,49 +8,35 @@ import org.lwjgl.opengl.GL11;
 
 public class ModelGrub extends ModelBase
 {
-	// fields
-	ModelRenderer body;
-	ModelRenderer body2;
-	ModelRenderer body1;
-	ModelRenderer body4;
-	ModelRenderer body3;
+	public final ModelRenderer body;
+	public final ModelRenderer body2;
+	public final ModelRenderer body1;
+	public final ModelRenderer body4;
+	public final ModelRenderer body3;
 
 	public ModelGrub()
 	{
-		this.textureWidth = 64;
-		this.textureHeight = 32;
 		GL11.glTranslatef(0, -0.5F, 0);
 
-		this.body = new ModelRenderer(this, 0, 0);
+		this.body = new ModelRenderer(this);
 		this.body.addBox(0F, 0F, 0F, 5, 4, 6);
-		this.body.setRotationPoint(0F, 0F, 0F);
-		this.body.setTextureSize(64, 32);
 		this.body.mirror = true;
-		this.setRotation(this.body, 0F, 0F, 0F);
 		this.body2 = new ModelRenderer(this, 22, 0);
 		this.body2.addBox(0F, 0F, 0F, 4, 3, 4);
 		this.body2.setRotationPoint(5F, 1F, 1F);
-		this.body2.setTextureSize(64, 32);
 		this.body2.mirror = true;
-		this.setRotation(this.body2, 0F, 0F, 0F);
 		this.body1 = new ModelRenderer(this, 22, 0);
 		this.body1.addBox(0F, 0F, 0F, 4, 3, 4);
 		this.body1.setRotationPoint(-4F, 1F, 1F);
-		this.body1.setTextureSize(64, 32);
 		this.body1.mirror = true;
-		this.setRotation(this.body1, 0F, 0F, 0F);
 		this.body4 = new ModelRenderer(this, 38, 0);
 		this.body4.addBox(0F, 0F, 0F, 2, 2, 3);
 		this.body4.setRotationPoint(-6F, 2F, 1.5F);
-		this.body4.setTextureSize(64, 32);
 		this.body4.mirror = true;
-		this.setRotation(this.body4, 0F, 0F, 0F);
 		this.body3 = new ModelRenderer(this, 38, 0);
 		this.body3.addBox(0F, 0F, 0F, 2, 2, 3);
 		this.body3.setRotationPoint(9F, 2F, 1.5F);
-		this.body3.setTextureSize(64, 32);
 		this.body3.mirror = true;
-		this.setRotation(this.body3, 0F, 0F, 0F);
 	}
 
 	@Override

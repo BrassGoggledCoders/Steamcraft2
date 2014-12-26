@@ -81,10 +81,6 @@ import cpw.mods.fml.client.registry.RenderingRegistry;
  */
 public class ClientProxy extends CommonProxy
 {
-	/*
-	 * @Override public void registerKeys() { FMLCommonHandler.instance().bus().register(new InitKeyBindings()); }
-	 */
-
 	@Override
 	public void registerDisplayInformation()
 	{
@@ -95,6 +91,12 @@ public class ClientProxy extends CommonProxy
 	{
 		this.registerBlockRenderers();
 		this.registerEntityRenderers();
+	}
+
+	@Override
+	public void registerKeys()
+	{
+		//FMLCommonHandler.instance().bus().register(new InitKeyBindings());
 	}
 
 	private void registerEntityRenderers()
@@ -114,46 +116,36 @@ public class ClientProxy extends CommonProxy
 
 	private void registerBlockRenderers()
 	{
+		RenderIDs.setIDs();
 		// Copper Pipe
-		RenderIDs.blockCopperPipeRI = RenderingRegistry.getNextAvailableRenderId();
 		ClientRegistry.bindTileEntitySpecialRenderer(TileCopperPipe.class, new TileCopperPipeRenderer());
 		RenderingRegistry.registerBlockHandler(new BlockCopperPipeRenderer());
 		// Copper Wire
-		RenderIDs.blockCopperWireRI = RenderingRegistry.getNextAvailableRenderId();
 		ClientRegistry.bindTileEntitySpecialRenderer(TileCopperWire.class, new TileCopperWireRenderer());
 		RenderingRegistry.registerBlockHandler(new BlockCopperWireRenderer());
 		// Lightning Rod
-		RenderIDs.blockLightningRodRI = RenderingRegistry.getNextAvailableRenderId();
 		ClientRegistry.bindTileEntitySpecialRenderer(TileLightningRod.class, new TileLightningRodRenderer());
 		RenderingRegistry.registerBlockHandler(new BlockLightningRodRenderer());
 		// TeslaCoil
-		RenderIDs.blockTeslaCoilRI = RenderingRegistry.getNextAvailableRenderId();
 		ClientRegistry.bindTileEntitySpecialRenderer(TileTeslaCoil.class, new TileTeslaCoilRenderer());
 		RenderingRegistry.registerBlockHandler(new BlockTeslaCoilRenderer());
 		// Battery
-		RenderIDs.blockBatteryRI = RenderingRegistry.getNextAvailableRenderId();
 		ClientRegistry.bindTileEntitySpecialRenderer(TileBattery.class, new TileBatteryRenderer());
 		RenderingRegistry.registerBlockHandler(new BlockBatteryRenderer());
 		// Charger
-		RenderIDs.blockChargerRI = RenderingRegistry.getNextAvailableRenderId();
 		ClientRegistry.bindTileEntitySpecialRenderer(TileCharger.class, new TileChargerRenderer());
 		RenderingRegistry.registerBlockHandler(new BlockChargerRenderer());
 		// Cast Iron Railing
-		RenderIDs.blockCastIronRailingRI = RenderingRegistry.getNextAvailableRenderId();
 		RenderingRegistry.registerBlockHandler(new BlockRailingRenderer());
 		// Cast Iron Lamp
-		RenderIDs.blockCastIronLampRI = RenderingRegistry.getNextAvailableRenderId();
 		ClientRegistry.bindTileEntitySpecialRenderer(TileCastIronLamp.class, new TileCastIronLampRenderer());
 		RenderingRegistry.registerBlockHandler(new BlockCastIronLampRenderer());
 		// Hatch
-		RenderIDs.blockHatchRI = RenderingRegistry.getNextAvailableRenderId();
 		ClientRegistry.bindTileEntitySpecialRenderer(TileHatch.class, new TileHatchRenderer());
 		RenderingRegistry.registerBlockHandler(new BlockHatchRenderer());
 		// Plank Stack
-		RenderIDs.blockPlankStackRI = RenderingRegistry.getNextAvailableRenderId();
 		RenderingRegistry.registerBlockHandler(new BlockPlankStackRenderer());
 		// Crystal
-		RenderIDs.blockCrystalRI = RenderingRegistry.getNextAvailableRenderId();
 		ClientRegistry.bindTileEntitySpecialRenderer(TileCrystal.class, new TileCrystalRenderer());
 		RenderingRegistry.registerBlockHandler(new BlockCrystalRenderer());
 	}
@@ -240,11 +232,17 @@ public class ClientProxy extends CommonProxy
 	}
 	
 	@Override
-	public boolean isKeyPressed(String id)
+	public boolean isKeyPressed(int id)
 	{
-		if(id.equals("jump"))
-			return Minecraft.getMinecraft().gameSettings.keyBindJump.getIsKeyPressed();
-		else
-			return false;
+		switch(id)
+		{
+			case 0:
+				return Minecraft.getMinecraft().gameSettings.keyBindJump.getIsKeyPressed();
+			default:
+				break;
+				
+		}
+
+		return false;
 	}
 }

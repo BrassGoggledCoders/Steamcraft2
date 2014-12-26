@@ -60,19 +60,14 @@ public class ModelBattery extends ModelBase
 
 	public ModelBattery()
 	{
-		this.textureWidth = 64;
-		this.textureHeight = 32;
 		this.upright4 = new ModelRenderer(this, 0, 20);
-		this.upright4.setRotationPoint(-1.0F, 16.0F, 6.0F);
 		this.upright4.addBox(0.0F, 0.0F, 0.0F, 2, 7, 2);
 		this.jar1 = new ModelRenderer(this, 36, 0);
-		this.jar1.setRotationPoint(2.0F, 18.0F, -7.0F);
 		this.jar1.addBox(0.0F, 0.0F, 0.0F, 5, 6, 5);
 		this.wire13 = new ModelRenderer(this, 8, 20);
 		this.wire13.setRotationPoint(-1.5F, 16.0F, -1.5F);
 		this.wire13.addBox(0.0F, 0.0F, 0.0F, 1, 1, 1);
-		this.base = new ModelRenderer(this, 0, 0);
-		this.base.setRotationPoint(-1.0F, 23.0F, -8.0F);
+		this.base = new ModelRenderer(this);
 		this.base.addBox(0.0F, 0.0F, 0.0F, 2, 1, 16);
 		this.wire6 = new ModelRenderer(this, 8, 20);
 		this.wire6.setRotationPoint(1.5F, 16.0F, 1.5F);
@@ -81,16 +76,13 @@ public class ModelBattery extends ModelBase
 		this.wire14.setRotationPoint(0.5F, 16.0F, -1.5F);
 		this.wire14.addBox(0.0F, 0.0F, 0.0F, 1, 1, 1);
 		this.upright1 = new ModelRenderer(this, 0, 20);
-		this.upright1.setRotationPoint(6.0F, 16.0F, -1.0F);
 		this.upright1.addBox(0.0F, 0.0F, 0.0F, 2, 7, 2);
 		this.wire8 = new ModelRenderer(this, 8, 20);
 		this.wire8.setRotationPoint(-2.5F, 16.0F, -2.5F);
 		this.wire8.addBox(0.0F, 0.0F, 0.0F, 1, 1, 1);
 		this.base1 = new ModelRenderer(this, 0, 17);
-		this.base1.setRotationPoint(-8.0F, 23.0F, -1.0F);
 		this.base1.addBox(0.0F, 0.0F, 0.0F, 16, 1, 2);
 		this.top1 = new ModelRenderer(this, 0, 17);
-		this.top1.setRotationPoint(-8.0F, 15.0F, -1.0F);
 		this.top1.addBox(0.0F, 0.0F, 0.0F, 16, 1, 2);
 		this.wire12 = new ModelRenderer(this, 8, 20);
 		this.wire12.setRotationPoint(-1.5F, 16.0F, 0.5F);
@@ -99,7 +91,6 @@ public class ModelBattery extends ModelBase
 		this.lid2.setRotationPoint(2.5F, 17.0F, 2.5F);
 		this.lid2.addBox(0.0F, 0.0F, 0.0F, 4, 1, 4);
 		this.jar4 = new ModelRenderer(this, 36, 0);
-		this.jar4.setRotationPoint(-7.0F, 18.0F, -7.0F);
 		this.jar4.addBox(0.0F, 0.0F, 0.0F, 5, 6, 5);
 		this.lid4 = new ModelRenderer(this, 36, 11);
 		this.lid4.setRotationPoint(-6.5F, 17.0F, -6.5F);
@@ -107,14 +98,11 @@ public class ModelBattery extends ModelBase
 		this.wire2 = new ModelRenderer(this, 8, 20);
 		this.wire2.setRotationPoint(2.5F, 16.5F, 2.5F);
 		this.wire2.addBox(0.0F, 0.0F, 0.0F, 1, 1, 1);
-		this.top = new ModelRenderer(this, 0, 0);
-		this.top.setRotationPoint(-1.0F, 15.0F, -8.0F);
+		this.top = new ModelRenderer(this);
 		this.top.addBox(0.0F, 0.0F, 0.0F, 2, 1, 16);
 		this.upright2 = new ModelRenderer(this, 0, 20);
-		this.upright2.setRotationPoint(-8.0F, 16.0F, -1.0F);
 		this.upright2.addBox(0.0F, 0.0F, 0.0F, 2, 7, 2);
 		this.upright3 = new ModelRenderer(this, 0, 20);
-		this.upright3.setRotationPoint(-1.0F, 16.0F, -8.0F);
 		this.upright3.addBox(0.0F, 0.0F, 0.0F, 2, 7, 2);
 		this.wire7 = new ModelRenderer(this, 8, 20);
 		this.wire7.setRotationPoint(-2.5F, 16.0F, 1.5F);
@@ -123,10 +111,8 @@ public class ModelBattery extends ModelBase
 		this.wire11.setRotationPoint(0.5F, 16.0F, 0.5F);
 		this.wire11.addBox(0.0F, 0.0F, 0.0F, 1, 1, 1);
 		this.jar3 = new ModelRenderer(this, 36, 0);
-		this.jar3.setRotationPoint(-7.0F, 18.0F, 2.0F);
 		this.jar3.addBox(0.0F, 0.0F, 0.0F, 5, 6, 5);
 		this.jar2 = new ModelRenderer(this, 37, 0);
-		this.jar2.setRotationPoint(2.0F, 18.0F, 2.0F);
 		this.jar2.addBox(0.0F, 0.0F, 0.0F, 5, 6, 5);
 		this.wire1 = new ModelRenderer(this, 8, 20);
 		this.wire1.setRotationPoint(2.5F, 16.5F, -3.5F);
@@ -138,7 +124,6 @@ public class ModelBattery extends ModelBase
 		this.wire4.setRotationPoint(-3.5F, 16.5F, -3.5F);
 		this.wire4.addBox(0.0F, 0.0F, 0.0F, 1, 1, 1);
 		this.upright = new ModelRenderer(this, 36, 0);
-		this.upright.setRotationPoint(-1.0F, 16.0F, -1.0F);
 		this.upright.addBox(0.0F, 0.0F, 0.0F, 2, 7, 2);
 		this.wire3 = new ModelRenderer(this, 8, 20);
 		this.wire3.setRotationPoint(-3.5F, 16.5F, 2.5F);

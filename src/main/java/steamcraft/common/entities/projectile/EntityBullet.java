@@ -85,10 +85,4 @@ public class EntityBullet extends BaseProjectileEntity
 			this.setDead();
 		}
 	}
-
-	@Override
-	protected void entityInit()
-	{
-		// See BaseProjectileEntity
-	}
 }

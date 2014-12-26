@@ -61,7 +61,7 @@ public class GuiVanity extends GuiContainer
 	{
 		final String s = this.inventory.getInventoryName();
 		this.fontRendererObj.drawString(s, this.xSize - this.fontRendererObj.getStringWidth(s) - 8, 5, 4210752);
-		this.fontRendererObj.drawString("container.inventory", 120, this.ySize - 92, 4210752); // TODO:
+		this.fontRendererObj.drawString("container.inventory", 120, this.ySize - 92, 4210752); // TODO
 
 		this.fontRendererObj.drawString("Thanks, coolAlias!", this.xSize + 35, this.ySize + 34, 2000);
 	}

@@ -22,13 +22,13 @@ public class RenderFleshGolem extends RenderLiving
 {
 	private static final ResourceLocation FLESHGOLEM_TEXTURE = new ResourceLocation(LibInfo.PREFIX + "textures/models/mobs/flesh_golem.png");
 
-	public RenderFleshGolem(final ModelBase par1ModelBase, final float par2)
+	public RenderFleshGolem(ModelBase par1ModelBase, float par2)
 	{
 		super(par1ModelBase, par2);
 	}
 
 	@Override
-	protected ResourceLocation getEntityTexture(final Entity par1Entity)
+	protected ResourceLocation getEntityTexture(Entity par1Entity)
 	{
 		return RenderFleshGolem.FLESHGOLEM_TEXTURE;
 	}

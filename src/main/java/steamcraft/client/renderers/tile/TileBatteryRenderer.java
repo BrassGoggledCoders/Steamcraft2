@@ -30,6 +30,7 @@ import steamcraft.common.lib.LibInfo;
  */
 public class TileBatteryRenderer extends TileEntitySpecialRenderer
 {
+	private static final ResourceLocation crystal = new ResourceLocation(LibInfo.PREFIX.replace(":", ""), "textures/models/batterybank.png");
 	private final ModelBattery model;
 
 	public TileBatteryRenderer()
@@ -42,7 +43,6 @@ public class TileBatteryRenderer extends TileEntitySpecialRenderer
 	{
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float) dx + 0.5F, (float) dy + 1.5F, (float) dz + 0.5F);
-		ResourceLocation crystal = new ResourceLocation(LibInfo.PREFIX.replace(":", ""), "textures/models/batterybank.png");
 		Minecraft.getMinecraft().renderEngine.bindTexture(crystal);
 		this.renderBattery(te, te.getWorldObj(), te.xCoord, te.yCoord, te.zCoord);
 		GL11.glPopMatrix();

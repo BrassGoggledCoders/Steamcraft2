@@ -18,62 +18,44 @@ import net.minecraft.entity.Entity;
 
 public class ModelCharger extends ModelBase
 {
-	// fields
-	ModelRenderer top;
-	ModelRenderer post1;
-	ModelRenderer post;
-	ModelRenderer post3;
-	ModelRenderer post2;
-	ModelRenderer base;
-	ModelRenderer base2;
+	public final ModelRenderer top;
+	public final ModelRenderer post1;
+	public final ModelRenderer post;
+	public final ModelRenderer post3;
+	public final ModelRenderer post2;
+	public final ModelRenderer base;
+	public final ModelRenderer base2;
 
 	public ModelCharger()
 	{
-		this.textureWidth = 64;
-		this.textureHeight = 32;
-
-		this.top = new ModelRenderer(this, 0, 0);
+		this.top = new ModelRenderer(this);
 		this.top.addBox(0F, 0F, 0F, 15, 2, 15);
 		this.top.setRotationPoint(-7.5F, 6F, -7.5F);
-		this.top.setTextureSize(64, 32);
 		this.top.mirror = true;
-		this.setRotation(this.top, 0F, 0F, 0F);
-		this.post1 = new ModelRenderer(this, 0, 0);
+		this.post1 = new ModelRenderer(this);
 		this.post1.addBox(0F, 0F, 0F, 2, 16, 2);
 		this.post1.setRotationPoint(-7F, 7F, -7F);
-		this.post1.setTextureSize(64, 32);
 		this.post1.mirror = true;
-		this.setRotation(this.post1, 0F, 0F, 0F);
-		this.post = new ModelRenderer(this, 0, 0);
+		this.post = new ModelRenderer(this);
 		this.post.addBox(0F, 0F, 0F, 2, 16, 2);
 		this.post.setRotationPoint(5F, 8F, -7F);
-		this.post.setTextureSize(64, 32);
 		this.post.mirror = true;
-		this.setRotation(this.post, 0F, 0F, 0F);
-		this.post3 = new ModelRenderer(this, 0, 0);
+		this.post3 = new ModelRenderer(this);
 		this.post3.addBox(0F, 0F, 0F, 2, 15, 2);
 		this.post3.setRotationPoint(5F, 8F, 5F);
-		this.post3.setTextureSize(64, 32);
 		this.post3.mirror = true;
-		this.setRotation(this.post3, 0F, 0F, 0F);
-		this.post2 = new ModelRenderer(this, 0, 0);
+		this.post2 = new ModelRenderer(this);
 		this.post2.addBox(0F, 0F, 0F, 2, 16, 2);
 		this.post2.setRotationPoint(-7F, 7F, 5F);
-		this.post2.setTextureSize(64, 32);
 		this.post2.mirror = true;
-		this.setRotation(this.post2, 0F, 0F, 0F);
-		this.base = new ModelRenderer(this, 0, 0);
+		this.base = new ModelRenderer(this);
 		this.base.addBox(0F, 0F, 0F, 16, 2, 16);
 		this.base.setRotationPoint(-8F, 22F, -8F);
-		this.base.setTextureSize(64, 32);
 		this.base.mirror = true;
-		this.setRotation(this.base, 0F, 0F, 0F);
-		this.base2 = new ModelRenderer(this, 0, 0);
+		this.base2 = new ModelRenderer(this);
 		this.base2.addBox(0F, 0F, 0F, 12, 2, 12);
 		this.base2.setRotationPoint(-6F, 20F, -6F);
-		this.base2.setTextureSize(64, 32);
 		this.base2.mirror = true;
-		this.setRotation(this.base2, 0F, 0F, 0F);
 	}
 
 	@Override

@@ -25,10 +25,7 @@ import net.minecraft.nbt.NBTTagList;
  */
 public class InventoryVanity implements IInventory
 {
-	private final String name = "Vanity Items";
-
-	private final String tagName = "tagVanityInventory";
-
+	private static final String tagName = "tagVanityInventory";
 	public static final int INV_SIZE = 6;
 
 	ItemStack[] inventory = new ItemStack[INV_SIZE];
@@ -154,7 +151,7 @@ public class InventoryVanity implements IInventory
 	@Override
 	public String getInventoryName()
 	{
-		return this.name;
+		return "Vanity Items";
 	}
 
 	@Override

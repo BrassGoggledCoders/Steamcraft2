@@ -32,7 +32,7 @@ import steamcraft.common.tiles.TileCopperPipe;
  */
 public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 {
-	ResourceLocation texture = new ResourceLocation(LibInfo.PREFIX + "textures/blocks/blockCopperPipe.png");
+	private static final ResourceLocation texture = new ResourceLocation(LibInfo.PREFIX + "textures/blocks/blockCopperPipe.png");
 
 	public static float pixel = 1F / 16F / 2F;
 	public static float tPixel = 1F / 32F;

@@ -84,8 +84,7 @@ public class Steamcraft
 		InitEntities.init();
 		InitAchievements.init();
 
-		proxy.registerDisplayInformation();
-		proxy.registerRenderers();
+		proxy.init();
 
 		MinecraftForge.EVENT_BUS.register(new EventHandlerForge());
 		MinecraftForge.EVENT_BUS.register(new EventHandlerClient());

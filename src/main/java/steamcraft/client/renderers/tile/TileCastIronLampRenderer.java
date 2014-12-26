@@ -31,8 +31,9 @@ import steamcraft.common.lib.LibInfo;
  */
 public class TileCastIronLampRenderer extends TileEntitySpecialRenderer
 {
+	private static final ResourceLocation lampOn = new ResourceLocation(LibInfo.PREFIX + "textures/models/lampon.png");
+	private static final ResourceLocation lampOff = new ResourceLocation(LibInfo.PREFIX + "textures/models/lampoff.png");
 	private final ModelCastIronLampTop lampModelTop;
-
 	private final ModelCastIronLampSide lampModelSide;
 
 	public TileCastIronLampRenderer()
@@ -42,7 +43,7 @@ public class TileCastIronLampRenderer extends TileEntitySpecialRenderer
 	}
 
 	@Override
-	public void renderTileEntityAt(final TileEntity te, final double dx, final double dy, final double dz, final float scale)
+	public void renderTileEntityAt(TileEntity te, double dx, double dy, double dz, float scale)
 	{
 		Block block = te.getBlockType();
 		GL11.glPushMatrix();
@@ -88,9 +89,6 @@ public class TileCastIronLampRenderer extends TileEntitySpecialRenderer
 		this.lampModelSide.crossbarRight.showModel = true;
 
 		// Renders the textures based on torch state
-		ResourceLocation lampOn = (new ResourceLocation(LibInfo.PREFIX + "textures/models/lampon.png"));
-		ResourceLocation lampOff = (new ResourceLocation(LibInfo.PREFIX + "textures/models/lampoff.png"));
-
 		if(block == InitBlocks.blockCastIronLampOn)
 		{
 			Minecraft.getMinecraft().renderEngine.bindTexture(lampOn);

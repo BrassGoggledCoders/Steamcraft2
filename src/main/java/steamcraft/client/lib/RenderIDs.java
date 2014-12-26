@@ -12,8 +12,12 @@
  */
 package steamcraft.client.lib;
 
+import cpw.mods.fml.client.registry.RenderingRegistry;
+
+
 public class RenderIDs
 {
+
 	public static int blockCastIronLampRI;
 	public static int blockCrystalRI;
 	public static int blockDropHammerRI;
@@ -27,4 +31,19 @@ public class RenderIDs
 	public static int blockCopperWireRI;
 	public static int blockPlankStackRI;
 	public static int holidayRI;
+
+	public static void setIDs()
+	{
+		blockCopperPipeRI = RenderingRegistry.getNextAvailableRenderId();
+		blockCopperWireRI = RenderingRegistry.getNextAvailableRenderId();
+		blockLightningRodRI = RenderingRegistry.getNextAvailableRenderId();
+		blockTeslaCoilRI = RenderingRegistry.getNextAvailableRenderId();
+		blockBatteryRI = RenderingRegistry.getNextAvailableRenderId();
+		blockChargerRI = RenderingRegistry.getNextAvailableRenderId();
+		blockCastIronRailingRI = RenderingRegistry.getNextAvailableRenderId();
+		blockCastIronLampRI = RenderingRegistry.getNextAvailableRenderId();
+		blockHatchRI = RenderingRegistry.getNextAvailableRenderId();
+		blockPlankStackRI = RenderingRegistry.getNextAvailableRenderId();
+		blockCrystalRI = RenderingRegistry.getNextAvailableRenderId();
+	}
 }

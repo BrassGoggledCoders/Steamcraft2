@@ -32,24 +32,24 @@ public class ModelHatch extends ModelBase
 
 	public ModelHatch()
 	{
-		this.base = new ModelRenderer(this, 0, 0);
+		this.base = new ModelRenderer(this);
 		this.base.addBox(-8.5F, -2.0F, -8.5F, 17, 4, 17, 0);
 
-		this.hatch = new ModelRenderer(this, 0, 0);
+		this.hatch = new ModelRenderer(this);
 		this.hatch.addBox(-7.0F, -5.5F, -7.0F, 14, 5, 14, 0);
-		this.center = new ModelRenderer(this, 0, 0);
+		this.center = new ModelRenderer(this);
 		this.center.addBox(-1.5F, -9.0F, -1.5F, 3, 8, 3, 0);
 
-		this.spoke = new ModelRenderer(this, 0, 0);
+		this.spoke = new ModelRenderer(this);
 		this.spoke.addBox(1.0F, -9.0F, -1.0F, 6, 2, 2, 0);
 
-		this.spoke1 = new ModelRenderer(this, 0, 0);
+		this.spoke1 = new ModelRenderer(this);
 		this.spoke1.addBox(-7.0F, -9.0F, -1.0F, 6, 2, 2, 0);
 
-		this.spoke2 = new ModelRenderer(this, 0, 0);
+		this.spoke2 = new ModelRenderer(this);
 		this.spoke2.addBox(-1.0F, -9.0F, 1.0F, 2, 2, 6, 0);
 
-		this.spoke3 = new ModelRenderer(this, 0, 0);
+		this.spoke3 = new ModelRenderer(this);
 		this.spoke3.addBox(-1.0F, -9.0F, -7.0F, 2, 2, 6, 0);
 
 	}

@@ -29,25 +29,23 @@ public class BlockHatchRenderer implements ISimpleBlockRenderingHandler
 {
 	@SuppressWarnings("unused")
 	@Override
-	public void renderInventoryBlock(final Block block, final int metadata, final int modelID, final RenderBlocks renderer)
+	public void renderInventoryBlock(Block block, int metadata, int modelID, RenderBlocks renderer)
 	{
 		GL11.glRotatef(90.0F, 0.0F, 1.0F, 0.0F);
 		GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
-		// final TileHatch te = new TileHatch();
-		// TODO
-		// TileEntityRendererDispatcher.instance.renderTileEntityAt(te, 0.0D, 0.0D, 0.0D, 0.0F);
+		// TileHatch te = new TileHatch();
+		// TODO: TileEntityRendererDispatcher.instance.renderTileEntityAt(te, 0.0D, 0.0D, 0.0D, 0.0F);
 		GL11.glEnable(32826);
 	}
 
 	@Override
-	public boolean renderWorldBlock(final IBlockAccess world, final int x, final int y, final int z, final Block block, final int modelID,
-			final RenderBlocks renderer)
+	public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelID, RenderBlocks renderer)
 	{
 		return true;
 	}
 
 	@Override
-	public boolean shouldRender3DInInventory(final int i)
+	public boolean shouldRender3DInInventory(int i)
 	{
 		return true;
 	}

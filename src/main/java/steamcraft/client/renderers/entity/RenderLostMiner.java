@@ -22,13 +22,13 @@ public class RenderLostMiner extends RenderLiving
 {
 	private static final ResourceLocation LOSTMINER_TEXTURE = new ResourceLocation(LibInfo.PREFIX + "textures/models/mobs/lost_miner.png");
 
-	public RenderLostMiner(final ModelBase par1ModelBase, final float par2)
+	public RenderLostMiner(ModelBase par1ModelBase, float par2)
 	{
 		super(par1ModelBase, par2);
 	}
 
 	@Override
-	protected ResourceLocation getEntityTexture(final Entity par1Entity)
+	protected ResourceLocation getEntityTexture(Entity par1Entity)
 	{
 		return RenderLostMiner.LOSTMINER_TEXTURE;
 	}

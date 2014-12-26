@@ -34,7 +34,7 @@ public class RenderBullet extends Render
 {
 	private static final ResourceLocation bulletTex = new ResourceLocation(LibInfo.PREFIX + "textures/projectiles/musketball.png");
 
-	public void renderBullet(final EntityBullet bullet, final double dx, final double dy, final double dz, final float frotY, final float frotP)
+	public void renderBullet(EntityBullet bullet, double dx, double dy, double dz, float frotY, float frotP)
 	{
 		this.bindEntityTexture(bullet);
 
@@ -45,23 +45,23 @@ public class RenderBullet extends Render
 		GL11.glTranslatef((float) dx, (float) dy, (float) dz);
 		GL11.glRotatef((bullet.prevRotationYaw + ((bullet.rotationYaw - bullet.prevRotationYaw) * frotP)) - 90F, 0.0F, 1.0F, 0.0F);
 		GL11.glRotatef(bullet.prevRotationPitch + ((bullet.rotationPitch - bullet.prevRotationPitch) * frotP), 0.0F, 0.0F, 1.0F);
-		final Tessellator tessellator = Tessellator.instance;
-		final int i = 0;
-		final float f2 = 0.0F;
-		final float f3 = 0.5F;
-		final float f4 = (0 + (i * 10)) / 32F;
-		final float f5 = (5 + (i * 10)) / 32F;
-		final float f6 = 0.0F;
-		final float f7 = 0.15625F;
-		final float f8 = (5 + (i * 10)) / 32F;
-		final float f9 = (10 + (i * 10)) / 32F;
-		final float f10 = 0.3F;
+		Tessellator tessellator = Tessellator.instance;
+		int i = 0;
+		float f2 = 0.0F;
+		float f3 = 0.5F;
+		float f4 = (0 + (i * 10)) / 32F;
+		float f5 = (5 + (i * 10)) / 32F;
+		float f6 = 0.0F;
+		float f7 = 0.15625F;
+		float f8 = (5 + (i * 10)) / 32F;
+		float f9 = (10 + (i * 10)) / 32F;
+		float f10 = 0.3F;
 		GL11.glEnable(32826 /* GL_RESCALE_NORMAL_EXT */);
-		final float f11 = 1.0F - frotP;
+		float f11 = 1.0F - frotP;
 
 		if(f11 > 0.0F)
 		{
-			final float f12 = -MathHelper.sin(f11 * 3F) * f11;
+			float f12 = -MathHelper.sin(f11 * 3F) * f11;
 			GL11.glRotatef(f12, 0.0F, 0.0F, 1.0F);
 		}
 
@@ -99,19 +99,19 @@ public class RenderBullet extends Render
 		GL11.glPopMatrix();
 	}
 
-	protected ResourceLocation getBulletTexture(final EntityBullet bullet)
+	protected ResourceLocation getBulletTexture(EntityBullet bullet)
 	{
 		return bulletTex;
 	}
 
 	@Override
-	protected ResourceLocation getEntityTexture(final Entity entity)
+	protected ResourceLocation getEntityTexture(Entity entity)
 	{
 		return this.getBulletTexture((EntityBullet) entity);
 	}
 
 	@Override
-	public void doRender(final Entity entity, final double dx, final double dy, final double dz, final float frotY, final float frotP)
+	public void doRender(Entity entity, double dx, double dy, double dz, float frotY, float frotP)
 	{
 		this.renderBullet((EntityBullet) entity, dx, dy, dz, frotY, frotP);
 	}

@@ -25,67 +25,58 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class ModelBrassMonocle extends ModelBiped
 {
-	ModelRenderer Shape1, Shape2, Shape3, Shape4, Shape5;
+	public final ModelRenderer shape1;
+	public final ModelRenderer shape2;
+	public final ModelRenderer shape3;
+	public final ModelRenderer shape4;
+	public ModelRenderer shape5;
 
-	public ModelBrassMonocle(final float f)
+	public ModelBrassMonocle(float f)
 	{
 		super(f, 0, 64, 32);
-		// textureWidth = 64;
-		// textureHeight = 32;
-		this.Shape1 = new ModelRenderer(this, 0, 0);
-		this.Shape1.addBox(0F, 0F, 0F, 1, 2, 1);
-		this.Shape1.setRotationPoint(-4F, -4.5F, -5F);
-		// Shape1.setRotationPoint(0F, 0F, 0F);
-		this.Shape1.setTextureSize(64, 32);
-		this.Shape1.mirror = true;
-		this.setRotation(this.Shape1, 0F, 0F, 0F);
-		this.Shape2 = new ModelRenderer(this, 0, 4);
-		this.Shape2.addBox(0F, 0F, 0F, 2, 1, 1);
-		this.Shape2.setRotationPoint(-3F, -5.5F, -5F);
-		this.Shape2.setTextureSize(64, 32);
-		this.Shape2.mirror = true;
-		this.setRotation(this.Shape2, 0F, 0F, 0F);
-		this.Shape3 = new ModelRenderer(this, 0, 0);
-		this.Shape3.addBox(0F, 0F, 0F, 1, 2, 1);
-		this.Shape3.setRotationPoint(-1F, -4.5F, -5F);
-		this.Shape3.setTextureSize(64, 32);
-		this.Shape3.mirror = true;
-		this.setRotation(this.Shape3, 0F, 0F, 0F);
-		this.Shape4 = new ModelRenderer(this, 0, 4);
-		this.Shape4.addBox(0F, 0F, 0F, 2, 1, 1);
-		this.Shape4.setRotationPoint(-3F, -2.5F, -5F);
-		this.Shape4.setTextureSize(64, 32);
-		this.Shape4.mirror = true;
-		this.setRotation(this.Shape4, 0F, 0F, 0F);
-		this.Shape5 = new ModelRenderer(this, 4, 0);
-		this.Shape5.addBox(0F, 0F, 0F, 1, 1, 0);
-		this.Shape5.setRotationPoint(-4F, -1.5F, -4.5F);
-		this.Shape5.setTextureSize(64, 32);
-		this.Shape5.mirror = true;
-		this.setRotation(this.Shape5, 0F, 0F, 0F);
-		this.Shape5 = new ModelRenderer(this, 4, 1);
-		this.Shape5.addBox(0F, 0F, 0F, 1, 3, 0);
-		this.Shape5.setRotationPoint(-5F, -0.5F, -4.5F);
-		this.Shape5.setTextureSize(64, 32);
-		this.Shape5.mirror = true;
-		this.setRotation(this.Shape5, 0F, 0F, 0F);
+		this.shape1 = new ModelRenderer(this);
+		this.shape1.addBox(0F, 0F, 0F, 1, 2, 1);
+		this.shape1.setRotationPoint(-4F, -4.5F, -5F);
+		// shape1.setRotationPoint(0F, 0F, 0F);
+		this.shape1.mirror = true;
+		this.shape2 = new ModelRenderer(this, 0, 4);
+		this.shape2.addBox(0F, 0F, 0F, 2, 1, 1);
+		this.shape2.setRotationPoint(-3F, -5.5F, -5F);
+		this.shape2.mirror = true;
+		this.shape3 = new ModelRenderer(this);
+		this.shape3.addBox(0F, 0F, 0F, 1, 2, 1);
+		this.shape3.setRotationPoint(-1F, -4.5F, -5F);
+		this.shape3.mirror = true;
+		this.shape4 = new ModelRenderer(this, 0, 4);
+		this.shape4.addBox(0F, 0F, 0F, 2, 1, 1);
+		this.shape4.setRotationPoint(-3F, -2.5F, -5F);
+		this.shape4.mirror = true;
+		this.shape5 = new ModelRenderer(this, 4, 0);
+		this.shape5.addBox(0F, 0F, 0F, 1, 1, 0);
+		this.shape5.setRotationPoint(-4F, -1.5F, -4.5F);
+		this.shape5.mirror = true;
+		this.shape5 = new ModelRenderer(this, 4, 1);
+		this.shape5.addBox(0F, 0F, 0F, 1, 3, 0);
+		this.shape5.setRotationPoint(-5F, -0.5F, -4.5F);
+		this.shape5.mirror = true;
 
-		this.bipedHead.addChild(this.Shape3);
-		this.bipedHead.addChild(this.Shape1);
-		this.bipedHead.addChild(this.Shape2);
-		this.bipedHead.addChild(this.Shape4);
-		this.bipedHead.addChild(this.Shape5);
+		this.bipedHead.addChild(this.shape3);
+		this.bipedHead.addChild(this.shape1);
+		this.bipedHead.addChild(this.shape2);
+		this.bipedHead.addChild(this.shape4);
+		this.bipedHead.addChild(this.shape5);
+		this.bipedHead.addChild(this.shape5);
 
 	}
 
 	@Override
-	public void render(final Entity entity, final float f1, final float f2, final float f3, final float f4, final float f5, final float f6)
+	public void render(Entity entity, float f1, float f2, float f3, float f4, float f5, float f6)
 	{
 		super.render(entity, f1, f2, f3, f4, f5, f6);
 		this.setRotationAngles(f1, f2, f3, f4, f5, f6, entity);
 	}
 
-	private void setRotation(final ModelRenderer model, final float x, final float y, final float z)
+	private void setRotation(ModelRenderer model, float x, float y, float z)
 	{
 		model.rotateAngleX = x;
 		model.rotateAngleY = y;
@@ -93,7 +84,7 @@ public class ModelBrassMonocle extends ModelBiped
 	}
 
 	@Override
-	public void setRotationAngles(final float f1, final float f2, final float f3, final float f4, final float f5, final float f6, final Entity entity)
+	public void setRotationAngles(float f1, float f2, float f3, float f4, float f5, float f6, Entity entity)
 	{
 		super.setRotationAngles(f1, f2, f3, f4, f5, f6, entity);
 	}

@@ -25,11 +25,22 @@ import net.minecraft.world.World;
  */
 public class CommonProxy
 {
+	public void init()
+	{
+		registerDisplayInformation();
+		registerRenderers();
+		registerKeys();
+	}
+	
 	public void registerDisplayInformation()
 	{
 	}
 
 	public void registerRenderers()
+	{
+	}
+
+	public void registerKeys()
 	{
 	}
 
@@ -78,13 +89,8 @@ public class CommonProxy
 	{
 		return null;
 	}
-
-	public void registerKeys()
-	{
-
-	}
 	
-	public boolean isKeyPressed(String id)
+	public boolean isKeyPressed(int id)
 	{
 		return true;
 	}

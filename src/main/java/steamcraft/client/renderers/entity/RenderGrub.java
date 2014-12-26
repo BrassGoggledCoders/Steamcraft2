@@ -22,13 +22,13 @@ public class RenderGrub extends RenderLiving
 {
 	private static final ResourceLocation TEX = new ResourceLocation(LibInfo.PREFIX + "textures/models/mobs/grub.png");
 
-	public RenderGrub(final ModelBase par1ModelBase, final float par2)
+	public RenderGrub(ModelBase par1ModelBase, float par2)
 	{
 		super(par1ModelBase, par2);
 	}
 
 	@Override
-	protected ResourceLocation getEntityTexture(final Entity par1Entity)
+	protected ResourceLocation getEntityTexture(Entity par1Entity)
 	{
 		return RenderGrub.TEX;
 	}

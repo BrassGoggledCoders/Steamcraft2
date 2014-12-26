@@ -52,7 +52,6 @@ public class GuiTimeBomb extends GuiContainer
 		this.tile = tile;
 		this.container = (ContainerTimeBomb) this.inventorySlots;
 		this.player = inv.player;
-		//
 	}
 
 	@Override
@@ -118,14 +117,14 @@ public class GuiTimeBomb extends GuiContainer
 		if(this.text != null)
 			s = this.text.getText();
 		if(s.length() == 4)
-			// {
-			// this.container.updateTime(s);
+		//{
+			//this.container.updateTime(s);
 			InitPackets.network.sendToServer(new TimeBombPacket(Integer.parseInt(s), this.tile.xCoord, this.tile.yCoord, this.tile.zCoord,
 					this.player.dimension));
-		// }
-		// this.mc.thePlayer.sendQueue.addToSendQueue(new
-		// C17PacketCustomPayload("SC2|TimeUpdate",
-		// s.getBytes(Charsets.UTF_8)));
+		//}
+		//this.mc.thePlayer.sendQueue.addToSendQueue(new
+		//C17PacketCustomPayload("SC2|TimeUpdate",
+		//s.getBytes(Charsets.UTF_8)));
 	}
 
 	/**

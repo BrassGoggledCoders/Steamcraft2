@@ -30,20 +30,20 @@ import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
  */
 public class BlockPlankStackRenderer implements ISimpleBlockRenderingHandler
 {
-	ResourceLocation texture = new ResourceLocation("minecraft:textures/blocks/planks_oak.png");
+	private static final ResourceLocation texture = new ResourceLocation("minecraft:textures/blocks/planks_oak.png");
 
 	public static float pixel = 1F / 16F / 2F;
 	public static float tPixel = 1F / 32F;
 
 	@Override
-	public void renderInventoryBlock(final Block block, final int metadata, final int modelID, final RenderBlocks renderer)
+	public void renderInventoryBlock(Block block, int metadata, int modelID, RenderBlocks renderer)
 	{
 		GL11.glPushMatrix();
 
 		// GL11.glTranslated(transX, transY, transZ);
 		GL11.glDisable(GL11.GL_LIGHTING);
 
-		Minecraft.getMinecraft().renderEngine.bindTexture(this.texture);
+		Minecraft.getMinecraft().renderEngine.bindTexture(texture);
 
 		Tessellator tess = Tessellator.instance;
 
@@ -57,15 +57,14 @@ public class BlockPlankStackRenderer implements ISimpleBlockRenderingHandler
 	}
 
 	@Override
-	public boolean renderWorldBlock(final IBlockAccess world, final int x, final int y, final int z, final Block block, final int modelID,
-			final RenderBlocks renderer)
+	public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelID, RenderBlocks renderer)
 	{
 		this.renderInventoryBlock(block, world.getBlockMetadata(x, y, z), modelID, renderer);
 		return true;
 	}
 
 	@Override
-	public boolean shouldRender3DInInventory(final int i)
+	public boolean shouldRender3DInInventory(int i)
 	{
 		return true;
 	}
