@@ -83,4 +83,9 @@ public class CommonProxy
 	{
 
 	}
+	
+	public boolean isKeyPressed(String id)
+	{
+		return true;
+	}
 }

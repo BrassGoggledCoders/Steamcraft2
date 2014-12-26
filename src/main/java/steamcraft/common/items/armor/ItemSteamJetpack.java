@@ -14,7 +14,6 @@ package steamcraft.common.items.armor;
 
 import java.util.List;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -68,64 +67,53 @@ public class ItemSteamJetpack extends BaseArmor
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack)
 	{
+		if(!itemStack.hasTagCompound())
+			itemStack.setTagCompound(new NBTTagCompound());
+		
 		NBTTagCompound tag = itemStack.getTagCompound();
-
-		boolean hasCanister = false;
-
-		if(this.hasCanister(player))
-			hasCanister = true;
+		boolean hasCanister = this.hasCanister(player);
 
 		if(hasCanister != tag.getBoolean("hasCanister"))
 		{
 			tag.setBoolean("hasCanister", hasCanister);
-			itemStack.setTagCompound(tag);
 		}
 
 		if(!player.capabilities.allowFlying && hasCanister)
 		{
-			if(world.isRemote)
-				this.doFlying(world, player, itemStack);
+			if(((player.posY < 200) && Steamcraft.proxy.isKeyPressed("jump")))
+			{
+				this.consumeSteamFromCanister(player, this.steamPerTick);
+
+				if(player.motionY > 0.0D)
+					player.motionY += 0.08499999910593033D;
+				else
+					player.motionY += 0.11699999910593033D;
+
+				world.spawnParticle("smoke", player.posX, player.posY - 0.25D, player.posZ, 0.0D, 0.0D, 0.0D);
+
+			}
+
+			if((this == InitItems.itemSteamWingpack) && (player.motionY < 0.0D) && player.isSneaking())
+			{
+				this.consumeSteamFromCanister(player, (byte) (this.steamPerTick / 2));
+				player.motionY /= 1.4D;
+
+				player.motionX *= 1.05D;
+				player.motionZ *= 1.05D;
+			}
+
+			if(!player.onGround)
+			{
+				player.motionX *= 1.04D;
+				player.motionZ *= 1.04D;
+			}
+
+			if(player.fallDistance > 0)
+			{
+				this.consumeSteamFromCanister(player, (byte) (this.steamPerTick / 4));
+				player.fallDistance = 0;
+			}
 		}
-	}
-
-	@SideOnly(Side.CLIENT)
-	private void doFlying(World world, EntityPlayer player, ItemStack itemStack)
-	{
-		if(((player.posY < 200)
-		&& Minecraft.getMinecraft().gameSettings.keyBindJump.getIsKeyPressed()))
-		{
-			this.consumeSteamFromCanister(player, this.steamPerTick);
-
-			if(player.motionY > 0.0D)
-				player.motionY += 0.08499999910593033D;
-			else
-				player.motionY += 0.11699999910593033D;
-
-			world.spawnParticle("smoke", player.posX, player.posY - 0.25D, player.posZ, 0.0D, 0.0D, 0.0D);
-
-		}
-
-		if((this == InitItems.itemSteamWingpack) && (player.motionY < 0.0D) && player.isSneaking())
-		{
-			this.consumeSteamFromCanister(player, (byte) (this.steamPerTick / 2));
-			player.motionY /= 1.4D;
-
-			player.motionX *= 1.05D;
-			player.motionZ *= 1.05D;
-		}
-
-		if(!player.onGround)
-		{
-			player.motionX *= 1.04D;
-			player.motionZ *= 1.04D;
-		}
-
-		if(player.fallDistance > 0)
-		{
-			this.consumeSteamFromCanister(player, (byte) (this.steamPerTick / 4));
-			player.fallDistance = 0;
-		}
-
 	}
 
 	protected void consumeSteamFromCanister(EntityPlayer player, byte steam)
@@ -159,9 +147,9 @@ public class ItemSteamJetpack extends BaseArmor
 	protected boolean hasCanister(EntityPlayer player)
 	{
 		boolean hasCanister = false;
-		for(int i = 0; i != player.inventory.mainInventory.length; i++)
+		ItemStack[] mainInv = player.inventory.mainInventory;
+		for(int i = 0; i != mainInv.length; i++)
 		{
-			ItemStack[] mainInv = player.inventory.mainInventory;
 			if((mainInv[i] != null) && (mainInv[i].getItem() == InitItems.itemCanisterSteam))
 				hasCanister = hasCanister || !this.isCanisterEmpty(mainInv[i]);
 		}

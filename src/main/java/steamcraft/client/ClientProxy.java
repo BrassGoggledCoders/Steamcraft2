@@ -14,6 +14,7 @@ package steamcraft.client;
 
 import java.awt.Color;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelZombie;
 import net.minecraft.client.renderer.entity.RenderSnowball;
@@ -236,5 +237,14 @@ public class ClientProxy extends CommonProxy
 		}
 
 		return new ModelWingpack(1.0F);
+	}
+	
+	@Override
+	public boolean isKeyPressed(String id)
+	{
+		if(id.equals("jump"))
+			return Minecraft.getMinecraft().gameSettings.keyBindJump.getIsKeyPressed();
+		else
+			return false;
 	}
 }
