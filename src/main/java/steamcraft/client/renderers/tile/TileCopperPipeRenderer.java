@@ -144,7 +144,7 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 			{
 				tess.startDrawingQuads();
 				{
-					IIcon icon = pipe.fluidInPipe.getBlock().getIcon(0, 0);
+					IIcon icon = pipe.fluidInPipe.getIcon();
 					this.bindTexture(TextureMap.locationBlocksTexture);
 
 					tess.addVertexWithUV((1 - (15 * pixel)) + level, 0, (1 - (15 * pixel)) + level, icon.getMinU(), icon.getMaxV());
