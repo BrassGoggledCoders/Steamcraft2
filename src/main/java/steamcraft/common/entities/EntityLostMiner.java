@@ -1,7 +1,9 @@
 package steamcraft.common.entities;
 
 import net.minecraft.entity.monster.EntityZombie;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
@@ -48,6 +50,23 @@ public class EntityLostMiner extends EntityZombie
 					this.setCurrentItemOrArmor(0, new ItemStack(Items.golden_shovel));
 					break;
 			}
+		}
+	}
+
+	@Override
+	protected void dropRareDrop(int p_70600_1_)
+	{
+		int rand = this.rand.nextInt(3);
+		switch(rand)
+		{
+			case 0:
+				this.dropItem(Item.getItemFromBlock(Blocks.iron_ore), rand);
+				break;
+			case 1:
+				this.dropItem(Item.getItemFromBlock(Blocks.gold_ore), rand);
+				break;
+			case 2:
+				this.dropItem(Items.coal, rand);
 		}
 	}
 
