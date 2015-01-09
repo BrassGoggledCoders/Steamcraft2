@@ -273,6 +273,8 @@ item.itemDrawplate.name=Drawplate
 item.itemDrawplate.desc=Used for creating wire
 item.itemSpyglass.name=Spyglass
 item.itemSpyglass.desc=Zooms you in 3x
+item.itemGrindstone.name=Grindstone
+item.itemGrindstone.desc=Used for grinding plates and ingots back to dusts
 
 
 #Armors
