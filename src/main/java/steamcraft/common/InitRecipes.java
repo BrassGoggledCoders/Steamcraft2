@@ -137,6 +137,10 @@ public class InitRecipes
 			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(InitItems.itemSheet, 1, meta), new Object[] { "ingot" + LibInfo.metals[meta],
 					new ItemStack(InitItems.itemHammer, 1, OreDictionary.WILDCARD_VALUE) }));
 		}
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(InitItems.itemVanillaSheet, 1, 0), new Object[] { "ingotIron",
+				new ItemStack(InitItems.itemHammer, 1, OreDictionary.WILDCARD_VALUE) }));
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(InitItems.itemVanillaSheet, 1, 1), new Object[] { "ingotGold",
+				new ItemStack(InitItems.itemHammer, 1, OreDictionary.WILDCARD_VALUE) }));
 		// Vanilla iron plate
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(InitItems.itemVanillaSheet, 1, 0), new Object[] { "ingotIron",
 				new ItemStack(InitItems.itemHammer, 1, OreDictionary.WILDCARD_VALUE) }));
@@ -154,16 +158,16 @@ public class InitRecipes
 		// Plates/Ingots back to dust
 		for(int meta = 0; meta < 8; meta++)
 		{
-			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(InitItems.itemVanillaPowder, ConfigBalance.numberOfDustsFromMetal, 1),
+			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(InitItems.itemPowder, ConfigBalance.numberOfDustsFromMetal, meta),
 					new Object[] { "ingot" + LibInfo.metals[meta], new ItemStack(InitItems.itemGrindstone, 1, OreDictionary.WILDCARD_VALUE) }));
-			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(InitItems.itemVanillaPowder, ConfigBalance.numberOfDustsFromMetal, 1),
+			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(InitItems.itemPowder, ConfigBalance.numberOfDustsFromMetal, meta),
 					new Object[] { "plate" + LibInfo.metals[meta], new ItemStack(InitItems.itemGrindstone, 1, OreDictionary.WILDCARD_VALUE) }));
 		}
-		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(InitItems.itemVanillaPowder, ConfigBalance.numberOfDustsFromMetal, 1),
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(InitItems.itemVanillaPowder, ConfigBalance.numberOfDustsFromMetal, 0),
 				new Object[] { "ingotIron", new ItemStack(InitItems.itemGrindstone, 1, OreDictionary.WILDCARD_VALUE) }));
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(InitItems.itemVanillaPowder, ConfigBalance.numberOfDustsFromMetal, 1),
 				new Object[] { "ingotGold", new ItemStack(InitItems.itemGrindstone, 1, OreDictionary.WILDCARD_VALUE) }));
-		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(InitItems.itemVanillaPowder, ConfigBalance.numberOfDustsFromMetal, 1),
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(InitItems.itemVanillaPowder, ConfigBalance.numberOfDustsFromMetal, 0),
 				new Object[] { "plateIron", new ItemStack(InitItems.itemGrindstone, 1, OreDictionary.WILDCARD_VALUE) }));
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(InitItems.itemVanillaPowder, ConfigBalance.numberOfDustsFromMetal, 1),
 				new Object[] { "plateGold", new ItemStack(InitItems.itemGrindstone, 1, OreDictionary.WILDCARD_VALUE) }));
@@ -416,9 +420,9 @@ public class InitRecipes
 		}
 		// Dusts ---> Ingots
 		for(int meta = 0; meta < 8; meta++)
-		{
 			GameRegistry.addSmelting(new ItemStack(InitItems.itemPowder, 1, meta), new ItemStack(InitItems.itemIngot, 1, meta), 0.3F);
-		}
+		GameRegistry.addSmelting(new ItemStack(InitItems.itemVanillaPowder, 1, 0), new ItemStack(Items.iron_ingot), 0.3F);
+		GameRegistry.addSmelting(new ItemStack(InitItems.itemVanillaPowder, 1, 1), new ItemStack(Items.gold_ingot), 0.3F);
 		// Misc
 		GameRegistry.addSmelting(Blocks.iron_block, new ItemStack(InitBlocks.blockMetal, 1, 7), 0.5F);
 		GameRegistry.addSmelting(Items.iron_ingot, new ItemStack(InitItems.itemIngot, 1, 7), 0.2F);
