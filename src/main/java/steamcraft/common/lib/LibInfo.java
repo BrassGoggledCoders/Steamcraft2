@@ -38,4 +38,5 @@ public class LibInfo
 	public static final String VERSION_URL = "https://gist.githubusercontent.com/warlordjones/42644dbc6db776152367/raw/99d70c9382a61b88cb61a605a8f0dfd9bbb49079/gistfile1.txt";
 
 	public static String[] metals = { "Aluminum", "Copper", "Tin", "Zinc", "Brass", "Bronze", "Steel", "CastIron" };
+	public static String[] metalsV = { "Iron", "Gold" };
 }

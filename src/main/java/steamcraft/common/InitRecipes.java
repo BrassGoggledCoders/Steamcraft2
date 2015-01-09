@@ -129,6 +129,7 @@ public class InitRecipes
 
 	private static void initMetalsRecipes()
 	{
+		// Metal recipes and hammering ingots to plates
 		for(int meta = 0; meta < 8; meta++)
 		{
 			RecipeUtils.addMetalRecipes(InitBlocks.blockMetal, InitItems.itemIngot, InitItems.itemNugget, meta);
@@ -136,11 +137,36 @@ public class InitRecipes
 			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(InitItems.itemSheet, 1, meta), new Object[] { "ingot" + LibInfo.metals[meta],
 					new ItemStack(InitItems.itemHammer, 1, OreDictionary.WILDCARD_VALUE) }));
 		}
-		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(InitItems.itemPlateIron), new Object[] { "ingotIron",
+		// Vanilla iron plate
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(InitItems.itemVanillaSheet, 1, 0), new Object[] { "ingotIron",
 				new ItemStack(InitItems.itemHammer, 1, OreDictionary.WILDCARD_VALUE) }));
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(InitItems.itemVanillaSheet, 1, 1), new Object[] { "ingotGold",
+				new ItemStack(InitItems.itemHammer, 1, OreDictionary.WILDCARD_VALUE) }));
+		// Our Dusts
 		for(int meta = 0; meta < 4; meta++)
-			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(InitItems.itemPowder, ConfigBalance.numberOfDustsFromOreHammering, meta),
+			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(InitItems.itemPowder, ConfigBalance.numberOfDustsFromOre, meta),
 					new Object[] { "ore" + LibInfo.metals[meta], new ItemStack(InitItems.itemHammer, 1, OreDictionary.WILDCARD_VALUE) }));
+		// Vanilla Dusts
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(InitItems.itemVanillaPowder, ConfigBalance.numberOfDustsFromOre, 0),
+				new Object[] { "oreIron", new ItemStack(InitItems.itemHammer, 1, OreDictionary.WILDCARD_VALUE) }));
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(InitItems.itemVanillaPowder, ConfigBalance.numberOfDustsFromOre, 1),
+				new Object[] { "oreGold", new ItemStack(InitItems.itemHammer, 1, OreDictionary.WILDCARD_VALUE) }));
+		// Plates/Ingots back to dust
+		for(int meta = 0; meta < 8; meta++)
+		{
+			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(InitItems.itemVanillaPowder, ConfigBalance.numberOfDustsFromMetal, 1),
+					new Object[] { "ingot" + LibInfo.metals[meta], new ItemStack(InitItems.itemGrindstone, 1, OreDictionary.WILDCARD_VALUE) }));
+			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(InitItems.itemVanillaPowder, ConfigBalance.numberOfDustsFromMetal, 1),
+					new Object[] { "plate" + LibInfo.metals[meta], new ItemStack(InitItems.itemGrindstone, 1, OreDictionary.WILDCARD_VALUE) }));
+		}
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(InitItems.itemVanillaPowder, ConfigBalance.numberOfDustsFromMetal, 1),
+				new Object[] { "ingotIron", new ItemStack(InitItems.itemGrindstone, 1, OreDictionary.WILDCARD_VALUE) }));
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(InitItems.itemVanillaPowder, ConfigBalance.numberOfDustsFromMetal, 1),
+				new Object[] { "ingotGold", new ItemStack(InitItems.itemGrindstone, 1, OreDictionary.WILDCARD_VALUE) }));
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(InitItems.itemVanillaPowder, ConfigBalance.numberOfDustsFromMetal, 1),
+				new Object[] { "plateIron", new ItemStack(InitItems.itemGrindstone, 1, OreDictionary.WILDCARD_VALUE) }));
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(InitItems.itemVanillaPowder, ConfigBalance.numberOfDustsFromMetal, 1),
+				new Object[] { "plateGold", new ItemStack(InitItems.itemGrindstone, 1, OreDictionary.WILDCARD_VALUE) }));
 	}
 
 	private static void initToolsRecipes()

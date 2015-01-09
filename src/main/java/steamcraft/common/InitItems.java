@@ -12,8 +12,6 @@
  */
 package steamcraft.common;
 
-import java.io.File;
-
 import net.minecraft.client.gui.inventory.GuiCrafting;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
@@ -42,6 +40,8 @@ import steamcraft.common.items.ItemTeaSeed;
 import steamcraft.common.items.ItemTeacup;
 import steamcraft.common.items.ItemTeapot;
 import steamcraft.common.items.ItemTimeClock;
+import steamcraft.common.items.ItemVanillaPowder;
+import steamcraft.common.items.ItemVanillaSheet;
 import steamcraft.common.items.ItemWatch;
 import steamcraft.common.items.ItemWithCraftingDurability;
 import steamcraft.common.items.armor.ItemBrassArmor;
@@ -80,7 +80,6 @@ import steamcraft.common.items.tools.ItemSteamDrill;
 import steamcraft.common.items.vanity.ItemTopHat;
 import steamcraft.common.lib.LibInfo;
 import steamcraft.common.lib.MaterialHelper;
-import boilerplate.common.baseclasses.LoreItem;
 import boilerplate.common.utils.helpers.RegistryHelper;
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -91,7 +90,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 public class InitItems
 {
 	// Item Tools(sort of)
-	public static Item itemResource, itemIngot, itemSheet, itemPowder;
+	public static Item itemResource, itemIngot, itemSheet, itemPowder, itemVanillaPowder, itemVanillaSheet;
 
 	public static Item itemWatch;
 
@@ -153,7 +152,7 @@ public class InitItems
 
 	// Other
 	public static Item itemSpanner;
-	public static Item itemHammer, itemDrawplate;
+	public static Item itemHammer, itemDrawplate, itemGrindstone;
 	public static Item itemMatch;
 
 	public static Item itemNugget;
@@ -186,8 +185,6 @@ public class InitItems
 
 	public static Item itemFieldManipulator;
 
-	public static Item itemPlateIron;
-
 	public static Item itemCraftingChip;
 
 	/* Init */
@@ -204,6 +201,7 @@ public class InitItems
 		initializeGuns();
 		initializeMetals();
 		initializeOthers();
+		initializeModCompatItems();
 	}
 
 	private static void initializeTools()
@@ -368,13 +366,16 @@ public class InitItems
 		itemNugget = new ItemNugget().setUnlocalizedName("itemNugget");
 		itemSheet = new ItemSheet().setUnlocalizedName("itemSheet");
 		itemPowder = new ItemPowder().setUnlocalizedName("itemPowder");
+		itemVanillaPowder = new ItemVanillaPowder().setUnlocalizedName("itemVanillaPowder");
+		itemVanillaSheet = new ItemVanillaSheet().setUnlocalizedName("itemVanillaSheet");
 
 		registerItem(itemIngot, "ItemIngot");
 		registerItem(itemNugget, "ItemMetalNugget");
 		registerItem(itemSheet, "ItemMetalSheet");
 		registerItem(itemPowder, "ItemMetalPowder");
+		registerItem(itemVanillaPowder, "ItemVanillaMetalPowder");
+		registerItem(itemVanillaSheet, "ItemVanillaMetalSheet");
 
-		// Simple
 		itemMachinePart = new ItemMachinePart().setUnlocalizedName("itemMachinePart");
 		itemGunPart = new ItemGunPart().setUnlocalizedName("itemGunPart");
 		itemCopperParts = ((ItemParts) new ItemParts().setUnlocalizedName("itemPartsCopper")).setMaterial("Copper");
@@ -428,6 +429,9 @@ public class InitItems
 		itemDrawplate = new ItemWithCraftingDurability().setUnlocalizedName("itemDrawplate");
 		registerItem(itemDrawplate, "ItemDrawplate");
 
+		itemGrindstone = new ItemWithCraftingDurability().setUnlocalizedName("itemGrindstone");
+		registerItem(itemGrindstone, "ItemGrindstone");
+
 		itemSpanner = new ItemSpanner().setUnlocalizedName("itemSpanner");
 		registerItem(itemSpanner, "ItemSpanner");
 
@@ -476,11 +480,8 @@ public class InitItems
 		itemSteelPlating = new ItemSteelPlating().setUnlocalizedName("itemSteelPlating");
 		registerItem(itemSteelPlating, "ItemSteelPlating");
 
-		itemThaumicMonocle = new ItemThaumicMonocle().setUnlocalizedName("itemThaumicMonocle");
-		// Registered in CompatLayer
-
 		itemLastResort = new ItemLastResort().setUnlocalizedName("itemLastResort");
-		registerItem(itemLastResort, "ItemLastResort");
+		// registerItem(itemLastResort, "ItemLastResort");
 
 		itemTeaLeaf = new BaseItem().setUnlocalizedName("itemTeaLeaves");
 		registerItem(itemTeaLeaf, "ItemTeaLeaf");
@@ -499,24 +500,26 @@ public class InitItems
 
 		itemPDA = new ItemPDA().setUnlocalizedName("itemPDA");
 		registerItem(itemPDA, "ItemPDA");
-		// TODO overlay when held
+
 		itemSpyglass = new BaseItem().setUnlocalizedName("itemSpyglass");
 		registerItem(itemSpyglass, "ItemSpyglass");
 
-		itemLoreBook = new LoreItem("Test", "", new File("/assets/lang/en_US.lang")).setUnlocalizedName("itemLoreBook").setCreativeTab(Steamcraft.tabSC2);
+		// itemLoreBook = new LoreItem("Test", "", new File("/assets/lang/en_US.lang")).setUnlocalizedName("itemLoreBook").setCreativeTab(Steamcraft.tabSC2);
 		// registerItem(itemLoreBook, "ItemLoreBook");
-
-		itemSteamcraftCluster = new ItemSteamcraftCluster().setUnlocalizedName("itemSteamcraftCluster");
 
 		itemFieldManipulator = new ItemFieldManipulator().setUnlocalizedName("itemFieldManipulator");
 		registerItem(itemFieldManipulator, "ItemFieldManipulator");
 
-		itemPlateIron = new BaseItem().setUnlocalizedName("itemSheetIron");
-		registerItem(itemPlateIron, "ItemPlateIron");
-
 		itemCraftingChip = new ItemChip(GuiCrafting.class).setUnlocalizedName("itemCraftingChip");
-		registerItem(itemCraftingChip, "ItemCraftingChip");
+		// registerItem(itemCraftingChip, "ItemCraftingChip");
+	}
 
+	public static void initializeModCompatItems()
+	{
+		/** Registration of these are handled in @link={CompatibilityLayer.class} */
+		itemSteamcraftCluster = new ItemSteamcraftCluster().setUnlocalizedName("itemSteamcraftCluster");
+
+		itemThaumicMonocle = new ItemThaumicMonocle().setUnlocalizedName("itemThaumicMonocle");
 	}
 
 	private static void registerItem(Item item, String name)

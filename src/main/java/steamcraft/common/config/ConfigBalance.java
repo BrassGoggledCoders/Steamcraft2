@@ -27,7 +27,7 @@ public class ConfigBalance
 	public static final String CATEGORY_ENERGY = "energy";
 
 	public static boolean cheaperCoreRecipe;
-	public static int numberOfDustsFromOreHammering;
+	public static int numberOfDustsFromOre, numberOfDustsFromMetal;
 
 	public static int lightningRodHitChance, lightningRodEnergyProduction;
 
@@ -45,7 +45,8 @@ public class ConfigBalance
 	{
 		cheaperCoreRecipe = config.get(CATEGORY_RECIPE_OPTIONS, "Use diamond instead of nether star in Overcharged Core Recipe", false)
 				.getBoolean(false);
-		numberOfDustsFromOreHammering = config.get(CATEGORY_RECIPE_OPTIONS, "Number of dusts produced from hammering an ore block", 2).getInt();
+		numberOfDustsFromOre = config.get(CATEGORY_RECIPE_OPTIONS, "Number of dusts produced from hammering an ore block", 2).getInt();
+		numberOfDustsFromMetal = config.get(CATEGORY_RECIPE_OPTIONS, "Number of dusts produced from grinding an ingot/sheet", 1).getInt();
 
 		lightningRodHitChance = config.get(CATEGORY_ENERGY, "Chance of Lightning hitting Lightning Rods every tick. It's 1/value here", 3000).getInt();
 		lightningRodEnergyProduction = config.get(CATEGORY_ENERGY, "Energy produced per lightning strike by Lightning Rod", 10000).getInt();
