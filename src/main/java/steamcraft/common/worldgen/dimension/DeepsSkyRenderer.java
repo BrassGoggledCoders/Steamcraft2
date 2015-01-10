@@ -13,7 +13,6 @@ import net.minecraftforge.client.IRenderHandler;
 import org.lwjgl.opengl.GL11;
 
 import steamcraft.common.lib.LibInfo;
-import cpw.mods.fml.relauncher.ReflectionHelper;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -26,7 +25,7 @@ public class DeepsSkyRenderer extends IRenderHandler
 	public DeepsSkyRenderer()
 	{
 		RenderGlobal renderGlobal = Minecraft.getMinecraft().renderGlobal;
-		this.glSkyList2 = (this.glSkyList = (this.starGLCallList = ReflectionHelper.getPrivateValue(RenderGlobal.class, renderGlobal, "starGLCallList")) + 1) + 1;
+		this.glSkyList2 = this.glSkyList;
 	}
 
 	@Override
@@ -104,7 +103,7 @@ public class DeepsSkyRenderer extends IRenderHandler
 		GL11.glEnable(GL11.GL_TEXTURE_2D);
 		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE);
 		GL11.glPushMatrix();
-		f4 = 1.0F - world.getRainStrength(partialTicks);
+		f4 = 1.0F;
 		f7 = 0.0F;
 		f8 = 0.0F;
 		f9 = 0.0F;
