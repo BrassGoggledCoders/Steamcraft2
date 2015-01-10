@@ -21,6 +21,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
+import net.minecraft.world.IBlockAccess;
 import steamcraft.common.InitBlocks;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.LibInfo;
@@ -92,4 +93,11 @@ public class BlockMetal extends Block implements IChiselable
 	{
 		return -1;
 	}
+
+	@Override
+	public boolean isBeaconBase(IBlockAccess worldObj, int x, int y, int z, int beaconX, int beaconY, int beaconZ)
+	{
+		return true;
+	}
+
 }
