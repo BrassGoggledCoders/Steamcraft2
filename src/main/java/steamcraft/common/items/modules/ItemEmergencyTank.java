@@ -62,7 +62,7 @@ public class ItemEmergencyTank extends BaseModule
 	@Override
 	public boolean applyArmorEffect(World world, EntityPlayer player, ItemStack stack)
 	{
-		if(player.isBurning() && (world.getBlock((int) Math.round(player.posX), (int) Math.round(player.posY), (int) Math.round(player.posZ)) == Blocks.air))
+		if(player.isBurning() && world.isAirBlock((int) Math.round(player.posX), (int) Math.round(player.posY), (int) Math.round(player.posZ)))
 		{
 			world.setBlock((int) Math.round(player.posX), (int) Math.round(player.posY), (int) Math.round(player.posZ), Blocks.flowing_water, 2, 2);
 			return true;

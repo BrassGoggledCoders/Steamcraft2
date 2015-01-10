@@ -87,16 +87,17 @@ public class EventHandlerForge
 	}
 
 	Block block;
-	Entity entity;
+	// Entity entity;
 	TileEntity tile;
 	int x, y, z;
+	EntityPlayer player;
 
 	@SubscribeEvent(priority = EventPriority.HIGH)
 	@SideOnly(Side.CLIENT)
 	public void renderOverlay(RenderGameOverlayEvent.Text event)
 	{
 		Minecraft mc = Minecraft.getMinecraft();
-		ItemStack helmet = Minecraft.getMinecraft().thePlayer.inventory.armorItemInSlot(3);
+		ItemStack helmet = player.inventory.armorItemInSlot(3);
 		if((helmet != null) && (helmet.getItem() == InitItems.itemMonocle))
 		{
 			ScaledResolution res = new ScaledResolution(mc, mc.displayWidth, mc.displayHeight);
@@ -117,7 +118,7 @@ public class EventHandlerForge
 
 			int color = 0xCCFF00;
 
-			if((this.block != null) && (this.block != Blocks.air))
+			if((this.block != null) && player.worldObj.isAirBlock(x, y, z))
 			{
 				fontRenderer.drawString("Block: " + this.block.getUnlocalizedName().substring(5), posX, posY, color);
 				fontRenderer.drawString("Metadata: " + this.block.getDamageValue(mc.theWorld, this.x, this.y, this.z), posX, posY2, color);
@@ -155,13 +156,11 @@ public class EventHandlerForge
 				if(!docs.contains("tile"))
 					fontRenderer.drawSplitString(docs, posX, posY8, 100, color);
 			}
-			if(this.entity != null)
-			{
-				String text = this.entity.getCommandSenderName();
-				fontRenderer.drawString("Entity: ", mc.displayWidth - 5 - text.length(), posY, color);
-				String text1 = Integer.toString(this.entity.getEntityId());
-				fontRenderer.drawString("ID: ", mc.displayWidth - 5 - text1.length(), posY, color);
-			}
+			/*
+			 * TODO if(this.entity != null) { String text = this.entity.getCommandSenderName(); fontRenderer.drawString("Entity: ", mc.displayWidth - 5 -
+			 * text.length(), posY, color); String text1 = Integer.toString(this.entity.getEntityId()); fontRenderer.drawString("ID: ", mc.displayWidth - 5 -
+			 * text1.length(), posY, color); }
+			 */
 		}
 	}
 
@@ -182,7 +181,10 @@ public class EventHandlerForge
 		}
 
 		this.block = event.player.worldObj.getBlock(event.target.blockX, event.target.blockY, event.target.blockZ);
-		this.entity = event.player;
+		this.player = event.player;
+		this.x = event.target.blockX;
+		this.y = event.target.blockY;
+		this.z = event.target.blockZ;
 		this.tile = event.player.worldObj.getTileEntity(event.target.blockX, event.target.blockY, event.target.blockZ);
 	}
 

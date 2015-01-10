@@ -56,8 +56,6 @@ public class TileLightningRod extends TileEntity implements IEnergyHandler
 				this.unnaturalLightningBolts.add(lightningBolt);
 				this.worldObj.addWeatherEffect(lightningBolt);
 				this.buffer.receiveEnergy(ConfigBalance.lightningRodEnergyProduction, false);
-				// EntityPlayer player = this.worldObj.getClosestPlayer(this.xCoord, this.yCoord, this.zCoord, -1);
-				// player.triggerAchievement(InitAchievements.zapAchieve);
 				isLightningSpawned = true;
 			}
 		}
@@ -71,7 +69,7 @@ public class TileLightningRod extends TileEntity implements IEnergyHandler
 			if(!list.isEmpty())
 				isLightningSpawned = true;
 
-			for (Object obj : list)
+			for(Object obj : list)
 			{
 				if(unnaturalLightningBolts.remove(obj))
 					continue;
@@ -90,7 +88,7 @@ public class TileLightningRod extends TileEntity implements IEnergyHandler
 				if(!list.isEmpty())
 					isLightningSpawned = true;
 
-				for (Object obj : list)
+				for(Object obj : list)
 					this.buffer.receiveEnergy(ConfigBalance.lightningRodEnergyProduction, false);
 			}
 			catch(ClassNotFoundException exception)
