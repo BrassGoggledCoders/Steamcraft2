@@ -1,0 +1,15 @@
+{
+  "versionList": [
+    {
+      "mcVersion":"Minecraft 1.7.10",
+      "modVersion":"B3.3",
+      "changeLog": [
+        "",
+        ""
+      ],
+      "updateURL":"http://www.curse.com/mc-mods/minecraft/224017-steamcraft-2-beta-2-fluxian-storm",
+      "isDirectLink":"false",
+      "newFileName":""
+    }
+  ]
+}

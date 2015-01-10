@@ -35,7 +35,8 @@ public class LibInfo
 
 	public static final String PREFIX = "steamcraft:";
 
-	public static final String VERSION_URL = "https://github.com/BrassGoggledCoders/SteamCraft2/raw/master/gistfile1.txt";
+	// Good Idea, Ibby ;)
+	public static final String VERSION_URL = "https://github.com/BrassGoggledCoders/SteamCraft2/raw/master/versionchecker.txt";
 
 	public static String[] metals = { "Aluminum", "Copper", "Tin", "Zinc", "Brass", "Bronze", "Steel", "CastIron" };
 	public static String[] metalsV = { "Iron", "Gold" };
