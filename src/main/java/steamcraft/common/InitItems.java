@@ -439,7 +439,7 @@ public class InitItems
 		registerItem(itemMatch, "ItemMatch");
 
 		itemTopHat = new ItemTopHat().setUnlocalizedName("itemTopHat");
-		registerItem(itemTopHat, "ItemTopHat");
+		// registerItem(itemTopHat, "ItemTopHat");
 
 		itemAqualung = new ItemAqualung().setUnlocalizedName("itemAqualung");
 		registerItem(itemAqualung, "ItemAqualung");
@@ -496,10 +496,10 @@ public class InitItems
 		registerItem(itemTeacup, "ItemTeacup");
 
 		itemGrappleGun = new ItemGrappleGun().setUnlocalizedName("itemGrappleGun");
-		registerItem(itemGrappleGun, "ItemGrappleGun");
+		// registerItem(itemGrappleGun, "ItemGrappleGun");
 
 		itemPDA = new ItemPDA().setUnlocalizedName("itemPDA");
-		registerItem(itemPDA, "ItemPDA");
+		// registerItem(itemPDA, "ItemPDA");
 
 		itemSpyglass = new BaseItem().setUnlocalizedName("itemSpyglass");
 		registerItem(itemSpyglass, "ItemSpyglass");

@@ -17,7 +17,6 @@ import net.minecraft.block.material.Material;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import steamcraft.client.renderers.tile.TileCrystalRenderer.TileCrystal;
-import steamcraft.client.renderers.tile.TileHatchRenderer.TileHatch;
 import steamcraft.common.blocks.BaseBlock;
 import steamcraft.common.blocks.BlockBrassLog;
 import steamcraft.common.blocks.BlockCastIronFence;
@@ -289,7 +288,7 @@ public class InitBlocks
 		RegistryHelper.registerContainerBlock(blockTimeBomb, TileTimeBomb.class, "BlockTimeBomb");
 
 		blockHatch = new BlockHatch().setBlockName("blockHatch");
-		RegistryHelper.registerContainerBlock(blockHatch, TileHatch.class, "BlockHatch");
+		// RegistryHelper.registerContainerBlock(blockHatch, TileHatch.class, "BlockHatch");
 
 		blockFlesh = new BaseBlock(Material.gourd).setBlockName("blockFlesh").setCreativeTab(Steamcraft.tabSC2);
 		GameRegistry.registerBlock(blockFlesh, "BlockFlesh");
