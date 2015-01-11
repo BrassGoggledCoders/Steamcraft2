@@ -46,6 +46,18 @@ Beta 3.3:
 * Heavily nerf steel plating, and allow it to be applied to all armour pieces.
 # Fix lightning rod related crash
 # Fix Electric Jar names in NEI
+Beta 3.4:
++ Etherium, Uranium and all metal blocks can be used in Beacon Bases
++ Added the Grindstone - used for grinding ingots and sheets back to powders
++ Added Iron and Gold Sheets/Powders
+* Changed the way the lightning rod works a bit, to allow compatibility with the Weather2 Mod. Nice work MrIbby!
+* Some new part textures
+# Fix me being a stupid (Steel Ingots were oredictionaried as Steel Plates…)
+# Hopefully fix non-standard air block related crash
+# Fix crash when trying to extract some mod fluids using Copper Pipe
+# Fix shrinkray/raygun not being chargable
+# Many jetpack/wings bugs should have been squashed
+# Some creative-only WIP items have been disabled
 
 Beta 4:
 ++ The Deeps:
