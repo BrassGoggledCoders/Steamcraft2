@@ -63,14 +63,11 @@ import steamcraft.common.tiles.TileBloomery;
 import steamcraft.common.tiles.TileCharger;
 import steamcraft.common.tiles.TileCopperPipe;
 import steamcraft.common.tiles.TileCopperWire;
-import steamcraft.common.tiles.TileDropHammer;
 import steamcraft.common.tiles.TileIntake;
 import steamcraft.common.tiles.TileLightningRod;
 import steamcraft.common.tiles.TileNuclearBoiler;
-import steamcraft.common.tiles.TileSawmill;
 import steamcraft.common.tiles.TileSteamBoiler;
 import steamcraft.common.tiles.TileTeslaCoil;
-import steamcraft.common.tiles.TileTimeBomb;
 import steamcraft.common.tiles.TileTurbine;
 import boilerplate.common.baseclasses.BaseItemBlockWithMetadata;
 import boilerplate.common.utils.helpers.RegistryHelper;
@@ -223,7 +220,7 @@ public class InitBlocks
 		RegistryHelper.registerContainerBlockWithDesc(blockLightningRod, TileLightningRod.class, "BlockLightningRod");
 		RegistryHelper.registerContainerBlockWithDesc(blockTeslaCoil, TileTeslaCoil.class, "BlockTeslaCoil");
 		RegistryHelper.registerContainerBlockWithDesc(blockCharger, TileCharger.class, "BlockCharger");
-		RegistryHelper.registerContainerBlockWithDesc(blockSaw, TileSawmill.class, "BlockSawmill");
+		// RegistryHelper.registerContainerBlockWithDesc(blockSaw, TileSawmill.class, "BlockSawmill");
 
 		// Bloomery
 		blockBloomery = new BlockBloomery(Material.rock).setBlockName("blockBloomery");
@@ -279,13 +276,13 @@ public class InitBlocks
 
 		blockDropHammerAnvil = new BlockDropHammerAnvil(Material.anvil).setBlockName("blockDropHammerAnvil");
 
-		RegistryHelper.registerContainerBlock(blockDropHammerAnvil, TileDropHammer.class, "BlockDropHammerAnvil");
+		// RegistryHelper.registerContainerBlock(blockDropHammerAnvil, TileDropHammer.class, "BlockDropHammerAnvil");
 
 		blockTeaPlant = new BlockTeaPlant().setBlockName("blockTeaPlant");
 		GameRegistry.registerBlock(blockTeaPlant, "BlockTeaPlant");
 
 		blockTimeBomb = new BlockTimeBomb(Material.tnt).setBlockName("blockTimeBomb");
-		RegistryHelper.registerContainerBlock(blockTimeBomb, TileTimeBomb.class, "BlockTimeBomb");
+		// RegistryHelper.registerContainerBlock(blockTimeBomb, TileTimeBomb.class, "BlockTimeBomb");
 
 		blockHatch = new BlockHatch().setBlockName("blockHatch");
 		// RegistryHelper.registerContainerBlock(blockHatch, TileHatch.class, "BlockHatch");
