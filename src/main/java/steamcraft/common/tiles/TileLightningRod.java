@@ -28,13 +28,13 @@ import steamcraft.common.config.ConfigBalance;
 import steamcraft.common.config.ConfigGeneral;
 import steamcraft.common.entities.EntityFleshGolem;
 import cofh.api.energy.EnergyStorage;
-import cofh.api.energy.IEnergyHandler;
+import cofh.api.energy.IEnergyProvider;
 
 /**
  * @author warlordjones, MrIbby
  * 
  */
-public class TileLightningRod extends TileEntity implements IEnergyHandler
+public class TileLightningRod extends TileEntity implements IEnergyProvider
 {
 	private final EnergyStorage buffer = new EnergyStorage(30000, 10000);
 	private final ArrayList<EntityLightningBolt> unnaturalLightningBolts = new ArrayList<EntityLightningBolt>();
@@ -113,12 +113,6 @@ public class TileLightningRod extends TileEntity implements IEnergyHandler
 	public boolean canConnectEnergy(ForgeDirection from)
 	{
 		return from == ForgeDirection.DOWN;
-	}
-
-	@Override
-	public int receiveEnergy(ForgeDirection from, int maxReceive, boolean simulate)
-	{
-		return this.buffer.receiveEnergy(maxReceive, simulate);
 	}
 
 	@Override

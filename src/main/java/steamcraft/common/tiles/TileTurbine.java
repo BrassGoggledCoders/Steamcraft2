@@ -25,19 +25,20 @@ import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
 import cofh.api.energy.EnergyStorage;
 import cofh.api.energy.IEnergyHandler;
+import cofh.api.energy.IEnergyProvider;
 
 /**
  * @author decebaldecebal
  * 
  */
-public class TileTurbine extends TileEntity implements IFluidHandler, IEnergyHandler
+public class TileTurbine extends TileEntity implements IFluidHandler, IEnergyProvider
 {
 	private static byte steamPerTick = TileSteamBoiler.steamPerTick / 2;
 	private static byte RFPerTick = 20; // Same as RC ratio of 1 MJ/5 steam
 
-	private FluidTank steamTank = new FluidTank(new FluidStack(FluidRegistry.getFluid("steam"), 0), 500);
+	private final FluidTank steamTank = new FluidTank(new FluidStack(FluidRegistry.getFluid("steam"), 0), 500);
 
-	private EnergyStorage buffer = new EnergyStorage(10000, RFPerTick);
+	private final EnergyStorage buffer = new EnergyStorage(10000, RFPerTick);
 
 	@Override
 	public void readFromNBT(NBTTagCompound tag)
@@ -136,12 +137,6 @@ public class TileTurbine extends TileEntity implements IFluidHandler, IEnergyHan
 			return true;
 		else
 			return false;
-	}
-
-	@Override
-	public int receiveEnergy(ForgeDirection from, int maxReceive, boolean simulate)
-	{
-		return 0;
 	}
 
 	@Override

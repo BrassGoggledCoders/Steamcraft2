@@ -28,16 +28,17 @@ import net.minecraftforge.common.util.ForgeDirection;
 import steamcraft.common.lib.DamageSourceHandler;
 import cofh.api.energy.EnergyStorage;
 import cofh.api.energy.IEnergyHandler;
+import cofh.api.energy.IEnergyReceiver;
 
 /**
  * @author warlordjones
  * 
  */
-public class TileTeslaCoil extends TileEntity implements IEnergyHandler
+public class TileTeslaCoil extends TileEntity implements IEnergyReceiver
 {
 	private static int RFPerTick = 500;
 	private static int RFPerZap = 1000;
-	private EnergyStorage buffer = new EnergyStorage(5000, RFPerTick);
+	private final EnergyStorage buffer = new EnergyStorage(5000, RFPerTick);
 
 	@SuppressWarnings("rawtypes")
 	@Override
@@ -144,12 +145,6 @@ public class TileTeslaCoil extends TileEntity implements IEnergyHandler
 	public int receiveEnergy(ForgeDirection from, int maxReceive, boolean simulate)
 	{
 		return this.buffer.receiveEnergy(maxReceive, simulate);
-	}
-
-	@Override
-	public int extractEnergy(ForgeDirection from, int maxExtract, boolean simulate)
-	{
-		return 0;
 	}
 
 	@Override
