@@ -10,56 +10,73 @@
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
  *
  */
-package steamcraft.common.items.armor;
+package steamcraft.common.items.modules;
+
+import java.util.ArrayList;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.entity.Entity;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.World;
 
 import org.lwjgl.opengl.GL11;
 
 import steamcraft.common.InitItems;
+import steamcraft.common.Steamcraft;
+import steamcraft.common.items.armor.ItemBrassGoggles;
 import steamcraft.common.lib.LibInfo;
+import boilerplate.common.baseclasses.BaseModule;
+import boilerplate.steamapi.item.IArmorModule;
+import boilerplate.steamapi.item.ModuleRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 /**
- * @author Surseance
+ * @author warlordjones
  * 
  */
-public class ItemBrassGoggles extends BaseArmor
+public class ItemGogglesModule extends BaseModule
 {
-	public static ResourceLocation overlay = new ResourceLocation(LibInfo.PREFIX + "textures/misc/goggles.png");
-
-	public ItemBrassGoggles(ArmorMaterial mat, int renderIndex, int type)
+	public ItemGogglesModule()
 	{
-		super(mat, renderIndex, type);
+		super();
+		ModuleRegistry.registerModule(this);
+		this.setMaxStackSize(1);
+		this.setCreativeTab(Steamcraft.tabSC2);
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
-	public String getArmorTexture(ItemStack is, Entity entity, int slot, String type)
+	public int getApplicablePiece()
 	{
-		return LibInfo.PREFIX + "textures/armor/goggles.png";
+		return 0;
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
-	public void renderHelmetOverlay(ItemStack stack, EntityPlayer player, ScaledResolution resolution, float partialTicks, boolean hasScreen,
-			int mouseX, int mouseY)
+	public String getName()
+	{
+		return "Goggles Module";
+	}
+
+	@Override
+	public String getModuleId()
+	{
+		return "goggles";
+	}
+
+	@Override
+	public boolean applyArmorEffect(World world, EntityPlayer player, ItemStack stack)
 	{
 		if((Minecraft.getMinecraft().thePlayer == null) || (Minecraft.getMinecraft().currentScreen != null))
-			return;
+			return false;
 
 		ItemStack helmet = Minecraft.getMinecraft().thePlayer.inventory.armorItemInSlot(3);
 
 		if((Minecraft.getMinecraft().gameSettings.thirdPersonView == 0) && (helmet != null) && (helmet.getItem() == InitItems.brassGoggles))
 		{
-			Minecraft.getMinecraft().getTextureManager().bindTexture(overlay);
+			Minecraft.getMinecraft().getTextureManager().bindTexture(ItemBrassGoggles.overlay);
 			Tessellator tessellator = Tessellator.instance;
 			ScaledResolution scaledResolution = new ScaledResolution(Minecraft.getMinecraft(), Minecraft.getMinecraft().displayWidth,
 					Minecraft.getMinecraft().displayHeight);
@@ -81,6 +98,44 @@ public class ItemBrassGoggles extends BaseArmor
 			GL11.glEnable(GL11.GL_DEPTH_TEST);
 			GL11.glEnable(GL11.GL_ALPHA_TEST);
 			GL11.glDisable(GL11.GL_BLEND);
+			return true;
 		}
+		return false;
 	}
+
+	@Override
+	public EnumArmorEffectType getArmorEffectType()
+	{
+		return EnumArmorEffectType.HUD;
+	}
+
+	@Override
+	public ArrayList<IArmorModule> getListOfIncompatibleModules()
+	{
+		// ArrayList incompats = new ArrayList();
+		// incompats.add(InitItems.itemPistonPlating);
+		// return incompats;
+		return null;
+	}
+
+	@Override
+	public int getSteamConsumedOnEffect()
+	{
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getEnergyConsumedOnEffect()
+	{
+		return 5;
+	}
+
+	@SideOnly(Side.CLIENT)
+	@Override
+	public void registerIcons(IIconRegister par1IconRegister)
+	{
+		this.itemIcon = par1IconRegister.registerIcon(LibInfo.PREFIX + this.getUnlocalizedName().substring(5));
+	}
+
 }

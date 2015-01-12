@@ -275,7 +275,7 @@ public class InitRecipes
 				new ItemStack(InitItems.itemResource, 1, 4) });
 		GameRegistry.addShapedRecipe(new ItemStack(InitBlocks.blockEtherium), new Object[] { "UUU", "UUU", "UUU", 'U',
 				new ItemStack(InitItems.itemResource, 1, 0) });
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockCastIronFence),
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockCastIronFence, 2),
 				new Object[] { "RRR", "RRR", 'R', "partCastIronRod" }));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockCastIronGate), new Object[] { "RIR", "RIR", 'R', "partCastIronRod",
 				'I', "ingotCastIron" }));
@@ -333,8 +333,8 @@ public class InitRecipes
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemIronParts, 1, 1),
 				new Object[] { " P ", "P P", " P ", 'P', "plateIron" }));
 
-		GameRegistry.addShapedRecipe(new ItemStack(InitItems.itemMachinePart, 1, 0), "  X", " X ", "X  ", 'X', new ItemStack(InitItems.itemIngot, 1,
-				7));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemMachinePart, 1, 0), " X ", "X  ", 'X', new ItemStack(InitItems.itemIngot, 1,
+				7)));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemMachinePart, 1, 1), "CPC", "S G", "CPC", 'P', new ItemStack(InitItems.itemSheet,
 				1,
 				4), 'G', "gearIron", 'S', new ItemStack(InitItems.itemCopperParts, 1, 1), 'C', new ItemStack(
