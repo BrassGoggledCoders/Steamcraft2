@@ -130,7 +130,7 @@ public class ItemLoreBook extends BaseItem
 			}
 			stack.setTagInfo("pages", bookPages);
 			stack.setTagInfo("author", new NBTTagString(author));
-			stack.setTagInfo("title", new NBTTagString(title));
+			stack.setTagInfo("title", new NBTTagString("Lore Book:" + title));
 		}
 		return stack;
 	}
