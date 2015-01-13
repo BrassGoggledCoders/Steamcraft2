@@ -114,7 +114,7 @@ public class LoreItem extends RootItem
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
 	{
-		if(!world.isRemote)
+		if(world.isRemote)
 		{
 			player.openGui(Steamcraft.instance, GuiIDs.LORE, world, 0, 0, 0);
 		}
