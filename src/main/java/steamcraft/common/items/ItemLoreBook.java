@@ -95,7 +95,7 @@ public class ItemLoreBook extends BaseItem
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer p_77624_2_, List p_77624_3_, boolean p_77624_4_)
+	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean bool)
 	{
 		if(stack.hasTagCompound())
 		{
@@ -104,8 +104,12 @@ public class ItemLoreBook extends BaseItem
 
 			if(!StringUtils.isNullOrEmpty(s))
 			{
-				p_77624_3_.add(EnumChatFormatting.GRAY + StatCollector.translateToLocalFormatted("book.byAuthor", new Object[] { s }));
+				list.add(EnumChatFormatting.GRAY + StatCollector.translateToLocalFormatted("book.byAuthor", new Object[] { s }));
 			}
+		}
+		else
+		{
+			super.addInformation(stack, player, list, bool);
 		}
 	}
 
