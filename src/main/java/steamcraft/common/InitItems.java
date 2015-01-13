@@ -41,7 +41,7 @@ import steamcraft.common.items.ItemVanillaPowder;
 import steamcraft.common.items.ItemVanillaSheet;
 import steamcraft.common.items.ItemWatch;
 import steamcraft.common.items.ItemWithCraftingDurability;
-import steamcraft.common.items.LoreItem;
+import steamcraft.common.items.ItemLoreBook;
 import steamcraft.common.items.armor.ItemBrassArmor;
 import steamcraft.common.items.armor.ItemBrassGoggles;
 import steamcraft.common.items.armor.ItemClockworkWings;
@@ -507,7 +507,7 @@ public class InitItems
 		itemSpyglass = new BaseItem().setUnlocalizedName("itemSpyglass");
 		registerItem(itemSpyglass, "ItemSpyglass");
 
-		itemLoreBook = new LoreItem("warlordjones", "Book of Lore", new String[] { "Page 1", "Page 2" }).setUnlocalizedName("itemLoreBook").setCreativeTab(
+		itemLoreBook = new ItemLoreBook("warlordjones", "Book of Lore", new String[] { "Page 1", "Page 2" }).setUnlocalizedName("itemLoreBook").setCreativeTab(
 				Steamcraft.tabSC2);
 		registerItem(itemLoreBook, "ItemLoreBook");
 

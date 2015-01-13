@@ -18,7 +18,7 @@ import boilerplate.common.baseclasses.RootItem;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class LoreItem extends RootItem
+public class ItemLoreBook extends RootItem
 {
 	/*
 	 * String title; String author; public LoreItem(String title, String author, File loreFile) { this.setMaxStackSize(1); this.title = title; this.author =
@@ -47,7 +47,7 @@ public class LoreItem extends RootItem
 	String title;
 	String[] pages;
 
-	public LoreItem(String author, String title, String[] pages)
+	public ItemLoreBook(String author, String title, String[] pages)
 	{
 		this.setMaxStackSize(1);
 		this.author = author;
