@@ -1,4 +1,4 @@
-package steamcraft.common;
+package steamcraft.common.items.pda;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -13,12 +13,15 @@ public class ContainerPDA extends Container
 
 	private static final int INV_SIZE = InventoryPDA.INV_SIZE;
 
-	public ContainerPDA(EntityPlayer par1Player, InventoryPlayer inventoryPlayer, InventoryPDA invItem)
+	public ContainerPDA(EntityPlayer player, InventoryPlayer inventoryPlayer, InventoryPDA invItem)
 	{
 		this.inventory = invItem;
 
 		for(int i = 0; i < INV_SIZE; ++i)
-			this.addSlotToContainer(new Slot(this.inventory, i, 80 + (18 * (i / 4)), 8 + (18 * (i % 4))));
+			this.addSlotToContainer(new SlotChip(this.inventory, i, 80 + (18 * (i / 4)), 8 + (18 * (i % 4))));
+		// Hotbar
+		for(int i2 = 0; i2 < 9; ++i2)
+			this.addSlotToContainer(new Slot(inventoryPlayer, i2, 8 + (i2 * 18), 142));
 	}
 
 	@Override
@@ -36,5 +39,11 @@ public class ContainerPDA extends Container
 			return null;
 		}
 		return super.slotClick(slot, button, flag, player);
+	}
+
+	@Override
+	public ItemStack transferStackInSlot(EntityPlayer par1EntityPlayer, int par2)
+	{
+		return null;
 	}
 }

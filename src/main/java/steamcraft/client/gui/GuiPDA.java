@@ -5,13 +5,13 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
-import steamcraft.common.ContainerPDA;
-import steamcraft.common.InventoryPDA;
+import steamcraft.common.items.pda.ContainerPDA;
+import steamcraft.common.items.pda.InventoryPDA;
 import steamcraft.common.lib.LibInfo;
 
 public class GuiPDA extends GuiContainer
 {
-	private static ResourceLocation guitexture = new ResourceLocation(LibInfo.PREFIX + "textures/gui/computer.png");
+	private static ResourceLocation guitexture = new ResourceLocation(LibInfo.PREFIX + "textures/gui/pda.png");
 
 	private final InventoryPDA inventory;
 

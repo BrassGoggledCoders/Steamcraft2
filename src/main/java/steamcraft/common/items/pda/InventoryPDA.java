@@ -1,4 +1,4 @@
-package steamcraft.common;
+package steamcraft.common.items.pda;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
@@ -6,7 +6,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraftforge.common.util.Constants;
-import steamcraft.common.items.ItemPDA;
 
 public class InventoryPDA implements IInventory
 {
@@ -134,7 +133,7 @@ public class InventoryPDA implements IInventory
 	@Override
 	public boolean isItemValidForSlot(int slot, ItemStack itemstack)
 	{
-		return !(itemstack.getItem() instanceof ItemPDA);
+		return itemstack.getItem() instanceof ItemChip;
 	}
 
 	/**

@@ -1,10 +1,11 @@
-package steamcraft.common.items;
+package steamcraft.common.items.pda;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import steamcraft.client.lib.GuiIDs;
 import steamcraft.common.Steamcraft;
+import steamcraft.common.items.BaseItem;
 
 public class ItemPDA extends BaseItem
 {
@@ -12,6 +13,12 @@ public class ItemPDA extends BaseItem
 	{
 		super();
 		this.setMaxStackSize(1);
+	}
+
+	@Override
+	public int getMaxItemUseDuration(ItemStack stack)
+	{
+		return 1;
 	}
 
 	/**
