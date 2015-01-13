@@ -12,12 +12,10 @@
  */
 package steamcraft.common;
 
-import net.minecraft.client.gui.inventory.GuiCrafting;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import steamcraft.common.items.BaseItem;
 import steamcraft.common.items.ItemCanister;
-import steamcraft.common.items.ItemChip;
 import steamcraft.common.items.ItemChisel;
 import steamcraft.common.items.ItemFieldManipulator;
 import steamcraft.common.items.ItemFirearm;
@@ -510,7 +508,7 @@ public class InitItems
 		itemFieldManipulator = new ItemFieldManipulator().setUnlocalizedName("itemFieldManipulator");
 		registerItem(itemFieldManipulator, "ItemFieldManipulator");
 
-		itemCraftingChip = new ItemChip(GuiCrafting.class).setUnlocalizedName("itemCraftingChip");
+		// itemCraftingChip = new ItemChip(GuiCrafting.class).setUnlocalizedName("itemCraftingChip");
 		// registerItem(itemCraftingChip, "ItemCraftingChip");
 	}
 
