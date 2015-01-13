@@ -79,19 +79,33 @@ public class TileArmorEditor extends BaseTileWithInventory implements IInventory
 				ArrayList moduleIncompatibilities = ModuleRegistry.getModuleIncompatibilities(module.getModuleId());
 				System.out.print("Incompats:" + moduleIncompatibilities);
 				System.out.print("Installed Modules:" + installedModules);
-
-				if(!installedModules.contains(module.getModuleId()) && moduleIncompatibilities != null
-						&& Collections.disjoint(installedModules, moduleIncompatibilities))
+				if(!installedModules.contains(module.getModuleId()))
 				{
-					if(module.getApplicablePiece() == -1)
+					if(moduleIncompatibilities == null)
 					{
-						installedModules.add(module.getModuleId());
-						this.setInventorySlotContents(2, null);
+						if(module.getApplicablePiece() == -1)
+						{
+							installedModules.add(module.getModuleId());
+							this.setInventorySlotContents(2, null);
+						}
+						else if(module.getApplicablePiece() == brassarmor.armorType)
+						{
+							installedModules.add(module.getModuleId());
+							this.setInventorySlotContents(2, null);
+						}
 					}
-					else if(module.getApplicablePiece() == brassarmor.armorType)
+					else if(Collections.disjoint(installedModules, moduleIncompatibilities))
 					{
-						installedModules.add(module.getModuleId());
-						this.setInventorySlotContents(2, null);
+						if(module.getApplicablePiece() == -1)
+						{
+							installedModules.add(module.getModuleId());
+							this.setInventorySlotContents(2, null);
+						}
+						else if(module.getApplicablePiece() == brassarmor.armorType)
+						{
+							installedModules.add(module.getModuleId());
+							this.setInventorySlotContents(2, null);
+						}
 					}
 				}
 			}
