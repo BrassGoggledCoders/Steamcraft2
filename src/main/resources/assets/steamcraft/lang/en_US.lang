@@ -449,6 +449,11 @@ biome.steamcraft2.innerearth.o.name=Inner Ocean
 entity.steamcraft2.grub.name=Grub
 entity.steamcraft2.lostminer.name=Lost Miner
 
+#Lore Stuff
+lore.steamcraft2.0.author=warlordjones
+lore.steamcraft2.0.title=[Meta]
+lore.steamcraft2.0.page1=Want to Contribute to this mod? Enjoy writing steampunk lore? Enjoy finding these snippets of lore in the world and wish there was more? Well, awesome! If you fancy it, write some lore for the mod, and shoot it at warlordjones@gmail.com
+
 #Vanilla Docs
 tile.chest.documentation=For holding things. Has 36 slots.
 

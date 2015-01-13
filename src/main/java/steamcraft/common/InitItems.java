@@ -14,6 +14,7 @@ package steamcraft.common;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
+import net.minecraft.util.StatCollector;
 import steamcraft.common.items.BaseItem;
 import steamcraft.common.items.ItemCanister;
 import steamcraft.common.items.ItemChisel;
@@ -23,6 +24,7 @@ import steamcraft.common.items.ItemGrappleGun;
 import steamcraft.common.items.ItemGunPart;
 import steamcraft.common.items.ItemIngot;
 import steamcraft.common.items.ItemLightningGun;
+import steamcraft.common.items.ItemLoreBook;
 import steamcraft.common.items.ItemMachinePart;
 import steamcraft.common.items.ItemMatch;
 import steamcraft.common.items.ItemNugget;
@@ -41,7 +43,6 @@ import steamcraft.common.items.ItemVanillaPowder;
 import steamcraft.common.items.ItemVanillaSheet;
 import steamcraft.common.items.ItemWatch;
 import steamcraft.common.items.ItemWithCraftingDurability;
-import steamcraft.common.items.ItemLoreBook;
 import steamcraft.common.items.armor.ItemBrassArmor;
 import steamcraft.common.items.armor.ItemBrassGoggles;
 import steamcraft.common.items.armor.ItemClockworkWings;
@@ -507,8 +508,10 @@ public class InitItems
 		itemSpyglass = new BaseItem().setUnlocalizedName("itemSpyglass");
 		registerItem(itemSpyglass, "ItemSpyglass");
 
-		itemLoreBook = new ItemLoreBook("warlordjones", "Book of Lore", new String[] { "Page 1", "Page 2" }).setUnlocalizedName("itemLoreBook").setCreativeTab(
-				Steamcraft.tabSC2);
+		itemLoreBook = new ItemLoreBook(StatCollector.translateToLocal("lore.steamcraft2.0.author"),
+				StatCollector.translateToLocal("lore.steamcraft2.0.author"), new String[] { StatCollector.translateToLocal("lore.steamcraft2.0.page1") })
+				.setUnlocalizedName("itemLoreBook").setCreativeTab(
+						Steamcraft.tabSC2);
 		registerItem(itemLoreBook, "ItemLoreBook");
 
 		itemFieldManipulator = new ItemFieldManipulator().setUnlocalizedName("itemFieldManipulator");
