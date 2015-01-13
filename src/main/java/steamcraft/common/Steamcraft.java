@@ -13,6 +13,9 @@
 package steamcraft.common;
 
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.WeightedRandomChestContent;
+import net.minecraftforge.common.ChestGenHooks;
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.MinecraftForge;
 import steamcraft.client.GuiHandler;
@@ -104,6 +107,8 @@ public class Steamcraft
 	{
 		CompatabilityLayer.postInit();
 		InitRecipes.init();
+		// TODO
+		ChestGenHooks.addItem(ChestGenHooks.DUNGEON_CHEST, new WeightedRandomChestContent(new ItemStack(InitItems.itemLoreBook), 1, 1, 30));
 	}
 
 	@EventHandler

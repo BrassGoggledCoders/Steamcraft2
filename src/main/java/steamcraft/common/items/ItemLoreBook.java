@@ -2,6 +2,7 @@ package steamcraft.common.items;
 
 import java.util.List;
 
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemWritableBook;
@@ -14,11 +15,11 @@ import net.minecraft.util.StringUtils;
 import net.minecraft.world.World;
 import steamcraft.client.lib.GuiIDs;
 import steamcraft.common.Steamcraft;
-import boilerplate.common.baseclasses.RootItem;
+import steamcraft.common.lib.LibInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemLoreBook extends RootItem
+public class ItemLoreBook extends BaseItem
 {
 	/*
 	 * String title; String author; public LoreItem(String title, String author, File loreFile) { this.setMaxStackSize(1); this.title = title; this.author =
@@ -141,5 +142,12 @@ public class ItemLoreBook extends RootItem
 	public boolean getShareTag()
 	{
 		return true;
+	}
+
+	@SideOnly(Side.CLIENT)
+	@Override
+	public void registerIcons(IIconRegister par1IconRegister)
+	{
+		this.itemIcon = par1IconRegister.registerIcon(LibInfo.PREFIX + "itemLoreBook");
 	}
 }

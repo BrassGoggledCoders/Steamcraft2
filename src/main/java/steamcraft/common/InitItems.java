@@ -509,7 +509,7 @@ public class InitItems
 		registerItem(itemSpyglass, "ItemSpyglass");
 
 		itemLoreBook = new ItemLoreBook(StatCollector.translateToLocal("lore.steamcraft2.0.author"),
-				StatCollector.translateToLocal("lore.steamcraft2.0.author"), new String[] { StatCollector.translateToLocal("lore.steamcraft2.0.page1") })
+				StatCollector.translateToLocal("lore.steamcraft2.0.title"), new String[] { StatCollector.translateToLocal("lore.steamcraft2.0.page1") })
 				.setUnlocalizedName("itemLoreBook").setCreativeTab(
 						Steamcraft.tabSC2);
 		registerItem(itemLoreBook, "ItemLoreBook");

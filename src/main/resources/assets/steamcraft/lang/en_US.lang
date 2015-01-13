@@ -172,7 +172,8 @@ item.itemMatch.name=Match
 item.itemMatch.desc=Basically a single-use flint and steel
 item.itemFieldManipulator.name=Etheric Field Distorter
 item.itemFieldManipulator.desc=Bend the fabric of spacetime to your will, allowing you to travel between places near-instantaneously
-
+item.itemLoreBook.name=Lore Book
+item.itemLoreBook.desc=Right-Click to Open. (Texture from the Painterly Pack!)
 
 item.itemElectricJarSmall.name=Electric Jar (Copper Electrodes)
 item.itemElectricJarMedium.name=Electric Jar (Gold-Plated Electrodes)
