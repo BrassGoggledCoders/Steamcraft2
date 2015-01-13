@@ -41,6 +41,7 @@ import steamcraft.client.renderers.item.ModelJetpack;
 import steamcraft.client.renderers.item.ModelWingpack;
 import steamcraft.client.renderers.models.ModelFleshGolem;
 import steamcraft.client.renderers.models.ModelGrub;
+import steamcraft.client.renderers.tile.TileArmorEditorRenderer;
 import steamcraft.client.renderers.tile.TileBatteryRenderer;
 import steamcraft.client.renderers.tile.TileCastIronLampRenderer;
 import steamcraft.client.renderers.tile.TileCastIronLampRenderer.TileCastIronLamp;
@@ -62,6 +63,7 @@ import steamcraft.common.entities.EntityLostMiner;
 import steamcraft.common.entities.projectile.EntityBullet;
 import steamcraft.common.entities.projectile.EntityFieldManipulator;
 import steamcraft.common.entities.projectile.EntityRocket;
+import steamcraft.common.tiles.TileArmorEditor;
 import steamcraft.common.tiles.TileBattery;
 import steamcraft.common.tiles.TileCharger;
 import steamcraft.common.tiles.TileCopperPipe;
@@ -96,7 +98,7 @@ public class ClientProxy extends CommonProxy
 	@Override
 	public void registerKeys()
 	{
-		//FMLCommonHandler.instance().bus().register(new InitKeyBindings());
+		// FMLCommonHandler.instance().bus().register(new InitKeyBindings());
 	}
 
 	private void registerEntityRenderers()
@@ -148,6 +150,8 @@ public class ClientProxy extends CommonProxy
 		// Crystal
 		ClientRegistry.bindTileEntitySpecialRenderer(TileCrystal.class, new TileCrystalRenderer());
 		RenderingRegistry.registerBlockHandler(new BlockCrystalRenderer());
+		// Armor Editor
+		ClientRegistry.bindTileEntitySpecialRenderer(TileArmorEditor.class, new TileArmorEditorRenderer());
 	}
 
 	@Override
@@ -240,7 +244,7 @@ public class ClientProxy extends CommonProxy
 				return Minecraft.getMinecraft().gameSettings.keyBindJump.getIsKeyPressed();
 			default:
 				break;
-				
+
 		}
 
 		return false;
