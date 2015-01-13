@@ -18,9 +18,12 @@ public class ItemPDA extends BaseItem
 	 * Called whenever this item is equipped and the right mouse button is pressed. Args: itemStack, world, entityPlayer
 	 */
 	@Override
-	public ItemStack onItemRightClick(ItemStack p_77659_1_, World world, EntityPlayer player)
+	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
 	{
-		player.openGui(Steamcraft.instance, GuiIDs.PDA, world, 0, 0, 0);
-		return p_77659_1_;
+		if(!world.isRemote)
+		{
+			player.openGui(Steamcraft.instance, GuiIDs.PDA, world, 0, 0, 0);
+		}
+		return stack;
 	}
 }

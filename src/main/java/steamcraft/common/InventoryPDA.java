@@ -10,7 +10,7 @@ import steamcraft.common.items.ItemPDA;
 
 public class InventoryPDA implements IInventory
 {
-	private final String name = "PDA Inventory";
+	public final String name = "PDA Inventory";
 
 	public static final int INV_SIZE = 8;
 

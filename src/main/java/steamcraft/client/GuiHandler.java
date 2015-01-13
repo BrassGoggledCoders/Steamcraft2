@@ -25,6 +25,8 @@ import steamcraft.client.gui.GuiSteamBoiler;
 import steamcraft.client.gui.GuiTimeBomb;
 import steamcraft.client.gui.GuiVanity;
 import steamcraft.client.lib.GuiIDs;
+import steamcraft.common.ContainerPDA;
+import steamcraft.common.InventoryPDA;
 import steamcraft.common.container.ContainerVanity;
 import steamcraft.common.entities.EntityPlayerExtended;
 import steamcraft.common.tiles.TileArmorEditor;
@@ -73,7 +75,7 @@ public class GuiHandler implements IGuiHandler
 			case GuiIDs.TIMEBOMB:
 				return new ContainerTimeBomb(player.inventory, (TileTimeBomb) tile);
 			case GuiIDs.PDA:
-				return null;
+				return new ContainerPDA(player, player.inventory, new InventoryPDA(player.getHeldItem()));
 		}
 		return null;
 	}
@@ -102,7 +104,7 @@ public class GuiHandler implements IGuiHandler
 			case GuiIDs.TIMEBOMB:
 				return new GuiTimeBomb(player.inventory, (TileTimeBomb) tile);
 			case GuiIDs.PDA:
-				return new GuiPDA();
+				return new GuiPDA(new ContainerPDA(player, player.inventory, new InventoryPDA(player.getHeldItem())));
 		}
 
 		return null;

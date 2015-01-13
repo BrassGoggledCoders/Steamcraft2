@@ -58,6 +58,7 @@ import steamcraft.common.items.modules.ItemAqualung;
 import steamcraft.common.items.modules.ItemClimbingSpikes;
 import steamcraft.common.items.modules.ItemEmergencyTank;
 import steamcraft.common.items.modules.ItemFlippers;
+import steamcraft.common.items.modules.ItemGogglesModule;
 import steamcraft.common.items.modules.ItemLastResort;
 import steamcraft.common.items.modules.ItemLegBraces;
 import steamcraft.common.items.modules.ItemLifeVest;
@@ -163,7 +164,7 @@ public class InitItems
 	// Modules
 	public static Item itemAqualung, itemPistonPlating, itemTank, itemWatchDisplay, itemClimbingSpikes
 			, itemLegBraces, itemSpringHeels, itemRollerSkates, itemParachute, itemFlippers, itemLifeVest,
-			itemPistonBoots, itemSteelPlating, itemLastResort;
+			itemPistonBoots, itemSteelPlating, itemLastResort, itemGogglesModule;
 
 	public static Item itemTeapot, itemTeacup;
 
@@ -481,6 +482,9 @@ public class InitItems
 		itemLastResort = new ItemLastResort().setUnlocalizedName("itemLastResort");
 		// registerItem(itemLastResort, "ItemLastResort");
 
+		itemGogglesModule = new ItemGogglesModule().setUnlocalizedName("itemGogglesModule");
+		registerItem(itemGogglesModule, "ItemGogglesModule");
+
 		itemTeaLeaf = new BaseItem().setUnlocalizedName("itemTeaLeaves");
 		registerItem(itemTeaLeaf, "ItemTeaLeaf");
 
@@ -497,7 +501,7 @@ public class InitItems
 		// registerItem(itemGrappleGun, "ItemGrappleGun");
 
 		itemPDA = new ItemPDA().setUnlocalizedName("itemPDA");
-		// registerItem(itemPDA, "ItemPDA");
+		registerItem(itemPDA, "ItemPDA");
 
 		itemSpyglass = new BaseItem().setUnlocalizedName("itemSpyglass");
 		registerItem(itemSpyglass, "ItemSpyglass");

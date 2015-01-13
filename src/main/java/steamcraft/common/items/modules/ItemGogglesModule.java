@@ -18,6 +18,8 @@ import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 
 import org.lwjgl.opengl.GL11;
@@ -66,10 +68,18 @@ public class ItemGogglesModule extends BaseModule
 	@Override
 	public boolean applyArmorEffect(World world, EntityPlayer player, ItemStack stack)
 	{
-		if((Minecraft.getMinecraft().thePlayer == null) || (Minecraft.getMinecraft().currentScreen != null))
-			return false;
+		addOverlay(player);
+		player.addPotionEffect(new PotionEffect(Potion.nightVision.id, 3, 1, true));
+		return true;
+	}
 
-		ItemStack helmet = Minecraft.getMinecraft().thePlayer.inventory.armorItemInSlot(3);
+	@SideOnly(Side.CLIENT)
+	public void addOverlay(EntityPlayer player)
+	{
+		if((player == null) || (Minecraft.getMinecraft().currentScreen != null))
+			return;
+
+		ItemStack helmet = player.inventory.armorItemInSlot(3);
 
 		if((Minecraft.getMinecraft().gameSettings.thirdPersonView == 0) && (helmet != null) && (helmet.getItem() == InitItems.brassGoggles))
 		{
@@ -95,9 +105,7 @@ public class ItemGogglesModule extends BaseModule
 			GL11.glEnable(GL11.GL_DEPTH_TEST);
 			GL11.glEnable(GL11.GL_ALPHA_TEST);
 			GL11.glDisable(GL11.GL_BLEND);
-			return true;
 		}
-		return false;
 	}
 
 	@Override
