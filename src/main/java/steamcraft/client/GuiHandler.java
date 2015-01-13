@@ -12,6 +12,7 @@
  */
 package steamcraft.client;
 
+import net.minecraft.client.gui.GuiScreenBook;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
@@ -76,6 +77,8 @@ public class GuiHandler implements IGuiHandler
 				return new ContainerTimeBomb(player.inventory, (TileTimeBomb) tile);
 			case GuiIDs.PDA:
 				return new ContainerPDA(player, player.inventory, new InventoryPDA(player.getHeldItem()));
+			case GuiIDs.LORE:
+				return null;
 		}
 		return null;
 	}
@@ -105,6 +108,8 @@ public class GuiHandler implements IGuiHandler
 				return new GuiTimeBomb(player.inventory, (TileTimeBomb) tile);
 			case GuiIDs.PDA:
 				return new GuiPDA(new ContainerPDA(player, player.inventory, new InventoryPDA(player.getHeldItem())));
+			case GuiIDs.LORE:
+				return new GuiScreenBook(player, player.getHeldItem(), false);
 		}
 
 		return null;
