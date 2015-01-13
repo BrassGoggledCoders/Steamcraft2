@@ -21,6 +21,7 @@ import net.minecraft.client.renderer.entity.RenderSnowball;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 import steamcraft.client.lib.RenderIDs;
+import steamcraft.client.renderers.block.BlockArmorEditorRenderer;
 import steamcraft.client.renderers.block.BlockBatteryRenderer;
 import steamcraft.client.renderers.block.BlockCastIronLampRenderer;
 import steamcraft.client.renderers.block.BlockChargerRenderer;
@@ -152,6 +153,7 @@ public class ClientProxy extends CommonProxy
 		RenderingRegistry.registerBlockHandler(new BlockCrystalRenderer());
 		// Armor Editor
 		ClientRegistry.bindTileEntitySpecialRenderer(TileArmorEditor.class, new TileArmorEditorRenderer());
+		RenderingRegistry.registerBlockHandler(new BlockArmorEditorRenderer());
 	}
 
 	@Override

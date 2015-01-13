@@ -14,7 +14,6 @@ package steamcraft.client.lib;
 
 import cpw.mods.fml.client.registry.RenderingRegistry;
 
-
 public class RenderIDs
 {
 
@@ -31,6 +30,7 @@ public class RenderIDs
 	public static int blockCopperWireRI;
 	public static int blockPlankStackRI;
 	public static int holidayRI;
+	public static int blockArmorEditorRI;
 
 	public static void setIDs()
 	{
@@ -45,5 +45,6 @@ public class RenderIDs
 		blockHatchRI = RenderingRegistry.getNextAvailableRenderId();
 		blockPlankStackRI = RenderingRegistry.getNextAvailableRenderId();
 		blockCrystalRI = RenderingRegistry.getNextAvailableRenderId();
+		blockArmorEditorRI = RenderingRegistry.getNextAvailableRenderId();
 	}
 }

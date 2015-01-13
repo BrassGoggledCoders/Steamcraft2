@@ -20,7 +20,7 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
-import steamcraft.client.renderers.models.ModelCharger;
+import steamcraft.client.renderers.models.ModelArmorEditor;
 import steamcraft.common.lib.LibInfo;
 import steamcraft.common.tiles.TileArmorEditor;
 import boilerplate.client.renderers.RenderFloatingItem;
@@ -32,11 +32,11 @@ import boilerplate.client.renderers.RenderFloatingItem;
 public class TileArmorEditorRenderer extends TileEntitySpecialRenderer
 {
 	private static final ResourceLocation crystal = new ResourceLocation(LibInfo.PREFIX.replace(":", ""), "textures/models/armoreditor.png");
-	private final ModelCharger model;
+	private final ModelArmorEditor model;
 
 	public TileArmorEditorRenderer()
 	{
-		this.model = new ModelCharger();
+		this.model = new ModelArmorEditor();
 	}
 
 	@Override
