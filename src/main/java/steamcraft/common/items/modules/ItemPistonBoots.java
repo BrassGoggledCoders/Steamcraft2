@@ -12,8 +12,6 @@
  */
 package steamcraft.common.items.modules;
 
-import java.util.ArrayList;
-
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -26,7 +24,6 @@ import org.lwjgl.input.Keyboard;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.LibInfo;
 import boilerplate.common.baseclasses.BaseModule;
-import boilerplate.steamapi.item.IArmorModule;
 import boilerplate.steamapi.item.ModuleRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -79,15 +76,6 @@ public class ItemPistonBoots extends BaseModule
 	public EnumArmorEffectType getArmorEffectType()
 	{
 		return EnumArmorEffectType.ONTICK;
-	}
-
-	@Override
-	public ArrayList<IArmorModule> getListOfIncompatibleModules()
-	{
-		// ArrayList incompats = new ArrayList();
-		// incompats.add(InitItems.itemPistonPlating);
-		// return incompats;
-		return null;
 	}
 
 	@Override

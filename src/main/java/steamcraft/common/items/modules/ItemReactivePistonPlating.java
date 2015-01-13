@@ -12,7 +12,6 @@
  */
 package steamcraft.common.items.modules;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -25,7 +24,6 @@ import net.minecraft.world.World;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.LibInfo;
 import boilerplate.common.baseclasses.BaseModule;
-import boilerplate.steamapi.item.IArmorModule;
 import boilerplate.steamapi.item.ModuleRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -40,6 +38,8 @@ public class ItemReactivePistonPlating extends BaseModule
 	{
 		super();
 		ModuleRegistry.registerModule(this);
+		ModuleRegistry.setModuleIncompatibilities(ModuleRegistry.getModule("pistonplating"),
+				new String[] { "aqualung" });
 		this.setMaxStackSize(1);
 		this.setCreativeTab(Steamcraft.tabSC2);
 	}
@@ -89,15 +89,6 @@ public class ItemReactivePistonPlating extends BaseModule
 	public EnumArmorEffectType getArmorEffectType()
 	{
 		return EnumArmorEffectType.ONTICK;
-	}
-
-	@Override
-	public ArrayList<IArmorModule> getListOfIncompatibleModules()
-	{
-		// ArrayList incompats = new ArrayList();
-		// incompats.add(InitItems.itemAqualung);
-		// return incompats;
-		return null;
 	}
 
 	@Override

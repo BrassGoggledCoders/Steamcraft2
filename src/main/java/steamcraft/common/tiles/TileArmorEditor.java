@@ -13,6 +13,7 @@
 package steamcraft.common.tiles;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 
 import net.minecraft.inventory.IInventory;
@@ -75,17 +76,23 @@ public class TileArmorEditor extends BaseTileWithInventory implements IInventory
 			if((this.inventory[2] != null) && (this.inventory[2].getItem() instanceof IArmorModule))
 			{
 				IArmorModule module = (IArmorModule) this.inventory[2].getItem();
+				ArrayList moduleIncompatibilities = ModuleRegistry.getModuleIncompatibilities(module.getModuleId());
+				System.out.print("Incompats:" + moduleIncompatibilities);
+				System.out.print("Installed Modules:" + installedModules);
 
-				if((module instanceof IArmorModule) && !installedModules.contains(module.getModuleId()) && (module.getApplicablePiece() == -1))
+				if(!installedModules.contains(module.getModuleId()) && moduleIncompatibilities != null
+						&& Collections.disjoint(installedModules, moduleIncompatibilities))
 				{
-					installedModules.add(module.getModuleId());
-					this.setInventorySlotContents(2, null);
-				}
-				else if((module instanceof IArmorModule) && !installedModules.contains(module.getModuleId())
-						&& (module.getApplicablePiece() == brassarmor.armorType))
-				{
-					installedModules.add(module.getModuleId());
-					this.setInventorySlotContents(2, null);
+					if(module.getApplicablePiece() == -1)
+					{
+						installedModules.add(module.getModuleId());
+						this.setInventorySlotContents(2, null);
+					}
+					else if(module.getApplicablePiece() == brassarmor.armorType)
+					{
+						installedModules.add(module.getModuleId());
+						this.setInventorySlotContents(2, null);
+					}
 				}
 			}
 			Iterator<String> iterator = installedModules.iterator();

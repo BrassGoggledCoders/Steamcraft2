@@ -12,8 +12,6 @@
  */
 package steamcraft.common.items.modules;
 
-import java.util.ArrayList;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.Tessellator;
@@ -29,7 +27,6 @@ import steamcraft.common.Steamcraft;
 import steamcraft.common.items.armor.ItemBrassGoggles;
 import steamcraft.common.lib.LibInfo;
 import boilerplate.common.baseclasses.BaseModule;
-import boilerplate.steamapi.item.IArmorModule;
 import boilerplate.steamapi.item.ModuleRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -107,15 +104,6 @@ public class ItemGogglesModule extends BaseModule
 	public EnumArmorEffectType getArmorEffectType()
 	{
 		return EnumArmorEffectType.HUD;
-	}
-
-	@Override
-	public ArrayList<IArmorModule> getListOfIncompatibleModules()
-	{
-		// ArrayList incompats = new ArrayList();
-		// incompats.add(InitItems.itemPistonPlating);
-		// return incompats;
-		return null;
 	}
 
 	@Override

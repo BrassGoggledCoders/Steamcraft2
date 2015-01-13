@@ -12,8 +12,6 @@
  */
 package steamcraft.common.items.compat;
 
-import java.util.ArrayList;
-
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -21,7 +19,6 @@ import net.minecraft.world.World;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.LibInfo;
 import boilerplate.common.baseclasses.BaseModule;
-import boilerplate.steamapi.item.IArmorModule;
 import boilerplate.steamapi.item.ModuleRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -68,15 +65,6 @@ public class ItemThaumicMonocle extends BaseModule
 	public EnumArmorEffectType getArmorEffectType()
 	{
 		return EnumArmorEffectType.SPECIAL;
-	}
-
-	@Override
-	public ArrayList<IArmorModule> getListOfIncompatibleModules()
-	{
-		// ArrayList incompats = new ArrayList();
-		// incompats.add(InitItems.itemPistonPlating);
-		// return incompats;
-		return null;
 	}
 
 	@Override
