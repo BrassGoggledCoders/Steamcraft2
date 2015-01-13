@@ -409,6 +409,8 @@ public class InitRecipes
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemFieldManipulator, 4, 0), new Object[] { "BRB", "RER", "BRB", 'B', "nuggetBrass",
 				'E',
 				Items.ender_pearl, 'R', Items.redstone }));
+
+		// GameRegistry.addShapelessRecipe(new ItemStack(InitItems.itemLoreBook), new Object[] { Items.book, Items.feather });
 	}
 
 	public static void initializeSmeltingRecipes()

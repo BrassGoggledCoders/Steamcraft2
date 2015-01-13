@@ -26,7 +26,6 @@ import steamcraft.common.items.ItemLightningGun;
 import steamcraft.common.items.ItemMachinePart;
 import steamcraft.common.items.ItemMatch;
 import steamcraft.common.items.ItemNugget;
-import steamcraft.common.items.ItemPDA;
 import steamcraft.common.items.ItemParts;
 import steamcraft.common.items.ItemPowder;
 import steamcraft.common.items.ItemResource;
@@ -69,6 +68,7 @@ import steamcraft.common.items.modules.ItemRollerSkates;
 import steamcraft.common.items.modules.ItemSpringHeels;
 import steamcraft.common.items.modules.ItemSteelPlating;
 import steamcraft.common.items.modules.ItemWatchDisplay;
+import steamcraft.common.items.pda.ItemPDA;
 import steamcraft.common.items.tools.ItemElectricDrill;
 import steamcraft.common.items.tools.ItemModAxe;
 import steamcraft.common.items.tools.ItemModHoe;
@@ -79,6 +79,7 @@ import steamcraft.common.items.tools.ItemSteamDrill;
 import steamcraft.common.items.vanity.ItemTopHat;
 import steamcraft.common.lib.LibInfo;
 import steamcraft.common.lib.MaterialHelper;
+import boilerplate.common.baseclasses.LoreItem;
 import boilerplate.common.utils.helpers.RegistryHelper;
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -506,13 +507,14 @@ public class InitItems
 		itemSpyglass = new BaseItem().setUnlocalizedName("itemSpyglass");
 		registerItem(itemSpyglass, "ItemSpyglass");
 
-		// itemLoreBook = new LoreItem("Test", "", new File("/assets/lang/en_US.lang")).setUnlocalizedName("itemLoreBook").setCreativeTab(Steamcraft.tabSC2);
-		// registerItem(itemLoreBook, "ItemLoreBook");
+		itemLoreBook = new LoreItem("warlordjones", "Book of Lore", new String[] { "Page 1", "Page 2" }).setUnlocalizedName("itemLoreBook").setCreativeTab(
+				Steamcraft.tabSC2);
+		registerItem(itemLoreBook, "ItemLoreBook");
 
 		itemFieldManipulator = new ItemFieldManipulator().setUnlocalizedName("itemFieldManipulator");
 		registerItem(itemFieldManipulator, "ItemFieldManipulator");
 
-		// itemCraftingChip = new ItemChip(GuiCrafting.class).setUnlocalizedName("itemCraftingChip");
+		// itemCraftingChip = new ItemChip(new ContainerWorkbench(null, null, 0, 0, 0)).setUnlocalizedName("itemCraftingChip");
 		// registerItem(itemCraftingChip, "ItemCraftingChip");
 	}
 
