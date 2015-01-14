@@ -323,7 +323,7 @@ public class InitBlocks
 	public static void registerBlock(Block block, Class<? extends ItemBlock> itemblock, String name)
 	{
 		// if(block.renderAsNormalBlock() || block.isOpaqueCube() || block.isNormalCube())
-		// FMPCompatHandler.registerFMP(block, 0, new BaseItemBlockWithMetadata(block, block).getMaxDamage());
+		// FMPCompatHandler.registerFMP(block);
 
 		GameRegistry.registerBlock(block, itemblock, name);
 	}
