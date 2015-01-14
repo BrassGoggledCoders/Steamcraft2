@@ -1,5 +1,6 @@
 package steamcraft.common.items.pda;
 
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -10,6 +11,9 @@ public class ContainerPDA extends Container
 {
 	/** The Item Inventory for this Container */
 	public final InventoryPDA inventory;
+	private static int tabPage = 0;
+	private final int maxPages = 0;
+	private static int selectedTabIndex = PDATabs.tabBlocks.getTabIndex();
 
 	private static final int INV_SIZE = InventoryPDA.INV_SIZE;
 
@@ -46,4 +50,30 @@ public class ContainerPDA extends Container
 	{
 		return null;
 	}
+
+	/**
+	 * Adds the buttons (and other controls) to the screen in question.
+	 */
+	public void initGui()
+	{
+		int i = selectedTabIndex;
+		selectedTabIndex = -1;
+		this.setCurrentTab(PDATabs.tabArray[i]);
+		int tabCount = PDATabs.tabArray.length;
+	}
+
+	private void setCurrentTab(PDATabs tabs)
+	{
+		if(tabs == null)
+			return;
+		int i = selectedTabIndex;
+		selectedTabIndex = tabs.getTabIndex();
+		ContainerPDA containerpda = (ContainerPDA) this.inventorySlots;
+
+		if(i == CreativeTabs.tabInventory.getTabIndex())
+		{
+
+		}
+	}
+
 }

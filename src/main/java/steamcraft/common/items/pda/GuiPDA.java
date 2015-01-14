@@ -1,12 +1,10 @@
-package steamcraft.client.gui;
+package steamcraft.common.items.pda;
 
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
-import steamcraft.common.items.pda.ContainerPDA;
-import steamcraft.common.items.pda.InventoryPDA;
 import steamcraft.common.lib.LibInfo;
 
 public class GuiPDA extends GuiContainer

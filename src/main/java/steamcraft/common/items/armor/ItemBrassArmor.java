@@ -104,10 +104,10 @@ public class ItemBrassArmor extends BaseArmor implements ISpecialArmor, IGoggles
 			if((module != null) && (module.getArmorEffectType() == EnumArmorEffectType.ONTICK))
 			{
 				this.doEffects(module, player.getEntityWorld(), player, is);
-				combinedModuleWeight = combinedModuleWeight + module.getModuleWeight();
+				combinedModuleWeight += module.getModuleWeight();
 			}
 		}
-		if(combinedModuleWeight >= 40)
+		if(this.getSlownessLevelFromWeight(combinedModuleWeight) >= 1)
 			player.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 5, this.getSlownessLevelFromWeight(combinedModuleWeight), true));
 	}
 
