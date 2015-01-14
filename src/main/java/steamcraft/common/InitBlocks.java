@@ -14,6 +14,7 @@ package steamcraft.common;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.item.ItemBlock;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import steamcraft.client.renderers.tile.TileCrystalRenderer.TileCrystal;
@@ -70,6 +71,7 @@ import steamcraft.common.tiles.TileSteamBoiler;
 import steamcraft.common.tiles.TileTeslaCoil;
 import steamcraft.common.tiles.TileTurbine;
 import boilerplate.common.baseclasses.BaseItemBlockWithMetadata;
+import boilerplate.common.compathandler.FMPCompatHandler;
 import boilerplate.common.utils.helpers.RegistryHelper;
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -153,17 +155,17 @@ public class InitBlocks
 		blockCustomOre = new BlockSteamcraftOre().setBlockName("blockSteamcraftOre");
 		blockSlate = new BlockSlate().setBlockName("blockSlate");
 
-		GameRegistry.registerBlock(blockCustomOre, BaseItemBlockWithMetadata.class, "BlockSteamcraftOre");
-		GameRegistry.registerBlock(blockSlate, BaseItemBlockWithMetadata.class, "BlockSlate");
+		registerBlock(blockCustomOre, BaseItemBlockWithMetadata.class, "BlockSteamcraftOre");
+		registerBlock(blockSlate, BaseItemBlockWithMetadata.class, "BlockSlate");
 
 		// Metals
 		blockMetal = new BlockMetal().setBlockName("blockMetal");;
 		blockUranium = new BlockUranium(Material.iron).setBlockName("blockUranium");
 		blockEtherium = new BlockEtherium(Material.iron).setBlockName("blockEtherium");
 
-		GameRegistry.registerBlock(blockMetal, BaseItemBlockWithMetadata.class, "BlockMetal");
-		GameRegistry.registerBlock(blockUranium, "BlockUranium");
-		GameRegistry.registerBlock(blockEtherium, "BlockEtherium");
+		registerBlock(blockMetal, BaseItemBlockWithMetadata.class, "BlockMetal");
+		registerBlock(blockUranium, "BlockUranium");
+		registerBlock(blockEtherium, "BlockEtherium");
 	}
 
 	private static void initializeDecorative()
@@ -172,29 +174,29 @@ public class InitBlocks
 		blockEngraved = new BlockEngravedSolid().setBlockName("blockEngravedSolid");;
 		blockEngravedVanilla = new BlockEngravedVanilla().setBlockName("blockEngravedVanilla");;
 
-		GameRegistry.registerBlock(blockEngraved, BaseItemBlockWithMetadata.class, "BlockEngravedSolid");
-		GameRegistry.registerBlock(blockEngravedVanilla, BaseItemBlockWithMetadata.class, "BlockEngravedVanilla");
+		registerBlock(blockEngraved, BaseItemBlockWithMetadata.class, "BlockEngravedSolid");
+		registerBlock(blockEngravedVanilla, BaseItemBlockWithMetadata.class, "BlockEngravedVanilla");
 
 		// Cast Iron
 		blockCastIronLamp = new BlockCastIronLamp(false).setBlockName("blockCastIronLamp");
 		blockCastIronLampOn = new BlockCastIronLamp(true).setBlockName("blockCastIronLampOn");
 
-		GameRegistry.registerBlock(blockCastIronLamp, "BlockCastIronLamp");
-		GameRegistry.registerBlock(blockCastIronLampOn, "BlockCastIronLampOn");
+		registerBlock(blockCastIronLamp, "BlockCastIronLamp");
+		registerBlock(blockCastIronLampOn, "BlockCastIronLampOn");
 
 		blockCastIronFence = new BlockCastIronFence().setBlockName("blockCastIronFence");
 		blockCastIronGate = new BlockCastIronGate().setBlockName("blockCastIronGate");;
 		blockCastIronRailing = new BlockCastIronRailing(Material.anvil).setBlockName("blockCastIronRailing");
 
-		GameRegistry.registerBlock(blockCastIronFence, "BlockCastIronFence");
-		GameRegistry.registerBlock(blockCastIronGate, "BlockCastIronGate");
-		GameRegistry.registerBlock(blockCastIronRailing, "BlockCastIronRailing");
+		registerBlock(blockCastIronFence, "BlockCastIronFence");
+		registerBlock(blockCastIronGate, "BlockCastIronGate");
+		registerBlock(blockCastIronRailing, "BlockCastIronRailing");
 
 		blockLamp = new BlockLamp(false).setBlockName("blockLamp");
 		blockLampOn = new BlockLamp(true).setBlockName("blockLamp");
 
-		GameRegistry.registerBlock(blockLamp, "BlockLamp");
-		GameRegistry.registerBlock(blockLampOn, "BlockLampOn");
+		registerBlock(blockLamp, "BlockLamp");
+		registerBlock(blockLampOn, "BlockLampOn");
 	}
 
 	private static void initializeMachines()
@@ -246,7 +248,7 @@ public class InitBlocks
 		// Tanks
 		blockCopperTank = new BaseBlock(Material.iron).setBlockName("blockCopperTank");
 
-		GameRegistry.registerBlock(blockCopperTank, "BlockCopperTank");
+		registerBlock(blockCopperTank, "BlockCopperTank");
 	}
 
 	private static void initializeFluids()
@@ -259,7 +261,7 @@ public class InitBlocks
 
 		blockSteam = new BlockFluidSteam(steamFluid, Material.lava).setBlockName("steamFluidBlock");;
 
-		GameRegistry.registerBlock(blockSteam, "blockSteam");
+		registerBlock(blockSteam, "blockSteam");
 	}
 
 	private static void initializeOthers()
@@ -272,15 +274,15 @@ public class InitBlocks
 		blockBrassLog = new BlockBrassLog(Material.wood).setBlockName("blockBrassLog");
 		blockBrassLeaves = new BaseBlock(Material.iron).setBlockName("blockBrassLeaves");
 
-		GameRegistry.registerBlock(blockBrassLog, "BlockBrassLog");
-		GameRegistry.registerBlock(blockBrassLeaves, "BlockBrassLeaves");
+		registerBlock(blockBrassLog, "BlockBrassLog");
+		registerBlock(blockBrassLeaves, "BlockBrassLeaves");
 
 		blockDropHammerAnvil = new BlockDropHammerAnvil(Material.anvil).setBlockName("blockDropHammerAnvil");
 
 		// RegistryHelper.registerContainerBlock(blockDropHammerAnvil, TileDropHammer.class, "BlockDropHammerAnvil");
 
 		blockTeaPlant = new BlockTeaPlant().setBlockName("blockTeaPlant");
-		GameRegistry.registerBlock(blockTeaPlant, "BlockTeaPlant");
+		registerBlock(blockTeaPlant, "BlockTeaPlant");
 
 		blockTimeBomb = new BlockTimeBomb(Material.tnt).setBlockName("blockTimeBomb");
 		// RegistryHelper.registerContainerBlock(blockTimeBomb, TileTimeBomb.class, "BlockTimeBomb");
@@ -289,25 +291,41 @@ public class InitBlocks
 		// RegistryHelper.registerContainerBlock(blockHatch, TileHatch.class, "BlockHatch");
 
 		blockFlesh = new BaseBlock(Material.gourd).setBlockName("blockFlesh").setCreativeTab(Steamcraft.tabSC2);
-		GameRegistry.registerBlock(blockFlesh, "BlockFlesh");
+		registerBlock(blockFlesh, "BlockFlesh");
 
 		blockPlankStack = new BlockPlankStack(Material.wood).setBlockName("blockPlankStack").setCreativeTab(Steamcraft.tabSC2);
-		// GameRegistry.registerBlock(blockPlankStack, BaseItemBlockWithMetadata.class, "BlockPlankStack");
+		// registerBlock(blockPlankStack, BaseItemBlockWithMetadata.class, "BlockPlankStack");
 
 		blockCongealedSlime = new BlockCongealedSlime(Material.gourd).setBlockName("blockCongealedSlime").setCreativeTab(Steamcraft.tabSC2);
-		GameRegistry.registerBlock(blockCongealedSlime, "BlockCongealedSlime");
+		registerBlock(blockCongealedSlime, "BlockCongealedSlime");
 
 		blockFissurePortal = new BlockFissurePortal(Material.rock).setBlockName("blockFissurePortal");
-		GameRegistry.registerBlock(blockFissurePortal, "BlockFissurePortal");
+		registerBlock(blockFissurePortal, "BlockFissurePortal");
 
 		blockCompressedStone = new BlockCompressedStone(Material.rock);
-		GameRegistry.registerBlock(blockCompressedStone, "BlockCompressedStone");
+		registerBlock(blockCompressedStone, "BlockCompressedStone");
 
 		blockInfestedGrass = new BlockInfestedGrass(Material.grass).setBlockName("blockInfestedGrass");
-		GameRegistry.registerBlock(blockInfestedGrass, "BlockInfestedGrass");
+		registerBlock(blockInfestedGrass, "BlockInfestedGrass");
 
 		blockInfestedDirt = new BlockInfestedDirt(Material.ground).setBlockName("blockInfestedDirt");
-		GameRegistry.registerBlock(blockInfestedDirt, "BlockInfestedDirt");
+		registerBlock(blockInfestedDirt, "BlockInfestedDirt");
+	}
+
+	public static void registerBlock(Block block, String name)
+	{
+		if(block.renderAsNormalBlock() || block.isOpaqueCube() || block.isNormalCube())
+			FMPCompatHandler.registerFMP(block);
+
+		GameRegistry.registerBlock(block, name);
+	}
+
+	public static void registerBlock(Block block, Class<? extends ItemBlock> itemblock, String name)
+	{
+		if(block.renderAsNormalBlock() || block.isOpaqueCube() || block.isNormalCube())
+			FMPCompatHandler.registerFMP(block);
+
+		GameRegistry.registerBlock(block, itemblock, name);
 	}
 
 }
