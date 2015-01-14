@@ -1,6 +1,5 @@
 package steamcraft.common.items.pda;
 
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import steamcraft.common.InitBlocks;
@@ -20,7 +19,7 @@ public abstract class PDATabs
 			return Item.getItemFromBlock(InitBlocks.blockSteamBoiler);
 		}
 	};
-	public static final CreativeTabs tabItems = new CreativeTabs(1, "itemInfo")
+	public static final PDATabs tabItems = new PDATabs(1, "itemInfo")
 	{
 		@Override
 		@SideOnly(Side.CLIENT)

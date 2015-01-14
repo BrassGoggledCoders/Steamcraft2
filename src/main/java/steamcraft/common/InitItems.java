@@ -35,6 +35,7 @@ import steamcraft.common.items.ItemRocket;
 import steamcraft.common.items.ItemRocketLauncher;
 import steamcraft.common.items.ItemSheet;
 import steamcraft.common.items.ItemSpanner;
+import steamcraft.common.items.ItemSplashLightningBottle;
 import steamcraft.common.items.ItemTeaSeed;
 import steamcraft.common.items.ItemTeacup;
 import steamcraft.common.items.ItemTeapot;
@@ -187,6 +188,8 @@ public class InitItems
 	public static Item itemFieldManipulator;
 
 	public static Item itemCraftingChip;
+
+	public static Item itemSplashLightningBottle;
 
 	/* Init */
 	public static void init()
@@ -508,6 +511,7 @@ public class InitItems
 		itemSpyglass = new BaseItem().setUnlocalizedName("itemSpyglass");
 		registerItem(itemSpyglass, "ItemSpyglass");
 
+		// Add a version system to allow updates. Check version on right click
 		itemLoreBook = new ItemLoreBook(StatCollector.translateToLocal("lore.steamcraft2.0.author"),
 				StatCollector.translateToLocal("lore.steamcraft2.0.title"), new String[] { StatCollector.translateToLocal("lore.steamcraft2.0.page1") })
 				.setUnlocalizedName("itemLoreBook").setCreativeTab(
@@ -519,6 +523,9 @@ public class InitItems
 
 		// itemCraftingChip = new ItemChip(new ContainerWorkbench(null, null, 0, 0, 0)).setUnlocalizedName("itemCraftingChip");
 		// registerItem(itemCraftingChip, "ItemCraftingChip");
+
+		itemSplashLightningBottle = new ItemSplashLightningBottle().setUnlocalizedName("itemSplashLightningBottle");
+		registerItem(itemSplashLightningBottle, "ItemSplashLightningBottle");
 	}
 
 	public static void initializeModCompatItems()

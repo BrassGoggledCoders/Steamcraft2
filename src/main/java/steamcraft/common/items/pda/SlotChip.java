@@ -15,7 +15,6 @@ package steamcraft.common.items.pda;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
-import steamcraft.common.tiles.TileArmorEditor;
 
 /**
  * @author decebaldecebal
@@ -23,13 +22,10 @@ import steamcraft.common.tiles.TileArmorEditor;
  */
 public class SlotChip extends Slot
 {
-	TileArmorEditor tile;
 
 	public SlotChip(IInventory inv, int par2, int par3, int par4)
 	{
 		super(inv, par2, par3, par4);
-
-		this.tile = (TileArmorEditor) inv;
 	}
 
 	@Override

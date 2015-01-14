@@ -97,6 +97,7 @@ public class InitBlocks
 
 	/* Machines */
 	public static Block blockSteamBoiler, blockNuclearBoiler, blockIntake, blockTurbine, blockBattery, blockCharger;
+	public static Block blockPress, blockSteamHammer, blockGrindstone, blockWireMill;
 	public static Block blockLightningRod, blockTeslaCoil;
 
 	public static Block blockDropHammerAnvil;
