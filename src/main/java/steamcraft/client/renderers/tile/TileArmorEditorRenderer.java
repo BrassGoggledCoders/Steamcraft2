@@ -57,7 +57,7 @@ public class TileArmorEditorRenderer extends TileEntitySpecialRenderer
 		if(tile.inventory[0] != null)
 		{
 			GL11.glPushMatrix();
-			RenderFloatingItem.render(dx + 0.5F, dy + 0.6F, dz + 0.5F, 0, 0, 0, tile.inventory[0]);
+			RenderFloatingItem.render(dx + 0.5F, dy + 0.6F, dz + 0.5F, 60, 0, 0, tile.inventory[0]);
 			GL11.glPopMatrix();
 		}
 	}
