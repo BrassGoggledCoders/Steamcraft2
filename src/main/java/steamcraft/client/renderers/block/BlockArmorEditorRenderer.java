@@ -53,6 +53,6 @@ public class BlockArmorEditorRenderer implements ISimpleBlockRenderingHandler
 	@Override
 	public int getRenderId()
 	{
-		return RenderIDs.blockChargerRI;
+		return RenderIDs.blockArmorEditorRI;
 	}
 }
