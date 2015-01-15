@@ -92,7 +92,7 @@ public class EntitySplashLightningBottle extends EntityThrowable
 		this.motionX = -MathHelper.sin(this.rotationYaw / 180.0F * (float) Math.PI) * MathHelper.cos(this.rotationPitch / 180.0F * (float) Math.PI) * f;
 		this.motionZ = MathHelper.cos(this.rotationYaw / 180.0F * (float) Math.PI) * MathHelper.cos(this.rotationPitch / 180.0F * (float) Math.PI) * f;
 		this.motionY = -MathHelper.sin((this.rotationPitch + this.func_70183_g()) / 180.0F * (float) Math.PI) * f;
-		this.setThrowableHeading(this.motionX, this.motionY + addSpeed, this.motionZ, this.func_70182_d(), 1.0F);
+		this.setThrowableHeading(this.motionX, this.motionY, this.motionZ, this.func_70182_d(), 1.0F);
 	}
 
 	public EntitySplashLightningBottle(World p_i1778_1_, double p_i1778_2_, double p_i1778_4_, double p_i1778_6_)
