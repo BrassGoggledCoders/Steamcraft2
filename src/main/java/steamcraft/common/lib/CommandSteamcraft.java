@@ -67,6 +67,7 @@ public class CommandSteamcraft extends CommandBase
 		if(parameters.length < 1)
 			sender.addChatMessage(prefix.appendSibling(new ChatComponentText("Welcome to Steamcraft 2!")));
 		else if(parameters.length == 1)
+		{
 			if(parameters[0].equalsIgnoreCase("help"))
 			{
 				sender.addChatMessage(new ChatComponentText("version -- returns current SC2 version"));
@@ -98,30 +99,34 @@ public class CommandSteamcraft extends CommandBase
 			}
 			else if(parameters[0].equalsIgnoreCase("issue"))
 			{
-				// if(parameters.length == 2)
-				// {
+				sender.addChatMessage(prefix.appendText("Invalid Usage. Correct Syntax is /sc2 issue <title> <body text>"));
+			}
+			else
+				sender.addChatMessage(prefix.appendText("Not a valid sub-command! Run /sc2 help for help!"));
+		}
+		else if(parameters.length == 3)
+		{
+			if(parameters[0] == "issue")
+			{
 				Issue issue = new Issue();
-				// issue.setNumber(1);
-				issue.setTitle(/* parameters[1] */"Potato");
-				issue.setBody(/* parameters[2].replace("_", " ") + " Reporter: " + sender.getCommandSenderName() */"Potato");
+				issue.setTitle(parameters[1]);
+				issue.setBody(parameters[2].replace("_", " ") + " Reporter: " + sender.getCommandSenderName());
 				IssueService issueservice = new IssueService();
 				// This token is read only, don't even bother trying to use it to hack :P
 				issueservice.getClient().setOAuth2Token("df100cf80572205cad48cefa0cbfc5baf8d9c716");
 				try
 				{
-					// issue.setNumber(issueservice.getIssues().size() + 1);
 					issueservice.createIssue("BrassGoggledCoders", "Boilerplate", issue);
 				}
 				catch(IOException e)
 				{
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				// }
-				// else
-				// sender.addChatMessage(prefix.appendText("Invalid Usage. Correct Syntax is /sc2 issue <title> <body text>"));
 			}
-			else
-				sender.addChatMessage(prefix.appendText("Not a valid sub-command! Run /sc2 help for help!"));
+		}
+		else
+		{
+			prefix.appendText("Invalid number of parameters");
+		}
 	}
 }
