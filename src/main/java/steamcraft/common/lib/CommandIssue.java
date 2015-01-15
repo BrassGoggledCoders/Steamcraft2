@@ -70,7 +70,7 @@ public class CommandIssue extends CommandBase
 			issueservice.getClient().setOAuth2Token("df100cf80572205cad48cefa0cbfc5baf8d9c716");
 			try
 			{
-				issueservice.createIssue("BrassGoggledCoders", "Boilerplate", issue);
+				issueservice.createIssue("BrassGoggledCoders", "Steamcraft2", issue);
 			}
 			catch(IOException e)
 			{
