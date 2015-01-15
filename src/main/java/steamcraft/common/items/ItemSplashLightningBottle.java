@@ -16,16 +16,19 @@ public class ItemSplashLightningBottle extends BaseItem
 	@Override
 	public void onPlayerStoppedUsing(ItemStack p_77659_1_, World p_77659_2_, EntityPlayer p_77659_3_, int useCount)
 	{
-		if(!p_77659_3_.capabilities.isCreativeMode)
+		if(useCount > getMaxItemUseDuration(p_77659_1_) / 2)
 		{
-			--p_77659_1_.stackSize;
-		}
+			if(!p_77659_3_.capabilities.isCreativeMode)
+			{
+				--p_77659_1_.stackSize;
+			}
 
-		p_77659_2_.playSoundAtEntity(p_77659_3_, "random.bow", 0.5F, 0.4F);
+			p_77659_2_.playSoundAtEntity(p_77659_3_, "random.bow", 0.5F, 0.4F);
 
-		if(!p_77659_2_.isRemote)
-		{
-			p_77659_2_.spawnEntityInWorld(new EntitySplashLightningBottle(p_77659_2_, p_77659_3_, useCount));
+			if(!p_77659_2_.isRemote)
+			{
+				p_77659_2_.spawnEntityInWorld(new EntitySplashLightningBottle(p_77659_2_, p_77659_3_, useCount));
+			}
 		}
 	}
 
