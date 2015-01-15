@@ -63,7 +63,7 @@ public class CommandIssue extends CommandBase
 		{
 			Issue issue = new Issue();
 			issue.setNumber(1);
-			issue.setTitle("Issue: " + parameters[0]);
+			issue.setTitle("Issue: " + parameters[0].replace("_", " "));
 			issue.setBody(parameters[1].replace("_", " ") + " Reporter: " + sender.getCommandSenderName());
 			IssueService issueservice = new IssueService();
 			// This token is read only, don't even bother trying to use it to hack :P
