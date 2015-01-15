@@ -12,6 +12,7 @@
  */
 package steamcraft.common.lib;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +21,9 @@ import net.minecraft.command.ICommandSender;
 import net.minecraft.event.ClickEvent;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
+
+import org.eclipse.egit.github.core.Issue;
+import org.eclipse.egit.github.core.service.IssueService;
 
 /**
  * @author Surseance
@@ -67,7 +71,8 @@ public class CommandSteamcraft extends CommandBase
 			{
 				sender.addChatMessage(new ChatComponentText("version -- returns current SC2 version"));
 				sender.addChatMessage(new ChatComponentText("contact -- returns ways to contact us"));
-				sender.addChatMessage(new ChatComponentText("issue <name> <body> -- creates a new Github Issue"));
+				sender.addChatMessage(new ChatComponentText(
+						"issue <name> <body> -- creates a new Github Issue on the Steamcraft Repo. Automatically appends your username to the end of the issue's body text. Use _ instead of spaces."));
 			}
 			else if(parameters[0].equalsIgnoreCase("version"))
 			{
@@ -91,14 +96,31 @@ public class CommandSteamcraft extends CommandBase
 				git.getChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://github.com/BrassGoggledCoders"));
 				sender.addChatMessage(git);
 			}
-			/*
-			 * else if(parameters[0].equalsIgnoreCase("issue")/* && parameters[1] != null && parameters[2] != null ) { GitHubClient client = new GitHubClient();
-			 * // client.setOAuth2Token("0a03b7c81016f4af6f1da20b27625e4f77bea269"); client.setCredentials("BrassGoggledBot", "steampowered1984");
-			 * RepositoryService service = new RepositoryService(); Repository repo = null; try { repo = service.getRepository("BrassGoggledCoders",
-			 * "SteamCraft2"); } catch(IOException e) { // TODO Auto-generated catch block e.printStackTrace(); } RepositoryIssue issue = new RepositoryIssue();
-			 * issue.setTitle("Test"/* parameters[1] ); issue.setBody("Test"/* parameters[2] + "    Issue submitted by " + sender.getCommandSenderName());
-			 * if(repo != null) issue.setRepository(repo); else FMLLog.warning(".-.", ""); }
-			 */
+			else if(parameters[0].equalsIgnoreCase("issue"))
+			{
+				if(parameters.length == 2)
+				{
+					Issue issue = new Issue();
+					issue.setNumber(1);
+					issue.setTitle(/* parameters[1] */"Potato");
+					issue.setBodyText(/* parameters[2].replace("_", " ") + " Reporter: " + sender.getCommandSenderName() */"Potato");
+					IssueService issueservice = new IssueService();
+					// This token is read only, don't even bother trying to use it to hack :P
+					issueservice.getClient().setOAuth2Token("df100cf80572205cad48cefa0cbfc5baf8d9c716");
+					try
+					{
+						// issue.setNumber(issueservice.getIssues().size() + 1);
+						issueservice.createIssue("BrassGoggledCoders", "Boilerplate", issue);
+					}
+					catch(IOException e)
+					{
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+				else
+					sender.addChatMessage(prefix.appendText("Invalid Usage. Correct Syntax is /sc2 issue <title> <body text>"));
+			}
 			else
 				sender.addChatMessage(prefix.appendText("Not a valid sub-command! Run /sc2 help for help!"));
 	}
