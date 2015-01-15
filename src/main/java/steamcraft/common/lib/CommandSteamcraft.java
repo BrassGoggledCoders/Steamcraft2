@@ -104,25 +104,34 @@ public class CommandSteamcraft extends CommandBase
 			else
 				sender.addChatMessage(prefix.appendText("Not a valid sub-command! Run /sc2 help for help!"));
 		}
-		else if(parameters.length == 3)
+		else if(parameters.length > 1)
 		{
-			if(parameters[0] == "issue")
+			if(parameters.length == 3)
 			{
-				Issue issue = new Issue();
-				issue.setTitle(parameters[1]);
-				issue.setBody(parameters[2].replace("_", " ") + " Reporter: " + sender.getCommandSenderName());
-				IssueService issueservice = new IssueService();
-				// This token is read only, don't even bother trying to use it to hack :P
-				issueservice.getClient().setOAuth2Token("df100cf80572205cad48cefa0cbfc5baf8d9c716");
-				try
+				if(parameters[0] == "issue")
 				{
-					issueservice.createIssue("BrassGoggledCoders", "Boilerplate", issue);
+					Issue issue = new Issue();
+					issue.setNumber(1);
+					issue.setTitle("Issue: " + parameters[1]);
+					issue.setBody(parameters[2].replace("_", " ") + " Reporter: " + sender.getCommandSenderName());
+					IssueService issueservice = new IssueService();
+					// This token is read only, don't even bother trying to use it to hack :P
+					issueservice.getClient().setOAuth2Token("df100cf80572205cad48cefa0cbfc5baf8d9c716");
+					try
+					{
+						issueservice.createIssue("BrassGoggledCoders", "Boilerplate", issue);
+					}
+					catch(IOException e)
+					{
+						e.printStackTrace();
+					}
 				}
-				catch(IOException e)
-				{
-					e.printStackTrace();
-				}
+				else
+					sender.addChatMessage(prefix.appendText("Not a valid sub-command! Run /sc2 help for help!"));
 			}
+			else
+				prefix.appendText("Invalid number of parameters");
+
 		}
 		else
 		{
