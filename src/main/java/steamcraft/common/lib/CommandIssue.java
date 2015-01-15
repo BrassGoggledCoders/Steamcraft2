@@ -63,8 +63,8 @@ public class CommandIssue extends CommandBase
 		{
 			Issue issue = new Issue();
 			issue.setNumber(1);
-			issue.setTitle("Issue: " + parameters[1]);
-			issue.setBody(parameters[2].replace("_", " ") + " Reporter: " + sender.getCommandSenderName());
+			issue.setTitle("Issue: " + parameters[0]);
+			issue.setBody(parameters[1].replace("_", " ") + " Reporter: " + sender.getCommandSenderName());
 			IssueService issueservice = new IssueService();
 			// This token is read only, don't even bother trying to use it to hack :P
 			issueservice.getClient().setOAuth2Token("df100cf80572205cad48cefa0cbfc5baf8d9c716");
