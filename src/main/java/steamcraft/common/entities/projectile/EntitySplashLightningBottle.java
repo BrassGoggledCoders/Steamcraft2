@@ -76,6 +76,25 @@ public class EntitySplashLightningBottle extends EntityThrowable
 		this.setThrowableHeading(this.motionX, this.motionY, this.motionZ, this.func_70182_d(), 1.0F);
 	}
 
+	public EntitySplashLightningBottle(World p_i1777_1_, EntityLivingBase p_i1777_2_, int addSpeed)
+	{
+		super(p_i1777_1_);
+		this.thrower = p_i1777_2_;
+		this.setSize(0.25F, 0.25F);
+		this.setLocationAndAngles(p_i1777_2_.posX, p_i1777_2_.posY + p_i1777_2_.getEyeHeight(), p_i1777_2_.posZ, p_i1777_2_.rotationYaw,
+				p_i1777_2_.rotationPitch);
+		this.posX -= MathHelper.cos(this.rotationYaw / 180.0F * (float) Math.PI) * 0.16F;
+		this.posY -= 0.10000000149011612D;
+		this.posZ -= MathHelper.sin(this.rotationYaw / 180.0F * (float) Math.PI) * 0.16F;
+		this.setPosition(this.posX, this.posY, this.posZ);
+		this.yOffset = 0.0F;
+		float f = 0.4F;
+		this.motionX = -MathHelper.sin(this.rotationYaw / 180.0F * (float) Math.PI) * MathHelper.cos(this.rotationPitch / 180.0F * (float) Math.PI) * f;
+		this.motionZ = MathHelper.cos(this.rotationYaw / 180.0F * (float) Math.PI) * MathHelper.cos(this.rotationPitch / 180.0F * (float) Math.PI) * f;
+		this.motionY = -MathHelper.sin((this.rotationPitch + this.func_70183_g()) / 180.0F * (float) Math.PI) * f;
+		this.setThrowableHeading(this.motionX, this.motionY + addSpeed, this.motionZ, this.func_70182_d(), 1.0F);
+	}
+
 	public EntitySplashLightningBottle(World p_i1778_1_, double p_i1778_2_, double p_i1778_4_, double p_i1778_6_)
 	{
 		super(p_i1778_1_);

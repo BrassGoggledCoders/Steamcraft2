@@ -1,6 +1,7 @@
 package steamcraft.common.items;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import steamcraft.common.entities.projectile.EntitySplashLightningBottle;
@@ -13,7 +14,7 @@ public class ItemSplashLightningBottle extends BaseItem
 	}
 
 	@Override
-	public ItemStack onItemRightClick(ItemStack p_77659_1_, World p_77659_2_, EntityPlayer p_77659_3_)
+	public void onPlayerStoppedUsing(ItemStack p_77659_1_, World p_77659_2_, EntityPlayer p_77659_3_, int useCount)
 	{
 		if(!p_77659_3_.capabilities.isCreativeMode)
 		{
@@ -24,9 +25,27 @@ public class ItemSplashLightningBottle extends BaseItem
 
 		if(!p_77659_2_.isRemote)
 		{
-			p_77659_2_.spawnEntityInWorld(new EntitySplashLightningBottle(p_77659_2_, p_77659_3_));
+			p_77659_2_.spawnEntityInWorld(new EntitySplashLightningBottle(p_77659_2_, p_77659_3_, useCount));
 		}
+	}
 
-		return p_77659_1_;
+	@Override
+	public int getMaxItemUseDuration(ItemStack p_77626_1_)
+	{
+		return 72000;
+	}
+
+	@Override
+	public EnumAction getItemUseAction(ItemStack p_77661_1_)
+	{
+		return EnumAction.bow;
+	}
+
+	@Override
+	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
+	{
+		player.setItemInUse(stack, this.getMaxItemUseDuration(stack));
+
+		return stack;
 	}
 }
