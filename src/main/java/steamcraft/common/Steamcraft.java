@@ -31,6 +31,7 @@ import steamcraft.common.lib.events.EventHandlerFML;
 import steamcraft.common.lib.events.EventHandlerForge;
 import steamcraft.common.worldgen.WorldGenSteamcraft;
 import steamcraft.common.worldgen.dimension.WorldProviderDeeps;
+import boilerplate.common.compathandler.FMPCompatHandler;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -71,8 +72,8 @@ public class Steamcraft
 
 		InitPackets.init();
 
-		InitBlocks.init();
 		InitItems.init();
+		InitBlocks.init();
 		CompatabilityLayer.initCompatItems();
 	}
 
@@ -100,6 +101,7 @@ public class Steamcraft
 		InitBiomes.init();
 
 		CompatabilityLayer.init();
+		FMPCompatHandler.doRegister();
 	}
 
 	@EventHandler

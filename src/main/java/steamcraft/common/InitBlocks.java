@@ -314,7 +314,7 @@ public class InitBlocks
 
 	public static void registerBlock(Block block, String name)
 	{
-		if(block.renderAsNormalBlock() || block.isOpaqueCube() || block.isNormalCube())
+		if(block.isOpaqueCube() || block.isNormalCube())
 			FMPCompatHandler.registerFMP(block);
 
 		GameRegistry.registerBlock(block, name);
