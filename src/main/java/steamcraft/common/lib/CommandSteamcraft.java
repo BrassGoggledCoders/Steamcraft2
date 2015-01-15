@@ -98,28 +98,28 @@ public class CommandSteamcraft extends CommandBase
 			}
 			else if(parameters[0].equalsIgnoreCase("issue"))
 			{
-				if(parameters.length == 2)
+				// if(parameters.length == 2)
+				// {
+				Issue issue = new Issue();
+				// issue.setNumber(1);
+				issue.setTitle(/* parameters[1] */"Potato");
+				issue.setBody(/* parameters[2].replace("_", " ") + " Reporter: " + sender.getCommandSenderName() */"Potato");
+				IssueService issueservice = new IssueService();
+				// This token is read only, don't even bother trying to use it to hack :P
+				issueservice.getClient().setOAuth2Token("df100cf80572205cad48cefa0cbfc5baf8d9c716");
+				try
 				{
-					Issue issue = new Issue();
-					issue.setNumber(1);
-					issue.setTitle(/* parameters[1] */"Potato");
-					issue.setBodyText(/* parameters[2].replace("_", " ") + " Reporter: " + sender.getCommandSenderName() */"Potato");
-					IssueService issueservice = new IssueService();
-					// This token is read only, don't even bother trying to use it to hack :P
-					issueservice.getClient().setOAuth2Token("df100cf80572205cad48cefa0cbfc5baf8d9c716");
-					try
-					{
-						// issue.setNumber(issueservice.getIssues().size() + 1);
-						issueservice.createIssue("BrassGoggledCoders", "Boilerplate", issue);
-					}
-					catch(IOException e)
-					{
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+					// issue.setNumber(issueservice.getIssues().size() + 1);
+					issueservice.createIssue("BrassGoggledCoders", "Boilerplate", issue);
 				}
-				else
-					sender.addChatMessage(prefix.appendText("Invalid Usage. Correct Syntax is /sc2 issue <title> <body text>"));
+				catch(IOException e)
+				{
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				// }
+				// else
+				// sender.addChatMessage(prefix.appendText("Invalid Usage. Correct Syntax is /sc2 issue <title> <body text>"));
 			}
 			else
 				sender.addChatMessage(prefix.appendText("Not a valid sub-command! Run /sc2 help for help!"));
