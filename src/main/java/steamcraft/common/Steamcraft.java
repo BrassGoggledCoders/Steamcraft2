@@ -23,6 +23,7 @@ import steamcraft.common.compat.CompatabilityLayer;
 import steamcraft.common.config.Config;
 import steamcraft.common.config.ConfigGeneral;
 import steamcraft.common.config.ConfigWorldGen;
+import steamcraft.common.lib.CommandIssue;
 import steamcraft.common.lib.CommandSteamcraft;
 import steamcraft.common.lib.CreativeTabSteamcraft;
 import steamcraft.common.lib.LibInfo;
@@ -117,5 +118,6 @@ public class Steamcraft
 	public void serverStarting(FMLServerStartingEvent event)
 	{
 		event.registerServerCommand(new CommandSteamcraft());
+		event.registerServerCommand(new CommandIssue());
 	}
 }
