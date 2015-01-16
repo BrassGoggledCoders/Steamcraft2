@@ -18,6 +18,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IExtendedEntityProperties;
 import steamcraft.common.container.InventoryVanity;
+import steamcraft.common.lib.LibInfo;
 
 /**
  * @author warlordjones
@@ -26,9 +27,10 @@ import steamcraft.common.container.InventoryVanity;
 // TODO: Add packets
 public class EntityPlayerExtended implements IExtendedEntityProperties
 {
-	public final static String EXT_PROP_NAME = "EntityPlayerExtended";
+	public final static String EXT_PROP_NAME = LibInfo.PREFIX + "EntityPlayerExtended";
 
 	private final InventoryVanity inventory = new InventoryVanity();
+	private int cooldown = 0;
 
 	private final EntityPlayer player;
 
@@ -53,6 +55,7 @@ public class EntityPlayerExtended implements IExtendedEntityProperties
 		final NBTTagCompound properties = new NBTTagCompound();
 		tagCompound.setTag(EXT_PROP_NAME, properties);
 		this.inventory.writeToNBT(properties);
+		tagCompound.setInteger("cooldown", cooldown);
 	}
 
 	@Override
@@ -60,6 +63,7 @@ public class EntityPlayerExtended implements IExtendedEntityProperties
 	{
 		final NBTTagCompound properties = (NBTTagCompound) tagCompound.getTag(EXT_PROP_NAME);
 		this.inventory.readFromNBT(properties);
+		cooldown = tagCompound.getInteger("cooldown");
 	}
 
 	@Override
@@ -70,5 +74,15 @@ public class EntityPlayerExtended implements IExtendedEntityProperties
 	public InventoryVanity getInventory()
 	{
 		return this.inventory;
+	}
+
+	public int getCooldown()
+	{
+		return cooldown;
+	}
+
+	public void setCooldown(int newCooldown)
+	{
+		this.cooldown = newCooldown;
 	}
 }

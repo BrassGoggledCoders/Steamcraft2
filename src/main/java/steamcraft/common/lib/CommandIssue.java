@@ -18,11 +18,14 @@ import java.util.List;
 
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
 
 import org.eclipse.egit.github.core.Issue;
 import org.eclipse.egit.github.core.service.IssueService;
+
+import steamcraft.common.entities.EntityPlayerExtended;
 
 /**
  * @author Surseance
@@ -59,29 +62,47 @@ public class CommandIssue extends CommandBase
 	@Override
 	public void processCommand(ICommandSender sender, String[] parameters)
 	{
-		if(parameters.length == 2)
+		if(sender instanceof EntityPlayer)
 		{
-			Issue issue = new Issue();
-			issue.setNumber(1);
-			issue.setTitle("Issue: " + parameters[0].replace("_", " "));
-			issue.setBody(parameters[1].replace("_", " ") + " Reporter: " + sender.getCommandSenderName());
-			IssueService issueservice = new IssueService();
-			// This token is read only, don't even bother trying to use it to hack :P
-			issueservice.getClient().setOAuth2Token("df100cf80572205cad48cefa0cbfc5baf8d9c716");
-			try
+			EntityPlayer player = (EntityPlayer) sender;
+			EntityPlayerExtended props = ((EntityPlayerExtended) player.getExtendedProperties(EntityPlayerExtended.EXT_PROP_NAME));
+			if(parameters.length == 2)
 			{
-				issueservice.createIssue("BrassGoggledCoders", "Steamcraft2", issue);
+				if(props.getCooldown() == 0)
+				{
+					Issue issue = new Issue();
+					issue.setNumber(1);
+					issue.setTitle("Issue: " + parameters[0].replace("_", " "));
+					issue.setBody(parameters[1].replace("_", " ") + " Reporter: " + sender.getCommandSenderName());
+					IssueService issueservice = new IssueService();
+					// This token is read only, don't even bother trying to use it to hack :P
+					issueservice.getClient().setOAuth2Token("df100cf80572205cad48cefa0cbfc5baf8d9c716");
+					try
+					{
+						issueservice.createIssue("BrassGoggledCoders", "Steamcraft2", issue);
+						props.setCooldown(1200);
+					}
+					catch(IOException e)
+					{
+						e.printStackTrace();
+					}
+				}
+				else
+				{
+					ChatComponentText invalid = new ChatComponentText(
+							"[Steamcraft Issue Reporter] You must wait " + Integer.valueOf(props.getCooldown() / 20)
+									+ " seconds before using that command again");
+					invalid.getChatStyle().setColor(EnumChatFormatting.RED);
+					sender.addChatMessage(invalid);
+				}
+
 			}
-			catch(IOException e)
+			else
 			{
-				e.printStackTrace();
+				ChatComponentText invalid = new ChatComponentText("[Steamcraft Issue Reporter] Invalid number of parameters. Usage is /issue <title> <body>");
+				invalid.getChatStyle().setColor(EnumChatFormatting.GOLD);
+				sender.addChatMessage(invalid);
 			}
-		}
-		else
-		{
-			ChatComponentText invalid = new ChatComponentText("[Steamcraft Issue Reporter] Invalid number of parameters. Usage is /issue <title> <body>");
-			invalid.getChatStyle().setColor(EnumChatFormatting.GOLD);
-			sender.addChatMessage(invalid);
 		}
 	}
 }

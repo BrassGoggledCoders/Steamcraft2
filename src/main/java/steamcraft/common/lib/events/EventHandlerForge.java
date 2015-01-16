@@ -83,6 +83,9 @@ public class EventHandlerForge
 				player.addPotionEffect(new PotionEffect(Potion.nightVision.id, 2, 0, true));
 			if((is != null) && (is.getItem() == InitItems.itemDivingHelmet) && player.isInWater())
 				player.addPotionEffect(new PotionEffect(Potion.nightVision.id, 2, 0, true));
+
+			EntityPlayerExtended props = ((EntityPlayerExtended) player.getExtendedProperties(EntityPlayerExtended.EXT_PROP_NAME));
+			props.setCooldown(props.getCooldown() - 1);
 		}
 	}
 
