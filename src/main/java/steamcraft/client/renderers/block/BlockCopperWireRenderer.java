@@ -21,7 +21,7 @@ import net.minecraftforge.common.util.ForgeDirection;
 import org.lwjgl.opengl.GL11;
 
 import steamcraft.client.lib.RenderIDs;
-import steamcraft.common.tiles.TileCopperWire;
+import steamcraft.common.tiles.energy.TileCopperWire;
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 
 /**

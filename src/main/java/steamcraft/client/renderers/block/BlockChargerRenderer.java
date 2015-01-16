@@ -20,7 +20,7 @@ import net.minecraft.world.IBlockAccess;
 import org.lwjgl.opengl.GL11;
 
 import steamcraft.client.lib.RenderIDs;
-import steamcraft.common.tiles.TileCharger;
+import steamcraft.common.tiles.energy.TileCharger;
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 
 /**

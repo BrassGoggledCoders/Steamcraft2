@@ -10,7 +10,7 @@
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
  *
  */
-package steamcraft.common.tiles;
+package steamcraft.common.tiles.energy;
 
 import java.util.ArrayList;
 
@@ -450,7 +450,7 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 	public boolean isEnergyHandler(ForgeDirection dir)
 	{
 		return (this.worldObj.getTileEntity(this.xCoord + dir.offsetX, this.yCoord + dir.offsetY, this.zCoord + dir.offsetZ) instanceof IEnergyConnection)
-				&& isCopperWire(dir);
+				&& !isCopperWire(dir);
 	}
 
 	@Override

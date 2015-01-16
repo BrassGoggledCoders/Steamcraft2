@@ -18,7 +18,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import steamcraft.common.lib.LibInfo;
-import steamcraft.common.tiles.TileTurbine;
+import steamcraft.common.tiles.energy.TileTurbine;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 

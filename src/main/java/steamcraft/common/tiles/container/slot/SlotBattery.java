@@ -15,7 +15,7 @@ package steamcraft.common.tiles.container.slot;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
-import steamcraft.common.tiles.TileBattery;
+import steamcraft.common.tiles.energy.TileBattery;
 import boilerplate.steamapi.item.IEnergyItem;
 
 /**

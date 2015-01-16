@@ -31,9 +31,7 @@ import steamcraft.common.items.pda.ContainerPDA;
 import steamcraft.common.items.pda.GuiPDA;
 import steamcraft.common.items.pda.InventoryPDA;
 import steamcraft.common.tiles.TileArmorEditor;
-import steamcraft.common.tiles.TileBattery;
 import steamcraft.common.tiles.TileBloomery;
-import steamcraft.common.tiles.TileCharger;
 import steamcraft.common.tiles.TileNuclearBoiler;
 import steamcraft.common.tiles.TileSteamBoiler;
 import steamcraft.common.tiles.TileTimeBomb;
@@ -44,6 +42,8 @@ import steamcraft.common.tiles.container.ContainerCharger;
 import steamcraft.common.tiles.container.ContainerNuclearBoiler;
 import steamcraft.common.tiles.container.ContainerSteamBoiler;
 import steamcraft.common.tiles.container.ContainerTimeBomb;
+import steamcraft.common.tiles.energy.TileBattery;
+import steamcraft.common.tiles.energy.TileCharger;
 import cpw.mods.fml.common.network.IGuiHandler;
 
 /**

@@ -10,7 +10,7 @@
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
  *
  */
-package steamcraft.common.tiles;
+package steamcraft.common.tiles.energy;
 
 import java.util.EnumSet;
 
@@ -29,16 +29,22 @@ import cpw.mods.fml.relauncher.SideOnly;
  * @author decebaldecebal
  * 
  */
-public class TileCharger extends BaseTileWithInventory implements IEnergyHandler
+public class TileBattery extends BaseTileWithInventory implements IEnergyHandler
 {
-	private static int energy = 100000;
-	public static short transferRate = 80;
+	private static int initialEnergy = 5000;
+	private static short initialTransferRate = 40;
 
-	public EnergyStorage buffer = new EnergyStorage(energy, transferRate);
+	private byte ticksSinceUpdate = 0;
 
-	public TileCharger()
+	public int totalEnergy = 0;
+	public int maxEnergy = 0;
+	public short transferRate = initialTransferRate;
+
+	public EnergyStorage buffer = new EnergyStorage(initialEnergy, initialTransferRate);
+
+	public TileBattery()
 	{
-		super(1);
+		super(4);
 	}
 
 	@Override
@@ -58,7 +64,9 @@ public class TileCharger extends BaseTileWithInventory implements IEnergyHandler
 	@SideOnly(Side.CLIENT)
 	public int getEnergyScaled(int par1)
 	{
-		return this.buffer.getEnergyStored() / this.buffer.getMaxEnergyStored() / par1;
+		// if(maxEnergy > 0)
+		return (this.totalEnergy + this.buffer.getEnergyStored()) / ((this.maxEnergy + initialEnergy) / 1000) / par1;
+		// else return 0;
 	}
 
 	@Override
@@ -66,22 +74,29 @@ public class TileCharger extends BaseTileWithInventory implements IEnergyHandler
 	{
 		if(!this.worldObj.isRemote)
 		{
+			this.ticksSinceUpdate++;
+
+			if(this.ticksSinceUpdate > 50)
+			{
+				this.ticksSinceUpdate = 0;
+				this.updateEnergyFromInv();
+			}
 
 			if(this.buffer.getEnergyStored() > 0)
 				this.chargeItems();
 
-			short inputEnergy = (short) this.extractEnergy(ForgeDirection.UNKNOWN, transferRate, true);
+			short outputEnergy = (short) this.extractEnergy(ForgeDirection.UNKNOWN, this.transferRate, true);
 
-			if(inputEnergy > 0)
+			if(outputEnergy > 0)
 				for(ForgeDirection direction : EnumSet.allOf(ForgeDirection.class))
-					if(inputEnergy > 0)
+					if(outputEnergy > 0)
 					{
 						TileEntity tileEntity = this.worldObj.getTileEntity(this.xCoord - direction.offsetX, this.yCoord - direction.offsetY,
 								this.zCoord - direction.offsetZ);
 
 						if(tileEntity instanceof IEnergyHandler)
-							inputEnergy -= this.receiveEnergy(ForgeDirection.UNKNOWN,
-									((IEnergyHandler) tileEntity).extractEnergy(direction.getOpposite(), inputEnergy, false), false);
+							outputEnergy -= this.extractEnergy(ForgeDirection.UNKNOWN,
+									((IEnergyHandler) tileEntity).receiveEnergy(direction.getOpposite(), outputEnergy, false), false);
 					}
 					else
 						break;
@@ -102,6 +117,25 @@ public class TileCharger extends BaseTileWithInventory implements IEnergyHandler
 			}
 	}
 
+	public void updateEnergyFromInv()
+	{
+		this.maxEnergy = 0;
+		this.totalEnergy = 0;
+		this.transferRate = initialTransferRate;
+
+		for(ItemStack stack : this.inventory)
+			if(stack != null)
+			{
+				IEnergyItem item = (IEnergyItem) stack.getItem();
+
+				this.maxEnergy += item.getMaxEnergyStored(stack);
+				this.totalEnergy += item.getEnergyStored(stack);
+				this.transferRate += item.getMaxSend();
+			}
+
+		this.buffer.setMaxTransfer(this.transferRate);
+	}
+
 	@Override
 	public boolean canConnectEnergy(ForgeDirection from)
 	{
@@ -120,6 +154,18 @@ public class TileCharger extends BaseTileWithInventory implements IEnergyHandler
 		int usedEnergy = maxExtract;
 		maxExtract -= this.buffer.extractEnergy(maxExtract, simulate);
 
+		if(maxExtract != 0)
+			for(ItemStack stack : this.inventory)
+				if(stack != null)
+				{
+					IEnergyItem item = (IEnergyItem) stack.getItem();
+
+					if(maxExtract > 0)
+						maxExtract -= item.extractEnergy(stack, maxExtract, simulate);
+					else
+						break;
+				}
+
 		usedEnergy -= maxExtract;
 
 		return usedEnergy;
@@ -128,18 +174,18 @@ public class TileCharger extends BaseTileWithInventory implements IEnergyHandler
 	@Override
 	public int getEnergyStored(ForgeDirection from)
 	{
-		return this.buffer.getEnergyStored();
+		return this.buffer.getEnergyStored() + this.totalEnergy;
 	}
 
 	@Override
 	public int getMaxEnergyStored(ForgeDirection from)
 	{
-		return this.buffer.getMaxEnergyStored();
+		return this.buffer.getMaxEnergyStored() + this.maxEnergy;
 	}
 
 	@Override
 	public String getInventoryName()
 	{
-		return "Charger";
+		return "Battery Bank";
 	}
 }

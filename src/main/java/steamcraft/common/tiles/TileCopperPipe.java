@@ -788,8 +788,10 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 
 	public static class Coords
 	{
-		int x, y, z;
-		ForgeDirection dir;
+		public int x;
+		public int y;
+		public int z;
+		public ForgeDirection dir;
 
 		public Coords(int x, int y, int z, ForgeDirection dir)
 		{

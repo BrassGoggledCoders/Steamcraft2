@@ -10,10 +10,11 @@
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
  *
  */
-package steamcraft.common.tiles;
+package steamcraft.common.tiles.energy;
 
 import java.util.EnumSet;
 
+import steamcraft.common.tiles.TileSteamBoiler;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
