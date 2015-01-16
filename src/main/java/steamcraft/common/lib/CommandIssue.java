@@ -21,6 +21,7 @@ import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
+import net.minecraftforge.common.ForgeVersion;
 
 import org.eclipse.egit.github.core.Issue;
 import org.eclipse.egit.github.core.service.IssueService;
@@ -72,8 +73,9 @@ public class CommandIssue extends CommandBase
 				{
 					Issue issue = new Issue();
 					issue.setNumber(1);
-					issue.setTitle("Issue: " + parameters[0].replace("_", " "));
-					issue.setBody(parameters[1].replace("_", " ") + " Reporter: " + sender.getCommandSenderName());
+					issue.setTitle(parameters[0].replace("_", " "));
+					issue.setBody(parameters[1].replace("_", " ") + " Forge Version:" + ForgeVersion.getVersion() + "Mod Version:" + LibInfo.VERSION
+							+ " Reporter: " + sender.getCommandSenderName());
 					IssueService issueservice = new IssueService();
 					// This token is read only, don't even bother trying to use it to hack :P
 					issueservice.getClient().setOAuth2Token("df100cf80572205cad48cefa0cbfc5baf8d9c716");
