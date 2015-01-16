@@ -29,6 +29,8 @@ import steamcraft.common.tiles.TileCopperPipe.Coords;
 import cofh.api.energy.EnergyStorage;
 import cofh.api.energy.IEnergyConnection;
 import cofh.api.energy.IEnergyHandler;
+import cofh.api.energy.IEnergyProvider;
+import cofh.api.energy.IEnergyReceiver;
 import cpw.mods.fml.common.network.NetworkRegistry.TargetPoint;
 
 /**
@@ -554,9 +556,9 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 				if(coords != null)
 					if(this.buffer.getEnergyStored() != this.buffer.getMaxEnergyStored())
 					{
-						if(world.getTileEntity(coords.x, coords.y, coords.z) instanceof IEnergyHandler)
+						if(world.getTileEntity(coords.x, coords.y, coords.z) instanceof IEnergyProvider)
 						{
-							IEnergyHandler tile = (IEnergyHandler) world.getTileEntity(coords.x, coords.y, coords.z);
+							IEnergyProvider tile = (IEnergyProvider) world.getTileEntity(coords.x, coords.y, coords.z);
 
 							if(tile != null)
 							{
@@ -588,9 +590,9 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 				if(coords != null)
 					if(this.buffer.getEnergyStored() > 0)
 					{
-						if(wire.worldObj.getTileEntity(coords.x, coords.y, coords.z) instanceof IEnergyHandler)
+						if(wire.worldObj.getTileEntity(coords.x, coords.y, coords.z) instanceof IEnergyReceiver)
 						{
-							IEnergyHandler tile = (IEnergyHandler) wire.worldObj.getTileEntity(coords.x, coords.y, coords.z);
+							IEnergyReceiver tile = (IEnergyReceiver) wire.worldObj.getTileEntity(coords.x, coords.y, coords.z);
 
 							if(tile != null)
 							{
