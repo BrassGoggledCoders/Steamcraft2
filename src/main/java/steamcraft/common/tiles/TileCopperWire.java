@@ -27,6 +27,7 @@ import steamcraft.common.InitPackets;
 import steamcraft.common.packets.CopperWirePacket;
 import steamcraft.common.tiles.TileCopperPipe.Coords;
 import cofh.api.energy.EnergyStorage;
+import cofh.api.energy.IEnergyConnection;
 import cofh.api.energy.IEnergyHandler;
 import cpw.mods.fml.common.network.NetworkRegistry.TargetPoint;
 
@@ -436,7 +437,7 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 
 	private boolean canConnect(ForgeDirection dir)
 	{
-		return this.isCopperWire(dir) || this.isEnergyHandler(dir);
+		return this.isEnergyHandler(dir) || isCopperWire(dir);
 	}
 
 	private boolean isCopperWire(ForgeDirection dir)
@@ -446,8 +447,8 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 
 	public boolean isEnergyHandler(ForgeDirection dir)
 	{
-		return (this.worldObj.getTileEntity(this.xCoord + dir.offsetX, this.yCoord + dir.offsetY, this.zCoord + dir.offsetZ) instanceof IEnergyHandler)
-				&& !this.isCopperWire(dir);
+		return (this.worldObj.getTileEntity(this.xCoord + dir.offsetX, this.yCoord + dir.offsetY, this.zCoord + dir.offsetZ) instanceof IEnergyConnection)
+				&& isCopperWire(dir);
 	}
 
 	@Override
