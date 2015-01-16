@@ -38,6 +38,7 @@ public class ItemElectricTool extends ItemModTool implements IEnergyItem
 		this.setMaxStackSize(1);
 		this.setMaxDamage(20);
 		this.setHasSubtypes(false);
+		this.setNoRepair();
 	}
 
 	@SuppressWarnings("all")
