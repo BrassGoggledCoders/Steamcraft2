@@ -104,18 +104,16 @@ public class BlockCastIronLamp extends BlockContainer
 	public int onBlockPlaced(World world, int x, int y, int z, int metadata, float hitX, float hitY,
 			float hitZ, int side)
 	{
-		if(side == 0 /* Bottom */|| side == 1 /* Top */)
+		// TODO Cleanup!!
+		if(side == 1 || side == 3)
 			world.setBlockMetadataWithNotify(x, y, z, 0, 2);
-		if(side == 2 /* North */)
+		if(side == 2)
 			world.setBlockMetadataWithNotify(x, y, z, 1, 2);
-		if(side == 3 /* South */)
+		if(side == 4)
 			world.setBlockMetadataWithNotify(x, y, z, 2, 2);
-		if(side == 4 /* West */)
+		if(side == 5)
 			world.setBlockMetadataWithNotify(x, y, z, 3, 2);
-		if(side == 5 /* East */)
-			world.setBlockMetadataWithNotify(x, y, z, 3, 2);
-
-		return super.onBlockPlaced(world, x, y, z, side, hitX, hitY, hitZ, metadata);
+		return metadata;
 	}
 
 	@Override
@@ -125,10 +123,10 @@ public class BlockCastIronLamp extends BlockContainer
 			if(this.powered && !world.isBlockIndirectlyGettingPowered(x, y, z))
 			{
 				world.scheduleBlockUpdate(x, y, z, this, 4);
-				world.setBlock(x, y, z, InitBlocks.blockCastIronLamp, 1, world.getBlockMetadata(x, y, z) + 10);
+				world.setBlock(x, y, z, InitBlocks.blockCastIronLamp);
 			}
 			else if(!this.powered && world.isBlockIndirectlyGettingPowered(x, y, z))
-				world.setBlock(x, y, z, InitBlocks.blockCastIronLampOn, 1, world.getBlockMetadata(x, y, z) + 10);
+				world.setBlock(x, y, z, InitBlocks.blockCastIronLampOn);
 	}
 
 	@Override
@@ -138,10 +136,10 @@ public class BlockCastIronLamp extends BlockContainer
 			if(this.powered && !world.isBlockIndirectlyGettingPowered(x, y, z))
 			{
 				world.scheduleBlockUpdate(x, y, z, this, 4);
-				world.setBlock(x, y, z, InitBlocks.blockCastIronLamp, 1, world.getBlockMetadata(x, y, z) + 10);
+				world.setBlock(x, y, z, InitBlocks.blockCastIronLamp);
 			}
 			else if(!this.powered && world.isBlockIndirectlyGettingPowered(x, y, z))
-				world.setBlock(x, y, z, InitBlocks.blockCastIronLampOn, 0, world.getBlockMetadata(x, y, z) + 10);
+				world.setBlock(x, y, z, InitBlocks.blockCastIronLampOn);
 	}
 
 	@Override
@@ -171,8 +169,6 @@ public class BlockCastIronLamp extends BlockContainer
 				world.spawnParticle("reddust", d + d4, d1 + d3, d2, -1.0D, 0.7D, 1.0D);
 			else if(l == 3)
 				world.spawnParticle("reddust", d, d1 + d3, d2 - d4, -1.0D, 0.7D, 1.0D);
-			else if(l == 4)
-				world.spawnParticle("reddust", d, d1 + d3, d2 + d4, -1.0D, 0.7D, 1.0D);
 			else
 				world.spawnParticle("reddust", d, d1, d2, -1.0D, 0.7D, 1.0D);
 		}

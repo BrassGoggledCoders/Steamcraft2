@@ -51,7 +51,7 @@ public class TileCastIronLampRenderer extends TileEntitySpecialRenderer
 		float f1 = 0.6666667F;
 		float f2 = 0.0F;
 
-		if(metadata == 1)
+		if(metadata == 1 || metadata == 4)
 		{
 			f2 = 180F;
 		}
@@ -84,7 +84,7 @@ public class TileCastIronLampRenderer extends TileEntitySpecialRenderer
 		GL11.glPushMatrix();
 		GL11.glScalef(f1, -f1, -f1);
 
-		if(metadata == 0)
+		if(metadata == 0 || metadata == 1)
 		{
 			this.lampModelTop.renderLamp();
 		}
