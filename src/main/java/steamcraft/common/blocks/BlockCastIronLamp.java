@@ -101,12 +101,10 @@ public class BlockCastIronLamp extends BlockContainer
 	}
 
 	@Override
-	public int onBlockPlaced(World world, int x, int y, int z, int side, float hitX, float hitY,
-			float hitZ, int metadata)
+	public int onBlockPlaced(World world, int x, int y, int z, int metadata, float hitX, float hitY,
+			float hitZ, int side)
 	{
-		if(side == 0 /* Bottom */)
-			world.setBlockMetadataWithNotify(x, y, z, 0, 2);
-		if(side == 1 /* Top */)
+		if(side == 0 /* Bottom */|| side == 1 /* Top */)
 			world.setBlockMetadataWithNotify(x, y, z, 0, 2);
 		if(side == 2 /* North */)
 			world.setBlockMetadataWithNotify(x, y, z, 1, 2);
@@ -115,7 +113,7 @@ public class BlockCastIronLamp extends BlockContainer
 		if(side == 4 /* West */)
 			world.setBlockMetadataWithNotify(x, y, z, 3, 2);
 		if(side == 5 /* East */)
-			world.setBlockMetadataWithNotify(x, y, z, 4, 2);
+			world.setBlockMetadataWithNotify(x, y, z, 3, 2);
 
 		return super.onBlockPlaced(world, x, y, z, side, hitX, hitY, hitZ, metadata);
 	}
