@@ -27,6 +27,7 @@ import steamcraft.common.items.ItemLightningGun;
 import steamcraft.common.items.ItemLoreBook;
 import steamcraft.common.items.ItemMachinePart;
 import steamcraft.common.items.ItemMatch;
+import steamcraft.common.items.ItemMonsterSpawner;
 import steamcraft.common.items.ItemNugget;
 import steamcraft.common.items.ItemParts;
 import steamcraft.common.items.ItemPowder;
@@ -190,6 +191,8 @@ public class InitItems
 	public static Item itemCraftingChip;
 
 	public static Item itemSplashLightningBottle;
+
+	public static Item itemMonsterSpawner;
 
 	/* Init */
 	public static void init()
@@ -526,6 +529,9 @@ public class InitItems
 
 		itemSplashLightningBottle = new ItemSplashLightningBottle().setUnlocalizedName("itemSplashLightningBottle");
 		registerItem(itemSplashLightningBottle, "ItemSplashLightningBottle");
+
+		itemMonsterSpawner = new ItemMonsterSpawner().setUnlocalizedName("itemMonsterSpawner");
+		registerItem(itemMonsterSpawner, "ItemSteamcraftMonsterSpawner");
 	}
 
 	public static void initializeModCompatItems()
