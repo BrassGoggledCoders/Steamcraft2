@@ -27,7 +27,9 @@ minecraft {
 }
 
 dependencies {
-	compile files("libs/boilerplate.jar")
+	compile files (
+"lib/boilerplate.jar"
+)
 }
 
 processResources
