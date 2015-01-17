@@ -68,7 +68,7 @@ public class ModelCastIronLampTop extends ModelBase
 		// TopPeak.setPosition(-3F, 14F, -3F);
 	}
 
-	public void renderSign()
+	public void renderLamp()
 	{
 		this.bracket.render(0.1F);
 		this.bracketWide.render(0.1F);

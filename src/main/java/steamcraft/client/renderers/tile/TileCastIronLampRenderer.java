@@ -46,47 +46,30 @@ public class TileCastIronLampRenderer extends TileEntitySpecialRenderer
 	public void renderTileEntityAt(TileEntity te, double dx, double dy, double dz, float scale)
 	{
 		Block block = te.getBlockType();
+		int metadata = te.getBlockMetadata();
 		GL11.glPushMatrix();
 		float f1 = 0.6666667F;
-		int metadata = te.getBlockMetadata();
-		float f3 = 0.0F;
-		float f2 = 1.0F;
+		float f2 = 0.0F;
 
-		if(metadata == 2)
-		{
-			f3 = 180F;
-		}
-
-		if(metadata == 4)
-		{
-			f3 = 90F;
-		}
-
-		if(metadata == 3)
-		{
-			f3 = -90F;
-		}
-
-		if(metadata == 6)
+		if(metadata == 1)
 		{
 			f2 = 180F;
 		}
 
-		GL11.glTranslatef((float) dx + 0.5F, (float) dy + (0.75F * f1), (float) dz + 0.5F);
-		GL11.glRotatef(f3, 0.0F, 1.0F, 0.0F);
-
-		if(metadata == 6)
+		if(metadata == 2)
 		{
-			GL11.glRotatef(f2, 0.0F, 0.0F, 1.0F);
+			f2 = 90F;
 		}
 
-		GL11.glTranslatef(0.0F, -0.3125F, -0.4375F);
+		if(metadata == 3)
+		{
+			f2 = -90F;
+		}
 
-		this.lampModelTop.bracketWide.showModel = true;
-		this.lampModelTop.crossbarLeft.showModel = true;
-		this.lampModelTop.crossbarRight.showModel = true;
-		this.lampModelSide.crossbarLeft.showModel = true;
-		this.lampModelSide.crossbarRight.showModel = true;
+		GL11.glTranslatef((float) dx + 0.5F, (float) dy + (0.75F * f1), (float) dz + 0.5F);
+		GL11.glRotatef(f2, 0.0F, 1.0F, 0.0F);
+
+		GL11.glTranslatef(0.0F, -0.3125F, -0.4375F);
 
 		// Renders the textures based on torch state
 		if(block == InitBlocks.blockCastIronLampOn)
@@ -101,13 +84,15 @@ public class TileCastIronLampRenderer extends TileEntitySpecialRenderer
 		GL11.glPushMatrix();
 		GL11.glScalef(f1, -f1, -f1);
 
-		if((metadata == 5) || (metadata == 6))
+		if(metadata == 0)
 		{
-			this.lampModelTop.renderSign();
+			this.lampModelTop.renderLamp();
 		}
 		else
 		{
-			this.lampModelSide.renderSign();
+			this.lampModelSide.renderLamp();
+			lampModelSide.bracket.showModel = true;
+			lampModelSide.bracket2.showModel = true;
 		}
 
 		GL11.glPopMatrix();

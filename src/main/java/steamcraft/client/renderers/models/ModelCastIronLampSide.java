@@ -74,7 +74,7 @@ public class ModelCastIronLampSide extends ModelBase
 		// TopPeak.setPosition(-3F, 14F, -3F);
 	}
 
-	public void renderSign()
+	public void renderLamp()
 	{
 		final float scale = 0.1F;
 		this.bracket.render(scale);

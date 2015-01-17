@@ -52,6 +52,12 @@ public class BlockCastIronLamp extends BlockContainer
 	}
 
 	@Override
+	public int damageDropped(int metadata)
+	{
+		return 0;
+	}
+
+	@Override
 	public TileEntity createNewTileEntity(World world, int metadata)
 	{
 		return new TileCastIronLamp();
@@ -95,29 +101,23 @@ public class BlockCastIronLamp extends BlockContainer
 	}
 
 	@Override
-	public int onBlockPlaced(World world, int i, int j, int k, int side, float hitX, float hitY,
+	public int onBlockPlaced(World world, int x, int y, int z, int side, float hitX, float hitY,
 			float hitZ, int metadata)
 	{
-		if(side == 0)
-			world.setBlockMetadataWithNotify(i, j, k, 6, 2);
-		if(side == 1)
-			world.setBlockMetadataWithNotify(i, j, k, 5, 2);
-		if(side == 2)
-			world.setBlockMetadataWithNotify(i, j, k, 4, 2);
-		if(side == 3)
-			world.setBlockMetadataWithNotify(i, j, k, 3, 2);
-		if(side == 4)
-			world.setBlockMetadataWithNotify(i, j, k, 2, 2);
-		if(side == 5)
-			world.setBlockMetadataWithNotify(i, j, k, 1, 2);
+		if(side == 0 /* Bottom */)
+			world.setBlockMetadataWithNotify(x, y, z, 0, 2);
+		if(side == 1 /* Top */)
+			world.setBlockMetadataWithNotify(x, y, z, 0, 2);
+		if(side == 2 /* North */)
+			world.setBlockMetadataWithNotify(x, y, z, 1, 2);
+		if(side == 3 /* South */)
+			world.setBlockMetadataWithNotify(x, y, z, 2, 2);
+		if(side == 4 /* West */)
+			world.setBlockMetadataWithNotify(x, y, z, 3, 2);
+		if(side == 5 /* East */)
+			world.setBlockMetadataWithNotify(x, y, z, 4, 2);
 
-		return metadata;
-	}
-
-	@Override
-	public boolean canPlaceBlockAt(World world, int x, int y, int z)
-	{
-		return !world.isAirBlock(x, y - 1, z) ? true : false;
+		return super.onBlockPlaced(world, x, y, z, side, hitX, hitY, hitZ, metadata);
 	}
 
 	@Override
@@ -144,19 +144,6 @@ public class BlockCastIronLamp extends BlockContainer
 			}
 			else if(!this.powered && world.isBlockIndirectlyGettingPowered(x, y, z))
 				world.setBlock(x, y, z, InitBlocks.blockCastIronLampOn, 0, world.getBlockMetadata(x, y, z) + 10);
-	}
-
-	@SuppressWarnings("unused")
-	private boolean dropIfCantStay(World world, int x, int y, int z)
-	{
-		if(!this.canPlaceBlockAt(world, x, y, z))
-		{
-			this.dropBlockAsItem(world, x, y, z, world.getBlockMetadata(x, y, z), 1);
-			world.setBlockToAir(x, y, z);
-			return false;
-		}
-		else
-			return true;
 	}
 
 	@Override
