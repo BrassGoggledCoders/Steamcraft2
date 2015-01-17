@@ -58,6 +58,15 @@ Beta 3.4:
 # Fix shrinkray/raygun not being chargable
 # Many jetpack/wings bugs should have been squashed
 # Some creative-only WIP items have been disabled
+Beta 3.5:
++ FMP integration for some basic blocks.
++ Books of lore that generate in dungeon chests. Feel free to write some lore and shoot it our way. (Item Icon from painterly pack!)
+* Model for the armour editor, doesn’t have a texture yet
+# Fixed the Energy Net for the new subclassed version of the RF api.
+# Fix the Cast Iron Lamp
+# Fix dupe bug with crafting items (hammer, drawplate and grindstone)
+# Fix crafting bug with jars
+# Start of fixes to the battery model
 
 Beta 4:
 ++ The Deeps:
