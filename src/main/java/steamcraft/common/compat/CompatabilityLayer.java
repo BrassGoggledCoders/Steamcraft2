@@ -73,13 +73,24 @@ public class CompatabilityLayer
 
 		IMCHelper.addNewPartBuilderMaterial(ConfigGeneral.etheriumMaterialID, new ItemStack(InitItems.itemResource, 1, 0), new ItemStack(
 				InitItems.itemResource, 1, 6), 2);
+		// Aluminum, Copper, Tin
 		for(int i = 0; i < 3; i++)
 		{
 			BlockFluidClassic block_fluid = (BlockFluidClassic) GameRegistry.findBlock("TConstruct", "fluid.molten." + LibInfo.metals[i].toLowerCase());
 			IMCHelper.addNewSmeltable(new ItemStack(InitBlocks.blockMetal, 1, i), InitBlocks.blockMetal, new FluidStack(block_fluid.getFluid(), 144 * 9), 600);
 			IMCHelper.addNewSmeltable(new ItemStack(InitItems.itemIngot, 1, i), InitBlocks.blockMetal, new FluidStack(block_fluid.getFluid(), 144), 300);
 			IMCHelper.addNewSmeltable(new ItemStack(InitItems.itemNugget, 1, i), InitBlocks.blockMetal, new FluidStack(block_fluid.getFluid(), 144 / 9), 150);
-
+		}
+		// Skip Zinc. Brass, Bronze, Steel.
+		for(int i = 4; i < 7; i++)
+		{
+			String metalname = LibInfo.metals[i].toLowerCase().replace("brass", "alubrass");
+			BlockFluidClassic block_fluid = (BlockFluidClassic) GameRegistry.findBlock("TConstruct", "fluid.molten." + metalname);
+			IMCHelper.addNewSmeltable(new ItemStack(InitBlocks.blockMetal, 1, i), InitBlocks.blockMetal, new FluidStack(block_fluid.getFluid(), 144 * 9),
+					600);
+			IMCHelper.addNewSmeltable(new ItemStack(InitItems.itemIngot, 1, i), InitBlocks.blockMetal, new FluidStack(block_fluid.getFluid(), 144), 300);
+			IMCHelper.addNewSmeltable(new ItemStack(InitItems.itemNugget, 1, i), InitBlocks.blockMetal, new FluidStack(block_fluid.getFluid(), 144 / 9),
+					150);
 		}
 	}
 
