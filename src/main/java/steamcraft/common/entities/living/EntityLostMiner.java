@@ -1,4 +1,4 @@
-package steamcraft.common.entities;
+package steamcraft.common.entities.living;
 
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.init.Blocks;

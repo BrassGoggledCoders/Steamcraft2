@@ -3,8 +3,8 @@ package steamcraft.common.worldgen.biomes;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.biome.BiomeGenBase;
-import steamcraft.common.entities.EntityGrub;
-import steamcraft.common.entities.EntityLostMiner;
+import steamcraft.common.entities.living.EntityGrub;
+import steamcraft.common.entities.living.EntityLostMiner;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 

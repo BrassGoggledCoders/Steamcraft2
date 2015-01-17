@@ -12,11 +12,11 @@
  */
 package steamcraft.common;
 
-import steamcraft.common.entities.EntityFleshGolem;
 import steamcraft.common.entities.EntityGrapplingHook;
-import steamcraft.common.entities.EntityGrub;
-import steamcraft.common.entities.EntityLostMiner;
 import steamcraft.common.entities.EntityTimeBomb;
+import steamcraft.common.entities.living.EntityFleshGolem;
+import steamcraft.common.entities.living.EntityGrub;
+import steamcraft.common.entities.living.EntityLostMiner;
 import steamcraft.common.entities.projectile.EntityBullet;
 import steamcraft.common.entities.projectile.EntityRocket;
 import cpw.mods.fml.common.registry.EntityRegistry;

@@ -26,7 +26,7 @@ import net.minecraftforge.common.util.ForgeDirection;
 import steamcraft.common.InitBlocks;
 import steamcraft.common.config.ConfigBalance;
 import steamcraft.common.config.ConfigGeneral;
-import steamcraft.common.entities.EntityFleshGolem;
+import steamcraft.common.entities.living.EntityFleshGolem;
 import cofh.api.energy.EnergyStorage;
 import cofh.api.energy.IEnergyProvider;
 

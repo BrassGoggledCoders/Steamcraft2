@@ -16,7 +16,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
-import steamcraft.common.entities.EntityGrub;
+import steamcraft.common.entities.living.EntityGrub;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
