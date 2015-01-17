@@ -17,6 +17,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraftforge.common.BiomeDictionary;
+import net.minecraftforge.fluids.BlockFluidClassic;
+import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import steamcraft.common.InitBiomes;
@@ -60,18 +62,25 @@ public class CompatabilityLayer
 		if(Loader.isModLoaded("VersionChecker"))
 			FMLLog.info("[SteamCraft2]", "Poking VersionChecker");
 		FMLInterModComms.sendRuntimeMessage(LibInfo.ID, "VersionChecker", "addVersionCheck", LibInfo.VERSION_URL);
-		sendTiConIMC();
+		if(Loader.isModLoaded("TConstruct"))
+			sendTiConIMC();
 	}
 
 	private static void sendTiConIMC()
 	{
-		// TODO Zinc Tools & Melting. Metal Block melting, without TiCon dep
-		if(Loader.isModLoaded("TConstruct"))
-			FMLLog.info("[SteamCraft2]", "TiCon Detected, adding Etherium Tool Material");
+		FMLLog.info("[SteamCraft2]", "TiCon Detected, adding Etherium Tool Material");
 		IMCHelper.addNewToolMaterial(ConfigGeneral.etheriumMaterialID, "Etherium", 2000, 500, 5, 0.1F, 1, EnumChatFormatting.RED.toString(), 16711935);
 
 		IMCHelper.addNewPartBuilderMaterial(ConfigGeneral.etheriumMaterialID, new ItemStack(InitItems.itemResource, 1, 0), new ItemStack(
 				InitItems.itemResource, 1, 6), 2);
+		for(int i = 0; i < 3; i++)
+		{
+			BlockFluidClassic block_fluid = (BlockFluidClassic) GameRegistry.findBlock("TConstruct", "fluid.molten." + LibInfo.metals[i].toLowerCase());
+			IMCHelper.addNewSmeltable(new ItemStack(InitBlocks.blockMetal, 1, i), InitBlocks.blockMetal, new FluidStack(block_fluid.getFluid(), 144 * 9), 600);
+			IMCHelper.addNewSmeltable(new ItemStack(InitItems.itemIngot, 1, i), InitBlocks.blockMetal, new FluidStack(block_fluid.getFluid(), 144), 300);
+			IMCHelper.addNewSmeltable(new ItemStack(InitItems.itemNugget, 1, i), InitBlocks.blockMetal, new FluidStack(block_fluid.getFluid(), 144 / 9), 150);
+
+		}
 	}
 
 	private static void registerOreDictionaryEntries()
