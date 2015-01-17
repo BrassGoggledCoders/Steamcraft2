@@ -19,7 +19,12 @@ public class ItemMonsterSpawner extends BaseItemWithMetadata
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
 	{
-		if(world.isRemote)
+		if(!player.capabilities.isCreativeMode)
+		{
+			--stack.stackSize;
+		}
+
+		if(!world.isRemote)
 		{
 			EntityLivingBase entity = null;
 			if(stack.getItemDamage() == 0)
