@@ -63,7 +63,7 @@ public class ItemClockworkWings extends BaseArmor
 		{
 			if(!stack.hasTagCompound())
 				stack.setTagCompound(new NBTTagCompound());
-			
+
 			NBTTagCompound tag = stack.getTagCompound();
 			boolean shouldBoost = Steamcraft.proxy.isKeyPressed(0);
 			boolean wasJumping = tag.getBoolean("isJumping");
@@ -75,7 +75,7 @@ public class ItemClockworkWings extends BaseArmor
 					tag.setBoolean("isJumping", true);
 			else if(wasJumping)
 				tag.setBoolean("isJumping", false);
-			
+
 			if((Steamcraft.proxy.isScreenEmpty()) && (player.posY < 160) && shouldBoost)
 			{
 				player.addExhaustion(hungerPerTick);

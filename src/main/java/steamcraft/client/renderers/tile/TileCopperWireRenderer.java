@@ -46,9 +46,9 @@ public class TileCopperWireRenderer extends TileEntitySpecialRenderer
 		TileCopperWire wire = (TileCopperWire) tile;
 
 		if(tile.getBlockMetadata() == 0)
-			this.bindTexture(this.texture);
+			this.bindTexture(TileCopperWireRenderer.texture);
 		else
-			this.bindTexture(this.texture1);
+			this.bindTexture(TileCopperWireRenderer.texture1);
 		this.drawCore(wire);
 
 		for(ForgeDirection dir : wire.connections)

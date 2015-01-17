@@ -45,7 +45,7 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 		GL11.glTranslated(transX, transY, transZ);
 		GL11.glDisable(GL11.GL_LIGHTING);
 
-		this.bindTexture(this.texture);
+		this.bindTexture(TileCopperPipeRenderer.texture);
 
 		TileCopperPipe pipe = (TileCopperPipe) tile;
 
@@ -169,7 +169,7 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 				}
 				tess.draw();
 
-				this.bindTexture(this.texture);
+				this.bindTexture(TileCopperPipeRenderer.texture);
 			}
 		}
 
@@ -562,7 +562,7 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 				}
 				tess.draw();
 
-				this.bindTexture(this.texture);
+				this.bindTexture(TileCopperPipeRenderer.texture);
 			}
 		}
 

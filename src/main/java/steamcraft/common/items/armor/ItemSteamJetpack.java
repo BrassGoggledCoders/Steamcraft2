@@ -73,14 +73,14 @@ public class ItemSteamJetpack extends BaseArmor
 		{
 			if(!itemStack.hasTagCompound())
 				itemStack.setTagCompound(new NBTTagCompound());
-			
+
 			NBTTagCompound tag = itemStack.getTagCompound();
 
 			if(hasCanister != tag.getBoolean("hasCanister"))
 			{
 				tag.setBoolean("hasCanister", hasCanister);
 			}
-			
+
 			if(((player.posY < 200) && Steamcraft.proxy.isKeyPressed(0)))
 			{
 				this.consumeSteamFromCanister(player, this.steamPerTick);

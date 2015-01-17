@@ -125,14 +125,14 @@ public class InventoryVanity implements IInventory
 		// We're storing our items in a custom tag list using our 'tagName' from
 		// above
 		// to prevent potential conflicts
-		tagCompound.setTag(this.tagName, tagList);
+		tagCompound.setTag(InventoryVanity.tagName, tagList);
 	}
 
 	public void readFromNBT(NBTTagCompound compound)
 	{
 		// now you must include the NBTBase type ID when getting the list;
 		// NBTTagCompound's ID is 10
-		NBTTagList items = compound.getTagList(this.tagName, compound.getId());
+		NBTTagList items = compound.getTagList(InventoryVanity.tagName, compound.getId());
 		for(int i = 0; i < items.tagCount(); ++i)
 		{
 			// tagAt(int) has changed to getCompoundTagAt(int)

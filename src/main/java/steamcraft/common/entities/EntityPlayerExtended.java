@@ -55,7 +55,7 @@ public class EntityPlayerExtended implements IExtendedEntityProperties
 		final NBTTagCompound properties = new NBTTagCompound();
 		tagCompound.setTag(EXT_PROP_NAME, properties);
 		this.inventory.writeToNBT(properties);
-		tagCompound.setInteger("cooldown", cooldown);
+		tagCompound.setInteger("cooldown", this.cooldown);
 	}
 
 	@Override
@@ -63,7 +63,7 @@ public class EntityPlayerExtended implements IExtendedEntityProperties
 	{
 		final NBTTagCompound properties = (NBTTagCompound) tagCompound.getTag(EXT_PROP_NAME);
 		this.inventory.readFromNBT(properties);
-		cooldown = tagCompound.getInteger("cooldown");
+		this.cooldown = tagCompound.getInteger("cooldown");
 	}
 
 	@Override
@@ -78,7 +78,7 @@ public class EntityPlayerExtended implements IExtendedEntityProperties
 
 	public int getCooldown()
 	{
-		return cooldown;
+		return this.cooldown;
 	}
 
 	public void setCooldown(int newCooldown)

@@ -71,7 +71,7 @@ public class TileLightningRod extends TileEntity implements IEnergyProvider
 
 			for(Object obj : list)
 			{
-				if(unnaturalLightningBolts.remove(obj))
+				if(this.unnaturalLightningBolts.remove(obj))
 					continue;
 				this.buffer.receiveEnergy(ConfigBalance.lightningRodEnergyProduction, false);
 			}

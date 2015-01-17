@@ -68,7 +68,7 @@ public class ItemGogglesModule extends BaseModule
 	@Override
 	public boolean applyArmorEffect(World world, EntityPlayer player, ItemStack stack)
 	{
-		addOverlay(player);
+		this.addOverlay(player);
 		player.addPotionEffect(new PotionEffect(Potion.nightVision.id, 3, 1, true));
 		return true;
 	}

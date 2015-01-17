@@ -105,7 +105,7 @@ public class BlockCastIronLamp extends BlockContainer
 			float hitZ, int side)
 	{
 		// TODO Cleanup!!
-		if(side == 1 || side == 3)
+		if((side == 1) || (side == 3))
 			world.setBlockMetadataWithNotify(x, y, z, 0, 2);
 		if(side == 2)
 			world.setBlockMetadataWithNotify(x, y, z, 1, 2);

@@ -37,8 +37,8 @@ public class ItemSteamDrill extends ItemDrill
 	public ItemSteamDrill(ToolMaterial mat)
 	{
 		super(mat);
-		setHarvestLevel("pickaxe", mat.getHarvestLevel());
-		setHarvestLevel("shovel", mat.getHarvestLevel());
+		this.setHarvestLevel("pickaxe", mat.getHarvestLevel());
+		this.setHarvestLevel("shovel", mat.getHarvestLevel());
 	}
 
 	@SuppressWarnings("all")

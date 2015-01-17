@@ -33,7 +33,7 @@ public class ItemModSword extends ItemModTool
 		super(mat.getDamageVsEntity() + 4.0F, mat, new Block[] {});
 		this.maxStackSize = 1;
 		this.setMaxDamage(mat.getMaxUses());
-		setHarvestLevel("sword", mat.getHarvestLevel());
+		this.setHarvestLevel("sword", mat.getHarvestLevel());
 	}
 
 	@Override

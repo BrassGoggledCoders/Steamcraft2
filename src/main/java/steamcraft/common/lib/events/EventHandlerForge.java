@@ -103,7 +103,7 @@ public class EventHandlerForge
 	public void renderOverlay(RenderGameOverlayEvent.Text event)
 	{
 		Minecraft mc = Minecraft.getMinecraft();
-		ItemStack helmet = player.inventory.armorItemInSlot(3);
+		ItemStack helmet = this.player.inventory.armorItemInSlot(3);
 		if((helmet != null) && (helmet.getItem() == InitItems.itemMonocle))
 		{
 			ScaledResolution res = new ScaledResolution(mc, mc.displayWidth, mc.displayHeight);
@@ -124,7 +124,7 @@ public class EventHandlerForge
 
 			int color = 0xCCFF00;
 
-			if((this.block != null) && player.worldObj.isAirBlock(x, y, z))
+			if((this.block != null) && this.player.worldObj.isAirBlock(this.x, this.y, this.z))
 			{
 				fontRenderer.drawString("Block: " + this.block.getUnlocalizedName().substring(5), posX, posY, color);
 				fontRenderer.drawString("Metadata: " + this.block.getDamageValue(mc.theWorld, this.x, this.y, this.z), posX, posY2, color);

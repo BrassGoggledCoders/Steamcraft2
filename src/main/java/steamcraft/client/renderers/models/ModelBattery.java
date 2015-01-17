@@ -154,8 +154,8 @@ public class ModelBattery extends ModelBase
 				{
 					jars[i].render(f5);
 					lids[i].render(f5);
-					for(int w = 0; w < wires.length; w++)
-						wires[w].render(f5);
+					for(ModelRenderer wire : wires)
+						wire.render(f5);
 				}
 				if(te.inventory == null)
 				{

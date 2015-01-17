@@ -14,7 +14,6 @@ package steamcraft.common.tiles.energy;
 
 import java.util.EnumSet;
 
-import steamcraft.common.tiles.TileSteamBoiler;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
@@ -24,6 +23,7 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTank;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
+import steamcraft.common.tiles.TileSteamBoiler;
 import cofh.api.energy.EnergyStorage;
 import cofh.api.energy.IEnergyHandler;
 import cofh.api.energy.IEnergyProvider;

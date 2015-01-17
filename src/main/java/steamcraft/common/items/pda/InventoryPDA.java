@@ -24,35 +24,35 @@ public class InventoryPDA implements IInventory
 		{
 			stack.setTagCompound(new NBTTagCompound());
 		}
-		readFromNBT(stack.getTagCompound());
+		this.readFromNBT(stack.getTagCompound());
 	}
 
 	@Override
 	public int getSizeInventory()
 	{
-		return inventory.length;
+		return this.inventory.length;
 	}
 
 	@Override
 	public ItemStack getStackInSlot(int slot)
 	{
-		return inventory[slot];
+		return this.inventory[slot];
 	}
 
 	@Override
 	public ItemStack decrStackSize(int slot, int amount)
 	{
-		ItemStack stack = getStackInSlot(slot);
+		ItemStack stack = this.getStackInSlot(slot);
 		if(stack != null)
 		{
 			if(stack.stackSize > amount)
 			{
 				stack = stack.splitStack(amount);
-				markDirty();
+				this.markDirty();
 			}
 			else
 			{
-				setInventorySlotContents(slot, null);
+				this.setInventorySlotContents(slot, null);
 			}
 		}
 		return stack;
@@ -61,10 +61,10 @@ public class InventoryPDA implements IInventory
 	@Override
 	public ItemStack getStackInSlotOnClosing(int slot)
 	{
-		ItemStack stack = getStackInSlot(slot);
+		ItemStack stack = this.getStackInSlot(slot);
 		if(stack != null)
 		{
-			setInventorySlotContents(slot, null);
+			this.setInventorySlotContents(slot, null);
 		}
 		return stack;
 	}
@@ -74,24 +74,24 @@ public class InventoryPDA implements IInventory
 	{
 		this.inventory[slot] = itemstack;
 
-		if(itemstack != null && itemstack.stackSize > this.getInventoryStackLimit())
+		if((itemstack != null) && (itemstack.stackSize > this.getInventoryStackLimit()))
 		{
 			itemstack.stackSize = this.getInventoryStackLimit();
 		}
 
-		markDirty();
+		this.markDirty();
 	}
 
 	@Override
 	public String getInventoryName()
 	{
-		return name;
+		return this.name;
 	}
 
 	@Override
 	public boolean hasCustomInventoryName()
 	{
-		return name.length() > 0;
+		return this.name.length() > 0;
 	}
 
 	@Override
@@ -103,18 +103,18 @@ public class InventoryPDA implements IInventory
 	@Override
 	public void markDirty()
 	{
-		for(int i = 0; i < getSizeInventory(); ++i)
+		for(int i = 0; i < this.getSizeInventory(); ++i)
 		{
-			if(getStackInSlot(i) != null && getStackInSlot(i).stackSize == 0)
-				inventory[i] = null;
+			if((this.getStackInSlot(i) != null) && (this.getStackInSlot(i).stackSize == 0))
+				this.inventory[i] = null;
 		}
-		writeToNBT(invItem.getTagCompound());
+		this.writeToNBT(this.invItem.getTagCompound());
 	}
 
 	@Override
 	public boolean isUseableByPlayer(EntityPlayer player)
 	{
-		return player.getHeldItem() == invItem;
+		return player.getHeldItem() == this.invItem;
 	}
 
 	@Override
@@ -148,9 +148,9 @@ public class InventoryPDA implements IInventory
 			NBTTagCompound item = items.getCompoundTagAt(i);
 			byte slot = item.getByte("Slot");
 
-			if(slot >= 0 && slot < getSizeInventory())
+			if((slot >= 0) && (slot < this.getSizeInventory()))
 			{
-				inventory[slot] = ItemStack.loadItemStackFromNBT(item);
+				this.inventory[slot] = ItemStack.loadItemStackFromNBT(item);
 			}
 		}
 	}
@@ -163,16 +163,16 @@ public class InventoryPDA implements IInventory
 		// Create a new NBT Tag List to store itemstacks as NBT Tags
 		NBTTagList items = new NBTTagList();
 
-		for(int i = 0; i < getSizeInventory(); ++i)
+		for(int i = 0; i < this.getSizeInventory(); ++i)
 		{
 			// Only write stacks that contain items
-			if(getStackInSlot(i) != null)
+			if(this.getStackInSlot(i) != null)
 			{
 				// Make a new NBT Tag Compound to write the itemstack and slot index to
 				NBTTagCompound item = new NBTTagCompound();
 				item.setInteger("Slot", i);
 				// Writes the itemstack in slot(i) to the Tag Compound we just made
-				getStackInSlot(i).writeToNBT(item);
+				this.getStackInSlot(i).writeToNBT(item);
 
 				// add the tag compound to our tag list
 				items.appendTag(item);

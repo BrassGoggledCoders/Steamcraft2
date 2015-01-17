@@ -27,11 +27,11 @@ public class CommonProxy
 {
 	public void init()
 	{
-		registerDisplayInformation();
-		registerRenderers();
-		registerKeys();
+		this.registerDisplayInformation();
+		this.registerRenderers();
+		this.registerKeys();
 	}
-	
+
 	public void registerDisplayInformation()
 	{
 	}

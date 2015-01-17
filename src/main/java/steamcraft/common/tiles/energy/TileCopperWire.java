@@ -439,7 +439,7 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 
 	private boolean canConnect(ForgeDirection dir)
 	{
-		return this.isEnergyHandler(dir) || isCopperWire(dir);
+		return this.isEnergyHandler(dir) || this.isCopperWire(dir);
 	}
 
 	private boolean isCopperWire(ForgeDirection dir)
@@ -450,7 +450,7 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 	public boolean isEnergyHandler(ForgeDirection dir)
 	{
 		return (this.worldObj.getTileEntity(this.xCoord + dir.offsetX, this.yCoord + dir.offsetY, this.zCoord + dir.offsetZ) instanceof IEnergyConnection)
-				&& !isCopperWire(dir);
+				&& !this.isCopperWire(dir);
 	}
 
 	@Override

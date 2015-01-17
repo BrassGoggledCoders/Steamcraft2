@@ -43,17 +43,17 @@ public class EntityFieldManipulator extends EntityEnderPearl
 
 		for(int i = 0; i < 32; ++i)
 		{
-			this.worldObj.spawnParticle("portal", this.posX, this.posY + this.rand.nextDouble() * 2.0D, this.posZ, this.rand.nextGaussian(), 0.0D,
+			this.worldObj.spawnParticle("portal", this.posX, this.posY + (this.rand.nextDouble() * 2.0D), this.posZ, this.rand.nextGaussian(), 0.0D,
 					this.rand.nextGaussian());
 		}
 
 		if(!this.worldObj.isRemote)
 		{
-			if(this.getThrower() != null && this.getThrower() instanceof EntityPlayerMP)
+			if((this.getThrower() != null) && (this.getThrower() instanceof EntityPlayerMP))
 			{
 				EntityPlayerMP entityplayermp = (EntityPlayerMP) this.getThrower();
 
-				if(entityplayermp.playerNetServerHandler.func_147362_b().isChannelOpen() && entityplayermp.worldObj == this.worldObj)
+				if(entityplayermp.playerNetServerHandler.func_147362_b().isChannelOpen() && (entityplayermp.worldObj == this.worldObj))
 				{
 					EnderTeleportEvent event = new EnderTeleportEvent(entityplayermp, this.posX, this.posY, this.posZ, 5.0F);
 					if(!MinecraftForge.EVENT_BUS.post(event))

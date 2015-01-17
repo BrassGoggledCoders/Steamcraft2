@@ -37,7 +37,7 @@ public class BotaniaWikiProvider implements IWikiProvider
 	@Override
 	public String getWikiURL(World world, MovingObjectPosition pos)
 	{
-		String name = getBlockName(world, pos);
+		String name = this.getBlockName(world, pos);
 		if(name == null)
 			return null;
 		return "http://sc2.wikia.com/" + WordUtils.capitalizeFully(name).replaceAll(" ", "%20");

@@ -101,9 +101,9 @@ public abstract class PDATabs
 	@SideOnly(Side.CLIENT)
 	public int getTabColumn()
 	{
-		if(tabIndex > 11)
+		if(this.tabIndex > 11)
 		{
-			return ((tabIndex - 12) % 10) % 5;
+			return ((this.tabIndex - 12) % 10) % 5;
 		}
 		return this.tabIndex % 6;
 	}
@@ -114,9 +114,9 @@ public abstract class PDATabs
 	@SideOnly(Side.CLIENT)
 	public boolean isTabInFirstRow()
 	{
-		if(tabIndex > 11)
+		if(this.tabIndex > 11)
 		{
-			return ((tabIndex - 12) % 10) < 5;
+			return ((this.tabIndex - 12) % 10) < 5;
 		}
 		return this.tabIndex < 6;
 	}

@@ -16,7 +16,7 @@ public class ItemSplashLightningBottle extends BaseItem
 	@Override
 	public void onPlayerStoppedUsing(ItemStack p_77659_1_, World p_77659_2_, EntityPlayer p_77659_3_, int useCount)
 	{
-		if(useCount > getMaxItemUseDuration(p_77659_1_) / 2)
+		if(useCount > (this.getMaxItemUseDuration(p_77659_1_) / 2))
 		{
 			if(!p_77659_3_.capabilities.isCreativeMode)
 			{

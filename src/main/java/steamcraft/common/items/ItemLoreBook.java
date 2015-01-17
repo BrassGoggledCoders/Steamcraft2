@@ -69,7 +69,7 @@ public class ItemLoreBook extends BaseItem
 		else
 		{
 			String s = p_77828_0_.getString("title");
-			return s != null && s.length() <= 16 ? p_77828_0_.hasKey("author", 8) : false;
+			return (s != null) && (s.length() <= 16) ? p_77828_0_.hasKey("author", 8) : false;
 		}
 	}
 
@@ -127,14 +127,14 @@ public class ItemLoreBook extends BaseItem
 		{
 			NBTTagCompound nbttagcompound = stack.getTagCompound();
 			NBTTagList bookPages = new NBTTagList();
-			for(int i = 0; i < pages.length; i++)
+			for(String page2 : this.pages)
 			{
-				NBTTagString page = new NBTTagString(pages[i]);
+				NBTTagString page = new NBTTagString(page2);
 				bookPages.appendTag(page);
 			}
 			stack.setTagInfo("pages", bookPages);
-			stack.setTagInfo("author", new NBTTagString(author));
-			stack.setTagInfo("title", new NBTTagString("Lore Book: " + title));
+			stack.setTagInfo("author", new NBTTagString(this.author));
+			stack.setTagInfo("title", new NBTTagString("Lore Book: " + this.title));
 		}
 		return stack;
 	}
