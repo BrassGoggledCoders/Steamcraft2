@@ -17,6 +17,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.item.ItemBlock;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
+import steamcraft.client.renderers.tile.TileCastIronLampRenderer.TileCastIronLamp;
 import steamcraft.client.renderers.tile.TileCrystalRenderer.TileCrystal;
 import steamcraft.common.blocks.BaseBlock;
 import steamcraft.common.blocks.BlockBrassLog;
@@ -181,8 +182,8 @@ public class InitBlocks
 		blockCastIronLamp = new BlockCastIronLamp(false).setBlockName("blockCastIronLamp");
 		blockCastIronLampOn = new BlockCastIronLamp(true).setBlockName("blockCastIronLampOn");
 
-		registerBlock(blockCastIronLamp, "BlockCastIronLamp");
-		registerBlock(blockCastIronLampOn, "BlockCastIronLampOn");
+		RegistryHelper.registerContainerBlock(blockCastIronLamp, TileCastIronLamp.class, "BlockCastIronLamp");
+		RegistryHelper.registerContainerBlock(blockCastIronLampOn, TileCastIronLamp.class, "BlockCastIronLampOn");
 
 		blockCastIronFence = new BlockCastIronFence().setBlockName("blockCastIronFence");
 		blockCastIronGate = new BlockCastIronGate().setBlockName("blockCastIronGate");;
