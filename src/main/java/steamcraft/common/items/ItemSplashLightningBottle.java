@@ -10,7 +10,7 @@ public class ItemSplashLightningBottle extends BaseItem
 {
 	public ItemSplashLightningBottle()
 	{
-		this.setMaxStackSize(16);
+		this.setMaxStackSize(3);
 	}
 
 	@Override
