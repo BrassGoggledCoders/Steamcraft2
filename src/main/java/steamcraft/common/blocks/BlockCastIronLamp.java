@@ -45,7 +45,8 @@ public class BlockCastIronLamp extends BlockContainer
 		this.disableStats();
 		float f = 0.25F;
 		this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, 1.0F, 0.5F + f);
-		this.setCreativeTab(Steamcraft.tabSC2);
+		if(!powered)
+			this.setCreativeTab(Steamcraft.tabSC2);
 
 		if(powered)
 			this.setLightLevel(1.0F);
