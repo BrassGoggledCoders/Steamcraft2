@@ -34,8 +34,6 @@ import boilerplate.common.utils.PlayerUtils;
  */
 public class ItemSteamDrill extends ItemDrill
 {
-	private final Random random = new Random();
-
 	public ItemSteamDrill(ToolMaterial mat)
 	{
 		super(mat);
@@ -125,8 +123,8 @@ public class ItemSteamDrill extends ItemDrill
 							{
 								int meta = world.getBlockMetadata(xPos, yPos, zPos);
 
-								ItemStack result = new ItemStack(nblock.getItemDropped(meta, this.random, 0), nblock.quantityDropped(meta, 0,
-										this.random), nblock.damageDropped(meta));
+								ItemStack result = new ItemStack(nblock.getItemDropped(meta, this.itemRand, 0), nblock.quantityDropped(meta, 0,
+										this.itemRand), nblock.damageDropped(meta));
 
 								if(nblock.getBlockHardness(world, xPos, yPos, zPos) != 0.0D)
 									this.consumeSteamFromCanister(player);
@@ -152,8 +150,8 @@ public class ItemSteamDrill extends ItemDrill
 
 			stack.damageItem(1, living);
 			world.playSoundAtEntity(living, LibInfo.PREFIX + "drill.steam", 0.6F, 1.0F);
-			world.spawnParticle("smoke", x + 0.5, y + 0.5, z + 0.5, this.random.nextGaussian(), this.random.nextGaussian(),
-					this.random.nextGaussian());
+			world.spawnParticle("smoke", x + 0.5, y + 0.5, z + 0.5, this.itemRand.nextGaussian(), this.itemRand.nextGaussian(),
+					this.itemRand.nextGaussian());
 			return true;
 		}
 

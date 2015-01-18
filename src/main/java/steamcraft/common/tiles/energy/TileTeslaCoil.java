@@ -61,6 +61,7 @@ public class TileTeslaCoil extends TileEntity implements IEnergyReceiver
 					break;
 		if(this.buffer.getEnergyStored() > RFPerZap)
 		{
+			Random random = this.worldObj.rand;
 			if(this.getWorldObj().isBlockIndirectlyGettingPowered(this.xCoord, this.yCoord, this.zCoord)
 					&& (this.buffer.getEnergyStored() > RFPerZap))
 			{
@@ -74,7 +75,6 @@ public class TileTeslaCoil extends TileEntity implements IEnergyReceiver
 				{
 					player = (EntityPlayer) iterator2.next();
 					player.attackEntityFrom(DamageSourceHandler.electrocution, 3);
-					Random random = new Random();
 					this.worldObj.spawnParticle("reddust", player.posX + (random.nextFloat() / 2), (player.posY - 0.5F) + (random.nextFloat() / 2),
 							player.posZ + (random.nextFloat() / 2), 0, 0, 0);
 					this.buffer.extractEnergy(RFPerZap, false);
@@ -93,7 +93,6 @@ public class TileTeslaCoil extends TileEntity implements IEnergyReceiver
 				{
 					villager = (EntityVillager) iterator.next();
 					villager.attackEntityFrom(DamageSourceHandler.electrocution, 3);
-					Random random = new Random();
 					this.worldObj.spawnParticle("reddust", villager.posX + (random.nextFloat() / 3), villager.posY + (random.nextFloat() / 3),
 							villager.posZ + (random.nextFloat() / 3), 0, 0, 0);
 					this.buffer.extractEnergy(RFPerZap, false);
@@ -111,7 +110,6 @@ public class TileTeslaCoil extends TileEntity implements IEnergyReceiver
 				{
 					living = (EntityLiving) iterator.next();
 					living.attackEntityFrom(DamageSourceHandler.electrocution, 3);
-					Random random = new Random();
 					this.worldObj.spawnParticle("reddust", living.posX + (random.nextFloat() / 2), living.posY + (random.nextFloat() / 2),
 							living.posZ + (random.nextFloat() / 2), 0, 0, 0);
 					this.buffer.extractEnergy(RFPerZap, false);

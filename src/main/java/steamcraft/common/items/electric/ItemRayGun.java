@@ -36,8 +36,6 @@ public class ItemRayGun extends ElectricItem
 {
 	static short energyPerUse = 500;
 
-	private Random random = new Random();
-
 	static HashMap<String, Object> ray = new HashMap<String, Object>();
 	static HashMap<String, Long> soundDelay = new HashMap<String, Long>();
 
@@ -100,9 +98,9 @@ public class ItemRayGun extends ElectricItem
 				// this.spawnParticles(world, x, y, z);
 
 				if(!world.isRemote && !world.isAirBlock(x, y, z) && !Utils.getBlockUnbreakable(world, x, y, z))
-					for(int i = x - this.random.nextInt(3); i < (x + this.random.nextInt(3)); i++)
-						for(int j = y - this.random.nextInt(3); j < (y + this.random.nextInt(3)); j++)
-							for(int k = z - this.random.nextInt(3); k < (z + this.random.nextInt(3)); k++)
+					for(int i = x - this.itemRand.nextInt(3); i < (x + this.itemRand.nextInt(3)); i++)
+						for(int j = y - this.itemRand.nextInt(3); j < (y + this.itemRand.nextInt(3)); j++)
+							for(int k = z - this.itemRand.nextInt(3); k < (z + this.itemRand.nextInt(3)); k++)
 							{
 								if(world.isAirBlock(i, j, k))
 								{

@@ -68,7 +68,7 @@ public class TileIntake extends TileEntity implements IFluidHandler
 					export.fill(ForgeDirection.DOWN,
 							new FluidStack(FluidRegistry.WATER, Math.min(this.waterTank.getFluidAmount(), exportAmountPerTick)), true), true);
 		}
-		Random random = new Random();
+		Random random = this.worldObj.rand;
 		if(this.waterTank.getFluidAmount() > 0)
 			this.worldObj.spawnParticle("dripWater", this.xCoord + random.nextDouble(), this.yCoord + random.nextDouble(),
 					this.zCoord + random.nextDouble(), random.nextDouble(), -0.5D, random.nextDouble());

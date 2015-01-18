@@ -48,7 +48,7 @@ public class TileLightningRod extends TileEntity implements IEnergyProvider
 				&& !BiomeDictionary.isBiomeOfType(this.worldObj.getBiomeGenForCoords(this.xCoord, this.zCoord), Type.SANDY)
 				&& ConfigGeneral.unnaturalLightningStrikes)
 		{
-			Random random = new Random();
+			Random random = this.worldObj.rand;
 			int chance = random.nextInt(ConfigBalance.lightningRodHitChance);
 			if(chance == 0)
 			{
