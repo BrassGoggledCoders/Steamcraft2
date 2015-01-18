@@ -1,5 +1,5 @@
 /**
- * This class was created by BrassGoggledCoders modding team. 
+ * This class was created by BrassGoggledCoders modding team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -8,11 +8,12 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- * 
+ *
  */
 package steamcraft.common.items.vanity;
 
 import net.minecraft.client.model.ModelBase;
+import net.minecraft.client.model.ModelBoat;
 import net.minecraft.util.ResourceLocation;
 import steamcraft.common.items.BaseItem;
 import steamcraft.common.lib.LibInfo;
@@ -28,8 +29,7 @@ public class ItemTopHat extends BaseItem implements IVanityItem
 	@Override
 	public ModelBase getVanityItemModel()
 	{
-		// return new ModelTopHat(1);
-		return null;
+		return new ModelBoat();
 	}
 
 	@Override
@@ -42,6 +42,27 @@ public class ItemTopHat extends BaseItem implements IVanityItem
 	public EnumVanityType getVanityItemType()
 	{
 		return EnumVanityType.HAT;
+	}
+
+	@Override
+	public float getModelOffsetX()
+	{
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public float getModelOffsetY()
+	{
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public float getModelOffsetZ()
+	{
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

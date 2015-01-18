@@ -18,6 +18,8 @@ import steamcraft.common.packets.CopperPipePacket;
 import steamcraft.common.packets.CopperPipePacket.CopperPipePacketHandler;
 import steamcraft.common.packets.CopperWirePacket;
 import steamcraft.common.packets.CopperWirePacket.CopperWirePacketHandler;
+import steamcraft.common.packets.OpenContainerFromClientPacket;
+import steamcraft.common.packets.OpenContainerFromClientPacket.OpenContainerFromClientPacketHandler;
 import steamcraft.common.packets.TimeBombPacket;
 import steamcraft.common.packets.TimeBombPacket.TimeBombPacketHandler;
 import cpw.mods.fml.common.network.NetworkRegistry;
@@ -39,6 +41,7 @@ public class InitPackets
 		network = NetworkRegistry.INSTANCE.newSimpleChannel("steamcraft2");
 
 		network.registerMessage(TimeBombPacketHandler.class, TimeBombPacket.class, packetId++, Side.SERVER);
+		network.registerMessage(OpenContainerFromClientPacketHandler.class, OpenContainerFromClientPacket.class, packetId++, Side.SERVER);
 
 		network.registerMessage(CopperPipePacketHandler.class, CopperPipePacket.class, packetId++, Side.CLIENT);
 		network.registerMessage(FluidNetworkPacketHandler.class, CopperPipeFluidPacket.class, packetId++, Side.CLIENT);

@@ -1,13 +1,22 @@
 package steamcraft.common.lib.events;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.client.event.FOVUpdateEvent;
+import net.minecraftforge.client.event.RenderPlayerEvent;
+
+import org.lwjgl.opengl.GL11;
+
 import steamcraft.client.ClientProxy;
 import steamcraft.client.lib.GuiIDs;
 import steamcraft.common.InitItems;
-import steamcraft.common.Steamcraft;
+import steamcraft.common.InitPackets;
+import steamcraft.common.container.InventoryVanity;
+import steamcraft.common.entities.EntityPlayerExtended;
+import steamcraft.common.packets.OpenContainerFromClientPacket;
+import boilerplate.steamapi.vanity.IVanityItem;
 import cpw.mods.fml.common.eventhandler.EventPriority;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.InputEvent.KeyInputEvent;
@@ -39,7 +48,27 @@ public class EventHandlerClient
 		{
 			System.out.println("Key binding =" + keyBindings[0].getKeyDescription());
 			EntityPlayer player = Minecraft.getMinecraft().thePlayer;
-			player.openGui(Steamcraft.instance, GuiIDs.VANITY, Minecraft.getMinecraft().theWorld, player.serverPosX, player.serverPosY, player.serverPosZ);
+			InitPackets.network.sendToServer(new OpenContainerFromClientPacket(player.getEntityId(), GuiIDs.VANITY, player.dimension));
+			// player.openGui(Steamcraft.instance, GuiIDs.VANITY, Minecraft.getMinecraft().theWorld, player.serverPosX, player.serverPosY, player.serverPosZ);
+		}
+	}
+
+	@SideOnly(Side.CLIENT)
+	@SubscribeEvent
+	public void onPlayerRender(RenderPlayerEvent event)
+	{
+		EntityPlayerExtended props = ((EntityPlayerExtended) event.entityPlayer.getExtendedProperties(EntityPlayerExtended.EXT_PROP_NAME));
+		InventoryVanity inventory = props.getInventory();
+		for(int i = 0; i < inventory.getSizeInventory(); i++)
+		{
+			if(inventory.getStackInSlot(i) != null)
+			{
+				IVanityItem item = (IVanityItem) inventory.getStackInSlot(i).getItem();
+				ModelBase model = item.getVanityItemModel();
+				GL11.glPushMatrix();
+				model.render(event.entity, item.getModelOffsetX(), item.getModelOffsetY(), item.getModelOffsetZ(), 1F, 1F, 1F);
+				GL11.glPopMatrix();
+			}
 		}
 	}
 }
