@@ -38,6 +38,7 @@ import steamcraft.common.blocks.BlockInfestedDirt;
 import steamcraft.common.blocks.BlockInfestedGrass;
 import steamcraft.common.blocks.BlockLamp;
 import steamcraft.common.blocks.BlockMetal;
+import steamcraft.common.blocks.BlockPath;
 import steamcraft.common.blocks.BlockPlankStack;
 import steamcraft.common.blocks.BlockSlate;
 import steamcraft.common.blocks.BlockSteamcraftOre;
@@ -140,6 +141,8 @@ public class InitBlocks
 	public static Block blockFissurePortal, blockCompressedStone;
 
 	public static Block blockInfestedGrass, blockInfestedDirt;
+
+	public static Block blockPath;
 
 	public static void init()
 	{
@@ -311,6 +314,9 @@ public class InitBlocks
 
 		blockInfestedDirt = new BlockInfestedDirt(Material.ground).setBlockName("blockInfestedDirt");
 		registerBlock(blockInfestedDirt, "BlockInfestedDirt");
+
+		blockPath = new BlockPath().setBlockName("blockPath");
+		registerBlock(blockPath, "BlockPath");
 	}
 
 	public static void registerBlock(Block block, String name)

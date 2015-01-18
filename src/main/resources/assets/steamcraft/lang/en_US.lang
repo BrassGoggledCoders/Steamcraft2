@@ -67,6 +67,8 @@ tile.blockInfestedDirt.name=Dirt
 tile.blockInfestedDirt.desc=Infested!
 tile.blockInfestedGrass.name=Grass
 tile.blockInfestedGrass.desc=Infested!
+tile.blockPath.name=Path Block
+tile.blockPath.desc=Texture by LupusX
 
 #Ores
 tile.blockSteamcraftOre.0.name=Aluminum Ore

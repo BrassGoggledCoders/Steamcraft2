@@ -410,7 +410,7 @@ public class InitRecipes
 				'E',
 				Items.ender_pearl, 'R', Items.redstone }));
 
-		// GameRegistry.addShapelessRecipe(new ItemStack(InitItems.itemLoreBook), new Object[] { Items.book, Items.feather });
+		GameRegistry.addRecipe(new ItemStack(InitBlocks.blockPath), new Object[] { "XS", "SX", 'S', Blocks.sand, 'X', Blocks.gravel });
 	}
 
 	public static void initializeSmeltingRecipes()

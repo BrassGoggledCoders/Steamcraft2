@@ -37,8 +37,6 @@ public class BlockMetal extends Block implements IChiselable
 {
 	public IIcon[] icon = new IIcon[8];
 
-	private boolean powered;
-
 	public BlockMetal()
 	{
 		super(Material.iron);
@@ -48,8 +46,6 @@ public class BlockMetal extends Block implements IChiselable
 		this.setTickRandomly(true);
 		this.setCreativeTab(Steamcraft.tabSC2);
 
-		if(this.powered)
-			this.setLightLevel(0.98F);
 	}
 
 	@Override
