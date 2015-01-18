@@ -58,7 +58,7 @@ public class WorldGenSteamcraft implements IWorldGenerator
 		}
 	}
 
-	// This can probably be done in Biome/Dimension gen classes
+	// This can probably be done in Biome/Dimension gen classes. IDK
 	private void generateDeeps(World world, Random random, int blockChunkX, int blockChunkZ)
 	{
 		int X = blockChunkX + random.nextInt(16);
@@ -67,7 +67,16 @@ public class WorldGenSteamcraft implements IWorldGenerator
 
 		for(int i = 0; i < 1; i++)
 		{
-			new WorldGenBrassTree(false).generate(world, random, X, Y, Z);
+			new WorldGenBrassTree().generate(world, random, X, Y, Z);
+		}
+
+		int X2 = blockChunkX + random.nextInt(16);
+		int Z2 = blockChunkZ + random.nextInt(16);
+		int Y2 = random.nextInt(50);
+
+		for(int i = 0; i < 5; i++)
+		{
+			new WorldGenUndergroundHouse().generate(world, random, X2, Y2, Z2);
 		}
 	}
 
@@ -122,7 +131,7 @@ public class WorldGenSteamcraft implements IWorldGenerator
 					int Z = chunkZ + random.nextInt(16);
 					int Y = random.nextInt(70);
 
-					new WorldGenBrassTree(false).generate(world, random, X, Y, Z);
+					new WorldGenBrassTree().generate(world, random, X, Y, Z);
 				}
 		}
 	}
