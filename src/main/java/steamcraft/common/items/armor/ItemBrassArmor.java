@@ -80,7 +80,7 @@ public class ItemBrassArmor extends BaseArmor implements ISpecialArmor, IGoggles
 
 			for(int i = 0; i < nbt.getInteger("moduleCount"); i++)
 			{
-				IArmorModule module = ModuleRegistry.getModule(nbt.getString("module" + i));
+				IArmorModule module = (IArmorModule) ModuleRegistry.getModule(nbt.getString("module" + i));
 
 				if(module != null)
 				{
@@ -99,7 +99,7 @@ public class ItemBrassArmor extends BaseArmor implements ISpecialArmor, IGoggles
 
 		for(int i = 0; i < nbt.getInteger("moduleCount"); i++)
 		{
-			IArmorModule module = ModuleRegistry.getModule(nbt.getString("module" + i));
+			IArmorModule module = (IArmorModule) ModuleRegistry.getModule(nbt.getString("module" + i));
 
 			if((module != null) && (module.getArmorEffectType() == EnumArmorEffectType.ONTICK))
 			{
@@ -131,7 +131,7 @@ public class ItemBrassArmor extends BaseArmor implements ISpecialArmor, IGoggles
 
 		for(int i = 0; i < nbt.getInteger("moduleCount"); i++)
 		{
-			IArmorModule module = ModuleRegistry.getModule(nbt.getString("module" + i));
+			IArmorModule module = (IArmorModule) ModuleRegistry.getModule(nbt.getString("module" + i));
 
 			if((module != null) && (module.getArmorEffectType() == EnumArmorEffectType.HUD))
 			{
@@ -246,7 +246,7 @@ public class ItemBrassArmor extends BaseArmor implements ISpecialArmor, IGoggles
 
 		for(int i = 0; i < nbt.getInteger("moduleCount"); i++)
 		{
-			IArmorModule module = ModuleRegistry.getModule(nbt.getString("module" + i));
+			IArmorModule module = (IArmorModule) ModuleRegistry.getModule(nbt.getString("module" + i));
 
 			if((module != null) && (module.getArmorEffectType() == EnumArmorEffectType.DEFENSIVE))
 			{
@@ -269,7 +269,7 @@ public class ItemBrassArmor extends BaseArmor implements ISpecialArmor, IGoggles
 		NBTTagCompound nbt = getOrCreateTagCompound(armor);
 		for(int i = 0; i < nbt.getInteger("moduleCount"); i++)
 		{
-			IArmorModule module = ModuleRegistry.getModule(nbt.getString("module" + i));
+			IArmorModule module = (IArmorModule) ModuleRegistry.getModule(nbt.getString("module" + i));
 
 			if((module != null) && (module.getArmorEffectType() == EnumArmorEffectType.DEFENSIVE))
 			{
@@ -296,7 +296,7 @@ public class ItemBrassArmor extends BaseArmor implements ISpecialArmor, IGoggles
 		NBTTagCompound nbt = getOrCreateTagCompound(itemstack);
 		for(int i = 0; i < nbt.getInteger("moduleCount"); i++)
 		{
-			IArmorModule module = ModuleRegistry.getModule(nbt.getString("module" + i));
+			IArmorModule module = (IArmorModule) ModuleRegistry.getModule(nbt.getString("module" + i));
 
 			if((module != null) && (module.getArmorEffectType() == EnumArmorEffectType.SPECIAL))
 			{
@@ -313,7 +313,7 @@ public class ItemBrassArmor extends BaseArmor implements ISpecialArmor, IGoggles
 		NBTTagCompound nbt = getOrCreateTagCompound(itemstack);
 		for(int i = 0; i < nbt.getInteger("moduleCount"); i++)
 		{
-			IArmorModule module = ModuleRegistry.getModule(nbt.getString("module" + i));
+			IArmorModule module = (IArmorModule) ModuleRegistry.getModule(nbt.getString("module" + i));
 
 			if((module != null) && (module.getArmorEffectType() == EnumArmorEffectType.SPECIAL))
 			{
