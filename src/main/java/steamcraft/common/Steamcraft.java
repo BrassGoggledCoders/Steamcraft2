@@ -89,6 +89,7 @@ public class Steamcraft
 		MinecraftForge.EVENT_BUS.register(new EventHandlerForge());
 		MinecraftForge.EVENT_BUS.register(new EventHandlerClient());
 		FMLCommonHandler.instance().bus().register(new EventHandlerFML());
+		FMLCommonHandler.instance().bus().register(new EventHandlerClient());
 
 		if(ConfigWorldGen.generationEnabled)
 			GameRegistry.registerWorldGenerator(new WorldGenSteamcraft(), 1);

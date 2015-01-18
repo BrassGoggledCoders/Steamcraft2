@@ -18,8 +18,12 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelZombie;
 import net.minecraft.client.renderer.entity.RenderSnowball;
+import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
+
+import org.lwjgl.input.Keyboard;
+
 import steamcraft.client.lib.RenderIDs;
 import steamcraft.client.renderers.block.BlockArmorEditorRenderer;
 import steamcraft.client.renderers.block.BlockBatteryRenderer;
@@ -85,6 +89,8 @@ import cpw.mods.fml.client.registry.RenderingRegistry;
  */
 public class ClientProxy extends CommonProxy
 {
+	public static KeyBinding[] keyBindings;
+
 	@Override
 	public void registerDisplayInformation()
 	{
@@ -100,7 +106,15 @@ public class ClientProxy extends CommonProxy
 	@Override
 	public void registerKeys()
 	{
-		// FMLCommonHandler.instance().bus().register(new InitKeyBindings());
+		keyBindings = new KeyBinding[1];
+
+		keyBindings[0] = new KeyBinding("key.vanity.desc", Keyboard.KEY_V, "key.steamcraft.category");
+
+		// register all the key bindings
+		for(int i = 0; i < keyBindings.length; ++i)
+		{
+			ClientRegistry.registerKeyBinding(keyBindings[i]);
+		}
 	}
 
 	private void registerEntityRenderers()
