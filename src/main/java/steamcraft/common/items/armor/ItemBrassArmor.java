@@ -146,7 +146,7 @@ public class ItemBrassArmor extends BaseArmor implements ISpecialArmor, IGoggles
 		{
 			if(this.isSteamAvailable(player, module.getSteamConsumedOnEffect()))
 			{
-				if(module.applyArmorEffect(world, player, is))
+				if(module.applyModuleEffect(world, player, is))
 					this.consumeSteamFromCanister(player, module.getSteamConsumedOnEffect());
 			}
 		}
@@ -154,12 +154,12 @@ public class ItemBrassArmor extends BaseArmor implements ISpecialArmor, IGoggles
 		{
 			if(this.isRFAvailable(player, module.getEnergyConsumedOnEffect()))
 			{
-				if(module.applyArmorEffect(world, player, is))
+				if(module.applyModuleEffect(world, player, is))
 					this.consumeRFFromJar(player, module.getEnergyConsumedOnEffect());
 			}
 		}
 		else
-			module.applyArmorEffect(world, player, is);
+			module.applyModuleEffect(world, player, is);
 	}
 
 	protected void consumeSteamFromCanister(EntityPlayer player, int steamToDrain)

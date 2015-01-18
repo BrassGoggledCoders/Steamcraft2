@@ -25,7 +25,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.LibInfo;
-import boilerplate.common.baseclasses.BaseModule;
+import boilerplate.common.baseclasses.BaseArmorModule;
 import boilerplate.steamapi.item.ModuleRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -34,7 +34,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  * @author warlordjones
  * 
  */
-public class ItemWatchDisplay extends BaseModule
+public class ItemWatchDisplay extends BaseArmorModule
 {
 	public ItemWatchDisplay()
 	{
@@ -63,7 +63,7 @@ public class ItemWatchDisplay extends BaseModule
 	}
 
 	@Override
-	public boolean applyArmorEffect(World world, EntityPlayer player, ItemStack stack)
+	public boolean applyModuleEffect(World world, EntityPlayer player, ItemStack stack)
 	{
 		if((Minecraft.getMinecraft().thePlayer == null) || (Minecraft.getMinecraft().currentScreen != null))
 			return false;

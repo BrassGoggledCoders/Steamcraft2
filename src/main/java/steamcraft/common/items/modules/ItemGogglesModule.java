@@ -28,7 +28,7 @@ import steamcraft.common.InitItems;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.items.armor.ItemBrassGoggles;
 import steamcraft.common.lib.LibInfo;
-import boilerplate.common.baseclasses.BaseModule;
+import boilerplate.common.baseclasses.BaseArmorModule;
 import boilerplate.steamapi.item.ModuleRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -37,7 +37,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  * @author warlordjones
  * 
  */
-public class ItemGogglesModule extends BaseModule
+public class ItemGogglesModule extends BaseArmorModule
 {
 	public ItemGogglesModule()
 	{
@@ -66,7 +66,7 @@ public class ItemGogglesModule extends BaseModule
 	}
 
 	@Override
-	public boolean applyArmorEffect(World world, EntityPlayer player, ItemStack stack)
+	public boolean applyModuleEffect(World world, EntityPlayer player, ItemStack stack)
 	{
 		this.addOverlay(player);
 		player.addPotionEffect(new PotionEffect(Potion.nightVision.id, 3, 1, true));

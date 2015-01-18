@@ -56,7 +56,7 @@ public class ItemSteelPlating extends BaseDefensiveModule
 	}
 
 	@Override
-	public boolean applyArmorEffect(World world, EntityPlayer player, ItemStack stack)
+	public boolean applyModuleEffect(World world, EntityPlayer player, ItemStack stack)
 	{
 		return false;
 	}
