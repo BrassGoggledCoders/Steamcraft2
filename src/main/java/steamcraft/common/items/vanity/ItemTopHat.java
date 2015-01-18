@@ -13,7 +13,7 @@
 package steamcraft.common.items.vanity;
 
 import net.minecraft.client.model.ModelBase;
-import net.minecraft.client.model.ModelBoat;
+import net.minecraft.client.model.ModelCow;
 import net.minecraft.util.ResourceLocation;
 import steamcraft.common.items.BaseItem;
 import steamcraft.common.lib.LibInfo;
@@ -29,13 +29,13 @@ public class ItemTopHat extends BaseItem implements IVanityItem
 	@Override
 	public ModelBase getVanityItemModel()
 	{
-		return new ModelBoat();
+		return new ModelCow();
 	}
 
 	@Override
-	public ResourceLocation getVanityTextureLocation()
+	public ResourceLocation getItemTextureLocation()
 	{
-		return new ResourceLocation(LibInfo.PREFIX + "/textures/models/vanity/tophat.png");
+		return new ResourceLocation(LibInfo.PREFIX + "/textures/models/crystal.png");
 	}
 
 	@Override

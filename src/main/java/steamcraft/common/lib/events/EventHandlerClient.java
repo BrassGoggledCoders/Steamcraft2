@@ -25,6 +25,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class EventHandlerClient
 {
+
 	@SubscribeEvent
 	@SideOnly(Side.CLIENT)
 	public void zoom(FOVUpdateEvent event)
@@ -40,13 +41,13 @@ public class EventHandlerClient
 	public void onEvent(KeyInputEvent event)
 	{
 		// DEBUG
-		System.out.println("Key Input Event");
+		// System.out.println("Key Input Event");
 
 		KeyBinding[] keyBindings = ClientProxy.keyBindings;
 
 		if(keyBindings[0].isPressed())
 		{
-			System.out.println("Key binding =" + keyBindings[0].getKeyDescription());
+			// System.out.println("Key binding =" + keyBindings[0].getKeyDescription());
 			EntityPlayer player = Minecraft.getMinecraft().thePlayer;
 			InitPackets.network.sendToServer(new OpenContainerFromClientPacket(player.getEntityId(), GuiIDs.VANITY, player.dimension));
 			// player.openGui(Steamcraft.instance, GuiIDs.VANITY, Minecraft.getMinecraft().theWorld, player.serverPosX, player.serverPosY, player.serverPosZ);
@@ -54,9 +55,10 @@ public class EventHandlerClient
 	}
 
 	@SideOnly(Side.CLIENT)
-	@SubscribeEvent
-	public void onPlayerRender(RenderPlayerEvent event)
+	@SubscribeEvent(receiveCanceled = true)
+	public void onPlayerRender(RenderPlayerEvent.Post event)
 	{
+		// FMLLog.warning("Event Called", "Event Called");
 		EntityPlayerExtended props = ((EntityPlayerExtended) event.entityPlayer.getExtendedProperties(EntityPlayerExtended.EXT_PROP_NAME));
 		InventoryVanity inventory = props.getInventory();
 		for(int i = 0; i < inventory.getSizeInventory(); i++)
@@ -65,9 +67,11 @@ public class EventHandlerClient
 			{
 				IVanityItem item = (IVanityItem) inventory.getStackInSlot(i).getItem();
 				ModelBase model = item.getVanityItemModel();
+				Minecraft.getMinecraft().renderEngine.bindTexture(item.getItemTextureLocation());
 				GL11.glPushMatrix();
-				model.render(event.entity, item.getModelOffsetX(), item.getModelOffsetY(), item.getModelOffsetZ(), 1F, 1F, 1F);
+				model.render(event.entity, item.getModelOffsetX(), item.getModelOffsetY(), item.getModelOffsetZ(), 0.0625F, 0.0625F, 0.0625F);
 				GL11.glPopMatrix();
+				Minecraft.getMinecraft().renderEngine.deleteTexture(item.getItemTextureLocation());
 			}
 		}
 	}
