@@ -14,7 +14,6 @@ package steamcraft.common.items.electric;
 
 import java.awt.Color;
 import java.util.HashMap;
-import java.util.Random;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;

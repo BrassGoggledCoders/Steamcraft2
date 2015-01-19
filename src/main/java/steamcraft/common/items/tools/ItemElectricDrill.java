@@ -13,7 +13,6 @@
 package steamcraft.common.items.tools;
 
 import java.util.List;
-import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
