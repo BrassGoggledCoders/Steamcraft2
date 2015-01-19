@@ -14,6 +14,7 @@ public class BiomeDepthsOcean extends BiomeDepthsBase
 		this.setHeight(new Height(1F, 1F));
 		this.setBiomeName(StatCollector.translateToLocal("biome.steamcraft2.innerearth.o.name"));
 		this.heightVariation = 0;
+		this.rootHeight = 0;
 	}
 
 	@Override

@@ -1,6 +1,11 @@
 package steamcraft.common.worldgen.dimension;
 
 import net.minecraft.world.gen.layer.GenLayer;
+import net.minecraft.world.gen.layer.GenLayerAddIsland;
+import net.minecraft.world.gen.layer.GenLayerFuzzyZoom;
+import net.minecraft.world.gen.layer.GenLayerIsland;
+import net.minecraft.world.gen.layer.GenLayerRemoveTooMuchOcean;
+import net.minecraft.world.gen.layer.GenLayerSmooth;
 import net.minecraft.world.gen.layer.GenLayerVoronoiZoom;
 import net.minecraft.world.gen.layer.GenLayerZoom;
 
@@ -13,19 +18,26 @@ public abstract class GenLayerDeeps extends GenLayer
 
 	public static GenLayer[] makeTheWorld(long seed)
 	{
-
 		GenLayer biomes = new GenLayerBiomesDeeps(1L);
 
-		// more GenLayerZoom = bigger biomes
 		biomes = new GenLayerZoom(1000L, biomes);
 		biomes = new GenLayerZoom(1001L, biomes);
 		biomes = new GenLayerZoom(1002L, biomes);
 		biomes = new GenLayerZoom(1003L, biomes);
 		biomes = new GenLayerZoom(1004L, biomes);
 		biomes = new GenLayerZoom(1005L, biomes);
-		biomes = new GenLayerZoom(1006L, biomes);
 
+		GenLayerIsland genlayerisland = new GenLayerIsland(1L);
+		GenLayerFuzzyZoom genlayerfuzzyzoom = new GenLayerFuzzyZoom(2000L, genlayerisland);
+		GenLayerAddIsland genlayeraddisland = new GenLayerAddIsland(1L, genlayerfuzzyzoom);
+		GenLayerZoom genlayerzoom = new GenLayerZoom(2001L, genlayeraddisland);
+		genlayeraddisland = new GenLayerAddIsland(2L, genlayerzoom);
+		genlayeraddisland = new GenLayerAddIsland(50L, genlayeraddisland);
+		genlayeraddisland = new GenLayerAddIsland(70L, genlayeraddisland);
 		GenLayer shore = new GenLayerShore(1000L, biomes);
+		GenLayer smooth = new GenLayerSmooth(1000L, shore);
+		GenLayer smooth1 = new GenLayerSmooth(1000L, smooth);
+		GenLayerRemoveTooMuchOcean genlayerremovetoomuchocean = new GenLayerRemoveTooMuchOcean(2L, smooth1);
 
 		GenLayer genlayervoronoizoom = new GenLayerVoronoiZoom(10L, biomes);
 		biomes.initWorldGenSeed(seed);
