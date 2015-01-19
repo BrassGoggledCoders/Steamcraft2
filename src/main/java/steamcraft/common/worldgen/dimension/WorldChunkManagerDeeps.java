@@ -20,6 +20,7 @@ public class WorldChunkManagerDeeps extends WorldChunkManager
 {
 	private GenLayer myGenBiomes;
 	private GenLayer myBiomeIndexLayer;
+	private GenLayer shoreLayer;
 	private final BiomeCache myBiomeCache;
 	private final List<BiomeGenBase> myBiomesToSpawnIn;
 

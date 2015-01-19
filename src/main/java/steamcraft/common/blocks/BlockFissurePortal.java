@@ -1,7 +1,6 @@
 package steamcraft.common.blocks;
 
 import net.minecraft.block.material.Material;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 import steamcraft.common.config.ConfigGeneral;
@@ -12,18 +11,6 @@ public class BlockFissurePortal extends BaseBlock
 	{
 		super(mat);
 		this.setBlockUnbreakable();
-	}
-
-	@Override
-	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)
-	{
-		// if(entity.ridingEntity == null && entity.riddenByEntity == null && !world.isRemote)
-		// {
-		// if(entity.dimension == 0)
-		entity.travelToDimension(-1);
-		// else
-		// entity.travelToDimension(0);
-		// }
 	}
 
 	@Override
