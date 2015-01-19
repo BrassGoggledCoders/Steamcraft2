@@ -45,7 +45,6 @@ public class WorldProviderDeeps extends WorldProvider
 	public void registerWorldChunkManager()
 	{
 		this.dimensionId = ConfigGeneral.deepsDimensionID;
-		// TODO?
 		this.worldChunkMgr = new WorldChunkManagerDeeps(this.worldObj.getSeed(), this.terrainType);
 		this.generateLightBrightnessTable();
 	}
