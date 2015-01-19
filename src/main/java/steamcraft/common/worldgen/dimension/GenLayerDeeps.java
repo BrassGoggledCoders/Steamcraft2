@@ -32,8 +32,8 @@ public abstract class GenLayerDeeps extends GenLayer
 
 		GenLayer genlayervoronoizoom = new GenLayerVoronoiZoom(10L, biomes);
 		biomes.initWorldGenSeed(seed);
-		// genlayervoronoizoom.initWorldGenSeed(seed);
+		genlayervoronoizoom.initWorldGenSeed(seed);
 
-		return new GenLayer[] { null, biomes, null };
+		return new GenLayer[] { biomes, genlayervoronoizoom };
 	}
 }
