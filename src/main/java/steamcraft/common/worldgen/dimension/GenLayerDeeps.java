@@ -19,7 +19,7 @@ public abstract class GenLayerDeeps extends GenLayer
 		biomes = new GenLayerFuzzyZoom(2000L, biomes);
 
 		biomes = new GenLayerBiomesDeeps(100L, biomes);
-		biomes = GenLayerZoom.magnify(2000L, biomes, 5);
+		biomes = GenLayerZoom.magnify(2000L, biomes, 8);
 
 		/*
 		 * TODO GenLayerIsland genlayerisland = new GenLayerIsland(1L); GenLayerFuzzyZoom genlayerfuzzyzoom = new GenLayerFuzzyZoom(2000L, genlayerisland);

@@ -9,6 +9,6 @@ public class BiomeDepthsMountains extends BiomeDepthsBase
 	{
 		super(p_i1971_1_);
 		this.setBiomeName(StatCollector.translateToLocal("biome.steamcraft2.innerearth.m.name"));
-		this.setHeight(new Height(1.3f, 1.5F));
+		this.setHeight(new Height(1.15f, 1.35F));
 	}
 }
