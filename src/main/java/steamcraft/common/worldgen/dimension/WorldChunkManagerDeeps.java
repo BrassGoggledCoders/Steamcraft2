@@ -33,7 +33,7 @@ public class WorldChunkManagerDeeps extends WorldChunkManager
 		this.myBiomesToSpawnIn.add(InitBiomes.biomeDepthsM);
 		this.myBiomesToSpawnIn.add(InitBiomes.biomeDepthsS);
 		this.myBiomesToSpawnIn.add(InitBiomes.biomeDepthsI);
-		this.myBiomesToSpawnIn.add(InitBiomes.biomeDepthsO);
+		// this.myBiomesToSpawnIn.add(InitBiomes.biomeDepthsO);
 	}
 
 	public WorldChunkManagerDeeps(long seed, WorldType worldtype)

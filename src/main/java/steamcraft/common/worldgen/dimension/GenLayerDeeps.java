@@ -19,7 +19,7 @@ public abstract class GenLayerDeeps extends GenLayer
 		biomes = new GenLayerFuzzyZoom(2000L, biomes);
 
 		biomes = new GenLayerBiomesDeeps(100L, biomes);
-		biomes = GenLayerZoom.magnify(2000L, biomes, 1);
+		biomes = GenLayerZoom.magnify(2000L, biomes, 5);
 
 		/*
 		 * TODO GenLayerIsland genlayerisland = new GenLayerIsland(1L); GenLayerFuzzyZoom genlayerfuzzyzoom = new GenLayerFuzzyZoom(2000L, genlayerisland);
@@ -32,8 +32,8 @@ public abstract class GenLayerDeeps extends GenLayer
 
 		GenLayer genlayervoronoizoom = new GenLayerVoronoiZoom(10L, biomes);
 		biomes.initWorldGenSeed(seed);
-		genlayervoronoizoom.initWorldGenSeed(seed);
+		// genlayervoronoizoom.initWorldGenSeed(seed);
 
-		return new GenLayer[] { biomes, genlayervoronoizoom };
+		return new GenLayer[] { null, biomes, null };
 	}
 }

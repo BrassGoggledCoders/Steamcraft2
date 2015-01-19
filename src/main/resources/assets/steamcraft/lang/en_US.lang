@@ -450,6 +450,9 @@ biome.steamcraft2.innerearth.s.name=Mushroom Forested Inner Earth
 biome.steamcraft2.innerearth.i.name=Infested Inner Earth
 biome.steamcraft2.innerearth.o.name=Inner Ocean
 biome.steamcraft2.innerearth.b.name=Inner Beach
+biome.steamcraft2.innerearth.sc.name=Scalded Lands
+biome.steamcraft2.innerearth.tf.name=Towering Forest
+biome.steamcraft2.innerearth.dj.name=Dense Jungle
 
 #Entities
 entity.steamcraft2.grub.name=Grub
