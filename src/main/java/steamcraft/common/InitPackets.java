@@ -22,6 +22,8 @@ import steamcraft.common.packets.OpenContainerFromClientPacket;
 import steamcraft.common.packets.OpenContainerFromClientPacket.OpenContainerFromClientPacketHandler;
 import steamcraft.common.packets.TimeBombPacket;
 import steamcraft.common.packets.TimeBombPacket.TimeBombPacketHandler;
+import steamcraft.common.packets.UpdateClientsideInventoryPacket;
+import steamcraft.common.packets.UpdateClientsideInventoryPacket.UpdateClientsideInventoryPacketHandler;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import cpw.mods.fml.relauncher.Side;
@@ -48,5 +50,6 @@ public class InitPackets
 		network.registerMessage(CopperWirePacketHandler.class, CopperWirePacket.class, packetId++, Side.CLIENT);
 		// Do we not need an energynet packet??
 
+		network.registerMessage(UpdateClientsideInventoryPacketHandler.class, UpdateClientsideInventoryPacket.class, packetId++, Side.CLIENT);
 	}
 }

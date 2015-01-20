@@ -77,7 +77,7 @@ public class TileCharger extends BaseTileWithInventory implements IEnergyReceive
 				if(this.inventory[i] != null)
 					Item.getIdFromItem(this.inventory[i].getItem());
 			}
-			InitPackets.network.sendToAllAround(new UpdateClientsideInventoryPacket(xCoord, yCoord, zCoord, ids, this.inventory.length), new TargetPoint(
+			InitPackets.network.sendToAllAround(new UpdateClientsideInventoryPacket(xCoord, yCoord, zCoord, ids), new TargetPoint(
 					worldObj.provider.dimensionId, xCoord, yCoord, zCoord,
 					10));
 			if(this.buffer.getEnergyStored() > 0)

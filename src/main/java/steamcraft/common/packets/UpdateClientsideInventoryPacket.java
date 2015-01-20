@@ -18,6 +18,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import boilerplate.common.baseclasses.BaseTileWithInventory;
+import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
 import cpw.mods.fml.common.network.simpleimpl.MessageContext;
@@ -31,19 +32,17 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class UpdateClientsideInventoryPacket implements IMessage
 {
 	private int x, y, z;
-	private int size;
-	private int[] ids;
+	private int[] ids = new int[] {};
 
 	public UpdateClientsideInventoryPacket()
 	{
 	} // REQUIRED
 
-	public UpdateClientsideInventoryPacket(int x, int y, int z, int[] ids, int size)
+	public UpdateClientsideInventoryPacket(int x, int y, int z, int[] ids)
 	{
 		this.x = x;
 		this.y = y;
 		this.z = z;
-		this.size = size;
 		this.ids = ids;
 	}
 
@@ -53,8 +52,7 @@ public class UpdateClientsideInventoryPacket implements IMessage
 		this.x = buf.readInt();
 		this.y = buf.readInt();
 		this.z = buf.readInt();
-		this.size = buf.readInt();
-		for(int i = 0; i < this.size; i++)
+		for(int i = 0; i < ids.length; i++)
 		{
 			ids[i] = buf.readInt();
 		}
@@ -66,8 +64,7 @@ public class UpdateClientsideInventoryPacket implements IMessage
 		buf.writeInt(x);
 		buf.writeInt(y);
 		buf.writeInt(z);
-		buf.writeInt(size);
-		for(int i = 0; i < this.size; i++)
+		for(int i = 0; i < ids.length; i++)
 		{
 			buf.writeInt(ids[i]);
 		}
@@ -85,11 +82,11 @@ public class UpdateClientsideInventoryPacket implements IMessage
 			{
 				BaseTileWithInventory tile = (BaseTileWithInventory) world.getTileEntity(message.x, message.y, message.z);
 
-				for(int i = 0; i < message.size; i++)
+				for(int i = 0; i < message.ids.length; i++)
 				{
 					tile.inventory[i] = new ItemStack(Item.getItemById(message.ids[i]));
+					FMLLog.warning(tile.inventory[i].getDisplayName(), tile.inventory[i].getDisplayName());
 				}
-
 			}
 
 			return null;

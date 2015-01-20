@@ -68,7 +68,7 @@ public class TileArmorEditor extends BaseTileWithInventory implements IInventory
 				if(this.inventory[i] != null)
 					Item.getIdFromItem(this.inventory[i].getItem());
 			}
-			InitPackets.network.sendToAllAround(new UpdateClientsideInventoryPacket(xCoord, yCoord, zCoord, ids, this.inventory.length), new TargetPoint(
+			InitPackets.network.sendToAllAround(new UpdateClientsideInventoryPacket(xCoord, yCoord, zCoord, ids), new TargetPoint(
 					worldObj.provider.dimensionId, xCoord, yCoord, zCoord,
 					10));
 		}
