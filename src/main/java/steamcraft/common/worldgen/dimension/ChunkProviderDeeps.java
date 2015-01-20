@@ -32,6 +32,7 @@ import net.minecraft.world.gen.NoiseGeneratorPerlin;
 import net.minecraft.world.gen.feature.WorldGenDungeons;
 import net.minecraft.world.gen.feature.WorldGenLakes;
 import net.minecraftforge.event.terraingen.TerrainGen;
+import steamcraft.common.InitBiomes;
 
 public class ChunkProviderDeeps implements IChunkProvider
 {
@@ -164,7 +165,10 @@ public class ChunkProviderDeeps implements IChunkProvider
 								}
 								else if(((k2 * 8) + l2) < b0)
 								{
-									p_147424_3_[j3 += short1] = Blocks.water;
+									if(worldObj.getBiomeGenForCoords(chunkCoordX, chunkCoordZ) == InitBiomes.biomeDepthsSCH)
+										p_147424_3_[j3 += short1] = Blocks.lava;
+									else
+										p_147424_3_[j3 += short1] = Blocks.water;
 								}
 								else
 								{
@@ -396,13 +400,19 @@ public class ChunkProviderDeeps implements IChunkProvider
 		int l1;
 		int i2;
 
-		if((biomegenbase != BiomeGenBase.desert) && (biomegenbase != BiomeGenBase.desertHills) && !flag && (this.rand.nextInt(4) == 0)
-				&& TerrainGen.populate(p_73153_1_, this.worldObj, this.rand, p_73153_2_, p_73153_3_, flag, LAKE))
+		if((biomegenbase != InitBiomes.biomeDepthsSCH) && TerrainGen.populate(p_73153_1_, this.worldObj, this.rand, p_73153_2_, p_73153_3_, flag, LAKE))
 		{
 			k1 = k + this.rand.nextInt(16) + 8;
 			l1 = this.rand.nextInt(256);
 			i2 = l + this.rand.nextInt(16) + 8;
 			(new WorldGenLakes(Blocks.water)).generate(this.worldObj, this.rand, k1, l1, i2);
+		}
+		else
+		{
+			k1 = k + this.rand.nextInt(16) + 8;
+			l1 = this.rand.nextInt(256);
+			i2 = l + this.rand.nextInt(16) + 8;
+			(new WorldGenLakes(Blocks.lava)).generate(this.worldObj, this.rand, k1, l1, i2);
 		}
 
 		if(TerrainGen.populate(p_73153_1_, this.worldObj, this.rand, p_73153_2_, p_73153_3_, flag, LAVA) && !flag && (this.rand.nextInt(8) == 0))
@@ -411,7 +421,7 @@ public class ChunkProviderDeeps implements IChunkProvider
 			l1 = this.rand.nextInt(this.rand.nextInt(248) + 8);
 			i2 = l + this.rand.nextInt(16) + 8;
 
-			if((l1 < 63) || (this.rand.nextInt(10) == 0))
+			if((l1 < 63) || (this.rand.nextInt(5) == 0))
 			{
 				(new WorldGenLakes(Blocks.lava)).generate(this.worldObj, this.rand, k1, l1, i2);
 			}

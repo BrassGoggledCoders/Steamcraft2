@@ -12,8 +12,7 @@
  */
 package steamcraft.common.blocks;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
+import net.minecraft.block.BlockLog;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.util.IIcon;
 import steamcraft.common.Steamcraft;
@@ -22,37 +21,42 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 /**
- * @author Surseance
+ * @author warlordjones
  * 
  */
-public class BaseBlock extends Block
+public class BlockCustomLog extends BlockLog
 {
-	IIcon missingIcon;
+	@SideOnly(Side.CLIENT)
+	private IIcon iconTop;
 
-	public BaseBlock(Material mat)
+	String type;
+
+	public BlockCustomLog(String type)
 	{
-		super(mat);
+		super();
+		this.type = type;
 		this.setCreativeTab(Steamcraft.tabSC2);
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister ir)
+	protected IIcon getSideIcon(int p_150163_1_)
 	{
-		this.blockIcon = ir.registerIcon(LibInfo.PREFIX + this.getUnlocalizedName().substring(5));
-		this.missingIcon = ir.registerIcon(LibInfo.PREFIX + "missingno");
+		return this.blockIcon;
 	}
 
-	/**
-	 * Gets the block's texture. Args: side, meta
-	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(int p_149691_1_, int p_149691_2_)
+	protected IIcon getTopIcon(int p_150161_1_)
 	{
-		if(blockIcon != null)
-			return this.blockIcon;
-		else
-			return missingIcon;
+		return this.iconTop;
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void registerBlockIcons(final IIconRegister ir)
+	{
+		this.blockIcon = ir.registerIcon(LibInfo.PREFIX + "block" + type + "LogSide");
+		this.iconTop = ir.registerIcon(LibInfo.PREFIX + "block" + type + "LogTop");
 	}
 }

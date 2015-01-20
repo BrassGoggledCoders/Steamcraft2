@@ -12,8 +12,7 @@
  */
 package steamcraft.common.blocks;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
+import net.minecraft.block.BlockLeaves;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.util.IIcon;
 import steamcraft.common.Steamcraft;
@@ -22,37 +21,48 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 /**
- * @author Surseance
+ * @author warlordjones
  * 
  */
-public class BaseBlock extends Block
+public class BlockCustomLeaves extends BlockLeaves
 {
-	IIcon missingIcon;
+	String type;
 
-	public BaseBlock(Material mat)
+	public BlockCustomLeaves(String type)
 	{
-		super(mat);
+		super();
+		this.type = type;
 		this.setCreativeTab(Steamcraft.tabSC2);
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister ir)
+	public void registerBlockIcons(final IIconRegister ir)
 	{
-		this.blockIcon = ir.registerIcon(LibInfo.PREFIX + this.getUnlocalizedName().substring(5));
-		this.missingIcon = ir.registerIcon(LibInfo.PREFIX + "missingno");
+		this.blockIcon = ir.registerIcon(LibInfo.PREFIX + "block" + type + "Leaves");
 	}
 
-	/**
-	 * Gets the block's texture. Args: side, meta
-	 */
 	@Override
-	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(int p_149691_1_, int p_149691_2_)
 	{
-		if(blockIcon != null)
-			return this.blockIcon;
-		else
-			return missingIcon;
+		return this.blockIcon;
+	}
+
+	@Override
+	public String[] func_150125_e()
+	{
+		return new String[] { type };
+	}
+
+	@Override
+	public boolean isOpaqueCube()
+	{
+		return false;
+	}
+
+	@Override
+	public boolean renderAsNormalBlock()
+	{
+		return false;
 	}
 }

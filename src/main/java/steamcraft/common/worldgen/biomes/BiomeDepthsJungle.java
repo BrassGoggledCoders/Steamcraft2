@@ -12,7 +12,7 @@ public class BiomeDepthsJungle extends BiomeDepthsBase
 	public BiomeDepthsJungle(int p_i1971_1_)
 	{
 		super(p_i1971_1_);
-		this.setBiomeName(StatCollector.translateToLocal("biome.steamcraft2.innerearth.dj.name"));
+		this.setBiomeName(StatCollector.translateToLocal("biome.steamcraft2.innerearth.jungle.name"));
 		this.theBiomeDecorator.treesPerChunk = 500;
 	}
 

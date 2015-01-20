@@ -28,6 +28,8 @@ import steamcraft.common.blocks.BlockCastIronRailing;
 import steamcraft.common.blocks.BlockCompressedStone;
 import steamcraft.common.blocks.BlockCongealedSlime;
 import steamcraft.common.blocks.BlockCrystal;
+import steamcraft.common.blocks.BlockCustomLeaves;
+import steamcraft.common.blocks.BlockCustomLog;
 import steamcraft.common.blocks.BlockEngravedSolid;
 import steamcraft.common.blocks.BlockEngravedVanilla;
 import steamcraft.common.blocks.BlockEtherium;
@@ -147,6 +149,8 @@ public class InitBlocks
 
 	public static Block blockPolishedPlanks;
 
+	public static Block blockRedwoodLog, blockRedwoodLeaves, blockMangroveLog, blockMangroveLeaves;
+
 	public static void init()
 	{
 		initializeDecorative();
@@ -166,7 +170,7 @@ public class InitBlocks
 		registerBlock(blockSlate, BaseItemBlockWithMetadata.class, "BlockSlate");
 
 		// Metals
-		blockMetal = new BlockMetal().setBlockName("blockMetal");;
+		blockMetal = new BlockMetal().setBlockName("blockMetal");
 		blockUranium = new BlockUranium(Material.iron).setBlockName("blockUranium");
 		blockEtherium = new BlockEtherium(Material.iron).setBlockName("blockEtherium");
 
@@ -178,8 +182,8 @@ public class InitBlocks
 	private static void initializeDecorative()
 	{
 		// Engraved Blocks
-		blockEngraved = new BlockEngravedSolid().setBlockName("blockEngravedSolid");;
-		blockEngravedVanilla = new BlockEngravedVanilla().setBlockName("blockEngravedVanilla");;
+		blockEngraved = new BlockEngravedSolid().setBlockName("blockEngravedSolid");
+		blockEngravedVanilla = new BlockEngravedVanilla().setBlockName("blockEngravedVanilla");
 
 		registerBlock(blockEngraved, BaseItemBlockWithMetadata.class, "BlockEngravedSolid");
 		registerBlock(blockEngravedVanilla, BaseItemBlockWithMetadata.class, "BlockEngravedVanilla");
@@ -192,7 +196,7 @@ public class InitBlocks
 		RegistryHelper.registerContainerBlock(blockCastIronLampOn, TileCastIronLamp.class, "BlockCastIronLampOn");
 
 		blockCastIronFence = new BlockCastIronFence().setBlockName("blockCastIronFence");
-		blockCastIronGate = new BlockCastIronGate().setBlockName("blockCastIronGate");;
+		blockCastIronGate = new BlockCastIronGate().setBlockName("blockCastIronGate");
 		blockCastIronRailing = new BlockCastIronRailing(Material.anvil).setBlockName("blockCastIronRailing");
 
 		registerBlock(blockCastIronFence, "BlockCastIronFence");
@@ -238,7 +242,7 @@ public class InitBlocks
 		RegistryHelper.registerContainerBlockWithDesc(blockBloomery, TileBloomery.class, "BlockBloomery");
 
 		// Armor Editor
-		blockArmorEditor = new BlockArmorEditor(Material.iron).setBlockName("blockArmorEditor");;
+		blockArmorEditor = new BlockArmorEditor(Material.iron).setBlockName("blockArmorEditor");
 
 		RegistryHelper.registerContainerBlock(blockArmorEditor, TileArmorEditor.class, "BlockArmorEditor");
 
@@ -261,19 +265,19 @@ public class InitBlocks
 	private static void initializeFluids()
 	{
 		// Steam
-		steamFluid = new FluidSteam("steam").setUnlocalizedName("steamFluid");;
+		steamFluid = new FluidSteam("steam").setUnlocalizedName("steamFluid");
 
 		if(!FluidRegistry.registerFluid(steamFluid) && !FluidRegistry.isFluidRegistered("steam"))
 			steamFluid = FluidRegistry.getFluid("steam");
 
-		blockSteam = new BlockFluidSteam(steamFluid, Material.lava).setBlockName("steamFluidBlock");;
+		blockSteam = new BlockFluidSteam(steamFluid, Material.lava).setBlockName("steamFluidBlock");
 
 		registerBlock(blockSteam, "blockSteam");
 	}
 
 	private static void initializeOthers()
 	{
-		blockCrystal = new BlockCrystal().setBlockName("blockCrystal");;
+		blockCrystal = new BlockCrystal().setBlockName("blockCrystal");
 
 		RegistryHelper.registerContainerBlock(blockCrystal, TileCrystal.class, "BlockCrystal");
 
@@ -323,6 +327,18 @@ public class InitBlocks
 
 		blockPolishedPlanks = new BlockPolishedPlanks().setBlockName("blockPolishedPlanks");
 		registerBlock(blockPolishedPlanks, BaseItemBlockWithMetadata.class, "BlockPolishedPlanks");
+
+		blockRedwoodLog = new BlockCustomLog("Redwood").setBlockName("blockRedwoodLog");
+		registerBlock(blockRedwoodLog, "BlockRedwoodLog");
+
+		blockRedwoodLeaves = new BlockCustomLeaves("Redwood").setBlockName("blockRedwoodLeaves");
+		registerBlock(blockRedwoodLeaves, "BlockRedwoodLeaves");
+
+		blockMangroveLog = new BlockCustomLog("Mangrove").setBlockName("blockMangroveLog");
+		registerBlock(blockMangroveLog, "BlockMangroveLog");
+
+		blockMangroveLeaves = new BlockCustomLeaves("Mangrove").setBlockName("blockMangroveLeaves");
+		registerBlock(blockMangroveLeaves, "BlockMangroveLeaves");
 	}
 
 	public static void registerBlock(Block block, String name)

@@ -10,7 +10,7 @@ public class BiomeDepthsBeach extends BiomeGenBase
 	public BiomeDepthsBeach(int p_i1971_1_)
 	{
 		super(p_i1971_1_);
-		this.setBiomeName(StatCollector.translateToLocal("biome.steamcraft2.innerearth.b.name"));
+		this.setBiomeName(StatCollector.translateToLocal("biome.steamcraft2.innerearth.beach.name"));
 		this.spawnableCreatureList.clear();
 		this.topBlock = Blocks.sand;
 		this.fillerBlock = Blocks.sand;

@@ -37,7 +37,7 @@ public class BlockInfestedGrass extends BlockInfestedDirt
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(int side, int meta)
 	{
-		return Blocks.grass.getBlockTextureFromSide(side);
+		return Blocks.grass.getIcon(side, meta);
 	}
 
 	@Override

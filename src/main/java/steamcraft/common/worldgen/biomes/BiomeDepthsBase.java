@@ -15,14 +15,14 @@ public class BiomeDepthsBase extends BiomeGenBase
 	{
 		super(p_i1971_1_);
 		this.spawnableMonsterList.clear();
-		this.spawnableCaveCreatureList.add(new BiomeGenBase.SpawnListEntry(EntityLostMiner.class, 20, 1, 2));
-		this.spawnableCaveCreatureList.add(new BiomeGenBase.SpawnListEntry(EntityGrub.class, 40, 3, 6));
+		this.spawnableCaveCreatureList.add(new BiomeGenBase.SpawnListEntry(EntityLostMiner.class, 2, 1, 2));
+		this.spawnableCaveCreatureList.add(new BiomeGenBase.SpawnListEntry(EntityGrub.class, 5, 3, 6));
 		this.topBlock = Blocks.grass;
 		this.fillerBlock = Blocks.dirt;
 		this.enableRain = false;
-		this.setHeight(new Height(1F, 1.2F));
+		this.setHeight(new Height(0.5F, 0.8F));
 		this.setBiomeName(StatCollector.translateToLocal("biome.steamcraft2.innerearth.name"));
-		this.rootHeight = 1.5F;
+		this.rootHeight = 0.6F;
 		this.func_76733_a(8045877);
 		this.setColor(8045877);
 		this.waterColorMultiplier = 6860222;

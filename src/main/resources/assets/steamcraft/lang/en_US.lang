@@ -68,7 +68,10 @@ tile.blockInfestedDirt.desc=Infested!
 tile.blockInfestedGrass.name=Grass
 tile.blockInfestedGrass.desc=Infested!
 tile.blockPath.name=Path Block
-tile.blockPath.desc=Texture by LupusX
+tile.blockRedwoodLog.name=Redwood Log
+tile.blockRedwoodLeaves.name=Redwood Leaves
+tile.blockMangroveLog.name=Mangrove Log
+tile.blockMangroveLeaves.name=Mangrove Leaves
 
 #Ores
 tile.blockSteamcraftOre.0.name=Aluminum Ore
@@ -447,32 +450,30 @@ death.attack.steamcraft2.bullet.player.item=%1$s was shot by %2$s using %3$s
 
 #Biomes
 biome.steamcraft2.innerearth.name=Inner Earth
-biome.steamcraft2.innerearth.f.name=Forested Inner Earth
-biome.steamcraft2.innerearth.m.name=Mountainous Inner Earth
-biome.steamcraft2.innerearth.s.name=Mushroom Forested Inner Earth
-biome.steamcraft2.innerearth.i.name=Infested Inner Earth
-biome.steamcraft2.innerearth.o.name=Inner Ocean
-biome.steamcraft2.innerearth.b.name=Inner Beach
-biome.steamcraft2.innerearth.sc.name=Scalded Lands
-biome.steamcraft2.innerearth.tf.name=Towering Forest
-biome.steamcraft2.innerearth.dj.name=Dense Jungle
-biome.steamcraft2.innerearch.sf.nmae=Swampy Forest
-biome.steamcraft2.innerearch.sch.nmae=Scorched Lands
+biome.steamcraft2.innerearth.forest.name=Forested Inner Earth
+biome.steamcraft2.innerearth.mountains.name=Mountainous Inner Earth
+biome.steamcraft2.innerearth.mushroom.name=Mushroom Forested Inner Earth
+biome.steamcraft2.innerearth.infested.name=Infested Inner Earth
+biome.steamcraft2.innerearth.ocean.name=Inner Ocean
+biome.steamcraft2.innerearth.beach.name=Inner Beach
+biome.steamcraft2.innerearth.scalded.name=Scalded Lands
+biome.steamcraft2.innerearth.tallforest.name=Towering Forest
+biome.steamcraft2.innerearth.jungle.name=Dense Jungle
+biome.steamcraft2.innerearth.swamp.name=Swampy Forest
+biome.steamcraft2.innerearth.scorched.name=Scorched Lands
 
 #Entities
 entity.steamcraft2.grub.name=Grub
 entity.steamcraft2.lostminer.name=Lost Miner
 
+#Keys
+key.steamcraft.category=Steamcraft2
+key.vanity.desc=Open Vanity Inventory
+
 #Lore Stuff
 lore.steamcraft2.0.author=warlordjones
 lore.steamcraft2.0.title=[Meta]
-lore.steamcraft2.0.page1=Want to Contribute to this mod? Enjoy writing steampunk lore? Enjoy finding these snippets of lore in the world and wish there was more? Well, awesome! If you fancy it, write some lore for the mod, and shoot it at warlordjones@gmail.com
-
-#Vanilla Docs
-tile.chest.documentation=For holding things. Has 36 slots.
-
-#SC2 Docs
-tile.blockCopperWire.documentation=Copper wire is used for transfer of power between machines. The uninsulated version will electrocute you if you stand on it while current is flowing! The wire can transport a maximum of 2500RF/Tick. By default, the wire pushes power into connected blocks, so to allow it to withdraw power from power sources such as the lightning rod, you must right click it with the spanner.
+lore.steamcraft2.0.page1=Want to Contribute to this mod? Enjoy writing steampunk lore and love finding these snippets of lore in the world and wish there was more? Well, awesome! If you fancy it, write some lore for the mod, and shoot it at warlordjones@gmail.com
 
 #TiCon Material
 material.etherium=Etherium
