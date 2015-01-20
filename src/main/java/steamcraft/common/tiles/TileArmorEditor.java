@@ -20,13 +20,10 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import steamcraft.common.InitPackets;
 import steamcraft.common.items.armor.ItemBrassArmor;
-import steamcraft.common.packets.UpdateClientsideInventoryPacket;
 import boilerplate.common.baseclasses.BaseTileWithInventory;
 import boilerplate.steamapi.item.IArmorModule;
 import boilerplate.steamapi.item.ModuleRegistry;
-import cpw.mods.fml.common.network.NetworkRegistry.TargetPoint;
 
 /**
  * @author warlordjones
@@ -60,18 +57,11 @@ public class TileArmorEditor extends BaseTileWithInventory implements IInventory
 	@Override
 	public void updateEntity()
 	{
-		if(!worldObj.isRemote)
-		{
-			int[] ids = new int[this.inventory.length];
-			for(int i = 0; i < this.inventory.length; i++)
-			{
-				if(this.inventory[i] != null)
-					Item.getIdFromItem(this.inventory[i].getItem());
-			}
-			InitPackets.network.sendToAllAround(new UpdateClientsideInventoryPacket(xCoord, yCoord, zCoord, ids), new TargetPoint(
-					worldObj.provider.dimensionId, xCoord, yCoord, zCoord,
-					10));
-		}
+		/*
+		 * if(!worldObj.isRemote) { int[] ids = new int[this.inventory.length]; for(int i = 0; i < this.inventory.length; i++) { if(this.inventory[i] != null)
+		 * ids[i] = Item.getIdFromItem(this.inventory[i].getItem()); } InitPackets.network.sendToAllAround(new UpdateClientsideInventoryPacket(xCoord, yCoord,
+		 * zCoord, ids), new TargetPoint( worldObj.provider.dimensionId, xCoord, yCoord, zCoord, 10)); }
+		 */
 		ArrayList<String> installedModules = new ArrayList<String>();
 
 		if(this.worldObj.isRemote)

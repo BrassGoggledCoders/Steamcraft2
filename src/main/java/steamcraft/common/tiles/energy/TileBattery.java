@@ -14,18 +14,14 @@ package steamcraft.common.tiles.energy;
 
 import java.util.EnumSet;
 
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
-import steamcraft.common.InitPackets;
-import steamcraft.common.packets.UpdateClientsideInventoryPacket;
 import boilerplate.common.baseclasses.BaseTileWithInventory;
 import boilerplate.steamapi.item.IEnergyItem;
 import cofh.api.energy.EnergyStorage;
 import cofh.api.energy.IEnergyHandler;
-import cpw.mods.fml.common.network.NetworkRegistry.TargetPoint;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -79,15 +75,11 @@ public class TileBattery extends BaseTileWithInventory implements IEnergyHandler
 
 		if(!this.worldObj.isRemote)
 		{
-			int[] ids = new int[this.inventory.length];
-			for(int i = 0; i < this.inventory.length; i++)
-			{
-				if(this.inventory[i] != null)
-					Item.getIdFromItem(this.inventory[i].getItem());
-			}
-			InitPackets.network.sendToAllAround(new UpdateClientsideInventoryPacket(xCoord, yCoord, zCoord, ids), new TargetPoint(
-					worldObj.provider.dimensionId, xCoord, yCoord, zCoord,
-					10));
+			/*
+			 * int[] ids = new int[this.inventory.length]; for(int i = 0; i < this.inventory.length; i++) { if(this.inventory[i] != null) ids[i] =
+			 * Item.getIdFromItem(this.inventory[i].getItem()); } InitPackets.network.sendToAllAround(new UpdateClientsideInventoryPacket(xCoord, yCoord,
+			 * zCoord, ids), new TargetPoint( worldObj.provider.dimensionId, xCoord, yCoord, zCoord, 10));
+			 */
 			this.ticksSinceUpdate++;
 
 			if(this.ticksSinceUpdate > 50)
