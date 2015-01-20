@@ -456,6 +456,8 @@ biome.steamcraft2.innerearth.b.name=Inner Beach
 biome.steamcraft2.innerearth.sc.name=Scalded Lands
 biome.steamcraft2.innerearth.tf.name=Towering Forest
 biome.steamcraft2.innerearth.dj.name=Dense Jungle
+biome.steamcraft2.innerearch.sf.nmae=Swampy Forest
+biome.steamcraft2.innerearch.sch.nmae=Scorched Lands
 
 #Entities
 entity.steamcraft2.grub.name=Grub

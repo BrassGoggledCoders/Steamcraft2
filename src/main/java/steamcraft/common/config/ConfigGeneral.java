@@ -36,7 +36,8 @@ public class ConfigGeneral
 
 	public static boolean unnaturalLightningStrikes, naturalLightningStrikes, weather2LightningStrikes;
 
-	public static int depthsBiomeID, depthsFBiomeID, depthsMBiomeID, depthsSBiomeID, depthsIBiomeID, depthsOBiomeID, depthsBBiomeID;
+	public static int depthsBiomeID, depthsFBiomeID, depthsMBiomeID, depthsSBiomeID, depthsIBiomeID, depthsSCBiomeID, depthsSCHBiomeID, depthsSWBiomeID,
+			depthsTFBiomeID, depthsJBiomeID;// , depthsOBiomeID, depthsBBiomeID;
 
 	public static void initialize(File configFile)
 	{
@@ -61,13 +62,19 @@ public class ConfigGeneral
 			weather2LightningStrikes = config.get(CATEGORY_GENERAL, comment, true).getBoolean();
 
 			deepsDimensionID = config.get(CATEGORY_GENERAL, "Dimension ID for the Deeps dimension", -8).getInt();
-			depthsBiomeID = config.get(CATEGORY_GENERAL, "Biome ID for Depths Biome", 230).getInt();
-			depthsFBiomeID = config.get(CATEGORY_GENERAL, "Biome ID for Depths Forest Biome", 231).getInt();
-			depthsMBiomeID = config.get(CATEGORY_GENERAL, "Biome ID for Depths Mountains Biome", 231).getInt();
-			depthsSBiomeID = config.get(CATEGORY_GENERAL, "Biome ID for Depths Mushroom Forest Biome", 232).getInt();
-			depthsIBiomeID = config.get(CATEGORY_GENERAL, "Biome ID for Depths Infestation Biome", 233).getInt();
-			depthsOBiomeID = config.get(CATEGORY_GENERAL, "Biome ID for Depths Ocean Biome", 234).getInt();
-			depthsBBiomeID = config.get(CATEGORY_GENERAL, "Biome ID for Depths Beach Biome", 235).getInt();
+			int biomeID = 230;
+			depthsBiomeID = config.get(CATEGORY_GENERAL, "Biome ID for Depths Biome", biomeID++).getInt();
+			depthsFBiomeID = config.get(CATEGORY_GENERAL, "Biome ID for Depths Forest Biome", biomeID++).getInt();
+			depthsMBiomeID = config.get(CATEGORY_GENERAL, "Biome ID for Depths Mountains Biome", biomeID++).getInt();
+			depthsSBiomeID = config.get(CATEGORY_GENERAL, "Biome ID for Depths Mushroom Forest Biome", biomeID++).getInt();
+			depthsIBiomeID = config.get(CATEGORY_GENERAL, "Biome ID for Depths Infestation Biome", biomeID++).getInt();
+			// depthsOBiomeID = config.get(CATEGORY_GENERAL, "Biome ID for Depths Ocean Biome", 234).getInt();
+			// depthsBBiomeID = config.get(CATEGORY_GENERAL, "Biome ID for Depths Beach Biome", 235).getInt();
+			depthsSCBiomeID = config.get(CATEGORY_GENERAL, "Biome ID for Depths Scalded Biome", biomeID++).getInt();
+			depthsSCHBiomeID = config.get(CATEGORY_GENERAL, "Biome ID for Depths Scorched Biome", biomeID++).getInt();
+			depthsSWBiomeID = config.get(CATEGORY_GENERAL, "Biome ID for Depths Swamp Biome", biomeID++).getInt();
+			depthsTFBiomeID = config.get(CATEGORY_GENERAL, "Biome ID for Depths Tall Forest Biome", biomeID++).getInt();
+			depthsJBiomeID = config.get(CATEGORY_GENERAL, "Biome ID for Depths Jungle Biome", biomeID++).getInt();
 		}
 		catch(Exception e)
 		{

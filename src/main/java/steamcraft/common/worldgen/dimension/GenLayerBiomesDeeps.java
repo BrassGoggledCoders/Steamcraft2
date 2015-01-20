@@ -1,15 +1,10 @@
 package steamcraft.common.worldgen.dimension;
 
-import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.layer.GenLayer;
 import net.minecraft.world.gen.layer.IntCache;
-import steamcraft.common.InitBiomes;
 
 public class GenLayerBiomesDeeps extends GenLayer
 {
-	protected BiomeGenBase[] allowedBiomes = { InitBiomes.biomeDepths, InitBiomes.biomeDepthsF, InitBiomes.biomeDepthsM, InitBiomes.biomeDepthsS,
-			InitBiomes.biomeDepthsI /* , InitBiomes.biomeDepthsO */};
-
 	public GenLayerBiomesDeeps(long seed, GenLayer genlayer)
 	{
 		super(seed);
@@ -31,7 +26,7 @@ public class GenLayerBiomesDeeps extends GenLayer
 			for(int dx = 0; dx < width; dx++)
 			{
 				this.initChunkSeed(dx + x, dz + z);
-				dest[(dx + (dz * width))] = this.allowedBiomes[this.nextInt(this.allowedBiomes.length)].biomeID;
+				dest[(dx + (dz * width))] = WorldChunkManagerDeeps.myBiomesToSpawnIn.get(this.nextInt(WorldChunkManagerDeeps.myBiomesToSpawnIn.size())).biomeID;
 			}
 		}
 		return dest;

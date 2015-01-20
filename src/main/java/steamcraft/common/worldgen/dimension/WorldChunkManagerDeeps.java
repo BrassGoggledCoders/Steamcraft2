@@ -22,17 +22,22 @@ public class WorldChunkManagerDeeps extends WorldChunkManager
 	private GenLayer myBiomeIndexLayer;
 	private GenLayer shoreLayer;
 	private final BiomeCache myBiomeCache;
-	private final List<BiomeGenBase> myBiomesToSpawnIn;
+	public static List<BiomeGenBase> myBiomesToSpawnIn;
 
 	protected WorldChunkManagerDeeps()
 	{
 		this.myBiomeCache = new BiomeCache(this);
-		this.myBiomesToSpawnIn = new ArrayList<BiomeGenBase>();
-		this.myBiomesToSpawnIn.add(InitBiomes.biomeDepths);
-		this.myBiomesToSpawnIn.add(InitBiomes.biomeDepthsF);
-		this.myBiomesToSpawnIn.add(InitBiomes.biomeDepthsM);
-		this.myBiomesToSpawnIn.add(InitBiomes.biomeDepthsS);
-		this.myBiomesToSpawnIn.add(InitBiomes.biomeDepthsI);
+		WorldChunkManagerDeeps.myBiomesToSpawnIn = new ArrayList<BiomeGenBase>();
+		WorldChunkManagerDeeps.myBiomesToSpawnIn.add(InitBiomes.biomeDepths);
+		WorldChunkManagerDeeps.myBiomesToSpawnIn.add(InitBiomes.biomeDepthsF);
+		WorldChunkManagerDeeps.myBiomesToSpawnIn.add(InitBiomes.biomeDepthsM);
+		WorldChunkManagerDeeps.myBiomesToSpawnIn.add(InitBiomes.biomeDepthsS);
+		WorldChunkManagerDeeps.myBiomesToSpawnIn.add(InitBiomes.biomeDepthsI);
+		WorldChunkManagerDeeps.myBiomesToSpawnIn.add(InitBiomes.biomeDepthsSC);
+		WorldChunkManagerDeeps.myBiomesToSpawnIn.add(InitBiomes.biomeDepthsSCH);
+		WorldChunkManagerDeeps.myBiomesToSpawnIn.add(InitBiomes.biomeDepthsSW);
+		WorldChunkManagerDeeps.myBiomesToSpawnIn.add(InitBiomes.biomeDepthsTF);
+		WorldChunkManagerDeeps.myBiomesToSpawnIn.add(InitBiomes.biomeDepthsJ);
 		// this.myBiomesToSpawnIn.add(InitBiomes.biomeDepthsO);
 	}
 
@@ -55,7 +60,7 @@ public class WorldChunkManagerDeeps extends WorldChunkManager
 	@Override
 	public List<BiomeGenBase> getBiomesToSpawnIn()
 	{
-		return this.myBiomesToSpawnIn;
+		return WorldChunkManagerDeeps.myBiomesToSpawnIn;
 	}
 
 	/**

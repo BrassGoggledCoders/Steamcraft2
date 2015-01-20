@@ -32,7 +32,6 @@ import net.minecraft.world.gen.NoiseGeneratorPerlin;
 import net.minecraft.world.gen.feature.WorldGenDungeons;
 import net.minecraft.world.gen.feature.WorldGenLakes;
 import net.minecraftforge.event.terraingen.TerrainGen;
-import steamcraft.common.InitBiomes;
 
 public class ChunkProviderDeeps implements IChunkProvider
 {
@@ -158,10 +157,10 @@ public class ChunkProviderDeeps implements IChunkProvider
 							{
 								if((d15 += d16) > 0.0D)
 								{
-									if(this.worldObj.getBiomeGenForCoords(chunkCoordX, chunkCoordZ) == InitBiomes.biomeDepthsO)
-										p_147424_3_[j3 += short1] = Blocks.water;
-									else
-										p_147424_3_[j3 += short1] = Blocks.stone;
+									// if(this.worldObj.getBiomeGenForCoords(chunkCoordX, chunkCoordZ) == InitBiomes.biomeDepthsO)
+									// p_147424_3_[j3 += short1] = Blocks.water;
+									// else
+									p_147424_3_[j3 += short1] = Blocks.stone;
 								}
 								else if(((k2 * 8) + l2) < b0)
 								{

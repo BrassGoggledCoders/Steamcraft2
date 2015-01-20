@@ -3,7 +3,6 @@ package steamcraft.common.worldgen.dimension;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.layer.GenLayer;
 import net.minecraft.world.gen.layer.IntCache;
-import steamcraft.common.InitBiomes;
 
 public class GenLayerShore extends GenLayer
 {
@@ -31,29 +30,15 @@ public class GenLayerShore extends GenLayer
 				int i2;
 				int j2;
 				int k2;
-
-				if(!isBiomeOceanic(landBiomeId) && landBiomeId != InitBiomes.biomeDepthsO.biomeID)
-				{
-					l1 = inputBiomeIds[j1 + 1 + (i1 + 1 - 1) * (width + 2)];
-					i2 = inputBiomeIds[j1 + 1 + 1 + (i1 + 1) * (width + 2)];
-					j2 = inputBiomeIds[j1 + 1 - 1 + (i1 + 1) * (width + 2)];
-					k2 = inputBiomeIds[j1 + 1 + (i1 + 1 + 1) * (width + 2)];
-
-					if(!isBiomeOceanic(l1) && !isBiomeOceanic(i2) && !isBiomeOceanic(j2) && !isBiomeOceanic(k2))
-					{
-						outputBiomeIds[j1 + i1 * width] = landBiomeId;
-					}
-					else
-					{
-						outputBiomeIds[j1 + i1 * width] = InitBiomes.biomeDepthsB.biomeID;
-					}
-				}
-				else
-				{
-					outputBiomeIds[j1 + i1 * width] = landBiomeId;
-				}
 			}
 		}
+		/*
+		 * if(!isBiomeOceanic(landBiomeId) && landBiomeId != InitBiomes.biomeDepthsO.biomeID) { l1 = inputBiomeIds[j1 + 1 + (i1 + 1 - 1) * (width + 2)]; i2 =
+		 * inputBiomeIds[j1 + 1 + 1 + (i1 + 1) * (width + 2)]; j2 = inputBiomeIds[j1 + 1 - 1 + (i1 + 1) * (width + 2)]; k2 = inputBiomeIds[j1 + 1 + (i1 + 1 + 1)
+		 * * (width + 2)]; if(!isBiomeOceanic(l1) && !isBiomeOceanic(i2) && !isBiomeOceanic(j2) && !isBiomeOceanic(k2)) { outputBiomeIds[j1 + i1 * width] =
+		 * landBiomeId; } else { outputBiomeIds[j1 + i1 * width] = InitBiomes.biomeDepthsB.biomeID; } } else { outputBiomeIds[j1 + i1 * width] = landBiomeId; }
+		 * } }
+		 */
 
 		return outputBiomeIds;
 	}
@@ -84,6 +69,6 @@ public class GenLayerShore extends GenLayer
 
 	protected static boolean isBiomeOceanic(int biomeId)
 	{
-		return biomeId == InitBiomes.biomeDepthsO.biomeID || GenLayer.isBiomeOceanic(biomeId);
+		return /* biomeId == InitBiomes.biomeDepthsO.biomeID || */false;
 	}
 }
