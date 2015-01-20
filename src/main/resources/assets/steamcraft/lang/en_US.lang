@@ -79,6 +79,9 @@ tile.blockSteamcraftOre.4.name=Uranite Ore
 tile.blockSteamcraftOre.5.name=Brimstone Ore
 tile.blockSteamcraftOre.6.name=Phosphate Ore
 tile.blockCrystal.name=Etherium Crystal Block
+tile.blockPolishedPlanks.0.name=Polished Oak Planks
+tile.blockPolishedPlanks.1.name=Vertical Polished Oak Planks
+tile.blockPolishedPlanks.2.name=Polished Oak Panel
 
 #Machines
 tile.blockCopperTank.name=Copper Tank

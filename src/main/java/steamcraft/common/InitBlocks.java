@@ -40,6 +40,7 @@ import steamcraft.common.blocks.BlockLamp;
 import steamcraft.common.blocks.BlockMetal;
 import steamcraft.common.blocks.BlockPath;
 import steamcraft.common.blocks.BlockPlankStack;
+import steamcraft.common.blocks.BlockPolishedPlanks;
 import steamcraft.common.blocks.BlockSlate;
 import steamcraft.common.blocks.BlockSteamcraftOre;
 import steamcraft.common.blocks.BlockTeaPlant;
@@ -143,6 +144,8 @@ public class InitBlocks
 	public static Block blockInfestedGrass, blockInfestedDirt;
 
 	public static Block blockPath;
+
+	public static Block blockPolishedPlanks;
 
 	public static void init()
 	{
@@ -317,6 +320,9 @@ public class InitBlocks
 
 		blockPath = new BlockPath().setBlockName("blockPath");
 		registerBlock(blockPath, "BlockPath");
+
+		blockPolishedPlanks = new BlockPolishedPlanks().setBlockName("blockPolishedPlanks");
+		registerBlock(blockPolishedPlanks, BaseItemBlockWithMetadata.class, "BlockPolishedPlanks");
 	}
 
 	public static void registerBlock(Block block, String name)
