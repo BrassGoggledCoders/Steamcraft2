@@ -28,17 +28,17 @@ import cpw.mods.fml.relauncher.SideOnly;
  * @author decebaldecebal
  * 
  */
-public class UpdateClientsideInventory implements IMessage
+public class UpdateClientsideInventoryPacket implements IMessage
 {
 	private int x, y, z;
 	private int size;
 	private int[] ids;
 
-	public UpdateClientsideInventory()
+	public UpdateClientsideInventoryPacket()
 	{
 	} // REQUIRED
 
-	public UpdateClientsideInventory(int x, int y, int z, int[] ids, int size)
+	public UpdateClientsideInventoryPacket(int x, int y, int z, int[] ids, int size)
 	{
 		this.x = x;
 		this.y = y;
@@ -54,7 +54,7 @@ public class UpdateClientsideInventory implements IMessage
 		this.y = buf.readInt();
 		this.z = buf.readInt();
 		this.size = buf.readInt();
-		for(int i = 0; i < size; i++)
+		for(int i = 0; i < this.size; i++)
 		{
 			ids[i] = buf.readInt();
 		}
@@ -67,17 +67,17 @@ public class UpdateClientsideInventory implements IMessage
 		buf.writeInt(y);
 		buf.writeInt(z);
 		buf.writeInt(size);
-		for(int i = 0; i < size; i++)
+		for(int i = 0; i < this.size; i++)
 		{
 			buf.writeInt(ids[i]);
 		}
 	}
 
-	public static class UpdateClientsideInventoryPacketHandler implements IMessageHandler<UpdateClientsideInventory, IMessage>
+	public static class UpdateClientsideInventoryPacketHandler implements IMessageHandler<UpdateClientsideInventoryPacket, IMessage>
 	{
 		@Override
 		@SideOnly(Side.CLIENT)
-		public IMessage onMessage(UpdateClientsideInventory message, MessageContext ctx)
+		public IMessage onMessage(UpdateClientsideInventoryPacket message, MessageContext ctx)
 		{
 			World world = Minecraft.getMinecraft().theWorld;
 
