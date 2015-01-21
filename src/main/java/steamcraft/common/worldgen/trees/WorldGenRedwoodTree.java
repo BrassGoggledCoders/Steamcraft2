@@ -1,4 +1,4 @@
-package steamcraft.common.worldgen;
+package steamcraft.common.worldgen.trees;
 
 import java.util.Random;
 

@@ -1,5 +1,5 @@
 /**
- * This class was created by BrassGoggledCoders modding team. 
+ * This class was created by BrassGoggledCoders modding team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -8,7 +8,7 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- * 
+ *
  */
 package steamcraft.common.blocks;
 
@@ -36,7 +36,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 public class BlockSteamcraftOre extends BaseBlock implements IHammerable
 {
-	private IIcon[] icon = new IIcon[7];
+	private final IIcon[] icon = new IIcon[7];
 
 	public BlockSteamcraftOre()
 	{
@@ -51,7 +51,10 @@ public class BlockSteamcraftOre extends BaseBlock implements IHammerable
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(int side, int metadata)
 	{
-		return this.icon[metadata];
+		if(metadata < icon.length)
+			return this.icon[metadata];
+		else
+			return this.icon[0];
 	}
 
 	@Override

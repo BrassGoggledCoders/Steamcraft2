@@ -25,6 +25,7 @@ import net.minecraftforge.common.BiomeDictionary.Type;
 import steamcraft.common.InitBlocks;
 import steamcraft.common.config.ConfigGeneral;
 import steamcraft.common.config.ConfigWorldGen;
+import steamcraft.common.worldgen.trees.WorldGenBrassTree;
 import cpw.mods.fml.common.IWorldGenerator;
 
 /**

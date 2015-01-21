@@ -4,7 +4,7 @@ import java.util.Random;
 
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.gen.feature.WorldGenAbstractTree;
-import steamcraft.common.worldgen.WorldGenRedwoodTree;
+import steamcraft.common.worldgen.trees.WorldGenRedwoodTree;
 
 public class BiomeDepthsTallForest extends BiomeDepthsBase
 {

@@ -10,7 +10,7 @@ import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.feature.WorldGenAbstractTree;
-import steamcraft.common.worldgen.WorldGenMangroveTree;
+import steamcraft.common.worldgen.trees.WorldGenMangroveTree;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
