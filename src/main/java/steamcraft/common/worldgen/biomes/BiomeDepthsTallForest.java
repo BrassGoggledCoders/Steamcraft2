@@ -18,7 +18,7 @@ public class BiomeDepthsTallForest extends BiomeDepthsBase
 	{
 		super(p_i1971_1_);
 		this.setBiomeName(StatCollector.translateToLocal("biome.steamcraft2.innerearth.tallforest.name"));
-		this.theBiomeDecorator.treesPerChunk = 10;
+		this.theBiomeDecorator.treesPerChunk = 20;
 		this.theBiomeDecorator.grassPerChunk = 8;
 	}
 
@@ -26,7 +26,7 @@ public class BiomeDepthsTallForest extends BiomeDepthsBase
 	public WorldGenAbstractTree func_150567_a(Random rand)
 	{
 		int randnumb = rand.nextInt(4);
-		if(randnumb == 0)
+		if(randnumb != 0)
 			return new WorldGenRedwoodTree(false, 30, 20, 0, 0);
 		else
 			return new WorldGenMegaPineTree(false, false);

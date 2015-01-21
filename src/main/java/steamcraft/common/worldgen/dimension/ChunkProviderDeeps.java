@@ -2,10 +2,6 @@ package steamcraft.common.worldgen.dimension;
 
 import static net.minecraftforge.event.terraingen.InitMapGenEvent.EventType.CAVE;
 import static net.minecraftforge.event.terraingen.InitMapGenEvent.EventType.RAVINE;
-import static net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType.ANIMALS;
-import static net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType.DUNGEON;
-import static net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType.LAKE;
-import static net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType.LAVA;
 
 import java.util.List;
 import java.util.Random;
@@ -400,7 +396,7 @@ public class ChunkProviderDeeps implements IChunkProvider
 		int l1;
 		int i2;
 
-		if((biomegenbase != InitBiomes.biomeDepthsSCH) && TerrainGen.populate(p_73153_1_, this.worldObj, this.rand, p_73153_2_, p_73153_3_, flag, LAKE))
+		if((biomegenbase != InitBiomes.biomeDepthsSCH))
 		{
 			k1 = k + this.rand.nextInt(16) + 8;
 			l1 = this.rand.nextInt(256);
@@ -419,20 +415,15 @@ public class ChunkProviderDeeps implements IChunkProvider
 			(new WorldGenLakes(Blocks.lava)).generate(this.worldObj, this.rand, k1, l1, i2);
 		}
 
-		if(TerrainGen.populate(p_73153_1_, this.worldObj, this.rand, p_73153_2_, p_73153_3_, flag, LAVA) && !flag && (this.rand.nextInt(8) == 0))
+		k1 = k + this.rand.nextInt(16) + 8;
+		l1 = this.rand.nextInt(this.rand.nextInt(248) + 8);
+		i2 = l + this.rand.nextInt(16) + 8;
+
+		if((l1 < 63) || (this.rand.nextInt(5) == 0))
 		{
-			k1 = k + this.rand.nextInt(16) + 8;
-			l1 = this.rand.nextInt(this.rand.nextInt(248) + 8);
-			i2 = l + this.rand.nextInt(16) + 8;
-
-			if((l1 < 63) || (this.rand.nextInt(5) == 0))
-			{
-				(new WorldGenLakes(Blocks.lava)).generate(this.worldObj, this.rand, k1, l1, i2);
-			}
+			(new WorldGenLakes(Blocks.lava)).generate(this.worldObj, this.rand, k1, l1, i2);
 		}
-
-		boolean doGen = TerrainGen.populate(p_73153_1_, this.worldObj, this.rand, p_73153_2_, p_73153_3_, flag, DUNGEON);
-		for(k1 = 0; doGen && (k1 < 8); ++k1)
+		for(k1 = 0; k1 < 8; ++k1)
 		{
 			l1 = k + this.rand.nextInt(16) + 8;
 			i2 = this.rand.nextInt(256);
@@ -441,10 +432,7 @@ public class ChunkProviderDeeps implements IChunkProvider
 		}
 
 		biomegenbase.decorate(this.worldObj, this.rand, k, l);
-		if(TerrainGen.populate(p_73153_1_, this.worldObj, this.rand, p_73153_2_, p_73153_3_, flag, ANIMALS))
-		{
-			SpawnerAnimals.performWorldGenSpawning(this.worldObj, biomegenbase, k + 8, l + 8, 16, 16, this.rand);
-		}
+		SpawnerAnimals.performWorldGenSpawning(this.worldObj, biomegenbase, k + 8, l + 8, 16, 16, this.rand);
 		k += 8;
 		l += 8;
 
