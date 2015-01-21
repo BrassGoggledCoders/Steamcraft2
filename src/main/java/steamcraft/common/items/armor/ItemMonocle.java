@@ -15,7 +15,7 @@ package steamcraft.common.items.armor;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
-import steamcraft.common.lib.LibInfo;
+import steamcraft.common.lib.ModInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -35,6 +35,6 @@ public class ItemMonocle extends BaseArmor
 	@SideOnly(Side.CLIENT)
 	public String getArmorTexture(ItemStack is, Entity entity, int slot, String type)
 	{
-		return LibInfo.PREFIX + "textures/armor/monocle.png";
+		return ModInfo.PREFIX + "textures/armor/monocle.png";
 	}
 }

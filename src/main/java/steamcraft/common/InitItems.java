@@ -81,7 +81,7 @@ import steamcraft.common.items.tools.ItemModShovel;
 import steamcraft.common.items.tools.ItemModSword;
 import steamcraft.common.items.tools.ItemSteamDrill;
 import steamcraft.common.items.vanity.ItemTopHat;
-import steamcraft.common.lib.LibInfo;
+import steamcraft.common.lib.ModInfo;
 import steamcraft.common.lib.MaterialHelper;
 import boilerplate.common.utils.helpers.RegistryHelper;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -245,7 +245,7 @@ public class InitItems
 		axeSteam = new ItemModAxe(MaterialHelper.TOOL_STEAM).setUnlocalizedName("itemAxeSteam");
 		hoeSteam = new ItemModHoe(MaterialHelper.TOOL_STEAM).setUnlocalizedName("itemHoeSteam");
 
-		RegistryHelper.registerToolSet(swordSteam, shovelSteam, pickaxeSteam, axeSteam, hoeSteam, "Steam", LibInfo.ID);
+		RegistryHelper.registerToolSet(swordSteam, shovelSteam, pickaxeSteam, axeSteam, hoeSteam, "Steam", ModInfo.ID);
 
 		// Etherium
 		pickaxeEtherium = new ItemModPickaxe(MaterialHelper.TOOL_ETHERIUM).setUnlocalizedName("itemPickaxeEtherium");
@@ -254,7 +254,7 @@ public class InitItems
 		axeEtherium = new ItemModAxe(MaterialHelper.TOOL_ETHERIUM).setUnlocalizedName("itemAxeEtherium");
 		hoeEtherium = new ItemModHoe(MaterialHelper.TOOL_ETHERIUM).setUnlocalizedName("itemHoeEtherium");
 
-		RegistryHelper.registerToolSet(swordEtherium, shovelEtherium, pickaxeEtherium, axeEtherium, hoeEtherium, "Etherium", LibInfo.ID);
+		RegistryHelper.registerToolSet(swordEtherium, shovelEtherium, pickaxeEtherium, axeEtherium, hoeEtherium, "Etherium", ModInfo.ID);
 
 		// Obsidian
 		pickaxeObsidian = new ItemModPickaxe(MaterialHelper.TOOL_OBSIDIAN).setUnlocalizedName("itemPickaxeObsidian");
@@ -263,7 +263,7 @@ public class InitItems
 		axeObsidian = new ItemModAxe(MaterialHelper.TOOL_OBSIDIAN).setUnlocalizedName("itemAxeObsidian");
 		hoeObsidian = new ItemModHoe(MaterialHelper.TOOL_OBSIDIAN).setUnlocalizedName("itemHoeObsidian");
 
-		RegistryHelper.registerToolSet(swordObsidian, shovelObsidian, pickaxeObsidian, axeObsidian, hoeObsidian, "Obsidian", LibInfo.ID);
+		RegistryHelper.registerToolSet(swordObsidian, shovelObsidian, pickaxeObsidian, axeObsidian, hoeObsidian, "Obsidian", ModInfo.ID);
 	}
 
 	private static void initializeArmor()
@@ -283,7 +283,7 @@ public class InitItems
 		legsBrass = new ItemBrassArmor(MaterialHelper.ARMOR_STEAM, 0, 2).setUnlocalizedName("itemLegsBrass");
 		bootsBrass = new ItemBrassArmor(MaterialHelper.ARMOR_STEAM, 0, 3).setUnlocalizedName("itemBootsBrass");
 
-		RegistryHelper.registerArmorSet(helmetBrass, chestplateBrass, legsBrass, bootsBrass, "Brass", LibInfo.ID);
+		RegistryHelper.registerArmorSet(helmetBrass, chestplateBrass, legsBrass, bootsBrass, "Brass", ModInfo.ID);
 
 		brassGoggles = new ItemBrassGoggles(ItemArmor.ArmorMaterial.CHAIN, 0, 0).setUnlocalizedName("itemBrassGoggles");
 		itemMonocle = new ItemMonocle(ItemArmor.ArmorMaterial.CHAIN, 0, 0).setUnlocalizedName("itemMonocle");
@@ -299,7 +299,7 @@ public class InitItems
 		legsEtherium = new ItemNormalArmor(MaterialHelper.ARMOR_ETHERIUM, 0, 2).setUnlocalizedName("itemLegsEtherium");
 		bootsEtherium = new ItemNormalArmor(MaterialHelper.ARMOR_ETHERIUM, 0, 3).setUnlocalizedName("itemBootsEtherium");
 
-		RegistryHelper.registerArmorSet(helmetEtherium, chestplateEtherium, legsEtherium, bootsEtherium, "Etherium", LibInfo.ID);
+		RegistryHelper.registerArmorSet(helmetEtherium, chestplateEtherium, legsEtherium, bootsEtherium, "Etherium", ModInfo.ID);
 
 		// Obsidian
 		helmetObsidian = new ItemNormalArmor(MaterialHelper.ARMOR_OBSIDIAN, 0, 0).setUnlocalizedName("itemHelmetObsidian");
@@ -307,7 +307,7 @@ public class InitItems
 		legsObsidian = new ItemNormalArmor(MaterialHelper.ARMOR_OBSIDIAN, 0, 2).setUnlocalizedName("itemLegsObsidian");
 		bootsObsidian = new ItemNormalArmor(MaterialHelper.ARMOR_OBSIDIAN, 0, 3).setUnlocalizedName("itemBootsObsidian");
 
-		RegistryHelper.registerArmorSet(helmetObsidian, chestplateObsidian, legsObsidian, bootsObsidian, "Obsidian", LibInfo.ID);
+		RegistryHelper.registerArmorSet(helmetObsidian, chestplateObsidian, legsObsidian, bootsObsidian, "Obsidian", ModInfo.ID);
 	}
 
 	private static void initializeGuns()
@@ -351,10 +351,10 @@ public class InitItems
 		registerItem(matchlockPistol, "ItemMatchlockPistol");
 		registerItem(percussionCapPistol, "ItemPercussionCapPistol");
 
-		itemRayGun = new ItemRayGun(LibInfo.PREFIX + "raygun", 50, 0, 200).setUnlocalizedName("itemRaygun");
-		itemShrinkray = new ItemShrinkray(LibInfo.PREFIX + "shrinkray", 50, 0, 200).setUnlocalizedName("itemShrinkray");
+		itemRayGun = new ItemRayGun(ModInfo.PREFIX + "raygun", 50, 0, 200).setUnlocalizedName("itemRaygun");
+		itemShrinkray = new ItemShrinkray(ModInfo.PREFIX + "shrinkray", 50, 0, 200).setUnlocalizedName("itemShrinkray");
 		// TODO
-		itemLightningGun = new ItemLightningGun(LibInfo.PREFIX + "lightninggun").setUnlocalizedName("itemLightningGun");
+		itemLightningGun = new ItemLightningGun(ModInfo.PREFIX + "lightninggun").setUnlocalizedName("itemLightningGun");
 
 		registerItem(itemRayGun, "ItemRayGun");
 		registerItem(itemShrinkray, "ItemShrinkray");
@@ -545,6 +545,6 @@ public class InitItems
 	private static void registerItem(Item item, String name)
 	{
 		// TODO if(ConfigGeneral.nameBlacklist != null && !ConfigGeneral.nameBlacklist.contains(item.getUnlocalizedName()))
-		GameRegistry.registerItem(item, name, LibInfo.ID);
+		GameRegistry.registerItem(item, name, ModInfo.ID);
 	}
 }

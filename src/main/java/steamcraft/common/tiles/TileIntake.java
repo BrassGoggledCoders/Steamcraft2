@@ -24,7 +24,7 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTank;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
-import steamcraft.common.lib.LibInfo;
+import steamcraft.common.lib.ModInfo;
 
 /**
  * @author decebaldecebal
@@ -73,7 +73,7 @@ public class TileIntake extends TileEntity implements IFluidHandler
 			this.worldObj.spawnParticle("dripWater", this.xCoord + random.nextDouble(), this.yCoord + random.nextDouble(),
 					this.zCoord + random.nextDouble(), random.nextDouble(), -0.5D, random.nextDouble());
 		if(random.nextInt(100) == 0)
-			this.worldObj.playSound(this.xCoord, this.yCoord, this.zCoord, LibInfo.PREFIX + "intake", 1F, 1F, true);
+			this.worldObj.playSound(this.xCoord, this.yCoord, this.zCoord, ModInfo.PREFIX + "intake", 1F, 1F, true);
 	}
 
 	@Override

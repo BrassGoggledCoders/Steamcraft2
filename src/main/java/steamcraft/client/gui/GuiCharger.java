@@ -19,7 +19,7 @@ import net.minecraftforge.common.util.ForgeDirection;
 
 import org.lwjgl.opengl.GL11;
 
-import steamcraft.common.lib.LibInfo;
+import steamcraft.common.lib.ModInfo;
 import steamcraft.common.tiles.container.ContainerCharger;
 import steamcraft.common.tiles.energy.TileCharger;
 
@@ -29,7 +29,7 @@ import steamcraft.common.tiles.energy.TileCharger;
  */
 public class GuiCharger extends GuiContainer
 {
-	private static ResourceLocation guitexture = new ResourceLocation(LibInfo.PREFIX + "textures/gui/charger.png");
+	private static ResourceLocation guitexture = new ResourceLocation(ModInfo.PREFIX + "textures/gui/charger.png");
 
 	private TileCharger tile;
 

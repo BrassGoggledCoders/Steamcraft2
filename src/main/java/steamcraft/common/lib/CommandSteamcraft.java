@@ -77,7 +77,7 @@ public class CommandSteamcraft extends CommandBase
 			}
 			else if(parameters[0].equalsIgnoreCase("version"))
 			{
-				ChatComponentText version = new ChatComponentText("Steamcraft 2 " + LibInfo.VERSION + " for MC v1.7.2");
+				ChatComponentText version = new ChatComponentText("Steamcraft 2 " + ModInfo.VERSION + " for MC v1.7.2");
 				sender.addChatMessage(prefix.appendSibling(version));
 			}
 			else if(parameters[0].equalsIgnoreCase("contact"))

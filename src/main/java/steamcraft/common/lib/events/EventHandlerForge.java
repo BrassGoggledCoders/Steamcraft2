@@ -49,7 +49,7 @@ import steamcraft.common.InitItems;
 import steamcraft.common.config.ConfigBalance;
 import steamcraft.common.container.InventoryVanity;
 import steamcraft.common.entities.EntityPlayerExtended;
-import steamcraft.common.lib.LibInfo;
+import steamcraft.common.lib.ModInfo;
 import boilerplate.common.baseclasses.BaseTileWithInventory;
 import cofh.api.energy.IEnergyHandler;
 import cpw.mods.fml.client.event.ConfigChangedEvent;
@@ -278,7 +278,7 @@ public class EventHandlerForge
 	@SubscribeEvent
 	public void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent event)
 	{
-		if(event.modID.equalsIgnoreCase(LibInfo.ID) && event.configID.equalsIgnoreCase(ConfigBalance.configId))
+		if(event.modID.equalsIgnoreCase(ModInfo.ID) && event.configID.equalsIgnoreCase(ConfigBalance.configId))
 			ConfigBalance.loadConfiguration();
 	}
 
@@ -341,7 +341,7 @@ public class EventHandlerForge
 	}
 
 	// TODO It's on the chat event because that allows transparency
-	private static ResourceLocation overlay = new ResourceLocation(LibInfo.PREFIX + "textures/misc/spyglass.png");
+	private static ResourceLocation overlay = new ResourceLocation(ModInfo.PREFIX + "textures/misc/spyglass.png");
 
 	@SubscribeEvent
 	@SideOnly(Side.CLIENT)

@@ -31,7 +31,7 @@ import steamcraft.common.InitItems;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.items.ItemCanister;
 import steamcraft.common.items.electric.ElectricItem;
-import steamcraft.common.lib.LibInfo;
+import steamcraft.common.lib.ModInfo;
 import thaumcraft.api.IGoggles;
 import thaumcraft.api.nodes.IRevealer;
 import boilerplate.steamapi.item.IArmorModule;
@@ -59,14 +59,14 @@ public class ItemBrassArmor extends BaseArmor implements ISpecialArmor, IGoggles
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister ir)
 	{
-		this.itemIcon = ir.registerIcon(LibInfo.PREFIX + "armor/" + this.getUnlocalizedName().substring(5));
+		this.itemIcon = ir.registerIcon(ModInfo.PREFIX + "armor/" + this.getUnlocalizedName().substring(5));
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public String getArmorTexture(ItemStack is, Entity entity, int slot, String type)
 	{
-		return type != null ? LibInfo.PREFIX + "textures/armor/" + type + ".png" : null;
+		return type != null ? ModInfo.PREFIX + "textures/armor/" + type + ".png" : null;
 	}
 
 	@SuppressWarnings("all")

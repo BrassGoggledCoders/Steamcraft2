@@ -21,7 +21,7 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
 import steamcraft.client.renderers.models.ModelCharger;
-import steamcraft.common.lib.LibInfo;
+import steamcraft.common.lib.ModInfo;
 import steamcraft.common.tiles.energy.TileCharger;
 import boilerplate.client.renderers.RenderFloatingItem;
 
@@ -31,7 +31,7 @@ import boilerplate.client.renderers.RenderFloatingItem;
  */
 public class TileChargerRenderer extends TileEntitySpecialRenderer
 {
-	private static final ResourceLocation crystal = new ResourceLocation(LibInfo.PREFIX.replace(":", ""), "textures/models/charger.png");
+	private static final ResourceLocation crystal = new ResourceLocation(ModInfo.PREFIX.replace(":", ""), "textures/models/charger.png");
 	private final ModelCharger model;
 
 	public TileChargerRenderer()

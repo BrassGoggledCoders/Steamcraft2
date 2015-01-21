@@ -26,7 +26,7 @@ import steamcraft.common.config.ConfigWorldGen;
 import steamcraft.common.lib.CommandIssue;
 import steamcraft.common.lib.CommandSteamcraft;
 import steamcraft.common.lib.CreativeTabSteamcraft;
-import steamcraft.common.lib.LibInfo;
+import steamcraft.common.lib.ModInfo;
 import steamcraft.common.lib.events.EventHandlerClient;
 import steamcraft.common.lib.events.EventHandlerFML;
 import steamcraft.common.lib.events.EventHandlerForge;
@@ -49,13 +49,13 @@ import cpw.mods.fml.common.registry.GameRegistry;
  * @author Surseance
  * 
  */
-@Mod(modid = LibInfo.ID, name = LibInfo.NAME, version = LibInfo.VERSION, guiFactory = LibInfo.CONFIG_GUI, dependencies = "required-after:boilerplate")
+@Mod(modid = ModInfo.ID, name = ModInfo.NAME, version = ModInfo.VERSION, guiFactory = ModInfo.CONFIG_GUI, dependencies = "required-after:boilerplate")
 public class Steamcraft
 {
-	@SidedProxy(clientSide = LibInfo.CLIENT_PROXY, serverSide = LibInfo.COMMON_PROXY)
+	@SidedProxy(clientSide = ModInfo.CLIENT_PROXY, serverSide = ModInfo.COMMON_PROXY)
 	public static CommonProxy proxy;
 
-	@Instance(LibInfo.ID)
+	@Instance(ModInfo.ID)
 	public static Steamcraft instance;
 
 	public static CreativeTabs tabSC2 = new CreativeTabSteamcraft(CreativeTabs.getNextID(), "steamcraft");

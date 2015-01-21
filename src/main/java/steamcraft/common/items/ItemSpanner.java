@@ -19,7 +19,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import steamcraft.common.InitBlocks;
 import steamcraft.common.Steamcraft;
-import steamcraft.common.lib.LibInfo;
+import steamcraft.common.lib.ModInfo;
 import steamcraft.common.tiles.TileCopperPipe;
 import steamcraft.common.tiles.energy.TileCopperWire;
 import boilerplate.common.baseclasses.UniversalWrench;
@@ -64,6 +64,6 @@ public class ItemSpanner extends UniversalWrench
 	@Override
 	public void registerIcons(IIconRegister par1IconRegister)
 	{
-		this.itemIcon = par1IconRegister.registerIcon(LibInfo.PREFIX + this.getUnlocalizedName().substring(5));
+		this.itemIcon = par1IconRegister.registerIcon(ModInfo.PREFIX + this.getUnlocalizedName().substring(5));
 	}
 }

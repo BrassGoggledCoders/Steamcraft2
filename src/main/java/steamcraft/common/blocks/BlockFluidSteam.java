@@ -20,7 +20,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fluids.BlockFluidClassic;
 import net.minecraftforge.fluids.Fluid;
 import steamcraft.common.Steamcraft;
-import steamcraft.common.lib.LibInfo;
+import steamcraft.common.lib.ModInfo;
 import boilerplate.common.utils.ItemStackUtils;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -50,8 +50,8 @@ public class BlockFluidSteam extends BlockFluidClassic
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister iconRegister)
 	{
-		this.blockIcon = iconRegister.registerIcon(LibInfo.PREFIX + "steamStill");
-		iconFlowing = iconRegister.registerIcon(LibInfo.PREFIX + "steamFlowing");
+		this.blockIcon = iconRegister.registerIcon(ModInfo.PREFIX + "steamStill");
+		iconFlowing = iconRegister.registerIcon(ModInfo.PREFIX + "steamFlowing");
 	}
 
 	@Override

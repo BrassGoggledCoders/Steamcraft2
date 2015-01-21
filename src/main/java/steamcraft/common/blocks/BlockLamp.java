@@ -24,7 +24,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import steamcraft.common.InitBlocks;
 import steamcraft.common.Steamcraft;
-import steamcraft.common.lib.LibInfo;
+import steamcraft.common.lib.ModInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -56,8 +56,8 @@ public class BlockLamp extends BlockRedstoneLight
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister ir)
 	{
-		this.blockIcon = ir.registerIcon(LibInfo.PREFIX + "blockLampOff");
-		this.blockIconPowered = ir.registerIcon(LibInfo.PREFIX + "blockLampOn");
+		this.blockIcon = ir.registerIcon(ModInfo.PREFIX + "blockLampOff");
+		this.blockIconPowered = ir.registerIcon(ModInfo.PREFIX + "blockLampOn");
 	}
 
 	@Override

@@ -19,7 +19,7 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
-import steamcraft.common.lib.LibInfo;
+import steamcraft.common.lib.ModInfo;
 import steamcraft.common.tiles.TileBloomery;
 import steamcraft.common.tiles.container.ContainerBloomery;
 
@@ -29,7 +29,7 @@ import steamcraft.common.tiles.container.ContainerBloomery;
  */
 public class GuiBloomery extends GuiContainer
 {
-	private static final ResourceLocation furnaceGuiTextures = new ResourceLocation(LibInfo.PREFIX + "textures/gui/bloomery.png");
+	private static final ResourceLocation furnaceGuiTextures = new ResourceLocation(ModInfo.PREFIX + "textures/gui/bloomery.png");
 	private TileBloomery tileFurnace;
 
 	public GuiBloomery(InventoryPlayer par1InventoryPlayer, TileBloomery par2TileEntityFurnace)

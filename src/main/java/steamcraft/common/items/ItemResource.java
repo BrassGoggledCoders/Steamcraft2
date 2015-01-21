@@ -20,7 +20,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import steamcraft.common.InitItems;
-import steamcraft.common.lib.LibInfo;
+import steamcraft.common.lib.ModInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -42,13 +42,13 @@ public class ItemResource extends BaseItemWithMetadata
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister ir)
 	{
-		this.itemIcon[0] = ir.registerIcon(LibInfo.PREFIX + "itemCrystal");
-		this.itemIcon[1] = ir.registerIcon(LibInfo.PREFIX + "itemChemSalt");
-		this.itemIcon[2] = ir.registerIcon(LibInfo.PREFIX + "itemSlate");
-		this.itemIcon[3] = ir.registerIcon(LibInfo.PREFIX + "itemPhosphorus");
-		this.itemIcon[4] = ir.registerIcon(LibInfo.PREFIX + "itemUranium");
-		this.itemIcon[5] = ir.registerIcon(LibInfo.PREFIX + "itemPellet");
-		this.itemIcon[6] = ir.registerIcon(LibInfo.PREFIX + "itemCrystalShard");
+		this.itemIcon[0] = ir.registerIcon(ModInfo.PREFIX + "itemCrystal");
+		this.itemIcon[1] = ir.registerIcon(ModInfo.PREFIX + "itemChemSalt");
+		this.itemIcon[2] = ir.registerIcon(ModInfo.PREFIX + "itemSlate");
+		this.itemIcon[3] = ir.registerIcon(ModInfo.PREFIX + "itemPhosphorus");
+		this.itemIcon[4] = ir.registerIcon(ModInfo.PREFIX + "itemUranium");
+		this.itemIcon[5] = ir.registerIcon(ModInfo.PREFIX + "itemPellet");
+		this.itemIcon[6] = ir.registerIcon(ModInfo.PREFIX + "itemCrystalShard");
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })

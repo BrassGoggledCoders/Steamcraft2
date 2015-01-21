@@ -20,7 +20,7 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 import steamcraft.common.Steamcraft;
-import steamcraft.common.lib.LibInfo;
+import steamcraft.common.lib.ModInfo;
 import steamcraft.common.lib.MaterialHelper;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -42,7 +42,7 @@ public class ItemNormalArmor extends BaseArmor
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister icon)
 	{
-		this.itemIcon = icon.registerIcon(LibInfo.PREFIX + "armor/" + this.getUnlocalizedName().substring(5));
+		this.itemIcon = icon.registerIcon(ModInfo.PREFIX + "armor/" + this.getUnlocalizedName().substring(5));
 	}
 
 	@Override
@@ -50,9 +50,9 @@ public class ItemNormalArmor extends BaseArmor
 	public String getArmorTexture(ItemStack is, Entity entity, int slot, String type)
 	{
 		if(this.getArmorMaterial() == MaterialHelper.ARMOR_ETHERIUM)
-			return slot == 2 ? LibInfo.PREFIX + "textures/armor/etherium_2.png" : LibInfo.PREFIX + "textures/armor/etherium_1.png";
+			return slot == 2 ? ModInfo.PREFIX + "textures/armor/etherium_2.png" : ModInfo.PREFIX + "textures/armor/etherium_1.png";
 		else
-			return slot == 2 ? LibInfo.PREFIX + "textures/armor/obsidian_2.png" : LibInfo.PREFIX + "textures/armor/obsidian_1.png";
+			return slot == 2 ? ModInfo.PREFIX + "textures/armor/obsidian_2.png" : ModInfo.PREFIX + "textures/armor/obsidian_1.png";
 	}
 
 	@Override

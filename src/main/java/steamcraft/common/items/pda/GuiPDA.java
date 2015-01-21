@@ -5,11 +5,11 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
-import steamcraft.common.lib.LibInfo;
+import steamcraft.common.lib.ModInfo;
 
 public class GuiPDA extends GuiContainer
 {
-	private static ResourceLocation guitexture = new ResourceLocation(LibInfo.PREFIX + "textures/gui/pda.png");
+	private static ResourceLocation guitexture = new ResourceLocation(ModInfo.PREFIX + "textures/gui/pda.png");
 
 	private final InventoryPDA inventory;
 

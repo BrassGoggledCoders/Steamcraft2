@@ -28,7 +28,7 @@ import steamcraft.client.lib.RenderIDs;
 import steamcraft.client.renderers.tile.TileCrystalRenderer.TileCrystal;
 import steamcraft.common.InitItems;
 import steamcraft.common.Steamcraft;
-import steamcraft.common.lib.LibInfo;
+import steamcraft.common.lib.ModInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -100,6 +100,6 @@ public class BlockCrystal extends BlockContainer
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister ir)
 	{
-		this.blockIcon = ir.registerIcon(LibInfo.PREFIX + "blockCrystal");
+		this.blockIcon = ir.registerIcon(ModInfo.PREFIX + "blockCrystal");
 	}
 }

@@ -21,7 +21,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import steamcraft.common.InitBlocks;
-import steamcraft.common.lib.LibInfo;
+import steamcraft.common.lib.ModInfo;
 import boilerplate.steamapi.block.IChiselable;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -36,7 +36,7 @@ public class ItemChisel extends BaseItem
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister ir)
 	{
-		this.itemIcon = ir.registerIcon(LibInfo.PREFIX + "itemChisel");
+		this.itemIcon = ir.registerIcon(ModInfo.PREFIX + "itemChisel");
 	}
 
 	public ItemChisel()

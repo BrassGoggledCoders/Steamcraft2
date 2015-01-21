@@ -74,7 +74,7 @@ public class CommandIssue extends CommandBase
 					Issue issue = new Issue();
 					issue.setNumber(1);
 					issue.setTitle(parameters[0].replace("_", " "));
-					issue.setBody(parameters[1].replace("_", " ") + " Forge Version:" + ForgeVersion.getVersion() + "Mod Version:" + LibInfo.VERSION
+					issue.setBody(parameters[1].replace("_", " ") + " Forge Version:" + ForgeVersion.getVersion() + "Mod Version:" + ModInfo.VERSION
 							+ " Reporter: " + sender.getCommandSenderName());
 					IssueService issueservice = new IssueService();
 					// This token is read only, don't even bother trying to use it to hack :P

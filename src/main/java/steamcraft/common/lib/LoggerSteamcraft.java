@@ -23,7 +23,7 @@ import cpw.mods.fml.common.FMLLog;
  */
 public class LoggerSteamcraft
 {
-	private static Logger logger = Logger.getLogger(LibInfo.ID);
+	private static Logger logger = Logger.getLogger(ModInfo.ID);
 
 	public static void init()
 	{

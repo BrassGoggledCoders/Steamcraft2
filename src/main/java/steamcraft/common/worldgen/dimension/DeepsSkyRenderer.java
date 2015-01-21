@@ -12,7 +12,7 @@ import net.minecraftforge.client.IRenderHandler;
 
 import org.lwjgl.opengl.GL11;
 
-import steamcraft.common.lib.LibInfo;
+import steamcraft.common.lib.ModInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -112,7 +112,7 @@ public class DeepsSkyRenderer extends IRenderHandler
 		GL11.glRotatef(-90.0F, 0.0F, 1.0F, 0.0F);
 		GL11.glRotatef(world.getCelestialAngle(partialTicks) * 360.0F, 1.0F, 0.0F, 0.0F);
 		f10 = 15.0F; // Size of sun from center
-		mc.renderEngine.bindTexture(new ResourceLocation(LibInfo.PREFIX + "textures/misc/sun.png")); // Sun texture + texture path
+		mc.renderEngine.bindTexture(new ResourceLocation(ModInfo.PREFIX + "textures/misc/sun.png")); // Sun texture + texture path
 		tessellator1.startDrawingQuads();
 		tessellator1.addVertexWithUV((-f10), 100.0D, (-f10), 0.0D, 0.0D);
 		tessellator1.addVertexWithUV(f10, 100.0D, (-f10), 1.0D, 0.0D);

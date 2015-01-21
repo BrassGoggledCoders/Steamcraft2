@@ -23,7 +23,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import steamcraft.common.InitBlocks;
 import steamcraft.common.Steamcraft;
-import steamcraft.common.lib.LibInfo;
+import steamcraft.common.lib.ModInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -56,16 +56,16 @@ public class BlockEngravedSolid extends Block
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister ir)
 	{
-		this.icon[0] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedAluminum");
-		this.icon[1] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedCopper");
-		this.icon[2] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedTin");
-		this.icon[3] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedZinc");
-		this.icon[4] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedBrass");
-		this.icon[5] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedBronze");
-		this.icon[6] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedSteel");
-		this.icon[7] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedCastIron");
-		this.icon[8] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedUranium");
-		this.icon[9] = ir.registerIcon(LibInfo.PREFIX + "blockEngravedEtherium");
+		this.icon[0] = ir.registerIcon(ModInfo.PREFIX + "blockEngravedAluminum");
+		this.icon[1] = ir.registerIcon(ModInfo.PREFIX + "blockEngravedCopper");
+		this.icon[2] = ir.registerIcon(ModInfo.PREFIX + "blockEngravedTin");
+		this.icon[3] = ir.registerIcon(ModInfo.PREFIX + "blockEngravedZinc");
+		this.icon[4] = ir.registerIcon(ModInfo.PREFIX + "blockEngravedBrass");
+		this.icon[5] = ir.registerIcon(ModInfo.PREFIX + "blockEngravedBronze");
+		this.icon[6] = ir.registerIcon(ModInfo.PREFIX + "blockEngravedSteel");
+		this.icon[7] = ir.registerIcon(ModInfo.PREFIX + "blockEngravedCastIron");
+		this.icon[8] = ir.registerIcon(ModInfo.PREFIX + "blockEngravedUranium");
+		this.icon[9] = ir.registerIcon(ModInfo.PREFIX + "blockEngravedEtherium");
 	}
 
 	@Override

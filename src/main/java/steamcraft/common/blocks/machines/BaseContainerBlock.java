@@ -26,7 +26,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import steamcraft.common.Steamcraft;
-import steamcraft.common.lib.LibInfo;
+import steamcraft.common.lib.ModInfo;
 import boilerplate.common.baseclasses.BaseTileWithInventory;
 import cofh.api.block.IDismantleable;
 import cpw.mods.fml.relauncher.Side;
@@ -51,7 +51,7 @@ public abstract class BaseContainerBlock extends BlockContainer implements IDism
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister ir)
 	{
-		this.blockIcon = ir.registerIcon(LibInfo.PREFIX + this.getUnlocalizedName().substring(5));
+		this.blockIcon = ir.registerIcon(ModInfo.PREFIX + this.getUnlocalizedName().substring(5));
 	}
 
 	@Override

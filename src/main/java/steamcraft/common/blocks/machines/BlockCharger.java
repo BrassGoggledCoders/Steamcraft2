@@ -23,7 +23,7 @@ import net.minecraft.world.World;
 import steamcraft.client.lib.GuiIDs;
 import steamcraft.client.lib.RenderIDs;
 import steamcraft.common.Steamcraft;
-import steamcraft.common.lib.LibInfo;
+import steamcraft.common.lib.ModInfo;
 import steamcraft.common.tiles.energy.TileCharger;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -69,7 +69,7 @@ public class BlockCharger extends BaseContainerBlock
 	@Override
 	public void registerBlockIcons(IIconRegister icon)
 	{
-		this.blockIcon = icon.registerIcon(LibInfo.PREFIX + "blockChargerSide");
+		this.blockIcon = icon.registerIcon(ModInfo.PREFIX + "blockChargerSide");
 	}
 
 	@Override

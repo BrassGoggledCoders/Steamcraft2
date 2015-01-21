@@ -20,7 +20,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import steamcraft.common.InitItems;
-import steamcraft.common.lib.LibInfo;
+import steamcraft.common.lib.ModInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -42,13 +42,13 @@ public class ItemMachinePart extends BaseItemWithMetadata
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister ir)
 	{
-		this.itemIcon[0] = ir.registerIcon(LibInfo.PREFIX + "itemCastIronRod");
-		this.itemIcon[1] = ir.registerIcon(LibInfo.PREFIX + "itemClockworkMechanism");
-		this.itemIcon[2] = ir.registerIcon(LibInfo.PREFIX + "itemGrating");
-		this.itemIcon[3] = ir.registerIcon(LibInfo.PREFIX + "itemMagnet");
-		this.itemIcon[4] = ir.registerIcon(LibInfo.PREFIX + "itemGenerator");
-		this.itemIcon[5] = ir.registerIcon(LibInfo.PREFIX + "itemFan");
-		this.itemIcon[6] = ir.registerIcon(LibInfo.PREFIX + "itemWireCoil");
+		this.itemIcon[0] = ir.registerIcon(ModInfo.PREFIX + "itemCastIronRod");
+		this.itemIcon[1] = ir.registerIcon(ModInfo.PREFIX + "itemClockworkMechanism");
+		this.itemIcon[2] = ir.registerIcon(ModInfo.PREFIX + "itemGrating");
+		this.itemIcon[3] = ir.registerIcon(ModInfo.PREFIX + "itemMagnet");
+		this.itemIcon[4] = ir.registerIcon(ModInfo.PREFIX + "itemGenerator");
+		this.itemIcon[5] = ir.registerIcon(ModInfo.PREFIX + "itemFan");
+		this.itemIcon[6] = ir.registerIcon(ModInfo.PREFIX + "itemWireCoil");
 		// itemIcon[7] = ir.registerIcon(LibInfo.PREFIX + "itemCapacitor");
 		// itemIcon[9] = ir.registerIcon(LibInfo.PREFIX + "itemWireCoil");
 	}

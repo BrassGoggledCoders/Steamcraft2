@@ -16,7 +16,7 @@ import net.minecraft.block.BlockLog;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.util.IIcon;
 import steamcraft.common.Steamcraft;
-import steamcraft.common.lib.LibInfo;
+import steamcraft.common.lib.ModInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -56,7 +56,7 @@ public class BlockCustomLog extends BlockLog
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(final IIconRegister ir)
 	{
-		this.blockIcon = ir.registerIcon(LibInfo.PREFIX + "block" + this.type + "LogSide");
-		this.iconTop = ir.registerIcon(LibInfo.PREFIX + "block" + this.type + "LogTop");
+		this.blockIcon = ir.registerIcon(ModInfo.PREFIX + "block" + this.type + "LogSide");
+		this.iconTop = ir.registerIcon(ModInfo.PREFIX + "block" + this.type + "LogTop");
 	}
 }

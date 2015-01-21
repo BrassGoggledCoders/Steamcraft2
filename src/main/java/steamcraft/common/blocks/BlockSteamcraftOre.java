@@ -25,7 +25,7 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import steamcraft.common.InitBlocks;
 import steamcraft.common.InitItems;
-import steamcraft.common.lib.LibInfo;
+import steamcraft.common.lib.ModInfo;
 import boilerplate.steamapi.block.IHammerable;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -58,13 +58,13 @@ public class BlockSteamcraftOre extends BaseBlock implements IHammerable
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister ir)
 	{
-		this.icon[0] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "oreAluminum");
-		this.icon[1] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "oreCopper");
-		this.icon[2] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "oreTin");
-		this.icon[3] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "oreZinc");
-		this.icon[4] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "oreUranite");
-		this.icon[5] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "oreBrimstone");
-		this.icon[6] = ir.registerIcon(LibInfo.PREFIX + "ore/" + "orePhosphate");
+		this.icon[0] = ir.registerIcon(ModInfo.PREFIX + "ore/" + "oreAluminum");
+		this.icon[1] = ir.registerIcon(ModInfo.PREFIX + "ore/" + "oreCopper");
+		this.icon[2] = ir.registerIcon(ModInfo.PREFIX + "ore/" + "oreTin");
+		this.icon[3] = ir.registerIcon(ModInfo.PREFIX + "ore/" + "oreZinc");
+		this.icon[4] = ir.registerIcon(ModInfo.PREFIX + "ore/" + "oreUranite");
+		this.icon[5] = ir.registerIcon(ModInfo.PREFIX + "ore/" + "oreBrimstone");
+		this.icon[6] = ir.registerIcon(ModInfo.PREFIX + "ore/" + "orePhosphate");
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })

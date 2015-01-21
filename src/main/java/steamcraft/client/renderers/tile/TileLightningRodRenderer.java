@@ -21,7 +21,7 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
 import steamcraft.client.renderers.models.ModelLightningRod;
-import steamcraft.common.lib.LibInfo;
+import steamcraft.common.lib.ModInfo;
 
 /**
  * @author Surseance
@@ -29,7 +29,7 @@ import steamcraft.common.lib.LibInfo;
  */
 public class TileLightningRodRenderer extends TileEntitySpecialRenderer
 {
-	private static final ResourceLocation crystal = new ResourceLocation(LibInfo.PREFIX.replace(":", ""), "textures/models/lightningrod.png");
+	private static final ResourceLocation crystal = new ResourceLocation(ModInfo.PREFIX.replace(":", ""), "textures/models/lightningrod.png");
 	private final ModelLightningRod model;
 
 	public TileLightningRodRenderer()

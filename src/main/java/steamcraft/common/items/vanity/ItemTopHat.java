@@ -16,7 +16,7 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelCow;
 import net.minecraft.util.ResourceLocation;
 import steamcraft.common.items.BaseItem;
-import steamcraft.common.lib.LibInfo;
+import steamcraft.common.lib.ModInfo;
 import boilerplate.steamapi.vanity.EnumVanityType;
 import boilerplate.steamapi.vanity.IVanityItem;
 
@@ -35,7 +35,7 @@ public class ItemTopHat extends BaseItem implements IVanityItem
 	@Override
 	public ResourceLocation getItemTextureLocation()
 	{
-		return new ResourceLocation(LibInfo.PREFIX + "/textures/models/crystal.png");
+		return new ResourceLocation(ModInfo.PREFIX + "/textures/models/crystal.png");
 	}
 
 	@Override

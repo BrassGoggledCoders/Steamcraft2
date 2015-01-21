@@ -23,7 +23,7 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
 import steamcraft.common.InitItems;
-import steamcraft.common.lib.LibInfo;
+import steamcraft.common.lib.ModInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -33,7 +33,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 public class ItemBrassGoggles extends BaseArmor
 {
-	public static ResourceLocation overlay = new ResourceLocation(LibInfo.PREFIX + "textures/misc/goggles.png");
+	public static ResourceLocation overlay = new ResourceLocation(ModInfo.PREFIX + "textures/misc/goggles.png");
 
 	public ItemBrassGoggles(ArmorMaterial mat, int renderIndex, int type)
 	{
@@ -44,7 +44,7 @@ public class ItemBrassGoggles extends BaseArmor
 	@SideOnly(Side.CLIENT)
 	public String getArmorTexture(ItemStack is, Entity entity, int slot, String type)
 	{
-		return LibInfo.PREFIX + "textures/armor/goggles.png";
+		return ModInfo.PREFIX + "textures/armor/goggles.png";
 	}
 
 	@Override

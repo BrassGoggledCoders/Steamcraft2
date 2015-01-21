@@ -24,7 +24,7 @@ import net.minecraft.world.World;
 import steamcraft.common.InitItems;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.items.ItemCanister;
-import steamcraft.common.lib.LibInfo;
+import steamcraft.common.lib.ModInfo;
 import boilerplate.client.ClientHelper;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -200,8 +200,8 @@ public class ItemSteamJetpack extends BaseArmor
 	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
 	{
 		if(stack.getItem() == InitItems.itemSteamJetpack)
-			return LibInfo.PREFIX + "textures/armor/jetpack.png";
+			return ModInfo.PREFIX + "textures/armor/jetpack.png";
 		else
-			return LibInfo.PREFIX + "textures/armor/wingpack.png";
+			return ModInfo.PREFIX + "textures/armor/wingpack.png";
 	}
 }

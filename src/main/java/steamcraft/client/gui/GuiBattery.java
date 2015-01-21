@@ -19,7 +19,7 @@ import net.minecraftforge.common.util.ForgeDirection;
 
 import org.lwjgl.opengl.GL11;
 
-import steamcraft.common.lib.LibInfo;
+import steamcraft.common.lib.ModInfo;
 import steamcraft.common.tiles.container.ContainerBattery;
 import steamcraft.common.tiles.energy.TileBattery;
 
@@ -29,7 +29,7 @@ import steamcraft.common.tiles.energy.TileBattery;
  */
 public class GuiBattery extends GuiContainer
 {
-	private static ResourceLocation guitexture = new ResourceLocation(LibInfo.PREFIX + "textures/gui/battery.png");
+	private static ResourceLocation guitexture = new ResourceLocation(ModInfo.PREFIX + "textures/gui/battery.png");
 
 	private TileBattery tile;
 

@@ -26,6 +26,7 @@ import steamcraft.common.InitBlocks;
 import steamcraft.common.InitItems;
 import steamcraft.common.config.ConfigGeneral;
 import steamcraft.common.lib.LibInfo;
+import steamcraft.common.lib.ModInfo;
 import vazkii.botania.api.wiki.WikiHooks;
 import boilerplate.common.utils.helpers.IMCHelper;
 import boilerplate.common.utils.helpers.OreDictHelper;
@@ -53,7 +54,7 @@ public class CompatabilityLayer
 		if(Loader.isModLoaded("Botania"))
 		{
 			FMLLog.info("[SteamCraft2]", "Botania Detected. Loading Flower Power Module");
-			WikiHooks.registerModWiki(LibInfo.ID, new BotaniaWikiProvider());
+			WikiHooks.registerModWiki(ModInfo.ID, new BotaniaWikiProvider());
 		}
 	}
 
@@ -61,7 +62,7 @@ public class CompatabilityLayer
 	{
 		if(Loader.isModLoaded("VersionChecker"))
 			FMLLog.info("[SteamCraft2]", "Poking VersionChecker");
-		FMLInterModComms.sendRuntimeMessage(LibInfo.ID, "VersionChecker", "addVersionCheck", LibInfo.VERSION_URL);
+		FMLInterModComms.sendRuntimeMessage(ModInfo.ID, "VersionChecker", "addVersionCheck", ModInfo.VERSION_URL);
 		if(Loader.isModLoaded("TConstruct"))
 			sendTiConIMC();
 	}

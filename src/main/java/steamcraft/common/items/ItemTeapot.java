@@ -21,7 +21,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import steamcraft.common.InitItems;
-import steamcraft.common.lib.LibInfo;
+import steamcraft.common.lib.ModInfo;
 import boilerplate.common.utils.ItemStackUtils;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -41,7 +41,7 @@ public class ItemTeapot extends BaseItemWithMetadata
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister icon)
 	{
-		this.itemIcon = icon.registerIcon(LibInfo.PREFIX + this.getUnlocalizedName().substring(5));
+		this.itemIcon = icon.registerIcon(ModInfo.PREFIX + this.getUnlocalizedName().substring(5));
 	}
 
 	@Override

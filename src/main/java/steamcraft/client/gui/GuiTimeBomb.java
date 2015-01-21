@@ -23,7 +23,7 @@ import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 
 import steamcraft.common.InitPackets;
-import steamcraft.common.lib.LibInfo;
+import steamcraft.common.lib.ModInfo;
 import steamcraft.common.packets.TimeBombPacket;
 import steamcraft.common.tiles.TileTimeBomb;
 import steamcraft.common.tiles.container.ContainerTimeBomb;
@@ -35,7 +35,7 @@ import steamcraft.common.tiles.container.ContainerTimeBomb;
 public class GuiTimeBomb extends GuiContainer
 {
 
-	private static ResourceLocation guitexture = new ResourceLocation(LibInfo.PREFIX + "textures/gui/timebomb.png");
+	private static ResourceLocation guitexture = new ResourceLocation(ModInfo.PREFIX + "textures/gui/timebomb.png");
 
 	private GuiTextField text;
 	@SuppressWarnings("unused")

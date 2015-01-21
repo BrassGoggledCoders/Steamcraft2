@@ -16,11 +16,11 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
-import steamcraft.common.lib.LibInfo;
+import steamcraft.common.lib.ModInfo;
 
 public class RenderFleshGolem extends RenderLiving
 {
-	private static final ResourceLocation FLESHGOLEM_TEXTURE = new ResourceLocation(LibInfo.PREFIX + "textures/models/mobs/flesh_golem.png");
+	private static final ResourceLocation FLESHGOLEM_TEXTURE = new ResourceLocation(ModInfo.PREFIX + "textures/models/mobs/flesh_golem.png");
 
 	public RenderFleshGolem(ModelBase par1ModelBase, float par2)
 	{

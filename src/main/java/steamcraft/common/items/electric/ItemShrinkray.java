@@ -21,7 +21,7 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import steamcraft.common.Steamcraft;
-import steamcraft.common.lib.LibInfo;
+import steamcraft.common.lib.ModInfo;
 import boilerplate.common.entity.EntityMinedBlock;
 import boilerplate.common.utils.PlayerUtils;
 import boilerplate.common.utils.Utils;
@@ -73,7 +73,7 @@ public class ItemShrinkray extends ElectricItem
 				soundDelay.put(player.getCommandSenderName(), Long.valueOf(0L));
 			if(!world.isRemote && (soundDelay.get(player.getCommandSenderName()).longValue() < System.currentTimeMillis()))
 			{
-				world.playSoundEffect(tx, ty, tz, LibInfo.PREFIX + "raygun", 0.35F, 1.0F);
+				world.playSoundEffect(tx, ty, tz, ModInfo.PREFIX + "raygun", 0.35F, 1.0F);
 				soundDelay.put(player.getCommandSenderName(), Long.valueOf(System.currentTimeMillis() + 1200L));
 			}
 			else

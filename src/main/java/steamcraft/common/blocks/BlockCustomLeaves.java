@@ -16,7 +16,7 @@ import net.minecraft.block.BlockLeaves;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.util.IIcon;
 import steamcraft.common.Steamcraft;
-import steamcraft.common.lib.LibInfo;
+import steamcraft.common.lib.ModInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -39,7 +39,7 @@ public class BlockCustomLeaves extends BlockLeaves
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(final IIconRegister ir)
 	{
-		this.blockIcon = ir.registerIcon(LibInfo.PREFIX + "block" + this.type + "Leaves");
+		this.blockIcon = ir.registerIcon(ModInfo.PREFIX + "block" + this.type + "Leaves");
 	}
 
 	@Override

@@ -20,7 +20,7 @@ import net.minecraft.util.DamageSource;
  */
 public class DamageSourceHandler
 {
-	public static DamageSource electrocution = new DamageSource(LibInfo.ID + ".electrocution").setDamageBypassesArmor().setDifficultyScaled();
-	public static DamageSource bullet = new DamageSource(LibInfo.ID + ".bullet").setProjectile();
-	public static DamageSource rocket = new DamageSource(LibInfo.ID + ".rocket").setDamageBypassesArmor().setProjectile();
+	public static DamageSource electrocution = new DamageSource(ModInfo.ID + ".electrocution").setDamageBypassesArmor().setDifficultyScaled();
+	public static DamageSource bullet = new DamageSource(ModInfo.ID + ".bullet").setProjectile();
+	public static DamageSource rocket = new DamageSource(ModInfo.ID + ".rocket").setDamageBypassesArmor().setProjectile();
 }

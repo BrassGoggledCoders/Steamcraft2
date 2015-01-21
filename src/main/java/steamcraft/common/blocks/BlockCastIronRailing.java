@@ -28,7 +28,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import steamcraft.client.lib.RenderIDs;
-import steamcraft.common.lib.LibInfo;
+import steamcraft.common.lib.ModInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -172,8 +172,8 @@ public class BlockCastIronRailing extends BaseBlock
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister p_149651_1_)
 	{
-		this.blockIcon = p_149651_1_.registerIcon(LibInfo.PREFIX + "blockCastIronRailing");
-		this.icon = p_149651_1_.registerIcon(LibInfo.PREFIX + "/metal/blockCastIron");
+		this.blockIcon = p_149651_1_.registerIcon(ModInfo.PREFIX + "blockCastIronRailing");
+		this.icon = p_149651_1_.registerIcon(ModInfo.PREFIX + "/metal/blockCastIron");
 	}
 
 	public boolean canPaneConnectTo(IBlockAccess world, int x, int y, int z, ForgeDirection dir)

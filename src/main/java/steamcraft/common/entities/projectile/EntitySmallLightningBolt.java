@@ -27,7 +27,7 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.MovingObjectPosition.MovingObjectType;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
-import steamcraft.common.lib.LibInfo;
+import steamcraft.common.lib.ModInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -259,7 +259,7 @@ public class EntitySmallLightningBolt extends Entity implements IProjectile
 			{
 				if(mop.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, this), this.damage))
 				{
-					this.worldObj.playSoundAtEntity(this, LibInfo.PREFIX + "hitflesh", 1.0F, 1.2F / ((this.rand.nextFloat() * 0.2F) + 0.9F));
+					this.worldObj.playSoundAtEntity(this, ModInfo.PREFIX + "hitflesh", 1.0F, 1.2F / ((this.rand.nextFloat() * 0.2F) + 0.9F));
 					this.setDead();
 				}
 				else
@@ -295,7 +295,7 @@ public class EntitySmallLightningBolt extends Entity implements IProjectile
 					this.posX -= (this.motionX / magnitude) * 0.05000000074505806D;
 					this.posY -= (this.motionY / magnitude) * 0.05000000074505806D;
 					this.posZ -= (this.motionZ / magnitude) * 0.05000000074505806D;
-					this.worldObj.playSoundAtEntity(this, LibInfo.PREFIX + "hitblock", 1.0F, 1.0F);
+					this.worldObj.playSoundAtEntity(this, ModInfo.PREFIX + "hitblock", 1.0F, 1.0F);
 					this.setDead();
 				}
 			}

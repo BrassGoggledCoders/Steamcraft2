@@ -15,7 +15,7 @@ import net.minecraft.util.StringUtils;
 import net.minecraft.world.World;
 import steamcraft.client.lib.GuiIDs;
 import steamcraft.common.Steamcraft;
-import steamcraft.common.lib.LibInfo;
+import steamcraft.common.lib.ModInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -152,6 +152,6 @@ public class ItemLoreBook extends BaseItem
 	@Override
 	public void registerIcons(IIconRegister par1IconRegister)
 	{
-		this.itemIcon = par1IconRegister.registerIcon(LibInfo.PREFIX + "itemLoreBook");
+		this.itemIcon = par1IconRegister.registerIcon(ModInfo.PREFIX + "itemLoreBook");
 	}
 }

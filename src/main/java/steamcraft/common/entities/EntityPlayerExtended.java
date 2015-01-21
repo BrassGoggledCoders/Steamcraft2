@@ -18,7 +18,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IExtendedEntityProperties;
 import steamcraft.common.container.InventoryVanity;
-import steamcraft.common.lib.LibInfo;
+import steamcraft.common.lib.ModInfo;
 
 /**
  * @author warlordjones
@@ -27,7 +27,7 @@ import steamcraft.common.lib.LibInfo;
 // TODO: Add packets
 public class EntityPlayerExtended implements IExtendedEntityProperties
 {
-	public final static String EXT_PROP_NAME = LibInfo.PREFIX + "EntityPlayerExtended";
+	public final static String EXT_PROP_NAME = ModInfo.PREFIX + "EntityPlayerExtended";
 
 	private final InventoryVanity inventory = new InventoryVanity();
 	private int cooldown = 0;

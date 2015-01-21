@@ -23,7 +23,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.util.ForgeDirection;
 import steamcraft.common.InitItems;
-import steamcraft.common.lib.LibInfo;
+import steamcraft.common.lib.ModInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -48,8 +48,8 @@ public class BlockTeaPlant extends BlockCrops implements IPlantable
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister ir)
 	{
-		this.iconArray[0] = ir.registerIcon(LibInfo.PREFIX + this.getUnlocalizedName().substring(5) + "_0");
-		this.iconArray[1] = ir.registerIcon(LibInfo.PREFIX + this.getUnlocalizedName().substring(5) + "_1");
+		this.iconArray[0] = ir.registerIcon(ModInfo.PREFIX + this.getUnlocalizedName().substring(5) + "_0");
+		this.iconArray[1] = ir.registerIcon(ModInfo.PREFIX + this.getUnlocalizedName().substring(5) + "_1");
 	}
 
 	public BlockTeaPlant()

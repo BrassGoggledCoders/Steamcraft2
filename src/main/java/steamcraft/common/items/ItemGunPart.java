@@ -20,7 +20,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import steamcraft.common.InitItems;
-import steamcraft.common.lib.LibInfo;
+import steamcraft.common.lib.ModInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -42,18 +42,18 @@ public class ItemGunPart extends BaseItemWithMetadata
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister ir)
 	{
-		this.itemIcon[0] = ir.registerIcon(LibInfo.PREFIX + "itemStock");
-		this.itemIcon[1] = ir.registerIcon(LibInfo.PREFIX + "itemMusketBarrel");
-		this.itemIcon[2] = ir.registerIcon(LibInfo.PREFIX + "itemRifleBarrel");
-		this.itemIcon[3] = ir.registerIcon(LibInfo.PREFIX + "itemLock");
-		this.itemIcon[4] = ir.registerIcon(LibInfo.PREFIX + "itemBrassGunFrame");
-		this.itemIcon[5] = ir.registerIcon(LibInfo.PREFIX + "itemCastIronGunFrame");
-		this.itemIcon[6] = ir.registerIcon(LibInfo.PREFIX + "itemGreenFocus");
-		this.itemIcon[7] = ir.registerIcon(LibInfo.PREFIX + "itemBlueFocus");
-		this.itemIcon[8] = ir.registerIcon(LibInfo.PREFIX + "itemPowerCore");
-		this.itemIcon[9] = ir.registerIcon(LibInfo.PREFIX + "itemOverchargedPowerCore");
-		this.itemIcon[10] = ir.registerIcon(LibInfo.PREFIX + "itemPistolBarrel");
-		this.itemIcon[11] = ir.registerIcon(LibInfo.PREFIX + "itemShortStock");
+		this.itemIcon[0] = ir.registerIcon(ModInfo.PREFIX + "itemStock");
+		this.itemIcon[1] = ir.registerIcon(ModInfo.PREFIX + "itemMusketBarrel");
+		this.itemIcon[2] = ir.registerIcon(ModInfo.PREFIX + "itemRifleBarrel");
+		this.itemIcon[3] = ir.registerIcon(ModInfo.PREFIX + "itemLock");
+		this.itemIcon[4] = ir.registerIcon(ModInfo.PREFIX + "itemBrassGunFrame");
+		this.itemIcon[5] = ir.registerIcon(ModInfo.PREFIX + "itemCastIronGunFrame");
+		this.itemIcon[6] = ir.registerIcon(ModInfo.PREFIX + "itemGreenFocus");
+		this.itemIcon[7] = ir.registerIcon(ModInfo.PREFIX + "itemBlueFocus");
+		this.itemIcon[8] = ir.registerIcon(ModInfo.PREFIX + "itemPowerCore");
+		this.itemIcon[9] = ir.registerIcon(ModInfo.PREFIX + "itemOverchargedPowerCore");
+		this.itemIcon[10] = ir.registerIcon(ModInfo.PREFIX + "itemPistolBarrel");
+		this.itemIcon[11] = ir.registerIcon(ModInfo.PREFIX + "itemShortStock");
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })

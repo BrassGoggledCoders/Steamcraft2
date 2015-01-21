@@ -21,7 +21,7 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
 import steamcraft.client.renderers.models.ModelCrystal;
-import steamcraft.common.lib.LibInfo;
+import steamcraft.common.lib.ModInfo;
 
 /**
  * @author Surseance (Johnny Eatmon)
@@ -29,7 +29,7 @@ import steamcraft.common.lib.LibInfo;
  */
 public class TileCrystalRenderer extends TileEntitySpecialRenderer
 {
-	private static final ResourceLocation crystal = new ResourceLocation(LibInfo.PREFIX.replace(":", ""), "textures/models/crystal.png");
+	private static final ResourceLocation crystal = new ResourceLocation(ModInfo.PREFIX.replace(":", ""), "textures/models/crystal.png");
 	private final ModelCrystal model;
 
 	public TileCrystalRenderer()

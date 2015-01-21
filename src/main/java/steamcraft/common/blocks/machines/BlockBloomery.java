@@ -27,7 +27,7 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import steamcraft.client.lib.GuiIDs;
 import steamcraft.common.Steamcraft;
-import steamcraft.common.lib.LibInfo;
+import steamcraft.common.lib.ModInfo;
 import steamcraft.common.tiles.TileBloomery;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -85,11 +85,11 @@ public class BlockBloomery extends BaseContainerBlock
 	@Override
 	public void registerBlockIcons(IIconRegister icon)
 	{
-		this.blockIcon = icon.registerIcon(LibInfo.PREFIX + "blockBloomerySide");
-		this.iconFront = icon.registerIcon(LibInfo.PREFIX + "blockBloomeryFrontInactive");
-		this.iconFrontActive = icon.registerIcon(LibInfo.PREFIX + "blockBloomeryFrontActive");
-		this.iconTop = icon.registerIcon(LibInfo.PREFIX + "blockBloomeryTopInactive");
-		this.iconTopActive = icon.registerIcon(LibInfo.PREFIX + "blockBloomeryTopActive");
+		this.blockIcon = icon.registerIcon(ModInfo.PREFIX + "blockBloomerySide");
+		this.iconFront = icon.registerIcon(ModInfo.PREFIX + "blockBloomeryFrontInactive");
+		this.iconFrontActive = icon.registerIcon(ModInfo.PREFIX + "blockBloomeryFrontActive");
+		this.iconTop = icon.registerIcon(ModInfo.PREFIX + "blockBloomeryTopInactive");
+		this.iconTopActive = icon.registerIcon(ModInfo.PREFIX + "blockBloomeryTopActive");
 	}
 
 	@Override

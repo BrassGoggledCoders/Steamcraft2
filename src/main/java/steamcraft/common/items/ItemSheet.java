@@ -21,6 +21,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import steamcraft.common.InitItems;
 import steamcraft.common.lib.LibInfo;
+import steamcraft.common.lib.ModInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -46,7 +47,7 @@ public class ItemSheet extends BaseItemWithMetadata
 	public void registerIcons(IIconRegister ir)
 	{
 		for(int i = 0; i < this.itemIcon.length; i++)
-			this.itemIcon[i] = ir.registerIcon(LibInfo.PREFIX + "metals/" + "itemSheet" + LibInfo.metals[i]);
+			this.itemIcon[i] = ir.registerIcon(ModInfo.PREFIX + "metals/" + "itemSheet" + LibInfo.metals[i]);
 	}
 
 	@Override

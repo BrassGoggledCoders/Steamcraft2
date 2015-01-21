@@ -12,7 +12,7 @@ import steamcraft.common.InitItems;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.items.ItemCanister;
 import steamcraft.common.items.electric.ElectricItem;
-import steamcraft.common.lib.LibInfo;
+import steamcraft.common.lib.ModInfo;
 import boilerplate.steamapi.item.IFistModule;
 import boilerplate.steamapi.item.ModuleRegistry;
 import cpw.mods.fml.relauncher.Side;
@@ -31,7 +31,7 @@ public class ItemBrassFist extends ItemModTool
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister ir)
 	{
-		this.itemIcon = ir.registerIcon(LibInfo.PREFIX + "tools/" + this.getUnlocalizedName().substring(5));
+		this.itemIcon = ir.registerIcon(ModInfo.PREFIX + "tools/" + this.getUnlocalizedName().substring(5));
 	}
 
 	@SuppressWarnings("all")

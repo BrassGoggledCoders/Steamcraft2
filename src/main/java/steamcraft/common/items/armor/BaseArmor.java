@@ -20,7 +20,7 @@ import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
 import steamcraft.common.Steamcraft;
-import steamcraft.common.lib.LibInfo;
+import steamcraft.common.lib.ModInfo;
 import boilerplate.client.ClientHelper;
 import boilerplate.common.utils.StringUtils;
 import cpw.mods.fml.relauncher.Side;
@@ -45,7 +45,7 @@ public class BaseArmor extends ItemArmor
 	@Override
 	public void registerIcons(IIconRegister par1IconRegister)
 	{
-		this.itemIcon = par1IconRegister.registerIcon(LibInfo.PREFIX + "armor/" + this.getUnlocalizedName().substring(5));
+		this.itemIcon = par1IconRegister.registerIcon(ModInfo.PREFIX + "armor/" + this.getUnlocalizedName().substring(5));
 	}
 
 	@SuppressWarnings("all")

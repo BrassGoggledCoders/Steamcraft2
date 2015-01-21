@@ -25,7 +25,7 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import steamcraft.common.InitAchievements;
 import steamcraft.common.InitItems;
-import steamcraft.common.lib.LibInfo;
+import steamcraft.common.lib.ModInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -45,8 +45,8 @@ public class ItemTeacup extends BaseItemWithMetadata
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister icon)
 	{
-		this.itemIcon[0] = icon.registerIcon(LibInfo.PREFIX + this.getUnlocalizedName().substring(5) + "Empty");
-		this.itemIcon[1] = icon.registerIcon(LibInfo.PREFIX + this.getUnlocalizedName().substring(5) + "Full");
+		this.itemIcon[0] = icon.registerIcon(ModInfo.PREFIX + this.getUnlocalizedName().substring(5) + "Empty");
+		this.itemIcon[1] = icon.registerIcon(ModInfo.PREFIX + this.getUnlocalizedName().substring(5) + "Full");
 	}
 
 	@Override

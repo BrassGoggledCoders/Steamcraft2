@@ -21,7 +21,7 @@ import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import steamcraft.common.Steamcraft;
-import steamcraft.common.lib.LibInfo;
+import steamcraft.common.lib.ModInfo;
 import boilerplate.client.ClientHelper;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -64,7 +64,7 @@ public class ItemTimeClock extends BaseItem
 					world.setWorldTime(13000);
 					ChatComponentText text = new ChatComponentText("Time set to Night");
 					player.addChatComponentMessage(text);
-					player.playSound(LibInfo.PREFIX + "warp", 1, 1);
+					player.playSound(ModInfo.PREFIX + "warp", 1, 1);
 					player.inventory.consumeInventoryItem(Items.ender_eye);
 				}
 				else
@@ -72,7 +72,7 @@ public class ItemTimeClock extends BaseItem
 					ChatComponentText text = new ChatComponentText("Time set to Day");
 					player.addChatComponentMessage(text);
 					world.setWorldTime(1000);
-					player.playSound(LibInfo.PREFIX + "warp", 1, 1);
+					player.playSound(ModInfo.PREFIX + "warp", 1, 1);
 					player.inventory.consumeInventoryItem(Items.ender_eye);
 				}
 			}
@@ -111,7 +111,7 @@ public class ItemTimeClock extends BaseItem
 	@Override
 	public void registerIcons(IIconRegister ir)
 	{
-		this.itemIcon = ir.registerIcon(LibInfo.PREFIX + "itemTimeClock");
-		this.readyIcon = ir.registerIcon(LibInfo.PREFIX + "itemTimeClockReady");
+		this.itemIcon = ir.registerIcon(ModInfo.PREFIX + "itemTimeClock");
+		this.readyIcon = ir.registerIcon(ModInfo.PREFIX + "itemTimeClockReady");
 	}
 }

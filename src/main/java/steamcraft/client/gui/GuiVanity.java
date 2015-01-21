@@ -21,7 +21,7 @@ import org.lwjgl.opengl.GL11;
 
 import steamcraft.common.container.ContainerVanity;
 import steamcraft.common.container.InventoryVanity;
-import steamcraft.common.lib.LibInfo;
+import steamcraft.common.lib.ModInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -38,7 +38,7 @@ public class GuiVanity extends GuiContainer
 	@SuppressWarnings("unused")
 	private float ySize_lo;
 
-	private static final ResourceLocation iconLocation = new ResourceLocation(LibInfo.PREFIX + "textures/gui/vanity.png");
+	private static final ResourceLocation iconLocation = new ResourceLocation(ModInfo.PREFIX + "textures/gui/vanity.png");
 
 	private final InventoryVanity inventory;
 

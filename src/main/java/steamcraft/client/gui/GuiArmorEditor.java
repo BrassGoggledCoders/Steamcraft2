@@ -18,7 +18,7 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
-import steamcraft.common.lib.LibInfo;
+import steamcraft.common.lib.ModInfo;
 import steamcraft.common.tiles.TileArmorEditor;
 import steamcraft.common.tiles.container.ContainerArmorEditor;
 
@@ -28,7 +28,7 @@ import steamcraft.common.tiles.container.ContainerArmorEditor;
  */
 public class GuiArmorEditor extends GuiContainer
 {
-	private static ResourceLocation guitexture = new ResourceLocation(LibInfo.PREFIX + "textures/gui/armoreditor.png");
+	private static ResourceLocation guitexture = new ResourceLocation(ModInfo.PREFIX + "textures/gui/armoreditor.png");
 
 	@SuppressWarnings("unused")
 	private TileArmorEditor tile;

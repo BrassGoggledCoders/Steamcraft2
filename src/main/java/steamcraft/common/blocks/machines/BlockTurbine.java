@@ -17,7 +17,7 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
-import steamcraft.common.lib.LibInfo;
+import steamcraft.common.lib.ModInfo;
 import steamcraft.common.tiles.energy.TileTurbine;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -61,9 +61,9 @@ public class BlockTurbine extends BaseContainerBlock
 	@Override
 	public void registerBlockIcons(IIconRegister icon)
 	{
-		this.blockIcon = icon.registerIcon(LibInfo.PREFIX + "blockTurbine");
-		this.iconTop = icon.registerIcon(LibInfo.PREFIX + "blockTurbineTop");
-		this.iconBottom = icon.registerIcon(LibInfo.PREFIX + "blockTurbineBottom");
+		this.blockIcon = icon.registerIcon(ModInfo.PREFIX + "blockTurbine");
+		this.iconTop = icon.registerIcon(ModInfo.PREFIX + "blockTurbineTop");
+		this.iconBottom = icon.registerIcon(ModInfo.PREFIX + "blockTurbineBottom");
 		// this.iconTop = icon.registerIcon(LibInfo.PREFIX +
 		// "blockSteamBoilerTop");
 	}

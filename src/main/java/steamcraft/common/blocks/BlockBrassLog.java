@@ -17,7 +17,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.util.IIcon;
 import steamcraft.common.Steamcraft;
-import steamcraft.common.lib.LibInfo;
+import steamcraft.common.lib.ModInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -54,7 +54,7 @@ public class BlockBrassLog extends BlockLog
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(final IIconRegister ir)
 	{
-		this.blockIcon = ir.registerIcon(LibInfo.PREFIX + "blockBrassLogSide");
-		this.iconTop = ir.registerIcon(LibInfo.PREFIX + "blockBrassLogTop");
+		this.blockIcon = ir.registerIcon(ModInfo.PREFIX + "blockBrassLogSide");
+		this.iconTop = ir.registerIcon(ModInfo.PREFIX + "blockBrassLogTop");
 	}
 }

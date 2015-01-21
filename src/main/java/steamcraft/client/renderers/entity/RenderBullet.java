@@ -21,7 +21,7 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
 import steamcraft.common.entities.projectile.EntityBullet;
-import steamcraft.common.lib.LibInfo;
+import steamcraft.common.lib.ModInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -32,7 +32,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class RenderBullet extends Render
 {
-	private static final ResourceLocation bulletTex = new ResourceLocation(LibInfo.PREFIX + "textures/projectiles/musketball.png");
+	private static final ResourceLocation bulletTex = new ResourceLocation(ModInfo.PREFIX + "textures/projectiles/musketball.png");
 
 	public void renderBullet(EntityBullet bullet, double dx, double dy, double dz, float frotY, float frotP)
 	{

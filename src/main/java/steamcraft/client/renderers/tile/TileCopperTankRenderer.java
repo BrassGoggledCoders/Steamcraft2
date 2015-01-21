@@ -13,7 +13,7 @@
 package steamcraft.client.renderers.tile;
 
 import net.minecraft.util.ResourceLocation;
-import steamcraft.common.lib.LibInfo;
+import steamcraft.common.lib.ModInfo;
 
 /**
  * @author decebaldecebal
@@ -22,5 +22,5 @@ import steamcraft.common.lib.LibInfo;
 @Deprecated
 public class TileCopperTankRenderer
 {
-	private static final ResourceLocation texture = new ResourceLocation(LibInfo.PREFIX + "textures/blocks/blockCopperTank.png");
+	private static final ResourceLocation texture = new ResourceLocation(ModInfo.PREFIX + "textures/blocks/blockCopperTank.png");
 }

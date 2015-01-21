@@ -24,7 +24,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import steamcraft.common.InitBlocks;
-import steamcraft.common.lib.LibInfo;
+import steamcraft.common.lib.ModInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -57,17 +57,17 @@ public class BlockSlate extends BaseBlock
 	public void registerBlockIcons(final IIconRegister ir)
 	{
 		// Raw
-		this.icon[0] = ir.registerIcon(LibInfo.PREFIX + "blockSlateRawBlue");
-		this.icon[1] = ir.registerIcon(LibInfo.PREFIX + "blockSlateRawBlack");
-		this.icon[2] = ir.registerIcon(LibInfo.PREFIX + "blockSlateRawRed");
+		this.icon[0] = ir.registerIcon(ModInfo.PREFIX + "blockSlateRawBlue");
+		this.icon[1] = ir.registerIcon(ModInfo.PREFIX + "blockSlateRawBlack");
+		this.icon[2] = ir.registerIcon(ModInfo.PREFIX + "blockSlateRawRed");
 		// Cobble
-		this.icon[3] = ir.registerIcon(LibInfo.PREFIX + "blockSlateCobbleBlue");
-		this.icon[4] = ir.registerIcon(LibInfo.PREFIX + "blockSlateCobbleBlack");
-		this.icon[5] = ir.registerIcon(LibInfo.PREFIX + "blockSlateCobbleRed");
+		this.icon[3] = ir.registerIcon(ModInfo.PREFIX + "blockSlateCobbleBlue");
+		this.icon[4] = ir.registerIcon(ModInfo.PREFIX + "blockSlateCobbleBlack");
+		this.icon[5] = ir.registerIcon(ModInfo.PREFIX + "blockSlateCobbleRed");
 		// Brick
-		this.icon[6] = ir.registerIcon(LibInfo.PREFIX + "blockSlateBrickBlue");
-		this.icon[7] = ir.registerIcon(LibInfo.PREFIX + "blockSlateBrickBlack");
-		this.icon[8] = ir.registerIcon(LibInfo.PREFIX + "blockSlateBrickRed");
+		this.icon[6] = ir.registerIcon(ModInfo.PREFIX + "blockSlateBrickBlue");
+		this.icon[7] = ir.registerIcon(ModInfo.PREFIX + "blockSlateBrickBlack");
+		this.icon[8] = ir.registerIcon(ModInfo.PREFIX + "blockSlateBrickRed");
 		// Polished
 	}
 

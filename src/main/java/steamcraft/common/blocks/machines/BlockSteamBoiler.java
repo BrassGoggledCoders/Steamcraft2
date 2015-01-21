@@ -27,7 +27,7 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import steamcraft.client.lib.GuiIDs;
 import steamcraft.common.Steamcraft;
-import steamcraft.common.lib.LibInfo;
+import steamcraft.common.lib.ModInfo;
 import steamcraft.common.tiles.TileSteamBoiler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -77,10 +77,10 @@ public class BlockSteamBoiler extends BaseContainerBlock
 	@Override
 	public void registerBlockIcons(IIconRegister icon)
 	{
-		this.blockIcon = icon.registerIcon(LibInfo.PREFIX + "blockSteamBoilerSide");
-		this.iconFront = icon.registerIcon(LibInfo.PREFIX + "blockSteamBoilerFrontInactive");
-		this.iconFrontActive = icon.registerIcon(LibInfo.PREFIX + "blockSteamBoilerFrontActive");
-		this.iconTop = icon.registerIcon(LibInfo.PREFIX + "blockSteamBoilerTop");
+		this.blockIcon = icon.registerIcon(ModInfo.PREFIX + "blockSteamBoilerSide");
+		this.iconFront = icon.registerIcon(ModInfo.PREFIX + "blockSteamBoilerFrontInactive");
+		this.iconFrontActive = icon.registerIcon(ModInfo.PREFIX + "blockSteamBoilerFrontActive");
+		this.iconTop = icon.registerIcon(ModInfo.PREFIX + "blockSteamBoilerTop");
 	}
 
 	@Override

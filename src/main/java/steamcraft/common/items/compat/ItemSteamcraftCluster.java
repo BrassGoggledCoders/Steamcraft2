@@ -21,7 +21,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import steamcraft.common.InitItems;
 import steamcraft.common.items.BaseItemWithMetadata;
-import steamcraft.common.lib.LibInfo;
+import steamcraft.common.lib.ModInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -37,8 +37,8 @@ public class ItemSteamcraftCluster extends BaseItemWithMetadata
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister ir)
 	{
-		this.itemIcon[0] = ir.registerIcon(LibInfo.PREFIX + "metals/" + "itemClusterAluminum");
-		this.itemIcon[1] = ir.registerIcon(LibInfo.PREFIX + "metals/" + "itemClusterZinc");
+		this.itemIcon[0] = ir.registerIcon(ModInfo.PREFIX + "metals/" + "itemClusterAluminum");
+		this.itemIcon[1] = ir.registerIcon(ModInfo.PREFIX + "metals/" + "itemClusterZinc");
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })

@@ -24,7 +24,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
-import steamcraft.common.lib.LibInfo;
+import steamcraft.common.lib.ModInfo;
 import boilerplate.client.ClientHelper;
 import boilerplate.common.utils.PlayerUtils;
 
@@ -149,7 +149,7 @@ public class ItemSteamDrill extends ItemDrill
 			this.consumeSteamFromCanister((EntityPlayer) living);
 
 			stack.damageItem(1, living);
-			world.playSoundAtEntity(living, LibInfo.PREFIX + "drill.steam", 0.6F, 1.0F);
+			world.playSoundAtEntity(living, ModInfo.PREFIX + "drill.steam", 0.6F, 1.0F);
 			world.spawnParticle("smoke", x + 0.5, y + 0.5, z + 0.5, Item.itemRand.nextGaussian(), Item.itemRand.nextGaussian(),
 					Item.itemRand.nextGaussian());
 			return true;

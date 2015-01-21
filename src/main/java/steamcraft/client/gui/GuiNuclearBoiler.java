@@ -26,7 +26,7 @@ import net.minecraftforge.fluids.FluidTank;
 
 import org.lwjgl.opengl.GL11;
 
-import steamcraft.common.lib.LibInfo;
+import steamcraft.common.lib.ModInfo;
 import steamcraft.common.tiles.TileNuclearBoiler;
 import steamcraft.common.tiles.container.ContainerNuclearBoiler;
 import boilerplate.client.utils.GuiColors;
@@ -37,7 +37,7 @@ import boilerplate.client.utils.GuiColors;
  */
 public class GuiNuclearBoiler extends GuiContainer
 {
-	private static ResourceLocation guitexture = new ResourceLocation(LibInfo.PREFIX + "textures/gui/steamboiler.png");
+	private static ResourceLocation guitexture = new ResourceLocation(ModInfo.PREFIX + "textures/gui/steamboiler.png");
 
 	private TileNuclearBoiler tile;
 

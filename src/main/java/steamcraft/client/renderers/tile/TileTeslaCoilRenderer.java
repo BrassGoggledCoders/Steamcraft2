@@ -21,11 +21,11 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
 import steamcraft.client.renderers.models.ModelTeslaCoil;
-import steamcraft.common.lib.LibInfo;
+import steamcraft.common.lib.ModInfo;
 
 public class TileTeslaCoilRenderer extends TileEntitySpecialRenderer
 {
-	private static final ResourceLocation crystal = new ResourceLocation(LibInfo.PREFIX.replace(":", ""), "textures/models/teslacoil.png");
+	private static final ResourceLocation crystal = new ResourceLocation(ModInfo.PREFIX.replace(":", ""), "textures/models/teslacoil.png");
 	private final ModelTeslaCoil model;
 
 	public TileTeslaCoilRenderer()

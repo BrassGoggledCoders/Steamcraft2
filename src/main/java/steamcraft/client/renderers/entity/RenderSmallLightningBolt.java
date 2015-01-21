@@ -21,7 +21,7 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
 import steamcraft.common.entities.projectile.EntitySmallLightningBolt;
-import steamcraft.common.lib.LibInfo;
+import steamcraft.common.lib.ModInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -33,7 +33,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class RenderSmallLightningBolt extends Render
 {
-	private static final ResourceLocation bulletTex = new ResourceLocation(LibInfo.PREFIX + "textures/projectiles/bolt.png");
+	private static final ResourceLocation bulletTex = new ResourceLocation(ModInfo.PREFIX + "textures/projectiles/bolt.png");
 
 	public void renderBullet(EntitySmallLightningBolt entity, double dx, double dy, double dz, float frotY, float frotP)
 	{

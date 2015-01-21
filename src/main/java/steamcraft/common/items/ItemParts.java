@@ -22,7 +22,7 @@ import net.minecraft.util.IIcon;
 
 import org.apache.commons.lang3.text.WordUtils;
 
-import steamcraft.common.lib.LibInfo;
+import steamcraft.common.lib.ModInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -46,16 +46,16 @@ public class ItemParts extends BaseItemWithMetadata
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister ir)
 	{
-		this.itemIcon[0] = ir.registerIcon(LibInfo.PREFIX + "parts/" + "item" + this.getMaterial() + "Gear");
-		this.itemIcon[1] = ir.registerIcon(LibInfo.PREFIX + "parts/" + "item" + this.getMaterial() + "Sprocket");
-		this.itemIcon[2] = ir.registerIcon(LibInfo.PREFIX + "parts/" + "item" + this.getMaterial() + "Spring");
-		this.itemIcon[3] = ir.registerIcon(LibInfo.PREFIX + "parts/" + "item" + this.getMaterial() + "Thread");
-		this.itemIcon[4] = ir.registerIcon(LibInfo.PREFIX + "parts/" + "item" + this.getMaterial() + "Nut");
-		this.itemIcon[5] = ir.registerIcon(LibInfo.PREFIX + "parts/" + "item" + this.getMaterial() + "Bolt");
-		this.itemIcon[6] = ir.registerIcon(LibInfo.PREFIX + "parts/" + "item" + this.getMaterial() + "Washer");
-		this.itemIcon[7] = ir.registerIcon(LibInfo.PREFIX + "parts/" + "item" + this.getMaterial() + "Bearing");
-		this.itemIcon[8] = ir.registerIcon(LibInfo.PREFIX + "parts/" + "item" + this.getMaterial() + "Screw");
-		this.itemIcon[9] = ir.registerIcon(LibInfo.PREFIX + "parts/" + "item" + this.getMaterial() + "Nail");
+		this.itemIcon[0] = ir.registerIcon(ModInfo.PREFIX + "parts/" + "item" + this.getMaterial() + "Gear");
+		this.itemIcon[1] = ir.registerIcon(ModInfo.PREFIX + "parts/" + "item" + this.getMaterial() + "Sprocket");
+		this.itemIcon[2] = ir.registerIcon(ModInfo.PREFIX + "parts/" + "item" + this.getMaterial() + "Spring");
+		this.itemIcon[3] = ir.registerIcon(ModInfo.PREFIX + "parts/" + "item" + this.getMaterial() + "Thread");
+		this.itemIcon[4] = ir.registerIcon(ModInfo.PREFIX + "parts/" + "item" + this.getMaterial() + "Nut");
+		this.itemIcon[5] = ir.registerIcon(ModInfo.PREFIX + "parts/" + "item" + this.getMaterial() + "Bolt");
+		this.itemIcon[6] = ir.registerIcon(ModInfo.PREFIX + "parts/" + "item" + this.getMaterial() + "Washer");
+		this.itemIcon[7] = ir.registerIcon(ModInfo.PREFIX + "parts/" + "item" + this.getMaterial() + "Bearing");
+		this.itemIcon[8] = ir.registerIcon(ModInfo.PREFIX + "parts/" + "item" + this.getMaterial() + "Screw");
+		this.itemIcon[9] = ir.registerIcon(ModInfo.PREFIX + "parts/" + "item" + this.getMaterial() + "Nail");
 	}
 
 	@SuppressWarnings({ "all" })

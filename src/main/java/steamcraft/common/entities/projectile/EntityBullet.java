@@ -20,7 +20,7 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import steamcraft.common.lib.DamageSourceHandler;
-import steamcraft.common.lib.LibInfo;
+import steamcraft.common.lib.ModInfo;
 import boilerplate.common.baseclasses.BaseProjectileEntity;
 
 /**
@@ -49,7 +49,7 @@ public class EntityBullet extends BaseProjectileEntity
 	{
 		if(entity.attackEntityFrom(DamageSourceHandler.bullet, this.damage))
 		{
-			this.worldObj.playSoundAtEntity(this, LibInfo.PREFIX + "hitflesh", 1.0F, 1.2F / ((this.rand.nextFloat() * 0.2F) + 0.9F));
+			this.worldObj.playSoundAtEntity(this, ModInfo.PREFIX + "hitflesh", 1.0F, 1.2F / ((this.rand.nextFloat() * 0.2F) + 0.9F));
 			this.setDead();
 		}
 		else
@@ -81,7 +81,7 @@ public class EntityBullet extends BaseProjectileEntity
 			this.posX -= (this.motionX / magnitude) * 0.05000000074505806D;
 			this.posY -= (this.motionY / magnitude) * 0.05000000074505806D;
 			this.posZ -= (this.motionZ / magnitude) * 0.05000000074505806D;
-			this.worldObj.playSoundAtEntity(this, LibInfo.PREFIX + "hitblock", 1.0F, 1.0F);
+			this.worldObj.playSoundAtEntity(this, ModInfo.PREFIX + "hitblock", 1.0F, 1.0F);
 			this.setDead();
 		}
 	}

@@ -18,7 +18,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.world.IBlockAccess;
 import steamcraft.common.InitBlocks;
 import steamcraft.common.Steamcraft;
-import steamcraft.common.lib.LibInfo;
+import steamcraft.common.lib.ModInfo;
 
 /**
  * @author Surseance
@@ -28,7 +28,7 @@ public class BlockCastIronFence extends BlockFence
 {
 	public BlockCastIronFence()
 	{
-		super(LibInfo.PREFIX + "metal/" + "blockCastIron", Material.iron);
+		super(ModInfo.PREFIX + "metal/" + "blockCastIron", Material.iron);
 		this.setHardness(4.5F);
 		this.setResistance(20.0F);
 		this.setStepSound(Block.soundTypeMetal);

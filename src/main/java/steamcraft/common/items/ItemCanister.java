@@ -25,7 +25,7 @@ import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidContainerItem;
 import steamcraft.common.InitItems;
-import steamcraft.common.lib.LibInfo;
+import steamcraft.common.lib.ModInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -51,9 +51,9 @@ public class ItemCanister extends BaseItem implements IFluidContainerItem
 	@Override
 	public void registerIcons(IIconRegister par1IconRegister)
 	{
-		this.emptyIcon = par1IconRegister.registerIcon(LibInfo.PREFIX + "itemCanisterEmpty");
-		this.itemIcon = par1IconRegister.registerIcon(LibInfo.PREFIX + "itemCanisterHalf");
-		this.fullIcon = par1IconRegister.registerIcon(LibInfo.PREFIX + "itemCanisterFull");
+		this.emptyIcon = par1IconRegister.registerIcon(ModInfo.PREFIX + "itemCanisterEmpty");
+		this.itemIcon = par1IconRegister.registerIcon(ModInfo.PREFIX + "itemCanisterHalf");
+		this.fullIcon = par1IconRegister.registerIcon(ModInfo.PREFIX + "itemCanisterFull");
 	}
 
 	@Override

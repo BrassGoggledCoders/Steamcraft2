@@ -23,7 +23,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import steamcraft.common.InitBlocks;
 import steamcraft.common.Steamcraft;
-import steamcraft.common.lib.LibInfo;
+import steamcraft.common.lib.ModInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -47,9 +47,9 @@ public class BlockPolishedPlanks extends BaseBlock
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(final IIconRegister ir)
 	{
-		this.icon[0] = ir.registerIcon(LibInfo.PREFIX + "blockPolishedPlanks");
-		this.icon[1] = ir.registerIcon(LibInfo.PREFIX + "blockVerticalPolishedPlanks");
-		this.icon[2] = ir.registerIcon(LibInfo.PREFIX + "blockPolishedPanel");
+		this.icon[0] = ir.registerIcon(ModInfo.PREFIX + "blockPolishedPlanks");
+		this.icon[1] = ir.registerIcon(ModInfo.PREFIX + "blockVerticalPolishedPlanks");
+		this.icon[2] = ir.registerIcon(ModInfo.PREFIX + "blockPolishedPanel");
 	}
 
 	@Override

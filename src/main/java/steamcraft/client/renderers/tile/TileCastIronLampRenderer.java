@@ -23,7 +23,7 @@ import org.lwjgl.opengl.GL11;
 import steamcraft.client.renderers.models.ModelCastIronLampSide;
 import steamcraft.client.renderers.models.ModelCastIronLampTop;
 import steamcraft.common.InitBlocks;
-import steamcraft.common.lib.LibInfo;
+import steamcraft.common.lib.ModInfo;
 
 /**
  * @author Surseance
@@ -31,8 +31,8 @@ import steamcraft.common.lib.LibInfo;
  */
 public class TileCastIronLampRenderer extends TileEntitySpecialRenderer
 {
-	private static final ResourceLocation lampOn = new ResourceLocation(LibInfo.PREFIX + "textures/models/lampon.png");
-	private static final ResourceLocation lampOff = new ResourceLocation(LibInfo.PREFIX + "textures/models/lampoff.png");
+	private static final ResourceLocation lampOn = new ResourceLocation(ModInfo.PREFIX + "textures/models/lampon.png");
+	private static final ResourceLocation lampOff = new ResourceLocation(ModInfo.PREFIX + "textures/models/lampoff.png");
 	private final ModelCastIronLampTop lampModelTop;
 	private final ModelCastIronLampSide lampModelSide;
 

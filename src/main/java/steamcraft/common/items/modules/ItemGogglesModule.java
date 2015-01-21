@@ -27,7 +27,7 @@ import org.lwjgl.opengl.GL11;
 import steamcraft.common.InitItems;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.items.armor.ItemBrassGoggles;
-import steamcraft.common.lib.LibInfo;
+import steamcraft.common.lib.ModInfo;
 import boilerplate.common.baseclasses.BaseArmorModule;
 import boilerplate.steamapi.item.ModuleRegistry;
 import cpw.mods.fml.relauncher.Side;
@@ -131,7 +131,7 @@ public class ItemGogglesModule extends BaseArmorModule
 	@Override
 	public void registerIcons(IIconRegister par1IconRegister)
 	{
-		this.itemIcon = par1IconRegister.registerIcon(LibInfo.PREFIX + this.getUnlocalizedName().substring(5));
+		this.itemIcon = par1IconRegister.registerIcon(ModInfo.PREFIX + this.getUnlocalizedName().substring(5));
 	}
 
 }

@@ -15,7 +15,7 @@ package steamcraft.common;
 import net.minecraft.init.Items;
 import net.minecraft.stats.Achievement;
 import net.minecraftforge.common.AchievementPage;
-import steamcraft.common.lib.LibInfo;
+import steamcraft.common.lib.ModInfo;
 
 /**
  * @author warlordjones
@@ -31,7 +31,7 @@ public class InitAchievements
 
 	public static void init()
 	{
-		String prefix = LibInfo.ID + "achievement.";
+		String prefix = ModInfo.ID + "achievement.";
 		ingotAchieve = new Achievement(prefix + "ingot", "ingotachieve", 0, 0, InitItems.itemIngot, null).registerStat().initIndependentStat();
 		sheetAchieve = new Achievement(prefix + "sheet", "sheetachieve", 2, 0, InitItems.itemSheet, ingotAchieve).registerStat();
 		boilerAchieve = new Achievement(prefix + "boiler", "boilerachieve", 4, 0, InitBlocks.blockSteamBoiler, sheetAchieve).registerStat();

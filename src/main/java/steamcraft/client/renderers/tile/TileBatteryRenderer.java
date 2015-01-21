@@ -22,7 +22,7 @@ import net.minecraft.world.World;
 import org.lwjgl.opengl.GL11;
 
 import steamcraft.client.renderers.models.ModelBattery;
-import steamcraft.common.lib.LibInfo;
+import steamcraft.common.lib.ModInfo;
 
 /**
  * @author warlordjones
@@ -30,7 +30,7 @@ import steamcraft.common.lib.LibInfo;
  */
 public class TileBatteryRenderer extends TileEntitySpecialRenderer
 {
-	private static final ResourceLocation crystal = new ResourceLocation(LibInfo.PREFIX.replace(":", ""), "textures/models/batterybank.png");
+	private static final ResourceLocation crystal = new ResourceLocation(ModInfo.PREFIX.replace(":", ""), "textures/models/batterybank.png");
 	private final ModelBattery model;
 
 	public TileBatteryRenderer()

@@ -21,7 +21,7 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
 import steamcraft.client.renderers.models.ModelHatch;
-import steamcraft.common.lib.LibInfo;
+import steamcraft.common.lib.ModInfo;
 
 /**
  * @author warlordjones
@@ -29,7 +29,7 @@ import steamcraft.common.lib.LibInfo;
  */
 public class TileHatchRenderer extends TileEntitySpecialRenderer
 {
-	private static final ResourceLocation hatch = new ResourceLocation(LibInfo.PREFIX + "textures/models/modelHatch.png");
+	private static final ResourceLocation hatch = new ResourceLocation(ModInfo.PREFIX + "textures/models/modelHatch.png");
 	private final ModelHatch model;
 
 	public TileHatchRenderer()

@@ -42,7 +42,7 @@ public class Utils
 	{
 		try
 		{
-			URL webLink = new URL(LibInfo.VERSION_URL);
+			URL webLink = new URL(ModInfo.VERSION_URL);
 			InputStream inputStream = webLink.openStream();
 			Properties prop = new Properties();
 			prop.load(inputStream);

@@ -23,7 +23,7 @@ import net.minecraft.world.World;
 import steamcraft.client.lib.GuiIDs;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.blocks.machines.BaseContainerBlock;
-import steamcraft.common.lib.LibInfo;
+import steamcraft.common.lib.ModInfo;
 import steamcraft.common.tiles.TileTimeBomb;
 import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.relauncher.Side;
@@ -83,8 +83,8 @@ public class BlockTimeBomb extends BaseContainerBlock
 	@Override
 	public void registerBlockIcons(IIconRegister icon)
 	{
-		this.blockIcon = icon.registerIcon(LibInfo.PREFIX + "blockTimebomb");
-		this.iconEnd = icon.registerIcon(LibInfo.PREFIX + "blockTimebombTop");
+		this.blockIcon = icon.registerIcon(ModInfo.PREFIX + "blockTimebomb");
+		this.iconEnd = icon.registerIcon(ModInfo.PREFIX + "blockTimebombTop");
 	}
 
 	@Override
