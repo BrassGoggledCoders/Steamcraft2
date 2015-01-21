@@ -17,9 +17,9 @@ import java.util.Random;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSapling;
 import net.minecraft.init.Blocks;
-import net.minecraft.util.MathHelper;
+import net.minecraft.util.Direction;
 import net.minecraft.world.World;
-import net.minecraft.world.gen.feature.WorldGenBigTree;
+import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 import net.minecraftforge.common.util.ForgeDirection;
 import steamcraft.common.InitBlocks;
 
@@ -27,409 +27,213 @@ import steamcraft.common.InitBlocks;
  * @author warlordjones
  * 
  */
-@SuppressWarnings("all")
-public class WorldGenBrassTree extends WorldGenBigTree
+public class WorldGenBrassTree extends WorldGenAbstractTree
 {
-	static final byte[] otherCoordPairs = new byte[] { (byte) 2, (byte) 0, (byte) 0, (byte) 1, (byte) 2, (byte) 1 };
-
-	Random rand = new Random();
-	World worldObj;
-	int[] basePos = new int[] { 0, 0, 0 };
-	int heightLimit;
-	int height;
-	double heightAttenuation = 0.618D;
-	double branchDensity = 1.0D;
-	double branchSlope = 0.381D;
-	double scaleWidth = 1.0D;
-	double leafDensity = 1.0D;
-
-	int trunkSize = 1;
-
-	int heightLimitLimit = 12;
-
-	int leafDistanceLimit = 4;
-	int[][] leafNodes;
-
 	// TODO
 	public WorldGenBrassTree()
 	{
 		super(false);
 	}
 
-	void generateLeafNodeList()
+	@Override
+	public boolean generate(World p_76484_1_, Random p_76484_2_, int p_76484_3_, int p_76484_4_, int p_76484_5_)
 	{
-		this.height = (int) (this.heightLimit * this.heightAttenuation);
+		int l = p_76484_2_.nextInt(3) + p_76484_2_.nextInt(2) + 6;
+		boolean flag = true;
 
-		if(this.height >= this.heightLimit)
-			this.height = this.heightLimit - 1;
-
-		int i = (int) (1.382D + Math.pow((this.leafDensity * this.heightLimit) / 13.0D, 2.0D));
-
-		if(i < 1)
-			i = 1;
-
-		int[][] aint = new int[i * this.heightLimit][4];
-		int j = (this.basePos[1] + this.heightLimit) - this.leafDistanceLimit;
-		int k = 1;
-		int l = this.basePos[1] + this.height;
-		int i1 = j - this.basePos[1];
-		aint[0][0] = this.basePos[0];
-		aint[0][1] = j;
-		aint[0][2] = this.basePos[2];
-		aint[0][3] = l;
-		--j;
-
-		while(i1 >= 0)
+		if(p_76484_4_ >= 1 && p_76484_4_ + l + 1 <= 256)
 		{
-			int j1 = 0;
-			float f = this.layerSize(i1);
+			int j1;
+			int k1;
 
-			if(f < 0.0F)
+			for(int i1 = p_76484_4_; i1 <= p_76484_4_ + 1 + l; ++i1)
 			{
-				--j;
-				--i1;
-			}
-			else
-			{
-				for(double d0 = 0.5D; j1 < i; ++j1)
+				byte b0 = 1;
+
+				if(i1 == p_76484_4_)
 				{
-					double d1 = this.scaleWidth * f * (this.rand.nextFloat() + 0.328D);
-					double d2 = this.rand.nextFloat() * 2.0D * Math.PI;
-					int k1 = MathHelper.floor_double((d1 * Math.sin(d2)) + this.basePos[0] + d0);
-					int l1 = MathHelper.floor_double((d1 * Math.cos(d2)) + this.basePos[2] + d0);
-					int[] aint1 = new int[] { k1, j, l1 };
-					int[] aint2 = new int[] { k1, j + this.leafDistanceLimit, l1 };
+					b0 = 0;
+				}
 
-					if(this.checkBlockLine(aint1, aint2) == -1)
+				if(i1 >= p_76484_4_ + 1 + l - 2)
+				{
+					b0 = 2;
+				}
+
+				for(j1 = p_76484_3_ - b0; j1 <= p_76484_3_ + b0 && flag; ++j1)
+				{
+					for(k1 = p_76484_5_ - b0; k1 <= p_76484_5_ + b0 && flag; ++k1)
 					{
-						int[] aint3 = new int[] { this.basePos[0], this.basePos[1], this.basePos[2] };
-						double d3 = Math.sqrt(Math.pow(Math.abs(this.basePos[0] - aint1[0]), 2.0D)
-								+ Math.pow(Math.abs(this.basePos[2] - aint1[2]), 2.0D));
-						double d4 = d3 * this.branchSlope;
-
-						if((aint1[1] - d4) > l)
-							aint3[1] = l;
-						else
-							aint3[1] = (int) (aint1[1] - d4);
-
-						if(this.checkBlockLine(aint3, aint1) == -1)
+						if(i1 >= 0 && i1 < 256)
 						{
-							aint[k][0] = k1;
-							aint[k][1] = j;
-							aint[k][2] = l1;
-							aint[k][3] = aint3[1];
-							++k;
+							Block block = p_76484_1_.getBlock(j1, i1, k1);
+
+							if(!this.isReplaceable(p_76484_1_, j1, i1, k1))
+							{
+								flag = false;
+							}
+						}
+						else
+						{
+							flag = false;
 						}
 					}
 				}
-
-				--j;
-				--i1;
 			}
-		}
 
-		this.leafNodes = new int[k][4];
-		System.arraycopy(aint, 0, this.leafNodes, 0, k);
-	}
-
-	void func_150529_a(int p_150529_1_, int p_150529_2_, int p_150529_3_, float p_150529_4_, byte p_150529_5_, Block p_150529_6_)
-	{
-		int l = (int) (p_150529_4_ + 0.618D);
-		byte b1 = otherCoordPairs[p_150529_5_];
-		byte b2 = otherCoordPairs[p_150529_5_ + 3];
-		int[] aint = new int[] { p_150529_1_, p_150529_2_, p_150529_3_ };
-		int[] aint1 = new int[] { 0, 0, 0 };
-		int i1 = -l;
-		int j1 = -l;
-
-		for(aint1[p_150529_5_] = aint[p_150529_5_]; i1 <= l; ++i1)
-		{
-			aint1[b1] = aint[b1] + i1;
-			j1 = -l;
-
-			while(j1 <= l)
+			if(!flag)
 			{
-				double d0 = Math.pow(Math.abs(i1) + 0.5D, 2.0D) + Math.pow(Math.abs(j1) + 0.5D, 2.0D);
+				return false;
+			}
+			else
+			{
+				Block block2 = p_76484_1_.getBlock(p_76484_3_, p_76484_4_ - 1, p_76484_5_);
 
-				if(d0 > (p_150529_4_ * p_150529_4_))
-					++j1;
+				boolean isSoil = block2.canSustainPlant(p_76484_1_, p_76484_3_, p_76484_4_ - 1, p_76484_5_, ForgeDirection.UP, (BlockSapling) Blocks.sapling);
+				if(isSoil && p_76484_4_ < 256 - l - 1)
+				{
+					onPlantGrow(p_76484_1_, p_76484_3_, p_76484_4_ - 1, p_76484_5_, p_76484_3_, p_76484_4_, p_76484_5_);
+					onPlantGrow(p_76484_1_, p_76484_3_ + 1, p_76484_4_ - 1, p_76484_5_, p_76484_3_, p_76484_4_, p_76484_5_);
+					onPlantGrow(p_76484_1_, p_76484_3_ + 1, p_76484_4_ - 1, p_76484_5_ + 1, p_76484_3_, p_76484_4_, p_76484_5_);
+					onPlantGrow(p_76484_1_, p_76484_3_, p_76484_4_ - 1, p_76484_5_ + 1, p_76484_3_, p_76484_4_, p_76484_5_);
+					int j3 = p_76484_2_.nextInt(4);
+					j1 = l - p_76484_2_.nextInt(4);
+					k1 = 2 - p_76484_2_.nextInt(3);
+					int k3 = p_76484_3_;
+					int l1 = p_76484_5_;
+					int i2 = 0;
+					int j2;
+					int k2;
+
+					for(j2 = 0; j2 < l; ++j2)
+					{
+						k2 = p_76484_4_ + j2;
+
+						if(j2 >= j1 && k1 > 0)
+						{
+							k3 += Direction.offsetX[j3];
+							l1 += Direction.offsetZ[j3];
+							--k1;
+						}
+
+						Block block1 = p_76484_1_.getBlock(k3, k2, l1);
+
+						if(block1.isAir(p_76484_1_, k3, k2, l1) || block1.isLeaves(p_76484_1_, k3, k2, l1))
+						{
+							this.setBlockAndNotifyAdequately(p_76484_1_, k3, k2, l1, InitBlocks.blockBrassLog, 0);
+							this.setBlockAndNotifyAdequately(p_76484_1_, k3 + 1, k2, l1, InitBlocks.blockBrassLog, 0);
+							this.setBlockAndNotifyAdequately(p_76484_1_, k3, k2, l1 + 1, InitBlocks.blockBrassLog, 0);
+							this.setBlockAndNotifyAdequately(p_76484_1_, k3 + 1, k2, l1 + 1, InitBlocks.blockBrassLog, 0);
+							i2 = k2;
+						}
+					}
+
+					for(j2 = -2; j2 <= 0; ++j2)
+					{
+						for(k2 = -2; k2 <= 0; ++k2)
+						{
+							byte b1 = -1;
+							this.func_150526_a(p_76484_1_, k3 + j2, i2 + b1, l1 + k2);
+							this.func_150526_a(p_76484_1_, 1 + k3 - j2, i2 + b1, l1 + k2);
+							this.func_150526_a(p_76484_1_, k3 + j2, i2 + b1, 1 + l1 - k2);
+							this.func_150526_a(p_76484_1_, 1 + k3 - j2, i2 + b1, 1 + l1 - k2);
+
+							if((j2 > -2 || k2 > -1) && (j2 != -1 || k2 != -2))
+							{
+								byte b2 = 1;
+								this.func_150526_a(p_76484_1_, k3 + j2, i2 + b2, l1 + k2);
+								this.func_150526_a(p_76484_1_, 1 + k3 - j2, i2 + b2, l1 + k2);
+								this.func_150526_a(p_76484_1_, k3 + j2, i2 + b2, 1 + l1 - k2);
+								this.func_150526_a(p_76484_1_, 1 + k3 - j2, i2 + b2, 1 + l1 - k2);
+							}
+						}
+					}
+
+					if(p_76484_2_.nextBoolean())
+					{
+						this.func_150526_a(p_76484_1_, k3, i2 + 2, l1);
+						this.func_150526_a(p_76484_1_, k3 + 1, i2 + 2, l1);
+						this.func_150526_a(p_76484_1_, k3 + 1, i2 + 2, l1 + 1);
+						this.func_150526_a(p_76484_1_, k3, i2 + 2, l1 + 1);
+					}
+
+					for(j2 = -3; j2 <= 4; ++j2)
+					{
+						for(k2 = -3; k2 <= 4; ++k2)
+						{
+							if((j2 != -3 || k2 != -3) && (j2 != -3 || k2 != 4) && (j2 != 4 || k2 != -3) && (j2 != 4 || k2 != 4)
+									&& (Math.abs(j2) < 3 || Math.abs(k2) < 3))
+							{
+								this.func_150526_a(p_76484_1_, k3 + j2, i2, l1 + k2);
+							}
+						}
+					}
+
+					for(j2 = -1; j2 <= 2; ++j2)
+					{
+						for(k2 = -1; k2 <= 2; ++k2)
+						{
+							if((j2 < 0 || j2 > 1 || k2 < 0 || k2 > 1) && p_76484_2_.nextInt(3) <= 0)
+							{
+								int l3 = p_76484_2_.nextInt(3) + 2;
+								int l2;
+
+								for(l2 = 0; l2 < l3; ++l2)
+								{
+									this.setBlockAndNotifyAdequately(p_76484_1_, p_76484_3_ + j2, i2 - l2 - 1, p_76484_5_ + k2, InitBlocks.blockBrassLog, 0);
+								}
+
+								int i3;
+
+								for(l2 = -1; l2 <= 1; ++l2)
+								{
+									for(i3 = -1; i3 <= 1; ++i3)
+									{
+										this.func_150526_a(p_76484_1_, k3 + j2 + l2, i2 - 0, l1 + k2 + i3);
+									}
+								}
+
+								for(l2 = -2; l2 <= 2; ++l2)
+								{
+									for(i3 = -2; i3 <= 2; ++i3)
+									{
+										if(Math.abs(l2) != 2 || Math.abs(i3) != 2)
+										{
+											this.func_150526_a(p_76484_1_, k3 + j2 + l2, i2 - 1, l1 + k2 + i3);
+										}
+									}
+								}
+							}
+						}
+					}
+
+					return true;
+				}
 				else
 				{
-					aint1[b2] = aint[b2] + j1;
-					Block block1 = this.worldObj.getBlock(aint1[0], aint1[1], aint1[2]);
-
-					if(!block1.isAir(this.worldObj, aint1[0], aint1[1], aint1[2]) && !block1.isLeaves(this.worldObj, aint1[0], aint1[1], aint1[2]))
-						++j1;
-					else
-					{
-						this.setBlockAndNotifyAdequately(this.worldObj, aint1[0], aint1[1], aint1[2], p_150529_6_, 0);
-						++j1;
-					}
+					return false;
 				}
 			}
 		}
-	}
-
-	float layerSize(int par1)
-	{
-		if(par1 < (this.heightLimit * 0.3D))
-			return -1.618F;
 		else
 		{
-			float f = this.heightLimit / 2.0F;
-			float f1 = (this.heightLimit / 2.0F) - par1;
-			float f2;
-
-			if(f1 == 0.0F)
-				f2 = f;
-			else if(Math.abs(f1) >= f)
-				f2 = 0.0F;
-			else
-				f2 = (float) Math.sqrt(Math.pow(Math.abs(f), 2.0D) - Math.pow(Math.abs(f1), 2.0D));
-
-			f2 *= 0.5F;
-			return f2;
-		}
-	}
-
-	float leafSize(int par1)
-	{
-		return (par1 >= 0) && (par1 < this.leafDistanceLimit) ? (par1 != 0) && (par1 != (this.leafDistanceLimit - 1)) ? 3.0F : 2.0F : -1.0F;
-	}
-
-	void generateLeafNode(int par1, int par2, int par3)
-	{
-		int l = par2;
-
-		for(int i1 = par2 + this.leafDistanceLimit; l < i1; ++l)
-		{
-			float f = this.leafSize(l - par2);
-			this.func_150529_a(par1, l, par3, f, (byte) 1, InitBlocks.blockBrassLeaves);
-		}
-	}
-
-	void func_150530_a(int[] p_150530_1_, int[] p_150530_2_, Block p_150530_3_)
-	{
-		int[] aint2 = new int[] { 0, 0, 0 };
-		byte b0 = 0;
-		byte b1;
-
-		for(b1 = 0; b0 < 3; ++b0)
-		{
-			aint2[b0] = p_150530_2_[b0] - p_150530_1_[b0];
-
-			if(Math.abs(aint2[b0]) > Math.abs(aint2[b1]))
-				b1 = b0;
-		}
-
-		if(aint2[b1] != 0)
-		{
-			byte b2 = otherCoordPairs[b1];
-			byte b3 = otherCoordPairs[b1 + 3];
-			byte b4;
-
-			if(aint2[b1] > 0)
-				b4 = 1;
-			else
-				b4 = -1;
-
-			double d0 = (double) aint2[b2] / (double) aint2[b1];
-			double d1 = (double) aint2[b3] / (double) aint2[b1];
-			int[] aint3 = new int[] { 0, 0, 0 };
-			int i = 0;
-
-			for(int j = aint2[b1] + b4; i != j; i += b4)
-			{
-				aint3[b1] = MathHelper.floor_double(p_150530_1_[b1] + i + 0.5D);
-				aint3[b2] = MathHelper.floor_double(p_150530_1_[b2] + (i * d0) + 0.5D);
-				aint3[b3] = MathHelper.floor_double(p_150530_1_[b3] + (i * d1) + 0.5D);
-				byte b5 = 0;
-				int k = Math.abs(aint3[0] - p_150530_1_[0]);
-				int l = Math.abs(aint3[2] - p_150530_1_[2]);
-				int i1 = Math.max(k, l);
-
-				if(i1 > 0)
-					if(k == i1)
-						b5 = 4;
-					else if(l == i1)
-						b5 = 8;
-
-				this.setBlockAndNotifyAdequately(this.worldObj, aint3[0], aint3[1], aint3[2], p_150530_3_, b5);
-			}
-		}
-	}
-
-	void generateLeaves()
-	{
-		int i = 0;
-
-		for(int j = this.leafNodes.length; i < j; ++i)
-		{
-			int k = this.leafNodes[i][0];
-			int l = this.leafNodes[i][1];
-			int i1 = this.leafNodes[i][2];
-			this.generateLeafNode(k, l, i1);
-		}
-	}
-
-	boolean leafNodeNeedsBase(int par1)
-	{
-		return par1 >= (this.heightLimit * 0.2D);
-	}
-
-	void generateTrunk()
-	{
-		int i = this.basePos[0];
-		int j = this.basePos[1];
-		int k = this.basePos[1] + this.height;
-		int l = this.basePos[2];
-		int[] aint = new int[] { i, j, l };
-		int[] aint1 = new int[] { i, k, l };
-		this.func_150530_a(aint, aint1, InitBlocks.blockBrassLog);
-
-		if(this.trunkSize == 2)
-		{
-			++aint[0];
-			++aint1[0];
-			this.func_150530_a(aint, aint1, InitBlocks.blockBrassLog);
-			++aint[2];
-			++aint1[2];
-			this.func_150530_a(aint, aint1, InitBlocks.blockBrassLog);
-			aint[0] += -1;
-			aint1[0] += -1;
-			this.func_150530_a(aint, aint1, InitBlocks.blockBrassLog);
-		}
-	}
-
-	void generateLeafNodeBases()
-	{
-		int i = 0;
-		int j = this.leafNodes.length;
-
-		for(int[] aint = new int[] { this.basePos[0], this.basePos[1], this.basePos[2] }; i < j; ++i)
-		{
-			int[] aint1 = this.leafNodes[i];
-			int[] aint2 = new int[] { aint1[0], aint1[1], aint1[2] };
-			aint[1] = aint1[3];
-			int k = aint[1] - this.basePos[1];
-
-			if(this.leafNodeNeedsBase(k))
-				this.func_150530_a(aint, aint2, InitBlocks.blockBrassLog);
-		}
-	}
-
-	int checkBlockLine(int[] par1ArrayOfInteger, int[] par2ArrayOfInteger)
-	{
-		int[] aint2 = new int[] { 0, 0, 0 };
-		byte b0 = 0;
-		byte b1;
-
-		for(b1 = 0; b0 < 3; ++b0)
-		{
-			aint2[b0] = par2ArrayOfInteger[b0] - par1ArrayOfInteger[b0];
-
-			if(Math.abs(aint2[b0]) > Math.abs(aint2[b1]))
-				b1 = b0;
-		}
-
-		if(aint2[b1] == 0)
-			return -1;
-		else
-		{
-			byte b2 = otherCoordPairs[b1];
-			byte b3 = otherCoordPairs[b1 + 3];
-			byte b4;
-
-			if(aint2[b1] > 0)
-				b4 = 1;
-			else
-				b4 = -1;
-
-			double d0 = (double) aint2[b2] / (double) aint2[b1];
-			double d1 = (double) aint2[b3] / (double) aint2[b1];
-			int[] aint3 = new int[] { 0, 0, 0 };
-			int i = 0;
-			int j;
-
-			for(j = aint2[b1] + b4; i != j; i += b4)
-			{
-				aint3[b1] = par1ArrayOfInteger[b1] + i;
-				aint3[b2] = MathHelper.floor_double(par1ArrayOfInteger[b2] + (i * d0));
-				aint3[b3] = MathHelper.floor_double(par1ArrayOfInteger[b3] + (i * d1));
-				Block block = this.worldObj.getBlock(aint3[0], aint3[1], aint3[2]);
-
-				if(!this.isReplaceable(this.worldObj, aint3[0], aint3[1], aint3[2]))
-					break;
-			}
-
-			return i == j ? -1 : Math.abs(i);
-		}
-	}
-
-	boolean validTreeLocation()
-	{
-		int[] aint = new int[] { this.basePos[0], this.basePos[1], this.basePos[2] };
-		int[] aint1 = new int[] { this.basePos[0], (this.basePos[1] + this.heightLimit) - 1, this.basePos[2] };
-		Block block = this.worldObj.getBlock(this.basePos[0], this.basePos[1] - 1, this.basePos[2]);
-
-		boolean isSoil = block.canSustainPlant(this.worldObj, this.basePos[0], this.basePos[1] - 1, this.basePos[2], ForgeDirection.UP,
-				(BlockSapling) Blocks.sapling);
-		if(!isSoil)
-			return false;
-		else
-		{
-			int i = this.checkBlockLine(aint, aint1);
-
-			if(i == -1)
-				return true;
-			else if(i < 6)
-				return false;
-			else
-			{
-				this.heightLimit = i;
-				return true;
-			}
-		}
-	}
-
-	@Override
-	public void setScale(double par1, double par3, double par5)
-	{
-		this.heightLimitLimit = (int) (par1 * 12.0D);
-
-		if(par1 > 0.5D)
-			this.leafDistanceLimit = 5;
-
-		this.scaleWidth = par3;
-		this.leafDensity = par5;
-	}
-
-	@Override
-	public boolean generate(World par1World, Random par2Random, int par3, int par4, int par5)
-	{
-		this.worldObj = par1World;
-		long l = par2Random.nextLong();
-		this.rand.setSeed(l);
-		this.basePos[0] = par3;
-		this.basePos[1] = par4;
-		this.basePos[2] = par5;
-
-		if(this.heightLimit == 0)
-			this.heightLimit = 5 + this.rand.nextInt(this.heightLimitLimit);
-
-		if(!this.validTreeLocation())
-		{
-			this.worldObj = null; // Fix vanilla Mem leak, holds latest world
 			return false;
 		}
-		else
+	}
+
+	private void func_150526_a(World p_150526_1_, int p_150526_2_, int p_150526_3_, int p_150526_4_)
+	{
+		Block block = p_150526_1_.getBlock(p_150526_2_, p_150526_3_, p_150526_4_);
+
+		if(block.isAir(p_150526_1_, p_150526_2_, p_150526_3_, p_150526_4_))
 		{
-			this.generateLeafNodeList();
-			this.generateLeaves();
-			this.generateTrunk();
-			this.generateLeafNodeBases();
-			this.worldObj = null; // Fix vanilla Mem leak, holds latest world
-			return true;
+			this.setBlockAndNotifyAdequately(p_150526_1_, p_150526_2_, p_150526_3_, p_150526_4_, InitBlocks.blockBrassLeaves, 0);
 		}
+	}
+
+	// Just a helper macro
+	private void onPlantGrow(World world, int x, int y, int z, int sourceX, int sourceY, int sourceZ)
+	{
+		world.getBlock(x, y, z).onPlantGrow(world, x, y, z, sourceX, sourceY, sourceZ);
 	}
 }

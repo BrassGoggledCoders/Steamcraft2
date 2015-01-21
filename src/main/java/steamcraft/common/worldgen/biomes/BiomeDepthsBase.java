@@ -37,20 +37,17 @@ public class BiomeDepthsBase extends BiomeGenBase
 	public void decorate(World world, Random rand, int p_76728_3_, int p_76728_4_)
 	{
 		super.decorate(world, rand, p_76728_3_, p_76728_4_);
-		int k = 6 + rand.nextInt(9);
-		int l;
-		int i1;
-		int j1;
+		int rarity = 6 + rand.nextInt(9);
 
-		for(l = 0; l < k; ++l)
+		for(int a = 0; a < rarity; ++a)
 		{
-			i1 = p_76728_3_ + rand.nextInt(16);
-			j1 = rand.nextInt(28) + 4;
+			int i1 = p_76728_3_ + rand.nextInt(16);
+			int j1 = rand.nextInt(28) + 4;
 			int k1 = p_76728_4_ + rand.nextInt(16);
 
 			if(world.getBlock(i1, j1, k1).isReplaceableOreGen(world, i1, j1, k1, Blocks.stone))
 			{
-				new WorldGenMinable(InitBlocks.blockCompressedStone, k);
+				new WorldGenMinable(InitBlocks.blockCompressedStone, rarity);
 			}
 		}
 	}
