@@ -10,6 +10,8 @@ import net.minecraft.world.gen.feature.WorldGenMinable;
 import steamcraft.common.InitBlocks;
 import steamcraft.common.entities.living.EntityGrub;
 import steamcraft.common.entities.living.EntityLostMiner;
+import steamcraft.common.worldgen.WorldGenBrassTree;
+import steamcraft.common.worldgen.WorldGenUndergroundHouse;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -34,16 +36,16 @@ public class BiomeDepthsBase extends BiomeGenBase
 	}
 
 	@Override
-	public void decorate(World world, Random rand, int p_76728_3_, int p_76728_4_)
+	public void decorate(World world, Random rand, int blockChunkX, int blockChunkZ)
 	{
-		super.decorate(world, rand, p_76728_3_, p_76728_4_);
+		super.decorate(world, rand, blockChunkX, blockChunkZ);
 		int rarity = 6 + rand.nextInt(9);
 
 		for(int a = 0; a < rarity; ++a)
 		{
-			int x = p_76728_3_ + rand.nextInt(16);
+			int x = blockChunkX + rand.nextInt(16);
 			int y = rand.nextInt(28) + 4;
-			int z = p_76728_4_ + rand.nextInt(16);
+			int z = blockChunkZ + rand.nextInt(16);
 
 			if(world.getBlock(x, y, z).isReplaceableOreGen(world, x, y, z, Blocks.stone))
 			{
@@ -52,14 +54,31 @@ public class BiomeDepthsBase extends BiomeGenBase
 		}
 		for(int a = 0; a < 10; ++a)
 		{
-			int x = p_76728_3_ + rand.nextInt(16);
+			int x = blockChunkX + rand.nextInt(16);
 			int y = rand.nextInt(60);
-			int z = p_76728_4_ + rand.nextInt(16);
+			int z = blockChunkZ + rand.nextInt(16);
 
 			if(world.getBlock(x, y, z).isReplaceableOreGen(world, x, y, z, Blocks.stone))
 			{
 				new WorldGenMinable(Blocks.emerald_ore, 3).generate(world, rand, x, y, z);
 			}
+		}
+		int X = blockChunkX + rand.nextInt(16);
+		int Z = blockChunkZ + rand.nextInt(16);
+		int Y = rand.nextInt(70);
+
+		for(int i = 0; i < 1; i++)
+		{
+			new WorldGenBrassTree().generate(world, rand, X, Y, Z);
+		}
+
+		int X2 = blockChunkX + rand.nextInt(16);
+		int Z2 = blockChunkZ + rand.nextInt(16);
+		int Y2 = rand.nextInt(50);
+
+		for(int i = 0; i < 5; i++)
+		{
+			new WorldGenUndergroundHouse().generate(world, rand, X2, Y2, Z2);
 		}
 	}
 

@@ -22,43 +22,12 @@ public class WorldGenUndergroundHouse extends WorldGenerator implements IWorldGe
 
 	public boolean locationIsValidSpawn(World world, int i, int j, int k)
 	{
-		int distanceToAir = 0;
 		Block check = world.getBlock(i, j, k);
 
-		while(check != Blocks.air)
-		{
-			if(distanceToAir > 3)
-			{
-				return false;
-			}
-
-			distanceToAir++;
-			check = world.getBlock(i, j + distanceToAir, k);
-		}
-
-		j += distanceToAir - 1;
-
-		Block block = world.getBlock(i, j, k);
-		Block blockAbove = world.getBlock(i, j + 1, k);
-		Block blockBelow = world.getBlock(i, j - 1, k);
-
-		for(Block x : this.getValidSpawnBlocks())
-		{
-			if(blockAbove != Blocks.air)
-			{
-				return false;
-			}
-			if(block == x)
-			{
-				return true;
-			}
-			else if((block == Blocks.snow) && (blockBelow == x))
-			{
-				return true;
-			}
-		}
-
-		return false;
+		if(check == Blocks.stone)
+			return true;
+		else
+			return false;
 	}
 
 	public WorldGenUndergroundHouse()

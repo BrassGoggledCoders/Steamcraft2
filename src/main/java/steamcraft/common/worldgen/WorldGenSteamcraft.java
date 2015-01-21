@@ -23,7 +23,6 @@ import net.minecraft.world.gen.feature.WorldGenMinable;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeDictionary.Type;
 import steamcraft.common.InitBlocks;
-import steamcraft.common.config.ConfigGeneral;
 import steamcraft.common.config.ConfigWorldGen;
 import cpw.mods.fml.common.IWorldGenerator;
 
@@ -51,32 +50,6 @@ public class WorldGenSteamcraft implements IWorldGenerator
 		else if((world.provider.dimensionId == 1) && ConfigWorldGen.endGenerationEnabled)
 		{
 			this.generateEnd(world, random, blockChunkX, blockChunkZ);
-		}
-		else if((world.provider.dimensionId == ConfigGeneral.deepsDimensionID) && ConfigWorldGen.deepsGenerationEnabled)
-		{
-			this.generateDeeps(world, random, blockChunkX, blockChunkZ);
-		}
-	}
-
-	// This can probably be done in Biome/Dimension gen classes. IDK
-	private void generateDeeps(World world, Random random, int blockChunkX, int blockChunkZ)
-	{
-		int X = blockChunkX + random.nextInt(16);
-		int Z = blockChunkZ + random.nextInt(16);
-		int Y = random.nextInt(70);
-
-		for(int i = 0; i < 1; i++)
-		{
-			new WorldGenBrassTree().generate(world, random, X, Y, Z);
-		}
-
-		int X2 = blockChunkX + random.nextInt(16);
-		int Z2 = blockChunkZ + random.nextInt(16);
-		int Y2 = random.nextInt(50);
-
-		for(int i = 0; i < 5; i++)
-		{
-			new WorldGenUndergroundHouse().generate(world, random, X2, Y2, Z2);
 		}
 	}
 
