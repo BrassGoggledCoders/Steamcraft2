@@ -2,7 +2,11 @@ package steamcraft.common.blocks;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
+import steamcraft.common.config.ConfigGeneral;
+import steamcraft.common.worldgen.dimension.TeleporterDeeps;
 
 public class BlockFissurePortal extends BaseBlock
 {
@@ -16,11 +20,37 @@ public class BlockFissurePortal extends BaseBlock
 	 * Triggered whenever an entity collides with this block (enters into the block). Args: world, x, y, z, entity
 	 */
 	@Override
-	public void onEntityCollidedWithBlock(World p_149670_1_, int p_149670_2_, int p_149670_3_, int p_149670_4_, Entity entity)
+	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)
 	{
-		if(entity.ridingEntity == null && entity.riddenByEntity == null && !p_149670_1_.isRemote)
+		if((entity.ridingEntity == null) && (entity.riddenByEntity == null) && ((entity instanceof EntityPlayerMP)))
 		{
-			// Utils.changeEntityDimension(entity, ConfigGeneral.deepsDimensionID);
+			EntityPlayerMP thePlayer = (EntityPlayerMP) entity;
+			if(thePlayer.timeUntilPortal > 0)
+			{
+				thePlayer.timeUntilPortal = 10;
+			}
+			else if(thePlayer.dimension != ConfigGeneral.deepsDimensionID)
+			{
+				thePlayer.timeUntilPortal = 10;
+				thePlayer.mcServer.getConfigurationManager().transferPlayerToDimension(thePlayer, ConfigGeneral.deepsDimensionID,
+						new TeleporterDeeps(thePlayer.mcServer.worldServerForDimension(ConfigGeneral.deepsDimensionID)));
+			}
+			else
+			{
+				thePlayer.timeUntilPortal = 10;
+				thePlayer.mcServer.getConfigurationManager().transferPlayerToDimension(thePlayer, 0,
+						new TeleporterDeeps(thePlayer.mcServer.worldServerForDimension(0)));
+			}
 		}
 	}
+
+	/**
+	 * Returns a bounding box from the pool of bounding boxes (this means this box can change after the pool has been cleared to be reused)
+	 */
+	@Override
+	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z)
+	{
+		return null;
+	}
+
 }
