@@ -1,25 +1,15 @@
-package steamcraft.common.worldgen;
+package steamcraft.common.worldgen.structure;
 
 import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
-import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenerator;
-import cpw.mods.fml.common.IWorldGenerator;
+import cpw.mods.fml.common.FMLLog;
 
-public class WorldGenUndergroundHouse extends WorldGenerator implements IWorldGenerator
+public class WorldGenUndergroundHouse extends WorldGenerator
 {
-	protected Block[] getValidSpawnBlocks()
-	{
-		return new Block[] {
-				Blocks.stone,
-				Blocks.bedrock,
-				Blocks.gravel
-		};
-	}
-
 	public boolean locationIsValidSpawn(World world, int i, int j, int k)
 	{
 		Block check = world.getBlock(i, j, k);
@@ -34,27 +24,21 @@ public class WorldGenUndergroundHouse extends WorldGenerator implements IWorldGe
 	{
 	}
 
-	@Override
-	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider)
-	{
-	}
-
 	public void setBlock(World world, int x, int y, int z, Block block, int metadata)
 	{
 		Block b1 = world.getBlock(x, y, z);
 
-		if(b1.isAir(world, x, y, z) || b1.isLeaves(world, x, y, z))
-		{
-			world.setBlock(x, y, z, block, metadata, 2);
-		}
+		// if(b1.isAir(world, x, y, z) || b1.isLeaves(world, x, y, z))
+		// {
+		world.setBlock(x, y, z, block, metadata, 2);
+		// }
 	}
 
 	@Override
 	public boolean generate(World world, Random rand, int i, int j, int k)
 	{
-		// check that each corner is one of the valid spawn blocks
-		if(!this.locationIsValidSpawn(world, i, j, k) || !this.locationIsValidSpawn(world, i + 10, j, k) || !this.locationIsValidSpawn(world, i + 10, j, k + 9)
-				|| !this.locationIsValidSpawn(world, i, j, k + 9))
+		FMLLog.bigWarning("Gen at: " + i + j + k, "Gen at: " + i + j + k);
+		if(!this.locationIsValidSpawn(world, i, j, k))
 		{
 			return false;
 		}

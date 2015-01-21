@@ -10,7 +10,7 @@ import net.minecraft.world.gen.feature.WorldGenMinable;
 import steamcraft.common.InitBlocks;
 import steamcraft.common.entities.living.EntityGrub;
 import steamcraft.common.entities.living.EntityLostMiner;
-import steamcraft.common.worldgen.WorldGenUndergroundHouse;
+import steamcraft.common.worldgen.structure.WorldGenUndergroundHouse;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -67,7 +67,7 @@ public class BiomeDepthsBase extends BiomeGenBase
 		int Z2 = blockChunkZ + rand.nextInt(16);
 		int Y2 = rand.nextInt(50);
 
-		for(int i = 0; i < 50; i++)
+		for(int i = 0; i < 5; i++)
 		{
 			new WorldGenUndergroundHouse().generate(world, rand, X2, Y2, Z2);
 		}
