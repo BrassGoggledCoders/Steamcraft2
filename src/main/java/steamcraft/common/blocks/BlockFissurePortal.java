@@ -1,9 +1,8 @@
 package steamcraft.common.blocks;
 
 import net.minecraft.block.material.Material;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.Entity;
 import net.minecraft.world.World;
-import steamcraft.common.config.ConfigGeneral;
 
 public class BlockFissurePortal extends BaseBlock
 {
@@ -13,11 +12,15 @@ public class BlockFissurePortal extends BaseBlock
 		this.setBlockUnbreakable();
 	}
 
+	/**
+	 * Triggered whenever an entity collides with this block (enters into the block). Args: world, x, y, z, entity
+	 */
 	@Override
-	public boolean onBlockActivated(World p_149727_1_, int p_149727_2_, int p_149727_3_, int p_149727_4_, EntityPlayer player, int p_149727_6_,
-			float p_149727_7_, float p_149727_8_, float p_149727_9_)
+	public void onEntityCollidedWithBlock(World p_149670_1_, int p_149670_2_, int p_149670_3_, int p_149670_4_, Entity entity)
 	{
-		player.travelToDimension(ConfigGeneral.deepsDimensionID);
-		return true;
+		if(entity.ridingEntity == null && entity.riddenByEntity == null && !p_149670_1_.isRemote)
+		{
+			// Utils.changeEntityDimension(entity, ConfigGeneral.deepsDimensionID);
+		}
 	}
 }
