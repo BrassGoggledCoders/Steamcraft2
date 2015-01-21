@@ -37,25 +37,25 @@ public class OpenContainerFromClientPacket implements IMessage
 
 	public OpenContainerFromClientPacket(int playerid, int guiIDToOpen, int worldId)
 	{
-		this.playerid = playerid;
-		this.guiIDToOpen = guiIDToOpen;
+		OpenContainerFromClientPacket.playerid = playerid;
+		OpenContainerFromClientPacket.guiIDToOpen = guiIDToOpen;
 		this.worldId = worldId;
 	}
 
 	@Override
 	public void fromBytes(ByteBuf buf)
 	{
-		this.guiIDToOpen = buf.readInt();
+		OpenContainerFromClientPacket.guiIDToOpen = buf.readInt();
 		this.worldId = buf.readInt();
-		this.playerid = buf.readInt();
+		OpenContainerFromClientPacket.playerid = buf.readInt();
 	}
 
 	@Override
 	public void toBytes(ByteBuf buf)
 	{
-		buf.writeInt(this.guiIDToOpen);
+		buf.writeInt(OpenContainerFromClientPacket.guiIDToOpen);
 		buf.writeInt(this.worldId);
-		buf.writeInt(this.playerid);
+		buf.writeInt(OpenContainerFromClientPacket.playerid);
 	}
 
 	public static class OpenContainerFromClientPacketHandler implements IMessageHandler<OpenContainerFromClientPacket, IMessage>

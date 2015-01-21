@@ -23,7 +23,7 @@ public class BiomeDepthsSwamp extends BiomeDepthsBase
 		this.setBiomeName(StatCollector.translateToLocal("biome.steamcraft2.innerearth.swamp.name"));
 		this.spawnableMonsterList.add(new BiomeGenBase.SpawnListEntry(EntitySlime.class, 1, 1, 1));
 		this.waterColorMultiplier = 14745518;
-		this.theBiomeDecorator.treesPerChunk = 2;
+		this.theBiomeDecorator.treesPerChunk = 4;
 		this.theBiomeDecorator.flowersPerChunk = 1;
 		this.theBiomeDecorator.deadBushPerChunk = 1;
 		this.theBiomeDecorator.mushroomsPerChunk = 8;
@@ -55,11 +55,11 @@ public class BiomeDepthsSwamp extends BiomeDepthsBase
 
 			for(int j1 = 255; j1 >= 0; --j1)
 			{
-				int k1 = (l * 16 + k) * i1 + j1;
+				int k1 = (((l * 16) + k) * i1) + j1;
 
-				if(p_150573_3_[k1] == null || p_150573_3_[k1].getMaterial() != Material.air)
+				if((p_150573_3_[k1] == null) || (p_150573_3_[k1].getMaterial() != Material.air))
 				{
-					if(j1 == 62 && p_150573_3_[k1] != Blocks.water)
+					if((j1 == 62) && (p_150573_3_[k1] != Blocks.water))
 					{
 						p_150573_3_[k1] = Blocks.water;
 

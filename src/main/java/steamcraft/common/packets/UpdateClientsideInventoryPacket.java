@@ -52,21 +52,21 @@ public class UpdateClientsideInventoryPacket implements IMessage
 		this.x = buf.readInt();
 		this.y = buf.readInt();
 		this.z = buf.readInt();
-		for(int i = 0; i < ids.length; i++)
+		for(int i = 0; i < this.ids.length; i++)
 		{
-			ids[i] = buf.readInt();
+			this.ids[i] = buf.readInt();
 		}
 	}
 
 	@Override
 	public void toBytes(ByteBuf buf)
 	{
-		buf.writeInt(x);
-		buf.writeInt(y);
-		buf.writeInt(z);
-		for(int i = 0; i < ids.length; i++)
+		buf.writeInt(this.x);
+		buf.writeInt(this.y);
+		buf.writeInt(this.z);
+		for(int id : this.ids)
 		{
-			buf.writeInt(ids[i]);
+			buf.writeInt(id);
 		}
 	}
 

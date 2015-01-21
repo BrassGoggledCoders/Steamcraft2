@@ -24,7 +24,7 @@ public class GenLayerShore extends GenLayer
 			for(int j1 = 0; j1 < width; ++j1)
 			{
 				this.initChunkSeed(j1 + x, i1 + z);
-				int landBiomeId = inputBiomeIds[j1 + 1 + (i1 + 1) * (width + 2)];
+				int landBiomeId = inputBiomeIds[j1 + 1 + ((i1 + 1) * (width + 2))];
 				BiomeGenBase biomegenbase = BiomeGenBase.getBiome(landBiomeId);
 				int l1;
 				int i2;
@@ -47,22 +47,22 @@ public class GenLayerShore extends GenLayer
 	{
 		if(isBiomeOceanic(landBiomeId))
 		{
-			outputBiomeIds[x + z * width] = landBiomeId;
+			outputBiomeIds[x + (z * width)] = landBiomeId;
 		}
 		else
 		{
-			int j1 = inputBiomeIds[x + 1 + (z + 1 - 1) * (width + 2)];
-			int k1 = inputBiomeIds[x + 1 + 1 + (z + 1) * (width + 2)];
-			int l1 = inputBiomeIds[x + 1 - 1 + (z + 1) * (width + 2)];
-			int i2 = inputBiomeIds[x + 1 + (z + 1 + 1) * (width + 2)];
+			int j1 = inputBiomeIds[x + 1 + (((z + 1) - 1) * (width + 2))];
+			int k1 = inputBiomeIds[x + 1 + 1 + ((z + 1) * (width + 2))];
+			int l1 = inputBiomeIds[((x + 1) - 1) + ((z + 1) * (width + 2))];
+			int i2 = inputBiomeIds[x + 1 + ((z + 1 + 1) * (width + 2))];
 
 			if(!isBiomeOceanic(j1) && !isBiomeOceanic(k1) && !isBiomeOceanic(l1) && !isBiomeOceanic(i2))
 			{
-				outputBiomeIds[x + z * width] = landBiomeId;
+				outputBiomeIds[x + (z * width)] = landBiomeId;
 			}
 			else
 			{
-				outputBiomeIds[x + z * width] = beachBiomeId;
+				outputBiomeIds[x + (z * width)] = beachBiomeId;
 			}
 		}
 	}

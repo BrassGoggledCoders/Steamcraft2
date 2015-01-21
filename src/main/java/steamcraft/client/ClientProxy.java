@@ -111,9 +111,9 @@ public class ClientProxy extends CommonProxy
 		keyBindings[0] = new KeyBinding("key.vanity.desc", Keyboard.KEY_V, "key.steamcraft.category");
 
 		// register all the key bindings
-		for(int i = 0; i < keyBindings.length; ++i)
+		for(KeyBinding keyBinding : keyBindings)
 		{
-			ClientRegistry.registerKeyBinding(keyBindings[i]);
+			ClientRegistry.registerKeyBinding(keyBinding);
 		}
 	}
 

@@ -19,6 +19,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.MovingObjectPosition;
@@ -122,8 +123,8 @@ public class ItemSteamDrill extends ItemDrill
 							{
 								int meta = world.getBlockMetadata(xPos, yPos, zPos);
 
-								ItemStack result = new ItemStack(nblock.getItemDropped(meta, this.itemRand, 0), nblock.quantityDropped(meta, 0,
-										this.itemRand), nblock.damageDropped(meta));
+								ItemStack result = new ItemStack(nblock.getItemDropped(meta, Item.itemRand, 0), nblock.quantityDropped(meta, 0,
+										Item.itemRand), nblock.damageDropped(meta));
 
 								if(nblock.getBlockHardness(world, xPos, yPos, zPos) != 0.0D)
 									this.consumeSteamFromCanister(player);
@@ -149,8 +150,8 @@ public class ItemSteamDrill extends ItemDrill
 
 			stack.damageItem(1, living);
 			world.playSoundAtEntity(living, LibInfo.PREFIX + "drill.steam", 0.6F, 1.0F);
-			world.spawnParticle("smoke", x + 0.5, y + 0.5, z + 0.5, this.itemRand.nextGaussian(), this.itemRand.nextGaussian(),
-					this.itemRand.nextGaussian());
+			world.spawnParticle("smoke", x + 0.5, y + 0.5, z + 0.5, Item.itemRand.nextGaussian(), Item.itemRand.nextGaussian(),
+					Item.itemRand.nextGaussian());
 			return true;
 		}
 

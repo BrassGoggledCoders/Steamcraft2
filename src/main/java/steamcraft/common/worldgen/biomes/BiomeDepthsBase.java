@@ -1,8 +1,13 @@
 package steamcraft.common.worldgen.biomes;
 
+import java.util.Random;
+
 import net.minecraft.init.Blocks;
 import net.minecraft.util.StatCollector;
+import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraft.world.gen.feature.WorldGenMinable;
+import steamcraft.common.InitBlocks;
 import steamcraft.common.entities.living.EntityGrub;
 import steamcraft.common.entities.living.EntityLostMiner;
 import cpw.mods.fml.relauncher.Side;
@@ -26,6 +31,28 @@ public class BiomeDepthsBase extends BiomeGenBase
 		this.func_76733_a(8045877);
 		this.setColor(8045877);
 		this.waterColorMultiplier = 6860222;
+	}
+
+	@Override
+	public void decorate(World world, Random rand, int p_76728_3_, int p_76728_4_)
+	{
+		super.decorate(world, rand, p_76728_3_, p_76728_4_);
+		int k = 6 + rand.nextInt(9);
+		int l;
+		int i1;
+		int j1;
+
+		for(l = 0; l < k; ++l)
+		{
+			i1 = p_76728_3_ + rand.nextInt(16);
+			j1 = rand.nextInt(28) + 4;
+			int k1 = p_76728_4_ + rand.nextInt(16);
+
+			if(world.getBlock(i1, j1, k1).isReplaceableOreGen(world, i1, j1, k1, Blocks.stone))
+			{
+				new WorldGenMinable(InitBlocks.blockCompressedStone, k);
+			}
+		}
 	}
 
 	@Override

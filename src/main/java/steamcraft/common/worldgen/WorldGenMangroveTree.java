@@ -23,12 +23,12 @@ public class WorldGenMangroveTree extends WorldGenAbstractTree
 		int l = rand.nextInt(3) + rand.nextInt(3) + 5;
 		boolean flag = true;
 
-		if(y >= 1 && y + l + 1 <= 256)
+		if((y >= 1) && ((y + l + 1) <= 256))
 		{
 			int j1;
 			int k1;
 
-			for(int i1 = y; i1 <= y + 1 + l; ++i1)
+			for(int i1 = y; i1 <= (y + 1 + l); ++i1)
 			{
 				byte b0 = 1;
 
@@ -37,16 +37,16 @@ public class WorldGenMangroveTree extends WorldGenAbstractTree
 					b0 = 0;
 				}
 
-				if(i1 >= y + 1 + l - 2)
+				if(i1 >= ((y + 1 + l) - 2))
 				{
 					b0 = 2;
 				}
 
-				for(j1 = x - b0; j1 <= x + b0 && flag; ++j1)
+				for(j1 = x - b0; (j1 <= (x + b0)) && flag; ++j1)
 				{
-					for(k1 = z - b0; k1 <= z + b0 && flag; ++k1)
+					for(k1 = z - b0; (k1 <= (z + b0)) && flag; ++k1)
 					{
-						if(i1 >= 0 && i1 < 256)
+						if((i1 >= 0) && (i1 < 256))
 						{
 							Block block = world.getBlock(j1, i1, k1);
 
@@ -71,7 +71,7 @@ public class WorldGenMangroveTree extends WorldGenAbstractTree
 			{
 				Block block3 = world.getBlock(x, y - 1, z);
 
-				if(block3 == Blocks.water && y < 256 - l - 1)
+				if((block3 == Blocks.grass) && (y < (256 - l - 1)))
 				{
 					block3.onPlantGrow(world, x, y - 1, z, x, y, z);
 					int j3 = rand.nextInt(4);
@@ -87,7 +87,7 @@ public class WorldGenMangroveTree extends WorldGenAbstractTree
 					{
 						k2 = y + j2;
 
-						if(j2 >= j1 && k1 > 0)
+						if((j2 >= j1) && (k1 > 0))
 						{
 							k3 += Direction.offsetX[j3];
 							l1 += Direction.offsetZ[j3];
@@ -120,7 +120,7 @@ public class WorldGenMangroveTree extends WorldGenAbstractTree
 					{
 						for(k2 = -3; k2 <= 3; ++k2)
 						{
-							if(Math.abs(j2) != 3 || Math.abs(k2) != 3)
+							if((Math.abs(j2) != 3) || (Math.abs(k2) != 3))
 							{
 								this.func_150525_a(world, k3 + j2, i2, l1 + k2);
 							}
@@ -139,7 +139,7 @@ public class WorldGenMangroveTree extends WorldGenAbstractTree
 						int l2;
 						int i3;
 
-						for(l2 = k2; l2 < l && l3 > 0; --l3)
+						for(l2 = k2; (l2 < l) && (l3 > 0); --l3)
 						{
 							if(l2 >= 1)
 							{
@@ -172,7 +172,7 @@ public class WorldGenMangroveTree extends WorldGenAbstractTree
 							{
 								for(i3 = -2; i3 <= 2; ++i3)
 								{
-									if(Math.abs(l2) != 2 || Math.abs(i3) != 2)
+									if((Math.abs(l2) != 2) || (Math.abs(i3) != 2))
 									{
 										this.func_150525_a(world, k3 + l2, i2, l1 + i3);
 									}

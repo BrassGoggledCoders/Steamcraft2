@@ -39,7 +39,7 @@ public class BlockCustomLeaves extends BlockLeaves
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(final IIconRegister ir)
 	{
-		this.blockIcon = ir.registerIcon(LibInfo.PREFIX + "block" + type + "Leaves");
+		this.blockIcon = ir.registerIcon(LibInfo.PREFIX + "block" + this.type + "Leaves");
 	}
 
 	@Override
@@ -51,7 +51,7 @@ public class BlockCustomLeaves extends BlockLeaves
 	@Override
 	public String[] func_150125_e()
 	{
-		return new String[] { type };
+		return new String[] { this.type };
 	}
 
 	@Override

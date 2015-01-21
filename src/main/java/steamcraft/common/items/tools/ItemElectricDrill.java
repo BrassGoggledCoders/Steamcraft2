@@ -18,6 +18,7 @@ import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import steamcraft.common.items.electric.ItemElectricTool;
@@ -55,8 +56,8 @@ public class ItemElectricDrill extends ItemElectricTool
 			this.setEnergy(stack, this.getEnergyStored(stack) - this.energyPerBlock);
 
 			world.playSoundAtEntity(living, LibInfo.PREFIX + "drill.steam", 0.6F, 1.0F);
-			world.spawnParticle("smoke", x + 0.5, y + 0.5, z + 0.5, this.itemRand.nextGaussian(), this.itemRand.nextGaussian(),
-					this.itemRand.nextGaussian());
+			world.spawnParticle("smoke", x + 0.5, y + 0.5, z + 0.5, Item.itemRand.nextGaussian(), Item.itemRand.nextGaussian(),
+					Item.itemRand.nextGaussian());
 			return true;
 		}
 

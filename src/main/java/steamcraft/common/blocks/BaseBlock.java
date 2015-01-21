@@ -50,9 +50,9 @@ public class BaseBlock extends Block
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(int p_149691_1_, int p_149691_2_)
 	{
-		if(blockIcon != null)
+		if(this.blockIcon != null)
 			return this.blockIcon;
 		else
-			return missingIcon;
+			return this.missingIcon;
 	}
 }

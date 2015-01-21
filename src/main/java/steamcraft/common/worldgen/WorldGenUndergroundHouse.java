@@ -42,7 +42,7 @@ public class WorldGenUndergroundHouse extends WorldGenerator implements IWorldGe
 		Block blockAbove = world.getBlock(i, j + 1, k);
 		Block blockBelow = world.getBlock(i, j - 1, k);
 
-		for(Block x : getValidSpawnBlocks())
+		for(Block x : this.getValidSpawnBlocks())
 		{
 			if(blockAbove != Blocks.air)
 			{
@@ -52,7 +52,7 @@ public class WorldGenUndergroundHouse extends WorldGenerator implements IWorldGe
 			{
 				return true;
 			}
-			else if(block == Blocks.snow && blockBelow == x)
+			else if((block == Blocks.snow) && (blockBelow == x))
 			{
 				return true;
 			}
@@ -84,8 +84,8 @@ public class WorldGenUndergroundHouse extends WorldGenerator implements IWorldGe
 	public boolean generate(World world, Random rand, int i, int j, int k)
 	{
 		// check that each corner is one of the valid spawn blocks
-		if(!locationIsValidSpawn(world, i, j, k) || !locationIsValidSpawn(world, i + 10, j, k) || !locationIsValidSpawn(world, i + 10, j, k + 9)
-				|| !locationIsValidSpawn(world, i, j, k + 9))
+		if(!this.locationIsValidSpawn(world, i, j, k) || !this.locationIsValidSpawn(world, i + 10, j, k) || !this.locationIsValidSpawn(world, i + 10, j, k + 9)
+				|| !this.locationIsValidSpawn(world, i, j, k + 9))
 		{
 			return false;
 		}

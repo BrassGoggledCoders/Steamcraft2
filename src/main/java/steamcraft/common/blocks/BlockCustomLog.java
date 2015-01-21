@@ -56,7 +56,7 @@ public class BlockCustomLog extends BlockLog
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(final IIconRegister ir)
 	{
-		this.blockIcon = ir.registerIcon(LibInfo.PREFIX + "block" + type + "LogSide");
-		this.iconTop = ir.registerIcon(LibInfo.PREFIX + "block" + type + "LogTop");
+		this.blockIcon = ir.registerIcon(LibInfo.PREFIX + "block" + this.type + "LogSide");
+		this.iconTop = ir.registerIcon(LibInfo.PREFIX + "block" + this.type + "LogTop");
 	}
 }

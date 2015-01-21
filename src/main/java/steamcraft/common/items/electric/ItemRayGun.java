@@ -17,6 +17,7 @@ import java.util.HashMap;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
@@ -97,9 +98,9 @@ public class ItemRayGun extends ElectricItem
 				// this.spawnParticles(world, x, y, z);
 
 				if(!world.isRemote && !world.isAirBlock(x, y, z) && !Utils.getBlockUnbreakable(world, x, y, z))
-					for(int i = x - this.itemRand.nextInt(3); i < (x + this.itemRand.nextInt(3)); i++)
-						for(int j = y - this.itemRand.nextInt(3); j < (y + this.itemRand.nextInt(3)); j++)
-							for(int k = z - this.itemRand.nextInt(3); k < (z + this.itemRand.nextInt(3)); k++)
+					for(int i = x - Item.itemRand.nextInt(3); i < (x + Item.itemRand.nextInt(3)); i++)
+						for(int j = y - Item.itemRand.nextInt(3); j < (y + Item.itemRand.nextInt(3)); j++)
+							for(int k = z - Item.itemRand.nextInt(3); k < (z + Item.itemRand.nextInt(3)); k++)
 							{
 								if(world.isAirBlock(i, j, k))
 								{
