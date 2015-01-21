@@ -10,7 +10,6 @@ import net.minecraft.world.gen.feature.WorldGenMinable;
 import steamcraft.common.InitBlocks;
 import steamcraft.common.entities.living.EntityGrub;
 import steamcraft.common.entities.living.EntityLostMiner;
-import steamcraft.common.worldgen.WorldGenBrassTree;
 import steamcraft.common.worldgen.WorldGenUndergroundHouse;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -63,20 +62,12 @@ public class BiomeDepthsBase extends BiomeGenBase
 				new WorldGenMinable(Blocks.emerald_ore, 3).generate(world, rand, x, y, z);
 			}
 		}
-		int X = blockChunkX + rand.nextInt(16);
-		int Z = blockChunkZ + rand.nextInt(16);
-		int Y = rand.nextInt(70);
-
-		for(int i = 0; i < 1; i++)
-		{
-			new WorldGenBrassTree().generate(world, rand, X, Y, Z);
-		}
 
 		int X2 = blockChunkX + rand.nextInt(16);
 		int Z2 = blockChunkZ + rand.nextInt(16);
 		int Y2 = rand.nextInt(50);
 
-		for(int i = 0; i < 5; i++)
+		for(int i = 0; i < 50; i++)
 		{
 			new WorldGenUndergroundHouse().generate(world, rand, X2, Y2, Z2);
 		}

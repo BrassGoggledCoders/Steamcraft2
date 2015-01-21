@@ -23,6 +23,7 @@ import net.minecraft.world.gen.feature.WorldGenMinable;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeDictionary.Type;
 import steamcraft.common.InitBlocks;
+import steamcraft.common.config.ConfigGeneral;
 import steamcraft.common.config.ConfigWorldGen;
 import cpw.mods.fml.common.IWorldGenerator;
 
@@ -43,7 +44,8 @@ public class WorldGenSteamcraft implements IWorldGenerator
 		{
 			this.generateNether(world, random, blockChunkX, blockChunkZ);
 		}
-		else if((world.provider.dimensionId == 0) && ConfigWorldGen.overworldGenerationEnabled)
+		else if(world.provider.dimensionId == 0 && ConfigWorldGen.overworldGenerationEnabled || world.provider.dimensionId == ConfigGeneral.deepsDimensionID
+				&& ConfigWorldGen.deepsGenerationEnabled)
 		{
 			this.generateSurface(world, random, blockChunkX, blockChunkZ);
 		}
