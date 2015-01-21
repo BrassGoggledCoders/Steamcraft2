@@ -41,13 +41,24 @@ public class BiomeDepthsBase extends BiomeGenBase
 
 		for(int a = 0; a < rarity; ++a)
 		{
-			int i1 = p_76728_3_ + rand.nextInt(16);
-			int j1 = rand.nextInt(28) + 4;
-			int k1 = p_76728_4_ + rand.nextInt(16);
+			int x = p_76728_3_ + rand.nextInt(16);
+			int y = rand.nextInt(28) + 4;
+			int z = p_76728_4_ + rand.nextInt(16);
 
-			if(world.getBlock(i1, j1, k1).isReplaceableOreGen(world, i1, j1, k1, Blocks.stone))
+			if(world.getBlock(x, y, z).isReplaceableOreGen(world, x, y, z, Blocks.stone))
 			{
-				new WorldGenMinable(InitBlocks.blockCompressedStone, rarity);
+				new WorldGenMinable(InitBlocks.blockCompressedStone, rarity).generate(world, rand, x, y, z);
+			}
+		}
+		for(int a = 0; a < 10; ++a)
+		{
+			int x = p_76728_3_ + rand.nextInt(16);
+			int y = rand.nextInt(60);
+			int z = p_76728_4_ + rand.nextInt(16);
+
+			if(world.getBlock(x, y, z).isReplaceableOreGen(world, x, y, z, Blocks.stone))
+			{
+				new WorldGenMinable(Blocks.emerald_ore, 3).generate(world, rand, x, y, z);
 			}
 		}
 	}
