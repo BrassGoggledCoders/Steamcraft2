@@ -6,7 +6,6 @@ import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
-import cpw.mods.fml.common.FMLLog;
 
 public class WorldGenUndergroundHouse extends WorldGenerator
 {
@@ -37,7 +36,7 @@ public class WorldGenUndergroundHouse extends WorldGenerator
 	@Override
 	public boolean generate(World world, Random rand, int i, int j, int k)
 	{
-		FMLLog.bigWarning("Gen at: " + i + j + k, "Gen at: " + i + j + k);
+		// FMLLog.bigWarning("Gen at: " + i + j + k, "Gen at: " + i + j + k);
 		if(!this.locationIsValidSpawn(world, i, j, k))
 		{
 			return false;
