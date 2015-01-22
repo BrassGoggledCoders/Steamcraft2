@@ -73,6 +73,7 @@ tile.blockRedwoodLog.name=Redwood Log
 tile.blockRedwoodLeaves.name=Redwood Leaves
 tile.blockMangroveLog.name=Mangrove Log
 tile.blockMangroveLeaves.name=Mangrove Leaves
+tile.blockMud.name=Mud
 
 #Ores
 tile.blockSteamcraftOre.0.name=Aluminum Ore

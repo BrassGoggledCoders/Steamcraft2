@@ -41,6 +41,7 @@ import steamcraft.common.blocks.BlockInfestedDirt;
 import steamcraft.common.blocks.BlockInfestedGrass;
 import steamcraft.common.blocks.BlockLamp;
 import steamcraft.common.blocks.BlockMetal;
+import steamcraft.common.blocks.BlockMud;
 import steamcraft.common.blocks.BlockPath;
 import steamcraft.common.blocks.BlockPlankStack;
 import steamcraft.common.blocks.BlockPolishedPlanks;
@@ -150,7 +151,7 @@ public class InitBlocks
 
 	public static Block blockInfestedGrass, blockInfestedDirt;
 
-	public static Block blockPath;
+	public static Block blockPath, blockMud;
 
 	public static Block blockPolishedPlanks;
 
@@ -354,6 +355,9 @@ public class InitBlocks
 
 		blockMangroveLeaves = new BlockCustomLeaves("Mangrove").setBlockName("blockMangroveLeaves");
 		registerBlock(blockMangroveLeaves, "BlockMangroveLeaves");
+
+		blockMud = new BlockMud(Material.ground).setBlockName("blockMud");
+		registerBlock(blockMud, "BlockMud");
 	}
 
 	public static void registerBlock(Block block, String name)
@@ -366,8 +370,16 @@ public class InitBlocks
 
 	public static void registerBlock(Block block, Class<? extends ItemBlock> itemblock, String name)
 	{
-		// if(block.renderAsNormalBlock() || block.isOpaqueCube() || block.isNormalCube())
-		// FMPCompatHandler.registerFMP(block);
+		if(block.renderAsNormalBlock() || block.isOpaqueCube() || block.isNormalCube())
+			try
+			{
+				FMPCompatHandler.registerFMP(block, itemblock.newInstance().getMaxDamage());
+			}
+			catch(InstantiationException | IllegalAccessException e)
+			{
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 
 		GameRegistry.registerBlock(block, itemblock, name);
 	}
