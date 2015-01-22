@@ -12,6 +12,8 @@
  */
 package steamcraft.common;
 
+import java.util.Arrays;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.ItemBlock;
@@ -360,11 +362,11 @@ public class InitBlocks
 		registerBlock(blockMud, "BlockMud");
 	}
 
-	// static String[] blacklist = new String[] { "BlockFissurePortal" };
+	static String[] blacklist = new String[] { "BlockFissurePortal" };
 
 	public static void registerBlock(Block block, String name)
 	{
-		if(block.isOpaqueCube() || block.isNormalCube() /* || !Arrays.asList(blacklist).contains(name) */)
+		if(block.isOpaqueCube() && !Arrays.asList(blacklist).contains(name) || block.isNormalCube() && !Arrays.asList(blacklist).contains(name))
 			FMPCompatHandler.registerFMP(block);
 
 		GameRegistry.registerBlock(block, name);
@@ -372,7 +374,7 @@ public class InitBlocks
 
 	public static void registerBlock(Block block, Class<? extends ItemBlock> itemblock, String name)
 	{
-		if(block.isOpaqueCube() || block.isNormalCube() /* || !Arrays.asList(blacklist).contains(name) */)
+		if(block.isOpaqueCube() && !Arrays.asList(blacklist).contains(name) || block.isNormalCube() && !Arrays.asList(blacklist).contains(name))
 			FMPCompatHandler.registerFMP(block);
 
 		GameRegistry.registerBlock(block, itemblock, name);
