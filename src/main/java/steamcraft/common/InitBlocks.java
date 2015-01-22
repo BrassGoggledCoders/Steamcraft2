@@ -34,6 +34,7 @@ import steamcraft.common.blocks.BlockEngravedSolid;
 import steamcraft.common.blocks.BlockEngravedVanilla;
 import steamcraft.common.blocks.BlockEtherium;
 import steamcraft.common.blocks.BlockFissurePortal;
+import steamcraft.common.blocks.BlockFluidBoilingWater;
 import steamcraft.common.blocks.BlockFluidSteam;
 import steamcraft.common.blocks.BlockHatch;
 import steamcraft.common.blocks.BlockInfestedDirt;
@@ -48,6 +49,7 @@ import steamcraft.common.blocks.BlockSteamcraftOre;
 import steamcraft.common.blocks.BlockTeaPlant;
 import steamcraft.common.blocks.BlockTimeBomb;
 import steamcraft.common.blocks.BlockUranium;
+import steamcraft.common.blocks.FluidBoilingWater;
 import steamcraft.common.blocks.FluidSteam;
 import steamcraft.common.blocks.machines.BlockArmorEditor;
 import steamcraft.common.blocks.machines.BlockBattery;
@@ -121,6 +123,9 @@ public class InitBlocks
 
 	public static Fluid steamFluid;
 	public static Block blockSteam;
+
+	public static Fluid boilingWaterFluid;
+	public static Block blockBoilingWater;
 
 	/* Others */
 
@@ -273,6 +278,16 @@ public class InitBlocks
 		blockSteam = new BlockFluidSteam(steamFluid, Material.lava).setBlockName("steamFluidBlock");
 
 		registerBlock(blockSteam, "blockSteam");
+
+		// BoilingWater
+		boilingWaterFluid = new FluidBoilingWater("boilingWater").setUnlocalizedName("boilingWaterFluid");
+
+		if(!FluidRegistry.registerFluid(boilingWaterFluid) && !FluidRegistry.isFluidRegistered("boilingWater"))
+			boilingWaterFluid = FluidRegistry.getFluid("boilingWater");
+
+		blockBoilingWater = new BlockFluidBoilingWater(boilingWaterFluid, Material.lava).setBlockName("boilingWaterFluidBlock");
+
+		registerBlock(blockBoilingWater, "blockBoilingWater");
 	}
 
 	private static void initializeOthers()
