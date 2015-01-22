@@ -49,7 +49,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
  * @author Surseance
  * 
  */
-@Mod(modid = ModInfo.ID, name = ModInfo.NAME, version = ModInfo.VERSION, guiFactory = ModInfo.CONFIG_GUI, dependencies = "required-after:boilerplate")
+@Mod(modid = ModInfo.ID, name = ModInfo.NAME, version = ModInfo.VERSION, guiFactory = ModInfo.CONFIG_GUI, dependencies = "required-after:boilerplate; after:ForgeMultipart")
 public class Steamcraft
 {
 	@SidedProxy(clientSide = ModInfo.CLIENT_PROXY, serverSide = ModInfo.COMMON_PROXY)
@@ -76,6 +76,8 @@ public class Steamcraft
 		InitItems.init();
 		InitBlocks.init();
 		CompatabilityLayer.initCompatItems();
+		// if(Loader.isModLoaded("ForgeMultipart"))
+		// new RegisterMultiparts().init();
 	}
 
 	@EventHandler

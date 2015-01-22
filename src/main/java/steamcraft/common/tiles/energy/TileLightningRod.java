@@ -36,7 +36,7 @@ import cofh.api.energy.IEnergyProvider;
  */
 public class TileLightningRod extends TileEntity implements IEnergyProvider
 {
-	private final EnergyStorage buffer = new EnergyStorage(30000, 10000);
+	public final EnergyStorage buffer = new EnergyStorage(30000, 10000);
 	private final ArrayList<EntityLightningBolt> unnaturalLightningBolts = new ArrayList<EntityLightningBolt>();
 
 	@Override
