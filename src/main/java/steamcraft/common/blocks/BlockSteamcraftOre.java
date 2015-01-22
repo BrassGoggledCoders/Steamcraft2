@@ -51,7 +51,7 @@ public class BlockSteamcraftOre extends BaseBlock implements IHammerable
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(int side, int metadata)
 	{
-		if(metadata < icon.length)
+		if(metadata < this.icon.length)
 			return this.icon[metadata];
 		else
 			return this.icon[0];

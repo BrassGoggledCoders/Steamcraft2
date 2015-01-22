@@ -9,6 +9,6 @@ public class BiomeDepthsForest extends BiomeDepthsBase
 	{
 		super(p_i1971_1_);
 		this.setBiomeName(StatCollector.translateToLocal("biome.steamcraft2.innerearth.forest.name"));
-		this.theBiomeDecorator.treesPerChunk = 500;
+		this.theBiomeDecorator.treesPerChunk = 50;
 	}
 }

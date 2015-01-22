@@ -29,8 +29,8 @@ import net.minecraft.world.World;
 import steamcraft.common.InitItems;
 import steamcraft.common.items.BaseItem;
 import steamcraft.common.items.ItemCanister;
-import steamcraft.common.lib.ModInfo;
 import steamcraft.common.lib.MaterialHelper;
+import steamcraft.common.lib.ModInfo;
 import boilerplate.common.utils.ItemStackUtils;
 
 import com.google.common.collect.Multimap;

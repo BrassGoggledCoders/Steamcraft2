@@ -6,11 +6,13 @@ import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.client.event.FOVUpdateEvent;
 import net.minecraftforge.client.event.RenderPlayerEvent;
+import net.minecraftforge.client.event.TextureStitchEvent;
 
 import org.lwjgl.opengl.GL11;
 
 import steamcraft.client.ClientProxy;
 import steamcraft.client.lib.GuiIDs;
+import steamcraft.common.InitBlocks;
 import steamcraft.common.InitItems;
 import steamcraft.common.InitPackets;
 import steamcraft.common.container.InventoryVanity;
@@ -73,6 +75,18 @@ public class EventHandlerClient
 				GL11.glPopMatrix();
 				Minecraft.getMinecraft().renderEngine.deleteTexture(item.getItemTextureLocation());
 			}
+		}
+	}
+
+	@SubscribeEvent
+	@SideOnly(Side.CLIENT)
+	// hacky hack to make the texture work in BC tanks.
+	public void textureHook(TextureStitchEvent.Post event)
+	{
+		if(event.map.getTextureType() == 0)
+		{
+			InitBlocks.steamFluid.setIcons(InitBlocks.blockSteam.getBlockTextureFromSide(1));
+			InitBlocks.boilingWaterFluid.setIcons(InitBlocks.blockBoilingWater.getBlockTextureFromSide(1));
 		}
 	}
 }

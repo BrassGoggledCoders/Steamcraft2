@@ -81,8 +81,8 @@ import steamcraft.common.items.tools.ItemModShovel;
 import steamcraft.common.items.tools.ItemModSword;
 import steamcraft.common.items.tools.ItemSteamDrill;
 import steamcraft.common.items.vanity.ItemTopHat;
-import steamcraft.common.lib.ModInfo;
 import steamcraft.common.lib.MaterialHelper;
+import steamcraft.common.lib.ModInfo;
 import boilerplate.common.utils.helpers.RegistryHelper;
 import cpw.mods.fml.common.registry.GameRegistry;
 

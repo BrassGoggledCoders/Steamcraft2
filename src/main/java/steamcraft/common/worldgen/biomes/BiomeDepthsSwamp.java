@@ -84,8 +84,7 @@ public class BiomeDepthsSwamp extends BiomeDepthsBase
 	@SideOnly(Side.CLIENT)
 	public int getBiomeGrassColor(int p_150558_1_, int p_150558_2_, int p_150558_3_)
 	{
-		double d0 = plantNoise.func_151601_a(p_150558_1_ * 0.0225D, p_150558_3_ * 0.0225D);
-		return d0 < -0.1D ? 5011004 : 6975545;
+		return 336600;
 	}
 
 	/**
@@ -95,6 +94,6 @@ public class BiomeDepthsSwamp extends BiomeDepthsBase
 	@SideOnly(Side.CLIENT)
 	public int getBiomeFoliageColor(int p_150571_1_, int p_150571_2_, int p_150571_3_)
 	{
-		return 6975545;
+		return 336600;
 	}
 }
