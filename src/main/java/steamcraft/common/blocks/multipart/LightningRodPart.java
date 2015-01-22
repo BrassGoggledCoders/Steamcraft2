@@ -37,33 +37,33 @@ public class LightningRodPart extends McBlockPart
 	@Override
 	public void invalidateConvertedTile()
 	{
-		rod = (TileLightningRod) this.world().getTileEntity(x(), y(), z());
+		this.rod = (TileLightningRod) this.world().getTileEntity(this.x(), this.y(), this.z());
 	}
 
 	@Override
 	public void load(NBTTagCompound tag)
 	{
-		if(rod != null)
-			rod.buffer.readFromNBT(tag);
+		if(this.rod != null)
+			this.rod.buffer.readFromNBT(tag);
 	}
 
 	@Override
 	public void save(NBTTagCompound tag)
 	{
-		if(rod != null)
-			rod.buffer.writeToNBT(tag);
+		if(this.rod != null)
+			this.rod.buffer.writeToNBT(tag);
 	}
 
 	@Override
 	public void onWorldJoin()
 	{
-		rend = new TileLightningRodPartRenderer();
-		rend.func_147497_a(TileEntityRendererDispatcher.instance);
+		this.rend = new TileLightningRodPartRenderer();
+		this.rend.func_147497_a(TileEntityRendererDispatcher.instance);
 	}
 
 	@Override
 	public void renderDynamic(Vector3 pos, float frame, int pass)
 	{
-		rend.renderTileEntityAt(tile(), pos.x, pos.y, pos.z, 0);
+		this.rend.renderTileEntityAt(this.tile(), pos.x, pos.y, pos.z, 0);
 	}
 }
