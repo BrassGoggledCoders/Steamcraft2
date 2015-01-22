@@ -41,6 +41,7 @@ tile.blockCastIronLampOn.name=Cast Iron Lamp
 tile.blockObsidianTile.name=Obsidian Tiles
 tile.cryoIce.name=Cryogenic Ice
 tile.steamFluidBlock.name=Steam
+tile.boilingWaterFluidBlock.name=Boiling Water
 tile.blockHatch.name=Steel Hatch
 tile.blockSlate.0.name=Blue Slate
 tile.blockSlate.1.name=Black Slate
