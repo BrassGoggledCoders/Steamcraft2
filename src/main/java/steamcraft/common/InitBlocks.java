@@ -360,9 +360,11 @@ public class InitBlocks
 		registerBlock(blockMud, "BlockMud");
 	}
 
+	// static String[] blacklist = new String[] { "BlockFissurePortal" };
+
 	public static void registerBlock(Block block, String name)
 	{
-		if(block.isOpaqueCube() || block.isNormalCube())
+		if(block.isOpaqueCube() || block.isNormalCube() /* || !Arrays.asList(blacklist).contains(name) */)
 			FMPCompatHandler.registerFMP(block);
 
 		GameRegistry.registerBlock(block, name);
@@ -370,16 +372,8 @@ public class InitBlocks
 
 	public static void registerBlock(Block block, Class<? extends ItemBlock> itemblock, String name)
 	{
-		if(block.renderAsNormalBlock() || block.isOpaqueCube() || block.isNormalCube())
-			try
-			{
-				FMPCompatHandler.registerFMP(block, itemblock.newInstance().getMaxDamage());
-			}
-			catch(InstantiationException | IllegalAccessException e)
-			{
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		if(block.isOpaqueCube() || block.isNormalCube() /* || !Arrays.asList(blacklist).contains(name) */)
+			FMPCompatHandler.registerFMP(block);
 
 		GameRegistry.registerBlock(block, itemblock, name);
 	}
