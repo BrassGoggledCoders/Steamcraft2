@@ -29,12 +29,12 @@ import cpw.mods.fml.relauncher.SideOnly;
  * @author Decebaldecebal
  * 
  */
-public class BlockFluidBoilingWater extends BlockFluidClassic
+public class BlockFluidBoiling extends BlockFluidClassic
 {
 	@SideOnly(Side.CLIENT)
 	private static IIcon iconFlowing;
 
-	public BlockFluidBoilingWater(Fluid fluid, Material material)
+	public BlockFluidBoiling(Fluid fluid, Material material)
 	{
 		super(fluid, material);
 		this.setCreativeTab(Steamcraft.tabSC2);

@@ -18,9 +18,9 @@ import net.minecraftforge.fluids.Fluid;
  * @author warlordjones
  * 
  */
-public class FluidBoilingWater extends Fluid
+public class FluidBoiling extends Fluid
 {
-	public FluidBoilingWater(String fluidName)
+	public FluidBoiling(String fluidName)
 	{
 		super(fluidName);
 		this.setTemperature(373);

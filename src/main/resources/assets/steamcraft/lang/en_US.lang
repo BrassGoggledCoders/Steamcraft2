@@ -42,6 +42,7 @@ tile.blockObsidianTile.name=Obsidian Tiles
 tile.cryoIce.name=Cryogenic Ice
 tile.steamFluidBlock.name=Steam
 tile.boilingWaterFluidBlock.name=Boiling Water
+tile.boilingMudFluidBlock.name=Hot Mud
 tile.blockHatch.name=Steel Hatch
 tile.blockSlate.0.name=Blue Slate
 tile.blockSlate.1.name=Black Slate
@@ -73,7 +74,7 @@ tile.blockRedwoodLog.name=Redwood Log
 tile.blockRedwoodLeaves.name=Redwood Leaves
 tile.blockMangroveLog.name=Mangrove Log
 tile.blockMangroveLeaves.name=Mangrove Leaves
-tile.blockMud.name=Mud
+tile.blockMud.name=Semi-solid Mud
 
 #Ores
 tile.blockSteamcraftOre.0.name=Aluminum Ore

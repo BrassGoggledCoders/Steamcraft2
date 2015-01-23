@@ -36,7 +36,7 @@ import steamcraft.common.blocks.BlockEngravedSolid;
 import steamcraft.common.blocks.BlockEngravedVanilla;
 import steamcraft.common.blocks.BlockEtherium;
 import steamcraft.common.blocks.BlockFissurePortal;
-import steamcraft.common.blocks.BlockFluidBoilingWater;
+import steamcraft.common.blocks.BlockFluidBoiling;
 import steamcraft.common.blocks.BlockFluidSteam;
 import steamcraft.common.blocks.BlockHatch;
 import steamcraft.common.blocks.BlockInfestedDirt;
@@ -52,7 +52,7 @@ import steamcraft.common.blocks.BlockTeaPlant;
 import steamcraft.common.blocks.BlockThin;
 import steamcraft.common.blocks.BlockTimeBomb;
 import steamcraft.common.blocks.BlockUranium;
-import steamcraft.common.blocks.FluidBoilingWater;
+import steamcraft.common.blocks.FluidBoiling;
 import steamcraft.common.blocks.FluidSteam;
 import steamcraft.common.blocks.machines.BlockArmorEditor;
 import steamcraft.common.blocks.machines.BlockBattery;
@@ -129,6 +129,9 @@ public class InitBlocks
 
 	public static Fluid boilingWaterFluid;
 	public static Block blockBoilingWater;
+
+	public static Fluid boilingMudFluid;
+	public static Block blockBoilingMud;
 
 	/* Others */
 
@@ -283,14 +286,24 @@ public class InitBlocks
 		registerBlock(blockSteam, "blockSteam");
 
 		// BoilingWater
-		boilingWaterFluid = new FluidBoilingWater("boilingWater").setUnlocalizedName("boilingWaterFluid");
+		boilingWaterFluid = new FluidBoiling("boilingWater").setUnlocalizedName("boilingWaterFluid");
 
 		if(!FluidRegistry.registerFluid(boilingWaterFluid) && !FluidRegistry.isFluidRegistered("boilingWater"))
 			boilingWaterFluid = FluidRegistry.getFluid("boilingWater");
 
-		blockBoilingWater = new BlockFluidBoilingWater(boilingWaterFluid, Material.water).setBlockName("boilingWaterFluidBlock");
+		blockBoilingWater = new BlockFluidBoiling(boilingWaterFluid, Material.water).setBlockName("boilingWaterFluidBlock");
 
 		registerBlock(blockBoilingWater, "blockBoilingWater");
+
+		// BoilingMud
+		boilingMudFluid = new FluidBoiling("boilingMud").setUnlocalizedName("boilingMudFluid");
+
+		if(!FluidRegistry.registerFluid(boilingMudFluid) && !FluidRegistry.isFluidRegistered("boilingMud"))
+			boilingMudFluid = FluidRegistry.getFluid("boilingMud");
+
+		blockBoilingMud = new BlockFluidBoiling(boilingMudFluid, Material.water).setBlockName("boilingMudFluidBlock");
+
+		registerBlock(blockBoilingMud, "blockBoilingMud");
 	}
 
 	private static void initializeOthers()
