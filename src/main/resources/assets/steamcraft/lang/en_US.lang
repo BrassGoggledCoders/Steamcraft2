@@ -72,9 +72,12 @@ tile.blockInfestedGrass.desc=Infested!
 tile.blockPath.name=Path Block
 tile.blockRedwoodLog.name=Redwood Log
 tile.blockRedwoodLeaves.name=Redwood Leaves
+tile.blockRedwoodPlanks.name=Redwood Planks
 tile.blockMangroveLog.name=Mangrove Log
 tile.blockMangroveLeaves.name=Mangrove Leaves
+tile.blockMangrovePlanks.name=Mangrove Planks
 tile.blockMud.name=Semi-solid Mud
+tile.blockLeafCover.name=Leaf Litter
 
 #Ores
 tile.blockSteamcraftOre.0.name=Aluminum Ore

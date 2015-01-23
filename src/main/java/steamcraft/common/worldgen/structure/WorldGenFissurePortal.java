@@ -26,8 +26,6 @@ public class WorldGenFissurePortal extends WorldGenerator
 
 	public void setBlock(World world, int x, int y, int z, Block block, int metadata)
 	{
-		Block b1 = world.getBlock(x, y, z);
-
 		world.setBlock(x, y, z, block, metadata, 2);
 	}
 

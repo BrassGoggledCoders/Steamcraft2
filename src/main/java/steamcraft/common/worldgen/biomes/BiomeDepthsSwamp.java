@@ -30,6 +30,7 @@ public class BiomeDepthsSwamp extends BiomeDepthsBase
 		this.theBiomeDecorator.flowersPerChunk = 1;
 		this.theBiomeDecorator.deadBushPerChunk = 1;
 		this.theBiomeDecorator.mushroomsPerChunk = 8;
+		this.theBiomeDecorator.bigMushroomsPerChunk = 1;
 		this.theBiomeDecorator.reedsPerChunk = 10;
 		this.theBiomeDecorator.clayPerChunk = 1;
 		this.theBiomeDecorator.waterlilyPerChunk = 4;

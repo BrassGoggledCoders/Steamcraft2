@@ -21,7 +21,7 @@ public class WorldGenBlockgroup extends WorldGenerator
 	@Override
 	public boolean generate(World p_76484_1_, Random p_76484_2_, int p_76484_3_, int p_76484_4_, int p_76484_5_)
 	{
-		int l = p_76484_2_.nextInt(this.numberOfBlocks - 2) + 2;
+		int l = p_76484_2_.nextInt(this.numberOfBlocks);
 		byte b0 = 1;
 
 		for(int i1 = p_76484_3_ - l; i1 <= p_76484_3_ + l; ++i1)
