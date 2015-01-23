@@ -8,7 +8,7 @@ public class BiomeDepthsMushrooms extends BiomeDepthsBase
 	{
 		super(p_i1971_1_);
 		this.setBiomeName(StatCollector.translateToLocal("biome.steamcraft2.innerearth.mushroom.name"));
-		this.theBiomeDecorator.bigMushroomsPerChunk = 300;
-		this.theBiomeDecorator.mushroomsPerChunk = 400;
+		this.theBiomeDecorator.bigMushroomsPerChunk = 30;
+		this.theBiomeDecorator.mushroomsPerChunk = 40;
 	}
 }

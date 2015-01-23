@@ -1,4 +1,4 @@
-package steamcraft.common.worldgen.dimension;
+package steamcraft.common.worldgen.dimension.util;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -13,6 +13,7 @@ import net.minecraft.world.ChunkCoordIntPair;
 import net.minecraft.world.Teleporter;
 import net.minecraft.world.WorldServer;
 import steamcraft.common.InitBlocks;
+import steamcraft.common.worldgen.structure.WorldGenFissurePortal;
 
 public class TeleporterDeeps extends Teleporter
 {
@@ -54,22 +55,9 @@ public class TeleporterDeeps extends Teleporter
 			int k = MathHelper.floor_double(par1Entity.posZ);
 			byte b0 = 1;
 			byte b1 = 0;
-			for(int l = -2; l <= 2; ++l)
-			{
-				for(int i1 = -2; i1 <= 2; ++i1)
-				{
-					for(int j1 = -1; j1 < 3; ++j1)
-					{
-						int k1 = i + (i1 * b0) + (l * b1);
-						int l1 = j + j1;
-						int i2 = (k + (i1 * b1)) - (l * b0);
-						boolean flag = j1 < 0;
 
-						/** change this block **/
-						this.worldServerInstance.setBlock(k1, l1, i2, InitBlocks.blockFissurePortal);
-					}
-				}
-			}
+			new WorldGenFissurePortal().generate(worldServerInstance, random, i, j, k);
+
 			par1Entity.setLocationAndAngles(i, j, k, par1Entity.rotationYaw, 0.0F);
 			par1Entity.motionX = par1Entity.motionY = par1Entity.motionZ = 0.0D;
 		}
@@ -112,10 +100,8 @@ public class TeleporterDeeps extends Teleporter
 					double d6 = (l1 + 0.5D) - par1Entity.posZ;
 					for(int i2 = this.worldServerInstance.getActualHeight() - 1; i2 >= 0; --i2)
 					{
-						/** change this block **/
 						if(this.worldServerInstance.getBlock(k1, i2, l1) == InitBlocks.blockFissurePortal)
 						{
-							/** change this block **/
 							while(this.worldServerInstance.getBlock(k1, i2 - 1, l1) == InitBlocks.blockFissurePortal)
 							{
 								--i2;
@@ -145,22 +131,18 @@ public class TeleporterDeeps extends Teleporter
 			double d9 = j + 0.5D;
 			d4 = k + 0.5D;
 			int j2 = -1;
-			/** change this block **/
 			if(this.worldServerInstance.getBlock(i - 1, j, k) == InitBlocks.blockFissurePortal)
 			{
 				j2 = 2;
 			}
-			/** change this block **/
 			if(this.worldServerInstance.getBlock(i + 1, j, k) == InitBlocks.blockFissurePortal)
 			{
 				j2 = 0;
 			}
-			/** change this block **/
 			if(this.worldServerInstance.getBlock(i, j, k - 1) == InitBlocks.blockFissurePortal)
 			{
 				j2 = 3;
 			}
-			/** change this block **/
 			if(this.worldServerInstance.getBlock(i, j, k + 1) == InitBlocks.blockFissurePortal)
 			{
 				j2 = 1;
@@ -406,38 +388,12 @@ public class TeleporterDeeps extends Teleporter
 				i1 = this.worldServerInstance.getActualHeight() - 10;
 			}
 			j5 = i1;
-			for(k2 = -1; k2 <= 1; ++k2)
-			{
-				for(i3 = 1; i3 < 3; ++i3)
-				{
-					for(l2 = -1; l2 < 3; ++l2)
-					{
-						k3 = i5 + ((i3 - 1) * k5) + (k2 * l5);
-						j3 = j5 + l2;
-						i4 = (j2 + ((i3 - 1) * l5)) - (k2 * k5);
-						flag = l2 < 0;
-
-						/** change this block **/
-						this.worldServerInstance.setBlock(k3, j3, i4, InitBlocks.blockFissurePortal);
-					}
-				}
-			}
+			new WorldGenFissurePortal().generate(worldServerInstance, random, i, j, k);
 		}
 		for(k2 = 0; k2 < 4; ++k2)
 		{
-			for(i3 = 0; i3 < 4; ++i3)
-			{
-				for(l2 = -1; l2 < 4; ++l2)
-				{
-					k3 = i5 + ((i3 - 1) * k5);
-					j3 = j5 + l2;
-					i4 = j2 + ((i3 - 1) * l5);
-					flag = (i3 == 0) || (i3 == 3) || (l2 == -1) || (l2 == 3);
+			new WorldGenFissurePortal().generate(worldServerInstance, random, i, j, k);
 
-					/** change these blocks **/
-					this.worldServerInstance.setBlock(k3, j3, i4, flag ? InitBlocks.blockFissurePortal : InitBlocks.blockFissurePortal, 0, 2);
-				}
-			}
 			for(i3 = 0; i3 < 4; ++i3)
 			{
 				for(l2 = -1; l2 < 4; ++l2)

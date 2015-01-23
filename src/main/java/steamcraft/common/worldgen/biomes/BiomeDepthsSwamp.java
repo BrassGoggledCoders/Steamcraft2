@@ -10,6 +10,9 @@ import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.feature.WorldGenAbstractTree;
+import net.minecraft.world.gen.feature.WorldGenVines;
+import steamcraft.common.InitBlocks;
+import steamcraft.common.worldgen.structure.WorldGenBlockgroup;
 import steamcraft.common.worldgen.trees.WorldGenMangroveTree;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -77,6 +80,27 @@ public class BiomeDepthsSwamp extends BiomeDepthsBase
 		this.genBiomeTerrain(p_150573_1_, p_150573_2_, p_150573_3_, p_150573_4_, p_150573_5_, p_150573_6_, p_150573_7_);
 	}
 
+	@Override
+	public void decorate(World world, Random random, int x, int y)
+	{
+		for(int l = 0; l < 5; ++l)
+		{
+			int i1 = x + random.nextInt(16) + 8;
+			int j1 = y + random.nextInt(16) + 8;
+			int k1 = random.nextInt(100);
+			new WorldGenVines().generate(world, random, i1, k1, j1);
+		}
+		for(int l = 0; l < 5; ++l)
+		{
+			int i1 = x + random.nextInt(16) + 8;
+			int j1 = y + random.nextInt(16) + 8;
+			int k1 = random.nextInt(100);
+			new WorldGenBlockgroup(InitBlocks.blockMud, i1).generate(world, random, i1, k1, j1);
+		}
+
+		super.decorate(world, random, x, y);
+	}
+
 	/**
 	 * Provides the basic grass color based on the biome temperature and rainfall
 	 */
@@ -84,7 +108,7 @@ public class BiomeDepthsSwamp extends BiomeDepthsBase
 	@SideOnly(Side.CLIENT)
 	public int getBiomeGrassColor(int p_150558_1_, int p_150558_2_, int p_150558_3_)
 	{
-		return 336600;
+		return 9756748;
 	}
 
 	/**
@@ -94,6 +118,6 @@ public class BiomeDepthsSwamp extends BiomeDepthsBase
 	@SideOnly(Side.CLIENT)
 	public int getBiomeFoliageColor(int p_150571_1_, int p_150571_2_, int p_150571_3_)
 	{
-		return 336600;
+		return 9756748;
 	}
 }

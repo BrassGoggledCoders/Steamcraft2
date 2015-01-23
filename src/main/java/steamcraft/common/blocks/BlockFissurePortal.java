@@ -6,7 +6,7 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 import steamcraft.common.config.ConfigGeneral;
-import steamcraft.common.worldgen.dimension.TeleporterDeeps;
+import steamcraft.common.worldgen.dimension.util.TeleporterDeeps;
 
 public class BlockFissurePortal extends BaseBlock
 {

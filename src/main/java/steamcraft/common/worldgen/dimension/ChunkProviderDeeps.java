@@ -29,6 +29,7 @@ import net.minecraft.world.gen.feature.WorldGenDungeons;
 import net.minecraft.world.gen.feature.WorldGenLakes;
 import net.minecraftforge.event.terraingen.TerrainGen;
 import steamcraft.common.InitBiomes;
+import steamcraft.common.InitBlocks;
 
 public class ChunkProviderDeeps implements IChunkProvider
 {
@@ -396,23 +397,30 @@ public class ChunkProviderDeeps implements IChunkProvider
 		int l1;
 		int i2;
 
-		if((biomegenbase != InitBiomes.biomeDepthsSCH))
+		if((biomegenbase == InitBiomes.biomeDepthsSCH))
 		{
 			k1 = k + this.rand.nextInt(16) + 8;
 			l1 = this.rand.nextInt(256);
 			i2 = l + this.rand.nextInt(16) + 8;
-			(new WorldGenLakes(Blocks.water)).generate(this.worldObj, this.rand, k1, l1, i2);
+			(new WorldGenLakes(Blocks.lava)).generate(this.worldObj, this.rand, k1, l1, i2);
+			k1 = k + this.rand.nextInt(16) + 8;
+			l1 = this.rand.nextInt(256);
+			i2 = l + this.rand.nextInt(16) + 8;
+			(new WorldGenLakes(Blocks.lava)).generate(this.worldObj, this.rand, k1, l1, i2);
+		}
+		else if(biomegenbase == InitBiomes.biomeDepthsSCH)
+		{
+			k1 = k + this.rand.nextInt(16) + 8;
+			l1 = this.rand.nextInt(256);
+			i2 = l + this.rand.nextInt(16) + 8;
+			(new WorldGenLakes(InitBlocks.blockBoilingWater)).generate(this.worldObj, this.rand, k1, l1, i2);
 		}
 		else
 		{
 			k1 = k + this.rand.nextInt(16) + 8;
 			l1 = this.rand.nextInt(256);
 			i2 = l + this.rand.nextInt(16) + 8;
-			(new WorldGenLakes(Blocks.lava)).generate(this.worldObj, this.rand, k1, l1, i2);
-			k1 = k + this.rand.nextInt(16) + 8;
-			l1 = this.rand.nextInt(256);
-			i2 = l + this.rand.nextInt(16) + 8;
-			(new WorldGenLakes(Blocks.lava)).generate(this.worldObj, this.rand, k1, l1, i2);
+			(new WorldGenLakes(Blocks.water)).generate(this.worldObj, this.rand, k1, l1, i2);
 		}
 
 		k1 = k + this.rand.nextInt(16) + 8;

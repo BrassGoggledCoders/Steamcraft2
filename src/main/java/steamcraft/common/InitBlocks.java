@@ -44,12 +44,12 @@ import steamcraft.common.blocks.BlockInfestedGrass;
 import steamcraft.common.blocks.BlockLamp;
 import steamcraft.common.blocks.BlockMetal;
 import steamcraft.common.blocks.BlockMud;
-import steamcraft.common.blocks.BlockPath;
 import steamcraft.common.blocks.BlockPlankStack;
 import steamcraft.common.blocks.BlockPolishedPlanks;
 import steamcraft.common.blocks.BlockSlate;
 import steamcraft.common.blocks.BlockSteamcraftOre;
 import steamcraft.common.blocks.BlockTeaPlant;
+import steamcraft.common.blocks.BlockThin;
 import steamcraft.common.blocks.BlockTimeBomb;
 import steamcraft.common.blocks.BlockUranium;
 import steamcraft.common.blocks.FluidBoilingWater;
@@ -153,7 +153,7 @@ public class InitBlocks
 
 	public static Block blockInfestedGrass, blockInfestedDirt;
 
-	public static Block blockPath, blockMud;
+	public static Block blockPath, blockMud, blockLeafCover;
 
 	public static Block blockPolishedPlanks;
 
@@ -288,7 +288,7 @@ public class InitBlocks
 		if(!FluidRegistry.registerFluid(boilingWaterFluid) && !FluidRegistry.isFluidRegistered("boilingWater"))
 			boilingWaterFluid = FluidRegistry.getFluid("boilingWater");
 
-		blockBoilingWater = new BlockFluidBoilingWater(boilingWaterFluid, Material.lava).setBlockName("boilingWaterFluidBlock");
+		blockBoilingWater = new BlockFluidBoilingWater(boilingWaterFluid, Material.water).setBlockName("boilingWaterFluidBlock");
 
 		registerBlock(blockBoilingWater, "blockBoilingWater");
 	}
@@ -340,8 +340,11 @@ public class InitBlocks
 		blockInfestedDirt = new BlockInfestedDirt(Material.ground).setBlockName("blockInfestedDirt");
 		registerBlock(blockInfestedDirt, "BlockInfestedDirt");
 
-		blockPath = new BlockPath().setBlockName("blockPath");
+		blockPath = new BlockThin(Material.rock).setBlockName("blockPath");
 		registerBlock(blockPath, "BlockPath");
+
+		blockLeafCover = new BlockThin(Material.leaves).setBlockName("blockLeafCover");
+		registerBlock(blockLeafCover, "BlockLeafCover");
 
 		blockPolishedPlanks = new BlockPolishedPlanks().setBlockName("blockPolishedPlanks");
 		registerBlock(blockPolishedPlanks, BaseItemBlockWithMetadata.class, "BlockPolishedPlanks");

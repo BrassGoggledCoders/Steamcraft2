@@ -6,6 +6,7 @@ import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraftforge.client.IRenderHandler;
 import net.minecraftforge.common.DimensionManager;
 import steamcraft.common.config.ConfigGeneral;
+import steamcraft.common.worldgen.dimension.util.DeepsSkyRenderer;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 

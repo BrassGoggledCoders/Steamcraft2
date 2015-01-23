@@ -1,4 +1,4 @@
-package steamcraft.common.worldgen.dimension;
+package steamcraft.common.worldgen.dimension.util;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.WorldClient;

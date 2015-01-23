@@ -107,14 +107,14 @@ public class WorldGenMangroveTree extends WorldGenAbstractTree
 					{
 						for(k2 = -1; k2 <= 1; ++k2)
 						{
-							this.func_150525_a(world, k3 + j2, i2 + 1, l1 + k2);
+							this.doLeafGen(world, rand, k3 + j2, i2 + 1, l1 + k2);
 						}
 					}
 
-					this.func_150525_a(world, k3 + 2, i2 + 1, l1);
-					this.func_150525_a(world, k3 - 2, i2 + 1, l1);
-					this.func_150525_a(world, k3, i2 + 1, l1 + 2);
-					this.func_150525_a(world, k3, i2 + 1, l1 - 2);
+					this.doLeafGen(world, rand, k3 + 2, i2 + 1, l1);
+					this.doLeafGen(world, rand, k3 - 2, i2 + 1, l1);
+					this.doLeafGen(world, rand, k3, i2 + 1, l1 + 2);
+					this.doLeafGen(world, rand, k3, i2 + 1, l1 - 2);
 
 					for(j2 = -3; j2 <= 3; ++j2)
 					{
@@ -122,7 +122,7 @@ public class WorldGenMangroveTree extends WorldGenAbstractTree
 						{
 							if((Math.abs(j2) != 3) || (Math.abs(k2) != 3))
 							{
-								this.func_150525_a(world, k3 + j2, i2, l1 + k2);
+								this.doLeafGen(world, rand, k3 + j2, i2, l1 + k2);
 							}
 						}
 					}
@@ -164,7 +164,7 @@ public class WorldGenMangroveTree extends WorldGenAbstractTree
 							{
 								for(i3 = -1; i3 <= 1; ++i3)
 								{
-									this.func_150525_a(world, k3 + l2, i2 + 1, l1 + i3);
+									this.doLeafGen(world, rand, k3 + l2, i2 + 1, l1 + i3);
 								}
 							}
 
@@ -174,7 +174,7 @@ public class WorldGenMangroveTree extends WorldGenAbstractTree
 								{
 									if((Math.abs(l2) != 2) || (Math.abs(i3) != 2))
 									{
-										this.func_150525_a(world, k3 + l2, i2, l1 + i3);
+										this.doLeafGen(world, rand, k3 + l2, i2, l1 + i3);
 									}
 								}
 							}
@@ -195,13 +195,75 @@ public class WorldGenMangroveTree extends WorldGenAbstractTree
 		}
 	}
 
-	private void func_150525_a(World p_150525_1_, int p_150525_2_, int p_150525_3_, int p_150525_4_)
+	private void doLeafGen(World world, Random random, int x, int y, int z)
 	{
-		Block block = p_150525_1_.getBlock(p_150525_2_, p_150525_3_, p_150525_4_);
+		Block block = world.getBlock(x, y, z);
 
-		if(block.isAir(p_150525_1_, p_150525_2_, p_150525_3_, p_150525_4_) || block.isLeaves(p_150525_1_, p_150525_2_, p_150525_3_, p_150525_4_))
+		if(block.isAir(world, x, y, z) || block.isLeaves(world, x, y, z))
 		{
-			this.setBlockAndNotifyAdequately(p_150525_1_, p_150525_2_, p_150525_3_, p_150525_4_, InitBlocks.blockMangroveLeaves, 0);
+			this.setBlockAndNotifyAdequately(world, x, y, z, InitBlocks.blockMangroveLeaves, 0);
+		}
+		int l = random.nextInt(4) + 5;
+		int l1;
+		int j1;
+		int k1;
+		int k2;
+		int l2;
+		for(k2 = y - 3 + l; k2 <= y + l; ++k2)
+		{
+			j1 = k2 - (y + l);
+			k1 = 2 - j1 / 2;
+
+			for(l2 = x - k1; l2 <= x + k1; ++l2)
+			{
+				for(l1 = z - k1; l1 <= z + k1; ++l1)
+				{
+					if(world.getBlock(l2, k2, l1).isLeaves(world, l2, k2, l1))
+					{
+						if(random.nextInt(4) == 0 && world.getBlock(l2 - 1, k2, l1).isAir(world, l2 - 1, k2, l1))
+						{
+							this.generateVines(world, l2 - 1, k2, l1, 8);
+						}
+
+						if(random.nextInt(4) == 0 && world.getBlock(l2 + 1, k2, l1).isAir(world, l2 + 1, k2, l1))
+						{
+							this.generateVines(world, l2 + 1, k2, l1, 2);
+						}
+
+						if(random.nextInt(4) == 0 && world.getBlock(l2, k2, l1 - 1).isAir(world, l2, k2, l1 - 1))
+						{
+							this.generateVines(world, l2, k2, l1 - 1, 1);
+						}
+
+						if(random.nextInt(4) == 0 && world.getBlock(l2, k2, l1 + 1).isAir(world, l2, k2, l1 + 1))
+						{
+							this.generateVines(world, l2, k2, l1 + 1, 4);
+						}
+					}
+				}
+			}
+		}
+	}
+
+	/**
+	 * Generates vines at the given position until it hits a block.
+	 */
+	private void generateVines(World p_76536_1_, int p_76536_2_, int p_76536_3_, int p_76536_4_, int p_76536_5_)
+	{
+		this.setBlockAndNotifyAdequately(p_76536_1_, p_76536_2_, p_76536_3_, p_76536_4_, Blocks.vine, p_76536_5_);
+		int i1 = 4;
+
+		while(true)
+		{
+			--p_76536_3_;
+
+			if(!(p_76536_1_.getBlock(p_76536_2_, p_76536_3_, p_76536_4_).isAir(p_76536_1_, p_76536_2_, p_76536_3_, p_76536_4_)) || i1 <= 0)
+			{
+				return;
+			}
+
+			this.setBlockAndNotifyAdequately(p_76536_1_, p_76536_2_, p_76536_3_, p_76536_4_, Blocks.vine, p_76536_5_);
+			--i1;
 		}
 	}
 }
