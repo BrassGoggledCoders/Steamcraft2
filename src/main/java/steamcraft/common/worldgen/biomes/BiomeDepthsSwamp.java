@@ -96,7 +96,7 @@ public class BiomeDepthsSwamp extends BiomeDepthsBase
 			int i1 = x + random.nextInt(16) + 8;
 			int j1 = y + random.nextInt(16) + 8;
 			int k1 = random.nextInt(100);
-			new WorldGenBlockgroup(InitBlocks.blockMud, i1).generate(world, random, i1, k1, j1);
+			new WorldGenBlockgroup(InitBlocks.blockMud, 20).generate(world, random, i1, k1, j1);
 		}
 
 		super.decorate(world, random, x, y);
