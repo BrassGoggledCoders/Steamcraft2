@@ -50,8 +50,6 @@ public class BlockTurbine extends BaseContainerBlock
 		{
 			case 1:
 				return this.iconTop; // top
-			case 2:
-				return this.iconBottom;
 			default:
 				return this.blockIcon; // sides
 		}
@@ -63,9 +61,6 @@ public class BlockTurbine extends BaseContainerBlock
 	{
 		this.blockIcon = icon.registerIcon(ModInfo.PREFIX + "blockTurbine");
 		this.iconTop = icon.registerIcon(ModInfo.PREFIX + "blockTurbineTop");
-		this.iconBottom = icon.registerIcon(ModInfo.PREFIX + "blockTurbineBottom");
-		// this.iconTop = icon.registerIcon(LibInfo.PREFIX +
-		// "blockSteamBoilerTop");
 	}
 
 }
