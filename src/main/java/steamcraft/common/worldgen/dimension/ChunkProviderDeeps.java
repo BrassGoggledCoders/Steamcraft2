@@ -408,12 +408,17 @@ public class ChunkProviderDeeps implements IChunkProvider
 			i2 = l + this.rand.nextInt(16) + 8;
 			(new WorldGenLakes(Blocks.lava)).generate(this.worldObj, this.rand, k1, l1, i2);
 		}
-		else if(biomegenbase == InitBiomes.biomeDepthsSCH)
+		else if(biomegenbase == InitBiomes.biomeDepthsSC)
 		{
 			k1 = k + this.rand.nextInt(16) + 8;
 			l1 = this.rand.nextInt(256);
 			i2 = l + this.rand.nextInt(16) + 8;
 			(new WorldGenLakes(InitBlocks.blockBoilingWater)).generate(this.worldObj, this.rand, k1, l1, i2);
+
+			k1 = k + this.rand.nextInt(16) + 8;
+			l1 = this.rand.nextInt(256);
+			i2 = l + this.rand.nextInt(16) + 8;
+			(new WorldGenLakes(InitBlocks.blockBoilingMud)).generate(this.worldObj, this.rand, k1, l1, i2);
 		}
 		else
 		{

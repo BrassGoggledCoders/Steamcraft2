@@ -160,7 +160,7 @@ public class InitBlocks
 
 	public static Block blockPolishedPlanks;
 
-	public static Block blockRedwoodLog, blockRedwoodLeaves, blockMangroveLog, blockMangroveLeaves;
+	public static Block blockRedwoodLog, blockRedwoodLeaves, blockMangroveLog, blockMangroveLeaves, blockRedwoodPlanks, blockMangrovePlanks;
 
 	public static void init()
 	{
@@ -368,21 +368,27 @@ public class InitBlocks
 		blockRedwoodLeaves = new BlockCustomLeaves("Redwood").setBlockName("blockRedwoodLeaves");
 		registerBlock(blockRedwoodLeaves, "BlockRedwoodLeaves");
 
+		blockRedwoodPlanks = new BaseBlock(Material.wood).setBlockName("blockRedwoodPlanks");
+		registerBlock(blockRedwoodPlanks, "BlockRedwoodPlanks");
+
 		blockMangroveLog = new BlockCustomLog("Mangrove").setBlockName("blockMangroveLog");
 		registerBlock(blockMangroveLog, "BlockMangroveLog");
 
 		blockMangroveLeaves = new BlockCustomLeaves("Mangrove").setBlockName("blockMangroveLeaves");
 		registerBlock(blockMangroveLeaves, "BlockMangroveLeaves");
 
+		blockMangrovePlanks = new BaseBlock(Material.wood).setBlockName("blockMangrovePlanks");
+		registerBlock(blockMangrovePlanks, "BlockMangrovePlanks");
+
 		blockMud = new BlockMud(Material.ground).setBlockName("blockMud");
 		registerBlock(blockMud, "BlockMud");
 	}
 
-	static String[] blacklist = new String[] { "BlockFissurePortal" };
+	static String[] blacklist = new String[] { "BlockFissurePortal", "BlockLamp" };
 
 	public static void registerBlock(Block block, String name)
 	{
-		if(block.isOpaqueCube() && !Arrays.asList(blacklist).contains(name) || block.isNormalCube() && !Arrays.asList(blacklist).contains(name))
+		if(block.isOpaqueCube() && !Arrays.asList(blacklist).contains(name))
 			FMPCompatHandler.registerFMP(block);
 
 		GameRegistry.registerBlock(block, name);
@@ -390,7 +396,7 @@ public class InitBlocks
 
 	public static void registerBlock(Block block, Class<? extends ItemBlock> itemblock, String name)
 	{
-		if(block.isOpaqueCube() && !Arrays.asList(blacklist).contains(name) || block.isNormalCube() && !Arrays.asList(blacklist).contains(name))
+		if(block.isOpaqueCube() && !Arrays.asList(blacklist).contains(name))
 			FMPCompatHandler.registerFMP(block);
 
 		GameRegistry.registerBlock(block, itemblock, name);
