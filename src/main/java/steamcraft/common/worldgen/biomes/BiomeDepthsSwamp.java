@@ -84,7 +84,7 @@ public class BiomeDepthsSwamp extends BiomeDepthsBase
 	@Override
 	public void decorate(World world, Random random, int x, int y)
 	{
-		super.decorate(world, random, x, y);
+		// super.decorate(world, random, x, y);
 		for(int l = 0; l < 5; ++l)
 		{
 			int i1 = x + random.nextInt(16) + 8;
