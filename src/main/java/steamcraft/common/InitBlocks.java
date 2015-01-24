@@ -42,6 +42,7 @@ import steamcraft.common.blocks.BlockHatch;
 import steamcraft.common.blocks.BlockInfestedDirt;
 import steamcraft.common.blocks.BlockInfestedGrass;
 import steamcraft.common.blocks.BlockLamp;
+import steamcraft.common.blocks.BlockLeafPile;
 import steamcraft.common.blocks.BlockMetal;
 import steamcraft.common.blocks.BlockMud;
 import steamcraft.common.blocks.BlockPlankStack;
@@ -356,7 +357,7 @@ public class InitBlocks
 		blockPath = new BlockThin(Material.rock).setBlockName("blockPath");
 		registerBlock(blockPath, "BlockPath");
 
-		blockLeafCover = new BlockThin(Material.leaves).setBlockName("blockLeafCover");
+		blockLeafCover = new BlockLeafPile().setBlockName("blockLeafCover");
 		registerBlock(blockLeafCover, "BlockLeafCover");
 
 		blockPolishedPlanks = new BlockPolishedPlanks().setBlockName("blockPolishedPlanks");

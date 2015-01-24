@@ -24,10 +24,10 @@ public class InitBiomes
 		biomeDepthsM = new BiomeDepthsMountains(ConfigGeneral.depthsMBiomeID);
 		biomeDepthsS = new BiomeDepthsMushrooms(ConfigGeneral.depthsSBiomeID);
 		biomeDepthsI = new BiomeDepthsInfestation(ConfigGeneral.depthsIBiomeID);
-		biomeDepthsSC = new BiomeDepthsScalded(ConfigGeneral.depthsFBiomeID);
-		biomeDepthsSCH = new BiomeDepthsScorched(ConfigGeneral.depthsMBiomeID);
-		biomeDepthsSW = new BiomeDepthsSwamp(ConfigGeneral.depthsSBiomeID);
-		biomeDepthsTF = new BiomeDepthsTallForest(ConfigGeneral.depthsIBiomeID);
+		biomeDepthsSC = new BiomeDepthsScalded(ConfigGeneral.depthsSCBiomeID);
+		biomeDepthsSCH = new BiomeDepthsScorched(ConfigGeneral.depthsSCHBiomeID);
+		biomeDepthsSW = new BiomeDepthsSwamp(ConfigGeneral.depthsSWBiomeID);
+		biomeDepthsTF = new BiomeDepthsTallForest(ConfigGeneral.depthsTFBiomeID);
 		biomeDepthsJ = new BiomeDepthsTallForest(ConfigGeneral.depthsJBiomeID);
 
 		// biomeDepthsO = new BiomeDepthsOcean(ConfigGeneral.depthsOBiomeID);
