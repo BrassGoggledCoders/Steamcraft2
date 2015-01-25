@@ -1,13 +1,18 @@
 package steamcraft.common.blocks;
 
+import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import steamcraft.common.Steamcraft;
-import steamcraft.common.blocks.machines.BaseContainerBlock;
+import steamcraft.common.lib.ModInfo;
 import steamcraft.common.tiles.TileMotionSensor;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockMotionSensor extends BaseContainerBlock
+public class BlockMotionSensor extends BlockContainer
 {
 	public boolean isOn;
 
@@ -16,9 +21,7 @@ public class BlockMotionSensor extends BaseContainerBlock
 		super(p_i45386_1_);
 		this.isOn = isOn;
 		if(!isOn)
-		{
 			setCreativeTab(Steamcraft.tabSC2);
-		};
 	}
 
 	@Override
@@ -36,6 +39,22 @@ public class BlockMotionSensor extends BaseContainerBlock
 	public boolean canProvidePower()
 	{
 		return isOn;
+	}
+
+	@Override
+	public int isProvidingWeakPower(IBlockAccess p_149709_1_, int p_149709_2_, int p_149709_3_, int p_149709_4_, int p_149709_5_)
+	{
+		if(isOn)
+			return 15;
+		else
+			return 0;
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void registerBlockIcons(IIconRegister ir)
+	{
+		this.blockIcon = ir.registerIcon(ModInfo.PREFIX + this.getUnlocalizedName().substring(5));
 	}
 
 }

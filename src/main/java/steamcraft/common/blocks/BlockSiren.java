@@ -17,9 +17,7 @@ public class BlockSiren extends Block
 		isOn = this.isOn;
 		this.sound = sound;
 		if(!isOn)
-		{
 			setCreativeTab(Steamcraft.tabSC2);
-		};
 	}
 
 	/**
@@ -60,5 +58,4 @@ public class BlockSiren extends Block
 			}
 		}
 	}
-
 }
