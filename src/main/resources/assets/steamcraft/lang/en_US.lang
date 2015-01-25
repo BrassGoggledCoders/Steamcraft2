@@ -35,11 +35,8 @@ tile.blockEngravedVanilla.4.name=Engraved Stone
 tile.blockCastIronFence.name=Cast Iron Fence
 tile.blockCastIronGate.name=Cast Iron Gate
 tile.teaPlant.name=Tea Plant
-tile.blockObsidianTile.name=Obsidian Tiles
 tile.blockCastIronLampOff.name=Cast Iron Lamp
 tile.blockCastIronLampOn.name=Cast Iron Lamp
-tile.blockObsidianTile.name=Obsidian Tiles
-tile.cryoIce.name=Cryogenic Ice
 tile.steamFluidBlock.name=Steam
 tile.boilingWaterFluidBlock.name=Boiling Water
 tile.boilingMudFluidBlock.name=Hot Mud
@@ -77,7 +74,7 @@ tile.blockMangroveLog.name=Mangrove Log
 tile.blockMangroveLeaves.name=Mangrove Leaves
 tile.blockMangrovePlanks.name=Mangrove Planks
 tile.blockMud.name=Semi-solid Mud
-tile.blockLeafCover.name=Leaf Litter
+tile.blockLeafPile.name=Leaf Litter
 
 #Ores
 tile.blockSteamcraftOre.0.name=Aluminum Ore
@@ -178,6 +175,9 @@ item.itemNugget.5.name=Bronze Nugget
 item.itemNugget.6.name=Steel Nugget
 item.itemNugget.7.name=Cast Iron Nugget
 
+#Vanity
+item.itemTopHat.name=Top Hat
+
 item.itemWatch.name=Brass Pocket-Watch
 item.itemWatch.desc=On right-click, this item will display the in-game time and the real-world time
 item.itemSlimeRubber.name=Slime-Based Rubber
@@ -188,7 +188,6 @@ item.itemFieldManipulator.name=Etheric Field Distorter
 item.itemFieldManipulator.desc=Bend the fabric of spacetime to your will, allowing you to travel between places near-instantaneously
 item.itemLoreBook.name=Lore Book
 item.itemLoreBook.desc=Right-Click to Open. (Texture from the Painterly Pack!)
-
 item.itemElectricJarSmall.name=Electric Jar (Copper Electrodes)
 item.itemElectricJarMedium.name=Electric Jar (Gold-Plated Electrodes)
 item.itemElectricJarLarge.name=Electric Jar (Plated)
@@ -202,6 +201,12 @@ item.itemElectricJarSmall.0.name=Electric Jar (Copper Electrodes)
 item.itemElectricJarMedium.0.name=Electric Jar (Gold-Plated Electrodes)
 item.itemElectricJarLarge.0.name=Electric Jar (Plated)
 item.itemElectricJarHuge.0.name=Electric Jar (Crystalline Glass)
+item.itemPDA.name=PDA
+item.itemMonsterSpawner.0.name=Spawn Grub
+item.itemMonsterSpawner.1.name=Spawn Lost Miner
+item.itemMonsterSpawner.2.name=Spawn Boar
+item.itemMonsterSpawner.3.name=Spawn Ghost Spider
+item.itemMonsterSpawner.4.name=Spawn Vampire Bat
 
 #Guns
 item.itemGunPart.0.name=Wooden Stock
@@ -254,6 +259,7 @@ item.itemTimeClock.desc=Manipulate the fabric of time! Right Click to set to day
 item.itemSplashLightningBottle.name=Splash Lightning Bottle
 item.itemSplashLightningBottle.desc=Hold right click to charge throw. Release to throw.
 item.itemCanisterSteam.name=Steam Canister
+
 
 #Tools
 item.itemDrillCore.name=Drill Core
@@ -374,6 +380,7 @@ item.itemMachinePart.3.name=Magnet
 item.itemMachinePart.4.name=Generator
 item.itemMachinePart.5.name=Fan
 item.itemMachinePart.6.name=Wire Coil
+
 #Modules
 item.itemAqualung.name=Aqualung Module
 item.itemAqualung.desc=Allows underwater breathing.
@@ -403,14 +410,13 @@ item.itemSteelPlating.name=Steel Plating
 item.itemSteelPlating.desc=Simple Defensive Module
 item.itemLastResort.name=Last Resort
 item.itemLastResort.desc=If you reach a heart, you explode, violently. Your items will not be destroyed.
+item.itemGogglesModule.name=Goggle Module
+item.itemGogglesModule.desc=Inbuilt Nightvision Goggles.
 
 #Compat
 item.itemSteamcraftCluster.0.name=Native Aluminum Cluster
 item.itemSteamcraftCluster.1.name=Native Zinc Cluster
 item.itemThaumicMonocle.name=Thaumic Monocle
-
-#Containers
-container.bloomery=Bloomery
 
 #Tabs
 itemGroup.steamcraft=Steamcraft 2
