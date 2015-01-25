@@ -44,9 +44,11 @@ import steamcraft.common.blocks.BlockInfestedGrass;
 import steamcraft.common.blocks.BlockLamp;
 import steamcraft.common.blocks.BlockLeafPile;
 import steamcraft.common.blocks.BlockMetal;
+import steamcraft.common.blocks.BlockMotionSensor;
 import steamcraft.common.blocks.BlockMud;
 import steamcraft.common.blocks.BlockPlankStack;
 import steamcraft.common.blocks.BlockPolishedPlanks;
+import steamcraft.common.blocks.BlockSiren;
 import steamcraft.common.blocks.BlockSlate;
 import steamcraft.common.blocks.BlockSteamcraftOre;
 import steamcraft.common.blocks.BlockTeaPlant;
@@ -73,6 +75,7 @@ import steamcraft.common.tiles.TileArmorEditor;
 import steamcraft.common.tiles.TileBloomery;
 import steamcraft.common.tiles.TileCopperPipe;
 import steamcraft.common.tiles.TileIntake;
+import steamcraft.common.tiles.TileMotionSensor;
 import steamcraft.common.tiles.TileNuclearBoiler;
 import steamcraft.common.tiles.TileSteamBoiler;
 import steamcraft.common.tiles.energy.TileBattery;
@@ -162,6 +165,10 @@ public class InitBlocks
 	public static Block blockPolishedPlanks;
 
 	public static Block blockRedwoodLog, blockRedwoodLeaves, blockMangroveLog, blockMangroveLeaves, blockRedwoodPlanks, blockMangrovePlanks;
+
+	public static Block blockStandardSiren, blockStandardSirenOn, blockAllClearSiren,
+			blockAllClearSirenOn, blockIntruderSiren, blockIntruderSirenOn, blockNuclearSiren,
+			blockNuclearSirenOn, blockMotionSensor, blockMotionSensorOn;
 
 	public static void init()
 	{
@@ -383,6 +390,33 @@ public class InitBlocks
 
 		blockMud = new BlockMud(Material.ground).setBlockName("blockMud");
 		registerBlock(blockMud, "BlockMud");
+
+		blockMotionSensor = new BlockMotionSensor(Material.iron, false).setBlockName("blockMotionSensor");
+		blockMotionSensorOn = new BlockMotionSensor(Material.iron, true).setBlockName("blockMotionSensorOn");
+
+		RegistryHelper.registerContainerBlock(blockMotionSensor, TileMotionSensor.class, "BlockMotionSensor");
+		RegistryHelper.registerContainerBlock(blockMotionSensorOn, TileMotionSensor.class, "BlockMotionSensorOn");
+
+		// Standard
+		blockStandardSiren = new BlockSiren(Material.redstoneLight, false, "standard").setBlockName("blockStandardSiren");
+		blockStandardSirenOn = new BlockSiren(Material.redstoneLight, true, "standard").setBlockName("blockStandardSiren");
+		GameRegistry.registerBlock(blockStandardSiren, "BlockStandardSiren");
+		GameRegistry.registerBlock(blockStandardSirenOn, "BlockStandardSirenOn");
+		// All Clear
+		blockAllClearSiren = new BlockSiren(Material.redstoneLight, false, "allclear").setBlockName("blockAllClearSiren");
+		blockAllClearSirenOn = new BlockSiren(Material.redstoneLight, true, "allclear").setBlockName("blockAllClearSiren");
+		GameRegistry.registerBlock(blockAllClearSiren, "BlockAllClearSiren");
+		GameRegistry.registerBlock(blockAllClearSirenOn, "BlockAllClearSirenOn");
+		// Intruder
+		blockIntruderSiren = new BlockSiren(Material.redstoneLight, false, "intruderalert").setBlockName("blockIntruderSiren");
+		blockIntruderSirenOn = new BlockSiren(Material.redstoneLight, true, "intruderalert").setBlockName("blockIntruderSiren");
+		GameRegistry.registerBlock(blockIntruderSiren, "BlockIntruderSiren");
+		GameRegistry.registerBlock(blockIntruderSirenOn, "BlockIntruderSirenOn");
+		// Nuclear
+		blockNuclearSiren = new BlockSiren(Material.redstoneLight, false, "nuclearalarm").setBlockName("blockNuclearSiren");
+		blockNuclearSirenOn = new BlockSiren(Material.redstoneLight, true, "nuclearalarm").setBlockName("blockNuclearSiren");
+		GameRegistry.registerBlock(blockNuclearSiren, "BlockNuclearSiren");
+		GameRegistry.registerBlock(blockNuclearSirenOn, "BlockNuclearSirenOn");
 	}
 
 	static String[] blacklist = new String[] { "BlockFissurePortal", "BlockLamp" };

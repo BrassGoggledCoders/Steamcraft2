@@ -77,5 +77,40 @@
         [
 			"warp"
         ]
+    },
+     "allclear":
+    {
+        "category": "block",
+        "sounds":
+        [
+			"allclear"
+        ]
+    },
+
+    "intruderalert":
+    {
+        "category": "block",
+        "sounds":
+        [
+			"intruderalert"
+        ]
+    },
+
+    "nuclearalarm":
+    {
+        "category": "block",
+        "sounds":
+        [
+			"nuclearalarm"
+        ]
+    },
+
+    "standard":
+    {
+        "category": "block",
+        "sounds":
+        [
+			"standard"
+        ]
     }
 }
