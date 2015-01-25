@@ -14,9 +14,12 @@ package steamcraft.common;
 
 import steamcraft.common.entities.EntityGrapplingHook;
 import steamcraft.common.entities.EntityTimeBomb;
+import steamcraft.common.entities.living.EntityBoar;
 import steamcraft.common.entities.living.EntityFleshGolem;
+import steamcraft.common.entities.living.EntityGhostSpider;
 import steamcraft.common.entities.living.EntityGrub;
 import steamcraft.common.entities.living.EntityLostMiner;
+import steamcraft.common.entities.living.EntityVampireBat;
 import steamcraft.common.entities.projectile.EntityBullet;
 import steamcraft.common.entities.projectile.EntityRocket;
 import cpw.mods.fml.common.registry.EntityRegistry;
@@ -45,5 +48,8 @@ public class InitEntities
 		EntityRegistry.registerModEntity(EntityFleshGolem.class, "FleshGolem", entID++, Steamcraft.instance, 64, 20, true);
 		EntityRegistry.registerModEntity(EntityGrub.class, "Grub", entID++, Steamcraft.instance, 64, 20, true);
 		EntityRegistry.registerModEntity(EntityLostMiner.class, "LostMiner", entID++, Steamcraft.instance, 64, 20, true);
+		EntityRegistry.registerModEntity(EntityBoar.class, "Boar", entID++, Steamcraft.instance, 64, 20, true);
+		EntityRegistry.registerModEntity(EntityVampireBat.class, "VampireBat", entID++, Steamcraft.instance, 64, 20, true);
+		EntityRegistry.registerModEntity(EntityGhostSpider.class, "GhostSpider", entID++, Steamcraft.instance, 64, 20, true);
 	}
 }

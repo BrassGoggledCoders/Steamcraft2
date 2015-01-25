@@ -33,10 +33,12 @@ public class BlockFluidBoiling extends BlockFluidClassic
 {
 	@SideOnly(Side.CLIENT)
 	private static IIcon iconFlowing;
+	private final String name;
 
-	public BlockFluidBoiling(Fluid fluid, Material material)
+	public BlockFluidBoiling(Fluid fluid, Material material, String name)
 	{
 		super(fluid, material);
+		this.name = name;
 		this.setCreativeTab(Steamcraft.tabSC2);
 	}
 
@@ -50,8 +52,8 @@ public class BlockFluidBoiling extends BlockFluidClassic
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister iconRegister)
 	{
-		this.blockIcon = iconRegister.registerIcon(ModInfo.PREFIX + "boilingwaterStill");
-		iconFlowing = iconRegister.registerIcon(ModInfo.PREFIX + "boilingwaterFlowing");
+		this.blockIcon = iconRegister.registerIcon(ModInfo.PREFIX + "boiling" + name + "Still");
+		iconFlowing = iconRegister.registerIcon(ModInfo.PREFIX + "boiling" + name + "Flowing");
 	}
 
 	@Override

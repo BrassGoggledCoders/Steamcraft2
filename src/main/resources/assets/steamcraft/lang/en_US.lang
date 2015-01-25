@@ -472,6 +472,9 @@ biome.steamcraft2.innerearth.scorched.name=Scorched Lands
 #Entities
 entity.steamcraft2.grub.name=Grub
 entity.steamcraft2.lostminer.name=Lost Miner
+entity.steamcraft2.ghostspider.name=Ghost Spider
+entity.steamcraft2.vampirebat.name=Vampire Bat
+entity.steamcraft2.boar.name=Boar
 
 #Keys
 key.steamcraft.category=Steamcraft2

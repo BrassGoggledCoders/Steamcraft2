@@ -37,10 +37,13 @@ import steamcraft.client.renderers.block.BlockLightningRodRenderer;
 import steamcraft.client.renderers.block.BlockPlankStackRenderer;
 import steamcraft.client.renderers.block.BlockRailingRenderer;
 import steamcraft.client.renderers.block.BlockTeslaCoilRenderer;
+import steamcraft.client.renderers.entity.RenderBoar;
 import steamcraft.client.renderers.entity.RenderFleshGolem;
+import steamcraft.client.renderers.entity.RenderGhostSpider;
 import steamcraft.client.renderers.entity.RenderGrapplingHook;
 import steamcraft.client.renderers.entity.RenderGrub;
 import steamcraft.client.renderers.entity.RenderLostMiner;
+import steamcraft.client.renderers.entity.RenderVampireBat;
 import steamcraft.client.renderers.item.ModelBrassWings;
 import steamcraft.client.renderers.item.ModelJetpack;
 import steamcraft.client.renderers.item.ModelWingpack;
@@ -62,9 +65,12 @@ import steamcraft.client.renderers.tile.TileTeslaCoilRenderer;
 import steamcraft.common.CommonProxy;
 import steamcraft.common.InitItems;
 import steamcraft.common.entities.EntityGrapplingHook;
+import steamcraft.common.entities.living.EntityBoar;
 import steamcraft.common.entities.living.EntityFleshGolem;
+import steamcraft.common.entities.living.EntityGhostSpider;
 import steamcraft.common.entities.living.EntityGrub;
 import steamcraft.common.entities.living.EntityLostMiner;
+import steamcraft.common.entities.living.EntityVampireBat;
 import steamcraft.common.entities.projectile.EntityBullet;
 import steamcraft.common.entities.projectile.EntityFieldManipulator;
 import steamcraft.common.entities.projectile.EntityRocket;
@@ -132,6 +138,9 @@ public class ClientProxy extends CommonProxy
 		RenderingRegistry.registerEntityRenderingHandler(EntityFleshGolem.class, new RenderFleshGolem(new ModelFleshGolem(), 0));
 		RenderingRegistry.registerEntityRenderingHandler(EntityLostMiner.class, new RenderLostMiner(new ModelZombie(), 0));
 		RenderingRegistry.registerEntityRenderingHandler(EntityGrub.class, new RenderGrub(new ModelGrub(), 0));
+		RenderingRegistry.registerEntityRenderingHandler(EntityBoar.class, new RenderBoar(new ModelGrub(), 0));
+		RenderingRegistry.registerEntityRenderingHandler(EntityGhostSpider.class, new RenderGhostSpider());
+		RenderingRegistry.registerEntityRenderingHandler(EntityVampireBat.class, new RenderVampireBat());
 	}
 
 	private void registerBlockRenderers()

@@ -292,7 +292,7 @@ public class InitBlocks
 		if(!FluidRegistry.registerFluid(boilingWaterFluid) && !FluidRegistry.isFluidRegistered("boilingWater"))
 			boilingWaterFluid = FluidRegistry.getFluid("boilingWater");
 
-		blockBoilingWater = new BlockFluidBoiling(boilingWaterFluid, Material.water).setBlockName("boilingWaterFluidBlock");
+		blockBoilingWater = new BlockFluidBoiling(boilingWaterFluid, Material.water, "Water").setBlockName("boilingWaterFluidBlock");
 
 		registerBlock(blockBoilingWater, "blockBoilingWater");
 
@@ -302,7 +302,7 @@ public class InitBlocks
 		if(!FluidRegistry.registerFluid(boilingMudFluid) && !FluidRegistry.isFluidRegistered("boilingMud"))
 			boilingMudFluid = FluidRegistry.getFluid("boilingMud");
 
-		blockBoilingMud = new BlockFluidBoiling(boilingMudFluid, Material.water).setBlockName("boilingMudFluidBlock");
+		blockBoilingMud = new BlockFluidBoiling(boilingMudFluid, Material.water, "Mud").setBlockName("boilingMudFluidBlock");
 
 		registerBlock(blockBoilingMud, "blockBoilingMud");
 	}
@@ -357,8 +357,8 @@ public class InitBlocks
 		blockPath = new BlockThin(Material.rock).setBlockName("blockPath");
 		registerBlock(blockPath, "BlockPath");
 
-		blockLeafCover = new BlockLeafPile().setBlockName("blockLeafCover");
-		registerBlock(blockLeafCover, "BlockLeafCover");
+		blockLeafCover = new BlockLeafPile().setBlockName("blockLeafPile");
+		registerBlock(blockLeafCover, "BlockLeafPile");
 
 		blockPolishedPlanks = new BlockPolishedPlanks().setBlockName("blockPolishedPlanks");
 		registerBlock(blockPolishedPlanks, BaseItemBlockWithMetadata.class, "BlockPolishedPlanks");
