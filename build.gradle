@@ -28,8 +28,6 @@ minecraft {
 
 dependencies {
 compile files ("lib/boilerplate.jar")
-compile files ("lib/FMP.jar")
-compile files ("lib/CodeChickenLib.zip")
 )
 }
 
