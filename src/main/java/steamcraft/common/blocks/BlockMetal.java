@@ -25,6 +25,7 @@ import net.minecraft.world.IBlockAccess;
 import steamcraft.common.InitBlocks;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.ModInfo;
+import boilerplate.common.baseclasses.BaseMetadataBlock;
 import boilerplate.steamapi.block.IChiselable;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -33,7 +34,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  * @author warlordjones
  * 
  */
-public class BlockMetal extends Block implements IChiselable
+public class BlockMetal extends BaseMetadataBlock implements IChiselable
 {
 	public IIcon[] icon = new IIcon[8];
 
@@ -50,6 +51,16 @@ public class BlockMetal extends Block implements IChiselable
 
 	@Override
 	@SideOnly(Side.CLIENT)
+	public IIcon getIcon(final int side, final int metadata)
+	{
+		if(metadata < this.icon.length)
+			return this.icon[metadata];
+		else
+			return this.icon[0];
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(final IIconRegister ir)
 	{
 		this.icon[0] = ir.registerIcon(ModInfo.PREFIX + "metal/" + "blockAluminum");
@@ -60,13 +71,6 @@ public class BlockMetal extends Block implements IChiselable
 		this.icon[5] = ir.registerIcon(ModInfo.PREFIX + "metal/" + "blockBronze");
 		this.icon[6] = ir.registerIcon(ModInfo.PREFIX + "metal/" + "blockSteel");
 		this.icon[7] = ir.registerIcon(ModInfo.PREFIX + "metal/" + "blockCastIron");
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(final int side, final int metadata)
-	{
-		return this.icon[metadata];
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
