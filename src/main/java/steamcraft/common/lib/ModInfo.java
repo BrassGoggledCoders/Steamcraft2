@@ -12,8 +12,6 @@
  */
 package steamcraft.common.lib;
 
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * A neat, tidy class for holding various bits of mod information.
@@ -25,9 +23,7 @@ public class ModInfo
 {
 	public static final String ID = "steamcraft2";
 	public static final String NAME = "Steamcraft 2";
-	public static final String VERSION = "Beta R3.5";
-
-	public static final List<String> AUTHORS = Arrays.asList("warlordjones", "decebaldecebal", "Falkok15", "wierdude1999", "domi1819", "seanvanpelt2 & others");
+	public static final String VERSION = "Beta R3.5c";
 
 	public static final String CLIENT_PROXY = "steamcraft.client.ClientProxy";
 	public static final String COMMON_PROXY = "steamcraft.common.CommonProxy";

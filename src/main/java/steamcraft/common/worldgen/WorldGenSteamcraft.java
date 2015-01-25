@@ -25,7 +25,6 @@ import net.minecraftforge.common.BiomeDictionary.Type;
 import steamcraft.common.InitBlocks;
 import steamcraft.common.config.ConfigGeneral;
 import steamcraft.common.config.ConfigWorldGen;
-import steamcraft.common.worldgen.structure.WorldGenFissurePortal;
 import steamcraft.common.worldgen.trees.WorldGenBrassTree;
 import cpw.mods.fml.common.IWorldGenerator;
 
@@ -112,14 +111,10 @@ public class WorldGenSteamcraft implements IWorldGenerator
 					new WorldGenBrassTree().generate(world, random, X, Y, Z);
 				}
 		}
-		for(int i = 0; i < 1; i++)
-		{
-			int X = chunkX + random.nextInt(16);
-			int Z = chunkZ + random.nextInt(16);
-			int Y = random.nextInt(6);
-
-			new WorldGenFissurePortal().generate(world, random, X, Y, Z);
-		}
+		/*
+		 * for(int i = 0; i < 1; i++) { int X = chunkX + random.nextInt(16); int Z = chunkZ + random.nextInt(16); int Y = random.nextInt(6); new
+		 * WorldGenFissurePortal().generate(world, random, X, Y, Z); }
+		 */
 	}
 
 	private void generateOre(World world, Random random, int chunkX, int chunkZ, int blockPerChunk, int minHeight, int maxHeight, int blocks,

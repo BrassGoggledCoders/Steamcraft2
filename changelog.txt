@@ -67,6 +67,5 @@ Beta 3.5:
 # Fix dupe bug with crafting items (hammer, drawplate and grindstone)
 # Fix crafting bug with jars
 # Start of fixes to the battery model
-
 Beta 4:
 ++ The Deeps:
