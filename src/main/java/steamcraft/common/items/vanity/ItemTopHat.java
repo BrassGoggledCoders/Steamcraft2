@@ -19,6 +19,8 @@ import steamcraft.common.items.BaseItem;
 import steamcraft.common.lib.ModInfo;
 import boilerplate.steamapi.vanity.EnumVanityType;
 import boilerplate.steamapi.vanity.IVanityItem;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author warlordjones
@@ -27,12 +29,14 @@ import boilerplate.steamapi.vanity.IVanityItem;
 public class ItemTopHat extends BaseItem implements IVanityItem
 {
 	@Override
+	@SideOnly(Side.CLIENT)
 	public ModelBase getVanityItemModel()
 	{
 		return new ModelCow();
 	}
 
 	@Override
+	@SideOnly(Side.CLIENT)
 	public ResourceLocation getItemTextureLocation()
 	{
 		return new ResourceLocation(ModInfo.PREFIX + "/textures/models/crystal.png");
