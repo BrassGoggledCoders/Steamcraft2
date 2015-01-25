@@ -65,7 +65,7 @@ public class OpenContainerFromClientPacket implements IMessage
 		{
 			World world = DimensionManager.getWorld(message.worldId);
 			EntityPlayer player = (EntityPlayer) world.getEntityByID(playerid);
-			player.openGui(Steamcraft.instance, guiIDToOpen, world, player.serverPosX, player.serverPosY, player.serverPosZ);
+			player.openGui(Steamcraft.instance, guiIDToOpen, world, (int) Math.round(player.posX), (int) Math.round(player.posY), (int) Math.round(player.posZ));
 			return null;
 		}
 	}
