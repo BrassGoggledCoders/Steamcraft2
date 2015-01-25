@@ -209,33 +209,33 @@ public class WorldGenMangroveTree extends WorldGenAbstractTree
 		int k1;
 		int k2;
 		int l2;
-		for(k2 = y - 3 + l; k2 <= y + l; ++k2)
+		for(k2 = (y - 3) + l; k2 <= (y + l); ++k2)
 		{
 			j1 = k2 - (y + l);
-			k1 = 2 - j1 / 2;
+			k1 = 2 - (j1 / 2);
 
-			for(l2 = x - k1; l2 <= x + k1; ++l2)
+			for(l2 = x - k1; l2 <= (x + k1); ++l2)
 			{
-				for(l1 = z - k1; l1 <= z + k1; ++l1)
+				for(l1 = z - k1; l1 <= (z + k1); ++l1)
 				{
 					if(world.getBlock(l2, k2, l1).isLeaves(world, l2, k2, l1))
 					{
-						if(random.nextInt(4) == 0 && world.getBlock(l2 - 1, k2, l1).isAir(world, l2 - 1, k2, l1))
+						if((random.nextInt(4) == 0) && world.getBlock(l2 - 1, k2, l1).isAir(world, l2 - 1, k2, l1))
 						{
 							this.generateVines(world, l2 - 1, k2, l1, 8);
 						}
 
-						if(random.nextInt(4) == 0 && world.getBlock(l2 + 1, k2, l1).isAir(world, l2 + 1, k2, l1))
+						if((random.nextInt(4) == 0) && world.getBlock(l2 + 1, k2, l1).isAir(world, l2 + 1, k2, l1))
 						{
 							this.generateVines(world, l2 + 1, k2, l1, 2);
 						}
 
-						if(random.nextInt(4) == 0 && world.getBlock(l2, k2, l1 - 1).isAir(world, l2, k2, l1 - 1))
+						if((random.nextInt(4) == 0) && world.getBlock(l2, k2, l1 - 1).isAir(world, l2, k2, l1 - 1))
 						{
 							this.generateVines(world, l2, k2, l1 - 1, 1);
 						}
 
-						if(random.nextInt(4) == 0 && world.getBlock(l2, k2, l1 + 1).isAir(world, l2, k2, l1 + 1))
+						if((random.nextInt(4) == 0) && world.getBlock(l2, k2, l1 + 1).isAir(world, l2, k2, l1 + 1))
 						{
 							this.generateVines(world, l2, k2, l1 + 1, 4);
 						}
@@ -257,7 +257,7 @@ public class WorldGenMangroveTree extends WorldGenAbstractTree
 		{
 			--p_76536_3_;
 
-			if(!(p_76536_1_.getBlock(p_76536_2_, p_76536_3_, p_76536_4_).isAir(p_76536_1_, p_76536_2_, p_76536_3_, p_76536_4_)) || i1 <= 0)
+			if(!(p_76536_1_.getBlock(p_76536_2_, p_76536_3_, p_76536_4_).isAir(p_76536_1_, p_76536_2_, p_76536_3_, p_76536_4_)) || (i1 <= 0))
 			{
 				return;
 			}

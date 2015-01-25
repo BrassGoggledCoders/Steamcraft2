@@ -58,7 +58,7 @@ public class BlockThin extends BaseBlock
 	protected void func_150089_b(int p_150089_1_)
 	{
 		byte b0 = 0;
-		float f = 1 * (1 + b0) / 16.0F;
+		float f = (1 * (1 + b0)) / 16.0F;
 		this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, f, 1.0F);
 	}
 

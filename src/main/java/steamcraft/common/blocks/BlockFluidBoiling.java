@@ -52,8 +52,8 @@ public class BlockFluidBoiling extends BlockFluidClassic
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister iconRegister)
 	{
-		this.blockIcon = iconRegister.registerIcon(ModInfo.PREFIX + "boiling" + name + "Still");
-		iconFlowing = iconRegister.registerIcon(ModInfo.PREFIX + "boiling" + name + "Flowing");
+		this.blockIcon = iconRegister.registerIcon(ModInfo.PREFIX + "boiling" + this.name + "Still");
+		iconFlowing = iconRegister.registerIcon(ModInfo.PREFIX + "boiling" + this.name + "Flowing");
 	}
 
 	@Override

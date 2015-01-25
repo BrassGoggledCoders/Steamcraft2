@@ -56,7 +56,7 @@ public class TeleporterDeeps extends Teleporter
 			byte b0 = 1;
 			byte b1 = 0;
 
-			new WorldGenFissurePortal().generate(worldServerInstance, random, i, j, k);
+			new WorldGenFissurePortal().generate(this.worldServerInstance, this.random, i, j, k);
 
 			par1Entity.setLocationAndAngles(i, j, k, par1Entity.rotationYaw, 0.0F);
 			par1Entity.motionX = par1Entity.motionY = par1Entity.motionZ = 0.0D;
@@ -388,11 +388,11 @@ public class TeleporterDeeps extends Teleporter
 				i1 = this.worldServerInstance.getActualHeight() - 10;
 			}
 			j5 = i1;
-			new WorldGenFissurePortal().generate(worldServerInstance, random, i, j, k);
+			new WorldGenFissurePortal().generate(this.worldServerInstance, this.random, i, j, k);
 		}
 		for(k2 = 0; k2 < 4; ++k2)
 		{
-			new WorldGenFissurePortal().generate(worldServerInstance, random, i, j, k);
+			new WorldGenFissurePortal().generate(this.worldServerInstance, this.random, i, j, k);
 
 			for(i3 = 0; i3 < 4; ++i3)
 			{

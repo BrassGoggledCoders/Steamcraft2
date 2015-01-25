@@ -30,8 +30,9 @@ public class BlockLeafPile extends BaseBlock
 	{
 		int l = p_149668_1_.getBlockMetadata(p_149668_2_, p_149668_3_, p_149668_4_) & 7;
 		float f = 0.125F;
-		return AxisAlignedBB.getBoundingBox(p_149668_2_ + this.minX, p_149668_3_ + this.minY, p_149668_4_ + this.minZ, p_149668_2_ + this.maxX, p_149668_3_ + l
-				* f, p_149668_4_ + this.maxZ);
+		return AxisAlignedBB.getBoundingBox(p_149668_2_ + this.minX, p_149668_3_ + this.minY, p_149668_4_ + this.minZ, p_149668_2_ + this.maxX, p_149668_3_
+				+ (l
+				* f), p_149668_4_ + this.maxZ);
 	}
 
 	/**
@@ -74,7 +75,7 @@ public class BlockLeafPile extends BaseBlock
 	protected void func_150154_b(int p_150154_1_)
 	{
 		int j = p_150154_1_ & 7;
-		float f = 2 * (1 + j) / 16.0F;
+		float f = (2 * (1 + j)) / 16.0F;
 		this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, f, 1.0F);
 	}
 
@@ -169,6 +170,6 @@ public class BlockLeafPile extends BaseBlock
 	public boolean isReplaceable(IBlockAccess world, int x, int y, int z)
 	{
 		int meta = world.getBlockMetadata(x, y, z);
-		return meta >= 7 ? false : blockMaterial.isReplaceable();
+		return meta >= 7 ? false : this.blockMaterial.isReplaceable();
 	}
 }
