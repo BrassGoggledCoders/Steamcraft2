@@ -4,12 +4,11 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.world.World;
 import steamcraft.common.Steamcraft;
-import steamcraft.common.lib.ModInfo;
 
 public class BlockSiren extends Block
 {
 	private boolean isOn;
-	private final String sound = ModInfo.PREFIX;
+	String sound = "steamcraft:";
 
 	public BlockSiren(Material p_i45394_1_, boolean isOn, String sound)
 	{
