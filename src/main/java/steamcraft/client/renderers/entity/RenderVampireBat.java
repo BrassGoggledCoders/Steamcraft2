@@ -12,7 +12,6 @@
  */
 package steamcraft.client.renderers.entity;
 
-import net.minecraft.client.model.ModelBat;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
@@ -22,6 +21,7 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
+import steamcraft.client.renderers.models.ModelVampireBat;
 import steamcraft.common.entities.living.EntityVampireBat;
 import steamcraft.common.lib.ModInfo;
 
@@ -36,8 +36,8 @@ public class RenderVampireBat extends RenderLiving
 
 	public RenderVampireBat()
 	{
-		super(new ModelBat(), 0.30F);
-		this.renderedBatSize = ((ModelBat) this.mainModel).getBatSize();
+		super(new ModelVampireBat(), 0.30F);
+		this.renderedBatSize = ((ModelVampireBat) this.mainModel).getBatSize();
 	}
 
 	/**
@@ -47,12 +47,12 @@ public class RenderVampireBat extends RenderLiving
 	 */
 	public void doRender(EntityVampireBat p_76986_1_, double p_76986_2_, double p_76986_4_, double p_76986_6_, float p_76986_8_, float p_76986_9_)
 	{
-		int i = ((ModelBat) this.mainModel).getBatSize();
+		int i = ((ModelVampireBat) this.mainModel).getBatSize();
 
 		if(i != this.renderedBatSize)
 		{
 			this.renderedBatSize = i;
-			this.mainModel = new ModelBat();
+			this.mainModel = new ModelVampireBat();
 		}
 
 		super.doRender(p_76986_1_, p_76986_2_, p_76986_4_, p_76986_6_, p_76986_8_, p_76986_9_);

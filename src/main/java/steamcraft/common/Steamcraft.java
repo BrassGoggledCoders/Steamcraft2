@@ -66,13 +66,11 @@ public class Steamcraft
 	public void preInit(FMLPreInitializationEvent event)
 	{
 		configPath = event.getModConfigurationDirectory() + "/sc2/";
-
 		Config.initialise(configPath);
 
 		NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
 
 		InitPackets.init();
-
 		InitItems.init();
 		InitBlocks.init();
 		CompatabilityLayer.initCompatItems();

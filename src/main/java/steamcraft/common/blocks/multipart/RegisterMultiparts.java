@@ -17,7 +17,7 @@ public class RegisterMultiparts implements IPartFactory, IPartConverter
 	@Override
 	public TMultiPart createPart(String name, boolean client)
 	{
-		if(name.equals(ModInfo.PREFIX + "LightningRodPart"))
+		if(name.equals(ModInfo.PREFIX + "LampPart"))
 			return new LightningRodPart();
 
 		return null;
@@ -27,7 +27,7 @@ public class RegisterMultiparts implements IPartFactory, IPartConverter
 	{
 		MultiPartRegistry.registerConverter(this);
 		MultiPartRegistry.registerParts(this, new String[] {
-				ModInfo.PREFIX + "LightningRodPart",
+				ModInfo.PREFIX + "LampPart",
 		});
 	}
 
