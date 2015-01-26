@@ -12,6 +12,7 @@ import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 import net.minecraft.world.gen.feature.WorldGenVines;
 import steamcraft.common.InitBlocks;
+import steamcraft.common.worldgen.WorldGenLeafPile;
 import steamcraft.common.worldgen.structure.WorldGenBlockgroup;
 import steamcraft.common.worldgen.trees.WorldGenMangroveTree;
 import cpw.mods.fml.relauncher.Side;
@@ -82,23 +83,30 @@ public class BiomeDepthsSwamp extends BiomeDepthsBase
 	}
 
 	@Override
-	public void decorate(World world, Random random, int x, int y)
+	public void decorate(World world, Random random, int x, int z)
 	{
 		for(int l = 0; l < 5; ++l)
 		{
 			int i1 = x + random.nextInt(16) + 8;
-			int j1 = y + random.nextInt(16) + 8;
+			int j1 = z + random.nextInt(16) + 8;
 			int k1 = random.nextInt(100);
 			new WorldGenVines().generate(world, random, i1, k1, j1);
 		}
 		for(int l = 0; l < 5; ++l)
 		{
 			int i1 = x + random.nextInt(16) + 8;
-			int j1 = y + random.nextInt(16) + 8;
+			int j1 = z + random.nextInt(16) + 8;
 			int k1 = random.nextInt(100);
 			new WorldGenBlockgroup(InitBlocks.blockMud, 20).generate(world, random, i1, k1, j1);
 		}
-		super.decorate(world, random, x, y);
+		for(int l = 0; l < 15; l++)
+		{
+			int X = x + random.nextInt(16);
+			int Z = z + random.nextInt(16);
+			int Y = random.nextInt(100);
+			new WorldGenLeafPile().generate(world, random, X, Y, Z);
+		}
+		super.decorate(world, random, x, z);
 	}
 
 	/**
