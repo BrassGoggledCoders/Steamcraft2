@@ -21,7 +21,7 @@ public class BlockMotionSensor extends BlockContainer
 		super(p_i45386_1_);
 		this.isOn = isOn;
 		if(!isOn)
-			setCreativeTab(Steamcraft.tabSC2);
+			this.setCreativeTab(Steamcraft.tabSC2);
 	}
 
 	@Override
@@ -32,19 +32,19 @@ public class BlockMotionSensor extends BlockContainer
 
 	public boolean isIndirectlyPoweringTo(World par1World, int par2, int par3, int par4, int par5)
 	{
-		return isOn;
+		return this.isOn;
 	}
 
 	@Override
 	public boolean canProvidePower()
 	{
-		return isOn;
+		return this.isOn;
 	}
 
 	@Override
 	public int isProvidingWeakPower(IBlockAccess p_149709_1_, int p_149709_2_, int p_149709_3_, int p_149709_4_, int p_149709_5_)
 	{
-		if(isOn)
+		if(this.isOn)
 			return 15;
 		else
 			return 0;

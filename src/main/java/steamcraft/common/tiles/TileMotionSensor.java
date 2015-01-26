@@ -24,12 +24,12 @@ public class TileMotionSensor extends TileEntity
 		{
 			// FMLLog.fine("test", "test");
 			living = (EntityLiving) iterator.next();
-			if(living.motionX > 0.5 || living.motionY > 0.5 || living.motionZ > 0.5)
+			if((living.motionX > 0.5) || (living.motionY > 0.5) || (living.motionZ > 0.5))
 			{
-				worldObj.setBlock(xCoord, yCoord, zCoord, InitBlocks.blockMotionSensorOn);
+				this.worldObj.setBlock(this.xCoord, this.yCoord, this.zCoord, InitBlocks.blockMotionSensorOn);
 			}
 			else
-				worldObj.setBlock(xCoord, yCoord, zCoord, InitBlocks.blockMotionSensor);
+				this.worldObj.setBlock(this.xCoord, this.yCoord, this.zCoord, InitBlocks.blockMotionSensor);
 		}
 	}
 }

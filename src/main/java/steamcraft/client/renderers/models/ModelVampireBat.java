@@ -79,14 +79,14 @@ public class ModelVampireBat extends ModelBase
 		{
 			f6 = (180F / (float) Math.PI);
 			this.batHead.rotateAngleX = p_78088_6_ / (180F / (float) Math.PI);
-			this.batHead.rotateAngleY = (float) Math.PI - p_78088_5_ / (180F / (float) Math.PI);
+			this.batHead.rotateAngleY = (float) Math.PI - (p_78088_5_ / (180F / (float) Math.PI));
 			this.batHead.rotateAngleZ = (float) Math.PI;
 			this.batHead.setRotationPoint(0.0F, -2.0F, 0.0F);
 			this.batRightWing.setRotationPoint(-3.0F, 0.0F, 3.0F);
 			this.batLeftWing.setRotationPoint(3.0F, 0.0F, 3.0F);
 			this.batBody.rotateAngleX = (float) Math.PI;
 			this.batRightWing.rotateAngleX = -0.15707964F;
-			this.batRightWing.rotateAngleY = -((float) Math.PI * 2F / 5F);
+			this.batRightWing.rotateAngleY = -(((float) Math.PI * 2F) / 5F);
 			this.batOuterRightWing.rotateAngleY = -1.7278761F;
 			this.batLeftWing.rotateAngleX = this.batRightWing.rotateAngleX;
 			this.batLeftWing.rotateAngleY = -this.batRightWing.rotateAngleY;
@@ -101,7 +101,7 @@ public class ModelVampireBat extends ModelBase
 			this.batHead.setRotationPoint(0.0F, 0.0F, 0.0F);
 			this.batRightWing.setRotationPoint(0.0F, 0.0F, 0.0F);
 			this.batLeftWing.setRotationPoint(0.0F, 0.0F, 0.0F);
-			this.batBody.rotateAngleX = ((float) Math.PI / 4F) + MathHelper.cos(p_78088_4_ * 0.1F) * 0.15F;
+			this.batBody.rotateAngleX = ((float) Math.PI / 4F) + (MathHelper.cos(p_78088_4_ * 0.1F) * 0.15F);
 			this.batBody.rotateAngleY = 0.0F;
 			this.batRightWing.rotateAngleY = MathHelper.cos(p_78088_4_ * 1.3F) * (float) Math.PI * 0.25F;
 			this.batLeftWing.rotateAngleY = -this.batRightWing.rotateAngleY;

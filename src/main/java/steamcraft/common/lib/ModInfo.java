@@ -12,7 +12,6 @@
  */
 package steamcraft.common.lib;
 
-
 /**
  * A neat, tidy class for holding various bits of mod information.
  * 

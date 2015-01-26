@@ -17,7 +17,7 @@ public class BlockSiren extends Block
 		isOn = this.isOn;
 		this.sound = sound;
 		if(!isOn)
-			setCreativeTab(Steamcraft.tabSC2);
+			this.setCreativeTab(Steamcraft.tabSC2);
 	}
 
 	/**
@@ -34,7 +34,7 @@ public class BlockSiren extends Block
 			}
 			else if(!this.isOn && world.isBlockIndirectlyGettingPowered(x, y, z))
 			{
-				world.playSoundEffect(x + 0.5D, y + 0.5D, z + 0.5D, ModInfo.PREFIX + sound, 5F, 1F);
+				world.playSoundEffect(x + 0.5D, y + 0.5D, z + 0.5D, ModInfo.PREFIX + this.sound, 5F, 1F);
 			}
 		}
 	}
@@ -52,9 +52,9 @@ public class BlockSiren extends Block
 			{
 				world.scheduleBlockUpdate(x, y, z, this, 4);
 			}
-			else if(!isOn && world.isBlockIndirectlyGettingPowered(x, y, z))
+			else if(!this.isOn && world.isBlockIndirectlyGettingPowered(x, y, z))
 			{
-				world.playSoundEffect(x + 0.5D, y + 0.5D, z + 0.5D, ModInfo.PREFIX + sound, 5F, 1F);
+				world.playSoundEffect(x + 0.5D, y + 0.5D, z + 0.5D, ModInfo.PREFIX + this.sound, 5F, 1F);
 			}
 		}
 	}
