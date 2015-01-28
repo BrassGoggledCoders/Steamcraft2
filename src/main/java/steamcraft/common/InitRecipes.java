@@ -31,13 +31,13 @@ import cpw.mods.fml.common.registry.GameRegistry;
  */
 public class InitRecipes
 {
-	public static void init()
+	static void init()
 	{
 		initializeCraftingRecipes();
 		initializeSmeltingRecipes();
 	}
 
-	public static void initializeCraftingRecipes()
+	private static void initializeCraftingRecipes()
 	{
 		initMetalsRecipes();
 		initToolsRecipes();
@@ -413,7 +413,7 @@ public class InitRecipes
 		GameRegistry.addRecipe(new ItemStack(InitBlocks.blockPath), new Object[] { "XS", "SX", 'S', Blocks.sand, 'X', Blocks.gravel });
 	}
 
-	public static void initializeSmeltingRecipes()
+	private static void initializeSmeltingRecipes()
 	{
 		// Ores ---> Ingots
 		for(int meta = 0; meta < 4; meta++)

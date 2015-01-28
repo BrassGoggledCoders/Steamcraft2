@@ -16,17 +16,16 @@ package steamcraft.client.lib;
  * @author Surseance
  * 
  */
-public final class GuiIDs
+public class GuiIDs
 {
 	public static final int STEAM_BOILER = 0;
-	public static final int DROP_HAMMER = 1;
-	public static final int VANITY = 2;
-	public static final int ARMOR_EDITOR = 3;
-	public static final int BLOOMERY = 4;
-	public static final int BATTERY = 5;
-	public static final int CHARGER = 6;
-	public static final int TIMEBOMB = 7;
-	public static final int NUKE_BOILER = 8;
-	public static final int PDA = 9;
-	public static final int LORE = 10;
+	public static final int VANITY = 1;
+	public static final int ARMOR_EDITOR = 2;
+	public static final int BLOOMERY = 3;
+	public static final int BATTERY = 4;
+	public static final int CHARGER = 5;
+	public static final int TIMEBOMB = 6;
+	public static final int NUKE_BOILER = 7;
+	public static final int PDA = 8;
+	public static final int LORE = 9;
 }

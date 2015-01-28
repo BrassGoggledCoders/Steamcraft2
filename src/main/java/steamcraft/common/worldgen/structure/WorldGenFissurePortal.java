@@ -10,7 +10,7 @@ import steamcraft.common.InitBlocks;
 
 public class WorldGenFissurePortal extends WorldGenerator
 {
-	public boolean locationIsValidSpawn(World world, int i, int j, int k)
+	private boolean locationIsValidSpawn(World world, int i, int j, int k)
 	{
 		Block check = world.getBlock(i, j, k);
 
@@ -24,7 +24,7 @@ public class WorldGenFissurePortal extends WorldGenerator
 	{
 	}
 
-	public void setBlock(World world, int x, int y, int z, Block block, int metadata)
+	private void setBlock(World world, int x, int y, int z, Block block, int metadata)
 	{
 		world.setBlock(x, y, z, block, metadata, 2);
 	}

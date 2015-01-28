@@ -419,9 +419,9 @@ public class InitBlocks
 		GameRegistry.registerBlock(blockNuclearSirenOn, "BlockNuclearSirenOn");
 	}
 
-	static String[] blacklist = new String[] { "BlockFissurePortal", "BlockLamp" };
+	private static String[] blacklist = new String[] { "BlockFissurePortal", "BlockLamp" };
 
-	public static void registerBlock(Block block, String name)
+	private static void registerBlock(Block block, String name)
 	{
 		if(block.isOpaqueCube() && !Arrays.asList(blacklist).contains(name))
 			FMPCompatHandler.registerFMP(block);
@@ -429,7 +429,7 @@ public class InitBlocks
 		GameRegistry.registerBlock(block, name);
 	}
 
-	public static void registerBlock(Block block, Class<? extends ItemBlock> itemblock, String name)
+	private static void registerBlock(Block block, Class<? extends ItemBlock> itemblock, String name)
 	{
 		if(block.isOpaqueCube() && !Arrays.asList(blacklist).contains(name))
 			FMPCompatHandler.registerFMP(block);

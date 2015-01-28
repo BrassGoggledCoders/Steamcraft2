@@ -1,5 +1,5 @@
 /**
- * This class was created by BrassGoggledCoders modding team. 
+ * This class was created by BrassGoggledCoders modding team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -8,7 +8,7 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- * 
+ *
  */
 package steamcraft.client.renderers.item;
 
@@ -25,23 +25,23 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class ModelWingpack extends ModelBiped
 {
-	public final ModelRenderer shape1;
-	public final ModelRenderer shape2;
-	public final ModelRenderer shape3;
-	public final ModelRenderer shape6;
-	public final ModelRenderer shape7;
-	public final ModelRenderer shape4;
-	public final ModelRenderer shape5;
-	public final ModelRenderer shape8;
-	public final ModelRenderer shape9;
-	public final ModelRenderer shape10;
-	public final ModelRenderer shape11;
-	public final ModelRenderer shape12;
-	public final ModelRenderer shape13;
-	public ModelRenderer shape15;
-	public final ModelRenderer shape16;
-	public final ModelRenderer shape17;
-	public final ModelRenderer shape14;
+	private final ModelRenderer shape1;
+	private final ModelRenderer shape2;
+	private final ModelRenderer shape3;
+	private final ModelRenderer shape6;
+	private final ModelRenderer shape7;
+	private final ModelRenderer shape4;
+	private final ModelRenderer shape5;
+	private final ModelRenderer shape8;
+	private final ModelRenderer shape9;
+	private final ModelRenderer shape10;
+	private final ModelRenderer shape11;
+	private final ModelRenderer shape12;
+	private final ModelRenderer shape13;
+	private ModelRenderer shape15;
+	private final ModelRenderer shape16;
+	private final ModelRenderer shape17;
+	private final ModelRenderer shape14;
 
 	public ModelWingpack(float f)
 	{

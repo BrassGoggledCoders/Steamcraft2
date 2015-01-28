@@ -32,8 +32,8 @@ public class BlockPlankStackRenderer implements ISimpleBlockRenderingHandler
 {
 	private static final ResourceLocation texture = new ResourceLocation("minecraft:textures/blocks/planks_oak.png");
 
-	public static float pixel = 1F / 16F / 2F;
-	public static float tPixel = 1F / 32F;
+	private static float pixel = 1F / 16F / 2F;
+	private static float tPixel = 1F / 32F;
 
 	@Override
 	public void renderInventoryBlock(Block block, int metadata, int modelID, RenderBlocks renderer)

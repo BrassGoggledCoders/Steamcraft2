@@ -25,7 +25,7 @@ import net.minecraft.world.World;
  */
 public class CommonProxy
 {
-	public void init()
+	void init()
 	{
 		this.registerDisplayInformation();
 		this.registerRenderers();
@@ -49,23 +49,8 @@ public class CommonProxy
 		return null;
 	}
 
-	public Object addSC2Capes()
-	{
-		return null;
-	}
-
 	public Object rayFX(World world, EntityPlayer player, double dx, double dy, double dz, int type, boolean reverse, float endMod, Object input,
 			int impact, Color rayColor)
-	{
-		return null;
-	}
-
-	public Object smokeFX(World world, double dx, double dy, double dz, Object input)
-	{
-		return null;
-	}
-
-	public ModelBiped getMonocleArmorModel(int id)
 	{
 		return null;
 	}
@@ -81,11 +66,6 @@ public class CommonProxy
 	}
 
 	public ModelBiped getWingpackArmorModel(int id)
-	{
-		return null;
-	}
-
-	public ModelBiped getCapeArmorModel(int id)
 	{
 		return null;
 	}

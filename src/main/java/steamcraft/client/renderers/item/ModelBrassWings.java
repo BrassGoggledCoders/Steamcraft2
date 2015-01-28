@@ -1,5 +1,5 @@
 /**
- * This class was created by BrassGoggledCoders modding team. 
+ * This class was created by BrassGoggledCoders modding team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -8,7 +8,7 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- * 
+ *
  */
 package steamcraft.client.renderers.item;
 
@@ -25,21 +25,21 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class ModelBrassWings extends ModelBiped
 {
-	public final ModelRenderer shape1;
-	public final ModelRenderer shape2;
-	public final ModelRenderer shape3;
-	public final ModelRenderer shape4;
-	public final ModelRenderer shape5;
-	public final ModelRenderer shape6;
-	public final ModelRenderer shape7;
-	public final ModelRenderer shape8;
-	public final ModelRenderer shape9;
-	public final ModelRenderer shape10;
-	public final ModelRenderer shape11;
-	public final ModelRenderer shape12;
-	public final ModelRenderer shape13;
-	public final ModelRenderer shape15;
-	public final ModelRenderer shape14;
+	private final ModelRenderer shape1;
+	private final ModelRenderer shape2;
+	private final ModelRenderer shape3;
+	private final ModelRenderer shape4;
+	private final ModelRenderer shape5;
+	private final ModelRenderer shape6;
+	private final ModelRenderer shape7;
+	private final ModelRenderer shape8;
+	private final ModelRenderer shape9;
+	private final ModelRenderer shape10;
+	private final ModelRenderer shape11;
+	private final ModelRenderer shape12;
+	private final ModelRenderer shape13;
+	private final ModelRenderer shape15;
+	private final ModelRenderer shape14;
 
 	public ModelBrassWings(float f)
 	{
@@ -78,35 +78,27 @@ public class ModelBrassWings extends ModelBiped
 		this.shape5.setRotationPoint(-1.5F, 2.5F, 2.5F);
 		this.shape5.mirror = true;
 		this.setRotation(this.shape5, 0F, 0F, 0.4363323F);
-		// shape8.mirror = true;
 		this.shape8 = new ModelRenderer(this, 0, 6);
 		this.shape8.addBox(0F, 0F, 0F, 1, 6, 1);
 		this.shape8.setRotationPoint(-5F, -0.8F, 2.5F);
 		this.shape8.mirror = true;
-		// shape8.mirror = false;
-		// shape9.mirror = true;
 		this.shape9 = new ModelRenderer(this, 20, 0);
 		this.shape9.addBox(-4F, 0F, 0F, 4, 1, 1);
 		this.shape9.setRotationPoint(-4F, -1F, 2.5F);
 		this.shape9.mirror = true;
 		this.setRotation(this.shape9, 0F, 0F, 0.1745329F);
-		// shape9.mirror = false;
-		// shape10.mirror = true;
 		this.shape10 = new ModelRenderer(this, 32, 0);
 		this.shape10.addBox(0F, 0F, 0F, 4, 10, 0);
 		this.shape10.setRotationPoint(4F, -1F, 3F);
 		this.shape10.mirror = true;
-		// shape10.mirror = false;
 		this.shape11 = new ModelRenderer(this, 32, 0);
 		this.shape11.addBox(0F, 0F, 0F, 4, 10, 0);
 		this.shape11.setRotationPoint(-8F, -1F, 3F);
 		this.shape11.mirror = true;
-		// shape12.mirror = true;
 		this.shape12 = new ModelRenderer(this, 6, 10);
 		this.shape12.addBox(0F, 0F, 0F, 3, 3, 0);
 		this.shape12.setRotationPoint(4F, 9F, 3F);
 		this.shape12.mirror = true;
-		// shape12.mirror = false;
 		this.shape13 = new ModelRenderer(this, 6, 10);
 		this.shape13.addBox(0F, 0F, 0F, 3, 3, 0);
 		this.shape13.setRotationPoint(-7F, 9F, 3F);

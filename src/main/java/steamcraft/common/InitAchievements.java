@@ -29,7 +29,7 @@ public class InitAchievements
 
 	public static AchievementPage sc2AchievePage;
 
-	public static void init()
+	static void init()
 	{
 		String prefix = ModInfo.ID + "achievement.";
 		ingotAchieve = new Achievement(prefix + "ingot", "ingotachieve", 0, 0, InitItems.itemIngot, null).registerStat().initIndependentStat();

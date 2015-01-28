@@ -20,6 +20,7 @@ import net.minecraftforge.common.util.ForgeDirection;
 
 import org.lwjgl.opengl.GL11;
 
+import steamcraft.common.lib.LibInfo;
 import steamcraft.common.lib.ModInfo;
 import steamcraft.common.tiles.energy.TileCopperWire;
 
@@ -32,8 +33,8 @@ public class TileCopperWireRenderer extends TileEntitySpecialRenderer
 	private static final ResourceLocation texture = new ResourceLocation(ModInfo.PREFIX + "textures/blocks/blockCopperWire.png");
 	private static final ResourceLocation texture1 = new ResourceLocation(ModInfo.PREFIX + "textures/blocks/blockInsulatedWire.png");
 
-	public static float pixel = 1F / 16F / 2F;
-	public static float tPixel = 1F / 32F;
+	private static float pixel = LibInfo.pixel;
+	private static float tPixel = LibInfo.tPixel;
 
 	@Override
 	public void renderTileEntityAt(TileEntity tile, double transX, double transY, double transZ, float f)

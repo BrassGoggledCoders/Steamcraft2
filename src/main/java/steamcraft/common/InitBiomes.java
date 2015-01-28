@@ -17,7 +17,7 @@ public class InitBiomes
 	public static BiomeGenBase biomeDepths, biomeDepthsF, biomeDepthsM, biomeDepthsS, biomeDepthsI, /* biomeDepthsO, biomeDepthsB */biomeDepthsSC,
 			biomeDepthsSCH, biomeDepthsSW, biomeDepthsTF, biomeDepthsJ;
 
-	public static void init()
+	static void init()
 	{
 		biomeDepths = new BiomeDepthsBase(ConfigGeneral.depthsBiomeID);
 		biomeDepthsF = new BiomeDepthsForest(ConfigGeneral.depthsFBiomeID);

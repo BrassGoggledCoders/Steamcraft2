@@ -38,13 +38,11 @@ public class GuiTimeBomb extends GuiContainer
 	private static ResourceLocation guitexture = new ResourceLocation(ModInfo.PREFIX + "textures/gui/timebomb.png");
 
 	private GuiTextField text;
-	@SuppressWarnings("unused")
 	private ContainerTimeBomb container;
 	private EntityPlayer player;
-	@SuppressWarnings("unused")
 	private GuiTimeBomb.ChangeButton timeChangeButton;
 
-	TileTimeBomb tile;
+	private TileTimeBomb tile;
 
 	public GuiTimeBomb(InventoryPlayer inv, TileTimeBomb tile)
 	{

@@ -48,7 +48,7 @@ public class TileBatteryRenderer extends TileEntitySpecialRenderer
 		GL11.glPopMatrix();
 	}
 
-	public void renderBattery(TileEntity te, World world, int x, int y, int z)
+	private void renderBattery(TileEntity te, World world, int x, int y, int z)
 	{
 		GL11.glPushMatrix();
 		GL11.glTranslatef(0, 0.7F, 0);

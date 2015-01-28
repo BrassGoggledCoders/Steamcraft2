@@ -9,7 +9,7 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 
 public class WorldGenUndergroundHouse extends WorldGenerator
 {
-	public boolean locationIsValidSpawn(World world, int i, int j, int k)
+	private boolean locationIsValidSpawn(World world, int i, int j, int k)
 	{
 		Block check = world.getBlock(i, j, k);
 
@@ -23,7 +23,7 @@ public class WorldGenUndergroundHouse extends WorldGenerator
 	{
 	}
 
-	public void setBlock(World world, int x, int y, int z, Block block, int metadata)
+	private void setBlock(World world, int x, int y, int z, Block block, int metadata)
 	{
 		world.setBlock(x, y, z, block, metadata, 2);
 	}
@@ -31,7 +31,6 @@ public class WorldGenUndergroundHouse extends WorldGenerator
 	@Override
 	public boolean generate(World world, Random rand, int i, int j, int k)
 	{
-		// FMLLog.bigWarning("Gen at: " + i + j + k, "Gen at: " + i + j + k);
 		if(!this.locationIsValidSpawn(world, i, j, k))
 		{
 			return false;

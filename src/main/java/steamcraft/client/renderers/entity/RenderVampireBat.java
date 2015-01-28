@@ -32,7 +32,6 @@ public class RenderVampireBat extends RenderLiving
 	 * not actually sure this is size, is not used as of now, but the model would be recreated if the value changed and it seems a good match for a bats size
 	 */
 	private int renderedBatSize;
-	private static final String __OBFID = "CL_00000979";
 
 	public RenderVampireBat()
 	{
@@ -45,7 +44,7 @@ public class RenderVampireBat extends RenderLiving
 	 * which does the actual work. In all probabilty, the class Render is generic (Render<T extends Entity) and this method has signature public void
 	 * func_76986_a(T entity, double d, double d1, double d2, float f, float f1). But JAD is pre 1.5 so doesn't do that.
 	 */
-	public void doRender(EntityVampireBat p_76986_1_, double p_76986_2_, double p_76986_4_, double p_76986_6_, float p_76986_8_, float p_76986_9_)
+	private void doRender(EntityVampireBat p_76986_1_, double p_76986_2_, double p_76986_4_, double p_76986_6_, float p_76986_8_, float p_76986_9_)
 	{
 		int i = ((ModelVampireBat) this.mainModel).getBatSize();
 
@@ -61,7 +60,7 @@ public class RenderVampireBat extends RenderLiving
 	/**
 	 * Returns the location of an entity's texture. Doesn't seem to be called unless you call Render.bindEntityTexture.
 	 */
-	protected ResourceLocation getEntityTexture(EntityVampireBat p_110775_1_)
+	private ResourceLocation getEntityTexture(EntityVampireBat p_110775_1_)
 	{
 		return batTextures;
 	}
@@ -69,7 +68,7 @@ public class RenderVampireBat extends RenderLiving
 	/**
 	 * Allows the render to do any OpenGL state modifications necessary before the model is rendered. Args: entityLiving, partialTickTime
 	 */
-	protected void preRenderCallback(EntityVampireBat p_77041_1_, float p_77041_2_)
+	private void preRenderCallback(EntityVampireBat p_77041_1_, float p_77041_2_)
 	{
 		GL11.glScalef(0.35F, 0.35F, 0.35F);
 	}
@@ -77,12 +76,12 @@ public class RenderVampireBat extends RenderLiving
 	/**
 	 * Sets a simple glTranslate on a LivingEntity.
 	 */
-	protected void renderLivingAt(EntityVampireBat p_77039_1_, double p_77039_2_, double p_77039_4_, double p_77039_6_)
+	private void renderLivingAt(EntityVampireBat p_77039_1_, double p_77039_2_, double p_77039_4_, double p_77039_6_)
 	{
 		super.renderLivingAt(p_77039_1_, p_77039_2_, p_77039_4_, p_77039_6_);
 	}
 
-	protected void rotateCorpse(EntityVampireBat p_77043_1_, float p_77043_2_, float p_77043_3_, float p_77043_4_)
+	private void rotateCorpse(EntityVampireBat p_77043_1_, float p_77043_2_, float p_77043_3_, float p_77043_4_)
 	{
 		if(!p_77043_1_.getIsBatHanging())
 		{
