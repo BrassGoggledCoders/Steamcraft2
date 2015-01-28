@@ -26,18 +26,11 @@ import net.minecraft.world.World;
 import org.lwjgl.input.Keyboard;
 
 import steamcraft.client.lib.RenderIDs;
-import steamcraft.client.renderers.block.BlockArmorEditorRenderer;
-import steamcraft.client.renderers.block.BlockBatteryRenderer;
 import steamcraft.client.renderers.block.BlockCastIronLampRenderer;
-import steamcraft.client.renderers.block.BlockChargerRenderer;
 import steamcraft.client.renderers.block.BlockCopperPipeRenderer;
 import steamcraft.client.renderers.block.BlockCopperWireRenderer;
-import steamcraft.client.renderers.block.BlockCrystalRenderer;
-import steamcraft.client.renderers.block.BlockHatchRenderer;
-import steamcraft.client.renderers.block.BlockLightningRodRenderer;
-import steamcraft.client.renderers.block.BlockPlankStackRenderer;
 import steamcraft.client.renderers.block.BlockRailingRenderer;
-import steamcraft.client.renderers.block.BlockTeslaCoilRenderer;
+import steamcraft.client.renderers.block.BlockTESRRenderer;
 import steamcraft.client.renderers.entity.RenderBoar;
 import steamcraft.client.renderers.entity.RenderFleshGolem;
 import steamcraft.client.renderers.entity.RenderGhostSpider;
@@ -128,13 +121,13 @@ public class ClientProxy extends CommonProxy
 	{
 		RenderingRegistry.registerEntityRenderingHandler(EntityMinedBlock.class, new RenderMinedBlock());
 
-		RenderingRegistry.registerEntityRenderingHandler(EntityBullet.class, /* new RenderBullet() */new RenderSnowball(InitItems.itemMusketBall));
-		RenderingRegistry.registerEntityRenderingHandler(EntityFieldManipulator.class, /* new RenderBullet() */new RenderSnowball(
+		RenderingRegistry.registerEntityRenderingHandler(EntityBullet.class, new RenderSnowball(InitItems.itemMusketBall));
+		RenderingRegistry.registerEntityRenderingHandler(EntityFieldManipulator.class, new RenderSnowball(
 				InitItems.itemFieldManipulator));
-		RenderingRegistry.registerEntityRenderingHandler(EntitySplashLightningBottle.class, /* new RenderBullet() */new RenderSnowball(
+		RenderingRegistry.registerEntityRenderingHandler(EntitySplashLightningBottle.class, new RenderSnowball(
 				InitItems.itemSplashLightningBottle));
 		RenderingRegistry.registerEntityRenderingHandler(EntityGrapplingHook.class, new RenderGrapplingHook());
-		RenderingRegistry.registerEntityRenderingHandler(EntityRocket.class, new RenderSnowball(InitItems.itemRocket)); // TODO
+		RenderingRegistry.registerEntityRenderingHandler(EntityRocket.class, new RenderSnowball(InitItems.itemRocket));
 
 		RenderingRegistry.registerEntityRenderingHandler(EntityFleshGolem.class, new RenderFleshGolem(new ModelFleshGolem(), 0));
 		RenderingRegistry.registerEntityRenderingHandler(EntityLostMiner.class, new RenderLostMiner(new ModelZombie(), 0));
@@ -155,16 +148,16 @@ public class ClientProxy extends CommonProxy
 		RenderingRegistry.registerBlockHandler(new BlockCopperWireRenderer());
 		// Lightning Rod
 		ClientRegistry.bindTileEntitySpecialRenderer(TileLightningRod.class, new TileLightningRodRenderer());
-		RenderingRegistry.registerBlockHandler(new BlockLightningRodRenderer());
+		RenderingRegistry.registerBlockHandler(new BlockTESRRenderer(new TileLightningRod(), RenderIDs.blockLightningRodRI));
 		// TeslaCoil
 		ClientRegistry.bindTileEntitySpecialRenderer(TileTeslaCoil.class, new TileTeslaCoilRenderer());
-		RenderingRegistry.registerBlockHandler(new BlockTeslaCoilRenderer());
+		RenderingRegistry.registerBlockHandler(new BlockTESRRenderer(new TileTeslaCoil(), RenderIDs.blockTeslaCoilRI));
 		// Battery
 		ClientRegistry.bindTileEntitySpecialRenderer(TileBattery.class, new TileBatteryRenderer());
-		RenderingRegistry.registerBlockHandler(new BlockBatteryRenderer());
+		RenderingRegistry.registerBlockHandler(new BlockTESRRenderer(new TileBattery(), RenderIDs.blockBatteryRI));
 		// Charger
 		ClientRegistry.bindTileEntitySpecialRenderer(TileCharger.class, new TileChargerRenderer());
-		RenderingRegistry.registerBlockHandler(new BlockChargerRenderer());
+		RenderingRegistry.registerBlockHandler(new BlockTESRRenderer(new TileCharger(), RenderIDs.blockChargerRI));
 		// Cast Iron Railing
 		RenderingRegistry.registerBlockHandler(new BlockRailingRenderer());
 		// Cast Iron Lamp
@@ -172,15 +165,13 @@ public class ClientProxy extends CommonProxy
 		RenderingRegistry.registerBlockHandler(new BlockCastIronLampRenderer());
 		// Hatch
 		ClientRegistry.bindTileEntitySpecialRenderer(TileHatch.class, new TileHatchRenderer());
-		RenderingRegistry.registerBlockHandler(new BlockHatchRenderer());
-		// Plank Stack
-		RenderingRegistry.registerBlockHandler(new BlockPlankStackRenderer());
+		RenderingRegistry.registerBlockHandler(new BlockTESRRenderer(new TileHatch(), RenderIDs.blockHatchRI));
 		// Crystal
 		ClientRegistry.bindTileEntitySpecialRenderer(TileCrystal.class, new TileCrystalRenderer());
-		RenderingRegistry.registerBlockHandler(new BlockCrystalRenderer());
+		RenderingRegistry.registerBlockHandler(new BlockTESRRenderer(new TileCrystal(), RenderIDs.blockCrystalRI));
 		// Armor Editor
 		ClientRegistry.bindTileEntitySpecialRenderer(TileArmorEditor.class, new TileArmorEditorRenderer());
-		RenderingRegistry.registerBlockHandler(new BlockArmorEditorRenderer());
+		RenderingRegistry.registerBlockHandler(new BlockTESRRenderer(new TileArmorEditor(), RenderIDs.blockArmorEditorRI));
 	}
 
 	@Override

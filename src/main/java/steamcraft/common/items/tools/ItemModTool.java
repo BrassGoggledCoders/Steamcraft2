@@ -150,7 +150,7 @@ public class ItemModTool extends BaseItem
 	public boolean getIsRepairable(ItemStack stack1, ItemStack stack2)
 	{
 		Item item = stack2.getItem();
-		return this.toolMaterial.func_150995_f() == item ? true : super.getIsRepairable(stack1, stack2);
+		return this.toolMaterial.getRepairItemStack().getItem() == item ? true : super.getIsRepairable(stack1, stack2);
 	}
 
 	@Override
