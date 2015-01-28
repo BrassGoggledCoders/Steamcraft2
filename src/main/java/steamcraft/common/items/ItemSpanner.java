@@ -14,7 +14,6 @@ package steamcraft.common.items;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.entity.item.EntityMinecart;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
@@ -66,44 +65,5 @@ public class ItemSpanner extends UniversalWrench
 	public void registerIcons(IIconRegister par1IconRegister)
 	{
 		this.itemIcon = par1IconRegister.registerIcon(ModInfo.PREFIX + this.getUnlocalizedName().substring(5));
-	}
-
-	@Override
-	public boolean canWhack(EntityPlayer player, ItemStack crowbar, int x, int y, int z)
-	{
-		return true;
-	}
-
-	@Override
-	public void onWhack(EntityPlayer player, ItemStack crowbar, int x, int y, int z)
-	{
-		crowbar.damageItem(2, player);
-		player.swingItem();
-	}
-
-	@Override
-	public boolean canLink(EntityPlayer player, ItemStack crowbar, EntityMinecart cart)
-	{
-		return true;
-	}
-
-	@Override
-	public void onLink(EntityPlayer player, ItemStack crowbar, EntityMinecart cart)
-	{
-		crowbar.damageItem(2, player);
-		player.swingItem();
-	}
-
-	@Override
-	public boolean canBoost(EntityPlayer player, ItemStack crowbar, EntityMinecart cart)
-	{
-		return true;
-	}
-
-	@Override
-	public void onBoost(EntityPlayer player, ItemStack crowbar, EntityMinecart cart)
-	{
-		crowbar.damageItem(2, player);
-		player.swingItem();
 	}
 }
