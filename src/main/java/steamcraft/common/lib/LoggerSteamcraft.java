@@ -1,5 +1,5 @@
 /**
- * This class was created by BrassGoggledCoders modding team. 
+ * This class was created by BrassGoggledCoders modding team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -8,12 +8,11 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- * 
+ *
  */
 package steamcraft.common.lib;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import org.apache.logging.log4j.Level;
 
 import cpw.mods.fml.common.FMLLog;
 
@@ -23,15 +22,28 @@ import cpw.mods.fml.common.FMLLog;
  */
 public class LoggerSteamcraft
 {
-	private static Logger logger = Logger.getLogger(ModInfo.ID);
-
-	public static void init()
+	public static void log(org.apache.logging.log4j.Level level, String message)
 	{
-		logger.setParent((Logger) FMLLog.getLogger());
+		FMLLog.getLogger().log(level, "[Steamcraft] " + message);
 	}
 
-	public static void log(Level level, String message)
+	public static void warning(String message)
 	{
-		logger.log(level, "[Steamcraft] " + message);
+		FMLLog.getLogger().log(Level.WARN, "[Steamcraft] " + message);
+	}
+
+	public static void info(String message)
+	{
+		FMLLog.getLogger().log(Level.INFO, "[Steamcraft] " + message);
+	}
+
+	public static void fatal(String message)
+	{
+		FMLLog.getLogger().log(Level.FATAL, "[Steamcraft] " + message);
+	}
+
+	public static void error(String message)
+	{
+		FMLLog.getLogger().log(Level.ERROR, "[Steamcraft] " + message);
 	}
 }

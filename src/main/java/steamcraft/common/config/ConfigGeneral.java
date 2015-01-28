@@ -13,7 +13,6 @@
 package steamcraft.common.config;
 
 import java.io.File;
-import java.util.logging.Level;
 
 import net.minecraftforge.common.config.Configuration;
 import steamcraft.common.lib.LoggerSteamcraft;
@@ -78,7 +77,7 @@ public class ConfigGeneral
 		}
 		catch(Exception e)
 		{
-			LoggerSteamcraft.log(Level.SEVERE, "Failed to load configuration file:" + e);
+			LoggerSteamcraft.error("Failed to load configuration file:" + e);
 		}
 		finally
 		{
