@@ -56,7 +56,7 @@ public class ItemSpanner extends UniversalWrench
 
 			wire.changeExtracting();
 		}
-
+		player.swingItem();
 		return true;
 
 	}
@@ -78,6 +78,7 @@ public class ItemSpanner extends UniversalWrench
 	public void onWhack(EntityPlayer player, ItemStack crowbar, int x, int y, int z)
 	{
 		crowbar.damageItem(2, player);
+		player.swingItem();
 	}
 
 	@Override
@@ -90,6 +91,7 @@ public class ItemSpanner extends UniversalWrench
 	public void onLink(EntityPlayer player, ItemStack crowbar, EntityMinecart cart)
 	{
 		crowbar.damageItem(2, player);
+		player.swingItem();
 	}
 
 	@Override
@@ -102,5 +104,6 @@ public class ItemSpanner extends UniversalWrench
 	public void onBoost(EntityPlayer player, ItemStack crowbar, EntityMinecart cart)
 	{
 		crowbar.damageItem(2, player);
+		player.swingItem();
 	}
 }
