@@ -1,5 +1,5 @@
 /**
- * This class was created by BrassGoggledCoders modding team. 
+ * This class was created by BrassGoggledCoders modding team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -8,7 +8,7 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- * 
+ *
  */
 package steamcraft.common.lib.events;
 
@@ -54,17 +54,12 @@ public class EventHandlerClient
 	@SubscribeEvent(priority = EventPriority.NORMAL, receiveCanceled = true)
 	public void onEvent(KeyInputEvent event)
 	{
-		// DEBUG
-		// System.out.println("Key Input Event");
-
 		KeyBinding[] keyBindings = ClientProxy.keyBindings;
 
 		if(keyBindings[0].isPressed())
 		{
-			// System.out.println("Key binding =" + keyBindings[0].getKeyDescription());
 			EntityPlayer player = Minecraft.getMinecraft().thePlayer;
 			InitPackets.network.sendToServer(new OpenContainerFromClientPacket(player.getEntityId(), GuiIDs.VANITY, player.dimension));
-			// player.openGui(Steamcraft.instance, GuiIDs.VANITY, Minecraft.getMinecraft().theWorld, player.serverPosX, player.serverPosY, player.serverPosZ);
 		}
 	}
 
@@ -72,7 +67,6 @@ public class EventHandlerClient
 	@SubscribeEvent(receiveCanceled = true)
 	public void onPlayerRender(RenderPlayerEvent.Post event)
 	{
-		// FMLLog.warning("Event Called", "Event Called");
 		EntityPlayerExtended props = ((EntityPlayerExtended) event.entityPlayer.getExtendedProperties(EntityPlayerExtended.EXT_PROP_NAME));
 		InventoryVanity inventory = props.getInventory();
 		for(int i = 0; i < inventory.getSizeInventory(); i++)
