@@ -26,11 +26,11 @@ import steamcraft.common.InitBlocks;
 import steamcraft.common.InitItems;
 import steamcraft.common.config.ConfigGeneral;
 import steamcraft.common.lib.LibInfo;
+import steamcraft.common.lib.LoggerSteamcraft;
 import steamcraft.common.lib.ModInfo;
 import vazkii.botania.api.wiki.WikiHooks;
 import boilerplate.common.utils.helpers.IMCHelper;
 import boilerplate.common.utils.helpers.OreDictHelper;
-import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.event.FMLInterModComms;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -53,7 +53,7 @@ public class CompatabilityLayer
 
 		if(Loader.isModLoaded("Botania"))
 		{
-			FMLLog.info("[SteamCraft2]", "Botania Detected. Loading Flower Power Module");
+			LoggerSteamcraft.info("Botania Detected. Loading Flower Power Module");
 			WikiHooks.registerModWiki(ModInfo.ID, new BotaniaWikiProvider());
 		}
 	}
@@ -61,7 +61,7 @@ public class CompatabilityLayer
 	private static void sendIMCMessages()
 	{
 		if(Loader.isModLoaded("VersionChecker"))
-			FMLLog.info("[SteamCraft2]", "Poking VersionChecker");
+			LoggerSteamcraft.info("Poking VersionChecker");
 		FMLInterModComms.sendRuntimeMessage(ModInfo.ID, "VersionChecker", "addVersionCheck", ModInfo.VERSION_URL);
 		if(Loader.isModLoaded("TConstruct"))
 			sendTiConIMC();
@@ -69,7 +69,7 @@ public class CompatabilityLayer
 
 	private static void sendTiConIMC()
 	{
-		FMLLog.info("[SteamCraft2]", "TiCon Detected, adding Etherium Tool Material");
+		LoggerSteamcraft.info("TiCon Detected, adding Etherium Tool Material");
 		IMCHelper.addNewToolMaterial(ConfigGeneral.etheriumMaterialID, "Etherium", 2000, 500, 5, 0.1F, 1, EnumChatFormatting.RED.toString(), 16711935);
 
 		IMCHelper.addNewPartBuilderMaterial(ConfigGeneral.etheriumMaterialID, new ItemStack(InitItems.itemResource, 1, 0), new ItemStack(
@@ -97,7 +97,7 @@ public class CompatabilityLayer
 
 	private static void registerOreDictionaryEntries()
 	{
-		FMLLog.info("[SteamCraft2]", "Registering Thingies in OreDictionary");
+		LoggerSteamcraft.info("Registering Thingies in OreDictionary");
 		OreDictHelper.registerOreWithAlts(new String[] { "ingotAluminum", "ingotAluminium" }, new ItemStack(InitItems.itemIngot, 1, 0));
 		OreDictionary.registerOre("ingotCopper", new ItemStack(InitItems.itemIngot, 1, 1));
 		OreDictionary.registerOre("ingotTin", new ItemStack(InitItems.itemIngot, 1, 2));
@@ -189,7 +189,7 @@ public class CompatabilityLayer
 
 	private static void registerBiomeTypes()
 	{
-		FMLLog.info("[SteamCraft2]", "Registering Biome Dictionary entries");
+		LoggerSteamcraft.info("Registering Biome Dictionary entries");
 		BiomeDictionary.registerBiomeType(InitBiomes.biomeDepths, BiomeDictionary.Type.HILLS);
 		BiomeDictionary.registerBiomeType(InitBiomes.biomeDepthsF, BiomeDictionary.Type.HILLS, BiomeDictionary.Type.FOREST);
 		BiomeDictionary.registerBiomeType(InitBiomes.biomeDepthsM, BiomeDictionary.Type.HILLS);
@@ -212,7 +212,7 @@ public class CompatabilityLayer
 	{
 		if(Loader.isModLoaded("Thaumcraft"))
 		{
-			FMLLog.info("[SteamCraft2]", "Thaumcraft Detected. Loading Wizarding Module");
+			LoggerSteamcraft.info("Thaumcraft Detected. Loading Wizarding Module");
 
 			GameRegistry.registerItem(InitItems.itemSteamcraftCluster, "ItemSteamcraftCluster");
 

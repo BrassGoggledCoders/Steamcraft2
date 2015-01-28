@@ -18,7 +18,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import boilerplate.common.baseclasses.BaseTileWithInventory;
-import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
 import cpw.mods.fml.common.network.simpleimpl.MessageContext;
@@ -85,7 +84,6 @@ public class UpdateClientsideInventoryPacket implements IMessage
 				for(int i = 0; i < message.ids.length; i++)
 				{
 					tile.inventory[i] = new ItemStack(Item.getItemById(message.ids[i]));
-					FMLLog.warning(tile.inventory[i].getDisplayName(), tile.inventory[i].getDisplayName());
 				}
 			}
 

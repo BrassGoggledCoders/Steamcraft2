@@ -23,9 +23,9 @@ import net.minecraft.world.World;
 import steamcraft.client.lib.GuiIDs;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.blocks.machines.BaseContainerBlock;
+import steamcraft.common.lib.LoggerSteamcraft;
 import steamcraft.common.lib.ModInfo;
 import steamcraft.common.tiles.TileTimeBomb;
-import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -93,9 +93,9 @@ public class BlockTimeBomb extends BaseContainerBlock
 		if((ent != null) && (ent instanceof EntityPlayer))
 		{
 			EntityPlayer player = (EntityPlayer) ent;
-			FMLLog.info(
+			LoggerSteamcraft.info(
 					"Time Bomb placed at X: " + Integer.toString(x) + " Y: " + Integer.toString(y) + " Z: " + Integer.toString(z) + " by player: "
-							+ player.getCommandSenderName(), "");
+							+ player.getCommandSenderName());
 		}
 	}
 
