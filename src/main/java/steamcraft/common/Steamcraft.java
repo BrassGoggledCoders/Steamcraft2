@@ -74,13 +74,12 @@ public class Steamcraft
 		InitItems.init();
 		InitBlocks.init();
 		CompatabilityLayer.initCompatItems();
-		// if(Loader.isModLoaded("ForgeMultipart"))
-		// new RegisterMultiparts().init();
 	}
 
 	@EventHandler
 	public void init(FMLInitializationEvent event)
 	{
+		CompatabilityLayer.init();
 		InitEntities.init();
 		InitAchievements.init();
 
@@ -102,7 +101,6 @@ public class Steamcraft
 
 		InitBiomes.init();
 
-		CompatabilityLayer.init();
 		FMPCompatHandler.doRegister();
 	}
 

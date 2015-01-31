@@ -42,14 +42,16 @@ import cpw.mods.fml.common.registry.GameRegistry;
 public class CompatabilityLayer
 {
 
-	public static void postInit()
+	public static void init()
 	{
 		registerOreDictionaryEntries();
+	}
+
+	public static void postInit()
+	{
 		registerBiomeTypes();
 		sendIMCMessages();
 		ForgeHooks.init();
-		// if(Loader.isModLoaded("MineFactoryReloaded"))
-		// MFRCompat.init();
 
 		if(Loader.isModLoaded("Botania"))
 		{
@@ -65,6 +67,20 @@ public class CompatabilityLayer
 		FMLInterModComms.sendRuntimeMessage(ModInfo.ID, "VersionChecker", "addVersionCheck", ModInfo.VERSION_URL);
 		if(Loader.isModLoaded("TConstruct"))
 			sendTiConIMC();
+		if(Loader.isModLoaded("Thaumcraft"))
+			sendThaumcraftIMC();
+
+	}
+
+	private static void sendThaumcraftIMC()
+	{
+		FMLInterModComms.sendMessage("Thaumcraft", "harvestStandardCrop", new ItemStack(InitBlocks.blockTeaPlant, 1, 1));
+		FMLInterModComms.sendMessage("Thaumcraft", "nativeCluster",
+				Block.getIdFromBlock(InitBlocks.blockCustomOre) + "," + 0 + "," + Item.getIdFromItem(InitItems.itemSteamcraftCluster) + "," + 0
+						+ ",2.0");
+		FMLInterModComms.sendMessage("Thaumcraft", "nativeCluster",
+				Block.getIdFromBlock(InitBlocks.blockCustomOre) + "," + 2 + "," + Item.getIdFromItem(InitItems.itemSteamcraftCluster) + "," + 1
+						+ ",2.0");
 	}
 
 	private static void sendTiConIMC()
@@ -200,18 +216,6 @@ public class CompatabilityLayer
 		BiomeDictionary.registerBiomeType(InitBiomes.biomeDepthsSCH, BiomeDictionary.Type.HOT, BiomeDictionary.Type.DRY);
 		BiomeDictionary.registerBiomeType(InitBiomes.biomeDepthsSW, BiomeDictionary.Type.WET, BiomeDictionary.Type.SWAMP);
 		BiomeDictionary.registerBiomeType(InitBiomes.biomeDepthsTF, BiomeDictionary.Type.FOREST, BiomeDictionary.Type.DENSE);
-	}
-
-	public static void init()
-	{
-		// Thaumcraft
-		FMLInterModComms.sendMessage("Thaumcraft", "harvestStandardCrop", new ItemStack(InitBlocks.blockTeaPlant, 1, 1));
-		FMLInterModComms.sendMessage("Thaumcraft", "nativeCluster",
-				Block.getIdFromBlock(InitBlocks.blockCustomOre) + "," + 0 + "," + Item.getIdFromItem(InitItems.itemSteamcraftCluster) + "," + 0
-						+ ",2.0");
-		FMLInterModComms.sendMessage("Thaumcraft", "nativeCluster",
-				Block.getIdFromBlock(InitBlocks.blockCustomOre) + "," + 2 + "," + Item.getIdFromItem(InitItems.itemSteamcraftCluster) + "," + 1
-						+ ",2.0");
 	}
 
 	public static void initCompatItems()
