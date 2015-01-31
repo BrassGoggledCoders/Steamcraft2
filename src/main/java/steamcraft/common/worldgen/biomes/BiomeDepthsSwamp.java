@@ -1,5 +1,5 @@
 /**
- * This class was created by BrassGoggledCoders modding team. 
+ * This class was created by BrassGoggledCoders modding team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -8,7 +8,7 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- * 
+ *
  */
 package steamcraft.common.worldgen.biomes;
 
@@ -39,7 +39,7 @@ public class BiomeDepthsSwamp extends BiomeDepthsBase
 		this.setBiomeName(StatCollector.translateToLocal("biome.steamcraft2.innerearth.swamp.name"));
 		this.spawnableMonsterList.add(new BiomeGenBase.SpawnListEntry(EntitySlime.class, 1, 1, 1));
 		this.waterColorMultiplier = 14745518;
-		this.theBiomeDecorator.treesPerChunk = 10;
+		this.theBiomeDecorator.treesPerChunk = 15;
 		this.theBiomeDecorator.flowersPerChunk = 1;
 		this.theBiomeDecorator.deadBushPerChunk = 1;
 		this.theBiomeDecorator.mushroomsPerChunk = 8;
@@ -97,7 +97,7 @@ public class BiomeDepthsSwamp extends BiomeDepthsBase
 	@Override
 	public void decorate(World world, Random random, int x, int z)
 	{
-		for(int l = 0; l < 5; ++l)
+		for(int l = 0; l < 30; ++l)
 		{
 			int i1 = x + random.nextInt(16) + 8;
 			int j1 = z + random.nextInt(16) + 8;
