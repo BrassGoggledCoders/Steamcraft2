@@ -401,7 +401,7 @@ public class InitRecipes
 				'C',
 				"plateCastIron", 'G', Blocks.glass, 'J', InitItems.itemElectricJarMedium }));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemElectricJarHuge, 1, 20), new Object[] { "GGG", "GJG", "GGG", 'S',
-				InitItems.itemSlimeRubber, 'I', "ingotSteel", 'G', Items.diamond, 'J', InitItems.itemElectricJarHuge }));
+				InitItems.itemSlimeRubber, 'I', "ingotSteel", 'G', Items.diamond, 'J', InitItems.itemElectricJarLarge }));
 		GameRegistry.addRecipe(new ItemStack(InitBlocks.blockFlesh), "ZZ", "ZZ", 'Z', Items.rotten_flesh);
 		GameRegistry.addRecipe(new ItemStack(InitBlocks.blockCongealedSlime), "RRR", "RRR", "RRR", 'R', InitItems.itemSlimeRubber);
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemSpyglass), new Object[] { "BGB", "W W", " G ", 'B', "ingotBrass", 'G',
