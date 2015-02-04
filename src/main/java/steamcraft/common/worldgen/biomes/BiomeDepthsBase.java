@@ -17,14 +17,17 @@ import java.util.Random;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
+import net.minecraft.world.biome.BiomeDecorator;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.feature.WorldGenMinable;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 import steamcraft.common.InitBlocks;
 import steamcraft.common.entities.living.EntityGrub;
 import steamcraft.common.entities.living.EntityLostMiner;
 import steamcraft.common.worldgen.structure.WorldGenUndergroundHouse;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class BiomeDepthsBase extends BiomeGenBase
 {
@@ -49,7 +52,6 @@ public class BiomeDepthsBase extends BiomeGenBase
 	@Override
 	public void decorate(World world, Random rand, int blockChunkX, int blockChunkZ)
 	{
-		super.decorate(world, rand, blockChunkX, blockChunkZ);
 		int rarity = 6 + rand.nextInt(9);
 
 		for(int a = 0; a < rarity; ++a)
@@ -83,6 +85,7 @@ public class BiomeDepthsBase extends BiomeGenBase
 		{
 			new WorldGenUndergroundHouse().generate(world, rand, X2, Y2, Z2);
 		}
+		super.decorate(world, rand, blockChunkX, blockChunkZ);
 	}
 
 	@Override
@@ -97,5 +100,11 @@ public class BiomeDepthsBase extends BiomeGenBase
 	public int getBiomeFoliageColor(int p_150571_1_, int p_150571_2_, int p_150571_3_)
 	{
 		return 8045877;
+	}
+
+	@Override
+	public BiomeDecorator getModdedBiomeDecorator(BiomeDecorator original)
+	{
+		return new DepthsBiomeDecorator(original);
 	}
 }
