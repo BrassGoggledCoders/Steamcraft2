@@ -1,5 +1,5 @@
 /**
- * This class was created by BrassGoggledCoders modding team. 
+ * This class was created by BrassGoggledCoders modding team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -8,7 +8,7 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- * 
+ *
  */
 package steamcraft.client.gui;
 
@@ -20,12 +20,12 @@ import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.ResourceLocation;
+
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTank;
 
 import org.lwjgl.opengl.GL11;
-
 import steamcraft.common.lib.ModInfo;
 import steamcraft.common.tiles.TileSteamBoiler;
 import steamcraft.common.tiles.container.ContainerSteamBoiler;
@@ -99,7 +99,7 @@ public class GuiSteamBoiler extends GuiContainer
 		if((fluid == null) || (fluid.getFluid() == null))
 			return;
 
-		IIcon icon = fluid.getFluid().getBlock().getIcon(0, 0);
+		IIcon icon = fluid.getFluid().getIcon();
 		this.mc.renderEngine.bindTexture(TextureMap.locationBlocksTexture);
 		int fullX = width / 16;
 		int fullY = height / 16;

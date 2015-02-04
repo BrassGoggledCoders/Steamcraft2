@@ -20,12 +20,12 @@ import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.ResourceLocation;
+
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTank;
 
 import org.lwjgl.opengl.GL11;
-
 import steamcraft.common.lib.ModInfo;
 import steamcraft.common.tiles.TileNuclearBoiler;
 import steamcraft.common.tiles.container.ContainerNuclearBoiler;
@@ -99,7 +99,7 @@ public class GuiNuclearBoiler extends GuiContainer
 		if((fluid == null) || (fluid.getFluid() == null))
 			return;
 
-		IIcon icon = fluid.getFluid().getBlock().getIcon(0, 0);
+		IIcon icon = fluid.getFluid().getIcon();
 		this.mc.renderEngine.bindTexture(TextureMap.locationBlocksTexture);
 		int fullX = width / 16;
 		int fullY = height / 16;
