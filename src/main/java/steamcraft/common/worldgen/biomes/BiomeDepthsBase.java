@@ -12,22 +12,16 @@
  */
 package steamcraft.common.worldgen.biomes;
 
-import java.util.Random;
-
 import net.minecraft.init.Blocks;
 import net.minecraft.util.StatCollector;
-import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeDecorator;
 import net.minecraft.world.biome.BiomeGenBase;
-import net.minecraft.world.gen.feature.WorldGenMinable;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-import steamcraft.common.InitBlocks;
 import steamcraft.common.entities.living.EntityGrub;
 import steamcraft.common.entities.living.EntityLostMiner;
-import steamcraft.common.worldgen.structure.WorldGenUndergroundHouse;
 
 public class BiomeDepthsBase extends BiomeGenBase
 {
@@ -47,45 +41,6 @@ public class BiomeDepthsBase extends BiomeGenBase
 		this.func_76733_a(8045877);
 		this.setColor(8045877);
 		this.waterColorMultiplier = 6860222;
-	}
-
-	@Override
-	public void decorate(World world, Random rand, int blockChunkX, int blockChunkZ)
-	{
-		int rarity = 6 + rand.nextInt(9);
-
-		for(int a = 0; a < rarity; ++a)
-		{
-			int x = blockChunkX + rand.nextInt(16);
-			int y = rand.nextInt(28) + 4;
-			int z = blockChunkZ + rand.nextInt(16);
-
-			if(world.getBlock(x, y, z).isReplaceableOreGen(world, x, y, z, Blocks.stone))
-			{
-				new WorldGenMinable(InitBlocks.blockCompressedStone, rarity).generate(world, rand, x, y, z);
-			}
-		}
-		for(int a = 0; a < 10; ++a)
-		{
-			int x = blockChunkX + rand.nextInt(16);
-			int y = rand.nextInt(60);
-			int z = blockChunkZ + rand.nextInt(16);
-
-			if(world.getBlock(x, y, z).isReplaceableOreGen(world, x, y, z, Blocks.stone))
-			{
-				new WorldGenMinable(Blocks.emerald_ore, 3).generate(world, rand, x, y, z);
-			}
-		}
-
-		int X2 = blockChunkX + rand.nextInt(16);
-		int Z2 = blockChunkZ + rand.nextInt(16);
-		int Y2 = rand.nextInt(50);
-
-		for(int i = 0; i < 5; i++)
-		{
-			new WorldGenUndergroundHouse().generate(world, rand, X2, Y2, Z2);
-		}
-		super.decorate(world, rand, blockChunkX, blockChunkZ);
 	}
 
 	@Override

@@ -23,6 +23,9 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 
 import net.minecraftforge.event.terraingen.DeferredBiomeDecorator;
 
+import steamcraft.common.InitBlocks;
+import steamcraft.common.worldgen.structure.WorldGenUndergroundHouse;
+
 public class DepthsBiomeDecorator extends DeferredBiomeDecorator
 {
 	/** The clay generator. */
@@ -229,6 +232,40 @@ public class DepthsBiomeDecorator extends DeferredBiomeDecorator
 				i1 = chunkZ + random.nextInt(16) + 8;
 				(new WorldGenLiquids(Blocks.flowing_lava)).generate(world, random, k, l, i1);
 			}
+		}
+		/* Start Custom */
+		int rarity = 6 + random.nextInt(9);
+
+		for(int a = 0; a < rarity; ++a)
+		{
+			int x = chunkX + random.nextInt(16);
+			int y = random.nextInt(28) + 4;
+			int z = chunkZ + random.nextInt(16);
+
+			if(world.getBlock(x, y, z).isReplaceableOreGen(world, x, y, z, Blocks.stone))
+			{
+				new WorldGenMinable(InitBlocks.blockCompressedStone, rarity).generate(world, random, x, y, z);
+			}
+		}
+		for(int a = 0; a < 10; ++a)
+		{
+			int x = chunkX + random.nextInt(16);
+			int y = random.nextInt(60);
+			int z = chunkZ + random.nextInt(16);
+
+			if(world.getBlock(x, y, z).isReplaceableOreGen(world, x, y, z, Blocks.stone))
+			{
+				new WorldGenMinable(Blocks.emerald_ore, 3).generate(world, random, x, y, z);
+			}
+		}
+
+		int X2 = chunkX + random.nextInt(16);
+		int Z2 = chunkZ + random.nextInt(16);
+		int Y2 = random.nextInt(50);
+
+		for(int i2 = 0; i2 < 5; i2++)
+		{
+			new WorldGenUndergroundHouse().generate(world, random, X2, Y2, Z2);
 		}
 	}
 
