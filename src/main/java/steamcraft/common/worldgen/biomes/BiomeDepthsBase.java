@@ -12,8 +12,11 @@
  */
 package steamcraft.common.worldgen.biomes;
 
+import java.util.Random;
+
 import net.minecraft.init.Blocks;
 import net.minecraft.util.StatCollector;
+import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeDecorator;
 import net.minecraft.world.biome.BiomeGenBase;
 
@@ -25,6 +28,7 @@ import steamcraft.common.entities.living.EntityLostMiner;
 
 public class BiomeDepthsBase extends BiomeGenBase
 {
+	DepthsBiomeDecorator decorator = (DepthsBiomeDecorator) theBiomeDecorator;
 
 	public BiomeDepthsBase(int p_i1971_1_)
 	{
@@ -61,5 +65,11 @@ public class BiomeDepthsBase extends BiomeGenBase
 	public BiomeDecorator getModdedBiomeDecorator(BiomeDecorator original)
 	{
 		return new DepthsBiomeDecorator(original);
+	}
+
+	@Override
+	public void decorate(World world, Random random, int x, int z)
+	{
+		this.decorator.decorateChunk(world, random, this, x, z);
 	}
 }
