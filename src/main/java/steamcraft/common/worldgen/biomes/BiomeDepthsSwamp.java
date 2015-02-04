@@ -23,12 +23,15 @@ import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 import net.minecraft.world.gen.feature.WorldGenVines;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 import steamcraft.common.InitBlocks;
 import steamcraft.common.worldgen.WorldGenLeafPile;
 import steamcraft.common.worldgen.structure.WorldGenBlockgroup;
 import steamcraft.common.worldgen.trees.WorldGenMangroveTree;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import steamcraft.common.worldgen.trees.WorldGenWillowTree;
 
 public class BiomeDepthsSwamp extends BiomeDepthsBase
 {
@@ -53,9 +56,13 @@ public class BiomeDepthsSwamp extends BiomeDepthsBase
 	}
 
 	@Override
-	public WorldGenAbstractTree func_150567_a(Random p_150567_1_)
+	public WorldGenAbstractTree func_150567_a(Random rand)
 	{
-		return new WorldGenMangroveTree(false);
+		int randNum = rand.nextInt(2);
+		if(randNum == 0)
+			return new WorldGenMangroveTree(false);
+		else
+			return new WorldGenWillowTree(false);
 	}
 
 	@Override

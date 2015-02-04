@@ -17,8 +17,12 @@ import java.util.Arrays;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.ItemBlock;
+
+import cpw.mods.fml.common.registry.GameRegistry;
+
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
+
 import steamcraft.client.renderers.tile.TileCastIronLampRenderer.TileCastIronLamp;
 import steamcraft.client.renderers.tile.TileCrystalRenderer.TileCrystal;
 import steamcraft.common.blocks.BaseBlock;
@@ -87,7 +91,6 @@ import steamcraft.common.tiles.energy.TileTurbine;
 import boilerplate.common.baseclasses.BaseItemBlockWithMetadata;
 import boilerplate.common.compathandler.FMPCompatHandler;
 import boilerplate.common.utils.helpers.RegistryHelper;
-import cpw.mods.fml.common.registry.GameRegistry;
 
 /**
  * @author Surseance
@@ -164,7 +167,8 @@ public class InitBlocks
 
 	public static Block blockPolishedPlanks;
 
-	public static Block blockRedwoodLog, blockRedwoodLeaves, blockMangroveLog, blockMangroveLeaves, blockRedwoodPlanks, blockMangrovePlanks;
+	public static Block blockRedwoodLog, blockRedwoodLeaves, blockMangroveLog, blockMangroveLeaves, blockRedwoodPlanks, blockMangrovePlanks, blockWillowLog,
+			blockWillowLeaves, blockWillowPlanks;
 
 	public static Block blockStandardSiren, blockStandardSirenOn, blockAllClearSiren,
 			blockAllClearSirenOn, blockIntruderSiren, blockIntruderSirenOn, blockNuclearSiren,
@@ -387,6 +391,15 @@ public class InitBlocks
 
 		blockMangrovePlanks = new BaseBlock(Material.wood).setBlockName("blockMangrovePlanks");
 		registerBlock(blockMangrovePlanks, "BlockMangrovePlanks");
+
+		blockWillowLog = new BlockCustomLog("Willow").setBlockName("blockWillowLog");
+		registerBlock(blockWillowLog, "BlockWillowLog");
+
+		blockWillowLeaves = new BlockCustomLeaves("Willow").setBlockName("blockWillowLeaves");
+		registerBlock(blockWillowLeaves, "BlockWillowLeaves");
+
+		blockWillowPlanks = new BaseBlock(Material.wood).setBlockName("blockWillowPlanks");
+		registerBlock(blockWillowPlanks, "BlockWillowPlanks");
 
 		blockMud = new BlockMud(Material.ground).setBlockName("blockMud");
 		registerBlock(blockMud, "BlockMud");
