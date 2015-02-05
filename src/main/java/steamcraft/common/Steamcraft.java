@@ -13,8 +13,6 @@
 package steamcraft.common;
 
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.WeightedRandomChestContent;
 
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
@@ -28,7 +26,6 @@ import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 
-import net.minecraftforge.common.ChestGenHooks;
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.MinecraftForge;
 
@@ -40,6 +37,7 @@ import steamcraft.common.config.ConfigWorldGen;
 import steamcraft.common.lib.CommandIssue;
 import steamcraft.common.lib.CommandSteamcraft;
 import steamcraft.common.lib.CreativeTabSteamcraft;
+import steamcraft.common.lib.LoggerSteamcraft;
 import steamcraft.common.lib.ModInfo;
 import steamcraft.common.lib.events.EventHandlerClient;
 import steamcraft.common.lib.events.EventHandlerFML;
@@ -68,24 +66,27 @@ public class Steamcraft
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{
+		LoggerSteamcraft.info("Starting Preinit");
+
 		configPath = event.getModConfigurationDirectory() + "/sc2/";
 		Config.initialise(configPath);
 
-		NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
-
-		InitPackets.init();
 		InitItems.init();
-		InitBlocks.init();
 		CompatabilityLayer.initCompatItems();
-
+		InitBlocks.init();
 		InitEntities.init();
+
+		LoggerSteamcraft.info("Finished Preinit");
 	}
 
 	@EventHandler
 	public void init(FMLInitializationEvent event)
 	{
+		LoggerSteamcraft.info("Starting Init");
+
 		CompatabilityLayer.init();
-		InitAchievements.init();
+		NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
+		InitPackets.init();
 
 		proxy.init();
 
@@ -97,24 +98,28 @@ public class Steamcraft
 		if(ConfigWorldGen.generationEnabled)
 			GameRegistry.registerWorldGenerator(new WorldGenSteamcraft(), 1);
 
-		// Biomes
-
-		// Dimension
 		DimensionManager.registerProviderType(ConfigGeneral.deepsDimensionID, WorldProviderDeeps.class, false);
 		DimensionManager.registerDimension(ConfigGeneral.deepsDimensionID, ConfigGeneral.deepsDimensionID);
 
 		InitBiomes.init();
 
 		FMPCompatHandler.doRegister();
+
+		LoggerSteamcraft.info("Finished Init");
 	}
 
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event)
 	{
+		LoggerSteamcraft.info("Starting Postinit");
+
 		CompatabilityLayer.postInit();
+
 		InitRecipes.init();
-		// TODO
-		ChestGenHooks.addItem(ChestGenHooks.DUNGEON_CHEST, new WeightedRandomChestContent(new ItemStack(InitItems.itemLoreBook), 1, 1, 30));
+		InitAchievements.init();
+		InitMisc.initDungeonLoot();
+
+		LoggerSteamcraft.info("Finished Postinit");
 	}
 
 	@EventHandler
