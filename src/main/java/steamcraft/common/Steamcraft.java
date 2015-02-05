@@ -15,9 +15,23 @@ package steamcraft.common;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.WeightedRandomChestContent;
+
+import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.common.Mod;
+import cpw.mods.fml.common.Mod.EventHandler;
+import cpw.mods.fml.common.Mod.Instance;
+import cpw.mods.fml.common.SidedProxy;
+import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLPostInitializationEvent;
+import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.event.FMLServerStartingEvent;
+import cpw.mods.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.common.registry.GameRegistry;
+
 import net.minecraftforge.common.ChestGenHooks;
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.MinecraftForge;
+
 import steamcraft.client.GuiHandler;
 import steamcraft.common.compat.CompatabilityLayer;
 import steamcraft.common.config.Config;
@@ -33,17 +47,6 @@ import steamcraft.common.lib.events.EventHandlerForge;
 import steamcraft.common.worldgen.WorldGenSteamcraft;
 import steamcraft.common.worldgen.dimension.WorldProviderDeeps;
 import boilerplate.common.compathandler.FMPCompatHandler;
-import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.Mod.EventHandler;
-import cpw.mods.fml.common.Mod.Instance;
-import cpw.mods.fml.common.SidedProxy;
-import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLPostInitializationEvent;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.event.FMLServerStartingEvent;
-import cpw.mods.fml.common.network.NetworkRegistry;
-import cpw.mods.fml.common.registry.GameRegistry;
 
 /**
  * @author Surseance
@@ -74,13 +77,14 @@ public class Steamcraft
 		InitItems.init();
 		InitBlocks.init();
 		CompatabilityLayer.initCompatItems();
+
+		InitEntities.init();
 	}
 
 	@EventHandler
 	public void init(FMLInitializationEvent event)
 	{
 		CompatabilityLayer.init();
-		InitEntities.init();
 		InitAchievements.init();
 
 		proxy.init();
