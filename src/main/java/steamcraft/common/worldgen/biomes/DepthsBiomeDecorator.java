@@ -23,7 +23,7 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 
 import net.minecraftforge.event.terraingen.DeferredBiomeDecorator;
 
-import steamcraft.common.InitBlocks;
+import steamcraft.common.init.InitBlocks;
 import steamcraft.common.worldgen.structure.WorldGenUndergroundHouse;
 
 public class DepthsBiomeDecorator extends DeferredBiomeDecorator

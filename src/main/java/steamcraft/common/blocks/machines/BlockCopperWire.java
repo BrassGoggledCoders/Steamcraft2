@@ -25,11 +25,14 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+
 import net.minecraftforge.common.util.ForgeDirection;
+
 import steamcraft.client.lib.RenderIDs;
-import steamcraft.common.InitBlocks;
+import steamcraft.common.init.InitBlocks;
 import steamcraft.common.lib.DamageSourceHandler;
 import steamcraft.common.tiles.energy.TileCopperWire;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 

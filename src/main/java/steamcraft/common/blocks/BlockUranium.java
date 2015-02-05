@@ -20,9 +20,11 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import steamcraft.common.InitBlocks;
+
+import steamcraft.common.init.InitBlocks;
 import boilerplate.client.utils.EffectUtils;
 import boilerplate.steamapi.block.IChiselable;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 

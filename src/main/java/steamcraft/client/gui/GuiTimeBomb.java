@@ -21,8 +21,7 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
-
-import steamcraft.common.InitPackets;
+import steamcraft.common.init.InitPackets;
 import steamcraft.common.lib.ModInfo;
 import steamcraft.common.packets.TimeBombPacket;
 import steamcraft.common.tiles.TileTimeBomb;

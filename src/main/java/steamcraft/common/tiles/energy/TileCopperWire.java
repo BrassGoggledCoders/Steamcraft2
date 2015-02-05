@@ -21,9 +21,11 @@ import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+
 import net.minecraftforge.common.util.ForgeDirection;
-import steamcraft.common.InitBlocks;
-import steamcraft.common.InitPackets;
+
+import steamcraft.common.init.InitBlocks;
+import steamcraft.common.init.InitPackets;
 import steamcraft.common.packets.CopperWirePacket;
 import steamcraft.common.tiles.TileCopperPipe.Coords;
 import cofh.api.energy.EnergyStorage;
@@ -31,6 +33,7 @@ import cofh.api.energy.IEnergyConnection;
 import cofh.api.energy.IEnergyHandler;
 import cofh.api.energy.IEnergyProvider;
 import cofh.api.energy.IEnergyReceiver;
+
 import cpw.mods.fml.common.network.NetworkRegistry.TargetPoint;
 
 /**

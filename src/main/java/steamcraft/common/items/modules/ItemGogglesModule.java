@@ -23,13 +23,13 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 
 import org.lwjgl.opengl.GL11;
-
-import steamcraft.common.InitItems;
 import steamcraft.common.Steamcraft;
+import steamcraft.common.init.InitItems;
 import steamcraft.common.items.armor.ItemBrassGoggles;
 import steamcraft.common.lib.ModInfo;
 import boilerplate.common.baseclasses.BaseArmorModule;
 import boilerplate.steamapi.item.ModuleRegistry;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 

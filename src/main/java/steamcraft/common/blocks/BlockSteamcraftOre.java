@@ -23,11 +23,13 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
-import steamcraft.common.InitBlocks;
-import steamcraft.common.InitItems;
+
+import steamcraft.common.init.InitBlocks;
+import steamcraft.common.init.InitItems;
 import steamcraft.common.lib.ModInfo;
 import boilerplate.common.baseclasses.BaseMetadataBlock;
 import boilerplate.steamapi.block.IHammerable;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 

@@ -17,7 +17,7 @@ import java.util.Random;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
 
-import steamcraft.common.InitBlocks;
+import steamcraft.common.init.InitBlocks;
 
 public class WorldGenLeafPile extends WorldGenerator
 {

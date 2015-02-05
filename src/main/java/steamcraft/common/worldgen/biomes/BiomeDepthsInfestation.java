@@ -17,7 +17,8 @@ import java.util.Random;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
-import steamcraft.common.InitBlocks;
+
+import steamcraft.common.init.InitBlocks;
 import steamcraft.common.worldgen.structure.WorldGenBlockgroup;
 
 public class BiomeDepthsInfestation extends BiomeDepthsBase

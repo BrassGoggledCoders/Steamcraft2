@@ -19,10 +19,9 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
-
 import steamcraft.client.renderers.models.ModelCastIronLampSide;
 import steamcraft.client.renderers.models.ModelCastIronLampTop;
-import steamcraft.common.InitBlocks;
+import steamcraft.common.init.InitBlocks;
 import steamcraft.common.lib.ModInfo;
 
 /**

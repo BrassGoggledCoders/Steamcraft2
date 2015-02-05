@@ -18,12 +18,15 @@ import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntityFurnace;
+
 import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
-import steamcraft.common.InitItems;
+
+import steamcraft.common.init.InitItems;
 import steamcraft.common.tiles.TileSteamBoiler;
 import boilerplate.common.baseclasses.BaseContainer;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 

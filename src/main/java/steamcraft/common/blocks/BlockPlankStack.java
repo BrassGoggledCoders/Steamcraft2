@@ -24,10 +24,12 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+
 import steamcraft.client.lib.RenderIDs;
-import steamcraft.common.InitBlocks;
 import steamcraft.common.Steamcraft;
+import steamcraft.common.init.InitBlocks;
 import steamcraft.common.lib.ModInfo;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 

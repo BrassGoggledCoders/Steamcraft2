@@ -21,7 +21,8 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import steamcraft.common.InitBlocks;
+
+import steamcraft.common.init.InitBlocks;
 
 public class EntityBoilerMinecart extends EntityMinecart
 {

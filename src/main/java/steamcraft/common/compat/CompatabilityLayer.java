@@ -16,21 +16,24 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
+
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.fluids.BlockFluidClassic;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
-import steamcraft.common.InitBiomes;
-import steamcraft.common.InitBlocks;
-import steamcraft.common.InitItems;
+
 import steamcraft.common.config.ConfigGeneral;
+import steamcraft.common.init.InitBiomes;
+import steamcraft.common.init.InitBlocks;
+import steamcraft.common.init.InitItems;
 import steamcraft.common.lib.LibInfo;
 import steamcraft.common.lib.LoggerSteamcraft;
 import steamcraft.common.lib.ModInfo;
 import vazkii.botania.api.wiki.WikiHooks;
 import boilerplate.common.utils.helpers.IMCHelper;
 import boilerplate.common.utils.helpers.OreDictHelper;
+
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.event.FMLInterModComms;
 import cpw.mods.fml.common.registry.GameRegistry;

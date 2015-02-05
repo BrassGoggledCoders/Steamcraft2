@@ -18,7 +18,8 @@ import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
-import steamcraft.common.InitBlocks;
+
+import steamcraft.common.init.InitBlocks;
 
 public class WorldGenFissurePortal extends WorldGenerator
 {

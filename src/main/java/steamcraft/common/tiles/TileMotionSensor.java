@@ -18,7 +18,8 @@ import java.util.List;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
-import steamcraft.common.InitBlocks;
+
+import steamcraft.common.init.InitBlocks;
 
 public class TileMotionSensor extends TileEntity
 {

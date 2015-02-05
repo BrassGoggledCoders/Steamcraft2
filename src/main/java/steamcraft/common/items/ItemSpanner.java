@@ -17,12 +17,14 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import steamcraft.common.InitBlocks;
+
 import steamcraft.common.Steamcraft;
+import steamcraft.common.init.InitBlocks;
 import steamcraft.common.lib.ModInfo;
 import steamcraft.common.tiles.TileCopperPipe;
 import steamcraft.common.tiles.energy.TileCopperWire;
 import boilerplate.common.baseclasses.UniversalWrench;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 

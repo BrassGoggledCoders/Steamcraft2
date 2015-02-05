@@ -15,7 +15,8 @@ package steamcraft.common.blocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.world.IBlockAccess;
-import steamcraft.common.InitBlocks;
+
+import steamcraft.common.init.InitBlocks;
 import boilerplate.steamapi.block.IChiselable;
 
 /**

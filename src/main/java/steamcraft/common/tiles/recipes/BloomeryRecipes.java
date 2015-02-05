@@ -20,7 +20,8 @@ import java.util.Map.Entry;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import steamcraft.common.InitItems;
+
+import steamcraft.common.init.InitItems;
 
 /**
  * @author warlordjones & decebaldecebal

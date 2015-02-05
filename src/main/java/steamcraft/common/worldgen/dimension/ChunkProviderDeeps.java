@@ -39,9 +39,11 @@ import net.minecraft.world.gen.NoiseGeneratorOctaves;
 import net.minecraft.world.gen.NoiseGeneratorPerlin;
 import net.minecraft.world.gen.feature.WorldGenDungeons;
 import net.minecraft.world.gen.feature.WorldGenLakes;
+
 import net.minecraftforge.event.terraingen.TerrainGen;
-import steamcraft.common.InitBiomes;
-import steamcraft.common.InitBlocks;
+
+import steamcraft.common.init.InitBiomes;
+import steamcraft.common.init.InitBlocks;
 
 public class ChunkProviderDeeps implements IChunkProvider
 {

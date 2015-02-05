@@ -15,8 +15,10 @@ package steamcraft.common.blocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFenceGate;
 import net.minecraft.util.IIcon;
-import steamcraft.common.InitBlocks;
+
 import steamcraft.common.Steamcraft;
+import steamcraft.common.init.InitBlocks;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 

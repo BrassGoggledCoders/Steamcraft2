@@ -26,9 +26,11 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
+
 import net.minecraftforge.common.ISpecialArmor;
-import steamcraft.common.InitItems;
+
 import steamcraft.common.Steamcraft;
+import steamcraft.common.init.InitItems;
 import steamcraft.common.items.ItemCanister;
 import steamcraft.common.items.electric.ElectricItem;
 import steamcraft.common.lib.ModInfo;
@@ -38,6 +40,7 @@ import boilerplate.steamapi.item.IArmorModule;
 import boilerplate.steamapi.item.IArmorModule.EnumArmorEffectType;
 import boilerplate.steamapi.item.IDefensiveArmorModule;
 import boilerplate.steamapi.item.ModuleRegistry;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 

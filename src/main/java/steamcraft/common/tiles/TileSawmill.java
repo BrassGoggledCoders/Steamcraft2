@@ -14,8 +14,9 @@ package steamcraft.common.tiles;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntity;
-import steamcraft.common.InitBlocks;
+
 import steamcraft.common.blocks.BlockPlankStack;
+import steamcraft.common.init.InitBlocks;
 
 public class TileSawmill extends TileEntity
 {

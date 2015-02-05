@@ -20,10 +20,12 @@ import net.minecraft.block.material.Material;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
+
 import steamcraft.client.lib.RenderIDs;
 import steamcraft.client.renderers.tile.TileCastIronLampRenderer.TileCastIronLamp;
-import steamcraft.common.InitBlocks;
 import steamcraft.common.Steamcraft;
+import steamcraft.common.init.InitBlocks;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 

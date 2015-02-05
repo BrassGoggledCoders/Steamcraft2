@@ -14,6 +14,7 @@ package steamcraft.common.tiles;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+
 import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidContainerRegistry;
@@ -22,8 +23,9 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTank;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
-import steamcraft.common.InitItems;
+
 import steamcraft.common.blocks.machines.BlockNuclearBoiler;
+import steamcraft.common.init.InitItems;
 import steamcraft.common.items.ItemCanister;
 import boilerplate.common.baseclasses.BaseTileWithInventory;
 

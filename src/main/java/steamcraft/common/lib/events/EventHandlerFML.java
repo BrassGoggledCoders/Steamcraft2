@@ -18,8 +18,7 @@ import net.minecraft.event.HoverEvent;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
-import steamcraft.common.InitAchievements;
-import steamcraft.common.InitItems;
+
 import steamcraft.common.Steamcraft;
 import steamcraft.common.blocks.machines.BlockIntake;
 import steamcraft.common.blocks.machines.BlockLightningRod;
@@ -27,12 +26,15 @@ import steamcraft.common.blocks.machines.BlockSteamBoiler;
 import steamcraft.common.blocks.machines.BlockTurbine;
 import steamcraft.common.config.Config;
 import steamcraft.common.config.ConfigGeneral;
+import steamcraft.common.init.InitAchievements;
+import steamcraft.common.init.InitItems;
 import steamcraft.common.items.ItemIngot;
 import steamcraft.common.items.ItemSheet;
 import steamcraft.common.items.armor.ItemClockworkWings;
 import steamcraft.common.items.armor.ItemSteamJetpack;
 import steamcraft.common.items.electric.ItemRayGun;
 import steamcraft.common.items.electric.ItemShrinkray;
+
 import cpw.mods.fml.client.event.ConfigChangedEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent;

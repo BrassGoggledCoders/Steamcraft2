@@ -27,8 +27,7 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
 import org.apache.commons.lang3.tuple.ImmutablePair;
-
-import steamcraft.common.InitBlocks;
+import steamcraft.common.init.InitBlocks;
 
 public class EntityGrub extends EntityMob
 {
