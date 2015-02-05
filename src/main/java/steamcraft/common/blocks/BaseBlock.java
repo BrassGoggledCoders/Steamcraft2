@@ -16,10 +16,12 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.util.IIcon;
-import steamcraft.common.Steamcraft;
-import steamcraft.common.lib.ModInfo;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+
+import steamcraft.common.Steamcraft;
+import steamcraft.common.lib.ModInfo;
 
 /**
  * @author Surseance
@@ -33,6 +35,7 @@ public class BaseBlock extends Block
 	{
 		super(mat);
 		this.setCreativeTab(Steamcraft.tabSC2);
+		this.setHardness(0.5F);
 	}
 
 	@Override
