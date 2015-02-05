@@ -35,6 +35,7 @@ public class WorldGenBlockgroup extends WorldGenerator
 	{
 		int l = random.nextInt(this.numberOfBlocks);
 		byte b0 = 1;
+		boolean flag = false;
 
 		for(int i1 = x - l; i1 <= (x + l); ++i1)
 		{
@@ -52,13 +53,12 @@ public class WorldGenBlockgroup extends WorldGenerator
 						if((block == Blocks.dirt) || (block == Blocks.clay))
 						{
 							world.setBlock(i1, i2, j1, this.blockToGen, 0, 2);
+							flag = true;
 						}
 					}
 				}
 			}
-
-			return true;
 		}
-		return false;
+		return flag;
 	}
 }

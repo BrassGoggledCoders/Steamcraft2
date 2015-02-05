@@ -20,7 +20,7 @@ public class BlockSpiderEggRenderer implements ISimpleBlockRenderingHandler
 	public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelID,
 			RenderBlocks renderer)
 	{
-		renderer.renderAllFaces = true;
+		boolean flag = false;
 		int l = 0;
 
 		for(int i1 = 0; i1 < 8; i1++)
@@ -78,11 +78,10 @@ public class BlockSpiderEggRenderer implements ISimpleBlockRenderingHandler
 			l += b1;
 			renderer.setRenderBounds(0.5F - f, f2, 0.5F - f, 0.5F + f, f1, 0.5F + f);
 			renderer.renderStandardBlock(block, x, y, z);
-			return true;
 		}
+		flag = true;
 		renderer.setRenderBounds(0.0D, 0.0D, 0.0D, 1.0D, 1.0D, 1.0D);
-		renderer.renderAllFaces = false;
-		return false;
+		return flag;
 	}
 
 	@Override
