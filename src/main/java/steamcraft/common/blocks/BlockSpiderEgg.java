@@ -8,6 +8,8 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+import steamcraft.client.lib.RenderIDs;
+
 public class BlockSpiderEgg extends BaseBlock
 {
 
@@ -69,6 +71,6 @@ public class BlockSpiderEgg extends BaseBlock
 	@Override
 	public int getRenderType()
 	{
-		return 27;
+		return RenderIDs.blockSpiderEggRI;
 	}
 }

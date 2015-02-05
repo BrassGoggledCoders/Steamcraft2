@@ -30,6 +30,7 @@ public class RenderIDs
 	public static int blockCopperWireRI;
 	public static int blockPlankStackRI;
 	public static int blockArmorEditorRI;
+	public static int blockSpiderEggRI;
 
 	public static void setIDs()
 	{
@@ -45,5 +46,6 @@ public class RenderIDs
 		blockPlankStackRI = RenderingRegistry.getNextAvailableRenderId();
 		blockCrystalRI = RenderingRegistry.getNextAvailableRenderId();
 		blockArmorEditorRI = RenderingRegistry.getNextAvailableRenderId();
+		blockSpiderEggRI = RenderingRegistry.getNextAvailableRenderId();
 	}
 }
