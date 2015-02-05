@@ -263,7 +263,7 @@ public class WorldGenWillowTree extends WorldGenAbstractTree
 	 */
 	private void generateVines(World p_76536_1_, int p_76536_2_, int p_76536_3_, int p_76536_4_, int p_76536_5_)
 	{
-		this.setBlockAndNotifyAdequately(p_76536_1_, p_76536_2_, p_76536_3_, p_76536_4_, InitBlocks.blockWillowLeaves, p_76536_5_);
+		this.setBlockAndNotifyAdequately(p_76536_1_, p_76536_2_, p_76536_3_, p_76536_4_, Blocks.vine, p_76536_5_);
 		int i1 = 4;
 
 		while(true)
@@ -275,7 +275,7 @@ public class WorldGenWillowTree extends WorldGenAbstractTree
 				return;
 			}
 
-			this.setBlockAndNotifyAdequately(p_76536_1_, p_76536_2_, p_76536_3_, p_76536_4_, InitBlocks.blockWillowLeaves, p_76536_5_);
+			this.setBlockAndNotifyAdequately(p_76536_1_, p_76536_2_, p_76536_3_, p_76536_4_, Blocks.vine, p_76536_5_);
 			--i1;
 		}
 	}
