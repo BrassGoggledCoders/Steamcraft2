@@ -79,9 +79,9 @@ public class Steamcraft
 		configPath = event.getModConfigurationDirectory() + "/sc2/";
 		Config.initialise(configPath);
 
+		InitBlocks.init();
 		InitItems.init();
 		CompatabilityLayer.initCompatItems();
-		InitBlocks.init();
 		InitEntities.init();
 
 		LoggerSteamcraft.info("Finished Preinit");
