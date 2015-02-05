@@ -20,14 +20,17 @@ import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenMinable;
+
+import cpw.mods.fml.common.IWorldGenerator;
+
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeDictionary.Type;
+
 import steamcraft.common.InitBlocks;
 import steamcraft.common.config.ConfigGeneral;
 import steamcraft.common.config.ConfigWorldGen;
 import steamcraft.common.worldgen.structure.WorldGenFissurePortal;
 import steamcraft.common.worldgen.trees.WorldGenBrassTree;
-import cpw.mods.fml.common.IWorldGenerator;
 
 /**
  * @authors Surseance & warlordjones
@@ -52,10 +55,20 @@ public class WorldGenSteamcraft implements IWorldGenerator
 		{
 			this.generateSurface(world, random, blockChunkX, blockChunkZ);
 		}
+		else if(world.provider.dimensionId == ConfigGeneral.deepsDimensionID)
+		{
+			this.generateDeeps(world, random, blockChunkX, blockChunkZ);
+		}
 		else if((world.provider.dimensionId == 1) && ConfigWorldGen.endGenerationEnabled)
 		{
 			this.generateEnd(world, random, blockChunkX, blockChunkZ);
 		}
+	}
+
+	private void generateDeeps(World world, Random random, int blockChunkX, int blockChunkZ)
+	{
+		this.generateOre(world, random, blockChunkX, blockChunkZ, 1, 10, 40,
+				1, InitBlocks.blockBoulder, 0, Blocks.stone);
 	}
 
 	private void generateSurface(World world, Random random, int chunkX, int chunkZ)

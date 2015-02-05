@@ -34,7 +34,7 @@ public class WorldGenLeafPile extends WorldGenerator
 			if(p_76484_1_.isAirBlock(i1, j1, k1)
 					&& InitBlocks.blockLeafCover.canPlaceBlockAt(p_76484_1_, i1, j1, k1))
 			{
-				p_76484_1_.setBlock(i1, j1, k1, InitBlocks.blockLeafCover, p_76484_2_.nextInt(4), 2);
+				p_76484_1_.setBlock(i1, j1, k1, InitBlocks.blockLeafCover, p_76484_2_.nextInt(6), 2);
 			}
 		}
 

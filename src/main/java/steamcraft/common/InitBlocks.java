@@ -26,6 +26,7 @@ import net.minecraftforge.fluids.FluidRegistry;
 import steamcraft.client.renderers.tile.TileCastIronLampRenderer.TileCastIronLamp;
 import steamcraft.client.renderers.tile.TileCrystalRenderer.TileCrystal;
 import steamcraft.common.blocks.BaseBlock;
+import steamcraft.common.blocks.BlockBoulder;
 import steamcraft.common.blocks.BlockBrassLog;
 import steamcraft.common.blocks.BlockCastIronFence;
 import steamcraft.common.blocks.BlockCastIronGate;
@@ -173,6 +174,8 @@ public class InitBlocks
 	public static Block blockStandardSiren, blockStandardSirenOn, blockAllClearSiren,
 			blockAllClearSirenOn, blockIntruderSiren, blockIntruderSirenOn, blockNuclearSiren,
 			blockNuclearSirenOn, blockMotionSensor, blockMotionSensorOn;
+
+	public static Block blockBoulder;
 
 	public static void init()
 	{
@@ -430,6 +433,9 @@ public class InitBlocks
 		blockNuclearSirenOn = new BlockSiren(Material.redstoneLight, true, "nuclearalarm").setBlockName("blockNuclearSiren");
 		GameRegistry.registerBlock(blockNuclearSiren, "BlockNuclearSiren");
 		GameRegistry.registerBlock(blockNuclearSirenOn, "BlockNuclearSirenOn");
+
+		blockBoulder = new BlockBoulder().setBlockName("blockBoulder");
+		GameRegistry.registerBlock(blockBoulder, "BlockBoulder");
 	}
 
 	private static String[] blacklist = new String[] { "BlockFissurePortal", "BlockLamp" };
