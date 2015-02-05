@@ -76,7 +76,7 @@ tile.blockMangrovePlanks.name=Mangrove Planks
 tile.blockMud.name=Semi-Solid Mud
 tile.blockLeafPile.name=Leaf Litter
 tile.blockBoulder.name=Boulder
-tile.blockBoulder.desc=Lookout Indy!
+tile.blockBoulder.0.desc=Lookout Indy!
 
 #Ores
 tile.blockSteamcraftOre.0.name=Aluminum Ore
@@ -462,6 +462,7 @@ death.attack.steamcraft2.electrocution.player=%1$s was electrocuted
 death.attack.steamcraft2.bullet=%1$s was shot
 death.attack.steamcraft2.bullet.player=%1$s was shot by %2$s
 death.attack.steamcraft2.bullet.player.item=%1$s was shot by %2$s using %3$s
+death.attack.steamcraft2.boulder=%1$s was crushed by a falling rock
 
 #Biomes
 biome.steamcraft2.innerearth.name=Inner Earth

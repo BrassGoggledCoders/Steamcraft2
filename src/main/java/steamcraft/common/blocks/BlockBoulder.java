@@ -4,9 +4,10 @@ import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.entity.item.EntityFallingBlock;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
+
+import steamcraft.common.entities.EntityFallingBoulder;
 
 public class BlockBoulder extends BaseBlock
 {
@@ -59,10 +60,10 @@ public class BlockBoulder extends BaseBlock
 			{
 				if(!p_149830_1_.isRemote)
 				{
-					EntityFallingBlock entityfallingblock = new EntityFallingBlock(p_149830_1_, p_149830_2_ + 0.5F, p_149830_3_ + 0.5F, p_149830_4_ + 0.5F,
-							this, p_149830_1_.getBlockMetadata(p_149830_2_, p_149830_3_, p_149830_4_));
-					this.func_149829_a(entityfallingblock);
-					p_149830_1_.spawnEntityInWorld(entityfallingblock);
+					EntityFallingBoulder EntityFallingBoulder = new EntityFallingBoulder(p_149830_1_, p_149830_2_ + 0.5F, p_149830_3_ + 0.5F,
+							p_149830_4_ + 0.5F);
+					this.func_149829_a(EntityFallingBoulder);
+					p_149830_1_.spawnEntityInWorld(EntityFallingBoulder);
 				}
 			}
 			else
@@ -82,7 +83,7 @@ public class BlockBoulder extends BaseBlock
 		}
 	}
 
-	protected void func_149829_a(EntityFallingBlock p_149829_1_)
+	protected void func_149829_a(EntityFallingBoulder p_149829_1_)
 	{
 		p_149829_1_.func_145806_a(true);
 	}
