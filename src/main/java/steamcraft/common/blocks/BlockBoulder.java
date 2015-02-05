@@ -16,6 +16,9 @@ public class BlockBoulder extends BaseBlock
 	public BlockBoulder()
 	{
 		super(Material.rock);
+		this.setHarvestLevel("pickaxe", 2);
+		this.setHardness(2F);
+		this.setResistance(20F);
 	}
 
 	/**

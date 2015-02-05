@@ -24,14 +24,14 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 import steamcraft.common.init.InitBlocks;
 import steamcraft.common.init.InitItems;
 import steamcraft.common.lib.ModInfo;
 import boilerplate.common.baseclasses.BaseMetadataBlock;
 import boilerplate.steamapi.block.IHammerable;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author Surseance
@@ -44,6 +44,13 @@ public class BlockSteamcraftOre extends BaseMetadataBlock implements IHammerable
 	public BlockSteamcraftOre()
 	{
 		super(Material.rock);
+		this.setHarvestLevel("pickaxe", 2, 0);
+		this.setHarvestLevel("pickaxe", 1, 1);
+		this.setHarvestLevel("pickaxe", 1, 2);
+		this.setHarvestLevel("pickaxe", 2, 3);
+		this.setHarvestLevel("pickaxe", 2, 4);
+		this.setHarvestLevel("pickaxe", 2, 5);
+		this.setHarvestLevel("pickaxe", 2, 6);
 		this.setHardness(3.0F);
 		this.setResistance(6.0F);
 		this.setStepSound(Block.soundTypeStone);
