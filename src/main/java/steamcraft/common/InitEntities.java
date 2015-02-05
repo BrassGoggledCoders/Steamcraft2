@@ -12,6 +12,9 @@
  */
 package steamcraft.common;
 
+import cpw.mods.fml.common.registry.EntityRegistry;
+
+import steamcraft.common.entities.EntityFallingBoulder;
 import steamcraft.common.entities.EntityGrapplingHook;
 import steamcraft.common.entities.EntityTimeBomb;
 import steamcraft.common.entities.living.EntityBoar;
@@ -22,7 +25,6 @@ import steamcraft.common.entities.living.EntityLostMiner;
 import steamcraft.common.entities.living.EntityVampireBat;
 import steamcraft.common.entities.projectile.EntityBullet;
 import steamcraft.common.entities.projectile.EntityRocket;
-import cpw.mods.fml.common.registry.EntityRegistry;
 
 /**
  * @author Surseance
@@ -43,6 +45,7 @@ public class InitEntities
 		EntityRegistry.registerModEntity(EntityGrapplingHook.class, "GrapplingHook", entID++, Steamcraft.instance, 64, 1, true);
 		EntityRegistry.registerModEntity(EntityTimeBomb.class, "TimeBomb", entID++, Steamcraft.instance, 64, 1, true);
 		EntityRegistry.registerModEntity(EntityRocket.class, "Rocket", entID++, Steamcraft.instance, 64, 1, true);
+		EntityRegistry.registerModEntity(EntityFallingBoulder.class, "FallingBoulder", entID++, Steamcraft.instance, 64, 1, true);
 
 		// Mobs
 		EntityRegistry.registerModEntity(EntityFleshGolem.class, "FleshGolem", entID++, Steamcraft.instance, 64, 1, true);

@@ -23,14 +23,18 @@ import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 
-import org.lwjgl.input.Keyboard;
+import cpw.mods.fml.client.FMLClientHandler;
+import cpw.mods.fml.client.registry.ClientRegistry;
+import cpw.mods.fml.client.registry.RenderingRegistry;
 
+import org.lwjgl.input.Keyboard;
 import steamcraft.client.lib.RenderIDs;
 import steamcraft.client.renderers.block.BlockCastIronLampRenderer;
 import steamcraft.client.renderers.block.BlockCopperPipeRenderer;
 import steamcraft.client.renderers.block.BlockCopperWireRenderer;
 import steamcraft.client.renderers.block.BlockRailingRenderer;
 import steamcraft.client.renderers.entity.RenderBoar;
+import steamcraft.client.renderers.entity.RenderFallingBoulder;
 import steamcraft.client.renderers.entity.RenderFleshGolem;
 import steamcraft.client.renderers.entity.RenderGhostSpider;
 import steamcraft.client.renderers.entity.RenderGrapplingHook;
@@ -57,6 +61,7 @@ import steamcraft.client.renderers.tile.TileLightningRodRenderer;
 import steamcraft.client.renderers.tile.TileTeslaCoilRenderer;
 import steamcraft.common.CommonProxy;
 import steamcraft.common.InitItems;
+import steamcraft.common.entities.EntityFallingBoulder;
 import steamcraft.common.entities.EntityGrapplingHook;
 import steamcraft.common.entities.living.EntityBoar;
 import steamcraft.common.entities.living.EntityFleshGolem;
@@ -79,9 +84,6 @@ import boilerplate.client.fx.FXRaygun;
 import boilerplate.client.renderers.block.BlockTESRRenderer;
 import boilerplate.client.renderers.block.RenderMinedBlock;
 import boilerplate.common.entity.EntityMinedBlock;
-import cpw.mods.fml.client.FMLClientHandler;
-import cpw.mods.fml.client.registry.ClientRegistry;
-import cpw.mods.fml.client.registry.RenderingRegistry;
 
 /**
  * @author Surseance
@@ -128,6 +130,7 @@ public class ClientProxy extends CommonProxy
 				InitItems.itemSplashLightningBottle));
 		RenderingRegistry.registerEntityRenderingHandler(EntityGrapplingHook.class, new RenderGrapplingHook());
 		RenderingRegistry.registerEntityRenderingHandler(EntityRocket.class, new RenderSnowball(InitItems.itemRocket));
+		RenderingRegistry.registerEntityRenderingHandler(EntityFallingBoulder.class, new RenderFallingBoulder());
 
 		RenderingRegistry.registerEntityRenderingHandler(EntityFleshGolem.class, new RenderFleshGolem(new ModelFleshGolem(), 0));
 		RenderingRegistry.registerEntityRenderingHandler(EntityLostMiner.class, new RenderLostMiner(new ModelZombie(), 0));
