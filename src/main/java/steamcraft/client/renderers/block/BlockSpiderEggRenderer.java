@@ -20,11 +20,10 @@ public class BlockSpiderEggRenderer implements ISimpleBlockRenderingHandler
 	public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelID,
 			RenderBlocks renderer)
 	{
-		block.setBlockBoundsBasedOnState(renderer.blockAccess, x, y, z);
-		renderer.setRenderBoundsFromBlock(block);
+		renderer.renderAllFaces = true;
 		int l = 0;
 
-		for(int i1 = 0; i1 < 8; ++i1)
+		for(int i1 = 0; i1 < 8; i1++)
 		{
 			byte b0 = 0;
 			byte b1 = 1;
@@ -82,6 +81,7 @@ public class BlockSpiderEggRenderer implements ISimpleBlockRenderingHandler
 			return true;
 		}
 		renderer.setRenderBounds(0.0D, 0.0D, 0.0D, 1.0D, 1.0D, 1.0D);
+		renderer.renderAllFaces = false;
 		return false;
 	}
 

@@ -33,6 +33,7 @@ import steamcraft.client.renderers.block.BlockCastIronLampRenderer;
 import steamcraft.client.renderers.block.BlockCopperPipeRenderer;
 import steamcraft.client.renderers.block.BlockCopperWireRenderer;
 import steamcraft.client.renderers.block.BlockRailingRenderer;
+import steamcraft.client.renderers.block.BlockSpiderEggRenderer;
 import steamcraft.client.renderers.entity.RenderBoar;
 import steamcraft.client.renderers.entity.RenderFallingBoulder;
 import steamcraft.client.renderers.entity.RenderFleshGolem;
@@ -175,6 +176,8 @@ public class ClientProxy extends CommonProxy
 		// Armor Editor
 		ClientRegistry.bindTileEntitySpecialRenderer(TileArmorEditor.class, new TileArmorEditorRenderer());
 		RenderingRegistry.registerBlockHandler(new BlockTESRRenderer(new TileArmorEditor(), RenderIDs.blockArmorEditorRI));
+		// Spider Egg
+		RenderingRegistry.registerBlockHandler(RenderIDs.blockSpiderEggRI, new BlockSpiderEggRenderer());
 	}
 
 	@Override
