@@ -18,10 +18,10 @@ import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.ResourceLocation;
+
 import net.minecraftforge.common.util.ForgeDirection;
 
 import org.lwjgl.opengl.GL11;
-
 import steamcraft.common.config.ConfigGeneral;
 import steamcraft.common.lib.LibInfo;
 import steamcraft.common.lib.ModInfo;
@@ -538,7 +538,7 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 			{
 				tess.startDrawingQuads();
 				{
-					IIcon icon = pipe.fluidInPipe.getBlock().getIcon(0, 0);
+					IIcon icon = pipe.fluidInPipe.getIcon();
 					this.bindTexture(TextureMap.locationBlocksTexture);
 
 					tess.addVertexWithUV((1 - (15 * pixel)) + level, 1 - (15 * pixel), (1 - (15 * pixel)) + level, icon.getMinU(), icon.getMaxV());
