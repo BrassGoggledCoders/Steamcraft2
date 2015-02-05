@@ -56,6 +56,7 @@ import steamcraft.common.blocks.BlockPlankStack;
 import steamcraft.common.blocks.BlockPolishedPlanks;
 import steamcraft.common.blocks.BlockSiren;
 import steamcraft.common.blocks.BlockSlate;
+import steamcraft.common.blocks.BlockSpiderEgg;
 import steamcraft.common.blocks.BlockSteamcraftOre;
 import steamcraft.common.blocks.BlockTeaPlant;
 import steamcraft.common.blocks.BlockThin;
@@ -176,7 +177,7 @@ public class InitBlocks
 			blockAllClearSirenOn, blockIntruderSiren, blockIntruderSirenOn, blockNuclearSiren,
 			blockNuclearSirenOn, blockMotionSensor, blockMotionSensorOn;
 
-	public static Block blockBoulder;
+	public static Block blockBoulder, blockSpiderEgg;
 
 	public static void init()
 	{
@@ -437,6 +438,9 @@ public class InitBlocks
 
 		blockBoulder = new BlockBoulder().setBlockName("blockBoulder");
 		GameRegistry.registerBlock(blockBoulder, "BlockBoulder");
+
+		blockSpiderEgg = new BlockSpiderEgg(Material.dragonEgg).setBlockName("blockSpiderEgg");
+		GameRegistry.registerBlock(blockSpiderEgg, "BlockSpiderEgg");
 	}
 
 	private static String[] blacklist = new String[] { "BlockFissurePortal", "BlockLamp" };
