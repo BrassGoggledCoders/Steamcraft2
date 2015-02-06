@@ -34,7 +34,7 @@ import steamcraft.common.worldgen.trees.WorldGenBrassTree;
 
 /**
  * @authors Surseance & warlordjones
- * 
+ *
  */
 public class WorldGenSteamcraft implements IWorldGenerator
 {
@@ -55,20 +55,10 @@ public class WorldGenSteamcraft implements IWorldGenerator
 		{
 			this.generateSurface(world, random, blockChunkX, blockChunkZ);
 		}
-		else if(world.provider.dimensionId == ConfigGeneral.deepsDimensionID)
-		{
-			this.generateDeeps(world, random, blockChunkX, blockChunkZ);
-		}
 		else if((world.provider.dimensionId == 1) && ConfigWorldGen.endGenerationEnabled)
 		{
 			this.generateEnd(world, random, blockChunkX, blockChunkZ);
 		}
-	}
-
-	private void generateDeeps(World world, Random random, int blockChunkX, int blockChunkZ)
-	{
-		this.generateOre(world, random, blockChunkX, blockChunkZ, 1, 10, 40,
-				1, InitBlocks.blockBoulder, 0, Blocks.stone);
 	}
 
 	private void generateSurface(World world, Random random, int chunkX, int chunkZ)
@@ -135,7 +125,7 @@ public class WorldGenSteamcraft implements IWorldGenerator
 		}
 	}
 
-	private void generateOre(World world, Random random, int chunkX, int chunkZ, int blockPerChunk, int minHeight, int maxHeight, int blocks,
+	public void generateOre(World world, Random random, int chunkX, int chunkZ, int blockPerChunk, int minHeight, int maxHeight, int blocks,
 			Block ore, int meta, Block blockToGenIn)
 	{
 		for(int i = 0; i < blockPerChunk; i++)
