@@ -123,7 +123,14 @@ public class BiomeDepthsSwamp extends BiomeDepthsBase
 			int X = x + random.nextInt(16);
 			int Z = z + random.nextInt(16);
 			int Y = random.nextInt(100);
-			new WorldGenLeafPile().generate(world, random, X, Y, Z);
+			new WorldGenLeafPile(InitBlocks.blockLeafCover).generate(world, random, X, Y, Z);
+		}
+		for(int l = 0; l < 15; l++)
+		{
+			int X = x + random.nextInt(16);
+			int Z = z + random.nextInt(16);
+			int Y = random.nextInt(100);
+			new WorldGenLeafPile(InitBlocks.blockMoss).generate(world, random, X, Y, Z);
 		}
 		super.decorate(world, random, x, z);
 	}

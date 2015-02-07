@@ -14,6 +14,7 @@ package steamcraft.common.worldgen;
 
 import java.util.Random;
 
+import net.minecraft.block.Block;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
 
@@ -21,6 +22,12 @@ import steamcraft.common.init.InitBlocks;
 
 public class WorldGenLeafPile extends WorldGenerator
 {
+	Block block;
+
+	public WorldGenLeafPile(Block block)
+	{
+		this.block = block;
+	}
 
 	@Override
 	public boolean generate(World p_76484_1_, Random p_76484_2_, int p_76484_3_, int p_76484_4_, int p_76484_5_)
@@ -34,7 +41,7 @@ public class WorldGenLeafPile extends WorldGenerator
 			if(p_76484_1_.isAirBlock(i1, j1, k1)
 					&& InitBlocks.blockLeafCover.canPlaceBlockAt(p_76484_1_, i1, j1, k1))
 			{
-				p_76484_1_.setBlock(i1, j1, k1, InitBlocks.blockLeafCover, p_76484_2_.nextInt(6), 2);
+				p_76484_1_.setBlock(i1, j1, k1, block, p_76484_2_.nextInt(6), 2);
 			}
 		}
 

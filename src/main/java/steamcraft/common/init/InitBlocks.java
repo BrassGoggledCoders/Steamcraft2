@@ -167,7 +167,7 @@ public class InitBlocks
 
 	public static Block blockInfestedGrass, blockInfestedDirt;
 
-	public static Block blockPath, blockMud, blockLeafCover;
+	public static Block blockPath, blockMud, blockLeafCover, blockMoss;
 
 	public static Block blockPolishedPlanks;
 
@@ -388,6 +388,9 @@ public class InitBlocks
 
 		blockLeafCover = new BlockLeafPile().setBlockName("blockLeafPile");
 		registerBlock(blockLeafCover, "BlockLeafPile");
+
+		blockMoss = new BlockLeafPile().setBlockName("blockMoss");
+		registerBlock(blockMoss, "BlockMoss");
 
 		blockPolishedPlanks = new BlockPolishedPlanks().setBlockName("blockPolishedPlanks");
 		registerBlock(blockPolishedPlanks, BaseItemBlockWithMetadata.class, "BlockPolishedPlanks");
