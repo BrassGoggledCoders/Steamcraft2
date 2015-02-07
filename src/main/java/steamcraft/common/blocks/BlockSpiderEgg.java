@@ -9,6 +9,8 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 import steamcraft.client.lib.RenderIDs;
+import steamcraft.common.entities.living.EntityGhostSpider;
+import steamcraft.common.entities.living.EntityGiantSpider;
 
 public class BlockSpiderEgg extends BaseBlock
 {
@@ -27,7 +29,14 @@ public class BlockSpiderEgg extends BaseBlock
 	{
 		if(!world.isRemote)
 		{
-			EntitySpider spider = new EntitySpider(world);
+			int randNum = world.rand.nextInt(10);
+			EntitySpider spider;
+			if(randNum < 3)
+				spider = new EntityGhostSpider(world);
+			else if(randNum == 1)
+				spider = new EntityGiantSpider(world);
+			else
+				spider = new EntitySpider(world);
 			spider.setLocationAndAngles(p_149664_2_ + 0.5D, p_149664_3_, p_149664_4_ + 0.5D, 0.0F, 0.0F);
 			world.spawnEntityInWorld(spider);
 			spider.spawnExplosionParticle();

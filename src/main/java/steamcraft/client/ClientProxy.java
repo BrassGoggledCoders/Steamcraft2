@@ -66,8 +66,10 @@ import steamcraft.common.entities.EntityGrapplingHook;
 import steamcraft.common.entities.living.EntityBoar;
 import steamcraft.common.entities.living.EntityFleshGolem;
 import steamcraft.common.entities.living.EntityGhostSpider;
+import steamcraft.common.entities.living.EntityGiantSpider;
 import steamcraft.common.entities.living.EntityGrub;
 import steamcraft.common.entities.living.EntityLostMiner;
+import steamcraft.common.entities.living.EntitySpiderQueen;
 import steamcraft.common.entities.living.EntityVampireBat;
 import steamcraft.common.entities.projectile.EntityBullet;
 import steamcraft.common.entities.projectile.EntityFieldManipulator;
@@ -139,6 +141,8 @@ public class ClientProxy extends CommonProxy
 		RenderingRegistry.registerEntityRenderingHandler(EntityBoar.class, new RenderBoar(new ModelPig(), 0));
 		RenderingRegistry.registerEntityRenderingHandler(EntityGhostSpider.class, new RenderGhostSpider());
 		RenderingRegistry.registerEntityRenderingHandler(EntityVampireBat.class, new RenderVampireBat());
+		RenderingRegistry.registerEntityRenderingHandler(EntityGiantSpider.class, new RenderGhostSpider());
+		RenderingRegistry.registerEntityRenderingHandler(EntitySpiderQueen.class, new RenderGhostSpider());
 	}
 
 	private void registerBlockRenderers()
