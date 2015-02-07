@@ -27,6 +27,7 @@ import steamcraft.common.Steamcraft;
 import steamcraft.common.items.BaseItem;
 import steamcraft.common.items.ItemCanister;
 import steamcraft.common.items.ItemChisel;
+import steamcraft.common.items.ItemCoin;
 import steamcraft.common.items.ItemCustomBucket;
 import steamcraft.common.items.ItemFieldManipulator;
 import steamcraft.common.items.ItemFirearm;
@@ -204,6 +205,8 @@ public class InitItems
 	public static Item itemMonsterSpawner;
 
 	public static Item itemBoilingWaterBucket, itemBoilingMudBucket;
+
+	public static Item itemCoin;
 
 	/* Init */
 	public static void init()
@@ -552,6 +555,9 @@ public class InitItems
 				itemBoilingWaterBucket), new ItemStack(Items.bucket));
 		FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("boilingmud", FluidContainerRegistry.BUCKET_VOLUME), new ItemStack(
 				itemBoilingMudBucket), new ItemStack(Items.bucket));
+
+		itemCoin = new ItemCoin().setUnlocalizedName("itemCoin");
+		GameRegistry.registerItem(itemCoin, "ItemCoin");
 	}
 
 	public static void initializeModCompatItems()
