@@ -127,6 +127,9 @@ tile.blockArmorEditor.name=Armor Editor
 tile.blockSawmill.name=Sawmill
 tile.blockSawmill.desc=Saws logs into six planks
 
+#Fluids
+fluid.moltenZincFluid.name=Molten Zinc
+
 #Items
 item.itemResource.0.name=Etherium Crystal
 item.itemResource.1.name=Sulfur

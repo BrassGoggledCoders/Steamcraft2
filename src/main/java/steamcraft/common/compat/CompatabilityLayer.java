@@ -17,6 +17,10 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 
+import cpw.mods.fml.common.Loader;
+import cpw.mods.fml.common.event.FMLInterModComms;
+import cpw.mods.fml.common.registry.GameRegistry;
+
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.fluids.BlockFluidClassic;
 import net.minecraftforge.fluids.FluidStack;
@@ -33,10 +37,6 @@ import steamcraft.common.lib.ModInfo;
 import vazkii.botania.api.wiki.WikiHooks;
 import boilerplate.common.utils.helpers.IMCHelper;
 import boilerplate.common.utils.helpers.OreDictHelper;
-
-import cpw.mods.fml.common.Loader;
-import cpw.mods.fml.common.event.FMLInterModComms;
-import cpw.mods.fml.common.registry.GameRegistry;
 
 /**
  * @author warlordjones
@@ -93,25 +93,43 @@ public class CompatabilityLayer
 
 		IMCHelper.addNewPartBuilderMaterial(ConfigGeneral.etheriumMaterialID, new ItemStack(InitItems.itemResource, 1, 0), new ItemStack(
 				InitItems.itemResource, 1, 6), 2);
+		int ingotLiquidValue = 144;
+		int nuggetLiquidValue = ingotLiquidValue / 9;
+		int blockLiquidValue = ingotLiquidValue * 9;
 		// Aluminum, Copper, Tin
 		for(int i = 0; i < 3; i++)
 		{
 			BlockFluidClassic block_fluid = (BlockFluidClassic) GameRegistry.findBlock("TConstruct", "fluid.molten." + LibInfo.metals[i].toLowerCase());
-			IMCHelper.addNewSmeltable(new ItemStack(InitBlocks.blockMetal, 1, i), InitBlocks.blockMetal, new FluidStack(block_fluid.getFluid(), 144 * 9), 600);
-			IMCHelper.addNewSmeltable(new ItemStack(InitItems.itemIngot, 1, i), InitBlocks.blockMetal, new FluidStack(block_fluid.getFluid(), 144), 300);
-			IMCHelper.addNewSmeltable(new ItemStack(InitItems.itemNugget, 1, i), InitBlocks.blockMetal, new FluidStack(block_fluid.getFluid(), 144 / 9), 150);
+			IMCHelper.addNewSmeltable(new ItemStack(InitBlocks.blockMetal, 1, i), InitBlocks.blockMetal, new FluidStack(block_fluid.getFluid(),
+					blockLiquidValue), 600);
+			IMCHelper.addNewSmeltable(new ItemStack(InitItems.itemIngot, 1, i), InitBlocks.blockMetal,
+					new FluidStack(block_fluid.getFluid(), ingotLiquidValue), 300);
+			IMCHelper.addNewSmeltable(new ItemStack(InitItems.itemNugget, 1, i), InitBlocks.blockMetal, new FluidStack(block_fluid.getFluid(),
+					nuggetLiquidValue), 150);
 		}
 		// Skip Zinc. Brass, Bronze, Steel.
 		for(int i = 4; i < 7; i++)
 		{
 			String metalname = LibInfo.metals[i].toLowerCase().replace("brass", "alubrass");
 			BlockFluidClassic block_fluid = (BlockFluidClassic) GameRegistry.findBlock("TConstruct", "fluid.molten." + metalname);
-			IMCHelper.addNewSmeltable(new ItemStack(InitBlocks.blockMetal, 1, i), InitBlocks.blockMetal, new FluidStack(block_fluid.getFluid(), 144 * 9),
+			IMCHelper.addNewSmeltable(new ItemStack(InitBlocks.blockMetal, 1, i), InitBlocks.blockMetal, new FluidStack(block_fluid.getFluid(),
+					blockLiquidValue),
 					600);
-			IMCHelper.addNewSmeltable(new ItemStack(InitItems.itemIngot, 1, i), InitBlocks.blockMetal, new FluidStack(block_fluid.getFluid(), 144), 300);
-			IMCHelper.addNewSmeltable(new ItemStack(InitItems.itemNugget, 1, i), InitBlocks.blockMetal, new FluidStack(block_fluid.getFluid(), 144 / 9),
+			IMCHelper.addNewSmeltable(new ItemStack(InitItems.itemIngot, 1, i), InitBlocks.blockMetal,
+					new FluidStack(block_fluid.getFluid(), ingotLiquidValue), 300);
+			IMCHelper.addNewSmeltable(new ItemStack(InitItems.itemNugget, 1, i), InitBlocks.blockMetal, new FluidStack(block_fluid.getFluid(),
+					nuggetLiquidValue),
 					150);
 		}
+		// Zinc
+		IMCHelper.addNewSmeltable(new ItemStack(InitBlocks.blockMetal, 1, 3), InitBlocks.blockMetal, new FluidStack(InitBlocks.moltenZincFluid,
+				blockLiquidValue),
+				600);
+		IMCHelper.addNewSmeltable(new ItemStack(InitItems.itemIngot, 1, 3), InitBlocks.blockMetal,
+				new FluidStack(InitBlocks.moltenZincFluid, ingotLiquidValue), 300);
+		IMCHelper.addNewSmeltable(new ItemStack(InitItems.itemNugget, 1, 3), InitBlocks.blockMetal, new FluidStack(InitBlocks.moltenZincFluid,
+				nuggetLiquidValue),
+				150);
 	}
 
 	private static void registerOreDictionaryEntries()
@@ -233,6 +251,10 @@ public class CompatabilityLayer
 			Item thaumometer = GameRegistry.findItem("Thaumcraft", "ItemThaumometer");
 			GameRegistry.addRecipe(new ShapedOreRecipe(InitItems.itemThaumicMonocle, new Object[] { " I ", "ITI", " I ", 'I', "ingotBrass", 'T',
 					thaumometer }));
+		}
+		if(Loader.isModLoaded("TConstruct"))
+		{
+			GameRegistry.registerBlock(InitBlocks.blockMoltenZinc, "blockMoltenZinc");
 		}
 	}
 }

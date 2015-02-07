@@ -15,6 +15,7 @@ package steamcraft.common.config;
 import java.io.File;
 
 import net.minecraftforge.common.config.Configuration;
+
 import steamcraft.common.lib.LoggerSteamcraft;
 
 public class ConfigGeneral
@@ -29,7 +30,7 @@ public class ConfigGeneral
 	public static boolean drawInside;
 	public static double armorSpawnChance;
 
-	public static int etheriumMaterialID;
+	public static int etheriumMaterialID, zincMaterialID;
 
 	public static int deepsDimensionID;
 
