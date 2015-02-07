@@ -13,8 +13,7 @@ public class WorldGenRandomUnderground extends WorldGenerator
 
 	public WorldGenRandomUnderground(Block block)
 	{
-		this.toGen = block;
-		this.metaToGen = 0;
+		this(block, 0);
 	}
 
 	public WorldGenRandomUnderground(Block block, int meta)

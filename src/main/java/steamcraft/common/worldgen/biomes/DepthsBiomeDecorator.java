@@ -24,6 +24,7 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.event.terraingen.DeferredBiomeDecorator;
 
 import steamcraft.common.init.InitBlocks;
+import steamcraft.common.worldgen.WorldGenRandomUnderground;
 import steamcraft.common.worldgen.structure.WorldGenUndergroundHouse;
 
 public class DepthsBiomeDecorator extends DeferredBiomeDecorator
@@ -275,12 +276,27 @@ public class DepthsBiomeDecorator extends DeferredBiomeDecorator
 
 			new WorldGenMinable(InitBlocks.blockBoulder, 0, 1, Blocks.stone).generate(world, random, oreXCoord, oreYCoord, oreZCoord);
 		}
-		/*
-		 * { int xCoord = chunkX + random.nextInt(16); int yCoord = 10 + random.nextInt(40); int zCoord = chunkZ + random.nextInt(16); new
-		 * WorldGenRandomUnderground(Blocks.web).generate(world, random, xCoord, yCoord, zCoord); } { int xCoord = chunkX + random.nextInt(16); int yCoord = 10
-		 * + random.nextInt(40); int zCoord = chunkZ + random.nextInt(16); new WorldGenRandomUnderground(Blocks.skull).generate(world, random, xCoord, yCoord,
-		 * zCoord); }
-		 */
+
+		{
+			int xCoord = chunkX + random.nextInt(16);
+			int yCoord = 10 + random.nextInt(40);
+			int zCoord = chunkZ + random.nextInt(16);
+			new WorldGenRandomUnderground(Blocks.web).generate(world, random, xCoord, yCoord, zCoord);
+		}
+
+		{
+			int xCoord = chunkX + random.nextInt(16);
+			int yCoord = 10 + random.nextInt(40);
+			int zCoord = chunkZ + random.nextInt(16);
+			new WorldGenRandomUnderground(Blocks.skull).generate(world, random, xCoord, yCoord, zCoord);
+		}
+
+		{
+			int xCoord = chunkX + random.nextInt(16);
+			int yCoord = 10 + random.nextInt(40);
+			int zCoord = chunkZ + random.nextInt(16);
+			new WorldGenRandomUnderground(Blocks.vine).generate(world, random, xCoord, yCoord, zCoord);
+		}
 
 	}
 
