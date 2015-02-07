@@ -42,6 +42,7 @@ import steamcraft.common.init.InitItems;
 import steamcraft.common.init.InitMisc;
 import steamcraft.common.init.InitPackets;
 import steamcraft.common.init.InitRecipes;
+import steamcraft.common.lib.BucketHandler;
 import steamcraft.common.lib.CommandIssue;
 import steamcraft.common.lib.CommandSteamcraft;
 import steamcraft.common.lib.CreativeTabSteamcraft;
@@ -81,6 +82,11 @@ public class Steamcraft
 
 		InitBlocks.init();
 		InitItems.init();
+
+		BucketHandler.INSTANCE.buckets.put(InitBlocks.blockBoilingMud, InitItems.itemBoilingMudBucket);
+		BucketHandler.INSTANCE.buckets.put(InitBlocks.blockBoilingWater, InitItems.itemBoilingWaterBucket);
+		MinecraftForge.EVENT_BUS.register(BucketHandler.INSTANCE);
+
 		CompatabilityLayer.initCompatItems();
 		InitEntities.init();
 
