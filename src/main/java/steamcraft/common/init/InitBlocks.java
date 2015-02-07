@@ -38,6 +38,7 @@ import steamcraft.common.blocks.BlockCongealedSlime;
 import steamcraft.common.blocks.BlockCrystal;
 import steamcraft.common.blocks.BlockCustomLeaves;
 import steamcraft.common.blocks.BlockCustomLog;
+import steamcraft.common.blocks.BlockCustomMushroom;
 import steamcraft.common.blocks.BlockEngravedSolid;
 import steamcraft.common.blocks.BlockEngravedVanilla;
 import steamcraft.common.blocks.BlockEtherium;
@@ -177,7 +178,7 @@ public class InitBlocks
 			blockAllClearSirenOn, blockIntruderSiren, blockIntruderSirenOn, blockNuclearSiren,
 			blockNuclearSirenOn, blockMotionSensor, blockMotionSensorOn;
 
-	public static Block blockBoulder, blockSpiderEgg;
+	public static Block blockBoulder, blockSpiderEgg, blockMushroom;
 
 	public static Block blockMoltenZinc;
 
@@ -430,29 +431,32 @@ public class InitBlocks
 		// Standard
 		blockStandardSiren = new BlockSiren(Material.redstoneLight, false, "standard").setBlockName("blockStandardSiren");
 		blockStandardSirenOn = new BlockSiren(Material.redstoneLight, true, "standard").setBlockName("blockStandardSiren");
-		GameRegistry.registerBlock(blockStandardSiren, "BlockStandardSiren");
-		GameRegistry.registerBlock(blockStandardSirenOn, "BlockStandardSirenOn");
+		registerBlock(blockStandardSiren, "BlockStandardSiren");
+		registerBlock(blockStandardSirenOn, "BlockStandardSirenOn");
 		// All Clear
 		blockAllClearSiren = new BlockSiren(Material.redstoneLight, false, "allclear").setBlockName("blockAllClearSiren");
 		blockAllClearSirenOn = new BlockSiren(Material.redstoneLight, true, "allclear").setBlockName("blockAllClearSiren");
-		GameRegistry.registerBlock(blockAllClearSiren, "BlockAllClearSiren");
-		GameRegistry.registerBlock(blockAllClearSirenOn, "BlockAllClearSirenOn");
+		registerBlock(blockAllClearSiren, "BlockAllClearSiren");
+		registerBlock(blockAllClearSirenOn, "BlockAllClearSirenOn");
 		// Intruder
 		blockIntruderSiren = new BlockSiren(Material.redstoneLight, false, "intruderalert").setBlockName("blockIntruderSiren");
 		blockIntruderSirenOn = new BlockSiren(Material.redstoneLight, true, "intruderalert").setBlockName("blockIntruderSiren");
-		GameRegistry.registerBlock(blockIntruderSiren, "BlockIntruderSiren");
-		GameRegistry.registerBlock(blockIntruderSirenOn, "BlockIntruderSirenOn");
+		registerBlock(blockIntruderSiren, "BlockIntruderSiren");
+		registerBlock(blockIntruderSirenOn, "BlockIntruderSirenOn");
 		// Nuclear
 		blockNuclearSiren = new BlockSiren(Material.redstoneLight, false, "nuclearalarm").setBlockName("blockNuclearSiren");
 		blockNuclearSirenOn = new BlockSiren(Material.redstoneLight, true, "nuclearalarm").setBlockName("blockNuclearSiren");
-		GameRegistry.registerBlock(blockNuclearSiren, "BlockNuclearSiren");
-		GameRegistry.registerBlock(blockNuclearSirenOn, "BlockNuclearSirenOn");
+		registerBlock(blockNuclearSiren, "BlockNuclearSiren");
+		registerBlock(blockNuclearSirenOn, "BlockNuclearSirenOn");
 
 		blockBoulder = new BlockBoulder().setBlockName("blockBoulder");
-		GameRegistry.registerBlock(blockBoulder, "BlockBoulder");
+		registerBlock(blockBoulder, "BlockBoulder");
 
 		blockSpiderEgg = new BlockSpiderEgg(Material.dragonEgg).setBlockName("blockSpiderEgg");
-		GameRegistry.registerBlock(blockSpiderEgg, "BlockSpiderEgg");
+		registerBlock(blockSpiderEgg, "BlockSpiderEgg");
+
+		blockMushroom = new BlockCustomMushroom().setBlockName("blockMushroom");
+		registerBlock(blockMushroom, "BlockMushroom");
 	}
 
 	private static String[] blacklist = new String[] { "BlockFissurePortal", "BlockLamp" };
