@@ -62,6 +62,8 @@ public class DepthsBiomeDecorator extends DeferredBiomeDecorator
 	@Override
 	public void decorateChunk(World world, Random random, BiomeGenBase biome, int chunkX, int chunkZ)
 	{
+		if(world == null)
+			return;
 		this.generateOres(world, chunkX, chunkZ, random);
 		int i;
 		int j;
@@ -69,20 +71,20 @@ public class DepthsBiomeDecorator extends DeferredBiomeDecorator
 
 		for(i = 0; i < this.sandPerChunk2; ++i)
 		{
-			j = chunkX + random.nextInt(16) + 8;
-			k = chunkZ + random.nextInt(16) + 8;
+			j = chunkX + random.nextInt(16);
+			k = chunkZ + random.nextInt(16);
 			this.sandGen.generate(world, random, j, world.getTopSolidOrLiquidBlock(j, k), k);
 		}
 		for(i = 0; i < this.clayPerChunk; ++i)
 		{
-			j = chunkX + random.nextInt(16) + 8;
-			k = chunkZ + random.nextInt(16) + 8;
+			j = chunkX + random.nextInt(16);
+			k = chunkZ + random.nextInt(16);
 			this.clayGen.generate(world, random, j, world.getTopSolidOrLiquidBlock(j, k), k);
 		}
 		for(i = 0; i < this.sandPerChunk; ++i)
 		{
-			j = chunkX + random.nextInt(16) + 8;
-			k = chunkZ + random.nextInt(16) + 8;
+			j = chunkX + random.nextInt(16);
+			k = chunkZ + random.nextInt(16);
 			this.gravelAsSandGen.generate(world, random, j, world.getTopSolidOrLiquidBlock(j, k), k);
 		}
 
@@ -97,8 +99,8 @@ public class DepthsBiomeDecorator extends DeferredBiomeDecorator
 		int i1;
 		for(j = 0; j < i; ++j)
 		{
-			k = chunkX + random.nextInt(16) + 8;
-			l = chunkZ + random.nextInt(16) + 8;
+			k = chunkX + random.nextInt(16);
+			l = chunkZ + random.nextInt(16);
 			i1 = world.getHeightValue(k, l);
 			WorldGenAbstractTree worldgenabstracttree = biome.func_150567_a(random);
 			worldgenabstracttree.setScale(1.0D, 1.0D, 1.0D);
@@ -110,14 +112,14 @@ public class DepthsBiomeDecorator extends DeferredBiomeDecorator
 		}
 		for(j = 0; j < this.bigMushroomsPerChunk; ++j)
 		{
-			k = chunkX + random.nextInt(16) + 8;
-			l = chunkZ + random.nextInt(16) + 8;
+			k = chunkX + random.nextInt(16);
+			l = chunkZ + random.nextInt(16);
 			this.bigMushroomGen.generate(world, random, k, world.getHeightValue(k, l), l);
 		}
 		for(j = 0; j < this.flowersPerChunk; ++j)
 		{
-			k = chunkX + random.nextInt(16) + 8;
-			l = chunkZ + random.nextInt(16) + 8;
+			k = chunkX;
+			l = chunkZ;
 			i1 = nextInt(random, world.getHeightValue(k, l) + 32);
 			String s = biome.func_150572_a(random, k, i1, l);
 			BlockFlower blockflower = BlockFlower.func_149857_e(s);
@@ -130,23 +132,23 @@ public class DepthsBiomeDecorator extends DeferredBiomeDecorator
 		}
 		for(j = 0; j < this.grassPerChunk; ++j)
 		{
-			k = chunkX + random.nextInt(16) + 8;
-			l = chunkZ + random.nextInt(16) + 8;
+			k = chunkX + random.nextInt(16);
+			l = chunkZ + random.nextInt(16);
 			i1 = nextInt(random, world.getHeightValue(k, l) * 2);
 			WorldGenerator worldgenerator = biome.getRandomWorldGenForGrass(random);
 			worldgenerator.generate(world, random, k, i1, l);
 		}
 		for(j = 0; j < this.deadBushPerChunk; ++j)
 		{
-			k = chunkX + random.nextInt(16) + 8;
-			l = chunkZ + random.nextInt(16) + 8;
+			k = chunkX + random.nextInt(16);
+			l = chunkZ + random.nextInt(16);
 			i1 = nextInt(random, world.getHeightValue(k, l) * 2);
 			(new WorldGenDeadBush(Blocks.deadbush)).generate(world, random, k, i1, l);
 		}
 		for(j = 0; j < this.waterlilyPerChunk; ++j)
 		{
-			k = chunkX + random.nextInt(16) + 8;
-			l = chunkZ + random.nextInt(16) + 8;
+			k = chunkX + random.nextInt(16);
+			l = chunkZ + random.nextInt(16);
 
 			for(i1 = nextInt(random, world.getHeightValue(k, l) * 2); i1 > 0 && world.isAirBlock(k, i1 - 1, l); --i1)
 			{
@@ -159,16 +161,16 @@ public class DepthsBiomeDecorator extends DeferredBiomeDecorator
 		{
 			if(random.nextInt(4) == 0)
 			{
-				k = chunkX + random.nextInt(16) + 8;
-				l = chunkZ + random.nextInt(16) + 8;
+				k = chunkX + random.nextInt(16);
+				l = chunkZ + random.nextInt(16);
 				i1 = world.getHeightValue(k, l);
 				this.mushroomBrownGen.generate(world, random, k, i1, l);
 			}
 
 			if(random.nextInt(8) == 0)
 			{
-				k = chunkX + random.nextInt(16) + 8;
-				l = chunkZ + random.nextInt(16) + 8;
+				k = chunkX + random.nextInt(16);
+				l = chunkZ + random.nextInt(16);
 				i1 = nextInt(random, world.getHeightValue(k, l) * 2);
 				this.mushroomRedGen.generate(world, random, k, i1, l);
 			}
@@ -176,38 +178,38 @@ public class DepthsBiomeDecorator extends DeferredBiomeDecorator
 
 		if(random.nextInt(4) == 0)
 		{
-			j = chunkX + random.nextInt(16) + 8;
-			k = chunkZ + random.nextInt(16) + 8;
+			j = chunkX + random.nextInt(16);
+			k = chunkZ + random.nextInt(16);
 			l = nextInt(random, world.getHeightValue(j, k) * 2);
 			this.mushroomBrownGen.generate(world, random, j, l, k);
 		}
 
 		if(random.nextInt(8) == 0)
 		{
-			j = chunkX + random.nextInt(16) + 8;
-			k = chunkZ + random.nextInt(16) + 8;
+			j = chunkX + random.nextInt(16);
+			k = chunkZ + random.nextInt(16);
 			l = nextInt(random, world.getHeightValue(j, k) * 2);
 			this.mushroomRedGen.generate(world, random, j, l, k);
 		}
 		for(j = 0; j < this.reedsPerChunk; ++j)
 		{
-			k = chunkX + random.nextInt(16) + 8;
-			l = chunkZ + random.nextInt(16) + 8;
+			k = chunkX + random.nextInt(16);
+			l = chunkZ + random.nextInt(16);
 			i1 = nextInt(random, world.getHeightValue(k, l) * 2);
 			this.reedGen.generate(world, random, k, i1, l);
 		}
 
 		for(j = 0; j < 10; ++j)
 		{
-			k = chunkX + random.nextInt(16) + 8;
-			l = chunkZ + random.nextInt(16) + 8;
+			k = chunkX + random.nextInt(16);
+			l = chunkZ + random.nextInt(16);
 			i1 = nextInt(random, world.getHeightValue(k, l) * 2);
 			this.reedGen.generate(world, random, k, i1, l);
 		}
 		if(random.nextInt(32) == 0)
 		{
-			j = chunkX + random.nextInt(16) + 8;
-			k = chunkZ + random.nextInt(16) + 8;
+			j = chunkX + random.nextInt(16);
+			k = chunkZ + random.nextInt(16);
 			l = nextInt(random, world.getHeightValue(j, k) * 2);
 			(new WorldGenPumpkin()).generate(world, random, j, l, k);
 		}
@@ -215,17 +217,17 @@ public class DepthsBiomeDecorator extends DeferredBiomeDecorator
 		{
 			for(j = 0; j < 50; ++j)
 			{
-				k = chunkX + random.nextInt(16) + 8;
+				k = chunkX + random.nextInt(16);
 				l = random.nextInt(random.nextInt(248) + 8);
-				i1 = chunkZ + random.nextInt(16) + 8;
+				i1 = chunkZ + random.nextInt(16);
 				(new WorldGenLiquids(Blocks.flowing_water)).generate(world, random, k, l, i1);
 			}
 
 			for(j = 0; j < 20; ++j)
 			{
-				k = chunkX + random.nextInt(16) + 8;
+				k = chunkX + random.nextInt(16);
 				l = random.nextInt(random.nextInt(random.nextInt(240) + 8) + 8);
-				i1 = chunkZ + random.nextInt(16) + 8;
+				i1 = chunkZ + random.nextInt(16);
 				(new WorldGenLiquids(Blocks.flowing_lava)).generate(world, random, k, l, i1);
 			}
 		}

@@ -59,7 +59,7 @@ public class ChunkProviderDeeps implements IChunkProvider
 	public NoiseGeneratorOctaves noiseGen6;
 	public NoiseGeneratorOctaves mobSpawnerNoise;
 	/** Reference to the World object. */
-	private World worldObj;
+	private final World worldObj;
 	/** are map structures going to be generated (e.g. strongholds) */
 	private final boolean mapFeaturesEnabled;
 	private final WorldType worldType;

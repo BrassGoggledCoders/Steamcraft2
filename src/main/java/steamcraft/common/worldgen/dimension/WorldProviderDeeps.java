@@ -1,5 +1,5 @@
 /**
- * This class was created by BrassGoggledCoders modding team. 
+ * This class was created by BrassGoggledCoders modding team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -8,19 +8,22 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- * 
+ *
  */
 package steamcraft.common.worldgen.dimension;
 
 import net.minecraft.world.WorldProvider;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.IChunkProvider;
-import net.minecraftforge.client.IRenderHandler;
-import net.minecraftforge.common.DimensionManager;
-import steamcraft.common.config.ConfigGeneral;
-import steamcraft.common.worldgen.dimension.util.DeepsSkyRenderer;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+
+import net.minecraftforge.client.IRenderHandler;
+import net.minecraftforge.common.DimensionManager;
+
+import steamcraft.common.config.ConfigGeneral;
+import steamcraft.common.worldgen.dimension.util.DeepsSkyRenderer;
 
 public class WorldProviderDeeps extends WorldProvider
 {
@@ -57,8 +60,8 @@ public class WorldProviderDeeps extends WorldProvider
 	@Override
 	public void registerWorldChunkManager()
 	{
+		this.worldChunkMgr = new WorldChunkManagerDeeps(this.worldObj);
 		this.dimensionId = ConfigGeneral.deepsDimensionID;
-		this.worldChunkMgr = new WorldChunkManagerDeeps(this.worldObj.getSeed(), this.terrainType);
 		this.generateLightBrightnessTable();
 	}
 

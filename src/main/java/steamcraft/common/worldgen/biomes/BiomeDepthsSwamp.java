@@ -106,15 +106,15 @@ public class BiomeDepthsSwamp extends BiomeDepthsBase
 	{
 		for(int l = 0; l < 30; ++l)
 		{
-			int i1 = x + random.nextInt(16) + 8;
-			int j1 = z + random.nextInt(16) + 8;
+			int i1 = x + random.nextInt(16);
+			int j1 = z + random.nextInt(16);
 			int k1 = random.nextInt(100);
 			new WorldGenVines().generate(world, random, i1, k1, j1);
 		}
 		for(int l = 0; l < 5; ++l)
 		{
-			int i1 = x + random.nextInt(16) + 8;
-			int j1 = z + random.nextInt(16) + 8;
+			int i1 = x + random.nextInt(16);
+			int j1 = z + random.nextInt(16);
 			int k1 = random.nextInt(100);
 			new WorldGenBlockgroup(InitBlocks.blockMud, 20).generate(world, random, i1, k1, j1);
 		}

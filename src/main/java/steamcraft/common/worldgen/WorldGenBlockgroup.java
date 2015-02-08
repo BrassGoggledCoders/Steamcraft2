@@ -15,7 +15,6 @@ package steamcraft.common.worldgen;
 import java.util.Random;
 
 import net.minecraft.block.Block;
-import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
 
@@ -50,11 +49,11 @@ public class WorldGenBlockgroup extends WorldGenerator
 					{
 						Block block = world.getBlock(i1, i2, j1);
 
-						if((block == Blocks.dirt) || (block == Blocks.clay))
-						{
-							world.setBlock(i1, i2, j1, this.blockToGen, 0, 2);
-							flag = true;
-						}
+						// if((block == Blocks.dirt) || (block == Blocks.clay))
+						// {
+						world.setBlock(i1, i2, j1, this.blockToGen, 0, 2);
+						flag = true;
+						// }
 					}
 				}
 			}
