@@ -2,8 +2,6 @@ package steamcraft.common.worldgen.biomes;
 
 import java.util.Random;
 
-import net.minecraft.block.BlockFlower;
-import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeDecorator;
@@ -45,7 +43,7 @@ public class DepthsBiomeDecorator extends DeferredBiomeDecorator
 		this.redstoneGen = new WorldGenMinable(Blocks.redstone_ore, 12);
 		this.diamondGen = new WorldGenMinable(Blocks.diamond_ore, 12);
 		this.lapisGen = new WorldGenMinable(Blocks.lapis_ore, 16);
-		this.yellowFlowerGen = new WorldGenFlowers(Blocks.yellow_flower);
+		// this.yellowFlowerGen = new WorldGenFlowers(Blocks.yellow_flower);
 		this.mushroomBrownGen = new WorldGenFlowers(Blocks.brown_mushroom);
 		this.mushroomRedGen = new WorldGenFlowers(Blocks.red_mushroom);
 		this.bigMushroomGen = new WorldGenBigMushroom();
@@ -62,8 +60,6 @@ public class DepthsBiomeDecorator extends DeferredBiomeDecorator
 	@Override
 	public void decorateChunk(World world, Random random, BiomeGenBase biome, int chunkX, int chunkZ)
 	{
-		if(world == null)
-			return;
 		this.generateOres(world, chunkX, chunkZ, random);
 		int i;
 		int j;
@@ -105,9 +101,9 @@ public class DepthsBiomeDecorator extends DeferredBiomeDecorator
 			WorldGenAbstractTree worldgenabstracttree = biome.func_150567_a(random);
 			worldgenabstracttree.setScale(1.0D, 1.0D, 1.0D);
 
-			if(worldgenabstracttree.generate(world, random, k, i1, l))
+			if(worldgenabstracttree.generate(world, random, k - 3, i1, l - 3))
 			{
-				worldgenabstracttree.func_150524_b(world, random, k, i1, l);
+				worldgenabstracttree.func_150524_b(world, random, k - 3, i1, l - 3);
 			}
 		}
 		for(j = 0; j < this.bigMushroomsPerChunk; ++j)
@@ -116,20 +112,11 @@ public class DepthsBiomeDecorator extends DeferredBiomeDecorator
 			l = chunkZ + random.nextInt(16);
 			this.bigMushroomGen.generate(world, random, k, world.getHeightValue(k, l), l);
 		}
-		for(j = 0; j < this.flowersPerChunk; ++j)
-		{
-			k = chunkX;
-			l = chunkZ;
-			i1 = nextInt(random, world.getHeightValue(k, l) + 32);
-			String s = biome.func_150572_a(random, k, i1, l);
-			BlockFlower blockflower = BlockFlower.func_149857_e(s);
-
-			if(blockflower.getMaterial() != Material.air)
-			{
-				this.yellowFlowerGen.func_150550_a(blockflower, BlockFlower.func_149856_f(s));
-				this.yellowFlowerGen.generate(world, random, k, i1, l);
-			}
-		}
+		/*
+		 * for(j = 0; j < this.flowersPerChunk; ++j) { k = chunkX; l = chunkZ; i1 = nextInt(random, world.getHeightValue(k, l) + 32); String s =
+		 * biome.func_150572_a(random, k, i1, l); BlockFlower blockflower = BlockFlower.func_149857_e(s); if(blockflower.getMaterial() != Material.air) {
+		 * this.yellowFlowerGen.func_150550_a(blockflower, BlockFlower.func_149856_f(s)); this.yellowFlowerGen.generate(world, random, k, i1, l); } }
+		 */
 		for(j = 0; j < this.grassPerChunk; ++j)
 		{
 			k = chunkX + random.nextInt(16);
@@ -218,7 +205,7 @@ public class DepthsBiomeDecorator extends DeferredBiomeDecorator
 			for(j = 0; j < 50; ++j)
 			{
 				k = chunkX + random.nextInt(16);
-				l = random.nextInt(random.nextInt(248) + 8);
+				l = random.nextInt(256);
 				i1 = chunkZ + random.nextInt(16);
 				(new WorldGenLiquids(Blocks.flowing_water)).generate(world, random, k, l, i1);
 			}
@@ -226,7 +213,7 @@ public class DepthsBiomeDecorator extends DeferredBiomeDecorator
 			for(j = 0; j < 20; ++j)
 			{
 				k = chunkX + random.nextInt(16);
-				l = random.nextInt(random.nextInt(random.nextInt(240) + 8) + 8);
+				l = random.nextInt(256);
 				i1 = chunkZ + random.nextInt(16);
 				(new WorldGenLiquids(Blocks.flowing_lava)).generate(world, random, k, l, i1);
 			}
@@ -318,13 +305,13 @@ public class DepthsBiomeDecorator extends DeferredBiomeDecorator
 	/**
 	 * Standard ore generation helper. Generates most ores.
 	 */
-	protected void genStandardOre1(World world, int chunkX, int chunkZ, Random random, int p_76795_1_, WorldGenerator p_76795_2_, int p_76795_3_, int p_76795_4_)
+	protected void genStandardOre1(World world, int chunkX, int chunkZ, Random random, int p_76795_1_, WorldGenerator p_76795_2_, int maxY)
 	{
 		for(int l = 0; l < p_76795_1_; ++l)
 		{
-			int i1 = chunkX + random.nextInt(16);
-			int j1 = random.nextInt(p_76795_4_ - p_76795_3_) + p_76795_3_;
-			int k1 = chunkZ + random.nextInt(16);
+			int i1 = chunkX + random.nextInt(16) - 8;
+			int j1 = random.nextInt(maxY);
+			int k1 = chunkZ + random.nextInt(16) - 8;
 			p_76795_2_.generate(world, random, i1, j1, k1);
 		}
 	}
@@ -332,27 +319,27 @@ public class DepthsBiomeDecorator extends DeferredBiomeDecorator
 	/**
 	 * Standard ore generation helper. Generates Lapis Lazuli.
 	 */
-	protected void genStandardOre2(World world, int chunkX, int chunkZ, Random random, int p_76793_1_, WorldGenerator p_76793_2_, int p_76793_3_, int p_76793_4_)
+	protected void genStandardOre2(World world, int chunkX, int chunkZ, Random random, int p_76793_1_, WorldGenerator generator, int maxY)
 	{
 		for(int l = 0; l < p_76793_1_; ++l)
 		{
-			int i1 = chunkX + random.nextInt(16);
-			int j1 = random.nextInt(p_76793_4_) + random.nextInt(p_76793_4_) + (p_76793_3_ - p_76793_4_);
-			int k1 = chunkZ + random.nextInt(16);
-			p_76793_2_.generate(world, random, i1, j1, k1);
+			int i1 = chunkX + random.nextInt(16) - 8;
+			int j1 = random.nextInt(maxY);
+			int k1 = chunkZ + random.nextInt(16) - 8;
+			generator.generate(world, random, i1, j1, k1);
 		}
 	}
 
 	protected void generateOres(World world, int chunkX, int chunkZ, Random random)
 	{
-		this.genStandardOre1(world, chunkX, chunkZ, random, 20, this.dirtGen, 0, 256);
-		this.genStandardOre1(world, chunkX, chunkZ, random, 10, this.gravelGen, 0, 256);
-		this.genStandardOre1(world, chunkX, chunkZ, random, 20, this.coalGen, 0, 128);
-		this.genStandardOre1(world, chunkX, chunkZ, random, 20, this.ironGen, 0, 64);
-		this.genStandardOre1(world, chunkX, chunkZ, random, 2, this.goldGen, 0, 32);
-		this.genStandardOre1(world, chunkX, chunkZ, random, 8, this.redstoneGen, 0, 16);
-		this.genStandardOre1(world, chunkX, chunkZ, random, 1, this.diamondGen, 0, 16);
-		this.genStandardOre2(world, chunkX, chunkZ, random, 1, this.lapisGen, 16, 16);
+		this.genStandardOre1(world, chunkX, chunkZ, random, 20, this.dirtGen, 256);
+		this.genStandardOre1(world, chunkX, chunkZ, random, 10, this.gravelGen, 256);
+		this.genStandardOre1(world, chunkX, chunkZ, random, 20, this.coalGen, 128);
+		this.genStandardOre1(world, chunkX, chunkZ, random, 20, this.ironGen, 64);
+		this.genStandardOre1(world, chunkX, chunkZ, random, 2, this.goldGen, 32);
+		this.genStandardOre1(world, chunkX, chunkZ, random, 8, this.redstoneGen, 16);
+		this.genStandardOre1(world, chunkX, chunkZ, random, 1, this.diamondGen, 16);
+		this.genStandardOre2(world, chunkX, chunkZ, random, 1, this.lapisGen, 16);
 	}
 
 	private int nextInt(Random random, int i)

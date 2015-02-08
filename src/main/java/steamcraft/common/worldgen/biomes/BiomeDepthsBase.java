@@ -70,7 +70,6 @@ public class BiomeDepthsBase extends BiomeGenBase
 	@Override
 	public void decorate(World world, Random random, int x, int z)
 	{
-		if(world != null)
-			this.decorator.decorateChunk(world, random, this, x, z);
+		this.decorator.decorateChunk(world, random, this, x, z);
 	}
 }

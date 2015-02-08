@@ -44,6 +44,7 @@ import net.minecraftforge.event.terraingen.TerrainGen;
 
 import steamcraft.common.init.InitBiomes;
 import steamcraft.common.init.InitBlocks;
+import steamcraft.common.worldgen.biomes.BiomeDepthsBase;
 
 public class ChunkProviderDeeps implements IChunkProvider
 {
@@ -395,16 +396,17 @@ public class ChunkProviderDeeps implements IChunkProvider
 	 * Populates chunk with ores etc etc
 	 */
 	@Override
-	public void populate(IChunkProvider p_73153_1_, int p_73153_2_, int p_73153_3_)
+	public void populate(IChunkProvider provider, int chunkX, int chunkZ)
 	{
 		BlockFalling.fallInstantly = true;
-		int k = p_73153_2_ * 16;
-		int l = p_73153_3_ * 16;
-		BiomeGenBase biomegenbase = this.worldObj.getBiomeGenForCoords(k + 16, l + 16);
+		int blockX = chunkX * 16 + 8;
+		int blockZ = chunkZ * 16 + 8;
+		BiomeGenBase biomegenbase = this.worldObj.getBiomeGenForCoords(blockX + 16, blockZ + 16);
+		BiomeDepthsBase biomegendepths = (BiomeDepthsBase) biomegenbase;
 		this.rand.setSeed(this.worldObj.getSeed());
 		long i1 = ((this.rand.nextLong() / 2L) * 2L) + 1L;
 		long j1 = ((this.rand.nextLong() / 2L) * 2L) + 1L;
-		this.rand.setSeed(((p_73153_2_ * i1) + (p_73153_3_ * j1)) ^ this.worldObj.getSeed());
+		this.rand.setSeed(((chunkX * i1) + (chunkZ * j1)) ^ this.worldObj.getSeed());
 		boolean flag = false;
 
 		int k1;
@@ -413,38 +415,38 @@ public class ChunkProviderDeeps implements IChunkProvider
 
 		if((biomegenbase == InitBiomes.biomeDepthsSCH))
 		{
-			k1 = k + this.rand.nextInt(16) + 8;
+			k1 = blockX + this.rand.nextInt(16);
 			l1 = this.rand.nextInt(256);
-			i2 = l + this.rand.nextInt(16) + 8;
+			i2 = blockZ + this.rand.nextInt(16);
 			(new WorldGenLakes(Blocks.lava)).generate(this.worldObj, this.rand, k1, l1, i2);
-			k1 = k + this.rand.nextInt(16) + 8;
+			k1 = blockX + this.rand.nextInt(16);
 			l1 = this.rand.nextInt(256);
-			i2 = l + this.rand.nextInt(16) + 8;
+			i2 = blockZ + this.rand.nextInt(16);
 			(new WorldGenLakes(Blocks.lava)).generate(this.worldObj, this.rand, k1, l1, i2);
 		}
 		else if(biomegenbase == InitBiomes.biomeDepthsSC)
 		{
-			k1 = k + this.rand.nextInt(16) + 8;
+			k1 = blockX + this.rand.nextInt(16);
 			l1 = this.rand.nextInt(256);
-			i2 = l + this.rand.nextInt(16) + 8;
+			i2 = blockZ + this.rand.nextInt(16);
 			(new WorldGenLakes(InitBlocks.blockBoilingWater)).generate(this.worldObj, this.rand, k1, l1, i2);
 
-			k1 = k + this.rand.nextInt(16) + 8;
+			k1 = blockX + this.rand.nextInt(16);
 			l1 = this.rand.nextInt(256);
-			i2 = l + this.rand.nextInt(16) + 8;
+			i2 = blockZ + this.rand.nextInt(16);
 			(new WorldGenLakes(InitBlocks.blockBoilingMud)).generate(this.worldObj, this.rand, k1, l1, i2);
 		}
 		else
 		{
-			k1 = k + this.rand.nextInt(16) + 8;
+			k1 = blockX + this.rand.nextInt(16);
 			l1 = this.rand.nextInt(256);
-			i2 = l + this.rand.nextInt(16) + 8;
+			i2 = blockZ + this.rand.nextInt(16);
 			(new WorldGenLakes(Blocks.water)).generate(this.worldObj, this.rand, k1, l1, i2);
 		}
 
-		k1 = k + this.rand.nextInt(16) + 8;
-		l1 = this.rand.nextInt(this.rand.nextInt(248) + 8);
-		i2 = l + this.rand.nextInt(16) + 8;
+		k1 = blockX + this.rand.nextInt(16);
+		l1 = this.rand.nextInt(256);
+		i2 = blockZ + this.rand.nextInt(16);
 
 		if((l1 < 63) || (this.rand.nextInt(5) == 0))
 		{
@@ -452,16 +454,16 @@ public class ChunkProviderDeeps implements IChunkProvider
 		}
 		for(k1 = 0; k1 < 8; ++k1)
 		{
-			l1 = k + this.rand.nextInt(16) + 8;
+			l1 = blockX + this.rand.nextInt(16);
 			i2 = this.rand.nextInt(256);
-			int j2 = l + this.rand.nextInt(16) + 8;
+			int j2 = blockZ + this.rand.nextInt(16);
 			(new WorldGenDungeons()).generate(this.worldObj, this.rand, l1, i2, j2);
 		}
 
-		biomegenbase.decorate(this.worldObj, this.rand, k, l);
-		SpawnerAnimals.performWorldGenSpawning(this.worldObj, biomegenbase, k + 8, l + 8, 16, 16, this.rand);
-		k += 8;
-		l += 8;
+		biomegendepths.decorate(this.worldObj, this.rand, blockX, blockZ);
+		SpawnerAnimals.performWorldGenSpawning(this.worldObj, biomegenbase, blockX + 8, blockZ + 8, 16, 16, this.rand);
+		blockX += 8;
+		blockZ += 8;
 
 		BlockFalling.fallInstantly = false;
 	}

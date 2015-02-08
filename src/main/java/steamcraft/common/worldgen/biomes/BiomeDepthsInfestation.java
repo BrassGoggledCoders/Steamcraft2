@@ -36,8 +36,8 @@ public class BiomeDepthsInfestation extends BiomeDepthsBase
 	{
 		for(int l = 0; l < 30; ++l)
 		{
-			int i1 = x + random.nextInt(16) + 8;
-			int j1 = z + random.nextInt(16) + 8;
+			int i1 = x + random.nextInt(16);
+			int j1 = z + random.nextInt(16);
 			int k1 = random.nextInt(100);
 			new WorldGenBlockgroup(Blocks.dirt, 40).generate(world, random, i1, k1, j1);
 		}
