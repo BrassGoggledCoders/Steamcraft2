@@ -22,6 +22,8 @@ import net.minecraft.world.gen.structure.StructureComponent;
 
 import net.minecraftforge.common.ChestGenHooks;
 
+import steamcraft.common.lib.ModInfo;
+
 public class StructureUndercityPieces
 {
 	/** List of contents that can generate in Undercitys. */
@@ -33,14 +35,13 @@ public class StructureUndercityPieces
 			new WeightedRandomChestContent(Item.getItemFromBlock(Blocks.rail), 0, 4, 8, 1), new WeightedRandomChestContent(Items.melon_seeds, 0, 2, 4, 10),
 			new WeightedRandomChestContent(Items.pumpkin_seeds, 0, 2, 4, 10), new WeightedRandomChestContent(Items.saddle, 0, 1, 1, 3),
 			new WeightedRandomChestContent(Items.iron_horse_armor, 0, 1, 1, 1) };
-	private static final String __OBFID = "CL_00000444";
 
 	public static void registerStructurePieces()
 	{
-		MapGenStructureIO.func_143031_a(StructureUndercityPieces.Corridor.class, "MSCorridor");
-		MapGenStructureIO.func_143031_a(StructureUndercityPieces.Cross.class, "MSCrossing");
-		MapGenStructureIO.func_143031_a(StructureUndercityPieces.Room.class, "MSRoom");
-		MapGenStructureIO.func_143031_a(StructureUndercityPieces.Stairs.class, "MSStairs");
+		MapGenStructureIO.func_143031_a(StructureUndercityPieces.Corridor.class, ModInfo.ID + "UCCorridor");
+		MapGenStructureIO.func_143031_a(StructureUndercityPieces.Cross.class, ModInfo.ID + "UCCrossing");
+		MapGenStructureIO.func_143031_a(StructureUndercityPieces.Room.class, ModInfo.ID + "UCRoom");
+		MapGenStructureIO.func_143031_a(StructureUndercityPieces.Stairs.class, ModInfo.ID + "UCStairs");
 	}
 
 	private static StructureComponent getRandomComponent(List p_78815_0_, Random p_78815_1_, int p_78815_2_, int p_78815_3_, int p_78815_4_, int p_78815_5_,

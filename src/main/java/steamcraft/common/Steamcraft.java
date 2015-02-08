@@ -56,6 +56,7 @@ import steamcraft.common.worldgen.WorldGenSteamcraft;
 import steamcraft.common.worldgen.dimension.WorldProviderDeeps;
 import steamcraft.common.worldgen.structure.MapGenUndercity;
 import steamcraft.common.worldgen.structure.StructureUndercityPieces;
+import steamcraft.common.worldgen.structure.StructureUndercityStart;
 import boilerplate.common.compathandler.FMPCompatHandler;
 
 /**
@@ -112,6 +113,10 @@ public class Steamcraft
 		FMLCommonHandler.instance().bus().register(new EventHandlerFML());
 		FMLCommonHandler.instance().bus().register(new EventHandlerClient());
 
+		MapGenStructureIO.registerStructure(MapGenUndercity.class, ModInfo.ID + "Undercity");
+		MapGenStructureIO.func_143031_a(StructureUndercityStart.class, ModInfo.ID + "UCStart");
+		StructureUndercityPieces.registerStructurePieces();
+
 		if(ConfigWorldGen.generationEnabled)
 			GameRegistry.registerWorldGenerator(new WorldGenSteamcraft(), 1);
 
@@ -121,9 +126,6 @@ public class Steamcraft
 		InitBiomes.init();
 
 		FMPCompatHandler.doRegister();
-
-		MapGenStructureIO.registerStructure(MapGenUndercity.class, ModInfo.ID + "Undercity");
-		StructureUndercityPieces.registerStructurePieces();
 
 		LoggerSteamcraft.info("Finished Init");
 	}
