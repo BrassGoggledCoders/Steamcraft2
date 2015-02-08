@@ -19,7 +19,7 @@ import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 
 import steamcraft.common.init.InitBlocks;
-import steamcraft.common.worldgen.structure.WorldGenBlockgroup;
+import steamcraft.common.worldgen.WorldGenBlockgroup;
 
 public class BiomeDepthsInfestation extends BiomeDepthsBase
 {

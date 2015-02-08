@@ -28,8 +28,8 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 import steamcraft.common.init.InitBlocks;
+import steamcraft.common.worldgen.WorldGenBlockgroup;
 import steamcraft.common.worldgen.WorldGenLeafPile;
-import steamcraft.common.worldgen.structure.WorldGenBlockgroup;
 import steamcraft.common.worldgen.trees.WorldGenMangroveTree;
 import steamcraft.common.worldgen.trees.WorldGenWillowTree;
 
