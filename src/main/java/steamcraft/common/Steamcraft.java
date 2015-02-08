@@ -13,6 +13,7 @@
 package steamcraft.common;
 
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.world.gen.structure.MapGenStructureIO;
 
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
@@ -53,6 +54,7 @@ import steamcraft.common.lib.events.EventHandlerFML;
 import steamcraft.common.lib.events.EventHandlerForge;
 import steamcraft.common.worldgen.WorldGenSteamcraft;
 import steamcraft.common.worldgen.dimension.WorldProviderDeeps;
+import steamcraft.common.worldgen.structure.MapGenUndercity;
 import boilerplate.common.compathandler.FMPCompatHandler;
 
 /**
@@ -118,6 +120,8 @@ public class Steamcraft
 		InitBiomes.init();
 
 		FMPCompatHandler.doRegister();
+
+		MapGenStructureIO.registerStructure(MapGenUndercity.class, ModInfo.ID + "Undercity");
 
 		LoggerSteamcraft.info("Finished Init");
 	}
