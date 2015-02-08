@@ -299,7 +299,6 @@ public class DepthsBiomeDecorator extends DeferredBiomeDecorator
 			int zCoord = chunkZ + random.nextInt(16);
 			new WorldGenRandomUnderground(InitBlocks.blockMushroom, 2).generate(world, random, xCoord, yCoord, zCoord);
 		}
-
 	}
 
 	/**

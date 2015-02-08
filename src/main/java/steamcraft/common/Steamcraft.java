@@ -55,6 +55,7 @@ import steamcraft.common.lib.events.EventHandlerForge;
 import steamcraft.common.worldgen.WorldGenSteamcraft;
 import steamcraft.common.worldgen.dimension.WorldProviderDeeps;
 import steamcraft.common.worldgen.structure.MapGenUndercity;
+import steamcraft.common.worldgen.structure.StructureUndercityPieces;
 import boilerplate.common.compathandler.FMPCompatHandler;
 
 /**
@@ -122,6 +123,7 @@ public class Steamcraft
 		FMPCompatHandler.doRegister();
 
 		MapGenStructureIO.registerStructure(MapGenUndercity.class, ModInfo.ID + "Undercity");
+		StructureUndercityPieces.registerStructurePieces();
 
 		LoggerSteamcraft.info("Finished Init");
 	}

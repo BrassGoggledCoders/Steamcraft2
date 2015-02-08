@@ -45,6 +45,7 @@ import net.minecraftforge.event.terraingen.TerrainGen;
 import steamcraft.common.init.InitBiomes;
 import steamcraft.common.init.InitBlocks;
 import steamcraft.common.worldgen.biomes.BiomeDepthsBase;
+import steamcraft.common.worldgen.structure.MapGenUndercity;
 
 public class ChunkProviderDeeps implements IChunkProvider
 {
@@ -69,6 +70,7 @@ public class ChunkProviderDeeps implements IChunkProvider
 	private double[] stoneNoise = new double[256];
 	private MapGenBase caveGenerator = new MapGenCaves();
 	private MapGenBase ravineGenerator = new MapGenRavine();
+	private MapGenUndercity undercityGenerator = new MapGenUndercity();
 	/** The biomes that are used to generate the chunk */
 	public BiomeGenBase[] biomesForGeneration;
 	double[] field_147427_d;
@@ -245,6 +247,11 @@ public class ChunkProviderDeeps implements IChunkProvider
 		this.replaceBlocksForBiome(chunkCoordX, chunkCoordZ, ablock, abyte, this.biomesForGeneration);
 		this.caveGenerator.func_151539_a(this, this.worldObj, chunkCoordX, chunkCoordZ, ablock);
 		this.ravineGenerator.func_151539_a(this, this.worldObj, chunkCoordX, chunkCoordZ, ablock);
+
+		if(this.mapFeaturesEnabled)
+		{
+			this.undercityGenerator.func_151539_a(this, this.worldObj, chunkCoordX, chunkCoordZ, ablock);
+		}
 
 		Chunk chunk = new Chunk(this.worldObj, ablock, abyte, chunkCoordX, chunkCoordZ);
 		byte[] abyte1 = chunk.getBiomeArray();
