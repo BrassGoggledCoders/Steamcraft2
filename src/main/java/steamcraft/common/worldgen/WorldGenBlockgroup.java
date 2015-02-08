@@ -49,11 +49,11 @@ public class WorldGenBlockgroup extends WorldGenerator
 					{
 						Block block = world.getBlock(i1, i2, j1);
 
-						// if((block == Blocks.dirt) || (block == Blocks.clay))
-						// {
-						world.setBlock(i1, i2, j1, this.blockToGen, 0, 2);
-						flag = true;
-						// }
+						if(!world.isAirBlock(i1, i2, j1))
+						{
+							world.setBlock(i1, i2, j1, this.blockToGen, 0, 2);
+							flag = true;
+						}
 					}
 				}
 			}
