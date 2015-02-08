@@ -208,6 +208,8 @@ public class InitItems
 
 	public static Item itemCoin;
 
+	public static Item itemShieldedCanister;
+
 	/* Init */
 	public static void init()
 	{
@@ -557,7 +559,10 @@ public class InitItems
 				itemBoilingMudBucket), new ItemStack(Items.bucket));
 
 		itemCoin = new ItemCoin().setUnlocalizedName("itemCoin");
-		GameRegistry.registerItem(itemCoin, "ItemCoin");
+		registerItem(itemCoin, "ItemCoin");
+
+		itemShieldedCanister = new BaseItem().setUnlocalizedName("itemShieldedCanister");
+		registerItem(itemShieldedCanister, "ItemShieldedCanister");
 	}
 
 	public static void initializeModCompatItems()

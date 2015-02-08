@@ -16,15 +16,20 @@ import java.util.List;
 
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.IIcon;
-
-import steamcraft.common.init.InitItems;
-import steamcraft.common.lib.ModInfo;
+import net.minecraft.world.World;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+
+import steamcraft.common.init.InitItems;
+import steamcraft.common.lib.ModInfo;
 
 /**
  * @author warlordjones
@@ -68,4 +73,15 @@ public class ItemResource extends BaseItemWithMetadata
 	{
 		return this.itemIcon[itemDamage];
 	}
+
+	@Override
+	public void onUpdate(ItemStack stack, World world, Entity holder, int p_77663_4_, boolean p_77663_5_)
+	{
+		if(!world.isRemote && holder instanceof EntityPlayer && stack.getItemDamage() == 5)
+		{
+			EntityPlayer player = (EntityPlayer) holder;
+			player.addPotionEffect(new PotionEffect(Potion.poison.id, 10, 1));
+		}
+	}
+
 }

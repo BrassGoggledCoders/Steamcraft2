@@ -414,6 +414,9 @@ public class InitRecipes
 				Items.ender_pearl, 'R', Items.redstone }));
 
 		GameRegistry.addRecipe(new ItemStack(InitBlocks.blockPath), new Object[] { "XS", "SX", 'S', Blocks.sand, 'X', Blocks.gravel });
+		GameRegistry.addRecipe(new ItemStack(InitItems.itemShieldedCanister), new Object[] { "XXX", "XUX", "XXX", 'X', new ItemStack(InitItems.itemSheet, 7),
+				'U', new ItemStack(InitItems.itemResource, 5) });
+		GameRegistry.addRecipe(new ItemStack(InitItems.itemResource, 5), new Object[] { InitItems.itemShieldedCanister });
 	}
 
 	private static void initializeSmeltingRecipes()
