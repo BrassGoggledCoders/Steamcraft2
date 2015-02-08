@@ -24,7 +24,6 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 
 import steamcraft.client.renderers.tile.TileCastIronLampRenderer.TileCastIronLamp;
-import steamcraft.client.renderers.tile.TileCrystalRenderer.TileCrystal;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.blocks.BaseBlock;
 import steamcraft.common.blocks.BlockBoulder;
@@ -79,6 +78,8 @@ import steamcraft.common.blocks.machines.BlockSawmill;
 import steamcraft.common.blocks.machines.BlockSteamBoiler;
 import steamcraft.common.blocks.machines.BlockTeslaCoil;
 import steamcraft.common.blocks.machines.BlockTurbine;
+import steamcraft.common.tiles.EmptyTiles;
+import steamcraft.common.tiles.EmptyTiles.TileCrystal;
 import steamcraft.common.tiles.TileArmorEditor;
 import steamcraft.common.tiles.TileBloomery;
 import steamcraft.common.tiles.TileCopperPipe;
@@ -340,7 +341,7 @@ public class InitBlocks
 	{
 		blockCrystal = new BlockCrystal().setBlockName("blockCrystal");
 
-		RegistryHelper.registerContainerBlock(blockCrystal, TileCrystal.class, "BlockCrystal");
+		RegistryHelper.registerContainerBlock(blockCrystal, EmptyTiles.TileCrystal.class, "BlockCrystal");
 
 		// Wood
 		blockBrassLog = new BlockBrassLog(Material.wood).setBlockName("blockBrassLog");

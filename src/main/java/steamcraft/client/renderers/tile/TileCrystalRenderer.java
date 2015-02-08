@@ -49,12 +49,4 @@ public class TileCrystalRenderer extends TileEntitySpecialRenderer
 		GL11.glPopMatrix();
 		GL11.glPopMatrix();
 	}
-
-	public static class TileCrystal extends TileEntity
-	{
-		public TileCrystal()
-		{
-
-		}
-	}
 }

@@ -26,10 +26,11 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 import steamcraft.client.lib.RenderIDs;
-import steamcraft.client.renderers.tile.TileCrystalRenderer.TileCrystal;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.init.InitItems;
 import steamcraft.common.lib.ModInfo;
+import steamcraft.common.tiles.EmptyTiles;
+import steamcraft.common.tiles.EmptyTiles.TileCrystal;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -52,7 +53,7 @@ public class BlockCrystal extends BlockContainer
 	@Override
 	public TileEntity createNewTileEntity(final World world, final int metadata)
 	{
-		return new TileCrystal();
+		return new EmptyTiles.TileCrystal();
 	}
 
 	@Override
