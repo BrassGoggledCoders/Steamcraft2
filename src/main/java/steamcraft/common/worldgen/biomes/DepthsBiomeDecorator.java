@@ -62,11 +62,6 @@ public class DepthsBiomeDecorator extends DeferredBiomeDecorator
 	@Override
 	public void decorateChunk(World world, Random random, BiomeGenBase biome, int chunkX, int chunkZ)
 	{
-		this.genDecorations(world, random, chunkX, chunkZ, biome);
-	}
-
-	protected void genDecorations(World world, Random random, int chunkX, int chunkZ, BiomeGenBase biome)
-	{
 		this.generateOres(world, chunkX, chunkZ, random);
 		int i;
 		int j;
