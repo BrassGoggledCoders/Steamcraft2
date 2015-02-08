@@ -79,7 +79,6 @@ import steamcraft.common.blocks.machines.BlockSteamBoiler;
 import steamcraft.common.blocks.machines.BlockTeslaCoil;
 import steamcraft.common.blocks.machines.BlockTurbine;
 import steamcraft.common.tiles.EmptyTiles;
-import steamcraft.common.tiles.EmptyTiles.TileCrystal;
 import steamcraft.common.tiles.TileArmorEditor;
 import steamcraft.common.tiles.TileBloomery;
 import steamcraft.common.tiles.TileCopperPipe;
@@ -173,7 +172,8 @@ public class InitBlocks
 	public static Block blockPolishedPlanks;
 
 	public static Block blockRedwoodLog, blockRedwoodLeaves, blockMangroveLog, blockMangroveLeaves, blockRedwoodPlanks, blockMangrovePlanks, blockWillowLog,
-			blockWillowLeaves, blockWillowPlanks;
+			blockWillowLeaves, blockWillowPlanks, blockPetrifiedLog,
+			blockDeadLeaves, blockPetrifiedPlanks;
 
 	public static Block blockStandardSiren, blockStandardSirenOn, blockAllClearSiren,
 			blockAllClearSirenOn, blockIntruderSiren, blockIntruderSirenOn, blockNuclearSiren,
@@ -422,6 +422,15 @@ public class InitBlocks
 
 		blockWillowPlanks = new BaseBlock(Material.wood).setBlockName("blockWillowPlanks");
 		registerBlock(blockWillowPlanks, "BlockWillowPlanks");
+
+		blockPetrifiedLog = new BlockCustomLog("Petrified").setBlockName("blockPetrifiedLog");
+		registerBlock(blockPetrifiedLog, "BlockPetrifiedLog");
+
+		blockDeadLeaves = new BlockCustomLeaves("Dead").setBlockName("blockDeadLeaves");
+		registerBlock(blockDeadLeaves, "BlockDeadLeaves");
+
+		blockPetrifiedPlanks = new BaseBlock(Material.wood).setBlockName("blockPetrifiedPlanks");
+		registerBlock(blockPetrifiedPlanks, "BlockPetrifiedPlanks");
 
 		blockMud = new BlockMud(Material.ground).setBlockName("blockMud");
 		registerBlock(blockMud, "BlockMud");
