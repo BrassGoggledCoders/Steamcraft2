@@ -25,13 +25,13 @@ public class WorldGenRandomUnderground extends WorldGenerator
 	@Override
 	public boolean generate(World world, Random random, int x, int y, int z)
 	{
-		for(int l = 0; l < 64; ++l)
+		for(int l = 0; l < 16; ++l)
 		{
 			int xPos = x + random.nextInt(8) - random.nextInt(8);
 			int yPos = y + random.nextInt(4) - random.nextInt(4);
 			int zPos = z + random.nextInt(8) - random.nextInt(8);
 
-			if(world.isAirBlock(xPos, yPos, zPos) && this.toGen.canBlockStay(world, xPos, yPos, zPos))
+			if(world.isAirBlock(xPos, yPos, zPos) && this.toGen.canBlockStay(world, xPos, yPos, zPos) && this.toGen.canPlaceBlockAt(world, x, y, z))
 			{
 				world.setBlock(xPos, yPos, zPos, this.toGen, this.metaToGen, 2);
 			}
