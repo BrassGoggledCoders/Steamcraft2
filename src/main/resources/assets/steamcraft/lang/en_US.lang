@@ -490,6 +490,7 @@ death.attack.steamcraft2.bullet=%1$s was shot
 death.attack.steamcraft2.bullet.player=%1$s was shot by %2$s
 death.attack.steamcraft2.bullet.player.item=%1$s was shot by %2$s using %3$s
 death.attack.steamcraft2.boulder=%1$s was crushed by a falling rock
+death.attack.steamcraft2.radioactive=%1$s died of radiation poisoning
 
 #Biomes
 biome.steamcraft2.innerearth.name=Inner Earth
