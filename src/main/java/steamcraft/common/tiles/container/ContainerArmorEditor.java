@@ -14,6 +14,7 @@ package steamcraft.common.tiles.container;
 
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Slot;
+
 import steamcraft.common.tiles.TileArmorEditor;
 import steamcraft.common.tiles.container.slot.SlotBrassArmor;
 import steamcraft.common.tiles.container.slot.SlotModule;
@@ -25,7 +26,7 @@ import boilerplate.common.baseclasses.BaseContainer;
  */
 public class ContainerArmorEditor extends BaseContainer
 {
-	protected TileArmorEditor tileent;
+	private TileArmorEditor tileent;
 
 	public ContainerArmorEditor(InventoryPlayer player, TileArmorEditor tile)
 	{

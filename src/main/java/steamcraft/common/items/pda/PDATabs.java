@@ -15,11 +15,11 @@ package steamcraft.common.items.pda;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
-import steamcraft.common.init.InitBlocks;
-import steamcraft.common.init.InitItems;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+
+import steamcraft.common.init.InitBlocks;
+import steamcraft.common.init.InitItems;
 
 public abstract class PDATabs
 {

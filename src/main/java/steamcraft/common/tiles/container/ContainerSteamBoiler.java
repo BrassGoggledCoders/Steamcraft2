@@ -19,6 +19,9 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntityFurnace;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
@@ -27,16 +30,13 @@ import steamcraft.common.init.InitItems;
 import steamcraft.common.tiles.TileSteamBoiler;
 import boilerplate.common.baseclasses.BaseContainer;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-
 /**
  * @author Decebaldecebal
  * 
  */
 public class ContainerSteamBoiler extends BaseContainer
 {
-	protected TileSteamBoiler tileent;
+	private TileSteamBoiler tileent;
 
 	private int lastBurnTime = 0;
 	private int lastItemBurnTime = 0;

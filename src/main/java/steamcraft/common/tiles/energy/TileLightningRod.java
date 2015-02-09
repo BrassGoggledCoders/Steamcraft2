@@ -21,6 +21,9 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 
+import cofh.api.energy.EnergyStorage;
+import cofh.api.energy.IEnergyProvider;
+
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.common.util.ForgeDirection;
@@ -29,8 +32,6 @@ import steamcraft.common.config.ConfigBalance;
 import steamcraft.common.config.ConfigGeneral;
 import steamcraft.common.entities.living.EntityFleshGolem;
 import steamcraft.common.init.InitBlocks;
-import cofh.api.energy.EnergyStorage;
-import cofh.api.energy.IEnergyProvider;
 
 /**
  * @author warlordjones, MrIbby
@@ -38,7 +39,7 @@ import cofh.api.energy.IEnergyProvider;
  */
 public class TileLightningRod extends TileEntity implements IEnergyProvider
 {
-	public final EnergyStorage buffer = new EnergyStorage(30000, 10000);
+	private final EnergyStorage buffer = new EnergyStorage(30000, 10000);
 	private final ArrayList<EntityLightningBolt> unnaturalLightningBolts = new ArrayList<EntityLightningBolt>();
 
 	@Override

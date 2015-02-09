@@ -18,7 +18,6 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
-
 import steamcraft.common.lib.ModInfo;
 import steamcraft.common.tiles.TileBloomery;
 import steamcraft.common.tiles.container.ContainerBloomery;

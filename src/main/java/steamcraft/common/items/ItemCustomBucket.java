@@ -17,7 +17,7 @@ public class ItemCustomBucket extends ItemBucket
 	public ItemCustomBucket(Block p_i45331_1_)
 	{
 		super(p_i45331_1_);
-		setContainerItem(Items.bucket);
+		this.setContainerItem(Items.bucket);
 		this.setCreativeTab(Steamcraft.tabSC2);
 	}
 

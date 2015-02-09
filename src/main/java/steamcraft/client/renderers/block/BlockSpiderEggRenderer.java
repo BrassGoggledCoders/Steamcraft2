@@ -73,8 +73,8 @@ public class BlockSpiderEggRenderer implements ISimpleBlockRenderingHandler
 			}
 
 			float f = b0 / 16.0F;
-			float f1 = 1.0F - l / 16.0F;
-			float f2 = 1.0F - (l + b1) / 16.0F;
+			float f1 = 1.0F - (l / 16.0F);
+			float f2 = 1.0F - ((l + b1) / 16.0F);
 			l += b1;
 			renderer.setRenderBounds(0.5F - f, f2, 0.5F - f, 0.5F + f, f1, 0.5F + f);
 			renderer.renderStandardBlock(block, x, y, z);

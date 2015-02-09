@@ -15,6 +15,7 @@ package steamcraft.common.tiles.container.slot;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
+
 import steamcraft.common.tiles.energy.TileBattery;
 import boilerplate.steamapi.item.IEnergyItem;
 
@@ -24,7 +25,7 @@ import boilerplate.steamapi.item.IEnergyItem;
  */
 public class SlotBattery extends Slot
 {
-	TileBattery tile;
+	private TileBattery tile;
 
 	public SlotBattery(IInventory inv, int par2, int par3, int par4)
 	{

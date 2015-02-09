@@ -34,7 +34,7 @@ import steamcraft.common.worldgen.trees.WorldGenBrassTree;
 
 /**
  * @authors Surseance & warlordjones
- *
+ * 
  */
 public class WorldGenSteamcraft implements IWorldGenerator
 {
@@ -125,7 +125,7 @@ public class WorldGenSteamcraft implements IWorldGenerator
 		}
 	}
 
-	public void generateOre(World world, Random random, int chunkX, int chunkZ, int blockPerChunk, int minHeight, int maxHeight, int blocks,
+	private void generateOre(World world, Random random, int chunkX, int chunkZ, int blockPerChunk, int minHeight, int maxHeight, int blocks,
 			Block ore, int meta, Block blockToGenIn)
 	{
 		for(int i = 0; i < blockPerChunk; i++)

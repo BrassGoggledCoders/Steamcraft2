@@ -16,11 +16,13 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntityFurnace;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 import steamcraft.common.blocks.machines.BlockBloomery;
 import steamcraft.common.tiles.recipes.BloomeryRecipes;
 import boilerplate.common.baseclasses.BaseTileWithInventory;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author warlordjones & decebaldecebal

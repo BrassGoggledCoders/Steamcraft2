@@ -1,3 +1,15 @@
+/**
+ * This class was created by BrassGoggledCoders modding team. 
+ * This class is available as part of the Steamcraft 2 Mod for Minecraft.
+ *
+ * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
+ * (http://www.mod-buildcraft.com/MMPL-1.0.txt)
+ *
+ * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
+ * Steamcraft (c) Proloe 2011
+ * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
+ * 
+ */
 package steamcraft.common.worldgen.structure;
 
 import java.util.Iterator;
@@ -88,7 +100,7 @@ public class StructureUndercityPieces
 		{
 			return null;
 		}
-		else if(Math.abs(p_78817_3_ - p_78817_0_.getBoundingBox().minX) <= 80 && Math.abs(p_78817_5_ - p_78817_0_.getBoundingBox().minZ) <= 80)
+		else if((Math.abs(p_78817_3_ - p_78817_0_.getBoundingBox().minX) <= 80) && (Math.abs(p_78817_5_ - p_78817_0_.getBoundingBox().minZ) <= 80))
 		{
 			StructureComponent structurecomponent1 = getRandomComponent(p_78817_1_, p_78817_2_, p_78817_3_, p_78817_4_, p_78817_5_, p_78817_6_, p_78817_7_ + 1);
 
@@ -143,9 +155,9 @@ public class StructureUndercityPieces
 			this.coordBaseMode = p_i2035_4_;
 			this.boundingBox = p_i2035_3_;
 			this.hasRails = p_i2035_2_.nextInt(3) == 0;
-			this.hasSpiders = !this.hasRails && p_i2035_2_.nextInt(23) == 0;
+			this.hasSpiders = !this.hasRails && (p_i2035_2_.nextInt(23) == 0);
 
-			if(this.coordBaseMode != 2 && this.coordBaseMode != 0)
+			if((this.coordBaseMode != 2) && (this.coordBaseMode != 0))
 			{
 				this.sectionCount = p_i2035_3_.getXSize() / 5;
 			}
@@ -206,72 +218,84 @@ public class StructureUndercityPieces
 				case 0:
 					if(j <= 1)
 					{
-						StructureUndercityPieces.getNextUndercityComponent(p_74861_1_, p_74861_2_, p_74861_3_, this.boundingBox.minX, this.boundingBox.minY - 1
-								+ p_74861_3_.nextInt(3), this.boundingBox.maxZ + 1, this.coordBaseMode, i);
+						StructureUndercityPieces.getNextUndercityComponent(p_74861_1_, p_74861_2_, p_74861_3_, this.boundingBox.minX,
+								(this.boundingBox.minY - 1)
+										+ p_74861_3_.nextInt(3), this.boundingBox.maxZ + 1, this.coordBaseMode, i);
 					}
 					else if(j == 2)
 					{
-						StructureUndercityPieces.getNextUndercityComponent(p_74861_1_, p_74861_2_, p_74861_3_, this.boundingBox.minX - 1, this.boundingBox.minY
-								- 1 + p_74861_3_.nextInt(3), this.boundingBox.maxZ - 3, 1, i);
+						StructureUndercityPieces.getNextUndercityComponent(p_74861_1_, p_74861_2_, p_74861_3_, this.boundingBox.minX - 1,
+								(this.boundingBox.minY
+										- 1) + p_74861_3_.nextInt(3), this.boundingBox.maxZ - 3, 1, i);
 					}
 					else
 					{
-						StructureUndercityPieces.getNextUndercityComponent(p_74861_1_, p_74861_2_, p_74861_3_, this.boundingBox.maxX + 1, this.boundingBox.minY
-								- 1 + p_74861_3_.nextInt(3), this.boundingBox.maxZ - 3, 3, i);
+						StructureUndercityPieces.getNextUndercityComponent(p_74861_1_, p_74861_2_, p_74861_3_, this.boundingBox.maxX + 1,
+								(this.boundingBox.minY
+										- 1) + p_74861_3_.nextInt(3), this.boundingBox.maxZ - 3, 3, i);
 					}
 
 					break;
 				case 1:
 					if(j <= 1)
 					{
-						StructureUndercityPieces.getNextUndercityComponent(p_74861_1_, p_74861_2_, p_74861_3_, this.boundingBox.minX - 1, this.boundingBox.minY
-								- 1 + p_74861_3_.nextInt(3), this.boundingBox.minZ, this.coordBaseMode, i);
+						StructureUndercityPieces.getNextUndercityComponent(p_74861_1_, p_74861_2_, p_74861_3_, this.boundingBox.minX - 1,
+								(this.boundingBox.minY
+										- 1) + p_74861_3_.nextInt(3), this.boundingBox.minZ, this.coordBaseMode, i);
 					}
 					else if(j == 2)
 					{
-						StructureUndercityPieces.getNextUndercityComponent(p_74861_1_, p_74861_2_, p_74861_3_, this.boundingBox.minX, this.boundingBox.minY - 1
-								+ p_74861_3_.nextInt(3), this.boundingBox.minZ - 1, 2, i);
+						StructureUndercityPieces.getNextUndercityComponent(p_74861_1_, p_74861_2_, p_74861_3_, this.boundingBox.minX,
+								(this.boundingBox.minY - 1)
+										+ p_74861_3_.nextInt(3), this.boundingBox.minZ - 1, 2, i);
 					}
 					else
 					{
-						StructureUndercityPieces.getNextUndercityComponent(p_74861_1_, p_74861_2_, p_74861_3_, this.boundingBox.minX, this.boundingBox.minY - 1
-								+ p_74861_3_.nextInt(3), this.boundingBox.maxZ + 1, 0, i);
+						StructureUndercityPieces.getNextUndercityComponent(p_74861_1_, p_74861_2_, p_74861_3_, this.boundingBox.minX,
+								(this.boundingBox.minY - 1)
+										+ p_74861_3_.nextInt(3), this.boundingBox.maxZ + 1, 0, i);
 					}
 
 					break;
 				case 2:
 					if(j <= 1)
 					{
-						StructureUndercityPieces.getNextUndercityComponent(p_74861_1_, p_74861_2_, p_74861_3_, this.boundingBox.minX, this.boundingBox.minY - 1
-								+ p_74861_3_.nextInt(3), this.boundingBox.minZ - 1, this.coordBaseMode, i);
+						StructureUndercityPieces.getNextUndercityComponent(p_74861_1_, p_74861_2_, p_74861_3_, this.boundingBox.minX,
+								(this.boundingBox.minY - 1)
+										+ p_74861_3_.nextInt(3), this.boundingBox.minZ - 1, this.coordBaseMode, i);
 					}
 					else if(j == 2)
 					{
-						StructureUndercityPieces.getNextUndercityComponent(p_74861_1_, p_74861_2_, p_74861_3_, this.boundingBox.minX - 1, this.boundingBox.minY
-								- 1 + p_74861_3_.nextInt(3), this.boundingBox.minZ, 1, i);
+						StructureUndercityPieces.getNextUndercityComponent(p_74861_1_, p_74861_2_, p_74861_3_, this.boundingBox.minX - 1,
+								(this.boundingBox.minY
+										- 1) + p_74861_3_.nextInt(3), this.boundingBox.minZ, 1, i);
 					}
 					else
 					{
-						StructureUndercityPieces.getNextUndercityComponent(p_74861_1_, p_74861_2_, p_74861_3_, this.boundingBox.maxX + 1, this.boundingBox.minY
-								- 1 + p_74861_3_.nextInt(3), this.boundingBox.minZ, 3, i);
+						StructureUndercityPieces.getNextUndercityComponent(p_74861_1_, p_74861_2_, p_74861_3_, this.boundingBox.maxX + 1,
+								(this.boundingBox.minY
+										- 1) + p_74861_3_.nextInt(3), this.boundingBox.minZ, 3, i);
 					}
 
 					break;
 				case 3:
 					if(j <= 1)
 					{
-						StructureUndercityPieces.getNextUndercityComponent(p_74861_1_, p_74861_2_, p_74861_3_, this.boundingBox.maxX + 1, this.boundingBox.minY
-								- 1 + p_74861_3_.nextInt(3), this.boundingBox.minZ, this.coordBaseMode, i);
+						StructureUndercityPieces.getNextUndercityComponent(p_74861_1_, p_74861_2_, p_74861_3_, this.boundingBox.maxX + 1,
+								(this.boundingBox.minY
+										- 1) + p_74861_3_.nextInt(3), this.boundingBox.minZ, this.coordBaseMode, i);
 					}
 					else if(j == 2)
 					{
-						StructureUndercityPieces.getNextUndercityComponent(p_74861_1_, p_74861_2_, p_74861_3_, this.boundingBox.maxX - 3, this.boundingBox.minY
-								- 1 + p_74861_3_.nextInt(3), this.boundingBox.minZ - 1, 2, i);
+						StructureUndercityPieces.getNextUndercityComponent(p_74861_1_, p_74861_2_, p_74861_3_, this.boundingBox.maxX - 3,
+								(this.boundingBox.minY
+										- 1) + p_74861_3_.nextInt(3), this.boundingBox.minZ - 1, 2, i);
 					}
 					else
 					{
-						StructureUndercityPieces.getNextUndercityComponent(p_74861_1_, p_74861_2_, p_74861_3_, this.boundingBox.maxX - 3, this.boundingBox.minY
-								- 1 + p_74861_3_.nextInt(3), this.boundingBox.maxZ + 1, 0, i);
+						StructureUndercityPieces.getNextUndercityComponent(p_74861_1_, p_74861_2_, p_74861_3_, this.boundingBox.maxX - 3,
+								(this.boundingBox.minY
+										- 1) + p_74861_3_.nextInt(3), this.boundingBox.maxZ + 1, 0, i);
 					}
 			}
 
@@ -280,9 +304,9 @@ public class StructureUndercityPieces
 				int k;
 				int l;
 
-				if(this.coordBaseMode != 2 && this.coordBaseMode != 0)
+				if((this.coordBaseMode != 2) && (this.coordBaseMode != 0))
 				{
-					for(k = this.boundingBox.minX + 3; k + 3 <= this.boundingBox.maxX; k += 5)
+					for(k = this.boundingBox.minX + 3; (k + 3) <= this.boundingBox.maxX; k += 5)
 					{
 						l = p_74861_3_.nextInt(5);
 
@@ -300,7 +324,7 @@ public class StructureUndercityPieces
 				}
 				else
 				{
-					for(k = this.boundingBox.minZ + 3; k + 3 <= this.boundingBox.maxZ; k += 5)
+					for(k = this.boundingBox.minZ + 3; (k + 3) <= this.boundingBox.maxZ; k += 5)
 					{
 						l = p_74861_3_.nextInt(5);
 
@@ -330,7 +354,7 @@ public class StructureUndercityPieces
 			int j1 = this.getYWithOffset(p_74879_5_);
 			int k1 = this.getZWithOffset(p_74879_4_, p_74879_6_);
 
-			if(p_74879_2_.isVecInside(i1, j1, k1) && p_74879_1_.getBlock(i1, j1, k1).getMaterial() == Material.air)
+			if(p_74879_2_.isVecInside(i1, j1, k1) && (p_74879_1_.getBlock(i1, j1, k1).getMaterial() == Material.air))
 			{
 				int l1 = p_74879_3_.nextBoolean() ? 1 : 0;
 				p_74879_1_.setBlock(i1, j1, k1, Blocks.rail, this.getMetadataWithOffset(Blocks.rail, l1), 2);
@@ -361,7 +385,7 @@ public class StructureUndercityPieces
 				boolean flag1 = true;
 				boolean flag2 = false;
 				boolean flag3 = true;
-				int i = this.sectionCount * 5 - 1;
+				int i = (this.sectionCount * 5) - 1;
 				this.fillWithBlocks(p_74875_1_, p_74875_3_, 0, 0, 0, 2, 1, i, Blocks.air, Blocks.air, false);
 				this.randomlyFillWithBlocks(p_74875_1_, p_74875_3_, p_74875_2_, 0.8F, 0, 2, 0, 2, 2, i, Blocks.air, Blocks.air, false);
 
@@ -375,7 +399,7 @@ public class StructureUndercityPieces
 
 				for(j = 0; j < this.sectionCount; ++j)
 				{
-					k = 2 + j * 5;
+					k = 2 + (j * 5);
 					this.fillWithBlocks(p_74875_1_, p_74875_3_, 0, 0, k, 0, 1, k, Blocks.cobblestone_wall, Blocks.air, false);
 					this.fillWithBlocks(p_74875_1_, p_74875_3_, 2, 0, k, 2, 1, k, Blocks.cobblestone_wall, Blocks.air, false);
 
@@ -416,7 +440,7 @@ public class StructureUndercityPieces
 					if(this.hasSpiders && !this.spawnerPlaced)
 					{
 						int l = this.getYWithOffset(0);
-						int i1 = k - 1 + p_74875_2_.nextInt(3);
+						int i1 = (k - 1) + p_74875_2_.nextInt(3);
 						int j1 = this.getXWithOffset(1, i1);
 						i1 = this.getZWithOffset(1, i1);
 
@@ -455,7 +479,7 @@ public class StructureUndercityPieces
 					{
 						Block block = this.getBlockAtCurrentPosition(p_74875_1_, 1, -1, j, p_74875_3_);
 
-						if(block.getMaterial() != Material.air && block.func_149730_j())
+						if((block.getMaterial() != Material.air) && block.func_149730_j())
 						{
 							this.func_151552_a(p_74875_1_, p_74875_3_, p_74875_2_, 0.7F, 1, 0, j, Blocks.rail, this.getMetadataWithOffset(Blocks.rail, 0));
 						}
@@ -620,9 +644,9 @@ public class StructureUndercityPieces
 				if(this.isMultipleFloors)
 				{
 					this.fillWithBlocks(p_74875_1_, p_74875_3_, this.boundingBox.minX + 1, this.boundingBox.minY, this.boundingBox.minZ,
-							this.boundingBox.maxX - 1, this.boundingBox.minY + 3 - 1, this.boundingBox.maxZ, Blocks.air, Blocks.air, false);
+							this.boundingBox.maxX - 1, (this.boundingBox.minY + 3) - 1, this.boundingBox.maxZ, Blocks.air, Blocks.air, false);
 					this.fillWithBlocks(p_74875_1_, p_74875_3_, this.boundingBox.minX, this.boundingBox.minY, this.boundingBox.minZ + 1, this.boundingBox.maxX,
-							this.boundingBox.minY + 3 - 1, this.boundingBox.maxZ - 1, Blocks.air, Blocks.air, false);
+							(this.boundingBox.minY + 3) - 1, this.boundingBox.maxZ - 1, Blocks.air, Blocks.air, false);
 					this.fillWithBlocks(p_74875_1_, p_74875_3_, this.boundingBox.minX + 1, this.boundingBox.maxY - 2, this.boundingBox.minZ,
 							this.boundingBox.maxX - 1, this.boundingBox.maxY, this.boundingBox.maxZ, Blocks.air, Blocks.air, false);
 					this.fillWithBlocks(p_74875_1_, p_74875_3_, this.boundingBox.minX, this.boundingBox.maxY - 2, this.boundingBox.minZ + 1,
@@ -702,7 +726,7 @@ public class StructureUndercityPieces
 			{
 				j += p_74861_3_.nextInt(this.boundingBox.getXSize());
 
-				if(j + 3 > this.boundingBox.getXSize())
+				if((j + 3) > this.boundingBox.getXSize())
 				{
 					break;
 				}
@@ -722,7 +746,7 @@ public class StructureUndercityPieces
 			{
 				j += p_74861_3_.nextInt(this.boundingBox.getXSize());
 
-				if(j + 3 > this.boundingBox.getXSize())
+				if((j + 3) > this.boundingBox.getXSize())
 				{
 					break;
 				}
@@ -742,7 +766,7 @@ public class StructureUndercityPieces
 			{
 				j += p_74861_3_.nextInt(this.boundingBox.getZSize());
 
-				if(j + 3 > this.boundingBox.getZSize())
+				if((j + 3) > this.boundingBox.getZSize())
 				{
 					break;
 				}
@@ -762,7 +786,7 @@ public class StructureUndercityPieces
 			{
 				j += p_74861_3_.nextInt(this.boundingBox.getZSize());
 
-				if(j + 3 > this.boundingBox.getZSize())
+				if((j + 3) > this.boundingBox.getZSize())
 				{
 					break;
 				}

@@ -19,7 +19,6 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
-
 import steamcraft.client.renderers.models.ModelArmorEditor;
 import steamcraft.common.lib.ModInfo;
 import steamcraft.common.tiles.TileArmorEditor;

@@ -24,6 +24,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
+
 import steamcraft.common.lib.ModInfo;
 import boilerplate.client.ClientHelper;
 import boilerplate.common.utils.PlayerUtils;

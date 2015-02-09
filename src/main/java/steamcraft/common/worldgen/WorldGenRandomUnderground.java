@@ -27,9 +27,9 @@ public class WorldGenRandomUnderground extends WorldGenerator
 	{
 		for(int l = 0; l < 16; ++l)
 		{
-			int xPos = x + random.nextInt(8) - random.nextInt(8);
-			int yPos = y + random.nextInt(4) - random.nextInt(4);
-			int zPos = z + random.nextInt(8) - random.nextInt(8);
+			int xPos = (x + random.nextInt(8)) - random.nextInt(8);
+			int yPos = (y + random.nextInt(4)) - random.nextInt(4);
+			int zPos = (z + random.nextInt(8)) - random.nextInt(8);
 
 			if(world.isAirBlock(xPos, yPos, zPos) && this.toGen.canBlockStay(world, xPos, yPos, zPos) && this.toGen.canPlaceBlockAt(world, x, y, z))
 			{

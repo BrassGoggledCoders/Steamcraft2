@@ -21,12 +21,12 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 import steamcraft.common.init.InitBlocks;
 import boilerplate.client.utils.EffectUtils;
 import boilerplate.steamapi.block.IChiselable;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author warlordjones

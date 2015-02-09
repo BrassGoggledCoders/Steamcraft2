@@ -22,6 +22,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
+
 import steamcraft.common.entities.projectile.EntitySmallLightningBolt;
 
 public class ItemLightningGun extends BaseItem

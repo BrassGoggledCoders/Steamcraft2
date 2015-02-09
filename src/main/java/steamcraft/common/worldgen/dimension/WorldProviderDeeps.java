@@ -27,7 +27,6 @@ import steamcraft.common.worldgen.dimension.util.DeepsSkyRenderer;
 
 public class WorldProviderDeeps extends WorldProvider
 {
-	IRenderHandler skyRenderer;
 
 	@Override
 	public String getDimensionName()

@@ -21,10 +21,12 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import steamcraft.common.items.electric.ItemElectricTool;
-import steamcraft.common.lib.ModInfo;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+
+import steamcraft.common.items.electric.ItemElectricTool;
+import steamcraft.common.lib.ModInfo;
 
 public class ItemElectricDrill extends ItemElectricTool
 {

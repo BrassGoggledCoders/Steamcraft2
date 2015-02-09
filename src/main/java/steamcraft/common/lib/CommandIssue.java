@@ -21,11 +21,11 @@ import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
+
 import net.minecraftforge.common.ForgeVersion;
 
 import org.eclipse.egit.github.core.Issue;
 import org.eclipse.egit.github.core.service.IssueService;
-
 import steamcraft.common.entities.EntityPlayerExtended;
 
 /**

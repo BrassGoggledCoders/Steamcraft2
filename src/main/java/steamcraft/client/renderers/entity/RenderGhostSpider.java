@@ -13,8 +13,9 @@
 package steamcraft.client.renderers.entity;
 
 import net.minecraft.client.renderer.entity.RenderSpider;
-import net.minecraft.entity.Entity;
+import net.minecraft.entity.monster.EntitySpider;
 import net.minecraft.util.ResourceLocation;
+
 import steamcraft.common.lib.ModInfo;
 
 public class RenderGhostSpider extends RenderSpider
@@ -27,7 +28,7 @@ public class RenderGhostSpider extends RenderSpider
 	}
 
 	@Override
-	protected ResourceLocation getEntityTexture(Entity par1Entity)
+	protected ResourceLocation getEntityTexture(EntitySpider par1Entity)
 	{
 		return RenderGhostSpider.TEX;
 	}

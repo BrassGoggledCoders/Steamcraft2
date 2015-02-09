@@ -24,11 +24,14 @@ import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
-import net.minecraftforge.common.util.ForgeDirection;
-import steamcraft.common.lib.DamageSourceHandler;
+
 import cofh.api.energy.EnergyStorage;
 import cofh.api.energy.IEnergyHandler;
 import cofh.api.energy.IEnergyReceiver;
+
+import net.minecraftforge.common.util.ForgeDirection;
+
+import steamcraft.common.lib.DamageSourceHandler;
 
 /**
  * @author warlordjones

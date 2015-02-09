@@ -16,6 +16,9 @@ import net.minecraft.client.gui.GuiScreenBook;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+
+import cpw.mods.fml.common.network.IGuiHandler;
+
 import steamcraft.client.gui.GuiArmorEditor;
 import steamcraft.client.gui.GuiBattery;
 import steamcraft.client.gui.GuiBloomery;
@@ -44,7 +47,6 @@ import steamcraft.common.tiles.container.ContainerSteamBoiler;
 import steamcraft.common.tiles.container.ContainerTimeBomb;
 import steamcraft.common.tiles.energy.TileBattery;
 import steamcraft.common.tiles.energy.TileCharger;
-import cpw.mods.fml.common.network.IGuiHandler;
 
 /**
  * @author Surseance

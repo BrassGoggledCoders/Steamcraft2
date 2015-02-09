@@ -18,6 +18,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
+
 import steamcraft.common.lib.DamageSourceHandler;
 import steamcraft.common.lib.ModInfo;
 import boilerplate.common.baseclasses.BaseProjectileEntity;

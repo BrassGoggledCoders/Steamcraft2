@@ -20,13 +20,15 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 import steamcraft.client.lib.GuiIDs;
 import steamcraft.client.lib.RenderIDs;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.ModInfo;
 import steamcraft.common.tiles.energy.TileCharger;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author decebaldecebal

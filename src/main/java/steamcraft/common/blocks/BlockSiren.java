@@ -15,6 +15,7 @@ package steamcraft.common.blocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.world.World;
+
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.ModInfo;
 

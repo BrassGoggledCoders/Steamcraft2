@@ -18,12 +18,12 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
 
-import org.lwjgl.opengl.GL11;
-
-import steamcraft.common.entities.EntityGrapplingHook;
-import steamcraft.common.lib.ModInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+
+import org.lwjgl.opengl.GL11;
+import steamcraft.common.entities.EntityGrapplingHook;
+import steamcraft.common.lib.ModInfo;
 
 @SideOnly(Side.CLIENT)
 public class RenderGrapplingHook extends Render

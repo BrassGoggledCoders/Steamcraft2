@@ -28,7 +28,7 @@ import steamcraft.common.entities.living.EntityLostMiner;
 
 public class BiomeDepthsBase extends BiomeGenBase
 {
-	DepthsBiomeDecorator decorator = (DepthsBiomeDecorator) theBiomeDecorator;
+	private DepthsBiomeDecorator decorator = (DepthsBiomeDecorator) this.theBiomeDecorator;
 
 	public BiomeDepthsBase(int p_i1971_1_)
 	{

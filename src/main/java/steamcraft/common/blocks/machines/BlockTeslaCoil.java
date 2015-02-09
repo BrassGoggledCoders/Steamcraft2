@@ -15,6 +15,7 @@ package steamcraft.common.blocks.machines;
 import net.minecraft.block.material.Material;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+
 import steamcraft.client.lib.RenderIDs;
 import steamcraft.common.tiles.energy.TileTeslaCoil;
 

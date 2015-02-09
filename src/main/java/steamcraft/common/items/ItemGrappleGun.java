@@ -15,6 +15,7 @@ package steamcraft.common.items;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+
 import steamcraft.common.entities.EntityGrapplingHook;
 
 public class ItemGrappleGun extends BaseItem

@@ -9,7 +9,7 @@ public class EmptyTiles
 	{
 		public TileCrystal()
 		{
-	
+
 		}
 	}
 

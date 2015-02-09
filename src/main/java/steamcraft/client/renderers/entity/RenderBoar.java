@@ -16,6 +16,7 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.entity.RenderPig;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
+
 import steamcraft.common.lib.ModInfo;
 
 public class RenderBoar extends RenderPig

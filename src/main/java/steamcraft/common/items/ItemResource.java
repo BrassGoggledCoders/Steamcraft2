@@ -75,7 +75,7 @@ public class ItemResource extends BaseItemWithMetadata
 	@Override
 	public void onUpdate(ItemStack stack, World world, Entity holder, int p_77663_4_, boolean p_77663_5_)
 	{
-		if(!world.isRemote && stack.getItemDamage() == 5)
+		if(!world.isRemote && (stack.getItemDamage() == 5))
 		{
 			holder.attackEntityFrom(DamageSourceHandler.radioative, 1);
 		}

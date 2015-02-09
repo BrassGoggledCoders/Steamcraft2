@@ -39,7 +39,7 @@ public class EntitySpiderQueen extends EntitySpider implements IBossDisplayData
 
 		if(!this.worldObj.isRemote)
 		{
-			worldObj.setBlock(this.chunkCoordX, this.chunkCoordY, this.chunkCoordZ, InitBlocks.blockSpiderEgg);
+			this.worldObj.setBlock(this.chunkCoordX, this.chunkCoordY, this.chunkCoordZ, InitBlocks.blockSpiderEgg);
 		}
 	}
 

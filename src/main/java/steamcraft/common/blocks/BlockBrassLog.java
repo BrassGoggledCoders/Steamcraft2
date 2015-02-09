@@ -16,10 +16,12 @@ import net.minecraft.block.BlockLog;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.util.IIcon;
-import steamcraft.common.Steamcraft;
-import steamcraft.common.lib.ModInfo;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+
+import steamcraft.common.Steamcraft;
+import steamcraft.common.lib.ModInfo;
 
 /**
  * @author warlordjones

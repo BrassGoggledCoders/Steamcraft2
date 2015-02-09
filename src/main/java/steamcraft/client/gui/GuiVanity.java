@@ -17,13 +17,13 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
 
-import org.lwjgl.opengl.GL11;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
+import org.lwjgl.opengl.GL11;
 import steamcraft.common.container.ContainerVanity;
 import steamcraft.common.container.InventoryVanity;
 import steamcraft.common.lib.ModInfo;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author warlordjones

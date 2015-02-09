@@ -16,9 +16,11 @@ import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
-import steamcraft.common.entities.living.EntityGrub;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+
+import steamcraft.common.entities.living.EntityGrub;
 
 public class BlockInfestedDirt extends BaseBlock
 {

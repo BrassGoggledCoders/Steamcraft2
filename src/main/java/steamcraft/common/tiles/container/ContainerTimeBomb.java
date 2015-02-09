@@ -16,11 +16,12 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
+
 import steamcraft.common.tiles.TileTimeBomb;
 
 public class ContainerTimeBomb extends Container
 {
-	TileTimeBomb tileent;
+	private TileTimeBomb tileent;
 
 	public ContainerTimeBomb(InventoryPlayer inventory, TileTimeBomb tile)
 	{

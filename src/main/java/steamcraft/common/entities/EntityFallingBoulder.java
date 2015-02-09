@@ -71,7 +71,7 @@ public class EntityFallingBoulder extends EntityFallingBlock
 				entity.attackEntityFrom(damagesource, Math.min(MathHelper.floor_float(i * this.damageMultiplier) + 20, this.maxDamage));
 			}
 
-			if(this.rand.nextFloat() < 0.05000000074505806D + i * 0.05D)
+			if(this.rand.nextFloat() < (0.05000000074505806D + (i * 0.05D)))
 			{
 				int j = this.field_145814_a >> 2;
 				int k = this.field_145814_a & 3;
@@ -83,7 +83,7 @@ public class EntityFallingBoulder extends EntityFallingBlock
 				}
 				else
 				{
-					this.field_145814_a = k | j << 2;
+					this.field_145814_a = k | (j << 2);
 				}
 			}
 		}
@@ -138,7 +138,7 @@ public class EntityFallingBoulder extends EntityFallingBlock
 							((BlockBoulder) InitBlocks.blockBoulder).func_149828_a(this.worldObj, i, j, k, this.field_145814_a);
 						}
 
-						if(this.field_145810_d != null && InitBlocks.blockBoulder instanceof ITileEntityProvider)
+						if((this.field_145810_d != null) && (InitBlocks.blockBoulder instanceof ITileEntityProvider))
 						{
 							TileEntity tileentity = this.worldObj.getTileEntity(i, j, k);
 
@@ -170,7 +170,7 @@ public class EntityFallingBoulder extends EntityFallingBlock
 					}
 				}
 			}
-			else if(this.field_145812_b > 100 && !this.worldObj.isRemote && (j < 1 || j > 256) || this.field_145812_b > 600)
+			else if(((this.field_145812_b > 100) && !this.worldObj.isRemote && ((j < 1) || (j > 256))) || (this.field_145812_b > 600))
 			{
 				if(this.field_145813_c)
 				{

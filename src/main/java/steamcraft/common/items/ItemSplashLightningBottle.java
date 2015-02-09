@@ -16,6 +16,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+
 import steamcraft.common.entities.projectile.EntitySplashLightningBottle;
 
 public class ItemSplashLightningBottle extends BaseItem

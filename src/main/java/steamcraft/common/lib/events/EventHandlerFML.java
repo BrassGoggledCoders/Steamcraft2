@@ -19,6 +19,10 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
 
+import cpw.mods.fml.client.event.ConfigChangedEvent;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.gameevent.PlayerEvent;
+
 import steamcraft.common.Steamcraft;
 import steamcraft.common.blocks.machines.BlockIntake;
 import steamcraft.common.blocks.machines.BlockLightningRod;
@@ -34,10 +38,6 @@ import steamcraft.common.items.armor.ItemClockworkWings;
 import steamcraft.common.items.armor.ItemSteamJetpack;
 import steamcraft.common.items.electric.ItemRayGun;
 import steamcraft.common.items.electric.ItemShrinkray;
-
-import cpw.mods.fml.client.event.ConfigChangedEvent;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.common.gameevent.PlayerEvent;
 
 /**
  * @author warlordjones

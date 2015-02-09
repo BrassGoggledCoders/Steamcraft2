@@ -16,10 +16,10 @@ import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
+
 import net.minecraftforge.common.util.ForgeDirection;
 
 import org.lwjgl.opengl.GL11;
-
 import steamcraft.common.lib.LibInfo;
 import steamcraft.common.lib.ModInfo;
 import steamcraft.common.tiles.energy.TileCopperWire;

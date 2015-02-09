@@ -22,6 +22,10 @@ import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
+import cpw.mods.fml.common.network.NetworkRegistry.TargetPoint;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
@@ -34,10 +38,6 @@ import steamcraft.common.init.InitPackets;
 import steamcraft.common.packets.CopperPipeFluidPacket;
 import steamcraft.common.packets.CopperPipePacket;
 
-import cpw.mods.fml.common.network.NetworkRegistry.TargetPoint;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-
 /**
  * @author decebaldecebal
  * 
@@ -45,7 +45,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class TileCopperPipe extends TileEntity implements IFluidHandler
 {
 	public FluidNetwork network;
-	public boolean isMaster = false;
+	private boolean isMaster = false;
 
 	public Fluid fluidInPipe;
 	public float fluidScaled = 0;
@@ -53,7 +53,7 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 	public ForgeDirection extract = null;
 	public ForgeDirection[] connections = new ForgeDirection[6];
 
-	public static float pixel = 1F / 16F / 2F;
+	private static float pixel = 1F / 16F / 2F;
 
 	@Override
 	public void updateEntity()

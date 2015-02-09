@@ -16,13 +16,14 @@ import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
 import net.minecraft.world.IBlockAccess;
+
+import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
+
 import net.minecraftforge.common.util.ForgeDirection;
 
 import org.lwjgl.opengl.GL11;
-
 import steamcraft.client.lib.RenderIDs;
 import steamcraft.common.tiles.energy.TileCopperWire;
-import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 
 /**
  * @author Surseance

@@ -18,6 +18,7 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+
 import steamcraft.client.lib.GuiIDs;
 import steamcraft.client.lib.RenderIDs;
 import steamcraft.common.Steamcraft;

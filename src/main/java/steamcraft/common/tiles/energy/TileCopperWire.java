@@ -22,12 +22,6 @@ import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
-import net.minecraftforge.common.util.ForgeDirection;
-
-import steamcraft.common.init.InitBlocks;
-import steamcraft.common.init.InitPackets;
-import steamcraft.common.packets.CopperWirePacket;
-import steamcraft.common.tiles.TileCopperPipe.Coords;
 import cofh.api.energy.EnergyStorage;
 import cofh.api.energy.IEnergyConnection;
 import cofh.api.energy.IEnergyHandler;
@@ -36,6 +30,13 @@ import cofh.api.energy.IEnergyReceiver;
 
 import cpw.mods.fml.common.network.NetworkRegistry.TargetPoint;
 
+import net.minecraftforge.common.util.ForgeDirection;
+
+import steamcraft.common.init.InitBlocks;
+import steamcraft.common.init.InitPackets;
+import steamcraft.common.packets.CopperWirePacket;
+import steamcraft.common.tiles.TileCopperPipe.Coords;
+
 /**
  * @author decebaldecebal
  * 
@@ -43,7 +44,7 @@ import cpw.mods.fml.common.network.NetworkRegistry.TargetPoint;
 public class TileCopperWire extends TileEntity implements IEnergyHandler
 {
 	public EnergyNetwork network;
-	public boolean isMaster = false;
+	private boolean isMaster = false;
 
 	public ForgeDirection extract = null;
 	public ForgeDirection[] connections = new ForgeDirection[6];
@@ -312,7 +313,7 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 		}
 	}
 
-	public void updateNetwork(ForgeDirection dir)
+	private void updateNetwork(ForgeDirection dir)
 	{
 		TileEntity tile = this.worldObj.getTileEntity(this.xCoord + dir.offsetX, this.yCoord + dir.offsetY, this.zCoord + dir.offsetZ);
 
@@ -370,7 +371,7 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 		}
 	}
 
-	public void updateOneConnection(ForgeDirection dir)
+	private void updateOneConnection(ForgeDirection dir)
 	{
 		int index = 0;
 
@@ -450,7 +451,7 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 		return this.worldObj.getBlock(this.xCoord + dir.offsetX, this.yCoord + dir.offsetY, this.zCoord + dir.offsetZ) == InitBlocks.blockCopperWire;
 	}
 
-	public boolean isEnergyHandler(ForgeDirection dir)
+	private boolean isEnergyHandler(ForgeDirection dir)
 	{
 		return (this.worldObj.getTileEntity(this.xCoord + dir.offsetX, this.yCoord + dir.offsetY, this.zCoord + dir.offsetZ) instanceof IEnergyConnection)
 				&& !this.isCopperWire(dir);
@@ -506,32 +507,32 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 		return 0;
 	}
 
-	public static class EnergyNetwork
+	private static class EnergyNetwork
 	{
-		public static final short capacityPerWire = (short) 2500;
+		private static final short capacityPerWire = (short) 2500;
 
 		private static final byte ticksTillUpdate = 1;
 
 		private static final short maxTransferPerTile = 2500 * ticksTillUpdate; // can transmit a max of 2500RF/t
 
-		public boolean updateNetworkForWires = false;
+		private boolean updateNetworkForWires = false;
 
-		public EnergyStorage buffer;
-		public int size;
+		private EnergyStorage buffer;
+		private int size;
 
-		ArrayList<Coords> inputs = new ArrayList<Coords>();
-		ArrayList<Coords> outputs = new ArrayList<Coords>();
+		private ArrayList<Coords> inputs = new ArrayList<Coords>();
+		private ArrayList<Coords> outputs = new ArrayList<Coords>();
 
 		private byte ticksSinceLastUpdate = 0;
 
-		public EnergyNetwork(int size)
+		private EnergyNetwork(int size)
 		{
 			this.size = size;
 
 			this.buffer = new EnergyStorage(capacityPerWire * size, 2500);
 		}
 
-		public void updateNetwork(TileCopperWire wire)
+		private void updateNetwork(TileCopperWire wire)
 		{
 			this.ticksSinceLastUpdate++;
 
@@ -612,7 +613,7 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 			}
 		}
 
-		public void changeSize(int with)
+		private void changeSize(int with)
 		{
 			this.size += with;
 			this.buffer.setCapacity(capacityPerWire * this.size);
@@ -627,7 +628,7 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 			tag.setTag("network", temp);
 		}
 
-		public static EnergyNetwork readFromNBT(NBTTagCompound tag)
+		private static EnergyNetwork readFromNBT(NBTTagCompound tag)
 		{
 			NBTTagCompound temp = tag.getCompoundTag("network");
 

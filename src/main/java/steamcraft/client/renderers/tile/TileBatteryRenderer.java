@@ -20,7 +20,6 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
 import org.lwjgl.opengl.GL11;
-
 import steamcraft.client.renderers.models.ModelBattery;
 import steamcraft.common.lib.ModInfo;
 

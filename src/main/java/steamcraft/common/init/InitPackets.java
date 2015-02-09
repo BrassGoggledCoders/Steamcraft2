@@ -12,6 +12,10 @@
  */
 package steamcraft.common.init;
 
+import cpw.mods.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
+import cpw.mods.fml.relauncher.Side;
+
 import steamcraft.common.packets.CopperPipeFluidPacket;
 import steamcraft.common.packets.CopperPipeFluidPacket.FluidNetworkPacketHandler;
 import steamcraft.common.packets.CopperPipePacket;
@@ -24,9 +28,6 @@ import steamcraft.common.packets.TimeBombPacket;
 import steamcraft.common.packets.TimeBombPacket.TimeBombPacketHandler;
 import steamcraft.common.packets.UpdateClientsideInventoryPacket;
 import steamcraft.common.packets.UpdateClientsideInventoryPacket.UpdateClientsideInventoryPacketHandler;
-import cpw.mods.fml.common.network.NetworkRegistry;
-import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
-import cpw.mods.fml.relauncher.Side;
 
 /**
  * @author decebaldecebal

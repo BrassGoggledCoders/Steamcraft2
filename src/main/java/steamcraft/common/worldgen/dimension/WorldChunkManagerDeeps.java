@@ -25,10 +25,10 @@ import net.minecraft.world.biome.WorldChunkManager;
 import net.minecraft.world.gen.layer.GenLayer;
 import net.minecraft.world.gen.layer.IntCache;
 
-import steamcraft.common.init.InitBiomes;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+
+import steamcraft.common.init.InitBiomes;
 
 public class WorldChunkManagerDeeps extends WorldChunkManager
 {
@@ -36,7 +36,7 @@ public class WorldChunkManagerDeeps extends WorldChunkManager
 	private GenLayer myBiomeIndexLayer;
 	private GenLayer shoreLayer;
 	private final BiomeCache myBiomeCache;
-	public static List<BiomeGenBase> myBiomesToSpawnIn;
+	static List<BiomeGenBase> myBiomesToSpawnIn;
 
 	protected WorldChunkManagerDeeps()
 	{
@@ -55,7 +55,7 @@ public class WorldChunkManagerDeeps extends WorldChunkManager
 		// this.myBiomesToSpawnIn.add(InitBiomes.biomeDepthsO);
 	}
 
-	public WorldChunkManagerDeeps(long seed, WorldType worldtype)
+	private WorldChunkManagerDeeps(long seed, WorldType worldtype)
 	{
 		this();
 		GenLayer[] agenlayer = GenLayerDeeps.makeTheWorld(seed);
@@ -63,7 +63,7 @@ public class WorldChunkManagerDeeps extends WorldChunkManager
 		this.myBiomeIndexLayer = agenlayer[1];
 	}
 
-	public WorldChunkManagerDeeps(World world)
+	WorldChunkManagerDeeps(World world)
 	{
 		this(world.getSeed(), world.provider.terrainType);
 	}
@@ -109,14 +109,6 @@ public class WorldChunkManagerDeeps extends WorldChunkManager
 	public float getTemperatureAtHeight(float par1, int par2)
 	{
 		return par1;
-	}
-
-	/**
-	 * Returns a list of temperatures to use for the specified blocks. Args: listToReuse, x, y, width, length
-	 */
-	public float[] getTemperatures(float[] par1ArrayOfFloat, int par2, int par3, int par4, int par5)
-	{
-		return par1ArrayOfFloat;
 	}
 
 	/**

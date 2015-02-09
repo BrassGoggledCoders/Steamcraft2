@@ -18,7 +18,6 @@ import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 
 import org.apache.commons.lang3.text.WordUtils;
-
 import vazkii.botania.api.wiki.IWikiProvider;
 
 public class BotaniaWikiProvider implements IWikiProvider

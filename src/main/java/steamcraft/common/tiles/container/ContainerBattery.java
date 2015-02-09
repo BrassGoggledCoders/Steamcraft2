@@ -17,12 +17,14 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 import steamcraft.common.tiles.container.slot.SlotBattery;
 import steamcraft.common.tiles.energy.TileBattery;
 import boilerplate.common.baseclasses.BaseContainer;
 import boilerplate.steamapi.item.IEnergyItem;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author decebaldecebal
@@ -35,7 +37,7 @@ public class ContainerBattery extends BaseContainer
 	private short lastTransferRate = 0;
 	private int lastBufferEnergy;
 
-	TileBattery tileent;
+	private TileBattery tileent;
 
 	public ContainerBattery(InventoryPlayer player, TileBattery tile)
 	{

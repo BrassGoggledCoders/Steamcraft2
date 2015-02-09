@@ -13,6 +13,7 @@
 package steamcraft.common.tiles;
 
 import net.minecraft.tileentity.TileEntity;
+
 import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
@@ -28,7 +29,7 @@ public class TileCopperTank extends TileEntity implements IFluidHandler
 {
 	public static int capacity = 20000;
 
-	public FluidTank tank;
+	private FluidTank tank;
 
 	public TileCopperTank()
 	{

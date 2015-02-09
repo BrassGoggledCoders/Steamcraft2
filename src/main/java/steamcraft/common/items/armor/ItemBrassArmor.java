@@ -27,6 +27,9 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 import net.minecraftforge.common.ISpecialArmor;
 
 import steamcraft.common.Steamcraft;
@@ -40,9 +43,6 @@ import boilerplate.steamapi.item.IArmorModule;
 import boilerplate.steamapi.item.IArmorModule.EnumArmorEffectType;
 import boilerplate.steamapi.item.IDefensiveArmorModule;
 import boilerplate.steamapi.item.ModuleRegistry;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author warlordjones

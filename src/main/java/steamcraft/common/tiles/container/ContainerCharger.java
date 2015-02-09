@@ -17,12 +17,14 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 import steamcraft.common.tiles.container.slot.SlotCharger;
 import steamcraft.common.tiles.energy.TileCharger;
 import boilerplate.common.baseclasses.BaseContainer;
 import boilerplate.steamapi.item.IEnergyItem;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author decebaldecebal
@@ -35,7 +37,7 @@ public class ContainerCharger extends BaseContainer
 	private short lastTransferRate = 0;
 	private int lastBufferEnergy;
 
-	TileCharger tileent;
+	private TileCharger tileent;
 
 	public ContainerCharger(InventoryPlayer player, TileCharger tile)
 	{

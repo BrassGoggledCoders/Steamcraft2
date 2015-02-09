@@ -35,7 +35,7 @@ import boilerplate.common.baseclasses.BaseTileWithInventory;
  */
 public class TileNuclearBoiler extends BaseTileWithInventory implements IFluidHandler
 {
-	public static final int steamPerTick = 20;
+	private static final int steamPerTick = 20;
 	private static final int waterPerTick = 5; // 3x3 RC boiler is 5 water/tick
 												// and 1mb for 160mb steam?
 

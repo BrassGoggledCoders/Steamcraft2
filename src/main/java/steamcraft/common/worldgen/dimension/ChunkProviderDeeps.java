@@ -57,10 +57,10 @@ public class ChunkProviderDeeps implements IChunkProvider
 	private NoiseGeneratorOctaves noiseGen3;
 	private NoiseGeneratorPerlin noiseGen4;
 	/** A NoiseGeneratorOctaves used in generating terrain */
-	public NoiseGeneratorOctaves noiseGen5;
+	private NoiseGeneratorOctaves noiseGen5;
 	/** A NoiseGeneratorOctaves used in generating terrain */
-	public NoiseGeneratorOctaves noiseGen6;
-	public NoiseGeneratorOctaves mobSpawnerNoise;
+	private NoiseGeneratorOctaves noiseGen6;
+	private NoiseGeneratorOctaves mobSpawnerNoise;
 	/** Reference to the World object. */
 	private final World worldObj;
 	/** are map structures going to be generated (e.g. strongholds) */
@@ -73,12 +73,11 @@ public class ChunkProviderDeeps implements IChunkProvider
 	private MapGenBase ravineGenerator = new MapGenRavine();
 	private MapGenUndercity undercityGenerator = new MapGenUndercity();
 	/** The biomes that are used to generate the chunk */
-	public BiomeGenBase[] biomesForGeneration;
-	double[] field_147427_d;
-	double[] field_147428_e;
-	double[] field_147425_f;
-	double[] field_147426_g;
-	int[][] field_73219_j = new int[32][32];
+	private BiomeGenBase[] biomesForGeneration;
+	private double[] field_147427_d;
+	private double[] field_147428_e;
+	private double[] field_147425_f;
+	private double[] field_147426_g;
 
 	{
 		this.caveGenerator = TerrainGen.getModdedMapGen(this.caveGenerator, CAVE);
@@ -121,7 +120,7 @@ public class ChunkProviderDeeps implements IChunkProvider
 		this.mobSpawnerNoise = (NoiseGeneratorOctaves) noiseGens[6];
 	}
 
-	public void doBaseGeneration(int chunkCoordX, int chunkCoordZ, Block[] p_147424_3_)
+	private void doBaseGeneration(int chunkCoordX, int chunkCoordZ, Block[] p_147424_3_)
 	{
 		byte b0 = 63;
 		this.biomesForGeneration = this.worldObj.getWorldChunkManager().getBiomesForGeneration(this.biomesForGeneration, chunkCoordX * 16,
@@ -205,7 +204,7 @@ public class ChunkProviderDeeps implements IChunkProvider
 		}
 	}
 
-	public void replaceBlocksForBiome(int p_147422_1_, int p_147422_2_, Block[] p_147422_3_, byte[] p_147422_4_, BiomeGenBase[] p_147422_5_)
+	private void replaceBlocksForBiome(int p_147422_1_, int p_147422_2_, Block[] p_147422_3_, byte[] p_147422_4_, BiomeGenBase[] p_147422_5_)
 	{
 
 		double d0 = 0.03125D;
@@ -407,8 +406,8 @@ public class ChunkProviderDeeps implements IChunkProvider
 	public void populate(IChunkProvider provider, int chunkX, int chunkZ)
 	{
 		BlockFalling.fallInstantly = true;
-		int blockX = chunkX * 16 + 8;
-		int blockZ = chunkZ * 16 + 8;
+		int blockX = (chunkX * 16) + 8;
+		int blockZ = (chunkZ * 16) + 8;
 		BiomeGenBase biomegenbase = this.worldObj.getBiomeGenForCoords(blockX + 16, blockZ + 16);
 		BiomeDepthsBase biomegendepths = (BiomeDepthsBase) biomegenbase;
 		this.rand.setSeed(this.worldObj.getSeed());

@@ -22,7 +22,7 @@ import steamcraft.common.init.InitBlocks;
 
 public class WorldGenLeafPile extends WorldGenerator
 {
-	Block block;
+	private Block block;
 
 	public WorldGenLeafPile(Block block)
 	{
@@ -41,7 +41,7 @@ public class WorldGenLeafPile extends WorldGenerator
 			if(p_76484_1_.isAirBlock(i1, j1, k1)
 					&& InitBlocks.blockLeafCover.canPlaceBlockAt(p_76484_1_, i1, j1, k1))
 			{
-				p_76484_1_.setBlock(i1, j1, k1, block, p_76484_2_.nextInt(6), 2);
+				p_76484_1_.setBlock(i1, j1, k1, this.block, p_76484_2_.nextInt(6), 2);
 			}
 		}
 

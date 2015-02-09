@@ -20,7 +20,6 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
-
 import steamcraft.client.renderers.models.ModelVampireBat;
 import steamcraft.common.entities.living.EntityVampireBat;
 import steamcraft.common.lib.ModInfo;

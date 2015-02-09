@@ -26,7 +26,7 @@ public abstract class GenLayerDeeps extends GenLayer
 		super(seed);
 	}
 
-	public static GenLayer[] makeTheWorld(long seed)
+	static GenLayer[] makeTheWorld(long seed)
 	{
 		GenLayer biomes = new GenLayerIsland(1L);
 		biomes = new GenLayerFuzzyZoom(2000L, biomes);

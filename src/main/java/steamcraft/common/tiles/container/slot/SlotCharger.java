@@ -15,7 +15,7 @@ package steamcraft.common.tiles.container.slot;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
-import steamcraft.common.tiles.energy.TileCharger;
+
 import boilerplate.steamapi.item.IEnergyItem;
 
 /**
@@ -24,13 +24,10 @@ import boilerplate.steamapi.item.IEnergyItem;
  */
 public class SlotCharger extends Slot
 {
-	TileCharger tile;
 
 	public SlotCharger(IInventory inv, int par2, int par3, int par4)
 	{
 		super(inv, par2, par3, par4);
-
-		this.tile = (TileCharger) inv;
 	}
 
 	@Override

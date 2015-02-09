@@ -25,12 +25,15 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+
+import cofh.api.block.IDismantleable;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.ModInfo;
 import boilerplate.common.baseclasses.BaseTileWithInventory;
-import cofh.api.block.IDismantleable;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author decebaldecebal

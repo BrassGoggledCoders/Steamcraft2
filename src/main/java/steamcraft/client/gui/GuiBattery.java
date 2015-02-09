@@ -15,10 +15,10 @@ package steamcraft.client.gui;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
+
 import net.minecraftforge.common.util.ForgeDirection;
 
 import org.lwjgl.opengl.GL11;
-
 import steamcraft.common.lib.ModInfo;
 import steamcraft.common.tiles.container.ContainerBattery;
 import steamcraft.common.tiles.energy.TileBattery;

@@ -39,7 +39,7 @@ public class RenderFallingBoulder extends Render
 		int j = MathHelper.floor_double(p_76986_1_.posY);
 		int k = MathHelper.floor_double(p_76986_1_.posZ);
 
-		if(block != null && block != world.getBlock(i, j, k))
+		if((block != null) && (block != world.getBlock(i, j, k)))
 		{
 			GL11.glPushMatrix();
 			GL11.glTranslatef((float) p_76986_2_, (float) p_76986_4_, (float) p_76986_6_);

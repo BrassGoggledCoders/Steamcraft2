@@ -30,7 +30,7 @@ public final class BucketHandler
 	@SubscribeEvent
 	public void onBucketFill(FillBucketEvent event)
 	{
-		ItemStack result = fillCustomBucket(event.world, event.target);
+		ItemStack result = this.fillCustomBucket(event.world, event.target);
 
 		if(result == null)
 		{
@@ -45,9 +45,9 @@ public final class BucketHandler
 	{
 		Block block = world.getBlock(pos.blockX, pos.blockY, pos.blockZ);
 
-		Item bucket = buckets.get(block);
+		Item bucket = this.buckets.get(block);
 
-		if(bucket != null && world.getBlockMetadata(pos.blockX, pos.blockY, pos.blockZ) == 0)
+		if((bucket != null) && (world.getBlockMetadata(pos.blockX, pos.blockY, pos.blockZ) == 0))
 		{
 			world.setBlockToAir(pos.blockX, pos.blockY, pos.blockZ);
 			return new ItemStack(bucket);

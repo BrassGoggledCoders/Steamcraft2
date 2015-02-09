@@ -1,3 +1,15 @@
+/**
+ * This class was created by BrassGoggledCoders modding team. 
+ * This class is available as part of the Steamcraft 2 Mod for Minecraft.
+ *
+ * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
+ * (http://www.mod-buildcraft.com/MMPL-1.0.txt)
+ *
+ * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
+ * Steamcraft (c) Proloe 2011
+ * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
+ * 
+ */
 package steamcraft.common.worldgen.biomes;
 
 import java.util.Random;
@@ -28,7 +40,7 @@ import steamcraft.common.worldgen.structure.WorldGenUndergroundHouse;
 public class DepthsBiomeDecorator extends DeferredBiomeDecorator
 {
 	/** The clay generator. */
-	public WorldGenerator clayGen = new WorldGenClay(6);
+	private WorldGenerator clayGen = new WorldGenClay(6);
 
 	public DepthsBiomeDecorator(BiomeDecorator original)
 	{
@@ -121,7 +133,7 @@ public class DepthsBiomeDecorator extends DeferredBiomeDecorator
 		{
 			k = chunkX + random.nextInt(16);
 			l = chunkZ + random.nextInt(16);
-			i1 = nextInt(random, world.getHeightValue(k, l) * 2);
+			i1 = this.nextInt(random, world.getHeightValue(k, l) * 2);
 			WorldGenerator worldgenerator = biome.getRandomWorldGenForGrass(random);
 			worldgenerator.generate(world, random, k, i1, l);
 		}
@@ -129,7 +141,7 @@ public class DepthsBiomeDecorator extends DeferredBiomeDecorator
 		{
 			k = chunkX + random.nextInt(16);
 			l = chunkZ + random.nextInt(16);
-			i1 = nextInt(random, world.getHeightValue(k, l) * 2);
+			i1 = this.nextInt(random, world.getHeightValue(k, l) * 2);
 			(new WorldGenDeadBush(Blocks.deadbush)).generate(world, random, k, i1, l);
 		}
 		for(j = 0; j < this.waterlilyPerChunk; ++j)
@@ -137,7 +149,7 @@ public class DepthsBiomeDecorator extends DeferredBiomeDecorator
 			k = chunkX + random.nextInt(16);
 			l = chunkZ + random.nextInt(16);
 
-			for(i1 = nextInt(random, world.getHeightValue(k, l) * 2); i1 > 0 && world.isAirBlock(k, i1 - 1, l); --i1)
+			for(i1 = this.nextInt(random, world.getHeightValue(k, l) * 2); (i1 > 0) && world.isAirBlock(k, i1 - 1, l); --i1)
 			{
 				;
 			}
@@ -158,7 +170,7 @@ public class DepthsBiomeDecorator extends DeferredBiomeDecorator
 			{
 				k = chunkX + random.nextInt(16);
 				l = chunkZ + random.nextInt(16);
-				i1 = nextInt(random, world.getHeightValue(k, l) * 2);
+				i1 = this.nextInt(random, world.getHeightValue(k, l) * 2);
 				this.mushroomRedGen.generate(world, random, k, i1, l);
 			}
 		}
@@ -167,7 +179,7 @@ public class DepthsBiomeDecorator extends DeferredBiomeDecorator
 		{
 			j = chunkX + random.nextInt(16);
 			k = chunkZ + random.nextInt(16);
-			l = nextInt(random, world.getHeightValue(j, k) * 2);
+			l = this.nextInt(random, world.getHeightValue(j, k) * 2);
 			this.mushroomBrownGen.generate(world, random, j, l, k);
 		}
 
@@ -175,14 +187,14 @@ public class DepthsBiomeDecorator extends DeferredBiomeDecorator
 		{
 			j = chunkX + random.nextInt(16);
 			k = chunkZ + random.nextInt(16);
-			l = nextInt(random, world.getHeightValue(j, k) * 2);
+			l = this.nextInt(random, world.getHeightValue(j, k) * 2);
 			this.mushroomRedGen.generate(world, random, j, l, k);
 		}
 		for(j = 0; j < this.reedsPerChunk; ++j)
 		{
 			k = chunkX + random.nextInt(16);
 			l = chunkZ + random.nextInt(16);
-			i1 = nextInt(random, world.getHeightValue(k, l) * 2);
+			i1 = this.nextInt(random, world.getHeightValue(k, l) * 2);
 			this.reedGen.generate(world, random, k, i1, l);
 		}
 
@@ -190,14 +202,14 @@ public class DepthsBiomeDecorator extends DeferredBiomeDecorator
 		{
 			k = chunkX + random.nextInt(16);
 			l = chunkZ + random.nextInt(16);
-			i1 = nextInt(random, world.getHeightValue(k, l) * 2);
+			i1 = this.nextInt(random, world.getHeightValue(k, l) * 2);
 			this.reedGen.generate(world, random, k, i1, l);
 		}
 		if(random.nextInt(32) == 0)
 		{
 			j = chunkX + random.nextInt(16);
 			k = chunkZ + random.nextInt(16);
-			l = nextInt(random, world.getHeightValue(j, k) * 2);
+			l = this.nextInt(random, world.getHeightValue(j, k) * 2);
 			(new WorldGenPumpkin()).generate(world, random, j, l, k);
 		}
 		if(this.generateLakes)
@@ -304,13 +316,13 @@ public class DepthsBiomeDecorator extends DeferredBiomeDecorator
 	/**
 	 * Standard ore generation helper. Generates most ores.
 	 */
-	protected void genStandardOre1(World world, int chunkX, int chunkZ, Random random, int p_76795_1_, WorldGenerator p_76795_2_, int maxY)
+	private void genStandardOre1(World world, int chunkX, int chunkZ, Random random, int p_76795_1_, WorldGenerator p_76795_2_, int maxY)
 	{
 		for(int l = 0; l < p_76795_1_; ++l)
 		{
-			int i1 = chunkX + random.nextInt(16) - 8;
+			int i1 = (chunkX + random.nextInt(16)) - 8;
 			int j1 = random.nextInt(maxY);
-			int k1 = chunkZ + random.nextInt(16) - 8;
+			int k1 = (chunkZ + random.nextInt(16)) - 8;
 			p_76795_2_.generate(world, random, i1, j1, k1);
 		}
 	}
@@ -318,18 +330,18 @@ public class DepthsBiomeDecorator extends DeferredBiomeDecorator
 	/**
 	 * Standard ore generation helper. Generates Lapis Lazuli.
 	 */
-	protected void genStandardOre2(World world, int chunkX, int chunkZ, Random random, int p_76793_1_, WorldGenerator generator, int maxY)
+	private void genStandardOre2(World world, int chunkX, int chunkZ, Random random, int p_76793_1_, WorldGenerator generator, int maxY)
 	{
 		for(int l = 0; l < p_76793_1_; ++l)
 		{
-			int i1 = chunkX + random.nextInt(16) - 8;
+			int i1 = (chunkX + random.nextInt(16)) - 8;
 			int j1 = random.nextInt(maxY);
-			int k1 = chunkZ + random.nextInt(16) - 8;
+			int k1 = (chunkZ + random.nextInt(16)) - 8;
 			generator.generate(world, random, i1, j1, k1);
 		}
 	}
 
-	protected void generateOres(World world, int chunkX, int chunkZ, Random random)
+	private void generateOres(World world, int chunkX, int chunkZ, Random random)
 	{
 		this.genStandardOre1(world, chunkX, chunkZ, random, 20, this.dirtGen, 256);
 		this.genStandardOre1(world, chunkX, chunkZ, random, 10, this.gravelGen, 256);
