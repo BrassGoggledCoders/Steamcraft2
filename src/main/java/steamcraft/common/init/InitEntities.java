@@ -24,6 +24,8 @@ import steamcraft.common.entities.living.EntityGhostSpider;
 import steamcraft.common.entities.living.EntityGiantSpider;
 import steamcraft.common.entities.living.EntityGrub;
 import steamcraft.common.entities.living.EntityLostMiner;
+import steamcraft.common.entities.living.EntityShroomSkeleton;
+import steamcraft.common.entities.living.EntityShroomZombie;
 import steamcraft.common.entities.living.EntitySpiderQueen;
 import steamcraft.common.entities.living.EntityVampireBat;
 import steamcraft.common.entities.projectile.EntityBullet;
@@ -54,5 +56,7 @@ public class InitEntities
 		EntityRegistry.registerModEntity(EntityGhostSpider.class, "GhostSpider", entID++, Steamcraft.instance, 64, 1, true);
 		EntityRegistry.registerModEntity(EntityGiantSpider.class, "GiantSpider", entID++, Steamcraft.instance, 64, 1, true);
 		EntityRegistry.registerModEntity(EntitySpiderQueen.class, "SpiderQueen", entID++, Steamcraft.instance, 64, 1, true);
+		EntityRegistry.registerModEntity(EntityShroomZombie.class, "ShroomZombie", entID++, Steamcraft.instance, 64, 1, true);
+		EntityRegistry.registerModEntity(EntityShroomSkeleton.class, "ShroomSkeleton", entID++, Steamcraft.instance, 64, 1, true);
 	}
 }

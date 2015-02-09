@@ -41,6 +41,8 @@ import steamcraft.client.renderers.entity.RenderGhostSpider;
 import steamcraft.client.renderers.entity.RenderGrapplingHook;
 import steamcraft.client.renderers.entity.RenderGrub;
 import steamcraft.client.renderers.entity.RenderLostMiner;
+import steamcraft.client.renderers.entity.RenderShroomSkeleton;
+import steamcraft.client.renderers.entity.RenderShroomZombie;
 import steamcraft.client.renderers.entity.RenderVampireBat;
 import steamcraft.client.renderers.item.ModelBrassWings;
 import steamcraft.client.renderers.item.ModelJetpack;
@@ -68,6 +70,8 @@ import steamcraft.common.entities.living.EntityGhostSpider;
 import steamcraft.common.entities.living.EntityGiantSpider;
 import steamcraft.common.entities.living.EntityGrub;
 import steamcraft.common.entities.living.EntityLostMiner;
+import steamcraft.common.entities.living.EntityShroomSkeleton;
+import steamcraft.common.entities.living.EntityShroomZombie;
 import steamcraft.common.entities.living.EntitySpiderQueen;
 import steamcraft.common.entities.living.EntityVampireBat;
 import steamcraft.common.entities.projectile.EntityBullet;
@@ -143,6 +147,8 @@ public class ClientProxy extends CommonProxy
 		RenderingRegistry.registerEntityRenderingHandler(EntityVampireBat.class, new RenderVampireBat());
 		RenderingRegistry.registerEntityRenderingHandler(EntityGiantSpider.class, new RenderGhostSpider());
 		RenderingRegistry.registerEntityRenderingHandler(EntitySpiderQueen.class, new RenderGhostSpider());
+		RenderingRegistry.registerEntityRenderingHandler(EntityShroomZombie.class, new RenderShroomZombie());
+		RenderingRegistry.registerEntityRenderingHandler(EntityShroomSkeleton.class, new RenderShroomSkeleton());
 	}
 
 	private void registerBlockRenderers()
