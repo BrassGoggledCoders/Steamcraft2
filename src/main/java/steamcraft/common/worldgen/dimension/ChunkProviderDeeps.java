@@ -46,6 +46,7 @@ import steamcraft.common.init.InitBiomes;
 import steamcraft.common.init.InitBlocks;
 import steamcraft.common.worldgen.biomes.BiomeDepthsBase;
 import steamcraft.common.worldgen.structure.MapGenUndercity;
+import steamcraft.common.worldgen.structure.MapGenWitchHut;
 
 public class ChunkProviderDeeps implements IChunkProvider
 {
@@ -249,6 +250,9 @@ public class ChunkProviderDeeps implements IChunkProvider
 		this.ravineGenerator.func_151539_a(this, this.worldObj, chunkCoordX, chunkCoordZ, ablock);
 
 		this.undercityGenerator.func_151539_a(this, this.worldObj, chunkCoordX, chunkCoordZ, ablock);
+
+		if(this.worldObj.getBiomeGenForCoords(chunkCoordZ * 16, chunkCoordX * 16) == InitBiomes.biomeDepthsSW)
+			new MapGenWitchHut().func_151539_a(this, this.worldObj, chunkCoordX, chunkCoordZ, ablock);
 
 		Chunk chunk = new Chunk(this.worldObj, ablock, abyte, chunkCoordX, chunkCoordZ);
 		byte[] abyte1 = chunk.getBiomeArray();
