@@ -105,7 +105,7 @@ public class ItemModTool extends BaseItem
 		if(this.isSteampowered() && !stack.getTagCompound().getBoolean("hasCanister"))
 			return 0.1F;
 
-		if(ForgeHooks.isToolEffective(stack, block, metadata))
+		if(ForgeHooks.isToolEffective(stack, block, metadata) || canHarvestBlock(block, stack))
 		{
 			return efficiencyOnProperMaterial;
 		}

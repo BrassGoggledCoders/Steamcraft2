@@ -26,27 +26,12 @@ import steamcraft.common.Steamcraft;
  */
 public class ItemDrill extends ItemModTool
 {
-	protected ToolMaterial toolMaterial;
-
 	public ItemDrill(ToolMaterial mat)
 	{
 		super(1.0F, mat);
 		this.setCreativeTab(Steamcraft.tabSC2);
 		this.setHarvestLevel("shovel", mat.getHarvestLevel());
 		this.setHarvestLevel("pickaxe", mat.getHarvestLevel());
-		this.toolMaterial = mat;
-	}
-
-	@Override
-	public float getDigSpeed(ItemStack stack, Block block, int metadata)
-	{
-
-		if(block.getMaterial() == Material.rock)
-		{
-			return efficiencyOnProperMaterial;
-		}
-
-		return super.getDigSpeed(stack, block, metadata);
 	}
 
 	@Override
