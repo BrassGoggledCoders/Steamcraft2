@@ -13,7 +13,8 @@
 package steamcraft.common.items.tools;
 
 import net.minecraft.block.Block;
-import net.minecraft.init.Blocks;
+import net.minecraft.block.material.Material;
+import net.minecraft.item.ItemStack;
 
 /**
  * @author Surseance
@@ -29,8 +30,10 @@ public class ItemModShovel extends ItemModTool
 	}
 
 	@Override
-	public boolean func_150897_b(Block p_150897_1_)
+	public boolean canHarvestBlock(Block block, ItemStack stack)
 	{
-		return p_150897_1_ == Blocks.snow_layer ? true : p_150897_1_ == Blocks.snow;
+		if(block.getMaterial() == Material.snow)
+			return true;
+		return super.canHarvestBlock(block, stack);
 	}
 }

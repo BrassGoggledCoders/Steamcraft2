@@ -14,6 +14,8 @@ package steamcraft.common.items.tools;
 
 import java.util.List;
 
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -57,5 +59,25 @@ public class ItemDrill extends ItemModTool
 		super.addInformation(stack, player, list, flag);
 
 		list.add("Efficiency: " + this.toolMaterial.getEfficiencyOnProperMaterial());
+	}
+
+	@Override
+	public float getDigSpeed(ItemStack stack, Block block, int metadata)
+	{
+
+		if(block.getMaterial() == Material.rock)
+		{
+			return efficiencyOnProperMaterial;
+		}
+
+		return super.getDigSpeed(stack, block, metadata);
+	}
+
+	@Override
+	public boolean canHarvestBlock(Block block, ItemStack stack)
+	{
+		if(block.getMaterial() == Material.snow || block.getMaterial() == Material.rock)
+			return true;
+		return super.canHarvestBlock(block, stack);
 	}
 }
