@@ -12,19 +12,11 @@
  */
 package steamcraft.common.items.tools;
 
-import java.util.List;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-
 import steamcraft.common.Steamcraft;
-import steamcraft.common.lib.ModInfo;
 
 /**
  * Base class for drills.
@@ -43,22 +35,6 @@ public class ItemDrill extends ItemModTool
 		this.setHarvestLevel("shovel", mat.getHarvestLevel());
 		this.setHarvestLevel("pickaxe", mat.getHarvestLevel());
 		this.toolMaterial = mat;
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerIcons(IIconRegister icon)
-	{
-		this.itemIcon = icon.registerIcon(ModInfo.PREFIX + "tools/" + this.getUnlocalizedName().substring(5));
-	}
-
-	@SuppressWarnings("all")
-	@Override
-	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean flag)
-	{
-		super.addInformation(stack, player, list, flag);
-
-		list.add("Efficiency: " + this.toolMaterial.getEfficiencyOnProperMaterial());
 	}
 
 	@Override

@@ -184,6 +184,7 @@ public class ItemModTool extends BaseItem
 
 			list.add("Canister Detected: " + String.valueOf(itemStack.getTagCompound().getBoolean("hasCanister")));
 		}
+		list.add("Efficiency: " + this.toolMaterial.getEfficiencyOnProperMaterial());
 	}
 
 	protected void consumeSteamFromCanister(EntityPlayer player)
