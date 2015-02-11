@@ -120,7 +120,7 @@ public class ItemSteamDrill extends ItemDrill
 						{
 							Block nblock = world.getBlock(xPos, yPos, zPos);
 
-							if(block == nblock)
+							if(this.canHarvestBlock(nblock, itemStack))
 							{
 								int meta = world.getBlockMetadata(xPos, yPos, zPos);
 
