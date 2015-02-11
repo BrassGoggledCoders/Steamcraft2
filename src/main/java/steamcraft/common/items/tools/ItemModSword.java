@@ -13,7 +13,6 @@
 package steamcraft.common.items.tools;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -30,7 +29,7 @@ public class ItemModSword extends ItemModTool
 {
 	public ItemModSword(ToolMaterial mat)
 	{
-		super(mat.getDamageVsEntity() + 4.0F, mat, new Block[] {});
+		super(mat.getDamageVsEntity() + 4.0F, mat);
 		this.maxStackSize = 1;
 		this.setMaxDamage(mat.getMaxUses());
 		this.setHarvestLevel("sword", mat.getHarvestLevel());
@@ -41,12 +40,7 @@ public class ItemModSword extends ItemModTool
 	{
 		if(block == Blocks.web)
 			return 15.0F;
-		else
-		{
-			Material material = block.getMaterial();
-			return (material != Material.plants) && (material != Material.vine) && (material != Material.coral) && (material != Material.leaves) ? 1.0F
-					: 1.5F;
-		}
+		return super.getDigSpeed(stack, block, metadata);
 	}
 
 	@Override

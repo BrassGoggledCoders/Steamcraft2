@@ -12,11 +12,6 @@
  */
 package steamcraft.common.items.tools;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
-import net.minecraft.init.Blocks;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 
 /**
  * @author Surseance
@@ -24,30 +19,10 @@ import net.minecraft.nbt.NBTTagCompound;
  */
 public class ItemModAxe extends ItemModTool
 {
-	public static final Block[] blocksEffectiveAgainst = new Block[] { Blocks.planks, Blocks.bookshelf, Blocks.planks, Blocks.chest,
-			Blocks.stone_slab, Blocks.pumpkin, Blocks.lit_pumpkin };
 
 	public ItemModAxe(ToolMaterial mat)
 	{
-		super(mat.getDamageVsEntity() + 2.0F, mat, blocksEffectiveAgainst);
+		super(mat.getDamageVsEntity() + 2.0F, mat);
 		this.setHarvestLevel("axe", mat.getHarvestLevel());
-	}
-
-	@Override
-	public float getDigSpeed(ItemStack stack, Block block, int metadata)
-	{
-		if(this.isSteampowered())
-		{
-			NBTTagCompound tag = stack.getTagCompound();
-			if(tag.getBoolean("hasCanister"))
-				return 4.0F;
-			else
-				return 0.1F;
-		}
-		if((block != null)
-				&& ((block.getMaterial() == Material.wood) || (block.getMaterial() == Material.plants) || (block.getMaterial() == Material.vine)))
-			super.getDigSpeed(stack, block, metadata);
-
-		return this.efficiencyOnProperMaterial;
 	}
 }

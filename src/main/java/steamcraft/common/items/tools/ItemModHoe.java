@@ -27,7 +27,7 @@ public class ItemModHoe extends ItemModTool
 {
 	public ItemModHoe(ToolMaterial mat)
 	{
-		super(1F, mat, new Block[] {});
+		super(1F, mat);
 		this.maxStackSize = 1;
 		this.setMaxDamage(mat.getMaxUses());
 		this.setHarvestLevel("hoe", mat.getHarvestLevel());

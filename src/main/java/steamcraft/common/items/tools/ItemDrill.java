@@ -14,10 +14,8 @@ package steamcraft.common.items.tools;
 
 import java.util.List;
 
-import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 
 import cpw.mods.fml.relauncher.Side;
@@ -36,12 +34,9 @@ public class ItemDrill extends ItemModTool
 {
 	protected ToolMaterial toolMaterial;
 
-	static Block[] effectiveBlocks = new Block[] { Blocks.cobblestone, Blocks.dirt, Blocks.stone, Blocks.sand, Blocks.clay, Blocks.ice,
-			Blocks.snow, Blocks.netherrack, Blocks.grass, Blocks.gravel };
-
 	public ItemDrill(ToolMaterial mat)
 	{
-		super(1.0F, mat, effectiveBlocks);
+		super(1.0F, mat);
 		this.setCreativeTab(Steamcraft.tabSC2);
 		this.setHarvestLevel("pickaxe", mat.getHarvestLevel());
 		this.setHarvestLevel("shovel", mat.getHarvestLevel());
@@ -53,17 +48,6 @@ public class ItemDrill extends ItemModTool
 	public void registerIcons(IIconRegister icon)
 	{
 		this.itemIcon = icon.registerIcon(ModInfo.PREFIX + "tools/" + this.getUnlocalizedName().substring(5));
-	}
-
-	@SuppressWarnings("all")
-	@Override
-	public boolean canHarvestBlock(Block block, ItemStack stack)
-	{
-		for(Block element : ItemDrill.effectiveBlocks)
-			if(element == block)
-				return true;
-
-		return false;
 	}
 
 	@SuppressWarnings("all")

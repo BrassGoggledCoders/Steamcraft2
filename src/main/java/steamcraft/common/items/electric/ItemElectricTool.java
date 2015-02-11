@@ -14,7 +14,6 @@ package steamcraft.common.items.electric;
 
 import java.util.List;
 
-import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -31,9 +30,9 @@ public class ItemElectricTool extends ItemModTool implements IEnergyItem
 	protected short maxReceive = 0;
 	protected int energyPerBlock = 0;
 
-	protected ItemElectricTool(float damage, ToolMaterial toolMat, Block[] blockArray, int maxEnergy, int maxReceive)
+	protected ItemElectricTool(float damage, ToolMaterial toolMat, int maxEnergy, int maxReceive)
 	{
-		super(damage, toolMat, blockArray);
+		super(damage, toolMat);
 		this.maxEnergy = maxEnergy * 1000;
 		this.maxReceive = (short) maxReceive;
 		this.setMaxStackSize(1);

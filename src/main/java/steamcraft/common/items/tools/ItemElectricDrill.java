@@ -36,7 +36,7 @@ public class ItemElectricDrill extends ItemElectricTool
 
 	public ItemElectricDrill(ToolMaterial mat, int maxEnergy, int maxReceive)
 	{
-		super(1, mat, ItemDrill.effectiveBlocks, maxEnergy, maxReceive);
+		super(1, mat, maxEnergy, maxReceive);
 		this.setHarvestLevel("pickaxe", mat.getHarvestLevel());
 		this.setHarvestLevel("shovel", mat.getHarvestLevel());
 	}
@@ -71,15 +71,5 @@ public class ItemElectricDrill extends ItemElectricTool
 	public void registerIcons(IIconRegister icon)
 	{
 		this.itemIcon = icon.registerIcon(ModInfo.PREFIX + "tools/" + this.getUnlocalizedName().substring(5));
-	}
-
-	@Override
-	public boolean canHarvestBlock(Block block, ItemStack stack)
-	{
-		for(Block element : ItemDrill.effectiveBlocks)
-			if(element == block)
-				return true;
-
-		return false;
 	}
 }

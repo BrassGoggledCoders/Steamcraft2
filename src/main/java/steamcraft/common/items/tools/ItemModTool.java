@@ -32,6 +32,8 @@ import com.google.common.collect.Multimap;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+import net.minecraftforge.common.ForgeHooks;
+
 import steamcraft.common.init.InitItems;
 import steamcraft.common.items.BaseItem;
 import steamcraft.common.items.ItemCanister;
@@ -46,17 +48,15 @@ import boilerplate.common.utils.ItemStackUtils;
 public class ItemModTool extends BaseItem
 {
 	public static final int steamForRepair = 20;
-	protected Block[] blocksEffectiveAgainst;
 	public float efficiencyOnProperMaterial = 4.0F;
 	public float damageVsEntity;
 	protected ToolMaterial toolMaterial;
 
-	protected ItemModTool(float damage, ToolMaterial toolMat, Block[] blockArray)
+	protected ItemModTool(float damage, ToolMaterial toolMat)
 	{
 		super();
 		this.toolMaterial = toolMat;
-		this.blocksEffectiveAgainst = blockArray;
-		this.maxStackSize = 1;
+		this.setMaxStackSize(1);
 		this.efficiencyOnProperMaterial = toolMat.getEfficiencyOnProperMaterial();
 		this.damageVsEntity = damage;
 		this.setFull3D();
@@ -105,11 +105,12 @@ public class ItemModTool extends BaseItem
 		if(this.isSteampowered() && !stack.getTagCompound().getBoolean("hasCanister"))
 			return 0.1F;
 
-		for(Block element : this.blocksEffectiveAgainst)
-			if(element == block)
-				return this.efficiencyOnProperMaterial;
+		if(ForgeHooks.isToolEffective(stack, block, metadata))
+		{
+			return efficiencyOnProperMaterial;
+		}
 
-		return 1.0F;
+		return super.getDigSpeed(stack, block, metadata);
 	}
 
 	@Override
