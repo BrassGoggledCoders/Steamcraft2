@@ -114,6 +114,12 @@ public class ItemModTool extends BaseItem
 	}
 
 	@Override
+	public boolean canHarvestBlock(Block block, ItemStack stack)
+	{
+		return ForgeHooks.canToolHarvestBlock(block, 0/* TODO */, stack);
+	}
+
+	@Override
 	public boolean hitEntity(ItemStack itemstack, EntityLivingBase living1, EntityLivingBase living2)
 	{
 		if(this.isSteampowered() && (living2 instanceof EntityPlayer))
