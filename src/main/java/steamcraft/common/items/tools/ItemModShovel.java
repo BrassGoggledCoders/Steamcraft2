@@ -12,6 +12,8 @@
  */
 package steamcraft.common.items.tools;
 
+import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
 
 /**
  * @author Surseance
@@ -24,5 +26,11 @@ public class ItemModShovel extends ItemModTool
 	{
 		super(mat.getDamageVsEntity() + 1.0F, mat);
 		this.setHarvestLevel("shovel", mat.getHarvestLevel());
+	}
+
+	@Override
+	public boolean func_150897_b(Block p_150897_1_)
+	{
+		return p_150897_1_ == Blocks.snow_layer ? true : p_150897_1_ == Blocks.snow;
 	}
 }
