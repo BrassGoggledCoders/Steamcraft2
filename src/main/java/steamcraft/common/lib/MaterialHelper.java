@@ -52,19 +52,19 @@ public class MaterialHelper
 	private static void initToolMaterials()
 	{
 		// Tools
-		TOOL_OBSIDIAN = EnumHelper.addToolMaterial("TOOL_OBSIDIAN", 4, -1, 3.0F, 6F, 7);
-		TOOL_ETHERIUM = EnumHelper.addToolMaterial("TOOL_ETHERIUM", 4, 2345, 10.5F, 7F, 14);
+		TOOL_OBSIDIAN = EnumHelper.addToolMaterial("TOOL_OBSIDIAN", 3, -1, 3.0F, 6F, 7);
+		TOOL_ETHERIUM = EnumHelper.addToolMaterial("TOOL_ETHERIUM", 3, 2345, 10.5F, 7F, 14);
 		TOOL_STEAM = EnumHelper.addToolMaterial("TOOL_STEAM", 2, 1561, 12.0F, 0.0F, 0);
 
 		// Drills
 		DRILL_WOOD = EnumHelper.addToolMaterial("DRILL_WOOD", 0, 89, 4.0F, 0.0F, 0);
-		DRILL_STONE = EnumHelper.addToolMaterial("DRILL_STONE", 0, 197, 8.0F, 0.0F, 0);
-		DRILL_IRON = EnumHelper.addToolMaterial("DRILL_IRON", 0, 375, 12.0F, 0.0F, 0);
-		DRILL_DIAMOND = EnumHelper.addToolMaterial("DRILL_EMERALD", 0, 2342, 16.0F, 0.0F, 0);
+		DRILL_STONE = EnumHelper.addToolMaterial("DRILL_STONE", 1, 197, 8.0F, 0.0F, 0);
+		DRILL_IRON = EnumHelper.addToolMaterial("DRILL_IRON", 2, 375, 12.0F, 0.0F, 0);
+		DRILL_DIAMOND = EnumHelper.addToolMaterial("DRILL_EMERALD", 3, 2342, 16.0F, 0.0F, 0);
 		DRILL_GOLD = EnumHelper.addToolMaterial("DRILL_GOLD", 0, 48, 16.0F, 0.0F, 0);
-		DRILL_STEAM = EnumHelper.addToolMaterial("DRILL_STEAM", 0, 482, 24.0F, 0.0F, 0);
-		DRILL_ETHERIUM = EnumHelper.addToolMaterial("DRILL_ETHERIUM", 0, 3518, 34.0F, 0.0F, 0);
-		DRILL_OBSIDIAN = EnumHelper.addToolMaterial("DRILL_OBSIDIAN", 0, -1, 6.0F, 0.0F, 0);
+		DRILL_STEAM = EnumHelper.addToolMaterial("DRILL_STEAM", 3, 482, 24.0F, 0.0F, 0);
+		DRILL_ETHERIUM = EnumHelper.addToolMaterial("DRILL_ETHERIUM", 3, 3518, 34.0F, 0.0F, 0);
+		DRILL_OBSIDIAN = EnumHelper.addToolMaterial("DRILL_OBSIDIAN", 3, -1, 6.0F, 0.0F, 0);
 	}
 
 	private static void initArmorMaterials()
