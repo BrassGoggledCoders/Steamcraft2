@@ -207,11 +207,11 @@ public class CompatabilityLayer
 		{
 			OreDictHelper.registerOreWithAlts(new String[] { "partCopper" + partType[i], partType[i].toLowerCase() + "Copper" }, new ItemStack(
 					InitItems.itemCopperParts, 1, i));
-			OreDictHelper.registerOreWithAlts(new String[] { "partIron" + partType[i], partType[i].toLowerCase() + "Copper" }, new ItemStack(
+			OreDictHelper.registerOreWithAlts(new String[] { "partIron" + partType[i], partType[i].toLowerCase() + "Iron" }, new ItemStack(
 					InitItems.itemIronParts, 1, i));
-			OreDictHelper.registerOreWithAlts(new String[] { "partBrass" + partType[i], partType[i].toLowerCase() + "Copper" }, new ItemStack(
+			OreDictHelper.registerOreWithAlts(new String[] { "partBrass" + partType[i], partType[i].toLowerCase() + "Brass" }, new ItemStack(
 					InitItems.itemBrassParts, 1, i));
-			OreDictHelper.registerOreWithAlts(new String[] { "partSteel" + partType[i], partType[i].toLowerCase() + "Copper" }, new ItemStack(
+			OreDictHelper.registerOreWithAlts(new String[] { "partSteel" + partType[i], partType[i].toLowerCase() + "Steel" }, new ItemStack(
 					InitItems.itemSteelParts, 1, i));
 		}
 		// Part Utils
