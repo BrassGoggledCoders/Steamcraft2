@@ -111,10 +111,10 @@ public class ItemSteamJetpack extends BaseArmor
 				player.motionZ *= 1.04D;
 			}
 
-			if(player.fallDistance > 0)
+			if(player.fallDistance > 0.0F && !player.onGround)
 			{
 				this.consumeSteamFromCanister(player, (byte) (this.steamPerTick / 4));
-				player.fallDistance = 0;
+				player.fallDistance = 0.0F;
 			}
 		}
 	}
