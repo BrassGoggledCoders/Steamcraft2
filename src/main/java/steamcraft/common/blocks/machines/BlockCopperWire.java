@@ -128,7 +128,12 @@ public class BlockCopperWire extends BaseContainerBlock
 
 	private AxisAlignedBB getBoundingBox(World world, int x, int y, int z)
 	{
-		TileCopperWire wire = (TileCopperWire) world.getTileEntity(x, y, z);
+		TileEntity tile = world.getTileEntity(x, y, z);
+		TileCopperWire wire = null;
+		if(tile instanceof TileCopperWire)
+		{
+			wire = (TileCopperWire) tile;
+		}
 
 		if(wire != null)
 		{
