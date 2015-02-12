@@ -487,7 +487,7 @@ public class InitBlocks
 	private static void registerBlock(Block block, Class<? extends ItemBlock> itemblock, String name)
 	{
 		if(block.isOpaqueCube() && !Arrays.asList(blacklist).contains(name) && !block.hasTileEntity(0))
-			FMPCompatHandler.registerFMP(block);
+			FMPCompatHandler.registerMetaFMP(block);
 
 		GameRegistry.registerBlock(block, itemblock, name);
 	}
