@@ -91,7 +91,7 @@ public class CompatabilityLayer
 		LoggerSteamcraft.info("TiCon Detected, adding Etherium Tool Material");
 		IMCHelper.addNewToolMaterial(ConfigGeneral.etheriumMaterialID, "Etherium", 2000, 500, 5, 0.1F, 1, EnumChatFormatting.RED.toString(), 16711935);
 
-		IMCHelper.addNewPartBuilderMaterial(ConfigGeneral.etheriumMaterialID, new ItemStack(InitItems.itemResource, 1, 0), new ItemStack(
+		IMCHelper.addNewPartBuilderMaterial(ConfigGeneral.etheriumMaterialID, new ItemStack(InitItems.itemResource), new ItemStack(
 				InitItems.itemResource, 1, 6), 2);
 		int ingotLiquidValue = 144;
 		int nuggetLiquidValue = ingotLiquidValue / 9;
@@ -135,92 +135,87 @@ public class CompatabilityLayer
 	private static void registerOreDictionaryEntries()
 	{
 		LoggerSteamcraft.info("Registering Thingies in OreDictionary");
-		OreDictHelper.registerOreWithAlts(new String[] { "ingotAluminum", "ingotAluminium" }, new ItemStack(InitItems.itemIngot, 1, 0));
-		OreDictionary.registerOre("ingotCopper", new ItemStack(InitItems.itemIngot, 1, 1));
-		OreDictionary.registerOre("ingotTin", new ItemStack(InitItems.itemIngot, 1, 2));
-		OreDictionary.registerOre("ingotZinc", new ItemStack(InitItems.itemIngot, 1, 3));
-		OreDictionary.registerOre("ingotBrass", new ItemStack(InitItems.itemIngot, 1, 4));
-		OreDictionary.registerOre("ingotBronze", new ItemStack(InitItems.itemIngot, 1, 5));
-		OreDictionary.registerOre("ingotSteel", new ItemStack(InitItems.itemIngot, 1, 6));
-		OreDictionary.registerOre("ingotCastIron", new ItemStack(InitItems.itemIngot, 1, 7));
+		OreDictHelper.registerOreWithAlts(InitItems.itemIngot, "ingotAluminum", "ingotAluminium");
+		OreDictHelper.registerOre("ingotCopper", InitItems.itemIngot, 1);
+		OreDictHelper.registerOre("ingotTin", InitItems.itemIngot, 2);
+		OreDictHelper.registerOre("ingotZinc", InitItems.itemIngot, 3);
+		OreDictHelper.registerOre("ingotBrass", InitItems.itemIngot, 4);
+		OreDictHelper.registerOre("ingotBronze", InitItems.itemIngot, 5);
+		OreDictHelper.registerOre("ingotSteel", InitItems.itemIngot, 6);
+		OreDictHelper.registerOre("ingotCastIron", InitItems.itemIngot, 7);
 
-		OreDictHelper.registerOreWithAlts(new String[] { "plateAluminum", "plateAluminium" }, new ItemStack(InitItems.itemSheet, 1, 0));
-		OreDictionary.registerOre("plateCopper", new ItemStack(InitItems.itemSheet, 1, 1));
-		OreDictionary.registerOre("plateTin", new ItemStack(InitItems.itemSheet, 1, 2));
-		OreDictionary.registerOre("plateZinc", new ItemStack(InitItems.itemSheet, 1, 3));
-		OreDictionary.registerOre("plateBrass", new ItemStack(InitItems.itemSheet, 1, 4));
-		OreDictionary.registerOre("plateBronze", new ItemStack(InitItems.itemSheet, 1, 5));
-		OreDictionary.registerOre("plateSteel", new ItemStack(InitItems.itemSheet, 1, 6));
-		OreDictionary.registerOre("plateCastIron", new ItemStack(InitItems.itemSheet, 1, 7));
-		OreDictionary.registerOre("plateIron", new ItemStack(InitItems.itemVanillaSheet, 1, 0));
-		OreDictionary.registerOre("plateGold", new ItemStack(InitItems.itemVanillaSheet, 1, 1));
+		OreDictHelper.registerOreWithAlts(InitItems.itemSheet, "plateAluminum", "plateAluminium");
+		OreDictHelper.registerOre("plateCopper", InitItems.itemSheet, 1);
+		OreDictHelper.registerOre("plateTin", InitItems.itemSheet, 2);
+		OreDictHelper.registerOre("plateZinc", InitItems.itemSheet, 3);
+		OreDictHelper.registerOre("plateBrass", InitItems.itemSheet, 4);
+		OreDictHelper.registerOre("plateBronze", InitItems.itemSheet, 5);
+		OreDictHelper.registerOre("plateSteel", InitItems.itemSheet, 6);
+		OreDictHelper.registerOre("plateCastIron", InitItems.itemSheet, 7);
+		OreDictionary.registerOre("plateIron", InitItems.itemVanillaSheet);
+		OreDictHelper.registerOre("plateGold", InitItems.itemVanillaSheet, 1);
 
-		OreDictHelper.registerOreWithAlts(new String[] { "nuggetAluminum", "nuggetAluminium" }, new ItemStack(InitItems.itemNugget, 1, 0));
-		OreDictionary.registerOre("nuggetCopper", new ItemStack(InitItems.itemNugget, 1, 1));
-		OreDictionary.registerOre("nuggetTin", new ItemStack(InitItems.itemNugget, 1, 2));
-		OreDictionary.registerOre("nuggetZinc", new ItemStack(InitItems.itemNugget, 1, 3));
-		OreDictionary.registerOre("nuggetBrass", new ItemStack(InitItems.itemNugget, 1, 4));
-		OreDictionary.registerOre("nuggetBronze", new ItemStack(InitItems.itemNugget, 1, 5));
-		OreDictionary.registerOre("nuggetSteel", new ItemStack(InitItems.itemIngot, 1, 6));
-		OreDictionary.registerOre("nuggetCastIron", new ItemStack(InitItems.itemNugget, 1, 7));
+		OreDictHelper.registerOreWithAlts(InitItems.itemNugget, "nuggetAluminum", "nuggetAluminium");
+		OreDictHelper.registerOre("nuggetCopper", InitItems.itemNugget, 1);
+		OreDictHelper.registerOre("nuggetTin", InitItems.itemNugget, 2);
+		OreDictHelper.registerOre("nuggetZinc", InitItems.itemNugget, 3);
+		OreDictHelper.registerOre("nuggetBrass", InitItems.itemNugget, 4);
+		OreDictHelper.registerOre("nuggetBronze", InitItems.itemNugget, 5);
+		OreDictHelper.registerOre("nuggetSteel", InitItems.itemIngot, 6);
+		OreDictHelper.registerOre("nuggetCastIron", InitItems.itemNugget, 7);
 
-		OreDictHelper.registerOreWithAlts(new String[] { "dustAluminum", "dustAluminium" }, new ItemStack(InitItems.itemPowder, 1, 0));
-		OreDictionary.registerOre("dustCopper", new ItemStack(InitItems.itemPowder, 1, 1));
-		OreDictionary.registerOre("dustTin", new ItemStack(InitItems.itemPowder, 1, 2));
-		OreDictionary.registerOre("dustZinc", new ItemStack(InitItems.itemPowder, 1, 3));
-		OreDictionary.registerOre("dustBrass", new ItemStack(InitItems.itemPowder, 1, 4));
-		OreDictionary.registerOre("dustBronze", new ItemStack(InitItems.itemPowder, 1, 5));
-		OreDictionary.registerOre("dustSteel", new ItemStack(InitItems.itemIngot, 1, 6));
-		OreDictionary.registerOre("dustCastIron", new ItemStack(InitItems.itemPowder, 1, 7));
-		OreDictionary.registerOre("dustIron", new ItemStack(InitItems.itemVanillaPowder, 1, 0));
-		OreDictionary.registerOre("dustGold", new ItemStack(InitItems.itemVanillaPowder, 1));
+		OreDictHelper.registerOreWithAlts(InitItems.itemPowder, "dustAluminum", "dustAluminium");
+		OreDictHelper.registerOre("dustCopper", InitItems.itemPowder, 1);
+		OreDictHelper.registerOre("dustTin", InitItems.itemPowder, 2);
+		OreDictHelper.registerOre("dustZinc", InitItems.itemPowder, 3);
+		OreDictHelper.registerOre("dustBrass", InitItems.itemPowder, 4);
+		OreDictHelper.registerOre("dustBronze", InitItems.itemPowder, 5);
+		OreDictHelper.registerOre("dustSteel", InitItems.itemIngot, 6);
+		OreDictHelper.registerOre("dustCastIron", InitItems.itemPowder, 7);
+		OreDictionary.registerOre("dustIron", InitItems.itemVanillaPowder);
+		OreDictHelper.registerOre("dustGold", InitItems.itemVanillaPowder, 1);
 
-		OreDictHelper.registerOreWithAlts(new String[] { "oreAluminum", "oreAluminium" }, new ItemStack(InitBlocks.blockCustomOre, 1, 0));
-		OreDictionary.registerOre("oreCopper", new ItemStack(InitBlocks.blockCustomOre, 1, 1));
-		OreDictionary.registerOre("oreTin", new ItemStack(InitBlocks.blockCustomOre, 1, 2));
-		OreDictionary.registerOre("oreZinc", new ItemStack(InitBlocks.blockCustomOre, 1, 3));
-		OreDictionary.registerOre("oreUranium", new ItemStack(InitBlocks.blockCustomOre, 1, 4));
-		OreDictionary.registerOre("oreBrimstone", new ItemStack(InitBlocks.blockCustomOre, 1, 5));
-		OreDictionary.registerOre("orePhosphate", new ItemStack(InitBlocks.blockCustomOre, 1, 6));
+		OreDictHelper.registerOreWithAlts(InitBlocks.blockCustomOre, "oreAluminum", "oreAluminium");
+		OreDictHelper.registerOre("oreCopper", InitBlocks.blockCustomOre, 1);
+		OreDictHelper.registerOre("oreTin", InitBlocks.blockCustomOre, 2);
+		OreDictHelper.registerOre("oreZinc", InitBlocks.blockCustomOre, 3);
+		OreDictHelper.registerOre("oreUranium", InitBlocks.blockCustomOre, 4);
+		OreDictHelper.registerOre("oreBrimstone", InitBlocks.blockCustomOre, 5);
+		OreDictHelper.registerOre("orePhosphate", InitBlocks.blockCustomOre, 6);
 
-		OreDictionary.registerOre("crystalEtherium", new ItemStack(InitItems.itemResource, 1, 0));
-		OreDictHelper.registerOreWithAlts(new String[] { "powderSulpher", "sulpher", "powderSulfur", "sulfur" }, new ItemStack(
-				InitItems.itemResource, 1, 1));
-		OreDictHelper.registerOreWithAlts(new String[] { "shardObsidian", "slateObsidian" }, new ItemStack(InitItems.itemResource, 1, 2));
-		OreDictionary.registerOre("powderPhosphorus", new ItemStack(InitItems.itemResource, 1, 3));
-		OreDictionary.registerOre("ingotUranium", new ItemStack(InitItems.itemResource, 1, 4));
-		OreDictionary.registerOre("pelletUranium", new ItemStack(InitItems.itemResource, 1, 5));
-		OreDictHelper.registerOreWithAlts(new String[] { "itemRubber", "barRubber", "rawRubber" }, new ItemStack(InitItems.itemSlimeRubber));
+		OreDictionary.registerOre("crystalEtherium", InitItems.itemResource);
+		OreDictHelper.registerOreWithAlts(InitItems.itemResource, 1, "powderSulpher", "sulpher", "powderSulfur", "sulfur");
+		OreDictHelper.registerOreWithAlts(InitItems.itemResource, 2, "shardObsidian", "slateObsidian");
+		OreDictHelper.registerOre("powderPhosphorus", InitItems.itemResource, 3);
+		OreDictHelper.registerOre("ingotUranium", InitItems.itemResource, 4);
+		OreDictHelper.registerOre("pelletUranium", InitItems.itemResource, 5);
+		OreDictHelper.registerOreWithAlts(InitItems.itemSlimeRubber, "itemRubber", "barRubber", "rawRubber");
 
-		OreDictionary.registerOre("partCastIronRod", new ItemStack(InitItems.itemMachinePart, 1, 0));
-		OreDictionary.registerOre("partClockworkMechanism", new ItemStack(InitItems.itemMachinePart, 1, 1));
-		OreDictionary.registerOre("partGrating", new ItemStack(InitItems.itemMachinePart, 1, 2));
-		OreDictionary.registerOre("partMagnet", new ItemStack(InitItems.itemMachinePart, 1, 3));
-		OreDictionary.registerOre("partGenerator", new ItemStack(InitItems.itemMachinePart, 1, 4));
-		OreDictionary.registerOre("partFan", new ItemStack(InitItems.itemMachinePart, 1, 5));
-		OreDictionary.registerOre("partWireCoil", new ItemStack(InitItems.itemMachinePart, 1, 6));
+		OreDictionary.registerOre("partCastIronRod", InitItems.itemMachinePart);
+		OreDictHelper.registerOre("partClockworkMechanism", InitItems.itemMachinePart, 1);
+		OreDictHelper.registerOre("partGrating", InitItems.itemMachinePart, 2);
+		OreDictHelper.registerOre("partMagnet", InitItems.itemMachinePart, 3);
+		OreDictHelper.registerOre("partGenerator", InitItems.itemMachinePart, 4);
+		OreDictHelper.registerOre("partFan", InitItems.itemMachinePart, 5);
+		OreDictHelper.registerOre("partWireCoil", InitItems.itemMachinePart, 6);
 
 		String[] partType = new String[] { "Gear", "Sprocket", "Spring", "Thread",
 				"Nut", "Bolt", "Washer", "Bearing", "Screw", "Nail" };
 
 		for(int i = 0; i < 10; i++)
 		{
-			OreDictHelper.registerOreWithAlts(new String[] { "partCopper" + partType[i], partType[i].toLowerCase() + "Copper" }, new ItemStack(
-					InitItems.itemCopperParts, 1, i));
-			OreDictHelper.registerOreWithAlts(new String[] { "partIron" + partType[i], partType[i].toLowerCase() + "Iron" }, new ItemStack(
-					InitItems.itemIronParts, 1, i));
-			OreDictHelper.registerOreWithAlts(new String[] { "partBrass" + partType[i], partType[i].toLowerCase() + "Brass" }, new ItemStack(
-					InitItems.itemBrassParts, 1, i));
-			OreDictHelper.registerOreWithAlts(new String[] { "partSteel" + partType[i], partType[i].toLowerCase() + "Steel" }, new ItemStack(
-					InitItems.itemSteelParts, 1, i));
+			OreDictHelper.registerOreWithAlts(InitItems.itemCopperParts, i, "partCopper" + partType[i], partType[i].toLowerCase() + "Copper");
+			OreDictHelper.registerOreWithAlts(InitItems.itemIronParts, i, "partIron" + partType[i], partType[i].toLowerCase() + "Iron");
+			OreDictHelper.registerOreWithAlts(InitItems.itemBrassParts, i, "partBrass" + partType[i], partType[i].toLowerCase() + "Brass");
+			OreDictHelper.registerOreWithAlts(InitItems.itemSteelParts, i, "partSteel" + partType[i], partType[i].toLowerCase() + "Steel");
 		}
 		// Part Utils
 		for(int i = 0; i < 10; i++)
 		{
-			OreDictionary.registerOre("partTierOne", new ItemStack(InitItems.itemCopperParts, 1, i));
-			OreDictionary.registerOre("partTierOne", new ItemStack(InitItems.itemIronParts, 1, i));
-			OreDictionary.registerOre("partTierTwo", new ItemStack(InitItems.itemBrassParts, 1, i));
-			OreDictionary.registerOre("partTierTwo", new ItemStack(InitItems.itemSteelParts, 1, i));
+			OreDictHelper.registerOre("partTierOne", InitItems.itemCopperParts, i);
+			OreDictHelper.registerOre("partTierOne", InitItems.itemIronParts, i);
+			OreDictHelper.registerOre("partTierTwo", InitItems.itemBrassParts, i);
+			OreDictHelper.registerOre("partTierTwo", InitItems.itemSteelParts, i);
 		}
 	}
 
