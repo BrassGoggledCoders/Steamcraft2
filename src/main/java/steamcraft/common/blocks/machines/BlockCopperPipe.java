@@ -24,6 +24,7 @@ import net.minecraft.world.World;
 import steamcraft.client.lib.RenderIDs;
 import steamcraft.common.init.InitBlocks;
 import steamcraft.common.tiles.TileCopperPipe;
+import steamcraft.common.tiles.energy.TileCopperWire;
 
 /**
  * @author warlordjones
@@ -117,7 +118,12 @@ public class BlockCopperPipe extends BaseContainerBlock
 
 	private AxisAlignedBB getBoundingBox(World world, int x, int y, int z)
 	{
-		TileCopperPipe pipe = (TileCopperPipe) world.getTileEntity(x, y, z);
+		TileEntity tile = world.getTileEntity(x, y, z);
+		TileCopperPipe pipe = null;
+		if(tile instanceof TileCopperWire)
+		{
+			pipe = (TileCopperPipe) tile;
+		}
 
 		if(pipe != null)
 		{
