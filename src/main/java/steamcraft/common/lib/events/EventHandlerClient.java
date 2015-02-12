@@ -12,6 +12,8 @@
  */
 package steamcraft.common.lib.events;
 
+import java.util.HashMap;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.settings.KeyBinding;
@@ -55,9 +57,9 @@ public class EventHandlerClient
 	@SubscribeEvent(priority = EventPriority.NORMAL, receiveCanceled = true)
 	public void onEvent(KeyInputEvent event)
 	{
-		KeyBinding[] keyBindings = ClientProxy.keyBindings;
+		HashMap<String, KeyBinding> keyBindings = ClientProxy.keyBindings;
 
-		if(keyBindings[0].isPressed())
+		if(keyBindings.get("vanity").isPressed())
 		{
 			EntityPlayer player = Minecraft.getMinecraft().thePlayer;
 			InitPackets.network.sendToServer(new OpenContainerFromClientPacket(player.getEntityId(), GuiIDs.VANITY, player.dimension));

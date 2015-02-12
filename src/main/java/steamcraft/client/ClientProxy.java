@@ -13,6 +13,7 @@
 package steamcraft.client;
 
 import java.awt.Color;
+import java.util.HashMap;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBiped;
@@ -98,7 +99,7 @@ import boilerplate.common.entity.EntityMinedBlock;
  */
 public class ClientProxy extends CommonProxy
 {
-	public static KeyBinding[] keyBindings;
+	public static final HashMap<String, KeyBinding> keyBindings = new HashMap();
 
 	@Override
 	public void registerDisplayInformation()
@@ -115,12 +116,10 @@ public class ClientProxy extends CommonProxy
 	@Override
 	public void registerKeys()
 	{
-		keyBindings = new KeyBinding[1];
-
-		keyBindings[0] = new KeyBinding("key.vanity.desc", Keyboard.KEY_V, "key.steamcraft.category");
+		keyBindings.put("vanity", new KeyBinding("key.vanity.desc", Keyboard.KEY_V, "key.steamcraft.category"));
 
 		// register all the key bindings
-		for(KeyBinding keyBinding : keyBindings)
+		for(KeyBinding keyBinding : keyBindings.values())
 		{
 			ClientRegistry.registerKeyBinding(keyBinding);
 		}
