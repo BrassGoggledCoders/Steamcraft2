@@ -13,12 +13,13 @@
 package steamcraft.client.renderers.tile;
 
 import net.minecraft.block.Block;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
+
+import boilerplate.client.ClientHelper;
 import steamcraft.client.renderers.models.ModelCastIronLampSide;
 import steamcraft.client.renderers.models.ModelCastIronLampTop;
 import steamcraft.common.init.InitBlocks;
@@ -73,11 +74,11 @@ public class TileCastIronLampRenderer extends TileEntitySpecialRenderer
 		// Renders the textures based on torch state
 		if(block == InitBlocks.blockCastIronLampOn)
 		{
-			Minecraft.getMinecraft().renderEngine.bindTexture(lampOn);
+			ClientHelper.textureManager().bindTexture(lampOn);
 		}
 		else if(block == InitBlocks.blockCastIronLamp)
 		{
-			Minecraft.getMinecraft().renderEngine.bindTexture(lampOff);
+			ClientHelper.textureManager().bindTexture(lampOff);
 		}
 
 		GL11.glPushMatrix();

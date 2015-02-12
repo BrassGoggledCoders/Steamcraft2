@@ -12,7 +12,6 @@
  */
 package steamcraft.common.items.armor;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.entity.Entity;
@@ -20,11 +19,12 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
-
+import boilerplate.client.ClientHelper;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 import org.lwjgl.opengl.GL11;
+
 import steamcraft.common.init.InitItems;
 import steamcraft.common.lib.ModInfo;
 
@@ -53,18 +53,17 @@ public class ItemDivingHelmet extends BaseArmor
 	public void renderHelmetOverlay(ItemStack stack, EntityPlayer player, ScaledResolution resolution, float partialTicks, boolean hasScreen,
 			int mouseX, int mouseY)
 	{
-		if((Minecraft.getMinecraft().thePlayer == null) || (Minecraft.getMinecraft().currentScreen != null))
+		if((ClientHelper.player() == null) || (ClientHelper.screen() != null))
 			return;
 
-		ItemStack helmet = Minecraft.getMinecraft().thePlayer.inventory.armorItemInSlot(3);
+		ItemStack helmet = ClientHelper.player().inventory.armorItemInSlot(3);
 
-		if((Minecraft.getMinecraft().gameSettings.thirdPersonView == 0) && (helmet != null) && (helmet.getItem() == InitItems.itemDivingHelmet))// &&
+		if((ClientHelper.settings().thirdPersonView == 0) && (helmet != null) && (helmet.getItem() == InitItems.itemDivingHelmet))// &&
 		// KeyHandler.keyPressed)
 		{
-			Minecraft.getMinecraft().getTextureManager().bindTexture(overlay);
+			ClientHelper.textureManager().bindTexture(overlay);
 			Tessellator tessellator = Tessellator.instance;
-			ScaledResolution scaledResolution = new ScaledResolution(Minecraft.getMinecraft(), Minecraft.getMinecraft().displayWidth,
-					Minecraft.getMinecraft().displayHeight);
+			ScaledResolution scaledResolution = ClientHelper.resolution();
 			int width = scaledResolution.getScaledWidth();
 			int height = scaledResolution.getScaledHeight();
 

@@ -44,11 +44,6 @@ public class CommonProxy
 	{
 	}
 
-	public World getClientWorld()
-	{
-		return null;
-	}
-
 	public Object rayFX(World world, EntityPlayer player, double dx, double dy, double dz, int type, boolean reverse, float endMod, Object input,
 			int impact, Color rayColor)
 	{

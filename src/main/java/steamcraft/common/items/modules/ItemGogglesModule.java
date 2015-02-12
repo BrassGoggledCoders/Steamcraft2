@@ -12,7 +12,6 @@
  */
 package steamcraft.common.items.modules;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -21,15 +20,16 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 import org.lwjgl.opengl.GL11;
+
 import steamcraft.common.Steamcraft;
 import steamcraft.common.init.InitItems;
 import steamcraft.common.items.armor.ItemBrassGoggles;
 import steamcraft.common.lib.ModInfo;
+import boilerplate.client.ClientHelper;
 import boilerplate.common.baseclasses.BaseArmorModule;
 import boilerplate.steamapi.item.ModuleRegistry;
 
@@ -76,17 +76,16 @@ public class ItemGogglesModule extends BaseArmorModule
 	@SideOnly(Side.CLIENT)
 	public void addOverlay(EntityPlayer player)
 	{
-		if((player == null) || (Minecraft.getMinecraft().currentScreen != null))
+		if((player == null) || (ClientHelper.screen() != null))
 			return;
 
 		ItemStack helmet = player.inventory.armorItemInSlot(3);
 
-		if((Minecraft.getMinecraft().gameSettings.thirdPersonView == 0) && (helmet != null) && (helmet.getItem() == InitItems.brassGoggles))
+		if((ClientHelper.settings().thirdPersonView == 0) && (helmet != null) && (helmet.getItem() == InitItems.brassGoggles))
 		{
-			Minecraft.getMinecraft().getTextureManager().bindTexture(ItemBrassGoggles.overlay);
+			ClientHelper.textureManager().bindTexture(ItemBrassGoggles.overlay);
 			Tessellator tessellator = Tessellator.instance;
-			ScaledResolution scaledResolution = new ScaledResolution(Minecraft.getMinecraft(), Minecraft.getMinecraft().displayWidth,
-					Minecraft.getMinecraft().displayHeight);
+			ScaledResolution scaledResolution = ClientHelper.resolution();
 			int width = scaledResolution.getScaledWidth();
 			int height = scaledResolution.getScaledHeight();
 

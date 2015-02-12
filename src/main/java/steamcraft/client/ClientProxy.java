@@ -15,7 +15,6 @@ package steamcraft.client;
 import java.awt.Color;
 import java.util.HashMap;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelPig;
 import net.minecraft.client.model.ModelZombie;
@@ -24,7 +23,6 @@ import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 
-import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 
@@ -88,6 +86,7 @@ import steamcraft.common.tiles.energy.TileCharger;
 import steamcraft.common.tiles.energy.TileCopperWire;
 import steamcraft.common.tiles.energy.TileLightningRod;
 import steamcraft.common.tiles.energy.TileTeslaCoil;
+import boilerplate.client.ClientHelper;
 import boilerplate.client.fx.FXRaygun;
 import boilerplate.client.renderers.block.BlockTESRRenderer;
 import boilerplate.client.renderers.block.RenderMinedBlock;
@@ -190,12 +189,6 @@ public class ClientProxy extends CommonProxy
 	}
 
 	@Override
-	public World getClientWorld()
-	{
-		return FMLClientHandler.instance().getClient().theWorld;
-	}
-
-	@Override
 	public Object rayFX(World world, EntityPlayer player, double dx, double dy, double dz, int type, boolean reverse, float endMod, Object input,
 			int impact, Color rayColor)
 	{
@@ -210,7 +203,7 @@ public class ClientProxy extends CommonProxy
 			ray.setType(type);
 			ray.setEndMod(endMod);
 			ray.setReverse(reverse);
-			FMLClientHandler.instance().getClient().effectRenderer.addEffect(ray);
+			ClientHelper.effectRenderer().addEffect(ray);
 		}
 		else
 		{
@@ -276,7 +269,7 @@ public class ClientProxy extends CommonProxy
 		switch(id)
 		{
 			case 0:
-				return Minecraft.getMinecraft().gameSettings.keyBindJump.getIsKeyPressed();
+				return ClientHelper.settings().keyBindJump.getIsKeyPressed();
 			default:
 				break;
 
@@ -288,6 +281,6 @@ public class ClientProxy extends CommonProxy
 	@Override
 	public boolean isScreenEmpty()
 	{
-		return Minecraft.getMinecraft().currentScreen == null;
+		return ClientHelper.screen() == null;
 	}
 }

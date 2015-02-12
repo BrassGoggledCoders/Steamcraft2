@@ -13,12 +13,13 @@
 package steamcraft.client.renderers.tile;
 
 import net.minecraft.block.BlockTrapDoor;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
+
+import boilerplate.client.ClientHelper;
 import steamcraft.client.renderers.models.ModelHatch;
 import steamcraft.common.lib.ModInfo;
 
@@ -42,7 +43,7 @@ public class TileHatchRenderer extends TileEntitySpecialRenderer
 
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float) dx + 0.5F, (float) dy, (float) dz + 0.5F);
-		Minecraft.getMinecraft().renderEngine.bindTexture(hatch);
+		ClientHelper.textureManager().bindTexture(hatch);
 		GL11.glPushMatrix();
 		GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
 		// TODO

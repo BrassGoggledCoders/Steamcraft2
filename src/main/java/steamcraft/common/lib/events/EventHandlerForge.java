@@ -14,7 +14,6 @@ package steamcraft.common.lib.events;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityClientPlayerMP;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.ScaledResolution;
@@ -33,15 +32,12 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.MovingObjectPosition.MovingObjectType;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
-
 import cofh.api.energy.IEnergyHandler;
-
 import cpw.mods.fml.client.event.ConfigChangedEvent;
 import cpw.mods.fml.common.eventhandler.EventPriority;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-
 import net.minecraftforge.client.event.DrawBlockHighlightEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderPlayerEvent;
@@ -53,11 +49,13 @@ import net.minecraftforge.event.entity.living.LivingSpawnEvent;
 
 import org.apache.commons.lang3.StringUtils;
 import org.lwjgl.opengl.GL11;
+
 import steamcraft.common.config.ConfigBalance;
 import steamcraft.common.container.InventoryVanity;
 import steamcraft.common.entities.EntityPlayerExtended;
 import steamcraft.common.init.InitItems;
 import steamcraft.common.lib.ModInfo;
+import boilerplate.client.ClientHelper;
 import boilerplate.common.baseclasses.BaseTileWithInventory;
 
 /**
@@ -104,15 +102,14 @@ public class EventHandlerForge
 	@SideOnly(Side.CLIENT)
 	public void renderOverlay(RenderGameOverlayEvent.Text event)
 	{
-		Minecraft mc = Minecraft.getMinecraft();
 		ItemStack helmet = this.player.inventory.armorItemInSlot(3);
 		if((helmet != null) && (helmet.getItem() == InitItems.itemMonocle))
 		{
-			ScaledResolution res = new ScaledResolution(mc, mc.displayWidth, mc.displayHeight);
-			FontRenderer fontRenderer = mc.fontRenderer;
+			ScaledResolution res = ClientHelper.resolution();
+			FontRenderer fontRenderer = ClientHelper.fontRenderer();
 			res.getScaledWidth();
 			res.getScaledHeight();
-			mc.entityRenderer.setupOverlayRendering();
+			ClientHelper.entityRenderer().setupOverlayRendering();
 
 			int posX = 5;
 			int posY = 5;
@@ -129,8 +126,8 @@ public class EventHandlerForge
 			if((this.block != null) && this.player.worldObj.isAirBlock(this.x, this.y, this.z))
 			{
 				fontRenderer.drawString("Block: " + this.block.getUnlocalizedName().substring(5), posX, posY, color);
-				fontRenderer.drawString("Metadata: " + this.block.getDamageValue(mc.theWorld, this.x, this.y, this.z), posX, posY2, color);
-				fontRenderer.drawString("Hardness: " + this.block.getBlockHardness(mc.theWorld, this.x, this.y, this.z), posX, posY3, color);
+				fontRenderer.drawString("Metadata: " + this.block.getDamageValue(ClientHelper.world(), this.x, this.y, this.z), posX, posY2, color);
+				fontRenderer.drawString("Hardness: " + this.block.getBlockHardness(ClientHelper.world(), this.x, this.y, this.z), posX, posY3, color);
 				fontRenderer.drawString("Light Value: " + this.block.getLightValue(), posX, posY4, color);
 				// TODO
 				if(this.block instanceof BlockContainer)
@@ -349,19 +346,18 @@ public class EventHandlerForge
 	@SideOnly(Side.CLIENT)
 	public void onRenderOverlay(RenderGameOverlayEvent.Chat event)
 	{
-		EntityClientPlayerMP player = Minecraft.getMinecraft().thePlayer;
+		EntityClientPlayerMP player = ClientHelper.player();
 
-		if((player != null) && (Minecraft.getMinecraft().currentScreen == null) &&
+		if((player != null) && (ClientHelper.screen() == null) &&
 				(player.inventory.getCurrentItem() != null) && (player.inventory.
-						getCurrentItem().getItem() == InitItems.itemSpyglass) && (Minecraft.getMinecraft().gameSettings.thirdPersonView == 0))
+						getCurrentItem().getItem() == InitItems.itemSpyglass) && (ClientHelper.settings().thirdPersonView == 0))
 		{
 			GL11.glDisable(GL11.GL_ALPHA_TEST);
 			GL11.glDisable(GL11.GL_DEPTH_TEST);
 
-			Minecraft.getMinecraft().getTextureManager().bindTexture(overlay);
+			ClientHelper.textureManager().bindTexture(overlay);
 			Tessellator tessellator = Tessellator.instance;
-			ScaledResolution scaledResolution = new ScaledResolution(Minecraft.getMinecraft(), Minecraft.getMinecraft().displayWidth,
-					Minecraft.getMinecraft().displayHeight);
+			ScaledResolution scaledResolution = ClientHelper.resolution();
 			int width = scaledResolution.getScaledWidth();
 			int height = scaledResolution.getScaledHeight();
 

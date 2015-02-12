@@ -13,18 +13,15 @@
 package steamcraft.common.packets;
 
 import io.netty.buffer.ByteBuf;
-
-import net.minecraft.client.Minecraft;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
 import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-
+import boilerplate.client.ClientHelper;
 import boilerplate.common.baseclasses.BaseTileWithInventory;
 
 /**
@@ -78,7 +75,7 @@ public class UpdateClientsideInventoryPacket implements IMessage
 		@SideOnly(Side.CLIENT)
 		public IMessage onMessage(UpdateClientsideInventoryPacket message, MessageContext ctx)
 		{
-			World world = Minecraft.getMinecraft().theWorld;
+			World world = ClientHelper.world();
 
 			if(world.getTileEntity(message.x, message.y, message.z) instanceof BaseTileWithInventory)
 			{

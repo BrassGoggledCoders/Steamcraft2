@@ -15,7 +15,6 @@ package steamcraft.common.items.modules;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.Tessellator;
@@ -23,12 +22,11 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.ModInfo;
+import boilerplate.client.ClientHelper;
 import boilerplate.common.baseclasses.BaseArmorModule;
 import boilerplate.steamapi.item.ModuleRegistry;
 
@@ -67,21 +65,20 @@ public class ItemWatchDisplay extends BaseArmorModule
 	@Override
 	public boolean applyModuleEffect(World world, EntityPlayer player, ItemStack stack)
 	{
-		if((Minecraft.getMinecraft().thePlayer == null) || (Minecraft.getMinecraft().currentScreen != null))
+		if((ClientHelper.player() == null) || (ClientHelper.screen() != null))
 			return false;
 
-		ItemStack helmet = Minecraft.getMinecraft().thePlayer.inventory.armorItemInSlot(3);
+		ItemStack helmet = ClientHelper.player().inventory.armorItemInSlot(3);
 
-		if(Minecraft.getMinecraft().gameSettings.thirdPersonView == 0)
+		if(ClientHelper.settings().thirdPersonView == 0)
 		{
 			Tessellator tessellator = Tessellator.instance;
-			ScaledResolution scaledResolution = new ScaledResolution(Minecraft.getMinecraft(), Minecraft.getMinecraft().displayWidth,
-					Minecraft.getMinecraft().displayHeight);
+			ScaledResolution scaledResolution = ClientHelper.resolution();
 			int width = scaledResolution.getScaledWidth();
 			int height = scaledResolution.getScaledHeight();
 
-			FontRenderer fontRenderer = Minecraft.getMinecraft().fontRenderer;
-			Minecraft.getMinecraft().entityRenderer.setupOverlayRendering();
+			FontRenderer fontRenderer = ClientHelper.fontRenderer();
+			ClientHelper.entityRenderer().setupOverlayRendering();
 			int color = 0xCCFF00;
 
 			final long mcTime = world.getTotalWorldTime();

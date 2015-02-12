@@ -14,22 +14,20 @@ package steamcraft.common.lib.events;
 
 import java.util.HashMap;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.player.EntityPlayer;
-
 import cpw.mods.fml.common.eventhandler.EventPriority;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.InputEvent.KeyInputEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-
 import net.minecraftforge.client.event.FOVUpdateEvent;
 import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.client.event.TextureStitchEvent;
 
 import org.lwjgl.opengl.GL11;
+
 import steamcraft.client.ClientProxy;
 import steamcraft.client.lib.GuiIDs;
 import steamcraft.common.container.InventoryVanity;
@@ -38,6 +36,7 @@ import steamcraft.common.init.InitBlocks;
 import steamcraft.common.init.InitItems;
 import steamcraft.common.init.InitPackets;
 import steamcraft.common.packets.OpenContainerFromClientPacket;
+import boilerplate.client.ClientHelper;
 import boilerplate.steamapi.vanity.IVanityItem;
 
 public class EventHandlerClient
@@ -61,7 +60,7 @@ public class EventHandlerClient
 
 		if(keyBindings.get("vanity").isPressed())
 		{
-			EntityPlayer player = Minecraft.getMinecraft().thePlayer;
+			EntityPlayer player = ClientHelper.player();
 			InitPackets.network.sendToServer(new OpenContainerFromClientPacket(player.getEntityId(), GuiIDs.VANITY, player.dimension));
 		}
 	}
@@ -78,11 +77,11 @@ public class EventHandlerClient
 			{
 				IVanityItem item = (IVanityItem) inventory.getStackInSlot(i).getItem();
 				ModelBase model = item.getVanityItemModel();
-				Minecraft.getMinecraft().renderEngine.bindTexture(item.getItemTextureLocation());
+				ClientHelper.textureManager().bindTexture(item.getItemTextureLocation());
 				GL11.glPushMatrix();
 				model.render(event.entity, item.getModelOffsetX(), item.getModelOffsetY(), item.getModelOffsetZ(), 0.0625F, 0.0625F, 0.0625F);
 				GL11.glPopMatrix();
-				Minecraft.getMinecraft().renderEngine.deleteTexture(item.getItemTextureLocation());
+				ClientHelper.textureManager().deleteTexture(item.getItemTextureLocation());
 			}
 		}
 	}
