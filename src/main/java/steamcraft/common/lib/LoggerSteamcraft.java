@@ -12,9 +12,9 @@
  */
 package steamcraft.common.lib;
 
-import cpw.mods.fml.common.FMLLog;
-
 import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * @author Surseance
@@ -22,28 +22,30 @@ import org.apache.logging.log4j.Level;
  */
 public class LoggerSteamcraft
 {
+	private static final Logger logger = LogManager.getLogger("Steamcraft");
+
 	public static void log(org.apache.logging.log4j.Level level, String message)
 	{
-		FMLLog.getLogger().log(level, "[Steamcraft] " + message);
+		logger.log(level, message);
 	}
 
 	public static void warning(String message)
 	{
-		FMLLog.getLogger().log(Level.WARN, "[Steamcraft] " + message);
+		logger.log(Level.WARN, message);
 	}
 
 	public static void info(String message)
 	{
-		FMLLog.getLogger().log(Level.INFO, "[Steamcraft] " + message);
+		logger.log(Level.INFO, message);
 	}
 
 	public static void fatal(String message)
 	{
-		FMLLog.getLogger().log(Level.FATAL, "[Steamcraft] " + message);
+		logger.log(Level.FATAL, message);
 	}
 
 	public static void error(String message)
 	{
-		FMLLog.getLogger().log(Level.ERROR, "[Steamcraft] " + message);
+		logger.log(Level.ERROR, message);
 	}
 }
