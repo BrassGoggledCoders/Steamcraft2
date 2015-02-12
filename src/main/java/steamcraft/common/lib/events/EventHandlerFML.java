@@ -93,7 +93,7 @@ public class EventHandlerFML
 			component1.getChatStyle().setColor(EnumChatFormatting.GREEN);
 			event.player.addChatComponentMessage(component1);
 		}
-		else if(event.player.getCommandSenderName().equals("WGSXFrank"))
+		else if(event.player.getCommandSenderName().equals("ClockwerkKaiser"))
 		{
 			ChatComponentText component = new ChatComponentText("Your Clockwerk Empire awaits!");
 			component.getChatStyle().setBold(true);
