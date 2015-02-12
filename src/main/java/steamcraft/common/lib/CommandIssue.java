@@ -34,7 +34,7 @@ import steamcraft.common.entities.EntityPlayerExtended;
  */
 public class CommandIssue extends CommandBase
 {
-	private final List<String> aliases;
+	private final List<String> aliases;// TODO use aliases
 
 	public CommandIssue()
 	{
@@ -92,7 +92,7 @@ public class CommandIssue extends CommandBase
 				else
 				{
 					ChatComponentText invalid = new ChatComponentText(
-							"[Steamcraft Issue Reporter] You must wait " + Integer.valueOf(props.getCooldown() / 20)
+							"[Steamcraft Issue Reporter] You must wait " + props.getCooldown() / 20
 									+ " seconds before using that command again");
 					invalid.getChatStyle().setColor(EnumChatFormatting.RED);
 					sender.addChatMessage(invalid);

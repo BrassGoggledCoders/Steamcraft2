@@ -72,9 +72,9 @@ public class ContainerCharger extends BaseContainer
 	{
 		super.detectAndSendChanges();
 
-		for(int var1 = 0; var1 < this.crafters.size(); ++var1)
+		for(Object obj : this.crafters)
 		{
-			ICrafting var2 = (ICrafting) this.crafters.get(var1);
+			ICrafting var2 = (ICrafting) obj;
 
 			if(this.lastTotalEnergy != this.tileent.buffer.getEnergyStored())
 				var2.sendProgressBarUpdate(this, 0, this.tileent.buffer.getEnergyStored());
@@ -143,7 +143,7 @@ public class ContainerCharger extends BaseContainer
 				return null;
 
 			if(var5.stackSize == 0)
-				var4.putStack((ItemStack) null);
+				var4.putStack(null);
 			else
 				var4.onSlotChanged();
 

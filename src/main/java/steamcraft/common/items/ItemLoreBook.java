@@ -118,7 +118,7 @@ public class ItemLoreBook extends BaseItem
 
 			if(!StringUtils.isNullOrEmpty(s))
 			{
-				list.add(EnumChatFormatting.GRAY + StatCollector.translateToLocalFormatted("book.byAuthor", new Object[] { s }));
+				list.add(EnumChatFormatting.GRAY + StatCollector.translateToLocalFormatted("book.byAuthor", s));
 			}
 		}
 		else

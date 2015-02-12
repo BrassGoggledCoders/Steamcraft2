@@ -230,9 +230,9 @@ public class EntitySmallLightningBolt extends Entity implements IProjectile
 				.addCoord(this.motionX, this.motionY, this.motionZ).expand(1.0D, 1.0D, 1.0D));
 		double distance = 0.0D;
 
-		for(int listSize = 0; listSize < entList.size(); listSize++)
+		for(Object obj : entList)
 		{
-			Entity collidableEnt = (Entity) entList.get(listSize);
+			Entity collidableEnt = (Entity) obj;
 
 			if(!collidableEnt.canBeCollidedWith() || ((collidableEnt == this.shootingEntity) && (this.flyTime < 5)))
 				continue;

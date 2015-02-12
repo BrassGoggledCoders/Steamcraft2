@@ -43,8 +43,6 @@ public class ItemModPickaxe extends ItemModTool
 	@Override
 	public boolean canHarvestBlock(Block block, ItemStack stack)
 	{
-		if(block.getMaterial() == Material.rock)
-			return true;
-		return super.canHarvestBlock(block, stack);
+		return block.getMaterial() == Material.rock || super.canHarvestBlock(block, stack);
 	}
 }

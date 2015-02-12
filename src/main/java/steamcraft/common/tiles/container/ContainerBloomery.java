@@ -79,9 +79,9 @@ public class ContainerBloomery extends BaseContainer
 	{
 		super.detectAndSendChanges();
 
-		for(int i = 0; i < this.crafters.size(); ++i)
+		for(Object obj : this.crafters)
 		{
-			ICrafting icrafting = (ICrafting) this.crafters.get(i);
+			ICrafting icrafting = (ICrafting) obj;
 
 			if(this.lastCookTime != this.tileent.cookTime)
 				icrafting.sendProgressBarUpdate(this, 0, this.tileent.cookTime);
@@ -163,7 +163,7 @@ public class ContainerBloomery extends BaseContainer
 				return null;
 
 			if(itemstack1.stackSize == 0)
-				slot.putStack((ItemStack) null);
+				slot.putStack(null);
 			else
 				slot.onSlotChanged();
 

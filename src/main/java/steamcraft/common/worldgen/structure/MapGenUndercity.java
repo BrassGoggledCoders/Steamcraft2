@@ -37,13 +37,11 @@ public class MapGenUndercity extends MapGenStructure
 
 	public MapGenUndercity(Map p_i2034_1_)
 	{
-		Iterator iterator = p_i2034_1_.entrySet().iterator();
-
-		while(iterator.hasNext())
+		for(Object obj : p_i2034_1_.entrySet())
 		{
-			Entry entry = (Entry) iterator.next();
+			Entry entry = (Entry) obj;
 
-			if(((String) entry.getKey()).equals("chance"))
+			if((entry.getKey()).equals("chance"))
 			{
 				this.field_82673_e = MathHelper.parseDoubleWithDefault((String) entry.getValue(), this.field_82673_e);
 			}

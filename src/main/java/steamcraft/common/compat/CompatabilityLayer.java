@@ -249,8 +249,7 @@ public class CompatabilityLayer
 
 			GameRegistry.registerItem(InitItems.itemThaumicMonocle, "ItemThaumicMonocle");
 			Item thaumometer = GameRegistry.findItem("Thaumcraft", "ItemThaumometer");
-			GameRegistry.addRecipe(new ShapedOreRecipe(InitItems.itemThaumicMonocle, new Object[] { " I ", "ITI", " I ", 'I', "ingotBrass", 'T',
-					thaumometer }));
+			GameRegistry.addRecipe(new ShapedOreRecipe(InitItems.itemThaumicMonocle, " I ", "ITI", " I ", 'I', "ingotBrass", 'T', thaumometer));
 		}
 		if(Loader.isModLoaded("TConstruct"))
 		{

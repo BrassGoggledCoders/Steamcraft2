@@ -71,16 +71,14 @@ public class BloomeryRecipes
 	@SuppressWarnings("unchecked")
 	public ItemStack[] getSmeltingInputs(ItemStack output)
 	{
-		Iterator<?> iterator = this.recipeList.entrySet().iterator();
 		Entry<ItemStack[], ItemStack> entry;
-		ItemStack[] inputs = null;
-		do
+		for (Object obj : this.recipeList.entrySet())
 		{
-			entry = (Entry<ItemStack[], ItemStack>) iterator.next();
+			entry = (Entry<ItemStack[], ItemStack>) obj;
 
 			if((entry.getValue().getItem() == output.getItem()) && (entry.getValue().getItemDamage() == output.getItemDamage()))
 				return entry.getKey();
-		}while(inputs == null);
+		}
 
 		return null;
 	}

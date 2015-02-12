@@ -188,7 +188,7 @@ public class EntityGrub extends EntityMob
 										int k1 = this.worldObj.getBlockMetadata(i + i1, j + l, k + j1);
 										ImmutablePair immutablepair = BlockSilverfish.func_150197_b(k1);
 										this.worldObj.setBlock(i + i1, j + l, k + j1, (Block) immutablepair.getLeft(),
-												((Integer) immutablepair.getRight()).intValue(), 3);
+												(Integer) immutablepair.getRight(), 3);
 									}
 									else
 									{
@@ -210,7 +210,7 @@ public class EntityGrub extends EntityMob
 										int k1 = this.worldObj.getBlockMetadata(i + i1, j + l, k + j1);
 										ImmutablePair immutablepair = BlockSilverfish.func_150197_b(k1);
 										this.worldObj.setBlock(i + i1, j + l, k + j1, (Block) immutablepair.getLeft(),
-												((Integer) immutablepair.getRight()).intValue(), 3);
+												(Integer) immutablepair.getRight(), 3);
 									}
 									else
 									{

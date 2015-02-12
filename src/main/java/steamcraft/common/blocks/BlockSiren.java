@@ -27,7 +27,7 @@ public class BlockSiren extends Block
 	public BlockSiren(Material p_i45394_1_, boolean isOn, String sound)
 	{
 		super(p_i45394_1_);
-        this.isOn = isOn;
+		this.isOn = isOn;
 		this.sound = sound;
 		if(!isOn)
 			this.setCreativeTab(Steamcraft.tabSC2);

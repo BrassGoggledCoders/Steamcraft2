@@ -37,8 +37,6 @@ public class ItemDrill extends ItemModTool
 	@Override
 	public boolean canHarvestBlock(Block block, ItemStack stack)
 	{
-		if(block.getMaterial() == Material.snow || block.getMaterial() == Material.rock)
-			return true;
-		return super.canHarvestBlock(block, stack);
+		return block.getMaterial() == Material.snow || block.getMaterial() == Material.rock || super.canHarvestBlock(block, stack);
 	}
 }

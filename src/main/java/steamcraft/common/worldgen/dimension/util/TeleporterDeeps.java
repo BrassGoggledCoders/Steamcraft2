@@ -138,7 +138,7 @@ public class TeleporterDeeps extends Teleporter
 			if(flag)
 			{
 				this.destinationCoordinateCache.add(j1, new DeepsPortalPosition(this, i, j, k, this.worldServerInstance.getTotalWorldTime()));
-				this.destinationCoordinateKeys.add(Long.valueOf(j1));
+				this.destinationCoordinateKeys.add(j1);
 			}
 			double d8 = i + 0.5D;
 			double d9 = j + 0.5D;
@@ -434,11 +434,11 @@ public class TeleporterDeeps extends Teleporter
 			while(iterator.hasNext())
 			{
 				Long olong = (Long) iterator.next();
-				PortalPosition portalposition = (PortalPosition) this.destinationCoordinateCache.getValueByKey(olong.longValue());
+				PortalPosition portalposition = (PortalPosition) this.destinationCoordinateCache.getValueByKey(olong);
 				if((portalposition == null) || (portalposition.lastUpdateTime < j))
 				{
 					iterator.remove();
-					this.destinationCoordinateCache.remove(olong.longValue());
+					this.destinationCoordinateCache.remove(olong);
 				}
 			}
 		}

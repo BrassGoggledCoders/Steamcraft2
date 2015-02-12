@@ -235,9 +235,9 @@ public class EntitySplashLightningBottle extends EntityThrowable
 			double d0 = 0.0D;
 			EntityLivingBase entitylivingbase = this.getThrower();
 
-			for(int j = 0; j < list.size(); ++j)
+			for(Object obj : list)
 			{
-				Entity entity1 = (Entity) list.get(j);
+				Entity entity1 = (Entity) obj;
 
 				if(entity1.canBeCollidedWith() && ((entity1 != entitylivingbase) || (this.ticksInAir >= 5)))
 				{
@@ -349,11 +349,9 @@ public class EntitySplashLightningBottle extends EntityThrowable
 
 			if((list1 != null) && !list1.isEmpty())
 			{
-				Iterator iterator = list1.iterator();
-
-				while(iterator.hasNext())
+				for(Object obj : list1)
 				{
-					EntityLivingBase entitylivingbase = (EntityLivingBase) iterator.next();
+					EntityLivingBase entitylivingbase = (EntityLivingBase) obj;
 					double d0 = this.getDistanceSqToEntity(entitylivingbase);
 
 					if(d0 < 16.0D)

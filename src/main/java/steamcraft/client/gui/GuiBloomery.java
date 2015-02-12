@@ -40,10 +40,9 @@ public class GuiBloomery extends GuiContainer
 	@Override
 	protected void drawGuiContainerForegroundLayer(int p_146979_1_, int p_146979_2_)
 	{
-		String s = this.tileFurnace.hasCustomInventoryName() ? this.tileFurnace.getInventoryName() : I18n.format(this.tileFurnace.getInventoryName(),
-				new Object[0]);
+		String s = this.tileFurnace.hasCustomInventoryName() ? this.tileFurnace.getInventoryName() : I18n.format(this.tileFurnace.getInventoryName());
 		this.fontRendererObj.drawString(s, (this.xSize / 2) - (this.fontRendererObj.getStringWidth(s) / 2), 6, 4210752);
-		this.fontRendererObj.drawString(I18n.format("container.inventory", new Object[0]), 8, (this.ySize - 96) + 2, 4210752);
+		this.fontRendererObj.drawString(I18n.format("container.inventory"), 8, (this.ySize - 96) + 2, 4210752);
 	}
 
 	@Override

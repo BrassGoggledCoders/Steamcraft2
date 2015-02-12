@@ -1,7 +1,7 @@
 package steamcraft.common.entities;
 
-import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.entity.Entity;
@@ -61,13 +61,12 @@ public class EntityFallingBoulder extends EntityFallingBlock
 
 		if(i > 0)
 		{
-			ArrayList arraylist = new ArrayList(this.worldObj.getEntitiesWithinAABBExcludingEntity(this, this.boundingBox));
+			List list = this.worldObj.getEntitiesWithinAABBExcludingEntity(this, this.boundingBox);
 			DamageSource damagesource = DamageSourceHandler.boulder;
-			Iterator iterator = arraylist.iterator();
 
-			while(iterator.hasNext())
+			for(Object obj : list)
 			{
-				Entity entity = (Entity) iterator.next();
+				Entity entity = (Entity) obj;
 				entity.attackEntityFrom(damagesource, Math.min(MathHelper.floor_float(i * this.damageMultiplier) + 20, this.maxDamage));
 			}
 
@@ -129,7 +128,7 @@ public class EntityFallingBoulder extends EntityFallingBlock
 				{
 					this.setDead();
 
-					if(!this.field_145808_f && this.worldObj.canPlaceEntityOnSide(InitBlocks.blockBoulder, i, j, k, true, 1, (Entity) null, (ItemStack) null)
+					if(!this.field_145808_f && this.worldObj.canPlaceEntityOnSide(InitBlocks.blockBoulder, i, j, k, true, 1, null, null)
 							&& !BlockBoulder.func_149831_e(this.worldObj, i, j - 1, k)
 							&& this.worldObj.setBlock(i, j, k, InitBlocks.blockBoulder, this.field_145814_a, 3))
 					{
@@ -146,11 +145,10 @@ public class EntityFallingBoulder extends EntityFallingBlock
 							{
 								NBTTagCompound nbttagcompound = new NBTTagCompound();
 								tileentity.writeToNBT(nbttagcompound);
-								Iterator iterator = this.field_145810_d.func_150296_c().iterator();
 
-								while(iterator.hasNext())
+								for(Object obj : this.field_145810_d.func_150296_c())
 								{
-									String s = (String) iterator.next();
+									String s = (String) obj;
 									NBTBase nbtbase = this.field_145810_d.getTag(s);
 
 									if(!s.equals("x") && !s.equals("y") && !s.equals("z"))

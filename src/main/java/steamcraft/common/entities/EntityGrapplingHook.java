@@ -260,9 +260,9 @@ public class EntityGrapplingHook extends Entity
 			double d0 = 0.0D;
 			double d2;
 
-			for(int i = 0; i < list.size(); ++i)
+			for(Object obj : list)
 			{
-				Entity entity1 = (Entity) list.get(i);
+				Entity entity1 = (Entity) obj;
 
 				if(entity1.canBeCollidedWith() && ((entity1 != this.player) || (this.ticksInAir >= 5)))
 				{

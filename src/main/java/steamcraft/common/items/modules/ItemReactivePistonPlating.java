@@ -73,9 +73,9 @@ public class ItemReactivePistonPlating extends BaseArmorModule
 
 		if(list != null)
 		{
-			for(int i = 0; i < list.size(); ++i)
+			for(Object obj : list)
 			{
-				Entity entity = (Entity) list.get(i);
+				Entity entity = (Entity) obj;
 
 				if(!entity.isDead && (entity instanceof EntityLiving))
 				{

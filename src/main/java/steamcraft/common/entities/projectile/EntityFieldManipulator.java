@@ -74,7 +74,7 @@ public class EntityFieldManipulator extends EntityEnderPearl
 					{ // Don't indent to lower patch size
 						if(this.getThrower().isRiding())
 						{
-							this.getThrower().mountEntity((Entity) null);
+							this.getThrower().mountEntity(null);
 						}
 
 						this.getThrower().setPositionAndUpdate(event.targetX, event.targetY, event.targetZ);

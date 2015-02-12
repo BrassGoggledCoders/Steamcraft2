@@ -32,8 +32,6 @@ public class ItemModShovel extends ItemModTool
 	@Override
 	public boolean canHarvestBlock(Block block, ItemStack stack)
 	{
-		if(block.getMaterial() == Material.snow)
-			return true;
-		return super.canHarvestBlock(block, stack);
+		return block.getMaterial() == Material.snow || super.canHarvestBlock(block, stack);
 	}
 }

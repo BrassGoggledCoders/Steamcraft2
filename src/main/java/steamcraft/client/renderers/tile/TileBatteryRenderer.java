@@ -53,7 +53,7 @@ public class TileBatteryRenderer extends TileEntitySpecialRenderer
 		GL11.glTranslatef(0, 0.7F, 0);
 		GL11.glScalef(1.2F, 1.5F, 1.2F);
 		GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
-		this.model.render((Entity) null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F, te);
+		this.model.render(null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F, te);
 		GL11.glPopMatrix();
 	}
 }

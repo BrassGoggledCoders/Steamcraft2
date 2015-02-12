@@ -33,7 +33,7 @@ import steamcraft.common.worldgen.structure.WorldGenFissurePortal;
 import steamcraft.common.worldgen.trees.WorldGenBrassTree;
 
 /**
- * @authors Surseance & warlordjones
+ * @author Surseance & warlordjones
  * 
  */
 public class WorldGenSteamcraft implements IWorldGenerator

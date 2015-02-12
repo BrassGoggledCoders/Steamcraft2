@@ -819,11 +819,10 @@ public class StructureUndercityPieces
 						this.boundingBox.minY, this.boundingBox.maxZ, Blocks.dirt, Blocks.air, true);
 				this.fillWithBlocks(p_74875_1_, p_74875_3_, this.boundingBox.minX, this.boundingBox.minY + 1, this.boundingBox.minZ, this.boundingBox.maxX,
 						Math.min(this.boundingBox.minY + 3, this.boundingBox.maxY), this.boundingBox.maxZ, Blocks.air, Blocks.air, false);
-				Iterator iterator = this.roomsLinkedToTheRoom.iterator();
 
-				while(iterator.hasNext())
+				for(Object obj : this.roomsLinkedToTheRoom)
 				{
-					StructureBoundingBox structureboundingbox1 = (StructureBoundingBox) iterator.next();
+					StructureBoundingBox structureboundingbox1 = (StructureBoundingBox) obj;
 					this.fillWithBlocks(p_74875_1_, p_74875_3_, structureboundingbox1.minX, structureboundingbox1.maxY - 2, structureboundingbox1.minZ,
 							structureboundingbox1.maxX, structureboundingbox1.maxY, structureboundingbox1.maxZ, Blocks.air, Blocks.air, false);
 				}
@@ -838,11 +837,10 @@ public class StructureUndercityPieces
 		protected void func_143012_a(NBTTagCompound p_143012_1_)
 		{
 			NBTTagList nbttaglist = new NBTTagList();
-			Iterator iterator = this.roomsLinkedToTheRoom.iterator();
 
-			while(iterator.hasNext())
+			for (Object obj : this.roomsLinkedToTheRoom)
 			{
-				StructureBoundingBox structureboundingbox = (StructureBoundingBox) iterator.next();
+				StructureBoundingBox structureboundingbox = (StructureBoundingBox) obj;
 				nbttaglist.appendTag(structureboundingbox.func_151535_h());
 			}
 

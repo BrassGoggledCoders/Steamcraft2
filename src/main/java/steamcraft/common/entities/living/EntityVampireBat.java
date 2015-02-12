@@ -69,7 +69,7 @@ public class EntityVampireBat extends EntityMob
 	protected void entityInit()
 	{
 		super.entityInit();
-		this.dataWatcher.addObject(16, new Byte((byte) 0));
+		this.dataWatcher.addObject(16, (byte) 0);
 	}
 
 	/**
@@ -154,11 +154,11 @@ public class EntityVampireBat extends EntityMob
 
 		if(p_82236_1_)
 		{
-			this.dataWatcher.updateObject(16, Byte.valueOf((byte) (b0 | 1)));
+			this.dataWatcher.updateObject(16, (byte) (b0 | 1));
 		}
 		else
 		{
-			this.dataWatcher.updateObject(16, Byte.valueOf((byte) (b0 & -2)));
+			this.dataWatcher.updateObject(16, (byte) (b0 & -2));
 		}
 	}
 
@@ -314,7 +314,7 @@ public class EntityVampireBat extends EntityMob
 	public void readEntityFromNBT(NBTTagCompound p_70037_1_)
 	{
 		super.readEntityFromNBT(p_70037_1_);
-		this.dataWatcher.updateObject(16, Byte.valueOf(p_70037_1_.getByte("BatFlags")));
+		this.dataWatcher.updateObject(16, p_70037_1_.getByte("BatFlags"));
 	}
 
 	/**
@@ -346,8 +346,10 @@ public class EntityVampireBat extends EntityMob
 			int l = this.worldObj.getBlockLightValue(j, i, k);
 			byte b0 = 4;
 			Calendar calendar = this.worldObj.getCurrentDate();
+			int month = calendar.get(Calendar.MONTH);
+			int day = calendar.get(Calendar.DATE);
 
-			if((((calendar.get(2) + 1) != 10) || (calendar.get(5) < 20)) && (((calendar.get(2) + 1) != 11) || (calendar.get(5) > 3)))
+			if((((month + 1) != 10) || (day < 20)) && (((month + 1) != 11) || (day > 3)))
 			{
 				if(this.rand.nextBoolean())
 				{

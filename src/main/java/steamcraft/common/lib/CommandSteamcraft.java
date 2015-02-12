@@ -31,7 +31,7 @@ import org.eclipse.egit.github.core.service.IssueService;
  */
 public class CommandSteamcraft extends CommandBase
 {
-	private final List<String> aliases;
+	private final List<String> aliases;// TODO use aliases
 
 	public CommandSteamcraft()
 	{
@@ -110,7 +110,7 @@ public class CommandSteamcraft extends CommandBase
 		}
 		else if(parameters.length == 3)
 		{
-			if(parameters[0] == "issue")
+			if(parameters[0].equalsIgnoreCase("issue"))
 			{
 				Issue issue = new Issue();
 				issue.setNumber(1);
