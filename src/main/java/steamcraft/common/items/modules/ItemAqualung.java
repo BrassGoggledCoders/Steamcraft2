@@ -35,7 +35,7 @@ public class ItemAqualung extends BaseArmorModule
 	{
 		super();
 		ModuleRegistry.registerModule(this);
-		ModuleRegistry.setModuleIncompatibilities(this, new String[] { "pistonplating" });
+		ModuleRegistry.setModuleIncompatibilities(this, "pistonplating");
 		this.setMaxStackSize(1);
 		this.setCreativeTab(Steamcraft.tabSC2);
 	}
