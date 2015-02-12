@@ -83,7 +83,7 @@ public class ItemLoreBook extends BaseItem
 		else
 		{
 			String s = p_77828_0_.getString("title");
-			return (s != null) && (s.length() <= 16) ? p_77828_0_.hasKey("author", 8) : false;
+			return (s != null) && (s.length() <= 16) && p_77828_0_.hasKey("author", 8);
 		}
 	}
 

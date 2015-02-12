@@ -54,9 +54,7 @@ public class ContainerNuclearBoiler extends BaseContainer
 			@Override
 			public boolean isItemValid(ItemStack stack)
 			{
-				if(FluidContainerRegistry.isContainer(stack))
-					return true;
-				return false;
+				return FluidContainerRegistry.isContainer(stack);
 			}
 		});
 		this.addSlotToContainer(new Slot(tile, 2, 132, 21)
@@ -64,9 +62,7 @@ public class ContainerNuclearBoiler extends BaseContainer
 			@Override
 			public boolean isItemValid(ItemStack stack)
 			{
-				if(stack.getItem() == InitItems.itemCanisterSteam)
-					return true;
-				return false;
+				return stack.getItem() == InitItems.itemCanisterSteam;
 			}
 		});
 

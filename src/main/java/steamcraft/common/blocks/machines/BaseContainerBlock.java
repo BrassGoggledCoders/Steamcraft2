@@ -122,9 +122,6 @@ public abstract class BaseContainerBlock extends BlockContainer implements IDism
 	@Override
 	public boolean canDismantle(EntityPlayer player, World world, int x, int y, int z)
 	{
-		if((world.getTileEntity(x, y, z) != null) && (world.getTileEntity(x, y, z) instanceof BaseTileWithInventory))
-			return true;
-
-		return false;
+		return (world.getTileEntity(x, y, z) != null) && (world.getTileEntity(x, y, z) instanceof BaseTileWithInventory);
 	}
 }

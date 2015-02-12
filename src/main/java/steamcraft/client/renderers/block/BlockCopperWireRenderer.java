@@ -39,8 +39,7 @@ public class BlockCopperWireRenderer implements ISimpleBlockRenderingHandler
 
 		TileCopperWire te = new TileCopperWire();
 
-		for(int i = 0; i < ForgeDirection.VALID_DIRECTIONS.length; i++)
-			te.connections[i] = ForgeDirection.VALID_DIRECTIONS[i];
+		System.arraycopy(ForgeDirection.VALID_DIRECTIONS, 0, te.connections, 0, ForgeDirection.VALID_DIRECTIONS.length);
 
 		te.blockMetadata = metadata;
 		te.blockType = block;

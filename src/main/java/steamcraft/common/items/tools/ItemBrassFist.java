@@ -128,12 +128,7 @@ public class ItemBrassFist extends ItemModTool
 			{
 				ItemCanister canister = (ItemCanister) element.getItem();
 
-				if(canister.getFluidAmount(element) >= steamToDrain)
-				{
-					return true;
-				}
-				else
-					return false;
+				return canister.getFluidAmount(element) >= steamToDrain;
 			}
 		}
 		return false;
@@ -165,12 +160,7 @@ public class ItemBrassFist extends ItemModTool
 			{
 				ElectricItem jar = (ElectricItem) element.getItem();
 
-				if(jar.getEnergyStored(element) >= rfToDrain)
-				{
-					return true;
-				}
-				else
-					return false;
+				return jar.getEnergyStored(element) >= rfToDrain;
 			}
 		}
 		return false;

@@ -184,11 +184,7 @@ public class TileNuclearBoiler extends BaseTileWithInventory implements IFluidHa
 	@Override
 	public boolean canInsertItem(int par1, ItemStack itemstack, int par3)
 	{
-		if((par1 == 1) && FluidContainerRegistry.isContainer(itemstack))
-			return true;
-		if((par1 == 0) && (this.getItemBurnTime() > 0))
-			return true;
-		return false;
+		return (par1 == 1 && FluidContainerRegistry.isContainer(itemstack)) || (par1 == 0 && this.getItemBurnTime() > 0);
 	}
 
 	@Override
@@ -200,9 +196,7 @@ public class TileNuclearBoiler extends BaseTileWithInventory implements IFluidHa
 	@Override
 	public boolean isItemValidForSlot(int i, ItemStack itemstack)
 	{
-		if((i == 0) || (i == 1))
-			return true;
-		return false;
+		return (i == 0) || (i == 1);
 	}
 
 	@Override
@@ -231,17 +225,13 @@ public class TileNuclearBoiler extends BaseTileWithInventory implements IFluidHa
 	@Override
 	public boolean canFill(ForgeDirection from, Fluid fluid)
 	{
-		if(fluid == FluidRegistry.WATER)
-			return true;
-		return false;
+		return fluid == FluidRegistry.WATER;
 	}
 
 	@Override
 	public boolean canDrain(ForgeDirection from, Fluid fluid)
 	{
-		if(fluid != FluidRegistry.WATER)
-			return true;
-		return false;
+		return fluid != FluidRegistry.WATER;
 	}
 
 	@Override

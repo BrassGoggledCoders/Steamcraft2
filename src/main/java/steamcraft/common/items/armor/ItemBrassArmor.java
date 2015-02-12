@@ -191,12 +191,7 @@ public class ItemBrassArmor extends BaseArmor implements ISpecialArmor, IGoggles
 			{
 				ItemCanister canister = (ItemCanister) element.getItem();
 
-				if(canister.getFluidAmount(element) >= steamToDrain)
-				{
-					return true;
-				}
-				else
-					return false;
+				return canister.getFluidAmount(element) >= steamToDrain;
 			}
 		}
 		return false;
@@ -228,12 +223,7 @@ public class ItemBrassArmor extends BaseArmor implements ISpecialArmor, IGoggles
 			{
 				ElectricItem jar = (ElectricItem) element.getItem();
 
-				if(jar.getEnergyStored(element) >= rfToDrain)
-				{
-					return true;
-				}
-				else
-					return false;
+				return jar.getEnergyStored(element) >= rfToDrain;
 			}
 		}
 		return false;

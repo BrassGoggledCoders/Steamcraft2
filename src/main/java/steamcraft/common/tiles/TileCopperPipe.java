@@ -545,14 +545,7 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 	@SideOnly(Side.CLIENT)
 	private boolean areDirectionsOpposite(ForgeDirection dir1, ForgeDirection dir2)
 	{
-		if((dir1 == ForgeDirection.UP) && (dir2 == ForgeDirection.DOWN))
-			return true;
-		if((dir1 == ForgeDirection.SOUTH) && (dir2 == ForgeDirection.NORTH))
-			return true;
-		if((dir1 == ForgeDirection.EAST) && (dir2 == ForgeDirection.WEST))
-			return true;
-
-		return false;
+		return (dir1 == ForgeDirection.UP && dir2 == ForgeDirection.DOWN) || (dir1 == ForgeDirection.SOUTH && dir2 == ForgeDirection.NORTH) || (dir1 == ForgeDirection.EAST && dir2 == ForgeDirection.WEST);
 	}
 
 	@Override

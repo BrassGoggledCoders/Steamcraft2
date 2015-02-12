@@ -32,9 +32,7 @@ public class SlotModule extends Slot
 	@Override
 	public boolean isItemValid(ItemStack stack)
 	{
-		if(stack.getItem() instanceof IArmorModule)
-			return true;
-		return false;
+		return stack.getItem() instanceof IArmorModule;
 	}
 
 	@Override

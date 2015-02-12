@@ -141,10 +141,7 @@ public class ItemSteamJetpack extends BaseArmor
 	{
 		ItemCanister canister = (ItemCanister) stack.getItem();
 
-		if(canister.getFluidAmount(stack) <= this.steamPerTick)
-			return true;
-		else
-			return false;
+		return canister.getFluidAmount(stack) <= this.steamPerTick;
 	}
 
 	protected boolean hasCanister(EntityPlayer player)

@@ -27,10 +27,7 @@ public class WorldGenFissurePortal extends WorldGenerator
 	{
 		Block check = world.getBlock(i, j, k);
 
-		if(/* check == Blocks.stone || */check == Blocks.bedrock)
-			return true;
-		else
-			return false;
+		return /* check == Blocks.stone || */check == Blocks.bedrock;
 	}
 
 	public WorldGenFissurePortal()

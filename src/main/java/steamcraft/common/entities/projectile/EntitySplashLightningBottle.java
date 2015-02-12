@@ -372,7 +372,7 @@ public class EntitySplashLightningBottle extends EntityThrowable
 			this.worldObj.playAuxSFX(2002, (int) Math.round(this.posX), (int) Math.round(this.posY), (int) Math.round(this.posZ), 0);
 			this.setDead();
 		}
-	};
+	}
 
 	/**
 	 * (abstract) Protected helper method to write subclass entity data to NBT.

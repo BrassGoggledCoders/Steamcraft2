@@ -115,7 +115,7 @@ public class BlockBoulder extends BaseBlock
 		else
 		{
 			Material material = block.getMaterial();
-			return material == Material.water ? true : material == Material.lava;
+			return material == Material.water || material == Material.lava;
 		}
 	}
 

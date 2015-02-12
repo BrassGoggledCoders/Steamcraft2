@@ -42,10 +42,7 @@ public class BlockCopperPipeRenderer implements ISimpleBlockRenderingHandler
 		// te.blockType = block;
 		te.blockMetadata = metadata;
 
-		for(int i = 0; i < ForgeDirection.VALID_DIRECTIONS.length; i++)
-		{
-			te.connections[i] = ForgeDirection.VALID_DIRECTIONS[i];
-		}
+		System.arraycopy(ForgeDirection.VALID_DIRECTIONS, 0, te.connections, 0, ForgeDirection.VALID_DIRECTIONS.length);
 
 		TileEntityRendererDispatcher.instance.renderTileEntityAt(te, 0.0D, 0.0D, 0.0D, 0.0F);
 		GL11.glEnable(32826);

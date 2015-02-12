@@ -112,10 +112,7 @@ public class TileIntake extends TileEntity implements IFluidHandler
 	@Override
 	public boolean canDrain(ForgeDirection from, Fluid fluid)
 	{
-		if(fluid == FluidRegistry.WATER)
-			return true;
-
-		return false;
+		return fluid == FluidRegistry.WATER;
 	}
 
 	@Override

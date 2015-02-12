@@ -33,9 +33,7 @@ public class SlotVanity extends Slot
 	@Override
 	public boolean isItemValid(ItemStack stack)
 	{
-		if(stack.getItem() instanceof IVanityItem)
-			return true;
-		return false;
+		return stack.getItem() instanceof IVanityItem;
 	}
 
 	@Override

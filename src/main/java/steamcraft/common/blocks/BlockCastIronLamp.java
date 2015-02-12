@@ -159,9 +159,7 @@ public class BlockCastIronLamp extends BlockContainer
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(World world, int x, int j, int z, Random random)
 	{
-		if(!this.powered)
-			return;
-		else
+		if(this.powered)
 		{
 			int l = world.getBlockMetadata(x, j, z);
 			double d = x + 0.5F + ((random.nextFloat() - 0.5F) * 0.20000000000000001D);

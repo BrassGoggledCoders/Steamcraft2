@@ -41,12 +41,12 @@ public class EntityPlayerExtended implements IExtendedEntityProperties
 		this.player = player;
 	}
 
-	public static final void register(final EntityPlayer player)
+	public static void register(final EntityPlayer player)
 	{
 		player.registerExtendedProperties(EntityPlayerExtended.EXT_PROP_NAME, new EntityPlayerExtended(player));
 	}
 
-	public static final EntityPlayerExtended get(final EntityPlayer player)
+	public static EntityPlayerExtended get(final EntityPlayer player)
 	{
 		return (EntityPlayerExtended) player.getExtendedProperties(EXT_PROP_NAME);
 	}

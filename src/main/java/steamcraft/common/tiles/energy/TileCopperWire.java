@@ -82,7 +82,7 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 
 	private static void writeDirectionToNBT(NBTTagCompound tag, ForgeDirection dir)
 	{
-		byte index = -1;;
+		byte index = -1;
 
 		if(dir != null)
 			switch(dir)

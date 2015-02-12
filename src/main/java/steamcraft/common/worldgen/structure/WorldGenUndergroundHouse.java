@@ -25,10 +25,7 @@ public class WorldGenUndergroundHouse extends WorldGenerator
 	{
 		Block check = world.getBlock(i, j, k);
 
-		if(check == Blocks.stone)
-			return true;
-		else
-			return false;
+		return check == Blocks.stone;
 	}
 
 	public WorldGenUndergroundHouse()

@@ -142,10 +142,7 @@ public class ItemModTool extends BaseItem
 
 	protected boolean isSteampowered()
 	{
-		if((this.toolMaterial == MaterialHelper.TOOL_STEAM) || (this.toolMaterial == MaterialHelper.DRILL_STEAM))
-			return true;
-		else
-			return false;
+		return (this.toolMaterial == MaterialHelper.TOOL_STEAM) || (this.toolMaterial == MaterialHelper.DRILL_STEAM);
 	}
 
 	@Override
@@ -158,7 +155,7 @@ public class ItemModTool extends BaseItem
 	public boolean getIsRepairable(ItemStack stack1, ItemStack stack2)
 	{
 		Item item = stack2.getItem();
-		return this.toolMaterial.getRepairItemStack().getItem() == item ? true : super.getIsRepairable(stack1, stack2);
+		return this.toolMaterial.getRepairItemStack().getItem() == item || super.getIsRepairable(stack1, stack2);
 	}
 
 	@Override
@@ -209,10 +206,7 @@ public class ItemModTool extends BaseItem
 	{
 		ItemCanister canister = (ItemCanister) stack.getItem();
 
-		if(canister.getFluidAmount(stack) <= steamForRepair)
-			return true;
-		else
-			return false;
+		return canister.getFluidAmount(stack) <= steamForRepair;
 	}
 
 	protected boolean hasCanister(EntityPlayer player)

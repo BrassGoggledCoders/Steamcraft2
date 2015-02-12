@@ -61,10 +61,7 @@ public class ItemSpringHeels extends BaseArmorModule
 	public boolean applyModuleEffect(World world, EntityPlayer player, ItemStack stack)
 	{
 		player.stepHeight = 1F;
-		if(player.isCollidedHorizontally)
-			return true;
-		else
-			return false;
+		return player.isCollidedHorizontally;
 	}
 
 	@Override

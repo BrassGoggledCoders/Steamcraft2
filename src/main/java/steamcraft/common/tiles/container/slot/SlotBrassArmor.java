@@ -33,9 +33,7 @@ public class SlotBrassArmor extends Slot
 	@Override
 	public boolean isItemValid(ItemStack stack)
 	{
-		if(stack.getItem() instanceof ItemBrassArmor)
-			return true;
-		return false;
+		return stack.getItem() instanceof ItemBrassArmor;
 	}
 
 	@Override

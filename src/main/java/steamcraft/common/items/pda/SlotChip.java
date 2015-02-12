@@ -31,9 +31,7 @@ public class SlotChip extends Slot
 	@Override
 	public boolean isItemValid(ItemStack stack)
 	{
-		if(stack.getItem() instanceof ItemChip)
-			return true;
-		return false;
+		return stack.getItem() instanceof ItemChip;
 	}
 
 	@Override

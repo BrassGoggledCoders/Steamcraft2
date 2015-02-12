@@ -64,12 +64,7 @@ public class ItemPistonBoots extends BaseArmorModule
 	public boolean applyModuleEffect(World world, EntityPlayer player, ItemStack stack)
 	{
 		player.addPotionEffect(new PotionEffect(Potion.jump.id, 20, 2));
-		if(Keyboard.isKeyDown(Keyboard.KEY_SPACE))
-		{
-			return true;
-		}
-		else
-			return false;
+		return Keyboard.isKeyDown(Keyboard.KEY_SPACE);// TODO use proxy to check if jump keybinding is pressed
 	}
 
 	@Override

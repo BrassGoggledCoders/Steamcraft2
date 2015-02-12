@@ -57,10 +57,7 @@ public abstract class PDATabs
 		if(p_i1853_1_ >= tabArray.length)
 		{
 			PDATabs[] tmp = new PDATabs[p_i1853_1_ + 1];
-			for(int x = 0; x < tabArray.length; x++)
-			{
-				tmp[x] = tabArray[x];
-			}
+			System.arraycopy(tabArray, 0, tmp, 0, tabArray.length);
 			tabArray = tmp;
 		}
 		this.tabIndex = p_i1853_1_;

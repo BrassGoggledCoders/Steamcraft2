@@ -117,9 +117,7 @@ public class TileTurbine extends TileEntity implements IFluidHandler, IEnergyPro
 	@Override
 	public boolean canFill(ForgeDirection from, Fluid fluid)
 	{
-		if((fluid == FluidRegistry.getFluid("steam")) && (from != ForgeDirection.DOWN))
-			return true;
-		return false;
+		return (fluid == FluidRegistry.getFluid("steam")) && (from != ForgeDirection.DOWN);
 	}
 
 	@Override
@@ -137,10 +135,7 @@ public class TileTurbine extends TileEntity implements IFluidHandler, IEnergyPro
 	@Override
 	public boolean canConnectEnergy(ForgeDirection from)
 	{
-		if(from == ForgeDirection.DOWN)
-			return true;
-		else
-			return false;
+		return from == ForgeDirection.DOWN;
 	}
 
 	@Override
