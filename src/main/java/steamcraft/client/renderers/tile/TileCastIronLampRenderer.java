@@ -18,12 +18,11 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
-
-import boilerplate.client.ClientHelper;
 import steamcraft.client.renderers.models.ModelCastIronLampSide;
 import steamcraft.client.renderers.models.ModelCastIronLampTop;
 import steamcraft.common.init.InitBlocks;
 import steamcraft.common.lib.ModInfo;
+import boilerplate.client.ClientHelper;
 
 /**
  * @author Surseance

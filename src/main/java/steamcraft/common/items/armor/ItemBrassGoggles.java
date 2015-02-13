@@ -18,14 +18,14 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-import boilerplate.client.ClientHelper;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 import org.lwjgl.opengl.GL11;
-
 import steamcraft.common.init.InitItems;
 import steamcraft.common.lib.ModInfo;
+import boilerplate.client.ClientHelper;
 
 /**
  * @author Surseance

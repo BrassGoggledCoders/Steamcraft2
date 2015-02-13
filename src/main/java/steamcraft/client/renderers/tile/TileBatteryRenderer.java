@@ -13,16 +13,14 @@
 package steamcraft.client.renderers.tile;
 
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
-import net.minecraft.entity.Entity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
 import org.lwjgl.opengl.GL11;
-
-import boilerplate.client.ClientHelper;
 import steamcraft.client.renderers.models.ModelBattery;
 import steamcraft.common.lib.ModInfo;
+import boilerplate.client.ClientHelper;
 
 /**
  * @author warlordjones

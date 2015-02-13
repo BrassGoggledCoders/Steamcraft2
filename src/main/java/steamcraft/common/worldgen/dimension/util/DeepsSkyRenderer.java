@@ -20,14 +20,15 @@ import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Vec3;
-import boilerplate.client.ClientHelper;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+
 import net.minecraftforge.client.IRenderHandler;
 
 import org.lwjgl.opengl.GL11;
-
 import steamcraft.common.lib.ModInfo;
+import boilerplate.client.ClientHelper;
 
 public class DeepsSkyRenderer extends IRenderHandler
 {
