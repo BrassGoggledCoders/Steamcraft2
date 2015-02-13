@@ -493,7 +493,15 @@ public class InitBlocks
 	private static void registerBlock(Block block, Class<? extends ItemBlock> itemblock, String name)
 	{
 		if(block.isOpaqueCube() && !Arrays.asList(blacklist).contains(name) && !block.hasTileEntity(0))
-			FMPCompatHandler.registerMetaFMP(block);
+			try
+			{
+				FMPCompatHandler.registerMetaFMP(block, itemblock.newInstance().getMaxDamage());
+			}
+			catch(InstantiationException | IllegalAccessException e)
+			{
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 
 		GameRegistry.registerBlock(block, itemblock, name);
 	}
