@@ -414,10 +414,17 @@ public class InitRecipes
 				Items.ender_pearl, 'R', Items.redstone));
 
 		GameRegistry.addRecipe(new ItemStack(InitBlocks.blockPath), "XS", "SX", 'S', Blocks.sand, 'X', Blocks.gravel);
-		GameRegistry.addRecipe(new ItemStack(InitItems.itemShieldedCanister), "XXX", "XUX", "XXX", 'X',
+		GameRegistry.addRecipe(new ItemStack(InitItems.itemEmptyShieldedCanister), "XXX", "X X", "XXX", 'X',
 				new ItemStack(InitItems.itemSheet, 1, 7),
 				'U', new ItemStack(InitItems.itemResource, 1, 5));
+		GameRegistry.addShapelessRecipe(new ItemStack(InitItems.itemShieldedCanister),
+				InitItems.itemEmptyShieldedCanister,
+				new ItemStack(InitItems.itemResource, 1, 5));
 		GameRegistry.addShapelessRecipe(new ItemStack(InitItems.itemResource, 1, 5), InitItems.itemShieldedCanister);
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockCastIronLamp), new Object[] { "III", "PGP", "PRP", 'I', "ingotCastIron", 'P',
+				"plateCastIron", 'G', Blocks.glowstone, 'R', "partCastIronRod" }));
+		GameRegistry.addShapelessRecipe(new ItemStack(InitBlocks.blockInvertedCastIronLamp),
+				new Object[] { InitBlocks.blockCastIronLamp, Blocks.redstone_torch });
 	}
 
 	private static void initializeSmeltingRecipes()
@@ -435,7 +442,7 @@ public class InitRecipes
 		// Misc
 		GameRegistry.addSmelting(Blocks.iron_block, new ItemStack(InitBlocks.blockMetal, 1, 7), 0.5F);
 		GameRegistry.addSmelting(Items.iron_ingot, new ItemStack(InitItems.itemIngot, 1, 7), 0.2F);
-		GameRegistry.addSmelting(new ItemStack(InitItems.itemResource, 1, 5), new ItemStack(InitItems.itemResource, 1, 4), 0.5F);
+		GameRegistry.addSmelting(new ItemStack(InitItems.itemResource, 1, 4), new ItemStack(InitItems.itemResource, 1, 5), 0.5F);
 
 		GameRegistry.addSmelting(new ItemStack(InitBlocks.blockSlate, 1, 3), new ItemStack(InitBlocks.blockSlate, 1, 0), 0.3F);
 		GameRegistry.addSmelting(new ItemStack(InitBlocks.blockSlate, 1, 4), new ItemStack(InitBlocks.blockSlate, 1, 1), 0.3F);

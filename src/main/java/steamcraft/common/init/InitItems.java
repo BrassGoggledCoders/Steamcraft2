@@ -208,7 +208,7 @@ public class InitItems
 
 	public static Item itemCoin;
 
-	public static Item itemShieldedCanister;
+	public static Item itemShieldedCanister, itemEmptyShieldedCanister;
 
 	/* Init */
 	public static void init()
@@ -561,7 +561,10 @@ public class InitItems
 		itemCoin = new ItemCoin().setUnlocalizedName("itemCoin");
 		registerItem(itemCoin, "ItemCoin");
 
-		itemShieldedCanister = new BaseItem().setUnlocalizedName("itemShieldedCanister");
+		itemEmptyShieldedCanister = new BaseItem().setUnlocalizedName("itemEmptyShieldedCanister");
+		registerItem(itemEmptyShieldedCanister, "ItemEmptyShieldedCanister");
+
+		itemShieldedCanister = new BaseItem().setUnlocalizedName("itemFullShieldedCanister").setContainerItem(InitItems.itemEmptyShieldedCanister);
 		registerItem(itemShieldedCanister, "ItemShieldedCanister");
 	}
 
