@@ -28,12 +28,13 @@ import cpw.mods.fml.relauncher.SideOnly;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.init.InitBlocks;
 import steamcraft.common.lib.ModInfo;
+import boilerplate.common.baseclasses.BaseMetadataBlock;
 
 /**
  * @author warlordjones
  * 
  */
-public class BlockPolishedPlanks extends BaseBlock
+public class BlockPolishedPlanks extends BaseMetadataBlock
 {
 	public IIcon[] icon = new IIcon[3];
 
