@@ -51,7 +51,6 @@ import steamcraft.client.renderers.models.ModelGrub;
 import steamcraft.client.renderers.tile.TileArmorEditorRenderer;
 import steamcraft.client.renderers.tile.TileBatteryRenderer;
 import steamcraft.client.renderers.tile.TileCastIronLampRenderer;
-import steamcraft.client.renderers.tile.TileCastIronLampRenderer.TileCastIronLamp;
 import steamcraft.client.renderers.tile.TileChargerRenderer;
 import steamcraft.client.renderers.tile.TileCopperPipeRenderer;
 import steamcraft.client.renderers.tile.TileCopperWireRenderer;
@@ -79,6 +78,7 @@ import steamcraft.common.entities.projectile.EntityRocket;
 import steamcraft.common.entities.projectile.EntitySplashLightningBottle;
 import steamcraft.common.init.InitItems;
 import steamcraft.common.tiles.EmptyTiles;
+import steamcraft.common.tiles.EmptyTiles.TileCastIronLamp;
 import steamcraft.common.tiles.TileArmorEditor;
 import steamcraft.common.tiles.TileCopperPipe;
 import steamcraft.common.tiles.energy.TileBattery;
@@ -170,7 +170,7 @@ public class ClientProxy extends CommonProxy
 		// Cast Iron Railing
 		RenderingRegistry.registerBlockHandler(new BlockRailingRenderer());
 		// Cast Iron Lamp
-		ClientRegistry.bindTileEntitySpecialRenderer(TileCastIronLamp.class, new TileCastIronLampRenderer());
+		ClientRegistry.bindTileEntitySpecialRenderer(EmptyTiles.TileCastIronLamp.class, new TileCastIronLampRenderer());
 		RenderingRegistry.registerBlockHandler(new BlockCastIronLampRenderer());
 		// Hatch
 		ClientRegistry.bindTileEntitySpecialRenderer(TileHatch.class, new TileHatchRenderer());

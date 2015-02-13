@@ -70,12 +70,11 @@ public class TileCastIronLampRenderer extends TileEntitySpecialRenderer
 
 		GL11.glTranslatef(0.0F, -0.3125F, -0.4375F);
 
-		// Renders the textures based on torch state
-		if(block == InitBlocks.blockCastIronLampOn)
+		if(block == InitBlocks.blockCastIronLampOn || block == InitBlocks.blockInvertedCastIronLamp)
 		{
 			ClientHelper.textureManager().bindTexture(lampOn);
 		}
-		else if(block == InitBlocks.blockCastIronLamp)
+		else if(block == InitBlocks.blockCastIronLamp || block == InitBlocks.blockInvertedCastIronLampOff)
 		{
 			ClientHelper.textureManager().bindTexture(lampOff);
 		}
@@ -103,13 +102,5 @@ public class TileCastIronLampRenderer extends TileEntitySpecialRenderer
 		GL11.glDepthMask(true);
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 		GL11.glPopMatrix();
-	}
-
-	public static class TileCastIronLamp extends TileEntity
-	{
-		public TileCastIronLamp()
-		{
-
-		}
 	}
 }

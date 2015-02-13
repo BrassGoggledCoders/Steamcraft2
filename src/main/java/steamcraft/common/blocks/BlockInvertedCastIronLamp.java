@@ -28,17 +28,16 @@ import steamcraft.client.lib.RenderIDs;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.init.InitBlocks;
 import steamcraft.common.tiles.EmptyTiles;
-import steamcraft.common.tiles.EmptyTiles.TileCastIronLamp;
 
 /**
  * @author Surseance
  * 
  */
-public class BlockCastIronLamp extends BlockContainer
+public class BlockInvertedCastIronLamp extends BlockContainer
 {
 	public boolean powered;
 
-	public BlockCastIronLamp(boolean powered)
+	public BlockInvertedCastIronLamp(boolean powered)
 	{
 		super(Material.circuits);
 		this.powered = powered;
@@ -125,13 +124,13 @@ public class BlockCastIronLamp extends BlockContainer
 	{
 		if(!world.isRemote)
 		{
-			if(this.powered && !world.isBlockIndirectlyGettingPowered(x, y, z))
+			if(!this.powered && !world.isBlockIndirectlyGettingPowered(x, y, z))
 			{
 				world.scheduleBlockUpdate(x, y, z, this, 4);
-				world.setBlock(x, y, z, InitBlocks.blockCastIronLamp, world.getBlockMetadata(x, y, z), 2);
+				world.setBlock(x, y, z, InitBlocks.blockInvertedCastIronLamp, world.getBlockMetadata(x, y, z), 2);
 			}
-			else if(!this.powered && world.isBlockIndirectlyGettingPowered(x, y, z))
-				world.setBlock(x, y, z, InitBlocks.blockCastIronLampOn, world.getBlockMetadata(x, y, z), 2);
+			else if(this.powered && world.isBlockIndirectlyGettingPowered(x, y, z))
+				world.setBlock(x, y, z, InitBlocks.blockInvertedCastIronLampOff, world.getBlockMetadata(x, y, z), 2);
 		}
 	}
 
@@ -140,13 +139,13 @@ public class BlockCastIronLamp extends BlockContainer
 	{
 		if(!world.isRemote)
 		{
-			if(this.powered && !world.isBlockIndirectlyGettingPowered(x, y, z))
+			if(!this.powered && !world.isBlockIndirectlyGettingPowered(x, y, z))
 			{
 				world.scheduleBlockUpdate(x, y, z, this, 4);
-				world.setBlock(x, y, z, InitBlocks.blockCastIronLamp, world.getBlockMetadata(x, y, z), 2);
+				world.setBlock(x, y, z, InitBlocks.blockInvertedCastIronLamp, world.getBlockMetadata(x, y, z), 2);
 			}
-			else if(!this.powered && world.isBlockIndirectlyGettingPowered(x, y, z))
-				world.setBlock(x, y, z, InitBlocks.blockCastIronLampOn, world.getBlockMetadata(x, y, z), 2);
+			else if(this.powered && world.isBlockIndirectlyGettingPowered(x, y, z))
+				world.setBlock(x, y, z, InitBlocks.blockInvertedCastIronLampOff, world.getBlockMetadata(x, y, z), 2);
 		}
 	}
 

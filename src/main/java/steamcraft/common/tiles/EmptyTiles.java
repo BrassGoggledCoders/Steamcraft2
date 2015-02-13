@@ -13,4 +13,12 @@ public class EmptyTiles
 		}
 	}
 
+	public static class TileCastIronLamp extends TileEntity
+	{
+		public TileCastIronLamp()
+		{
+	
+		}
+	}
+
 }

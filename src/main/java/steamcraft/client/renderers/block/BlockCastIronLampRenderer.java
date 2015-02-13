@@ -21,7 +21,8 @@ import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 
 import org.lwjgl.opengl.GL11;
 import steamcraft.client.lib.RenderIDs;
-import steamcraft.client.renderers.tile.TileCastIronLampRenderer.TileCastIronLamp;
+import steamcraft.common.tiles.EmptyTiles;
+import steamcraft.common.tiles.EmptyTiles.TileCastIronLamp;
 
 /**
  * @author Surseance
@@ -35,7 +36,7 @@ public class BlockCastIronLampRenderer implements ISimpleBlockRenderingHandler
 	{
 		GL11.glRotatef(90.0F, 0.0F, 1.0F, 0.0F);
 		GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
-		TileCastIronLamp te = new TileCastIronLamp();
+		EmptyTiles.TileCastIronLamp te = new EmptyTiles.TileCastIronLamp();
 		te.blockMetadata = 0;
 		te.blockType = block;
 		TileEntityRendererDispatcher.instance.renderTileEntityAt(te, te.xCoord, te.yCoord, te.zCoord, 0.0F);

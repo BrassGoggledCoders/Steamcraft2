@@ -23,7 +23,6 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 
-import steamcraft.client.renderers.tile.TileCastIronLampRenderer.TileCastIronLamp;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.blocks.BaseBlock;
 import steamcraft.common.blocks.BlockBoulder;
@@ -47,6 +46,7 @@ import steamcraft.common.blocks.BlockFluidSteam;
 import steamcraft.common.blocks.BlockHatch;
 import steamcraft.common.blocks.BlockInfestedDirt;
 import steamcraft.common.blocks.BlockInfestedGrass;
+import steamcraft.common.blocks.BlockInvertedCastIronLamp;
 import steamcraft.common.blocks.BlockLamp;
 import steamcraft.common.blocks.BlockLeafPile;
 import steamcraft.common.blocks.BlockMetal;
@@ -106,7 +106,7 @@ public class InitBlocks
 	public static Block blockEngraved, blockEngravedVanilla;
 
 	// Cast Iron
-	public static Block blockCastIronLamp, blockCastIronLampOn;
+	public static Block blockCastIronLamp, blockCastIronLampOn, blockInvertedCastIronLamp, blockInvertedCastIronLampOff;
 	public static Block blockCastIronFence, blockCastIronGate, blockCastIronRailing;
 
 	public static Block blockLamp, blockLampOn;
@@ -226,8 +226,14 @@ public class InitBlocks
 		blockCastIronLamp = new BlockCastIronLamp(false).setBlockName("blockCastIronLamp");
 		blockCastIronLampOn = new BlockCastIronLamp(true).setBlockName("blockCastIronLampOn");
 
-		RegistryHelper.registerContainerBlock(blockCastIronLamp, TileCastIronLamp.class, "BlockCastIronLamp");
-		RegistryHelper.registerContainerBlock(blockCastIronLampOn, TileCastIronLamp.class, "BlockCastIronLampOn");
+		blockInvertedCastIronLamp = new BlockInvertedCastIronLamp(true).setBlockName("blockInvertedCastIronLamp");
+		blockInvertedCastIronLampOff = new BlockInvertedCastIronLamp(false).setBlockName("blockInvertedCastIronLampOff");
+
+		RegistryHelper.registerContainerBlock(blockCastIronLamp, EmptyTiles.TileCastIronLamp.class, "BlockCastIronLamp");
+		RegistryHelper.registerContainerBlock(blockCastIronLampOn, EmptyTiles.TileCastIronLamp.class, "BlockCastIronLampOn");
+
+		RegistryHelper.registerContainerBlock(blockInvertedCastIronLamp, EmptyTiles.TileCastIronLamp.class, "BlockInvertedCastIronLamp");
+		RegistryHelper.registerContainerBlock(blockInvertedCastIronLampOff, EmptyTiles.TileCastIronLamp.class, "BlockInvertedCastIronLampOff");
 
 		blockCastIronFence = new BlockCastIronFence().setBlockName("blockCastIronFence");
 		blockCastIronGate = new BlockCastIronGate().setBlockName("blockCastIronGate");
