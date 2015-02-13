@@ -200,15 +200,15 @@ public class InitBlocks
 		blockCustomOre = new BlockSteamcraftOre().setBlockName("blockSteamcraftOre");
 		blockSlate = new BlockSlate().setBlockName("blockSlate");
 
-		registerBlock(blockCustomOre, BaseItemBlockWithMetadata.class, "BlockSteamcraftOre");
-		registerBlock(blockSlate, BaseItemBlockWithMetadata.class, "BlockSlate");
+		registerBlock(blockCustomOre, BaseItemBlockWithMetadata.class, "BlockSteamcraftOre", 7);
+		registerBlock(blockSlate, BaseItemBlockWithMetadata.class, "BlockSlate", 9);
 
 		// Metals
 		blockMetal = new BlockMetal().setBlockName("blockMetal");
 		blockUranium = new BlockUranium(Material.iron).setBlockName("blockUranium");
 		blockEtherium = new BlockEtherium(Material.iron).setBlockName("blockEtherium");
 
-		registerBlock(blockMetal, BaseItemBlockWithMetadata.class, "BlockMetal");
+		registerBlock(blockMetal, BaseItemBlockWithMetadata.class, "BlockMetal", 8);
 		registerBlock(blockUranium, "BlockUranium");
 		registerBlock(blockEtherium, "BlockEtherium");
 	}
@@ -219,8 +219,8 @@ public class InitBlocks
 		blockEngraved = new BlockEngravedSolid().setBlockName("blockEngravedSolid");
 		blockEngravedVanilla = new BlockEngravedVanilla().setBlockName("blockEngravedVanilla");
 
-		registerBlock(blockEngraved, BaseItemBlockWithMetadata.class, "BlockEngravedSolid");
-		registerBlock(blockEngravedVanilla, BaseItemBlockWithMetadata.class, "BlockEngravedVanilla");
+		registerBlock(blockEngraved, BaseItemBlockWithMetadata.class, "BlockEngravedSolid", 10);
+		registerBlock(blockEngravedVanilla, BaseItemBlockWithMetadata.class, "BlockEngravedVanilla", 10);
 
 		// Cast Iron
 		blockCastIronLamp = new BlockCastIronLamp(false).setBlockName("blockCastIronLamp");
@@ -400,7 +400,7 @@ public class InitBlocks
 		registerBlock(blockMoss, "BlockMoss");
 
 		blockPolishedPlanks = new BlockPolishedPlanks().setBlockName("blockPolishedPlanks");
-		registerBlock(blockPolishedPlanks, BaseItemBlockWithMetadata.class, "BlockPolishedPlanks");
+		registerBlock(blockPolishedPlanks, BaseItemBlockWithMetadata.class, "BlockPolishedPlanks", 3);
 
 		blockRedwoodLog = new BlockCustomLog("Redwood").setBlockName("blockRedwoodLog");
 		registerBlock(blockRedwoodLog, "BlockRedwoodLog");
@@ -490,18 +490,10 @@ public class InitBlocks
 		GameRegistry.registerBlock(block, name);
 	}
 
-	private static void registerBlock(Block block, Class<? extends ItemBlock> itemblock, String name)
+	private static void registerBlock(Block block, Class<? extends ItemBlock> itemblock, String name, int maxMeta)
 	{
 		if(block.isOpaqueCube() && !Arrays.asList(blacklist).contains(name) && !block.hasTileEntity(0))
-			try
-			{
-				FMPCompatHandler.registerMetaFMP(block, itemblock.newInstance().getMaxDamage());
-			}
-			catch(InstantiationException | IllegalAccessException e)
-			{
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			FMPCompatHandler.registerMetaFMP(block, maxMeta);
 
 		GameRegistry.registerBlock(block, itemblock, name);
 	}
