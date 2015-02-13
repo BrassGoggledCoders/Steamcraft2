@@ -220,7 +220,7 @@ public class InitBlocks
 		blockEngravedVanilla = new BlockEngravedVanilla().setBlockName("blockEngravedVanilla");
 
 		registerBlock(blockEngraved, BaseItemBlockWithMetadata.class, "BlockEngravedSolid", 10);
-		registerBlock(blockEngravedVanilla, BaseItemBlockWithMetadata.class, "BlockEngravedVanilla", 10);
+		registerBlock(blockEngravedVanilla, BaseItemBlockWithMetadata.class, "BlockEngravedVanilla", 5);
 
 		// Cast Iron
 		blockCastIronLamp = new BlockCastIronLamp(false).setBlockName("blockCastIronLamp");
