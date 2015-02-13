@@ -1,5 +1,5 @@
 /**
- * This class was created by BrassGoggledCoders modding team. 
+ * This class was created by BrassGoggledCoders modding team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -8,11 +8,10 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- * 
+ *
  */
 package steamcraft.client.gui;
 
-import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
@@ -26,15 +25,15 @@ import steamcraft.common.tiles.container.ContainerBloomery;
  * @author warlordjones
  * 
  */
-public class GuiBloomery extends GuiContainer
+public class GuiBloomery extends BaseContainerGui
 {
 	private static final ResourceLocation furnaceGuiTextures = new ResourceLocation(ModInfo.PREFIX + "textures/gui/bloomery.png");
-	private TileBloomery tileFurnace;
+	private TileBloomery tileFurnace = (TileBloomery) tile;
 
 	public GuiBloomery(InventoryPlayer par1InventoryPlayer, TileBloomery par2TileEntityFurnace)
 	{
 		super(new ContainerBloomery(par1InventoryPlayer, par2TileEntityFurnace));
-		this.tileFurnace = par2TileEntityFurnace;
+		this.tile = par2TileEntityFurnace;
 	}
 
 	@Override

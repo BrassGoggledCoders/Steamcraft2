@@ -525,4 +525,11 @@ lore.steamcraft2.0.page1=Want to Contribute to this mod? Enjoy writing steampunk
 #TiCon Material
 material.etherium=Etherium
 
-
+#Tooltips
+armoreditor.slot.0.tooltip=Add modules
+armoreditor.slot.1.tooltip=Remove modules
+armoreditor.slot.2.tooltip=Module
+battery.slot.0.tooltip=Electric Jars go here
+battery.slot.1.tooltip=Electric Jars go here
+battery.slot.2.tooltip=Electric Jars go here
+battery.slot.3.tooltip=Electric Jars go here

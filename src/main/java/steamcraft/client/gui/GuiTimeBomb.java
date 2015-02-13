@@ -41,12 +41,12 @@ public class GuiTimeBomb extends GuiContainer
 	private EntityPlayer player;
 	private GuiTimeBomb.ChangeButton timeChangeButton;
 
-	private TileTimeBomb tile;
+	private TileTimeBomb bomb;
 
 	public GuiTimeBomb(InventoryPlayer inv, TileTimeBomb tile)
 	{
 		super(new ContainerTimeBomb(inv, tile));
-		this.tile = tile;
+		this.bomb = tile;
 		this.container = (ContainerTimeBomb) this.inventorySlots;
 		this.player = inv.player;
 	}
@@ -85,7 +85,7 @@ public class GuiTimeBomb extends GuiContainer
 		this.text.setDisabledTextColour(-1);
 		this.text.setEnableBackgroundDrawing(false);
 		this.text.setMaxStringLength(4);
-		this.text.setText(String.valueOf(this.tile.getTime()));
+		this.text.setText(String.valueOf(this.bomb.getTime()));
 	}
 
 	@Override
@@ -116,7 +116,7 @@ public class GuiTimeBomb extends GuiContainer
 		if(s.length() == 4)
 			// {
 			// this.container.updateTime(s);
-			InitPackets.network.sendToServer(new TimeBombPacket(Integer.parseInt(s), this.tile.xCoord, this.tile.yCoord, this.tile.zCoord,
+			InitPackets.network.sendToServer(new TimeBombPacket(Integer.parseInt(s), this.bomb.xCoord, this.bomb.yCoord, this.bomb.zCoord,
 					this.player.dimension));
 		// }
 		// this.mc.thePlayer.sendQueue.addToSendQueue(new

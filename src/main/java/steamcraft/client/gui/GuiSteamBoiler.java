@@ -14,7 +14,6 @@ package steamcraft.client.gui;
 
 import java.util.ArrayList;
 
-import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -35,11 +34,11 @@ import boilerplate.client.utils.GuiColors;
  * @author decebaldecebal
  * 
  */
-public class GuiSteamBoiler extends GuiContainer
+public class GuiSteamBoiler extends BaseContainerGui
 {
 	private static ResourceLocation guitexture = new ResourceLocation(ModInfo.PREFIX + "textures/gui/steamboiler.png");
 
-	private TileSteamBoiler tile;
+	private TileSteamBoiler boiler = (TileSteamBoiler) tile;
 
 	public GuiSteamBoiler(InventoryPlayer player, TileSteamBoiler tile)
 	{
@@ -56,14 +55,14 @@ public class GuiSteamBoiler extends GuiContainer
 		this.mc.renderEngine.bindTexture(guitexture);
 		this.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize);
 
-		if(this.tile.isBurning())
+		if(this.boiler.isBurning())
 		{
-			int burnTime = this.tile.getBurnTimeRemainingScaled(12);
+			int burnTime = this.boiler.getBurnTimeRemainingScaled(12);
 			this.drawTexturedModalRect(this.guiLeft + 43, (this.guiTop + 48) - burnTime, 176, 12 - burnTime, 14, burnTime + 2);
 		}
 
-		this.drawFluid(new FluidStack(FluidRegistry.getFluid("water"), 0), this.tile.getScaledWaterLevel(60), this.guiLeft + 8, this.guiTop + 18, 20, 60);
-		this.drawFluid(new FluidStack(FluidRegistry.getFluid("steam"), 0), this.tile.getScaledSteamLevel(60), this.guiLeft + 74, this.guiTop + 18, 32, 60);
+		this.drawFluid(new FluidStack(FluidRegistry.getFluid("water"), 0), this.boiler.getScaledWaterLevel(60), this.guiLeft + 8, this.guiTop + 18, 20, 60);
+		this.drawFluid(new FluidStack(FluidRegistry.getFluid("steam"), 0), this.boiler.getScaledSteamLevel(60), this.guiLeft + 74, this.guiTop + 18, 32, 60);
 
 		this.mc.renderEngine.bindTexture(guitexture);
 		this.drawTexturedModalRect(this.guiLeft + 8, this.guiTop + 24, 176, 14, 20, 49);
@@ -75,9 +74,9 @@ public class GuiSteamBoiler extends GuiContainer
 	{
 		if(((y - this.guiTop) >= 18) && ((y - this.guiTop) <= 78))
 			if(((x - this.guiLeft) >= 8) && ((x - this.guiLeft) <= 28))
-				this.drawFluidInfo(this.tile.waterTank, x, y);
+				this.drawFluidInfo(this.boiler.waterTank, x, y);
 			else if(((x - this.guiLeft) >= 74) && ((x - this.guiLeft) <= 106))
-				this.drawFluidInfo(this.tile.steamTank, x, y);
+				this.drawFluidInfo(this.boiler.steamTank, x, y);
 	}
 
 	private void drawFluidInfo(FluidTank tank, int x, int y)

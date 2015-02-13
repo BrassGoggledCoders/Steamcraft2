@@ -12,7 +12,6 @@
  */
 package steamcraft.client.gui;
 
-import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
 
@@ -27,11 +26,11 @@ import steamcraft.common.tiles.energy.TileCharger;
  * @author decebaldecebal
  * 
  */
-public class GuiCharger extends GuiContainer
+public class GuiCharger extends BaseContainerGui
 {
 	private static ResourceLocation guitexture = new ResourceLocation(ModInfo.PREFIX + "textures/gui/charger.png");
 
-	private TileCharger tile;
+	private TileCharger charger = (TileCharger) tile;
 
 	public GuiCharger(InventoryPlayer inventory, TileCharger tile2)
 	{
@@ -48,7 +47,7 @@ public class GuiCharger extends GuiContainer
 		this.mc.renderEngine.bindTexture(guitexture);
 		this.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize);
 
-		int var8 = this.tile.getEnergyScaled(16);
+		int var8 = this.charger.getEnergyScaled(16);
 		this.drawTexturedModalRect(this.guiLeft + 12, (this.guiTop + 64) - var8, 176, 56 - var8, 16, var8 + 1);
 	}
 
@@ -58,8 +57,8 @@ public class GuiCharger extends GuiContainer
 		this.drawString(this.fontRendererObj, "Energy: ", 26, 10, -1);
 		this.drawString(
 				this.fontRendererObj,
-				this.getEnergyUnits(this.tile.getEnergyStored(ForgeDirection.UNKNOWN)) + "/"
-						+ this.getEnergyUnits(this.tile.getMaxEnergyStored(ForgeDirection.UNKNOWN)) + " RF", 30, 20, -1);
+				this.getEnergyUnits(this.charger.getEnergyStored(ForgeDirection.UNKNOWN)) + "/"
+						+ this.getEnergyUnits(this.charger.getMaxEnergyStored(ForgeDirection.UNKNOWN)) + " RF", 30, 20, -1);
 
 		this.drawString(this.fontRendererObj, "Transfer: ", 26, 30, -1);
 		this.drawString(this.fontRendererObj, TileCharger.transferRate + " RF", 30, 40, -1);
