@@ -1,7 +1,6 @@
 package steamcraft.common.lib;
 
 import java.util.HashMap;
-import java.util.Map;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -20,7 +19,7 @@ import net.minecraftforge.event.entity.player.FillBucketEvent;
 public final class BucketHandler
 {
 
-	public static Map<Block, Item> buckets = new HashMap<Block, Item>();
+	public static final HashMap<Block, Item> BUCKETS = new HashMap<Block, Item>();
 
 	@SubscribeEvent
 	public void onBucketFill(FillBucketEvent event)
@@ -40,7 +39,7 @@ public final class BucketHandler
 	{
 		Block block = world.getBlock(pos.blockX, pos.blockY, pos.blockZ);
 
-		Item bucket = buckets.get(block);
+		Item bucket = BUCKETS.get(block);
 
 		if((bucket != null) && (world.getBlockMetadata(pos.blockX, pos.blockY, pos.blockZ) == 0))
 		{

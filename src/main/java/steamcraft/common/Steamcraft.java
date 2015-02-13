@@ -89,8 +89,8 @@ public class Steamcraft
 		InitBlocks.init();
 		InitItems.init();
 
-		BucketHandler.buckets.put(InitBlocks.blockBoilingMud, InitItems.itemBoilingMudBucket);
-		BucketHandler.buckets.put(InitBlocks.blockBoilingWater, InitItems.itemBoilingWaterBucket);
+		BucketHandler.BUCKETS.put(InitBlocks.blockBoilingMud, InitItems.itemBoilingMudBucket);
+		BucketHandler.BUCKETS.put(InitBlocks.blockBoilingWater, InitItems.itemBoilingWaterBucket);
 		MinecraftForge.EVENT_BUS.register(new BucketHandler());
 
 		CompatabilityLayer.initCompatItems();
