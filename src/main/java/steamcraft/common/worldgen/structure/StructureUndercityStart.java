@@ -24,13 +24,13 @@ public class StructureUndercityStart extends StructureStart
 	{
 	}
 
-	public StructureUndercityStart(World p_i2039_1_, Random p_i2039_2_, int p_i2039_3_, int p_i2039_4_)
+	public StructureUndercityStart(World world, Random rand, int chunkX, int chunkZ)
 	{
-		super(p_i2039_3_, p_i2039_4_);
-		StructureUndercityPieces.Room room = new StructureUndercityPieces.Room(0, p_i2039_2_, (p_i2039_3_ << 4) + 2, (p_i2039_4_ << 4) + 2);
+		super(chunkX, chunkZ);
+		StructureUndercityPieces.Room room = new StructureUndercityPieces.Room(0, rand, (chunkX << 4) + 2, (chunkZ << 4) + 2);
 		this.components.add(room);
-		room.buildComponent(room, this.components, p_i2039_2_);
+		room.buildComponent(room, this.components, rand);
 		this.updateBoundingBox();
-		this.markAvailableHeight(p_i2039_1_, p_i2039_2_, 10);
+		this.markAvailableHeight(world, rand, 10);
 	}
 }

@@ -56,7 +56,6 @@ import steamcraft.common.lib.events.EventHandlerFML;
 import steamcraft.common.lib.events.EventHandlerForge;
 import steamcraft.common.worldgen.WorldGenSteamcraft;
 import steamcraft.common.worldgen.dimension.WorldProviderDeeps;
-import steamcraft.common.worldgen.structure.MapGenWitchHut;
 import steamcraft.common.worldgen.structure.StructureUndercityPieces;
 import steamcraft.common.worldgen.structure.StructureUndercityStart;
 import boilerplate.common.compathandler.FMPCompatHandler;
@@ -115,11 +114,10 @@ public class Steamcraft
 		FMLCommonHandler.instance().bus().register(new EventHandlerFML());
 		FMLCommonHandler.instance().bus().register(new EventHandlerClient());
 
-		// TODO
 		MapGenStructureIO.registerStructure(StructureUndercityStart.class, ModInfo.ID + "Undercity");
 		StructureUndercityPieces.registerStructurePieces();
 
-		MapGenStructureIO.registerStructure(MapGenWitchHut.Start.class, ModInfo.ID + "WitchHut");
+		// MapGenStructureIO.registerStructure(MapGenWitchHut.Start.class, ModInfo.ID + "WitchHut");
 
 		if(ConfigWorldGen.generationEnabled)
 			GameRegistry.registerWorldGenerator(new WorldGenSteamcraft(), 1);

@@ -14,7 +14,6 @@ package steamcraft.common.items.modules;
 
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
@@ -61,9 +60,12 @@ public class ItemEmergencyTank extends BaseArmorModule
 	@Override
 	public boolean applyModuleEffect(World world, EntityPlayer player, ItemStack stack)
 	{
-		if(player.isBurning() && world.isAirBlock((int) Math.round(player.posX), (int) Math.round(player.posY), (int) Math.round(player.posZ)))
+		if(player.isBurning())
 		{
-			world.setBlock((int) Math.round(player.posX), (int) Math.round(player.posY), (int) Math.round(player.posZ), Blocks.flowing_water, 2, 2);
+			player.extinguish();
+			for(int i = 0; i < 10; i++)
+				world.spawnParticle("splash", player.posX + world.rand.nextFloat(), player.posY + world.rand.nextFloat(), player.posZ + world.rand.nextFloat(),
+						0 + world.rand.nextFloat(), 0 + world.rand.nextFloat(), 0 + world.rand.nextFloat());
 			return true;
 		}
 		return false;

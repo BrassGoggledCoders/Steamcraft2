@@ -20,8 +20,6 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.item.EntityMinecartChest;
 import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
-import net.minecraft.item.Item;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntityMobSpawner;
@@ -30,6 +28,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.gen.structure.MapGenStructureIO;
 import net.minecraft.world.gen.structure.StructureBoundingBox;
 import net.minecraft.world.gen.structure.StructureComponent;
+import net.minecraft.world.gen.structure.StructureMineshaftPieces;
 
 import net.minecraftforge.common.ChestGenHooks;
 
@@ -38,14 +37,7 @@ import steamcraft.common.lib.ModInfo;
 public class StructureUndercityPieces
 {
 	/** List of contents that can generate in Undercitys. */
-	public static final WeightedRandomChestContent[] UndercityChestContents = new WeightedRandomChestContent[] {
-			new WeightedRandomChestContent(Items.iron_ingot, 0, 1, 5, 10), new WeightedRandomChestContent(Items.gold_ingot, 0, 1, 3, 5),
-			new WeightedRandomChestContent(Items.redstone, 0, 4, 9, 5), new WeightedRandomChestContent(Items.dye, 4, 4, 9, 5),
-			new WeightedRandomChestContent(Items.diamond, 0, 1, 2, 3), new WeightedRandomChestContent(Items.coal, 0, 3, 8, 10),
-			new WeightedRandomChestContent(Items.bread, 0, 1, 3, 15), new WeightedRandomChestContent(Items.iron_pickaxe, 0, 1, 1, 1),
-			new WeightedRandomChestContent(Item.getItemFromBlock(Blocks.rail), 0, 4, 8, 1), new WeightedRandomChestContent(Items.melon_seeds, 0, 2, 4, 10),
-			new WeightedRandomChestContent(Items.pumpkin_seeds, 0, 2, 4, 10), new WeightedRandomChestContent(Items.saddle, 0, 1, 1, 3),
-			new WeightedRandomChestContent(Items.iron_horse_armor, 0, 1, 1, 1) };
+	public static final WeightedRandomChestContent[] UndercityChestContents = StructureMineshaftPieces.mineshaftChestContents;
 
 	public static void registerStructurePieces()
 	{
@@ -55,37 +47,37 @@ public class StructureUndercityPieces
 		MapGenStructureIO.func_143031_a(StructureUndercityPieces.Stairs.class, ModInfo.ID + "UCStairs");
 	}
 
-	private static StructureComponent getRandomComponent(List p_78815_0_, Random p_78815_1_, int p_78815_2_, int p_78815_3_, int p_78815_4_, int p_78815_5_,
+	private static StructureComponent getRandomComponent(List componentList, Random rand, int p_78815_2_, int p_78815_3_, int p_78815_4_, int p_78815_5_,
 			int p_78815_6_)
 	{
-		int j1 = p_78815_1_.nextInt(100);
+		int j1 = rand.nextInt(100);
 		StructureBoundingBox structureboundingbox;
 
 		if(j1 >= 80)
 		{
-			structureboundingbox = StructureUndercityPieces.Cross.findValidPlacement(p_78815_0_, p_78815_1_, p_78815_2_, p_78815_3_, p_78815_4_, p_78815_5_);
+			structureboundingbox = StructureUndercityPieces.Cross.findValidPlacement(componentList, rand, p_78815_2_, p_78815_3_, p_78815_4_, p_78815_5_);
 
 			if(structureboundingbox != null)
 			{
-				return new StructureUndercityPieces.Cross(p_78815_6_, p_78815_1_, structureboundingbox, p_78815_5_);
+				return new StructureUndercityPieces.Cross(p_78815_6_, rand, structureboundingbox, p_78815_5_);
 			}
 		}
 		else if(j1 >= 70)
 		{
-			structureboundingbox = StructureUndercityPieces.Stairs.findValidPlacement(p_78815_0_, p_78815_1_, p_78815_2_, p_78815_3_, p_78815_4_, p_78815_5_);
+			structureboundingbox = StructureUndercityPieces.Stairs.findValidPlacement(componentList, rand, p_78815_2_, p_78815_3_, p_78815_4_, p_78815_5_);
 
 			if(structureboundingbox != null)
 			{
-				return new StructureUndercityPieces.Stairs(p_78815_6_, p_78815_1_, structureboundingbox, p_78815_5_);
+				return new StructureUndercityPieces.Stairs(p_78815_6_, rand, structureboundingbox, p_78815_5_);
 			}
 		}
 		else
 		{
-			structureboundingbox = StructureUndercityPieces.Corridor.findValidPlacement(p_78815_0_, p_78815_1_, p_78815_2_, p_78815_3_, p_78815_4_, p_78815_5_);
+			structureboundingbox = StructureUndercityPieces.Corridor.findValidPlacement(componentList, rand, p_78815_2_, p_78815_3_, p_78815_4_, p_78815_5_);
 
 			if(structureboundingbox != null)
 			{
-				return new StructureUndercityPieces.Corridor(p_78815_6_, p_78815_1_, structureboundingbox, p_78815_5_);
+				return new StructureUndercityPieces.Corridor(p_78815_6_, rand, structureboundingbox, p_78815_5_);
 			}
 		}
 
@@ -119,12 +111,10 @@ public class StructureUndercityPieces
 
 	public static class Corridor extends StructureComponent
 	{
-		private boolean hasRails;
 		private boolean hasSpiders;
 		private boolean spawnerPlaced;
 		/** A count of the different sections of this mine. The space between ceiling supports. */
 		private int sectionCount;
-		private static final String __OBFID = "CL_00000445";
 
 		public Corridor()
 		{
@@ -133,7 +123,6 @@ public class StructureUndercityPieces
 		@Override
 		protected void func_143012_a(NBTTagCompound p_143012_1_)
 		{
-			p_143012_1_.setBoolean("hr", this.hasRails);
 			p_143012_1_.setBoolean("sc", this.hasSpiders);
 			p_143012_1_.setBoolean("hps", this.spawnerPlaced);
 			p_143012_1_.setInteger("Num", this.sectionCount);
@@ -142,7 +131,6 @@ public class StructureUndercityPieces
 		@Override
 		protected void func_143011_b(NBTTagCompound p_143011_1_)
 		{
-			this.hasRails = p_143011_1_.getBoolean("hr");
 			this.hasSpiders = p_143011_1_.getBoolean("sc");
 			this.spawnerPlaced = p_143011_1_.getBoolean("hps");
 			this.sectionCount = p_143011_1_.getInteger("Num");
@@ -153,8 +141,7 @@ public class StructureUndercityPieces
 			super(p_i2035_1_);
 			this.coordBaseMode = p_i2035_4_;
 			this.boundingBox = p_i2035_3_;
-			this.hasRails = p_i2035_2_.nextInt(3) == 0;
-			this.hasSpiders = !this.hasRails && (p_i2035_2_.nextInt(23) == 0);
+			this.hasSpiders = (p_i2035_2_.nextInt(23) == 0);
 
 			if((this.coordBaseMode != 2) && (this.coordBaseMode != 0))
 			{
@@ -472,19 +459,6 @@ public class StructureUndercityPieces
 					}
 				}
 
-				if(this.hasRails)
-				{
-					for(j = 0; j <= i; ++j)
-					{
-						Block block = this.getBlockAtCurrentPosition(p_74875_1_, 1, -1, j, p_74875_3_);
-
-						if((block.getMaterial() != Material.air) && block.func_149730_j())
-						{
-							this.func_151552_a(p_74875_1_, p_74875_3_, p_74875_2_, 0.7F, 1, 0, j, Blocks.rail, this.getMetadataWithOffset(Blocks.rail, 0));
-						}
-					}
-				}
-
 				return true;
 			}
 		}
@@ -494,7 +468,6 @@ public class StructureUndercityPieces
 	{
 		private int corridorDirection;
 		private boolean isMultipleFloors;
-		private static final String __OBFID = "CL_00000446";
 
 		public Cross()
 		{
@@ -690,7 +663,6 @@ public class StructureUndercityPieces
 	{
 		/** List of other Undercity components linked to this room. */
 		private List roomsLinkedToTheRoom = new LinkedList();
-		private static final String __OBFID = "CL_00000447";
 
 		public Room()
 		{
@@ -860,7 +832,6 @@ public class StructureUndercityPieces
 
 	public static class Stairs extends StructureComponent
 	{
-		private static final String __OBFID = "CL_00000449";
 
 		public Stairs()
 		{
