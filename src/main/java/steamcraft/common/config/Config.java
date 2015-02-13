@@ -24,11 +24,11 @@ public class Config
 	public static File configGen;
 	public static File configBalance;
 
-	public static void initialise(String configPath)
+	public static void initialise(File configFolder)
 	{
-		configGeneral = new File(configPath + "general.cfg");
-		configGen = new File(configPath + "generation.cfg");
-		configBalance = new File(configPath + "balance.cfg");
+		configGeneral = new File(configFolder, "general.cfg");
+		configGen = new File(configFolder, "generation.cfg");
+		configBalance = new File(configFolder, "balance.cfg");
 
 		ConfigGeneral.initialize(configGeneral);
 		ConfigWorldGen.initialize(configGen);

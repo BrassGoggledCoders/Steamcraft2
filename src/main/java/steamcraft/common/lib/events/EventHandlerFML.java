@@ -38,6 +38,7 @@ import steamcraft.common.items.armor.ItemClockworkWings;
 import steamcraft.common.items.armor.ItemSteamJetpack;
 import steamcraft.common.items.electric.ItemRayGun;
 import steamcraft.common.items.electric.ItemShrinkray;
+import steamcraft.common.lib.ModInfo;
 
 /**
  * @author warlordjones
@@ -165,7 +166,7 @@ public class EventHandlerFML
 	@SubscribeEvent
 	public void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent eventArgs)
 	{
-		if(eventArgs.modID.equals("testmod"))
-			Config.initialise(Steamcraft.configPath);
+		if(eventArgs.modID.equals(ModInfo.ID))
+			Config.initialise(Steamcraft.configFolder);
 	}
 }

@@ -12,6 +12,8 @@
  */
 package steamcraft.common;
 
+import java.io.File;
+
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.world.gen.structure.MapGenStructureIO;
 
@@ -74,15 +76,15 @@ public class Steamcraft
 
 	public static CreativeTabs tabSC2 = new CreativeTabSteamcraft(CreativeTabs.getNextID(), "steamcraft");
 
-	public static String configPath;
+	public static File configFolder;
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{
 		LoggerSteamcraft.info("Starting Preinit");
 
-		configPath = event.getModConfigurationDirectory() + "/sc2/";
-		Config.initialise(configPath);
+		configFolder = new File(event.getModConfigurationDirectory(), "sc2");
+		Config.initialise(configFolder);
 
 		InitBlocks.init();
 		InitItems.init();
