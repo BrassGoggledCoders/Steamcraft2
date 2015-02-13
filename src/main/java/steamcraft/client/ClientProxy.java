@@ -101,18 +101,15 @@ public class ClientProxy extends CommonProxy
 	public static final HashMap<String, KeyBinding> keyBindings = new HashMap();
 
 	@Override
-	public void registerDisplayInformation()
+	public void init()
 	{
-	}
-
-	@Override
-	public void registerRenderers()
-	{
+		super.init();
+		//this.registerDisplayInformation();
 		this.registerBlockRenderers();
 		this.registerEntityRenderers();
+		this.registerKeys();
 	}
 
-	@Override
 	public void registerKeys()
 	{
 		keyBindings.put("vanity", new KeyBinding("key.vanity.desc", Keyboard.KEY_V, "key.steamcraft.category"));
@@ -220,15 +217,11 @@ public class ClientProxy extends CommonProxy
 	{
 		switch(id)
 		{
-			case 0:
-				return new ModelBrassWings(1.0F);
 			case 1:
 				return new ModelBrassWings(0.5F);
 			default:
-				break;
+				return new ModelBrassWings(1.0F);
 		}
-
-		return new ModelBrassWings(1.0F);
 	}
 
 	@Override
@@ -236,15 +229,11 @@ public class ClientProxy extends CommonProxy
 	{
 		switch(id)
 		{
-			case 0:
-				return new ModelJetpack(1.0F);
 			case 1:
 				return new ModelJetpack(0.5F);
 			default:
-				break;
+				return new ModelJetpack(1.0F);
 		}
-
-		return new ModelJetpack(1.0F);
 	}
 
 	@Override
@@ -252,15 +241,11 @@ public class ClientProxy extends CommonProxy
 	{
 		switch(id)
 		{
-			case 0:
-				return new ModelWingpack(1.0F);
 			case 1:
 				return new ModelWingpack(0.5F);
 			default:
-				break;
+				return new ModelWingpack(1.0F);
 		}
-
-		return new ModelWingpack(1.0F);
 	}
 
 	@Override
@@ -271,11 +256,8 @@ public class ClientProxy extends CommonProxy
 			case 0:
 				return ClientHelper.settings().keyBindJump.getIsKeyPressed();
 			default:
-				break;
-
+				return false;
 		}
-
-		return false;
 	}
 
 	@Override

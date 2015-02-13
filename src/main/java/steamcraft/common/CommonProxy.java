@@ -25,22 +25,7 @@ import net.minecraft.world.World;
  */
 public class CommonProxy
 {
-	void init()
-	{
-		this.registerDisplayInformation();
-		this.registerRenderers();
-		this.registerKeys();
-	}
-
-	public void registerDisplayInformation()
-	{
-	}
-
-	public void registerRenderers()
-	{
-	}
-
-	public void registerKeys()
+	public void init()
 	{
 	}
 
