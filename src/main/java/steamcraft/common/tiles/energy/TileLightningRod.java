@@ -39,8 +39,9 @@ import steamcraft.common.init.InitBlocks;
  */
 public class TileLightningRod extends TileEntity implements IEnergyProvider
 {
+	private static final ArrayList<EntityLightningBolt> unnaturalLightningBolts = new ArrayList<EntityLightningBolt>();
+	private static Class weather2Class;
 	private final EnergyStorage buffer = new EnergyStorage(30000, 10000);
-	private final ArrayList<EntityLightningBolt> unnaturalLightningBolts = new ArrayList<EntityLightningBolt>();
 
 	@Override
 	public void updateEntity()
@@ -56,7 +57,7 @@ public class TileLightningRod extends TileEntity implements IEnergyProvider
 			if(chance == 0)
 			{
 				EntityLightningBolt lightningBolt = new EntityLightningBolt(this.worldObj, this.xCoord, this.yCoord, this.zCoord);
-				this.unnaturalLightningBolts.add(lightningBolt);
+				unnaturalLightningBolts.add(lightningBolt);
 				this.worldObj.addWeatherEffect(lightningBolt);
 				this.buffer.receiveEnergy(ConfigBalance.lightningRodEnergyProduction, false);
 				isLightningSpawned = true;
@@ -74,7 +75,7 @@ public class TileLightningRod extends TileEntity implements IEnergyProvider
 
 			for(Object obj : list)
 			{
-				if(this.unnaturalLightningBolts.remove(obj))
+				if(unnaturalLightningBolts.remove(obj))
 					continue;
 				this.buffer.receiveEnergy(ConfigBalance.lightningRodEnergyProduction, false);
 			}
@@ -82,20 +83,28 @@ public class TileLightningRod extends TileEntity implements IEnergyProvider
 
 		if(ConfigGeneral.weather2LightningStrikes)
 		{
-			try
+			if(weather2Class == null)
+			{
+				try
+				{
+					weather2Class = Class.forName("weather2.entity.EntityLightningBolt");
+				}
+				catch(ClassNotFoundException exception)
+				{
+				}
+			}
+			
+			if(weather2Class != null)
 			{
 				AxisAlignedBB axisalignedbb = AxisAlignedBB.getBoundingBox((double) this.xCoord - 1, (double) this.yCoord - 1,
 						(double) this.zCoord - 1, this.xCoord + 1, this.yCoord + 1, this.zCoord + 1);
-				List list = this.worldObj.getEntitiesWithinAABB(Class.forName("weather2.entity.EntityLightningBolt"), axisalignedbb);
+				List list = this.worldObj.getEntitiesWithinAABB(weather2Class, axisalignedbb);
 
 				if(!list.isEmpty())
 					isLightningSpawned = true;
 
 				for(Object obj : list)
 					this.buffer.receiveEnergy(ConfigBalance.lightningRodEnergyProduction, false);
-			}
-			catch(ClassNotFoundException exception)
-			{
 			}
 		}
 
