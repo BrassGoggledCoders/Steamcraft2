@@ -102,48 +102,37 @@ import boilerplate.common.utils.helpers.RegistryHelper;
  */
 public class InitItems
 {
-	// Item Tools(sort of)
-	public static Item itemResource, itemIngot, itemSheet, itemPowder, itemVanillaPowder, itemVanillaSheet;
+	// Metals
+	public static Item itemResource, itemIngot, itemSheet, itemPowder, itemVanillaPowder, itemVanillaSheet, itemNugget;
 
-	public static Item itemWatch;
+	// Tea
+	public static Item itemTeaSeed, itemTeaLeaf;
+	public static Item itemColdKettle, itemHotKettle, itemEmptyKettle, itemTeapot;
+	public static Item itemEmptyTeacup, itemFullTeacup, itemTeacup;
 
-	public static Item itemTeaSeed;
-
-	public static Item itemChisel;
-
-	public static Item itemTeaLeaf, itemSlimeRubber;
-
-	/* Armor */
-
-	// Jetpacks
+	// Armor
 	public static Item itemClockworkWings;
 	public static Item itemSteamJetpack;
 	public static Item itemSteamWingpack;
 
-	// Brass
 	public static Item helmetBrass, chestplateBrass, legsBrass, bootsBrass;
-	public static Item brassGoggles, itemDivingHelmet, itemMonocle;
 
-	// Etherium
 	public static Item helmetEtherium, chestplateEtherium, legsEtherium, bootsEtherium;
 
-	// Obsidian
 	public static Item helmetObsidian, chestplateObsidian, legsObsidian, bootsObsidian;
 
-	// Drills
-	public static Item drillCore, drillBase;
-	public static Item drillWood, drillStone, drillIron, drillDiamond, drillGold, drillSteam, drillEtherium, drillObsidian;
+	public static Item brassGoggles, itemDivingHelmet, itemMonocle;
 
-	/* Tools */
+	// Tools
+	public static Item drillCore, drillBase, drillWood, drillStone, drillIron, drillDiamond, drillGold, drillSteam, drillEtherium, drillObsidian;
 
-	// Steam
 	public static Item pickaxeSteam, swordSteam, shovelSteam, axeSteam, hoeSteam;
 
-	// Etherium
 	public static Item pickaxeEtherium, swordEtherium, shovelEtherium, axeEtherium, hoeEtherium;
 
-	// Obsidian
 	public static Item pickaxeObsidian, swordObsidian, shovelObsidian, axeObsidian, hoeObsidian;
+
+	public static Item itemSpanner, itemHammer, itemDrawplate, itemGrindstone;
 
 	// Containers
 	public static Item itemCanisterSteam;
@@ -157,58 +146,41 @@ public class InitItems
 
 	public static Item itemMusketBall, itemRifleBullet, itemPercussionCap;
 
-	public static Item itemColdKettle, itemHotKettle, itemEmptyKettle;
-
-	public static Item itemEmptyTeacup, itemFullTeacup;
-
 	public static Item itemRayGun, itemShrinkray, itemLightningGun;
 
-	// Other
-	public static Item itemSpanner;
-	public static Item itemHammer, itemDrawplate, itemGrindstone;
+	public static Item itemClockworkRocketLauncher, itemRocket;
+
+	public static Item itemGrappleGun;
+
+	// Misc
+	public static Item itemWatch;
+	public static Item itemChisel;
+	public static Item itemSlimeRubber;
 	public static Item itemMatch;
-
-	public static Item itemNugget;
-
 	public static Item itemMachinePart, itemGunPart;
 	public static Item itemCopperParts, itemBrassParts, itemSteelParts, itemIronParts;
+	public static Item itemPDA;
+	public static Item itemTimeClock;
+	public static Item itemSpyglass;
+	public static Item itemLoreBook;
+	public static Item itemFieldManipulator;
+	public static Item itemCraftingChip;
+	public static Item itemSplashLightningBottle;
+	public static Item itemMonsterSpawner;
+	public static Item itemBoilingWaterBucket, itemBoilingMudBucket;
+	public static Item itemCoin;
+	public static Item itemShieldedCanister, itemEmptyShieldedCanister;
 
+	// Compat
+	public static Item itemThaumicMonocle, itemSteamcraftCluster;
+
+	// Vanity
 	public static Item itemTopHat;
 
 	// Modules
 	public static Item itemAqualung, itemPistonPlating, itemTank, itemWatchDisplay, itemClimbingSpikes
 			, itemLegBraces, itemSpringHeels, itemRollerSkates, itemParachute, itemFlippers, itemLifeVest,
 			itemPistonBoots, itemSteelPlating, itemLastResort, itemGogglesModule;
-
-	public static Item itemTeapot, itemTeacup;
-
-	public static Item itemGrappleGun;
-
-	public static Item itemClockworkRocketLauncher, itemRocket;
-
-	public static Item itemPDA;
-
-	public static Item itemTimeClock;
-
-	public static Item itemSpyglass;
-
-	public static Item itemLoreBook;
-
-	public static Item itemThaumicMonocle, itemSteamcraftCluster;
-
-	public static Item itemFieldManipulator;
-
-	public static Item itemCraftingChip;
-
-	public static Item itemSplashLightningBottle;
-
-	public static Item itemMonsterSpawner;
-
-	public static Item itemBoilingWaterBucket, itemBoilingMudBucket;
-
-	public static Item itemCoin;
-
-	public static Item itemShieldedCanister, itemEmptyShieldedCanister;
 
 	/* Init */
 	public static void init()
