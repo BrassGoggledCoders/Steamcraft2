@@ -66,8 +66,10 @@ public class CompatabilityLayer
 	private static void sendIMCMessages()
 	{
 		if(Loader.isModLoaded("VersionChecker"))
+		{
 			LoggerSteamcraft.info("Poking VersionChecker");
-		FMLInterModComms.sendRuntimeMessage(ModInfo.ID, "VersionChecker", "addVersionCheck", ModInfo.VERSION_URL);
+			FMLInterModComms.sendRuntimeMessage(ModInfo.ID, "VersionChecker", "addVersionCheck", ModInfo.VERSION_URL);
+		}
 		if(Loader.isModLoaded("TConstruct"))
 			sendTiConIMC();
 		if(Loader.isModLoaded("Thaumcraft"))
