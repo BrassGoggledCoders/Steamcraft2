@@ -202,16 +202,13 @@ public class CompatabilityLayer
 		String[] partType = new String[] { "Gear", "Sprocket", "Spring", "Thread",
 				"Nut", "Bolt", "Washer", "Bearing", "Screw", "Nail" };
 
-		for(int i = 0; i < 10; i++)
+		for(int i = 0; i < partType.length; i++)
 		{
 			OreDictHelper.registerOreWithAlts(InitItems.itemCopperParts, i, "partCopper" + partType[i], partType[i].toLowerCase() + "Copper");
 			OreDictHelper.registerOreWithAlts(InitItems.itemIronParts, i, "partIron" + partType[i], partType[i].toLowerCase() + "Iron");
 			OreDictHelper.registerOreWithAlts(InitItems.itemBrassParts, i, "partBrass" + partType[i], partType[i].toLowerCase() + "Brass");
 			OreDictHelper.registerOreWithAlts(InitItems.itemSteelParts, i, "partSteel" + partType[i], partType[i].toLowerCase() + "Steel");
-		}
-		// Part Utils
-		for(int i = 0; i < 10; i++)
-		{
+
 			OreDictHelper.registerOre("partTierOne", InitItems.itemCopperParts, i);
 			OreDictHelper.registerOre("partTierOne", InitItems.itemIronParts, i);
 			OreDictHelper.registerOre("partTierTwo", InitItems.itemBrassParts, i);
