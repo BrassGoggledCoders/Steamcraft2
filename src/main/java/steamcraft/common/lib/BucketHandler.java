@@ -20,12 +20,7 @@ import net.minecraftforge.event.entity.player.FillBucketEvent;
 public final class BucketHandler
 {
 
-	public static BucketHandler INSTANCE = new BucketHandler();
-	public Map<Block, Item> buckets = new HashMap<Block, Item>();
-
-	private BucketHandler()
-	{
-	}
+	public static Map<Block, Item> buckets = new HashMap<Block, Item>();
 
 	@SubscribeEvent
 	public void onBucketFill(FillBucketEvent event)
@@ -45,7 +40,7 @@ public final class BucketHandler
 	{
 		Block block = world.getBlock(pos.blockX, pos.blockY, pos.blockZ);
 
-		Item bucket = this.buckets.get(block);
+		Item bucket = buckets.get(block);
 
 		if((bucket != null) && (world.getBlockMetadata(pos.blockX, pos.blockY, pos.blockZ) == 0))
 		{
