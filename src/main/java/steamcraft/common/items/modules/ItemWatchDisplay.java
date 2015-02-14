@@ -83,7 +83,7 @@ public class ItemWatchDisplay extends PoweredArmorModule
 			ClientHelper.entityRenderer().setupOverlayRendering();
 			int color = 0xCCFF00;
 
-			final long mcTime = world.getTotalWorldTime();
+			final long mcTime = world.getWorldTime();
 			final Calendar cal = Calendar.getInstance();
 			cal.getTime();
 			final SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
@@ -95,7 +95,7 @@ public class ItemWatchDisplay extends PoweredArmorModule
 
 	private String getGeneralTime(long mcTime)
 	{
-		if(mcTime <= 0 && mcTime >= 12000)
+		if(mcTime >= 0 && mcTime <= 14000)
 			return "Day";
 		else
 			return "Night";
