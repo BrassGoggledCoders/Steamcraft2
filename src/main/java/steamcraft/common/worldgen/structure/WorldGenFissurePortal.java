@@ -1,5 +1,5 @@
 /**
- * This class was created by BrassGoggledCoders modding team. 
+ * This class was created by BrassGoggledCoders modding team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -8,7 +8,7 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- * 
+ *
  */
 package steamcraft.common.worldgen.structure;
 
@@ -42,7 +42,6 @@ public class WorldGenFissurePortal extends WorldGenerator
 	@Override
 	public boolean generate(World world, Random rand, int i, int j, int k)
 	{
-		// FMLLog.bigWarning("Gen at: " + i + j + k, "");
 		if(!this.locationIsValidSpawn(world, i, j, k))
 		{
 			return false;
@@ -173,6 +172,68 @@ public class WorldGenFissurePortal extends WorldGenerator
 		this.setBlock(world, i + 9, j + 2, k + 3, Blocks.bedrock, 0);
 		this.setBlock(world, i + 9, j + 3, k + 2, Blocks.bedrock, 0);
 		this.setBlock(world, i + 10, j + 1, k + 3, Blocks.bedrock, 0);
+		world.setBlockToAir(i + 1, j + 4, k + 7);
+		world.setBlockToAir(i + 2, j + 2, k + 6);
+		world.setBlockToAir(i + 2, j + 3, k + 6);
+		world.setBlockToAir(i + 2, j + 4, k + 5);
+		world.setBlockToAir(i + 2, j + 4, k + 6);
+		world.setBlockToAir(i + 2, j + 4, k + 8);
+		world.setBlockToAir(i + 3, j + 2, k + 5);
+		world.setBlockToAir(i + 3, j + 2, k + 6);
+		world.setBlockToAir(i + 3, j + 2, k + 7);
+		world.setBlockToAir(i + 3, j + 3, k + 5);
+		world.setBlockToAir(i + 3, j + 3, k + 6);
+		world.setBlockToAir(i + 3, j + 4, k + 3);
+		world.setBlockToAir(i + 3, j + 4, k + 4);
+		world.setBlockToAir(i + 3, j + 4, k + 6);
+		world.setBlockToAir(i + 3, j + 4, k + 7);
+		world.setBlockToAir(i + 4, j + 2, k + 4);
+		world.setBlockToAir(i + 4, j + 2, k + 5);
+		world.setBlockToAir(i + 4, j + 2, k + 6);
+		world.setBlockToAir(i + 4, j + 3, k + 4);
+		world.setBlockToAir(i + 4, j + 3, k + 5);
+		world.setBlockToAir(i + 4, j + 4, k + 1);
+		world.setBlockToAir(i + 4, j + 4, k + 2);
+		world.setBlockToAir(i + 4, j + 4, k + 4);
+		world.setBlockToAir(i + 4, j + 4, k + 5);
+		world.setBlockToAir(i + 4, j + 4, k + 6);
+		world.setBlockToAir(i + 4, j + 4, k + 7);
+		world.setBlockToAir(i + 4, j + 5, k + 4);
+		world.setBlockToAir(i + 4, j + 5, k + 5);
+		world.setBlockToAir(i + 4, j + 5, k + 6);
+		world.setBlockToAir(i + 5, j + 2, k + 3);
+		world.setBlockToAir(i + 5, j + 2, k + 4);
+		world.setBlockToAir(i + 5, j + 2, k + 5);
+		world.setBlockToAir(i + 5, j + 3, k + 3);
+		world.setBlockToAir(i + 5, j + 3, k + 4);
+		world.setBlockToAir(i + 5, j + 3, k + 5);
+		world.setBlockToAir(i + 5, j + 4, k + 1);
+		world.setBlockToAir(i + 5, j + 4, k + 2);
+		world.setBlockToAir(i + 5, j + 4, k + 3);
+		world.setBlockToAir(i + 5, j + 4, k + 4);
+		world.setBlockToAir(i + 5, j + 4, k + 5);
+		world.setBlockToAir(i + 5, j + 4, k + 7);
+		world.setBlockToAir(i + 5, j + 5, k + 3);
+		world.setBlockToAir(i + 5, j + 5, k + 4);
+		world.setBlockToAir(i + 6, j + 2, k + 2);
+		world.setBlockToAir(i + 6, j + 2, k + 3);
+		world.setBlockToAir(i + 6, j + 2, k + 4);
+		world.setBlockToAir(i + 6, j + 3, k + 2);
+		world.setBlockToAir(i + 6, j + 3, k + 3);
+		world.setBlockToAir(i + 6, j + 3, k + 4);
+		world.setBlockToAir(i + 6, j + 4, k + 0);
+		world.setBlockToAir(i + 6, j + 4, k + 1);
+		world.setBlockToAir(i + 6, j + 4, k + 2);
+		world.setBlockToAir(i + 6, j + 4, k + 3);
+		world.setBlockToAir(i + 6, j + 4, k + 5);
+		world.setBlockToAir(i + 6, j + 4, k + 6);
+		world.setBlockToAir(i + 7, j + 2, k + 2);
+		world.setBlockToAir(i + 7, j + 2, k + 3);
+		world.setBlockToAir(i + 7, j + 2, k + 4);
+		world.setBlockToAir(i + 7, j + 3, k + 3);
+		world.setBlockToAir(i + 7, j + 4, k + 1);
+		world.setBlockToAir(i + 7, j + 4, k + 5);
+		world.setBlockToAir(i + 8, j + 2, k + 3);
 
 		return true;
 	}
