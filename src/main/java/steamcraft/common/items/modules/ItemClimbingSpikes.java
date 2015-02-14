@@ -35,6 +35,7 @@ public class ItemClimbingSpikes extends BaseArmorModule
 	{
 		super();
 		ModuleRegistry.registerModule(this);
+		ModuleRegistry.setModuleIncompatibilities(this, "pistonboots");
 		this.setMaxStackSize(1);
 		this.setCreativeTab(Steamcraft.tabSC2);
 	}
