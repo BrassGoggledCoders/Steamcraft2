@@ -18,7 +18,6 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.world.World;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -78,28 +77,6 @@ public class ItemBrassFist extends ItemModTool
 		}
 
 		return is.getTagCompound();
-	}
-
-	private void doEffects(IFistModule module, World world, EntityPlayer player, ItemStack is)
-	{
-		if(module.getSteamConsumedOnEffect() > 0)
-		{
-			if(this.isSteamAvailable(player, module.getSteamConsumedOnEffect()))
-			{
-				if(module.applyModuleEffect(world, player, is))
-					this.consumeSteamFromCanister(player, module.getSteamConsumedOnEffect());
-			}
-		}
-		else if(module.getEnergyConsumedOnEffect() > 0)
-		{
-			if(this.isRFAvailable(player, module.getEnergyConsumedOnEffect()))
-			{
-				if(module.applyModuleEffect(world, player, is))
-					this.consumeRFFromJar(player, module.getEnergyConsumedOnEffect());
-			}
-		}
-		else
-			module.applyModuleEffect(world, player, is);
 	}
 
 	protected void consumeSteamFromCanister(EntityPlayer player, int steamToDrain)

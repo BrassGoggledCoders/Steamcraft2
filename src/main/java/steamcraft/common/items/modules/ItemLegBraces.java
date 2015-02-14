@@ -58,36 +58,20 @@ public class ItemLegBraces extends BaseArmorModule
 	}
 
 	@Override
-	public boolean applyModuleEffect(World world, EntityPlayer player, ItemStack stack)
+	public void applyModuleEffect(World world, EntityPlayer player, ItemStack stack)
 	{
 		final float distToFall = player.fallDistance;
 
 		if(distToFall > 3.0F)
 		{
 			player.fallDistance = distToFall * 0.888F;
-			return true;
 		}
-		return false;
 	}
 
 	@Override
 	public EnumArmorEffectType getArmorEffectType()
 	{
 		return EnumArmorEffectType.ONTICK;
-	}
-
-	@Override
-	public int getSteamConsumedOnEffect()
-	{
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int getEnergyConsumedOnEffect()
-	{
-		// TODO Auto-generated method stub
-		return 0;
 	}
 
 	@SideOnly(Side.CLIENT)

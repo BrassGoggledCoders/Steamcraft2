@@ -29,14 +29,13 @@ import cpw.mods.fml.relauncher.SideOnly;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.ModInfo;
 import boilerplate.client.ClientHelper;
-import boilerplate.common.baseclasses.BaseArmorModule;
 import boilerplate.steamapi.item.ModuleRegistry;
 
 /**
  * @author warlordjones
  * 
  */
-public class ItemWatchDisplay extends BaseArmorModule
+public class ItemWatchDisplay extends PoweredArmorModule
 {
 	public ItemWatchDisplay()
 	{
@@ -44,6 +43,7 @@ public class ItemWatchDisplay extends BaseArmorModule
 		ModuleRegistry.registerModule(this);
 		this.setMaxStackSize(1);
 		this.setCreativeTab(Steamcraft.tabSC2);
+		this.setRFToConsume(5);
 	}
 
 	@Override
@@ -65,14 +65,14 @@ public class ItemWatchDisplay extends BaseArmorModule
 	}
 
 	@Override
-	public boolean applyModuleEffect(World world, EntityPlayer player, ItemStack stack)
+	public void applyModuleEffect(World world, EntityPlayer player, ItemStack stack)
 	{
 		if((ClientHelper.player() == null) || (ClientHelper.screen() != null))
-			return false;
+			return;
 
 		ItemStack helmet = ClientHelper.player().inventory.armorItemInSlot(3);
 
-		if(ClientHelper.settings().thirdPersonView == 0)
+		if(ClientHelper.settings().thirdPersonView == 0 && doConsumption(player, stack))
 		{
 			Tessellator tessellator = Tessellator.instance;
 			ScaledResolution scaledResolution = ClientHelper.resolution();
@@ -90,28 +90,13 @@ public class ItemWatchDisplay extends BaseArmorModule
 
 			fontRenderer.drawString("In-Game Time: " + mcTime, 5, 5, color);
 			fontRenderer.drawString("Real-World Time: " + sdf.format(cal.getTime()), 5, 15, color);
-			return true;
 		}
-		return false;
 	}
 
 	@Override
 	public EnumArmorEffectType getArmorEffectType()
 	{
 		return EnumArmorEffectType.HUD;
-	}
-
-	@Override
-	public int getSteamConsumedOnEffect()
-	{
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int getEnergyConsumedOnEffect()
-	{
-		return 5;
 	}
 
 	@SideOnly(Side.CLIENT)

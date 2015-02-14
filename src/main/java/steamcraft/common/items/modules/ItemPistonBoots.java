@@ -22,7 +22,6 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-import org.lwjgl.input.Keyboard;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.ModInfo;
 import boilerplate.common.baseclasses.BaseArmorModule;
@@ -62,30 +61,15 @@ public class ItemPistonBoots extends BaseArmorModule
 	}
 
 	@Override
-	public boolean applyModuleEffect(World world, EntityPlayer player, ItemStack stack)
+	public void applyModuleEffect(World world, EntityPlayer player, ItemStack stack)
 	{
 		player.addPotionEffect(new PotionEffect(Potion.jump.id, 20, 2));
-		return Keyboard.isKeyDown(Keyboard.KEY_SPACE);// TODO use proxy to check if jump keybinding is pressed
 	}
 
 	@Override
 	public EnumArmorEffectType getArmorEffectType()
 	{
 		return EnumArmorEffectType.ONTICK;
-	}
-
-	@Override
-	public int getSteamConsumedOnEffect()
-	{
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int getEnergyConsumedOnEffect()
-	{
-		// TODO Auto-generated method stub
-		return 0;
 	}
 
 	@SideOnly(Side.CLIENT)

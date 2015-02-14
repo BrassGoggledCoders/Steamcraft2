@@ -59,7 +59,7 @@ public class ItemEmergencyTank extends BaseArmorModule
 	}
 
 	@Override
-	public boolean applyModuleEffect(World world, EntityPlayer player, ItemStack stack)
+	public void applyModuleEffect(World world, EntityPlayer player, ItemStack stack)
 	{
 		if(player.isBurning())
 		{
@@ -83,29 +83,13 @@ public class ItemEmergencyTank extends BaseArmorModule
 						}
 				}
 			}
-			return true;
 		}
-		return false;
 	}
 
 	@Override
 	public EnumArmorEffectType getArmorEffectType()
 	{
 		return EnumArmorEffectType.ONTICK;
-	}
-
-	@Override
-	public int getSteamConsumedOnEffect()
-	{
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int getEnergyConsumedOnEffect()
-	{
-		// TODO Auto-generated method stub
-		return 0;
 	}
 
 	@SideOnly(Side.CLIENT)

@@ -22,14 +22,13 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.ModInfo;
-import boilerplate.common.baseclasses.BaseArmorModule;
 import boilerplate.steamapi.item.ModuleRegistry;
 
 /**
  * @author warlordjones
  * 
  */
-public class ItemAqualung extends BaseArmorModule
+public class ItemAqualung extends PoweredArmorModule
 {
 	public ItemAqualung()
 	{
@@ -59,34 +58,18 @@ public class ItemAqualung extends BaseArmorModule
 	}
 
 	@Override
-	public boolean applyModuleEffect(World world, EntityPlayer player, ItemStack stack)
+	public void applyModuleEffect(World world, EntityPlayer player, ItemStack stack)
 	{
 		if(player.getAir() < 0)
 		{
 			player.setAir(300);
-			return true;
 		}
-		return false;
 	}
 
 	@Override
 	public EnumArmorEffectType getArmorEffectType()
 	{
 		return EnumArmorEffectType.ONTICK;
-	}
-
-	@Override
-	public int getSteamConsumedOnEffect()
-	{
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int getEnergyConsumedOnEffect()
-	{
-		// TODO Auto-generated method stub
-		return 0;
 	}
 
 	@SideOnly(Side.CLIENT)

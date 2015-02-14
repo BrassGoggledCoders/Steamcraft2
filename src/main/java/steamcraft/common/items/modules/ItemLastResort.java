@@ -58,31 +58,18 @@ public class ItemLastResort extends BaseArmorModule
 	}
 
 	@Override
-	public boolean applyModuleEffect(World world, EntityPlayer player, ItemStack stack)
+	public void applyModuleEffect(World world, EntityPlayer player, ItemStack stack)
 	{
 		if(player.getHealth() == 6F)
 		{
 			world.createExplosion(player, player.posX, player.posY, player.posZ, 3F, true);
 		}
-		return false;
 	}
 
 	@Override
 	public EnumArmorEffectType getArmorEffectType()
 	{
 		return EnumArmorEffectType.ONTICK;
-	}
-
-	@Override
-	public int getSteamConsumedOnEffect()
-	{
-		return 0;
-	}
-
-	@Override
-	public int getEnergyConsumedOnEffect()
-	{
-		return 0;
 	}
 
 	@SideOnly(Side.CLIENT)

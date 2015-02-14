@@ -58,35 +58,19 @@ public class ItemParachute extends BaseArmorModule
 	}
 
 	@Override
-	public boolean applyModuleEffect(World world, EntityPlayer player, ItemStack stack)
+	public void applyModuleEffect(World world, EntityPlayer player, ItemStack stack)
 	{
 		if(!player.onGround && (player.motionY < 0.0D) && (player.fallDistance > 5F))
 		{
 			player.motionY *= 0.8D;
 			player.fallDistance = 0.0F;
-			return true;
 		}
-		return false;
 	}
 
 	@Override
 	public EnumArmorEffectType getArmorEffectType()
 	{
 		return EnumArmorEffectType.ONTICK;
-	}
-
-	@Override
-	public int getSteamConsumedOnEffect()
-	{
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int getEnergyConsumedOnEffect()
-	{
-		// TODO Auto-generated method stub
-		return 0;
 	}
 
 	@SideOnly(Side.CLIENT)

@@ -18,10 +18,9 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
 import steamcraft.common.Steamcraft;
-import boilerplate.common.baseclasses.BaseArmorModule;
 import boilerplate.steamapi.item.ModuleRegistry;
 
-public class ItemWingpackModule extends BaseArmorModule
+public class ItemWingpackModule extends PoweredArmorModule
 {
 	public ItemWingpackModule()
 	{
@@ -30,6 +29,7 @@ public class ItemWingpackModule extends BaseArmorModule
 		ModuleRegistry.setModuleIncompatibilities(this, "pistonplating");
 		this.setMaxStackSize(1);
 		this.setCreativeTab(Steamcraft.tabSC2);
+		this.setRFToConsume(10);
 	}
 
 	@Override
@@ -51,7 +51,7 @@ public class ItemWingpackModule extends BaseArmorModule
 	}
 
 	@Override
-	public boolean applyModuleEffect(World world, EntityPlayer player, ItemStack stack)
+	public void applyModuleEffect(World world, EntityPlayer player, ItemStack stack)
 	{
 		if(!player.capabilities.allowFlying)
 		{
@@ -60,7 +60,7 @@ public class ItemWingpackModule extends BaseArmorModule
 
 			NBTTagCompound tag = stack.getTagCompound();
 
-			if(((player.posY < 200) && Steamcraft.proxy.isKeyPressed(0)))
+			if(player.posY < 200 && Steamcraft.proxy.isKeyPressed(0) && doConsumption(player, stack))
 			{
 
 				if(player.motionY > 0.0D)
@@ -69,17 +69,14 @@ public class ItemWingpackModule extends BaseArmorModule
 					player.motionY += 0.11699999910593033D;
 
 				world.spawnParticle("smoke", player.posX, player.posY - 0.25D, player.posZ, 0.0D, 0.0D, 0.0D);
-
-				return true;
 			}
 
-			if((player.motionY < 0.0D) && player.isSneaking())
+			if((player.motionY < 0.0D) && player.isSneaking() && doConsumption(player, stack))
 			{
 				player.motionY /= 1.4D;
 
 				player.motionX *= 1.05D;
 				player.motionZ *= 1.05D;
-				return true;
 			}
 
 			if(!player.onGround)
@@ -88,30 +85,16 @@ public class ItemWingpackModule extends BaseArmorModule
 				player.motionZ *= 1.04D;
 			}
 
-			if(player.fallDistance > 0.0F && !player.onGround)
+			if(player.fallDistance > 0.0F && !player.onGround && doConsumption(player, stack))
 			{
 				player.fallDistance = 0.0F;
-				return true;
 			}
 		}
-		return false;
 	}
 
 	@Override
 	public EnumArmorEffectType getArmorEffectType()
 	{
 		return EnumArmorEffectType.ONTICK;
-	}
-
-	@Override
-	public int getSteamConsumedOnEffect()
-	{
-		return 5;
-	}
-
-	@Override
-	public int getEnergyConsumedOnEffect()
-	{
-		return 0;
 	}
 }

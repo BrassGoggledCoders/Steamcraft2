@@ -24,14 +24,13 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.ModInfo;
-import boilerplate.common.baseclasses.BaseArmorModule;
 import boilerplate.steamapi.item.ModuleRegistry;
 
 /**
  * @author warlordjones
  * 
  */
-public class ItemGogglesModule extends BaseArmorModule
+public class ItemGogglesModule extends PoweredArmorModule
 {
 	public ItemGogglesModule()
 	{
@@ -39,6 +38,7 @@ public class ItemGogglesModule extends BaseArmorModule
 		ModuleRegistry.registerModule(this);
 		this.setMaxStackSize(1);
 		this.setCreativeTab(Steamcraft.tabSC2);
+		this.setRFToConsume(5);
 	}
 
 	@Override
@@ -60,29 +60,16 @@ public class ItemGogglesModule extends BaseArmorModule
 	}
 
 	@Override
-	public boolean applyModuleEffect(World world, EntityPlayer player, ItemStack stack)
+	public void applyModuleEffect(World world, EntityPlayer player, ItemStack stack)
 	{
-		player.addPotionEffect(new PotionEffect(Potion.nightVision.id, 3, 1, true));
-		return true;
+		if(this.doConsumption(player, stack))
+			player.addPotionEffect(new PotionEffect(Potion.nightVision.id, 3, 1, true));
 	}
 
 	@Override
 	public EnumArmorEffectType getArmorEffectType()
 	{
 		return EnumArmorEffectType.ONTICK;
-	}
-
-	@Override
-	public int getSteamConsumedOnEffect()
-	{
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int getEnergyConsumedOnEffect()
-	{
-		return 5;
 	}
 
 	@SideOnly(Side.CLIENT)

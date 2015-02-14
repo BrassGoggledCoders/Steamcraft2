@@ -27,14 +27,13 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.ModInfo;
-import boilerplate.common.baseclasses.BaseArmorModule;
 import boilerplate.steamapi.item.ModuleRegistry;
 
 /**
  * @author warlordjones
  * 
  */
-public class ItemReactivePistonPlating extends BaseArmorModule
+public class ItemReactivePistonPlating extends PoweredArmorModule
 {
 	public ItemReactivePistonPlating()
 	{
@@ -43,6 +42,7 @@ public class ItemReactivePistonPlating extends BaseArmorModule
 		ModuleRegistry.setModuleIncompatibilities(ModuleRegistry.getModule("pistonplating"), "aqualung");
 		this.setMaxStackSize(1);
 		this.setCreativeTab(Steamcraft.tabSC2);
+		this.setSteamToConsume(100);
 	}
 
 	@Override
@@ -64,7 +64,7 @@ public class ItemReactivePistonPlating extends BaseArmorModule
 	}
 
 	@Override
-	public boolean applyModuleEffect(World world, EntityPlayer player, ItemStack stack)
+	public void applyModuleEffect(World world, EntityPlayer player, ItemStack stack)
 	{
 		AxisAlignedBB axisalignedbb = null;
 		axisalignedbb = player.boundingBox.expand(1.0D, 0.5D, 1.0D);
@@ -76,33 +76,18 @@ public class ItemReactivePistonPlating extends BaseArmorModule
 			{
 				Entity entity = (Entity) obj;
 
-				if(!entity.isDead && (entity instanceof EntityLiving))
+				if(!entity.isDead && (entity instanceof EntityLiving) && doConsumption(player, stack))
 				{
 					entity.setVelocity(-entity.motionX - 0.3F, 0.3F, -entity.motionZ - 0.3F);
-					return true;
 				}
 			}
 		}
-		return false;
 	}
 
 	@Override
 	public EnumArmorEffectType getArmorEffectType()
 	{
 		return EnumArmorEffectType.ONTICK;
-	}
-
-	@Override
-	public int getSteamConsumedOnEffect()
-	{
-		return 100;
-	}
-
-	@Override
-	public int getEnergyConsumedOnEffect()
-	{
-		// TODO Auto-generated method stub
-		return 0;
 	}
 
 	@SideOnly(Side.CLIENT)

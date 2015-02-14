@@ -22,8 +22,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.potion.Potion;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 
@@ -34,8 +32,6 @@ import net.minecraftforge.common.ISpecialArmor;
 
 import steamcraft.common.Steamcraft;
 import steamcraft.common.init.InitItems;
-import steamcraft.common.items.ItemCanister;
-import steamcraft.common.items.electric.ElectricItem;
 import steamcraft.common.lib.ModInfo;
 import thaumcraft.api.IGoggles;
 import thaumcraft.api.nodes.IRevealer;
@@ -96,7 +92,7 @@ public class ItemBrassArmor extends BaseArmor implements ISpecialArmor, IGoggles
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack is)
 	{
-		int combinedModuleWeight = 0;
+		// int combinedModuleWeight = 0;
 
 		NBTTagCompound nbt = getOrCreateTagCompound(is);
 
@@ -106,12 +102,12 @@ public class ItemBrassArmor extends BaseArmor implements ISpecialArmor, IGoggles
 
 			if((module != null) && (module.getArmorEffectType() == EnumArmorEffectType.ONTICK))
 			{
-				this.doEffects(module, player.getEntityWorld(), player, is);
-				combinedModuleWeight += module.getModuleWeight();
+				module.applyModuleEffect(world, player, is);
+				// combinedModuleWeight += module.getModuleWeight();
 			}
 		}
-		if(this.getSlownessLevelFromWeight(combinedModuleWeight) >= 1)
-			player.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 5, this.getSlownessLevelFromWeight(combinedModuleWeight), true));
+		// if(this.getSlownessLevelFromWeight(combinedModuleWeight) >= 1)
+		// player.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 5, this.getSlownessLevelFromWeight(combinedModuleWeight), true));
 	}
 
 	public static NBTTagCompound getOrCreateTagCompound(ItemStack is)
@@ -138,95 +134,9 @@ public class ItemBrassArmor extends BaseArmor implements ISpecialArmor, IGoggles
 
 			if((module != null) && (module.getArmorEffectType() == EnumArmorEffectType.HUD))
 			{
-				this.doEffects(module, player.getEntityWorld(), player, stack);
+				module.applyModuleEffect(player.getEntityWorld(), player, stack);
 			}
 		}
-	}
-
-	private void doEffects(IArmorModule module, World world, EntityPlayer player, ItemStack is)
-	{
-		if(module.getSteamConsumedOnEffect() > 0)
-		{
-			if(this.isSteamAvailable(player, module.getSteamConsumedOnEffect()))
-			{
-				if(module.applyModuleEffect(world, player, is))
-					this.consumeSteamFromCanister(player, module.getSteamConsumedOnEffect());
-			}
-		}
-		else if(module.getEnergyConsumedOnEffect() > 0)
-		{
-			if(this.isRFAvailable(player, module.getEnergyConsumedOnEffect()))
-			{
-				if(module.applyModuleEffect(world, player, is))
-					this.consumeRFFromJar(player, module.getEnergyConsumedOnEffect());
-			}
-		}
-		else
-			module.applyModuleEffect(world, player, is);
-	}
-
-	protected void consumeSteamFromCanister(EntityPlayer player, int steamToDrain)
-	{
-		ItemStack[] mainInv = player.inventory.mainInventory;
-
-		for(ItemStack element : mainInv)
-			if((element != null) && (element.getItem() == InitItems.itemCanisterSteam))
-			{
-				ItemCanister canister = (ItemCanister) element.getItem();
-
-				if(canister.getFluidAmount(element) > steamToDrain)
-				{
-					canister.drain(element, steamToDrain, true);
-				}
-			}
-	}
-
-	protected boolean isSteamAvailable(EntityPlayer player, int steamToDrain)
-	{
-		ItemStack[] mainInv = player.inventory.mainInventory;
-
-		for(ItemStack element : mainInv)
-		{
-			if((element != null) && (element.getItem() == InitItems.itemCanisterSteam))
-			{
-				ItemCanister canister = (ItemCanister) element.getItem();
-
-				return canister.getFluidAmount(element) >= steamToDrain;
-			}
-		}
-		return false;
-	}
-
-	protected void consumeRFFromJar(EntityPlayer player, int rfToDrain)
-	{
-		ItemStack[] mainInv = player.inventory.mainInventory;
-
-		for(ItemStack element : mainInv)
-			if((element != null) && (element.getItem() instanceof ElectricItem))
-			{
-				ElectricItem jar = (ElectricItem) element.getItem();
-
-				if(jar.getEnergyStored(element) >= rfToDrain)
-				{
-					jar.extractEnergy(element, rfToDrain, false);
-				}
-			}
-	}
-
-	protected boolean isRFAvailable(EntityPlayer player, int rfToDrain)
-	{
-		ItemStack[] mainInv = player.inventory.mainInventory;
-
-		for(ItemStack element : mainInv)
-		{
-			if((element != null) && (element.getItem() instanceof ElectricItem))
-			{
-				ElectricItem jar = (ElectricItem) element.getItem();
-
-				return jar.getEnergyStored(element) >= rfToDrain;
-			}
-		}
-		return false;
 	}
 
 	@Override
