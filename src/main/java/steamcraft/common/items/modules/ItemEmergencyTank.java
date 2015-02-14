@@ -14,6 +14,7 @@ package steamcraft.common.items.modules;
 
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
@@ -63,11 +64,25 @@ public class ItemEmergencyTank extends BaseArmorModule
 		if(player.isBurning())
 		{
 			player.extinguish();
-			// TODO if(world.getBlock((int) Math.round(player.posX), (int) Math.round(player.posY), (int) Math.round(player.posZ)) == Blocks.fire)
-			// world.setBlockToAir((int) Math.round(player.posX), (int) Math.round(player.posY), (int) Math.round(player.posZ));
+			int x = (int) Math.floor(player.posX);
+			int y = (int) Math.floor(player.posY);
+			int z = (int) Math.floor(player.posZ);
 			for(int i = 0; i < 20; i++)
-				world.spawnParticle("splash", player.posX + world.rand.nextFloat(), player.posY + world.rand.nextFloat(), player.posZ + world.rand.nextFloat(),
+				world.spawnParticle("splash", x + world.rand.nextFloat(), y + world.rand.nextFloat(), z + world.rand.nextFloat(),
 						0 + world.rand.nextFloat(), 0 + world.rand.nextFloat(), 0 + world.rand.nextFloat());
+			for(int xOff = -3; xOff <= 3; xOff++)
+			{
+				for(int yOff = -3; yOff <= 3; yOff++)
+				{
+					for(int zOff = -3; zOff <= 3; zOff++)
+						if(player.worldObj.getBlock(x + xOff, y + yOff, z + zOff) == Blocks.fire)
+						{
+							player.worldObj.setBlock(x + xOff, y + yOff, z + zOff, Blocks.air);
+							player.worldObj.playSoundEffect(x + xOff + 0.5D, y + yOff + 0.5D, z + zOff + 0.5D, "random.fizz", 0.5F,
+									2.6F + (player.worldObj.rand.nextFloat() - player.worldObj.rand.nextFloat()) * 0.8F);
+						}
+				}
+			}
 			return true;
 		}
 		return false;
