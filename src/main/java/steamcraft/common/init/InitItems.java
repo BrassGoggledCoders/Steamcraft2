@@ -83,6 +83,7 @@ import steamcraft.common.items.modules.ItemRollerSkates;
 import steamcraft.common.items.modules.ItemSpringHeels;
 import steamcraft.common.items.modules.ItemSteelPlating;
 import steamcraft.common.items.modules.ItemWatchDisplay;
+import steamcraft.common.items.modules.ItemWingpackModule;
 import steamcraft.common.items.pda.ItemPDA;
 import steamcraft.common.items.tools.ItemElectricDrill;
 import steamcraft.common.items.tools.ItemModAxe;
@@ -180,7 +181,7 @@ public class InitItems
 	// Modules
 	public static Item itemAqualung, itemPistonPlating, itemTank, itemWatchDisplay, itemClimbingSpikes
 			, itemLegBraces, itemSpringHeels, itemRollerSkates, itemParachute, itemFlippers, itemLifeVest,
-			itemPistonBoots, itemSteelPlating, itemLastResort, itemGogglesModule;
+			itemPistonBoots, itemSteelPlating, itemLastResort, itemGogglesModule, itemWingpackModule;
 
 	/* Init */
 	public static void init()
@@ -480,6 +481,9 @@ public class InitItems
 
 		itemGogglesModule = new ItemGogglesModule().setUnlocalizedName("itemGogglesModule");
 		registerItem(itemGogglesModule, "ItemGogglesModule");
+
+		itemWingpackModule = new ItemWingpackModule().setUnlocalizedName("itemWingpackModule");
+		registerItem(itemWingpackModule, "ItemWingpackModule");
 
 		itemTeaLeaf = new BaseItem().setUnlocalizedName("itemTeaLeaves");
 		registerItem(itemTeaLeaf, "ItemTeaLeaf");
