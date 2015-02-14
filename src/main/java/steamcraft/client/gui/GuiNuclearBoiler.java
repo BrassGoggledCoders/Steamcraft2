@@ -38,13 +38,13 @@ public class GuiNuclearBoiler extends BaseContainerGui
 {
 	private static ResourceLocation guitexture = new ResourceLocation(ModInfo.PREFIX + "textures/gui/steamboiler.png");
 
-	private TileNuclearBoiler boiler = (TileNuclearBoiler) tile;
+	private TileNuclearBoiler boiler;
 
 	public GuiNuclearBoiler(InventoryPlayer player, TileNuclearBoiler tile)
 	{
 		super(new ContainerNuclearBoiler(player, tile));
 
-		this.tile = tile;
+		this.boiler = tile;
 	}
 
 	@Override

@@ -28,12 +28,12 @@ import steamcraft.common.tiles.container.ContainerBloomery;
 public class GuiBloomery extends BaseContainerGui
 {
 	private static final ResourceLocation furnaceGuiTextures = new ResourceLocation(ModInfo.PREFIX + "textures/gui/bloomery.png");
-	private TileBloomery tileFurnace = (TileBloomery) tile;
+	private TileBloomery tileFurnace;
 
 	public GuiBloomery(InventoryPlayer par1InventoryPlayer, TileBloomery par2TileEntityFurnace)
 	{
 		super(new ContainerBloomery(par1InventoryPlayer, par2TileEntityFurnace));
-		this.tile = par2TileEntityFurnace;
+		this.tileFurnace = par2TileEntityFurnace;
 	}
 
 	@Override

@@ -30,13 +30,13 @@ public class GuiCharger extends BaseContainerGui
 {
 	private static ResourceLocation guitexture = new ResourceLocation(ModInfo.PREFIX + "textures/gui/charger.png");
 
-	private TileCharger charger = (TileCharger) tile;
+	private TileCharger charger;
 
 	public GuiCharger(InventoryPlayer inventory, TileCharger tile2)
 	{
 		super(new ContainerCharger(inventory, tile2));
 
-		this.tile = tile2;
+		this.charger = tile2;
 	}
 
 	@Override

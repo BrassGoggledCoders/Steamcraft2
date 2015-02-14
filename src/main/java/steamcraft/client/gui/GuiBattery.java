@@ -30,13 +30,14 @@ public class GuiBattery extends BaseContainerGui
 {
 	private static ResourceLocation guitexture = new ResourceLocation(ModInfo.PREFIX + "textures/gui/battery.png");
 
-	private TileBattery battery = ((TileBattery) this.tile);
+	private TileBattery battery;
 
 	public GuiBattery(InventoryPlayer inventory, TileBattery tile)
 	{
 		super(new ContainerBattery(inventory, tile));
 
 		this.tile = tile;
+		this.battery = tile;
 	}
 
 	@Override
