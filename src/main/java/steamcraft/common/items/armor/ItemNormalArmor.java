@@ -63,6 +63,7 @@ public class ItemNormalArmor extends BaseArmor
 		if((this.getArmorMaterial() == MaterialHelper.ARMOR_OBSIDIAN) && !player.capabilities.isCreativeMode)
 		{
 			player.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 20, 3));
+			player.addPotionEffect(new PotionEffect(Potion.fireResistance.id, 20, 1));
 			if(player.isInWater())
 			{
 				player.motionY--;
