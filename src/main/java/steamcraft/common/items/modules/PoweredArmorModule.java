@@ -1,11 +1,18 @@
 package steamcraft.common.items.modules;
 
+import java.util.List;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.StatCollector;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 import steamcraft.common.init.InitItems;
 import steamcraft.common.items.ItemCanister;
 import steamcraft.common.items.electric.ElectricItem;
+import boilerplate.client.ClientHelper;
 import boilerplate.common.baseclasses.BaseArmorModule;
 import boilerplate.steamapi.item.IPoweredModuleHelper;
 
@@ -13,6 +20,32 @@ public abstract class PoweredArmorModule extends BaseArmorModule implements IPow
 {
 	private int steamToConsume = 1;
 	private int rfToConsume = 1;
+
+	@SuppressWarnings("all")
+	@SideOnly(Side.CLIENT)
+	@Override
+	public void addInformation(ItemStack stack, EntityPlayer par2EntityPlayer, List list, boolean par4)
+	{
+		if(ClientHelper.isShiftKeyDown())
+		{
+			list.add("Module ID: " + this.getModuleId());
+			list.add("Applicable Piece: " + this.getArmorPieceNameFromNumber(this.getApplicablePiece()));
+			list.add("Effect Type: " + this.getEffectTypeStringFromEnum(this.getArmorEffectType()));
+			if(!StatCollector.translateToLocal(this.getUnlocalizedName() + ".desc").contains("item."))
+			{
+				list.add("Module Effect: ");
+				this.getWrappedDesc(list, stack);
+			}
+			if(this instanceof IPoweredModuleHelper)
+			{
+				PoweredArmorModule module = this;
+				list.add("Energy Consumption: " + module.rfToConsume);
+				list.add("Steam Consumption: " + module.steamToConsume);
+			}
+		}
+		else
+			list.add(ClientHelper.shiftForInfo);
+	}
 
 	@Override
 	public void setSteamToConsume(int steamToSet)
