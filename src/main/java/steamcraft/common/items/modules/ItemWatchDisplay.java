@@ -88,9 +88,17 @@ public class ItemWatchDisplay extends PoweredArmorModule
 			cal.getTime();
 			final SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
 
-			fontRenderer.drawString("In-Game Time: " + mcTime, 5, 5, color);
+			fontRenderer.drawString("In-Game Time: " + mcTime + " (" + getGeneralTime(mcTime) + ")", 5, 5, color);
 			fontRenderer.drawString("Real-World Time: " + sdf.format(cal.getTime()), 5, 15, color);
 		}
+	}
+
+	private String getGeneralTime(long mcTime)
+	{
+		if(mcTime <= 0 && mcTime >= 12000)
+			return "Day";
+		else
+			return "Night";
 	}
 
 	@Override
