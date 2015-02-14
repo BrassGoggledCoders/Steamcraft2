@@ -15,6 +15,7 @@ public class BlockFissurePortal extends BaseBlock
 	{
 		super(mat);
 		this.setBlockUnbreakable();
+		this.setLightLevel(1F);
 	}
 
 	/**
