@@ -58,11 +58,6 @@ public class TileArmorEditor extends BaseTileWithInventory implements IInventory
 	@Override
 	public void updateEntity()
 	{
-		/*
-		 * if(!worldObj.isRemote) { int[] ids = new int[this.inventory.length]; for(int i = 0; i < this.inventory.length; i++) { if(this.inventory[i] != null)
-		 * ids[i] = Item.getIdFromItem(this.inventory[i].getItem()); } InitPackets.network.sendToAllAround(new UpdateClientsideInventoryPacket(xCoord, yCoord,
-		 * zCoord, ids), new TargetPoint( worldObj.provider.dimensionId, xCoord, yCoord, zCoord, 10)); }
-		 */
 		ArrayList<String> installedModules = new ArrayList<String>();
 
 		if(this.worldObj.isRemote)
@@ -83,8 +78,6 @@ public class TileArmorEditor extends BaseTileWithInventory implements IInventory
 			{
 				IArmorModule module = (IArmorModule) this.inventory[2].getItem();
 				ArrayList moduleIncompatibilities = ModuleRegistry.getModuleIncompatibilities(module.getModuleId());
-				System.out.print("Incompats:" + moduleIncompatibilities);
-				System.out.print("Installed Modules:" + installedModules);
 				if(!installedModules.contains(module.getModuleId()))
 				{
 					if(moduleIncompatibilities == null)
