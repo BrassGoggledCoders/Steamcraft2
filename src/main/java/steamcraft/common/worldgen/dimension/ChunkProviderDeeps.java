@@ -71,16 +71,16 @@ public class ChunkProviderDeeps implements IChunkProvider
 	private MapGenUndercity undercityGenerator = new MapGenUndercity();
 	/** The biomes that are used to generate the chunk */
 	private BiomeGenBase[] biomesForGeneration;
-	private double[] field_147427_d;
-	private double[] field_147428_e;
-	private double[] field_147425_f;
-	private double[] field_147426_g;
+	private double[] adouble1;
+	private double[] adouble2;
+	private double[] adouble3;
+	private double[] adouble4;
 
-	public ChunkProviderDeeps(World p_i2006_1_, long p_i2006_2_)
+	public ChunkProviderDeeps(World world, long seed)
 	{
-		this.worldObj = p_i2006_1_;
-		this.worldType = p_i2006_1_.getWorldInfo().getTerrainType();
-		this.rand = new Random(p_i2006_2_);
+		this.worldObj = world;
+		this.worldType = world.getWorldInfo().getTerrainType();
+		this.rand = new Random(seed);
 		this.noiseGen1 = new NoiseGeneratorOctaves(this.rand, 16);
 		this.noiseGen2 = new NoiseGeneratorOctaves(this.rand, 16);
 		this.noiseGen3 = new NoiseGeneratorOctaves(this.rand, 8);
@@ -101,7 +101,7 @@ public class ChunkProviderDeeps implements IChunkProvider
 		}
 
 		NoiseGenerator[] noiseGens = { this.noiseGen1, this.noiseGen2, this.noiseGen3, this.noiseGen4, this.noiseGen5, this.noiseGen6, this.mobSpawnerNoise };
-		noiseGens = TerrainGen.getModdedNoiseGenerators(p_i2006_1_, this.rand, noiseGens);
+		noiseGens = TerrainGen.getModdedNoiseGenerators(world, this.rand, noiseGens);
 		this.noiseGen1 = (NoiseGeneratorOctaves) noiseGens[0];
 		this.noiseGen2 = (NoiseGeneratorOctaves) noiseGens[1];
 		this.noiseGen3 = (NoiseGeneratorOctaves) noiseGens[2];
@@ -116,7 +116,7 @@ public class ChunkProviderDeeps implements IChunkProvider
 		byte b0 = 63;
 		this.biomesForGeneration = this.worldObj.getWorldChunkManager().getBiomesForGeneration(this.biomesForGeneration, chunkCoordX * 16,
 				chunkCoordZ * 16, 16, 16);
-		this.func_147423_a(chunkCoordX * 4, 0, chunkCoordZ * 4);
+		this.doBaseBiomeGeneration(chunkCoordX * 4, 0, chunkCoordZ * 4);
 
 		for(int k = 0; k < 4; ++k)
 		{
@@ -257,18 +257,18 @@ public class ChunkProviderDeeps implements IChunkProvider
 		return chunk;
 	}
 
-	private void func_147423_a(int p_147423_1_, int p_147423_2_, int p_147423_3_)
+	private void doBaseBiomeGeneration(int p_147423_1_, int p_147423_2_, int p_147423_3_)
 	{
 		double d0 = 684.412D;
 		double d1 = 684.412D;
 		double d2 = 512.0D;
 		double d3 = 512.0D;
-		this.field_147426_g = this.noiseGen6.generateNoiseOctaves(this.field_147426_g, p_147423_1_, p_147423_3_, 5, 5, 200.0D, 200.0D, 0.5D);
-		this.field_147427_d = this.noiseGen3.generateNoiseOctaves(this.field_147427_d, p_147423_1_, p_147423_2_, p_147423_3_, 5, 33, 5,
+		this.adouble4 = this.noiseGen6.generateNoiseOctaves(this.adouble4, p_147423_1_, p_147423_3_, 5, 5, 200.0D, 200.0D, 0.5D);
+		this.adouble1 = this.noiseGen3.generateNoiseOctaves(this.adouble1, p_147423_1_, p_147423_2_, p_147423_3_, 5, 33, 5,
 				8.555150000000001D, 4.277575000000001D, 8.555150000000001D);
-		this.field_147428_e = this.noiseGen1.generateNoiseOctaves(this.field_147428_e, p_147423_1_, p_147423_2_, p_147423_3_, 5, 33, 5, 684.412D,
+		this.adouble2 = this.noiseGen1.generateNoiseOctaves(this.adouble2, p_147423_1_, p_147423_2_, p_147423_3_, 5, 33, 5, 684.412D,
 				684.412D, 684.412D);
-		this.field_147425_f = this.noiseGen2.generateNoiseOctaves(this.field_147425_f, p_147423_1_, p_147423_2_, p_147423_3_, 5, 33, 5, 684.412D,
+		this.adouble3 = this.noiseGen2.generateNoiseOctaves(this.adouble3, p_147423_1_, p_147423_2_, p_147423_3_, 5, 33, 5, 684.412D,
 				684.412D, 684.412D);
 		boolean flag1 = false;
 		boolean flag = false;
@@ -294,12 +294,6 @@ public class ChunkProviderDeeps implements IChunkProvider
 						float f3 = biomegenbase1.rootHeight;
 						float f4 = biomegenbase1.heightVariation;
 
-						if((this.worldType == WorldType.AMPLIFIED) && (f3 > 0.0F))
-						{
-							f3 = 1.0F + (f3 * 2.0F);
-							f4 = 1.0F + (f4 * 4.0F);
-						}
-
 						float f5 = this.parabolicField[l1 + 2 + ((i2 + 2) * 5)] / (f3 + 2.0F);
 
 						if(biomegenbase1.rootHeight > biomegenbase.rootHeight)
@@ -317,7 +311,7 @@ public class ChunkProviderDeeps implements IChunkProvider
 				f1 /= f2;
 				f = (f * 0.9F) + 0.1F;
 				f1 = ((f1 * 4.0F) - 1.0F) / 8.0F;
-				double d12 = this.field_147426_g[i1] / 8000.0D;
+				double d12 = this.adouble4[i1] / 8000.0D;
 
 				if(d12 < 0.0D)
 				{
@@ -364,9 +358,9 @@ public class ChunkProviderDeeps implements IChunkProvider
 						d6 *= 4.0D;
 					}
 
-					double d7 = this.field_147428_e[l] / 512.0D;
-					double d8 = this.field_147425_f[l] / 512.0D;
-					double d9 = ((this.field_147427_d[l] / 10.0D) + 1.0D) / 2.0D;
+					double d7 = this.adouble2[l] / 512.0D;
+					double d8 = this.adouble3[l] / 512.0D;
+					double d9 = ((this.adouble1[l] / 10.0D) + 1.0D) / 2.0D;
 					double d10 = MathHelper.denormalizeClamp(d7, d8, d9) - d6;
 
 					if(j2 > 29)
