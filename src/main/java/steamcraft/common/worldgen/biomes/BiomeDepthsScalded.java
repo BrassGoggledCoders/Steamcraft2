@@ -29,5 +29,6 @@ public class BiomeDepthsScalded extends BiomeDepthsBase
 		this.spawnableMonsterList.add(new BiomeGenBase.SpawnListEntry(EntityMagmaCube.class, 1, 1, 1));
 		this.topBlock = Blocks.dirt;
 		this.fillerBlock = Blocks.dirt;
+		this.theBiomeDecorator.grassPerChunk = 0;
 	}
 }
