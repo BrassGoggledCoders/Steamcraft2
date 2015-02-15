@@ -540,5 +540,7 @@ public class ChunkProviderDeeps implements IChunkProvider
 	@Override
 	public void recreateStructures(int p_82695_1_, int p_82695_2_)
 	{
+		this.mineShaftGenerator.func_151539_a(this, this.worldObj, p_82695_1_, p_82695_2_, (Block[]) null);
+		this.undercityGenerator.func_151539_a(this, this.worldObj, p_82695_1_, p_82695_2_, (Block[]) null);
 	}
 }
