@@ -78,7 +78,7 @@ public class WorldProviderDeeps extends WorldProvider
 			this.chunkProvider = new ChunkProviderDeeps(this.worldObj, this.worldObj.getSeed());
 			return this.chunkProvider;
 		}
-		return new ChunkProviderDeeps(this.worldObj, this.worldObj.getSeed());
+		return this.chunkProvider;
 	}
 
 	@Override
