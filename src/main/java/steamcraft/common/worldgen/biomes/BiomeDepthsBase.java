@@ -69,17 +69,6 @@ public class BiomeDepthsBase extends BiomeGenBase
 	{
 		super.decorate(world, random, chunkX, chunkZ);
 
-		for(int a = 0; a < 6 + random.nextInt(9); ++a)
-		{
-			int x = chunkX + random.nextInt(16);
-			int y = random.nextInt(28) + 4;
-			int z = chunkZ + random.nextInt(16);
-
-			if(world.getBlock(x, y, z).isReplaceableOreGen(world, x, y, z, Blocks.stone))
-			{
-				new WorldGenMinable(InitBlocks.blockCompressedStone, 6 + random.nextInt(9)).generate(world, random, x, y, z);
-			}
-		}
 		for(int a = 0; a < 10; ++a)
 		{
 			int x = chunkX + random.nextInt(16);
@@ -92,6 +81,17 @@ public class BiomeDepthsBase extends BiomeGenBase
 			}
 		}
 
+		for(int a = 0; a < 6 + random.nextInt(9); ++a)
+		{
+			int x = chunkX + random.nextInt(16);
+			int y = random.nextInt(28) + 4;
+			int z = chunkZ + random.nextInt(16);
+
+			if(world.getBlock(x, y, z).isReplaceableOreGen(world, x, y, z, Blocks.stone))
+			{
+				new WorldGenMinable(InitBlocks.blockCompressedStone, 6 + random.nextInt(9)).generate(world, random, x, y, z);
+			}
+		}
 		int X2 = chunkX + random.nextInt(16);
 		int Z2 = chunkZ + random.nextInt(16);
 		int Y2 = random.nextInt(50);
