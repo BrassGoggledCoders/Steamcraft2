@@ -63,8 +63,6 @@ public class ChunkProviderDeeps implements IChunkProvider
 	private NoiseGeneratorOctaves mobSpawnerNoise;
 	/** Reference to the World object. */
 	private final World worldObj;
-	/** are map structures going to be generated (e.g. strongholds) */
-	private final boolean mapFeaturesEnabled;
 	private final WorldType worldType;
 	private final double[] adouble;
 	private final float[] parabolicField;
@@ -84,10 +82,9 @@ public class ChunkProviderDeeps implements IChunkProvider
 		this.ravineGenerator = TerrainGen.getModdedMapGen(this.ravineGenerator, RAVINE);
 	}
 
-	public ChunkProviderDeeps(World p_i2006_1_, long p_i2006_2_, boolean p_i2006_4_)
+	public ChunkProviderDeeps(World p_i2006_1_, long p_i2006_2_)
 	{
 		this.worldObj = p_i2006_1_;
-		this.mapFeaturesEnabled = p_i2006_4_;
 		this.worldType = p_i2006_1_.getWorldInfo().getTerrainType();
 		this.rand = new Random(p_i2006_2_);
 		this.noiseGen1 = new NoiseGeneratorOctaves(this.rand, 16);
@@ -248,6 +245,7 @@ public class ChunkProviderDeeps implements IChunkProvider
 		this.caveGenerator.func_151539_a(this, this.worldObj, chunkCoordX, chunkCoordZ, ablock);
 		this.ravineGenerator.func_151539_a(this, this.worldObj, chunkCoordX, chunkCoordZ, ablock);
 
+		// if((this.rand.nextInt(5) == 0))
 		this.undercityGenerator.func_151539_a(this, this.worldObj, chunkCoordX, chunkCoordZ, ablock);
 
 		if(this.worldObj.getBiomeGenForCoords(chunkCoordZ * 16, chunkCoordX * 16) == InitBiomes.biomeDepthsSW)
@@ -415,6 +413,8 @@ public class ChunkProviderDeeps implements IChunkProvider
 		long j1 = ((this.rand.nextLong() / 2L) * 2L) + 1L;
 		this.rand.setSeed(((chunkX * i1) + (chunkZ * j1)) ^ this.worldObj.getSeed());
 		boolean flag = false;
+
+		this.undercityGenerator.generateStructuresInChunk(this.worldObj, this.rand, chunkX, chunkZ);
 
 		int k1;
 		int l1;

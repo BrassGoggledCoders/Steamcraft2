@@ -67,7 +67,7 @@ public class WorldProviderDeeps extends WorldProvider
 	@Override
 	public IChunkProvider createChunkGenerator()
 	{
-		return new ChunkProviderDeeps(this.worldObj, this.worldObj.getSeed(), false);
+		return new ChunkProviderDeeps(this.worldObj, this.worldObj.getSeed());
 	}
 
 	@Override

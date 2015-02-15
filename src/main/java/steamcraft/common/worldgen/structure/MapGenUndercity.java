@@ -15,9 +15,14 @@ package steamcraft.common.worldgen.structure;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import net.minecraft.block.Block;
 import net.minecraft.util.MathHelper;
+import net.minecraft.world.World;
+import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.structure.MapGenStructure;
 import net.minecraft.world.gen.structure.StructureStart;
+
+import steamcraft.common.lib.LoggerSteamcraft;
 
 public class MapGenUndercity extends MapGenStructure
 {
@@ -56,5 +61,27 @@ public class MapGenUndercity extends MapGenStructure
 	protected StructureStart getStructureStart(int p_75049_1_, int p_75049_2_)
 	{
 		return new StructureUndercityStart(this.worldObj, this.rand, p_75049_1_, p_75049_2_);
+	}
+
+	@Override
+	public void func_151539_a(IChunkProvider p_151539_1_, World p_151539_2_, int chunkX, int chunkZ, Block[] p_151539_5_)
+	{
+		int k = this.range;
+		this.worldObj = p_151539_2_;
+		this.rand.setSeed(p_151539_2_.getSeed());
+		long l = this.rand.nextLong();
+		long i1 = this.rand.nextLong();
+
+		for(int j1 = chunkX - k; j1 <= chunkX + k; ++j1)
+		{
+			for(int k1 = chunkZ - k; k1 <= chunkZ + k; ++k1)
+			{
+				long l1 = j1 * l;
+				long i2 = k1 * i1;
+				this.rand.setSeed(l1 ^ i2 ^ p_151539_2_.getSeed());
+				LoggerSteamcraft.info("Gen at: " + j1 + " " + k1);
+				this.func_151538_a(p_151539_2_, j1, k1, chunkX, chunkZ, p_151539_5_);
+			}
+		}
 	}
 }
