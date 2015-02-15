@@ -1,5 +1,5 @@
 /**
- * This class was created by BrassGoggledCoders modding team. 
+ * This class was created by BrassGoggledCoders modding team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -8,7 +8,7 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- * 
+ *
  */
 package steamcraft.common.worldgen.biomes;
 
@@ -41,6 +41,7 @@ public class DepthsBiomeDecorator extends DeferredBiomeDecorator
 {
 	/** The clay generator. */
 	private WorldGenerator clayGen = new WorldGenClay(6);
+	private World currentWorld;
 
 	public DepthsBiomeDecorator(BiomeDecorator original)
 	{
@@ -72,6 +73,8 @@ public class DepthsBiomeDecorator extends DeferredBiomeDecorator
 	@Override
 	public void decorateChunk(World world, Random random, BiomeGenBase biome, int chunkX, int chunkZ)
 	{
+		this.currentWorld = world;
+
 		this.generateOres(world, chunkX, chunkZ, random);
 		int i;
 		int j;
@@ -109,13 +112,13 @@ public class DepthsBiomeDecorator extends DeferredBiomeDecorator
 		{
 			k = chunkX + random.nextInt(16);
 			l = chunkZ + random.nextInt(16);
-			i1 = world.getHeightValue(k, l);
+			i1 = currentWorld.getHeightValue(k, l);
 			WorldGenAbstractTree worldgenabstracttree = biome.func_150567_a(random);
 			worldgenabstracttree.setScale(1.0D, 1.0D, 1.0D);
 
-			if(worldgenabstracttree.generate(world, random, k - 3, i1, l - 3))
+			if(worldgenabstracttree.generate(currentWorld, random, k - 3, i1, l - 3))
 			{
-				worldgenabstracttree.func_150524_b(world, random, k - 3, i1, l - 3);
+				worldgenabstracttree.func_150524_b(currentWorld, random, k - 3, i1, l - 3);
 			}
 		}
 		for(j = 0; j < this.bigMushroomsPerChunk; ++j)
@@ -311,6 +314,8 @@ public class DepthsBiomeDecorator extends DeferredBiomeDecorator
 			int zCoord = chunkZ + random.nextInt(16);
 			new WorldGenRandomUnderground(InitBlocks.blockMushroom, 2).generate(world, random, xCoord, yCoord, zCoord);
 		}
+
+		this.currentWorld = null;
 	}
 
 	/**
