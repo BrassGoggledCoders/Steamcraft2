@@ -20,7 +20,7 @@ import steamcraft.common.lib.ModInfo;
 
 public class RenderAbandonedGolem extends RenderIronGolem
 {
-	private static final ResourceLocation ENT_TEXTURE = new ResourceLocation(ModInfo.PREFIX + "textures/models/mobs/boar.png");
+	private static final ResourceLocation ENT_TEXTURE = new ResourceLocation(ModInfo.PREFIX + "textures/models/mobs/abandoned_golem.png");
 
 	public RenderAbandonedGolem()
 	{
