@@ -458,29 +458,7 @@ public class ChunkProviderDeeps implements IChunkProvider
 			int j2 = blockZ + this.rand.nextInt(16);
 			(new WorldGenDungeons()).generate(this.worldObj, this.rand, l1, i2, j2);
 		}
-		for(int a = 0; a < 10; ++a)
-		{
-			int x = chunkX + rand.nextInt(16);
-			int y = rand.nextInt(60);
-			int z = chunkZ + rand.nextInt(16);
 
-			if(worldObj.getBlock(x, y, z).isReplaceableOreGen(worldObj, x, y, z, Blocks.stone))
-			{
-				new WorldGenMinable(Blocks.emerald_ore, 3).generate(worldObj, rand, x, y, z);
-			}
-		}
-
-		for(int a = 0; a < 6 + rand.nextInt(9); ++a)
-		{
-			int x = chunkX + rand.nextInt(16);
-			int y = rand.nextInt(28) + 4;
-			int z = chunkZ + rand.nextInt(16);
-
-			if(worldObj.getBlock(x, y, z).isReplaceableOreGen(worldObj, x, y, z, Blocks.stone))
-			{
-				new WorldGenMinable(InitBlocks.blockCompressedStone, 6 + rand.nextInt(9)).generate(worldObj, rand, x, y, z);
-			}
-		}
 		int X2 = chunkX + rand.nextInt(16);
 		int Z2 = chunkZ + rand.nextInt(16);
 		int Y2 = rand.nextInt(50);
@@ -538,6 +516,30 @@ public class ChunkProviderDeeps implements IChunkProvider
 		}
 
 		biomegendepths.decorate(this.worldObj, this.rand, blockX, blockZ);
+
+		for(int a = 0; a < 6 + rand.nextInt(9); ++a)
+		{
+			int x = chunkX + rand.nextInt(16);
+			int y = rand.nextInt(28) + 4;
+			int z = chunkZ + rand.nextInt(16);
+
+			if(worldObj.getBlock(x, y, z).isReplaceableOreGen(worldObj, x, y, z, Blocks.stone))
+			{
+				new WorldGenMinable(InitBlocks.blockCompressedStone, 6 + rand.nextInt(9)).generate(worldObj, rand, x, y, z);
+			}
+		}
+		for(int a = 0; a < 10; ++a)
+		{
+			int x = chunkX + rand.nextInt(16);
+			int y = rand.nextInt(60);
+			int z = chunkZ + rand.nextInt(16);
+
+			if(worldObj.getBlock(x, y, z).isReplaceableOreGen(worldObj, x, y, z, Blocks.stone))
+			{
+				new WorldGenMinable(Blocks.emerald_ore, 3).generate(worldObj, rand, x, y, z);
+			}
+		}
+
 		SpawnerAnimals.performWorldGenSpawning(this.worldObj, biomegenbase, blockX + 8, blockZ + 8, 16, 16, this.rand);
 		blockX += 8;
 		blockZ += 8;
