@@ -27,7 +27,6 @@ import steamcraft.common.worldgen.trees.WorldGenRedwoodTree;
 
 public class BiomeDepthsTallForest extends BiomeDepthsBase
 {
-	private static final WorldGenBlockBlob blockBlob = new WorldGenBlockBlob(Blocks.mossy_cobblestone, 0);
 
 	public BiomeDepthsTallForest(int p_i1971_1_)
 	{
@@ -48,17 +47,17 @@ public class BiomeDepthsTallForest extends BiomeDepthsBase
 	}
 
 	@Override
-	public void decorate(World p_76728_1_, Random p_76728_2_, int p_76728_3_, int p_76728_4_)
+	public void decorate(World world, Random random, int chunkX, int chunkZ)
 	{
 		for(int l = 0; l < 3; ++l)
 		{
-			int k = p_76728_2_.nextInt(3);
-			int i1 = p_76728_3_ + p_76728_2_.nextInt(16);
-			int j1 = p_76728_4_ + p_76728_2_.nextInt(16);
-			int k1 = p_76728_1_.getHeightValue(i1, j1);
-			blockBlob.generate(p_76728_1_, p_76728_2_, i1, k1, j1);
+			int k = random.nextInt(3);
+			int i1 = chunkX + random.nextInt(16) + 8;
+			int j1 = chunkZ + random.nextInt(16) + 8;
+			int k1 = world.getHeightValue(i1, j1);
+			new WorldGenBlockBlob(Blocks.mossy_cobblestone, 0).generate(world, random, i1, k1, j1);
 		}
-		super.decorate(p_76728_1_, p_76728_2_, p_76728_3_, p_76728_4_);
+		super.decorate(world, random, chunkX, chunkZ);
 	}
 
 	/**
