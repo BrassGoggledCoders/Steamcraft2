@@ -112,7 +112,7 @@ public class DepthsBiomeDecorator extends DeferredBiomeDecorator
 		{
 			k = chunkX + random.nextInt(16);
 			l = chunkZ + random.nextInt(16);
-			i1 = currentWorld.getHeightValue(k, l);
+			i1 = world.getHeightValue(k, l);
 			WorldGenAbstractTree worldgenabstracttree = biome.func_150567_a(random);
 			worldgenabstracttree.setScale(1.0D, 1.0D, 1.0D);
 
