@@ -41,7 +41,6 @@ public class DepthsBiomeDecorator extends DeferredBiomeDecorator
 {
 	/** The clay generator. */
 	private WorldGenerator clayGen = new WorldGenClay(6);
-	private World currentWorld;
 
 	public DepthsBiomeDecorator(BiomeDecorator original)
 	{
@@ -50,7 +49,7 @@ public class DepthsBiomeDecorator extends DeferredBiomeDecorator
 		this.gravelAsSandGen = new WorldGenSand(Blocks.gravel, 6);
 		this.dirtGen = new WorldGenMinable(Blocks.dirt, 16);
 		this.gravelGen = new WorldGenMinable(Blocks.gravel, 16);
-		this.coalGen = new WorldGenMinable(Blocks.coal_ore, 32);
+		this.coalGen = new WorldGenMinable(Blocks.coal_ore, 20);
 		this.ironGen = new WorldGenMinable(Blocks.iron_ore, 16);
 		this.goldGen = new WorldGenMinable(Blocks.gold_ore, 16);
 		this.redstoneGen = new WorldGenMinable(Blocks.redstone_ore, 12);
@@ -73,7 +72,6 @@ public class DepthsBiomeDecorator extends DeferredBiomeDecorator
 	@Override
 	public void decorateChunk(World world, Random random, BiomeGenBase biome, int chunkX, int chunkZ)
 	{
-		this.currentWorld = world;
 
 		this.generateOres(world, chunkX, chunkZ, random);
 		int i;
@@ -98,29 +96,8 @@ public class DepthsBiomeDecorator extends DeferredBiomeDecorator
 			k = chunkZ + random.nextInt(16);
 			this.gravelAsSandGen.generate(world, random, j, world.getTopSolidOrLiquidBlock(j, k), k);
 		}
-
-		i = this.treesPerChunk;
-
-		if(random.nextInt(10) == 0)
-		{
-			++i;
-		}
-
 		int l;
 		int i1;
-		for(j = 0; j < i; ++j)
-		{
-			k = chunkX + random.nextInt(16);
-			l = chunkZ + random.nextInt(16);
-			i1 = world.getHeightValue(k, l);
-			WorldGenAbstractTree worldgenabstracttree = biome.func_150567_a(random);
-			worldgenabstracttree.setScale(1.0D, 1.0D, 1.0D);
-
-			if(worldgenabstracttree.generate(currentWorld, random, k - 3, i1, l - 3))
-			{
-				worldgenabstracttree.func_150524_b(currentWorld, random, k - 3, i1, l - 3);
-			}
-		}
 		for(j = 0; j < this.bigMushroomsPerChunk; ++j)
 		{
 			k = chunkX + random.nextInt(16);
@@ -314,8 +291,25 @@ public class DepthsBiomeDecorator extends DeferredBiomeDecorator
 			int zCoord = chunkZ + random.nextInt(16);
 			new WorldGenRandomUnderground(InitBlocks.blockMushroom, 2).generate(world, random, xCoord, yCoord, zCoord);
 		}
+		i = this.treesPerChunk;
 
-		this.currentWorld = null;
+		if(random.nextInt(10) == 0)
+		{
+			++i;
+		}
+		for(j = 0; j < i; ++j)
+		{
+			k = chunkX + random.nextInt(16);
+			l = chunkZ + random.nextInt(16);
+			i1 = world.getHeightValue(k, l);
+			WorldGenAbstractTree worldgenabstracttree = biome.func_150567_a(random);
+			worldgenabstracttree.setScale(1.0D, 1.0D, 1.0D);
+
+			if(worldgenabstracttree.generate(world, random, k - 3, i1, l - 3))
+			{
+				worldgenabstracttree.func_150524_b(world, random, k - 3, i1, l - 3);
+			}
+		}
 	}
 
 	/**
