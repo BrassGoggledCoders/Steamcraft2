@@ -33,6 +33,7 @@ import steamcraft.client.renderers.block.BlockCopperPipeRenderer;
 import steamcraft.client.renderers.block.BlockCopperWireRenderer;
 import steamcraft.client.renderers.block.BlockRailingRenderer;
 import steamcraft.client.renderers.block.BlockSpiderEggRenderer;
+import steamcraft.client.renderers.entity.RenderAbandonedGolem;
 import steamcraft.client.renderers.entity.RenderBoar;
 import steamcraft.client.renderers.entity.RenderFallingBoulder;
 import steamcraft.client.renderers.entity.RenderFleshGolem;
@@ -62,6 +63,7 @@ import steamcraft.client.renderers.tile.TileTeslaCoilRenderer;
 import steamcraft.common.CommonProxy;
 import steamcraft.common.entities.EntityFallingBoulder;
 import steamcraft.common.entities.EntityGrapplingHook;
+import steamcraft.common.entities.living.EntityAbandonedGolem;
 import steamcraft.common.entities.living.EntityBoar;
 import steamcraft.common.entities.living.EntityFleshGolem;
 import steamcraft.common.entities.living.EntityGhostSpider;
@@ -78,7 +80,6 @@ import steamcraft.common.entities.projectile.EntityRocket;
 import steamcraft.common.entities.projectile.EntitySplashLightningBottle;
 import steamcraft.common.init.InitItems;
 import steamcraft.common.tiles.EmptyTiles;
-import steamcraft.common.tiles.EmptyTiles.TileCastIronLamp;
 import steamcraft.common.tiles.TileArmorEditor;
 import steamcraft.common.tiles.TileCopperPipe;
 import steamcraft.common.tiles.energy.TileBattery;
@@ -104,7 +105,7 @@ public class ClientProxy extends CommonProxy
 	public void init()
 	{
 		super.init();
-		//this.registerDisplayInformation();
+		// this.registerDisplayInformation();
 		this.registerBlockRenderers();
 		this.registerEntityRenderers();
 		this.registerKeys();
@@ -144,6 +145,7 @@ public class ClientProxy extends CommonProxy
 		RenderingRegistry.registerEntityRenderingHandler(EntitySpiderQueen.class, new RenderGhostSpider());
 		RenderingRegistry.registerEntityRenderingHandler(EntityShroomZombie.class, new RenderShroomZombie());
 		RenderingRegistry.registerEntityRenderingHandler(EntityShroomSkeleton.class, new RenderShroomSkeleton());
+		RenderingRegistry.registerEntityRenderingHandler(EntityAbandonedGolem.class, new RenderAbandonedGolem());
 	}
 
 	private void registerBlockRenderers()

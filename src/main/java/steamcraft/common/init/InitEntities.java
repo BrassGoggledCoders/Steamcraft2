@@ -18,6 +18,7 @@ import steamcraft.common.Steamcraft;
 import steamcraft.common.entities.EntityFallingBoulder;
 import steamcraft.common.entities.EntityGrapplingHook;
 import steamcraft.common.entities.EntityTimeBomb;
+import steamcraft.common.entities.living.EntityAbandonedGolem;
 import steamcraft.common.entities.living.EntityBoar;
 import steamcraft.common.entities.living.EntityFleshGolem;
 import steamcraft.common.entities.living.EntityGhostSpider;
@@ -58,5 +59,6 @@ public class InitEntities
 		EntityRegistry.registerModEntity(EntitySpiderQueen.class, "SpiderQueen", entID++, Steamcraft.instance, 64, 1, true);
 		EntityRegistry.registerModEntity(EntityShroomZombie.class, "ShroomZombie", entID++, Steamcraft.instance, 64, 1, true);
 		EntityRegistry.registerModEntity(EntityShroomSkeleton.class, "ShroomSkeleton", entID++, Steamcraft.instance, 64, 1, true);
+		EntityRegistry.registerModEntity(EntityAbandonedGolem.class, "AbdandonedGolem", entID++, Steamcraft.instance, 64, 1, true);
 	}
 }
