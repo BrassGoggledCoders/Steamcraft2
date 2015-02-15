@@ -44,7 +44,6 @@ import steamcraft.common.init.InitBiomes;
 import steamcraft.common.init.InitBlocks;
 import steamcraft.common.worldgen.biomes.BiomeDepthsBase;
 import steamcraft.common.worldgen.structure.MapGenUndercity;
-import steamcraft.common.worldgen.structure.WorldGenUndergroundHouse;
 
 public class ChunkProviderDeeps implements IChunkProvider
 {
@@ -457,17 +456,7 @@ public class ChunkProviderDeeps implements IChunkProvider
 			(new WorldGenDungeons()).generate(this.worldObj, this.rand, l1, i2, j2);
 		}
 
-		int X2 = chunkX + rand.nextInt(16);
-		int Z2 = chunkZ + rand.nextInt(16);
-		int Y2 = rand.nextInt(50);
-
-		for(int i3 = 0; i3 < 5; i3++)
-		{
-			new WorldGenUndergroundHouse().generate(worldObj, rand, X2, Y2, Z2);
-		}
-
 		biomegendepths.decorate(this.worldObj, this.rand, blockX, blockZ);
-
 		SpawnerAnimals.performWorldGenSpawning(this.worldObj, biomegenbase, blockX + 8, blockZ + 8, 16, 16, this.rand);
 		blockX += 8;
 		blockZ += 8;

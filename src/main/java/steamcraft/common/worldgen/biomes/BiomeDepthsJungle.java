@@ -43,8 +43,6 @@ public class BiomeDepthsJungle extends BiomeDepthsBase
 	@Override
 	public void decorate(World world, Random random, int x, int z)
 	{
-		super.decorate(world, random, x, z);
-
 		for(int l = 0; l < 30; ++l)
 		{
 			int i1 = x + random.nextInt(16) + 8;
@@ -52,6 +50,7 @@ public class BiomeDepthsJungle extends BiomeDepthsBase
 			int k1 = random.nextInt(100);
 			new WorldGenVines().generate(world, random, i1, k1, j1);
 		}
+		super.decorate(world, random, x, z);
 	}
 
 	/**
