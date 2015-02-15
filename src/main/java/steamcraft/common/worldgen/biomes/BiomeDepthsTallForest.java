@@ -48,6 +48,7 @@ public class BiomeDepthsTallForest extends BiomeDepthsBase
 	@Override
 	public void decorate(World p_76728_1_, Random p_76728_2_, int p_76728_3_, int p_76728_4_)
 	{
+		super.decorate(p_76728_1_, p_76728_2_, p_76728_3_, p_76728_4_);
 
 		genTallFlowers.func_150548_a(3);
 
@@ -66,8 +67,6 @@ public class BiomeDepthsTallForest extends BiomeDepthsBase
 			int k1 = p_76728_1_.getHeightValue(i1, j1);
 			new WorldGenBlockBlob(Blocks.mossy_cobblestone, 0).generate(p_76728_1_, p_76728_2_, i1, k1, j1);
 		}
-
-		super.decorate(p_76728_1_, p_76728_2_, p_76728_3_, p_76728_4_);
 	}
 
 	/**

@@ -24,10 +24,10 @@ public class WorldGenBlockgroup extends WorldGenerator
 	private final Block blockToGen;
 	private final int numberOfBlocks;
 
-	public WorldGenBlockgroup(Block block, int p_i2011_1_)
+	public WorldGenBlockgroup(Block block, int numOfBlocks)
 	{
 		this.blockToGen = block;
-		this.numberOfBlocks = p_i2011_1_;
+		this.numberOfBlocks = numOfBlocks;
 	}
 
 	@Override

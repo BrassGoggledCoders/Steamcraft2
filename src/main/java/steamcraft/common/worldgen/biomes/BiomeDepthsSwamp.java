@@ -104,6 +104,8 @@ public class BiomeDepthsSwamp extends BiomeDepthsBase
 	@Override
 	public void decorate(World world, Random random, int x, int z)
 	{
+		super.decorate(world, random, x, z);
+
 		for(int l = 0; l < 30; ++l)
 		{
 			int i1 = x + random.nextInt(16);
@@ -132,7 +134,6 @@ public class BiomeDepthsSwamp extends BiomeDepthsBase
 			int Y = random.nextInt(100);
 			new WorldGenLeafPile(InitBlocks.blockMoss).generate(world, random, X, Y, Z);
 		}
-		super.decorate(world, random, x, z);
 	}
 
 	/**
