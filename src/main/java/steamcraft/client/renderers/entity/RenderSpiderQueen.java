@@ -23,14 +23,14 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 import steamcraft.common.lib.ModInfo;
 
-public class RenderGhostSpider extends RenderLiving
+public class RenderSpiderQueen extends RenderLiving
 {
-	private static final ResourceLocation spiderTextures = new ResourceLocation(ModInfo.PREFIX + "textures/models/mobs/ghostspider.png");
+	private static final ResourceLocation spiderTextures = new ResourceLocation(ModInfo.PREFIX + "textures/models/mobs/spiderqueen.png");
 	private static final ResourceLocation spiderEyesTextures = new ResourceLocation("textures/entity/spider_eyes.png");
 
-	public RenderGhostSpider()
+	public RenderSpiderQueen()
 	{
-		super(new ModelSpider(), 1.0F);
+		super(new ModelSpider(), 10.0F);
 		this.setRenderPassModel(new ModelSpider());
 	}
 
