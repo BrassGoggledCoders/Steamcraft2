@@ -19,6 +19,7 @@ import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeDecorator;
 import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -71,5 +72,11 @@ public class BiomeDepthsBase extends BiomeGenBase
 	public void decorate(World world, Random random, int x, int z)
 	{
 		this.decorator.decorateChunk(world, random, this, x, z);
+	}
+
+	@Override
+	public WorldGenAbstractTree func_150567_a(Random p_150567_1_)
+	{
+		return this.worldGeneratorTrees;
 	}
 }
