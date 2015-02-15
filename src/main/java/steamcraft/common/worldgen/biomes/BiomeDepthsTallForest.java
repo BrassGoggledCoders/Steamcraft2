@@ -48,17 +48,6 @@ public class BiomeDepthsTallForest extends BiomeDepthsBase
 	@Override
 	public void decorate(World p_76728_1_, Random p_76728_2_, int p_76728_3_, int p_76728_4_)
 	{
-		super.decorate(p_76728_1_, p_76728_2_, p_76728_3_, p_76728_4_);
-
-		genTallFlowers.func_150548_a(3);
-
-		for(int k = 0; k < 7; ++k)
-		{
-			int l = p_76728_3_ + p_76728_2_.nextInt(16);
-			int i1 = p_76728_4_ + p_76728_2_.nextInt(16);
-			int j1 = p_76728_2_.nextInt(p_76728_1_.getHeightValue(l, i1) + 32);
-			genTallFlowers.generate(p_76728_1_, p_76728_2_, l, j1, i1);
-		}
 		for(int l = 0; l < 3; ++l)
 		{
 			int k = p_76728_2_.nextInt(3);
@@ -67,6 +56,17 @@ public class BiomeDepthsTallForest extends BiomeDepthsBase
 			int k1 = p_76728_1_.getHeightValue(i1, j1);
 			new WorldGenBlockBlob(Blocks.mossy_cobblestone, 0).generate(p_76728_1_, p_76728_2_, i1, k1, j1);
 		}
+		genTallFlowers.func_150548_a(3);
+
+		for(int k = 0; k < 7; ++k)
+		{
+			int l = p_76728_3_ + p_76728_2_.nextInt(16) + 8;
+			int i1 = p_76728_4_ + p_76728_2_.nextInt(16) + 8;
+			int j1 = p_76728_2_.nextInt(p_76728_1_.getHeightValue(l, i1) + 32);
+			genTallFlowers.generate(p_76728_1_, p_76728_2_, l, j1, i1);
+		}
+
+		super.decorate(p_76728_1_, p_76728_2_, p_76728_3_, p_76728_4_);
 	}
 
 	/**

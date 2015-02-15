@@ -67,8 +67,6 @@ public class BiomeDepthsBase extends BiomeGenBase
 	@Override
 	public void decorate(World world, Random random, int chunkX, int chunkZ)
 	{
-		super.decorate(world, random, chunkX, chunkZ);
-
 		for(int a = 0; a < 10; ++a)
 		{
 			int x = chunkX + random.nextInt(16);
@@ -147,5 +145,6 @@ public class BiomeDepthsBase extends BiomeGenBase
 			int zCoord = chunkZ + random.nextInt(16);
 			new WorldGenRandomUnderground(InitBlocks.blockMushroom, 2).generate(world, random, xCoord, yCoord, zCoord);
 		}
+		this.theBiomeDecorator.decorateChunk(world, random, this, chunkX, chunkZ);
 	}
 }
