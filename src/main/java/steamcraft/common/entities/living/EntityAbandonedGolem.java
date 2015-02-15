@@ -6,10 +6,19 @@ import net.minecraft.world.World;
 public class EntityAbandonedGolem extends EntityIronGolem
 {
 
-	public EntityAbandonedGolem(World p_i1694_1_)
+	public EntityAbandonedGolem(World world)
 	{
-		super(p_i1694_1_);
-		// TODO Auto-generated constructor stub
+		super(world);
+		this.setBeenAttacked();
+		this.setPlayerCreated(false);
 	}
 
+	/**
+	 * Returns true if this entity can attack entities of the specified class.
+	 */
+	@Override
+	public boolean canAttackClass(Class p_70686_1_)
+	{
+		return true;
+	}
 }
