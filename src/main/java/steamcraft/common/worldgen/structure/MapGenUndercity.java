@@ -22,8 +22,6 @@ import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.structure.MapGenStructure;
 import net.minecraft.world.gen.structure.StructureStart;
 
-import steamcraft.common.lib.LoggerSteamcraft;
-
 public class MapGenUndercity extends MapGenStructure
 {
 	private double field_82673_e = 0.004D;
@@ -79,7 +77,7 @@ public class MapGenUndercity extends MapGenStructure
 				long l1 = j1 * l;
 				long i2 = k1 * i1;
 				this.rand.setSeed(l1 ^ i2 ^ p_151539_2_.getSeed());
-				LoggerSteamcraft.info("Gen at: " + j1 + " " + k1);
+				// LoggerSteamcraft.info("Gen at: " + j1 + " " + k1);
 				this.func_151538_a(p_151539_2_, j1, k1, chunkX, chunkZ, p_151539_5_);
 			}
 		}
