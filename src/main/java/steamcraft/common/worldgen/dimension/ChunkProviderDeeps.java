@@ -36,14 +36,12 @@ import net.minecraft.world.gen.NoiseGeneratorOctaves;
 import net.minecraft.world.gen.NoiseGeneratorPerlin;
 import net.minecraft.world.gen.feature.WorldGenDungeons;
 import net.minecraft.world.gen.feature.WorldGenLakes;
-import net.minecraft.world.gen.feature.WorldGenMinable;
 import net.minecraft.world.gen.structure.MapGenMineshaft;
 
 import net.minecraftforge.event.terraingen.TerrainGen;
 
 import steamcraft.common.init.InitBiomes;
 import steamcraft.common.init.InitBlocks;
-import steamcraft.common.worldgen.WorldGenRandomUnderground;
 import steamcraft.common.worldgen.biomes.BiomeDepthsBase;
 import steamcraft.common.worldgen.structure.MapGenUndercity;
 import steamcraft.common.worldgen.structure.WorldGenUndergroundHouse;
@@ -467,78 +465,8 @@ public class ChunkProviderDeeps implements IChunkProvider
 		{
 			new WorldGenUndergroundHouse().generate(worldObj, rand, X2, Y2, Z2);
 		}
-		for(int i3 = 0; i3 < 3; i3++)
-		{
-			int oreXCoord = chunkX + rand.nextInt(16);
-			int oreYCoord = 10 + rand.nextInt(40);
-			int oreZCoord = chunkZ + rand.nextInt(16);
-
-			new WorldGenMinable(InitBlocks.blockBoulder, 0, 1, Blocks.stone).generate(worldObj, rand, oreXCoord, oreYCoord, oreZCoord);
-		}
-
-		{
-			int xCoord = chunkX + rand.nextInt(16);
-			int yCoord = 10 + rand.nextInt(40);
-			int zCoord = chunkZ + rand.nextInt(16);
-			new WorldGenRandomUnderground(Blocks.web).generate(worldObj, rand, xCoord, yCoord, zCoord);
-		}
-
-		{
-			int xCoord = chunkX + rand.nextInt(16);
-			int yCoord = 10 + rand.nextInt(40);
-			int zCoord = chunkZ + rand.nextInt(16);
-			new WorldGenRandomUnderground(Blocks.skull).generate(worldObj, rand, xCoord, yCoord, zCoord);
-		}
-
-		{
-			int xCoord = chunkX + rand.nextInt(16);
-			int yCoord = 10 + rand.nextInt(40);
-			int zCoord = chunkZ + rand.nextInt(16);
-			new WorldGenRandomUnderground(Blocks.vine).generate(worldObj, rand, xCoord, yCoord, zCoord);
-		}
-		{
-			int xCoord = chunkX + rand.nextInt(16);
-			int yCoord = 10 + rand.nextInt(40);
-			int zCoord = chunkZ + rand.nextInt(16);
-			new WorldGenRandomUnderground(InitBlocks.blockMushroom, 0).generate(worldObj, rand, xCoord, yCoord, zCoord);
-		}
-		{
-			int xCoord = chunkX + rand.nextInt(16);
-			int yCoord = 10 + rand.nextInt(40);
-			int zCoord = chunkZ + rand.nextInt(16);
-			new WorldGenRandomUnderground(InitBlocks.blockMushroom, 1).generate(worldObj, rand, xCoord, yCoord, zCoord);
-		}
-		{
-			int xCoord = chunkX + rand.nextInt(16);
-			int yCoord = 10 + rand.nextInt(40);
-			int zCoord = chunkZ + rand.nextInt(16);
-			new WorldGenRandomUnderground(InitBlocks.blockMushroom, 2).generate(worldObj, rand, xCoord, yCoord, zCoord);
-		}
 
 		biomegendepths.decorate(this.worldObj, this.rand, blockX, blockZ);
-
-		for(int a = 0; a < 6 + rand.nextInt(9); ++a)
-		{
-			int x = chunkX + rand.nextInt(16);
-			int y = rand.nextInt(28) + 4;
-			int z = chunkZ + rand.nextInt(16);
-
-			if(worldObj.getBlock(x, y, z).isReplaceableOreGen(worldObj, x, y, z, Blocks.stone))
-			{
-				new WorldGenMinable(InitBlocks.blockCompressedStone, 6 + rand.nextInt(9)).generate(worldObj, rand, x, y, z);
-			}
-		}
-		for(int a = 0; a < 10; ++a)
-		{
-			int x = chunkX + rand.nextInt(16);
-			int y = rand.nextInt(60);
-			int z = chunkZ + rand.nextInt(16);
-
-			if(worldObj.getBlock(x, y, z).isReplaceableOreGen(worldObj, x, y, z, Blocks.stone))
-			{
-				new WorldGenMinable(Blocks.emerald_ore, 3).generate(worldObj, rand, x, y, z);
-			}
-		}
 
 		SpawnerAnimals.performWorldGenSpawning(this.worldObj, biomegenbase, blockX + 8, blockZ + 8, 16, 16, this.rand);
 		blockX += 8;
