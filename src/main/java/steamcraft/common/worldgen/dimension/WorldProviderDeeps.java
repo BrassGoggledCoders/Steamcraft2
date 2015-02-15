@@ -27,6 +27,12 @@ import steamcraft.common.worldgen.dimension.util.DeepsSkyRenderer;
 
 public class WorldProviderDeeps extends WorldProvider
 {
+	public ChunkProviderDeeps chunkProvider;
+
+	public WorldProviderDeeps()
+	{
+		this.setDimension(ConfigGeneral.deepsDimensionID);
+	}
 
 	@Override
 	public String getDimensionName()
@@ -67,6 +73,11 @@ public class WorldProviderDeeps extends WorldProvider
 	@Override
 	public IChunkProvider createChunkGenerator()
 	{
+		if(this.chunkProvider == null)
+		{
+			this.chunkProvider = new ChunkProviderDeeps(this.worldObj, this.worldObj.getSeed());
+			return this.chunkProvider;
+		}
 		return new ChunkProviderDeeps(this.worldObj, this.worldObj.getSeed());
 	}
 

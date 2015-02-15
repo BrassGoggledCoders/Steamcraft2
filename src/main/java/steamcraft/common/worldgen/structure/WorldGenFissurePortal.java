@@ -25,9 +25,8 @@ public class WorldGenFissurePortal extends WorldGenerator
 {
 	private boolean locationIsValidSpawn(World world, int i, int j, int k)
 	{
-		Block check = world.getBlock(i, j, k);
 
-		return /* check == Blocks.stone || */check == Blocks.bedrock;
+		return world.getBlock(i, j, k) == Blocks.bedrock;
 	}
 
 	public WorldGenFissurePortal()
