@@ -12,9 +12,6 @@
  */
 package steamcraft.common.worldgen.dimension;
 
-import static net.minecraftforge.event.terraingen.InitMapGenEvent.EventType.CAVE;
-import static net.minecraftforge.event.terraingen.InitMapGenEvent.EventType.RAVINE;
-
 import java.util.List;
 import java.util.Random;
 
@@ -39,6 +36,7 @@ import net.minecraft.world.gen.NoiseGeneratorOctaves;
 import net.minecraft.world.gen.NoiseGeneratorPerlin;
 import net.minecraft.world.gen.feature.WorldGenDungeons;
 import net.minecraft.world.gen.feature.WorldGenLakes;
+import net.minecraft.world.gen.structure.MapGenMineshaft;
 
 import net.minecraftforge.event.terraingen.TerrainGen;
 
@@ -69,6 +67,7 @@ public class ChunkProviderDeeps implements IChunkProvider
 	private double[] stoneNoise = new double[256];
 	private MapGenBase caveGenerator = new MapGenCaves();
 	private MapGenBase ravineGenerator = new MapGenRavine();
+	private MapGenMineshaft mineShaftGenerator = new MapGenMineshaft();
 	private MapGenUndercity undercityGenerator = new MapGenUndercity();
 	/** The biomes that are used to generate the chunk */
 	private BiomeGenBase[] biomesForGeneration;
@@ -76,11 +75,6 @@ public class ChunkProviderDeeps implements IChunkProvider
 	private double[] field_147428_e;
 	private double[] field_147425_f;
 	private double[] field_147426_g;
-
-	{
-		this.caveGenerator = TerrainGen.getModdedMapGen(this.caveGenerator, CAVE);
-		this.ravineGenerator = TerrainGen.getModdedMapGen(this.ravineGenerator, RAVINE);
-	}
 
 	public ChunkProviderDeeps(World p_i2006_1_, long p_i2006_2_)
 	{
@@ -244,8 +238,8 @@ public class ChunkProviderDeeps implements IChunkProvider
 		this.replaceBlocksForBiome(chunkCoordX, chunkCoordZ, ablock, abyte, this.biomesForGeneration);
 		this.caveGenerator.func_151539_a(this, this.worldObj, chunkCoordX, chunkCoordZ, ablock);
 		this.ravineGenerator.func_151539_a(this, this.worldObj, chunkCoordX, chunkCoordZ, ablock);
+		this.mineShaftGenerator.func_151539_a(this, this.worldObj, chunkCoordX, chunkCoordZ, ablock);
 
-		// if((this.rand.nextInt(5) == 0))
 		this.undercityGenerator.func_151539_a(this, this.worldObj, chunkCoordX, chunkCoordZ, ablock);
 
 		if(this.worldObj.getBiomeGenForCoords(chunkCoordZ * 16, chunkCoordX * 16) == InitBiomes.biomeDepthsSW)
@@ -413,6 +407,8 @@ public class ChunkProviderDeeps implements IChunkProvider
 		long j1 = ((this.rand.nextLong() / 2L) * 2L) + 1L;
 		this.rand.setSeed(((chunkX * i1) + (chunkZ * j1)) ^ this.worldObj.getSeed());
 		boolean flag = false;
+
+		this.mineShaftGenerator.generateStructuresInChunk(this.worldObj, this.rand, chunkX, chunkZ);
 
 		this.undercityGenerator.generateStructuresInChunk(this.worldObj, this.rand, chunkX, chunkZ);
 
