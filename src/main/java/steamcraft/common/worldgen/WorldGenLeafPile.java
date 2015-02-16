@@ -30,18 +30,31 @@ public class WorldGenLeafPile extends WorldGenerator
 	}
 
 	@Override
-	public boolean generate(World p_76484_1_, Random p_76484_2_, int p_76484_3_, int p_76484_4_, int p_76484_5_)
+	public boolean generate(World world, Random random, int x, int y, int z)
 	{
-		for(int l = 0; l < 64; ++l)
-		{
-			int i1 = (p_76484_3_ + p_76484_2_.nextInt(8)) - p_76484_2_.nextInt(8);
-			int j1 = (p_76484_4_ + p_76484_2_.nextInt(4)) - p_76484_2_.nextInt(4);
-			int k1 = (p_76484_5_ + p_76484_2_.nextInt(8)) - p_76484_2_.nextInt(8);
+		int l = random.nextInt(15);
+		byte b0 = 1;
+		boolean flag = false;
 
-			if(p_76484_1_.isAirBlock(i1, j1, k1)
-					&& InitBlocks.blockLeafCover.canPlaceBlockAt(p_76484_1_, i1, j1, k1))
+		for(int i1 = x - l; i1 <= (x + l); ++i1)
+		{
+			for(int j1 = z - l; j1 <= (z + l); ++j1)
 			{
-				p_76484_1_.setBlock(i1, j1, k1, this.block, p_76484_2_.nextInt(6), 2);
+				int k1 = i1 - x;
+				int l1 = j1 - z;
+
+				if(((k1 * k1) + (l1 * l1)) <= (l * l))
+				{
+					for(int i2 = y - b0; i2 <= (y + b0); ++i2)
+					{
+
+						if(world.isAirBlock(i1, j1, k1)
+								&& InitBlocks.blockLeafCover.canPlaceBlockAt(world, i1, j1, k1))
+						{
+							world.setBlock(i1, j1, k1, this.block, random.nextInt(6), 2);
+						}
+					}
+				}
 			}
 		}
 
