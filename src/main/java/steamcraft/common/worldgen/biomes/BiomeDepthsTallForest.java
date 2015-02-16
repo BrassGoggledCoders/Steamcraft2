@@ -31,8 +31,8 @@ public class BiomeDepthsTallForest extends BiomeDepthsBase
 	{
 		super(p_i1971_1_);
 		this.setBiomeName(StatCollector.translateToLocal("biome.steamcraft2.innerearth.tallforest.name"));
-		this.theBiomeDecorator.treesPerChunk = 20;
-		this.theBiomeDecorator.grassPerChunk = 30;
+		this.theBiomeDecorator.treesPerChunk = 60;
+		this.theBiomeDecorator.grassPerChunk = 10;
 	}
 
 	@Override

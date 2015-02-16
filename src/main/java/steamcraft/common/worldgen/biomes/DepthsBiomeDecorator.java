@@ -99,6 +99,25 @@ public class DepthsBiomeDecorator extends DeferredBiomeDecorator
 		}
 		int l;
 		int i1;
+		i = this.treesPerChunk;
+
+		if(random.nextInt(10) == 0)
+		{
+			++i;
+		}
+		for(j = 0; j < i; ++j)
+		{
+			k = chunkX + random.nextInt(16);
+			l = chunkZ + random.nextInt(16);
+			i1 = world.getHeightValue(k, l);
+			WorldGenAbstractTree worldgenabstracttree = biome.func_150567_a(random);
+			worldgenabstracttree.setScale(1.0D, 1.0D, 1.0D);
+
+			if(worldgenabstracttree.generate(world, random, k - 3, i1, l - 3))
+			{
+				worldgenabstracttree.func_150524_b(world, random, k - 3, i1, l - 3);
+			}
+		}
 		for(j = 0; j < this.bigMushroomsPerChunk; ++j)
 		{
 			k = chunkX + random.nextInt(16);
@@ -291,25 +310,6 @@ public class DepthsBiomeDecorator extends DeferredBiomeDecorator
 			int yCoord = 10 + random.nextInt(40);
 			int zCoord = chunkZ + random.nextInt(16);
 			new WorldGenRandomUnderground(InitBlocks.blockMushroom, 2).generate(world, random, xCoord, yCoord, zCoord);
-		}
-		i = this.treesPerChunk;
-
-		if(random.nextInt(10) == 0)
-		{
-			++i;
-		}
-		for(j = 0; j < i; ++j)
-		{
-			k = chunkX + random.nextInt(16);
-			l = chunkZ + random.nextInt(16);
-			i1 = world.getHeightValue(k, l);
-			WorldGenAbstractTree worldgenabstracttree = biome.func_150567_a(random);
-			worldgenabstracttree.setScale(1.0D, 1.0D, 1.0D);
-
-			if(worldgenabstracttree.generate(world, random, k - 3, i1, l - 3))
-			{
-				worldgenabstracttree.func_150524_b(world, random, k - 3, i1, l - 3);
-			}
 		}
 	}
 

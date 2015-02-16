@@ -47,11 +47,10 @@ public class WorldGenLeafPile extends WorldGenerator
 				{
 					for(int i2 = y - b0; i2 <= (y + b0); ++i2)
 					{
-
-						if(world.isAirBlock(i1, j1, k1)
-								&& InitBlocks.blockLeafCover.canPlaceBlockAt(world, i1, j1, k1))
+						if(world.isAirBlock(i1, j1 + 1, k1)
+								&& InitBlocks.blockLeafCover.canPlaceBlockAt(world, i1, j1 + 1, k1))
 						{
-							world.setBlock(i1, j1, k1, this.block, random.nextInt(6), 2);
+							world.setBlock(i1, j1 + 1, k1, this.block, random.nextInt(6), 2);
 						}
 					}
 				}
