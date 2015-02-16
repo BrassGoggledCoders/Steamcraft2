@@ -55,7 +55,7 @@ public class ItemRayGun extends ElectricItem
 	{
 		if(this.getEnergyStored(stack) > ItemRayGun.energyPerUse)
 		{
-			MovingObjectPosition mop = PlayerUtils.getTargetBlock(world, player, true, 20);
+			MovingObjectPosition mop = PlayerUtils.getTargetBlock(world, player, true, 50);
 
 			Vec3 vec3 = player.getLookVec();
 			double tx = player.posX + (vec3.xCoord * 10.0D);
@@ -85,12 +85,6 @@ public class ItemRayGun extends ElectricItem
 				ray.put(player.getCommandSenderName(),
 						Steamcraft.proxy.rayFX(world, player, tx, ty, tz, 2, false, impact > 0 ? 2.0F : 0.0F, ray.get(player), impact, Color.GREEN));
 
-			// Couldn't get this shit to work...maybe I was just having a bad
-			// day
-			/*
-			 * if(mop != null && mop.typeOfHit == EnumMovingObjectType.ENTITY) { if(!(mop.entityHit instanceof EntityEnderman)) { //mop.entityHit.setFire(500);
-			 * System.out.println(mop.entityHit); //DamageSource damage = DamageSource.causePlayerDamage(player); extractEnergy(stack, energyPerUse, false); } }
-			 */
 			if((mop != null) && (mop.typeOfHit == MovingObjectPosition.MovingObjectType.BLOCK))
 			{
 				int x = mop.blockX;
