@@ -24,7 +24,7 @@ import net.minecraft.world.gen.structure.StructureStart;
 
 public class MapGenUndercity extends MapGenStructure
 {
-	private double field_82673_e = 0.004D;
+	private double field_82673_e = 0.04D;
 
 	public MapGenUndercity()
 	{

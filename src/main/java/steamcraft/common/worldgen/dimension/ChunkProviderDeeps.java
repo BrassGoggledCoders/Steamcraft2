@@ -66,7 +66,7 @@ public class ChunkProviderDeeps implements IChunkProvider
 	private double[] stoneNoise = new double[256];
 	private MapGenBase caveGenerator = new MapGenCaves();
 	private MapGenBase ravineGenerator = new MapGenRavine();
-	private MapGenMineshaft mineShaftGenerator = new MapGenMineshaft();
+	private MapGenMineshaft mineshaftGenerator = new MapGenMineshaft();
 	private MapGenUndercity undercityGenerator = new MapGenUndercity();
 	/** The biomes that are used to generate the chunk */
 	private BiomeGenBase[] biomesForGeneration;
@@ -237,7 +237,7 @@ public class ChunkProviderDeeps implements IChunkProvider
 		this.replaceBlocksForBiome(chunkCoordX, chunkCoordZ, ablock, abyte, this.biomesForGeneration);
 		this.caveGenerator.func_151539_a(this, this.worldObj, chunkCoordX, chunkCoordZ, ablock);
 		this.ravineGenerator.func_151539_a(this, this.worldObj, chunkCoordX, chunkCoordZ, ablock);
-		this.mineShaftGenerator.func_151539_a(this, this.worldObj, chunkCoordX, chunkCoordZ, ablock);
+		this.mineshaftGenerator.func_151539_a(this, this.worldObj, chunkCoordX, chunkCoordZ, ablock);
 
 		this.undercityGenerator.func_151539_a(this, this.worldObj, chunkCoordX, chunkCoordZ, ablock);
 
@@ -401,7 +401,7 @@ public class ChunkProviderDeeps implements IChunkProvider
 		this.rand.setSeed(((chunkX * i1) + (chunkZ * j1)) ^ this.worldObj.getSeed());
 		boolean flag = false;
 
-		this.mineShaftGenerator.generateStructuresInChunk(this.worldObj, this.rand, chunkX, chunkZ);
+		this.mineshaftGenerator.generateStructuresInChunk(this.worldObj, this.rand, chunkX, chunkZ);
 
 		this.undercityGenerator.generateStructuresInChunk(this.worldObj, this.rand, chunkX, chunkZ);
 
@@ -533,7 +533,7 @@ public class ChunkProviderDeeps implements IChunkProvider
 	@Override
 	public void recreateStructures(int p_82695_1_, int p_82695_2_)
 	{
-		this.mineShaftGenerator.func_151539_a(this, this.worldObj, p_82695_1_, p_82695_2_, (Block[]) null);
+		this.mineshaftGenerator.func_151539_a(this, this.worldObj, p_82695_1_, p_82695_2_, (Block[]) null);
 		this.undercityGenerator.func_151539_a(this, this.worldObj, p_82695_1_, p_82695_2_, (Block[]) null);
 	}
 }
