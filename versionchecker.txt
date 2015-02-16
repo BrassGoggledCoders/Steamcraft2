@@ -2,7 +2,7 @@
   "versionList": [
     {
       "mcVersion":"Minecraft 1.7.10",
-      "modVersion":"B3.5b",
+      "modVersion":"B3.6",
       "changeLog": [
         "",
         ""

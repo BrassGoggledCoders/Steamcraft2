@@ -20,6 +20,7 @@ Beta3:
 # Various Electrical System related bugs fixed
 # Many pipe bugs fixed
 Beta 3.1:
+
 + Diving helmet applies night vision if you are underwater
 * More depth/lighting on all metal textures
 * New flesh golem model
@@ -67,5 +68,33 @@ Beta 3.5:
 # Fix dupe bug with crafting items (hammer, drawplate and grindstone)
 # Fix crafting bug with jars
 # Start of fixes to the battery model
+Beta 3.6:
++ Inverted Cast Iron Lamp - on by default
++ Raygun can harden clay
++ Watch Display Module
++ Obsidian Armor grants fire resistance
++ Tinker's Construct Compat with all of our metals
++ Spanner acts as a RC crowbar
+* Uranium pellets hurt you unless they are shielded
+* Make piston boots and climbing spikes modules incompatible
+* Change the way the emergency tank works
+* Change the way power/steam consumption works in modular armor
+* Buff damage of splash lightning bottle
+* Steam Drill 3x3 doesn't only harvest the same block
+* Increase the gravity on the Field Manipulator
+* Removed powered light blocks from the creative tab
+# Fix turbine having a broken bottom texture
+# Fix fluid texture related crashes
+# Fix the crystal jar recipe needing a crystal jar. I'm a silly
+# Fixes to tool harvesting
+# Fix some RC related crashes
+# Probably fix spigot Crystal TE crash
+# Fix shrinkray on servers
+# Fixes to the Raygun
+# Improvements to FMP intergration
+
+N.B. Some things (Shielded Canisters and Molten Zinc for example) are still pending textures
+
+
 Beta 4:
 ++ The Deeps:
