@@ -44,7 +44,7 @@ public class WorldGenSpout extends WorldGenerator
 
 		new WorldGenLakes(block).generate(world, random, x, y, z);
 
-		int wellY = 20 + random.nextInt(10);
+		int wellY = 50 + random.nextInt(10);
 
 		for(int i = wellY + 1; i <= maxHeight; ++i)
 		{
