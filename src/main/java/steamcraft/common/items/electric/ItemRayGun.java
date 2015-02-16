@@ -127,6 +127,12 @@ public class ItemRayGun extends ElectricItem
 									this.extractEnergy(stack, ItemRayGun.energyPerUse, false);
 
 								}
+								if(world.getBlock(i, j, k) == Blocks.clay)
+								{
+									world.setBlock(i, j, k, Blocks.hardened_clay);
+									this.extractEnergy(stack, ItemRayGun.energyPerUse, false);
+
+								}
 							}
 			}
 		}
