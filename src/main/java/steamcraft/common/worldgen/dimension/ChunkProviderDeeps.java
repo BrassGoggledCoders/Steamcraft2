@@ -42,6 +42,7 @@ import net.minecraftforge.event.terraingen.TerrainGen;
 
 import steamcraft.common.init.InitBiomes;
 import steamcraft.common.init.InitBlocks;
+import steamcraft.common.worldgen.WorldGenSpout;
 import steamcraft.common.worldgen.biomes.BiomeDepthsBase;
 import steamcraft.common.worldgen.structure.MapGenCustomScatteredFeature;
 import steamcraft.common.worldgen.structure.MapGenUndercity;
@@ -427,6 +428,11 @@ public class ChunkProviderDeeps implements IChunkProvider
 			l1 = this.rand.nextInt(256);
 			i2 = blockZ + this.rand.nextInt(16);
 			(new WorldGenLakes(InitBlocks.blockBoilingWater)).generate(this.worldObj, this.rand, k1, l1, i2);
+
+			k1 = blockX + this.rand.nextInt(16);
+			l1 = this.rand.nextInt(256);
+			i2 = blockZ + this.rand.nextInt(16);
+			(new WorldGenSpout(InitBlocks.blockBoilingWater)).generate(this.worldObj, this.rand, k1, l1, i2);
 
 			k1 = blockX + this.rand.nextInt(16);
 			l1 = this.rand.nextInt(256);
