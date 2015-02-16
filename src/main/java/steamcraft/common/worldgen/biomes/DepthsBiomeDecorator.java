@@ -241,7 +241,7 @@ public class DepthsBiomeDecorator extends DeferredBiomeDecorator
 		int Z2 = chunkZ + random.nextInt(16);
 		int Y2 = random.nextInt(50);
 
-		for(int i2 = 0; i2 < 5; i2++)
+		for(int i2 = 0; i2 < 3; i2++)
 		{
 			new WorldGenUndergroundHouse().generate(world, random, X2, Y2, Z2);
 		}
