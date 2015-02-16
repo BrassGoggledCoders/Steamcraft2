@@ -17,7 +17,6 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.EnumAction;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
@@ -81,12 +80,5 @@ public class ItemModSword extends ItemModTool
 	public int getItemEnchantability()
 	{
 		return this.toolMaterial.getEnchantability();
-	}
-
-	@Override
-	public boolean getIsRepairable(ItemStack stack1, ItemStack stack2)
-	{
-		Item item = stack2.getItem();
-		return this.toolMaterial.getRepairItemStack().getItem() == item || super.getIsRepairable(stack1, stack2);
 	}
 }

@@ -151,12 +151,10 @@ public class ItemModTool extends BaseItem
 		return this.toolMaterial.getEnchantability();
 	}
 
-	@Override
-	public boolean getIsRepairable(ItemStack stack1, ItemStack stack2)
-	{
-		Item item = stack2.getItem();
-		return this.toolMaterial.getRepairItemStack().getItem() == item || super.getIsRepairable(stack1, stack2);
-	}
+	/*
+	 * @Override public boolean getIsRepairable(ItemStack stack1, ItemStack stack2) { Item item = stack2.getItem(); return
+	 * this.toolMaterial.getRepairItemStack().getItem() == item || super.getIsRepairable(stack1, stack2); }
+	 */
 
 	@Override
 	public boolean onBlockDestroyed(ItemStack stack, World p_150894_2_, Block p_150894_3_, int p_150894_4_, int p_150894_5_, int p_150894_6_,
