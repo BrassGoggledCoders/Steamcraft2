@@ -24,8 +24,15 @@ import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+import steamcraft.common.entities.living.EntityAbandonedGolem;
+import steamcraft.common.entities.living.EntityBoar;
+import steamcraft.common.entities.living.EntityGhostSpider;
+import steamcraft.common.entities.living.EntityGiantSpider;
 import steamcraft.common.entities.living.EntityGrub;
 import steamcraft.common.entities.living.EntityLostMiner;
+import steamcraft.common.entities.living.EntityShroomSkeleton;
+import steamcraft.common.entities.living.EntityShroomZombie;
+import steamcraft.common.entities.living.EntityVampireBat;
 
 public class BiomeDepthsBase extends BiomeGenBase
 {
@@ -34,9 +41,18 @@ public class BiomeDepthsBase extends BiomeGenBase
 	public BiomeDepthsBase(int p_i1971_1_)
 	{
 		super(p_i1971_1_);
-		this.spawnableMonsterList.clear();
-		this.spawnableCaveCreatureList.add(new BiomeGenBase.SpawnListEntry(EntityLostMiner.class, 2, 1, 2));
-		this.spawnableCaveCreatureList.add(new BiomeGenBase.SpawnListEntry(EntityGrub.class, 5, 3, 6));
+		// Cave only
+		this.spawnableMonsterList.add(new BiomeGenBase.SpawnListEntry(EntityLostMiner.class, 10, 1, 3));
+		this.spawnableMonsterList.add(new BiomeGenBase.SpawnListEntry(EntityShroomSkeleton.class, 10, 1, 3));
+		this.spawnableMonsterList.add(new BiomeGenBase.SpawnListEntry(EntityShroomZombie.class, 10, 1, 3));
+		this.spawnableMonsterList.add(new BiomeGenBase.SpawnListEntry(EntityAbandonedGolem.class, 1, 1, 1));
+		this.spawnableMonsterList.add(new BiomeGenBase.SpawnListEntry(EntityGrub.class, 10, 3, 6));
+		this.spawnableMonsterList.add(new BiomeGenBase.SpawnListEntry(EntityVampireBat.class, 10, 4, 4));
+		this.spawnableMonsterList.add(new BiomeGenBase.SpawnListEntry(EntityGhostSpider.class, 100, 4, 4));
+		this.spawnableMonsterList.add(new BiomeGenBase.SpawnListEntry(EntityGiantSpider.class, 10, 1, 4));
+		// Animals
+		this.spawnableCreatureList.add(new BiomeGenBase.SpawnListEntry(EntityBoar.class, 10, 4, 4));
+
 		this.topBlock = Blocks.grass;
 		this.fillerBlock = Blocks.dirt;
 		this.enableRain = false;
