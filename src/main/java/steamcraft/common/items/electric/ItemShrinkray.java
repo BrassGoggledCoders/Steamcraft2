@@ -102,8 +102,11 @@ public class ItemShrinkray extends ElectricItem
 					// for(ItemStack drops : items)
 					// world.spawnEntityInWorld(new EntityItem(world, x, y, z,
 					// drops));
-					world.setBlockToAir(x, y, z);
-					this.extractEnergy(stack, ItemShrinkray.energyPerUse, false);
+					if(!world.isRemote)
+					{
+						world.setBlockToAir(x, y, z);
+						this.extractEnergy(stack, ItemShrinkray.energyPerUse, false);
+					}
 				}
 			}
 		}

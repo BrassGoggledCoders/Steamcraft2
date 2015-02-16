@@ -283,6 +283,7 @@ public class WorldGenUndergroundHouse extends WorldGenerator
 		this.setBlock(world, i + 6, j + 2, k + 7, Blocks.wooden_door, 0);
 		this.setBlock(world, i + 6, j + 3, k + 6, Blocks.wooden_door, 0);
 		this.setBlock(world, i + 6, j + 3, k + 7, Blocks.wooden_door, 0);
+		world.setBlockToAir(i + 8, j + 2, k + 2);
 		world.setBlockMetadataWithNotify(i + 6, j + 3, k + 6, 8, 2);
 		world.setBlockMetadataWithNotify(i + 6, j + 3, k + 7, 9, 2);
 		world.setBlockMetadataWithNotify(i + 8, j + 2, k + 2, 2, 2);
