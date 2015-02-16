@@ -16,14 +16,9 @@ import net.minecraft.world.WorldProvider;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.IChunkProvider;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-
-import net.minecraftforge.client.IRenderHandler;
 import net.minecraftforge.common.DimensionManager;
 
 import steamcraft.common.config.ConfigGeneral;
-import steamcraft.common.worldgen.dimension.util.DeepsSkyRenderer;
 
 public class WorldProviderDeeps extends WorldProvider
 {
@@ -108,12 +103,10 @@ public class WorldProviderDeeps extends WorldProvider
 		return 1F;
 	}
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public IRenderHandler getSkyRenderer()
-	{
-		return new DeepsSkyRenderer();
-	}
+	/*
+	 * @Override
+	 * @SideOnly(Side.CLIENT) public IRenderHandler getSkyRenderer() { return new DeepsSkyRenderer(); }
+	 */
 
 	@Override
 	public float getCloudHeight()
