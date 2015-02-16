@@ -56,6 +56,7 @@ import steamcraft.common.lib.events.EventHandlerFML;
 import steamcraft.common.lib.events.EventHandlerForge;
 import steamcraft.common.worldgen.WorldGenSteamcraft;
 import steamcraft.common.worldgen.dimension.WorldProviderDeeps;
+import steamcraft.common.worldgen.structure.MapGenCustomScatteredFeature;
 import steamcraft.common.worldgen.structure.StructureUndercityPieces;
 import steamcraft.common.worldgen.structure.StructureUndercityStart;
 import boilerplate.common.compathandler.FMPCompatHandler;
@@ -117,7 +118,7 @@ public class Steamcraft
 		MapGenStructureIO.registerStructure(StructureUndercityStart.class, ModInfo.ID + "Undercity");
 		StructureUndercityPieces.registerStructurePieces();
 
-		// MapGenStructureIO.registerStructure(MapGenWitchHut.Start.class, ModInfo.ID + "WitchHut");
+		MapGenStructureIO.registerStructure(MapGenCustomScatteredFeature.class, ModInfo.ID + "CustomScatteredFeature");
 
 		if(ConfigWorldGen.generationEnabled)
 			GameRegistry.registerWorldGenerator(new WorldGenSteamcraft(), 1);

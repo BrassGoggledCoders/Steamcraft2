@@ -43,6 +43,7 @@ import net.minecraftforge.event.terraingen.TerrainGen;
 import steamcraft.common.init.InitBiomes;
 import steamcraft.common.init.InitBlocks;
 import steamcraft.common.worldgen.biomes.BiomeDepthsBase;
+import steamcraft.common.worldgen.structure.MapGenCustomScatteredFeature;
 import steamcraft.common.worldgen.structure.MapGenUndercity;
 
 public class ChunkProviderDeeps implements IChunkProvider
@@ -68,6 +69,7 @@ public class ChunkProviderDeeps implements IChunkProvider
 	private MapGenBase ravineGenerator = new MapGenRavine();
 	private MapGenMineshaft mineshaftGenerator = new MapGenMineshaft();
 	private MapGenUndercity undercityGenerator = new MapGenUndercity();
+	private MapGenCustomScatteredFeature scatteredGenerator = new MapGenCustomScatteredFeature();
 	/** The biomes that are used to generate the chunk */
 	private BiomeGenBase[] biomesForGeneration;
 	private double[] adouble1;
@@ -240,9 +242,7 @@ public class ChunkProviderDeeps implements IChunkProvider
 		this.mineshaftGenerator.func_151539_a(this, this.worldObj, chunkCoordX, chunkCoordZ, ablock);
 
 		this.undercityGenerator.func_151539_a(this, this.worldObj, chunkCoordX, chunkCoordZ, ablock);
-
-		// if(this.worldObj.getBiomeGenForCoords(chunkCoordZ * 16, chunkCoordX * 16) == InitBiomes.biomeDepthsSW)
-		// new MapGenWitchHut().func_151539_a(this, this.worldObj, chunkCoordX, chunkCoordZ, ablock);
+		this.scatteredGenerator.func_151539_a(this, worldObj, chunkCoordX, chunkCoordZ, ablock);
 
 		Chunk chunk = new Chunk(this.worldObj, ablock, abyte, chunkCoordX, chunkCoordZ);
 		byte[] abyte1 = chunk.getBiomeArray();
@@ -404,6 +404,7 @@ public class ChunkProviderDeeps implements IChunkProvider
 		this.mineshaftGenerator.generateStructuresInChunk(this.worldObj, this.rand, chunkX, chunkZ);
 
 		this.undercityGenerator.generateStructuresInChunk(this.worldObj, this.rand, chunkX, chunkZ);
+		this.scatteredGenerator.generateStructuresInChunk(worldObj, rand, chunkX, chunkZ);
 
 		int k1;
 		int l1;

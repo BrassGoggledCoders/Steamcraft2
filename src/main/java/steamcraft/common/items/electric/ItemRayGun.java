@@ -26,7 +26,6 @@ import net.minecraft.world.World;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.ModInfo;
 import boilerplate.common.utils.PlayerUtils;
-import boilerplate.common.utils.Utils;
 
 /**
  * @author Surseance
@@ -90,48 +89,41 @@ public class ItemRayGun extends ElectricItem
 				int x = mop.blockX;
 				int y = mop.blockY;
 				int z = mop.blockZ;
-				// this.spawnParticles(world, x, y, z);
 
-				if(!world.isRemote && !world.isAirBlock(x, y, z) && !Utils.getBlockUnbreakable(world, x, y, z))
-					for(int i = x - Item.itemRand.nextInt(3); i < (x + Item.itemRand.nextInt(3)); i++)
-						for(int j = y - Item.itemRand.nextInt(3); j < (y + Item.itemRand.nextInt(3)); j++)
-							for(int k = z - Item.itemRand.nextInt(3); k < (z + Item.itemRand.nextInt(3)); k++)
+				if(!world.isRemote && !world.isAirBlock(x, y, z))
+					for(int i = x - Item.itemRand.nextInt(4); i < (x + Item.itemRand.nextInt(4)); i++)
+						for(int j = y - Item.itemRand.nextInt(4); j < (y + Item.itemRand.nextInt(4)); j++)
+							for(int k = z - Item.itemRand.nextInt(4); k < (z + Item.itemRand.nextInt(4)); k++)
 							{
 								if(world.isAirBlock(i, j, k))
 								{
 									world.setBlock(i, j, k, Blocks.fire);
 									this.extractEnergy(stack, ItemRayGun.energyPerUse, false);
-
 								}
 								else if(world.getBlock(i, j, k) == Blocks.snow)
 								{
 									world.setBlock(i, j, k, Blocks.flowing_water);
 									this.extractEnergy(stack, ItemRayGun.energyPerUse, false);
-
 								}
 								if(world.getBlock(i, j, k) == Blocks.snow_layer)
 								{
 									world.setBlock(i, j, k, Blocks.flowing_water);
 									this.extractEnergy(stack, ItemRayGun.energyPerUse, false);
-
 								}
 								if(world.getBlock(i, j, k) == Blocks.sand)
 								{
 									world.setBlock(i, j, k, Blocks.glass);
 									this.extractEnergy(stack, ItemRayGun.energyPerUse, false);
-
 								}
 								if(world.getBlock(i, j, k) == Blocks.netherrack)
 								{
 									world.setBlock(i, j, k, Blocks.flowing_lava);
 									this.extractEnergy(stack, ItemRayGun.energyPerUse, false);
-
 								}
 								if(world.getBlock(i, j, k) == Blocks.clay)
 								{
 									world.setBlock(i, j, k, Blocks.hardened_clay);
 									this.extractEnergy(stack, ItemRayGun.energyPerUse, false);
-
 								}
 							}
 			}
