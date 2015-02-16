@@ -34,6 +34,7 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.event.terraingen.DeferredBiomeDecorator;
 
 import steamcraft.common.init.InitBlocks;
+import steamcraft.common.worldgen.WorldGenBlockgroup;
 import steamcraft.common.worldgen.WorldGenRandomUnderground;
 import steamcraft.common.worldgen.structure.WorldGenUndergroundHouse;
 
@@ -221,7 +222,7 @@ public class DepthsBiomeDecorator extends DeferredBiomeDecorator
 
 			if(world.getBlock(x, y, z).isReplaceableOreGen(world, x, y, z, Blocks.stone))
 			{
-				new WorldGenMinable(InitBlocks.blockCompressedStone, rarity).generate(world, random, x, y, z);
+				new WorldGenBlockgroup(InitBlocks.blockCompressedStone, rarity).generate(world, random, x, y, z);
 			}
 		}
 		for(int a = 0; a < 10; ++a)
