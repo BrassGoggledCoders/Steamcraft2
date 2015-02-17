@@ -71,7 +71,7 @@ Beta 3.5:
 Beta 3.6:
 + Inverted Cast Iron Lamp - on by default
 + Raygun can harden clay
-+ Watch Display Module
++ Watch Display Module tells you wether it is day or night
 + Obsidian Armor grants fire resistance
 + Tinker's Construct Compat with all of our metals
 + Spanner acts as a RC crowbar
