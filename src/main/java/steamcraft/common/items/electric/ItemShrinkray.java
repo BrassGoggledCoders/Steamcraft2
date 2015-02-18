@@ -35,7 +35,7 @@ import boilerplate.common.utils.Utils;
  */
 public class ItemShrinkray extends ElectricItem
 {
-	static short energyPerUse = 1000;
+	public static short energyPerUse = 1000;
 
 	static HashMap<String, Object> ray = new HashMap<String, Object>();
 	static HashMap<String, Long> soundDelay = new HashMap<String, Long>();
