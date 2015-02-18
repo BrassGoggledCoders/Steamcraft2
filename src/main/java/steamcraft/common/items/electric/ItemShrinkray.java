@@ -98,26 +98,16 @@ public class ItemShrinkray extends ElectricItem
 					if(world.isRemote)
 						ray.put(player.getCommandSenderName(),
 								Steamcraft.proxy.rayFX(world, player, tx, ty, tz, 2, false, impact > 0 ? 2.0F : 0.0F, ray.get(player), impact, Color.BLUE));
-					/*
-					 * if(mop != null && mop.typeOfHit == MovingObjectPosition.MovingObjectType.ENTITY) { if(!(mop.entityHit instanceof EntityEnderman)) {
-					 * mop.entityHit.setFire(500); extractEnergy(stack, energyPerUse, false); } }
-					 */
 					if((mop != null) && (mop.typeOfHit == MovingObjectPosition.MovingObjectType.BLOCK))
 					{
 						int x = mop.blockX;
 						int y = mop.blockY;
 						int z = mop.blockZ;
-						// this.spawnParticles(world, x, y, z);
 
 						if(!world.isAirBlock(x, y, z) && !Utils.getBlockUnbreakable(world, x, y, z))
 						{
 							player.worldObj.spawnEntityInWorld(new EntityMinedBlock(player.worldObj, x + 0.5F, y + 0.5F, z + 0.5F, world.getBlock(x, y, z),
 									world.getBlockMetadata(x, y, z), false));
-							// ArrayList<ItemStack> items = world.getBlock(x, y,
-							// z).getDrops(world, x, y, z, 0, 0);
-							// for(ItemStack drops : items)
-							// world.spawnEntityInWorld(new EntityItem(world, x, y, z,
-							// drops));
 							if(!world.isRemote)
 							{
 								world.setBlockToAir(x, y, z);
