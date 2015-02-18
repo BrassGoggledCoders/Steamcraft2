@@ -66,7 +66,7 @@ public class ItemShrinkray extends ElectricItem
 		}
 		if(stack.getTagCompound().getBoolean("active"))
 		{
-			if(this.getEnergyStored(stack) > ItemShrinkray.energyPerUse)
+			if(this.getEnergyStored(stack) >= ItemShrinkray.energyPerUse)
 			{
 				{
 					MovingObjectPosition mop = PlayerUtils.getTargetBlock(world, player, true, 10);

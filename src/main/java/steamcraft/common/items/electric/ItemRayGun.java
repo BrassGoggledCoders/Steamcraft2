@@ -52,7 +52,7 @@ public class ItemRayGun extends ElectricItem
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
 	{
-		if(this.getEnergyStored(stack) > ItemRayGun.energyPerUse)
+		if(this.getEnergyStored(stack) >= ItemRayGun.energyPerUse)
 		{
 			MovingObjectPosition mop = PlayerUtils.getTargetBlock(world, player, true, 50);
 
