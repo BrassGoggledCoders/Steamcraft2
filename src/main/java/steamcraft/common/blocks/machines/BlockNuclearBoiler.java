@@ -14,6 +14,7 @@ package steamcraft.common.blocks.machines;
 
 import java.util.Random;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.EntityLivingBase;
@@ -31,6 +32,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 import steamcraft.client.lib.GuiIDs;
 import steamcraft.common.Steamcraft;
+import steamcraft.common.init.InitBlocks;
 import steamcraft.common.lib.ModInfo;
 import steamcraft.common.tiles.TileNuclearBoiler;
 
@@ -195,5 +197,15 @@ public class BlockNuclearBoiler extends BaseContainerBlock
 	public int getComparatorInputOverride(World par1World, int par2, int par3, int par4, int par5)
 	{
 		return Container.calcRedstoneFromInventory((IInventory) par1World.getTileEntity(par2, par3, par4));
+	}
+
+	@Override
+	public void breakBlock(World world, int x, int y, int z, Block block, int meta)
+	{
+		TileNuclearBoiler tile = (TileNuclearBoiler) world.getTileEntity(x, y, z);
+		boolean flag = tile.steamTank.getFluidAmount() != 0;
+		super.breakBlock(world, x, y, z, block, meta);
+		if(!world.isRemote && flag)
+			world.setBlock(x, y, z, InitBlocks.blockSteam);
 	}
 }

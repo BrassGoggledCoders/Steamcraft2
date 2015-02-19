@@ -97,11 +97,22 @@ public class BlockCopperPipe extends BaseContainerBlock
 	public void breakBlock(World world, int x, int y, int z, Block block, int metadata)
 	{
 		TileCopperPipe tile = (TileCopperPipe) world.getTileEntity(x, y, z);
+		// Fluid fluid = null;
 
 		if(tile != null)
+		{
+			// if(!world.isRemote)
+			// fluid = tile.fluidInPipe;
 			tile.removeFromNetwork();
+		}
 
 		super.breakBlock(world, x, y, z, block, metadata);
+
+		// if(tile != null)
+		// {
+		// if(fluid != null && !world.isRemote)
+		// world.setBlock(x, y, z, fluid.getBlock());
+		// }
 	}
 
 	@Override

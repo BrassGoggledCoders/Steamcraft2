@@ -1,5 +1,5 @@
 /**
- * This class was created by BrassGoggledCoders modding team. 
+ * This class was created by BrassGoggledCoders modding team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -8,12 +8,13 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- * 
+ *
  */
 package steamcraft.common.blocks.machines;
 
 import java.util.Random;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.EntityLivingBase;
@@ -31,6 +32,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 import steamcraft.client.lib.GuiIDs;
 import steamcraft.common.Steamcraft;
+import steamcraft.common.init.InitBlocks;
 import steamcraft.common.lib.ModInfo;
 import steamcraft.common.tiles.TileSteamBoiler;
 
@@ -195,5 +197,15 @@ public class BlockSteamBoiler extends BaseContainerBlock
 	public int getComparatorInputOverride(World par1World, int par2, int par3, int par4, int par5)
 	{
 		return Container.calcRedstoneFromInventory((IInventory) par1World.getTileEntity(par2, par3, par4));
+	}
+
+	@Override
+	public void breakBlock(World world, int x, int y, int z, Block block, int meta)
+	{
+		TileSteamBoiler tile = (TileSteamBoiler) world.getTileEntity(x, y, z);
+		boolean flag = tile.steamTank.getFluidAmount() != 0;
+		super.breakBlock(world, x, y, z, block, meta);
+		if(!world.isRemote && flag)
+			world.setBlock(x, y, z, InitBlocks.blockSteam);
 	}
 }
