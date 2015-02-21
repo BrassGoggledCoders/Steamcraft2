@@ -29,7 +29,6 @@ import steamcraft.common.lib.ModInfo;
  */
 public class BaseBlock extends Block
 {
-	IIcon missingIcon;
 
 	public BaseBlock(Material mat)
 	{
@@ -43,7 +42,6 @@ public class BaseBlock extends Block
 	public void registerBlockIcons(IIconRegister ir)
 	{
 		this.blockIcon = ir.registerIcon(ModInfo.PREFIX + this.getUnlocalizedName().substring(5));
-		this.missingIcon = ir.registerIcon(ModInfo.PREFIX + "missingno");
 	}
 
 	/**
@@ -53,9 +51,6 @@ public class BaseBlock extends Block
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(int p_149691_1_, int p_149691_2_)
 	{
-		if(this.blockIcon != null)
-			return this.blockIcon;
-		else
-			return this.missingIcon;
+		return this.blockIcon;
 	}
 }
