@@ -26,6 +26,7 @@ import net.minecraftforge.fluids.FluidRegistry;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.blocks.BaseBlock;
 import steamcraft.common.blocks.BlockBoulder;
+import steamcraft.common.blocks.BlockBrassLeaves;
 import steamcraft.common.blocks.BlockBrassLog;
 import steamcraft.common.blocks.BlockCastIronFence;
 import steamcraft.common.blocks.BlockCastIronGate;
@@ -351,7 +352,7 @@ public class InitBlocks
 
 		// Wood
 		blockBrassLog = new BlockBrassLog(Material.wood).setBlockName("blockBrassLog");
-		blockBrassLeaves = new BaseBlock(Material.iron).setBlockName("blockBrassLeaves");
+		blockBrassLeaves = new BlockBrassLeaves(Material.iron).setBlockName("blockBrassLeaves");
 
 		registerBlock(blockBrassLog, "BlockBrassLog");
 		registerBlock(blockBrassLeaves, "BlockBrassLeaves");
