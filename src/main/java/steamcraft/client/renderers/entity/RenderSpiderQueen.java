@@ -17,6 +17,8 @@ import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.boss.BossStatus;
+import net.minecraft.entity.boss.IBossDisplayData;
 import net.minecraft.entity.monster.EntitySpider;
 import net.minecraft.util.ResourceLocation;
 
@@ -30,7 +32,7 @@ public class RenderSpiderQueen extends RenderLiving
 
 	public RenderSpiderQueen()
 	{
-		super(new ModelSpider(), 10.0F);
+		super(new ModelSpider(), 8.0F);
 		this.setRenderPassModel(new ModelSpider());
 	}
 
@@ -97,5 +99,12 @@ public class RenderSpiderQueen extends RenderLiving
 	protected ResourceLocation getEntityTexture(Entity p_110775_1_)
 	{
 		return this.getEntityTexture((EntitySpider) p_110775_1_);
+	}
+
+	@Override
+	protected void preRenderCallback(EntityLivingBase entity, float par2)
+	{
+		GL11.glScalef(8.0F, 8.0F, 8.0F);
+		BossStatus.setBossStatus((IBossDisplayData) entity, true);
 	}
 }

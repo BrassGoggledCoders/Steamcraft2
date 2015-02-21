@@ -30,7 +30,7 @@ public class RenderGiantSpider extends RenderLiving
 
 	public RenderGiantSpider()
 	{
-		super(new ModelSpider(), 3.0F);
+		super(new ModelSpider(), 2.0F);
 		this.setRenderPassModel(new ModelSpider());
 	}
 
@@ -97,5 +97,11 @@ public class RenderGiantSpider extends RenderLiving
 	protected ResourceLocation getEntityTexture(Entity p_110775_1_)
 	{
 		return this.getEntityTexture((EntitySpider) p_110775_1_);
+	}
+
+	@Override
+	protected void preRenderCallback(EntityLivingBase par1EntityLivingBase, float par2)
+	{
+		GL11.glScalef(2.0F, 2.0F, 2.0F);
 	}
 }

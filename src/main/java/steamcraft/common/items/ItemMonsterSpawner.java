@@ -16,6 +16,7 @@ import java.util.List;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.passive.EntitySheep;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -77,8 +78,10 @@ public class ItemMonsterSpawner extends BaseItemWithMetadata
 					break;
 				case 8:
 					entity = new EntityShroomZombie(world);
-				default:
+				case 9:
 					entity = new EntityVampireBat(world);
+				default:
+					entity = new EntitySheep(world);
 					break;
 			}
 			entity.setPosition(player.posX, player.posY, player.posZ);
