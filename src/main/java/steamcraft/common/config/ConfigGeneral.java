@@ -62,14 +62,12 @@ public class ConfigGeneral
 			weather2LightningStrikes = config.get(CATEGORY_GENERAL, comment, true).getBoolean();
 
 			deepsDimensionID = config.get(CATEGORY_GENERAL, "Dimension ID for the Deeps dimension", -8).getInt();
-			int biomeID = 230;
+			int biomeID = 245;
 			depthsBiomeID = config.get(CATEGORY_GENERAL, "Biome ID for Depths Biome", biomeID++).getInt();
 			depthsFBiomeID = config.get(CATEGORY_GENERAL, "Biome ID for Depths Forest Biome", biomeID++).getInt();
 			depthsMBiomeID = config.get(CATEGORY_GENERAL, "Biome ID for Depths Mountains Biome", biomeID++).getInt();
 			depthsSBiomeID = config.get(CATEGORY_GENERAL, "Biome ID for Depths Mushroom Forest Biome", biomeID++).getInt();
 			depthsIBiomeID = config.get(CATEGORY_GENERAL, "Biome ID for Depths Infestation Biome", biomeID++).getInt();
-			// depthsOBiomeID = config.get(CATEGORY_GENERAL, "Biome ID for Depths Ocean Biome", 234).getInt();
-			// depthsBBiomeID = config.get(CATEGORY_GENERAL, "Biome ID for Depths Beach Biome", 235).getInt();
 			depthsSCBiomeID = config.get(CATEGORY_GENERAL, "Biome ID for Depths Scalded Biome", biomeID++).getInt();
 			depthsSCHBiomeID = config.get(CATEGORY_GENERAL, "Biome ID for Depths Scorched Biome", biomeID++).getInt();
 			depthsSWBiomeID = config.get(CATEGORY_GENERAL, "Biome ID for Depths Swamp Biome", biomeID++).getInt();
