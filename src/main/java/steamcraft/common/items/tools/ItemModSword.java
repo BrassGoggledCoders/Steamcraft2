@@ -20,11 +20,13 @@ import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
+import dynamicswordskills.api.ISword;
+
 /**
  * @author Surseance
  * 
  */
-public class ItemModSword extends ItemModTool
+public class ItemModSword extends ItemModTool implements ISword
 {
 	public ItemModSword(ToolMaterial mat)
 	{
