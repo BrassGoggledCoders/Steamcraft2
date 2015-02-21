@@ -26,19 +26,19 @@ public abstract class BaseContainerGui extends GuiContainer
 	{
 		super.drawGuiContainerForegroundLayer(mouseX, mouseY);
 
-		if(tile == null)
+		if(this.tile == null)
 			return;
 
 		int x = (this.width - this.xSize) / 2;
 		int y = (this.height - this.ySize) / 2;
 
-		for(Slot slot : (List<Slot>) inventorySlots.inventorySlots)
+		for(Slot slot : (List<Slot>) this.inventorySlots.inventorySlots)
 		{
-			if(!slot.getHasStack() && mouseInside(slot, mouseX - x, mouseY - y))
+			if(!slot.getHasStack() && this.mouseInside(slot, mouseX - x, mouseY - y))
 			{
-				if(slot.slotNumber < tile.getSizeInventory())
+				if(slot.slotNumber < this.tile.getSizeInventory())
 				{
-					String tt = getSlotTooltipUnloc(slot.slotNumber);
+					String tt = this.getSlotTooltipUnloc(slot.slotNumber);
 					if(!Strings.isNullOrEmpty(tt))
 					{
 						this.func_146283_a(Lists.newArrayList(StatCollector.translateToLocal(tt)), mouseX - x, mouseY - y);
@@ -50,11 +50,11 @@ public abstract class BaseContainerGui extends GuiContainer
 
 	private boolean mouseInside(Slot slot, int x, int y)
 	{
-		return x >= slot.xDisplayPosition && x <= slot.xDisplayPosition + 16 && y >= slot.yDisplayPosition && y <= slot.yDisplayPosition + 16;
+		return (x >= slot.xDisplayPosition) && (x <= (slot.xDisplayPosition + 16)) && (y >= slot.yDisplayPosition) && (y <= (slot.yDisplayPosition + 16));
 	}
 
 	public String getSlotTooltipUnloc(int slotNumber)
 	{
-		return tile.getInventoryName().replaceAll(" ", "").toLowerCase() + ".slot." + slotNumber + ".tooltip";
+		return this.tile.getInventoryName().replaceAll(" ", "").toLowerCase() + ".slot." + slotNumber + ".tooltip";
 	}
 }

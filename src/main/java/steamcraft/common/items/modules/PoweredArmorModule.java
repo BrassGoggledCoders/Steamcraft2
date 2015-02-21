@@ -50,26 +50,26 @@ public abstract class PoweredArmorModule extends BaseArmorModule implements IPow
 	@Override
 	public void setSteamToConsume(int steamToSet)
 	{
-		steamToConsume = steamToSet;
+		this.steamToConsume = steamToSet;
 	}
 
 	@Override
 	public void setRFToConsume(int rfToSet)
 	{
-		rfToConsume = rfToSet;
+		this.rfToConsume = rfToSet;
 	}
 
 	@Override
 	public boolean doConsumption(EntityPlayer player, ItemStack stack)
 	{
-		if(isSteamAvailable(player, steamToConsume))
+		if(this.isSteamAvailable(player, this.steamToConsume))
 		{
-			consumeSteamFromCanister(player, steamToConsume);
+			this.consumeSteamFromCanister(player, this.steamToConsume);
 			return true;
 		}
-		if(isRFAvailable(player, rfToConsume))
+		if(this.isRFAvailable(player, this.rfToConsume))
 		{
-			consumeRFFromJar(player, rfToConsume);
+			this.consumeRFFromJar(player, this.rfToConsume);
 			return true;
 		}
 		return false;

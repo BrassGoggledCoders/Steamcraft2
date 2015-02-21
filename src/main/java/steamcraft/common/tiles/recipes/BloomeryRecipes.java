@@ -72,7 +72,7 @@ public class BloomeryRecipes
 	public ItemStack[] getSmeltingInputs(ItemStack output)
 	{
 		Entry<ItemStack[], ItemStack> entry;
-		for (Object obj : this.recipeList.entrySet())
+		for(Object obj : this.recipeList.entrySet())
 		{
 			entry = (Entry<ItemStack[], ItemStack>) obj;
 

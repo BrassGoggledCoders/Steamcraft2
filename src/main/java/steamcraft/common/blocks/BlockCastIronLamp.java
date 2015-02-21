@@ -28,7 +28,6 @@ import steamcraft.client.lib.RenderIDs;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.init.InitBlocks;
 import steamcraft.common.tiles.EmptyTiles;
-import steamcraft.common.tiles.EmptyTiles.TileCastIronLamp;
 
 /**
  * @author Surseance

@@ -76,7 +76,7 @@ public class ItemReactivePistonPlating extends PoweredArmorModule
 			{
 				Entity entity = (Entity) obj;
 
-				if(!entity.isDead && (entity instanceof EntityLiving) && doConsumption(player, stack))
+				if(!entity.isDead && (entity instanceof EntityLiving) && this.doConsumption(player, stack))
 				{
 					entity.setVelocity(-entity.motionX - 0.3F, 0.3F, -entity.motionZ - 0.3F);
 				}

@@ -105,7 +105,7 @@ public class InventoryVanity implements IInventory
 	@Override
 	public boolean isItemValidForSlot(final int slot, final ItemStack itemstack)
 	{
-		return itemstack != null && itemstack.getItem() != null;
+		return (itemstack != null) && (itemstack.getItem() != null);
 	}
 
 	public void writeToNBT(final NBTTagCompound tagCompound)

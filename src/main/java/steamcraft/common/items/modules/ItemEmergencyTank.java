@@ -79,7 +79,7 @@ public class ItemEmergencyTank extends BaseArmorModule
 						{
 							player.worldObj.setBlock(x + xOff, y + yOff, z + zOff, Blocks.air);
 							player.worldObj.playSoundEffect(x + xOff + 0.5D, y + yOff + 0.5D, z + zOff + 0.5D, "random.fizz", 0.5F,
-									2.6F + (player.worldObj.rand.nextFloat() - player.worldObj.rand.nextFloat()) * 0.8F);
+									2.6F + ((player.worldObj.rand.nextFloat() - player.worldObj.rand.nextFloat()) * 0.8F));
 						}
 				}
 			}

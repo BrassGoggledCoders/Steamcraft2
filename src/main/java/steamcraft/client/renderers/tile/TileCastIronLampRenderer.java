@@ -70,11 +70,11 @@ public class TileCastIronLampRenderer extends TileEntitySpecialRenderer
 
 		GL11.glTranslatef(0.0F, -0.3125F, -0.4375F);
 
-		if(block == InitBlocks.blockCastIronLampOn || block == InitBlocks.blockInvertedCastIronLamp)
+		if((block == InitBlocks.blockCastIronLampOn) || (block == InitBlocks.blockInvertedCastIronLamp))
 		{
 			ClientHelper.textureManager().bindTexture(lampOn);
 		}
-		else if(block == InitBlocks.blockCastIronLamp || block == InitBlocks.blockInvertedCastIronLampOff)
+		else if((block == InitBlocks.blockCastIronLamp) || (block == InitBlocks.blockInvertedCastIronLampOff))
 		{
 			ClientHelper.textureManager().bindTexture(lampOff);
 		}

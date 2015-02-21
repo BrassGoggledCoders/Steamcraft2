@@ -70,9 +70,9 @@ public class MapGenUndercity extends MapGenStructure
 		long l = this.rand.nextLong();
 		long i1 = this.rand.nextLong();
 
-		for(int j1 = chunkX - k; j1 <= chunkX + k; ++j1)
+		for(int j1 = chunkX - k; j1 <= (chunkX + k); ++j1)
 		{
-			for(int k1 = chunkZ - k; k1 <= chunkZ + k; ++k1)
+			for(int k1 = chunkZ - k; k1 <= (chunkZ + k); ++k1)
 			{
 				long l1 = j1 * l;
 				long i2 = k1 * i1;

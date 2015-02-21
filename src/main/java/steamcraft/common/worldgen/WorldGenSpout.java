@@ -27,7 +27,7 @@ public class WorldGenSpout extends WorldGenerator
 	public boolean generate(World world, Random random, int x, int y, int z)
 	{
 		// Find ground level
-		int groundLevel = getTopBlock(world, x, z);
+		int groundLevel = this.getTopBlock(world, x, z);
 		if(groundLevel < 5)
 		{
 			return false;
@@ -37,25 +37,25 @@ public class WorldGenSpout extends WorldGenerator
 		int wellZ = z;
 		int wellHeight = 6 + random.nextInt(3);
 		int maxHeight = groundLevel + wellHeight;
-		if(maxHeight >= world.getActualHeight() - 1)
+		if(maxHeight >= (world.getActualHeight() - 1))
 		{
 			return false;
 		}
 
-		new WorldGenLakes(block).generate(world, random, x, y, z);
+		new WorldGenLakes(this.block).generate(world, random, x, y, z);
 
 		int wellY = 50 + random.nextInt(10);
 
 		for(int i = wellY + 1; i <= maxHeight; ++i)
 		{
-			world.setBlock(wellX, i, wellZ, block, 0, 3);
+			world.setBlock(wellX, i, wellZ, this.block, 0, 3);
 		}
-		for(int i = wellY; i <= maxHeight - wellHeight / 2; ++i)
+		for(int i = wellY; i <= (maxHeight - (wellHeight / 2)); ++i)
 		{
-			world.setBlock(wellX + 1, i, wellZ, block, 0, 3);
-			world.setBlock(wellX - 1, i, wellZ, block, 0, 3);
-			world.setBlock(wellX, i, wellZ + 1, block, 0, 3);
-			world.setBlock(wellX, i, wellZ - 1, block, 0, 3);
+			world.setBlock(wellX + 1, i, wellZ, this.block, 0, 3);
+			world.setBlock(wellX - 1, i, wellZ, this.block, 0, 3);
+			world.setBlock(wellX, i, wellZ + 1, this.block, 0, 3);
+			world.setBlock(wellX, i, wellZ - 1, this.block, 0, 3);
 		}
 		return true;
 	}

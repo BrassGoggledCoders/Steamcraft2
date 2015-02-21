@@ -184,7 +184,7 @@ public class TileNuclearBoiler extends BaseTileWithInventory implements IFluidHa
 	@Override
 	public boolean canInsertItem(int par1, ItemStack itemstack, int par3)
 	{
-		return (par1 == 1 && FluidContainerRegistry.isContainer(itemstack)) || (par1 == 0 && this.getItemBurnTime() > 0);
+		return ((par1 == 1) && FluidContainerRegistry.isContainer(itemstack)) || ((par1 == 0) && (this.getItemBurnTime() > 0));
 	}
 
 	@Override

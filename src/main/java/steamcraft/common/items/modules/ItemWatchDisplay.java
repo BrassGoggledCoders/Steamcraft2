@@ -72,7 +72,7 @@ public class ItemWatchDisplay extends PoweredArmorModule
 
 		ItemStack helmet = ClientHelper.player().inventory.armorItemInSlot(3);
 
-		if(ClientHelper.settings().thirdPersonView == 0 && doConsumption(player, stack))
+		if((ClientHelper.settings().thirdPersonView == 0) && this.doConsumption(player, stack))
 		{
 			Tessellator tessellator = Tessellator.instance;
 			ScaledResolution scaledResolution = ClientHelper.resolution();
@@ -88,14 +88,14 @@ public class ItemWatchDisplay extends PoweredArmorModule
 			cal.getTime();
 			final SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
 
-			fontRenderer.drawString("In-Game Time: " + mcTime + " (" + getGeneralTime(mcTime) + ")", 5, 5, color);
+			fontRenderer.drawString("In-Game Time: " + mcTime + " (" + this.getGeneralTime(mcTime) + ")", 5, 5, color);
 			fontRenderer.drawString("Real-World Time: " + sdf.format(cal.getTime()), 5, 15, color);
 		}
 	}
 
 	private String getGeneralTime(long mcTime)
 	{
-		if(mcTime >= 0 && mcTime <= 14000)
+		if((mcTime >= 0) && (mcTime <= 14000))
 			return "Day";
 		else
 			return "Night";

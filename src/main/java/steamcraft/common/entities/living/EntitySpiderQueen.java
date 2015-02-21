@@ -40,10 +40,10 @@ public class EntitySpiderQueen extends EntitySpider implements IBossDisplayData
 
 		if(!this.worldObj.isRemote)
 		{
-			int plusX = rand.nextInt(5);
-			int plusY = rand.nextInt(5);
-			int plusZ = rand.nextInt(5);
-			if(rand.nextInt(30) == 0 && !worldObj.isAirBlock((int) Math.round(this.posX) + plusX, (int) Math.round(this.posY) + plusY - 1,
+			int plusX = this.rand.nextInt(5);
+			int plusY = this.rand.nextInt(5);
+			int plusZ = this.rand.nextInt(5);
+			if((this.rand.nextInt(30) == 0) && !this.worldObj.isAirBlock((int) Math.round(this.posX) + plusX, ((int) Math.round(this.posY) + plusY) - 1,
 					(int) Math.round(this.posZ)
 							+ plusZ))
 				this.worldObj.setBlock((int) Math.round(this.posX) + plusX, (int) Math.round(this.posY) + plusY,

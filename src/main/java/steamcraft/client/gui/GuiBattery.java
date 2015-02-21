@@ -48,7 +48,7 @@ public class GuiBattery extends BaseContainerGui
 		this.mc.renderEngine.bindTexture(guitexture);
 		this.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize);
 
-		int var8 = battery.getEnergyScaled(16);
+		int var8 = this.battery.getEnergyScaled(16);
 		this.drawTexturedModalRect(this.guiLeft + 12, (this.guiTop + 64) - var8, 176, 56 - var8, 16, var8 + 1);
 	}
 
@@ -58,8 +58,8 @@ public class GuiBattery extends BaseContainerGui
 		this.drawString(this.fontRendererObj, "Energy: ", 26, 10, -1);
 		this.drawString(
 				this.fontRendererObj,
-				this.getEnergyUnits(battery.getEnergyStored(ForgeDirection.UNKNOWN)) + "/"
-						+ this.getEnergyUnits(battery.getMaxEnergyStored(ForgeDirection.UNKNOWN)) + " RF", 30, 20, -1);
+				this.getEnergyUnits(this.battery.getEnergyStored(ForgeDirection.UNKNOWN)) + "/"
+						+ this.getEnergyUnits(this.battery.getMaxEnergyStored(ForgeDirection.UNKNOWN)) + " RF", 30, 20, -1);
 
 		this.drawString(this.fontRendererObj, "Transfer: ", 26, 30, -1);
 		this.drawString(this.fontRendererObj, this.battery.transferRate + " RF", 30, 40, -1);

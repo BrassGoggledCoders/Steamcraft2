@@ -17,7 +17,7 @@ public class EmptyTiles
 	{
 		public TileCastIronLamp()
 		{
-	
+
 		}
 	}
 

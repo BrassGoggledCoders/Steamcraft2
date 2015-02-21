@@ -92,7 +92,7 @@ public class CommandIssue extends CommandBase
 				else
 				{
 					ChatComponentText invalid = new ChatComponentText(
-							"[Steamcraft Issue Reporter] You must wait " + props.getCooldown() / 20
+							"[Steamcraft Issue Reporter] You must wait " + (props.getCooldown() / 20)
 									+ " seconds before using that command again");
 					invalid.getChatStyle().setColor(EnumChatFormatting.RED);
 					sender.addChatMessage(invalid);

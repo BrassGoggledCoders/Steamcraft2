@@ -243,7 +243,7 @@ public class ChunkProviderDeeps implements IChunkProvider
 		this.mineshaftGenerator.func_151539_a(this, this.worldObj, chunkCoordX, chunkCoordZ, ablock);
 
 		this.undercityGenerator.func_151539_a(this, this.worldObj, chunkCoordX, chunkCoordZ, ablock);
-		this.scatteredGenerator.func_151539_a(this, worldObj, chunkCoordX, chunkCoordZ, ablock);
+		this.scatteredGenerator.func_151539_a(this, this.worldObj, chunkCoordX, chunkCoordZ, ablock);
 
 		Chunk chunk = new Chunk(this.worldObj, ablock, abyte, chunkCoordX, chunkCoordZ);
 		byte[] abyte1 = chunk.getBiomeArray();
@@ -405,7 +405,7 @@ public class ChunkProviderDeeps implements IChunkProvider
 		this.mineshaftGenerator.generateStructuresInChunk(this.worldObj, this.rand, chunkX, chunkZ);
 
 		this.undercityGenerator.generateStructuresInChunk(this.worldObj, this.rand, chunkX, chunkZ);
-		this.scatteredGenerator.generateStructuresInChunk(worldObj, rand, chunkX, chunkZ);
+		this.scatteredGenerator.generateStructuresInChunk(this.worldObj, this.rand, chunkX, chunkZ);
 
 		int k1;
 		int l1;

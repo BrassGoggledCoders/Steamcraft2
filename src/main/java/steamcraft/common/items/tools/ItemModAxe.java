@@ -12,7 +12,6 @@
  */
 package steamcraft.common.items.tools;
 
-
 /**
  * @author Surseance
  * 

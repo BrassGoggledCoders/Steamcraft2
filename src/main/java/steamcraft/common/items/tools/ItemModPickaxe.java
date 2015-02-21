@@ -34,7 +34,7 @@ public class ItemModPickaxe extends ItemModTool
 
 		if(block.getMaterial() == Material.rock)
 		{
-			return efficiencyOnProperMaterial;
+			return this.efficiencyOnProperMaterial;
 		}
 
 		return super.getDigSpeed(stack, block, metadata);
@@ -43,6 +43,6 @@ public class ItemModPickaxe extends ItemModTool
 	@Override
 	public boolean canHarvestBlock(Block block, ItemStack stack)
 	{
-		return block.getMaterial() == Material.rock || super.canHarvestBlock(block, stack);
+		return (block.getMaterial() == Material.rock) || super.canHarvestBlock(block, stack);
 	}
 }

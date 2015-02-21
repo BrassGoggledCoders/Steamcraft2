@@ -149,7 +149,7 @@ public class BlockPlankStack extends BaseBlock
 		else
 		{
 			Material material = block.getMaterial();
-			return material == Material.water || material == Material.lava;
+			return (material == Material.water) || (material == Material.lava);
 		}
 	}
 

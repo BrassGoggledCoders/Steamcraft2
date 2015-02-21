@@ -212,7 +212,7 @@ public class TileBloomery extends BaseTileWithInventory
 	@Override
 	public boolean isItemValidForSlot(int par1, ItemStack par2ItemStack)
 	{
-		return !(par1 != 2 && par1 == 1) || isItemFuel(par2ItemStack);
+		return !((par1 != 2) && (par1 == 1)) || isItemFuel(par2ItemStack);
 	}
 
 	@Override

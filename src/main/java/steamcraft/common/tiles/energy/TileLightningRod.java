@@ -93,7 +93,7 @@ public class TileLightningRod extends TileEntity implements IEnergyProvider
 				{
 				}
 			}
-			
+
 			if(weather2Class != null)
 			{
 				AxisAlignedBB axisalignedbb = AxisAlignedBB.getBoundingBox((double) this.xCoord - 1, (double) this.yCoord - 1,

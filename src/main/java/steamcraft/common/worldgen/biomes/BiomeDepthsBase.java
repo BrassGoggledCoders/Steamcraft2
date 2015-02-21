@@ -14,6 +14,7 @@ package steamcraft.common.worldgen.biomes;
 
 import java.util.Random;
 
+import net.minecraft.entity.monster.EntityCaveSpider;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
@@ -49,6 +50,7 @@ public class BiomeDepthsBase extends BiomeGenBase
 		this.spawnableMonsterList.add(new BiomeGenBase.SpawnListEntry(EntityGrub.class, 10, 3, 6));
 		this.spawnableMonsterList.add(new BiomeGenBase.SpawnListEntry(EntityVampireBat.class, 10, 4, 4));
 		this.spawnableMonsterList.add(new BiomeGenBase.SpawnListEntry(EntityGhostSpider.class, 100, 4, 4));
+		this.spawnableMonsterList.add(new BiomeGenBase.SpawnListEntry(EntityCaveSpider.class, 100, 4, 4));
 		this.spawnableMonsterList.add(new BiomeGenBase.SpawnListEntry(EntityGiantSpider.class, 10, 1, 4));
 		// Animals
 		this.spawnableCreatureList.add(new BiomeGenBase.SpawnListEntry(EntityBoar.class, 10, 4, 4));

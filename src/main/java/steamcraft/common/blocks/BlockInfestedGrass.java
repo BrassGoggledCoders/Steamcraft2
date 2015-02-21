@@ -12,18 +12,27 @@
  */
 package steamcraft.common.blocks;
 
-import net.minecraft.block.BlockGrass;
+import java.util.Random;
+
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.ColorizerGrass;
 import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.World;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockInfestedGrass extends BlockInfestedDirt
 {
+	@SideOnly(Side.CLIENT)
+	private IIcon field_149991_b;
+	@SideOnly(Side.CLIENT)
+	private IIcon field_149993_M;
+	@SideOnly(Side.CLIENT)
+	private IIcon field_149994_N;
 
 	public BlockInfestedGrass(Material mat)
 	{
@@ -36,9 +45,48 @@ public class BlockInfestedGrass extends BlockInfestedDirt
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(int side, int meta)
+	public IIcon getIcon(int p_149691_1_, int p_149691_2_)
 	{
-		return Blocks.grass.getIcon(side, meta);
+		return p_149691_1_ == 1 ? this.field_149991_b : (p_149691_1_ == 0 ? Blocks.dirt.getBlockTextureFromSide(p_149691_1_) : this.blockIcon);
+	}
+
+	public boolean func_149851_a(World p_149851_1_, int p_149851_2_, int p_149851_3_, int p_149851_4_, boolean p_149851_5_)
+	{
+		return true;
+	}
+
+	public boolean func_149852_a(World p_149852_1_, Random p_149852_2_, int p_149852_3_, int p_149852_4_, int p_149852_5_)
+	{
+		return true;
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public IIcon getIcon(IBlockAccess p_149673_1_, int p_149673_2_, int p_149673_3_, int p_149673_4_, int p_149673_5_)
+	{
+		if(p_149673_5_ == 1)
+		{
+			return this.field_149991_b;
+		}
+		else if(p_149673_5_ == 0)
+		{
+			return Blocks.dirt.getBlockTextureFromSide(p_149673_5_);
+		}
+		else
+		{
+			Material material = p_149673_1_.getBlock(p_149673_2_, p_149673_3_ + 1, p_149673_4_).getMaterial();
+			return material != Material.snow && material != Material.craftedSnow ? this.blockIcon : this.field_149993_M;
+		}
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void registerBlockIcons(IIconRegister p_149651_1_)
+	{
+		this.blockIcon = p_149651_1_.registerIcon(this.getTextureName() + "_side");
+		this.field_149991_b = p_149651_1_.registerIcon(this.getTextureName() + "_top");
+		this.field_149993_M = p_149651_1_.registerIcon(this.getTextureName() + "_side_snowed");
+		this.field_149994_N = p_149651_1_.registerIcon(this.getTextureName() + "_side_overlay");
 	}
 
 	@Override
@@ -83,13 +131,12 @@ public class BlockInfestedGrass extends BlockInfestedDirt
 			}
 		}
 
-		return (((l / 9) & 255) << 16) | (((i1 / 9) & 255) << 8) | ((j1 / 9) & 255);
+		return (l / 9 & 255) << 16 | (i1 / 9 & 255) << 8 | j1 / 9 & 255;
 	}
 
 	@SideOnly(Side.CLIENT)
 	public static IIcon getIconSideOverlay()
 	{
-		return BlockGrass.getIconSideOverlay();
+		return Blocks.grass.getIconSideOverlay();
 	}
-
 }

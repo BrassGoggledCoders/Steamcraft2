@@ -60,7 +60,7 @@ public class ItemWingpackModule extends PoweredArmorModule
 
 			NBTTagCompound tag = stack.getTagCompound();
 
-			if(player.posY < 200 && Steamcraft.proxy.isKeyPressed(0) && doConsumption(player, stack))
+			if((player.posY < 200) && Steamcraft.proxy.isKeyPressed(0) && this.doConsumption(player, stack))
 			{
 
 				if(player.motionY > 0.0D)
@@ -71,7 +71,7 @@ public class ItemWingpackModule extends PoweredArmorModule
 				world.spawnParticle("smoke", player.posX, player.posY - 0.25D, player.posZ, 0.0D, 0.0D, 0.0D);
 			}
 
-			if((player.motionY < 0.0D) && player.isSneaking() && doConsumption(player, stack))
+			if((player.motionY < 0.0D) && player.isSneaking() && this.doConsumption(player, stack))
 			{
 				player.motionY /= 1.4D;
 
@@ -85,7 +85,7 @@ public class ItemWingpackModule extends PoweredArmorModule
 				player.motionZ *= 1.04D;
 			}
 
-			if(player.fallDistance > 0.0F && !player.onGround && doConsumption(player, stack))
+			if((player.fallDistance > 0.0F) && !player.onGround && this.doConsumption(player, stack))
 			{
 				player.fallDistance = 0.0F;
 			}

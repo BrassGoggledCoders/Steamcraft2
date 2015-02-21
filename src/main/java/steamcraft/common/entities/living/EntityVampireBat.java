@@ -361,7 +361,7 @@ public class EntityVampireBat extends EntityMob
 				b0 = 7;
 			}
 
-			return l <= this.rand.nextInt(b0) && super.getCanSpawnHere();
+			return (l <= this.rand.nextInt(b0)) && super.getCanSpawnHere();
 		}
 	}
 }
