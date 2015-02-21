@@ -56,7 +56,6 @@ public class DepthsBiomeDecorator extends DeferredBiomeDecorator
 		this.redstoneGen = new WorldGenMinable(Blocks.redstone_ore, 12);
 		this.diamondGen = new WorldGenMinable(Blocks.diamond_ore, 12);
 		this.lapisGen = new WorldGenMinable(Blocks.lapis_ore, 16);
-		// this.yellowFlowerGen = new WorldGenFlowers(Blocks.yellow_flower);
 		this.mushroomBrownGen = new WorldGenFlowers(Blocks.brown_mushroom);
 		this.mushroomRedGen = new WorldGenFlowers(Blocks.red_mushroom);
 		this.bigMushroomGen = new WorldGenBigMushroom();
