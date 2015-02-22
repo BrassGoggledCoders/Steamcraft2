@@ -104,6 +104,8 @@ public class CompatabilityLayer
 			BlockFluidClassic block_fluid = (BlockFluidClassic) GameRegistry.findBlock("TConstruct", "fluid.molten." + LibInfo.metals[i].toLowerCase());
 			IMCHelper.addNewSmeltable(new ItemStack(InitBlocks.blockMetal, 1, i), InitBlocks.blockMetal, new FluidStack(block_fluid.getFluid(),
 					blockLiquidValue), 600);
+			IMCHelper.addNewSmeltable(new ItemStack(InitBlocks.blockCustomOre, 1, i), InitBlocks.blockMetal, new FluidStack(block_fluid.getFluid(),
+					ingotLiquidValue * 2), 600);
 			IMCHelper.addNewSmeltable(new ItemStack(InitItems.itemIngot, 1, i), InitBlocks.blockMetal,
 					new FluidStack(block_fluid.getFluid(), ingotLiquidValue), 300);
 			IMCHelper.addNewSmeltable(new ItemStack(InitItems.itemNugget, 1, i), InitBlocks.blockMetal, new FluidStack(block_fluid.getFluid(),
@@ -127,6 +129,8 @@ public class CompatabilityLayer
 		IMCHelper.addNewSmeltable(new ItemStack(InitBlocks.blockMetal, 1, 3), InitBlocks.blockMetal, new FluidStack(InitBlocks.moltenZincFluid,
 				blockLiquidValue),
 				600);
+		IMCHelper.addNewSmeltable(new ItemStack(InitBlocks.blockCustomOre, 1, 3), InitBlocks.blockMetal, new FluidStack(InitBlocks.moltenZincFluid,
+				ingotLiquidValue * 2), 600);
 		IMCHelper.addNewSmeltable(new ItemStack(InitItems.itemIngot, 1, 3), InitBlocks.blockMetal,
 				new FluidStack(InitBlocks.moltenZincFluid, ingotLiquidValue), 300);
 		IMCHelper.addNewSmeltable(new ItemStack(InitItems.itemNugget, 1, 3), InitBlocks.blockMetal, new FluidStack(InitBlocks.moltenZincFluid,
@@ -141,6 +145,10 @@ public class CompatabilityLayer
 		IMCHelper.addNewSmeltable(new ItemStack(InitItems.itemNugget, 1, 4), InitBlocks.blockMetal, new FluidStack(InitBlocks.moltenBrassFluid,
 				nuggetLiquidValue),
 				150);
+		IMCHelper.addNewFluxBattery(InitItems.itemElectricJarSmall);
+		IMCHelper.addNewFluxBattery(InitItems.itemElectricJarMedium);
+		IMCHelper.addNewFluxBattery(InitItems.itemElectricJarLarge);
+		IMCHelper.addNewFluxBattery(InitItems.itemElectricJarHuge);
 	}
 
 	private static void registerOreDictionaryEntries()

@@ -43,6 +43,7 @@ tile.steamFluidBlock.name=Steam
 tile.boilingWaterFluidBlock.name=Boiling Water
 tile.boilingMudFluidBlock.name=Boiling Liquid Mud
 tile.moltenZincFluidBlock.name=Molten Zinc
+tile.moltenBrassFluidBlock.name=Molten Brass
 tile.blockHatch.name=Steel Hatch
 tile.blockSlate.0.name=Blue Slate
 tile.blockSlate.1.name=Black Slate
