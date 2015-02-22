@@ -35,7 +35,6 @@ public class EntityBullet extends BaseProjectileEntity
 	public EntityBullet(World world)
 	{
 		super(world);
-		this.renderDistanceWeight = 10.0D;
 		this.setSize(0.5F, 0.5F);
 	}
 
@@ -43,6 +42,7 @@ public class EntityBullet extends BaseProjectileEntity
 	{
 		super(world, shooter, damage, accuracy);
 		this.damage = damage;
+		this.setSize(0.5F, 0.5F);
 	}
 
 	@Override

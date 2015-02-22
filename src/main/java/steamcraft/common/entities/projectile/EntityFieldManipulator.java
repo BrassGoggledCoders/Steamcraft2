@@ -70,7 +70,7 @@ public class EntityFieldManipulator extends EntityEnderPearl
 				{
 					EnderTeleportEvent event = new EnderTeleportEvent(entityplayermp, this.posX, this.posY, this.posZ, 5.0F);
 					if(!MinecraftForge.EVENT_BUS.post(event))
-					{ // Don't indent to lower patch size
+					{
 						if(this.getThrower().isRiding())
 						{
 							this.getThrower().mountEntity(null);

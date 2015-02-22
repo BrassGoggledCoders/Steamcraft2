@@ -1,5 +1,5 @@
 /**
- * This class was created by BrassGoggledCoders modding team. 
+ * This class was created by BrassGoggledCoders modding team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -8,7 +8,7 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- * 
+ *
  */
 package steamcraft.common.entities.projectile;
 
@@ -59,14 +59,12 @@ public class EntitySmallLightningBolt extends Entity implements IProjectile
 	public EntitySmallLightningBolt(World world)
 	{
 		super(world);
-		this.renderDistanceWeight = 10.0D;
 		this.setSize(0.5F, 0.5F);
 	}
 
 	public EntitySmallLightningBolt(World world, double dx, double dy, double dz)
 	{
 		super(world);
-		this.renderDistanceWeight = 10.0D;
 		this.setSize(0.5F, 0.5F);
 		this.setPosition(dx, dy, dz);
 		this.yOffset = 0.0F;
@@ -75,7 +73,6 @@ public class EntitySmallLightningBolt extends Entity implements IProjectile
 	public EntitySmallLightningBolt(World world, EntityLivingBase shooter, EntityLivingBase target, float frotY, float frotP)
 	{
 		super(world);
-		this.renderDistanceWeight = 10.0D;
 		this.shootingEntity = shooter;
 
 		this.posY = (shooter.posY + shooter.getEyeHeight()) - 0.10000000149011612D;

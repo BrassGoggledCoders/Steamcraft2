@@ -39,7 +39,6 @@ import steamcraft.client.renderers.entity.RenderFallingBoulder;
 import steamcraft.client.renderers.entity.RenderFleshGolem;
 import steamcraft.client.renderers.entity.RenderGhostSpider;
 import steamcraft.client.renderers.entity.RenderGiantSpider;
-import steamcraft.client.renderers.entity.RenderGrapplingHook;
 import steamcraft.client.renderers.entity.RenderGrub;
 import steamcraft.client.renderers.entity.RenderLostMiner;
 import steamcraft.client.renderers.entity.RenderShroomSkeleton;
@@ -64,7 +63,6 @@ import steamcraft.client.renderers.tile.TileLightningRodRenderer;
 import steamcraft.client.renderers.tile.TileTeslaCoilRenderer;
 import steamcraft.common.CommonProxy;
 import steamcraft.common.entities.EntityFallingBoulder;
-import steamcraft.common.entities.EntityGrapplingHook;
 import steamcraft.common.entities.living.EntityAbandonedGolem;
 import steamcraft.common.entities.living.EntityBoar;
 import steamcraft.common.entities.living.EntityFleshGolem;
@@ -142,7 +140,6 @@ public class ClientProxy extends CommonProxy
 				InitItems.itemFieldManipulator));
 		RenderingRegistry.registerEntityRenderingHandler(EntitySplashLightningBottle.class, new RenderSnowball(
 				InitItems.itemSplashLightningBottle));
-		RenderingRegistry.registerEntityRenderingHandler(EntityGrapplingHook.class, new RenderGrapplingHook());
 		RenderingRegistry.registerEntityRenderingHandler(EntityRocket.class, new RenderSnowball(InitItems.itemRocket));
 		RenderingRegistry.registerEntityRenderingHandler(EntityFallingBoulder.class, new RenderFallingBoulder());
 		RenderingRegistry.registerEntityRenderingHandler(EntityMinedBlock.class, new RenderMinedBlock());
