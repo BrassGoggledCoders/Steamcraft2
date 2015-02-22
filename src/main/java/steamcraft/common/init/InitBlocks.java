@@ -182,9 +182,9 @@ public class InitBlocks
 
 	public static Block blockBoulder, blockSpiderEgg, blockMushroom;
 
-	public static Block blockMoltenZinc;
+	public static Block blockMoltenZinc, blockMoltenBrass;
 
-	public static Fluid moltenZincFluid;
+	public static Fluid moltenZincFluid, moltenBrassFluid;
 
 	public static void init()
 	{
@@ -342,6 +342,14 @@ public class InitBlocks
 			moltenZincFluid = FluidRegistry.getFluid("moltenZinc");
 
 		blockMoltenZinc = new BlockFluidBoiling(moltenZincFluid, Material.water).setBlockName("moltenZincFluidBlock");
+
+		// TiCon Molten Brass
+		moltenBrassFluid = new FluidBoiling("moltenBrass").setUnlocalizedName("moltenBrassFluid");
+
+		if(!FluidRegistry.registerFluid(moltenBrassFluid) && !FluidRegistry.isFluidRegistered("moltenBrass"))
+			moltenBrassFluid = FluidRegistry.getFluid("moltenBrass");
+
+		blockMoltenBrass = new BlockFluidBoiling(moltenBrassFluid, Material.water).setBlockName("moltenBrassFluidBlock");
 	}
 
 	private static void initializeOthers()

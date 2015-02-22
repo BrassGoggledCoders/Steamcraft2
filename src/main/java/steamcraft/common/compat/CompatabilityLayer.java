@@ -109,10 +109,10 @@ public class CompatabilityLayer
 			IMCHelper.addNewSmeltable(new ItemStack(InitItems.itemNugget, 1, i), InitBlocks.blockMetal, new FluidStack(block_fluid.getFluid(),
 					nuggetLiquidValue), 150);
 		}
-		// Skip Zinc. Brass, Bronze, Steel.
-		for(int i = 4; i < 7; i++)
+		// Skip Zinc and Brass. Bronze, Steel.
+		for(int i = 5; i < 7; i++)
 		{
-			String metalname = LibInfo.metals[i].toLowerCase().replace("brass", "alubrass");
+			String metalname = LibInfo.metals[i].toLowerCase();
 			BlockFluidClassic block_fluid = (BlockFluidClassic) GameRegistry.findBlock("TConstruct", "fluid.molten." + metalname);
 			IMCHelper.addNewSmeltable(new ItemStack(InitBlocks.blockMetal, 1, i), InitBlocks.blockMetal, new FluidStack(block_fluid.getFluid(),
 					blockLiquidValue),
@@ -130,6 +130,15 @@ public class CompatabilityLayer
 		IMCHelper.addNewSmeltable(new ItemStack(InitItems.itemIngot, 1, 3), InitBlocks.blockMetal,
 				new FluidStack(InitBlocks.moltenZincFluid, ingotLiquidValue), 300);
 		IMCHelper.addNewSmeltable(new ItemStack(InitItems.itemNugget, 1, 3), InitBlocks.blockMetal, new FluidStack(InitBlocks.moltenZincFluid,
+				nuggetLiquidValue),
+				150);
+		// Brass
+		IMCHelper.addNewSmeltable(new ItemStack(InitBlocks.blockMetal, 1, 4), InitBlocks.blockMetal, new FluidStack(InitBlocks.moltenBrassFluid,
+				blockLiquidValue),
+				600);
+		IMCHelper.addNewSmeltable(new ItemStack(InitItems.itemIngot, 1, 4), InitBlocks.blockMetal,
+				new FluidStack(InitBlocks.moltenBrassFluid, ingotLiquidValue), 300);
+		IMCHelper.addNewSmeltable(new ItemStack(InitItems.itemNugget, 1, 4), InitBlocks.blockMetal, new FluidStack(InitBlocks.moltenBrassFluid,
 				nuggetLiquidValue),
 				150);
 	}
@@ -248,6 +257,7 @@ public class CompatabilityLayer
 		if(Loader.isModLoaded("TConstruct"))
 		{
 			GameRegistry.registerBlock(InitBlocks.blockMoltenZinc, "blockMoltenZinc");
+			GameRegistry.registerBlock(InitBlocks.blockMoltenBrass, "blockMoltenBrass");
 		}
 	}
 }
