@@ -15,6 +15,7 @@ package steamcraft.common.items.electric;
 import java.awt.Color;
 import java.util.HashMap;
 
+import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
@@ -38,6 +39,7 @@ public class ItemRayGun extends ElectricItem
 
 	static HashMap<String, Object> ray = new HashMap<String, Object>();
 	static HashMap<String, Long> soundDelay = new HashMap<String, Long>();
+	static HashMap<Block, Block> meltables = new HashMap<Block, Block>();
 
 	public ItemRayGun(String raySound, int maxEnergy, int maxReceive, int maxSend)
 	{
@@ -46,6 +48,11 @@ public class ItemRayGun extends ElectricItem
 		this.setFull3D();
 		this.setMaxDamage(20);
 		this.setHasSubtypes(false);
+		meltables.put(Blocks.snow, Blocks.flowing_water);
+		meltables.put(Blocks.snow_layer, Blocks.flowing_water);
+		meltables.put(Blocks.sand, Blocks.glass);
+		meltables.put(Blocks.netherrack, Blocks.flowing_lava);
+		meltables.put(Blocks.clay, Blocks.hardened_clay);
 	}
 
 	@SuppressWarnings("all")
@@ -100,29 +107,9 @@ public class ItemRayGun extends ElectricItem
 									world.setBlock(i, j, k, Blocks.fire);
 									this.extractEnergy(stack, ItemRayGun.energyPerUse, false);
 								}
-								else if(world.getBlock(i, j, k) == Blocks.snow)
+								else if(meltables.containsKey(world.getBlock(i, j, k)))
 								{
-									world.setBlock(i, j, k, Blocks.flowing_water);
-									this.extractEnergy(stack, ItemRayGun.energyPerUse, false);
-								}
-								if(world.getBlock(i, j, k) == Blocks.snow_layer)
-								{
-									world.setBlock(i, j, k, Blocks.flowing_water);
-									this.extractEnergy(stack, ItemRayGun.energyPerUse, false);
-								}
-								if(world.getBlock(i, j, k) == Blocks.sand)
-								{
-									world.setBlock(i, j, k, Blocks.glass);
-									this.extractEnergy(stack, ItemRayGun.energyPerUse, false);
-								}
-								if(world.getBlock(i, j, k) == Blocks.netherrack)
-								{
-									world.setBlock(i, j, k, Blocks.flowing_lava);
-									this.extractEnergy(stack, ItemRayGun.energyPerUse, false);
-								}
-								if(world.getBlock(i, j, k) == Blocks.clay)
-								{
-									world.setBlock(i, j, k, Blocks.hardened_clay);
+									world.setBlock(i, j, k, meltables.get(world.getBlock(x, y, z)));
 									this.extractEnergy(stack, ItemRayGun.energyPerUse, false);
 								}
 							}
