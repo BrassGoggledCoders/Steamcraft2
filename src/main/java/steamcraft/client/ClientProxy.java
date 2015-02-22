@@ -106,11 +106,10 @@ public class ClientProxy extends CommonProxy
 	@Override
 	public void init()
 	{
-		super.init();
-		// this.registerDisplayInformation();
 		this.registerBlockRenderers();
 		this.registerEntityRenderers();
 		this.registerKeys();
+		super.init();
 	}
 
 	public void registerKeys()
@@ -126,17 +125,6 @@ public class ClientProxy extends CommonProxy
 
 	private void registerEntityRenderers()
 	{
-		RenderingRegistry.registerEntityRenderingHandler(EntityBullet.class, new RenderSnowball(InitItems.itemMusketBall));
-		RenderingRegistry.registerEntityRenderingHandler(EntityFieldManipulator.class, new RenderSnowball(
-				InitItems.itemFieldManipulator));
-		RenderingRegistry.registerEntityRenderingHandler(EntitySplashLightningBottle.class, new RenderSnowball(
-				InitItems.itemSplashLightningBottle));
-		RenderingRegistry.registerEntityRenderingHandler(EntityGrapplingHook.class, new RenderGrapplingHook());
-		RenderingRegistry.registerEntityRenderingHandler(EntityRocket.class, new RenderSnowball(InitItems.itemRocket));
-		RenderingRegistry.registerEntityRenderingHandler(EntityFallingBoulder.class, new RenderFallingBoulder());
-
-		RenderingRegistry.registerEntityRenderingHandler(EntityMinedBlock.class, new RenderMinedBlock());
-
 		RenderingRegistry.registerEntityRenderingHandler(EntityFleshGolem.class, new RenderFleshGolem(new ModelFleshGolem(), 0));
 		RenderingRegistry.registerEntityRenderingHandler(EntityLostMiner.class, new RenderLostMiner(new ModelZombie(), 0));
 		RenderingRegistry.registerEntityRenderingHandler(EntityGrub.class, new RenderGrub(new ModelGrub(), 0));
@@ -148,6 +136,16 @@ public class ClientProxy extends CommonProxy
 		RenderingRegistry.registerEntityRenderingHandler(EntityShroomZombie.class, new RenderShroomZombie());
 		RenderingRegistry.registerEntityRenderingHandler(EntityShroomSkeleton.class, new RenderShroomSkeleton());
 		RenderingRegistry.registerEntityRenderingHandler(EntityAbandonedGolem.class, new RenderAbandonedGolem());
+
+		RenderingRegistry.registerEntityRenderingHandler(EntityBullet.class, new RenderSnowball(InitItems.itemMusketBall));
+		RenderingRegistry.registerEntityRenderingHandler(EntityFieldManipulator.class, new RenderSnowball(
+				InitItems.itemFieldManipulator));
+		RenderingRegistry.registerEntityRenderingHandler(EntitySplashLightningBottle.class, new RenderSnowball(
+				InitItems.itemSplashLightningBottle));
+		RenderingRegistry.registerEntityRenderingHandler(EntityGrapplingHook.class, new RenderGrapplingHook());
+		RenderingRegistry.registerEntityRenderingHandler(EntityRocket.class, new RenderSnowball(InitItems.itemRocket));
+		RenderingRegistry.registerEntityRenderingHandler(EntityFallingBoulder.class, new RenderFallingBoulder());
+		RenderingRegistry.registerEntityRenderingHandler(EntityMinedBlock.class, new RenderMinedBlock());
 	}
 
 	private void registerBlockRenderers()

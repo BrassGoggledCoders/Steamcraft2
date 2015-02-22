@@ -94,7 +94,6 @@ public class Steamcraft
 		MinecraftForge.EVENT_BUS.register(new BucketHandler());
 
 		CompatabilityLayer.initCompatItems();
-		InitEntities.init();
 
 		LoggerSteamcraft.info("Finished Preinit");
 	}
@@ -108,6 +107,7 @@ public class Steamcraft
 		NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
 		InitPackets.init();
 
+		InitEntities.init();
 		proxy.init();
 
 		MinecraftForge.EVENT_BUS.register(new EventHandlerForge());

@@ -16,7 +16,6 @@ import cpw.mods.fml.common.registry.EntityRegistry;
 
 import steamcraft.common.Steamcraft;
 import steamcraft.common.entities.EntityFallingBoulder;
-import steamcraft.common.entities.EntityGrapplingHook;
 import steamcraft.common.entities.EntityTimeBomb;
 import steamcraft.common.entities.living.EntityAbandonedGolem;
 import steamcraft.common.entities.living.EntityBoar;
@@ -30,7 +29,9 @@ import steamcraft.common.entities.living.EntityShroomZombie;
 import steamcraft.common.entities.living.EntitySpiderQueen;
 import steamcraft.common.entities.living.EntityVampireBat;
 import steamcraft.common.entities.projectile.EntityBullet;
+import steamcraft.common.entities.projectile.EntityFieldManipulator;
 import steamcraft.common.entities.projectile.EntityRocket;
+import steamcraft.common.entities.projectile.EntitySplashLightningBottle;
 
 /**
  * @author Surseance
@@ -41,12 +42,6 @@ public class InitEntities
 	public static void init()
 	{
 		int entID = 0;
-
-		EntityRegistry.registerModEntity(EntityBullet.class, "Bullet", entID++, Steamcraft.instance, 64, 1, true);
-		EntityRegistry.registerModEntity(EntityGrapplingHook.class, "GrapplingHook", entID++, Steamcraft.instance, 64, 1, true);
-		EntityRegistry.registerModEntity(EntityTimeBomb.class, "TimeBomb", entID++, Steamcraft.instance, 64, 1, true);
-		EntityRegistry.registerModEntity(EntityRocket.class, "Rocket", entID++, Steamcraft.instance, 64, 1, true);
-		EntityRegistry.registerModEntity(EntityFallingBoulder.class, "FallingBoulder", entID++, Steamcraft.instance, 64, 1, true);
 
 		// Mobs
 		EntityRegistry.registerModEntity(EntityFleshGolem.class, "FleshGolem", entID++, Steamcraft.instance, 64, 1, true);
@@ -60,5 +55,15 @@ public class InitEntities
 		EntityRegistry.registerModEntity(EntityShroomZombie.class, "ShroomZombie", entID++, Steamcraft.instance, 64, 1, true);
 		EntityRegistry.registerModEntity(EntityShroomSkeleton.class, "ShroomSkeleton", entID++, Steamcraft.instance, 64, 1, true);
 		EntityRegistry.registerModEntity(EntityAbandonedGolem.class, "AbdandonedGolem", entID++, Steamcraft.instance, 64, 1, true);
+
+		// Non-Living
+		// Projectile
+		EntityRegistry.registerModEntity(EntityBullet.class, "Bullet", entID++, Steamcraft.instance, 40, 1, true);
+		EntityRegistry.registerModEntity(EntityRocket.class, "Rocket", entID++, Steamcraft.instance, 40, 1, true);
+		EntityRegistry.registerModEntity(EntitySplashLightningBottle.class, "SplashLightningBottle", entID++, Steamcraft.instance, 40, 1, true);
+		EntityRegistry.registerModEntity(EntityFieldManipulator.class, "SplashLightningBottle", entID++, Steamcraft.instance, 40, 1, true);
+		// Block
+		EntityRegistry.registerModEntity(EntityTimeBomb.class, "TimeBomb", entID++, Steamcraft.instance, 40, 1, true);
+		EntityRegistry.registerModEntity(EntityFallingBoulder.class, "FallingBoulder", entID++, Steamcraft.instance, 40, 1, true);
 	}
 }
