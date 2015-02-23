@@ -16,7 +16,8 @@ public class ModelGrub extends ModelBase
 
 	public ModelGrub()
 	{
-		GL11.glTranslatef(0, -0.5F, 0);
+		GL11.glTranslatef(0, -0.65F, 0);
+		GL11.glRotatef(90, 0, 1, 0);
 
 		this.body = new ModelRenderer(this);
 		this.body.addBox(0F, 0F, 0F, 5, 4, 6);

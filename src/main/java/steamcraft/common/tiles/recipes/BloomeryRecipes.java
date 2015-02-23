@@ -40,7 +40,7 @@ public class BloomeryRecipes
 	private BloomeryRecipes()
 	{
 		this.addBloomeryRecipe(new ItemStack(Blocks.iron_ore), new ItemStack(Items.coal, 4), new ItemStack(InitItems.itemIngot, 2, 6));
-		this.addBloomeryRecipe(new ItemStack(Items.iron_ingot), new ItemStack(Items.coal, 4), new ItemStack(InitItems.itemIngot, 1, 6));
+		this.addBloomeryRecipe(new ItemStack(Items.iron_ingot), new ItemStack(Items.coal, 2), new ItemStack(InitItems.itemIngot, 1, 6));
 	}
 
 	public void addBloomeryRecipe(ItemStack input, ItemStack input2, ItemStack result)
