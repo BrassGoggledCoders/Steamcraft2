@@ -34,6 +34,7 @@ import steamcraft.common.init.InitItems;
 import steamcraft.common.lib.LibInfo;
 import steamcraft.common.lib.LoggerSteamcraft;
 import steamcraft.common.lib.ModInfo;
+import tconstruct.library.TConstructRegistry;
 import vazkii.botania.api.wiki.WikiHooks;
 import boilerplate.common.utils.helpers.IMCHelper;
 import boilerplate.common.utils.helpers.OreDictHelper;
@@ -44,6 +45,9 @@ import boilerplate.common.utils.helpers.OreDictHelper;
  */
 public class CompatabilityLayer
 {
+	public static int ingotLiquidValue = 144;
+	public static int nuggetLiquidValue = ingotLiquidValue / 9;
+	public static int blockLiquidValue = ingotLiquidValue * 9;
 
 	public static void init()
 	{
@@ -95,9 +99,6 @@ public class CompatabilityLayer
 
 		IMCHelper.addNewPartBuilderMaterial(ConfigGeneral.etheriumMaterialID, new ItemStack(InitItems.itemResource), new ItemStack(
 				InitItems.itemResource, 1, 6), 2);
-		int ingotLiquidValue = 144;
-		int nuggetLiquidValue = ingotLiquidValue / 9;
-		int blockLiquidValue = ingotLiquidValue * 9;
 		// Aluminum, Copper, Tin
 		for(int i = 0; i < 3; i++)
 		{
@@ -266,6 +267,14 @@ public class CompatabilityLayer
 		{
 			GameRegistry.registerBlock(InitBlocks.blockMoltenZinc, "blockMoltenZinc");
 			GameRegistry.registerBlock(InitBlocks.blockMoltenBrass, "blockMoltenBrass");
+			TConstructRegistry.getTableCasting().addCastingRecipe(new ItemStack(InitItems.itemIngot, 1, 3),
+					new FluidStack(InitBlocks.moltenZincFluid, ingotLiquidValue), TConstructRegistry.getItemStack("castingot"), 20);
+			TConstructRegistry.getTableCasting().addCastingRecipe(new ItemStack(InitItems.itemIngot, 1, 4),
+					new FluidStack(InitBlocks.moltenBrassFluid, ingotLiquidValue), TConstructRegistry.getItemStack("castingot"), 20);
+			TConstructRegistry.getBasinCasting().addCastingRecipe(new ItemStack(InitItems.itemIngot, 1, 3),
+					new FluidStack(InitBlocks.moltenZincFluid, blockLiquidValue), 20 * 9);
+			TConstructRegistry.getBasinCasting().addCastingRecipe(new ItemStack(InitItems.itemIngot, 1, 4),
+					new FluidStack(InitBlocks.moltenBrassFluid, blockLiquidValue), 20 * 9);
 		}
 	}
 }
