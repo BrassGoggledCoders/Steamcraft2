@@ -12,12 +12,17 @@
  */
 package steamcraft.common.items.modules;
 
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 import steamcraft.common.Steamcraft;
+import steamcraft.common.lib.ModInfo;
 import boilerplate.steamapi.item.ModuleRegistry;
 
 public class ItemWingpackModule extends PoweredArmorModule
@@ -96,5 +101,12 @@ public class ItemWingpackModule extends PoweredArmorModule
 	public EnumArmorEffectType getArmorEffectType()
 	{
 		return EnumArmorEffectType.ONTICK;
+	}
+
+	@SideOnly(Side.CLIENT)
+	@Override
+	public void registerIcons(IIconRegister par1IconRegister)
+	{
+		this.itemIcon = par1IconRegister.registerIcon(ModInfo.PREFIX + this.getUnlocalizedName().substring(5));
 	}
 }
