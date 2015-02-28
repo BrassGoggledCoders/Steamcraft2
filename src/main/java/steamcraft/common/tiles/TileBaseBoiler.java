@@ -25,7 +25,7 @@ import net.minecraftforge.fluids.FluidTank;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
 
-import steamcraft.common.blocks.machines.BlockSteamBoiler;
+import steamcraft.common.blocks.machines.BlockBaseBoiler;
 import steamcraft.common.items.ItemCanister;
 import boilerplate.common.baseclasses.BaseTileWithInventory;
 
@@ -146,7 +146,7 @@ public class TileBaseBoiler extends BaseTileWithInventory implements IFluidHandl
 			if(var1 != (this.furnaceBurnTime > 0))
 			{
 				var2 = true;
-				BlockSteamBoiler.updateBlockState(this.furnaceBurnTime > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord);
+				BlockBaseBoiler.updateBlockState(this.furnaceBurnTime > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord);
 			}
 		}
 
