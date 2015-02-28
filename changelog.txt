@@ -95,6 +95,20 @@ Beta 3.6:
 
 N.B. Some things (Shielded Canisters and Molten Zinc for example) are still pending textures
 
-
 Beta 4:
 ++ The Deeps:
+	> An entire new dimension
+	> Accessed through fissures in the bedrock in the overworld
+	> Many biomes, from Towering Redwood Forests to Scalding Mud Lands. Discover the rest for yourself!
+	> New mobs, such as giant spiders.
+	> Underground variety, from compressed stone to boulders.
++ Allow jars to be used to add RF to TiCon tools.
++ DynamicSwordSkills compat
++ When you break boilers they dump their steam into the world (but not if you use a spanner)
++ Add a safety catch for the shrinkray
++ Raygun can turn clay into hardened clay
+* Brass Leaves directly drop nuggets (with a small chance of ingots) when broken, and can only be mined with a pickaxe of mining level iron or above.
+* Brass and Zinc can’t be melted in TiCon smeltery for now, working on it.
+# Prevent the cast iron gate being usable as furnace fuel
+# Fix Shrinkray/Raygun not using energy
+# Fix shrinkray not working on servers
