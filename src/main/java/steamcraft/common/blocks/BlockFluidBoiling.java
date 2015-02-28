@@ -35,7 +35,7 @@ import boilerplate.common.utils.ItemStackUtils;
 public class BlockFluidBoiling extends BlockFluidClassic
 {
 	@SideOnly(Side.CLIENT)
-	private static IIcon iconFlowing;
+	private IIcon iconFlowing;
 
 	public BlockFluidBoiling(Fluid fluid, Material material)
 	{
