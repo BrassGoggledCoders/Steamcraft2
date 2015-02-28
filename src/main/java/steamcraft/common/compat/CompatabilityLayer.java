@@ -125,26 +125,17 @@ public class CompatabilityLayer
 					nuggetLiquidValue),
 					150);
 		}
-		// Zinc
-		IMCHelper.addNewSmeltable(new ItemStack(InitBlocks.blockMetal, 1, 3), InitBlocks.blockMetal, new FluidStack(InitBlocks.moltenZincFluid,
-				blockLiquidValue),
-				600);
-		IMCHelper.addNewSmeltable(new ItemStack(InitBlocks.blockCustomOre, 1, 3), InitBlocks.blockMetal, new FluidStack(InitBlocks.moltenZincFluid,
-				ingotLiquidValue * 2), 600);
-		IMCHelper.addNewSmeltable(new ItemStack(InitItems.itemIngot, 1, 3), InitBlocks.blockMetal,
-				new FluidStack(InitBlocks.moltenZincFluid, ingotLiquidValue), 300);
-		IMCHelper.addNewSmeltable(new ItemStack(InitItems.itemNugget, 1, 3), InitBlocks.blockMetal, new FluidStack(InitBlocks.moltenZincFluid,
-				nuggetLiquidValue),
-				150);
-		// Brass
-		IMCHelper.addNewSmeltable(new ItemStack(InitBlocks.blockMetal, 1, 4), InitBlocks.blockMetal, new FluidStack(InitBlocks.moltenBrassFluid,
-				blockLiquidValue),
-				600);
-		IMCHelper.addNewSmeltable(new ItemStack(InitItems.itemIngot, 1, 4), InitBlocks.blockMetal,
-				new FluidStack(InitBlocks.moltenBrassFluid, ingotLiquidValue), 300);
-		IMCHelper.addNewSmeltable(new ItemStack(InitItems.itemNugget, 1, 4), InitBlocks.blockMetal, new FluidStack(InitBlocks.moltenBrassFluid,
-				nuggetLiquidValue),
-				150);
+		/*
+		 * Zinc IMCHelper.addNewSmeltable(new ItemStack(InitBlocks.blockMetal, 1, 3), InitBlocks.blockMetal, new FluidStack(InitBlocks.moltenZincFluid,
+		 * blockLiquidValue), 600); IMCHelper.addNewSmeltable(new ItemStack(InitBlocks.blockCustomOre, 1, 3), InitBlocks.blockMetal, new
+		 * FluidStack(InitBlocks.moltenZincFluid, ingotLiquidValue * 2), 600); IMCHelper.addNewSmeltable(new ItemStack(InitItems.itemIngot, 1, 3),
+		 * InitBlocks.blockMetal, new FluidStack(InitBlocks.moltenZincFluid, ingotLiquidValue), 300); IMCHelper.addNewSmeltable(new
+		 * ItemStack(InitItems.itemNugget, 1, 3), InitBlocks.blockMetal, new FluidStack(InitBlocks.moltenZincFluid, nuggetLiquidValue), 150); // Brass
+		 * IMCHelper.addNewSmeltable(new ItemStack(InitBlocks.blockMetal, 1, 4), InitBlocks.blockMetal, new FluidStack(InitBlocks.moltenBrassFluid,
+		 * blockLiquidValue), 600); IMCHelper.addNewSmeltable(new ItemStack(InitItems.itemIngot, 1, 4), InitBlocks.blockMetal, new
+		 * FluidStack(InitBlocks.moltenBrassFluid, ingotLiquidValue), 300); IMCHelper.addNewSmeltable(new ItemStack(InitItems.itemNugget, 1, 4),
+		 * InitBlocks.blockMetal, new FluidStack(InitBlocks.moltenBrassFluid, nuggetLiquidValue), 150);
+		 */
 		IMCHelper.addNewFluxBattery(InitItems.itemElectricJarSmall);
 		IMCHelper.addNewFluxBattery(InitItems.itemElectricJarMedium);
 		IMCHelper.addNewFluxBattery(InitItems.itemElectricJarLarge);
