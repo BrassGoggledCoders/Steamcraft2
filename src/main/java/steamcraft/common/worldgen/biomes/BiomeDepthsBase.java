@@ -29,7 +29,6 @@ import steamcraft.common.entities.living.EntityAbandonedGolem;
 import steamcraft.common.entities.living.EntityBoar;
 import steamcraft.common.entities.living.EntityGhostSpider;
 import steamcraft.common.entities.living.EntityGiantSpider;
-import steamcraft.common.entities.living.EntityGrub;
 import steamcraft.common.entities.living.EntityLostMiner;
 import steamcraft.common.entities.living.EntityShroomSkeleton;
 import steamcraft.common.entities.living.EntityShroomZombie;
@@ -47,7 +46,7 @@ public class BiomeDepthsBase extends BiomeGenBase
 		this.spawnableMonsterList.add(new BiomeGenBase.SpawnListEntry(EntityShroomSkeleton.class, 10, 1, 3));
 		this.spawnableMonsterList.add(new BiomeGenBase.SpawnListEntry(EntityShroomZombie.class, 10, 1, 3));
 		this.spawnableMonsterList.add(new BiomeGenBase.SpawnListEntry(EntityAbandonedGolem.class, 1, 1, 1));
-		this.spawnableMonsterList.add(new BiomeGenBase.SpawnListEntry(EntityGrub.class, 10, 3, 6));
+		// this.spawnableMonsterList.add(new BiomeGenBase.SpawnListEntry(EntityGrub.class, 10, 3, 6));
 		this.spawnableMonsterList.add(new BiomeGenBase.SpawnListEntry(EntityVampireBat.class, 10, 4, 4));
 		this.spawnableMonsterList.add(new BiomeGenBase.SpawnListEntry(EntityGhostSpider.class, 100, 4, 4));
 		this.spawnableMonsterList.add(new BiomeGenBase.SpawnListEntry(EntityCaveSpider.class, 100, 4, 4));
