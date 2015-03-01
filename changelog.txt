@@ -111,4 +111,3 @@ Beta 4:
 * Brass and Zinc can’t be melted in TiCon smeltery for now, working on it.
 # Prevent the cast iron gate being usable as furnace fuel
 # Fix Shrinkray/Raygun not using energy
-# Fix shrinkray not working on servers
