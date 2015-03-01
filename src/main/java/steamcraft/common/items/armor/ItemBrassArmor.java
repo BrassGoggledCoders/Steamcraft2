@@ -25,6 +25,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 
+import cpw.mods.fml.common.Optional;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -44,6 +45,8 @@ import boilerplate.steamapi.item.ModuleRegistry;
  * @author warlordjones
  * 
  */
+@Optional.InterfaceList({ @Optional.Interface(iface = "thaumcraft.api.IGoggles", modid = "Thaumcraft"),
+		@Optional.Interface(iface = "thaumcraft.api.nodes.IRevealer", modid = "Railcraft") })
 public class ItemBrassArmor extends BaseArmor implements ISpecialArmor, IGoggles, IRevealer
 {
 
@@ -188,12 +191,8 @@ public class ItemBrassArmor extends BaseArmor implements ISpecialArmor, IGoggles
 	{
 	}
 
-	public int getSlownessLevelFromWeight(int weight)
-	{
-		return weight / 40;
-	}
-
 	@Override
+	@Optional.Method(modid = "Thaumcraft")
 	public boolean showNodes(ItemStack itemstack, EntityLivingBase player)
 	{
 		NBTTagCompound nbt = getOrCreateTagCompound(itemstack);
@@ -211,6 +210,7 @@ public class ItemBrassArmor extends BaseArmor implements ISpecialArmor, IGoggles
 	}
 
 	@Override
+	@Optional.Method(modid = "Thaumcraft")
 	public boolean showIngamePopups(ItemStack itemstack, EntityLivingBase player)
 	{
 		NBTTagCompound nbt = getOrCreateTagCompound(itemstack);

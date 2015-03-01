@@ -46,7 +46,6 @@ import steamcraft.common.init.InitMisc;
 import steamcraft.common.init.InitPackets;
 import steamcraft.common.init.InitRecipes;
 import steamcraft.common.lib.BucketHandler;
-import steamcraft.common.lib.CommandIssue;
 import steamcraft.common.lib.CommandSteamcraft;
 import steamcraft.common.lib.CreativeTabSteamcraft;
 import steamcraft.common.lib.LoggerSteamcraft;
@@ -151,6 +150,5 @@ public class Steamcraft
 	public void serverStarting(FMLServerStartingEvent event)
 	{
 		event.registerServerCommand(new CommandSteamcraft());
-		event.registerServerCommand(new CommandIssue());
 	}
 }
