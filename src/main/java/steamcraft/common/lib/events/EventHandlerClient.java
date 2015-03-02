@@ -80,9 +80,11 @@ public class EventHandlerClient
 				ModelBase model = item.getVanityItemModel();
 				ClientHelper.textureManager().bindTexture(item.getItemTextureLocation());
 				GL11.glPushMatrix();
-				model.render(event.entity, item.getModelOffsetX(), item.getModelOffsetY(), item.getModelOffsetZ(), 0.0625F, 0.0625F, 0.0625F);
+				GL11.glTranslatef(item.getModelOffsetX(), item.getModelOffsetY(), item.getModelOffsetZ());
+				GL11.glRotatef(180, 1, 0, 0);
+				model.render(event.entity, 0, 0, 0, 1, 0, 0.0625F);
 				GL11.glPopMatrix();
-				ClientHelper.textureManager().deleteTexture(item.getItemTextureLocation());
+				// ClientHelper.textureManager().deleteTexture(item.getItemTextureLocation());
 			}
 		}
 	}

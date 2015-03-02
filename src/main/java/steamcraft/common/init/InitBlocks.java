@@ -180,6 +180,8 @@ public class InitBlocks
 			blockAllClearSirenOn, blockIntruderSiren, blockIntruderSirenOn, blockNuclearSiren,
 			blockNuclearSirenOn, blockMotionSensor, blockMotionSensorOn;
 
+	public static Block blockCompressedBricks;
+
 	public static Block blockBoulder, blockSpiderEgg, blockMushroom;
 
 	public static Block blockMoltenZinc, blockMoltenBrass;

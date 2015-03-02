@@ -13,12 +13,12 @@
 package steamcraft.common.items.vanity;
 
 import net.minecraft.client.model.ModelBase;
-import net.minecraft.client.model.ModelCow;
 import net.minecraft.util.ResourceLocation;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+import steamcraft.client.renderers.models.ModelTopHat;
 import steamcraft.common.items.BaseItem;
 import steamcraft.common.lib.ModInfo;
 import boilerplate.steamapi.vanity.EnumVanityType;
@@ -34,14 +34,14 @@ public class ItemTopHat extends BaseItem implements IVanityItem
 	@SideOnly(Side.CLIENT)
 	public ModelBase getVanityItemModel()
 	{
-		return new ModelCow();
+		return new ModelTopHat();
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public ResourceLocation getItemTextureLocation()
 	{
-		return new ResourceLocation(ModInfo.PREFIX + "/textures/models/crystal.png");
+		return new ResourceLocation(ModInfo.PREFIX + "/textures/blocks/metal/blockCastIron.png");
 	}
 
 	@Override
@@ -60,8 +60,7 @@ public class ItemTopHat extends BaseItem implements IVanityItem
 	@Override
 	public float getModelOffsetY()
 	{
-		// TODO Auto-generated method stub
-		return 0;
+		return -0.3F;
 	}
 
 	@Override
