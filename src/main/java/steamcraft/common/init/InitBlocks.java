@@ -180,7 +180,7 @@ public class InitBlocks
 			blockAllClearSirenOn, blockIntruderSiren, blockIntruderSirenOn, blockNuclearSiren,
 			blockNuclearSirenOn, blockMotionSensor, blockMotionSensorOn;
 
-	public static Block blockCompressedBricks;
+	public static Block blockCompressedBricks; // TODO Fences/Doors/Slabs/Stairs for wood and Slabs/Stairs for stones
 
 	public static Block blockBoulder, blockSpiderEgg, blockMushroom;
 

@@ -284,6 +284,11 @@ public class InitRecipes
 				'I', "ingotCastIron"));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockCastIronRailing),
 				"III", "III", 'I', "ingotCastIron"));
+
+		GameRegistry.addShapelessRecipe(new ItemStack(InitBlocks.blockRedwoodPlanks, 4), new ItemStack(InitBlocks.blockRedwoodLog));
+		GameRegistry.addShapelessRecipe(new ItemStack(InitBlocks.blockWillowPlanks, 4), new ItemStack(InitBlocks.blockWillowLog));
+		GameRegistry.addShapelessRecipe(new ItemStack(InitBlocks.blockMangrovePlanks, 4), new ItemStack(InitBlocks.blockMangroveLog));
+		GameRegistry.addShapelessRecipe(new ItemStack(InitBlocks.blockPetrifiedPlanks, 4), new ItemStack(InitBlocks.blockPetrifiedLog));
 	}
 
 	private static void initModuleRecipes()
