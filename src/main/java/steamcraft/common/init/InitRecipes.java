@@ -289,6 +289,13 @@ public class InitRecipes
 		GameRegistry.addShapelessRecipe(new ItemStack(InitBlocks.blockWillowPlanks, 4), new ItemStack(InitBlocks.blockWillowLog));
 		GameRegistry.addShapelessRecipe(new ItemStack(InitBlocks.blockMangrovePlanks, 4), new ItemStack(InitBlocks.blockMangroveLog));
 		GameRegistry.addShapelessRecipe(new ItemStack(InitBlocks.blockPetrifiedPlanks, 4), new ItemStack(InitBlocks.blockPetrifiedLog));
+
+		GameRegistry.addShapelessRecipe(new ItemStack(InitBlocks.blockPolishedPlanks, 1, 0), new ItemStack(Blocks.planks, 1, 0),
+				new ItemStack(Items.water_bucket));
+		GameRegistry.addShapelessRecipe(new ItemStack(InitBlocks.blockPolishedPlanks, 1, 1), new ItemStack(InitBlocks.blockPolishedPlanks, 1, 0));
+		GameRegistry.addShapelessRecipe(new ItemStack(InitBlocks.blockPolishedPlanks, 1, 2), new ItemStack(InitBlocks.blockPolishedPlanks, 1, 1));
+		GameRegistry.addShapelessRecipe(new ItemStack(InitBlocks.blockPolishedPlanks, 1, 0), new ItemStack(InitBlocks.blockPolishedPlanks, 1, 2));
+
 	}
 
 	private static void initModuleRecipes()
