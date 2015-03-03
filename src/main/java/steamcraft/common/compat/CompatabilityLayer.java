@@ -224,6 +224,18 @@ public class CompatabilityLayer
 			OreDictHelper.registerOre("partTierTwo", InitItems.itemBrassParts, i);
 			OreDictHelper.registerOre("partTierTwo", InitItems.itemSteelParts, i);
 		}
+		OreDictionary.registerOre("logWood", InitBlocks.blockRedwoodLog);
+		OreDictionary.registerOre("logWood", InitBlocks.blockWillowLog);
+		OreDictionary.registerOre("logWood", InitBlocks.blockMangroveLog);
+		OreDictionary.registerOre("logWood", InitBlocks.blockPetrifiedLog);
+		OreDictionary.registerOre("plankWood", InitBlocks.blockRedwoodPlanks);
+		OreDictionary.registerOre("plankWood", InitBlocks.blockWillowPlanks);
+		OreDictionary.registerOre("plankWood", InitBlocks.blockMangrovePlanks);
+		OreDictionary.registerOre("plankWood", InitBlocks.blockPetrifiedPlanks);
+		OreDictionary.registerOre("treeLeaves", InitBlocks.blockRedwoodLeaves);
+		OreDictionary.registerOre("treeLeaves", InitBlocks.blockWillowLeaves);
+		OreDictionary.registerOre("treeLeaves", InitBlocks.blockMangroveLeaves);
+		OreDictionary.registerOre("treeLeaves", InitBlocks.blockDeadLeaves);
 	}
 
 	private static void registerBiomeTypes()
