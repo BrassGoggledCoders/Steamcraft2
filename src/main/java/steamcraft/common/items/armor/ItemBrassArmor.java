@@ -46,7 +46,7 @@ import boilerplate.steamapi.item.ModuleRegistry;
  * 
  */
 @Optional.InterfaceList({ @Optional.Interface(iface = "thaumcraft.api.IGoggles", modid = "Thaumcraft"),
-		@Optional.Interface(iface = "thaumcraft.api.nodes.IRevealer", modid = "Railcraft") })
+		@Optional.Interface(iface = "thaumcraft.api.nodes.IRevealer", modid = "Thaumcraft") })
 public class ItemBrassArmor extends BaseArmor implements ISpecialArmor, IGoggles, IRevealer
 {
 
