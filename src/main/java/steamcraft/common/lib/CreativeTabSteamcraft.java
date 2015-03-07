@@ -35,6 +35,6 @@ public class CreativeTabSteamcraft extends CreativeTabBase
 	@SideOnly(Side.CLIENT)
 	public Item getTabIconItem()
 	{
-		return InitItems.brassGoggles;
+		return InitItems.itemBrassGoggles;
 	}
 }

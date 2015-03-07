@@ -122,7 +122,7 @@ public class InitItems
 
 	public static Item helmetObsidian, chestplateObsidian, legsObsidian, bootsObsidian;
 
-	public static Item brassGoggles, itemDivingHelmet, itemMonocle;
+	public static Item itemBrassGoggles, itemDivingHelmet, itemMonocle;
 
 	// Tools
 	public static Item drillCore, drillBase, drillWood, drillStone, drillIron, drillDiamond, drillGold, drillSteam, drillEtherium, drillObsidian;
@@ -274,11 +274,11 @@ public class InitItems
 
 		RegistryHelper.registerArmorSet(helmetBrass, chestplateBrass, legsBrass, bootsBrass, "Brass", ModInfo.ID);
 
-		brassGoggles = new ItemBrassGoggles(ItemArmor.ArmorMaterial.CHAIN, 0, 0).setUnlocalizedName("itemBrassGoggles");
+		itemBrassGoggles = new ItemBrassGoggles(ItemArmor.ArmorMaterial.CHAIN, 0, 0).setUnlocalizedName("itemBrassGoggles");
 		itemMonocle = new ItemMonocle(ItemArmor.ArmorMaterial.CHAIN, 0, 0).setUnlocalizedName("itemMonocle");
 		itemDivingHelmet = new ItemDivingHelmet(ItemArmor.ArmorMaterial.CHAIN, 0, 0).setUnlocalizedName("itemDivingHelmet");
 
-		registerItem(brassGoggles, "ItemBrassGoggles");
+		registerItem(itemBrassGoggles, "ItemBrassGoggles");
 		registerItem(itemDivingHelmet, "ItemDivingHelmet");
 		registerItem(itemMonocle, "ItemMonocle");
 

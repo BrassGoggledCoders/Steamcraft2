@@ -57,7 +57,7 @@ public class ItemBrassGoggles extends BaseArmor
 
 		ItemStack helmet = ClientHelper.player().inventory.armorItemInSlot(3);
 
-		if((ClientHelper.settings().thirdPersonView == 0) && (helmet != null) && (helmet.getItem() == InitItems.brassGoggles))
+		if((ClientHelper.settings().thirdPersonView == 0) && (helmet != null) && (helmet.getItem() == InitItems.itemBrassGoggles))
 		{
 			ClientHelper.textureManager().bindTexture(overlay);
 			Tessellator tessellator = Tessellator.instance;

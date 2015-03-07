@@ -241,7 +241,7 @@ public class InitRecipes
 				Items.leather,
 				'S', Items.string));
 
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.brassGoggles), "BBB", "GBG", "BBB", 'B', "ingotBrass", 'G',
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemBrassGoggles), "BBB", "GBG", "BBB", 'B', "ingotBrass", 'G',
 				"paneGlass"));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemMonocle), " B ", "BGB", " BS", 'B', "ingotBrass", 'G',
 				"paneGlass", 'S', Items.string));
@@ -326,6 +326,10 @@ public class InitRecipes
 				"plateSteel"));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemWatchDisplay), "GGG", "RCR", "III", 'I',
 				"ingotIron", 'G', "paneGlass", 'R', Items.redstone, 'C', Items.clock));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemWingpackModule), new Object[] { "B B", " X ", "B B", 'X',
+				InitItems.itemSteamWingpack, 'B', "plateBrass" }));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemGogglesModule), new Object[] { "BBB", " X ", "BBB", 'X',
+				InitItems.itemBrassGoggles, 'B', "plateBrass" }));
 		// GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemLastResort), "TTT", "TCT", "TTT", 'T',
 		// Blocks.tnt, 'C', InitBlocks.blockCopperWire));
 
@@ -437,6 +441,7 @@ public class InitRecipes
 				"plateCastIron", 'G', Blocks.glowstone, 'R', "partCastIronRod" }));
 		GameRegistry.addShapelessRecipe(new ItemStack(InitBlocks.blockInvertedCastIronLamp),
 				new Object[] { InitBlocks.blockCastIronLamp, Blocks.redstone_torch });
+		GameRegistry.addShapelessRecipe(new ItemStack(InitItems.itemSplashLightningBottle), InitItems.itemElectricJarSmall, Items.gunpowder);
 	}
 
 	private static void initializeSmeltingRecipes()

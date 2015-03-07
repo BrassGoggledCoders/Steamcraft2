@@ -81,7 +81,7 @@ public class EventHandlerForge
 			EntityPlayer player = (EntityPlayer) event.entityLiving;
 			ItemStack is = player.inventory.armorItemInSlot(3);
 
-			if((is != null) && (is.getItem() == InitItems.brassGoggles))
+			if((is != null) && (is.getItem() == InitItems.itemBrassGoggles))
 				player.addPotionEffect(new PotionEffect(Potion.nightVision.id, 2, 0, true));
 			if((is != null) && (is.getItem() == InitItems.itemDivingHelmet) && player.isInWater())
 				player.addPotionEffect(new PotionEffect(Potion.nightVision.id, 2, 0, true));
@@ -175,7 +175,7 @@ public class EventHandlerForge
 	@SideOnly(Side.CLIENT)
 	public void onDrawBlockSelectionBox(DrawBlockHighlightEvent event)
 	{
-		if((event.player.inventory.armorItemInSlot(3) != null) && (event.player.inventory.armorItemInSlot(3).getItem() == InitItems.brassGoggles))
+		if((event.player.inventory.armorItemInSlot(3) != null) && (event.player.inventory.armorItemInSlot(3).getItem() == InitItems.itemBrassGoggles))
 		{
 			this.drawSelectionBox(event.player, event.target, 0, event.currentItem, event.partialTicks);
 			event.setCanceled(true);
