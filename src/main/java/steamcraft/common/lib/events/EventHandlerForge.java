@@ -125,7 +125,7 @@ public class EventHandlerForge
 
 			int color = 0xCCFF00;
 
-			if((this.block != null) && this.player.worldObj.isAirBlock(this.x, this.y, this.z))
+			if((this.block != null) && !this.player.worldObj.isAirBlock(this.x, this.y, this.z))
 			{
 				fontRenderer.drawString("Block: " + this.block.getUnlocalizedName().substring(5), posX, posY, color);
 				fontRenderer.drawString("Metadata: " + this.block.getDamageValue(ClientHelper.world(), this.x, this.y, this.z), posX, posY2, color);
