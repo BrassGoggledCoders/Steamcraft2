@@ -21,13 +21,13 @@ import net.minecraft.world.World;
 
 import steamcraft.common.lib.DamageSourceHandler;
 import steamcraft.common.lib.ModInfo;
-import boilerplate.common.baseclasses.BaseProjectileEntity;
+import boilerplate.common.baseclasses.BaseShootableEntity;
 
 /**
  * @author warlordjones
  * 
  */
-public class EntityRocket extends BaseProjectileEntity
+public class EntityRocket extends BaseShootableEntity
 {
 	private int type;
 	EntityLivingBase shooter;

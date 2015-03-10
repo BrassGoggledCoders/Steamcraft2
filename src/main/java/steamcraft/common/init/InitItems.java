@@ -34,7 +34,6 @@ import steamcraft.common.items.ItemFirearm;
 import steamcraft.common.items.ItemGrappleGun;
 import steamcraft.common.items.ItemGunPart;
 import steamcraft.common.items.ItemIngot;
-import steamcraft.common.items.ItemLightningGun;
 import steamcraft.common.items.ItemLoreBook;
 import steamcraft.common.items.ItemMachinePart;
 import steamcraft.common.items.ItemMatch;
@@ -147,7 +146,7 @@ public class InitItems
 
 	public static Item itemMusketBall, itemRifleBullet, itemPercussionCap;
 
-	public static Item itemRayGun, itemShrinkray, itemLightningGun;
+	public static Item itemRayGun, itemShrinkray;
 
 	public static Item itemClockworkRocketLauncher, itemRocket;
 
@@ -342,8 +341,6 @@ public class InitItems
 
 		itemRayGun = new ItemRayGun(ModInfo.PREFIX + "raygun", 50, ItemRayGun.energyPerUse, 200).setUnlocalizedName("itemRaygun");
 		itemShrinkray = new ItemShrinkray(ModInfo.PREFIX + "shrinkray", 50, ItemShrinkray.energyPerUse, 200).setUnlocalizedName("itemShrinkray");
-		// TODO
-		itemLightningGun = new ItemLightningGun(ModInfo.PREFIX + "lightninggun").setUnlocalizedName("itemLightningGun");
 
 		registerItem(itemRayGun, "ItemRayGun");
 		registerItem(itemShrinkray, "ItemShrinkray");

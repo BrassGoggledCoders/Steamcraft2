@@ -22,13 +22,13 @@ import net.minecraft.world.World;
 
 import steamcraft.common.lib.DamageSourceHandler;
 import steamcraft.common.lib.ModInfo;
-import boilerplate.common.baseclasses.BaseProjectileEntity;
+import boilerplate.common.baseclasses.BaseShootableEntity;
 
 /**
  * @author Surseance (Johnny Eatmon)
  * 
  */
-public class EntityBullet extends BaseProjectileEntity
+public class EntityBullet extends BaseShootableEntity
 {
 	private int damage;
 
