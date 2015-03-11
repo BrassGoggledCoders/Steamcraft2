@@ -24,10 +24,9 @@ import boilerplate.common.baseclasses.BaseThrowableEntity;
 
 public class EntityFieldManipulator extends BaseThrowableEntity
 {
-	public EntityFieldManipulator(World p_i1777_1_, EntityLivingBase p_i1777_2_)
+	public EntityFieldManipulator(World world, EntityLivingBase entity)
 	{
-		super(p_i1777_1_, p_i1777_2_);
-		// TODO Auto-generated constructor stub
+		super(world, entity);
 	}
 
 	public EntityFieldManipulator(World world)

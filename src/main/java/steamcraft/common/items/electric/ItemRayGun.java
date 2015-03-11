@@ -39,7 +39,7 @@ public class ItemRayGun extends ElectricItem
 
 	static HashMap<String, Object> ray = new HashMap<String, Object>();
 	static HashMap<String, Long> soundDelay = new HashMap<String, Long>();
-	static HashMap<Block, Block> meltables = new HashMap<Block, Block>();
+	static final HashMap<Block, Block> meltables = new HashMap<Block, Block>();
 
 	public ItemRayGun(String raySound, int maxEnergy, int maxReceive, int maxSend)
 	{
@@ -109,7 +109,7 @@ public class ItemRayGun extends ElectricItem
 								}
 								else if(meltables.containsKey(world.getBlock(i, j, k)))
 								{
-									world.setBlock(i, j, k, meltables.get(world.getBlock(x, y, z)));
+									world.setBlock(i, j, k, meltables.get(world.getBlock(i, j, k)));
 									this.extractEnergy(stack, ItemRayGun.energyPerUse, false);
 								}
 							}
