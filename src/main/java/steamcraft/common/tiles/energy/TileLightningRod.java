@@ -48,7 +48,7 @@ public class TileLightningRod extends TileEntity implements IEnergyProvider
 	@Override
 	public void updateEntity()
 	{
-		if(!worldObj.isRemote)
+		if(!this.worldObj.isRemote)
 		{
 			boolean isLightningSpawned = false;
 

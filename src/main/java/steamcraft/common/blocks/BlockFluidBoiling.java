@@ -46,7 +46,7 @@ public class BlockFluidBoiling extends BlockFluidClassic
 	@Override
 	public IIcon getIcon(int side, int meta)
 	{
-		return (side != 0) && (side != 1) ? iconFlowing : this.blockIcon;
+		return (side != 0) && (side != 1) ? this.iconFlowing : this.blockIcon;
 	}
 
 	@Override
@@ -55,7 +55,7 @@ public class BlockFluidBoiling extends BlockFluidClassic
 	{
 		this.blockIcon = iconRegister.registerIcon(ModInfo.PREFIX + this.getUnlocalizedName().substring(5, this.getUnlocalizedName().length() - 10)
 				+ "Still");
-		iconFlowing = iconRegister.registerIcon(ModInfo.PREFIX + this.getUnlocalizedName().substring(5, this.getUnlocalizedName().length() - 10)
+		this.iconFlowing = iconRegister.registerIcon(ModInfo.PREFIX + this.getUnlocalizedName().substring(5, this.getUnlocalizedName().length() - 10)
 				+ "Flowing");
 	}
 

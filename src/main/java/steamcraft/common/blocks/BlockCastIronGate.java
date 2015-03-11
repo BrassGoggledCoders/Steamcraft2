@@ -73,7 +73,7 @@ public class BlockCastIronGate extends BlockDirectional
 		/**
 		 * Returns if the fence gate is open according to its metadata.
 		 */
-		return isFenceGateOpen(l) ? null : (l != 2 && l != 0 ? AxisAlignedBB.getBoundingBox(p_149668_2_ + 0.375F, p_149668_3_, p_149668_4_,
+		return isFenceGateOpen(l) ? null : ((l != 2) && (l != 0) ? AxisAlignedBB.getBoundingBox(p_149668_2_ + 0.375F, p_149668_3_, p_149668_4_,
 				p_149668_2_ + 0.625F, p_149668_3_ + 1.5F, p_149668_4_ + 1) : AxisAlignedBB.getBoundingBox(p_149668_2_, p_149668_3_, p_149668_4_ + 0.375F,
 				p_149668_2_ + 1, p_149668_3_ + 1.5F, p_149668_4_ + 0.625F));
 	}
@@ -86,7 +86,7 @@ public class BlockCastIronGate extends BlockDirectional
 	{
 		int l = getDirection(p_149719_1_.getBlockMetadata(p_149719_2_, p_149719_3_, p_149719_4_));
 
-		if(l != 2 && l != 0)
+		if((l != 2) && (l != 0))
 		{
 			this.setBlockBounds(0.375F, 0.0F, 0.0F, 0.625F, 1.0F, 1.0F);
 		}
@@ -139,7 +139,7 @@ public class BlockCastIronGate extends BlockDirectional
 	@Override
 	public void onBlockPlacedBy(World p_149689_1_, int p_149689_2_, int p_149689_3_, int p_149689_4_, EntityLivingBase p_149689_5_, ItemStack p_149689_6_)
 	{
-		int l = (MathHelper.floor_double(p_149689_5_.rotationYaw * 4.0F / 360.0F + 0.5D) & 3) % 4;
+		int l = (MathHelper.floor_double(((p_149689_5_.rotationYaw * 4.0F) / 360.0F) + 0.5D) & 3) % 4;
 		p_149689_1_.setBlockMetadataWithNotify(p_149689_2_, p_149689_3_, p_149689_4_, l, 2);
 	}
 
@@ -158,10 +158,10 @@ public class BlockCastIronGate extends BlockDirectional
 		}
 		else
 		{
-			int j1 = (MathHelper.floor_double(p_149727_5_.rotationYaw * 4.0F / 360.0F + 0.5D) & 3) % 4;
+			int j1 = (MathHelper.floor_double(((p_149727_5_.rotationYaw * 4.0F) / 360.0F) + 0.5D) & 3) % 4;
 			int k1 = getDirection(i1);
 
-			if(k1 == (j1 + 2) % 4)
+			if(k1 == ((j1 + 2) % 4))
 			{
 				i1 = j1;
 			}

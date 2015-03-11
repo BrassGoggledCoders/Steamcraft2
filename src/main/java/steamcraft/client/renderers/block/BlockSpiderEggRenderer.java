@@ -70,8 +70,8 @@ public class BlockSpiderEggRenderer implements ISimpleBlockRenderingHandler
 			}
 
 			float f5 = b0 / 16.0F;
-			float f6 = 1.0F - k / 16.0F;
-			float f7 = 1.0F - (k + b1) / 16.0F;
+			float f6 = 1.0F - (k / 16.0F);
+			float f7 = 1.0F - ((k + b1) / 16.0F);
 			k += b1;
 			renderer.setRenderBounds(0.5F - f5, f7, 0.5F - f5, 0.5F + f5, f6, 0.5F + f5);
 			tessellator.setNormal(0.0F, -1.0F, 0.0F);
