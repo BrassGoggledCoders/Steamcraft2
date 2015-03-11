@@ -53,6 +53,7 @@ public class ItemRayGun extends ElectricItem
 		meltables.put(Blocks.sand, Blocks.glass);
 		meltables.put(Blocks.netherrack, Blocks.flowing_lava);
 		meltables.put(Blocks.clay, Blocks.hardened_clay);
+		meltables.put(Blocks.ice, Blocks.water);
 	}
 
 	@SuppressWarnings("all")
