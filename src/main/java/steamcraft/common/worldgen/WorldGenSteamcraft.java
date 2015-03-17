@@ -116,7 +116,7 @@ public class WorldGenSteamcraft implements IWorldGenerator
 				}
 		}
 
-		for(int i = 0; i < 1; i++)
+		if(random.nextInt(30) == 0)
 		{
 			int X = chunkX + random.nextInt(16);
 			int Z = chunkZ + random.nextInt(16);
