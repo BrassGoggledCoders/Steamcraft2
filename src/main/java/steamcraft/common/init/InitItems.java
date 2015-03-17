@@ -29,6 +29,7 @@ import steamcraft.common.items.ItemCanister;
 import steamcraft.common.items.ItemChisel;
 import steamcraft.common.items.ItemCoin;
 import steamcraft.common.items.ItemCustomBucket;
+import steamcraft.common.items.ItemCustomFood;
 import steamcraft.common.items.ItemFieldManipulator;
 import steamcraft.common.items.ItemFirearm;
 import steamcraft.common.items.ItemGrappleGun;
@@ -170,7 +171,7 @@ public class InitItems
 	public static Item itemBoilingWaterBucket, itemBoilingMudBucket;
 	public static Item itemCoin;
 	public static Item itemShieldedCanister, itemEmptyShieldedCanister;
-	public static Item itemWhalebone, itemWhaleMeat, itemWhaleBlubber, itemWhaleOilBucket;
+	public static Item itemWhalebone, itemWhaleMeat, itemWhaleBlubber, itemWhaleOilBucket, itemCookedWhaleMeat;
 
 	// Compat
 	public static Item itemThaumicMonocle, itemSteamcraftCluster;
@@ -549,8 +550,11 @@ public class InitItems
 		itemWhalebone = new BaseItem().setUnlocalizedName("itemWhalebone");
 		registerItem(itemWhalebone, "ItemWhalebone");
 
-		itemWhaleMeat = new BaseItem().setUnlocalizedName("itemWhaleMeat");
+		itemWhaleMeat = new ItemCustomFood(3, 0.4F, false).setUnlocalizedName("itemWhaleMeat");
 		registerItem(itemWhaleMeat, "ItemWhaleMeat");
+
+		itemCookedWhaleMeat = new ItemCustomFood(6, 0.8F, true).setUnlocalizedName("itemCookedWhaleMeat");
+		registerItem(itemCookedWhaleMeat, "ItemCookedWhaleMeat");
 
 		itemWhaleBlubber = new BaseItem().setUnlocalizedName("itemWhaleBlubber");
 		registerItem(itemWhaleBlubber, "ItemWhaleBlubber");
