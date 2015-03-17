@@ -16,6 +16,7 @@ import java.awt.Color;
 import java.util.HashMap;
 import java.util.List;
 
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -98,20 +99,32 @@ public class ItemShrinkray extends ElectricItem
 					if(world.isRemote)
 						ray.put(player.getCommandSenderName(),
 								Steamcraft.proxy.rayFX(world, player, tx, ty, tz, 2, false, impact > 0 ? 2.0F : 0.0F, ray.get(player), impact, Color.BLUE));
-					if((mop != null) && (mop.typeOfHit == MovingObjectPosition.MovingObjectType.BLOCK))
+					if(mop != null)
 					{
-						int x = mop.blockX;
-						int y = mop.blockY;
-						int z = mop.blockZ;
-
-						if(!world.isAirBlock(x, y, z) && !Utils.getBlockUnbreakable(world, x, y, z))
+						if((mop.typeOfHit == MovingObjectPosition.MovingObjectType.BLOCK))
 						{
-							player.worldObj.spawnEntityInWorld(new EntityMinedBlock(player.worldObj, x + 0.5F, y + 0.5F, z + 0.5F, world.getBlock(x, y, z),
-									world.getBlockMetadata(x, y, z), false));
-							if(!world.isRemote)
+							int x = mop.blockX;
+							int y = mop.blockY;
+							int z = mop.blockZ;
+
+							if(!world.isAirBlock(x, y, z) && !Utils.getBlockUnbreakable(world, x, y, z))
 							{
-								world.setBlockToAir(x, y, z);
-								this.extractEnergy(stack, ItemShrinkray.energyPerUse, false);
+								player.worldObj.spawnEntityInWorld(new EntityMinedBlock(player.worldObj, x + 0.5F, y + 0.5F, z + 0.5F, world.getBlock(x, y, z),
+										world.getBlockMetadata(x, y, z), false));
+								if(!world.isRemote)
+								{
+									world.setBlockToAir(x, y, z);
+									this.extractEnergy(stack, ItemShrinkray.energyPerUse, false);
+								}
+							}
+						}
+						else if(mop.typeOfHit == MovingObjectPosition.MovingObjectType.ENTITY)
+						{
+							if(mop.entityHit instanceof EntityLiving)
+							{
+								EntityLiving living = (EntityLiving) mop.entityHit;
+								living.spawnExplosionParticle();
+								living.setDead();
 							}
 						}
 					}
