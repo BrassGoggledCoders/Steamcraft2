@@ -271,6 +271,14 @@ public class DepthsBiomeDecorator extends DeferredBiomeDecorator
 
 			new WorldGenMinable(InitBlocks.blockBoulder, 0, 1, Blocks.stone).generate(world, random, oreXCoord, oreYCoord, oreZCoord);
 		}
+		for(int i3 = 0; i3 < 3; i3++)
+		{
+			int oreXCoord = chunkX + random.nextInt(16);
+			int oreYCoord = 10 + random.nextInt(40);
+			int oreZCoord = chunkZ + random.nextInt(16);
+
+			new WorldGenMinable(InitBlocks.blockTintedRock, 0, 4, Blocks.stone).generate(world, random, oreXCoord, oreYCoord, oreZCoord);
+		}
 
 		{
 			int xCoord = chunkX + random.nextInt(16);

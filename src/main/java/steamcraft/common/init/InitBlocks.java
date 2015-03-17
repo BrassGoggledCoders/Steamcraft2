@@ -62,6 +62,7 @@ import steamcraft.common.blocks.BlockSteamcraftOre;
 import steamcraft.common.blocks.BlockTeaPlant;
 import steamcraft.common.blocks.BlockThin;
 import steamcraft.common.blocks.BlockTimeBomb;
+import steamcraft.common.blocks.BlockTintedRock;
 import steamcraft.common.blocks.BlockUranium;
 import steamcraft.common.blocks.FluidBoiling;
 import steamcraft.common.blocks.FluidSteam;
@@ -187,6 +188,8 @@ public class InitBlocks
 	public static Block blockMoltenZinc, blockMoltenBrass;
 
 	public static Fluid moltenZincFluid, moltenBrassFluid;
+
+	public static Block blockTintedRock;
 
 	public static void init()
 	{
@@ -487,6 +490,9 @@ public class InitBlocks
 
 		blockMushroom = new BlockCustomMushroom().setBlockName("blockMushroom");
 		registerBlock(blockMushroom, "BlockMushroom");
+
+		blockTintedRock = new BlockTintedRock(Material.rock).setBlockName("blockTintedRock");
+		registerBlock(blockTintedRock, "BlockTintedRock");
 	}
 
 	private static String[] blacklist = new String[] { "BlockFissurePortal", "BlockLamp", "BlockMotionSensor", "BlockMotionSensorOn", "BlockStandardSirenOn",

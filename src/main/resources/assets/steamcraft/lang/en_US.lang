@@ -66,6 +66,7 @@ tile.blockPath.name=Path Block
 tile.blockMud.name=Mud
 tile.blockLeafPile.name=Leaf Litter
 tile.blockBoulder.name=Boulder
+tile.blockTintedRock.name=Tinted Rock
 tile.blockBoulder.0.desc=Lookout Indy!
 tile.blockSpiderEgg.name=Spider Egg
 tile.blockMoss.name=Moss
