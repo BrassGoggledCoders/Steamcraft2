@@ -146,6 +146,9 @@ public class InitBlocks
 	public static Fluid boilingMudFluid;
 	public static Block blockBoilingMud;
 
+	public static Block blockMoltenZinc, blockMoltenBrass;
+	public static Fluid moltenZincFluid, moltenBrassFluid;
+
 	/* Others */
 
 	public static Block blockCrystal;
@@ -185,19 +188,105 @@ public class InitBlocks
 
 	public static Block blockBoulder, blockSpiderEgg, blockMushroom;
 
-	public static Block blockMoltenZinc, blockMoltenBrass;
-
-	public static Fluid moltenZincFluid, moltenBrassFluid;
-
 	public static Block blockTintedRock;
 
 	public static void init()
 	{
 		initializeDecorative();
 		initializeOres();
+		initializeTerrain();
 		initializeMachines();
 		initializeFluids();
 		initializeOthers();
+	}
+
+	private static void initializeTerrain()
+	{
+		blockFissurePortal = new BlockFissurePortal(Material.rock).setBlockName("blockFissurePortal");
+		registerBlock(blockFissurePortal, "BlockFissurePortal");
+
+		blockCompressedStone = new BlockCompressedStone(Material.rock);
+		registerBlock(blockCompressedStone, "BlockCompressedStone");
+
+		blockInfestedGrass = new BlockInfestedGrass(Material.grass).setBlockName("blockInfestedGrass");
+		registerBlock(blockInfestedGrass, "BlockInfestedGrass");
+
+		blockInfestedDirt = new BlockInfestedDirt(Material.ground).setBlockName("blockInfestedDirt");
+		registerBlock(blockInfestedDirt, "BlockInfestedDirt");
+
+		blockPath = new BlockThin(Material.rock).setBlockName("blockPath");
+		registerBlock(blockPath, "BlockPath");
+
+		blockLeafCover = new BlockLeafPile().setBlockName("blockLeafPile");
+		registerBlock(blockLeafCover, "BlockLeafPile");
+
+		blockMoss = new BlockLeafPile().setBlockName("blockMoss");
+		registerBlock(blockMoss, "BlockMoss");
+
+		blockPolishedPlanks = new BlockPolishedPlanks().setBlockName("blockPolishedPlanks");
+		registerBlock(blockPolishedPlanks, BaseItemBlockWithMetadata.class, "BlockPolishedPlanks", 3);
+
+		blockRedwoodLog = new BlockCustomLog("Redwood").setBlockName("blockRedwoodLog");
+		registerBlock(blockRedwoodLog, "BlockRedwoodLog");
+
+		blockRedwoodLeaves = new BlockCustomLeaves("Redwood").setBlockName("blockRedwoodLeaves");
+		registerBlock(blockRedwoodLeaves, "BlockRedwoodLeaves");
+
+		blockRedwoodPlanks = new BaseBlock(Material.wood).setBlockName("blockRedwoodPlanks");
+		registerBlock(blockRedwoodPlanks, "BlockRedwoodPlanks");
+
+		blockMangroveLog = new BlockCustomLog("Mangrove").setBlockName("blockMangroveLog");
+		registerBlock(blockMangroveLog, "BlockMangroveLog");
+
+		blockMangroveLeaves = new BlockCustomLeaves("Mangrove").setBlockName("blockMangroveLeaves");
+		registerBlock(blockMangroveLeaves, "BlockMangroveLeaves");
+
+		blockMangrovePlanks = new BaseBlock(Material.wood).setBlockName("blockMangrovePlanks");
+		registerBlock(blockMangrovePlanks, "BlockMangrovePlanks");
+
+		blockWillowLog = new BlockCustomLog("Willow").setBlockName("blockWillowLog");
+		registerBlock(blockWillowLog, "BlockWillowLog");
+
+		blockWillowLeaves = new BlockCustomLeaves("Willow").setBlockName("blockWillowLeaves");
+		registerBlock(blockWillowLeaves, "BlockWillowLeaves");
+
+		blockWillowPlanks = new BaseBlock(Material.wood).setBlockName("blockWillowPlanks");
+		registerBlock(blockWillowPlanks, "BlockWillowPlanks");
+
+		blockPetrifiedLog = new BlockCustomLog("Petrified").setBlockName("blockPetrifiedLog");
+		registerBlock(blockPetrifiedLog, "BlockPetrifiedLog");
+
+		blockDeadLeaves = new BlockCustomLeaves("Dead").setBlockName("blockDeadLeaves");
+		registerBlock(blockDeadLeaves, "BlockDeadLeaves");
+
+		blockPetrifiedPlanks = new BaseBlock(Material.wood).setBlockName("blockPetrifiedPlanks");
+		registerBlock(blockPetrifiedPlanks, "BlockPetrifiedPlanks");
+
+		blockMud = new BlockMud(Material.ground).setBlockName("blockMud");
+		registerBlock(blockMud, "BlockMud");
+
+		blockBoulder = new BlockBoulder().setBlockName("blockBoulder");
+		registerBlock(blockBoulder, "BlockBoulder");
+
+		blockSpiderEgg = new BlockSpiderEgg(Material.dragonEgg).setBlockName("blockSpiderEgg");
+		registerBlock(blockSpiderEgg, "BlockSpiderEgg");
+
+		blockMushroom = new BlockCustomMushroom().setBlockName("blockMushroom");
+		registerBlock(blockMushroom, "BlockMushroom");
+
+		blockTintedRock = new BlockTintedRock(Material.rock).setBlockName("blockTintedRock");
+		registerBlock(blockTintedRock, "BlockTintedRock");
+
+		blockCrystal = new BlockCrystal().setBlockName("blockCrystal");
+
+		RegistryHelper.registerContainerBlock(blockCrystal, EmptyTiles.TileCrystal.class, "BlockCrystal");
+
+		// Wood
+		blockBrassLog = new BlockBrassLog(Material.wood).setBlockName("blockBrassLog");
+		blockBrassLeaves = new BlockBrassLeaves(Material.iron).setBlockName("blockBrassLeaves");
+
+		registerBlock(blockBrassLog, "BlockBrassLog");
+		registerBlock(blockBrassLeaves, "BlockBrassLeaves");
 	}
 
 	private static void initializeOres()
@@ -359,17 +448,6 @@ public class InitBlocks
 
 	private static void initializeOthers()
 	{
-		blockCrystal = new BlockCrystal().setBlockName("blockCrystal");
-
-		RegistryHelper.registerContainerBlock(blockCrystal, EmptyTiles.TileCrystal.class, "BlockCrystal");
-
-		// Wood
-		blockBrassLog = new BlockBrassLog(Material.wood).setBlockName("blockBrassLog");
-		blockBrassLeaves = new BlockBrassLeaves(Material.iron).setBlockName("blockBrassLeaves");
-
-		registerBlock(blockBrassLog, "BlockBrassLog");
-		registerBlock(blockBrassLeaves, "BlockBrassLeaves");
-
 		blockDropHammerAnvil = new BlockDropHammerAnvil(Material.anvil).setBlockName("blockDropHammerAnvil");
 
 		// RegistryHelper.registerContainerBlock(blockDropHammerAnvil, TileDropHammer.class, "BlockDropHammerAnvil");
@@ -391,69 +469,6 @@ public class InitBlocks
 
 		blockCongealedSlime = new BlockCongealedSlime(Material.gourd).setBlockName("blockCongealedSlime").setCreativeTab(Steamcraft.tabSC2);
 		registerBlock(blockCongealedSlime, "BlockCongealedSlime");
-
-		blockFissurePortal = new BlockFissurePortal(Material.rock).setBlockName("blockFissurePortal");
-		registerBlock(blockFissurePortal, "BlockFissurePortal");
-
-		blockCompressedStone = new BlockCompressedStone(Material.rock);
-		registerBlock(blockCompressedStone, "BlockCompressedStone");
-
-		blockInfestedGrass = new BlockInfestedGrass(Material.grass).setBlockName("blockInfestedGrass");
-		registerBlock(blockInfestedGrass, "BlockInfestedGrass");
-
-		blockInfestedDirt = new BlockInfestedDirt(Material.ground).setBlockName("blockInfestedDirt");
-		registerBlock(blockInfestedDirt, "BlockInfestedDirt");
-
-		blockPath = new BlockThin(Material.rock).setBlockName("blockPath");
-		registerBlock(blockPath, "BlockPath");
-
-		blockLeafCover = new BlockLeafPile().setBlockName("blockLeafPile");
-		registerBlock(blockLeafCover, "BlockLeafPile");
-
-		blockMoss = new BlockLeafPile().setBlockName("blockMoss");
-		registerBlock(blockMoss, "BlockMoss");
-
-		blockPolishedPlanks = new BlockPolishedPlanks().setBlockName("blockPolishedPlanks");
-		registerBlock(blockPolishedPlanks, BaseItemBlockWithMetadata.class, "BlockPolishedPlanks", 3);
-
-		blockRedwoodLog = new BlockCustomLog("Redwood").setBlockName("blockRedwoodLog");
-		registerBlock(blockRedwoodLog, "BlockRedwoodLog");
-
-		blockRedwoodLeaves = new BlockCustomLeaves("Redwood").setBlockName("blockRedwoodLeaves");
-		registerBlock(blockRedwoodLeaves, "BlockRedwoodLeaves");
-
-		blockRedwoodPlanks = new BaseBlock(Material.wood).setBlockName("blockRedwoodPlanks");
-		registerBlock(blockRedwoodPlanks, "BlockRedwoodPlanks");
-
-		blockMangroveLog = new BlockCustomLog("Mangrove").setBlockName("blockMangroveLog");
-		registerBlock(blockMangroveLog, "BlockMangroveLog");
-
-		blockMangroveLeaves = new BlockCustomLeaves("Mangrove").setBlockName("blockMangroveLeaves");
-		registerBlock(blockMangroveLeaves, "BlockMangroveLeaves");
-
-		blockMangrovePlanks = new BaseBlock(Material.wood).setBlockName("blockMangrovePlanks");
-		registerBlock(blockMangrovePlanks, "BlockMangrovePlanks");
-
-		blockWillowLog = new BlockCustomLog("Willow").setBlockName("blockWillowLog");
-		registerBlock(blockWillowLog, "BlockWillowLog");
-
-		blockWillowLeaves = new BlockCustomLeaves("Willow").setBlockName("blockWillowLeaves");
-		registerBlock(blockWillowLeaves, "BlockWillowLeaves");
-
-		blockWillowPlanks = new BaseBlock(Material.wood).setBlockName("blockWillowPlanks");
-		registerBlock(blockWillowPlanks, "BlockWillowPlanks");
-
-		blockPetrifiedLog = new BlockCustomLog("Petrified").setBlockName("blockPetrifiedLog");
-		registerBlock(blockPetrifiedLog, "BlockPetrifiedLog");
-
-		blockDeadLeaves = new BlockCustomLeaves("Dead").setBlockName("blockDeadLeaves");
-		registerBlock(blockDeadLeaves, "BlockDeadLeaves");
-
-		blockPetrifiedPlanks = new BaseBlock(Material.wood).setBlockName("blockPetrifiedPlanks");
-		registerBlock(blockPetrifiedPlanks, "BlockPetrifiedPlanks");
-
-		blockMud = new BlockMud(Material.ground).setBlockName("blockMud");
-		registerBlock(blockMud, "BlockMud");
 
 		blockMotionSensor = new BlockMotionSensor(Material.iron, false).setBlockName("blockMotionSensor");
 		blockMotionSensorOn = new BlockMotionSensor(Material.iron, true).setBlockName("blockMotionSensorOn");
@@ -481,18 +496,6 @@ public class InitBlocks
 		blockNuclearSirenOn = new BlockSiren(Material.redstoneLight, true, "nuclearalarm").setBlockName("blockNuclearSiren");
 		registerBlock(blockNuclearSiren, "BlockNuclearSiren");
 		registerBlock(blockNuclearSirenOn, "BlockNuclearSirenOn");
-
-		blockBoulder = new BlockBoulder().setBlockName("blockBoulder");
-		registerBlock(blockBoulder, "BlockBoulder");
-
-		blockSpiderEgg = new BlockSpiderEgg(Material.dragonEgg).setBlockName("blockSpiderEgg");
-		registerBlock(blockSpiderEgg, "BlockSpiderEgg");
-
-		blockMushroom = new BlockCustomMushroom().setBlockName("blockMushroom");
-		registerBlock(blockMushroom, "BlockMushroom");
-
-		blockTintedRock = new BlockTintedRock(Material.rock).setBlockName("blockTintedRock");
-		registerBlock(blockTintedRock, "BlockTintedRock");
 	}
 
 	private static String[] blacklist = new String[] { "BlockFissurePortal", "BlockLamp", "BlockMotionSensor", "BlockMotionSensorOn", "BlockStandardSirenOn",
