@@ -44,6 +44,7 @@ import steamcraft.common.blocks.BlockEtherium;
 import steamcraft.common.blocks.BlockFissurePortal;
 import steamcraft.common.blocks.BlockFluidBoiling;
 import steamcraft.common.blocks.BlockFluidSteam;
+import steamcraft.common.blocks.BlockFluidWhaleOil;
 import steamcraft.common.blocks.BlockHatch;
 import steamcraft.common.blocks.BlockInfestedDirt;
 import steamcraft.common.blocks.BlockInfestedGrass;
@@ -66,6 +67,7 @@ import steamcraft.common.blocks.BlockTintedRock;
 import steamcraft.common.blocks.BlockUranium;
 import steamcraft.common.blocks.FluidBoiling;
 import steamcraft.common.blocks.FluidSteam;
+import steamcraft.common.blocks.FluidWhaleOil;
 import steamcraft.common.blocks.machines.BlockArmorEditor;
 import steamcraft.common.blocks.machines.BlockBattery;
 import steamcraft.common.blocks.machines.BlockBloomery;
@@ -148,6 +150,9 @@ public class InitBlocks
 
 	public static Block blockMoltenZinc, blockMoltenBrass;
 	public static Fluid moltenZincFluid, moltenBrassFluid;
+
+	public static Fluid whaleOilFluid;
+	public static Block blockWhaleOil;
 
 	/* Others */
 
@@ -428,6 +433,16 @@ public class InitBlocks
 		blockBoilingMud = new BlockFluidBoiling(boilingMudFluid, Material.water).setBlockName("boilingMudFluidBlock");
 
 		registerBlock(blockBoilingMud, "blockBoilingMud");
+
+		// Whale Oil
+		whaleOilFluid = new FluidWhaleOil("whaleOil").setUnlocalizedName("whaleOilFluid");
+
+		if(!FluidRegistry.registerFluid(whaleOilFluid) && !FluidRegistry.isFluidRegistered("whaleOil"))
+			whaleOilFluid = FluidRegistry.getFluid("whaleOil");
+
+		blockWhaleOil = new BlockFluidWhaleOil(whaleOilFluid, Material.water).setBlockName("whaleOilFluidBlock");
+
+		registerBlock(blockWhaleOil, "blockWhaleOil");
 
 		// TiCon Molten Zinc
 		moltenZincFluid = new FluidBoiling("moltenZinc").setUnlocalizedName("moltenZincFluid");

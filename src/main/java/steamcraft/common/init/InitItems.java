@@ -170,6 +170,7 @@ public class InitItems
 	public static Item itemBoilingWaterBucket, itemBoilingMudBucket;
 	public static Item itemCoin;
 	public static Item itemShieldedCanister, itemEmptyShieldedCanister;
+	public static Item itemWhalebone, itemWhaleMeat, itemWhaleBlubber, itemWhaleOilBucket;
 
 	// Compat
 	public static Item itemThaumicMonocle, itemSteamcraftCluster;
@@ -531,6 +532,11 @@ public class InitItems
 		FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("boilingmud", FluidContainerRegistry.BUCKET_VOLUME), new ItemStack(
 				itemBoilingMudBucket), new ItemStack(Items.bucket));
 
+		itemWhaleOilBucket = new ItemCustomBucket(InitBlocks.blockWhaleOil).setUnlocalizedName("itemWhaleOilBucket");
+		GameRegistry.registerItem(itemWhaleOilBucket, "ItemWhaleOilBucket");
+		FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("whaleoil", FluidContainerRegistry.BUCKET_VOLUME), new ItemStack(
+				itemWhaleOilBucket), new ItemStack(Items.bucket));
+
 		itemCoin = new ItemCoin().setUnlocalizedName("itemCoin");
 		registerItem(itemCoin, "ItemCoin");
 
@@ -539,6 +545,15 @@ public class InitItems
 
 		itemShieldedCanister = new BaseItem().setUnlocalizedName("itemFullShieldedCanister").setContainerItem(InitItems.itemEmptyShieldedCanister);
 		registerItem(itemShieldedCanister, "ItemShieldedCanister");
+
+		itemWhalebone = new BaseItem().setUnlocalizedName("itemWhalebone");
+		registerItem(itemWhalebone, "ItemWhalebone");
+
+		itemWhaleMeat = new BaseItem().setUnlocalizedName("itemWhaleMeat");
+		registerItem(itemWhaleMeat, "ItemWhaleMeat");
+
+		itemWhaleBlubber = new BaseItem().setUnlocalizedName("itemWhaleBlubber");
+		registerItem(itemWhaleBlubber, "ItemWhaleBlubber");
 	}
 
 	public static void initializeModCompatItems()
