@@ -41,6 +41,7 @@ public class MaterialHelper
 	// Armor Materials
 	public static ArmorMaterial ARMOR_OBSIDIAN;
 	public static ArmorMaterial ARMOR_ETHERIUM;
+	public static ArmorMaterial ARMOR_WHALEBONE;
 	public static ArmorMaterial ARMOR_STEAM;
 
 	public static void initializeMaterials()
@@ -71,6 +72,7 @@ public class MaterialHelper
 	{
 		ARMOR_OBSIDIAN = EnumHelper.addArmorMaterial("ARMOR_OBSIDIAN", -1, new int[] { 5, 8, 8, 5 }, 5);
 		ARMOR_ETHERIUM = EnumHelper.addArmorMaterial("ARMOR_ETHERIUM", 40, new int[] { 4, 8, 7, 3 }, 18);
+		ARMOR_WHALEBONE = EnumHelper.addArmorMaterial("ARMOR_WHALEBONE", 10, new int[] { 2, 6, 5, 2 }, 30);
 		ARMOR_STEAM = EnumHelper.addArmorMaterial("ARMOR_STEAM", -1, new int[] { 1, 1, 1, 1 }, 0);
 	}
 }

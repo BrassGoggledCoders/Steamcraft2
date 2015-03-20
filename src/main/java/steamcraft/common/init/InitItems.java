@@ -122,6 +122,8 @@ public class InitItems
 
 	public static Item helmetObsidian, chestplateObsidian, legsObsidian, bootsObsidian;
 
+	public static Item helmetWhalebone, chestplateWhalebone, legsWhalebone, bootsWhalebone;
+
 	public static Item itemBrassGoggles, itemDivingHelmet, itemMonocle;
 
 	// Tools
@@ -298,6 +300,14 @@ public class InitItems
 		bootsObsidian = new ItemNormalArmor(MaterialHelper.ARMOR_OBSIDIAN, 0, 3).setUnlocalizedName("itemBootsObsidian");
 
 		RegistryHelper.registerArmorSet(helmetObsidian, chestplateObsidian, legsObsidian, bootsObsidian, "Obsidian", ModInfo.ID);
+
+		// Whalebone
+		helmetWhalebone = new ItemNormalArmor(MaterialHelper.ARMOR_WHALEBONE, 0, 0).setUnlocalizedName("itemHelmetWhalebone");
+		chestplateWhalebone = new ItemNormalArmor(MaterialHelper.ARMOR_WHALEBONE, 0, 1).setUnlocalizedName("itemChestplateWhalebone");
+		legsWhalebone = new ItemNormalArmor(MaterialHelper.ARMOR_WHALEBONE, 0, 2).setUnlocalizedName("itemLegsWhalebone");
+		bootsWhalebone = new ItemNormalArmor(MaterialHelper.ARMOR_WHALEBONE, 0, 3).setUnlocalizedName("itemBootsWhalebone");
+
+		RegistryHelper.registerArmorSet(helmetWhalebone, chestplateWhalebone, legsWhalebone, bootsWhalebone, "Whalebone", ModInfo.ID);
 	}
 
 	private static void initializeGuns()
