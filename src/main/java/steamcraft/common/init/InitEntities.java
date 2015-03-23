@@ -28,6 +28,7 @@ import steamcraft.common.entities.living.EntityShroomSkeleton;
 import steamcraft.common.entities.living.EntityShroomZombie;
 import steamcraft.common.entities.living.EntitySpiderQueen;
 import steamcraft.common.entities.living.EntityVampireBat;
+import steamcraft.common.entities.living.EntityWhale;
 import steamcraft.common.entities.projectile.EntityBullet;
 import steamcraft.common.entities.projectile.EntityFieldManipulator;
 import steamcraft.common.entities.projectile.EntityRocket;
@@ -55,6 +56,7 @@ public class InitEntities
 		EntityRegistry.registerModEntity(EntityShroomZombie.class, "ShroomZombie", entID++, Steamcraft.instance, 64, 1, true);
 		EntityRegistry.registerModEntity(EntityShroomSkeleton.class, "ShroomSkeleton", entID++, Steamcraft.instance, 64, 1, true);
 		EntityRegistry.registerModEntity(EntityAbandonedGolem.class, "AbdandonedGolem", entID++, Steamcraft.instance, 64, 1, true);
+		EntityRegistry.registerModEntity(EntityWhale.class, "Whale", entID++, Steamcraft.instance, 64, 1, true);
 
 		// Non-Living
 		// Projectile
