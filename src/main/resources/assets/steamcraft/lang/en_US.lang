@@ -193,6 +193,8 @@ item.itemEmptyShieldedCanister.name=Empty Shielded Canister
 item.itemFullShieldedCanister.name=Shielded Canister
 item.itemBoilingWaterBucket.name=Boiling Water Bucket
 item.itemMudBucket.name=Liquid Mud Bucket
+item.itemDimPocket.name=Transpatial Pouch
+item.itemDimPocket.desc=Shove your items into the folds amidst space and time. Nothing can possibly go wrong...probably.
 
 #Vanity
 item.itemTopHat.name=Top Hat

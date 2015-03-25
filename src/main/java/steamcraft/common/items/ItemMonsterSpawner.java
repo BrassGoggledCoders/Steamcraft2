@@ -35,6 +35,7 @@ import steamcraft.common.entities.living.EntityShroomSkeleton;
 import steamcraft.common.entities.living.EntityShroomZombie;
 import steamcraft.common.entities.living.EntitySpiderQueen;
 import steamcraft.common.entities.living.EntityVampireBat;
+import steamcraft.common.entities.living.EntityWhale;
 import steamcraft.common.init.InitItems;
 
 public class ItemMonsterSpawner extends BaseItemWithMetadata
@@ -80,6 +81,8 @@ public class ItemMonsterSpawner extends BaseItemWithMetadata
 					entity = new EntityShroomZombie(world);
 				case 9:
 					entity = new EntityVampireBat(world);
+				case 10:
+					entity = new EntityWhale(world);
 				default:
 					entity = new EntitySheep(world);
 					break;

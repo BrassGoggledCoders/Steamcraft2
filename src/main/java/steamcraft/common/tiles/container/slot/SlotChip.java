@@ -10,11 +10,13 @@
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
  *
  */
-package steamcraft.common.items.pda;
+package steamcraft.common.tiles.container.slot;
 
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
+
+import steamcraft.common.items.pda.ItemChip;
 
 /**
  * @author decebaldecebal

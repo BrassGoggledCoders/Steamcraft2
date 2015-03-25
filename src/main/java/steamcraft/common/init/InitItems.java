@@ -30,6 +30,7 @@ import steamcraft.common.items.ItemChisel;
 import steamcraft.common.items.ItemCoin;
 import steamcraft.common.items.ItemCustomBucket;
 import steamcraft.common.items.ItemCustomFood;
+import steamcraft.common.items.ItemDimensionalPocket;
 import steamcraft.common.items.ItemFieldManipulator;
 import steamcraft.common.items.ItemFirearm;
 import steamcraft.common.items.ItemGrappleGun;
@@ -40,6 +41,7 @@ import steamcraft.common.items.ItemMachinePart;
 import steamcraft.common.items.ItemMatch;
 import steamcraft.common.items.ItemMonsterSpawner;
 import steamcraft.common.items.ItemNugget;
+import steamcraft.common.items.ItemPDA;
 import steamcraft.common.items.ItemParts;
 import steamcraft.common.items.ItemPowder;
 import steamcraft.common.items.ItemResource;
@@ -84,7 +86,6 @@ import steamcraft.common.items.modules.ItemSpringHeels;
 import steamcraft.common.items.modules.ItemSteelPlating;
 import steamcraft.common.items.modules.ItemWatchDisplay;
 import steamcraft.common.items.modules.ItemWingpackModule;
-import steamcraft.common.items.pda.ItemPDA;
 import steamcraft.common.items.tools.ItemElectricDrill;
 import steamcraft.common.items.tools.ItemModAxe;
 import steamcraft.common.items.tools.ItemModHoe;
@@ -174,6 +175,7 @@ public class InitItems
 	public static Item itemCoin;
 	public static Item itemShieldedCanister, itemEmptyShieldedCanister;
 	public static Item itemWhalebone, itemWhaleMeat, itemWhaleBlubber, itemWhaleOilBucket, itemCookedWhaleMeat;
+	public static Item itemDimPocket;
 
 	// Compat
 	public static Item itemThaumicMonocle, itemSteamcraftCluster;
@@ -568,6 +570,10 @@ public class InitItems
 
 		itemWhaleBlubber = new BaseItem().setUnlocalizedName("itemWhaleBlubber");
 		registerItem(itemWhaleBlubber, "ItemWhaleBlubber");
+
+		// Also known as a pokkit by some wierdo called Longeye ;)
+		itemDimPocket = new ItemDimensionalPocket().setUnlocalizedName("itemDimPocket");
+		registerItem(itemDimPocket, "ItemDimPocket");
 	}
 
 	public static void initializeModCompatItems()

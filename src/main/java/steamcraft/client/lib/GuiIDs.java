@@ -28,4 +28,5 @@ public class GuiIDs
 	public static final int NUKE_BOILER = 7;
 	public static final int PDA = 8;
 	public static final int LORE = 9;
+	public static final int POCKET = 10;
 }

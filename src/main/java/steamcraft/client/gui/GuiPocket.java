@@ -10,22 +10,23 @@
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
  * 
  */
-package steamcraft.common.items.pda;
+package steamcraft.client.gui;
 
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
+import steamcraft.common.items.InventoryPocket;
 import steamcraft.common.lib.ModInfo;
-import steamcraft.common.tiles.container.ContainerPDA;
+import steamcraft.common.tiles.container.ContainerPocket;
 
-public class GuiPDA extends GuiContainer
+public class GuiPocket extends GuiContainer
 {
 	private static ResourceLocation guitexture = new ResourceLocation(ModInfo.PREFIX + "textures/gui/pda.png");
 
-	private final InventoryPDA inventory;
+	private final InventoryPocket inventory;
 
-	public GuiPDA(ContainerPDA pdaContainer)
+	public GuiPocket(ContainerPocket pdaContainer)
 	{
 		super(pdaContainer);
 		this.inventory = pdaContainer.inventory;

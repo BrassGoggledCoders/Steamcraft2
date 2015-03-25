@@ -10,7 +10,7 @@
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
  * 
  */
-package steamcraft.common.items.pda;
+package steamcraft.common.items;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -18,7 +18,6 @@ import net.minecraft.world.World;
 
 import steamcraft.client.lib.GuiIDs;
 import steamcraft.common.Steamcraft;
-import steamcraft.common.items.BaseItem;
 
 public class ItemPDA extends BaseItem
 {

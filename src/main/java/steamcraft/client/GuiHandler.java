@@ -24,13 +24,14 @@ import steamcraft.client.gui.GuiBattery;
 import steamcraft.client.gui.GuiBloomery;
 import steamcraft.client.gui.GuiCharger;
 import steamcraft.client.gui.GuiNuclearBoiler;
+import steamcraft.client.gui.GuiPocket;
 import steamcraft.client.gui.GuiSteamBoiler;
 import steamcraft.client.gui.GuiTimeBomb;
 import steamcraft.client.gui.GuiVanity;
 import steamcraft.client.lib.GuiIDs;
 import steamcraft.common.container.ContainerVanity;
 import steamcraft.common.entities.EntityPlayerExtended;
-import steamcraft.common.items.pda.ContainerPDA;
+import steamcraft.common.items.InventoryPocket;
 import steamcraft.common.items.pda.GuiPDA;
 import steamcraft.common.items.pda.InventoryPDA;
 import steamcraft.common.tiles.TileArmorEditor;
@@ -43,6 +44,8 @@ import steamcraft.common.tiles.container.ContainerBattery;
 import steamcraft.common.tiles.container.ContainerBloomery;
 import steamcraft.common.tiles.container.ContainerCharger;
 import steamcraft.common.tiles.container.ContainerNuclearBoiler;
+import steamcraft.common.tiles.container.ContainerPDA;
+import steamcraft.common.tiles.container.ContainerPocket;
 import steamcraft.common.tiles.container.ContainerSteamBoiler;
 import steamcraft.common.tiles.container.ContainerTimeBomb;
 import steamcraft.common.tiles.energy.TileBattery;
@@ -79,6 +82,8 @@ public class GuiHandler implements IGuiHandler
 				return new ContainerTimeBomb(player.inventory, (TileTimeBomb) tile);
 			case GuiIDs.PDA:
 				return new ContainerPDA(player, player.inventory, new InventoryPDA(player.getHeldItem()));
+			case GuiIDs.POCKET:
+				return new ContainerPocket(player, player.inventory, new InventoryPocket(player.getHeldItem()));
 			case GuiIDs.LORE:
 				return null;
 		}
@@ -110,6 +115,8 @@ public class GuiHandler implements IGuiHandler
 				return new GuiTimeBomb(player.inventory, (TileTimeBomb) tile);
 			case GuiIDs.PDA:
 				return new GuiPDA(new ContainerPDA(player, player.inventory, new InventoryPDA(player.getHeldItem())));
+			case GuiIDs.POCKET:
+				return new GuiPocket(new ContainerPocket(player, player.inventory, new InventoryPocket(player.getHeldItem())));
 			case GuiIDs.LORE:
 				return new GuiScreenBook(player, player.getHeldItem(), false);
 		}
