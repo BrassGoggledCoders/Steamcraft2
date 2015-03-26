@@ -33,9 +33,15 @@ public class ContainerPocket extends Container
 
 		for(int i = 0; i < INV_SIZE; ++i)
 			this.addSlotToContainer(new Slot(this.inventory, i, 80 + (18 * (i / 4)), 8 + (18 * (i % 4))));
-		// Hotbar
-		for(int i2 = 0; i2 < 9; ++i2)
-			this.addSlotToContainer(new Slot(inventoryPlayer, i2, 8 + (i2 * 18), 142));
+
+		int var3;
+
+		for(var3 = 0; var3 < 3; ++var3)
+			for(int var4 = 0; var4 < 9; ++var4)
+				this.addSlotToContainer(new Slot(inventoryPlayer, var4 + (var3 * 9) + 9, 8 + (var4 * 18), 84 + (var3 * 18)));
+
+		for(var3 = 0; var3 < 9; ++var3)
+			this.addSlotToContainer(new Slot(inventoryPlayer, var3, 8 + (var3 * 18), 142));
 	}
 
 	@Override

@@ -24,7 +24,7 @@ public class InventoryPocket implements IInventory
 {
 	public final String name = "Pocket Inventory";
 
-	public static final int INV_SIZE = 16;
+	public static final int INV_SIZE = 54;
 
 	private final ItemStack[] inventory = new ItemStack[INV_SIZE];
 
