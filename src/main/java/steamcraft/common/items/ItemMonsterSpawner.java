@@ -79,10 +79,13 @@ public class ItemMonsterSpawner extends BaseItemWithMetadata
 					break;
 				case 8:
 					entity = new EntityShroomZombie(world);
+					break;
 				case 9:
 					entity = new EntityVampireBat(world);
+					break;
 				case 10:
 					entity = new EntityWhale(world);
+					break;
 				default:
 					entity = new EntitySheep(world);
 					break;
@@ -98,7 +101,7 @@ public class ItemMonsterSpawner extends BaseItemWithMetadata
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(Item item, CreativeTabs tab, List l)
 	{
-		for(int var4 = 0; var4 < 10; ++var4)
+		for(int var4 = 0; var4 < 11; ++var4)
 			l.add(new ItemStack(InitItems.itemMonsterSpawner, 1, var4));
 	}
 }
