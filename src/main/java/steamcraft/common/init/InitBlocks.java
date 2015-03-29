@@ -57,6 +57,7 @@ import steamcraft.common.blocks.BlockMud;
 import steamcraft.common.blocks.BlockPlankStack;
 import steamcraft.common.blocks.BlockPolishedPlanks;
 import steamcraft.common.blocks.BlockSiren;
+import steamcraft.common.blocks.BlockSkyrail;
 import steamcraft.common.blocks.BlockSlate;
 import steamcraft.common.blocks.BlockSpiderEgg;
 import steamcraft.common.blocks.BlockSteamcraftOre;
@@ -194,6 +195,8 @@ public class InitBlocks
 	public static Block blockBoulder, blockSpiderEgg, blockMushroom;
 
 	public static Block blockTintedRock;
+
+	public static Block blockSkyrail;
 
 	public static void init()
 	{
@@ -511,6 +514,9 @@ public class InitBlocks
 		blockNuclearSirenOn = new BlockSiren(Material.redstoneLight, true, "nuclearalarm").setBlockName("blockNuclearSiren");
 		registerBlock(blockNuclearSiren, "BlockNuclearSiren");
 		registerBlock(blockNuclearSirenOn, "BlockNuclearSirenOn");
+
+		blockSkyrail = new BlockSkyrail().setBlockName("blockSkyrail");
+		registerBlock(blockSkyrail, "BlockSkyrail");
 	}
 
 	private static String[] blacklist = new String[] { "BlockFissurePortal", "BlockLamp", "BlockMotionSensor", "BlockMotionSensorOn", "BlockStandardSirenOn",
