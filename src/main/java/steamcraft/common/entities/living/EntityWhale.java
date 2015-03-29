@@ -13,8 +13,6 @@
 package steamcraft.common.entities.living;
 
 import net.minecraft.entity.passive.EntityWaterMob;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
 import steamcraft.common.init.InitItems;
@@ -25,12 +23,7 @@ public class EntityWhale extends EntityWaterMob
 	public EntityWhale(World p_i1689_1_)
 	{
 		super(p_i1689_1_);
-	}
-
-	@Override
-	protected Item getDropItem()
-	{
-		return InitItems.itemWhaleMeat;
+		this.setSize(4F, 3F);
 	}
 
 	/**
@@ -40,8 +33,28 @@ public class EntityWhale extends EntityWaterMob
 	@Override
 	protected void dropFewItems(boolean hitByPlayer, int lootingLevel)
 	{
-		this.entityDropItem(new ItemStack(InitItems.itemWhaleBlubber, this.rand.nextInt(5) * lootingLevel), 0);
-		this.entityDropItem(new ItemStack(InitItems.itemWhalebone, this.rand.nextInt(5) * lootingLevel), 0);
+		int j = this.rand.nextInt(3) + this.rand.nextInt(1 + lootingLevel);
+		int k;
+
+		for(k = 0; k < j; ++k)
+		{
+			this.dropItem(InitItems.itemWhalebone, this.rand.nextInt(10) + 3);
+			this.dropItem(InitItems.itemWhaleBlubber, this.rand.nextInt(10) + 5);
+		}
+
+		j = this.rand.nextInt(3) + 1 + this.rand.nextInt(1 + lootingLevel);
+
+		for(k = 0; k < j; ++k)
+		{
+			if(this.isBurning())
+			{
+				this.dropItem(InitItems.itemCookedWhaleMeat, this.rand.nextInt(15) + 5);
+			}
+			else
+			{
+				this.dropItem(InitItems.itemWhaleMeat, this.rand.nextInt(15) + 5);
+			}
+		}
 	}
 
 }
