@@ -45,6 +45,7 @@ import steamcraft.client.renderers.entity.RenderShroomSkeleton;
 import steamcraft.client.renderers.entity.RenderShroomZombie;
 import steamcraft.client.renderers.entity.RenderSpiderQueen;
 import steamcraft.client.renderers.entity.RenderVampireBat;
+import steamcraft.client.renderers.entity.RenderWhale;
 import steamcraft.client.renderers.item.ModelBrassWings;
 import steamcraft.client.renderers.item.ModelJetpack;
 import steamcraft.client.renderers.item.ModelWingpack;
@@ -74,6 +75,7 @@ import steamcraft.common.entities.living.EntityShroomSkeleton;
 import steamcraft.common.entities.living.EntityShroomZombie;
 import steamcraft.common.entities.living.EntitySpiderQueen;
 import steamcraft.common.entities.living.EntityVampireBat;
+import steamcraft.common.entities.living.EntityWhale;
 import steamcraft.common.entities.projectile.EntityBullet;
 import steamcraft.common.entities.projectile.EntityFieldManipulator;
 import steamcraft.common.entities.projectile.EntityRocket;
@@ -134,6 +136,7 @@ public class ClientProxy extends CommonProxy
 		RenderingRegistry.registerEntityRenderingHandler(EntityShroomZombie.class, new RenderShroomZombie());
 		RenderingRegistry.registerEntityRenderingHandler(EntityShroomSkeleton.class, new RenderShroomSkeleton());
 		RenderingRegistry.registerEntityRenderingHandler(EntityAbandonedGolem.class, new RenderAbandonedGolem());
+		RenderingRegistry.registerEntityRenderingHandler(EntityWhale.class, new RenderWhale());
 
 		RenderingRegistry.registerEntityRenderingHandler(EntityBullet.class, new RenderSnowball(InitItems.itemMusketBall));
 		RenderingRegistry.registerEntityRenderingHandler(EntityFieldManipulator.class, new RenderSnowball(

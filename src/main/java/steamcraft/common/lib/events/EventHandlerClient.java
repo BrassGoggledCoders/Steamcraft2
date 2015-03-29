@@ -68,7 +68,7 @@ public class EventHandlerClient
 
 	@SideOnly(Side.CLIENT)
 	@SubscribeEvent(receiveCanceled = true)
-	public void onPlayerRender(RenderPlayerEvent.Post event)
+	public void onPlayerRender(RenderPlayerEvent.Post.Specials event)
 	{
 		EntityPlayerExtended props = ((EntityPlayerExtended) event.entityPlayer.getExtendedProperties(EntityPlayerExtended.EXT_PROP_NAME));
 		InventoryVanity inventory = props.getInventory();
@@ -80,11 +80,19 @@ public class EventHandlerClient
 				ModelBase model = item.getVanityItemModel();
 				ClientHelper.textureManager().bindTexture(item.getItemTextureLocation());
 				GL11.glPushMatrix();
+				float yaw = event.entityPlayer.prevRotationYawHead + (event.entityPlayer.rotationYawHead - event.entityPlayer.prevRotationYawHead)
+						* event.partialRenderTick;
+				float yawOffset = event.entityPlayer.prevRenderYawOffset + (event.entityPlayer.renderYawOffset - event.entityPlayer.prevRenderYawOffset)
+						* event.partialRenderTick;
+				float pitch = event.entityPlayer.prevRotationPitch + (event.entityPlayer.rotationPitch - event.entityPlayer.prevRotationPitch)
+						* event.partialRenderTick;
+				GL11.glRotatef(yawOffset, 0, -1, 0);
+				GL11.glRotatef(yaw - 270, 0, 1, 0);
+				GL11.glRotatef(pitch, 0, 0, 1);
 				GL11.glTranslatef(item.getModelOffsetX(), item.getModelOffsetY(), item.getModelOffsetZ());
 				GL11.glRotatef(180, 1, 0, 0);
 				model.render(event.entity, 0, 0, 0, 1, 0, 0.0625F);
 				GL11.glPopMatrix();
-				// ClientHelper.textureManager().deleteTexture(item.getItemTextureLocation());
 			}
 		}
 	}

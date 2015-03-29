@@ -43,14 +43,14 @@ public class ItemCustomFood extends BaseItem
 		--stack.stackSize;
 		ItemCustomFood food = (ItemCustomFood) stack.getItem();
 		player.getFoodStats().addStats(food.healAmount, food.saturationModifier);
-		world.playSoundAtEntity(player, "random.burp", 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
+		world.playSoundAtEntity(player, "random.burp", 0.5F, (world.rand.nextFloat() * 0.1F) + 0.9F);
 		this.onFoodEaten(stack, world, player);
 		return stack;
 	}
 
 	protected void onFoodEaten(ItemStack p_77849_1_, World p_77849_2_, EntityPlayer p_77849_3_)
 	{
-		if(!p_77849_2_.isRemote && this.potionId > 0 && p_77849_2_.rand.nextFloat() < this.potionEffectProbability)
+		if(!p_77849_2_.isRemote && (this.potionId > 0) && (p_77849_2_.rand.nextFloat() < this.potionEffectProbability))
 		{
 			p_77849_3_.addPotionEffect(new PotionEffect(this.potionId, this.potionDuration * 20, this.potionAmplifier));
 		}

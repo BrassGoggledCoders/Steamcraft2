@@ -59,7 +59,7 @@ public class ItemTeacup extends BaseItemWithMetadata
 			player.addPotionEffect(new PotionEffect(Potion.digSpeed.id, 50, 100));
 			player.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 50, 100));
 			player.getFoodStats().addStats(1, 0);
-			world.playSoundAtEntity(player, "random.burp", 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
+			world.playSoundAtEntity(player, "random.burp", 0.5F, (world.rand.nextFloat() * 0.1F) + 0.9F);
 			stack.setItemDamage(stack.getItemDamage() - 1);
 			player.addStat(InitAchievements.teaAchieve, 1);
 		}
