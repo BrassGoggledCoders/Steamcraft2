@@ -12,14 +12,14 @@
  */
 package steamcraft.common.entities.living;
 
-import net.minecraft.entity.passive.EntitySquid;
+import net.minecraft.entity.passive.EntityWaterMob;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
 import steamcraft.common.init.InitItems;
 
-public class EntityWhale extends EntitySquid
+public class EntityWhale extends EntityWaterMob
 {
 
 	public EntityWhale(World p_i1689_1_)
