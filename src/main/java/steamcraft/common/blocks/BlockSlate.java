@@ -27,6 +27,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+import steamcraft.common.Steamcraft;
 import steamcraft.common.init.InitBlocks;
 import steamcraft.common.lib.ModInfo;
 import boilerplate.common.baseclasses.BaseMetadataBlock;
@@ -46,6 +47,7 @@ public class BlockSlate extends BaseMetadataBlock
 		this.setResistance(10.0F);
 		this.setStepSound(Block.soundTypeStone);
 		this.setBlockName("blockSlate");
+		this.setCreativeTab(Steamcraft.tabSC2);
 	}
 
 	@Override

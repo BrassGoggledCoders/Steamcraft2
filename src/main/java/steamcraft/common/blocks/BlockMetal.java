@@ -48,7 +48,6 @@ public class BlockMetal extends BaseMetadataBlock implements IChiselable
 		this.setStepSound(Block.soundTypeMetal);
 		this.setTickRandomly(true);
 		this.setCreativeTab(Steamcraft.tabSC2);
-
 	}
 
 	@Override
