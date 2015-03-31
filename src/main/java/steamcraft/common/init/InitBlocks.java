@@ -206,8 +206,8 @@ public class InitBlocks
 		initializeDecorative();
 		initializeOres();
 		initializeTerrain();
-		initializeMachines();
 		initializeFluids();
+		initializeMachines();
 		initializeOthers();
 	}
 

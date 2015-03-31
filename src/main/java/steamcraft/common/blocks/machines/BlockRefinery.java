@@ -14,6 +14,7 @@ package steamcraft.common.blocks.machines;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
@@ -25,6 +26,8 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+import steamcraft.client.lib.GuiIDs;
+import steamcraft.common.Steamcraft;
 import steamcraft.common.tiles.TileRefinery;
 
 /**
@@ -129,5 +132,22 @@ public class BlockRefinery extends BaseContainerBlock
 	public TileEntity createNewTileEntity(World p_149915_1_, int p_149915_2_)
 	{
 		return new TileRefinery();
+	}
+
+	@Override
+	public boolean onBlockActivated(World world, int par2, int par3, int par4, EntityPlayer player, int par6, float par7, float par8, float par9)
+	{
+		if(world.isRemote)
+			return true;
+		else
+		{
+			TileRefinery tile = (TileRefinery) world.getTileEntity(par2, par3, par4);
+
+			if((tile == null) || player.isSneaking())
+				return false;
+
+			player.openGui(Steamcraft.instance, GuiIDs.REFINERY, world, par2, par3, par4);
+			return true;
+		}
 	}
 }

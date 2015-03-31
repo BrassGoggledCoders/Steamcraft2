@@ -27,6 +27,7 @@ import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
 
 import steamcraft.common.blocks.machines.BlockRefinery;
+import steamcraft.common.init.InitBlocks;
 import steamcraft.common.init.InitItems;
 import boilerplate.common.baseclasses.BaseTileWithInventory;
 
@@ -46,7 +47,7 @@ public class TileRefinery extends BaseTileWithInventory implements IFluidHandler
 	public TileRefinery()
 	{
 		super(3);
-		this.oilTank = new FluidTank(new FluidStack(FluidRegistry.getFluid("whaleoil"), 0), 10000);
+		this.oilTank = new FluidTank(new FluidStack(InitBlocks.whaleOilFluid, 0), 10000);
 	}
 
 	@Override
@@ -56,7 +57,7 @@ public class TileRefinery extends BaseTileWithInventory implements IFluidHandler
 
 		this.furnaceBurnTime = tag.getShort("BurnTime");
 		this.currentItemBurnTime = tag.getShort("ItemTime");
-		this.oilTank.setFluid(new FluidStack(FluidRegistry.getFluid("whaleoil"), tag.getShort("whaleoilLevel")));
+		this.oilTank.setFluid(new FluidStack(FluidRegistry.getFluid("whaleOil"), tag.getShort("whaleoilLevel")));
 	}
 
 	@Override
@@ -100,7 +101,7 @@ public class TileRefinery extends BaseTileWithInventory implements IFluidHandler
 			}
 			// Burning Items
 			if((this.getItemBurnTime() > 0) && (this.furnaceBurnTime == 0)
-					&& (this.oilTank.fill(new FluidStack(FluidRegistry.getFluid("whaleoil"), oilPerTick), false) > 0))
+					&& (this.oilTank.fill(new FluidStack(FluidRegistry.getFluid("whaleOil"), oilPerTick), false) > 0))
 			{
 				this.currentItemBurnTime = this.furnaceBurnTime = this.getItemBurnTime() / 4;
 
@@ -117,7 +118,7 @@ public class TileRefinery extends BaseTileWithInventory implements IFluidHandler
 				else
 					--this.inventory[1].stackSize;
 
-				this.oilTank.fill(new FluidStack(FluidRegistry.getFluid("whaleoil"), oilPerTick), true);
+				this.oilTank.fill(new FluidStack(FluidRegistry.getFluid("whaleOil"), oilPerTick), true);
 				this.furnaceBurnTime--;
 			}
 			else

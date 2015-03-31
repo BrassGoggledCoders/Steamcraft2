@@ -25,6 +25,7 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTank;
 
 import org.lwjgl.opengl.GL11;
+import steamcraft.common.init.InitBlocks;
 import steamcraft.common.lib.ModInfo;
 import steamcraft.common.tiles.TileRefinery;
 import steamcraft.common.tiles.container.ContainerRefinery;
@@ -61,7 +62,7 @@ public class GuiRefinery extends BaseContainerGui
 			this.drawTexturedModalRect(this.guiLeft + 43, (this.guiTop + 48) - burnTime, 176, 12 - burnTime, 14, burnTime + 2);
 		}
 
-		this.drawFluid(new FluidStack(FluidRegistry.getFluid("whaleoil"), 0), this.refinery.getScaledWhaleOilLevel(60), this.guiLeft + 74, this.guiTop + 18,
+		this.drawFluid(new FluidStack(InitBlocks.whaleOilFluid, 0), this.refinery.getScaledWhaleOilLevel(60), this.guiLeft + 74, this.guiTop + 18,
 				32, 60);
 
 		this.mc.renderEngine.bindTexture(guitexture);
