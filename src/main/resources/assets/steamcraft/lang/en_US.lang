@@ -71,6 +71,10 @@ tile.blockBoulder.0.desc=Lookout Indy!
 tile.blockSpiderEgg.name=Spider Egg
 tile.blockMoss.name=Moss
 tile.blockMushroom.name=Mushroom
+tile.blockStandardSiren.name=Standard Siren
+tile.blockAllClearSiren.name=All-Clear Siren
+tile.blockNuclearSiren.name=Nuclear Siren
+tile.blockIntruderSiren.name=Intruder Siren
 
 #Wood
 tile.blockRedwoodLog.name=Redwood Log
