@@ -1,11 +1,12 @@
 package steamcraft.common.items;
 
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
+
+import steamcraft.common.Steamcraft;
 
 public class ItemCustomFood extends BaseItem
 {
@@ -26,7 +27,6 @@ public class ItemCustomFood extends BaseItem
 	private int potionAmplifier;
 	/** probably of the set potion effect occurring */
 	private float potionEffectProbability;
-	private static final String __OBFID = "CL_00000036";
 
 	public ItemCustomFood(int healAmount, float satModifier, boolean wolfMeat)
 	{
@@ -34,7 +34,7 @@ public class ItemCustomFood extends BaseItem
 		this.healAmount = healAmount;
 		this.isWolfsFavoriteMeat = wolfMeat;
 		this.saturationModifier = satModifier;
-		this.setCreativeTab(CreativeTabs.tabFood);
+		this.setCreativeTab(Steamcraft.tabSC2);
 	}
 
 	@Override
