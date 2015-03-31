@@ -25,6 +25,7 @@ import steamcraft.client.gui.GuiBloomery;
 import steamcraft.client.gui.GuiCharger;
 import steamcraft.client.gui.GuiNuclearBoiler;
 import steamcraft.client.gui.GuiPocket;
+import steamcraft.client.gui.GuiRefinery;
 import steamcraft.client.gui.GuiSteamBoiler;
 import steamcraft.client.gui.GuiTimeBomb;
 import steamcraft.client.gui.GuiVanity;
@@ -37,6 +38,7 @@ import steamcraft.common.items.pda.InventoryPDA;
 import steamcraft.common.tiles.TileArmorEditor;
 import steamcraft.common.tiles.TileBloomery;
 import steamcraft.common.tiles.TileNuclearBoiler;
+import steamcraft.common.tiles.TileRefinery;
 import steamcraft.common.tiles.TileSteamBoiler;
 import steamcraft.common.tiles.TileTimeBomb;
 import steamcraft.common.tiles.container.ContainerArmorEditor;
@@ -46,6 +48,7 @@ import steamcraft.common.tiles.container.ContainerCharger;
 import steamcraft.common.tiles.container.ContainerNuclearBoiler;
 import steamcraft.common.tiles.container.ContainerPDA;
 import steamcraft.common.tiles.container.ContainerPocket;
+import steamcraft.common.tiles.container.ContainerRefinery;
 import steamcraft.common.tiles.container.ContainerSteamBoiler;
 import steamcraft.common.tiles.container.ContainerTimeBomb;
 import steamcraft.common.tiles.energy.TileBattery;
@@ -86,6 +89,8 @@ public class GuiHandler implements IGuiHandler
 				return new ContainerPocket(player, player.inventory, new InventoryPocket(player.getHeldItem()));
 			case GuiIDs.LORE:
 				return null;
+			case GuiIDs.REFINERY:
+				return new ContainerRefinery(player.inventory, (TileRefinery) tile);
 		}
 		return null;
 	}
@@ -119,6 +124,8 @@ public class GuiHandler implements IGuiHandler
 				return new GuiPocket(new ContainerPocket(player, player.inventory, new InventoryPocket(player.getHeldItem())));
 			case GuiIDs.LORE:
 				return new GuiScreenBook(player, player.getHeldItem(), false);
+			case GuiIDs.REFINERY:
+				return new GuiRefinery(player.inventory, (TileRefinery) tile);
 		}
 
 		return null;

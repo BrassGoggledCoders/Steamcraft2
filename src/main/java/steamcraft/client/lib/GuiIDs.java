@@ -29,4 +29,5 @@ public class GuiIDs
 	public static final int PDA = 8;
 	public static final int LORE = 9;
 	public static final int POCKET = 10;
+	public static final int REFINERY = 11;
 }

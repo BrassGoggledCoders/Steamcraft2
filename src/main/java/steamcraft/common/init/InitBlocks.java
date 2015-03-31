@@ -79,6 +79,7 @@ import steamcraft.common.blocks.machines.BlockDropHammerAnvil;
 import steamcraft.common.blocks.machines.BlockIntake;
 import steamcraft.common.blocks.machines.BlockLightningRod;
 import steamcraft.common.blocks.machines.BlockNuclearBoiler;
+import steamcraft.common.blocks.machines.BlockRefinery;
 import steamcraft.common.blocks.machines.BlockSawmill;
 import steamcraft.common.blocks.machines.BlockSteamBoiler;
 import steamcraft.common.blocks.machines.BlockTeslaCoil;
@@ -89,6 +90,7 @@ import steamcraft.common.tiles.TileBloomery;
 import steamcraft.common.tiles.TileCopperPipe;
 import steamcraft.common.tiles.TileIntake;
 import steamcraft.common.tiles.TileNuclearBoiler;
+import steamcraft.common.tiles.TileRefinery;
 import steamcraft.common.tiles.TileSteamBoiler;
 import steamcraft.common.tiles.energy.TileBattery;
 import steamcraft.common.tiles.energy.TileCharger;
@@ -136,6 +138,8 @@ public class InitBlocks
 
 	public static Block blockCopperPipe, blockCopperWire;
 	public static Block blockCopperTank;
+
+	public static Block blockRefinery;
 
 	/* Fluids */
 
@@ -402,6 +406,9 @@ public class InitBlocks
 		blockCopperTank = new BaseBlock(Material.iron).setBlockName("blockCopperTank");
 
 		registerBlock(blockCopperTank, "BlockCopperTank");
+
+		blockRefinery = new BlockRefinery().setBlockName("blockRefinery");
+		RegistryHelper.registerContainerBlockWithDesc(blockRefinery, TileRefinery.class, "BlockRefinery");
 	}
 
 	private static void initializeFluids()
