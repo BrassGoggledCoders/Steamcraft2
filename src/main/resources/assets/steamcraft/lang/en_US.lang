@@ -75,6 +75,7 @@ tile.blockStandardSiren.name=Standard Siren
 tile.blockAllClearSiren.name=All-Clear Siren
 tile.blockNuclearSiren.name=Nuclear Siren
 tile.blockIntruderSiren.name=Intruder Siren
+tile.blockSkyrail.name=Golden Skyrail
 
 #Wood
 tile.blockRedwoodLog.name=Redwood Log
@@ -197,8 +198,12 @@ item.itemEmptyShieldedCanister.name=Empty Shielded Canister
 item.itemFullShieldedCanister.name=Shielded Canister
 item.itemBoilingWaterBucket.name=Boiling Water Bucket
 item.itemMudBucket.name=Liquid Mud Bucket
+item.itemWhaleOilBucket.name=Whale Oil Bucket
 item.itemDimPocket.name=Transpatial Pouch
 item.itemDimPocket.desc=Shove your items into the folds amidst space and time. Nothing can possibly go wrong...probably.
+item.itemWhalebone.name=Whalebone
+item.itemWhaleBlubber.name=Whale Blubber
+
 
 #Vanity
 item.itemTopHat.name=Top Hat
@@ -384,6 +389,10 @@ item.itemSteamJetpack.desc=A simple jetpack that uses steam to work.
 item.itemSteamWingpack.name=Steam-Driven Wingpack
 item.itemSteamWingpack.desc=A combination of steam powered jetpack and wings that uses steam to work. Hold SHIFT to glide.
 item.itemDivingHelmet.name=Brass Diving Helmet
+item.itemHelmetWhalebone.name=Whalebone Helmet
+item.itemChestplateWhalebone.name=Whalebone Chestplate
+item.itemLegsWhalebone.name=Whalebone Greaves
+item.itemBootsWhalebone.name=Whalebone Boots
 
 #Parts
 item.itemPartsBrass.0.name=Brass Gear

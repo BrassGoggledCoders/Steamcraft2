@@ -24,12 +24,11 @@ public class BlockCustomMushroom extends BlockMushroom
 	{
 		super();
 		this.setCreativeTab(Steamcraft.tabSC2);
-
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(final int side, final int metadata)
+	public IIcon getIcon(int side, int metadata)
 	{
 		return this.icon[metadata];
 	}

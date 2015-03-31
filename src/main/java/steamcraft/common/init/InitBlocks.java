@@ -88,7 +88,6 @@ import steamcraft.common.tiles.TileArmorEditor;
 import steamcraft.common.tiles.TileBloomery;
 import steamcraft.common.tiles.TileCopperPipe;
 import steamcraft.common.tiles.TileIntake;
-import steamcraft.common.tiles.TileMotionSensor;
 import steamcraft.common.tiles.TileNuclearBoiler;
 import steamcraft.common.tiles.TileSteamBoiler;
 import steamcraft.common.tiles.energy.TileBattery;
@@ -491,8 +490,8 @@ public class InitBlocks
 		blockMotionSensor = new BlockMotionSensor(Material.iron, false).setBlockName("blockMotionSensor");
 		blockMotionSensorOn = new BlockMotionSensor(Material.iron, true).setBlockName("blockMotionSensorOn");
 
-		RegistryHelper.registerContainerBlock(blockMotionSensor, TileMotionSensor.class, "BlockMotionSensor");
-		RegistryHelper.registerContainerBlock(blockMotionSensorOn, TileMotionSensor.class, "BlockMotionSensorOn");
+		// RegistryHelper.registerContainerBlock(blockMotionSensor, TileMotionSensor.class, "BlockMotionSensor");
+		// RegistryHelper.registerContainerBlock(blockMotionSensorOn, TileMotionSensor.class, "BlockMotionSensorOn");
 
 		// Standard
 		blockStandardSiren = new BlockSiren(Material.redstoneLight, false, "standard").setBlockName("blockStandardSiren");

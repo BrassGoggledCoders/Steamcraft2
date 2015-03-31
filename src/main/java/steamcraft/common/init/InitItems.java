@@ -512,7 +512,7 @@ public class InitItems
 		// registerItem(itemGrappleGun, "ItemGrappleGun");
 
 		itemPDA = new ItemPDA().setUnlocalizedName("itemPDA");
-		registerItem(itemPDA, "ItemPDA");
+		// registerItem(itemPDA, "ItemPDA");
 
 		itemSpyglass = new BaseItem().setUnlocalizedName("itemSpyglass");
 		registerItem(itemSpyglass, "ItemSpyglass");
@@ -551,7 +551,7 @@ public class InitItems
 				itemWhaleOilBucket), new ItemStack(Items.bucket));
 
 		itemCoin = new ItemCoin().setUnlocalizedName("itemCoin");
-		registerItem(itemCoin, "ItemCoin");
+		// registerItem(itemCoin, "ItemCoin");
 
 		itemEmptyShieldedCanister = new BaseItem().setUnlocalizedName("itemEmptyShieldedCanister");
 		registerItem(itemEmptyShieldedCanister, "ItemEmptyShieldedCanister");
@@ -573,7 +573,7 @@ public class InitItems
 
 		// Also known as a pokkit by some wierdo called Longeye ;)
 		itemDimPocket = new ItemDimensionalPocket().setUnlocalizedName("itemDimPocket");
-		registerItem(itemDimPocket, "ItemDimPocket");
+		// registerItem(itemDimPocket, "ItemDimPocket");
 	}
 
 	public static void initializeModCompatItems()
