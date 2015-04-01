@@ -12,7 +12,7 @@
  */
 package steamcraft.common.tiles;
 
-import net.minecraft.item.ItemBucket;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntityFurnace;
@@ -36,7 +36,7 @@ import boilerplate.common.baseclasses.BaseTileWithInventory;
  */
 public class TileRefinery extends BaseTileWithInventory implements IFluidHandler
 {
-	public static final int oilPerTick = 40;
+	public static final int oilPerBlubber = 500;
 
 	public int furnaceBurnTime = 0;
 	public int currentItemBurnTime = 0;
@@ -94,14 +94,16 @@ public class TileRefinery extends BaseTileWithInventory implements IFluidHandler
 		if(!this.worldObj.isRemote)
 		{
 			// Drain Oil
-			if((this.inventory[2] != null) && (this.inventory[2].getItem() instanceof ItemBucket))
+			if((this.inventory[2] != null) && this.oilTank.getFluidAmount() >= 1000)
 			{
-				this.inventory[2] = new ItemStack(InitItems.itemWhaleOilBucket);
-				this.oilTank.drain(1000, true);
+				if(this.inventory[2] == new ItemStack(Items.bucket))
+				{
+					this.inventory[2] = new ItemStack(InitItems.itemWhaleOilBucket);
+					this.oilTank.drain(1000, true);
+				}
 			}
 			// Burning Items
-			if((this.getItemBurnTime() > 0) && (this.furnaceBurnTime == 0)
-					&& (this.oilTank.fill(new FluidStack(FluidRegistry.getFluid("whaleoil"), oilPerTick), false) > 0))
+			if((this.getItemBurnTime() > 0) && (this.furnaceBurnTime == 0) && (this.oilTank.getFluidAmount() <= this.oilTank.getCapacity()))
 			{
 				this.currentItemBurnTime = this.furnaceBurnTime = this.getItemBurnTime() / 4;
 
@@ -118,7 +120,7 @@ public class TileRefinery extends BaseTileWithInventory implements IFluidHandler
 				else
 					--this.inventory[1].stackSize;
 
-				this.oilTank.fill(new FluidStack(FluidRegistry.getFluid("whaleoil"), oilPerTick), true);
+				this.oilTank.fill(new FluidStack(FluidRegistry.getFluid("whaleoil"), oilPerBlubber), true);
 				this.furnaceBurnTime--;
 			}
 			else
