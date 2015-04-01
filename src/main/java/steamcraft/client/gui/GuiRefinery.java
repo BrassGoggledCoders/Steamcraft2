@@ -58,7 +58,7 @@ public class GuiRefinery extends BaseContainerGui
 				32, 60);
 
 		this.mc.renderEngine.bindTexture(guitexture);
-		this.drawTexturedModalRect(this.guiLeft + 8, this.guiTop + 24, 176, 14, 20, 49);
+		// this.drawTexturedModalRect(this.guiLeft + 8, this.guiTop + 24, 176, 14, 20, 49);
 		this.drawTexturedModalRect(this.guiLeft + 74, this.guiTop + 24, 176, 14, 20, 49);
 	}
 

@@ -107,6 +107,7 @@ public class EventHandlerClient
 			InitBlocks.steamFluid.setIcons(InitBlocks.blockSteam.getBlockTextureFromSide(1));
 			InitBlocks.boilingWaterFluid.setIcons(InitBlocks.blockBoilingWater.getBlockTextureFromSide(1));
 			InitBlocks.boilingMudFluid.setIcons(InitBlocks.blockBoilingMud.getBlockTextureFromSide(1));
+			InitBlocks.whaleOilFluid.setIcons(InitBlocks.blockWhaleOil.getBlockTextureFromSide(1));
 		}
 	}
 }

@@ -415,57 +415,41 @@ public class InitBlocks
 	{
 		// Steam
 		steamFluid = new FluidSteam("steam").setUnlocalizedName("steamFluid");
-
-		if(!FluidRegistry.registerFluid(steamFluid) && !FluidRegistry.isFluidRegistered("steam"))
-			steamFluid = FluidRegistry.getFluid("steam");
+		FluidRegistry.registerFluid(steamFluid);
 
 		blockSteam = new BlockFluidSteam(steamFluid, Material.lava).setBlockName("steamFluidBlock");
-
 		registerBlock(blockSteam, "blockSteam");
 
 		// BoilingWater
-		boilingWaterFluid = new FluidBoiling("boilingWater").setUnlocalizedName("boilingWaterFluid");
-
-		if(!FluidRegistry.registerFluid(boilingWaterFluid) && !FluidRegistry.isFluidRegistered("boilingWater"))
-			boilingWaterFluid = FluidRegistry.getFluid("boilingWater");
+		boilingWaterFluid = new FluidBoiling("boilingwater").setUnlocalizedName("boilingWaterFluid");
+		FluidRegistry.registerFluid(boilingWaterFluid);
 
 		blockBoilingWater = new BlockFluidBoiling(boilingWaterFluid, Material.water).setBlockName("boilingWaterFluidBlock");
-
 		registerBlock(blockBoilingWater, "blockBoilingWater");
 
 		// BoilingMud
-		boilingMudFluid = new FluidBoiling("boilingMud").setUnlocalizedName("boilingMudFluid");
-
-		if(!FluidRegistry.registerFluid(boilingMudFluid) && !FluidRegistry.isFluidRegistered("boilingMud"))
-			boilingMudFluid = FluidRegistry.getFluid("boilingMud");
+		boilingMudFluid = new FluidBoiling("boilingmud").setUnlocalizedName("boilingMudFluid");
+		FluidRegistry.registerFluid(boilingMudFluid);
 
 		blockBoilingMud = new BlockFluidBoiling(boilingMudFluid, Material.water).setBlockName("boilingMudFluidBlock");
-
 		registerBlock(blockBoilingMud, "blockBoilingMud");
 
 		// Whale Oil
-		whaleOilFluid = new FluidWhaleOil("whaleOil").setUnlocalizedName("whaleOilFluid");
-
-		if(!FluidRegistry.registerFluid(whaleOilFluid) && !FluidRegistry.isFluidRegistered("whaleOil"))
-			whaleOilFluid = FluidRegistry.getFluid("whaleOil");
+		whaleOilFluid = new FluidWhaleOil("whaleoil").setUnlocalizedName("whaleOilFluid");
+		FluidRegistry.registerFluid(whaleOilFluid);
 
 		blockWhaleOil = new BlockFluidWhaleOil(whaleOilFluid, Material.water).setBlockName("whaleOilFluidBlock");
-
 		registerBlock(blockWhaleOil, "blockWhaleOil");
 
 		// TiCon Molten Zinc
-		moltenZincFluid = new FluidBoiling("moltenZinc").setUnlocalizedName("moltenZincFluid");
-
-		if(!FluidRegistry.registerFluid(moltenZincFluid) && !FluidRegistry.isFluidRegistered("moltenZinc"))
-			moltenZincFluid = FluidRegistry.getFluid("moltenZinc");
+		moltenZincFluid = new FluidBoiling("moltenzinc").setUnlocalizedName("moltenZincFluid");
+		FluidRegistry.registerFluid(moltenZincFluid);
 
 		blockMoltenZinc = new BlockFluidBoiling(moltenZincFluid, Material.water).setBlockName("moltenZincFluidBlock");
 
 		// TiCon Molten Brass
-		moltenBrassFluid = new FluidBoiling("moltenBrass").setUnlocalizedName("moltenBrassFluid");
-
-		if(!FluidRegistry.registerFluid(moltenBrassFluid) && !FluidRegistry.isFluidRegistered("moltenBrass"))
-			moltenBrassFluid = FluidRegistry.getFluid("moltenBrass");
+		moltenBrassFluid = new FluidBoiling("moltenbrass").setUnlocalizedName("moltenBrassFluid");
+		FluidRegistry.registerFluid(moltenBrassFluid);
 
 		blockMoltenBrass = new BlockFluidBoiling(moltenBrassFluid, Material.water).setBlockName("moltenBrassFluidBlock");
 	}

@@ -27,7 +27,6 @@ import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
 
 import steamcraft.common.blocks.machines.BlockRefinery;
-import steamcraft.common.init.InitBlocks;
 import steamcraft.common.init.InitItems;
 import boilerplate.common.baseclasses.BaseTileWithInventory;
 
@@ -47,7 +46,8 @@ public class TileRefinery extends BaseTileWithInventory implements IFluidHandler
 	public TileRefinery()
 	{
 		super(3);
-		this.oilTank = new FluidTank(new FluidStack(InitBlocks.whaleOilFluid, 0), 10000);
+
+		this.oilTank = new FluidTank(new FluidStack(FluidRegistry.getFluid("whaleoil"), 0), 10000);
 	}
 
 	@Override
@@ -57,7 +57,7 @@ public class TileRefinery extends BaseTileWithInventory implements IFluidHandler
 
 		this.furnaceBurnTime = tag.getShort("BurnTime");
 		this.currentItemBurnTime = tag.getShort("ItemTime");
-		this.oilTank.setFluid(new FluidStack(FluidRegistry.getFluid("whaleOil"), tag.getShort("whaleoilLevel")));
+		this.oilTank.setFluid(new FluidStack(FluidRegistry.getFluid("whaleoil"), tag.getShort("whaleOilLevel")));
 	}
 
 	@Override
@@ -67,7 +67,7 @@ public class TileRefinery extends BaseTileWithInventory implements IFluidHandler
 
 		tag.setShort("BurnTime", (short) this.furnaceBurnTime);
 		tag.setShort("ItemTime", (short) this.currentItemBurnTime);
-		tag.setShort("whaleoilLevel", (short) this.oilTank.getFluidAmount());
+		tag.setShort("whaleOilLevel", (short) this.oilTank.getFluidAmount());
 	}
 
 	public int getBurnTimeRemainingScaled(int par1)
@@ -101,7 +101,7 @@ public class TileRefinery extends BaseTileWithInventory implements IFluidHandler
 			}
 			// Burning Items
 			if((this.getItemBurnTime() > 0) && (this.furnaceBurnTime == 0)
-					&& (this.oilTank.fill(new FluidStack(FluidRegistry.getFluid("whaleOil"), oilPerTick), false) > 0))
+					&& (this.oilTank.fill(new FluidStack(FluidRegistry.getFluid("whaleoil"), oilPerTick), false) > 0))
 			{
 				this.currentItemBurnTime = this.furnaceBurnTime = this.getItemBurnTime() / 4;
 
@@ -111,14 +111,14 @@ public class TileRefinery extends BaseTileWithInventory implements IFluidHandler
 					--this.inventory[0].stackSize;
 			}
 			// Create Oil
-			if((this.furnaceBurnTime > 0) && (this.oilTank.getFluidAmount() <= 10000) && this.inventory[1].getItem() == InitItems.itemWhaleBlubber)
+			if((this.furnaceBurnTime > 0) && (this.oilTank.getFluidAmount() <= this.oilTank.getCapacity()) && this.inventory[1] != null)
 			{
 				if(this.inventory[1].stackSize == 1)
 					this.inventory[1] = null;
 				else
 					--this.inventory[1].stackSize;
 
-				this.oilTank.fill(new FluidStack(FluidRegistry.getFluid("whaleOil"), oilPerTick), true);
+				this.oilTank.fill(new FluidStack(FluidRegistry.getFluid("whaleoil"), oilPerTick), true);
 				this.furnaceBurnTime--;
 			}
 			else
