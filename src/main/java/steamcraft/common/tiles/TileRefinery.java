@@ -40,6 +40,7 @@ public class TileRefinery extends BaseTileWithInventory implements IFluidHandler
 
 	public int furnaceBurnTime = 0;
 	public int currentItemBurnTime = 0;
+	public int cookTime = 0;
 
 	public FluidTank oilTank;
 
@@ -57,6 +58,7 @@ public class TileRefinery extends BaseTileWithInventory implements IFluidHandler
 
 		this.furnaceBurnTime = tag.getShort("BurnTime");
 		this.currentItemBurnTime = tag.getShort("ItemTime");
+		this.cookTime = tag.getShort("CookTime");
 		this.oilTank.setFluid(new FluidStack(FluidRegistry.getFluid("whaleoil"), tag.getShort("whaleOilLevel")));
 	}
 
@@ -67,6 +69,7 @@ public class TileRefinery extends BaseTileWithInventory implements IFluidHandler
 
 		tag.setShort("BurnTime", (short) this.furnaceBurnTime);
 		tag.setShort("ItemTime", (short) this.currentItemBurnTime);
+		tag.setShort("CookTime", (short) this.cookTime);
 		tag.setShort("whaleOilLevel", (short) this.oilTank.getFluidAmount());
 	}
 
@@ -96,14 +99,15 @@ public class TileRefinery extends BaseTileWithInventory implements IFluidHandler
 			// Drain Oil
 			if((this.inventory[2] != null) && this.oilTank.getFluidAmount() >= 1000)
 			{
-				if(this.inventory[2] == new ItemStack(Items.bucket))
+				if(this.inventory[2].getItem() == Items.bucket && this.inventory[2].stackSize == 1)
 				{
 					this.inventory[2] = new ItemStack(InitItems.itemWhaleOilBucket);
 					this.oilTank.drain(1000, true);
 				}
 			}
 			// Burning Items
-			if((this.getItemBurnTime() > 0) && (this.furnaceBurnTime == 0) && (this.oilTank.getFluidAmount() <= this.oilTank.getCapacity()))
+			if((this.getItemBurnTime() > 0) && (this.furnaceBurnTime == 0) && this.oilTank.getFluidAmount() <= this.oilTank.getCapacity()
+					&& this.inventory[1] != null)
 			{
 				this.currentItemBurnTime = this.furnaceBurnTime = this.getItemBurnTime() / 4;
 
@@ -115,18 +119,28 @@ public class TileRefinery extends BaseTileWithInventory implements IFluidHandler
 			// Create Oil
 			if((this.furnaceBurnTime > 0) && (this.oilTank.getFluidAmount() <= this.oilTank.getCapacity()) && this.inventory[1] != null)
 			{
-				if(this.inventory[1].stackSize == 1)
-					this.inventory[1] = null;
-				else
-					--this.inventory[1].stackSize;
+				if(this.inventory[1].getItem() == InitItems.itemWhaleBlubber)
+				{
+					if(cookTime == 0)
+					{
+						if(this.inventory[1].stackSize == 1)
+							this.inventory[1] = null;
+						else
+							--this.inventory[1].stackSize;
 
-				this.oilTank.fill(new FluidStack(FluidRegistry.getFluid("whaleoil"), oilPerBlubber), true);
-				this.furnaceBurnTime--;
+						this.furnaceBurnTime--;
+
+					}
+					else if(cookTime == 500)
+					{
+						this.oilTank.fill(new FluidStack(FluidRegistry.getFluid("whaleoil"), oilPerBlubber), true);
+					}
+					else
+						cookTime++;
+				}
 			}
-			else
-				this.furnaceBurnTime = 0;
 
-			if(var1 != (this.furnaceBurnTime > 0))
+			if(var1)
 			{
 				var2 = true;
 				BlockRefinery.updateBlockState(this.furnaceBurnTime > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord);

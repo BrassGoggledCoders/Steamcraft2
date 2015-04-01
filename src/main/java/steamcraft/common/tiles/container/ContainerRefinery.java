@@ -57,7 +57,7 @@ public class ContainerRefinery extends BaseContainer
 				return stack.getItem() == Items.bucket;
 			}
 		});
-		this.addSlotToContainer(new Slot(tile, 1, 42, 32));
+		this.addSlotToContainer(new Slot(tile, 1, 42, 18));
 
 		int var3;
 

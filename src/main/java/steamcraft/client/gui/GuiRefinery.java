@@ -12,16 +12,21 @@
  */
 package steamcraft.client.gui;
 
+import java.util.ArrayList;
+
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
 
+import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.FluidTank;
 
 import org.lwjgl.opengl.GL11;
 import steamcraft.common.init.InitBlocks;
 import steamcraft.common.lib.ModInfo;
 import steamcraft.common.tiles.TileRefinery;
 import steamcraft.common.tiles.container.ContainerRefinery;
+import boilerplate.client.utils.GuiColors;
 
 /**
  * @author decebaldecebal
@@ -58,7 +63,6 @@ public class GuiRefinery extends BaseContainerGui
 				32, 60);
 
 		this.mc.renderEngine.bindTexture(guitexture);
-		// this.drawTexturedModalRect(this.guiLeft + 8, this.guiTop + 24, 176, 14, 20, 49);
 		this.drawTexturedModalRect(this.guiLeft + 74, this.guiTop + 24, 176, 14, 20, 49);
 	}
 
@@ -68,5 +72,20 @@ public class GuiRefinery extends BaseContainerGui
 		if(((y - this.guiTop) >= 18) && ((y - this.guiTop) <= 78))
 			if(((x - this.guiLeft) >= 74) && ((x - this.guiLeft) <= 106))
 				this.drawFluidInfo(this.refinery.oilTank, x, y);
+	}
+
+	@Override
+	protected void drawFluidInfo(FluidTank tank, int x, int y)
+	{
+		ArrayList<String> lines = new ArrayList<String>();
+
+		if(tank.getFluid().getFluid() == FluidRegistry.WATER)
+			lines.add(GuiColors.LIGHTBLUE + "Water");
+		else
+			lines.add(GuiColors.LIGHTGRAY + "Whale Oil");
+
+		lines.add(tank.getFluidAmount() + "/" + tank.getCapacity());
+
+		this.drawHoveringText(lines, x - this.guiLeft, y - this.guiTop, this.fontRendererObj);
 	}
 }
