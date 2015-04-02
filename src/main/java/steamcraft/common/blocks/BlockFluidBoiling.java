@@ -24,7 +24,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraftforge.fluids.BlockFluidClassic;
 import net.minecraftforge.fluids.Fluid;
 
-import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.ModInfo;
 import boilerplate.common.utils.ItemStackUtils;
 
@@ -40,7 +39,7 @@ public class BlockFluidBoiling extends BlockFluidClassic
 	public BlockFluidBoiling(Fluid fluid, Material material)
 	{
 		super(fluid, material);
-		this.setCreativeTab(Steamcraft.tabSC2);
+		// this.setCreativeTab(Steamcraft.tabSC2);
 	}
 
 	@Override

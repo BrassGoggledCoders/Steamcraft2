@@ -40,6 +40,7 @@ tile.blockCastIronLampOn.name=Cast Iron Lamp (On)
 tile.blockInvertedCastIronLampOff.name=Inverted Cast Iron Lamp
 tile.blockInvertedCastIronLamp.name=Inverted Cast Iron Lamp (On)
 tile.steamFluidBlock.name=Steam
+tile.whaleOilFluidBlock.name=Whale Oil
 tile.boilingWaterFluidBlock.name=Boiling Water
 tile.boilingMudFluidBlock.name=Boiling Liquid Mud
 tile.moltenZincFluidBlock.name=Molten Zinc
