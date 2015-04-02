@@ -204,6 +204,8 @@ item.itemDimPocket.name=Transpatial Pouch
 item.itemDimPocket.desc=Shove your items into the folds amidst space and time. Nothing can possibly go wrong...probably.
 item.itemWhalebone.name=Whalebone
 item.itemWhaleBlubber.name=Whale Blubber
+item.itemWhaleMeat.name=Whale Meat
+item.itemCookedWhaleMeat.name=Cooked Whale Meat
 
 
 #Vanity

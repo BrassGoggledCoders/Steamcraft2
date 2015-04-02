@@ -30,7 +30,7 @@ import boilerplate.common.utils.recipe.RecipeUtils;
 
 /**
  * @author Surseance
- * 
+ *
  */
 public class InitRecipes
 {
@@ -340,6 +340,9 @@ public class InitRecipes
 				InitItems.itemBrassGoggles, 'B', "plateBrass" }));
 		// GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemLastResort), "TTT", "TCT", "TTT", 'T',
 		// Blocks.tnt, 'C', InitBlocks.blockCopperWire));
+
+		GameRegistry.addShapedRecipe(new ItemStack(InitBlocks.blockTimeBomb), new Object[] { " W ", "PTP", " P ", 'W', InitItems.itemWatch, 'P', Items.paper,
+				'T', Blocks.tnt });
 
 	}
 

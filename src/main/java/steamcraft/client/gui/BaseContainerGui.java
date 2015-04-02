@@ -63,7 +63,7 @@ public abstract class BaseContainerGui extends GuiContainer
 		return (x >= slot.xDisplayPosition) && (x <= (slot.xDisplayPosition + 16)) && (y >= slot.yDisplayPosition) && (y <= (slot.yDisplayPosition + 16));
 	}
 
-	public String getSlotTooltipUnloc(int slotNumber)
+	private String getSlotTooltipUnloc(int slotNumber)
 	{
 		return this.tile.getInventoryName().replaceAll(" ", "").toLowerCase() + ".slot." + slotNumber + ".tooltip";
 	}
@@ -107,7 +107,7 @@ public abstract class BaseContainerGui extends GuiContainer
 		this.drawCutIcon(icon, x + (fullX * 16), y + (fullY * 16), lastX, lastY, fullLvl == fullY ? lastLvl : 0);
 	}
 
-	protected void drawCutIcon(IIcon icon, int x, int y, int width, int height, int cut)
+	private void drawCutIcon(IIcon icon, int x, int y, int width, int height, int cut)
 	{
 		Tessellator tess = Tessellator.instance;
 		tess.startDrawingQuads();

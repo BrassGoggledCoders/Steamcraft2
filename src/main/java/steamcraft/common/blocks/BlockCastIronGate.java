@@ -204,7 +204,7 @@ public class BlockCastIronGate extends BlockDirectional
 	/**
 	 * Returns if the fence gate is open according to its metadata.
 	 */
-	public static boolean isFenceGateOpen(int p_149896_0_)
+	private static boolean isFenceGateOpen(int p_149896_0_)
 	{
 		return (p_149896_0_ & 4) != 0;
 	}

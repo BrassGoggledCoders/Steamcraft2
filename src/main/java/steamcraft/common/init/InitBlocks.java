@@ -92,6 +92,7 @@ import steamcraft.common.tiles.TileIntake;
 import steamcraft.common.tiles.TileNuclearBoiler;
 import steamcraft.common.tiles.TileRefinery;
 import steamcraft.common.tiles.TileSteamBoiler;
+import steamcraft.common.tiles.TileTimeBomb;
 import steamcraft.common.tiles.energy.TileBattery;
 import steamcraft.common.tiles.energy.TileCharger;
 import steamcraft.common.tiles.energy.TileCopperWire;
@@ -104,7 +105,7 @@ import boilerplate.common.utils.helpers.RegistryHelper;
 
 /**
  * @author Surseance
- * 
+ *
  */
 public class InitBlocks
 {
@@ -464,7 +465,7 @@ public class InitBlocks
 		registerBlock(blockTeaPlant, "BlockTeaPlant");
 
 		blockTimeBomb = new BlockTimeBomb(Material.tnt).setBlockName("blockTimeBomb");
-		// RegistryHelper.registerContainerBlock(blockTimeBomb, TileTimeBomb.class, "BlockTimeBomb");
+		RegistryHelper.registerContainerBlock(blockTimeBomb, TileTimeBomb.class, "BlockTimeBomb");
 
 		blockHatch = new BlockHatch().setBlockName("blockHatch");
 		// RegistryHelper.registerContainerBlock(blockHatch, TileHatch.class, "BlockHatch");

@@ -112,7 +112,7 @@ public class ClientProxy extends CommonProxy
 		super.init();
 	}
 
-	public void registerKeys()
+	private void registerKeys()
 	{
 		keyBindings.put("vanity", new KeyBinding("key.vanity.desc", Keyboard.KEY_V, "key.steamcraft.category"));
 

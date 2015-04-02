@@ -12,9 +12,7 @@
  */
 package steamcraft.client.gui;
 
-import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiTextField;
-import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
@@ -29,32 +27,30 @@ import steamcraft.common.tiles.container.ContainerTimeBomb;
 
 /**
  * @author warlordjones
- * 
+ *
  */
-public class GuiTimeBomb extends GuiContainer
+public class GuiTimeBomb extends BaseContainerGui
 {
 
 	private static ResourceLocation guitexture = new ResourceLocation(ModInfo.PREFIX + "textures/gui/timebomb.png");
 
 	private GuiTextField text;
-	private ContainerTimeBomb container;
-	private EntityPlayer player;
-	private GuiTimeBomb.ChangeButton timeChangeButton;
 
+	private EntityPlayer player;
 	private TileTimeBomb bomb;
 
 	public GuiTimeBomb(InventoryPlayer inv, TileTimeBomb tile)
 	{
 		super(new ContainerTimeBomb(inv, tile));
 		this.bomb = tile;
-		this.container = (ContainerTimeBomb) this.inventorySlots;
 		this.player = inv.player;
 	}
 
 	@Override
 	protected void drawGuiContainerForegroundLayer(int p_146979_1_, int p_146979_2_)
 	{
-		this.fontRendererObj.drawString("Time Bomb", this.xSize - 2, this.ySize - 124, 4210752);
+		this.fontRendererObj.drawString("HH:MM (No colon)", this.xSize - 2, this.ySize - 110, 4210752);
+		this.fontRendererObj.drawString("Time Bomb", this.xSize - 45, this.ySize - 119, 4210752);
 	}
 
 	@Override
@@ -63,15 +59,9 @@ public class GuiTimeBomb extends GuiContainer
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 
 		this.mc.renderEngine.bindTexture(guitexture);
-		// final int x = (width - xSize) / 2;
-		// final int y = (height - ySize) / 2;
-		this.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize);
-
-		this.drawTexturedModalRect(this.guiLeft + 59, this.guiTop + 20, 0, this.ySize + 0, 110, 16);
-
-		this.drawTexturedModalRect(this.guiLeft + 99, this.guiTop + 45, this.xSize, 0, 28, 21);
-
-		this.mc.renderEngine.bindTexture(guitexture);
+		int x = (this.width - this.xSize) / 2;
+		int y = (this.height - this.ySize) / 2;
+		this.drawTexturedModalRect(x, y, 0, 0, this.xSize, this.ySize);
 	}
 
 	@Override
@@ -80,12 +70,11 @@ public class GuiTimeBomb extends GuiContainer
 		Keyboard.enableRepeatEvents(true);
 		int i = (this.width - this.xSize) / 2;
 		int j = (this.height - this.ySize) / 2;
-		this.text = new GuiTextField(this.fontRendererObj, i + 62, j + 24, 103, 12);
+		this.text = new GuiTextField(this.fontRendererObj, i + 40, j + 34, 80, 12);
 		this.text.setTextColor(-1);
 		this.text.setDisabledTextColour(-1);
 		this.text.setEnableBackgroundDrawing(false);
 		this.text.setMaxStringLength(4);
-		this.text.setText(String.valueOf(this.bomb.getTime()));
 	}
 
 	@Override
@@ -114,14 +103,8 @@ public class GuiTimeBomb extends GuiContainer
 		if(this.text != null)
 			s = this.text.getText();
 		if(s.length() == 4)
-			// {
-			// this.container.updateTime(s);
 			InitPackets.network.sendToServer(new TimeBombPacket(Integer.parseInt(s), this.bomb.xCoord, this.bomb.yCoord, this.bomb.zCoord,
 					this.player.dimension));
-		// }
-		// this.mc.thePlayer.sendQueue.addToSendQueue(new
-		// C17PacketCustomPayload("SC2|TimeUpdate",
-		// s.getBytes(Charsets.UTF_8)));
 	}
 
 	/**
@@ -144,15 +127,6 @@ public class GuiTimeBomb extends GuiContainer
 		GL11.glDisable(GL11.GL_LIGHTING);
 		GL11.glDisable(GL11.GL_BLEND);
 		this.text.drawTextBox();
+		this.text.setText(String.valueOf(this.bomb.getTime()));
 	}
-
-	public class ChangeButton extends GuiButton
-	{
-		public ChangeButton(int p_i1021_1_, int p_i1021_2_, int p_i1021_3_, int p_i1021_4_, int p_i1021_5_, String p_i1021_6_)
-		{
-			super(p_i1021_1_, p_i1021_2_, p_i1021_3_, p_i1021_4_, p_i1021_5_, p_i1021_6_);
-		}
-
-	}
-
 }
