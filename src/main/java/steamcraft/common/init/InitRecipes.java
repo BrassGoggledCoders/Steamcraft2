@@ -296,6 +296,14 @@ public class InitRecipes
 		GameRegistry.addShapelessRecipe(new ItemStack(InitBlocks.blockPolishedPlanks, 1, 2), new ItemStack(InitBlocks.blockPolishedPlanks, 1, 1));
 		GameRegistry.addShapelessRecipe(new ItemStack(InitBlocks.blockPolishedPlanks, 1, 0), new ItemStack(InitBlocks.blockPolishedPlanks, 1, 2));
 
+		GameRegistry.addRecipe(new ShapedOreRecipe(InitBlocks.blockStandardSiren, "CIC", "ISI", "CRC", 'S', new ItemStack(InitItems.itemMachinePart, 1, 7),
+				'I', "ingotIron", 'C', "ingotCastIron", 'R', Items.redstone));
+		GameRegistry.addRecipe(new ShapedOreRecipe(InitBlocks.blockNuclearSiren, "CIC", "ISI", "CRC", 'S', new ItemStack(InitItems.itemMachinePart, 1, 7), 'I',
+				"ingotUranium", 'C', "ingotCastIron", 'R', Items.redstone));
+		GameRegistry.addRecipe(new ShapedOreRecipe(InitBlocks.blockAllClearSiren, "CIC", "ISI", "CRC", 'S', new ItemStack(InitItems.itemMachinePart, 1, 7),
+				'I', Blocks.wool, 'C', "ingotCastIron", 'R', Items.redstone));
+		GameRegistry.addRecipe(new ShapedOreRecipe(InitBlocks.blockIntruderSiren, "CIC", "ISI", "CRC", 'S', new ItemStack(InitItems.itemMachinePart, 1, 7),
+				'I', Items.gold_nugget, 'C', "ingotCastIron", 'R', Items.redstone));
 	}
 
 	private static void initModuleRecipes()
@@ -370,6 +378,8 @@ public class InitRecipes
 				"plateSteel"));
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(InitItems.itemMachinePart, 1, 6), "partCastIronRod",
 				new ItemStack(InitBlocks.blockCopperWire), new ItemStack(InitBlocks.blockCopperWire), new ItemStack(InitBlocks.blockCopperWire)));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemMachinePart, 1, 7), "L L", " L ", "MCM", 'M', "partMagnet",
+				'C', new ItemStack(InitBlocks.blockCopperWire), 'L', Items.leather));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockCopperWire, 1, 0), "CD", 'C', "ingotCopper", 'D',
 				new ItemStack(InitItems.itemDrawplate, 1, OreDictionary.WILDCARD_VALUE)));
