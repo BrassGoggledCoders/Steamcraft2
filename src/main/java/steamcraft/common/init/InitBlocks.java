@@ -38,6 +38,7 @@ import steamcraft.common.blocks.BlockCrystal;
 import steamcraft.common.blocks.BlockCustomLeaves;
 import steamcraft.common.blocks.BlockCustomLog;
 import steamcraft.common.blocks.BlockCustomMushroom;
+import steamcraft.common.blocks.BlockDynamite;
 import steamcraft.common.blocks.BlockEngravedSolid;
 import steamcraft.common.blocks.BlockEngravedVanilla;
 import steamcraft.common.blocks.BlockEtherium;
@@ -201,6 +202,8 @@ public class InitBlocks
 	public static Block blockTintedRock;
 
 	public static Block blockSkyrail;
+
+	public static Block blockDynamite;
 
 	public static void init()
 	{
@@ -508,6 +511,9 @@ public class InitBlocks
 
 		blockSkyrail = new BlockSkyrail().setBlockName("blockSkyrail");
 		registerBlock(blockSkyrail, "BlockSkyrail");
+
+		blockDynamite = new BlockDynamite().setBlockName("blockDynamite");
+		registerBlock(blockDynamite, "BlockDynamite");
 	}
 
 	private static String[] blacklist = new String[] { "BlockFissurePortal", "BlockLamp", "BlockMotionSensor", "BlockMotionSensorOn", "BlockStandardSirenOn",

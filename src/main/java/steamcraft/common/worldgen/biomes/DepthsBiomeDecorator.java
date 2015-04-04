@@ -216,17 +216,17 @@ public class DepthsBiomeDecorator extends DeferredBiomeDecorator
 			for(j = 0; j < 50; ++j)
 			{
 				k = chunkX + random.nextInt(16);
-				l = random.nextInt(256);
+				l = random.nextInt(100);
 				i1 = chunkZ + random.nextInt(16);
-				(new WorldGenLiquids(Blocks.flowing_water)).generate(world, random, k, l, i1);
+				new WorldGenLiquids(Blocks.flowing_water).generate(world, random, k, l, i1);
 			}
 
 			for(j = 0; j < 20; ++j)
 			{
 				k = chunkX + random.nextInt(16);
-				l = random.nextInt(256);
+				l = random.nextInt(100);
 				i1 = chunkZ + random.nextInt(16);
-				(new WorldGenLiquids(Blocks.flowing_lava)).generate(world, random, k, l, i1);
+				new WorldGenLiquids(Blocks.flowing_lava).generate(world, random, k, l, i1);
 			}
 		}
 		/* Start Custom */
@@ -266,7 +266,7 @@ public class DepthsBiomeDecorator extends DeferredBiomeDecorator
 		for(int i3 = 0; i3 < 3; i3++)
 		{
 			int oreXCoord = chunkX + random.nextInt(16);
-			int oreYCoord = 10 + random.nextInt(40);
+			int oreYCoord = 10 + random.nextInt(50);
 			int oreZCoord = chunkZ + random.nextInt(16);
 
 			new WorldGenMinable(InitBlocks.blockBoulder, 0, 1, Blocks.stone).generate(world, random, oreXCoord, oreYCoord, oreZCoord);
@@ -274,10 +274,18 @@ public class DepthsBiomeDecorator extends DeferredBiomeDecorator
 		for(int i3 = 0; i3 < 3; i3++)
 		{
 			int oreXCoord = chunkX + random.nextInt(16);
-			int oreYCoord = 10 + random.nextInt(40);
+			int oreYCoord = 10 + random.nextInt(50);
 			int oreZCoord = chunkZ + random.nextInt(16);
 
 			new WorldGenMinable(InitBlocks.blockTintedRock, 0, 4, Blocks.stone).generate(world, random, oreXCoord, oreYCoord, oreZCoord);
+		}
+		for(int i3 = 0; i3 < 3; i3++)
+		{
+			int oreXCoord = chunkX + random.nextInt(16);
+			int oreYCoord = 10 + random.nextInt(50);
+			int oreZCoord = chunkZ + random.nextInt(16);
+
+			new WorldGenMinable(InitBlocks.blockDynamite, 0, 4, Blocks.stone).generate(world, random, oreXCoord, oreYCoord, oreZCoord);
 		}
 
 		{
