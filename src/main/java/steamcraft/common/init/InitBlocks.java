@@ -35,9 +35,12 @@ import steamcraft.common.blocks.BlockCastIronRailing;
 import steamcraft.common.blocks.BlockCompressedStone;
 import steamcraft.common.blocks.BlockCongealedSlime;
 import steamcraft.common.blocks.BlockCrystal;
+import steamcraft.common.blocks.BlockCustomFence;
 import steamcraft.common.blocks.BlockCustomLeaves;
 import steamcraft.common.blocks.BlockCustomLog;
 import steamcraft.common.blocks.BlockCustomMushroom;
+import steamcraft.common.blocks.BlockCustomSlab;
+import steamcraft.common.blocks.BlockCustomStairs;
 import steamcraft.common.blocks.BlockDynamite;
 import steamcraft.common.blocks.BlockEngravedSolid;
 import steamcraft.common.blocks.BlockEngravedVanilla;
@@ -193,6 +196,11 @@ public class InitBlocks
 			blockWillowLeaves, blockWillowPlanks, blockPetrifiedLog,
 			blockDeadLeaves, blockPetrifiedPlanks;
 
+	public static Block blockRedwoodFence, blockRedwoodDoor, blockRedwoodSlab, blockRedwoodStairs;
+	public static Block blockMangroveFence, blockMangroveDoor, blockMangroveSlab, blockMangroveStairs;
+	public static Block blockWillowFence, blockWillowDoor, blockWillowSlab, blockWillowStairs;
+	public static Block blockPetrifiedFence, blockPetrifiedDoor, blockPetrifiedSlab, blockPetrifiedStairs;
+
 	public static Block blockStandardSiren, blockStandardSirenOn, blockAllClearSiren,
 			blockAllClearSirenOn, blockIntruderSiren, blockIntruderSirenOn, blockNuclearSiren,
 			blockNuclearSirenOn, blockMotionSensor, blockMotionSensorOn;
@@ -278,6 +286,49 @@ public class InitBlocks
 
 		blockPetrifiedPlanks = new BaseBlock(Material.wood).setBlockName("blockPetrifiedPlanks");
 		registerBlock(blockPetrifiedPlanks, "BlockPetrifiedPlanks");
+
+		blockRedwoodFence = new BlockCustomFence("Redwood").setBlockName("blockRedwoodFence");
+		registerBlock(blockRedwoodFence, "BlockRedwoodFence");
+
+		blockMangroveFence = new BlockCustomFence("Mangrove").setBlockName("blockMangroveFence");
+		registerBlock(blockMangroveFence, "blockMangroveFence");
+
+		blockWillowFence = new BlockCustomFence("Willow").setBlockName("blockWillowFence");
+		registerBlock(blockWillowFence, "blockWillowFence");
+
+		blockPetrifiedFence = new BlockCustomFence("Petrified").setBlockName("blockPetrifiedFence");
+		registerBlock(blockPetrifiedFence, "blockPetrifiedFence");
+
+		/*
+		 * blockRedwoodDoor = new BlockCustomDoor("Redwood").setBlockName("blockRedwoodDoor"); registerBlock(blockRedwoodDoor, "BlockRedwoodDoor");
+		 * blockMangroveDoor = new BlockCustomDoor("Mangrove").setBlockName("blockMangroveDoor"); registerBlock(blockMangroveDoor, "blockMangroveDoor");
+		 * blockWillowDoor = new BlockCustomDoor("Willow").setBlockName("blockWillowDoor"); registerBlock(blockWillowDoor, "blockWillowDoor");
+		 * blockPetrifiedDoor = new BlockCustomDoor("Petrified").setBlockName("blockPetrifiedDoor"); registerBlock(blockPetrifiedDoor, "blockPetrifiedDoor");
+		 */
+
+		blockRedwoodStairs = new BlockCustomStairs(blockRedwoodPlanks).setBlockName("blockRedwoodStairs");
+		registerBlock(blockRedwoodStairs, "BlockRedwoodStairs");
+
+		blockMangroveStairs = new BlockCustomStairs(blockMangrovePlanks).setBlockName("blockMangroveStairs");
+		registerBlock(blockMangroveStairs, "blockMangroveStairs");
+
+		blockWillowStairs = new BlockCustomStairs(blockWillowPlanks).setBlockName("blockWillowStairs");
+		registerBlock(blockWillowStairs, "blockWillowStairs");
+
+		blockPetrifiedStairs = new BlockCustomStairs(blockPetrifiedPlanks).setBlockName("blockPetrifiedStairs");
+		registerBlock(blockPetrifiedStairs, "blockPetrifiedStairs");
+
+		blockRedwoodSlab = new BlockCustomSlab().setBlockName("blockRedwoodSlab");
+		registerBlock(blockRedwoodSlab, "BlockRedwoodSlab");
+
+		blockMangroveSlab = new BlockCustomSlab().setBlockName("blockMangroveSlab");
+		registerBlock(blockMangroveSlab, "blockMangroveSlab");
+
+		blockWillowSlab = new BlockCustomSlab().setBlockName("blockWillowSlab");
+		registerBlock(blockWillowSlab, "blockWillowSlab");
+
+		blockPetrifiedSlab = new BlockCustomSlab().setBlockName("blockPetrifiedSlab");
+		registerBlock(blockPetrifiedSlab, "blockPetrifiedSlab");
 
 		blockMud = new BlockMud(Material.ground).setBlockName("blockMud");
 		registerBlock(blockMud, "BlockMud");

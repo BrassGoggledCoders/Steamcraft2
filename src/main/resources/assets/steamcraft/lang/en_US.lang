@@ -95,6 +95,18 @@ tile.blockPetrifiedPlanks.name=Petrified Planks
 tile.blockPolishedPlanks.0.name=Polished Oak Planks
 tile.blockPolishedPlanks.1.name=Vertical Polished Oak Planks
 tile.blockPolishedPlanks.2.name=Polished Oak Panel
+tile.blockRedwoodFence.name=Redwood Fence
+tile.blockMangroveFence.name=Mangrove Fence
+tile.blockWillowFence.name=Willow Fence
+tile.blockPetrifiedFence.name=Petrified Fence
+tile.blockRedwoodStairs.name=Redwood Stairs
+tile.blockMangroveStairs.name=Mangrove Stairs
+tile.blockWillowStairs.name=Willow Stairs
+tile.blockPetrifiedStairs.name=Petrified Stairs
+tile.blockRedwoodSlab.name=Redwood Slab
+tile.blockMangroveSlab.name=Mangrove Slab
+tile.blockWillowSlab.name=Willow Slab
+tile.blockPetrifiedSlab.name=Petrified Slab
 
 #Ores
 tile.blockSteamcraftOre.0.name=Aluminum Ore
