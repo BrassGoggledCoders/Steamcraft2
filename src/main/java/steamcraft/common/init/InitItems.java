@@ -87,6 +87,7 @@ import steamcraft.common.items.modules.ItemSteelPlating;
 import steamcraft.common.items.modules.ItemWatchDisplay;
 import steamcraft.common.items.modules.ItemWingpackModule;
 import steamcraft.common.items.tools.ItemElectricDrill;
+import steamcraft.common.items.tools.ItemElectrifiedSword;
 import steamcraft.common.items.tools.ItemModAxe;
 import steamcraft.common.items.tools.ItemModHoe;
 import steamcraft.common.items.tools.ItemModPickaxe;
@@ -100,7 +101,7 @@ import boilerplate.common.utils.helpers.RegistryHelper;
 
 /**
  * @author Surseance
- * 
+ *
  */
 public class InitItems
 {
@@ -135,6 +136,8 @@ public class InitItems
 	public static Item pickaxeEtherium, swordEtherium, shovelEtherium, axeEtherium, hoeEtherium;
 
 	public static Item pickaxeObsidian, swordObsidian, shovelObsidian, axeObsidian, hoeObsidian;
+
+	public static Item itemElectricSword;
 
 	public static Item itemSpanner, itemHammer, itemDrawplate, itemGrindstone;
 
@@ -258,6 +261,9 @@ public class InitItems
 		hoeObsidian = new ItemModHoe(MaterialHelper.TOOL_OBSIDIAN).setUnlocalizedName("itemHoeObsidian");
 
 		RegistryHelper.registerToolSet(swordObsidian, shovelObsidian, pickaxeObsidian, axeObsidian, hoeObsidian, "Obsidian", ModInfo.ID);
+
+		itemElectricSword = new ItemElectrifiedSword(MaterialHelper.HTOOL_ELEC, 400, 400).setUnlocalizedName("itemElectricSword");
+		registerItem(itemElectricSword, "ItemElectricSword");
 	}
 
 	private static void initializeArmor()

@@ -43,7 +43,7 @@ import boilerplate.common.utils.ItemStackUtils;
 
 /**
  * @author Surseance
- * 
+ *
  */
 public class ItemModTool extends BaseItem
 {
@@ -60,6 +60,7 @@ public class ItemModTool extends BaseItem
 		this.efficiencyOnProperMaterial = toolMat.getEfficiencyOnProperMaterial();
 		this.damageVsEntity = damage;
 		this.setFull3D();
+		this.setMaxDamage(toolMat.getMaxUses());
 	}
 
 	@SuppressWarnings("all")
@@ -247,7 +248,7 @@ public class ItemModTool extends BaseItem
 		}
 	}
 
-	private void changeToolDamage(ItemStack itemStack, double damage)
+	protected void changeToolDamage(ItemStack itemStack, double damage)
 	{
 		ItemStackUtils.addModifier(itemStack, SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName(), damage, 0);
 	}

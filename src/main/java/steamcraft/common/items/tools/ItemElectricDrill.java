@@ -30,8 +30,6 @@ import steamcraft.common.lib.ModInfo;
 
 public class ItemElectricDrill extends ItemElectricTool
 {
-	protected int maxEnergy = 80;
-	protected short maxReceive = 80;
 	protected int energyPerBlock = 400;
 
 	public ItemElectricDrill(ToolMaterial mat, int maxEnergy, int maxReceive)

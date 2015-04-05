@@ -77,6 +77,7 @@ tile.blockAllClearSiren.name=All-Clear Siren
 tile.blockNuclearSiren.name=Nuclear Siren
 tile.blockIntruderSiren.name=Intruder Siren
 tile.blockSkyrail.name=Golden Skyrail
+tile.blockDynamite.name=Dynamite
 
 #Wood
 tile.blockRedwoodLog.name=Redwood Log
@@ -360,7 +361,7 @@ item.itemSpyglass.name=Spyglass
 item.itemSpyglass.desc=Zooms you in 3x
 item.itemGrindstone.name=Grindstone
 item.itemGrindstone.desc=Used for grinding plates and ingots back to dusts
-
+item.itemElectricSword.name=Electrified Sword
 
 #Armors
 item.itemHelmetBrass.name=Brass Helmet

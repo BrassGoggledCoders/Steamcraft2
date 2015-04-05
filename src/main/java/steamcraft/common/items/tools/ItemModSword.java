@@ -26,7 +26,7 @@ import dynamicswordskills.api.ISword;
 
 /**
  * @author Surseance
- * 
+ *
  */
 @Optional.Interface(iface = "dynamicswordskills.api.ISword", modid = "DynamicSwordSkills")
 public class ItemModSword extends ItemModTool implements ISword
@@ -34,8 +34,6 @@ public class ItemModSword extends ItemModTool implements ISword
 	public ItemModSword(ToolMaterial mat)
 	{
 		super(mat.getDamageVsEntity() + 4.0F, mat);
-		this.maxStackSize = 1;
-		this.setMaxDamage(mat.getMaxUses());
 		this.setHarvestLevel("sword", mat.getHarvestLevel());
 	}
 

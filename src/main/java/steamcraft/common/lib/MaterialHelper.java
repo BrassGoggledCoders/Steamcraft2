@@ -19,7 +19,7 @@ import net.minecraftforge.common.util.EnumHelper;
 
 /**
  * @author Decebaldecebal
- * 
+ *
  */
 public class MaterialHelper
 {
@@ -37,6 +37,9 @@ public class MaterialHelper
 	public static ToolMaterial DRILL_STEAM;
 	public static ToolMaterial DRILL_ETHERIUM;
 	public static ToolMaterial DRILL_OBSIDIAN;
+
+	// Single Tool Helper Materials
+	public static ToolMaterial HTOOL_ELEC;
 
 	// Armor Materials
 	public static ArmorMaterial ARMOR_OBSIDIAN;
@@ -56,6 +59,8 @@ public class MaterialHelper
 		TOOL_OBSIDIAN = EnumHelper.addToolMaterial("TOOL_OBSIDIAN", 3, -1, 3.0F, 6F, 7);
 		TOOL_ETHERIUM = EnumHelper.addToolMaterial("TOOL_ETHERIUM", 3, 2345, 10.5F, 7F, 14);
 		TOOL_STEAM = EnumHelper.addToolMaterial("TOOL_STEAM", 2, 1561, 12.0F, 0.0F, 0);
+
+		HTOOL_ELEC = EnumHelper.addToolMaterial("HTOOL_ELEC", 0, 375, 0.0F, 7.0F, 0);
 
 		// Drills
 		DRILL_WOOD = EnumHelper.addToolMaterial("DRILL_WOOD", 0, 89, 4.0F, 0.0F, 0);
