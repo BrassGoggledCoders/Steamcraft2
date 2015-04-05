@@ -62,6 +62,7 @@ import steamcraft.client.renderers.tile.TileHatchRenderer;
 import steamcraft.client.renderers.tile.TileHatchRenderer.TileHatch;
 import steamcraft.client.renderers.tile.TileLightningRodRenderer;
 import steamcraft.client.renderers.tile.TileTeslaCoilRenderer;
+import steamcraft.client.renderers.tile.TileTrunkRenderer;
 import steamcraft.common.CommonProxy;
 import steamcraft.common.entities.EntityFallingBoulder;
 import steamcraft.common.entities.living.EntityAbandonedGolem;
@@ -84,6 +85,7 @@ import steamcraft.common.init.InitItems;
 import steamcraft.common.tiles.EmptyTiles;
 import steamcraft.common.tiles.TileArmorEditor;
 import steamcraft.common.tiles.TileCopperPipe;
+import steamcraft.common.tiles.TileTrunk;
 import steamcraft.common.tiles.energy.TileBattery;
 import steamcraft.common.tiles.energy.TileCharger;
 import steamcraft.common.tiles.energy.TileCopperWire;
@@ -97,7 +99,7 @@ import boilerplate.common.entity.EntityMinedBlock;
 
 /**
  * @author Surseance
- * 
+ *
  */
 public class ClientProxy extends CommonProxy
 {
@@ -185,6 +187,9 @@ public class ClientProxy extends CommonProxy
 		RenderingRegistry.registerBlockHandler(new BlockTESRRenderer(new TileArmorEditor(), RenderIDs.blockArmorEditorRI));
 		// Spider Egg
 		RenderingRegistry.registerBlockHandler(RenderIDs.blockSpiderEggRI, new BlockSpiderEggRenderer());
+		// Trunk
+		ClientRegistry.bindTileEntitySpecialRenderer(TileTrunk.class, new TileTrunkRenderer());
+		RenderingRegistry.registerBlockHandler(new BlockTESRRenderer(new TileTrunk(), RenderIDs.blockTrunkRI));
 	}
 
 	@Override

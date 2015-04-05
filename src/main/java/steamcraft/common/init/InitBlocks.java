@@ -70,6 +70,7 @@ import steamcraft.common.blocks.BlockTeaPlant;
 import steamcraft.common.blocks.BlockThin;
 import steamcraft.common.blocks.BlockTimeBomb;
 import steamcraft.common.blocks.BlockTintedRock;
+import steamcraft.common.blocks.BlockTrunk;
 import steamcraft.common.blocks.BlockUranium;
 import steamcraft.common.blocks.FluidBoiling;
 import steamcraft.common.blocks.FluidSteam;
@@ -217,6 +218,8 @@ public class InitBlocks
 	public static Block blockDynamite;
 
 	public static Block blockMeltingIce;
+
+	public static Block blockTrunk;
 
 	public static void init()
 	{
@@ -575,6 +578,9 @@ public class InitBlocks
 
 		blockMeltingIce = new BlockMeltingIce().setBlockName("blockMeltingIce");
 		registerBlock(blockMeltingIce, "BlockMeltingIce");
+
+		blockTrunk = new BlockTrunk().setBlockName("blockTrunk");
+		registerBlock(blockTrunk, "BlockTrunk");
 	}
 
 	private static String[] blacklist = new String[] { "BlockFissurePortal", "BlockLamp", "BlockMotionSensor", "BlockMotionSensorOn", "BlockStandardSirenOn",
