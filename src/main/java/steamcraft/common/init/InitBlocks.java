@@ -55,6 +55,7 @@ import steamcraft.common.blocks.BlockInfestedGrass;
 import steamcraft.common.blocks.BlockInvertedCastIronLamp;
 import steamcraft.common.blocks.BlockLamp;
 import steamcraft.common.blocks.BlockLeafPile;
+import steamcraft.common.blocks.BlockMeltingIce;
 import steamcraft.common.blocks.BlockMetal;
 import steamcraft.common.blocks.BlockMotionSensor;
 import steamcraft.common.blocks.BlockMud;
@@ -214,6 +215,8 @@ public class InitBlocks
 	public static Block blockSkyrail;
 
 	public static Block blockDynamite;
+
+	public static Block blockMeltingIce;
 
 	public static void init()
 	{
@@ -569,6 +572,9 @@ public class InitBlocks
 
 		blockDynamite = new BlockDynamite().setBlockName("blockDynamite");
 		registerBlock(blockDynamite, "BlockDynamite");
+
+		blockMeltingIce = new BlockMeltingIce().setBlockName("blockMeltingIce");
+		registerBlock(blockMeltingIce, "BlockMeltingIce");
 	}
 
 	private static String[] blacklist = new String[] { "BlockFissurePortal", "BlockLamp", "BlockMotionSensor", "BlockMotionSensorOn", "BlockStandardSirenOn",

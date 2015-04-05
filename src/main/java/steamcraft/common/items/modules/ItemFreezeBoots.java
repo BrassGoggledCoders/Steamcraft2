@@ -15,7 +15,6 @@ package steamcraft.common.items.modules;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
@@ -25,6 +24,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraftforge.common.util.ForgeDirection;
 
 import steamcraft.common.Steamcraft;
+import steamcraft.common.init.InitBlocks;
 import steamcraft.common.lib.ModInfo;
 import boilerplate.common.baseclasses.BaseArmorModule;
 import boilerplate.steamapi.item.ModuleRegistry;
@@ -69,14 +69,14 @@ public class ItemFreezeBoots extends BaseArmorModule
 		int pZ = (int) Math.round(player.posZ);
 		if(world.getBlock(pX, pY, pZ).getMaterial() == Material.water)
 		{
-			world.setBlock(pX, pY, pZ, Blocks.ice);
+			world.setBlock(pX, pY, pZ, InitBlocks.blockMeltingIce);
 		}
-		for(int i = 1; i < ForgeDirection.VALID_DIRECTIONS.length + 1; i++)
+		for(int i = 1; i < ForgeDirection.VALID_DIRECTIONS.length; i++)
 		{
 			ForgeDirection dir = ForgeDirection.VALID_DIRECTIONS[i];
 			if(world.getBlock(pX + dir.offsetX, pY + dir.offsetY, pZ + dir.offsetZ).getMaterial() == Material.water)
 			{
-				world.setBlock(pX + dir.offsetX, pY + dir.offsetY, pZ + dir.offsetZ, Blocks.ice);
+				world.setBlock(pX + dir.offsetX, pY + dir.offsetY, pZ + dir.offsetZ, InitBlocks.blockMeltingIce);
 			}
 		}
 	}
