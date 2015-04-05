@@ -22,6 +22,7 @@ import cpw.mods.fml.common.network.IGuiHandler;
 import steamcraft.client.gui.GuiArmorEditor;
 import steamcraft.client.gui.GuiBattery;
 import steamcraft.client.gui.GuiBloomery;
+import steamcraft.client.gui.GuiCapacitor;
 import steamcraft.client.gui.GuiCharger;
 import steamcraft.client.gui.GuiNuclearBoiler;
 import steamcraft.client.gui.GuiPocket;
@@ -44,6 +45,7 @@ import steamcraft.common.tiles.TileTimeBomb;
 import steamcraft.common.tiles.container.ContainerArmorEditor;
 import steamcraft.common.tiles.container.ContainerBattery;
 import steamcraft.common.tiles.container.ContainerBloomery;
+import steamcraft.common.tiles.container.ContainerCapacitor;
 import steamcraft.common.tiles.container.ContainerCharger;
 import steamcraft.common.tiles.container.ContainerNuclearBoiler;
 import steamcraft.common.tiles.container.ContainerPDA;
@@ -52,11 +54,12 @@ import steamcraft.common.tiles.container.ContainerRefinery;
 import steamcraft.common.tiles.container.ContainerSteamBoiler;
 import steamcraft.common.tiles.container.ContainerTimeBomb;
 import steamcraft.common.tiles.energy.TileBattery;
+import steamcraft.common.tiles.energy.TileCapacitor;
 import steamcraft.common.tiles.energy.TileCharger;
 
 /**
  * @author Surseance
- * 
+ *
  */
 public class GuiHandler implements IGuiHandler
 {
@@ -91,6 +94,8 @@ public class GuiHandler implements IGuiHandler
 				return null;
 			case GuiIDs.REFINERY:
 				return new ContainerRefinery(player.inventory, (TileRefinery) tile);
+			case GuiIDs.CAPACITOR:
+				return new ContainerCapacitor(player.inventory, (TileCapacitor) tile);
 		}
 		return null;
 	}
@@ -126,6 +131,8 @@ public class GuiHandler implements IGuiHandler
 				return new GuiScreenBook(player, player.getHeldItem(), false);
 			case GuiIDs.REFINERY:
 				return new GuiRefinery(player.inventory, (TileRefinery) tile);
+			case GuiIDs.CAPACITOR:
+				return new GuiCapacitor(player.inventory, (TileCapacitor) tile);
 		}
 
 		return null;

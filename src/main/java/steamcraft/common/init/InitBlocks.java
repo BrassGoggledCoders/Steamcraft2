@@ -73,6 +73,7 @@ import steamcraft.common.blocks.FluidWhaleOil;
 import steamcraft.common.blocks.machines.BlockArmorEditor;
 import steamcraft.common.blocks.machines.BlockBattery;
 import steamcraft.common.blocks.machines.BlockBloomery;
+import steamcraft.common.blocks.machines.BlockCapacitor;
 import steamcraft.common.blocks.machines.BlockCharger;
 import steamcraft.common.blocks.machines.BlockCopperPipe;
 import steamcraft.common.blocks.machines.BlockCopperWire;
@@ -95,6 +96,7 @@ import steamcraft.common.tiles.TileRefinery;
 import steamcraft.common.tiles.TileSteamBoiler;
 import steamcraft.common.tiles.TileTimeBomb;
 import steamcraft.common.tiles.energy.TileBattery;
+import steamcraft.common.tiles.energy.TileCapacitor;
 import steamcraft.common.tiles.energy.TileCharger;
 import steamcraft.common.tiles.energy.TileCopperWire;
 import steamcraft.common.tiles.energy.TileLightningRod;
@@ -127,7 +129,7 @@ public class InitBlocks
 	public static Block blockMetal, blockUranium, blockEtherium;
 
 	/* Machines */
-	public static Block blockSteamBoiler, blockNuclearBoiler, blockIntake, blockTurbine, blockBattery, blockCharger;
+	public static Block blockSteamBoiler, blockNuclearBoiler, blockIntake, blockTurbine, blockBattery, blockCharger, blockCapacitor;
 	public static Block blockPress, blockSteamHammer, blockGrindstone, blockWireMill;
 	public static Block blockLightningRod, blockTeslaCoil;
 
@@ -374,6 +376,7 @@ public class InitBlocks
 		// Energy related
 		blockTurbine = new BlockTurbine().setBlockName("blockTurbine");
 		blockBattery = new BlockBattery().setBlockName("blockBattery");
+		blockCapacitor = new BlockCapacitor().setBlockName("blockCapacitor");
 		blockLightningRod = new BlockLightningRod(Material.iron).setBlockName("blockLightningRod");
 		blockTeslaCoil = new BlockTeslaCoil(Material.iron).setBlockName("blockTeslaCoil");
 		blockCharger = new BlockCharger().setBlockName("blockCharger");
@@ -381,6 +384,7 @@ public class InitBlocks
 
 		RegistryHelper.registerContainerBlockWithDesc(blockTurbine, TileTurbine.class, "BlockTurbine");
 		RegistryHelper.registerContainerBlockWithDesc(blockBattery, TileBattery.class, "BlockBattery");
+		RegistryHelper.registerContainerBlockWithDesc(blockCapacitor, TileCapacitor.class, "BlockCapacitor");
 		RegistryHelper.registerContainerBlockWithDesc(blockLightningRod, TileLightningRod.class, "BlockLightningRod");
 		RegistryHelper.registerContainerBlockWithDesc(blockTeslaCoil, TileTeslaCoil.class, "BlockTeslaCoil");
 		RegistryHelper.registerContainerBlockWithDesc(blockCharger, TileCharger.class, "BlockCharger");

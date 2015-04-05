@@ -14,7 +14,7 @@ package steamcraft.client.lib;
 
 /**
  * @author Surseance
- * 
+ *
  */
 public class GuiIDs
 {
@@ -30,4 +30,5 @@ public class GuiIDs
 	public static final int LORE = 9;
 	public static final int POCKET = 10;
 	public static final int REFINERY = 11;
+	public static final int CAPACITOR = 12;
 }
