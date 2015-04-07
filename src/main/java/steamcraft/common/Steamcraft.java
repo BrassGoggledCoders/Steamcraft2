@@ -145,7 +145,7 @@ public class Steamcraft
 
 		LoggerSteamcraft.info("Finished Postinit");
 		LoggerSteamcraft
-				.info("Please note: Steamcraft2 is now the officially unofficial mod of the Steampunk Forum at BrassGoggles, otherwise known as BG, which is only unofficial because making it official would cause a legal headache but is pretty much official, I'm just not allowed to call it that, so its not official, but it kinda is, ok? Got that? Signed, Major Vincent Smith, otherwise known as warlordjones");
+				.info("Please note: Steamcraft2 is now the officially unofficial mod of the Steampunk Forum at BrassGoggles, otherwise known as BG, which is only unofficial because making it official would cause a legal headache but is pretty much official, I'm just not allowed to call it that, so its not official, but it kinda is, ok? Got that? Signed, Major Vincent Smith (Otherwise known as warlordjones) - BrassGoggles moderation team member");
 	}
 
 	@EventHandler
