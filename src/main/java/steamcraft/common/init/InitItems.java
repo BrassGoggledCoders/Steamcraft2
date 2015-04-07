@@ -583,7 +583,7 @@ public class InitItems
 
 		// Also known as a pokkit by some wierdo called Longeye ;)
 		itemDimPocket = new ItemDimensionalPocket().setUnlocalizedName("itemDimPocket");
-		// registerItem(itemDimPocket, "ItemDimPocket");
+		// TODO registerItem(itemDimPocket, "ItemDimPocket");
 	}
 
 	public static void initializeModCompatItems()
