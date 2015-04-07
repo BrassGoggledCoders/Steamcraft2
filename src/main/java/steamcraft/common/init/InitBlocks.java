@@ -324,16 +324,16 @@ public class InitBlocks
 		blockPetrifiedStairs = new BlockCustomStairs(blockPetrifiedPlanks).setBlockName("blockPetrifiedStairs");
 		registerBlock(blockPetrifiedStairs, "blockPetrifiedStairs");
 
-		blockRedwoodSlab = new BlockCustomSlab().setBlockName("blockRedwoodSlab");
+		blockRedwoodSlab = new BlockCustomSlab("Redwood").setBlockName("blockRedwoodSlab");
 		registerBlock(blockRedwoodSlab, "BlockRedwoodSlab");
 
-		blockMangroveSlab = new BlockCustomSlab().setBlockName("blockMangroveSlab");
+		blockMangroveSlab = new BlockCustomSlab("Mangrove").setBlockName("blockMangroveSlab");
 		registerBlock(blockMangroveSlab, "blockMangroveSlab");
 
-		blockWillowSlab = new BlockCustomSlab().setBlockName("blockWillowSlab");
+		blockWillowSlab = new BlockCustomSlab("Willow").setBlockName("blockWillowSlab");
 		registerBlock(blockWillowSlab, "blockWillowSlab");
 
-		blockPetrifiedSlab = new BlockCustomSlab().setBlockName("blockPetrifiedSlab");
+		blockPetrifiedSlab = new BlockCustomSlab("Petrified").setBlockName("blockPetrifiedSlab");
 		registerBlock(blockPetrifiedSlab, "blockPetrifiedSlab");
 
 		blockMud = new BlockMud(Material.ground).setBlockName("blockMud");

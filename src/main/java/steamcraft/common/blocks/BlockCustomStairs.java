@@ -27,5 +27,7 @@ public class BlockCustomStairs extends BlockStairs
 	{
 		super(block, 0);
 		this.setCreativeTab(Steamcraft.tabSC2);
+		// this.setLightOpacity(255);
+		this.useNeighborBrightness = true;
 	}
 }

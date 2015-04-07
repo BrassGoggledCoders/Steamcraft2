@@ -16,6 +16,7 @@ import net.minecraft.block.BlockSlab;
 import net.minecraft.block.material.Material;
 
 import steamcraft.common.Steamcraft;
+import steamcraft.common.lib.ModInfo;
 
 /**
  * @author warlordjones
@@ -23,16 +24,20 @@ import steamcraft.common.Steamcraft;
  */
 public class BlockCustomSlab extends BlockSlab
 {
-	public BlockCustomSlab()
+	String type;
+
+	public BlockCustomSlab(String type)
 	{
 		super(false, Material.wood);
+		this.type = type;
 		this.setCreativeTab(Steamcraft.tabSC2);
+		this.useNeighborBrightness = true;
 	}
 
 	@Override
 	public String func_150002_b(int p_150002_1_)
 	{
-		return "astring";
+		return ModInfo.PREFIX + "block" + type + "Planks";
 	}
 
 }
