@@ -13,7 +13,6 @@
 package steamcraft.common.blocks;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockFence;
 import net.minecraft.block.material.Material;
 import net.minecraft.world.IBlockAccess;
 
@@ -25,7 +24,7 @@ import steamcraft.common.lib.ModInfo;
  * @author Surseance
  *
  */
-public class BlockCastIronFence extends BlockFence
+public class BlockCastIronFence extends BlockCustomFence
 {
 	public BlockCastIronFence()
 	{

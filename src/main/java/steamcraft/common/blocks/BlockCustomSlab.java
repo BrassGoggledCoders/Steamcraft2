@@ -29,9 +29,9 @@ public class BlockCustomSlab extends BlockSlab
 	String type;
 	Block block;
 
-	public BlockCustomSlab(String type, Block block)
+	public BlockCustomSlab(boolean isDouble, String type, Block block, Material mat)
 	{
-		super(false, Material.wood);
+		super(isDouble, mat);
 		this.type = type;
 		this.block = block;
 		this.setCreativeTab(Steamcraft.tabSC2);
