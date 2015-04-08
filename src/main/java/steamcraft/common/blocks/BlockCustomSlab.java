@@ -34,14 +34,15 @@ public class BlockCustomSlab extends BlockSlab
 		super(isDouble, mat);
 		this.type = type;
 		this.block = block;
-		this.setCreativeTab(Steamcraft.tabSC2);
+		if(!isDouble)
+			this.setCreativeTab(Steamcraft.tabSC2);
 		this.useNeighborBrightness = true;
 	}
 
 	@Override
 	public String func_150002_b(int p_150002_1_)
 	{
-		return ModInfo.PREFIX + "block" + type + "Slab";
+		return ModInfo.PREFIX + type + "Slab";
 	}
 
 	@Override

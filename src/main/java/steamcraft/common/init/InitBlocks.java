@@ -322,28 +322,29 @@ public class InitBlocks
 		blockPetrifiedStairs = new BlockCustomStairs(blockPetrifiedPlanks).setBlockName("blockPetrifiedStairs");
 		registerBlock(blockPetrifiedStairs, "blockPetrifiedStairs");
 
-		blockRedwoodSlab = new BlockCustomSlab(false, "Redwood", blockRedwoodPlanks, Material.wood).setBlockName("blockRedwoodSlab");
+		blockRedwoodSlab = new BlockCustomSlab(false, "blockRedwoodPlanks", blockRedwoodPlanks, Material.wood).setBlockName("blockRedwoodSlab");
 		registerBlock(blockRedwoodSlab, "BlockRedwoodSlab");
 
-		blockMangroveSlab = new BlockCustomSlab(false, "Mangrove", blockMangrovePlanks, Material.wood).setBlockName("blockMangroveSlab");
+		blockMangroveSlab = new BlockCustomSlab(false, "blockMangrovePlanks", blockMangrovePlanks, Material.wood).setBlockName("blockMangroveSlab");
 		registerBlock(blockMangroveSlab, "blockMangroveSlab");
 
-		blockWillowSlab = new BlockCustomSlab(false, "Willow", blockWillowPlanks, Material.wood).setBlockName("blockWillowSlab");
+		blockWillowSlab = new BlockCustomSlab(false, "blockWillowPlanks", blockWillowPlanks, Material.wood).setBlockName("blockWillowSlab");
 		registerBlock(blockWillowSlab, "blockWillowSlab");
 
-		blockPetrifiedSlab = new BlockCustomSlab(false, "Petrified", blockPetrifiedPlanks, Material.wood).setBlockName("blockPetrifiedSlab");
+		blockPetrifiedSlab = new BlockCustomSlab(false, "blockPetrifiedPlanks", blockPetrifiedPlanks, Material.wood).setBlockName("blockPetrifiedSlab");
 		registerBlock(blockPetrifiedSlab, "blockPetrifiedSlab");
 
-		blockRedwoodDoubleSlab = new BlockCustomSlab(true, "Redwood", blockRedwoodPlanks, Material.wood).setBlockName("blockRedwoodDoubleSlab");
+		blockRedwoodDoubleSlab = new BlockCustomSlab(true, "blockRedwoodPlanks", blockRedwoodPlanks, Material.wood).setBlockName("blockRedwoodDoubleSlab");
 		registerBlock(blockRedwoodDoubleSlab, "BlockRedwoodDoubleSlab");
 
-		blockMangroveDoubleSlab = new BlockCustomSlab(true, "Mangrove", blockMangrovePlanks, Material.wood).setBlockName("blockMangroveDoubleSlab");
+		blockMangroveDoubleSlab = new BlockCustomSlab(true, "blockMangrovePlanks", blockMangrovePlanks, Material.wood).setBlockName("blockMangroveDoubleSlab");
 		registerBlock(blockMangroveDoubleSlab, "blockMangroveDoubleSlab");
 
-		blockWillowDoubleSlab = new BlockCustomSlab(true, "Willow", blockWillowPlanks, Material.wood).setBlockName("blockWillowDoubleSlab");
+		blockWillowDoubleSlab = new BlockCustomSlab(true, "blockWillowPlanks", blockWillowPlanks, Material.wood).setBlockName("blockWillowDoubleSlab");
 		registerBlock(blockWillowDoubleSlab, "blockWillowDoubleSlab");
 
-		blockPetrifiedDoubleSlab = new BlockCustomSlab(true, "Petrified", blockPetrifiedPlanks, Material.wood).setBlockName("blockPetrifiedDoubleSlab");
+		blockPetrifiedDoubleSlab = new BlockCustomSlab(true, "blockPetrifiedPlanks", blockPetrifiedPlanks, Material.wood)
+				.setBlockName("blockPetrifiedDoubleSlab");
 		registerBlock(blockPetrifiedDoubleSlab, "blockPetrifiedDoubleSlab");
 
 		blockMud = new BlockMud(Material.ground).setBlockName("blockMud");

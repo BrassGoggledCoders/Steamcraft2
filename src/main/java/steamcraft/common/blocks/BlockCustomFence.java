@@ -26,7 +26,7 @@ public class BlockCustomFence extends BlockFence
 {
 	public BlockCustomFence(String type, Material mat)
 	{
-		super(ModInfo.PREFIX + "block" + type + "Planks", mat);
+		super(ModInfo.PREFIX + type, mat);
 		this.setCreativeTab(Steamcraft.tabSC2);
 	}
 }
