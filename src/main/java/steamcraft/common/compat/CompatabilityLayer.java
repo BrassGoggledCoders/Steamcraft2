@@ -40,7 +40,7 @@ import boilerplate.common.utils.helpers.OreDictHelper;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 public class CompatabilityLayer
 {
@@ -171,7 +171,7 @@ public class CompatabilityLayer
 		OreDictHelper.registerOre("nuggetZinc", InitItems.itemNugget, 3);
 		OreDictHelper.registerOre("nuggetBrass", InitItems.itemNugget, 4);
 		OreDictHelper.registerOre("nuggetBronze", InitItems.itemNugget, 5);
-		OreDictHelper.registerOre("nuggetSteel", InitItems.itemIngot, 6);
+		OreDictHelper.registerOre("nuggetSteel", InitItems.itemNugget, 6);
 		OreDictHelper.registerOre("nuggetCastIron", InitItems.itemNugget, 7);
 
 		OreDictHelper.registerOreWithAlts(InitItems.itemPowder, "dustAluminum", "dustAluminium");
@@ -180,7 +180,7 @@ public class CompatabilityLayer
 		OreDictHelper.registerOre("dustZinc", InitItems.itemPowder, 3);
 		OreDictHelper.registerOre("dustBrass", InitItems.itemPowder, 4);
 		OreDictHelper.registerOre("dustBronze", InitItems.itemPowder, 5);
-		OreDictHelper.registerOre("dustSteel", InitItems.itemIngot, 6);
+		OreDictHelper.registerOre("dustSteel", InitItems.itemPowder, 6);
 		OreDictHelper.registerOre("dustCastIron", InitItems.itemPowder, 7);
 		OreDictionary.registerOre("dustIron", InitItems.itemVanillaPowder);
 		OreDictHelper.registerOre("dustGold", InitItems.itemVanillaPowder, 1);

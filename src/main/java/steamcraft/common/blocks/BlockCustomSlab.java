@@ -41,7 +41,7 @@ public class BlockCustomSlab extends BlockSlab
 	@Override
 	public String func_150002_b(int p_150002_1_)
 	{
-		return ModInfo.PREFIX + type + "Slab";
+		return ModInfo.PREFIX + type;
 	}
 
 	@Override
