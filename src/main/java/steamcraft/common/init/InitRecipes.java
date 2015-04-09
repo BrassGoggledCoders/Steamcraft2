@@ -138,26 +138,26 @@ public class InitRecipes
 			RecipeUtils.addMetalRecipes(InitBlocks.blockMetal, InitItems.itemIngot, InitItems.itemNugget, meta);
 
 			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(InitItems.itemSheet, 1, meta), "ingot" + LibInfo.metals[meta],
-					new ItemStack(InitItems.itemHammer, 1, OreDictionary.WILDCARD_VALUE)));
+					"craftingHammer"));
 		}
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(InitItems.itemVanillaSheet, 1, 0), "ingotIron",
-				new ItemStack(InitItems.itemHammer, 1, OreDictionary.WILDCARD_VALUE)));
+				"craftingHammer"));
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(InitItems.itemVanillaSheet, 1, 1), "ingotGold",
-				new ItemStack(InitItems.itemHammer, 1, OreDictionary.WILDCARD_VALUE)));
+				"craftingHammer"));
 		// Vanilla iron plate
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(InitItems.itemVanillaSheet, 1, 0), "ingotIron",
-				new ItemStack(InitItems.itemHammer, 1, OreDictionary.WILDCARD_VALUE)));
+				"craftingHammer"));
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(InitItems.itemVanillaSheet, 1, 1), "ingotGold",
-				new ItemStack(InitItems.itemHammer, 1, OreDictionary.WILDCARD_VALUE)));
+				"craftingHammer"));
 		// Our Dusts
 		for(int meta = 0; meta < 4; meta++)
 			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(InitItems.itemPowder, ConfigBalance.numberOfDustsFromOre, meta),
-					"ore" + LibInfo.metals[meta], new ItemStack(InitItems.itemHammer, 1, OreDictionary.WILDCARD_VALUE)));
+					"ore" + LibInfo.metals[meta], "craftingHammer"));
 		// Vanilla Dusts
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(InitItems.itemVanillaPowder, ConfigBalance.numberOfDustsFromOre, 0),
-				"oreIron", new ItemStack(InitItems.itemHammer, 1, OreDictionary.WILDCARD_VALUE)));
+				"oreIron", "craftingHammer"));
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(InitItems.itemVanillaPowder, ConfigBalance.numberOfDustsFromOre, 1),
-				"oreGold", new ItemStack(InitItems.itemHammer, 1, OreDictionary.WILDCARD_VALUE)));
+				"oreGold", "craftingHammer"));
 		// Plates/Ingots back to dust
 		for(int meta = 0; meta < 8; meta++)
 		{

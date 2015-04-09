@@ -22,8 +22,9 @@ public class LibInfo
 	private static String[] brassBlocksMembers = { "Longeye", "DocArcane", "CaptianNivea", "DrVesuvius", "PeaGreen", "elShoggotho", "Ainuryn", "Piyok0",
 			"Ryan_T15", "AdmiralSocrates" };
 	public static String[] contributors = { "domi1819", "frothiny", "MrIbby", "HCSarise" };
-	private static String[] otherCoolPeople = { "ClockwerkKaiser" };
-	public static String[] names = StringUtils.merge(brassBlocksMembers, Boilerplate.devs, contributors, Boilerplate.donors, otherCoolPeople);
+	public static String[] bugsquashers = { "ClockwerkKaiser" };
+	public static String[] devsandreporters = StringUtils.merge(bugsquashers, Boilerplate.devs);
+	public static String[] names = StringUtils.merge(brassBlocksMembers, Boilerplate.devs, contributors, Boilerplate.donors, bugsquashers);
 	public static float pixel = 1F / 16F / 2F;
 	public static float tPixel = 1F / 32F;
 }

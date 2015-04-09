@@ -140,7 +140,7 @@ public class InitItems
 
 	public static Item itemElectricSword;
 
-	public static Item itemSpanner, itemHammer, itemDrawplate, itemGrindstone;
+	public static Item itemSpanner, itemHammer, itemDrawplate, itemGrindstone, itemBugHammer;
 
 	// Containers
 	public static Item itemCanisterSteam;
@@ -439,6 +439,9 @@ public class InitItems
 
 		itemHammer = new ItemWithCraftingDurability().setUnlocalizedName("itemHammer");
 		registerItem(itemHammer, "ItemHammer");
+
+		itemBugHammer = new ItemWithCraftingDurability().setHasEffect().setUnlocalizedName("itemBugHammer");
+		registerItem(itemBugHammer, "ItemBugHammer");
 
 		itemDrawplate = new ItemWithCraftingDurability().setUnlocalizedName("itemDrawplate");
 		registerItem(itemDrawplate, "ItemDrawplate");

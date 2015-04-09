@@ -236,6 +236,9 @@ public class CompatabilityLayer
 		OreDictionary.registerOre("treeLeaves", InitBlocks.blockWillowLeaves);
 		OreDictionary.registerOre("treeLeaves", InitBlocks.blockMangroveLeaves);
 		OreDictionary.registerOre("treeLeaves", InitBlocks.blockDeadLeaves);
+
+		OreDictionary.registerOre("craftingHammer", new ItemStack(InitItems.itemHammer, 1, OreDictionary.WILDCARD_VALUE));
+		OreDictionary.registerOre("craftingHammer", new ItemStack(InitItems.itemBugHammer, 1, OreDictionary.WILDCARD_VALUE));
 	}
 
 	private static void registerBiomeTypes()

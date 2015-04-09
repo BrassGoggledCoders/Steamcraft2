@@ -12,14 +12,26 @@
  */
 package steamcraft.common.items;
 
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
+import scala.actors.threadpool.Arrays;
+import steamcraft.common.init.InitItems;
+import steamcraft.common.lib.LibInfo;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 public class ItemWithCraftingDurability extends BaseItem
 {
+	boolean hasEffect = false;
+
 	public ItemWithCraftingDurability()
 	{
 		this.setMaxStackSize(1);
@@ -47,5 +59,30 @@ public class ItemWithCraftingDurability extends BaseItem
 	public boolean doesContainerItemLeaveCraftingGrid(ItemStack par1ItemStack)
 	{
 		return false;
+	}
+
+	public Item setHasEffect()
+	{
+		this.hasEffect = true;
+		return this;
+	}
+
+	@SideOnly(Side.CLIENT)
+	public boolean hasEffect(int pass)
+	{
+		return hasEffect;
+	}
+
+	@Override
+	public void onCreated(ItemStack stack, World world, EntityPlayer player)
+	{
+		if(player.getCommandSenderName() != null)
+		{
+			if(stack.getItem() == InitItems.itemHammer && Arrays.asList(LibInfo.devsandreporters).contains(player.getCommandSenderName()))
+			{
+				stack.stackSize = 0;
+				stack.func_150996_a(InitItems.itemBugHammer);
+			}
+		}
 	}
 }
