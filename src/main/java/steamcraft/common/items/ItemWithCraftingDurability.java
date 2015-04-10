@@ -67,8 +67,9 @@ public class ItemWithCraftingDurability extends BaseItem
 		return this;
 	}
 
+	@Override
 	@SideOnly(Side.CLIENT)
-	public boolean hasEffect(int pass)
+	public boolean hasEffect(ItemStack p_77636_1_)
 	{
 		return hasEffect;
 	}
