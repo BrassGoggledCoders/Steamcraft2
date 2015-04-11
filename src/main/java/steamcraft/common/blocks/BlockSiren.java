@@ -52,7 +52,7 @@ public class BlockSiren extends Block
 			}
 			else if(!this.isOn && world.isBlockIndirectlyGettingPowered(x, y, z))
 			{
-				world.playSoundEffect(x + 0.5D, y + 0.5D, z + 0.5D, ModInfo.PREFIX + this.sound, 5F, 1F);
+				world.playSoundEffect(x + 0.5D, y + 0.5D, z + 0.5D, ModInfo.PREFIX + this.sound, world.getBlockPowerInput(x, y, z) / 2, 1F);
 			}
 		}
 	}
