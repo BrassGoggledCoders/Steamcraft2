@@ -282,7 +282,7 @@ public class InitRecipes
 				"RRR", "RRR", 'R', "partCastIronRod"));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockCastIronGate), "RIR", "RIR", 'R', "partCastIronRod",
 				'I', "ingotCastIron"));
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockCastIronRailing),
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockCastIronRailing, 16),
 				"III", "III", 'I', "ingotCastIron"));
 
 		GameRegistry.addShapelessRecipe(new ItemStack(InitBlocks.blockRedwoodPlanks, 4), new ItemStack(InitBlocks.blockRedwoodLog));
