@@ -1,5 +1,5 @@
 /**
- * This class was created by BrassGoggledCoders modding team. 
+ * This class was created by BrassGoggledCoders modding team.
  * This class is available as part of the Steamcraft 2 Mod for Minecraft.
  *
  * Steamcraft 2 is open-source and is distributed under the MMPL v1.0 License.
@@ -8,7 +8,7 @@
  * Steamcraft 2 is based on the original Steamcraft Mod created by Proloe.
  * Steamcraft (c) Proloe 2011
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
- * 
+ *
  */
 package steamcraft.common.blocks;
 
@@ -33,11 +33,12 @@ import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraftforge.common.util.ForgeDirection;
 
 import steamcraft.client.lib.RenderIDs;
+import steamcraft.common.init.InitBlocks;
 import steamcraft.common.lib.ModInfo;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 public class BlockCastIronRailing extends BaseBlock
 {
@@ -176,7 +177,7 @@ public class BlockCastIronRailing extends BaseBlock
 	public void registerBlockIcons(IIconRegister p_149651_1_)
 	{
 		this.blockIcon = p_149651_1_.registerIcon(ModInfo.PREFIX + "blockCastIronRailing");
-		this.icon = p_149651_1_.registerIcon(ModInfo.PREFIX + "/metal/blockCastIron");
+		this.icon = InitBlocks.blockMetal.getIcon(0, 7);
 	}
 
 	public boolean canPaneConnectTo(IBlockAccess world, int x, int y, int z, ForgeDirection dir)
