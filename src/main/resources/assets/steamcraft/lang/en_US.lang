@@ -157,6 +157,8 @@ tile.blockCapacitor.name=Capacitor
 tile.blockCapacitor.desc=High storage, low throughput. Stores 10k RF, but only transfers in/out at 10RF/Tick
 tile.blockRefinery.name=Refinery
 tile.blockRefinery.desc=Refines blubber into whale oil.
+tile.blockStatisField.name=Statis Field
+tile.blockStatisField.desc=Holds items within one block of it in a statis field, preventing them despawning. Warning! Items will almosty instantly despawn when the field is removed
 
 #Fluids
 fluid.moltenZincFluid.name=Molten Zinc
