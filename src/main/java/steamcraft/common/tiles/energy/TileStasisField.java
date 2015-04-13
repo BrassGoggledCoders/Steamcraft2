@@ -10,7 +10,7 @@
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
  *
  */
-package steamcraft.common.tiles;
+package steamcraft.common.tiles.energy;
 
 import java.util.List;
 
@@ -19,12 +19,22 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 
+import cofh.api.energy.EnergyStorage;
+import cofh.api.energy.IEnergyReceiver;
+
+import net.minecraftforge.common.util.ForgeDirection;
+
 /**
  * @author warlordjones, MrIbby
  *
  */
-public class TileStasisField extends TileEntity
+public class TileStasisField extends TileEntity implements IEnergyReceiver
 {
+	private static int energy = 2000;
+	public static short transferRate = 80;
+
+	public EnergyStorage buffer = new EnergyStorage(energy, transferRate);
+
 	@Override
 	public void updateEntity()
 	{
@@ -37,7 +47,11 @@ public class TileStasisField extends TileEntity
 			for(Object obj : list)
 			{
 				EntityItem item = (EntityItem) obj;
-				item.age = 5500;
+				if(this.buffer.getEnergyStored() >= 10)
+				{
+					item.age = 5500;
+					this.buffer.extractEnergy(10, false);
+				}
 			}
 		}
 	}
@@ -52,6 +66,30 @@ public class TileStasisField extends TileEntity
 	public void writeToNBT(NBTTagCompound tag)
 	{
 		super.writeToNBT(tag);
+	}
+
+	@Override
+	public boolean canConnectEnergy(ForgeDirection from)
+	{
+		return true;
+	}
+
+	@Override
+	public int receiveEnergy(ForgeDirection from, int maxReceive, boolean simulate)
+	{
+		return this.buffer.receiveEnergy(maxReceive, simulate);
+	}
+
+	@Override
+	public int getEnergyStored(ForgeDirection from)
+	{
+		return this.buffer.getEnergyStored();
+	}
+
+	@Override
+	public int getMaxEnergyStored(ForgeDirection from)
+	{
+		return this.buffer.getMaxEnergyStored();
 	}
 
 }
