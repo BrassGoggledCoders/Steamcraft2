@@ -278,7 +278,7 @@ public class InitRecipes
 				new ItemStack(InitItems.itemResource, 1, 4));
 		GameRegistry.addShapedRecipe(new ItemStack(InitBlocks.blockEtherium), "UUU", "UUU", "UUU", 'U',
 				new ItemStack(InitItems.itemResource, 1, 0));
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockCastIronFence, 6),
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockCastIronFence, 12),
 				"RRR", "RRR", 'R', "partCastIronRod"));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockCastIronGate), "RIR", "RIR", 'R', "partCastIronRod",
 				'I', "ingotCastIron"));
@@ -290,7 +290,7 @@ public class InitRecipes
 		GameRegistry.addShapelessRecipe(new ItemStack(InitBlocks.blockMangrovePlanks, 4), new ItemStack(InitBlocks.blockMangroveLog));
 		GameRegistry.addShapelessRecipe(new ItemStack(InitBlocks.blockPetrifiedPlanks, 4), new ItemStack(InitBlocks.blockPetrifiedLog));
 
-		GameRegistry.addShapedRecipe(new ItemStack(InitBlocks.blockPolishedPlanks, 1, 0), "PPP", "PWP", "PPP", 'P', new ItemStack(Blocks.planks, 1, 0),
+		GameRegistry.addShapedRecipe(new ItemStack(InitBlocks.blockPolishedPlanks, 8), "PPP", "PWP", "PPP", 'P', new ItemStack(Blocks.planks, 1, 0),
 				'W', new ItemStack(InitItems.itemWhaleOilBucket));
 		GameRegistry.addShapelessRecipe(new ItemStack(InitBlocks.blockPolishedPlanks, 1, 1), new ItemStack(InitBlocks.blockPolishedPlanks, 1, 0));
 		GameRegistry.addShapelessRecipe(new ItemStack(InitBlocks.blockPolishedPlanks, 1, 2), new ItemStack(InitBlocks.blockPolishedPlanks, 1, 1));
