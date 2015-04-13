@@ -28,6 +28,7 @@ import cpw.mods.fml.client.registry.RenderingRegistry;
 
 import org.lwjgl.input.Keyboard;
 import steamcraft.client.lib.RenderIDs;
+import steamcraft.client.renderers.block.BlockCastIronGateHandler;
 import steamcraft.client.renderers.block.BlockCastIronLampRenderer;
 import steamcraft.client.renderers.block.BlockCopperPipeRenderer;
 import steamcraft.client.renderers.block.BlockCopperWireRenderer;
@@ -190,6 +191,8 @@ public class ClientProxy extends CommonProxy
 		// Trunk
 		ClientRegistry.bindTileEntitySpecialRenderer(TileTrunk.class, new TileTrunkRenderer());
 		RenderingRegistry.registerBlockHandler(new BlockTESRRenderer(new TileTrunk(), RenderIDs.blockTrunkRI));
+		// Cast Iron Gate
+		RenderingRegistry.registerBlockHandler(new BlockCastIronGateHandler());
 	}
 
 	@Override

@@ -28,12 +28,13 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+import steamcraft.client.lib.RenderIDs;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.init.InitBlocks;
 
 /**
  * @author Surseance
- * 
+ *
  */
 public class BlockCastIronGate extends BlockDirectional
 {
@@ -130,7 +131,7 @@ public class BlockCastIronGate extends BlockDirectional
 	@Override
 	public int getRenderType()
 	{
-		return 21;
+		return RenderIDs.blockCastIronGateRI;
 	}
 
 	/**
@@ -204,7 +205,7 @@ public class BlockCastIronGate extends BlockDirectional
 	/**
 	 * Returns if the fence gate is open according to its metadata.
 	 */
-	private static boolean isFenceGateOpen(int p_149896_0_)
+	public static boolean isFenceGateOpen(int p_149896_0_)
 	{
 		return (p_149896_0_ & 4) != 0;
 	}
