@@ -23,7 +23,7 @@ import net.minecraft.util.AxisAlignedBB;
  * @author warlordjones, MrIbby
  *
  */
-public class TileStatisField extends TileEntity
+public class TileStasisField extends TileEntity
 {
 	@Override
 	public void updateEntity()
