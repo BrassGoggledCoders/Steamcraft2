@@ -296,16 +296,16 @@ public class InitBlocks
 		blockPetrifiedPlanks = new BaseBlock(Material.wood).setBlockName("blockPetrifiedPlanks");
 		registerBlock(blockPetrifiedPlanks, "BlockPetrifiedPlanks");
 
-		blockRedwoodFence = new BlockCustomFence("Redwood", Material.wood).setBlockName("blockRedwoodFence");
+		blockRedwoodFence = new BlockCustomFence("blockRedwoodPlanks", Material.wood).setBlockName("blockRedwoodFence");
 		registerBlock(blockRedwoodFence, "BlockRedwoodFence");
 
-		blockMangroveFence = new BlockCustomFence("Mangrove", Material.wood).setBlockName("blockMangroveFence");
+		blockMangroveFence = new BlockCustomFence("blockMangrovePlanks", Material.wood).setBlockName("blockMangroveFence");
 		registerBlock(blockMangroveFence, "blockMangroveFence");
 
-		blockWillowFence = new BlockCustomFence("Willow", Material.wood).setBlockName("blockWillowFence");
+		blockWillowFence = new BlockCustomFence("blockWillowPlanks", Material.wood).setBlockName("blockWillowFence");
 		registerBlock(blockWillowFence, "blockWillowFence");
 
-		blockPetrifiedFence = new BlockCustomFence("Petrified", Material.wood).setBlockName("blockPetrifiedFence");
+		blockPetrifiedFence = new BlockCustomFence("blockPetrifiedPlanks", Material.wood).setBlockName("blockPetrifiedFence");
 		registerBlock(blockPetrifiedFence, "blockPetrifiedFence");
 
 		/*
