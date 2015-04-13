@@ -278,7 +278,7 @@ public class InitRecipes
 				new ItemStack(InitItems.itemResource, 1, 4));
 		GameRegistry.addShapedRecipe(new ItemStack(InitBlocks.blockEtherium), "UUU", "UUU", "UUU", 'U',
 				new ItemStack(InitItems.itemResource, 1, 0));
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockCastIronFence, 2),
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockCastIronFence, 6),
 				"RRR", "RRR", 'R', "partCastIronRod"));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockCastIronGate), "RIR", "RIR", 'R', "partCastIronRod",
 				'I', "ingotCastIron"));
