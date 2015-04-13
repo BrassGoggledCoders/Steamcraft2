@@ -181,6 +181,8 @@ public class InitItems
 	public static Item itemWhalebone, itemWhaleMeat, itemWhaleBlubber, itemWhaleOilBucket, itemCookedWhaleMeat;
 	public static Item itemDimPocket;
 
+	public static Item itemRedwoodStick, itemWillowStick, itemMangroveStick, itemPetrifiedStick;
+
 	// Compat
 	public static Item itemThaumicMonocle, itemSteamcraftCluster;
 
@@ -587,6 +589,15 @@ public class InitItems
 		// Also known as a pokkit by some wierdo called Longeye ;)
 		itemDimPocket = new ItemDimensionalPocket().setUnlocalizedName("itemDimPocket");
 		// TODO registerItem(itemDimPocket, "ItemDimPocket");
+
+		itemRedwoodStick = new BaseItem().setUnlocalizedName("itemRedwoodStick");
+		registerItem(itemRedwoodStick, "ItemRedwoodStick");
+		itemMangroveStick = new BaseItem().setUnlocalizedName("itemMangroveStick");
+		registerItem(itemMangroveStick, "ItemMangroveStick");
+		itemWillowStick = new BaseItem().setUnlocalizedName("itemWillowStick");
+		registerItem(itemWillowStick, "ItemWillowStick");
+		itemPetrifiedStick = new BaseItem().setUnlocalizedName("itemPetrifiedStick");
+		registerItem(itemPetrifiedStick, "ItemPetrifiedStick");
 	}
 
 	public static void initializeModCompatItems()

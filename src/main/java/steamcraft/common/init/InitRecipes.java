@@ -290,6 +290,26 @@ public class InitRecipes
 		GameRegistry.addShapelessRecipe(new ItemStack(InitBlocks.blockMangrovePlanks, 4), new ItemStack(InitBlocks.blockMangroveLog));
 		GameRegistry.addShapelessRecipe(new ItemStack(InitBlocks.blockPetrifiedPlanks, 4), new ItemStack(InitBlocks.blockPetrifiedLog));
 
+		GameRegistry.addRecipe(new ItemStack(InitItems.itemRedwoodStick, 4), "P", "P", 'P', InitBlocks.blockRedwoodPlanks);
+		GameRegistry.addRecipe(new ItemStack(InitBlocks.blockRedwoodSlab, 6), "PPP", 'P', InitBlocks.blockRedwoodPlanks);
+		GameRegistry.addRecipe(new ItemStack(InitBlocks.blockRedwoodStairs, 4), "P  ", "PP ", "PPP", 'P', InitBlocks.blockRedwoodPlanks);
+		GameRegistry.addRecipe(new ItemStack(InitBlocks.blockRedwoodFence, 2), "SSS", "SSS", 'S', InitItems.itemRedwoodStick);
+
+		GameRegistry.addRecipe(new ItemStack(InitItems.itemMangroveStick, 4), "P", "P", 'P', InitBlocks.blockMangrovePlanks);
+		GameRegistry.addRecipe(new ItemStack(InitBlocks.blockMangroveSlab, 6), "PPP", 'P', InitBlocks.blockMangrovePlanks);
+		GameRegistry.addRecipe(new ItemStack(InitBlocks.blockMangroveStairs, 4), "P  ", "PP ", "PPP", 'P', InitBlocks.blockMangrovePlanks);
+		GameRegistry.addRecipe(new ItemStack(InitBlocks.blockMangroveFence, 2), "SSS", "SSS", 'S', InitItems.itemMangroveStick);
+
+		GameRegistry.addRecipe(new ItemStack(InitItems.itemWillowStick, 4), "P", "P", 'P', InitBlocks.blockWillowPlanks);
+		GameRegistry.addRecipe(new ItemStack(InitBlocks.blockWillowSlab, 6), "PPP", 'P', InitBlocks.blockWillowPlanks);
+		GameRegistry.addRecipe(new ItemStack(InitBlocks.blockWillowStairs, 4), "P  ", "PP ", "PPP", 'P', InitBlocks.blockWillowPlanks);
+		GameRegistry.addRecipe(new ItemStack(InitBlocks.blockWillowFence, 2), "SSS", "SSS", 'S', InitItems.itemWillowStick);
+
+		GameRegistry.addRecipe(new ItemStack(InitItems.itemPetrifiedStick, 4), "P", "P", 'P', InitBlocks.blockPetrifiedPlanks);
+		GameRegistry.addRecipe(new ItemStack(InitBlocks.blockPetrifiedSlab, 6), "PPP", 'P', InitBlocks.blockPetrifiedPlanks);
+		GameRegistry.addRecipe(new ItemStack(InitBlocks.blockPetrifiedStairs, 4), "P  ", "PP ", "PPP", 'P', InitBlocks.blockPetrifiedPlanks);
+		GameRegistry.addRecipe(new ItemStack(InitBlocks.blockPetrifiedFence, 2), "SSS", "SSS", 'S', InitItems.itemPetrifiedStick);
+
 		GameRegistry.addShapedRecipe(new ItemStack(InitBlocks.blockPolishedPlanks, 8), "PPP", "PWP", "PPP", 'P', new ItemStack(Blocks.planks, 1, 0),
 				'W', new ItemStack(InitItems.itemWhaleOilBucket));
 		GameRegistry.addShapelessRecipe(new ItemStack(InitBlocks.blockPolishedPlanks, 1, 1), new ItemStack(InitBlocks.blockPolishedPlanks, 1, 0));
