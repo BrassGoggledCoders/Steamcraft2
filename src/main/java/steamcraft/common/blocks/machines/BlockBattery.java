@@ -21,6 +21,8 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+import net.minecraftforge.common.util.ForgeDirection;
+
 import steamcraft.client.lib.GuiIDs;
 import steamcraft.client.lib.RenderIDs;
 import steamcraft.common.Steamcraft;
@@ -28,7 +30,7 @@ import steamcraft.common.tiles.energy.TileBattery;
 
 /**
  * @author decebaldecebal
- * 
+ *
  */
 public class BlockBattery extends BaseContainerBlock
 {
@@ -38,7 +40,6 @@ public class BlockBattery extends BaseContainerBlock
 	public BlockBattery()
 	{
 		super(Material.iron);
-		// this.setBlockBounds(0.2F, 0, 0, 0.8F, 0.7F, 1);
 	}
 
 	@Override
@@ -92,6 +93,6 @@ public class BlockBattery extends BaseContainerBlock
 	public int getComparatorInputOverride(World world, int par2, int par3, int par4, int par5)
 	{
 		TileBattery tile = (TileBattery) world.getTileEntity(par2, par3, par4);
-		return tile.buffer.getEnergyStored() / 1000;
+		return Math.min(tile.getEnergyStored(ForgeDirection.UNKNOWN) / 10000, 15);
 	}
 }
