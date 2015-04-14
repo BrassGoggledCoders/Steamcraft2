@@ -65,7 +65,7 @@ public class ItemSuperFreezeBoots extends BaseArmorModule
 	public void applyModuleEffect(World world, EntityPlayer player, ItemStack stack)
 	{
 		int pX = (int) Math.round(player.posX);
-		int pY = (int) Math.round(player.posY) - 3;
+		int pY = (int) Math.round(player.posY) - 2;
 		int pZ = (int) Math.round(player.posZ);
 		if(world.getBlock(pX, pY, pZ).getMaterial() == Material.air)
 		{

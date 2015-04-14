@@ -220,7 +220,7 @@ public class InitBlocks
 
 	public static Block blockDynamite;
 
-	public static Block blockMeltingIce;
+	public static Block blockMeltingIce, blockGhostIce;
 
 	public static Block blockTrunk;
 
@@ -598,8 +598,11 @@ public class InitBlocks
 		blockDynamite = new BlockDynamite().setBlockName("blockDynamite");
 		registerBlock(blockDynamite, "BlockDynamite");
 
-		blockMeltingIce = new BlockMeltingIce().setBlockName("blockMeltingIce");
+		blockMeltingIce = new BlockMeltingIce(true).setBlockName("blockMeltingIce");
 		registerBlock(blockMeltingIce, "BlockMeltingIce");
+
+		blockGhostIce = new BlockMeltingIce(false).setBlockName("blockGhostIce");
+		registerBlock(blockGhostIce, "BlockGhostIce");
 
 		blockTrunk = new BlockTrunk().setBlockName("blockTrunk");
 		registerBlock(blockTrunk, "BlockTrunk");

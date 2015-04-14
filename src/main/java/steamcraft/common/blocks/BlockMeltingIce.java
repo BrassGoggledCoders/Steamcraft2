@@ -8,13 +8,23 @@ import net.minecraft.world.World;
 
 public class BlockMeltingIce extends BlockIce
 {
+	boolean meltsIntoWater;
+
+	public BlockMeltingIce(boolean meltsIntoWater)
+	{
+		this.meltsIntoWater = meltsIntoWater;
+	}
+
 	/**
 	 * Ticks the block if it's been scheduled
 	 */
 	@Override
-	public void updateTick(World p_149674_1_, int p_149674_2_, int p_149674_3_, int p_149674_4_, Random p_149674_5_)
+	public void updateTick(World world, int x, int y, int z, Random random)
 	{
-		p_149674_1_.setBlock(p_149674_2_, p_149674_3_, p_149674_4_, Blocks.water);
+		if(meltsIntoWater)
+			world.setBlock(x, y, z, Blocks.water);
+		else
+			world.setBlock(x, y, z, Blocks.air);
 	}
 
 }
