@@ -21,8 +21,6 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-import net.minecraftforge.common.util.ForgeDirection;
-
 import steamcraft.common.Steamcraft;
 import steamcraft.common.init.InitBlocks;
 import steamcraft.common.lib.ModInfo;
@@ -71,14 +69,11 @@ public class ItemSuperFreezeBoots extends BaseArmorModule
 		{
 			world.setBlock(pX, pY, pZ, InitBlocks.blockMeltingIce);
 		}
-		for(int i = 2; i < ForgeDirection.VALID_DIRECTIONS.length; i++)
-		{
-			ForgeDirection dir = ForgeDirection.VALID_DIRECTIONS[i];
-			if(world.getBlock(pX + dir.offsetX, pY + dir.offsetY, pZ + dir.offsetZ).getMaterial() == Material.air)
-			{
-				world.setBlock(pX + dir.offsetX, pY + dir.offsetY, pZ + dir.offsetZ, InitBlocks.blockMeltingIce);
-			}
-		}
+		/*
+		 * for(int i = 2; i < ForgeDirection.VALID_DIRECTIONS.length; i++) { ForgeDirection dir = ForgeDirection.VALID_DIRECTIONS[i]; if(world.getBlock(pX +
+		 * dir.offsetX, pY + dir.offsetY, pZ + dir.offsetZ).getMaterial() == Material.air) { world.setBlock(pX + dir.offsetX, pY + dir.offsetY, pZ +
+		 * dir.offsetZ, InitBlocks.blockGhostIce); } }
+		 */
 	}
 
 	@Override

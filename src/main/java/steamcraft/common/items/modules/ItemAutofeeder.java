@@ -71,7 +71,7 @@ public class ItemAutofeeder extends BaseArmorModule
 				if(item instanceof ItemFood && player.getFoodStats().needFood())
 				{
 					ItemFood food = (ItemFood) item;
-					food.onEaten(stack, world, player);
+					food.onEaten(stack1, world, player);
 				}
 			}
 		}
