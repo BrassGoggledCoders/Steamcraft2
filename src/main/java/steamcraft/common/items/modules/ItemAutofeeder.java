@@ -64,12 +64,15 @@ public class ItemAutofeeder extends BaseArmorModule
 	{
 		for(int i = 0; i < player.inventory.mainInventory.length; i++)
 		{
-			Item item = player.inventory.getStackInSlot(i).getItem();
-			if(item instanceof ItemFood && player.getFoodStats().needFood())
+			if(player.inventory.mainInventory[i] != null)
 			{
-				ItemFood food = (ItemFood) item;
-				player.getFoodStats().addStats(food.func_150905_g(player.inventory.getStackInSlot(i)), food.func_150906_h(player.inventory.getStackInSlot(i)));
-				player.inventory.getStackInSlot(i).stackSize--;
+				ItemStack stack1 = player.inventory.mainInventory[i];
+				Item item = stack1.getItem();
+				if(item instanceof ItemFood && player.getFoodStats().needFood())
+				{
+					ItemFood food = (ItemFood) item;
+					food.onEaten(stack, world, player);
+				}
 			}
 		}
 	}
