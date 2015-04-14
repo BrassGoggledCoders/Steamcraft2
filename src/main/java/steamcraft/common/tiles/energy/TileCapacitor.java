@@ -35,12 +35,9 @@ public class TileCapacitor extends BaseTileWithInventory implements IEnergyHandl
 {
 	private byte ticksSinceUpdate = 0;
 
-	public int totalEnergy = 0;
-	public int maxEnergy = 0;
-
 	public short transferRate = 10;
 
-	public EnergyStorage buffer = new EnergyStorage(10000, transferRate);
+	public EnergyStorage buffer = new EnergyStorage(1000000, transferRate);
 
 	public TileCapacitor()
 	{
@@ -64,7 +61,7 @@ public class TileCapacitor extends BaseTileWithInventory implements IEnergyHandl
 	@SideOnly(Side.CLIENT)
 	public int getEnergyScaled(int par1)
 	{
-		return (this.totalEnergy + this.buffer.getEnergyStored()) / ((this.maxEnergy + maxEnergy) / 1000) / par1;
+		return this.buffer.getEnergyStored() / (this.buffer.getMaxEnergyStored() / 1000) / par1;
 	}
 
 	@Override
@@ -117,13 +114,13 @@ public class TileCapacitor extends BaseTileWithInventory implements IEnergyHandl
 	@Override
 	public int getEnergyStored(ForgeDirection from)
 	{
-		return this.buffer.getEnergyStored() + this.totalEnergy;
+		return this.buffer.getEnergyStored();
 	}
 
 	@Override
 	public int getMaxEnergyStored(ForgeDirection from)
 	{
-		return this.buffer.getMaxEnergyStored() + this.maxEnergy;
+		return this.buffer.getMaxEnergyStored();
 	}
 
 	@Override

@@ -23,7 +23,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 import steamcraft.client.lib.GuiIDs;
 import steamcraft.common.Steamcraft;
-import steamcraft.common.tiles.energy.TileBattery;
 import steamcraft.common.tiles.energy.TileCapacitor;
 
 /**
@@ -66,7 +65,7 @@ public class BlockCapacitor extends BaseContainerBlock
 	@Override
 	public TileEntity createNewTileEntity(World var1, int var2)
 	{
-		return new TileBattery();
+		return new TileCapacitor();
 	}
 
 	@Override

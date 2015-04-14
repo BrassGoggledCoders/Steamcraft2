@@ -57,9 +57,6 @@ public class ContainerCapacitor extends BaseContainer
 	public void addCraftingToCrafters(ICrafting crafting)
 	{
 		super.addCraftingToCrafters(crafting);
-
-		crafting.sendProgressBarUpdate(this, 0, this.tileent.totalEnergy);
-		crafting.sendProgressBarUpdate(this, 1, this.tileent.maxEnergy);
 		crafting.sendProgressBarUpdate(this, 2, this.tileent.transferRate);
 		crafting.sendProgressBarUpdate(this, 3, this.tileent.buffer.getEnergyStored());
 	}
@@ -73,21 +70,13 @@ public class ContainerCapacitor extends BaseContainer
 		{
 			ICrafting var2 = (ICrafting) obj;
 
-			if(this.lastTotalEnergy != this.tileent.totalEnergy)
-				var2.sendProgressBarUpdate(this, 0, this.tileent.totalEnergy);
-
-			if(this.lastMaxEnergy != this.tileent.maxEnergy)
-				var2.sendProgressBarUpdate(this, 1, this.tileent.maxEnergy);
-
 			if(this.lastTransferRate != this.tileent.transferRate)
-				var2.sendProgressBarUpdate(this, 2, this.tileent.transferRate);
+				var2.sendProgressBarUpdate(this, 0, this.tileent.transferRate);
 
 			if(this.lastBufferEnergy != this.tileent.buffer.getEnergyStored())
-				var2.sendProgressBarUpdate(this, 3, this.tileent.buffer.getEnergyStored());
+				var2.sendProgressBarUpdate(this, 1, this.tileent.buffer.getEnergyStored());
 		}
 
-		this.lastTotalEnergy = this.tileent.totalEnergy;
-		this.lastMaxEnergy = this.tileent.maxEnergy;
 		this.lastTransferRate = this.tileent.transferRate;
 		this.lastBufferEnergy = this.tileent.buffer.getEnergyStored();
 	}
@@ -97,12 +86,8 @@ public class ContainerCapacitor extends BaseContainer
 	public void updateProgressBar(int par1, int par2)
 	{
 		if(par1 == 0)
-			this.tileent.totalEnergy = par2;
-		else if(par1 == 1)
-			this.tileent.maxEnergy = par2;
-		else if(par1 == 2)
 			this.tileent.transferRate = (short) par2;
-		else if(par1 == 3)
+		else if(par1 == 1)
 			this.tileent.buffer.setEnergyStored(par2);
 	}
 
