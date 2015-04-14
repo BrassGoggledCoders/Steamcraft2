@@ -85,6 +85,7 @@ import steamcraft.common.items.modules.ItemReactivePistonPlating;
 import steamcraft.common.items.modules.ItemRollerSkates;
 import steamcraft.common.items.modules.ItemSpringHeels;
 import steamcraft.common.items.modules.ItemSteelPlating;
+import steamcraft.common.items.modules.ItemSuperFreezeBoots;
 import steamcraft.common.items.modules.ItemWatchDisplay;
 import steamcraft.common.items.modules.ItemWingpackModule;
 import steamcraft.common.items.tools.ItemElectricDrill;
@@ -192,7 +193,7 @@ public class InitItems
 	// Modules
 	public static Item itemAqualung, itemPistonPlating, itemTank, itemWatchDisplay, itemClimbingSpikes
 			, itemLegBraces, itemSpringHeels, itemRollerSkates, itemParachute, itemFlippers, itemLifeVest,
-			itemPistonBoots, itemSteelPlating, itemLastResort, itemGogglesModule, itemWingpackModule, itemFreezeBoots;
+			itemPistonBoots, itemSteelPlating, itemLastResort, itemGogglesModule, itemWingpackModule, itemFreezeBoots, itemSuperFreezeBoots;
 
 	/* Init */
 	public static void init()
@@ -510,6 +511,9 @@ public class InitItems
 
 		itemFreezeBoots = new ItemFreezeBoots().setUnlocalizedName("itemFreezeBoots");
 		registerItem(itemFreezeBoots, "ItemFreezeBoots");
+
+		itemSuperFreezeBoots = new ItemSuperFreezeBoots().setUnlocalizedName("itemSuperFreezeBoots");
+		registerItem(itemSuperFreezeBoots, "ItemSuperFreezeBoots");
 
 		itemTeaLeaf = new BaseItem().setUnlocalizedName("itemTeaLeaves");
 		registerItem(itemTeaLeaf, "ItemTeaLeaf");
