@@ -21,6 +21,8 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+import net.minecraftforge.common.util.ForgeDirection;
+
 import steamcraft.common.Steamcraft;
 import steamcraft.common.init.InitBlocks;
 import steamcraft.common.lib.ModInfo;
@@ -63,17 +65,22 @@ public class ItemSuperFreezeBoots extends BaseArmorModule
 	public void applyModuleEffect(World world, EntityPlayer player, ItemStack stack)
 	{
 		int pX = (int) Math.round(player.posX);
-		int pY = (int) Math.round(player.posY) - 3;
+		int pY = (int) Math.round(player.posY) - 2;
 		int pZ = (int) Math.round(player.posZ);
-		if(world.getBlock(pX, pY, pZ).getMaterial() == Material.air)
+		if(world.getBlock(pX, pY, pZ).getMaterial() == Material.air && !player.isSneaking())
 		{
 			world.setBlock(pX, pY, pZ, InitBlocks.blockGhostIce);
 		}
-		/*
-		 * for(int i = 2; i < ForgeDirection.VALID_DIRECTIONS.length; i++) { ForgeDirection dir = ForgeDirection.VALID_DIRECTIONS[i]; if(world.getBlock(pX +
-		 * dir.offsetX, pY + dir.offsetY, pZ + dir.offsetZ).getMaterial() == Material.air) { world.setBlock(pX + dir.offsetX, pY + dir.offsetY, pZ +
-		 * dir.offsetZ, InitBlocks.blockGhostIce); } }
-		 */
+		for(int i = 2; i < ForgeDirection.VALID_DIRECTIONS.length; i++)
+		{
+			ForgeDirection dir = ForgeDirection.VALID_DIRECTIONS[i];
+			if(world.getBlock(pX +
+					dir.offsetX, pY + dir.offsetY, pZ + dir.offsetZ).getMaterial() == Material.air && !player.isSneaking())
+			{
+				world.setBlock(pX + dir.offsetX, pY + dir.offsetY, pZ +
+						dir.offsetZ, InitBlocks.blockGhostIce);
+			}
+		}
 	}
 
 	@Override

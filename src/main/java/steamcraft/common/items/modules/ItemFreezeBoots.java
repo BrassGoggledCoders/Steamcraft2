@@ -71,7 +71,7 @@ public class ItemFreezeBoots extends BaseArmorModule
 		{
 			world.setBlock(pX, pY, pZ, InitBlocks.blockMeltingIce);
 		}
-		for(int i = 1; i < ForgeDirection.VALID_DIRECTIONS.length; i++)
+		for(int i = 2; i < ForgeDirection.VALID_DIRECTIONS.length; i++)
 		{
 			ForgeDirection dir = ForgeDirection.VALID_DIRECTIONS[i];
 			if(world.getBlock(pX + dir.offsetX, pY + dir.offsetY, pZ + dir.offsetZ).getMaterial() == Material.water)
