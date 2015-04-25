@@ -33,7 +33,6 @@ import steamcraft.common.entities.living.EntityLostMiner;
 import steamcraft.common.entities.living.EntityShroomSkeleton;
 import steamcraft.common.entities.living.EntityShroomZombie;
 import steamcraft.common.entities.living.EntityVampireBat;
-import steamcraft.common.entities.living.EntityWhale;
 
 public class BiomeDepthsBase extends BiomeGenBase
 {
@@ -54,7 +53,7 @@ public class BiomeDepthsBase extends BiomeGenBase
 		this.spawnableMonsterList.add(new BiomeGenBase.SpawnListEntry(EntityGiantSpider.class, 10, 1, 4));
 		// Animals
 		this.spawnableCreatureList.add(new BiomeGenBase.SpawnListEntry(EntityBoar.class, 10, 4, 4));
-		this.spawnableWaterCreatureList.add(new BiomeGenBase.SpawnListEntry(EntityWhale.class, 5, 1, 5));
+		// this.spawnableWaterCreatureList.add(new BiomeGenBase.SpawnListEntry(EntityWhale.class, 5, 1, 5));
 
 		this.topBlock = Blocks.grass;
 		this.fillerBlock = Blocks.dirt;

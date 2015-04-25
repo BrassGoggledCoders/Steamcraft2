@@ -12,12 +12,7 @@
  */
 package steamcraft.common.init;
 
-import net.minecraft.entity.EnumCreatureType;
-
 import cpw.mods.fml.common.registry.EntityRegistry;
-
-import net.minecraftforge.common.BiomeDictionary;
-import net.minecraftforge.common.BiomeDictionary.Type;
 
 import steamcraft.common.Steamcraft;
 import steamcraft.common.entities.EntityFallingBoulder;
@@ -41,7 +36,7 @@ import steamcraft.common.entities.projectile.EntitySplashLightningBottle;
 
 /**
  * @author Surseance
- * 
+ *
  */
 public class InitEntities
 {
@@ -62,7 +57,7 @@ public class InitEntities
 		EntityRegistry.registerModEntity(EntityShroomSkeleton.class, "ShroomSkeleton", entID++, Steamcraft.instance, 64, 1, true);
 		EntityRegistry.registerModEntity(EntityAbandonedGolem.class, "AbdandonedGolem", entID++, Steamcraft.instance, 64, 1, true);
 		EntityRegistry.registerModEntity(EntityWhale.class, "Whale", entID++, Steamcraft.instance, 64, 1, true);
-		EntityRegistry.addSpawn(EntityWhale.class, 10, 1, 5, EnumCreatureType.waterCreature, BiomeDictionary.getBiomesForType(Type.OCEAN));
+		// EntityRegistry.addSpawn(EntityWhale.class, 10, 1, 5, EnumCreatureType.waterCreature, BiomeDictionary.getBiomesForType(Type.OCEAN));
 		// Non-Living
 		// Projectile
 		EntityRegistry.registerModEntity(EntityBullet.class, "Bullet", entID++, Steamcraft.instance, 40, 1, true);
