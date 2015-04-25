@@ -324,6 +324,9 @@ public class InitRecipes
 				'I', Blocks.wool, 'C', "ingotCastIron", 'R', Items.redstone));
 		GameRegistry.addRecipe(new ShapedOreRecipe(InitBlocks.blockIntruderSiren, "CIC", "ISI", "CRC", 'S', new ItemStack(InitItems.itemMachinePart, 1, 7),
 				'I', Items.gold_nugget, 'C', "ingotCastIron", 'R', Items.redstone));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(InitBlocks.blockStasisField, "PPP", "PCP", "PPP", 'P', "plateCastIron", 'C', new ItemStack(
+				InitItems.itemGunPart, 1, 8)));
 	}
 
 	private static void initModuleRecipes()
