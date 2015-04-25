@@ -311,7 +311,7 @@ public class InitRecipes
 		GameRegistry.addRecipe(new ItemStack(InitBlocks.blockPetrifiedFence, 2), "SSS", "SSS", 'S', InitItems.itemPetrifiedStick);
 
 		GameRegistry.addShapedRecipe(new ItemStack(InitBlocks.blockPolishedPlanks, 8), "PPP", "PWP", "PPP", 'P', new ItemStack(Blocks.planks, 1, 0),
-				'W', new ItemStack(InitItems.itemWhaleOilBucket));
+				'W', new ItemStack(/* InitItems.itemWhaleOilBucket */Items.water_bucket));
 		GameRegistry.addShapelessRecipe(new ItemStack(InitBlocks.blockPolishedPlanks, 1, 1), new ItemStack(InitBlocks.blockPolishedPlanks, 1, 0));
 		GameRegistry.addShapelessRecipe(new ItemStack(InitBlocks.blockPolishedPlanks, 1, 2), new ItemStack(InitBlocks.blockPolishedPlanks, 1, 1));
 		GameRegistry.addShapelessRecipe(new ItemStack(InitBlocks.blockPolishedPlanks, 1, 0), new ItemStack(InitBlocks.blockPolishedPlanks, 1, 2));
