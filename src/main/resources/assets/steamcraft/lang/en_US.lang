@@ -225,7 +225,10 @@ item.itemWhalebone.name=Whalebone
 item.itemWhaleBlubber.name=Whale Blubber
 item.itemWhaleMeat.name=Whale Meat
 item.itemCookedWhaleMeat.name=Cooked Whale Meat
-
+item.itemRedwoodStick.name=Redwood Stick
+item.itemMangroveStick.name=Mangrove Stick
+item.itemWillowStick.name=Willow Stick
+item.itemPetrifiedStick.name=Petrified Stick
 
 #Vanity
 item.itemTopHat.name=Top Hat
