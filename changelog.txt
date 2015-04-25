@@ -126,5 +126,21 @@ Beta 4.1:
 # Internal projectile refactors - fixes the splash lightning bottle entity being invisible, and gets us a step closer to fixing invisible rockets/bullets
 # Fix a raygun crash
 # Fix monocle on blocks
+Beta 4.2:
++ Added sirens, with a variety of SFX (from freesound.org) The sound volume varies based on strength of redstone signal applied.
++ Added Sticks, Fences and Slabs for the wood types. (Doubleslabs currently don’t work)
++ Added a stasis field, which prevents item despawns at a power cost
++ Added a special hammer for special people. Heh.
++ Add Timebomb - GUI still needs work. Enter a real time in 24 hour format, and the bomb will detonate at that time.
++ Add dynamite (unstable tnt) and tinted rocks (TBOI:R style) to the Depths world generation. 
+* Prevent raw fluid blocks being added to the creative tab
+* Greatly increased the amount of cast iron fence and railing outputted from the recipes
+* Somewhat improved the capacitor output functionality of the battery
+* Tea heals a little bit of hunger
+* Reduce spawn chance of fissures. 
+# Possibly fixed a startup crash I couldn’t reproduce
+# Fix missing texture on the edge of the cast iron railing
+# Fixed the Cast Iron Gate crashing
+
 
 
