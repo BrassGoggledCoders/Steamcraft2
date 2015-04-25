@@ -33,7 +33,7 @@ import steamcraft.common.blocks.BlockCastIronRailing;
  * @author Surseance (Johnny Eatmon)
  * 
  */
-public class BlockRailingRenderer implements ISimpleBlockRenderingHandler
+public class BlockCastIronRailingRenderer implements ISimpleBlockRenderingHandler
 {
 	@Override
 	public void renderInventoryBlock(Block block, int metadata, int modelID, RenderBlocks renderer)

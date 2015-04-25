@@ -28,11 +28,11 @@ import cpw.mods.fml.client.registry.RenderingRegistry;
 
 import org.lwjgl.input.Keyboard;
 import steamcraft.client.lib.RenderIDs;
-import steamcraft.client.renderers.block.BlockCastIronGateHandler;
+import steamcraft.client.renderers.block.BlockCastIronGateRenderer;
 import steamcraft.client.renderers.block.BlockCastIronLampRenderer;
 import steamcraft.client.renderers.block.BlockCopperPipeRenderer;
 import steamcraft.client.renderers.block.BlockCopperWireRenderer;
-import steamcraft.client.renderers.block.BlockRailingRenderer;
+import steamcraft.client.renderers.block.BlockCastIronRailingRenderer;
 import steamcraft.client.renderers.block.BlockSpiderEggRenderer;
 import steamcraft.client.renderers.entity.RenderAbandonedGolem;
 import steamcraft.client.renderers.entity.RenderBoar;
@@ -173,7 +173,7 @@ public class ClientProxy extends CommonProxy
 		ClientRegistry.bindTileEntitySpecialRenderer(TileCharger.class, new TileChargerRenderer());
 		RenderingRegistry.registerBlockHandler(new BlockTESRRenderer(new TileCharger(), RenderIDs.blockChargerRI));
 		// Cast Iron Railing
-		RenderingRegistry.registerBlockHandler(new BlockRailingRenderer());
+		RenderingRegistry.registerBlockHandler(new BlockCastIronRailingRenderer());
 		// Cast Iron Lamp
 		ClientRegistry.bindTileEntitySpecialRenderer(EmptyTiles.TileCastIronLamp.class, new TileCastIronLampRenderer());
 		RenderingRegistry.registerBlockHandler(new BlockCastIronLampRenderer());
@@ -192,7 +192,7 @@ public class ClientProxy extends CommonProxy
 		ClientRegistry.bindTileEntitySpecialRenderer(TileTrunk.class, new TileTrunkRenderer());
 		RenderingRegistry.registerBlockHandler(new BlockTESRRenderer(new TileTrunk(), RenderIDs.blockTrunkRI));
 		// Cast Iron Gate
-		RenderingRegistry.registerBlockHandler(new BlockCastIronGateHandler());
+		RenderingRegistry.registerBlockHandler(new BlockCastIronGateRenderer());
 	}
 
 	@Override
