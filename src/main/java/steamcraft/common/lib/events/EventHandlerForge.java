@@ -62,7 +62,7 @@ import boilerplate.common.baseclasses.BaseTileWithInventory;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 public class EventHandlerForge
 {
@@ -94,8 +94,8 @@ public class EventHandlerForge
 		}
 	}
 
+	// TODO seems to me like this is a nasty way of doing things
 	Block block;
-	// Entity entity;
 	TileEntity tile;
 	int x, y, z;
 	EntityPlayer player;
@@ -104,70 +104,73 @@ public class EventHandlerForge
 	@SideOnly(Side.CLIENT)
 	public void renderOverlay(RenderGameOverlayEvent.Text event)
 	{
-		ItemStack helmet = this.player.inventory.armorItemInSlot(3);
-		if((helmet != null) && (helmet.getItem() == InitItems.itemMonocle))
+		if(player != null && player.inventory.armorItemInSlot(3) != null)
 		{
-			ScaledResolution res = ClientHelper.resolution();
-			FontRenderer fontRenderer = ClientHelper.fontRenderer();
-			res.getScaledWidth();
-			res.getScaledHeight();
-			ClientHelper.entityRenderer().setupOverlayRendering();
-
-			int posX = 5;
-			int posY = 5;
-			int posY2 = 15;
-			int posY3 = 25;
-			int posY4 = 35;
-			int posY5 = 45;
-			int posY6 = 55;
-			int posY7 = 65;
-			int posY8 = 75;
-
-			int color = 0xCCFF00;
-
-			if((this.block != null) && !this.player.worldObj.isAirBlock(this.x, this.y, this.z))
+			ItemStack helmet = this.player.inventory.armorItemInSlot(3);
+			if((helmet != null) && (helmet.getItem() == InitItems.itemMonocle))
 			{
-				fontRenderer.drawString("Block: " + this.block.getUnlocalizedName().substring(5), posX, posY, color);
-				fontRenderer.drawString("Metadata: " + this.block.getDamageValue(ClientHelper.world(), this.x, this.y, this.z), posX, posY2, color);
-				fontRenderer.drawString("Hardness: " + this.block.getBlockHardness(ClientHelper.world(), this.x, this.y, this.z), posX, posY3, color);
-				fontRenderer.drawString("Light Value: " + this.block.getLightValue(), posX, posY4, color);
-				// TODO
-				if(this.block instanceof BlockContainer)
+				ScaledResolution res = ClientHelper.resolution();
+				FontRenderer fontRenderer = ClientHelper.fontRenderer();
+				res.getScaledWidth();
+				res.getScaledHeight();
+				ClientHelper.entityRenderer().setupOverlayRendering();
+
+				int posX = 5;
+				int posY = 5;
+				int posY2 = 15;
+				int posY3 = 25;
+				int posY4 = 35;
+				int posY5 = 45;
+				int posY6 = 55;
+				int posY7 = 65;
+				int posY8 = 75;
+
+				int color = 0xCCFF00;
+
+				if((this.block != null) && !this.player.worldObj.isAirBlock(this.x, this.y, this.z))
 				{
-					if(this.tile instanceof IEnergyHandler)
-					{
-						IEnergyHandler energytile = (IEnergyHandler) this.tile;
-						fontRenderer.drawString(
-								"Energy: " + Integer.toString(energytile.getEnergyStored(ForgeDirection.UP)) + "/"
-										+ Integer.toString(energytile.getMaxEnergyStored(ForgeDirection.UP)) + "RF", posX, posY5, color);
-					}
+					fontRenderer.drawString("Block: " + this.block.getUnlocalizedName().substring(5), posX, posY, color);
+					fontRenderer.drawString("Metadata: " + this.block.getDamageValue(ClientHelper.world(), this.x, this.y, this.z), posX, posY2, color);
+					fontRenderer.drawString("Hardness: " + this.block.getBlockHardness(ClientHelper.world(), this.x, this.y, this.z), posX, posY3, color);
+					fontRenderer.drawString("Light Value: " + this.block.getLightValue(), posX, posY4, color);
 					// TODO
-					if(this.tile instanceof BaseTileWithInventory)
+					if(this.block instanceof BlockContainer)
 					{
-						BaseTileWithInventory te = (BaseTileWithInventory) this.tile;
-
-						if(te.inventory.length < 0)
+						if(this.tile instanceof IEnergyHandler)
 						{
+							IEnergyHandler energytile = (IEnergyHandler) this.tile;
+							fontRenderer.drawString(
+									"Energy: " + Integer.toString(energytile.getEnergyStored(ForgeDirection.UP)) + "/"
+											+ Integer.toString(energytile.getMaxEnergyStored(ForgeDirection.UP)) + "RF", posX, posY5, color);
+						}
+						// TODO
+						if(this.tile instanceof BaseTileWithInventory)
+						{
+							BaseTileWithInventory te = (BaseTileWithInventory) this.tile;
 
-							String[] names = new String[te.inventory.length];
-
-							for(int i = 0; i < te.inventory.length; i++)
+							if(te.inventory.length < 0)
 							{
-								names[i] = te.inventory[i].getUnlocalizedName();
+
+								String[] names = new String[te.inventory.length];
+
+								for(int i = 0; i < te.inventory.length; i++)
+								{
+									names[i] = te.inventory[i].getUnlocalizedName();
+								}
+								fontRenderer.drawSplitString("Inventory: " + StringUtils.join(names, ","), posX, posY6, color, 20);
 							}
-							fontRenderer.drawSplitString("Inventory: " + StringUtils.join(names, ","), posX, posY6, color, 20);
 						}
 					}
+					String docs = StatCollector.translateToLocal(this.block.getUnlocalizedName() + ".documentation");
+					if(!docs.contains("tile"))
+						fontRenderer.drawSplitString(docs, posX, posY8, 100, color);
 				}
-				String docs = StatCollector.translateToLocal(this.block.getUnlocalizedName() + ".documentation");
-				if(!docs.contains("tile"))
-					fontRenderer.drawSplitString(docs, posX, posY8, 100, color);
+				/*
+				 * TODO if(this.entity != null) { String text = this.entity.getCommandSenderName(); fontRenderer.drawString("Entity: ", mc.displayWidth - 5 -
+				 * text.length(), posY, color); String text1 = Integer.toString(this.entity.getEntityId()); fontRenderer.drawString("ID: ", mc.displayWidth - 5
+				 * - text1.length(), posY, color); }
+				 */
 			}
-			/*
-			 * TODO if(this.entity != null) { String text = this.entity.getCommandSenderName(); fontRenderer.drawString("Entity: ", mc.displayWidth - 5 -
-			 * text.length(), posY, color); String text1 = Integer.toString(this.entity.getEntityId()); fontRenderer.drawString("ID: ", mc.displayWidth - 5 -
-			 * text1.length(), posY, color); }
-			 */
 		}
 	}
 

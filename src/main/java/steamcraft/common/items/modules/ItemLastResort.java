@@ -27,7 +27,7 @@ import boilerplate.steamapi.item.ModuleRegistry;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 public class ItemLastResort extends BaseArmorModule
 {
@@ -60,7 +60,7 @@ public class ItemLastResort extends BaseArmorModule
 	@Override
 	public void applyModuleEffect(World world, EntityPlayer player, ItemStack stack)
 	{
-		if(player.getHealth() == 6F)
+		if(player.getHealth() < 2F)
 		{
 			world.createExplosion(player, player.posX, player.posY, player.posZ, 3F, true);
 		}

@@ -502,7 +502,7 @@ public class InitItems
 		registerItem(itemSteelPlating, "ItemSteelPlating");
 
 		itemLastResort = new ItemLastResort().setUnlocalizedName("itemLastResort");
-		// registerItem(itemLastResort, "ItemLastResort");
+		registerItem(itemLastResort, "ItemLastResort");
 
 		itemGogglesModule = new ItemGogglesModule().setUnlocalizedName("itemGogglesModule");
 		registerItem(itemGogglesModule, "ItemGogglesModule");
