@@ -417,8 +417,8 @@ public class InitItems
 
 		itemElectricJarSmall = new ElectricItem(80, 40, 80).setUnlocalizedName("itemElectricJarSmall");
 		itemElectricJarMedium = new ElectricItem(400, 125, 400).setUnlocalizedName("itemElectricJarMedium");
-		itemElectricJarLarge = new ElectricItem(2000, 750, 2000).setUnlocalizedName("itemElectricJarLarge");
-		itemElectricJarHuge = new ElectricItem(8000, 3000, 10000).setUnlocalizedName("itemElectricJarHuge");
+		itemElectricJarLarge = new ElectricItem(1000, 750, 2000).setUnlocalizedName("itemElectricJarLarge");
+		itemElectricJarHuge = new ElectricItem(4000, 3000, 10000).setUnlocalizedName("itemElectricJarHuge");
 
 		registerItem(itemElectricJarSmall, "ItemElectricJarSmall");
 		registerItem(itemElectricJarMedium, "ItemElectricJarMedium");

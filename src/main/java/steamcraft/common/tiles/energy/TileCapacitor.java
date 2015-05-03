@@ -37,7 +37,7 @@ public class TileCapacitor extends BaseTileWithInventory implements IEnergyHandl
 
 	public short transferRate = 10;
 
-	public EnergyStorage buffer = new EnergyStorage(10000000, transferRate);
+	public EnergyStorage buffer = new EnergyStorage(64000000, transferRate);
 
 	public TileCapacitor()
 	{
