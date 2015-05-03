@@ -415,9 +415,9 @@ public class InitItems
 		itemCanisterSteam = new ItemCanister().setUnlocalizedName("itemCanisterSteam");
 		registerItem(itemCanisterSteam, "ItemCanisterSteam");
 
-		itemElectricJarSmall = new ElectricItem(100, 40, 80).setUnlocalizedName("itemElectricJarSmall");
-		itemElectricJarMedium = new ElectricItem(500, 125, 400).setUnlocalizedName("itemElectricJarMedium");
-		itemElectricJarLarge = new ElectricItem(2500, 750, 2000).setUnlocalizedName("itemElectricJarLarge");
+		itemElectricJarSmall = new ElectricItem(80, 40, 80).setUnlocalizedName("itemElectricJarSmall");
+		itemElectricJarMedium = new ElectricItem(400, 125, 400).setUnlocalizedName("itemElectricJarMedium");
+		itemElectricJarLarge = new ElectricItem(2000, 750, 2000).setUnlocalizedName("itemElectricJarLarge");
 		itemElectricJarHuge = new ElectricItem(10000, 3000, 10000).setUnlocalizedName("itemElectricJarHuge");
 
 		registerItem(itemElectricJarSmall, "ItemElectricJarSmall");
