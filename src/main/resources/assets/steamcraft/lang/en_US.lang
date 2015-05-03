@@ -466,6 +466,7 @@ item.itemMachinePart.0.name=Cast Iron Shaft
 item.itemMachinePart.1.name=Clockwork Mechanism
 item.itemMachinePart.2.name=Grating
 item.itemMachinePart.3.name=Magnet
+item.itemMachinePart.3.desc=You must create your first magnet through a temporary voltaic pile. Magnets can then be replicated using another magnet, or created using an electrical current.
 item.itemMachinePart.4.name=Generator
 item.itemMachinePart.5.name=Fan
 item.itemMachinePart.6.name=Wire Coil
