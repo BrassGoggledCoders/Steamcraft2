@@ -12,6 +12,7 @@
  */
 package steamcraft.common.init;
 
+import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -327,6 +328,21 @@ public class InitRecipes
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(InitBlocks.blockStasisField, "PPP", "PCP", "PPP", 'P', "plateCastIron", 'C', new ItemStack(
 				InitItems.itemGunPart, 1, 8)));
+
+		for(int i = 0; i < LibInfo.metals.length; i++)
+		{
+			GameRegistry.addShapelessRecipe(new ItemStack(InitBlocks.blockMetal, 1, i), new ItemStack(InitBlocks.blockEngraved, 1, i));
+		}
+
+		GameRegistry.addShapelessRecipe(new ItemStack(InitBlocks.blockUranium), new ItemStack(InitBlocks.blockEngraved, 1, 8));
+		GameRegistry.addShapelessRecipe(new ItemStack(InitBlocks.blockEtherium), new ItemStack(InitBlocks.blockEngraved, 1, 9));
+
+		Block[] unengravedV = { Blocks.diamond_block, Blocks.gold_block, Blocks.iron_block, Blocks.lapis_block, Blocks.stone };
+
+		for(int i = 0; i < unengravedV.length; i++)
+		{
+			GameRegistry.addShapelessRecipe(new ItemStack(unengravedV[i]), new ItemStack(InitBlocks.blockEngravedVanilla, 1, i));
+		}
 	}
 
 	private static void initModuleRecipes()
