@@ -415,8 +415,6 @@ public class InitRecipes
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(InitItems.itemMachinePart, 1, 3),
 				new ItemStack(Items.water_bucket), Items.iron_ingot, new ItemStack(InitItems.itemIngot, 1, 1), new ItemStack(
 						InitItems.itemIngot, 1, 3)));
-		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(InitItems.itemMachinePart, 1, 3), "partWireCoil", Items.iron_ingot,
-				InitItems.itemElectricJarSmall));
 		GameRegistry
 				.addRecipe(new ShapelessOreRecipe(new ItemStack(InitItems.itemMachinePart, 2, 3), "partMagnet", Items.iron_ingot));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemMachinePart, 1, 4), "PRP", "MWM", "PRP", 'P',
