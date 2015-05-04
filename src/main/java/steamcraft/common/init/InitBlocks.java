@@ -16,6 +16,7 @@ import java.util.Arrays;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemBlock;
 
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -42,6 +43,7 @@ import steamcraft.common.blocks.BlockCustomLog;
 import steamcraft.common.blocks.BlockCustomMushroom;
 import steamcraft.common.blocks.BlockCustomSlab;
 import steamcraft.common.blocks.BlockCustomStairs;
+import steamcraft.common.blocks.BlockCustomWall;
 import steamcraft.common.blocks.BlockDynamite;
 import steamcraft.common.blocks.BlockEngravedSolid;
 import steamcraft.common.blocks.BlockEngravedVanilla;
@@ -223,6 +225,8 @@ public class InitBlocks
 	public static Block blockMeltingIce, blockGhostIce;
 
 	public static Block blockTrunk;
+
+	public static Block blockStonebrickWall, blockStoneslabWall;
 
 	public static void init()
 	{
@@ -436,6 +440,11 @@ public class InitBlocks
 
 		registerBlock(blockLamp, "BlockLamp");
 		registerBlock(blockLampOn, "BlockLampOn");
+
+		blockStonebrickWall = new BlockCustomWall(Blocks.stonebrick).setBlockName("blockStonebrickWall");
+		registerBlock(blockStonebrickWall, "BlockStonebrickWall");
+		blockStoneslabWall = new BlockCustomWall(Blocks.stone_slab).setBlockName("blockStoneslabWall");
+		registerBlock(blockStoneslabWall, "BlockStoneslabWall");
 	}
 
 	private static void initializeMachines()
