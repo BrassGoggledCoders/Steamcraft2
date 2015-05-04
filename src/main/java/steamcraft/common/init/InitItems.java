@@ -438,13 +438,13 @@ public class InitItems
 		itemTeaSeed = new ItemTeaSeed().setUnlocalizedName("itemTeaSeed");
 		registerItem(itemTeaSeed, "ItemTeaSeed");
 
-		itemChisel = new ItemChisel().setUnlocalizedName("itemChisel");
+		itemChisel = new ItemChisel().setUnlocalizedName("itemChisel").setFull3D();
 		registerItem(itemChisel, "ItemChisel");
 
-		itemHammer = new ItemWithCraftingDurability().setUnlocalizedName("itemHammer");
+		itemHammer = new ItemWithCraftingDurability().setUnlocalizedName("itemHammer").setFull3D();
 		registerItem(itemHammer, "ItemHammer");
 
-		itemBugHammer = new ItemWithCraftingDurability().setHasEffect().setUnlocalizedName("itemBugHammer");
+		itemBugHammer = new ItemWithCraftingDurability().setHasEffect().setUnlocalizedName("itemBugHammer").setFull3D();
 		registerItem(itemBugHammer, "ItemBugHammer");
 
 		itemDrawplate = new ItemWithCraftingDurability().setUnlocalizedName("itemDrawplate");
@@ -453,7 +453,7 @@ public class InitItems
 		itemGrindstone = new ItemWithCraftingDurability().setUnlocalizedName("itemGrindstone");
 		registerItem(itemGrindstone, "ItemGrindstone");
 
-		itemSpanner = new ItemSpanner().setUnlocalizedName("itemSpanner");
+		itemSpanner = new ItemSpanner().setUnlocalizedName("itemSpanner").setFull3D();
 		registerItem(itemSpanner, "ItemSpanner");
 
 		itemMatch = new ItemMatch().setUnlocalizedName("itemMatch");
@@ -537,7 +537,7 @@ public class InitItems
 		itemPDA = new ItemPDA().setUnlocalizedName("itemPDA");
 		// registerItem(itemPDA, "ItemPDA");
 
-		itemSpyglass = new BaseItem().setUnlocalizedName("itemSpyglass");
+		itemSpyglass = new BaseItem().setUnlocalizedName("itemSpyglass").setFull3D();
 		registerItem(itemSpyglass, "ItemSpyglass");
 
 		// Add a version system to allow updates. Check version on right click
