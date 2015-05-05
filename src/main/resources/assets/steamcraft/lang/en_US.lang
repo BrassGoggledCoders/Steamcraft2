@@ -107,6 +107,8 @@ tile.blockRedwoodSlab.name=Redwood Slab
 tile.blockMangroveSlab.name=Mangrove Slab
 tile.blockWillowSlab.name=Willow Slab
 tile.blockPetrifiedSlab.name=Petrified Slab
+tile.blockStonebrickWall.name=Stonebrick Wall
+tile.blockStoneslabWall.name=Stone Slab Wall
 
 #Ores
 tile.blockSteamcraftOre.0.name=Aluminum Ore
