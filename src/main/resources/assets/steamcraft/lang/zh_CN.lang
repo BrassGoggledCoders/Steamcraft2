@@ -472,40 +472,40 @@ item.itemMachinePart.6.name=线圈
 item.itemMachinePart.7.name=扬声器
 
 #Modules
-item.itemAqualung.name=Aqualung Module
-item.itemAqualung.desc=Allows underwater breathing.
-item.itemClimbingSpikes.name=Climbing Spikes Module
-item.itemClimbingSpikes.desc=Grants the ability to climb like a spider
-item.itemEmergencyTank.name=Emergency Tank Module
-item.itemEmergencyTank.desc=Dumps water on you if you are in a heated situation
-item.itemFlippers.name=Flippers Module
-item.itemFlippers.desc=Allows you to swim faster in water
-item.itemLegBraces.name=Leg Bracing Module
-item.itemLegBraces.desc=Reduces fall damage
-item.itemLifeVest.name=Life Vest Module
-item.itemLifeVest.desc=Prevents you sinking in water
-item.itemParachute.name=Parachute Module
-item.itemParachute.desc=Highly reduced fall speed.
-item.itemPistonBoots.name=Piston Boots Module
-item.itemPistonBoots.desc=Increased jump height
-item.itemPistonPlating.name=Reactive Piston Plating Module
-item.itemPistonPlating.desc=Acts like Thorns enchant, but for knockback
-item.itemRollerSkates.name=Roller Skates Module
-item.itemRollerSkates.desc=Increased move speed
-item.itemSpringHeels.name=Spring Heels Module
-item.itemSpringHeels.desc=Treat all blocks like stairs
-item.itemWatchDisplay.name=Time HUD Module
-item.itemWatchDisplay.desc=Shows in-game + real world time on your HUD
-item.itemSteelPlating.name=Steel Plating
-item.itemSteelPlating.desc=Simple Defensive Module
-item.itemLastResort.name=Last Resort
-item.itemLastResort.desc=If you reach a heart, you explode, violently. Your items will not be destroyed.
-item.itemGogglesModule.name=Goggle Module
-item.itemGogglesModule.desc=Inbuilt Nightvision Goggles, without the HUD.
-item.itemWingpackModule.name=Wingpack Module
-item.itemWingpackModule.desc=The wingpack, as an armor module
-item.itemFreezeBoots.name=Freeze Boots
-item.itemFreezeBoots.desc=Cool water below you into ice
+item.itemAqualung.name=水肺模块
+item.itemAqualung.desc=允许水下呼吸.
+item.itemClimbingSpikes.name=攀爬钉模块
+item.itemClimbingSpikes.desc=拥有和蜘蛛一样的爬墙能力
+item.itemEmergencyTank.name=紧急水罐模块
+item.itemEmergencyTank.desc=在你燃烧的时候向你倾倒水.
+item.itemFlippers.name=水鳍模块
+item.itemFlippers.desc=允许你在水中游得更快
+item.itemLegBraces.name=腿部支架模块
+item.itemLegBraces.desc=减少摔落伤害
+item.itemLifeVest.name=救生衣模块
+item.itemLifeVest.desc=防止你沉入水中
+item.itemParachute.name=降落伞模块
+item.itemParachute.desc=极大的减少摔落伤害.
+item.itemPistonBoots.name=弹跳靴模块
+item.itemPistonBoots.desc=增加跳跃高度
+item.itemPistonPlating.name=制动反弹模块
+item.itemPistonPlating.desc=类似荆棘附魔，但是为击退效果
+item.itemRollerSkates.name=溜冰鞋模块
+item.itemRollerSkates.desc=增加移动速度
+item.itemSpringHeels.name=弹簧模块
+item.itemSpringHeels.desc=将所有方块视为台阶
+item.itemWatchDisplay.name=时间HUD模块
+item.itemWatchDisplay.desc=在你的HUD上显示游戏内和现实时间
+item.itemSteelPlating.name=钢板
+item.itemSteelPlating.desc=简单的防护模块
+item.itemLastResort.name=紧急方案
+item.itemLastResort.desc=如果你剩下血量不多，遇到爆炸. 你的物品会被保存下来.
+item.itemGogglesModule.name=护目镜模块
+item.itemGogglesModule.desc=内置夜视护目镜, 不需要HUD.
+item.itemWingpackModule.name=飞行器模块
+item.itemWingpackModule.desc=飞行器作为一个装甲模块
+item.itemFreezeBoots.name=急冻靴
+item.itemFreezeBoots.desc=将你脚下的水冻成冰
 
 #Compat
 item.itemSteamcraftCluster.0.name=Native Aluminum Cluster
@@ -513,13 +513,13 @@ item.itemSteamcraftCluster.1.name=Native Zinc Cluster
 item.itemThaumicMonocle.name=Thaumic Monocle
 
 #Tabs
-itemGroup.steamcraft=Steamcraft 2
+itemGroup.steamcraft=蒸汽工艺 2
 #Key Category
-key.categories.sc2=Steamcraft 2
+key.categories.sc2=蒸汽工艺 2
 #Chat
 chat.test=Test
 #Achieves
-achievement.raygunachieve=Lazer Pistol
+achievement.raygunachieve=Lazer pistol
 achievement.raygunachieve.desc=ZAAAP!
 achievement.shrinkrayachieve=Shrink-in-ator
 achievement.shrinkrayachieve.desc=Watch out for the Nefario Principle!
@@ -549,52 +549,52 @@ achievement.creatorachieve=To Meet Your Maker
 achievement.creatorachieve.desc=Oppa Gmod Style
 
 #Damage Sources
-death.attack.steamcraft2.electrocution=%1$s was electrocuted
-death.attack.steamcraft2.electrocution.player=%1$s was electrocuted
-death.attack.steamcraft2.bullet=%1$s was shot
-death.attack.steamcraft2.bullet.player=%1$s was shot by %2$s
-death.attack.steamcraft2.bullet.player.item=%1$s was shot by %2$s using %3$s
-death.attack.steamcraft2.boulder=%1$s was crushed by a falling rock
-death.attack.steamcraft2.radioactive=%1$s died of radiation poisoning
+death.attack.steamcraft2.electrocution=%1$s 受到了电击
+death.attack.steamcraft2.electrocution.player=%1$s 受到了电击
+death.attack.steamcraft2.bullet=%1$s 被枪击毙了
+death.attack.steamcraft2.bullet.player=%1$s 被 %2$s 用枪击毙了
+death.attack.steamcraft2.bullet.player.item=%1$s 被 %2$s 用 %3$s 击毙了
+death.attack.steamcraft2.boulder=%1$s 被从天而降的巨石砸死了
+death.attack.steamcraft2.radioactive=%1$s 死于辐射
 
 #Biomes
-biome.steamcraft2.innerearth.name=Inner Earth
-biome.steamcraft2.innerearth.forest.name=Forested Inner Earth
-biome.steamcraft2.innerearth.mountains.name=Mountainous Inner Earth
-biome.steamcraft2.innerearth.mushroom.name=Mushroom Forested Inner Earth
+biome.steamcraft2.innerearth.name=地心
+biome.steamcraft2.innerearth.forest.name=地心森林
+biome.steamcraft2.innerearth.mountains.name=地心山地
+biome.steamcraft2.innerearth.mushroom.name=地心蘑菇森林
 biome.steamcraft2.innerearth.infestation.name=Infested Inner Earth
-biome.steamcraft2.innerearth.ocean.name=Inner Ocean
-biome.steamcraft2.innerearth.beach.name=Inner Beach
+biome.steamcraft2.innerearth.ocean.name=地心海洋
+biome.steamcraft2.innerearth.beach.name=地心沙滩
 biome.steamcraft2.innerearth.scalded.name=Scalding Springs
 biome.steamcraft2.innerearth.tallforest.name=Towering Forest
-biome.steamcraft2.innerearth.jungle.name=Dense Jungle
-biome.steamcraft2.innerearth.swamp.name=Swampy Forest
-biome.steamcraft2.innerearth.scorched.name=Scorched Lands
+biome.steamcraft2.innerearth.jungle.name=密集丛林
+biome.steamcraft2.innerearth.swamp.name=沼泽森林
+biome.steamcraft2.innerearth.scorched.name=废土
 
 #Entities
-entity.steamcraft2.grub.name=Grub
-entity.steamcraft2.lostminer.name=Lost Miner
-entity.steamcraft2.ghostspider.name=Ghost Spider
-entity.steamcraft2.vampirebat.name=Vampire Bat
-entity.steamcraft2.boar.name=Boar
+entity.steamcraft2.grub.name=幼虫
+entity.steamcraft2.lostminer.name=迷失矿工
+entity.steamcraft2.ghostspider.name=幽灵蜘蛛
+entity.steamcraft2.vampirebat.name=吸血蝙蝠
+entity.steamcraft2.boar.name=野猪
 
 #Keys
-key.steamcraft.category=Steamcraft2
+key.steamcraft.category=蒸汽工艺2
 key.vanity.desc=Open Vanity Inventory
 
 #Lore Stuff
 lore.steamcraft2.0.author=warlordjones
 lore.steamcraft2.0.title=[Meta]
-lore.steamcraft2.0.page1=Want to Contribute to this mod? Enjoy writing steampunk lore and love finding these snippets of lore in the world and wish there was more? Well, awesome! If you fancy it, write some lore for the mod, and shoot it at warlordjones@gmail.com
+lore.steamcraft2.0.page1=想要为这个模组做一份贡献么? 喜欢写一些有关蒸汽朋克的知识热衷于寻找散落于大陆上的知识碎片并渴望获取更多? 那就太棒了! 如果你喜欢它,就为这个mod想一些新点子, 写下来并发送到warlordjones@gmail.com
 
 #TiCon Material
-material.etherium=Etherium
+material.etherium=以太
 
 #Tooltips
-armoreditor.slot.0.tooltip=Add modules
-armoreditor.slot.1.tooltip=Remove modules
-armoreditor.slot.2.tooltip=Module
-battery.slot.0.tooltip=Electric Jars go here
-battery.slot.1.tooltip=Electric Jars go here
-battery.slot.2.tooltip=Electric Jars go here
-battery.slot.3.tooltip=Electric Jars go here
+armoreditor.slot.0.tooltip=增加模块
+armoreditor.slot.1.tooltip=去除模块
+armoreditor.slot.2.tooltip=模块
+battery.slot.0.tooltip=莱顿瓶放在这里
+battery.slot.1.tooltip=莱顿瓶放在这里
+battery.slot.2.tooltip=莱顿瓶放在这里
+battery.slot.3.tooltip=莱顿瓶放在这里
