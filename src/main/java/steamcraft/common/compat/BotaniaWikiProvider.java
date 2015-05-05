@@ -56,13 +56,13 @@ public class BotaniaWikiProvider implements IWikiProvider
 		String name = this.getBlockName(world, pos);
 		if(name == null)
 			return null;
-		return "http://sc2.wikia.com/" + WordUtils.capitalizeFully(name).replaceAll(" ", "%20");
+		return "http://ftb.gamepedia.com/" + WordUtils.capitalizeFully(name).replaceAll(" ", "%20");
 	}
 
 	@Override
 	@Optional.Method(modid = "Botania")
 	public String getWikiName(World world, MovingObjectPosition pos)
 	{
-		return "SteamCraft2 Wiki";
+		return "Steamcraft2 on the Offical FeedTheBeast Wiki";
 	}
 }
