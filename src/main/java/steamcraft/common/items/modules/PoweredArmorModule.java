@@ -9,12 +9,11 @@ import net.minecraft.util.StatCollector;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+import steamcraft.api.item.IPoweredModuleHelper;
 import steamcraft.common.init.InitItems;
 import steamcraft.common.items.ItemCanister;
 import steamcraft.common.items.electric.ElectricItem;
 import boilerplate.client.ClientHelper;
-import boilerplate.common.baseclasses.BaseArmorModule;
-import boilerplate.steamapi.item.IPoweredModuleHelper;
 
 public abstract class PoweredArmorModule extends BaseArmorModule implements IPoweredModuleHelper
 {

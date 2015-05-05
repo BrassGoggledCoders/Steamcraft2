@@ -27,8 +27,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 import net.minecraftforge.common.util.ForgeDirection;
 
+import boilerplate.api.IEnergyItem;
 import boilerplate.common.baseclasses.BaseTileWithInventory;
-import boilerplate.steamapi.item.IEnergyItem;
 
 /**
  * @author decebaldecebal

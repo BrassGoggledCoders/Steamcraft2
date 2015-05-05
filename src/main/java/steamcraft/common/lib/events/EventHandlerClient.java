@@ -29,6 +29,7 @@ import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.client.event.TextureStitchEvent;
 
 import org.lwjgl.opengl.GL11;
+import steamcraft.api.vanity.IVanityItem;
 import steamcraft.client.ClientProxy;
 import steamcraft.client.lib.GuiIDs;
 import steamcraft.common.container.InventoryVanity;
@@ -38,7 +39,6 @@ import steamcraft.common.init.InitItems;
 import steamcraft.common.init.InitPackets;
 import steamcraft.common.packets.OpenContainerFromClientPacket;
 import boilerplate.client.ClientHelper;
-import boilerplate.steamapi.vanity.IVanityItem;
 
 public class EventHandlerClient
 {

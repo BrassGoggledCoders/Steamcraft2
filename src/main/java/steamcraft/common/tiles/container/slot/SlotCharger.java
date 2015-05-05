@@ -16,7 +16,7 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 
-import boilerplate.steamapi.item.IEnergyItem;
+import boilerplate.api.IEnergyItem;
 
 /**
  * @author decebaldecebal

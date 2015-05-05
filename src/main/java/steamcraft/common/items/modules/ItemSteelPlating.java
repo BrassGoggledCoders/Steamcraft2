@@ -20,10 +20,11 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+import steamcraft.api.item.IArmorModule.EnumArmorEffectType;
+import steamcraft.api.item.ModuleRegistry;
 import steamcraft.common.Steamcraft;
+import steamcraft.common.items.armor.BaseDefensiveModule;
 import steamcraft.common.lib.ModInfo;
-import boilerplate.common.baseclasses.BaseDefensiveModule;
-import boilerplate.steamapi.item.ModuleRegistry;
 
 /**
  * @author warlordjones

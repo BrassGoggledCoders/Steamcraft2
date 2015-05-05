@@ -22,13 +22,13 @@ import net.minecraft.nbt.NBTTagCompound;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+import steamcraft.api.item.IFistModule;
+import steamcraft.api.item.ModuleRegistry;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.init.InitItems;
 import steamcraft.common.items.ItemCanister;
 import steamcraft.common.items.electric.ElectricItem;
 import steamcraft.common.lib.ModInfo;
-import boilerplate.steamapi.item.IFistModule;
-import boilerplate.steamapi.item.ModuleRegistry;
 
 public class ItemBrassFist extends ItemModTool
 {

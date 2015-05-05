@@ -26,11 +26,11 @@ import net.minecraft.world.IBlockAccess;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+import steamcraft.api.block.IChiselable;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.init.InitBlocks;
 import steamcraft.common.lib.ModInfo;
 import boilerplate.common.baseclasses.BaseMetadataBlock;
-import boilerplate.steamapi.block.IChiselable;
 
 /**
  * @author warlordjones

@@ -18,11 +18,11 @@ import net.minecraft.util.ResourceLocation;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+import steamcraft.api.vanity.EnumVanityType;
+import steamcraft.api.vanity.IVanityItem;
 import steamcraft.client.renderers.models.ModelTopHat;
 import steamcraft.common.items.BaseItem;
 import steamcraft.common.lib.ModInfo;
-import boilerplate.steamapi.vanity.EnumVanityType;
-import boilerplate.steamapi.vanity.IVanityItem;
 
 /**
  * @author warlordjones

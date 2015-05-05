@@ -24,9 +24,9 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+import steamcraft.api.block.IChiselable;
 import steamcraft.common.init.InitBlocks;
 import steamcraft.common.lib.ModInfo;
-import boilerplate.steamapi.block.IChiselable;
 
 /**
  * @author Surseance

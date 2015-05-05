@@ -16,8 +16,8 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.world.IBlockAccess;
 
+import steamcraft.api.block.IChiselable;
 import steamcraft.common.init.InitBlocks;
-import boilerplate.steamapi.block.IChiselable;
 
 /**
  * @author Surseance

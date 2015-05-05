@@ -18,7 +18,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 
-import boilerplate.steamapi.block.IHammerable;
+import steamcraft.api.block.IHammerable;
 
 /**
  * @author warlordjones

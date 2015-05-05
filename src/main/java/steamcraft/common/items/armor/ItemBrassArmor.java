@@ -31,15 +31,15 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 import net.minecraftforge.common.ISpecialArmor;
 
+import steamcraft.api.item.IArmorModule;
+import steamcraft.api.item.IArmorModule.EnumArmorEffectType;
+import steamcraft.api.item.IDefensiveArmorModule;
+import steamcraft.api.item.ModuleRegistry;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.init.InitItems;
 import steamcraft.common.lib.ModInfo;
 import thaumcraft.api.IGoggles;
 import thaumcraft.api.nodes.IRevealer;
-import boilerplate.steamapi.item.IArmorModule;
-import boilerplate.steamapi.item.IArmorModule.EnumArmorEffectType;
-import boilerplate.steamapi.item.IDefensiveArmorModule;
-import boilerplate.steamapi.item.ModuleRegistry;
 
 /**
  * @author warlordjones

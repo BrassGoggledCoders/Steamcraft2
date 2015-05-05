@@ -23,8 +23,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 import steamcraft.common.tiles.container.slot.SlotCharger;
 import steamcraft.common.tiles.energy.TileCharger;
+import boilerplate.api.IEnergyItem;
 import boilerplate.common.baseclasses.BaseContainer;
-import boilerplate.steamapi.item.IEnergyItem;
 
 /**
  * @author decebaldecebal
