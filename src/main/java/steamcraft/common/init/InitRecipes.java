@@ -396,7 +396,8 @@ public class InitRecipes
 	private static void initOtherRecipes()
 	{
 		GameRegistry.addShapedRecipe(new ItemStack(InitItems.itemResource, 1, 2), "XXX", "XXX", "XXX", 'X', new ItemStack(Blocks.obsidian));
-		GameRegistry.addShapelessRecipe(new ItemStack(InitItems.itemResource, 1, 7), new ItemStack(Items.glass_bottle), new ItemStack(InitItems.itemResource,
+		GameRegistry.addShapelessRecipe(new ItemStack(InitItems.itemResource, 1, 7), new ItemStack(Items.potionitem), new ItemStack(InitItems.itemResource,
+				1, 1), new ItemStack(InitItems.itemResource,
 				1, 1));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemSteelParts, 1, 0), " P ", "PIP", " P ", 'P',
