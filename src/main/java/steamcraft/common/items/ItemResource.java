@@ -78,7 +78,7 @@ public class ItemResource extends BaseItemWithMetadata
 	{
 		if(!world.isRemote && (stack.getItemDamage() == 5))
 		{
-			holder.attackEntityFrom(DamageSourceHandler.radioative, 1);
+			holder.attackEntityFrom(DamageSourceHandler.radioactive, 1);
 		}
 	}
 

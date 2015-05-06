@@ -474,6 +474,7 @@ item.itemMachinePart.4.name=Generator
 item.itemMachinePart.5.name=Fan
 item.itemMachinePart.6.name=Wire Coil
 item.itemMachinePart.7.name=Speaker
+item.itemMachinePart.8.name=Insulated Sheet
 
 #Modules
 item.itemAqualung.name=Aqualung Module

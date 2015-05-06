@@ -396,6 +396,8 @@ public class InitRecipes
 	private static void initOtherRecipes()
 	{
 		GameRegistry.addShapedRecipe(new ItemStack(InitItems.itemResource, 1, 2), "XXX", "XXX", "XXX", 'X', new ItemStack(Blocks.obsidian));
+		GameRegistry.addShapelessRecipe(new ItemStack(InitItems.itemResource, 1, 7), new ItemStack(Items.glass_bottle), new ItemStack(InitItems.itemResource,
+				1, 1));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemSteelParts, 1, 0), " P ", "PIP", " P ", 'P',
 				"plateSteel", 'I', "ingotSteel"));
@@ -431,6 +433,8 @@ public class InitRecipes
 				new ItemStack(InitBlocks.blockCopperWire), new ItemStack(InitBlocks.blockCopperWire), new ItemStack(InitBlocks.blockCopperWire)));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemMachinePart, 1, 7), "L L", " L ", "MCM", 'M', "partMagnet",
 				'C', new ItemStack(InitBlocks.blockCopperWire), 'L', Items.leather));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemMachinePart, 1, 8), "XRX", 'X', "plateCopper",
+				'R', new ItemStack(InitItems.itemSlimeRubber)));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockCopperWire, 1, 0), "CD", 'C', "ingotCopper", 'D',
 				new ItemStack(InitItems.itemDrawplate, 1, OreDictionary.WILDCARD_VALUE)));
