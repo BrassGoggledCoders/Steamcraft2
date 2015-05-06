@@ -264,8 +264,8 @@ public class InitRecipes
 				"PPP", "P P", "PPP", 'P', "plateCopper"));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockBattery), "CCC", "WCW", "CCC", 'C', "ingotCastIron",
 				'W', InitBlocks.blockCopperWire));
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockCapacitor), "CRC", "CRC", "W W", 'C', "plateSteel",
-				'W', InitBlocks.blockCopperWire, 'R', InitItems.itemSlimeRubber));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockCapacitor), "CRC", "CRC", "WAW", 'C', "plateSteel",
+				'W', InitBlocks.blockCopperWire, 'R', new ItemStack(InitItems.itemMachinePart, 1, 8), 'A', new ItemStack(InitItems.itemResource, 1, 7)));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockTeslaCoil), "WRW", "WRW", "III", 'I',
 				"ingotCastIron", 'W', "partWireCoil", 'R', "partCastIronRod"));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockTurbine), "S S", "FGF", "SFS", 'S', "ingotSteel",
