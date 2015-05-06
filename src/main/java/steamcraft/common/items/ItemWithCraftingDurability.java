@@ -12,6 +12,8 @@
  */
 package steamcraft.common.items;
 
+import java.util.Arrays;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -20,7 +22,6 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-import scala.actors.threadpool.Arrays;
 import steamcraft.common.init.InitItems;
 import steamcraft.common.lib.LibInfo;
 
