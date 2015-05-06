@@ -20,11 +20,13 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
+import net.minecraft.world.IBlockAccess;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 import steamcraft.common.Steamcraft;
+import steamcraft.common.init.InitBlocks;
 
 /**
  * @author warlordjones
@@ -34,12 +36,14 @@ public class BlockCustomWall extends BlockWall
 {
 	Block block;
 	int metadata;
+	boolean stonebrick;
 
-	public BlockCustomWall(Block block, int meta)
+	public BlockCustomWall(Block block, int meta, boolean stonebrick)
 	{
 		super(block);
 		this.block = block;
 		this.metadata = meta;
+		this.stonebrick = true;
 		this.setCreativeTab(Steamcraft.tabSC2);
 	}
 
@@ -61,5 +65,21 @@ public class BlockCustomWall extends BlockWall
 	public void getSubBlocks(Item item, CreativeTabs tab, List list)
 	{
 		list.add(new ItemStack(item, 1, 0));
+	}
+
+	/**
+	 * Return whether an adjacent block can connect to a wall.
+	 */
+	@Override
+	public boolean canConnectWallTo(IBlockAccess world, int x, int y, int z)
+	{
+		Block block = world.getBlock(x, y, z);
+		if(this.stonebrick)
+		{
+			if(block == InitBlocks.blockStonebrickWall || block == InitBlocks.blockStonebrickWallMossy || block == InitBlocks.blockStonebrickWallCracked
+					|| block == InitBlocks.blockStonebrickWallChiseled)
+				return true;
+		}
+		return super.canConnectWallTo(world, x, y, z);
 	}
 }

@@ -441,15 +441,15 @@ public class InitBlocks
 		registerBlock(blockLamp, "BlockLamp");
 		registerBlock(blockLampOn, "BlockLampOn");
 
-		blockStonebrickWall = new BlockCustomWall(Blocks.stonebrick, 0).setBlockName("blockStonebrickWall");
+		blockStonebrickWall = new BlockCustomWall(Blocks.stonebrick, 0, true).setBlockName("blockStonebrickWall");
 		registerBlock(blockStonebrickWall, "BlockStonebrickWall");
-		blockStonebrickWallMossy = new BlockCustomWall(Blocks.stonebrick, 1).setBlockName("blockStonebrickWallMossy");
+		blockStonebrickWallMossy = new BlockCustomWall(Blocks.stonebrick, 1, true).setBlockName("blockStonebrickWallMossy");
 		registerBlock(blockStonebrickWallMossy, "BlockStonebrickWallMossy");
-		blockStonebrickWallCracked = new BlockCustomWall(Blocks.stonebrick, 2).setBlockName("blockStonebrickWallCracked");
+		blockStonebrickWallCracked = new BlockCustomWall(Blocks.stonebrick, 2, true).setBlockName("blockStonebrickWallCracked");
 		registerBlock(blockStonebrickWallCracked, "BlockStonebrickWallCracked");
-		blockStonebrickWallChiseled = new BlockCustomWall(Blocks.stonebrick, 3).setBlockName("blockStonebrickWallChiseled");
+		blockStonebrickWallChiseled = new BlockCustomWall(Blocks.stonebrick, 3, true).setBlockName("blockStonebrickWallChiseled");
 		registerBlock(blockStonebrickWallChiseled, "BlockStonebrickWallChiseled");
-		blockStoneslabWall = new BlockCustomWall(Blocks.stone_slab, 0).setBlockName("blockStoneslabWall");
+		blockStoneslabWall = new BlockCustomWall(Blocks.stone_slab, 0, false).setBlockName("blockStoneslabWall");
 		registerBlock(blockStoneslabWall, "BlockStoneslabWall");
 	}
 
