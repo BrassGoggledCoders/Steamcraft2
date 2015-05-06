@@ -226,7 +226,7 @@ public class InitBlocks
 
 	public static Block blockTrunk;
 
-	public static Block blockStonebrickWall, blockStoneslabWall;
+	public static Block blockStonebrickWall, blockStonebrickWallMossy, blockStonebrickWallCracked, blockStonebrickWallChiseled, blockStoneslabWall;
 
 	public static void init()
 	{
@@ -441,9 +441,15 @@ public class InitBlocks
 		registerBlock(blockLamp, "BlockLamp");
 		registerBlock(blockLampOn, "BlockLampOn");
 
-		blockStonebrickWall = new BlockCustomWall(Blocks.stonebrick).setBlockName("blockStonebrickWall");
+		blockStonebrickWall = new BlockCustomWall(Blocks.stonebrick, 0).setBlockName("blockStonebrickWall");
 		registerBlock(blockStonebrickWall, "BlockStonebrickWall");
-		blockStoneslabWall = new BlockCustomWall(Blocks.stone_slab).setBlockName("blockStoneslabWall");
+		blockStonebrickWallMossy = new BlockCustomWall(Blocks.stonebrick, 1).setBlockName("blockStonebrickWallMossy");
+		registerBlock(blockStonebrickWallMossy, "BlockStonebrickWallMossy");
+		blockStonebrickWallCracked = new BlockCustomWall(Blocks.stonebrick, 2).setBlockName("blockStonebrickWallCracked");
+		registerBlock(blockStonebrickWallCracked, "BlockStonebrickWallCracked");
+		blockStonebrickWallChiseled = new BlockCustomWall(Blocks.stonebrick, 3).setBlockName("blockStonebrickWallChiseled");
+		registerBlock(blockStonebrickWallChiseled, "BlockStonebrickWallChiseled");
+		blockStoneslabWall = new BlockCustomWall(Blocks.stone_slab, 0).setBlockName("blockStoneslabWall");
 		registerBlock(blockStoneslabWall, "BlockStoneslabWall");
 	}
 

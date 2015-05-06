@@ -33,11 +33,13 @@ import steamcraft.common.Steamcraft;
 public class BlockCustomWall extends BlockWall
 {
 	Block block;
+	int metadata;
 
-	public BlockCustomWall(Block block)
+	public BlockCustomWall(Block block, int meta)
 	{
 		super(block);
 		this.block = block;
+		this.metadata = meta;
 		this.setCreativeTab(Steamcraft.tabSC2);
 	}
 
@@ -48,7 +50,7 @@ public class BlockCustomWall extends BlockWall
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(int side, int meta)
 	{
-		return block.getBlockTextureFromSide(0);
+		return block.getIcon(0, metadata);
 	}
 
 	/**

@@ -347,6 +347,9 @@ public class InitRecipes
 		}
 
 		GameRegistry.addRecipe(new ItemStack(InitBlocks.blockStonebrickWall, 6), "NNN", "NNN", 'N', new ItemStack(Blocks.stonebrick, 1, 0));
+		GameRegistry.addRecipe(new ItemStack(InitBlocks.blockStonebrickWallMossy, 6), "NNN", "NNN", 'N', new ItemStack(Blocks.stonebrick, 1, 1));
+		GameRegistry.addRecipe(new ItemStack(InitBlocks.blockStonebrickWallCracked, 6), "NNN", "NNN", 'N', new ItemStack(Blocks.stonebrick, 1, 2));
+		GameRegistry.addRecipe(new ItemStack(InitBlocks.blockStonebrickWallChiseled, 6), "NNN", "NNN", 'N', new ItemStack(Blocks.stonebrick, 1, 3));
 		GameRegistry.addRecipe(new ItemStack(InitBlocks.blockStoneslabWall, 6), "NNN", "NNN", 'N', new ItemStack(Blocks.stone_slab, 1, 0));
 	}
 
