@@ -31,11 +31,11 @@ import steamcraft.common.lib.ModInfo;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 public class ItemResource extends BaseItemWithMetadata
 {
-	IIcon[] itemIcon = new IIcon[7];
+	IIcon[] itemIcon = new IIcon[8];
 
 	public ItemResource()
 	{
@@ -54,6 +54,7 @@ public class ItemResource extends BaseItemWithMetadata
 		this.itemIcon[4] = ir.registerIcon(ModInfo.PREFIX + "itemUranium");
 		this.itemIcon[5] = ir.registerIcon(ModInfo.PREFIX + "itemPellet");
 		this.itemIcon[6] = ir.registerIcon(ModInfo.PREFIX + "itemCrystalShard");
+		this.itemIcon[7] = ir.registerIcon(ModInfo.PREFIX + "itemSulfuricAcid");
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
