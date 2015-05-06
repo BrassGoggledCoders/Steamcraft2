@@ -345,6 +345,9 @@ public class InitRecipes
 		{
 			GameRegistry.addShapelessRecipe(new ItemStack(unengravedV[i]), new ItemStack(InitBlocks.blockEngravedVanilla, 1, i));
 		}
+
+		GameRegistry.addRecipe(new ItemStack(InitBlocks.blockStonebrickWall, 6), "NNN", "NNN", 'N', new ItemStack(Blocks.stonebrick, 1, 0));
+		GameRegistry.addRecipe(new ItemStack(InitBlocks.blockStoneslabWall, 6), "NNN", "NNN", 'N', new ItemStack(Blocks.stone_slab, 1, 0));
 	}
 
 	private static void initModuleRecipes()
