@@ -32,7 +32,7 @@ import steamcraft.common.lib.ModInfo;
  */
 public class ItemMachinePart extends BaseItemWithMetadata
 {
-	IIcon[] itemIcon = new IIcon[9];
+	IIcon[] itemIcon = new IIcon[10];
 
 	public ItemMachinePart()
 	{
@@ -53,6 +53,7 @@ public class ItemMachinePart extends BaseItemWithMetadata
 		this.itemIcon[6] = ir.registerIcon(ModInfo.PREFIX + "itemWireCoil");
 		this.itemIcon[7] = ir.registerIcon(ModInfo.PREFIX + "itemSpeaker");
 		this.itemIcon[8] = ir.registerIcon(ModInfo.PREFIX + "itemInsulatedSheet");
+		this.itemIcon[9] = ir.registerIcon(ModInfo.PREFIX + "itemCapacitor");
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })

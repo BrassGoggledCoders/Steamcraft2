@@ -155,7 +155,7 @@ tile.blockArmorEditor.name=Armor Editor
 tile.blockArmorEditor.desc=Quiet Clock, its technically a texture...
 tile.blockSawmill.name=Sawmill
 tile.blockSawmill.desc=Saws logs into six planks
-tile.blockCapacitor.name=Capacitor
+tile.blockCapacitor.name=Capacitor Block
 tile.blockCapacitor.desc=High storage, low throughput. Stores 64M RF, but only transfers in/out at 10RF/Tick
 tile.blockRefinery.name=Refinery
 tile.blockRefinery.desc=Refines blubber into whale oil.
@@ -475,6 +475,7 @@ item.itemMachinePart.5.name=Fan
 item.itemMachinePart.6.name=Wire Coil
 item.itemMachinePart.7.name=Speaker
 item.itemMachinePart.8.name=Insulated Sheet
+item.itemMachinePart.9.name=Capacitor
 
 #Modules
 item.itemAqualung.name=Aqualung Module
