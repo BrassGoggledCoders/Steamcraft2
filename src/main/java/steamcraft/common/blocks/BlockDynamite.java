@@ -78,7 +78,7 @@ public class BlockDynamite extends BaseBlock
 		{
 			EntityTNTPrimed entitytntprimed = new EntityTNTPrimed(p_149723_1_, p_149723_2_ + 0.5F, p_149723_3_ + 0.5F, p_149723_4_ + 0.5F,
 					p_149723_5_.getExplosivePlacedBy());
-			entitytntprimed.fuse = p_149723_1_.rand.nextInt(entitytntprimed.fuse / 4) + entitytntprimed.fuse / 8;
+			entitytntprimed.fuse = p_149723_1_.rand.nextInt(entitytntprimed.fuse / 4) + (entitytntprimed.fuse / 8);
 			p_149723_1_.spawnEntityInWorld(entitytntprimed);
 		}
 	}
@@ -112,7 +112,7 @@ public class BlockDynamite extends BaseBlock
 	public boolean onBlockActivated(World p_149727_1_, int p_149727_2_, int p_149727_3_, int p_149727_4_, EntityPlayer p_149727_5_, int p_149727_6_,
 			float p_149727_7_, float p_149727_8_, float p_149727_9_)
 	{
-		if(p_149727_5_.getCurrentEquippedItem() != null && p_149727_5_.getCurrentEquippedItem().getItem() == Items.flint_and_steel)
+		if((p_149727_5_.getCurrentEquippedItem() != null) && (p_149727_5_.getCurrentEquippedItem().getItem() == Items.flint_and_steel))
 		{
 			this.spawnTNT(p_149727_1_, p_149727_2_, p_149727_3_, p_149727_4_, 1, p_149727_5_);
 			p_149727_1_.setBlockToAir(p_149727_2_, p_149727_3_, p_149727_4_);
@@ -131,7 +131,7 @@ public class BlockDynamite extends BaseBlock
 	@Override
 	public void onEntityCollidedWithBlock(World p_149670_1_, int p_149670_2_, int p_149670_3_, int p_149670_4_, Entity p_149670_5_)
 	{
-		if(p_149670_5_ instanceof EntityArrow && !p_149670_1_.isRemote)
+		if((p_149670_5_ instanceof EntityArrow) && !p_149670_1_.isRemote)
 		{
 			EntityArrow entityarrow = (EntityArrow) p_149670_5_;
 

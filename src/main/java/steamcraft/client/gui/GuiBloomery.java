@@ -23,7 +23,7 @@ import steamcraft.common.tiles.container.ContainerBloomery;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 public class GuiBloomery extends BaseContainerGui
 {

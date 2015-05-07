@@ -37,7 +37,7 @@ public class ConfigGeneral
 	public static boolean unnaturalLightningStrikes, naturalLightningStrikes, weather2LightningStrikes;
 
 	public static int depthsBiomeID, depthsFBiomeID, depthsMBiomeID, depthsSBiomeID, depthsIBiomeID, depthsSCBiomeID, depthsSCHBiomeID, depthsSWBiomeID,
-			depthsTFBiomeID, depthsJBiomeID;// , depthsOBiomeID, depthsBBiomeID;
+	depthsTFBiomeID, depthsJBiomeID;// , depthsOBiomeID, depthsBBiomeID;
 
 	public static void initialize(File configFile)
 	{

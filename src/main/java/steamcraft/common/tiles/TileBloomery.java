@@ -26,7 +26,7 @@ import boilerplate.common.baseclasses.BaseTileWithInventory;
 
 /**
  * @author warlordjones & decebaldecebal
- * 
+ *
  */
 public class TileBloomery extends BaseTileWithInventory
 {

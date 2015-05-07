@@ -30,7 +30,7 @@ import boilerplate.client.utils.GuiColors;
 
 /**
  * @author decebaldecebal
- * 
+ *
  */
 public class GuiRefinery extends BaseContainerGui
 {

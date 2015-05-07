@@ -31,7 +31,7 @@ import steamcraft.common.blocks.BlockCastIronRailing;
 
 /**
  * @author Surseance (Johnny Eatmon)
- * 
+ *
  */
 public class BlockCastIronRailingRenderer implements ISimpleBlockRenderingHandler
 {

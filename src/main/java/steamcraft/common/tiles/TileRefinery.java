@@ -32,7 +32,7 @@ import boilerplate.common.baseclasses.BaseTileWithInventory;
 
 /**
  * @author Decebaldecebal
- * 
+ *
  */
 public class TileRefinery extends BaseTileWithInventory implements IFluidHandler
 {
@@ -97,17 +97,17 @@ public class TileRefinery extends BaseTileWithInventory implements IFluidHandler
 		if(!this.worldObj.isRemote)
 		{
 			// Drain Oil
-			if((this.inventory[2] != null) && this.oilTank.getFluidAmount() >= 1000)
+			if((this.inventory[2] != null) && (this.oilTank.getFluidAmount() >= 1000))
 			{
-				if(this.inventory[2].getItem() == Items.bucket && this.inventory[2].stackSize == 1)
+				if((this.inventory[2].getItem() == Items.bucket) && (this.inventory[2].stackSize == 1))
 				{
 					this.inventory[2] = new ItemStack(InitItems.itemWhaleOilBucket);
 					this.oilTank.drain(1000, true);
 				}
 			}
 			// Burning Items
-			if((this.getItemBurnTime() > 0) && (this.furnaceBurnTime == 0) && this.oilTank.getFluidAmount() <= this.oilTank.getCapacity()
-					&& this.inventory[1] != null)
+			if((this.getItemBurnTime() > 0) && (this.furnaceBurnTime == 0) && (this.oilTank.getFluidAmount() <= this.oilTank.getCapacity())
+					&& (this.inventory[1] != null))
 			{
 				this.currentItemBurnTime = this.furnaceBurnTime = this.getItemBurnTime() / 4;
 
@@ -117,11 +117,11 @@ public class TileRefinery extends BaseTileWithInventory implements IFluidHandler
 					--this.inventory[0].stackSize;
 			}
 			// Create Oil
-			if((this.furnaceBurnTime > 0) && (this.oilTank.getFluidAmount() <= this.oilTank.getCapacity()) && this.inventory[1] != null)
+			if((this.furnaceBurnTime > 0) && (this.oilTank.getFluidAmount() <= this.oilTank.getCapacity()) && (this.inventory[1] != null))
 			{
 				if(this.inventory[1].getItem() == InitItems.itemWhaleBlubber)
 				{
-					if(cookTime == 0)
+					if(this.cookTime == 0)
 					{
 						if(this.inventory[1].stackSize == 1)
 							this.inventory[1] = null;
@@ -131,12 +131,12 @@ public class TileRefinery extends BaseTileWithInventory implements IFluidHandler
 						this.furnaceBurnTime--;
 
 					}
-					else if(cookTime == 500)
+					else if(this.cookTime == 500)
 					{
 						this.oilTank.fill(new FluidStack(FluidRegistry.getFluid("whaleoil"), oilPerBlubber), true);
 					}
 					else
-						cookTime++;
+						this.cookTime++;
 				}
 			}
 

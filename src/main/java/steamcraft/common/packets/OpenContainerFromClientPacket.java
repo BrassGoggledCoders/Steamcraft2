@@ -27,7 +27,7 @@ import steamcraft.common.Steamcraft;
 
 /**
  * @author decebaldecebal
- * 
+ *
  */
 public class OpenContainerFromClientPacket implements IMessage
 {

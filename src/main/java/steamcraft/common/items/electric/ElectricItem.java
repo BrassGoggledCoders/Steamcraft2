@@ -23,7 +23,7 @@ import boilerplate.common.baseclasses.BaseElectricItem;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 public class ElectricItem extends BaseElectricItem
 {

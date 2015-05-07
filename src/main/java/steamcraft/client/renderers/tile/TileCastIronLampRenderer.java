@@ -26,7 +26,7 @@ import boilerplate.client.ClientHelper;
 
 /**
  * @author Surseance
- * 
+ *
  */
 public class TileCastIronLampRenderer extends TileEntitySpecialRenderer
 {

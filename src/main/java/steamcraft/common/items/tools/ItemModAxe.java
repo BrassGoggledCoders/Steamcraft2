@@ -14,7 +14,7 @@ package steamcraft.common.items.tools;
 
 /**
  * @author Surseance
- * 
+ *
  */
 public class ItemModAxe extends ItemModTool
 {

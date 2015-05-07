@@ -80,12 +80,12 @@ public class EventHandlerClient
 				ModelBase model = item.getVanityItemModel();
 				ClientHelper.textureManager().bindTexture(item.getItemTextureLocation());
 				GL11.glPushMatrix();
-				float yaw = event.entityPlayer.prevRotationYawHead + (event.entityPlayer.rotationYawHead - event.entityPlayer.prevRotationYawHead)
-						* event.partialRenderTick;
-				float yawOffset = event.entityPlayer.prevRenderYawOffset + (event.entityPlayer.renderYawOffset - event.entityPlayer.prevRenderYawOffset)
-						* event.partialRenderTick;
-				float pitch = event.entityPlayer.prevRotationPitch + (event.entityPlayer.rotationPitch - event.entityPlayer.prevRotationPitch)
-						* event.partialRenderTick;
+				float yaw = event.entityPlayer.prevRotationYawHead + ((event.entityPlayer.rotationYawHead - event.entityPlayer.prevRotationYawHead)
+						* event.partialRenderTick);
+				float yawOffset = event.entityPlayer.prevRenderYawOffset + ((event.entityPlayer.renderYawOffset - event.entityPlayer.prevRenderYawOffset)
+						* event.partialRenderTick);
+				float pitch = event.entityPlayer.prevRotationPitch + ((event.entityPlayer.rotationPitch - event.entityPlayer.prevRotationPitch)
+						* event.partialRenderTick);
 				GL11.glRotatef(yawOffset, 0, -1, 0);
 				GL11.glRotatef(yaw - 270, 0, 1, 0);
 				GL11.glRotatef(pitch, 0, 0, 1);

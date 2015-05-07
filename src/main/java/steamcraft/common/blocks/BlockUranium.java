@@ -30,7 +30,7 @@ import boilerplate.client.utils.EffectUtils;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 public class BlockUranium extends BaseBlock implements IChiselable
 {

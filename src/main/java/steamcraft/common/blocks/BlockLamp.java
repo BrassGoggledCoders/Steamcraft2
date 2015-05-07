@@ -32,7 +32,7 @@ import steamcraft.common.lib.ModInfo;
 
 /**
  * @author Surseance (Johnny Eatmon)
- * 
+ *
  */
 public class BlockLamp extends BlockRedstoneLight
 {

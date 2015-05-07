@@ -48,7 +48,7 @@ public class ItemElectrifiedSword extends ItemElectricTool
 	@Override
 	public boolean hitEntity(ItemStack stack, EntityLivingBase living1, EntityLivingBase living2)
 	{
-		this.extractEnergy(stack, energyPerHit, false);
+		this.extractEnergy(stack, this.energyPerHit, false);
 		// stack.damageItem(1, living2);
 
 		// super.hitEntity(stack, living1, living2);

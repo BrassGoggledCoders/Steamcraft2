@@ -24,7 +24,7 @@ import steamcraft.common.tiles.energy.TileBattery;
 
 /**
  * @author decebaldecebal
- * 
+ *
  */
 public class GuiBattery extends BaseContainerGui
 {

@@ -26,7 +26,7 @@ import steamcraft.common.tiles.energy.TileCopperWire;
 
 /**
  * @author Decebaldecebal
- * 
+ *
  */
 public class TileCopperWireRenderer extends TileEntitySpecialRenderer
 {

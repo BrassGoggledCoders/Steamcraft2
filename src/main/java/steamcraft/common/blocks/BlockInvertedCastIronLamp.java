@@ -31,7 +31,7 @@ import steamcraft.common.tiles.EmptyTiles;
 
 /**
  * @author Surseance
- * 
+ *
  */
 public class BlockInvertedCastIronLamp extends BlockContainer
 {

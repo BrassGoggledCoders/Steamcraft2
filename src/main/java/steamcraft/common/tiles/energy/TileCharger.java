@@ -32,7 +32,7 @@ import boilerplate.common.baseclasses.BaseTileWithInventory;
 
 /**
  * @author decebaldecebal
- * 
+ *
  */
 public class TileCharger extends BaseTileWithInventory implements IEnergyReceiver
 {

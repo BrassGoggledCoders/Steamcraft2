@@ -29,7 +29,7 @@ import steamcraft.common.tiles.TileCopperPipe;
 
 /**
  * @author Decebaldecebal
- * 
+ *
  */
 public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 {

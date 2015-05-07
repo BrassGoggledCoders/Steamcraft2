@@ -30,7 +30,7 @@ import steamcraft.common.Steamcraft;
 
 /**
  * @author Surseance
- * 
+ *
  */
 public class BlockHatch extends BlockTrapDoor implements ITileEntityProvider
 {

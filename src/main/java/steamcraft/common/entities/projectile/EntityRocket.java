@@ -25,7 +25,7 @@ import boilerplate.common.baseclasses.BaseShootableEntity;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 public class EntityRocket extends BaseShootableEntity
 {

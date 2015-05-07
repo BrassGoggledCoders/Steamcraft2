@@ -36,7 +36,7 @@ import steamcraft.common.tiles.EmptyTiles;
 
 /**
  * @author Surseance
- * 
+ *
  */
 public class BlockCrystal extends BlockContainer
 {

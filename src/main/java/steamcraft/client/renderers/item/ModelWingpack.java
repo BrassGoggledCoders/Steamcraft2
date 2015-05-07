@@ -21,7 +21,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author Surseance
- * 
+ *
  */
 @SideOnly(Side.CLIENT)
 public class ModelWingpack extends ModelBiped

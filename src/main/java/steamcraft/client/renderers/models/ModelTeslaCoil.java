@@ -18,7 +18,7 @@ import net.minecraft.entity.Entity;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 public class ModelTeslaCoil extends ModelBase
 {

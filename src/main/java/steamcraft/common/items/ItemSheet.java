@@ -29,7 +29,7 @@ import steamcraft.common.lib.ModInfo;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 public class ItemSheet extends BaseItemWithMetadata
 {

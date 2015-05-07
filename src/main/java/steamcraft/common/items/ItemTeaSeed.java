@@ -26,7 +26,7 @@ import steamcraft.common.init.InitBlocks;
 
 /**
  * @author Surseance
- * 
+ *
  */
 public class ItemTeaSeed extends BaseItem implements IPlantable
 {

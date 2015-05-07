@@ -25,7 +25,7 @@ import steamcraft.common.tiles.EmptyTiles;
 
 /**
  * @author Surseance
- * 
+ *
  */
 public class BlockCastIronLampRenderer implements ISimpleBlockRenderingHandler
 {

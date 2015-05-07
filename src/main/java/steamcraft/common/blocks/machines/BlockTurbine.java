@@ -26,7 +26,7 @@ import steamcraft.common.tiles.energy.TileTurbine;
 
 /**
  * @author decebaldecebal
- * 
+ *
  */
 public class BlockTurbine extends BaseContainerBlock
 {

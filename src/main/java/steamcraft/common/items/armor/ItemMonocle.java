@@ -23,7 +23,7 @@ import steamcraft.common.lib.ModInfo;
 
 /**
  * @author Surseance
- * 
+ *
  */
 public class ItemMonocle extends BaseArmor
 {

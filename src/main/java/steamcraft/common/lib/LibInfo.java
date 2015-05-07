@@ -20,7 +20,7 @@ public class LibInfo
 	public static String[] metals = { "Aluminum", "Copper", "Tin", "Zinc", "Brass", "Bronze", "Steel", "CastIron" };
 	public static String[] metalsV = { "Iron", "Gold" };
 	private static String[] brassBlocksMembers = { "Longeye", "DocArcane", "CaptianNivea", "DrVesuvius", "PeaGreen", "elShoggotho", "Ainuryn", "Piyok0",
-			"Ryan_T15", "AdmiralSocrates" };
+		"Ryan_T15", "AdmiralSocrates" };
 	public static String[] contributors = { "domi1819", "frothiny", "MrIbby", "HCSarise" };
 	public static String[] bugsquashers = { "ClockwerkKaiser" };
 	public static String[] devsandreporters = StringUtils.merge(bugsquashers, Boilerplate.devs);

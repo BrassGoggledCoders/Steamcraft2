@@ -20,7 +20,7 @@ import steamcraft.common.items.armor.ItemBrassArmor;
 
 /**
  * @author decebaldecebal
- * 
+ *
  */
 public class SlotBrassArmor extends Slot
 {

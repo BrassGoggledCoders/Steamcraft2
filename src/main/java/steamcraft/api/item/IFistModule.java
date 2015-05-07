@@ -21,7 +21,7 @@ public interface IFistModule extends IModule
 	// The type of effect (see below)
 	/**
 	 * Gets the module effect type.
-	 * 
+	 *
 	 * @return the module effect type
 	 */
 	public EnumModuleEffectType getModuleEffectType();

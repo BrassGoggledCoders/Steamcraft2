@@ -25,7 +25,7 @@ import steamcraft.common.lib.ModInfo;
 
 /**
  * @author Surseance
- * 
+ *
  */
 public class BaseBlock extends Block
 {

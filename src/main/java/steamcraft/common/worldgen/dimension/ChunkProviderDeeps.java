@@ -210,7 +210,7 @@ public class ChunkProviderDeeps implements IChunkProvider
 				BiomeGenBase biomegenbase = p_147422_5_[l + (k * 16)];
 				biomegenbase.genTerrainBlocks(this.worldObj, this.rand, p_147422_3_, p_147422_4_, (p_147422_1_ * 16) + k, (p_147422_2_ * 16) + l,
 						this.stoneNoise[l
-								+ (k * 16)]);
+						                + (k * 16)]);
 			}
 		}
 	}

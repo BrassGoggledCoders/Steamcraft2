@@ -72,7 +72,7 @@ public class ItemWithCraftingDurability extends BaseItem
 	@SideOnly(Side.CLIENT)
 	public boolean hasEffect(ItemStack p_77636_1_)
 	{
-		return hasEffect;
+		return this.hasEffect;
 	}
 
 	@Override
@@ -80,7 +80,7 @@ public class ItemWithCraftingDurability extends BaseItem
 	{
 		if(player.getCommandSenderName() != null)
 		{
-			if(stack.getItem() == InitItems.itemHammer && Arrays.asList(LibInfo.devsandreporters).contains(player.getCommandSenderName()))
+			if((stack.getItem() == InitItems.itemHammer) && Arrays.asList(LibInfo.devsandreporters).contains(player.getCommandSenderName()))
 			{
 				stack.stackSize = 0;
 				stack.func_150996_a(InitItems.itemBugHammer);

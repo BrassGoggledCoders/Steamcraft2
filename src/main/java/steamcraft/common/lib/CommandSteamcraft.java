@@ -23,7 +23,7 @@ import net.minecraft.util.EnumChatFormatting;
 
 /**
  * @author Surseance
- * 
+ *
  */
 public class CommandSteamcraft extends CommandBase
 {

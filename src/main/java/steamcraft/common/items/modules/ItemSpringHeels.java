@@ -20,14 +20,13 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-import steamcraft.api.item.IArmorModule.EnumArmorEffectType;
 import steamcraft.api.item.ModuleRegistry;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.ModInfo;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 public class ItemSpringHeels extends PoweredArmorModule
 {

@@ -30,7 +30,7 @@ import steamcraft.common.lib.ModInfo;
 
 /**
  * @author Surseance
- * 
+ *
  */
 public class ItemChisel extends BaseItem
 {

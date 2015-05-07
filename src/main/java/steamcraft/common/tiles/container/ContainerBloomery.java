@@ -26,7 +26,7 @@ import boilerplate.common.baseclasses.BaseContainer;
 
 /**
  * @author warlordjones & decebaldecebal
- * 
+ *
  */
 public class ContainerBloomery extends BaseContainer
 {

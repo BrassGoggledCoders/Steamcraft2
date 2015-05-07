@@ -29,7 +29,7 @@ import steamcraft.common.tiles.TileSteamBoiler;
 
 /**
  * @author decebaldecebal
- * 
+ *
  */
 public class BlockSteamBoiler extends BlockBaseBoiler
 {

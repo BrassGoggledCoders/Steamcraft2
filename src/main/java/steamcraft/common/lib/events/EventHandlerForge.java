@@ -104,7 +104,7 @@ public class EventHandlerForge
 	@SideOnly(Side.CLIENT)
 	public void renderOverlay(RenderGameOverlayEvent.Text event)
 	{
-		if(player != null && player.inventory.armorItemInSlot(3) != null)
+		if((this.player != null) && (this.player.inventory.armorItemInSlot(3) != null))
 		{
 			ItemStack helmet = this.player.inventory.armorItemInSlot(3);
 			if((helmet != null) && (helmet.getItem() == InitItems.itemMonocle))

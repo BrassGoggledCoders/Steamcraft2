@@ -26,7 +26,7 @@ import steamcraft.common.tiles.TileTimeBomb;
 
 /**
  * @author decebaldecebal
- * 
+ *
  */
 public class TimeBombPacket implements IMessage
 {

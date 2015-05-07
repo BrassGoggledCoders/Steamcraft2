@@ -24,7 +24,7 @@ import steamcraft.common.tiles.energy.TileCharger;
 
 /**
  * @author decebaldecebal
- * 
+ *
  */
 public class GuiCharger extends BaseContainerGui
 {

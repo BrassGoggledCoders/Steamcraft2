@@ -25,7 +25,7 @@ public interface IModule
 	// Localized Name
 	/**
 	 * Gets the name.
-	 * 
+	 *
 	 * @return the name
 	 */
 	public String getName();
@@ -33,14 +33,14 @@ public interface IModule
 	// Unlocalized Name
 	/**
 	 * Gets the module id.
-	 * 
+	 *
 	 * @return the module id
 	 */
 	public String getModuleId();
 
 	/**
 	 * Apply module effect.
-	 * 
+	 *
 	 * @param world
 	 *            the world
 	 * @param player

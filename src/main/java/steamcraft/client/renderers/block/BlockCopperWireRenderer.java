@@ -27,7 +27,7 @@ import steamcraft.common.tiles.energy.TileCopperWire;
 
 /**
  * @author Surseance
- * 
+ *
  */
 public class BlockCopperWireRenderer implements ISimpleBlockRenderingHandler
 {

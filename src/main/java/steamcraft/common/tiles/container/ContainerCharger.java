@@ -28,7 +28,7 @@ import boilerplate.common.baseclasses.BaseContainer;
 
 /**
  * @author decebaldecebal
- * 
+ *
  */
 public class ContainerCharger extends BaseContainer
 {

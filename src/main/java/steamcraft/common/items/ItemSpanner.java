@@ -30,7 +30,7 @@ import boilerplate.common.baseclasses.UniversalWrench;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 public class ItemSpanner extends UniversalWrench
 {

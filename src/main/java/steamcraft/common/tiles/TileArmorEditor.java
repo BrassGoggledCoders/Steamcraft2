@@ -28,7 +28,7 @@ import boilerplate.common.baseclasses.BaseTileWithInventory;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 public class TileArmorEditor extends BaseTileWithInventory implements IInventory
 {

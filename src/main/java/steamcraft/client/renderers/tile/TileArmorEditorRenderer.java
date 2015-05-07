@@ -25,7 +25,7 @@ import boilerplate.client.renderers.RenderFloatingItem;
 
 /**
  * @author Surseance
- * 
+ *
  */
 public class TileArmorEditorRenderer extends TileEntitySpecialRenderer
 {

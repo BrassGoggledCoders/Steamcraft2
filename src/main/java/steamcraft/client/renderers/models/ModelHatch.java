@@ -17,7 +17,7 @@ import net.minecraft.client.model.ModelRenderer;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 public class ModelHatch extends ModelBase
 {

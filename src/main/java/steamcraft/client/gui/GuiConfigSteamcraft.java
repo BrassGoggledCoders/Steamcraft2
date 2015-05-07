@@ -22,9 +22,9 @@ import steamcraft.common.config.ConfigBalance;
 import steamcraft.common.lib.ModInfo;
 
 /**
- * 
+ *
  * @author decebaldecebal
- * 
+ *
  */
 public class GuiConfigSteamcraft extends GuiConfig
 {

@@ -29,7 +29,7 @@ import steamcraft.common.lib.ModInfo;
 
 /**
  * @author Decebaldecebal
- * 
+ *
  */
 public class ItemNormalArmor extends BaseArmor
 {

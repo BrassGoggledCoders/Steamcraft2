@@ -32,7 +32,7 @@ public class ModuleRegistry
 
 	/**
 	 * Register module.
-	 * 
+	 *
 	 * @param module
 	 *            the module
 	 */
@@ -43,7 +43,7 @@ public class ModuleRegistry
 
 	/**
 	 * Gets the module.
-	 * 
+	 *
 	 * @param id
 	 *            the id
 	 * @return the module
@@ -55,7 +55,7 @@ public class ModuleRegistry
 
 	/**
 	 * Sets the module incompatibilities.
-	 * 
+	 *
 	 * @param module
 	 *            the module
 	 * @param incompatibilities
@@ -69,7 +69,7 @@ public class ModuleRegistry
 
 	/**
 	 * Gets the module incompatibilities.
-	 * 
+	 *
 	 * @param id
 	 *            the id
 	 * @return the module incompatibilities

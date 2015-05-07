@@ -22,7 +22,7 @@ import boilerplate.common.baseclasses.CreativeTabBase;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 public class CreativeTabSteamcraft extends CreativeTabBase
 {

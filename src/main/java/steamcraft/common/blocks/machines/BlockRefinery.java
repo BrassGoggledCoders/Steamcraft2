@@ -32,7 +32,7 @@ import steamcraft.common.tiles.TileRefinery;
 
 /**
  * @author decebaldecebal
- * 
+ *
  */
 public class BlockRefinery extends BaseContainerBlock
 {

@@ -47,7 +47,7 @@ public class BlockCustomDoubleSlab extends BlockSlab
 	@Override
 	public String func_150002_b(int p_150002_1_)
 	{
-		return ModInfo.PREFIX + type;
+		return ModInfo.PREFIX + this.type;
 	}
 
 	@Override
@@ -59,12 +59,12 @@ public class BlockCustomDoubleSlab extends BlockSlab
 	@Override
 	public Item getItemDropped(int metadata, Random random, int fortune)
 	{
-		return Item.getItemFromBlock(singleslab);
+		return Item.getItemFromBlock(this.singleslab);
 	}
 
 	@Override
 	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z)
 	{
-		return new ItemStack(singleslab, 1, world.getBlockMetadata(x, y, z));
+		return new ItemStack(this.singleslab, 1, world.getBlockMetadata(x, y, z));
 	}
 }

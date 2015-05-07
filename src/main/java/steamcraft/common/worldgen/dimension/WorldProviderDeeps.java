@@ -37,7 +37,7 @@ public class WorldProviderDeeps extends WorldProvider
 
 	/**
 	 * A message to display to the user when they transfer to this dimension.
-	 * 
+	 *
 	 * @return The message to be displayed
 	 */
 	@Override
@@ -48,7 +48,7 @@ public class WorldProviderDeeps extends WorldProvider
 
 	/**
 	 * A Message to display to the user when they transfer out of this dismension.
-	 * 
+	 *
 	 * @return The message to be displayed
 	 */
 	@Override

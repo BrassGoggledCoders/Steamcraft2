@@ -32,7 +32,7 @@ import boilerplate.common.baseclasses.BaseContainer;
 
 /**
  * @author Decebaldecebal
- * 
+ *
  */
 public class ContainerSteamBoiler extends BaseContainer
 {

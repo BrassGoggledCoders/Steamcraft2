@@ -21,7 +21,7 @@ import steamcraft.common.init.InitBlocks;
 
 /**
  * @author Surseance
- * 
+ *
  */
 public class BlockEtherium extends BaseBlock implements IChiselable
 {

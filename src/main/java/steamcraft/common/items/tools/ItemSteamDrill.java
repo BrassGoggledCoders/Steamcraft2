@@ -31,7 +31,7 @@ import boilerplate.common.utils.PlayerUtils;
 
 /**
  * @author decebaldecebal
- * 
+ *
  */
 public class ItemSteamDrill extends ItemDrill
 {

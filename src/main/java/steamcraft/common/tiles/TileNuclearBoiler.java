@@ -16,7 +16,7 @@ import steamcraft.common.init.InitItems;
 
 /**
  * @author Decebaldecebal
- * 
+ *
  */
 public class TileNuclearBoiler extends TileBaseBoiler
 {

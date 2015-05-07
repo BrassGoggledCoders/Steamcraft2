@@ -22,7 +22,7 @@ import steamcraft.api.block.IHammerable;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 public class TileDropHammer extends TileEntity
 {

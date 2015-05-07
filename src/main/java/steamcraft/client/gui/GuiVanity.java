@@ -27,7 +27,7 @@ import steamcraft.common.lib.ModInfo;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 @SideOnly(Side.CLIENT)
 public class GuiVanity extends GuiContainer

@@ -12,7 +12,7 @@ import net.minecraft.item.ItemStack;
 
 /**
  * The Interface IHammerable.
- * 
+ *
  * @author warlordjones
  */
 @Deprecated
@@ -20,9 +20,8 @@ public interface IHammerable
 {
 
 	/**
-	 * Gets the output when the Drop Hammer (NYI) is used on the implementing
-	 * Block
-	 * 
+	 * Gets the output when the Drop Hammer (NYI) is used on the implementing Block
+	 *
 	 * @param meta
 	 *            the meta
 	 * @return the output

@@ -22,7 +22,6 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-import steamcraft.api.item.IArmorModule.EnumArmorEffectType;
 import steamcraft.api.item.ModuleRegistry;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.ModInfo;
@@ -62,13 +61,12 @@ public class ItemAutofeeder extends BaseArmorModule
 	@Override
 	public void applyModuleEffect(World world, EntityPlayer player, ItemStack stack)
 	{
-		for(int i = 0; i < player.inventory.mainInventory.length; i++)
+		for(ItemStack stack1 : player.inventory.mainInventory)
 		{
-			if(player.inventory.mainInventory[i] != null)
+			if(stack1 != null)
 			{
-				ItemStack stack1 = player.inventory.mainInventory[i];
 				Item item = stack1.getItem();
-				if(item instanceof ItemFood && player.getFoodStats().needFood())
+				if((item instanceof ItemFood) && player.getFoodStats().needFood())
 				{
 					ItemFood food = (ItemFood) item;
 					food.onEaten(stack1, world, player);

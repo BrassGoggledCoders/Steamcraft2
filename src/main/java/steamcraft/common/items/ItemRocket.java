@@ -28,7 +28,7 @@ import steamcraft.common.lib.ModInfo;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 public class ItemRocket extends BaseItemWithMetadata
 {

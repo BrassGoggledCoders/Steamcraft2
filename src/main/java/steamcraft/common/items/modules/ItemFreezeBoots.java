@@ -23,7 +23,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 import net.minecraftforge.common.util.ForgeDirection;
 
-import steamcraft.api.item.IArmorModule.EnumArmorEffectType;
 import steamcraft.api.item.ModuleRegistry;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.init.InitBlocks;

@@ -22,7 +22,7 @@ import boilerplate.common.baseclasses.BaseContainer;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 public class ContainerArmorEditor extends BaseContainer
 {

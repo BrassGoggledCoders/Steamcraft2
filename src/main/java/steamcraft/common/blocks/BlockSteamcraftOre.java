@@ -36,7 +36,7 @@ import boilerplate.common.baseclasses.BaseMetadataBlock;
 
 /**
  * @author Surseance
- * 
+ *
  */
 public class BlockSteamcraftOre extends BaseMetadataBlock implements IHammerable
 {

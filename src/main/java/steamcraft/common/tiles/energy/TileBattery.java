@@ -31,7 +31,7 @@ import boilerplate.common.baseclasses.BaseTileWithInventory;
 
 /**
  * @author decebaldecebal
- * 
+ *
  */
 public class TileBattery extends BaseTileWithInventory implements IEnergyHandler
 {

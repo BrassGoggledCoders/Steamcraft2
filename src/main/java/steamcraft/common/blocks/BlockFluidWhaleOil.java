@@ -29,7 +29,7 @@ import boilerplate.common.utils.ItemStackUtils;
 
 /**
  * @author Decebaldecebal
- * 
+ *
  */
 public class BlockFluidWhaleOil extends BlockFluidClassic
 {

@@ -28,7 +28,7 @@ import steamcraft.common.lib.ModInfo;
 
 /**
  * @author Surseance
- * 
+ *
  */
 public class ItemGunPart extends BaseItemWithMetadata
 {

@@ -26,7 +26,7 @@ import steamcraft.common.tiles.TileArmorEditor;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 public class BlockArmorEditor extends BaseContainerBlock
 {

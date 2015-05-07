@@ -76,7 +76,7 @@ public class BlockCastIronGate extends BlockDirectional
 		 */
 		return isFenceGateOpen(l) ? null : ((l != 2) && (l != 0) ? AxisAlignedBB.getBoundingBox(p_149668_2_ + 0.375F, p_149668_3_, p_149668_4_,
 				p_149668_2_ + 0.625F, p_149668_3_ + 1.5F, p_149668_4_ + 1) : AxisAlignedBB.getBoundingBox(p_149668_2_, p_149668_3_, p_149668_4_ + 0.375F,
-				p_149668_2_ + 1, p_149668_3_ + 1.5F, p_149668_4_ + 0.625F));
+						p_149668_2_ + 1, p_149668_3_ + 1.5F, p_149668_4_ + 0.625F));
 	}
 
 	/**

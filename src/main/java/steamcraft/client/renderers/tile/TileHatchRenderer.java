@@ -24,7 +24,7 @@ import boilerplate.client.ClientHelper;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 public class TileHatchRenderer extends TileEntitySpecialRenderer
 {

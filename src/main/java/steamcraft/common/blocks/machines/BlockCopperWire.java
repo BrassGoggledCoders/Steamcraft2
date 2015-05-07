@@ -38,7 +38,7 @@ import steamcraft.common.tiles.energy.TileCopperWire;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 public class BlockCopperWire extends BaseContainerBlock
 {

@@ -30,7 +30,7 @@ import boilerplate.client.ClientHelper;
 
 /**
  * @author decebaldecebal
- * 
+ *
  */
 public class CopperPipeFluidPacket implements IMessage
 {

@@ -32,7 +32,7 @@ import steamcraft.common.tiles.energy.TileCharger;
 
 /**
  * @author decebaldecebal
- * 
+ *
  */
 public class BlockCharger extends BaseContainerBlock
 {

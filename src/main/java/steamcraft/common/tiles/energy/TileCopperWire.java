@@ -39,7 +39,7 @@ import steamcraft.common.tiles.TileCopperPipe.Coords;
 
 /**
  * @author decebaldecebal
- * 
+ *
  */
 public class TileCopperWire extends TileEntity implements IEnergyHandler
 {

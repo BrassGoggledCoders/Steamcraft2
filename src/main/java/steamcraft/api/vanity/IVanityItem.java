@@ -22,7 +22,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 public interface IVanityItem
 {
-	
+
 	/**
 	 * Gets the vanity item model.
 	 *

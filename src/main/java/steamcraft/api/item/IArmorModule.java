@@ -10,22 +10,21 @@ package steamcraft.api.item;
 
 /**
  * The Interface IArmorModule.
- * 
+ *
  * @author warlordjones
  */
 public interface IArmorModule extends IModule
 {
 	/**
-	 * Gets the armor piece the module can be applied to. 0 is helmet, 1 is
-	 * plate, 2 is legs and 3 is boots. Return -1 for any piece
-	 * 
+	 * Gets the armor piece the module can be applied to. 0 is helmet, 1 is plate, 2 is legs and 3 is boots. Return -1 for any piece
+	 *
 	 * @return the applicable piece
 	 */
 	public int getApplicablePiece();
 
 	/**
 	 * Gets the armor effect type. See @link EnumArmorEffectType
-	 * 
+	 *
 	 * @return the armor effect type
 	 */
 	public EnumArmorEffectType getArmorEffectType();

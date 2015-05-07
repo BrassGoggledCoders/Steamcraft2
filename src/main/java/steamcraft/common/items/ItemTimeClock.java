@@ -30,7 +30,7 @@ import boilerplate.client.ClientHelper;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 public class ItemTimeClock extends BaseItem
 {

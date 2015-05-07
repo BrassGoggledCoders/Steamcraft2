@@ -26,7 +26,7 @@ import boilerplate.common.baseclasses.BaseShootableEntity;
 
 /**
  * @author Surseance (Johnny Eatmon)
- * 
+ *
  */
 public class EntityBullet extends BaseShootableEntity
 {

@@ -54,7 +54,7 @@ public class BlockCustomWall extends BlockWall
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(int side, int meta)
 	{
-		return block.getIcon(0, metadata);
+		return this.block.getIcon(0, this.metadata);
 	}
 
 	/**
@@ -76,8 +76,8 @@ public class BlockCustomWall extends BlockWall
 		Block block = world.getBlock(x, y, z);
 		if(this.stonebrick)
 		{
-			if(block == InitBlocks.blockStonebrickWall || block == InitBlocks.blockStonebrickWallMossy || block == InitBlocks.blockStonebrickWallCracked
-					|| block == InitBlocks.blockStonebrickWallChiseled)
+			if((block == InitBlocks.blockStonebrickWall) || (block == InitBlocks.blockStonebrickWallMossy) || (block == InitBlocks.blockStonebrickWallCracked)
+					|| (block == InitBlocks.blockStonebrickWallChiseled))
 				return true;
 		}
 		return super.canConnectWallTo(world, x, y, z);

@@ -22,7 +22,7 @@ import steamcraft.common.tiles.container.ContainerArmorEditor;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 public class GuiArmorEditor extends BaseContainerGui
 {

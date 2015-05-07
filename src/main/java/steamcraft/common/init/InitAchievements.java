@@ -21,13 +21,13 @@ import steamcraft.common.lib.ModInfo;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 public class InitAchievements
 {
 	public static Achievement raygunAchieve, shrinkrayAchieve, boilerAchieve, nukeboilerAchieve, ingotAchieve, sheetAchieve, intakeAchieve, teaAchieve,
-			engraveAchieve,
-			wingsAchieve, jetpackAchieve, wingpackAchieve, gogglesAchieve, gunAchieve, turbineAchieve, rodAchieve, zapAchieve, creatorAchieve;
+	engraveAchieve,
+	wingsAchieve, jetpackAchieve, wingpackAchieve, gogglesAchieve, gunAchieve, turbineAchieve, rodAchieve, zapAchieve, creatorAchieve;
 
 	public static AchievementPage sc2AchievePage;
 

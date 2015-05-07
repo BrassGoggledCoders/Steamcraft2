@@ -33,7 +33,7 @@ import steamcraft.common.tiles.TileSteamBoiler;
 
 /**
  * @author decebaldecebal
- * 
+ *
  */
 public class TileTurbine extends TileEntity implements IFluidHandler, IEnergyProvider
 {

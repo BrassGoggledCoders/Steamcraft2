@@ -27,7 +27,7 @@ import steamcraft.common.init.InitBlocks;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 public class WorldGenBrassTree extends WorldGenAbstractTree
 {

@@ -25,7 +25,7 @@ import steamcraft.common.init.InitItems;
 
 /**
  * @author warlordjones & decebaldecebal
- * 
+ *
  */
 public class BloomeryRecipes
 {

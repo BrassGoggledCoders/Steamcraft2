@@ -21,7 +21,7 @@ import steamcraft.common.tiles.energy.TileTeslaCoil;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 public class BlockTeslaCoil extends BaseContainerBlock
 {

@@ -34,7 +34,7 @@ import boilerplate.common.baseclasses.BaseMetadataBlock;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 public class BlockMetal extends BaseMetadataBlock implements IChiselable
 {

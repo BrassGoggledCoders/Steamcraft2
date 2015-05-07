@@ -107,7 +107,7 @@ public class ItemShrinkray extends ElectricItem
 							int y = mop.blockY;
 							int z = mop.blockZ;
 
-							if(!world.isAirBlock(x, y, z) && !Utils.getBlockUnbreakable(world, x, y, z) && world.getTileEntity(x, y, z) == null)
+							if(!world.isAirBlock(x, y, z) && !Utils.getBlockUnbreakable(world, x, y, z) && (world.getTileEntity(x, y, z) == null))
 							{
 								player.worldObj.spawnEntityInWorld(new EntityMinedBlock(player.worldObj, x + 0.5F, y + 0.5F, z + 0.5F, world.getBlock(x, y, z),
 										world.getBlockMetadata(x, y, z), false));

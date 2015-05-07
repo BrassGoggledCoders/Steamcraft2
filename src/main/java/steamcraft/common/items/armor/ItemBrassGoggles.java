@@ -29,7 +29,7 @@ import boilerplate.client.ClientHelper;
 
 /**
  * @author Surseance
- * 
+ *
  */
 public class ItemBrassGoggles extends BaseArmor
 {

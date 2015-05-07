@@ -35,7 +35,7 @@ import steamcraft.common.lib.DamageSourceHandler;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 public class TileTeslaCoil extends TileEntity implements IEnergyReceiver
 {

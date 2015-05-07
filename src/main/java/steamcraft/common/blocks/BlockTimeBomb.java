@@ -33,7 +33,7 @@ import steamcraft.common.tiles.TileTimeBomb;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 public class BlockTimeBomb extends BaseContainerBlock
 {

@@ -16,7 +16,7 @@ import net.minecraft.util.DamageSource;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 public class DamageSourceHandler
 {

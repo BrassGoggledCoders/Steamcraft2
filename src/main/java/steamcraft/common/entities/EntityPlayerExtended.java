@@ -24,7 +24,7 @@ import steamcraft.common.lib.ModInfo;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 // TODO: Add packets
 public class EntityPlayerExtended implements IExtendedEntityProperties

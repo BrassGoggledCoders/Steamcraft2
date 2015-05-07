@@ -33,7 +33,7 @@ import boilerplate.client.ClientHelper;
 
 /**
  * @author Decebaldecebal
- * 
+ *
  */
 public class ItemSteamJetpack extends BaseArmor
 {
@@ -188,7 +188,7 @@ public class ItemSteamJetpack extends BaseArmor
 				if(entityLiving instanceof EntityPlayer)
 					armorModel.aimedBow = ((EntityPlayer) entityLiving).getItemInUseDuration() > 2;
 
-				return armorModel;
+					return armorModel;
 			}
 		}
 

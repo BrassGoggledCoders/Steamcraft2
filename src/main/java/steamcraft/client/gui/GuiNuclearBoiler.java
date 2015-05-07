@@ -25,7 +25,7 @@ import steamcraft.common.tiles.container.ContainerNuclearBoiler;
 
 /**
  * @author decebaldecebal
- * 
+ *
  */
 public class GuiNuclearBoiler extends BaseContainerGui
 {

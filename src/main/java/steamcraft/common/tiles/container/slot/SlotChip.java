@@ -20,7 +20,7 @@ import steamcraft.common.items.pda.ItemChip;
 
 /**
  * @author decebaldecebal
- * 
+ *
  */
 public class SlotChip extends Slot
 {

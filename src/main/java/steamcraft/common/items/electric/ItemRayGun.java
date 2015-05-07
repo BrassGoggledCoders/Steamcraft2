@@ -30,7 +30,7 @@ import boilerplate.common.utils.PlayerUtils;
 
 /**
  * @author Surseance
- * 
+ *
  */
 
 public class ItemRayGun extends ElectricItem

@@ -21,7 +21,7 @@ import steamcraft.common.tiles.container.slot.SlotVanity;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 public class ContainerVanity extends Container
 {

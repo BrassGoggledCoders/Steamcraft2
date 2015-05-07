@@ -16,7 +16,7 @@ import java.io.File;
 
 /**
  * @author Surseance
- * 
+ *
  */
 public class Config
 {

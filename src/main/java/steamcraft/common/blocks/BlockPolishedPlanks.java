@@ -32,7 +32,7 @@ import boilerplate.common.baseclasses.BaseMetadataBlock;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 public class BlockPolishedPlanks extends BaseMetadataBlock
 {

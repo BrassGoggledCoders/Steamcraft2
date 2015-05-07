@@ -20,7 +20,7 @@ import steamcraft.api.vanity.IVanityItem;
 
 /**
  * @author decebaldecebal
- * 
+ *
  */
 public class SlotVanity extends Slot
 {

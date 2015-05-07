@@ -31,13 +31,13 @@ import boilerplate.common.baseclasses.BaseTileWithInventory;
 
 /**
  * @author Decebaldecebal
- * 
+ *
  */
 public class TileBaseBoiler extends BaseTileWithInventory implements IFluidHandler
 {
 	public static final int steamPerTick = 20;
 	protected static final int waterPerTick = 5; // 3x3 RC boiler is 5 water/tick
-													// and 1mb for 160mb steam?
+	// and 1mb for 160mb steam?
 
 	public int furnaceBurnTime = 0;
 	public int currentItemBurnTime = 0;

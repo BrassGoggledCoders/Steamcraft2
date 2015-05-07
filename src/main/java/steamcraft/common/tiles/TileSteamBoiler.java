@@ -14,7 +14,7 @@ package steamcraft.common.tiles;
 
 /**
  * @author Decebaldecebal
- * 
+ *
  */
 public class TileSteamBoiler extends TileBaseBoiler
 {

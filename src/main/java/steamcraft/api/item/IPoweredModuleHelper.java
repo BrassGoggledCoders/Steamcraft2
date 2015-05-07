@@ -11,7 +11,7 @@ public interface IPoweredModuleHelper
 
 	/**
 	 * Call this from applyModuleEffect to consume steam/RF
-	 * 
+	 *
 	 * @param player
 	 * @param stack
 	 * @return

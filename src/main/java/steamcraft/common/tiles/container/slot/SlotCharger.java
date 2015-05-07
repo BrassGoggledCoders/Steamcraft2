@@ -20,7 +20,7 @@ import boilerplate.api.IEnergyItem;
 
 /**
  * @author decebaldecebal
- * 
+ *
  */
 public class SlotCharger extends Slot
 {

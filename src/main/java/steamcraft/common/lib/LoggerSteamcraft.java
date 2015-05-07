@@ -18,7 +18,7 @@ import org.apache.logging.log4j.Logger;
 
 /**
  * @author Surseance
- * 
+ *
  */
 public class LoggerSteamcraft
 {

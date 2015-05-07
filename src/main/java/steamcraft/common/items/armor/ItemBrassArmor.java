@@ -43,10 +43,10 @@ import thaumcraft.api.nodes.IRevealer;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 @Optional.InterfaceList({ @Optional.Interface(iface = "thaumcraft.api.IGoggles", modid = "Thaumcraft"),
-		@Optional.Interface(iface = "thaumcraft.api.nodes.IRevealer", modid = "Thaumcraft") })
+	@Optional.Interface(iface = "thaumcraft.api.nodes.IRevealer", modid = "Thaumcraft") })
 public class ItemBrassArmor extends BaseArmor implements ISpecialArmor, IGoggles, IRevealer
 {
 

@@ -37,7 +37,7 @@ import steamcraft.common.init.InitBlocks;
 
 /**
  * @author warlordjones, MrIbby
- * 
+ *
  */
 public class TileLightningRod extends TileEntity implements IEnergyProvider
 {

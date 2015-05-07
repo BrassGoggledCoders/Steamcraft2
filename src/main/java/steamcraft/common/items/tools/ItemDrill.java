@@ -20,9 +20,9 @@ import steamcraft.common.Steamcraft;
 
 /**
  * Base class for drills.
- * 
+ *
  * @author Decebaldecebal
- * 
+ *
  */
 public class ItemDrill extends ItemModTool
 {

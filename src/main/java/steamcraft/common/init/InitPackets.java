@@ -31,7 +31,7 @@ import steamcraft.common.packets.UpdateClientsideInventoryPacket.UpdateClientsid
 
 /**
  * @author decebaldecebal
- * 
+ *
  */
 public class InitPackets
 {

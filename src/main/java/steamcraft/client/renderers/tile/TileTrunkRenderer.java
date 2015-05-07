@@ -42,7 +42,7 @@ public class TileTrunkRenderer extends TileEntitySpecialRenderer
 			Block block = p_147500_1_.getBlockType();
 			i = p_147500_1_.getBlockMetadata();
 
-			if(block instanceof BlockTrunk && i == 0)
+			if((block instanceof BlockTrunk) && (i == 0))
 			{
 				try
 				{
@@ -58,11 +58,11 @@ public class TileTrunkRenderer extends TileEntitySpecialRenderer
 			p_147500_1_.checkForAdjacentChests();
 		}
 
-		if(p_147500_1_.adjacentChestZNeg == null && p_147500_1_.adjacentChestXNeg == null)
+		if((p_147500_1_.adjacentChestZNeg == null) && (p_147500_1_.adjacentChestXNeg == null))
 		{
 			ModelChest modelchest;
 
-			if(p_147500_1_.adjacentChestXPos == null && p_147500_1_.adjacentChestZPos == null)
+			if((p_147500_1_.adjacentChestXPos == null) && (p_147500_1_.adjacentChestZPos == null))
 			{
 				modelchest = this.field_147510_h;
 
@@ -104,25 +104,25 @@ public class TileTrunkRenderer extends TileEntitySpecialRenderer
 				short1 = -90;
 			}
 
-			if(i == 2 && p_147500_1_.adjacentChestXPos != null)
+			if((i == 2) && (p_147500_1_.adjacentChestXPos != null))
 			{
 				GL11.glTranslatef(1.0F, 0.0F, 0.0F);
 			}
 
-			if(i == 5 && p_147500_1_.adjacentChestZPos != null)
+			if((i == 5) && (p_147500_1_.adjacentChestZPos != null))
 			{
 				GL11.glTranslatef(0.0F, 0.0F, -1.0F);
 			}
 
 			GL11.glRotatef(short1, 0.0F, 1.0F, 0.0F);
 			GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
-			float f1 = p_147500_1_.prevLidAngle + (p_147500_1_.lidAngle - p_147500_1_.prevLidAngle) * p_147500_8_;
+			float f1 = p_147500_1_.prevLidAngle + ((p_147500_1_.lidAngle - p_147500_1_.prevLidAngle) * p_147500_8_);
 			float f2;
 
 			if(p_147500_1_.adjacentChestZNeg != null)
 			{
-				f2 = p_147500_1_.adjacentChestZNeg.prevLidAngle + (p_147500_1_.adjacentChestZNeg.lidAngle - p_147500_1_.adjacentChestZNeg.prevLidAngle)
-						* p_147500_8_;
+				f2 = p_147500_1_.adjacentChestZNeg.prevLidAngle + ((p_147500_1_.adjacentChestZNeg.lidAngle - p_147500_1_.adjacentChestZNeg.prevLidAngle)
+						* p_147500_8_);
 
 				if(f2 > f1)
 				{
@@ -132,8 +132,8 @@ public class TileTrunkRenderer extends TileEntitySpecialRenderer
 
 			if(p_147500_1_.adjacentChestXNeg != null)
 			{
-				f2 = p_147500_1_.adjacentChestXNeg.prevLidAngle + (p_147500_1_.adjacentChestXNeg.lidAngle - p_147500_1_.adjacentChestXNeg.prevLidAngle)
-						* p_147500_8_;
+				f2 = p_147500_1_.adjacentChestXNeg.prevLidAngle + ((p_147500_1_.adjacentChestXNeg.lidAngle - p_147500_1_.adjacentChestXNeg.prevLidAngle)
+						* p_147500_8_);
 
 				if(f2 > f1)
 				{
@@ -142,8 +142,8 @@ public class TileTrunkRenderer extends TileEntitySpecialRenderer
 			}
 
 			f1 = 1.0F - f1;
-			f1 = 1.0F - f1 * f1 * f1;
-			modelchest.chestLid.rotateAngleX = -(f1 * (float) Math.PI / 2.0F);
+			f1 = 1.0F - (f1 * f1 * f1);
+			modelchest.chestLid.rotateAngleX = -((f1 * (float) Math.PI) / 2.0F);
 			modelchest.renderAll();
 			GL11.glDisable(GL12.GL_RESCALE_NORMAL);
 			GL11.glPopMatrix();

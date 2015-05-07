@@ -16,7 +16,7 @@ import net.minecraft.item.ItemStack;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 public class BaseItemWithMetadata extends BaseItem
 {

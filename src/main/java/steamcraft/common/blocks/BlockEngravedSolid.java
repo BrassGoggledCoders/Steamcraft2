@@ -32,7 +32,7 @@ import boilerplate.common.baseclasses.BaseMetadataBlock;
 
 /**
  * @author Surseance
- * 
+ *
  */
 public class BlockEngravedSolid extends BaseMetadataBlock
 {

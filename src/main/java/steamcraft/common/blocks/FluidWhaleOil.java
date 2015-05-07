@@ -16,7 +16,7 @@ import net.minecraftforge.fluids.Fluid;
 
 /**
  * @author warlordjones
- * 
+ *
  */
 public class FluidWhaleOil extends Fluid
 {

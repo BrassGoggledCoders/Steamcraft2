@@ -27,7 +27,7 @@ import steamcraft.common.tiles.TileCopperPipe;
 
 /**
  * @author Surseance
- * 
+ *
  */
 public class BlockCopperPipeRenderer implements ISimpleBlockRenderingHandler
 {

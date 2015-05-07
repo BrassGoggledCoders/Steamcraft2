@@ -21,7 +21,6 @@ import net.minecraft.util.StatCollector;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-import steamcraft.api.item.IArmorModule.EnumArmorEffectType;
 import steamcraft.api.item.IDefensiveArmorModule;
 import boilerplate.client.ClientHelper;
 import boilerplate.common.baseclasses.RootItem;
@@ -33,25 +32,21 @@ public abstract class BaseDefensiveModule extends RootItem implements IDefensive
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer par2EntityPlayer, List list, boolean par4)
 	{
-		if (ClientHelper.isShiftKeyDown())
+		if(ClientHelper.isShiftKeyDown())
 		{
 			list.add("Module ID: " + this.getModuleId());
 			list.add("Applicable Piece: " + this.getArmorPieceNameFromNumber(this.getApplicablePiece()));
 			list.add("Effect Type: " + this.getEffectTypeStringFromEnum(this.getArmorEffectType()));
 			list.add("Damage Absorbtion Ratio: " + this.getDamageAbsorbRatio());
 			list.add("Max Absorbtion: " + this.getMaxDamageAbsorb());
-			if (!StatCollector.translateToLocal(this.getUnlocalizedName() + ".desc").contains("item."))
+			if(!StatCollector.translateToLocal(this.getUnlocalizedName() + ".desc").contains("item."))
 			{
 				list.add("Module Effect: ");
 				this.getWrappedDesc(list, stack);
 			}
 			/*
-			 * if (this.getEnergyConsumedOnEffect() != 0)
-			 * list.add("Energy Usage on Effect: " +
-			 * this.getEnergyConsumedOnEffect()); if
-			 * (this.getSteamConsumedOnEffect() != 0)
-			 * list.add("Steam Usage on Effect: " +
-			 * this.getSteamConsumedOnEffect());
+			 * if (this.getEnergyConsumedOnEffect() != 0) list.add("Energy Usage on Effect: " + this.getEnergyConsumedOnEffect()); if
+			 * (this.getSteamConsumedOnEffect() != 0) list.add("Steam Usage on Effect: " + this.getSteamConsumedOnEffect());
 			 */
 		}
 		else
@@ -60,29 +55,29 @@ public abstract class BaseDefensiveModule extends RootItem implements IDefensive
 
 	public String getArmorPieceNameFromNumber(int number)
 	{
-		switch (number)
+		switch(number)
 		{
-		case -1:
-			return "All";
-		case 0:
-			return "Helmet";
-		case 1:
-			return "Chestplate";
-		case 2:
-			return "Leggings";
-		case 3:
-			return "Boots";
+			case -1:
+				return "All";
+			case 0:
+				return "Helmet";
+			case 1:
+				return "Chestplate";
+			case 2:
+				return "Leggings";
+			case 3:
+				return "Boots";
 		}
 		return "Error!";
 	}
 
 	public String getEffectTypeStringFromEnum(EnumArmorEffectType type)
 	{
-		if (type == EnumArmorEffectType.ONTICK)
+		if(type == EnumArmorEffectType.ONTICK)
 			return "On Equipped Tick";
-		else if (type == EnumArmorEffectType.HUD)
+		else if(type == EnumArmorEffectType.HUD)
 			return "HUD Element";
-		else if (type == EnumArmorEffectType.DEFENSIVE)
+		else if(type == EnumArmorEffectType.DEFENSIVE)
 			return "Defensive";
 		else
 			return "Error!";

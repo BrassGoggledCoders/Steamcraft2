@@ -21,7 +21,7 @@ import boilerplate.api.IEnergyItem;
 
 /**
  * @author decebaldecebal
- * 
+ *
  */
 public class SlotBattery extends Slot
 {

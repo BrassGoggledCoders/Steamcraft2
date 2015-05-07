@@ -20,7 +20,7 @@ import steamcraft.api.item.IArmorModule;
 
 /**
  * @author decebaldecebal
- * 
+ *
  */
 public class SlotModule extends Slot
 {
