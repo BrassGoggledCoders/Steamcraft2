@@ -108,6 +108,9 @@ tile.blockMangroveSlab.name=Mangrove Slab
 tile.blockWillowSlab.name=Willow Slab
 tile.blockPetrifiedSlab.name=Petrified Slab
 tile.blockStonebrickWall.name=Stonebrick Wall
+tile.blockStonebrickWallMossy.name=Mossy Stonebrick Wall
+tile.blockStonebrickWallCracked.name=Cracked Stonebrick Wall
+tile.blockStonebrickWallChiseled.name=Chiseled Stonebrick Wall
 tile.blockStoneslabWall.name=Stone Slab Wall
 
 #Ores
