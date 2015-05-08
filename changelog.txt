@@ -141,6 +141,19 @@ Beta 4.2:
 # Possibly fixed a startup crash I couldn’t reproduce
 # Fix missing texture on the edge of the cast iron railing
 # Fixed the Cast Iron Gate crashing
+Beta 4.3:
++ Stonebrick (with mossy, cracked and chiseled) and stone slab wall.
++ Capacitor. 64M storage, but only transfers at 10rf/tick. Intended to be a long term energy storage.
++ Autofeeder module
++ Update Chinese localisation - joccob
++ Add recipes for converting engraved blocks black to normal blocks
+* Diamond/Lapis engraved block retextures
+* Energy system rebalancing work. Still trying to work it out. 
+* Move the SC2 api TO SC2, rather than having it in Boilerplate. That was an…odd…idea of mine.
+* Change the magnet recipe to use a single-use voltaic pile rather than an electric jar. Never meant for the lightning rod to be anything more than an optional generator.
+* Shrinkray refuses to shrink tile entities. Intentional
+* Rename 'Chisel' to 'Engraving Tool’
+ 
 
 
 
