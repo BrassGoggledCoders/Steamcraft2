@@ -18,10 +18,10 @@ public class ModelTopHat extends ModelBase
 		this.textureHeight = 32;
 		this.top = new ModelRenderer(this, 0, 0);
 		this.top.setRotationPoint(0.0F, 0F, 0.0F);
-		this.top.addBox(0.0F, 0.0F, 0.0F, 8, 8, 8);
+		this.top.addBox(-4F, -17.0F, -4F, 8, 8, 8);
 		this.brim = new ModelRenderer(this, 0, 0);
 		this.brim.setRotationPoint(0.0F, 0F, 0.0F);
-		this.brim.addBox(0.0F, 0.0F, 0.0F, 11, 1, 11);
+		this.brim.addBox(-5.5F, -9.0F, -5.5F, 11, 1, 11);
 	}
 
 	@Override
