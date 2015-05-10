@@ -14,6 +14,7 @@ package steamcraft.common.lib.events;
 
 import java.util.HashMap;
 
+import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.potion.Potion;
@@ -32,7 +33,6 @@ import org.lwjgl.opengl.GL11;
 import steamcraft.api.vanity.IVanityItem;
 import steamcraft.client.ClientProxy;
 import steamcraft.client.lib.GuiIDs;
-import steamcraft.client.renderers.models.ModelTopHat;
 import steamcraft.common.container.InventoryVanity;
 import steamcraft.common.entities.EntityPlayerExtended;
 import steamcraft.common.init.InitBlocks;
@@ -81,12 +81,14 @@ public class EventHandlerClient
 			if(inventory.getStackInSlot(i) != null)
 			{
 				IVanityItem item = (IVanityItem) inventory.getStackInSlot(i).getItem();
-				ModelTopHat model = (ModelTopHat) item.getVanityItemModel();
+				ModelBase model = item.getVanityItemModel();
 				ClientHelper.textureManager().bindTexture(item.getItemTextureLocation());
 				GL11.glPushMatrix();
 				EntityPlayer p = event.entityPlayer;
-				model.render(0.06F, event.renderer.modelBipedMain.bipedHead);
-
+				// event.renderer.modelBipedMain.bipedHead.addChild(new ModelRenderer(model, "hat"));
+				// GL11.glTranslatef(0, -1F, 0);
+				model.render(null, event.renderer.modelBipedMain.bipedHead.rotateAngleX, event.renderer.modelBipedMain.bipedHead.rotateAngleY,
+						event.renderer.modelBipedMain.bipedHead.rotateAngleZ, -1, 0, 0.06F);
 				GL11.glPopMatrix();
 			}
 		}
