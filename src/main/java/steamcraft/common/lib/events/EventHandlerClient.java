@@ -14,9 +14,9 @@ package steamcraft.common.lib.events;
 
 import java.util.HashMap;
 
-import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.potion.Potion;
 
 import cpw.mods.fml.common.eventhandler.EventPriority;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
@@ -32,6 +32,7 @@ import org.lwjgl.opengl.GL11;
 import steamcraft.api.vanity.IVanityItem;
 import steamcraft.client.ClientProxy;
 import steamcraft.client.lib.GuiIDs;
+import steamcraft.client.renderers.models.ModelTopHat;
 import steamcraft.common.container.InventoryVanity;
 import steamcraft.common.entities.EntityPlayerExtended;
 import steamcraft.common.init.InitBlocks;
@@ -68,8 +69,11 @@ public class EventHandlerClient
 
 	@SideOnly(Side.CLIENT)
 	@SubscribeEvent(receiveCanceled = true)
-	public void onPlayerRender(RenderPlayerEvent.Post.Specials event)
+	public void onPlayerRender(RenderPlayerEvent.Specials.Post event)
 	{
+		if(event.entityLiving.getActivePotionEffect(Potion.invisibility) != null)
+			return;
+
 		EntityPlayerExtended props = ((EntityPlayerExtended) event.entityPlayer.getExtendedProperties(EntityPlayerExtended.EXT_PROP_NAME));
 		InventoryVanity inventory = props.getInventory();
 		for(int i = 0; i < inventory.getSizeInventory(); i++)
@@ -77,21 +81,12 @@ public class EventHandlerClient
 			if(inventory.getStackInSlot(i) != null)
 			{
 				IVanityItem item = (IVanityItem) inventory.getStackInSlot(i).getItem();
-				ModelBase model = item.getVanityItemModel();
+				ModelTopHat model = (ModelTopHat) item.getVanityItemModel();
 				ClientHelper.textureManager().bindTexture(item.getItemTextureLocation());
 				GL11.glPushMatrix();
-				float yaw = event.entityPlayer.prevRotationYawHead + ((event.entityPlayer.rotationYawHead - event.entityPlayer.prevRotationYawHead)
-						* event.partialRenderTick);
-				float yawOffset = event.entityPlayer.prevRenderYawOffset + ((event.entityPlayer.renderYawOffset - event.entityPlayer.prevRenderYawOffset)
-						* event.partialRenderTick);
-				float pitch = event.entityPlayer.prevRotationPitch + ((event.entityPlayer.rotationPitch - event.entityPlayer.prevRotationPitch)
-						* event.partialRenderTick);
-				GL11.glRotatef(yawOffset, 0, -1, 0);
-				GL11.glRotatef(yaw - 270, 0, 1, 0);
-				GL11.glRotatef(pitch, 0, 0, 1);
-				GL11.glTranslatef(item.getModelOffsetX(), item.getModelOffsetY(), item.getModelOffsetZ());
-				GL11.glRotatef(180, 1, 0, 0);
-				model.render(event.entity, 0, 0, 0, 1, 0, 0.0625F);
+				EntityPlayer p = event.entityPlayer;
+				model.render(0.06F, event.renderer.modelBipedMain.bipedHead);
+
 				GL11.glPopMatrix();
 			}
 		}

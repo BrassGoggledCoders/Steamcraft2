@@ -2,7 +2,6 @@ package steamcraft.client.renderers.models;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
-import net.minecraft.entity.Entity;
 
 /**
  * Created using Tabula 4.0.0
@@ -24,11 +23,12 @@ public class ModelTopHat extends ModelBase
 		this.brim.addBox(0.0F, 0.0F, 0.0F, 11, 1, 11);
 	}
 
-	@Override
-	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5)
+	public void render(float f5, ModelRenderer model)
 	{
 		this.top.render(f5);
 		this.brim.render(f5);
+		model.addChild(brim);
+		model.addChild(top);
 	}
 
 	/**
