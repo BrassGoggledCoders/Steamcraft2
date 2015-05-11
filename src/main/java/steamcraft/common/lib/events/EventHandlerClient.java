@@ -18,6 +18,7 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.potion.Potion;
+import net.minecraft.util.ResourceLocation;
 
 import cpw.mods.fml.common.eventhandler.EventPriority;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
@@ -38,6 +39,7 @@ import steamcraft.common.entities.EntityPlayerExtended;
 import steamcraft.common.init.InitBlocks;
 import steamcraft.common.init.InitItems;
 import steamcraft.common.init.InitPackets;
+import steamcraft.common.lib.ModInfo;
 import steamcraft.common.packets.OpenContainerFromClientPacket;
 import boilerplate.client.ClientHelper;
 
@@ -80,13 +82,16 @@ public class EventHandlerClient
 		{
 			if(inventory.getStackInSlot(i) != null)
 			{
+				EntityPlayer p = event.entityPlayer;
 				IVanityItem item = (IVanityItem) inventory.getStackInSlot(i).getItem();
 				ModelBase model = item.getVanityItemModel();
-				ClientHelper.textureManager().bindTexture(item.getItemTextureLocation());
+				if(p.getCommandSenderName() == "warlordjones")
+				{
+					ClientHelper.textureManager().bindTexture(new ResourceLocation(ModInfo.PREFIX + "/textures/models/vanity/tophat-gold.png"));
+				}
+				else
+					ClientHelper.textureManager().bindTexture(item.getItemTextureLocation());
 				GL11.glPushMatrix();
-				EntityPlayer p = event.entityPlayer;
-				// event.renderer.modelBipedMain.bipedHead.addChild(new ModelRenderer(model, "hat"));
-				// GL11.glTranslatef(0, -1F, 0);
 				model.render(null, event.renderer.modelBipedMain.bipedHead.rotateAngleX, event.renderer.modelBipedMain.bipedHead.rotateAngleY,
 						event.renderer.modelBipedMain.bipedHead.rotateAngleZ, -1, 0, 0.06F);
 				GL11.glPopMatrix();

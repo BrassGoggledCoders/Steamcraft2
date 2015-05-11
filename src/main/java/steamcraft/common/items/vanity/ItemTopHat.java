@@ -41,7 +41,7 @@ public class ItemTopHat extends BaseItem implements IVanityItem
 	@SideOnly(Side.CLIENT)
 	public ResourceLocation getItemTextureLocation()
 	{
-		return new ResourceLocation(ModInfo.PREFIX + "/textures/blocks/metal/blockCastIron.png");
+		return new ResourceLocation(ModInfo.PREFIX + "/textures/models/vanity/tophat-normal.png");
 	}
 
 	@Override
