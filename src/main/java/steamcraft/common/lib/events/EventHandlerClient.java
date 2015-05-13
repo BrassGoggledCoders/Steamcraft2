@@ -85,12 +85,12 @@ public class EventHandlerClient
 				EntityPlayer p = event.entityPlayer;
 				IVanityItem item = (IVanityItem) inventory.getStackInSlot(i).getItem();
 				ModelBase model = item.getVanityItemModel();
-				if(p.getCommandSenderName() == "warlordjones")
-				{
-					ClientHelper.textureManager().bindTexture(new ResourceLocation(ModInfo.PREFIX + "/textures/models/vanity/tophat-gold.png"));
-				}
-				else
-					ClientHelper.textureManager().bindTexture(item.getItemTextureLocation());
+				// if(p.getCommandSenderName() == "warlordjones")
+				// {
+				ClientHelper.textureManager().bindTexture(new ResourceLocation(ModInfo.PREFIX + "/textures/models/vanity/tophat-gold.png"));
+				// }
+				// else
+				// ClientHelper.textureManager().bindTexture(item.getItemTextureLocation());
 				GL11.glPushMatrix();
 				model.render(null, event.renderer.modelBipedMain.bipedHead.rotateAngleX, event.renderer.modelBipedMain.bipedHead.rotateAngleY,
 						event.renderer.modelBipedMain.bipedHead.rotateAngleZ, -1, 0, 0.06F);
