@@ -32,7 +32,6 @@ public class EntityPlayerExtended implements IExtendedEntityProperties
 	public final static String EXT_PROP_NAME = ModInfo.PREFIX + "EntityPlayerExtended";
 
 	private final InventoryVanity inventory = new InventoryVanity();
-	private int cooldown = 0;
 
 	private final EntityPlayer player;
 
@@ -57,15 +56,14 @@ public class EntityPlayerExtended implements IExtendedEntityProperties
 		final NBTTagCompound properties = new NBTTagCompound();
 		tagCompound.setTag(EXT_PROP_NAME, properties);
 		this.inventory.writeToNBT(properties);
-		tagCompound.setInteger("cooldown", this.cooldown);
 	}
 
 	@Override
 	public void loadNBTData(final NBTTagCompound tagCompound)
 	{
 		final NBTTagCompound properties = (NBTTagCompound) tagCompound.getTag(EXT_PROP_NAME);
-		this.inventory.readFromNBT(properties);
-		this.cooldown = tagCompound.getInteger("cooldown");
+		if(properties != null)
+			this.inventory.readFromNBT(properties);
 	}
 
 	@Override
@@ -76,15 +74,5 @@ public class EntityPlayerExtended implements IExtendedEntityProperties
 	public InventoryVanity getInventory()
 	{
 		return this.inventory;
-	}
-
-	public int getCooldown()
-	{
-		return this.cooldown;
-	}
-
-	public void setCooldown(int newCooldown)
-	{
-		this.cooldown = newCooldown;
 	}
 }
