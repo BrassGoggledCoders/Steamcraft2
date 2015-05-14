@@ -52,6 +52,8 @@ public class BlockTurbine extends BaseContainerBlock
 		{
 			case 1:
 				return this.iconTop; // top
+			case 0:
+				return this.iconTop;
 			default:
 				return this.blockIcon; // sides
 		}
