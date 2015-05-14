@@ -180,6 +180,7 @@ item.itemResource.6.name=Etherium Crystal Shard
 item.itemResource.7.name=Sulfuric Acid
 item.itemTeaLeaves.name=Tea Leaf
 item.itemTeaSeed.name=Tea Seeds
+item.itemTeaSeed.desc=Obtained from breaking grass
 item.itemTeacup.name=Teacup
 item.itemTeapot.name=Teapot
 item.itemIngot.0.name=Aluminum Ingot
