@@ -475,7 +475,7 @@ public class InitRecipes
 		GameRegistry.addRecipe(new ItemStack(InitItems.itemTeapot, 1, 0), "BB ", "B B", "BB ", 'B', Items.brick);
 		GameRegistry.addShapelessRecipe(new ItemStack(InitItems.itemTeapot, 1, 1), "PW", 'W', Items.potionitem, 'P', new ItemStack(InitItems.itemTeapot, 1,
 				0));
-		GameRegistry.addRecipe(new ItemStack(InitItems.itemTeapot, 1, 3), "SLS", "LPL", "SLS", 'P', new ItemStack(InitItems.itemTeapot, 1, 2), 'L',
+		GameRegistry.addRecipe(new ItemStack(InitItems.itemTeapot, 1, 8), "SLS", "LPL", "SLS", 'P', new ItemStack(InitItems.itemTeapot, 1, 2), 'L',
 				InitItems.itemTeaLeaf, 'S', Items.sugar);
 
 		GameRegistry.addRecipe(new ItemStack(InitItems.itemTeacup, 1, 1), "B B", " B ", 'B', Items.brick);
