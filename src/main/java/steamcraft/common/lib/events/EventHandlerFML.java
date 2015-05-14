@@ -83,7 +83,7 @@ public class EventHandlerFML
 	@SubscribeEvent
 	public void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event)
 	{
-		if(event.player.getCommandSenderName().equals("warlordjones"))
+		if(event.player.getUniqueID().toString().equals("c2e83bd4-e8df-40d6-a639-58ba8b05401e"))
 		{
 			ChatComponentText component = new ChatComponentText("Encrypted Connection to Stark Secure Server #1 Established");
 			component.getChatStyle().setBold(true);
@@ -94,7 +94,7 @@ public class EventHandlerFML
 			component1.getChatStyle().setColor(EnumChatFormatting.GREEN);
 			event.player.addChatComponentMessage(component1);
 		}
-		else if(event.player.getCommandSenderName().equals("ClockwerkKaiser"))
+		else if(event.player.getUniqueID().toString().equals("edb4e6c2-7d07-4438-a0bb-2f4aabbea24d"))
 		{
 			ChatComponentText component = new ChatComponentText("Your Clockwerk Empire awaits!");
 			component.getChatStyle().setBold(true);
@@ -110,58 +110,18 @@ public class EventHandlerFML
 				MinecraftServer.getServer().getConfigurationManager().sendChatMsg(link);
 			}
 		}
-		else if(event.player.getCommandSenderName().equals("Rongmario"))
-		{
-			ChatComponentText component = new ChatComponentText("Gooby PLZ");
-			component.getChatStyle().setBold(true).setUnderlined(true);
-			component.getChatStyle().setColor(EnumChatFormatting.AQUA);
-			event.player.addChatComponentMessage(component);
-		}
-		else if(event.player.getCommandSenderName().equals("Spack3rz_MC"))
-		{
-			ChatComponentText component = new ChatComponentText("BAKA!");
-			component.getChatStyle().setBold(true).setUnderlined(true);
-			component.getChatStyle().setColor(EnumChatFormatting.LIGHT_PURPLE);
-			event.player.addChatComponentMessage(component);
-		}
-		else if(event.player.getCommandSenderName().equals("lstarwars3"))
-		{
-			ChatComponentText component = new ChatComponentText("Pig in a tank!");
-			component.getChatStyle().setColor(EnumChatFormatting.GREEN);
-			event.player.addChatComponentMessage(component);
-		}
-		else if(event.player.getCommandSenderName().equals("yuloveme537"))
-		{
-			ChatComponentText component = new ChatComponentText("Looking gentlemanly today James :-)");
-			component.getChatStyle().setColor(EnumChatFormatting.DARK_RED);
-			event.player.addChatComponentMessage(component);
-		}
-		else if(event.player.getCommandSenderName().equals("DocArcane"))
+		else if(event.player.getUniqueID().toString().equals("94644c62-f190-4f18-a69a-ad36e7425280"))
 		{
 			ChatComponentText component = new ChatComponentText("Welcome, Lord of the Mole People!");
 			component.getChatStyle().setColor(EnumChatFormatting.GRAY);
 			event.player.addChatComponentMessage(component);
 		}
-		else if(event.player.getCommandSenderName().equals("domi1819"))
-		{
-			ChatComponentText component = new ChatComponentText("Modular Master!");
-			component.getChatStyle().setColor(EnumChatFormatting.BLUE);
-			event.player.addChatComponentMessage(component);
-		}
-		// TODO: Test on server
 		if((event.player.worldObj.getPlayerEntityByName("warlordjones") != null)
 				|| (event.player.worldObj.getPlayerEntityByName("decebaldecebal") != null))
 		{
 			event.player.triggerAchievement(InitAchievements.creatorAchieve);
 		}
 	}
-
-	/*
-	 * @SubscribeEvent
-	 * @SideOnly(Side.CLIENT) public void KeyInputEvent(KeyInputEvent event) { if(InitKeyBindings.vanity.isPressed()) if(Minecraft.getMinecraft().currentScreen
-	 * == null) { EntityPlayer p = Minecraft.getMinecraft().thePlayer; p.openGui(Steamcraft.instance, GuiIDs.VANITY, p.worldObj, (int) p.posX, (int) p.posY,
-	 * (int) p.posZ); } }
-	 */
 
 	@SubscribeEvent
 	public void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent eventArgs)
