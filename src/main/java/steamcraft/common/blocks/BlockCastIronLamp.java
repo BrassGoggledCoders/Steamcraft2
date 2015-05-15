@@ -19,6 +19,7 @@ import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
 import cpw.mods.fml.relauncher.Side;
@@ -41,7 +42,7 @@ public class BlockCastIronLamp extends BlockContainer
 	{
 		super(Material.circuits);
 		this.powered = powered;
-		this.setHardness(0.0F);
+		this.setHardness(1.5F);
 		this.setResistance(7.5F);
 		this.setTickRandomly(true);
 		this.disableStats();
@@ -177,5 +178,15 @@ public class BlockCastIronLamp extends BlockContainer
 			else
 				world.spawnParticle("reddust", d, d1, d2, -1.0D, 0.7D, 1.0D);
 		}
+	}
+
+	/**
+	 * Gets the block's texture. Args: side, meta
+	 */
+	@Override
+	@SideOnly(Side.CLIENT)
+	public IIcon getIcon(int p_149691_1_, int p_149691_2_)
+	{
+		return InitBlocks.blockMetal.getIcon(0, 7);
 	}
 }
