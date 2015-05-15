@@ -44,7 +44,7 @@ public class ItemNormalArmor extends BaseArmor
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister icon)
 	{
-		this.itemIcon = icon.registerIcon(ModInfo.PREFIX + "models/armor/" + this.getUnlocalizedName().substring(5));
+		this.itemIcon = icon.registerIcon(ModInfo.PREFIX + "armor/" + this.getUnlocalizedName().substring(5));
 	}
 
 	@Override
