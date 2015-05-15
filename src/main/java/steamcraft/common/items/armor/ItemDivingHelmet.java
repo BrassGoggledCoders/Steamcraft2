@@ -45,7 +45,7 @@ public class ItemDivingHelmet extends BaseArmor
 	@SideOnly(Side.CLIENT)
 	public String getArmorTexture(ItemStack is, Entity entity, int slot, String type)
 	{
-		return ModInfo.PREFIX + "textures/armor/divinghelmet.png";
+		return ModInfo.PREFIX + "textures/models/armor/divinghelmet.png";
 	}
 
 	@Override
@@ -59,7 +59,7 @@ public class ItemDivingHelmet extends BaseArmor
 		ItemStack helmet = ClientHelper.player().inventory.armorItemInSlot(3);
 
 		if((ClientHelper.settings().thirdPersonView == 0) && (helmet != null) && (helmet.getItem() == InitItems.itemDivingHelmet))// &&
-			// KeyHandler.keyPressed)
+		// KeyHandler.keyPressed)
 		{
 			ClientHelper.textureManager().bindTexture(overlay);
 			Tessellator tessellator = Tessellator.instance;

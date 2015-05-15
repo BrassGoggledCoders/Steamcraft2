@@ -46,7 +46,7 @@ import thaumcraft.api.nodes.IRevealer;
  *
  */
 @Optional.InterfaceList({ @Optional.Interface(iface = "thaumcraft.api.IGoggles", modid = "Thaumcraft"),
-	@Optional.Interface(iface = "thaumcraft.api.nodes.IRevealer", modid = "Thaumcraft") })
+		@Optional.Interface(iface = "thaumcraft.api.nodes.IRevealer", modid = "Thaumcraft") })
 public class ItemBrassArmor extends BaseArmor implements ISpecialArmor, IGoggles, IRevealer
 {
 
@@ -62,13 +62,6 @@ public class ItemBrassArmor extends BaseArmor implements ISpecialArmor, IGoggles
 	public void registerIcons(IIconRegister ir)
 	{
 		this.itemIcon = ir.registerIcon(ModInfo.PREFIX + "armor/" + this.getUnlocalizedName().substring(5));
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public String getArmorTexture(ItemStack is, Entity entity, int slot, String type)
-	{
-		return type != null ? ModInfo.PREFIX + "textures/armor/" + type + ".png" : null;
 	}
 
 	@SuppressWarnings("all")
@@ -225,5 +218,12 @@ public class ItemBrassArmor extends BaseArmor implements ISpecialArmor, IGoggles
 			}
 		}
 		return false;
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public String getArmorTexture(ItemStack is, Entity entity, int slot, String type)
+	{
+		return slot == 2 ? ModInfo.PREFIX + "textures/models/armor/brass_2.png" : ModInfo.PREFIX + "textures/models/armor/brass_1.png";
 	}
 }

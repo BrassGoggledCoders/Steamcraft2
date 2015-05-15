@@ -44,7 +44,7 @@ public class ItemNormalArmor extends BaseArmor
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister icon)
 	{
-		this.itemIcon = icon.registerIcon(ModInfo.PREFIX + "armor/" + this.getUnlocalizedName().substring(5));
+		this.itemIcon = icon.registerIcon(ModInfo.PREFIX + "models/armor/" + this.getUnlocalizedName().substring(5));
 	}
 
 	@Override
@@ -52,9 +52,9 @@ public class ItemNormalArmor extends BaseArmor
 	public String getArmorTexture(ItemStack is, Entity entity, int slot, String type)
 	{
 		if(this.getArmorMaterial() == MaterialHelper.ARMOR_ETHERIUM)
-			return slot == 2 ? ModInfo.PREFIX + "textures/armor/etherium_2.png" : ModInfo.PREFIX + "textures/armor/etherium_1.png";
+			return slot == 2 ? ModInfo.PREFIX + "textures/models/armor/etherium_2.png" : ModInfo.PREFIX + "textures/models/armor/etherium_1.png";
 		else
-			return slot == 2 ? ModInfo.PREFIX + "textures/armor/obsidian_2.png" : ModInfo.PREFIX + "textures/armor/obsidian_1.png";
+			return slot == 2 ? ModInfo.PREFIX + "textures/models/armor/obsidian_2.png" : ModInfo.PREFIX + "textures/models/armor/obsidian_1.png";
 	}
 
 	@Override

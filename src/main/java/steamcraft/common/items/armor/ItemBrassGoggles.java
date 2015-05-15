@@ -44,7 +44,7 @@ public class ItemBrassGoggles extends BaseArmor
 	@SideOnly(Side.CLIENT)
 	public String getArmorTexture(ItemStack is, Entity entity, int slot, String type)
 	{
-		return ModInfo.PREFIX + "textures/armor/goggles.png";
+		return ModInfo.PREFIX + "textures/models/armor/goggles.png";
 	}
 
 	@Override
