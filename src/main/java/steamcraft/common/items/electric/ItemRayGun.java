@@ -35,7 +35,7 @@ import boilerplate.common.utils.PlayerUtils;
 
 public class ItemRayGun extends ElectricItem
 {
-	public static short energyPerUse = 500;
+	public static short energyPerUse = 300;
 
 	static HashMap<String, Object> ray = new HashMap<String, Object>();
 	static HashMap<String, Long> soundDelay = new HashMap<String, Long>();
