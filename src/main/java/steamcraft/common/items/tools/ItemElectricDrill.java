@@ -70,4 +70,13 @@ public class ItemElectricDrill extends ItemElectricTool
 	{
 		this.itemIcon = icon.registerIcon(ModInfo.PREFIX + "tools/" + this.getUnlocalizedName().substring(5));
 	}
+
+	@Override
+	public float getDigSpeed(ItemStack stack, Block block, int metadata)
+	{
+		if(this.getEnergyStored(stack) <= 0)
+			return 0;
+
+		return super.getDigSpeed(stack, block, metadata);
+	}
 }
