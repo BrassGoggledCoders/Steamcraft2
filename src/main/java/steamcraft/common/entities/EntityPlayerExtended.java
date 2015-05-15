@@ -20,7 +20,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.IExtendedEntityProperties;
 
 import steamcraft.common.container.InventoryVanity;
-import steamcraft.common.lib.ModInfo;
 
 /**
  * @author warlordjones
@@ -29,7 +28,7 @@ import steamcraft.common.lib.ModInfo;
 // TODO: Add packets
 public class EntityPlayerExtended implements IExtendedEntityProperties
 {
-	public final static String EXT_PROP_NAME = ModInfo.PREFIX + "EntityPlayerExtended";
+	public final static String EXT_PROP_NAME = "SteamcraftPlayerExtended";
 
 	private final InventoryVanity inventory = new InventoryVanity();
 
