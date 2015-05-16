@@ -9,7 +9,6 @@ tile.blockMetal.4.name=Brass Block
 tile.blockMetal.5.name=Bronze Block
 tile.blockMetal.6.name=Steel Block
 tile.blockMetal.7.name=Cast Iron Block
-tile.blockMetal.documentation=Test
 tile.blockUranium.name=Uranium Block
 tile.blockEtherium.name=Etherium Block
 tile.blockBrassLog.name=Brass Plated Log
@@ -611,3 +610,8 @@ battery.slot.0.tooltip=Electric Jars go here
 battery.slot.1.tooltip=Electric Jars go here
 battery.slot.2.tooltip=Electric Jars go here
 battery.slot.3.tooltip=Electric Jars go here
+
+#Docs
+tile.blockMetal.documentation=Test
+
+item.itemDrillCore.documentation=Base component in all drills.
