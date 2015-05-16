@@ -15,6 +15,7 @@ package steamcraft.client.gui;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
@@ -38,7 +39,7 @@ public class GuiHandbook extends GuiScreen
 	private NextPageButton buttonNextPage;
 	private NextPageButton buttonPreviousPage;
 	private int bookTotalPages = 1;
-	private int currPage;
+	private int currPage = 0;
 	private ArrayList pages = new ArrayList();
 
 	// Note to self: These store ITEMSTACKS not ITEMS or BLOCKS. DUMMY.
@@ -61,7 +62,6 @@ public class GuiHandbook extends GuiScreen
 		int i = (this.width - this.bookImageWidth) / 2;
 		this.buttonList.add(this.buttonNextPage = new NextPageButton(1, i + 120, b0 + 154, true));
 		this.buttonList.add(this.buttonPreviousPage = new NextPageButton(2, i + 38, b0 + 154, false));
-		updateButtons();
 
 		for(int itemsize = 0; itemsize < modItems.size(); itemsize++)
 		{
@@ -72,6 +72,17 @@ public class GuiHandbook extends GuiScreen
 			pages.add(new HandbookPage(name, docs));
 			bookTotalPages++;
 		}
+
+		for(int itemsize = 0; itemsize < modBlocks.size(); itemsize++)
+		{
+			ItemStack stack = (ItemStack) modBlocks.get(itemsize);
+			Block block = Block.getBlockFromItem(stack.getItem());
+			String name = StatCollector.translateToLocal(block.getUnlocalizedName() + ".name");
+			String docs = StatCollector.translateToLocal(block.getUnlocalizedName() + ".documentation");
+			pages.add(new HandbookPage(name, docs));
+			bookTotalPages++;
+		}
+		updateButtons();
 	}
 
 	/**
@@ -160,6 +171,30 @@ public class GuiHandbook extends GuiScreen
 		public String getDocs()
 		{
 			return docs;
+		}
+	}
+
+	@Override
+	protected void actionPerformed(GuiButton button)
+	{
+		if(button.enabled)
+		{
+			if(button.id == 2)
+			{
+				if(this.currPage > 0)
+				{
+					--this.currPage;
+				}
+			}
+			else if(button.id == 1)
+			{
+				if(this.currPage < this.bookTotalPages - 1)
+				{
+					++this.currPage;
+				}
+			}
+
+			this.updateButtons();
 		}
 	}
 }
