@@ -218,4 +218,13 @@ public class GuiHandbook extends GuiScreen
 			this.updateButtons();
 		}
 	}
+
+	/**
+	 * Returns true if this GUI should pause the game when it is displayed in single-player
+	 */
+	@Override
+	public boolean doesGuiPauseGame()
+	{
+		return false;
+	}
 }
