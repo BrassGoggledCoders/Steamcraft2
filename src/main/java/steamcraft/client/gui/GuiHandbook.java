@@ -10,16 +10,18 @@
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
  *
  */
-package steamcraft.common.items.pda;
+package steamcraft.client.gui;
 
-import net.minecraft.inventory.Container;
+import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.util.ResourceLocation;
 
-import steamcraft.common.items.BaseItem;
-
-public class ItemChip extends BaseItem
+public class GuiHandbook extends GuiScreen
 {
-	public ItemChip(Container container)
-	{
+	// TODO
+	private static ResourceLocation guitexture = new ResourceLocation("textures/gui/book.png");
 
+	public GuiHandbook()
+	{
+		super();
 	}
 }

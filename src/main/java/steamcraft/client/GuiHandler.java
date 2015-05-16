@@ -24,6 +24,7 @@ import steamcraft.client.gui.GuiBattery;
 import steamcraft.client.gui.GuiBloomery;
 import steamcraft.client.gui.GuiCapacitor;
 import steamcraft.client.gui.GuiCharger;
+import steamcraft.client.gui.GuiHandbook;
 import steamcraft.client.gui.GuiNuclearBoiler;
 import steamcraft.client.gui.GuiPocket;
 import steamcraft.client.gui.GuiRefinery;
@@ -34,8 +35,6 @@ import steamcraft.client.lib.GuiIDs;
 import steamcraft.common.container.ContainerVanity;
 import steamcraft.common.entities.EntityPlayerExtended;
 import steamcraft.common.items.InventoryPocket;
-import steamcraft.common.items.pda.GuiPDA;
-import steamcraft.common.items.pda.InventoryPDA;
 import steamcraft.common.tiles.TileArmorEditor;
 import steamcraft.common.tiles.TileBloomery;
 import steamcraft.common.tiles.TileNuclearBoiler;
@@ -48,7 +47,6 @@ import steamcraft.common.tiles.container.ContainerBloomery;
 import steamcraft.common.tiles.container.ContainerCapacitor;
 import steamcraft.common.tiles.container.ContainerCharger;
 import steamcraft.common.tiles.container.ContainerNuclearBoiler;
-import steamcraft.common.tiles.container.ContainerPDA;
 import steamcraft.common.tiles.container.ContainerPocket;
 import steamcraft.common.tiles.container.ContainerRefinery;
 import steamcraft.common.tiles.container.ContainerSteamBoiler;
@@ -86,8 +84,8 @@ public class GuiHandler implements IGuiHandler
 				return new ContainerCharger(player.inventory, (TileCharger) tile);
 			case GuiIDs.TIMEBOMB:
 				return new ContainerTimeBomb(player.inventory, (TileTimeBomb) tile);
-			case GuiIDs.PDA:
-				return new ContainerPDA(player, player.inventory, new InventoryPDA(player.getHeldItem()));
+			case GuiIDs.HANDBOOK:
+				return null;
 			case GuiIDs.POCKET:
 				return new ContainerPocket(player, player.inventory, new InventoryPocket(player.getHeldItem()));
 			case GuiIDs.LORE:
@@ -123,8 +121,8 @@ public class GuiHandler implements IGuiHandler
 				return new GuiCharger(player.inventory, (TileCharger) tile);
 			case GuiIDs.TIMEBOMB:
 				return new GuiTimeBomb(player.inventory, (TileTimeBomb) tile);
-			case GuiIDs.PDA:
-				return new GuiPDA(new ContainerPDA(player, player.inventory, new InventoryPDA(player.getHeldItem())));
+			case GuiIDs.HANDBOOK:
+				return new GuiHandbook();
 			case GuiIDs.POCKET:
 				return new GuiPocket(new ContainerPocket(player, player.inventory, new InventoryPocket(player.getHeldItem())));
 			case GuiIDs.LORE:
