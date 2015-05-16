@@ -86,14 +86,11 @@ public class GuiHandbook extends GuiScreen
 		byte b0 = 2;
 		this.drawTexturedModalRect(k, b0, 0, 0, this.bookImageWidth, this.bookImageHeight);
 
-		// if(currPage > 1)
-		// {
 		HandbookPage page = ((HandbookPage) pages.get(currPage));
 		this.fontRendererObj.drawString(page.getTitle(), k + 35, 15, 0x00000000);
-		String[] wrappedDesc = StringUtils.wrap(page.getDocs(), 40);
+		String[] wrappedDesc = StringUtils.wrap(page.getDocs(), 25);
 		for(int i = 0; i < wrappedDesc.length; i++)
-			this.fontRendererObj.drawString(wrappedDesc[i], k + 35, 30 + (currPage * 10), 0x00000000);
-		// }
+			this.fontRendererObj.drawString(wrappedDesc[i], k + 35, 30 + (i * 10), 0x00000000);
 
 		super.drawScreen(p_73863_1_, p_73863_2_, p_73863_3_);
 	}
