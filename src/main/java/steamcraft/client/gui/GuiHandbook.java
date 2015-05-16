@@ -18,7 +18,9 @@ import java.util.List;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.StatCollector;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -51,8 +53,8 @@ public class GuiHandbook extends GuiScreen
 	public void initGui()
 	{
 		this.buttonList.clear();
-		int i = (this.width - this.bookImageWidth) / 2;
 		byte b0 = 2;
+		int i = (this.width - this.bookImageWidth) / 2;
 		this.buttonList.add(this.buttonNextPage = new NextPageButton(1, i + 120, b0 + 154, true));
 		this.buttonList.add(this.buttonPreviousPage = new NextPageButton(2, i + 38, b0 + 154, false));
 		updateButtons();
@@ -69,6 +71,16 @@ public class GuiHandbook extends GuiScreen
 		int k = (this.width - this.bookImageWidth) / 2;
 		byte b0 = 2;
 		this.drawTexturedModalRect(k, b0, 0, 0, this.bookImageWidth, this.bookImageHeight);
+
+		int i = (this.width - this.bookImageWidth) / 2;
+		for(int itemsize = 0; itemsize < modItems.size(); itemsize++)
+		{
+			String s = StatCollector.translateToLocal(((Item) modItems.get(itemsize)).getUnlocalizedName() + ".documentation");
+			int l = this.fontRendererObj.getStringWidth(s);
+			// this.fontRendererObj.drawString(s, k - l + this.bookImageWidth - 44, b0 + 16, 0);
+			this.fontRendererObj.drawSplitString(s, k + 36, b0 + 16 + 16, 116, 0);
+		}
+
 		super.drawScreen(p_73863_1_, p_73863_2_, p_73863_3_);
 	}
 
