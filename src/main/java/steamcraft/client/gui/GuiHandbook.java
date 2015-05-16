@@ -38,6 +38,7 @@ public class GuiHandbook extends GuiScreen
 
 	private NextPageButton buttonNextPage;
 	private NextPageButton buttonPreviousPage;
+	private GuiButton buttonHome;
 	private int bookTotalPages = 1;
 	private int currPage = 0;
 	private ArrayList pages = new ArrayList();
@@ -62,6 +63,7 @@ public class GuiHandbook extends GuiScreen
 		int i = (this.width - this.bookImageWidth) / 2;
 		this.buttonList.add(this.buttonNextPage = new NextPageButton(1, i + 120, b0 + 154, true));
 		this.buttonList.add(this.buttonPreviousPage = new NextPageButton(2, i + 38, b0 + 154, false));
+		this.buttonList.add(this.buttonHome = new GuiButton(3, i + 70, b0 + 150, 40, 20, "Home"));
 
 		for(int itemsize = 0; itemsize < modItems.size(); itemsize++)
 		{
@@ -77,6 +79,7 @@ public class GuiHandbook extends GuiScreen
 		{
 			ItemStack stack = (ItemStack) modBlocks.get(itemsize);
 			Block block = Block.getBlockFromItem(stack.getItem());
+
 			String name = StatCollector.translateToLocal(block.getUnlocalizedName() + ".name");
 			String docs = StatCollector.translateToLocal(block.getUnlocalizedName() + ".documentation");
 			pages.add(new HandbookPage(name, docs));
@@ -179,18 +182,25 @@ public class GuiHandbook extends GuiScreen
 	{
 		if(button.enabled)
 		{
-			if(button.id == 2)
+			if(button.id == 1)
+			{
+				if(this.currPage < this.bookTotalPages - 1)
+				{
+					++this.currPage;
+				}
+			}
+			else if(button.id == 2)
 			{
 				if(this.currPage > 0)
 				{
 					--this.currPage;
 				}
 			}
-			else if(button.id == 1)
+			else if(button.id == 3)
 			{
-				if(this.currPage < this.bookTotalPages - 1)
+				if(this.currPage > 0)
 				{
-					++this.currPage;
+					this.currPage = 0;
 				}
 			}
 
