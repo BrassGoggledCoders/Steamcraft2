@@ -193,8 +193,8 @@ public class InitItems
 
 	// Modules
 	public static Item itemAqualung, itemPistonPlating, itemTank, itemWatchDisplay, itemClimbingSpikes
-	, itemLegBraces, itemSpringHeels, itemRollerSkates, itemParachute, itemFlippers, itemLifeVest,
-	itemPistonBoots, itemSteelPlating, itemLastResort, itemGogglesModule, itemWingpackModule, itemFreezeBoots, itemSuperFreezeBoots, itemAutofeeder;
+			, itemLegBraces, itemSpringHeels, itemRollerSkates, itemParachute, itemFlippers, itemLifeVest,
+			itemPistonBoots, itemSteelPlating, itemLastResort, itemGogglesModule, itemWingpackModule, itemFreezeBoots, itemSuperFreezeBoots, itemAutofeeder;
 
 	/* Init */
 	public static void init()
@@ -336,23 +336,23 @@ public class InitItems
 
 		// Guns
 		flintlockMusket = new ItemFirearm(5, 60, itemMusketBall, null, "steamcraft:musket", "steamcraft:reload")
-		.setUnlocalizedName("itemFlintlockMusket");
+				.setUnlocalizedName("itemFlintlockMusket");
 		matchlockMusket = new ItemFirearm(6, 40, itemMusketBall, itemMatch, "steamcraft:musket", "steamcraft:reload")
-		.setUnlocalizedName("itemMatchlockMusket");
+				.setUnlocalizedName("itemMatchlockMusket");
 		percussionCapMusket = new ItemFirearm(7, 20, itemMusketBall, itemPercussionCap, "steamcraft:musket", "steamcraft:reload")
-		.setUnlocalizedName("itemPercussionMusket");
+				.setUnlocalizedName("itemPercussionMusket");
 		flintlockRifle = new ItemFirearm(8, 60, itemRifleBullet, null, "steamcraft:rifle", "steamcraft:reload")
-		.setUnlocalizedName("itemFlintlockRifle");
+				.setUnlocalizedName("itemFlintlockRifle");
 		matchlockRifle = new ItemFirearm(9, 40, itemRifleBullet, itemMatch, "steamcraft:rifle", "steamcraft:reload")
-		.setUnlocalizedName("itemMatchlockRifle");
+				.setUnlocalizedName("itemMatchlockRifle");
 		percussionCapRifle = new ItemFirearm(10, 20, itemRifleBullet, itemPercussionCap, "steamcraft:rifle", "steamcraft:reload")
-		.setUnlocalizedName("itemPercussionRifle");
+				.setUnlocalizedName("itemPercussionRifle");
 		flintlockPistol = new ItemFirearm(3, 40, itemMusketBall, null, "steamcraft:Pistol", "steamcraft:reload")
-		.setUnlocalizedName("itemFlintlockPistol");
+				.setUnlocalizedName("itemFlintlockPistol");
 		matchlockPistol = new ItemFirearm(3, 30, itemMusketBall, itemMatch, "steamcraft:pistol", "steamcraft:reload")
-		.setUnlocalizedName("itemMatchlockPistol");
+				.setUnlocalizedName("itemMatchlockPistol");
 		percussionCapPistol = new ItemFirearm(3, 20, itemMusketBall, itemPercussionCap, "steamcraft:pistol", "steamcraft:reload")
-		.setUnlocalizedName("itemPercussionPistol");
+				.setUnlocalizedName("itemPercussionPistol");
 
 		registerItem(flintlockMusket, "ItemFlintlockMusket");
 		registerItem(matchlockMusket, "ItemMatchlockMusket");
@@ -540,11 +540,10 @@ public class InitItems
 		itemSpyglass = new BaseItem().setUnlocalizedName("itemSpyglass").setFull3D();
 		registerItem(itemSpyglass, "ItemSpyglass");
 
-		// Add a version system to allow updates. Check version on right click
+		// TODO Add a version system to allow updates. Check version on right click
 		itemLoreBook = new ItemLoreBook(StatCollector.translateToLocal("lore.steamcraft2.0.author"),
 				StatCollector.translateToLocal("lore.steamcraft2.0.title"), new String[] { StatCollector.translateToLocal("lore.steamcraft2.0.page1") })
-		.setUnlocalizedName("itemLoreBook").setCreativeTab(
-				Steamcraft.tabSC2);
+				.setUnlocalizedName("itemLoreBook");
 		registerItem(itemLoreBook, "ItemLoreBook");
 
 		itemFieldManipulator = new ItemFieldManipulator().setUnlocalizedName("itemFieldManipulator");

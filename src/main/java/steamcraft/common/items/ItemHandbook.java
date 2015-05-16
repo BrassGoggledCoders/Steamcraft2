@@ -27,12 +27,6 @@ public class ItemHandbook extends BaseItem
 		this.setMaxStackSize(1);
 	}
 
-	@Override
-	public int getMaxItemUseDuration(ItemStack stack)
-	{
-		return 1;
-	}
-
 	/**
 	 * Called whenever this item is equipped and the right mouse button is pressed. Args: itemStack, world, entityPlayer
 	 */

@@ -69,6 +69,7 @@ public class GuiHandbook extends GuiScreen
 		int k = (this.width - this.bookImageWidth) / 2;
 		byte b0 = 2;
 		this.drawTexturedModalRect(k, b0, 0, 0, this.bookImageWidth, this.bookImageHeight);
+		super.drawScreen(p_73863_1_, p_73863_2_, p_73863_3_);
 	}
 
 	@SideOnly(Side.CLIENT)

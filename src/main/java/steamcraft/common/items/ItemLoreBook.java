@@ -35,35 +35,13 @@ import steamcraft.common.lib.ModInfo;
 
 public class ItemLoreBook extends BaseItem
 {
-	/*
-	 * String title; String author; public LoreItem(String title, String author, File loreFile) { this.setMaxStackSize(1); this.title = title; this.author =
-	 * author; }
-	 * @Override public String getItemStackDisplayName(ItemStack stack) { if (stack.hasTagCompound()) { NBTTagCompound nbttagcompound = stack.getTagCompound();
-	 * String s = nbttagcompound.getString("title"); if (!StringUtils.isNullOrEmpty(s)) { return s; } } return super.getItemStackDisplayName(stack); } public
-	 * static boolean validBookTagContents(NBTTagCompound p_77828_0_) { if (!ItemWritableBook.func_150930_a(p_77828_0_)) { return false; } else if
-	 * (!p_77828_0_.hasKey("title", 8)) { return false; } else { String s = p_77828_0_.getString("title"); return s != null && s.length() <= 16 ?
-	 * p_77828_0_.hasKey("author", 8) : false; } } /** allows items to add custom lines of information to the mouseover description
-	 * @Override
-	 * @SideOnly(Side.CLIENT) public void addInformation(ItemStack p_77624_1_, EntityPlayer p_77624_2_, List p_77624_3_, boolean p_77624_4_) { if
-	 * (p_77624_1_.hasTagCompound()) { NBTTagCompound tag = p_77624_1_.getTagCompound(); tag.setString("title", title); tag.setString("author", author); String
-	 * s = tag.getString("author"); if (!StringUtils.isNullOrEmpty(s)) { p_77624_3_.add(EnumChatFormatting.GRAY +
-	 * StatCollector.translateToLocalFormatted("book.byAuthor", new Object[] { s })); } } } /** Called whenever this item is equipped and the right mouse button
-	 * is pressed. Args: itemStack, world, entityPlayer
-	 * @Override public ItemStack onItemRightClick(ItemStack p_77659_1_, World p_77659_2_, EntityPlayer p_77659_3_) { p_77659_3_.displayGUIBook(p_77659_1_);
-	 * return p_77659_1_; } /** If this function returns true (or the item is damageable), the ItemStack's NBT tag will be sent to the client.
-	 * @Override public boolean getShareTag() { return true; }
-	 * @Override
-	 * @SideOnly(Side.CLIENT) public boolean hasEffect(ItemStack p_77636_1_) { return true; } private String readFile(String file) throws IOException {
-	 * BufferedReader reader = new BufferedReader(new FileReader(file)); String line = null; StringBuilder stringBuilder = new StringBuilder(); String ls =
-	 * System.getProperty("line.separator"); while ((line = reader.readLine()) != null) { stringBuilder.append(line); stringBuilder.append(ls); }
-	 * reader.close(); return stringBuilder.toString(); }
-	 */
 	String author;
 	String title;
 	String[] pages;
 
 	public ItemLoreBook(String author, String title, String[] pages)
 	{
+		super();
 		this.setMaxStackSize(1);
 		this.author = author;
 		this.title = title;
