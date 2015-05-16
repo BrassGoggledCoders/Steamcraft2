@@ -33,7 +33,7 @@ public class ItemHandbook extends BaseItem
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
 	{
-		if(!world.isRemote)
+		if(world.isRemote)
 		{
 			player.openGui(Steamcraft.instance, GuiIDs.HANDBOOK, world, 0, 0, 0);
 		}
