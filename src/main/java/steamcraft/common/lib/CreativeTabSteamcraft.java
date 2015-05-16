@@ -12,6 +12,10 @@
  */
 package steamcraft.common.lib;
 
+import java.util.Iterator;
+import java.util.List;
+
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 
 import cpw.mods.fml.relauncher.Side;
@@ -36,5 +40,32 @@ public class CreativeTabSteamcraft extends CreativeTabBase
 	public Item getTabIconItem()
 	{
 		return InitItems.itemBrassGoggles;
+	}
+
+	/**
+	 * only shows items which have tabToDisplayOn == this
+	 */
+	@SideOnly(Side.CLIENT)
+	public void getItemsInTab(List p_78018_1_)
+	{
+		Iterator iterator = Item.itemRegistry.iterator();
+
+		while(iterator.hasNext())
+		{
+			Item item = (Item) iterator.next();
+
+			if(item == null)
+			{
+				continue;
+			}
+
+			for(CreativeTabs tab : item.getCreativeTabs())
+			{
+				if(tab == this)
+				{
+					item.getSubItems(item, this, p_78018_1_);
+				}
+			}
+		}
 	}
 }

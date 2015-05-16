@@ -9,6 +9,7 @@ tile.blockMetal.4.name=Brass Block
 tile.blockMetal.5.name=Bronze Block
 tile.blockMetal.6.name=Steel Block
 tile.blockMetal.7.name=Cast Iron Block
+tile.blockMetal.documentation=Test
 tile.blockUranium.name=Uranium Block
 tile.blockEtherium.name=Etherium Block
 tile.blockBrassLog.name=Brass Plated Log
