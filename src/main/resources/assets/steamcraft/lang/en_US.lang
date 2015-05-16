@@ -615,3 +615,4 @@ battery.slot.3.tooltip=Electric Jars go here
 tile.blockMetal.documentation=Test
 
 item.itemDrillCore.documentation=Base component in all drills.
+item.itemDrillBase.documentation=Main component in the drill core.

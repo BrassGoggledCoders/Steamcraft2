@@ -32,6 +32,17 @@ import boilerplate.common.utils.StringUtils;
 
 public class GuiHandbook extends GuiScreen
 {
+	/**
+	 * TODO
+	 *
+	 * - Index Pages
+	 *
+	 * - Entries for the Deeps, entities, etc.
+	 *
+	 * - Hyperlinks
+	 *
+	 * - Actual docs :P
+	 */
 	private static ResourceLocation guitexture = new ResourceLocation("textures/gui/book.png");
 	private int bookImageWidth = 192;
 	private int bookImageHeight = 192;
