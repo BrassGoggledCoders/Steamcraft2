@@ -12,6 +12,7 @@
  */
 package steamcraft.common.lib.events;
 
+import java.util.Arrays;
 import java.util.HashMap;
 
 import net.minecraft.client.model.ModelBase;
@@ -39,6 +40,7 @@ import steamcraft.common.entities.EntityPlayerExtended;
 import steamcraft.common.init.InitBlocks;
 import steamcraft.common.init.InitItems;
 import steamcraft.common.init.InitPackets;
+import steamcraft.common.lib.LibInfo;
 import steamcraft.common.lib.ModInfo;
 import steamcraft.common.packets.OpenContainerFromClientPacket;
 import boilerplate.client.ClientHelper;
@@ -85,12 +87,12 @@ public class EventHandlerClient
 				EntityPlayer p = event.entityPlayer;
 				IVanityItem item = (IVanityItem) inventory.getStackInSlot(i).getItem();
 				ModelBase model = item.getVanityItemModel();
-				// if(p.getCommandSenderName() == "warlordjones")
-				// {
-				ClientHelper.textureManager().bindTexture(new ResourceLocation(ModInfo.PREFIX + "/textures/models/vanity/tophat-gold.png"));
-				// }
-				// else
-				// ClientHelper.textureManager().bindTexture(item.getItemTextureLocation());
+				if(Arrays.asList(LibInfo.names).contains(p.getUniqueID().toString()))
+				{
+					ClientHelper.textureManager().bindTexture(new ResourceLocation(ModInfo.PREFIX + "/textures/models/vanity/tophat-gold.png"));
+				}
+				else
+					ClientHelper.textureManager().bindTexture(item.getItemTextureLocation());
 				GL11.glPushMatrix();
 				model.render(null, event.renderer.modelBipedMain.bipedHead.rotateAngleX, event.renderer.modelBipedMain.bipedHead.rotateAngleY,
 						event.renderer.modelBipedMain.bipedHead.rotateAngleZ, -1, 0, 0.06F);
