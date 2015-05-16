@@ -72,17 +72,17 @@ public class EntityFallingBoulder extends EntityFallingBlock
 			if(this.rand.nextFloat() < (0.05000000074505806D + (i * 0.05D)))
 			{
 				int j = this.field_145814_a >> 2;
-			int k = this.field_145814_a & 3;
-			++j;
+				int k = this.field_145814_a & 3;
+				++j;
 
-			if(j > 2)
-			{
-				this.field_145808_f = true;
-			}
-			else
-			{
-				this.field_145814_a = k | (j << 2);
-			}
+				if(j > 2)
+				{
+					this.field_145808_f = true;
+				}
+				else
+				{
+					this.field_145814_a = k | (j << 2);
+				}
 			}
 		}
 	}

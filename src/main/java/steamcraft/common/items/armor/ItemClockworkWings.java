@@ -137,7 +137,7 @@ public class ItemClockworkWings extends BaseArmor
 				if(entityLiving instanceof EntityPlayer)
 					armorModel.aimedBow = ((EntityPlayer) entityLiving).getItemInUseDuration() > 2;
 
-				return armorModel;
+					return armorModel;
 			}
 		}
 

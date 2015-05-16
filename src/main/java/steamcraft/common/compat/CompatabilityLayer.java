@@ -85,10 +85,10 @@ public class CompatabilityLayer
 		FMLInterModComms.sendMessage("Thaumcraft", "harvestStandardCrop", new ItemStack(InitBlocks.blockTeaPlant, 1, 1));
 		FMLInterModComms.sendMessage("Thaumcraft", "nativeCluster",
 				Block.getIdFromBlock(InitBlocks.blockCustomOre) + "," + 0 + "," + Item.getIdFromItem(InitItems.itemSteamcraftCluster) + "," + 0
-				+ ",2.0");
+						+ ",2.0");
 		FMLInterModComms.sendMessage("Thaumcraft", "nativeCluster",
 				Block.getIdFromBlock(InitBlocks.blockCustomOre) + "," + 2 + "," + Item.getIdFromItem(InitItems.itemSteamcraftCluster) + "," + 1
-				+ ",2.0");
+						+ ",2.0");
 	}
 
 	private static void sendTiConIMC()

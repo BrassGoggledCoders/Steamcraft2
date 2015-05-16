@@ -30,7 +30,7 @@ public class BlockCustomMushroom extends BlockMushroom
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(int side, int metadata)
 	{
-		return icon[metadata];
+		return this.icon[metadata];
 	}
 
 	@Override

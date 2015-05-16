@@ -41,9 +41,9 @@ public class LibInfo
 	 * BluSunrize - f34afdfb-996b-4020-b8a2-b740e2937b29
 	 */
 	private static String[] brassBlocksMembers = { "a5fea247-f804-499a-8c2a-db1e3ad9011e", "94644c62-f190-4f18-a69a-ad36e7425280",
-			"d2763f9f-a07e-4cfd-8248-1dbe17f29156" };
+	"d2763f9f-a07e-4cfd-8248-1dbe17f29156" };
 	public static String[] contributors = { "de7c9903-51fa-4a24-88cd-48faf122ca36", "155248c2-299a-449b-adf5-4162625a8afd",
-			"e59b1bf5-ff7d-44ae-b1d4-90dc74c8f7da", "d2ea8848-7052-45b8-96e8-ac29d4f1024a" };
+		"e59b1bf5-ff7d-44ae-b1d4-90dc74c8f7da", "d2ea8848-7052-45b8-96e8-ac29d4f1024a" };
 	public static String[] other = { "edb4e6c2-7d07-4438-a0bb-2f4aabbea24d", "f34afdfb-996b-4020-b8a2-b740e2937b29" };
 	public static String[] names = StringUtils.merge(brassBlocksMembers, Boilerplate.devs, contributors, Boilerplate.donors, other);
 

@@ -28,7 +28,7 @@ import steamcraft.common.worldgen.biomes.BiomeDepthsTallForest;
 public class InitBiomes
 {
 	public static BiomeGenBase biomeDepths, biomeDepthsF, biomeDepthsM, biomeDepthsS, biomeDepthsI, /* biomeDepthsO, biomeDepthsB */biomeDepthsSC,
-	biomeDepthsSCH, biomeDepthsSW, biomeDepthsTF, biomeDepthsJ;
+			biomeDepthsSCH, biomeDepthsSW, biomeDepthsTF, biomeDepthsJ;
 
 	public static void init()
 	{

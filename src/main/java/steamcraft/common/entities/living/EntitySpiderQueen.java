@@ -45,10 +45,10 @@ public class EntitySpiderQueen extends EntitySpider implements IBossDisplayData
 			int plusZ = this.rand.nextInt(5);
 			if((this.rand.nextInt(30) == 0) && !this.worldObj.isAirBlock((int) Math.round(this.posX) + plusX, ((int) Math.round(this.posY) + plusY) - 1,
 					(int) Math.round(this.posZ)
-					+ plusZ))
+							+ plusZ))
 				this.worldObj.setBlock((int) Math.round(this.posX) + plusX, (int) Math.round(this.posY) + plusY,
 						(int) Math.round(this.posZ)
-						+ plusZ, InitBlocks.blockSpiderEgg);
+								+ plusZ, InitBlocks.blockSpiderEgg);
 		}
 	}
 

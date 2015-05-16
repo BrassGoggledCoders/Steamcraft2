@@ -45,7 +45,7 @@ public class BlockLeafPile extends BaseBlock
 		float f = 0.125F;
 		return AxisAlignedBB.getBoundingBox(p_149668_2_ + this.minX, p_149668_3_ + this.minY, p_149668_4_ + this.minZ, p_149668_2_ + this.maxX, p_149668_3_
 				+ (l
-						* f), p_149668_4_ + this.maxZ);
+				* f), p_149668_4_ + this.maxZ);
 	}
 
 	/**

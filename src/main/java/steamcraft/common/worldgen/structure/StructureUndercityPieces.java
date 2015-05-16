@@ -206,7 +206,7 @@ public class StructureUndercityPieces
 					{
 						StructureUndercityPieces.getNextUndercityComponent(p_74861_1_, p_74861_2_, p_74861_3_, this.boundingBox.minX,
 								(this.boundingBox.minY - 1)
-								+ p_74861_3_.nextInt(3), this.boundingBox.maxZ + 1, this.coordBaseMode, i);
+										+ p_74861_3_.nextInt(3), this.boundingBox.maxZ + 1, this.coordBaseMode, i);
 					}
 					else if(j == 2)
 					{
@@ -233,13 +233,13 @@ public class StructureUndercityPieces
 					{
 						StructureUndercityPieces.getNextUndercityComponent(p_74861_1_, p_74861_2_, p_74861_3_, this.boundingBox.minX,
 								(this.boundingBox.minY - 1)
-								+ p_74861_3_.nextInt(3), this.boundingBox.minZ - 1, 2, i);
+										+ p_74861_3_.nextInt(3), this.boundingBox.minZ - 1, 2, i);
 					}
 					else
 					{
 						StructureUndercityPieces.getNextUndercityComponent(p_74861_1_, p_74861_2_, p_74861_3_, this.boundingBox.minX,
 								(this.boundingBox.minY - 1)
-								+ p_74861_3_.nextInt(3), this.boundingBox.maxZ + 1, 0, i);
+										+ p_74861_3_.nextInt(3), this.boundingBox.maxZ + 1, 0, i);
 					}
 
 					break;
@@ -248,7 +248,7 @@ public class StructureUndercityPieces
 					{
 						StructureUndercityPieces.getNextUndercityComponent(p_74861_1_, p_74861_2_, p_74861_3_, this.boundingBox.minX,
 								(this.boundingBox.minY - 1)
-								+ p_74861_3_.nextInt(3), this.boundingBox.minZ - 1, this.coordBaseMode, i);
+										+ p_74861_3_.nextInt(3), this.boundingBox.minZ - 1, this.coordBaseMode, i);
 					}
 					else if(j == 2)
 					{
