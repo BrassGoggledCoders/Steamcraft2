@@ -28,6 +28,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 import org.lwjgl.opengl.GL11;
+import steamcraft.common.items.ItemHandbook;
 import boilerplate.common.utils.StringUtils;
 
 public class GuiHandbook extends GuiScreen
@@ -52,8 +53,6 @@ public class GuiHandbook extends GuiScreen
 	 * - More prettier GUI
 	 *
 	 * - Back to previous page button
-	 *
-	 * - Handbook remembers current page when closed - save currPage to handbook item's NBT
 	 */
 	private static ResourceLocation guitexture = new ResourceLocation("textures/gui/book.png");
 	private int bookImageWidth = 192;
@@ -62,8 +61,10 @@ public class GuiHandbook extends GuiScreen
 	private NextPageButton buttonNextPage;
 	private NextPageButton buttonPreviousPage;
 	private GuiButton buttonHome;
+	private GuiButton buttonLast;
 
 	private int currPage = 0;
+	private int prevPage = 0;
 	private ArrayList pages = new ArrayList();
 
 	// Note to self: These store ITEMSTACKS not ITEMS or BLOCKS. DUMMY.
@@ -84,14 +85,18 @@ public class GuiHandbook extends GuiScreen
 	@Override
 	public void initGui()
 	{
+		ItemHandbook handbook = (ItemHandbook) this.stack.getItem();
+		this.currPage = handbook.getCurrentPage(this.stack);
 		this.buttonList.clear();
 		byte b0 = 2;
 		int i = (this.width - this.bookImageWidth) / 2;
 		this.buttonList.add(this.buttonNextPage = new NextPageButton(1, i + 120, b0 + 154, true));
 		this.buttonList.add(this.buttonPreviousPage = new NextPageButton(2, i + 38, b0 + 154, false));
-		this.buttonList.add(this.buttonHome = new GuiButton(3, i + 70, b0 + 150, 40, 20, "Home"));
+		this.buttonList.add(this.buttonHome = new GuiButton(3, i + 165, b0 + 10, 40, 20, "Home"));
+		this.buttonList.add(this.buttonLast = new GuiButton(4, i + 165, b0 + 30, 50, 20, "Previous"));
 
-		pages.add(new HandbookPage(StatCollector.translateToLocal("handbook.intro.title"), StatCollector.translateToLocal("handbook.intro.documentation")));
+		this.pages
+				.add(new HandbookPage(StatCollector.translateToLocal("handbook.intro.title"), StatCollector.translateToLocal("handbook.intro.documentation")));
 
 		for(int itemsize = 0; itemsize < modItems.size(); itemsize++)
 		{
@@ -99,7 +104,7 @@ public class GuiHandbook extends GuiScreen
 			Item item = stack.getItem();
 			String name = StatCollector.translateToLocal(item.getUnlocalizedName() + ".name");
 			String docs = StatCollector.translateToLocal(item.getUnlocalizedName() + ".documentation");
-			pages.add(new HandbookPage(name, docs));
+			this.pages.add(new HandbookPage(name, docs));
 		}
 
 		for(int itemsize = 0; itemsize < modBlocks.size(); itemsize++)
@@ -109,9 +114,9 @@ public class GuiHandbook extends GuiScreen
 
 			String name = StatCollector.translateToLocal(block.getUnlocalizedName() + ".name");
 			String docs = StatCollector.translateToLocal(block.getUnlocalizedName() + ".documentation");
-			pages.add(new HandbookPage(name, docs));
+			this.pages.add(new HandbookPage(name, docs));
 		}
-		updateButtons();
+		this.updateButtons();
 	}
 
 	/**
@@ -126,13 +131,93 @@ public class GuiHandbook extends GuiScreen
 		byte b0 = 2;
 		this.drawTexturedModalRect(k, b0, 0, 0, this.bookImageWidth, this.bookImageHeight);
 
-		HandbookPage page = ((HandbookPage) pages.get(currPage));
+		HandbookPage page = ((HandbookPage) this.pages.get(this.currPage));
 		this.fontRendererObj.drawString(page.getTitle(), k + 35, 15, 0x00000000);
 		String[] wrappedDesc = StringUtils.wrap(page.getDocs(), 25);
 		for(int i = 0; i < wrappedDesc.length; i++)
 			this.fontRendererObj.drawString(wrappedDesc[i], k + 35, 30 + (i * 10), 0x00000000);
 
 		super.drawScreen(p_73863_1_, p_73863_2_, p_73863_3_);
+	}
+
+	private void updateButtons()
+	{
+		this.buttonNextPage.visible = (this.currPage < (this.pages.size() - 1));
+		this.buttonPreviousPage.visible = this.currPage > 0;
+	}
+
+	@Override
+	protected void actionPerformed(GuiButton button)
+	{
+		if(button.enabled)
+		{
+			this.prevPage = this.currPage;
+
+			if(button.id == 1)
+			{
+				if(this.currPage < (this.pages.size() - 1))
+				{
+					++this.currPage;
+				}
+			}
+			else if(button.id == 2)
+			{
+				if(this.currPage > 0)
+				{
+					--this.currPage;
+				}
+			}
+			else if(button.id == 3)
+			{
+				if(this.currPage > 0)
+				{
+					this.currPage = 0;
+				}
+			}
+			else if(button.id == 4)
+			{
+				this.currPage = prevPage;
+			}
+
+			this.updateButtons();
+		}
+	}
+
+	/**
+	 * Returns true if this GUI should pause the game when it is displayed in single-player
+	 */
+	@Override
+	public boolean doesGuiPauseGame()
+	{
+		return false;
+	}
+
+	@Override
+	public void onGuiClosed()
+	{
+		ItemHandbook handbook = (ItemHandbook) this.stack.getItem();
+		handbook.setCurrentPage(this.stack, this.currPage);
+	}
+
+	static class HandbookPage
+	{
+		String title, docs;
+
+		public HandbookPage(String title, String docs)
+		{
+			this.title = title;
+			this.docs = docs;
+		}
+
+		public String getTitle()
+		{
+			return this.title;
+		}
+
+		public String getDocs()
+		{
+			return this.docs;
+		}
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -154,8 +239,8 @@ public class GuiHandbook extends GuiScreen
 		{
 			if(this.visible)
 			{
-				boolean flag = p_146112_2_ >= this.xPosition && p_146112_3_ >= this.yPosition && p_146112_2_ < this.xPosition + this.width
-						&& p_146112_3_ < this.yPosition + this.height;
+				boolean flag = (p_146112_2_ >= this.xPosition) && (p_146112_3_ >= this.yPosition) && (p_146112_2_ < (this.xPosition + this.width))
+						&& (p_146112_3_ < (this.yPosition + this.height));
 				GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 				p_146112_1_.getTextureManager().bindTexture(guitexture);
 				int k = 0;
@@ -174,72 +259,5 @@ public class GuiHandbook extends GuiScreen
 				this.drawTexturedModalRect(this.xPosition, this.yPosition, k, l, 23, 13);
 			}
 		}
-	}
-
-	private void updateButtons()
-	{
-		this.buttonNextPage.visible = (this.currPage < this.pages.size() - 1);
-		this.buttonPreviousPage.visible = this.currPage > 0;
-	}
-
-	static class HandbookPage
-	{
-		String title, docs;
-
-		public HandbookPage(String title, String docs)
-		{
-			this.title = title;
-			this.docs = docs;
-		}
-
-		public String getTitle()
-		{
-			return title;
-		}
-
-		public String getDocs()
-		{
-			return docs;
-		}
-	}
-
-	@Override
-	protected void actionPerformed(GuiButton button)
-	{
-		if(button.enabled)
-		{
-			if(button.id == 1)
-			{
-				if(this.currPage < this.pages.size() - 1)
-				{
-					++this.currPage;
-				}
-			}
-			else if(button.id == 2)
-			{
-				if(this.currPage > 0)
-				{
-					--this.currPage;
-				}
-			}
-			else if(button.id == 3)
-			{
-				if(this.currPage > 0)
-				{
-					this.currPage = 0;
-				}
-			}
-
-			this.updateButtons();
-		}
-	}
-
-	/**
-	 * Returns true if this GUI should pause the game when it is displayed in single-player
-	 */
-	@Override
-	public boolean doesGuiPauseGame()
-	{
-		return false;
 	}
 }

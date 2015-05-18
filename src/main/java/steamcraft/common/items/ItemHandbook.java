@@ -14,6 +14,7 @@ package steamcraft.common.items;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
 import steamcraft.client.lib.GuiIDs;
@@ -21,6 +22,8 @@ import steamcraft.common.Steamcraft;
 
 public class ItemHandbook extends BaseItem
 {
+	int currPage;
+
 	public ItemHandbook()
 	{
 		super();
@@ -38,5 +41,20 @@ public class ItemHandbook extends BaseItem
 			player.openGui(Steamcraft.instance, GuiIDs.HANDBOOK, world, 0, 0, 0);
 		}
 		return stack;
+	}
+
+	public int getCurrentPage(ItemStack stack)
+	{
+		if(stack.hasTagCompound())
+			return stack.getTagCompound().getInteger("currPage");
+		else
+			return 0;
+	}
+
+	public void setCurrentPage(ItemStack stack, int currPage)
+	{
+		if(!stack.hasTagCompound())
+			stack.setTagCompound(new NBTTagCompound());
+		stack.getTagCompound().setInteger("currPage", currPage);
 	}
 }
