@@ -33,15 +33,27 @@ import boilerplate.common.utils.StringUtils;
 public class GuiHandbook extends GuiScreen
 {
 	/**
-	 * TODO
+	 * TODO List (TODO order this by priority) <- yes that's a todo on a todo list xD
+	 *
+	 * - Metadata handling
 	 *
 	 * - Index Pages
 	 *
-	 * - Entries for the Deeps, entities, etc.
+	 * - Entries for the Deeps, entities, etc. Manually added.
 	 *
 	 * - Hyperlinks
 	 *
 	 * - Actual docs :P
+	 *
+	 * - Intro/Getting Started page
+	 *
+	 * - Searchbar on index pages
+	 *
+	 * - More prettier GUI
+	 *
+	 * - Back to previous page button
+	 *
+	 * - Handbook remembers current page when closed - save currPage to handbook item's NBT
 	 */
 	private static ResourceLocation guitexture = new ResourceLocation("textures/gui/book.png");
 	private int bookImageWidth = 192;
