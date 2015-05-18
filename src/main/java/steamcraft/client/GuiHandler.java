@@ -122,7 +122,7 @@ public class GuiHandler implements IGuiHandler
 			case GuiIDs.TIMEBOMB:
 				return new GuiTimeBomb(player.inventory, (TileTimeBomb) tile);
 			case GuiIDs.HANDBOOK:
-				return new GuiHandbook();
+				return new GuiHandbook(player.getCurrentEquippedItem());
 			case GuiIDs.POCKET:
 				return new GuiPocket(new ContainerPocket(player, player.inventory, new InventoryPocket(player.getHeldItem())));
 			case GuiIDs.LORE:

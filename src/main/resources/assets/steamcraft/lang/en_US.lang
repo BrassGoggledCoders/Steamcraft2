@@ -613,7 +613,13 @@ battery.slot.2.tooltip=Electric Jars go here
 battery.slot.3.tooltip=Electric Jars go here
 
 #Docs
-tile.blockMetal.documentation=Test
+handbook.intro.title=Introduction
+handbook.intro.documentation=This book is a basic guide to the items, blocks and other features in the Steamcraft2 mod. A more indepth and up to date guide is available at the Wiki (TODO: Link)
 
 item.itemDrillCore.documentation=Base component in all drills.
-item.itemDrillBase.documentation=Main component in the drill core.
+item.itemDrillBase.documentation=Main component in the Drill Core.
+item.itemDrillWood.documentation=Drills act as both shovels and pickaxes. They use RF power, and can be charged in the Charger.
+item.itemDrillSteam.documentation=This is a drill that runs on Steam provided by Steam Canisters in your inventory. It can be used to mine a 3x3 area - this functionality is activated by shift-right clicking.
+item.itemSwordSteam.documentation=A powerful sword that runs on Steam Canisters.
+item.itemShovelSteam.documentation=A quick shovel that runs on Steam Canisters.
+

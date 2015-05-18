@@ -62,7 +62,7 @@ public class GuiHandbook extends GuiScreen
 	private NextPageButton buttonNextPage;
 	private NextPageButton buttonPreviousPage;
 	private GuiButton buttonHome;
-	private int bookTotalPages = 1;
+
 	private int currPage = 0;
 	private ArrayList pages = new ArrayList();
 
@@ -70,9 +70,12 @@ public class GuiHandbook extends GuiScreen
 	public static List modItems = new ArrayList();
 	public static List modBlocks = new ArrayList();
 
-	public GuiHandbook()
+	private ItemStack stack;
+
+	public GuiHandbook(ItemStack stack)
 	{
 		super();
+		this.stack = stack;
 	}
 
 	/**
@@ -88,6 +91,8 @@ public class GuiHandbook extends GuiScreen
 		this.buttonList.add(this.buttonPreviousPage = new NextPageButton(2, i + 38, b0 + 154, false));
 		this.buttonList.add(this.buttonHome = new GuiButton(3, i + 70, b0 + 150, 40, 20, "Home"));
 
+		pages.add(new HandbookPage(StatCollector.translateToLocal("handbook.intro.title"), StatCollector.translateToLocal("handbook.intro.documentation")));
+
 		for(int itemsize = 0; itemsize < modItems.size(); itemsize++)
 		{
 			ItemStack stack = (ItemStack) modItems.get(itemsize);
@@ -95,7 +100,6 @@ public class GuiHandbook extends GuiScreen
 			String name = StatCollector.translateToLocal(item.getUnlocalizedName() + ".name");
 			String docs = StatCollector.translateToLocal(item.getUnlocalizedName() + ".documentation");
 			pages.add(new HandbookPage(name, docs));
-			bookTotalPages++;
 		}
 
 		for(int itemsize = 0; itemsize < modBlocks.size(); itemsize++)
@@ -106,7 +110,6 @@ public class GuiHandbook extends GuiScreen
 			String name = StatCollector.translateToLocal(block.getUnlocalizedName() + ".name");
 			String docs = StatCollector.translateToLocal(block.getUnlocalizedName() + ".documentation");
 			pages.add(new HandbookPage(name, docs));
-			bookTotalPages++;
 		}
 		updateButtons();
 	}
@@ -175,7 +178,7 @@ public class GuiHandbook extends GuiScreen
 
 	private void updateButtons()
 	{
-		this.buttonNextPage.visible = (this.currPage < this.bookTotalPages - 1);
+		this.buttonNextPage.visible = (this.currPage < this.pages.size() - 1);
 		this.buttonPreviousPage.visible = this.currPage > 0;
 	}
 
@@ -207,7 +210,7 @@ public class GuiHandbook extends GuiScreen
 		{
 			if(button.id == 1)
 			{
-				if(this.currPage < this.bookTotalPages - 1)
+				if(this.currPage < this.pages.size() - 1)
 				{
 					++this.currPage;
 				}
