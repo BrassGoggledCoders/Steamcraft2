@@ -52,7 +52,6 @@ public class GuiHandbook extends GuiScreen
 	 *
 	 * - More prettier GUI
 	 *
-	 * - Back to previous page button
 	 */
 	private static ResourceLocation guitexture = new ResourceLocation("textures/gui/book.png");
 	private int bookImageWidth = 192;
@@ -97,6 +96,9 @@ public class GuiHandbook extends GuiScreen
 
 		this.pages
 				.add(new HandbookPage(StatCollector.translateToLocal("handbook.intro.title"), StatCollector.translateToLocal("handbook.intro.documentation")));
+		this.pages
+				.add(new HandbookPage(StatCollector.translateToLocal("handbook.gettingstarted.title"), StatCollector
+						.translateToLocal("handbook.gettingstarted.documentation")));
 
 		for(int itemsize = 0; itemsize < modItems.size(); itemsize++)
 		{
