@@ -13,6 +13,7 @@
 package steamcraft.client.gui;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import net.minecraft.block.Block;
@@ -67,6 +68,7 @@ public class GuiHandbook extends GuiScreen
 	private NextPageButton buttonPreviousPage;
 	private GuiButton buttonHome;
 	private GuiButton buttonLast;
+	private ArrayList pageButtons = new ArrayList();
 
 	private int currPage = 0;
 	private int prevPage = 0;
@@ -95,17 +97,21 @@ public class GuiHandbook extends GuiScreen
 		this.buttonList.clear();
 		byte b0 = 2;
 		int i = (this.width - this.bookImageWidth) / 2;
+		// Add buttons
 		this.buttonList.add(this.buttonNextPage = new NextPageButton(1, i + 120, b0 + 154, true));
 		this.buttonList.add(this.buttonPreviousPage = new NextPageButton(2, i + 38, b0 + 154, false));
 		this.buttonList.add(this.buttonHome = new GuiButton(3, i + 165, b0 + 10, 40, 20, "Home"));
 		this.buttonList.add(this.buttonLast = new GuiButton(4, i + 165, b0 + 30, 50, 20, "Previous"));
 
+		// Manually added pages
 		this.pages
 				.add(new HandbookPage(StatCollector.translateToLocal("handbook.intro.title"), StatCollector.translateToLocal("handbook.intro.documentation")));
-		this.pages
-				.add(new HandbookPage(StatCollector.translateToLocal("handbook.gettingstarted.title"), StatCollector
-						.translateToLocal("handbook.gettingstarted.documentation")));
+		/*
+		 * this.pages .add(new HandbookPage(StatCollector.translateToLocal("handbook.gettingstarted.title"), StatCollector
+		 * .translateToLocal("handbook.gettingstarted.documentation")));
+		 */
 
+		// Auto Add pages for items
 		for(int itemsize = 0; itemsize < modItems.size(); itemsize++)
 		{
 			ItemStack stack = (ItemStack) modItems.get(itemsize);
@@ -114,7 +120,7 @@ public class GuiHandbook extends GuiScreen
 			String docs = StatCollector.translateToLocal(item.getUnlocalizedName() + ".documentation");
 			this.pages.add(new HandbookPage(name, docs));
 		}
-
+		// Auto Add pages for blocks
 		for(int itemsize = 0; itemsize < modBlocks.size(); itemsize++)
 		{
 			ItemStack stack = (ItemStack) modBlocks.get(itemsize);
@@ -131,7 +137,7 @@ public class GuiHandbook extends GuiScreen
 	 * Draws the screen and all the components in it.
 	 */
 	@Override
-	public void drawScreen(int p_73863_1_, int p_73863_2_, float p_73863_3_)
+	public void drawScreen(int x, int y, float p_73863_3_)
 	{
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 		this.mc.getTextureManager().bindTexture(guitexture);
@@ -141,11 +147,43 @@ public class GuiHandbook extends GuiScreen
 
 		HandbookPage page = ((HandbookPage) this.pages.get(this.currPage));
 		this.fontRendererObj.drawString(page.getTitle(), k + 35, 15, 0x00000000);
+		// Add links
+		List<String> list = fontRendererObj.listFormattedStringToWidth(page.getDocs(), width);
+
+		List<String> repList = new ArrayList<String>();
+		int start;
+		int overflow = 0;
+		while((start = page.getDocs().indexOf("[")) >= 0 && overflow < 50)
+		{
+			overflow++;
+			int end = page.getDocs().indexOf("]", start);
+			String rep = page.getDocs().substring(start, end + 1);
+			repList.add(rep);
+		}
+
+		Iterator<String> itRep = repList.iterator();
+		while(itRep.hasNext())
+		{
+			String rep = itRep.next();
+			for(int yOff = 0; yOff < list.size(); yOff++)
+			{
+				String s = list.get(yOff);
+				if((start = s.indexOf(rep)) >= 0)
+				{
+					int bx = fontRendererObj.getStringWidth(s.substring(0, start));
+					int by = yOff * fontRendererObj.FONT_HEIGHT;
+					int bw = fontRendererObj.getStringWidth(rep);
+					int bpage = 0;
+					pageButtons.add(new GuiButton(3, +bx, y + by, bw, (int) (fontRendererObj.FONT_HEIGHT * 1.5), rep));
+					break;
+				}
+			}
+		}
 		String[] wrappedDesc = StringUtils.wrap(page.getDocs(), 25);
 		for(int i = 0; i < wrappedDesc.length; i++)
 			this.fontRendererObj.drawString(wrappedDesc[i], k + 35, 30 + (i * 10), 0x00000000);
 
-		super.drawScreen(p_73863_1_, p_73863_2_, p_73863_3_);
+		super.drawScreen(x, y, p_73863_3_);
 	}
 
 	private void updateButtons()
@@ -184,7 +222,7 @@ public class GuiHandbook extends GuiScreen
 			}
 			else if(button.id == 4)
 			{
-				this.currPage = prevPage;
+				this.currPage = this.prevPage;
 			}
 
 			this.updateButtons();
@@ -267,5 +305,16 @@ public class GuiHandbook extends GuiScreen
 				this.drawTexturedModalRect(this.xPosition, this.yPosition, k, l, 23, 13);
 			}
 		}
+	}
+
+	public int getPageIndexFromTitle(String string)
+	{
+		for(int x = 0; x < this.pages.size(); x++)
+		{
+			String title = ((HandbookPage) this.pages.get(x)).getTitle();
+			if(string.equals(title))
+				return x;
+		}
+		return 0;
 	}
 }
