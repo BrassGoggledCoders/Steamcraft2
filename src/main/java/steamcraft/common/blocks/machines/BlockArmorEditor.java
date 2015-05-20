@@ -13,15 +13,20 @@
 package steamcraft.common.blocks.machines;
 
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 import steamcraft.client.lib.GuiIDs;
 import steamcraft.client.lib.RenderIDs;
 import steamcraft.common.Steamcraft;
+import steamcraft.common.lib.ModInfo;
 import steamcraft.common.tiles.TileArmorEditor;
 
 /**
@@ -107,5 +112,12 @@ public class BlockArmorEditor extends BaseContainerBlock
 	public boolean renderAsNormalBlock()
 	{
 		return false;
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void registerBlockIcons(IIconRegister ir)
+	{
+		this.blockIcon = ir.registerIcon(ModInfo.PREFIX + "blockSteamBoilerTop");
 	}
 }

@@ -52,6 +52,12 @@ public class GuiHandbook extends GuiScreen
 	 *
 	 * - More prettier GUI
 	 *
+	 * - Justification of body text
+	 *
+	 * - Automatic page splitting
+	 *
+	 * - Slightly bigger GUI
+	 *
 	 */
 	private static ResourceLocation guitexture = new ResourceLocation("textures/gui/book.png");
 	private int bookImageWidth = 192;

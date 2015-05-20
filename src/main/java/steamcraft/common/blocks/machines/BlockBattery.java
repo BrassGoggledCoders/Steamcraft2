@@ -13,6 +13,7 @@
 package steamcraft.common.blocks.machines;
 
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
@@ -26,6 +27,7 @@ import net.minecraftforge.common.util.ForgeDirection;
 import steamcraft.client.lib.GuiIDs;
 import steamcraft.client.lib.RenderIDs;
 import steamcraft.common.Steamcraft;
+import steamcraft.common.lib.ModInfo;
 import steamcraft.common.tiles.energy.TileBattery;
 
 /**
@@ -94,5 +96,12 @@ public class BlockBattery extends BaseContainerBlock
 	{
 		TileBattery tile = (TileBattery) world.getTileEntity(par2, par3, par4);
 		return Math.min(tile.getEnergyStored(ForgeDirection.UNKNOWN) / 10000, 15);
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void registerBlockIcons(IIconRegister ir)
+	{
+		this.blockIcon = ir.registerIcon(ModInfo.PREFIX + "/metal/blockCastIron");
 	}
 }

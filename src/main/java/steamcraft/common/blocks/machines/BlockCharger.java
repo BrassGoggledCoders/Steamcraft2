@@ -67,11 +67,11 @@ public class BlockCharger extends BaseContainerBlock
 		return this.blockIcon;
 	}
 
-	@SideOnly(Side.CLIENT)
 	@Override
-	public void registerBlockIcons(IIconRegister icon)
+	@SideOnly(Side.CLIENT)
+	public void registerBlockIcons(IIconRegister ir)
 	{
-		this.blockIcon = icon.registerIcon(ModInfo.PREFIX + "blockChargerSide");
+		this.blockIcon = ir.registerIcon(ModInfo.PREFIX + "/metal/blockTin");
 	}
 
 	@Override
