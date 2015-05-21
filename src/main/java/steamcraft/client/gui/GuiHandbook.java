@@ -13,7 +13,6 @@
 package steamcraft.client.gui;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import net.minecraft.block.Block;
@@ -35,7 +34,7 @@ import boilerplate.common.utils.StringUtils;
 public class GuiHandbook extends GuiScreen
 {
 	/**
-	 * TODO List (TODO order this by priority) <- yes that's a todo on a todo list xD
+	 * TODO List
 	 *
 	 * - Metadata handling
 	 *
@@ -147,38 +146,6 @@ public class GuiHandbook extends GuiScreen
 
 		HandbookPage page = ((HandbookPage) this.pages.get(this.currPage));
 		this.fontRendererObj.drawString(page.getTitle(), k + 35, 15, 0x00000000);
-		// Add links
-		List<String> list = fontRendererObj.listFormattedStringToWidth(page.getDocs(), width);
-
-		List<String> repList = new ArrayList<String>();
-		int start;
-		int overflow = 0;
-		while((start = page.getDocs().indexOf("[")) >= 0 && overflow < 50)
-		{
-			overflow++;
-			int end = page.getDocs().indexOf("]", start);
-			String rep = page.getDocs().substring(start, end + 1);
-			repList.add(rep);
-		}
-
-		Iterator<String> itRep = repList.iterator();
-		while(itRep.hasNext())
-		{
-			String rep = itRep.next();
-			for(int yOff = 0; yOff < list.size(); yOff++)
-			{
-				String s = list.get(yOff);
-				if((start = s.indexOf(rep)) >= 0)
-				{
-					int bx = fontRendererObj.getStringWidth(s.substring(0, start));
-					int by = yOff * fontRendererObj.FONT_HEIGHT;
-					int bw = fontRendererObj.getStringWidth(rep);
-					int bpage = 0;
-					pageButtons.add(new GuiButton(3, +bx, y + by, bw, (int) (fontRendererObj.FONT_HEIGHT * 1.5), rep));
-					break;
-				}
-			}
-		}
 		String[] wrappedDesc = StringUtils.wrap(page.getDocs(), 25);
 		for(int i = 0; i < wrappedDesc.length; i++)
 			this.fontRendererObj.drawString(wrappedDesc[i], k + 35, 30 + (i * 10), 0x00000000);
