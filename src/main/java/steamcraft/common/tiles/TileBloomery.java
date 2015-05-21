@@ -89,9 +89,11 @@ public class TileBloomery extends BaseTileWithInventory
 		boolean flag = this.burnTime > 0;
 		boolean flag1 = false;
 
+		// Update Burn Time
 		if(this.burnTime > 0)
 			--this.burnTime;
 
+		// Burn Fuel
 		if(!this.worldObj.isRemote)
 		{
 			if((this.burnTime == 0) && this.canSmelt())
