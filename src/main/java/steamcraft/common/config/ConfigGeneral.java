@@ -39,6 +39,8 @@ public class ConfigGeneral
 	public static int depthsBiomeID, depthsFBiomeID, depthsMBiomeID, depthsSBiomeID, depthsIBiomeID, depthsSCBiomeID, depthsSCHBiomeID, depthsSWBiomeID,
 			depthsTFBiomeID, depthsJBiomeID;// , depthsOBiomeID, depthsBBiomeID;
 
+	public static int spyglassZoom;
+
 	public static void initialize(File configFile)
 	{
 		config = new Configuration(configFile);
@@ -51,6 +53,7 @@ public class ConfigGeneral
 
 			drawFluid = config.get(CATEGORY_CLIENT, "Render fluid inside blocks", true).getBoolean();
 			drawInside = config.get(CATEGORY_CLIENT, "Render the insides of blocks", true).getBoolean();
+			spyglassZoom = config.get(CATEGORY_CLIENT, "FOV modifier the spyglass applies.", 0.3F).getInt();
 
 			etheriumMaterialID = config.get(CATEGORY_GENERAL, "Etherium Tool Material ID for Tinker's Construct Intergration", 66).getInt();
 

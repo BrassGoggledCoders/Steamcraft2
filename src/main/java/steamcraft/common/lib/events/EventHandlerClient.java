@@ -55,6 +55,7 @@ import org.lwjgl.opengl.GL11;
 import steamcraft.api.vanity.IVanityItem;
 import steamcraft.client.ClientProxy;
 import steamcraft.client.lib.GuiIDs;
+import steamcraft.common.config.ConfigGeneral;
 import steamcraft.common.container.InventoryVanity;
 import steamcraft.common.entities.EntityPlayerExtended;
 import steamcraft.common.init.InitBlocks;
@@ -75,7 +76,7 @@ public class EventHandlerClient
 	{
 		if((event.entity.inventory.getCurrentItem() != null) && (event.entity.inventory.getCurrentItem().getItem() == InitItems.itemSpyglass))
 		{
-			event.newfov = 0.3F;
+			event.newfov = ConfigGeneral.spyglassZoom;
 		}
 	}
 
