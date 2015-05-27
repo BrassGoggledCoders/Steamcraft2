@@ -513,6 +513,8 @@ public class InitRecipes
 				new Object[] { InitBlocks.blockCastIronLamp, Blocks.redstone_torch });
 		GameRegistry.addShapelessRecipe(new ItemStack(InitItems.itemSplashLightningBottle), InitItems.itemElectricJarSmall, Items.gunpowder);
 		GameRegistry.addRecipe(new ItemStack(InitItems.itemGrindstone), "FS", "SF", 'F', Items.flint, 'S', Blocks.stone);
+		GameRegistry.addShapelessRecipe(new ItemStack(Items.gunpowder, 2), new ItemStack(InitItems.itemResource, 1, 1), new ItemStack(Items.coal, 1, 1),
+				new ItemStack(InitItems.itemResource, 1, 1), new ItemStack(Items.coal, 1, 1));
 	}
 
 	private static void initializeSmeltingRecipes()
