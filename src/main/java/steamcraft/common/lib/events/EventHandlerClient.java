@@ -76,7 +76,7 @@ public class EventHandlerClient
 	{
 		if((event.entity.inventory.getCurrentItem() != null) && (event.entity.inventory.getCurrentItem().getItem() == InitItems.itemSpyglass))
 		{
-			event.newfov = ConfigGeneral.spyglassZoom;
+			event.newfov = (float) ConfigGeneral.spyglassZoom;
 		}
 	}
 
