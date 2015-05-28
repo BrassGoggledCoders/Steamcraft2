@@ -83,7 +83,6 @@ public class ItemCanister extends BaseItem implements IFluidContainerItem
 	@SideOnly(Side.CLIENT)
 	public IIcon getIconIndex(ItemStack stack)
 	{
-		FluidStack fluid = this.getFluid(stack);
 		if(getFluidAmount(stack) == 0)
 			return this.emptyIcon;
 		else if(getFluidAmount(stack) == MAX_STEAM)
@@ -97,10 +96,9 @@ public class ItemCanister extends BaseItem implements IFluidContainerItem
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean flag)
 	{
-		FluidStack fluid = this.getFluid(stack);
-		if((fluid != null) && (getFluidAmount(stack) > 0))
+		if((getFluidAmount(stack) > 0))
 		{
-			String str = fluid.getFluid().getName();
+			String str = getFluid(stack).getFluid().getName();
 			int amount = getFluidAmount(stack);
 
 			list.add("Holding " + amount + "mB of " + str);
