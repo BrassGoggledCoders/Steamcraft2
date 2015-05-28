@@ -36,9 +36,6 @@ public class ItemElectricTool extends ItemModTool implements IEnergyItem
 		this.maxEnergy = maxEnergy * 1000;
 		this.maxReceive = (short) maxReceive;
 		this.setMaxStackSize(1);
-		this.setMaxDamage(20);
-		this.setHasSubtypes(false);
-		this.setNoRepair();
 	}
 
 	@SuppressWarnings("all")
@@ -51,7 +48,7 @@ public class ItemElectricTool extends ItemModTool implements IEnergyItem
 
 	public ItemStack getUnchargedItem(Item item)
 	{
-		ItemStack uncharged = new ItemStack(item, 1, 20);
+		ItemStack uncharged = new ItemStack(item);
 
 		if(!uncharged.hasTagCompound())
 		{
@@ -64,7 +61,7 @@ public class ItemElectricTool extends ItemModTool implements IEnergyItem
 
 	public ItemStack getChargedItem(Item item)
 	{
-		ItemStack charged = new ItemStack(item, 1, 1);
+		ItemStack charged = new ItemStack(item);
 
 		if(!charged.hasTagCompound())
 		{
@@ -102,8 +99,6 @@ public class ItemElectricTool extends ItemModTool implements IEnergyItem
 
 		if(energy > this.maxEnergy)
 			energy = this.maxEnergy;
-
-		stack.setItemDamage(20 - ((energy * 20) / this.maxEnergy));
 
 		tag.setInteger("energy", energy);
 

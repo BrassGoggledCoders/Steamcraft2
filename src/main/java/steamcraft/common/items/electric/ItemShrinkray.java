@@ -46,7 +46,6 @@ public class ItemShrinkray extends ElectricItem
 		super(maxEnergy, maxReceive, maxSend);
 		this.setMaxStackSize(1);
 		this.setFull3D();
-		this.setMaxDamage(20);
 		this.setHasSubtypes(false);
 	}
 

@@ -46,8 +46,6 @@ public class ItemRayGun extends ElectricItem
 		super(maxEnergy, maxReceive, maxSend);
 		this.setMaxStackSize(1);
 		this.setFull3D();
-		this.setMaxDamage(20);
-		this.setHasSubtypes(false);
 		meltables.put(Blocks.snow, Blocks.flowing_water);
 		meltables.put(Blocks.snow_layer, Blocks.flowing_water);
 		meltables.put(Blocks.sand, Blocks.glass);
