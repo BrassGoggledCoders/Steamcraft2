@@ -15,7 +15,9 @@ package steamcraft.common.items;
 import java.util.List;
 
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.IIcon;
@@ -23,9 +25,11 @@ import net.minecraft.util.IIcon;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidContainerItem;
 
+import steamcraft.common.init.InitItems;
 import steamcraft.common.lib.ModInfo;
 
 /**
@@ -43,6 +47,24 @@ public class ItemCanister extends BaseItem implements IFluidContainerItem
 	{
 		super();
 		this.setMaxStackSize(1);
+	}
+
+	@SuppressWarnings("all")
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void getSubItems(Item item, CreativeTabs tab, List l)
+	{
+		l.add(new ItemStack(InitItems.itemCanisterSteam));
+		l.add(this.getFilledCanister());
+	}
+
+	public ItemStack getFilledCanister()
+	{
+		ItemStack filled = new ItemStack(InitItems.itemCanisterSteam);
+
+		this.fill(filled, new FluidStack(FluidRegistry.getFluid("steam"), MAX_STEAM), true);
+
+		return filled;
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -208,8 +230,7 @@ public class ItemCanister extends BaseItem implements IFluidContainerItem
 	@Override
 	public double getDurabilityForDisplay(ItemStack stack)
 	{
-		FluidStack fluid = this.getFluid(stack);
-		return 1.0D - ((double) getFluidAmount(stack) / 10000);
+		return 1.0D - ((double) getFluidAmount(stack) / getCapacity(stack));
 	}
 
 	@Override
