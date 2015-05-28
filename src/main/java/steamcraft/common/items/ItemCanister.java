@@ -209,6 +209,6 @@ public class ItemCanister extends BaseItem implements IFluidContainerItem
 	public double getDurabilityForDisplay(ItemStack stack)
 	{
 		FluidStack fluid = this.getFluid(stack);
-		return getFluidAmount(stack);
+		return (getFluidAmount(stack) / getCapacity(stack)) * 100;
 	}
 }
