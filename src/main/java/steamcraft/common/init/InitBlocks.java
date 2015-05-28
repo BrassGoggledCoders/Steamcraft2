@@ -101,7 +101,6 @@ import steamcraft.common.tiles.TileBloomery;
 import steamcraft.common.tiles.TileCopperPipe;
 import steamcraft.common.tiles.TileIntake;
 import steamcraft.common.tiles.TileNuclearBoiler;
-import steamcraft.common.tiles.TileRefinery;
 import steamcraft.common.tiles.TileSteamBoiler;
 import steamcraft.common.tiles.TileTimeBomb;
 import steamcraft.common.tiles.energy.TileBattery;
@@ -345,19 +344,19 @@ public class InitBlocks
 
 		blockRedwoodDoubleSlab = new BlockCustomDoubleSlab("blockRedwoodPlanks", blockRedwoodPlanks, Material.wood, blockRedwoodSlab)
 				.setBlockName("blockRedwoodDoubleSlab");
-		registerBlock(blockRedwoodDoubleSlab, "BlockRedwoodDoubleSlab");
+		// registerBlock(blockRedwoodDoubleSlab, "BlockRedwoodDoubleSlab");
 
 		blockMangroveDoubleSlab = new BlockCustomDoubleSlab("blockMangrovePlanks", blockMangrovePlanks, Material.wood, blockMangroveSlab)
 				.setBlockName("blockMangroveDoubleSlab");
-		registerBlock(blockMangroveDoubleSlab, "blockMangroveDoubleSlab");
+		// registerBlock(blockMangroveDoubleSlab, "blockMangroveDoubleSlab");
 
 		blockWillowDoubleSlab = new BlockCustomDoubleSlab("blockWillowPlanks", blockWillowPlanks, Material.wood, blockWillowSlab)
 				.setBlockName("blockWillowDoubleSlab");
-		registerBlock(blockWillowDoubleSlab, "blockWillowDoubleSlab");
+		// registerBlock(blockWillowDoubleSlab, "blockWillowDoubleSlab");
 
 		blockPetrifiedDoubleSlab = new BlockCustomDoubleSlab("blockPetrifiedPlanks", blockPetrifiedPlanks, Material.wood, blockPetrifiedSlab)
 				.setBlockName("blockPetrifiedDoubleSlab");
-		registerBlock(blockPetrifiedDoubleSlab, "blockPetrifiedDoubleSlab");
+		// registerBlock(blockPetrifiedDoubleSlab, "blockPetrifiedDoubleSlab");
 
 		blockMud = new BlockMud(Material.ground).setBlockName("blockMud");
 		registerBlock(blockMud, "BlockMud");
@@ -366,10 +365,10 @@ public class InitBlocks
 		registerBlock(blockBoulder, "BlockBoulder");
 
 		blockSpiderEgg = new BlockSpiderEgg(Material.dragonEgg).setBlockName("blockSpiderEgg");
-		registerBlock(blockSpiderEgg, "BlockSpiderEgg");
+		// registerBlock(blockSpiderEgg, "BlockSpiderEgg");
 
 		blockMushroom = new BlockCustomMushroom().setBlockName("blockMushroom");
-		registerBlock(blockMushroom, "BlockMushroom");
+		// registerBlock(blockMushroom, "BlockMushroom");
 
 		blockTintedRock = new BlockTintedRock(Material.rock).setBlockName("blockTintedRock");
 		registerBlock(blockTintedRock, "BlockTintedRock");
@@ -507,7 +506,7 @@ public class InitBlocks
 		registerBlock(blockCopperTank, "BlockCopperTank");
 
 		blockRefinery = new BlockRefinery().setBlockName("blockRefinery");
-		RegistryHelper.registerContainerBlockWithDesc(blockRefinery, TileRefinery.class, "BlockRefinery");
+		// RegistryHelper.registerContainerBlockWithDesc(blockRefinery, TileRefinery.class, "BlockRefinery");
 
 		blockStasisField = new BlockStasisField().setBlockName("blockStasisField");
 		RegistryHelper.registerContainerBlockWithDesc(blockStasisField, TileStasisField.class, "BlockStasisField");
@@ -538,22 +537,18 @@ public class InitBlocks
 
 		// Whale Oil
 		whaleOilFluid = new FluidWhaleOil("whaleoil").setUnlocalizedName("whaleOilFluid");
-		FluidRegistry.registerFluid(whaleOilFluid);
+		// FluidRegistry.registerFluid(whaleOilFluid);
 
 		blockWhaleOil = new BlockFluidWhaleOil(whaleOilFluid, Material.water).setBlockName("whaleOilFluidBlock");
-		registerBlock(blockWhaleOil, "blockWhaleOil");
+		// registerBlock(blockWhaleOil, "blockWhaleOil");
 
 		// TiCon Molten Zinc
-		moltenZincFluid = new FluidBoiling("moltenzinc").setUnlocalizedName("moltenZincFluid");
-		FluidRegistry.registerFluid(moltenZincFluid);
-
-		blockMoltenZinc = new BlockFluidBoiling(moltenZincFluid, Material.water).setBlockName("moltenZincFluidBlock");
-
-		// TiCon Molten Brass
-		moltenBrassFluid = new FluidBoiling("moltenbrass").setUnlocalizedName("moltenBrassFluid");
-		FluidRegistry.registerFluid(moltenBrassFluid);
-
-		blockMoltenBrass = new BlockFluidBoiling(moltenBrassFluid, Material.water).setBlockName("moltenBrassFluidBlock");
+		/*
+		 * moltenZincFluid = new FluidBoiling("moltenzinc").setUnlocalizedName("moltenZincFluid"); FluidRegistry.registerFluid(moltenZincFluid); blockMoltenZinc
+		 * = new BlockFluidBoiling(moltenZincFluid, Material.water).setBlockName("moltenZincFluidBlock"); // TiCon Molten Brass moltenBrassFluid = new
+		 * FluidBoiling("moltenbrass").setUnlocalizedName("moltenBrassFluid"); FluidRegistry.registerFluid(moltenBrassFluid); blockMoltenBrass = new
+		 * BlockFluidBoiling(moltenBrassFluid, Material.water).setBlockName("moltenBrassFluidBlock");
+		 */
 	}
 
 	private static void initializeOthers()
@@ -620,7 +615,7 @@ public class InitBlocks
 		registerBlock(blockGhostIce, "BlockGhostIce");
 
 		blockTrunk = new BlockTrunk().setBlockName("blockTrunk");
-		registerBlock(blockTrunk, "BlockTrunk");
+		// registerBlock(blockTrunk, "BlockTrunk");
 	}
 
 	private static String[] blacklist = new String[] { "BlockFissurePortal", "BlockLamp", "BlockMotionSensor", "BlockMotionSensorOn", "BlockStandardSirenOn",

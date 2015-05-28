@@ -320,7 +320,7 @@ public class InitItems
 		legsWhalebone = new ItemNormalArmor(MaterialHelper.ARMOR_WHALEBONE, 0, 2).setUnlocalizedName("itemLegsWhalebone");
 		bootsWhalebone = new ItemNormalArmor(MaterialHelper.ARMOR_WHALEBONE, 0, 3).setUnlocalizedName("itemBootsWhalebone");
 
-		RegistryHelper.registerArmorSet(helmetWhalebone, chestplateWhalebone, legsWhalebone, bootsWhalebone, "Whalebone", ModInfo.ID);
+		// RegistryHelper.registerArmorSet(helmetWhalebone, chestplateWhalebone, legsWhalebone, bootsWhalebone, "Whalebone", ModInfo.ID);
 	}
 
 	private static void initializeGuns()
@@ -502,7 +502,7 @@ public class InitItems
 		registerItem(itemSteelPlating, "ItemSteelPlating");
 
 		itemLastResort = new ItemLastResort().setUnlocalizedName("itemLastResort");
-		registerItem(itemLastResort, "ItemLastResort");
+		// registerItem(itemLastResort, "ItemLastResort");
 
 		itemGogglesModule = new ItemGogglesModule().setUnlocalizedName("itemGogglesModule");
 		registerItem(itemGogglesModule, "ItemGogglesModule");
@@ -511,13 +511,13 @@ public class InitItems
 		registerItem(itemWingpackModule, "ItemWingpackModule");
 
 		itemFreezeBoots = new ItemFreezeBoots().setUnlocalizedName("itemFreezeBoots");
-		registerItem(itemFreezeBoots, "ItemFreezeBoots");
+		// registerItem(itemFreezeBoots, "ItemFreezeBoots");
 
 		itemSuperFreezeBoots = new ItemSuperFreezeBoots().setUnlocalizedName("itemSuperFreezeBoots");
-		registerItem(itemSuperFreezeBoots, "ItemSuperFreezeBoots");
+		// registerItem(itemSuperFreezeBoots, "ItemSuperFreezeBoots");
 
 		itemAutofeeder = new ItemAutofeeder().setUnlocalizedName("itemAutofeeder");
-		registerItem(itemAutofeeder, "ItemAutofeeder");
+		// registerItem(itemAutofeeder, "ItemAutofeeder");
 
 		itemTeaLeaf = new BaseItem().setUnlocalizedName("itemTeaLeaves");
 		registerItem(itemTeaLeaf, "ItemTeaLeaf");
@@ -535,7 +535,7 @@ public class InitItems
 		// registerItem(itemGrappleGun, "ItemGrappleGun");
 
 		itemHandbook = new ItemHandbook().setUnlocalizedName("itemHandbook");
-		registerItem(itemHandbook, "ItemHandbook");
+		// registerItem(itemHandbook, "ItemHandbook");
 
 		itemSpyglass = new BaseItem().setUnlocalizedName("itemSpyglass").setFull3D();
 		registerItem(itemSpyglass, "ItemSpyglass");
@@ -568,9 +568,9 @@ public class InitItems
 				itemBoilingMudBucket), new ItemStack(Items.bucket));
 
 		itemWhaleOilBucket = new ItemCustomBucket(InitBlocks.blockWhaleOil).setUnlocalizedName("itemWhaleOilBucket");
-		GameRegistry.registerItem(itemWhaleOilBucket, "ItemWhaleOilBucket");
-		FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("whaleoil", FluidContainerRegistry.BUCKET_VOLUME), new ItemStack(
-				itemWhaleOilBucket), new ItemStack(Items.bucket));
+		// GameRegistry.registerItem(itemWhaleOilBucket, "ItemWhaleOilBucket");
+		// FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("whaleoil", FluidContainerRegistry.BUCKET_VOLUME), new ItemStack(
+		// itemWhaleOilBucket), new ItemStack(Items.bucket));
 
 		itemCoin = new ItemCoin().setUnlocalizedName("itemCoin");
 		// registerItem(itemCoin, "ItemCoin");
@@ -582,16 +582,16 @@ public class InitItems
 		registerItem(itemShieldedCanister, "ItemShieldedCanister");
 
 		itemWhalebone = new BaseItem().setUnlocalizedName("itemWhalebone");
-		registerItem(itemWhalebone, "ItemWhalebone");
+		// registerItem(itemWhalebone, "ItemWhalebone");
 
 		itemWhaleMeat = new ItemCustomFood(3, 0.4F, false).setUnlocalizedName("itemWhaleMeat");
-		registerItem(itemWhaleMeat, "ItemWhaleMeat");
+		// registerItem(itemWhaleMeat, "ItemWhaleMeat");
 
 		itemCookedWhaleMeat = new ItemCustomFood(6, 0.8F, true).setUnlocalizedName("itemCookedWhaleMeat");
-		registerItem(itemCookedWhaleMeat, "ItemCookedWhaleMeat");
+		// registerItem(itemCookedWhaleMeat, "ItemCookedWhaleMeat");
 
 		itemWhaleBlubber = new BaseItem().setUnlocalizedName("itemWhaleBlubber");
-		registerItem(itemWhaleBlubber, "ItemWhaleBlubber");
+		// registerItem(itemWhaleBlubber, "ItemWhaleBlubber");
 
 		// Also known as a pokkit by some wierdo called Longeye ;)
 		itemDimPocket = new ItemDimensionalPocket().setUnlocalizedName("itemDimPocket");
