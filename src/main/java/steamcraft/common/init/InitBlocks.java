@@ -51,7 +51,6 @@ import steamcraft.common.blocks.BlockEtherium;
 import steamcraft.common.blocks.BlockFissurePortal;
 import steamcraft.common.blocks.BlockFluidBoiling;
 import steamcraft.common.blocks.BlockFluidSteam;
-import steamcraft.common.blocks.BlockFluidWhaleOil;
 import steamcraft.common.blocks.BlockHatch;
 import steamcraft.common.blocks.BlockInfestedDirt;
 import steamcraft.common.blocks.BlockInfestedGrass;
@@ -539,7 +538,7 @@ public class InitBlocks
 		whaleOilFluid = new FluidWhaleOil("whaleoil").setUnlocalizedName("whaleOilFluid");
 		// FluidRegistry.registerFluid(whaleOilFluid);
 
-		blockWhaleOil = new BlockFluidWhaleOil(whaleOilFluid, Material.water).setBlockName("whaleOilFluidBlock");
+		// blockWhaleOil = new BlockFluidWhaleOil(whaleOilFluid, Material.water).setBlockName("whaleOilFluidBlock");
 		// registerBlock(blockWhaleOil, "blockWhaleOil");
 
 		// TiCon Molten Zinc

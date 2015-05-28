@@ -43,7 +43,6 @@ public class ItemCanister extends BaseItem implements IFluidContainerItem
 	{
 		super();
 		this.setMaxStackSize(1);
-		this.setMaxDamage(MAX_STEAM / 100);
 	}
 
 	@SideOnly(Side.CLIENT)

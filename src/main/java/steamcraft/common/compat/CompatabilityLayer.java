@@ -270,8 +270,8 @@ public class CompatabilityLayer
 		}
 		if(Loader.isModLoaded("TConstruct"))
 		{
-			GameRegistry.registerBlock(InitBlocks.blockMoltenZinc, "blockMoltenZinc");
-			GameRegistry.registerBlock(InitBlocks.blockMoltenBrass, "blockMoltenBrass");
+			// GameRegistry.registerBlock(InitBlocks.blockMoltenZinc, "blockMoltenZinc");
+			// GameRegistry.registerBlock(InitBlocks.blockMoltenBrass, "blockMoltenBrass");
 			/*
 			 * TConstructRegistry.getTableCasting().addCastingRecipe(new ItemStack(InitItems.itemIngot, 1, 3), new FluidStack(InitBlocks.moltenZincFluid,
 			 * ingotLiquidValue), TConstructRegistry.getItemStack("castingot"), 20); TConstructRegistry.getTableCasting().addCastingRecipe(new
