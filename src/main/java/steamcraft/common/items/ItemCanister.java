@@ -20,6 +20,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.IIcon;
 
+import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -209,6 +210,14 @@ public class ItemCanister extends BaseItem implements IFluidContainerItem
 	public double getDurabilityForDisplay(ItemStack stack)
 	{
 		FluidStack fluid = this.getFluid(stack);
-		return (getFluidAmount(stack) / getCapacity(stack)) * 100;
+		FMLLog.info("" + (getFluidAmount(stack) / getCapacity(stack)) * 100, "" + (getFluidAmount(stack) / getCapacity(stack)) * 100);
+		return 0.3;
 	}
+
+	@Override
+	public boolean showDurabilityBar(ItemStack stack)
+	{
+		return true;
+	}
+
 }
