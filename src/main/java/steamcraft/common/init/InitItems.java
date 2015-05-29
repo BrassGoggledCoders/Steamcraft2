@@ -40,6 +40,7 @@ import steamcraft.common.items.ItemIngot;
 import steamcraft.common.items.ItemLoreBook;
 import steamcraft.common.items.ItemMachinePart;
 import steamcraft.common.items.ItemMatch;
+import steamcraft.common.items.ItemMobBottle;
 import steamcraft.common.items.ItemMonsterSpawner;
 import steamcraft.common.items.ItemNugget;
 import steamcraft.common.items.ItemParts;
@@ -195,6 +196,8 @@ public class InitItems
 	public static Item pickaxeObsidian, swordObsidian, shovelObsidian, axeObsidian, hoeObsidian;
 
 	public static Item pickaxeSteam, swordSteam, shovelSteam, axeSteam, hoeSteam;
+
+	public static Item itemEmptyMobBottle, itemMobBottle;
 
 	/* Init */
 	public static void init()
@@ -555,6 +558,11 @@ public class InitItems
 		registerItem(itemWillowStick, "ItemWillowStick");
 		itemPetrifiedStick = new BaseItem().setUnlocalizedName("itemPetrifiedStick");
 		registerItem(itemPetrifiedStick, "ItemPetrifiedStick");
+
+		itemEmptyMobBottle = new BaseItem().setUnlocalizedName("itemEmptyMobBottle");
+		registerItem(itemEmptyMobBottle, "ItemEmptyMobBottle");
+		itemMobBottle = new ItemMobBottle().setUnlocalizedName("itemMobBottle");
+		registerItem(itemMobBottle, "ItemMobBottle");
 	}
 
 	private static void initializeTools()

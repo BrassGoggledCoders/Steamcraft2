@@ -28,6 +28,7 @@ import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 
 import steamcraft.common.Steamcraft;
+import steamcraft.common.init.InitItems;
 import steamcraft.common.lib.ModInfo;
 import boilerplate.common.entity.EntityMinedBlock;
 import boilerplate.common.utils.PlayerUtils;
@@ -143,6 +144,15 @@ public class ItemShrinkray extends ElectricItem
 				if(!world.isRemote)
 				{
 					creature.attackEntityFrom(DamageSource.outOfWorld, creature.getMaxHealth() * 10);
+					if(player.inventory.hasItem(InitItems.itemEmptyMobBottle))
+					{
+						player.inventory.consumeInventoryItem(InitItems.itemEmptyMobBottle);
+						NBTTagCompound tag = new NBTTagCompound();
+						tag.setTag("storedCreature", creature.getEntityData());
+						ItemStack stack1 = new ItemStack(InitItems.itemMobBottle);
+						stack.setTagCompound(tag);
+						player.inventory.addItemStackToInventory(stack1);
+					}
 				}
 			}
 		}
