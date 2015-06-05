@@ -137,7 +137,7 @@ public class ItemClockworkWings extends BaseArmor
 				if(entityLiving instanceof EntityPlayer)
 					armorModel.aimedBow = ((EntityPlayer) entityLiving).getItemInUseDuration() > 2;
 
-					return armorModel;
+				return armorModel;
 			}
 		}
 
@@ -147,6 +147,6 @@ public class ItemClockworkWings extends BaseArmor
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
 	{
-		return ModInfo.PREFIX + "textures/models/armor/brasswings.png";
+		return ModInfo.PREFIX + "textures/models/armor/wings.png";
 	}
 }
