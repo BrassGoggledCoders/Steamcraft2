@@ -142,6 +142,7 @@ public class EventHandlerClient
 	TileEntity tile;
 	int x, y, z;
 	EntityPlayer player;
+	Entity entity;
 
 	@SubscribeEvent(priority = EventPriority.HIGH)
 	@SideOnly(Side.CLIENT)
@@ -208,11 +209,13 @@ public class EventHandlerClient
 					if(!docs.contains("tile"))
 						fontRenderer.drawSplitString(docs, posX, posY8, 100, color);
 				}
-				/*
-				 * TODO if(this.entity != null) { String text = this.entity.getCommandSenderName(); fontRenderer.drawString("Entity: ", mc.displayWidth - 5 -
-				 * text.length(), posY, color); String text1 = Integer.toString(this.entity.getEntityId()); fontRenderer.drawString("ID: ", mc.displayWidth - 5
-				 * - text1.length(), posY, color); }
-				 */
+
+				if(this.entity != null)
+				{
+					fontRenderer.drawString("Entity: " + this.entity.getCommandSenderName(), posX, posY, color);
+					fontRenderer.drawString("ID: " + this.entity.getEntityId(), posX, posY2, color);
+				}
+
 			}
 		}
 	}
@@ -290,6 +293,7 @@ public class EventHandlerClient
 			GL11.glDepthMask(true);
 			GL11.glEnable(GL11.GL_TEXTURE_2D);
 			GL11.glDisable(GL11.GL_BLEND);
+			this.entity = mop.entityHit;
 		}
 	}
 
