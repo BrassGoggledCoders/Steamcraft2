@@ -24,6 +24,7 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
@@ -142,7 +143,7 @@ public class EventHandlerClient
 	TileEntity tile;
 	int x, y, z;
 	EntityPlayer player;
-	Entity entity;
+	EntityLiving entity;
 
 	@SubscribeEvent(priority = EventPriority.HIGH)
 	@SideOnly(Side.CLIENT)
@@ -214,6 +215,7 @@ public class EventHandlerClient
 				{
 					fontRenderer.drawString("Entity: " + this.entity.getCommandSenderName(), posX, posY, color);
 					fontRenderer.drawString("ID: " + this.entity.getEntityId(), posX, posY2, color);
+					fontRenderer.drawString("Health: " + this.entity.getHealth(), posX, posY3, color);
 				}
 
 			}
@@ -293,7 +295,8 @@ public class EventHandlerClient
 			GL11.glDepthMask(true);
 			GL11.glEnable(GL11.GL_TEXTURE_2D);
 			GL11.glDisable(GL11.GL_BLEND);
-			this.entity = mop.entityHit;
+			if(entity instanceof EntityLiving)
+				this.entity = (EntityLiving) mop.entityHit;
 		}
 	}
 
