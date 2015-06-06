@@ -78,7 +78,7 @@ public class Steamcraft
 	@Instance(ModInfo.ID)
 	public static Steamcraft instance;
 
-	public static CreativeTabs tabSC2 = new CreativeTabSteamcraft(CreativeTabs.getNextID(), "steamcraft");
+	public static CreativeTabs tabSC2 = new CreativeTabSteamcraft(ModInfo.ID);
 
 	public static File configFolder;
 
