@@ -39,12 +39,6 @@ tile.blockCastIronLampOff.name=Cast Iron Lamp
 tile.blockCastIronLampOn.name=Cast Iron Lamp (On)
 tile.blockInvertedCastIronLampOff.name=Inverted Cast Iron Lamp
 tile.blockInvertedCastIronLamp.name=Inverted Cast Iron Lamp (On)
-tile.steamFluidBlock.name=Steam
-tile.whaleOilFluidBlock.name=Whale Oil
-tile.boilingWaterFluidBlock.name=Boiling Water
-tile.boilingMudFluidBlock.name=Boiling Liquid Mud
-tile.moltenZincFluidBlock.name=Molten Zinc
-tile.moltenBrassFluidBlock.name=Molten Brass
 tile.blockHatch.name=Steel Hatch
 tile.blockSlate.0.name=Blue Slate
 tile.blockSlate.1.name=Black Slate
@@ -173,7 +167,13 @@ tile.blockStasisField.name=Stasis Field
 tile.blockStasisField.desc=Holds items within one block of it in a stasis field, preventing them despawning, consuming 10RF/tick per item. Warning! Items will almost instantly despawn when the field is removed.
 
 #Fluids
-fluid.moltenZincFluid.name=Molten Zinc
+tile.steamFluidBlock.name=Steam
+fluid.steamFluid=Steam
+tile.boilingwaterFluidBlock.name=Boiling Water
+fluid.boilingwaterFluid=Boiling Water
+tile.boilingmudFluidBlock.name=Boiling Mud
+fluid.boilingmudFluid=Boiling Mud
+
 
 #Items
 item.itemResource.0.name=Etherium Crystal
