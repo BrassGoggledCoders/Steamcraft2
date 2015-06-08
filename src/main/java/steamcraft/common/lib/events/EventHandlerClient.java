@@ -216,6 +216,7 @@ public class EventHandlerClient
 					fontRenderer.drawString("Entity: " + this.entity.getCommandSenderName(), posX, posY, color);
 					fontRenderer.drawString("ID: " + this.entity.getEntityId(), posX, posY2, color);
 					fontRenderer.drawString("Health: " + this.entity.getHealth(), posX, posY3, color);
+					this.entity = null;
 				}
 
 			}
@@ -229,13 +230,13 @@ public class EventHandlerClient
 		if((event.player.inventory.armorItemInSlot(3) != null) && (event.player.inventory.armorItemInSlot(3).getItem() == InitItems.itemBrassGoggles))
 		{
 			this.drawSelectionBox(event.player, event.target, 0, event.currentItem, event.partialTicks);
-			event.setCanceled(true);
+			// event.setCanceled(true);
 		}
 		else if((event.player.inventory.armorItemInSlot(3) != null)
 				&& (event.player.inventory.armorItemInSlot(3).getItem() == InitItems.itemMonocle))
 		{
 			this.drawSelectionBox(event.player, event.target, 0, event.currentItem, event.partialTicks);
-			event.setCanceled(true);
+			// event.setCanceled(true);
 		}
 
 		this.block = event.player.worldObj.getBlock(event.target.blockX, event.target.blockY, event.target.blockZ);
