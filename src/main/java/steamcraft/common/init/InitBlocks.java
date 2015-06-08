@@ -285,7 +285,7 @@ public class InitBlocks
 	{
 		registerFluid("steam", steamFluid, Material.lava, blockSteam, true, 110, -100, 500, 12);
 		registerFluid("boilingwater", boilingWaterFluid, Material.lava, blockBoilingWater, false, 373, 900, 800, 0);
-		registerFluid("boilingmud", boilingWaterFluid, Material.lava, blockBoilingWater, false, 373, 900, 800, 0);
+		registerFluid("boilingmud", boilingMudFluid, Material.lava, blockBoilingMud, false, 373, 900, 800, 0);
 	}
 
 	public static void registerFluid(String fluidName, Fluid fluid, Material material, BlockSteamcraftFluid fluidBlock, boolean isGaseous, int temp,
