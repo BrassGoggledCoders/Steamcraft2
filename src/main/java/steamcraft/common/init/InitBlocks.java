@@ -24,6 +24,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 
+import org.apache.commons.lang3.text.WordUtils;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.blocks.BaseBlock;
 import steamcraft.common.blocks.BlockBoulder;
@@ -49,8 +50,6 @@ import steamcraft.common.blocks.BlockEngravedSolid;
 import steamcraft.common.blocks.BlockEngravedVanilla;
 import steamcraft.common.blocks.BlockEtherium;
 import steamcraft.common.blocks.BlockFissurePortal;
-import steamcraft.common.blocks.BlockFluidBoiling;
-import steamcraft.common.blocks.BlockFluidSteam;
 import steamcraft.common.blocks.BlockHatch;
 import steamcraft.common.blocks.BlockInfestedDirt;
 import steamcraft.common.blocks.BlockInfestedGrass;
@@ -67,6 +66,7 @@ import steamcraft.common.blocks.BlockSiren;
 import steamcraft.common.blocks.BlockSkyrail;
 import steamcraft.common.blocks.BlockSlate;
 import steamcraft.common.blocks.BlockSpiderEgg;
+import steamcraft.common.blocks.BlockSteamcraftFluid;
 import steamcraft.common.blocks.BlockSteamcraftOre;
 import steamcraft.common.blocks.BlockTeaPlant;
 import steamcraft.common.blocks.BlockThin;
@@ -74,9 +74,6 @@ import steamcraft.common.blocks.BlockTimeBomb;
 import steamcraft.common.blocks.BlockTintedRock;
 import steamcraft.common.blocks.BlockTrunk;
 import steamcraft.common.blocks.BlockUranium;
-import steamcraft.common.blocks.FluidBoiling;
-import steamcraft.common.blocks.FluidSteam;
-import steamcraft.common.blocks.FluidWhaleOil;
 import steamcraft.common.blocks.machines.BlockArmorEditor;
 import steamcraft.common.blocks.machines.BlockBattery;
 import steamcraft.common.blocks.machines.BlockBloomery;
@@ -123,9 +120,9 @@ public class InitBlocks
 	public static Block blockArmorEditor;
 	public static Block blockBloomery;
 
-	public static Block blockBoilingMud;
+	public static BlockSteamcraftFluid blockBoilingMud;
 
-	public static Block blockBoilingWater;
+	public static BlockSteamcraftFluid blockBoilingWater;
 	public static Block blockBoulder, blockSpiderEgg, blockMushroom;
 
 	// Wood
@@ -200,7 +197,7 @@ public class InitBlocks
 
 	public static Block blockStasisField;
 
-	public static Block blockSteam;
+	public static BlockSteamcraftFluid blockSteam;
 
 	/* Machines */
 	public static Block blockSteamBoiler, blockNuclearBoiler, blockIntake, blockTurbine, blockBattery, blockCharger, blockCapacitor;
@@ -286,41 +283,27 @@ public class InitBlocks
 
 	private static void initializeFluids()
 	{
-		// Steam
-		steamFluid = new FluidSteam("steam").setUnlocalizedName("steamFluid");
-		FluidRegistry.registerFluid(steamFluid);
+		registerFluid("steam", steamFluid, Material.lava, blockSteam, true, 110, -100, 500, 12);
+		registerFluid("boilingwater", boilingWaterFluid, Material.lava, blockBoilingWater, false, 373, 900, 800, 0);
+		registerFluid("boilingmud", boilingWaterFluid, Material.lava, blockBoilingWater, false, 373, 900, 800, 0);
+	}
 
-		blockSteam = new BlockFluidSteam(steamFluid, Material.lava).setBlockName("steamFluidBlock");
-		registerBlock(blockSteam, "blockSteam");
+	public static void registerFluid(String fluidName, Fluid fluid, Material material, BlockSteamcraftFluid fluidBlock, boolean isGaseous, int temp,
+			int density,
+			int viscosity,
+			int luminosity)
+	{
+		fluid = new Fluid(fluidName).setUnlocalizedName(fluidName + "Fluid").setDensity(density).setTemperature(temp).setViscosity(viscosity)
+				.setLuminosity(luminosity).setGaseous(isGaseous);
+		if(!FluidRegistry.isFluidRegistered(fluidName))
+			FluidRegistry.registerFluid(fluid);
+		fluidBlock = (BlockSteamcraftFluid) new BlockSteamcraftFluid(fluid, material, fluidName).setBlockName(fluidName + "FluidBlock");
+		registerBlock(fluidBlock, "Block" + WordUtils.capitalize(fluidName));
+		if(fluid.getBlock() == null)
+			fluid.setBlock(fluidBlock);
+		else
+			fluidBlock.dontOverwriteIcons();
 
-		// BoilingWater
-		boilingWaterFluid = new FluidBoiling("boilingwater").setUnlocalizedName("boilingWaterFluid");
-		FluidRegistry.registerFluid(boilingWaterFluid);
-
-		blockBoilingWater = new BlockFluidBoiling(boilingWaterFluid, Material.water).setBlockName("boilingWaterFluidBlock");
-		registerBlock(blockBoilingWater, "blockBoilingWater");
-
-		// BoilingMud
-		boilingMudFluid = new FluidBoiling("boilingmud").setUnlocalizedName("boilingMudFluid");
-		FluidRegistry.registerFluid(boilingMudFluid);
-
-		blockBoilingMud = new BlockFluidBoiling(boilingMudFluid, Material.water).setBlockName("boilingMudFluidBlock");
-		registerBlock(blockBoilingMud, "blockBoilingMud");
-
-		// Whale Oil
-		whaleOilFluid = new FluidWhaleOil("whaleoil").setUnlocalizedName("whaleOilFluid");
-		// FluidRegistry.registerFluid(whaleOilFluid);
-
-		// blockWhaleOil = new BlockFluidWhaleOil(whaleOilFluid, Material.water).setBlockName("whaleOilFluidBlock");
-		// registerBlock(blockWhaleOil, "blockWhaleOil");
-
-		// TiCon Molten Zinc
-		/*
-		 * moltenZincFluid = new FluidBoiling("moltenzinc").setUnlocalizedName("moltenZincFluid"); FluidRegistry.registerFluid(moltenZincFluid); blockMoltenZinc
-		 * = new BlockFluidBoiling(moltenZincFluid, Material.water).setBlockName("moltenZincFluidBlock"); // TiCon Molten Brass moltenBrassFluid = new
-		 * FluidBoiling("moltenbrass").setUnlocalizedName("moltenBrassFluid"); FluidRegistry.registerFluid(moltenBrassFluid); blockMoltenBrass = new
-		 * BlockFluidBoiling(moltenBrassFluid, Material.water).setBlockName("moltenBrassFluidBlock");
-		 */
 	}
 
 	private static void initializeMachines()

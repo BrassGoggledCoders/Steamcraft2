@@ -31,31 +31,44 @@ import boilerplate.common.utils.ItemStackUtils;
  * @author Decebaldecebal
  *
  */
-public class BlockFluidBoiling extends BlockFluidClassic
+public class BlockSteamcraftFluid extends BlockFluidClassic
 {
-	@SideOnly(Side.CLIENT)
-	private IIcon iconFlowing;
+	private static IIcon stillIcon;
+	private static IIcon flowIcon;
 
-	public BlockFluidBoiling(Fluid fluid, Material material)
+	private Fluid fluid;
+
+	private String texture;
+
+	private boolean overwriteIcons = true;
+
+	public BlockSteamcraftFluid(Fluid fluid, Material material, String texture)
 	{
 		super(fluid, material);
-		// this.setCreativeTab(Steamcraft.tabSC2);
+		this.fluid = fluid;
+		this.texture = texture;
 	}
 
 	@Override
-	public IIcon getIcon(int side, int meta)
+	public void registerBlockIcons(IIconRegister iconRegister)
 	{
-		return (side != 0) && (side != 1) ? this.iconFlowing : this.blockIcon;
+		stillIcon = iconRegister.registerIcon(ModInfo.PREFIX + texture);
+		flowIcon = iconRegister.registerIcon(ModInfo.PREFIX + texture + "_flow");
+
+		if(overwriteIcons)
+			this.getFluid().setIcons(stillIcon, flowIcon);
+
+		if(this.getFluid().getBlock() != this && fluid != null)
+			fluid.setIcons(stillIcon, flowIcon);
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister iconRegister)
+	public IIcon getIcon(int side, int meta)
 	{
-		this.blockIcon = iconRegister.registerIcon(ModInfo.PREFIX + this.getUnlocalizedName().substring(5, this.getUnlocalizedName().length() - 10)
-				+ "Still");
-		this.iconFlowing = iconRegister.registerIcon(ModInfo.PREFIX + this.getUnlocalizedName().substring(5, this.getUnlocalizedName().length() - 10)
-				+ "Flowing");
+		if(side == 0 || side == 1)
+			return stillIcon;
+		return flowIcon;
 	}
 
 	@Override
@@ -68,5 +81,10 @@ public class BlockFluidBoiling extends BlockFluidClassic
 	public boolean displaceIfPossible(World world, int x, int y, int z)
 	{
 		return !ItemStackUtils.getBlockMaterial(world, x, y, z).isLiquid() && super.displaceIfPossible(world, x, y, z);
+	}
+
+	public void dontOverwriteIcons()
+	{
+		this.overwriteIcons = false;
 	}
 }

@@ -48,7 +48,6 @@ import net.minecraftforge.client.event.DrawBlockHighlightEvent;
 import net.minecraftforge.client.event.FOVUpdateEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderPlayerEvent;
-import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.common.util.ForgeDirection;
 
 import org.apache.commons.lang3.StringUtils;
@@ -59,7 +58,6 @@ import steamcraft.client.lib.GuiIDs;
 import steamcraft.common.config.ConfigGeneral;
 import steamcraft.common.container.InventoryVanity;
 import steamcraft.common.entities.EntityPlayerExtended;
-import steamcraft.common.init.InitBlocks;
 import steamcraft.common.init.InitItems;
 import steamcraft.common.init.InitPackets;
 import steamcraft.common.lib.LibInfo;
@@ -124,19 +122,14 @@ public class EventHandlerClient
 		}
 	}
 
-	@SubscribeEvent
-	@SideOnly(Side.CLIENT)
-	// hacky hack to make the texture work in BC tanks.
-	public void textureHook(TextureStitchEvent.Post event)
-	{
-		if(event.map.getTextureType() == 0)
-		{
-			InitBlocks.steamFluid.setIcons(InitBlocks.blockSteam.getBlockTextureFromSide(1));
-			InitBlocks.boilingWaterFluid.setIcons(InitBlocks.blockBoilingWater.getBlockTextureFromSide(1));
-			InitBlocks.boilingMudFluid.setIcons(InitBlocks.blockBoilingMud.getBlockTextureFromSide(1));
-			// InitBlocks.whaleOilFluid.setIcons(InitBlocks.blockWhaleOil.getBlockTextureFromSide(1));
-		}
-	}
+	/*
+	 * @SubscribeEvent
+	 * @SideOnly(Side.CLIENT) // hacky hack to make the texture work in BC tanks. public void textureHook(TextureStitchEvent.Post event) {
+	 * if(event.map.getTextureType() == 0) { InitBlocks.steamFluid.setIcons(InitBlocks.blockSteam.getBlockTextureFromSide(1));
+	 * InitBlocks.boilingWaterFluid.setIcons(InitBlocks.blockBoilingWater.getBlockTextureFromSide(1));
+	 * InitBlocks.boilingMudFluid.setIcons(InitBlocks.blockBoilingMud.getBlockTextureFromSide(1)); //
+	 * InitBlocks.whaleOilFluid.setIcons(InitBlocks.blockWhaleOil.getBlockTextureFromSide(1)); } }
+	 */
 
 	// TODO seems to me like this is a nasty way of doing things
 	Block block;

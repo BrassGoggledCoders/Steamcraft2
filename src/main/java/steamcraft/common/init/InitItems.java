@@ -413,7 +413,7 @@ public class InitItems
 		registerItem(itemMatch, "ItemMatch");
 
 		itemTopHat = new ItemTopHat().setUnlocalizedName("itemTopHat");
-		registerItem(itemTopHat, "ItemTopHat");
+		// registerItem(itemTopHat, "ItemTopHat");
 
 		itemAqualung = new ItemAqualung().setUnlocalizedName("itemAqualung");
 		registerItem(itemAqualung, "ItemAqualung");
@@ -560,9 +560,9 @@ public class InitItems
 		registerItem(itemPetrifiedStick, "ItemPetrifiedStick");
 
 		itemEmptyMobBottle = new BaseItem().setUnlocalizedName("itemEmptyMobBottle");
-		registerItem(itemEmptyMobBottle, "ItemEmptyMobBottle");
+		// registerItem(itemEmptyMobBottle, "ItemEmptyMobBottle");
 		itemMobBottle = new ItemMobBottle().setUnlocalizedName("itemMobBottle");
-		registerItem(itemMobBottle, "ItemMobBottle");
+		// registerItem(itemMobBottle, "ItemMobBottle");
 	}
 
 	private static void initializeTools()
