@@ -199,11 +199,7 @@ public class Steamcraft
 		{
 			if(m.type == Type.BLOCK)
 			{
-				if(m.name.contains("steam"))
-				{
-					m.remap(GameRegistry.findBlock(ModInfo.ID, "BlockSteam"));
-				}
-				else if(m.name.contains("water"))
+				if(m.name.contains("water"))
 				{
 					m.remap(GameRegistry.findBlock(ModInfo.ID, "BlockBoilingwater"));
 				}
@@ -215,11 +211,7 @@ public class Steamcraft
 			}
 			else if(m.type == Type.ITEM)
 			{
-				if(m.name.contains("steam"))
-				{
-					m.remap(Item.getItemFromBlock(GameRegistry.findBlock(ModInfo.ID, "BlockSteam")));
-				}
-				else if(m.name.contains("water"))
+				if(m.name.contains("water"))
 				{
 					m.remap(Item.getItemFromBlock(GameRegistry.findBlock(ModInfo.ID, "BlockBoilingwater")));
 				}

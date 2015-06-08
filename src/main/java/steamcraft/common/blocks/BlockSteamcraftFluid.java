@@ -33,19 +33,16 @@ import boilerplate.common.utils.ItemStackUtils;
  */
 public class BlockSteamcraftFluid extends BlockFluidClassic
 {
-	private static IIcon stillIcon;
-	private static IIcon flowIcon;
+	public IIcon stillIcon;
+	public IIcon flowIcon;
 
-	private Fluid fluid;
-
-	private String texture;
+	String texture;
 
 	private boolean overwriteIcons = true;
 
 	public BlockSteamcraftFluid(Fluid fluid, Material material, String texture)
 	{
 		super(fluid, material);
-		this.fluid = fluid;
 		this.texture = texture;
 	}
 
@@ -57,9 +54,6 @@ public class BlockSteamcraftFluid extends BlockFluidClassic
 
 		if(overwriteIcons)
 			this.getFluid().setIcons(stillIcon, flowIcon);
-
-		if(this.getFluid().getBlock() != this && fluid != null)
-			fluid.setIcons(stillIcon, flowIcon);
 	}
 
 	@Override
