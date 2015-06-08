@@ -29,6 +29,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 import org.lwjgl.opengl.GL11;
 import steamcraft.common.items.ItemHandbook;
+import steamcraft.common.lib.ModInfo;
 import boilerplate.common.utils.StringUtils;
 
 public class GuiHandbook extends GuiScreen
@@ -59,8 +60,8 @@ public class GuiHandbook extends GuiScreen
 	 * - Slightly bigger GUI
 	 *
 	 */
-	private static ResourceLocation guitexture = new ResourceLocation("textures/gui/book.png");
-	private int bookImageWidth = 192;
+	private static ResourceLocation guitexture = new ResourceLocation(ModInfo.PREFIX + "textures/gui/book.png");
+	private int bookImageWidth = 184;
 	private int bookImageHeight = 192;
 
 	private NextPageButton buttonNextPage;
@@ -97,10 +98,10 @@ public class GuiHandbook extends GuiScreen
 		byte b0 = 2;
 		int i = (this.width - this.bookImageWidth) / 2;
 		// Add buttons
-		this.buttonList.add(this.buttonNextPage = new NextPageButton(1, i + 120, b0 + 154, true));
+		this.buttonList.add(this.buttonNextPage = new NextPageButton(1, i + 140, b0 + 154, true));
 		this.buttonList.add(this.buttonPreviousPage = new NextPageButton(2, i + 38, b0 + 154, false));
-		this.buttonList.add(this.buttonHome = new GuiButton(3, i + 165, b0 + 10, 40, 20, "Home"));
-		this.buttonList.add(this.buttonLast = new GuiButton(4, i + 165, b0 + 30, 50, 20, "Previous"));
+		this.buttonList.add(this.buttonHome = new GuiButton(3, i + 185, b0 + 10, 40, 20, "Home"));
+		this.buttonList.add(this.buttonLast = new GuiButton(4, i + 185, b0 + 30, 50, 20, "Previous"));
 
 		// Manually added pages
 		this.pages
