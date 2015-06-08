@@ -27,11 +27,14 @@ import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLMissingMappingsEvent;
+import cpw.mods.fml.common.event.FMLMissingMappingsEvent.MissingMapping;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.common.registry.GameRegistry.Type;
 
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.MinecraftForge;
@@ -186,5 +189,45 @@ public class Steamcraft
 	public void serverStarting(FMLServerStartingEvent event)
 	{
 		event.registerServerCommand(new CommandSteamcraft());
+	}
+
+	// Remap old items from merged in mods
+	@EventHandler
+	public void missingMapping(FMLMissingMappingsEvent event)
+	{
+		for(MissingMapping m : event.get())
+		{
+			if(m.type == Type.BLOCK)
+			{
+				if(m.name.contains("steam"))
+				{
+					m.remap(GameRegistry.findBlock(ModInfo.ID, "BlockSteam"));
+				}
+				else if(m.name.contains("water"))
+				{
+					m.remap(GameRegistry.findBlock(ModInfo.ID, "BlockBoilingwater"));
+				}
+				else if(m.name.contains("mud"))
+				{
+					m.remap(GameRegistry.findBlock(ModInfo.ID, "BlockBoilingmud"));
+				}
+
+			}
+			else if(m.type == Type.ITEM)
+			{
+				if(m.name.contains("steam"))
+				{
+					m.remap(Item.getItemFromBlock(GameRegistry.findBlock(ModInfo.ID, "BlockSteam")));
+				}
+				else if(m.name.contains("water"))
+				{
+					m.remap(Item.getItemFromBlock(GameRegistry.findBlock(ModInfo.ID, "BlockBoilingwater")));
+				}
+				else if(m.name.contains("mud"))
+				{
+					m.remap(Item.getItemFromBlock(GameRegistry.findBlock(ModInfo.ID, "BlockBoilingmud")));
+				}
+			}
+		}
 	}
 }
