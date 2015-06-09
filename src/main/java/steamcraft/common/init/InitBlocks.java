@@ -593,7 +593,7 @@ public class InitBlocks
 		RegistryHelper.registerContainerBlock(blockCrystal, EmptyTiles.TileCrystal.class, "BlockCrystal");
 
 		// Wood
-		blockBrassLog = new BlockBrassLog(Material.wood).setBlockName("blockBrassLog");
+		blockBrassLog = new BlockBrassLog(Material.iron).setBlockName("blockBrassLog");
 		blockBrassLeaves = new BlockBrassLeaves(Material.iron).setBlockName("blockBrassLeaves");
 
 		registerBlock(blockBrassLog, "BlockBrassLog");
