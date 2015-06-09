@@ -21,9 +21,9 @@ public class BlockBrassLeaves extends BaseBlock
 	{
 		ArrayList<ItemStack> drop = new ArrayList<ItemStack>();
 
-		if(world.rand.nextInt(10) == 0)
+		if(world.rand.nextInt(30) == 0)
 		{
-			drop.add(new ItemStack(InitItems.itemIngot, 1 + fortune + world.rand.nextInt(2), 4));
+			drop.add(new ItemStack(InitItems.itemIngot, 1 + fortune, 4));
 		}
 		else
 			drop.add(new ItemStack(InitItems.itemNugget, 1 + fortune + world.rand.nextInt(2), 4));

@@ -543,6 +543,8 @@ public class InitRecipes
 		GameRegistry.addSmelting(new ItemStack(InitItems.itemTeapot, 1, 1), new ItemStack(InitItems.itemTeapot, 1, 2), 0);
 
 		GameRegistry.addSmelting(new ItemStack(Items.slime_ball), new ItemStack(InitItems.itemSlimeRubber), 0);
+
+		GameRegistry.addSmelting(InitBlocks.blockBrassLog, new ItemStack(InitItems.itemIngot, 2, 4), 0);
 	}
 
 	private static void initCompatRecipes()
