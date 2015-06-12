@@ -153,6 +153,35 @@ Beta 4.3:
 * Change the magnet recipe to use a single-use voltaic pile rather than an electric jar. Never meant for the lightning rod to be anything more than an optional generator.
 * Shrinkray refuses to shrink tile entities. Intentional
 * Rename 'Chisel' to 'Engraving Tool’
+Beta 4.4:
++ Brass Logs can be smelted into Brass Ingots
++ Raygun can directly set enemies on fire
++ Add sulphur + charcoal to gunpowder recipe
++ Add phosphate -> bonemeal recipe
++ Allow user configuration of spyglass zoom level
++ Phosphate and Sulphur ores drop 2-5 items
++ Add textures for brass armour on player
++ Add desc to the tea seeds to tell people where to get them
++ Add Skyrail recipe
+* Updated and softened the way fluids are registered
+* Reduced the drop rate of brass ingots from brass leaves
+* Updated quite a few textures, courtesy of WolfieWaffle
+* Changed engraved etherium and uranium textures
+* Use a better method for NBT-based durability bars
+* Rename ores to use fairly accurate names. May revert this.
+* Update the shape of the deeps portal
+* Switch to UUIDs rather than usernames for any special checks
+* Turbine now allows energy extraction from the bottom
+* Switch to using a water bottle in teapot water filling recipe. Also make the recipe shapeless.
+# Fix monocle entity information readout
+# Correct the spelling of sulphur’s ore dictionary registration
+# Fix diving helmet model textures
+# Fix missing textures on breaking modelled blocks
+# Fix the teapot filling recipe only giving you a teapot with one cup’s worth of tea in it
+# Fix drills working without energy
+# Fix cast iron lamp having 0 hardness.
+
+
  
 
 
