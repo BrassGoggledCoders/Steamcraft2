@@ -22,14 +22,11 @@ public class ModInfo
 {
 	public static final String ID = "steamcraft2";
 	public static final String NAME = "Steamcraft 2";
-	public static final String VERSION = "Beta R4.4";
+	public static final String VERSION = "B4.4";
 
 	public static final String CLIENT_PROXY = "steamcraft.client.ClientProxy";
 	public static final String COMMON_PROXY = "steamcraft.common.CommonProxy";
 	public static final String CONFIG_GUI = "steamcraft.client.gui.GuiFactorySteamcraft";
 
 	public static final String PREFIX = "steamcraft:";
-
-	// Good Idea, Ibby ;)
-	public static final String VERSION_URL = "https://github.com/BrassGoggledCoders/SteamCraft2/raw/master/versionchecker.txt";
 }

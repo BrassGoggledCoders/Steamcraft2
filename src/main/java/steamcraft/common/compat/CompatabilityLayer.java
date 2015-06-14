@@ -15,6 +15,7 @@ package steamcraft.common.compat;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumChatFormatting;
 
 import cpw.mods.fml.common.Loader;
@@ -68,11 +69,12 @@ public class CompatabilityLayer
 
 	private static void sendIMCMessages()
 	{
-		if(Loader.isModLoaded("VersionChecker"))
-		{
-			LoggerSteamcraft.info("Poking VersionChecker");
-			FMLInterModComms.sendRuntimeMessage(ModInfo.ID, "VersionChecker", "addVersionCheck", ModInfo.VERSION_URL);
-		}
+		// Version Checker
+		NBTTagCompound tag = new NBTTagCompound();
+		tag.setString("curseProjectName", "224017-steamcraft-2-beta-2-fluxian-storm");
+		tag.setString("curseFilenameParser", "steamcraft2-1.7.10-[].jar");
+		FMLInterModComms.sendRuntimeMessage(ModInfo.ID, "VersionChecker", "addCurseCheck", tag);
+
 		if(Loader.isModLoaded("TConstruct"))
 			sendTiConIMC();
 		if(Loader.isModLoaded("Thaumcraft"))
