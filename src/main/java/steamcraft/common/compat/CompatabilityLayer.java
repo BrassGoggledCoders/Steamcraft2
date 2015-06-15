@@ -82,7 +82,7 @@ public class CompatabilityLayer
 		if(Loader.isModLoaded("AquaTweaks"))
 		{
 			String[] blockNames = new String[] { "BlockCastIronFence", "BlockCastIronGate", "BlockCastIronRailing", "BlockLightningRod", "BlockTeslaCoil",
-					"BlockCopperPipe", "BlockCopperWire", "BlockRedwoodFence", "BlockMangroveFence", "BlockWillowFence", "BlockPetrifiedFence", "BlockCharger" };
+					"BlockCopperPipe", "BlockCopperWire", "BlockRedwoodFence", "blockMangroveFence", "blockWillowFence", "blockPetrifiedFence", "BlockCharger" };
 			for(int i = 0; i < blockNames.length; i++)
 			{
 				NBTTagCompound tag1 = new NBTTagCompound();
