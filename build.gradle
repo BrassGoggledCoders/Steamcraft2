@@ -39,7 +39,7 @@ minecraft {
 }
 
 dependencies {
-    compile "k4unl:brassgoggledcoders:boilerplate:dev"
+    compile "k4unl:brassgoggledcoders:boilerplate:deobf"
 }
 
 processResources
