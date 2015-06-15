@@ -23,7 +23,6 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
@@ -33,7 +32,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraftforge.common.util.ForgeDirection;
 
 import steamcraft.client.lib.RenderIDs;
-import steamcraft.common.init.InitBlocks;
 import steamcraft.common.lib.ModInfo;
 
 /**
@@ -42,9 +40,6 @@ import steamcraft.common.lib.ModInfo;
  */
 public class BlockCastIronRailing extends BaseBlock
 {
-	@SideOnly(Side.CLIENT)
-	public IIcon icon;
-
 	public BlockCastIronRailing(Material mat)
 	{
 		super(mat);
@@ -177,7 +172,6 @@ public class BlockCastIronRailing extends BaseBlock
 	public void registerBlockIcons(IIconRegister p_149651_1_)
 	{
 		this.blockIcon = p_149651_1_.registerIcon(ModInfo.PREFIX + "blockCastIronRailing");
-		this.icon = InitBlocks.blockMetal.getIcon(0, 7);
 	}
 
 	public boolean canPaneConnectTo(IBlockAccess world, int x, int y, int z, ForgeDirection dir)

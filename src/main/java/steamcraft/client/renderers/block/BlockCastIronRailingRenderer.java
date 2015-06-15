@@ -28,6 +28,7 @@ import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 
 import steamcraft.client.lib.RenderIDs;
 import steamcraft.common.blocks.BlockCastIronRailing;
+import steamcraft.common.init.InitBlocks;
 
 /**
  * @author Surseance (Johnny Eatmon)
@@ -65,7 +66,7 @@ public class BlockCastIronRailingRenderer implements ISimpleBlockRenderingHandle
 
 		tessellator.setColorOpaque_F(f, f1, f2);
 		IIcon iicon = railing.getIcon(0, 0);
-		IIcon iicon1 = railing.icon;
+		IIcon iicon1 = InitBlocks.blockMetal.getIcon(0, 7);
 
 		double d21 = iicon.getMinU();
 		double d0 = iicon.getInterpolatedU(8.0D);
