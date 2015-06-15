@@ -15,92 +15,24 @@ package steamcraft.common.blocks;
 import java.util.Random;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockContainer;
-import net.minecraft.block.material.Material;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-import steamcraft.client.lib.RenderIDs;
-import steamcraft.common.Steamcraft;
 import steamcraft.common.init.InitBlocks;
-import steamcraft.common.tiles.EmptyTiles;
 
 /**
  * @author Surseance
  *
  */
-public class BlockInvertedCastIronLamp extends BlockContainer
+public class BlockInvertedCastIronLamp extends BlockCastIronLamp
 {
 	public boolean powered;
 
 	public BlockInvertedCastIronLamp(boolean powered)
 	{
-		super(Material.circuits);
-		this.powered = powered;
-		this.setHardness(0.0F);
-		this.setResistance(7.5F);
-		this.setTickRandomly(true);
-		this.disableStats();
-		float f = 0.25F;
-		this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, 1.0F, 0.5F + f);
-		if(!powered)
-			this.setCreativeTab(Steamcraft.tabSC2);
-
-		if(powered)
-			this.setLightLevel(1.0F);
-	}
-
-	@Override
-	public int damageDropped(int metadata)
-	{
-		return 0;
-	}
-
-	@Override
-	public TileEntity createNewTileEntity(World world, int metadata)
-	{
-		return new EmptyTiles.TileCastIronLamp();
-	}
-
-	@Override
-	public int tickRate(World world)
-	{
-		return 10;
-	}
-
-	@Override
-	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z)
-	{
-		return null;
-	}
-
-	@Override
-	public AxisAlignedBB getSelectedBoundingBoxFromPool(World world, int x, int y, int z)
-	{
-		this.setBlockBoundsBasedOnState(world, x, y, z);
-		return super.getSelectedBoundingBoxFromPool(world, x, y, z);
-	}
-
-	@Override
-	public int getRenderType()
-	{
-		return RenderIDs.blockCastIronLampRI;
-	}
-
-	@Override
-	public boolean renderAsNormalBlock()
-	{
-		return false;
-	}
-
-	@Override
-	public boolean isOpaqueCube()
-	{
-		return false;
+		super(powered);
 	}
 
 	@Override
@@ -147,12 +79,6 @@ public class BlockInvertedCastIronLamp extends BlockContainer
 			else if(this.powered && world.isBlockIndirectlyGettingPowered(x, y, z))
 				world.setBlock(x, y, z, InitBlocks.blockInvertedCastIronLampOff, world.getBlockMetadata(x, y, z), 2);
 		}
-	}
-
-	@Override
-	public boolean canProvidePower()
-	{
-		return false;
 	}
 
 	@Override
