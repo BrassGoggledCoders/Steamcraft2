@@ -79,7 +79,17 @@ public class CompatabilityLayer
 			sendTiConIMC();
 		if(Loader.isModLoaded("Thaumcraft"))
 			sendThaumcraftIMC();
-
+		if(Loader.isModLoaded("AquaTweaks"))
+		{
+			String[] blockNames = new String[] { "BlockCharger" };
+			for(int i = 0; i < blockNames.length; i++)
+			{
+				NBTTagCompound tag1 = new NBTTagCompound();
+				tag1.setString("modid", ModInfo.ID);
+				tag1.setString("block", blockNames[i]);
+				FMLInterModComms.sendMessage("AquaTweaks", "registerAquaConnectable", tag1);
+			}
+		}
 	}
 
 	private static void sendThaumcraftIMC()
