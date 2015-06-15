@@ -55,7 +55,7 @@ dependencies {
     compile 'com.mod-buildcraft:buildcraft:6.4.16:dev'
     compile 'net.industrial-craft:industrialcraft-2:2.2.727-experimental:api'
     compile 'Azanor:Thaumcraft:4.2.3.5:deobf@jar'
-    compile 'vazkii.botania:r1.6-190.6:deobf'
+    compile 'vazkii/botania:r1.6-190.6:deobf'
 }
 
 processResources
