@@ -81,7 +81,8 @@ public class CompatabilityLayer
 			sendThaumcraftIMC();
 		if(Loader.isModLoaded("AquaTweaks"))
 		{
-			String[] blockNames = new String[] { "BlockCharger" };
+			String[] blockNames = new String[] { "BlockCastIronFence", "BlockCastIronGate", "BlockCastIronRailing", "BlockLightningRod", "BlockTeslaCoil",
+					"BlockCopperPipe", "BlockCopperWire", "BlockRedwoodFence", "BlockMangroveFence", "BlockWillowFence", "BlockPetrifiedFence", "BlockCharger" };
 			for(int i = 0; i < blockNames.length; i++)
 			{
 				NBTTagCompound tag1 = new NBTTagCompound();
