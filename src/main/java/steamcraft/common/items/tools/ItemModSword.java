@@ -20,16 +20,11 @@ import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-import cpw.mods.fml.common.Optional;
-
-import dynamicswordskills.api.ISword;
-
 /**
  * @author Surseance
  *
  */
-@Optional.Interface(iface = "dynamicswordskills.api.ISword", modid = "DynamicSwordSkills")
-public class ItemModSword extends ItemModTool implements ISword
+public class ItemModSword extends ItemModTool
 {
 	public ItemModSword(ToolMaterial mat)
 	{

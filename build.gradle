@@ -24,6 +24,14 @@ repositories {
         name = "ic2"
         url = "http://maven.ic2.player.to/"
     }
+    ivy {
+		name = 'ThaumCraft 4 API'
+		artifactPattern 'https://dl.dropboxusercontent.com/u/47135879/[module](-[classifier])-1.7.10-[revision](.[ext])'
+	}
+    maven {
+        name "RX14"
+        url "http://mvn.rx14.co.uk/repo/"
+    }
 }
 
 apply plugin: 'forge'
@@ -46,6 +54,8 @@ dependencies {
     compile "brassgoggledcoders:boilerplate:1.7.10-5.0.0.+:deobf"
     compile 'com.mod-buildcraft:buildcraft:6.4.16:dev'
     compile 'net.industrial-craft:industrialcraft-2:2.2.727-experimental:api'
+    compile 'Azanor:Thaumcraft:4.2.3.5:deobf@jar'
+    compile 'vazkii.botania:r1.6-190.6:deobf'
 }
 
 processResources
