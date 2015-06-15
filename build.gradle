@@ -20,6 +20,10 @@ repositories {
         name "K4Repo"
         url "http://maven.k-4u.nl"
     }
+    maven {
+        name = "ic2"
+        url = "http://maven.ic2.player.to/"
+    }
 }
 
 apply plugin: 'forge'
@@ -39,7 +43,7 @@ minecraft {
 }
 
 dependencies {
-    compile "brassgoggledcoders:boilerplate:1.7.10-5.0.0.6:deobf"
+    compile "brassgoggledcoders:boilerplate:1.7.10-5.0.0.+:deobf"
     compile 'com.mod-buildcraft:buildcraft:6.4.16:dev'
     compile 'net.industrial-craft:industrialcraft-2:2.2.727-experimental:api'
 }
