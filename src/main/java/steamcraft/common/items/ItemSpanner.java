@@ -21,12 +21,12 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+import steamcraft.api.item.UniversalWrench;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.init.InitBlocks;
 import steamcraft.common.lib.ModInfo;
 import steamcraft.common.tiles.TileCopperPipe;
 import steamcraft.common.tiles.energy.TileCopperWire;
-import boilerplate.common.baseclasses.UniversalWrench;
 
 /**
  * @author warlordjones
