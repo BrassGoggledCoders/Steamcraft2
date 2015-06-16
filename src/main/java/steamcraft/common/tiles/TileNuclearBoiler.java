@@ -27,7 +27,7 @@ public class TileNuclearBoiler extends TileBaseBoiler
 		if(this.inventory[0] == null)
 			return 0;
 		else if((this.inventory[0].getItem() == InitItems.itemResource) && (this.inventory[0].getItemDamage() == 5))
-			return 3000;
+			return 9000;
 		else
 			return 0;
 	}
