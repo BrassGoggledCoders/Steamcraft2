@@ -70,7 +70,7 @@ public class GuiTimeBomb extends BaseContainerGui
 		Keyboard.enableRepeatEvents(true);
 		int i = (this.width - this.xSize) / 2;
 		int j = (this.height - this.ySize) / 2;
-		this.text = new GuiTextField(this.fontRendererObj, i + 40, j + 34, 80, 12);
+		this.text = new GuiTextField(this.fontRendererObj, i + 55, j + 38, 80, 12);
 		this.text.setTextColor(-1);
 		this.text.setDisabledTextColour(-1);
 		this.text.setEnableBackgroundDrawing(false);

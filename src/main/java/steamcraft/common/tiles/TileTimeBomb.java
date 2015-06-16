@@ -16,12 +16,18 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.tileentity.TileEntity;
 
 import steamcraft.common.entities.EntityTimeBomb;
+import boilerplate.common.baseclasses.BaseTileWithInventory;
 
-public class TileTimeBomb extends TileEntity
+public class TileTimeBomb extends BaseTileWithInventory
 {
+	public TileTimeBomb()
+	{
+		super(0);
+		// TODO Auto-generated constructor stub
+	}
+
 	private int time;
 
 	@Override
