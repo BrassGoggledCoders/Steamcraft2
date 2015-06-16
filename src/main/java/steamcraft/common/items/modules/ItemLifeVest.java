@@ -12,6 +12,7 @@
  */
 package steamcraft.common.items.modules;
 
+import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -59,9 +60,10 @@ public class ItemLifeVest extends BaseArmorModule
 	@Override
 	public void applyModuleEffect(World world, EntityPlayer player, ItemStack stack)
 	{
-		if(player.isInWater() && (player.motionY < 0.0D))
+		// player.isInWater() won't work because that checks from the feet, and I want the player to submerge up to the chest.
+		if(world.getBlock((int) Math.round(player.posX), (int) Math.round(player.posY) - 1, (int) Math.round(player.posZ)).getMaterial() == Material.water)
 		{
-			player.motionY += 0.3F;
+			player.motionY = 0.2F;
 		}
 	}
 
