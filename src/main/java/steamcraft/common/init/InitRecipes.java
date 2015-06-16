@@ -393,8 +393,8 @@ public class InitRecipes
 		// GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemLastResort), "TTT", "TCT", "TTT", 'T',
 		// Blocks.tnt, 'C', InitBlocks.blockCopperWire));
 
-		GameRegistry.addShapedRecipe(new ItemStack(InitBlocks.blockTimeBomb), new Object[] { " W ", "PTP", " P ", 'W', InitItems.itemWatch, 'P', Items.paper,
-				'T', Blocks.tnt });
+		// GameRegistry.addShapedRecipe(new ItemStack(InitBlocks.blockTimeBomb), new Object[] { " W ", "PTP", " P ", 'W', InitItems.itemWatch, 'P', Items.paper,
+		// 'T', Blocks.tnt });
 
 	}
 
