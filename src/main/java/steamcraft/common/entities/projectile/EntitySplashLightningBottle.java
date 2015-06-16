@@ -15,6 +15,7 @@ package steamcraft.common.entities.projectile;
 import java.util.List;
 
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
@@ -73,6 +74,12 @@ public class EntitySplashLightningBottle extends BaseThrowableEntity
 								d1 = 1.0D;
 							}
 							entitylivingbase.attackEntityFrom(DamageSourceHandler.electrocution, 4);
+
+							if(entitylivingbase instanceof EntityCreeper)
+							{
+								EntityCreeper creeper = (EntityCreeper) entitylivingbase;
+								creeper.getDataWatcher().updateObject(17, Byte.valueOf((byte) (1)));
+							}
 						}
 					}
 				}
