@@ -27,6 +27,7 @@ import net.minecraftforge.common.util.ForgeDirection;
 import steamcraft.client.lib.GuiIDs;
 import steamcraft.client.lib.RenderIDs;
 import steamcraft.common.Steamcraft;
+import steamcraft.common.init.InitBlocks;
 import steamcraft.common.lib.ModInfo;
 import steamcraft.common.tiles.energy.TileBattery;
 
@@ -103,5 +104,15 @@ public class BlockBattery extends BaseContainerBlock
 	public void registerBlockIcons(IIconRegister ir)
 	{
 		this.blockIcon = ir.registerIcon(ModInfo.PREFIX + "/metal/blockCastIron");
+	}
+
+	/**
+	 * Gets the block's texture. Args: side, meta
+	 */
+	@Override
+	@SideOnly(Side.CLIENT)
+	public IIcon getIcon(int p_149691_1_, int p_149691_2_)
+	{
+		return InitBlocks.blockMetal.getIcon(0, 7);
 	}
 }
