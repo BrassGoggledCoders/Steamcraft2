@@ -189,7 +189,9 @@ public class InitBlocks
 
 	public static Block blockSkyrail;
 
-	public static Block blockSlate;
+	// TODO Meta?
+	public static Block blockSlate, blockRawBlueSlateStairs, blockRawBlackSlateStairs, blockRawRedSlateStairs, blockCobbleBlueSlateStairs,
+			blockCobbleBlackSlateStairs, blockCobbleRedSlateStairs, blockBrickBlueSlateStairs, blockBrickBlackSlateStairs, blockBrickRedSlateStairs;
 
 	public static Block blockStandardSiren, blockStandardSirenOn, blockAllClearSiren,
 			blockAllClearSirenOn, blockIntruderSiren, blockIntruderSirenOn, blockNuclearSiren,
@@ -371,6 +373,25 @@ public class InitBlocks
 		// Ores
 		blockCustomOre = new BlockSteamcraftOre().setBlockName("blockSteamcraftOre");
 		blockSlate = new BlockSlate().setBlockName("blockSlate");
+
+		blockRawBlueSlateStairs = new BlockCustomStairs(blockSlate, 0).setBlockName("blockRawBlueSlateStairs");
+		registerBlock(blockRawBlueSlateStairs, "BlockRawBlueSlateStairs");
+		blockRawBlackSlateStairs = new BlockCustomStairs(blockSlate, 1).setBlockName("blockRawBlackSlateStairs");
+		registerBlock(blockRawBlackSlateStairs, "BlockRawBlackSlateStairs");
+		blockRawRedSlateStairs = new BlockCustomStairs(blockSlate, 2).setBlockName("blockRawRedSlateStairs");
+		registerBlock(blockRawRedSlateStairs, "BlockRawRedSlateStairs");
+		blockCobbleBlueSlateStairs = new BlockCustomStairs(blockSlate, 3).setBlockName("blockCobbleBlueSlateStairs");
+		registerBlock(blockCobbleBlueSlateStairs, "BlockCobbleBlueSlateStairs");
+		blockCobbleBlackSlateStairs = new BlockCustomStairs(blockSlate, 4).setBlockName("blockCobbleBlackSlateStairs");
+		registerBlock(blockCobbleBlackSlateStairs, "BlockCobbleBlackSlateStairs");
+		blockCobbleRedSlateStairs = new BlockCustomStairs(blockSlate, 5).setBlockName("blockCobbleRedSlateStairs");
+		registerBlock(blockCobbleRedSlateStairs, "BlockCobbleRedSlateStairs");
+		blockBrickBlueSlateStairs = new BlockCustomStairs(blockSlate, 6).setBlockName("blockBrickBlueSlateStairs");
+		registerBlock(blockBrickBlueSlateStairs, "BlockBrickBlueSlateStairs");
+		blockBrickBlackSlateStairs = new BlockCustomStairs(blockSlate, 7).setBlockName("blockBrickBlackSlateStairs");
+		registerBlock(blockBrickBlackSlateStairs, "BlockBrickBlackSlateStairs");
+		blockBrickRedSlateStairs = new BlockCustomStairs(blockSlate, 8).setBlockName("blockBrickRedSlateStairs");
+		registerBlock(blockBrickRedSlateStairs, "BlockBrickRedSlateStairs");
 
 		registerBlock(blockCustomOre, BaseItemBlockWithMetadata.class, "BlockSteamcraftOre", 7);
 		registerBlock(blockSlate, BaseItemBlockWithMetadata.class, "BlockSlate", 9);

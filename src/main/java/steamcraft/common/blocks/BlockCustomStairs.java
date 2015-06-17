@@ -29,4 +29,11 @@ public class BlockCustomStairs extends BlockStairs
 		this.setCreativeTab(Steamcraft.tabSC2);
 		this.useNeighborBrightness = true;
 	}
+
+	public BlockCustomStairs(Block block, int metadata)
+	{
+		super(block, metadata);
+		this.setCreativeTab(Steamcraft.tabSC2);
+		this.useNeighborBrightness = true;
+	}
 }
