@@ -120,9 +120,9 @@ public class InitBlocks
 	public static Block blockArmorEditor;
 	public static Block blockBloomery;
 
-	public static BlockSteamcraftFluid blockBoilingMud;
+	public static Block blockBoilingMud;
 
-	public static BlockSteamcraftFluid blockBoilingWater;
+	public static Block blockBoilingWater;
 	public static Block blockBoulder, blockSpiderEgg, blockMushroom;
 
 	// Wood
@@ -197,7 +197,7 @@ public class InitBlocks
 
 	public static Block blockStasisField;
 
-	public static BlockSteamcraftFluid blockSteam;
+	public static Block blockSteam;
 
 	/* Machines */
 	public static Block blockSteamBoiler, blockNuclearBoiler, blockIntake, blockTurbine, blockBattery, blockCharger, blockCapacitor;
@@ -283,9 +283,9 @@ public class InitBlocks
 
 	private static void initializeFluids()
 	{
-		registerFluid("steam", steamFluid, Material.lava, blockSteam, true, 110, -100, 500, 12);
-		registerFluid("boilingwater", boilingWaterFluid, Material.lava, blockBoilingWater, false, 373, 900, 800, 0);
-		registerFluid("boilingmud", boilingMudFluid, Material.lava, blockBoilingMud, false, 373, 900, 800, 0);
+		registerFluid("steam", steamFluid, Material.lava, (BlockSteamcraftFluid) blockSteam, true, 110, -100, 500, 12);
+		registerFluid("boilingwater", boilingWaterFluid, Material.lava, (BlockSteamcraftFluid) blockBoilingWater, false, 373, 900, 800, 0);
+		registerFluid("boilingmud", boilingMudFluid, Material.lava, (BlockSteamcraftFluid) blockBoilingMud, false, 373, 900, 800, 0);
 	}
 
 	public static void registerFluid(String fluidName, Fluid fluid, Material material, BlockSteamcraftFluid fluidBlock, boolean isGaseous, int temp,

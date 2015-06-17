@@ -427,7 +427,8 @@ public class ChunkProviderDeeps implements IChunkProvider
 			k1 = blockX + this.rand.nextInt(16);
 			l1 = this.rand.nextInt(256);
 			i2 = blockZ + this.rand.nextInt(16);
-			(new WorldGenLakes(InitBlocks.blockBoilingWater)).generate(this.worldObj, this.rand, k1, l1, i2);
+			if(InitBlocks.blockBoilingWater != null)
+				new WorldGenLakes(InitBlocks.blockBoilingWater).generate(this.worldObj, this.rand, k1, l1, i2);
 
 			k1 = blockX + this.rand.nextInt(16);
 			l1 = this.rand.nextInt(256);

@@ -5,6 +5,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldType;
 
 import steamcraft.common.config.ConfigGeneral;
 import steamcraft.common.worldgen.dimension.util.TeleporterDeeps;
@@ -24,6 +25,8 @@ public class BlockFissurePortal extends BaseBlock
 	@Override
 	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)
 	{
+		if(world.getWorldInfo().getTerrainType() == WorldType.FLAT)
+			return;
 		if((entity.ridingEntity == null) && (entity.riddenByEntity == null) && ((entity instanceof EntityPlayerMP)))
 		{
 			EntityPlayerMP thePlayer = (EntityPlayerMP) entity;
