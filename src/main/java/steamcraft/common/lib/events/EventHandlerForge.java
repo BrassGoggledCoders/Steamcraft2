@@ -62,9 +62,10 @@ public class EventHandlerForge
 			if((is != null) && (is.getItem() == InitItems.itemDivingHelmet) && player.isInWater())
 				player.addPotionEffect(new PotionEffect(Potion.nightVision.id, 2, 0, true));
 
+			// TODO Change tis!!
 			ItemStack stack = player.inventory.armorItemInSlot(0);
 			if(stack == null)
-				player.stepHeight = 0;
+				player.stepHeight = 0.5F;
 		}
 	}
 
