@@ -21,8 +21,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
-import boilerplate.api.IEnergyItem;
 import steamcraft.common.items.tools.ItemModTool;
+import boilerplate.api.IEnergyItem;
 
 public class ItemElectricTool extends ItemModTool implements IEnergyItem
 {
@@ -124,9 +124,20 @@ public class ItemElectricTool extends ItemModTool implements IEnergyItem
 	}
 
 	@Override
-	public int getEnergyStored(ItemStack itemStack)
+	public int getEnergyStored(ItemStack stack)
 	{
-		return itemStack.getTagCompound().getInteger("energy");
+		return getOrCreateTagCompound(stack).getInteger("energy");
+	}
+
+	public static NBTTagCompound getOrCreateTagCompound(ItemStack is)
+	{
+		if(!is.hasTagCompound())
+		{
+			is.setTagCompound(new NBTTagCompound());
+			is.getTagCompound().setInteger("energy", 0);
+		}
+
+		return is.getTagCompound();
 	}
 
 	@Override
