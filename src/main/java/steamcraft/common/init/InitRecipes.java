@@ -465,7 +465,12 @@ public class InitRecipes
 		GameRegistry.addRecipe(new ItemStack(InitBlocks.blockSlate, 4, 6), "SS", "SS", 'S', new ItemStack(InitBlocks.blockSlate, 1, 0));
 		GameRegistry.addRecipe(new ItemStack(InitBlocks.blockSlate, 4, 7), "SS", "SS", 'S', new ItemStack(InitBlocks.blockSlate, 1, 1));
 		GameRegistry.addRecipe(new ItemStack(InitBlocks.blockSlate, 4, 8), "SS", "SS", 'S', new ItemStack(InitBlocks.blockSlate, 1, 2));
-
+		// Slate Stairs
+		Block[] stairs = new Block[] { InitBlocks.blockRawBlueSlateStairs, InitBlocks.blockRawBlackSlateStairs, InitBlocks.blockRawRedSlateStairs,
+				InitBlocks.blockCobbleBlueSlateStairs, InitBlocks.blockCobbleBlackSlateStairs, InitBlocks.blockCobbleRedSlateStairs,
+				InitBlocks.blockBrickBlueSlateStairs, InitBlocks.blockBrickBlackSlateStairs, InitBlocks.blockBrickRedSlateStairs };
+		for(int i = 0; i < 9; i++)
+			GameRegistry.addRecipe(new ItemStack(stairs[i], 4), "X  ", "XX ", "XXX", new ItemStack(InitBlocks.blockSlate, 1, i));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemChisel), " I", " S", 'I', "ingotIron", 'S',
 				"stickWood"));
 
