@@ -470,7 +470,7 @@ public class InitRecipes
 				InitBlocks.blockCobbleBlueSlateStairs, InitBlocks.blockCobbleBlackSlateStairs, InitBlocks.blockCobbleRedSlateStairs,
 				InitBlocks.blockBrickBlueSlateStairs, InitBlocks.blockBrickBlackSlateStairs, InitBlocks.blockBrickRedSlateStairs };
 		for(int i = 0; i < 9; i++)
-			GameRegistry.addRecipe(new ItemStack(stairs[i], 4), "X  ", "XX ", "XXX", new ItemStack(InitBlocks.blockSlate, 1, i));
+			GameRegistry.addRecipe(new ItemStack(stairs[i], 4), "X  ", "XX ", "XXX", 'X', new ItemStack(InitBlocks.blockSlate, 1, i));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemChisel), " I", " S", 'I', "ingotIron", 'S',
 				"stickWood"));
 
