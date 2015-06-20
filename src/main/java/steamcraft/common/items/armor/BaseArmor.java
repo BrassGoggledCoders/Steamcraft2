@@ -36,6 +36,13 @@ public class BaseArmor extends ItemArmor
 {
 	boolean descNeedsShift = true;
 
+	public BaseArmor(ArmorMaterial mat, int type)
+	{
+		super(mat, 0, type);
+		this.setCreativeTab(Steamcraft.tabSC2);
+		this.setMaxStackSize(1);
+	}
+
 	public BaseArmor(ArmorMaterial mat, int renderIndex, int type)
 	{
 		super(mat, renderIndex, type);

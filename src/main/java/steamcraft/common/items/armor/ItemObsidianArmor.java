@@ -13,28 +13,46 @@
 package steamcraft.common.items.armor;
 
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
+import net.minecraft.world.World;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+import steamcraft.common.lib.MaterialHelper;
 import steamcraft.common.lib.ModInfo;
 
 /**
  * @author Decebaldecebal
  *
  */
-public class ItemNormalArmor extends BaseArmor
+public class ItemObsidianArmor extends BaseArmor
 {
-	public ItemNormalArmor(ArmorMaterial mat, int type)
+	public ItemObsidianArmor(int armorType)
 	{
-		super(mat, 0, type);
+		super(MaterialHelper.ARMOR_OBSIDIAN, armorType);
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public String getArmorTexture(ItemStack is, Entity entity, int slot, String type)
 	{
-		return slot == 2 ? ModInfo.PREFIX + "textures/models/armor/etherium_2.png" : ModInfo.PREFIX + "textures/models/armor/etherium_1.png";
+		return slot == 2 ? ModInfo.PREFIX + "textures/models/armor/obsidian_2.png" : ModInfo.PREFIX + "textures/models/armor/obsidian_1.png";
 	}
+
+	@Override
+	public void onArmorTick(World world, EntityPlayer player, ItemStack is)
+	{
+		// Slowness
+		player.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 20, 3));
+		// Fire resist
+		player.extinguish();
+		// Sinking
+		if(player.isInWater())
+			player.motionY--;
+	}
+
 }

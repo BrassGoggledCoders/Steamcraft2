@@ -65,6 +65,7 @@ import steamcraft.common.items.armor.ItemClockworkWings;
 import steamcraft.common.items.armor.ItemDivingHelmet;
 import steamcraft.common.items.armor.ItemMonocle;
 import steamcraft.common.items.armor.ItemNormalArmor;
+import steamcraft.common.items.armor.ItemObsidianArmor;
 import steamcraft.common.items.armor.ItemSteamJetpack;
 import steamcraft.common.items.compat.ItemSteamcraftCluster;
 import steamcraft.common.items.compat.ItemThaumicMonocle;
@@ -244,26 +245,26 @@ public class InitItems
 		registerItem(itemMonocle, "ItemMonocle");
 
 		// Etherium
-		helmetEtherium = new ItemNormalArmor(MaterialHelper.ARMOR_ETHERIUM, 0, 0).setUnlocalizedName("itemHelmetEtherium");
-		chestplateEtherium = new ItemNormalArmor(MaterialHelper.ARMOR_ETHERIUM, 0, 1).setUnlocalizedName("itemChestplateEtherium");
-		legsEtherium = new ItemNormalArmor(MaterialHelper.ARMOR_ETHERIUM, 0, 2).setUnlocalizedName("itemLegsEtherium");
-		bootsEtherium = new ItemNormalArmor(MaterialHelper.ARMOR_ETHERIUM, 0, 3).setUnlocalizedName("itemBootsEtherium");
+		helmetEtherium = new ItemNormalArmor(MaterialHelper.ARMOR_ETHERIUM, 0).setUnlocalizedName("itemHelmetEtherium");
+		chestplateEtherium = new ItemNormalArmor(MaterialHelper.ARMOR_ETHERIUM, 1).setUnlocalizedName("itemChestplateEtherium");
+		legsEtherium = new ItemNormalArmor(MaterialHelper.ARMOR_ETHERIUM, 2).setUnlocalizedName("itemLegsEtherium");
+		bootsEtherium = new ItemNormalArmor(MaterialHelper.ARMOR_ETHERIUM, 3).setUnlocalizedName("itemBootsEtherium");
 
 		RegistryHelper.registerArmorSet(helmetEtherium, chestplateEtherium, legsEtherium, bootsEtherium, "Etherium", ModInfo.ID);
 
 		// Obsidian
-		helmetObsidian = new ItemNormalArmor(MaterialHelper.ARMOR_OBSIDIAN, 0, 0).setUnlocalizedName("itemHelmetObsidian");
-		chestplateObsidian = new ItemNormalArmor(MaterialHelper.ARMOR_OBSIDIAN, 0, 1).setUnlocalizedName("itemChestplateObsidian");
-		legsObsidian = new ItemNormalArmor(MaterialHelper.ARMOR_OBSIDIAN, 0, 2).setUnlocalizedName("itemLegsObsidian");
-		bootsObsidian = new ItemNormalArmor(MaterialHelper.ARMOR_OBSIDIAN, 0, 3).setUnlocalizedName("itemBootsObsidian");
+		helmetObsidian = new ItemObsidianArmor(0).setUnlocalizedName("itemHelmetObsidian");
+		chestplateObsidian = new ItemObsidianArmor(1).setUnlocalizedName("itemChestplateObsidian");
+		legsObsidian = new ItemObsidianArmor(2).setUnlocalizedName("itemLegsObsidian");
+		bootsObsidian = new ItemObsidianArmor(3).setUnlocalizedName("itemBootsObsidian");
 
 		RegistryHelper.registerArmorSet(helmetObsidian, chestplateObsidian, legsObsidian, bootsObsidian, "Obsidian", ModInfo.ID);
 
 		// Whalebone
-		helmetWhalebone = new ItemNormalArmor(MaterialHelper.ARMOR_WHALEBONE, 0, 0).setUnlocalizedName("itemHelmetWhalebone");
-		chestplateWhalebone = new ItemNormalArmor(MaterialHelper.ARMOR_WHALEBONE, 0, 1).setUnlocalizedName("itemChestplateWhalebone");
-		legsWhalebone = new ItemNormalArmor(MaterialHelper.ARMOR_WHALEBONE, 0, 2).setUnlocalizedName("itemLegsWhalebone");
-		bootsWhalebone = new ItemNormalArmor(MaterialHelper.ARMOR_WHALEBONE, 0, 3).setUnlocalizedName("itemBootsWhalebone");
+		// helmetWhalebone = new ItemNormalArmor(MaterialHelper.ARMOR_WHALEBONE, 0, 0).setUnlocalizedName("itemHelmetWhalebone");
+		// chestplateWhalebone = new ItemNormalArmor(MaterialHelper.ARMOR_WHALEBONE, 0, 1).setUnlocalizedName("itemChestplateWhalebone");
+		// legsWhalebone = new ItemNormalArmor(MaterialHelper.ARMOR_WHALEBONE, 0, 2).setUnlocalizedName("itemLegsWhalebone");
+		// bootsWhalebone = new ItemNormalArmor(MaterialHelper.ARMOR_WHALEBONE, 0, 3).setUnlocalizedName("itemBootsWhalebone");
 
 		// RegistryHelper.registerArmorSet(helmetWhalebone, chestplateWhalebone, legsWhalebone, bootsWhalebone, "Whalebone", ModInfo.ID);
 	}
