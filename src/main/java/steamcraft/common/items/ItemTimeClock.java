@@ -63,9 +63,9 @@ public class ItemTimeClock extends BaseItem
 			{
 				if(ClientHelper.isShiftKeyDown())
 				{
-					world.setWorldTime(13000);
 					ChatComponentText text = new ChatComponentText("Time set to Night");
 					player.addChatComponentMessage(text);
+					world.setWorldTime(13000);
 					player.playSound(ModInfo.PREFIX + "warp", 1, 1);
 					player.inventory.consumeInventoryItem(Items.ender_eye);
 				}

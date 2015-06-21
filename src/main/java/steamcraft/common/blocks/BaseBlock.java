@@ -34,7 +34,7 @@ public class BaseBlock extends Block
 	{
 		super(mat);
 		this.setCreativeTab(Steamcraft.tabSC2);
-		this.setHardness(0.5F);
+		this.setHardness(1F);
 	}
 
 	@Override
