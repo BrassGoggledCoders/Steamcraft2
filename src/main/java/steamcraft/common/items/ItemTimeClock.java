@@ -21,6 +21,7 @@ import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
+import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -51,15 +52,16 @@ public class ItemTimeClock extends BaseItem
 	@Override
 	public int getMaxItemUseDuration(ItemStack p_77626_1_)
 	{
-		return 72000;
+		return 32;
 	}
 
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World world, EntityPlayer player, int useCount)
 	{
+		FMLLog.info("" + useCount, "" + useCount);
 		if(!world.isRemote)
 		{
-			if(useCount > 70000)
+			if(useCount <= 5)
 			{
 				if(ClientHelper.isShiftKeyDown())
 				{
