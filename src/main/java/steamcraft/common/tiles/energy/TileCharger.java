@@ -12,23 +12,14 @@
  */
 package steamcraft.common.tiles.energy;
 
-import java.util.EnumSet;
-
-import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.tileentity.TileEntity;
-
-import cofh.api.energy.EnergyStorage;
-import cofh.api.energy.IEnergyHandler;
-import cofh.api.energy.IEnergyReceiver;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-
 import net.minecraftforge.common.util.ForgeDirection;
-
 import boilerplate.api.IEnergyItem;
 import boilerplate.common.baseclasses.BaseTileWithInventory;
+import cofh.api.energy.EnergyStorage;
+import cofh.api.energy.IEnergyReceiver;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author decebaldecebal
@@ -36,8 +27,8 @@ import boilerplate.common.baseclasses.BaseTileWithInventory;
  */
 public class TileCharger extends BaseTileWithInventory implements IEnergyReceiver
 {
-	private static int energy = 100000;
-	public static short transferRate = 80;
+	private static int energy = 1000000;
+	public static short transferRate = 1000;
 
 	public EnergyStorage buffer = new EnergyStorage(energy, transferRate);
 
@@ -71,44 +62,16 @@ public class TileCharger extends BaseTileWithInventory implements IEnergyReceive
 	{
 		if(!this.worldObj.isRemote)
 		{
-			/*
-			 * int[] ids = new int[this.inventory.length]; for(int i = 0; i < this.inventory.length; i++) { if(this.inventory[i] != null) ids[i] =
-			 * Item.getIdFromItem(this.inventory[i].getItem()); } InitPackets.network.sendToAllAround(new UpdateClientsideInventoryPacket(xCoord, yCoord,
-			 * zCoord, ids), new TargetPoint( worldObj.provider.dimensionId, xCoord, yCoord, zCoord, 10));
-			 */
 			if(this.buffer.getEnergyStored() > 0)
-				this.chargeItems();
-
-			short inputEnergy = (short) this.extractEnergy(ForgeDirection.UNKNOWN, transferRate, true);
-
-			if(inputEnergy > 0)
-				for(ForgeDirection direction : EnumSet.allOf(ForgeDirection.class))
-					if(inputEnergy > 0)
-					{
-						TileEntity tileEntity = this.worldObj.getTileEntity(this.xCoord - direction.offsetX, this.yCoord - direction.offsetY,
-								this.zCoord - direction.offsetZ);
-
-						if(tileEntity instanceof IEnergyHandler)
-							inputEnergy -= this.receiveEnergy(ForgeDirection.UNKNOWN,
-									((IEnergyHandler) tileEntity).extractEnergy(direction.getOpposite(), inputEnergy, false), false);
-					}
-					else
-						break;
-		}
-	}
-
-	private void chargeItems()
-	{
-		for(ItemStack stack : this.inventory)
-			if(stack != null)
 			{
-				IEnergyItem item = (IEnergyItem) stack.getItem();
-
-				this.buffer.modifyEnergyStored(-item.receiveEnergy(stack, this.buffer.getEnergyStored(), false));
-
-				if(this.buffer.getEnergyStored() < 0)
-					break;
+				if(inventory[0] != null)
+				{
+					IEnergyItem item = (IEnergyItem) inventory[0].getItem();
+	
+					this.buffer.modifyEnergyStored(-item.receiveEnergy(inventory[0], Math.min(this.buffer.getEnergyStored(), this.buffer.getMaxExtract()), false));
+				}
 			}
+		}
 	}
 
 	@Override

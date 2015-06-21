@@ -16,11 +16,6 @@ import java.util.EnumSet;
 
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-
-import cofh.api.energy.EnergyStorage;
-import cofh.api.energy.IEnergyHandler;
-import cofh.api.energy.IEnergyProvider;
-
 import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
@@ -28,8 +23,10 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTank;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
-
 import steamcraft.common.tiles.TileSteamBoiler;
+import cofh.api.energy.EnergyStorage;
+import cofh.api.energy.IEnergyProvider;
+import cofh.api.energy.IEnergyReceiver;
 
 /**
  * @author decebaldecebal
@@ -73,27 +70,31 @@ public class TileTurbine extends TileEntity implements IFluidHandler, IEnergyPro
 
 			if(this.buffer.getEnergyStored() >= RFPerTick)
 			{
-				byte usedEnergy = 0;
 				byte outputEnergy = RFPerTick;
 
-				for(ForgeDirection direction : EnumSet.allOf(ForgeDirection.class))
-					if(outputEnergy > 0)
-					{
-						TileEntity tileEntity = this.worldObj.getTileEntity(this.xCoord - direction.offsetX, this.yCoord - direction.offsetY,
-								this.zCoord - direction.offsetZ);
+				outputEnergy -= outputEnergy(ForgeDirection.UP, outputEnergy);
+				outputEnergy -= outputEnergy(ForgeDirection.UP, outputEnergy);
 
-						if(tileEntity instanceof IEnergyHandler)
-						{
-							usedEnergy += ((IEnergyHandler) tileEntity).receiveEnergy(direction.getOpposite(), outputEnergy, false);
-							outputEnergy -= usedEnergy;
-						}
-					}
-
-				this.buffer.modifyEnergyStored(-usedEnergy);
+				this.buffer.modifyEnergyStored(outputEnergy - RFPerTick);
 			}
 		}
 	}
 
+	private byte outputEnergy(ForgeDirection dir, byte outputEnergy)
+	{
+		if(outputEnergy > 0)
+		{
+			TileEntity tileEntity = this.worldObj.getTileEntity(this.xCoord - dir.offsetX, this.yCoord - dir.offsetY,
+					this.zCoord - dir.offsetZ);
+
+			if(tileEntity instanceof IEnergyReceiver)
+			{
+				return (byte) ((IEnergyReceiver) tileEntity).receiveEnergy(dir.getOpposite(), outputEnergy, false);
+			}
+		}
+		return 0;
+	}
+	
 	@Override
 	public int fill(ForgeDirection from, FluidStack resource, boolean doFill)
 	{

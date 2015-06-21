@@ -17,17 +17,14 @@ import java.util.EnumSet;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-
-import cofh.api.energy.EnergyStorage;
-import cofh.api.energy.IEnergyHandler;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-
 import net.minecraftforge.common.util.ForgeDirection;
-
 import boilerplate.api.IEnergyItem;
 import boilerplate.common.baseclasses.BaseTileWithInventory;
+import cofh.api.energy.EnergyStorage;
+import cofh.api.energy.IEnergyHandler;
+import cofh.api.energy.IEnergyReceiver;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author decebaldecebal
@@ -76,14 +73,8 @@ public class TileBattery extends BaseTileWithInventory implements IEnergyHandler
 	@Override
 	public void updateEntity()
 	{
-
 		if(!this.worldObj.isRemote)
 		{
-			/*
-			 * int[] ids = new int[this.inventory.length]; for(int i = 0; i < this.inventory.length; i++) { if(this.inventory[i] != null) ids[i] =
-			 * Item.getIdFromItem(this.inventory[i].getItem()); } InitPackets.network.sendToAllAround(new UpdateClientsideInventoryPacket(xCoord, yCoord,
-			 * zCoord, ids), new TargetPoint( worldObj.provider.dimensionId, xCoord, yCoord, zCoord, 10));
-			 */
 			this.ticksSinceUpdate++;
 
 			if(this.ticksSinceUpdate > 50)
@@ -104,9 +95,9 @@ public class TileBattery extends BaseTileWithInventory implements IEnergyHandler
 						TileEntity tileEntity = this.worldObj.getTileEntity(this.xCoord - direction.offsetX, this.yCoord - direction.offsetY,
 								this.zCoord - direction.offsetZ);
 
-						if(tileEntity instanceof IEnergyHandler)
+						if(tileEntity instanceof IEnergyReceiver)
 							outputEnergy -= this.extractEnergy(ForgeDirection.UNKNOWN,
-									((IEnergyHandler) tileEntity).receiveEnergy(direction.getOpposite(), outputEnergy, false), false);
+									((IEnergyReceiver) tileEntity).receiveEnergy(direction.getOpposite(), outputEnergy, false), false);
 					}
 					else
 						break;
