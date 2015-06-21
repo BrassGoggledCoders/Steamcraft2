@@ -142,7 +142,7 @@ public class TileTurbine extends TileEntity implements IFluidHandler, IEnergyPro
 	@Override
 	public int extractEnergy(ForgeDirection from, int maxExtract, boolean simulate)
 	{
-		if((from == ForgeDirection.DOWN) || (from == ForgeDirection.UP))
+		if(canConnectEnergy(from))
 			return this.buffer.extractEnergy(maxExtract, simulate);
 		else
 			return 0;
