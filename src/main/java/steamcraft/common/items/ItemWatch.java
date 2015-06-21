@@ -40,7 +40,7 @@ public class ItemWatch extends BaseItem
 	{
 		if(!world.isRemote)
 		{
-			final long mcTime = world.getTotalWorldTime();
+			final long mcTime = world.getWorldTime();
 			final Calendar cal = Calendar.getInstance();
 			cal.getTime();
 			final SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
