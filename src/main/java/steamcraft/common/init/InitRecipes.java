@@ -504,7 +504,7 @@ public class InitRecipes
 				'E',
 				Items.ender_pearl, 'R', Items.redstone));
 
-		GameRegistry.addRecipe(new ItemStack(InitBlocks.blockPath), "XXX", 'X', Blocks.stonebrick);
+		GameRegistry.addRecipe(new ItemStack(InitBlocks.blockPath, 6), "PPP", "XXX", 'P', Blocks.stone_slab, 'X', Blocks.stonebrick);
 		GameRegistry.addRecipe(new ItemStack(InitItems.itemEmptyShieldedCanister), "XXX", "X X", "XXX", 'X',
 				new ItemStack(InitItems.itemSheet, 1, 7),
 				'U', new ItemStack(InitItems.itemResource, 1, 5));
