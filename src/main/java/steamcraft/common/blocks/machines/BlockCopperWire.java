@@ -12,7 +12,6 @@
  */
 package steamcraft.common.blocks.machines;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.block.Block;
@@ -182,11 +181,8 @@ public class BlockCopperWire extends BaseContainerBlock
 	}
 
 	@Override
-	public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune)
+	public int damageDropped(int meta)
 	{
-		ItemStack stack = new ItemStack(world.getBlock(x, y, z), 1, world.getBlockMetadata(x, y, z));
-		ArrayList list = new ArrayList();
-		list.add(stack);
-		return list;
+		return meta;
 	}
 }
