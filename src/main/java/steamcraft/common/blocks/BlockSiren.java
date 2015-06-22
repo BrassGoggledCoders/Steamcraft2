@@ -23,8 +23,9 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.ModInfo;
+import boilerplate.common.baseclasses.BaseMetadataBlock;
 
-public class BlockSiren extends Block
+public class BlockSiren extends BaseMetadataBlock
 {
 	private boolean isOn;
 	String sound;

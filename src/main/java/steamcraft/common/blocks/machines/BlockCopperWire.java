@@ -12,6 +12,7 @@
  */
 package steamcraft.common.blocks.machines;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.block.Block;
@@ -19,10 +20,12 @@ import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
@@ -172,4 +175,18 @@ public class BlockCopperWire extends BaseContainerBlock
 		l.add(new ItemStack(InitBlocks.blockCopperWire, 1, 1));
 	}
 
+	@Override
+	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z, EntityPlayer player)
+	{
+		return new ItemStack(world.getBlock(x, y, z), 1, world.getBlockMetadata(x, y, z));
+	}
+
+	@Override
+	public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune)
+	{
+		ItemStack stack = new ItemStack(world.getBlock(x, y, z), 1, world.getBlockMetadata(x, y, z));
+		ArrayList list = new ArrayList();
+		list.add(stack);
+		return list;
+	}
 }
