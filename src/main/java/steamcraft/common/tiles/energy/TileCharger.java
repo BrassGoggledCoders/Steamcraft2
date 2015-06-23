@@ -62,7 +62,6 @@ public class TileCharger extends BaseTileWithInventory implements IEnergyReceive
 	{
 		if(!this.worldObj.isRemote)
 		{
-			System.out.println("Charger buffer: " + buffer.getEnergyStored());
 			if(this.buffer.getEnergyStored() > 0)
 			{
 				if(this.inventory[0] != null)
