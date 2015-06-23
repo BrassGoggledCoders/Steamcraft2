@@ -20,6 +20,7 @@ import net.minecraft.util.StatCollector;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidRegistry;
 
@@ -391,6 +392,7 @@ public class InitItems
 
 		itemTeaSeed = new ItemTeaSeed().setUnlocalizedName("itemTeaSeed");
 		registerItem(itemTeaSeed, "ItemTeaSeed");
+		MinecraftForge.addGrassSeed(new ItemStack(itemTeaSeed), 8);
 
 		itemChisel = new ItemChisel().setUnlocalizedName("itemChisel").setFull3D();
 		registerItem(itemChisel, "ItemChisel");
