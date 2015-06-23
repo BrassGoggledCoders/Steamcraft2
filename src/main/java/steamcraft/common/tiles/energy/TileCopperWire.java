@@ -589,8 +589,8 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 		private boolean updateNetworkForWires = false;
 
 		private EnergyStorage buffer;
-		private int tempEnergy = 0;
 		private int size;
+		private int tempEnergy = 0;
 
 		private ArrayList<Coords> inputs = new ArrayList<Coords>();
 		private ArrayList<Coords> outputs = new ArrayList<Coords>();
