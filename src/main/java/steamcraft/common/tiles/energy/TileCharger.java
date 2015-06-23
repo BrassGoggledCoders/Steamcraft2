@@ -13,15 +13,11 @@
 package steamcraft.common.tiles.energy;
 
 import net.minecraft.nbt.NBTTagCompound;
-
 import cofh.api.energy.EnergyStorage;
 import cofh.api.energy.IEnergyReceiver;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-
 import net.minecraftforge.common.util.ForgeDirection;
-
 import boilerplate.api.IEnergyItem;
 import boilerplate.common.baseclasses.BaseTileWithInventory;
 
@@ -89,16 +85,6 @@ public class TileCharger extends BaseTileWithInventory implements IEnergyReceive
 	public int receiveEnergy(ForgeDirection from, int maxReceive, boolean simulate)
 	{
 		return this.buffer.receiveEnergy(maxReceive, simulate);
-	}
-
-	private int extractEnergy(ForgeDirection from, int maxExtract, boolean simulate)
-	{
-		int usedEnergy = maxExtract;
-		maxExtract -= this.buffer.extractEnergy(maxExtract, simulate);
-
-		usedEnergy -= maxExtract;
-
-		return usedEnergy;
 	}
 
 	@Override

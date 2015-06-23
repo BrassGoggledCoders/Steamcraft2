@@ -37,6 +37,7 @@ public class TileTurbine extends TileEntity implements IFluidHandler, IEnergyPro
 {
 	private static byte steamPerTick = TileSteamBoiler.steamPerTick / 2;
 	private static byte RFPerTick = 20; // Same as RC ratio of 1 MJ/5 steam
+	private static byte RFOutPerTick = 100;
 
 	private final FluidTank steamTank = new FluidTank(new FluidStack(FluidRegistry.getFluid("steam"), 0), 500);
 
@@ -69,28 +70,32 @@ public class TileTurbine extends TileEntity implements IFluidHandler, IEnergyPro
 				if(this.buffer.receiveEnergy(RFPerTick, false) == RFPerTick)
 					this.steamTank.drain(steamPerTick, true);
 
-			if(this.buffer.getEnergyStored() >= RFPerTick)
+			System.out.println("Turbine buffer (in): " + buffer.getEnergyStored());
+			
+			if(this.buffer.getEnergyStored() > 0)
 			{
-				byte outputEnergy = RFPerTick;
+				int usedEnergy = Math.min(buffer.getEnergyStored(), RFOutPerTick);
+				int outputEnergy = usedEnergy;
 
-				outputEnergy -= this.outputEnergy(ForgeDirection.UP, outputEnergy);
-				outputEnergy -= this.outputEnergy(ForgeDirection.UP, outputEnergy);
+				usedEnergy -= this.outputEnergy(ForgeDirection.UP, usedEnergy);
+				usedEnergy -= this.outputEnergy(ForgeDirection.DOWN, usedEnergy);
 
-				this.buffer.modifyEnergyStored(outputEnergy - RFPerTick);
+				this.buffer.modifyEnergyStored(usedEnergy - outputEnergy);
 			}
+			System.out.println("Turbine buffer (out): " + buffer.getEnergyStored());
 		}
 	}
 
-	private byte outputEnergy(ForgeDirection dir, byte outputEnergy)
+	private int outputEnergy(ForgeDirection dir, int usedEnergy)
 	{
-		if(outputEnergy > 0)
+		if(usedEnergy > 0)
 		{
-			TileEntity tileEntity = this.worldObj.getTileEntity(this.xCoord - dir.offsetX, this.yCoord - dir.offsetY,
-					this.zCoord - dir.offsetZ);
+			TileEntity tileEntity = this.worldObj.getTileEntity(this.xCoord + dir.offsetX, this.yCoord + dir.offsetY,
+					this.zCoord + dir.offsetZ);
 
 			if(tileEntity instanceof IEnergyReceiver)
 			{
-				return (byte) ((IEnergyReceiver) tileEntity).receiveEnergy(dir.getOpposite(), outputEnergy, false);
+				return (byte) ((IEnergyReceiver) tileEntity).receiveEnergy(dir.getOpposite(), usedEnergy, false);
 			}
 		}
 		return 0;
