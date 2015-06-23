@@ -69,9 +69,8 @@ public class TileTurbine extends TileEntity implements IFluidHandler, IEnergyPro
 			if(this.steamTank.getFluidAmount() >= steamPerTick)
 				if(this.buffer.receiveEnergy(RFPerTick, false) == RFPerTick)
 					this.steamTank.drain(steamPerTick, true);
-
-			System.out.println("Turbine buffer (in): " + buffer.getEnergyStored());
 			
+			System.out.println("Turbine buffer: " + buffer.getEnergyStored());
 			if(this.buffer.getEnergyStored() > 0)
 			{
 				int usedEnergy = Math.min(buffer.getEnergyStored(), RFOutPerTick);
@@ -82,7 +81,6 @@ public class TileTurbine extends TileEntity implements IFluidHandler, IEnergyPro
 
 				this.buffer.modifyEnergyStored(usedEnergy - outputEnergy);
 			}
-			System.out.println("Turbine buffer (out): " + buffer.getEnergyStored());
 		}
 	}
 

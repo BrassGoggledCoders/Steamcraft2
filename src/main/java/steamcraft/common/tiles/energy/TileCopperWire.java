@@ -124,7 +124,10 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 		this.isMaster = tag.getBoolean("master");
 
 		if(this.isMaster)
+		{
 			this.network = EnergyNetwork.readFromNBT(tag);
+			this.setMaster(this);
+		}
 	}
 
 	private static ForgeDirection readDirectionFromNBT(NBTTagCompound tag)
@@ -387,9 +390,8 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 
 				wire.updateConnections();
 			}
-			return true;
 		}
-		return false;
+		return true;
 	}
 
 	private void updateOneConnection(ForgeDirection dir)
@@ -441,7 +443,7 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 							TileCopperWire wire = (TileCopperWire) this.worldObj.getTileEntity(this.xCoord + dir.offsetX, this.yCoord + dir.offsetY,
 									this.zCoord + dir.offsetZ);
 
-							wire.network.size = 0;
+							wire.network.setSize(-1000000);
 
 							wire.network = new EnergyNetwork(1);
 
@@ -457,8 +459,7 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 							wire.updateConnections();
 						}
 			}
-			else
-				this.network = null;
+			this.setMaster(null);
 		}
 	}
 
@@ -661,7 +662,13 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 			}
 		}
 
-		private void changeSize(int with)
+		public void setSize(int size)
+		{
+			this.size = size;
+			this.buffer.setCapacity(capacityPerWire * this.size);
+		}
+		
+		public void changeSize(int with)
 		{
 			this.size += with;
 			this.buffer.setCapacity(capacityPerWire * this.size);
