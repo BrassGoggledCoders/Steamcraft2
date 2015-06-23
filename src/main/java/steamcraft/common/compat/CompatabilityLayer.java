@@ -83,11 +83,11 @@ public class CompatabilityLayer
 		{
 			String[] blockNames = new String[] { "BlockCastIronFence", "BlockCastIronGate", "BlockCastIronRailing", "BlockLightningRod", "BlockTeslaCoil",
 					"BlockCopperPipe", "BlockCopperWire", "BlockRedwoodFence", "blockMangroveFence", "blockWillowFence", "blockPetrifiedFence", "BlockCharger" };
-			for(int i = 0; i < blockNames.length; i++)
+			for(String blockName : blockNames)
 			{
 				NBTTagCompound tag1 = new NBTTagCompound();
 				tag1.setString("modid", ModInfo.ID);
-				tag1.setString("block", blockNames[i]);
+				tag1.setString("block", blockName);
 				FMLInterModComms.sendMessage("AquaTweaks", "registerAquaConnectable", tag1);
 			}
 		}
@@ -98,10 +98,10 @@ public class CompatabilityLayer
 		FMLInterModComms.sendMessage("Thaumcraft", "harvestStandardCrop", new ItemStack(InitBlocks.blockTeaPlant, 1, 1));
 		FMLInterModComms.sendMessage("Thaumcraft", "nativeCluster",
 				Block.getIdFromBlock(InitBlocks.blockCustomOre) + "," + 0 + "," + Item.getIdFromItem(InitItems.itemSteamcraftCluster) + "," + 0
-						+ ",2.0");
+				+ ",2.0");
 		FMLInterModComms.sendMessage("Thaumcraft", "nativeCluster",
 				Block.getIdFromBlock(InitBlocks.blockCustomOre) + "," + 2 + "," + Item.getIdFromItem(InitItems.itemSteamcraftCluster) + "," + 1
-						+ ",2.0");
+				+ ",2.0");
 	}
 
 	private static void sendTiConIMC()

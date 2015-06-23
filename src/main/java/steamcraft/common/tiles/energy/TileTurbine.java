@@ -12,10 +12,13 @@
  */
 package steamcraft.common.tiles.energy;
 
-import java.util.EnumSet;
-
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
+
+import cofh.api.energy.EnergyStorage;
+import cofh.api.energy.IEnergyProvider;
+import cofh.api.energy.IEnergyReceiver;
+
 import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
@@ -23,10 +26,8 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTank;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
+
 import steamcraft.common.tiles.TileSteamBoiler;
-import cofh.api.energy.EnergyStorage;
-import cofh.api.energy.IEnergyProvider;
-import cofh.api.energy.IEnergyReceiver;
 
 /**
  * @author decebaldecebal
@@ -72,8 +73,8 @@ public class TileTurbine extends TileEntity implements IFluidHandler, IEnergyPro
 			{
 				byte outputEnergy = RFPerTick;
 
-				outputEnergy -= outputEnergy(ForgeDirection.UP, outputEnergy);
-				outputEnergy -= outputEnergy(ForgeDirection.UP, outputEnergy);
+				outputEnergy -= this.outputEnergy(ForgeDirection.UP, outputEnergy);
+				outputEnergy -= this.outputEnergy(ForgeDirection.UP, outputEnergy);
 
 				this.buffer.modifyEnergyStored(outputEnergy - RFPerTick);
 			}
@@ -94,7 +95,7 @@ public class TileTurbine extends TileEntity implements IFluidHandler, IEnergyPro
 		}
 		return 0;
 	}
-	
+
 	@Override
 	public int fill(ForgeDirection from, FluidStack resource, boolean doFill)
 	{
@@ -142,7 +143,7 @@ public class TileTurbine extends TileEntity implements IFluidHandler, IEnergyPro
 	@Override
 	public int extractEnergy(ForgeDirection from, int maxExtract, boolean simulate)
 	{
-		if(canConnectEnergy(from))
+		if(this.canConnectEnergy(from))
 			return this.buffer.extractEnergy(maxExtract, simulate);
 		else
 			return 0;

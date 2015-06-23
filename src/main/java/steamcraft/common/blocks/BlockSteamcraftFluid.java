@@ -49,20 +49,20 @@ public class BlockSteamcraftFluid extends BlockFluidClassic
 	@Override
 	public void registerBlockIcons(IIconRegister iconRegister)
 	{
-		stillIcon = iconRegister.registerIcon(ModInfo.PREFIX + texture);
-		flowIcon = iconRegister.registerIcon(ModInfo.PREFIX + texture + "_flow");
+		this.stillIcon = iconRegister.registerIcon(ModInfo.PREFIX + this.texture);
+		this.flowIcon = iconRegister.registerIcon(ModInfo.PREFIX + this.texture + "_flow");
 
-		if(overwriteIcons)
-			this.getFluid().setIcons(stillIcon, flowIcon);
+		if(this.overwriteIcons)
+			this.getFluid().setIcons(this.stillIcon, this.flowIcon);
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(int side, int meta)
 	{
-		if(side == 0 || side == 1)
-			return stillIcon;
-		return flowIcon;
+		if((side == 0) || (side == 1))
+			return this.stillIcon;
+		return this.flowIcon;
 	}
 
 	@Override

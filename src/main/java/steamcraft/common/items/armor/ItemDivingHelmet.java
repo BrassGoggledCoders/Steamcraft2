@@ -59,7 +59,7 @@ public class ItemDivingHelmet extends BaseArmor
 		ItemStack helmet = ClientHelper.player().inventory.armorItemInSlot(3);
 
 		if((ClientHelper.settings().thirdPersonView == 0) && (helmet != null) && (helmet.getItem() == InitItems.itemDivingHelmet))// &&
-			// KeyHandler.keyPressed)
+		// KeyHandler.keyPressed)
 		{
 			ClientHelper.textureManager().bindTexture(overlay);
 			Tessellator tessellator = Tessellator.instance;

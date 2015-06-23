@@ -13,13 +13,17 @@
 package steamcraft.common.tiles.energy;
 
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraftforge.common.util.ForgeDirection;
-import boilerplate.api.IEnergyItem;
-import boilerplate.common.baseclasses.BaseTileWithInventory;
+
 import cofh.api.energy.EnergyStorage;
 import cofh.api.energy.IEnergyReceiver;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+
+import net.minecraftforge.common.util.ForgeDirection;
+
+import boilerplate.api.IEnergyItem;
+import boilerplate.common.baseclasses.BaseTileWithInventory;
 
 /**
  * @author decebaldecebal
@@ -64,11 +68,12 @@ public class TileCharger extends BaseTileWithInventory implements IEnergyReceive
 		{
 			if(this.buffer.getEnergyStored() > 0)
 			{
-				if(inventory[0] != null)
+				if(this.inventory[0] != null)
 				{
-					IEnergyItem item = (IEnergyItem) inventory[0].getItem();
-	
-					this.buffer.modifyEnergyStored(-item.receiveEnergy(inventory[0], Math.min(this.buffer.getEnergyStored(), this.buffer.getMaxExtract()), false));
+					IEnergyItem item = (IEnergyItem) this.inventory[0].getItem();
+
+					this.buffer.modifyEnergyStored(-item.receiveEnergy(this.inventory[0], Math.min(this.buffer.getEnergyStored(), this.buffer.getMaxExtract()),
+							false));
 				}
 			}
 		}

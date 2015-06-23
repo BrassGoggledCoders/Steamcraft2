@@ -17,14 +17,18 @@ import java.util.EnumSet;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraftforge.common.util.ForgeDirection;
-import boilerplate.api.IEnergyItem;
-import boilerplate.common.baseclasses.BaseTileWithInventory;
+
 import cofh.api.energy.EnergyStorage;
 import cofh.api.energy.IEnergyHandler;
 import cofh.api.energy.IEnergyReceiver;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+
+import net.minecraftforge.common.util.ForgeDirection;
+
+import boilerplate.api.IEnergyItem;
+import boilerplate.common.baseclasses.BaseTileWithInventory;
 
 /**
  * @author decebaldecebal

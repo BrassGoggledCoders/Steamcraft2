@@ -121,10 +121,10 @@ public class ItemRayGun extends ElectricItem
 			double px = player.posX;
 			double py = player.posY;
 			double pz = player.posZ;
-			py = player.boundingBox.minY + player.height / 2.0F + 0.25D;
-			px -= MathHelper.cos(player.rotationYaw / 180.0F * 3.141593F) * 0.16F;
+			py = player.boundingBox.minY + (player.height / 2.0F) + 0.25D;
+			px -= MathHelper.cos((player.rotationYaw / 180.0F) * 3.141593F) * 0.16F;
 			py -= 0.05000000014901161D;
-			pz -= MathHelper.cos(player.rotationYaw / 180.0F * 3.141593F) * 0.16F;
+			pz -= MathHelper.cos((player.rotationYaw / 180.0F) * 3.141593F) * 0.16F;
 			Vec3 vec3d = player.getLook(1.0F);
 			px += vec3d.xCoord * 0.5D;
 			py += vec3d.yCoord * 0.5D;

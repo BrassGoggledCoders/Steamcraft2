@@ -105,7 +105,7 @@ public class GuiHandbook extends GuiScreen
 
 		// Manually added pages
 		this.pages
-				.add(new HandbookPage(StatCollector.translateToLocal("handbook.intro.title"), StatCollector.translateToLocal("handbook.intro.documentation")));
+		.add(new HandbookPage(StatCollector.translateToLocal("handbook.intro.title"), StatCollector.translateToLocal("handbook.intro.documentation")));
 		/*
 		 * this.pages .add(new HandbookPage(StatCollector.translateToLocal("handbook.gettingstarted.title"), StatCollector
 		 * .translateToLocal("handbook.gettingstarted.documentation")));

@@ -51,7 +51,7 @@ public class WorldGenSteamcraft implements IWorldGenerator
 		}
 		else if(((world.provider.dimensionId == 0) && ConfigWorldGen.overworldGenerationEnabled)
 				|| ((world.provider.dimensionId == ConfigGeneral.deepsDimensionID)
-				&& ConfigWorldGen.deepsGenerationEnabled))
+						&& ConfigWorldGen.deepsGenerationEnabled))
 		{
 			this.generateSurface(world, random, blockChunkX, blockChunkZ);
 		}

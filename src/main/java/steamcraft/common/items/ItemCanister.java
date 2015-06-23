@@ -83,9 +83,9 @@ public class ItemCanister extends BaseItem implements IFluidContainerItem
 	@SideOnly(Side.CLIENT)
 	public IIcon getIconIndex(ItemStack stack)
 	{
-		if(getFluidAmount(stack) == 0)
+		if(this.getFluidAmount(stack) == 0)
 			return this.emptyIcon;
-		else if(getFluidAmount(stack) == MAX_STEAM)
+		else if(this.getFluidAmount(stack) == MAX_STEAM)
 			return this.fullIcon;
 		else
 			return this.itemIcon;
@@ -96,10 +96,10 @@ public class ItemCanister extends BaseItem implements IFluidContainerItem
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean flag)
 	{
-		if((getFluidAmount(stack) > 0))
+		if((this.getFluidAmount(stack) > 0))
 		{
-			String str = getFluid(stack).getFluid().getName();
-			int amount = getFluidAmount(stack);
+			String str = this.getFluid(stack).getFluid().getName();
+			int amount = this.getFluidAmount(stack);
 
 			list.add("Holding " + amount + "mB of " + str);
 			list.add("(That's about " + (amount / 1000) + " buckets)");
@@ -228,7 +228,7 @@ public class ItemCanister extends BaseItem implements IFluidContainerItem
 	@Override
 	public double getDurabilityForDisplay(ItemStack stack)
 	{
-		return 1.0D - ((double) getFluidAmount(stack) / getCapacity(stack));
+		return 1.0D - ((double) this.getFluidAmount(stack) / this.getCapacity(stack));
 	}
 
 	@Override

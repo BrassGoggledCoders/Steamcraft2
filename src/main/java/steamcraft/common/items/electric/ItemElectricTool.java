@@ -155,7 +155,7 @@ public class ItemElectricTool extends ItemModTool implements IEnergyItem
 	@Override
 	public double getDurabilityForDisplay(ItemStack stack)
 	{
-		return 1.0D - ((double) getEnergyStored(stack) / getMaxEnergyStored(stack));
+		return 1.0D - ((double) this.getEnergyStored(stack) / this.getMaxEnergyStored(stack));
 	}
 
 	@Override

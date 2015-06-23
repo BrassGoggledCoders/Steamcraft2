@@ -96,8 +96,8 @@ public class BlockCastIronGateRenderer implements ISimpleBlockRenderingHandler
 
 		if((((i1 == 2) || (i1 == 0)) && (renderer.blockAccess.getBlock(x - 1, y, z) == Blocks.cobblestone_wall)
 				&& (renderer.blockAccess.getBlock(x - 1, y, z) == Blocks.cobblestone_wall)) || (((i1 == 3) || (i1 == 1))
-				&& (renderer.blockAccess.getBlock(x, y, z - 1) == Blocks.cobblestone_wall)
-				&& (renderer.blockAccess.getBlock(x, y, z + 1) == Blocks.cobblestone_wall)))
+						&& (renderer.blockAccess.getBlock(x, y, z - 1) == Blocks.cobblestone_wall)
+						&& (renderer.blockAccess.getBlock(x, y, z + 1) == Blocks.cobblestone_wall)))
 		{
 			f -= 0.1875F;
 			f1 -= 0.1875F;

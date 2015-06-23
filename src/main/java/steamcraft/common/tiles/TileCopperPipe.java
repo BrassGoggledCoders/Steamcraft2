@@ -84,7 +84,7 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 
 			InitPackets.network.sendToAllAround(new CopperPipeFluidPacket(this.xCoord, this.yCoord, this.zCoord,
 					this.network.fluidScaled, this.network.tank.getFluid().getFluid().getName()), new TargetPoint(
-					this.worldObj.provider.dimensionId, this.xCoord, this.yCoord, this.zCoord, 50));
+							this.worldObj.provider.dimensionId, this.xCoord, this.yCoord, this.zCoord, 50));
 		}
 		else
 		{

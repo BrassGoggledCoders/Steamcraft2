@@ -36,7 +36,7 @@ public class ConfigWorldGen
 	public static boolean brassTreeGenEnabled;
 
 	public static boolean aluminumOreGenEnabled, copperOreGenEnabled, tinOreGenEnabled, zincOreGenEnabled,
-			uraniumOreGenEnabled, brimstoneOreGenEnabled, phosphateOreGenEnabled;
+	uraniumOreGenEnabled, brimstoneOreGenEnabled, phosphateOreGenEnabled;
 
 	public static boolean netherEtheriumCrystalGenEnabled;
 	public static boolean endEtheriumCrystalGenEnabled;

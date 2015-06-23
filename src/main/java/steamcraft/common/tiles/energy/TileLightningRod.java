@@ -21,16 +21,19 @@ import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
+
+import cofh.api.energy.EnergyStorage;
+import cofh.api.energy.IEnergyProvider;
+import cofh.api.energy.IEnergyReceiver;
+
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.common.util.ForgeDirection;
+
 import steamcraft.common.config.ConfigBalance;
 import steamcraft.common.config.ConfigGeneral;
 import steamcraft.common.entities.living.EntityFleshGolem;
 import steamcraft.common.init.InitBlocks;
-import cofh.api.energy.EnergyStorage;
-import cofh.api.energy.IEnergyProvider;
-import cofh.api.energy.IEnergyReceiver;
 
 /**
  * @author warlordjones, MrIbby
