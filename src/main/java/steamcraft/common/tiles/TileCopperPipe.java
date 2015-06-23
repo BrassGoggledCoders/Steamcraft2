@@ -509,6 +509,7 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 									this.zCoord + dir.offsetZ);
 
 							pipe.network.setSize(0);
+							pipe.network.tank.setFluid(null);
 
 							pipe.network = new FluidNetwork(1);
 							pipe.setMaster(pipe);
@@ -562,8 +563,7 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 	public boolean isFluidHandler(ForgeDirection dir)
 	{
 		TileEntity te = this.worldObj.getTileEntity(this.xCoord + dir.offsetX, this.yCoord + dir.offsetY, this.zCoord + dir.offsetZ);
-		return (te instanceof IFluidHandler)
-				&& !this.isCopperPipe(dir);
+		return (te instanceof IFluidHandler) && !this.isCopperPipe(dir);
 	}
 
 	@SideOnly(Side.CLIENT)
