@@ -440,6 +440,7 @@ item.itemSteamJetpack.desc=A simple jetpack that uses steam to work.
 item.itemSteamWingpack.name=Steam-Driven Wingpack
 item.itemSteamWingpack.desc=A combination of steam powered jetpack and wings that uses steam to work. Hold SHIFT to glide.
 item.itemDivingHelmet.name=Brass Diving Helmet
+item.itemDivingHelmet.desc=Provides better vision underwater, and also allows you to breath.
 item.itemHelmetWhalebone.name=Whalebone Helmet
 item.itemChestplateWhalebone.name=Whalebone Chestplate
 item.itemLegsWhalebone.name=Whalebone Greaves
