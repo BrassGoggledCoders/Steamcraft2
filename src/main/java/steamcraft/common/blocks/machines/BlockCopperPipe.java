@@ -20,11 +20,9 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-
 import steamcraft.client.lib.RenderIDs;
 import steamcraft.common.init.InitBlocks;
 import steamcraft.common.tiles.TileCopperPipe;
-import steamcraft.common.tiles.energy.TileCopperWire;
 
 /**
  * @author warlordjones
@@ -121,7 +119,7 @@ public class BlockCopperPipe extends BaseContainerBlock
 	{
 		TileEntity tile = world.getTileEntity(x, y, z);
 		TileCopperPipe pipe = null;
-		if(tile instanceof TileCopperWire)
+		if(tile instanceof TileCopperPipe)
 		{
 			pipe = (TileCopperPipe) tile;
 		}
