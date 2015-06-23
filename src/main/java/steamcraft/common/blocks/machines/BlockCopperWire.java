@@ -46,9 +46,9 @@ public class BlockCopperWire extends BaseContainerBlock
 {
 	static float pixel = 1 / 16f;
 
-	public BlockCopperWire(Material p_i45394_1_)
+	public BlockCopperWire(Material mat)
 	{
-		super(p_i45394_1_);
+		super(mat);
 
 		this.setBlockBounds(6 * pixel, 4 * pixel, 6 * pixel, 1 - (6 * pixel), 1 - (4 * pixel), 1 - (6 * pixel));
 		this.useNeighborBrightness = true;
@@ -81,8 +81,6 @@ public class BlockCopperWire extends BaseContainerBlock
 	@Override
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entityLiving, ItemStack is)
 	{
-		super.onBlockPlacedBy(world, x, y, z, entityLiving, is);
-
 		if(!world.isRemote)
 		{
 			TileCopperWire tile = (TileCopperWire) world.getTileEntity(x, y, z);
@@ -98,7 +96,7 @@ public class BlockCopperWire extends BaseContainerBlock
 	@Override
 	public void onNeighborChange(IBlockAccess world, int x, int y, int z, int tileX, int tileY, int tileZ)
 	{
-		if(world.getBlock(tileX, tileY, tileZ) != InitBlocks.blockCopperWire)
+		if(world.getBlock(tileX, tileY, tileZ) != InitBlocks.blockCopperWire) //only on server
 		{
 			TileCopperWire tile = (TileCopperWire) world.getTileEntity(x, y, z);
 			tile.updateConnections();
@@ -108,11 +106,14 @@ public class BlockCopperWire extends BaseContainerBlock
 	@Override
 	public void breakBlock(World world, int x, int y, int z, Block block, int metadata)
 	{
-		TileCopperWire tile = (TileCopperWire) world.getTileEntity(x, y, z);
-
-		if(tile != null)
-			tile.removeFromNetwork();
-
+		if (!world.isRemote)
+		{
+			TileCopperWire tile = (TileCopperWire) world.getTileEntity(x, y, z);
+	
+			if(tile != null)
+				tile.removeFromNetwork();
+		}
+		
 		super.breakBlock(world, x, y, z, block, metadata);
 	}
 

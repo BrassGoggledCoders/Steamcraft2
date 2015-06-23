@@ -48,6 +48,7 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 
 	public ForgeDirection extract = null;
 	public ForgeDirection[] connections = new ForgeDirection[6];
+	private Coords masterCoords = null;
 
 	@Override
 	public void updateEntity()
@@ -234,7 +235,8 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 		{
 			if(this.canConnect(ForgeDirection.DOWN))
 			{
-				this.updateNetwork(ForgeDirection.DOWN);
+				if(!this.updateNetwork(ForgeDirection.DOWN))
+					return ;
 				this.connections[0] = ForgeDirection.DOWN;
 			}
 			else
@@ -242,7 +244,8 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 
 			if(this.canConnect(ForgeDirection.UP))
 			{
-				this.updateNetwork(ForgeDirection.UP);
+				if(!this.updateNetwork(ForgeDirection.UP))
+					return ;
 				this.connections[1] = ForgeDirection.UP;
 			}
 			else
@@ -250,7 +253,8 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 
 			if(this.canConnect(ForgeDirection.NORTH))
 			{
-				this.updateNetwork(ForgeDirection.NORTH);
+				if(!this.updateNetwork(ForgeDirection.NORTH))
+					return ;
 				this.connections[2] = ForgeDirection.NORTH;
 			}
 			else
@@ -258,7 +262,8 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 
 			if(this.canConnect(ForgeDirection.SOUTH))
 			{
-				this.updateNetwork(ForgeDirection.SOUTH);
+				if(!this.updateNetwork(ForgeDirection.SOUTH))
+					return ;
 				this.connections[3] = ForgeDirection.SOUTH;
 			}
 			else
@@ -266,7 +271,8 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 
 			if(this.canConnect(ForgeDirection.WEST))
 			{
-				this.updateNetwork(ForgeDirection.WEST);
+				if(!this.updateNetwork(ForgeDirection.WEST))
+					return ;
 				this.connections[4] = ForgeDirection.WEST;
 			}
 			else
@@ -274,7 +280,8 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 
 			if(this.canConnect(ForgeDirection.EAST))
 			{
-				this.updateNetwork(ForgeDirection.EAST);
+				if(!this.updateNetwork(ForgeDirection.EAST))
+					return ;
 				this.connections[5] = ForgeDirection.EAST;
 			}
 			else
@@ -283,7 +290,7 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 			if(this.network == null)
 			{
 				this.network = new EnergyNetwork(1);
-				this.isMaster = true;
+				this.setMaster(this);
 			}
 
 			for(ForgeDirection dir : this.connections)
@@ -313,7 +320,7 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 		}
 	}
 
-	private void updateNetwork(ForgeDirection dir)
+	private boolean updateNetwork(ForgeDirection dir)
 	{
 		TileEntity tile = this.worldObj.getTileEntity(this.xCoord + dir.offsetX, this.yCoord + dir.offsetY, this.zCoord + dir.offsetZ);
 
@@ -327,10 +334,14 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 				{
 					if(this.network == null)
 					{
-						this.network = wire.network;
+						Coords temp = wire.getMaster();
+						TileCopperWire master = (TileCopperWire) worldObj.getTileEntity(temp.x, temp.y, temp.z);
+						this.setMaster(master);
+						//this.network = wire.network;
 						this.network.changeSize(1);
 
-						wire.updateConnections();
+						//wire.updateConnections();
+						wire.updateOneConnection(dir.getOpposite());
 					}
 					else
 					{
@@ -338,24 +349,32 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 
 						if(this.network.size > wire.network.size)
 						{
-							wire.isMaster = false;
-							wire.network = this.network;
-							wire.network.buffer.setEnergyStored(energy);
-
+							TileCopperWire master = (TileCopperWire) worldObj.getTileEntity(masterCoords.x, masterCoords.y, masterCoords.z);
+							wire.setMaster(master);
+							
+							//wire.isMaster = false;
+							//wire.network = this.network;
+							
+							this.network.buffer.setEnergyStored(energy);
 							this.network.changeSize(1);
+							
+							wire.updateConnections();
 						}
 						else
 						{
-							this.isMaster = false;
-							this.network = wire.network;
-							wire.network.buffer.setEnergyStored(energy);
-
+							Coords temp = wire.getMaster();
+							TileCopperWire master = (TileCopperWire) worldObj.getTileEntity(temp.x, temp.y, temp.z);
+							this.setMaster(master);
+							
+							//this.isMaster = false;
+							//this.network = wire.network;
+							this.network.buffer.setEnergyStored(energy);
 							this.network.changeSize(1);
 
+							wire.updateOneConnection(dir.getOpposite());
 							this.updateConnections();
+							return false;
 						}
-
-						wire.updateConnections();
 					}
 				}
 				else
@@ -363,12 +382,14 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 			}
 			else if(this.network != null)
 			{
-				wire.isMaster = false;
-				wire.network = this.network;
+				TileCopperWire master = (TileCopperWire) worldObj.getTileEntity(masterCoords.x, masterCoords.y, masterCoords.z);
+				wire.setMaster(master);
 
 				wire.updateConnections();
 			}
+			return true;
 		}
+		return false;
 	}
 
 	private void updateOneConnection(ForgeDirection dir)
@@ -420,7 +441,7 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 							TileCopperWire wire = (TileCopperWire) this.worldObj.getTileEntity(this.xCoord + dir.offsetX, this.yCoord + dir.offsetY,
 									this.zCoord + dir.offsetZ);
 
-							wire.network.changeSize(-wire.network.size);
+							wire.network.size = 0;
 
 							wire.network = new EnergyNetwork(1);
 
@@ -431,7 +452,7 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 
 								this.network = null;
 							}
-							wire.isMaster = true;
+							wire.setMaster(wire);
 
 							wire.updateConnections();
 						}
@@ -441,6 +462,32 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 		}
 	}
 
+	public void setMaster(TileCopperWire master)
+	{
+		if (master != null)
+		{
+			this.masterCoords = new Coords(master.xCoord, master.yCoord, master.zCoord, null);
+			this.network = master.network;
+			if (master == this)
+				this.isMaster = true;
+			else
+				this.isMaster = false;
+		}
+		else
+		{
+			this.masterCoords = null;
+			this.isMaster = false;
+			this.network = null;
+		}
+	}
+	
+	public Coords getMaster()
+	{
+		if (this.masterCoords != null)
+			return this.masterCoords;
+		return null;
+	}
+	
 	private boolean canConnect(ForgeDirection dir)
 	{
 		return this.isEnergyHandler(dir) || this.isCopperWire(dir);

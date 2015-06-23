@@ -103,7 +103,7 @@ public class CopperPipePacket implements IMessage
 					break;
 				default:
 					index = -1;
-					break;
+				break;
 			}
 
 		return index;

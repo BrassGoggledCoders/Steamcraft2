@@ -72,6 +72,7 @@ public class CopperWirePacket implements IMessage
 		buf.writeInt(this.x);
 		buf.writeInt(this.y);
 		buf.writeInt(this.z);
+		
 		for(int i = 0; i < 6; i++)
 			buf.writeByte(CopperPipePacket.directionToByte(this.connections[i]));
 	}
