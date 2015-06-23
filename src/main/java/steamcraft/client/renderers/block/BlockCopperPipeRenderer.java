@@ -39,10 +39,10 @@ public class BlockCopperPipeRenderer implements ISimpleBlockRenderingHandler
 
 		TileCopperPipe te = new TileCopperPipe();
 
-		// te.blockType = block;
-		te.blockMetadata = metadata;
-
 		System.arraycopy(ForgeDirection.VALID_DIRECTIONS, 0, te.connections, 0, ForgeDirection.VALID_DIRECTIONS.length);
+		
+		te.blockMetadata = metadata;
+		//te.blockType = block; This crashes for some weird reason
 
 		TileEntityRendererDispatcher.instance.renderTileEntityAt(te, 0.0D, 0.0D, 0.0D, 0.0F);
 		GL11.glEnable(32826);
