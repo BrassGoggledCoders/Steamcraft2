@@ -48,7 +48,6 @@ public class TileIntake extends TileEntity implements IFluidHandler
 	@Override
 	public void updateEntity()
 	{
-		super.updateEntity();
 		if((this.worldObj.getBlock(this.xCoord, this.yCoord - 1, this.zCoord) == Blocks.water)
 				&& (this.worldObj.getBlockMetadata(this.xCoord, this.yCoord - 1, this.zCoord) == 0))
 		{

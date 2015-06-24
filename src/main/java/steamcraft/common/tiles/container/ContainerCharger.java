@@ -32,9 +32,6 @@ import boilerplate.common.baseclasses.BaseContainer;
  */
 public class ContainerCharger extends BaseContainer
 {
-	private int lastTotalEnergy = 0;
-	private int lastMaxEnergy = 0;
-	private short lastTransferRate = 0;
 	private int lastBufferEnergy;
 
 	private TileCharger tileent;
@@ -61,10 +58,7 @@ public class ContainerCharger extends BaseContainer
 	{
 		super.addCraftingToCrafters(crafting);
 
-		crafting.sendProgressBarUpdate(this, 0, this.tileent.buffer.getEnergyStored());
-		crafting.sendProgressBarUpdate(this, 1, this.tileent.buffer.getMaxEnergyStored());
-		crafting.sendProgressBarUpdate(this, 2, TileCharger.transferRate);
-		crafting.sendProgressBarUpdate(this, 3, this.tileent.buffer.getEnergyStored());
+		crafting.sendProgressBarUpdate(this, 1, this.tileent.buffer.getEnergyStored());
 	}
 
 	@Override
@@ -76,22 +70,10 @@ public class ContainerCharger extends BaseContainer
 		{
 			ICrafting var2 = (ICrafting) obj;
 
-			if(this.lastTotalEnergy != this.tileent.buffer.getEnergyStored())
-				var2.sendProgressBarUpdate(this, 0, this.tileent.buffer.getEnergyStored());
-
-			if(this.lastMaxEnergy != this.tileent.buffer.getMaxEnergyStored())
-				var2.sendProgressBarUpdate(this, 1, this.tileent.buffer.getMaxEnergyStored());
-
-			if(this.lastTransferRate != TileCharger.transferRate)
-				var2.sendProgressBarUpdate(this, 2, TileCharger.transferRate);
-
 			if(this.lastBufferEnergy != this.tileent.buffer.getEnergyStored())
-				var2.sendProgressBarUpdate(this, 3, this.tileent.buffer.getEnergyStored());
+				var2.sendProgressBarUpdate(this, 1, this.tileent.buffer.getEnergyStored());
 		}
 
-		this.lastTotalEnergy = this.tileent.buffer.getEnergyStored();
-		this.lastMaxEnergy = this.tileent.buffer.getMaxEnergyStored();
-		this.lastTransferRate = TileCharger.transferRate;
 		this.lastBufferEnergy = this.tileent.buffer.getEnergyStored();
 	}
 
@@ -99,13 +81,7 @@ public class ContainerCharger extends BaseContainer
 	@SideOnly(Side.CLIENT)
 	public void updateProgressBar(int par1, int par2)
 	{
-		if(par1 == 0)
-			par2 = this.tileent.buffer.getEnergyStored();
-		else if(par1 == 1)
-			par2 = this.tileent.buffer.getMaxEnergyStored();
-		else if(par1 == 2)
-			TileCharger.transferRate = (short) par2;
-		else if(par1 == 3)
+		if(par1 == 1)
 			this.tileent.buffer.setEnergyStored(par2);
 	}
 
@@ -126,20 +102,22 @@ public class ContainerCharger extends BaseContainer
 			ItemStack var5 = var4.getStack();
 			var3 = var5.copy();
 
-			if(par2 > 5)
+			if(par2 > 0)
 			{
 				if(var5.getItem() instanceof IEnergyItem)
 				{
-					if(!this.mergeItemStack(var5, 0, 6, false))
-						if(!this.mergeItemStack(var5, 33, 42, false))
+					if(!this.mergeItemStack(var5, 0, 1, false))
+						if((par2 >= 1) && (par2 < 28) && !this.mergeItemStack(var5, 28, 37, false))
+							return null;
+						else if((par2 >= 28) && (par2 < 37) && !this.mergeItemStack(var5, 1, 28, false))
 							return null;
 				}
-				else if((par2 >= 6) && (par2 < 33) && !this.mergeItemStack(var5, 33, 42, false))
+				else if((par2 >= 1) && (par2 < 28) && !this.mergeItemStack(var5, 28, 37, false))
 					return null;
-				else if((par2 >= 33) && (par2 < 42) && !this.mergeItemStack(var5, 6, 33, false))
+				else if((par2 >= 28) && (par2 < 37) && !this.mergeItemStack(var5, 1, 28, false))
 					return null;
 			}
-			else if(!this.mergeItemStack(var5, 6, 42, false))
+			else if(!this.mergeItemStack(var5, 1, 37, false))
 				return null;
 
 			if(var5.stackSize == 0)

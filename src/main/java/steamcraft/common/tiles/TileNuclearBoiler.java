@@ -23,7 +23,6 @@ public class TileNuclearBoiler extends TileBaseBoiler
 	@Override
 	protected int getItemBurnTime()
 	{
-
 		if(this.inventory[0] == null)
 			return 0;
 		else if((this.inventory[0].getItem() == InitItems.itemResource) && (this.inventory[0].getItemDamage() == 5))

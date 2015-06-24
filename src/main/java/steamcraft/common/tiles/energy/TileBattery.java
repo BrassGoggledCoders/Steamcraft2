@@ -109,7 +109,7 @@ public class TileBattery extends BaseTileWithInventory implements IEnergyHandler
 
 				this.buffer.modifyEnergyStored(-item.receiveEnergy(stack, this.buffer.getEnergyStored(), false));
 
-				if(this.buffer.getEnergyStored() < 0)
+				if(this.buffer.getEnergyStored() <= 0)
 					break;
 			}
 	}

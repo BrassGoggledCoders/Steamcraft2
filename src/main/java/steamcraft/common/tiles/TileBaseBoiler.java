@@ -33,11 +33,10 @@ import boilerplate.common.baseclasses.BaseTileWithInventory;
  * @author Decebaldecebal
  *
  */
-public class TileBaseBoiler extends BaseTileWithInventory implements IFluidHandler
+public abstract class TileBaseBoiler extends BaseTileWithInventory implements IFluidHandler
 {
 	public static final int steamPerTick = 20;
 	protected static final int waterPerTick = 5; // 3x3 RC boiler is 5 water/tick
-	// and 1mb for 160mb steam?
 
 	public int furnaceBurnTime = 0;
 	public int currentItemBurnTime = 0;
@@ -154,14 +153,8 @@ public class TileBaseBoiler extends BaseTileWithInventory implements IFluidHandl
 			this.markDirty();
 	}
 
-	protected int getItemBurnTime()
-	{
-		if(this.inventory[0] == null)
-			return 0;
-
-		return TileEntityFurnace.getItemBurnTime(this.inventory[0]);
-	}
-
+	protected abstract int getItemBurnTime();
+	
 	public int getScaledWaterLevel(int i)
 	{
 		return this.waterTank.getFluid() != null ? (int) (((float) this.waterTank.getFluid().amount / (float) this.waterTank.getCapacity()) * i) : 0;

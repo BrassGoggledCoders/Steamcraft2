@@ -12,11 +12,19 @@
  */
 package steamcraft.common.tiles;
 
+import net.minecraft.tileentity.TileEntityFurnace;
+
 /**
  * @author Decebaldecebal
  *
  */
 public class TileSteamBoiler extends TileBaseBoiler
 {
-	// left here for use after future further genericising of TileBaseBoiler
+	protected int getItemBurnTime()
+	{
+		if(this.inventory[0] == null)
+			return 0;
+
+		return TileEntityFurnace.getItemBurnTime(this.inventory[0]);
+	}
 }

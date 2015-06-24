@@ -625,11 +625,10 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 				}
 				this.ticksSinceLastUpdate = 0;
 
-				//System.out.println("Buffer before" + buffer.getEnergyStored());
 				this.updateInputs(wire.worldObj);
-				//System.out.println("Buffer after" + buffer.getEnergyStored());
+				System.out.println("Buffer before: " + buffer.getEnergyStored());
 				this.updateOutputs(wire);
-				//System.out.println("Buffer last" + buffer.getEnergyStored());
+				System.out.println("Buffer after: " + buffer.getEnergyStored());
 			}
 		}
 

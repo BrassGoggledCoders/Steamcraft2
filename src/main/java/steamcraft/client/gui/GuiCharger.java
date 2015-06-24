@@ -32,11 +32,12 @@ public class GuiCharger extends BaseContainerGui
 
 	private TileCharger charger;
 
-	public GuiCharger(InventoryPlayer inventory, TileCharger tile2)
+	public GuiCharger(InventoryPlayer inventory, TileCharger tile)
 	{
-		super(new ContainerCharger(inventory, tile2));
+		super(new ContainerCharger(inventory, tile));
 
-		this.charger = tile2;
+		this.tile = tile;
+		this.charger = tile;
 	}
 
 	@Override
@@ -46,7 +47,7 @@ public class GuiCharger extends BaseContainerGui
 
 		this.mc.renderEngine.bindTexture(guitexture);
 		this.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize);
-
+		
 		int var8 = this.charger.getEnergyScaled(17);
 		this.drawTexturedModalRect(this.guiLeft + 12, (this.guiTop + 64) - var8, 176, 56 - var8, 16, var8 + 1);
 	}

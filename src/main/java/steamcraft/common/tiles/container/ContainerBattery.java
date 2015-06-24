@@ -46,10 +46,8 @@ public class ContainerBattery extends BaseContainer
 
 		this.addSlotToContainer(new SlotBattery(tile, 0, 98, 22));
 		this.addSlotToContainer(new SlotBattery(tile, 1, 116, 22));
-		// this.addSlotToContainer(new SlotBattery(tile, 2, 134, 22));
 		this.addSlotToContainer(new SlotBattery(tile, 2, 98, 40));
 		this.addSlotToContainer(new SlotBattery(tile, 3, 116, 40));
-		// this.addSlotToContainer(new SlotBattery(tile, 5, 134, 40));
 
 		int var3;
 
@@ -131,20 +129,22 @@ public class ContainerBattery extends BaseContainer
 			ItemStack var5 = var4.getStack();
 			var3 = var5.copy();
 
-			if(par2 > 5)
+			if(par2 >= 4)
 			{
 				if(var5.getItem() instanceof IEnergyItem)
 				{
-					if(!this.mergeItemStack(var5, 0, 6, false))
-						if(!this.mergeItemStack(var5, 33, 42, false))
+					if (!this.mergeItemStack(var5, 0, 4, false))
+						if((par2 >= 4) && (par2 < 31) && !this.mergeItemStack(var5, 31, 40, false))
+							return null;
+						else if((par2 >= 31) && (par2 < 40) && !this.mergeItemStack(var5, 4, 31, false))
 							return null;
 				}
-				else if((par2 >= 6) && (par2 < 33) && !this.mergeItemStack(var5, 33, 42, false))
+				else if((par2 >= 4) && (par2 < 31) && !this.mergeItemStack(var5, 31, 40, false))
 					return null;
-				else if((par2 >= 33) && (par2 < 42) && !this.mergeItemStack(var5, 6, 33, false))
+				else if((par2 >= 31) && (par2 < 40) && !this.mergeItemStack(var5, 4, 31, false))
 					return null;
 			}
-			else if(!this.mergeItemStack(var5, 6, 42, false))
+			else if(!this.mergeItemStack(var5, 4, 40, false))
 				return null;
 
 			if(var5.stackSize == 0)
