@@ -48,7 +48,7 @@ public class ItemResource extends BaseItemWithMetadata
 	public void registerIcons(IIconRegister ir)
 	{
 		this.itemIcon[0] = ir.registerIcon(ModInfo.PREFIX + "itemCrystal");
-		this.itemIcon[1] = ir.registerIcon(ModInfo.PREFIX + "itemChemSalt");
+		this.itemIcon[1] = ir.registerIcon(ModInfo.PREFIX + "itemSulphur");
 		this.itemIcon[2] = ir.registerIcon(ModInfo.PREFIX + "itemSlate");
 		this.itemIcon[3] = ir.registerIcon(ModInfo.PREFIX + "itemPhosphorus");
 		this.itemIcon[4] = ir.registerIcon(ModInfo.PREFIX + "itemUranium");
