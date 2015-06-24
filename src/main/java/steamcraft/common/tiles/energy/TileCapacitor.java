@@ -16,15 +16,12 @@ import java.util.EnumSet;
 
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-
 import cofh.api.energy.EnergyStorage;
 import cofh.api.energy.IEnergyHandler;
-
+import cofh.api.energy.IEnergyReceiver;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-
 import net.minecraftforge.common.util.ForgeDirection;
-
 import boilerplate.common.baseclasses.BaseTileWithInventory;
 
 /**
@@ -67,7 +64,6 @@ public class TileCapacitor extends BaseTileWithInventory implements IEnergyHandl
 	@Override
 	public void updateEntity()
 	{
-
 		if(!this.worldObj.isRemote)
 		{
 			short outputEnergy = (short) this.extractEnergy(ForgeDirection.UNKNOWN, this.transferRate, true);
@@ -76,12 +72,12 @@ public class TileCapacitor extends BaseTileWithInventory implements IEnergyHandl
 				for(ForgeDirection direction : EnumSet.allOf(ForgeDirection.class))
 					if(outputEnergy > 0)
 					{
-						TileEntity tileEntity = this.worldObj.getTileEntity(this.xCoord - direction.offsetX, this.yCoord - direction.offsetY,
-								this.zCoord - direction.offsetZ);
+						TileEntity tileEntity = this.worldObj.getTileEntity(this.xCoord + direction.offsetX, this.yCoord + direction.offsetY,
+								this.zCoord + direction.offsetZ);
 
-						if(tileEntity instanceof IEnergyHandler)
+						if(tileEntity instanceof IEnergyReceiver)
 							outputEnergy -= this.extractEnergy(ForgeDirection.UNKNOWN,
-									((IEnergyHandler) tileEntity).receiveEnergy(direction.getOpposite(), outputEnergy, false), false);
+									((IEnergyReceiver) tileEntity).receiveEnergy(direction.getOpposite(), outputEnergy, false), false);
 					}
 					else
 						break;
@@ -103,12 +99,7 @@ public class TileCapacitor extends BaseTileWithInventory implements IEnergyHandl
 	@Override
 	public int extractEnergy(ForgeDirection from, int maxExtract, boolean simulate)
 	{
-		int usedEnergy = maxExtract;
-		maxExtract -= this.buffer.extractEnergy(maxExtract, simulate);
-
-		usedEnergy -= maxExtract;
-
-		return usedEnergy;
+		return this.buffer.extractEnergy(maxExtract, simulate);
 	}
 
 	@Override

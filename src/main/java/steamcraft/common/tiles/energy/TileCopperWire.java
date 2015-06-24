@@ -646,9 +646,7 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 
 							if(tile != null)
 							{
-								int canFill = tile.extractEnergy(coords.dir, Math.min(distribute, maxTransferPerTile), false);
-
-								this.buffer.receiveEnergy(tile.extractEnergy(coords.dir, canFill, false), false);
+								this.buffer.receiveEnergy(tile.extractEnergy(coords.dir,  Math.min(distribute, maxTransferPerTile), false), false);
 
 								tempSize--;
 							}
@@ -680,9 +678,7 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 
 							if(tile != null)
 							{
-								short transfered = (short) tile.receiveEnergy(coords.dir, Math.min(distribute, maxTransferPerTile), false);
-
-								this.buffer.extractEnergy(transfered, false);
+								this.buffer.extractEnergy(tile.receiveEnergy(coords.dir, Math.min(distribute, maxTransferPerTile), false), false);
 
 								tempSize--;
 							}
