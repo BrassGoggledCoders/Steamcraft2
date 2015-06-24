@@ -13,7 +13,7 @@
 package steamcraft.common.lib;
 
 import boilerplate.common.Boilerplate;
-import boilerplate.common.utils.StringUtils;
+import boilerplate.common.utils.Utils;
 
 public class LibInfo
 {
@@ -50,7 +50,7 @@ public class LibInfo
 		"e59b1bf5-ff7d-44ae-b1d4-90dc74c8f7da", "d2ea8848-7052-45b8-96e8-ac29d4f1024a" };
 	public static String[] kihira = { "3df99427-2e78-4f4d-828c-95f09fe60144", "f34afdfb-996b-4020-b8a2-b740e2937b29", "27672103-b8c7-400d-8817-49de433336dd" };
 	public static String[] other = { "edb4e6c2-7d07-4438-a0bb-2f4aabbea24d" };
-	public static String[] names = StringUtils.merge(brassBlocksMembers, Boilerplate.devs, contributors, Boilerplate.donors, kihira, other);
+	public static String[] names = Utils.merge(brassBlocksMembers, Boilerplate.devs, contributors, Boilerplate.donors, kihira, other);
 
 	public static float pixel = 1F / 16F / 2F;
 	public static float tPixel = 1F / 32F;
