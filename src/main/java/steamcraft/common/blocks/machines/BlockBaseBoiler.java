@@ -33,7 +33,7 @@ import steamcraft.common.tiles.TileBaseBoiler;
  * @author decebaldecebal
  *
  */
-public class BlockBaseBoiler extends BaseContainerBlock
+public abstract class BlockBaseBoiler extends BaseContainerBlock
 {
 	@SideOnly(Side.CLIENT)
 	protected IIcon iconTop;
