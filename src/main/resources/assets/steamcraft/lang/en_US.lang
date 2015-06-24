@@ -135,7 +135,7 @@ tile.blockCrystal.name=Etherium Crystal Block
 
 #Machines
 tile.blockCopperTank.name=Copper Tank
-tile.blockCopperTank.0.desc=Not yet functional.
+tile.blockCopperTank.desc=Currently for recipes only!
 tile.blockCopperPipe.name=Copper Pipe
 tile.blockCopperPipe.desc=Right-Click with Spanner to change to extracting (pulling out fluids) mode.
 tile.blockCopperWire.0.name=Copper Wire
