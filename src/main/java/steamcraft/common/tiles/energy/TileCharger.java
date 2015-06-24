@@ -54,7 +54,7 @@ public class TileCharger extends BaseTileWithInventory implements IEnergyReceive
 	@SideOnly(Side.CLIENT)
 	public int getEnergyScaled(int par1)
 	{
-		return this.buffer.getEnergyStored() / this.buffer.getMaxEnergyStored() / par1;
+		return this.buffer.getEnergyStored() / this.buffer.getMaxEnergyStored() / 1000 / par1;
 	}
 
 	@Override

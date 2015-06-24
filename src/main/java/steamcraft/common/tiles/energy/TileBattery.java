@@ -61,9 +61,7 @@ public class TileBattery extends BaseTileWithInventory implements IEnergyHandler
 	@SideOnly(Side.CLIENT)
 	public int getEnergyScaled(int par1)
 	{
-		// if(maxEnergy > 0)
 		return (this.totalEnergy + this.buffer.getEnergyStored()) / ((this.maxEnergy + initialEnergy) / 1000) / par1;
-		// else return 0;
 	}
 
 	@Override
