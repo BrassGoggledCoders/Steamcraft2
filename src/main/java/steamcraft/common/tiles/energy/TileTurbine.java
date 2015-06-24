@@ -101,7 +101,7 @@ public class TileTurbine extends TileEntity implements IFluidHandler, IEnergyPro
 	@Override
 	public int fill(ForgeDirection from, FluidStack resource, boolean doFill)
 	{
-		if(resource.getFluid() == FluidRegistry.getFluid("steam"))
+		if(canFill(from, resource.getFluid()))
 			return this.steamTank.fill(resource, doFill);
 		return 0;
 	}
@@ -121,7 +121,7 @@ public class TileTurbine extends TileEntity implements IFluidHandler, IEnergyPro
 	@Override
 	public boolean canFill(ForgeDirection from, Fluid fluid)
 	{
-		return (fluid == FluidRegistry.getFluid("steam")) && ((from != ForgeDirection.DOWN) || (from != ForgeDirection.UP));
+		return from != ForgeDirection.DOWN && from != ForgeDirection.UP && fluid == FluidRegistry.getFluid("steam");
 	}
 
 	@Override
@@ -133,7 +133,9 @@ public class TileTurbine extends TileEntity implements IFluidHandler, IEnergyPro
 	@Override
 	public FluidTankInfo[] getTankInfo(ForgeDirection from)
 	{
-		return new FluidTankInfo[] { this.steamTank.getInfo() };
+		if (from != ForgeDirection.DOWN && from != ForgeDirection.UP)
+			return new FluidTankInfo[] { this.steamTank.getInfo() };
+		return null;
 	}
 
 	@Override
