@@ -712,7 +712,7 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 		{
 			NBTTagCompound temp = new NBTTagCompound();
 
-			this.buffer.writeToNBT(temp);
+			temp.setInteger("energyLevel", buffer.getEnergyStored());
 
 			tag.setTag("network", temp);
 		}
@@ -724,8 +724,7 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 			EnergyNetwork network = new EnergyNetwork(1);
 
 			network.updateNetworkForWires = true;
-			network.buffer = new EnergyStorage(capacityPerWire * network.size);
-			network.buffer.readFromNBT(temp);
+			network.tempEnergy = temp.getInteger("energyLevel");
 
 			return network;
 		}
