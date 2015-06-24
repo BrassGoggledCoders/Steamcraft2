@@ -314,12 +314,12 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 				{
 					Coords temp = new Coords(this.xCoord + dir.offsetX, this.yCoord + dir.offsetY, this.zCoord + dir.offsetZ, dir.getOpposite());
 
-					if(this.extract != dir && worldObj.getTileEntity(temp.x, temp.y, temp.z) instanceof IEnergyProvider)
+					if(this.extract != dir && worldObj.getTileEntity(temp.x, temp.y, temp.z) instanceof IEnergyReceiver)
 					{
 						if(!this.network.outputs.contains(temp))
 							this.network.outputs.add(temp);
 					}
-					else if(!this.network.inputs.contains(temp) && worldObj.getTileEntity(temp.x, temp.y, temp.z) instanceof IEnergyReceiver)
+					else if(!this.network.inputs.contains(temp) && worldObj.getTileEntity(temp.x, temp.y, temp.z) instanceof IEnergyProvider)
 						this.network.inputs.add(temp);
 				}
 			
