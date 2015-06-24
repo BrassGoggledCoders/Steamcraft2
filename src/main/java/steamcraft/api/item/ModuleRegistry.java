@@ -61,6 +61,7 @@ public class ModuleRegistry
 	 * @param incompatibilities
 	 *            the incompatibilities
 	 */
+	@Deprecated
 	public static void setModuleIncompatibilities(IModule module, String... incompatibilities)
 	{
 		ArrayList list = Lists.newArrayList(incompatibilities);
@@ -74,6 +75,7 @@ public class ModuleRegistry
 	 *            the id
 	 * @return the module incompatibilities
 	 */
+	@Deprecated
 	public static ArrayList getModuleIncompatibilities(String id)
 	{
 		return moduleIncompatibilities.get(id);

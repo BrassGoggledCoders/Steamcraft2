@@ -34,7 +34,7 @@ public class ItemAqualung extends PoweredArmorModule
 	{
 		super();
 		ModuleRegistry.registerModule(this);
-		ModuleRegistry.setModuleIncompatibilities(this, "pistonplating");
+		ModuleRegistry.setModuleIncompatibilities(this, "lifevest");
 		this.setMaxStackSize(1);
 		this.setCreativeTab(Steamcraft.tabSC2);
 	}

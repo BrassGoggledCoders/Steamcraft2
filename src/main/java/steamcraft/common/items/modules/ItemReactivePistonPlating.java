@@ -39,7 +39,6 @@ public class ItemReactivePistonPlating extends PoweredArmorModule
 	{
 		super();
 		ModuleRegistry.registerModule(this);
-		ModuleRegistry.setModuleIncompatibilities(ModuleRegistry.getModule("pistonplating"), "aqualung");
 		this.setMaxStackSize(1);
 		this.setCreativeTab(Steamcraft.tabSC2);
 		this.setSteamToConsume(100);

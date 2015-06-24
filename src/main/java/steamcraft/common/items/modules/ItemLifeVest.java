@@ -35,6 +35,7 @@ public class ItemLifeVest extends BaseArmorModule
 	{
 		super();
 		ModuleRegistry.registerModule(this);
+		ModuleRegistry.setModuleIncompatibilities(this, "aqualung");
 		this.setMaxStackSize(1);
 		this.setCreativeTab(Steamcraft.tabSC2);
 	}
