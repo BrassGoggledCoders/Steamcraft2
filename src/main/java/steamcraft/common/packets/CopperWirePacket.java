@@ -35,6 +35,7 @@ public class CopperWirePacket implements IMessage
 {
 	private int x, y, z;
 	ForgeDirection[] connections;
+	ForgeDirection extract;
 
 	public CopperWirePacket()
 	{
@@ -64,6 +65,7 @@ public class CopperWirePacket implements IMessage
 			if(this.connections[i] == ForgeDirection.UNKNOWN)
 				this.connections[i] = null;
 		}
+		this.extract = ForgeDirection.getOrientation(buf.readByte());
 	}
 
 	@Override
@@ -73,7 +75,7 @@ public class CopperWirePacket implements IMessage
 		buf.writeInt(this.y);
 		buf.writeInt(this.z);
 		
-		for(int i = 0; i < 6; i++)
+		for(int i = 0; i < 7; i++)
 			buf.writeByte(CopperPipePacket.directionToByte(this.connections[i]));
 	}
 
@@ -90,6 +92,7 @@ public class CopperWirePacket implements IMessage
 				TileCopperWire wire = (TileCopperWire) world.getTileEntity(message.x, message.y, message.z);
 
 				wire.connections = message.connections;
+				wire.extract = message.extract;
 			}
 
 			return null;

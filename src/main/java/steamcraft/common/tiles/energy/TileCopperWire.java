@@ -14,6 +14,8 @@ package steamcraft.common.tiles.energy;
 
 import java.util.ArrayList;
 
+import org.apache.commons.lang3.ArrayUtils;
+
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.network.NetworkManager;
@@ -181,37 +183,40 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 
 	public void changeExtracting()
 	{
-		if(this.extract != null)
+		if (!worldObj.isRemote)
 		{
-			if(!this.worldObj.isRemote)
+			if(this.extract != null)
+			{
 				this.network.inputs.remove(new Coords(this.xCoord + this.extract.offsetX, this.yCoord + this.extract.offsetY, this.zCoord
 						+ this.extract.offsetZ, this.extract.getOpposite()));
-
-			this.extract = null;
-		}
-		else
-			for(ForgeDirection dir : this.connections)
-				if((dir != null) && this.isEnergyHandler(dir))
-				{
-					this.extract = dir;
-
-					if(!this.worldObj.isRemote)
+	
+				this.extract = null;
+			}
+			else
+				for(ForgeDirection dir : this.connections)
+					if((dir != null) && this.isEnergyHandler(dir))
 					{
+						this.extract = dir;
+	
 						Coords temp = new Coords(this.xCoord + this.extract.offsetX, this.yCoord + this.extract.offsetY, this.zCoord
 								+ this.extract.offsetZ, this.extract.getOpposite());
 
 						this.network.outputs.remove(temp);
 						this.network.inputs.add(temp);
+	
+						break;
 					}
-
-					break;
-				}
+			System.out.println("Extraction is: " + this.extract != null);
+			this.updateClientConnections();
+		}
 	}
 
 	private void removeConnections(int i)
 	{
-		if((this.connections[i] != null) && !this.worldObj.isRemote)
+		if(this.connections[i] != null)
 		{
+			System.out.println("Removing connections 1...");
+			
 			ForgeDirection dir = this.connections[i];
 
 			Coords temp = new Coords(this.xCoord + dir.offsetX, this.yCoord + dir.offsetY, this.zCoord + dir.offsetZ, dir.getOpposite());
@@ -219,13 +224,16 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 			this.network.outputs.remove(temp);
 
 			if(this.connections[i] == this.extract)
+			{
 				this.network.inputs.remove(temp);
+				System.out.println("Removing extract...");
+				this.extract = null;
+			}
+
+			System.out.println("Removing connections 2...");
+			
+			this.connections[i] = null;
 		}
-
-		if(this.extract == this.connections[i])
-			this.extract = null;
-
-		this.connections[i] = null;
 	}
 
 	public void updateConnections() //Only sever side
@@ -326,8 +334,8 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 	{
 		if((this.network != null) && !this.worldObj.isRemote)
 		{
-			InitPackets.network.sendToAllAround(new CopperWirePacket(this.xCoord, this.yCoord, this.zCoord,
-					this.connections), new TargetPoint(this.worldObj.provider.dimensionId, this.xCoord, this.yCoord, this.zCoord, 100));
+			InitPackets.network.sendToAllAround(new CopperWirePacket(this.xCoord, this.yCoord, this.zCoord, ArrayUtils.add(this.connections, this.extract)),
+					new TargetPoint(this.worldObj.provider.dimensionId, this.xCoord, this.yCoord, this.zCoord, 100));
 		}
 	}
 
@@ -617,11 +625,11 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 				}
 				this.ticksSinceLastUpdate = 0;
 
-				System.out.println("Buffer before" + buffer.getEnergyStored());
+				//System.out.println("Buffer before" + buffer.getEnergyStored());
 				this.updateInputs(wire.worldObj);
-				System.out.println("Buffer after" + buffer.getEnergyStored());
+				//System.out.println("Buffer after" + buffer.getEnergyStored());
 				this.updateOutputs(wire);
-				System.out.println("Buffer last" + buffer.getEnergyStored());
+				//System.out.println("Buffer last" + buffer.getEnergyStored());
 			}
 		}
 
