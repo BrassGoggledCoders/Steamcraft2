@@ -136,10 +136,4 @@ public class BlockBaseBoiler extends BaseContainerBlock
 		if(!world.isRemote && flag)
 			world.setBlock(x, y, z, InitBlocks.blockSteam);
 	}
-
-	@Override
-	public TileEntity createNewTileEntity(World p_149915_1_, int p_149915_2_)
-	{
-		return new TileBaseBoiler();
-	}
 }
