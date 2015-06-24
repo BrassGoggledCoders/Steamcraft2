@@ -134,7 +134,7 @@ public class TileBaseBoiler extends BaseTileWithInventory implements IFluidHandl
 					--this.inventory[0].stackSize;
 			}
 
-			if((this.furnaceBurnTime > 0) && (this.waterTank.getFluidAmount() >= waterPerTick) && (this.steamTank.getFluidAmount() <= 10000))
+			if((this.furnaceBurnTime > 0) && (this.waterTank.getFluidAmount() >= waterPerTick) && (this.steamTank.getFluidAmount() < 10000))
 			{
 				this.steamTank.fill(new FluidStack(FluidRegistry.getFluid("steam"), steamPerTick), true);
 				this.furnaceBurnTime--;
