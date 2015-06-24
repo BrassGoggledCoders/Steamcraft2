@@ -306,12 +306,12 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 				{
 					Coords temp = new Coords(this.xCoord + dir.offsetX, this.yCoord + dir.offsetY, this.zCoord + dir.offsetZ, dir.getOpposite());
 
-					if(this.extract != dir)
+					if(this.extract != dir && worldObj.getTileEntity(temp.x, temp.y, temp.z) instanceof IEnergyProvider)
 					{
 						if(!this.network.outputs.contains(temp))
 							this.network.outputs.add(temp);
 					}
-					else if(!this.network.inputs.contains(temp))
+					else if(!this.network.inputs.contains(temp) && worldObj.getTileEntity(temp.x, temp.y, temp.z) instanceof IEnergyReceiver)
 						this.network.inputs.add(temp);
 				}
 			
@@ -537,7 +537,7 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 	@Override
 	public int receiveEnergy(ForgeDirection from, int maxReceive, boolean simulate)
 	{
-		if((from == this.extract) && (this.network != null))
+		if((from != this.extract) && (this.network != null)) //should actively receive energy from where it is not actively pulling
 		{
 			int amount = Math.min(maxReceive, EnergyNetwork.maxTransferPerTile / EnergyNetwork.ticksTillUpdate);
 
