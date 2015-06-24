@@ -26,9 +26,9 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 public class TileCapacitor extends BaseTileWithInventory implements IEnergyHandler
 {
-	public short transferRate = 100;
+	public static short transferRate = 100;
 
-	public EnergyStorage buffer = new EnergyStorage(64000000, this.transferRate);
+	public EnergyStorage buffer = new EnergyStorage(64000000, transferRate);
 
 	public TileCapacitor()
 	{

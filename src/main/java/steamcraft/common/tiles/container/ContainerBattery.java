@@ -42,7 +42,7 @@ public class ContainerBattery extends BaseContainer
 	public ContainerBattery(InventoryPlayer player, TileBattery tile)
 	{
 		this.tileent = tile;
-		BaseContainer.setTile(this.tileent);
+		this.setTile(this.tileent);
 
 		this.addSlotToContainer(new SlotBattery(tile, 0, 98, 22));
 		this.addSlotToContainer(new SlotBattery(tile, 1, 116, 22));

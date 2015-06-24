@@ -38,7 +38,7 @@ public class ContainerBloomery extends BaseContainer
 	public ContainerBloomery(InventoryPlayer playerInv, TileBloomery tileEntity)
 	{
 		this.tileent = tileEntity;
-		BaseContainer.setTile(this.tileent);
+		this.setTile(this.tileent);
 
 		// Fuel
 		this.addSlotToContainer(new Slot(tileEntity, 0, 45, 53));

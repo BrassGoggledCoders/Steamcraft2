@@ -46,7 +46,7 @@ public class ContainerSteamBoiler extends BaseContainer
 	public ContainerSteamBoiler(InventoryPlayer player, TileSteamBoiler tile)
 	{
 		this.tileent = tile;
-		BaseContainer.setTile(this.tileent);
+		this.setTile(this.tileent);
 
 		this.addSlotToContainer(new Slot(tile, 0, 42, 52));
 		this.addSlotToContainer(new Slot(tile, 1, 132, 57)

@@ -42,7 +42,7 @@ public class ContainerCharger extends BaseContainer
 	public ContainerCharger(InventoryPlayer player, TileCharger tile)
 	{
 		this.tileent = tile;
-		BaseContainer.setTile(this.tileent);
+		this.setTile(this.tileent);
 
 		this.addSlotToContainer(new SlotCharger(tile, 0, 98, 22));
 

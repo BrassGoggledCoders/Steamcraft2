@@ -28,7 +28,7 @@ import steamcraft.common.tiles.energy.TileCapacitor;
  */
 public class GuiCapacitor extends BaseContainerGui
 {
-	private static ResourceLocation guitexture = new ResourceLocation(ModInfo.PREFIX + "textures/gui/battery.png");
+	private static ResourceLocation guitexture = new ResourceLocation(ModInfo.PREFIX + "textures/gui/capacitor.png");
 
 	private TileCapacitor battery;
 
@@ -62,7 +62,7 @@ public class GuiCapacitor extends BaseContainerGui
 						+ this.getEnergyUnits(this.battery.getMaxEnergyStored(ForgeDirection.UNKNOWN)) + " RF", 30, 20, -1);
 
 		this.drawString(this.fontRendererObj, "Transfer: ", 26, 30, -1);
-		this.drawString(this.fontRendererObj, this.battery.transferRate + " RF", 30, 40, -1);
+		this.drawString(this.fontRendererObj, TileCapacitor.transferRate + " RF", 30, 40, -1);
 	}
 
 	private String getEnergyUnits(int number)

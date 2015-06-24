@@ -17,13 +17,10 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
-
+import steamcraft.common.tiles.energy.TileCapacitor;
+import boilerplate.common.baseclasses.BaseContainer;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-
-import steamcraft.common.tiles.energy.TileCapacitor;
-import boilerplate.api.IEnergyItem;
-import boilerplate.common.baseclasses.BaseContainer;
 
 /**
  * @author decebaldecebal
@@ -31,9 +28,6 @@ import boilerplate.common.baseclasses.BaseContainer;
  */
 public class ContainerCapacitor extends BaseContainer
 {
-	private int lastTotalEnergy = 0;
-	private int lastMaxEnergy = 0;
-	private short lastTransferRate = 0;
 	private int lastBufferEnergy;
 
 	private TileCapacitor tileent;
@@ -41,7 +35,7 @@ public class ContainerCapacitor extends BaseContainer
 	public ContainerCapacitor(InventoryPlayer player, TileCapacitor tile)
 	{
 		this.tileent = tile;
-		BaseContainer.setTile(this.tileent);
+		this.setTile(this.tileent);
 
 		int var3;
 
@@ -57,8 +51,7 @@ public class ContainerCapacitor extends BaseContainer
 	public void addCraftingToCrafters(ICrafting crafting)
 	{
 		super.addCraftingToCrafters(crafting);
-		crafting.sendProgressBarUpdate(this, 2, this.tileent.transferRate);
-		crafting.sendProgressBarUpdate(this, 3, this.tileent.buffer.getEnergyStored());
+		crafting.sendProgressBarUpdate(this, 1, this.tileent.buffer.getEnergyStored());
 	}
 
 	@Override
@@ -70,14 +63,10 @@ public class ContainerCapacitor extends BaseContainer
 		{
 			ICrafting var2 = (ICrafting) obj;
 
-			if(this.lastTransferRate != this.tileent.transferRate)
-				var2.sendProgressBarUpdate(this, 0, this.tileent.transferRate);
-
 			if(this.lastBufferEnergy != this.tileent.buffer.getEnergyStored())
 				var2.sendProgressBarUpdate(this, 1, this.tileent.buffer.getEnergyStored());
 		}
 
-		this.lastTransferRate = this.tileent.transferRate;
 		this.lastBufferEnergy = this.tileent.buffer.getEnergyStored();
 	}
 
@@ -85,9 +74,7 @@ public class ContainerCapacitor extends BaseContainer
 	@SideOnly(Side.CLIENT)
 	public void updateProgressBar(int par1, int par2)
 	{
-		if(par1 == 0)
-			this.tileent.transferRate = (short) par2;
-		else if(par1 == 1)
+		if(par1 == 1)
 			this.tileent.buffer.setEnergyStored(par2);
 	}
 
@@ -108,20 +95,9 @@ public class ContainerCapacitor extends BaseContainer
 			ItemStack var5 = var4.getStack();
 			var3 = var5.copy();
 
-			if(par2 > 5)
-			{
-				if(var5.getItem() instanceof IEnergyItem)
-				{
-					if(!this.mergeItemStack(var5, 0, 6, false))
-						if(!this.mergeItemStack(var5, 33, 42, false))
-							return null;
-				}
-				else if((par2 >= 6) && (par2 < 33) && !this.mergeItemStack(var5, 33, 42, false))
-					return null;
-				else if((par2 >= 33) && (par2 < 42) && !this.mergeItemStack(var5, 6, 33, false))
-					return null;
-			}
-			else if(!this.mergeItemStack(var5, 6, 42, false))
+			if((par2 >= 0) && (par2 < 27) && !this.mergeItemStack(var5, 27, 36, false))
+				return null;
+			else if((par2 >= 27) && (par2 < 36) && !this.mergeItemStack(var5, 0, 27, false))
 				return null;
 
 			if(var5.stackSize == 0)

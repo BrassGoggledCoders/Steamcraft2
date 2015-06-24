@@ -46,7 +46,7 @@ public class ContainerRefinery extends BaseContainer
 	public ContainerRefinery(InventoryPlayer player, TileRefinery tile)
 	{
 		this.tileent = tile;
-		BaseContainer.setTile(this.tileent);
+		this.setTile(this.tileent);
 
 		this.addSlotToContainer(new Slot(tile, 0, 42, 52));
 		this.addSlotToContainer(new Slot(tile, 2, 132, 57)

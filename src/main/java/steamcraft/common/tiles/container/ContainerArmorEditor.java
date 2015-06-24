@@ -31,7 +31,7 @@ public class ContainerArmorEditor extends BaseContainer
 	public ContainerArmorEditor(InventoryPlayer player, TileArmorEditor tile)
 	{
 		this.tileent = tile;
-		BaseContainer.setTile(this.tileent);
+		this.setTile(this.tileent);
 		int var3;
 
 		this.addSlotToContainer(new SlotBrassArmor(this.tileent, 0, 62, 12));
