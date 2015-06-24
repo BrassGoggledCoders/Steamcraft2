@@ -14,6 +14,8 @@ package steamcraft.common.tiles;
 
 import java.util.ArrayList;
 
+import org.apache.commons.lang3.ArrayUtils;
+
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.network.NetworkManager;
@@ -221,31 +223,31 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 
 	public void changeExtracting()
 	{
-		if(this.extract != null)
+		if (!worldObj.isRemote)
 		{
-			if(!this.worldObj.isRemote)
+			if(this.extract != null)
+			{
 				this.network.inputs.remove(new Coords(this.xCoord + this.extract.offsetX, this.yCoord + this.extract.offsetY, this.zCoord
 						+ this.extract.offsetZ, this.extract.getOpposite()));
-
-			this.extract = null;
-		}
-		else
-			for(ForgeDirection dir : this.connections)
-				if((dir != null) && this.isFluidHandler(dir))
-				{
-					this.extract = dir;
-
-					if(!this.worldObj.isRemote)
+	
+				this.extract = null;
+			}
+			else
+				for(ForgeDirection dir : this.connections)
+					if((dir != null) && this.isFluidHandler(dir))
 					{
+						this.extract = dir;
+	
 						Coords temp = new Coords(this.xCoord + this.extract.offsetX, this.yCoord + this.extract.offsetY, this.zCoord
 								+ this.extract.offsetZ, this.extract.getOpposite());
 
 						this.network.outputs.remove(temp);
 						this.network.inputs.add(temp);
+	
+						break;
 					}
-
-					break;
-				}
+			this.updateClientConnections();
+		}
 	}
 
 	private void removeConnections(int i)
@@ -367,8 +369,8 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 	{
 		if(this.network != null)
 		{
-			InitPackets.network.sendToAllAround(new CopperPipePacket(this.xCoord, this.yCoord, this.zCoord,
-					this.connections), new TargetPoint(this.worldObj.provider.dimensionId, this.xCoord, this.yCoord, this.zCoord, 100));
+			InitPackets.network.sendToAllAround(new CopperPipePacket(this.xCoord, this.yCoord, this.zCoord, ArrayUtils.add(this.connections, this.extract)),
+					new TargetPoint(this.worldObj.provider.dimensionId, this.xCoord, this.yCoord, this.zCoord, 100));
 		}
 	}
 

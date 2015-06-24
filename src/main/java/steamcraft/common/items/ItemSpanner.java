@@ -43,19 +43,22 @@ public class ItemSpanner extends UniversalWrench
 	@Override
 	public boolean onItemUse(ItemStack is, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ)
 	{
-		Block block = world.getBlock(x, y, z);
-
-		if(block == InitBlocks.blockCopperPipe)
+		if (!world.isRemote)
 		{
-			TileCopperPipe pipe = (TileCopperPipe) world.getTileEntity(x, y, z);
-
-			pipe.changeExtracting();
-		}
-		else if(block == InitBlocks.blockCopperWire)
-		{
-			TileCopperWire wire = (TileCopperWire) world.getTileEntity(x, y, z);
-
-			wire.changeExtracting();
+			Block block = world.getBlock(x, y, z);
+	
+			if(block == InitBlocks.blockCopperPipe)
+			{
+				TileCopperPipe pipe = (TileCopperPipe) world.getTileEntity(x, y, z);
+	
+				pipe.changeExtracting();
+			}
+			else if(block == InitBlocks.blockCopperWire)
+			{
+				TileCopperWire wire = (TileCopperWire) world.getTileEntity(x, y, z);
+	
+				wire.changeExtracting();
+			}
 		}
 		player.swingItem();
 		return true;
