@@ -35,6 +35,7 @@ import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.GameRegistry.Type;
+import cpw.mods.fml.relauncher.Side;
 
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.MinecraftForge;
@@ -153,36 +154,37 @@ public class Steamcraft
 
 		LoggerSteamcraft.info("Finished Postinit");
 		LoggerSteamcraft
-		.info("Please note: Steamcraft2 is now the officially unofficial mod of the Steampunk Forum at BrassGoggles, otherwise known as BG, which is only unofficial because making it official would cause a legal headache but is pretty much official, I'm just not allowed to call it that, so its not official, but it kinda is, ok? Got that? Signed, Major Vincent Smith (Otherwise known as warlordjones) - BrassGoggles moderation team member");
+				.info("Please note: Steamcraft2 is now the officially unofficial mod of the Steampunk Forum at BrassGoggles, otherwise known as BG, which is only unofficial because making it official would cause a legal headache but is pretty much official, I'm just not allowed to call it that, so its not official, but it kinda is, ok? Got that? Signed, Major Vincent Smith (Otherwise known as warlordjones) - BrassGoggles moderation team member");
 		if(Loader.isModLoaded("steamnsteel"))
 			LoggerSteamcraft.info("Evening to the distingushed ladies and gentlemen of the SteamNSteel club!");
 		// TODO add for IE
 
-		// Autopopulate item/block lists from creative tab
-		Iterator iterator = Item.itemRegistry.iterator();
-
-		while(iterator.hasNext())
+		if(event.getSide() == Side.CLIENT)
 		{
-			Item item = (Item) iterator.next();
+			// Autopopulate item/block lists from creative tab
+			Iterator iterator = Item.itemRegistry.iterator();
 
-			if(item == null)
+			while(iterator.hasNext())
 			{
-				continue;
-			}
+				Item item = (Item) iterator.next();
 
-			for(CreativeTabs tab : item.getCreativeTabs())
-			{
-				if(tab == tabSC2)
+				if(item == null)
 				{
-					if(item instanceof ItemBlock)
-						item.getSubItems(item, tabSC2, GuiHandbook.modBlocks);
-					else
-						item.getSubItems(item, tabSC2, GuiHandbook.modItems);
+					continue;
+				}
+
+				for(CreativeTabs tab : item.getCreativeTabs())
+				{
+					if(tab == tabSC2)
+					{
+						if(item instanceof ItemBlock)
+							item.getSubItems(item, tabSC2, GuiHandbook.modBlocks);
+						else
+							item.getSubItems(item, tabSC2, GuiHandbook.modItems);
+					}
 				}
 			}
 		}
-		// FMLLog.severe("Blocks:" + GuiHandbook.modBlocks.toString(), "");
-		// FMLLog.severe("Items:" + GuiHandbook.modItems.toString(), "");
 	}
 
 	@EventHandler
