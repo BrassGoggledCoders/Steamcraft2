@@ -164,4 +164,16 @@ public class ItemElectricTool extends ItemModTool implements IEnergyItem
 	{
 		return true;
 	}
+
+	@Override
+	public int getItemEnchantability()
+	{
+		return 0;
+	}
+
+	@Override
+	public boolean isBookEnchantable(ItemStack itemstack1, ItemStack itemstack2)
+	{
+		return false;
+	}
 }
