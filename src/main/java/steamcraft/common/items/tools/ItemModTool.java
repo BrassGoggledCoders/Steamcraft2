@@ -58,7 +58,7 @@ public class ItemModTool extends BaseItem
 		this.toolMaterial = toolMat;
 		this.setMaxStackSize(1);
 		this.efficiencyOnProperMaterial = toolMat.getEfficiencyOnProperMaterial();
-		this.damageVsEntity = damage;
+		this.damageVsEntity = damage + toolMat.getDamageVsEntity();
 		this.setFull3D();
 		this.setMaxDamage(toolMat.getMaxUses());
 	}
@@ -87,7 +87,7 @@ public class ItemModTool extends BaseItem
 		if(this.isSteampowered())
 		{
 			NBTTagCompound tag = new NBTTagCompound();
-			tag.setBoolean("hasCanister", true);
+			tag.setBoolean("hasCanister", false);
 
 			stack.setTagCompound(tag);
 		}
@@ -104,7 +104,7 @@ public class ItemModTool extends BaseItem
 	public float getDigSpeed(ItemStack stack, Block block, int metadata)
 	{
 		if(this.isSteampowered() && !stack.getTagCompound().getBoolean("hasCanister"))
-			return 0.1F;
+			return 1.0F;
 
 		if(ForgeHooks.isToolEffective(stack, block, metadata) || this.canHarvestBlock(block, stack))
 		{
@@ -117,7 +117,7 @@ public class ItemModTool extends BaseItem
 	@Override
 	public boolean canHarvestBlock(Block block, ItemStack stack)
 	{
-		return ForgeHooks.canToolHarvestBlock(block, 0/* TODO */, stack);
+		return ForgeHooks.canToolHarvestBlock(block, 0, stack);
 	}
 
 	@Override

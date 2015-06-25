@@ -24,7 +24,7 @@ public class ItemModPickaxe extends ItemModTool
 {
 	public ItemModPickaxe(ToolMaterial mat)
 	{
-		super(mat.getDamageVsEntity() + 1.0F, mat);
+		super(1.0F, mat);
 		this.setHarvestLevel("pickaxe", mat.getHarvestLevel());
 	}
 

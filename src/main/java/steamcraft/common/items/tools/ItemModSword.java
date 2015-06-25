@@ -28,7 +28,7 @@ public class ItemModSword extends ItemModTool
 {
 	public ItemModSword(ToolMaterial mat)
 	{
-		super(mat.getDamageVsEntity() + 4.0F, mat);
+		super(4.0F, mat);
 		this.setHarvestLevel("sword", mat.getHarvestLevel());
 	}
 

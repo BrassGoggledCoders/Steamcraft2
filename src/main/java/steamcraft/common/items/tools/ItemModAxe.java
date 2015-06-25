@@ -21,7 +21,7 @@ public class ItemModAxe extends ItemModTool
 
 	public ItemModAxe(ToolMaterial mat)
 	{
-		super(mat.getDamageVsEntity() + 2.0F, mat);
+		super(2.0F, mat);
 		this.setHarvestLevel("axe", mat.getHarvestLevel());
 	}
 }

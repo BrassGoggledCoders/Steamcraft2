@@ -25,7 +25,7 @@ public class ItemModShovel extends ItemModTool
 
 	public ItemModShovel(ToolMaterial mat)
 	{
-		super(mat.getDamageVsEntity() + 1.0F, mat);
+		super(1.0F, mat);
 		this.setHarvestLevel("shovel", mat.getHarvestLevel());
 	}
 

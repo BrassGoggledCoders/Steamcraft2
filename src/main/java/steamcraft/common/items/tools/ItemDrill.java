@@ -28,7 +28,7 @@ public class ItemDrill extends ItemModTool
 {
 	public ItemDrill(ToolMaterial mat)
 	{
-		super(1.0F, mat);
+		super(0, mat);
 		this.setCreativeTab(Steamcraft.tabSC2);
 		this.setHarvestLevel("shovel", mat.getHarvestLevel());
 		this.setHarvestLevel("pickaxe", mat.getHarvestLevel());
