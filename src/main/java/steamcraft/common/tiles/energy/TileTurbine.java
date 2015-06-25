@@ -91,9 +91,7 @@ public class TileTurbine extends TileEntity implements IFluidHandler, IEnergyPro
 					this.zCoord + dir.offsetZ);
 
 			if(tileEntity instanceof IEnergyReceiver)
-			{
-				return (byte) ((IEnergyReceiver) tileEntity).receiveEnergy(dir.getOpposite(), usedEnergy, false);
-			}
+				return ((IEnergyReceiver) tileEntity).receiveEnergy(dir.getOpposite(), usedEnergy, false);
 		}
 		return 0;
 	}

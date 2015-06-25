@@ -43,7 +43,6 @@ public class TileTeslaCoil extends TileEntity implements IEnergyReceiver
 	private static int RFPerZap = 1000;
 	private final EnergyStorage buffer = new EnergyStorage(5000, RFPerTick);
 
-	@SuppressWarnings("rawtypes")
 	@Override
 	public void updateEntity()
 	{

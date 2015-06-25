@@ -21,15 +21,12 @@ import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
-
 import cofh.api.energy.EnergyStorage;
 import cofh.api.energy.IEnergyProvider;
 import cofh.api.energy.IEnergyReceiver;
-
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.common.util.ForgeDirection;
-
 import steamcraft.common.config.ConfigBalance;
 import steamcraft.common.config.ConfigGeneral;
 import steamcraft.common.entities.living.EntityFleshGolem;
@@ -41,9 +38,12 @@ import steamcraft.common.init.InitBlocks;
  */
 public class TileLightningRod extends TileEntity implements IEnergyProvider
 {
+	private static int RFOutPerTick = 10000;
+	
 	private static final ArrayList<EntityLightningBolt> unnaturalLightningBolts = new ArrayList<EntityLightningBolt>();
 	private static Class weather2Class;
-	private final EnergyStorage buffer = new EnergyStorage(30000, 10000);
+	
+	private final EnergyStorage buffer = new EnergyStorage(30000, RFOutPerTick);
 
 	@Override
 	public void updateEntity()
@@ -123,34 +123,36 @@ public class TileLightningRod extends TileEntity implements IEnergyProvider
 				this.worldObj.setBlockToAir(this.xCoord, this.yCoord - 2, this.zCoord);
 				this.worldObj.setBlockToAir(this.xCoord, this.yCoord - 3, this.zCoord);
 			}
-			if(this.buffer.getEnergyStored() >= 40)
+			if(this.buffer.getEnergyStored() > 0)
 			{
-				byte usedEnergy = 0;
-				byte outputEnergy = 40;
+				int usedEnergy = Math.min(buffer.getEnergyStored(), RFOutPerTick);
+				int outputEnergy = usedEnergy;
 
-				for(ForgeDirection direction : EnumSet.allOf(ForgeDirection.class))
-					if(outputEnergy > 0)
-					{
-						TileEntity tileEntity = this.worldObj.getTileEntity(this.xCoord - direction.offsetX, this.yCoord - direction.offsetY,
-								this.zCoord - direction.offsetZ);
+				for(ForgeDirection dir : EnumSet.allOf(ForgeDirection.class))
+					usedEnergy -= this.outputEnergy(dir, usedEnergy);
 
-						if(tileEntity instanceof IEnergyReceiver)
-						{
-							usedEnergy += ((IEnergyReceiver) tileEntity).receiveEnergy(direction.getOpposite(), outputEnergy, false);
-							outputEnergy -= usedEnergy;
-						}
-					}
-
-				this.buffer.modifyEnergyStored(-usedEnergy);
+				this.buffer.modifyEnergyStored(usedEnergy - outputEnergy);
 			}
 		}
+	}
+	
+	private int outputEnergy(ForgeDirection dir, int usedEnergy)
+	{
+		if(usedEnergy > 0)
+		{
+			TileEntity tileEntity = this.worldObj.getTileEntity(this.xCoord + dir.offsetX, this.yCoord + dir.offsetY,
+					this.zCoord + dir.offsetZ);
+
+			if(tileEntity instanceof IEnergyReceiver)
+				return ((IEnergyReceiver) tileEntity).receiveEnergy(dir.getOpposite(), usedEnergy, false);
+		}
+		return 0;
 	}
 
 	@Override
 	public boolean canConnectEnergy(ForgeDirection from)
 	{
 		return true;
-		// return from == ForgeDirection.UP;
 	}
 
 	@Override
