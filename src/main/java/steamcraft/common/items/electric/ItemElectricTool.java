@@ -36,6 +36,7 @@ public class ItemElectricTool extends ItemModTool implements IEnergyItem
 		this.maxEnergy = maxEnergy * 1000;
 		this.maxReceive = (short) maxReceive;
 		this.setMaxStackSize(1);
+		this.setNoRepair();
 	}
 
 	@SuppressWarnings("all")
