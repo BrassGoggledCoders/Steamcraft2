@@ -68,6 +68,8 @@ public class CopperPipePacket implements IMessage
 		}
 		
 		this.extract = ForgeDirection.getOrientation(buf.readByte());
+		if(this.extract == ForgeDirection.UNKNOWN)
+			this.extract = null;
 	}
 
 	@Override

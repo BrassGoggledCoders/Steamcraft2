@@ -67,6 +67,8 @@ public class CopperWirePacket implements IMessage
 				this.connections[i] = null;
 		}
 		this.extract = ForgeDirection.getOrientation(buf.readByte());
+		if(this.extract == ForgeDirection.UNKNOWN)
+			this.extract = null;
 	}
 
 	@Override

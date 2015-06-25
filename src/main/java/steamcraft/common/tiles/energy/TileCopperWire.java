@@ -386,8 +386,6 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 							System.out.println("This network smaller.Updating connections again.");
 							this.setMaster(wire.getMaster());
 							
-							//this.isMaster = false;
-							//this.network = wire.network;
 							this.network.buffer.setEnergyStored(energy);
 							this.network.changeSize(1);
 
