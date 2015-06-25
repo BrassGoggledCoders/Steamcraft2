@@ -25,10 +25,8 @@ import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
 import net.minecraft.util.StringUtils;
 import net.minecraft.world.World;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-
 import steamcraft.client.lib.GuiIDs;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.ModInfo;
@@ -82,9 +80,7 @@ public class ItemLoreBook extends BaseItem
 		return super.getItemStackDisplayName(p_77653_1_);
 	}
 
-	/**
-	 * allows items to add custom lines of information to the mouseover description
-	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean bool)
@@ -105,9 +101,6 @@ public class ItemLoreBook extends BaseItem
 		}
 	}
 
-	/**
-	 * Called whenever this item is equipped and the right mouse button is pressed. Args: itemStack, world, entityPlayer
-	 */
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
 	{
@@ -117,7 +110,6 @@ public class ItemLoreBook extends BaseItem
 		}
 		if(stack.getTagCompound() == null)
 		{
-			NBTTagCompound nbttagcompound = stack.getTagCompound();
 			NBTTagList bookPages = new NBTTagList();
 			for(String page2 : this.pages)
 			{
@@ -131,9 +123,6 @@ public class ItemLoreBook extends BaseItem
 		return stack;
 	}
 
-	/**
-	 * If this function returns true (or the item is damageable), the ItemStack's NBT tag will be sent to the client.
-	 */
 	@Override
 	public boolean getShareTag()
 	{

@@ -16,6 +16,7 @@ public class BlockTintedRock extends BaseBlock
 		this.setHarvestLevel("pickaxe", 0);
 	}
 
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune)
 	{

@@ -20,34 +20,30 @@ public class BlockCastIronGateRenderer implements ISimpleBlockRenderingHandler
 	{
 		Tessellator tessellator = Tessellator.instance;
 
-		int j;
-		float f1;
-		float f2;
-		float f3;
+		float i;
 
-		j = block.getRenderType();
 		renderer.setRenderBoundsFromBlock(block);
 		int k;
 
 		for(k = 0; k < 3; ++k)
 		{
-			f2 = 0.0625F;
+			i = 0.0625F;
 
 			if(k == 0)
 			{
-				renderer.setRenderBounds(0.5F - f2, 0.30000001192092896D, 0.0D, 0.5F + f2, 1.0D, f2 * 2.0F);
+				renderer.setRenderBounds(0.5F - i, 0.30000001192092896D, 0.0D, 0.5F + i, 1.0D, i * 2.0F);
 			}
 
 			if(k == 1)
 			{
-				renderer.setRenderBounds(0.5F - f2, 0.30000001192092896D, 1.0F - (f2 * 2.0F), 0.5F + f2, 1.0D, 1.0D);
+				renderer.setRenderBounds(0.5F - i, 0.30000001192092896D, 1.0F - (i * 2.0F), 0.5F + i, 1.0D, 1.0D);
 			}
 
-			f2 = 0.0625F;
+			i = 0.0625F;
 
 			if(k == 2)
 			{
-				renderer.setRenderBounds(0.5F - f2, 0.5D, 0.0D, 0.5F + f2, 1.0F - f2, 1.0D);
+				renderer.setRenderBounds(0.5F - i, 0.5D, 0.0D, 0.5F + i, 1.0F - i, 1.0D);
 			}
 
 			GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
@@ -149,19 +145,12 @@ public class BlockCastIronGateRenderer implements ISimpleBlockRenderingHandler
 				renderer.uvRotateTop = 1;
 			}
 
-			float f10;
-			float f11;
-			float f12;
-
 			if(i1 == 3)
 			{
 				f6 = 0.0F;
 				f7 = 0.125F;
 				f8 = 0.875F;
 				f9 = 1.0F;
-				f10 = 0.5625F;
-				f11 = 0.8125F;
-				f12 = 0.9375F;
 				renderer.setRenderBounds(0.8125D, f, 0.0D, 0.9375D, f3, 0.125D);
 				renderer.renderStandardBlock(block, x, y, z);
 				renderer.setRenderBounds(0.8125D, f, 0.875D, 0.9375D, f3, 1.0D);
@@ -181,9 +170,6 @@ public class BlockCastIronGateRenderer implements ISimpleBlockRenderingHandler
 				f7 = 0.125F;
 				f8 = 0.875F;
 				f9 = 1.0F;
-				f10 = 0.0625F;
-				f11 = 0.1875F;
-				f12 = 0.4375F;
 				renderer.setRenderBounds(0.0625D, f, 0.0D, 0.1875D, f3, 0.125D);
 				renderer.renderStandardBlock(block, x, y, z);
 				renderer.setRenderBounds(0.0625D, f, 0.875D, 0.1875D, f3, 1.0D);
@@ -203,9 +189,6 @@ public class BlockCastIronGateRenderer implements ISimpleBlockRenderingHandler
 				f7 = 0.125F;
 				f8 = 0.875F;
 				f9 = 1.0F;
-				f10 = 0.5625F;
-				f11 = 0.8125F;
-				f12 = 0.9375F;
 				renderer.setRenderBounds(0.0D, f, 0.8125D, 0.125D, f3, 0.9375D);
 				renderer.renderStandardBlock(block, x, y, z);
 				renderer.setRenderBounds(0.875D, f, 0.8125D, 1.0D, f3, 0.9375D);
@@ -225,9 +208,6 @@ public class BlockCastIronGateRenderer implements ISimpleBlockRenderingHandler
 				f7 = 0.125F;
 				f8 = 0.875F;
 				f9 = 1.0F;
-				f10 = 0.0625F;
-				f11 = 0.1875F;
-				f12 = 0.4375F;
 				renderer.setRenderBounds(0.0D, f, 0.0625D, 0.125D, f3, 0.1875D);
 				renderer.renderStandardBlock(block, x, y, z);
 				renderer.setRenderBounds(0.875D, f, 0.0625D, 1.0D, f3, 0.1875D);

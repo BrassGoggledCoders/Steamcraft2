@@ -27,6 +27,7 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
 import org.apache.commons.lang3.tuple.ImmutablePair;
+
 import steamcraft.common.init.InitBlocks;
 
 public class EntityGrub extends EntityMob
@@ -49,18 +50,12 @@ public class EntityGrub extends EntityMob
 		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(0.5D);
 	}
 
-	/**
-	 * returns if this entity triggers Block.onEntityWalking on the blocks they walk on. used for spiders and wolves to prevent them from trampling crops
-	 */
 	@Override
 	protected boolean canTriggerWalking()
 	{
 		return false;
 	}
 
-	/**
-	 * Finds the closest player within 16 blocks to attack, or null if this Entity isn't interested in attacking (Animals, Spiders at day, peaceful PigZombies).
-	 */
 	@Override
 	protected Entity findPlayerToAttack()
 	{
@@ -68,36 +63,24 @@ public class EntityGrub extends EntityMob
 		return this.worldObj.getClosestVulnerablePlayerToEntity(this, d0);
 	}
 
-	/**
-	 * Returns the sound this mob makes while it's alive.
-	 */
 	@Override
 	protected String getLivingSound()
 	{
 		return "mob.silverfish.say";
 	}
 
-	/**
-	 * Returns the sound this mob makes when it is hurt.
-	 */
 	@Override
 	protected String getHurtSound()
 	{
 		return "mob.silverfish.hit";
 	}
 
-	/**
-	 * Returns the sound this mob makes on death.
-	 */
 	@Override
 	protected String getDeathSound()
 	{
 		return "mob.silverfish.kill";
 	}
 
-	/**
-	 * Called when the entity is attacked.
-	 */
 	@Override
 	public boolean attackEntityFrom(DamageSource p_70097_1_, float p_70097_2_)
 	{
@@ -116,9 +99,6 @@ public class EntityGrub extends EntityMob
 		}
 	}
 
-	/**
-	 * Basic mob attack. Default to touch of death in EntityCreature. Overridden by each mob to define their attack.
-	 */
 	@Override
 	protected void attackEntity(Entity p_70785_1_, float p_70785_2_)
 	{
@@ -142,9 +122,6 @@ public class EntityGrub extends EntityMob
 		return Item.getItemById(0);
 	}
 
-	/**
-	 * Called to update the entity's position/logic.
-	 */
 	@Override
 	public void onUpdate()
 	{
@@ -152,6 +129,7 @@ public class EntityGrub extends EntityMob
 		super.onUpdate();
 	}
 
+	@SuppressWarnings("rawtypes")
 	@Override
 	protected void updateEntityActionState()
 	{

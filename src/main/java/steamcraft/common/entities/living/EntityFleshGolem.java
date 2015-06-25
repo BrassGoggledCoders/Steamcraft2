@@ -34,7 +34,6 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -63,9 +62,6 @@ public class EntityFleshGolem extends EntityGolem
 		super.entityInit();
 	}
 
-	/**
-	 * Returns true if the newer Entity AI code should be run
-	 */
 	@Override
 	public boolean isAIEnabled()
 	{
@@ -80,9 +76,6 @@ public class EntityFleshGolem extends EntityGolem
 		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.25D);
 	}
 
-	/**
-	 * Decrements the entity's air supply when underwater
-	 */
 	@Override
 	protected int decreaseAirSupply(int p_70682_1_)
 	{
@@ -100,10 +93,6 @@ public class EntityFleshGolem extends EntityGolem
 		super.collideWithEntity(p_82167_1_);
 	}
 
-	/**
-	 * Called frequently so the entity can update its state every tick as required. For example, zombies and skeletons use this to react to sunlight and start
-	 * to burn.
-	 */
 	@Override
 	public void onLivingUpdate()
 	{
@@ -129,9 +118,6 @@ public class EntityFleshGolem extends EntityGolem
 		}
 	}
 
-	/**
-	 * (abstract) Protected helper method to write subclass entity data to NBT.
-	 */
 	@Override
 	public void writeEntityToNBT(NBTTagCompound p_70014_1_)
 	{
@@ -139,9 +125,6 @@ public class EntityFleshGolem extends EntityGolem
 
 	}
 
-	/**
-	 * (abstract) Protected helper method to read subclass entity data from NBT.
-	 */
 	@Override
 	public void readEntityFromNBT(NBTTagCompound p_70037_1_)
 	{
@@ -186,18 +169,12 @@ public class EntityFleshGolem extends EntityGolem
 		return this.attackTimer;
 	}
 
-	/**
-	 * Returns the sound this mob makes when it is hurt.
-	 */
 	@Override
 	protected String getHurtSound()
 	{
 		return "mob.zombie.hit";
 	}
 
-	/**
-	 * Returns the sound this mob makes on death.
-	 */
 	@Override
 	protected String getDeathSound()
 	{
@@ -210,10 +187,6 @@ public class EntityFleshGolem extends EntityGolem
 		this.playSound("mob.zombie.walk", 1.0F, 1.0F);
 	}
 
-	/**
-	 * Drop 0-2 items of this living's type. @param par1 - Whether this entity has recently been hit by a player. @param par2 - Level of Looting used to kill
-	 * this mob.
-	 */
 	@Override
 	protected void dropFewItems(boolean p_70628_1_, int p_70628_2_)
 	{
@@ -233,9 +206,7 @@ public class EntityFleshGolem extends EntityGolem
 		}
 	}
 
-	/**
-	 * Returns true if this entity can attack entities of the specified class.
-	 */
+	@SuppressWarnings("rawtypes")
 	@Override
 	public boolean canAttackClass(Class p_70686_1_)
 	{

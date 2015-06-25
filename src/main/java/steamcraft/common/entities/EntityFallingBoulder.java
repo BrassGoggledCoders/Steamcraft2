@@ -13,7 +13,6 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-
 import steamcraft.common.blocks.BlockBoulder;
 import steamcraft.common.init.InitBlocks;
 import steamcraft.common.lib.DamageSourceHandler;
@@ -53,6 +52,7 @@ public class EntityFallingBoulder extends EntityFallingBlock
 	/**
 	 * Called when the mob is falling. Calculates and applies fall damage.
 	 */
+	@SuppressWarnings("rawtypes")
 	@Override
 	protected void fall(float p_70069_1_)
 	{

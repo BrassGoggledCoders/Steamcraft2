@@ -21,8 +21,6 @@ public class TileTrunkRenderer extends TileEntitySpecialRenderer
 	private static final ResourceLocation singleChest = new ResourceLocation(ModInfo.PREFIX + "textures/models/trunk.png");
 	private ModelChest field_147510_h = new ModelChest();
 	private ModelChest field_147511_i = new ModelLargeChest();
-	private boolean field_147509_j = false;
-	private static final String __OBFID = "CL_00000965";
 
 	public TileTrunkRenderer()
 	{

@@ -29,12 +29,4 @@ public class ItemDrill extends ItemModTool
 		this.setHarvestLevel("shovel", mat.getHarvestLevel());
 		this.setHarvestLevel("pickaxe", mat.getHarvestLevel());
 	}
-
-	/*
-	@Override
-	public boolean canHarvestBlock(Block block, ItemStack stack)
-	{
-		return (block.getMaterial() == Material.snow) || (block.getMaterial() == Material.rock) || super.canHarvestBlock(block, stack);
-	}
-	*/
 }

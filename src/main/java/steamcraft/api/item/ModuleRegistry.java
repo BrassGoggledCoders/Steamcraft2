@@ -28,6 +28,7 @@ public class ModuleRegistry
 	private static HashMap<String, IModule> modules = new HashMap<String, IModule>();
 
 	/** The module incompatibilities. */
+	@SuppressWarnings("rawtypes")
 	private static HashMap<String, ArrayList> moduleIncompatibilities = new HashMap<String, ArrayList>();
 
 	/**
@@ -61,6 +62,7 @@ public class ModuleRegistry
 	 * @param incompatibilities
 	 *            the incompatibilities
 	 */
+	@SuppressWarnings("rawtypes")
 	@Deprecated
 	public static void setModuleIncompatibilities(IModule module, String... incompatibilities)
 	{
@@ -75,6 +77,7 @@ public class ModuleRegistry
 	 *            the id
 	 * @return the module incompatibilities
 	 */
+	@SuppressWarnings("rawtypes")
 	@Deprecated
 	public static ArrayList getModuleIncompatibilities(String id)
 	{

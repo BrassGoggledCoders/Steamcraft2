@@ -19,7 +19,6 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.world.gen.structure.MapGenStructureIO;
-
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
@@ -36,10 +35,8 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.GameRegistry.Type;
 import cpw.mods.fml.relauncher.Side;
-
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.MinecraftForge;
-
 import steamcraft.client.GuiHandler;
 import steamcraft.client.gui.GuiHandbook;
 import steamcraft.common.compat.CompatabilityLayer;
@@ -141,6 +138,7 @@ public class Steamcraft
 		LoggerSteamcraft.info("Finished Init");
 	}
 
+	@SuppressWarnings("rawtypes")
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event)
 	{

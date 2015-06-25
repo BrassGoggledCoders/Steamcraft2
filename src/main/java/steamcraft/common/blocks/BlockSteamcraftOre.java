@@ -23,21 +23,20 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-
 import steamcraft.api.block.IHammerable;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.init.InitBlocks;
 import steamcraft.common.init.InitItems;
 import steamcraft.common.lib.ModInfo;
 import boilerplate.common.baseclasses.BaseMetadataBlock;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author Surseance
  *
  */
+@SuppressWarnings("deprecation")
 public class BlockSteamcraftOre extends BaseMetadataBlock implements IHammerable
 {
 	private final IIcon[] icon = new IIcon[7];

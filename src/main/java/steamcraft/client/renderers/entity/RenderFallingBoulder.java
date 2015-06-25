@@ -2,7 +2,6 @@ package steamcraft.client.renderers.entity;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;
-import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.entity.Entity;
@@ -10,11 +9,11 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
+import org.lwjgl.opengl.GL11;
+
+import steamcraft.common.entities.EntityFallingBoulder;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-
-import org.lwjgl.opengl.GL11;
-import steamcraft.common.entities.EntityFallingBoulder;
 
 @SideOnly(Side.CLIENT)
 public class RenderFallingBoulder extends Render
@@ -45,7 +44,7 @@ public class RenderFallingBoulder extends Render
 			GL11.glTranslatef((float) p_76986_2_, (float) p_76986_4_, (float) p_76986_6_);
 			this.bindEntityTexture(p_76986_1_);
 			GL11.glDisable(GL11.GL_LIGHTING);
-			Tessellator tessellator;
+			
 			this.field_147920_a.setRenderBoundsFromBlock(block);
 			this.field_147920_a.renderBlockSandFalling(block, world, i, j, k, p_76986_1_.field_145814_a);
 

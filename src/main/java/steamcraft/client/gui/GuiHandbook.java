@@ -24,13 +24,13 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-
 import org.lwjgl.opengl.GL11;
+
 import steamcraft.common.items.ItemHandbook;
 import steamcraft.common.lib.ModInfo;
 import boilerplate.common.utils.StringUtils;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class GuiHandbook extends GuiScreen
 {

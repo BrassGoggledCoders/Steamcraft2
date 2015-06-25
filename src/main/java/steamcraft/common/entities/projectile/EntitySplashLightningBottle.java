@@ -19,7 +19,6 @@ import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
-
 import steamcraft.common.lib.DamageSourceHandler;
 import boilerplate.common.baseclasses.BaseThrowableEntity;
 
@@ -48,6 +47,7 @@ public class EntitySplashLightningBottle extends BaseThrowableEntity
 	/**
 	 * Called when this EntityThrowable hits a block or entity.
 	 */
+	@SuppressWarnings({ "rawtypes", "unused" })
 	@Override
 	protected void onImpact(MovingObjectPosition mop)
 	{

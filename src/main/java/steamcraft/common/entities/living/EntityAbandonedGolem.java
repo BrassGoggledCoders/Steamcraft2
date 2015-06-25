@@ -26,6 +26,7 @@ public class EntityAbandonedGolem extends EntityIronGolem implements IMob
 	/**
 	 * Returns true if this entity can attack entities of the specified class.
 	 */
+	@SuppressWarnings("rawtypes")
 	@Override
 	public boolean canAttackClass(Class p_70686_1_)
 	{

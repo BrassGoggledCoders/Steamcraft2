@@ -16,7 +16,7 @@ import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
-import steamcraft.common.items.InventoryPocket;
+
 import steamcraft.common.lib.ModInfo;
 import steamcraft.common.tiles.container.ContainerPocket;
 
@@ -24,12 +24,9 @@ public class GuiPocket extends GuiContainer
 {
 	private static ResourceLocation guitexture = new ResourceLocation(ModInfo.PREFIX + "textures/gui/bag.png");
 
-	private final InventoryPocket inventory;
-
 	public GuiPocket(ContainerPocket pdaContainer)
 	{
 		super(pdaContainer);
-		this.inventory = pdaContainer.inventory;
 	}
 
 	@Override
