@@ -41,12 +41,13 @@ public class CopperWirePacket implements IMessage
 	{
 	} // REQUIRED
 
-	public CopperWirePacket(int x, int y, int z, ForgeDirection[] connections)
+	public CopperWirePacket(int x, int y, int z, ForgeDirection[] connections, ForgeDirection extract)
 	{
 		this.x = x;
 		this.y = y;
 		this.z = z;
 		this.connections = connections;
+		this.extract = extract;
 	}
 
 	@Override
@@ -75,8 +76,10 @@ public class CopperWirePacket implements IMessage
 		buf.writeInt(this.y);
 		buf.writeInt(this.z);
 		
-		for(int i = 0; i < 7; i++)
+		for(int i = 0; i < 6; i++)
 			buf.writeByte(CopperPipePacket.directionToByte(this.connections[i]));
+		buf.writeByte(CopperPipePacket.directionToByte(this.extract));
+		
 	}
 
 	public static class CopperWirePacketHandler implements IMessageHandler<CopperWirePacket, IMessage>

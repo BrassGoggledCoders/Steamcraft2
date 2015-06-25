@@ -14,8 +14,6 @@ package steamcraft.common.tiles.energy;
 
 import java.util.ArrayList;
 
-import org.apache.commons.lang3.ArrayUtils;
-
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.network.NetworkManager;
@@ -23,17 +21,17 @@ import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+import net.minecraftforge.common.util.ForgeDirection;
+import steamcraft.common.init.InitBlocks;
+import steamcraft.common.init.InitPackets;
+import steamcraft.common.packets.CopperWirePacket;
+import steamcraft.common.tiles.TileCopperPipe.Coords;
 import cofh.api.energy.EnergyStorage;
 import cofh.api.energy.IEnergyConnection;
 import cofh.api.energy.IEnergyHandler;
 import cofh.api.energy.IEnergyProvider;
 import cofh.api.energy.IEnergyReceiver;
 import cpw.mods.fml.common.network.NetworkRegistry.TargetPoint;
-import net.minecraftforge.common.util.ForgeDirection;
-import steamcraft.common.init.InitBlocks;
-import steamcraft.common.init.InitPackets;
-import steamcraft.common.packets.CopperWirePacket;
-import steamcraft.common.tiles.TileCopperPipe.Coords;
 
 /**
  * @author decebaldecebal
@@ -334,7 +332,7 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 	{
 		if((this.network != null) && !this.worldObj.isRemote)
 		{
-			InitPackets.network.sendToAllAround(new CopperWirePacket(this.xCoord, this.yCoord, this.zCoord, ArrayUtils.add(this.connections, this.extract)),
+			InitPackets.network.sendToAllAround(new CopperWirePacket(this.xCoord, this.yCoord, this.zCoord, this.connections, this.extract),
 					new TargetPoint(this.worldObj.provider.dimensionId, this.xCoord, this.yCoord, this.zCoord, 100));
 		}
 	}
@@ -626,9 +624,9 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 				this.ticksSinceLastUpdate = 0;
 
 				this.updateInputs(wire.worldObj);
-				System.out.println("Buffer before: " + buffer.getEnergyStored());
+				//System.out.println("Buffer before: " + buffer.getEnergyStored());
 				this.updateOutputs(wire);
-				System.out.println("Buffer after: " + buffer.getEnergyStored());
+				//System.out.println("Buffer after: " + buffer.getEnergyStored());
 			}
 		}
 

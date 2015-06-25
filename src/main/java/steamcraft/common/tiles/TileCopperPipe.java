@@ -14,8 +14,6 @@ package steamcraft.common.tiles;
 
 import java.util.ArrayList;
 
-import org.apache.commons.lang3.ArrayUtils;
-
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.network.NetworkManager;
@@ -369,7 +367,7 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 	{
 		if(this.network != null)
 		{
-			InitPackets.network.sendToAllAround(new CopperPipePacket(this.xCoord, this.yCoord, this.zCoord, ArrayUtils.add(this.connections, this.extract)),
+			InitPackets.network.sendToAllAround(new CopperPipePacket(this.xCoord, this.yCoord, this.zCoord, this.connections, this.extract),
 					new TargetPoint(this.worldObj.provider.dimensionId, this.xCoord, this.yCoord, this.zCoord, 100));
 		}
 	}
@@ -580,7 +578,7 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 				main = dir;
 
 			if((dir != null) && (main != dir))
-				if(!this.areDirectionsOpposite(main, dir) && !this.areDirectionsOpposite(dir, main))
+				if(dir.getOpposite() != main)
 					return null;
 				else
 					isOpposite = true;
@@ -590,13 +588,6 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 			return main;
 
 		return null;
-	}
-
-	@SideOnly(Side.CLIENT)
-	private boolean areDirectionsOpposite(ForgeDirection dir1, ForgeDirection dir2)
-	{
-		return ((dir1 == ForgeDirection.UP) && (dir2 == ForgeDirection.DOWN)) || ((dir1 == ForgeDirection.SOUTH) && (dir2 == ForgeDirection.NORTH))
-				|| ((dir1 == ForgeDirection.EAST) && (dir2 == ForgeDirection.WEST));
 	}
 
 	@Override
