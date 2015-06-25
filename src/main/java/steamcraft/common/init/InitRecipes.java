@@ -516,6 +516,8 @@ public class InitRecipes
 				"plateCastIron", 'G', Blocks.glowstone, 'R', "partCastIronRod" }));
 		GameRegistry.addShapelessRecipe(new ItemStack(InitBlocks.blockInvertedCastIronLamp),
 				new Object[] { InitBlocks.blockCastIronLamp, Blocks.redstone_torch });
+		GameRegistry.addShapelessRecipe(new ItemStack(InitBlocks.blockCastIronLamp),
+				new Object[] { InitBlocks.blockInvertedCastIronLamp, Blocks.redstone_torch });
 		GameRegistry.addShapelessRecipe(new ItemStack(InitItems.itemSplashLightningBottle), InitItems.itemElectricJarSmall, Items.gunpowder);
 		GameRegistry.addRecipe(new ItemStack(InitItems.itemGrindstone), "FS", "SF", 'F', Items.flint, 'S', Blocks.stone);
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Items.gunpowder, 2), "dustSulphur", new ItemStack(Items.coal, 1, 1),
