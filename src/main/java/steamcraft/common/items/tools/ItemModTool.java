@@ -15,6 +15,7 @@ package steamcraft.common.items.tools;
 import java.util.List;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
@@ -26,20 +27,17 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
-
-import com.google.common.collect.Multimap;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-
-import net.minecraftforge.common.ForgeHooks;
-
 import steamcraft.common.init.InitItems;
 import steamcraft.common.items.BaseItem;
 import steamcraft.common.items.ItemCanister;
 import steamcraft.common.lib.MaterialHelper;
 import steamcraft.common.lib.ModInfo;
 import boilerplate.common.utils.ItemStackUtils;
+
+import com.google.common.collect.Multimap;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author Surseance
@@ -99,25 +97,36 @@ public class ItemModTool extends BaseItem
 	{
 		this.itemIcon = par1IconRegister.registerIcon(ModInfo.PREFIX + "tools/" + this.getUnlocalizedName().substring(5));
 	}
-
+	
 	@Override
-	public float getDigSpeed(ItemStack stack, Block block, int metadata)
+	public float getDigSpeed(ItemStack stack, Block block, int meta)
 	{
 		if(this.isSteampowered() && !stack.getTagCompound().getBoolean("hasCanister"))
 			return 1.0F;
-
-		if(ForgeHooks.isToolEffective(stack, block, metadata) || this.canHarvestBlock(block, stack))
+		
+		if(block.getHarvestLevel(meta) <= this.toolMaterial.getHarvestLevel())
 		{
-			return this.efficiencyOnProperMaterial;
+			for(String elem : this.getToolClasses(stack))
+			{
+				if (block.isToolEffective(elem, meta))
+					return this.efficiencyOnProperMaterial;
+				else
+				{
+					Material mat = block.getMaterial();
+					for(Material m : MaterialHelper.getMaterialForTool(elem))
+						if(m == mat)
+							return this.efficiencyOnProperMaterial;
+				}
+			}
 		}
 
-		return super.getDigSpeed(stack, block, metadata);
+		return 1.0F;
 	}
 
 	@Override
 	public boolean canHarvestBlock(Block block, ItemStack stack)
 	{
-		return ForgeHooks.canToolHarvestBlock(block, 0, stack);
+		return this.getDigSpeed(stack, block, 0) > 1.0f;
 	}
 
 	@Override
@@ -151,11 +160,6 @@ public class ItemModTool extends BaseItem
 	{
 		return this.toolMaterial.getEnchantability();
 	}
-
-	/*
-	 * @Override public boolean getIsRepairable(ItemStack stack1, ItemStack stack2) { Item item = stack2.getItem(); return
-	 * this.toolMaterial.getRepairItemStack().getItem() == item || super.getIsRepairable(stack1, stack2); }
-	 */
 
 	@Override
 	public boolean onBlockDestroyed(ItemStack stack, World p_150894_2_, Block p_150894_3_, int p_150894_4_, int p_150894_5_, int p_150894_6_,

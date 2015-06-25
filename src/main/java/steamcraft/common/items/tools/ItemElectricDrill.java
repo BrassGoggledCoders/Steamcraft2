@@ -75,7 +75,7 @@ public class ItemElectricDrill extends ItemElectricTool
 	public float getDigSpeed(ItemStack stack, Block block, int metadata)
 	{
 		if(this.getEnergyStored(stack) <= 0)
-			return 0;
+			return 1.0F;
 
 		return super.getDigSpeed(stack, block, metadata);
 	}

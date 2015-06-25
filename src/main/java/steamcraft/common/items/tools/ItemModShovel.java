@@ -12,9 +12,6 @@
  */
 package steamcraft.common.items.tools;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
-import net.minecraft.item.ItemStack;
 
 /**
  * @author Surseance
@@ -27,11 +24,5 @@ public class ItemModShovel extends ItemModTool
 	{
 		super(1.0F, mat);
 		this.setHarvestLevel("shovel", mat.getHarvestLevel());
-	}
-
-	@Override
-	public boolean canHarvestBlock(Block block, ItemStack stack)
-	{
-		return (block.getMaterial() == Material.snow) || super.canHarvestBlock(block, stack);
 	}
 }

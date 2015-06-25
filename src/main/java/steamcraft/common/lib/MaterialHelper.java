@@ -12,9 +12,9 @@
  */
 package steamcraft.common.lib;
 
+import net.minecraft.block.material.Material;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
-
 import net.minecraftforge.common.util.EnumHelper;
 
 /**
@@ -46,6 +46,14 @@ public class MaterialHelper
 	public static ArmorMaterial ARMOR_ETHERIUM;
 	public static ArmorMaterial ARMOR_WHALEBONE;
 	public static ArmorMaterial ARMOR_STEAM;
+	
+	//Block Materials
+	private static Material[] pickaxeMaterials = {Material.rock, Material.iron, Material.anvil, Material.circuits,
+		Material.glass, Material.ice, Material.piston};
+	private static Material[] axeMaterials = {Material.wood, Material.leaves, Material.plants, Material.vine, Material.circuits,
+		Material.cactus, Material.gourd};
+	private static Material[] shovelMaterials = {Material.grass, Material.ground, Material.clay, Material.sand, Material.snow};
+	private static Material[] swordMaterials = {Material.web};
 
 	public static void initializeMaterials()
 	{
@@ -66,11 +74,11 @@ public class MaterialHelper
 		DRILL_WOOD = EnumHelper.addToolMaterial("DRILL_WOOD", 0, 89, 4.0F, 0.0F, 0);
 		DRILL_STONE = EnumHelper.addToolMaterial("DRILL_STONE", 1, 197, 8.0F, 0.0F, 0);
 		DRILL_IRON = EnumHelper.addToolMaterial("DRILL_IRON", 2, 375, 12.0F, 0.0F, 0);
-		DRILL_DIAMOND = EnumHelper.addToolMaterial("DRILL_EMERALD", 3, 2342, 16.0F, 0.0F, 0);
-		DRILL_GOLD = EnumHelper.addToolMaterial("DRILL_GOLD", 0, 48, 16.0F, 0.0F, 0);
-		DRILL_STEAM = EnumHelper.addToolMaterial("DRILL_STEAM", 3, 482, 24.0F, 0.0F, 0);
-		DRILL_ETHERIUM = EnumHelper.addToolMaterial("DRILL_ETHERIUM", 3, 3518, 34.0F, 0.0F, 0);
-		DRILL_OBSIDIAN = EnumHelper.addToolMaterial("DRILL_OBSIDIAN", 3, -1, 6.0F, 0.0F, 0);
+		DRILL_DIAMOND = EnumHelper.addToolMaterial("DRILL_DIAMOND", 3, 2342, 16.0F, 0.0F, 0);
+		DRILL_GOLD = EnumHelper.addToolMaterial("DRILL_GOLD", 1, 48, 18.0F, 0.0F, 0);
+		DRILL_STEAM = EnumHelper.addToolMaterial("DRILL_STEAM", 2, 482, 12.0F, 0.0F, 0);
+		DRILL_ETHERIUM = EnumHelper.addToolMaterial("DRILL_ETHERIUM", 3, 3518, 32.0F, 0.0F, 0);
+		DRILL_OBSIDIAN = EnumHelper.addToolMaterial("DRILL_OBSIDIAN", 3, -1, 8.0F, 0.0F, 0);
 	}
 
 	private static void initArmorMaterials()
@@ -79,5 +87,18 @@ public class MaterialHelper
 		ARMOR_ETHERIUM = EnumHelper.addArmorMaterial("ARMOR_ETHERIUM", 40, new int[] { 4, 8, 7, 3 }, 18);
 		ARMOR_WHALEBONE = EnumHelper.addArmorMaterial("ARMOR_WHALEBONE", 10, new int[] { 2, 6, 5, 2 }, 30);
 		ARMOR_STEAM = EnumHelper.addArmorMaterial("ARMOR_STEAM", -1, new int[] { 1, 1, 1, 1 }, 0);
+	}
+	
+	public static Material[] getMaterialForTool(String tool)
+	{
+		if (tool == "pickaxe")
+			return pickaxeMaterials;
+		if (tool == "axe")
+			return axeMaterials;
+		if (tool == "shovel")
+			return shovelMaterials;
+		if (tool == "sword")
+			return swordMaterials;
+		return null;
 	}
 }

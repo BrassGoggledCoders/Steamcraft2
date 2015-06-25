@@ -15,7 +15,6 @@ package steamcraft.common.items.tools;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
@@ -30,14 +29,6 @@ public class ItemModSword extends ItemModTool
 	{
 		super(4.0F, mat);
 		this.setHarvestLevel("sword", mat.getHarvestLevel());
-	}
-
-	@Override
-	public float getDigSpeed(ItemStack stack, Block block, int metadata)
-	{
-		if(block == Blocks.web)
-			return 15.0F;
-		return super.getDigSpeed(stack, block, metadata);
 	}
 
 	@Override
@@ -66,17 +57,5 @@ public class ItemModSword extends ItemModTool
 	{
 		player.setItemInUse(stack, this.getMaxItemUseDuration(stack));
 		return stack;
-	}
-
-	@Override
-	public boolean canHarvestBlock(Block block, ItemStack itemstack)
-	{
-		return block == Blocks.web;
-	}
-
-	@Override
-	public int getItemEnchantability()
-	{
-		return this.toolMaterial.getEnchantability();
 	}
 }

@@ -12,9 +12,6 @@
  */
 package steamcraft.common.items.tools;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
-import net.minecraft.item.ItemStack;
 
 /**
  * @author Surseance
@@ -26,23 +23,5 @@ public class ItemModPickaxe extends ItemModTool
 	{
 		super(1.0F, mat);
 		this.setHarvestLevel("pickaxe", mat.getHarvestLevel());
-	}
-
-	@Override
-	public float getDigSpeed(ItemStack stack, Block block, int metadata)
-	{
-
-		if(block.getMaterial() == Material.rock)
-		{
-			return this.efficiencyOnProperMaterial;
-		}
-
-		return super.getDigSpeed(stack, block, metadata);
-	}
-
-	@Override
-	public boolean canHarvestBlock(Block block, ItemStack stack)
-	{
-		return (block.getMaterial() == Material.rock) || super.canHarvestBlock(block, stack);
 	}
 }

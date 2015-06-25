@@ -12,10 +12,6 @@
  */
 package steamcraft.common.items.tools;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
-import net.minecraft.item.ItemStack;
-
 import steamcraft.common.Steamcraft;
 
 /**
@@ -34,9 +30,11 @@ public class ItemDrill extends ItemModTool
 		this.setHarvestLevel("pickaxe", mat.getHarvestLevel());
 	}
 
+	/*
 	@Override
 	public boolean canHarvestBlock(Block block, ItemStack stack)
 	{
 		return (block.getMaterial() == Material.snow) || (block.getMaterial() == Material.rock) || super.canHarvestBlock(block, stack);
 	}
+	*/
 }
