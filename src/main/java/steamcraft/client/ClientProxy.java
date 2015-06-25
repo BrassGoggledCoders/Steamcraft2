@@ -23,10 +23,8 @@ import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 
-import cpw.mods.fml.client.registry.ClientRegistry;
-import cpw.mods.fml.client.registry.RenderingRegistry;
-
 import org.lwjgl.input.Keyboard;
+
 import steamcraft.client.lib.RenderIDs;
 import steamcraft.client.renderers.block.BlockCastIronGateRenderer;
 import steamcraft.client.renderers.block.BlockCastIronLampRenderer;
@@ -97,6 +95,8 @@ import boilerplate.client.fx.FXRaygun;
 import boilerplate.client.renderers.block.BlockTESRRenderer;
 import boilerplate.client.renderers.block.RenderMinedBlock;
 import boilerplate.common.entity.EntityMinedBlock;
+import cpw.mods.fml.client.registry.ClientRegistry;
+import cpw.mods.fml.client.registry.RenderingRegistry;
 
 /**
  * @author Surseance

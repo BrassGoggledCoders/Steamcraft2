@@ -17,11 +17,12 @@ import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
 import net.minecraft.world.IBlockAccess;
 
-import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
-
 import org.lwjgl.opengl.GL11;
+
 import steamcraft.client.lib.RenderIDs;
 import steamcraft.common.tiles.EmptyTiles;
+import steamcraft.common.tiles.EmptyTiles.TileCastIronLamp;
+import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 
 /**
  * @author Surseance
@@ -29,13 +30,12 @@ import steamcraft.common.tiles.EmptyTiles;
  */
 public class BlockCastIronLampRenderer implements ISimpleBlockRenderingHandler
 {
-	@SuppressWarnings("unused")
 	@Override
 	public void renderInventoryBlock(Block block, int metadata, int modelID, RenderBlocks renderer)
 	{
 		GL11.glRotatef(90.0F, 0.0F, 1.0F, 0.0F);
 		GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
-		EmptyTiles.TileCastIronLamp te = new EmptyTiles.TileCastIronLamp();
+		EmptyTiles.TileCastIronLamp te = new TileCastIronLamp();
 		te.blockMetadata = 0;
 		te.blockType = block;
 		TileEntityRendererDispatcher.instance.renderTileEntityAt(te, te.xCoord, te.yCoord, te.zCoord, 0.0F);

@@ -18,17 +18,14 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-
 import steamcraft.client.lib.RenderIDs;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.init.InitBlocks;
 import steamcraft.common.tiles.EmptyTiles;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author Surseance
@@ -36,7 +33,7 @@ import steamcraft.common.tiles.EmptyTiles;
  */
 public class BlockCastIronLamp extends BlockContainer
 {
-	public boolean powered;
+	protected boolean powered;
 
 	public BlockCastIronLamp(boolean powered)
 	{
@@ -56,34 +53,9 @@ public class BlockCastIronLamp extends BlockContainer
 	}
 
 	@Override
-	public int damageDropped(int metadata)
-	{
-		return 0;
-	}
-
-	@Override
 	public TileEntity createNewTileEntity(World world, int metadata)
 	{
 		return new EmptyTiles.TileCastIronLamp();
-	}
-
-	@Override
-	public int tickRate(World world)
-	{
-		return 10;
-	}
-
-	@Override
-	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z)
-	{
-		return null;
-	}
-
-	@Override
-	public AxisAlignedBB getSelectedBoundingBoxFromPool(World world, int x, int y, int z)
-	{
-		this.setBlockBoundsBasedOnState(world, x, y, z);
-		return super.getSelectedBoundingBoxFromPool(world, x, y, z);
 	}
 
 	@Override
@@ -108,7 +80,6 @@ public class BlockCastIronLamp extends BlockContainer
 	public int onBlockPlaced(World world, int x, int y, int z, int metadata, float hitX, float hitY,
 			float hitZ, int side)
 	{
-		// TODO Cleanup!!
 		if((side == 1) || (side == 3))
 			world.setBlockMetadataWithNotify(x, y, z, 0, 2);
 		if(side == 2)
@@ -151,12 +122,6 @@ public class BlockCastIronLamp extends BlockContainer
 	}
 
 	@Override
-	public boolean canProvidePower()
-	{
-		return false;
-	}
-
-	@Override
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(World world, int x, int j, int z, Random random)
 	{
@@ -180,9 +145,6 @@ public class BlockCastIronLamp extends BlockContainer
 		}
 	}
 
-	/**
-	 * Gets the block's texture. Args: side, meta
-	 */
 	@Override
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(int p_149691_1_, int p_149691_2_)
