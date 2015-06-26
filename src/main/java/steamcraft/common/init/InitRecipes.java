@@ -434,8 +434,8 @@ public class InitRecipes
 				"plateSteel", 'W', "partWireCoil", 'M', "partMagnet", 'R', "partCastIronRod"));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemMachinePart, 1, 5), " P ", "PPP", " P ", 'P',
 				"plateSteel"));
-		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(InitItems.itemMachinePart, 1, 6), "partCastIronRod",
-				new ItemStack(InitBlocks.blockCopperWire), new ItemStack(InitBlocks.blockCopperWire), new ItemStack(InitBlocks.blockCopperWire)));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemMachinePart, 1, 6), " W ", "WSW", " W ", 'S', "partCastIronRod",
+				'W', new ItemStack(InitBlocks.blockCopperWire)));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemMachinePart, 1, 7), "L L", " L ", "MCM", 'M', "partMagnet",
 				'C', new ItemStack(InitBlocks.blockCopperWire), 'L', Items.leather));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemMachinePart, 1, 8), "XRX", 'X', "plateCopper",

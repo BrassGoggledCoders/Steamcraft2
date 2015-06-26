@@ -38,8 +38,10 @@ public class TileTeslaCoil extends TileEntity implements IEnergyReceiver
 	private static int RFPerZap = 1000;
 	private static byte RangePerDir = 5;
 	private static byte Damage = 3;
+	private static byte UpdateTicks = 5;
 	
-	private final EnergyStorage buffer = new EnergyStorage(5000, RFPerTick);
+	private byte ticksTillUpdate = 0;
+	private final EnergyStorage buffer = new EnergyStorage(50000, RFPerTick);
 
 	@SuppressWarnings("rawtypes")
 	@Override
@@ -47,64 +49,69 @@ public class TileTeslaCoil extends TileEntity implements IEnergyReceiver
 	{
 		if(!worldObj.isRemote)
 		{
-			if(this.buffer.getEnergyStored() >= RFPerZap)
+			ticksTillUpdate++;
+			if (ticksTillUpdate == UpdateTicks)
 			{
-				Random random = this.worldObj.rand;
-				if(this.getWorldObj().isBlockIndirectlyGettingPowered(this.xCoord, this.yCoord, this.zCoord))
+				ticksTillUpdate = 0;
+				if(this.buffer.getEnergyStored() >= RFPerZap)
 				{
-					AxisAlignedBB axisalignedbb2 = AxisAlignedBB.getBoundingBox((double) this.xCoord - RangePerDir, (double) this.yCoord - RangePerDir,
-							(double) this.zCoord - RangePerDir, this.xCoord + RangePerDir, this.yCoord + RangePerDir, this.zCoord + RangePerDir);
-					
-					List list2 = this.worldObj.getEntitiesWithinAABB(EntityPlayer.class, axisalignedbb2);
-					Iterator iterator2 = list2.iterator();
-					EntityPlayer player;
-	
-					while(iterator2.hasNext() && this.buffer.getEnergyStored() >= RFPerZap)
+					Random random = this.worldObj.rand;
+					if(this.getWorldObj().isBlockIndirectlyGettingPowered(this.xCoord, this.yCoord, this.zCoord))
 					{
-						player = (EntityPlayer) iterator2.next();
-						player.attackEntityFrom(DamageSourceHandler.electrocution, Damage);
-						this.worldObj.spawnParticle("reddust", player.posX + (random.nextFloat() / 2), (player.posY - 0.5F) + (random.nextFloat() / 2),
-								player.posZ + (random.nextFloat() / 2), 0, 0, 0);
+						AxisAlignedBB axisalignedbb2 = AxisAlignedBB.getBoundingBox((double) this.xCoord - RangePerDir, (double) this.yCoord - RangePerDir,
+								(double) this.zCoord - RangePerDir, this.xCoord + RangePerDir, this.yCoord + RangePerDir, this.zCoord + RangePerDir);
 						
-						this.buffer.modifyEnergyStored(-RFPerZap);
+						List list2 = this.worldObj.getEntitiesWithinAABB(EntityPlayer.class, axisalignedbb2);
+						Iterator iterator2 = list2.iterator();
+						EntityPlayer player;
+		
+						while(iterator2.hasNext() && this.buffer.getEnergyStored() >= RFPerZap)
+						{
+							player = (EntityPlayer) iterator2.next();
+							player.attackEntityFrom(DamageSourceHandler.electrocution, Damage);
+							this.worldObj.spawnParticle("reddust", player.posX + (random.nextFloat() / 2), (player.posY - 0.5F) + (random.nextFloat() / 2),
+									player.posZ + (random.nextFloat() / 2), 0, 0, 0);
+							
+							this.buffer.modifyEnergyStored(-RFPerZap);
+						}
 					}
-				}
-				else if((this.getWorldObj().getBlock(this.xCoord, this.yCoord - 1, this.zCoord) == Blocks.emerald_block))
-				{
-					AxisAlignedBB axisalignedbb = AxisAlignedBB.getBoundingBox((double) this.xCoord - RangePerDir, (double) this.yCoord - RangePerDir,
-							(double) this.zCoord - RangePerDir, this.xCoord + RangePerDir, this.yCoord + RangePerDir, this.zCoord + RangePerDir);
-					
-					List list = this.worldObj.getEntitiesWithinAABB(EntityVillager.class, axisalignedbb);
-					Iterator iterator = list.iterator();
-					EntityVillager villager;
-	
-					while(iterator.hasNext() && this.buffer.getEnergyStored() >= RFPerZap)
+					else if((this.getWorldObj().getBlock(this.xCoord, this.yCoord - 1, this.zCoord) == Blocks.emerald_block))
 					{
-						villager = (EntityVillager) iterator.next();
-						villager.attackEntityFrom(DamageSourceHandler.electrocution, Damage);
-						this.worldObj.spawnParticle("reddust", villager.posX + (random.nextFloat() / 3), villager.posY + (random.nextFloat() / 3),
-								villager.posZ + (random.nextFloat() / 3), 0, 0, 0);
+						AxisAlignedBB axisalignedbb = AxisAlignedBB.getBoundingBox((double) this.xCoord - RangePerDir, (double) this.yCoord - RangePerDir,
+								(double) this.zCoord - RangePerDir, this.xCoord + RangePerDir, this.yCoord + RangePerDir, this.zCoord + RangePerDir);
 						
-						this.buffer.modifyEnergyStored(-RFPerZap);
+						List list = this.worldObj.getEntitiesWithinAABB(EntityVillager.class, axisalignedbb);
+						Iterator iterator = list.iterator();
+						EntityVillager villager;
+		
+						while(iterator.hasNext() && this.buffer.getEnergyStored() >= RFPerZap)
+						{
+							villager = (EntityVillager) iterator.next();
+							villager.attackEntityFrom(DamageSourceHandler.electrocution, Damage);
+							this.worldObj.spawnParticle("reddust", villager.posX + (random.nextFloat() / 3), villager.posY + (random.nextFloat() / 3),
+									villager.posZ + (random.nextFloat() / 3), 0, 0, 0);
+							
+							this.buffer.modifyEnergyStored(-RFPerZap);
+						}
 					}
-				}
-				else
-				{
-					AxisAlignedBB axisalignedbb = AxisAlignedBB.getBoundingBox((double) this.xCoord - RangePerDir, (double) this.yCoord - RangePerDir,
-							(double) this.zCoord - RangePerDir, this.xCoord + RangePerDir, this.yCoord + RangePerDir, this.zCoord + RangePerDir);
-					
-					List list = this.worldObj.getEntitiesWithinAABB(EntityLiving.class, axisalignedbb);
-					Iterator iterator = list.iterator();
-					EntityLiving living;
-	
-					while(iterator.hasNext() && this.buffer.getEnergyStored() >= RFPerZap)
+					else
 					{
-						living = (EntityLiving) iterator.next();
-						living.attackEntityFrom(DamageSourceHandler.electrocution, Damage);
-						this.worldObj.spawnParticle("reddust", living.posX + (random.nextFloat() / 2), living.posY + (random.nextFloat() / 2),
-								living.posZ + (random.nextFloat() / 2), 0, 0, 0);
+						AxisAlignedBB axisalignedbb = AxisAlignedBB.getBoundingBox((double) this.xCoord - RangePerDir, (double) this.yCoord - RangePerDir,
+								(double) this.zCoord - RangePerDir, this.xCoord + RangePerDir, this.yCoord + RangePerDir, this.zCoord + RangePerDir);
 						
-						this.buffer.modifyEnergyStored(-RFPerZap);
+						List list = this.worldObj.getEntitiesWithinAABB(EntityLiving.class, axisalignedbb);
+						Iterator iterator = list.iterator();
+						EntityLiving living;
+		
+						while(iterator.hasNext() && this.buffer.getEnergyStored() >= RFPerZap)
+						{
+							living = (EntityLiving) iterator.next();
+							living.attackEntityFrom(DamageSourceHandler.electrocution, Damage);
+							this.worldObj.spawnParticle("reddust", living.posX + (random.nextFloat() / 2), living.posY + (random.nextFloat() / 2),
+									living.posZ + (random.nextFloat() / 2), 0, 0, 0);
+							
+							this.buffer.modifyEnergyStored(-RFPerZap);
+						}
 					}
 				}
 			}
