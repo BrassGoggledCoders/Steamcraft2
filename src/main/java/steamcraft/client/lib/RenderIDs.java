@@ -29,6 +29,7 @@ public class RenderIDs
 	public static int blockChargerRI;
 	public static int blockCastIronRailingRI;
 	public static int blockCopperWireRI;
+	public static int blockSteelWireRI;
 	public static int blockPlankStackRI;
 	public static int blockArmorEditorRI;
 	public static int blockSpiderEggRI;
@@ -40,6 +41,7 @@ public class RenderIDs
 		blockCopperPipeRI = RenderingRegistry.getNextAvailableRenderId();
 		blockCopperPipeRI = RenderingRegistry.getNextAvailableRenderId();
 		blockCopperWireRI = RenderingRegistry.getNextAvailableRenderId();
+		blockSteelWireRI = RenderingRegistry.getNextAvailableRenderId();
 		blockLightningRodRI = RenderingRegistry.getNextAvailableRenderId();
 		blockTeslaCoilRI = RenderingRegistry.getNextAvailableRenderId();
 		blockBatteryRI = RenderingRegistry.getNextAvailableRenderId();

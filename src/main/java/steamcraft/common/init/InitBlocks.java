@@ -89,6 +89,7 @@ import steamcraft.common.blocks.machines.BlockRefinery;
 import steamcraft.common.blocks.machines.BlockSawmill;
 import steamcraft.common.blocks.machines.BlockStasisField;
 import steamcraft.common.blocks.machines.BlockSteamBoiler;
+import steamcraft.common.blocks.machines.BlockSteelWire;
 import steamcraft.common.blocks.machines.BlockTeslaCoil;
 import steamcraft.common.blocks.machines.BlockTurbine;
 import steamcraft.common.tiles.TileArmorEditor;
@@ -105,6 +106,7 @@ import steamcraft.common.tiles.energy.TileCharger;
 import steamcraft.common.tiles.energy.TileCopperWire;
 import steamcraft.common.tiles.energy.TileLightningRod;
 import steamcraft.common.tiles.energy.TileStasisField;
+import steamcraft.common.tiles.energy.TileSteelWire;
 import steamcraft.common.tiles.energy.TileTeslaCoil;
 import steamcraft.common.tiles.energy.TileTurbine;
 import boilerplate.common.baseclasses.BaseItemBlockWithMetadata;
@@ -135,7 +137,7 @@ public class InitBlocks
 	public static Block blockCastIronLamp, blockCastIronLampOn, blockInvertedCastIronLamp, blockInvertedCastIronLampOff;
 
 	public static Block blockCongealedSlime;
-	public static Block blockCopperPipe, blockCopperWire;
+	public static Block blockCopperPipe, blockCopperWire, blockSteelWire;
 
 	public static Block blockCopperTank;
 
@@ -356,6 +358,10 @@ public class InitBlocks
 		blockCopperWire = new BlockCopperWire(Material.iron).setBlockName("blockCopperWire");
 
 		RegistryHelper.registerContainerBlockWithDescAndMeta(blockCopperWire, TileCopperWire.class, "BlockCopperWire");
+		
+		blockSteelWire = new BlockSteelWire(Material.iron).setBlockName("blockSteelWire");
+		
+		RegistryHelper.registerContainerBlockWithDescAndMeta(blockSteelWire, TileSteelWire.class, "BlockSteelWire");
 
 		// Tanks
 		blockCopperTank = new BlockCopperTank(Material.iron).setBlockName("blockCopperTank");

@@ -22,6 +22,8 @@ import steamcraft.common.packets.CopperWirePacket;
 import steamcraft.common.packets.CopperWirePacket.CopperWirePacketHandler;
 import steamcraft.common.packets.OpenContainerFromClientPacket;
 import steamcraft.common.packets.OpenContainerFromClientPacket.OpenContainerFromClientPacketHandler;
+import steamcraft.common.packets.SteelWirePacket;
+import steamcraft.common.packets.SteelWirePacket.SteelWirePacketHandler;
 import steamcraft.common.packets.TimeBombPacket;
 import steamcraft.common.packets.TimeBombPacket.TimeBombPacketHandler;
 import steamcraft.common.packets.UpdateClientsideInventoryPacket;
@@ -51,6 +53,7 @@ public class InitPackets
 		network.registerMessage(FluidNetworkPacketHandler.class, CopperPipeFluidPacket.class, packetId++, Side.CLIENT);
 		network.registerMessage(CopperTankPacketHandler.class, CopperTankPacket.class, packetId++, Side.CLIENT);
 		network.registerMessage(CopperWirePacketHandler.class, CopperWirePacket.class, packetId++, Side.CLIENT);
+		network.registerMessage(SteelWirePacketHandler.class, SteelWirePacket.class, packetId++, Side.CLIENT);
 	
 		
 

@@ -547,7 +547,7 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 	{
 		if((from != this.extract) && (this.network != null)) //should actively receive energy from where it is not actively pulling
 		{
-			int amount = Math.min(maxReceive, EnergyNetwork.maxTransferPerTile / EnergyNetwork.ticksTillUpdate);
+			int amount = Math.min(maxReceive, EnergyNetwork.maxTransferPerTile);
 
 			return this.network.buffer.receiveEnergy(amount, simulate);
 		}
@@ -560,7 +560,7 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 	{
 		if((from != this.extract) && (this.network != null))
 		{
-			int amount = Math.min(maxExtract, EnergyNetwork.maxTransferPerTile / EnergyNetwork.ticksTillUpdate);
+			int amount = Math.min(maxExtract, EnergyNetwork.maxTransferPerTile);
 
 			return this.network.buffer.extractEnergy(amount, simulate);
 		}
@@ -590,9 +590,7 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 	{
 		private static final short capacityPerWire = (short) 5000;
 
-		private static final byte ticksTillUpdate = 1;
-
-		private static final short maxTransferPerTile = 1000 * ticksTillUpdate;
+		private static final short maxTransferPerTile = 1000;
 
 		private boolean updateNetworkForWires = false;
 
@@ -603,33 +601,25 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 		private ArrayList<Coords> inputs = new ArrayList<Coords>();
 		private ArrayList<Coords> outputs = new ArrayList<Coords>();
 
-		private byte ticksSinceLastUpdate = 0;
-
 		private EnergyNetwork(int size)
 		{
 			this.size = size;
 
-			this.buffer = new EnergyStorage(capacityPerWire * size, 2500);
+			this.buffer = new EnergyStorage(capacityPerWire * size, maxTransferPerTile);
 		}
 
 		private void updateNetwork(TileCopperWire wire)
 		{
-			this.ticksSinceLastUpdate++;
-
-			if(this.ticksSinceLastUpdate == ticksTillUpdate)
+			if (tempEnergy > 0)
 			{
-				if (tempEnergy > 0)
-				{
-					buffer.modifyEnergyStored(tempEnergy);
-					tempEnergy = 0;
-				}
-				this.ticksSinceLastUpdate = 0;
-
-				this.updateInputs(wire.worldObj);
-				//System.out.println("Buffer before: " + buffer.getEnergyStored());
-				this.updateOutputs(wire);
-				//System.out.println("Buffer after: " + buffer.getEnergyStored());
+				buffer.modifyEnergyStored(tempEnergy);
+				tempEnergy = 0;
 			}
+
+			this.updateInputs(wire.worldObj);
+			//System.out.println("Buffer before: " + buffer.getEnergyStored());
+			this.updateOutputs(wire);
+			//System.out.println("Buffer after: " + buffer.getEnergyStored());
 		}
 
 		private void updateInputs(World world)

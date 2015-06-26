@@ -33,6 +33,7 @@ import steamcraft.client.renderers.block.BlockCopperPipeRenderer;
 import steamcraft.client.renderers.block.BlockCopperTankRenderer;
 import steamcraft.client.renderers.block.BlockCopperWireRenderer;
 import steamcraft.client.renderers.block.BlockSpiderEggRenderer;
+import steamcraft.client.renderers.block.BlockSteelWireRenderer;
 import steamcraft.client.renderers.entity.RenderAbandonedGolem;
 import steamcraft.client.renderers.entity.RenderBoar;
 import steamcraft.client.renderers.entity.RenderFallingBoulder;
@@ -62,6 +63,7 @@ import steamcraft.client.renderers.tile.TileCrystalRenderer;
 import steamcraft.client.renderers.tile.TileHatchRenderer;
 import steamcraft.client.renderers.tile.TileHatchRenderer.TileHatch;
 import steamcraft.client.renderers.tile.TileLightningRodRenderer;
+import steamcraft.client.renderers.tile.TileSteelWireRenderer;
 import steamcraft.client.renderers.tile.TileTeslaCoilRenderer;
 import steamcraft.client.renderers.tile.TileTrunkRenderer;
 import steamcraft.common.CommonProxy;
@@ -92,6 +94,7 @@ import steamcraft.common.tiles.energy.TileBattery;
 import steamcraft.common.tiles.energy.TileCharger;
 import steamcraft.common.tiles.energy.TileCopperWire;
 import steamcraft.common.tiles.energy.TileLightningRod;
+import steamcraft.common.tiles.energy.TileSteelWire;
 import steamcraft.common.tiles.energy.TileTeslaCoil;
 import boilerplate.client.ClientHelper;
 import boilerplate.client.fx.FXRaygun;
@@ -167,6 +170,9 @@ public class ClientProxy extends CommonProxy
 		// Copper Wire
 		ClientRegistry.bindTileEntitySpecialRenderer(TileCopperWire.class, new TileCopperWireRenderer());
 		RenderingRegistry.registerBlockHandler(new BlockCopperWireRenderer());
+		// Steel Wire
+		ClientRegistry.bindTileEntitySpecialRenderer(TileSteelWire.class, new TileSteelWireRenderer());
+		RenderingRegistry.registerBlockHandler(new BlockSteelWireRenderer());
 		// Lightning Rod
 		ClientRegistry.bindTileEntitySpecialRenderer(TileLightningRod.class, new TileLightningRodRenderer());
 		RenderingRegistry.registerBlockHandler(new BlockTESRRenderer(new TileLightningRod(), RenderIDs.blockLightningRodRI));

@@ -614,7 +614,7 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 	{
 		if((from != this.extract) && (this.network != null) && (this.network.tank.getFluid() != null) && this.network.tank.getFluid().isFluidEqual(resource))
 		{
-			int amount = Math.min(resource.amount, FluidNetwork.maxTransferPerTile / FluidNetwork.ticksTillUpdate);
+			int amount = Math.min(resource.amount, FluidNetwork.maxTransferPerTile);
 
 			return this.network.tank.drain(amount, doDrain);
 		}
@@ -627,7 +627,7 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 	{
 		if((from != this.extract) && (this.network != null) && (this.network.tank.getFluid() != null))
 		{
-			int amount = Math.min(maxDrain, FluidNetwork.maxTransferPerTile / FluidNetwork.ticksTillUpdate);
+			int amount = Math.min(maxDrain, FluidNetwork.maxTransferPerTile);
 
 			return this.network.tank.drain(amount, doDrain);
 		}
@@ -640,7 +640,7 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 	{
 		if((this.extract == from) && (this.network != null))
 		{
-			int amount = Math.min(resource.amount, FluidNetwork.maxExtractPerTile / FluidNetwork.ticksTillUpdate);
+			int amount = Math.min(resource.amount, FluidNetwork.maxExtractPerTile);
 
 			return this.network.tank.fill(new FluidStack(resource, amount), doFill);
 		}
@@ -661,10 +661,8 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 	{
 		public static final short capacityPerPipe = (short) 500;
 
-		private static final byte ticksTillUpdate = 1;
-
-		private static final short maxExtractPerTile = 50 * ticksTillUpdate;
-		private static final short maxTransferPerTile = 200 * ticksTillUpdate;
+		private static final short maxExtractPerTile = 50;
+		private static final short maxTransferPerTile = 200;
 
 		public boolean updateNetworkForPipes = false;
 
@@ -676,8 +674,6 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 		ArrayList<Coords> inputs = new ArrayList<Coords>();
 		ArrayList<Coords> outputs = new ArrayList<Coords>();
 
-		private byte ticksSinceLastUpdate = 0;
-
 		public FluidNetwork(int size)
 		{
 			this.size = size;
@@ -687,27 +683,20 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 
 		public void updateNetwork(TileCopperPipe pipe)
 		{
-			this.ticksSinceLastUpdate++;
-
 			this.updateFluidScaled();
 
-			if(this.ticksSinceLastUpdate == ticksTillUpdate)
+			if (tempFluid != null)
 			{
-				if (tempFluid != null)
-				{
-					tempFluid.amount = Math.min(tempFluid.amount, this.tank.getCapacity());
-					this.tank.setFluid(tempFluid);
-					tempFluid = null;
-				}
-				
-				if(this.tank.getFluidAmount() == 0)
-					this.tank.setFluid(null);
-
-				this.ticksSinceLastUpdate = 0;
-
-				this.updateInputs(pipe.worldObj);
-				this.updateOutputs(pipe);
+				tempFluid.amount = Math.min(tempFluid.amount, this.tank.getCapacity());
+				this.tank.setFluid(tempFluid);
+				tempFluid = null;
 			}
+			
+			if(this.tank.getFluidAmount() == 0)
+				this.tank.setFluid(null);
+
+			this.updateInputs(pipe.worldObj);
+			this.updateOutputs(pipe);
 		}
 
 		private void updateFluidScaled()
