@@ -17,6 +17,9 @@ every change if we deem that it does not fit the theme of the mod. Though the mo
 we still possess the power of discretion. Yes, there is an API, but its details are not fully
 fleshed out/documented. Please give us some time before we make it suitable. Our API can be found here: https://github.com/BrassGoggledCoders/Boilerplate in the 'steamapi' packages.
 
+You can find the latest builds of our mod on Jenkins:
+http://jenkins.k-4u.nl/job/SteamCraft%202/
+
 Developers & Credits:
 =====================
 _Coders:_
