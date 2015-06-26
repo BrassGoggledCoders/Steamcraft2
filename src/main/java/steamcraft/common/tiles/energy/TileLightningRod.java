@@ -43,7 +43,7 @@ public class TileLightningRod extends TileEntity implements IEnergyProvider
 	private static final ArrayList<EntityLightningBolt> unnaturalLightningBolts = new ArrayList<EntityLightningBolt>();
 	private static Class weather2Class;
 	
-	private final EnergyStorage buffer = new EnergyStorage(30000, RFOutPerTick);
+	private final EnergyStorage buffer = new EnergyStorage(100000, RFOutPerTick);
 
 	@Override
 	public void updateEntity()
@@ -63,7 +63,7 @@ public class TileLightningRod extends TileEntity implements IEnergyProvider
 					EntityLightningBolt lightningBolt = new EntityLightningBolt(this.worldObj, this.xCoord, this.yCoord, this.zCoord);
 					unnaturalLightningBolts.add(lightningBolt);
 					this.worldObj.addWeatherEffect(lightningBolt);
-					this.buffer.receiveEnergy(ConfigBalance.lightningRodEnergyProduction, false);
+					this.buffer.modifyEnergyStored(ConfigBalance.lightningRodEnergyProduction);
 					isLightningSpawned = true;
 				}
 			}
@@ -81,7 +81,7 @@ public class TileLightningRod extends TileEntity implements IEnergyProvider
 				{
 					if(unnaturalLightningBolts.remove(obj))
 						continue;
-					this.buffer.receiveEnergy(ConfigBalance.lightningRodEnergyProduction, false);
+					this.buffer.modifyEnergyStored(ConfigBalance.lightningRodEnergyProduction);
 				}
 			}
 
@@ -108,7 +108,7 @@ public class TileLightningRod extends TileEntity implements IEnergyProvider
 						isLightningSpawned = true;
 
 					for(Object obj : list)
-						this.buffer.receiveEnergy(ConfigBalance.lightningRodEnergyProduction, false);
+						this.buffer.modifyEnergyStored(ConfigBalance.lightningRodEnergyProduction);
 				}
 			}
 

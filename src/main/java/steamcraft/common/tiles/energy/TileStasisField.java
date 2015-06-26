@@ -18,10 +18,8 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
-
 import cofh.api.energy.EnergyStorage;
 import cofh.api.energy.IEnergyReceiver;
-
 import net.minecraftforge.common.util.ForgeDirection;
 
 /**
@@ -30,11 +28,13 @@ import net.minecraftforge.common.util.ForgeDirection;
  */
 public class TileStasisField extends TileEntity implements IEnergyReceiver
 {
-	private static int energy = 2000;
-	public static short transferRate = 80;
+	private static int energy = 50000;
+	private static short transferRate = 80;
+	private static short RFPerTickPerItem = 10;
 
 	public EnergyStorage buffer = new EnergyStorage(energy, transferRate);
 
+	@SuppressWarnings("rawtypes")
 	@Override
 	public void updateEntity()
 	{
@@ -48,10 +48,10 @@ public class TileStasisField extends TileEntity implements IEnergyReceiver
 			{
 				EntityItem item = (EntityItem) obj;
 				int itemNumber = item.getEntityItem().stackSize;
-				if(this.buffer.getEnergyStored() >= (10 * itemNumber))
+				if(this.buffer.getEnergyStored() >= (RFPerTickPerItem * itemNumber))
 				{
 					item.age = 5500;
-					this.buffer.extractEnergy(10 * itemNumber, false);
+					this.buffer.modifyEnergyStored(-RFPerTickPerItem * itemNumber);
 				}
 			}
 		}
