@@ -13,8 +13,12 @@
 package steamcraft.common.blocks.machines;
 
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+import net.minecraftforge.common.util.ForgeDirection;
+import net.minecraftforge.fluids.IFluidContainerItem;
 import steamcraft.client.lib.RenderIDs;
 import steamcraft.common.tiles.TileCopperTank;
 
@@ -58,7 +62,6 @@ public class BlockCopperTank extends BaseContainerBlock
 		return RenderIDs.blockCopperTankRI;
 	}
 	
-	/*
 	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int sideIThink, float posXClickedIThink,
 			float p_149727_8_, float posZClickedIThink)
@@ -66,25 +69,23 @@ public class BlockCopperTank extends BaseContainerBlock
 		if (!world.isRemote)
 		{
 			TileCopperTank tank = (TileCopperTank) world.getTileEntity(x, y, z);
+			ItemStack stack = player.getHeldItem();
 			
-			if((player.getHeldItem() != null) && (player.getHeldItem().getItem() instanceof ItemFluidContainer))
+			if(stack != null && stack.getItem() instanceof IFluidContainerItem)
 			{
-				ItemFluidContainer container = (ItemFluidContainer) player.getHeldItem().getItem();
-				
-				if(tank.tank.getFluid() != null)
-					return true;
-				else if((container.getFluid(player.getHeldItem()) != null) && (TileCopperTank.capacity - tank.tank.getFluidAmount()
-						<= container.getFluid(player.getHeldItem()).amount))
+				IFluidContainerItem container = (IFluidContainerItem) stack.getItem();
+
+				int amount = 0;
+				if((amount = tank.fill(ForgeDirection.getOrientation(sideIThink), container.getFluid(stack), false)) > 0)
 				{
-					tank.fill(ForgeDirection.getOrientation(sideIThink), container.getFluid(player.getHeldItem()).copy(), true);
-					container.drain(player.getHeldItem(), container.getFluid(player.getHeldItem()).amount, true);
+					amount = tank.fill(ForgeDirection.getOrientation(sideIThink), container.getFluid(stack), true);
+					container.drain(stack, amount, true);
 					return true;
 				}
 			}
 			else
 				return false;
 		}
-		return false;
+		return true;
 	}
-	*/
 }

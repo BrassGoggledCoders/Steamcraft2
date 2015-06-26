@@ -12,6 +12,7 @@
  */
 package steamcraft.common.tiles;
 
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.fluids.Fluid;
@@ -29,12 +30,13 @@ import cpw.mods.fml.common.network.NetworkRegistry.TargetPoint;
  */
 public class TileCopperTank extends TileEntity implements IFluidHandler
 {
-	private static int ticksTillFluidUpdate = 5;
+	private static int ticksTillFluidUpdate = 100;
 	public static int capacity = 20000;
 
 	public FluidTank tank;
 	public float fluidScaled = 0;
 	private int ticksSinceUpdate = 0;
+	private int lastAmount = 0;
 
 	public TileCopperTank()
 	{
@@ -46,6 +48,12 @@ public class TileCopperTank extends TileEntity implements IFluidHandler
 	{
 		if(!this.worldObj.isRemote)
 		{
+			if (tank.getFluidAmount() != this.lastAmount)
+			{
+				updateClientFluid();
+				this.lastAmount = tank.getFluidAmount();
+			}
+			
 			ticksSinceUpdate++;
 			
 			if (this.ticksSinceUpdate >= ticksTillFluidUpdate)
@@ -69,6 +77,22 @@ public class TileCopperTank extends TileEntity implements IFluidHandler
 			InitPackets.network.sendToAllAround(new CopperTankPacket(this.xCoord, this.yCoord, this.zCoord,
 					0, "water"), new TargetPoint(this.worldObj.provider.dimensionId, this.xCoord, this.yCoord, this.zCoord, 50));
 		}
+	}
+	
+	@Override
+	public void writeToNBT(NBTTagCompound tag)
+	{
+		super.writeToNBT(tag);
+
+		this.tank.writeToNBT(tag);
+	}
+	
+	@Override
+	public void readFromNBT(NBTTagCompound tag)
+	{
+		super.readFromNBT(tag);
+
+		this.tank.readFromNBT(tag);
 	}
 	
 	@Override
