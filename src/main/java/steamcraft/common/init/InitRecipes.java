@@ -457,7 +457,7 @@ public class InitRecipes
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(InitItems.itemPowder, 3, 4), "dustCopper", "dustCopper",
 				"dustZinc"));
 		// Bronze Powder
-		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(InitItems.itemPowder, 3, 5),
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(InitItems.itemPowder, 4, 5),
 				"dustCopper", "dustCopper", "dustCopper", "dustTin"));
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(InitItems.itemMatch), new ItemStack(InitItems.itemResource, 1, 3),
 				"stickWood"));
