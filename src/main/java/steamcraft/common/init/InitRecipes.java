@@ -441,10 +441,15 @@ public class InitRecipes
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemMachinePart, 1, 8), "XRX", 'X', "plateCopper",
 				'R', new ItemStack(InitItems.itemSlimeRubber)));
 
+		// Wires
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockCopperWire, 1, 0), "CD", 'C', "ingotCopper", 'D',
 				new ItemStack(InitItems.itemDrawplate, 1, OreDictionary.WILDCARD_VALUE)));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockCopperWire, 3, 1), "WWW", "CCC", "WWW", 'C',
 				new ItemStack(InitBlocks.blockCopperWire, 1, 0), 'W', new ItemStack(Blocks.wool, 1, OreDictionary.WILDCARD_VALUE)));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockSteelWire, 1, 0), "CD", 'C', "ingotSteel", 'D',
+				new ItemStack(InitItems.itemDrawplate, 1, OreDictionary.WILDCARD_VALUE)));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockSteelWire, 3, 1), "WWW", "CCC", "WWW", 'C',
+				new ItemStack(InitBlocks.blockSteelWire, 1, 0), 'W', new ItemStack(Blocks.wool, 1, OreDictionary.WILDCARD_VALUE)));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemDrawplate), "S S", " S ", "S S", 'S', "plateCastIron"));
 
