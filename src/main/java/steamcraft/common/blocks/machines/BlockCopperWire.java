@@ -80,8 +80,6 @@ public class BlockCopperWire extends BaseContainerBlock
 	{
 		if(!world.isRemote)
 		{
-			System.out.println("Block placed.");
-			
 			TileCopperWire tile = (TileCopperWire) world.getTileEntity(x, y, z);
 
 			if(tile != null)
@@ -96,10 +94,7 @@ public class BlockCopperWire extends BaseContainerBlock
 	public void onNeighborChange(IBlockAccess world, int x, int y, int z, int tileX, int tileY, int tileZ)
 	{
 		if(world.getBlock(tileX, tileY, tileZ) != InitBlocks.blockCopperWire)
-		{
-			System.out.print(x + " " + y + " " + z);
-			System.out.println("Neighbor changed.");
-			
+		{			
 			TileCopperWire tile = (TileCopperWire) world.getTileEntity(x, y, z);
 			tile.updateConnections(); // only on server
 		}
@@ -110,9 +105,6 @@ public class BlockCopperWire extends BaseContainerBlock
 	{
 		if (!world.isRemote)
 		{
-			System.out.print(x + " " + y + " " + z);
-			System.out.println("Pipe removed.");
-			
 			TileCopperWire tile = (TileCopperWire) world.getTileEntity(x, y, z);
 	
 			if(tile != null)

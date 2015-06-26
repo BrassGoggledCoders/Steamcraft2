@@ -155,10 +155,10 @@ public class TileCopperTankRenderer extends TileEntitySpecialRenderer
 					tess.addVertexWithUV(1 - (6 * pixel), 2 * pixel, 6 * pixel, icon.getMinU(), icon.getMinV());
 					tess.addVertexWithUV(1 - (6 * pixel), 2 * pixel, 1 - (6 * pixel), icon.getMinU(), icon.getMaxV());
 					
-					tess.addVertexWithUV(1 - (6 * pixel), 15 * level, 1 - (6 * pixel), icon.getMaxU(), icon.getMaxV());
-					tess.addVertexWithUV(1 - (6 * pixel), 15 * level, 6 * pixel, icon.getMaxU(), icon.getMinV());
-					tess.addVertexWithUV(6 * pixel, 15 * level, 6 * pixel, icon.getMinU(), icon.getMinV());
-					tess.addVertexWithUV(6 * pixel, 15 * level , 1 - (6 * pixel), icon.getMinU(), icon.getMaxV());
+					tess.addVertexWithUV(1 - (6 * pixel), 2 * pixel + 14 * level, 1 - (6 * pixel), icon.getMaxU(), icon.getMaxV());
+					tess.addVertexWithUV(1 - (6 * pixel), 2 * pixel + 14 * level, 6 * pixel, icon.getMaxU(), icon.getMinV());
+					tess.addVertexWithUV(6 * pixel, 2 * pixel + 14 * level, 6 * pixel, icon.getMinU(), icon.getMinV());
+					tess.addVertexWithUV(6 * pixel, 2 * pixel + 14 * level , 1 - (6 * pixel), icon.getMinU(), icon.getMaxV());
 					
 					tess.addVertexWithUV(6 * pixel, 2 * pixel, 6 * pixel, icon.getMaxU(), icon.getMaxV());
 					tess.addVertexWithUV(6 * pixel, 2 * pixel + 14 * level, 6 * pixel, icon.getMaxU(), icon.getMinV());
