@@ -135,7 +135,7 @@ tile.blockCrystal.name=Etherium Crystal Block
 
 #Machines
 tile.blockCopperTank.name=Copper Tank
-tile.blockCopperTank.desc=Currently for recipes only!
+tile.blockCopperTank.desc=Stores up to 20 buckets.
 tile.blockCopperPipe.name=Copper Pipe
 tile.blockCopperPipe.desc=Right-Click with Spanner to change to extracting (pulling out fluids) mode.|Transfer (in): 50 mb/t per connection|Transfer (out): 200 mb/t per connection
 tile.blockCopperWire.0.name=Copper Wire
