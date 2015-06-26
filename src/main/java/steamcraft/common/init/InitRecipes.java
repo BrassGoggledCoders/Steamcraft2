@@ -269,13 +269,13 @@ public class InitRecipes
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockCapacitor), "PPP", "CCC", "PPP", 'P', "plateSteel", 'C', new ItemStack(
 				InitItems.itemMachinePart, 1, 9)));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockTeslaCoil), "WRW", "WRW", "III", 'I',
-				"ingotCastIron", 'W', "partWireCoil", 'R', "partCastIronRod"));
+				"ingotSteel", 'W', "partWireCoil", 'R', "partCastIronRod"));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockTurbine), "S S", "FGF", "SFS", 'S', "ingotSteel",
 				'F', "partFan", 'G', "partGenerator"));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockLightningRod), " R ", "CRC", "SSS", 'S',
 				"ingotSteel", 'R', "partCastIronRod", 'C', "plateCopper"));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockCharger), "PPP", "IWI", "PPP", 'I',
-				"ingotSteel", 'S', "plateSteel", 'W', InitBlocks.blockCopperWire));
+				"ingotSteel", 'P', "plateSteel", 'W', InitBlocks.blockCopperWire));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockArmorEditor), "PPP", "WWW", "PCP", 'W',
 				Blocks.crafting_table, 'P', "plateBrass", 'C', Blocks.chest));
 
