@@ -41,7 +41,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 public class TileCopperPipe extends TileEntity implements IFluidHandler
 {
-	static int ticksTillFluidUpdate = 200; //update the fluid in pipe every 10 seconds
+	private static int ticksTillFluidUpdate = 200; //update the fluid in pipe every 10 seconds
 	
 	public FluidNetwork network;
 	private boolean isMaster = false;
@@ -225,8 +225,12 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 		{
 			if(this.extract != null)
 			{
-				this.network.inputs.remove(new Coords(this.xCoord + this.extract.offsetX, this.yCoord + this.extract.offsetY, this.zCoord
-						+ this.extract.offsetZ, this.extract.getOpposite()));
+				Coords temp = new Coords(this.xCoord + this.extract.offsetX, this.yCoord + this.extract.offsetY, this.zCoord
+						+ this.extract.offsetZ, this.extract.getOpposite());
+				
+				this.network.inputs.remove(temp);
+				if(!this.network.outputs.contains(temp))
+					this.network.outputs.add(temp);
 	
 				this.extract = null;
 			}
@@ -240,7 +244,8 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 								+ this.extract.offsetZ, this.extract.getOpposite());
 
 						this.network.outputs.remove(temp);
-						this.network.inputs.add(temp);
+						if(!this.network.inputs.contains(temp))
+							this.network.inputs.add(temp);
 	
 						break;
 					}

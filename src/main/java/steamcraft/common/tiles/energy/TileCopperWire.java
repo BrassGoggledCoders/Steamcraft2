@@ -185,8 +185,12 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 		{
 			if(this.extract != null)
 			{
-				this.network.inputs.remove(new Coords(this.xCoord + this.extract.offsetX, this.yCoord + this.extract.offsetY, this.zCoord
-						+ this.extract.offsetZ, this.extract.getOpposite()));
+				Coords temp = new Coords(this.xCoord + this.extract.offsetX, this.yCoord + this.extract.offsetY, this.zCoord
+						+ this.extract.offsetZ, this.extract.getOpposite());
+				
+				this.network.inputs.remove(temp);
+				if(!this.network.outputs.contains(temp))
+					this.network.outputs.add(temp);
 	
 				this.extract = null;
 			}
@@ -200,11 +204,11 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 								+ this.extract.offsetZ, this.extract.getOpposite());
 
 						this.network.outputs.remove(temp);
-						this.network.inputs.add(temp);
+						if(!this.network.inputs.contains(temp))
+							this.network.inputs.add(temp);
 	
 						break;
 					}
-			System.out.println("Extraction is: " + this.extract != null);
 			this.updateClientConnections();
 		}
 	}

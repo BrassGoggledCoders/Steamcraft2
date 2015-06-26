@@ -13,16 +13,9 @@
 package steamcraft.common.blocks.machines;
 
 import net.minecraft.block.material.Material;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-
-import net.minecraftforge.common.util.ForgeDirection;
-import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.FluidTankInfo;
-import net.minecraftforge.fluids.ItemFluidContainer;
-
+import steamcraft.client.lib.RenderIDs;
 import steamcraft.common.tiles.TileCopperTank;
 
 /**
@@ -31,17 +24,41 @@ import steamcraft.common.tiles.TileCopperTank;
  */
 public class BlockCopperTank extends BaseContainerBlock
 {
+	public static float pixel = 1 / 16f;
+	
 	public BlockCopperTank(Material mat)
 	{
 		super(mat);
+		
+		this.setBlockBounds(2 * pixel, 0, 2 * pixel, 1 - 2 * pixel, 1, 1 - 2 * pixel);
+		this.useNeighborBrightness = true;
 	}
-
+	
 	@Override
 	public TileEntity createNewTileEntity(World var1, int var2)
 	{
 		return new TileCopperTank();
 	}
 
+	@Override
+	public boolean isOpaqueCube()
+	{
+		return false;
+	}
+
+	@Override
+	public boolean renderAsNormalBlock()
+	{
+		return false;
+	}
+
+	@Override
+	public int getRenderType()
+	{
+		return RenderIDs.blockCopperTankRI;
+	}
+	
+	/*
 	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int sideIThink, float posXClickedIThink,
 			float p_149727_8_, float posZClickedIThink)
@@ -64,5 +81,6 @@ public class BlockCopperTank extends BaseContainerBlock
 			return false;
 		return false;
 	}
+	*/
 
 }

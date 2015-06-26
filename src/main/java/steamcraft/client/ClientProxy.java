@@ -30,6 +30,7 @@ import steamcraft.client.renderers.block.BlockCastIronGateRenderer;
 import steamcraft.client.renderers.block.BlockCastIronLampRenderer;
 import steamcraft.client.renderers.block.BlockCastIronRailingRenderer;
 import steamcraft.client.renderers.block.BlockCopperPipeRenderer;
+import steamcraft.client.renderers.block.BlockCopperTankRenderer;
 import steamcraft.client.renderers.block.BlockCopperWireRenderer;
 import steamcraft.client.renderers.block.BlockSpiderEggRenderer;
 import steamcraft.client.renderers.entity.RenderAbandonedGolem;
@@ -55,6 +56,7 @@ import steamcraft.client.renderers.tile.TileBatteryRenderer;
 import steamcraft.client.renderers.tile.TileCastIronLampRenderer;
 import steamcraft.client.renderers.tile.TileChargerRenderer;
 import steamcraft.client.renderers.tile.TileCopperPipeRenderer;
+import steamcraft.client.renderers.tile.TileCopperTankRenderer;
 import steamcraft.client.renderers.tile.TileCopperWireRenderer;
 import steamcraft.client.renderers.tile.TileCrystalRenderer;
 import steamcraft.client.renderers.tile.TileHatchRenderer;
@@ -84,6 +86,7 @@ import steamcraft.common.init.InitItems;
 import steamcraft.common.tiles.EmptyTiles;
 import steamcraft.common.tiles.TileArmorEditor;
 import steamcraft.common.tiles.TileCopperPipe;
+import steamcraft.common.tiles.TileCopperTank;
 import steamcraft.common.tiles.TileTrunk;
 import steamcraft.common.tiles.energy.TileBattery;
 import steamcraft.common.tiles.energy.TileCharger;
@@ -158,6 +161,9 @@ public class ClientProxy extends CommonProxy
 		// Copper Pipe
 		ClientRegistry.bindTileEntitySpecialRenderer(TileCopperPipe.class, new TileCopperPipeRenderer());
 		RenderingRegistry.registerBlockHandler(new BlockCopperPipeRenderer());
+		// Copper Tank
+		ClientRegistry.bindTileEntitySpecialRenderer(TileCopperTank.class, new TileCopperTankRenderer());
+		RenderingRegistry.registerBlockHandler(new BlockCopperTankRenderer());
 		// Copper Wire
 		ClientRegistry.bindTileEntitySpecialRenderer(TileCopperWire.class, new TileCopperWireRenderer());
 		RenderingRegistry.registerBlockHandler(new BlockCopperWireRenderer());

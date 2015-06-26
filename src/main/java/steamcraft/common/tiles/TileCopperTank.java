@@ -13,13 +13,15 @@
 package steamcraft.common.tiles;
 
 import net.minecraft.tileentity.TileEntity;
-
 import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTank;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
+import steamcraft.common.init.InitPackets;
+import steamcraft.common.packets.CopperTankPacket;
+import cpw.mods.fml.common.network.NetworkRegistry.TargetPoint;
 
 /**
  * @author warlordjones
@@ -27,15 +29,48 @@ import net.minecraftforge.fluids.IFluidHandler;
  */
 public class TileCopperTank extends TileEntity implements IFluidHandler
 {
+	private static int ticksTillFluidUpdate = 5;
 	public static int capacity = 20000;
 
-	private FluidTank tank;
+	public FluidTank tank;
+	public float fluidScaled = 0;
+	private int ticksSinceUpdate = 0;
 
 	public TileCopperTank()
 	{
-		this.tank = new FluidTank(null, capacity);
+		this.tank = new FluidTank(capacity);
+	}
+	
+	@Override
+	public void updateEntity()
+	{
+		if(!this.worldObj.isRemote)
+		{
+			ticksSinceUpdate++;
+			
+			if (this.ticksSinceUpdate >= ticksTillFluidUpdate)
+			{
+				this.ticksSinceUpdate = 0;
+				this.updateClientFluid();
+			}
+		}
 	}
 
+	private void updateClientFluid()
+	{
+		if(this.tank.getFluid() != null)
+		{
+			InitPackets.network.sendToAllAround(new CopperTankPacket(this.xCoord, this.yCoord, this.zCoord,
+					this.tank.getFluidAmount(), this.tank.getFluid().getFluid().getName()), new TargetPoint(
+							this.worldObj.provider.dimensionId, this.xCoord, this.yCoord, this.zCoord, 50));
+		}
+		else
+		{
+			InitPackets.network.sendToAllAround(new CopperTankPacket(this.xCoord, this.yCoord, this.zCoord,
+					0, "water"), new TargetPoint(this.worldObj.provider.dimensionId, this.xCoord, this.yCoord, this.zCoord, 50));
+		}
+	}
+	
 	@Override
 	public int fill(ForgeDirection from, FluidStack resource, boolean doFill)
 	{
@@ -74,5 +109,4 @@ public class TileCopperTank extends TileEntity implements IFluidHandler
 	{
 		return new FluidTankInfo[] { this.tank.getInfo() };
 	}
-
 }

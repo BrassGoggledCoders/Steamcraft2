@@ -12,14 +12,12 @@
  */
 package steamcraft.common.init;
 
-import cpw.mods.fml.common.network.NetworkRegistry;
-import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
-import cpw.mods.fml.relauncher.Side;
-
 import steamcraft.common.packets.CopperPipeFluidPacket;
 import steamcraft.common.packets.CopperPipeFluidPacket.FluidNetworkPacketHandler;
 import steamcraft.common.packets.CopperPipePacket;
 import steamcraft.common.packets.CopperPipePacket.CopperPipePacketHandler;
+import steamcraft.common.packets.CopperTankPacket;
+import steamcraft.common.packets.CopperTankPacket.CopperTankPacketHandler;
 import steamcraft.common.packets.CopperWirePacket;
 import steamcraft.common.packets.CopperWirePacket.CopperWirePacketHandler;
 import steamcraft.common.packets.OpenContainerFromClientPacket;
@@ -28,6 +26,9 @@ import steamcraft.common.packets.TimeBombPacket;
 import steamcraft.common.packets.TimeBombPacket.TimeBombPacketHandler;
 import steamcraft.common.packets.UpdateClientsideInventoryPacket;
 import steamcraft.common.packets.UpdateClientsideInventoryPacket.UpdateClientsideInventoryPacketHandler;
+import cpw.mods.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
+import cpw.mods.fml.relauncher.Side;
 
 /**
  * @author decebaldecebal
@@ -48,7 +49,10 @@ public class InitPackets
 
 		network.registerMessage(CopperPipePacketHandler.class, CopperPipePacket.class, packetId++, Side.CLIENT);
 		network.registerMessage(FluidNetworkPacketHandler.class, CopperPipeFluidPacket.class, packetId++, Side.CLIENT);
+		network.registerMessage(CopperTankPacketHandler.class, CopperTankPacket.class, packetId++, Side.CLIENT);
 		network.registerMessage(CopperWirePacketHandler.class, CopperWirePacket.class, packetId++, Side.CLIENT);
+	
+		
 
 		network.registerMessage(UpdateClientsideInventoryPacketHandler.class, UpdateClientsideInventoryPacket.class, packetId++, Side.CLIENT);
 	}

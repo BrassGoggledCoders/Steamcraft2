@@ -79,6 +79,7 @@ import steamcraft.common.blocks.machines.BlockBloomery;
 import steamcraft.common.blocks.machines.BlockCapacitor;
 import steamcraft.common.blocks.machines.BlockCharger;
 import steamcraft.common.blocks.machines.BlockCopperPipe;
+import steamcraft.common.blocks.machines.BlockCopperTank;
 import steamcraft.common.blocks.machines.BlockCopperWire;
 import steamcraft.common.blocks.machines.BlockDropHammerAnvil;
 import steamcraft.common.blocks.machines.BlockIntake;
@@ -93,6 +94,7 @@ import steamcraft.common.blocks.machines.BlockTurbine;
 import steamcraft.common.tiles.TileArmorEditor;
 import steamcraft.common.tiles.TileBloomery;
 import steamcraft.common.tiles.TileCopperPipe;
+import steamcraft.common.tiles.TileCopperTank;
 import steamcraft.common.tiles.TileIntake;
 import steamcraft.common.tiles.TileNuclearBoiler;
 import steamcraft.common.tiles.TileSteamBoiler;
@@ -356,9 +358,9 @@ public class InitBlocks
 		RegistryHelper.registerContainerBlockWithDescAndMeta(blockCopperWire, TileCopperWire.class, "BlockCopperWire");
 
 		// Tanks
-		blockCopperTank = new BaseBlock(Material.iron).setBlockName("blockCopperTank");
+		blockCopperTank = new BlockCopperTank(Material.iron).setBlockName("blockCopperTank");
 
-		RegistryHelper.registerBlockWithDesc(blockCopperTank, "BlockCopperTank");
+		RegistryHelper.registerContainerBlockWithDesc(blockCopperTank, TileCopperTank.class, "BlockCopperTank");
 
 		blockRefinery = new BlockRefinery().setBlockName("blockRefinery");
 		// RegistryHelper.registerContainerBlockWithDesc(blockRefinery, TileRefinery.class, "BlockRefinery");
