@@ -52,6 +52,6 @@ public class LibInfo
 	public static String[] other = { "edb4e6c2-7d07-4438-a0bb-2f4aabbea24d" };
 	public static String[] names = Utils.merge(brassBlocksMembers, Boilerplate.devs, contributors, Boilerplate.donors, kihira, other);
 
-	public static float pixel = 1F / 16F / 2F;
+	public static float pixel = 1F / 32F;
 	public static float tPixel = 1F / 32F;
 }
