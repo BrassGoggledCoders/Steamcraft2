@@ -13,9 +13,12 @@
 package steamcraft.client.renderers.tile;
 
 import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.IIcon;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fluids.FluidTank;
 
 import org.lwjgl.opengl.GL11;
 
@@ -61,15 +64,15 @@ public class TileCopperTankRenderer extends TileEntitySpecialRenderer
 
 		tess.startDrawingQuads();
 		{
-				tess.addVertexWithUV(4 * pixel, 0, 1 - (4 * pixel), 12 * tPixel, 16 * tPixel);
-				tess.addVertexWithUV(4 * pixel, 0, 4 * pixel, 12 * tPixel, 0 * tPixel);
-				tess.addVertexWithUV(1 - (4 * pixel), 0, 4 * pixel, 0 * tPixel, 0 * tPixel);
-				tess.addVertexWithUV(1 - (4 * pixel), 0 , 1 - (4 * pixel), 0 * tPixel, 16 * tPixel);
+				tess.addVertexWithUV(4 * pixel, 0, 1 - (4 * pixel), 24 * tPixel, 12 * tPixel);
+				tess.addVertexWithUV(4 * pixel, 0, 4 * pixel, 24 * tPixel, 0 * tPixel);
+				tess.addVertexWithUV(1 - (4 * pixel), 0, 4 * pixel, 12 * tPixel, 0 * tPixel);
+				tess.addVertexWithUV(1 - (4 * pixel), 0 , 1 - (4 * pixel), 12 * tPixel, 12 * tPixel);
 
-				tess.addVertexWithUV(1 - (4 * pixel), 1, 1 - (4 * pixel), 12 * tPixel, 16 * tPixel);
-				tess.addVertexWithUV(1 - (4 * pixel), 1, 4 * pixel, 12 * tPixel, 0 * tPixel);
-				tess.addVertexWithUV(4 * pixel, 1, 4 * pixel, 0 * tPixel, 0 * tPixel);
-				tess.addVertexWithUV(4 * pixel, 1, 1 - (4 * pixel), 0 * tPixel, 16 * tPixel);
+				tess.addVertexWithUV(1 - (4 * pixel), 1, 1 - (4 * pixel), 24 * tPixel, 12 * tPixel);
+				tess.addVertexWithUV(1 - (4 * pixel), 1, 4 * pixel, 24 * tPixel, 0 * tPixel);
+				tess.addVertexWithUV(4 * pixel, 1, 4 * pixel, 12 * tPixel, 0 * tPixel);
+				tess.addVertexWithUV(4 * pixel, 1, 1 - (4 * pixel), 12 * tPixel, 12 * tPixel);
 
 				tess.addVertexWithUV(4 * pixel, 0, 4 * pixel, 12 * tPixel, 16 * tPixel);
 				tess.addVertexWithUV(4 * pixel, 1, 4 * pixel, 12 * tPixel, 0 * tPixel);
@@ -93,15 +96,15 @@ public class TileCopperTankRenderer extends TileEntitySpecialRenderer
 
 				if(ConfigGeneral.drawInside)
 				{
-					tess.addVertexWithUV(1 - (4 * pixel), 0, 1 - (4 * pixel), 0 * tPixel, 16 * tPixel);
-					tess.addVertexWithUV(1 - (4 * pixel), 0, 4 * pixel, 0 * tPixel, 0 * tPixel);
-					tess.addVertexWithUV(4 * pixel, 0, 4 * pixel, 12 * tPixel, 0 * tPixel);
-					tess.addVertexWithUV(4 * pixel, 0, 1 - (4 * pixel), 12 * tPixel, 16 * tPixel);
+					tess.addVertexWithUV(1 - (4 * pixel), 0, 1 - (4 * pixel), 12 * tPixel, 12 * tPixel);
+					tess.addVertexWithUV(1 - (4 * pixel), 0, 4 * pixel, 12 * tPixel, 0 * tPixel);
+					tess.addVertexWithUV(4 * pixel, 0, 4 * pixel, 24 * tPixel, 0 * tPixel);
+					tess.addVertexWithUV(4 * pixel, 0, 1 - (4 * pixel), 24 * tPixel, 12 * tPixel);
 					
-					tess.addVertexWithUV(4 * pixel, 1, 1 - (4 * pixel), 0 * tPixel, 16 * tPixel);
-					tess.addVertexWithUV(4 * pixel, 1, 4 * pixel, 0 * tPixel, 0 * tPixel);
-					tess.addVertexWithUV(1 - (4 * pixel), 1, 4 * pixel, 12 * tPixel, 0 * tPixel);
-					tess.addVertexWithUV(1 - (4 * pixel), 1, 1 - (4 * pixel), 12 * tPixel, 16 * tPixel);
+					tess.addVertexWithUV(4 * pixel, 1, 1 - (4 * pixel), 12 * tPixel, 12 * tPixel);
+					tess.addVertexWithUV(4 * pixel, 1, 4 * pixel, 12 * tPixel, 0 * tPixel);
+					tess.addVertexWithUV(1 - (4 * pixel), 1, 4 * pixel, 24 * tPixel, 0 * tPixel);
+					tess.addVertexWithUV(1 - (4 * pixel), 1, 1 - (4 * pixel), 24 * tPixel, 12 * tPixel);
 					
 					tess.addVertexWithUV(1 - (4 * pixel), 0, 4 * pixel, 0 * tPixel, 16 * tPixel);
 					tess.addVertexWithUV(1 - (4 * pixel), 1, 4 * pixel, 0 * tPixel, 0 * tPixel);
@@ -126,22 +129,34 @@ public class TileCopperTankRenderer extends TileEntitySpecialRenderer
 		}
 		tess.draw();
 
-		/*
 		if(ConfigGeneral.drawFluid)
 		{
-			float level = tank.fluidScaled;
-
-			if((tank.fluidInPipe != null) && (level > 0))
+			FluidTank ft = tank.tank;
+			
+			if((ft != null) && ft.getFluid() != null && tank.fluidScaled > 0)
 			{
+				float level = tank.fluidScaled;
+
 				tess.startDrawingQuads();
 				{
-					IIcon icon = tank.fluidInPipe.getIcon();
+					IIcon icon = ft.getFluid().getFluid().getIcon();
 					if (icon == null)
-						icon = tank.fluidInPipe.getBlock().getIcon(0, 0);
+						icon = ft.getFluid().getFluid().getBlock().getIcon(0, 0);
 					if (icon != null)
 					{
 						this.bindTexture(TextureMap.locationBlocksTexture);
 	
+						tess.addVertexWithUV(8 * pixel, 0, 1 - (8 * pixel), icon.getMaxU(), icon.getMaxV());
+						tess.addVertexWithUV(8 * pixel, 0, 8 * pixel, icon.getMaxU(), icon.getMinV());
+						tess.addVertexWithUV(1 - (8 * pixel), 0, 8 * pixel, icon.getMinU(), icon.getMinV());
+						tess.addVertexWithUV(1 - (8 * pixel), 0 , 1 - (8 * pixel), icon.getMinU(), icon.getMaxV());
+						
+						tess.addVertexWithUV(1 - (8 * pixel), 16 * level, 1 - (8 * pixel), icon.getMaxU(), icon.getMaxV());
+						tess.addVertexWithUV(1 - (8 * pixel), 16 * level, 8 * pixel, icon.getMaxU(), icon.getMinV());
+						tess.addVertexWithUV(8 * pixel, 16 * level, 8 * pixel, icon.getMinU(), icon.getMinV());
+						tess.addVertexWithUV(8 * pixel, 16 * level , 1 - (8 * pixel), icon.getMinU(), icon.getMaxV());
+						
+						/*
 						tess.addVertexWithUV((1 - (15 * pixel)) + level, 1 - (15 * pixel), (1 - (15 * pixel)) + level, icon.getMinU(), icon.getMaxV());
 						tess.addVertexWithUV((1 - (15 * pixel)) + level, 1, (1 - (15 * pixel)) + level, icon.getMaxU(), icon.getMaxV());
 						tess.addVertexWithUV((15 * pixel) - level, 1, (1 - (15 * pixel)) + level, icon.getMaxU(), icon.getMinV());
@@ -161,6 +176,7 @@ public class TileCopperTankRenderer extends TileEntitySpecialRenderer
 						tess.addVertexWithUV((15 * pixel) - level, 1, (1 - (15 * pixel)) + level, icon.getMaxU(), icon.getMaxV());
 						tess.addVertexWithUV((15 * pixel) - level, 1, (15 * pixel) - level, icon.getMaxU(), icon.getMinV());
 						tess.addVertexWithUV((15 * pixel) - level, 1 - (15 * pixel), (15 * pixel) - level, icon.getMinU(), icon.getMinV());
+						*/
 					}
 				}
 				tess.draw();
@@ -168,6 +184,5 @@ public class TileCopperTankRenderer extends TileEntitySpecialRenderer
 				this.bindTexture(TileCopperTankRenderer.texture);
 			}
 		}
-		*/
 	}
 }
