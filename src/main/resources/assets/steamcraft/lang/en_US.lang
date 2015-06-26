@@ -144,8 +144,7 @@ tile.blockCopperWire.1.name=Insulated Copper Wire
 tile.blockCopperWire.1.desc=Right-Click with Spanner to change to extracting (pulling out energy) mode.|Won't electrocute you.|Transfer: 2500 RF/t per connection
 
 tile.blockBloomery.name=Bloomery
-tile.blockBloomery.desc=Smelts iron ore into steel. Ore in the first slot, four coal in the second, and fuel in the bottom slot.
-tile.blockBloomery.documentation=Smelts iron ore into steel. Ore in the first slot, four coal in the second, and fuel in the bottom slot.
+tile.blockBloomery.desc=Smelts one iron ingot and 4 coal into steel. Iron ingots and coal go in the top slots and fuel goes in the bottom slot.
 tile.blockSteamBoiler.name=Combustion Boiler
 tile.blockSteamBoiler.desc=Uses fuel to heat water into steam
 tile.blockNuclearBoiler.name=Nuclear-Fired Boiler

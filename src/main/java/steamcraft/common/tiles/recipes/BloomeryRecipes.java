@@ -17,10 +17,8 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-
 import steamcraft.common.init.InitItems;
 
 /**
@@ -39,8 +37,7 @@ public class BloomeryRecipes
 
 	private BloomeryRecipes()
 	{
-		this.addBloomeryRecipe(new ItemStack(Blocks.iron_ore), new ItemStack(Items.coal, 4), new ItemStack(InitItems.itemIngot, 2, 6));
-		this.addBloomeryRecipe(new ItemStack(Items.iron_ingot), new ItemStack(Items.coal, 2), new ItemStack(InitItems.itemIngot, 1, 6));
+		this.addBloomeryRecipe(new ItemStack(Items.iron_ingot), new ItemStack(Items.coal, 4), new ItemStack(InitItems.itemIngot, 1, 6));
 	}
 
 	public void addBloomeryRecipe(ItemStack input, ItemStack input2, ItemStack result)

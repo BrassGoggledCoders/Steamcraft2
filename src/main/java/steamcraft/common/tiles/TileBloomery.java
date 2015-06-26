@@ -30,6 +30,8 @@ import boilerplate.common.baseclasses.BaseTileWithInventory;
  */
 public class TileBloomery extends BaseTileWithInventory
 {
+	private static int timeTillCooked = 600;
+	
 	public TileBloomery()
 	{
 		super(4);
@@ -66,7 +68,7 @@ public class TileBloomery extends BaseTileWithInventory
 	@SideOnly(Side.CLIENT)
 	public int getCookProgressScaled(int i)
 	{
-		return (this.cookTime * i) / 400;
+		return (this.cookTime * i) / timeTillCooked;
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -118,7 +120,7 @@ public class TileBloomery extends BaseTileWithInventory
 			{
 				++this.cookTime;
 
-				if(this.cookTime == 400)
+				if(this.cookTime == timeTillCooked)
 				{
 					this.cookTime = 0;
 					this.smeltItem();
