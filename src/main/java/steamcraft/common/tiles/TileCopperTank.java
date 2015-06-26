@@ -24,7 +24,7 @@ import steamcraft.common.packets.CopperTankPacket;
 import cpw.mods.fml.common.network.NetworkRegistry.TargetPoint;
 
 /**
- * @author warlordjones
+ * @author Decebaldecebal
  *
  */
 public class TileCopperTank extends TileEntity implements IFluidHandler
@@ -55,7 +55,7 @@ public class TileCopperTank extends TileEntity implements IFluidHandler
 			}
 		}
 	}
-
+	
 	private void updateClientFluid()
 	{
 		if(this.tank.getFluid() != null)

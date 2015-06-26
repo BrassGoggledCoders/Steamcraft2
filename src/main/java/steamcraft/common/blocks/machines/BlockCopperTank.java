@@ -19,7 +19,7 @@ import steamcraft.client.lib.RenderIDs;
 import steamcraft.common.tiles.TileCopperTank;
 
 /**
- * @author warlordjones
+ * @author Decebaldecebal
  *
  */
 public class BlockCopperTank extends BaseContainerBlock

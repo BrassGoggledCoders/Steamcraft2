@@ -24,7 +24,7 @@ import steamcraft.common.tiles.TileCopperTank;
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 
 /**
- * @author Surseance
+ * @author Decebaldecebal
  *
  */
 public class BlockCopperTankRenderer implements ISimpleBlockRenderingHandler

@@ -87,7 +87,7 @@ public class CopperTankPacket implements IMessage
 				if(tank.fluidScaled > BlockCopperTank.pixel)
 					tank.fluidScaled = BlockCopperTank.pixel;
 			}
-
+			
 			return null;
 		}
 
