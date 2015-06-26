@@ -1,6 +1,6 @@
 Steamcraft 2 for Minecraft 1.7.10
 ================================
-Please read the wiki for articles relating to the features in this mod.
+Please read the wiki - http://ftb.gamepedia.com/Steamcraft2 - for articles relating to the features in this mod.
 
 About:
 ======
@@ -15,7 +15,7 @@ Committing Changes:
 Anyone is welcome to make changes to this mod, but it must be said that we will not approve of
 every change if we deem that it does not fit the theme of the mod. Though the mod is open-source,
 we still possess the power of discretion. Yes, there is an API, but its details are not fully
-fleshed out/documented. Please give us some time before we make it suitable. Our API can be found here: https://github.com/BrassGoggledCoders/Boilerplate in the 'steamapi' packages.
+fleshed out/documented. Please give us some time before we make it suitable.
 
 You can find the latest builds of our mod on Jenkins:
 http://jenkins.k-4u.nl/job/SteamCraft%202/
@@ -60,10 +60,6 @@ Email: brasscoders@gmail.com <br/>
 Twitter: www.twitter.com/brasscoders <br/>
 Skype: arona.jones <br/>
 
-Suppourt Us
+Support Us
 ===========
-Want to support us?
-
-Simply using the adfly links to download the mod supports the team in creating more awesome features. Want to support more directly?
-
 http://www.patreon.com/BrassGoggledCoders
