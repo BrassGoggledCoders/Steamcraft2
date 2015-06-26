@@ -39,7 +39,6 @@ public class BlockCopperTankRenderer implements ISimpleBlockRenderingHandler
 		
 		te.blockType = block;
 		te.blockMetadata = metadata;
-		//te.tank = new FluidTank(0);
 
 		TileEntityRendererDispatcher.instance.renderTileEntityAt(te, 0.0D, 0.0D, 0.0D, 0.0F);
 		GL11.glEnable(32826);

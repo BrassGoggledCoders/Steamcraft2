@@ -13,8 +13,11 @@
 package steamcraft.common.blocks.machines;
 
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+import net.minecraftforge.common.util.ForgeDirection;
+import net.minecraftforge.fluids.ItemFluidContainer;
 import steamcraft.client.lib.RenderIDs;
 import steamcraft.common.tiles.TileCopperTank;
 
@@ -63,24 +66,28 @@ public class BlockCopperTank extends BaseContainerBlock
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int sideIThink, float posXClickedIThink,
 			float p_149727_8_, float posZClickedIThink)
 	{
-		TileCopperTank tank = (TileCopperTank) world.getTileEntity(x, y, z);
-		FluidTankInfo[] info = tank.getTankInfo(ForgeDirection.getOrientation(sideIThink));
-		if((player.getHeldItem() != null) && (player.getHeldItem().getItem() instanceof ItemFluidContainer))
+		if (!world.isRemote)
 		{
-			ItemFluidContainer container = (ItemFluidContainer) player.getHeldItem().getItem();
-			if(info[0].fluid != null)
-				return true;
-			else if((container.getFluid(new ItemStack(container)) != null) && (info[0].capacity != TileCopperTank.capacity))
+			TileCopperTank tank = (TileCopperTank) world.getTileEntity(x, y, z);
+			
+			if((player.getHeldItem() != null) && (player.getHeldItem().getItem() instanceof ItemFluidContainer))
 			{
-				container.drain(new ItemStack(container), 1000, true);
-				tank.fill(ForgeDirection.getOrientation(sideIThink), new FluidStack(container.getFluid(new ItemStack(container)), 1000), true);
-				return true;
+				ItemFluidContainer container = (ItemFluidContainer) player.getHeldItem().getItem();
+				
+				if(tank.tank.getFluid() != null)
+					return true;
+				else if((container.getFluid(player.getHeldItem()) != null) && (TileCopperTank.capacity - tank.tank.getFluidAmount()
+						<= container.getFluid(player.getHeldItem()).amount))
+				{
+					tank.fill(ForgeDirection.getOrientation(sideIThink), container.getFluid(player.getHeldItem()).copy(), true);
+					container.drain(player.getHeldItem(), container.getFluid(player.getHeldItem()).amount, true);
+					return true;
+				}
 			}
+			else
+				return false;
 		}
-		else
-			return false;
 		return false;
 	}
 	*/
-
 }
