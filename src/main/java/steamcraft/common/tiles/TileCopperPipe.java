@@ -654,7 +654,7 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 
 	public static class FluidNetwork
 	{
-		public static final short capacityPerPipe = (short) 1000;
+		public static final short capacityPerPipe = (short) 500;
 
 		private static final byte ticksTillUpdate = 1;
 
@@ -709,7 +709,7 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 		{
 			if(this.tank.getFluid() != null)
 			{
-				this.fluidScaled = (this.tank.getFluidAmount() / (float) this.size / FluidNetwork.capacityPerPipe) * pixel;
+				this.fluidScaled = (this.tank.getFluidAmount() / (float) (this.size * FluidNetwork.capacityPerPipe)) * pixel;
 
 				if(this.fluidScaled > pixel)
 					this.fluidScaled = pixel;
@@ -807,13 +807,13 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 		public void setSize(int size)
 		{
 			this.size = size;
-			this.tank.setCapacity(200 * this.size);
+			this.tank.setCapacity(capacityPerPipe * this.size);
 		}
 		
 		public void changeSize(int with)
 		{
 			this.size += with;
-			this.tank.setCapacity(200 * this.size);
+			this.tank.setCapacity(capacityPerPipe * this.size);
 		}
 
 		public void writeToNBT(NBTTagCompound tag)
