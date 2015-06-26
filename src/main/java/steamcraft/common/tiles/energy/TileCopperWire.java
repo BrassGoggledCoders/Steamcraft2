@@ -24,7 +24,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import steamcraft.common.init.InitBlocks;
 import steamcraft.common.init.InitPackets;
-import steamcraft.common.packets.CopperWirePacket;
+import steamcraft.common.packets.WirePacket;
 import steamcraft.common.tiles.TileCopperPipe.Coords;
 import cofh.api.energy.EnergyStorage;
 import cofh.api.energy.IEnergyConnection;
@@ -38,14 +38,21 @@ import cpw.mods.fml.common.network.NetworkRegistry.TargetPoint;
  *
  */
 public class TileCopperWire extends TileEntity implements IEnergyHandler
-{
+{	
+	private static int copperWireCapacity = 5000;
+	private static int copperWireTransfer = 1000;
+	
+	
+	protected int wireCapacity = copperWireCapacity;
+	protected int wireTransfer = copperWireTransfer;
+	
 	public EnergyNetwork network;
 	private boolean isMaster = false;
 
 	public ForgeDirection extract = null;
 	public ForgeDirection[] connections = new ForgeDirection[6];
 	private Coords masterCoords = null;
-
+	
 	@Override
 	public void updateEntity()
 	{
@@ -121,7 +128,7 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 
 		if(this.isMaster)
 		{
-			this.network = EnergyNetwork.readFromNBT(tag);
+			this.network = EnergyNetwork.readFromNBT(tag, this.wireCapacity, this.wireTransfer);
 			this.setMaster(this);
 		}
 	}
@@ -307,7 +314,7 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 				System.out.print(this.xCoord + " " + this.yCoord + " " + this.zCoord);
 				System.out.println("This network null, creating a new one.");
 				
-				this.network = new EnergyNetwork(1);
+				this.network = new EnergyNetwork(1, this.wireCapacity, this.wireTransfer);
 				this.setMaster(this);
 			}
 
@@ -336,7 +343,7 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 	{
 		if((this.network != null) && !this.worldObj.isRemote)
 		{
-			InitPackets.network.sendToAllAround(new CopperWirePacket(this.xCoord, this.yCoord, this.zCoord, this.connections, this.extract),
+			InitPackets.network.sendToAllAround(new WirePacket(this.xCoord, this.yCoord, this.zCoord, this.connections, this.extract),
 					new TargetPoint(this.worldObj.provider.dimensionId, this.xCoord, this.yCoord, this.zCoord, 100));
 		}
 	}
@@ -469,7 +476,7 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 				
 				for(ForgeDirection dir : this.connections)
 					if(dir != null)
-						if(this.isCopperWire(dir))
+						if(this.isWire(dir))
 						{
 							TileCopperWire wire = (TileCopperWire) this.worldObj.getTileEntity(this.xCoord + dir.offsetX, this.yCoord + dir.offsetY,
 									this.zCoord + dir.offsetZ);
@@ -479,7 +486,7 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 							
 							wire.network.setSize(0);
 							
-							wire.network = new EnergyNetwork(1);
+							wire.network = new EnergyNetwork(1, this.wireCapacity, this.wireTransfer);
 							wire.setMaster(wire);
 							if(this.network != null)
 							{
@@ -521,19 +528,24 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 	
 	private boolean canConnect(ForgeDirection dir)
 	{
-		return this.isEnergyHandler(dir) || this.isCopperWire(dir);
+		return this.isEnergyHandler(dir) || this.isWire(dir);
 	}
 
-	private boolean isCopperWire(ForgeDirection dir)
+	protected boolean isWire(ForgeDirection dir)
 	{
 		return this.worldObj.getBlock(this.xCoord + dir.offsetX, this.yCoord + dir.offsetY, this.zCoord + dir.offsetZ) == InitBlocks.blockCopperWire;
 	}
 
-	private boolean isEnergyHandler(ForgeDirection dir)
+	protected boolean isEnergyHandler(ForgeDirection dir)
 	{
 		return (this.worldObj.getTileEntity(this.xCoord + dir.offsetX, this.yCoord + dir.offsetY, this.zCoord + dir.offsetZ) instanceof IEnergyConnection)
 				&& ((IEnergyConnection) this.worldObj.getTileEntity(this.xCoord + dir.offsetX, this.yCoord + dir.offsetY, this.zCoord + dir.offsetZ))
-						.canConnectEnergy(dir.getOpposite()) && !this.isCopperWire(dir);
+						.canConnectEnergy(dir.getOpposite()) && !this.isWire(dir) && !this.isSteelWire(dir);
+	}
+	
+	protected boolean isSteelWire(ForgeDirection dir)
+	{
+		return this.worldObj.getBlock(this.xCoord + dir.offsetX, this.yCoord + dir.offsetY, this.zCoord + dir.offsetZ) == InitBlocks.blockSteelWire;
 	}
 
 	@Override
@@ -547,7 +559,7 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 	{
 		if((from != this.extract) && (this.network != null)) //should actively receive energy from where it is not actively pulling
 		{
-			int amount = Math.min(maxReceive, EnergyNetwork.maxTransferPerTile);
+			int amount = Math.min(maxReceive, wireTransfer);
 
 			return this.network.buffer.receiveEnergy(amount, simulate);
 		}
@@ -560,7 +572,7 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 	{
 		if((from != this.extract) && (this.network != null))
 		{
-			int amount = Math.min(maxExtract, EnergyNetwork.maxTransferPerTile);
+			int amount = Math.min(maxExtract, wireTransfer);
 
 			return this.network.buffer.extractEnergy(amount, simulate);
 		}
@@ -588,9 +600,8 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 
 	private static class EnergyNetwork
 	{
-		private static final short capacityPerWire = (short) 5000;
-
-		private static final short maxTransferPerTile = 1000;
+		private int capacityPerWire;
+		private int maxTransferPerTile;
 
 		private boolean updateNetworkForWires = false;
 
@@ -601,11 +612,13 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 		private ArrayList<Coords> inputs = new ArrayList<Coords>();
 		private ArrayList<Coords> outputs = new ArrayList<Coords>();
 
-		private EnergyNetwork(int size)
+		private EnergyNetwork(int size, int wireCapacity, int wireTransfer)
 		{
 			this.size = size;
 
-			this.buffer = new EnergyStorage(capacityPerWire * size, maxTransferPerTile);
+			this.capacityPerWire = wireCapacity;
+			this.maxTransferPerTile = wireTransfer;
+			this.buffer = new EnergyStorage(wireCapacity * size, maxTransferPerTile);
 		}
 
 		private void updateNetwork(TileCopperWire wire)
@@ -707,11 +720,11 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 			tag.setTag("network", temp);
 		}
 
-		private static EnergyNetwork readFromNBT(NBTTagCompound tag)
+		private static EnergyNetwork readFromNBT(NBTTagCompound tag, int wireCapacity, int wireTransfer)
 		{
 			NBTTagCompound temp = tag.getCompoundTag("network");
 
-			EnergyNetwork network = new EnergyNetwork(1);
+			EnergyNetwork network = new EnergyNetwork(1, wireCapacity, wireTransfer);
 
 			network.updateNetworkForWires = true;
 			network.tempEnergy = temp.getInteger("energyLevel");

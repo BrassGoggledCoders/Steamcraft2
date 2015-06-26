@@ -53,7 +53,7 @@ public class ItemSpanner extends UniversalWrench
 	
 				pipe.changeExtracting();
 			}
-			else if(block == InitBlocks.blockCopperWire)
+			else if(block == InitBlocks.blockCopperWire || block == InitBlocks.blockSteelWire)
 			{
 				TileCopperWire wire = (TileCopperWire) world.getTileEntity(x, y, z);
 	

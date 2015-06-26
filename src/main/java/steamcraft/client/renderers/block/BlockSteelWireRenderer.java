@@ -23,7 +23,7 @@ import net.minecraftforge.common.util.ForgeDirection;
 
 import org.lwjgl.opengl.GL11;
 import steamcraft.client.lib.RenderIDs;
-import steamcraft.common.tiles.energy.TileCopperWire;
+import steamcraft.common.tiles.energy.TileSteelWire;
 
 /**
  * @author Surseance
@@ -37,7 +37,7 @@ public class BlockSteelWireRenderer implements ISimpleBlockRenderingHandler
 		GL11.glRotatef(90.0F, 0.0F, 1.0F, 0.0F);
 		GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
 
-		TileCopperWire te = new TileCopperWire();
+		TileSteelWire te = new TileSteelWire();
 
 		System.arraycopy(ForgeDirection.VALID_DIRECTIONS, 0, te.connections, 0, ForgeDirection.VALID_DIRECTIONS.length);
 
@@ -64,6 +64,6 @@ public class BlockSteelWireRenderer implements ISimpleBlockRenderingHandler
 	@Override
 	public int getRenderId()
 	{
-		return RenderIDs.blockCopperWireRI;
+		return RenderIDs.blockSteelWireRI;
 	}
 }

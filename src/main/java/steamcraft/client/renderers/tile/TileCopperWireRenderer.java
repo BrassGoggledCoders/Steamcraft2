@@ -30,12 +30,12 @@ import steamcraft.common.tiles.energy.TileCopperWire;
  */
 public class TileCopperWireRenderer extends TileEntitySpecialRenderer
 {
-	private static final ResourceLocation texture = new ResourceLocation(ModInfo.PREFIX + "textures/blocks/blockCopperWire.png");
-	private static final ResourceLocation texture1 = new ResourceLocation(ModInfo.PREFIX + "textures/blocks/blockInsulatedWire.png");
-
 	private static float pixel = LibInfo.pixel;
 	private static float tPixel = LibInfo.tPixel;
-
+	
+	protected ResourceLocation texture = new ResourceLocation(ModInfo.PREFIX + "textures/blocks/blockCopperWire.png");
+	protected ResourceLocation texture1 = new ResourceLocation(ModInfo.PREFIX + "textures/blocks/blockInsulatedCopperWire.png");
+	
 	@Override
 	public void renderTileEntityAt(TileEntity tile, double transX, double transY, double transZ, float f)
 	{
@@ -47,9 +47,9 @@ public class TileCopperWireRenderer extends TileEntitySpecialRenderer
 		TileCopperWire wire = (TileCopperWire) tile;
 
 		if(tile.getBlockMetadata() == 0)
-			this.bindTexture(TileCopperWireRenderer.texture);
+			this.bindTexture(texture);
 		else
-			this.bindTexture(TileCopperWireRenderer.texture1);
+			this.bindTexture(texture1);
 		this.drawCore(wire);
 
 		for(ForgeDirection dir : wire.connections)
@@ -61,7 +61,7 @@ public class TileCopperWireRenderer extends TileEntitySpecialRenderer
 
 		GL11.glEnable(GL11.GL_LIGHTING);
 
-		GL11.glTranslated(-transX, -transY + -3F, -transZ);
+		GL11.glTranslated(-transX, -transY, -transZ);
 
 		GL11.glPopMatrix();
 	}

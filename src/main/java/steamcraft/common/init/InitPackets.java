@@ -18,12 +18,10 @@ import steamcraft.common.packets.CopperPipePacket;
 import steamcraft.common.packets.CopperPipePacket.CopperPipePacketHandler;
 import steamcraft.common.packets.CopperTankPacket;
 import steamcraft.common.packets.CopperTankPacket.CopperTankPacketHandler;
-import steamcraft.common.packets.CopperWirePacket;
-import steamcraft.common.packets.CopperWirePacket.CopperWirePacketHandler;
+import steamcraft.common.packets.WirePacket;
+import steamcraft.common.packets.WirePacket.WirePacketHandler;
 import steamcraft.common.packets.OpenContainerFromClientPacket;
 import steamcraft.common.packets.OpenContainerFromClientPacket.OpenContainerFromClientPacketHandler;
-import steamcraft.common.packets.SteelWirePacket;
-import steamcraft.common.packets.SteelWirePacket.SteelWirePacketHandler;
 import steamcraft.common.packets.TimeBombPacket;
 import steamcraft.common.packets.TimeBombPacket.TimeBombPacketHandler;
 import steamcraft.common.packets.UpdateClientsideInventoryPacket;
@@ -52,11 +50,8 @@ public class InitPackets
 		network.registerMessage(CopperPipePacketHandler.class, CopperPipePacket.class, packetId++, Side.CLIENT);
 		network.registerMessage(FluidNetworkPacketHandler.class, CopperPipeFluidPacket.class, packetId++, Side.CLIENT);
 		network.registerMessage(CopperTankPacketHandler.class, CopperTankPacket.class, packetId++, Side.CLIENT);
-		network.registerMessage(CopperWirePacketHandler.class, CopperWirePacket.class, packetId++, Side.CLIENT);
-		network.registerMessage(SteelWirePacketHandler.class, SteelWirePacket.class, packetId++, Side.CLIENT);
-	
+		network.registerMessage(WirePacketHandler.class, WirePacket.class, packetId++, Side.CLIENT);
 		
-
 		network.registerMessage(UpdateClientsideInventoryPacketHandler.class, UpdateClientsideInventoryPacket.class, packetId++, Side.CLIENT);
 	}
 }

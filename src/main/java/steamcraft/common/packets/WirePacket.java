@@ -31,17 +31,17 @@ import boilerplate.client.ClientHelper;
  * @author decebaldecebal
  *
  */
-public class SteelWirePacket implements IMessage
+public class WirePacket implements IMessage
 {
 	private int x, y, z;
 	ForgeDirection[] connections;
 	ForgeDirection extract;
 
-	public SteelWirePacket()
+	public WirePacket()
 	{
 	} // REQUIRED
 
-	public SteelWirePacket(int x, int y, int z, ForgeDirection[] connections, ForgeDirection extract)
+	public WirePacket(int x, int y, int z, ForgeDirection[] connections, ForgeDirection extract)
 	{
 		this.x = x;
 		this.y = y;
@@ -84,11 +84,11 @@ public class SteelWirePacket implements IMessage
 		
 	}
 
-	public static class SteelWirePacketHandler implements IMessageHandler<SteelWirePacket, IMessage>
+	public static class WirePacketHandler implements IMessageHandler<WirePacket, IMessage>
 	{
 		@Override
 		@SideOnly(Side.CLIENT)
-		public IMessage onMessage(SteelWirePacket message, MessageContext ctx)
+		public IMessage onMessage(WirePacket message, MessageContext ctx)
 		{
 			World world = ClientHelper.world();
 
