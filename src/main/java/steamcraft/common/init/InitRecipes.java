@@ -258,7 +258,7 @@ public class InitRecipes
 				'P', "plateBrass", 'B', Items.bucket));
 		GameRegistry.addShapedRecipe(new ItemStack(InitBlocks.blockBloomery), "N N", "NFN", "NNN", 'F', Blocks.furnace, 'N',
 				Blocks.nether_brick);
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockCopperPipe),
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockCopperPipe, 2),
 				"PPP", "GGG", "PPP", 'P', "plateCopper", 'G', "blockGlass"));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockCopperTank),
 				"PPP", "P P", "PPP", 'P', "plateCopper"));
