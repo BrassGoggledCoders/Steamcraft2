@@ -207,7 +207,7 @@ public class CompatabilityLayer
 		OreDictHelper.registerOre("orePhosphate", InitBlocks.blockCustomOre, 6);
 
 		OreDictionary.registerOre("crystalEtherium", InitItems.itemResource);
-		OreDictHelper.registerOreWithAlts(InitItems.itemResource, 1, "powderSulfur", "sulfur", "dustSulfur", "powderSulphur", "sulphur", "dustSulphur");
+		OreDictHelper.registerOreWithAlts(InitItems.itemResource, 1, "powderSulfur", "sulfur", "dustSulfur");
 		OreDictHelper.registerOreWithAlts(InitItems.itemResource, 2, "shardObsidian", "slateObsidian");
 		OreDictHelper.registerOre("powderPhosphorus", InitItems.itemResource, 3);
 		OreDictHelper.registerOre("ingotUranium", InitItems.itemResource, 4);
