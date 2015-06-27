@@ -409,6 +409,8 @@ public class InitRecipes
 				"plateSteel", 'I', "ingotSteel"));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemSteelParts, 1, 1), " P ", "P P", " P ", 'P',
 				"plateSteel"));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemSteelParts, 1, 2), "PPP", " I ", "PPP", 'P',
+				"plateSteel", 'I', "ingotSteel"));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemCopperParts, 1, 0), " P ", "PIP", " P ", 'P',
 				"plateCopper", 'I', "ingotCopper"));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemCopperParts, 1, 1), " P ", "P P", " P ", 'P',
