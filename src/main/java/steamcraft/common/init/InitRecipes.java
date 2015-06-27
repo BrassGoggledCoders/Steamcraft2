@@ -122,9 +122,9 @@ public class InitRecipes
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemRocket, 1, 2), " U ", "PTP", "PTP", 'U', "ingotUranium", 'P',
 				"plateBrass", 'T', Blocks.tnt));
 		// Other Guns
-		GameRegistry.addRecipe(new ItemStack(InitItems.itemRayGun, 1, 20), "FSP", 'F', new ItemStack(InitItems.itemGunPart, 1, 6), 'S',
+		GameRegistry.addRecipe(new ItemStack(InitItems.itemRayGun), "FSP", 'F', new ItemStack(InitItems.itemGunPart, 1, 6), 'S',
 				new ItemStack(InitItems.itemGunPart, 1, 4), 'P', new ItemStack(InitItems.itemGunPart, 1, 8));
-		GameRegistry.addRecipe(new ItemStack(InitItems.itemShrinkray, 1, 20), "FSP", 'F', new ItemStack(InitItems.itemGunPart, 1, 7), 'S',
+		GameRegistry.addRecipe(new ItemStack(InitItems.itemShrinkray), "FSP", 'F', new ItemStack(InitItems.itemGunPart, 1, 7), 'S',
 				new ItemStack(InitItems.itemGunPart, 1, 5), 'P', new ItemStack(InitItems.itemGunPart, 1, 9));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemClockworkRocketLauncher), "CCC", "  S", "CCC", 'C',
 				"plateCastIron", 'S',
