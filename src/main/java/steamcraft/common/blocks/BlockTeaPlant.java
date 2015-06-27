@@ -12,12 +12,14 @@
  */
 package steamcraft.common.blocks;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockCrops;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
@@ -120,6 +122,12 @@ public class BlockTeaPlant extends BlockCrops implements IPlantable
 	}
 
 	@Override
+	public boolean func_149851_a(World p_149851_1_, int p_149851_2_, int p_149851_3_, int p_149851_4_, boolean p_149851_5_)
+	{
+		return p_149851_1_.getBlockMetadata(p_149851_2_, p_149851_3_, p_149851_4_) != 1;
+	}
+
+	@Override
 	public int getRenderType()
 	{
 		return 6;
@@ -138,8 +146,29 @@ public class BlockTeaPlant extends BlockCrops implements IPlantable
 	}
 
 	@Override
-	public Item getItemDropped(int meta, Random p_149650_2_, int p_149650_3_)
+	public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune)
 	{
-		return meta != 0 ? this.func_149865_P() : this.func_149866_i();
+		ArrayList<ItemStack> ret = new ArrayList();
+
+		int count = quantityDropped(metadata, fortune, world.rand);
+		for(int i = 0; i < count; i++)
+		{
+			Item item = getItemDropped(metadata, world.rand, fortune);
+			if(item != null)
+			{
+				ret.add(new ItemStack(item, 1, damageDropped(metadata)));
+			}
+		}
+
+		if(metadata >= 1)
+		{
+			for(int i = 0; i < 3 + fortune; ++i)
+			{
+				ret.add(new ItemStack(this.func_149866_i(), 1, world.rand.nextInt(1)));
+				ret.add(new ItemStack(this.func_149865_P(), 1, world.rand.nextInt(2)));
+			}
+		}
+
+		return ret;
 	}
 }
