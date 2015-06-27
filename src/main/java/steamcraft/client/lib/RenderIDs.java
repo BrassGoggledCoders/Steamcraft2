@@ -39,7 +39,7 @@ public class RenderIDs
 	public static void setIDs()
 	{
 		blockCopperPipeRI = RenderingRegistry.getNextAvailableRenderId();
-		blockCopperPipeRI = RenderingRegistry.getNextAvailableRenderId();
+		blockCopperTankRI = RenderingRegistry.getNextAvailableRenderId();
 		blockCopperWireRI = RenderingRegistry.getNextAvailableRenderId();
 		blockSteelWireRI = RenderingRegistry.getNextAvailableRenderId();
 		blockLightningRodRI = RenderingRegistry.getNextAvailableRenderId();
