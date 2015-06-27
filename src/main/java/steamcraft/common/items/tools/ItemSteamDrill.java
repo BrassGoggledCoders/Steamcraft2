@@ -189,4 +189,16 @@ public class ItemSteamDrill extends ItemDrill
 			itemStack.setTagCompound(tag);
 		}
 	}
+
+	@Override
+	public int getItemEnchantability()
+	{
+		return 0;
+	}
+
+	@Override
+	public boolean isBookEnchantable(ItemStack itemstack1, ItemStack itemstack2)
+	{
+		return false;
+	}
 }
