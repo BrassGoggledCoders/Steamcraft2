@@ -254,6 +254,8 @@ public class InitRecipes
 	{
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockSteamBoiler), "PPP", "TCT", "PFP", 'F',
 				Blocks.furnace, 'P', "plateBrass", 'T', InitBlocks.blockCopperTank, 'C', InitBlocks.blockCopperPipe));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockSteamBoiler), "PPP", "TCT", "PFP", 'F',
+				Blocks.furnace, 'P', "plateSteel", 'T', InitBlocks.blockCopperTank, 'C', InitBlocks.blockCopperPipe));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockIntake), "PGP", "GBG", "PGP", 'G', "partGrating",
 				'P', "plateBrass", 'B', Items.bucket));
 		GameRegistry.addShapedRecipe(new ItemStack(InitBlocks.blockBloomery), "N N", "NFN", "NNN", 'F', Blocks.furnace, 'N',
