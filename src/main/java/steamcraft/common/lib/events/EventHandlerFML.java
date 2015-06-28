@@ -94,27 +94,27 @@ public class EventHandlerFML
 			component1.getChatStyle().setColor(EnumChatFormatting.GREEN);
 			event.player.addChatComponentMessage(component1);
 		}
+		else if(event.player.getUniqueID().toString().equals("94644c62-f190-4f18-a69a-ad36e7425280"))
+		{
+			ChatComponentText component1 = new ChatComponentText("Welcome, Lord of the Mole People!");
+			component1.getChatStyle().setColor(EnumChatFormatting.GRAY);
+			event.player.addChatComponentMessage(component1);
+		}
 		else if(event.player.getUniqueID().toString().equals("edb4e6c2-7d07-4438-a0bb-2f4aabbea24d"))
 		{
-			ChatComponentText component = new ChatComponentText("Your Clockwerk Empire awaits!");
-			component.getChatStyle().setBold(true);
-			component.getChatStyle().setColor(EnumChatFormatting.GOLD);
-			event.player.addChatComponentMessage(component);
+			ChatComponentText component2 = new ChatComponentText("Your Clockwerk Empire awaits!");
+			component2.getChatStyle().setBold(true);
+			component2.getChatStyle().setColor(EnumChatFormatting.GOLD);
+			event.player.addChatComponentMessage(component2);
 			if(!ConfigGeneral.partyPooper)
 			{
 				ChatComponentText link = new ChatComponentText("Welcome ClockwerkKaiser to the server!");
 				link.getChatStyle().setColor(EnumChatFormatting.YELLOW);
-				link.getChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "www.twitch.tv/ClockwerkKaiser"));
+				link.getChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "http://www.twitch.tv/ClockwerkKaiser"));
 				link.getChatStyle().setChatHoverEvent(
 						new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ChatComponentText("Click me to go to Clock's Twitch!")));
 				MinecraftServer.getServer().getConfigurationManager().sendChatMsg(link);
 			}
-		}
-		else if(event.player.getUniqueID().toString().equals("94644c62-f190-4f18-a69a-ad36e7425280"))
-		{
-			ChatComponentText component = new ChatComponentText("Welcome, Lord of the Mole People!");
-			component.getChatStyle().setColor(EnumChatFormatting.GRAY);
-			event.player.addChatComponentMessage(component);
 		}
 		if((event.player.worldObj.getPlayerEntityByName("warlordjones") != null)
 				|| (event.player.worldObj.getPlayerEntityByName("decebaldecebal") != null))
