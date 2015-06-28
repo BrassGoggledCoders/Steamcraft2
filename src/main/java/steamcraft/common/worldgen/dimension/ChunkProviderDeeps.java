@@ -42,7 +42,6 @@ import net.minecraftforge.event.terraingen.TerrainGen;
 
 import steamcraft.common.init.InitBiomes;
 import steamcraft.common.init.InitBlocks;
-import steamcraft.common.worldgen.WorldGenSpout;
 import steamcraft.common.worldgen.biomes.BiomeDepthsBase;
 import steamcraft.common.worldgen.structure.MapGenCustomScatteredFeature;
 import steamcraft.common.worldgen.structure.MapGenUndercity;
@@ -210,7 +209,7 @@ public class ChunkProviderDeeps implements IChunkProvider
 				BiomeGenBase biomegenbase = p_147422_5_[l + (k * 16)];
 				biomegenbase.genTerrainBlocks(this.worldObj, this.rand, p_147422_3_, p_147422_4_, (p_147422_1_ * 16) + k, (p_147422_2_ * 16) + l,
 						this.stoneNoise[l
-						                + (k * 16)]);
+								+ (k * 16)]);
 			}
 		}
 	}
@@ -430,11 +429,12 @@ public class ChunkProviderDeeps implements IChunkProvider
 			if(InitBlocks.blockBoilingWater != null)
 				new WorldGenLakes(InitBlocks.blockBoilingWater).generate(this.worldObj, this.rand, k1, l1, i2);
 
-			k1 = blockX + this.rand.nextInt(16);
-			l1 = this.rand.nextInt(256);
-			i2 = blockZ + this.rand.nextInt(16);
-			if(this.rand.nextInt(5) == 0)
-				(new WorldGenSpout(InitBlocks.blockBoilingWater)).generate(this.worldObj, this.rand, k1, l1, i2);
+			// TODO
+			// k1 = blockX + this.rand.nextInt(16);
+			// l1 = this.rand.nextInt(256);
+			// /i2 = blockZ + this.rand.nextInt(16);
+			// if(this.rand.nextInt(5) == 0)
+			// (new WorldGenSpout(InitBlocks.blockBoilingWater)).generate(this.worldObj, this.rand, k1, l1, i2);
 
 			k1 = blockX + this.rand.nextInt(16);
 			l1 = this.rand.nextInt(256);
