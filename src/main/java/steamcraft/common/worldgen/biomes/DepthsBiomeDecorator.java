@@ -240,7 +240,7 @@ public class DepthsBiomeDecorator extends DeferredBiomeDecorator
 
 			if(world.getBlock(x, y, z).isReplaceableOreGen(world, x, y, z, Blocks.stone))
 			{
-				new WorldGenBlockgroup(InitBlocks.blockCompressedStone, rarity).generate(world, random, x, y, z);
+				new WorldGenBlockgroup(InitBlocks.blockCompressedStone, 10).generate(world, random, x, y, z);
 			}
 		}
 		for(int a = 0; a < 10; ++a)
