@@ -30,6 +30,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import steamcraft.common.init.InitBlocks;
 import steamcraft.common.worldgen.WorldGenBlockgroup;
 import steamcraft.common.worldgen.WorldGenLeafPile;
+import steamcraft.common.worldgen.trees.WorldGenDeadTree;
 import steamcraft.common.worldgen.trees.WorldGenMangroveTree;
 import steamcraft.common.worldgen.trees.WorldGenWillowTree;
 
@@ -58,9 +59,11 @@ public class BiomeDepthsSwamp extends BiomeDepthsBase
 	@Override
 	public WorldGenAbstractTree func_150567_a(Random rand)
 	{
-		int randNum = rand.nextInt(2);
+		int randNum = rand.nextInt(3);
 		if(randNum == 0)
 			return new WorldGenMangroveTree(false);
+		else if(randNum == 2)
+			return new WorldGenDeadTree(false);
 		else
 			return new WorldGenWillowTree(false);
 	}
