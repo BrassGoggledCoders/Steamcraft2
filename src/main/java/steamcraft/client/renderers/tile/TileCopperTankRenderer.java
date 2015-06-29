@@ -103,10 +103,10 @@ public class TileCopperTankRenderer extends TileEntitySpecialRenderer
 					tess.addVertexWithUV(4 * pixel, pixel, 4 * pixel, 24 * tPixel, 0 * tPixel);
 					tess.addVertexWithUV(4 * pixel, pixel, 1 - (4 * pixel), 24 * tPixel, 12 * tPixel);
 					
-					tess.addVertexWithUV(4 * pixel, 1, 1 - (4 * pixel), 12 * tPixel, 12 * tPixel);
-					tess.addVertexWithUV(4 * pixel, 1, 4 * pixel, 12 * tPixel, 0 * tPixel);
-					tess.addVertexWithUV(1 - (4 * pixel), 1, 4 * pixel, 24 * tPixel, 0 * tPixel);
-					tess.addVertexWithUV(1 - (4 * pixel), 1, 1 - (4 * pixel), 24 * tPixel, 12 * tPixel);
+					tess.addVertexWithUV(4 * pixel, 1 - pixel, 1 - (4 * pixel), 12 * tPixel, 12 * tPixel);
+					tess.addVertexWithUV(4 * pixel, 1 - pixel, 4 * pixel, 12 * tPixel, 0 * tPixel);
+					tess.addVertexWithUV(1 - (4 * pixel), 1 - pixel, 4 * pixel, 24 * tPixel, 0 * tPixel);
+					tess.addVertexWithUV(1 - (4 * pixel), 1 - pixel, 1 - (4 * pixel), 24 * tPixel, 12 * tPixel);
 					
 					tess.addVertexWithUV(1 - (4 * pixel), 0, 4 * pixel, 0 * tPixel, 16 * tPixel);
 					tess.addVertexWithUV(1 - (4 * pixel), 1, 4 * pixel, 0 * tPixel, 0 * tPixel);
@@ -155,29 +155,29 @@ public class TileCopperTankRenderer extends TileEntitySpecialRenderer
 					tess.addVertexWithUV(1 - (6 * pixel), pixel, 6 * pixel, icon.getMinU(), icon.getMinV());
 					tess.addVertexWithUV(1 - (6 * pixel), pixel, 1 - (6 * pixel), icon.getMinU(), icon.getMaxV());
 					
-					tess.addVertexWithUV(1 - (6 * pixel), pixel + 15.5f * level, 1 - (6 * pixel), icon.getMaxU(), icon.getMaxV());
-					tess.addVertexWithUV(1 - (6 * pixel), pixel + 15.5f * level, 6 * pixel, icon.getMaxU(), icon.getMinV());
-					tess.addVertexWithUV(6 * pixel, pixel + 15.5f * level, 6 * pixel, icon.getMinU(), icon.getMinV());
-					tess.addVertexWithUV(6 * pixel, pixel + 15.5f * level , 1 - (6 * pixel), icon.getMinU(), icon.getMaxV());
+					tess.addVertexWithUV(1 - (6 * pixel), pixel + 15 * level, 1 - (6 * pixel), icon.getMaxU(), icon.getMaxV());
+					tess.addVertexWithUV(1 - (6 * pixel), pixel + 15 * level, 6 * pixel, icon.getMaxU(), icon.getMinV());
+					tess.addVertexWithUV(6 * pixel, pixel + 15 * level, 6 * pixel, icon.getMinU(), icon.getMinV());
+					tess.addVertexWithUV(6 * pixel, pixel + 15 * level , 1 - (6 * pixel), icon.getMinU(), icon.getMaxV());
 					
 					tess.addVertexWithUV(6 * pixel, pixel, 6 * pixel, icon.getMaxU(), icon.getMaxV());
-					tess.addVertexWithUV(6 * pixel, pixel + 15.5f * level, 6 * pixel, icon.getMaxU(), icon.getMinV());
-					tess.addVertexWithUV(1 - (6 * pixel), pixel + 15.5f * level, 6 * pixel, icon.getMinU(), icon.getMinV());
+					tess.addVertexWithUV(6 * pixel, pixel + 15 * level, 6 * pixel, icon.getMaxU(), icon.getMinV());
+					tess.addVertexWithUV(1 - (6 * pixel), pixel + 15 * level, 6 * pixel, icon.getMinU(), icon.getMinV());
 					tess.addVertexWithUV(1 -(6 * pixel), pixel, 6 * pixel, icon.getMinU(), icon.getMaxV());
 					
 					tess.addVertexWithUV(1 - (6 * pixel), pixel, 1 - (6 * pixel), icon.getMaxU(), icon.getMaxV());
-					tess.addVertexWithUV(1 - (6 * pixel), pixel + 15.5f * level, 1 - (6 * pixel), icon.getMaxU(), icon.getMinV());
-					tess.addVertexWithUV(6 * pixel, pixel + 15.5f * level, 1 - (6 * pixel), icon.getMinU(), icon.getMinV());
+					tess.addVertexWithUV(1 - (6 * pixel), pixel + 15 * level, 1 - (6 * pixel), icon.getMaxU(), icon.getMinV());
+					tess.addVertexWithUV(6 * pixel, pixel + 15 * level, 1 - (6 * pixel), icon.getMinU(), icon.getMinV());
 					tess.addVertexWithUV(6 * pixel, pixel, 1 - (6 * pixel), icon.getMinU(), icon.getMaxV());
 					
 					tess.addVertexWithUV(6 * pixel, pixel, 1 - (6 * pixel), icon.getMaxU(), icon.getMaxV());
-					tess.addVertexWithUV(6 * pixel, pixel + 15.5f * level, 1 - (6 * pixel), icon.getMaxU(), icon.getMinV());
-					tess.addVertexWithUV(6 * pixel, pixel + 15.5f * level, 6 * pixel, icon.getMinU(), icon.getMinV());
+					tess.addVertexWithUV(6 * pixel, pixel + 15 * level, 1 - (6 * pixel), icon.getMaxU(), icon.getMinV());
+					tess.addVertexWithUV(6 * pixel, pixel + 15 * level, 6 * pixel, icon.getMinU(), icon.getMinV());
 					tess.addVertexWithUV(6 * pixel, pixel, 6 * pixel, icon.getMinU(), icon.getMaxV());
 					
 					tess.addVertexWithUV(1 - (6 * pixel), pixel, 6 * pixel, icon.getMaxU(), icon.getMaxV());
-					tess.addVertexWithUV(1 - (6 * pixel), pixel + 15.5f * level, 6 * pixel, icon.getMaxU(), icon.getMinV());
-					tess.addVertexWithUV(1 - (6 * pixel), pixel + 15.5f * level, 1 - (6 * pixel), icon.getMinU(), icon.getMinV());
+					tess.addVertexWithUV(1 - (6 * pixel), pixel + 15 * level, 6 * pixel, icon.getMaxU(), icon.getMinV());
+					tess.addVertexWithUV(1 - (6 * pixel), pixel + 15 * level, 1 - (6 * pixel), icon.getMinU(), icon.getMinV());
 					tess.addVertexWithUV(1 - (6 * pixel), pixel, 1 - (6 * pixel), icon.getMinU(), icon.getMaxV());
 				}
 				tess.draw();

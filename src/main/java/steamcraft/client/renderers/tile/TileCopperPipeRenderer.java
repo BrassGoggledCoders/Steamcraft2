@@ -52,7 +52,7 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 
 		ForgeDirection opposite = pipe.onlyOneOpposite();
 
-		if((opposite != null) && (pipe.extract == null))
+		if((opposite != null) && (pipe.extract == null) && pipe.isCopperPipe(opposite) && pipe.isCopperPipe(opposite.getOpposite()))
 			this.drawStraightConnection(opposite, pipe);
 		else
 		{
@@ -365,7 +365,7 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 			}
 			GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
 
-			if (pipe.blockType == null || !pipe.isFluidHandler(dir))
+			if (pipe.blockType == null || pipe.isCopperPipe(dir))
 			{
 				tess.addVertexWithUV(1 - (12 * pixel), 1 - (12 * pixel), 1 - (12 * pixel), 6 * tPixel, 6 * tPixel);
 				tess.addVertexWithUV(1 - (12 * pixel), 1, 1 - (12 * pixel), 11 * tPixel, 6 * tPixel);
