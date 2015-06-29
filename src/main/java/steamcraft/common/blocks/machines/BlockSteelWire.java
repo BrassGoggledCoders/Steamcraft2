@@ -38,9 +38,6 @@ public class BlockSteelWire extends BlockCopperWire
 	public BlockSteelWire(Material mat)
 	{
 		super(mat);
-
-		this.setBlockBounds(6 * pixel, 4 * pixel, 6 * pixel, 1 - (6 * pixel), 1 - (4 * pixel), 1 - (6 * pixel));
-		this.useNeighborBrightness = true;
 	}
 
 	@Override
