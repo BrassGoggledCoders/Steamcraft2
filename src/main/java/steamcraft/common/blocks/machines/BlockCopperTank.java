@@ -34,7 +34,7 @@ public class BlockCopperTank extends BaseContainerBlock
 	{
 		super(mat);
 		
-		this.setBlockBounds(2 * pixel, 0, 2 * pixel, 1 - 2 * pixel, 1, 1 - 2 * pixel);
+		this.setBlockBounds(1.5f * pixel, 0, 1.5f * pixel, 1 - 1.5f * pixel, 1, 1 - 1.5f * pixel);
 		this.useNeighborBrightness = true;
 	}
 	
@@ -63,8 +63,8 @@ public class BlockCopperTank extends BaseContainerBlock
 	}
 	
 	@Override
-	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int sideIThink, float posXClickedIThink,
-			float p_149727_8_, float posZClickedIThink)
+	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float posX,
+			float posY, float posZ)
 	{
 		if (!world.isRemote)
 		{
@@ -76,9 +76,9 @@ public class BlockCopperTank extends BaseContainerBlock
 				IFluidContainerItem container = (IFluidContainerItem) stack.getItem();
 
 				int amount = 0;
-				if((amount = tank.fill(ForgeDirection.getOrientation(sideIThink), container.getFluid(stack), false)) > 0)
+				if((amount = tank.fill(ForgeDirection.getOrientation(side), container.getFluid(stack), false)) > 0)
 				{
-					amount = tank.fill(ForgeDirection.getOrientation(sideIThink), container.getFluid(stack), true);
+					amount = tank.fill(ForgeDirection.getOrientation(side), container.getFluid(stack), true);
 					container.drain(stack, amount, true);
 					return true;
 				}
