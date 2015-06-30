@@ -13,12 +13,11 @@
 package steamcraft.common;
 
 import java.io.File;
-import java.util.Iterator;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
 import net.minecraft.world.gen.structure.MapGenStructureIO;
+
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
@@ -34,11 +33,11 @@ import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.GameRegistry.Type;
-import cpw.mods.fml.relauncher.Side;
+
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.MinecraftForge;
+
 import steamcraft.client.GuiHandler;
-import steamcraft.client.gui.GuiHandbook;
 import steamcraft.common.compat.CompatabilityLayer;
 import steamcraft.common.config.Config;
 import steamcraft.common.config.ConfigGeneral;
@@ -125,7 +124,7 @@ public class Steamcraft
 
 		MapGenStructureIO.registerStructure(MapGenCustomScatteredFeature.class, ModInfo.ID + "CustomScatteredFeature");
 
-		if(ConfigWorldGen.generationEnabled)
+		if (ConfigWorldGen.generationEnabled)
 			GameRegistry.registerWorldGenerator(new WorldGenSteamcraft(), 1);
 
 		DimensionManager.registerProviderType(ConfigGeneral.deepsDimensionID, WorldProviderDeeps.class, false);
@@ -153,36 +152,23 @@ public class Steamcraft
 		LoggerSteamcraft.info("Finished Postinit");
 		LoggerSteamcraft
 				.info("Please note: Steamcraft2 is now the officially unofficial mod of the Steampunk Forum at BrassGoggles, otherwise known as BG, which is only unofficial because making it official would cause a legal headache but is pretty much official, I'm just not allowed to call it that, so its not official, but it kinda is, ok? Got that? Signed, Major Vincent Smith (Otherwise known as warlordjones) - BrassGoggles moderation team member");
-		if(Loader.isModLoaded("steamnsteel"))
+		if (Loader.isModLoaded("steamnsteel"))
 			LoggerSteamcraft.info("Evening to the distingushed ladies and gentlemen of the SteamNSteel club!");
 		// TODO add for IE
 
-		if(event.getSide() == Side.CLIENT)
-		{
-			// Autopopulate item/block lists from creative tab
-			Iterator iterator = Item.itemRegistry.iterator();
-
-			while(iterator.hasNext())
-			{
-				Item item = (Item) iterator.next();
-
-				if(item == null)
-				{
-					continue;
-				}
-
-				for(CreativeTabs tab : item.getCreativeTabs())
-				{
-					if(tab == tabSC2)
-					{
-						if(item instanceof ItemBlock)
-							item.getSubItems(item, tabSC2, GuiHandbook.modBlocks);
-						else
-							item.getSubItems(item, tabSC2, GuiHandbook.modItems);
-					}
-				}
-			}
-		}
+		/*
+		 * if(event.getSide() == Side.CLIENT) { // Autopopulate item/block lists
+		 * from creative tab Iterator iterator = Item.itemRegistry.iterator();
+		 * 
+		 * while(iterator.hasNext()) { Item item = (Item) iterator.next();
+		 * 
+		 * if(item == null) { continue; }
+		 * 
+		 * for(CreativeTabs tab : item.getCreativeTabs()) { if(tab == tabSC2) {
+		 * if(item instanceof ItemBlock) item.getSubItems(item, tabSC2,
+		 * GuiHandbook.modBlocks); else item.getSubItems(item, tabSC2,
+		 * GuiHandbook.modItems); } } } }
+		 */
 	}
 
 	@EventHandler
@@ -195,27 +181,27 @@ public class Steamcraft
 	@EventHandler
 	public void missingMapping(FMLMissingMappingsEvent event)
 	{
-		for(MissingMapping m : event.get())
+		for (MissingMapping m : event.get())
 		{
-			if(m.type == Type.BLOCK)
+			if (m.type == Type.BLOCK)
 			{
-				if(m.name.contains("water"))
+				if (m.name.contains("water"))
 				{
 					m.remap(GameRegistry.findBlock(ModInfo.ID, "BlockBoilingwater"));
 				}
-				else if(m.name.contains("mud"))
+				else if (m.name.contains("mud"))
 				{
 					m.remap(GameRegistry.findBlock(ModInfo.ID, "BlockBoilingmud"));
 				}
 
 			}
-			else if(m.type == Type.ITEM)
+			else if (m.type == Type.ITEM)
 			{
-				if(m.name.contains("water"))
+				if (m.name.contains("water"))
 				{
 					m.remap(Item.getItemFromBlock(GameRegistry.findBlock(ModInfo.ID, "BlockBoilingwater")));
 				}
-				else if(m.name.contains("mud"))
+				else if (m.name.contains("mud"))
 				{
 					m.remap(Item.getItemFromBlock(GameRegistry.findBlock(ModInfo.ID, "BlockBoilingmud")));
 				}
