@@ -494,7 +494,7 @@ public class InitRecipes
 		GameRegistry.addRecipe(new ItemStack(InitItems.itemTeapot, 1, 8), "SLS", "LPL", "SLS", 'P', new ItemStack(InitItems.itemTeapot, 1, 2), 'L',
 				InitItems.itemTeaLeaf, 'S', Items.sugar);
 
-		GameRegistry.addRecipe(new ItemStack(InitItems.itemTeacup), "B B", " B ", 'B', Items.brick);
+		GameRegistry.addRecipe(new ItemStack(InitItems.itemTeacup), "B B", " B ", 'B', Items.clay);
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemElectricJarSmall), "SIS", "GIG", "GGG", 'S',
 				InitItems.itemSlimeRubber, 'I', "ingotCopper", 'G', Blocks.glass));

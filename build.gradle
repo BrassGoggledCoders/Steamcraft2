@@ -41,7 +41,7 @@ project.ext {
     mcVersion = "1.7.10"
 }
 
-version = project.ext.mcVersion + "-B4.4." + project.ext.buildNum
+version = project.ext.mcVersion + "-B4.5." + project.ext.buildNum
 group= "brassgoggledcoders" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "steamcraft2"
 

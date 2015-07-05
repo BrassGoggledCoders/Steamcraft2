@@ -180,9 +180,45 @@ Beta 4.4:
 # Fix the teapot filling recipe only giving you a teapot with one cup’s worth of tea in it
 # Fix drills working without energy
 # Fix cast iron lamp having 0 hardness.
+Beta 4.5:
++ Copper tank is functional. Still WIP.
++ Implemented a tier two ’steel’ wire.
++ Added slate stairs
++ Add petrified tree spawns to depths swamps.
++ Add nuclear boiler recipe.
++ Add steel spring recipe
++ Added recipe to convert lamps back and forth
++ Add tooltip to copper tank.
++ Add a desc to the diving helmet.
++ Lightning Bottles supercharge creepers. Yes, I'm a evil madman.
++ Added compatibility for BluSunrize’s AquaTweaks
+- Disabled RC/MFR spanner compat
+- Disable the time bomb recipe - it needs quite a bit more work
+* Disable the ability to enchant the steam drill and all electric tools
+* Turbine & Grating recipes use iron not steel
+* Increased amount from copper wire recipe
+* Change bronze to use 3 copper instead of 2.(by other mods convention)
+* Register sulfur under the same name as Railcraft sulfur.
+* Changed Tesla Coil recipe to use steel
+* Updated Bloomery recipe and description.Also increased burn time.
+* Added glass to the copper pipe recipe
+* Aqualung/Life Vest are now incompatible, Plating/Aqualung are now comaptible.
+* Adjust Chronometer use time
+* Steam Turbine only outputs energy from top and bottom.
+* Increased Capacitor transfer rate to 100RF/t.
+* Copper Wires now accept energy and do not need to be changed to extract mode.
 
-
- 
+# Fix life vest being too bouncy
+# Fix some block breaking textures
+# Fix teacup recipe
+# Fixed Shrinkray/Raygun recipes giving incorrect metadata.
+# Fixed tea plant drops
+# Some work on fixing depths crashes
+# Fixes to tools
+# Fixed a crash when breaking boilers with steam in it
+# Fixed path recipe
+# Fixed pocket watch in-game time display not working
+# Various texture fixes and updates. Improve armour editor texture
 
 
 
