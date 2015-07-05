@@ -207,7 +207,6 @@ Beta 4.5:
 * Steam Turbine only outputs energy from top and bottom.
 * Increased Capacitor transfer rate to 100RF/t.
 * Copper Wires now accept energy and do not need to be changed to extract mode.
-
 # Fix life vest being too bouncy
 # Fix some block breaking textures
 # Fix teacup recipe
