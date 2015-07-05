@@ -1,14 +1,14 @@
 #NB: for custom thingies StatCollector.translateToLocal(String);
 
 #Blocks
-tile.blockMetal.0.name=Aluminum Block
-tile.blockEngravedSolid.0.name=Engraved Aluminum
-tile.blockCustomOre.0.name=Aluminum Ore
+tile.blockMetal.0.name=Aluminium Block
+tile.blockEngravedSolid.0.name=Engraved Aluminium
+tile.blockCustomOre.0.name=Aluminium Ore
 tile.blockArmorEditor.name=Armour Editor
-item.itemIngot.0.name=Aluminum Ingot
-item.itemPowder.0.name=Aluminum Powder
-item.itemSheet.0.name=Aluminum Sheet
-item.itemNugget.0.name=Aluminum Nugget
+item.itemIngot.0.name=Aluminium Ingot
+item.itemPowder.0.name=Aluminium Powder
+item.itemSheet.0.name=Aluminium Sheet
+item.itemNugget.0.name=Aluminium Nugget
 
 item.itemClockworkRocket.2.desc=Armour-Piercing Shell
 item.itemSteamcraftcluster.0.name=Native Aluminium Cluster
