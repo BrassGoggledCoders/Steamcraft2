@@ -50,7 +50,7 @@ public class TileStasisField extends TileEntity implements IEnergyReceiver
 				int itemNumber = item.getEntityItem().stackSize;
 				if(this.buffer.getEnergyStored() >= (RFPerTickPerItem * itemNumber))
 				{
-					item.age = 5500;
+					item.age = 0;
 					this.buffer.modifyEnergyStored(-RFPerTickPerItem * itemNumber);
 				}
 			}
