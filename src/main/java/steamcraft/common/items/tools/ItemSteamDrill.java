@@ -24,7 +24,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
-
+import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.ModInfo;
 import boilerplate.client.ClientHelper;
 import boilerplate.common.utils.PlayerUtils;
@@ -33,11 +33,12 @@ import boilerplate.common.utils.PlayerUtils;
  * @author decebaldecebal
  *
  */
-public class ItemSteamDrill extends ItemDrill
+public class ItemSteamDrill extends ItemModTool
 {
 	public ItemSteamDrill(ToolMaterial mat)
 	{
-		super(mat);
+		super(1, mat);
+		this.setCreativeTab(Steamcraft.tabSC2);
 		this.setHarvestLevel("pickaxe", mat.getHarvestLevel());
 		this.setHarvestLevel("shovel", mat.getHarvestLevel());
 	}

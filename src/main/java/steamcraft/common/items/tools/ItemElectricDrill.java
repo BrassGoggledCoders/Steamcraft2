@@ -34,7 +34,7 @@ public class ItemElectricDrill extends ItemElectricTool
 
 	public ItemElectricDrill(ToolMaterial mat, int maxEnergy, int maxReceive)
 	{
-		super(0, mat, maxEnergy, maxReceive);
+		super(1, mat, maxEnergy, maxReceive);
 		this.setHarvestLevel("pickaxe", mat.getHarvestLevel());
 		this.setHarvestLevel("shovel", mat.getHarvestLevel());
 	}

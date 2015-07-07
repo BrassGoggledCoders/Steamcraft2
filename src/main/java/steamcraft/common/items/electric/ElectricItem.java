@@ -57,10 +57,10 @@ public class ElectricItem extends BaseElectricItem
 			if (stack.getTagCompound() != null && stack.getTagCompound().getBoolean("canCharge"))
 			{
 				list.add(GuiColors.GREEN + "Charging items in inventory...");
-				list.add(GuiColors.GREEN + "Shift-right click to turn off.");
+				list.add(GuiColors.GREEN + "Sneak + Right Click to turn off.");
 			}
 			else
-				list.add("Shift-right click to charge items in your inventory.");
+				list.add("Sneak + Right Click to charge items in your inventory.");
 		}
 	}
 	

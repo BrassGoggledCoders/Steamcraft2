@@ -43,7 +43,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  * @author Surseance
  *
  */
-public class ItemModTool extends BaseItem
+public abstract class ItemModTool extends BaseItem
 {
 	public static final int steamForRepair = 20;
 	public float efficiencyOnProperMaterial = 4.0F;
