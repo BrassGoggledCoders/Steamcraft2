@@ -368,7 +368,7 @@ item.itemClockworkRocket.2.desc=Armor-Piercing Shell
 item.itemTimeClock.name=Chronometer of Time Manipulation
 item.itemTimeClock.desc=Manipulate the fabric of time! Right Click to set to day, Shift Right Click to set to night. Consumes one Ender Eye per use.
 item.itemSplashLightningBottle.name=Splash Lightning Bottle
-item.itemSplashLightningBottle.desc=Hold right click to charge throw. Release to throw.
+item.itemSplashLightningBottle.desc=Right click to throw.|On impact it electrocute any entity within a 4 block radius.
 item.itemCanisterSteam.name=Steam Canister
 
 

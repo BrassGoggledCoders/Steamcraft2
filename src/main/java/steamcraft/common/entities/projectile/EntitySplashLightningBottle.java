@@ -24,9 +24,9 @@ import boilerplate.common.baseclasses.BaseThrowableEntity;
 
 public class EntitySplashLightningBottle extends BaseThrowableEntity
 {
-	public EntitySplashLightningBottle(World p_i1777_1_, EntityLivingBase p_i1777_2_)
+	public EntitySplashLightningBottle(World world, EntityLivingBase entityLiving)
 	{
-		super(p_i1777_1_, p_i1777_2_);
+		super(world, entityLiving);
 	}
 
 	public EntitySplashLightningBottle(World world)
@@ -35,18 +35,12 @@ public class EntitySplashLightningBottle extends BaseThrowableEntity
 		this.setSize(0.5F, 0.5F);
 	}
 
-	/**
-	 * Gets the amount of gravity to apply to the thrown entity with each tick.
-	 */
 	@Override
 	protected float getGravityVelocity()
 	{
 		return 0.03F;
 	}
 
-	/**
-	 * Called when this EntityThrowable hits a block or entity.
-	 */
 	@SuppressWarnings({ "rawtypes", "unused" })
 	@Override
 	protected void onImpact(MovingObjectPosition mop)
