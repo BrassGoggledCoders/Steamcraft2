@@ -38,7 +38,7 @@ import boilerplate.common.utils.PlayerUtils;
 
 public class ItemRayGun extends ElectricItem
 {
-	public static short energyPerUse = 300;
+	public static short energyPerUse = 100;
 
 	static HashMap<String, Object> ray = new HashMap<String, Object>();
 	static HashMap<String, Long> soundDelay = new HashMap<String, Long>();
@@ -110,6 +110,9 @@ public class ItemRayGun extends ElectricItem
 									world.setBlock(i, j, k, meltables.get(world.getBlock(i, j, k)));
 								
 								this.setEnergy(stack, this.getEnergyStored(stack) - ItemRayGun.energyPerUse);
+								
+								if (this.getEnergyStored(stack) < this.energyPerUse)
+									return stack;
 							}
 			}
 			Entity pointedEntity = PlayerUtils.getPointedEntity(world, player, 32.0D);

@@ -113,6 +113,9 @@ public class ItemShrinkray extends ElectricItem
 								{
 									world.setBlockToAir(x, y, z);
 									this.setEnergy(stack, this.getEnergyStored(stack) - ItemShrinkray.energyPerUse);
+									
+									if (this.getEnergyStored(stack) < this.energyPerUse)
+										return stack;
 								}
 							}
 						}
