@@ -47,7 +47,7 @@ public class ItemSpanner extends UniversalWrench
 		{
 			Block block = world.getBlock(x, y, z);
 	
-			if(block == InitBlocks.blockCopperPipe)
+			if(block == InitBlocks.blockCopperPipe || block == InitBlocks.blockSteelPipe)
 			{
 				TileCopperPipe pipe = (TileCopperPipe) world.getTileEntity(x, y, z);
 	
