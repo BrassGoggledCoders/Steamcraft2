@@ -33,7 +33,7 @@ import steamcraft.common.tiles.TileCopperPipe;
  */
 public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 {
-	private static final ResourceLocation texture = new ResourceLocation(ModInfo.PREFIX + "textures/blocks/blockCopperPipe.png");
+	protected ResourceLocation texture = new ResourceLocation(ModInfo.PREFIX + "textures/blocks/blockCopperPipe.png");
 
 	private static float pixel = LibInfo.pixel;
 	private static float tPixel = LibInfo.tPixel;
@@ -46,13 +46,13 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 		GL11.glTranslated(transX, transY, transZ);
 		GL11.glDisable(GL11.GL_LIGHTING);
 
-		this.bindTexture(TileCopperPipeRenderer.texture);
+		this.bindTexture(this.texture);
 
 		TileCopperPipe pipe = (TileCopperPipe) tile;
 
 		ForgeDirection opposite = pipe.onlyOneOpposite();
 
-		if((opposite != null) && (pipe.extract == null) && pipe.isCopperPipe(opposite) && pipe.isCopperPipe(opposite.getOpposite()))
+		if((opposite != null) && (pipe.extract == null) && pipe.isPipe(opposite) && pipe.isPipe(opposite.getOpposite()))
 			this.drawStraightConnection(opposite, pipe);
 		else
 		{
@@ -176,7 +176,7 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 					}
 					tess.draw();
 					
-					this.bindTexture(TileCopperPipeRenderer.texture);
+					this.bindTexture(this.texture);
 				}
 			}
 		}
@@ -365,7 +365,7 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 			}
 			GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
 
-			if (pipe.blockType == null || pipe.isCopperPipe(dir))
+			if (pipe.blockType == null || pipe.isPipe(dir))
 			{
 				tess.addVertexWithUV(1 - (12 * pixel), 1 - (12 * pixel), 1 - (12 * pixel), 6 * tPixel, 6 * tPixel);
 				tess.addVertexWithUV(1 - (12 * pixel), 1, 1 - (12 * pixel), 11 * tPixel, 6 * tPixel);
@@ -527,7 +527,7 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 					}
 					tess.draw();
 
-					this.bindTexture(TileCopperPipeRenderer.texture);
+					this.bindTexture(this.texture);
 				}
 			}
 		}

@@ -33,6 +33,7 @@ import steamcraft.client.renderers.block.BlockCopperPipeRenderer;
 import steamcraft.client.renderers.block.BlockCopperTankRenderer;
 import steamcraft.client.renderers.block.BlockCopperWireRenderer;
 import steamcraft.client.renderers.block.BlockSpiderEggRenderer;
+import steamcraft.client.renderers.block.BlockSteelPipeRenderer;
 import steamcraft.client.renderers.block.BlockSteelWireRenderer;
 import steamcraft.client.renderers.entity.RenderAbandonedGolem;
 import steamcraft.client.renderers.entity.RenderBoar;
@@ -63,6 +64,7 @@ import steamcraft.client.renderers.tile.TileCrystalRenderer;
 import steamcraft.client.renderers.tile.TileHatchRenderer;
 import steamcraft.client.renderers.tile.TileHatchRenderer.TileHatch;
 import steamcraft.client.renderers.tile.TileLightningRodRenderer;
+import steamcraft.client.renderers.tile.TileSteelPipeRenderer;
 import steamcraft.client.renderers.tile.TileSteelWireRenderer;
 import steamcraft.client.renderers.tile.TileTeslaCoilRenderer;
 import steamcraft.client.renderers.tile.TileTrunkRenderer;
@@ -89,6 +91,7 @@ import steamcraft.common.tiles.EmptyTiles;
 import steamcraft.common.tiles.TileArmorEditor;
 import steamcraft.common.tiles.TileCopperPipe;
 import steamcraft.common.tiles.TileCopperTank;
+import steamcraft.common.tiles.TileSteelPipe;
 import steamcraft.common.tiles.TileTrunk;
 import steamcraft.common.tiles.energy.TileBattery;
 import steamcraft.common.tiles.energy.TileCharger;
@@ -164,6 +167,9 @@ public class ClientProxy extends CommonProxy
 		// Copper Pipe
 		ClientRegistry.bindTileEntitySpecialRenderer(TileCopperPipe.class, new TileCopperPipeRenderer());
 		RenderingRegistry.registerBlockHandler(new BlockCopperPipeRenderer());
+		// Steel Pipe
+		ClientRegistry.bindTileEntitySpecialRenderer(TileSteelPipe.class, new TileSteelPipeRenderer());
+		RenderingRegistry.registerBlockHandler(new BlockSteelPipeRenderer());
 		// Copper Tank
 		ClientRegistry.bindTileEntitySpecialRenderer(TileCopperTank.class, new TileCopperTankRenderer());
 		RenderingRegistry.registerBlockHandler(new BlockCopperTankRenderer());

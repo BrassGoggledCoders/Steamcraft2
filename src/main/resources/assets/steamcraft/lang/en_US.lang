@@ -136,8 +136,12 @@ tile.blockCrystal.name=Etherium Crystal Block
 #Machines
 tile.blockCopperTank.name=Copper Tank
 tile.blockCopperTank.desc=Stores up to 20 buckets.
+
 tile.blockCopperPipe.name=Copper Pipe
 tile.blockCopperPipe.desc=Right-Click with Spanner to change to extracting (pulling out fluids) mode.|Transfer (in): 50 mb/t per connection|Transfer (out): 200 mb/t per connection
+tile.blockSteelPipe.name=Steel Pipe
+tile.blockSteelPipe.desc=Right-Click with Spanner to change to extracting (pulling out fluids) mode.|Transfer (in): 200 mb/t per connection|Transfer (out): 800 mb/t per connection
+
 tile.blockCopperWire.0.name=Copper Wire
 tile.blockCopperWire.desc=Right-Click with Spanner to change to extracting (pulling out energy) mode. Electrocutes you if you step on it while current is flowing.|Transfer: 1000 RF/t per connection
 tile.blockCopperWire.1.name=Insulated Copper Wire

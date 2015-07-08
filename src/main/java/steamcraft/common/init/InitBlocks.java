@@ -89,6 +89,7 @@ import steamcraft.common.blocks.machines.BlockRefinery;
 import steamcraft.common.blocks.machines.BlockSawmill;
 import steamcraft.common.blocks.machines.BlockStasisField;
 import steamcraft.common.blocks.machines.BlockSteamBoiler;
+import steamcraft.common.blocks.machines.BlockSteelPipe;
 import steamcraft.common.blocks.machines.BlockSteelWire;
 import steamcraft.common.blocks.machines.BlockTeslaCoil;
 import steamcraft.common.blocks.machines.BlockTurbine;
@@ -99,6 +100,7 @@ import steamcraft.common.tiles.TileCopperTank;
 import steamcraft.common.tiles.TileIntake;
 import steamcraft.common.tiles.TileNuclearBoiler;
 import steamcraft.common.tiles.TileSteamBoiler;
+import steamcraft.common.tiles.TileSteelPipe;
 import steamcraft.common.tiles.TileTimeBomb;
 import steamcraft.common.tiles.energy.TileBattery;
 import steamcraft.common.tiles.energy.TileCapacitor;
@@ -137,7 +139,7 @@ public class InitBlocks
 	public static Block blockCastIronLamp, blockCastIronLampOn, blockInvertedCastIronLamp, blockInvertedCastIronLampOff;
 
 	public static Block blockCongealedSlime;
-	public static Block blockCopperPipe, blockCopperWire, blockSteelWire;
+	public static Block blockCopperPipe, blockSteelPipe, blockCopperWire, blockSteelWire;
 
 	public static Block blockCopperTank;
 
@@ -353,6 +355,10 @@ public class InitBlocks
 		blockCopperPipe = new BlockCopperPipe(Material.iron).setBlockName("blockCopperPipe");
 
 		RegistryHelper.registerContainerBlockWithDesc(blockCopperPipe, TileCopperPipe.class, "BlockCopperPipe");
+		
+		blockSteelPipe = new BlockSteelPipe(Material.iron).setBlockName("blockSteelPipe");
+
+		RegistryHelper.registerContainerBlockWithDesc(blockSteelPipe, TileSteelPipe.class, "BlockSteelPipe");
 
 		// Wires
 		blockCopperWire = new BlockCopperWire(Material.iron).setBlockName("blockCopperWire");
