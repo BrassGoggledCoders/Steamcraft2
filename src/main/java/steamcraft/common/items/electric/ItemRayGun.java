@@ -44,9 +44,9 @@ public class ItemRayGun extends ElectricItem
 	static HashMap<String, Long> soundDelay = new HashMap<String, Long>();
 	static final HashMap<Block, Block> meltables = new HashMap<Block, Block>();
 
-	public ItemRayGun(String raySound, int maxEnergy, int maxReceive, int maxSend)
+	public ItemRayGun(String raySound, int maxEnergy, int maxReceive)
 	{
-		super(maxEnergy, maxReceive, maxSend);
+		super(maxEnergy, maxReceive, 0);
 		this.setMaxStackSize(1);
 		this.setFull3D();
 		meltables.put(Blocks.snow, Blocks.flowing_water);
@@ -105,15 +105,11 @@ public class ItemRayGun extends ElectricItem
 							for(int k = z - Item.itemRand.nextInt(4); k < (z + Item.itemRand.nextInt(4)); k++)
 							{
 								if(world.isAirBlock(i, j, k))
-								{
 									world.setBlock(i, j, k, Blocks.fire);
-									this.extractEnergy(stack, ItemRayGun.energyPerUse, false);
-								}
 								else if(meltables.containsKey(world.getBlock(i, j, k)))
-								{
 									world.setBlock(i, j, k, meltables.get(world.getBlock(i, j, k)));
-									this.extractEnergy(stack, ItemRayGun.energyPerUse, false);
-								}
+								
+								this.setEnergy(stack, this.getEnergyStored(stack) - ItemRayGun.energyPerUse);
 							}
 			}
 			Entity pointedEntity = PlayerUtils.getPointedEntity(world, player, 32.0D);

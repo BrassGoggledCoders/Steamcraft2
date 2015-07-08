@@ -311,8 +311,8 @@ public class InitItems
 		registerItem(matchlockPistol, "ItemMatchlockPistol");
 		registerItem(percussionCapPistol, "ItemPercussionCapPistol");
 
-		itemRayGun = new ItemRayGun(ModInfo.PREFIX + "raygun", 50, ItemRayGun.energyPerUse, 200).setUnlocalizedName("itemRaygun");
-		itemShrinkray = new ItemShrinkray(ModInfo.PREFIX + "shrinkray", 50, ItemShrinkray.energyPerUse, 200).setUnlocalizedName("itemShrinkray");
+		itemRayGun = new ItemRayGun(ModInfo.PREFIX + "raygun", 50, 200).setUnlocalizedName("itemRaygun");
+		itemShrinkray = new ItemShrinkray(ModInfo.PREFIX + "shrinkray", 500, 1000).setUnlocalizedName("itemShrinkray");
 
 		registerItem(itemRayGun, "ItemRayGun");
 		registerItem(itemShrinkray, "ItemShrinkray");

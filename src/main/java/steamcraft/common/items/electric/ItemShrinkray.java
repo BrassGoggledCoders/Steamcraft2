@@ -40,9 +40,9 @@ public class ItemShrinkray extends ElectricItem
 	static HashMap<String, Object> ray = new HashMap<String, Object>();
 	static HashMap<String, Long> soundDelay = new HashMap<String, Long>();
 
-	public ItemShrinkray(String raySound, int maxEnergy, int maxReceive, int maxSend)
+	public ItemShrinkray(String raySound, int maxEnergy, int maxReceive)
 	{
-		super(maxEnergy, maxReceive, maxSend);
+		super(maxEnergy, maxReceive, 0);
 		this.setMaxStackSize(1);
 		this.setFull3D();
 		this.setHasSubtypes(false);
@@ -112,7 +112,7 @@ public class ItemShrinkray extends ElectricItem
 								if(!world.isRemote)
 								{
 									world.setBlockToAir(x, y, z);
-									this.extractEnergy(stack, ItemShrinkray.energyPerUse, false);
+									this.setEnergy(stack, this.getEnergyStored(stack) - ItemShrinkray.energyPerUse);
 								}
 							}
 						}
