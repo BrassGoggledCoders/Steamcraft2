@@ -66,9 +66,9 @@ public class ItemRayGun extends ElectricItem
 			MovingObjectPosition mop = PlayerUtils.getTargetBlock(world, player, true, 50);
 
 			Vec3 vec3 = player.getLookVec();
-			double tx = player.posX + (vec3.xCoord * 10.0D);
-			double ty = player.posY + (vec3.yCoord * 10.0D);
-			double tz = player.posZ + (vec3.zCoord * 10.0D);
+			double tx = player.posX + (vec3.xCoord * 5.0D);
+			double ty = player.posY + (vec3.yCoord * 5.0D);
+			double tz = player.posZ + (vec3.zCoord * 5.0D);
 			int impact = 0;
 
 			if(mop != null) // Sets vector

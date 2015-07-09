@@ -18,12 +18,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-
 import steamcraft.common.lib.MaterialHelper;
 import steamcraft.common.lib.ModInfo;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author Decebaldecebal
@@ -47,8 +45,10 @@ public class ItemObsidianArmor extends BaseArmor
 	public void onArmorTick(World world, EntityPlayer player, ItemStack is)
 	{
 		// Slowness
-		player.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 20, 3));
+		player.motionX *= 0.4;
+		player.motionZ *= 0.4;
 		// Fire resist
+		player.addPotionEffect(new PotionEffect(Potion.fireResistance.id, 20, 5));
 		player.extinguish();
 		// Sinking
 		if(player.isInWater())
