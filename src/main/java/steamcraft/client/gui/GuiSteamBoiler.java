@@ -18,6 +18,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 
+import boilerplate.client.BaseContainerGui;
 import org.lwjgl.opengl.GL11;
 import steamcraft.common.lib.ModInfo;
 import steamcraft.common.tiles.TileSteamBoiler;

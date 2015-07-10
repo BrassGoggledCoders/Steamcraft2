@@ -17,6 +17,7 @@ import net.minecraft.util.ResourceLocation;
 
 import net.minecraftforge.common.util.ForgeDirection;
 
+import boilerplate.client.BaseContainerGui;
 import org.lwjgl.opengl.GL11;
 import steamcraft.common.lib.ModInfo;
 import steamcraft.common.tiles.container.ContainerBattery;

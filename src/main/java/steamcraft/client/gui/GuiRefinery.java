@@ -26,6 +26,7 @@ import steamcraft.common.init.InitBlocks;
 import steamcraft.common.lib.ModInfo;
 import steamcraft.common.tiles.TileRefinery;
 import steamcraft.common.tiles.container.ContainerRefinery;
+import boilerplate.client.BaseContainerGui;
 import boilerplate.client.utils.GuiColors;
 
 /**

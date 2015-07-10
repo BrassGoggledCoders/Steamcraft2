@@ -17,6 +17,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
 
+import boilerplate.client.BaseContainerGui;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 import steamcraft.common.init.InitPackets;
