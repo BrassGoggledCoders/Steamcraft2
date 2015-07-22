@@ -60,57 +60,53 @@ public class TileArmorEditor extends BaseTileWithInventory implements IInventory
 	{
 		ArrayList<String> installedModules = new ArrayList<String>();
 
-		if(this.worldObj.isRemote)
+		if (this.worldObj.isRemote)
 			return;
 		// Addition
-		if((this.inventory[0] != null) && (this.inventory[0].getItem() instanceof ItemBrassArmor) && (this.inventory[2] != null))
+		if ((this.inventory[0] != null) && (this.inventory[0].getItem() instanceof ItemBrassArmor) && (this.inventory[2] != null))
 		{
 			NBTTagCompound tagCompound = ItemBrassArmor.getOrCreateTagCompound(this.inventory[0]);
 			Item armor = this.inventory[0].getItem();
 			ItemBrassArmor brassarmor = (ItemBrassArmor) armor;
 
-			for(int f = 0; f < tagCompound.getInteger("moduleCount"); f++)
+			for (int f = 0; f < tagCompound.getInteger("moduleCount"); f++)
 			{
 				installedModules.add(tagCompound.getString("module" + f));
 				tagCompound.removeTag("module" + f);
 			}
-			if((this.inventory[2] != null) && (this.inventory[2].getItem() instanceof IArmorModule))
+			if ((this.inventory[2] != null) && (this.inventory[2].getItem() instanceof IArmorModule))
 			{
 				IArmorModule module = (IArmorModule) this.inventory[2].getItem();
 				ArrayList moduleIncompatibilities = ModuleRegistry.getModuleIncompatibilities(module.getModuleId());
-				if(!installedModules.contains(module.getModuleId()))
+				if (!installedModules.contains(module.getModuleId()))
 				{
-					if(moduleIncompatibilities == null)
+					if (moduleIncompatibilities == null)
 					{
-						if(module.getApplicablePiece() == -1)
+						if (module.getApplicablePiece() == -1)
 						{
-							installedModules.add(module.getModuleId());
-							this.setInventorySlotContents(2, null);
+							this.installModule(installedModules, module);
 						}
-						else if(module.getApplicablePiece() == brassarmor.armorType)
+						else if (module.getApplicablePiece() == brassarmor.armorType)
 						{
-							installedModules.add(module.getModuleId());
-							this.setInventorySlotContents(2, null);
+							this.installModule(installedModules, module);
 						}
 					}
-					else if(Collections.disjoint(installedModules, moduleIncompatibilities))
+					else if (Collections.disjoint(installedModules, moduleIncompatibilities))
 					{
-						if(module.getApplicablePiece() == -1)
+						if (module.getApplicablePiece() == -1)
 						{
-							installedModules.add(module.getModuleId());
-							this.setInventorySlotContents(2, null);
+							this.installModule(installedModules, module);
 						}
-						else if(module.getApplicablePiece() == brassarmor.armorType)
+						else if (module.getApplicablePiece() == brassarmor.armorType)
 						{
-							installedModules.add(module.getModuleId());
-							this.setInventorySlotContents(2, null);
+							this.installModule(installedModules, module);
 						}
 					}
 				}
 			}
 			Iterator<String> iterator = installedModules.iterator();
 			int objects = 0;
-			while(iterator.hasNext())
+			while (iterator.hasNext())
 			{
 				tagCompound.setString("module" + objects, iterator.next());
 				objects++;
@@ -118,31 +114,44 @@ public class TileArmorEditor extends BaseTileWithInventory implements IInventory
 			tagCompound.setInteger("moduleCount", objects);
 		}
 		// Removal
-		if((this.inventory[1] != null) && (this.inventory[1].getItem() instanceof ItemBrassArmor))
+		if ((this.inventory[1] != null) && (this.inventory[1].getItem() instanceof ItemBrassArmor))
 		{
 			NBTTagCompound tagCompound = ItemBrassArmor.getOrCreateTagCompound(this.inventory[1]);
-			for(int f = 0; f < tagCompound.getInteger("moduleCount"); f++)
+			for (int f = 0; f < tagCompound.getInteger("moduleCount"); f++)
 			{
 				installedModules.add(tagCompound.getString("module" + f));
 				tagCompound.removeTag("module" + f);
 			}
-			for(int i = 0; i < installedModules.size(); i++)
+			for (int i = 0; i < installedModules.size(); i++)
 			{
 				Item module = (Item) ModuleRegistry.getModule(installedModules.get(i));
-				if((this.inventory[2] == null) && (module != null))
+				if ((this.inventory[2] == null) && (module != null))
 				{
-					this.setInventorySlotContents(2, new ItemStack(module));
-					installedModules.remove(i);
+					this.removeModule(installedModules, (IArmorModule) module, i);
 				}
 			}
 			Iterator<String> iterator = installedModules.iterator();
 			int objects = 0;
-			while(iterator.hasNext())
+			while (iterator.hasNext())
 			{
 				tagCompound.setString("module" + objects, iterator.next());
 				objects++;
 			}
 			tagCompound.setInteger("moduleCount", objects);
 		}
+	}
+
+	private void installModule(ArrayList<String> installedModules, IArmorModule module)
+	{
+		installedModules.add(module.getModuleId());
+		module.onModuleAdded(worldObj);
+		this.setInventorySlotContents(2, null);
+	}
+
+	private void removeModule(ArrayList<String> installedModules, IArmorModule module, int modulePos)
+	{
+		this.setInventorySlotContents(2, new ItemStack((Item) module));
+		module.onModuleRemoved(worldObj);
+		installedModules.remove(modulePos);
 	}
 }

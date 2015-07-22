@@ -17,6 +17,7 @@ import java.util.List;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
+import net.minecraft.world.World;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -38,12 +39,12 @@ public abstract class BaseArmorModule extends RootItem implements IArmorModule
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer par2EntityPlayer, List list, boolean par4)
 	{
-		if(ClientHelper.isShiftKeyDown())
+		if (ClientHelper.isShiftKeyDown())
 		{
 			list.add("Module ID: " + this.getModuleId());
 			list.add("Applicable Piece: " + this.getArmorPieceNameFromNumber(this.getApplicablePiece()));
 			list.add("Effect Type: " + this.getEffectTypeStringFromEnum(this.getArmorEffectType()));
-			if(!StatCollector.translateToLocal(this.getUnlocalizedName() + ".desc").contains("item."))
+			if (!StatCollector.translateToLocal(this.getUnlocalizedName() + ".desc").contains("item."))
 			{
 				list.add("Module Effect: ");
 				this.getWrappedDesc(list, stack);
@@ -55,31 +56,31 @@ public abstract class BaseArmorModule extends RootItem implements IArmorModule
 
 	public String getArmorPieceNameFromNumber(int number)
 	{
-		switch(number)
+		switch (number)
 		{
-			case -1:
-				return "All";
-			case 0:
-				return "Helmet";
-			case 1:
-				return "Chestplate";
-			case 2:
-				return "Leggings";
-			case 3:
-				return "Boots";
+		case -1:
+			return "All";
+		case 0:
+			return "Helmet";
+		case 1:
+			return "Chestplate";
+		case 2:
+			return "Leggings";
+		case 3:
+			return "Boots";
 		}
 		return "Error!";
 	}
 
 	public String getEffectTypeStringFromEnum(EnumArmorEffectType type)
 	{
-		if(type == EnumArmorEffectType.ONTICK)
+		if (type == EnumArmorEffectType.ONTICK)
 			return "On Equipped Tick";
-		else if(type == EnumArmorEffectType.HUD)
+		else if (type == EnumArmorEffectType.HUD)
 			return "HUD Element";
-		else if(type == EnumArmorEffectType.DEFENSIVE)
+		else if (type == EnumArmorEffectType.DEFENSIVE)
 			return "Defensive";
-		else if(type == EnumArmorEffectType.SPECIAL)
+		else if (type == EnumArmorEffectType.SPECIAL)
 			return "Unique";
 		else
 			return "Error!";
@@ -89,5 +90,19 @@ public abstract class BaseArmorModule extends RootItem implements IArmorModule
 	public int getModuleWeight()
 	{
 		return 0;
+	}
+
+	@Override
+	public void onModuleAdded(World world)
+	{
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void onModuleRemoved(World world)
+	{
+		// TODO Auto-generated method stub
+
 	}
 }

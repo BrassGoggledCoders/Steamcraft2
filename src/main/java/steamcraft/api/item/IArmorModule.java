@@ -16,7 +16,8 @@ package steamcraft.api.item;
 public interface IArmorModule extends IModule
 {
 	/**
-	 * Gets the armor piece the module can be applied to. 0 is helmet, 1 is plate, 2 is legs and 3 is boots. Return -1 for any piece
+	 * Gets the armor piece the module can be applied to. 0 is helmet, 1 is
+	 * plate, 2 is legs and 3 is boots. Return -1 for any piece
 	 *
 	 * @return the applicable piece
 	 */

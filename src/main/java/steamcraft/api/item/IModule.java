@@ -49,4 +49,8 @@ public interface IModule
 	 *            the stack
 	 */
 	public void applyModuleEffect(World world, EntityPlayer player, ItemStack stack);
+
+	public void onModuleAdded(World world);
+
+	public void onModuleRemoved(World world);
 }
