@@ -46,7 +46,7 @@ group= "brassgoggledcoders" // http://maven.apache.org/guides/mini/guide-naming-
 archivesBaseName = "steamcraft2"
 
 minecraft {
-    version = "${project.ext.mcVersion}-10.13.3.1424-${project.ext.mcVersion}"
+    version = "${project.ext.mcVersion}-10.13.4.1490-${project.ext.mcVersion}"
     runDir = "eclipse"
 }
 
