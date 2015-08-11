@@ -118,15 +118,15 @@ tile.blockStoneslabWall.name=Stone Slab Wall
 tile.blockBrickWall.name=Brick Wall
 
 #Ores
-tile.blockSteamcraftOre.0.name=Bauxite
-tile.blockSteamcraftOre.0.desc=Aluminum Ore
-tile.blockSteamcraftOre.1.name=Cuprite
-tile.blockSteamcraftOre.1.desc=Copper Ore
-tile.blockSteamcraftOre.2.name=Casserite
-tile.blockSteamcraftOre.2.desc=Tin Ore
-tile.blockSteamcraftOre.3.name=Sphalerite
-tile.blockSteamcraftOre.3.desc=Zinc Ore
-tile.blockSteamcraftOre.4.name=Uranite
+tile.blockSteamcraftOre.0.desc=Bauxite
+tile.blockSteamcraftOre.0.name=Aluminum Ore
+tile.blockSteamcraftOre.1.desc=Cuprite
+tile.blockSteamcraftOre.1.name=Copper Ore
+tile.blockSteamcraftOre.2.desc=Casserite
+tile.blockSteamcraftOre.2.name=Tin Ore
+tile.blockSteamcraftOre.3.desc=Sphalerite
+tile.blockSteamcraftOre.3.name=Zinc Ore
+tile.blockSteamcraftOre.4.name=Uranite Ore
 tile.blockSteamcraftOre.4.desc=Uranium Ore
 tile.blockSteamcraftOre.5.name=Brimstone
 tile.blockSteamcraftOre.5.desc=Sulphur Ore
