@@ -115,6 +115,7 @@ tile.blockStonebrickWallMossy.name=Mossy Stonebrick Wall
 tile.blockStonebrickWallCracked.name=Cracked Stonebrick Wall
 tile.blockStonebrickWallChiseled.name=Chiseled Stonebrick Wall
 tile.blockStoneslabWall.name=Stone Slab Wall
+tile.blockBrickWall.name=Brick Wall
 
 #Ores
 tile.blockSteamcraftOre.0.name=Bauxite

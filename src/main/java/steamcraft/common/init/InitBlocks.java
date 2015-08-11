@@ -18,11 +18,16 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemBlock;
+
+import cpw.mods.fml.common.registry.GameRegistry;
+
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 
+import boilerplate.common.baseclasses.BaseItemBlockWithMetadata;
+import boilerplate.common.compathandler.FMPCompatHandler;
+import boilerplate.common.utils.helpers.RegistryHelper;
 import org.apache.commons.lang3.text.WordUtils;
-
 import steamcraft.common.Steamcraft;
 import steamcraft.common.blocks.BaseBlock;
 import steamcraft.common.blocks.BlockBoulder;
@@ -112,10 +117,6 @@ import steamcraft.common.tiles.energy.TileStasisField;
 import steamcraft.common.tiles.energy.TileSteelWire;
 import steamcraft.common.tiles.energy.TileTeslaCoil;
 import steamcraft.common.tiles.energy.TileTurbine;
-import boilerplate.common.baseclasses.BaseItemBlockWithMetadata;
-import boilerplate.common.compathandler.FMPCompatHandler;
-import boilerplate.common.utils.helpers.RegistryHelper;
-import cpw.mods.fml.common.registry.GameRegistry;
 
 /**
  * @author Surseance
@@ -185,9 +186,8 @@ public class InitBlocks
 
 	public static Block blockRedwoodFence, blockRedwoodDoor, blockRedwoodSlab, blockRedwoodDoubleSlab, blockRedwoodStairs;
 
-	public static Block blockRedwoodLog, blockRedwoodLeaves, blockMangroveLog, blockMangroveLeaves, blockRedwoodPlanks, blockMangrovePlanks, blockWillowLog,
-			blockWillowLeaves, blockWillowPlanks, blockPetrifiedLog,
-			blockDeadLeaves, blockPetrifiedPlanks;
+	public static Block blockRedwoodLog, blockRedwoodLeaves, blockMangroveLog, blockMangroveLeaves, blockRedwoodPlanks, blockMangrovePlanks,
+			blockWillowLog, blockWillowLeaves, blockWillowPlanks, blockPetrifiedLog, blockDeadLeaves, blockPetrifiedPlanks;
 
 	public static Block blockRefinery;
 
@@ -199,9 +199,8 @@ public class InitBlocks
 	public static Block blockSlate, blockRawBlueSlateStairs, blockRawBlackSlateStairs, blockRawRedSlateStairs, blockCobbleBlueSlateStairs,
 			blockCobbleBlackSlateStairs, blockCobbleRedSlateStairs, blockBrickBlueSlateStairs, blockBrickBlackSlateStairs, blockBrickRedSlateStairs;
 
-	public static Block blockStandardSiren, blockStandardSirenOn, blockAllClearSiren,
-			blockAllClearSirenOn, blockIntruderSiren, blockIntruderSirenOn, blockNuclearSiren,
-			blockNuclearSirenOn, blockMotionSensor, blockMotionSensorOn;
+	public static Block blockStandardSiren, blockStandardSirenOn, blockAllClearSiren, blockAllClearSirenOn, blockIntruderSiren, blockIntruderSirenOn,
+			blockNuclearSiren, blockNuclearSirenOn, blockMotionSensor, blockMotionSensorOn;
 
 	public static Block blockStasisField;
 
@@ -209,7 +208,8 @@ public class InitBlocks
 
 	/* Machines */
 	public static Block blockSteamBoiler, blockNuclearBoiler, blockIntake, blockTurbine, blockBattery, blockCharger, blockCapacitor;
-	public static Block blockStonebrickWall, blockStonebrickWallMossy, blockStonebrickWallCracked, blockStonebrickWallChiseled, blockStoneslabWall;
+	public static Block blockStonebrickWall, blockStonebrickWallMossy, blockStonebrickWallCracked, blockStonebrickWallChiseled, blockStoneslabWall,
+			blockBrickWall;
 	public static Block blockTeaPlant, blockHatch;
 	public static Block blockTimeBomb;
 
@@ -287,6 +287,8 @@ public class InitBlocks
 		registerBlock(blockStonebrickWallChiseled, "BlockStonebrickWallChiseled");
 		blockStoneslabWall = new BlockCustomWall(Blocks.stone_slab, 0, false).setBlockName("blockStoneslabWall");
 		registerBlock(blockStoneslabWall, "BlockStoneslabWall");
+		blockBrickWall = new BlockCustomWall(Blocks.brick_block, 0, false).setBlockName("blockBrickWall");
+		registerBlock(blockBrickWall, "BlockBrickWall");
 	}
 
 	private static void initializeFluids()
@@ -297,17 +299,15 @@ public class InitBlocks
 	}
 
 	public static void registerFluid(String fluidName, Fluid fluid, Material material, BlockSteamcraftFluid fluidBlock, boolean isGaseous, int temp,
-			int density,
-			int viscosity,
-			int luminosity)
+			int density, int viscosity, int luminosity)
 	{
 		fluid = new Fluid(fluidName).setUnlocalizedName(fluidName + "Fluid").setDensity(density).setTemperature(temp).setViscosity(viscosity)
 				.setLuminosity(luminosity).setGaseous(isGaseous);
-		if(!FluidRegistry.isFluidRegistered(fluidName))
+		if (!FluidRegistry.isFluidRegistered(fluidName))
 			FluidRegistry.registerFluid(fluid);
 		fluidBlock = (BlockSteamcraftFluid) new BlockSteamcraftFluid(fluid, material, fluidName).setBlockName(fluidName + "FluidBlock");
 		registerBlock(fluidBlock, "Block" + WordUtils.capitalize(fluidName));
-		if(fluid.getBlock() == null)
+		if (fluid.getBlock() == null)
 			fluid.setBlock(fluidBlock);
 		else
 			fluidBlock.dontOverwriteIcons();
@@ -340,7 +340,8 @@ public class InitBlocks
 		RegistryHelper.registerContainerBlockWithDesc(blockLightningRod, TileLightningRod.class, "BlockLightningRod");
 		RegistryHelper.registerContainerBlockWithDesc(blockTeslaCoil, TileTeslaCoil.class, "BlockTeslaCoil");
 		RegistryHelper.registerContainerBlockWithDesc(blockCharger, TileCharger.class, "BlockCharger");
-		// RegistryHelper.registerContainerBlockWithDesc(blockSaw, TileSawmill.class, "BlockSawmill");
+		// RegistryHelper.registerContainerBlockWithDesc(blockSaw,
+		// TileSawmill.class, "BlockSawmill");
 
 		// Bloomery
 		blockBloomery = new BlockBloomery(Material.rock).setBlockName("blockBloomery");
@@ -356,7 +357,7 @@ public class InitBlocks
 		blockCopperPipe = new BlockCopperPipe(Material.iron).setBlockName("blockCopperPipe");
 
 		RegistryHelper.registerContainerBlockWithDesc(blockCopperPipe, TileCopperPipe.class, "BlockCopperPipe");
-		
+
 		blockSteelPipe = new BlockSteelPipe(Material.iron).setBlockName("blockSteelPipe");
 
 		RegistryHelper.registerContainerBlockWithDesc(blockSteelPipe, TileSteelPipe.class, "BlockSteelPipe");
@@ -365,9 +366,9 @@ public class InitBlocks
 		blockCopperWire = new BlockCopperWire(Material.iron).setBlockName("blockCopperWire");
 
 		RegistryHelper.registerContainerBlockWithDescAndMeta(blockCopperWire, TileCopperWire.class, "BlockCopperWire");
-		
+
 		blockSteelWire = new BlockSteelWire(Material.iron).setBlockName("blockSteelWire");
-		
+
 		RegistryHelper.registerContainerBlockWithDescAndMeta(blockSteelWire, TileSteelWire.class, "BlockSteelWire");
 
 		// Tanks
@@ -376,7 +377,8 @@ public class InitBlocks
 		RegistryHelper.registerContainerBlockWithDesc(blockCopperTank, TileCopperTank.class, "BlockCopperTank");
 
 		blockRefinery = new BlockRefinery().setBlockName("blockRefinery");
-		// RegistryHelper.registerContainerBlockWithDesc(blockRefinery, TileRefinery.class, "BlockRefinery");
+		// RegistryHelper.registerContainerBlockWithDesc(blockRefinery,
+		// TileRefinery.class, "BlockRefinery");
 
 		blockStasisField = new BlockStasisField().setBlockName("blockStasisField");
 		RegistryHelper.registerContainerBlockWithDesc(blockStasisField, TileStasisField.class, "BlockStasisField");
@@ -424,7 +426,8 @@ public class InitBlocks
 	{
 		blockDropHammerAnvil = new BlockDropHammerAnvil(Material.anvil).setBlockName("blockDropHammerAnvil");
 
-		// RegistryHelper.registerContainerBlock(blockDropHammerAnvil, TileDropHammer.class, "BlockDropHammerAnvil");
+		// RegistryHelper.registerContainerBlock(blockDropHammerAnvil,
+		// TileDropHammer.class, "BlockDropHammerAnvil");
 
 		blockTeaPlant = new BlockTeaPlant().setBlockName("blockTeaPlant");
 		registerBlock(blockTeaPlant, "BlockTeaPlant");
@@ -433,13 +436,15 @@ public class InitBlocks
 		RegistryHelper.registerContainerBlock(blockTimeBomb, TileTimeBomb.class, "BlockTimeBomb");
 
 		blockHatch = new BlockHatch().setBlockName("blockHatch");
-		// RegistryHelper.registerContainerBlock(blockHatch, TileHatch.class, "BlockHatch");
+		// RegistryHelper.registerContainerBlock(blockHatch, TileHatch.class,
+		// "BlockHatch");
 
 		blockFlesh = new BaseBlock(Material.gourd).setBlockName("blockFlesh").setCreativeTab(Steamcraft.tabSC2);
 		registerBlock(blockFlesh, "BlockFlesh");
 
 		blockPlankStack = new BlockPlankStack(Material.wood).setBlockName("blockPlankStack").setCreativeTab(Steamcraft.tabSC2);
-		// registerBlock(blockPlankStack, BaseItemBlockWithMetadata.class, "BlockPlankStack");
+		// registerBlock(blockPlankStack, BaseItemBlockWithMetadata.class,
+		// "BlockPlankStack");
 
 		blockCongealedSlime = new BlockCongealedSlime(Material.gourd).setBlockName("blockCongealedSlime").setCreativeTab(Steamcraft.tabSC2);
 		registerBlock(blockCongealedSlime, "BlockCongealedSlime");
@@ -447,8 +452,10 @@ public class InitBlocks
 		blockMotionSensor = new BlockMotionSensor(Material.iron, false).setBlockName("blockMotionSensor");
 		blockMotionSensorOn = new BlockMotionSensor(Material.iron, true).setBlockName("blockMotionSensorOn");
 
-		// RegistryHelper.registerContainerBlock(blockMotionSensor, TileMotionSensor.class, "BlockMotionSensor");
-		// RegistryHelper.registerContainerBlock(blockMotionSensorOn, TileMotionSensor.class, "BlockMotionSensorOn");
+		// RegistryHelper.registerContainerBlock(blockMotionSensor,
+		// TileMotionSensor.class, "BlockMotionSensor");
+		// RegistryHelper.registerContainerBlock(blockMotionSensorOn,
+		// TileMotionSensor.class, "BlockMotionSensorOn");
 
 		// Standard
 		blockStandardSiren = new BlockSiren(Material.redstoneLight, false, "standard").setBlockName("blockStandardSiren");
@@ -562,10 +569,18 @@ public class InitBlocks
 		registerBlock(blockPetrifiedFence, "blockPetrifiedFence");
 
 		/*
-		 * blockRedwoodDoor = new BlockCustomDoor("Redwood").setBlockName("blockRedwoodDoor"); registerBlock(blockRedwoodDoor, "BlockRedwoodDoor");
-		 * blockMangroveDoor = new BlockCustomDoor("Mangrove").setBlockName("blockMangroveDoor"); registerBlock(blockMangroveDoor, "blockMangroveDoor");
-		 * blockWillowDoor = new BlockCustomDoor("Willow").setBlockName("blockWillowDoor"); registerBlock(blockWillowDoor, "blockWillowDoor");
-		 * blockPetrifiedDoor = new BlockCustomDoor("Petrified").setBlockName("blockPetrifiedDoor"); registerBlock(blockPetrifiedDoor, "blockPetrifiedDoor");
+		 * blockRedwoodDoor = new
+		 * BlockCustomDoor("Redwood").setBlockName("blockRedwoodDoor");
+		 * registerBlock(blockRedwoodDoor, "BlockRedwoodDoor");
+		 * blockMangroveDoor = new
+		 * BlockCustomDoor("Mangrove").setBlockName("blockMangroveDoor");
+		 * registerBlock(blockMangroveDoor, "blockMangroveDoor");
+		 * blockWillowDoor = new
+		 * BlockCustomDoor("Willow").setBlockName("blockWillowDoor");
+		 * registerBlock(blockWillowDoor, "blockWillowDoor"); blockPetrifiedDoor
+		 * = new
+		 * BlockCustomDoor("Petrified").setBlockName("blockPetrifiedDoor");
+		 * registerBlock(blockPetrifiedDoor, "blockPetrifiedDoor");
 		 */
 
 		blockRedwoodStairs = new BlockCustomStairs(blockRedwoodPlanks).setBlockName("blockRedwoodStairs");
@@ -635,13 +650,13 @@ public class InitBlocks
 		registerBlock(blockBrassLeaves, "BlockBrassLeaves");
 	}
 
-	private static String[] blacklist = new String[] { "BlockFissurePortal", "BlockLamp", "BlockMotionSensor", "BlockMotionSensorOn", "BlockStandardSirenOn",
-			"BlockStandardSiren", "BlockAllClearSiren", "BlockAllClearSirenOn", "BlockNuclearSiren", "BlockNuclearSirenOn", "BlockIntruderSiren",
-			"BlockIntruderSirenOn", "BlockCopperTank", "BlockInfestedDirt", "BlockInfestedGrass" };
+	private static String[] blacklist = new String[] { "BlockFissurePortal", "BlockLamp", "BlockMotionSensor", "BlockMotionSensorOn",
+			"BlockStandardSirenOn", "BlockStandardSiren", "BlockAllClearSiren", "BlockAllClearSirenOn", "BlockNuclearSiren", "BlockNuclearSirenOn",
+			"BlockIntruderSiren", "BlockIntruderSirenOn", "BlockCopperTank", "BlockInfestedDirt", "BlockInfestedGrass" };
 
 	private static void registerBlock(Block block, Class<? extends ItemBlock> itemblock, String name, int maxMeta)
 	{
-		if(block.isOpaqueCube() && !Arrays.asList(blacklist).contains(name) && !block.hasTileEntity(0))
+		if (block.isOpaqueCube() && !Arrays.asList(blacklist).contains(name) && !block.hasTileEntity(0))
 			FMPCompatHandler.registerMetaFMP(block, maxMeta);
 
 		GameRegistry.registerBlock(block, itemblock, name);
@@ -649,7 +664,7 @@ public class InitBlocks
 
 	private static void registerBlock(Block block, String name)
 	{
-		if(block.isOpaqueCube() && !Arrays.asList(blacklist).contains(name) && !block.hasTileEntity(0))
+		if (block.isOpaqueCube() && !Arrays.asList(blacklist).contains(name) && !block.hasTileEntity(0))
 			FMPCompatHandler.registerFMP(block);
 
 		GameRegistry.registerBlock(block, name);
