@@ -23,8 +23,15 @@ import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 
-import org.lwjgl.input.Keyboard;
+import cpw.mods.fml.client.registry.ClientRegistry;
+import cpw.mods.fml.client.registry.RenderingRegistry;
 
+import boilerplate.client.ClientHelper;
+import boilerplate.client.fx.FXRaygun;
+import boilerplate.client.renderers.block.BlockTESRRenderer;
+import boilerplate.client.renderers.block.RenderMinedBlock;
+import boilerplate.common.entity.EntityMinedBlock;
+import org.lwjgl.input.Keyboard;
 import steamcraft.client.lib.RenderIDs;
 import steamcraft.client.renderers.block.BlockCastIronGateRenderer;
 import steamcraft.client.renderers.block.BlockCastIronLampRenderer;
@@ -99,13 +106,6 @@ import steamcraft.common.tiles.energy.TileCopperWire;
 import steamcraft.common.tiles.energy.TileLightningRod;
 import steamcraft.common.tiles.energy.TileSteelWire;
 import steamcraft.common.tiles.energy.TileTeslaCoil;
-import boilerplate.client.ClientHelper;
-import boilerplate.client.fx.FXRaygun;
-import boilerplate.client.renderers.block.BlockTESRRenderer;
-import boilerplate.client.renderers.block.RenderMinedBlock;
-import boilerplate.common.entity.EntityMinedBlock;
-import cpw.mods.fml.client.registry.ClientRegistry;
-import cpw.mods.fml.client.registry.RenderingRegistry;
 
 /**
  * @author Surseance
@@ -130,7 +130,7 @@ public class ClientProxy extends CommonProxy
 		keyBindings.put("vanity", new KeyBinding("key.vanity.desc", Keyboard.KEY_V, "key.steamcraft.category"));
 
 		// register all the key bindings
-		for(KeyBinding keyBinding : keyBindings.values())
+		for (KeyBinding keyBinding : keyBindings.values())
 		{
 			ClientRegistry.registerKeyBinding(keyBinding);
 		}
@@ -152,10 +152,8 @@ public class ClientProxy extends CommonProxy
 		RenderingRegistry.registerEntityRenderingHandler(EntityWhale.class, new RenderWhale());
 
 		RenderingRegistry.registerEntityRenderingHandler(EntityBullet.class, new RenderSnowball(InitItems.itemMusketBall));
-		RenderingRegistry.registerEntityRenderingHandler(EntityFieldManipulator.class, new RenderSnowball(
-				InitItems.itemFieldManipulator));
-		RenderingRegistry.registerEntityRenderingHandler(EntitySplashLightningBottle.class, new RenderSnowball(
-				InitItems.itemSplashLightningBottle));
+		RenderingRegistry.registerEntityRenderingHandler(EntityFieldManipulator.class, new RenderSnowball(InitItems.itemFieldManipulator));
+		RenderingRegistry.registerEntityRenderingHandler(EntitySplashLightningBottle.class, new RenderSnowball(InitItems.itemSplashLightningBottle));
 		RenderingRegistry.registerEntityRenderingHandler(EntityRocket.class, new RenderSnowball(InitItems.itemRocket));
 		RenderingRegistry.registerEntityRenderingHandler(EntityFallingBoulder.class, new RenderFallingBoulder());
 		RenderingRegistry.registerEntityRenderingHandler(EntityMinedBlock.class, new RenderMinedBlock());
@@ -198,7 +196,8 @@ public class ClientProxy extends CommonProxy
 		RenderingRegistry.registerBlockHandler(new BlockCastIronLampRenderer());
 		// Hatch
 		ClientRegistry.bindTileEntitySpecialRenderer(TileHatch.class, new TileHatchRenderer());
-		RenderingRegistry.registerBlockHandler(new BlockTESRRenderer(new TileHatch(), RenderIDs.blockHatchRI));
+		// RenderingRegistry.registerBlockHandler(new BlockTESRRenderer(new
+		// TileHatch(), RenderIDs.blockHatchRI));
 		// Crystal
 		ClientRegistry.bindTileEntitySpecialRenderer(EmptyTiles.TileCrystal.class, new TileCrystalRenderer());
 		RenderingRegistry.registerBlockHandler(new BlockTESRRenderer(new EmptyTiles.TileCrystal(), RenderIDs.blockCrystalRI));
@@ -221,9 +220,9 @@ public class ClientProxy extends CommonProxy
 		FXRaygun ray = null;
 		Color color = rayColor;
 
-		if(input instanceof FXRaygun)
+		if (input instanceof FXRaygun)
 			ray = (FXRaygun) input;
-		if((ray == null) || ray.isDead)
+		if ((ray == null) || ray.isDead)
 		{
 			ray = new FXRaygun(world, player, dx, dy, dz, color.getRed() / 255.0F, color.getGreen() / 255.0F, color.getBlue() / 255.0F, 9);
 			ray.setType(type);
@@ -244,48 +243,48 @@ public class ClientProxy extends CommonProxy
 	@Override
 	public ModelBiped getWingsArmorModel(int id)
 	{
-		switch(id)
+		switch (id)
 		{
-			case 1:
-				return new ModelBrassWings(0.5F);
-			default:
-				return new ModelBrassWings(1.0F);
+		case 1:
+			return new ModelBrassWings(0.5F);
+		default:
+			return new ModelBrassWings(1.0F);
 		}
 	}
 
 	@Override
 	public ModelBiped getJetpackArmorModel(int id)
 	{
-		switch(id)
+		switch (id)
 		{
-			case 1:
-				return new ModelJetpack(0.5F);
-			default:
-				return new ModelJetpack(1.0F);
+		case 1:
+			return new ModelJetpack(0.5F);
+		default:
+			return new ModelJetpack(1.0F);
 		}
 	}
 
 	@Override
 	public ModelBiped getWingpackArmorModel(int id)
 	{
-		switch(id)
+		switch (id)
 		{
-			case 1:
-				return new ModelWingpack(0.5F);
-			default:
-				return new ModelWingpack(1.0F);
+		case 1:
+			return new ModelWingpack(0.5F);
+		default:
+			return new ModelWingpack(1.0F);
 		}
 	}
 
 	@Override
 	public boolean isKeyPressed(int id)
 	{
-		switch(id)
+		switch (id)
 		{
-			case 0:
-				return ClientHelper.settings().keyBindJump.getIsKeyPressed();
-			default:
-				return false;
+		case 0:
+			return ClientHelper.settings().keyBindJump.getIsKeyPressed();
+		default:
+			return false;
 		}
 	}
 

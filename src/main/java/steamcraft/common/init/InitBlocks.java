@@ -28,6 +28,7 @@ import boilerplate.common.baseclasses.BaseItemBlockWithMetadata;
 import boilerplate.common.compathandler.FMPCompatHandler;
 import boilerplate.common.utils.helpers.RegistryHelper;
 import org.apache.commons.lang3.text.WordUtils;
+import steamcraft.client.renderers.tile.TileHatchRenderer.TileHatch;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.blocks.BaseBlock;
 import steamcraft.common.blocks.BlockBoulder;
@@ -436,8 +437,7 @@ public class InitBlocks
 		RegistryHelper.registerContainerBlock(blockTimeBomb, TileTimeBomb.class, "BlockTimeBomb");
 
 		blockHatch = new BlockHatch().setBlockName("blockHatch");
-		// RegistryHelper.registerContainerBlock(blockHatch, TileHatch.class,
-		// "BlockHatch");
+		RegistryHelper.registerContainerBlock(blockHatch, TileHatch.class, "BlockHatch");
 
 		blockFlesh = new BaseBlock(Material.gourd).setBlockName("blockFlesh").setCreativeTab(Steamcraft.tabSC2);
 		registerBlock(blockFlesh, "BlockFlesh");
