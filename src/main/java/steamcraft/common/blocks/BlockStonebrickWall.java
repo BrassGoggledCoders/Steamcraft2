@@ -14,9 +14,9 @@ package steamcraft.common.blocks;
 
 import java.util.List;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockWall;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
@@ -30,16 +30,12 @@ import steamcraft.common.Steamcraft;
  * @author warlordjones
  *
  */
-public class BlockCustomWall extends BlockWall
+public class BlockStonebrickWall extends BlockWall
 {
-	Block block;
-	int metadata;
 
-	public BlockCustomWall(Block block, int meta)
+	public BlockStonebrickWall()
 	{
-		super(block);
-		this.block = block;
-		this.metadata = meta;
+		super(Blocks.stonebrick);
 		this.setCreativeTab(Steamcraft.tabSC2);
 	}
 
@@ -47,7 +43,7 @@ public class BlockCustomWall extends BlockWall
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(int side, int meta)
 	{
-		return this.block.getIcon(0, this.metadata);
+		return Blocks.stonebrick.getIcon(side, meta);
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
@@ -56,5 +52,8 @@ public class BlockCustomWall extends BlockWall
 	public void getSubBlocks(Item item, CreativeTabs tab, List list)
 	{
 		list.add(new ItemStack(item, 1, 0));
+		list.add(new ItemStack(item, 1, 1));
+		list.add(new ItemStack(item, 1, 2));
+		list.add(new ItemStack(item, 1, 3));
 	}
 }

@@ -72,6 +72,7 @@ import steamcraft.common.blocks.BlockSlate;
 import steamcraft.common.blocks.BlockSpiderEgg;
 import steamcraft.common.blocks.BlockSteamcraftFluid;
 import steamcraft.common.blocks.BlockSteamcraftOre;
+import steamcraft.common.blocks.BlockStonebrickWall;
 import steamcraft.common.blocks.BlockTeaPlant;
 import steamcraft.common.blocks.BlockThin;
 import steamcraft.common.blocks.BlockTimeBomb;
@@ -209,8 +210,7 @@ public class InitBlocks
 
 	/* Machines */
 	public static Block blockSteamBoiler, blockNuclearBoiler, blockIntake, blockTurbine, blockBattery, blockCharger, blockCapacitor;
-	public static Block blockStonebrickWall, blockStonebrickWallMossy, blockStonebrickWallCracked, blockStonebrickWallChiseled, blockStoneslabWall,
-			blockBrickWall;
+	public static Block blockStonebrickWall, blockStoneslabWall, blockBrickWall;
 	public static Block blockTeaPlant, blockHatch;
 	public static Block blockTimeBomb;
 
@@ -278,17 +278,11 @@ public class InitBlocks
 		registerBlock(blockLamp, "BlockLamp");
 		registerBlock(blockLampOn, "BlockLampOn");
 
-		blockStonebrickWall = new BlockCustomWall(Blocks.stonebrick, 0, true).setBlockName("blockStonebrickWall");
+		blockStonebrickWall = new BlockStonebrickWall().setBlockName("blockStonebrickWall");
 		registerBlock(blockStonebrickWall, "BlockStonebrickWall");
-		blockStonebrickWallMossy = new BlockCustomWall(Blocks.stonebrick, 1, true).setBlockName("blockStonebrickWallMossy");
-		registerBlock(blockStonebrickWallMossy, "BlockStonebrickWallMossy");
-		blockStonebrickWallCracked = new BlockCustomWall(Blocks.stonebrick, 2, true).setBlockName("blockStonebrickWallCracked");
-		registerBlock(blockStonebrickWallCracked, "BlockStonebrickWallCracked");
-		blockStonebrickWallChiseled = new BlockCustomWall(Blocks.stonebrick, 3, true).setBlockName("blockStonebrickWallChiseled");
-		registerBlock(blockStonebrickWallChiseled, "BlockStonebrickWallChiseled");
-		blockStoneslabWall = new BlockCustomWall(Blocks.stone_slab, 0, false).setBlockName("blockStoneslabWall");
+		blockStoneslabWall = new BlockCustomWall(Blocks.stone_slab, 0).setBlockName("blockStoneslabWall");
 		registerBlock(blockStoneslabWall, "BlockStoneslabWall");
-		blockBrickWall = new BlockCustomWall(Blocks.brick_block, 0, false).setBlockName("blockBrickWall");
+		blockBrickWall = new BlockCustomWall(Blocks.brick_block, 0).setBlockName("blockBrickWall");
 		registerBlock(blockBrickWall, "BlockBrickWall");
 	}
 

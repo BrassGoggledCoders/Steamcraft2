@@ -321,10 +321,10 @@ public class InitRecipes
 			GameRegistry.addShapelessRecipe(new ItemStack(unengravedV[i]), new ItemStack(InitBlocks.blockEngravedVanilla, 1, i));
 		}
 
-		GameRegistry.addRecipe(new ItemStack(InitBlocks.blockStonebrickWall, 6), "NNN", "NNN", 'N', new ItemStack(Blocks.stonebrick, 1, 0));
-		GameRegistry.addRecipe(new ItemStack(InitBlocks.blockStonebrickWallMossy, 6), "NNN", "NNN", 'N', new ItemStack(Blocks.stonebrick, 1, 1));
-		GameRegistry.addRecipe(new ItemStack(InitBlocks.blockStonebrickWallCracked, 6), "NNN", "NNN", 'N', new ItemStack(Blocks.stonebrick, 1, 2));
-		GameRegistry.addRecipe(new ItemStack(InitBlocks.blockStonebrickWallChiseled, 6), "NNN", "NNN", 'N', new ItemStack(Blocks.stonebrick, 1, 3));
+		GameRegistry.addRecipe(new ItemStack(InitBlocks.blockStonebrickWall, 6, 0), "NNN", "NNN", 'N', new ItemStack(Blocks.stonebrick, 1, 0));
+		GameRegistry.addRecipe(new ItemStack(InitBlocks.blockStonebrickWall, 6, 1), "NNN", "NNN", 'N', new ItemStack(Blocks.stonebrick, 1, 1));
+		GameRegistry.addRecipe(new ItemStack(InitBlocks.blockStonebrickWall, 6, 2), "NNN", "NNN", 'N', new ItemStack(Blocks.stonebrick, 1, 2));
+		GameRegistry.addRecipe(new ItemStack(InitBlocks.blockStonebrickWall, 6, 3), "NNN", "NNN", 'N', new ItemStack(Blocks.stonebrick, 1, 3));
 		GameRegistry.addRecipe(new ItemStack(InitBlocks.blockStoneslabWall, 6), "NNN", "NNN", 'N', new ItemStack(Blocks.stone_slab, 1, 0));
 		GameRegistry.addRecipe(new ItemStack(InitBlocks.blockBrickWall, 6), "NNN", "NNN", 'N', new ItemStack(Blocks.brick_block, 1, 0));
 
