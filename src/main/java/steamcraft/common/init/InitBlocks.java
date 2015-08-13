@@ -279,7 +279,7 @@ public class InitBlocks
 		registerBlock(blockLampOn, "BlockLampOn");
 
 		blockStonebrickWall = new BlockStonebrickWall().setBlockName("blockStonebrickWall");
-		registerBlock(blockStonebrickWall, "BlockStonebrickWall");
+		registerBlock(blockStonebrickWall, BaseItemBlockWithMetadata.class, "BlockStonebrickWall", 0);
 		blockStoneslabWall = new BlockCustomWall(Blocks.stone_slab, 0).setBlockName("blockStoneslabWall");
 		registerBlock(blockStoneslabWall, "BlockStoneslabWall");
 		blockBrickWall = new BlockCustomWall(Blocks.brick_block, 0).setBlockName("blockBrickWall");
