@@ -110,10 +110,10 @@ tile.blockRedwoodSlab.name=Redwood Slab
 tile.blockMangroveSlab.name=Mangrove Slab
 tile.blockWillowSlab.name=Willow Slab
 tile.blockPetrifiedSlab.name=Petrified Slab
-tile.blockStonebrickWall.name=Stonebrick Wall
-tile.blockStonebrickWallMossy.name=Mossy Stonebrick Wall
-tile.blockStonebrickWallCracked.name=Cracked Stonebrick Wall
-tile.blockStonebrickWallChiseled.name=Chiseled Stonebrick Wall
+tile.blockStonebrickWall.0.name=Stonebrick Wall
+tile.blockStonebrickWall.1.name=Mossy Stonebrick Wall
+tile.blockStonebrickWall.2.name=Cracked Stonebrick Wall
+tile.blockStonebrickWall.3.name=Chiseled Stonebrick Wall
 tile.blockStoneslabWall.name=Stone Slab Wall
 tile.blockBrickWall.name=Brick Wall
 
