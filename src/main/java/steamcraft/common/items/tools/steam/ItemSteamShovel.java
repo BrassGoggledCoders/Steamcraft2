@@ -10,19 +10,18 @@
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
  *
  */
-package steamcraft.common.items.tools;
-
+package steamcraft.common.items.tools.steam;
 
 /**
  * @author Surseance
  *
  */
-public class ItemModShovel extends ItemModTool
+public class ItemSteamShovel extends ItemSteamTool
 {
 
-	public ItemModShovel(ToolMaterial mat)
+	public ItemSteamShovel(ToolMaterial mat)
 	{
-		super(1.0F, mat);
+		super(1.0F);
 		this.setHarvestLevel("shovel", mat.getHarvestLevel());
 	}
 }

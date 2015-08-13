@@ -27,9 +27,9 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 
+import boilerplate.common.utils.PlayerUtils;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.ModInfo;
-import boilerplate.common.utils.PlayerUtils;
 
 /**
  * @author Surseance
@@ -61,7 +61,7 @@ public class ItemRayGun extends ElectricItem
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
 	{
-		if(this.getEnergyStored(stack) >= ItemRayGun.energyPerUse)
+		if (this.getEnergyStored(stack) >= ItemRayGun.energyPerUse)
 		{
 			MovingObjectPosition mop = PlayerUtils.getTargetBlock(world, player, true, 50);
 
@@ -71,7 +71,7 @@ public class ItemRayGun extends ElectricItem
 			double tz = player.posZ + (vec3.zCoord * 5.0D);
 			int impact = 0;
 
-			if(mop != null) // Sets vector
+			if (mop != null) // Sets vector
 			{
 				tx = mop.hitVec.xCoord;
 				ty = mop.hitVec.yCoord;
@@ -79,39 +79,39 @@ public class ItemRayGun extends ElectricItem
 				impact = 5;
 			}
 
-			if(soundDelay.get(player) == null)
+			if (soundDelay.get(player) == null)
 				soundDelay.put(player.getCommandSenderName(), Long.valueOf(0L));
 
-			if(!world.isRemote && (soundDelay.get(player.getCommandSenderName()).longValue() < System.currentTimeMillis()))
+			if (!world.isRemote && (soundDelay.get(player.getCommandSenderName()).longValue() < System.currentTimeMillis()))
 			{
 				world.playSoundEffect(tx, ty, tz, ModInfo.PREFIX + "raygun", 0.35F, 1.0F);
 				soundDelay.put(player.getCommandSenderName(), Long.valueOf(System.currentTimeMillis() + 1200L));
 			}
 			else
 				soundDelay.put(player.getCommandSenderName(), Long.valueOf(0L));
-			if(world.isRemote)
+			if (world.isRemote)
 				ray.put(player.getCommandSenderName(),
 						Steamcraft.proxy.rayFX(world, player, tx, ty, tz, 2, false, impact > 0 ? 2.0F : 0.0F, ray.get(player), impact, Color.GREEN));
 
-			if((mop != null) && (mop.typeOfHit == MovingObjectPosition.MovingObjectType.BLOCK))
+			if ((mop != null) && (mop.typeOfHit == MovingObjectPosition.MovingObjectType.BLOCK))
 			{
 				int x = mop.blockX;
 				int y = mop.blockY;
 				int z = mop.blockZ;
 
-				if(!world.isRemote && !world.isAirBlock(x, y, z))
-					for(int i = x - Item.itemRand.nextInt(4); i < (x + Item.itemRand.nextInt(4)); i++)
-						for(int j = y - Item.itemRand.nextInt(4); j < (y + Item.itemRand.nextInt(4)); j++)
-							for(int k = z - Item.itemRand.nextInt(4); k < (z + Item.itemRand.nextInt(4)); k++)
+				if (!world.isRemote && !world.isAirBlock(x, y, z))
+					for (int i = x - Item.itemRand.nextInt(4); i < (x + Item.itemRand.nextInt(4)); i++)
+						for (int j = y - Item.itemRand.nextInt(4); j < (y + Item.itemRand.nextInt(4)); j++)
+							for (int k = z - Item.itemRand.nextInt(4); k < (z + Item.itemRand.nextInt(4)); k++)
 							{
-								if(world.isAirBlock(i, j, k))
+								if (world.isAirBlock(i, j, k))
 									world.setBlock(i, j, k, Blocks.fire);
-								else if(meltables.containsKey(world.getBlock(i, j, k)))
+								else if (meltables.containsKey(world.getBlock(i, j, k)))
 									world.setBlock(i, j, k, meltables.get(world.getBlock(i, j, k)));
-								
-								this.setEnergy(stack, this.getEnergyStored(stack) - ItemRayGun.energyPerUse);
-								
-								if (this.getEnergyStored(stack) < this.energyPerUse)
+
+								this.setEnergy(stack, this.getEnergyStored(stack) - energyPerUse);
+
+								if (this.getEnergyStored(stack) < energyPerUse)
 									return stack;
 							}
 			}
@@ -129,9 +129,9 @@ public class ItemRayGun extends ElectricItem
 			py += vec3d.yCoord * 0.5D;
 			pz += vec3d.zCoord * 0.5D;
 
-			if((pointedEntity != null) && ((pointedEntity instanceof EntityLivingBase)))
+			if ((pointedEntity != null) && ((pointedEntity instanceof EntityLivingBase)))
 			{
-				if(!world.isRemote)
+				if (!world.isRemote)
 					pointedEntity.setFire(100);
 			}
 		}

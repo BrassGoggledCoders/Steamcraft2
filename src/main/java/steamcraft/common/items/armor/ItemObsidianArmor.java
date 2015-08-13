@@ -20,7 +20,7 @@ import net.minecraft.world.World;
 
 import boilerplate.common.baseclasses.BaseArmor;
 import steamcraft.common.Steamcraft;
-import steamcraft.common.lib.MaterialHelper;
+import steamcraft.common.init.InitMaterials;
 import steamcraft.common.lib.ModInfo;
 
 /**
@@ -31,7 +31,7 @@ public class ItemObsidianArmor extends BaseArmor
 {
 	public ItemObsidianArmor(int armorType)
 	{
-		super(MaterialHelper.ARMOR_OBSIDIAN, armorType, "obsidian", ModInfo.PREFIX);
+		super(InitMaterials.ARMOR_OBSIDIAN, armorType, "obsidian", ModInfo.PREFIX);
 		this.setCreativeTab(Steamcraft.tabSC2);
 	}
 

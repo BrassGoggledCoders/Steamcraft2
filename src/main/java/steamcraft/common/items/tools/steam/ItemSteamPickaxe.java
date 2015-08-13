@@ -10,18 +10,17 @@
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
  *
  */
-package steamcraft.common.items.tools;
-
+package steamcraft.common.items.tools.steam;
 
 /**
  * @author Surseance
  *
  */
-public class ItemModPickaxe extends ItemModTool
+public class ItemSteamPickaxe extends ItemSteamTool
 {
-	public ItemModPickaxe(ToolMaterial mat)
+	public ItemSteamPickaxe(ToolMaterial mat)
 	{
-		super(1.0F, mat);
+		super(1.0F);
 		this.setHarvestLevel("pickaxe", mat.getHarvestLevel());
 	}
 }

@@ -21,10 +21,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
-import steamcraft.common.items.tools.ItemModTool;
 import boilerplate.api.IEnergyItem;
+import boilerplate.common.baseclasses.tools.BaseTool;
+import steamcraft.common.lib.ModInfo;
 
-public class ItemElectricTool extends ItemModTool implements IEnergyItem
+public class ItemElectricTool extends BaseTool implements IEnergyItem
 {
 	protected int maxEnergy = 0;
 	protected short maxReceive = 0;
@@ -32,7 +33,7 @@ public class ItemElectricTool extends ItemModTool implements IEnergyItem
 
 	protected ItemElectricTool(float damage, ToolMaterial toolMat, int maxEnergy, int maxReceive)
 	{
-		super(damage, toolMat);
+		super(damage, toolMat, ModInfo.PREFIX);
 		this.maxEnergy = maxEnergy * 1000;
 		this.maxReceive = (short) maxReceive;
 		this.setMaxStackSize(1);
@@ -51,7 +52,7 @@ public class ItemElectricTool extends ItemModTool implements IEnergyItem
 	{
 		ItemStack uncharged = new ItemStack(item);
 
-		if(!uncharged.hasTagCompound())
+		if (!uncharged.hasTagCompound())
 		{
 			uncharged.setTagCompound(new NBTTagCompound());
 		}
@@ -64,7 +65,7 @@ public class ItemElectricTool extends ItemModTool implements IEnergyItem
 	{
 		ItemStack charged = new ItemStack(item);
 
-		if(!charged.hasTagCompound())
+		if (!charged.hasTagCompound())
 		{
 			charged.setTagCompound(new NBTTagCompound());
 		}
@@ -89,16 +90,16 @@ public class ItemElectricTool extends ItemModTool implements IEnergyItem
 
 	public void setEnergy(ItemStack stack, int energy)
 	{
-		if(!stack.hasTagCompound())
+		if (!stack.hasTagCompound())
 		{
 			stack.setTagCompound(new NBTTagCompound());
 		}
 		NBTTagCompound tag = stack.getTagCompound();
 
-		if(energy < 0)
+		if (energy < 0)
 			energy = 0;
 
-		if(energy > this.maxEnergy)
+		if (energy > this.maxEnergy)
 			energy = this.maxEnergy;
 
 		tag.setInteger("energy", energy);
@@ -112,7 +113,7 @@ public class ItemElectricTool extends ItemModTool implements IEnergyItem
 		int received = Math.min(this.maxEnergy - this.getEnergyStored(itemStack), maxReceive);
 		received = Math.min(received, this.maxReceive);
 
-		if(!simulate)
+		if (!simulate)
 			this.setEnergy(itemStack, this.getEnergyStored(itemStack) + received);
 
 		return received;
@@ -132,7 +133,7 @@ public class ItemElectricTool extends ItemModTool implements IEnergyItem
 
 	public static NBTTagCompound getOrCreateTagCompound(ItemStack is)
 	{
-		if(!is.hasTagCompound())
+		if (!is.hasTagCompound())
 		{
 			is.setTagCompound(new NBTTagCompound());
 			is.getTagCompound().setInteger("energy", 0);

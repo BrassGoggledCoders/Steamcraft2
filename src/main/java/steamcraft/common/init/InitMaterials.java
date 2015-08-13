@@ -10,18 +10,18 @@
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
  *
  */
-package steamcraft.common.lib;
+package steamcraft.common.init;
 
-import net.minecraft.block.material.Material;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
+
 import net.minecraftforge.common.util.EnumHelper;
 
 /**
  * @author Decebaldecebal
  *
  */
-public class MaterialHelper
+public class InitMaterials
 {
 	// Tool Materials
 	public static ToolMaterial TOOL_OBSIDIAN;
@@ -46,14 +46,6 @@ public class MaterialHelper
 	public static ArmorMaterial ARMOR_ETHERIUM;
 	public static ArmorMaterial ARMOR_WHALEBONE;
 	public static ArmorMaterial ARMOR_STEAM;
-	
-	//Block Materials
-	private static Material[] pickaxeMaterials = {Material.rock, Material.iron, Material.anvil, Material.circuits,
-		Material.glass, Material.ice, Material.piston};
-	private static Material[] axeMaterials = {Material.wood, Material.leaves, Material.plants, Material.vine, Material.circuits,
-		Material.cactus, Material.gourd};
-	private static Material[] shovelMaterials = {Material.grass, Material.ground, Material.clay, Material.sand, Material.snow};
-	private static Material[] swordMaterials = {Material.web};
 
 	public static void initializeMaterials()
 	{
@@ -88,17 +80,5 @@ public class MaterialHelper
 		ARMOR_WHALEBONE = EnumHelper.addArmorMaterial("ARMOR_WHALEBONE", 10, new int[] { 2, 6, 5, 2 }, 30);
 		ARMOR_STEAM = EnumHelper.addArmorMaterial("ARMOR_STEAM", -1, new int[] { 1, 1, 1, 1 }, 0);
 	}
-	
-	public static Material[] getMaterialForTool(String tool)
-	{
-		if (tool == "pickaxe")
-			return pickaxeMaterials;
-		if (tool == "axe")
-			return axeMaterials;
-		if (tool == "shovel")
-			return shovelMaterials;
-		if (tool == "sword")
-			return swordMaterials;
-		return null;
-	}
+
 }

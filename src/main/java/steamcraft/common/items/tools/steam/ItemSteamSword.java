@@ -10,10 +10,8 @@
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
  *
  */
-package steamcraft.common.items.tools;
+package steamcraft.common.items.tools.steam;
 
-import net.minecraft.block.Block;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemStack;
@@ -23,21 +21,12 @@ import net.minecraft.world.World;
  * @author Surseance
  *
  */
-public class ItemModSword extends ItemModTool
+public class ItemSteamSword extends ItemSteamTool
 {
-	public ItemModSword(ToolMaterial mat)
+	public ItemSteamSword(ToolMaterial mat)
 	{
-		super(4.0F, mat);
+		super(4.0F);
 		this.setHarvestLevel("sword", mat.getHarvestLevel());
-	}
-
-	@Override
-	public boolean onBlockDestroyed(ItemStack stack, World world, Block block, int x, int y, int z, EntityLivingBase living)
-	{
-		if(block.getBlockHardness(world, x, y, z) != 0.0D)
-			stack.damageItem(2, living);
-
-		return true;
 	}
 
 	@Override

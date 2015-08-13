@@ -24,6 +24,11 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidRegistry;
 
+import boilerplate.common.baseclasses.tools.BaseAxe;
+import boilerplate.common.baseclasses.tools.BaseHoe;
+import boilerplate.common.baseclasses.tools.BasePickaxe;
+import boilerplate.common.baseclasses.tools.BaseShovel;
+import boilerplate.common.baseclasses.tools.BaseSword;
 import boilerplate.common.utils.helpers.RegistryHelper;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.items.BaseItem;
@@ -95,14 +100,13 @@ import steamcraft.common.items.modules.ItemWatchDisplay;
 import steamcraft.common.items.modules.ItemWingpackModule;
 import steamcraft.common.items.tools.ItemElectricDrill;
 import steamcraft.common.items.tools.ItemElectrifiedSword;
-import steamcraft.common.items.tools.ItemModAxe;
-import steamcraft.common.items.tools.ItemModHoe;
-import steamcraft.common.items.tools.ItemModPickaxe;
-import steamcraft.common.items.tools.ItemModShovel;
-import steamcraft.common.items.tools.ItemModSword;
-import steamcraft.common.items.tools.ItemSteamDrill;
+import steamcraft.common.items.tools.steam.ItemSteamAxe;
+import steamcraft.common.items.tools.steam.ItemSteamDrill;
+import steamcraft.common.items.tools.steam.ItemSteamHoe;
+import steamcraft.common.items.tools.steam.ItemSteamPickaxe;
+import steamcraft.common.items.tools.steam.ItemSteamShovel;
+import steamcraft.common.items.tools.steam.ItemSteamSword;
 import steamcraft.common.items.vanity.ItemTopHat;
-import steamcraft.common.lib.MaterialHelper;
 import steamcraft.common.lib.ModInfo;
 
 /**
@@ -204,7 +208,7 @@ public class InitItems
 	/* Init */
 	public static void init()
 	{
-		MaterialHelper.initializeMaterials();
+		InitMaterials.initializeMaterials();
 		initializeItems();
 	}
 
@@ -221,19 +225,19 @@ public class InitItems
 	private static void initializeArmor()
 	{
 		// Jetpacks
-		itemSteamJetpack = new ItemSteamJetpack(MaterialHelper.ARMOR_STEAM, 0, 1, (byte) 5).setUnlocalizedName("itemSteamJetpack");
-		itemClockworkWings = new ItemClockworkWings(MaterialHelper.ARMOR_STEAM, 0, 1).setUnlocalizedName("itemClockworkWings");
-		itemSteamWingpack = new ItemSteamJetpack(MaterialHelper.ARMOR_STEAM, 0, 1, (byte) 4).setUnlocalizedName("itemSteamWingpack");
+		itemSteamJetpack = new ItemSteamJetpack(InitMaterials.ARMOR_STEAM, 0, 1, (byte) 5).setUnlocalizedName("itemSteamJetpack");
+		itemClockworkWings = new ItemClockworkWings(InitMaterials.ARMOR_STEAM, 0, 1).setUnlocalizedName("itemClockworkWings");
+		itemSteamWingpack = new ItemSteamJetpack(InitMaterials.ARMOR_STEAM, 0, 1, (byte) 4).setUnlocalizedName("itemSteamWingpack");
 
 		registerItem(itemClockworkWings, "ItemClockworkWings");
 		registerItem(itemSteamJetpack, "ItemSteamJetpack");
 		registerItem(itemSteamWingpack, "ItemSteamWingpack");
 
 		// Brass
-		helmetBrass = new ItemBrassArmor(MaterialHelper.ARMOR_STEAM, 0, 0).setUnlocalizedName("itemHelmetBrass");
-		chestplateBrass = new ItemBrassArmor(MaterialHelper.ARMOR_STEAM, 0, 1).setUnlocalizedName("itemChestplateBrass");
-		legsBrass = new ItemBrassArmor(MaterialHelper.ARMOR_STEAM, 0, 2).setUnlocalizedName("itemLegsBrass");
-		bootsBrass = new ItemBrassArmor(MaterialHelper.ARMOR_STEAM, 0, 3).setUnlocalizedName("itemBootsBrass");
+		helmetBrass = new ItemBrassArmor(InitMaterials.ARMOR_STEAM, 0, 0).setUnlocalizedName("itemHelmetBrass");
+		chestplateBrass = new ItemBrassArmor(InitMaterials.ARMOR_STEAM, 0, 1).setUnlocalizedName("itemChestplateBrass");
+		legsBrass = new ItemBrassArmor(InitMaterials.ARMOR_STEAM, 0, 2).setUnlocalizedName("itemLegsBrass");
+		bootsBrass = new ItemBrassArmor(InitMaterials.ARMOR_STEAM, 0, 3).setUnlocalizedName("itemBootsBrass");
 
 		RegistryHelper.registerArmorSet(helmetBrass, chestplateBrass, legsBrass, bootsBrass, "Brass", ModInfo.ID);
 
@@ -246,10 +250,10 @@ public class InitItems
 		registerItem(itemMonocle, "ItemMonocle");
 
 		// Etherium
-		helmetEtherium = new ItemNormalArmor(MaterialHelper.ARMOR_ETHERIUM, 0, "etherium").setUnlocalizedName("itemHelmetEtherium");
-		chestplateEtherium = new ItemNormalArmor(MaterialHelper.ARMOR_ETHERIUM, 1, "etherium").setUnlocalizedName("itemChestplateEtherium");
-		legsEtherium = new ItemNormalArmor(MaterialHelper.ARMOR_ETHERIUM, 2, "etherium").setUnlocalizedName("itemLegsEtherium");
-		bootsEtherium = new ItemNormalArmor(MaterialHelper.ARMOR_ETHERIUM, 3, "etherium").setUnlocalizedName("itemBootsEtherium");
+		helmetEtherium = new ItemNormalArmor(InitMaterials.ARMOR_ETHERIUM, 0, "etherium").setUnlocalizedName("itemHelmetEtherium");
+		chestplateEtherium = new ItemNormalArmor(InitMaterials.ARMOR_ETHERIUM, 1, "etherium").setUnlocalizedName("itemChestplateEtherium");
+		legsEtherium = new ItemNormalArmor(InitMaterials.ARMOR_ETHERIUM, 2, "etherium").setUnlocalizedName("itemLegsEtherium");
+		bootsEtherium = new ItemNormalArmor(InitMaterials.ARMOR_ETHERIUM, 3, "etherium").setUnlocalizedName("itemBootsEtherium");
 
 		RegistryHelper.registerArmorSet(helmetEtherium, chestplateEtherium, legsEtherium, bootsEtherium, "Etherium", ModInfo.ID);
 
@@ -585,14 +589,14 @@ public class InitItems
 		drillCore = new BaseItem().setUnlocalizedName("itemDrillCore");
 		drillBase = new BaseItem().setUnlocalizedName("itemDrillBase");
 
-		drillWood = new ItemElectricDrill(MaterialHelper.DRILL_WOOD, 40, 80).setUnlocalizedName("itemDrillWood");
-		drillStone = new ItemElectricDrill(MaterialHelper.DRILL_STONE, 80, 80).setUnlocalizedName("itemDrillStone");
-		drillIron = new ItemElectricDrill(MaterialHelper.DRILL_IRON, 100, 200).setUnlocalizedName("itemDrillIron");
-		drillDiamond = new ItemElectricDrill(MaterialHelper.DRILL_DIAMOND, 250, 300).setUnlocalizedName("itemDrillDiamond");
-		drillGold = new ItemElectricDrill(MaterialHelper.DRILL_GOLD, 80, 200).setUnlocalizedName("itemDrillGold");
-		drillEtherium = new ItemElectricDrill(MaterialHelper.DRILL_ETHERIUM, 500, 1000).setUnlocalizedName("itemDrillEtherium");
-		drillObsidian = new ItemElectricDrill(MaterialHelper.DRILL_OBSIDIAN, 200, 300).setUnlocalizedName("itemDrillObsidian");
-		drillSteam = new ItemSteamDrill(MaterialHelper.DRILL_STEAM).setUnlocalizedName("itemDrillSteam");
+		drillWood = new ItemElectricDrill(InitMaterials.DRILL_WOOD, 40, 80).setUnlocalizedName("itemDrillWood");
+		drillStone = new ItemElectricDrill(InitMaterials.DRILL_STONE, 80, 80).setUnlocalizedName("itemDrillStone");
+		drillIron = new ItemElectricDrill(InitMaterials.DRILL_IRON, 100, 200).setUnlocalizedName("itemDrillIron");
+		drillDiamond = new ItemElectricDrill(InitMaterials.DRILL_DIAMOND, 250, 300).setUnlocalizedName("itemDrillDiamond");
+		drillGold = new ItemElectricDrill(InitMaterials.DRILL_GOLD, 80, 200).setUnlocalizedName("itemDrillGold");
+		drillEtherium = new ItemElectricDrill(InitMaterials.DRILL_ETHERIUM, 500, 1000).setUnlocalizedName("itemDrillEtherium");
+		drillObsidian = new ItemElectricDrill(InitMaterials.DRILL_OBSIDIAN, 200, 300).setUnlocalizedName("itemDrillObsidian");
+		drillSteam = new ItemSteamDrill(InitMaterials.DRILL_STEAM).setUnlocalizedName("itemDrillSteam");
 
 		registerItem(drillCore, "ItemDrillCore");
 		registerItem(drillBase, "ItemDrillBase");
@@ -607,33 +611,33 @@ public class InitItems
 		registerItem(drillSteam, "ItemDrillSteam");
 
 		// Steam
-		pickaxeSteam = new ItemModPickaxe(MaterialHelper.TOOL_STEAM).setUnlocalizedName("itemPickaxeSteam");
-		swordSteam = new ItemModSword(MaterialHelper.TOOL_STEAM).setUnlocalizedName("itemSwordSteam");
-		shovelSteam = new ItemModShovel(MaterialHelper.TOOL_STEAM).setUnlocalizedName("itemShovelSteam");
-		axeSteam = new ItemModAxe(MaterialHelper.TOOL_STEAM).setUnlocalizedName("itemAxeSteam");
-		hoeSteam = new ItemModHoe(MaterialHelper.TOOL_STEAM).setUnlocalizedName("itemHoeSteam");
+		pickaxeSteam = new ItemSteamPickaxe(InitMaterials.TOOL_STEAM).setUnlocalizedName("itemPickaxeSteam");
+		swordSteam = new ItemSteamSword(InitMaterials.TOOL_STEAM).setUnlocalizedName("itemSwordSteam");
+		shovelSteam = new ItemSteamShovel(InitMaterials.TOOL_STEAM).setUnlocalizedName("itemShovelSteam");
+		axeSteam = new ItemSteamAxe(InitMaterials.TOOL_STEAM).setUnlocalizedName("itemAxeSteam");
+		hoeSteam = new ItemSteamHoe(InitMaterials.TOOL_STEAM).setUnlocalizedName("itemHoeSteam");
 
 		RegistryHelper.registerToolSet(swordSteam, shovelSteam, pickaxeSteam, axeSteam, hoeSteam, "Steam", ModInfo.ID);
 
 		// Etherium
-		pickaxeEtherium = new ItemModPickaxe(MaterialHelper.TOOL_ETHERIUM).setUnlocalizedName("itemPickaxeEtherium");
-		swordEtherium = new ItemModSword(MaterialHelper.TOOL_ETHERIUM).setUnlocalizedName("itemSwordEtherium");
-		shovelEtherium = new ItemModShovel(MaterialHelper.TOOL_ETHERIUM).setUnlocalizedName("itemShovelEtherium");
-		axeEtherium = new ItemModAxe(MaterialHelper.TOOL_ETHERIUM).setUnlocalizedName("itemAxeEtherium");
-		hoeEtherium = new ItemModHoe(MaterialHelper.TOOL_ETHERIUM).setUnlocalizedName("itemHoeEtherium");
+		pickaxeEtherium = new BasePickaxe(InitMaterials.TOOL_ETHERIUM, ModInfo.PREFIX).setUnlocalizedName("itemPickaxeEtherium");
+		swordEtherium = new BaseSword(InitMaterials.TOOL_ETHERIUM, ModInfo.PREFIX).setUnlocalizedName("itemSwordEtherium");
+		shovelEtherium = new BaseShovel(InitMaterials.TOOL_ETHERIUM, ModInfo.PREFIX).setUnlocalizedName("itemShovelEtherium");
+		axeEtherium = new BaseAxe(InitMaterials.TOOL_ETHERIUM, ModInfo.PREFIX).setUnlocalizedName("itemAxeEtherium");
+		hoeEtherium = new BaseHoe(InitMaterials.TOOL_ETHERIUM, ModInfo.PREFIX).setUnlocalizedName("itemHoeEtherium");
 
 		RegistryHelper.registerToolSet(swordEtherium, shovelEtherium, pickaxeEtherium, axeEtherium, hoeEtherium, "Etherium", ModInfo.ID);
 
 		// Obsidian
-		pickaxeObsidian = new ItemModPickaxe(MaterialHelper.TOOL_OBSIDIAN).setUnlocalizedName("itemPickaxeObsidian");
-		swordObsidian = new ItemModSword(MaterialHelper.TOOL_OBSIDIAN).setUnlocalizedName("itemSwordObsidian");
-		shovelObsidian = new ItemModShovel(MaterialHelper.TOOL_OBSIDIAN).setUnlocalizedName("itemShovelObsidian");
-		axeObsidian = new ItemModAxe(MaterialHelper.TOOL_OBSIDIAN).setUnlocalizedName("itemAxeObsidian");
-		hoeObsidian = new ItemModHoe(MaterialHelper.TOOL_OBSIDIAN).setUnlocalizedName("itemHoeObsidian");
+		pickaxeObsidian = new BasePickaxe(InitMaterials.TOOL_OBSIDIAN, ModInfo.PREFIX).setUnlocalizedName("itemPickaxeObsidian");
+		swordObsidian = new BaseSword(InitMaterials.TOOL_OBSIDIAN, ModInfo.PREFIX).setUnlocalizedName("itemSwordObsidian");
+		shovelObsidian = new BaseShovel(InitMaterials.TOOL_OBSIDIAN, ModInfo.PREFIX).setUnlocalizedName("itemShovelObsidian");
+		axeObsidian = new BaseAxe(InitMaterials.TOOL_OBSIDIAN, ModInfo.PREFIX).setUnlocalizedName("itemAxeObsidian");
+		hoeObsidian = new BaseHoe(InitMaterials.TOOL_OBSIDIAN, ModInfo.PREFIX).setUnlocalizedName("itemHoeObsidian");
 
 		RegistryHelper.registerToolSet(swordObsidian, shovelObsidian, pickaxeObsidian, axeObsidian, hoeObsidian, "Obsidian", ModInfo.ID);
 
-		itemElectricSword = new ItemElectrifiedSword(MaterialHelper.HTOOL_ELEC, 400, 400).setUnlocalizedName("itemElectricSword");
+		itemElectricSword = new ItemElectrifiedSword(InitMaterials.HTOOL_ELEC, 400, 400).setUnlocalizedName("itemElectricSword");
 		registerItem(itemElectricSword, "ItemElectricSword");
 	}
 
