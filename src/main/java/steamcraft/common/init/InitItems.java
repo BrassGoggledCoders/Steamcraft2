@@ -24,6 +24,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidRegistry;
 
+import boilerplate.common.utils.helpers.RegistryHelper;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.items.BaseItem;
 import steamcraft.common.items.ItemCanister;
@@ -103,7 +104,6 @@ import steamcraft.common.items.tools.ItemSteamDrill;
 import steamcraft.common.items.vanity.ItemTopHat;
 import steamcraft.common.lib.MaterialHelper;
 import steamcraft.common.lib.ModInfo;
-import boilerplate.common.utils.helpers.RegistryHelper;
 
 /**
  * @author Surseance
@@ -126,9 +126,9 @@ public class InitItems
 	public static Item helmetWhalebone, chestplateWhalebone, legsWhalebone, bootsWhalebone;
 
 	// Modules
-	public static Item itemAqualung, itemPistonPlating, itemTank, itemWatchDisplay, itemClimbingSpikes
-			, itemLegBraces, itemSpringHeels, itemRollerSkates, itemParachute, itemFlippers, itemLifeVest,
-			itemPistonBoots, itemSteelPlating, itemLastResort, itemGogglesModule, itemWingpackModule, itemFreezeBoots, itemSuperFreezeBoots, itemAutofeeder;
+	public static Item itemAqualung, itemPistonPlating, itemTank, itemWatchDisplay, itemClimbingSpikes, itemLegBraces, itemSpringHeels,
+			itemRollerSkates, itemParachute, itemFlippers, itemLifeVest, itemPistonBoots, itemSteelPlating, itemLastResort, itemGogglesModule,
+			itemWingpackModule, itemFreezeBoots, itemSuperFreezeBoots, itemAutofeeder;
 
 	public static Item itemBoilingWaterBucket, itemBoilingMudBucket;
 
@@ -246,10 +246,10 @@ public class InitItems
 		registerItem(itemMonocle, "ItemMonocle");
 
 		// Etherium
-		helmetEtherium = new ItemNormalArmor(MaterialHelper.ARMOR_ETHERIUM, 0).setUnlocalizedName("itemHelmetEtherium");
-		chestplateEtherium = new ItemNormalArmor(MaterialHelper.ARMOR_ETHERIUM, 1).setUnlocalizedName("itemChestplateEtherium");
-		legsEtherium = new ItemNormalArmor(MaterialHelper.ARMOR_ETHERIUM, 2).setUnlocalizedName("itemLegsEtherium");
-		bootsEtherium = new ItemNormalArmor(MaterialHelper.ARMOR_ETHERIUM, 3).setUnlocalizedName("itemBootsEtherium");
+		helmetEtherium = new ItemNormalArmor(MaterialHelper.ARMOR_ETHERIUM, 0, "etherium").setUnlocalizedName("itemHelmetEtherium");
+		chestplateEtherium = new ItemNormalArmor(MaterialHelper.ARMOR_ETHERIUM, 1, "etherium").setUnlocalizedName("itemChestplateEtherium");
+		legsEtherium = new ItemNormalArmor(MaterialHelper.ARMOR_ETHERIUM, 2, "etherium").setUnlocalizedName("itemLegsEtherium");
+		bootsEtherium = new ItemNormalArmor(MaterialHelper.ARMOR_ETHERIUM, 3, "etherium").setUnlocalizedName("itemBootsEtherium");
 
 		RegistryHelper.registerArmorSet(helmetEtherium, chestplateEtherium, legsEtherium, bootsEtherium, "Etherium", ModInfo.ID);
 
@@ -262,12 +262,18 @@ public class InitItems
 		RegistryHelper.registerArmorSet(helmetObsidian, chestplateObsidian, legsObsidian, bootsObsidian, "Obsidian", ModInfo.ID);
 
 		// Whalebone
-		// helmetWhalebone = new ItemNormalArmor(MaterialHelper.ARMOR_WHALEBONE, 0, 0).setUnlocalizedName("itemHelmetWhalebone");
-		// chestplateWhalebone = new ItemNormalArmor(MaterialHelper.ARMOR_WHALEBONE, 0, 1).setUnlocalizedName("itemChestplateWhalebone");
-		// legsWhalebone = new ItemNormalArmor(MaterialHelper.ARMOR_WHALEBONE, 0, 2).setUnlocalizedName("itemLegsWhalebone");
-		// bootsWhalebone = new ItemNormalArmor(MaterialHelper.ARMOR_WHALEBONE, 0, 3).setUnlocalizedName("itemBootsWhalebone");
+		// helmetWhalebone = new ItemNormalArmor(MaterialHelper.ARMOR_WHALEBONE,
+		// 0, 0).setUnlocalizedName("itemHelmetWhalebone");
+		// chestplateWhalebone = new
+		// ItemNormalArmor(MaterialHelper.ARMOR_WHALEBONE, 0,
+		// 1).setUnlocalizedName("itemChestplateWhalebone");
+		// legsWhalebone = new ItemNormalArmor(MaterialHelper.ARMOR_WHALEBONE,
+		// 0, 2).setUnlocalizedName("itemLegsWhalebone");
+		// bootsWhalebone = new ItemNormalArmor(MaterialHelper.ARMOR_WHALEBONE,
+		// 0, 3).setUnlocalizedName("itemBootsWhalebone");
 
-		// RegistryHelper.registerArmorSet(helmetWhalebone, chestplateWhalebone, legsWhalebone, bootsWhalebone, "Whalebone", ModInfo.ID);
+		// RegistryHelper.registerArmorSet(helmetWhalebone, chestplateWhalebone,
+		// legsWhalebone, bootsWhalebone, "Whalebone", ModInfo.ID);
 	}
 
 	private static void initializeGuns()
@@ -358,7 +364,9 @@ public class InitItems
 
 	public static void initializeModCompatItems()
 	{
-		/** Registration of these are handled in @link={CompatibilityLayer.class} */
+		/**
+		 * Registration of these are handled in @link={CompatibilityLayer.class}
+		 */
 		itemSteamcraftCluster = new ItemSteamcraftCluster().setUnlocalizedName("itemSteamcraftCluster");
 
 		itemThaumicMonocle = new ItemThaumicMonocle().setUnlocalizedName("itemThaumicMonocle");
@@ -496,16 +504,18 @@ public class InitItems
 		itemSpyglass = new BaseItem().setUnlocalizedName("itemSpyglass").setFull3D();
 		registerItem(itemSpyglass, "ItemSpyglass");
 
-		// TODO Add a version system to allow updates. Check version on right click
+		// TODO Add a version system to allow updates. Check version on right
+		// click
 		itemLoreBook = new ItemLoreBook(StatCollector.translateToLocal("lore.steamcraft2.0.author"),
-				StatCollector.translateToLocal("lore.steamcraft2.0.title"), new String[] { StatCollector.translateToLocal("lore.steamcraft2.0.page1") })
-				.setUnlocalizedName("itemLoreBook");
+				StatCollector.translateToLocal("lore.steamcraft2.0.title"),
+				new String[] { StatCollector.translateToLocal("lore.steamcraft2.0.page1") }).setUnlocalizedName("itemLoreBook");
 		registerItem(itemLoreBook, "ItemLoreBook");
 
 		itemFieldManipulator = new ItemFieldManipulator().setUnlocalizedName("itemFieldManipulator");
 		registerItem(itemFieldManipulator, "ItemFieldManipulator");
 
-		// itemCraftingChip = new ItemChip(new ContainerWorkbench(null, null, 0, 0, 0)).setUnlocalizedName("itemCraftingChip");
+		// itemCraftingChip = new ItemChip(new ContainerWorkbench(null, null, 0,
+		// 0, 0)).setUnlocalizedName("itemCraftingChip");
 		// registerItem(itemCraftingChip, "ItemCraftingChip");
 
 		itemSplashLightningBottle = new ItemSplashLightningBottle().setUnlocalizedName("itemSplashLightningBottle");
@@ -518,14 +528,15 @@ public class InitItems
 		itemBoilingMudBucket = new ItemCustomBucket(InitBlocks.blockBoilingMud).setUnlocalizedName("itemMudBucket");
 		GameRegistry.registerItem(itemBoilingWaterBucket, "ItemBoilingWaterBucket");
 		GameRegistry.registerItem(itemBoilingMudBucket, "ItemBoilingBucket");
-		FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("boilingwater", FluidContainerRegistry.BUCKET_VOLUME), new ItemStack(
-				itemBoilingWaterBucket), new ItemStack(Items.bucket));
-		FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("boilingmud", FluidContainerRegistry.BUCKET_VOLUME), new ItemStack(
-				itemBoilingMudBucket), new ItemStack(Items.bucket));
+		FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("boilingwater", FluidContainerRegistry.BUCKET_VOLUME),
+				new ItemStack(itemBoilingWaterBucket), new ItemStack(Items.bucket));
+		FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("boilingmud", FluidContainerRegistry.BUCKET_VOLUME),
+				new ItemStack(itemBoilingMudBucket), new ItemStack(Items.bucket));
 
 		itemWhaleOilBucket = new ItemCustomBucket(InitBlocks.blockWhaleOil).setUnlocalizedName("itemWhaleOilBucket");
 		// GameRegistry.registerItem(itemWhaleOilBucket, "ItemWhaleOilBucket");
-		// FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("whaleoil", FluidContainerRegistry.BUCKET_VOLUME), new ItemStack(
+		// FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("whaleoil",
+		// FluidContainerRegistry.BUCKET_VOLUME), new ItemStack(
 		// itemWhaleOilBucket), new ItemStack(Items.bucket));
 
 		itemCoin = new ItemCoin().setUnlocalizedName("itemCoin");
@@ -628,7 +639,8 @@ public class InitItems
 
 	private static void registerItem(Item item, String name)
 	{
-		// TODO if(ConfigGeneral.nameBlacklist != null && !ConfigGeneral.nameBlacklist.contains(item.getUnlocalizedName()))
+		// TODO if(ConfigGeneral.nameBlacklist != null &&
+		// !ConfigGeneral.nameBlacklist.contains(item.getUnlocalizedName()))
 		GameRegistry.registerItem(item, name, ModInfo.ID);
 	}
 }

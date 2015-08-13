@@ -25,9 +25,10 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+import boilerplate.client.ClientHelper;
+import boilerplate.common.baseclasses.BaseArmor;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.ModInfo;
-import boilerplate.client.ClientHelper;
 
 /**
  * @author decebaldecebal
@@ -39,56 +40,52 @@ public class ItemClockworkWings extends BaseArmor
 
 	public ItemClockworkWings(ArmorMaterial mat, int renderIndex, int type)
 	{
-		super(mat, renderIndex, type);
+		super(mat, type, "", ModInfo.PREFIX);
 		this.setMaxDamage(0);
+		this.setCreativeTab(Steamcraft.tabSC2);
 	}
 
 	@SuppressWarnings("all")
 	@Override
 	public void addInformation(ItemStack itemStack, EntityPlayer entityPlayer, List list, boolean bool)
 	{
-		if(this.descNeedsShift)
-		{
-			if(ClientHelper.isShiftKeyDown())
-				this.getWrappedDesc(list);
-			else
-				list.add(ClientHelper.shiftForInfo);
-		}
-		else
+		if (ClientHelper.isShiftKeyDown())
 			this.getWrappedDesc(list);
+		else
+			list.add(ClientHelper.shiftForInfo);
 	}
 
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack stack)
 	{
-		if(!player.capabilities.allowFlying && (player.getFoodStats().getFoodLevel() != 0))
+		if (!player.capabilities.allowFlying && (player.getFoodStats().getFoodLevel() != 0))
 		{
-			if(!stack.hasTagCompound())
+			if (!stack.hasTagCompound())
 				stack.setTagCompound(new NBTTagCompound());
 
 			NBTTagCompound tag = stack.getTagCompound();
 			boolean shouldBoost = Steamcraft.proxy.isKeyPressed(0);
 			boolean wasJumping = tag.getBoolean("isJumping");
 
-			if(shouldBoost)
-				if(wasJumping)
+			if (shouldBoost)
+				if (wasJumping)
 					shouldBoost = false;
 				else
 					tag.setBoolean("isJumping", true);
-			else if(wasJumping)
+			else if (wasJumping)
 				tag.setBoolean("isJumping", false);
 
-			if((Steamcraft.proxy.isScreenEmpty()) && (player.posY < 160) && shouldBoost)
+			if ((Steamcraft.proxy.isScreenEmpty()) && (player.posY < 160) && shouldBoost)
 			{
 				player.addExhaustion(hungerPerTick);
 
-				if(player.motionY > 0.0D)
+				if (player.motionY > 0.0D)
 					player.motionY += 0.3D;
 				else
 					player.motionY += 0.4D;
 			}
 
-			if((player.motionY < 0.0D) && player.isSneaking())
+			if ((player.motionY < 0.0D) && player.isSneaking())
 			{
 				player.addExhaustion(hungerPerTick / 6);
 				player.motionY /= 1.4D;
@@ -97,13 +94,13 @@ public class ItemClockworkWings extends BaseArmor
 				player.motionZ *= 1.05D;
 			}
 
-			if(!player.onGround)
+			if (!player.onGround)
 			{
 				player.motionX *= 1.04D;
 				player.motionZ *= 1.04D;
 			}
 
-			if(player.fallDistance > 0)
+			if (player.fallDistance > 0)
 			{
 				player.addExhaustion(hungerPerTick / 4);
 				player.fallDistance = 0;
@@ -117,11 +114,11 @@ public class ItemClockworkWings extends BaseArmor
 	{
 		ModelBiped armorModel = new ModelBiped();
 
-		if(itemStack != null)
+		if (itemStack != null)
 		{
 			armorModel = Steamcraft.proxy.getWingsArmorModel(1);
 
-			if(armorModel != null)
+			if (armorModel != null)
 			{
 				armorModel.bipedHead.showModel = armorSlot == 0;
 				armorModel.bipedHeadwear.showModel = armorSlot == 0;
@@ -134,10 +131,10 @@ public class ItemClockworkWings extends BaseArmor
 				armorModel.isRiding = entityLiving.isRiding();
 				armorModel.isChild = entityLiving.isChild();
 
-				if(entityLiving instanceof EntityPlayer)
+				if (entityLiving instanceof EntityPlayer)
 					armorModel.aimedBow = ((EntityPlayer) entityLiving).getItemInUseDuration() > 2;
 
-					return armorModel;
+				return armorModel;
 			}
 		}
 

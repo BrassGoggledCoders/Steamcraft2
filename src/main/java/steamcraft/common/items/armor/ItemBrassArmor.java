@@ -15,8 +15,6 @@ package steamcraft.common.items.armor;
 import java.util.List;
 
 import net.minecraft.client.gui.ScaledResolution;
-import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemArmor;
@@ -31,6 +29,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 import net.minecraftforge.common.ISpecialArmor;
 
+import boilerplate.common.baseclasses.BaseArmor;
 import steamcraft.api.item.IArmorModule;
 import steamcraft.api.item.IArmorModule.EnumArmorEffectType;
 import steamcraft.api.item.IDefensiveArmorModule;
@@ -52,32 +51,25 @@ public class ItemBrassArmor extends BaseArmor implements ISpecialArmor, IGoggles
 
 	public ItemBrassArmor(ItemArmor.ArmorMaterial armorMat, int renderIndex, int armorType)
 	{
-		super(armorMat, renderIndex, armorType);
+		super(armorMat, armorType, "brass", ModInfo.PREFIX);
 		this.setMaxStackSize(1);
 		this.setCreativeTab(Steamcraft.tabSC2);
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerIcons(IIconRegister ir)
-	{
-		this.itemIcon = ir.registerIcon(ModInfo.PREFIX + "armor/" + this.getUnlocalizedName().substring(5));
 	}
 
 	@SuppressWarnings("all")
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean flag)
 	{
-		if(stack != null)
+		if (stack != null)
 		{
 			list.add("Modules:");
 			NBTTagCompound nbt = getOrCreateTagCompound(stack);
 
-			for(int i = 0; i < nbt.getInteger("moduleCount"); i++)
+			for (int i = 0; i < nbt.getInteger("moduleCount"); i++)
 			{
 				IArmorModule module = (IArmorModule) ModuleRegistry.getModule(nbt.getString("module" + i));
 
-				if(module != null)
+				if (module != null)
 				{
 					list.add(module.getName());
 				}
@@ -92,23 +84,24 @@ public class ItemBrassArmor extends BaseArmor implements ISpecialArmor, IGoggles
 
 		NBTTagCompound nbt = getOrCreateTagCompound(is);
 
-		for(int i = 0; i < nbt.getInteger("moduleCount"); i++)
+		for (int i = 0; i < nbt.getInteger("moduleCount"); i++)
 		{
 			IArmorModule module = (IArmorModule) ModuleRegistry.getModule(nbt.getString("module" + i));
 
-			if((module != null) && (module.getArmorEffectType() == EnumArmorEffectType.ONTICK))
+			if ((module != null) && (module.getArmorEffectType() == EnumArmorEffectType.ONTICK))
 			{
 				module.applyModuleEffect(world, player, is);
 				// combinedModuleWeight += module.getModuleWeight();
 			}
 		}
 		// if(this.getSlownessLevelFromWeight(combinedModuleWeight) >= 1)
-		// player.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 5, this.getSlownessLevelFromWeight(combinedModuleWeight), true));
+		// player.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 5,
+		// this.getSlownessLevelFromWeight(combinedModuleWeight), true));
 	}
 
 	public static NBTTagCompound getOrCreateTagCompound(ItemStack is)
 	{
-		if(!is.hasTagCompound())
+		if (!is.hasTagCompound())
 		{
 			is.setTagCompound(new NBTTagCompound());
 			is.getTagCompound().setInteger("moduleCount", 0);
@@ -124,11 +117,11 @@ public class ItemBrassArmor extends BaseArmor implements ISpecialArmor, IGoggles
 	{
 		NBTTagCompound nbt = getOrCreateTagCompound(stack);
 
-		for(int i = 0; i < nbt.getInteger("moduleCount"); i++)
+		for (int i = 0; i < nbt.getInteger("moduleCount"); i++)
 		{
 			IArmorModule module = (IArmorModule) ModuleRegistry.getModule(nbt.getString("module" + i));
 
-			if((module != null) && (module.getArmorEffectType() == EnumArmorEffectType.HUD))
+			if ((module != null) && (module.getArmorEffectType() == EnumArmorEffectType.HUD))
 			{
 				module.applyModuleEffect(player.getEntityWorld(), player, stack);
 			}
@@ -143,17 +136,17 @@ public class ItemBrassArmor extends BaseArmor implements ISpecialArmor, IGoggles
 		int absorbMax = 0;
 		NBTTagCompound nbt = getOrCreateTagCompound(armor);
 
-		for(int i = 0; i < nbt.getInteger("moduleCount"); i++)
+		for (int i = 0; i < nbt.getInteger("moduleCount"); i++)
 		{
 			IArmorModule module = (IArmorModule) ModuleRegistry.getModule(nbt.getString("module" + i));
 
-			if((module != null) && (module.getArmorEffectType() == EnumArmorEffectType.DEFENSIVE))
+			if ((module != null) && (module.getArmorEffectType() == EnumArmorEffectType.DEFENSIVE))
 			{
 				IDefensiveArmorModule defmodule = (IDefensiveArmorModule) module;
 				absorbRatio = defmodule.getDamageAbsorbRatio();
 				absorbMax = defmodule.getMaxDamageAbsorb();
 			}
-			if(source.isUnblockable())
+			if (source.isUnblockable())
 			{
 				absorbMax = 0;
 				absorbRatio = 0;
@@ -166,11 +159,11 @@ public class ItemBrassArmor extends BaseArmor implements ISpecialArmor, IGoggles
 	public int getArmorDisplay(EntityPlayer player, ItemStack armor, int slot)
 	{
 		NBTTagCompound nbt = getOrCreateTagCompound(armor);
-		for(int i = 0; i < nbt.getInteger("moduleCount"); i++)
+		for (int i = 0; i < nbt.getInteger("moduleCount"); i++)
 		{
 			IArmorModule module = (IArmorModule) ModuleRegistry.getModule(nbt.getString("module" + i));
 
-			if((module != null) && (module.getArmorEffectType() == EnumArmorEffectType.DEFENSIVE))
+			if ((module != null) && (module.getArmorEffectType() == EnumArmorEffectType.DEFENSIVE))
 			{
 				IDefensiveArmorModule defmodule = (IDefensiveArmorModule) module;
 				return defmodule.getArmorToDisplay();
@@ -189,13 +182,13 @@ public class ItemBrassArmor extends BaseArmor implements ISpecialArmor, IGoggles
 	public boolean showNodes(ItemStack itemstack, EntityLivingBase player)
 	{
 		NBTTagCompound nbt = getOrCreateTagCompound(itemstack);
-		for(int i = 0; i < nbt.getInteger("moduleCount"); i++)
+		for (int i = 0; i < nbt.getInteger("moduleCount"); i++)
 		{
 			IArmorModule module = (IArmorModule) ModuleRegistry.getModule(nbt.getString("module" + i));
 
-			if((module != null) && (module.getArmorEffectType() == EnumArmorEffectType.SPECIAL))
+			if ((module != null) && (module.getArmorEffectType() == EnumArmorEffectType.SPECIAL))
 			{
-				if(module == InitItems.itemThaumicMonocle)
+				if (module == InitItems.itemThaumicMonocle)
 					return true;
 			}
 		}
@@ -207,23 +200,16 @@ public class ItemBrassArmor extends BaseArmor implements ISpecialArmor, IGoggles
 	public boolean showIngamePopups(ItemStack itemstack, EntityLivingBase player)
 	{
 		NBTTagCompound nbt = getOrCreateTagCompound(itemstack);
-		for(int i = 0; i < nbt.getInteger("moduleCount"); i++)
+		for (int i = 0; i < nbt.getInteger("moduleCount"); i++)
 		{
 			IArmorModule module = (IArmorModule) ModuleRegistry.getModule(nbt.getString("module" + i));
 
-			if((module != null) && (module.getArmorEffectType() == EnumArmorEffectType.SPECIAL))
+			if ((module != null) && (module.getArmorEffectType() == EnumArmorEffectType.SPECIAL))
 			{
-				if(module == InitItems.itemThaumicMonocle)
+				if (module == InitItems.itemThaumicMonocle)
 					return true;
 			}
 		}
 		return false;
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public String getArmorTexture(ItemStack is, Entity entity, int slot, String type)
-	{
-		return slot == 2 ? ModInfo.PREFIX + "textures/models/armor/brass_2.png" : ModInfo.PREFIX + "textures/models/armor/brass_1.png";
 	}
 }

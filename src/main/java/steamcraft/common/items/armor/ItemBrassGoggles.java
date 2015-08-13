@@ -22,10 +22,12 @@ import net.minecraft.util.ResourceLocation;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+import boilerplate.client.ClientHelper;
+import boilerplate.common.baseclasses.BaseArmor;
 import org.lwjgl.opengl.GL11;
+import steamcraft.common.Steamcraft;
 import steamcraft.common.init.InitItems;
 import steamcraft.common.lib.ModInfo;
-import boilerplate.client.ClientHelper;
 
 /**
  * @author Surseance
@@ -37,7 +39,8 @@ public class ItemBrassGoggles extends BaseArmor
 
 	public ItemBrassGoggles(ArmorMaterial mat, int renderIndex, int type)
 	{
-		super(mat, renderIndex, type);
+		super(mat, type, "", ModInfo.PREFIX);
+		this.setCreativeTab(Steamcraft.tabSC2);
 	}
 
 	@Override
@@ -52,12 +55,12 @@ public class ItemBrassGoggles extends BaseArmor
 	public void renderHelmetOverlay(ItemStack stack, EntityPlayer player, ScaledResolution resolution, float partialTicks, boolean hasScreen,
 			int mouseX, int mouseY)
 	{
-		if((ClientHelper.player() == null) || (ClientHelper.screen() != null))
+		if ((ClientHelper.player() == null) || (ClientHelper.screen() != null))
 			return;
 
 		ItemStack helmet = ClientHelper.player().inventory.armorItemInSlot(3);
 
-		if((ClientHelper.settings().thirdPersonView == 0) && (helmet != null) && (helmet.getItem() == InitItems.itemBrassGoggles))
+		if ((ClientHelper.settings().thirdPersonView == 0) && (helmet != null) && (helmet.getItem() == InitItems.itemBrassGoggles))
 		{
 			ClientHelper.textureManager().bindTexture(overlay);
 			Tessellator tessellator = Tessellator.instance;

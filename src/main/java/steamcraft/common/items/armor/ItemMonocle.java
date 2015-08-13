@@ -19,6 +19,8 @@ import net.minecraft.item.ItemStack;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+import boilerplate.common.baseclasses.BaseArmor;
+import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.ModInfo;
 
 /**
@@ -29,8 +31,8 @@ public class ItemMonocle extends BaseArmor
 {
 	public ItemMonocle(final ItemArmor.ArmorMaterial armorMat, final int armorType, final int renderIndex)
 	{
-		super(armorMat, armorType, renderIndex);
-		this.setMaxStackSize(1);
+		super(armorMat, armorType, "", ModInfo.PREFIX);
+		this.setCreativeTab(Steamcraft.tabSC2);
 	}
 
 	@Override

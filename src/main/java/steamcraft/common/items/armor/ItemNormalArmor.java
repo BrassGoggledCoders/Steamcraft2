@@ -12,12 +12,8 @@
  */
 package steamcraft.common.items.armor;
 
-import net.minecraft.entity.Entity;
-import net.minecraft.item.ItemStack;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-
+import boilerplate.common.baseclasses.BaseArmor;
+import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.ModInfo;
 
 /**
@@ -26,15 +22,9 @@ import steamcraft.common.lib.ModInfo;
  */
 public class ItemNormalArmor extends BaseArmor
 {
-	public ItemNormalArmor(ArmorMaterial mat, int type)
+	public ItemNormalArmor(ArmorMaterial mat, int type, String textureName)
 	{
-		super(mat, 0, type);
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public String getArmorTexture(ItemStack is, Entity entity, int slot, String type)
-	{
-		return slot == 2 ? ModInfo.PREFIX + "textures/models/armor/etherium_2.png" : ModInfo.PREFIX + "textures/models/armor/etherium_1.png";
+		super(mat, type, textureName, ModInfo.PREFIX);
+		this.setCreativeTab(Steamcraft.tabSC2);
 	}
 }

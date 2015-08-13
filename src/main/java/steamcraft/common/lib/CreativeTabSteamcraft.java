@@ -18,13 +18,13 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 import steamcraft.common.init.InitItems;
-import boilerplate.common.baseclasses.CreativeTabBase;
+import boilerplate.common.baseclasses.BaseCreativeTab;
 
 /**
  * @author warlordjones
  *
  */
-public class CreativeTabSteamcraft extends CreativeTabBase
+public class CreativeTabSteamcraft extends BaseCreativeTab
 {
 	public CreativeTabSteamcraft(String name)
 	{

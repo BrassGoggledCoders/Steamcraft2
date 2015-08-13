@@ -25,11 +25,12 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+import boilerplate.client.ClientHelper;
+import boilerplate.common.baseclasses.BaseArmor;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.init.InitItems;
 import steamcraft.common.items.ItemCanister;
 import steamcraft.common.lib.ModInfo;
-import boilerplate.client.ClientHelper;
 
 /**
  * @author Decebaldecebal
@@ -41,7 +42,8 @@ public class ItemSteamJetpack extends BaseArmor
 
 	public ItemSteamJetpack(ArmorMaterial mat, int renderIndex, int armorType, byte steam)
 	{
-		super(mat, renderIndex, armorType);
+		super(mat, armorType, "", ModInfo.PREFIX);
+		this.setCreativeTab(Steamcraft.tabSC2);
 		this.setMaxDamage(0);
 		this.steamPerTick = steam;
 	}
@@ -50,20 +52,14 @@ public class ItemSteamJetpack extends BaseArmor
 	@Override
 	public void addInformation(ItemStack itemStack, EntityPlayer entityPlayer, List list, boolean bool)
 	{
-		if(!itemStack.hasTagCompound())
+		if (!itemStack.hasTagCompound())
 			itemStack.setTagCompound(new NBTTagCompound());
 
 		list.add("Canister Detected: " + String.valueOf(itemStack.getTagCompound().getBoolean("hasCanister")));
-
-		if(this.descNeedsShift)
-		{
-			if(ClientHelper.isShiftKeyDown())
-				this.getWrappedDesc(list);
-			else
-				list.add(ClientHelper.shiftForInfo);
-		}
-		else
+		if (ClientHelper.isShiftKeyDown())
 			this.getWrappedDesc(list);
+		else
+			list.add(ClientHelper.shiftForInfo);
 	}
 
 	@Override
@@ -71,23 +67,23 @@ public class ItemSteamJetpack extends BaseArmor
 	{
 		boolean hasCanister = this.hasCanister(player);
 
-		if(!player.capabilities.allowFlying && hasCanister)
+		if (!player.capabilities.allowFlying && hasCanister)
 		{
-			if(!itemStack.hasTagCompound())
+			if (!itemStack.hasTagCompound())
 				itemStack.setTagCompound(new NBTTagCompound());
 
 			NBTTagCompound tag = itemStack.getTagCompound();
 
-			if(hasCanister != tag.getBoolean("hasCanister"))
+			if (hasCanister != tag.getBoolean("hasCanister"))
 			{
 				tag.setBoolean("hasCanister", hasCanister);
 			}
 
-			if(((player.posY < 200) && Steamcraft.proxy.isKeyPressed(0)))
+			if (((player.posY < 200) && Steamcraft.proxy.isKeyPressed(0)))
 			{
 				this.consumeSteamFromCanister(player, this.steamPerTick);
 
-				if(player.motionY > 0.0D)
+				if (player.motionY > 0.0D)
 					player.motionY += 0.08499999910593033D;
 				else
 					player.motionY += 0.11699999910593033D;
@@ -96,7 +92,7 @@ public class ItemSteamJetpack extends BaseArmor
 
 			}
 
-			if((this == InitItems.itemSteamWingpack) && (player.motionY < 0.0D) && player.isSneaking())
+			if ((this == InitItems.itemSteamWingpack) && (player.motionY < 0.0D) && player.isSneaking())
 			{
 				this.consumeSteamFromCanister(player, (byte) (this.steamPerTick / 2));
 				player.motionY /= 1.4D;
@@ -105,13 +101,13 @@ public class ItemSteamJetpack extends BaseArmor
 				player.motionZ *= 1.05D;
 			}
 
-			if(!player.onGround)
+			if (!player.onGround)
 			{
 				player.motionX *= 1.04D;
 				player.motionZ *= 1.04D;
 			}
 
-			if((player.fallDistance > 0.0F) && !player.onGround)
+			if ((player.fallDistance > 0.0F) && !player.onGround)
 			{
 				this.consumeSteamFromCanister(player, (byte) (this.steamPerTick / 4));
 				player.fallDistance = 0.0F;
@@ -123,12 +119,12 @@ public class ItemSteamJetpack extends BaseArmor
 	{
 		ItemStack[] mainInv = player.inventory.mainInventory;
 
-		for(ItemStack element : mainInv)
-			if((element != null) && (element.getItem() == InitItems.itemCanisterSteam))
+		for (ItemStack element : mainInv)
+			if ((element != null) && (element.getItem() == InitItems.itemCanisterSteam))
 			{
 				ItemCanister canister = (ItemCanister) element.getItem();
 
-				if(canister.getFluidAmount(element) > steam)
+				if (canister.getFluidAmount(element) > steam)
 				{
 					canister.drain(element, steam, true);
 
@@ -148,9 +144,9 @@ public class ItemSteamJetpack extends BaseArmor
 	{
 		boolean hasCanister = false;
 		ItemStack[] mainInv = player.inventory.mainInventory;
-		for(int i = 0; i != mainInv.length; i++)
+		for (int i = 0; i != mainInv.length; i++)
 		{
-			if((mainInv[i] != null) && (mainInv[i].getItem() == InitItems.itemCanisterSteam))
+			if ((mainInv[i] != null) && (mainInv[i].getItem() == InitItems.itemCanisterSteam))
 				hasCanister = hasCanister || !this.isCanisterEmpty(mainInv[i]);
 		}
 		return hasCanister;
@@ -162,14 +158,14 @@ public class ItemSteamJetpack extends BaseArmor
 	{
 		ModelBiped armorModel = new ModelBiped();
 
-		if(itemStack != null)
+		if (itemStack != null)
 		{
-			if(this == InitItems.itemSteamJetpack)
+			if (this == InitItems.itemSteamJetpack)
 				armorModel = Steamcraft.proxy.getJetpackArmorModel(1);
 			else
 				armorModel = Steamcraft.proxy.getWingpackArmorModel(1);
 
-			if(armorModel != null)
+			if (armorModel != null)
 			{
 				armorModel.bipedHead.showModel = armorSlot == 0;
 				armorModel.bipedHeadwear.showModel = armorSlot == 0;
@@ -185,10 +181,10 @@ public class ItemSteamJetpack extends BaseArmor
 				// armorModel.heldItemRight =
 				// entityLiving.getCurrentItemOrArmor(0) != null ? 1 :0;
 
-				if(entityLiving instanceof EntityPlayer)
+				if (entityLiving instanceof EntityPlayer)
 					armorModel.aimedBow = ((EntityPlayer) entityLiving).getItemInUseDuration() > 2;
 
-					return armorModel;
+				return armorModel;
 			}
 		}
 

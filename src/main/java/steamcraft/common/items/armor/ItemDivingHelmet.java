@@ -23,10 +23,12 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+import boilerplate.client.ClientHelper;
+import boilerplate.common.baseclasses.BaseArmor;
 import org.lwjgl.opengl.GL11;
+import steamcraft.common.Steamcraft;
 import steamcraft.common.init.InitItems;
 import steamcraft.common.lib.ModInfo;
-import boilerplate.client.ClientHelper;
 
 /**
  * @author warlordjones
@@ -38,7 +40,8 @@ public class ItemDivingHelmet extends BaseArmor
 
 	public ItemDivingHelmet(ArmorMaterial mat, int renderIndex, int type)
 	{
-		super(mat, renderIndex, type);
+		super(mat, type, "", ModInfo.PREFIX);
+		this.setCreativeTab(Steamcraft.tabSC2);
 	}
 
 	@Override
@@ -53,12 +56,12 @@ public class ItemDivingHelmet extends BaseArmor
 	public void renderHelmetOverlay(ItemStack stack, EntityPlayer player, ScaledResolution resolution, float partialTicks, boolean hasScreen,
 			int mouseX, int mouseY)
 	{
-		if((ClientHelper.player() == null) || (ClientHelper.screen() != null))
+		if ((ClientHelper.player() == null) || (ClientHelper.screen() != null))
 			return;
 
 		ItemStack helmet = ClientHelper.player().inventory.armorItemInSlot(3);
 
-		if((ClientHelper.settings().thirdPersonView == 0) && (helmet != null) && (helmet.getItem() == InitItems.itemDivingHelmet))// &&
+		if ((ClientHelper.settings().thirdPersonView == 0) && (helmet != null) && (helmet.getItem() == InitItems.itemDivingHelmet)) // &&
 		// KeyHandler.keyPressed)
 		{
 			ClientHelper.textureManager().bindTexture(overlay);
@@ -86,8 +89,11 @@ public class ItemDivingHelmet extends BaseArmor
 			GL11.glDisable(GL11.GL_BLEND);
 
 			/*
-			 * if (!mc.gameSettings.hideGUI || mc.currentScreen != null) { int x = (Mouse.getX() * width) / mc.displayWidth; int y = height - (Mouse.getY() *
-			 * height) / mc.displayHeight - 1; mc.ingameGUI.renderGameOverlay(0.0F, mc.currentScreen != null, x, y); }
+			 * if (!mc.gameSettings.hideGUI || mc.currentScreen != null) { int x
+			 * = (Mouse.getX() * width) / mc.displayWidth; int y = height -
+			 * (Mouse.getY() * height) / mc.displayHeight - 1;
+			 * mc.ingameGUI.renderGameOverlay(0.0F, mc.currentScreen != null, x,
+			 * y); }
 			 */
 		}
 	}
@@ -95,7 +101,7 @@ public class ItemDivingHelmet extends BaseArmor
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack is)
 	{
-		if(player.getAir() <= 0)
+		if (player.getAir() <= 0)
 		{
 			player.setAir(300);
 			is.damageItem(4, player); // tweak the damage taken a bit
