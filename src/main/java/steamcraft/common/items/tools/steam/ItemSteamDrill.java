@@ -27,7 +27,6 @@ import net.minecraft.world.World;
 
 import boilerplate.client.ClientHelper;
 import boilerplate.common.utils.PlayerUtils;
-import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.ModInfo;
 
 /**
@@ -39,7 +38,6 @@ public class ItemSteamDrill extends ItemSteamTool
 	public ItemSteamDrill(ToolMaterial mat)
 	{
 		super(1);
-		this.setCreativeTab(Steamcraft.tabSC2);
 		this.setHarvestLevel("pickaxe", mat.getHarvestLevel());
 		this.setHarvestLevel("shovel", mat.getHarvestLevel());
 	}

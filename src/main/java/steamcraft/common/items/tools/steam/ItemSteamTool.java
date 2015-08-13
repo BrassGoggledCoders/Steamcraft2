@@ -16,6 +16,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 import boilerplate.common.baseclasses.tools.BaseTool;
+import steamcraft.common.Steamcraft;
 import steamcraft.common.init.InitItems;
 import steamcraft.common.init.InitMaterials;
 import steamcraft.common.items.ItemCanister;
@@ -26,6 +27,7 @@ public class ItemSteamTool extends BaseTool
 	public ItemSteamTool(float damage)
 	{
 		super(damage, InitMaterials.TOOL_STEAM, ModInfo.PREFIX);
+		this.setCreativeTab(Steamcraft.tabSC2);
 	}
 
 	@SuppressWarnings("all")

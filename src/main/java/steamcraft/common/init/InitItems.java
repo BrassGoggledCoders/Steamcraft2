@@ -620,20 +620,30 @@ public class InitItems
 		RegistryHelper.registerToolSet(swordSteam, shovelSteam, pickaxeSteam, axeSteam, hoeSteam, "Steam", ModInfo.ID);
 
 		// Etherium
-		pickaxeEtherium = new BasePickaxe(InitMaterials.TOOL_ETHERIUM, ModInfo.PREFIX).setUnlocalizedName("itemPickaxeEtherium");
-		swordEtherium = new BaseSword(InitMaterials.TOOL_ETHERIUM, ModInfo.PREFIX).setUnlocalizedName("itemSwordEtherium");
-		shovelEtherium = new BaseShovel(InitMaterials.TOOL_ETHERIUM, ModInfo.PREFIX).setUnlocalizedName("itemShovelEtherium");
-		axeEtherium = new BaseAxe(InitMaterials.TOOL_ETHERIUM, ModInfo.PREFIX).setUnlocalizedName("itemAxeEtherium");
-		hoeEtherium = new BaseHoe(InitMaterials.TOOL_ETHERIUM, ModInfo.PREFIX).setUnlocalizedName("itemHoeEtherium");
+		pickaxeEtherium = new BasePickaxe(InitMaterials.TOOL_ETHERIUM, ModInfo.PREFIX).setUnlocalizedName("itemPickaxeEtherium")
+				.setCreativeTab(Steamcraft.tabSC2);
+		swordEtherium = new BaseSword(InitMaterials.TOOL_ETHERIUM, ModInfo.PREFIX).setUnlocalizedName("itemSwordEtherium")
+				.setCreativeTab(Steamcraft.tabSC2);
+		shovelEtherium = new BaseShovel(InitMaterials.TOOL_ETHERIUM, ModInfo.PREFIX).setUnlocalizedName("itemShovelEtherium")
+				.setCreativeTab(Steamcraft.tabSC2);
+		axeEtherium = new BaseAxe(InitMaterials.TOOL_ETHERIUM, ModInfo.PREFIX).setUnlocalizedName("itemAxeEtherium")
+				.setCreativeTab(Steamcraft.tabSC2);
+		hoeEtherium = new BaseHoe(InitMaterials.TOOL_ETHERIUM, ModInfo.PREFIX).setUnlocalizedName("itemHoeEtherium")
+				.setCreativeTab(Steamcraft.tabSC2);
 
 		RegistryHelper.registerToolSet(swordEtherium, shovelEtherium, pickaxeEtherium, axeEtherium, hoeEtherium, "Etherium", ModInfo.ID);
 
 		// Obsidian
-		pickaxeObsidian = new BasePickaxe(InitMaterials.TOOL_OBSIDIAN, ModInfo.PREFIX).setUnlocalizedName("itemPickaxeObsidian");
-		swordObsidian = new BaseSword(InitMaterials.TOOL_OBSIDIAN, ModInfo.PREFIX).setUnlocalizedName("itemSwordObsidian");
-		shovelObsidian = new BaseShovel(InitMaterials.TOOL_OBSIDIAN, ModInfo.PREFIX).setUnlocalizedName("itemShovelObsidian");
-		axeObsidian = new BaseAxe(InitMaterials.TOOL_OBSIDIAN, ModInfo.PREFIX).setUnlocalizedName("itemAxeObsidian");
-		hoeObsidian = new BaseHoe(InitMaterials.TOOL_OBSIDIAN, ModInfo.PREFIX).setUnlocalizedName("itemHoeObsidian");
+		pickaxeObsidian = new BasePickaxe(InitMaterials.TOOL_OBSIDIAN, ModInfo.PREFIX).setUnlocalizedName("itemPickaxeObsidian")
+				.setCreativeTab(Steamcraft.tabSC2);
+		swordObsidian = new BaseSword(InitMaterials.TOOL_OBSIDIAN, ModInfo.PREFIX).setUnlocalizedName("itemSwordObsidian")
+				.setCreativeTab(Steamcraft.tabSC2);
+		shovelObsidian = new BaseShovel(InitMaterials.TOOL_OBSIDIAN, ModInfo.PREFIX).setUnlocalizedName("itemShovelObsidian")
+				.setCreativeTab(Steamcraft.tabSC2);
+		axeObsidian = new BaseAxe(InitMaterials.TOOL_OBSIDIAN, ModInfo.PREFIX).setUnlocalizedName("itemAxeObsidian")
+				.setCreativeTab(Steamcraft.tabSC2);
+		hoeObsidian = new BaseHoe(InitMaterials.TOOL_OBSIDIAN, ModInfo.PREFIX).setUnlocalizedName("itemHoeObsidian")
+				.setCreativeTab(Steamcraft.tabSC2);
 
 		RegistryHelper.registerToolSet(swordObsidian, shovelObsidian, pickaxeObsidian, axeObsidian, hoeObsidian, "Obsidian", ModInfo.ID);
 
