@@ -24,11 +24,11 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidRegistry;
 
-import boilerplate.common.baseclasses.tools.BaseAxe;
-import boilerplate.common.baseclasses.tools.BaseHoe;
-import boilerplate.common.baseclasses.tools.BasePickaxe;
-import boilerplate.common.baseclasses.tools.BaseShovel;
-import boilerplate.common.baseclasses.tools.BaseSword;
+import boilerplate.common.baseclasses.items.tools.BaseAxe;
+import boilerplate.common.baseclasses.items.tools.BaseHoe;
+import boilerplate.common.baseclasses.items.tools.BasePickaxe;
+import boilerplate.common.baseclasses.items.tools.BaseShovel;
+import boilerplate.common.baseclasses.items.tools.BaseSword;
 import boilerplate.common.utils.helpers.RegistryHelper;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.items.BaseItem;

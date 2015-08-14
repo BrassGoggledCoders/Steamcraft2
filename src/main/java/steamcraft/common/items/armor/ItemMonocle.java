@@ -19,7 +19,7 @@ import net.minecraft.item.ItemStack;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-import boilerplate.common.baseclasses.BaseArmor;
+import boilerplate.common.baseclasses.items.BaseArmor;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.ModInfo;
 

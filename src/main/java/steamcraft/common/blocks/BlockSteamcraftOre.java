@@ -28,9 +28,11 @@ import steamcraft.common.Steamcraft;
 import steamcraft.common.init.InitBlocks;
 import steamcraft.common.init.InitItems;
 import steamcraft.common.lib.ModInfo;
-import boilerplate.common.baseclasses.BaseMetadataBlock;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+
+import boilerplate.common.baseclasses.blocks.BaseMetadataBlock;
 
 /**
  * @author Surseance

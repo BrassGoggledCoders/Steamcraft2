@@ -24,7 +24,8 @@ import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.ModInfo;
 import boilerplate.api.IEnergyItem;
 import boilerplate.client.utils.GuiColors;
-import boilerplate.common.baseclasses.BaseElectricItem;
+import boilerplate.common.baseclasses.items.BaseElectricItem;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 

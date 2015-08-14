@@ -15,8 +15,8 @@ package steamcraft.common.tiles.container;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 
+import boilerplate.common.baseclasses.blocks.BaseContainer;
 import steamcraft.common.tiles.TileTimeBomb;
-import boilerplate.common.baseclasses.BaseContainer;
 
 public class ContainerTimeBomb extends BaseContainer
 {

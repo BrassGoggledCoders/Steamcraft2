@@ -22,7 +22,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-import boilerplate.common.baseclasses.tools.BaseTool;
+import boilerplate.common.baseclasses.items.tools.BaseTool;
 import steamcraft.api.item.IFistModule;
 import steamcraft.api.item.ModuleRegistry;
 import steamcraft.common.Steamcraft;

@@ -18,7 +18,7 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 
-import boilerplate.common.baseclasses.BaseArmor;
+import boilerplate.common.baseclasses.items.BaseArmor;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.init.InitMaterials;
 import steamcraft.common.lib.ModInfo;

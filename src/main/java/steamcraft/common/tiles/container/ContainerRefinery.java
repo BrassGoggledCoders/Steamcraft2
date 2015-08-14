@@ -27,9 +27,9 @@ import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 
+import boilerplate.common.baseclasses.blocks.BaseContainer;
 import steamcraft.common.init.InitItems;
 import steamcraft.common.tiles.TileRefinery;
-import boilerplate.common.baseclasses.BaseContainer;
 
 /**
  * @author Decebaldecebal

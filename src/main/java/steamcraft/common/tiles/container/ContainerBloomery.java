@@ -21,8 +21,8 @@ import net.minecraft.item.ItemStack;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+import boilerplate.common.baseclasses.blocks.BaseContainer;
 import steamcraft.common.tiles.TileBloomery;
-import boilerplate.common.baseclasses.BaseContainer;
 
 /**
  * @author warlordjones & decebaldecebal

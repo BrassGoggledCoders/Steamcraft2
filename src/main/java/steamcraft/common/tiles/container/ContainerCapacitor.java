@@ -18,9 +18,11 @@ import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import steamcraft.common.tiles.energy.TileCapacitor;
-import boilerplate.common.baseclasses.BaseContainer;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+
+import boilerplate.common.baseclasses.blocks.BaseContainer;
 
 /**
  * @author decebaldecebal

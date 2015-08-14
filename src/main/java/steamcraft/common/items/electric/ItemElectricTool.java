@@ -22,7 +22,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
 import boilerplate.api.IEnergyItem;
-import boilerplate.common.baseclasses.tools.BaseTool;
+import boilerplate.common.baseclasses.items.tools.BaseTool;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.ModInfo;
 

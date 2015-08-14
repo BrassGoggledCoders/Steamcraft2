@@ -12,7 +12,7 @@
  */
 package steamcraft.common.items.armor;
 
-import boilerplate.common.baseclasses.BaseArmor;
+import boilerplate.common.baseclasses.items.BaseArmor;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.ModInfo;
 

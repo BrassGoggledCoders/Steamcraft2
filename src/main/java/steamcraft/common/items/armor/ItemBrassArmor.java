@@ -29,7 +29,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 import net.minecraftforge.common.ISpecialArmor;
 
-import boilerplate.common.baseclasses.BaseArmor;
+import boilerplate.common.baseclasses.items.BaseArmor;
 import steamcraft.api.item.IArmorModule;
 import steamcraft.api.item.IArmorModule.EnumArmorEffectType;
 import steamcraft.api.item.IDefensiveArmorModule;

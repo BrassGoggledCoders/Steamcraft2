@@ -24,7 +24,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 
-import boilerplate.common.baseclasses.BaseItemBlockWithMetadata;
+import boilerplate.common.baseclasses.items.BaseItemBlockWithMetadata;
 import boilerplate.common.compathandler.FMPCompatHandler;
 import boilerplate.common.utils.helpers.RegistryHelper;
 import org.apache.commons.lang3.text.WordUtils;
