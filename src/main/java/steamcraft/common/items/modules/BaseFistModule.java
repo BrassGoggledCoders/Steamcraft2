@@ -24,7 +24,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import steamcraft.api.item.IFistModule;
 import steamcraft.api.item.ModuleRegistry;
 import boilerplate.client.ClientHelper;
-import boilerplate.common.baseclasses.RootItem;
+import boilerplate.common.baseclasses.items.RootItem;
 
 public abstract class BaseFistModule extends RootItem implements IFistModule
 {

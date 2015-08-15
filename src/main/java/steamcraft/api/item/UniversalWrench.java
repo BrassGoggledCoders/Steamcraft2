@@ -14,7 +14,7 @@ import net.minecraft.item.ItemStack;
 
 import cpw.mods.fml.common.Optional;
 
-import boilerplate.common.baseclasses.RootItem;
+import boilerplate.common.baseclasses.items.RootItem;
 
 /**
  * @author decebaldecebal
