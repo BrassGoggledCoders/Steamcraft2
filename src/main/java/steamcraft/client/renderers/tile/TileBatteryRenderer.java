@@ -15,12 +15,11 @@ package steamcraft.client.renderers.tile;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.World;
 
+import boilerplate.client.ClientHelper;
 import org.lwjgl.opengl.GL11;
 import steamcraft.client.renderers.models.ModelBattery;
 import steamcraft.common.lib.ModInfo;
-import boilerplate.client.ClientHelper;
 
 /**
  * @author warlordjones
@@ -28,7 +27,7 @@ import boilerplate.client.ClientHelper;
  */
 public class TileBatteryRenderer extends TileEntitySpecialRenderer
 {
-	private static final ResourceLocation crystal = new ResourceLocation(ModInfo.PREFIX.replace(":", ""), "textures/models/batterybank.png");
+	private static final ResourceLocation battery = new ResourceLocation(ModInfo.PREFIX + "textures/models/batterybank.png");
 	private final ModelBattery model;
 
 	public TileBatteryRenderer()
@@ -41,16 +40,7 @@ public class TileBatteryRenderer extends TileEntitySpecialRenderer
 	{
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float) dx + 0.5F, (float) dy + 1.5F, (float) dz + 0.5F);
-		ClientHelper.textureManager().bindTexture(crystal);
-		this.renderBattery(te, te.getWorldObj(), te.xCoord, te.yCoord, te.zCoord);
-		GL11.glPopMatrix();
-	}
-
-	private void renderBattery(TileEntity te, World world, int x, int y, int z)
-	{
-		GL11.glPushMatrix();
-		GL11.glTranslatef(0, 0.7F, 0);
-		GL11.glScalef(1.2F, 1.5F, 1.2F);
+		ClientHelper.textureManager().bindTexture(battery);
 		GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
 		this.model.render(null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F, te);
 		GL11.glPopMatrix();
