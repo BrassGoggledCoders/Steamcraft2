@@ -28,6 +28,8 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 
+import boilerplate.common.utils.helpers.IMCHelper;
+import boilerplate.common.utils.helpers.OreDictHelper;
 import steamcraft.common.config.ConfigGeneral;
 import steamcraft.common.init.InitBiomes;
 import steamcraft.common.init.InitBlocks;
@@ -35,8 +37,6 @@ import steamcraft.common.init.InitItems;
 import steamcraft.common.lib.LibInfo;
 import steamcraft.common.lib.LoggerSteamcraft;
 import steamcraft.common.lib.ModInfo;
-import boilerplate.common.utils.helpers.IMCHelper;
-import boilerplate.common.utils.helpers.OreDictHelper;
 
 /**
  * @author warlordjones
@@ -90,47 +90,45 @@ public class CompatabilityLayer
 	private static void sendThaumcraftIMC()
 	{
 		FMLInterModComms.sendMessage("Thaumcraft", "harvestStandardCrop", new ItemStack(InitBlocks.blockTeaPlant, 1, 1));
-		FMLInterModComms.sendMessage("Thaumcraft", "nativeCluster",
-				Block.getIdFromBlock(InitBlocks.blockCustomOre) + "," + 0 + "," + Item.getIdFromItem(InitItems.itemSteamcraftCluster) + "," + 0
-						+ ",2.0");
-		FMLInterModComms.sendMessage("Thaumcraft", "nativeCluster",
-				Block.getIdFromBlock(InitBlocks.blockCustomOre) + "," + 2 + "," + Item.getIdFromItem(InitItems.itemSteamcraftCluster) + "," + 1
-						+ ",2.0");
+		FMLInterModComms.sendMessage("Thaumcraft", "nativeCluster", Block.getIdFromBlock(InitBlocks.blockCustomOre) + "," + 0 + ","
+				+ Item.getIdFromItem(InitItems.itemSteamcraftCluster) + "," + 0 + ",2.0");
+		FMLInterModComms.sendMessage("Thaumcraft", "nativeCluster", Block.getIdFromBlock(InitBlocks.blockCustomOre) + "," + 2 + ","
+				+ Item.getIdFromItem(InitItems.itemSteamcraftCluster) + "," + 1 + ",2.0");
 	}
 
 	private static void sendTiConIMC()
 	{
 		LoggerSteamcraft.info("TiCon Detected, adding Etherium Tool Material");
-		IMCHelper
-				.addNewToolMaterial(ConfigGeneral.etheriumMaterialID, "Etherium", 2000, 500, 5, 0.1F, 1, EnumChatFormatting.RED.toString(), 16711935);
+		IMCHelper.addNewToolMaterial(ConfigGeneral.etheriumMaterialID, "Etherium", 2000, 500, 5, 0.1F, 1, EnumChatFormatting.RED.toString(),
+				16711935);
 
-		IMCHelper.addNewPartBuilderMaterial(ConfigGeneral.etheriumMaterialID, new ItemStack(InitItems.itemResource), new ItemStack(
-				InitItems.itemResource, 1, 6), 2);
+		IMCHelper.addNewPartBuilderMaterial(ConfigGeneral.etheriumMaterialID, new ItemStack(InitItems.itemResource),
+				new ItemStack(InitItems.itemResource, 1, 6), 2);
 		// Aluminum, Copper, Tin
 		for (int i = 0; i < 3; i++)
 		{
 			BlockFluidClassic block_fluid = (BlockFluidClassic) GameRegistry.findBlock("TConstruct",
 					"fluid.molten." + LibInfo.metals[i].toLowerCase());
-			IMCHelper.addNewSmeltable(new ItemStack(InitBlocks.blockMetal, 1, i), InitBlocks.blockMetal, new FluidStack(block_fluid.getFluid(),
-					blockLiquidValue), 600);
-			IMCHelper.addNewSmeltable(new ItemStack(InitBlocks.blockCustomOre, 1, i), InitBlocks.blockMetal, new FluidStack(block_fluid.getFluid(),
-					ingotLiquidValue * 2), 600);
-			IMCHelper.addNewSmeltable(new ItemStack(InitItems.itemIngot, 1, i), InitBlocks.blockMetal, new FluidStack(block_fluid.getFluid(),
-					ingotLiquidValue), 300);
-			IMCHelper.addNewSmeltable(new ItemStack(InitItems.itemNugget, 1, i), InitBlocks.blockMetal, new FluidStack(block_fluid.getFluid(),
-					nuggetLiquidValue), 150);
+			IMCHelper.addNewSmeltable(new ItemStack(InitBlocks.blockMetal, 1, i), InitBlocks.blockMetal,
+					new FluidStack(block_fluid.getFluid(), blockLiquidValue), 600);
+			IMCHelper.addNewSmeltable(new ItemStack(InitBlocks.blockCustomOre, 1, i), InitBlocks.blockMetal,
+					new FluidStack(block_fluid.getFluid(), ingotLiquidValue * 2), 600);
+			IMCHelper.addNewSmeltable(new ItemStack(InitItems.itemIngot, 1, i), InitBlocks.blockMetal,
+					new FluidStack(block_fluid.getFluid(), ingotLiquidValue), 300);
+			IMCHelper.addNewSmeltable(new ItemStack(InitItems.itemNugget, 1, i), InitBlocks.blockMetal,
+					new FluidStack(block_fluid.getFluid(), nuggetLiquidValue), 150);
 		}
 		// Skip Zinc and Brass. Bronze, Steel.
 		for (int i = 5; i < 7; i++)
 		{
 			String metalname = LibInfo.metals[i].toLowerCase();
 			BlockFluidClassic block_fluid = (BlockFluidClassic) GameRegistry.findBlock("TConstruct", "fluid.molten." + metalname);
-			IMCHelper.addNewSmeltable(new ItemStack(InitBlocks.blockMetal, 1, i), InitBlocks.blockMetal, new FluidStack(block_fluid.getFluid(),
-					blockLiquidValue), 600);
-			IMCHelper.addNewSmeltable(new ItemStack(InitItems.itemIngot, 1, i), InitBlocks.blockMetal, new FluidStack(block_fluid.getFluid(),
-					ingotLiquidValue), 300);
-			IMCHelper.addNewSmeltable(new ItemStack(InitItems.itemNugget, 1, i), InitBlocks.blockMetal, new FluidStack(block_fluid.getFluid(),
-					nuggetLiquidValue), 150);
+			IMCHelper.addNewSmeltable(new ItemStack(InitBlocks.blockMetal, 1, i), InitBlocks.blockMetal,
+					new FluidStack(block_fluid.getFluid(), blockLiquidValue), 600);
+			IMCHelper.addNewSmeltable(new ItemStack(InitItems.itemIngot, 1, i), InitBlocks.blockMetal,
+					new FluidStack(block_fluid.getFluid(), ingotLiquidValue), 300);
+			IMCHelper.addNewSmeltable(new ItemStack(InitItems.itemNugget, 1, i), InitBlocks.blockMetal,
+					new FluidStack(block_fluid.getFluid(), nuggetLiquidValue), 150);
 		}
 		/*
 		 * Zinc IMCHelper.addNewSmeltable(new ItemStack(InitBlocks.blockMetal,
@@ -261,6 +259,9 @@ public class CompatabilityLayer
 		OreDictionary.registerOre("cobblestone", new ItemStack(InitBlocks.blockSlate, 1, 4));
 		OreDictionary.registerOre("cobblestone", new ItemStack(InitBlocks.blockSlate, 1, 5));
 		OreDictionary.registerOre("cobblestone", new ItemStack(InitBlocks.blockSlate, 1, 6));
+
+		for (int i = 1; i < 10; i++)
+			OreDictionary.registerOre("foodTea", new ItemStack(InitItems.itemTeacup, 1, i));
 	}
 
 	private static void registerBiomeTypes()
