@@ -44,7 +44,7 @@ public class BlockTeaPlant extends BlockCrops implements IPlantable
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(int side, int meta)
 	{
-		if((meta < 0) || (meta > 1))
+		if ((meta < 0) || (meta > 1))
 			meta = 1;
 		return this.iconArray[meta];
 	}
@@ -73,15 +73,15 @@ public class BlockTeaPlant extends BlockCrops implements IPlantable
 	{
 		super.updateTick(world, x, y, z, random);
 
-		if(world.getBlockLightValue(x, y + 1, z) >= 9)
+		if (world.getBlockLightValue(x, y + 1, z) >= 9)
 		{
 			int metadata = world.getBlockMetadata(x, y, z);
 
-			if(metadata < 1)
+			if (metadata < 1)
 			{
 				float growthRate = this.getGrowthRate(world, x, y, z);
 
-				if(random.nextInt((int) (15.0F / growthRate) + 1) == 0)
+				if (random.nextInt((int) (15.0F / growthRate) + 1) == 0)
 				{
 					++metadata;
 					world.setBlockMetadataWithNotify(x, y, z, metadata, 1);
@@ -99,20 +99,20 @@ public class BlockTeaPlant extends BlockCrops implements IPlantable
 	{
 		float f = 1.0F;
 
-		for(int l1 = x - 1; l1 <= (x + 1); ++l1)
-			for(int i3 = z - 1; i3 <= (z + 1); ++i3)
+		for (int l1 = x - 1; l1 <= (x + 1); ++l1)
+			for (int i3 = z - 1; i3 <= (z + 1); ++i3)
 			{
 				Block block = world.getBlock(l1, y - 1, i3);
 				float growthRate = 0.0F;
 
-				if(block.canSustainPlant(world, l1, y - 1, i3, ForgeDirection.UP, this))
+				if (block.canSustainPlant(world, l1, y - 1, i3, ForgeDirection.UP, this))
 				{
 					growthRate = 1.0F;
 
-					if(block.isFertile(world, l1, y - 1, i3))
+					if (block.isFertile(world, l1, y - 1, i3))
 						growthRate = 3.0F;
 				}
-				if((l1 != x) || (i3 != z))
+				if ((l1 != x) || (i3 != z))
 					growthRate /= 4.0F;
 
 				f += growthRate;
@@ -151,21 +151,20 @@ public class BlockTeaPlant extends BlockCrops implements IPlantable
 		ArrayList<ItemStack> ret = new ArrayList();
 
 		int count = quantityDropped(metadata, fortune, world.rand);
-		for(int i = 0; i < count; i++)
+		for (int i = 0; i < count; i++)
 		{
 			Item item = getItemDropped(metadata, world.rand, fortune);
-			if(item != null)
+			if (item != null)
 			{
 				ret.add(new ItemStack(item, 1, damageDropped(metadata)));
 			}
 		}
 
-		if(metadata >= 1)
+		if (metadata >= 1)
 		{
-			for(int i = 0; i < 3 + fortune; ++i)
+			for (int i = 0; i < 3 + fortune; ++i)
 			{
-				ret.add(new ItemStack(this.func_149866_i(), 1, world.rand.nextInt(1)));
-				ret.add(new ItemStack(this.func_149865_P(), 1, world.rand.nextInt(2)));
+				ret.add(new ItemStack(this.func_149866_i(), world.rand.nextInt(1), damageDropped(metadata)));
 			}
 		}
 
