@@ -14,6 +14,7 @@ package steamcraft.common.items;
 
 import java.util.Arrays;
 
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -44,7 +45,7 @@ public class ItemWithCraftingDurability extends BaseItem
 	public ItemStack getContainerItem(ItemStack ist)
 	{
 		ist.setItemDamage(ist.getItemDamage() + 1);
-		if(ist.getItemDamage() > ist.getMaxDamage())
+		if (ist.getItemDamage() > ist.getMaxDamage())
 			ist = null;
 
 		return ist;
@@ -76,14 +77,17 @@ public class ItemWithCraftingDurability extends BaseItem
 	}
 
 	@Override
-	public void onCreated(ItemStack stack, World world, EntityPlayer player)
+	public void onUpdate(ItemStack stack, World world, Entity entity, int par4, boolean par5)
 	{
-		if(player.getCommandSenderName() != null)
+		if (entity instanceof EntityPlayer)
 		{
-			if((stack.getItem() == InitItems.itemHammer) && Arrays.asList(LibInfo.names).contains(player.getUniqueID().toString()))
+			EntityPlayer player = (EntityPlayer) entity;
+			if (player.getCommandSenderName() != null)
 			{
-				stack.stackSize = 0;
-				stack.func_150996_a(InitItems.itemBugHammer);
+				if ((stack.getItem() == InitItems.itemHammer) && Arrays.asList(LibInfo.names).contains(player.getUniqueID().toString()))
+				{
+					stack.func_150996_a(InitItems.itemBugHammer);
+				}
 			}
 		}
 	}
