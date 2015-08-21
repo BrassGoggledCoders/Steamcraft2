@@ -37,6 +37,7 @@ import cpw.mods.fml.common.registry.GameRegistry.Type;
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.MinecraftForge;
 
+import boilerplate.common.compathandler.FMPCompatHandler;
 import steamcraft.client.GuiHandler;
 import steamcraft.common.compat.CompatabilityLayer;
 import steamcraft.common.config.Config;
@@ -63,13 +64,12 @@ import steamcraft.common.worldgen.dimension.WorldProviderDeeps;
 import steamcraft.common.worldgen.structure.MapGenCustomScatteredFeature;
 import steamcraft.common.worldgen.structure.StructureUndercityPieces;
 import steamcraft.common.worldgen.structure.StructureUndercityStart;
-import boilerplate.common.compathandler.FMPCompatHandler;
 
 /**
  * @author Surseance
  * @commentary by Arnold
  */
-@Mod(modid = ModInfo.ID, name = ModInfo.NAME, version = ModInfo.VERSION, guiFactory = ModInfo.CONFIG_GUI, dependencies = "required-after:boilerplate")
+@Mod(modid = ModInfo.ID, name = ModInfo.NAME, version = ModInfo.VERSION, guiFactory = ModInfo.CONFIG_GUI, dependencies = "required-after:boilerplate;after:Thaumcraft")
 public class Steamcraft
 {
 	@SidedProxy(clientSide = ModInfo.CLIENT_PROXY, serverSide = ModInfo.COMMON_PROXY)
@@ -150,8 +150,8 @@ public class Steamcraft
 		InitMisc.initDungeonLoot();
 
 		LoggerSteamcraft.info("Finished Postinit");
-		LoggerSteamcraft
-				.info("Please note: Steamcraft2 is now the officially unofficial mod of the Steampunk Forum at BrassGoggles, otherwise known as BG, which is only unofficial because making it official would cause a legal headache but is pretty much official, I'm just not allowed to call it that, so its not official, but it kinda is, ok? Got that? Signed, Major Vincent Smith (Otherwise known as warlordjones) - BrassGoggles moderation team member");
+		LoggerSteamcraft.info(
+				"Please note: Steamcraft2 is now the officially unofficial mod of the Steampunk Forum at BrassGoggles, otherwise known as BG, which is only unofficial because making it official would cause a legal headache but is pretty much official, I'm just not allowed to call it that, so its not official, but it kinda is, ok? Got that? Signed, Major Vincent Smith (Otherwise known as warlordjones) - BrassGoggles moderation team member");
 		if (Loader.isModLoaded("steamnsteel"))
 			LoggerSteamcraft.info("Evening to the distingushed ladies and gentlemen of the SteamNSteel club!");
 		// TODO add for IE
