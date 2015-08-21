@@ -12,6 +12,8 @@
  */
 package steamcraft.common.init;
 
+import java.util.ArrayList;
+
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -27,6 +29,7 @@ import net.minecraftforge.oredict.ShapelessOreRecipe;
 
 import boilerplate.common.utils.recipe.RecipeUtils;
 import steamcraft.common.config.ConfigBalance;
+import steamcraft.common.config.ConfigGeneral;
 import steamcraft.common.lib.LibInfo;
 
 /**
@@ -155,6 +158,30 @@ public class InitRecipes
 				"plateIron", new ItemStack(InitItems.itemGrindstone, 1, OreDictionary.WILDCARD_VALUE)));
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(InitItems.itemVanillaPowder, ConfigBalance.numberOfDustsFromMetal, 1),
 				"plateGold", new ItemStack(InitItems.itemGrindstone, 1, OreDictionary.WILDCARD_VALUE)));
+		String[] oredictMetals = ConfigGeneral.oredictMetals;
+		for (int i = 0; i < oredictMetals.length; i++)
+		{
+			if (OreDictionary.doesOreNameExist("dust" + oredictMetals[i]))
+			{
+				ItemStack stack = null;
+				ArrayList<ItemStack> list = OreDictionary.getOres("dust" + oredictMetals[i]);
+				if (list.size() > 0)
+					stack = list.get(0);
+
+				if (OreDictionary.doesOreNameExist("ingot" + oredictMetals[i]))
+				{
+					GameRegistry.addRecipe(
+							new ShapelessOreRecipe(new ItemStack(stack.getItem(), ConfigBalance.numberOfDustsFromMetal, stack.getItemDamage()),
+									"ingot" + oredictMetals[i], new ItemStack(InitItems.itemGrindstone, 1, OreDictionary.WILDCARD_VALUE)));
+				}
+				if (OreDictionary.doesOreNameExist("plate" + oredictMetals[i]))
+				{
+					GameRegistry.addRecipe(
+							new ShapelessOreRecipe(new ItemStack(stack.getItem(), ConfigBalance.numberOfDustsFromMetal, stack.getItemDamage()),
+									"plate" + oredictMetals[i], new ItemStack(InitItems.itemGrindstone, 1, OreDictionary.WILDCARD_VALUE)));
+				}
+			}
+		}
 	}
 
 	private static void initToolsRecipes()

@@ -36,10 +36,14 @@ public class ConfigGeneral
 
 	public static boolean unnaturalLightningStrikes, naturalLightningStrikes, weather2LightningStrikes;
 
-	public static int depthsBiomeID, depthsFBiomeID, depthsMBiomeID, depthsSBiomeID, depthsIBiomeID, depthsSCBiomeID, depthsSCHBiomeID, depthsSWBiomeID,
-	depthsTFBiomeID, depthsJBiomeID;// , depthsOBiomeID, depthsBBiomeID;
+	public static int depthsBiomeID, depthsFBiomeID, depthsMBiomeID, depthsSBiomeID, depthsIBiomeID, depthsSCBiomeID, depthsSCHBiomeID,
+			depthsSWBiomeID, depthsTFBiomeID, depthsJBiomeID;// ,
+																// depthsOBiomeID,
+																// depthsBBiomeID;
 
 	public static double spyglassZoom;
+
+	public static String[] oredictMetals;
 
 	public static void initialize(File configFile)
 	{
@@ -76,14 +80,16 @@ public class ConfigGeneral
 			depthsSWBiomeID = config.get(CATEGORY_GENERAL, "Biome ID for Depths Swamp Biome", biomeID++).getInt();
 			depthsTFBiomeID = config.get(CATEGORY_GENERAL, "Biome ID for Depths Tall Forest Biome", biomeID++).getInt();
 			depthsJBiomeID = config.get(CATEGORY_GENERAL, "Biome ID for Depths Jungle Biome", biomeID++).getInt();
-		}
-		catch(Exception e)
+
+			oredictMetals = config.getStringList(CATEGORY_GENERAL,
+					"List of oredictionary names of ingots/plates that the grindstone will be able to convert to dust",
+					new String[] { "Platinum", "Nickel", "Lead", "Silver", "" }, "");
+		} catch (Exception e)
 		{
 			LoggerSteamcraft.error("Failed to load configuration file:" + e);
-		}
-		finally
+		} finally
 		{
-			if(config.hasChanged())
+			if (config.hasChanged())
 				config.save();
 		}
 	}
