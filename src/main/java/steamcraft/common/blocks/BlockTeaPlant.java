@@ -160,9 +160,10 @@ public class BlockTeaPlant extends BlockCrops implements IPlantable
 			}
 		}
 
-		if (metadata >= 1)
+		if (metadata != 0)
 		{
-			for (int i = 0; i < 3 + fortune; ++i)
+			ret.add(new ItemStack(this.func_149866_i(), 1, damageDropped(metadata)));
+			for (int i = 0; i < count; ++i)
 			{
 				ret.add(new ItemStack(this.func_149866_i(), world.rand.nextInt(1), damageDropped(metadata)));
 			}
