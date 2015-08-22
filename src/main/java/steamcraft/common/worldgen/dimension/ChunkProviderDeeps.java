@@ -42,6 +42,7 @@ import net.minecraftforge.event.terraingen.TerrainGen;
 
 import steamcraft.common.init.InitBiomes;
 import steamcraft.common.init.InitBlocks;
+import steamcraft.common.worldgen.WorldGenSpout;
 import steamcraft.common.worldgen.biomes.BiomeDepthsBase;
 import steamcraft.common.worldgen.structure.MapGenCustomScatteredFeature;
 import steamcraft.common.worldgen.structure.MapGenUndercity;
@@ -92,16 +93,17 @@ public class ChunkProviderDeeps implements IChunkProvider
 		this.adouble = new double[825];
 		this.parabolicField = new float[25];
 
-		for(int j = -2; j <= 2; ++j)
+		for (int j = -2; j <= 2; ++j)
 		{
-			for(int k = -2; k <= 2; ++k)
+			for (int k = -2; k <= 2; ++k)
 			{
 				float f = 10.0F / MathHelper.sqrt_float((j * j) + (k * k) + 0.2F);
 				this.parabolicField[j + 2 + ((k + 2) * 5)] = f;
 			}
 		}
 
-		NoiseGenerator[] noiseGens = { this.noiseGen1, this.noiseGen2, this.noiseGen3, this.noiseGen4, this.noiseGen5, this.noiseGen6, this.mobSpawnerNoise };
+		NoiseGenerator[] noiseGens = { this.noiseGen1, this.noiseGen2, this.noiseGen3, this.noiseGen4, this.noiseGen5, this.noiseGen6,
+				this.mobSpawnerNoise };
 		noiseGens = TerrainGen.getModdedNoiseGenerators(world, this.rand, noiseGens);
 		this.noiseGen1 = (NoiseGeneratorOctaves) noiseGens[0];
 		this.noiseGen2 = (NoiseGeneratorOctaves) noiseGens[1];
@@ -119,19 +121,19 @@ public class ChunkProviderDeeps implements IChunkProvider
 				chunkCoordZ * 16, 16, 16);
 		this.doBaseBiomeGeneration(chunkCoordX * 4, 0, chunkCoordZ * 4);
 
-		for(int k = 0; k < 4; ++k)
+		for (int k = 0; k < 4; ++k)
 		{
 			int l = k * 5;
 			int i1 = (k + 1) * 5;
 
-			for(int j1 = 0; j1 < 4; ++j1)
+			for (int j1 = 0; j1 < 4; ++j1)
 			{
 				int k1 = (l + j1) * 33;
 				int l1 = (l + j1 + 1) * 33;
 				int i2 = (i1 + j1) * 33;
 				int j2 = (i1 + j1 + 1) * 33;
 
-				for(int k2 = 0; k2 < 32; ++k2)
+				for (int k2 = 0; k2 < 32; ++k2)
 				{
 					double d0 = 0.125D;
 					double d1 = this.adouble[k1 + k2];
@@ -143,7 +145,7 @@ public class ChunkProviderDeeps implements IChunkProvider
 					double d7 = (this.adouble[i2 + k2 + 1] - d3) * d0;
 					double d8 = (this.adouble[j2 + k2 + 1] - d4) * d0;
 
-					for(int l2 = 0; l2 < 8; ++l2)
+					for (int l2 = 0; l2 < 8; ++l2)
 					{
 						double d9 = 0.25D;
 						double d10 = d1;
@@ -151,7 +153,7 @@ public class ChunkProviderDeeps implements IChunkProvider
 						double d12 = (d3 - d1) * d9;
 						double d13 = (d4 - d2) * d9;
 
-						for(int i3 = 0; i3 < 4; ++i3)
+						for (int i3 = 0; i3 < 4; ++i3)
 						{
 							int j3 = ((i3 + (k * 4)) << 12) | ((0 + (j1 * 4)) << 8) | ((k2 * 8) + l2);
 							short short1 = 256;
@@ -160,18 +162,19 @@ public class ChunkProviderDeeps implements IChunkProvider
 							double d16 = (d11 - d10) * d14;
 							double d15 = d10 - d16;
 
-							for(int k3 = 0; k3 < 4; ++k3)
+							for (int k3 = 0; k3 < 4; ++k3)
 							{
-								if((d15 += d16) > 0.0D)
+								if ((d15 += d16) > 0.0D)
 								{
-									// if(this.worldObj.getBiomeGenForCoords(chunkCoordX, chunkCoordZ) == InitBiomes.biomeDepthsO)
+									// if(this.worldObj.getBiomeGenForCoords(chunkCoordX,
+									// chunkCoordZ) == InitBiomes.biomeDepthsO)
 									// p_147424_3_[j3 += short1] = Blocks.water;
 									// else
 									p_147424_3_[j3 += short1] = Blocks.stone;
 								}
-								else if(((k2 * 8) + l2) < b0)
+								else if (((k2 * 8) + l2) < b0)
 								{
-									if(this.worldObj.getBiomeGenForCoords(chunkCoordX, chunkCoordZ) == InitBiomes.biomeDepthsSCH)
+									if (this.worldObj.getBiomeGenForCoords(chunkCoordX, chunkCoordZ) == InitBiomes.biomeDepthsSCH)
 										p_147424_3_[j3 += short1] = Blocks.lava;
 									else
 										p_147424_3_[j3 += short1] = Blocks.water;
@@ -202,14 +205,13 @@ public class ChunkProviderDeeps implements IChunkProvider
 		double d0 = 0.03125D;
 		this.stoneNoise = this.noiseGen4.func_151599_a(this.stoneNoise, p_147422_1_ * 16, p_147422_2_ * 16, 16, 16, d0 * 2.0D, d0 * 2.0D, 1.0D);
 
-		for(int k = 0; k < 16; ++k)
+		for (int k = 0; k < 16; ++k)
 		{
-			for(int l = 0; l < 16; ++l)
+			for (int l = 0; l < 16; ++l)
 			{
 				BiomeGenBase biomegenbase = p_147422_5_[l + (k * 16)];
 				biomegenbase.genTerrainBlocks(this.worldObj, this.rand, p_147422_3_, p_147422_4_, (p_147422_1_ * 16) + k, (p_147422_2_ * 16) + l,
-						this.stoneNoise[l
-								+ (k * 16)]);
+						this.stoneNoise[l + (k * 16)]);
 			}
 		}
 	}
@@ -224,8 +226,9 @@ public class ChunkProviderDeeps implements IChunkProvider
 	}
 
 	/**
-	 * Will return back a chunk, if it doesn't exist and its not a MP client it will generates all the blocks for the specified chunk from the map seed and
-	 * chunk seed
+	 * Will return back a chunk, if it doesn't exist and its not a MP client it
+	 * will generates all the blocks for the specified chunk from the map seed
+	 * and chunk seed
 	 */
 	@Override
 	public Chunk provideChunk(int chunkCoordX, int chunkCoordZ)
@@ -247,7 +250,7 @@ public class ChunkProviderDeeps implements IChunkProvider
 		Chunk chunk = new Chunk(this.worldObj, ablock, abyte, chunkCoordX, chunkCoordZ);
 		byte[] abyte1 = chunk.getBiomeArray();
 
-		for(int k = 0; k < abyte1.length; ++k)
+		for (int k = 0; k < abyte1.length; ++k)
 		{
 			abyte1[k] = (byte) this.biomesForGeneration[k].biomeID;
 		}
@@ -263,21 +266,21 @@ public class ChunkProviderDeeps implements IChunkProvider
 		double d2 = 512.0D;
 		double d3 = 512.0D;
 		this.adouble4 = this.noiseGen6.generateNoiseOctaves(this.adouble4, p_147423_1_, p_147423_3_, 5, 5, 200.0D, 200.0D, 0.5D);
-		this.adouble1 = this.noiseGen3.generateNoiseOctaves(this.adouble1, p_147423_1_, p_147423_2_, p_147423_3_, 5, 33, 5,
-				8.555150000000001D, 4.277575000000001D, 8.555150000000001D);
-		this.adouble2 = this.noiseGen1.generateNoiseOctaves(this.adouble2, p_147423_1_, p_147423_2_, p_147423_3_, 5, 33, 5, 684.412D,
-				684.412D, 684.412D);
-		this.adouble3 = this.noiseGen2.generateNoiseOctaves(this.adouble3, p_147423_1_, p_147423_2_, p_147423_3_, 5, 33, 5, 684.412D,
-				684.412D, 684.412D);
+		this.adouble1 = this.noiseGen3.generateNoiseOctaves(this.adouble1, p_147423_1_, p_147423_2_, p_147423_3_, 5, 33, 5, 8.555150000000001D,
+				4.277575000000001D, 8.555150000000001D);
+		this.adouble2 = this.noiseGen1.generateNoiseOctaves(this.adouble2, p_147423_1_, p_147423_2_, p_147423_3_, 5, 33, 5, 684.412D, 684.412D,
+				684.412D);
+		this.adouble3 = this.noiseGen2.generateNoiseOctaves(this.adouble3, p_147423_1_, p_147423_2_, p_147423_3_, 5, 33, 5, 684.412D, 684.412D,
+				684.412D);
 		boolean flag1 = false;
 		boolean flag = false;
 		int l = 0;
 		int i1 = 0;
 		double d4 = 8.5D;
 
-		for(int j1 = 0; j1 < 5; ++j1)
+		for (int j1 = 0; j1 < 5; ++j1)
 		{
-			for(int k1 = 0; k1 < 5; ++k1)
+			for (int k1 = 0; k1 < 5; ++k1)
 			{
 				float f = 0.0F;
 				float f1 = 0.0F;
@@ -285,9 +288,9 @@ public class ChunkProviderDeeps implements IChunkProvider
 				byte b0 = 2;
 				BiomeGenBase biomegenbase = this.biomesForGeneration[j1 + 2 + ((k1 + 2) * 10)];
 
-				for(int l1 = -b0; l1 <= b0; ++l1)
+				for (int l1 = -b0; l1 <= b0; ++l1)
 				{
-					for(int i2 = -b0; i2 <= b0; ++i2)
+					for (int i2 = -b0; i2 <= b0; ++i2)
 					{
 						BiomeGenBase biomegenbase1 = this.biomesForGeneration[j1 + l1 + 2 + ((k1 + i2 + 2) * 10)];
 						float f3 = biomegenbase1.rootHeight;
@@ -295,7 +298,7 @@ public class ChunkProviderDeeps implements IChunkProvider
 
 						float f5 = this.parabolicField[l1 + 2 + ((i2 + 2) * 5)] / (f3 + 2.0F);
 
-						if(biomegenbase1.rootHeight > biomegenbase.rootHeight)
+						if (biomegenbase1.rootHeight > biomegenbase.rootHeight)
 						{
 							f5 /= 2.0F;
 						}
@@ -312,18 +315,18 @@ public class ChunkProviderDeeps implements IChunkProvider
 				f1 = ((f1 * 4.0F) - 1.0F) / 8.0F;
 				double d12 = this.adouble4[i1] / 8000.0D;
 
-				if(d12 < 0.0D)
+				if (d12 < 0.0D)
 				{
 					d12 = -d12 * 0.3D;
 				}
 
 				d12 = (d12 * 3.0D) - 2.0D;
 
-				if(d12 < 0.0D)
+				if (d12 < 0.0D)
 				{
 					d12 /= 2.0D;
 
-					if(d12 < -1.0D)
+					if (d12 < -1.0D)
 					{
 						d12 = -1.0D;
 					}
@@ -333,7 +336,7 @@ public class ChunkProviderDeeps implements IChunkProvider
 				}
 				else
 				{
-					if(d12 > 1.0D)
+					if (d12 > 1.0D)
 					{
 						d12 = 1.0D;
 					}
@@ -348,11 +351,11 @@ public class ChunkProviderDeeps implements IChunkProvider
 				d13 = (d13 * 8.5D) / 8.0D;
 				double d5 = 8.5D + (d13 * 4.0D);
 
-				for(int j2 = 0; j2 < 33; ++j2)
+				for (int j2 = 0; j2 < 33; ++j2)
 				{
 					double d6 = ((j2 - d5) * 12.0D * 128.0D) / 256.0D / d14;
 
-					if(d6 < 0.0D)
+					if (d6 < 0.0D)
 					{
 						d6 *= 4.0D;
 					}
@@ -362,7 +365,7 @@ public class ChunkProviderDeeps implements IChunkProvider
 					double d9 = ((this.adouble1[l] / 10.0D) + 1.0D) / 2.0D;
 					double d10 = MathHelper.denormalizeClamp(d7, d8, d9) - d6;
 
-					if(j2 > 29)
+					if (j2 > 29)
 					{
 						double d11 = (j2 - 29) / 3.0F;
 						d10 = (d10 * (1.0D - d11)) + (-10.0D * d11);
@@ -410,7 +413,7 @@ public class ChunkProviderDeeps implements IChunkProvider
 		int l1;
 		int i2;
 
-		if((biomegenbase == InitBiomes.biomeDepthsSCH))
+		if ((biomegenbase == InitBiomes.biomeDepthsSCH))
 		{
 			k1 = blockX + this.rand.nextInt(16);
 			l1 = this.rand.nextInt(256);
@@ -421,25 +424,25 @@ public class ChunkProviderDeeps implements IChunkProvider
 			i2 = blockZ + this.rand.nextInt(16);
 			(new WorldGenLakes(Blocks.lava)).generate(this.worldObj, this.rand, k1, l1, i2);
 		}
-		else if(biomegenbase == InitBiomes.biomeDepthsSC)
+		else if (biomegenbase == InitBiomes.biomeDepthsSC)
 		{
 			k1 = blockX + this.rand.nextInt(16);
 			l1 = this.rand.nextInt(256);
 			i2 = blockZ + this.rand.nextInt(16);
-			if(InitBlocks.blockBoilingWater != null)
+			if (InitBlocks.blockBoilingWater != null)
 				new WorldGenLakes(InitBlocks.blockBoilingWater).generate(this.worldObj, this.rand, k1, l1, i2);
-
-			// TODO
-			// k1 = blockX + this.rand.nextInt(16);
-			// l1 = this.rand.nextInt(256);
-			// /i2 = blockZ + this.rand.nextInt(16);
-			// if(this.rand.nextInt(5) == 0)
-			// (new WorldGenSpout(InitBlocks.blockBoilingWater)).generate(this.worldObj, this.rand, k1, l1, i2);
 
 			k1 = blockX + this.rand.nextInt(16);
 			l1 = this.rand.nextInt(256);
 			i2 = blockZ + this.rand.nextInt(16);
-			(new WorldGenLakes(InitBlocks.blockBoilingMud)).generate(this.worldObj, this.rand, k1, l1, i2);
+			if (this.rand.nextInt(5) == 0 && InitBlocks.blockBoilingWater != null)
+				(new WorldGenSpout(InitBlocks.blockBoilingWater)).generate(this.worldObj, this.rand, k1, l1, i2);
+
+			k1 = blockX + this.rand.nextInt(16);
+			l1 = this.rand.nextInt(256);
+			i2 = blockZ + this.rand.nextInt(16);
+			if (InitBlocks.blockBoilingMud != null)
+				(new WorldGenLakes(InitBlocks.blockBoilingMud)).generate(this.worldObj, this.rand, k1, l1, i2);
 		}
 		else
 		{
@@ -453,11 +456,11 @@ public class ChunkProviderDeeps implements IChunkProvider
 		l1 = this.rand.nextInt(256);
 		i2 = blockZ + this.rand.nextInt(16);
 
-		if((l1 < 63) || (this.rand.nextInt(5) == 0))
+		if ((l1 < 63) || (this.rand.nextInt(5) == 0))
 		{
 			(new WorldGenLakes(Blocks.lava)).generate(this.worldObj, this.rand, k1, l1, i2);
 		}
-		for(k1 = 0; k1 < 8; ++k1)
+		for (k1 = 0; k1 < 8; ++k1)
 		{
 			l1 = blockX + this.rand.nextInt(16);
 			i2 = this.rand.nextInt(256);
@@ -474,7 +477,9 @@ public class ChunkProviderDeeps implements IChunkProvider
 	}
 
 	/**
-	 * Two modes of operation: if passed true, save all Chunks in one go. If passed false, save up to two chunks. Return true if all chunks have been saved.
+	 * Two modes of operation: if passed true, save all Chunks in one go. If
+	 * passed false, save up to two chunks. Return true if all chunks have been
+	 * saved.
 	 */
 	@Override
 	public boolean saveChunks(boolean p_73151_1_, IProgressUpdate p_73151_2_)
@@ -483,7 +488,8 @@ public class ChunkProviderDeeps implements IChunkProvider
 	}
 
 	/**
-	 * Save extra data not associated with any Chunk. Not saved during autosave, only during world unload. Currently unimplemented.
+	 * Save extra data not associated with any Chunk. Not saved during autosave,
+	 * only during world unload. Currently unimplemented.
 	 */
 	@Override
 	public void saveExtraData()
@@ -491,7 +497,8 @@ public class ChunkProviderDeeps implements IChunkProvider
 	}
 
 	/**
-	 * Unloads chunks that are marked to be unloaded. This is not guaranteed to unload every such chunk.
+	 * Unloads chunks that are marked to be unloaded. This is not guaranteed to
+	 * unload every such chunk.
 	 */
 	@Override
 	public boolean unloadQueuedChunks()
@@ -518,7 +525,8 @@ public class ChunkProviderDeeps implements IChunkProvider
 	}
 
 	/**
-	 * Returns a list of creatures of the specified type that can spawn at the given location.
+	 * Returns a list of creatures of the specified type that can spawn at the
+	 * given location.
 	 */
 	@Override
 	public List getPossibleCreatures(EnumCreatureType p_73155_1_, int p_73155_2_, int p_73155_3_, int p_73155_4_)
