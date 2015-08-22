@@ -3,7 +3,6 @@ dist
 download
 push.sh
 remotebuild.py
-/libs
 
 ## Gradle
 /.gradle
