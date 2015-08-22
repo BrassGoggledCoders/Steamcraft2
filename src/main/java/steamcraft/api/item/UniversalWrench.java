@@ -11,8 +11,11 @@ package steamcraft.api.item;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+
 import cpw.mods.fml.common.Optional;
-import boilerplate.common.baseclasses.RootItem;
+
+import boilerplate.common.baseclasses.items.RootItem;
+
 /**
  * @author decebaldecebal
  *
@@ -47,19 +50,38 @@ public abstract class UniversalWrench extends RootItem implements IUniversalWren
 
 	/*
 	 * @Override
-	 * @Optional.Method(modid = "Railcraft") public boolean canWhack(EntityPlayer player, ItemStack crowbar, int x, int y, int z) { return true; }
+	 * 
+	 * @Optional.Method(modid = "Railcraft") public boolean
+	 * canWhack(EntityPlayer player, ItemStack crowbar, int x, int y, int z) {
+	 * return true; }
+	 * 
 	 * @Override
-	 * @Optional.Method(modid = "Railcraft") public void onWhack(EntityPlayer player, ItemStack crowbar, int x, int y, int z) { crowbar.damageItem(2, player);
-	 * player.swingItem(); }
+	 * 
+	 * @Optional.Method(modid = "Railcraft") public void onWhack(EntityPlayer
+	 * player, ItemStack crowbar, int x, int y, int z) { crowbar.damageItem(2,
+	 * player); player.swingItem(); }
+	 * 
 	 * @Override
-	 * @Optional.Method(modid = "Railcraft") public boolean canLink(EntityPlayer player, ItemStack crowbar, EntityMinecart cart) { return true; }
+	 * 
+	 * @Optional.Method(modid = "Railcraft") public boolean canLink(EntityPlayer
+	 * player, ItemStack crowbar, EntityMinecart cart) { return true; }
+	 * 
 	 * @Override
-	 * @Optional.Method(modid = "Railcraft") public void onLink(EntityPlayer player, ItemStack crowbar, EntityMinecart cart) { crowbar.damageItem(2, player);
-	 * player.swingItem(); }
+	 * 
+	 * @Optional.Method(modid = "Railcraft") public void onLink(EntityPlayer
+	 * player, ItemStack crowbar, EntityMinecart cart) { crowbar.damageItem(2,
+	 * player); player.swingItem(); }
+	 * 
 	 * @Override
-	 * @Optional.Method(modid = "Railcraft") public boolean canBoost(EntityPlayer player, ItemStack crowbar, EntityMinecart cart) { return true; }
+	 * 
+	 * @Optional.Method(modid = "Railcraft") public boolean
+	 * canBoost(EntityPlayer player, ItemStack crowbar, EntityMinecart cart) {
+	 * return true; }
+	 * 
 	 * @Override
-	 * @Optional.Method(modid = "Railcraft") public void onBoost(EntityPlayer player, ItemStack crowbar, EntityMinecart cart) { crowbar.damageItem(2, player);
-	 * player.swingItem(); }
+	 * 
+	 * @Optional.Method(modid = "Railcraft") public void onBoost(EntityPlayer
+	 * player, ItemStack crowbar, EntityMinecart cart) { crowbar.damageItem(2,
+	 * player); player.swingItem(); }
 	 */
 }
