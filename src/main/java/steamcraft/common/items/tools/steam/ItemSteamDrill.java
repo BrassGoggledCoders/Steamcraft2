@@ -130,7 +130,7 @@ public class ItemSteamDrill extends ItemSteamTool
 								if (nblock.getBlockHardness(world, xPos, yPos, zPos) != 0.0D)
 									this.consumeSteamFromCanister(player);
 
-								if (!world.isRemote && (result != null))
+								if (!world.isRemote && (result != null) && nblock.getBlockHardness(world, xPos, yPos, zPos) != -1)
 								{
 									world.setBlockToAir(xPos, yPos, zPos);
 									world.spawnEntityInWorld(new EntityItem(world, xPos + 0.5, yPos + 0.5, zPos + 0.5, result.copy()));
