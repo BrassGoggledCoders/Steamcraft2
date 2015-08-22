@@ -139,7 +139,7 @@ public class InitItems
 	public static Item itemBrassGoggles, itemDivingHelmet, itemMonocle;
 
 	// Containers
-	public static Item itemCanisterSteam;
+	public static Item itemCanisterSteam, itemReinforcedCanisterSteam;
 
 	public static Item itemChisel;
 
@@ -379,8 +379,11 @@ public class InitItems
 	private static void initializeOthers()
 	{
 		// Containers
-		itemCanisterSteam = new ItemCanister().setUnlocalizedName("itemCanisterSteam");
+		itemCanisterSteam = new ItemCanister(10000, 20).setUnlocalizedName("itemCanisterSteam");
 		registerItem(itemCanisterSteam, "ItemCanisterSteam");
+
+		itemReinforcedCanisterSteam = new ItemCanister(20000, 40).setUnlocalizedName("itemReinforcedCanisterSteam");
+		registerItem(itemReinforcedCanisterSteam, "ItemReinforcedCanisterSteam");
 
 		itemElectricJarSmall = new ElectricItem(80, 80, 40).setUnlocalizedName("itemElectricJarSmall");
 		itemElectricJarMedium = new ElectricItem(400, 400, 125).setUnlocalizedName("itemElectricJarMedium");

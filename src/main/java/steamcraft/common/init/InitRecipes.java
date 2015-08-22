@@ -445,6 +445,9 @@ public class InitRecipes
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemCanisterSteam, 1, InitItems.itemCanisterSteam.getMaxDamage()), "PPP",
 				"GGG", "PPP", 'G', "paneGlass", 'P', "plateBrass"));
+		GameRegistry
+				.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemReinforcedCanisterSteam, 1, InitItems.itemCanisterSteam.getMaxDamage()),
+						"PPP", "CIC", "PPP", 'I', "ingotSteel", 'P', "plateSteel", 'C', InitItems.itemCanisterSteam));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemHammer), "III", " H ", " C ", 'I', "ingotCastIron", 'H', Items.stick,
 				'C', "partCastIronRod"));

@@ -375,6 +375,7 @@ item.itemTimeClock.desc=Manipulate the fabric of time! Right Click to set to day
 item.itemSplashLightningBottle.name=Splash Lightning Bottle
 item.itemSplashLightningBottle.desc=Right click to throw.|On impact it electrocute any entity within a 4 block radius.
 item.itemCanisterSteam.name=Steam Canister
+item.itemReinforcedCanisterSteam.name=Reinforced Steam Canister
 
 
 #Tools

@@ -25,9 +25,9 @@ import net.minecraftforge.fluids.FluidTank;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
 
+import boilerplate.common.baseclasses.BaseTileWithInventory;
 import steamcraft.common.blocks.machines.BlockBaseBoiler;
 import steamcraft.common.items.ItemCanister;
-import boilerplate.common.baseclasses.BaseTileWithInventory;
 
 /**
  * @author Decebaldecebal
@@ -36,7 +36,8 @@ import boilerplate.common.baseclasses.BaseTileWithInventory;
 public abstract class TileBaseBoiler extends BaseTileWithInventory implements IFluidHandler
 {
 	public static final int steamPerTick = 20;
-	protected static final int waterPerTick = 5; // 3x3 RC boiler is 5 water/tick
+	protected static final int waterPerTick = 5; // 3x3 RC boiler is 5
+													// water/tick
 
 	public int furnaceBurnTime = 0;
 	public int currentItemBurnTime = 0;
@@ -76,7 +77,7 @@ public abstract class TileBaseBoiler extends BaseTileWithInventory implements IF
 
 	public int getBurnTimeRemainingScaled(int par1)
 	{
-		if(this.currentItemBurnTime == 0)
+		if (this.currentItemBurnTime == 0)
 			this.currentItemBurnTime = 200;
 
 		return (this.furnaceBurnTime * par1) / this.currentItemBurnTime;
@@ -95,45 +96,45 @@ public abstract class TileBaseBoiler extends BaseTileWithInventory implements IF
 		boolean var1 = this.furnaceBurnTime > 0;
 		boolean var2 = false;
 
-		if(!this.worldObj.isRemote)
+		if (!this.worldObj.isRemote)
 		{
-			if(this.inventory[1] != null)
+			if (this.inventory[1] != null)
 			{
 				FluidStack liquid = FluidContainerRegistry.getFluidForFilledItem(this.inventory[1]);
 
-				if((liquid != null) && (this.waterTank.fill(new FluidStack(FluidRegistry.getFluid("water"), liquid.amount), false) == liquid.amount))
-					if(liquid.getFluid() == FluidRegistry.WATER)
+				if ((liquid != null) && (this.waterTank.fill(new FluidStack(FluidRegistry.getFluid("water"), liquid.amount), false) == liquid.amount))
+					if (liquid.getFluid() == FluidRegistry.WATER)
 					{
 						this.waterTank.fill(new FluidStack(FluidRegistry.getFluid("water"), liquid.amount), true);
 
-						if(this.inventory[1].stackSize > 1)
+						if (this.inventory[1].stackSize > 1)
 							this.inventory[1].stackSize--;
 						else
 							this.inventory[1] = this.inventory[1].getItem().getContainerItem(this.inventory[1]);
 					}
 			}
-			if((this.inventory[2] != null) && (this.inventory[2].getItem() instanceof ItemCanister))
+			if ((this.inventory[2] != null) && (this.inventory[2].getItem() instanceof ItemCanister))
 			{
 				ItemCanister canister = (ItemCanister) this.inventory[2].getItem();
-				if((this.steamTank.getFluidAmount() >= steamPerTick) && (canister.getFluidAmount(this.inventory[2]) != ItemCanister.MAX_STEAM))
+				if ((this.steamTank.getFluidAmount() >= steamPerTick) && (canister.getFluidAmount(this.inventory[2]) != canister.maxSteam))
 				{
 					canister.fill(this.inventory[2], new FluidStack(FluidRegistry.getFluid("steam"), steamPerTick), true);
 					this.steamTank.drain(steamPerTick, true);
 				}
 			}
 
-			if((this.getItemBurnTime() > 0) && (this.furnaceBurnTime == 0) && (this.waterTank.getFluidAmount() >= waterPerTick)
+			if ((this.getItemBurnTime() > 0) && (this.furnaceBurnTime == 0) && (this.waterTank.getFluidAmount() >= waterPerTick)
 					&& (this.steamTank.fill(new FluidStack(FluidRegistry.getFluid("steam"), steamPerTick), false) > 0))
 			{
 				this.currentItemBurnTime = this.furnaceBurnTime = this.getItemBurnTime() / 4;
 
-				if(this.inventory[0].stackSize == 1)
+				if (this.inventory[0].stackSize == 1)
 					this.inventory[0] = this.inventory[0].getItem().getContainerItem(this.inventory[0]);
 				else
 					--this.inventory[0].stackSize;
 			}
 
-			if((this.furnaceBurnTime > 0) && (this.waterTank.getFluidAmount() >= waterPerTick) && (this.steamTank.getFluidAmount() < 10000))
+			if ((this.furnaceBurnTime > 0) && (this.waterTank.getFluidAmount() >= waterPerTick) && (this.steamTank.getFluidAmount() < 10000))
 			{
 				this.steamTank.fill(new FluidStack(FluidRegistry.getFluid("steam"), steamPerTick), true);
 				this.furnaceBurnTime--;
@@ -142,19 +143,19 @@ public abstract class TileBaseBoiler extends BaseTileWithInventory implements IF
 			else
 				this.furnaceBurnTime = 0;
 
-			if(var1 != (this.furnaceBurnTime > 0))
+			if (var1 != (this.furnaceBurnTime > 0))
 			{
 				var2 = true;
 				BlockBaseBoiler.updateBlockState(this.furnaceBurnTime > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord);
 			}
 		}
 
-		if(var2)
+		if (var2)
 			this.markDirty();
 	}
 
 	protected abstract int getItemBurnTime();
-	
+
 	public int getScaledWaterLevel(int i)
 	{
 		return this.waterTank.getFluid() != null ? (int) (((float) this.waterTank.getFluid().amount / (float) this.waterTank.getCapacity()) * i) : 0;
@@ -192,7 +193,7 @@ public abstract class TileBaseBoiler extends BaseTileWithInventory implements IF
 	@Override
 	public int fill(ForgeDirection from, FluidStack resource, boolean doFill)
 	{
-		if(resource.getFluid() == FluidRegistry.WATER)
+		if (resource.getFluid() == FluidRegistry.WATER)
 			return this.waterTank.fill(resource, doFill);
 
 		return 0;
@@ -201,7 +202,7 @@ public abstract class TileBaseBoiler extends BaseTileWithInventory implements IF
 	@Override
 	public FluidStack drain(ForgeDirection from, FluidStack resource, boolean doDrain)
 	{
-		if((resource == null) || !resource.isFluidEqual(this.steamTank.getFluid()))
+		if ((resource == null) || !resource.isFluidEqual(this.steamTank.getFluid()))
 			return null;
 		return this.steamTank.drain(resource.amount, doDrain);
 	}
