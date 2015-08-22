@@ -89,7 +89,7 @@ public class BlockHatch extends BaseContainerBlock
 	@Override
 	public boolean getBlocksMovement(IBlockAccess p_149655_1_, int p_149655_2_, int p_149655_3_, int p_149655_4_)
 	{
-		return !func_150118_d(p_149655_1_.getBlockMetadata(p_149655_2_, p_149655_3_, p_149655_4_));
+		return !isOpen(p_149655_1_.getBlockMetadata(p_149655_2_, p_149655_3_, p_149655_4_));
 	}
 
 	/**
@@ -121,7 +121,7 @@ public class BlockHatch extends BaseContainerBlock
 	@Override
 	public void setBlockBoundsBasedOnState(IBlockAccess p_149719_1_, int p_149719_2_, int p_149719_3_, int p_149719_4_)
 	{
-		this.func_150117_b(p_149719_1_.getBlockMetadata(p_149719_2_, p_149719_3_, p_149719_4_));
+		this.changeBounds(p_149719_1_.getBlockMetadata(p_149719_2_, p_149719_3_, p_149719_4_));
 	}
 
 	/**
@@ -134,7 +134,7 @@ public class BlockHatch extends BaseContainerBlock
 		this.setBlockBounds(0.0F, 0.5F - f / 2.0F, 0.0F, 1.0F, 0.5F + f / 2.0F, 1.0F);
 	}
 
-	public void func_150117_b(int p_150117_1_)
+	public void changeBounds(int p_150117_1_)
 	{
 		float f = 0.1875F;
 
@@ -147,7 +147,7 @@ public class BlockHatch extends BaseContainerBlock
 			this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, f, 1.0F);
 		}
 
-		if (func_150118_d(p_150117_1_))
+		if (isOpen(p_150117_1_))
 		{
 			if ((p_150117_1_ & 3) == 0)
 			{
@@ -286,7 +286,7 @@ public class BlockHatch extends BaseContainerBlock
 		return true;
 	}
 
-	public static boolean func_150118_d(int p_150118_0_)
+	public static boolean isOpen(int p_150118_0_)
 	{
 		return (p_150118_0_ & 4) != 0;
 	}
