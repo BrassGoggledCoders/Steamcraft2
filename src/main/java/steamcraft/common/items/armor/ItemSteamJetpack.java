@@ -120,7 +120,7 @@ public class ItemSteamJetpack extends BaseArmor
 		ItemStack[] mainInv = player.inventory.mainInventory;
 
 		for (ItemStack element : mainInv)
-			if ((element != null) && (element.getItem() == InitItems.itemCanisterSteam))
+			if ((element != null) && (element.getItem() instanceof ItemCanister))
 			{
 				ItemCanister canister = (ItemCanister) element.getItem();
 
@@ -146,7 +146,7 @@ public class ItemSteamJetpack extends BaseArmor
 		ItemStack[] mainInv = player.inventory.mainInventory;
 		for (int i = 0; i != mainInv.length; i++)
 		{
-			if ((mainInv[i] != null) && (mainInv[i].getItem() == InitItems.itemCanisterSteam))
+			if ((mainInv[i] != null) && (mainInv[i].getItem() instanceof ItemCanister))
 				hasCanister = hasCanister || !this.isCanisterEmpty(mainInv[i]);
 		}
 		return hasCanister;

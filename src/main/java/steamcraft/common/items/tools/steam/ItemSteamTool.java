@@ -104,7 +104,7 @@ public class ItemSteamTool extends BaseTool
 		ItemStack[] mainInv = player.inventory.mainInventory;
 
 		for (ItemStack element : mainInv)
-			if ((element != null) && (element.getItem() == InitItems.itemCanisterSteam))
+			if ((element != null) && (element.getItem() instanceof ItemCanister))
 			{
 				ItemCanister canister = (ItemCanister) element.getItem();
 
@@ -130,7 +130,7 @@ public class ItemSteamTool extends BaseTool
 		for (int i = 0; i != player.inventory.mainInventory.length; i++)
 		{
 			ItemStack[] mainInv = player.inventory.mainInventory;
-			if ((mainInv[i] != null) && (mainInv[i].getItem() == InitItems.itemCanisterSteam))
+			if ((mainInv[i] != null) && (mainInv[i].getItem() instanceof ItemCanister))
 				hasCanister = hasCanister || !this.isCanisterEmpty(mainInv[i]);
 		}
 		return hasCanister;
