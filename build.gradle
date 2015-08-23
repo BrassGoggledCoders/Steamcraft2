@@ -56,7 +56,26 @@ dependencies {
     compile 'net.industrial-craft:industrialcraft-2:2.2.727-experimental:api'
     compile 'Azanor:Thaumcraft:4.2.3.5:deobf@jar'
     compile name: "Botania"           , group: "vazkii.botania", version: "r1.6-190.6", classifier: "deobf"
+
+    compile files("libs/Railcraft_1.7.10-9.7.0.0-dev.jar")
 }
+
+task getLibraries {
+    def libsFolder = new File('libs')
+    if (!libsFolder.isDirectory()) {
+        libsFolder.mkdirs()
+    }
+
+    def railcraftSource = 'https://dl.dropboxusercontent.com/u/38558957/Minecraft/Railcraft/Railcraft_1.7.10-9.7.0.0-dev.jar'
+    def railcraftDest = new File('libs', 'Railcraft_1.7.10-9.7.0.0-dev.jar')
+
+    if(!railcraftDest.exists()){
+        railcraftDest.withOutputStream { out ->
+            new URL(railcraftSource).withInputStream { from ->  out << from; }
+        }
+    }
+}
+
 
 processResources
 {

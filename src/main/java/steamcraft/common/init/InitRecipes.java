@@ -12,25 +12,22 @@
  */
 package steamcraft.common.init;
 
-import java.util.ArrayList;
-
+import boilerplate.common.utils.recipe.RecipeUtils;
+import cpw.mods.fml.common.Loader;
+import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-
-import cpw.mods.fml.common.Loader;
-import cpw.mods.fml.common.registry.GameRegistry;
-
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
-
-import boilerplate.common.utils.recipe.RecipeUtils;
 import steamcraft.common.config.ConfigBalance;
 import steamcraft.common.config.ConfigGeneral;
 import steamcraft.common.lib.LibInfo;
+
+import java.util.ArrayList;
 
 /**
  * @author Surseance
@@ -167,18 +164,17 @@ public class InitRecipes
 				ArrayList<ItemStack> list = OreDictionary.getOres("dust" + oredictMetals[i]);
 				if (list.size() > 0)
 					stack = list.get(0);
-
-				if (OreDictionary.doesOreNameExist("ingot" + oredictMetals[i]))
-				{
-					GameRegistry.addRecipe(
-							new ShapelessOreRecipe(new ItemStack(stack.getItem(), ConfigBalance.numberOfDustsFromMetal, stack.getItemDamage()),
-									"ingot" + oredictMetals[i], new ItemStack(InitItems.itemGrindstone, 1, OreDictionary.WILDCARD_VALUE)));
-				}
-				if (OreDictionary.doesOreNameExist("plate" + oredictMetals[i]))
-				{
-					GameRegistry.addRecipe(
-							new ShapelessOreRecipe(new ItemStack(stack.getItem(), ConfigBalance.numberOfDustsFromMetal, stack.getItemDamage()),
-									"plate" + oredictMetals[i], new ItemStack(InitItems.itemGrindstone, 1, OreDictionary.WILDCARD_VALUE)));
+				if(stack != null && stack.getItem() != null) {
+					if (OreDictionary.doesOreNameExist("ingot" + oredictMetals[i])) {
+						GameRegistry.addRecipe(
+								new ShapelessOreRecipe(new ItemStack(stack.getItem(), ConfigBalance.numberOfDustsFromMetal, stack.getItemDamage()),
+										"ingot" + oredictMetals[i], new ItemStack(InitItems.itemGrindstone, 1, OreDictionary.WILDCARD_VALUE)));
+					}
+					if (OreDictionary.doesOreNameExist("plate" + oredictMetals[i])) {
+						GameRegistry.addRecipe(
+								new ShapelessOreRecipe(new ItemStack(stack.getItem(), ConfigBalance.numberOfDustsFromMetal, stack.getItemDamage()),
+										"plate" + oredictMetals[i], new ItemStack(InitItems.itemGrindstone, 1, OreDictionary.WILDCARD_VALUE)));
+					}
 				}
 			}
 		}
