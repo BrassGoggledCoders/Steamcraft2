@@ -70,13 +70,13 @@ public class InitRecipes
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemGunPart, 1, 7), "IGI", "GSG", "IGI", 'I', "plateBrass", 'G',
 				"paneGlass", 'S', "gemDiamond"));
 		GameRegistry.addRecipe(new ItemStack(InitItems.itemGunPart, 1, 8), "SSS", "SJS", "SSS", 'J', InitItems.itemElectricJarSmall, 'S',
-				new ItemStack(InitItems.itemResource, 1, 2));
+				Blocks.obsidian);
 		if (!ConfigBalance.cheaperCoreRecipe)
-			GameRegistry.addRecipe(new ItemStack(InitItems.itemGunPart, 1, 9), "SPS", "PNP", "SPS", 'S', new ItemStack(InitItems.itemResource, 1, 2),
-					'P', new ItemStack(InitItems.itemGunPart, 1, 8), 'N', Items.nether_star);
+			GameRegistry.addRecipe(new ItemStack(InitItems.itemGunPart, 1, 9), "SPS", "PNP", "SPS", 'S', Blocks.obsidian, 'P',
+					new ItemStack(InitItems.itemGunPart, 1, 8), 'N', Items.nether_star);
 		else
-			GameRegistry.addRecipe(new ItemStack(InitItems.itemGunPart, 1, 9), "SPS", "PNP", "SPS", 'S', new ItemStack(InitItems.itemResource, 1, 2),
-					'P', new ItemStack(InitItems.itemGunPart, 1, 8), 'N', Items.nether_star);
+			GameRegistry.addRecipe(new ItemStack(InitItems.itemGunPart, 1, 9), "SPS", "PNP", "SPS", 'S', Blocks.obsidian, 'P',
+					new ItemStack(InitItems.itemGunPart, 1, 8), 'N', Items.nether_star);
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemGunPart, 1, 10), " II", "   ", " II", 'I', "ingotIron"));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemGunPart, 1, 11), " WW", "  W", 'W', "plankWood"));
 		// Actual Guns
@@ -254,7 +254,7 @@ public class InitRecipes
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockBattery), "CCC", "WCW", "CCC", 'C', "ingotCastIron", 'W',
 				InitBlocks.blockCopperWire));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemMachinePart, 1, 9), "CRC", "CRC", "WAW", 'C', "plateSteel", 'W',
-				InitBlocks.blockCopperWire, 'R', new ItemStack(InitItems.itemMachinePart, 1, 8), 'A', new ItemStack(InitItems.itemResource, 1, 7)));
+				InitBlocks.blockCopperWire, 'R', new ItemStack(InitItems.itemMachinePart, 1, 8), 'A', new ItemStack(InitItems.itemResource, 1, 2)));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockCapacitor), "PPP", "CCC", "PPP", 'P', "plateSteel", 'C',
 				new ItemStack(InitItems.itemMachinePart, 1, 9)));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockTeslaCoil), "WRW", "WRW", "III", 'I', "ingotSteel", 'W',
@@ -268,8 +268,7 @@ public class InitRecipes
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockArmorEditor), "PPP", "WWW", "PCP", 'W', Blocks.crafting_table, 'P',
 				"plateBrass", 'C', Blocks.chest));
 
-		GameRegistry.addShapedRecipe(new ItemStack(InitBlocks.blockUranium), "UUU", "UUU", "UUU", 'U', new ItemStack(InitItems.itemResource, 1, 4));
-		GameRegistry.addShapedRecipe(new ItemStack(InitBlocks.blockEtherium), "UUU", "UUU", "UUU", 'U', new ItemStack(InitItems.itemResource, 1, 0));
+		GameRegistry.addShapedRecipe(new ItemStack(InitBlocks.blockUranium), "UUU", "UUU", "UUU", 'U', new ItemStack(InitItems.itemResource, 1, 3));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockCastIronFence, 12), "RRR", "RRR", 'R', "partCastIronRod"));
 		GameRegistry.addRecipe(
 				new ShapedOreRecipe(new ItemStack(InitBlocks.blockCastIronGate), "RIR", "RIR", 'R', "partCastIronRod", 'I', "ingotCastIron"));
@@ -385,9 +384,8 @@ public class InitRecipes
 
 	private static void initOtherRecipes()
 	{
-		GameRegistry.addShapedRecipe(new ItemStack(InitItems.itemResource, 1, 2), "XXX", "XXX", "XXX", 'X', new ItemStack(Blocks.obsidian));
-		GameRegistry.addShapelessRecipe(new ItemStack(InitItems.itemResource, 1, 7), new ItemStack(Items.potionitem),
-				new ItemStack(InitItems.itemResource, 1, 1), new ItemStack(InitItems.itemResource, 1, 1));
+		GameRegistry.addShapelessRecipe(new ItemStack(InitItems.itemResource, 1, 2), new ItemStack(Items.potionitem),
+				new ItemStack(InitItems.itemResource, 1, 0), new ItemStack(InitItems.itemResource, 1, 0));
 
 		GameRegistry.addRecipe(
 				new ShapedOreRecipe(new ItemStack(InitItems.itemSteelParts, 1, 0), " P ", "PIP", " P ", 'P', "plateSteel", 'I', "ingotSteel"));
@@ -445,7 +443,7 @@ public class InitRecipes
 		// Bronze Powder
 		GameRegistry
 				.addRecipe(new ShapelessOreRecipe(new ItemStack(InitItems.itemPowder, 4, 5), "dustCopper", "dustCopper", "dustCopper", "dustTin"));
-		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(InitItems.itemMatch), new ItemStack(InitItems.itemResource, 1, 3), "stickWood"));
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(InitItems.itemMatch), new ItemStack(InitItems.itemResource, 1, 1), "stickWood"));
 
 		GameRegistry.addRecipe(new ItemStack(InitBlocks.blockSlate, 4, 6), "SS", "SS", 'S', new ItemStack(InitBlocks.blockSlate, 1, 0));
 		GameRegistry.addRecipe(new ItemStack(InitBlocks.blockSlate, 4, 7), "SS", "SS", 'S', new ItemStack(InitBlocks.blockSlate, 1, 1));
@@ -515,7 +513,7 @@ public class InitRecipes
 		// Misc
 		GameRegistry.addSmelting(Blocks.iron_block, new ItemStack(InitBlocks.blockMetal, 1, 7), 0.5F);
 		GameRegistry.addSmelting(Items.iron_ingot, new ItemStack(InitItems.itemIngot, 1, 7), 0.2F);
-		GameRegistry.addSmelting(new ItemStack(InitItems.itemResource, 1, 4), new ItemStack(InitItems.itemResource, 1, 5), 0.5F);
+		GameRegistry.addSmelting(new ItemStack(InitItems.itemResource, 1, 3), new ItemStack(InitItems.itemResource, 1, 4), 0.5F);
 
 		GameRegistry.addSmelting(new ItemStack(InitBlocks.blockSlate, 1, 3), new ItemStack(InitBlocks.blockSlate, 1, 0), 0.3F);
 		GameRegistry.addSmelting(new ItemStack(InitBlocks.blockSlate, 1, 4), new ItemStack(InitBlocks.blockSlate, 1, 1), 0.3F);

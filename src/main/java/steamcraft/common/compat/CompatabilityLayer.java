@@ -200,12 +200,10 @@ public class CompatabilityLayer
 		OreDictHelper.registerOre("oreBrimstone", InitBlocks.blockCustomOre, 5);
 		OreDictHelper.registerOre("orePhosphate", InitBlocks.blockCustomOre, 6);
 
-		OreDictionary.registerOre("crystalEtherium", InitItems.itemResource);
-		OreDictHelper.registerOreWithAlts(InitItems.itemResource, 1, "powderSulfur", "sulfur", "dustSulfur");
-		OreDictHelper.registerOreWithAlts(InitItems.itemResource, 2, "shardObsidian", "slateObsidian");
-		OreDictHelper.registerOre("powderPhosphorus", InitItems.itemResource, 3);
-		OreDictHelper.registerOre("ingotUranium", InitItems.itemResource, 4);
-		OreDictHelper.registerOre("pelletUranium", InitItems.itemResource, 5);
+		OreDictHelper.registerOreWithAlts(InitItems.itemResource, 0, "powderSulfur", "sulfur", "dustSulfur");
+		OreDictHelper.registerOre("powderPhosphorus", InitItems.itemResource, 1);
+		OreDictHelper.registerOre("ingotUranium", InitItems.itemResource, 2);
+		OreDictHelper.registerOre("pelletUranium", InitItems.itemResource, 3);
 		OreDictHelper.registerOreWithAlts(InitItems.itemSlimeRubber, "itemRubber", "barRubber", "rawRubber");
 
 		OreDictionary.registerOre("partCastIronRod", InitItems.itemMachinePart);
