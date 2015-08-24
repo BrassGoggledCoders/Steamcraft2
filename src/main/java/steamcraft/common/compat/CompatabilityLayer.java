@@ -16,7 +16,6 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.EnumChatFormatting;
 
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.event.FMLInterModComms;
@@ -30,7 +29,6 @@ import net.minecraftforge.oredict.ShapedOreRecipe;
 
 import boilerplate.common.utils.helpers.IMCHelper;
 import boilerplate.common.utils.helpers.OreDictHelper;
-import steamcraft.common.config.ConfigGeneral;
 import steamcraft.common.init.InitBiomes;
 import steamcraft.common.init.InitBlocks;
 import steamcraft.common.init.InitItems;
@@ -99,11 +97,6 @@ public class CompatabilityLayer
 	private static void sendTiConIMC()
 	{
 		LoggerSteamcraft.info("TiCon Detected, adding Etherium Tool Material");
-		IMCHelper.addNewToolMaterial(ConfigGeneral.etheriumMaterialID, "Etherium", 2000, 500, 5, 0.1F, 1, EnumChatFormatting.RED.toString(),
-				16711935);
-
-		IMCHelper.addNewPartBuilderMaterial(ConfigGeneral.etheriumMaterialID, new ItemStack(InitItems.itemResource),
-				new ItemStack(InitItems.itemResource, 1, 6), 2);
 		// Aluminum, Copper, Tin
 		for (int i = 0; i < 3; i++)
 		{

@@ -67,7 +67,6 @@ import steamcraft.client.renderers.tile.TileChargerRenderer;
 import steamcraft.client.renderers.tile.TileCopperPipeRenderer;
 import steamcraft.client.renderers.tile.TileCopperTankRenderer;
 import steamcraft.client.renderers.tile.TileCopperWireRenderer;
-import steamcraft.client.renderers.tile.TileCrystalRenderer;
 import steamcraft.client.renderers.tile.TileHatchRenderer;
 import steamcraft.client.renderers.tile.TileHatchRenderer.TileHatch;
 import steamcraft.client.renderers.tile.TileLightningRodRenderer;
@@ -198,9 +197,6 @@ public class ClientProxy extends CommonProxy
 		ClientRegistry.bindTileEntitySpecialRenderer(TileHatch.class, new TileHatchRenderer());
 		// RenderingRegistry.registerBlockHandler(new BlockTESRRenderer(new
 		// TileHatch(), RenderIDs.blockHatchRI));
-		// Crystal
-		ClientRegistry.bindTileEntitySpecialRenderer(EmptyTiles.TileCrystal.class, new TileCrystalRenderer());
-		RenderingRegistry.registerBlockHandler(new BlockTESRRenderer(new EmptyTiles.TileCrystal(), RenderIDs.blockCrystalRI));
 		// Armor Editor
 		ClientRegistry.bindTileEntitySpecialRenderer(TileArmorEditor.class, new TileArmorEditorRenderer());
 		RenderingRegistry.registerBlockHandler(new BlockTESRRenderer(new TileArmorEditor(), RenderIDs.blockArmorEditorRI));

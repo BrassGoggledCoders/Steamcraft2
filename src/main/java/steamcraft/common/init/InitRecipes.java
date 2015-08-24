@@ -12,22 +12,25 @@
  */
 package steamcraft.common.init;
 
-import boilerplate.common.utils.recipe.RecipeUtils;
-import cpw.mods.fml.common.Loader;
-import cpw.mods.fml.common.registry.GameRegistry;
+import java.util.ArrayList;
+
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+
+import cpw.mods.fml.common.Loader;
+import cpw.mods.fml.common.registry.GameRegistry;
+
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
+
+import boilerplate.common.utils.recipe.RecipeUtils;
 import steamcraft.common.config.ConfigBalance;
 import steamcraft.common.config.ConfigGeneral;
 import steamcraft.common.lib.LibInfo;
-
-import java.util.ArrayList;
 
 /**
  * @author Surseance
@@ -164,13 +167,16 @@ public class InitRecipes
 				ArrayList<ItemStack> list = OreDictionary.getOres("dust" + oredictMetals[i]);
 				if (list.size() > 0)
 					stack = list.get(0);
-				if(stack != null && stack.getItem() != null) {
-					if (OreDictionary.doesOreNameExist("ingot" + oredictMetals[i])) {
+				if (stack != null && stack.getItem() != null)
+				{
+					if (OreDictionary.doesOreNameExist("ingot" + oredictMetals[i]))
+					{
 						GameRegistry.addRecipe(
 								new ShapelessOreRecipe(new ItemStack(stack.getItem(), ConfigBalance.numberOfDustsFromMetal, stack.getItemDamage()),
 										"ingot" + oredictMetals[i], new ItemStack(InitItems.itemGrindstone, 1, OreDictionary.WILDCARD_VALUE)));
 					}
-					if (OreDictionary.doesOreNameExist("plate" + oredictMetals[i])) {
+					if (OreDictionary.doesOreNameExist("plate" + oredictMetals[i]))
+					{
 						GameRegistry.addRecipe(
 								new ShapelessOreRecipe(new ItemStack(stack.getItem(), ConfigBalance.numberOfDustsFromMetal, stack.getItemDamage()),
 										"plate" + oredictMetals[i], new ItemStack(InitItems.itemGrindstone, 1, OreDictionary.WILDCARD_VALUE)));
@@ -187,10 +193,9 @@ public class InitRecipes
 		GameRegistry.addRecipe(
 				new ShapedOreRecipe(new ItemStack(InitItems.drillCore), " D ", "DDD", " B ", 'B', InitItems.drillBase, 'D', "ingotAluminum"));
 
-		String[] drillMaterials = new String[] { "gemDiamond", "crystalEtherium", "ingotGold", "ingotIron", "shardObsidian", "ingotBrass", "stone",
-				"plankWood" };
-		Item[] drills = new Item[] { InitItems.drillDiamond, InitItems.drillEtherium, InitItems.drillGold, InitItems.drillIron,
-				InitItems.drillObsidian, InitItems.drillSteam, InitItems.drillStone, InitItems.drillWood };
+		String[] drillMaterials = new String[] { "gemDiamond", "ingotGold", "ingotIron", "ingotBrass", "stone", "plankWood" };
+		Item[] drills = new Item[] { InitItems.drillDiamond, InitItems.drillGold, InitItems.drillIron, InitItems.drillSteam, InitItems.drillStone,
+				InitItems.drillWood };
 
 		for (int i = 0; i < drillMaterials.length; i++)
 			GameRegistry
@@ -208,27 +213,11 @@ public class InitRecipes
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.hoeSteam), "PIC", " S ", " R ", 'R', "partCastIronRod", 'P', "ingotBrass",
 				'I', "ingotSteel", 'S', Items.stick, 'C', "partClockworkMechanism"));
 
-		// Etherium
-		RecipeUtils.addToolSet(new ItemStack(InitItems.itemResource, 1, 0),
-				new ItemStack[] { new ItemStack(InitItems.pickaxeEtherium), new ItemStack(InitItems.shovelEtherium),
-						new ItemStack(InitItems.axeEtherium), new ItemStack(InitItems.hoeEtherium), new ItemStack(InitItems.swordEtherium) });
-		// Obsidian
-		RecipeUtils.addToolSet(new ItemStack(InitItems.itemResource, 1, 2),
-				new ItemStack[] { new ItemStack(InitItems.pickaxeObsidian), new ItemStack(InitItems.shovelObsidian),
-						new ItemStack(InitItems.axeObsidian), new ItemStack(InitItems.hoeObsidian), new ItemStack(InitItems.swordObsidian) });
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemSpanner), "P P", " P ", " P ", 'P', "plateBronze"));
 	}
 
 	private static void initArmorRecipes()
 	{
-		// Etherium
-		RecipeUtils.addArmorSet(new ItemStack(InitItems.itemResource, 1, 0), new ItemStack[] { new ItemStack(InitItems.helmetEtherium),
-				new ItemStack(InitItems.chestplateEtherium), new ItemStack(InitItems.legsEtherium), new ItemStack(InitItems.bootsEtherium) });
-
-		// Obsidian
-		RecipeUtils.addArmorSet(new ItemStack(InitItems.itemResource, 1, 2), new ItemStack[] { new ItemStack(InitItems.helmetObsidian),
-				new ItemStack(InitItems.chestplateObsidian), new ItemStack(InitItems.legsObsidian), new ItemStack(InitItems.bootsObsidian) });
-
 		// Brass
 		RecipeUtils.addArmorSet(new ItemStack(InitItems.itemSheet, 1, 4), new ItemStack[] { new ItemStack(InitItems.helmetBrass),
 				new ItemStack(InitItems.chestplateBrass), new ItemStack(InitItems.legsBrass), new ItemStack(InitItems.bootsBrass) });
@@ -497,11 +486,6 @@ public class InitRecipes
 				Items.ender_pearl, 'R', Items.redstone));
 
 		GameRegistry.addRecipe(new ItemStack(InitBlocks.blockPath, 6), "PPP", "XXX", 'P', Blocks.stone_slab, 'X', Blocks.stonebrick);
-		GameRegistry.addRecipe(new ItemStack(InitItems.itemEmptyShieldedCanister), "XXX", "X X", "XXX", 'X', new ItemStack(InitItems.itemSheet, 1, 7),
-				'U', new ItemStack(InitItems.itemResource, 1, 5));
-		GameRegistry.addShapelessRecipe(new ItemStack(InitItems.itemShieldedCanister), InitItems.itemEmptyShieldedCanister,
-				new ItemStack(InitItems.itemResource, 1, 5));
-		GameRegistry.addShapelessRecipe(new ItemStack(InitItems.itemResource, 1, 5), InitItems.itemShieldedCanister);
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockCastIronLamp),
 				new Object[] { "III", "PGP", "PRP", 'I', "ingotCastIron", 'P', "plateCastIron", 'G', Blocks.glowstone, 'R', "partCastIronRod" }));
 		GameRegistry.addShapelessRecipe(new ItemStack(InitBlocks.blockInvertedCastIronLamp),

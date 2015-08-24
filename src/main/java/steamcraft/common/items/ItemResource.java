@@ -16,17 +16,14 @@ import java.util.List;
 
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
-import net.minecraft.world.World;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 import steamcraft.common.init.InitItems;
-import steamcraft.common.lib.DamageSourceHandler;
 import steamcraft.common.lib.ModInfo;
 
 /**
@@ -35,7 +32,7 @@ import steamcraft.common.lib.ModInfo;
  */
 public class ItemResource extends BaseItemWithMetadata
 {
-	IIcon[] itemIcon = new IIcon[8];
+	IIcon[] itemIcon = new IIcon[5];
 
 	public ItemResource()
 	{
@@ -47,14 +44,11 @@ public class ItemResource extends BaseItemWithMetadata
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister ir)
 	{
-		this.itemIcon[0] = ir.registerIcon(ModInfo.PREFIX + "itemCrystal");
-		this.itemIcon[1] = ir.registerIcon(ModInfo.PREFIX + "itemSulphur");
-		this.itemIcon[2] = ir.registerIcon(ModInfo.PREFIX + "itemSlate");
-		this.itemIcon[3] = ir.registerIcon(ModInfo.PREFIX + "itemPhosphorus");
-		this.itemIcon[4] = ir.registerIcon(ModInfo.PREFIX + "itemUranium");
-		this.itemIcon[5] = ir.registerIcon(ModInfo.PREFIX + "itemPellet");
-		this.itemIcon[6] = ir.registerIcon(ModInfo.PREFIX + "itemCrystalShard");
-		this.itemIcon[7] = ir.registerIcon(ModInfo.PREFIX + "itemSulfuricAcid");
+		this.itemIcon[0] = ir.registerIcon(ModInfo.PREFIX + "itemSulphur");
+		this.itemIcon[1] = ir.registerIcon(ModInfo.PREFIX + "itemPhosphorus");
+		this.itemIcon[2] = ir.registerIcon(ModInfo.PREFIX + "itemSulfuricAcid");
+		this.itemIcon[3] = ir.registerIcon(ModInfo.PREFIX + "itemUranium");
+		this.itemIcon[4] = ir.registerIcon(ModInfo.PREFIX + "itemPellet");
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
@@ -62,7 +56,7 @@ public class ItemResource extends BaseItemWithMetadata
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(Item item, CreativeTabs tab, List l)
 	{
-		for(int var4 = 0; var4 < this.itemIcon.length; ++var4)
+		for (int var4 = 0; var4 < this.itemIcon.length; ++var4)
 			l.add(new ItemStack(InitItems.itemResource, 1, var4));
 	}
 
@@ -72,14 +66,4 @@ public class ItemResource extends BaseItemWithMetadata
 	{
 		return this.itemIcon[itemDamage];
 	}
-
-	@Override
-	public void onUpdate(ItemStack stack, World world, Entity holder, int p_77663_4_, boolean p_77663_5_)
-	{
-		if(!world.isRemote && (stack.getItemDamage() == 5))
-		{
-			holder.attackEntityFrom(DamageSourceHandler.radioactive, 1);
-		}
-	}
-
 }

@@ -45,68 +45,57 @@ public class WorldGenSteamcraft implements IWorldGenerator
 		int blockChunkX = chunkX * 16;
 		int blockChunkZ = chunkZ * 16;
 
-		if((world.provider.dimensionId == -1) && ConfigWorldGen.netherGenerationEnabled)
+		if ((world.provider.dimensionId == -1) && ConfigWorldGen.netherGenerationEnabled)
 		{
-			this.generateNether(world, random, blockChunkX, blockChunkZ);
+			// this.generateNether(world, random, blockChunkX, blockChunkZ);
 		}
-		else if(((world.provider.dimensionId == 0) && ConfigWorldGen.overworldGenerationEnabled)
-				|| ((world.provider.dimensionId == ConfigGeneral.deepsDimensionID)
-						&& ConfigWorldGen.deepsGenerationEnabled))
+		else if (((world.provider.dimensionId == 0) && ConfigWorldGen.overworldGenerationEnabled)
+				|| ((world.provider.dimensionId == ConfigGeneral.deepsDimensionID) && ConfigWorldGen.deepsGenerationEnabled))
 		{
 			this.generateSurface(world, random, blockChunkX, blockChunkZ);
 		}
-		else if((world.provider.dimensionId == 1) && ConfigWorldGen.endGenerationEnabled)
+		else if ((world.provider.dimensionId == 1) && ConfigWorldGen.endGenerationEnabled)
 		{
-			this.generateEnd(world, random, blockChunkX, blockChunkZ);
+			// this.generateEnd(world, random, blockChunkX, blockChunkZ);
 		}
 	}
 
 	private void generateSurface(World world, Random random, int chunkX, int chunkZ)
 	{
-		if(ConfigWorldGen.aluminumOreGenEnabled)
-			this.generateOre(world, random, chunkX, chunkZ, 10, 20, 40,
-					ConfigWorldGen.aluminumCluster, InitBlocks.blockCustomOre, 0, Blocks.stone);
+		if (ConfigWorldGen.aluminumOreGenEnabled)
+			this.generateOre(world, random, chunkX, chunkZ, 10, 20, 40, ConfigWorldGen.aluminumCluster, InitBlocks.blockCustomOre, 0, Blocks.stone);
 
-		if(ConfigWorldGen.copperOreGenEnabled)
-			this.generateOre(world, random, chunkX, chunkZ, 15, 22, 45,
-					ConfigWorldGen.copperCluster, InitBlocks.blockCustomOre, 1, Blocks.stone);
+		if (ConfigWorldGen.copperOreGenEnabled)
+			this.generateOre(world, random, chunkX, chunkZ, 15, 22, 45, ConfigWorldGen.copperCluster, InitBlocks.blockCustomOre, 1, Blocks.stone);
 
-		if(ConfigWorldGen.tinOreGenEnabled)
-			this.generateOre(world, random, chunkX, chunkZ, 15, 22, 45,
-					ConfigWorldGen.tinCluster, InitBlocks.blockCustomOre, 2, Blocks.stone);
+		if (ConfigWorldGen.tinOreGenEnabled)
+			this.generateOre(world, random, chunkX, chunkZ, 15, 22, 45, ConfigWorldGen.tinCluster, InitBlocks.blockCustomOre, 2, Blocks.stone);
 
-		if(ConfigWorldGen.zincOreGenEnabled)
-			this.generateOre(world, random, chunkX, chunkZ, 12, 20, 36,
-					ConfigWorldGen.zincCluster, InitBlocks.blockCustomOre, 3, Blocks.stone);
+		if (ConfigWorldGen.zincOreGenEnabled)
+			this.generateOre(world, random, chunkX, chunkZ, 12, 20, 36, ConfigWorldGen.zincCluster, InitBlocks.blockCustomOre, 3, Blocks.stone);
 
-		if(ConfigWorldGen.uraniumOreGenEnabled)
-			this.generateOre(world, random, chunkX, chunkZ, 1, 4, 24,
-					ConfigWorldGen.uraniumCluster, InitBlocks.blockCustomOre, 4, Blocks.stone);
+		if (ConfigWorldGen.uraniumOreGenEnabled)
+			this.generateOre(world, random, chunkX, chunkZ, 1, 4, 24, ConfigWorldGen.uraniumCluster, InitBlocks.blockCustomOre, 4, Blocks.stone);
 
-		if(ConfigWorldGen.brimstoneOreGenEnabled)
-			this.generateOre(world, random, chunkX, chunkZ, 5, 20, 64,
-					ConfigWorldGen.brimstoneCluster, InitBlocks.blockCustomOre, 5, Blocks.stone);
+		if (ConfigWorldGen.brimstoneOreGenEnabled)
+			this.generateOre(world, random, chunkX, chunkZ, 5, 20, 64, ConfigWorldGen.brimstoneCluster, InitBlocks.blockCustomOre, 5, Blocks.stone);
 
-		if(ConfigWorldGen.phosphateOreGenEnabled)
-			this.generateOre(world, random, chunkX, chunkZ, 7, 20, 36,
-					ConfigWorldGen.phosphateCluster, InitBlocks.blockCustomOre, 6, Blocks.stone);
+		if (ConfigWorldGen.phosphateOreGenEnabled)
+			this.generateOre(world, random, chunkX, chunkZ, 7, 20, 36, ConfigWorldGen.phosphateCluster, InitBlocks.blockCustomOre, 6, Blocks.stone);
 
-		if(ConfigWorldGen.slateGenEnabled)
+		if (ConfigWorldGen.slateGenEnabled)
 		{
-			this.generateOre(world, random, chunkX, chunkZ, 1, 40, 70,
-					ConfigWorldGen.slateCluster, InitBlocks.blockSlate, 0, Blocks.stone);
-			this.generateOre(world, random, chunkX, chunkZ, 1, 40, 70,
-					ConfigWorldGen.slateCluster, InitBlocks.blockSlate, 1, Blocks.stone);
-			this.generateOre(world, random, chunkX, chunkZ, 1, 40, 70,
-					ConfigWorldGen.slateCluster, InitBlocks.blockSlate, 2, Blocks.stone);
+			this.generateOre(world, random, chunkX, chunkZ, 1, 40, 70, ConfigWorldGen.slateCluster, InitBlocks.blockSlate, 0, Blocks.stone);
+			this.generateOre(world, random, chunkX, chunkZ, 1, 40, 70, ConfigWorldGen.slateCluster, InitBlocks.blockSlate, 1, Blocks.stone);
+			this.generateOre(world, random, chunkX, chunkZ, 1, 40, 70, ConfigWorldGen.slateCluster, InitBlocks.blockSlate, 2, Blocks.stone);
 		}
 
-		if(ConfigWorldGen.brassTreeGenEnabled)
+		if (ConfigWorldGen.brassTreeGenEnabled)
 		{
 			BiomeGenBase biome = world.getBiomeGenForCoords(chunkX, chunkZ);
 
-			if(BiomeDictionary.isBiomeOfType(biome, Type.FOREST))
-				for(int i = 0; i < 1; i++)
+			if (BiomeDictionary.isBiomeOfType(biome, Type.FOREST))
+				for (int i = 0; i < 1; i++)
 				{
 					int X = chunkX + random.nextInt(16);
 					int Z = chunkZ + random.nextInt(16);
@@ -116,7 +105,7 @@ public class WorldGenSteamcraft implements IWorldGenerator
 				}
 		}
 
-		if(random.nextInt(30) == 0)
+		if (random.nextInt(30) == 0)
 		{
 			int X = chunkX + random.nextInt(16);
 			int Z = chunkZ + random.nextInt(16);
@@ -128,7 +117,7 @@ public class WorldGenSteamcraft implements IWorldGenerator
 	private void generateOre(World world, Random random, int chunkX, int chunkZ, int blockPerChunk, int minHeight, int maxHeight, int blocks,
 			Block ore, int meta, Block blockToGenIn)
 	{
-		for(int i = 0; i < blockPerChunk; i++)
+		for (int i = 0; i < blockPerChunk; i++)
 		{
 			int oreXCoord = chunkX + random.nextInt(16);
 			int oreYCoord = minHeight + random.nextInt(maxHeight - minHeight);
@@ -136,19 +125,5 @@ public class WorldGenSteamcraft implements IWorldGenerator
 
 			new WorldGenMinable(ore, meta, blocks, blockToGenIn).generate(world, random, oreXCoord, oreYCoord, oreZCoord);
 		}
-	}
-
-	private void generateNether(World world, Random random, int chunkX, int chunkZ)
-	{
-		if(ConfigWorldGen.netherEtheriumCrystalGenEnabled)
-			this.generateOre(world, random, chunkX, chunkZ, ConfigWorldGen.netherEtheriumCrystalCluster, 30, 120,
-					3, InitBlocks.blockCrystal, 0, Blocks.netherrack);
-	}
-
-	private void generateEnd(final World world, final Random random, final int chunkX, final int chunkZ)
-	{
-		if(ConfigWorldGen.endEtheriumCrystalGenEnabled)
-			this.generateOre(world, random, chunkX, chunkZ, ConfigWorldGen.endEtheriumCrystalCluster, 20, 100,
-					5, InitBlocks.blockCrystal, 0, Blocks.end_stone);
 	}
 }

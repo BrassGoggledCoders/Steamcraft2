@@ -24,8 +24,6 @@ import net.minecraftforge.common.util.EnumHelper;
 public class InitMaterials
 {
 	// Tool Materials
-	public static ToolMaterial TOOL_OBSIDIAN;
-	public static ToolMaterial TOOL_ETHERIUM;
 	public static ToolMaterial TOOL_STEAM;
 
 	// Drill Materials
@@ -35,15 +33,11 @@ public class InitMaterials
 	public static ToolMaterial DRILL_DIAMOND;
 	public static ToolMaterial DRILL_GOLD;
 	public static ToolMaterial DRILL_STEAM;
-	public static ToolMaterial DRILL_ETHERIUM;
-	public static ToolMaterial DRILL_OBSIDIAN;
 
 	// Single Tool Helper Materials
 	public static ToolMaterial HTOOL_ELEC;
 
 	// Armor Materials
-	public static ArmorMaterial ARMOR_OBSIDIAN;
-	public static ArmorMaterial ARMOR_ETHERIUM;
 	public static ArmorMaterial ARMOR_WHALEBONE;
 	public static ArmorMaterial ARMOR_STEAM;
 
@@ -55,9 +49,6 @@ public class InitMaterials
 
 	private static void initToolMaterials()
 	{
-		// Tools
-		TOOL_OBSIDIAN = EnumHelper.addToolMaterial("TOOL_OBSIDIAN", 3, -1, 3.0F, 6F, 7);
-		TOOL_ETHERIUM = EnumHelper.addToolMaterial("TOOL_ETHERIUM", 3, 2345, 10.5F, 7F, 14);
 		TOOL_STEAM = EnumHelper.addToolMaterial("TOOL_STEAM", 2, 1561, 12.0F, 3.0F, 0);
 
 		HTOOL_ELEC = EnumHelper.addToolMaterial("HTOOL_ELEC", 0, 375, 0.0F, 7.0F, 0);
@@ -69,14 +60,10 @@ public class InitMaterials
 		DRILL_DIAMOND = EnumHelper.addToolMaterial("DRILL_DIAMOND", 3, 2342, 16.0F, 0.0F, 0);
 		DRILL_GOLD = EnumHelper.addToolMaterial("DRILL_GOLD", 1, 48, 18.0F, 0.0F, 0);
 		DRILL_STEAM = EnumHelper.addToolMaterial("DRILL_STEAM", 2, 482, 12.0F, 0.0F, 0);
-		DRILL_ETHERIUM = EnumHelper.addToolMaterial("DRILL_ETHERIUM", 3, 3518, 32.0F, 0.0F, 0);
-		DRILL_OBSIDIAN = EnumHelper.addToolMaterial("DRILL_OBSIDIAN", 3, -1, 8.0F, 0.0F, 0);
 	}
 
 	private static void initArmorMaterials()
 	{
-		ARMOR_OBSIDIAN = EnumHelper.addArmorMaterial("ARMOR_OBSIDIAN", -1, new int[] { 5, 8, 8, 5 }, 5);
-		ARMOR_ETHERIUM = EnumHelper.addArmorMaterial("ARMOR_ETHERIUM", 40, new int[] { 4, 8, 7, 3 }, 18);
 		ARMOR_WHALEBONE = EnumHelper.addArmorMaterial("ARMOR_WHALEBONE", 10, new int[] { 2, 6, 5, 2 }, 30);
 		ARMOR_STEAM = EnumHelper.addArmorMaterial("ARMOR_STEAM", -1, new int[] { 1, 1, 1, 1 }, 0);
 	}

@@ -35,8 +35,8 @@ public class ConfigWorldGen
 
 	public static boolean brassTreeGenEnabled;
 
-	public static boolean aluminumOreGenEnabled, copperOreGenEnabled, tinOreGenEnabled, zincOreGenEnabled,
-	uraniumOreGenEnabled, brimstoneOreGenEnabled, phosphateOreGenEnabled;
+	public static boolean aluminumOreGenEnabled, copperOreGenEnabled, tinOreGenEnabled, zincOreGenEnabled, uraniumOreGenEnabled,
+			brimstoneOreGenEnabled, phosphateOreGenEnabled;
 
 	public static boolean netherEtheriumCrystalGenEnabled;
 	public static boolean endEtheriumCrystalGenEnabled;
@@ -47,9 +47,6 @@ public class ConfigWorldGen
 	public static int brassTreeGenCluster;
 
 	public static int aluminumCluster, copperCluster, tinCluster, zincCluster, uraniumCluster, brimstoneCluster, phosphateCluster;
-
-	public static int netherEtheriumCrystalCluster;
-	public static int endEtheriumCrystalCluster;
 
 	public static int slateCluster;
 
@@ -94,17 +91,12 @@ public class ConfigWorldGen
 			brimstoneCluster = config.get(CATEGORY_GEN_CLUSTERS, "Brimstone Ore", 3).getInt();
 			phosphateCluster = config.get(CATEGORY_GEN_CLUSTERS, "Phosphate Ore", 3).getInt();
 			slateCluster = config.get(CATEGORY_GEN_CLUSTERS, "Slate", 30).getInt();
-
-			netherEtheriumCrystalCluster = config.get(CATEGORY_GEN_CLUSTERS, "Etheruim Crystal (Nether)", 5).getInt();
-			endEtheriumCrystalCluster = config.get(CATEGORY_GEN_CLUSTERS, "Etheruim Crystal (End)", 10).getInt();
-		}
-		catch(Exception e)
+		} catch (Exception e)
 		{
 			LoggerSteamcraft.error("Failed to load configuration file:" + e);
-		}
-		finally
+		} finally
 		{
-			if(config.hasChanged())
+			if (config.hasChanged())
 				config.save();
 		}
 	}

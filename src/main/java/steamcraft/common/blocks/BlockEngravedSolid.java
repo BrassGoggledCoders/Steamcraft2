@@ -36,7 +36,7 @@ import steamcraft.common.lib.ModInfo;
  */
 public class BlockEngravedSolid extends BaseMetadataBlock
 {
-	private final IIcon[] icon = new IIcon[10];
+	private final IIcon[] icon = new IIcon[9];
 
 	public BlockEngravedSolid()
 	{
@@ -52,7 +52,7 @@ public class BlockEngravedSolid extends BaseMetadataBlock
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(final int side, final int metadata)
 	{
-		if(metadata < this.icon.length)
+		if (metadata < this.icon.length)
 			return this.icon[metadata];
 		else
 			return this.icon[0];
@@ -71,7 +71,6 @@ public class BlockEngravedSolid extends BaseMetadataBlock
 		this.icon[6] = ir.registerIcon(ModInfo.PREFIX + "blockEngravedSteel");
 		this.icon[7] = ir.registerIcon(ModInfo.PREFIX + "blockEngravedCastIron");
 		this.icon[8] = ir.registerIcon(ModInfo.PREFIX + "blockEngravedUranium");
-		this.icon[9] = ir.registerIcon(ModInfo.PREFIX + "blockEngravedEtherium");
 	}
 
 	@Override
@@ -85,7 +84,7 @@ public class BlockEngravedSolid extends BaseMetadataBlock
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(Item item, CreativeTabs tab, List l)
 	{
-		for(int var4 = 0; var4 < this.icon.length; ++var4)
+		for (int var4 = 0; var4 < this.icon.length; ++var4)
 			l.add(new ItemStack(InitBlocks.blockEngraved, 1, var4));
 	}
 

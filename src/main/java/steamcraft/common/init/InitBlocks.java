@@ -40,7 +40,6 @@ import steamcraft.common.blocks.BlockCastIronLamp;
 import steamcraft.common.blocks.BlockCastIronRailing;
 import steamcraft.common.blocks.BlockCompressedStone;
 import steamcraft.common.blocks.BlockCongealedSlime;
-import steamcraft.common.blocks.BlockCrystal;
 import steamcraft.common.blocks.BlockCustomDoubleSlab;
 import steamcraft.common.blocks.BlockCustomFence;
 import steamcraft.common.blocks.BlockCustomLeaves;
@@ -52,7 +51,6 @@ import steamcraft.common.blocks.BlockCustomWall;
 import steamcraft.common.blocks.BlockDynamite;
 import steamcraft.common.blocks.BlockEngravedSolid;
 import steamcraft.common.blocks.BlockEngravedVanilla;
-import steamcraft.common.blocks.BlockEtherium;
 import steamcraft.common.blocks.BlockFissurePortal;
 import steamcraft.common.blocks.BlockHatch;
 import steamcraft.common.blocks.BlockInfestedDirt;
@@ -100,7 +98,6 @@ import steamcraft.common.blocks.machines.BlockSteelWire;
 import steamcraft.common.blocks.machines.BlockTeslaCoil;
 import steamcraft.common.blocks.machines.BlockTurbine;
 import steamcraft.common.tiles.EmptyTiles.TileCastIronLamp;
-import steamcraft.common.tiles.EmptyTiles.TileCrystal;
 import steamcraft.common.tiles.TileArmorEditor;
 import steamcraft.common.tiles.TileBloomery;
 import steamcraft.common.tiles.TileCopperPipe;
@@ -146,8 +143,6 @@ public class InitBlocks
 	public static Block blockCopperPipe, blockSteelPipe, blockCopperWire, blockSteelWire;
 
 	public static Block blockCopperTank;
-
-	public static Block blockCrystal;
 
 	/* Ores */
 	public static Block blockCustomOre;
@@ -410,11 +405,9 @@ public class InitBlocks
 		// Metals
 		blockMetal = new BlockMetal().setBlockName("blockMetal");
 		blockUranium = new BlockUranium(Material.iron).setBlockName("blockUranium");
-		blockEtherium = new BlockEtherium(Material.iron).setBlockName("blockEtherium");
 
 		registerBlock(blockMetal, BaseItemBlockWithMetadata.class, "BlockMetal", 8);
 		registerBlock(blockUranium, "BlockUranium");
-		registerBlock(blockEtherium, "BlockEtherium");
 	}
 
 	private static void initializeOthers()
@@ -631,10 +624,6 @@ public class InitBlocks
 
 		blockTintedRock = new BlockTintedRock(Material.rock).setBlockName("blockTintedRock");
 		registerBlock(blockTintedRock, "BlockTintedRock");
-
-		blockCrystal = new BlockCrystal().setBlockName("blockCrystal");
-
-		RegistryHelper.registerContainerBlock(blockCrystal, TileCrystal.class, "BlockCrystal");
 
 		// Wood
 		blockBrassLog = new BlockBrassLog(Material.iron).setBlockName("blockBrassLog");

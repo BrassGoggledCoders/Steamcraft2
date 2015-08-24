@@ -30,8 +30,6 @@ public class ConfigGeneral
 	public static boolean drawInside;
 	public static double armorSpawnChance;
 
-	public static int etheriumMaterialID, zincMaterialID;
-
 	public static int deepsDimensionID;
 
 	public static boolean unnaturalLightningStrikes, naturalLightningStrikes, weather2LightningStrikes;
@@ -58,8 +56,6 @@ public class ConfigGeneral
 			drawFluid = config.get(CATEGORY_CLIENT, "Render fluid inside blocks", true).getBoolean();
 			drawInside = config.get(CATEGORY_CLIENT, "Render the insides of blocks", true).getBoolean();
 			spyglassZoom = config.get(CATEGORY_CLIENT, "FOV modifier the spyglass applies.", 0.3D).getDouble();
-
-			etheriumMaterialID = config.get(CATEGORY_GENERAL, "Etherium Tool Material ID for Tinker's Construct Intergration", 66).getInt();
 
 			String comment = "Lightning Strike behavior. It will simulate strikes during stormy weather with a chance that can be set in the balance config (recommended).";
 			unnaturalLightningStrikes = config.get(CATEGORY_GENERAL, comment, true).getBoolean();
