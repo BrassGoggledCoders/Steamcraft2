@@ -255,6 +255,8 @@ public class CompatabilityLayer
 
 		for (int i = 1; i < 10; i++)
 			OreDictionary.registerOre("foodTea", new ItemStack(InitItems.itemTeacup, 1, i));
+
+		OreDictionary.registerOre("blockUranium", new ItemStack(InitBlocks.blockUranium));
 	}
 
 	private static void registerBiomeTypes()
