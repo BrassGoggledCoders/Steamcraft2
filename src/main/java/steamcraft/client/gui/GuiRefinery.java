@@ -21,13 +21,12 @@ import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTank;
 
+import boilerplate.client.BaseContainerGui;
+import boilerplate.client.utils.GuiColors;
 import org.lwjgl.opengl.GL11;
-import steamcraft.common.init.InitBlocks;
 import steamcraft.common.lib.ModInfo;
 import steamcraft.common.tiles.TileRefinery;
 import steamcraft.common.tiles.container.ContainerRefinery;
-import boilerplate.client.BaseContainerGui;
-import boilerplate.client.utils.GuiColors;
 
 /**
  * @author decebaldecebal
@@ -54,14 +53,14 @@ public class GuiRefinery extends BaseContainerGui
 		this.mc.renderEngine.bindTexture(guitexture);
 		this.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize);
 
-		if(this.refinery.isBurning())
+		if (this.refinery.isBurning())
 		{
 			int burnTime = this.refinery.getBurnTimeRemainingScaled(12);
 			this.drawTexturedModalRect(this.guiLeft + 43, (this.guiTop + 48) - burnTime, 176, 12 - burnTime, 14, burnTime + 2);
 		}
 
-		this.drawFluid(new FluidStack(InitBlocks.whaleOilFluid, 0), this.refinery.getScaledWhaleOilLevel(60), this.guiLeft + 74, this.guiTop + 18,
-				32, 60);
+		this.drawFluid(new FluidStack(FluidRegistry.getFluid("whaleoil"), 0), this.refinery.getScaledWhaleOilLevel(60), this.guiLeft + 74,
+				this.guiTop + 18, 32, 60);
 
 		this.mc.renderEngine.bindTexture(guitexture);
 		this.drawTexturedModalRect(this.guiLeft + 74, this.guiTop + 24, 176, 14, 20, 49);
@@ -70,8 +69,8 @@ public class GuiRefinery extends BaseContainerGui
 	@Override
 	protected void drawGuiContainerForegroundLayer(int x, int y)
 	{
-		if(((y - this.guiTop) >= 18) && ((y - this.guiTop) <= 78))
-			if(((x - this.guiLeft) >= 74) && ((x - this.guiLeft) <= 106))
+		if (((y - this.guiTop) >= 18) && ((y - this.guiTop) <= 78))
+			if (((x - this.guiLeft) >= 74) && ((x - this.guiLeft) <= 106))
 				this.drawFluidInfo(this.refinery.oilTank, x, y);
 	}
 
@@ -80,7 +79,7 @@ public class GuiRefinery extends BaseContainerGui
 	{
 		ArrayList<String> lines = new ArrayList<String>();
 
-		if(tank.getFluid().getFluid() == FluidRegistry.WATER)
+		if (tank.getFluid().getFluid() == FluidRegistry.WATER)
 			lines.add(GuiColors.LIGHTBLUE + "Water");
 		else
 			lines.add(GuiColors.LIGHTGRAY + "Whale Oil");

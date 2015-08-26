@@ -42,7 +42,7 @@ import steamcraft.common.tiles.container.ContainerRefinery;
  */
 public class TileRefinery extends BaseTileWithInventory implements IFluidHandler, IOpenableGUI
 {
-	public static final int oilPerBlubber = 500;
+	public static final int oilPerBlubber = 250;
 
 	public int furnaceBurnTime = 0;
 	public int currentItemBurnTime = 0;
@@ -81,7 +81,7 @@ public class TileRefinery extends BaseTileWithInventory implements IFluidHandler
 
 	public int getBurnTimeRemainingScaled(int par1)
 	{
-		if(this.currentItemBurnTime == 0)
+		if (this.currentItemBurnTime == 0)
 			this.currentItemBurnTime = 200;
 
 		return (this.furnaceBurnTime * par1) / this.currentItemBurnTime;
@@ -100,66 +100,62 @@ public class TileRefinery extends BaseTileWithInventory implements IFluidHandler
 		boolean var1 = this.furnaceBurnTime > 0;
 		boolean var2 = false;
 
-		if(!this.worldObj.isRemote)
+		if (!this.worldObj.isRemote)
 		{
 			// Drain Oil
-			if((this.inventory[2] != null) && (this.oilTank.getFluidAmount() >= 1000))
+			if ((this.inventory[2] != null) && (this.oilTank.getFluidAmount() >= 1000))
 			{
-				if((this.inventory[2].getItem() == Items.bucket) && (this.inventory[2].stackSize == 1))
+				if ((this.inventory[2].getItem() == Items.bucket) && (this.inventory[2].stackSize == 1))
 				{
 					this.inventory[2] = new ItemStack(InitItems.itemWhaleOilBucket);
 					this.oilTank.drain(1000, true);
 				}
 			}
 			// Burning Items
-			if((this.getItemBurnTime() > 0) && (this.furnaceBurnTime == 0) && (this.oilTank.getFluidAmount() <= this.oilTank.getCapacity())
+			if ((this.getItemBurnTime() > 0) && (this.furnaceBurnTime == 0) && (this.oilTank.getFluidAmount() <= this.oilTank.getCapacity())
 					&& (this.inventory[1] != null))
 			{
 				this.currentItemBurnTime = this.furnaceBurnTime = this.getItemBurnTime() / 4;
 
-				if(this.inventory[0].stackSize == 1)
+				if (this.inventory[0].stackSize == 1)
 					this.inventory[0] = this.inventory[0].getItem().getContainerItem(this.inventory[0]);
 				else
 					--this.inventory[0].stackSize;
 			}
 			// Create Oil
-			if((this.furnaceBurnTime > 0) && (this.oilTank.getFluidAmount() <= this.oilTank.getCapacity()) && (this.inventory[1] != null))
+			if ((this.furnaceBurnTime > 0) && (this.oilTank.getFluidAmount() <= this.oilTank.getCapacity()) && (this.inventory[1] != null))
 			{
-				if(this.inventory[1].getItem() == InitItems.itemWhaleBlubber)
+				if (this.inventory[1].getItem() == InitItems.itemWhaleBlubber)
 				{
-					if(this.cookTime == 0)
+					if (this.cookTime < 700)
+						this.cookTime++;
+					else
 					{
-						if(this.inventory[1].stackSize == 1)
+						if (this.inventory[1].stackSize == 1)
 							this.inventory[1] = null;
 						else
 							--this.inventory[1].stackSize;
-
-						this.furnaceBurnTime--;
-
-					}
-					else if(this.cookTime == 500)
-					{
 						this.oilTank.fill(new FluidStack(FluidRegistry.getFluid("whaleoil"), oilPerBlubber), true);
+						this.cookTime = 0;
 					}
-					else
-						this.cookTime++;
 				}
+				this.furnaceBurnTime--;
 			}
 
-			if(var1)
+			if (var1)
 			{
 				var2 = true;
 				BlockRefinery.updateBlockState(this.furnaceBurnTime > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord);
 			}
 		}
 
-		if(var2)
+		if (var2)
 			this.markDirty();
 	}
 
 	protected int getItemBurnTime()
 	{
-		if(this.inventory[0] == null)
+		if (this.inventory[0] == null)
 			return 0;
 
 		return TileEntityFurnace.getItemBurnTime(this.inventory[0]);
@@ -203,7 +199,7 @@ public class TileRefinery extends BaseTileWithInventory implements IFluidHandler
 	@Override
 	public FluidStack drain(ForgeDirection from, FluidStack resource, boolean doDrain)
 	{
-		if((resource == null) || !resource.isFluidEqual(this.oilTank.getFluid()))
+		if ((resource == null) || !resource.isFluidEqual(this.oilTank.getFluid()))
 			return null;
 		return this.oilTank.drain(resource.amount, doDrain);
 	}

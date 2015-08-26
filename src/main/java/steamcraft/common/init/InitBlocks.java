@@ -104,6 +104,7 @@ import steamcraft.common.tiles.TileCopperPipe;
 import steamcraft.common.tiles.TileCopperTank;
 import steamcraft.common.tiles.TileIntake;
 import steamcraft.common.tiles.TileNuclearBoiler;
+import steamcraft.common.tiles.TileRefinery;
 import steamcraft.common.tiles.TileSteamBoiler;
 import steamcraft.common.tiles.TileSteelPipe;
 import steamcraft.common.tiles.TileTimeBomb;
@@ -229,8 +230,8 @@ public class InitBlocks
 
 	public static void init()
 	{
-		initializeDecorative();
 		initializeFluids();
+		initializeDecorative();
 		initializeMachines();
 		initializeOres();
 		initializeOthers();
@@ -286,6 +287,7 @@ public class InitBlocks
 		registerFluid("steam", steamFluid, Material.lava, (BlockSteamcraftFluid) blockSteam, true, 110, -100, 500, 12);
 		registerFluid("boilingwater", boilingWaterFluid, Material.lava, (BlockSteamcraftFluid) blockBoilingWater, false, 373, 900, 800, 0);
 		registerFluid("boilingmud", boilingMudFluid, Material.lava, (BlockSteamcraftFluid) blockBoilingMud, false, 373, 900, 800, 0);
+		registerFluid("whaleoil", whaleOilFluid, Material.water, (BlockSteamcraftFluid) blockWhaleOil, false, 300, 1100, 1100, 0);
 	}
 
 	public static void registerFluid(String fluidName, Fluid fluid, Material material, BlockSteamcraftFluid fluidBlock, boolean isGaseous, int temp,
@@ -367,8 +369,7 @@ public class InitBlocks
 		RegistryHelper.registerContainerBlockWithDesc(blockCopperTank, TileCopperTank.class, "BlockCopperTank");
 
 		blockRefinery = new BlockRefinery().setBlockName("blockRefinery");
-		// RegistryHelper.registerContainerBlockWithDesc(blockRefinery,
-		// TileRefinery.class, "BlockRefinery");
+		RegistryHelper.registerContainerBlockWithDesc(blockRefinery, TileRefinery.class, "BlockRefinery");
 
 		blockStasisField = new BlockStasisField().setBlockName("blockStasisField");
 		RegistryHelper.registerContainerBlockWithDesc(blockStasisField, TileStasisField.class, "BlockStasisField");

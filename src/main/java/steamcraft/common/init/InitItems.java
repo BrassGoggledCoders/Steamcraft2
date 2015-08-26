@@ -66,6 +66,7 @@ import steamcraft.common.items.armor.ItemBrassGoggles;
 import steamcraft.common.items.armor.ItemClockworkWings;
 import steamcraft.common.items.armor.ItemDivingHelmet;
 import steamcraft.common.items.armor.ItemMonocle;
+import steamcraft.common.items.armor.ItemNormalArmor;
 import steamcraft.common.items.armor.ItemSteamJetpack;
 import steamcraft.common.items.compat.ItemSteamcraftCluster;
 import steamcraft.common.items.compat.ItemThaumicMonocle;
@@ -237,18 +238,12 @@ public class InitItems
 		registerItem(itemMonocle, "ItemMonocle");
 
 		// Whalebone
-		// helmetWhalebone = new ItemNormalArmor(MaterialHelper.ARMOR_WHALEBONE,
-		// 0, 0).setUnlocalizedName("itemHelmetWhalebone");
-		// chestplateWhalebone = new
-		// ItemNormalArmor(MaterialHelper.ARMOR_WHALEBONE, 0,
-		// 1).setUnlocalizedName("itemChestplateWhalebone");
-		// legsWhalebone = new ItemNormalArmor(MaterialHelper.ARMOR_WHALEBONE,
-		// 0, 2).setUnlocalizedName("itemLegsWhalebone");
-		// bootsWhalebone = new ItemNormalArmor(MaterialHelper.ARMOR_WHALEBONE,
-		// 0, 3).setUnlocalizedName("itemBootsWhalebone");
+		helmetWhalebone = new ItemNormalArmor(InitMaterials.ARMOR_WHALEBONE, 0, "Whalebone").setUnlocalizedName("itemHelmetWhalebone");
+		chestplateWhalebone = new ItemNormalArmor(InitMaterials.ARMOR_WHALEBONE, 1, "Whalebone").setUnlocalizedName("itemChestplateWhalebone");
+		legsWhalebone = new ItemNormalArmor(InitMaterials.ARMOR_WHALEBONE, 2, "Whalebone").setUnlocalizedName("itemLegsWhalebone");
+		bootsWhalebone = new ItemNormalArmor(InitMaterials.ARMOR_WHALEBONE, 3, "Whalebone").setUnlocalizedName("itemBootsWhalebone");
 
-		// RegistryHelper.registerArmorSet(helmetWhalebone, chestplateWhalebone,
-		// legsWhalebone, bootsWhalebone, "Whalebone", ModInfo.ID);
+		RegistryHelper.registerArmorSet(helmetWhalebone, chestplateWhalebone, legsWhalebone, bootsWhalebone, "Whalebone", ModInfo.ID);
 	}
 
 	private static void initializeGuns()
@@ -512,25 +507,24 @@ public class InitItems
 				new ItemStack(itemBoilingMudBucket), new ItemStack(Items.bucket));
 
 		itemWhaleOilBucket = new ItemCustomBucket(InitBlocks.blockWhaleOil).setUnlocalizedName("itemWhaleOilBucket");
-		// GameRegistry.registerItem(itemWhaleOilBucket, "ItemWhaleOilBucket");
-		// FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("whaleoil",
-		// FluidContainerRegistry.BUCKET_VOLUME), new ItemStack(
-		// itemWhaleOilBucket), new ItemStack(Items.bucket));
+		GameRegistry.registerItem(itemWhaleOilBucket, "ItemWhaleOilBucket");
+		FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("whaleoil", FluidContainerRegistry.BUCKET_VOLUME),
+				new ItemStack(itemWhaleOilBucket), new ItemStack(Items.bucket));
 
 		itemCoin = new ItemCoin().setUnlocalizedName("itemCoin");
 		// registerItem(itemCoin, "ItemCoin");
 
 		itemWhalebone = new BaseItem().setUnlocalizedName("itemWhalebone");
-		// registerItem(itemWhalebone, "ItemWhalebone");
+		registerItem(itemWhalebone, "ItemWhalebone");
 
 		itemWhaleMeat = new ItemCustomFood(3, 0.4F, false).setUnlocalizedName("itemWhaleMeat");
-		// registerItem(itemWhaleMeat, "ItemWhaleMeat");
+		registerItem(itemWhaleMeat, "ItemWhaleMeat");
 
 		itemCookedWhaleMeat = new ItemCustomFood(6, 0.8F, true).setUnlocalizedName("itemCookedWhaleMeat");
-		// registerItem(itemCookedWhaleMeat, "ItemCookedWhaleMeat");
+		registerItem(itemCookedWhaleMeat, "ItemCookedWhaleMeat");
 
 		itemWhaleBlubber = new BaseItem().setUnlocalizedName("itemWhaleBlubber");
-		// registerItem(itemWhaleBlubber, "ItemWhaleBlubber");
+		registerItem(itemWhaleBlubber, "ItemWhaleBlubber");
 
 		// Also known as a pokkit by some wierdo called Longeye ;)
 		itemDimPocket = new ItemDimensionalPocket().setUnlocalizedName("itemDimPocket");
