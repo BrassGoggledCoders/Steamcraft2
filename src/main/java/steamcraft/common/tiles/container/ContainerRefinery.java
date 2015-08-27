@@ -48,7 +48,8 @@ public class ContainerRefinery extends BaseContainer
 		this.tileent = tile;
 		this.setTile(this.tileent);
 
-		this.addSlotToContainer(new Slot(tile, 0, 42, 52));
+		this.addSlotToContainer(new Slot(tile, 0, 16, 58));
+		this.addSlotToContainer(new Slot(tile, 1, 16, 23));
 		this.addSlotToContainer(new Slot(tile, 2, 132, 57)
 		{
 			@Override
@@ -57,15 +58,14 @@ public class ContainerRefinery extends BaseContainer
 				return stack.getItem() == Items.bucket;
 			}
 		});
-		this.addSlotToContainer(new Slot(tile, 1, 42, 18));
 
 		int var3;
 
-		for(var3 = 0; var3 < 3; ++var3)
-			for(int var4 = 0; var4 < 9; ++var4)
+		for (var3 = 0; var3 < 3; ++var3)
+			for (int var4 = 0; var4 < 9; ++var4)
 				this.addSlotToContainer(new Slot(player, var4 + (var3 * 9) + 9, 8 + (var4 * 18), 84 + (var3 * 18)));
 
-		for(var3 = 0; var3 < 9; ++var3)
+		for (var3 = 0; var3 < 9; ++var3)
 			this.addSlotToContainer(new Slot(player, var3, 8 + (var3 * 18), 142));
 	}
 
@@ -83,17 +83,17 @@ public class ContainerRefinery extends BaseContainer
 	{
 		super.detectAndSendChanges();
 
-		for(Object obj : this.crafters)
+		for (Object obj : this.crafters)
 		{
 			ICrafting var2 = (ICrafting) obj;
 
-			if(this.lastBurnTime != this.tileent.furnaceBurnTime)
+			if (this.lastBurnTime != this.tileent.furnaceBurnTime)
 				var2.sendProgressBarUpdate(this, 0, this.tileent.furnaceBurnTime);
 
-			if(this.lastItemBurnTime != this.tileent.currentItemBurnTime)
+			if (this.lastItemBurnTime != this.tileent.currentItemBurnTime)
 				var2.sendProgressBarUpdate(this, 1, this.tileent.currentItemBurnTime);
 
-			if(this.lastSteamLevel != this.tileent.oilTank.getFluidAmount())
+			if (this.lastSteamLevel != this.tileent.oilTank.getFluidAmount())
 				var2.sendProgressBarUpdate(this, 2, this.tileent.oilTank.getFluidAmount());
 
 		}
@@ -107,11 +107,11 @@ public class ContainerRefinery extends BaseContainer
 	@SideOnly(Side.CLIENT)
 	public void updateProgressBar(int par1, int par2)
 	{
-		if(par1 == 0)
+		if (par1 == 0)
 			this.tileent.furnaceBurnTime = par2;
-		else if(par1 == 1)
+		else if (par1 == 1)
 			this.tileent.currentItemBurnTime = par2;
-		else if(par1 == 2)
+		else if (par1 == 2)
 			this.tileent.oilTank.setFluid(new FluidStack(FluidRegistry.getFluid("steam"), par2));
 	}
 
@@ -127,56 +127,56 @@ public class ContainerRefinery extends BaseContainer
 		ItemStack var3 = null;
 		Slot var4 = (Slot) this.inventorySlots.get(par2);
 
-		if((var4 != null) && var4.getHasStack())
+		if ((var4 != null) && var4.getHasStack())
 		{
 			ItemStack var5 = var4.getStack();
 			var3 = var5.copy();
 
-			if(par2 > 2)
+			if (par2 > 2)
 			{
 				FluidStack liquid = FluidContainerRegistry.getFluidForFilledItem(var5);
 
-				if((liquid != null) && (liquid.getFluid() == FluidRegistry.WATER))
+				if ((liquid != null) && (liquid.getFluid() == FluidRegistry.WATER))
 				{
-					if(!this.mergeItemStack(var5, 1, 2, false))
+					if (!this.mergeItemStack(var5, 1, 2, false))
 						return null;
 				}
-				else if(TileEntityFurnace.getItemBurnTime(var5) > 0)
+				else if (TileEntityFurnace.getItemBurnTime(var5) > 0)
 				{
-					if(!this.mergeItemStack(var5, 0, 1, false))
-						if((par2 >= 3) && (par2 < 30))
+					if (!this.mergeItemStack(var5, 0, 1, false))
+						if ((par2 >= 3) && (par2 < 30))
 						{
-							if(!this.mergeItemStack(var5, 30, 39, false))
+							if (!this.mergeItemStack(var5, 30, 39, false))
 								return null;
 						}
-						else if((par2 >= 30) && (par2 < 39) && !this.mergeItemStack(var5, 3, 30, false))
+						else if ((par2 >= 30) && (par2 < 39) && !this.mergeItemStack(var5, 3, 30, false))
 							return null;
 				}
-				else if(var5.getItem() == InitItems.itemCanisterSteam)
+				else if (var5.getItem() == InitItems.itemCanisterSteam)
 				{
-					if(!this.mergeItemStack(var5, 2, 3, false))
-						if((par2 >= 3) && (par2 < 30))
+					if (!this.mergeItemStack(var5, 2, 3, false))
+						if ((par2 >= 3) && (par2 < 30))
 						{
-							if(!this.mergeItemStack(var5, 30, 39, false))
+							if (!this.mergeItemStack(var5, 30, 39, false))
 								return null;
 						}
-						else if((par2 >= 30) && (par2 < 39) && !this.mergeItemStack(var5, 3, 30, false))
+						else if ((par2 >= 30) && (par2 < 39) && !this.mergeItemStack(var5, 3, 30, false))
 							return null;
 				}
-				else if((par2 >= 3) && (par2 < 30) && !this.mergeItemStack(var5, 30, 39, false))
+				else if ((par2 >= 3) && (par2 < 30) && !this.mergeItemStack(var5, 30, 39, false))
 					return null;
-				else if((par2 >= 30) && (par2 < 39) && !this.mergeItemStack(var5, 3, 30, false))
+				else if ((par2 >= 30) && (par2 < 39) && !this.mergeItemStack(var5, 3, 30, false))
 					return null;
 			}
-			else if(!this.mergeItemStack(var5, 3, 39, false))
+			else if (!this.mergeItemStack(var5, 3, 39, false))
 				return null;
 
-			if(var5.stackSize == 0)
+			if (var5.stackSize == 0)
 				var4.putStack(null);
 			else
 				var4.onSlotChanged();
 
-			if(var5.stackSize == var3.stackSize)
+			if (var5.stackSize == var3.stackSize)
 				return null;
 
 			var4.onPickupFromSlot(par1EntityPlayer, var5);

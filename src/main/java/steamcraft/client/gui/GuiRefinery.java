@@ -56,7 +56,12 @@ public class GuiRefinery extends BaseContainerGui
 		if (this.refinery.isBurning())
 		{
 			int burnTime = this.refinery.getBurnTimeRemainingScaled(12);
-			this.drawTexturedModalRect(this.guiLeft + 43, (this.guiTop + 48) - burnTime, 176, 12 - burnTime, 14, burnTime + 2);
+			this.drawTexturedModalRect(this.guiLeft + 17, (this.guiTop + 53) - burnTime, 176, 12 - burnTime, 14, burnTime + 2);
+		}
+		if (this.refinery.isCooking())
+		{
+			int cookTime = this.refinery.getCookTimeRemainingScaled(12);
+			this.drawTexturedModalRect(this.guiLeft + 43, (this.guiTop + 48), 20, 20, 10, 16);
 		}
 
 		this.drawFluid(new FluidStack(FluidRegistry.getFluid("whaleoil"), 0), this.refinery.getScaledWhaleOilLevel(60), this.guiLeft + 74,

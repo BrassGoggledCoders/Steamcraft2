@@ -228,6 +228,7 @@ public class TileRefinery extends BaseTileWithInventory implements IFluidHandler
 		return new FluidTankInfo[] { this.oilTank.getInfo() };
 	}
 
+<<<<<<< 58f17593e26b68c109110b406abbcddbc8e68568
 	@Override
 	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
 	{
@@ -244,5 +245,15 @@ public class TileRefinery extends BaseTileWithInventory implements IFluidHandler
 	public int getGuiID()
 	{
 		return GuiIDs.REFINERY;
+	}
+	
+	public boolean isCooking()
+	{
+		return this.cookTime > 0;
+	}
+
+	public int getCookTimeRemainingScaled(int i)
+	{
+		return this.cookTime * i / 200;
 	}
 }
