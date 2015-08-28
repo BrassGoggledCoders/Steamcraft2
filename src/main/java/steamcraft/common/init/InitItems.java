@@ -238,10 +238,10 @@ public class InitItems
 		registerItem(itemMonocle, "ItemMonocle");
 
 		// Whalebone
-		helmetWhalebone = new ItemNormalArmor(InitMaterials.ARMOR_WHALEBONE, 0, "Whalebone").setUnlocalizedName("itemHelmetWhalebone");
-		chestplateWhalebone = new ItemNormalArmor(InitMaterials.ARMOR_WHALEBONE, 1, "Whalebone").setUnlocalizedName("itemChestplateWhalebone");
-		legsWhalebone = new ItemNormalArmor(InitMaterials.ARMOR_WHALEBONE, 2, "Whalebone").setUnlocalizedName("itemLegsWhalebone");
-		bootsWhalebone = new ItemNormalArmor(InitMaterials.ARMOR_WHALEBONE, 3, "Whalebone").setUnlocalizedName("itemBootsWhalebone");
+		helmetWhalebone = new ItemNormalArmor(InitMaterials.ARMOR_WHALEBONE, 0, "whalebone").setUnlocalizedName("itemHelmetWhalebone");
+		chestplateWhalebone = new ItemNormalArmor(InitMaterials.ARMOR_WHALEBONE, 1, "whalebone").setUnlocalizedName("itemChestplateWhalebone");
+		legsWhalebone = new ItemNormalArmor(InitMaterials.ARMOR_WHALEBONE, 2, "whalebone").setUnlocalizedName("itemLegsWhalebone");
+		bootsWhalebone = new ItemNormalArmor(InitMaterials.ARMOR_WHALEBONE, 3, "whalebone").setUnlocalizedName("itemBootsWhalebone");
 
 		RegistryHelper.registerArmorSet(helmetWhalebone, chestplateWhalebone, legsWhalebone, bootsWhalebone, "Whalebone", ModInfo.ID);
 	}
@@ -501,13 +501,12 @@ public class InitItems
 		itemBoilingMudBucket = new ItemCustomBucket(InitBlocks.blockBoilingMud).setUnlocalizedName("itemMudBucket");
 		GameRegistry.registerItem(itemBoilingWaterBucket, "ItemBoilingWaterBucket");
 		GameRegistry.registerItem(itemBoilingMudBucket, "ItemBoilingBucket");
+		itemWhaleOilBucket = new ItemCustomBucket(InitBlocks.blockWhaleOil).setUnlocalizedName("itemWhaleOilBucket");
+		GameRegistry.registerItem(itemWhaleOilBucket, "ItemWhaleOilBucket");
 		FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("boilingwater", FluidContainerRegistry.BUCKET_VOLUME),
 				new ItemStack(itemBoilingWaterBucket), new ItemStack(Items.bucket));
 		FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("boilingmud", FluidContainerRegistry.BUCKET_VOLUME),
 				new ItemStack(itemBoilingMudBucket), new ItemStack(Items.bucket));
-
-		itemWhaleOilBucket = new ItemCustomBucket(InitBlocks.blockWhaleOil).setUnlocalizedName("itemWhaleOilBucket");
-		GameRegistry.registerItem(itemWhaleOilBucket, "ItemWhaleOilBucket");
 		FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("whaleoil", FluidContainerRegistry.BUCKET_VOLUME),
 				new ItemStack(itemWhaleOilBucket), new ItemStack(Items.bucket));
 
