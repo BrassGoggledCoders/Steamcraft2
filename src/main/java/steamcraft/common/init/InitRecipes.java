@@ -221,6 +221,9 @@ public class InitRecipes
 		// Brass
 		RecipeUtils.addArmorSet(new ItemStack(InitItems.itemSheet, 1, 4), new ItemStack[] { new ItemStack(InitItems.helmetBrass),
 				new ItemStack(InitItems.chestplateBrass), new ItemStack(InitItems.legsBrass), new ItemStack(InitItems.bootsBrass) });
+		// Whalebone
+		RecipeUtils.addArmorSet(new ItemStack(InitItems.itemWhalebone), new ItemStack[] { new ItemStack(InitItems.helmetWhalebone),
+				new ItemStack(InitItems.chestplateWhalebone), new ItemStack(InitItems.legsWhalebone), new ItemStack(InitItems.bootsWhalebone) });
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemClockworkWings), "BCB", "WCW", "W W", 'B',
 				new ItemStack(InitItems.itemIngot, 1, 4), 'C', "partClockworkMechanism", 'W', Blocks.wool));
@@ -524,6 +527,8 @@ public class InitRecipes
 		GameRegistry.addSmelting(new ItemStack(Items.slime_ball), new ItemStack(InitItems.itemSlimeRubber), 0);
 
 		GameRegistry.addSmelting(InitBlocks.blockBrassLog, new ItemStack(InitItems.itemIngot, 2, 4), 0);
+
+		GameRegistry.addSmelting(new ItemStack(InitItems.itemCookedWhaleMeat), new ItemStack(InitItems.itemWhaleMeat), 1F);
 	}
 
 	private static void initCompatRecipes()
