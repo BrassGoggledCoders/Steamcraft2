@@ -12,19 +12,25 @@
  */
 package steamcraft.common.tiles.energy;
 
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import boilerplate.common.baseclasses.BaseTileWithInventory;
 import cofh.api.energy.EnergyStorage;
 import cofh.api.energy.IEnergyHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import steamcraft.client.IOpenableGUI;
+import steamcraft.client.gui.GuiCapacitor;
+import steamcraft.client.lib.GuiIDs;
+import steamcraft.common.tiles.container.ContainerCapacitor;
 
 /**
  * @author decebaldecebal
  *
  */
-public class TileCapacitor extends BaseTileWithInventory implements IEnergyHandler
+public class TileCapacitor extends BaseTileWithInventory implements IEnergyHandler, IOpenableGUI
 {
 	public static short transferRate = 100;
 
@@ -114,5 +120,23 @@ public class TileCapacitor extends BaseTileWithInventory implements IEnergyHandl
 	public String getInventoryName()
 	{
 		return "Capacitor";
+	}
+
+	@Override
+	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
+	{
+		return new GuiCapacitor(player.inventory, (TileCapacitor)world.getTileEntity(x, y, z));
+	}
+
+	@Override
+	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
+	{
+		return new ContainerCapacitor(player.inventory, (TileCapacitor)world.getTileEntity(x, y, z));
+	}
+
+	@Override
+	public int getGuiID()
+	{
+		return GuiIDs.CAPACITOR;
 	}
 }

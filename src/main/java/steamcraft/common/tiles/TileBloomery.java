@@ -12,6 +12,7 @@
  */
 package steamcraft.common.tiles;
 
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -20,7 +21,12 @@ import net.minecraft.tileentity.TileEntityFurnace;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+import net.minecraft.world.World;
+import steamcraft.client.IOpenableGUI;
+import steamcraft.client.gui.GuiBloomery;
+import steamcraft.client.lib.GuiIDs;
 import steamcraft.common.blocks.machines.BlockBloomery;
+import steamcraft.common.tiles.container.ContainerBloomery;
 import steamcraft.common.tiles.recipes.BloomeryRecipes;
 import boilerplate.common.baseclasses.BaseTileWithInventory;
 
@@ -28,7 +34,7 @@ import boilerplate.common.baseclasses.BaseTileWithInventory;
  * @author warlordjones & decebaldecebal
  *
  */
-public class TileBloomery extends BaseTileWithInventory
+public class TileBloomery extends BaseTileWithInventory implements IOpenableGUI
 {
 	private static int timeTillCooked = 600;
 	
@@ -241,5 +247,23 @@ public class TileBloomery extends BaseTileWithInventory
 	public String getInventoryName()
 	{
 		return "Bloomery";
+	}
+
+	@Override
+	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
+	{
+		return new GuiBloomery(player.inventory, (TileBloomery)world.getTileEntity(x, y, z));
+	}
+
+	@Override
+	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
+	{
+		return new ContainerBloomery(player.inventory, (TileBloomery)world.getTileEntity(x, y, z));
+	}
+
+	@Override
+	public int getGuiID()
+	{
+		return GuiIDs.BLOOMERY;
 	}
 }

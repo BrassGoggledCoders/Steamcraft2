@@ -12,8 +12,9 @@
  */
 package steamcraft.common.items;
 
-import java.util.List;
-
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.client.gui.GuiScreenBook;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -25,13 +26,14 @@ import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
 import net.minecraft.util.StringUtils;
 import net.minecraft.world.World;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import steamcraft.client.IOpenableGUI;
 import steamcraft.client.lib.GuiIDs;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.ModInfo;
 
-public class ItemLoreBook extends BaseItem
+import java.util.List;
+
+public class ItemLoreBook extends BaseItem implements IOpenableGUI
 {
 	String author;
 	String title;
@@ -134,5 +136,23 @@ public class ItemLoreBook extends BaseItem
 	public void registerIcons(IIconRegister par1IconRegister)
 	{
 		this.itemIcon = par1IconRegister.registerIcon(ModInfo.PREFIX + "itemLoreBook");
+	}
+
+	@Override
+	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
+	{
+		return new GuiScreenBook(player, player.getHeldItem(), false);
+	}
+
+	@Override
+	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
+	{
+		return null;
+	}
+
+	@Override
+	public int getGuiID()
+	{
+		return GuiIDs.LORE;
 	}
 }

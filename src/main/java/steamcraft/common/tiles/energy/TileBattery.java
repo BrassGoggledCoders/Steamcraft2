@@ -12,8 +12,10 @@
  */
 package steamcraft.common.tiles.energy;
 
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import boilerplate.api.IEnergyItem;
 import boilerplate.common.baseclasses.BaseTileWithInventory;
@@ -21,12 +23,16 @@ import cofh.api.energy.EnergyStorage;
 import cofh.api.energy.IEnergyHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import steamcraft.client.IOpenableGUI;
+import steamcraft.client.gui.GuiBattery;
+import steamcraft.client.lib.GuiIDs;
+import steamcraft.common.tiles.container.ContainerBattery;
 
 /**
  * @author decebaldecebal
  *
  */
-public class TileBattery extends BaseTileWithInventory implements IEnergyHandler
+public class TileBattery extends BaseTileWithInventory implements IEnergyHandler, IOpenableGUI
 {
 	private static int initialEnergy = 50000;
 	private static short initialTransferRate = 40;
@@ -184,5 +190,23 @@ public class TileBattery extends BaseTileWithInventory implements IEnergyHandler
 	public String getInventoryName()
 	{
 		return "Battery Bank";
+	}
+
+	@Override
+	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
+	{
+		return new GuiBattery(player.inventory, (TileBattery)world.getTileEntity(x, y, z));
+	}
+
+	@Override
+	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
+	{
+		return new ContainerBattery(player.inventory, (TileBattery)world.getTileEntity(x, y, z));
+	}
+
+	@Override
+	public int getGuiID()
+	{
+		return GuiIDs.BATTERY;
 	}
 }

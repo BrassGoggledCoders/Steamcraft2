@@ -12,11 +12,13 @@
  */
 package steamcraft.common.tiles;
 
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntityFurnace;
 
+import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidContainerRegistry;
@@ -26,15 +28,19 @@ import net.minecraftforge.fluids.FluidTank;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
 
+import steamcraft.client.IOpenableGUI;
+import steamcraft.client.gui.GuiRefinery;
+import steamcraft.client.lib.GuiIDs;
 import steamcraft.common.blocks.machines.BlockRefinery;
 import steamcraft.common.init.InitItems;
 import boilerplate.common.baseclasses.BaseTileWithInventory;
+import steamcraft.common.tiles.container.ContainerRefinery;
 
 /**
  * @author Decebaldecebal
  *
  */
-public class TileRefinery extends BaseTileWithInventory implements IFluidHandler
+public class TileRefinery extends BaseTileWithInventory implements IFluidHandler, IOpenableGUI
 {
 	public static final int oilPerBlubber = 500;
 
@@ -224,5 +230,23 @@ public class TileRefinery extends BaseTileWithInventory implements IFluidHandler
 	public FluidTankInfo[] getTankInfo(ForgeDirection from)
 	{
 		return new FluidTankInfo[] { this.oilTank.getInfo() };
+	}
+
+	@Override
+	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
+	{
+		return new GuiRefinery(player.inventory, (TileRefinery)world.getTileEntity(x, y, z));
+	}
+
+	@Override
+	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
+	{
+		return new ContainerRefinery(player.inventory, (TileRefinery)world.getTileEntity(x, y, z));
+	}
+
+	@Override
+	public int getGuiID()
+	{
+		return GuiIDs.REFINERY;
 	}
 }

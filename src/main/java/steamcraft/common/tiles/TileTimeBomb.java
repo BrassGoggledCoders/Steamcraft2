@@ -12,15 +12,20 @@
  */
 package steamcraft.common.tiles;
 
+import boilerplate.common.baseclasses.BaseTileWithInventory;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.world.World;
+import steamcraft.client.IOpenableGUI;
+import steamcraft.client.gui.GuiTimeBomb;
+import steamcraft.client.lib.GuiIDs;
+import steamcraft.common.entities.EntityTimeBomb;
+import steamcraft.common.tiles.container.ContainerTimeBomb;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-import net.minecraft.nbt.NBTTagCompound;
-
-import steamcraft.common.entities.EntityTimeBomb;
-import boilerplate.common.baseclasses.BaseTileWithInventory;
-
-public class TileTimeBomb extends BaseTileWithInventory
+public class TileTimeBomb extends BaseTileWithInventory implements IOpenableGUI
 {
 	public TileTimeBomb()
 	{
@@ -66,5 +71,23 @@ public class TileTimeBomb extends BaseTileWithInventory
 	public void setTime(int time)
 	{
 		this.time = time;
+	}
+
+	@Override
+	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
+	{
+		return new GuiTimeBomb(player.inventory, (TileTimeBomb)world.getTileEntity(x, y, z));
+	}
+
+	@Override
+	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
+	{
+		return new ContainerTimeBomb(player.inventory, (TileTimeBomb)world.getTileEntity(x, y, z));
+	}
+
+	@Override
+	public int getGuiID()
+	{
+		return GuiIDs.TIMEBOMB;
 	}
 }

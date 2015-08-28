@@ -17,10 +17,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
+import steamcraft.client.IOpenableGUI;
+import steamcraft.client.gui.GuiHandbook;
 import steamcraft.client.lib.GuiIDs;
 import steamcraft.common.Steamcraft;
 
-public class ItemHandbook extends BaseItem
+public class ItemHandbook extends BaseItem implements IOpenableGUI
 {
 	int currPage;
 
@@ -56,5 +58,23 @@ public class ItemHandbook extends BaseItem
 		if(!stack.hasTagCompound())
 			stack.setTagCompound(new NBTTagCompound());
 		stack.getTagCompound().setInteger("currPage", currPage);
+	}
+
+	@Override
+	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
+	{
+		return new GuiHandbook(player.getHeldItem());
+	}
+
+	@Override
+	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
+	{
+		return null;
+	}
+
+	@Override
+	public int getGuiID()
+	{
+		return GuiIDs.HANDBOOK;
 	}
 }
