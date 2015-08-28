@@ -25,7 +25,6 @@ public class EntityWhale extends EntityWaterMob
 	{
 		super(p_i1689_1_);
 		this.setSize(6F, 3F);
-
 	}
 
 	/**

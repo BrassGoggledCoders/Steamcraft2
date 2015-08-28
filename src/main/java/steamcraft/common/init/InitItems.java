@@ -515,9 +515,6 @@ public class InitItems
 		BucketHandler.INSTANCE.buckets.put(InitBlocks.blockWhaleOil, itemWhaleOilBucket);
 		MinecraftForge.EVENT_BUS.register(BucketHandler.INSTANCE);
 
-		itemCoin = new ItemCoin().setUnlocalizedName("itemCoin");
-		// registerItem(itemCoin, "ItemCoin");
-
 		itemWhalebone = new BaseItem().setUnlocalizedName("itemWhalebone");
 		registerItem(itemWhalebone, "ItemWhalebone");
 
@@ -529,6 +526,9 @@ public class InitItems
 
 		itemWhaleBlubber = new BaseItem().setUnlocalizedName("itemWhaleBlubber");
 		registerItem(itemWhaleBlubber, "ItemWhaleBlubber");
+
+		itemCoin = new ItemCoin().setUnlocalizedName("itemCoin");
+		registerItem(itemCoin, "ItemCoin");
 
 		// Also known as a pokkit by some wierdo called Longeye ;)
 		itemDimPocket = new ItemDimensionalPocket().setUnlocalizedName("itemDimPocket");
