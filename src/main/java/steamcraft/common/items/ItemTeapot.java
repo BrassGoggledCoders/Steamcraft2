@@ -24,9 +24,9 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+import boilerplate.common.utils.ItemStackUtils;
 import steamcraft.common.init.InitItems;
 import steamcraft.common.lib.ModInfo;
-import boilerplate.common.utils.ItemStackUtils;
 
 public class ItemTeapot extends BaseItemWithMetadata
 {

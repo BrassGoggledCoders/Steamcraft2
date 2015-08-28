@@ -1,6 +1,7 @@
 package steamcraft.common.lib;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -18,15 +19,19 @@ import net.minecraftforge.event.entity.player.FillBucketEvent;
  */
 public final class BucketHandler
 {
+	public static BucketHandler INSTANCE = new BucketHandler();
+	public Map<Block, Item> buckets = new HashMap<Block, Item>();
 
-	public static final HashMap<Block, Item> BUCKETS = new HashMap<Block, Item>();
+	public BucketHandler()
+	{
+	}
 
 	@SubscribeEvent
 	public void onBucketFill(FillBucketEvent event)
 	{
-		ItemStack result = this.fillCustomBucket(event.world, event.target);
+		ItemStack result = fillCustomBucket(event.world, event.target);
 
-		if(result == null)
+		if (result == null)
 		{
 			return;
 		}
@@ -39,9 +44,9 @@ public final class BucketHandler
 	{
 		Block block = world.getBlock(pos.blockX, pos.blockY, pos.blockZ);
 
-		Item bucket = BUCKETS.get(block);
+		Item bucket = buckets.get(block);
 
-		if((bucket != null) && (world.getBlockMetadata(pos.blockX, pos.blockY, pos.blockZ) == 0))
+		if (bucket != null && world.getBlockMetadata(pos.blockX, pos.blockY, pos.blockZ) == 0)
 		{
 			world.setBlockToAir(pos.blockX, pos.blockY, pos.blockZ);
 			return new ItemStack(bucket);

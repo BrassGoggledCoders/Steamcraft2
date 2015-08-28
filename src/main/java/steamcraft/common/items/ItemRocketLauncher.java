@@ -26,11 +26,11 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+import boilerplate.common.baseclasses.items.BaseFirearm;
+import boilerplate.common.utils.InventoryUtils;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.entities.projectile.EntityRocket;
 import steamcraft.common.lib.ModInfo;
-import boilerplate.common.baseclasses.items.BaseFirearm;
-import boilerplate.common.utils.InventoryUtils;
 
 public class ItemRocketLauncher extends BaseFirearm
 {

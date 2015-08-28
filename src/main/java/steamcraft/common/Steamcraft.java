@@ -12,30 +12,50 @@
  */
 package steamcraft.common;
 
-import boilerplate.client.GuiHandler;
-import boilerplate.common.compathandler.FMPCompatHandler;
+import java.io.File;
+
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
+import net.minecraft.world.gen.structure.MapGenStructureIO;
+
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.SidedProxy;
-import cpw.mods.fml.common.event.*;
+import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLMissingMappingsEvent;
 import cpw.mods.fml.common.event.FMLMissingMappingsEvent.MissingMapping;
+import cpw.mods.fml.common.event.FMLPostInitializationEvent;
+import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.GameRegistry.Type;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
-import net.minecraft.world.gen.structure.MapGenStructureIO;
+
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.MinecraftForge;
+
+import boilerplate.client.GuiHandler;
+import boilerplate.common.compathandler.FMPCompatHandler;
 import steamcraft.common.compat.CompatabilityLayer;
 import steamcraft.common.config.Config;
 import steamcraft.common.config.ConfigGeneral;
 import steamcraft.common.config.ConfigWorldGen;
-import steamcraft.common.init.*;
-import steamcraft.common.lib.*;
+import steamcraft.common.init.InitAchievements;
+import steamcraft.common.init.InitBiomes;
+import steamcraft.common.init.InitBlocks;
+import steamcraft.common.init.InitEntities;
+import steamcraft.common.init.InitItems;
+import steamcraft.common.init.InitMisc;
+import steamcraft.common.init.InitPackets;
+import steamcraft.common.init.InitRecipes;
+import steamcraft.common.lib.BucketHandler;
+import steamcraft.common.lib.CommandSteamcraft;
+import steamcraft.common.lib.CreativeTabSteamcraft;
+import steamcraft.common.lib.LoggerSteamcraft;
+import steamcraft.common.lib.ModInfo;
 import steamcraft.common.lib.events.EventHandlerClient;
 import steamcraft.common.lib.events.EventHandlerFML;
 import steamcraft.common.lib.events.EventHandlerForge;
@@ -44,8 +64,6 @@ import steamcraft.common.worldgen.dimension.WorldProviderDeeps;
 import steamcraft.common.worldgen.structure.MapGenCustomScatteredFeature;
 import steamcraft.common.worldgen.structure.StructureUndercityPieces;
 import steamcraft.common.worldgen.structure.StructureUndercityStart;
-
-import java.io.File;
 
 /**
  * @author Surseance
@@ -75,8 +93,6 @@ public class Steamcraft
 		InitBlocks.init();
 		InitItems.init();
 
-		BucketHandler.BUCKETS.put(InitBlocks.blockBoilingMud, InitItems.itemBoilingMudBucket);
-		BucketHandler.BUCKETS.put(InitBlocks.blockBoilingWater, InitItems.itemBoilingWaterBucket);
 		MinecraftForge.EVENT_BUS.register(new BucketHandler());
 
 		CompatabilityLayer.initCompatItems();

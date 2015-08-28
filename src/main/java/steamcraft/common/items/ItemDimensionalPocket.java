@@ -12,10 +12,11 @@
  */
 package steamcraft.common.items;
 
-import boilerplate.api.IOpenableGUI;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+
+import boilerplate.api.IOpenableGUI;
 import steamcraft.client.gui.GuiPocket;
 import steamcraft.client.lib.GuiIDs;
 import steamcraft.common.Steamcraft;
@@ -36,12 +37,13 @@ public class ItemDimensionalPocket extends BaseItem implements IOpenableGUI
 	}
 
 	/**
-	 * Called whenever this item is equipped and the right mouse button is pressed. Args: itemStack, world, entityPlayer
+	 * Called whenever this item is equipped and the right mouse button is
+	 * pressed. Args: itemStack, world, entityPlayer
 	 */
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
 	{
-		if(!world.isRemote)
+		if (!world.isRemote)
 		{
 			player.openGui(Steamcraft.instance, GuiIDs.POCKET, world, 0, 0, 0);
 		}
@@ -51,7 +53,7 @@ public class ItemDimensionalPocket extends BaseItem implements IOpenableGUI
 	@Override
 	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
 	{
-		return new GuiPocket((ContainerPocket)getServerGuiElement(ID, player, world, x, y, z));
+		return new GuiPocket((ContainerPocket) getServerGuiElement(ID, player, world, x, y, z));
 	}
 
 	@Override

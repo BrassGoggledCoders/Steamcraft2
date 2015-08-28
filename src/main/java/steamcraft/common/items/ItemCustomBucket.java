@@ -13,10 +13,9 @@ import steamcraft.common.lib.ModInfo;
 
 public class ItemCustomBucket extends ItemBucket
 {
-
-	public ItemCustomBucket(Block p_i45331_1_)
+	public ItemCustomBucket(Block block)
 	{
-		super(p_i45331_1_);
+		super(block);
 		this.setContainerItem(Items.bucket);
 		this.setCreativeTab(Steamcraft.tabSC2);
 	}

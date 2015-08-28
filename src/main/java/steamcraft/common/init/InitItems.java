@@ -101,6 +101,7 @@ import steamcraft.common.items.tools.steam.ItemSteamPickaxe;
 import steamcraft.common.items.tools.steam.ItemSteamShovel;
 import steamcraft.common.items.tools.steam.ItemSteamSword;
 import steamcraft.common.items.vanity.ItemTopHat;
+import steamcraft.common.lib.BucketHandler;
 import steamcraft.common.lib.ModInfo;
 
 /**
@@ -497,11 +498,11 @@ public class InitItems
 		itemMonsterSpawner = new ItemMonsterSpawner().setUnlocalizedName("itemMonsterSpawner");
 		registerItem(itemMonsterSpawner, "ItemSteamcraftMonsterSpawner");
 
-		itemBoilingWaterBucket = new ItemCustomBucket(InitBlocks.blockBoilingMud).setUnlocalizedName("itemBoilingWaterBucket");
-		itemBoilingMudBucket = new ItemCustomBucket(InitBlocks.blockBoilingMud).setUnlocalizedName("itemMudBucket");
+		itemBoilingWaterBucket = new ItemCustomBucket(FluidRegistry.getFluid("boilingwater").getBlock()).setUnlocalizedName("itemBoilingWaterBucket");
+		itemBoilingMudBucket = new ItemCustomBucket(FluidRegistry.getFluid("boilingmud").getBlock()).setUnlocalizedName("itemMudBucket");
+		itemWhaleOilBucket = new ItemCustomBucket(FluidRegistry.getFluid("whaleoil").getBlock()).setUnlocalizedName("itemWhaleOilBucket");
 		GameRegistry.registerItem(itemBoilingWaterBucket, "ItemBoilingWaterBucket");
 		GameRegistry.registerItem(itemBoilingMudBucket, "ItemBoilingBucket");
-		itemWhaleOilBucket = new ItemCustomBucket(InitBlocks.blockWhaleOil).setUnlocalizedName("itemWhaleOilBucket");
 		GameRegistry.registerItem(itemWhaleOilBucket, "ItemWhaleOilBucket");
 		FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("boilingwater", FluidContainerRegistry.BUCKET_VOLUME),
 				new ItemStack(itemBoilingWaterBucket), new ItemStack(Items.bucket));
@@ -509,6 +510,10 @@ public class InitItems
 				new ItemStack(itemBoilingMudBucket), new ItemStack(Items.bucket));
 		FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("whaleoil", FluidContainerRegistry.BUCKET_VOLUME),
 				new ItemStack(itemWhaleOilBucket), new ItemStack(Items.bucket));
+		BucketHandler.INSTANCE.buckets.put(InitBlocks.blockBoilingWater, itemBoilingWaterBucket);
+		BucketHandler.INSTANCE.buckets.put(InitBlocks.blockBoilingMud, itemBoilingMudBucket);
+		BucketHandler.INSTANCE.buckets.put(InitBlocks.blockWhaleOil, itemWhaleOilBucket);
+		MinecraftForge.EVENT_BUS.register(BucketHandler.INSTANCE);
 
 		itemCoin = new ItemCoin().setUnlocalizedName("itemCoin");
 		// registerItem(itemCoin, "ItemCoin");
