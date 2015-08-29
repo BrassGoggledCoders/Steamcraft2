@@ -440,7 +440,7 @@ public class InitItems
 		registerItem(itemSteelPlating, "ItemSteelPlating");
 
 		itemLastResort = new ItemLastResort().setUnlocalizedName("itemLastResort");
-		// registerItem(itemLastResort, "ItemLastResort");
+		registerItem(itemLastResort, "ItemLastResort");
 
 		itemGogglesModule = new ItemGogglesModule().setUnlocalizedName("itemGogglesModule");
 		registerItem(itemGogglesModule, "ItemGogglesModule");
@@ -449,13 +449,13 @@ public class InitItems
 		registerItem(itemWingpackModule, "ItemWingpackModule");
 
 		itemFreezeBoots = new ItemFreezeBoots().setUnlocalizedName("itemFreezeBoots");
-		// registerItem(itemFreezeBoots, "ItemFreezeBoots");
+		registerItem(itemFreezeBoots, "ItemFreezeBoots");
 
 		itemSuperFreezeBoots = new ItemSuperFreezeBoots().setUnlocalizedName("itemSuperFreezeBoots");
-		// registerItem(itemSuperFreezeBoots, "ItemSuperFreezeBoots");
+		registerItem(itemSuperFreezeBoots, "ItemSuperFreezeBoots");
 
 		itemAutofeeder = new ItemAutofeeder().setUnlocalizedName("itemAutofeeder");
-		// registerItem(itemAutofeeder, "ItemAutofeeder");
+		registerItem(itemAutofeeder, "ItemAutofeeder");
 
 		itemTeaLeaf = new BaseItem().setUnlocalizedName("itemTeaLeaves");
 		registerItem(itemTeaLeaf, "ItemTeaLeaf");

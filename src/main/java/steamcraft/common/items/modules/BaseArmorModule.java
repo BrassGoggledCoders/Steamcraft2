@@ -32,6 +32,7 @@ public abstract class BaseArmorModule extends RootItem implements IArmorModule
 	public BaseArmorModule()
 	{
 		ModuleRegistry.setModuleIncompatibilities(this);
+		this.setMaxStackSize(1);
 	}
 
 	@SuppressWarnings("all")

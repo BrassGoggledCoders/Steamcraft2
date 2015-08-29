@@ -513,6 +513,8 @@ item.itemWingpackModule.name=Wingpack Module
 item.itemWingpackModule.desc=The wingpack, as an armor module
 item.itemFreezeBoots.name=Freeze Boots
 item.itemFreezeBoots.desc=Cool water below you into ice temporarily
+item.itemSuperFreezeBoots.name=Supercooled Freeze Boots
+item.itemSuperFreezeBoots.desc=Cool air below you into ice temporarily
 item.itemAutofeeder.name=Autofeeder
 item.itemAutofeeder.desc=Automatically consume food from your inventory. Fairly wasteful.
 
