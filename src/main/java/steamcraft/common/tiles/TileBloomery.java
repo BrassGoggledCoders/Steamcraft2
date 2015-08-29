@@ -12,23 +12,20 @@
  */
 package steamcraft.common.tiles;
 
+import boilerplate.api.IOpenableGUI;
+import boilerplate.common.baseclasses.BaseTileWithInventory;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntityFurnace;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-
 import net.minecraft.world.World;
-import steamcraft.client.IOpenableGUI;
 import steamcraft.client.gui.GuiBloomery;
-import steamcraft.client.lib.GuiIDs;
 import steamcraft.common.blocks.machines.BlockBloomery;
 import steamcraft.common.tiles.container.ContainerBloomery;
 import steamcraft.common.tiles.recipes.BloomeryRecipes;
-import boilerplate.common.baseclasses.BaseTileWithInventory;
 
 /**
  * @author warlordjones & decebaldecebal
@@ -178,7 +175,8 @@ public class TileBloomery extends BaseTileWithInventory implements IOpenableGUI
 			else if(this.inventory[3].getItem() == result.getItem())
 				this.inventory[3].stackSize += result.stackSize;
 
-			byte[] stackSizes = BloomeryRecipes.getInstance().getStackSizeForInputs(this.inventory[1], this.inventory[2], result);
+			byte[] stackSizes = BloomeryRecipes.getInstance().getStackSizeForInputs(this.inventory[1],
+					this.inventory[2], result);
 
 			if(this.inventory[1] != null)
 			{
@@ -259,11 +257,5 @@ public class TileBloomery extends BaseTileWithInventory implements IOpenableGUI
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
 	{
 		return new ContainerBloomery(player.inventory, (TileBloomery)world.getTileEntity(x, y, z));
-	}
-
-	@Override
-	public int getGuiID()
-	{
-		return GuiIDs.BLOOMERY;
 	}
 }

@@ -12,6 +12,7 @@
  */
 package steamcraft.common.tiles;
 
+import boilerplate.api.IOpenableGUI;
 import boilerplate.common.baseclasses.BaseTileWithInventory;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
@@ -21,9 +22,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import steamcraft.api.item.IArmorModule;
 import steamcraft.api.item.ModuleRegistry;
-import steamcraft.client.IOpenableGUI;
 import steamcraft.client.gui.GuiArmorEditor;
-import steamcraft.client.lib.GuiIDs;
 import steamcraft.common.items.armor.ItemBrassArmor;
 import steamcraft.common.tiles.container.ContainerArmorEditor;
 
@@ -161,17 +160,14 @@ public class TileArmorEditor extends BaseTileWithInventory implements IInventory
 	}
 
 	@Override
-	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
+	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
+	{
 		return new GuiArmorEditor(player.inventory, (TileArmorEditor)world.getTileEntity(x, y, z));
 	}
 
 	@Override
-	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
+	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
+	{
 		return new ContainerArmorEditor(player.inventory, (TileArmorEditor)world.getTileEntity(x, y, z));
-	}
-
-	@Override
-	public int getGuiID() {
-		return GuiIDs.ARMOR_EDITOR;
 	}
 }

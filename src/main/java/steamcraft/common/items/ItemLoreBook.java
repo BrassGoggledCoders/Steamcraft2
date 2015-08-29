@@ -12,6 +12,7 @@
  */
 package steamcraft.common.items;
 
+import boilerplate.api.IOpenableGUI;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.gui.GuiScreenBook;
@@ -26,7 +27,6 @@ import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
 import net.minecraft.util.StringUtils;
 import net.minecraft.world.World;
-import steamcraft.client.IOpenableGUI;
 import steamcraft.client.lib.GuiIDs;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.ModInfo;
@@ -148,11 +148,5 @@ public class ItemLoreBook extends BaseItem implements IOpenableGUI
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
 	{
 		return null;
-	}
-
-	@Override
-	public int getGuiID()
-	{
-		return GuiIDs.LORE;
 	}
 }

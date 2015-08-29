@@ -12,19 +12,18 @@
  */
 package steamcraft.common.tiles.energy;
 
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.nbt.NBTTagCompound;
+import boilerplate.api.IEnergyItem;
+import boilerplate.api.IOpenableGUI;
+import boilerplate.common.baseclasses.BaseTileWithInventory;
 import cofh.api.energy.EnergyStorage;
 import cofh.api.energy.IEnergyReceiver;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
-import boilerplate.api.IEnergyItem;
-import boilerplate.common.baseclasses.BaseTileWithInventory;
-import steamcraft.client.IOpenableGUI;
 import steamcraft.client.gui.GuiCharger;
-import steamcraft.client.lib.GuiIDs;
 import steamcraft.common.tiles.container.ContainerCharger;
 
 /**
@@ -121,11 +120,5 @@ public class TileCharger extends BaseTileWithInventory implements IEnergyReceive
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
 	{
 		return new ContainerCharger(player.inventory, (TileCharger)world.getTileEntity(x, y, z));
-	}
-
-	@Override
-	public int getGuiID()
-	{
-		return GuiIDs.CHARGER;
 	}
 }

@@ -12,26 +12,17 @@
  */
 package steamcraft.common.tiles;
 
+import boilerplate.api.IOpenableGUI;
+import boilerplate.common.baseclasses.BaseTileWithInventory;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.world.World;
-
 import net.minecraftforge.common.util.ForgeDirection;
-import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fluids.FluidContainerRegistry;
-import net.minecraftforge.fluids.FluidRegistry;
-import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.FluidTank;
-import net.minecraftforge.fluids.FluidTankInfo;
-import net.minecraftforge.fluids.IFluidHandler;
-
-import boilerplate.common.baseclasses.BaseTileWithInventory;
-import steamcraft.client.IOpenableGUI;
+import net.minecraftforge.fluids.*;
 import steamcraft.client.gui.GuiRefinery;
-import steamcraft.client.lib.GuiIDs;
 import steamcraft.common.blocks.machines.BlockRefinery;
 import steamcraft.common.init.InitItems;
 import steamcraft.common.tiles.container.ContainerRefinery;
@@ -238,12 +229,6 @@ public class TileRefinery extends BaseTileWithInventory implements IFluidHandler
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
 	{
 		return new ContainerRefinery(player.inventory, (TileRefinery) world.getTileEntity(x, y, z));
-	}
-
-	@Override
-	public int getGuiID()
-	{
-		return GuiIDs.REFINERY;
 	}
 
 	public boolean isCooking()

@@ -12,19 +12,19 @@
  */
 package steamcraft.common.tiles;
 
+import boilerplate.api.IOpenableGUI;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.world.World;
-import steamcraft.client.IOpenableGUI;
 import steamcraft.client.gui.GuiSteamBoiler;
-import steamcraft.client.lib.GuiIDs;
 import steamcraft.common.tiles.container.ContainerSteamBoiler;
 
 /**
  * @author Decebaldecebal
  *
  */
-public class TileSteamBoiler extends TileBaseBoiler implements IOpenableGUI {
+public class TileSteamBoiler extends TileBaseBoiler implements IOpenableGUI
+{
 	protected int getItemBurnTime()
 	{
 		if(this.inventory[0] == null)
@@ -43,11 +43,5 @@ public class TileSteamBoiler extends TileBaseBoiler implements IOpenableGUI {
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
 	{
 		return new ContainerSteamBoiler(player.inventory, (TileSteamBoiler)world.getTileEntity(x, y, z));
-	}
-
-	@Override
-	public int getGuiID()
-	{
-		return GuiIDs.STEAM_BOILER;
 	}
 }
