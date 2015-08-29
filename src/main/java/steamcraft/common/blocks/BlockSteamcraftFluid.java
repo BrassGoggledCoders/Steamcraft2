@@ -24,8 +24,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraftforge.fluids.BlockFluidClassic;
 import net.minecraftforge.fluids.Fluid;
 
-import steamcraft.common.lib.ModInfo;
 import boilerplate.common.utils.ItemStackUtils;
+import steamcraft.common.lib.ModInfo;
 
 /**
  * @author Decebaldecebal
@@ -52,7 +52,7 @@ public class BlockSteamcraftFluid extends BlockFluidClassic
 		this.stillIcon = iconRegister.registerIcon(ModInfo.PREFIX + this.texture);
 		this.flowIcon = iconRegister.registerIcon(ModInfo.PREFIX + this.texture + "_flow");
 
-		if(this.overwriteIcons)
+		if (this.overwriteIcons)
 			this.getFluid().setIcons(this.stillIcon, this.flowIcon);
 	}
 
@@ -60,7 +60,7 @@ public class BlockSteamcraftFluid extends BlockFluidClassic
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(int side, int meta)
 	{
-		if((side == 0) || (side == 1))
+		if ((side == 0) || (side == 1))
 			return this.stillIcon;
 		return this.flowIcon;
 	}

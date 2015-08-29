@@ -26,10 +26,10 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+import boilerplate.client.ClientHelper;
 import steamcraft.api.item.ModuleRegistry;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.ModInfo;
-import boilerplate.client.ClientHelper;
 
 /**
  * @author warlordjones
@@ -67,12 +67,12 @@ public class ItemWatchDisplay extends PoweredArmorModule
 	@Override
 	public void applyModuleEffect(World world, EntityPlayer player, ItemStack stack)
 	{
-		if((ClientHelper.player() == null) || (ClientHelper.screen() != null))
+		if ((ClientHelper.player() == null) || (ClientHelper.screen() != null))
 			return;
 
 		ItemStack helmet = ClientHelper.player().inventory.armorItemInSlot(3);
 
-		if((ClientHelper.settings().thirdPersonView == 0) && this.doConsumption(player, stack))
+		if ((ClientHelper.settings().thirdPersonView == 0) && this.doConsumption(player, stack))
 		{
 			Tessellator tessellator = Tessellator.instance;
 			ScaledResolution scaledResolution = ClientHelper.resolution();
@@ -95,7 +95,7 @@ public class ItemWatchDisplay extends PoweredArmorModule
 
 	private String getGeneralTime(long mcTime)
 	{
-		if((mcTime >= 0) && (mcTime <= 14000))
+		if ((mcTime >= 0) && (mcTime <= 14000))
 			return "Day";
 		else
 			return "Night";

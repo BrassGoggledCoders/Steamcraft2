@@ -15,10 +15,6 @@ package steamcraft.common.tiles.energy;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 
-import cofh.api.energy.EnergyStorage;
-import cofh.api.energy.IEnergyProvider;
-import cofh.api.energy.IEnergyReceiver;
-
 import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
@@ -27,6 +23,9 @@ import net.minecraftforge.fluids.FluidTank;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
 
+import cofh.api.energy.EnergyStorage;
+import cofh.api.energy.IEnergyProvider;
+import cofh.api.energy.IEnergyReceiver;
 import steamcraft.common.tiles.TileSteamBoiler;
 
 /**
@@ -64,15 +63,15 @@ public class TileTurbine extends TileEntity implements IFluidHandler, IEnergyPro
 	@Override
 	public void updateEntity()
 	{
-		if(!this.worldObj.isRemote)
+		if (!this.worldObj.isRemote)
 		{
-			if(this.steamTank.getFluidAmount() >= steamPerTick)
-				if(this.buffer.receiveEnergy(RFPerTick, false) == RFPerTick)
+			if (this.steamTank.getFluidAmount() >= steamPerTick)
+				if (this.buffer.receiveEnergy(RFPerTick, false) == RFPerTick)
 					this.steamTank.drain(steamPerTick, true);
-			
-			if(this.buffer.getEnergyStored() > 0)
+
+			if (this.buffer.getEnergyStored() > 0)
 			{
-				int usedEnergy = Math.min(buffer.getEnergyStored(), RFOutPerTick);
+				int usedEnergy = Math.min(this.buffer.getEnergyStored(), RFOutPerTick);
 				int outputEnergy = usedEnergy;
 
 				usedEnergy -= this.outputEnergy(ForgeDirection.UP, usedEnergy);
@@ -85,12 +84,11 @@ public class TileTurbine extends TileEntity implements IFluidHandler, IEnergyPro
 
 	private int outputEnergy(ForgeDirection dir, int usedEnergy)
 	{
-		if(usedEnergy > 0)
+		if (usedEnergy > 0)
 		{
-			TileEntity tileEntity = this.worldObj.getTileEntity(this.xCoord + dir.offsetX, this.yCoord + dir.offsetY,
-					this.zCoord + dir.offsetZ);
+			TileEntity tileEntity = this.worldObj.getTileEntity(this.xCoord + dir.offsetX, this.yCoord + dir.offsetY, this.zCoord + dir.offsetZ);
 
-			if(tileEntity instanceof IEnergyReceiver)
+			if (tileEntity instanceof IEnergyReceiver)
 				return ((IEnergyReceiver) tileEntity).receiveEnergy(dir.getOpposite(), usedEnergy, false);
 		}
 		return 0;
@@ -99,7 +97,7 @@ public class TileTurbine extends TileEntity implements IFluidHandler, IEnergyPro
 	@Override
 	public int fill(ForgeDirection from, FluidStack resource, boolean doFill)
 	{
-		if(canFill(from, resource.getFluid()))
+		if (this.canFill(from, resource.getFluid()))
 			return this.steamTank.fill(resource, doFill);
 		return 0;
 	}
@@ -119,7 +117,7 @@ public class TileTurbine extends TileEntity implements IFluidHandler, IEnergyPro
 	@Override
 	public boolean canFill(ForgeDirection from, Fluid fluid)
 	{
-		return from != ForgeDirection.DOWN && from != ForgeDirection.UP && fluid == FluidRegistry.getFluid("steam");
+		return (from != ForgeDirection.DOWN) && (from != ForgeDirection.UP) && (fluid == FluidRegistry.getFluid("steam"));
 	}
 
 	@Override
@@ -131,7 +129,7 @@ public class TileTurbine extends TileEntity implements IFluidHandler, IEnergyPro
 	@Override
 	public FluidTankInfo[] getTankInfo(ForgeDirection from)
 	{
-		if (from != ForgeDirection.DOWN && from != ForgeDirection.UP)
+		if ((from != ForgeDirection.DOWN) && (from != ForgeDirection.UP))
 			return new FluidTankInfo[] { this.steamTank.getInfo() };
 		return null;
 	}
@@ -145,7 +143,7 @@ public class TileTurbine extends TileEntity implements IFluidHandler, IEnergyPro
 	@Override
 	public int extractEnergy(ForgeDirection from, int maxExtract, boolean simulate)
 	{
-		if(this.canConnectEnergy(from))
+		if (this.canConnectEnergy(from))
 			return this.buffer.extractEnergy(maxExtract, simulate);
 		else
 			return 0;

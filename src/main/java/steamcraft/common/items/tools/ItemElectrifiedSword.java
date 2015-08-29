@@ -59,7 +59,7 @@ public class ItemElectrifiedSword extends ItemElectricTool
 	@Override
 	public void onUpdate(ItemStack stack, World par2World, Entity par3Entity, int par4, boolean par5)
 	{
-		if(((ItemElectricTool) stack.getItem()).getEnergyStored(stack) > 0)
+		if (((ItemElectricTool) stack.getItem()).getEnergyStored(stack) > 0)
 			this.changeToolDamage(stack, 7);
 		else
 			this.changeToolDamage(stack, 1.0D);

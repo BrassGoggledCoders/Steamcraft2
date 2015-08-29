@@ -56,10 +56,10 @@ public class ItemRocketLauncher extends BaseFirearm
 		tag.setBoolean("canFire", false);
 		stack.setTagCompound(tag);
 
-		if(!world.isRemote)
+		if (!world.isRemote)
 		{
-			world.spawnEntityInWorld(new EntityRocket(world, player, this.ammo.getDamage(player.inventory.getStackInSlot(InventoryUtils.isInPlayerInventory(
-					player, this.ammo))), 10));
+			world.spawnEntityInWorld(new EntityRocket(world, player,
+					this.ammo.getDamage(player.inventory.getStackInSlot(InventoryUtils.isInPlayerInventory(player, this.ammo))), 10));
 			world.playSoundAtEntity(player, this.fireSound, 0.6F, 1.0F);
 		}
 		player.inventory.consumeInventoryItem(this.ammo);
@@ -67,13 +67,14 @@ public class ItemRocketLauncher extends BaseFirearm
 
 	@Override
 	/**
-	 * called when the player releases the use item button. Args: itemstack, world, entityplayer, itemInUseCount
+	 * called when the player releases the use item button. Args: itemstack,
+	 * world, entityplayer, itemInUseCount
 	 */
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
 	{
 		NBTTagCompound tag = stack.getTagCompound();
 
-		if((tag.getShort("reloadTime") == 0) && player.inventory.hasItem(this.ammo))
+		if ((tag.getShort("reloadTime") == 0) && player.inventory.hasItem(this.ammo))
 			this.shotBullet(stack, world, player);
 		return stack;
 	}

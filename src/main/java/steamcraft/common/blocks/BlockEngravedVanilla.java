@@ -43,7 +43,7 @@ public class BlockEngravedVanilla extends BlockEngravedSolid
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(final int side, final int metadata)
 	{
-		if(metadata < this.icon.length)
+		if (metadata < this.icon.length)
 			return this.icon[metadata];
 		else
 			return this.icon[0];
@@ -65,7 +65,7 @@ public class BlockEngravedVanilla extends BlockEngravedSolid
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(Item item, CreativeTabs tab, List l)
 	{
-		for(int var4 = 0; var4 < this.icon.length; ++var4)
+		for (int var4 = 0; var4 < this.icon.length; ++var4)
 			l.add(new ItemStack(InitBlocks.blockEngravedVanilla, 1, var4));
 	}
 

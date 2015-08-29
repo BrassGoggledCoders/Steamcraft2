@@ -41,20 +41,22 @@ public class BlockCapacitor extends BaseContainerBlock
 
 	/*
 	 * @Override public int getRenderType() { return RenderIDs.blockBatteryRI; }
+	 * 
 	 * @Override public boolean isOpaqueCube() { return false; }
+	 * 
 	 * @Override public boolean renderAsNormalBlock() { return false; }
 	 */
 
 	@Override
 	public boolean onBlockActivated(World world, int par2, int par3, int par4, EntityPlayer player, int par6, float par7, float par8, float par9)
 	{
-		if(world.isRemote)
+		if (world.isRemote)
 			return true;
 		else
 		{
 			TileEntity tile = world.getTileEntity(par2, par3, par4);
 
-			if((tile == null) || player.isSneaking())
+			if ((tile == null) || player.isSneaking())
 				return false;
 
 			player.openGui(Steamcraft.instance, GuiIDs.CAPACITOR, world, par2, par3, par4);

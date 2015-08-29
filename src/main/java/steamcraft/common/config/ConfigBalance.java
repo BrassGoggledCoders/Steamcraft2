@@ -33,7 +33,7 @@ public class ConfigBalance
 
 	public static void initialize(File configFile)
 	{
-		if(config == null)
+		if (config == null)
 			config = new Configuration(configFile);
 
 		config.load();
@@ -48,11 +48,13 @@ public class ConfigBalance
 		numberOfDustsFromOre = config.get(CATEGORY_RECIPE_OPTIONS, "Number of dusts produced from hammering an ore block", 2).getInt();
 		numberOfDustsFromMetal = config.get(CATEGORY_RECIPE_OPTIONS, "Number of dusts produced from grinding an ingot/sheet", 1).getInt();
 
-		lightningRodHitChance = config.get(CATEGORY_ENERGY, "Chance of Lightning hitting Lightning Rods every tick. It's 1/value here", 3000).getInt();
+		lightningRodHitChance = config.get(CATEGORY_ENERGY, "Chance of Lightning hitting Lightning Rods every tick. It's 1/value here", 3000)
+				.getInt();
 		lightningRodEnergyProduction = config.get(CATEGORY_ENERGY, "Energy produced per lightning strike by Lightning Rod", 10000).getInt();
-		// lightningRodProduceEnergyOnNaturalStrike = config.get(CATEGORY_ENERGY)
+		// lightningRodProduceEnergyOnNaturalStrike =
+		// config.get(CATEGORY_ENERGY)
 
-		if(config.hasChanged())
+		if (config.hasChanged())
 			config.save();
 	}
 }

@@ -62,7 +62,7 @@ public class ItemGogglesModule extends PoweredArmorModule
 	@Override
 	public void applyModuleEffect(World world, EntityPlayer player, ItemStack stack)
 	{
-		if(this.doConsumption(player, stack))
+		if (this.doConsumption(player, stack))
 			player.addPotionEffect(new PotionEffect(Potion.nightVision.id, 3, 1, true));
 	}
 

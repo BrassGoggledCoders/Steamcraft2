@@ -32,7 +32,7 @@ public class BlockInfestedGrass extends BlockGrass
 	@Override
 	public void onBlockDestroyedByPlayer(World world, int p_149664_2_, int p_149664_3_, int p_149664_4_, int p_149664_5_)
 	{
-		if(!world.isRemote && (world.rand.nextInt(10) == 0))
+		if (!world.isRemote && (world.rand.nextInt(10) == 0))
 		{
 			EntityGrub grub = new EntityGrub(world);
 			grub.setLocationAndAngles(p_149664_2_ + 0.5D, p_149664_3_, p_149664_4_ + 0.5D, 0.0F, 0.0F);

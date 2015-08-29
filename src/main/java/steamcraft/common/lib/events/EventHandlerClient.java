@@ -36,8 +36,6 @@ import net.minecraft.util.MovingObjectPosition.MovingObjectType;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 
-import cofh.api.energy.IEnergyHandler;
-
 import cpw.mods.fml.common.eventhandler.EventPriority;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.InputEvent.KeyInputEvent;
@@ -50,6 +48,9 @@ import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.common.util.ForgeDirection;
 
+import boilerplate.client.ClientHelper;
+import boilerplate.common.baseclasses.BaseTileWithInventory;
+import cofh.api.energy.IEnergyHandler;
 import org.apache.commons.lang3.StringUtils;
 import org.lwjgl.opengl.GL11;
 import steamcraft.api.vanity.IVanityItem;
@@ -63,8 +64,6 @@ import steamcraft.common.init.InitPackets;
 import steamcraft.common.lib.LibInfo;
 import steamcraft.common.lib.ModInfo;
 import steamcraft.common.packets.OpenContainerFromClientPacket;
-import boilerplate.client.ClientHelper;
-import boilerplate.common.baseclasses.BaseTileWithInventory;
 
 public class EventHandlerClient
 {
@@ -73,7 +72,7 @@ public class EventHandlerClient
 	@SideOnly(Side.CLIENT)
 	public void zoom(FOVUpdateEvent event)
 	{
-		if((event.entity.inventory.getCurrentItem() != null) && (event.entity.inventory.getCurrentItem().getItem() == InitItems.itemSpyglass))
+		if ((event.entity.inventory.getCurrentItem() != null) && (event.entity.inventory.getCurrentItem().getItem() == InitItems.itemSpyglass))
 		{
 			event.newfov = (float) ConfigGeneral.spyglassZoom;
 		}
@@ -85,7 +84,7 @@ public class EventHandlerClient
 	{
 		HashMap<String, KeyBinding> keyBindings = ClientProxy.keyBindings;
 
-		if(keyBindings.get("vanity").isPressed())
+		if (keyBindings.get("vanity").isPressed())
 		{
 			EntityPlayer player = ClientHelper.player();
 			InitPackets.network.sendToServer(new OpenContainerFromClientPacket(player.getEntityId(), GuiIDs.VANITY, player.dimension));
@@ -96,19 +95,19 @@ public class EventHandlerClient
 	@SubscribeEvent(receiveCanceled = true)
 	public void onPlayerRender(RenderPlayerEvent.Specials.Post event)
 	{
-		if(event.entityLiving.getActivePotionEffect(Potion.invisibility) != null)
+		if (event.entityLiving.getActivePotionEffect(Potion.invisibility) != null)
 			return;
 
 		EntityPlayerExtended props = ((EntityPlayerExtended) event.entityPlayer.getExtendedProperties(EntityPlayerExtended.EXT_PROP_NAME));
 		InventoryVanity inventory = props.getInventory();
-		for(int i = 0; i < inventory.getSizeInventory(); i++)
+		for (int i = 0; i < inventory.getSizeInventory(); i++)
 		{
-			if(inventory.getStackInSlot(i) != null)
+			if (inventory.getStackInSlot(i) != null)
 			{
 				EntityPlayer p = event.entityPlayer;
 				IVanityItem item = (IVanityItem) inventory.getStackInSlot(i).getItem();
 				ModelBase model = item.getVanityItemModel();
-				if(Arrays.asList(LibInfo.names).contains(p.getUniqueID().toString()))
+				if (Arrays.asList(LibInfo.names).contains(p.getUniqueID().toString()))
 				{
 					ClientHelper.textureManager().bindTexture(new ResourceLocation(ModInfo.PREFIX + "/textures/models/vanity/tophat-gold.png"));
 				}
@@ -124,11 +123,18 @@ public class EventHandlerClient
 
 	/*
 	 * @SubscribeEvent
-	 * @SideOnly(Side.CLIENT) // hacky hack to make the texture work in BC tanks. public void textureHook(TextureStitchEvent.Post event) {
-	 * if(event.map.getTextureType() == 0) { InitBlocks.steamFluid.setIcons(InitBlocks.blockSteam.getBlockTextureFromSide(1));
-	 * InitBlocks.boilingWaterFluid.setIcons(InitBlocks.blockBoilingWater.getBlockTextureFromSide(1));
-	 * InitBlocks.boilingMudFluid.setIcons(InitBlocks.blockBoilingMud.getBlockTextureFromSide(1)); //
-	 * InitBlocks.whaleOilFluid.setIcons(InitBlocks.blockWhaleOil.getBlockTextureFromSide(1)); } }
+	 * 
+	 * @SideOnly(Side.CLIENT) // hacky hack to make the texture work in BC
+	 * tanks. public void textureHook(TextureStitchEvent.Post event) {
+	 * if(event.map.getTextureType() == 0) {
+	 * InitBlocks.steamFluid.setIcons(InitBlocks.blockSteam.
+	 * getBlockTextureFromSide(1));
+	 * InitBlocks.boilingWaterFluid.setIcons(InitBlocks.blockBoilingWater.
+	 * getBlockTextureFromSide(1));
+	 * InitBlocks.boilingMudFluid.setIcons(InitBlocks.blockBoilingMud.
+	 * getBlockTextureFromSide(1)); //
+	 * InitBlocks.whaleOilFluid.setIcons(InitBlocks.blockWhaleOil.
+	 * getBlockTextureFromSide(1)); } }
 	 */
 
 	// TODO seems to me like this is a nasty way of doing things
@@ -142,10 +148,10 @@ public class EventHandlerClient
 	@SideOnly(Side.CLIENT)
 	public void renderOverlay(RenderGameOverlayEvent.Text event)
 	{
-		if((this.player != null) && (this.player.inventory.armorItemInSlot(3) != null))
+		if ((this.player != null) && (this.player.inventory.armorItemInSlot(3) != null))
 		{
 			ItemStack helmet = this.player.inventory.armorItemInSlot(3);
-			if((helmet != null) && (helmet.getItem() == InitItems.itemMonocle))
+			if ((helmet != null) && (helmet.getItem() == InitItems.itemMonocle))
 			{
 				ScaledResolution res = ClientHelper.resolution();
 				FontRenderer fontRenderer = ClientHelper.fontRenderer();
@@ -165,33 +171,34 @@ public class EventHandlerClient
 
 				int color = 0xCCFF00;
 
-				if((this.block != null) && !this.player.worldObj.isAirBlock(this.x, this.y, this.z))
+				if ((this.block != null) && !this.player.worldObj.isAirBlock(this.x, this.y, this.z))
 				{
 					fontRenderer.drawString("Block: " + this.block.getUnlocalizedName().substring(5), posX, posY, color);
-					fontRenderer.drawString("Metadata: " + this.block.getDamageValue(ClientHelper.world(), this.x, this.y, this.z), posX, posY2, color);
-					fontRenderer.drawString("Hardness: " + this.block.getBlockHardness(ClientHelper.world(), this.x, this.y, this.z), posX, posY3, color);
+					fontRenderer.drawString("Metadata: " + this.block.getDamageValue(ClientHelper.world(), this.x, this.y, this.z), posX, posY2,
+							color);
+					fontRenderer.drawString("Hardness: " + this.block.getBlockHardness(ClientHelper.world(), this.x, this.y, this.z), posX, posY3,
+							color);
 					fontRenderer.drawString("Light Value: " + this.block.getLightValue(), posX, posY4, color);
 					// TODO
-					if(this.block instanceof BlockContainer)
+					if (this.block instanceof BlockContainer)
 					{
-						if(this.tile instanceof IEnergyHandler)
+						if (this.tile instanceof IEnergyHandler)
 						{
 							IEnergyHandler energytile = (IEnergyHandler) this.tile;
-							fontRenderer.drawString(
-									"Energy: " + Integer.toString(energytile.getEnergyStored(ForgeDirection.UP)) + "/"
-											+ Integer.toString(energytile.getMaxEnergyStored(ForgeDirection.UP)) + "RF", posX, posY5, color);
+							fontRenderer.drawString("Energy: " + Integer.toString(energytile.getEnergyStored(ForgeDirection.UP)) + "/"
+									+ Integer.toString(energytile.getMaxEnergyStored(ForgeDirection.UP)) + "RF", posX, posY5, color);
 						}
 						// TODO
-						if(this.tile instanceof BaseTileWithInventory)
+						if (this.tile instanceof BaseTileWithInventory)
 						{
 							BaseTileWithInventory te = (BaseTileWithInventory) this.tile;
 
-							if(te.inventory.length < 0)
+							if (te.inventory.length < 0)
 							{
 
 								String[] names = new String[te.inventory.length];
 
-								for(int i = 0; i < te.inventory.length; i++)
+								for (int i = 0; i < te.inventory.length; i++)
 								{
 									names[i] = te.inventory[i].getUnlocalizedName();
 								}
@@ -200,11 +207,11 @@ public class EventHandlerClient
 						}
 					}
 					String docs = StatCollector.translateToLocal(this.block.getUnlocalizedName() + ".documentation");
-					if(!docs.contains("tile"))
+					if (!docs.contains("tile"))
 						fontRenderer.drawSplitString(docs, posX, posY8, 100, color);
 				}
 
-				if(this.entity != null)
+				if (this.entity != null)
 				{
 					fontRenderer.drawString("Entity: " + this.entity.getCommandSenderName(), posX, posY, color);
 					fontRenderer.drawString("ID: " + this.entity.getEntityId(), posX, posY2, color);
@@ -220,12 +227,13 @@ public class EventHandlerClient
 	@SideOnly(Side.CLIENT)
 	public void onDrawBlockSelectionBox(DrawBlockHighlightEvent event)
 	{
-		if((event.player.inventory.armorItemInSlot(3) != null) && (event.player.inventory.armorItemInSlot(3).getItem() == InitItems.itemBrassGoggles))
+		if ((event.player.inventory.armorItemInSlot(3) != null)
+				&& (event.player.inventory.armorItemInSlot(3).getItem() == InitItems.itemBrassGoggles))
 		{
 			this.drawSelectionBox(event.player, event.target, 0, event.currentItem, event.partialTicks);
 			// event.setCanceled(true);
 		}
-		else if((event.player.inventory.armorItemInSlot(3) != null)
+		else if ((event.player.inventory.armorItemInSlot(3) != null)
 				&& (event.player.inventory.armorItemInSlot(3).getItem() == InitItems.itemMonocle))
 		{
 			this.drawSelectionBox(event.player, event.target, 0, event.currentItem, event.partialTicks);
@@ -242,7 +250,7 @@ public class EventHandlerClient
 
 	private void drawSelectionBox(EntityPlayer player, MovingObjectPosition mop, int i, ItemStack is, float partialTicks)
 	{
-		if((i == 0) && (mop.typeOfHit == MovingObjectType.BLOCK))
+		if ((i == 0) && (mop.typeOfHit == MovingObjectType.BLOCK))
 		{
 			GL11.glEnable(GL11.GL_BLEND);
 			GL11.glColor4f(0.0F, 1.0F, 0.0F, 1.0F);
@@ -252,7 +260,7 @@ public class EventHandlerClient
 			float offset = 0.002F;
 			Block block = player.worldObj.getBlock(mop.blockX, mop.blockY, mop.blockZ);
 
-			if(block != Blocks.air)
+			if (block != Blocks.air)
 			{
 				block.setBlockBoundsBasedOnState(player.worldObj, mop.blockX, mop.blockY, mop.blockZ);
 				double dx = player.lastTickPosX + ((player.posX - player.lastTickPosX) * partialTicks);
@@ -267,7 +275,7 @@ public class EventHandlerClient
 			GL11.glDisable(GL11.GL_BLEND);
 		}
 
-		if((i == 0) && (mop.typeOfHit == MovingObjectType.ENTITY))
+		if ((i == 0) && (mop.typeOfHit == MovingObjectType.ENTITY))
 		{
 			GL11.glEnable(GL11.GL_BLEND);
 			GL11.glColor4f(0.0F, 1.0F, 0.0F, 1.0F);
@@ -277,7 +285,7 @@ public class EventHandlerClient
 			float offset = 0.002F;
 			Entity entity = mop.entityHit;
 
-			if(entity != null)
+			if (entity != null)
 			{
 				entity.setPosition(entity.posX, entity.posY, entity.posZ);
 				double dx = player.lastTickPosX + ((player.posX - player.lastTickPosX) * partialTicks);
@@ -289,7 +297,7 @@ public class EventHandlerClient
 			GL11.glDepthMask(true);
 			GL11.glEnable(GL11.GL_TEXTURE_2D);
 			GL11.glDisable(GL11.GL_BLEND);
-			if(entity instanceof EntityLiving)
+			if (entity instanceof EntityLiving)
 				this.entity = (EntityLiving) mop.entityHit;
 		}
 	}
@@ -329,14 +337,13 @@ public class EventHandlerClient
 	{
 		ResourceLocation overlay = new ResourceLocation(ModInfo.PREFIX + "textures/misc/spyglass.png");
 
-		if(event.type != RenderGameOverlayEvent.ElementType.HELMET)
+		if (event.type != RenderGameOverlayEvent.ElementType.HELMET)
 			return;
 
 		EntityClientPlayerMP player = ClientHelper.player();
 
-		if((player != null) && (ClientHelper.screen() == null) &&
-				(player.inventory.getCurrentItem() != null) && (player.inventory.
-						getCurrentItem().getItem() == InitItems.itemSpyglass) && (ClientHelper.settings().thirdPersonView == 0))
+		if ((player != null) && (ClientHelper.screen() == null) && (player.inventory.getCurrentItem() != null)
+				&& (player.inventory.getCurrentItem().getItem() == InitItems.itemSpyglass) && (ClientHelper.settings().thirdPersonView == 0))
 		{
 			GL11.glDisable(GL11.GL_ALPHA_TEST);
 			GL11.glDisable(GL11.GL_DEPTH_TEST);

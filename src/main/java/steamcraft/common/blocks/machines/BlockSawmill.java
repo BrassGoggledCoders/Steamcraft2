@@ -24,7 +24,9 @@ import steamcraft.common.tiles.TileSawmill;
 public class BlockSawmill extends BaseContainerBlock
 {
 	/*
-	 * TODO - Only Works on X Axis - Does not support dark oak/acacia wood. - Model - Should take time to saw - Plank blocks share number of planks & meta.
+	 * TODO - Only Works on X Axis - Does not support dark oak/acacia wood. -
+	 * Model - Should take time to saw - Plank blocks share number of planks &
+	 * meta.
 	 */
 	public BlockSawmill(Material mat)
 	{
@@ -42,16 +44,16 @@ public class BlockSawmill extends BaseContainerBlock
 	{
 		int l = MathHelper.floor_double(((living.rotationYaw * 4.0F) / 360.0F) + 0.5D) & 3;
 
-		if(l == 0)
+		if (l == 0)
 			world.setBlockMetadataWithNotify(x, y, z, 0, 2);
 
-		if(l == 1)
+		if (l == 1)
 			world.setBlockMetadataWithNotify(x, y, z, 1, 2);
 
-		if(l == 2)
+		if (l == 2)
 			world.setBlockMetadataWithNotify(x, y, z, 3, 2);
 
-		if(l == 3)
+		if (l == 3)
 			world.setBlockMetadataWithNotify(x, y, z, 4, 2);
 
 		super.onBlockPlacedBy(world, x, y, z, living, stack);

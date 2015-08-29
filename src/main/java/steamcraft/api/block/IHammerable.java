@@ -20,7 +20,8 @@ public interface IHammerable
 {
 
 	/**
-	 * Gets the output when the Drop Hammer (NYI) is used on the implementing Block
+	 * Gets the output when the Drop Hammer (NYI) is used on the implementing
+	 * Block
 	 *
 	 * @param meta
 	 *            the meta

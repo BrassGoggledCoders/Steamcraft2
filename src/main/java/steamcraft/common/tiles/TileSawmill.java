@@ -27,34 +27,35 @@ public class TileSawmill extends TileEntity
 		int logPosZ = this.zCoord;
 		int plankPosX = this.xCoord;
 		int plankPosZ = this.zCoord;
-		switch(this.blockMetadata)
+		switch (this.blockMetadata)
 		{
-			case 0:
-				logPosX = this.xCoord - 1;
-				plankPosX = this.xCoord + 1;
-				break;
-			case 1:
-				logPosX = this.xCoord + 1;
-				plankPosX = this.xCoord - 1;
-				break;
-			case 2:
-				logPosZ = this.zCoord - 1;
-				plankPosZ = this.zCoord + 1;
-				break;
-			case 3:
-				logPosZ = this.zCoord + 1;
-				plankPosZ = this.zCoord - 1;
-				break;
+		case 0:
+			logPosX = this.xCoord - 1;
+			plankPosX = this.xCoord + 1;
+			break;
+		case 1:
+			logPosX = this.xCoord + 1;
+			plankPosX = this.xCoord - 1;
+			break;
+		case 2:
+			logPosZ = this.zCoord - 1;
+			plankPosZ = this.zCoord + 1;
+			break;
+		case 3:
+			logPosZ = this.zCoord + 1;
+			plankPosZ = this.zCoord - 1;
+			break;
 		}
-		if((this.worldObj.getBlock(logPosX, this.yCoord, logPosZ) == Blocks.log) || (this.worldObj.getBlock(logPosX, this.yCoord, logPosZ) == Blocks.log2))
+		if ((this.worldObj.getBlock(logPosX, this.yCoord, logPosZ) == Blocks.log)
+				|| (this.worldObj.getBlock(logPosX, this.yCoord, logPosZ) == Blocks.log2))
 		{
-			if(this.worldObj.isAirBlock(plankPosX, this.yCoord, plankPosZ))
+			if (this.worldObj.isAirBlock(plankPosX, this.yCoord, plankPosZ))
 			{
 				int meta = this.worldObj.getBlockMetadata(logPosX, this.yCoord, logPosZ);
 				this.worldObj.setBlockToAir(logPosX, this.yCoord, logPosZ);
 				this.worldObj.setBlock(plankPosX, this.yCoord, plankPosZ, InitBlocks.blockPlankStack);
 				BlockPlankStack stack = (BlockPlankStack) this.worldObj.getBlock(plankPosX, this.yCoord, plankPosZ);
-				if(this.worldObj.getBlock(logPosX, this.yCoord, logPosZ) == Blocks.log2)
+				if (this.worldObj.getBlock(logPosX, this.yCoord, logPosZ) == Blocks.log2)
 					this.worldObj.setBlockMetadataWithNotify(this.xCoord - 1, this.yCoord, this.zCoord, meta + 4, 2);
 				else
 					this.worldObj.setBlockMetadataWithNotify(this.xCoord - 1, this.yCoord, this.zCoord, meta, 2);

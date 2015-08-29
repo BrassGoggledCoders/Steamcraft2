@@ -24,9 +24,9 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+import boilerplate.client.utils.EffectUtils;
 import steamcraft.api.block.IChiselable;
 import steamcraft.common.init.InitBlocks;
-import boilerplate.client.utils.EffectUtils;
 
 /**
  * @author warlordjones

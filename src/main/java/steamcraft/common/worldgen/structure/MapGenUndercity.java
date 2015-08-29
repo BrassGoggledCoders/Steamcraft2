@@ -38,11 +38,11 @@ public class MapGenUndercity extends MapGenStructure
 
 	public MapGenUndercity(Map p_i2034_1_)
 	{
-		for(Object obj : p_i2034_1_.entrySet())
+		for (Object obj : p_i2034_1_.entrySet())
 		{
 			Entry entry = (Entry) obj;
 
-			if((entry.getKey()).equals("chance"))
+			if ((entry.getKey()).equals("chance"))
 			{
 				this.field_82673_e = MathHelper.parseDoubleWithDefault((String) entry.getValue(), this.field_82673_e);
 			}
@@ -70,9 +70,9 @@ public class MapGenUndercity extends MapGenStructure
 		long l = this.rand.nextLong();
 		long i1 = this.rand.nextLong();
 
-		for(int j1 = chunkX - k; j1 <= (chunkX + k); ++j1)
+		for (int j1 = chunkX - k; j1 <= (chunkX + k); ++j1)
 		{
-			for(int k1 = chunkZ - k; k1 <= (chunkZ + k); ++k1)
+			for (int k1 = chunkZ - k; k1 <= (chunkZ + k); ++k1)
 			{
 				long l1 = j1 * l;
 				long i2 = k1 * i1;

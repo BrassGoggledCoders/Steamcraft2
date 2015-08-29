@@ -8,12 +8,14 @@
  */
 package steamcraft.api.item;
 
-import boilerplate.common.baseclasses.items.RootItem;
-import cpw.mods.fml.common.Optional;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityMinecart;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+
+import cpw.mods.fml.common.Optional;
+
+import boilerplate.common.baseclasses.items.RootItem;
 
 /**
  * @author decebaldecebal
@@ -81,7 +83,7 @@ public abstract class UniversalWrench extends RootItem implements IUniversalWren
 	@Optional.Method(modid = "Railcraft")
 	public boolean canBoost(EntityPlayer player, ItemStack crowbar, EntityMinecart cart)
 	{
-		return !canLink(player, crowbar, cart);
+		return !this.canLink(player, crowbar, cart);
 	}
 
 	@Override

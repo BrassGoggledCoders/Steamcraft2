@@ -57,11 +57,11 @@ public class ItemTimeClock extends BaseItem
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World world, EntityPlayer player, int useCount)
 	{
-		if(!world.isRemote)
+		if (!world.isRemote)
 		{
-			if(useCount <= 5)
+			if (useCount <= 5)
 			{
-				if(ClientHelper.isShiftKeyDown())
+				if (ClientHelper.isShiftKeyDown())
 				{
 					ChatComponentText text = new ChatComponentText("Time set to Night");
 					player.addChatComponentMessage(text);
@@ -92,7 +92,7 @@ public class ItemTimeClock extends BaseItem
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
 	{
-		if(player.inventory.hasItem(Items.ender_eye))
+		if (player.inventory.hasItem(Items.ender_eye))
 			player.setItemInUse(stack, this.getMaxItemUseDuration(stack));
 
 		return stack;
@@ -101,7 +101,7 @@ public class ItemTimeClock extends BaseItem
 	@SideOnly(Side.CLIENT)
 	public IIcon getItemIconForUseDuration(int use)
 	{
-		if(use > 70000)
+		if (use > 70000)
 		{
 			return this.readyIcon;
 		}

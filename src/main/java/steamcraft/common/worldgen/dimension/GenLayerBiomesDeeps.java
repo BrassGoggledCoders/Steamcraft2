@@ -33,12 +33,13 @@ public class GenLayerBiomesDeeps extends GenLayer
 	{
 		int[] dest = IntCache.getIntCache(width * depth);
 
-		for(int dz = 0; dz < depth; dz++)
+		for (int dz = 0; dz < depth; dz++)
 		{
-			for(int dx = 0; dx < width; dx++)
+			for (int dx = 0; dx < width; dx++)
 			{
 				this.initChunkSeed(dx + x, dz + z);
-				dest[(dx + (dz * width))] = WorldChunkManagerDeeps.myBiomesToSpawnIn.get(this.nextInt(WorldChunkManagerDeeps.myBiomesToSpawnIn.size())).biomeID;
+				dest[(dx + (dz * width))] = WorldChunkManagerDeeps.myBiomesToSpawnIn
+						.get(this.nextInt(WorldChunkManagerDeeps.myBiomesToSpawnIn.size())).biomeID;
 			}
 		}
 		return dest;

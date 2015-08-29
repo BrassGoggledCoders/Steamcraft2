@@ -22,10 +22,10 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-import steamcraft.api.item.IArmorModule;
-import steamcraft.api.item.ModuleRegistry;
 import boilerplate.client.ClientHelper;
 import boilerplate.common.baseclasses.items.RootItem;
+import steamcraft.api.item.IArmorModule;
+import steamcraft.api.item.ModuleRegistry;
 
 public abstract class BaseArmorModule extends RootItem implements IArmorModule
 {

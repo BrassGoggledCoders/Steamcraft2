@@ -49,14 +49,16 @@ public class GuiNuclearBoiler extends BaseContainerGui
 		this.mc.renderEngine.bindTexture(guitexture);
 		this.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize);
 
-		if(this.boiler.isBurning())
+		if (this.boiler.isBurning())
 		{
 			int burnTime = this.boiler.getBurnTimeRemainingScaled(12);
 			this.drawTexturedModalRect(this.guiLeft + 43, (this.guiTop + 48) - burnTime, 176, 12 - burnTime, 14, burnTime + 2);
 		}
 
-		this.drawFluid(new FluidStack(FluidRegistry.getFluid("water"), 0), this.boiler.getScaledWaterLevel(60), this.guiLeft + 8, this.guiTop + 18, 20, 60);
-		this.drawFluid(new FluidStack(FluidRegistry.getFluid("steam"), 0), this.boiler.getScaledSteamLevel(60), this.guiLeft + 74, this.guiTop + 18, 32, 60);
+		this.drawFluid(new FluidStack(FluidRegistry.getFluid("water"), 0), this.boiler.getScaledWaterLevel(60), this.guiLeft + 8, this.guiTop + 18,
+				20, 60);
+		this.drawFluid(new FluidStack(FluidRegistry.getFluid("steam"), 0), this.boiler.getScaledSteamLevel(60), this.guiLeft + 74, this.guiTop + 18,
+				32, 60);
 
 		this.mc.renderEngine.bindTexture(guitexture);
 		this.drawTexturedModalRect(this.guiLeft + 8, this.guiTop + 24, 176, 14, 20, 49);
@@ -66,10 +68,10 @@ public class GuiNuclearBoiler extends BaseContainerGui
 	@Override
 	protected void drawGuiContainerForegroundLayer(int x, int y)
 	{
-		if(((y - this.guiTop) >= 18) && ((y - this.guiTop) <= 78))
-			if(((x - this.guiLeft) >= 8) && ((x - this.guiLeft) <= 28))
+		if (((y - this.guiTop) >= 18) && ((y - this.guiTop) <= 78))
+			if (((x - this.guiLeft) >= 8) && ((x - this.guiLeft) <= 28))
 				this.drawFluidInfo(this.boiler.waterTank, x, y);
-			else if(((x - this.guiLeft) >= 74) && ((x - this.guiLeft) <= 106))
+			else if (((x - this.guiLeft) >= 74) && ((x - this.guiLeft) <= 106))
 				this.drawFluidInfo(this.boiler.steamTank, x, y);
 	}
 }

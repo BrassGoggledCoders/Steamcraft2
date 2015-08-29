@@ -31,7 +31,7 @@ public class TileTrunkRenderer extends TileEntitySpecialRenderer
 	{
 		int i;
 
-		if(!p_147500_1_.hasWorldObj())
+		if (!p_147500_1_.hasWorldObj())
 		{
 			i = 0;
 		}
@@ -40,15 +40,15 @@ public class TileTrunkRenderer extends TileEntitySpecialRenderer
 			Block block = p_147500_1_.getBlockType();
 			i = p_147500_1_.getBlockMetadata();
 
-			if((block instanceof BlockTrunk) && (i == 0))
+			if ((block instanceof BlockTrunk) && (i == 0))
 			{
 				try
 				{
 					((BlockTrunk) block).func_149954_e(p_147500_1_.getWorldObj(), p_147500_1_.xCoord, p_147500_1_.yCoord, p_147500_1_.zCoord);
-				}
-				catch(ClassCastException e)
+				} catch (ClassCastException e)
 				{
-					FMLLog.severe("Attempted to render a chest at %d,  %d, %d that was not a chest", p_147500_1_.xCoord, p_147500_1_.yCoord, p_147500_1_.zCoord);
+					FMLLog.severe("Attempted to render a chest at %d,  %d, %d that was not a chest", p_147500_1_.xCoord, p_147500_1_.yCoord,
+							p_147500_1_.zCoord);
 				}
 				i = p_147500_1_.getBlockMetadata();
 			}
@@ -56,11 +56,11 @@ public class TileTrunkRenderer extends TileEntitySpecialRenderer
 			p_147500_1_.checkForAdjacentChests();
 		}
 
-		if((p_147500_1_.adjacentChestZNeg == null) && (p_147500_1_.adjacentChestXNeg == null))
+		if ((p_147500_1_.adjacentChestZNeg == null) && (p_147500_1_.adjacentChestXNeg == null))
 		{
 			ModelChest modelchest;
 
-			if((p_147500_1_.adjacentChestXPos == null) && (p_147500_1_.adjacentChestZPos == null))
+			if ((p_147500_1_.adjacentChestXPos == null) && (p_147500_1_.adjacentChestZPos == null))
 			{
 				modelchest = this.field_147510_h;
 
@@ -82,32 +82,32 @@ public class TileTrunkRenderer extends TileEntitySpecialRenderer
 			GL11.glTranslatef(0.5F, 0.5F, 0.5F);
 			short short1 = 0;
 
-			if(i == 2)
+			if (i == 2)
 			{
 				short1 = 180;
 			}
 
-			if(i == 3)
+			if (i == 3)
 			{
 				short1 = 0;
 			}
 
-			if(i == 4)
+			if (i == 4)
 			{
 				short1 = 90;
 			}
 
-			if(i == 5)
+			if (i == 5)
 			{
 				short1 = -90;
 			}
 
-			if((i == 2) && (p_147500_1_.adjacentChestXPos != null))
+			if ((i == 2) && (p_147500_1_.adjacentChestXPos != null))
 			{
 				GL11.glTranslatef(1.0F, 0.0F, 0.0F);
 			}
 
-			if((i == 5) && (p_147500_1_.adjacentChestZPos != null))
+			if ((i == 5) && (p_147500_1_.adjacentChestZPos != null))
 			{
 				GL11.glTranslatef(0.0F, 0.0F, -1.0F);
 			}
@@ -117,23 +117,23 @@ public class TileTrunkRenderer extends TileEntitySpecialRenderer
 			float f1 = p_147500_1_.prevLidAngle + ((p_147500_1_.lidAngle - p_147500_1_.prevLidAngle) * p_147500_8_);
 			float f2;
 
-			if(p_147500_1_.adjacentChestZNeg != null)
+			if (p_147500_1_.adjacentChestZNeg != null)
 			{
-				f2 = p_147500_1_.adjacentChestZNeg.prevLidAngle + ((p_147500_1_.adjacentChestZNeg.lidAngle - p_147500_1_.adjacentChestZNeg.prevLidAngle)
-						* p_147500_8_);
+				f2 = p_147500_1_.adjacentChestZNeg.prevLidAngle
+						+ ((p_147500_1_.adjacentChestZNeg.lidAngle - p_147500_1_.adjacentChestZNeg.prevLidAngle) * p_147500_8_);
 
-				if(f2 > f1)
+				if (f2 > f1)
 				{
 					f1 = f2;
 				}
 			}
 
-			if(p_147500_1_.adjacentChestXNeg != null)
+			if (p_147500_1_.adjacentChestXNeg != null)
 			{
-				f2 = p_147500_1_.adjacentChestXNeg.prevLidAngle + ((p_147500_1_.adjacentChestXNeg.lidAngle - p_147500_1_.adjacentChestXNeg.prevLidAngle)
-						* p_147500_8_);
+				f2 = p_147500_1_.adjacentChestXNeg.prevLidAngle
+						+ ((p_147500_1_.adjacentChestXNeg.lidAngle - p_147500_1_.adjacentChestXNeg.prevLidAngle) * p_147500_8_);
 
-				if(f2 > f1)
+				if (f2 > f1)
 				{
 					f1 = f2;
 				}

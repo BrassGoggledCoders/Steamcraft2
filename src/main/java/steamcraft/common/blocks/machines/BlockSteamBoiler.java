@@ -51,13 +51,13 @@ public class BlockSteamBoiler extends BlockBaseBoiler
 	@Override
 	public boolean onBlockActivated(World world, int par2, int par3, int par4, EntityPlayer player, int par6, float par7, float par8, float par9)
 	{
-		if(world.isRemote)
+		if (world.isRemote)
 			return true;
 		else
 		{
 			TileSteamBoiler tile = (TileSteamBoiler) world.getTileEntity(par2, par3, par4);
 
-			if((tile == null) || player.isSneaking())
+			if ((tile == null) || player.isSneaking())
 				return false;
 
 			player.openGui(Steamcraft.instance, GuiIDs.STEAM_BOILER, world, par2, par3, par4);
@@ -70,7 +70,7 @@ public class BlockSteamBoiler extends BlockBaseBoiler
 	public void randomDisplayTick(World world, int par2, int par3, int par4, Random par5Random)
 	{
 		int l = world.getBlockMetadata(par2, par3, par4);
-		if(l >= 7)
+		if (l >= 7)
 		{
 			float f = par2 + 0.5F;
 			float f1 = par3 + 0.0F + ((par5Random.nextFloat() * 6.0F) / 16.0F);
@@ -78,22 +78,22 @@ public class BlockSteamBoiler extends BlockBaseBoiler
 			float f3 = 0.52F;
 			float f4 = (par5Random.nextFloat() * 0.6F) - 0.3F;
 
-			if((l == 4) || (l == 11))
+			if ((l == 4) || (l == 11))
 			{
 				world.spawnParticle("smoke", f - f3, f1, f2 + f4, 0.0D, 0.0D, 0.0D);
 				world.spawnParticle("flame", f - f3, f1, f2 + f4, 0.0D, 0.0D, 0.0D);
 			}
-			else if((l == 5) || (l == 12))
+			else if ((l == 5) || (l == 12))
 			{
 				world.spawnParticle("smoke", f + f3, f1, f2 + f4, 0.0D, 0.0D, 0.0D);
 				world.spawnParticle("flame", f + f3, f1, f2 + f4, 0.0D, 0.0D, 0.0D);
 			}
-			else if((l == 2) || (l == 9))
+			else if ((l == 2) || (l == 9))
 			{
 				world.spawnParticle("smoke", f + f4, f1, f2 - f3, 0.0D, 0.0D, 0.0D);
 				world.spawnParticle("flame", f + f4, f1, f2 - f3, 0.0D, 0.0D, 0.0D);
 			}
-			else if((l == 3) || (l == 10))
+			else if ((l == 3) || (l == 10))
 			{
 				world.spawnParticle("smoke", f + f4, f1, f2 + f3, 0.0D, 0.0D, 0.0D);
 				world.spawnParticle("flame", f + f4, f1, f2 + f3, 0.0D, 0.0D, 0.0D);

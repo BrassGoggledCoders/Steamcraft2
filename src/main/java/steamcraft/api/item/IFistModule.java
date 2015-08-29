@@ -34,8 +34,7 @@ public interface IFistModule extends IModule
 	{
 
 		/** The rightclick. */
-		RIGHTCLICK,
-		/** The attack. */
+		RIGHTCLICK, /** The attack. */
 		ATTACK
 	}
 }

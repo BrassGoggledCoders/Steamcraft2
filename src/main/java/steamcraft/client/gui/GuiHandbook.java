@@ -24,13 +24,13 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 
-import org.lwjgl.opengl.GL11;
-
-import steamcraft.common.items.ItemHandbook;
-import steamcraft.common.lib.ModInfo;
-import boilerplate.common.utils.StringUtils;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+
+import boilerplate.common.utils.StringUtils;
+import org.lwjgl.opengl.GL11;
+import steamcraft.common.items.ItemHandbook;
+import steamcraft.common.lib.ModInfo;
 
 public class GuiHandbook extends GuiScreen
 {
@@ -104,15 +104,17 @@ public class GuiHandbook extends GuiScreen
 		this.buttonList.add(this.buttonLast = new GuiButton(4, i + 185, b0 + 30, 50, 20, "Previous"));
 
 		// Manually added pages
-		this.pages
-		.add(new HandbookPage(StatCollector.translateToLocal("handbook.intro.title"), StatCollector.translateToLocal("handbook.intro.documentation")));
-		/*
-		 * this.pages .add(new HandbookPage(StatCollector.translateToLocal("handbook.gettingstarted.title"), StatCollector
-		 * .translateToLocal("handbook.gettingstarted.documentation")));
-		 */
+		this.pages.add(new HandbookPage(StatCollector.translateToLocal("handbook.intro.title"),
+				StatCollector.translateToLocal("handbook.intro.documentation")));
+				/*
+				 * this.pages .add(new
+				 * HandbookPage(StatCollector.translateToLocal(
+				 * "handbook.gettingstarted.title"), StatCollector
+				 * .translateToLocal("handbook.gettingstarted.documentation")));
+				 */
 
 		// Auto Add pages for items
-		for(int itemsize = 0; itemsize < modItems.size(); itemsize++)
+		for (int itemsize = 0; itemsize < modItems.size(); itemsize++)
 		{
 			ItemStack stack = (ItemStack) modItems.get(itemsize);
 			Item item = stack.getItem();
@@ -121,7 +123,7 @@ public class GuiHandbook extends GuiScreen
 			this.pages.add(new HandbookPage(name, docs));
 		}
 		// Auto Add pages for blocks
-		for(int itemsize = 0; itemsize < modBlocks.size(); itemsize++)
+		for (int itemsize = 0; itemsize < modBlocks.size(); itemsize++)
 		{
 			ItemStack stack = (ItemStack) modBlocks.get(itemsize);
 			Block block = Block.getBlockFromItem(stack.getItem());
@@ -148,7 +150,7 @@ public class GuiHandbook extends GuiScreen
 		HandbookPage page = ((HandbookPage) this.pages.get(this.currPage));
 		this.fontRendererObj.drawString("\u00A7l" + page.getTitle(), k + 35, 15, 0x00000000);
 		String[] wrappedDesc = StringUtils.wrap(page.getDocs(), 25);
-		for(int i = 0; i < wrappedDesc.length; i++)
+		for (int i = 0; i < wrappedDesc.length; i++)
 			this.fontRendererObj.drawString(wrappedDesc[i], k + 35, 30 + (i * 10), 0x00000000);
 
 		super.drawScreen(x, y, p_73863_3_);
@@ -163,32 +165,32 @@ public class GuiHandbook extends GuiScreen
 	@Override
 	protected void actionPerformed(GuiButton button)
 	{
-		if(button.enabled)
+		if (button.enabled)
 		{
 			this.prevPage = this.currPage;
 
-			if(button.id == 1)
+			if (button.id == 1)
 			{
-				if(this.currPage < (this.pages.size() - 1))
+				if (this.currPage < (this.pages.size() - 1))
 				{
 					++this.currPage;
 				}
 			}
-			else if(button.id == 2)
+			else if (button.id == 2)
 			{
-				if(this.currPage > 0)
+				if (this.currPage > 0)
 				{
 					--this.currPage;
 				}
 			}
-			else if(button.id == 3)
+			else if (button.id == 3)
 			{
-				if(this.currPage > 0)
+				if (this.currPage > 0)
 				{
 					this.currPage = 0;
 				}
 			}
-			else if(button.id == 4)
+			else if (button.id == 4)
 			{
 				this.currPage = this.prevPage;
 			}
@@ -198,7 +200,8 @@ public class GuiHandbook extends GuiScreen
 	}
 
 	/**
-	 * Returns true if this GUI should pause the game when it is displayed in single-player
+	 * Returns true if this GUI should pause the game when it is displayed in
+	 * single-player
 	 */
 	@Override
 	public boolean doesGuiPauseGame()
@@ -251,7 +254,7 @@ public class GuiHandbook extends GuiScreen
 		@Override
 		public void drawButton(Minecraft p_146112_1_, int p_146112_2_, int p_146112_3_)
 		{
-			if(this.visible)
+			if (this.visible)
 			{
 				boolean flag = (p_146112_2_ >= this.xPosition) && (p_146112_3_ >= this.yPosition) && (p_146112_2_ < (this.xPosition + this.width))
 						&& (p_146112_3_ < (this.yPosition + this.height));
@@ -260,12 +263,12 @@ public class GuiHandbook extends GuiScreen
 				int k = 0;
 				int l = 192;
 
-				if(flag)
+				if (flag)
 				{
 					k += 23;
 				}
 
-				if(!this.field_146151_o)
+				if (!this.field_146151_o)
 				{
 					l += 13;
 				}
@@ -277,10 +280,10 @@ public class GuiHandbook extends GuiScreen
 
 	public int getPageIndexFromTitle(String string)
 	{
-		for(int x = 0; x < this.pages.size(); x++)
+		for (int x = 0; x < this.pages.size(); x++)
 		{
 			String title = ((HandbookPage) this.pages.get(x)).getTitle();
-			if(string.equals(title))
+			if (string.equals(title))
 				return x;
 		}
 		return 0;

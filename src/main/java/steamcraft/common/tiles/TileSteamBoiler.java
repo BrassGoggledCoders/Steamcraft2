@@ -12,10 +12,11 @@
  */
 package steamcraft.common.tiles;
 
-import boilerplate.api.IOpenableGUI;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.world.World;
+
+import boilerplate.api.IOpenableGUI;
 import steamcraft.client.gui.GuiSteamBoiler;
 import steamcraft.common.tiles.container.ContainerSteamBoiler;
 
@@ -25,9 +26,10 @@ import steamcraft.common.tiles.container.ContainerSteamBoiler;
  */
 public class TileSteamBoiler extends TileBaseBoiler implements IOpenableGUI
 {
+	@Override
 	protected int getItemBurnTime()
 	{
-		if(this.inventory[0] == null)
+		if (this.inventory[0] == null)
 			return 0;
 
 		return TileEntityFurnace.getItemBurnTime(this.inventory[0]);
@@ -36,12 +38,12 @@ public class TileSteamBoiler extends TileBaseBoiler implements IOpenableGUI
 	@Override
 	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
 	{
-		return new GuiSteamBoiler(player.inventory, (TileSteamBoiler)world.getTileEntity(x, y, z));
+		return new GuiSteamBoiler(player.inventory, (TileSteamBoiler) world.getTileEntity(x, y, z));
 	}
 
 	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
 	{
-		return new ContainerSteamBoiler(player.inventory, (TileSteamBoiler)world.getTileEntity(x, y, z));
+		return new ContainerSteamBoiler(player.inventory, (TileSteamBoiler) world.getTileEntity(x, y, z));
 	}
 }

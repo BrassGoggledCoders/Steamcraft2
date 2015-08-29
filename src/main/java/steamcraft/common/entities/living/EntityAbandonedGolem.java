@@ -44,7 +44,7 @@ public class EntityAbandonedGolem extends EntityIronGolem implements IMob
 	@Override
 	protected void collideWithEntity(Entity p_82167_1_)
 	{
-		if(p_82167_1_ instanceof EntityLivingBase)
+		if (p_82167_1_ instanceof EntityLivingBase)
 		{
 			this.setAttackTarget((EntityLivingBase) p_82167_1_);
 		}

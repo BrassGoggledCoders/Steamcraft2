@@ -12,17 +12,20 @@
  */
 package steamcraft.common.tiles.energy;
 
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.world.World;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
+import net.minecraftforge.common.util.ForgeDirection;
+
 import boilerplate.api.IEnergyItem;
 import boilerplate.api.IOpenableGUI;
 import boilerplate.common.baseclasses.BaseTileWithInventory;
 import cofh.api.energy.EnergyStorage;
 import cofh.api.energy.IEnergyReceiver;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.world.World;
-import net.minecraftforge.common.util.ForgeDirection;
 import steamcraft.client.gui.GuiCharger;
 import steamcraft.common.tiles.container.ContainerCharger;
 
@@ -65,16 +68,16 @@ public class TileCharger extends BaseTileWithInventory implements IEnergyReceive
 	@Override
 	public void updateEntity()
 	{
-		if(!this.worldObj.isRemote)
+		if (!this.worldObj.isRemote)
 		{
-			if(this.buffer.getEnergyStored() > 0)
+			if (this.buffer.getEnergyStored() > 0)
 			{
-				if(this.inventory[0] != null)
+				if (this.inventory[0] != null)
 				{
 					IEnergyItem item = (IEnergyItem) this.inventory[0].getItem();
 
-					this.buffer.modifyEnergyStored(-item.receiveEnergy(this.inventory[0], Math.min(this.buffer.getEnergyStored(), this.buffer.getMaxExtract()),
-							false));
+					this.buffer.modifyEnergyStored(
+							-item.receiveEnergy(this.inventory[0], Math.min(this.buffer.getEnergyStored(), this.buffer.getMaxExtract()), false));
 				}
 			}
 		}
@@ -113,12 +116,12 @@ public class TileCharger extends BaseTileWithInventory implements IEnergyReceive
 	@Override
 	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
 	{
-		return new GuiCharger(player.inventory, (TileCharger)world.getTileEntity(x, y, z));
+		return new GuiCharger(player.inventory, (TileCharger) world.getTileEntity(x, y, z));
 	}
 
 	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
 	{
-		return new ContainerCharger(player.inventory, (TileCharger)world.getTileEntity(x, y, z));
+		return new ContainerCharger(player.inventory, (TileCharger) world.getTileEntity(x, y, z));
 	}
 }

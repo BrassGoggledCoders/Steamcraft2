@@ -25,7 +25,8 @@ public interface IChiselable
 	public Block getChiseledVariant();
 
 	/**
-	 * @return the metadata of the block created when our chisel is used on this block
+	 * @return the metadata of the block created when our chisel is used on this
+	 *         block
 	 */
 	public int getChiseledVariantMeta();
 }

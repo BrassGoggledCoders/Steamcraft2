@@ -46,17 +46,17 @@ public class ItemSpanner extends UniversalWrench
 		if (!world.isRemote)
 		{
 			Block block = world.getBlock(x, y, z);
-	
-			if(block == InitBlocks.blockCopperPipe || block == InitBlocks.blockSteelPipe)
+
+			if ((block == InitBlocks.blockCopperPipe) || (block == InitBlocks.blockSteelPipe))
 			{
 				TileCopperPipe pipe = (TileCopperPipe) world.getTileEntity(x, y, z);
-	
+
 				pipe.changeExtracting();
 			}
-			else if(block == InitBlocks.blockCopperWire || block == InitBlocks.blockSteelWire)
+			else if ((block == InitBlocks.blockCopperWire) || (block == InitBlocks.blockSteelWire))
 			{
 				TileCopperWire wire = (TileCopperWire) world.getTileEntity(x, y, z);
-	
+
 				wire.changeExtracting();
 			}
 		}

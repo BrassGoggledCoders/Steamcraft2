@@ -12,23 +12,24 @@
  */
 package steamcraft.common.tiles;
 
-import boilerplate.api.IOpenableGUI;
-import boilerplate.common.baseclasses.BaseTileWithInventory;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
+
+import boilerplate.api.IOpenableGUI;
+import boilerplate.common.baseclasses.BaseTileWithInventory;
 import steamcraft.api.item.IArmorModule;
 import steamcraft.api.item.ModuleRegistry;
 import steamcraft.client.gui.GuiArmorEditor;
 import steamcraft.common.items.armor.ItemBrassArmor;
 import steamcraft.common.tiles.container.ContainerArmorEditor;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
 
 /**
  * @author warlordjones
@@ -148,26 +149,26 @@ public class TileArmorEditor extends BaseTileWithInventory implements IInventory
 	private void installModule(ArrayList<String> installedModules, IArmorModule module)
 	{
 		installedModules.add(module.getModuleId());
-		module.onModuleAdded(worldObj);
+		module.onModuleAdded(this.worldObj);
 		this.setInventorySlotContents(2, null);
 	}
 
 	private void removeModule(ArrayList<String> installedModules, IArmorModule module, int modulePos)
 	{
 		this.setInventorySlotContents(2, new ItemStack((Item) module));
-		module.onModuleRemoved(worldObj);
+		module.onModuleRemoved(this.worldObj);
 		installedModules.remove(modulePos);
 	}
 
 	@Override
 	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
 	{
-		return new GuiArmorEditor(player.inventory, (TileArmorEditor)world.getTileEntity(x, y, z));
+		return new GuiArmorEditor(player.inventory, (TileArmorEditor) world.getTileEntity(x, y, z));
 	}
 
 	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
 	{
-		return new ContainerArmorEditor(player.inventory, (TileArmorEditor)world.getTileEntity(x, y, z));
+		return new ContainerArmorEditor(player.inventory, (TileArmorEditor) world.getTileEntity(x, y, z));
 	}
 }

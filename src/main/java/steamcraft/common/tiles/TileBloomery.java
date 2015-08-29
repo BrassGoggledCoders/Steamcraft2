@@ -12,16 +12,18 @@
  */
 package steamcraft.common.tiles;
 
-import boilerplate.api.IOpenableGUI;
-import boilerplate.common.baseclasses.BaseTileWithInventory;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.world.World;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
+import boilerplate.api.IOpenableGUI;
+import boilerplate.common.baseclasses.BaseTileWithInventory;
 import steamcraft.client.gui.GuiBloomery;
 import steamcraft.common.blocks.machines.BlockBloomery;
 import steamcraft.common.tiles.container.ContainerBloomery;
@@ -34,7 +36,7 @@ import steamcraft.common.tiles.recipes.BloomeryRecipes;
 public class TileBloomery extends BaseTileWithInventory implements IOpenableGUI
 {
 	private static int timeTillCooked = 600;
-	
+
 	public TileBloomery()
 	{
 		super(4);
@@ -77,7 +79,7 @@ public class TileBloomery extends BaseTileWithInventory implements IOpenableGUI
 	@SideOnly(Side.CLIENT)
 	public int getBurnTimeRemainingScaled(int i)
 	{
-		if(this.currentItemBurnTime == 0)
+		if (this.currentItemBurnTime == 0)
 			this.currentItemBurnTime = 200;
 
 		return (this.burnTime * i) / this.currentItemBurnTime;
@@ -95,35 +97,35 @@ public class TileBloomery extends BaseTileWithInventory implements IOpenableGUI
 		boolean flag1 = false;
 
 		// Update Burn Time
-		if(this.burnTime > 0)
+		if (this.burnTime > 0)
 			--this.burnTime;
 
 		// Burn Fuel
-		if(!this.worldObj.isRemote)
+		if (!this.worldObj.isRemote)
 		{
-			if((this.burnTime == 0) && this.canSmelt())
+			if ((this.burnTime == 0) && this.canSmelt())
 			{
 				this.currentItemBurnTime = this.burnTime = getItemBurnTime(this.inventory[0]);
 
-				if(this.burnTime > 0)
+				if (this.burnTime > 0)
 				{
 					flag1 = true;
 
-					if(this.inventory[0] != null)
+					if (this.inventory[0] != null)
 					{
 						--this.inventory[0].stackSize;
 
-						if(this.inventory[0].stackSize == 0)
+						if (this.inventory[0].stackSize == 0)
 							this.inventory[0] = this.inventory[0].getItem().getContainerItem(this.inventory[0]);
 					}
 				}
 			}
 
-			if(this.isBurning() && this.canSmelt())
+			if (this.isBurning() && this.canSmelt())
 			{
 				++this.cookTime;
 
-				if(this.cookTime == timeTillCooked)
+				if (this.cookTime == timeTillCooked)
 				{
 					this.cookTime = 0;
 					this.smeltItem();
@@ -133,28 +135,28 @@ public class TileBloomery extends BaseTileWithInventory implements IOpenableGUI
 			else
 				this.cookTime = 0;
 
-			if(flag != (this.burnTime > 0))
+			if (flag != (this.burnTime > 0))
 			{
 				flag1 = true;
 				BlockBloomery.updateBloomeryBlockState(this.burnTime > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord);
 			}
 		}
 
-		if(flag1)
+		if (flag1)
 			this.markDirty();
 	}
 
 	private boolean canSmelt()
 	{
-		if((this.inventory[1] != null) && (this.inventory[2] != null))
+		if ((this.inventory[1] != null) && (this.inventory[2] != null))
 		{
 			ItemStack result = this.getRecipeResult();
 
-			if(result != null)
+			if (result != null)
 			{
-				if(this.inventory[3] == null)
+				if (this.inventory[3] == null)
 					return true;
-				if(!this.inventory[3].isItemEqual(result))
+				if (!this.inventory[3].isItemEqual(result))
 					return false;
 				int amount = this.inventory[3].stackSize + result.stackSize;
 
@@ -166,29 +168,28 @@ public class TileBloomery extends BaseTileWithInventory implements IOpenableGUI
 
 	public void smeltItem()
 	{
-		if(this.canSmelt())
+		if (this.canSmelt())
 		{
 			ItemStack result = this.getRecipeResult();
 
-			if(this.inventory[3] == null)
+			if (this.inventory[3] == null)
 				this.inventory[3] = result.copy();
-			else if(this.inventory[3].getItem() == result.getItem())
+			else if (this.inventory[3].getItem() == result.getItem())
 				this.inventory[3].stackSize += result.stackSize;
 
-			byte[] stackSizes = BloomeryRecipes.getInstance().getStackSizeForInputs(this.inventory[1],
-					this.inventory[2], result);
+			byte[] stackSizes = BloomeryRecipes.getInstance().getStackSizeForInputs(this.inventory[1], this.inventory[2], result);
 
-			if(this.inventory[1] != null)
+			if (this.inventory[1] != null)
 			{
 				this.inventory[1].stackSize -= stackSizes[0];
-				if(this.inventory[1].stackSize <= 0)
+				if (this.inventory[1].stackSize <= 0)
 					this.inventory[1] = null;
 			}
 
-			if(this.inventory[2] != null)
+			if (this.inventory[2] != null)
 			{
 				this.inventory[2].stackSize -= stackSizes[1];
-				if(this.inventory[2].stackSize <= 0)
+				if (this.inventory[2].stackSize <= 0)
 					this.inventory[2] = null;
 			}
 		}
@@ -198,7 +199,7 @@ public class TileBloomery extends BaseTileWithInventory implements IOpenableGUI
 	{
 		ItemStack result = BloomeryRecipes.getInstance().getResult(this.inventory[1], this.inventory[2]);
 
-		if(result == null)
+		if (result == null)
 			result = BloomeryRecipes.getInstance().getResult(this.inventory[2], this.inventory[1]);
 
 		return result;
@@ -206,7 +207,7 @@ public class TileBloomery extends BaseTileWithInventory implements IOpenableGUI
 
 	public static short getItemBurnTime(ItemStack stack)
 	{
-		if(stack == null)
+		if (stack == null)
 			return 0;
 		else
 			return (short) TileEntityFurnace.getItemBurnTime(stack);
@@ -250,12 +251,12 @@ public class TileBloomery extends BaseTileWithInventory implements IOpenableGUI
 	@Override
 	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
 	{
-		return new GuiBloomery(player.inventory, (TileBloomery)world.getTileEntity(x, y, z));
+		return new GuiBloomery(player.inventory, (TileBloomery) world.getTileEntity(x, y, z));
 	}
 
 	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
 	{
-		return new ContainerBloomery(player.inventory, (TileBloomery)world.getTileEntity(x, y, z));
+		return new ContainerBloomery(player.inventory, (TileBloomery) world.getTileEntity(x, y, z));
 	}
 }

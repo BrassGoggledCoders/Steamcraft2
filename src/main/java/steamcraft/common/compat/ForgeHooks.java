@@ -28,7 +28,7 @@ public class ForgeHooks
 
 	private static void addCustomFishResults()
 	{
-		for(int i = 0; i < 10; i++)
+		for (int i = 0; i < 10; i++)
 		{
 			FishingHooks.addJunk(new WeightedRandomFishable(new ItemStack(InitItems.itemBrassParts, 1, i), 25));
 			FishingHooks.addJunk(new WeightedRandomFishable(new ItemStack(InitItems.itemCopperParts, 1, i), 25));

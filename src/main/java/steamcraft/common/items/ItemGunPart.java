@@ -63,7 +63,7 @@ public class ItemGunPart extends BaseItemWithMetadata
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(Item item, CreativeTabs tab, List l)
 	{
-		for(int var4 = 0; var4 < this.itemIcon.length; ++var4)
+		for (int var4 = 0; var4 < this.itemIcon.length; ++var4)
 			l.add(new ItemStack(InitItems.itemGunPart, 1, var4));
 	}
 

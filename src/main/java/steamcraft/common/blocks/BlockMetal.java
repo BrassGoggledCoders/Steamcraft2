@@ -54,7 +54,7 @@ public class BlockMetal extends BaseMetadataBlock implements IChiselable
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(final int side, final int metadata)
 	{
-		if(metadata < this.icon.length)
+		if (metadata < this.icon.length)
 			return this.icon[metadata];
 		else
 			return this.icon[0];
@@ -79,7 +79,7 @@ public class BlockMetal extends BaseMetadataBlock implements IChiselable
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(final Item item, final CreativeTabs tab, final List l)
 	{
-		for(int var4 = 0; var4 < this.icon.length; ++var4)
+		for (int var4 = 0; var4 < this.icon.length; ++var4)
 			l.add(new ItemStack(InitBlocks.blockMetal, 1, var4));
 	}
 

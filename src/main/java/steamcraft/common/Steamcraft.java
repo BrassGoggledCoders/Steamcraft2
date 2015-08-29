@@ -158,11 +158,11 @@ public class Steamcraft
 		/*
 		 * if(event.getSide() == Side.CLIENT) { // Autopopulate item/block lists
 		 * from creative tab Iterator iterator = Item.itemRegistry.iterator();
-		 * 
+		 *
 		 * while(iterator.hasNext()) { Item item = (Item) iterator.next();
-		 * 
+		 *
 		 * if(item == null) { continue; }
-		 * 
+		 *
 		 * for(CreativeTabs tab : item.getCreativeTabs()) { if(tab == tabSC2) {
 		 * if(item instanceof ItemBlock) item.getSubItems(item, tabSC2,
 		 * GuiHandbook.modBlocks); else item.getSubItems(item, tabSC2,

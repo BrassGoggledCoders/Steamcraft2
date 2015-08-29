@@ -21,11 +21,13 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 import steamcraft.client.lib.RenderIDs;
 import steamcraft.common.init.InitBlocks;
 import steamcraft.common.tiles.energy.TileSteelWire;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author Decebaldecebal
@@ -53,8 +55,8 @@ public class BlockSteelWire extends BlockCopperWire
 	@Override
 	public void onNeighborChange(IBlockAccess world, int x, int y, int z, int tileX, int tileY, int tileZ)
 	{
-		if(world.getBlock(tileX, tileY, tileZ) != InitBlocks.blockSteelWire)
-		{			
+		if (world.getBlock(tileX, tileY, tileZ) != InitBlocks.blockSteelWire)
+		{
 			TileSteelWire tile = (TileSteelWire) world.getTileEntity(x, y, z);
 			tile.updateConnections(); // only on server
 		}

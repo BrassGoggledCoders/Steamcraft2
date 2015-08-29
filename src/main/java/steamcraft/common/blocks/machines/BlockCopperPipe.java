@@ -20,6 +20,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+
 import steamcraft.client.lib.RenderIDs;
 import steamcraft.common.init.InitBlocks;
 import steamcraft.common.tiles.TileCopperPipe;
@@ -67,11 +68,11 @@ public class BlockCopperPipe extends BaseContainerBlock
 	@Override
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entityLiving, ItemStack is)
 	{
-		if(!world.isRemote)
+		if (!world.isRemote)
 		{
 			TileCopperPipe tile = (TileCopperPipe) world.getTileEntity(x, y, z);
 
-			if(tile != null)
+			if (tile != null)
 			{
 				tile.network = null;
 				tile.updateConnections();
@@ -82,7 +83,7 @@ public class BlockCopperPipe extends BaseContainerBlock
 	@Override
 	public void onNeighborChange(IBlockAccess world, int x, int y, int z, int tileX, int tileY, int tileZ)
 	{
-		if(world.getBlock(tileX, tileY, tileZ) != InitBlocks.blockCopperPipe)
+		if (world.getBlock(tileX, tileY, tileZ) != InitBlocks.blockCopperPipe)
 		{
 			TileCopperPipe tile = (TileCopperPipe) world.getTileEntity(x, y, z);
 			tile.updateConnections();
@@ -95,8 +96,8 @@ public class BlockCopperPipe extends BaseContainerBlock
 		if (!world.isRemote)
 		{
 			TileCopperPipe tile = (TileCopperPipe) world.getTileEntity(x, y, z);
-	
-			if(tile != null)
+
+			if (tile != null)
 				tile.removeFromNetwork();
 		}
 
@@ -119,12 +120,12 @@ public class BlockCopperPipe extends BaseContainerBlock
 	{
 		TileEntity tile = world.getTileEntity(x, y, z);
 		TileCopperPipe pipe = null;
-		if(tile instanceof TileCopperPipe)
+		if (tile instanceof TileCopperPipe)
 		{
 			pipe = (TileCopperPipe) tile;
 		}
 
-		if(pipe != null)
+		if (pipe != null)
 		{
 			float minX = (5.5f * pixel) - (pipe.connections[4] != null ? 5.5f * pixel : 0);
 			float maxX = (1 - (5.5f * pixel)) + (pipe.connections[5] != null ? 5.5f * pixel : 0);

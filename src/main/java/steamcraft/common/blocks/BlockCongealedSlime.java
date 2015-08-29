@@ -27,7 +27,8 @@ public class BlockCongealedSlime extends BaseBlock
 	}
 
 	/**
-	 * Triggered whenever an entity collides with this block (enters into the block). Args: world, x, y, z, entity
+	 * Triggered whenever an entity collides with this block (enters into the
+	 * block). Args: world, x, y, z, entity
 	 */
 	@Override
 	public void onEntityCollidedWithBlock(World p_149670_1_, int p_149670_2_, int p_149670_3_, int p_149670_4_, Entity ent)
@@ -37,8 +38,9 @@ public class BlockCongealedSlime extends BaseBlock
 	}
 
 	/**
-	 * Is this block (a) opaque and (b) a full 1m cube? This determines whether or not to render the shared face of two adjacent blocks and also whether the
-	 * player can attach torches, redstone wire, etc to this block.
+	 * Is this block (a) opaque and (b) a full 1m cube? This determines whether
+	 * or not to render the shared face of two adjacent blocks and also whether
+	 * the player can attach torches, redstone wire, etc to this block.
 	 */
 	@Override
 	public boolean isOpaqueCube()
@@ -47,7 +49,8 @@ public class BlockCongealedSlime extends BaseBlock
 	}
 
 	/**
-	 * Returns a bounding box from the pool of bounding boxes (this means this box can change after the pool has been cleared to be reused)
+	 * Returns a bounding box from the pool of bounding boxes (this means this
+	 * box can change after the pool has been cleared to be reused)
 	 */
 	@Override
 	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z)

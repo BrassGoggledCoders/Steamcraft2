@@ -26,8 +26,10 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+
 import steamcraft.common.init.InitItems;
 import steamcraft.common.items.ItemGrappleGun;
 
@@ -93,8 +95,10 @@ public class EntityGrapplingHook extends Entity
 		this.setPosition(this.posX, this.posY, this.posZ);
 		this.yOffset = 0.0F;
 		float f = 0.4F;
-		this.motionX = -MathHelper.sin((this.rotationYaw / 180.0F) * (float) Math.PI) * MathHelper.cos((this.rotationPitch / 180.0F) * (float) Math.PI) * f;
-		this.motionZ = MathHelper.cos((this.rotationYaw / 180.0F) * (float) Math.PI) * MathHelper.cos((this.rotationPitch / 180.0F) * (float) Math.PI) * f;
+		this.motionX = -MathHelper.sin((this.rotationYaw / 180.0F) * (float) Math.PI)
+				* MathHelper.cos((this.rotationPitch / 180.0F) * (float) Math.PI) * f;
+		this.motionZ = MathHelper.cos((this.rotationYaw / 180.0F) * (float) Math.PI) * MathHelper.cos((this.rotationPitch / 180.0F) * (float) Math.PI)
+				* f;
 		this.motionY = -MathHelper.sin((this.rotationPitch / 180.0F) * (float) Math.PI) * f;
 		this.func_146035_c(this.motionX, this.motionY, this.motionZ, 1.5F, 1.0F);
 	}
@@ -127,8 +131,9 @@ public class EntityGrapplingHook extends Entity
 	}
 
 	/**
-	 * Checks if the entity is in range to render by using the past in distance and comparing it to its average edge length * 64 * renderDistanceWeight Args:
-	 * distance
+	 * Checks if the entity is in range to render by using the past in distance
+	 * and comparing it to its average edge length * 64 * renderDistanceWeight
+	 * Args: distance
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
@@ -140,7 +145,8 @@ public class EntityGrapplingHook extends Entity
 	}
 
 	/**
-	 * Sets the position and rotation. Only difference from the other one is no bounding on the rotation. Args: posX, posY, posZ, yaw, pitch
+	 * Sets the position and rotation. Only difference from the other one is no
+	 * bounding on the rotation. Args: posX, posY, posZ, yaw, pitch
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
@@ -176,7 +182,7 @@ public class EntityGrapplingHook extends Entity
 	@Override
 	public void onUpdate()
 	{
-		if(this.rotationIncrements > 0)
+		if (this.rotationIncrements > 0)
 		{
 			double d7 = this.posX + ((this.posX - this.posX) / this.rotationIncrements);
 			double d8 = this.posY + ((this.posY - this.posY) / this.rotationIncrements);
@@ -190,11 +196,11 @@ public class EntityGrapplingHook extends Entity
 		}
 		else
 		{
-			if(!this.worldObj.isRemote && (this.player != null))
+			if (!this.worldObj.isRemote && (this.player != null))
 			{
 				ItemStack itemstack = this.player.getCurrentEquippedItem();
 
-				if(!this.player.isEntityAlive() || (itemstack == null) || (itemstack.getItem() != InitItems.itemGrappleGun)
+				if (!this.player.isEntityAlive() || (itemstack == null) || (itemstack.getItem() != InitItems.itemGrappleGun)
 						|| (this.getDistanceSqToEntity(this.player) > 1024.0D))
 				{
 					this.setDead();
@@ -202,9 +208,9 @@ public class EntityGrapplingHook extends Entity
 					return;
 				}
 
-				if(this.caughtEntity != null)
+				if (this.caughtEntity != null)
 				{
-					if(!this.caughtEntity.isDead)
+					if (!this.caughtEntity.isDead)
 					{
 						this.posX = this.caughtEntity.posX;
 						this.posY = this.caughtEntity.boundingBox.minY + (this.caughtEntity.height * 0.8D);
@@ -216,13 +222,13 @@ public class EntityGrapplingHook extends Entity
 				}
 			}
 
-			if(this.inGround)
+			if (this.inGround)
 			{
-				if(this.worldObj.getBlock(this.xTile, this.yTile, this.zTile) == this.block)
+				if (this.worldObj.getBlock(this.xTile, this.yTile, this.zTile) == this.block)
 				{
 					++this.ticksInGround;
 
-					if(this.ticksInGround == 1200)
+					if (this.ticksInGround == 1200)
 					{
 						this.setDead();
 					}
@@ -248,9 +254,10 @@ public class EntityGrapplingHook extends Entity
 			vec31 = Vec3.createVectorHelper(this.posX, this.posY, this.posZ);
 			vec3 = Vec3.createVectorHelper(this.posX + this.motionX, this.posY + this.motionY, this.posZ + this.motionZ);
 
-			if(movingobjectposition != null)
+			if (movingobjectposition != null)
 			{
-				vec3 = Vec3.createVectorHelper(movingobjectposition.hitVec.xCoord, movingobjectposition.hitVec.yCoord, movingobjectposition.hitVec.zCoord);
+				vec3 = Vec3.createVectorHelper(movingobjectposition.hitVec.xCoord, movingobjectposition.hitVec.yCoord,
+						movingobjectposition.hitVec.zCoord);
 			}
 
 			Entity entity = null;
@@ -259,21 +266,21 @@ public class EntityGrapplingHook extends Entity
 			double d0 = 0.0D;
 			double d2;
 
-			for(Object obj : list)
+			for (Object obj : list)
 			{
 				Entity entity1 = (Entity) obj;
 
-				if(entity1.canBeCollidedWith() && ((entity1 != this.player) || (this.ticksInAir >= 5)))
+				if (entity1.canBeCollidedWith() && ((entity1 != this.player) || (this.ticksInAir >= 5)))
 				{
 					float f = 0.3F;
 					AxisAlignedBB axisalignedbb = entity1.boundingBox.expand(f, f, f);
 					MovingObjectPosition movingobjectposition1 = axisalignedbb.calculateIntercept(vec31, vec3);
 
-					if(movingobjectposition1 != null)
+					if (movingobjectposition1 != null)
 					{
 						d2 = vec31.distanceTo(movingobjectposition1.hitVec);
 
-						if((d2 < d0) || (d0 == 0.0D))
+						if ((d2 < d0) || (d0 == 0.0D))
 						{
 							entity = entity1;
 							d0 = d2;
@@ -282,16 +289,16 @@ public class EntityGrapplingHook extends Entity
 				}
 			}
 
-			if(entity != null)
+			if (entity != null)
 			{
 				movingobjectposition = new MovingObjectPosition(entity);
 			}
 
-			if(movingobjectposition != null)
+			if (movingobjectposition != null)
 			{
-				if(movingobjectposition.entityHit != null)
+				if (movingobjectposition.entityHit != null)
 				{
-					if(movingobjectposition.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, this.player), 0.0F))
+					if (movingobjectposition.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, this.player), 0.0F))
 					{
 						this.caughtEntity = movingobjectposition.entityHit;
 					}
@@ -302,28 +309,29 @@ public class EntityGrapplingHook extends Entity
 				}
 			}
 
-			if(!this.inGround)
+			if (!this.inGround)
 			{
 				this.moveEntity(this.motionX, this.motionY, this.motionZ);
 				float f5 = MathHelper.sqrt_double((this.motionX * this.motionX) + (this.motionZ * this.motionZ));
 				this.rotationYaw = (float) ((Math.atan2(this.motionX, this.motionZ) * 180.0D) / Math.PI);
 
-				for(this.rotationPitch = (float) ((Math.atan2(this.motionY, f5) * 180.0D) / Math.PI); (this.rotationPitch - this.prevRotationPitch) < -180.0F; this.prevRotationPitch -= 360.0F)
+				for (this.rotationPitch = (float) ((Math.atan2(this.motionY, f5) * 180.0D) / Math.PI); (this.rotationPitch
+						- this.prevRotationPitch) < -180.0F; this.prevRotationPitch -= 360.0F)
 				{
 					;
 				}
 
-				while((this.rotationPitch - this.prevRotationPitch) >= 180.0F)
+				while ((this.rotationPitch - this.prevRotationPitch) >= 180.0F)
 				{
 					this.prevRotationPitch += 360.0F;
 				}
 
-				while((this.rotationYaw - this.prevRotationYaw) < -180.0F)
+				while ((this.rotationYaw - this.prevRotationYaw) < -180.0F)
 				{
 					this.prevRotationYaw -= 360.0F;
 				}
 
-				while((this.rotationYaw - this.prevRotationYaw) >= 180.0F)
+				while ((this.rotationYaw - this.prevRotationYaw) >= 180.0F)
 				{
 					this.prevRotationYaw += 360.0F;
 				}
@@ -332,7 +340,7 @@ public class EntityGrapplingHook extends Entity
 				this.rotationYaw = this.prevRotationYaw + ((this.rotationYaw - this.prevRotationYaw) * 0.2F);
 				float f6 = 0.92F;
 
-				if(this.onGround || this.isCollidedHorizontally)
+				if (this.onGround || this.isCollidedHorizontally)
 				{
 					f6 = 0.5F;
 				}
@@ -340,14 +348,14 @@ public class EntityGrapplingHook extends Entity
 				byte b0 = 5;
 				double d10 = 0.0D;
 
-				for(int j = 0; j < b0; ++j)
+				for (int j = 0; j < b0; ++j)
 				{
 					double d3 = ((this.boundingBox.minY + (((this.boundingBox.maxY - this.boundingBox.minY) * (j + 0)) / b0)) - 0.125D) + 0.125D;
 					double d4 = ((this.boundingBox.minY + (((this.boundingBox.maxY - this.boundingBox.minY) * (j + 1)) / b0)) - 0.125D) + 0.125D;
-					AxisAlignedBB axisalignedbb1 = AxisAlignedBB.getBoundingBox(this.boundingBox.minX, d3, this.boundingBox.minZ, this.boundingBox.maxX, d4,
-							this.boundingBox.maxZ);
+					AxisAlignedBB axisalignedbb1 = AxisAlignedBB.getBoundingBox(this.boundingBox.minX, d3, this.boundingBox.minZ,
+							this.boundingBox.maxX, d4, this.boundingBox.maxZ);
 
-					if(this.worldObj.isAABBInMaterial(axisalignedbb1, Material.water))
+					if (this.worldObj.isAABBInMaterial(axisalignedbb1, Material.water))
 					{
 						d10 += 1.0D / b0;
 					}
@@ -356,7 +364,7 @@ public class EntityGrapplingHook extends Entity
 				d2 = (d10 * 2.0D) - 1.0D;
 				this.motionY += 0.03999999910593033D * d2;
 
-				if(d10 > 0.0D)
+				if (d10 > 0.0D)
 				{
 					f6 = (float) (f6 * 0.9D);
 					this.motionY *= 0.8D;
@@ -406,7 +414,7 @@ public class EntityGrapplingHook extends Entity
 	// Retract Hook and Calculate Damage
 	public int func_146034_e()
 	{
-		if(this.worldObj.isRemote)
+		if (this.worldObj.isRemote)
 		{
 			return 0;
 		}
@@ -414,9 +422,9 @@ public class EntityGrapplingHook extends Entity
 		{
 			byte damageTaken = 0;
 
-			if(this.caughtEntity != null)
+			if (this.caughtEntity != null)
 			{
-				if(this.caughtEntity.height < this.player.height)
+				if (this.caughtEntity.height < this.player.height)
 				{
 					double d0 = this.player.posX - this.posX;
 					double d2 = this.player.posY - this.posY;
@@ -442,12 +450,16 @@ public class EntityGrapplingHook extends Entity
 				}
 			}
 			/*
-			 * double d1 = this.player.posX - this.posX; double d3 = this.player.posY - this.posY; double d5 = this.player.posZ - this.posZ; double d7 =
-			 * (double)MathHelper.sqrt_double(d1 * d1 + d3 * d3 + d5 * d5); double d9 = 0.1D; player.motionX = -(d1 * d9); player.motionY = -(d3 * d9 +
-			 * (double)MathHelper.sqrt_double(d7) * 0.08D); player.motionZ = -(d5 * d9); b0 = 1;
+			 * double d1 = this.player.posX - this.posX; double d3 =
+			 * this.player.posY - this.posY; double d5 = this.player.posZ -
+			 * this.posZ; double d7 = (double)MathHelper.sqrt_double(d1 * d1 +
+			 * d3 * d3 + d5 * d5); double d9 = 0.1D; player.motionX = -(d1 *
+			 * d9); player.motionY = -(d3 * d9 +
+			 * (double)MathHelper.sqrt_double(d7) * 0.08D); player.motionZ =
+			 * -(d5 * d9); b0 = 1;
 			 */
 
-			if(this.inGround)
+			if (this.inGround)
 			{
 				damageTaken = 2;
 			}
@@ -466,7 +478,7 @@ public class EntityGrapplingHook extends Entity
 	{
 		super.setDead();
 
-		if(this.player != null)
+		if (this.player != null)
 		{
 			this.gun.hook = null;
 		}

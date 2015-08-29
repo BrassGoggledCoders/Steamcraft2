@@ -131,7 +131,7 @@ public class BlockHatch extends BaseContainerBlock
 	public void setBlockBoundsForItemRender()
 	{
 		float f = 0.1875F;
-		this.setBlockBounds(0.0F, 0.5F - f / 2.0F, 0.0F, 1.0F, 0.5F + f / 2.0F, 1.0F);
+		this.setBlockBounds(0.0F, 0.5F - (f / 2.0F), 0.0F, 1.0F, 0.5F + (f / 2.0F), 1.0F);
 	}
 
 	public void changeBounds(int p_150117_1_)
@@ -268,7 +268,7 @@ public class BlockHatch extends BaseContainerBlock
 			j1 = 3;
 		}
 
-		if (p_149660_5_ != 1 && p_149660_5_ != 0 && p_149660_7_ > 0.5F)
+		if ((p_149660_5_ != 1) && (p_149660_5_ != 0) && (p_149660_7_ > 0.5F))
 		{
 			j1 |= 8;
 		}

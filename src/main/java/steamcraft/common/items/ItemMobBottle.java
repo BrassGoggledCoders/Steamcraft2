@@ -29,18 +29,18 @@ public class ItemMobBottle extends BaseItem
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World world, EntityPlayer player, int useCount)
 	{
-		if(!stack.hasTagCompound())
+		if (!stack.hasTagCompound())
 			return;
-		if(useCount > (this.getMaxItemUseDuration(stack) / 2))
+		if (useCount > (this.getMaxItemUseDuration(stack) / 2))
 		{
-			if(!player.capabilities.isCreativeMode)
+			if (!player.capabilities.isCreativeMode)
 			{
 				--stack.stackSize;
 			}
 
 			world.playSoundAtEntity(player, "random.bow", 0.5F, 0.4F);
 
-			if(!world.isRemote)
+			if (!world.isRemote)
 			{
 				world.spawnEntityInWorld(new EntityMobBottle(world, player, stack.getTagCompound().getTag("storedCreature")));
 			}

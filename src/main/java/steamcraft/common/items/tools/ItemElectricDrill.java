@@ -51,7 +51,7 @@ public class ItemElectricDrill extends ItemElectricTool
 	@Override
 	public boolean onBlockDestroyed(ItemStack stack, World world, Block p_150894_3_, int x, int y, int z, EntityLivingBase living)
 	{
-		if(living instanceof EntityPlayer)
+		if (living instanceof EntityPlayer)
 		{
 			this.setEnergy(stack, this.getEnergyStored(stack) - this.energyPerBlock);
 
@@ -74,7 +74,7 @@ public class ItemElectricDrill extends ItemElectricTool
 	@Override
 	public float getDigSpeed(ItemStack stack, Block block, int metadata)
 	{
-		if(this.getEnergyStored(stack) <= 0)
+		if (this.getEnergyStored(stack) <= 0)
 			return 1.0F;
 
 		return super.getDigSpeed(stack, block, metadata);

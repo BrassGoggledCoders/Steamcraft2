@@ -17,10 +17,10 @@ import net.minecraft.entity.Entity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 
+import boilerplate.client.ClientHelper;
 import org.lwjgl.opengl.GL11;
 import steamcraft.client.renderers.models.ModelLightningRod;
 import steamcraft.common.lib.ModInfo;
-import boilerplate.client.ClientHelper;
 
 /**
  * @author Surseance

@@ -69,13 +69,13 @@ public class ItemReactivePistonPlating extends PoweredArmorModule
 		axisalignedbb = player.boundingBox.expand(1.0D, 0.5D, 1.0D);
 		List list = world.getEntitiesWithinAABBExcludingEntity(player, axisalignedbb);
 
-		if(list != null)
+		if (list != null)
 		{
-			for(Object obj : list)
+			for (Object obj : list)
 			{
 				Entity entity = (Entity) obj;
 
-				if(!entity.isDead && (entity instanceof EntityLiving) && this.doConsumption(player, stack))
+				if (!entity.isDead && (entity instanceof EntityLiving) && this.doConsumption(player, stack))
 				{
 					entity.setVelocity(-entity.motionX - 0.3F, 0.3F, -entity.motionZ - 0.3F);
 				}

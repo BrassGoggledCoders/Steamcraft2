@@ -54,7 +54,7 @@ public class ItemTeacup extends BaseItemWithMetadata
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
 	{
-		if(stack.getItemDamage() > 0)
+		if (stack.getItemDamage() > 0)
 		{
 			player.addPotionEffect(new PotionEffect(Potion.digSpeed.id, 50, 10));
 			player.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 50, 10));
@@ -80,7 +80,7 @@ public class ItemTeacup extends BaseItemWithMetadata
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player, List l, boolean flag)
 	{
-		if(stack.getItemDamage() == 0)
+		if (stack.getItemDamage() == 0)
 			l.add("Empty");
 		else
 		{
@@ -99,7 +99,7 @@ public class ItemTeacup extends BaseItemWithMetadata
 	@SideOnly(Side.CLIENT)
 	public IIcon getIconFromDamage(int meta)
 	{
-		if(meta == 0)
+		if (meta == 0)
 			return this.itemIcon[0];
 		else
 			return this.itemIcon[1];

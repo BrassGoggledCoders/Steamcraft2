@@ -48,7 +48,7 @@ public class GuiCharger extends BaseContainerGui
 
 		this.mc.renderEngine.bindTexture(guitexture);
 		this.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize);
-		
+
 		int var8 = this.charger.getEnergyScaled(17);
 		this.drawTexturedModalRect(this.guiLeft + 12, (this.guiTop + 64) - var8, 176, 56 - var8, 16, var8 + 1);
 	}
@@ -57,10 +57,8 @@ public class GuiCharger extends BaseContainerGui
 	protected void drawGuiContainerForegroundLayer(int x, int y)
 	{
 		this.drawString(this.fontRendererObj, "Energy: ", 26, 10, -1);
-		this.drawString(
-				this.fontRendererObj,
-				this.getEnergyUnits(this.charger.getEnergyStored(ForgeDirection.UNKNOWN)) + "/"
-						+ this.getEnergyUnits(this.charger.getMaxEnergyStored(ForgeDirection.UNKNOWN)) + " RF", 30, 20, -1);
+		this.drawString(this.fontRendererObj, this.getEnergyUnits(this.charger.getEnergyStored(ForgeDirection.UNKNOWN)) + "/"
+				+ this.getEnergyUnits(this.charger.getMaxEnergyStored(ForgeDirection.UNKNOWN)) + " RF", 30, 20, -1);
 
 		this.drawString(this.fontRendererObj, "Transfer: ", 26, 30, -1);
 		this.drawString(this.fontRendererObj, TileCharger.transferRate + " RF", 30, 40, -1);
@@ -70,7 +68,7 @@ public class GuiCharger extends BaseContainerGui
 	{
 		number /= 1000;
 
-		if(number >= 1000)
+		if (number >= 1000)
 		{
 			number /= 1000;
 			return number + "M";

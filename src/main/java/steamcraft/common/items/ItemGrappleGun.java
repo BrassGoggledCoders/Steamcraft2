@@ -28,12 +28,13 @@ public class ItemGrappleGun extends BaseItem
 	}
 
 	/**
-	 * Called whenever this item is equipped and the right mouse button is pressed. Args: itemStack, world, entityPlayer
+	 * Called whenever this item is equipped and the right mouse button is
+	 * pressed. Args: itemStack, world, entityPlayer
 	 */
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
 	{
-		if(this.hook != null)
+		if (this.hook != null)
 		{
 			int i = this.hook.func_146034_e();
 			stack.damageItem(i, player);
@@ -43,7 +44,7 @@ public class ItemGrappleGun extends BaseItem
 		{
 			world.playSoundAtEntity(player, "random.bow", 0.5F, 0.4F / ((itemRand.nextFloat() * 0.4F) + 0.8F));
 
-			if(!world.isRemote)
+			if (!world.isRemote)
 			{
 				world.spawnEntityInWorld(new EntityGrapplingHook(world, player, this));
 			}

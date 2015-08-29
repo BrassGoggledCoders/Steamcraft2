@@ -52,25 +52,25 @@ public class ItemChisel extends BaseItem
 	{
 		Block block = world.getBlock(x, y, z);
 
-		if(block == Blocks.diamond_block)
+		if (block == Blocks.diamond_block)
 			world.setBlock(x, y, z, InitBlocks.blockEngravedVanilla, 0, 2);
-		else if(block == Blocks.gold_block)
+		else if (block == Blocks.gold_block)
 			world.setBlock(x, y, z, InitBlocks.blockEngravedVanilla, 1, 2);
-		else if(block == Blocks.iron_block)
+		else if (block == Blocks.iron_block)
 			world.setBlock(x, y, z, InitBlocks.blockEngravedVanilla, 2, 2);
-		else if(block == Blocks.lapis_block)
+		else if (block == Blocks.lapis_block)
 			world.setBlock(x, y, z, InitBlocks.blockEngravedVanilla, 3, 2);
-		else if(block == Blocks.stone)
+		else if (block == Blocks.stone)
 			world.setBlock(x, y, z, InitBlocks.blockEngravedVanilla, 4, 2);
-		else if(block == Blocks.redstone_lamp)
+		else if (block == Blocks.redstone_lamp)
 			world.setBlock(x, y, z, InitBlocks.blockLamp, 0, 2);
-		else if(block == Blocks.lit_redstone_lamp)
+		else if (block == Blocks.lit_redstone_lamp)
 			world.setBlock(x, y, z, InitBlocks.blockLampOn, 0, 2);
-		else if(block instanceof IChiselable)
+		else if (block instanceof IChiselable)
 		{
 			Block newBlock = ((IChiselable) block).getChiseledVariant();
 			int meta = ((IChiselable) block).getChiseledVariantMeta();
-			if(meta == -1)
+			if (meta == -1)
 				world.setBlock(x, y, z, newBlock, world.getBlockMetadata(x, y, z), 2);
 			else
 				world.setBlock(x, y, z, newBlock, meta, 2);

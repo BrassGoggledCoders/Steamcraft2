@@ -40,7 +40,7 @@ public class WorldGenUndergroundHouse extends WorldGenerator
 	@Override
 	public boolean generate(World world, Random rand, int i, int j, int k)
 	{
-		if(!this.locationIsValidSpawn(world, i, j, k))
+		if (!this.locationIsValidSpawn(world, i, j, k))
 		{
 			return false;
 		}

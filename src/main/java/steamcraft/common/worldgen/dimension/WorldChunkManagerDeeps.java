@@ -84,7 +84,7 @@ public class WorldChunkManagerDeeps extends WorldChunkManager
 	public BiomeGenBase getBiomeGenAt(int x, int z)
 	{
 		BiomeGenBase biome = this.myBiomeCache.getBiomeGenAt(x, z);
-		if(biome == null)
+		if (biome == null)
 		{
 			return InitBiomes.biomeDepths;
 		}
@@ -93,7 +93,8 @@ public class WorldChunkManagerDeeps extends WorldChunkManager
 	}
 
 	/**
-	 * Returns a list of rainfall values for the specified blocks. Args: listToReuse, x, z, width, length.
+	 * Returns a list of rainfall values for the specified blocks. Args:
+	 * listToReuse, x, z, width, length.
 	 */
 	@Override
 	public float[] getRainfall(float[] par1ArrayOfFloat, int par2, int par3, int par4, int par5)
@@ -119,16 +120,16 @@ public class WorldChunkManagerDeeps extends WorldChunkManager
 	{
 		IntCache.resetIntCache();
 
-		if((par1ArrayOfBiomeGenBase == null) || (par1ArrayOfBiomeGenBase.length < (par4 * par5)))
+		if ((par1ArrayOfBiomeGenBase == null) || (par1ArrayOfBiomeGenBase.length < (par4 * par5)))
 		{
 			par1ArrayOfBiomeGenBase = new BiomeGenBase[par4 * par5];
 		}
 
 		int[] aint = this.myGenBiomes.getInts(par2, par3, par4, par5);
 
-		for(int i = 0; i < (par4 * par5); ++i)
+		for (int i = 0; i < (par4 * par5); ++i)
 		{
-			if(aint[i] >= 0)
+			if (aint[i] >= 0)
 			{
 				par1ArrayOfBiomeGenBase[i] = BiomeGenBase.getBiomeGenArray()[aint[i]];
 			}
@@ -143,8 +144,9 @@ public class WorldChunkManagerDeeps extends WorldChunkManager
 	}
 
 	/**
-	 * Returns biomes to use for the blocks and loads the other data like temperature and humidity onto the WorldChunkManager Args: oldgetBiomeGenArray(), x, z,
-	 * width, depth
+	 * Returns biomes to use for the blocks and loads the other data like
+	 * temperature and humidity onto the WorldChunkManager Args:
+	 * oldgetBiomeGenArray(), x, z, width, depth
 	 */
 	@Override
 	public BiomeGenBase[] loadBlockGeneratorData(BiomeGenBase[] par1ArrayOfBiomeGenBase, int par2, int par3, int par4, int par5)
@@ -153,20 +155,21 @@ public class WorldChunkManagerDeeps extends WorldChunkManager
 	}
 
 	/**
-	 * Return a list of biomes for the specified blocks. Args: listToReuse, x, y, width, length, cacheFlag (if false, don't check biomeCache to avoid infinite
-	 * loop in BiomeCacheBlock)
+	 * Return a list of biomes for the specified blocks. Args: listToReuse, x,
+	 * y, width, length, cacheFlag (if false, don't check biomeCache to avoid
+	 * infinite loop in BiomeCacheBlock)
 	 */
 	@Override
 	public BiomeGenBase[] getBiomeGenAt(BiomeGenBase[] par1ArrayOfBiomeGenBase, int x, int y, int width, int length, boolean cacheFlag)
 	{
 		IntCache.resetIntCache();
 
-		if((par1ArrayOfBiomeGenBase == null) || (par1ArrayOfBiomeGenBase.length < (width * length)))
+		if ((par1ArrayOfBiomeGenBase == null) || (par1ArrayOfBiomeGenBase.length < (width * length)))
 		{
 			par1ArrayOfBiomeGenBase = new BiomeGenBase[width * length];
 		}
 
-		if(cacheFlag && (width == 16) && (length == 16) && ((x & 15) == 0) && ((y & 15) == 0))
+		if (cacheFlag && (width == 16) && (length == 16) && ((x & 15) == 0) && ((y & 15) == 0))
 		{
 			BiomeGenBase[] abiomegenbase1 = this.myBiomeCache.getCachedBiomes(x, y);
 			System.arraycopy(abiomegenbase1, 0, par1ArrayOfBiomeGenBase, 0, width * length);
@@ -176,9 +179,9 @@ public class WorldChunkManagerDeeps extends WorldChunkManager
 		{
 			int[] aint = this.myBiomeIndexLayer.getInts(x, y, width, length);
 
-			for(int i = 0; i < (width * length); ++i)
+			for (int i = 0; i < (width * length); ++i)
 			{
-				if(aint[i] >= 0)
+				if (aint[i] >= 0)
 				{
 					par1ArrayOfBiomeGenBase[i] = BiomeGenBase.getBiomeGenArray()[aint[i]];
 				}
@@ -207,11 +210,11 @@ public class WorldChunkManagerDeeps extends WorldChunkManager
 		int i2 = (k1 - i1) + 1;
 		int[] aint = this.myGenBiomes.getInts(l, i1, l1, i2);
 
-		for(int j2 = 0; j2 < (l1 * i2); ++j2)
+		for (int j2 = 0; j2 < (l1 * i2); ++j2)
 		{
 			BiomeGenBase biomegenbase = BiomeGenBase.getBiomeGenArray()[aint[j2]];
 
-			if(!par4List.contains(biomegenbase))
+			if (!par4List.contains(biomegenbase))
 			{
 				return false;
 			}
@@ -221,7 +224,9 @@ public class WorldChunkManagerDeeps extends WorldChunkManager
 	}
 
 	/**
-	 * Finds a valid position within a range, that is in one of the listed biomes. Searches {par1,par2} +-par3 blocks. Strongly favors positive y positions.
+	 * Finds a valid position within a range, that is in one of the listed
+	 * biomes. Searches {par1,par2} +-par3 blocks. Strongly favors positive y
+	 * positions.
 	 */
 	@Override
 	public ChunkPosition findBiomePosition(int par1, int par2, int par3, List par4List, Random par5Random)
@@ -237,13 +242,13 @@ public class WorldChunkManagerDeeps extends WorldChunkManager
 		ChunkPosition chunkposition = null;
 		int j2 = 0;
 
-		for(int k2 = 0; k2 < (l1 * i2); ++k2)
+		for (int k2 = 0; k2 < (l1 * i2); ++k2)
 		{
 			int l2 = (l + (k2 % l1)) << 2;
 			int i3 = (i1 + (k2 / l1)) << 2;
 			BiomeGenBase biomegenbase = BiomeGenBase.getBiomeGenArray()[aint[k2]];
 
-			if(par4List.contains(biomegenbase) && ((chunkposition == null) || (par5Random.nextInt(j2 + 1) == 0)))
+			if (par4List.contains(biomegenbase) && ((chunkposition == null) || (par5Random.nextInt(j2 + 1) == 0)))
 			{
 				chunkposition = new ChunkPosition(l2, 0, i3);
 				++j2;

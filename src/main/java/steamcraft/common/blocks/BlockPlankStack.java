@@ -81,8 +81,9 @@ public class BlockPlankStack extends BaseBlock
 	}
 
 	/**
-	 * Lets the block know when one of its neighbor changes. Doesn't know which neighbor changed (coordinates passed are their own) Args: x, y, z, neighbor
-	 * Block
+	 * Lets the block know when one of its neighbor changes. Doesn't know which
+	 * neighbor changed (coordinates passed are their own) Args: x, y, z,
+	 * neighbor Block
 	 */
 	@Override
 	public void onNeighborBlockChange(World p_149695_1_, int p_149695_2_, int p_149695_3_, int p_149695_4_, Block p_149695_5_)
@@ -96,7 +97,7 @@ public class BlockPlankStack extends BaseBlock
 	@Override
 	public void updateTick(World p_149674_1_, int p_149674_2_, int p_149674_3_, int p_149674_4_, Random p_149674_5_)
 	{
-		if(!p_149674_1_.isRemote)
+		if (!p_149674_1_.isRemote)
 		{
 			this.func_149830_m(p_149674_1_, p_149674_2_, p_149674_3_, p_149674_4_);
 		}
@@ -104,16 +105,17 @@ public class BlockPlankStack extends BaseBlock
 
 	private void func_149830_m(World p_149830_1_, int p_149830_2_, int p_149830_3_, int p_149830_4_)
 	{
-		if(func_149831_e(p_149830_1_, p_149830_2_, p_149830_3_ - 1, p_149830_4_) && (p_149830_3_ >= 0))
+		if (func_149831_e(p_149830_1_, p_149830_2_, p_149830_3_ - 1, p_149830_4_) && (p_149830_3_ >= 0))
 		{
 			byte b0 = 32;
 
-			if(p_149830_1_.checkChunksExist(p_149830_2_ - b0, p_149830_3_ - b0, p_149830_4_ - b0, p_149830_2_ + b0, p_149830_3_ + b0, p_149830_4_ + b0))
+			if (p_149830_1_.checkChunksExist(p_149830_2_ - b0, p_149830_3_ - b0, p_149830_4_ - b0, p_149830_2_ + b0, p_149830_3_ + b0,
+					p_149830_4_ + b0))
 			{
-				if(!p_149830_1_.isRemote)
+				if (!p_149830_1_.isRemote)
 				{
-					EntityFallingBlock entityfallingblock = new EntityFallingBlock(p_149830_1_, p_149830_2_ + 0.5F, p_149830_3_ + 0.5F, p_149830_4_ + 0.5F,
-							this, p_149830_1_.getBlockMetadata(p_149830_2_, p_149830_3_, p_149830_4_));
+					EntityFallingBlock entityfallingblock = new EntityFallingBlock(p_149830_1_, p_149830_2_ + 0.5F, p_149830_3_ + 0.5F,
+							p_149830_4_ + 0.5F, this, p_149830_1_.getBlockMetadata(p_149830_2_, p_149830_3_, p_149830_4_));
 					this.func_149829_a(entityfallingblock);
 					p_149830_1_.spawnEntityInWorld(entityfallingblock);
 				}
@@ -138,11 +140,11 @@ public class BlockPlankStack extends BaseBlock
 	{
 		Block block = p_149831_0_.getBlock(p_149831_1_, p_149831_2_, p_149831_3_);
 
-		if(block.isAir(p_149831_0_, p_149831_1_, p_149831_2_, p_149831_3_))
+		if (block.isAir(p_149831_0_, p_149831_1_, p_149831_2_, p_149831_3_))
 		{
 			return true;
 		}
-		else if(block == Blocks.fire)
+		else if (block == Blocks.fire)
 		{
 			return true;
 		}
@@ -162,7 +164,7 @@ public class BlockPlankStack extends BaseBlock
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(Item item, CreativeTabs tab, List l)
 	{
-		for(int var4 = 0; var4 < 6; ++var4)
+		for (int var4 = 0; var4 < 6; ++var4)
 			l.add(new ItemStack(InitBlocks.blockPlankStack, 1, var4));
 	}
 

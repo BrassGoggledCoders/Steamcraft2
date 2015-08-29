@@ -13,9 +13,9 @@ public class IMCHandler
 	@EventHandler
 	public void imcCallback(FMLInterModComms.IMCEvent event)
 	{
-		for(final FMLInterModComms.IMCMessage msg : event.getMessages())
+		for (final FMLInterModComms.IMCMessage msg : event.getMessages())
 		{
-			if(msg.key.equalsIgnoreCase("addBloomeryRecipe") && msg.isNBTMessage())
+			if (msg.key.equalsIgnoreCase("addBloomeryRecipe") && msg.isNBTMessage())
 			{
 				NBTTagCompound tag = msg.getNBTValue();
 				BloomeryRecipes.getInstance().addBloomeryRecipe(ItemStack.loadItemStackFromNBT(tag.getCompoundTag("input1")),

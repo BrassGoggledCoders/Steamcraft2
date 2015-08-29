@@ -49,13 +49,13 @@ public class BlockArmorEditor extends BaseContainerBlock
 	@Override
 	public boolean onBlockActivated(World world, int par2, int par3, int par4, EntityPlayer player, int par6, float par7, float par8, float par9)
 	{
-		if(world.isRemote)
+		if (world.isRemote)
 			return true;
 		else
 		{
 			TileArmorEditor tile = (TileArmorEditor) world.getTileEntity(par2, par3, par4);
 
-			if((tile == null) || player.isSneaking())
+			if ((tile == null) || player.isSneaking())
 				return false;
 
 			player.openGui(Steamcraft.instance, GuiIDs.ARMOR_EDITOR, world, par2, par3, par4);
@@ -70,14 +70,14 @@ public class BlockArmorEditor extends BaseContainerBlock
 
 		keepInventory = true;
 
-		if(par0)
+		if (par0)
 			par1World.setBlockMetadataWithNotify(par2, par3, par4, var5 + 7, 2);
 		else
 			par1World.setBlockMetadataWithNotify(par2, par3, par4, var5 - 7, 2);
 
 		keepInventory = false;
 
-		if(tileentity != null)
+		if (tileentity != null)
 		{
 			tileentity.validate();
 			par1World.setTileEntity(par2, par3, par4, tileentity);

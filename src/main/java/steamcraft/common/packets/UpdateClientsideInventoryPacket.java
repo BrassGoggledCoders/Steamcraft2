@@ -12,8 +12,6 @@
  */
 package steamcraft.common.packets;
 
-import io.netty.buffer.ByteBuf;
-
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
@@ -26,6 +24,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 import boilerplate.client.ClientHelper;
 import boilerplate.common.baseclasses.BaseTileWithInventory;
+import io.netty.buffer.ByteBuf;
 
 /**
  * @author decebaldecebal
@@ -54,7 +53,7 @@ public class UpdateClientsideInventoryPacket implements IMessage
 		this.x = buf.readInt();
 		this.y = buf.readInt();
 		this.z = buf.readInt();
-		for(int i = 0; i < this.ids.length; i++)
+		for (int i = 0; i < this.ids.length; i++)
 		{
 			this.ids[i] = buf.readInt();
 		}
@@ -66,7 +65,7 @@ public class UpdateClientsideInventoryPacket implements IMessage
 		buf.writeInt(this.x);
 		buf.writeInt(this.y);
 		buf.writeInt(this.z);
-		for(int id : this.ids)
+		for (int id : this.ids)
 		{
 			buf.writeInt(id);
 		}
@@ -80,11 +79,11 @@ public class UpdateClientsideInventoryPacket implements IMessage
 		{
 			World world = ClientHelper.world();
 
-			if(world.getTileEntity(message.x, message.y, message.z) instanceof BaseTileWithInventory)
+			if (world.getTileEntity(message.x, message.y, message.z) instanceof BaseTileWithInventory)
 			{
 				BaseTileWithInventory tile = (BaseTileWithInventory) world.getTileEntity(message.x, message.y, message.z);
 
-				for(int i = 0; i < message.ids.length; i++)
+				for (int i = 0; i < message.ids.length; i++)
 				{
 					tile.inventory[i] = new ItemStack(Item.getItemById(message.ids[i]));
 				}

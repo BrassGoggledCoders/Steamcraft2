@@ -41,7 +41,7 @@ public class RenderGhostSpider extends RenderLiving
 
 	protected int shouldRenderPass(EntitySpider p_77032_1_, int p_77032_2_, float p_77032_3_)
 	{
-		if(p_77032_2_ != 0)
+		if (p_77032_2_ != 0)
 		{
 			return -1;
 		}
@@ -52,7 +52,7 @@ public class RenderGhostSpider extends RenderLiving
 			GL11.glDisable(GL11.GL_ALPHA_TEST);
 			GL11.glBlendFunc(GL11.GL_ONE, GL11.GL_ONE);
 
-			if(p_77032_1_.isInvisible())
+			if (p_77032_1_.isInvisible())
 			{
 				GL11.glDepthMask(false);
 			}
@@ -91,7 +91,8 @@ public class RenderGhostSpider extends RenderLiving
 	}
 
 	/**
-	 * Returns the location of an entity's texture. Doesn't seem to be called unless you call Render.bindEntityTexture.
+	 * Returns the location of an entity's texture. Doesn't seem to be called
+	 * unless you call Render.bindEntityTexture.
 	 */
 	@Override
 	protected ResourceLocation getEntityTexture(Entity p_110775_1_)

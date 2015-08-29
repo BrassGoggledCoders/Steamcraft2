@@ -27,7 +27,7 @@ public class ModelWhale extends ModelBase
 		this.flipper1 = new ModelRenderer(this, 0, 64);
 		this.flipper1.setRotationPoint(13.0F, 11.0F, -11.0F);
 		this.flipper1.addBox(0.0F, 0.0F, 0.0F, 12, 2, 8);
-		this.setRotateAngle(flipper1, 0.5462880730628967F, 0.31869712471961975F, 0.5009095072746276F);
+		this.setRotateAngle(this.flipper1, 0.5462880730628967F, 0.31869712471961975F, 0.5009095072746276F);
 		this.head = new ModelRenderer(this, 52, 50);
 		this.head.setRotationPoint(0.0F, 0.0F, 0.0F);
 		this.head.addBox(0.0F, 0.0F, 0.0F, 15, 10, 15);
@@ -43,11 +43,11 @@ public class ModelWhale extends ModelBase
 		this.mouth = new ModelRenderer(this, 0, 48);
 		this.mouth.setRotationPoint(1.0F, 8.0F, 0.0F);
 		this.mouth.addBox(0.0F, 0.0F, 0.0F, 13, 3, 13);
-		this.setRotateAngle(mouth, -0.22759093344211578F, 0.0F, 0.0F);
+		this.setRotateAngle(this.mouth, -0.22759093344211578F, 0.0F, 0.0F);
 		this.flipper = new ModelRenderer(this, 0, 65);
 		this.flipper.setRotationPoint(-12.0F, 11.0F, -11.0F);
 		this.flipper.addBox(0.0F, 0.0F, 0.0F, 12, 2, 8);
-		this.setRotateAngle(flipper, -0.5462880730628967F, -0.31869712471961975F, -0.5009095072746276F);
+		this.setRotateAngle(this.flipper, -0.5462880730628967F, -0.31869712471961975F, -0.5009095072746276F);
 		this.tail = new ModelRenderer(this, 0, 74);
 		this.tail.setRotationPoint(0.0F, -2.0F, -48.0F);
 		this.tail.addBox(0.0F, 0.0F, 0.0F, 15, 10, 15);

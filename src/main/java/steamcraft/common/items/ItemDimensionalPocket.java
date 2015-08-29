@@ -53,7 +53,7 @@ public class ItemDimensionalPocket extends BaseItem implements IOpenableGUI
 	@Override
 	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
 	{
-		return new GuiPocket((ContainerPocket) getServerGuiElement(ID, player, world, x, y, z));
+		return new GuiPocket((ContainerPocket) this.getServerGuiElement(ID, player, world, x, y, z));
 	}
 
 	@Override

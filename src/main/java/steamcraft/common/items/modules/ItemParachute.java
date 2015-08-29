@@ -59,7 +59,7 @@ public class ItemParachute extends BaseArmorModule
 	@Override
 	public void applyModuleEffect(World world, EntityPlayer player, ItemStack stack)
 	{
-		if(!player.onGround && (player.motionY < 0.0D))
+		if (!player.onGround && (player.motionY < 0.0D))
 		{
 			player.motionY *= 0.6D;
 			player.fallDistance = 0.0F;

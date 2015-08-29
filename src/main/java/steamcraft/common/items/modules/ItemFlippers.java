@@ -59,7 +59,7 @@ public class ItemFlippers extends BaseArmorModule
 	@Override
 	public void applyModuleEffect(World world, EntityPlayer player, ItemStack stack)
 	{
-		if(player.isInWater())
+		if (player.isInWater())
 		{
 			player.motionX *= 1.2D;
 			player.motionY *= 1.2D;

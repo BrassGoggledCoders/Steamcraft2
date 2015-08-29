@@ -39,7 +39,7 @@ public class BiomeDepthsTallForest extends BiomeDepthsBase
 	public WorldGenAbstractTree func_150567_a(Random rand)
 	{
 		int randnumb = rand.nextInt(4);
-		if(randnumb != 0)
+		if (randnumb != 0)
 			return new WorldGenRedwoodTree(false, 30, 20, 0, 0);
 		else
 			return new WorldGenMegaPineTree(false, false);
@@ -51,14 +51,14 @@ public class BiomeDepthsTallForest extends BiomeDepthsBase
 
 		genTallFlowers.func_150548_a(3);
 
-		for(int k = 0; k < 7; ++k)
+		for (int k = 0; k < 7; ++k)
 		{
 			int l = p_76728_3_ + p_76728_2_.nextInt(16);
 			int i1 = p_76728_4_ + p_76728_2_.nextInt(16);
 			int j1 = p_76728_2_.nextInt(p_76728_1_.getHeightValue(l, i1) + 32);
 			genTallFlowers.generate(p_76728_1_, p_76728_2_, l, j1, i1);
 		}
-		for(int l = 0; l < 3; ++l)
+		for (int l = 0; l < 3; ++l)
 		{
 			int k = p_76728_2_.nextInt(3);
 			int i1 = p_76728_3_ + p_76728_2_.nextInt(16);

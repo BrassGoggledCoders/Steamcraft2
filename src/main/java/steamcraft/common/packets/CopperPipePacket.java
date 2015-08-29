@@ -12,8 +12,6 @@
  */
 package steamcraft.common.packets;
 
-import io.netty.buffer.ByteBuf;
-
 import net.minecraft.world.World;
 
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
@@ -24,8 +22,9 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 import net.minecraftforge.common.util.ForgeDirection;
 
-import steamcraft.common.tiles.TileCopperPipe;
 import boilerplate.client.ClientHelper;
+import io.netty.buffer.ByteBuf;
+import steamcraft.common.tiles.TileCopperPipe;
 
 /**
  * @author decebaldecebal
@@ -59,16 +58,16 @@ public class CopperPipePacket implements IMessage
 
 		this.connections = new ForgeDirection[6];
 
-		for(int i = 0; i < 6; i++)
+		for (int i = 0; i < 6; i++)
 		{
 			this.connections[i] = ForgeDirection.getOrientation(buf.readByte());
 
-			if(this.connections[i] == ForgeDirection.UNKNOWN)
+			if (this.connections[i] == ForgeDirection.UNKNOWN)
 				this.connections[i] = null;
 		}
-		
+
 		this.extract = ForgeDirection.getOrientation(buf.readByte());
-		if(this.extract == ForgeDirection.UNKNOWN)
+		if (this.extract == ForgeDirection.UNKNOWN)
 			this.extract = null;
 	}
 
@@ -78,7 +77,7 @@ public class CopperPipePacket implements IMessage
 		buf.writeInt(this.x);
 		buf.writeInt(this.y);
 		buf.writeInt(this.z);
-		for(int i = 0; i < 6; i++)
+		for (int i = 0; i < 6; i++)
 			buf.writeByte(directionToByte(this.connections[i]));
 		buf.writeByte(directionToByte(this.extract));
 	}
@@ -87,29 +86,29 @@ public class CopperPipePacket implements IMessage
 	{
 		byte index = -1;
 
-		if(dir != null)
-			switch(dir)
+		if (dir != null)
+			switch (dir)
 			{
-				case DOWN:
-					index = 0;
-					break;
-				case UP:
-					index = 1;
-					break;
-				case NORTH:
-					index = 2;
-					break;
-				case SOUTH:
-					index = 3;
-					break;
-				case WEST:
-					index = 4;
-					break;
-				case EAST:
-					index = 5;
-					break;
-				default:
-					index = -1;
+			case DOWN:
+				index = 0;
+				break;
+			case UP:
+				index = 1;
+				break;
+			case NORTH:
+				index = 2;
+				break;
+			case SOUTH:
+				index = 3;
+				break;
+			case WEST:
+				index = 4;
+				break;
+			case EAST:
+				index = 5;
+				break;
+			default:
+				index = -1;
 				break;
 			}
 
@@ -124,7 +123,7 @@ public class CopperPipePacket implements IMessage
 		{
 			World world = ClientHelper.world();
 
-			if(world.getTileEntity(message.x, message.y, message.z) instanceof TileCopperPipe)
+			if (world.getTileEntity(message.x, message.y, message.z) instanceof TileCopperPipe)
 			{
 				TileCopperPipe pipe = (TileCopperPipe) world.getTileEntity(message.x, message.y, message.z);
 

@@ -55,19 +55,19 @@ public class EntityBoilerMinecart extends EntityMinecart
 	{
 		super.onUpdate();
 
-		if(this.fuel > 0)
+		if (this.fuel > 0)
 		{
 			--this.fuel;
 		}
 
-		if(this.fuel <= 0)
+		if (this.fuel <= 0)
 		{
 			this.pushX = this.pushZ = 0.0D;
 		}
 
 		this.setMinecartPowered(this.fuel > 0);
 
-		if(this.isMinecartPowered() && (this.rand.nextInt(4) == 0))
+		if (this.isMinecartPowered() && (this.rand.nextInt(4) == 0))
 		{
 			this.worldObj.spawnParticle("largesmoke", this.posX, this.posY + 0.8D, this.posZ, 0.0D, 0.0D, 0.0D);
 		}
@@ -78,25 +78,26 @@ public class EntityBoilerMinecart extends EntityMinecart
 	{
 		super.killMinecart(p_94095_1_);
 
-		if(!p_94095_1_.isExplosion())
+		if (!p_94095_1_.isExplosion())
 		{
 			this.entityDropItem(new ItemStack(Blocks.furnace, 1), 0.0F);
 		}
 	}
 
 	@Override
-	protected void func_145821_a(int p_145821_1_, int p_145821_2_, int p_145821_3_, double p_145821_4_, double p_145821_6_, Block p_145821_8_, int p_145821_9_)
+	protected void func_145821_a(int p_145821_1_, int p_145821_2_, int p_145821_3_, double p_145821_4_, double p_145821_6_, Block p_145821_8_,
+			int p_145821_9_)
 	{
 		super.func_145821_a(p_145821_1_, p_145821_2_, p_145821_3_, p_145821_4_, p_145821_6_, p_145821_8_, p_145821_9_);
 		double d2 = (this.pushX * this.pushX) + (this.pushZ * this.pushZ);
 
-		if((d2 > 1.0E-4D) && (((this.motionX * this.motionX) + (this.motionZ * this.motionZ)) > 0.001D))
+		if ((d2 > 1.0E-4D) && (((this.motionX * this.motionX) + (this.motionZ * this.motionZ)) > 0.001D))
 		{
 			d2 = MathHelper.sqrt_double(d2);
 			this.pushX /= d2;
 			this.pushZ /= d2;
 
-			if(((this.pushX * this.motionX) + (this.pushZ * this.motionZ)) < 0.0D)
+			if (((this.pushX * this.motionX) + (this.pushZ * this.motionZ)) < 0.0D)
 			{
 				this.pushX = 0.0D;
 				this.pushZ = 0.0D;
@@ -114,7 +115,7 @@ public class EntityBoilerMinecart extends EntityMinecart
 	{
 		double d0 = (this.pushX * this.pushX) + (this.pushZ * this.pushZ);
 
-		if(d0 > 1.0E-4D)
+		if (d0 > 1.0E-4D)
 		{
 			d0 = MathHelper.sqrt_double(d0);
 			this.pushX /= d0;
@@ -180,7 +181,7 @@ public class EntityBoilerMinecart extends EntityMinecart
 
 	protected void setMinecartPowered(boolean powered)
 	{
-		if(powered)
+		if (powered)
 		{
 			this.dataWatcher.updateObject(16, (byte) (this.dataWatcher.getWatchableObjectByte(16) | 1));
 		}

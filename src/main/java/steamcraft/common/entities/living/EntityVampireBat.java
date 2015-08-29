@@ -50,14 +50,12 @@ public class EntityVampireBat extends EntityMob
 	@Override
 	public void onLivingUpdate()
 	{
-		if(this.worldObj.isDaytime() && !this.worldObj.isRemote && !this.isChild())
+		if (this.worldObj.isDaytime() && !this.worldObj.isRemote && !this.isChild())
 		{
 			float f = this.getBrightness(1.0F);
 
-			if((f > 0.5F)
-					&& ((this.rand.nextFloat() * 30.0F) < ((f - 0.4F) * 2.0F))
-					&& this.worldObj.canBlockSeeTheSky(MathHelper.floor_double(this.posX), MathHelper.floor_double(this.posY),
-							MathHelper.floor_double(this.posZ)))
+			if ((f > 0.5F) && ((this.rand.nextFloat() * 30.0F) < ((f - 0.4F) * 2.0F)) && this.worldObj
+					.canBlockSeeTheSky(MathHelper.floor_double(this.posX), MathHelper.floor_double(this.posY), MathHelper.floor_double(this.posZ)))
 			{
 				this.setFire(8);
 			}
@@ -118,7 +116,8 @@ public class EntityVampireBat extends EntityMob
 	}
 
 	/**
-	 * Returns true if this entity should push and be pushed by other entities when colliding.
+	 * Returns true if this entity should push and be pushed by other entities
+	 * when colliding.
 	 */
 	@Override
 	public boolean canBePushed()
@@ -152,7 +151,7 @@ public class EntityVampireBat extends EntityMob
 	{
 		byte b0 = this.dataWatcher.getWatchableObjectByte(16);
 
-		if(p_82236_1_)
+		if (p_82236_1_)
 		{
 			this.dataWatcher.updateObject(16, (byte) (b0 | 1));
 		}
@@ -179,7 +178,7 @@ public class EntityVampireBat extends EntityMob
 	{
 		super.onUpdate();
 
-		if(this.getIsBatHanging())
+		if (this.getIsBatHanging())
 		{
 			this.motionX = this.motionY = this.motionZ = 0.0D;
 			this.posY = (MathHelper.floor_double(this.posY) + 1.0D) - this.height;
@@ -195,21 +194,21 @@ public class EntityVampireBat extends EntityMob
 	{
 		super.updateAITasks();
 
-		if(this.getIsBatHanging())
+		if (this.getIsBatHanging())
 		{
-			if(!this.worldObj.getBlock(MathHelper.floor_double(this.posX), (int) this.posY + 1, MathHelper.floor_double(this.posZ)).isNormalCube())
+			if (!this.worldObj.getBlock(MathHelper.floor_double(this.posX), (int) this.posY + 1, MathHelper.floor_double(this.posZ)).isNormalCube())
 			{
 				this.setIsBatHanging(false);
 				this.worldObj.playAuxSFXAtEntity((EntityPlayer) null, 1015, (int) this.posX, (int) this.posY, (int) this.posZ, 0);
 			}
 			else
 			{
-				if(this.rand.nextInt(200) == 0)
+				if (this.rand.nextInt(200) == 0)
 				{
 					this.rotationYawHead = this.rand.nextInt(360);
 				}
 
-				if(this.worldObj.getClosestPlayerToEntity(this, 4.0D) != null)
+				if (this.worldObj.getClosestPlayerToEntity(this, 4.0D) != null)
 				{
 					this.setIsBatHanging(false);
 					this.worldObj.playAuxSFXAtEntity((EntityPlayer) null, 1015, (int) this.posX, (int) this.posY, (int) this.posZ, 0);
@@ -218,18 +217,17 @@ public class EntityVampireBat extends EntityMob
 		}
 		else
 		{
-			if((this.spawnPosition != null)
-					&& (!this.worldObj.isAirBlock(this.spawnPosition.posX, this.spawnPosition.posY, this.spawnPosition.posZ) || (this.spawnPosition.posY < 1)))
+			if ((this.spawnPosition != null) && (!this.worldObj.isAirBlock(this.spawnPosition.posX, this.spawnPosition.posY, this.spawnPosition.posZ)
+					|| (this.spawnPosition.posY < 1)))
 			{
 				this.spawnPosition = null;
 			}
 
-			if((this.spawnPosition == null) || (this.rand.nextInt(30) == 0)
+			if ((this.spawnPosition == null) || (this.rand.nextInt(30) == 0)
 					|| (this.spawnPosition.getDistanceSquared((int) this.posX, (int) this.posY, (int) this.posZ) < 4.0F))
 			{
 				this.spawnPosition = new ChunkCoordinates(((int) this.posX + this.rand.nextInt(7)) - this.rand.nextInt(7),
-						((int) this.posY + this.rand.nextInt(6))
-						- 2, ((int) this.posZ + this.rand.nextInt(7)) - this.rand.nextInt(7));
+						((int) this.posY + this.rand.nextInt(6)) - 2, ((int) this.posZ + this.rand.nextInt(7)) - this.rand.nextInt(7));
 			}
 
 			double d0 = (this.spawnPosition.posX + 0.5D) - this.posX;
@@ -243,8 +241,8 @@ public class EntityVampireBat extends EntityMob
 			this.moveForward = 0.5F;
 			this.rotationYaw += f1;
 
-			if((this.rand.nextInt(100) == 0)
-					&& this.worldObj.getBlock(MathHelper.floor_double(this.posX), (int) this.posY + 1, MathHelper.floor_double(this.posZ)).isNormalCube())
+			if ((this.rand.nextInt(100) == 0) && this.worldObj
+					.getBlock(MathHelper.floor_double(this.posX), (int) this.posY + 1, MathHelper.floor_double(this.posZ)).isNormalCube())
 			{
 				this.setIsBatHanging(true);
 			}
@@ -252,7 +250,8 @@ public class EntityVampireBat extends EntityMob
 	}
 
 	/**
-	 * returns if this entity triggers Block.onEntityWalking on the blocks they walk on. used for spiders and wolves to prevent them from trampling crops
+	 * returns if this entity triggers Block.onEntityWalking on the blocks they
+	 * walk on. used for spiders and wolves to prevent them from trampling crops
 	 */
 	@Override
 	protected boolean canTriggerWalking()
@@ -269,8 +268,9 @@ public class EntityVampireBat extends EntityMob
 	}
 
 	/**
-	 * Takes in the distance the entity has fallen this tick and whether its on the ground to update the fall distance and deal fall damage if landing on the
-	 * ground. Args: distanceFallenThisTick, onGround
+	 * Takes in the distance the entity has fallen this tick and whether its on
+	 * the ground to update the fall distance and deal fall damage if landing on
+	 * the ground. Args: distanceFallenThisTick, onGround
 	 */
 	@Override
 	protected void updateFallState(double p_70064_1_, boolean p_70064_3_)
@@ -278,7 +278,8 @@ public class EntityVampireBat extends EntityMob
 	}
 
 	/**
-	 * Return whether this entity should NOT trigger a pressure plate or a tripwire.
+	 * Return whether this entity should NOT trigger a pressure plate or a
+	 * tripwire.
 	 */
 	@Override
 	public boolean doesEntityNotTriggerPressurePlate()
@@ -292,13 +293,13 @@ public class EntityVampireBat extends EntityMob
 	@Override
 	public boolean attackEntityFrom(DamageSource p_70097_1_, float p_70097_2_)
 	{
-		if(this.isEntityInvulnerable())
+		if (this.isEntityInvulnerable())
 		{
 			return false;
 		}
 		else
 		{
-			if(!this.worldObj.isRemote && this.getIsBatHanging())
+			if (!this.worldObj.isRemote && this.getIsBatHanging())
 			{
 				this.setIsBatHanging(false);
 			}
@@ -328,14 +329,15 @@ public class EntityVampireBat extends EntityMob
 	}
 
 	/**
-	 * Checks if the entity's current position is a valid location to spawn this entity.
+	 * Checks if the entity's current position is a valid location to spawn this
+	 * entity.
 	 */
 	@Override
 	public boolean getCanSpawnHere()
 	{
 		int i = MathHelper.floor_double(this.boundingBox.minY);
 
-		if(i >= 63)
+		if (i >= 63)
 		{
 			return false;
 		}
@@ -349,9 +351,9 @@ public class EntityVampireBat extends EntityMob
 			int month = calendar.get(Calendar.MONTH);
 			int day = calendar.get(Calendar.DATE);
 
-			if((((month + 1) != 10) || (day < 20)) && (((month + 1) != 11) || (day > 3)))
+			if ((((month + 1) != 10) || (day < 20)) && (((month + 1) != 11) || (day > 3)))
 			{
-				if(this.rand.nextBoolean())
+				if (this.rand.nextBoolean())
 				{
 					return false;
 				}

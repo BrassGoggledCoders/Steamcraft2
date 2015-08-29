@@ -28,7 +28,7 @@ public class WorldGenSpout extends WorldGenerator
 	{
 		// Find ground level
 		int groundLevel = this.getTopBlock(world, x, z);
-		if(groundLevel < 5)
+		if (groundLevel < 5)
 		{
 			return false;
 		}
@@ -37,7 +37,7 @@ public class WorldGenSpout extends WorldGenerator
 		int wellZ = z;
 		int wellHeight = 6 + random.nextInt(3);
 		int maxHeight = groundLevel + wellHeight;
-		if(maxHeight >= (world.getActualHeight() - 1))
+		if (maxHeight >= (world.getActualHeight() - 1))
 		{
 			return false;
 		}
@@ -46,11 +46,11 @@ public class WorldGenSpout extends WorldGenerator
 
 		int wellY = 50 + random.nextInt(10);
 
-		for(int i = wellY + 1; i <= maxHeight; ++i)
+		for (int i = wellY + 1; i <= maxHeight; ++i)
 		{
 			world.setBlock(wellX, i, wellZ, this.block, 0, 3);
 		}
-		for(int i = wellY; i <= (maxHeight - (wellHeight / 2)); ++i)
+		for (int i = wellY; i <= (maxHeight - (wellHeight / 2)); ++i)
 		{
 			world.setBlock(wellX + 1, i, wellZ, this.block, 0, 3);
 			world.setBlock(wellX - 1, i, wellZ, this.block, 0, 3);
@@ -68,36 +68,36 @@ public class WorldGenSpout extends WorldGenerator
 		int trimmedX = x & 15;
 		int trimmedZ = z & 15;
 
-		for(; y > 0; --y)
+		for (; y > 0; --y)
 		{
 			Block block = chunk.getBlock(trimmedX, y, trimmedZ);
 
-			if(block.isAir(world, x, y, z))
+			if (block.isAir(world, x, y, z))
 			{
 				continue;
 			}
 
-			if(block instanceof BlockStaticLiquid)
+			if (block instanceof BlockStaticLiquid)
 			{
 				return y;
 			}
 
-			if(block instanceof BlockFluidBase)
+			if (block instanceof BlockFluidBase)
 			{
 				return y;
 			}
 
-			if(block instanceof IFluidBlock)
+			if (block instanceof IFluidBlock)
 			{
 				return y;
 			}
 
-			if(!block.getMaterial().blocksMovement())
+			if (!block.getMaterial().blocksMovement())
 			{
 				continue;
 			}
 
-			if(block instanceof BlockFlower)
+			if (block instanceof BlockFlower)
 			{
 				continue;
 			}

@@ -12,9 +12,10 @@
  */
 package steamcraft.common.tiles;
 
-import boilerplate.api.IOpenableGUI;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
+
+import boilerplate.api.IOpenableGUI;
 import steamcraft.client.gui.GuiNuclearBoiler;
 import steamcraft.common.init.InitItems;
 import steamcraft.common.tiles.container.ContainerNuclearBoiler;
@@ -28,9 +29,9 @@ public class TileNuclearBoiler extends TileBaseBoiler implements IOpenableGUI
 	@Override
 	protected int getItemBurnTime()
 	{
-		if(this.inventory[0] == null)
+		if (this.inventory[0] == null)
 			return 0;
-		else if((this.inventory[0].getItem() == InitItems.itemResource) && (this.inventory[0].getItemDamage() == 5))
+		else if ((this.inventory[0].getItem() == InitItems.itemResource) && (this.inventory[0].getItemDamage() == 5))
 			return 9000;
 		else
 			return 0;
@@ -39,12 +40,12 @@ public class TileNuclearBoiler extends TileBaseBoiler implements IOpenableGUI
 	@Override
 	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
 	{
-		return new GuiNuclearBoiler(player.inventory, (TileNuclearBoiler)world.getTileEntity(x, y, z));
+		return new GuiNuclearBoiler(player.inventory, (TileNuclearBoiler) world.getTileEntity(x, y, z));
 	}
 
 	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
 	{
-		return new ContainerNuclearBoiler(player.inventory, (TileNuclearBoiler)world.getTileEntity(x, y, z));
+		return new ContainerNuclearBoiler(player.inventory, (TileNuclearBoiler) world.getTileEntity(x, y, z));
 	}
 }

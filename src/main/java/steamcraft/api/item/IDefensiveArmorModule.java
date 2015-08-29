@@ -11,7 +11,8 @@ package steamcraft.api.item;
 /**
  * The Interface IDefensiveArmorModule.
  *
- * {@link EnumArmorEffectType} should always return DEFENSIVE when using this interface
+ * {@link EnumArmorEffectType} should always return DEFENSIVE when using this
+ * interface
  *
  * @author warlordjones
  */

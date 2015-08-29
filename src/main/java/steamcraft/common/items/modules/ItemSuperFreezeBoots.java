@@ -66,18 +66,16 @@ public class ItemSuperFreezeBoots extends BaseArmorModule
 		int pX = (int) Math.round(player.posX);
 		int pY = (int) Math.round(player.posY) - 2;
 		int pZ = (int) Math.round(player.posZ);
-		if((world.getBlock(pX, pY, pZ).getMaterial() == Material.air) && !player.isSneaking())
+		if ((world.getBlock(pX, pY, pZ).getMaterial() == Material.air) && !player.isSneaking())
 		{
 			world.setBlock(pX, pY, pZ, InitBlocks.blockGhostIce);
 		}
-		for(int i = 2; i < ForgeDirection.VALID_DIRECTIONS.length; i++)
+		for (int i = 2; i < ForgeDirection.VALID_DIRECTIONS.length; i++)
 		{
 			ForgeDirection dir = ForgeDirection.VALID_DIRECTIONS[i];
-			if((world.getBlock(pX +
-					dir.offsetX, pY + dir.offsetY, pZ + dir.offsetZ).getMaterial() == Material.air) && !player.isSneaking())
+			if ((world.getBlock(pX + dir.offsetX, pY + dir.offsetY, pZ + dir.offsetZ).getMaterial() == Material.air) && !player.isSneaking())
 			{
-				world.setBlock(pX + dir.offsetX, pY + dir.offsetY, pZ +
-						dir.offsetZ, InitBlocks.blockGhostIce);
+				world.setBlock(pX + dir.offsetX, pY + dir.offsetY, pZ + dir.offsetZ, InitBlocks.blockGhostIce);
 			}
 		}
 	}

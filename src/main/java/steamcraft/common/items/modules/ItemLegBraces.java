@@ -61,7 +61,7 @@ public class ItemLegBraces extends BaseArmorModule
 	{
 		final float distToFall = player.fallDistance;
 
-		if(distToFall > 3.0F)
+		if (distToFall > 3.0F)
 		{
 			player.fallDistance = distToFall * 0.888F;
 		}

@@ -9,11 +9,11 @@ import net.minecraft.util.StatCollector;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+import boilerplate.client.ClientHelper;
 import steamcraft.api.item.IPoweredModuleHelper;
 import steamcraft.common.init.InitItems;
 import steamcraft.common.items.ItemCanister;
 import steamcraft.common.items.electric.ElectricItem;
-import boilerplate.client.ClientHelper;
 
 public abstract class PoweredArmorModule extends BaseArmorModule implements IPoweredModuleHelper
 {
@@ -25,17 +25,17 @@ public abstract class PoweredArmorModule extends BaseArmorModule implements IPow
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer par2EntityPlayer, List list, boolean par4)
 	{
-		if(ClientHelper.isShiftKeyDown())
+		if (ClientHelper.isShiftKeyDown())
 		{
 			list.add("Module ID: " + this.getModuleId());
 			list.add("Applicable Piece: " + this.getArmorPieceNameFromNumber(this.getApplicablePiece()));
 			list.add("Effect Type: " + this.getEffectTypeStringFromEnum(this.getArmorEffectType()));
-			if(!StatCollector.translateToLocal(this.getUnlocalizedName() + ".desc").contains("item."))
+			if (!StatCollector.translateToLocal(this.getUnlocalizedName() + ".desc").contains("item."))
 			{
 				list.add("Module Effect: ");
 				this.getWrappedDesc(list, stack);
 			}
-			if(this instanceof IPoweredModuleHelper)
+			if (this instanceof IPoweredModuleHelper)
 			{
 				PoweredArmorModule module = this;
 				list.add("Energy Consumption: " + module.rfToConsume);
@@ -61,12 +61,12 @@ public abstract class PoweredArmorModule extends BaseArmorModule implements IPow
 	@Override
 	public boolean doConsumption(EntityPlayer player, ItemStack stack)
 	{
-		if(this.isSteamAvailable(player, this.steamToConsume))
+		if (this.isSteamAvailable(player, this.steamToConsume))
 		{
 			this.consumeSteamFromCanister(player, this.steamToConsume);
 			return true;
 		}
-		if(this.isRFAvailable(player, this.rfToConsume))
+		if (this.isRFAvailable(player, this.rfToConsume))
 		{
 			this.consumeRFFromJar(player, this.rfToConsume);
 			return true;
@@ -78,12 +78,12 @@ public abstract class PoweredArmorModule extends BaseArmorModule implements IPow
 	{
 		ItemStack[] mainInv = player.inventory.mainInventory;
 
-		for(ItemStack element : mainInv)
-			if((element != null) && (element.getItem() == InitItems.itemCanisterSteam))
+		for (ItemStack element : mainInv)
+			if ((element != null) && (element.getItem() == InitItems.itemCanisterSteam))
 			{
 				ItemCanister canister = (ItemCanister) element.getItem();
 
-				if(canister.getFluidAmount(element) > steamToDrain)
+				if (canister.getFluidAmount(element) > steamToDrain)
 				{
 					canister.drain(element, steamToDrain, true);
 				}
@@ -94,9 +94,9 @@ public abstract class PoweredArmorModule extends BaseArmorModule implements IPow
 	{
 		ItemStack[] mainInv = player.inventory.mainInventory;
 
-		for(ItemStack element : mainInv)
+		for (ItemStack element : mainInv)
 		{
-			if((element != null) && (element.getItem() == InitItems.itemCanisterSteam))
+			if ((element != null) && (element.getItem() == InitItems.itemCanisterSteam))
 			{
 				ItemCanister canister = (ItemCanister) element.getItem();
 
@@ -110,12 +110,12 @@ public abstract class PoweredArmorModule extends BaseArmorModule implements IPow
 	{
 		ItemStack[] mainInv = player.inventory.mainInventory;
 
-		for(ItemStack element : mainInv)
-			if((element != null) && (element.getItem() instanceof ElectricItem))
+		for (ItemStack element : mainInv)
+			if ((element != null) && (element.getItem() instanceof ElectricItem))
 			{
 				ElectricItem jar = (ElectricItem) element.getItem();
 
-				if(jar.getEnergyStored(element) >= rfToDrain)
+				if (jar.getEnergyStored(element) >= rfToDrain)
 				{
 					jar.extractEnergy(element, rfToDrain, false);
 				}
@@ -126,9 +126,9 @@ public abstract class PoweredArmorModule extends BaseArmorModule implements IPow
 	{
 		ItemStack[] mainInv = player.inventory.mainInventory;
 
-		for(ItemStack element : mainInv)
+		for (ItemStack element : mainInv)
 		{
-			if((element != null) && (element.getItem() instanceof ElectricItem))
+			if ((element != null) && (element.getItem() instanceof ElectricItem))
 			{
 				ElectricItem jar = (ElectricItem) element.getItem();
 

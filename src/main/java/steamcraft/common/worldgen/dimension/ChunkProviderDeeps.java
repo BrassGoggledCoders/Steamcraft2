@@ -435,7 +435,7 @@ public class ChunkProviderDeeps implements IChunkProvider
 			k1 = blockX + this.rand.nextInt(16);
 			l1 = this.rand.nextInt(256);
 			i2 = blockZ + this.rand.nextInt(16);
-			if (this.rand.nextInt(5) == 0 && InitBlocks.blockBoilingWater != null)
+			if ((this.rand.nextInt(5) == 0) && (InitBlocks.blockBoilingWater != null))
 				(new WorldGenSpout(InitBlocks.blockBoilingWater)).generate(this.worldObj, this.rand, k1, l1, i2);
 
 			k1 = blockX + this.rand.nextInt(16);

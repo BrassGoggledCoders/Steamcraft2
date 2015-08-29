@@ -12,19 +12,22 @@
  */
 package steamcraft.common.packets;
 
-import io.netty.buffer.ByteBuf;
 import net.minecraft.world.World;
-import net.minecraftforge.fluids.FluidRegistry;
-import net.minecraftforge.fluids.FluidTank;
-import steamcraft.common.blocks.machines.BlockCopperTank;
-import steamcraft.common.tiles.TileCopperTank;
-import boilerplate.client.ClientHelper;
+
 import cpw.mods.fml.common.network.ByteBufUtils;
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
 import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+
+import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.fluids.FluidTank;
+
+import boilerplate.client.ClientHelper;
+import io.netty.buffer.ByteBuf;
+import steamcraft.common.blocks.machines.BlockCopperTank;
+import steamcraft.common.tiles.TileCopperTank;
 
 /**
  * @author decebaldecebal
@@ -77,17 +80,17 @@ public class CopperTankPacket implements IMessage
 		{
 			World world = ClientHelper.world();
 
-			if(world.getTileEntity(message.x, message.y, message.z) instanceof TileCopperTank)
+			if (world.getTileEntity(message.x, message.y, message.z) instanceof TileCopperTank)
 			{
 				TileCopperTank tank = (TileCopperTank) world.getTileEntity(message.x, message.y, message.z);
 
 				tank.tank = new FluidTank(FluidRegistry.getFluid(message.fluidName), message.fluidAmount, TileCopperTank.capacity);
 				tank.fluidScaled = (tank.tank.getFluidAmount() / (float) TileCopperTank.capacity) * BlockCopperTank.pixel;
 
-				if(tank.fluidScaled > BlockCopperTank.pixel)
+				if (tank.fluidScaled > BlockCopperTank.pixel)
 					tank.fluidScaled = BlockCopperTank.pixel;
 			}
-			
+
 			return null;
 		}
 

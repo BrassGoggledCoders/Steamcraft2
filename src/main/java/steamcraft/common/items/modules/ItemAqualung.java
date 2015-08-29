@@ -60,7 +60,7 @@ public class ItemAqualung extends PoweredArmorModule
 	@Override
 	public void applyModuleEffect(World world, EntityPlayer player, ItemStack stack)
 	{
-		if(player.getAir() < 0)
+		if (player.getAir() < 0)
 		{
 			player.setAir(300);
 		}

@@ -31,9 +31,9 @@ public class GenLayerShore extends GenLayer
 		int[] inputBiomeIds = this.parent.getInts(x - 1, z - 1, width + 2, length + 2);
 		int[] outputBiomeIds = IntCache.getIntCache(width * length);
 
-		for(int i1 = 0; i1 < length; ++i1)
+		for (int i1 = 0; i1 < length; ++i1)
 		{
-			for(int j1 = 0; j1 < width; ++j1)
+			for (int j1 = 0; j1 < width; ++j1)
 			{
 				this.initChunkSeed(j1 + x, i1 + z);
 				int landBiomeId = inputBiomeIds[j1 + 1 + ((i1 + 1) * (width + 2))];
@@ -45,11 +45,16 @@ public class GenLayerShore extends GenLayer
 			}
 		}
 		/*
-		 * if(!isBiomeOceanic(landBiomeId) && landBiomeId != InitBiomes.biomeDepthsO.biomeID) { l1 = inputBiomeIds[j1 + 1 + (i1 + 1 - 1) * (width + 2)]; i2 =
-		 * inputBiomeIds[j1 + 1 + 1 + (i1 + 1) * (width + 2)]; j2 = inputBiomeIds[j1 + 1 - 1 + (i1 + 1) * (width + 2)]; k2 = inputBiomeIds[j1 + 1 + (i1 + 1 + 1)
-		 * * (width + 2)]; if(!isBiomeOceanic(l1) && !isBiomeOceanic(i2) && !isBiomeOceanic(j2) && !isBiomeOceanic(k2)) { outputBiomeIds[j1 + i1 * width] =
-		 * landBiomeId; } else { outputBiomeIds[j1 + i1 * width] = InitBiomes.biomeDepthsB.biomeID; } } else { outputBiomeIds[j1 + i1 * width] = landBiomeId; }
-		 * } }
+		 * if(!isBiomeOceanic(landBiomeId) && landBiomeId !=
+		 * InitBiomes.biomeDepthsO.biomeID) { l1 = inputBiomeIds[j1 + 1 + (i1 +
+		 * 1 - 1) * (width + 2)]; i2 = inputBiomeIds[j1 + 1 + 1 + (i1 + 1) *
+		 * (width + 2)]; j2 = inputBiomeIds[j1 + 1 - 1 + (i1 + 1) * (width +
+		 * 2)]; k2 = inputBiomeIds[j1 + 1 + (i1 + 1 + 1) * (width + 2)];
+		 * if(!isBiomeOceanic(l1) && !isBiomeOceanic(i2) && !isBiomeOceanic(j2)
+		 * && !isBiomeOceanic(k2)) { outputBiomeIds[j1 + i1 * width] =
+		 * landBiomeId; } else { outputBiomeIds[j1 + i1 * width] =
+		 * InitBiomes.biomeDepthsB.biomeID; } } else { outputBiomeIds[j1 + i1 *
+		 * width] = landBiomeId; } } }
 		 */
 
 		return outputBiomeIds;
@@ -57,7 +62,7 @@ public class GenLayerShore extends GenLayer
 
 	private void func_151632_a(int[] inputBiomeIds, int[] outputBiomeIds, int x, int z, int width, int landBiomeId, int beachBiomeId)
 	{
-		if(isBiomeOceanic(landBiomeId))
+		if (isBiomeOceanic(landBiomeId))
 		{
 			outputBiomeIds[x + (z * width)] = landBiomeId;
 		}
@@ -68,7 +73,7 @@ public class GenLayerShore extends GenLayer
 			int l1 = inputBiomeIds[((x + 1) - 1) + ((z + 1) * (width + 2))];
 			int i2 = inputBiomeIds[x + 1 + ((z + 1 + 1) * (width + 2))];
 
-			if(!isBiomeOceanic(j1) && !isBiomeOceanic(k1) && !isBiomeOceanic(l1) && !isBiomeOceanic(i2))
+			if (!isBiomeOceanic(j1) && !isBiomeOceanic(k1) && !isBiomeOceanic(l1) && !isBiomeOceanic(i2))
 			{
 				outputBiomeIds[x + (z * width)] = landBiomeId;
 			}

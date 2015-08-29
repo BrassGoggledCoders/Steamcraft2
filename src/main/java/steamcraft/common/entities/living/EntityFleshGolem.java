@@ -34,6 +34,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -85,7 +86,7 @@ public class EntityFleshGolem extends EntityGolem
 	@Override
 	protected void collideWithEntity(Entity p_82167_1_)
 	{
-		if((p_82167_1_ instanceof IMob) && (this.getRNG().nextInt(20) == 0))
+		if ((p_82167_1_ instanceof IMob) && (this.getRNG().nextInt(20) == 0))
 		{
 			this.setAttackTarget((EntityLivingBase) p_82167_1_);
 		}
@@ -98,22 +99,23 @@ public class EntityFleshGolem extends EntityGolem
 	{
 		super.onLivingUpdate();
 
-		if(this.attackTimer > 0)
+		if (this.attackTimer > 0)
 		{
 			--this.attackTimer;
 		}
-		if((((this.motionX * this.motionX) + (this.motionZ * this.motionZ)) > 2.500000277905201E-7D) && (this.rand.nextInt(5) == 0))
+		if ((((this.motionX * this.motionX) + (this.motionZ * this.motionZ)) > 2.500000277905201E-7D) && (this.rand.nextInt(5) == 0))
 		{
 			int i = MathHelper.floor_double(this.posX);
 			int j = MathHelper.floor_double(this.posY - 0.20000000298023224D - this.yOffset);
 			int k = MathHelper.floor_double(this.posZ);
 			Block block = this.worldObj.getBlock(i, j, k);
 
-			if(block.getMaterial() != Material.air)
+			if (block.getMaterial() != Material.air)
 			{
-				this.worldObj.spawnParticle("blockcrack_" + Block.getIdFromBlock(block) + "_" + this.worldObj.getBlockMetadata(i, j, k), this.posX
-						+ ((this.rand.nextFloat() - 0.5D) * this.width), this.boundingBox.minY + 0.1D, this.posZ
-						+ ((this.rand.nextFloat() - 0.5D) * this.width), 4.0D * (this.rand.nextFloat() - 0.5D), 0.5D, (this.rand.nextFloat() - 0.5D) * 4.0D);
+				this.worldObj.spawnParticle("blockcrack_" + Block.getIdFromBlock(block) + "_" + this.worldObj.getBlockMetadata(i, j, k),
+						this.posX + ((this.rand.nextFloat() - 0.5D) * this.width), this.boundingBox.minY + 0.1D,
+						this.posZ + ((this.rand.nextFloat() - 0.5D) * this.width), 4.0D * (this.rand.nextFloat() - 0.5D), 0.5D,
+						(this.rand.nextFloat() - 0.5D) * 4.0D);
 			}
 		}
 	}
@@ -139,7 +141,7 @@ public class EntityFleshGolem extends EntityGolem
 		this.worldObj.setEntityState(this, (byte) 4);
 		boolean flag = p_70652_1_.attackEntityFrom(DamageSource.causeMobDamage(this), 7 + this.rand.nextInt(15));
 
-		if(flag)
+		if (flag)
 		{
 			p_70652_1_.motionY += 0.4000000059604645D;
 		}
@@ -152,7 +154,7 @@ public class EntityFleshGolem extends EntityGolem
 	@SideOnly(Side.CLIENT)
 	public void handleHealthUpdate(byte p_70103_1_)
 	{
-		if(p_70103_1_ == 4)
+		if (p_70103_1_ == 4)
 		{
 			this.attackTimer = 10;
 			this.playSound("mob.irongolem.throw", 1.0F, 1.0F);
@@ -193,14 +195,14 @@ public class EntityFleshGolem extends EntityGolem
 		int j = this.rand.nextInt(3);
 		int k;
 
-		for(k = 0; k < j; ++k)
+		for (k = 0; k < j; ++k)
 		{
 			this.func_145778_a(Items.iron_ingot, 1, 0.0F);
 		}
 
 		k = 3 + this.rand.nextInt(3);
 
-		for(int l = 0; l < k; ++l)
+		for (int l = 0; l < k; ++l)
 		{
 			this.dropItem(Items.rotten_flesh, 1);
 		}

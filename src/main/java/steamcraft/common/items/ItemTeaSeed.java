@@ -40,13 +40,13 @@ public class ItemTeaSeed extends BaseItem implements IPlantable
 	@Override
 	public boolean onItemUse(ItemStack is, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ)
 	{
-		if(side != 1)
+		if (side != 1)
 			return false;
-		else if(player.canPlayerEdit(x, y, z, side, is) && player.canPlayerEdit(x, y + 1, z, side, is))
+		else if (player.canPlayerEdit(x, y, z, side, is) && player.canPlayerEdit(x, y + 1, z, side, is))
 		{
 			Block soil = world.getBlock(x, y, z);
 
-			if((soil != null) && soil.canSustainPlant(world, x, y, z, ForgeDirection.UP, this) && world.isAirBlock(x, y + 1, z))
+			if ((soil != null) && soil.canSustainPlant(world, x, y, z, ForgeDirection.UP, this) && world.isAirBlock(x, y + 1, z))
 			{
 				world.setBlock(x, y + 1, z, this.getPlant(world, x, y, z), this.getPlantMetadata(world, x, y, z), 2);
 				player.inventory.consumeInventoryItem(is.getItem());
