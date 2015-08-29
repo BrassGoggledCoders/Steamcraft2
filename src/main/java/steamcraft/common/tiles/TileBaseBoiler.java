@@ -40,7 +40,7 @@ public abstract class TileBaseBoiler extends BaseTileWithInventory implements IF
 													// water/tick
 
 	public int furnaceBurnTime = 0;
-	public int currentItemBurnTime = 0;
+	public int currentFuelBurnTime = 0;
 
 	public FluidTank waterTank;
 	public FluidTank steamTank;
@@ -59,7 +59,7 @@ public abstract class TileBaseBoiler extends BaseTileWithInventory implements IF
 		super.readFromNBT(tag);
 
 		this.furnaceBurnTime = tag.getShort("BurnTime");
-		this.currentItemBurnTime = tag.getShort("ItemTime");
+		this.currentFuelBurnTime = tag.getShort("ItemTime");
 		this.steamTank.setFluid(new FluidStack(FluidRegistry.getFluid("steam"), tag.getShort("steamLevel")));
 		this.waterTank.setFluid(new FluidStack(FluidRegistry.getFluid("water"), tag.getShort("waterLevel")));
 	}
@@ -70,17 +70,17 @@ public abstract class TileBaseBoiler extends BaseTileWithInventory implements IF
 		super.writeToNBT(tag);
 
 		tag.setShort("BurnTime", (short) this.furnaceBurnTime);
-		tag.setShort("ItemTime", (short) this.currentItemBurnTime);
+		tag.setShort("ItemTime", (short) this.currentFuelBurnTime);
 		tag.setShort("steamLevel", (short) this.steamTank.getFluidAmount());
 		tag.setShort("waterLevel", (short) this.waterTank.getFluidAmount());
 	}
 
 	public int getBurnTimeRemainingScaled(int par1)
 	{
-		if (this.currentItemBurnTime == 0)
-			this.currentItemBurnTime = 200;
+		if (this.currentFuelBurnTime == 0)
+			this.currentFuelBurnTime = 200;
 
-		return (this.furnaceBurnTime * par1) / this.currentItemBurnTime;
+		return (this.furnaceBurnTime * par1) / this.currentFuelBurnTime;
 	}
 
 	public boolean isBurning()
@@ -123,10 +123,10 @@ public abstract class TileBaseBoiler extends BaseTileWithInventory implements IF
 				}
 			}
 
-			if ((this.getItemBurnTime() > 0) && (this.furnaceBurnTime == 0) && (this.waterTank.getFluidAmount() >= waterPerTick)
+			if ((this.getItemBurnTime(inventory[0]) > 0) && (this.furnaceBurnTime == 0) && (this.waterTank.getFluidAmount() >= waterPerTick)
 					&& (this.steamTank.fill(new FluidStack(FluidRegistry.getFluid("steam"), steamPerTick), false) > 0))
 			{
-				this.currentItemBurnTime = this.furnaceBurnTime = this.getItemBurnTime() / 4;
+				this.currentFuelBurnTime = this.furnaceBurnTime = this.getItemBurnTime(inventory[0]) / 4;
 
 				if (this.inventory[0].stackSize == 1)
 					this.inventory[0] = this.inventory[0].getItem().getContainerItem(this.inventory[0]);
@@ -154,7 +154,7 @@ public abstract class TileBaseBoiler extends BaseTileWithInventory implements IF
 			this.markDirty();
 	}
 
-	protected abstract int getItemBurnTime();
+	protected abstract int getItemBurnTime(ItemStack fuel);
 
 	public int getScaledWaterLevel(int i)
 	{

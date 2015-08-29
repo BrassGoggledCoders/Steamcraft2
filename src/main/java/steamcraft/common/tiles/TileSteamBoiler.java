@@ -13,6 +13,7 @@
 package steamcraft.common.tiles;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.world.World;
 
@@ -27,9 +28,9 @@ import steamcraft.common.tiles.container.ContainerSteamBoiler;
 public class TileSteamBoiler extends TileBaseBoiler implements IOpenableGUI
 {
 	@Override
-	protected int getItemBurnTime()
+	protected int getItemBurnTime(ItemStack stack)
 	{
-		if (this.inventory[0] == null)
+		if (stack == null)
 			return 0;
 
 		return TileEntityFurnace.getItemBurnTime(this.inventory[0]);

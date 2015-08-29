@@ -13,6 +13,7 @@
 package steamcraft.common.tiles;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
 import boilerplate.api.IOpenableGUI;
@@ -27,11 +28,11 @@ import steamcraft.common.tiles.container.ContainerNuclearBoiler;
 public class TileNuclearBoiler extends TileBaseBoiler implements IOpenableGUI
 {
 	@Override
-	protected int getItemBurnTime()
+	protected int getItemBurnTime(ItemStack stack)
 	{
-		if (this.inventory[0] == null)
+		if (stack == null)
 			return 0;
-		else if ((this.inventory[0].getItem() == InitItems.itemResource) && (this.inventory[0].getItemDamage() == 5))
+		if ((stack.getItem() == InitItems.itemResource) && (stack.getItemDamage() == 5))
 			return 9000;
 		else
 			return 0;
