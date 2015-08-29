@@ -12,9 +12,12 @@
  */
 package steamcraft.common.items.armor;
 
-import java.util.List;
-
+import boilerplate.common.baseclasses.items.BaseArmor;
+import cpw.mods.fml.common.Optional;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.gui.ScaledResolution;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemArmor;
@@ -22,14 +25,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
-
-import cpw.mods.fml.common.Optional;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-
 import net.minecraftforge.common.ISpecialArmor;
-
-import boilerplate.common.baseclasses.items.BaseArmor;
 import steamcraft.api.item.IArmorModule;
 import steamcraft.api.item.IArmorModule.EnumArmorEffectType;
 import steamcraft.api.item.IDefensiveArmorModule;
@@ -39,6 +35,8 @@ import steamcraft.common.init.InitItems;
 import steamcraft.common.lib.ModInfo;
 import thaumcraft.api.IGoggles;
 import thaumcraft.api.nodes.IRevealer;
+
+import java.util.List;
 
 /**
  * @author warlordjones
@@ -170,6 +168,14 @@ public class ItemBrassArmor extends BaseArmor implements ISpecialArmor, IGoggles
 			}
 		}
 		return 0;
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public String getArmorTexture(ItemStack is, Entity entity, int slot, String type)
+	{
+		return slot == 2 ? ModInfo.PREFIX + "textures/models/armor/" + "brass" + "_2.png" : ModInfo.PREFIX +
+				"textures/models/armor/" + "brass" + "_1.png";
 	}
 
 	@Override
