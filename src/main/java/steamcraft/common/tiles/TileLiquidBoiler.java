@@ -28,6 +28,7 @@ import net.minecraftforge.fluids.FluidTankInfo;
 import boilerplate.api.IOpenableGUI;
 import steamcraft.client.gui.GuiLiquidBoiler;
 import steamcraft.common.blocks.machines.BlockBaseBoiler;
+import steamcraft.common.init.InitBlocks;
 import steamcraft.common.items.ItemCanister;
 import steamcraft.common.tiles.container.ContainerLiquidBoiler;
 
@@ -40,6 +41,7 @@ public class TileLiquidBoiler extends TileBaseBoiler implements IOpenableGUI
 	public static final int steamPerTick = 20;
 	protected static final int waterPerTick = 5; // 3x3 RC boiler is 5
 													// water/tick
+	protected static final int fuelPerTick = 10;
 
 	public int furnaceBurnTime = 0;
 	public int currentItemBurnTime = 0;
@@ -91,14 +93,31 @@ public class TileLiquidBoiler extends TileBaseBoiler implements IOpenableGUI
 
 		if (!this.worldObj.isRemote)
 		{
-			if (this.inventory[1] != null)
+			// Water Input
+			if (this.inventory[0] != null)
 			{
-				FluidStack liquid = FluidContainerRegistry.getFluidForFilledItem(this.inventory[1]);
+				FluidStack liquid = FluidContainerRegistry.getFluidForFilledItem(this.inventory[0]);
 
 				if ((liquid != null) && (this.waterTank.fill(new FluidStack(FluidRegistry.getFluid("water"), liquid.amount), false) == liquid.amount))
 					if (liquid.getFluid() == FluidRegistry.WATER)
 					{
 						this.waterTank.fill(new FluidStack(FluidRegistry.getFluid("water"), liquid.amount), true);
+
+						if (this.inventory[0].stackSize > 1)
+							this.inventory[0].stackSize--;
+						else
+							this.inventory[0] = this.inventory[0].getItem().getContainerItem(this.inventory[0]);
+					}
+			}
+			// Fuel Input
+			if (this.inventory[1] != null)
+			{
+				FluidStack liquid = FluidContainerRegistry.getFluidForFilledItem(this.inventory[1]);
+
+				if ((liquid != null) && (this.fuelTank.fill(new FluidStack(liquid, liquid.amount), false) == liquid.amount))
+					if (this.getFuelBurnTime(liquid.getFluid()) > 0)
+					{
+						this.fuelTank.fill(new FluidStack(liquid, liquid.amount), true);
 
 						if (this.inventory[1].stackSize > 1)
 							this.inventory[1].stackSize--;
@@ -106,6 +125,7 @@ public class TileLiquidBoiler extends TileBaseBoiler implements IOpenableGUI
 							this.inventory[1] = this.inventory[1].getItem().getContainerItem(this.inventory[1]);
 					}
 			}
+			// Steam Draining
 			if ((this.inventory[2] != null) && (this.inventory[2].getItem() instanceof ItemCanister))
 			{
 				ItemCanister canister = (ItemCanister) this.inventory[2].getItem();
@@ -115,19 +135,17 @@ public class TileLiquidBoiler extends TileBaseBoiler implements IOpenableGUI
 					this.steamTank.drain(steamPerTick, true);
 				}
 			}
-
+			// Burn fuel
 			if ((this.getItemBurnTime(inventory[0]) > 0) && (this.furnaceBurnTime == 0) && (this.waterTank.getFluidAmount() >= waterPerTick)
-					&& (this.steamTank.fill(new FluidStack(FluidRegistry.getFluid("steam"), steamPerTick), false) > 0))
+					&& (this.steamTank.fill(new FluidStack(FluidRegistry.getFluid("steam"), steamPerTick), false) > 0)
+					&& (this.fuelTank.getFluidAmount() >= fuelPerTick))
 			{
-				this.currentItemBurnTime = this.furnaceBurnTime = this.getItemBurnTime(inventory[0]) / 4;
-
-				if (this.inventory[0].stackSize == 1)
-					this.inventory[0] = this.inventory[0].getItem().getContainerItem(this.inventory[0]);
-				else
-					--this.inventory[0].stackSize;
+				this.currentItemBurnTime = this.furnaceBurnTime = this.getFuelBurnTime(this.fuelTank.getFluid().getFluid()) / 4;
+				this.fuelTank.drain(fuelPerTick, true);
 			}
-
-			if ((this.furnaceBurnTime > 0) && (this.waterTank.getFluidAmount() >= waterPerTick) && (this.steamTank.getFluidAmount() < 10000))
+			// Produce steam
+			if ((this.furnaceBurnTime > 0) && (this.waterTank.getFluidAmount() >= waterPerTick) && (this.fuelTank.getFluidAmount() >= fuelPerTick)
+					&& (this.steamTank.getFluidAmount() < this.steamTank.getCapacity()))
 			{
 				this.steamTank.fill(new FluidStack(FluidRegistry.getFluid("steam"), steamPerTick), true);
 				this.furnaceBurnTime--;
@@ -155,19 +173,13 @@ public class TileLiquidBoiler extends TileBaseBoiler implements IOpenableGUI
 	@Override
 	public boolean canInsertItem(int par1, ItemStack itemstack, int par3)
 	{
-		// TODO
-		return true;
-		// return ((par1 == 1) && FluidContainerRegistry.isContainer(itemstack))
-		// || ((par1 == 0) && (TileEntityFurnace.getItemBurnTime(itemstack) >
-		// 0));
+		return ((par1 == 0 || par1 == 1) && FluidContainerRegistry.isContainer(itemstack));
 	}
 
 	@Override
 	public boolean isItemValidForSlot(int i, ItemStack itemstack)
 	{
-		// TODO
 		return true;
-		// return (i == 0) || (i == 1);
 	}
 
 	@Override
@@ -202,7 +214,7 @@ public class TileLiquidBoiler extends TileBaseBoiler implements IOpenableGUI
 	@Override
 	public boolean canDrain(ForgeDirection from, Fluid fluid)
 	{
-		return fluid != FluidRegistry.WATER; // TODO
+		return fluid != FluidRegistry.getFluid("steam");
 	}
 
 	@Override
@@ -227,5 +239,16 @@ public class TileLiquidBoiler extends TileBaseBoiler implements IOpenableGUI
 	protected int getItemBurnTime(ItemStack stack)
 	{
 		return 0;
+	}
+
+	protected int getFuelBurnTime(Fluid fluid)
+	{
+		if (fluid == InitBlocks.whaleOilFluid)
+		{
+			return 400;
+		}
+
+		return 0;
+
 	}
 }

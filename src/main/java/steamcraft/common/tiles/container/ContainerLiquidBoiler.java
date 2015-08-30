@@ -41,6 +41,7 @@ public class ContainerLiquidBoiler extends BaseContainer
 	private int lastBurnTime = 0;
 	private int lastItemBurnTime = 0;
 	private int lastSteamLevel = 0;
+	private int lastFuelLevel = 0;
 	private int lastWaterLevel = 0;
 
 	public ContainerLiquidBoiler(InventoryPlayer player, TileLiquidBoiler tileLiquidBoiler)
@@ -48,8 +49,7 @@ public class ContainerLiquidBoiler extends BaseContainer
 		this.tileent = tileLiquidBoiler;
 		this.setTile(this.tileent);
 
-		this.addSlotToContainer(new Slot(tileLiquidBoiler, 0, 42, 52));
-		this.addSlotToContainer(new Slot(tileLiquidBoiler, 1, 132, 57)
+		this.addSlotToContainer(new Slot(tileLiquidBoiler, 0, 116, 61)
 		{
 			@Override
 			public boolean isItemValid(ItemStack stack)
@@ -57,7 +57,15 @@ public class ContainerLiquidBoiler extends BaseContainer
 				return FluidContainerRegistry.isContainer(stack);
 			}
 		});
-		this.addSlotToContainer(new Slot(tileLiquidBoiler, 2, 132, 21)
+		this.addSlotToContainer(new Slot(tileLiquidBoiler, 1, 135, 61)
+		{
+			@Override
+			public boolean isItemValid(ItemStack stack)
+			{
+				return FluidContainerRegistry.isContainer(stack);
+			}
+		});
+		this.addSlotToContainer(new Slot(tileLiquidBoiler, 2, 154, 61)
 		{
 			@Override
 			public boolean isItemValid(ItemStack stack)
@@ -83,7 +91,8 @@ public class ContainerLiquidBoiler extends BaseContainer
 		par1ICrafting.sendProgressBarUpdate(this, 0, this.tileent.furnaceBurnTime);
 		par1ICrafting.sendProgressBarUpdate(this, 1, this.tileent.currentItemBurnTime);
 		par1ICrafting.sendProgressBarUpdate(this, 2, this.tileent.steamTank.getFluidAmount());
-		par1ICrafting.sendProgressBarUpdate(this, 3, this.tileent.waterTank.getFluidAmount());
+		par1ICrafting.sendProgressBarUpdate(this, 3, this.tileent.fuelTank.getFluidAmount());
+		par1ICrafting.sendProgressBarUpdate(this, 4, this.tileent.waterTank.getFluidAmount());
 	}
 
 	@Override
@@ -104,13 +113,17 @@ public class ContainerLiquidBoiler extends BaseContainer
 			if (this.lastSteamLevel != this.tileent.steamTank.getFluidAmount())
 				var2.sendProgressBarUpdate(this, 2, this.tileent.steamTank.getFluidAmount());
 
+			if (this.lastFuelLevel != this.tileent.fuelTank.getFluidAmount())
+				var2.sendProgressBarUpdate(this, 3, this.tileent.fuelTank.getFluidAmount());
+
 			if (this.lastWaterLevel != this.tileent.waterTank.getFluidAmount())
-				var2.sendProgressBarUpdate(this, 3, this.tileent.waterTank.getFluidAmount());
+				var2.sendProgressBarUpdate(this, 4, this.tileent.waterTank.getFluidAmount());
 		}
 
 		this.lastBurnTime = this.tileent.furnaceBurnTime;
 		this.lastItemBurnTime = this.tileent.currentItemBurnTime;
 		this.lastSteamLevel = this.tileent.steamTank.getFluidAmount();
+		this.lastFuelLevel = this.tileent.fuelTank.getFluidAmount();
 		this.lastWaterLevel = this.tileent.waterTank.getFluidAmount();
 	}
 
@@ -124,7 +137,9 @@ public class ContainerLiquidBoiler extends BaseContainer
 			this.tileent.currentItemBurnTime = par2;
 		else if (par1 == 2)
 			this.tileent.steamTank.setFluid(new FluidStack(FluidRegistry.getFluid("steam"), par2));
-		else if (par1 == 3)
+		else if (par1 == 3 && this.tileent.fuelTank.getFluid() != null)
+			this.tileent.fuelTank.setFluid(new FluidStack(this.tileent.fuelTank.getFluid().getFluid(), par2));
+		else if (par1 == 4)
 			this.tileent.waterTank.setFluid(new FluidStack(FluidRegistry.getFluid("water"), par2));
 	}
 

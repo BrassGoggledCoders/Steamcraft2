@@ -55,14 +55,18 @@ public class GuiLiquidBoiler extends BaseContainerGui
 			this.drawTexturedModalRect(this.guiLeft + 43, (this.guiTop + 48) - burnTime, 176, 12 - burnTime, 14, burnTime + 2);
 		}
 
-		this.drawFluid(new FluidStack(FluidRegistry.getFluid("water"), 0), this.boiler.getScaledWaterLevel(60), this.guiLeft + 8, this.guiTop + 18,
-				20, 60);
-		this.drawFluid(new FluidStack(FluidRegistry.getFluid("steam"), 0), this.boiler.getScaledSteamLevel(60), this.guiLeft + 74, this.guiTop + 18,
+		this.drawFluid(new FluidStack(FluidRegistry.getFluid("water"), 0), this.boiler.getScaledWaterLevel(60), this.guiLeft + 8, this.guiTop + 8, 20,
+				60);
+		if (this.boiler.fuelTank.getFluid() != null)
+			this.drawFluid(new FluidStack(this.boiler.fuelTank.getFluid().getFluid(), 0), this.boiler.getScaledFuelLevel(60), this.guiLeft + 20,
+					this.guiTop + 8, 20, 60);
+		this.drawFluid(new FluidStack(FluidRegistry.getFluid("steam"), 0), this.boiler.getScaledSteamLevel(60), this.guiLeft + 74, this.guiTop + 8,
 				32, 60);
 
 		this.mc.renderEngine.bindTexture(guitexture);
-		this.drawTexturedModalRect(this.guiLeft + 8, this.guiTop + 24, 176, 14, 20, 49);
-		this.drawTexturedModalRect(this.guiLeft + 74, this.guiTop + 24, 176, 14, 20, 49);
+		this.drawTexturedModalRect(this.guiLeft + 8, this.guiTop + 15, 176, 14, 20, 49);
+		this.drawTexturedModalRect(this.guiLeft + 15, this.guiTop + 20, 176, 14, 20, 49);
+		this.drawTexturedModalRect(this.guiLeft + 74, this.guiTop + 15, 176, 14, 20, 49);
 	}
 
 	@Override
