@@ -409,52 +409,28 @@ public class ChunkProviderDeeps implements IChunkProvider
 		this.undercityGenerator.generateStructuresInChunk(this.worldObj, this.rand, chunkX, chunkZ);
 		this.scatteredGenerator.generateStructuresInChunk(this.worldObj, this.rand, chunkX, chunkZ);
 
-		int k1;
-		int l1;
-		int i2;
+		int k1 = blockX + this.rand.nextInt(16);
+		int l1 = this.rand.nextInt(256);
+		int i2 = blockZ + this.rand.nextInt(16);
 
 		if ((biomegenbase == InitBiomes.biomeDepthsSCH))
 		{
-			k1 = blockX + this.rand.nextInt(16);
-			l1 = this.rand.nextInt(256);
-			i2 = blockZ + this.rand.nextInt(16);
 			(new WorldGenLakes(Blocks.lava)).generate(this.worldObj, this.rand, k1, l1, i2);
-			k1 = blockX + this.rand.nextInt(16);
-			l1 = this.rand.nextInt(256);
-			i2 = blockZ + this.rand.nextInt(16);
 			(new WorldGenLakes(Blocks.lava)).generate(this.worldObj, this.rand, k1, l1, i2);
 		}
 		else if (biomegenbase == InitBiomes.biomeDepthsSC)
 		{
-			k1 = blockX + this.rand.nextInt(16);
-			l1 = this.rand.nextInt(256);
-			i2 = blockZ + this.rand.nextInt(16);
 			if (InitBlocks.blockBoilingWater != null)
 				new WorldGenLakes(InitBlocks.blockBoilingWater).generate(this.worldObj, this.rand, k1, l1, i2);
-
-			k1 = blockX + this.rand.nextInt(16);
-			l1 = this.rand.nextInt(256);
-			i2 = blockZ + this.rand.nextInt(16);
 			if ((this.rand.nextInt(5) == 0) && (InitBlocks.blockBoilingWater != null))
 				(new WorldGenSpout(InitBlocks.blockBoilingWater)).generate(this.worldObj, this.rand, k1, l1, i2);
-
-			k1 = blockX + this.rand.nextInt(16);
-			l1 = this.rand.nextInt(256);
-			i2 = blockZ + this.rand.nextInt(16);
 			if (InitBlocks.blockBoilingMud != null)
 				(new WorldGenLakes(InitBlocks.blockBoilingMud)).generate(this.worldObj, this.rand, k1, l1, i2);
 		}
 		else
 		{
-			k1 = blockX + this.rand.nextInt(16);
-			l1 = this.rand.nextInt(256);
-			i2 = blockZ + this.rand.nextInt(16);
 			(new WorldGenLakes(Blocks.water)).generate(this.worldObj, this.rand, k1, l1, i2);
 		}
-
-		k1 = blockX + this.rand.nextInt(16);
-		l1 = this.rand.nextInt(256);
-		i2 = blockZ + this.rand.nextInt(16);
 
 		if ((l1 < 63) || (this.rand.nextInt(5) == 0))
 		{
