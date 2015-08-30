@@ -81,7 +81,7 @@ public class ContainerSteamBoiler extends BaseContainer
 	{
 		super.addCraftingToCrafters(par1ICrafting);
 		par1ICrafting.sendProgressBarUpdate(this, 0, this.tileent.furnaceBurnTime);
-		par1ICrafting.sendProgressBarUpdate(this, 1, this.tileent.currentItemBurnTime);
+		par1ICrafting.sendProgressBarUpdate(this, 1, this.tileent.currentFuelBurnTime);
 		par1ICrafting.sendProgressBarUpdate(this, 2, this.tileent.steamTank.getFluidAmount());
 		par1ICrafting.sendProgressBarUpdate(this, 3, this.tileent.waterTank.getFluidAmount());
 	}
@@ -98,8 +98,8 @@ public class ContainerSteamBoiler extends BaseContainer
 			if (this.lastBurnTime != this.tileent.furnaceBurnTime)
 				var2.sendProgressBarUpdate(this, 0, this.tileent.furnaceBurnTime);
 
-			if (this.lastItemBurnTime != this.tileent.currentItemBurnTime)
-				var2.sendProgressBarUpdate(this, 1, this.tileent.currentItemBurnTime);
+			if (this.lastItemBurnTime != this.tileent.currentFuelBurnTime)
+				var2.sendProgressBarUpdate(this, 1, this.tileent.currentFuelBurnTime);
 
 			if (this.lastSteamLevel != this.tileent.steamTank.getFluidAmount())
 				var2.sendProgressBarUpdate(this, 2, this.tileent.steamTank.getFluidAmount());
@@ -109,7 +109,7 @@ public class ContainerSteamBoiler extends BaseContainer
 		}
 
 		this.lastBurnTime = this.tileent.furnaceBurnTime;
-		this.lastItemBurnTime = this.tileent.currentItemBurnTime;
+		this.lastItemBurnTime = this.tileent.currentFuelBurnTime;
 		this.lastSteamLevel = this.tileent.steamTank.getFluidAmount();
 		this.lastWaterLevel = this.tileent.waterTank.getFluidAmount();
 	}
@@ -121,7 +121,7 @@ public class ContainerSteamBoiler extends BaseContainer
 		if (par1 == 0)
 			this.tileent.furnaceBurnTime = par2;
 		else if (par1 == 1)
-			this.tileent.currentItemBurnTime = par2;
+			this.tileent.currentFuelBurnTime = par2;
 		else if (par1 == 2)
 			this.tileent.steamTank.setFluid(new FluidStack(FluidRegistry.getFluid("steam"), par2));
 		else if (par1 == 3)
