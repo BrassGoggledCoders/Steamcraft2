@@ -12,10 +12,14 @@
  */
 package steamcraft.common.tiles;
 
+import java.util.HashMap;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
+
+import cpw.mods.fml.common.FMLLog;
 
 import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.fluids.Fluid;
@@ -28,7 +32,6 @@ import net.minecraftforge.fluids.FluidTankInfo;
 import boilerplate.api.IOpenableGUI;
 import steamcraft.client.gui.GuiLiquidBoiler;
 import steamcraft.common.blocks.machines.BlockBaseBoiler;
-import steamcraft.common.init.InitBlocks;
 import steamcraft.common.items.ItemCanister;
 import steamcraft.common.tiles.container.ContainerLiquidBoiler;
 
@@ -44,14 +47,20 @@ public class TileLiquidBoiler extends TileBaseBoiler implements IOpenableGUI
 	protected static final int fuelPerTick = 10;
 
 	public int furnaceBurnTime = 0;
-	public int currentItemBurnTime = 0;
 
 	public FluidTank fuelTank;
+
+	// TODO Allow things to be added to this via imc
+	public HashMap<Fluid, Integer> fuels = new HashMap();
+	public int defaultFuelValue = 500;
 
 	public TileLiquidBoiler()
 	{
 		super();
 		this.fuelTank = new FluidTank(5000);
+		this.fuels.put(FluidRegistry.LAVA, defaultFuelValue * 2);
+		this.fuels.put(FluidRegistry.getFluid("whaleoil"), defaultFuelValue);
+		this.fuels.put(FluidRegistry.getFluid("oil"), defaultFuelValue);
 	}
 
 	@Override
@@ -71,10 +80,7 @@ public class TileLiquidBoiler extends TileBaseBoiler implements IOpenableGUI
 	@Override
 	public int getBurnTimeRemainingScaled(int par1)
 	{
-		if (this.currentItemBurnTime == 0)
-			this.currentItemBurnTime = 200;
-
-		return (this.furnaceBurnTime * par1) / this.currentItemBurnTime;
+		return (this.furnaceBurnTime * par1);
 	}
 
 	@Override
@@ -86,7 +92,7 @@ public class TileLiquidBoiler extends TileBaseBoiler implements IOpenableGUI
 	@Override
 	public void updateEntity()
 	{
-		super.updateEntity();
+		// super.updateEntity();
 
 		boolean var1 = this.furnaceBurnTime > 0;
 		boolean var2 = false;
@@ -112,18 +118,18 @@ public class TileLiquidBoiler extends TileBaseBoiler implements IOpenableGUI
 			// Fuel Input
 			if (this.inventory[1] != null)
 			{
-				FluidStack liquid = FluidContainerRegistry.getFluidForFilledItem(this.inventory[1]);
+				FluidStack fluid = FluidContainerRegistry.getFluidForFilledItem(this.inventory[1]);
 
-				if ((liquid != null) && (this.fuelTank.fill(new FluidStack(liquid, liquid.amount), false) == liquid.amount))
-					if (this.getFuelBurnTime(liquid.getFluid()) > 0)
-					{
-						this.fuelTank.fill(new FluidStack(liquid, liquid.amount), true);
+				if ((fluid != null) && (this.fuelTank.fill(fluid, false) == fluid.amount) && fuels.containsKey(fluid.getFluid()))
+				{
+					this.fuelTank.fill(new FluidStack(fluid, fluid.amount), true);
+					FMLLog.info("" + fuelTank.getFluid().getUnlocalizedName(), "");
 
-						if (this.inventory[1].stackSize > 1)
-							this.inventory[1].stackSize--;
-						else
-							this.inventory[1] = this.inventory[1].getItem().getContainerItem(this.inventory[1]);
-					}
+					if (this.inventory[1].stackSize > 1)
+						this.inventory[1].stackSize--;
+					else
+						this.inventory[1] = this.inventory[1].getItem().getContainerItem(this.inventory[1]);
+				}
 			}
 			// Steam Draining
 			if ((this.inventory[2] != null) && (this.inventory[2].getItem() instanceof ItemCanister))
@@ -136,11 +142,11 @@ public class TileLiquidBoiler extends TileBaseBoiler implements IOpenableGUI
 				}
 			}
 			// Burn fuel
-			if ((this.getItemBurnTime(inventory[0]) > 0) && (this.furnaceBurnTime == 0) && (this.waterTank.getFluidAmount() >= waterPerTick)
+			if ((this.furnaceBurnTime == 0) && (this.waterTank.getFluidAmount() >= waterPerTick)
 					&& (this.steamTank.fill(new FluidStack(FluidRegistry.getFluid("steam"), steamPerTick), false) > 0)
 					&& (this.fuelTank.getFluidAmount() >= fuelPerTick))
 			{
-				this.currentItemBurnTime = this.furnaceBurnTime = this.getFuelBurnTime(this.fuelTank.getFluid().getFluid()) / 4;
+				this.furnaceBurnTime = this.getFuelBurnTime(this.fuelTank.getFluid().getFluid());
 				this.fuelTank.drain(fuelPerTick, true);
 			}
 			// Produce steam
@@ -214,7 +220,7 @@ public class TileLiquidBoiler extends TileBaseBoiler implements IOpenableGUI
 	@Override
 	public boolean canDrain(ForgeDirection from, Fluid fluid)
 	{
-		return fluid != FluidRegistry.getFluid("steam");
+		return fluid == FluidRegistry.getFluid("steam");
 	}
 
 	@Override
@@ -241,14 +247,8 @@ public class TileLiquidBoiler extends TileBaseBoiler implements IOpenableGUI
 		return 0;
 	}
 
-	protected int getFuelBurnTime(Fluid fluid)
+	public int getFuelBurnTime(Fluid fluid)
 	{
-		if (fluid == InitBlocks.whaleOilFluid)
-		{
-			return 400;
-		}
-
-		return 0;
-
+		return fuels.get(fluid);
 	}
 }
