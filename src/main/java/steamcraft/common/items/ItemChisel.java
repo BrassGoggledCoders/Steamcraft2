@@ -24,7 +24,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-import steamcraft.api.block.IChiselable;
+import steamcraft.api.block.IEngravable;
 import steamcraft.common.init.InitBlocks;
 import steamcraft.common.lib.ModInfo;
 
@@ -66,10 +66,10 @@ public class ItemChisel extends BaseItem
 			world.setBlock(x, y, z, InitBlocks.blockLamp, 0, 2);
 		else if (block == Blocks.lit_redstone_lamp)
 			world.setBlock(x, y, z, InitBlocks.blockLampOn, 0, 2);
-		else if (block instanceof IChiselable)
+		else if (block instanceof IEngravable)
 		{
-			Block newBlock = ((IChiselable) block).getChiseledVariant();
-			int meta = ((IChiselable) block).getChiseledVariantMeta();
+			Block newBlock = ((IEngravable) block).getChiseledVariant();
+			int meta = ((IEngravable) block).getChiseledVariantMeta();
 			if (meta == -1)
 				world.setBlock(x, y, z, newBlock, world.getBlockMetadata(x, y, z), 2);
 			else
