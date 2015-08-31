@@ -77,5 +77,7 @@ public class GuiLiquidBoiler extends BaseContainerGui
 				this.drawFluidInfo(this.boiler.waterTank, x, y);
 			else if (((x - this.guiLeft) >= 74) && ((x - this.guiLeft) <= 106))
 				this.drawFluidInfo(this.boiler.steamTank, x, y);
+			else if (((x - this.guiLeft) >= 40) && ((x - this.guiLeft) <= 60))
+				this.drawFluidInfo(this.boiler.fuelTank, x, y);
 	}
 }
