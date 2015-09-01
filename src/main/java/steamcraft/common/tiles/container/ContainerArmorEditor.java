@@ -17,7 +17,7 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Slot;
 import steamcraft.common.tiles.TileArmorEditor;
 import steamcraft.common.tiles.container.slot.SlotArmor;
-import steamcraft.common.tiles.container.slot.SlotBrassArmor;
+import steamcraft.common.tiles.container.slot.SlotModuleContainer;
 import steamcraft.common.tiles.container.slot.SlotModule;
 
 /**
@@ -38,13 +38,13 @@ public class ContainerArmorEditor extends BaseContainer
 			this.addSlotToContainer(new SlotArmor(player, player.getSizeInventory() - 1 - i, 62, 8 + i * 18, i));
 		}
 
-		this.addSlotToContainer(new SlotBrassArmor(this.tileent, 0, 89, 26));
+		this.addSlotToContainer(new SlotModuleContainer(this.tileent, 0, 89, 26));
 
 		for(int i = 0; i < 4; i++)
 		{
 			for(int j = 0; j < 3; j++)
 			{
-				this.addSlotToContainer(new SlotModule(this.tileent, (j * 3) + i + 1, 116 + j * 18, 8 + (i * 18)));
+				this.addSlotToContainer(new SlotModule(this.tileent, j + (i * 4) + 1, 116 + j * 18, 8 + (i * 18)));
 			}
 		}
 

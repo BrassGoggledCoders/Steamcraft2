@@ -15,7 +15,6 @@ package steamcraft.api.item;
 /**
  * The Interface IFistModule.
  */
-@Deprecated
 public interface IFistModule extends IModule
 {
 	// The type of effect (see below)
@@ -24,15 +23,14 @@ public interface IFistModule extends IModule
 	 *
 	 * @return the module effect type
 	 */
-	public EnumModuleEffectType getModuleEffectType();
+	EnumModuleEffectType getModuleEffectType();
 
 	//
 	/**
 	 * The Enum EnumModuleEffectType.
 	 */
-	public static enum EnumModuleEffectType
+	enum EnumModuleEffectType
 	{
-
 		/** The rightclick. */
 		RIGHTCLICK,
 		/** The attack. */

@@ -26,25 +26,27 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ISpecialArmor;
-import steamcraft.api.item.IArmorModule;
+import steamcraft.api.item.*;
 import steamcraft.api.item.IArmorModule.EnumArmorEffectType;
-import steamcraft.api.item.IDefensiveArmorModule;
-import steamcraft.api.item.ModuleRegistry;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.init.InitItems;
 import steamcraft.common.lib.ModInfo;
 import thaumcraft.api.IGoggles;
 import thaumcraft.api.nodes.IRevealer;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
  * @author warlordjones
  *
  */
-@Optional.InterfaceList({ @Optional.Interface(iface = "thaumcraft.api.IGoggles", modid = "Thaumcraft"),
-		@Optional.Interface(iface = "thaumcraft.api.nodes.IRevealer", modid = "Thaumcraft") })
-public class ItemBrassArmor extends BaseArmor implements ISpecialArmor, IGoggles, IRevealer
+@Optional.InterfaceList({
+		@Optional.Interface(iface = "thaumcraft.api.IGoggles", modid = "Thaumcraft"),
+		@Optional.Interface(iface = "thaumcraft.api.nodes.IRevealer", modid = "Thaumcraft")
+})
+public class ItemBrassArmor extends BaseArmor implements ISpecialArmor, IGoggles, IRevealer, IModuleContainer
 {
 
 	public ItemBrassArmor(ItemArmor.ArmorMaterial armorMat, int renderIndex, int armorType)
@@ -217,5 +219,32 @@ public class ItemBrassArmor extends BaseArmor implements ISpecialArmor, IGoggles
 			}
 		}
 		return false;
+	}
+
+	@Override
+	public boolean isModuleAllowed(IModule iModule, ItemStack itemStack)
+	{
+		boolean allowed = false;
+		if(itemStack.getItem() instanceof ItemBrassArmor)
+		{
+			ItemBrassArmor brassArmor = (ItemBrassArmor)itemStack.getItem();
+			if (iModule instanceof IDefensiveArmorModule)
+			{
+				IDefensiveArmorModule iDefensiveArmorModule = (IDefensiveArmorModule)iModule;
+				if(iDefensiveArmorModule.getApplicablePiece() == -1 || iDefensiveArmorModule.getApplicablePiece() == brassArmor.armorType)
+				{
+					ArrayList<IModule> moduleIncompatibilities = ModuleRegistry.getModuleIncompatibilities(iModule.getModuleId());
+					if(Collections.disjoint(IModuleContainer.Helper.getAllModulesEquipped(itemStack), moduleIncompatibilities))
+					{
+						if(!IModuleContainer.Helper.getAllModulesEquipped(itemStack).contains(iModule))
+						{
+							allowed = true;
+						}
+					}
+				}
+			}
+		}
+
+		return allowed;
 	}
 }

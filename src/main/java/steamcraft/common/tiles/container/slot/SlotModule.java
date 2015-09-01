@@ -12,17 +12,17 @@
  */
 package steamcraft.common.tiles.container.slot;
 
+import boilerplate.common.containers.slots.SlotChanged;
 import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
-
-import steamcraft.api.item.IArmorModule;
+import steamcraft.api.item.IModule;
+import steamcraft.api.item.IModuleContainer;
 
 /**
  * @author decebaldecebal
  *
  */
-public class SlotModule extends Slot
+public class SlotModule extends SlotChanged
 {
 	public SlotModule(IInventory inv, int par2, int par3, int par4)
 	{
@@ -32,12 +32,13 @@ public class SlotModule extends Slot
 	@Override
 	public boolean isItemValid(ItemStack stack)
 	{
-		return stack.getItem() instanceof IArmorModule;
-	}
-
-	@Override
-	public void onSlotChange(ItemStack stack1, ItemStack stack2)
-	{
-		super.onSlotChange(stack1, stack2);
+		if (stack == null || !(stack.getItem() instanceof IModule) || this.inventory.getStackInSlot(0) == null ||
+				this.inventory.getStackInSlot(0).getItem() instanceof IModuleContainer)
+		{
+			return false;
+		}
+		IModule iModule = (IModule)stack.getItem();
+		IModuleContainer iModuleContainer = (IModuleContainer)this.inventory.getStackInSlot(0).getItem();
+		return iModuleContainer.isModuleAllowed(iModule, this.inventory.getStackInSlot(0));
 	}
 }

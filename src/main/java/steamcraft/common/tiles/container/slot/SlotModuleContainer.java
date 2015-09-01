@@ -12,20 +12,18 @@
  */
 package steamcraft.common.tiles.container.slot;
 
+import boilerplate.common.containers.slots.SlotChanged;
 import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
-
-import steamcraft.common.items.armor.ItemBrassArmor;
+import steamcraft.api.item.IModuleContainer;
 
 /**
  * @author decebaldecebal
  *
  */
-public class SlotBrassArmor extends Slot
+public class SlotModuleContainer extends SlotChanged
 {
-
-	public SlotBrassArmor(IInventory inv, int par2, int par3, int par4)
+	public SlotModuleContainer(IInventory inv, int par2, int par3, int par4)
 	{
 		super(inv, par2, par3, par4);
 	}
@@ -33,12 +31,6 @@ public class SlotBrassArmor extends Slot
 	@Override
 	public boolean isItemValid(ItemStack stack)
 	{
-		return stack.getItem() instanceof ItemBrassArmor;
-	}
-
-	@Override
-	public void onSlotChange(ItemStack stack1, ItemStack stack2)
-	{
-		super.onSlotChange(stack1, stack2);
+		return stack.getItem() instanceof IModuleContainer;
 	}
 }

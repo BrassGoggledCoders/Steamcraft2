@@ -14,27 +14,28 @@ package steamcraft.common.tiles;
 
 import boilerplate.api.IOpenableGUI;
 import boilerplate.common.baseclasses.BaseTileWithInventory;
+import boilerplate.common.tiles.IOnSlotChanged;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.Slot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import steamcraft.api.item.IArmorModule;
-import steamcraft.api.item.ModuleRegistry;
+import steamcraft.api.item.IModule;
+import steamcraft.api.item.IModuleContainer;
 import steamcraft.client.gui.GuiArmorEditor;
-import steamcraft.common.items.armor.ItemBrassArmor;
 import steamcraft.common.tiles.container.ContainerArmorEditor;
+import steamcraft.common.tiles.container.slot.SlotModuleContainer;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Iterator;
 
 /**
  * @author warlordjones
  *
  */
-public class TileArmorEditor extends BaseTileWithInventory implements IInventory, IOpenableGUI
+public class TileArmorEditor extends BaseTileWithInventory implements IInventory, IOpenableGUI, IOnSlotChanged
 {
 	public TileArmorEditor()
 	{
@@ -60,88 +61,45 @@ public class TileArmorEditor extends BaseTileWithInventory implements IInventory
 	}
 
 	@Override
-	public void updateEntity()
+	public void onSlotChanged(Slot slot)
 	{
-		ArrayList<String> installedModules = new ArrayList<String>();
-
-		if (this.worldObj.isRemote)
-			return;
-		// Addition
-		if ((this.inventory[0] != null) && (this.inventory[0].getItem() instanceof ItemBrassArmor) && (this.inventory[2] != null))
+		if (slot instanceof SlotModuleContainer)
 		{
-			NBTTagCompound tagCompound = ItemBrassArmor.getOrCreateTagCompound(this.inventory[0]);
-			Item armor = this.inventory[0].getItem();
-			ItemBrassArmor brassarmor = (ItemBrassArmor) armor;
-
-			for (int f = 0; f < tagCompound.getInteger("moduleCount"); f++)
+			ItemStack slotItemStack = this.getStackInSlot(slot.getSlotIndex());
+			if (slotItemStack == null)
 			{
-				installedModules.add(tagCompound.getString("module" + f));
-				tagCompound.removeTag("module" + f);
-			}
-			if ((this.inventory[2] != null) && (this.inventory[2].getItem() instanceof IArmorModule))
-			{
-				IArmorModule module = (IArmorModule) this.inventory[2].getItem();
-				ArrayList moduleIncompatibilities = ModuleRegistry.getModuleIncompatibilities(module.getModuleId());
-				if (!installedModules.contains(module.getModuleId()))
+				for (int slotNumber = 1; slotNumber < this.getSizeInventory(); slotNumber++)
 				{
-					if (moduleIncompatibilities == null)
-					{
-						if (module.getApplicablePiece() == -1)
-						{
-							this.installModule(installedModules, module);
-						}
-						else if (module.getApplicablePiece() == brassarmor.armorType)
-						{
-							this.installModule(installedModules, module);
-						}
-					}
-					else if (Collections.disjoint(installedModules, moduleIncompatibilities))
-					{
-						if (module.getApplicablePiece() == -1)
-						{
-							this.installModule(installedModules, module);
-						}
-						else if (module.getApplicablePiece() == brassarmor.armorType)
-						{
-							this.installModule(installedModules, module);
-						}
-					}
+					this.setInventorySlotContents(slotNumber, null);
+				}
+			} else if (slotItemStack.getItem() instanceof IModuleContainer)
+			{
+				ArrayList<IModule> iModules = IModuleContainer.Helper.getAllModulesEquipped(slotItemStack);
+				Iterator<IModule> iModuleIterator = iModules.iterator();
+				int slotNumber = 1;
+				while(iModuleIterator.hasNext())
+				{
+					this.setInventorySlotContents(slotNumber, new ItemStack((Item)iModuleIterator.next()));
+					slotNumber++;
+					iModuleIterator.remove();
 				}
 			}
-			Iterator<String> iterator = installedModules.iterator();
-			int objects = 0;
-			while (iterator.hasNext())
-			{
-				tagCompound.setString("module" + objects, iterator.next());
-				objects++;
-			}
-			tagCompound.setInteger("moduleCount", objects);
-		}
-		// Removal
-		if ((this.inventory[1] != null) && (this.inventory[1].getItem() instanceof ItemBrassArmor))
+		} else
 		{
-			NBTTagCompound tagCompound = ItemBrassArmor.getOrCreateTagCompound(this.inventory[1]);
-			for (int f = 0; f < tagCompound.getInteger("moduleCount"); f++)
+			ItemStack slotItemStack;
+			ArrayList<IModule> iModules = new ArrayList<IModule>();
+			for (int slotNumber = 1; slotNumber < this.getSizeInventory(); slotNumber++)
 			{
-				installedModules.add(tagCompound.getString("module" + f));
-				tagCompound.removeTag("module" + f);
-			}
-			for (int i = 0; i < installedModules.size(); i++)
-			{
-				Item module = (Item) ModuleRegistry.getModule(installedModules.get(i));
-				if ((this.inventory[2] == null) && (module != null))
+				slotItemStack = this.getStackInSlot(slotNumber);
+				if (slotItemStack != null && slotItemStack.getItem() instanceof IModule)
 				{
-					this.removeModule(installedModules, (IArmorModule) module, i);
+					iModules.add((IModule)slotItemStack.getItem());
 				}
 			}
-			Iterator<String> iterator = installedModules.iterator();
-			int objects = 0;
-			while (iterator.hasNext())
+			if(this.getStackInSlot(0) != null)
 			{
-				tagCompound.setString("module" + objects, iterator.next());
-				objects++;
+				IModuleContainer.Helper.setModulesEquipped(iModules, this.getStackInSlot(0));
 			}
-			tagCompound.setInteger("moduleCount", objects);
 		}
 	}
 
