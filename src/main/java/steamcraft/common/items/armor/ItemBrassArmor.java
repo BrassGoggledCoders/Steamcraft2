@@ -228,13 +228,14 @@ public class ItemBrassArmor extends BaseArmor implements ISpecialArmor, IGoggles
 		if(itemStack.getItem() instanceof ItemBrassArmor)
 		{
 			ItemBrassArmor brassArmor = (ItemBrassArmor)itemStack.getItem();
-			if (iModule instanceof IDefensiveArmorModule)
+			if (iModule instanceof IArmorModule)
 			{
-				IDefensiveArmorModule iDefensiveArmorModule = (IDefensiveArmorModule)iModule;
-				if(iDefensiveArmorModule.getApplicablePiece() == -1 || iDefensiveArmorModule.getApplicablePiece() == brassArmor.armorType)
+				IArmorModule iArmorModule = (IArmorModule)iModule;
+				if(iArmorModule.getApplicablePiece() == -1 || iArmorModule.getApplicablePiece() == brassArmor.armorType)
 				{
 					ArrayList<IModule> moduleIncompatibilities = ModuleRegistry.getModuleIncompatibilities(iModule.getModuleId());
-					if(Collections.disjoint(IModuleContainer.Helper.getAllModulesEquipped(itemStack), moduleIncompatibilities))
+					if(moduleIncompatibilities == null ||
+							Collections.disjoint(IModuleContainer.Helper.getAllModulesEquipped(itemStack), moduleIncompatibilities))
 					{
 						if(!IModuleContainer.Helper.getAllModulesEquipped(itemStack).contains(iModule))
 						{

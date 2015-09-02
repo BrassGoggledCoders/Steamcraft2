@@ -33,7 +33,7 @@ public class SlotModule extends SlotChanged
 	public boolean isItemValid(ItemStack stack)
 	{
 		if (stack == null || !(stack.getItem() instanceof IModule) || this.inventory.getStackInSlot(0) == null ||
-				this.inventory.getStackInSlot(0).getItem() instanceof IModuleContainer)
+				!(this.inventory.getStackInSlot(0).getItem() instanceof IModuleContainer))
 		{
 			return false;
 		}
