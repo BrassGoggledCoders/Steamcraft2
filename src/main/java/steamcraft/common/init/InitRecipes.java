@@ -20,7 +20,6 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
-import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 import net.minecraftforge.oredict.OreDictionary;
@@ -53,7 +52,6 @@ public class InitRecipes
 		initBlockRecipes();
 		initModuleRecipes();
 		initOtherRecipes();
-		initCompatRecipes();
 	}
 
 	private static void initGunRecipes()
@@ -529,17 +527,6 @@ public class InitRecipes
 		GameRegistry.addSmelting(InitBlocks.blockBrassLog, new ItemStack(InitItems.itemIngot, 2, 4), 0);
 
 		GameRegistry.addSmelting(new ItemStack(InitItems.itemCookedWhaleMeat), new ItemStack(InitItems.itemWhaleMeat), 1F);
-	}
-
-	private static void initCompatRecipes()
-	{
-		// Thaumcraft
-		if (Loader.isModLoaded("Thaumcraft"))
-		{
-			GameRegistry.addSmelting(new ItemStack(InitItems.itemSteamcraftCluster, 1, 0), new ItemStack(InitItems.itemIngot, 1, 0), 0);
-			GameRegistry.addSmelting(new ItemStack(InitItems.itemSteamcraftCluster, 1, 1), new ItemStack(InitItems.itemIngot, 1, 3), 0);
-		}
-
 	}
 
 }

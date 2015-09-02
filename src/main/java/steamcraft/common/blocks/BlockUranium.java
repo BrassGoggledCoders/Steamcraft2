@@ -25,14 +25,14 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 import boilerplate.client.utils.EffectUtils;
-import steamcraft.api.block.IChiselable;
+import steamcraft.api.block.IEngravable;
 import steamcraft.common.init.InitBlocks;
 
 /**
  * @author warlordjones
  *
  */
-public class BlockUranium extends BaseBlock implements IChiselable
+public class BlockUranium extends BaseBlock implements IEngravable
 {
 	public BlockUranium(Material mat)
 	{

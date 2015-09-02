@@ -65,7 +65,7 @@ public class GuiLiquidBoiler extends BaseContainerGui
 
 		this.mc.renderEngine.bindTexture(guitexture);
 		this.drawTexturedModalRect(this.guiLeft + 8, this.guiTop + 15, 176, 14, 20, 49);
-		this.drawTexturedModalRect(this.guiLeft + 15, this.guiTop + 20, 176, 14, 20, 49);
+		this.drawTexturedModalRect(this.guiLeft + 40, this.guiTop + 15, 176, 14, 20, 49);
 		this.drawTexturedModalRect(this.guiLeft + 74, this.guiTop + 15, 176, 14, 20, 49);
 	}
 
@@ -77,5 +77,7 @@ public class GuiLiquidBoiler extends BaseContainerGui
 				this.drawFluidInfo(this.boiler.waterTank, x, y);
 			else if (((x - this.guiLeft) >= 74) && ((x - this.guiLeft) <= 106))
 				this.drawFluidInfo(this.boiler.steamTank, x, y);
+			else if (((x - this.guiLeft) >= 40) && ((x - this.guiLeft) <= 60))
+				this.drawFluidInfo(this.boiler.fuelTank, x, y);
 	}
 }

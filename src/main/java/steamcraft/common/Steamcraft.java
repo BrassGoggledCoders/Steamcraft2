@@ -125,8 +125,11 @@ public class Steamcraft
 		if (ConfigWorldGen.generationEnabled)
 			GameRegistry.registerWorldGenerator(new WorldGenSteamcraft(), 1);
 
-		DimensionManager.registerProviderType(ConfigGeneral.deepsDimensionID, WorldProviderDeeps.class, false);
-		DimensionManager.registerDimension(ConfigGeneral.deepsDimensionID, ConfigGeneral.deepsDimensionID);
+		if (ConfigWorldGen.deepsDimensionEnabled)
+		{
+			DimensionManager.registerProviderType(ConfigGeneral.deepsDimensionID, WorldProviderDeeps.class, false);
+			DimensionManager.registerDimension(ConfigGeneral.deepsDimensionID, ConfigGeneral.deepsDimensionID);
+		}
 
 		InitBiomes.init();
 

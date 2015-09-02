@@ -27,7 +27,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 import boilerplate.common.baseclasses.blocks.BaseMetadataBlock;
-import steamcraft.api.block.IChiselable;
+import steamcraft.api.block.IEngravable;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.init.InitBlocks;
 import steamcraft.common.lib.ModInfo;
@@ -36,7 +36,7 @@ import steamcraft.common.lib.ModInfo;
  * @author warlordjones
  *
  */
-public class BlockMetal extends BaseMetadataBlock implements IChiselable
+public class BlockMetal extends BaseMetadataBlock implements IEngravable
 {
 	public IIcon[] icon = new IIcon[8];
 
