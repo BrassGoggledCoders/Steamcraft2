@@ -60,7 +60,9 @@ public class TileLiquidBoiler extends TileBaseBoiler implements IOpenableGUI
 		this.fuelTank = new FluidTank(5000);
 		this.fuels.put(FluidRegistry.LAVA, defaultFuelValue * 2);
 		this.fuels.put(FluidRegistry.getFluid("whaleoil"), defaultFuelValue);
-		this.fuels.put(FluidRegistry.getFluid("oil"), defaultFuelValue);
+		this.fuels.put(FluidRegistry.getFluid("oil"), defaultFuelValue / 2);
+		this.fuels.put(FluidRegistry.getFluid("biodisel"), defaultFuelValue);
+		this.fuels.put(FluidRegistry.getFluid("fuel"), defaultFuelValue);
 	}
 
 	@Override
