@@ -4,7 +4,7 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 
-import steamcraft.common.items.ItemCanister;
+import net.minecraftforge.fluids.FluidContainerRegistry;
 
 public class SlotFluidContainer extends Slot
 {
@@ -17,6 +17,6 @@ public class SlotFluidContainer extends Slot
 	@Override
 	public boolean isItemValid(ItemStack stack)
 	{
-		return stack.getItem() instanceof ItemCanister;
+		return FluidContainerRegistry.isContainer(stack) || FluidContainerRegistry.isBucket(stack);
 	}
 }

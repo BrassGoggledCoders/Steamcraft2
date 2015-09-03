@@ -47,7 +47,7 @@ public abstract class TileBaseBoiler extends BaseTileWithInventory implements IF
 
 	public TileBaseBoiler()
 	{
-		super(3);
+		super(4);
 
 		this.waterTank = new FluidTank(new FluidStack(FluidRegistry.WATER, 0), 5000);
 		this.steamTank = new FluidTank(new FluidStack(FluidRegistry.getFluid("steam"), 0), 10000);
