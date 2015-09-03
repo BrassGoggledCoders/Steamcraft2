@@ -26,8 +26,8 @@ import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
 
 import boilerplate.common.baseclasses.BaseTileWithInventory;
+import boilerplate.common.utils.FluidUtils;
 import steamcraft.common.blocks.machines.BlockBaseBoiler;
-import steamcraft.common.items.ItemCanister;
 
 /**
  * @author Decebaldecebal
@@ -102,25 +102,12 @@ public abstract class TileBaseBoiler extends BaseTileWithInventory implements IF
 			{
 				FluidStack liquid = FluidContainerRegistry.getFluidForFilledItem(this.inventory[1]);
 
-				if ((liquid != null) && (this.waterTank.fill(new FluidStack(FluidRegistry.getFluid("water"), liquid.amount), false) == liquid.amount))
-					if (liquid.getFluid() == FluidRegistry.WATER)
-					{
-						this.waterTank.fill(new FluidStack(FluidRegistry.getFluid("water"), liquid.amount), true);
-
-						if (this.inventory[1].stackSize > 1)
-							this.inventory[1].stackSize--;
-						else
-							this.inventory[1] = this.inventory[1].getItem().getContainerItem(this.inventory[1]);
-					}
+				if ((liquid != null) && liquid.getFluid() == FluidRegistry.WATER)
+					FluidUtils.drainFluidContainer(this.waterTank, this.inventory[1], this.inventory[2]);
 			}
-			if ((this.inventory[2] != null) && (this.inventory[2].getItem() instanceof ItemCanister))
+			if ((this.inventory[3] != null))
 			{
-				ItemCanister canister = (ItemCanister) this.inventory[2].getItem();
-				if ((this.steamTank.getFluidAmount() >= steamPerTick) && (canister.getFluidAmount(this.inventory[2]) != canister.maxSteam))
-				{
-					canister.fill(this.inventory[2], new FluidStack(FluidRegistry.getFluid("steam"), steamPerTick), true);
-					this.steamTank.drain(steamPerTick, true);
-				}
+				FluidUtils.fillFluidContainer(steamTank, this.inventory[3], this.inventory[3]);
 			}
 
 			if ((this.getItemBurnTime(inventory[0]) > 0) && (this.furnaceBurnTime == 0) && (this.waterTank.getFluidAmount() >= waterPerTick)
