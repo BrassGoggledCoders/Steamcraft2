@@ -103,11 +103,11 @@ public abstract class TileBaseBoiler extends BaseTileWithInventory implements IF
 				FluidStack liquid = FluidContainerRegistry.getFluidForFilledItem(this.inventory[1]);
 
 				if ((liquid != null) && liquid.getFluid() == FluidRegistry.WATER)
-					FluidUtils.drainFluidContainer(this.waterTank, this.inventory[1], this.inventory[2]);
+					this.inventory[2] = FluidUtils.drainFluidContainer(this.waterTank, this.inventory[1]);
 			}
 			if ((this.inventory[3] != null))
 			{
-				FluidUtils.fillFluidContainer(steamTank, this.inventory[3], this.inventory[3]);
+				this.inventory[3] = FluidUtils.fillFluidContainer(steamTank, this.inventory[3]);
 			}
 
 			if ((this.getItemBurnTime(inventory[0]) > 0) && (this.furnaceBurnTime == 0) && (this.waterTank.getFluidAmount() >= waterPerTick)
