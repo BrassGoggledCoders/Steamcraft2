@@ -14,14 +14,17 @@ package steamcraft.common.items;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.item.EntityMinecart;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
+import cpw.mods.fml.common.Optional;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-import steamcraft.api.item.UniversalWrench;
+import steamcraft.api.item.IUniversalWrench;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.init.InitBlocks;
 import steamcraft.common.lib.ModInfo;
@@ -32,7 +35,7 @@ import steamcraft.common.tiles.energy.TileCopperWire;
  * @author warlordjones
  *
  */
-public class ItemSpanner extends UniversalWrench
+public class ItemSpanner extends BaseItem implements IUniversalWrench
 {
 	public ItemSpanner()
 	{
@@ -70,5 +73,76 @@ public class ItemSpanner extends UniversalWrench
 	public void registerIcons(IIconRegister par1IconRegister)
 	{
 		this.itemIcon = par1IconRegister.registerIcon(ModInfo.PREFIX + this.getUnlocalizedName().substring(5));
+	}
+
+	@Override
+	@Optional.Method(modid = "BuildCraft|Core")
+	public boolean canWrench(EntityPlayer player, int x, int y, int z)
+	{
+		return true;
+	}
+
+	@Override
+	@Optional.Method(modid = "BuildCraft|Core")
+	public void wrenchUsed(EntityPlayer player, int x, int y, int z)
+	{
+
+	}
+
+	@Override
+	public boolean isUsable(ItemStack item, EntityLivingBase user, int x, int y, int z)
+	{
+		return true;
+	}
+
+	@Override
+	public void toolUsed(ItemStack item, EntityLivingBase user, int x, int y, int z)
+	{
+
+	}
+
+	@Override
+	@Optional.Method(modid = "Railcraft")
+	public boolean canWhack(EntityPlayer player, ItemStack crowbar, int x, int y, int z)
+	{
+		return true;
+	}
+
+	@Override
+	@Optional.Method(modid = "Railcraft")
+	public void onWhack(EntityPlayer player, ItemStack crowbar, int x, int y, int z)
+	{
+		crowbar.damageItem(2, player);
+		player.swingItem();
+	}
+
+	@Override
+	@Optional.Method(modid = "Railcraft")
+	public boolean canLink(EntityPlayer player, ItemStack crowbar, EntityMinecart cart)
+	{
+		return player.isSneaking();
+	}
+
+	@Override
+	@Optional.Method(modid = "Railcraft")
+	public void onLink(EntityPlayer player, ItemStack crowbar, EntityMinecart cart)
+	{
+		crowbar.damageItem(2, player);
+		player.swingItem();
+	}
+
+	@Override
+	@Optional.Method(modid = "Railcraft")
+	public boolean canBoost(EntityPlayer player, ItemStack crowbar, EntityMinecart cart)
+	{
+		return !this.canLink(player, crowbar, cart);
+	}
+
+	@Override
+	@Optional.Method(modid = "Railcraft")
+	public void onBoost(EntityPlayer player, ItemStack crowbar, EntityMinecart cart)
+	{
+		crowbar.damageItem(2, player);
+		player.swingItem();
 	}
 }
