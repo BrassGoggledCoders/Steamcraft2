@@ -511,6 +511,7 @@ item.itemFreezeBoots.desc=将你脚下的水冻成冰
 item.itemSteamcraftCluster.0.name=Native Aluminum Cluster
 item.itemSteamcraftCluster.1.name=Native Zinc Cluster
 item.itemThaumicMonocle.name=Thaumic Monocle
+item.itemChiselSteam.name=Steam-Powered Chisel
 
 #Tabs
 itemGroup.steamcraft=蒸汽工艺 2

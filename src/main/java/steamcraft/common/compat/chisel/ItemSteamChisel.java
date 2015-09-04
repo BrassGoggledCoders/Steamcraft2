@@ -8,13 +8,18 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidContainerItem;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.ModInfo;
+
+import java.util.List;
 
 /**
  * Created by Skylar on 9/2/2015.
@@ -38,6 +43,36 @@ public class ItemSteamChisel extends BaseSteamItem implements IChiselItem
 	{
 		this.itemIcon = par1IconRegister.registerIcon(ModInfo.PREFIX + "tools/" + this.getUnlocalizedName().substring(5));
 	}
+
+	@SideOnly(Side.CLIENT)
+	@SuppressWarnings("unchecked")
+	public void getSubItems(Item item, CreativeTabs creativeTabs, List list) {
+		list.add(new ItemStack(item, 1));
+		if(item instanceof IFluidContainerItem)
+		{
+			ItemStack itemStack = new ItemStack(item, 1);
+			IFluidContainerItem iFluidContainerItem = (IFluidContainerItem)item;
+			iFluidContainerItem.fill(itemStack, FluidRegistry.getFluidStack("steam", iFluidContainerItem.getCapacity(itemStack)), true);
+			list.add(itemStack);
+		}
+	}
+
+	@SuppressWarnings("all")
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean flag)
+	{
+		if ((this.getFluidAmount(stack) > 0))
+		{
+			String str = this.getFluid(stack).getFluid().getName();
+			int amount = this.getFluidAmount(stack);
+
+			list.add("Holding " + amount + "mB of " + str);
+		}
+		else
+			list.add("Empty");
+	}
+
 
 	@Override
 	public boolean canOpenGui(World world, EntityPlayer player, ItemStack chisel)

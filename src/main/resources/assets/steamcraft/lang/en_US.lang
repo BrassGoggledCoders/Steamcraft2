@@ -523,6 +523,7 @@ item.itemAutofeeder.desc=Automatically consume food from your inventory. Fairly 
 item.itemSteamcraftCluster.0.name=Native Aluminum Cluster
 item.itemSteamcraftCluster.1.name=Native Zinc Cluster
 item.itemThaumicMonocle.name=Thaumic Monocle
+item.itemChiselSteam.name=Steam-Powered Chisel
 
 #Tabs
 itemGroup.steamcraft2=Steamcraft 2
