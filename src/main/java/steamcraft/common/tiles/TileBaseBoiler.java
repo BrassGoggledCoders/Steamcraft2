@@ -24,10 +24,12 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTank;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
+import net.minecraftforge.oredict.OreDictionary;
 
 import boilerplate.common.baseclasses.BaseTileWithInventory;
 import boilerplate.common.utils.FluidUtils;
 import steamcraft.common.blocks.machines.BlockBaseBoiler;
+import steamcraft.common.items.ItemCanister;
 
 /**
  * @author Decebaldecebal
@@ -103,11 +105,37 @@ public abstract class TileBaseBoiler extends BaseTileWithInventory implements IF
 				FluidStack liquid = FluidContainerRegistry.getFluidForFilledItem(this.inventory[1]);
 
 				if ((liquid != null) && liquid.getFluid() == FluidRegistry.WATER)
-					this.inventory[2] = FluidUtils.drainFluidContainer(this.waterTank, this.inventory[1]);
+				{
+					ItemStack emptyContainer = FluidUtils.drainFluidContainer(this.waterTank, this.inventory[1]);
+					if (inventory[2] != null && OreDictionary.itemMatches(inventory[2], emptyContainer, true))
+						inventory[2].stackSize += emptyContainer.stackSize;
+					else if (inventory[2] == null)
+						inventory[2] = emptyContainer.copy();
+					this.decrStackSize(1, emptyContainer.stackSize);
+				}
 			}
 			if ((this.inventory[3] != null))
 			{
-				this.inventory[3] = FluidUtils.fillFluidContainer(steamTank, this.inventory[3]);
+				if ((this.inventory[3].getItem() instanceof ItemCanister))
+				{
+					ItemCanister canister = (ItemCanister) this.inventory[3].getItem();
+					if ((this.steamTank.getFluidAmount() >= steamPerTick) && (canister.getFluidAmount(this.inventory[3]) != canister.maxSteam))
+					{
+						canister.fill(this.inventory[3], new FluidStack(FluidRegistry.getFluid("steam"), steamPerTick), true);
+						this.steamTank.drain(steamPerTick, true);
+					}
+				}
+				else
+				{
+					ItemStack filledContainer = FluidUtils.fillFluidContainer(steamTank, this.inventory[3]);
+					if (filledContainer != null)
+					{
+						if (inventory[3] != null && OreDictionary.itemMatches(inventory[3], filledContainer, true))
+							inventory[3].stackSize += filledContainer.stackSize;
+						else if (inventory[3] == null)
+							inventory[3] = filledContainer.copy();
+					}
+				}
 			}
 
 			if ((this.getItemBurnTime(inventory[0]) > 0) && (this.furnaceBurnTime == 0) && (this.waterTank.getFluidAmount() >= waterPerTick)

@@ -51,9 +51,9 @@ public class ContainerSteamBoiler extends BaseContainer
 		this.setTile(this.tileent);
 
 		this.addSlotToContainer(new Slot(tile, 0, 42, 52));
-		this.addSlotToContainer(new SlotFluidContainer(tile, 1, 132, 57));
-		this.addSlotToContainer(new SlotOutput(tile, 2, 132, 30));
-		this.addSlotToContainer(new SlotFluidContainer(tile, 3, 132, 21));
+		this.addSlotToContainer(new SlotFluidContainer(tile, 1, 115, 57));
+		this.addSlotToContainer(new SlotOutput(tile, 2, 149, 57));
+		this.addSlotToContainer(new SlotFluidContainer(tile, 3, 149, 21));
 
 		int var3;
 
