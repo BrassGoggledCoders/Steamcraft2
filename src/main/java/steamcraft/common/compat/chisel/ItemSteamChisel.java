@@ -75,24 +75,28 @@ public class ItemSteamChisel extends BaseSteamItem implements IChiselItem
 
 
 	@Override
+	@Optional.Method(modid = "chisel")
 	public boolean canOpenGui(World world, EntityPlayer player, ItemStack chisel)
 	{
 		return getFluidLevel(chisel) > 100;
 	}
 
 	@Override
+	@Optional.Method(modid = "chisel")
 	public boolean onChisel(World world, ItemStack chisel, ICarvingVariation target)
 	{
 		return consumeSteamFromCanister(chisel, 100);
 	}
 
 	@Override
+	@Optional.Method(modid = "chisel")
 	public boolean canChisel(World world, ItemStack chisel, ICarvingVariation target)
 	{
 		return getFluidLevel(chisel) > 100;
 	}
 
 	@Override
+	@Optional.Method(modid = "chisel")
 	public boolean canChiselBlock(World world, EntityPlayer player, int x, int y, int z, Block block, int metadata)
 	{
 		ItemStack currentItem = player.getCurrentEquippedItem();
@@ -100,6 +104,7 @@ public class ItemSteamChisel extends BaseSteamItem implements IChiselItem
 	}
 
 	@Override
+	@Optional.Method(modid = "chisel")
 	public boolean hasModes(ItemStack chisel)
 	{
 		return false;
