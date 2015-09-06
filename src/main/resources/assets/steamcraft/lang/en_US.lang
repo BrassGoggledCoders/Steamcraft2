@@ -193,9 +193,9 @@ fluid.boilingmudFluid=Boiling Mud
 #Items
 item.itemResource.0.name=Sulfur
 item.itemResource.1.name=Phosphorus
-item.itemResource.2.name=Uranium
-item.itemResource.3.name=Uranium Pellets
-item.itemResource.4.name=Sulfuric Acid
+item.itemResource.2.name=Sulfuric Acid
+item.itemResource.3.name=Uranium
+item.itemResource.4.name=Uranium Pellets
 item.itemTeaLeaves.name=Tea Leaf
 item.itemTeaSeed.name=Tea Seeds
 item.itemTeaSeed.desc=Obtained from breaking grass

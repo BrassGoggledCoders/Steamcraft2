@@ -109,13 +109,13 @@ public class BlockSteamcraftOre extends BaseMetadataBlock implements IHammerable
 		switch (metadata)
 		{
 		case 4:
-			drop.add(new ItemStack(InitItems.itemResource, 1, 4));
+			drop.add(new ItemStack(InitItems.itemResource, 1, 3));
 			break;
 		case 5:
-			drop.add(new ItemStack(InitItems.itemResource, 2 + world.rand.nextInt(3), 1));
+			drop.add(new ItemStack(InitItems.itemResource, 2 + world.rand.nextInt(3), 0));
 			break;
 		case 6:
-			drop.add(new ItemStack(InitItems.itemResource, 2 + world.rand.nextInt(3), 3));
+			drop.add(new ItemStack(InitItems.itemResource, 2 + world.rand.nextInt(3), 1));
 			break;
 		default:
 			drop.add(0, new ItemStack(InitBlocks.blockCustomOre, 1, metadata));

@@ -22,6 +22,7 @@ import net.minecraft.util.StatCollector;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.fluids.FluidStack;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.items.*;
 import steamcraft.common.items.armor.*;
@@ -282,9 +283,13 @@ public class InitItems
 		// Containers
 		itemCanisterSteam = new ItemCanister(10000, 20).setUnlocalizedName("itemCanisterSteam");
 		registerItem(itemCanisterSteam, "ItemCanisterSteam");
+		FluidContainerRegistry.registerFluidContainer(new FluidStack(FluidRegistry.getFluid("steam"), 10000),
+				((ItemCanister) itemCanisterSteam).getFilledCanister(), new ItemStack(itemCanisterSteam));
 
 		itemReinforcedCanisterSteam = new ItemCanister(20000, 40).setUnlocalizedName("itemReinforcedCanisterSteam");
 		registerItem(itemReinforcedCanisterSteam, "ItemReinforcedCanisterSteam");
+		FluidContainerRegistry.registerFluidContainer(new FluidStack(FluidRegistry.getFluid("steam"), 20000),
+				((ItemCanister) itemReinforcedCanisterSteam).getFilledCanister(), new ItemStack(itemReinforcedCanisterSteam));
 
 		itemElectricJarSmall = new ElectricItem(80, 80, 40).setUnlocalizedName("itemElectricJarSmall");
 		itemElectricJarMedium = new ElectricItem(400, 400, 125).setUnlocalizedName("itemElectricJarMedium");
