@@ -21,7 +21,6 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import steamcraft.api.item.IArmorModule;
 import steamcraft.api.item.IModule;
 import steamcraft.api.item.IModuleContainer;
 import steamcraft.client.gui.GuiArmorEditor;
@@ -101,20 +100,6 @@ public class TileArmorEditor extends BaseTileWithInventory implements IInventory
 				IModuleContainer.Helper.setModulesEquipped(iModules, this.getStackInSlot(0));
 			}
 		}
-	}
-
-	private void installModule(ArrayList<String> installedModules, IArmorModule module)
-	{
-		installedModules.add(module.getModuleId());
-		module.onModuleAdded(worldObj);
-		this.setInventorySlotContents(2, null);
-	}
-
-	private void removeModule(ArrayList<String> installedModules, IArmorModule module, int modulePos)
-	{
-		this.setInventorySlotContents(2, new ItemStack((Item) module));
-		module.onModuleRemoved(worldObj);
-		installedModules.remove(modulePos);
 	}
 
 	@Override

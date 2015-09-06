@@ -13,8 +13,11 @@
 package steamcraft.common.tiles.container;
 
 import boilerplate.common.baseclasses.blocks.BaseContainer;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Slot;
+import net.minecraft.item.ItemStack;
+import steamcraft.api.item.IModuleContainer;
 import steamcraft.common.tiles.TileArmorEditor;
 import steamcraft.common.tiles.container.slot.SlotArmor;
 import steamcraft.common.tiles.container.slot.SlotModuleContainer;
@@ -60,5 +63,35 @@ public class ContainerArmorEditor extends BaseContainer
 		{
 			this.addSlotToContainer(new Slot(player, var3, 8 + (var3 * 18), 142));
 		}
+	}
+
+	@Override
+	public ItemStack transferStackInSlot(EntityPlayer player, int slotNumber)
+	{
+		ItemStack itemStackToReturn = null;
+		Slot priorSlot = (Slot)this.inventorySlots.get(slotNumber);
+
+		if(priorSlot != null && priorSlot.getHasStack())
+		{
+			ItemStack itemStackInPriorSlot = priorSlot.getStack();
+			itemStackToReturn = itemStackInPriorSlot.copy();
+			//If Slot is an Armor Slot
+			if(itemStackInPriorSlot != null)
+			{
+				if(slotNumber > -1 && slotNumber < 4)
+				{
+					if(itemStackInPriorSlot.getItem() instanceof IModuleContainer)
+					{
+						//Attempt in merge into IModuleContainer Slot
+						if(!mergeItemStack(itemStackInPriorSlot, 4, 5, true))
+						{
+							return null;
+						}
+					}
+				}
+			}
+		}
+
+		return itemStackToReturn;
 	}
 }
