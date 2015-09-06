@@ -38,7 +38,7 @@ public class ItemWatch extends BaseItem
 	@Override
 	public ItemStack onItemRightClick(final ItemStack is, final World world, final EntityPlayer player)
 	{
-		if(!world.isRemote)
+		if (!world.isRemote)
 		{
 			final long mcTime = world.getWorldTime();
 			final Calendar cal = Calendar.getInstance();

@@ -55,7 +55,7 @@ public class GuiBloomery extends BaseContainerGui
 
 		int i1;
 
-		if(this.tileFurnace.isBurning())
+		if (this.tileFurnace.isBurning())
 		{
 			i1 = this.tileFurnace.getBurnTimeRemainingScaled(12);
 			this.drawTexturedModalRect(this.guiLeft + 46, (this.guiTop + 36 + 12) - i1, 176, 12 - i1, 14, i1 + 2);

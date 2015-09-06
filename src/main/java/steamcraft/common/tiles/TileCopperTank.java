@@ -14,15 +14,18 @@ package steamcraft.common.tiles;
 
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
+
+import cpw.mods.fml.common.network.NetworkRegistry.TargetPoint;
+
 import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTank;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
+
 import steamcraft.common.init.InitPackets;
 import steamcraft.common.packets.CopperTankPacket;
-import cpw.mods.fml.common.network.NetworkRegistry.TargetPoint;
 
 /**
  * @author Decebaldecebal
@@ -42,20 +45,20 @@ public class TileCopperTank extends TileEntity implements IFluidHandler
 	{
 		this.tank = new FluidTank(capacity);
 	}
-	
+
 	@Override
 	public void updateEntity()
 	{
-		if(!this.worldObj.isRemote)
+		if (!this.worldObj.isRemote)
 		{
-			if (tank.getFluidAmount() != this.lastAmount)
+			if (this.tank.getFluidAmount() != this.lastAmount)
 			{
-				updateClientFluid();
-				this.lastAmount = tank.getFluidAmount();
+				this.updateClientFluid();
+				this.lastAmount = this.tank.getFluidAmount();
 			}
-			
-			ticksSinceUpdate++;
-			
+
+			this.ticksSinceUpdate++;
+
 			if (this.ticksSinceUpdate >= ticksTillFluidUpdate)
 			{
 				this.ticksSinceUpdate = 0;
@@ -63,22 +66,23 @@ public class TileCopperTank extends TileEntity implements IFluidHandler
 			}
 		}
 	}
-	
+
 	private void updateClientFluid()
 	{
-		if(this.tank.getFluid() != null)
+		if (this.tank.getFluid() != null)
 		{
-			InitPackets.network.sendToAllAround(new CopperTankPacket(this.xCoord, this.yCoord, this.zCoord,
-					this.tank.getFluidAmount(), this.tank.getFluid().getFluid().getName()), new TargetPoint(
-							this.worldObj.provider.dimensionId, this.xCoord, this.yCoord, this.zCoord, 50));
+			InitPackets.network.sendToAllAround(
+					new CopperTankPacket(this.xCoord, this.yCoord, this.zCoord, this.tank.getFluidAmount(),
+							this.tank.getFluid().getFluid().getName()),
+					new TargetPoint(this.worldObj.provider.dimensionId, this.xCoord, this.yCoord, this.zCoord, 50));
 		}
 		else
 		{
-			InitPackets.network.sendToAllAround(new CopperTankPacket(this.xCoord, this.yCoord, this.zCoord,
-					0, "water"), new TargetPoint(this.worldObj.provider.dimensionId, this.xCoord, this.yCoord, this.zCoord, 50));
+			InitPackets.network.sendToAllAround(new CopperTankPacket(this.xCoord, this.yCoord, this.zCoord, 0, "water"),
+					new TargetPoint(this.worldObj.provider.dimensionId, this.xCoord, this.yCoord, this.zCoord, 50));
 		}
 	}
-	
+
 	@Override
 	public void writeToNBT(NBTTagCompound tag)
 	{
@@ -86,7 +90,7 @@ public class TileCopperTank extends TileEntity implements IFluidHandler
 
 		this.tank.writeToNBT(tag);
 	}
-	
+
 	@Override
 	public void readFromNBT(NBTTagCompound tag)
 	{
@@ -94,7 +98,7 @@ public class TileCopperTank extends TileEntity implements IFluidHandler
 
 		this.tank.readFromNBT(tag);
 	}
-	
+
 	@Override
 	public int fill(ForgeDirection from, FluidStack resource, boolean doFill)
 	{
@@ -104,7 +108,7 @@ public class TileCopperTank extends TileEntity implements IFluidHandler
 	@Override
 	public FluidStack drain(ForgeDirection from, FluidStack resource, boolean doDrain)
 	{
-		if((resource == null) || !resource.isFluidEqual(this.tank.getFluid()))
+		if ((resource == null) || !resource.isFluidEqual(this.tank.getFluid()))
 			return null;
 
 		return this.tank.drain(resource.amount, doDrain);

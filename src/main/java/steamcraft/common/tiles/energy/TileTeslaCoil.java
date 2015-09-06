@@ -23,10 +23,12 @@ import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
+
 import net.minecraftforge.common.util.ForgeDirection;
-import steamcraft.common.lib.DamageSourceHandler;
+
 import cofh.api.energy.EnergyStorage;
 import cofh.api.energy.IEnergyReceiver;
+import steamcraft.common.lib.DamageSourceHandler;
 
 /**
  * @author warlordjones
@@ -39,7 +41,7 @@ public class TileTeslaCoil extends TileEntity implements IEnergyReceiver
 	private static byte RangePerDir = 5;
 	private static byte Damage = 3;
 	private static byte UpdateTicks = 5;
-	
+
 	private byte ticksTillUpdate = 0;
 	private final EnergyStorage buffer = new EnergyStorage(50000, RFPerTick);
 
@@ -47,69 +49,72 @@ public class TileTeslaCoil extends TileEntity implements IEnergyReceiver
 	@Override
 	public void updateEntity()
 	{
-		if(!worldObj.isRemote)
+		if (!this.worldObj.isRemote)
 		{
-			ticksTillUpdate++;
-			if (ticksTillUpdate == UpdateTicks)
+			this.ticksTillUpdate++;
+			if (this.ticksTillUpdate == UpdateTicks)
 			{
-				ticksTillUpdate = 0;
-				if(this.buffer.getEnergyStored() >= RFPerZap)
+				this.ticksTillUpdate = 0;
+				if (this.buffer.getEnergyStored() >= RFPerZap)
 				{
 					Random random = this.worldObj.rand;
-					if(this.getWorldObj().isBlockIndirectlyGettingPowered(this.xCoord, this.yCoord, this.zCoord))
+					if (this.getWorldObj().isBlockIndirectlyGettingPowered(this.xCoord, this.yCoord, this.zCoord))
 					{
-						AxisAlignedBB axisalignedbb2 = AxisAlignedBB.getBoundingBox((double) this.xCoord - RangePerDir, (double) this.yCoord - RangePerDir,
-								(double) this.zCoord - RangePerDir, this.xCoord + RangePerDir, this.yCoord + RangePerDir, this.zCoord + RangePerDir);
-						
+						AxisAlignedBB axisalignedbb2 = AxisAlignedBB.getBoundingBox((double) this.xCoord - RangePerDir,
+								(double) this.yCoord - RangePerDir, (double) this.zCoord - RangePerDir, this.xCoord + RangePerDir,
+								this.yCoord + RangePerDir, this.zCoord + RangePerDir);
+
 						List list2 = this.worldObj.getEntitiesWithinAABB(EntityPlayer.class, axisalignedbb2);
 						Iterator iterator2 = list2.iterator();
 						EntityPlayer player;
-		
-						while(iterator2.hasNext() && this.buffer.getEnergyStored() >= RFPerZap)
+
+						while (iterator2.hasNext() && (this.buffer.getEnergyStored() >= RFPerZap))
 						{
 							player = (EntityPlayer) iterator2.next();
 							player.attackEntityFrom(DamageSourceHandler.electrocution, Damage);
-							this.worldObj.spawnParticle("reddust", player.posX + (random.nextFloat() / 2), (player.posY - 0.5F) + (random.nextFloat() / 2),
-									player.posZ + (random.nextFloat() / 2), 0, 0, 0);
-							
+							this.worldObj.spawnParticle("reddust", player.posX + (random.nextFloat() / 2),
+									(player.posY - 0.5F) + (random.nextFloat() / 2), player.posZ + (random.nextFloat() / 2), 0, 0, 0);
+
 							this.buffer.modifyEnergyStored(-RFPerZap);
 						}
 					}
-					else if((this.getWorldObj().getBlock(this.xCoord, this.yCoord - 1, this.zCoord) == Blocks.emerald_block))
+					else if ((this.getWorldObj().getBlock(this.xCoord, this.yCoord - 1, this.zCoord) == Blocks.emerald_block))
 					{
-						AxisAlignedBB axisalignedbb = AxisAlignedBB.getBoundingBox((double) this.xCoord - RangePerDir, (double) this.yCoord - RangePerDir,
-								(double) this.zCoord - RangePerDir, this.xCoord + RangePerDir, this.yCoord + RangePerDir, this.zCoord + RangePerDir);
-						
+						AxisAlignedBB axisalignedbb = AxisAlignedBB.getBoundingBox((double) this.xCoord - RangePerDir,
+								(double) this.yCoord - RangePerDir, (double) this.zCoord - RangePerDir, this.xCoord + RangePerDir,
+								this.yCoord + RangePerDir, this.zCoord + RangePerDir);
+
 						List list = this.worldObj.getEntitiesWithinAABB(EntityVillager.class, axisalignedbb);
 						Iterator iterator = list.iterator();
 						EntityVillager villager;
-		
-						while(iterator.hasNext() && this.buffer.getEnergyStored() >= RFPerZap)
+
+						while (iterator.hasNext() && (this.buffer.getEnergyStored() >= RFPerZap))
 						{
 							villager = (EntityVillager) iterator.next();
 							villager.attackEntityFrom(DamageSourceHandler.electrocution, Damage);
 							this.worldObj.spawnParticle("reddust", villager.posX + (random.nextFloat() / 3), villager.posY + (random.nextFloat() / 3),
 									villager.posZ + (random.nextFloat() / 3), 0, 0, 0);
-							
+
 							this.buffer.modifyEnergyStored(-RFPerZap);
 						}
 					}
 					else
 					{
-						AxisAlignedBB axisalignedbb = AxisAlignedBB.getBoundingBox((double) this.xCoord - RangePerDir, (double) this.yCoord - RangePerDir,
-								(double) this.zCoord - RangePerDir, this.xCoord + RangePerDir, this.yCoord + RangePerDir, this.zCoord + RangePerDir);
-						
+						AxisAlignedBB axisalignedbb = AxisAlignedBB.getBoundingBox((double) this.xCoord - RangePerDir,
+								(double) this.yCoord - RangePerDir, (double) this.zCoord - RangePerDir, this.xCoord + RangePerDir,
+								this.yCoord + RangePerDir, this.zCoord + RangePerDir);
+
 						List list = this.worldObj.getEntitiesWithinAABB(EntityLiving.class, axisalignedbb);
 						Iterator iterator = list.iterator();
 						EntityLiving living;
-		
-						while(iterator.hasNext() && this.buffer.getEnergyStored() >= RFPerZap)
+
+						while (iterator.hasNext() && (this.buffer.getEnergyStored() >= RFPerZap))
 						{
 							living = (EntityLiving) iterator.next();
 							living.attackEntityFrom(DamageSourceHandler.electrocution, Damage);
 							this.worldObj.spawnParticle("reddust", living.posX + (random.nextFloat() / 2), living.posY + (random.nextFloat() / 2),
 									living.posZ + (random.nextFloat() / 2), 0, 0, 0);
-							
+
 							this.buffer.modifyEnergyStored(-RFPerZap);
 						}
 					}

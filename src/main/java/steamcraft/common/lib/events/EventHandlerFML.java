@@ -51,39 +51,39 @@ public class EventHandlerFML
 	{
 		Block craftingBlock = Block.getBlockFromItem(event.crafting.getItem());
 
-		if(event.crafting.getItem() instanceof ItemRayGun)
+		if (event.crafting.getItem() instanceof ItemRayGun)
 			event.player.triggerAchievement(InitAchievements.raygunAchieve);
-		else if(event.crafting.getItem() instanceof ItemShrinkray)
+		else if (event.crafting.getItem() instanceof ItemShrinkray)
 			event.player.triggerAchievement(InitAchievements.shrinkrayAchieve);
-		else if(craftingBlock instanceof BlockSteamBoiler)
+		else if (craftingBlock instanceof BlockSteamBoiler)
 			event.player.triggerAchievement(InitAchievements.boilerAchieve);
-		else if(craftingBlock instanceof BlockIntake)
+		else if (craftingBlock instanceof BlockIntake)
 			event.player.triggerAchievement(InitAchievements.intakeAchieve);
-		else if(craftingBlock instanceof BlockTurbine)
+		else if (craftingBlock instanceof BlockTurbine)
 			event.player.triggerAchievement(InitAchievements.turbineAchieve);
-		else if(craftingBlock instanceof BlockLightningRod)
+		else if (craftingBlock instanceof BlockLightningRod)
 			event.player.triggerAchievement(InitAchievements.rodAchieve);
-		else if(event.crafting.getItem() instanceof ItemSheet)
+		else if (event.crafting.getItem() instanceof ItemSheet)
 			event.player.triggerAchievement(InitAchievements.sheetAchieve);
-		else if(event.crafting.getItem() instanceof ItemClockworkWings)
+		else if (event.crafting.getItem() instanceof ItemClockworkWings)
 			event.player.triggerAchievement(InitAchievements.wingsAchieve);
-		else if(event.crafting.getItem() instanceof ItemSteamJetpack)
+		else if (event.crafting.getItem() instanceof ItemSteamJetpack)
 			event.player.triggerAchievement(InitAchievements.jetpackAchieve);
-		else if(event.crafting.getItem().getUnlocalizedName().equals(InitItems.itemSteamWingpack.getUnlocalizedName()))
+		else if (event.crafting.getItem().getUnlocalizedName().equals(InitItems.itemSteamWingpack.getUnlocalizedName()))
 			event.player.triggerAchievement(InitAchievements.wingpackAchieve);
 	}
 
 	@SubscribeEvent
 	public void onItemSmelted(PlayerEvent.ItemSmeltedEvent event)
 	{
-		if(event.smelting.getItem() instanceof ItemIngot)
+		if (event.smelting.getItem() instanceof ItemIngot)
 			event.player.triggerAchievement(InitAchievements.ingotAchieve);
 	}
 
 	@SubscribeEvent
 	public void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event)
 	{
-		if(event.player.getUniqueID().toString().equals("c2e83bd4-e8df-40d6-a639-58ba8b05401e"))
+		if (event.player.getUniqueID().toString().equals("c2e83bd4-e8df-40d6-a639-58ba8b05401e"))
 		{
 			ChatComponentText component = new ChatComponentText("Encrypted Connection to Stark Secure Server #1 Established");
 			component.getChatStyle().setBold(true);
@@ -94,29 +94,29 @@ public class EventHandlerFML
 			component1.getChatStyle().setColor(EnumChatFormatting.GREEN);
 			event.player.addChatComponentMessage(component1);
 		}
-		else if(event.player.getUniqueID().toString().equals("94644c62-f190-4f18-a69a-ad36e7425280"))
+		else if (event.player.getUniqueID().toString().equals("94644c62-f190-4f18-a69a-ad36e7425280"))
 		{
 			ChatComponentText component1 = new ChatComponentText("Welcome, Lord of the Mole People!");
 			component1.getChatStyle().setColor(EnumChatFormatting.GRAY);
 			event.player.addChatComponentMessage(component1);
 		}
-		else if(event.player.getUniqueID().toString().equals("edb4e6c2-7d07-4438-a0bb-2f4aabbea24d"))
+		else if (event.player.getUniqueID().toString().equals("edb4e6c2-7d07-4438-a0bb-2f4aabbea24d"))
 		{
 			ChatComponentText component2 = new ChatComponentText("Your Clockwerk Empire awaits!");
 			component2.getChatStyle().setBold(true);
 			component2.getChatStyle().setColor(EnumChatFormatting.GOLD);
 			event.player.addChatComponentMessage(component2);
-			if(!ConfigGeneral.partyPooper)
+			if (!ConfigGeneral.partyPooper)
 			{
 				ChatComponentText link = new ChatComponentText("Welcome ClockwerkKaiser to the server!");
 				link.getChatStyle().setColor(EnumChatFormatting.YELLOW);
 				link.getChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "http://www.twitch.tv/ClockwerkKaiser"));
-				link.getChatStyle().setChatHoverEvent(
-						new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ChatComponentText("Click me to go to Clock's Twitch!")));
+				link.getChatStyle()
+						.setChatHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ChatComponentText("Click me to go to Clock's Twitch!")));
 				MinecraftServer.getServer().getConfigurationManager().sendChatMsg(link);
 			}
 		}
-		if((event.player.worldObj.getPlayerEntityByName("warlordjones") != null)
+		if ((event.player.worldObj.getPlayerEntityByName("warlordjones") != null)
 				|| (event.player.worldObj.getPlayerEntityByName("decebaldecebal") != null))
 		{
 			event.player.triggerAchievement(InitAchievements.creatorAchieve);
@@ -126,7 +126,7 @@ public class EventHandlerFML
 	@SubscribeEvent
 	public void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent eventArgs)
 	{
-		if(eventArgs.modID.equals(ModInfo.ID))
+		if (eventArgs.modID.equals(ModInfo.ID))
 			Config.initialise(Steamcraft.configFolder);
 	}
 }

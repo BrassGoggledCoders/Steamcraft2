@@ -27,13 +27,16 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 import net.minecraftforge.common.util.ForgeDirection;
+
 import steamcraft.client.lib.RenderIDs;
 import steamcraft.common.init.InitBlocks;
 import steamcraft.common.lib.DamageSourceHandler;
 import steamcraft.common.tiles.energy.TileCopperWire;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author warlordjones
@@ -78,11 +81,11 @@ public class BlockCopperWire extends BaseContainerBlock
 	@Override
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entityLiving, ItemStack is)
 	{
-		if(!world.isRemote)
+		if (!world.isRemote)
 		{
 			TileCopperWire tile = (TileCopperWire) world.getTileEntity(x, y, z);
 
-			if(tile != null)
+			if (tile != null)
 			{
 				tile.network = null;
 				tile.updateConnections();
@@ -93,8 +96,8 @@ public class BlockCopperWire extends BaseContainerBlock
 	@Override
 	public void onNeighborChange(IBlockAccess world, int x, int y, int z, int tileX, int tileY, int tileZ)
 	{
-		if(world.getBlock(tileX, tileY, tileZ) != InitBlocks.blockCopperWire)
-		{			
+		if (world.getBlock(tileX, tileY, tileZ) != InitBlocks.blockCopperWire)
+		{
 			TileCopperWire tile = (TileCopperWire) world.getTileEntity(x, y, z);
 			tile.updateConnections(); // only on server
 		}
@@ -106,11 +109,11 @@ public class BlockCopperWire extends BaseContainerBlock
 		if (!world.isRemote)
 		{
 			TileCopperWire tile = (TileCopperWire) world.getTileEntity(x, y, z);
-	
-			if(tile != null)
+
+			if (tile != null)
 				tile.removeFromNetwork();
 		}
-		
+
 		super.breakBlock(world, x, y, z, block, metadata);
 	}
 
@@ -130,12 +133,12 @@ public class BlockCopperWire extends BaseContainerBlock
 	{
 		TileEntity tile = world.getTileEntity(x, y, z);
 		TileCopperWire wire = null;
-		if(tile instanceof TileCopperWire)
+		if (tile instanceof TileCopperWire)
 		{
 			wire = (TileCopperWire) tile;
 		}
 
-		if(wire != null)
+		if (wire != null)
 		{
 			float minX = (5.5f * pixel) - (wire.connections[4] != null ? 5.5f * pixel : 0);
 			float maxX = (1 - (5.5f * pixel)) + (wire.connections[5] != null ? 5.5f * pixel : 0);
@@ -155,10 +158,10 @@ public class BlockCopperWire extends BaseContainerBlock
 	@Override
 	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)
 	{
-		if(world.getBlockMetadata(x, y, z) == 0)
+		if (world.getBlockMetadata(x, y, z) == 0)
 		{
 			TileCopperWire wire = (TileCopperWire) world.getTileEntity(x, y, z);
-			if(wire.getEnergyStored(ForgeDirection.UNKNOWN) != 0)
+			if (wire.getEnergyStored(ForgeDirection.UNKNOWN) != 0)
 				entity.attackEntityFrom(DamageSourceHandler.electrocution, 0.5F);
 		}
 	}

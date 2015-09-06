@@ -67,7 +67,7 @@ public class BlockPolishedPlanks extends BaseMetadataBlock
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(final Item item, final CreativeTabs tab, final List l)
 	{
-		for(int var4 = 0; var4 < this.icon.length; ++var4)
+		for (int var4 = 0; var4 < this.icon.length; ++var4)
 			l.add(new ItemStack(InitBlocks.blockPolishedPlanks, 1, var4));
 	}
 }

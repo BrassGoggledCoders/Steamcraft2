@@ -12,8 +12,6 @@
  */
 package steamcraft.common.packets;
 
-import io.netty.buffer.ByteBuf;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 
@@ -23,6 +21,7 @@ import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 
 import net.minecraftforge.common.DimensionManager;
 
+import io.netty.buffer.ByteBuf;
 import steamcraft.common.Steamcraft;
 
 /**
@@ -69,7 +68,8 @@ public class OpenContainerFromClientPacket implements IMessage
 		{
 			World world = DimensionManager.getWorld(message.worldId);
 			EntityPlayer player = (EntityPlayer) world.getEntityByID(playerid);
-			player.openGui(Steamcraft.instance, guiIDToOpen, world, (int) Math.round(player.posX), (int) Math.round(player.posY), (int) Math.round(player.posZ));
+			player.openGui(Steamcraft.instance, guiIDToOpen, world, (int) Math.round(player.posX), (int) Math.round(player.posY),
+					(int) Math.round(player.posZ));
 			return null;
 		}
 	}

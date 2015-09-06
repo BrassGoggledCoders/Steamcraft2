@@ -17,12 +17,12 @@ import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 
+import boilerplate.client.ClientHelper;
 import org.lwjgl.opengl.GL11;
 import steamcraft.client.renderers.models.ModelCastIronLampSide;
 import steamcraft.client.renderers.models.ModelCastIronLampTop;
 import steamcraft.common.init.InitBlocks;
 import steamcraft.common.lib.ModInfo;
-import boilerplate.client.ClientHelper;
 
 /**
  * @author Surseance
@@ -50,17 +50,17 @@ public class TileCastIronLampRenderer extends TileEntitySpecialRenderer
 		float f1 = 0.6666667F;
 		float f2 = 0.0F;
 
-		if((metadata == 1) || (metadata == 4))
+		if ((metadata == 1) || (metadata == 4))
 		{
 			f2 = 180F;
 		}
 
-		if(metadata == 2)
+		if (metadata == 2)
 		{
 			f2 = 90F;
 		}
 
-		if(metadata == 3)
+		if (metadata == 3)
 		{
 			f2 = -90F;
 		}
@@ -70,11 +70,11 @@ public class TileCastIronLampRenderer extends TileEntitySpecialRenderer
 
 		GL11.glTranslatef(0.0F, -0.3125F, -0.4375F);
 
-		if((block == InitBlocks.blockCastIronLampOn) || (block == InitBlocks.blockInvertedCastIronLamp))
+		if ((block == InitBlocks.blockCastIronLampOn) || (block == InitBlocks.blockInvertedCastIronLamp))
 		{
 			ClientHelper.textureManager().bindTexture(lampOn);
 		}
-		else if((block == InitBlocks.blockCastIronLamp) || (block == InitBlocks.blockInvertedCastIronLampOff))
+		else if ((block == InitBlocks.blockCastIronLamp) || (block == InitBlocks.blockInvertedCastIronLampOff))
 		{
 			ClientHelper.textureManager().bindTexture(lampOff);
 		}
@@ -82,7 +82,7 @@ public class TileCastIronLampRenderer extends TileEntitySpecialRenderer
 		GL11.glPushMatrix();
 		GL11.glScalef(f1, -f1, -f1);
 
-		if((metadata == 0) || (metadata == 1))
+		if ((metadata == 0) || (metadata == 1))
 		{
 			this.lampModelTop.renderLamp();
 		}

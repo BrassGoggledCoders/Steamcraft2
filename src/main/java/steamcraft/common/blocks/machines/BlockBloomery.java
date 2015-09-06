@@ -65,21 +65,21 @@ public class BlockBloomery extends BaseContainerBlock
 	@Override
 	public IIcon getIcon(int side, int meta)
 	{
-		if(side == (meta - 7))
+		if (side == (meta - 7))
 			return this.iconFrontActive;
-		if(((meta == 0) && (side == 3)) || (side == meta))
+		if (((meta == 0) && (side == 3)) || (side == meta))
 			return this.iconFront;
-		switch(side)
+		switch (side)
 		{
-			case 0:
-				return this.blockIcon; // bottom
-			case 1:
-				if(meta > 7)
-					return this.iconTopActive;
-				else
-					return this.iconTop;// top
-			default:
-				return this.blockIcon; // sides
+		case 0:
+			return this.blockIcon; // bottom
+		case 1:
+			if (meta > 7)
+				return this.iconTopActive;
+			else
+				return this.iconTop;// top
+		default:
+			return this.blockIcon; // sides
 		}
 	}
 
@@ -97,13 +97,13 @@ public class BlockBloomery extends BaseContainerBlock
 	@Override
 	public boolean onBlockActivated(World world, int par2, int par3, int par4, EntityPlayer player, int par6, float par7, float par8, float par9)
 	{
-		if(world.isRemote)
+		if (world.isRemote)
 			return true;
 		else
 		{
 			TileBloomery tile = (TileBloomery) world.getTileEntity(par2, par3, par4);
 
-			if((tile == null) || player.isSneaking())
+			if ((tile == null) || player.isSneaking())
 				return false;
 			player.openGui(Steamcraft.instance, GuiIDs.BLOOMERY, world, par2, par3, par4);
 			return true;
@@ -117,14 +117,14 @@ public class BlockBloomery extends BaseContainerBlock
 
 		keepInventory = true;
 
-		if(par0)
+		if (par0)
 			par1World.setBlockMetadataWithNotify(par2, par3, par4, var5 + 7, 2);
 		else
 			par1World.setBlockMetadataWithNotify(par2, par3, par4, var5 - 7, 2);
 
 		keepInventory = false;
 
-		if(tileentity != null)
+		if (tileentity != null)
 		{
 			tileentity.validate();
 			par1World.setTileEntity(par2, par3, par4, tileentity);
@@ -136,7 +136,7 @@ public class BlockBloomery extends BaseContainerBlock
 	public void randomDisplayTick(World world, int par2, int par3, int par4, Random par5Random)
 	{
 		int l = world.getBlockMetadata(par2, par3, par4);
-		if(l >= 7)
+		if (l >= 7)
 		{
 			float f = par2 + 0.5F;
 			float f1 = par3 + 0.0F + ((par5Random.nextFloat() * 6.0F) / 16.0F);
@@ -144,22 +144,22 @@ public class BlockBloomery extends BaseContainerBlock
 			float f3 = 0.52F;
 			float f4 = (par5Random.nextFloat() * 0.6F) - 0.3F;
 
-			if((l == 4) || (l == 11))
+			if ((l == 4) || (l == 11))
 			{
 				world.spawnParticle("smoke", f - f3, f1, f2 + f4, 0.0D, 0.0D, 0.0D);
 				world.spawnParticle("flame", f - f3, f1, f2 + f4, 0.0D, 0.0D, 0.0D);
 			}
-			else if((l == 5) || (l == 12))
+			else if ((l == 5) || (l == 12))
 			{
 				world.spawnParticle("smoke", f + f3, f1, f2 + f4, 0.0D, 0.0D, 0.0D);
 				world.spawnParticle("flame", f + f3, f1, f2 + f4, 0.0D, 0.0D, 0.0D);
 			}
-			else if((l == 2) || (l == 9))
+			else if ((l == 2) || (l == 9))
 			{
 				world.spawnParticle("smoke", f + f4, f1, f2 - f3, 0.0D, 0.0D, 0.0D);
 				world.spawnParticle("flame", f + f4, f1, f2 - f3, 0.0D, 0.0D, 0.0D);
 			}
-			else if((l == 3) || (l == 10))
+			else if ((l == 3) || (l == 10))
 			{
 				world.spawnParticle("smoke", f + f4, f1, f2 + f3, 0.0D, 0.0D, 0.0D);
 				world.spawnParticle("flame", f + f4, f1, f2 + f3, 0.0D, 0.0D, 0.0D);
@@ -172,16 +172,16 @@ public class BlockBloomery extends BaseContainerBlock
 	{
 		int l = MathHelper.floor_double(((living.rotationYaw * 4.0F) / 360.0F) + 0.5D) & 3;
 
-		if(l == 0)
+		if (l == 0)
 			world.setBlockMetadataWithNotify(x, y, z, 2, 2);
 
-		if(l == 1)
+		if (l == 1)
 			world.setBlockMetadataWithNotify(x, y, z, 5, 2);
 
-		if(l == 2)
+		if (l == 2)
 			world.setBlockMetadataWithNotify(x, y, z, 3, 2);
 
-		if(l == 3)
+		if (l == 3)
 			world.setBlockMetadataWithNotify(x, y, z, 4, 2);
 
 		super.onBlockPlacedBy(world, x, y, z, living, stack);

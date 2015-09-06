@@ -16,12 +16,12 @@ import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 
+import boilerplate.client.ClientHelper;
+import boilerplate.client.renderers.RenderFloatingItem;
 import org.lwjgl.opengl.GL11;
 import steamcraft.client.renderers.models.ModelCharger;
 import steamcraft.common.lib.ModInfo;
 import steamcraft.common.tiles.energy.TileCharger;
-import boilerplate.client.ClientHelper;
-import boilerplate.client.renderers.RenderFloatingItem;
 
 /**
  * @author Surseance
@@ -52,7 +52,7 @@ public class TileChargerRenderer extends TileEntitySpecialRenderer
 		GL11.glPopMatrix();
 		GL11.glPopMatrix();
 
-		if(tile.inventory[0] != null)
+		if (tile.inventory[0] != null)
 		{
 			GL11.glPushMatrix();
 			RenderFloatingItem.render(dx + 0.5F, dy + 0.3F, dz + 0.5F, 0, 0, 0, tile.inventory[0]);

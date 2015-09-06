@@ -31,17 +31,17 @@ public class EntityGhostSpider extends EntitySpider
 	@Override
 	public boolean attackEntityAsMob(Entity p_70652_1_)
 	{
-		if(super.attackEntityAsMob(p_70652_1_))
+		if (super.attackEntityAsMob(p_70652_1_))
 		{
-			if(p_70652_1_ instanceof EntityLivingBase)
+			if (p_70652_1_ instanceof EntityLivingBase)
 			{
 				byte b0 = 1;
 
-				if(this.worldObj.difficultySetting == EnumDifficulty.NORMAL)
+				if (this.worldObj.difficultySetting == EnumDifficulty.NORMAL)
 				{
 					b0 = 7;
 				}
-				else if(this.worldObj.difficultySetting == EnumDifficulty.HARD)
+				else if (this.worldObj.difficultySetting == EnumDifficulty.HARD)
 				{
 					b0 = 15;
 				}

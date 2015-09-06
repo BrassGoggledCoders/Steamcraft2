@@ -37,7 +37,7 @@ public class MapGenCustomScatteredFeature extends MapGenScatteredFeature
 			super(p_i2060_3_, p_i2060_4_);
 			BiomeGenBase biomegenbase = p_i2060_1_.getBiomeGenForCoords((p_i2060_3_ * 16) + 8, (p_i2060_4_ * 16) + 8);
 
-			if(biomegenbase == InitBiomes.biomeDepthsSW)
+			if (biomegenbase == InitBiomes.biomeDepthsSW)
 			{
 				ComponentScatteredFeaturePieces.SwampHut swamphut = new ComponentScatteredFeaturePieces.SwampHut(p_i2060_2_, p_i2060_3_ * 16,
 						p_i2060_4_ * 16);

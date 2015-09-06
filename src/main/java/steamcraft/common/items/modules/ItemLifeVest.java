@@ -61,8 +61,10 @@ public class ItemLifeVest extends BaseArmorModule
 	@Override
 	public void applyModuleEffect(World world, EntityPlayer player, ItemStack stack)
 	{
-		// player.isInWater() won't work because that checks from the feet, and I want the player to submerge up to the chest.
-		if(world.getBlock((int) Math.round(player.posX), (int) Math.round(player.posY) - 1, (int) Math.round(player.posZ)).getMaterial() == Material.water)
+		// player.isInWater() won't work because that checks from the feet, and
+		// I want the player to submerge up to the chest.
+		if (world.getBlock((int) Math.round(player.posX), (int) Math.round(player.posY) - 1, (int) Math.round(player.posZ))
+				.getMaterial() == Material.water)
 		{
 			player.motionY = 0.2F;
 		}

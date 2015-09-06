@@ -20,51 +20,51 @@ public class BlockSpiderEggRenderer implements ISimpleBlockRenderingHandler
 		GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
 		tessellator.startDrawingQuads();
 
-		for(int l = 0; l < 8; ++l)
+		for (int l = 0; l < 8; ++l)
 		{
 			byte b0 = 0;
 			byte b1 = 1;
 
-			if(l == 0)
+			if (l == 0)
 			{
 				b0 = 2;
 			}
 
-			if(l == 1)
+			if (l == 1)
 			{
 				b0 = 3;
 			}
 
-			if(l == 2)
+			if (l == 2)
 			{
 				b0 = 4;
 			}
 
-			if(l == 3)
+			if (l == 3)
 			{
 				b0 = 5;
 				b1 = 2;
 			}
 
-			if(l == 4)
+			if (l == 4)
 			{
 				b0 = 6;
 				b1 = 3;
 			}
 
-			if(l == 5)
+			if (l == 5)
 			{
 				b0 = 7;
 				b1 = 5;
 			}
 
-			if(l == 6)
+			if (l == 6)
 			{
 				b0 = 6;
 				b1 = 2;
 			}
 
-			if(l == 7)
+			if (l == 7)
 			{
 				b0 = 3;
 			}
@@ -94,57 +94,56 @@ public class BlockSpiderEggRenderer implements ISimpleBlockRenderingHandler
 	}
 
 	@Override
-	public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelID,
-			RenderBlocks renderer)
+	public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelID, RenderBlocks renderer)
 	{
 		boolean flag = false;
 		int l = 0;
 
-		for(int i1 = 0; i1 < 8; i1++)
+		for (int i1 = 0; i1 < 8; i1++)
 		{
 			byte b0 = 0;
 			byte b1 = 1;
 
-			if(i1 == 0)
+			if (i1 == 0)
 			{
 				b0 = 2;
 			}
 
-			if(i1 == 1)
+			if (i1 == 1)
 			{
 				b0 = 3;
 			}
 
-			if(i1 == 2)
+			if (i1 == 2)
 			{
 				b0 = 4;
 			}
 
-			if(i1 == 3)
+			if (i1 == 3)
 			{
 				b0 = 5;
 				b1 = 2;
 			}
 
-			if(i1 == 4)
+			if (i1 == 4)
 			{
 				b0 = 6;
 				b1 = 3;
 			}
 
-			if(i1 == 5)
+			if (i1 == 5)
 			{
 				b0 = 7;
 				b1 = 5;
 			}
 
-			if(i1 == 6)
+			if (i1 == 6)
 			{
 				b0 = 6;
 				b1 = 2;
 			}
 
-			if(i1 == 7)
+			if (i1 == 7)
 			{
 				b0 = 3;
 			}

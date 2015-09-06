@@ -67,8 +67,8 @@ public class BlockCastIronRailing extends BaseBlock
 	@SideOnly(Side.CLIENT)
 	public boolean shouldSideBeRendered(IBlockAccess p_149646_1_, int p_149646_2_, int p_149646_3_, int p_149646_4_, int p_149646_5_)
 	{
-		return (p_149646_1_.getBlock(p_149646_2_, p_149646_3_, p_149646_4_) != this) && super.shouldSideBeRendered(p_149646_1_, p_149646_2_,
-				p_149646_3_, p_149646_4_, p_149646_5_);
+		return (p_149646_1_.getBlock(p_149646_2_, p_149646_3_, p_149646_4_) != this)
+				&& super.shouldSideBeRendered(p_149646_1_, p_149646_2_, p_149646_3_, p_149646_4_, p_149646_5_);
 	}
 
 	@SuppressWarnings("all")
@@ -81,14 +81,14 @@ public class BlockCastIronRailing extends BaseBlock
 		boolean flag2 = this.canPaneConnectTo(p_149743_1_, p_149743_2_ - 1, p_149743_3_, p_149743_4_, WEST);
 		boolean flag3 = this.canPaneConnectTo(p_149743_1_, p_149743_2_ + 1, p_149743_3_, p_149743_4_, EAST);
 
-		if((!flag2 || !flag3) && (flag2 || flag3 || flag || flag1))
+		if ((!flag2 || !flag3) && (flag2 || flag3 || flag || flag1))
 		{
-			if(flag2 && !flag3)
+			if (flag2 && !flag3)
 			{
 				this.setBlockBounds(0.0F, 0.0F, 0.4375F, 0.5F, 1.0F, 0.5625F);
 				super.addCollisionBoxesToList(p_149743_1_, p_149743_2_, p_149743_3_, p_149743_4_, p_149743_5_, p_149743_6_, p_149743_7_);
 			}
-			else if(!flag2 && flag3)
+			else if (!flag2 && flag3)
 			{
 				this.setBlockBounds(0.5F, 0.0F, 0.4375F, 1.0F, 1.0F, 0.5625F);
 				super.addCollisionBoxesToList(p_149743_1_, p_149743_2_, p_149743_3_, p_149743_4_, p_149743_5_, p_149743_6_, p_149743_7_);
@@ -100,14 +100,14 @@ public class BlockCastIronRailing extends BaseBlock
 			super.addCollisionBoxesToList(p_149743_1_, p_149743_2_, p_149743_3_, p_149743_4_, p_149743_5_, p_149743_6_, p_149743_7_);
 		}
 
-		if((!flag || !flag1) && (flag2 || flag3 || flag || flag1))
+		if ((!flag || !flag1) && (flag2 || flag3 || flag || flag1))
 		{
-			if(flag && !flag1)
+			if (flag && !flag1)
 			{
 				this.setBlockBounds(0.4375F, 0.0F, 0.0F, 0.5625F, 1.0F, 0.5F);
 				super.addCollisionBoxesToList(p_149743_1_, p_149743_2_, p_149743_3_, p_149743_4_, p_149743_5_, p_149743_6_, p_149743_7_);
 			}
-			else if(!flag && flag1)
+			else if (!flag && flag1)
 			{
 				this.setBlockBounds(0.4375F, 0.0F, 0.5F, 0.5625F, 1.0F, 1.0F);
 				super.addCollisionBoxesToList(p_149743_1_, p_149743_2_, p_149743_3_, p_149743_4_, p_149743_5_, p_149743_6_, p_149743_7_);
@@ -138,11 +138,11 @@ public class BlockCastIronRailing extends BaseBlock
 		boolean flag2 = this.canPaneConnectTo(p_149719_1_, p_149719_2_ - 1, p_149719_3_, p_149719_4_, WEST);
 		boolean flag3 = this.canPaneConnectTo(p_149719_1_, p_149719_2_ + 1, p_149719_3_, p_149719_4_, EAST);
 
-		if((!flag2 || !flag3) && (flag2 || flag3 || flag || flag1))
+		if ((!flag2 || !flag3) && (flag2 || flag3 || flag || flag1))
 		{
-			if(flag2 && !flag3)
+			if (flag2 && !flag3)
 				f = 0.0F;
-			else if(!flag2 && flag3)
+			else if (!flag2 && flag3)
 				f1 = 1.0F;
 		}
 		else
@@ -151,11 +151,11 @@ public class BlockCastIronRailing extends BaseBlock
 			f1 = 1.0F;
 		}
 
-		if((!flag || !flag1) && (flag2 || flag3 || flag || flag1))
+		if ((!flag || !flag1) && (flag2 || flag3 || flag || flag1))
 		{
-			if(flag && !flag1)
+			if (flag && !flag1)
 				f2 = 0.0F;
-			else if(!flag && flag1)
+			else if (!flag && flag1)
 				f3 = 1.0F;
 		}
 		else

@@ -43,7 +43,7 @@ public class BiomeDepthsJungle extends BiomeDepthsBase
 	@Override
 	public void decorate(World world, Random random, int x, int z)
 	{
-		for(int l = 0; l < 30; ++l)
+		for (int l = 0; l < 30; ++l)
 		{
 			int i1 = x + random.nextInt(16) + 8;
 			int j1 = z + random.nextInt(16) + 8;

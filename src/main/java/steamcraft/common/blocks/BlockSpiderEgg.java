@@ -34,18 +34,19 @@ public class BlockSpiderEgg extends BaseBlock
 	}
 
 	/**
-	 * Called right before the block is destroyed by a player. Args: world, x, y, z, metaData
+	 * Called right before the block is destroyed by a player. Args: world, x,
+	 * y, z, metaData
 	 */
 	@Override
 	public void onBlockDestroyedByPlayer(World world, int p_149664_2_, int p_149664_3_, int p_149664_4_, int p_149664_5_)
 	{
-		if(!world.isRemote)
+		if (!world.isRemote)
 		{
 			int randNum = world.rand.nextInt(10);
 			EntitySpider spider;
-			if(randNum < 3)
+			if (randNum < 3)
 				spider = new EntityGhostSpider(world);
-			else if(randNum == 1)
+			else if (randNum == 1)
 				spider = new EntityGiantSpider(world);
 			else
 				spider = new EntitySpider(world);
@@ -58,8 +59,9 @@ public class BlockSpiderEgg extends BaseBlock
 	}
 
 	/**
-	 * Is this block (a) opaque and (b) a full 1m cube? This determines whether or not to render the shared face of two adjacent blocks and also whether the
-	 * player can attach torches, redstone wire, etc to this block.
+	 * Is this block (a) opaque and (b) a full 1m cube? This determines whether
+	 * or not to render the shared face of two adjacent blocks and also whether
+	 * the player can attach torches, redstone wire, etc to this block.
 	 */
 	@Override
 	public boolean isOpaqueCube()
@@ -68,7 +70,8 @@ public class BlockSpiderEgg extends BaseBlock
 	}
 
 	/**
-	 * If this block doesn't render as an ordinary block it will return False (examples: signs, buttons, stairs, etc)
+	 * If this block doesn't render as an ordinary block it will return False
+	 * (examples: signs, buttons, stairs, etc)
 	 */
 	@Override
 	public boolean renderAsNormalBlock()
@@ -77,7 +80,9 @@ public class BlockSpiderEgg extends BaseBlock
 	}
 
 	/**
-	 * Returns true if the given side of this block type should be rendered, if the adjacent block is at the given coordinates. Args: blockAccess, x, y, z, side
+	 * Returns true if the given side of this block type should be rendered, if
+	 * the adjacent block is at the given coordinates. Args: blockAccess, x, y,
+	 * z, side
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)

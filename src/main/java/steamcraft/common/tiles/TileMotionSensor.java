@@ -26,16 +26,16 @@ public class TileMotionSensor extends TileEntity
 	@Override
 	public void updateEntity()
 	{
-		AxisAlignedBB axisalignedbb = AxisAlignedBB.getBoundingBox(this.xCoord, this.yCoord, this.zCoord, this.xCoord + 1, this.yCoord + 1, this.zCoord + 1)
-				.expand(5, 5, 5);
+		AxisAlignedBB axisalignedbb = AxisAlignedBB
+				.getBoundingBox(this.xCoord, this.yCoord, this.zCoord, this.xCoord + 1, this.yCoord + 1, this.zCoord + 1).expand(5, 5, 5);
 		List list = this.worldObj.getEntitiesWithinAABB(EntityLiving.class, axisalignedbb);
 		Iterator iterator = list.iterator();
 		EntityLiving living;
 
-		while(iterator.hasNext())
+		while (iterator.hasNext())
 		{
 			living = (EntityLiving) iterator.next();
-			if((living.motionX > 0.5) || (living.motionY > 0.5) || (living.motionZ > 0.5))
+			if ((living.motionX > 0.5) || (living.motionY > 0.5) || (living.motionZ > 0.5))
 			{
 				this.worldObj.setBlock(this.xCoord, this.yCoord, this.zCoord, InitBlocks.blockMotionSensorOn);
 			}

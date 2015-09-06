@@ -40,7 +40,7 @@ public class BlockCopperPipeRenderer implements ISimpleBlockRenderingHandler
 		TileCopperPipe te = new TileCopperPipe();
 
 		System.arraycopy(ForgeDirection.VALID_DIRECTIONS, 0, te.connections, 0, ForgeDirection.VALID_DIRECTIONS.length);
-		
+
 		te.blockMetadata = metadata;
 
 		TileEntityRendererDispatcher.instance.renderTileEntityAt(te, 0.0D, 0.0D, 0.0D, 0.0F);
@@ -48,8 +48,7 @@ public class BlockCopperPipeRenderer implements ISimpleBlockRenderingHandler
 	}
 
 	@Override
-	public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelID,
-			RenderBlocks renderer)
+	public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelID, RenderBlocks renderer)
 	{
 		return true;
 	}

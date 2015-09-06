@@ -39,7 +39,7 @@ public class ItemCoin extends BaseItemWithMetadata
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(Item item, CreativeTabs tab, List list)
 	{
-		for(int var4 = 0; var4 < 13; ++var4)
+		for (int var4 = 0; var4 < 13; ++var4)
 			list.add(new ItemStack(InitItems.itemCoin, 1, var4));
 	}
 

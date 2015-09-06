@@ -19,8 +19,9 @@ import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
-import steamcraft.common.lib.DamageSourceHandler;
+
 import boilerplate.common.baseclasses.BaseThrowableEntity;
+import steamcraft.common.lib.DamageSourceHandler;
 
 public class EntitySplashLightningBottle extends BaseThrowableEntity
 {
@@ -45,31 +46,31 @@ public class EntitySplashLightningBottle extends BaseThrowableEntity
 	@Override
 	protected void onImpact(MovingObjectPosition mop)
 	{
-		if(mop.typeOfHit == MovingObjectPosition.MovingObjectType.BLOCK)
+		if (mop.typeOfHit == MovingObjectPosition.MovingObjectType.BLOCK)
 		{
-			if(!this.worldObj.isRemote)
+			if (!this.worldObj.isRemote)
 			{
 				AxisAlignedBB axisalignedbb = this.boundingBox.expand(4.0D, 2.0D, 4.0D);
 				List list1 = this.worldObj.getEntitiesWithinAABB(EntityLivingBase.class, axisalignedbb);
 
-				if((list1 != null) && !list1.isEmpty())
+				if ((list1 != null) && !list1.isEmpty())
 				{
-					for(Object obj : list1)
+					for (Object obj : list1)
 					{
 						EntityLivingBase entitylivingbase = (EntityLivingBase) obj;
 						double d0 = this.getDistanceSqToEntity(entitylivingbase);
 
-						if(d0 < 16.0D)
+						if (d0 < 16.0D)
 						{
 							double d1 = 1.0D - (Math.sqrt(d0) / 4.0D);
 
-							if(entitylivingbase == mop.entityHit)
+							if (entitylivingbase == mop.entityHit)
 							{
 								d1 = 1.0D;
 							}
 							entitylivingbase.attackEntityFrom(DamageSourceHandler.electrocution, 4);
 
-							if(entitylivingbase instanceof EntityCreeper)
+							if (entitylivingbase instanceof EntityCreeper)
 							{
 								EntityCreeper creeper = (EntityCreeper) entitylivingbase;
 								creeper.getDataWatcher().updateObject(17, Byte.valueOf((byte) (1)));

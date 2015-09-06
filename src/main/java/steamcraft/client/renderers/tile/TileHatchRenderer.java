@@ -44,8 +44,8 @@ public class TileHatchRenderer extends TileEntitySpecialRenderer
 		GL11.glTranslatef((float) dx + 0.5F, (float) dy, (float) dz + 0.5F);
 		ClientHelper.textureManager().bindTexture(hatch);
 		GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
-		// TODO
-		int meta = te.getWorldObj().getBlockMetadata(te.xCoord, te.yCoord, te.zCoord);
+
+		int meta = te.blockMetadata;
 		if (BlockHatch.isOpen(meta))
 		{
 			GL11.glRotatef(90F, 1.0F, 0.0F, 0.0F);

@@ -16,8 +16,10 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.MathHelper;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+
 import steamcraft.common.entities.living.EntityVampireBat;
 
 @SideOnly(Side.CLIENT)
@@ -70,7 +72,9 @@ public class ModelVampireBat extends ModelBase
 	}
 
 	/**
-	 * not actually sure this is size, is not used as of now, but the model would be recreated if the value changed and it seems a good match for a bats size
+	 * not actually sure this is size, is not used as of now, but the model
+	 * would be recreated if the value changed and it seems a good match for a
+	 * bats size
 	 */
 	public int getBatSize()
 	{
@@ -87,7 +91,7 @@ public class ModelVampireBat extends ModelBase
 		EntityVampireBat EntityVampireBat = (EntityVampireBat) p_78088_1_;
 		float f6;
 
-		if(EntityVampireBat.getIsBatHanging())
+		if (EntityVampireBat.getIsBatHanging())
 		{
 			f6 = (180F / (float) Math.PI);
 			this.batHead.rotateAngleX = p_78088_6_ / (180F / (float) Math.PI);

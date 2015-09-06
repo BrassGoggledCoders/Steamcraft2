@@ -60,38 +60,38 @@ public class ItemClimbingSpikes extends BaseArmorModule
 	@Override
 	public void applyModuleEffect(World world, EntityPlayer player, ItemStack stack)
 	{
-		if(player.isCollidedHorizontally)
+		if (player.isCollidedHorizontally)
 		{
 			player.motionY = 0.2D;
 
 			float f5 = 0.15F;
 
-			if(player.motionX < (-f5))
+			if (player.motionX < (-f5))
 			{
 				player.motionX = (-f5);
 			}
 
-			if(player.motionX > f5)
+			if (player.motionX > f5)
 			{
 				player.motionX = f5;
 			}
 
-			if(player.motionZ < (-f5))
+			if (player.motionZ < (-f5))
 			{
 				player.motionZ = (-f5);
 			}
 
-			if(player.motionZ > f5)
+			if (player.motionZ > f5)
 			{
 				player.motionZ = f5;
 			}
 
-			if(player.motionY < -0.15D)
+			if (player.motionY < -0.15D)
 			{
 				player.motionY = -0.15D;
 			}
 
-			if(player.isSneaking() && (player.motionY < 0.0D))
+			if (player.isSneaking() && (player.motionY < 0.0D))
 			{
 				player.motionY = 0.0D;
 			}

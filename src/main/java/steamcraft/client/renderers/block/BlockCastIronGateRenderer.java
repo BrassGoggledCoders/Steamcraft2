@@ -25,23 +25,23 @@ public class BlockCastIronGateRenderer implements ISimpleBlockRenderingHandler
 		renderer.setRenderBoundsFromBlock(block);
 		int k;
 
-		for(k = 0; k < 3; ++k)
+		for (k = 0; k < 3; ++k)
 		{
 			i = 0.0625F;
 
-			if(k == 0)
+			if (k == 0)
 			{
 				renderer.setRenderBounds(0.5F - i, 0.30000001192092896D, 0.0D, 0.5F + i, 1.0D, i * 2.0F);
 			}
 
-			if(k == 1)
+			if (k == 1)
 			{
 				renderer.setRenderBounds(0.5F - i, 0.30000001192092896D, 1.0F - (i * 2.0F), 0.5F + i, 1.0D, 1.0D);
 			}
 
 			i = 0.0625F;
 
-			if(k == 2)
+			if (k == 2)
 			{
 				renderer.setRenderBounds(0.5F - i, 0.5D, 0.0D, 0.5F + i, 1.0F - i, 1.0D);
 			}
@@ -76,8 +76,7 @@ public class BlockCastIronGateRenderer implements ISimpleBlockRenderingHandler
 	}
 
 	@Override
-	public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelID,
-			RenderBlocks renderer)
+	public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelID, RenderBlocks renderer)
 	{
 		boolean flag = true;
 		int l = renderer.blockAccess.getBlockMetadata(x, y, z);
@@ -90,9 +89,9 @@ public class BlockCastIronGateRenderer implements ISimpleBlockRenderingHandler
 		float f4 = 0.3125F;
 		float f5 = 1.0F;
 
-		if((((i1 == 2) || (i1 == 0)) && (renderer.blockAccess.getBlock(x - 1, y, z) == Blocks.cobblestone_wall)
-				&& (renderer.blockAccess.getBlock(x - 1, y, z) == Blocks.cobblestone_wall)) || (((i1 == 3) || (i1 == 1))
-						&& (renderer.blockAccess.getBlock(x, y, z - 1) == Blocks.cobblestone_wall)
+		if ((((i1 == 2) || (i1 == 0)) && (renderer.blockAccess.getBlock(x - 1, y, z) == Blocks.cobblestone_wall)
+				&& (renderer.blockAccess.getBlock(x - 1, y, z) == Blocks.cobblestone_wall))
+				|| (((i1 == 3) || (i1 == 1)) && (renderer.blockAccess.getBlock(x, y, z - 1) == Blocks.cobblestone_wall)
 						&& (renderer.blockAccess.getBlock(x, y, z + 1) == Blocks.cobblestone_wall)))
 		{
 			f -= 0.1875F;
@@ -109,7 +108,7 @@ public class BlockCastIronGateRenderer implements ISimpleBlockRenderingHandler
 		float f8;
 		float f9;
 
-		if((i1 != 3) && (i1 != 1))
+		if ((i1 != 3) && (i1 != 1))
 		{
 			f6 = 0.0F;
 			f7 = 0.125F;
@@ -138,14 +137,14 @@ public class BlockCastIronGateRenderer implements ISimpleBlockRenderingHandler
 			renderer.uvRotateTop = 0;
 		}
 
-		if(flag1)
+		if (flag1)
 		{
-			if((i1 == 2) || (i1 == 0))
+			if ((i1 == 2) || (i1 == 0))
 			{
 				renderer.uvRotateTop = 1;
 			}
 
-			if(i1 == 3)
+			if (i1 == 3)
 			{
 				f6 = 0.0F;
 				f7 = 0.125F;
@@ -164,7 +163,7 @@ public class BlockCastIronGateRenderer implements ISimpleBlockRenderingHandler
 				renderer.setRenderBounds(0.5625D, f2, 0.875D, 0.8125D, f3, 1.0D);
 				renderer.renderStandardBlock(block, x, y, z);
 			}
-			else if(i1 == 1)
+			else if (i1 == 1)
 			{
 				f6 = 0.0F;
 				f7 = 0.125F;
@@ -183,7 +182,7 @@ public class BlockCastIronGateRenderer implements ISimpleBlockRenderingHandler
 				renderer.setRenderBounds(0.1875D, f2, 0.875D, 0.4375D, f3, 1.0D);
 				renderer.renderStandardBlock(block, x, y, z);
 			}
-			else if(i1 == 0)
+			else if (i1 == 0)
 			{
 				f6 = 0.0F;
 				f7 = 0.125F;
@@ -202,7 +201,7 @@ public class BlockCastIronGateRenderer implements ISimpleBlockRenderingHandler
 				renderer.setRenderBounds(0.875D, f2, 0.5625D, 1.0D, f3, 0.8125D);
 				renderer.renderStandardBlock(block, x, y, z);
 			}
-			else if(i1 == 2)
+			else if (i1 == 2)
 			{
 				f6 = 0.0F;
 				f7 = 0.125F;
@@ -222,7 +221,7 @@ public class BlockCastIronGateRenderer implements ISimpleBlockRenderingHandler
 				renderer.renderStandardBlock(block, x, y, z);
 			}
 		}
-		else if((i1 != 3) && (i1 != 1))
+		else if ((i1 != 3) && (i1 != 1))
 		{
 			f6 = 0.375F;
 			f7 = 0.5F;

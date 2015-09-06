@@ -33,7 +33,7 @@ public class InventoryPocket implements IInventory
 	public InventoryPocket(ItemStack stack)
 	{
 		this.invItem = stack;
-		if(!stack.hasTagCompound())
+		if (!stack.hasTagCompound())
 		{
 			stack.setTagCompound(new NBTTagCompound());
 		}
@@ -56,9 +56,9 @@ public class InventoryPocket implements IInventory
 	public ItemStack decrStackSize(int slot, int amount)
 	{
 		ItemStack stack = this.getStackInSlot(slot);
-		if(stack != null)
+		if (stack != null)
 		{
-			if(stack.stackSize > amount)
+			if (stack.stackSize > amount)
 			{
 				stack = stack.splitStack(amount);
 				this.markDirty();
@@ -75,7 +75,7 @@ public class InventoryPocket implements IInventory
 	public ItemStack getStackInSlotOnClosing(int slot)
 	{
 		ItemStack stack = this.getStackInSlot(slot);
-		if(stack != null)
+		if (stack != null)
 		{
 			this.setInventorySlotContents(slot, null);
 		}
@@ -87,7 +87,7 @@ public class InventoryPocket implements IInventory
 	{
 		this.inventory[slot] = itemstack;
 
-		if((itemstack != null) && (itemstack.stackSize > this.getInventoryStackLimit()))
+		if ((itemstack != null) && (itemstack.stackSize > this.getInventoryStackLimit()))
 		{
 			itemstack.stackSize = this.getInventoryStackLimit();
 		}
@@ -116,9 +116,9 @@ public class InventoryPocket implements IInventory
 	@Override
 	public void markDirty()
 	{
-		for(int i = 0; i < this.getSizeInventory(); ++i)
+		for (int i = 0; i < this.getSizeInventory(); ++i)
 		{
-			if((this.getStackInSlot(i) != null) && (this.getStackInSlot(i).stackSize == 0))
+			if ((this.getStackInSlot(i) != null) && (this.getStackInSlot(i).stackSize == 0))
 				this.inventory[i] = null;
 		}
 		this.writeToNBT(this.invItem.getTagCompound());
@@ -141,7 +141,8 @@ public class InventoryPocket implements IInventory
 	}
 
 	/**
-	 * This method doesn't seem to do what it claims to do, as items can still be left-clicked and placed in the inventory even when this returns false
+	 * This method doesn't seem to do what it claims to do, as items can still
+	 * be left-clicked and placed in the inventory even when this returns false
 	 */
 	@Override
 	public boolean isItemValidForSlot(int slot, ItemStack itemstack)
@@ -156,12 +157,12 @@ public class InventoryPocket implements IInventory
 	{
 		NBTTagList items = tagcompound.getTagList("ItemInventory", Constants.NBT.TAG_COMPOUND);
 
-		for(int i = 0; i < items.tagCount(); ++i)
+		for (int i = 0; i < items.tagCount(); ++i)
 		{
 			NBTTagCompound item = items.getCompoundTagAt(i);
 			byte slot = item.getByte("Slot");
 
-			if((slot >= 0) && (slot < this.getSizeInventory()))
+			if ((slot >= 0) && (slot < this.getSizeInventory()))
 			{
 				this.inventory[slot] = ItemStack.loadItemStackFromNBT(item);
 			}
@@ -176,22 +177,25 @@ public class InventoryPocket implements IInventory
 		// Create a new NBT Tag List to store itemstacks as NBT Tags
 		NBTTagList items = new NBTTagList();
 
-		for(int i = 0; i < this.getSizeInventory(); ++i)
+		for (int i = 0; i < this.getSizeInventory(); ++i)
 		{
 			// Only write stacks that contain items
-			if(this.getStackInSlot(i) != null)
+			if (this.getStackInSlot(i) != null)
 			{
-				// Make a new NBT Tag Compound to write the itemstack and slot index to
+				// Make a new NBT Tag Compound to write the itemstack and slot
+				// index to
 				NBTTagCompound item = new NBTTagCompound();
 				item.setInteger("Slot", i);
-				// Writes the itemstack in slot(i) to the Tag Compound we just made
+				// Writes the itemstack in slot(i) to the Tag Compound we just
+				// made
 				this.getStackInSlot(i).writeToNBT(item);
 
 				// add the tag compound to our tag list
 				items.appendTag(item);
 			}
 		}
-		// Add the TagList to the ItemStack's Tag Compound with the name "ItemInventory"
+		// Add the TagList to the ItemStack's Tag Compound with the name
+		// "ItemInventory"
 		tagcompound.setTag("ItemInventory", items);
 	}
 }

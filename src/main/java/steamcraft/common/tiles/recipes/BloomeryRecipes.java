@@ -19,6 +19,7 @@ import java.util.Map.Entry;
 
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+
 import steamcraft.common.init.InitItems;
 
 /**
@@ -56,11 +57,11 @@ public class BloomeryRecipes
 
 		do
 		{
-			if(!iterator.hasNext())
+			if (!iterator.hasNext())
 				return null;
 
 			entry = iterator.next();
-		}while(!this.checkItemsAgainstRecipes(input, (ItemStack[]) entry.getKey()));
+		} while (!this.checkItemsAgainstRecipes(input, (ItemStack[]) entry.getKey()));
 
 		return (ItemStack) entry.getValue();
 	}
@@ -69,11 +70,11 @@ public class BloomeryRecipes
 	public ItemStack[] getSmeltingInputs(ItemStack output)
 	{
 		Entry<ItemStack[], ItemStack> entry;
-		for(Object obj : this.recipeList.entrySet())
+		for (Object obj : this.recipeList.entrySet())
 		{
 			entry = (Entry<ItemStack[], ItemStack>) obj;
 
-			if((entry.getValue().getItem() == output.getItem()) && (entry.getValue().getItemDamage() == output.getItemDamage()))
+			if ((entry.getValue().getItem() == output.getItem()) && (entry.getValue().getItemDamage() == output.getItemDamage()))
 				return entry.getKey();
 		}
 
@@ -90,16 +91,17 @@ public class BloomeryRecipes
 	}
 
 	/**
-	 * Not so good function but it does the job. Don't tinker with this.Don't use it!
+	 * Not so good function but it does the job. Don't tinker with this.Don't
+	 * use it!
 	 */
 	public byte[] getStackSizeForInputs(ItemStack input1, ItemStack input2, ItemStack output)
 	{
 		ItemStack[] inputs = this.getSmeltingInputs(output);
 
-		if(input1 != null)
+		if (input1 != null)
 		{
-			if(input2 != null)
-				if(this.checkItemsAgainstRecipes(new ItemStack[] { input1, input2 }, inputs))
+			if (input2 != null)
+				if (this.checkItemsAgainstRecipes(new ItemStack[] { input1, input2 }, inputs))
 					return new byte[] { (byte) inputs[0].stackSize, (byte) inputs[1].stackSize };
 				else
 					return new byte[] { (byte) inputs[1].stackSize, (byte) inputs[0].stackSize };

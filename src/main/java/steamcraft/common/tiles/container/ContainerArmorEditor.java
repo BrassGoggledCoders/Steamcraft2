@@ -20,8 +20,8 @@ import net.minecraft.item.ItemStack;
 import steamcraft.api.item.IModuleContainer;
 import steamcraft.common.tiles.TileArmorEditor;
 import steamcraft.common.tiles.container.slot.SlotArmor;
-import steamcraft.common.tiles.container.slot.SlotModuleContainer;
 import steamcraft.common.tiles.container.slot.SlotModule;
+import steamcraft.common.tiles.container.slot.SlotModuleContainer;
 
 /**
  * @author warlordjones

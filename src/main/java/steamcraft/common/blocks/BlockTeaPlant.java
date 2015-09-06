@@ -150,22 +150,22 @@ public class BlockTeaPlant extends BlockCrops implements IPlantable
 	{
 		ArrayList<ItemStack> ret = new ArrayList();
 
-		int count = quantityDropped(metadata, fortune, world.rand);
+		int count = this.quantityDropped(metadata, fortune, world.rand);
 		for (int i = 0; i < count; i++)
 		{
-			Item item = getItemDropped(metadata, world.rand, fortune);
+			Item item = this.getItemDropped(metadata, world.rand, fortune);
 			if (item != null)
 			{
-				ret.add(new ItemStack(item, 1, damageDropped(metadata)));
+				ret.add(new ItemStack(item, 1, this.damageDropped(metadata)));
 			}
 		}
 
 		if (metadata != 0)
 		{
-			ret.add(new ItemStack(this.func_149866_i(), 1, damageDropped(metadata)));
+			ret.add(new ItemStack(this.func_149866_i(), 1, this.damageDropped(metadata)));
 			for (int i = 0; i < count; ++i)
 			{
-				ret.add(new ItemStack(this.func_149866_i(), world.rand.nextInt(1), damageDropped(metadata)));
+				ret.add(new ItemStack(this.func_149866_i(), world.rand.nextInt(1), this.damageDropped(metadata)));
 			}
 		}
 

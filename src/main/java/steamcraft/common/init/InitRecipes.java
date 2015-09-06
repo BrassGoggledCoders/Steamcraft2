@@ -20,7 +20,6 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
-import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 import net.minecraftforge.oredict.OreDictionary;
@@ -53,7 +52,6 @@ public class InitRecipes
 		initBlockRecipes();
 		initModuleRecipes();
 		initOtherRecipes();
-		initCompatRecipes();
 	}
 
 	private static void initGunRecipes()
@@ -159,27 +157,27 @@ public class InitRecipes
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(InitItems.itemVanillaPowder, ConfigBalance.numberOfDustsFromMetal, 1),
 				"plateGold", new ItemStack(InitItems.itemGrindstone, 1, OreDictionary.WILDCARD_VALUE)));
 		String[] oredictMetals = ConfigGeneral.oredictMetals;
-		for (int i = 0; i < oredictMetals.length; i++)
+		for (String oredictMetal : oredictMetals)
 		{
-			if (OreDictionary.doesOreNameExist("dust" + oredictMetals[i]))
+			if (OreDictionary.doesOreNameExist("dust" + oredictMetal))
 			{
 				ItemStack stack = null;
-				ArrayList<ItemStack> list = OreDictionary.getOres("dust" + oredictMetals[i]);
+				ArrayList<ItemStack> list = OreDictionary.getOres("dust" + oredictMetal);
 				if (list.size() > 0)
 					stack = list.get(0);
-				if (stack != null && stack.getItem() != null)
+				if ((stack != null) && (stack.getItem() != null))
 				{
-					if (OreDictionary.doesOreNameExist("ingot" + oredictMetals[i]))
+					if (OreDictionary.doesOreNameExist("ingot" + oredictMetal))
 					{
 						GameRegistry.addRecipe(
 								new ShapelessOreRecipe(new ItemStack(stack.getItem(), ConfigBalance.numberOfDustsFromMetal, stack.getItemDamage()),
-										"ingot" + oredictMetals[i], new ItemStack(InitItems.itemGrindstone, 1, OreDictionary.WILDCARD_VALUE)));
+										"ingot" + oredictMetal, new ItemStack(InitItems.itemGrindstone, 1, OreDictionary.WILDCARD_VALUE)));
 					}
-					if (OreDictionary.doesOreNameExist("plate" + oredictMetals[i]))
+					if (OreDictionary.doesOreNameExist("plate" + oredictMetal))
 					{
 						GameRegistry.addRecipe(
 								new ShapelessOreRecipe(new ItemStack(stack.getItem(), ConfigBalance.numberOfDustsFromMetal, stack.getItemDamage()),
-										"plate" + oredictMetals[i], new ItemStack(InitItems.itemGrindstone, 1, OreDictionary.WILDCARD_VALUE)));
+										"plate" + oredictMetal, new ItemStack(InitItems.itemGrindstone, 1, OreDictionary.WILDCARD_VALUE)));
 					}
 				}
 			}
@@ -221,6 +219,9 @@ public class InitRecipes
 		// Brass
 		RecipeUtils.addArmorSet(new ItemStack(InitItems.itemSheet, 1, 4), new ItemStack[] { new ItemStack(InitItems.helmetBrass),
 				new ItemStack(InitItems.chestplateBrass), new ItemStack(InitItems.legsBrass), new ItemStack(InitItems.bootsBrass) });
+		// Whalebone
+		RecipeUtils.addArmorSet(new ItemStack(InitItems.itemWhalebone), new ItemStack[] { new ItemStack(InitItems.helmetWhalebone),
+				new ItemStack(InitItems.chestplateWhalebone), new ItemStack(InitItems.legsWhalebone), new ItemStack(InitItems.bootsWhalebone) });
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemClockworkWings), "BCB", "WCW", "W W", 'B',
 				new ItemStack(InitItems.itemIngot, 1, 4), 'C', "partClockworkMechanism", 'W', Blocks.wool));
@@ -524,17 +525,8 @@ public class InitRecipes
 		GameRegistry.addSmelting(new ItemStack(Items.slime_ball), new ItemStack(InitItems.itemSlimeRubber), 0);
 
 		GameRegistry.addSmelting(InitBlocks.blockBrassLog, new ItemStack(InitItems.itemIngot, 2, 4), 0);
-	}
 
-	private static void initCompatRecipes()
-	{
-		// Thaumcraft
-		if (Loader.isModLoaded("Thaumcraft"))
-		{
-			GameRegistry.addSmelting(new ItemStack(InitItems.itemSteamcraftCluster, 1, 0), new ItemStack(InitItems.itemIngot, 1, 0), 0);
-			GameRegistry.addSmelting(new ItemStack(InitItems.itemSteamcraftCluster, 1, 1), new ItemStack(InitItems.itemIngot, 1, 3), 0);
-		}
-
+		GameRegistry.addSmelting(new ItemStack(InitItems.itemCookedWhaleMeat), new ItemStack(InitItems.itemWhaleMeat), 1F);
 	}
 
 }

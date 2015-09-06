@@ -88,10 +88,10 @@ public class GuiTimeBomb extends BaseContainerGui
 	@Override
 	public void keyTyped(char c, int pos)
 	{
-		if(!Character.isDigit(c))
+		if (!Character.isDigit(c))
 			this.text.setText("");
 
-		if(this.text.textboxKeyTyped(c, pos))
+		if (this.text.textboxKeyTyped(c, pos))
 			this.updateTime();
 
 		super.keyTyped(c, pos);
@@ -101,11 +101,11 @@ public class GuiTimeBomb extends BaseContainerGui
 	{
 		String s = "0000";
 
-		if(this.text != null)
+		if (this.text != null)
 			s = this.text.getText();
-		if(s.length() == 4)
-			InitPackets.network.sendToServer(new TimeBombPacket(Integer.parseInt(s), this.bomb.xCoord, this.bomb.yCoord, this.bomb.zCoord,
-					this.player.dimension));
+		if (s.length() == 4)
+			InitPackets.network.sendToServer(
+					new TimeBombPacket(Integer.parseInt(s), this.bomb.xCoord, this.bomb.yCoord, this.bomb.zCoord, this.player.dimension));
 	}
 
 	/**

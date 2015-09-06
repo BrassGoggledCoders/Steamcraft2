@@ -26,14 +26,13 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
-import cofh.api.block.IDismantleable;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+import boilerplate.common.baseclasses.BaseTileWithInventory;
+import cofh.api.block.IDismantleable;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.ModInfo;
-import boilerplate.common.baseclasses.BaseTileWithInventory;
 
 /**
  * @author decebaldecebal
@@ -60,37 +59,37 @@ public abstract class BaseContainerBlock extends BlockContainer implements IDism
 	@Override
 	public void breakBlock(World par1World, int par2, int par3, int par4, Block block, int par6)
 	{
-		if(!keepInventory)
+		if (!keepInventory)
 		{
 			TileEntity tile = par1World.getTileEntity(par2, par3, par4);
 
-			if((tile != null) && (tile instanceof BaseTileWithInventory))
+			if ((tile != null) && (tile instanceof BaseTileWithInventory))
 			{
 				BaseTileWithInventory invTile = (BaseTileWithInventory) tile;
 
-				for(int var8 = 0; var8 < invTile.getSizeInventory(); ++var8)
+				for (int var8 = 0; var8 < invTile.getSizeInventory(); ++var8)
 				{
 					ItemStack var9 = invTile.getStackInSlot(var8);
 
-					if(var9 != null)
+					if (var9 != null)
 					{
 						Random random = par1World.rand;
 						float var10 = (random.nextFloat() * 0.8F) + 0.1F;
 						float var11 = (random.nextFloat() * 0.8F) + 0.1F;
 						float var12 = (random.nextFloat() * 0.8F) + 0.1F;
 
-						while(var9.stackSize > 0)
+						while (var9.stackSize > 0)
 						{
 							int var13 = random.nextInt(21) + 10;
 
-							if(var13 > var9.stackSize)
+							if (var13 > var9.stackSize)
 								var13 = var9.stackSize;
 
 							var9.stackSize -= var13;
-							EntityItem var14 = new EntityItem(par1World, par2 + var10, par3 + var11, par4 + var12, new ItemStack(var9.getItem(),
-									var13, var9.getItemDamage()));
+							EntityItem var14 = new EntityItem(par1World, par2 + var10, par3 + var11, par4 + var12,
+									new ItemStack(var9.getItem(), var13, var9.getItemDamage()));
 
-							if(var9.hasTagCompound())
+							if (var9.hasTagCompound())
 								var14.getEntityItem().setTagCompound((NBTTagCompound) var9.getTagCompound().copy());
 
 							float var15 = 0.05F;

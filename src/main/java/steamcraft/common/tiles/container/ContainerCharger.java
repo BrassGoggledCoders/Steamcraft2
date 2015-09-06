@@ -21,10 +21,10 @@ import net.minecraft.item.ItemStack;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-import steamcraft.common.tiles.container.slot.SlotCharger;
-import steamcraft.common.tiles.energy.TileCharger;
 import boilerplate.api.IEnergyItem;
 import boilerplate.common.baseclasses.blocks.BaseContainer;
+import steamcraft.common.tiles.container.slot.SlotCharger;
+import steamcraft.common.tiles.energy.TileCharger;
 
 /**
  * @author decebaldecebal
@@ -45,11 +45,11 @@ public class ContainerCharger extends BaseContainer
 
 		int var3;
 
-		for(var3 = 0; var3 < 3; ++var3)
-			for(int var4 = 0; var4 < 9; ++var4)
+		for (var3 = 0; var3 < 3; ++var3)
+			for (int var4 = 0; var4 < 9; ++var4)
 				this.addSlotToContainer(new Slot(player, var4 + (var3 * 9) + 9, 8 + (var4 * 18), 84 + (var3 * 18)));
 
-		for(var3 = 0; var3 < 9; ++var3)
+		for (var3 = 0; var3 < 9; ++var3)
 			this.addSlotToContainer(new Slot(player, var3, 8 + (var3 * 18), 142));
 	}
 
@@ -66,11 +66,11 @@ public class ContainerCharger extends BaseContainer
 	{
 		super.detectAndSendChanges();
 
-		for(Object obj : this.crafters)
+		for (Object obj : this.crafters)
 		{
 			ICrafting var2 = (ICrafting) obj;
 
-			if(this.lastBufferEnergy != this.tileent.buffer.getEnergyStored())
+			if (this.lastBufferEnergy != this.tileent.buffer.getEnergyStored())
 				var2.sendProgressBarUpdate(this, 1, this.tileent.buffer.getEnergyStored());
 		}
 
@@ -81,7 +81,7 @@ public class ContainerCharger extends BaseContainer
 	@SideOnly(Side.CLIENT)
 	public void updateProgressBar(int par1, int par2)
 	{
-		if(par1 == 1)
+		if (par1 == 1)
 			this.tileent.buffer.setEnergyStored(par2);
 	}
 
@@ -97,35 +97,35 @@ public class ContainerCharger extends BaseContainer
 		ItemStack var3 = null;
 		Slot var4 = (Slot) this.inventorySlots.get(par2);
 
-		if((var4 != null) && var4.getHasStack())
+		if ((var4 != null) && var4.getHasStack())
 		{
 			ItemStack var5 = var4.getStack();
 			var3 = var5.copy();
 
-			if(par2 > 0)
+			if (par2 > 0)
 			{
-				if(var5.getItem() instanceof IEnergyItem)
+				if (var5.getItem() instanceof IEnergyItem)
 				{
-					if(!this.mergeItemStack(var5, 0, 1, false))
-						if((par2 >= 1) && (par2 < 28) && !this.mergeItemStack(var5, 28, 37, false))
+					if (!this.mergeItemStack(var5, 0, 1, false))
+						if ((par2 >= 1) && (par2 < 28) && !this.mergeItemStack(var5, 28, 37, false))
 							return null;
-						else if((par2 >= 28) && (par2 < 37) && !this.mergeItemStack(var5, 1, 28, false))
+						else if ((par2 >= 28) && (par2 < 37) && !this.mergeItemStack(var5, 1, 28, false))
 							return null;
 				}
-				else if((par2 >= 1) && (par2 < 28) && !this.mergeItemStack(var5, 28, 37, false))
+				else if ((par2 >= 1) && (par2 < 28) && !this.mergeItemStack(var5, 28, 37, false))
 					return null;
-				else if((par2 >= 28) && (par2 < 37) && !this.mergeItemStack(var5, 1, 28, false))
+				else if ((par2 >= 28) && (par2 < 37) && !this.mergeItemStack(var5, 1, 28, false))
 					return null;
 			}
-			else if(!this.mergeItemStack(var5, 1, 37, false))
+			else if (!this.mergeItemStack(var5, 1, 37, false))
 				return null;
 
-			if(var5.stackSize == 0)
+			if (var5.stackSize == 0)
 				var4.putStack(null);
 			else
 				var4.onSlotChanged();
 
-			if(var5.stackSize == var3.stackSize)
+			if (var5.stackSize == var3.stackSize)
 				return null;
 
 			var4.onPickupFromSlot(par1EntityPlayer, var5);

@@ -20,21 +20,22 @@ public class BlockFissurePortal extends BaseBlock
 	}
 
 	/**
-	 * Triggered whenever an entity collides with this block (enters into the block). Args: world, x, y, z, entity
+	 * Triggered whenever an entity collides with this block (enters into the
+	 * block). Args: world, x, y, z, entity
 	 */
 	@Override
 	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)
 	{
-		if(world.getWorldInfo().getTerrainType() == WorldType.FLAT)
+		if (world.getWorldInfo().getTerrainType() == WorldType.FLAT)
 			return;
-		if((entity.ridingEntity == null) && (entity.riddenByEntity == null) && ((entity instanceof EntityPlayerMP)))
+		if ((entity.ridingEntity == null) && (entity.riddenByEntity == null) && ((entity instanceof EntityPlayerMP)))
 		{
 			EntityPlayerMP thePlayer = (EntityPlayerMP) entity;
-			if(thePlayer.timeUntilPortal > 0)
+			if (thePlayer.timeUntilPortal > 0)
 			{
 				thePlayer.timeUntilPortal = 10;
 			}
-			else if(thePlayer.dimension != ConfigGeneral.deepsDimensionID)
+			else if (thePlayer.dimension != ConfigGeneral.deepsDimensionID)
 			{
 				thePlayer.timeUntilPortal = 10;
 				thePlayer.mcServer.getConfigurationManager().transferPlayerToDimension(thePlayer, ConfigGeneral.deepsDimensionID,
@@ -50,7 +51,8 @@ public class BlockFissurePortal extends BaseBlock
 	}
 
 	/**
-	 * Returns a bounding box from the pool of bounding boxes (this means this box can change after the pool has been cleared to be reused)
+	 * Returns a bounding box from the pool of bounding boxes (this means this
+	 * box can change after the pool has been cleared to be reused)
 	 */
 	@Override
 	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z)

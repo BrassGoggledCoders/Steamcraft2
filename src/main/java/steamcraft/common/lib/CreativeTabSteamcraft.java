@@ -17,8 +17,8 @@ import net.minecraft.item.Item;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-import steamcraft.common.init.InitItems;
 import boilerplate.common.baseclasses.BaseCreativeTab;
+import steamcraft.common.init.InitItems;
 
 /**
  * @author warlordjones

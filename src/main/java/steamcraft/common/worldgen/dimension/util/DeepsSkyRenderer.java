@@ -26,9 +26,9 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 import net.minecraftforge.client.IRenderHandler;
 
+import boilerplate.client.ClientHelper;
 import org.lwjgl.opengl.GL11;
 import steamcraft.common.lib.ModInfo;
-import boilerplate.client.ClientHelper;
 
 public class DeepsSkyRenderer extends IRenderHandler
 {
@@ -52,7 +52,7 @@ public class DeepsSkyRenderer extends IRenderHandler
 		float f2 = (float) vec3.yCoord;
 		float f3 = (float) vec3.zCoord;
 		float f4;
-		if(mc.gameSettings.anaglyph)
+		if (mc.gameSettings.anaglyph)
 		{
 			float f5 = ((f1 * 30.0F) + (f2 * 59.0F) + (f3 * 11.0F)) / 100.0F;
 			float f6 = ((f1 * 30.0F) + (f2 * 70.0F)) / 100.0F;
@@ -77,7 +77,7 @@ public class DeepsSkyRenderer extends IRenderHandler
 		float f8;
 		float f9;
 		float f10;
-		if(afloat != null)
+		if (afloat != null)
 		{
 			GL11.glDisable(GL11.GL_TEXTURE_2D);
 			GL11.glShadeModel(GL11.GL_SMOOTH);
@@ -89,7 +89,7 @@ public class DeepsSkyRenderer extends IRenderHandler
 			f7 = afloat[1];
 			f8 = afloat[2];
 			float f11;
-			if(mc.gameSettings.anaglyph)
+			if (mc.gameSettings.anaglyph)
 			{
 				f9 = ((f4 * 30.0F) + (f7 * 59.0F) + (f8 * 11.0F)) / 100.0F;
 				f10 = ((f4 * 30.0F) + (f7 * 70.0F)) / 100.0F;
@@ -103,7 +103,7 @@ public class DeepsSkyRenderer extends IRenderHandler
 			tessellator1.addVertex(0.0D, 100.0D, 0.0D);
 			byte b0 = 16;
 			tessellator1.setColorRGBA_F(afloat[0], afloat[1], afloat[2], 0.0F);
-			for(int j = 0; j <= b0; ++j)
+			for (int j = 0; j <= b0; ++j)
 			{
 				f11 = (j * (float) Math.PI * 2.0F) / b0;
 				float f12 = MathHelper.sin(f11);
@@ -126,7 +126,11 @@ public class DeepsSkyRenderer extends IRenderHandler
 		GL11.glRotatef(-90.0F, 0.0F, 1.0F, 0.0F);
 		GL11.glRotatef(world.getCelestialAngle(partialTicks) * 360.0F, 1.0F, 0.0F, 0.0F);
 		f10 = 15.0F; // Size of sun from center
-		mc.renderEngine.bindTexture(new ResourceLocation(ModInfo.PREFIX + "textures/misc/sun.png")); // Sun texture + texture path
+		mc.renderEngine.bindTexture(new ResourceLocation(ModInfo.PREFIX + "textures/misc/sun.png")); // Sun
+																										// texture
+																										// +
+																										// texture
+																										// path
 		tessellator1.startDrawingQuads();
 		tessellator1.addVertexWithUV((-f10), 100.0D, (-f10), 0.0D, 0.0D);
 		tessellator1.addVertexWithUV(f10, 100.0D, (-f10), 1.0D, 0.0D);
@@ -135,7 +139,7 @@ public class DeepsSkyRenderer extends IRenderHandler
 		tessellator1.draw(); // Draw sun
 		GL11.glDisable(GL11.GL_TEXTURE_2D);
 		float f18 = world.getStarBrightness(partialTicks) * f4;
-		if(f18 > 0.0F)
+		if (f18 > 0.0F)
 		{
 			GL11.glColor4f(f18, f18, f18, f18);
 			GL11.glCallList(this.starGLCallList);
@@ -148,7 +152,7 @@ public class DeepsSkyRenderer extends IRenderHandler
 		GL11.glDisable(GL11.GL_TEXTURE_2D);
 		GL11.glColor3f(0.0F, 0.0F, 0.0F);
 		double d0 = mc.thePlayer.getPosition(partialTicks).yCoord - world.getHorizon();
-		if(d0 < 0.0D)
+		if (d0 < 0.0D)
 		{
 			GL11.glPushMatrix();
 			GL11.glTranslatef(0.0F, 12.0F, 0.0F);
@@ -181,7 +185,7 @@ public class DeepsSkyRenderer extends IRenderHandler
 			tessellator1.addVertex(f8, f10, (-f8));
 			tessellator1.draw();
 		}
-		if(world.provider.isSkyColored())
+		if (world.provider.isSkyColored())
 		{
 			GL11.glColor3f(0.2F + 0.04F, (f2 * 0.2F) + 0.04F, (f3 * 0.6F) + 0.1F);
 		}

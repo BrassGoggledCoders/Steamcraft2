@@ -48,14 +48,14 @@ public class BlockTurbine extends BaseContainerBlock
 	@Override
 	public IIcon getIcon(int side, int meta)
 	{
-		switch(side)
+		switch (side)
 		{
-			case 1:
-				return this.iconTop; // top
-			case 0:
-				return this.iconTop;
-			default:
-				return this.blockIcon; // sides
+		case 1:
+			return this.iconTop; // top
+		case 0:
+			return this.iconTop;
+		default:
+			return this.blockIcon; // sides
 		}
 	}
 

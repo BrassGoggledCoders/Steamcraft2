@@ -17,9 +17,15 @@ public class ItemCustomFood extends BaseItem
 	private final float saturationModifier;
 	/** Whether wolves like this food (true for raw and cooked porkchop). */
 	private final boolean isWolfsFavoriteMeat;
-	/** If this field is true, the food can be consumed even if the player don't need to eat. */
+	/**
+	 * If this field is true, the food can be consumed even if the player don't
+	 * need to eat.
+	 */
 	private boolean alwaysEdible;
-	/** represents the potion effect that will occurr upon eating this food. Set by setPotionEffect */
+	/**
+	 * represents the potion effect that will occurr upon eating this food. Set
+	 * by setPotionEffect
+	 */
 	private int potionId;
 	/** set by setPotionEffect */
 	private int potionDuration;
@@ -50,7 +56,7 @@ public class ItemCustomFood extends BaseItem
 
 	protected void onFoodEaten(ItemStack p_77849_1_, World p_77849_2_, EntityPlayer p_77849_3_)
 	{
-		if(!p_77849_2_.isRemote && (this.potionId > 0) && (p_77849_2_.rand.nextFloat() < this.potionEffectProbability))
+		if (!p_77849_2_.isRemote && (this.potionId > 0) && (p_77849_2_.rand.nextFloat() < this.potionEffectProbability))
 		{
 			p_77849_3_.addPotionEffect(new PotionEffect(this.potionId, this.potionDuration * 20, this.potionAmplifier));
 		}
@@ -66,7 +72,8 @@ public class ItemCustomFood extends BaseItem
 	}
 
 	/**
-	 * returns the action that specifies what animation to play when the items is being used
+	 * returns the action that specifies what animation to play when the items
+	 * is being used
 	 */
 	@Override
 	public EnumAction getItemUseAction(ItemStack p_77661_1_)
@@ -75,12 +82,13 @@ public class ItemCustomFood extends BaseItem
 	}
 
 	/**
-	 * Called whenever this item is equipped and the right mouse button is pressed. Args: itemStack, world, entityPlayer
+	 * Called whenever this item is equipped and the right mouse button is
+	 * pressed. Args: itemStack, world, entityPlayer
 	 */
 	@Override
 	public ItemStack onItemRightClick(ItemStack p_77659_1_, World p_77659_2_, EntityPlayer p_77659_3_)
 	{
-		if(p_77659_3_.canEat(this.alwaysEdible))
+		if (p_77659_3_.canEat(this.alwaysEdible))
 		{
 			p_77659_3_.setItemInUse(p_77659_1_, this.getMaxItemUseDuration(p_77659_1_));
 		}
@@ -107,7 +115,9 @@ public class ItemCustomFood extends BaseItem
 	}
 
 	/**
-	 * sets a potion effect on the item. Args: int potionId, int duration (will be multiplied by 20), int amplifier, float probability of effect happening
+	 * sets a potion effect on the item. Args: int potionId, int duration (will
+	 * be multiplied by 20), int amplifier, float probability of effect
+	 * happening
 	 */
 	public ItemCustomFood setPotionEffect(int p_77844_1_, int p_77844_2_, int p_77844_3_, float p_77844_4_)
 	{
@@ -119,7 +129,8 @@ public class ItemCustomFood extends BaseItem
 	}
 
 	/**
-	 * Set the field 'alwaysEdible' to true, and make the food edible even if the player don't need to eat.
+	 * Set the field 'alwaysEdible' to true, and make the food edible even if
+	 * the player don't need to eat.
 	 */
 	public ItemCustomFood setAlwaysEdible()
 	{

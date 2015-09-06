@@ -12,8 +12,6 @@
  */
 package steamcraft.common.packets;
 
-import io.netty.buffer.ByteBuf;
-
 import net.minecraft.world.World;
 
 import cpw.mods.fml.common.network.ByteBufUtils;
@@ -25,8 +23,9 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 import net.minecraftforge.fluids.FluidRegistry;
 
-import steamcraft.common.tiles.TileCopperPipe;
 import boilerplate.client.ClientHelper;
+import io.netty.buffer.ByteBuf;
+import steamcraft.common.tiles.TileCopperPipe;
 
 /**
  * @author decebaldecebal
@@ -79,7 +78,7 @@ public class CopperPipeFluidPacket implements IMessage
 		{
 			World world = ClientHelper.world();
 
-			if(world.getTileEntity(message.x, message.y, message.z) instanceof TileCopperPipe)
+			if (world.getTileEntity(message.x, message.y, message.z) instanceof TileCopperPipe)
 			{
 				TileCopperPipe pipe = (TileCopperPipe) world.getTileEntity(message.x, message.y, message.z);
 

@@ -12,95 +12,31 @@
  */
 package steamcraft.common.init;
 
+import boilerplate.common.utils.helpers.RegistryHelper;
+import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
-
-import cpw.mods.fml.common.registry.GameRegistry;
-
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidRegistry;
-
-import boilerplate.common.utils.helpers.RegistryHelper;
+import net.minecraftforge.fluids.FluidStack;
 import steamcraft.common.Steamcraft;
-import steamcraft.common.items.BaseItem;
-import steamcraft.common.items.ItemCanister;
-import steamcraft.common.items.ItemChisel;
-import steamcraft.common.items.ItemCoin;
-import steamcraft.common.items.ItemCustomBucket;
-import steamcraft.common.items.ItemCustomFood;
-import steamcraft.common.items.ItemDimensionalPocket;
-import steamcraft.common.items.ItemFieldManipulator;
-import steamcraft.common.items.ItemFirearm;
-import steamcraft.common.items.ItemGrappleGun;
-import steamcraft.common.items.ItemGunPart;
-import steamcraft.common.items.ItemHandbook;
-import steamcraft.common.items.ItemIngot;
-import steamcraft.common.items.ItemLoreBook;
-import steamcraft.common.items.ItemMachinePart;
-import steamcraft.common.items.ItemMatch;
-import steamcraft.common.items.ItemMobBottle;
-import steamcraft.common.items.ItemMonsterSpawner;
-import steamcraft.common.items.ItemNugget;
-import steamcraft.common.items.ItemParts;
-import steamcraft.common.items.ItemPowder;
-import steamcraft.common.items.ItemResource;
-import steamcraft.common.items.ItemRocket;
-import steamcraft.common.items.ItemRocketLauncher;
-import steamcraft.common.items.ItemSheet;
-import steamcraft.common.items.ItemSpanner;
-import steamcraft.common.items.ItemSplashLightningBottle;
-import steamcraft.common.items.ItemTeaSeed;
-import steamcraft.common.items.ItemTeacup;
-import steamcraft.common.items.ItemTeapot;
-import steamcraft.common.items.ItemTimeClock;
-import steamcraft.common.items.ItemVanillaPowder;
-import steamcraft.common.items.ItemVanillaSheet;
-import steamcraft.common.items.ItemWatch;
-import steamcraft.common.items.ItemWithCraftingDurability;
-import steamcraft.common.items.armor.ItemBrassArmor;
-import steamcraft.common.items.armor.ItemBrassGoggles;
-import steamcraft.common.items.armor.ItemClockworkWings;
-import steamcraft.common.items.armor.ItemDivingHelmet;
-import steamcraft.common.items.armor.ItemMonocle;
-import steamcraft.common.items.armor.ItemNormalArmor;
-import steamcraft.common.items.armor.ItemSteamJetpack;
+import steamcraft.common.items.*;
+import steamcraft.common.items.armor.*;
 import steamcraft.common.items.compat.ItemSteamcraftCluster;
 import steamcraft.common.items.compat.ItemThaumicMonocle;
 import steamcraft.common.items.electric.ElectricItem;
 import steamcraft.common.items.electric.ItemRayGun;
 import steamcraft.common.items.electric.ItemShrinkray;
-import steamcraft.common.items.modules.ItemAqualung;
-import steamcraft.common.items.modules.ItemAutofeeder;
-import steamcraft.common.items.modules.ItemClimbingSpikes;
-import steamcraft.common.items.modules.ItemEmergencyTank;
-import steamcraft.common.items.modules.ItemFlippers;
-import steamcraft.common.items.modules.ItemFreezeBoots;
-import steamcraft.common.items.modules.ItemGogglesModule;
-import steamcraft.common.items.modules.ItemLastResort;
-import steamcraft.common.items.modules.ItemLegBraces;
-import steamcraft.common.items.modules.ItemLifeVest;
-import steamcraft.common.items.modules.ItemParachute;
-import steamcraft.common.items.modules.ItemPistonBoots;
-import steamcraft.common.items.modules.ItemReactivePistonPlating;
-import steamcraft.common.items.modules.ItemRollerSkates;
-import steamcraft.common.items.modules.ItemSpringHeels;
-import steamcraft.common.items.modules.ItemSteelPlating;
-import steamcraft.common.items.modules.ItemSuperFreezeBoots;
-import steamcraft.common.items.modules.ItemWatchDisplay;
-import steamcraft.common.items.modules.ItemWingpackModule;
+import steamcraft.common.items.modules.*;
 import steamcraft.common.items.tools.ItemElectricDrill;
 import steamcraft.common.items.tools.ItemElectrifiedSword;
-import steamcraft.common.items.tools.steam.ItemSteamAxe;
-import steamcraft.common.items.tools.steam.ItemSteamDrill;
-import steamcraft.common.items.tools.steam.ItemSteamHoe;
-import steamcraft.common.items.tools.steam.ItemSteamPickaxe;
-import steamcraft.common.items.tools.steam.ItemSteamShovel;
-import steamcraft.common.items.tools.steam.ItemSteamSword;
+import steamcraft.common.items.tools.steam.*;
 import steamcraft.common.items.vanity.ItemTopHat;
+import steamcraft.common.lib.BucketHandler;
 import steamcraft.common.lib.ModInfo;
 
 /**
@@ -238,10 +174,10 @@ public class InitItems
 		registerItem(itemMonocle, "ItemMonocle");
 
 		// Whalebone
-		helmetWhalebone = new ItemNormalArmor(InitMaterials.ARMOR_WHALEBONE, 0, "Whalebone").setUnlocalizedName("itemHelmetWhalebone");
-		chestplateWhalebone = new ItemNormalArmor(InitMaterials.ARMOR_WHALEBONE, 1, "Whalebone").setUnlocalizedName("itemChestplateWhalebone");
-		legsWhalebone = new ItemNormalArmor(InitMaterials.ARMOR_WHALEBONE, 2, "Whalebone").setUnlocalizedName("itemLegsWhalebone");
-		bootsWhalebone = new ItemNormalArmor(InitMaterials.ARMOR_WHALEBONE, 3, "Whalebone").setUnlocalizedName("itemBootsWhalebone");
+		helmetWhalebone = new ItemNormalArmor(InitMaterials.ARMOR_WHALEBONE, 0, "whalebone").setUnlocalizedName("itemHelmetWhalebone");
+		chestplateWhalebone = new ItemNormalArmor(InitMaterials.ARMOR_WHALEBONE, 1, "whalebone").setUnlocalizedName("itemChestplateWhalebone");
+		legsWhalebone = new ItemNormalArmor(InitMaterials.ARMOR_WHALEBONE, 2, "whalebone").setUnlocalizedName("itemLegsWhalebone");
+		bootsWhalebone = new ItemNormalArmor(InitMaterials.ARMOR_WHALEBONE, 3, "whalebone").setUnlocalizedName("itemBootsWhalebone");
 
 		RegistryHelper.registerArmorSet(helmetWhalebone, chestplateWhalebone, legsWhalebone, bootsWhalebone, "Whalebone", ModInfo.ID);
 	}
@@ -347,9 +283,13 @@ public class InitItems
 		// Containers
 		itemCanisterSteam = new ItemCanister(10000, 20).setUnlocalizedName("itemCanisterSteam");
 		registerItem(itemCanisterSteam, "ItemCanisterSteam");
+		FluidContainerRegistry.registerFluidContainer(new FluidStack(FluidRegistry.getFluid("steam"), 10000),
+				((ItemCanister) itemCanisterSteam).getFilledCanister(), new ItemStack(itemCanisterSteam));
 
 		itemReinforcedCanisterSteam = new ItemCanister(20000, 40).setUnlocalizedName("itemReinforcedCanisterSteam");
 		registerItem(itemReinforcedCanisterSteam, "ItemReinforcedCanisterSteam");
+		FluidContainerRegistry.registerFluidContainer(new FluidStack(FluidRegistry.getFluid("steam"), 20000),
+				((ItemCanister) itemReinforcedCanisterSteam).getFilledCanister(), new ItemStack(itemReinforcedCanisterSteam));
 
 		itemElectricJarSmall = new ElectricItem(80, 80, 40).setUnlocalizedName("itemElectricJarSmall");
 		itemElectricJarMedium = new ElectricItem(400, 400, 125).setUnlocalizedName("itemElectricJarMedium");
@@ -439,7 +379,7 @@ public class InitItems
 		registerItem(itemSteelPlating, "ItemSteelPlating");
 
 		itemLastResort = new ItemLastResort().setUnlocalizedName("itemLastResort");
-		// registerItem(itemLastResort, "ItemLastResort");
+		registerItem(itemLastResort, "ItemLastResort");
 
 		itemGogglesModule = new ItemGogglesModule().setUnlocalizedName("itemGogglesModule");
 		registerItem(itemGogglesModule, "ItemGogglesModule");
@@ -448,13 +388,13 @@ public class InitItems
 		registerItem(itemWingpackModule, "ItemWingpackModule");
 
 		itemFreezeBoots = new ItemFreezeBoots().setUnlocalizedName("itemFreezeBoots");
-		// registerItem(itemFreezeBoots, "ItemFreezeBoots");
+		registerItem(itemFreezeBoots, "ItemFreezeBoots");
 
 		itemSuperFreezeBoots = new ItemSuperFreezeBoots().setUnlocalizedName("itemSuperFreezeBoots");
-		// registerItem(itemSuperFreezeBoots, "ItemSuperFreezeBoots");
+		registerItem(itemSuperFreezeBoots, "ItemSuperFreezeBoots");
 
 		itemAutofeeder = new ItemAutofeeder().setUnlocalizedName("itemAutofeeder");
-		// registerItem(itemAutofeeder, "ItemAutofeeder");
+		registerItem(itemAutofeeder, "ItemAutofeeder");
 
 		itemTeaLeaf = new BaseItem().setUnlocalizedName("itemTeaLeaves");
 		registerItem(itemTeaLeaf, "ItemTeaLeaf");
@@ -497,22 +437,22 @@ public class InitItems
 		itemMonsterSpawner = new ItemMonsterSpawner().setUnlocalizedName("itemMonsterSpawner");
 		registerItem(itemMonsterSpawner, "ItemSteamcraftMonsterSpawner");
 
-		itemBoilingWaterBucket = new ItemCustomBucket(InitBlocks.blockBoilingMud).setUnlocalizedName("itemBoilingWaterBucket");
-		itemBoilingMudBucket = new ItemCustomBucket(InitBlocks.blockBoilingMud).setUnlocalizedName("itemMudBucket");
+		itemBoilingWaterBucket = new ItemCustomBucket(FluidRegistry.getFluid("boilingwater").getBlock()).setUnlocalizedName("itemBoilingWaterBucket");
+		itemBoilingMudBucket = new ItemCustomBucket(FluidRegistry.getFluid("boilingmud").getBlock()).setUnlocalizedName("itemMudBucket");
+		itemWhaleOilBucket = new ItemCustomBucket(FluidRegistry.getFluid("whaleoil").getBlock()).setUnlocalizedName("itemWhaleOilBucket");
 		GameRegistry.registerItem(itemBoilingWaterBucket, "ItemBoilingWaterBucket");
 		GameRegistry.registerItem(itemBoilingMudBucket, "ItemBoilingBucket");
+		GameRegistry.registerItem(itemWhaleOilBucket, "ItemWhaleOilBucket");
 		FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("boilingwater", FluidContainerRegistry.BUCKET_VOLUME),
 				new ItemStack(itemBoilingWaterBucket), new ItemStack(Items.bucket));
 		FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("boilingmud", FluidContainerRegistry.BUCKET_VOLUME),
 				new ItemStack(itemBoilingMudBucket), new ItemStack(Items.bucket));
-
-		itemWhaleOilBucket = new ItemCustomBucket(InitBlocks.blockWhaleOil).setUnlocalizedName("itemWhaleOilBucket");
-		GameRegistry.registerItem(itemWhaleOilBucket, "ItemWhaleOilBucket");
 		FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("whaleoil", FluidContainerRegistry.BUCKET_VOLUME),
 				new ItemStack(itemWhaleOilBucket), new ItemStack(Items.bucket));
-
-		itemCoin = new ItemCoin().setUnlocalizedName("itemCoin");
-		// registerItem(itemCoin, "ItemCoin");
+		BucketHandler.INSTANCE.buckets.put(InitBlocks.blockBoilingWater, itemBoilingWaterBucket);
+		BucketHandler.INSTANCE.buckets.put(InitBlocks.blockBoilingMud, itemBoilingMudBucket);
+		BucketHandler.INSTANCE.buckets.put(InitBlocks.blockWhaleOil, itemWhaleOilBucket);
+		MinecraftForge.EVENT_BUS.register(BucketHandler.INSTANCE);
 
 		itemWhalebone = new BaseItem().setUnlocalizedName("itemWhalebone");
 		registerItem(itemWhalebone, "ItemWhalebone");
@@ -525,6 +465,9 @@ public class InitItems
 
 		itemWhaleBlubber = new BaseItem().setUnlocalizedName("itemWhaleBlubber");
 		registerItem(itemWhaleBlubber, "ItemWhaleBlubber");
+
+		itemCoin = new ItemCoin().setUnlocalizedName("itemCoin");
+		registerItem(itemCoin, "ItemCoin");
 
 		// Also known as a pokkit by some wierdo called Longeye ;)
 		itemDimPocket = new ItemDimensionalPocket().setUnlocalizedName("itemDimPocket");

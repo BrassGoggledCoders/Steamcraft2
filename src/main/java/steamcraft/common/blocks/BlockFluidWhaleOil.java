@@ -24,8 +24,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraftforge.fluids.BlockFluidClassic;
 import net.minecraftforge.fluids.Fluid;
 
-import steamcraft.common.lib.ModInfo;
 import boilerplate.common.utils.ItemStackUtils;
+import steamcraft.common.lib.ModInfo;
 
 /**
  * @author Decebaldecebal

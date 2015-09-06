@@ -60,9 +60,9 @@ public class BiomeDepthsSwamp extends BiomeDepthsBase
 	public WorldGenAbstractTree func_150567_a(Random rand)
 	{
 		int randNum = rand.nextInt(3);
-		if(randNum == 0)
+		if (randNum == 0)
 			return new WorldGenMangroveTree(false);
-		else if(randNum == 2)
+		else if (randNum == 2)
 			return new WorldGenDeadTree(false);
 		else
 			return new WorldGenWillowTree(false);
@@ -74,23 +74,23 @@ public class BiomeDepthsSwamp extends BiomeDepthsBase
 	{
 		double d1 = plantNoise.func_151601_a(p_150573_5_ * 0.25D, p_150573_6_ * 0.25D);
 
-		if(d1 > 0.0D)
+		if (d1 > 0.0D)
 		{
 			int k = p_150573_5_ & 15;
 			int l = p_150573_6_ & 15;
 			int i1 = p_150573_3_.length / 256;
 
-			for(int j1 = 255; j1 >= 0; --j1)
+			for (int j1 = 255; j1 >= 0; --j1)
 			{
 				int k1 = (((l * 16) + k) * i1) + j1;
 
-				if((p_150573_3_[k1] == null) || (p_150573_3_[k1].getMaterial() != Material.air))
+				if ((p_150573_3_[k1] == null) || (p_150573_3_[k1].getMaterial() != Material.air))
 				{
-					if((j1 == 62) && (p_150573_3_[k1] != Blocks.water))
+					if ((j1 == 62) && (p_150573_3_[k1] != Blocks.water))
 					{
 						p_150573_3_[k1] = Blocks.water;
 
-						if(d1 < 0.12D)
+						if (d1 < 0.12D)
 						{
 							p_150573_3_[k1 + 1] = Blocks.waterlily;
 						}
@@ -107,28 +107,28 @@ public class BiomeDepthsSwamp extends BiomeDepthsBase
 	@Override
 	public void decorate(World world, Random random, int x, int z)
 	{
-		for(int l = 0; l < 30; ++l)
+		for (int l = 0; l < 30; ++l)
 		{
 			int i1 = x + random.nextInt(16);
 			int j1 = z + random.nextInt(16);
 			int k1 = random.nextInt(100);
 			new WorldGenVines().generate(world, random, i1, k1, j1);
 		}
-		for(int l = 0; l < 5; ++l)
+		for (int l = 0; l < 5; ++l)
 		{
 			int i1 = x + random.nextInt(16);
 			int j1 = z + random.nextInt(16);
 			int k1 = random.nextInt(100);
 			new WorldGenBlockgroup(InitBlocks.blockMud, 10).generate(world, random, i1, k1, j1);
 		}
-		for(int l = 0; l < 15; l++)
+		for (int l = 0; l < 15; l++)
 		{
 			int X = x + random.nextInt(16);
 			int Z = z + random.nextInt(16);
 			int Y = random.nextInt(100);
 			new WorldGenLeafPile(InitBlocks.blockLeafCover).generate(world, random, X, Y, Z);
 		}
-		for(int l = 0; l < 15; l++)
+		for (int l = 0; l < 15; l++)
 		{
 			int X = x + random.nextInt(16);
 			int Z = z + random.nextInt(16);
@@ -139,7 +139,8 @@ public class BiomeDepthsSwamp extends BiomeDepthsBase
 	}
 
 	/**
-	 * Provides the basic grass color based on the biome temperature and rainfall
+	 * Provides the basic grass color based on the biome temperature and
+	 * rainfall
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
@@ -149,7 +150,8 @@ public class BiomeDepthsSwamp extends BiomeDepthsBase
 	}
 
 	/**
-	 * Provides the basic foliage color based on the biome temperature and rainfall
+	 * Provides the basic foliage color based on the biome temperature and
+	 * rainfall
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)

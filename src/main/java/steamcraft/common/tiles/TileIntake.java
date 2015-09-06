@@ -48,28 +48,27 @@ public class TileIntake extends TileEntity implements IFluidHandler
 	@Override
 	public void updateEntity()
 	{
-		if(!worldObj.isRemote)
+		if (!this.worldObj.isRemote)
 		{
-			if((this.worldObj.getBlock(this.xCoord, this.yCoord - 1, this.zCoord) == Blocks.water)
+			if ((this.worldObj.getBlock(this.xCoord, this.yCoord - 1, this.zCoord) == Blocks.water)
 					&& (this.worldObj.getBlockMetadata(this.xCoord, this.yCoord - 1, this.zCoord) == 0))
 			{
 				this.waterTank.fill(new FluidStack(FluidRegistry.WATER, waterPerTick), true);
 				this.tickSinceLastConsume++;
-	
-				if(this.tickSinceLastConsume == 200)
+
+				if (this.tickSinceLastConsume == 200)
 				{
 					this.tickSinceLastConsume = 0;
 					this.worldObj.setBlockToAir(this.xCoord, this.yCoord - 1, this.zCoord);
 				}
 			}
-	
-			if((this.worldObj.getTileEntity(this.xCoord, this.yCoord + 1, this.zCoord) != null)
+
+			if ((this.worldObj.getTileEntity(this.xCoord, this.yCoord + 1, this.zCoord) != null)
 					&& (this.worldObj.getTileEntity(this.xCoord, this.yCoord + 1, this.zCoord) instanceof IFluidHandler))
 			{
 				IFluidHandler export = (IFluidHandler) this.worldObj.getTileEntity(this.xCoord, this.yCoord + 1, this.zCoord);
-				this.waterTank.drain(
-						export.fill(ForgeDirection.DOWN,
-								new FluidStack(FluidRegistry.WATER, Math.min(this.waterTank.getFluidAmount(), exportAmountPerTick)), true), true);
+				this.waterTank.drain(export.fill(ForgeDirection.DOWN,
+						new FluidStack(FluidRegistry.WATER, Math.min(this.waterTank.getFluidAmount(), exportAmountPerTick)), true), true);
 			}
 		}
 		else
@@ -78,8 +77,8 @@ public class TileIntake extends TileEntity implements IFluidHandler
 
 			this.worldObj.spawnParticle("dripWater", this.xCoord + random.nextDouble(), this.yCoord + random.nextDouble(),
 					this.zCoord + random.nextDouble(), random.nextDouble(), -0.5D, random.nextDouble());
-			
-			if(random.nextInt(100) == 0)
+
+			if (random.nextInt(100) == 0)
 				this.worldObj.playSound(this.xCoord, this.yCoord, this.zCoord, ModInfo.PREFIX + "intake", 1F, 1F, true);
 		}
 	}
@@ -103,7 +102,7 @@ public class TileIntake extends TileEntity implements IFluidHandler
 	@Override
 	public FluidStack drain(ForgeDirection from, FluidStack resource, boolean doDrain)
 	{
-		if((resource == null) || !resource.isFluidEqual(this.waterTank.getFluid()))
+		if ((resource == null) || !resource.isFluidEqual(this.waterTank.getFluid()))
 			return null;
 
 		return this.waterTank.drain(resource.amount, doDrain);

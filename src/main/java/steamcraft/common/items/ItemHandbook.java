@@ -12,11 +12,12 @@
  */
 package steamcraft.common.items;
 
-import boilerplate.api.IOpenableGUI;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
+
+import boilerplate.api.IOpenableGUI;
 import steamcraft.client.gui.GuiHandbook;
 import steamcraft.client.lib.GuiIDs;
 import steamcraft.common.Steamcraft;
@@ -32,12 +33,13 @@ public class ItemHandbook extends BaseItem implements IOpenableGUI
 	}
 
 	/**
-	 * Called whenever this item is equipped and the right mouse button is pressed. Args: itemStack, world, entityPlayer
+	 * Called whenever this item is equipped and the right mouse button is
+	 * pressed. Args: itemStack, world, entityPlayer
 	 */
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
 	{
-		if(world.isRemote)
+		if (world.isRemote)
 		{
 			player.openGui(Steamcraft.instance, GuiIDs.HANDBOOK, world, 0, 0, 0);
 		}
@@ -46,7 +48,7 @@ public class ItemHandbook extends BaseItem implements IOpenableGUI
 
 	public int getCurrentPage(ItemStack stack)
 	{
-		if(stack.hasTagCompound())
+		if (stack.hasTagCompound())
 			return stack.getTagCompound().getInteger("currPage");
 		else
 			return 0;
@@ -54,7 +56,7 @@ public class ItemHandbook extends BaseItem implements IOpenableGUI
 
 	public void setCurrentPage(ItemStack stack, int currPage)
 	{
-		if(!stack.hasTagCompound())
+		if (!stack.hasTagCompound())
 			stack.setTagCompound(new NBTTagCompound());
 		stack.getTagCompound().setInteger("currPage", currPage);
 	}

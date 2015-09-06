@@ -13,6 +13,7 @@
 package steamcraft.client.renderers.tile;
 
 import net.minecraft.util.ResourceLocation;
+
 import steamcraft.common.lib.ModInfo;
 
 /**

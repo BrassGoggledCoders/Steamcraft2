@@ -131,7 +131,7 @@ public class BlockHatch extends BaseContainerBlock
 	public void setBlockBoundsForItemRender()
 	{
 		float f = 0.1875F;
-		this.setBlockBounds(0.0F, 0.5F - f / 2.0F, 0.0F, 1.0F, 0.5F + f / 2.0F, 1.0F);
+		this.setBlockBounds(0.0F, 0.5F - (f / 2.0F), 0.0F, 1.0F, 0.5F + (f / 2.0F), 1.0F);
 	}
 
 	public void changeBounds(int p_150117_1_)
@@ -243,34 +243,28 @@ public class BlockHatch extends BaseContainerBlock
 	 * side, hitX, hitY, hitZ, block metadata
 	 */
 	@Override
-	public int onBlockPlaced(World p_149660_1_, int p_149660_2_, int p_149660_3_, int p_149660_4_, int p_149660_5_, float p_149660_6_,
-			float p_149660_7_, float p_149660_8_, int p_149660_9_)
+	public int onBlockPlaced(World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ, int meta)
 	{
 		int j1 = 0;
 
-		if (p_149660_5_ == 2)
+		if (side == 2)
 		{
 			j1 = 0;
 		}
 
-		if (p_149660_5_ == 3)
+		if (side == 3)
 		{
 			j1 = 1;
 		}
 
-		if (p_149660_5_ == 4)
+		if (side == 4)
 		{
 			j1 = 2;
 		}
 
-		if (p_149660_5_ == 5)
+		if (side == 5)
 		{
 			j1 = 3;
-		}
-
-		if (p_149660_5_ != 1 && p_149660_5_ != 0 && p_149660_7_ > 0.5F)
-		{
-			j1 |= 8;
 		}
 
 		return j1;
@@ -286,8 +280,8 @@ public class BlockHatch extends BaseContainerBlock
 		return true;
 	}
 
-	public static boolean isOpen(int p_150118_0_)
+	public static boolean isOpen(int meta)
 	{
-		return (p_150118_0_ & 4) != 0;
+		return (meta & 4) != 0;
 	}
 }

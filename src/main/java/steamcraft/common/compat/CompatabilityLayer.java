@@ -280,6 +280,8 @@ public class CompatabilityLayer
 			LoggerSteamcraft.info("Thaumcraft Detected. Loading Wizarding Module");
 
 			GameRegistry.registerItem(InitItems.itemSteamcraftCluster, "ItemSteamcraftCluster");
+			GameRegistry.addSmelting(new ItemStack(InitItems.itemSteamcraftCluster, 1, 0), new ItemStack(InitItems.itemIngot, 2, 0), 0);
+			GameRegistry.addSmelting(new ItemStack(InitItems.itemSteamcraftCluster, 1, 1), new ItemStack(InitItems.itemIngot, 2, 3), 0);
 
 			GameRegistry.registerItem(InitItems.itemThaumicMonocle, "ItemThaumicMonocle");
 			Item thaumometer = GameRegistry.findItem("Thaumcraft", "ItemThaumometer");

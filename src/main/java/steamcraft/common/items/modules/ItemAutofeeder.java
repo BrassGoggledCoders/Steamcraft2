@@ -61,12 +61,12 @@ public class ItemAutofeeder extends BaseArmorModule
 	@Override
 	public void applyModuleEffect(World world, EntityPlayer player, ItemStack stack)
 	{
-		for(ItemStack stack1 : player.inventory.mainInventory)
+		for (ItemStack stack1 : player.inventory.mainInventory)
 		{
-			if(stack1 != null)
+			if (stack1 != null)
 			{
 				Item item = stack1.getItem();
-				if((item instanceof ItemFood) && player.getFoodStats().needFood())
+				if ((item instanceof ItemFood) && player.getFoodStats().needFood())
 				{
 					ItemFood food = (ItemFood) item;
 					food.onEaten(stack1, world, player);

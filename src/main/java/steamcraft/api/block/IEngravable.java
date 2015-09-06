@@ -15,7 +15,7 @@ import net.minecraft.block.Block;
  *
  * @author warlordjones
  */
-public interface IChiselable
+public interface IEngravable
 {
 
 	/**
@@ -25,7 +25,8 @@ public interface IChiselable
 	public Block getChiseledVariant();
 
 	/**
-	 * @return the metadata of the block created when our chisel is used on this block
+	 * @return the metadata of the block created when our chisel is used on this
+	 *         block
 	 */
 	public int getChiseledVariantMeta();
 }

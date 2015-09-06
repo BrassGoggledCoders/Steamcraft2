@@ -64,7 +64,7 @@ public class ItemCanister extends BaseItem implements IFluidContainerItem
 	{
 		ItemStack filled = new ItemStack(this);
 
-		this.fill(filled, new FluidStack(FluidRegistry.getFluid("steam"), maxSteam), true);
+		this.fill(filled, new FluidStack(FluidRegistry.getFluid("steam"), this.maxSteam), true);
 
 		return filled;
 	}
@@ -96,7 +96,7 @@ public class ItemCanister extends BaseItem implements IFluidContainerItem
 	{
 		if (this.getFluidAmount(stack) == 0)
 			return this.emptyIcon;
-		else if (this.getFluidAmount(stack) == maxSteam)
+		else if (this.getFluidAmount(stack) == this.maxSteam)
 			return this.fullIcon;
 		else
 			return this.itemIcon;
@@ -130,7 +130,7 @@ public class ItemCanister extends BaseItem implements IFluidContainerItem
 	@Override
 	public int getCapacity(ItemStack container)
 	{
-		return maxSteam;
+		return this.maxSteam;
 	}
 
 	@Override
@@ -142,17 +142,17 @@ public class ItemCanister extends BaseItem implements IFluidContainerItem
 		if (!doFill)
 		{
 			if ((container.stackTagCompound == null) || !container.stackTagCompound.hasKey("Fluid"))
-				return Math.min(maxSteam, resource.amount);
+				return Math.min(this.maxSteam, resource.amount);
 
 			FluidStack stack = FluidStack.loadFluidStackFromNBT(container.stackTagCompound.getCompoundTag("Fluid"));
 
 			if (stack == null)
-				return Math.min(maxSteam, resource.amount);
+				return Math.min(this.maxSteam, resource.amount);
 
 			if (!stack.isFluidEqual(resource))
 				return 0;
 
-			return Math.min(maxSteam - stack.amount, resource.amount);
+			return Math.min(this.maxSteam - stack.amount, resource.amount);
 		}
 
 		if (container.stackTagCompound == null)
@@ -162,11 +162,11 @@ public class ItemCanister extends BaseItem implements IFluidContainerItem
 		{
 			NBTTagCompound fluidTag = resource.writeToNBT(new NBTTagCompound());
 
-			if (maxSteam < resource.amount)
+			if (this.maxSteam < resource.amount)
 			{
-				fluidTag.setInteger("Amount", maxSteam);
+				fluidTag.setInteger("Amount", this.maxSteam);
 				container.stackTagCompound.setTag("Fluid", fluidTag);
-				return maxSteam;
+				return this.maxSteam;
 			}
 
 			container.stackTagCompound.setTag("Fluid", fluidTag);
@@ -179,14 +179,14 @@ public class ItemCanister extends BaseItem implements IFluidContainerItem
 		if (!stack.isFluidEqual(resource))
 			return 0;
 
-		int filled = maxSteam - stack.amount;
+		int filled = this.maxSteam - stack.amount;
 		if (resource.amount < filled)
 		{
 			stack.amount += resource.amount;
 			filled = resource.amount;
 		}
 		else
-			stack.amount = maxSteam;
+			stack.amount = this.maxSteam;
 
 		container.stackTagCompound.setTag("Fluid", stack.writeToNBT(fluidTag));
 
@@ -208,7 +208,7 @@ public class ItemCanister extends BaseItem implements IFluidContainerItem
 
 		if (doDrain)
 		{
-			if (maxDrain >= maxSteam)
+			if (maxDrain >= this.maxSteam)
 			{
 				container.stackTagCompound.removeTag("Fluid");
 

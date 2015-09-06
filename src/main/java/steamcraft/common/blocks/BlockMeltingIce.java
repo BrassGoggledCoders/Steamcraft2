@@ -21,7 +21,7 @@ public class BlockMeltingIce extends BlockIce
 	@Override
 	public void updateTick(World world, int x, int y, int z, Random random)
 	{
-		if(this.meltsIntoWater)
+		if (this.meltsIntoWater)
 			world.setBlock(x, y, z, Blocks.water);
 		else
 			world.setBlock(x, y, z, Blocks.air);

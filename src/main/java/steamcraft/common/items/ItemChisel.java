@@ -24,7 +24,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-import steamcraft.api.block.IChiselable;
+import steamcraft.api.block.IEngravable;
 import steamcraft.common.init.InitBlocks;
 import steamcraft.common.lib.ModInfo;
 
@@ -52,25 +52,25 @@ public class ItemChisel extends BaseItem
 	{
 		Block block = world.getBlock(x, y, z);
 
-		if(block == Blocks.diamond_block)
+		if (block == Blocks.diamond_block)
 			world.setBlock(x, y, z, InitBlocks.blockEngravedVanilla, 0, 2);
-		else if(block == Blocks.gold_block)
+		else if (block == Blocks.gold_block)
 			world.setBlock(x, y, z, InitBlocks.blockEngravedVanilla, 1, 2);
-		else if(block == Blocks.iron_block)
+		else if (block == Blocks.iron_block)
 			world.setBlock(x, y, z, InitBlocks.blockEngravedVanilla, 2, 2);
-		else if(block == Blocks.lapis_block)
+		else if (block == Blocks.lapis_block)
 			world.setBlock(x, y, z, InitBlocks.blockEngravedVanilla, 3, 2);
-		else if(block == Blocks.stone)
+		else if (block == Blocks.stone)
 			world.setBlock(x, y, z, InitBlocks.blockEngravedVanilla, 4, 2);
-		else if(block == Blocks.redstone_lamp)
+		else if (block == Blocks.redstone_lamp)
 			world.setBlock(x, y, z, InitBlocks.blockLamp, 0, 2);
-		else if(block == Blocks.lit_redstone_lamp)
+		else if (block == Blocks.lit_redstone_lamp)
 			world.setBlock(x, y, z, InitBlocks.blockLampOn, 0, 2);
-		else if(block instanceof IChiselable)
+		else if (block instanceof IEngravable)
 		{
-			Block newBlock = ((IChiselable) block).getChiseledVariant();
-			int meta = ((IChiselable) block).getChiseledVariantMeta();
-			if(meta == -1)
+			Block newBlock = ((IEngravable) block).getChiseledVariant();
+			int meta = ((IEngravable) block).getChiseledVariantMeta();
+			if (meta == -1)
 				world.setBlock(x, y, z, newBlock, world.getBlockMetadata(x, y, z), 2);
 			else
 				world.setBlock(x, y, z, newBlock, meta, 2);

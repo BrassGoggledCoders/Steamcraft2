@@ -24,9 +24,9 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+import boilerplate.common.utils.ItemStackUtils;
 import steamcraft.common.init.InitItems;
 import steamcraft.common.lib.ModInfo;
-import boilerplate.common.utils.ItemStackUtils;
 
 public class ItemTeapot extends BaseItemWithMetadata
 {
@@ -49,14 +49,14 @@ public class ItemTeapot extends BaseItemWithMetadata
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
 	{
-		if(player.inventory.hasItem(InitItems.itemTeacup))
+		if (player.inventory.hasItem(InitItems.itemTeacup))
 		{
 			ItemStack itemstack = player.inventory.getStackInSlot(ItemStackUtils.getStackPosition(player.inventory, InitItems.itemTeacup));
-			if((itemstack.getItemDamage() == 0) && (stack.getItemDamage() > 2))
+			if ((itemstack.getItemDamage() == 0) && (stack.getItemDamage() > 2))
 			{
 				player.inventory.consumeInventoryItem(itemstack.getItem());
 				player.inventory.addItemStackToInventory(new ItemStack(InitItems.itemTeacup, 1, 10));
-				if(stack.getItemDamage() == 3)
+				if (stack.getItemDamage() == 3)
 					stack.setItemDamage(0);
 				else
 					stack.setItemDamage(stack.getItemDamage() - 1);
@@ -71,7 +71,7 @@ public class ItemTeapot extends BaseItemWithMetadata
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(Item item, CreativeTabs tab, List l)
 	{
-		for(int var4 = 0; var4 < 4; ++var4)
+		for (int var4 = 0; var4 < 4; ++var4)
 			l.add(new ItemStack(InitItems.itemTeapot, 1, var4));
 
 		l.add(new ItemStack(InitItems.itemTeapot, 1, 12));
@@ -81,11 +81,11 @@ public class ItemTeapot extends BaseItemWithMetadata
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player, List l, boolean flag)
 	{
-		if(stack.getItemDamage() == 0)
+		if (stack.getItemDamage() == 0)
 			l.add("Empty");
-		else if(stack.getItemDamage() == 1)
+		else if (stack.getItemDamage() == 1)
 			l.add("Filled with Water");
-		else if(stack.getItemDamage() == 2)
+		else if (stack.getItemDamage() == 2)
 			l.add("Filled with Boiling Water");
 		else
 		{

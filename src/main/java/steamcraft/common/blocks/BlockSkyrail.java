@@ -40,13 +40,14 @@ public class BlockSkyrail extends BlockRailBase
 	}
 
 	/**
-	 * Lets the block know when one of its neighbor changes. Doesn't know which neighbor changed (coordinates passed are their own) Args: x, y, z, neighbor
-	 * Block
+	 * Lets the block know when one of its neighbor changes. Doesn't know which
+	 * neighbor changed (coordinates passed are their own) Args: x, y, z,
+	 * neighbor Block
 	 */
 	@Override
 	public void onNeighborBlockChange(World p_149695_1_, int p_149695_2_, int p_149695_3_, int p_149695_4_, Block p_149695_5_)
 	{
-		if(!p_149695_1_.isRemote)
+		if (!p_149695_1_.isRemote)
 		{
 			int l = p_149695_1_.getBlockMetadata(p_149695_2_, p_149695_3_, p_149695_4_);
 			int i1 = l;

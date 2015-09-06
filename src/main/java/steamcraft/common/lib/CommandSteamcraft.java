@@ -60,23 +60,23 @@ public class CommandSteamcraft extends CommandBase
 		ChatComponentText prefix = new ChatComponentText(" [Steamcraft] ");
 		prefix.getChatStyle().setColor(EnumChatFormatting.GOLD);
 
-		if(parameters.length < 1)
+		if (parameters.length < 1)
 			sender.addChatMessage(prefix.appendSibling(new ChatComponentText("Welcome to Steamcraft 2!")));
-		else if(parameters.length == 1)
+		else if (parameters.length == 1)
 		{
-			if(parameters[0].equalsIgnoreCase("help"))
+			if (parameters[0].equalsIgnoreCase("help"))
 			{
 				sender.addChatMessage(new ChatComponentText("version -- returns current SC2 version"));
 				sender.addChatMessage(new ChatComponentText("contact -- returns ways to contact us"));
 				sender.addChatMessage(new ChatComponentText(
 						"issue <name> <body> -- creates a new Github Issue on the Steamcraft Repo. Automatically appends your username to the end of the issue's body text. Use _ instead of spaces."));
 			}
-			else if(parameters[0].equalsIgnoreCase("version"))
+			else if (parameters[0].equalsIgnoreCase("version"))
 			{
 				ChatComponentText version = new ChatComponentText("Steamcraft 2 " + ModInfo.VERSION + " for MC v1.7.2");
 				sender.addChatMessage(prefix.appendSibling(version));
 			}
-			else if(parameters[0].equalsIgnoreCase("contact"))
+			else if (parameters[0].equalsIgnoreCase("contact"))
 			{
 				ChatComponentText contact = new ChatComponentText("Contact Information");
 				sender.addChatMessage(prefix.appendSibling(contact));
@@ -93,14 +93,14 @@ public class CommandSteamcraft extends CommandBase
 				git.getChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://github.com/BrassGoggledCoders"));
 				sender.addChatMessage(git);
 			}
-			else if(parameters[0].equalsIgnoreCase("issue"))
+			else if (parameters[0].equalsIgnoreCase("issue"))
 			{
 				sender.addChatMessage(prefix.appendText("Invalid Usage. Correct Syntax is /sc2 issue <title> <body text>"));
 			}
 			else
 				sender.addChatMessage(prefix.appendText("Not a valid sub-command! Run /sc2 help for help!"));
 		}
-		else if(parameters.length == 2)
+		else if (parameters.length == 2)
 		{
 			prefix.appendText("Invalid number of parameters");
 		}

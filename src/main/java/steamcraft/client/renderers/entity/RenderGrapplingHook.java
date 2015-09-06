@@ -34,7 +34,7 @@ public class RenderGrapplingHook extends Render
 	{
 		this.bindEntityTexture(entity);
 
-		if((entity.prevRotationYaw == 0.0F) && (entity.prevRotationPitch == 0.0F))
+		if ((entity.prevRotationYaw == 0.0F) && (entity.prevRotationPitch == 0.0F))
 			return;
 
 		GL11.glPushMatrix();
@@ -55,7 +55,7 @@ public class RenderGrapplingHook extends Render
 		GL11.glEnable(32826 /* GL_RESCALE_NORMAL_EXT */);
 		float f11 = 1.0F - frotP;
 
-		if(f11 > 0.0F)
+		if (f11 > 0.0F)
 		{
 			float f12 = -MathHelper.sin(f11 * 3F) * f11;
 			GL11.glRotatef(f12, 0.0F, 0.0F, 1.0F);
@@ -79,7 +79,7 @@ public class RenderGrapplingHook extends Render
 		tessellator.addVertexWithUV(-7D, -2D, -2D, f6, f9);
 		tessellator.draw();
 
-		for(int j = 0; j < 4; j++)
+		for (int j = 0; j < 4; j++)
 		{
 			GL11.glRotatef(90F, 1.0F, 0.0F, 0.0F);
 			GL11.glNormal3f(0.0F, 0.0F, f10);

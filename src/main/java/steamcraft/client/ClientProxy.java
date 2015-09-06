@@ -39,6 +39,7 @@ import steamcraft.client.renderers.block.BlockCastIronRailingRenderer;
 import steamcraft.client.renderers.block.BlockCopperPipeRenderer;
 import steamcraft.client.renderers.block.BlockCopperTankRenderer;
 import steamcraft.client.renderers.block.BlockCopperWireRenderer;
+import steamcraft.client.renderers.block.BlockHatchRenderer;
 import steamcraft.client.renderers.block.BlockSpiderEggRenderer;
 import steamcraft.client.renderers.block.BlockSteelPipeRenderer;
 import steamcraft.client.renderers.block.BlockSteelWireRenderer;
@@ -195,8 +196,7 @@ public class ClientProxy extends CommonProxy
 		RenderingRegistry.registerBlockHandler(new BlockCastIronLampRenderer());
 		// Hatch
 		ClientRegistry.bindTileEntitySpecialRenderer(TileHatch.class, new TileHatchRenderer());
-		// RenderingRegistry.registerBlockHandler(new BlockTESRRenderer(new
-		// TileHatch(), RenderIDs.blockHatchRI));
+		RenderingRegistry.registerBlockHandler(new BlockHatchRenderer());
 		// Armor Editor
 		ClientRegistry.bindTileEntitySpecialRenderer(TileArmorEditor.class, new TileArmorEditorRenderer());
 		RenderingRegistry.registerBlockHandler(new BlockTESRRenderer(new TileArmorEditor(), RenderIDs.blockArmorEditorRI));

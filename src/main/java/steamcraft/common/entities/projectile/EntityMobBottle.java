@@ -47,9 +47,9 @@ public class EntityMobBottle extends BaseThrowableEntity
 	@Override
 	protected void onImpact(MovingObjectPosition mop)
 	{
-		if(mop.typeOfHit == MovingObjectPosition.MovingObjectType.BLOCK)
+		if (mop.typeOfHit == MovingObjectPosition.MovingObjectType.BLOCK)
 		{
-			if(!this.worldObj.isRemote)
+			if (!this.worldObj.isRemote)
 			{
 
 				this.worldObj.playAuxSFX(2002, (int) Math.round(this.posX), (int) Math.round(this.posY), (int) Math.round(this.posZ), 0);

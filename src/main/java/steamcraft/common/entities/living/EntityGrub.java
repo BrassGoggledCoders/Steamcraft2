@@ -27,12 +27,14 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
 import org.apache.commons.lang3.tuple.ImmutablePair;
-
 import steamcraft.common.init.InitBlocks;
 
 public class EntityGrub extends EntityMob
 {
-	/** A cooldown before this entity will search for another Silverfish to join them in battle. */
+	/**
+	 * A cooldown before this entity will search for another Silverfish to join
+	 * them in battle.
+	 */
 	private int allySummonCooldown;
 
 	public EntityGrub(World p_i1740_1_)
@@ -84,13 +86,13 @@ public class EntityGrub extends EntityMob
 	@Override
 	public boolean attackEntityFrom(DamageSource p_70097_1_, float p_70097_2_)
 	{
-		if(this.isEntityInvulnerable())
+		if (this.isEntityInvulnerable())
 		{
 			return false;
 		}
 		else
 		{
-			if((this.allySummonCooldown <= 0) && ((p_70097_1_ instanceof EntityDamageSource) || (p_70097_1_ == DamageSource.magic)))
+			if ((this.allySummonCooldown <= 0) && ((p_70097_1_ instanceof EntityDamageSource) || (p_70097_1_ == DamageSource.magic)))
 			{
 				this.allySummonCooldown = 20;
 			}
@@ -102,7 +104,7 @@ public class EntityGrub extends EntityMob
 	@Override
 	protected void attackEntity(Entity p_70785_1_, float p_70785_2_)
 	{
-		if((this.attackTime <= 0) && (p_70785_2_ < 1.2F) && (p_70785_1_.boundingBox.maxY > this.boundingBox.minY)
+		if ((this.attackTime <= 0) && (p_70785_2_ < 1.2F) && (p_70785_1_.boundingBox.maxY > this.boundingBox.minY)
 				&& (p_70785_1_.boundingBox.minY < this.boundingBox.maxY))
 		{
 			this.attackTime = 20;
@@ -135,33 +137,33 @@ public class EntityGrub extends EntityMob
 	{
 		super.updateEntityActionState();
 
-		if(!this.worldObj.isRemote)
+		if (!this.worldObj.isRemote)
 		{
 			int i;
 			int j;
 			int k;
 			int i1;
 
-			if(this.allySummonCooldown > 0)
+			if (this.allySummonCooldown > 0)
 			{
 				--this.allySummonCooldown;
 
-				if(this.allySummonCooldown == 0)
+				if (this.allySummonCooldown == 0)
 				{
 					i = MathHelper.floor_double(this.posX);
 					j = MathHelper.floor_double(this.posY);
 					k = MathHelper.floor_double(this.posZ);
 					boolean flag = false;
 
-					for(int l = 0; !flag && (l <= 5) && (l >= -5); l = l <= 0 ? 1 - l : 0 - l)
+					for (int l = 0; !flag && (l <= 5) && (l >= -5); l = l <= 0 ? 1 - l : 0 - l)
 					{
-						for(i1 = 0; !flag && (i1 <= 10) && (i1 >= -10); i1 = i1 <= 0 ? 1 - i1 : 0 - i1)
+						for (i1 = 0; !flag && (i1 <= 10) && (i1 >= -10); i1 = i1 <= 0 ? 1 - i1 : 0 - i1)
 						{
-							for(int j1 = 0; !flag && (j1 <= 10) && (j1 >= -10); j1 = j1 <= 0 ? 1 - j1 : 0 - j1)
+							for (int j1 = 0; !flag && (j1 <= 10) && (j1 >= -10); j1 = j1 <= 0 ? 1 - j1 : 0 - j1)
 							{
-								if(this.worldObj.getBlock(i + i1, j + l, k + j1) == InitBlocks.blockInfestedGrass)
+								if (this.worldObj.getBlock(i + i1, j + l, k + j1) == InitBlocks.blockInfestedGrass)
 								{
-									if(!this.worldObj.getGameRules().getGameRuleBooleanValue("mobGriefing"))
+									if (!this.worldObj.getGameRules().getGameRuleBooleanValue("mobGriefing"))
 									{
 										int k1 = this.worldObj.getBlockMetadata(i + i1, j + l, k + j1);
 										ImmutablePair immutablepair = BlockSilverfish.func_150197_b(k1);
@@ -175,15 +177,15 @@ public class EntityGrub extends EntityMob
 
 									InitBlocks.blockInfestedGrass.onBlockDestroyedByPlayer(this.worldObj, i + i1, j + l, k + j1, 0);
 
-									if(this.rand.nextBoolean())
+									if (this.rand.nextBoolean())
 									{
 										flag = true;
 										break;
 									}
 								}
-								else if(this.worldObj.getBlock(i + i1, j + l, k + j1) == InitBlocks.blockInfestedDirt)
+								else if (this.worldObj.getBlock(i + i1, j + l, k + j1) == InitBlocks.blockInfestedDirt)
 								{
-									if(!this.worldObj.getGameRules().getGameRuleBooleanValue("mobGriefing"))
+									if (!this.worldObj.getGameRules().getGameRuleBooleanValue("mobGriefing"))
 									{
 										int k1 = this.worldObj.getBlockMetadata(i + i1, j + l, k + j1);
 										ImmutablePair immutablepair = BlockSilverfish.func_150197_b(k1);
@@ -197,7 +199,7 @@ public class EntityGrub extends EntityMob
 
 									InitBlocks.blockInfestedDirt.onBlockDestroyedByPlayer(this.worldObj, i + i1, j + l, k + j1, 0);
 
-									if(this.rand.nextBoolean())
+									if (this.rand.nextBoolean())
 									{
 										flag = true;
 										break;
@@ -209,11 +211,11 @@ public class EntityGrub extends EntityMob
 				}
 			}
 
-			if((this.entityToAttack == null) && !this.hasPath())
+			if ((this.entityToAttack == null) && !this.hasPath())
 			{
 				this.updateWanderPath();
 			}
-			else if((this.entityToAttack != null) && !this.hasPath())
+			else if ((this.entityToAttack != null) && !this.hasPath())
 			{
 				this.entityToAttack = null;
 			}
@@ -221,13 +223,14 @@ public class EntityGrub extends EntityMob
 	}
 
 	/**
-	 * Takes a coordinate in and returns a weight to determine how likely this creature will try to path to the block. Args: x, y, z
+	 * Takes a coordinate in and returns a weight to determine how likely this
+	 * creature will try to path to the block. Args: x, y, z
 	 */
 	@Override
 	public float getBlockPathWeight(int p_70783_1_, int p_70783_2_, int p_70783_3_)
 	{
-		return this.worldObj.getBlock(p_70783_1_, p_70783_2_ - 1, p_70783_3_) == Blocks.stone ? 10.0F : super.getBlockPathWeight(p_70783_1_, p_70783_2_,
-				p_70783_3_);
+		return this.worldObj.getBlock(p_70783_1_, p_70783_2_ - 1, p_70783_3_) == Blocks.stone ? 10.0F
+				: super.getBlockPathWeight(p_70783_1_, p_70783_2_, p_70783_3_);
 	}
 
 	/**
@@ -240,12 +243,13 @@ public class EntityGrub extends EntityMob
 	}
 
 	/**
-	 * Checks if the entity's current position is a valid location to spawn this entity.
+	 * Checks if the entity's current position is a valid location to spawn this
+	 * entity.
 	 */
 	@Override
 	public boolean getCanSpawnHere()
 	{
-		if(super.getCanSpawnHere())
+		if (super.getCanSpawnHere())
 		{
 			EntityPlayer entityplayer = this.worldObj.getClosestPlayerToEntity(this, 5.0D);
 			return entityplayer == null;

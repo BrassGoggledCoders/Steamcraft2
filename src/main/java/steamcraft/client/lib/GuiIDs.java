@@ -31,4 +31,5 @@ public class GuiIDs
 	public static final int POCKET = 10;
 	public static final int REFINERY = 11;
 	public static final int CAPACITOR = 12;
+	public static final int LIQUID_BOILER = 13;
 }

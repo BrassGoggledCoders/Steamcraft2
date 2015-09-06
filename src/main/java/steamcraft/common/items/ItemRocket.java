@@ -39,7 +39,7 @@ public class ItemRocket extends BaseItemWithMetadata
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(Item item, CreativeTabs tab, List list)
 	{
-		for(int var4 = 0; var4 < this.itemIcon.length; ++var4)
+		for (int var4 = 0; var4 < this.itemIcon.length; ++var4)
 			list.add(new ItemStack(InitItems.itemRocket, 1, var4));
 	}
 
@@ -47,7 +47,7 @@ public class ItemRocket extends BaseItemWithMetadata
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister ir)
 	{
-		for(int i = 0; i < this.itemIcon.length; i++)
+		for (int i = 0; i < this.itemIcon.length; i++)
 			this.itemIcon[i] = ir.registerIcon(ModInfo.PREFIX + "itemRocket" + i);
 	}
 

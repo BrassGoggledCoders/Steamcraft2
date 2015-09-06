@@ -12,9 +12,8 @@
  */
 package steamcraft.common.items;
 
-import boilerplate.api.IOpenableGUI;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import java.util.List;
+
 import net.minecraft.client.gui.GuiScreenBook;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
@@ -27,11 +26,14 @@ import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
 import net.minecraft.util.StringUtils;
 import net.minecraft.world.World;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
+import boilerplate.api.IOpenableGUI;
 import steamcraft.client.lib.GuiIDs;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.ModInfo;
-
-import java.util.List;
 
 public class ItemLoreBook extends BaseItem implements IOpenableGUI
 {
@@ -50,11 +52,11 @@ public class ItemLoreBook extends BaseItem implements IOpenableGUI
 
 	public static boolean validBookTagContents(NBTTagCompound p_77828_0_)
 	{
-		if(!ItemWritableBook.func_150930_a(p_77828_0_))
+		if (!ItemWritableBook.func_150930_a(p_77828_0_))
 		{
 			return false;
 		}
-		else if(!p_77828_0_.hasKey("title", 8))
+		else if (!p_77828_0_.hasKey("title", 8))
 		{
 			return false;
 		}
@@ -68,12 +70,12 @@ public class ItemLoreBook extends BaseItem implements IOpenableGUI
 	@Override
 	public String getItemStackDisplayName(ItemStack p_77653_1_)
 	{
-		if(p_77653_1_.hasTagCompound())
+		if (p_77653_1_.hasTagCompound())
 		{
 			NBTTagCompound nbttagcompound = p_77653_1_.getTagCompound();
 			String s = nbttagcompound.getString("title");
 
-			if(!StringUtils.isNullOrEmpty(s))
+			if (!StringUtils.isNullOrEmpty(s))
 			{
 				return s;
 			}
@@ -87,12 +89,12 @@ public class ItemLoreBook extends BaseItem implements IOpenableGUI
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean bool)
 	{
-		if(stack.hasTagCompound())
+		if (stack.hasTagCompound())
 		{
 			NBTTagCompound nbttagcompound = stack.getTagCompound();
 			String s = nbttagcompound.getString("author");
 
-			if(!StringUtils.isNullOrEmpty(s))
+			if (!StringUtils.isNullOrEmpty(s))
 			{
 				list.add(EnumChatFormatting.GRAY + StatCollector.translateToLocalFormatted("book.byAuthor", s));
 			}
@@ -106,14 +108,14 @@ public class ItemLoreBook extends BaseItem implements IOpenableGUI
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
 	{
-		if(world.isRemote)
+		if (world.isRemote)
 		{
 			player.openGui(Steamcraft.instance, GuiIDs.LORE, world, 0, 0, 0);
 		}
-		if(stack.getTagCompound() == null)
+		if (stack.getTagCompound() == null)
 		{
 			NBTTagList bookPages = new NBTTagList();
-			for(String page2 : this.pages)
+			for (String page2 : this.pages)
 			{
 				NBTTagString page = new NBTTagString(page2);
 				bookPages.appendTag(page);

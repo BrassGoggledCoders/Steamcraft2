@@ -12,16 +12,19 @@
  */
 package steamcraft.common.tiles.energy;
 
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.world.World;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
+import net.minecraftforge.common.util.ForgeDirection;
+
 import boilerplate.api.IOpenableGUI;
 import boilerplate.common.baseclasses.BaseTileWithInventory;
 import cofh.api.energy.EnergyStorage;
 import cofh.api.energy.IEnergyHandler;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.world.World;
-import net.minecraftforge.common.util.ForgeDirection;
 import steamcraft.client.gui.GuiCapacitor;
 import steamcraft.common.tiles.container.ContainerCapacitor;
 
@@ -63,25 +66,24 @@ public class TileCapacitor extends BaseTileWithInventory implements IEnergyHandl
 	@Override
 	public void updateEntity()
 	{
-		if(!this.worldObj.isRemote)
+		if (!this.worldObj.isRemote)
 		{
 			/*
-			short outputEnergy = (short) this.extractEnergy(ForgeDirection.UNKNOWN, this.transferRate, true);
-
-			if(outputEnergy > 0)
-				for(ForgeDirection direction : EnumSet.allOf(ForgeDirection.class))
-					if(outputEnergy > 0)
-					{
-						TileEntity tileEntity = this.worldObj.getTileEntity(this.xCoord + direction.offsetX, this.yCoord + direction.offsetY,
-								this.zCoord + direction.offsetZ);
-
-						if(tileEntity instanceof IEnergyReceiver)
-							outputEnergy -= this.extractEnergy(ForgeDirection.UNKNOWN,
-									((IEnergyReceiver) tileEntity).receiveEnergy(direction.getOpposite(), outputEnergy, false), false);
-					}
-					else
-						break;
-			*/
+			 * short outputEnergy = (short)
+			 * this.extractEnergy(ForgeDirection.UNKNOWN, this.transferRate,
+			 * true);
+			 * 
+			 * if(outputEnergy > 0) for(ForgeDirection direction :
+			 * EnumSet.allOf(ForgeDirection.class)) if(outputEnergy > 0) {
+			 * TileEntity tileEntity = this.worldObj.getTileEntity(this.xCoord +
+			 * direction.offsetX, this.yCoord + direction.offsetY, this.zCoord +
+			 * direction.offsetZ);
+			 * 
+			 * if(tileEntity instanceof IEnergyReceiver) outputEnergy -=
+			 * this.extractEnergy(ForgeDirection.UNKNOWN, ((IEnergyReceiver)
+			 * tileEntity).receiveEnergy(direction.getOpposite(), outputEnergy,
+			 * false), false); } else break;
+			 */
 		}
 	}
 
@@ -124,12 +126,12 @@ public class TileCapacitor extends BaseTileWithInventory implements IEnergyHandl
 	@Override
 	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
 	{
-		return new GuiCapacitor(player.inventory, (TileCapacitor)world.getTileEntity(x, y, z));
+		return new GuiCapacitor(player.inventory, (TileCapacitor) world.getTileEntity(x, y, z));
 	}
 
 	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
 	{
-		return new ContainerCapacitor(player.inventory, (TileCapacitor)world.getTileEntity(x, y, z));
+		return new ContainerCapacitor(player.inventory, (TileCapacitor) world.getTileEntity(x, y, z));
 	}
 }

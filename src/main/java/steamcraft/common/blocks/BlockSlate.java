@@ -54,7 +54,7 @@ public class BlockSlate extends BaseMetadataBlock
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(final int side, final int metadata)
 	{
-		if(metadata < this.icon.length)
+		if (metadata < this.icon.length)
 			return this.icon[metadata];
 		else
 			return this.icon[0];
@@ -84,7 +84,7 @@ public class BlockSlate extends BaseMetadataBlock
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(final Item item, final CreativeTabs tab, final List l)
 	{
-		for(int var4 = 0; var4 < this.icon.length; ++var4)
+		for (int var4 = 0; var4 < this.icon.length; ++var4)
 			l.add(new ItemStack(InitBlocks.blockSlate, 1, var4));
 	}
 
@@ -93,20 +93,20 @@ public class BlockSlate extends BaseMetadataBlock
 	{
 		ArrayList<ItemStack> drop = new ArrayList<ItemStack>();
 
-		switch(metadata)
+		switch (metadata)
 		{
-			case 0:
-				drop.add(new ItemStack(InitBlocks.blockSlate, 1, 3));
-				break;
-			case 1:
-				drop.add(new ItemStack(InitBlocks.blockSlate, 1, 4));
-				break;
-			case 2:
-				drop.add(new ItemStack(InitBlocks.blockSlate, 1, 5));
-				break;
-			default:
-				drop.add(0, new ItemStack(InitBlocks.blockSlate, 1, metadata));
-				break;
+		case 0:
+			drop.add(new ItemStack(InitBlocks.blockSlate, 1, 3));
+			break;
+		case 1:
+			drop.add(new ItemStack(InitBlocks.blockSlate, 1, 4));
+			break;
+		case 2:
+			drop.add(new ItemStack(InitBlocks.blockSlate, 1, 5));
+			break;
+		default:
+			drop.add(0, new ItemStack(InitBlocks.blockSlate, 1, metadata));
+			break;
 		}
 
 		return drop;

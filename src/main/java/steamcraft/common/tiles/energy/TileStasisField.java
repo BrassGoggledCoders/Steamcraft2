@@ -18,9 +18,11 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
+
+import net.minecraftforge.common.util.ForgeDirection;
+
 import cofh.api.energy.EnergyStorage;
 import cofh.api.energy.IEnergyReceiver;
-import net.minecraftforge.common.util.ForgeDirection;
 
 /**
  * @author warlordjones, MrIbby
@@ -38,17 +40,17 @@ public class TileStasisField extends TileEntity implements IEnergyReceiver
 	@Override
 	public void updateEntity()
 	{
-		if(!this.worldObj.isRemote)
+		if (!this.worldObj.isRemote)
 		{
-			AxisAlignedBB axisalignedbb = AxisAlignedBB.getBoundingBox((double) this.xCoord - 2, (double) this.yCoord - 2,
-					(double) this.zCoord - 2, this.xCoord + 2, this.yCoord + 2, this.zCoord + 2);
+			AxisAlignedBB axisalignedbb = AxisAlignedBB.getBoundingBox((double) this.xCoord - 2, (double) this.yCoord - 2, (double) this.zCoord - 2,
+					this.xCoord + 2, this.yCoord + 2, this.zCoord + 2);
 			List list = this.worldObj.getEntitiesWithinAABB(EntityItem.class, axisalignedbb);
 
-			for(Object obj : list)
+			for (Object obj : list)
 			{
 				EntityItem item = (EntityItem) obj;
 				int itemNumber = item.getEntityItem().stackSize;
-				if(this.buffer.getEnergyStored() >= (RFPerTickPerItem * itemNumber))
+				if (this.buffer.getEnergyStored() >= (RFPerTickPerItem * itemNumber))
 				{
 					item.age = 0;
 					this.buffer.modifyEnergyStored(-RFPerTickPerItem * itemNumber);

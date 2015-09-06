@@ -22,9 +22,9 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-import steamcraft.api.item.IDefensiveArmorModule;
 import boilerplate.client.ClientHelper;
 import boilerplate.common.baseclasses.items.RootItem;
+import steamcraft.api.item.IDefensiveArmorModule;
 
 public abstract class BaseDefensiveModule extends RootItem implements IDefensiveArmorModule
 {
@@ -46,12 +46,10 @@ public abstract class BaseDefensiveModule extends RootItem implements IDefensive
 				this.getWrappedDesc(list, stack);
 			}
 			/*
-			 * if (this.getEnergyConsumedOnEffect() != 0)
-			 * list.add("Energy Usage on Effect: " +
-			 * this.getEnergyConsumedOnEffect()); if
-			 * (this.getSteamConsumedOnEffect() != 0)
-			 * list.add("Steam Usage on Effect: " +
-			 * this.getSteamConsumedOnEffect());
+			 * if (this.getEnergyConsumedOnEffect() != 0) list.add(
+			 * "Energy Usage on Effect: " + this.getEnergyConsumedOnEffect());
+			 * if (this.getSteamConsumedOnEffect() != 0) list.add(
+			 * "Steam Usage on Effect: " + this.getSteamConsumedOnEffect());
 			 */
 		}
 		else

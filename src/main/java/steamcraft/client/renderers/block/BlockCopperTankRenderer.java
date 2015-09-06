@@ -17,11 +17,11 @@ import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
 import net.minecraft.world.IBlockAccess;
 
-import org.lwjgl.opengl.GL11;
+import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 
+import org.lwjgl.opengl.GL11;
 import steamcraft.client.lib.RenderIDs;
 import steamcraft.common.tiles.TileCopperTank;
-import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 
 /**
  * @author Decebaldecebal
@@ -36,7 +36,7 @@ public class BlockCopperTankRenderer implements ISimpleBlockRenderingHandler
 		GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
 
 		TileCopperTank te = new TileCopperTank();
-		
+
 		te.blockType = block;
 		te.blockMetadata = metadata;
 
@@ -45,8 +45,7 @@ public class BlockCopperTankRenderer implements ISimpleBlockRenderingHandler
 	}
 
 	@Override
-	public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelID,
-			RenderBlocks renderer)
+	public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelID, RenderBlocks renderer)
 	{
 		return true;
 	}

@@ -101,16 +101,16 @@ public class TileArmorEditor extends BaseTileWithInventory implements IInventory
 			}
 		}
 	}
-
+	
 	@Override
 	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
 	{
-		return new GuiArmorEditor(player.inventory, (TileArmorEditor)world.getTileEntity(x, y, z));
+		return new GuiArmorEditor(player.inventory, (TileArmorEditor) world.getTileEntity(x, y, z));
 	}
 
 	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
 	{
-		return new ContainerArmorEditor(player.inventory, (TileArmorEditor)world.getTileEntity(x, y, z));
+		return new ContainerArmorEditor(player.inventory, (TileArmorEditor) world.getTileEntity(x, y, z));
 	}
 }

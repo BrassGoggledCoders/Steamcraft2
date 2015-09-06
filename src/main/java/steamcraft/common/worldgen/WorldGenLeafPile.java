@@ -36,19 +36,18 @@ public class WorldGenLeafPile extends WorldGenerator
 		byte b0 = 1;
 		boolean flag = false;
 
-		for(int i1 = x - l; i1 <= (x + l); ++i1)
+		for (int i1 = x - l; i1 <= (x + l); ++i1)
 		{
-			for(int j1 = z - l; j1 <= (z + l); ++j1)
+			for (int j1 = z - l; j1 <= (z + l); ++j1)
 			{
 				int k1 = i1 - x;
 				int l1 = j1 - z;
 
-				if(((k1 * k1) + (l1 * l1)) <= (l * l))
+				if (((k1 * k1) + (l1 * l1)) <= (l * l))
 				{
-					for(int i2 = y - b0; i2 <= (y + b0); ++i2)
+					for (int i2 = y - b0; i2 <= (y + b0); ++i2)
 					{
-						if(world.isAirBlock(i1, j1 + 1, k1)
-								&& InitBlocks.blockLeafCover.canPlaceBlockAt(world, i1, j1 + 1, k1))
+						if (world.isAirBlock(i1, j1 + 1, k1) && InitBlocks.blockLeafCover.canPlaceBlockAt(world, i1, j1 + 1, k1))
 						{
 							world.setBlock(i1, j1 + 1, k1, this.block, random.nextInt(6), 2);
 						}

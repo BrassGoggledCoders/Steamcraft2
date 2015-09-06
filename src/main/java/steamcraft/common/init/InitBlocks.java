@@ -88,6 +88,7 @@ import steamcraft.common.blocks.machines.BlockCopperWire;
 import steamcraft.common.blocks.machines.BlockDropHammerAnvil;
 import steamcraft.common.blocks.machines.BlockIntake;
 import steamcraft.common.blocks.machines.BlockLightningRod;
+import steamcraft.common.blocks.machines.BlockLiquidBoiler;
 import steamcraft.common.blocks.machines.BlockNuclearBoiler;
 import steamcraft.common.blocks.machines.BlockRefinery;
 import steamcraft.common.blocks.machines.BlockSawmill;
@@ -103,6 +104,7 @@ import steamcraft.common.tiles.TileBloomery;
 import steamcraft.common.tiles.TileCopperPipe;
 import steamcraft.common.tiles.TileCopperTank;
 import steamcraft.common.tiles.TileIntake;
+import steamcraft.common.tiles.TileLiquidBoiler;
 import steamcraft.common.tiles.TileNuclearBoiler;
 import steamcraft.common.tiles.TileRefinery;
 import steamcraft.common.tiles.TileSteamBoiler;
@@ -205,7 +207,8 @@ public class InitBlocks
 	public static Block blockSteam;
 
 	/* Machines */
-	public static Block blockSteamBoiler, blockNuclearBoiler, blockIntake, blockTurbine, blockBattery, blockCharger, blockCapacitor;
+	public static Block blockSteamBoiler, blockNuclearBoiler, blockLiquidBoiler;
+	public static Block blockIntake, blockTurbine, blockBattery, blockCharger, blockCapacitor;
 	public static Block blockStonebrickWall, blockStoneslabWall, blockBrickWall;
 	public static Block blockTeaPlant, blockHatch;
 	public static Block blockTimeBomb;
@@ -310,11 +313,13 @@ public class InitBlocks
 	{
 		// Steam related
 		blockSteamBoiler = new BlockSteamBoiler().setBlockName("blockSteamBoiler");
-		blockNuclearBoiler = new BlockNuclearBoiler().setBlockName("blockNuclearBoiler");
-		blockIntake = new BlockIntake().setBlockName("blockIntake");
-
 		RegistryHelper.registerContainerBlockWithDesc(blockSteamBoiler, TileSteamBoiler.class, "BlockSteamBoiler");
+		blockNuclearBoiler = new BlockNuclearBoiler().setBlockName("blockNuclearBoiler");
 		RegistryHelper.registerContainerBlockWithDesc(blockNuclearBoiler, TileNuclearBoiler.class, "BlockNuclearBoiler");
+		blockLiquidBoiler = new BlockLiquidBoiler().setBlockName("blockLiquidBoiler");
+		RegistryHelper.registerContainerBlockWithDesc(blockLiquidBoiler, TileLiquidBoiler.class, "BlockLiquidBoiler");
+
+		blockIntake = new BlockIntake().setBlockName("blockIntake");
 		RegistryHelper.registerContainerBlockWithDesc(blockIntake, TileIntake.class, "BlockIntake");
 
 		// Energy related

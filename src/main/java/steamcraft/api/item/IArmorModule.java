@@ -36,12 +36,11 @@ public interface IArmorModule extends IModule
 	public static enum EnumArmorEffectType
 	{
 		/** Called every tick while the armor is worn, server and clientside. */
-		ONTICK,
-		/** See @link IDefensiveArmorModule for more info on this */
-		DEFENSIVE,
-		/** Clientside. Allows you to display on the player's screen */
-		HUD,
-		/** SC2 Use Only! */
+		ONTICK, /** See @link IDefensiveArmorModule for more info on this */
+		DEFENSIVE, /**
+					 * Clientside. Allows you to display on the player's screen
+					 */
+		HUD, /** SC2 Use Only! */
 		SPECIAL
 	}
 

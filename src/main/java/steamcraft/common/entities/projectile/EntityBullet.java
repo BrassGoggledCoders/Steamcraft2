@@ -20,9 +20,9 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 
+import boilerplate.common.baseclasses.BaseShootableEntity;
 import steamcraft.common.lib.DamageSourceHandler;
 import steamcraft.common.lib.ModInfo;
-import boilerplate.common.baseclasses.BaseShootableEntity;
 
 /**
  * @author Surseance (Johnny Eatmon)
@@ -48,7 +48,7 @@ public class EntityBullet extends BaseShootableEntity
 	@Override
 	public void onHitEntity(Entity entity)
 	{
-		if(entity.attackEntityFrom(DamageSourceHandler.bullet, this.damage))
+		if (entity.attackEntityFrom(DamageSourceHandler.bullet, this.damage))
 		{
 			this.worldObj.playSoundAtEntity(this, ModInfo.PREFIX + "hitflesh", 1.0F, 1.2F / ((this.rand.nextFloat() * 0.2F) + 0.9F));
 			this.setDead();
@@ -66,7 +66,7 @@ public class EntityBullet extends BaseShootableEntity
 	@Override
 	public void onHitBlock(Block block, MovingObjectPosition mop)
 	{
-		if((block == Blocks.glass) || (block == Blocks.glowstone) || (block == Blocks.glass_pane) || (block == Blocks.ice)
+		if ((block == Blocks.glass) || (block == Blocks.glowstone) || (block == Blocks.glass_pane) || (block == Blocks.ice)
 				|| (block == Blocks.stained_glass) || (block == Blocks.stained_glass_pane))
 		{
 			this.worldObj.playSoundEffect(this.xTile + 0.5D, this.yTile + 0.5D, this.zTile + 0.5D, block.stepSound.getBreakSound(), 1.0F, 1.0F);
@@ -77,8 +77,7 @@ public class EntityBullet extends BaseShootableEntity
 			this.motionX = (float) (mop.hitVec.xCoord - this.posX);
 			this.motionY = (float) (mop.hitVec.yCoord - this.posY);
 			this.motionZ = (float) (mop.hitVec.zCoord - this.posZ);
-			float magnitude = MathHelper.sqrt_double((this.motionX * this.motionX) + (this.motionY * this.motionY)
-					+ (this.motionZ * this.motionZ));
+			float magnitude = MathHelper.sqrt_double((this.motionX * this.motionX) + (this.motionY * this.motionY) + (this.motionZ * this.motionZ));
 			this.posX -= (this.motionX / magnitude) * 0.05000000074505806D;
 			this.posY -= (this.motionY / magnitude) * 0.05000000074505806D;
 			this.posZ -= (this.motionZ / magnitude) * 0.05000000074505806D;

@@ -43,52 +43,52 @@ public class ItemMonsterSpawner extends BaseItemWithMetadata
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
 	{
-		if(!player.capabilities.isCreativeMode)
+		if (!player.capabilities.isCreativeMode)
 		{
 			--stack.stackSize;
 		}
 
-		if(!world.isRemote)
+		if (!world.isRemote)
 		{
 			EntityLivingBase entity = null;
-			switch(stack.getItemDamage())
+			switch (stack.getItemDamage())
 			{
-				case 0:
-					entity = new EntityGrub(world);
-					break;
-				case 1:
-					entity = new EntityLostMiner(world);
-					break;
-				case 2:
-					entity = new EntityBoar(world);
-					break;
-				case 3:
-					entity = new EntityGhostSpider(world);
-					break;
-				case 4:
-					entity = new EntityGiantSpider(world);
-					break;
-				case 5:
-					entity = new EntitySpiderQueen(world);
-					break;
-				case 6:
-					entity = new EntityAbandonedGolem(world);
-					break;
-				case 7:
-					entity = new EntityShroomSkeleton(world);
-					break;
-				case 8:
-					entity = new EntityShroomZombie(world);
-					break;
-				case 9:
-					entity = new EntityVampireBat(world);
-					break;
-				case 10:
-					entity = new EntityWhale(world);
-					break;
-				default:
-					entity = new EntitySheep(world);
-					break;
+			case 0:
+				entity = new EntityGrub(world);
+				break;
+			case 1:
+				entity = new EntityLostMiner(world);
+				break;
+			case 2:
+				entity = new EntityBoar(world);
+				break;
+			case 3:
+				entity = new EntityGhostSpider(world);
+				break;
+			case 4:
+				entity = new EntityGiantSpider(world);
+				break;
+			case 5:
+				entity = new EntitySpiderQueen(world);
+				break;
+			case 6:
+				entity = new EntityAbandonedGolem(world);
+				break;
+			case 7:
+				entity = new EntityShroomSkeleton(world);
+				break;
+			case 8:
+				entity = new EntityShroomZombie(world);
+				break;
+			case 9:
+				entity = new EntityVampireBat(world);
+				break;
+			case 10:
+				entity = new EntityWhale(world);
+				break;
+			default:
+				entity = new EntitySheep(world);
+				break;
 			}
 			entity.setPosition(player.posX, player.posY, player.posZ);
 			world.spawnEntityInWorld(entity);
@@ -101,7 +101,7 @@ public class ItemMonsterSpawner extends BaseItemWithMetadata
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(Item item, CreativeTabs tab, List l)
 	{
-		for(int var4 = 0; var4 < 11; ++var4)
+		for (int var4 = 0; var4 < 11; ++var4)
 			l.add(new ItemStack(InitItems.itemMonsterSpawner, 1, var4));
 	}
 }

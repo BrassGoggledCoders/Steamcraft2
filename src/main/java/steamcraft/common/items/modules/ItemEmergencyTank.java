@@ -60,21 +60,21 @@ public class ItemEmergencyTank extends BaseArmorModule
 	@Override
 	public void applyModuleEffect(World world, EntityPlayer player, ItemStack stack)
 	{
-		if(player.isBurning())
+		if (player.isBurning())
 		{
 			player.extinguish();
 			int x = (int) Math.floor(player.posX);
 			int y = (int) Math.floor(player.posY);
 			int z = (int) Math.floor(player.posZ);
-			for(int i = 0; i < 20; i++)
+			for (int i = 0; i < 20; i++)
 				world.spawnParticle("splash", x + world.rand.nextFloat(), y + world.rand.nextFloat(), z + world.rand.nextFloat(),
 						0 + world.rand.nextFloat(), 0 + world.rand.nextFloat(), 0 + world.rand.nextFloat());
-			for(int xOff = -3; xOff <= 3; xOff++)
+			for (int xOff = -3; xOff <= 3; xOff++)
 			{
-				for(int yOff = -3; yOff <= 3; yOff++)
+				for (int yOff = -3; yOff <= 3; yOff++)
 				{
-					for(int zOff = -3; zOff <= 3; zOff++)
-						if(player.worldObj.getBlock(x + xOff, y + yOff, z + zOff) == Blocks.fire)
+					for (int zOff = -3; zOff <= 3; zOff++)
+						if (player.worldObj.getBlock(x + xOff, y + yOff, z + zOff) == Blocks.fire)
 						{
 							player.worldObj.setBlock(x + xOff, y + yOff, z + zOff, Blocks.air);
 							player.worldObj.playSoundEffect(x + xOff + 0.5D, y + yOff + 0.5D, z + zOff + 0.5D, "random.fizz", 0.5F,

@@ -54,13 +54,13 @@ public class BlockTimeBomb extends BaseContainerBlock
 	@Override
 	public boolean onBlockActivated(World world, int par2, int par3, int par4, EntityPlayer player, int par6, float par7, float par8, float par9)
 	{
-		if(world.isRemote)
+		if (world.isRemote)
 			return true;
 		else
 		{
 			TileTimeBomb tile = (TileTimeBomb) world.getTileEntity(par2, par3, par4);
 
-			if((tile == null) || player.isSneaking())
+			if ((tile == null) || player.isSneaking())
 				return false;
 
 			player.openGui(Steamcraft.instance, GuiIDs.TIMEBOMB, world, par2, par3, par4);
@@ -72,12 +72,12 @@ public class BlockTimeBomb extends BaseContainerBlock
 	@Override
 	public IIcon getIcon(int side, int meta)
 	{
-		switch(side)
+		switch (side)
 		{
-			case 1:
-				return this.iconEnd; // top
-			default:
-				return this.blockIcon; // sides
+		case 1:
+			return this.iconEnd; // top
+		default:
+			return this.blockIcon; // sides
 		}
 	}
 
@@ -92,12 +92,11 @@ public class BlockTimeBomb extends BaseContainerBlock
 	@Override
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase ent, ItemStack stack)
 	{
-		if((ent != null) && (ent instanceof EntityPlayer))
+		if ((ent != null) && (ent instanceof EntityPlayer))
 		{
 			EntityPlayer player = (EntityPlayer) ent;
-			LoggerSteamcraft.info(
-					"Time Bomb placed at X: " + Integer.toString(x) + " Y: " + Integer.toString(y) + " Z: " + Integer.toString(z) + " by player: "
-							+ player.getCommandSenderName());
+			LoggerSteamcraft.info("Time Bomb placed at X: " + Integer.toString(x) + " Y: " + Integer.toString(y) + " Z: " + Integer.toString(z)
+					+ " by player: " + player.getCommandSenderName());
 		}
 	}
 

@@ -32,7 +32,8 @@ public class BlockThin extends BaseBlock
 	}
 
 	/**
-	 * Returns a bounding box from the pool of bounding boxes (this means this box can change after the pool has been cleared to be reused)
+	 * Returns a bounding box from the pool of bounding boxes (this means this
+	 * box can change after the pool has been cleared to be reused)
 	 */
 	@Override
 	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z)
@@ -41,8 +42,9 @@ public class BlockThin extends BaseBlock
 	}
 
 	/**
-	 * Is this block (a) opaque and (b) a full 1m cube? This determines whether or not to render the shared face of two adjacent blocks and also whether the
-	 * player can attach torches, redstone wire, etc to this block.
+	 * Is this block (a) opaque and (b) a full 1m cube? This determines whether
+	 * or not to render the shared face of two adjacent blocks and also whether
+	 * the player can attach torches, redstone wire, etc to this block.
 	 */
 	@Override
 	public boolean isOpaqueCube()
@@ -51,7 +53,8 @@ public class BlockThin extends BaseBlock
 	}
 
 	/**
-	 * If this block doesn't render as an ordinary block it will return False (examples: signs, buttons, stairs, etc)
+	 * If this block doesn't render as an ordinary block it will return False
+	 * (examples: signs, buttons, stairs, etc)
 	 */
 	@Override
 	public boolean renderAsNormalBlock()
@@ -76,7 +79,8 @@ public class BlockThin extends BaseBlock
 	}
 
 	/**
-	 * Checks to see if its valid to put this block at the specified coordinates. Args: world, x, y, z
+	 * Checks to see if its valid to put this block at the specified
+	 * coordinates. Args: world, x, y, z
 	 */
 	@Override
 	public boolean canPlaceBlockAt(World p_149742_1_, int p_149742_2_, int p_149742_3_, int p_149742_4_)
@@ -86,8 +90,9 @@ public class BlockThin extends BaseBlock
 	}
 
 	/**
-	 * Lets the block know when one of its neighbor changes. Doesn't know which neighbor changed (coordinates passed are their own) Args: x, y, z, neighbor
-	 * Block
+	 * Lets the block know when one of its neighbor changes. Doesn't know which
+	 * neighbor changed (coordinates passed are their own) Args: x, y, z,
+	 * neighbor Block
 	 */
 	@Override
 	public void onNeighborBlockChange(World p_149695_1_, int p_149695_2_, int p_149695_3_, int p_149695_4_, Block p_149695_5_)
@@ -97,9 +102,10 @@ public class BlockThin extends BaseBlock
 
 	private boolean func_150090_e(World p_150090_1_, int p_150090_2_, int p_150090_3_, int p_150090_4_)
 	{
-		if(!this.canBlockStay(p_150090_1_, p_150090_2_, p_150090_3_, p_150090_4_))
+		if (!this.canBlockStay(p_150090_1_, p_150090_2_, p_150090_3_, p_150090_4_))
 		{
-			this.dropBlockAsItem(p_150090_1_, p_150090_2_, p_150090_3_, p_150090_4_, p_150090_1_.getBlockMetadata(p_150090_2_, p_150090_3_, p_150090_4_), 0);
+			this.dropBlockAsItem(p_150090_1_, p_150090_2_, p_150090_3_, p_150090_4_,
+					p_150090_1_.getBlockMetadata(p_150090_2_, p_150090_3_, p_150090_4_), 0);
 			p_150090_1_.setBlockToAir(p_150090_2_, p_150090_3_, p_150090_4_);
 			return false;
 		}
@@ -110,7 +116,8 @@ public class BlockThin extends BaseBlock
 	}
 
 	/**
-	 * Can this block stay at this position. Similar to canPlaceBlockAt except gets checked often with plants.
+	 * Can this block stay at this position. Similar to canPlaceBlockAt except
+	 * gets checked often with plants.
 	 */
 	@Override
 	public boolean canBlockStay(World p_149718_1_, int p_149718_2_, int p_149718_3_, int p_149718_4_)
@@ -119,7 +126,9 @@ public class BlockThin extends BaseBlock
 	}
 
 	/**
-	 * Returns true if the given side of this block type should be rendered, if the adjacent block is at the given coordinates. Args: blockAccess, x, y, z, side
+	 * Returns true if the given side of this block type should be rendered, if
+	 * the adjacent block is at the given coordinates. Args: blockAccess, x, y,
+	 * z, side
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
@@ -129,7 +138,8 @@ public class BlockThin extends BaseBlock
 	}
 
 	/**
-	 * Determines the damage on the item the block drops. Used in cloth and wood.
+	 * Determines the damage on the item the block drops. Used in cloth and
+	 * wood.
 	 */
 	@Override
 	public int damageDropped(int p_149692_1_)

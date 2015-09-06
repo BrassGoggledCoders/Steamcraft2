@@ -46,14 +46,16 @@ public class BiomeDepthsBase extends BiomeGenBase
 		this.spawnableMonsterList.add(new BiomeGenBase.SpawnListEntry(EntityShroomSkeleton.class, 10, 1, 3));
 		this.spawnableMonsterList.add(new BiomeGenBase.SpawnListEntry(EntityShroomZombie.class, 10, 1, 3));
 		this.spawnableMonsterList.add(new BiomeGenBase.SpawnListEntry(EntityAbandonedGolem.class, 1, 1, 1));
-		// this.spawnableMonsterList.add(new BiomeGenBase.SpawnListEntry(EntityGrub.class, 10, 3, 6));
+		// this.spawnableMonsterList.add(new
+		// BiomeGenBase.SpawnListEntry(EntityGrub.class, 10, 3, 6));
 		this.spawnableMonsterList.add(new BiomeGenBase.SpawnListEntry(EntityVampireBat.class, 10, 4, 4));
 		this.spawnableMonsterList.add(new BiomeGenBase.SpawnListEntry(EntityGhostSpider.class, 100, 4, 4));
 		this.spawnableMonsterList.add(new BiomeGenBase.SpawnListEntry(EntityCaveSpider.class, 100, 4, 4));
 		this.spawnableMonsterList.add(new BiomeGenBase.SpawnListEntry(EntityGiantSpider.class, 10, 1, 4));
 		// Animals
 		this.spawnableCreatureList.add(new BiomeGenBase.SpawnListEntry(EntityBoar.class, 10, 4, 4));
-		// this.spawnableWaterCreatureList.add(new BiomeGenBase.SpawnListEntry(EntityWhale.class, 5, 1, 5));
+		// this.spawnableWaterCreatureList.add(new
+		// BiomeGenBase.SpawnListEntry(EntityWhale.class, 5, 1, 5));
 
 		this.topBlock = Blocks.grass;
 		this.fillerBlock = Blocks.dirt;

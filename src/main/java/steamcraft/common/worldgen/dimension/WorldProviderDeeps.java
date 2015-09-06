@@ -47,7 +47,8 @@ public class WorldProviderDeeps extends WorldProvider
 	}
 
 	/**
-	 * A Message to display to the user when they transfer out of this dismension.
+	 * A Message to display to the user when they transfer out of this
+	 * dismension.
 	 *
 	 * @return The message to be displayed
 	 */
@@ -68,7 +69,7 @@ public class WorldProviderDeeps extends WorldProvider
 	@Override
 	public IChunkProvider createChunkGenerator()
 	{
-		if(this.chunkProvider == null)
+		if (this.chunkProvider == null)
 		{
 			this.chunkProvider = new ChunkProviderDeeps(this.worldObj, this.worldObj.getSeed());
 			return this.chunkProvider;
@@ -95,7 +96,8 @@ public class WorldProviderDeeps extends WorldProvider
 	}
 
 	/**
-	 * Calculates the angle of sun and moon in the sky relative to a specified time (usually worldTime)
+	 * Calculates the angle of sun and moon in the sky relative to a specified
+	 * time (usually worldTime)
 	 */
 	@Override
 	public float calculateCelestialAngle(long p_76563_1_, float p_76563_3_)
@@ -105,7 +107,9 @@ public class WorldProviderDeeps extends WorldProvider
 
 	/*
 	 * @Override
-	 * @SideOnly(Side.CLIENT) public IRenderHandler getSkyRenderer() { return new DeepsSkyRenderer(); }
+	 * 
+	 * @SideOnly(Side.CLIENT) public IRenderHandler getSkyRenderer() { return
+	 * new DeepsSkyRenderer(); }
 	 */
 
 	@Override
@@ -119,7 +123,7 @@ public class WorldProviderDeeps extends WorldProvider
 	{
 		float var1 = 0.1F;
 
-		for(int var2 = 0; var2 <= 15; ++var2)
+		for (int var2 = 0; var2 <= 15; ++var2)
 		{
 			float var3 = 1.0F - (var2 / 15.0F);
 			this.lightBrightnessTable[var2] = (((1.0F - var3) / ((var3 * 3.0F) + 1.0F)) * (1.0F - var1)) + var1;

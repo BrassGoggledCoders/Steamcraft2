@@ -23,16 +23,16 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
-import steamcraft.api.block.IHammerable;
-import steamcraft.common.Steamcraft;
-import steamcraft.common.init.InitBlocks;
-import steamcraft.common.init.InitItems;
-import steamcraft.common.lib.ModInfo;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 import boilerplate.common.baseclasses.blocks.BaseMetadataBlock;
+import steamcraft.api.block.IHammerable;
+import steamcraft.common.Steamcraft;
+import steamcraft.common.init.InitBlocks;
+import steamcraft.common.init.InitItems;
+import steamcraft.common.lib.ModInfo;
 
 /**
  * @author Surseance
@@ -64,7 +64,7 @@ public class BlockSteamcraftOre extends BaseMetadataBlock implements IHammerable
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(int side, int metadata)
 	{
-		if(metadata < this.icon.length)
+		if (metadata < this.icon.length)
 			return this.icon[metadata];
 		else
 			return this.icon[0];
@@ -88,14 +88,14 @@ public class BlockSteamcraftOre extends BaseMetadataBlock implements IHammerable
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(Item item, CreativeTabs tab, List l)
 	{
-		for(int var4 = 0; var4 < 7; ++var4)
+		for (int var4 = 0; var4 < 7; ++var4)
 			l.add(new ItemStack(InitBlocks.blockCustomOre, 1, var4));
 	}
 
 	@Override
 	public ItemStack getOutput(int meta)
 	{
-		if(meta < 4)
+		if (meta < 4)
 			return new ItemStack(InitItems.itemPowder);
 		else
 			return null;
@@ -106,20 +106,20 @@ public class BlockSteamcraftOre extends BaseMetadataBlock implements IHammerable
 	{
 		ArrayList<ItemStack> drop = new ArrayList<ItemStack>();
 
-		switch(metadata)
+		switch (metadata)
 		{
-			case 4:
-				drop.add(new ItemStack(InitItems.itemResource, 1, 4));
-				break;
-			case 5:
-				drop.add(new ItemStack(InitItems.itemResource, 2 + world.rand.nextInt(3), 1));
-				break;
-			case 6:
-				drop.add(new ItemStack(InitItems.itemResource, 2 + world.rand.nextInt(3), 3));
-				break;
-			default:
-				drop.add(0, new ItemStack(InitBlocks.blockCustomOre, 1, metadata));
-				break;
+		case 4:
+			drop.add(new ItemStack(InitItems.itemResource, 1, 3));
+			break;
+		case 5:
+			drop.add(new ItemStack(InitItems.itemResource, 2 + world.rand.nextInt(3), 0));
+			break;
+		case 6:
+			drop.add(new ItemStack(InitItems.itemResource, 2 + world.rand.nextInt(3), 1));
+			break;
+		default:
+			drop.add(0, new ItemStack(InitBlocks.blockCustomOre, 1, metadata));
+			break;
 		}
 
 		return drop;

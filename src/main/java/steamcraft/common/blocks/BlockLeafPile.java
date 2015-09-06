@@ -36,21 +36,22 @@ public class BlockLeafPile extends BaseBlock
 	}
 
 	/**
-	 * Returns a bounding box from the pool of bounding boxes (this means this box can change after the pool has been cleared to be reused)
+	 * Returns a bounding box from the pool of bounding boxes (this means this
+	 * box can change after the pool has been cleared to be reused)
 	 */
 	@Override
 	public AxisAlignedBB getCollisionBoundingBoxFromPool(World p_149668_1_, int p_149668_2_, int p_149668_3_, int p_149668_4_)
 	{
 		int l = p_149668_1_.getBlockMetadata(p_149668_2_, p_149668_3_, p_149668_4_) & 7;
 		float f = 0.125F;
-		return AxisAlignedBB.getBoundingBox(p_149668_2_ + this.minX, p_149668_3_ + this.minY, p_149668_4_ + this.minZ, p_149668_2_ + this.maxX, p_149668_3_
-				+ (l
-						* f), p_149668_4_ + this.maxZ);
+		return AxisAlignedBB.getBoundingBox(p_149668_2_ + this.minX, p_149668_3_ + this.minY, p_149668_4_ + this.minZ, p_149668_2_ + this.maxX,
+				p_149668_3_ + (l * f), p_149668_4_ + this.maxZ);
 	}
 
 	/**
-	 * Is this block (a) opaque and (b) a full 1m cube? This determines whether or not to render the shared face of two adjacent blocks and also whether the
-	 * player can attach torches, redstone wire, etc to this block.
+	 * Is this block (a) opaque and (b) a full 1m cube? This determines whether
+	 * or not to render the shared face of two adjacent blocks and also whether
+	 * the player can attach torches, redstone wire, etc to this block.
 	 */
 	@Override
 	public boolean isOpaqueCube()
@@ -59,7 +60,8 @@ public class BlockLeafPile extends BaseBlock
 	}
 
 	/**
-	 * If this block doesn't render as an ordinary block it will return False (examples: signs, buttons, stairs, etc)
+	 * If this block doesn't render as an ordinary block it will return False
+	 * (examples: signs, buttons, stairs, etc)
 	 */
 	@Override
 	public boolean renderAsNormalBlock()
@@ -77,7 +79,8 @@ public class BlockLeafPile extends BaseBlock
 	}
 
 	/**
-	 * Updates the blocks bounds based on its current state. Args: world, x, y, z
+	 * Updates the blocks bounds based on its current state. Args: world, x, y,
+	 * z
 	 */
 	@Override
 	public void setBlockBoundsBasedOnState(IBlockAccess p_149719_1_, int p_149719_2_, int p_149719_3_, int p_149719_4_)
@@ -93,7 +96,8 @@ public class BlockLeafPile extends BaseBlock
 	}
 
 	/**
-	 * Checks to see if its valid to put this block at the specified coordinates. Args: world, x, y, z
+	 * Checks to see if its valid to put this block at the specified
+	 * coordinates. Args: world, x, y, z
 	 */
 	@Override
 	public boolean canPlaceBlockAt(World p_149742_1_, int p_149742_2_, int p_149742_3_, int p_149742_4_)
@@ -103,8 +107,9 @@ public class BlockLeafPile extends BaseBlock
 	}
 
 	/**
-	 * Lets the block know when one of its neighbor changes. Doesn't know which neighbor changed (coordinates passed are their own) Args: x, y, z, neighbor
-	 * Block
+	 * Lets the block know when one of its neighbor changes. Doesn't know which
+	 * neighbor changed (coordinates passed are their own) Args: x, y, z,
+	 * neighbor Block
 	 */
 	@Override
 	public void onNeighborBlockChange(World p_149695_1_, int p_149695_2_, int p_149695_3_, int p_149695_4_, Block p_149695_5_)
@@ -114,7 +119,7 @@ public class BlockLeafPile extends BaseBlock
 
 	private boolean func_150155_m(World p_150155_1_, int p_150155_2_, int p_150155_3_, int p_150155_4_)
 	{
-		if(!this.canPlaceBlockAt(p_150155_1_, p_150155_2_, p_150155_3_, p_150155_4_))
+		if (!this.canPlaceBlockAt(p_150155_1_, p_150155_2_, p_150155_3_, p_150155_4_))
 		{
 			p_150155_1_.setBlockToAir(p_150155_2_, p_150155_3_, p_150155_4_);
 			return false;
@@ -126,7 +131,9 @@ public class BlockLeafPile extends BaseBlock
 	}
 
 	/**
-	 * Called when the player destroys a block with an item that can harvest it. (i, j, k) are the coordinates of the block and l is the block's subtype/damage.
+	 * Called when the player destroys a block with an item that can harvest it.
+	 * (i, j, k) are the coordinates of the block and l is the block's
+	 * subtype/damage.
 	 */
 	@Override
 	public void harvestBlock(World p_149636_1_, EntityPlayer p_149636_2_, int p_149636_3_, int p_149636_4_, int p_149636_5_, int p_149636_6_)
@@ -150,14 +157,16 @@ public class BlockLeafPile extends BaseBlock
 	@Override
 	public void updateTick(World p_149674_1_, int p_149674_2_, int p_149674_3_, int p_149674_4_, Random p_149674_5_)
 	{
-		if(p_149674_1_.getSavedLightValue(EnumSkyBlock.Block, p_149674_2_, p_149674_3_, p_149674_4_) > 11)
+		if (p_149674_1_.getSavedLightValue(EnumSkyBlock.Block, p_149674_2_, p_149674_3_, p_149674_4_) > 11)
 		{
 			p_149674_1_.setBlockToAir(p_149674_2_, p_149674_3_, p_149674_4_);
 		}
 	}
 
 	/**
-	 * Returns true if the given side of this block type should be rendered, if the adjacent block is at the given coordinates. Args: blockAccess, x, y, z, side
+	 * Returns true if the given side of this block type should be rendered, if
+	 * the adjacent block is at the given coordinates. Args: blockAccess, x, y,
+	 * z, side
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
@@ -167,7 +176,9 @@ public class BlockLeafPile extends BaseBlock
 	}
 
 	/**
-	 * Determines if a new block can be replace the space occupied by this one, Used in the player's placement code to make the block act like water, and lava.
+	 * Determines if a new block can be replace the space occupied by this one,
+	 * Used in the player's placement code to make the block act like water, and
+	 * lava.
 	 *
 	 * @param world
 	 *            The current world

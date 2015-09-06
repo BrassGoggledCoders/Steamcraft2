@@ -42,7 +42,7 @@ public class WorldGenFissurePortal extends WorldGenerator
 	public boolean generate(World world, Random rand, int i, int j, int k)
 	{
 		// System.out.print("Gen at: " + i + " " + j + " " + k);
-		if(!this.locationIsValidSpawn(world, i, j, k))
+		if (!this.locationIsValidSpawn(world, i, j, k))
 		{
 			return false;
 		}

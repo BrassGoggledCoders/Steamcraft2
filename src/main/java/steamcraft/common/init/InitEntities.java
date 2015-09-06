@@ -61,7 +61,7 @@ public class InitEntities
 		EntityRegistry.registerModEntity(EntityShroomSkeleton.class, "ShroomSkeleton", entID++, Steamcraft.instance, 64, 1, true);
 		EntityRegistry.registerModEntity(EntityAbandonedGolem.class, "AbdandonedGolem", entID++, Steamcraft.instance, 64, 1, true);
 		EntityRegistry.registerModEntity(EntityWhale.class, "Whale", entID++, Steamcraft.instance, 64, 1, true);
-		EntityRegistry.addSpawn(EntityWhale.class, 10, 1, 5, EnumCreatureType.waterCreature,
+		EntityRegistry.addSpawn(EntityWhale.class, 1, 1, 1, EnumCreatureType.waterCreature,
 				BiomeDictionary.getBiomesForType(BiomeDictionary.Type.OCEAN));
 		// Non-Living
 		// Projectile

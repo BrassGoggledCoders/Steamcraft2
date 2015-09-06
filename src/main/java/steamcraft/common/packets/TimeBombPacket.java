@@ -12,8 +12,6 @@
  */
 package steamcraft.common.packets;
 
-import io.netty.buffer.ByteBuf;
-
 import net.minecraft.world.World;
 
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
@@ -22,6 +20,7 @@ import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 
 import net.minecraftforge.common.DimensionManager;
 
+import io.netty.buffer.ByteBuf;
 import steamcraft.common.tiles.TileTimeBomb;
 
 /**
@@ -77,7 +76,7 @@ public class TimeBombPacket implements IMessage
 		{
 			World world = DimensionManager.getWorld(message.worldId);
 
-			if(world.getTileEntity(message.x, message.y, message.z) instanceof TileTimeBomb)
+			if (world.getTileEntity(message.x, message.y, message.z) instanceof TileTimeBomb)
 			{
 				TileTimeBomb bomb = (TileTimeBomb) world.getTileEntity(message.x, message.y, message.z);
 
