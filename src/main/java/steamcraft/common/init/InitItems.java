@@ -12,29 +12,95 @@
  */
 package steamcraft.common.init;
 
-import boilerplate.common.utils.helpers.RegistryHelper;
-import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
+
+import cpw.mods.fml.common.registry.GameRegistry;
+
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
+
+import boilerplate.common.utils.helpers.RegistryHelper;
 import steamcraft.common.Steamcraft;
-import steamcraft.common.items.*;
-import steamcraft.common.items.armor.*;
+import steamcraft.common.items.BaseItem;
+import steamcraft.common.items.ItemCanister;
+import steamcraft.common.items.ItemChisel;
+import steamcraft.common.items.ItemCoin;
+import steamcraft.common.items.ItemCustomBucket;
+import steamcraft.common.items.ItemCustomFood;
+import steamcraft.common.items.ItemDimensionalPocket;
+import steamcraft.common.items.ItemFieldManipulator;
+import steamcraft.common.items.ItemFirearm;
+import steamcraft.common.items.ItemGrappleGun;
+import steamcraft.common.items.ItemGunPart;
+import steamcraft.common.items.ItemHandbook;
+import steamcraft.common.items.ItemIngot;
+import steamcraft.common.items.ItemLoreBook;
+import steamcraft.common.items.ItemMachinePart;
+import steamcraft.common.items.ItemMatch;
+import steamcraft.common.items.ItemMobBottle;
+import steamcraft.common.items.ItemMonsterSpawner;
+import steamcraft.common.items.ItemNugget;
+import steamcraft.common.items.ItemParts;
+import steamcraft.common.items.ItemPowder;
+import steamcraft.common.items.ItemResource;
+import steamcraft.common.items.ItemRocket;
+import steamcraft.common.items.ItemRocketLauncher;
+import steamcraft.common.items.ItemSheet;
+import steamcraft.common.items.ItemSpanner;
+import steamcraft.common.items.ItemSplashLightningBottle;
+import steamcraft.common.items.ItemTeaSeed;
+import steamcraft.common.items.ItemTeacup;
+import steamcraft.common.items.ItemTeapot;
+import steamcraft.common.items.ItemTimeClock;
+import steamcraft.common.items.ItemVanillaPowder;
+import steamcraft.common.items.ItemVanillaSheet;
+import steamcraft.common.items.ItemWatch;
+import steamcraft.common.items.ItemWithCraftingDurability;
+import steamcraft.common.items.armor.ItemBrassArmor;
+import steamcraft.common.items.armor.ItemBrassGoggles;
+import steamcraft.common.items.armor.ItemClockworkWings;
+import steamcraft.common.items.armor.ItemDivingHelmet;
+import steamcraft.common.items.armor.ItemMonocle;
+import steamcraft.common.items.armor.ItemNormalArmor;
+import steamcraft.common.items.armor.ItemSteamJetpack;
 import steamcraft.common.items.compat.ItemSteamcraftCluster;
 import steamcraft.common.items.compat.ItemThaumicMonocle;
 import steamcraft.common.items.electric.ElectricItem;
 import steamcraft.common.items.electric.ItemRayGun;
 import steamcraft.common.items.electric.ItemShrinkray;
-import steamcraft.common.items.modules.*;
+import steamcraft.common.items.modules.ItemAqualung;
+import steamcraft.common.items.modules.ItemAutofeeder;
+import steamcraft.common.items.modules.ItemClimbingSpikes;
+import steamcraft.common.items.modules.ItemEmergencyTank;
+import steamcraft.common.items.modules.ItemFlippers;
+import steamcraft.common.items.modules.ItemFreezeBoots;
+import steamcraft.common.items.modules.ItemGogglesModule;
+import steamcraft.common.items.modules.ItemLastResort;
+import steamcraft.common.items.modules.ItemLegBraces;
+import steamcraft.common.items.modules.ItemLifeVest;
+import steamcraft.common.items.modules.ItemParachute;
+import steamcraft.common.items.modules.ItemPistonBoots;
+import steamcraft.common.items.modules.ItemReactivePistonPlating;
+import steamcraft.common.items.modules.ItemRollerSkates;
+import steamcraft.common.items.modules.ItemSpringHeels;
+import steamcraft.common.items.modules.ItemSteelPlating;
+import steamcraft.common.items.modules.ItemSuperFreezeBoots;
+import steamcraft.common.items.modules.ItemWatchDisplay;
+import steamcraft.common.items.modules.ItemWingpackModule;
 import steamcraft.common.items.tools.ItemElectricDrill;
 import steamcraft.common.items.tools.ItemElectrifiedSword;
-import steamcraft.common.items.tools.steam.*;
+import steamcraft.common.items.tools.steam.ItemSteamAxe;
+import steamcraft.common.items.tools.steam.ItemSteamDrill;
+import steamcraft.common.items.tools.steam.ItemSteamHoe;
+import steamcraft.common.items.tools.steam.ItemSteamPickaxe;
+import steamcraft.common.items.tools.steam.ItemSteamShovel;
+import steamcraft.common.items.tools.steam.ItemSteamSword;
 import steamcraft.common.items.vanity.ItemTopHat;
 import steamcraft.common.lib.BucketHandler;
 import steamcraft.common.lib.ModInfo;
@@ -80,7 +146,7 @@ public class InitItems
 
 	public static Item itemColdKettle, itemHotKettle, itemEmptyKettle, itemTeapot;
 
-	public static Item itemCopperParts, itemBrassParts, itemSteelParts, itemIronParts;
+	public static Item itemIronParts, itemSteelParts;
 
 	public static Item itemCraftingChip;
 
@@ -255,16 +321,12 @@ public class InitItems
 
 		itemMachinePart = new ItemMachinePart().setUnlocalizedName("itemMachinePart");
 		itemGunPart = new ItemGunPart().setUnlocalizedName("itemGunPart");
-		itemCopperParts = ((ItemParts) new ItemParts().setUnlocalizedName("itemPartsCopper")).setMaterial("Copper");
 		itemIronParts = ((ItemParts) new ItemParts().setUnlocalizedName("itemPartsIron")).setMaterial("Iron");
-		itemBrassParts = ((ItemParts) new ItemParts().setUnlocalizedName("itemPartsBrass")).setMaterial("Brass");
 		itemSteelParts = ((ItemParts) new ItemParts().setUnlocalizedName("itemPartsSteel")).setMaterial("Steel");
 
 		registerItem(itemMachinePart, "ItemMachinePart");
 		registerItem(itemGunPart, "ItemGunPart");
-		registerItem(itemCopperParts, "ItemCopperParts");
 		registerItem(itemIronParts, "ItemIronParts");
-		registerItem(itemBrassParts, "ItemBrassParts");
 		registerItem(itemSteelParts, "ItemSteelParts");
 	}
 
