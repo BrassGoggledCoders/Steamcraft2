@@ -12,24 +12,25 @@
  */
 package steamcraft.common.tiles;
 
-import boilerplate.api.IOpenableGUI;
-import boilerplate.common.baseclasses.BaseTileWithInventory;
-import boilerplate.common.tiles.IOnSlotChanged;
+import java.util.ArrayList;
+import java.util.Iterator;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+
+import boilerplate.api.IOpenableGUI;
+import boilerplate.common.baseclasses.BaseTileWithInventory;
+import boilerplate.common.tiles.IOnSlotChanged;
 import steamcraft.api.item.IArmorModule;
 import steamcraft.api.item.IModule;
 import steamcraft.api.item.IModuleContainer;
 import steamcraft.client.gui.GuiArmorEditor;
 import steamcraft.common.tiles.container.ContainerArmorEditor;
 import steamcraft.common.tiles.container.slot.SlotModuleContainer;
-
-import java.util.ArrayList;
-import java.util.Iterator;
 
 /**
  * @author warlordjones
@@ -72,31 +73,33 @@ public class TileArmorEditor extends BaseTileWithInventory implements IInventory
 				{
 					this.setInventorySlotContents(slotNumber, null);
 				}
-			} else if (slotItemStack.getItem() instanceof IModuleContainer)
+			}
+			else if (slotItemStack.getItem() instanceof IModuleContainer)
 			{
 				ArrayList<IModule> iModules = IModuleContainer.Helper.getAllModulesEquipped(slotItemStack);
 				Iterator<IModule> iModuleIterator = iModules.iterator();
 				int slotNumber = 1;
-				while(iModuleIterator.hasNext())
+				while (iModuleIterator.hasNext())
 				{
-					this.setInventorySlotContents(slotNumber, new ItemStack((Item)iModuleIterator.next()));
+					this.setInventorySlotContents(slotNumber, new ItemStack((Item) iModuleIterator.next()));
 					slotNumber++;
 					iModuleIterator.remove();
 				}
 			}
-		} else
+		}
+		else
 		{
 			ItemStack slotItemStack;
 			ArrayList<IModule> iModules = new ArrayList<IModule>();
 			for (int slotNumber = 1; slotNumber < this.getSizeInventory(); slotNumber++)
 			{
 				slotItemStack = this.getStackInSlot(slotNumber);
-				if (slotItemStack != null && slotItemStack.getItem() instanceof IModule)
+				if ((slotItemStack != null) && (slotItemStack.getItem() instanceof IModule))
 				{
-					iModules.add((IModule)slotItemStack.getItem());
+					iModules.add((IModule) slotItemStack.getItem());
 				}
 			}
-			if(this.getStackInSlot(0) != null)
+			if (this.getStackInSlot(0) != null)
 			{
 				IModuleContainer.Helper.setModulesEquipped(iModules, this.getStackInSlot(0));
 			}

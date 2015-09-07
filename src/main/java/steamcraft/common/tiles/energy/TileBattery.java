@@ -92,13 +92,13 @@ public class TileBattery extends BaseTileWithInventory implements IEnergyHandler
 			 * short outputEnergy = (short)
 			 * this.extractEnergy(ForgeDirection.UNKNOWN, this.transferRate,
 			 * true);
-			 * 
+			 *
 			 * if(outputEnergy > 0) for(ForgeDirection direction :
 			 * EnumSet.allOf(ForgeDirection.class)) if(outputEnergy > 0) {
 			 * TileEntity tileEntity = this.worldObj.getTileEntity(this.xCoord -
 			 * direction.offsetX, this.yCoord - direction.offsetY, this.zCoord -
 			 * direction.offsetZ);
-			 * 
+			 *
 			 * if(tileEntity instanceof IEnergyReceiver) outputEnergy -=
 			 * this.extractEnergy(ForgeDirection.UNKNOWN, ((IEnergyReceiver)
 			 * tileEntity).receiveEnergy(direction.getOpposite(), outputEnergy,

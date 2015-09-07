@@ -1,11 +1,12 @@
 package steamcraft.client.gui;
 
-import boilerplate.client.BaseContainerGui;
 import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.inventory.Container;
+
+import boilerplate.client.BaseContainerGui;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
@@ -23,8 +24,8 @@ public abstract class BaseEntityRenderGUI extends BaseContainerGui
 	{
 		GL11.glEnable(GL11.GL_COLOR_MATERIAL);
 		GL11.glPushMatrix();
-		GL11.glTranslatef((float)startX, (float)startY, 50.0F);
-		GL11.glScalef((float)(-scale), (float)scale, (float)scale);
+		GL11.glTranslatef(startX, startY, 50.0F);
+		GL11.glScalef((-scale), scale, scale);
 		GL11.glRotatef(180.0F, 0.0F, 0.0F, 1.0F);
 		float f2 = entityLiving.renderYawOffset;
 		float f3 = entityLiving.rotationYaw;
@@ -34,10 +35,10 @@ public abstract class BaseEntityRenderGUI extends BaseContainerGui
 		GL11.glRotatef(135.0F, 0.0F, 1.0F, 0.0F);
 		RenderHelper.enableStandardItemLighting();
 		GL11.glRotatef(-135.0F, 0.0F, 1.0F, 0.0F);
-		GL11.glRotatef(-((float)Math.atan((double)(offsetY / 40.0F))) * 20.0F, 1.0F, 0.0F, 0.0F);
-		entityLiving.renderYawOffset = (float)Math.atan((double)(offsetX / 40.0F)) * 20.0F;
-		entityLiving.rotationYaw = (float)Math.atan((double)(offsetX / 40.0F)) * 40.0F;
-		entityLiving.rotationPitch = -((float)Math.atan((double)(offsetY / 40.0F))) * 20.0F;
+		GL11.glRotatef(-((float) Math.atan(offsetY / 40.0F)) * 20.0F, 1.0F, 0.0F, 0.0F);
+		entityLiving.renderYawOffset = (float) Math.atan(offsetX / 40.0F) * 20.0F;
+		entityLiving.rotationYaw = (float) Math.atan(offsetX / 40.0F) * 40.0F;
+		entityLiving.rotationPitch = -((float) Math.atan(offsetY / 40.0F)) * 20.0F;
 		entityLiving.rotationYawHead = entityLiving.rotationYaw;
 		entityLiving.prevRotationYawHead = entityLiving.rotationYaw;
 		GL11.glTranslatef(0.0F, entityLiving.yOffset, 0.0F);

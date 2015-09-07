@@ -104,13 +104,13 @@ public abstract class TileBaseBoiler extends BaseTileWithInventory implements IF
 			{
 				FluidStack liquid = FluidContainerRegistry.getFluidForFilledItem(this.inventory[1]);
 
-				if ((liquid != null) && liquid.getFluid() == FluidRegistry.WATER)
+				if ((liquid != null) && (liquid.getFluid() == FluidRegistry.WATER))
 				{
 					ItemStack emptyContainer = FluidUtils.drainFluidContainer(this.waterTank, this.inventory[1]);
-					if (inventory[2] != null && OreDictionary.itemMatches(inventory[2], emptyContainer, true))
-						inventory[2].stackSize += emptyContainer.stackSize;
-					else if (inventory[2] == null)
-						inventory[2] = emptyContainer.copy();
+					if ((this.inventory[2] != null) && OreDictionary.itemMatches(this.inventory[2], emptyContainer, true))
+						this.inventory[2].stackSize += emptyContainer.stackSize;
+					else if (this.inventory[2] == null)
+						this.inventory[2] = emptyContainer.copy();
 					this.decrStackSize(1, emptyContainer.stackSize);
 				}
 			}
@@ -127,21 +127,21 @@ public abstract class TileBaseBoiler extends BaseTileWithInventory implements IF
 				}
 				else
 				{
-					ItemStack filledContainer = FluidUtils.fillFluidContainer(steamTank, this.inventory[3]);
+					ItemStack filledContainer = FluidUtils.fillFluidContainer(this.steamTank, this.inventory[3]);
 					if (filledContainer != null)
 					{
-						if (inventory[3] != null && OreDictionary.itemMatches(inventory[3], filledContainer, true))
-							inventory[3].stackSize += filledContainer.stackSize;
-						else if (inventory[3] == null)
-							inventory[3] = filledContainer.copy();
+						if ((this.inventory[3] != null) && OreDictionary.itemMatches(this.inventory[3], filledContainer, true))
+							this.inventory[3].stackSize += filledContainer.stackSize;
+						else if (this.inventory[3] == null)
+							this.inventory[3] = filledContainer.copy();
 					}
 				}
 			}
 
-			if ((this.getItemBurnTime(inventory[0]) > 0) && (this.furnaceBurnTime == 0) && (this.waterTank.getFluidAmount() >= waterPerTick)
+			if ((this.getItemBurnTime(this.inventory[0]) > 0) && (this.furnaceBurnTime == 0) && (this.waterTank.getFluidAmount() >= waterPerTick)
 					&& (this.steamTank.fill(new FluidStack(FluidRegistry.getFluid("steam"), steamPerTick), false) > 0))
 			{
-				this.currentFuelBurnTime = this.furnaceBurnTime = this.getItemBurnTime(inventory[0]) / 4;
+				this.currentFuelBurnTime = this.furnaceBurnTime = this.getItemBurnTime(this.inventory[0]) / 4;
 
 				if (this.inventory[0].stackSize == 1)
 					this.inventory[0] = this.inventory[0].getItem().getContainerItem(this.inventory[0]);

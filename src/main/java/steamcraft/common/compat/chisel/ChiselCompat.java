@@ -3,6 +3,7 @@ package steamcraft.common.compat.chisel;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
+
 import steamcraft.common.compat.ModCompat;
 
 /**
@@ -27,7 +28,7 @@ public class ChiselCompat extends ModCompat
 	@Override
 	public void preInit(FMLPreInitializationEvent event)
 	{
-		itemSteamChisel = new ItemSteamChisel();
-		GameRegistry.registerItem(itemSteamChisel, itemSteamChisel.getUnlocalizedName());
+		this.itemSteamChisel = new ItemSteamChisel();
+		GameRegistry.registerItem(this.itemSteamChisel, this.itemSteamChisel.getUnlocalizedName());
 	}
 }

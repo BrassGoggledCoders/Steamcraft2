@@ -12,9 +12,10 @@
  */
 package steamcraft.common.tiles.container.slot;
 
-import boilerplate.common.containers.slots.SlotChanged;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
+
+import boilerplate.common.containers.slots.SlotChanged;
 import steamcraft.api.item.IModuleContainer;
 
 /**

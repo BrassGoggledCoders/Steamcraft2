@@ -58,11 +58,11 @@ public class TileLiquidBoiler extends TileBaseBoiler implements IOpenableGUI
 	{
 		super();
 		this.fuelTank = new FluidTank(5000);
-		this.fuels.put(FluidRegistry.LAVA, defaultFuelValue * 2);
-		this.fuels.put(FluidRegistry.getFluid("whaleoil"), defaultFuelValue);
-		this.fuels.put(FluidRegistry.getFluid("oil"), defaultFuelValue / 2);
-		this.fuels.put(FluidRegistry.getFluid("biodisel"), defaultFuelValue);
-		this.fuels.put(FluidRegistry.getFluid("fuel"), defaultFuelValue);
+		this.fuels.put(FluidRegistry.LAVA, this.defaultFuelValue * 2);
+		this.fuels.put(FluidRegistry.getFluid("whaleoil"), this.defaultFuelValue);
+		this.fuels.put(FluidRegistry.getFluid("oil"), this.defaultFuelValue / 2);
+		this.fuels.put(FluidRegistry.getFluid("biodisel"), this.defaultFuelValue);
+		this.fuels.put(FluidRegistry.getFluid("fuel"), this.defaultFuelValue);
 	}
 
 	@Override
@@ -122,10 +122,10 @@ public class TileLiquidBoiler extends TileBaseBoiler implements IOpenableGUI
 			{
 				FluidStack fluid = FluidContainerRegistry.getFluidForFilledItem(this.inventory[1]);
 
-				if ((fluid != null) && (this.fuelTank.fill(fluid, false) == fluid.amount) && fuels.containsKey(fluid.getFluid()))
+				if ((fluid != null) && (this.fuelTank.fill(fluid, false) == fluid.amount) && this.fuels.containsKey(fluid.getFluid()))
 				{
 					this.fuelTank.fill(new FluidStack(fluid, fluid.amount), true);
-					FMLLog.info("" + fuelTank.getFluid().getUnlocalizedName(), "");
+					FMLLog.info("" + this.fuelTank.getFluid().getUnlocalizedName(), "");
 
 					if (this.inventory[1].stackSize > 1)
 						this.inventory[1].stackSize--;
@@ -181,7 +181,7 @@ public class TileLiquidBoiler extends TileBaseBoiler implements IOpenableGUI
 	@Override
 	public boolean canInsertItem(int par1, ItemStack itemstack, int par3)
 	{
-		return ((par1 == 0 || par1 == 1) && FluidContainerRegistry.isContainer(itemstack));
+		return (((par1 == 0) || (par1 == 1)) && FluidContainerRegistry.isContainer(itemstack));
 	}
 
 	@Override
@@ -251,6 +251,6 @@ public class TileLiquidBoiler extends TileBaseBoiler implements IOpenableGUI
 
 	public int getFuelBurnTime(Fluid fluid)
 	{
-		return fuels.get(fluid);
+		return this.fuels.get(fluid);
 	}
 }

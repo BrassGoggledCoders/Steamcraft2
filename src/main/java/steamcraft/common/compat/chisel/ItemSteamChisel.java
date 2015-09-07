@@ -1,11 +1,7 @@
 package steamcraft.common.compat.chisel;
 
-import boilerplate.common.baseclasses.items.BaseSteamItem;
-import com.cricketcraft.chisel.api.IChiselItem;
-import com.cricketcraft.chisel.api.carving.ICarvingVariation;
-import cpw.mods.fml.common.Optional;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import java.util.List;
+
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -13,13 +9,20 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+
+import cpw.mods.fml.common.Optional;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidContainerItem;
+
+import boilerplate.common.baseclasses.items.BaseSteamItem;
+import com.cricketcraft.chisel.api.IChiselItem;
+import com.cricketcraft.chisel.api.carving.ICarvingVariation;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.ModInfo;
-
-import java.util.List;
 
 /**
  * Created by Skylar on 9/2/2015.
@@ -44,14 +47,16 @@ public class ItemSteamChisel extends BaseSteamItem implements IChiselItem
 		this.itemIcon = par1IconRegister.registerIcon(ModInfo.PREFIX + "tools/" + this.getUnlocalizedName().substring(5));
 	}
 
+	@Override
 	@SideOnly(Side.CLIENT)
 	@SuppressWarnings("unchecked")
-	public void getSubItems(Item item, CreativeTabs creativeTabs, List list) {
+	public void getSubItems(Item item, CreativeTabs creativeTabs, List list)
+	{
 		list.add(new ItemStack(item, 1));
-		if(item instanceof IFluidContainerItem)
+		if (item instanceof IFluidContainerItem)
 		{
 			ItemStack itemStack = new ItemStack(item, 1);
-			IFluidContainerItem iFluidContainerItem = (IFluidContainerItem)item;
+			IFluidContainerItem iFluidContainerItem = (IFluidContainerItem) item;
 			iFluidContainerItem.fill(itemStack, FluidRegistry.getFluidStack("steam", iFluidContainerItem.getCapacity(itemStack)), true);
 			list.add(itemStack);
 		}
@@ -73,26 +78,25 @@ public class ItemSteamChisel extends BaseSteamItem implements IChiselItem
 			list.add("Empty");
 	}
 
-
 	@Override
 	@Optional.Method(modid = "chisel")
 	public boolean canOpenGui(World world, EntityPlayer player, ItemStack chisel)
 	{
-		return getFluidLevel(chisel) > 100;
+		return this.getFluidLevel(chisel) > 100;
 	}
 
 	@Override
 	@Optional.Method(modid = "chisel")
 	public boolean onChisel(World world, ItemStack chisel, ICarvingVariation target)
 	{
-		return consumeSteamFromCanister(chisel, 100);
+		return this.consumeSteamFromCanister(chisel, 100);
 	}
 
 	@Override
 	@Optional.Method(modid = "chisel")
 	public boolean canChisel(World world, ItemStack chisel, ICarvingVariation target)
 	{
-		return getFluidLevel(chisel) > 100;
+		return this.getFluidLevel(chisel) > 100;
 	}
 
 	@Override
@@ -100,7 +104,7 @@ public class ItemSteamChisel extends BaseSteamItem implements IChiselItem
 	public boolean canChiselBlock(World world, EntityPlayer player, int x, int y, int z, Block block, int metadata)
 	{
 		ItemStack currentItem = player.getCurrentEquippedItem();
-		return getFluidLevel(currentItem) > 100;
+		return this.getFluidLevel(currentItem) > 100;
 	}
 
 	@Override
@@ -112,7 +116,7 @@ public class ItemSteamChisel extends BaseSteamItem implements IChiselItem
 
 	private int getFluidLevel(ItemStack chisel)
 	{
-		if (chisel != null && chisel.getItem() instanceof IFluidContainerItem)
+		if ((chisel != null) && (chisel.getItem() instanceof IFluidContainerItem))
 		{
 			FluidStack fluidStack = ((IFluidContainerItem) chisel.getItem()).getFluid(chisel);
 			return fluidStack != null ? fluidStack.amount : 0;

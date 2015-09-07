@@ -12,10 +12,10 @@
  */
 package steamcraft.api.item;
 
+import java.util.ArrayList;
+
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-
-import java.util.ArrayList;
 
 /**
  * Created by Skylar on 8/31/2015.

@@ -12,13 +12,14 @@
  */
 package steamcraft.common.tiles.container.slot;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * Created by Skylar on 8/29/2015.
@@ -42,17 +43,17 @@ public class SlotArmor extends Slot
 	@Override
 	public boolean isItemValid(ItemStack itemStack)
 	{
-		if(itemStack == null)
+		if (itemStack == null)
 		{
 			return false;
 		}
-		return itemStack.getItem().isValidArmor(itemStack, armortype, ((InventoryPlayer) inventory).player);
+		return itemStack.getItem().isValidArmor(itemStack, this.armortype, ((InventoryPlayer) this.inventory).player);
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public IIcon getBackgroundIconIndex()
 	{
-		return ItemArmor.func_94602_b(armortype);
+		return ItemArmor.func_94602_b(this.armortype);
 	}
 }

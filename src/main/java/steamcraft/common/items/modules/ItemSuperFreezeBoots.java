@@ -63,7 +63,7 @@ public class ItemSuperFreezeBoots extends BaseArmorModule
 		int pX = (int) Math.round(player.posX);
 		int pY = (int) Math.round(player.posY) - 2;
 		int pZ = (int) Math.round(player.posZ);
-		if (world.getBlock(pX, pY, pZ).getMaterial() == Material.air && !player.isSneaking())
+		if ((world.getBlock(pX, pY, pZ).getMaterial() == Material.air) && !player.isSneaking())
 		{
 			world.setBlock(pX, pY, pZ, InitBlocks.blockGhostIce);
 		}

@@ -13,11 +13,10 @@ public abstract class ModCompat
 
 	public abstract String getName();
 
-	public boolean areRequirementsMet() {
+	public boolean areRequirementsMet()
+	{
 		return true;
 	}
-
-
 
 	public String dependencies()
 	{
@@ -46,6 +45,6 @@ public abstract class ModCompat
 
 	public Boolean getIsActive()
 	{
-		return isActive;
+		return this.isActive;
 	}
 }

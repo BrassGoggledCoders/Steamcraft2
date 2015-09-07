@@ -14,6 +14,7 @@ package steamcraft.client.gui;
 
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
+
 import org.lwjgl.opengl.GL11;
 import steamcraft.common.lib.ModInfo;
 import steamcraft.common.tiles.TileArmorEditor;
@@ -39,8 +40,8 @@ public class GuiArmorEditor extends BaseEntityRenderGUI
 	public void drawScreen(int p_73863_1_, int p_73863_2_, float p_73863_3_)
 	{
 		super.drawScreen(p_73863_1_, p_73863_2_, p_73863_3_);
-		this.xSizeFloat = (float)p_73863_1_;
-		this.ySizeFloat = (float)p_73863_2_;
+		this.xSizeFloat = p_73863_1_;
+		this.ySizeFloat = p_73863_2_;
 	}
 
 	@Override
@@ -52,7 +53,6 @@ public class GuiArmorEditor extends BaseEntityRenderGUI
 		int x = (this.width - this.xSize) / 2;
 		int y = (this.height - this.ySize) / 2;
 		this.drawTexturedModalRect(x, y, 0, 0, this.xSize, this.ySize);
-		renderEntity(x + 33, y + 75, 30, (float) (x + 33) - this.xSizeFloat, (float) (y + 75 - 50) - this.ySizeFloat,
-				this.mc.thePlayer);
+		renderEntity(x + 33, y + 75, 30, x + 33 - this.xSizeFloat, (y + 75) - 50 - this.ySizeFloat, this.mc.thePlayer);
 	}
 }

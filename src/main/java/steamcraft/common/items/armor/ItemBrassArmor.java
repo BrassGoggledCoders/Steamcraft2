@@ -12,10 +12,10 @@
  */
 package steamcraft.common.items.armor;
 
-import boilerplate.common.baseclasses.items.BaseArmor;
-import cpw.mods.fml.common.Optional;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -25,27 +25,32 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
+
+import cpw.mods.fml.common.Optional;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 import net.minecraftforge.common.ISpecialArmor;
-import steamcraft.api.item.*;
+
+import boilerplate.common.baseclasses.items.BaseArmor;
+import steamcraft.api.item.IArmorModule;
 import steamcraft.api.item.IArmorModule.EnumArmorEffectType;
+import steamcraft.api.item.IDefensiveArmorModule;
+import steamcraft.api.item.IModule;
+import steamcraft.api.item.IModuleContainer;
+import steamcraft.api.item.ModuleRegistry;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.init.InitItems;
 import steamcraft.common.lib.ModInfo;
 import thaumcraft.api.IGoggles;
 import thaumcraft.api.nodes.IRevealer;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 /**
  * @author warlordjones
  *
  */
-@Optional.InterfaceList({
-		@Optional.Interface(iface = "thaumcraft.api.IGoggles", modid = "Thaumcraft"),
-		@Optional.Interface(iface = "thaumcraft.api.nodes.IRevealer", modid = "Thaumcraft")
-})
+@Optional.InterfaceList({ @Optional.Interface(iface = "thaumcraft.api.IGoggles", modid = "Thaumcraft"),
+		@Optional.Interface(iface = "thaumcraft.api.nodes.IRevealer", modid = "Thaumcraft") })
 public class ItemBrassArmor extends BaseArmor implements ISpecialArmor, IGoggles, IRevealer, IModuleContainer
 {
 
@@ -176,8 +181,8 @@ public class ItemBrassArmor extends BaseArmor implements ISpecialArmor, IGoggles
 	@SideOnly(Side.CLIENT)
 	public String getArmorTexture(ItemStack is, Entity entity, int slot, String type)
 	{
-		return slot == 2 ? ModInfo.PREFIX + "textures/models/armor/" + "brass" + "_2.png" : ModInfo.PREFIX +
-				"textures/models/armor/" + "brass" + "_1.png";
+		return slot == 2 ? ModInfo.PREFIX + "textures/models/armor/" + "brass" + "_2.png"
+				: ModInfo.PREFIX + "textures/models/armor/" + "brass" + "_1.png";
 	}
 
 	@Override
@@ -225,19 +230,19 @@ public class ItemBrassArmor extends BaseArmor implements ISpecialArmor, IGoggles
 	public boolean isModuleAllowed(IModule iModule, ItemStack itemStack)
 	{
 		boolean allowed = false;
-		if(itemStack.getItem() instanceof ItemBrassArmor)
+		if (itemStack.getItem() instanceof ItemBrassArmor)
 		{
-			ItemBrassArmor brassArmor = (ItemBrassArmor)itemStack.getItem();
+			ItemBrassArmor brassArmor = (ItemBrassArmor) itemStack.getItem();
 			if (iModule instanceof IArmorModule)
 			{
-				IArmorModule iArmorModule = (IArmorModule)iModule;
-				if(iArmorModule.getApplicablePiece() == -1 || iArmorModule.getApplicablePiece() == brassArmor.armorType)
+				IArmorModule iArmorModule = (IArmorModule) iModule;
+				if ((iArmorModule.getApplicablePiece() == -1) || (iArmorModule.getApplicablePiece() == brassArmor.armorType))
 				{
 					ArrayList<IModule> moduleIncompatibilities = ModuleRegistry.getModuleIncompatibilities(iModule.getModuleId());
-					if(moduleIncompatibilities == null ||
-							Collections.disjoint(IModuleContainer.Helper.getAllModulesEquipped(itemStack), moduleIncompatibilities))
+					if ((moduleIncompatibilities == null)
+							|| Collections.disjoint(IModuleContainer.Helper.getAllModulesEquipped(itemStack), moduleIncompatibilities))
 					{
-						if(!IModuleContainer.Helper.getAllModulesEquipped(itemStack).contains(iModule))
+						if (!IModuleContainer.Helper.getAllModulesEquipped(itemStack).contains(iModule))
 						{
 							allowed = true;
 						}
