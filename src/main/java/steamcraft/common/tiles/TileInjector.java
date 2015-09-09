@@ -24,6 +24,7 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTank;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
+import net.minecraftforge.oredict.OreDictionary;
 
 import boilerplate.api.IOpenableGUI;
 import boilerplate.common.baseclasses.BaseTileWithInventory;
@@ -37,30 +38,27 @@ import steamcraft.common.tiles.container.ContainerInjector;
  */
 public class TileInjector extends BaseTileWithInventory implements IOpenableGUI, IFluidHandler
 {
-	protected static final int fluidPerTick = 20;
 
-	public FluidTank inBuffer;
-	public FluidTank outBuffer;
+	public FluidTank buffer;
 
 	public TileInjector()
 	{
 		super(2);
+		this.buffer = new FluidTank(10000);
 	}
 
 	@Override
 	public void readFromNBT(NBTTagCompound tag)
 	{
 		super.readFromNBT(tag);
-		this.inBuffer.readFromNBT(tag);
-		this.outBuffer.readFromNBT(tag);
+		this.buffer.readFromNBT(tag);
 	}
 
 	@Override
 	public void writeToNBT(NBTTagCompound tag)
 	{
 		super.writeToNBT(tag);
-		this.inBuffer.writeToNBT(tag);
-		this.outBuffer.readFromNBT(tag);
+		this.buffer.writeToNBT(tag);
 	}
 
 	@Override
@@ -70,11 +68,26 @@ public class TileInjector extends BaseTileWithInventory implements IOpenableGUI,
 
 		if (!this.worldObj.isRemote)
 		{
-			// Drain fluidcontainers into in buffer
 			if (this.inventory[0] != null)
-				this.inventory[0] = FluidUtils.drainFluidContainer(inBuffer, this.inventory[0]);
+			{
+				ItemStack stack = FluidUtils.drainFluidContainer(buffer, this.inventory[0]);
+				if ((this.inventory[0] != null) && OreDictionary.itemMatches(this.inventory[0], stack, true))
+					this.inventory[0].stackSize += stack.stackSize;
+				else if (this.inventory[0] == null)
+					this.inventory[0] = stack.copy();
+				this.decrStackSize(0, stack.stackSize);
+			}
 			if (this.inventory[1] != null)
-				this.inventory[1] = FluidUtils.fillFluidContainer(outBuffer, this.inventory[1]);
+			{
+				ItemStack stack = FluidUtils.fillFluidContainer(buffer, this.inventory[1]);
+				if (stack != null)
+				{
+					if ((this.inventory[1] != null) && OreDictionary.itemMatches(this.inventory[1], stack, true))
+						this.inventory[1].stackSize += stack.stackSize;
+					else if (this.inventory[1] == null)
+						this.inventory[1] = stack.copy();
+				}
+			}
 		}
 	}
 
@@ -93,19 +106,19 @@ public class TileInjector extends BaseTileWithInventory implements IOpenableGUI,
 	@Override
 	public int fill(ForgeDirection from, FluidStack resource, boolean doFill)
 	{
-		return this.inBuffer.fill(resource, doFill);
+		return this.buffer.fill(resource, doFill);
 	}
 
 	@Override
 	public FluidStack drain(ForgeDirection from, FluidStack resource, boolean doDrain)
 	{
-		return this.outBuffer.drain(resource.amount, doDrain);
+		return this.buffer.drain(resource.amount, doDrain);
 	}
 
 	@Override
 	public FluidStack drain(ForgeDirection from, int maxDrain, boolean doDrain)
 	{
-		return this.outBuffer.drain(maxDrain, doDrain);
+		return this.buffer.drain(maxDrain, doDrain);
 	}
 
 	@Override
@@ -123,7 +136,7 @@ public class TileInjector extends BaseTileWithInventory implements IOpenableGUI,
 	@Override
 	public FluidTankInfo[] getTankInfo(ForgeDirection from)
 	{
-		return new FluidTankInfo[] { this.inBuffer.getInfo(), this.outBuffer.getInfo() };
+		return new FluidTankInfo[] { this.buffer.getInfo() };
 	}
 
 	@Override

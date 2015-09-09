@@ -28,8 +28,10 @@ import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTank;
 import net.minecraftforge.fluids.FluidTankInfo;
+import net.minecraftforge.oredict.OreDictionary;
 
 import boilerplate.api.IOpenableGUI;
+import boilerplate.common.utils.FluidUtils;
 import steamcraft.api.RecipeAPI;
 import steamcraft.client.gui.GuiLiquidBoiler;
 import steamcraft.common.blocks.machines.BlockBaseBoiler;
@@ -135,13 +137,27 @@ public class TileLiquidBoiler extends TileBaseBoiler implements IOpenableGUI
 				}
 			}
 			// Steam Draining
-			if ((this.inventory[2] != null) && (this.inventory[2].getItem() instanceof ItemCanister))
+			if ((this.inventory[2] != null))
 			{
-				ItemCanister canister = (ItemCanister) this.inventory[2].getItem();
-				if ((this.steamTank.getFluidAmount() >= steamPerTick) && (canister.getFluidAmount(this.inventory[2]) != canister.maxSteam))
+				if ((this.inventory[2].getItem() instanceof ItemCanister))
 				{
-					canister.fill(this.inventory[2], new FluidStack(FluidRegistry.getFluid("steam"), steamPerTick), true);
-					this.steamTank.drain(steamPerTick, true);
+					ItemCanister canister = (ItemCanister) this.inventory[2].getItem();
+					if ((this.steamTank.getFluidAmount() >= steamPerTick) && (canister.getFluidAmount(this.inventory[2]) != canister.maxSteam))
+					{
+						canister.fill(this.inventory[2], new FluidStack(FluidRegistry.getFluid("steam"), steamPerTick), true);
+						this.steamTank.drain(steamPerTick, true);
+					}
+				}
+				else
+				{
+					ItemStack filledContainer = FluidUtils.fillFluidContainer(this.steamTank, this.inventory[2]);
+					if (filledContainer != null)
+					{
+						if ((this.inventory[2] != null) && OreDictionary.itemMatches(this.inventory[2], filledContainer, true))
+							this.inventory[2].stackSize += filledContainer.stackSize;
+						else if (this.inventory[2] == null)
+							this.inventory[2] = filledContainer.copy();
+					}
 				}
 			}
 			// Burn fuel
