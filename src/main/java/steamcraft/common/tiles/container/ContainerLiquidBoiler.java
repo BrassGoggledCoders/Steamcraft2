@@ -89,9 +89,9 @@ public class ContainerLiquidBoiler extends BaseContainer
 	{
 		super.addCraftingToCrafters(par1ICrafting);
 		par1ICrafting.sendProgressBarUpdate(this, 0, this.tileent.furnaceBurnTime);
-		par1ICrafting.sendProgressBarUpdate(this, 2, this.tileent.steamTank.getFluidAmount());
-		par1ICrafting.sendProgressBarUpdate(this, 3, this.tileent.fuelTank.getFluidAmount());
-		par1ICrafting.sendProgressBarUpdate(this, 4, this.tileent.waterTank.getFluidAmount());
+		par1ICrafting.sendProgressBarUpdate(this, 1, this.tileent.steamTank.getFluidAmount());
+		par1ICrafting.sendProgressBarUpdate(this, 2, this.tileent.fuelTank.getFluidAmount());
+		par1ICrafting.sendProgressBarUpdate(this, 3, this.tileent.waterTank.getFluidAmount());
 	}
 
 	@Override
@@ -130,8 +130,8 @@ public class ContainerLiquidBoiler extends BaseContainer
 			this.tileent.furnaceBurnTime = par2;
 		else if (par1 == 1)
 			this.tileent.steamTank.setFluid(new FluidStack(FluidRegistry.getFluid("steam"), par2));
-		else if ((par1 == 2) && (this.tileent.fuelTank.getFluid() != null))
-			this.tileent.fuelTank.setFluid(new FluidStack(this.tileent.fuelTank.getFluid().getFluid(), par2));
+		else if (par1 == 2 && this.tileent.fuelTank.getFluid() != null)
+			this.tileent.fuelTank.getFluid().amount = par2;
 		else if (par1 == 3)
 			this.tileent.waterTank.setFluid(new FluidStack(FluidRegistry.getFluid("water"), par2));
 	}

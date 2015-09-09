@@ -16,7 +16,6 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
 
 import net.minecraftforge.fluids.FluidRegistry;
-import net.minecraftforge.fluids.FluidStack;
 
 import boilerplate.client.BaseContainerGui;
 import org.lwjgl.opengl.GL11;
@@ -55,10 +54,8 @@ public class GuiSteamBoiler extends BaseContainerGui
 			this.drawTexturedModalRect(this.guiLeft + 43, (this.guiTop + 48) - burnTime, 176, 12 - burnTime, 14, burnTime + 2);
 		}
 
-		this.drawFluid(new FluidStack(FluidRegistry.getFluid("water"), 0), this.boiler.getScaledWaterLevel(60), this.guiLeft + 8, this.guiTop + 18,
-				20, 60);
-		this.drawFluid(new FluidStack(FluidRegistry.getFluid("steam"), 0), this.boiler.getScaledSteamLevel(60), this.guiLeft + 74, this.guiTop + 18,
-				32, 60);
+		this.drawFluid(FluidRegistry.getFluid("water"), this.boiler.getScaledWaterLevel(60), this.guiLeft + 8, this.guiTop + 18, 20, 60);
+		this.drawFluid(FluidRegistry.getFluid("steam"), this.boiler.getScaledSteamLevel(60), this.guiLeft + 74, this.guiTop + 18, 32, 60);
 
 		this.mc.renderEngine.bindTexture(guitexture);
 		this.drawTexturedModalRect(this.guiLeft + 8, this.guiTop + 24, 176, 14, 20, 49);

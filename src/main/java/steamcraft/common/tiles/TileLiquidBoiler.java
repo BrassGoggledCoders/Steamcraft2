@@ -30,6 +30,7 @@ import net.minecraftforge.fluids.FluidTank;
 import net.minecraftforge.fluids.FluidTankInfo;
 
 import boilerplate.api.IOpenableGUI;
+import steamcraft.api.RecipeAPI;
 import steamcraft.client.gui.GuiLiquidBoiler;
 import steamcraft.common.blocks.machines.BlockBaseBoiler;
 import steamcraft.common.items.ItemCanister;
@@ -51,7 +52,7 @@ public class TileLiquidBoiler extends TileBaseBoiler implements IOpenableGUI
 	public FluidTank fuelTank;
 
 	// TODO Allow things to be added to this via imc
-	public HashMap<Fluid, Integer> fuels = new HashMap();
+	public HashMap<Fluid, Integer> fuels = RecipeAPI.addedFuels;
 	public int defaultFuelValue = 500;
 
 	public TileLiquidBoiler()

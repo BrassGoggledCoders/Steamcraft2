@@ -12,7 +12,6 @@
  */
 package steamcraft.common.tiles.recipes;
 
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -20,6 +19,7 @@ import java.util.Map.Entry;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
+import steamcraft.api.RecipeAPI;
 import steamcraft.common.init.InitItems;
 
 /**
@@ -29,7 +29,7 @@ import steamcraft.common.init.InitItems;
 public class BloomeryRecipes
 {
 	private static final BloomeryRecipes instance = new BloomeryRecipes();
-	private final Map<ItemStack[], ItemStack> recipeList = new HashMap<ItemStack[], ItemStack>();
+	private final Map<ItemStack[], ItemStack> recipeList = RecipeAPI.addedRecipeList;
 
 	public static BloomeryRecipes getInstance()
 	{

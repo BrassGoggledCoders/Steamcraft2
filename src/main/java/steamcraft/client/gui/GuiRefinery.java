@@ -18,7 +18,6 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
 
 import net.minecraftforge.fluids.FluidRegistry;
-import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTank;
 
 import boilerplate.client.BaseContainerGui;
@@ -64,8 +63,7 @@ public class GuiRefinery extends BaseContainerGui
 			this.drawTexturedModalRect(this.guiLeft + 43, (this.guiTop + 48), 176, 50, cookTime + 1, 16);
 		}
 
-		this.drawFluid(new FluidStack(FluidRegistry.getFluid("whaleoil"), 0), this.refinery.getScaledWhaleOilLevel(60), this.guiLeft + 74,
-				this.guiTop + 18, 32, 60);
+		this.drawFluid(FluidRegistry.getFluid("whaleoil"), this.refinery.getScaledWhaleOilLevel(60), this.guiLeft + 74, this.guiTop + 18, 32, 60);
 
 		this.mc.renderEngine.bindTexture(guitexture);
 		this.drawTexturedModalRect(this.guiLeft + 74, this.guiTop + 24, 176, 14, 20, 49);
