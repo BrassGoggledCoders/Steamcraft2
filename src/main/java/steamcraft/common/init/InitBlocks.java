@@ -86,6 +86,7 @@ import steamcraft.common.blocks.machines.BlockCopperPipe;
 import steamcraft.common.blocks.machines.BlockCopperTank;
 import steamcraft.common.blocks.machines.BlockCopperWire;
 import steamcraft.common.blocks.machines.BlockDropHammerAnvil;
+import steamcraft.common.blocks.machines.BlockInjector;
 import steamcraft.common.blocks.machines.BlockIntake;
 import steamcraft.common.blocks.machines.BlockLightningRod;
 import steamcraft.common.blocks.machines.BlockLiquidBoiler;
@@ -103,6 +104,7 @@ import steamcraft.common.tiles.TileArmorEditor;
 import steamcraft.common.tiles.TileBloomery;
 import steamcraft.common.tiles.TileCopperPipe;
 import steamcraft.common.tiles.TileCopperTank;
+import steamcraft.common.tiles.TileInjector;
 import steamcraft.common.tiles.TileIntake;
 import steamcraft.common.tiles.TileLiquidBoiler;
 import steamcraft.common.tiles.TileNuclearBoiler;
@@ -213,6 +215,8 @@ public class InitBlocks
 	public static Block blockTeaPlant, blockHatch;
 	public static Block blockTimeBomb;
 
+	public static Block blockInjector;
+
 	public static Block blockTintedRock;
 
 	public static Block blockTrunk;
@@ -321,6 +325,9 @@ public class InitBlocks
 
 		blockIntake = new BlockIntake().setBlockName("blockIntake");
 		RegistryHelper.registerContainerBlockWithDesc(blockIntake, TileIntake.class, "BlockIntake");
+
+		blockInjector = new BlockInjector().setBlockName("blockInjector");
+		RegistryHelper.registerContainerBlockWithDesc(blockInjector, TileInjector.class, "BlockInjector");
 
 		// Energy related
 		blockTurbine = new BlockTurbine().setBlockName("blockTurbine");

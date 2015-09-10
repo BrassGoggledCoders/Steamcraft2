@@ -23,7 +23,9 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.fluids.FluidStack;
 
+import boilerplate.common.utils.handlers.BucketHandler;
 import boilerplate.common.utils.helpers.RegistryHelper;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.items.BaseItem;
@@ -101,7 +103,6 @@ import steamcraft.common.items.tools.steam.ItemSteamPickaxe;
 import steamcraft.common.items.tools.steam.ItemSteamShovel;
 import steamcraft.common.items.tools.steam.ItemSteamSword;
 import steamcraft.common.items.vanity.ItemTopHat;
-import steamcraft.common.lib.BucketHandler;
 import steamcraft.common.lib.ModInfo;
 
 /**
@@ -145,7 +146,7 @@ public class InitItems
 
 	public static Item itemColdKettle, itemHotKettle, itemEmptyKettle, itemTeapot;
 
-	public static Item itemCopperParts, itemBrassParts, itemSteelParts, itemIronParts;
+	public static Item itemIronParts, itemSteelParts;
 
 	public static Item itemCraftingChip;
 
@@ -320,16 +321,12 @@ public class InitItems
 
 		itemMachinePart = new ItemMachinePart().setUnlocalizedName("itemMachinePart");
 		itemGunPart = new ItemGunPart().setUnlocalizedName("itemGunPart");
-		itemCopperParts = ((ItemParts) new ItemParts().setUnlocalizedName("itemPartsCopper")).setMaterial("Copper");
 		itemIronParts = ((ItemParts) new ItemParts().setUnlocalizedName("itemPartsIron")).setMaterial("Iron");
-		itemBrassParts = ((ItemParts) new ItemParts().setUnlocalizedName("itemPartsBrass")).setMaterial("Brass");
 		itemSteelParts = ((ItemParts) new ItemParts().setUnlocalizedName("itemPartsSteel")).setMaterial("Steel");
 
 		registerItem(itemMachinePart, "ItemMachinePart");
 		registerItem(itemGunPart, "ItemGunPart");
-		registerItem(itemCopperParts, "ItemCopperParts");
 		registerItem(itemIronParts, "ItemIronParts");
-		registerItem(itemBrassParts, "ItemBrassParts");
 		registerItem(itemSteelParts, "ItemSteelParts");
 	}
 
@@ -348,9 +345,13 @@ public class InitItems
 		// Containers
 		itemCanisterSteam = new ItemCanister(10000, 20).setUnlocalizedName("itemCanisterSteam");
 		registerItem(itemCanisterSteam, "ItemCanisterSteam");
+		FluidContainerRegistry.registerFluidContainer(new FluidStack(FluidRegistry.getFluid("steam"), 10000),
+				((ItemCanister) itemCanisterSteam).getFilledCanister(), new ItemStack(itemCanisterSteam));
 
 		itemReinforcedCanisterSteam = new ItemCanister(20000, 40).setUnlocalizedName("itemReinforcedCanisterSteam");
 		registerItem(itemReinforcedCanisterSteam, "ItemReinforcedCanisterSteam");
+		FluidContainerRegistry.registerFluidContainer(new FluidStack(FluidRegistry.getFluid("steam"), 20000),
+				((ItemCanister) itemReinforcedCanisterSteam).getFilledCanister(), new ItemStack(itemReinforcedCanisterSteam));
 
 		itemElectricJarSmall = new ElectricItem(80, 80, 40).setUnlocalizedName("itemElectricJarSmall");
 		itemElectricJarMedium = new ElectricItem(400, 400, 125).setUnlocalizedName("itemElectricJarMedium");
@@ -510,10 +511,10 @@ public class InitItems
 				new ItemStack(itemBoilingMudBucket), new ItemStack(Items.bucket));
 		FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("whaleoil", FluidContainerRegistry.BUCKET_VOLUME),
 				new ItemStack(itemWhaleOilBucket), new ItemStack(Items.bucket));
-		BucketHandler.INSTANCE.buckets.put(InitBlocks.blockBoilingWater, itemBoilingWaterBucket);
-		BucketHandler.INSTANCE.buckets.put(InitBlocks.blockBoilingMud, itemBoilingMudBucket);
-		BucketHandler.INSTANCE.buckets.put(InitBlocks.blockWhaleOil, itemWhaleOilBucket);
-		MinecraftForge.EVENT_BUS.register(BucketHandler.INSTANCE);
+		BucketHandler.getInstance().bucketMap.put(InitBlocks.blockBoilingWater, itemBoilingWaterBucket);
+		BucketHandler.getInstance().bucketMap.put(InitBlocks.blockBoilingMud, itemBoilingMudBucket);
+		BucketHandler.getInstance().bucketMap.put(InitBlocks.blockWhaleOil, itemWhaleOilBucket);
+		MinecraftForge.EVENT_BUS.register(BucketHandler.getInstance());
 
 		itemWhalebone = new BaseItem().setUnlocalizedName("itemWhalebone");
 		registerItem(itemWhalebone, "ItemWhalebone");

@@ -218,14 +218,10 @@ public class CompatabilityLayer
 
 		for (int i = 0; i < partType.length; i++)
 		{
-			OreDictHelper.registerOreWithAlts(InitItems.itemCopperParts, i, "partCopper" + partType[i], partType[i].toLowerCase() + "Copper");
-			OreDictHelper.registerOreWithAlts(InitItems.itemIronParts, i, "partIron" + partType[i], partType[i].toLowerCase() + "Iron");
-			OreDictHelper.registerOreWithAlts(InitItems.itemBrassParts, i, "partBrass" + partType[i], partType[i].toLowerCase() + "Brass");
-			OreDictHelper.registerOreWithAlts(InitItems.itemSteelParts, i, "partSteel" + partType[i], partType[i].toLowerCase() + "Steel");
+			OreDictHelper.registerOreWithAlts(InitItems.itemIronParts, i, "partIron", partType[i], partType[i].toLowerCase() + "Iron");
+			OreDictHelper.registerOreWithAlts(InitItems.itemSteelParts, i, "partSteel", partType[i], partType[i].toLowerCase() + "Steel");
 
-			OreDictHelper.registerOre("partTierOne", InitItems.itemCopperParts, i);
 			OreDictHelper.registerOre("partTierOne", InitItems.itemIronParts, i);
-			OreDictHelper.registerOre("partTierTwo", InitItems.itemBrassParts, i);
 			OreDictHelper.registerOre("partTierTwo", InitItems.itemSteelParts, i);
 		}
 		OreDictionary.registerOre("logWood", InitBlocks.blockRedwoodLog);

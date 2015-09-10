@@ -22,25 +22,25 @@ import net.minecraft.entity.Entity;
  */
 public class ModelLightningRod extends ModelBase
 {
-	public final ModelRenderer shape1;
-	public final ModelRenderer shape2;
-	public final ModelRenderer shape3;
-	public final ModelRenderer shape4;
-	public final ModelRenderer shape5;
-	public final ModelRenderer shape6;
-	public final ModelRenderer shape7;
-	public final ModelRenderer shape8;
-	public final ModelRenderer shape9;
-	public final ModelRenderer shape10;
-	public final ModelRenderer shape11;
-	public final ModelRenderer shape12;
-	public final ModelRenderer shape13;
-	public final ModelRenderer shape14;
-	public final ModelRenderer shape15;
-	public final ModelRenderer shape16;
-	public final ModelRenderer shape17;
-	public final ModelRenderer shape18;
-	public final ModelRenderer shape19;
+	public ModelRenderer shape1;
+	public ModelRenderer shape2;
+	public ModelRenderer shape3;
+	public ModelRenderer shape4;
+	public ModelRenderer shape5;
+	public ModelRenderer shape6;
+	public ModelRenderer shape7;
+	public ModelRenderer shape8;
+	public ModelRenderer shape9;
+	public ModelRenderer shape10;
+	public ModelRenderer shape11;
+	public ModelRenderer shape12;
+	public ModelRenderer shape13;
+	public ModelRenderer shape14;
+	public ModelRenderer shape15;
+	public ModelRenderer shape16;
+	public ModelRenderer shape17;
+	public ModelRenderer shape18;
+	public ModelRenderer shape19;
 	public ModelRenderer shape20;
 
 	public ModelLightningRod()
@@ -136,7 +136,7 @@ public class ModelLightningRod extends ModelBase
 	}
 
 	@Override
-	public void render(final Entity entity, final float f, final float f1, final float f2, final float f3, final float f4, final float f5)
+	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5)
 	{
 		super.render(entity, f, f1, f2, f3, f4, f5);
 		this.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
@@ -163,7 +163,7 @@ public class ModelLightningRod extends ModelBase
 		this.shape20.render(f5);
 	}
 
-	private void setRotation(final ModelRenderer model, final float x, final float y, final float z)
+	private void setRotation(ModelRenderer model, float x, float y, float z)
 	{
 		model.rotateAngleX = x;
 		model.rotateAngleY = y;
@@ -171,7 +171,7 @@ public class ModelLightningRod extends ModelBase
 	}
 
 	@Override
-	public void setRotationAngles(final float f, final float f1, final float f2, final float f3, final float f4, final float f5, final Entity entity)
+	public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity entity)
 	{
 		super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
 	}

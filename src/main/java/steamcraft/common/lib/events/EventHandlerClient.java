@@ -123,7 +123,7 @@ public class EventHandlerClient
 
 	/*
 	 * @SubscribeEvent
-	 * 
+	 *
 	 * @SideOnly(Side.CLIENT) // hacky hack to make the texture work in BC
 	 * tanks. public void textureHook(TextureStitchEvent.Post event) {
 	 * if(event.map.getTextureType() == 0) {

@@ -156,6 +156,8 @@ tile.blockSteamBoiler.name=Combustion Boiler
 tile.blockSteamBoiler.desc=Uses fuel to heat water into steam.|Generates 20 mb steam/tick, consumes 5 mb water/tick.
 tile.blockNuclearBoiler.name=Nuclear-Fired Boiler
 tile.blockNuclearBoiler.desc=Uses uranium pellets to heat water into steam.|Generates 20 mb steam/tick, consumes 5 mb water/tick.
+tile.blockLiquidBoiler.name=Liquid-Fired Boiler
+tile.blockLiquidBoiler.desc=Uses liquid fuel such as (whale) oil or lava to heat water into steam.|Generates 20mb steam/tick,  consumes 5 mb water/tick
 tile.blockLightningRod.name=Lightning Rod
 tile.blockLightningRod.desc=Attracts lightning during a storm. Generate huge amounts of power, FOR SCIENCE!|Holds 100k RF.Transfer (out): 10000 RF/t
 tile.blockDropHammer.name=Drop Hammer Anvil
@@ -193,9 +195,9 @@ fluid.boilingmudFluid=Boiling Mud
 #Items
 item.itemResource.0.name=Sulfur
 item.itemResource.1.name=Phosphorus
-item.itemResource.2.name=Uranium
-item.itemResource.3.name=Uranium Pellets
-item.itemResource.4.name=Sulfuric Acid
+item.itemResource.2.name=Sulfuric Acid
+item.itemResource.3.name=Uranium
+item.itemResource.4.name=Uranium Pellets
 item.itemTeaLeaves.name=Tea Leaf
 item.itemTeaSeed.name=Tea Seeds
 item.itemTeaSeed.desc=Obtained from breaking grass
@@ -523,6 +525,7 @@ item.itemAutofeeder.desc=Automatically consume food from your inventory. Fairly 
 item.itemSteamcraftCluster.0.name=Native Aluminum Cluster
 item.itemSteamcraftCluster.1.name=Native Zinc Cluster
 item.itemThaumicMonocle.name=Thaumic Monocle
+item.itemChiselSteam.name=Steam-Powered Chisel
 
 #Tabs
 itemGroup.steamcraft2=Steamcraft 2

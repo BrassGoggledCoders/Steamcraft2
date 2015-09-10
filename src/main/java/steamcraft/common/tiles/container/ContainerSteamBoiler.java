@@ -29,6 +29,8 @@ import net.minecraftforge.fluids.FluidStack;
 import boilerplate.common.baseclasses.blocks.BaseContainer;
 import steamcraft.common.items.ItemCanister;
 import steamcraft.common.tiles.TileSteamBoiler;
+import steamcraft.common.tiles.container.slot.SlotFluidContainer;
+import steamcraft.common.tiles.container.slot.SlotOutput;
 
 /**
  * @author Decebaldecebal
@@ -49,22 +51,9 @@ public class ContainerSteamBoiler extends BaseContainer
 		this.setTile(this.tileent);
 
 		this.addSlotToContainer(new Slot(tile, 0, 42, 52));
-		this.addSlotToContainer(new Slot(tile, 1, 132, 57)
-		{
-			@Override
-			public boolean isItemValid(ItemStack stack)
-			{
-				return FluidContainerRegistry.isContainer(stack);
-			}
-		});
-		this.addSlotToContainer(new Slot(tile, 2, 132, 21)
-		{
-			@Override
-			public boolean isItemValid(ItemStack stack)
-			{
-				return stack.getItem() instanceof ItemCanister;
-			}
-		});
+		this.addSlotToContainer(new SlotFluidContainer(tile, 1, 115, 57));
+		this.addSlotToContainer(new SlotOutput(tile, 2, 149, 57));
+		this.addSlotToContainer(new SlotFluidContainer(tile, 3, 149, 21));
 
 		int var3;
 

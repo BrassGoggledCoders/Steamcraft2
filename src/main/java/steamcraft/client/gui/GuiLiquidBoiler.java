@@ -15,8 +15,9 @@ package steamcraft.client.gui;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
 
+import cpw.mods.fml.common.FMLLog;
+
 import net.minecraftforge.fluids.FluidRegistry;
-import net.minecraftforge.fluids.FluidStack;
 
 import boilerplate.client.BaseContainerGui;
 import org.lwjgl.opengl.GL11;
@@ -55,13 +56,14 @@ public class GuiLiquidBoiler extends BaseContainerGui
 			this.drawTexturedModalRect(this.guiLeft + 43, (this.guiTop + 48) - burnTime, 176, 12 - burnTime, 14, burnTime + 2);
 		}
 
-		this.drawFluid(new FluidStack(FluidRegistry.getFluid("water"), 0), this.boiler.getScaledWaterLevel(60), this.guiLeft + 8, this.guiTop + 8, 20,
-				60);
+		this.drawFluid(FluidRegistry.getFluid("water"), this.boiler.getScaledWaterLevel(60), this.guiLeft + 8, this.guiTop + 8, 20, 60);
 		if (this.boiler.fuelTank.getFluid() != null)
-			this.drawFluid(new FluidStack(this.boiler.fuelTank.getFluid().getFluid(), 0), this.boiler.getScaledFuelLevel(60), this.guiLeft + 20,
-					this.guiTop + 8, 20, 60);
-		this.drawFluid(new FluidStack(FluidRegistry.getFluid("steam"), 0), this.boiler.getScaledSteamLevel(60), this.guiLeft + 74, this.guiTop + 8,
-				32, 60);
+		{
+			this.drawFluid(this.boiler.fuelTank.getFluid().getFluid(), this.boiler.getScaledFuelLevel(60), this.guiLeft + 20, this.guiTop + 8, 20,
+					60);
+			FMLLog.info("" + this.boiler.getScaledFuelLevel(60), "" + this.boiler.getScaledFuelLevel(60));
+		}
+		this.drawFluid(FluidRegistry.getFluid("steam"), this.boiler.getScaledSteamLevel(60), this.guiLeft + 74, this.guiTop + 8, 32, 60);
 
 		this.mc.renderEngine.bindTexture(guitexture);
 		this.drawTexturedModalRect(this.guiLeft + 8, this.guiTop + 15, 176, 14, 20, 49);

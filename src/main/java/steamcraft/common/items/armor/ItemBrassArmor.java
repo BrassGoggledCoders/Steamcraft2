@@ -12,9 +12,12 @@
  */
 package steamcraft.common.items.armor;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import net.minecraft.client.gui.ScaledResolution;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemArmor;
@@ -33,6 +36,8 @@ import boilerplate.common.baseclasses.items.BaseArmor;
 import steamcraft.api.item.IArmorModule;
 import steamcraft.api.item.IArmorModule.EnumArmorEffectType;
 import steamcraft.api.item.IDefensiveArmorModule;
+import steamcraft.api.item.IModule;
+import steamcraft.api.item.IModuleContainer;
 import steamcraft.api.item.ModuleRegistry;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.init.InitItems;
@@ -46,7 +51,7 @@ import thaumcraft.api.nodes.IRevealer;
  */
 @Optional.InterfaceList({ @Optional.Interface(iface = "thaumcraft.api.IGoggles", modid = "Thaumcraft"),
 		@Optional.Interface(iface = "thaumcraft.api.nodes.IRevealer", modid = "Thaumcraft") })
-public class ItemBrassArmor extends BaseArmor implements ISpecialArmor, IGoggles, IRevealer
+public class ItemBrassArmor extends BaseArmor implements ISpecialArmor, IGoggles, IRevealer, IModuleContainer
 {
 
 	public ItemBrassArmor(ItemArmor.ArmorMaterial armorMat, int renderIndex, int armorType)
@@ -173,6 +178,14 @@ public class ItemBrassArmor extends BaseArmor implements ISpecialArmor, IGoggles
 	}
 
 	@Override
+	@SideOnly(Side.CLIENT)
+	public String getArmorTexture(ItemStack is, Entity entity, int slot, String type)
+	{
+		return slot == 2 ? ModInfo.PREFIX + "textures/models/armor/" + "brass" + "_2.png"
+				: ModInfo.PREFIX + "textures/models/armor/" + "brass" + "_1.png";
+	}
+
+	@Override
 	public void damageArmor(EntityLivingBase entity, ItemStack stack, DamageSource source, int damage, int slot)
 	{
 	}
@@ -211,5 +224,33 @@ public class ItemBrassArmor extends BaseArmor implements ISpecialArmor, IGoggles
 			}
 		}
 		return false;
+	}
+
+	@Override
+	public boolean isModuleAllowed(IModule iModule, ItemStack itemStack)
+	{
+		boolean allowed = false;
+		if (itemStack.getItem() instanceof ItemBrassArmor)
+		{
+			ItemBrassArmor brassArmor = (ItemBrassArmor) itemStack.getItem();
+			if (iModule instanceof IArmorModule)
+			{
+				IArmorModule iArmorModule = (IArmorModule) iModule;
+				if ((iArmorModule.getApplicablePiece() == -1) || (iArmorModule.getApplicablePiece() == brassArmor.armorType))
+				{
+					ArrayList<IModule> moduleIncompatibilities = ModuleRegistry.getModuleIncompatibilities(iModule.getModuleId());
+					if ((moduleIncompatibilities == null)
+							|| Collections.disjoint(IModuleContainer.Helper.getAllModulesEquipped(itemStack), moduleIncompatibilities))
+					{
+						if (!IModuleContainer.Helper.getAllModulesEquipped(itemStack).contains(iModule))
+						{
+							allowed = true;
+						}
+					}
+				}
+			}
+		}
+
+		return allowed;
 	}
 }

@@ -41,9 +41,9 @@ public class BlockCapacitor extends BaseContainerBlock
 
 	/*
 	 * @Override public int getRenderType() { return RenderIDs.blockBatteryRI; }
-	 * 
+	 *
 	 * @Override public boolean isOpaqueCube() { return false; }
-	 * 
+	 *
 	 * @Override public boolean renderAsNormalBlock() { return false; }
 	 */
 

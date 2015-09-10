@@ -30,8 +30,6 @@ public class ForgeHooks
 	{
 		for (int i = 0; i < 10; i++)
 		{
-			FishingHooks.addJunk(new WeightedRandomFishable(new ItemStack(InitItems.itemBrassParts, 1, i), 25));
-			FishingHooks.addJunk(new WeightedRandomFishable(new ItemStack(InitItems.itemCopperParts, 1, i), 25));
 			FishingHooks.addJunk(new WeightedRandomFishable(new ItemStack(InitItems.itemSteelParts, 1, i), 25));
 			FishingHooks.addJunk(new WeightedRandomFishable(new ItemStack(InitItems.itemIronParts, 1, i), 25));
 		}

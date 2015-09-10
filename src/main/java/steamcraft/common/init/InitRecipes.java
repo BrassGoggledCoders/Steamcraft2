@@ -394,17 +394,13 @@ public class InitRecipes
 		GameRegistry.addRecipe(
 				new ShapedOreRecipe(new ItemStack(InitItems.itemSteelParts, 1, 2), "PPP", " I ", "PPP", 'P', "plateSteel", 'I', "ingotSteel"));
 		GameRegistry.addRecipe(
-				new ShapedOreRecipe(new ItemStack(InitItems.itemCopperParts, 1, 0), " P ", "PIP", " P ", 'P', "plateCopper", 'I', "ingotCopper"));
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemCopperParts, 1, 1), " P ", "P P", " P ", 'P', "plateCopper"));
-		GameRegistry.addRecipe(
 				new ShapedOreRecipe(new ItemStack(InitItems.itemIronParts, 1, 0), " P ", "PIP", " P ", 'I', "ingotIron", 'P', "plateIron"));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemIronParts, 1, 1), " P ", "P P", " P ", 'P', "plateIron"));
 
 		GameRegistry.addRecipe(
 				new ShapedOreRecipe(new ItemStack(InitItems.itemMachinePart, 1, 0), " X ", "X  ", 'X', new ItemStack(InitItems.itemIngot, 1, 7)));
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemMachinePart, 1, 1), "CPC", "S G", "CPC", 'P',
-				new ItemStack(InitItems.itemSheet, 1, 4), 'G', "gearIron", 'S', new ItemStack(InitItems.itemCopperParts, 1, 1), 'C',
-				new ItemStack(InitItems.itemMachinePart, 1, 0)));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemMachinePart, 1, 1), "CPC", "G G", "CPC", 'P',
+				new ItemStack(InitItems.itemSheet, 1, 4), 'G', "gearIron", 'C', new ItemStack(InitItems.itemMachinePart, 1, 0)));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemMachinePart, 1, 2), "P P", " P ", "P P", 'P', "plateIron"));
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(InitItems.itemMachinePart, 1, 3), new ItemStack(Items.water_bucket), "ingotIron",
 				"ingotCopper", "ingotZinc"));

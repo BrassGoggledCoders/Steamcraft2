@@ -107,7 +107,7 @@ public class WorldProviderDeeps extends WorldProvider
 
 	/*
 	 * @Override
-	 * 
+	 *
 	 * @SideOnly(Side.CLIENT) public IRenderHandler getSkyRenderer() { return
 	 * new DeepsSkyRenderer(); }
 	 */

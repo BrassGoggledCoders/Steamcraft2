@@ -28,8 +28,11 @@ import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTank;
 import net.minecraftforge.fluids.FluidTankInfo;
+import net.minecraftforge.oredict.OreDictionary;
 
 import boilerplate.api.IOpenableGUI;
+import boilerplate.common.utils.FluidUtils;
+import steamcraft.api.RecipeAPI;
 import steamcraft.client.gui.GuiLiquidBoiler;
 import steamcraft.common.blocks.machines.BlockBaseBoiler;
 import steamcraft.common.items.ItemCanister;
@@ -51,16 +54,18 @@ public class TileLiquidBoiler extends TileBaseBoiler implements IOpenableGUI
 	public FluidTank fuelTank;
 
 	// TODO Allow things to be added to this via imc
-	public HashMap<Fluid, Integer> fuels = new HashMap();
+	public HashMap<Fluid, Integer> fuels = RecipeAPI.addedFuels;
 	public int defaultFuelValue = 500;
 
 	public TileLiquidBoiler()
 	{
 		super();
 		this.fuelTank = new FluidTank(5000);
-		this.fuels.put(FluidRegistry.LAVA, defaultFuelValue * 2);
-		this.fuels.put(FluidRegistry.getFluid("whaleoil"), defaultFuelValue);
-		this.fuels.put(FluidRegistry.getFluid("oil"), defaultFuelValue);
+		this.fuels.put(FluidRegistry.LAVA, this.defaultFuelValue * 2);
+		this.fuels.put(FluidRegistry.getFluid("whaleoil"), this.defaultFuelValue);
+		this.fuels.put(FluidRegistry.getFluid("oil"), this.defaultFuelValue / 2);
+		this.fuels.put(FluidRegistry.getFluid("biodisel"), this.defaultFuelValue);
+		this.fuels.put(FluidRegistry.getFluid("fuel"), this.defaultFuelValue);
 	}
 
 	@Override
@@ -120,10 +125,10 @@ public class TileLiquidBoiler extends TileBaseBoiler implements IOpenableGUI
 			{
 				FluidStack fluid = FluidContainerRegistry.getFluidForFilledItem(this.inventory[1]);
 
-				if ((fluid != null) && (this.fuelTank.fill(fluid, false) == fluid.amount) && fuels.containsKey(fluid.getFluid()))
+				if ((fluid != null) && (this.fuelTank.fill(fluid, false) == fluid.amount) && this.fuels.containsKey(fluid.getFluid()))
 				{
 					this.fuelTank.fill(new FluidStack(fluid, fluid.amount), true);
-					FMLLog.info("" + fuelTank.getFluid().getUnlocalizedName(), "");
+					FMLLog.info("" + this.fuelTank.getFluid().getUnlocalizedName(), "");
 
 					if (this.inventory[1].stackSize > 1)
 						this.inventory[1].stackSize--;
@@ -132,13 +137,27 @@ public class TileLiquidBoiler extends TileBaseBoiler implements IOpenableGUI
 				}
 			}
 			// Steam Draining
-			if ((this.inventory[2] != null) && (this.inventory[2].getItem() instanceof ItemCanister))
+			if ((this.inventory[2] != null))
 			{
-				ItemCanister canister = (ItemCanister) this.inventory[2].getItem();
-				if ((this.steamTank.getFluidAmount() >= steamPerTick) && (canister.getFluidAmount(this.inventory[2]) != canister.maxSteam))
+				if ((this.inventory[2].getItem() instanceof ItemCanister))
 				{
-					canister.fill(this.inventory[2], new FluidStack(FluidRegistry.getFluid("steam"), steamPerTick), true);
-					this.steamTank.drain(steamPerTick, true);
+					ItemCanister canister = (ItemCanister) this.inventory[2].getItem();
+					if ((this.steamTank.getFluidAmount() >= steamPerTick) && (canister.getFluidAmount(this.inventory[2]) != canister.maxSteam))
+					{
+						canister.fill(this.inventory[2], new FluidStack(FluidRegistry.getFluid("steam"), steamPerTick), true);
+						this.steamTank.drain(steamPerTick, true);
+					}
+				}
+				else
+				{
+					ItemStack filledContainer = FluidUtils.fillFluidContainer(this.steamTank, this.inventory[2]);
+					if (filledContainer != null)
+					{
+						if ((this.inventory[2] != null) && OreDictionary.itemMatches(this.inventory[2], filledContainer, true))
+							this.inventory[2].stackSize += filledContainer.stackSize;
+						else if (this.inventory[2] == null)
+							this.inventory[2] = filledContainer.copy();
+					}
 				}
 			}
 			// Burn fuel
@@ -179,7 +198,7 @@ public class TileLiquidBoiler extends TileBaseBoiler implements IOpenableGUI
 	@Override
 	public boolean canInsertItem(int par1, ItemStack itemstack, int par3)
 	{
-		return ((par1 == 0 || par1 == 1) && FluidContainerRegistry.isContainer(itemstack));
+		return (((par1 == 0) || (par1 == 1)) && FluidContainerRegistry.isContainer(itemstack));
 	}
 
 	@Override
@@ -249,6 +268,6 @@ public class TileLiquidBoiler extends TileBaseBoiler implements IOpenableGUI
 
 	public int getFuelBurnTime(Fluid fluid)
 	{
-		return fuels.get(fluid);
+		return this.fuels.get(fluid);
 	}
 }

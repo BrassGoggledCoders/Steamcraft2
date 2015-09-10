@@ -39,7 +39,9 @@ import net.minecraftforge.common.MinecraftForge;
 
 import boilerplate.client.GuiHandler;
 import boilerplate.common.compathandler.FMPCompatHandler;
+import boilerplate.common.utils.handlers.BucketHandler;
 import steamcraft.common.compat.CompatabilityLayer;
+import steamcraft.common.compat.CompatibilityHandler;
 import steamcraft.common.config.Config;
 import steamcraft.common.config.ConfigGeneral;
 import steamcraft.common.config.ConfigWorldGen;
@@ -51,7 +53,6 @@ import steamcraft.common.init.InitItems;
 import steamcraft.common.init.InitMisc;
 import steamcraft.common.init.InitPackets;
 import steamcraft.common.init.InitRecipes;
-import steamcraft.common.lib.BucketHandler;
 import steamcraft.common.lib.CommandSteamcraft;
 import steamcraft.common.lib.CreativeTabSteamcraft;
 import steamcraft.common.lib.LoggerSteamcraft;
@@ -96,6 +97,7 @@ public class Steamcraft
 		MinecraftForge.EVENT_BUS.register(new BucketHandler());
 
 		CompatabilityLayer.initCompatItems();
+		CompatibilityHandler.preInit(event);
 
 		LoggerSteamcraft.info("Finished Preinit");
 	}
@@ -134,6 +136,7 @@ public class Steamcraft
 		InitBiomes.init();
 
 		FMPCompatHandler.doRegister();
+		CompatibilityHandler.init(event);
 
 		LoggerSteamcraft.info("Finished Init");
 	}
@@ -158,6 +161,7 @@ public class Steamcraft
 		if (Loader.isModLoaded("ImmersiveEngineering"))
 			LoggerSteamcraft.info("Evening to the distingushed ladies and gentlemen of the ImmersiveEngineering club!");
 
+		CompatibilityHandler.postInit(event);
 		/*
 		 * if(event.getSide() == Side.CLIENT) { // Autopopulate item/block lists
 		 * from creative tab Iterator iterator = Item.itemRegistry.iterator();
