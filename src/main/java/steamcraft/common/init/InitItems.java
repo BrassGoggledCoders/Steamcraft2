@@ -25,6 +25,7 @@ import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 
+import boilerplate.common.utils.handlers.BucketHandler;
 import boilerplate.common.utils.helpers.RegistryHelper;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.items.BaseItem;
@@ -102,7 +103,6 @@ import steamcraft.common.items.tools.steam.ItemSteamPickaxe;
 import steamcraft.common.items.tools.steam.ItemSteamShovel;
 import steamcraft.common.items.tools.steam.ItemSteamSword;
 import steamcraft.common.items.vanity.ItemTopHat;
-import steamcraft.common.lib.BucketHandler;
 import steamcraft.common.lib.ModInfo;
 
 /**
@@ -511,10 +511,10 @@ public class InitItems
 				new ItemStack(itemBoilingMudBucket), new ItemStack(Items.bucket));
 		FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("whaleoil", FluidContainerRegistry.BUCKET_VOLUME),
 				new ItemStack(itemWhaleOilBucket), new ItemStack(Items.bucket));
-		BucketHandler.INSTANCE.buckets.put(InitBlocks.blockBoilingWater, itemBoilingWaterBucket);
-		BucketHandler.INSTANCE.buckets.put(InitBlocks.blockBoilingMud, itemBoilingMudBucket);
-		BucketHandler.INSTANCE.buckets.put(InitBlocks.blockWhaleOil, itemWhaleOilBucket);
-		MinecraftForge.EVENT_BUS.register(BucketHandler.INSTANCE);
+		BucketHandler.getInstance().bucketMap.put(InitBlocks.blockBoilingWater, itemBoilingWaterBucket);
+		BucketHandler.getInstance().bucketMap.put(InitBlocks.blockBoilingMud, itemBoilingMudBucket);
+		BucketHandler.getInstance().bucketMap.put(InitBlocks.blockWhaleOil, itemWhaleOilBucket);
+		MinecraftForge.EVENT_BUS.register(BucketHandler.getInstance());
 
 		itemWhalebone = new BaseItem().setUnlocalizedName("itemWhalebone");
 		registerItem(itemWhalebone, "ItemWhalebone");

@@ -39,6 +39,8 @@ public class ContainerInjector extends BaseContainer
 {
 	private TileInjector tileent;
 
+	private int lastFluidLevel = 0;
+
 	public ContainerInjector(InventoryPlayer player, TileInjector tile)
 	{
 		this.tileent = tile;
@@ -61,6 +63,7 @@ public class ContainerInjector extends BaseContainer
 	public void addCraftingToCrafters(ICrafting par1ICrafting)
 	{
 		super.addCraftingToCrafters(par1ICrafting);
+		par1ICrafting.sendProgressBarUpdate(this, 0, this.tileent.buffer.getFluidAmount());
 	}
 
 	@Override
@@ -71,15 +74,18 @@ public class ContainerInjector extends BaseContainer
 		for (Object obj : this.crafters)
 		{
 			ICrafting var2 = (ICrafting) obj;
-
+			if (this.lastFluidLevel != this.tileent.buffer.getFluidAmount())
+				var2.sendProgressBarUpdate(this, 2, this.tileent.buffer.getFluidAmount());
 		}
+		this.lastFluidLevel = this.tileent.buffer.getFluidAmount();
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void updateProgressBar(int par1, int par2)
 	{
-
+		if (par1 == 0)
+			this.tileent.buffer.getFluid().amount = par2;
 	}
 
 	@Override

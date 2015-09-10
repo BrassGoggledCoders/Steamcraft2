@@ -39,6 +39,7 @@ import net.minecraftforge.common.MinecraftForge;
 
 import boilerplate.client.GuiHandler;
 import boilerplate.common.compathandler.FMPCompatHandler;
+import boilerplate.common.utils.handlers.BucketHandler;
 import steamcraft.common.compat.CompatabilityLayer;
 import steamcraft.common.compat.CompatibilityHandler;
 import steamcraft.common.config.Config;
@@ -52,7 +53,6 @@ import steamcraft.common.init.InitItems;
 import steamcraft.common.init.InitMisc;
 import steamcraft.common.init.InitPackets;
 import steamcraft.common.init.InitRecipes;
-import steamcraft.common.lib.BucketHandler;
 import steamcraft.common.lib.CommandSteamcraft;
 import steamcraft.common.lib.CreativeTabSteamcraft;
 import steamcraft.common.lib.LoggerSteamcraft;
