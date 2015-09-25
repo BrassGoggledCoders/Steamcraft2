@@ -445,26 +445,6 @@ item.itemLegsWhalebone.name=Whalebone Greaves
 item.itemBootsWhalebone.name=Whalebone Boots
 
 #Parts
-item.itemPartsBrass.0.name=Brass Gear
-item.itemPartsBrass.1.name=Brass Sprocket
-item.itemPartsBrass.2.name=Brass Spring
-item.itemPartsBrass.3.name=Brass Thread
-item.itemPartsBrass.4.name=Brass Nut
-item.itemPartsBrass.5.name=Brass Bolt
-item.itemPartsBrass.6.name=Brass Washer
-item.itemPartsBrass.7.name=Brass Bearing
-item.itemPartsBrass.8.name=Brass Screw
-item.itemPartsBrass.9.name=Brass Nail
-item.itemPartsCopper.0.name=Copper Gear
-item.itemPartsCopper.1.name=Copper Sprocket
-item.itemPartsCopper.2.name=Copper Spring
-item.itemPartsCopper.3.name=Copper Thread
-item.itemPartsCopper.4.name=Copper Nut
-item.itemPartsCopper.5.name=Copper Bolt
-item.itemPartsCopper.6.name=Copper Washer
-item.itemPartsCopper.7.name=Copper Bearing
-item.itemPartsCopper.8.name=Copper Screw
-item.itemPartsCopper.9.name=Copper Nail
 item.itemPartsIron.0.name=Iron Gear
 item.itemPartsIron.1.name=Iron Sprocket
 item.itemPartsIron.2.name=Iron Spring
