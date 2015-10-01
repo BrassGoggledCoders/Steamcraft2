@@ -84,7 +84,7 @@ public class ContainerInjector extends BaseContainer
 	@SideOnly(Side.CLIENT)
 	public void updateProgressBar(int par1, int par2)
 	{
-		if (par1 == 0)
+		if (par1 == 0 && tileent.buffer.getFluid() != null)
 			this.tileent.buffer.getFluid().amount = par2;
 	}
 

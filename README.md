@@ -18,7 +18,9 @@ we still possess the power of discretion. Yes, there is an API, but its details 
 fleshed out/documented. Please give us some time before we make it suitable.
 
 You can find the latest builds of our mod on Jenkins:
-http://jenkins.k-4u.nl/job/SteamCraft%202/
+http://jenkins.k-4u.nl/job/SteamCraft%202/ 
+
+Remember to grab the jenkins built Boilerplate too!
 
 Developers & Credits:
 =====================

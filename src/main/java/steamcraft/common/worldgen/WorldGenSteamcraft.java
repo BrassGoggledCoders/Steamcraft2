@@ -105,7 +105,7 @@ public class WorldGenSteamcraft implements IWorldGenerator
 				}
 		}
 
-		if (random.nextInt(30) == 0)
+		if (random.nextInt(30) == 0 && ConfigWorldGen.deepsPortalGenEnabled)
 		{
 			int X = chunkX + random.nextInt(16);
 			int Z = chunkZ + random.nextInt(16);
