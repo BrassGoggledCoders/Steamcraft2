@@ -64,6 +64,7 @@ import steamcraft.common.blocks.BlockMossyMetal;
 import steamcraft.common.blocks.BlockMotionSensor;
 import steamcraft.common.blocks.BlockMud;
 import steamcraft.common.blocks.BlockPlankStack;
+import steamcraft.common.blocks.BlockPlating;
 import steamcraft.common.blocks.BlockPolishedPlanks;
 import steamcraft.common.blocks.BlockRustyMetal;
 import steamcraft.common.blocks.BlockSiren;
@@ -174,6 +175,8 @@ public class InitBlocks
 	public static Block blockMeltingIce, blockGhostIce;
 	// Metals
 	public static Block blockMetal, blockMossyMetal, blockRustyMetal, blockUranium, blockEtherium;
+	public static Block blockAluminumPlate, blockCopperPlate, blockTinPlate, blockZincPlate, blockBrassPlate, blockBronzePlate, blockSteelPlate,
+			blockCastIron;
 
 	public static Block blockMoltenZinc, blockMoltenBrass;
 	public static Block blockPath, blockMud, blockLeafCover, blockMoss;
@@ -424,6 +427,9 @@ public class InitBlocks
 		registerBlock(blockRustyMetal, BaseItemBlockWithMetadata.class, "BlockRustyMetal", 8);
 		blockMossyMetal = new BlockMossyMetal().setBlockName("blockMossyMetal");
 		registerBlock(blockMossyMetal, BaseItemBlockWithMetadata.class, "BlockMossyMetal", 8);
+
+		blockAluminumPlate = new BlockPlating(blockMetal, 0).setBlockName("blockAluminumPlate");
+		registerBlock(blockAluminumPlate, "BlockAluminumPlating");
 
 		blockUranium = new BlockUranium(Material.iron).setBlockName("blockUranium");
 		registerBlock(blockUranium, "BlockUranium");

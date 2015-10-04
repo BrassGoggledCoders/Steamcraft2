@@ -198,6 +198,7 @@ tile.blockRefinery.name=Refinery
 tile.blockRefinery.desc=Refines blubber into whale oil.
 tile.blockStasisField.name=Stasis Field
 tile.blockStasisField.desc=Holds items within one block of it in a stasis field, preventing them despawning, consuming 10 RF/t per item. Warning! Items will almost instantly despawn when the field is removed.|Holds 50k RF.Transfer (in): 80 RF/t
+tile.blockInjector.name=Injector/Extractor
 
 #Fluids
 tile.steamFluidBlock.name=Steam
