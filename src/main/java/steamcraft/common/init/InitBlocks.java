@@ -429,7 +429,11 @@ public class InitBlocks
 		registerBlock(blockMossyMetal, BaseItemBlockWithMetadata.class, "BlockMossyMetal", 8);
 
 		blockAluminumPlate = new BlockPlating(blockMetal, 0).setBlockName("blockAluminumPlate");
-		registerBlock(blockAluminumPlate, "BlockAluminumPlating");
+		registerBlock(blockAluminumPlate, BaseItemBlockWithMetadata.class, "BlockAluminumPlating", 0);
+		blockCopperPlate = new BlockPlating(blockMetal, 1).setBlockName("blockCopperPlate");
+		registerBlock(blockCopperPlate, BaseItemBlockWithMetadata.class, "BlockCopperPlating", 0);
+		blockTinPlate = new BlockPlating(blockMetal, 2).setBlockName("blockTinPlate");
+		registerBlock(blockTinPlate, BaseItemBlockWithMetadata.class, "BlockTinPlating", 0);
 
 		blockUranium = new BlockUranium(Material.iron).setBlockName("blockUranium");
 		registerBlock(blockUranium, "BlockUranium");

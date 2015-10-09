@@ -14,9 +14,11 @@ package steamcraft.common.blocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
+import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -35,32 +37,28 @@ public class BlockPlating extends BaseBlock
 	}
 
 	/**
-	 * Returns a bounding box from the pool of bounding boxes (this means this
-	 * box can change after the pool has been cleared to be reused)
+	 * Gets the block's texture. Args: side, meta
 	 */
+	@Override
+	@SideOnly(Side.CLIENT)
+	public IIcon getIcon(int side, int meta)
+	{
+		return block.getIcon(side, meta);
+	}
+
 	@Override
 	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z)
 	{
 		int l = world.getBlockMetadata(x, y, z);
-		float f = 0.125F;
-		return AxisAlignedBB.getBoundingBox(x + this.minX, y + this.minY, z + this.minZ, x + this.maxX, y + (l * f), z + this.maxZ);
+		return AxisAlignedBB.getBoundingBox(x + this.minX, y + this.minY, z + this.minZ, x + this.maxX, y + width, z + this.maxZ);
 	}
 
-	/**
-	 * Is this block (a) opaque and (b) a full 1m cube? This determines whether
-	 * or not to render the shared face of two adjacent blocks and also whether
-	 * the player can attach torches, redstone wire, etc to this block.
-	 */
 	@Override
 	public boolean isOpaqueCube()
 	{
 		return false;
 	}
 
-	/**
-	 * If this block doesn't render as an ordinary block it will return False
-	 * (examples: signs, buttons, stairs, etc)
-	 */
 	@Override
 	public boolean renderAsNormalBlock()
 	{
@@ -90,20 +88,27 @@ public class BlockPlating extends BaseBlock
 	{
 		switch (meta)
 		{
+		case 0:
+			this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, width, 1.0F);
+			break;
 		case 1:
 			this.setBlockBounds(1.0F, 1.0F, width, 0.0F, 0.0F, 0.0F);
+			break;
 		case 2:
 			this.setBlockBounds(1.0F, 1.0F, width, 0.0F, 0.0F, 0.0F);
+			break;
 		case 3:
 			this.setBlockBounds(1.0F, 1.0F, width, 1.0F, 0.0F, 0.0F);
+			break;
 		case 4:
 			this.setBlockBounds(1.0F, 1.0F, width, 0.0F, 0.0F, 0.0F);
+			break;
 		case 5:
 			this.setBlockBounds(1.0F, 1.0F, width, 1.0F, 0.0F, 0.0F);
+			break;
 		case 6:
 			this.setBlockBounds(1.0F, 1.0F, width, 0.0F, 1.0F, 0.0F);
-		default:
-			this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, width, 1.0F);
+			break;
 		}
 	}
 
@@ -153,7 +158,9 @@ public class BlockPlating extends BaseBlock
 	@SideOnly(Side.CLIENT)
 	public boolean shouldSideBeRendered(IBlockAccess p_149646_1_, int p_149646_2_, int p_149646_3_, int p_149646_4_, int p_149646_5_)
 	{
-		return (p_149646_5_ == 1) || super.shouldSideBeRendered(p_149646_1_, p_149646_2_, p_149646_3_, p_149646_4_, p_149646_5_);
+		return true;
+		// return (p_149646_5_ == 1) || super.shouldSideBeRendered(p_149646_1_,
+		// p_149646_2_, p_149646_3_, p_149646_4_, p_149646_5_);
 	}
 
 	@Override
@@ -161,6 +168,7 @@ public class BlockPlating extends BaseBlock
 	{
 		System.out.print(side);
 		world.setBlockMetadataWithNotify(x, y, z, side, 2);
+		FMLLog.warning("" + world.getBlockMetadata(x, y, z), "" + world.getBlockMetadata(x, y, z));
 		return metadata;
 	}
 }
