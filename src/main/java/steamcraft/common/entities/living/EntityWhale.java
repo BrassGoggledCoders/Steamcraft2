@@ -48,14 +48,15 @@ public class EntityWhale extends EntityWaterMob
 
 		for (k = 0; k < j; ++k)
 		{
-			if (this.isBurning())
-			{
-				this.dropItem(InitItems.itemCookedWhaleMeat, this.rand.nextInt(15) + 5);
-			}
-			else
-			{
-				this.dropItem(InitItems.itemWhaleMeat, this.rand.nextInt(15) + 5);
-			}
+			// if (this.isBurning())
+			// {
+			// this.dropItem(InitItems.itemCookedWhaleMeat,
+			// this.rand.nextInt(15) + 5);
+			// }
+			// else
+			// {
+			this.dropItem(InitItems.itemWhaleMeat, this.rand.nextInt(15) + 5);
+			// }
 		}
 	}
 

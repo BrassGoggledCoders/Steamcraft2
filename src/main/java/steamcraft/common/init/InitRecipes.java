@@ -522,7 +522,7 @@ public class InitRecipes
 
 		GameRegistry.addSmelting(InitBlocks.blockBrassLog, new ItemStack(InitItems.itemIngot, 2, 4), 0);
 
-		GameRegistry.addSmelting(new ItemStack(InitItems.itemCookedWhaleMeat), new ItemStack(InitItems.itemWhaleMeat), 1F);
+		GameRegistry.addSmelting(new ItemStack(InitItems.itemWhaleMeat), new ItemStack(InitItems.itemCookedWhaleMeat), 1F);
 	}
 
 }
