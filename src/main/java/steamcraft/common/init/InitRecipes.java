@@ -97,8 +97,8 @@ public class InitRecipes
 		GameRegistry.addRecipe(new ItemStack(InitItems.percussionCapPistol), " FL", " B ", " S ", 'S', new ItemStack(InitItems.itemGunPart, 1, 11),
 				'B', new ItemStack(InitItems.itemGunPart, 1, 10), 'L', new ItemStack(InitItems.itemGunPart, 1, 3), 'F', InitItems.itemPercussionCap);
 		// Ammo
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemMusketBall, 4), "II", "II", 'I', "ingotIron"));
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemRifleBullet, 4), " S ", " C ", " G ", 'S', "ingotSteel", 'C',
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemMusketBall, 4), "II", "II", 'I', "nuggetIron"));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemRifleBullet, 4), " S ", " C ", " G ", 'S', "nuggetSteel", 'C',
 				"plateBrass", 'G', Items.gunpowder));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemPercussionCap), "GG", "II", 'I', "ingotBrass", 'G', Items.gunpowder));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemRocket, 1, 0), " I ", "PTP", "PTP", 'I', "ingotIron", 'P',
