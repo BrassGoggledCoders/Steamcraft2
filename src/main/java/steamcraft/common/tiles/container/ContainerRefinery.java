@@ -42,6 +42,7 @@ public class ContainerRefinery extends BaseContainer
 	private int lastBurnTime = 0;
 	private int lastItemBurnTime = 0;
 	private int lastSteamLevel = 0;
+	private int lastCookTime = 0;
 
 	public ContainerRefinery(InventoryPlayer player, TileRefinery tile)
 	{
@@ -49,7 +50,7 @@ public class ContainerRefinery extends BaseContainer
 		this.setTile(this.tileent);
 
 		this.addSlotToContainer(new Slot(tile, 0, 16, 58));
-		this.addSlotToContainer(new Slot(tile, 1, 16, 23));
+		this.addSlotToContainer(new Slot(tile, 1, 16, 24));
 		this.addSlotToContainer(new Slot(tile, 2, 132, 57)
 		{
 			@Override
@@ -76,6 +77,7 @@ public class ContainerRefinery extends BaseContainer
 		par1ICrafting.sendProgressBarUpdate(this, 0, this.tileent.furnaceBurnTime);
 		par1ICrafting.sendProgressBarUpdate(this, 1, this.tileent.currentItemBurnTime);
 		par1ICrafting.sendProgressBarUpdate(this, 2, this.tileent.oilTank.getFluidAmount());
+		par1ICrafting.sendProgressBarUpdate(this, 3, this.tileent.cookTime);
 	}
 
 	@Override
@@ -96,11 +98,15 @@ public class ContainerRefinery extends BaseContainer
 			if (this.lastSteamLevel != this.tileent.oilTank.getFluidAmount())
 				var2.sendProgressBarUpdate(this, 2, this.tileent.oilTank.getFluidAmount());
 
+			if (this.lastCookTime != this.tileent.cookTime)
+				var2.sendProgressBarUpdate(this, 3, this.tileent.cookTime);
+
 		}
 
 		this.lastBurnTime = this.tileent.furnaceBurnTime;
 		this.lastItemBurnTime = this.tileent.currentItemBurnTime;
 		this.lastSteamLevel = this.tileent.oilTank.getFluidAmount();
+		this.lastCookTime = this.tileent.cookTime;
 	}
 
 	@Override
@@ -113,6 +119,8 @@ public class ContainerRefinery extends BaseContainer
 			this.tileent.currentItemBurnTime = par2;
 		else if (par1 == 2)
 			this.tileent.oilTank.setFluid(new FluidStack(FluidRegistry.getFluid("steam"), par2));
+		else if (par1 == 3)
+			this.tileent.cookTime = par2;
 	}
 
 	@Override
