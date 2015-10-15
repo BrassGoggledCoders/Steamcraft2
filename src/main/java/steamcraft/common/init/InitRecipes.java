@@ -342,6 +342,9 @@ public class InitRecipes
 
 		GameRegistry.addRecipe(new ItemStack(InitBlocks.blockSkyrail), " N ", "GGG", "R R", 'N', new ItemStack(Blocks.golden_rail, 1, 0), 'G',
 				Items.gold_ingot, 'R', Items.redstone);
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockHatch), "PPP", " P ", "IBI", 'B', "blockSteel", 'I', "ingotSteel",
+				'P', "plateSteel"));
 	}
 
 	private static void initModuleRecipes()
