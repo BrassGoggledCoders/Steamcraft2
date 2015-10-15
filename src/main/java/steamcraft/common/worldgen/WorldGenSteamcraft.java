@@ -85,9 +85,12 @@ public class WorldGenSteamcraft implements IWorldGenerator
 
 		if (ConfigWorldGen.slateGenEnabled)
 		{
-			this.generateOre(world, random, chunkX, chunkZ, 1, 40, 70, ConfigWorldGen.slateCluster, InitBlocks.blockSlate, 0, Blocks.stone);
-			this.generateOre(world, random, chunkX, chunkZ, 1, 40, 70, ConfigWorldGen.slateCluster, InitBlocks.blockSlate, 1, Blocks.stone);
-			this.generateOre(world, random, chunkX, chunkZ, 1, 40, 70, ConfigWorldGen.slateCluster, InitBlocks.blockSlate, 2, Blocks.stone);
+			this.generateOre(world, random, chunkX, chunkZ, 1, 10, 40, ConfigWorldGen.slateCluster, InitBlocks.blockSlate, 0, Blocks.stone);
+			this.generateOre(world, random, chunkX, chunkZ, 1, 10, 40, ConfigWorldGen.slateCluster, InitBlocks.blockSlate, 1, Blocks.stone);
+			this.generateOre(world, random, chunkX, chunkZ, 1, 10, 40, ConfigWorldGen.slateCluster, InitBlocks.blockSlate, 2, Blocks.stone);
+			this.generateOre(world, random, chunkX, chunkZ, 1, 40, 70, ConfigWorldGen.slateCluster, InitBlocks.blockLightSlate, 0, Blocks.stone);
+			this.generateOre(world, random, chunkX, chunkZ, 1, 40, 70, ConfigWorldGen.slateCluster, InitBlocks.blockLightSlate, 1, Blocks.stone);
+			this.generateOre(world, random, chunkX, chunkZ, 1, 40, 70, ConfigWorldGen.slateCluster, InitBlocks.blockLightSlate, 2, Blocks.stone);
 		}
 
 		if (ConfigWorldGen.brassTreeGenEnabled)
