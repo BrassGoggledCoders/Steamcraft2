@@ -176,8 +176,7 @@ public class InitBlocks
 	public static Block blockMeltingIce, blockGhostIce;
 	// Metals
 	public static Block blockMetal, blockMossyMetal, blockRustyMetal, blockUranium, blockEtherium;
-	public static Block blockAluminumPlate, blockCopperPlate, blockTinPlate, blockZincPlate, blockBrassPlate, blockBronzePlate, blockSteelPlate,
-			blockCastIron;
+	public static Block blockMetalPlate, blockRustyMetalPlate, blockMossyMetalPlate;
 
 	public static Block blockMoltenZinc, blockMoltenBrass;
 	public static Block blockPath, blockMud, blockLeafCover, blockMoss;
@@ -453,12 +452,12 @@ public class InitBlocks
 		blockMossyMetal = new BlockMossyMetal().setBlockName("blockMossyMetal");
 		registerBlock(blockMossyMetal, BaseItemBlockWithMetadata.class, "BlockMossyMetal", 8);
 
-		blockAluminumPlate = new BlockPlating(blockMetal, 0).setBlockName("blockAluminumPlate");
-		registerBlock(blockAluminumPlate, BaseItemBlockWithMetadata.class, "BlockAluminumPlating", 0);
-		blockCopperPlate = new BlockPlating(blockMetal, 1).setBlockName("blockCopperPlate");
-		registerBlock(blockCopperPlate, BaseItemBlockWithMetadata.class, "BlockCopperPlating", 0);
-		blockTinPlate = new BlockPlating(blockMetal, 2).setBlockName("blockTinPlate");
-		registerBlock(blockTinPlate, BaseItemBlockWithMetadata.class, "BlockTinPlating", 0);
+		blockMetalPlate = new BlockPlating(blockMetal).setBlockName("blockMetalPlate");
+		registerBlock(blockMetalPlate, BaseItemBlockWithMetadata.class, "BlockMetalPlating", 8);
+		blockRustyMetalPlate = new BlockPlating(blockRustyMetal).setBlockName("blockRustyMetalPlate");
+		registerBlock(blockRustyMetalPlate, BaseItemBlockWithMetadata.class, "BlockRustyMetalPlating", 8);
+		blockMossyMetalPlate = new BlockPlating(blockMossyMetal).setBlockName("blockMossyMetalPlate");
+		registerBlock(blockMossyMetalPlate, BaseItemBlockWithMetadata.class, "BlockMossyMetalPlating", 8);
 
 		blockUranium = new BlockUranium(Material.iron).setBlockName("blockUranium");
 		registerBlock(blockUranium, "BlockUranium");

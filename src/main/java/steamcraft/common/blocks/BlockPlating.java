@@ -12,28 +12,56 @@
  */
 package steamcraft.common.blocks;
 
+import java.util.List;
+
 import net.minecraft.block.Block;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockPlating extends BaseBlock
-{
-	int metadata;
-	Block block;
-	float width = 0.125F;
+import boilerplate.common.baseclasses.blocks.BaseMetadataBlock;
+import steamcraft.common.Steamcraft;
+import steamcraft.common.init.InitBlocks;
 
-	public BlockPlating(Block block, int metadata)
+public class BlockPlating extends BaseMetadataBlock
+{
+	Block block;
+
+	public BlockPlating(Block block)
 	{
 		super(block.getMaterial());
+		this.setCreativeTab(Steamcraft.tabSC2);
 		this.block = block;
-		this.metadata = metadata;
-		this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, width, 1.0F);
+	}
+
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void getSubBlocks(final Item item, final CreativeTabs tab, final List l)
+	{
+		if (block == InitBlocks.blockMetal)
+		{
+			for (int var4 = 0; var4 < 8; ++var4)
+				l.add(new ItemStack(InitBlocks.blockMetalPlate, 1, var4));
+		}
+		else if (block == InitBlocks.blockMossyMetal)
+		{
+			for (int var4 = 0; var4 < 8; ++var4)
+				l.add(new ItemStack(InitBlocks.blockMossyMetalPlate, 1, var4));
+		}
+		if (block == InitBlocks.blockRustyMetal)
+		{
+			for (int var4 = 0; var4 < 8; ++var4)
+				l.add(new ItemStack(InitBlocks.blockRustyMetalPlate, 1, var4));
+		}
 	}
 
 	/**
@@ -46,19 +74,31 @@ public class BlockPlating extends BaseBlock
 		return block.getIcon(side, meta);
 	}
 
+	/**
+	 * Returns a bounding box from the pool of bounding boxes (this means this
+	 * box can change after the pool has been cleared to be reused)
+	 */
 	@Override
 	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z)
 	{
-		int l = world.getBlockMetadata(x, y, z);
-		return AxisAlignedBB.getBoundingBox(x + this.minX, y + this.minY, z + this.minZ, x + this.maxX, y + width, z + this.maxZ);
+		return Blocks.carpet.getCollisionBoundingBoxFromPool(world, x, y, z);
 	}
 
+	/**
+	 * Is this block (a) opaque and (b) a full 1m cube? This determines whether
+	 * or not to render the shared face of two adjacent blocks and also whether
+	 * the player can attach torches, redstone wire, etc to this block.
+	 */
 	@Override
 	public boolean isOpaqueCube()
 	{
 		return false;
 	}
 
+	/**
+	 * If this block doesn't render as an ordinary block it will return False
+	 * (examples: signs, buttons, stairs, etc)
+	 */
 	@Override
 	public boolean renderAsNormalBlock()
 	{
@@ -71,45 +111,14 @@ public class BlockPlating extends BaseBlock
 	@Override
 	public void setBlockBoundsForItemRender()
 	{
-		this.setBoundsFromMetadata(0);
+		this.func_150089_b(0);
 	}
 
-	/**
-	 * Updates the blocks bounds based on its current state. Args: world, x, y,
-	 * z
-	 */
-	@Override
-	public void setBlockBoundsBasedOnState(IBlockAccess world, int x, int y, int z)
+	protected void func_150089_b(int p_150089_1_)
 	{
-		this.setBoundsFromMetadata(world.getBlockMetadata(x, y, z));
-	}
-
-	protected void setBoundsFromMetadata(int meta)
-	{
-		switch (meta)
-		{
-		case 0:
-			this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, width, 1.0F);
-			break;
-		case 1:
-			this.setBlockBounds(1.0F, 1.0F, width, 0.0F, 0.0F, 0.0F);
-			break;
-		case 2:
-			this.setBlockBounds(1.0F, 1.0F, width, 0.0F, 0.0F, 0.0F);
-			break;
-		case 3:
-			this.setBlockBounds(1.0F, 1.0F, width, 1.0F, 0.0F, 0.0F);
-			break;
-		case 4:
-			this.setBlockBounds(1.0F, 1.0F, width, 0.0F, 0.0F, 0.0F);
-			break;
-		case 5:
-			this.setBlockBounds(1.0F, 1.0F, width, 1.0F, 0.0F, 0.0F);
-			break;
-		case 6:
-			this.setBlockBounds(1.0F, 1.0F, width, 0.0F, 1.0F, 0.0F);
-			break;
-		}
+		byte b0 = 0;
+		float f = (1 * (1 + b0)) / 16.0F;
+		this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, f, 1.0F);
 	}
 
 	/**
@@ -119,10 +128,8 @@ public class BlockPlating extends BaseBlock
 	@Override
 	public boolean canPlaceBlockAt(World p_149742_1_, int p_149742_2_, int p_149742_3_, int p_149742_4_)
 	{
-		// Block block = p_149742_1_.getBlock(p_149742_2_, p_149742_3_ - 1,
-		// p_149742_4_);
-		// return block.isOpaqueCube();
-		return true;
+		return super.canPlaceBlockAt(p_149742_1_, p_149742_2_, p_149742_3_, p_149742_4_)
+				&& this.canBlockStay(p_149742_1_, p_149742_2_, p_149742_3_, p_149742_4_);
 	}
 
 	/**
@@ -133,20 +140,32 @@ public class BlockPlating extends BaseBlock
 	@Override
 	public void onNeighborBlockChange(World p_149695_1_, int p_149695_2_, int p_149695_3_, int p_149695_4_, Block p_149695_5_)
 	{
-		this.checkCanStay(p_149695_1_, p_149695_2_, p_149695_3_, p_149695_4_);
+		this.func_150090_e(p_149695_1_, p_149695_2_, p_149695_3_, p_149695_4_);
 	}
 
-	private boolean checkCanStay(World p_150155_1_, int p_150155_2_, int p_150155_3_, int p_150155_4_)
+	private boolean func_150090_e(World p_150090_1_, int p_150090_2_, int p_150090_3_, int p_150090_4_)
 	{
-		if (!this.canPlaceBlockAt(p_150155_1_, p_150155_2_, p_150155_3_, p_150155_4_))
+		if (!this.canBlockStay(p_150090_1_, p_150090_2_, p_150090_3_, p_150090_4_))
 		{
-			p_150155_1_.setBlockToAir(p_150155_2_, p_150155_3_, p_150155_4_);
+			this.dropBlockAsItem(p_150090_1_, p_150090_2_, p_150090_3_, p_150090_4_,
+					p_150090_1_.getBlockMetadata(p_150090_2_, p_150090_3_, p_150090_4_), 0);
+			p_150090_1_.setBlockToAir(p_150090_2_, p_150090_3_, p_150090_4_);
 			return false;
 		}
 		else
 		{
 			return true;
 		}
+	}
+
+	/**
+	 * Can this block stay at this position. Similar to canPlaceBlockAt except
+	 * gets checked often with plants.
+	 */
+	@Override
+	public boolean canBlockStay(World p_149718_1_, int p_149718_2_, int p_149718_3_, int p_149718_4_)
+	{
+		return !p_149718_1_.isAirBlock(p_149718_2_, p_149718_3_ - 1, p_149718_4_);
 	}
 
 	/**
@@ -158,17 +177,16 @@ public class BlockPlating extends BaseBlock
 	@SideOnly(Side.CLIENT)
 	public boolean shouldSideBeRendered(IBlockAccess p_149646_1_, int p_149646_2_, int p_149646_3_, int p_149646_4_, int p_149646_5_)
 	{
-		return true;
-		// return (p_149646_5_ == 1) || super.shouldSideBeRendered(p_149646_1_,
-		// p_149646_2_, p_149646_3_, p_149646_4_, p_149646_5_);
+		return (p_149646_5_ == 1) || super.shouldSideBeRendered(p_149646_1_, p_149646_2_, p_149646_3_, p_149646_4_, p_149646_5_);
 	}
 
+	/**
+	 * Determines the damage on the item the block drops. Used in cloth and
+	 * wood.
+	 */
 	@Override
-	public int onBlockPlaced(World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ, int metadata)
+	public int damageDropped(int p_149692_1_)
 	{
-		System.out.print(side);
-		world.setBlockMetadataWithNotify(x, y, z, side, 2);
-		FMLLog.warning("" + world.getBlockMetadata(x, y, z), "" + world.getBlockMetadata(x, y, z));
-		return metadata;
+		return p_149692_1_;
 	}
 }
