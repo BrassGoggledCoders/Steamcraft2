@@ -34,19 +34,19 @@ public class WirePacket implements IMessage
 {
 	private int x, y, z;
 	ForgeDirection[] connections;
-	ForgeDirection extract;
+	ForgeDirection[] extractions;
 
 	public WirePacket()
 	{
 	} // REQUIRED
 
-	public WirePacket(int x, int y, int z, ForgeDirection[] connections, ForgeDirection extract)
+	public WirePacket(int x, int y, int z, ForgeDirection[] connections, ForgeDirection[] extractions)
 	{
 		this.x = x;
 		this.y = y;
 		this.z = z;
 		this.connections = connections;
-		this.extract = extract;
+		this.extractions = extractions;
 	}
 
 	@Override
@@ -65,9 +65,16 @@ public class WirePacket implements IMessage
 			if (this.connections[i] == ForgeDirection.UNKNOWN)
 				this.connections[i] = null;
 		}
-		this.extract = ForgeDirection.getOrientation(buf.readByte());
-		if (this.extract == ForgeDirection.UNKNOWN)
-			this.extract = null;
+
+		this.extractions = new ForgeDirection[6];
+
+		for (int i = 0; i < 6; i++)
+		{
+			this.extractions[i] = ForgeDirection.getOrientation(buf.readByte());
+
+			if (this.extractions[i] == ForgeDirection.UNKNOWN)
+				this.extractions[i] = null;
+		}
 	}
 
 	@Override
@@ -79,7 +86,9 @@ public class WirePacket implements IMessage
 
 		for (int i = 0; i < 6; i++)
 			buf.writeByte(CopperPipePacket.directionToByte(this.connections[i]));
-		buf.writeByte(CopperPipePacket.directionToByte(this.extract));
+
+		for (int i = 0; i < 6; i++)
+			buf.writeByte(CopperPipePacket.directionToByte(this.extractions[i]));
 
 	}
 
@@ -96,7 +105,7 @@ public class WirePacket implements IMessage
 				TileCopperWire wire = (TileCopperWire) world.getTileEntity(message.x, message.y, message.z);
 
 				wire.connections = message.connections;
-				wire.extract = message.extract;
+				wire.extractions = message.extractions;
 			}
 
 			return null;

@@ -58,14 +58,19 @@ import steamcraft.common.blocks.BlockInfestedGrass;
 import steamcraft.common.blocks.BlockInvertedCastIronLamp;
 import steamcraft.common.blocks.BlockLamp;
 import steamcraft.common.blocks.BlockLeafPile;
+import steamcraft.common.blocks.BlockLightSlate;
 import steamcraft.common.blocks.BlockMeltingIce;
 import steamcraft.common.blocks.BlockMetal;
+import steamcraft.common.blocks.BlockMetalLattice;
 import steamcraft.common.blocks.BlockMossyMetal;
+import steamcraft.common.blocks.BlockMossyMetalLattice;
 import steamcraft.common.blocks.BlockMotionSensor;
 import steamcraft.common.blocks.BlockMud;
 import steamcraft.common.blocks.BlockPlankStack;
+import steamcraft.common.blocks.BlockPlating;
 import steamcraft.common.blocks.BlockPolishedPlanks;
 import steamcraft.common.blocks.BlockRustyMetal;
+import steamcraft.common.blocks.BlockRustyMetalLattice;
 import steamcraft.common.blocks.BlockSiren;
 import steamcraft.common.blocks.BlockSkyrail;
 import steamcraft.common.blocks.BlockSlate;
@@ -130,6 +135,7 @@ import steamcraft.common.tiles.energy.TileTurbine;
  */
 public class InitBlocks
 {
+
 	public static Block blockArmorEditor;
 	public static Block blockBloomery;
 
@@ -173,7 +179,9 @@ public class InitBlocks
 
 	public static Block blockMeltingIce, blockGhostIce;
 	// Metals
-	public static Block blockMetal, blockMossyMetal, blockRustyMetal, blockUranium, blockEtherium;
+	public static Block blockMetal, blockMossyMetal, blockRustyMetal, blockUranium;
+	public static Block blockMetalPlate, blockRustyMetalPlate, blockMossyMetalPlate;
+	public static Block blockMetalLattice, blockRustyMetalLattice, blockMossyMetalLattice;
 
 	public static Block blockMoltenZinc, blockMoltenBrass;
 	public static Block blockPath, blockMud, blockLeafCover, blockMoss;
@@ -202,6 +210,9 @@ public class InitBlocks
 	// TODO Meta?
 	public static Block blockSlate, blockRawBlueSlateStairs, blockRawBlackSlateStairs, blockRawRedSlateStairs, blockCobbleBlueSlateStairs,
 			blockCobbleBlackSlateStairs, blockCobbleRedSlateStairs, blockBrickBlueSlateStairs, blockBrickBlackSlateStairs, blockBrickRedSlateStairs;
+	public static Block blockLightSlate, blockRawLightBlueSlateStairs, blockRawGreySlateStairs, blockRawLightRedSlateStairs,
+			blockCobbleLightBlueSlateStairs, blockCobbleGreySlateStairs, blockCobbleLightRedSlateStairs, blockBrickLightBlueSlateStairs,
+			blockBrickGreySlateStairs, blockBrickLightRedSlateStairs;
 
 	public static Block blockStandardSiren, blockStandardSirenOn, blockAllClearSiren, blockAllClearSirenOn, blockIntruderSiren, blockIntruderSirenOn,
 			blockNuclearSiren, blockNuclearSirenOn, blockMotionSensor, blockMotionSensorOn;
@@ -297,6 +308,9 @@ public class InitBlocks
 		registerFluid("boilingwater", boilingWaterFluid, Material.lava, (BlockSteamcraftFluid) blockBoilingWater, false, 373, 900, 800, 0);
 		registerFluid("boilingmud", boilingMudFluid, Material.lava, (BlockSteamcraftFluid) blockBoilingMud, false, 373, 900, 800, 0);
 		registerFluid("whaleoil", whaleOilFluid, Material.water, (BlockSteamcraftFluid) blockWhaleOil, false, 300, 1100, 1100, 0);
+
+		registerFluid("moltenzinc", moltenZincFluid, Material.lava, (BlockSteamcraftFluid) blockMoltenZinc, false, 1300, 3000, 6000, 12);
+		registerFluid("moltenbrass", moltenBrassFluid, Material.lava, (BlockSteamcraftFluid) blockMoltenBrass, false, 1300, 3000, 6000, 12);
 	}
 
 	public static void registerFluid(String fluidName, Fluid fluid, Material material, BlockSteamcraftFluid fluidBlock, boolean isGaseous, int temp,
@@ -394,6 +408,7 @@ public class InitBlocks
 		// Ores
 		blockCustomOre = new BlockSteamcraftOre().setBlockName("blockSteamcraftOre");
 		blockSlate = new BlockSlate().setBlockName("blockSlate");
+		blockLightSlate = new BlockLightSlate().setBlockName("blockLightSlate");
 
 		blockRawBlueSlateStairs = new BlockCustomStairs(blockSlate, 0).setBlockName("blockRawBlueSlateStairs");
 		registerBlock(blockRawBlueSlateStairs, "BlockRawBlueSlateStairs");
@@ -414,8 +429,28 @@ public class InitBlocks
 		blockBrickRedSlateStairs = new BlockCustomStairs(blockSlate, 8).setBlockName("blockBrickRedSlateStairs");
 		registerBlock(blockBrickRedSlateStairs, "BlockBrickRedSlateStairs");
 
+		blockRawLightBlueSlateStairs = new BlockCustomStairs(blockSlate, 0).setBlockName("blockRawLightBlueSlateStairs");
+		registerBlock(blockRawLightBlueSlateStairs, "BlockRawLightBlueSlateStairs");
+		blockRawGreySlateStairs = new BlockCustomStairs(blockSlate, 1).setBlockName("blockRawGreySlateStairs");
+		registerBlock(blockRawGreySlateStairs, "BlockRawGreySlateStairs");
+		blockRawLightRedSlateStairs = new BlockCustomStairs(blockSlate, 2).setBlockName("blockRawLightRedSlateStairs");
+		registerBlock(blockRawLightRedSlateStairs, "BlockRawLightRedSlateStairs");
+		blockCobbleLightBlueSlateStairs = new BlockCustomStairs(blockSlate, 3).setBlockName("blockCobbleLightBlueSlateStairs");
+		registerBlock(blockCobbleLightBlueSlateStairs, "BlockCobbleLightBlueSlateStairs");
+		blockCobbleGreySlateStairs = new BlockCustomStairs(blockSlate, 4).setBlockName("blockCobbleGreySlateStairs");
+		registerBlock(blockCobbleGreySlateStairs, "BlockCobbleGreySlateStairs");
+		blockCobbleLightRedSlateStairs = new BlockCustomStairs(blockSlate, 5).setBlockName("blockCobbleLightRedSlateStairs");
+		registerBlock(blockCobbleLightRedSlateStairs, "BlockCobbleLightRedSlateStairs");
+		blockBrickLightBlueSlateStairs = new BlockCustomStairs(blockSlate, 6).setBlockName("blockBrickLightBlueSlateStairs");
+		registerBlock(blockBrickLightBlueSlateStairs, "BlockBrickLightBlueSlateStairs");
+		blockBrickGreySlateStairs = new BlockCustomStairs(blockSlate, 7).setBlockName("blockBrickGreySlateStairs");
+		registerBlock(blockBrickGreySlateStairs, "BlockBrickGreySlateStairs");
+		blockBrickLightRedSlateStairs = new BlockCustomStairs(blockSlate, 8).setBlockName("blockBrickLightRedSlateStairs");
+		registerBlock(blockBrickLightRedSlateStairs, "BlockBrickLightRedSlateStairs");
+
 		registerBlock(blockCustomOre, BaseItemBlockWithMetadata.class, "BlockSteamcraftOre", 7);
 		registerBlock(blockSlate, BaseItemBlockWithMetadata.class, "BlockSlate", 9);
+		registerBlock(blockLightSlate, BaseItemBlockWithMetadata.class, "BlockLightSlate", 9);
 
 		// Metals
 		blockMetal = new BlockMetal().setBlockName("blockMetal");
@@ -424,6 +459,20 @@ public class InitBlocks
 		registerBlock(blockRustyMetal, BaseItemBlockWithMetadata.class, "BlockRustyMetal", 8);
 		blockMossyMetal = new BlockMossyMetal().setBlockName("blockMossyMetal");
 		registerBlock(blockMossyMetal, BaseItemBlockWithMetadata.class, "BlockMossyMetal", 8);
+
+		blockMetalPlate = new BlockPlating(blockMetal).setBlockName("blockMetalPlate");
+		registerBlock(blockMetalPlate, BaseItemBlockWithMetadata.class, "BlockMetalPlating", 8);
+		blockRustyMetalPlate = new BlockPlating(blockRustyMetal).setBlockName("blockRustyMetalPlate");
+		registerBlock(blockRustyMetalPlate, BaseItemBlockWithMetadata.class, "BlockRustyMetalPlating", 8);
+		blockMossyMetalPlate = new BlockPlating(blockMossyMetal).setBlockName("blockMossyMetalPlate");
+		registerBlock(blockMossyMetalPlate, BaseItemBlockWithMetadata.class, "BlockMossyMetalPlating", 8);
+
+		blockMetalLattice = new BlockMetalLattice().setBlockName("blockMetalLattice");
+		registerBlock(blockMetalLattice, BaseItemBlockWithMetadata.class, "BlockMetalLattice", 8);
+		blockRustyMetalLattice = new BlockRustyMetalLattice().setBlockName("blockRustyMetalLattice");
+		registerBlock(blockRustyMetalLattice, BaseItemBlockWithMetadata.class, "BlockRustyMetalLattice", 8);
+		blockMossyMetalLattice = new BlockMossyMetalLattice().setBlockName("blockMossyMetalLattice");
+		registerBlock(blockMossyMetalLattice, BaseItemBlockWithMetadata.class, "BlockMossyMetalLattice", 8);
 
 		blockUranium = new BlockUranium(Material.iron).setBlockName("blockUranium");
 		registerBlock(blockUranium, "BlockUranium");

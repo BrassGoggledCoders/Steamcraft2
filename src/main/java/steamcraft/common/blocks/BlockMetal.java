@@ -46,7 +46,6 @@ public class BlockMetal extends BaseMetadataBlock implements IEngravable
 		this.setHardness(3.0F);
 		this.setResistance(10.0F);
 		this.setStepSound(Block.soundTypeMetal);
-		this.setTickRandomly(true);
 		this.setCreativeTab(Steamcraft.tabSC2);
 	}
 

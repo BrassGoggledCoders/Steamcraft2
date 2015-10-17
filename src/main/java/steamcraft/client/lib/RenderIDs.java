@@ -36,6 +36,7 @@ public class RenderIDs
 	public static int blockSpiderEggRI;
 	public static int blockTrunkRI;
 	public static int blockCastIronGateRI;
+	public static int blockTransWithInsideRI;
 
 	public static void setIDs()
 	{
@@ -57,5 +58,6 @@ public class RenderIDs
 		blockSpiderEggRI = RenderingRegistry.getNextAvailableRenderId();
 		blockTrunkRI = RenderingRegistry.getNextAvailableRenderId();
 		blockCastIronGateRI = RenderingRegistry.getNextAvailableRenderId();
+		blockTransWithInsideRI = RenderingRegistry.getNextAvailableRenderId();
 	}
 }

@@ -59,7 +59,7 @@ public class InitEntities
 		EntityRegistry.registerModEntity(EntitySpiderQueen.class, "SpiderQueen", entID++, Steamcraft.instance, 64, 1, true);
 		EntityRegistry.registerModEntity(EntityShroomZombie.class, "ShroomZombie", entID++, Steamcraft.instance, 64, 1, true);
 		EntityRegistry.registerModEntity(EntityShroomSkeleton.class, "ShroomSkeleton", entID++, Steamcraft.instance, 64, 1, true);
-		EntityRegistry.registerModEntity(EntityAbandonedGolem.class, "AbdandonedGolem", entID++, Steamcraft.instance, 64, 1, true);
+		EntityRegistry.registerModEntity(EntityAbandonedGolem.class, "AbandonedGolem", entID++, Steamcraft.instance, 64, 1, true);
 		EntityRegistry.registerModEntity(EntityWhale.class, "Whale", entID++, Steamcraft.instance, 64, 1, true);
 		EntityRegistry.addSpawn(EntityWhale.class, 1, 1, 1, EnumCreatureType.waterCreature,
 				BiomeDictionary.getBiomesForType(BiomeDictionary.Type.OCEAN));
@@ -68,7 +68,7 @@ public class InitEntities
 		EntityRegistry.registerModEntity(EntityBullet.class, "Bullet", entID++, Steamcraft.instance, 40, 1, true);
 		EntityRegistry.registerModEntity(EntityRocket.class, "Rocket", entID++, Steamcraft.instance, 40, 1, true);
 		EntityRegistry.registerModEntity(EntitySplashLightningBottle.class, "SplashLightningBottle", entID++, Steamcraft.instance, 40, 1, true);
-		EntityRegistry.registerModEntity(EntityFieldManipulator.class, "SplashLightningBottle", entID++, Steamcraft.instance, 40, 1, true);
+		EntityRegistry.registerModEntity(EntityFieldManipulator.class, "FieldManipulator", entID++, Steamcraft.instance, 40, 1, true);
 		// Block
 		EntityRegistry.registerModEntity(EntityTimeBomb.class, "TimeBomb", entID++, Steamcraft.instance, 40, 1, true);
 		EntityRegistry.registerModEntity(EntityFallingBoulder.class, "FallingBoulder", entID++, Steamcraft.instance, 40, 1, true);

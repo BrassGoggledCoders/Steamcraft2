@@ -14,6 +14,11 @@ package steamcraft.common.tiles;
 
 import java.util.ArrayList;
 
+import boilerplate.api.IOpenableGUI;
+import cpw.mods.fml.common.network.NetworkRegistry.TargetPoint;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.network.NetworkManager;
@@ -21,31 +26,28 @@ import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-
-import cpw.mods.fml.common.network.NetworkRegistry.TargetPoint;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-
+import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTank;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
-
+import steamcraft.api.tile.ISpannerTile;
+import steamcraft.client.gui.GuiChangeExtractions;
 import steamcraft.common.init.InitBlocks;
 import steamcraft.common.init.InitPackets;
 import steamcraft.common.packets.CopperPipeFluidPacket;
 import steamcraft.common.packets.CopperPipePacket;
+import steamcraft.common.tiles.container.ContainerChangeExtractions;
 
 /**
  * @author decebaldecebal
  *
  */
-public class TileCopperPipe extends TileEntity implements IFluidHandler
+public class TileCopperPipe extends TileEntity implements IFluidHandler, ISpannerTile, IOpenableGUI
 {
-	private static int ticksTillFluidUpdate = 200; // update the fluid in pipe
-													// every 10 seconds
+	private static int ticksTillFluidUpdate = 200; // update the fluid in pipe every 10 seconds
 
 	private static int copperPipeCapacity = 500;
 	private static int copperPipeExtract = 50;
@@ -60,11 +62,10 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 
 	public Fluid fluidInPipe;
 	public float fluidScaled = 0;
-	private int ticksSinceUpdate = ticksTillFluidUpdate / 2; // first time
-																// update faster
+	private int ticksSinceUpdate = ticksTillFluidUpdate / 2; // first time update faster
 
-	public ForgeDirection extract = null;
 	public ForgeDirection[] connections = new ForgeDirection[6];
+	public ForgeDirection[] extractions = new ForgeDirection[6];
 	private Coords masterCoords = null;
 
 	private static float pixel = 1F / 16f;
@@ -123,8 +124,19 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 	{
 		super.writeToNBT(tag);
 
-		writeDirectionToNBT(tag, this.extract);
+		NBTTagList extractions = new NBTTagList();
 
+		for (int i = 0; i < 6; i++)
+			if (this.extractions[i] != null)
+			{
+				NBTTagCompound conn = new NBTTagCompound();
+				conn.setByte("index", (byte) i);
+				writeDirectionToNBT(conn, this.extractions[i]);
+
+				extractions.appendTag(conn);
+			}
+
+		tag.setTag("extractions", extractions);
 		tag.setBoolean("master", this.isMaster);
 
 		if (this.isMaster)
@@ -169,7 +181,16 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 	{
 		super.readFromNBT(tag);
 
-		this.extract = readDirectionFromNBT(tag);
+		this.extractions = new ForgeDirection[6];
+
+		NBTTagList extractions = tag.getTagList("extractions", Constants.NBT.TAG_COMPOUND);
+
+		for (int i = 0; i < extractions.tagCount(); i++)
+		{
+			NBTTagCompound dirTag = extractions.getCompoundTagAt(i);
+
+			this.extractions[dirTag.getByte("index")] = readDirectionFromNBT(dirTag);
+		}
 
 		this.isMaster = tag.getBoolean("master");
 
@@ -197,7 +218,17 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 	{
 		NBTTagCompound tag = new NBTTagCompound();
 
-		writeDirectionToNBT(tag, this.extract);
+		NBTTagList extractions = new NBTTagList();
+
+		for (int i = 0; i < 6; i++)
+			if (this.extractions[i] != null)
+			{
+				NBTTagCompound conn = new NBTTagCompound();
+				conn.setByte("index", (byte) i);
+				writeDirectionToNBT(conn, this.extractions[i]);
+
+				extractions.appendTag(conn);
+			}
 
 		NBTTagList connections = new NBTTagList();
 
@@ -211,6 +242,7 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 				connections.appendTag(conn);
 			}
 
+		tag.setTag("extractions", extractions);
 		tag.setTag("connections", connections);
 
 		return new S35PacketUpdateTileEntity(this.xCoord, this.yCoord, this.zCoord, 1, tag);
@@ -219,11 +251,20 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 	@Override
 	public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity packet)
 	{
-		this.extract = readDirectionFromNBT(packet.func_148857_g());
+		this.extractions = new ForgeDirection[6];
+
+		NBTTagList extractions = packet.func_148857_g().getTagList("extractions", Constants.NBT.TAG_COMPOUND);
+
+		for (int i = 0; i < extractions.tagCount(); i++)
+		{
+			NBTTagCompound tag = extractions.getCompoundTagAt(i);
+
+			this.extractions[tag.getByte("index")] = readDirectionFromNBT(tag);
+		}
 
 		this.connections = new ForgeDirection[6];
 
-		NBTTagList connections = (NBTTagList) packet.func_148857_g().getTag("connections");
+		NBTTagList connections = packet.func_148857_g().getTagList("connections", Constants.NBT.TAG_COMPOUND);
 
 		for (int i = 0; i < connections.tagCount(); i++)
 		{
@@ -233,38 +274,101 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 		}
 	}
 
-	public void changeExtracting()
+	@Override
+	public void changeExtraction()
 	{
 		if (!this.worldObj.isRemote)
 		{
-			if (this.extract != null)
+			for (int i = 0; i < 6; i++)
 			{
-				Coords temp = new Coords(this.xCoord + this.extract.offsetX, this.yCoord + this.extract.offsetY, this.zCoord + this.extract.offsetZ,
-						this.extract.getOpposite());
+				ForgeDirection dir = this.connections[i];
 
-				this.network.inputs.remove(temp);
-				if (!this.network.outputs.contains(temp))
-					this.network.outputs.add(temp);
+				if ((dir != null) && this.isFluidHandler(dir))
+				{
+					Coords temp = new Coords(this.xCoord + dir.offsetX, this.yCoord + dir.offsetY,
+						this.zCoord + dir.offsetZ, dir.getOpposite());
 
-				this.extract = null;
-			}
-			else
-				for (ForgeDirection dir : this.connections)
-					if ((dir != null) && this.isFluidHandler(dir))
+					if (this.extractions[i] == null)
 					{
-						this.extract = dir;
-
-						Coords temp = new Coords(this.xCoord + this.extract.offsetX, this.yCoord + this.extract.offsetY,
-								this.zCoord + this.extract.offsetZ, this.extract.getOpposite());
+						this.extractions[i] = dir;
 
 						this.network.outputs.remove(temp);
+
 						if (!this.network.inputs.contains(temp))
 							this.network.inputs.add(temp);
 
 						break;
 					}
+					else
+					{
+						this.extractions[i] = null;
+
+						this.network.inputs.remove(temp);
+
+						if (!this.network.outputs.contains(temp))
+							this.network.outputs.add(temp);
+					}
+				}
+			}
 			this.updateClientConnections();
 		}
+	}
+
+	@Override
+	public void changeExtraction(int dirIndex)
+	{
+		if (!this.worldObj.isRemote)
+		{
+			ForgeDirection dir = this.connections[dirIndex];
+
+			if (dir != null)
+			{
+				Coords temp = new Coords(this.xCoord + dir.offsetX, this.yCoord + dir.offsetY,
+					this.zCoord + dir.offsetZ, dir.getOpposite());
+
+				if (this.extractions[dirIndex] == null)
+				{
+					this.extractions[dirIndex] = this.connections[dirIndex];
+
+					this.network.outputs.remove(temp);
+
+					if (!this.network.inputs.contains(temp))
+						this.network.inputs.add(temp);
+				}
+				else
+				{
+					this.extractions[dirIndex] = null;
+
+					this.network.inputs.remove(temp);
+
+					if (!this.network.outputs.contains(temp))
+						this.network.outputs.add(temp);
+				}
+
+				this.updateClientConnections();
+			}
+		}
+	}
+
+	@Override
+	public ForgeDirection[] getExtractableConnections()
+	{
+		ForgeDirection[] extractableConnections = new ForgeDirection[6];
+
+		for(int i = 0;i < 6;i++)
+		{
+			ForgeDirection dir = this.connections[i];
+			if (dir != null && this.isFluidHandler(dir))
+				extractableConnections[i] = dir;
+		}
+
+		return extractableConnections;
+	}
+
+	@Override
+	public ForgeDirection[] getExtractions()
+	{
+		return this.extractions;
 	}
 
 	private void removeConnections(int i)
@@ -276,15 +380,11 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 			Coords temp = new Coords(this.xCoord + dir.offsetX, this.yCoord + dir.offsetY, this.zCoord + dir.offsetZ, dir.getOpposite());
 
 			this.network.outputs.remove(temp);
+			this.network.inputs.remove(temp);
 
-			if (this.connections[i] == this.extract)
-				this.network.inputs.remove(temp);
+			this.extractions[i] = null;
+			this.connections[i] = null;
 		}
-
-		if (this.extract == this.connections[i])
-			this.extract = null;
-
-		this.connections[i] = null;
 	}
 
 	public void updateConnections()
@@ -364,12 +464,14 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 				this.setMaster(this);
 			}
 
-			for (ForgeDirection dir : this.connections)
-				if ((dir != null) && this.isFluidHandler(dir))
+			for (int i = 0;i < 6;i++)
+			{
+				ForgeDirection dir = this.connections[i];
+				if (dir != null && this.isFluidHandler(dir))
 				{
 					Coords temp = new Coords(this.xCoord + dir.offsetX, this.yCoord + dir.offsetY, this.zCoord + dir.offsetZ, dir.getOpposite());
 
-					if (this.extract != dir)
+					if (this.extractions[i] == null)
 					{
 						if (!this.network.outputs.contains(temp))
 							this.network.outputs.add(temp);
@@ -377,6 +479,7 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 					else if (!this.network.inputs.contains(temp))
 						this.network.inputs.add(temp);
 				}
+			}
 
 			this.updateClientConnections();
 		}
@@ -386,7 +489,7 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 	{
 		if (this.network != null)
 		{
-			InitPackets.network.sendToAllAround(new CopperPipePacket(this.xCoord, this.yCoord, this.zCoord, this.connections, this.extract),
+			InitPackets.network.sendToAllAround(new CopperPipePacket(this.xCoord, this.yCoord, this.zCoord, this.connections, this.extractions),
 					new TargetPoint(this.worldObj.provider.dimensionId, this.xCoord, this.yCoord, this.zCoord, 100));
 		}
 	}
@@ -618,21 +721,34 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 	@Override
 	public boolean canDrain(ForgeDirection from, Fluid fluid)
 	{
-		return (from != this.extract) && (this.network != null)
+		for (ForgeDirection dir : this.extractions)
+			if (dir == from)
+				return false;
+
+		return (this.network != null)
 				&& ((this.network.tank.getFluid() == null) || (this.network.tank.getFluid().getFluid() == fluid));
 	}
 
 	@Override
 	public boolean canFill(ForgeDirection from, Fluid fluid)
 	{
-		return (from == this.extract) && (this.network != null)
+		for (ForgeDirection dir : this.extractions)
+			if (dir == from)
+				return false;
+
+		return (this.network != null)
 				&& ((this.network.tank.getFluid() == null) || (this.network.tank.getFluid().getFluid() == fluid));
 	}
 
 	@Override
 	public FluidStack drain(ForgeDirection from, FluidStack resource, boolean doDrain)
 	{
-		if ((from != this.extract) && (this.network != null) && (this.network.tank.getFluid() != null)
+		for (ForgeDirection dir : this.extractions)
+			if (dir == from)
+				return null;
+
+
+		if ((this.network != null) && (this.network.tank.getFluid() != null)
 				&& this.network.tank.getFluid().isFluidEqual(resource))
 		{
 			int amount = Math.min(resource.amount, this.pipeTransfer);
@@ -646,7 +762,11 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 	@Override
 	public FluidStack drain(ForgeDirection from, int maxDrain, boolean doDrain)
 	{
-		if ((from != this.extract) && (this.network != null) && (this.network.tank.getFluid() != null))
+		for (ForgeDirection dir : this.extractions)
+			if (dir == from)
+				return null;
+
+		if ((this.network != null) && (this.network.tank.getFluid() != null))
 		{
 			int amount = Math.min(maxDrain, this.pipeTransfer);
 
@@ -659,7 +779,11 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 	@Override
 	public int fill(ForgeDirection from, FluidStack resource, boolean doFill)
 	{
-		if ((this.extract == from) && (this.network != null))
+		for (ForgeDirection dir : this.extractions)
+			if (dir == from)
+				return 0;
+
+		if ((this.network != null))
 		{
 			int amount = Math.min(resource.amount, this.pipeExtract);
 
@@ -676,6 +800,18 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 			return new FluidTankInfo[] { this.network.tank.getInfo() };
 
 		return null;
+	}
+
+	@Override
+	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
+	{
+		return new GuiChangeExtractions(world.getTileEntity(x, y, z), player.dimension);
+	}
+
+	@Override
+	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
+	{
+		return new ContainerChangeExtractions();
 	}
 
 	public static class FluidNetwork

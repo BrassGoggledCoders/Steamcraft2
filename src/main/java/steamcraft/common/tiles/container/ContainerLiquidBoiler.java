@@ -130,8 +130,8 @@ public class ContainerLiquidBoiler extends BaseContainer
 			this.tileent.furnaceBurnTime = par2;
 		else if (par1 == 1)
 			this.tileent.steamTank.setFluid(new FluidStack(FluidRegistry.getFluid("steam"), par2));
-		else if (par1 == 2 && this.tileent.fuelTank.getFluid() != null)
-			this.tileent.fuelTank.getFluid().amount = par2;
+		else if (par1 == 2)
+			this.tileent.fuelTank.setFluid(new FluidStack(FluidRegistry.getFluid("whaleoil"), par2));
 		else if (par1 == 3)
 			this.tileent.waterTank.setFluid(new FluidStack(FluidRegistry.getFluid("water"), par2));
 	}

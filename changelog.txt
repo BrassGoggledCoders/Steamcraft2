@@ -218,6 +218,39 @@ Beta 4.5:
 # Fixed path recipe
 # Fixed pocket watch in-game time display not working
 # Various texture fixes and updates. Improve armour editor texture
-
-
+Beta 5:
++ Whales! Kill them for blubber, bone and meat. - warlordjones
++ Refinery for turning blubber into whale oil - warlordjones
++ Liquid boiler that uses whale oil and other liquid fuels like lava or other mod's oil (Note: all fluids currently display as whale oil in the GUI) - warlordjones
++ Whalebone armour. - warlordjones
++ Steel Hatch. Just a badass version of a trapdoor. Only operable via redstone signal. - warlordjones
++ Ligher slate that generates higher, while the old slate was changed to generate deeper. - warlordjones
++ Added a config option to disable the deeps portal generation, since it seems to be very broken. - warlordjones
++ Metal plates. Just metallic carpet. - warlordjones
++ Rusty and Mossy variants of metal blocks. - warlordjones
++ Coins which have no recipe, just useful as server currency. Accurate old english denominations. - warlordjones and WolfieWaffle
++ Correctly register steam canisters as fluid containers - warlordjones
++ Add uranium blocks to the ore dictionary - warlordjones
++ Added double capacity reinforced steam canisters - warlordjones
++ Readded the spanner's ability to act as a RC crowbar. - Skysom
++ Add teacups to oredict. Should allow BetterSleeping compat. - warlordjones
++ Allow the grindstone to configurably grind metals that aren't in SC2, like lead. - warlordjones
++ New battery bank model. - warlordjones
++ Stonebrick (with all variants), stoneslab and brick wall. - warlordjones
++ Electric Jars can now charge items in the player inventory by shift-right clicking them. Works similar to Thermal Expansion's Capacitors.
++ Tier 2 steel pipes.
+* Brand new awesome armour editor GUI :D - Skysom
+- Copper and Brass parts. Should halve the clutter problems.
+- Removed obsidian and etherium related items. After much deliberation I feel they didn't really fit. Will be available in BrassUtils soon. - warlordjones
+* Nerfed the buffs from tea. Still need to figure out what I actually want it to do :P - decebaldecebal 
+# Prevent steam drill from being able to mine otherwise indestructible blocks (even bedrock!) in 3x3 mode. - warlordjones
+* Decrease energy usage of the raygun - decebaldecebal
+# Fix teacup recipe - decebaldecebal
+# Raygun/shrinkray no longer work without electricity. - decebaldecebal
+# Fixed ore drops being messed up. - warlordjones
+# Fix TC Clusters not giving enough ingots. - warlordjones
+# Fixed some stray pixels. - warlordjones
+# Hopefully fix the disappearance of golden hammers. - warlordjones
+# Fixed Tea plant drops. Again. - warlordjones
+# Fixed Statis Field not keeping items from despawning. - decebaldecebal
 

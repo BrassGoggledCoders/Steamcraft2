@@ -38,7 +38,7 @@ import steamcraft.common.lib.ModInfo;
  */
 public class BlockSlate extends BaseMetadataBlock
 {
-	private final IIcon[] icon = new IIcon[9];
+	protected final IIcon[] icon = new IIcon[9];
 
 	public BlockSlate()
 	{
@@ -46,7 +46,6 @@ public class BlockSlate extends BaseMetadataBlock
 		this.setHardness(3.0F);
 		this.setResistance(10.0F);
 		this.setStepSound(Block.soundTypeStone);
-		this.setBlockName("blockSlate");
 		this.setCreativeTab(Steamcraft.tabSC2);
 	}
 

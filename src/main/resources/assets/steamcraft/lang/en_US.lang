@@ -9,6 +9,7 @@ tile.blockMetal.4.name=Brass Block
 tile.blockMetal.5.name=Bronze Block
 tile.blockMetal.6.name=Steel Block
 tile.blockMetal.7.name=Cast Iron Block
+
 tile.blockMossyMetal.0.name=Mossy Aluminum Block
 tile.blockMossyMetal.1.name=Mossy Copper Block
 tile.blockMossyMetal.2.name=Mossy Tin Block
@@ -17,6 +18,7 @@ tile.blockMossyMetal.4.name=Mossy Brass Block
 tile.blockMossyMetal.5.name=Mossy Bronze Block
 tile.blockMossyMetal.6.name=Mossy Steel Block
 tile.blockMossyMetal.7.name=Mossy Cast Iron Block
+
 tile.blockRustyMetal.0.name=Rusty Aluminum Block
 tile.blockRustyMetal.1.name=Rusty Copper Block
 tile.blockRustyMetal.2.name=Rusty Tin Block
@@ -25,27 +27,67 @@ tile.blockRustyMetal.4.name=Rusty Brass Block
 tile.blockRustyMetal.5.name=Rusty Bronze Block
 tile.blockRustyMetal.6.name=Rusty Steel Block
 tile.blockRustyMetal.7.name=Rusty Cast Iron Block
+
+tile.blockMetalPlate.0.name=Aluminum Plating
+tile.blockMetalPlate.1.name=Copper Plating
+tile.blockMetalPlate.2.name=Tin Plating
+tile.blockMetalPlate.3.name=Zinc Plating
+tile.blockMetalPlate.4.name=Brass Plating
+tile.blockMetalPlate.5.name=Bronze Plating
+tile.blockMetalPlate.6.name=Steel Plating
+tile.blockMetalPlate.7.name=Cast Iron Plating
+
+tile.blockMossyMetalPlate.0.name=Mossy Aluminum Plating
+tile.blockMossyMetalPlate.1.name=Mossy Copper Plating
+tile.blockMossyMetalPlate.2.name=Mossy Tin Plating
+tile.blockMossyMetalPlate.3.name=Mossy Zinc Plating
+tile.blockMossyMetalPlate.4.name=Mossy Brass Plating
+tile.blockMossyMetalPlate.5.name=Mossy Bronze Plating
+tile.blockMossyMetalPlate.6.name=Mossy Steel Plating
+tile.blockMossyMetalPlate.7.name=Mossy Cast Iron Plating
+
+tile.blockRustyMetalPlate.0.name=Rusty Aluminum Plating
+tile.blockRustyMetalPlate.1.name=Rusty Copper Plating
+tile.blockRustyMetalPlate.2.name=Rusty Tin Plating
+tile.blockRustyMetalPlate.3.name=Rusty Zinc Plating
+tile.blockRustyMetalPlate.4.name=Rusty Brass Plating
+tile.blockRustyMetalPlate.5.name=Rusty Bronze Plating
+tile.blockRustyMetalPlate.6.name=Rusty Steel Plating
+tile.blockRustyMetalPlate.7.name=Rusty Cast Iron Plating
+
 tile.blockUranium.name=Uranium Block
+
+tile.blockMetalLattice.0.name=Aluminum Lattice
+tile.blockMetalLattice.1.name=Copper Lattice
+tile.blockMetalLattice.2.name=Tin Lattice
+tile.blockMetalLattice.3.name=Zinc Lattice
+tile.blockMetalLattice.4.name=Brass Lattice
+tile.blockMetalLattice.5.name=Bronze Lattice
+tile.blockMetalLattice.6.name=Steel Lattice
+tile.blockMetalLattice.7.name=Cast Iron Lattice
+    
 tile.blockBrassLog.name=Brass Plated Log
 tile.blockBrassLeaves.name=Brass Leaves
 tile.blockLamp.name=Lamp
 tile.blockCastIronFence.name=Cast Iron Fence
 tile.blockCastIronGate.name=Cast Iron Gate
 tile.blockCastIronRailing.name=Cast Iron Railing
-tile.blockEngravedSolid.0.name=Engraved Aluminum
-tile.blockEngravedSolid.1.name=Engraved Copper
-tile.blockEngravedSolid.2.name=Engraved Tin
-tile.blockEngravedSolid.3.name=Engraved Zinc
-tile.blockEngravedSolid.4.name=Engraved Brass
-tile.blockEngravedSolid.5.name=Engraved Bronze
-tile.blockEngravedSolid.6.name=Engraved Steel
-tile.blockEngravedSolid.7.name=Engraved Cast Iron
-tile.blockEngravedSolid.8.name=Engraved Uranium
-tile.blockEngravedVanilla.0.name=Engraved Diamond
-tile.blockEngravedVanilla.1.name=Engraved Gold
-tile.blockEngravedVanilla.2.name=Engraved Iron
-tile.blockEngravedVanilla.3.name=Engraved Lapis
+tile.blockEngravedSolid.0.name=Engraved Aluminum Block
+tile.blockEngravedSolid.1.name=Engraved Copper Block
+tile.blockEngravedSolid.2.name=Engraved Tin Block
+tile.blockEngravedSolid.3.name=Engraved Zinc Block
+tile.blockEngravedSolid.4.name=Engraved Brass Block
+tile.blockEngravedSolid.5.name=Engraved Bronze Block
+tile.blockEngravedSolid.6.name=Engraved Steel Block
+tile.blockEngravedSolid.7.name=Engraved Cast Iron Block
+tile.blockEngravedSolid.8.name=Engraved Uranium Block
+tile.blockEngravedVanilla.0.name=Engraved Diamond Block
+tile.blockEngravedVanilla.1.name=Engraved Gold Block
+tile.blockEngravedVanilla.2.name=Engraved Iron Block
+tile.blockEngravedVanilla.3.name=Engraved Lapis Lazuli Block
 tile.blockEngravedVanilla.4.name=Engraved Stone
+tile.blockEngravedVanilla.5.name=Engraved Emerald Block
+tile.blockEngravedVanilla.6.name=Engraved Redstone Block
 tile.blockCastIronFence.name=Cast Iron Fence
 tile.blockCastIronGate.name=Cast Iron Gate
 tile.blockTeaPlant.name=Tea Plant
@@ -54,6 +96,8 @@ tile.blockCastIronLampOn.name=Cast Iron Lamp (On)
 tile.blockInvertedCastIronLampOff.name=Inverted Cast Iron Lamp
 tile.blockInvertedCastIronLamp.name=Inverted Cast Iron Lamp (On)
 tile.blockHatch.name=Steel Hatch
+tile.blockMeltingIce.name=Melting Ice
+tile.blockGhostIce.name=Ghost Ice
 tile.blockSlate.0.name=Blue Slate
 tile.blockSlate.1.name=Black Slate
 tile.blockSlate.2.name=Red Slate
@@ -72,6 +116,24 @@ tile.blockCobbleRedSlateStairs.name=Red Slate Cobblestone Stairs
 tile.blockBrickBlueSlateStairs.name=Blue Slate Brick Stairs
 tile.blockBrickBlackSlateStairs.name=Black Slate Brick Stairs
 tile.blockBrickRedSlateStairs.name=Red Slate Brick Stairs
+tile.blockLightSlate.0.name=Light Blue Slate
+tile.blockLightSlate.1.name=Grey Slate
+tile.blockLightSlate.2.name=Light Red Slate
+tile.blockLightSlate.3.name=Light Blue Slate Cobblestone
+tile.blockLightSlate.4.name=Grey Slate Cobblestone
+tile.blockLightSlate.5.name=Light Red Slate Cobblestone
+tile.blockLightSlate.6.name=Light Blue Slate Bricks
+tile.blockLightSlate.7.name=Grey Slate Bricks
+tile.blockLightSlate.8.name=Light Red Slate Bricks
+tile.blockRawLightBlueSlateStairs.name=Light Blue Slate Raw Stairs
+tile.blockRawGreySlateStairs.name=Grey Slate Raw Stairs
+tile.blockRawLightRedSlateStairs.name=Light Red Slate Raw Stairs
+tile.blockCobbleLightBlueSlateStairs.name=Light Blue Slate Cobblestone Stairs
+tile.blockCobbleGreySlateStairs.name=Grey Slate Cobblestone Stairs
+tile.blockCobbleLightRedSlateStairs.name=Light Red Slate Cobblestone Stairs
+tile.blockBrickLightBlueSlateStairs.name=Light Blue Slate Brick Stairs
+tile.blockBrickGreySlateStairs.name=Grey Slate Brick Stairs
+tile.blockBrickLightRedSlateStairs.name=Light Red Slate Brick Stairs
 tile.blockTimeBomb.name=Time Bomb
 tile.blockFlesh.name=Block of Flesh
 tile.blockCongealedSlime.name=Congealed Slime Block
@@ -198,6 +260,7 @@ tile.blockRefinery.name=Refinery
 tile.blockRefinery.desc=Refines blubber into whale oil.
 tile.blockStasisField.name=Stasis Field
 tile.blockStasisField.desc=Holds items within one block of it in a stasis field, preventing them despawning, consuming 10 RF/t per item. Warning! Items will almost instantly despawn when the field is removed.|Holds 50k RF.Transfer (in): 80 RF/t
+tile.blockInjector.name=Injector/Extractor
 
 #Fluids
 tile.steamFluidBlock.name=Steam
@@ -206,6 +269,13 @@ tile.boilingwaterFluidBlock.name=Boiling Water
 fluid.boilingwaterFluid=Boiling Water
 tile.boilingmudFluidBlock.name=Boiling Mud
 fluid.boilingmudFluid=Boiling Mud
+tile.whaleoilFluidBlock.name=Whale Oil
+fluid.whaleoilFluid=Whale Oil
+
+tile.moltenzincFluidBlock.name=Molten Zinc
+fluid.moltenzincFluid=Molten Zinc
+tile.moltenbrassFluidBlock.name=Molten Brass
+fluid.moltenbrassFluid=Molten Brass
 
 
 #Items
@@ -257,11 +327,14 @@ item.itemNugget.4.name=Brass Nugget
 item.itemNugget.5.name=Bronze Nugget
 item.itemNugget.6.name=Steel Nugget
 item.itemNugget.7.name=Cast Iron Nugget
+item.itemNuggetIron.name=Iron Nugget
 item.itemEmptyShieldedCanister.name=Empty Shielded Canister
 item.itemFullShieldedCanister.name=Shielded Canister
 item.itemBoilingWaterBucket.name=Boiling Water Bucket
 item.itemMudBucket.name=Liquid Mud Bucket
 item.itemWhaleOilBucket.name=Whale Oil Bucket
+item.itemMoltenZincBucket.name=Molten Zinc Bucket
+item.itemMoltenBrassBucket.name=Molten Brass Bucket
 item.itemDimPocket.name=Transpatial Pouch
 item.itemDimPocket.desc=Shove your items into the folds amidst space and time. Nothing can possibly go wrong...probably.
 item.itemWhalebone.name=Whalebone
@@ -582,13 +655,6 @@ biome.steamcraft2.innerearth.jungle.name=Dense Jungle
 biome.steamcraft2.innerearth.swamp.name=Swampy Forest
 biome.steamcraft2.innerearth.scorched.name=Scorched Lands
 
-#Entities
-entity.steamcraft2.grub.name=Grub
-entity.steamcraft2.lostminer.name=Lost Miner
-entity.steamcraft2.ghostspider.name=Ghost Spider
-entity.steamcraft2.vampirebat.name=Vampire Bat
-entity.steamcraft2.boar.name=Boar
-
 #Keys
 key.steamcraft.category=
 key.vanity.desc=Open Vanity Inventory
@@ -625,4 +691,26 @@ item.itemDrillWood.documentation=Drills act as both shovels and pickaxes. They u
 item.itemDrillSteam.documentation=This is a drill that runs on Steam provided by Steam Canisters in your inventory. It can be used to mine a 3x3 area - this functionality is activated by shift-right clicking.
 item.itemSwordSteam.documentation=A powerful sword that runs on Steam Canisters.
 item.itemShovelSteam.documentation=A quick shovel that runs on Steam Canisters.
+
+#Entities
+entity.steamcraft2.FleshGolem.name=Flesh Golem
+entity.steamcraft2.Grub.name=Grub
+entity.steamcraft2.LostMiner.name=Lost Miner
+entity.steamcraft2.Boar.name=Boar
+entity.steamcraft2.VampireBat.name=Vampire Bat
+entity.steamcraft2.GhostSpider.name=Ghost Spider
+entity.steamcraft2.GiantSpider.name=Giant Spider
+entity.steamcraft2.SpiderQueen.name=Spider Queen
+entity.steamcraft2.ShroomZombie.name=Zombishroom
+entity.steamcraft2.ShroomSkeleton.name=Skeleshroom
+entity.steamcraft2.AbandonedGolem.name=Abandoned Golem
+entity.steamcraft2.Whale.name=Whale
+
+entity.steamcraft2.Bullet.name=Bullet
+entity.steamcraft2.Rocket.name=Rocket
+entity.steamcraft2.SplashLightningBottle.name=Lightning Bottle
+entity.steamcraft2.FieldManipulator.name=Field Manipulator
+
+entity.steamcraft2.TimeBomb.name=Time Bomb
+entity.steamcraft2.FallingBoulder.name=Falling Boulder
 

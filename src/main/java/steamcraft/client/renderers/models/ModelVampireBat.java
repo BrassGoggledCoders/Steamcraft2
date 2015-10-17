@@ -12,19 +12,16 @@
  */
 package steamcraft.client.renderers.models;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.MathHelper;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-
 import steamcraft.common.entities.living.EntityVampireBat;
 
 @SideOnly(Side.CLIENT)
-public class ModelVampireBat extends ModelBase
-{
+public class ModelVampireBat extends ModelBase {
 	private final ModelRenderer batHead;
 	/** The body box of the bat model. */
 	private final ModelRenderer batBody;
@@ -37,8 +34,7 @@ public class ModelVampireBat extends ModelBase
 	/** The outer left wing box of the bat model. */
 	private final ModelRenderer batOuterLeftWing;
 
-	public ModelVampireBat()
-	{
+	public ModelVampireBat() {
 		this.textureWidth = 64;
 		this.textureHeight = 64;
 		this.batHead = new ModelRenderer(this, 0, 0);
@@ -76,23 +72,19 @@ public class ModelVampireBat extends ModelBase
 	 * would be recreated if the value changed and it seems a good match for a
 	 * bats size
 	 */
-	public int getBatSize()
-	{
+	public int getBatSize() {
 		return 36;
 	}
 
 	/**
 	 * Sets the models various rotation angles then renders the model.
 	 */
-	@SuppressWarnings("unused")
 	@Override
-	public void render(Entity p_78088_1_, float p_78088_2_, float p_78088_3_, float p_78088_4_, float p_78088_5_, float p_78088_6_, float p_78088_7_)
-	{
+	public void render(Entity p_78088_1_, float p_78088_2_, float p_78088_3_, float p_78088_4_, float p_78088_5_, float p_78088_6_, float p_78088_7_) {
 		EntityVampireBat EntityVampireBat = (EntityVampireBat) p_78088_1_;
 		float f6;
 
-		if (EntityVampireBat.getIsBatHanging())
-		{
+		if (EntityVampireBat.getIsBatHanging()) {
 			f6 = (180F / (float) Math.PI);
 			this.batHead.rotateAngleX = p_78088_6_ / (180F / (float) Math.PI);
 			this.batHead.rotateAngleY = (float) Math.PI - (p_78088_5_ / (180F / (float) Math.PI));
@@ -107,9 +99,7 @@ public class ModelVampireBat extends ModelBase
 			this.batLeftWing.rotateAngleX = this.batRightWing.rotateAngleX;
 			this.batLeftWing.rotateAngleY = -this.batRightWing.rotateAngleY;
 			this.batOuterLeftWing.rotateAngleY = -this.batOuterRightWing.rotateAngleY;
-		}
-		else
-		{
+		} else {
 			f6 = (180F / (float) Math.PI);
 			this.batHead.rotateAngleX = p_78088_6_ / (180F / (float) Math.PI);
 			this.batHead.rotateAngleY = p_78088_5_ / (180F / (float) Math.PI);

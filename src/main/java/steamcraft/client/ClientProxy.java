@@ -43,6 +43,7 @@ import steamcraft.client.renderers.block.BlockHatchRenderer;
 import steamcraft.client.renderers.block.BlockSpiderEggRenderer;
 import steamcraft.client.renderers.block.BlockSteelPipeRenderer;
 import steamcraft.client.renderers.block.BlockSteelWireRenderer;
+import steamcraft.client.renderers.block.BlockTransparentWithInsideRenderer;
 import steamcraft.client.renderers.entity.RenderAbandonedGolem;
 import steamcraft.client.renderers.entity.RenderBoar;
 import steamcraft.client.renderers.entity.RenderFallingBoulder;
@@ -207,6 +208,8 @@ public class ClientProxy extends CommonProxy
 		RenderingRegistry.registerBlockHandler(new BlockTESRRenderer(new TileTrunk(), RenderIDs.blockTrunkRI));
 		// Cast Iron Gate
 		RenderingRegistry.registerBlockHandler(new BlockCastIronGateRenderer());
+		// Lattice
+		RenderingRegistry.registerBlockHandler(new BlockTransparentWithInsideRenderer());
 	}
 
 	@Override

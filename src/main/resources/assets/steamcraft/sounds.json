@@ -1,116 +1,97 @@
 {
-    "drill.steam":
-    {
+    "drill.steam": {
         "category": "block",
-        "sounds":
-        [
+        "sounds": [
 			"drill"
         ]
     },
 
-    "raygun":
-    {
+    "raygun": {
         "category": "block",
-        "sounds":
-        [
+        "sounds": [
 			"raygun"
         ]
     },
 
-    "musket":
-    {
+    "musket": {
         "category": "block",
-        "sounds":
-        [
+        "sounds": [
 			"musket"
         ]
     },
 
-    "rifle":
-    {
+    "rifle": {
         "category": "block",
-        "sounds":
-        [
+        "sounds": [
 			"rifle"
         ]
     },
 
-    "reload":
-    {
+    "reload": {
         "category": "block",
-        "sounds":
-        [
+        "sounds": [
 			"reload"
         ]
     },
 
-    "rocket":
-    {
+    "rocket": {
         "category": "block",
-        "sounds":
-        [
+        "sounds": [
       "rocket"
         ]
     },
 
-    "hitflesh":
-    {
+    "hitflesh": {
         "category": "block",
-        "sounds":
-        [
+        "sounds": [
 			"hitflesh"
         ]
     },
 
-    "hitblock":
-    {
+    "hitblock": {
         "category": "block",
-        "sounds":
-        [
+        "sounds": [
 			"hitblock"
         ]
     },
- 	"warp":
-    {
+    "warp": {
         "category": "block",
-        "sounds":
-        [
+        "sounds": [
 			"warp"
         ]
     },
-     "allclear":
-    {
+    "allclear": {
         "category": "block",
-        "sounds":
-        [
+        "sounds": [
 			"allclear"
         ]
     },
 
-    "intruderalert":
-    {
+    "intruderalert": {
         "category": "block",
-        "sounds":
-        [
+        "sounds": [
 			"intruderalert"
         ]
     },
 
-    "nuclearalarm":
-    {
+    "nuclearalarm": {
         "category": "block",
-        "sounds":
-        [
+        "sounds": [
 			"nuclearalarm"
         ]
     },
 
-    "standard":
-    {
+    "standard": {
         "category": "block",
-        "sounds":
-        [
+        "sounds": [
 			"standard"
+        ]
+    },
+
+    "intake": {
+        "category": "block",
+        "sounds": [
+			"intake"
         ]
     }
 }

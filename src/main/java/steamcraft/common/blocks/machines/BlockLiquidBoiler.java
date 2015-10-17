@@ -42,10 +42,10 @@ public class BlockLiquidBoiler extends BlockBaseBoiler
 	@Override
 	public void registerBlockIcons(IIconRegister icon)
 	{
-		this.blockIcon = icon.registerIcon(ModInfo.PREFIX + "blockSteamBoilerSide");
+		this.blockIcon = icon.registerIcon(ModInfo.PREFIX + "blockSteamBoilerTop");
 		this.iconFront = icon.registerIcon(ModInfo.PREFIX + "blockSteamBoilerFrontInactive");
 		this.iconFrontActive = icon.registerIcon(ModInfo.PREFIX + "blockSteamBoilerFrontActive");
-		this.iconTop = icon.registerIcon(ModInfo.PREFIX + "blockSteamBoilerTop");
+		this.iconTop = icon.registerIcon(ModInfo.PREFIX + "blockIntake");
 	}
 
 	@Override
