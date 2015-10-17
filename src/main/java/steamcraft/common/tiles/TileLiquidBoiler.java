@@ -55,7 +55,7 @@ public class TileLiquidBoiler extends TileBaseBoiler implements IOpenableGUI
 
 	// TODO Allow things to be added to this via imc
 	public HashMap<Fluid, Integer> fuels = RecipeAPI.addedFuels;
-	public int defaultFuelValue = 500;
+	public int defaultFuelValue = 100;
 
 	public TileLiquidBoiler()
 	{
