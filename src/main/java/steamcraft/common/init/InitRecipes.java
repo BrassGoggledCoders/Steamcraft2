@@ -134,6 +134,11 @@ public class InitRecipes
 					new ItemStack(InitBlocks.blockMossyMetal, 1, meta), Blocks.sand));
 			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(InitBlocks.blockMetal, 1, meta),
 					new ItemStack(InitBlocks.blockRustyMetal, 1, meta), Blocks.sand));
+
+			GameRegistry
+					.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockMetalPlate, 16, meta), "XX", 'X', "block" + LibInfo.metals[meta]));
+			GameRegistry.addRecipe(
+					new ShapelessOreRecipe(new ItemStack(InitBlocks.blockMetal, 2, meta), new ItemStack(InitBlocks.blockMetalPlate, 1, meta)));
 		}
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(InitItems.itemVanillaSheet, 1, 0), "ingotIron", "craftingHammer"));
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(InitItems.itemVanillaSheet, 1, 1), "ingotGold", "craftingHammer"));
@@ -264,6 +269,8 @@ public class InitRecipes
 		GameRegistry.addShapedRecipe(new ItemStack(InitBlocks.blockBloomery), "N N", "NFN", "NNN", 'F', Blocks.furnace, 'N', Blocks.nether_brick);
 		GameRegistry.addRecipe(
 				new ShapedOreRecipe(new ItemStack(InitBlocks.blockCopperPipe, 2), "PPP", "GGG", "PPP", 'P', "plateCopper", 'G', "blockGlass"));
+		GameRegistry.addRecipe(
+				new ShapedOreRecipe(new ItemStack(InitBlocks.blockSteelPipe, 2), "PPP", "GGG", "PPP", 'P', "plateSteel", 'G', "blockGlass"));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockCopperTank), "PPP", "P P", "PPP", 'P', "plateCopper"));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockBattery), "CCC", "WCW", "CCC", 'C', "ingotCastIron", 'W',
 				InitBlocks.blockCopperWire));
