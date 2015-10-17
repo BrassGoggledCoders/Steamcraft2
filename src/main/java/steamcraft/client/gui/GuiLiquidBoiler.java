@@ -15,8 +15,6 @@ package steamcraft.client.gui;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
 
-import cpw.mods.fml.common.FMLLog;
-
 import net.minecraftforge.fluids.FluidRegistry;
 
 import boilerplate.client.BaseContainerGui;
@@ -56,14 +54,9 @@ public class GuiLiquidBoiler extends BaseContainerGui
 			this.drawTexturedModalRect(this.guiLeft + 43, (this.guiTop + 48) - burnTime, 176, 12 - burnTime, 14, burnTime + 2);
 		}
 
-		this.drawFluid(FluidRegistry.getFluid("water"), this.boiler.getScaledWaterLevel(60), this.guiLeft + 8, this.guiTop + 8, 20, 60);
-		if (this.boiler.fuelTank.getFluid() != null)
-		{
-			this.drawFluid(this.boiler.fuelTank.getFluid().getFluid(), this.boiler.getScaledFuelLevel(60), this.guiLeft + 20, this.guiTop + 8, 20,
-					60);
-			FMLLog.info("" + this.boiler.getScaledFuelLevel(60), "" + this.boiler.getScaledFuelLevel(60));
-		}
-		this.drawFluid(FluidRegistry.getFluid("steam"), this.boiler.getScaledSteamLevel(60), this.guiLeft + 74, this.guiTop + 8, 32, 60);
+		this.drawFluid(FluidRegistry.getFluid("water"), this.boiler.getScaledWaterLevel(60), this.guiLeft + 8, this.guiTop + 9, 20, 60);
+		this.drawFluid(FluidRegistry.getFluid("whaleoil"), this.boiler.getScaledFuelLevel(60), this.guiLeft + 40, this.guiTop + 9, 20, 60);
+		this.drawFluid(FluidRegistry.getFluid("steam"), this.boiler.getScaledSteamLevel(60), this.guiLeft + 74, this.guiTop + 9, 32, 60);
 
 		this.mc.renderEngine.bindTexture(guitexture);
 		this.drawTexturedModalRect(this.guiLeft + 8, this.guiTop + 15, 176, 14, 20, 49);
@@ -79,7 +72,7 @@ public class GuiLiquidBoiler extends BaseContainerGui
 				this.drawFluidInfo(this.boiler.waterTank, x, y);
 			else if (((x - this.guiLeft) >= 74) && ((x - this.guiLeft) <= 106))
 				this.drawFluidInfo(this.boiler.steamTank, x, y);
-			else if (((x - this.guiLeft) >= 40) && ((x - this.guiLeft) <= 60))
-				this.drawFluidInfo(this.boiler.fuelTank, x, y);
+		// else if (((x - this.guiLeft) >= 40) && ((x - this.guiLeft) <= 60))
+		// this.drawFluidInfo(this.boiler.fuelTank, x, y);
 	}
 }
