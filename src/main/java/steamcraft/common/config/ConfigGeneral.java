@@ -15,11 +15,9 @@ package steamcraft.common.config;
 import java.io.File;
 
 import net.minecraftforge.common.config.Configuration;
-
 import steamcraft.common.lib.LoggerSteamcraft;
 
-public class ConfigGeneral
-{
+public class ConfigGeneral {
 	public static Configuration config;
 
 	public static final String CATEGORY_GENERAL = "general";
@@ -29,28 +27,27 @@ public class ConfigGeneral
 	public static boolean drawFluid;
 	public static boolean drawInside;
 	public static double armorSpawnChance;
+	public static boolean golemFireDrop;
 
 	public static int deepsDimensionID;
 
 	public static boolean unnaturalLightningStrikes, naturalLightningStrikes, weather2LightningStrikes;
 
-	public static int depthsBiomeID, depthsFBiomeID, depthsMBiomeID, depthsSBiomeID, depthsIBiomeID, depthsSCBiomeID, depthsSCHBiomeID,
-			depthsSWBiomeID, depthsTFBiomeID, depthsJBiomeID;// ,
-																// depthsOBiomeID,
-																// depthsBBiomeID;
+	public static int depthsBiomeID, depthsFBiomeID, depthsMBiomeID, depthsSBiomeID, depthsIBiomeID, depthsSCBiomeID, depthsSCHBiomeID, depthsSWBiomeID, depthsTFBiomeID, depthsJBiomeID;// ,
+																																															// depthsOBiomeID,
+																																															// depthsBBiomeID;
 
 	public static double spyglassZoom;
 
 	public static String[] oredictMetals;
 
-	public static void initialize(File configFile)
-	{
+	public static void initialize(File configFile) {
 		config = new Configuration(configFile);
-		try
-		{
+		try {
 			config.load();
 
 			partyPooper = config.get(CATEGORY_GENERAL, "Remove all little fun things from mod :(", false).getBoolean();
+			golemFireDrop = config.get(CATEGORY_GENERAL, "Iron Golems drop cast iron when dying from fire (Kinda breaks iron farms that use fire drop)", true).getBoolean();
 			armorSpawnChance = config.get(CATEGORY_GENERAL, "Spawn Chance of our Armor on Zombies/Skeletons (0.0-1.0)", 0.2D).getDouble();
 
 			drawFluid = config.get(CATEGORY_CLIENT, "Render fluid inside blocks", true).getBoolean();
@@ -77,14 +74,10 @@ public class ConfigGeneral
 			depthsTFBiomeID = config.get(CATEGORY_GENERAL, "Biome ID for Depths Tall Forest Biome", biomeID++).getInt();
 			depthsJBiomeID = config.get(CATEGORY_GENERAL, "Biome ID for Depths Jungle Biome", biomeID++).getInt();
 
-			oredictMetals = config.getStringList(CATEGORY_GENERAL,
-					"List of oredictionary names of ingots/plates that the grindstone will be able to convert to dust",
-					new String[] { "Platinum", "Nickel", "Lead", "Silver", "" }, "");
-		} catch (Exception e)
-		{
+			oredictMetals = config.getStringList(CATEGORY_GENERAL, "List of oredictionary names of ingots/plates that the grindstone will be able to convert to dust", new String[] { "Platinum", "Nickel", "Lead", "Silver", "" }, "");
+		} catch (Exception e) {
 			LoggerSteamcraft.error("Failed to load configuration file:" + e);
-		} finally
-		{
+		} finally {
 			if (config.hasChanged())
 				config.save();
 		}

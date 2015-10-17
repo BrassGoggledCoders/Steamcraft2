@@ -16,22 +16,17 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
-
 import steamcraft.common.tiles.container.slot.SlotVanity;
 
 /**
  * @author warlordjones
  *
  */
-public class ContainerVanity extends Container
-{
+public class ContainerVanity extends Container {
 
-	@SuppressWarnings("unused")
-	private static final int ARMOR_START = InventoryVanity.INV_SIZE, ARMOR_END = ARMOR_START + 3, INV_START = ARMOR_END + 1, INV_END = INV_START + 26,
-			HOTBAR_START = INV_END + 1, HOTBAR_END = HOTBAR_START + 8;
+	private static final int ARMOR_START = InventoryVanity.INV_SIZE, ARMOR_END = ARMOR_START + 3, INV_START = ARMOR_END + 1, INV_END = INV_START + 26, HOTBAR_START = INV_END + 1, HOTBAR_END = HOTBAR_START + 8;
 
-	public ContainerVanity(final EntityPlayer player, final InventoryPlayer inventoryPlayer, final InventoryVanity inventoryCustom)
-	{
+	public ContainerVanity(final EntityPlayer player, final InventoryPlayer inventoryPlayer, final InventoryVanity inventoryCustom) {
 		// Custom Slots
 		this.addSlotToContainer(new SlotVanity(inventoryCustom, 0, 25, 8));
 		this.addSlotToContainer(new SlotVanity(inventoryCustom, 1, 25, 26));
@@ -53,8 +48,7 @@ public class ContainerVanity extends Container
 	}
 
 	@Override
-	public boolean canInteractWith(final EntityPlayer player)
-	{
+	public boolean canInteractWith(final EntityPlayer player) {
 		return true;
 	}
 

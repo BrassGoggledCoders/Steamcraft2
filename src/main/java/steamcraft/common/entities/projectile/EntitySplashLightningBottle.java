@@ -42,7 +42,7 @@ public class EntitySplashLightningBottle extends BaseThrowableEntity
 		return 0.03F;
 	}
 
-	@SuppressWarnings({ "rawtypes", "unused" })
+	@SuppressWarnings({ "rawtypes" })
 	@Override
 	protected void onImpact(MovingObjectPosition mop)
 	{

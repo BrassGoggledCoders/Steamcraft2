@@ -12,24 +12,22 @@
  */
 package steamcraft.common.items;
 
-import net.minecraft.block.Block;
+import boilerplate.api.IOpenableGUI;
+import cpw.mods.fml.common.Optional;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityMinecart;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-
-import cpw.mods.fml.common.Optional;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-
 import steamcraft.api.item.IUniversalWrench;
+import steamcraft.api.tile.ISpannerTile;
+import steamcraft.client.lib.GuiIDs;
 import steamcraft.common.Steamcraft;
-import steamcraft.common.init.InitBlocks;
 import steamcraft.common.lib.ModInfo;
-import steamcraft.common.tiles.TileCopperPipe;
-import steamcraft.common.tiles.energy.TileCopperWire;
 
 /**
  * @author warlordjones
@@ -48,19 +46,16 @@ public class ItemSpanner extends BaseItem implements IUniversalWrench
 	{
 		if (!world.isRemote)
 		{
-			Block block = world.getBlock(x, y, z);
+			TileEntity tile = world.getTileEntity(x, y, z);
 
-			if ((block == InitBlocks.blockCopperPipe) || (block == InitBlocks.blockSteelPipe))
+			if (tile instanceof ISpannerTile)
 			{
-				TileCopperPipe pipe = (TileCopperPipe) world.getTileEntity(x, y, z);
+				ISpannerTile spannerTile = (ISpannerTile) tile;
 
-				pipe.changeExtracting();
-			}
-			else if ((block == InitBlocks.blockCopperWire) || (block == InitBlocks.blockSteelWire))
-			{
-				TileCopperWire wire = (TileCopperWire) world.getTileEntity(x, y, z);
-
-				wire.changeExtracting();
+				if (player.isSneaking() && tile instanceof IOpenableGUI)
+					player.openGui(Steamcraft.instance, GuiIDs.PIPES, world, x, y, z);
+				else
+					spannerTile.changeExtraction();
 			}
 		}
 		player.swingItem();

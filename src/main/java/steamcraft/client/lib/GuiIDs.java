@@ -33,4 +33,6 @@ public class GuiIDs
 	public static final int CAPACITOR = 12;
 	public static final int LIQUID_BOILER = 13;
 	public static final int INJECTOR = 14;
+
+	public static final int PIPES = 15;
 }
