@@ -46,6 +46,7 @@ public class TileRefinery extends BaseTileWithInventory implements IFluidHandler
 	public int furnaceBurnTime = 0;
 	public int currentItemBurnTime = 0;
 	public int cookTime = 0;
+	public int totalCookTime = 700;
 
 	public FluidTank oilTank;
 
@@ -126,7 +127,7 @@ public class TileRefinery extends BaseTileWithInventory implements IFluidHandler
 			{
 				if (this.inventory[1].getItem() == InitItems.itemWhaleBlubber)
 				{
-					if (this.cookTime < 700)
+					if (this.cookTime < totalCookTime)
 						this.cookTime++;
 					else
 					{
@@ -246,6 +247,6 @@ public class TileRefinery extends BaseTileWithInventory implements IFluidHandler
 
 	public int getCookTimeRemainingScaled(int i)
 	{
-		return (this.cookTime * i) / 200;
+		return (this.cookTime * i) / 400;
 	}
 }
