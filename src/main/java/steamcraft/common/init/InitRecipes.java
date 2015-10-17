@@ -244,8 +244,12 @@ public class InitRecipes
 	{
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockSteamBoiler), "PPP", "TCT", "PFP", 'F', Blocks.furnace, 'P',
 				"plateBrass", 'T', InitBlocks.blockCopperTank, 'C', InitBlocks.blockCopperPipe));
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockSteamBoiler), "PPP", "TCT", "PFP", 'F', Blocks.furnace, 'P',
-				"plateSteel", 'T', InitBlocks.blockCopperTank, 'C', InitBlocks.blockCopperPipe));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockNuclearBoiler), "PUP", "TCT", "PFP", 'F', Blocks.furnace, 'P',
+				"plateBrass", 'T', InitBlocks.blockCopperTank, 'C', InitBlocks.blockCopperPipe, 'U', new ItemStack(InitItems.itemResource, 1, 3)));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockLiquidBoiler), "PBP", "TCT", "PFP", 'F', Blocks.furnace, 'P',
+				"plateBrass", 'T', InitBlocks.blockCopperTank, 'C', InitBlocks.blockCopperPipe, 'B', Items.bucket));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockRefinery), "PPP", "PTP", "FFF", 'F', Blocks.furnace, 'P',
+				"plateBrass", 'T', InitBlocks.blockCopperTank, 'C', InitBlocks.blockCopperPipe));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitBlocks.blockIntake), "PGP", "GBG", "PGP", 'G', "partGrating", 'P', "plateBrass",
 				'B', Items.bucket));
 		GameRegistry.addShapedRecipe(new ItemStack(InitBlocks.blockBloomery), "N N", "NFN", "NNN", 'F', Blocks.furnace, 'N', Blocks.nether_brick);
