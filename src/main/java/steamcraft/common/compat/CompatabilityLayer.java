@@ -202,8 +202,9 @@ public class CompatabilityLayer
 
 		OreDictHelper.registerOreWithAlts(InitItems.itemResource, 0, "powderSulfur", "sulfur", "dustSulfur");
 		OreDictHelper.registerOre("powderPhosphorus", InitItems.itemResource, 1);
-		OreDictHelper.registerOre("ingotUranium", InitItems.itemResource, 2);
-		OreDictHelper.registerOre("pelletUranium", InitItems.itemResource, 3);
+		OreDictHelper.registerOreWithAlts(InitItems.itemResource, 2, "sulfuricAcid", "bottleSulfuricAcid");
+		OreDictHelper.registerOre("ingotUranium", InitItems.itemResource, 3);
+		OreDictHelper.registerOre("pelletUranium", InitItems.itemResource, 4);
 		OreDictHelper.registerOreWithAlts(InitItems.itemSlimeRubber, "itemRubber", "barRubber", "rawRubber");
 
 		OreDictionary.registerOre("partCastIronRod", InitItems.itemMachinePart);
