@@ -64,6 +64,8 @@ dependencies {
     compile name: "Botania", group: "vazkii.botania", version: "r1.6-190.6", classifier: "deobf"
 
     compile files("libs/Railcraft_1.7.10-9.7.0.0-dev.jar")
+
+	runtime 'Azanor:Baubles:1.0.1.10:deobf@jar'
 }
 
 task getLibraries {
