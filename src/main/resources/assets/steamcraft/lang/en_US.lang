@@ -625,13 +625,6 @@ biome.steamcraft2.innerearth.jungle.name=Dense Jungle
 biome.steamcraft2.innerearth.swamp.name=Swampy Forest
 biome.steamcraft2.innerearth.scorched.name=Scorched Lands
 
-#Entities
-entity.steamcraft2.grub.name=Grub
-entity.steamcraft2.lostminer.name=Lost Miner
-entity.steamcraft2.ghostspider.name=Ghost Spider
-entity.steamcraft2.vampirebat.name=Vampire Bat
-entity.steamcraft2.boar.name=Boar
-
 #Keys
 key.steamcraft.category=
 key.vanity.desc=Open Vanity Inventory
@@ -668,4 +661,26 @@ item.itemDrillWood.documentation=Drills act as both shovels and pickaxes. They u
 item.itemDrillSteam.documentation=This is a drill that runs on Steam provided by Steam Canisters in your inventory. It can be used to mine a 3x3 area - this functionality is activated by shift-right clicking.
 item.itemSwordSteam.documentation=A powerful sword that runs on Steam Canisters.
 item.itemShovelSteam.documentation=A quick shovel that runs on Steam Canisters.
+
+#Entities
+entity.steamcraft2.FleshGolem.name=Flesh Golem
+entity.steamcraft2.Grub.name=Grub
+entity.steamcraft2.LostMiner.name=Lost Miner
+entity.steamcraft2.Boar.name=Boar
+entity.steamcraft2.VampireBat.name=Vampire Bat
+entity.steamcraft2.GhostSpider.name=Ghost Spider
+entity.steamcraft2.GiantSpider.name=Giant Spider
+entity.steamcraft2.SpiderQueen.name=Spider Queen
+entity.steamcraft2.ShroomZombie.name=Zombishroom
+entity.steamcraft2.ShroomSkeleton.name=Skeleshroom
+entity.steamcraft2.AbandonedGolem.name=Abandoned Golem
+entity.steamcraft2.Whale.name=Whale
+
+entity.steamcraft2.Bullet.name=Bullet
+entity.steamcraft2.Rocket.name=Rocket
+entity.steamcraft2.SplashLightningBottle.name=Lightning Bottle
+entity.steamcraft2.FieldManipulator.name=Field Manipulator
+
+entity.steamcraft2.TimeBomb.name=Time Bomb
+entity.steamcraft2.FallingBoulder.name=Falling Boulder
 
