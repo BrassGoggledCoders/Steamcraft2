@@ -16,33 +16,36 @@ import org.lwjgl.opengl.GL11;
 
 import boilerplate.client.BaseContainerGui;
 import net.minecraft.client.gui.GuiButton;
-import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.util.ForgeDirection;
+import steamcraft.api.tile.ISpannerTile;
+import steamcraft.common.init.InitPackets;
 import steamcraft.common.lib.ModInfo;
-import steamcraft.common.tiles.TileCopperPipe;
-import steamcraft.common.tiles.container.ContainerPipeConnections;
+import steamcraft.common.packets.UpdateExtractionPacket;
+import steamcraft.common.tiles.container.ContainerChangeExtractions;
 
 /**
  * @author decebaldecebal
  *
  */
-public class GuiPipeConnections extends BaseContainerGui
+public class GuiChangeExtractions extends BaseContainerGui
 {
 	private static ResourceLocation guitexture = new ResourceLocation(ModInfo.PREFIX + "textures/gui/changeextractions.png");
 	private static String[] buttonNames = new String[]{"Insert", "Extract"};
 
-	private InventoryPlayer player;
-	private TileCopperPipe tile;
+	private TileEntity tile;
+	private int worldId;
 
-	public GuiPipeConnections(InventoryPlayer player, TileCopperPipe tile)
+
+	public GuiChangeExtractions(TileEntity tile, int worldId)
 	{
-		super(new ContainerPipeConnections(player));
+		super(new ContainerChangeExtractions());
 
 		this.xSize = 206;
-		this.ySize = 196;
-		this.player = player;
+		this.ySize = 111;
 		this.tile = tile;
+		this.worldId = worldId;
 	}
 
 	@Override
@@ -73,8 +76,10 @@ public class GuiPipeConnections extends BaseContainerGui
 		super.initGui();
 		buttonList.clear();
 
-		ForgeDirection[] connections = tile.getExtractableConnections();
-		ForgeDirection[] extractions = tile.getExtractions();
+		ISpannerTile spannerTile = (ISpannerTile) this.tile;
+
+		ForgeDirection[] connections = spannerTile.getExtractableConnections();
+		ForgeDirection[] extractions = spannerTile.getExtractions();
 
 		GuiButton up = this.createGuiButton(0, guiLeft + 55, guiTop + 20, 44, 20, connections, extractions);
 		GuiButton down = this.createGuiButton(1, guiLeft + 150, guiTop + 20, 44, 20, connections, extractions);
@@ -106,9 +111,10 @@ public class GuiPipeConnections extends BaseContainerGui
 	@Override
 	protected void actionPerformed(GuiButton button)
 	{
-		if (button.id == 0)
+		if (button.enabled)
 		{
-
+			InitPackets.network.sendToServer(new UpdateExtractionPacket(worldId, this.tile.xCoord, this.tile.yCoord, this.tile.zCoord, button.id));
+			button.displayString = button.displayString.equals(buttonNames[0]) ? buttonNames[1] : buttonNames[0];
 		}
 	}
 }

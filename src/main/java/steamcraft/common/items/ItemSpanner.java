@@ -53,12 +53,9 @@ public class ItemSpanner extends BaseItem implements IUniversalWrench
 				ISpannerTile spannerTile = (ISpannerTile) tile;
 
 				if (player.isSneaking() && tile instanceof IOpenableGUI)
-				{
-					System.out.println("Opening GUI...");
 					player.openGui(Steamcraft.instance, GuiIDs.PIPES, world, x, y, z);
-				}
 				else
-					spannerTile.changeExtracting();
+					spannerTile.changeExtraction();
 			}
 		}
 		player.swingItem();

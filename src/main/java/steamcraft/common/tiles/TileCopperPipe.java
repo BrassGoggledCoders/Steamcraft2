@@ -34,12 +34,12 @@ import net.minecraftforge.fluids.FluidTank;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
 import steamcraft.api.tile.ISpannerTile;
-import steamcraft.client.gui.GuiPipeConnections;
+import steamcraft.client.gui.GuiChangeExtractions;
 import steamcraft.common.init.InitBlocks;
 import steamcraft.common.init.InitPackets;
 import steamcraft.common.packets.CopperPipeFluidPacket;
 import steamcraft.common.packets.CopperPipePacket;
-import steamcraft.common.tiles.container.ContainerPipeConnections;
+import steamcraft.common.tiles.container.ContainerChangeExtractions;
 
 /**
  * @author decebaldecebal
@@ -181,7 +181,7 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler, ISpanne
 	{
 		super.readFromNBT(tag);
 
-		NBTTagList extractions = tag.getTagList("extractions", Constants.NBT.TAG_LIST);
+		NBTTagList extractions = tag.getTagList("extractions", Constants.NBT.TAG_COMPOUND);
 
 		for (int i = 0; i < extractions.tagCount(); i++)
 		{
@@ -251,7 +251,7 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler, ISpanne
 	{
 		this.extractions = new ForgeDirection[6];
 
-		NBTTagList extractions = (NBTTagList) packet.func_148857_g().getTag("extractions");
+		NBTTagList extractions = packet.func_148857_g().getTagList("extractions", Constants.NBT.TAG_COMPOUND);
 
 		for (int i = 0; i < extractions.tagCount(); i++)
 		{
@@ -262,7 +262,7 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler, ISpanne
 
 		this.connections = new ForgeDirection[6];
 
-		NBTTagList connections = (NBTTagList) packet.func_148857_g().getTag("connections");
+		NBTTagList connections = packet.func_148857_g().getTagList("connections", Constants.NBT.TAG_COMPOUND);
 
 		for (int i = 0; i < connections.tagCount(); i++)
 		{
@@ -273,7 +273,7 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler, ISpanne
 	}
 
 	@Override
-	public void changeExtracting()
+	public void changeExtraction()
 	{
 		if (!this.worldObj.isRemote)
 		{
@@ -312,6 +312,43 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler, ISpanne
 		}
 	}
 
+	@Override
+	public void changeExtraction(int dirIndex)
+	{
+		if (!this.worldObj.isRemote)
+		{
+			ForgeDirection dir = this.connections[dirIndex];
+
+			if (dir != null)
+			{
+				Coords temp = new Coords(this.xCoord + dir.offsetX, this.yCoord + dir.offsetY,
+					this.zCoord + dir.offsetZ, dir.getOpposite());
+
+				if (this.extractions[dirIndex] == null)
+				{
+					this.extractions[dirIndex] = this.connections[dirIndex];
+
+					this.network.outputs.remove(temp);
+
+					if (!this.network.inputs.contains(temp))
+						this.network.inputs.add(temp);
+				}
+				else
+				{
+					this.extractions[dirIndex] = null;
+
+					this.network.inputs.remove(temp);
+
+					if (!this.network.outputs.contains(temp))
+						this.network.outputs.add(temp);
+				}
+
+				this.updateClientConnections();
+			}
+		}
+	}
+
+	@Override
 	public ForgeDirection[] getExtractableConnections()
 	{
 		ForgeDirection[] extractableConnections = new ForgeDirection[6];
@@ -326,6 +363,7 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler, ISpanne
 		return extractableConnections;
 	}
 
+	@Override
 	public ForgeDirection[] getExtractions()
 	{
 		return this.extractions;
@@ -773,14 +811,13 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler, ISpanne
 	@Override
 	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
 	{
-		System.out.println("Gui returned.");
-		return new GuiPipeConnections(player.inventory, (TileCopperPipe) world.getTileEntity(x, y, z));
+		return new GuiChangeExtractions((TileCopperPipe) world.getTileEntity(x, y, z), player.dimension);
 	}
 
 	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
 	{
-		return new ContainerPipeConnections(player.inventory);
+		return new ContainerChangeExtractions();
 	}
 
 	public static class FluidNetwork

@@ -14,25 +14,16 @@ package steamcraft.common.tiles.container;
 
 import boilerplate.common.baseclasses.blocks.BaseContainer;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.inventory.Slot;
 
 /**
  * @author decebaldecebal
  *
  */
-public class ContainerPipeConnections extends BaseContainer
+public class ContainerChangeExtractions extends BaseContainer
 {
-	public ContainerPipeConnections(InventoryPlayer player)
+	public ContainerChangeExtractions()
 	{
-		int var3;
 
-		for (var3 = 0; var3 < 3; ++var3)
-			for (int var4 = 0; var4 < 9; ++var4)
-				this.addSlotToContainer(new Slot(player, var4 + (var3 * 9) + 9, 23 + (var4 * 18), 114 + (var3 * 18)));
-
-		for (var3 = 0; var3 < 9; ++var3)
-			this.addSlotToContainer(new Slot(player, var3, 23 + (var3 * 18), 172));
 	}
 
 	@Override

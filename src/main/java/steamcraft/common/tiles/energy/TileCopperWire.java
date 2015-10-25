@@ -187,7 +187,8 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler, ISpann
 		}
 	}
 
-	public void changeExtracting()
+	@Override
+	public void changeExtraction()
 	{
 		if (!this.worldObj.isRemote)
 		{
@@ -741,5 +742,23 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler, ISpann
 
 			return network;
 		}
+	}
+
+	@Override
+	public void changeExtraction(int dirIndex)
+	{
+
+	}
+
+	@Override
+	public ForgeDirection[] getExtractableConnections()
+	{
+		return null;
+	}
+
+	@Override
+	public ForgeDirection[] getExtractions()
+	{
+		return null;
 	}
 }
