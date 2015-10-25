@@ -30,6 +30,7 @@ import steamcraft.common.tiles.container.ContainerPipeConnections;
 public class GuiPipeConnections extends BaseContainerGui
 {
 	private static ResourceLocation guitexture = new ResourceLocation(ModInfo.PREFIX + "textures/gui/changeextractions.png");
+	private static String[] buttonNames = new String[]{"Insert", "Extract"};
 
 	private InventoryPlayer player;
 	private TileCopperPipe tile;
@@ -48,12 +49,12 @@ public class GuiPipeConnections extends BaseContainerGui
 	protected void drawGuiContainerForegroundLayer(int p_146979_1_, int p_146979_2_)
 	{
 		this.fontRendererObj.drawString("Change Extraction", 60, 6, 4210752);
-		this.fontRendererObj.drawString("North:", 20, 26, 4210752);
-		this.fontRendererObj.drawString("South:", 115, 26, 4210752);
-		this.fontRendererObj.drawString("West:", 20, 56, 4210752);
-		this.fontRendererObj.drawString("East:", 115, 56, 4210752);
-		this.fontRendererObj.drawString("Up:", 20, 86, 4210752);
-		this.fontRendererObj.drawString("Down:", 115, 86, 4210752);
+		this.fontRendererObj.drawString("Up:", 20, 26, 4210752);
+		this.fontRendererObj.drawString("Down:", 115, 26, 4210752);
+		this.fontRendererObj.drawString("North:", 20, 56, 4210752);
+		this.fontRendererObj.drawString("South:", 115, 56, 4210752);
+		this.fontRendererObj.drawString("West:", 20, 86, 4210752);
+		this.fontRendererObj.drawString("East:", 115, 86, 4210752);
 	}
 
 	@Override
@@ -65,34 +66,24 @@ public class GuiPipeConnections extends BaseContainerGui
 		this.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void initGui()
 	{
 		super.initGui();
 		buttonList.clear();
 
-		ForgeDirection[] connections = tile.getConnections();
+		ForgeDirection[] connections = tile.getExtractableConnections();
+		ForgeDirection[] extractions = tile.getExtractions();
 
-		GuiButton north = new GuiButton(0, guiLeft + 55, guiTop + 20, 44, 20, "Insert");
-		GuiButton south = new GuiButton(4, guiLeft + 150, guiTop + 20, 44, 20, "Insert");
-		if (connections[2] == null)
-			north.enabled = false;
-		if (connections[3] == null)
-			south.enabled = false;
+		GuiButton up = this.createGuiButton(0, guiLeft + 55, guiTop + 20, 44, 20, connections, extractions);
+		GuiButton down = this.createGuiButton(1, guiLeft + 150, guiTop + 20, 44, 20, connections, extractions);
 
-		GuiButton west = new GuiButton(2, guiLeft + 55, guiTop + 50, 44, 20, "Insert");
-		GuiButton east = new GuiButton(3, guiLeft + 150, guiTop + 50, 44, 20, "Insert");
-		if (connections[4] == null)
-			west.enabled = false;
-		if (connections[5] == null)
-			east.enabled = false;
+		GuiButton north = this.createGuiButton(2, guiLeft + 55, guiTop + 50, 44, 20, connections, extractions);
+		GuiButton south = this.createGuiButton(3, guiLeft + 150, guiTop + 50, 44, 20, connections, extractions);
 
-		GuiButton up = new GuiButton(1, guiLeft + 55, guiTop + 80, 44, 20, "Insert");
-		GuiButton down = new GuiButton(5, guiLeft + 150, guiTop + 80, 44, 20, "Insert");
-		if (connections[0] == null)
-			up.enabled = false;
-		if (connections[1] == null)
-			down.enabled = false;
+		GuiButton west = this.createGuiButton(4, guiLeft + 55, guiTop + 80, 44, 20, connections, extractions);
+		GuiButton east = this.createGuiButton(5, guiLeft + 150, guiTop + 80, 44, 20, connections, extractions);
 
 		buttonList.add(north);
 		buttonList.add(south);
@@ -100,6 +91,16 @@ public class GuiPipeConnections extends BaseContainerGui
 		buttonList.add(east);
 		buttonList.add(up);
 		buttonList.add(down);
+	}
+
+	private GuiButton createGuiButton(int index, int x, int y, int xx, int yy, ForgeDirection[] connections, ForgeDirection[] extractions)
+	{
+		GuiButton button = new GuiButton(index, x, y, xx, yy, extractions[index] == null ? buttonNames[0] : buttonNames[1]);
+
+		if (connections[index] == null)
+			button.enabled = false;
+
+		return button;
 	}
 
 	@Override

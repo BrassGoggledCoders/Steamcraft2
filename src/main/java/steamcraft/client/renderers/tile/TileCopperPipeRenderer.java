@@ -50,20 +50,31 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 
 		TileCopperPipe pipe = (TileCopperPipe) tile;
 
-		ForgeDirection opposite = pipe.onlyOneOpposite();
+		boolean isStraight = true;
+		for (ForgeDirection dir : pipe.extractions)
+			if (dir != null)
+			{
+				isStraight = false;
+				break;
+			}
 
-		if ((opposite != null) && (pipe.extract == null) && pipe.isPipe(opposite) && pipe.isPipe(opposite.getOpposite()))
+		ForgeDirection opposite = null;
+
+		if (isStraight && ((opposite = pipe.onlyOneOpposite()) != null) && pipe.isPipe(opposite) && pipe.isPipe(opposite.getOpposite()))
 			this.drawStraightConnection(opposite, pipe);
 		else
 		{
 			this.drawCore(pipe);
 
-			for (ForgeDirection dir : pipe.connections)
+			for (int i = 0;i < 6;i++)
+			{
+				ForgeDirection dir = pipe.connections[i];
 				if (dir != null)
-					if (pipe.extract == dir)
+					if (pipe.extractions[i] != null)
 						this.drawAlternateConnection(dir, pipe);
 					else
 						this.drawConnection(dir, pipe);
+			}
 		}
 
 		GL11.glEnable(GL11.GL_LIGHTING);

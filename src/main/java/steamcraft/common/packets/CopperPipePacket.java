@@ -34,19 +34,19 @@ public class CopperPipePacket implements IMessage
 {
 	private int x, y, z;
 	ForgeDirection[] connections;
-	ForgeDirection extract;
+	ForgeDirection[] extractions;
 
 	public CopperPipePacket()
 	{
 	} // REQUIRED
 
-	public CopperPipePacket(int x, int y, int z, ForgeDirection[] connections, ForgeDirection extract)
+	public CopperPipePacket(int x, int y, int z, ForgeDirection[] connections, ForgeDirection[] extractions)
 	{
 		this.x = x;
 		this.y = y;
 		this.z = z;
 		this.connections = connections;
-		this.extract = extract;
+		this.extractions = extractions;
 	}
 
 	@Override
@@ -66,9 +66,15 @@ public class CopperPipePacket implements IMessage
 				this.connections[i] = null;
 		}
 
-		this.extract = ForgeDirection.getOrientation(buf.readByte());
-		if (this.extract == ForgeDirection.UNKNOWN)
-			this.extract = null;
+		this.extractions = new ForgeDirection[6];
+
+		for (int i = 0; i < 6; i++)
+		{
+			this.extractions[i] = ForgeDirection.getOrientation(buf.readByte());
+
+			if (this.extractions[i] == ForgeDirection.UNKNOWN)
+				this.extractions[i] = null;
+		}
 	}
 
 	@Override
@@ -77,9 +83,12 @@ public class CopperPipePacket implements IMessage
 		buf.writeInt(this.x);
 		buf.writeInt(this.y);
 		buf.writeInt(this.z);
+
 		for (int i = 0; i < 6; i++)
 			buf.writeByte(directionToByte(this.connections[i]));
-		buf.writeByte(directionToByte(this.extract));
+
+		for (int i = 0; i < 6; i++)
+			buf.writeByte(directionToByte(this.extractions[i]));
 	}
 
 	public static byte directionToByte(ForgeDirection dir)
@@ -128,7 +137,7 @@ public class CopperPipePacket implements IMessage
 				TileCopperPipe pipe = (TileCopperPipe) world.getTileEntity(message.x, message.y, message.z);
 
 				pipe.connections = message.connections;
-				pipe.extract = message.extract;
+				pipe.extractions = message.extractions;
 			}
 
 			return null;
