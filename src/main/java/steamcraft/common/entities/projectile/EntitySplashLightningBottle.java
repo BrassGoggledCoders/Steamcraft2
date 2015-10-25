@@ -65,7 +65,6 @@ public class EntitySplashLightningBottle extends BaseThrowableEntity {
 						}
 					}
 				}
-
 				this.worldObj.playAuxSFX(2002, (int) Math.round(this.posX), (int) Math.round(this.posY), (int) Math.round(this.posZ), 0);
 				this.setDead();
 			}
