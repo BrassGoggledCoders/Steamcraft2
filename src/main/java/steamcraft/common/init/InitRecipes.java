@@ -344,7 +344,6 @@ public class InitRecipes
 		}
 
 		GameRegistry.addShapelessRecipe(new ItemStack(InitBlocks.blockUranium), new ItemStack(InitBlocks.blockEngraved, 1, 8));
-		GameRegistry.addShapelessRecipe(new ItemStack(InitBlocks.blockEtherium), new ItemStack(InitBlocks.blockEngraved, 1, 9));
 
 		Block[] unengravedV = { Blocks.diamond_block, Blocks.gold_block, Blocks.iron_block, Blocks.lapis_block, Blocks.stone };
 

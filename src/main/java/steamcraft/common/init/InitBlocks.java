@@ -61,6 +61,7 @@ import steamcraft.common.blocks.BlockLeafPile;
 import steamcraft.common.blocks.BlockLightSlate;
 import steamcraft.common.blocks.BlockMeltingIce;
 import steamcraft.common.blocks.BlockMetal;
+import steamcraft.common.blocks.BlockMetalLattice;
 import steamcraft.common.blocks.BlockMossyMetal;
 import steamcraft.common.blocks.BlockMotionSensor;
 import steamcraft.common.blocks.BlockMud;
@@ -175,8 +176,9 @@ public class InitBlocks
 
 	public static Block blockMeltingIce, blockGhostIce;
 	// Metals
-	public static Block blockMetal, blockMossyMetal, blockRustyMetal, blockUranium, blockEtherium;
+	public static Block blockMetal, blockMossyMetal, blockRustyMetal, blockUranium;
 	public static Block blockMetalPlate, blockRustyMetalPlate, blockMossyMetalPlate;
+	public static Block blockMetalLattice;
 
 	public static Block blockMoltenZinc, blockMoltenBrass;
 	public static Block blockPath, blockMud, blockLeafCover, blockMoss;
@@ -458,6 +460,9 @@ public class InitBlocks
 		registerBlock(blockRustyMetalPlate, BaseItemBlockWithMetadata.class, "BlockRustyMetalPlating", 8);
 		blockMossyMetalPlate = new BlockPlating(blockMossyMetal).setBlockName("blockMossyMetalPlate");
 		registerBlock(blockMossyMetalPlate, BaseItemBlockWithMetadata.class, "BlockMossyMetalPlating", 8);
+
+		blockMetalLattice = new BlockMetalLattice().setBlockName("blockMetalLattice");
+		registerBlock(blockMetalLattice, BaseItemBlockWithMetadata.class, "BlockMetalLattice", 8);
 
 		blockUranium = new BlockUranium(Material.iron).setBlockName("blockUranium");
 		registerBlock(blockUranium, "BlockUranium");
