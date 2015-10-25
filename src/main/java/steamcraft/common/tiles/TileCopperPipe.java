@@ -181,6 +181,8 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler, ISpanne
 	{
 		super.readFromNBT(tag);
 
+		this.extractions = new ForgeDirection[6];
+
 		NBTTagList extractions = tag.getTagList("extractions", Constants.NBT.TAG_COMPOUND);
 
 		for (int i = 0; i < extractions.tagCount(); i++)
@@ -379,10 +381,10 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler, ISpanne
 
 			this.network.outputs.remove(temp);
 			this.network.inputs.remove(temp);
-		}
 
-		this.extractions[i] = null;
-		this.connections[i] = null;
+			this.extractions[i] = null;
+			this.connections[i] = null;
+		}
 	}
 
 	public void updateConnections()
@@ -465,7 +467,7 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler, ISpanne
 			for (int i = 0;i < 6;i++)
 			{
 				ForgeDirection dir = this.connections[i];
-				if ((dir != null) && this.isFluidHandler(dir))
+				if (dir != null && this.isFluidHandler(dir))
 				{
 					Coords temp = new Coords(this.xCoord + dir.offsetX, this.yCoord + dir.offsetY, this.zCoord + dir.offsetZ, dir.getOpposite());
 
@@ -730,15 +732,11 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler, ISpanne
 	@Override
 	public boolean canFill(ForgeDirection from, Fluid fluid)
 	{
-		boolean canFill = false;
 		for (ForgeDirection dir : this.extractions)
 			if (dir == from)
-			{
-				canFill = true;
-				break;
-			}
+				return false;
 
-		return canFill && (this.network != null)
+		return (this.network != null)
 				&& ((this.network.tank.getFluid() == null) || (this.network.tank.getFluid().getFluid() == fluid));
 	}
 
@@ -781,15 +779,11 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler, ISpanne
 	@Override
 	public int fill(ForgeDirection from, FluidStack resource, boolean doFill)
 	{
-		boolean canFill = false;
 		for (ForgeDirection dir : this.extractions)
 			if (dir == from)
-			{
-				canFill = true;
-				break;
-			}
+				return 0;
 
-		if (canFill && (this.network != null))
+		if ((this.network != null))
 		{
 			int amount = Math.min(resource.amount, this.pipeExtract);
 
@@ -811,7 +805,7 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler, ISpanne
 	@Override
 	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
 	{
-		return new GuiChangeExtractions((TileCopperPipe) world.getTileEntity(x, y, z), player.dimension);
+		return new GuiChangeExtractions(world.getTileEntity(x, y, z), player.dimension);
 	}
 
 	@Override

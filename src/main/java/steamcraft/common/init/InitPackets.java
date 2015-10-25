@@ -48,12 +48,12 @@ public class InitPackets
 
 		network.registerMessage(TimeBombPacketHandler.class, TimeBombPacket.class, packetId++, Side.SERVER);
 		network.registerMessage(OpenContainerFromClientPacketHandler.class, OpenContainerFromClientPacket.class, packetId++, Side.SERVER);
+		network.registerMessage(UpdateExtractionPacketHandler.class, UpdateExtractionPacket.class, packetId++, Side.SERVER);
 
 		network.registerMessage(CopperPipePacketHandler.class, CopperPipePacket.class, packetId++, Side.CLIENT);
 		network.registerMessage(FluidNetworkPacketHandler.class, CopperPipeFluidPacket.class, packetId++, Side.CLIENT);
 		network.registerMessage(CopperTankPacketHandler.class, CopperTankPacket.class, packetId++, Side.CLIENT);
 		network.registerMessage(WirePacketHandler.class, WirePacket.class, packetId++, Side.CLIENT);
-		network.registerMessage(UpdateExtractionPacketHandler.class, UpdateExtractionPacket.class, packetId++, Side.SERVER);
 
 		network.registerMessage(UpdateClientsideInventoryPacketHandler.class, UpdateClientsideInventoryPacket.class, packetId++, Side.CLIENT);
 	}
