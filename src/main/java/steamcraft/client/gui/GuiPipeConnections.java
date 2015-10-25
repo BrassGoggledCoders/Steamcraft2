@@ -18,6 +18,7 @@ import boilerplate.client.BaseContainerGui;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.common.util.ForgeDirection;
 import steamcraft.common.lib.ModInfo;
 import steamcraft.common.tiles.TileCopperPipe;
 import steamcraft.common.tiles.container.ContainerPipeConnections;
@@ -47,6 +48,12 @@ public class GuiPipeConnections extends BaseContainerGui
 	protected void drawGuiContainerForegroundLayer(int p_146979_1_, int p_146979_2_)
 	{
 		this.fontRendererObj.drawString("Change Extraction", 60, 6, 4210752);
+		this.fontRendererObj.drawString("North:", 20, 26, 4210752);
+		this.fontRendererObj.drawString("South:", 115, 26, 4210752);
+		this.fontRendererObj.drawString("West:", 20, 56, 4210752);
+		this.fontRendererObj.drawString("East:", 115, 56, 4210752);
+		this.fontRendererObj.drawString("Up:", 20, 86, 4210752);
+		this.fontRendererObj.drawString("Down:", 115, 86, 4210752);
 	}
 
 	@Override
@@ -64,18 +71,43 @@ public class GuiPipeConnections extends BaseContainerGui
 		super.initGui();
 		buttonList.clear();
 
-		buttonList.add(new GuiButton(0, guiLeft + 50, guiTop + 20, 40, 20, "North"));
-		buttonList.add(new GuiButton(1, guiLeft + 50, guiTop + 80, 40, 20, "South"));
-		buttonList.add(new GuiButton(2, guiLeft + 10, guiTop + 50, 40, 20, "East"));
-		buttonList.add(new GuiButton(3, guiLeft + 90, guiTop + 50, 40, 20, "West"));
-		buttonList.add(new GuiButton(4, guiLeft + 150, guiTop + 20, 40, 20, "Up"));
-		buttonList.add(new GuiButton(5, guiLeft + 150, guiTop + 80, 40, 20, "Down"));
+		ForgeDirection[] connections = tile.getConnections();
+
+		GuiButton north = new GuiButton(0, guiLeft + 55, guiTop + 20, 44, 20, "Insert");
+		GuiButton south = new GuiButton(4, guiLeft + 150, guiTop + 20, 44, 20, "Insert");
+		if (connections[2] == null)
+			north.enabled = false;
+		if (connections[3] == null)
+			south.enabled = false;
+
+		GuiButton west = new GuiButton(2, guiLeft + 55, guiTop + 50, 44, 20, "Insert");
+		GuiButton east = new GuiButton(3, guiLeft + 150, guiTop + 50, 44, 20, "Insert");
+		if (connections[4] == null)
+			west.enabled = false;
+		if (connections[5] == null)
+			east.enabled = false;
+
+		GuiButton up = new GuiButton(1, guiLeft + 55, guiTop + 80, 44, 20, "Insert");
+		GuiButton down = new GuiButton(5, guiLeft + 150, guiTop + 80, 44, 20, "Insert");
+		if (connections[0] == null)
+			up.enabled = false;
+		if (connections[1] == null)
+			down.enabled = false;
+
+		buttonList.add(north);
+		buttonList.add(south);
+		buttonList.add(west);
+		buttonList.add(east);
+		buttonList.add(up);
+		buttonList.add(down);
 	}
 
 	@Override
 	protected void actionPerformed(GuiButton button)
 	{
 		if (button.id == 0)
-			System.out.println("Button 0 pressed");
+		{
+
+		}
 	}
 }

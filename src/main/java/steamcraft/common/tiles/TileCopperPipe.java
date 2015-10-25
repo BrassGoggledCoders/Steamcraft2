@@ -65,8 +65,8 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler, ISpanne
 	private int ticksSinceUpdate = ticksTillFluidUpdate / 2; // first time
 																// update faster
 
-	public ForgeDirection extract = null;
 	public ForgeDirection[] connections = new ForgeDirection[6];
+	public ForgeDirection extract = null;
 	private Coords masterCoords = null;
 
 	private static float pixel = 1F / 16f;
@@ -268,6 +268,11 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler, ISpanne
 					}
 			this.updateClientConnections();
 		}
+	}
+
+	public ForgeDirection[] getConnections()
+	{
+		return this.connections;
 	}
 
 	private void removeConnections(int i)
