@@ -14,6 +14,12 @@ package steamcraft.common.tiles.energy;
 
 import java.util.ArrayList;
 
+import cofh.api.energy.EnergyStorage;
+import cofh.api.energy.IEnergyConnection;
+import cofh.api.energy.IEnergyHandler;
+import cofh.api.energy.IEnergyProvider;
+import cofh.api.energy.IEnergyReceiver;
+import cpw.mods.fml.common.network.NetworkRegistry.TargetPoint;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.network.NetworkManager;
@@ -21,16 +27,8 @@ import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-
-import cpw.mods.fml.common.network.NetworkRegistry.TargetPoint;
-
 import net.minecraftforge.common.util.ForgeDirection;
-
-import cofh.api.energy.EnergyStorage;
-import cofh.api.energy.IEnergyConnection;
-import cofh.api.energy.IEnergyHandler;
-import cofh.api.energy.IEnergyProvider;
-import cofh.api.energy.IEnergyReceiver;
+import steamcraft.api.tile.ISpannerTile;
 import steamcraft.common.init.InitBlocks;
 import steamcraft.common.init.InitPackets;
 import steamcraft.common.packets.WirePacket;
@@ -40,7 +38,7 @@ import steamcraft.common.tiles.TileCopperPipe.Coords;
  * @author decebaldecebal
  *
  */
-public class TileCopperWire extends TileEntity implements IEnergyHandler
+public class TileCopperWire extends TileEntity implements IEnergyHandler, ISpannerTile
 {
 	private static int copperWireCapacity = 5000;
 	private static int copperWireTransfer = 1000;

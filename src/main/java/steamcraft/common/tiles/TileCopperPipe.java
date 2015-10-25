@@ -14,6 +14,11 @@ package steamcraft.common.tiles;
 
 import java.util.ArrayList;
 
+import boilerplate.api.IOpenableGUI;
+import cpw.mods.fml.common.network.NetworkRegistry.TargetPoint;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.network.NetworkManager;
@@ -21,28 +26,25 @@ import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-
-import cpw.mods.fml.common.network.NetworkRegistry.TargetPoint;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-
 import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTank;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
-
+import steamcraft.api.tile.ISpannerTile;
+import steamcraft.client.gui.GuiPipeConnections;
 import steamcraft.common.init.InitBlocks;
 import steamcraft.common.init.InitPackets;
 import steamcraft.common.packets.CopperPipeFluidPacket;
 import steamcraft.common.packets.CopperPipePacket;
+import steamcraft.common.tiles.container.ContainerPipeConnections;
 
 /**
  * @author decebaldecebal
  *
  */
-public class TileCopperPipe extends TileEntity implements IFluidHandler
+public class TileCopperPipe extends TileEntity implements IFluidHandler, ISpannerTile, IOpenableGUI
 {
 	private static int ticksTillFluidUpdate = 200; // update the fluid in pipe
 													// every 10 seconds
@@ -233,6 +235,7 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 		}
 	}
 
+	@Override
 	public void changeExtracting()
 	{
 		if (!this.worldObj.isRemote)
@@ -676,6 +679,19 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler
 			return new FluidTankInfo[] { this.network.tank.getInfo() };
 
 		return null;
+	}
+
+	@Override
+	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
+	{
+		System.out.println("Gui returned.");
+		return new GuiPipeConnections(player.inventory, (TileCopperPipe) world.getTileEntity(x, y, z));
+	}
+
+	@Override
+	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
+	{
+		return new ContainerPipeConnections(player.inventory);
 	}
 
 	public static class FluidNetwork
