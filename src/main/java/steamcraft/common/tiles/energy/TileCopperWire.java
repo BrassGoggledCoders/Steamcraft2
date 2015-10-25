@@ -14,6 +14,14 @@ package steamcraft.common.tiles.energy;
 
 import java.util.ArrayList;
 
+import boilerplate.api.IOpenableGUI;
+import cofh.api.energy.EnergyStorage;
+import cofh.api.energy.IEnergyConnection;
+import cofh.api.energy.IEnergyHandler;
+import cofh.api.energy.IEnergyProvider;
+import cofh.api.energy.IEnergyReceiver;
+import cpw.mods.fml.common.network.NetworkRegistry.TargetPoint;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.network.NetworkManager;
@@ -21,26 +29,21 @@ import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-
-import cpw.mods.fml.common.network.NetworkRegistry.TargetPoint;
-
+import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.common.util.ForgeDirection;
-
-import cofh.api.energy.EnergyStorage;
-import cofh.api.energy.IEnergyConnection;
-import cofh.api.energy.IEnergyHandler;
-import cofh.api.energy.IEnergyProvider;
-import cofh.api.energy.IEnergyReceiver;
+import steamcraft.api.tile.ISpannerTile;
+import steamcraft.client.gui.GuiChangeExtractions;
 import steamcraft.common.init.InitBlocks;
 import steamcraft.common.init.InitPackets;
 import steamcraft.common.packets.WirePacket;
 import steamcraft.common.tiles.TileCopperPipe.Coords;
+import steamcraft.common.tiles.container.ContainerChangeExtractions;
 
 /**
  * @author decebaldecebal
  *
  */
-public class TileCopperWire extends TileEntity implements IEnergyHandler
+public class TileCopperWire extends TileEntity implements IEnergyHandler, ISpannerTile, IOpenableGUI
 {
 	private static int copperWireCapacity = 5000;
 	private static int copperWireTransfer = 1000;
@@ -51,8 +54,8 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 	public EnergyNetwork network;
 	private boolean isMaster = false;
 
-	public ForgeDirection extract = null;
 	public ForgeDirection[] connections = new ForgeDirection[6];
+	public ForgeDirection[] extractions = new ForgeDirection[6];
 	private Coords masterCoords = null;
 
 	@Override
@@ -62,8 +65,7 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 		{
 			if (this.isMaster)
 			{
-				if (this.network.updateNetworkForWires) // Update network on
-														// world load
+				if (this.network.updateNetworkForWires)
 				{
 					this.network.updateNetworkForWires = false;
 					this.updateConnections();
@@ -79,8 +81,19 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 	{
 		super.writeToNBT(tag);
 
-		writeDirectionToNBT(tag, this.extract);
+		NBTTagList extractions = new NBTTagList();
 
+		for (int i = 0; i < 6; i++)
+			if (this.extractions[i] != null)
+			{
+				NBTTagCompound conn = new NBTTagCompound();
+				conn.setByte("index", (byte) i);
+				writeDirectionToNBT(conn, this.extractions[i]);
+
+				extractions.appendTag(conn);
+			}
+
+		tag.setTag("extractions", extractions);
 		tag.setBoolean("master", this.isMaster);
 
 		if (this.isMaster)
@@ -125,7 +138,16 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 	{
 		super.readFromNBT(tag);
 
-		this.extract = readDirectionFromNBT(tag);
+		this.extractions = new ForgeDirection[6];
+
+		NBTTagList extractions = tag.getTagList("extractions", Constants.NBT.TAG_COMPOUND);
+
+		for (int i = 0; i < extractions.tagCount(); i++)
+		{
+			NBTTagCompound dirTag = extractions.getCompoundTagAt(i);
+
+			this.extractions[dirTag.getByte("index")] = readDirectionFromNBT(dirTag);
+		}
 
 		this.isMaster = tag.getBoolean("master");
 
@@ -153,7 +175,17 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 	{
 		NBTTagCompound tag = new NBTTagCompound();
 
-		writeDirectionToNBT(tag, this.extract);
+		NBTTagList extractions = new NBTTagList();
+
+		for (int i = 0; i < 6; i++)
+			if (this.extractions[i] != null)
+			{
+				NBTTagCompound conn = new NBTTagCompound();
+				conn.setByte("index", (byte) i);
+				writeDirectionToNBT(conn, this.extractions[i]);
+
+				extractions.appendTag(conn);
+			}
 
 		NBTTagList connections = new NBTTagList();
 
@@ -167,6 +199,7 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 				connections.appendTag(conn);
 			}
 
+		tag.setTag("extractions", extractions);
 		tag.setTag("connections", connections);
 
 		return new S35PacketUpdateTileEntity(this.xCoord, this.yCoord, this.zCoord, 1, tag);
@@ -175,7 +208,16 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 	@Override
 	public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity packet)
 	{
-		this.extract = readDirectionFromNBT(packet.func_148857_g());
+		this.extractions = new ForgeDirection[6];
+
+		NBTTagList extractions = packet.func_148857_g().getTagList("extractions", Constants.NBT.TAG_COMPOUND);
+
+		for (int i = 0; i < extractions.tagCount(); i++)
+		{
+			NBTTagCompound tag = extractions.getCompoundTagAt(i);
+
+			this.extractions[tag.getByte("index")] = readDirectionFromNBT(tag);
+		}
 
 		this.connections = new ForgeDirection[6];
 
@@ -189,61 +231,114 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 		}
 	}
 
-	public void changeExtracting()
+	@Override
+	public void changeExtraction()
 	{
 		if (!this.worldObj.isRemote)
 		{
-			if (this.extract != null)
+			for (int i = 0; i < 6; i++)
 			{
-				Coords temp = new Coords(this.xCoord + this.extract.offsetX, this.yCoord + this.extract.offsetY, this.zCoord + this.extract.offsetZ,
-						this.extract.getOpposite());
+				ForgeDirection dir = this.connections[i];
 
-				this.network.inputs.remove(temp);
-				if (!this.network.outputs.contains(temp))
-					this.network.outputs.add(temp);
+				if ((dir != null) && this.isEnergyHandler(dir))
+				{
+					Coords temp = new Coords(this.xCoord + dir.offsetX, this.yCoord + dir.offsetY,
+						this.zCoord + dir.offsetZ, dir.getOpposite());
 
-				this.extract = null;
-			}
-			else
-				for (ForgeDirection dir : this.connections)
-					if ((dir != null) && this.isEnergyHandler(dir))
+					if (this.extractions[i] == null)
 					{
-						this.extract = dir;
-
-						Coords temp = new Coords(this.xCoord + this.extract.offsetX, this.yCoord + this.extract.offsetY,
-								this.zCoord + this.extract.offsetZ, this.extract.getOpposite());
+						this.extractions[i] = dir;
 
 						this.network.outputs.remove(temp);
+
 						if (!this.network.inputs.contains(temp))
 							this.network.inputs.add(temp);
 
 						break;
 					}
+					else
+					{
+						this.extractions[i] = null;
+
+						this.network.inputs.remove(temp);
+
+						if (!this.network.outputs.contains(temp))
+							this.network.outputs.add(temp);
+					}
+				}
+			}
 			this.updateClientConnections();
 		}
+	}
+	@Override
+	public void changeExtraction(int dirIndex)
+	{
+		if (!this.worldObj.isRemote)
+		{
+			ForgeDirection dir = this.connections[dirIndex];
+
+			if (dir != null)
+			{
+				Coords temp = new Coords(this.xCoord + dir.offsetX, this.yCoord + dir.offsetY,
+					this.zCoord + dir.offsetZ, dir.getOpposite());
+
+				if (this.extractions[dirIndex] == null)
+				{
+					this.extractions[dirIndex] = this.connections[dirIndex];
+
+					this.network.outputs.remove(temp);
+
+					if (!this.network.inputs.contains(temp))
+						this.network.inputs.add(temp);
+				}
+				else
+				{
+					this.extractions[dirIndex] = null;
+
+					this.network.inputs.remove(temp);
+
+					if (!this.network.outputs.contains(temp))
+						this.network.outputs.add(temp);
+				}
+
+				this.updateClientConnections();
+			}
+		}
+	}
+
+	@Override
+	public ForgeDirection[] getExtractableConnections()
+	{
+		ForgeDirection[] extractableConnections = new ForgeDirection[6];
+
+		for(int i = 0;i < 6;i++)
+		{
+			ForgeDirection dir = this.connections[i];
+			if (dir != null && this.isEnergyHandler(dir))
+				extractableConnections[i] = dir;
+		}
+
+		return extractableConnections;
+	}
+
+	@Override
+	public ForgeDirection[] getExtractions()
+	{
+		return this.extractions;
 	}
 
 	private void removeConnections(int i)
 	{
-		if (this.connections[i] != null)
+		if (this.connections[i] != null && !this.worldObj.isRemote)
 		{
-			System.out.println("Removing connections 1...");
-
 			ForgeDirection dir = this.connections[i];
 
 			Coords temp = new Coords(this.xCoord + dir.offsetX, this.yCoord + dir.offsetY, this.zCoord + dir.offsetZ, dir.getOpposite());
 
 			this.network.outputs.remove(temp);
+			this.network.inputs.remove(temp);
 
-			if (this.connections[i] == this.extract)
-			{
-				this.network.inputs.remove(temp);
-				System.out.println("Removing extract...");
-				this.extract = null;
-			}
-
-			System.out.println("Removing connections 2...");
-
+			this.extractions[i] = null;
 			this.connections[i] = null;
 		}
 	}
@@ -252,9 +347,6 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 	{
 		if (!this.worldObj.isRemote)
 		{
-			System.out.print(this.xCoord + " " + this.yCoord + " " + this.zCoord);
-			System.out.println("Updating connections...");
-
 			if (this.canConnect(ForgeDirection.DOWN))
 			{
 				if (!this.updateNetwork(ForgeDirection.DOWN))
@@ -309,24 +401,20 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 			else
 				this.removeConnections(5);
 
-			System.out.print(this.xCoord + " " + this.yCoord + " " + this.zCoord);
-			System.out.println("Connections updated");
-
 			if (this.network == null)
 			{
-				System.out.print(this.xCoord + " " + this.yCoord + " " + this.zCoord);
-				System.out.println("This network null, creating a new one.");
-
 				this.network = new EnergyNetwork(1, this.wireCapacity, this.wireTransfer);
 				this.setMaster(this);
 			}
 
-			for (ForgeDirection dir : this.connections)
-				if ((dir != null) && this.isEnergyHandler(dir))
+			for (int i = 0;i < 6;i++)
+			{
+				ForgeDirection dir = this.connections[i];
+				if (dir != null && this.isEnergyHandler(dir))
 				{
 					Coords temp = new Coords(this.xCoord + dir.offsetX, this.yCoord + dir.offsetY, this.zCoord + dir.offsetZ, dir.getOpposite());
 
-					if ((this.extract != dir) && (this.worldObj.getTileEntity(temp.x, temp.y, temp.z) instanceof IEnergyReceiver))
+					if (this.extractions[i] == null && (this.worldObj.getTileEntity(temp.x, temp.y, temp.z) instanceof IEnergyReceiver))
 					{
 						if (!this.network.outputs.contains(temp))
 							this.network.outputs.add(temp);
@@ -334,9 +422,7 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 					else if (!this.network.inputs.contains(temp) && (this.worldObj.getTileEntity(temp.x, temp.y, temp.z) instanceof IEnergyProvider))
 						this.network.inputs.add(temp);
 				}
-
-			System.out.print(this.xCoord + " " + this.yCoord + " " + this.zCoord);
-			System.out.println("This network" + this.network.toString());
+			}
 
 			this.updateClientConnections();
 		}
@@ -344,9 +430,9 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 
 	private void updateClientConnections()
 	{
-		if ((this.network != null) && !this.worldObj.isRemote)
+		if (this.network != null && !this.worldObj.isRemote)
 		{
-			InitPackets.network.sendToAllAround(new WirePacket(this.xCoord, this.yCoord, this.zCoord, this.connections, this.extract),
+			InitPackets.network.sendToAllAround(new WirePacket(this.xCoord, this.yCoord, this.zCoord, this.connections, this.extractions),
 					new TargetPoint(this.worldObj.provider.dimensionId, this.xCoord, this.yCoord, this.zCoord, 100));
 		}
 	}
@@ -361,16 +447,10 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 
 			if (wire.network != null) // Is null only on world load
 			{
-				System.out.print(this.xCoord + " " + this.yCoord + " " + this.zCoord);
-				System.out.println("Wire network not null.");
-
 				if (!wire.network.equals(this.network))
 				{
 					if (this.network == null)
 					{
-						System.out.print(this.xCoord + " " + this.yCoord + " " + this.zCoord);
-						System.out.println("Network null.");
-
 						this.setMaster(wire.getMaster());
 						this.network.changeSize(1);
 
@@ -380,13 +460,8 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 					{
 						int energy = this.network.buffer.getEnergyStored() + wire.network.buffer.getEnergyStored();
 
-						System.out.print(this.xCoord + " " + this.yCoord + " " + this.zCoord);
-						System.out.println("Network not null.");
 						if (this.network.size > wire.network.size)
 						{
-							System.out.print(this.xCoord + " " + this.yCoord + " " + this.zCoord);
-							System.out.println("This network bigger.");
-
 							wire.setMaster(this.getMaster());
 
 							this.network.buffer.setEnergyStored(energy);
@@ -396,8 +471,6 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 						}
 						else
 						{
-							System.out.print(this.xCoord + " " + this.yCoord + " " + this.zCoord);
-							System.out.println("This network smaller.Updating connections again.");
 							this.setMaster(wire.getMaster());
 
 							this.network.buffer.setEnergyStored(energy);
@@ -411,17 +484,11 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 				}
 				else
 				{
-					System.out.print(this.xCoord + " " + this.yCoord + " " + this.zCoord);
-					System.out.println("Same network.");
-
 					wire.updateOneConnection(dir.getOpposite());
 				}
 			}
 			else if (this.network != null)
 			{
-				System.out.print(this.xCoord + " " + this.yCoord + " " + this.zCoord);
-				System.out.println("Wire network null, this network not null.");
-
 				wire.setMaster(this.getMaster());
 				this.network.changeSize(1);
 				wire.updateConnections();
@@ -468,9 +535,6 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 	{
 		if (this.network != null)
 		{
-			System.out.print(this.xCoord + " " + this.yCoord + " " + this.zCoord);
-			System.out.println("Removing network.");
-
 			this.network.changeSize(-1);
 
 			if (this.network.size != 0)
@@ -483,9 +547,6 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 						{
 							TileCopperWire wire = (TileCopperWire) this.worldObj.getTileEntity(this.xCoord + dir.offsetX, this.yCoord + dir.offsetY,
 									this.zCoord + dir.offsetZ);
-
-							System.out.print(this.xCoord + " " + this.yCoord + " " + this.zCoord);
-							System.out.println("Updating neighbors.");
 
 							wire.network.setSize(0);
 
@@ -562,12 +623,11 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 	@Override
 	public int receiveEnergy(ForgeDirection from, int maxReceive, boolean simulate)
 	{
-		if ((from != this.extract) && (this.network != null)) // should actively
-																// receive
-																// energy from
-																// where it is
-																// not actively
-																// pulling
+		for (ForgeDirection dir : this.extractions)
+			if (dir == from)
+				return 0;
+
+		if ((this.network != null)) // should actively receive energy from  where it is not actively pulling
 		{
 			int amount = Math.min(maxReceive, this.wireTransfer);
 
@@ -580,7 +640,11 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 	@Override
 	public int extractEnergy(ForgeDirection from, int maxExtract, boolean simulate)
 	{
-		if ((from != this.extract) && (this.network != null))
+		for (ForgeDirection dir : this.extractions)
+			if (dir == from)
+				return 0;
+
+		if ((this.network != null))
 		{
 			int amount = Math.min(maxExtract, this.wireTransfer);
 
@@ -606,6 +670,18 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 			return this.network.buffer.getMaxEnergyStored();
 
 		return 0;
+	}
+
+	@Override
+	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
+	{
+		return new GuiChangeExtractions(world.getTileEntity(x, y, z), player.dimension);
+	}
+
+	@Override
+	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
+	{
+		return new ContainerChangeExtractions();
 	}
 
 	private static class EnergyNetwork
@@ -640,9 +716,7 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler
 			}
 
 			this.updateInputs(wire.worldObj);
-			// System.out.println("Buffer before: " + buffer.getEnergyStored());
 			this.updateOutputs(wire);
-			// System.out.println("Buffer after: " + buffer.getEnergyStored());
 		}
 
 		private void updateInputs(World world)

@@ -52,12 +52,20 @@ public class TileCopperWireRenderer extends TileEntitySpecialRenderer
 			this.bindTexture(this.texture1);
 		this.drawCore(wire);
 
-		for (ForgeDirection dir : wire.connections)
+		for (int i = 0;i < 6;i++)
+		{
+
+			ForgeDirection dir = wire.connections[i];
 			if (dir != null)
-				if (wire.extract == dir)
+			{
+				if (wire.extractions[i] != null)
+				{
 					this.drawAlternateConnection(dir, wire);
+				}
 				else
 					this.drawConnection(dir, wire);
+			}
+		}
 
 		GL11.glEnable(GL11.GL_LIGHTING);
 
