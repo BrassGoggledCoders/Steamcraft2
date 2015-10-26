@@ -65,8 +65,6 @@ public class BlockTransparentWithInsideRenderer implements ISimpleBlockRendering
 	public void renderInventoryBlock(Block block, int meta, int modelID, RenderBlocks renderer)
 	{
 		drawBlock(block, meta, renderer);
-		renderer.setRenderBounds(0.0, 0.0, 0.0, 1.0, 0.13, 1.0);
-		drawBlock(block, meta, renderer);
 	}
 
 	@Override
@@ -80,12 +78,11 @@ public class BlockTransparentWithInsideRenderer implements ISimpleBlockRendering
 		renderer.setRenderFromInside(true);
 		renderer.setRenderAllFaces(true);
 		renderer.flipTexture = true;
+		renderer.setRenderBounds(0.0001, 0.0001, 0.0001, 0.9999, 0.9999, 0.9999);
 		renderer.renderStandardBlock(block, x, y, z);
 		renderer.flipTexture = false;
 		renderer.setRenderFromInside(false);
-
-		renderer.setRenderBounds(0.0, 0.0, 0.0, 1.0, 0.13, 1.0);
-		renderer.renderStandardBlock(block, x, y, z);
+		renderer.setRenderAllFaces(false);
 		return false;
 	}
 
