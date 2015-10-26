@@ -12,21 +12,18 @@
  */
 package steamcraft.common.init;
 
+import boilerplate.common.utils.handlers.BucketHandler;
+import boilerplate.common.utils.helpers.RegistryHelper;
+import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
-
-import cpw.mods.fml.common.registry.GameRegistry;
-
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
-
-import boilerplate.common.utils.handlers.BucketHandler;
-import boilerplate.common.utils.helpers.RegistryHelper;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.items.BaseItem;
 import steamcraft.common.items.ItemCanister;
@@ -109,8 +106,7 @@ import steamcraft.common.lib.ModInfo;
  * @author Surseance
  *
  */
-public class InitItems
-{
+public class InitItems {
 	// Tools
 	public static Item drillCore, drillBase, drillWood, drillStone, drillIron, drillDiamond, drillGold, drillSteam;
 
@@ -124,11 +120,11 @@ public class InitItems
 	public static Item helmetWhalebone, chestplateWhalebone, legsWhalebone, bootsWhalebone;
 
 	// Modules
-	public static Item itemAqualung, itemPistonPlating, itemTank, itemWatchDisplay, itemClimbingSpikes, itemLegBraces, itemSpringHeels,
-			itemRollerSkates, itemParachute, itemFlippers, itemLifeVest, itemPistonBoots, itemSteelPlating, itemLastResort, itemGogglesModule,
-			itemWingpackModule, itemFreezeBoots, itemSuperFreezeBoots, itemAutofeeder;
+	public static Item itemAqualung, itemPistonPlating, itemTank, itemWatchDisplay, itemClimbingSpikes, itemLegBraces, itemSpringHeels, itemRollerSkates, itemParachute, itemFlippers, itemLifeVest, itemPistonBoots, itemSteelPlating, itemLastResort, itemGogglesModule, itemWingpackModule, itemFreezeBoots, itemSuperFreezeBoots, itemAutofeeder;
 
 	public static Item itemBoilingWaterBucket, itemBoilingMudBucket;
+
+	public static Item itemMoltenZincBucket, itemMoltenBrassBucket;
 
 	public static Item itemBrassGoggles, itemDivingHelmet, itemMonocle;
 
@@ -196,14 +192,12 @@ public class InitItems
 	public static Item itemEmptyMobBottle, itemMobBottle;
 
 	/* Init */
-	public static void init()
-	{
+	public static void init() {
 		InitMaterials.initializeMaterials();
 		initializeItems();
 	}
 
-	private static void initializeItems()
-	{
+	private static void initializeItems() {
 		initializeArmor();
 		initializeGuns();
 		initializeMetals();
@@ -212,8 +206,7 @@ public class InitItems
 		initializeTools();
 	}
 
-	private static void initializeArmor()
-	{
+	private static void initializeArmor() {
 		// Jetpacks
 		itemSteamJetpack = new ItemSteamJetpack(InitMaterials.ARMOR_STEAM, 0, 1, (byte) 5).setUnlocalizedName("itemSteamJetpack");
 		itemClockworkWings = new ItemClockworkWings(InitMaterials.ARMOR_STEAM, 0, 1).setUnlocalizedName("itemClockworkWings");
@@ -248,8 +241,7 @@ public class InitItems
 		RegistryHelper.registerArmorSet(helmetWhalebone, chestplateWhalebone, legsWhalebone, bootsWhalebone, "Whalebone", ModInfo.ID);
 	}
 
-	private static void initializeGuns()
-	{
+	private static void initializeGuns() {
 		// Ammo
 		itemMusketBall = new BaseItem().setUnlocalizedName("itemMusketBall");
 		itemRifleBullet = new BaseItem().setUnlocalizedName("itemRifleBullet");
@@ -260,24 +252,15 @@ public class InitItems
 		registerItem(itemPercussionCap, "ItemPercussionCap");
 
 		// Guns
-		flintlockMusket = new ItemFirearm(5, 60, itemMusketBall, null, "steamcraft:musket", "steamcraft:reload")
-				.setUnlocalizedName("itemFlintlockMusket");
-		matchlockMusket = new ItemFirearm(6, 40, itemMusketBall, itemMatch, "steamcraft:musket", "steamcraft:reload")
-				.setUnlocalizedName("itemMatchlockMusket");
-		percussionCapMusket = new ItemFirearm(7, 20, itemMusketBall, itemPercussionCap, "steamcraft:musket", "steamcraft:reload")
-				.setUnlocalizedName("itemPercussionMusket");
-		flintlockRifle = new ItemFirearm(8, 60, itemRifleBullet, null, "steamcraft:rifle", "steamcraft:reload")
-				.setUnlocalizedName("itemFlintlockRifle");
-		matchlockRifle = new ItemFirearm(9, 40, itemRifleBullet, itemMatch, "steamcraft:rifle", "steamcraft:reload")
-				.setUnlocalizedName("itemMatchlockRifle");
-		percussionCapRifle = new ItemFirearm(10, 20, itemRifleBullet, itemPercussionCap, "steamcraft:rifle", "steamcraft:reload")
-				.setUnlocalizedName("itemPercussionRifle");
-		flintlockPistol = new ItemFirearm(3, 40, itemMusketBall, null, "steamcraft:Pistol", "steamcraft:reload")
-				.setUnlocalizedName("itemFlintlockPistol");
-		matchlockPistol = new ItemFirearm(3, 30, itemMusketBall, itemMatch, "steamcraft:pistol", "steamcraft:reload")
-				.setUnlocalizedName("itemMatchlockPistol");
-		percussionCapPistol = new ItemFirearm(3, 20, itemMusketBall, itemPercussionCap, "steamcraft:pistol", "steamcraft:reload")
-				.setUnlocalizedName("itemPercussionPistol");
+		flintlockMusket = new ItemFirearm(5, 60, itemMusketBall, null, "steamcraft:musket", "steamcraft:reload").setUnlocalizedName("itemFlintlockMusket");
+		matchlockMusket = new ItemFirearm(6, 40, itemMusketBall, itemMatch, "steamcraft:musket", "steamcraft:reload").setUnlocalizedName("itemMatchlockMusket");
+		percussionCapMusket = new ItemFirearm(7, 20, itemMusketBall, itemPercussionCap, "steamcraft:musket", "steamcraft:reload").setUnlocalizedName("itemPercussionMusket");
+		flintlockRifle = new ItemFirearm(8, 60, itemRifleBullet, null, "steamcraft:rifle", "steamcraft:reload").setUnlocalizedName("itemFlintlockRifle");
+		matchlockRifle = new ItemFirearm(9, 40, itemRifleBullet, itemMatch, "steamcraft:rifle", "steamcraft:reload").setUnlocalizedName("itemMatchlockRifle");
+		percussionCapRifle = new ItemFirearm(10, 20, itemRifleBullet, itemPercussionCap, "steamcraft:rifle", "steamcraft:reload").setUnlocalizedName("itemPercussionRifle");
+		flintlockPistol = new ItemFirearm(3, 40, itemMusketBall, null, "steamcraft:Pistol", "steamcraft:reload").setUnlocalizedName("itemFlintlockPistol");
+		matchlockPistol = new ItemFirearm(3, 30, itemMusketBall, itemMatch, "steamcraft:pistol", "steamcraft:reload").setUnlocalizedName("itemMatchlockPistol");
+		percussionCapPistol = new ItemFirearm(3, 20, itemMusketBall, itemPercussionCap, "steamcraft:pistol", "steamcraft:reload").setUnlocalizedName("itemPercussionPistol");
 
 		registerItem(flintlockMusket, "ItemFlintlockMusket");
 		registerItem(matchlockMusket, "ItemMatchlockMusket");
@@ -303,8 +286,7 @@ public class InitItems
 		registerItem(itemClockworkRocketLauncher, "ItemClockworkRocketLauncher");
 	}
 
-	private static void initializeMetals()
-	{
+	private static void initializeMetals() {
 		itemIngot = new ItemIngot().setUnlocalizedName("itemIngot");
 		itemNugget = new ItemNugget().setUnlocalizedName("itemNugget");
 		itemSheet = new ItemSheet().setUnlocalizedName("itemSheet");
@@ -330,8 +312,7 @@ public class InitItems
 		registerItem(itemSteelParts, "ItemSteelParts");
 	}
 
-	public static void initializeModCompatItems()
-	{
+	public static void initializeModCompatItems() {
 		/**
 		 * Registration of these are handled in @link={CompatibilityLayer.class}
 		 */
@@ -340,18 +321,15 @@ public class InitItems
 		itemThaumicMonocle = new ItemThaumicMonocle().setUnlocalizedName("itemThaumicMonocle");
 	}
 
-	private static void initializeOthers()
-	{
+	private static void initializeOthers() {
 		// Containers
 		itemCanisterSteam = new ItemCanister(10000, 20).setUnlocalizedName("itemCanisterSteam");
 		registerItem(itemCanisterSteam, "ItemCanisterSteam");
-		FluidContainerRegistry.registerFluidContainer(new FluidStack(FluidRegistry.getFluid("steam"), 10000),
-				((ItemCanister) itemCanisterSteam).getFilledCanister(), new ItemStack(itemCanisterSteam));
+		FluidContainerRegistry.registerFluidContainer(new FluidStack(FluidRegistry.getFluid("steam"), 10000), ((ItemCanister) itemCanisterSteam).getFilledCanister(), new ItemStack(itemCanisterSteam));
 
 		itemReinforcedCanisterSteam = new ItemCanister(20000, 40).setUnlocalizedName("itemReinforcedCanisterSteam");
 		registerItem(itemReinforcedCanisterSteam, "ItemReinforcedCanisterSteam");
-		FluidContainerRegistry.registerFluidContainer(new FluidStack(FluidRegistry.getFluid("steam"), 20000),
-				((ItemCanister) itemReinforcedCanisterSteam).getFilledCanister(), new ItemStack(itemReinforcedCanisterSteam));
+		FluidContainerRegistry.registerFluidContainer(new FluidStack(FluidRegistry.getFluid("steam"), 20000), ((ItemCanister) itemReinforcedCanisterSteam).getFilledCanister(), new ItemStack(itemReinforcedCanisterSteam));
 
 		itemElectricJarSmall = new ElectricItem(80, 80, 40).setUnlocalizedName("itemElectricJarSmall");
 		itemElectricJarMedium = new ElectricItem(400, 400, 125).setUnlocalizedName("itemElectricJarMedium");
@@ -481,9 +459,7 @@ public class InitItems
 
 		// TODO Add a version system to allow updates. Check version on right
 		// click
-		itemLoreBook = new ItemLoreBook(StatCollector.translateToLocal("lore.steamcraft2.0.author"),
-				StatCollector.translateToLocal("lore.steamcraft2.0.title"),
-				new String[] { StatCollector.translateToLocal("lore.steamcraft2.0.page1") }).setUnlocalizedName("itemLoreBook");
+		itemLoreBook = new ItemLoreBook(StatCollector.translateToLocal("lore.steamcraft2.0.author"), StatCollector.translateToLocal("lore.steamcraft2.0.title"), new String[] { StatCollector.translateToLocal("lore.steamcraft2.0.page1") }).setUnlocalizedName("itemLoreBook");
 		registerItem(itemLoreBook, "ItemLoreBook");
 
 		itemFieldManipulator = new ItemFieldManipulator().setUnlocalizedName("itemFieldManipulator");
@@ -502,18 +478,23 @@ public class InitItems
 		itemBoilingWaterBucket = new ItemCustomBucket(FluidRegistry.getFluid("boilingwater").getBlock()).setUnlocalizedName("itemBoilingWaterBucket");
 		itemBoilingMudBucket = new ItemCustomBucket(FluidRegistry.getFluid("boilingmud").getBlock()).setUnlocalizedName("itemMudBucket");
 		itemWhaleOilBucket = new ItemCustomBucket(FluidRegistry.getFluid("whaleoil").getBlock()).setUnlocalizedName("itemWhaleOilBucket");
+		itemMoltenZincBucket = new ItemCustomBucket(FluidRegistry.getFluid("moltenzinc").getBlock()).setUnlocalizedName("itemMoltenZincBucket");
+		itemMoltenBrassBucket = new ItemCustomBucket(FluidRegistry.getFluid("moltenbrass").getBlock()).setUnlocalizedName("itemMoltenBrassBucket");
 		GameRegistry.registerItem(itemBoilingWaterBucket, "ItemBoilingWaterBucket");
-		GameRegistry.registerItem(itemBoilingMudBucket, "ItemBoilingBucket");
+		GameRegistry.registerItem(itemBoilingMudBucket, "ItemBoilingMudBucket");
 		GameRegistry.registerItem(itemWhaleOilBucket, "ItemWhaleOilBucket");
-		FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("boilingwater", FluidContainerRegistry.BUCKET_VOLUME),
-				new ItemStack(itemBoilingWaterBucket), new ItemStack(Items.bucket));
-		FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("boilingmud", FluidContainerRegistry.BUCKET_VOLUME),
-				new ItemStack(itemBoilingMudBucket), new ItemStack(Items.bucket));
-		FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("whaleoil", FluidContainerRegistry.BUCKET_VOLUME),
-				new ItemStack(itemWhaleOilBucket), new ItemStack(Items.bucket));
+		GameRegistry.registerItem(itemMoltenZincBucket, "ItemMoltenZincBucket");
+		GameRegistry.registerItem(itemMoltenBrassBucket, "ItemMoltenBrassBucket");
+		FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("boilingwater", FluidContainerRegistry.BUCKET_VOLUME), new ItemStack(itemBoilingWaterBucket), new ItemStack(Items.bucket));
+		FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("boilingmud", FluidContainerRegistry.BUCKET_VOLUME), new ItemStack(itemBoilingMudBucket), new ItemStack(Items.bucket));
+		FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("whaleoil", FluidContainerRegistry.BUCKET_VOLUME), new ItemStack(itemWhaleOilBucket), new ItemStack(Items.bucket));
+		FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("moltenzinc", FluidContainerRegistry.BUCKET_VOLUME), new ItemStack(itemMoltenZincBucket), new ItemStack(Items.bucket));
+		FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("moltenbrass", FluidContainerRegistry.BUCKET_VOLUME), new ItemStack(itemMoltenBrassBucket), new ItemStack(Items.bucket));
 		BucketHandler.getInstance().bucketMap.put(InitBlocks.blockBoilingWater, itemBoilingWaterBucket);
 		BucketHandler.getInstance().bucketMap.put(InitBlocks.blockBoilingMud, itemBoilingMudBucket);
 		BucketHandler.getInstance().bucketMap.put(InitBlocks.blockWhaleOil, itemWhaleOilBucket);
+		BucketHandler.getInstance().bucketMap.put(InitBlocks.blockMoltenZinc, itemMoltenZincBucket);
+		BucketHandler.getInstance().bucketMap.put(InitBlocks.blockMoltenBrass, itemMoltenBrassBucket);
 		MinecraftForge.EVENT_BUS.register(BucketHandler.getInstance());
 
 		itemWhalebone = new BaseItem().setUnlocalizedName("itemWhalebone");
@@ -550,8 +531,7 @@ public class InitItems
 		// registerItem(itemMobBottle, "ItemMobBottle");
 	}
 
-	private static void initializeTools()
-	{
+	private static void initializeTools() {
 		// Drills
 		drillCore = new BaseItem().setUnlocalizedName("itemDrillCore");
 		drillBase = new BaseItem().setUnlocalizedName("itemDrillBase");
@@ -586,8 +566,7 @@ public class InitItems
 		registerItem(itemElectricSword, "ItemElectricSword");
 	}
 
-	private static void registerItem(Item item, String name)
-	{
+	private static void registerItem(Item item, String name) {
 		// TODO if(ConfigGeneral.nameBlacklist != null &&
 		// !ConfigGeneral.nameBlacklist.contains(item.getUnlocalizedName()))
 		GameRegistry.registerItem(item, name, ModInfo.ID);
