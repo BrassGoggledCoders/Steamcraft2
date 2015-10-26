@@ -12,23 +12,20 @@
  */
 package steamcraft.common.compat;
 
+import boilerplate.common.utils.helpers.IMCHelper;
+import boilerplate.common.utils.helpers.OreDictHelper;
+import cpw.mods.fml.common.Loader;
+import cpw.mods.fml.common.event.FMLInterModComms;
+import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-
-import cpw.mods.fml.common.Loader;
-import cpw.mods.fml.common.event.FMLInterModComms;
-import cpw.mods.fml.common.registry.GameRegistry;
-
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.fluids.BlockFluidClassic;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
-
-import boilerplate.common.utils.helpers.IMCHelper;
-import boilerplate.common.utils.helpers.OreDictHelper;
 import steamcraft.common.init.InitBiomes;
 import steamcraft.common.init.InitBlocks;
 import steamcraft.common.init.InitItems;
@@ -40,26 +37,22 @@ import steamcraft.common.lib.ModInfo;
  * @author warlordjones
  *
  */
-public class CompatabilityLayer
-{
+public class CompatabilityLayer {
 	public static int ingotLiquidValue = 144;
 	public static int nuggetLiquidValue = ingotLiquidValue / 9;
 	public static int blockLiquidValue = ingotLiquidValue * 9;
 
-	public static void init()
-	{
+	public static void init() {
 		registerOreDictionaryEntries();
 	}
 
-	public static void postInit()
-	{
+	public static void postInit() {
 		registerBiomeTypes();
 		sendIMCMessages();
 		ForgeHooks.init();
 	}
 
-	private static void sendIMCMessages()
-	{
+	private static void sendIMCMessages() {
 		// Version Checker
 		NBTTagCompound tag = new NBTTagCompound();
 		tag.setString("curseProjectName", "224017-steamcraft-2-beta-2-fluxian-storm");
@@ -70,13 +63,9 @@ public class CompatabilityLayer
 			sendTiConIMC();
 		if (Loader.isModLoaded("Thaumcraft"))
 			sendThaumcraftIMC();
-		if (Loader.isModLoaded("AquaTweaks"))
-		{
-			String[] blockNames = new String[] { "BlockCastIronFence", "BlockCastIronGate", "BlockCastIronRailing", "BlockLightningRod",
-					"BlockTeslaCoil", "BlockCopperPipe", "BlockCopperWire", "BlockRedwoodFence", "blockMangroveFence", "blockWillowFence",
-					"blockPetrifiedFence", "BlockCharger" };
-			for (String blockName : blockNames)
-			{
+		if (Loader.isModLoaded("AquaTweaks")) {
+			String[] blockNames = new String[] { "BlockCastIronFence", "BlockCastIronGate", "BlockCastIronRailing", "BlockLightningRod", "BlockTeslaCoil", "BlockCopperPipe", "BlockCopperWire", "BlockRedwoodFence", "blockMangroveFence", "blockWillowFence", "blockPetrifiedFence", "BlockCharger" };
+			for (String blockName : blockNames) {
 				NBTTagCompound tag1 = new NBTTagCompound();
 				tag1.setString("modid", ModInfo.ID);
 				tag1.setString("block", blockName);
@@ -85,43 +74,29 @@ public class CompatabilityLayer
 		}
 	}
 
-	private static void sendThaumcraftIMC()
-	{
+	private static void sendThaumcraftIMC() {
 		FMLInterModComms.sendMessage("Thaumcraft", "harvestStandardCrop", new ItemStack(InitBlocks.blockTeaPlant, 1, 1));
-		FMLInterModComms.sendMessage("Thaumcraft", "nativeCluster", Block.getIdFromBlock(InitBlocks.blockCustomOre) + "," + 0 + ","
-				+ Item.getIdFromItem(InitItems.itemSteamcraftCluster) + "," + 0 + ",2.0");
-		FMLInterModComms.sendMessage("Thaumcraft", "nativeCluster", Block.getIdFromBlock(InitBlocks.blockCustomOre) + "," + 2 + ","
-				+ Item.getIdFromItem(InitItems.itemSteamcraftCluster) + "," + 1 + ",2.0");
+		FMLInterModComms.sendMessage("Thaumcraft", "nativeCluster", Block.getIdFromBlock(InitBlocks.blockCustomOre) + "," + 0 + "," + Item.getIdFromItem(InitItems.itemSteamcraftCluster) + "," + 0 + ",2.0");
+		FMLInterModComms.sendMessage("Thaumcraft", "nativeCluster", Block.getIdFromBlock(InitBlocks.blockCustomOre) + "," + 2 + "," + Item.getIdFromItem(InitItems.itemSteamcraftCluster) + "," + 1 + ",2.0");
 	}
 
-	private static void sendTiConIMC()
-	{
+	private static void sendTiConIMC() {
 		LoggerSteamcraft.info("TiCon Detected, adding Etherium Tool Material");
 		// Aluminum, Copper, Tin
-		for (int i = 0; i < 3; i++)
-		{
-			BlockFluidClassic block_fluid = (BlockFluidClassic) GameRegistry.findBlock("TConstruct",
-					"fluid.molten." + LibInfo.metals[i].toLowerCase());
-			IMCHelper.addNewSmeltable(new ItemStack(InitBlocks.blockMetal, 1, i), InitBlocks.blockMetal,
-					new FluidStack(block_fluid.getFluid(), blockLiquidValue), 600);
-			IMCHelper.addNewSmeltable(new ItemStack(InitBlocks.blockCustomOre, 1, i), InitBlocks.blockMetal,
-					new FluidStack(block_fluid.getFluid(), ingotLiquidValue * 2), 600);
-			IMCHelper.addNewSmeltable(new ItemStack(InitItems.itemIngot, 1, i), InitBlocks.blockMetal,
-					new FluidStack(block_fluid.getFluid(), ingotLiquidValue), 300);
-			IMCHelper.addNewSmeltable(new ItemStack(InitItems.itemNugget, 1, i), InitBlocks.blockMetal,
-					new FluidStack(block_fluid.getFluid(), nuggetLiquidValue), 150);
+		for (int i = 0; i < 3; i++) {
+			BlockFluidClassic block_fluid = (BlockFluidClassic) GameRegistry.findBlock("TConstruct", "fluid.molten." + LibInfo.metals[i].toLowerCase());
+			IMCHelper.addNewSmeltable(new ItemStack(InitBlocks.blockMetal, 1, i), InitBlocks.blockMetal, new FluidStack(block_fluid.getFluid(), blockLiquidValue), 600);
+			IMCHelper.addNewSmeltable(new ItemStack(InitBlocks.blockCustomOre, 1, i), InitBlocks.blockMetal, new FluidStack(block_fluid.getFluid(), ingotLiquidValue * 2), 600);
+			IMCHelper.addNewSmeltable(new ItemStack(InitItems.itemIngot, 1, i), InitBlocks.blockMetal, new FluidStack(block_fluid.getFluid(), ingotLiquidValue), 300);
+			IMCHelper.addNewSmeltable(new ItemStack(InitItems.itemNugget, 1, i), InitBlocks.blockMetal, new FluidStack(block_fluid.getFluid(), nuggetLiquidValue), 150);
 		}
 		// Skip Zinc and Brass. Bronze, Steel.
-		for (int i = 5; i < 7; i++)
-		{
+		for (int i = 5; i < 7; i++) {
 			String metalname = LibInfo.metals[i].toLowerCase();
 			BlockFluidClassic block_fluid = (BlockFluidClassic) GameRegistry.findBlock("TConstruct", "fluid.molten." + metalname);
-			IMCHelper.addNewSmeltable(new ItemStack(InitBlocks.blockMetal, 1, i), InitBlocks.blockMetal,
-					new FluidStack(block_fluid.getFluid(), blockLiquidValue), 600);
-			IMCHelper.addNewSmeltable(new ItemStack(InitItems.itemIngot, 1, i), InitBlocks.blockMetal,
-					new FluidStack(block_fluid.getFluid(), ingotLiquidValue), 300);
-			IMCHelper.addNewSmeltable(new ItemStack(InitItems.itemNugget, 1, i), InitBlocks.blockMetal,
-					new FluidStack(block_fluid.getFluid(), nuggetLiquidValue), 150);
+			IMCHelper.addNewSmeltable(new ItemStack(InitBlocks.blockMetal, 1, i), InitBlocks.blockMetal, new FluidStack(block_fluid.getFluid(), blockLiquidValue), 600);
+			IMCHelper.addNewSmeltable(new ItemStack(InitItems.itemIngot, 1, i), InitBlocks.blockMetal, new FluidStack(block_fluid.getFluid(), ingotLiquidValue), 300);
+			IMCHelper.addNewSmeltable(new ItemStack(InitItems.itemNugget, 1, i), InitBlocks.blockMetal, new FluidStack(block_fluid.getFluid(), nuggetLiquidValue), 150);
 		}
 		/*
 		 * Zinc IMCHelper.addNewSmeltable(new ItemStack(InitBlocks.blockMetal,
@@ -149,8 +124,7 @@ public class CompatabilityLayer
 		IMCHelper.addNewFluxBattery(InitItems.itemElectricJarHuge);
 	}
 
-	private static void registerOreDictionaryEntries()
-	{
+	private static void registerOreDictionaryEntries() {
 		LoggerSteamcraft.info("Registering Thingies in OreDictionary");
 		OreDictHelper.registerOreWithAlts(InitItems.itemIngot, "ingotAluminum", "ingotAluminium");
 		OreDictHelper.registerOre("ingotCopper", InitItems.itemIngot, 1);
@@ -180,6 +154,7 @@ public class CompatabilityLayer
 		OreDictHelper.registerOre("nuggetBronze", InitItems.itemNugget, 5);
 		OreDictHelper.registerOre("nuggetSteel", InitItems.itemNugget, 6);
 		OreDictHelper.registerOre("nuggetCastIron", InitItems.itemNugget, 7);
+		OreDictHelper.registerOre("nuggetIron", InitItems.itemNuggetIron, 0);
 
 		OreDictHelper.registerOreWithAlts(InitItems.itemPowder, "dustAluminum", "dustAluminium");
 		OreDictHelper.registerOre("dustCopper", InitItems.itemPowder, 1);
@@ -217,8 +192,7 @@ public class CompatabilityLayer
 
 		String[] partType = new String[] { "Gear", "Sprocket", "Spring", "Thread", "Nut", "Bolt", "Washer", "Bearing", "Screw", "Nail" };
 
-		for (int i = 0; i < partType.length; i++)
-		{
+		for (int i = 0; i < partType.length; i++) {
 			OreDictHelper.registerOreWithAlts(InitItems.itemIronParts, i, "partIron", partType[i], partType[i].toLowerCase() + "Iron");
 			OreDictHelper.registerOreWithAlts(InitItems.itemSteelParts, i, "partSteel", partType[i], partType[i].toLowerCase() + "Steel");
 
@@ -254,14 +228,12 @@ public class CompatabilityLayer
 		OreDictionary.registerOre("blockUranium", new ItemStack(InitBlocks.blockUranium));
 	}
 
-	private static void registerBiomeTypes()
-	{
+	private static void registerBiomeTypes() {
 		LoggerSteamcraft.info("Registering Biome Dictionary entries");
 		BiomeDictionary.registerBiomeType(InitBiomes.biomeDepths, BiomeDictionary.Type.HILLS);
 		BiomeDictionary.registerBiomeType(InitBiomes.biomeDepthsF, BiomeDictionary.Type.HILLS, BiomeDictionary.Type.FOREST);
 		BiomeDictionary.registerBiomeType(InitBiomes.biomeDepthsM, BiomeDictionary.Type.MOUNTAIN);
-		BiomeDictionary.registerBiomeType(InitBiomes.biomeDepthsS, BiomeDictionary.Type.HILLS, BiomeDictionary.Type.SPOOKY,
-				BiomeDictionary.Type.FOREST);
+		BiomeDictionary.registerBiomeType(InitBiomes.biomeDepthsS, BiomeDictionary.Type.HILLS, BiomeDictionary.Type.SPOOKY, BiomeDictionary.Type.FOREST);
 		BiomeDictionary.registerBiomeType(InitBiomes.biomeDepthsI, BiomeDictionary.Type.WASTELAND);
 		BiomeDictionary.registerBiomeType(InitBiomes.biomeDepthsJ, BiomeDictionary.Type.JUNGLE, BiomeDictionary.Type.LUSH);
 		BiomeDictionary.registerBiomeType(InitBiomes.biomeDepthsSC, BiomeDictionary.Type.HOT, BiomeDictionary.Type.WET);
@@ -270,10 +242,8 @@ public class CompatabilityLayer
 		BiomeDictionary.registerBiomeType(InitBiomes.biomeDepthsTF, BiomeDictionary.Type.FOREST, BiomeDictionary.Type.DENSE);
 	}
 
-	public static void initCompatItems()
-	{
-		if (Loader.isModLoaded("Thaumcraft"))
-		{
+	public static void initCompatItems() {
+		if (Loader.isModLoaded("Thaumcraft")) {
 			LoggerSteamcraft.info("Thaumcraft Detected. Loading Wizarding Module");
 
 			GameRegistry.registerItem(InitItems.itemSteamcraftCluster, "ItemSteamcraftCluster");
@@ -284,8 +254,7 @@ public class CompatabilityLayer
 			Item thaumometer = GameRegistry.findItem("Thaumcraft", "ItemThaumometer");
 			GameRegistry.addRecipe(new ShapedOreRecipe(InitItems.itemThaumicMonocle, " I ", "ITI", " I ", 'I', "ingotBrass", 'T', thaumometer));
 		}
-		if (Loader.isModLoaded("TConstruct"))
-		{
+		if (Loader.isModLoaded("TConstruct")) {
 			// GameRegistry.registerBlock(InitBlocks.blockMoltenZinc,
 			// "blockMoltenZinc");
 			// GameRegistry.registerBlock(InitBlocks.blockMoltenBrass,

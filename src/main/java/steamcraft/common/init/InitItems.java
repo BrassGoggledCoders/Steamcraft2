@@ -44,6 +44,7 @@ import steamcraft.common.items.ItemMatch;
 import steamcraft.common.items.ItemMobBottle;
 import steamcraft.common.items.ItemMonsterSpawner;
 import steamcraft.common.items.ItemNugget;
+import steamcraft.common.items.ItemNuggetIron;
 import steamcraft.common.items.ItemParts;
 import steamcraft.common.items.ItemPowder;
 import steamcraft.common.items.ItemResource;
@@ -167,7 +168,7 @@ public class InitItems {
 	public static Item itemRayGun, itemShrinkray;
 	public static Item itemRedwoodStick, itemWillowStick, itemMangroveStick, itemPetrifiedStick;
 	// Metals
-	public static Item itemResource, itemIngot, itemSheet, itemPowder, itemVanillaPowder, itemVanillaSheet, itemNugget;
+	public static Item itemResource, itemIngot, itemSheet, itemPowder, itemVanillaPowder, itemVanillaSheet, itemNugget, itemNuggetIron;
 
 	public static Item itemSlimeRubber;
 	public static Item itemSpanner, itemHammer, itemDrawplate, itemGrindstone, itemBugHammer;
@@ -289,6 +290,7 @@ public class InitItems {
 	private static void initializeMetals() {
 		itemIngot = new ItemIngot().setUnlocalizedName("itemIngot");
 		itemNugget = new ItemNugget().setUnlocalizedName("itemNugget");
+		itemNuggetIron = new ItemNuggetIron().setUnlocalizedName("itemNuggetIron");
 		itemSheet = new ItemSheet().setUnlocalizedName("itemSheet");
 		itemPowder = new ItemPowder().setUnlocalizedName("itemPowder");
 		itemVanillaPowder = new ItemVanillaPowder().setUnlocalizedName("itemVanillaPowder");
@@ -296,6 +298,7 @@ public class InitItems {
 
 		registerItem(itemIngot, "ItemIngot");
 		registerItem(itemNugget, "ItemMetalNugget");
+		registerItem(itemNuggetIron, "ItemIronNugget");
 		registerItem(itemSheet, "ItemMetalSheet");
 		registerItem(itemPowder, "ItemMetalPowder");
 		registerItem(itemVanillaPowder, "ItemVanillaMetalPowder");
