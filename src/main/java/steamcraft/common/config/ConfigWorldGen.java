@@ -63,8 +63,8 @@ public class ConfigWorldGen
 
 			// Generation
 			generationEnabled = config.get(CATEGORY_GEN_OPTIONS, "ALL SC2 World Gen, everywhere", true).getBoolean(true);
-			deepsGenerationEnabled = config.get(CATEGORY_GEN_OPTIONS, "Registration of the Deeps Dimension", true).getBoolean(true);
-			deepsPortalGenEnabled = config.get(CATEGORY_GEN_OPTIONS, "Generation of Deeps portals", true).getBoolean(true);
+			deepsGenerationEnabled = config.get(CATEGORY_GEN_OPTIONS, "Registration of the Deeps Dimension", false).getBoolean(false);
+			deepsPortalGenEnabled = config.get(CATEGORY_GEN_OPTIONS, "Generation of Deeps portals", false).getBoolean(false);
 
 			overworldGenerationEnabled = config.get(CATEGORY_GEN_OPTIONS, "All Overworld Generation", true).getBoolean(true);
 			netherGenerationEnabled = config.get(CATEGORY_GEN_OPTIONS, "All Nether Generation", true).getBoolean(true);
