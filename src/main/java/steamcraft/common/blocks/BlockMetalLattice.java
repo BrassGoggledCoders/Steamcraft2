@@ -26,6 +26,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 import boilerplate.common.baseclasses.blocks.BaseMetadataBlock;
+import steamcraft.client.lib.RenderIDs;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.init.InitBlocks;
 import steamcraft.common.lib.ModInfo;
@@ -97,5 +98,11 @@ public class BlockMetalLattice extends BaseMetadataBlock
 	public boolean isOpaqueCube()
 	{
 		return false;
+	}
+
+	@Override
+	public int getRenderType()
+	{
+		return RenderIDs.blockTransWithInsideRI;
 	}
 }
