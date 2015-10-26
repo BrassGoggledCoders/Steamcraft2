@@ -215,12 +215,19 @@ public class CompatabilityLayer {
 		OreDictionary.registerOre("craftingHammer", new ItemStack(InitItems.itemHammer, 1, OreDictionary.WILDCARD_VALUE));
 		OreDictionary.registerOre("craftingHammer", new ItemStack(InitItems.itemBugHammer, 1, OreDictionary.WILDCARD_VALUE));
 
+		OreDictionary.registerOre("stone", new ItemStack(InitBlocks.blockSlate, 1, 0));
 		OreDictionary.registerOre("stone", new ItemStack(InitBlocks.blockSlate, 1, 1));
 		OreDictionary.registerOre("stone", new ItemStack(InitBlocks.blockSlate, 1, 2));
-		OreDictionary.registerOre("stone", new ItemStack(InitBlocks.blockSlate, 1, 3));
+		OreDictionary.registerOre("cobblestone", new ItemStack(InitBlocks.blockSlate, 1, 3));
 		OreDictionary.registerOre("cobblestone", new ItemStack(InitBlocks.blockSlate, 1, 4));
 		OreDictionary.registerOre("cobblestone", new ItemStack(InitBlocks.blockSlate, 1, 5));
-		OreDictionary.registerOre("cobblestone", new ItemStack(InitBlocks.blockSlate, 1, 6));
+
+		OreDictionary.registerOre("stone", new ItemStack(InitBlocks.blockLightSlate, 1, 0));
+		OreDictionary.registerOre("stone", new ItemStack(InitBlocks.blockLightSlate, 1, 1));
+		OreDictionary.registerOre("stone", new ItemStack(InitBlocks.blockLightSlate, 1, 2));
+		OreDictionary.registerOre("cobblestone", new ItemStack(InitBlocks.blockLightSlate, 1, 3));
+		OreDictionary.registerOre("cobblestone", new ItemStack(InitBlocks.blockLightSlate, 1, 4));
+		OreDictionary.registerOre("cobblestone", new ItemStack(InitBlocks.blockLightSlate, 1, 5));
 
 		for (int i = 1; i < 10; i++)
 			OreDictionary.registerOre("foodTea", new ItemStack(InitItems.itemTeacup, 1, i));
