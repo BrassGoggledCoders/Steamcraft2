@@ -57,6 +57,7 @@ import steamcraft.common.lib.ModInfo;
 import steamcraft.common.lib.events.EventHandlerClient;
 import steamcraft.common.lib.events.EventHandlerFML;
 import steamcraft.common.lib.events.EventHandlerForge;
+import steamcraft.common.lib.events.EventHandlerMobDrop;
 import steamcraft.common.worldgen.WorldGenSteamcraft;
 import steamcraft.common.worldgen.dimension.WorldProviderDeeps;
 import steamcraft.common.worldgen.structure.MapGenCustomScatteredFeature;
@@ -111,6 +112,7 @@ public class Steamcraft {
 
 		MinecraftForge.EVENT_BUS.register(new EventHandlerForge());
 		MinecraftForge.EVENT_BUS.register(new EventHandlerClient());
+		MinecraftForge.EVENT_BUS.register(new EventHandlerMobDrop());
 		FMLCommonHandler.instance().bus().register(new EventHandlerFML());
 		FMLCommonHandler.instance().bus().register(new EventHandlerClient());
 
