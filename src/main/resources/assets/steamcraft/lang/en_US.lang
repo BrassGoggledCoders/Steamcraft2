@@ -9,6 +9,7 @@ tile.blockMetal.4.name=Brass Block
 tile.blockMetal.5.name=Bronze Block
 tile.blockMetal.6.name=Steel Block
 tile.blockMetal.7.name=Cast Iron Block
+
 tile.blockMossyMetal.0.name=Mossy Aluminum Block
 tile.blockMossyMetal.1.name=Mossy Copper Block
 tile.blockMossyMetal.2.name=Mossy Tin Block
@@ -17,6 +18,7 @@ tile.blockMossyMetal.4.name=Mossy Brass Block
 tile.blockMossyMetal.5.name=Mossy Bronze Block
 tile.blockMossyMetal.6.name=Mossy Steel Block
 tile.blockMossyMetal.7.name=Mossy Cast Iron Block
+
 tile.blockRustyMetal.0.name=Rusty Aluminum Block
 tile.blockRustyMetal.1.name=Rusty Copper Block
 tile.blockRustyMetal.2.name=Rusty Tin Block
@@ -25,6 +27,7 @@ tile.blockRustyMetal.4.name=Rusty Brass Block
 tile.blockRustyMetal.5.name=Rusty Bronze Block
 tile.blockRustyMetal.6.name=Rusty Steel Block
 tile.blockRustyMetal.7.name=Rusty Cast Iron Block
+
 tile.blockMetalPlate.0.name=Aluminum Plating
 tile.blockMetalPlate.1.name=Copper Plating
 tile.blockMetalPlate.2.name=Tin Plating
@@ -33,6 +36,7 @@ tile.blockMetalPlate.4.name=Brass Plating
 tile.blockMetalPlate.5.name=Bronze Plating
 tile.blockMetalPlate.6.name=Steel Plating
 tile.blockMetalPlate.7.name=Cast Iron Plating
+
 tile.blockMossyMetalPlate.0.name=Mossy Aluminum Plating
 tile.blockMossyMetalPlate.1.name=Mossy Copper Plating
 tile.blockMossyMetalPlate.2.name=Mossy Tin Plating
@@ -41,6 +45,7 @@ tile.blockMossyMetalPlate.4.name=Mossy Brass Plating
 tile.blockMossyMetalPlate.5.name=Mossy Bronze Plating
 tile.blockMossyMetalPlate.6.name=Mossy Steel Plating
 tile.blockMossyMetalPlate.7.name=Mossy Cast Iron Plating
+
 tile.blockRustyMetalPlate.0.name=Rusty Aluminum Plating
 tile.blockRustyMetalPlate.1.name=Rusty Copper Plating
 tile.blockRustyMetalPlate.2.name=Rusty Tin Plating
@@ -49,31 +54,9 @@ tile.blockRustyMetalPlate.4.name=Rusty Brass Plating
 tile.blockRustyMetalPlate.5.name=Rusty Bronze Plating
 tile.blockRustyMetalPlate.6.name=Rusty Steel Plating
 tile.blockRustyMetalPlate.7.name=Rusty Cast Iron Plating
+
 tile.blockUranium.name=Uranium Block
-tile.PlatingMetalPlate.0.name=Aluminum Plating
-tile.PlatingMetalPlate.1.name=Copper Plating
-tile.PlatingMetalPlate.2.name=Tin Plating
-tile.PlatingMetalPlate.3.name=Zinc Plating
-tile.PlatingMetalPlate.4.name=Brass Plating
-tile.PlatingMetalPlate.5.name=Bronze Plating
-tile.PlatingMetalPlate.6.name=Steel Plating
-tile.PlatingMetalPlate.7.name=Cast Iron Plating
-tile.PlatingMossyMetal.0.name=Mossy Aluminum Plating
-tile.PlatingMossyMetal.1.name=Mossy Copper Plating
-tile.PlatingMossyMetal.2.name=Mossy Tin Plating
-tile.PlatingMossyMetal.3.name=Mossy Zinc Plating
-tile.PlatingMossyMetal.4.name=Mossy Brass Plating
-tile.PlatingMossyMetal.5.name=Mossy Bronze Plating
-tile.PlatingMossyMetal.6.name=Mossy Steel Plating
-tile.PlatingMossyMetal.7.name=Mossy Cast Iron Plating
-tile.PlatingRustyMetal.0.name=Rusty Aluminum Plating
-tile.PlatingRustyMetal.1.name=Rusty Copper Plating
-tile.PlatingRustyMetal.2.name=Rusty Tin Plating
-tile.PlatingRustyMetal.3.name=Rusty Zinc Plating
-tile.PlatingRustyMetal.4.name=Rusty Brass Plating
-tile.PlatingRustyMetal.5.name=Rusty Bronze Plating
-tile.PlatingRustyMetal.6.name=Rusty Steel Plating
-tile.PlatingRustyMetal.7.name=Rusty Cast Iron Plating
+
 tile.blockMetalLattice.0.name=Aluminum Lattice
 tile.blockMetalLattice.1.name=Copper Lattice
 tile.blockMetalLattice.2.name=Tin Lattice
@@ -82,6 +65,7 @@ tile.blockMetalLattice.4.name=Brass Lattice
 tile.blockMetalLattice.5.name=Bronze Lattice
 tile.blockMetalLattice.6.name=Steel Lattice
 tile.blockMetalLattice.7.name=Cast Iron Lattice
+    
 tile.blockBrassLog.name=Brass Plated Log
 tile.blockBrassLeaves.name=Brass Leaves
 tile.blockLamp.name=Lamp

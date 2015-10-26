@@ -50,7 +50,6 @@ import steamcraft.common.init.InitItems;
 import steamcraft.common.init.InitMisc;
 import steamcraft.common.init.InitPackets;
 import steamcraft.common.init.InitRecipes;
-import steamcraft.common.init.InitTinkersSupport;
 import steamcraft.common.lib.CommandSteamcraft;
 import steamcraft.common.lib.CreativeTabSteamcraft;
 import steamcraft.common.lib.LoggerSteamcraft;
@@ -107,7 +106,6 @@ public class Steamcraft {
 		NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
 		InitPackets.init();
 
-		InitTinkersSupport.init();
 		InitEntities.init();
 		proxy.init();
 
