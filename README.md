@@ -28,6 +28,7 @@ _Coders:_
 * warlordjones: leader(ish), author of the mod Steampunkery (which was merged into SC2), programmer; speciality: fancy, items/vanity system and breaking things
 * decebaldecebal: programmer; speciality: complicated tile entities, power systems, GUIs, cleanup
 * domi1918: Core Modular Armor System Author
+* TheDoctorSoda: programmer; specialty: things that do not envolve using someone else's API. RIP tinkers support. /u/thedoctorsoda on reddit.
 
 _Artists:_
 * Falkok15: modeler, texture-artist
