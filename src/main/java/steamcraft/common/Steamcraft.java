@@ -14,9 +14,10 @@ package steamcraft.common;
 
 import java.io.File;
 
-import boilerplate.client.GuiHandler;
-import boilerplate.common.compathandler.FMPCompatHandler;
-import boilerplate.common.utils.handlers.BucketHandler;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
+import net.minecraft.world.gen.structure.MapGenStructureIO;
+
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
@@ -32,11 +33,13 @@ import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.GameRegistry.Type;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
-import net.minecraft.world.gen.structure.MapGenStructureIO;
+
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.MinecraftForge;
+
+import boilerplate.client.GuiHandler;
+import boilerplate.common.compathandler.FMPCompatHandler;
+import boilerplate.common.utils.handlers.BucketHandler;
 import steamcraft.common.compat.CompatabilityLayer;
 import steamcraft.common.compat.CompatibilityHandler;
 import steamcraft.common.config.Config;
@@ -57,7 +60,6 @@ import steamcraft.common.lib.ModInfo;
 import steamcraft.common.lib.events.EventHandlerClient;
 import steamcraft.common.lib.events.EventHandlerFML;
 import steamcraft.common.lib.events.EventHandlerForge;
-import steamcraft.common.lib.events.EventHandlerMobDrop;
 import steamcraft.common.worldgen.WorldGenSteamcraft;
 import steamcraft.common.worldgen.dimension.WorldProviderDeeps;
 import steamcraft.common.worldgen.structure.MapGenCustomScatteredFeature;
@@ -69,7 +71,8 @@ import steamcraft.common.worldgen.structure.StructureUndercityStart;
  * @commentary by Arnold
  */
 @Mod(modid = ModInfo.ID, name = ModInfo.NAME, version = ModInfo.VERSION, guiFactory = ModInfo.CONFIG_GUI, dependencies = "required-after:boilerplate;after:Thaumcraft")
-public class Steamcraft {
+public class Steamcraft
+{
 	@SidedProxy(clientSide = ModInfo.CLIENT_PROXY, serverSide = ModInfo.COMMON_PROXY)
 	public static CommonProxy proxy;
 
@@ -81,7 +84,8 @@ public class Steamcraft {
 	public static File configFolder;
 
 	@EventHandler
-	public void preInit(FMLPreInitializationEvent event) {
+	public void preInit(FMLPreInitializationEvent event)
+	{
 		LoggerSteamcraft.info("Starting Preinit");
 
 		configFolder = new File(event.getModConfigurationDirectory(), "sc2");
@@ -100,7 +104,8 @@ public class Steamcraft {
 	}
 
 	@EventHandler
-	public void init(FMLInitializationEvent event) {
+	public void init(FMLInitializationEvent event)
+	{
 		LoggerSteamcraft.info("Starting Init");
 
 		CompatabilityLayer.init();
@@ -112,7 +117,6 @@ public class Steamcraft {
 
 		MinecraftForge.EVENT_BUS.register(new EventHandlerForge());
 		MinecraftForge.EVENT_BUS.register(new EventHandlerClient());
-		MinecraftForge.EVENT_BUS.register(new EventHandlerMobDrop());
 		FMLCommonHandler.instance().bus().register(new EventHandlerFML());
 		FMLCommonHandler.instance().bus().register(new EventHandlerClient());
 
@@ -124,7 +128,8 @@ public class Steamcraft {
 		if (ConfigWorldGen.generationEnabled)
 			GameRegistry.registerWorldGenerator(new WorldGenSteamcraft(), 1);
 
-		if (ConfigWorldGen.deepsDimensionEnabled) {
+		if (ConfigWorldGen.deepsDimensionEnabled)
+		{
 			DimensionManager.registerProviderType(ConfigGeneral.deepsDimensionID, WorldProviderDeeps.class, false);
 			DimensionManager.registerDimension(ConfigGeneral.deepsDimensionID, ConfigGeneral.deepsDimensionID);
 		}
@@ -139,7 +144,8 @@ public class Steamcraft {
 
 	@SuppressWarnings("rawtypes")
 	@EventHandler
-	public void postInit(FMLPostInitializationEvent event) {
+	public void postInit(FMLPostInitializationEvent event)
+	{
 		LoggerSteamcraft.info("Starting Postinit");
 
 		CompatabilityLayer.postInit();
@@ -149,7 +155,8 @@ public class Steamcraft {
 		InitMisc.initDungeonLoot();
 
 		LoggerSteamcraft.info("Finished Postinit");
-		LoggerSteamcraft.info("Please note: Steamcraft2 is now the officially unofficial mod of the Steampunk Forum at BrassGoggles, otherwise known as BG, which is only unofficial because making it official would cause a legal headache but is pretty much official, I'm just not allowed to call it that, so its not official, but it kinda is, ok? Got that? Signed, Major Vincent Smith (Otherwise known as warlordjones) - BrassGoggles moderation team member");
+		LoggerSteamcraft.info(
+				"Please note: Steamcraft2 is now the officially unofficial mod of the Steampunk Forum at BrassGoggles, otherwise known as BG, which is only unofficial because making it official would cause a legal headache but is pretty much official, I'm just not allowed to call it that, so its not official, but it kinda is, ok? Got that? Signed, Major Vincent Smith (Otherwise known as warlordjones) - BrassGoggles moderation team member");
 		if (Loader.isModLoaded("steamnsteel"))
 			LoggerSteamcraft.info("Evening to the distingushed ladies and gentlemen of the SteamNSteel club!");
 		if (Loader.isModLoaded("ImmersiveEngineering"))
@@ -172,25 +179,37 @@ public class Steamcraft {
 	}
 
 	@EventHandler
-	public void serverStarting(FMLServerStartingEvent event) {
+	public void serverStarting(FMLServerStartingEvent event)
+	{
 		event.registerServerCommand(new CommandSteamcraft());
 	}
 
 	// Remap old items from merged in mods
 	@EventHandler
-	public void missingMapping(FMLMissingMappingsEvent event) {
-		for (MissingMapping m : event.get()) {
-			if (m.type == Type.BLOCK) {
-				if (m.name.contains("water")) {
+	public void missingMapping(FMLMissingMappingsEvent event)
+	{
+		for (MissingMapping m : event.get())
+		{
+			if (m.type == Type.BLOCK)
+			{
+				if (m.name.contains("water"))
+				{
 					m.remap(GameRegistry.findBlock(ModInfo.ID, "BlockBoilingwater"));
-				} else if (m.name.contains("mud")) {
+				}
+				else if (m.name.contains("mud"))
+				{
 					m.remap(GameRegistry.findBlock(ModInfo.ID, "BlockBoilingmud"));
 				}
 
-			} else if (m.type == Type.ITEM) {
-				if (m.name.contains("water")) {
+			}
+			else if (m.type == Type.ITEM)
+			{
+				if (m.name.contains("water"))
+				{
 					m.remap(Item.getItemFromBlock(GameRegistry.findBlock(ModInfo.ID, "BlockBoilingwater")));
-				} else if (m.name.contains("mud")) {
+				}
+				else if (m.name.contains("mud"))
+				{
 					m.remap(Item.getItemFromBlock(GameRegistry.findBlock(ModInfo.ID, "BlockBoilingmud")));
 				}
 			}
