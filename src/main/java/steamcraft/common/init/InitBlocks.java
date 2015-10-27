@@ -62,8 +62,10 @@ import steamcraft.common.blocks.BlockLightSlate;
 import steamcraft.common.blocks.BlockMeltingIce;
 import steamcraft.common.blocks.BlockMetal;
 import steamcraft.common.blocks.BlockMetalLattice;
+import steamcraft.common.blocks.BlockMetalLatticeThin;
 import steamcraft.common.blocks.BlockMossyMetal;
 import steamcraft.common.blocks.BlockMossyMetalLattice;
+import steamcraft.common.blocks.BlockMossyMetalLatticeThin;
 import steamcraft.common.blocks.BlockMotionSensor;
 import steamcraft.common.blocks.BlockMud;
 import steamcraft.common.blocks.BlockPlankStack;
@@ -71,6 +73,7 @@ import steamcraft.common.blocks.BlockPlating;
 import steamcraft.common.blocks.BlockPolishedPlanks;
 import steamcraft.common.blocks.BlockRustyMetal;
 import steamcraft.common.blocks.BlockRustyMetalLattice;
+import steamcraft.common.blocks.BlockRustyMetalLatticeThin;
 import steamcraft.common.blocks.BlockSiren;
 import steamcraft.common.blocks.BlockSkyrail;
 import steamcraft.common.blocks.BlockSlate;
@@ -182,6 +185,7 @@ public class InitBlocks
 	public static Block blockMetal, blockMossyMetal, blockRustyMetal, blockUranium;
 	public static Block blockMetalPlate, blockRustyMetalPlate, blockMossyMetalPlate;
 	public static Block blockMetalLattice, blockRustyMetalLattice, blockMossyMetalLattice;
+	public static Block blockMetalLatticeThin, blockRustyMetalLatticeThin, blockMossyMetalLatticeThin;
 
 	public static Block blockMoltenZinc, blockMoltenBrass;
 	public static Block blockPath, blockMud, blockLeafCover, blockMoss;
@@ -473,6 +477,13 @@ public class InitBlocks
 		registerBlock(blockRustyMetalLattice, BaseItemBlockWithMetadata.class, "BlockRustyMetalLattice", 8);
 		blockMossyMetalLattice = new BlockMossyMetalLattice().setBlockName("blockMossyMetalLattice");
 		registerBlock(blockMossyMetalLattice, BaseItemBlockWithMetadata.class, "BlockMossyMetalLattice", 8);
+
+		blockMetalLatticeThin = new BlockMetalLatticeThin().setBlockName("blockMetalLatticeThin");
+		registerBlock(blockMetalLatticeThin, BaseItemBlockWithMetadata.class, "BlockMetalLatticeThin", 8);
+		blockRustyMetalLatticeThin = new BlockRustyMetalLatticeThin().setBlockName("blockRustyMetalLatticeThin");
+		registerBlock(blockRustyMetalLatticeThin, BaseItemBlockWithMetadata.class, "BlockRustyMetalLatticeThin", 8);
+		blockMossyMetalLatticeThin = new BlockMossyMetalLatticeThin().setBlockName("blockMossyMetalLatticeThin");
+		registerBlock(blockMossyMetalLatticeThin, BaseItemBlockWithMetadata.class, "BlockMossyMetalLatticeThin", 8);
 
 		blockUranium = new BlockUranium(Material.iron).setBlockName("blockUranium");
 		registerBlock(blockUranium, "BlockUranium");
