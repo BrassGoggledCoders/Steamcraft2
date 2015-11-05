@@ -69,6 +69,7 @@ import steamcraft.common.blocks.BlockPlankStack;
 import steamcraft.common.blocks.BlockPlating;
 import steamcraft.common.blocks.BlockPolishedPlanks;
 import steamcraft.common.blocks.BlockRustyMetal;
+import steamcraft.common.blocks.BlockScaffold;
 import steamcraft.common.blocks.BlockSiren;
 import steamcraft.common.blocks.BlockSkyrail;
 import steamcraft.common.blocks.BlockSlate;
@@ -186,6 +187,8 @@ public class InitBlocks
 	public static Block blockPath, blockMud, blockLeafCover, blockMoss;
 
 	/* Others */
+
+	public static Block blockVanillaScaffold;
 
 	public static Block blockPetrifiedFence, blockPetrifiedDoor, blockPetrifiedSlab, blockPetrifiedDoubleSlab, blockPetrifiedStairs;
 
@@ -451,6 +454,7 @@ public class InitBlocks
 		registerBlock(blockSlate, BaseItemBlockWithMetadata.class, "BlockSlate", 9);
 		registerBlock(blockLightSlate, BaseItemBlockWithMetadata.class, "BlockLightSlate", 9);
 
+		// TODO Move this
 		// Metals
 		blockMetal = new BlockMetal().setBlockName("blockMetal");
 		registerBlock(blockMetal, BaseItemBlockWithMetadata.class, "BlockMetal", 8);
@@ -479,6 +483,10 @@ public class InitBlocks
 		registerBlock(blockRustyMetalLatticeThin, BaseItemBlockWithMetadata.class, "BlockRustyMetalLatticeThin", 8);
 		blockMossyMetalLatticeThin = new BlockMetalLattice("LatticeThinMossy").setBlockName("blockMossyMetalLatticeThin");
 		registerBlock(blockMossyMetalLatticeThin, BaseItemBlockWithMetadata.class, "BlockMossyMetalLatticeThin", 8);
+
+		blockVanillaScaffold = new BlockScaffold(new String[] { "Oak", "Spruce", "Birch", "Jungle", "Acacia", "DarkOak" })
+				.setBlockName("blockMetalLattice");
+		registerBlock(blockMetalLattice, BaseItemBlockWithMetadata.class, "BlockMetalLattice", 8);
 
 		blockUranium = new BlockUranium(Material.iron).setBlockName("blockUranium");
 		registerBlock(blockUranium, "BlockUranium");
