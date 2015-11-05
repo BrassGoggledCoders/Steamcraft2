@@ -64,7 +64,6 @@ dumps/
 *.zip
 world/
 screenshots/
-assets/
 /AquaTweaks-1.7.10-0.8-deobf.jar
 /banned-ips.json
 /banned-ips.txt.converted
