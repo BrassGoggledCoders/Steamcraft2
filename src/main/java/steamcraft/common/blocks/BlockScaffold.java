@@ -38,7 +38,7 @@ import steamcraft.common.lib.ModInfo;
  */
 public class BlockScaffold extends BaseMetadataBlock
 {
-	public IIcon[] icon = new IIcon[8];
+	public IIcon[] icon = new IIcon[6];
 	String[] textureSuffixs;
 
 	public BlockScaffold(String[] suffixs)
@@ -66,7 +66,7 @@ public class BlockScaffold extends BaseMetadataBlock
 	public void registerBlockIcons(final IIconRegister ir)
 	{
 		for (int i = 0; i < this.icon.length; i++)
-			this.icon[i] = ir.registerIcon(ModInfo.PREFIX + "frame/" + "block" + textureSuffixs[i] + "Scaffold");
+			this.icon[i] = ir.registerIcon(ModInfo.PREFIX + "frame/" + "block" + "Scaffold" + textureSuffixs[i]);
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })

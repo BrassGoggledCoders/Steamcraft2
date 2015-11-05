@@ -485,8 +485,8 @@ public class InitBlocks
 		registerBlock(blockMossyMetalLatticeThin, BaseItemBlockWithMetadata.class, "BlockMossyMetalLatticeThin", 8);
 
 		blockVanillaScaffold = new BlockScaffold(new String[] { "Oak", "Spruce", "Birch", "Jungle", "Acacia", "DarkOak" })
-				.setBlockName("blockMetalLattice");
-		registerBlock(blockMetalLattice, BaseItemBlockWithMetadata.class, "BlockMetalLattice", 8);
+				.setBlockName("blockVanillaScaffold");
+		registerBlock(blockVanillaScaffold, BaseItemBlockWithMetadata.class, "BlockVanillaScaffold", 8);
 
 		blockUranium = new BlockUranium(Material.iron).setBlockName("blockUranium");
 		registerBlock(blockUranium, "BlockUranium");
