@@ -28,7 +28,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import boilerplate.common.baseclasses.blocks.BaseMetadataBlock;
 import steamcraft.client.lib.RenderIDs;
 import steamcraft.common.Steamcraft;
-import steamcraft.common.init.InitBlocks;
+import steamcraft.common.lib.LibInfo;
 import steamcraft.common.lib.ModInfo;
 
 /**
@@ -38,10 +38,12 @@ import steamcraft.common.lib.ModInfo;
 public class BlockMetalLattice extends BaseMetadataBlock
 {
 	public IIcon[] icon = new IIcon[8];
+	String textureSuffix;
 
-	public BlockMetalLattice()
+	public BlockMetalLattice(String suffix)
 	{
 		super(Material.iron);
+		this.textureSuffix = suffix;
 		this.setHardness(1.5F);
 		this.setResistance(5.0F);
 		this.setStepSound(Block.soundTypeMetal);
@@ -62,14 +64,8 @@ public class BlockMetalLattice extends BaseMetadataBlock
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(final IIconRegister ir)
 	{
-		this.icon[0] = ir.registerIcon(ModInfo.PREFIX + "metal/" + "blockAluminumLattice");
-		this.icon[1] = ir.registerIcon(ModInfo.PREFIX + "metal/" + "blockCopperLattice");
-		this.icon[2] = ir.registerIcon(ModInfo.PREFIX + "metal/" + "blockTinLattice");
-		this.icon[3] = ir.registerIcon(ModInfo.PREFIX + "metal/" + "blockZincLattice");
-		this.icon[4] = ir.registerIcon(ModInfo.PREFIX + "metal/" + "blockBrassLattice");
-		this.icon[5] = ir.registerIcon(ModInfo.PREFIX + "metal/" + "blockBronzeLattice");
-		this.icon[6] = ir.registerIcon(ModInfo.PREFIX + "metal/" + "blockSteelLattice");
-		this.icon[7] = ir.registerIcon(ModInfo.PREFIX + "metal/" + "blockCastIronLattice");
+		for (int i = 0; i < this.icon.length; i++)
+			this.icon[i] = ir.registerIcon(ModInfo.PREFIX + "frame/" + "block" + LibInfo.metals[i] + textureSuffix);
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
@@ -78,7 +74,7 @@ public class BlockMetalLattice extends BaseMetadataBlock
 	public void getSubBlocks(final Item item, final CreativeTabs tab, final List l)
 	{
 		for (int var4 = 0; var4 < this.icon.length; ++var4)
-			l.add(new ItemStack(InitBlocks.blockMetalLattice, 1, var4));
+			l.add(new ItemStack(this, 1, var4));
 	}
 
 	@Override
