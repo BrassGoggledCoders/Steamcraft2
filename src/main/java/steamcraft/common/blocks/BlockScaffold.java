@@ -38,13 +38,14 @@ import steamcraft.common.lib.ModInfo;
  */
 public class BlockScaffold extends BaseMetadataBlock
 {
-	public IIcon[] icon = new IIcon[6];
+	public IIcon[] icon;
 	String[] textureSuffixs;
 
 	public BlockScaffold(String[] suffixs)
 	{
 		super(Material.wood);
 		this.textureSuffixs = suffixs;
+		this.icon = new IIcon[textureSuffixs.length];
 		this.setHardness(1.0F);
 		this.setResistance(1.0F);
 		this.setStepSound(Block.soundTypeWood);

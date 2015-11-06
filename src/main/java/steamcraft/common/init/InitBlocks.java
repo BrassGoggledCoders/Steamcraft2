@@ -486,10 +486,17 @@ public class InitBlocks
 
 		blockVanillaScaffold = new BlockScaffold(new String[] { "Oak", "Spruce", "Birch", "Jungle", "Acacia", "DarkOak" })
 				.setBlockName("blockVanillaScaffold");
-		registerBlock(blockVanillaScaffold, BaseItemBlockWithMetadata.class, "BlockVanillaScaffold", 8);
+		registerBlock(blockVanillaScaffold, BaseItemBlockWithMetadata.class, "BlockVanillaScaffold", 6);
 		blockVanillaScaffoldThin = new BlockScaffold(new String[] { "ThinOak", "ThinSpruce", "ThinBirch", "ThinJungle", "ThinAcacia", "ThinDarkOak" })
 				.setBlockName("blockVanillaScaffoldThin");
-		registerBlock(blockVanillaScaffoldThin, BaseItemBlockWithMetadata.class, "BlockVanillaScaffoldThin", 8);
+		registerBlock(blockVanillaScaffoldThin, BaseItemBlockWithMetadata.class, "BlockVanillaScaffoldThin", 6);
+
+		blockModScaffold = new BlockScaffold(new String[] { "Redwood", "Mangrove", "Willow", "Petrified", "Polished" })
+				.setBlockName("blockModScaffold");
+		registerBlock(blockModScaffold, BaseItemBlockWithMetadata.class, "BlockModScaffold", 5);
+		blockModScaffoldThin = new BlockScaffold(new String[] { "ThinRedwood", "ThinMangrove", "ThinWillow", "ThinPetrified", "ThinPolished" })
+				.setBlockName("blockModScaffoldThin");
+		registerBlock(blockModScaffoldThin, BaseItemBlockWithMetadata.class, "BlockModScaffoldThin", 5);
 
 		blockUranium = new BlockUranium(Material.iron).setBlockName("blockUranium");
 		registerBlock(blockUranium, "BlockUranium");
