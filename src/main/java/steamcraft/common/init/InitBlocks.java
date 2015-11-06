@@ -188,7 +188,7 @@ public class InitBlocks
 
 	/* Others */
 
-	public static Block blockVanillaScaffold;
+	public static Block blockVanillaScaffold, blockVanillaScaffoldThin, blockModScaffold, blockModScaffoldThin;
 
 	public static Block blockPetrifiedFence, blockPetrifiedDoor, blockPetrifiedSlab, blockPetrifiedDoubleSlab, blockPetrifiedStairs;
 
@@ -487,6 +487,9 @@ public class InitBlocks
 		blockVanillaScaffold = new BlockScaffold(new String[] { "Oak", "Spruce", "Birch", "Jungle", "Acacia", "DarkOak" })
 				.setBlockName("blockVanillaScaffold");
 		registerBlock(blockVanillaScaffold, BaseItemBlockWithMetadata.class, "BlockVanillaScaffold", 8);
+		blockVanillaScaffoldThin = new BlockScaffold(new String[] { "ThinOak", "ThinSpruce", "ThinBirch", "ThinJungle", "ThinAcacia", "ThinDarkOak" })
+				.setBlockName("blockVanillaScaffoldThin");
+		registerBlock(blockVanillaScaffoldThin, BaseItemBlockWithMetadata.class, "BlockVanillaScaffoldThin", 8);
 
 		blockUranium = new BlockUranium(Material.iron).setBlockName("blockUranium");
 		registerBlock(blockUranium, "BlockUranium");

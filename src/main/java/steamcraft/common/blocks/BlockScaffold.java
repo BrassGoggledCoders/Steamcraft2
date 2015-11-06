@@ -66,7 +66,7 @@ public class BlockScaffold extends BaseMetadataBlock
 	public void registerBlockIcons(final IIconRegister ir)
 	{
 		for (int i = 0; i < this.icon.length; i++)
-			this.icon[i] = ir.registerIcon(ModInfo.PREFIX + "frame/" + "block" + "Scaffold" + textureSuffixs[i]);
+			this.icon[i] = ir.registerIcon(ModInfo.PREFIX + "frame/" + "blockScaffold" + textureSuffixs[i]);
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
