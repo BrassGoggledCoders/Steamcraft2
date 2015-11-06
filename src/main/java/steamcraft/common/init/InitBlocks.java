@@ -83,6 +83,7 @@ import steamcraft.common.blocks.BlockTimeBomb;
 import steamcraft.common.blocks.BlockTintedRock;
 import steamcraft.common.blocks.BlockTrunk;
 import steamcraft.common.blocks.BlockUranium;
+import steamcraft.common.blocks.BlockVanillaLattice;
 import steamcraft.common.blocks.machines.BlockArmorEditor;
 import steamcraft.common.blocks.machines.BlockBattery;
 import steamcraft.common.blocks.machines.BlockBloomery;
@@ -182,6 +183,7 @@ public class InitBlocks
 	public static Block blockMetalPlate, blockRustyMetalPlate, blockMossyMetalPlate;
 	public static Block blockMetalLattice, blockRustyMetalLattice, blockMossyMetalLattice;
 	public static Block blockMetalLatticeThin, blockRustyMetalLatticeThin, blockMossyMetalLatticeThin;
+	public static Block blockVanillaLattice, blockVanillaLatticeThin;
 
 	public static Block blockMoltenZinc, blockMoltenBrass;
 	public static Block blockPath, blockMud, blockLeafCover, blockMoss;
@@ -483,6 +485,11 @@ public class InitBlocks
 		registerBlock(blockRustyMetalLatticeThin, BaseItemBlockWithMetadata.class, "BlockRustyMetalLatticeThin", 8);
 		blockMossyMetalLatticeThin = new BlockMetalLattice("LatticeThinMossy").setBlockName("blockMossyMetalLatticeThin");
 		registerBlock(blockMossyMetalLatticeThin, BaseItemBlockWithMetadata.class, "BlockMossyMetalLatticeThin", 8);
+
+		blockVanillaLattice = new BlockVanillaLattice("").setBlockName("blockVanillaLattice");
+		registerBlock(blockVanillaLattice, BaseItemBlockWithMetadata.class, "BlockVanillaLattice", 2);
+		blockVanillaLatticeThin = new BlockVanillaLattice("Thin").setBlockName("blockVanillaLatticeThin");
+		registerBlock(blockVanillaLatticeThin, BaseItemBlockWithMetadata.class, "BlockVanillaLatticeThin", 2);
 
 		blockVanillaScaffold = new BlockScaffold(new String[] { "Oak", "Spruce", "Birch", "Jungle", "Acacia", "DarkOak" })
 				.setBlockName("blockVanillaScaffold");
