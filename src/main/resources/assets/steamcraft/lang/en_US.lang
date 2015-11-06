@@ -65,6 +65,83 @@ tile.blockMetalLattice.4.name=Brass Lattice
 tile.blockMetalLattice.5.name=Bronze Lattice
 tile.blockMetalLattice.6.name=Steel Lattice
 tile.blockMetalLattice.7.name=Cast Iron Lattice
+
+tile.blockRustyMetalLattice.0.name=Rusty Aluminum Lattice
+tile.blockRustyMetalLattice.1.name=Rusty Copper Lattice
+tile.blockRustyMetalLattice.2.name=Rusty Tin Lattice
+tile.blockRustyMetalLattice.3.name=Rusty Zinc Lattice
+tile.blockRustyMetalLattice.4.name=Rusty Brass Lattice
+tile.blockRustyMetalLattice.5.name=Rusty Bronze Lattice
+tile.blockRustyMetalLattice.6.name=Rusty Steel Lattice
+tile.blockRustyMetalLattice.7.name=Rusty Cast Iron Lattice
+
+tile.blockMossyMetalLattice.0.name=Mossy Aluminum Lattice
+tile.blockMossyMetalLattice.1.name=Mossy Copper Lattice
+tile.blockMossyMetalLattice.2.name=Mossy Tin Lattice
+tile.blockMossyMetalLattice.3.name=Mossy Zinc Lattice
+tile.blockMossyMetalLattice.4.name=Mossy Brass Lattice
+tile.blockMossyMetalLattice.5.name=Mossy Bronze Lattice
+tile.blockMossyMetalLattice.6.name=Mossy Steel Lattice
+tile.blockMossyMetalLattice.7.name=Mossy Cast Iron Lattice
+
+tile.blockMetalLatticeThin.0.name=Aluminum Thin Lattice
+tile.blockMetalLatticeThin.1.name=Copper Thin Lattice
+tile.blockMetalLatticeThin.2.name=Tin Thin Lattice
+tile.blockMetalLatticeThin.3.name=Zinc Thin Lattice
+tile.blockMetalLatticeThin.4.name=Brass Thin Lattice
+tile.blockMetalLatticeThin.5.name=Bronze Thin Lattice
+tile.blockMetalLatticeThin.6.name=Steel Thin Lattice
+tile.blockMetalLatticeThin.7.name=Cast Iron Thin Lattice
+
+tile.blockRustyMetalLatticeThin.0.name=Rusty Aluminum Thin Lattice
+tile.blockRustyMetalLatticeThin.1.name=Rusty Copper Thin Lattice
+tile.blockRustyMetalLatticeThin.2.name=Rusty Tin Thin Lattice
+tile.blockRustyMetalLatticeThin.3.name=Rusty Zinc Thin Lattice
+tile.blockRustyMetalLatticeThin.4.name=Rusty Brass Thin Lattice
+tile.blockRustyMetalLatticeThin.5.name=Rusty Bronze Thin Lattice
+tile.blockRustyMetalLatticeThin.6.name=Rusty Steel Thin Lattice
+tile.blockRustyMetalLatticeThin.7.name=Rusty Cast Iron Thin Lattice
+
+tile.blockMossyMetalLatticeThin.0.name=Mossy Aluminum Thin Lattice
+tile.blockMossyMetalLatticeThin.1.name=Mossy Copper Lattice
+tile.blockMossyMetalLatticeThin.2.name=Mossy Tin Lattice
+tile.blockMossyMetalLatticeThin.3.name=Mossy Zinc Lattice
+tile.blockMossyMetalLatticeThin.4.name=Mossy Brass Lattice
+tile.blockMossyMetalLatticeThin.5.name=Mossy Bronze Lattice
+tile.blockMossyMetalLatticeThin.6.name=Mossy Steel Lattice
+tile.blockMossyMetalLatticeThin.7.name=Mossy Cast Iron Lattice
+
+tile.blockVanillaLattice.0.name=Iron Lattice
+tile.blockVanillaLattice.1.name=Gold Lattice
+
+tile.blockVanillaLatticeThin.0.name=Iron Thin Lattice
+tile.blockVanillaLatticeThin.1.name=Gold Thin Lattice
+
+tile.blockVanillaScaffold.0.name=Oak Scaffold
+tile.blockVanillaScaffold.1.name=Spruce Scaffold
+tile.blockVanillaScaffold.2.name=Birch Scaffold
+tile.blockVanillaScaffold.3.name=Jungle Scaffold
+tile.blockVanillaScaffold.4.name=Acacia Scaffold
+tile.blockVanillaScaffold.5.name=Dark Oak Scaffold
+
+tile.blockVanillaScaffoldThin.0.name=Oak Thin Scaffold
+tile.blockVanillaScaffoldThin.1.name=Spruce Thin Scaffold
+tile.blockVanillaScaffoldThin.2.name=Birch Thin Scaffold
+tile.blockVanillaScaffoldThin.3.name=Jungle Thin Scaffold
+tile.blockVanillaScaffoldThin.4.name=Acacia Thin Scaffold
+tile.blockVanillaScaffoldThin.5.name=Dark Oak Thin Scaffold
+
+tile.blockModScaffold.0.name=Redwood Scaffold
+tile.blockModScaffold.1.name=Mangrove Scaffold
+tile.blockModScaffold.2.name=Willow Scaffold
+tile.blockModScaffold.3.name=Petrified Scaffold
+tile.blockModScaffold.4.name=Polished Scaffold
+
+tile.blockModScaffoldThin.0.name=Redwood Thin Scaffold
+tile.blockModScaffoldThin.1.name=Mangrove Thin Scaffold
+tile.blockModScaffoldThin.2.name=Willow Thin Scaffold
+tile.blockModScaffoldThin.3.name=Petrified Thin Scaffold
+tile.blockModScaffoldThin.4.name=Polished Thin Scaffold
     
 tile.blockBrassLog.name=Brass Plated Log
 tile.blockBrassLeaves.name=Brass Leaves
