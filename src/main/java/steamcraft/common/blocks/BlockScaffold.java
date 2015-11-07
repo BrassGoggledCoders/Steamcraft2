@@ -66,7 +66,7 @@ public class BlockScaffold extends BaseMetadataBlock
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(final IIconRegister ir)
 	{
-		for (int i = 0; i < this.icon.length; i++)
+		for (int i = 0; i < textureSuffixs.length; i++)
 			this.icon[i] = ir.registerIcon(ModInfo.PREFIX + "frame/" + "blockScaffold" + textureSuffixs[i]);
 	}
 
@@ -75,7 +75,7 @@ public class BlockScaffold extends BaseMetadataBlock
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(final Item item, final CreativeTabs tab, final List l)
 	{
-		for (int var4 = 0; var4 < this.icon.length; ++var4)
+		for (int var4 = 0; var4 < this.textureSuffixs.length; ++var4)
 			l.add(new ItemStack(this, 1, var4));
 	}
 

@@ -182,15 +182,14 @@ public class InitBlocks
 	public static Block blockMetal, blockMossyMetal, blockRustyMetal, blockUranium;
 	public static Block blockMetalPlate, blockRustyMetalPlate, blockMossyMetalPlate;
 	public static Block blockMetalLattice, blockRustyMetalLattice, blockMossyMetalLattice;
-	public static Block blockMetalLatticeThin, blockRustyMetalLatticeThin, blockMossyMetalLatticeThin;
-	public static Block blockVanillaLattice, blockVanillaLatticeThin;
+	public static Block blockVanillaLattice;
 
 	public static Block blockMoltenZinc, blockMoltenBrass;
 	public static Block blockPath, blockMud, blockLeafCover, blockMoss;
 
 	/* Others */
 
-	public static Block blockVanillaScaffold, blockVanillaScaffoldThin, blockModScaffold, blockModScaffoldThin;
+	public static Block blockVanillaScaffold, blockModScaffold;
 
 	public static Block blockPetrifiedFence, blockPetrifiedDoor, blockPetrifiedSlab, blockPetrifiedDoubleSlab, blockPetrifiedStairs;
 
@@ -472,38 +471,23 @@ public class InitBlocks
 		blockMossyMetalPlate = new BlockPlating(blockMossyMetal).setBlockName("blockMossyMetalPlate");
 		registerBlock(blockMossyMetalPlate, BaseItemBlockWithMetadata.class, "BlockMossyMetalPlating", 8);
 
-		blockMetalLattice = new BlockMetalLattice("Lattice").setBlockName("blockMetalLattice");
-		registerBlock(blockMetalLattice, BaseItemBlockWithMetadata.class, "BlockMetalLattice", 8);
-		blockRustyMetalLattice = new BlockMetalLattice("LatticeRusty").setBlockName("blockRustyMetalLattice");
-		registerBlock(blockRustyMetalLattice, BaseItemBlockWithMetadata.class, "BlockRustyMetalLattice", 8);
-		blockMossyMetalLattice = new BlockMetalLattice("LatticeMossy").setBlockName("blockMossyMetalLattice");
-		registerBlock(blockMossyMetalLattice, BaseItemBlockWithMetadata.class, "BlockMossyMetalLattice", 8);
+		blockMetalLattice = new BlockMetalLattice("").setBlockName("blockMetalLattice");
+		registerBlock(blockMetalLattice, BaseItemBlockWithMetadata.class, "BlockMetalLattice", 16);
+		blockRustyMetalLattice = new BlockMetalLattice("Rusty").setBlockName("blockRustyMetalLattice");
+		registerBlock(blockRustyMetalLattice, BaseItemBlockWithMetadata.class, "BlockRustyMetalLattice", 16);
+		blockMossyMetalLattice = new BlockMetalLattice("Mossy").setBlockName("blockMossyMetalLattice");
+		registerBlock(blockMossyMetalLattice, BaseItemBlockWithMetadata.class, "BlockMossyMetalLattice", 16);
 
-		blockMetalLatticeThin = new BlockMetalLattice("LatticeThin").setBlockName("blockMetalLatticeThin");
-		registerBlock(blockMetalLatticeThin, BaseItemBlockWithMetadata.class, "BlockMetalLatticeThin", 8);
-		blockRustyMetalLatticeThin = new BlockMetalLattice("LatticeThinRusty").setBlockName("blockRustyMetalLatticeThin");
-		registerBlock(blockRustyMetalLatticeThin, BaseItemBlockWithMetadata.class, "BlockRustyMetalLatticeThin", 8);
-		blockMossyMetalLatticeThin = new BlockMetalLattice("LatticeThinMossy").setBlockName("blockMossyMetalLatticeThin");
-		registerBlock(blockMossyMetalLatticeThin, BaseItemBlockWithMetadata.class, "BlockMossyMetalLatticeThin", 8);
+		blockVanillaLattice = new BlockVanillaLattice().setBlockName("blockVanillaLattice");
+		registerBlock(blockVanillaLattice, BaseItemBlockWithMetadata.class, "BlockVanillaLattice", 4);
 
-		blockVanillaLattice = new BlockVanillaLattice("").setBlockName("blockVanillaLattice");
-		registerBlock(blockVanillaLattice, BaseItemBlockWithMetadata.class, "BlockVanillaLattice", 2);
-		blockVanillaLatticeThin = new BlockVanillaLattice("Thin").setBlockName("blockVanillaLatticeThin");
-		registerBlock(blockVanillaLatticeThin, BaseItemBlockWithMetadata.class, "BlockVanillaLatticeThin", 2);
+		blockVanillaScaffold = new BlockScaffold(new String[] { "Oak", "Spruce", "Birch", "Jungle", "Acacia", "DarkOak", /* TODO */"ThinOak",
+				"ThinSpruce", "ThinBirch", "ThinJungle", "ThinAcacia", "ThinDarkOak" }).setBlockName("blockVanillaScaffold");
+		registerBlock(blockVanillaScaffold, BaseItemBlockWithMetadata.class, "BlockVanillaScaffold", 12);
 
-		blockVanillaScaffold = new BlockScaffold(new String[] { "Oak", "Spruce", "Birch", "Jungle", "Acacia", "DarkOak" })
-				.setBlockName("blockVanillaScaffold");
-		registerBlock(blockVanillaScaffold, BaseItemBlockWithMetadata.class, "BlockVanillaScaffold", 6);
-		blockVanillaScaffoldThin = new BlockScaffold(new String[] { "ThinOak", "ThinSpruce", "ThinBirch", "ThinJungle", "ThinAcacia", "ThinDarkOak" })
-				.setBlockName("blockVanillaScaffoldThin");
-		registerBlock(blockVanillaScaffoldThin, BaseItemBlockWithMetadata.class, "BlockVanillaScaffoldThin", 6);
-
-		blockModScaffold = new BlockScaffold(new String[] { "Redwood", "Mangrove", "Willow", "Petrified", "Polished" })
-				.setBlockName("blockModScaffold");
-		registerBlock(blockModScaffold, BaseItemBlockWithMetadata.class, "BlockModScaffold", 5);
-		blockModScaffoldThin = new BlockScaffold(new String[] { "ThinRedwood", "ThinMangrove", "ThinWillow", "ThinPetrified", "ThinPolished" })
-				.setBlockName("blockModScaffoldThin");
-		registerBlock(blockModScaffoldThin, BaseItemBlockWithMetadata.class, "BlockModScaffoldThin", 5);
+		blockModScaffold = new BlockScaffold(new String[] { "Redwood", "Mangrove", "Willow", "Petrified", "Polished", "ThinRedwood", "ThinMangrove",
+				"ThinWillow", "ThinPetrified", "ThinPolished" }).setBlockName("blockModScaffold");
+		registerBlock(blockModScaffold, BaseItemBlockWithMetadata.class, "BlockModScaffold", 10);
 
 		blockUranium = new BlockUranium(Material.iron).setBlockName("blockUranium");
 		registerBlock(blockUranium, "BlockUranium");

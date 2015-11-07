@@ -39,7 +39,7 @@ import steamcraft.common.lib.ModInfo;
  */
 public class BlockMetalLattice extends BaseMetadataBlock
 {
-	public IIcon[] icon = new IIcon[8];
+	public IIcon[] icon = new IIcon[16];
 	String textureSuffix;
 
 	public BlockMetalLattice(String suffix)
@@ -66,8 +66,10 @@ public class BlockMetalLattice extends BaseMetadataBlock
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(final IIconRegister ir)
 	{
-		for (int i = 0; i < this.icon.length; i++)
-			this.icon[i] = ir.registerIcon(ModInfo.PREFIX + "frame/" + "block" + LibInfo.metals[i] + textureSuffix);
+		for (int i = 0; i < 8; i++)
+			this.icon[i] = ir.registerIcon(ModInfo.PREFIX + "frame/" + "block" + LibInfo.metals[i] + "Lattice" + textureSuffix);
+		for (int i2 = 8; i2 < 16; i2++)
+			this.icon[i2] = ir.registerIcon(ModInfo.PREFIX + "frame/" + "block" + LibInfo.metals[i2 - 8] + "LatticeThin" + textureSuffix);
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })

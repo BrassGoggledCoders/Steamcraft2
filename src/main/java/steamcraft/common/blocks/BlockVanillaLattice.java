@@ -31,21 +31,31 @@ import steamcraft.common.lib.ModInfo;
  */
 public class BlockVanillaLattice extends BlockMetalLattice
 {
-	public IIcon[] icon = new IIcon[2];
-	String textureSuffix;
+	public IIcon[] blockicon = new IIcon[4];
 
-	public BlockVanillaLattice(String suffix)
+	public BlockVanillaLattice()
 	{
 		super("");
-		this.textureName = suffix;
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public IIcon getIcon(int side, int metadata)
+	{
+		if (metadata < this.blockicon.length)
+			return this.blockicon[metadata];
+		else
+			return this.blockicon[0];
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(final IIconRegister ir)
 	{
-		this.icon[0] = ir.registerIcon(ModInfo.PREFIX + "frame/" + "blockLatticeIron" + textureSuffix);
-		this.icon[1] = ir.registerIcon(ModInfo.PREFIX + "frame/" + "blockLatticeGold" + textureSuffix);
+		this.blockicon[0] = ir.registerIcon(ModInfo.PREFIX + "frame/" + "blockLatticeIron");
+		this.blockicon[1] = ir.registerIcon(ModInfo.PREFIX + "frame/" + "blockLatticeGold");
+		this.blockicon[2] = ir.registerIcon(ModInfo.PREFIX + "frame/" + "blockLatticeIronThin");
+		this.blockicon[3] = ir.registerIcon(ModInfo.PREFIX + "frame/" + "blockLatticeGoldThin");
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
@@ -53,7 +63,7 @@ public class BlockVanillaLattice extends BlockMetalLattice
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(final Item item, final CreativeTabs tab, final List l)
 	{
-		for (int var4 = 0; var4 < this.icon.length; ++var4)
+		for (int var4 = 0; var4 < this.blockicon.length; ++var4)
 			l.add(new ItemStack(this, 1, var4));
 	}
 }

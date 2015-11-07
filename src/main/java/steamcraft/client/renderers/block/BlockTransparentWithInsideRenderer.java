@@ -29,6 +29,8 @@ public class BlockTransparentWithInsideRenderer implements ISimpleBlockRendering
 {
 	public void drawBlock(Block block, int meta, RenderBlocks renderer)
 	{
+		if (block.getIcon(0, meta) == null)
+			return;
 		Tessellator tessellator = Tessellator.instance;
 		tessellator.startDrawingQuads();
 		tessellator.setNormal(0.0F, -1.0F, 0.0F);
