@@ -39,6 +39,6 @@ public class ItemMonocle extends BaseArmor
 	@SideOnly(Side.CLIENT)
 	public String getArmorTexture(ItemStack is, Entity entity, int slot, String type)
 	{
-		return ModInfo.PREFIX + "textures/armor/monocle.png";
+		return ModInfo.PREFIX + "textures/models/armor/monocle.png";
 	}
 }
