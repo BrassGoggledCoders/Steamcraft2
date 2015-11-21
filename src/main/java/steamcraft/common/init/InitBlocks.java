@@ -606,7 +606,6 @@ public class InitBlocks
 		registerBlock(blockMangroveLeaves, "BlockMangroveLeaves");
 
 		blockMangrovePlanks = new BaseBlock(Material.wood).setBlockName("blockMangrovePlanks");
-		registerBlock(blockMangrovePlanks, "BlockMangrovePlanks");
 
 		blockWillowLog = new BlockCustomLog("Willow").setBlockName("blockWillowLog");
 		registerBlock(blockWillowLog, "BlockWillowLog");
