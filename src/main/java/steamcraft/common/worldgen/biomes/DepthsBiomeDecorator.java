@@ -313,24 +313,6 @@ public class DepthsBiomeDecorator extends DeferredBiomeDecorator
 			int zCoord = chunkZ + random.nextInt(16);
 			new WorldGenRandomUnderground(Blocks.vine).generate(world, random, xCoord, yCoord, zCoord);
 		}
-		{
-			int xCoord = chunkX + random.nextInt(16);
-			int yCoord = 10 + random.nextInt(40);
-			int zCoord = chunkZ + random.nextInt(16);
-			new WorldGenRandomUnderground(InitBlocks.blockMushroom, 0).generate(world, random, xCoord, yCoord, zCoord);
-		}
-		{
-			int xCoord = chunkX + random.nextInt(16);
-			int yCoord = 10 + random.nextInt(40);
-			int zCoord = chunkZ + random.nextInt(16);
-			new WorldGenRandomUnderground(InitBlocks.blockMushroom, 1).generate(world, random, xCoord, yCoord, zCoord);
-		}
-		{
-			int xCoord = chunkX + random.nextInt(16);
-			int yCoord = 10 + random.nextInt(40);
-			int zCoord = chunkZ + random.nextInt(16);
-			new WorldGenRandomUnderground(InitBlocks.blockMushroom, 2).generate(world, random, xCoord, yCoord, zCoord);
-		}
 	}
 
 	/**
