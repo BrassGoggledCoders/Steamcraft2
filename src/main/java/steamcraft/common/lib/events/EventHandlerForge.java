@@ -20,8 +20,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.Potion;
-import net.minecraft.potion.PotionEffect;
 
 import cpw.mods.fml.client.event.ConfigChangedEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
@@ -32,7 +30,6 @@ import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.common.IExtendedEntityProperties;
 import net.minecraftforge.event.entity.EntityEvent.EntityConstructing;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
-import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 
 import steamcraft.common.config.ConfigBalance;
 import steamcraft.common.config.ConfigGeneral;
@@ -52,26 +49,6 @@ public class EventHandlerForge
 	{
 		if (event.entity instanceof EntityPlayer)
 			EntityPlayerExtended.register((EntityPlayer) event.entity);
-	}
-
-	@SubscribeEvent
-	public void livingUpdate(LivingUpdateEvent event)
-	{
-		if (event.entityLiving instanceof EntityPlayer)
-		{
-			EntityPlayer player = (EntityPlayer) event.entityLiving;
-			ItemStack is = player.inventory.armorItemInSlot(3);
-
-			if ((is != null) && (is.getItem() == InitItems.itemBrassGoggles))
-				player.addPotionEffect(new PotionEffect(Potion.nightVision.id, 2, 0, true));
-			if ((is != null) && (is.getItem() == InitItems.itemDivingHelmet) && player.isInWater())
-				player.addPotionEffect(new PotionEffect(Potion.nightVision.id, 2, 0, true));
-
-			// TODO Change tis!!
-			ItemStack stack = player.inventory.armorItemInSlot(0);
-			if (stack == null)
-				player.stepHeight = 0.5F;
-		}
 	}
 
 	@SubscribeEvent

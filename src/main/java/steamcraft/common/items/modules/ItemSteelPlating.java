@@ -99,4 +99,18 @@ public class ItemSteelPlating extends BaseDefensiveModule
 	{
 		return 40;
 	}
+
+	@Override
+	public void onArmorEquipped(World world, EntityPlayer player)
+	{
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void onArmorUnequipped(World world, EntityPlayer player)
+	{
+		// TODO Auto-generated method stub
+
+	}
 }

@@ -253,4 +253,34 @@ public class ItemBrassArmor extends BaseArmor implements ISpecialArmor, IGoggles
 
 		return allowed;
 	}
+
+	public void onArmorEquipped(World world, EntityPlayer player, ItemStack armor)
+	{
+		NBTTagCompound nbt = getOrCreateTagCompound(armor);
+
+		for (int i = 0; i < nbt.getInteger("moduleCount"); i++)
+		{
+			IArmorModule module = (IArmorModule) ModuleRegistry.getModule(nbt.getString("module" + i));
+
+			if ((module != null))
+			{
+				module.onArmorEquipped(world, player);
+			}
+		}
+	}
+
+	public void onArmorUnequipped(World world, EntityPlayer player, ItemStack armor)
+	{
+		NBTTagCompound nbt = getOrCreateTagCompound(armor);
+
+		for (int i = 0; i < nbt.getInteger("moduleCount"); i++)
+		{
+			IArmorModule module = (IArmorModule) ModuleRegistry.getModule(nbt.getString("module" + i));
+
+			if ((module != null))
+			{
+				module.onArmorUnequipped(world, player);
+			}
+		}
+	}
 }

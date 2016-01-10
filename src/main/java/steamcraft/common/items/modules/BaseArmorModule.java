@@ -88,6 +88,7 @@ public abstract class BaseArmorModule extends RootItem implements IArmorModule
 	}
 
 	@Override
+	@Deprecated
 	public int getModuleWeight()
 	{
 		return 0;
@@ -102,6 +103,20 @@ public abstract class BaseArmorModule extends RootItem implements IArmorModule
 
 	@Override
 	public void onModuleRemoved(World world)
+	{
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void onArmorEquipped(World world, EntityPlayer player)
+	{
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void onArmorUnequipped(World world, EntityPlayer player)
 	{
 		// TODO Auto-generated method stub
 

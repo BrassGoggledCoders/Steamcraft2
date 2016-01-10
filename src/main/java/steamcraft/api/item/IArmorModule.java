@@ -8,6 +8,9 @@
  */
 package steamcraft.api.item;
 
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.world.World;
+
 /**
  * The Interface IArmorModule.
  *
@@ -31,19 +34,26 @@ public interface IArmorModule extends IModule
 	public EnumArmorEffectType getArmorEffectType();
 
 	/**
-	 * EnumArmorEffectType.
+	 * EnumArmorEffectType. TODO: Allow multiple effect types
 	 */
 	public static enum EnumArmorEffectType
 	{
 		/** Called every tick while the armor is worn, server and clientside. */
-		ONTICK, /** See @link IDefensiveArmorModule for more info on this */
-		DEFENSIVE, /**
-					 * Clientside. Allows you to display on the player's screen
-					 */
-		HUD, /** SC2 Use Only! */
+		ONTICK,
+		/** See @link IDefensiveArmorModule for more info on this */
+		DEFENSIVE,
+		/**
+		 * Clientside. Allows you to display on the player's screen
+		 */
+		HUD,
+		/** SC2 Use Only! */
 		SPECIAL
 	}
 
 	@Deprecated
 	public int getModuleWeight();
+
+	public void onArmorEquipped(World world, EntityPlayer player);
+
+	public void onArmorUnequipped(World world, EntityPlayer player);
 }

@@ -59,13 +59,13 @@ public class ItemSpringHeels extends PoweredArmorModule
 	@Override
 	public void applyModuleEffect(World world, EntityPlayer player, ItemStack stack)
 	{
-		player.stepHeight = 1F;
+		return;
 	}
 
 	@Override
 	public EnumArmorEffectType getArmorEffectType()
 	{
-		return EnumArmorEffectType.ONTICK;
+		return EnumArmorEffectType.SPECIAL;
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -73,5 +73,17 @@ public class ItemSpringHeels extends PoweredArmorModule
 	public void registerIcons(IIconRegister par1IconRegister)
 	{
 		this.itemIcon = par1IconRegister.registerIcon(ModInfo.PREFIX + this.getUnlocalizedName().substring(5));
+	}
+
+	@Override
+	public void onArmorEquipped(World world, EntityPlayer player)
+	{
+		// player.stepHeight = 1.0F;
+	}
+
+	@Override
+	public void onArmorUnequipped(World world, EntityPlayer player)
+	{
+		// player.stepHeight = 0.5F;
 	}
 }

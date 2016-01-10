@@ -12,16 +12,26 @@
  */
 package steamcraft.common.lib.events;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import net.minecraft.block.Block;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.event.ClickEvent;
 import net.minecraft.event.HoverEvent;
+import net.minecraft.item.ItemStack;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
 
 import cpw.mods.fml.client.event.ConfigChangedEvent;
+import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent;
+import cpw.mods.fml.common.gameevent.TickEvent;
+import cpw.mods.fml.relauncher.Side;
 
 import steamcraft.common.Steamcraft;
 import steamcraft.common.blocks.machines.BlockIntake;
@@ -34,6 +44,7 @@ import steamcraft.common.init.InitAchievements;
 import steamcraft.common.init.InitItems;
 import steamcraft.common.items.ItemIngot;
 import steamcraft.common.items.ItemSheet;
+import steamcraft.common.items.armor.ItemBrassArmor;
 import steamcraft.common.items.armor.ItemClockworkWings;
 import steamcraft.common.items.armor.ItemSteamJetpack;
 import steamcraft.common.items.electric.ItemRayGun;
@@ -46,6 +57,8 @@ import steamcraft.common.lib.ModInfo;
  */
 public class EventHandlerFML
 {
+	public static List<String> armorWearingPlayers = new ArrayList();
+
 	@SubscribeEvent
 	public void onItemCrafted(PlayerEvent.ItemCraftedEvent event)
 	{
@@ -128,5 +141,46 @@ public class EventHandlerFML
 	{
 		if (eventArgs.modID.equals(ModInfo.ID))
 			Config.initialise(Steamcraft.configFolder);
+	}
+
+	ItemBrassArmor prevArmor = null;
+
+	@SubscribeEvent
+	public void playerTick(TickEvent.PlayerTickEvent event)
+	{
+		if (event.side == Side.CLIENT)
+			return;
+		EntityPlayer player = event.player;
+		ItemStack helmet = player.getCurrentArmor(3);
+
+		if ((helmet != null) && (helmet.getItem() == InitItems.itemBrassGoggles))
+			player.addPotionEffect(new PotionEffect(Potion.nightVision.id, 2, 0, true));
+		if ((helmet != null) && (helmet.getItem() == InitItems.itemDivingHelmet) && player.isInWater())
+			player.addPotionEffect(new PotionEffect(Potion.nightVision.id, 2, 0, true));
+
+		// TODO Apply to more than just boots.
+		// Dirty hackity hacks. Forgive me father, for I have sinned.
+		boolean armorWearing = armorWearingPlayers.contains(player.getGameProfile().getName());
+
+		ItemStack armorPiece = player.getCurrentArmor(0);
+
+		if (!armorWearing && armorPiece != null && armorPiece.getItem() instanceof ItemBrassArmor)
+		{
+			armorWearingPlayers.add(player.getGameProfile().getName());
+			FMLLog.warning("E", "E");
+			ItemBrassArmor brassArmor = (ItemBrassArmor) armorPiece.getItem();
+			brassArmor.onArmorEquipped(player.getEntityWorld(), player, armorPiece);
+			prevArmor = brassArmor;
+		}
+		if (armorWearing && (armorPiece == null || !(armorPiece.getItem() instanceof ItemBrassArmor)))
+		{
+			armorWearingPlayers.remove(player.getGameProfile().getName());
+			FMLLog.warning("U", "U");
+			if (prevArmor != null)
+			{
+				prevArmor.onArmorUnequipped(player.getEntityWorld(), player, /* TODO */ new ItemStack(prevArmor));
+				prevArmor = null;
+			}
+		}
 	}
 }
