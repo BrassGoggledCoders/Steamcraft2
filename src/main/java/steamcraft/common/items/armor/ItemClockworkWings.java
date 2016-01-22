@@ -85,7 +85,7 @@ public class ItemClockworkWings extends BaseArmor
 					player.motionY += 0.4D;
 			}
 
-			if ((player.motionY < 0.0D) && player.isSneaking())
+			if ((player.motionY < 0.0D) && player.isSneaking() && player.isAirBorne)
 			{
 				player.addExhaustion(hungerPerTick / 6);
 				player.motionY /= 1.4D;
