@@ -448,8 +448,10 @@ public class InitRecipes
 				Blocks.piston, 'R', Items.redstone));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemRollerSkates), "   ", " L ", "WRW", 'W', Blocks.log, 'L',
 				Items.leather_boots, 'R', "partCastIronRod"));
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemSpringHeels), "   ", " L ", "S S", 'S',
-				new ItemStack(InitItems.itemSteelParts, 1, 2), 'L', Items.leather_boots));
+		// GameRegistry.addRecipe(new ShapedOreRecipe(new
+		// ItemStack(InitItems.itemSpringHeels), " ", " L ", "S S", 'S',
+		// new ItemStack(InitItems.itemSteelParts, 1, 2), 'L',
+		// Items.leather_boots));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemSteelPlating), "SSS", "SSS", "SSS", 'S', "plateSteel"));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemWatchDisplay), "GGG", "RCR", "III", 'I', "ingotIron", 'G', "paneGlass",
 				'R', Items.redstone, 'C', Items.clock));
