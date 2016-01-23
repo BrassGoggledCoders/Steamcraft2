@@ -92,7 +92,7 @@ public class ItemSteamJetpack extends BaseArmor
 
 			}
 
-			if ((this == InitItems.itemSteamWingpack) && (player.motionY < 0.0D) && player.isSneaking())
+			if ((this == InitItems.itemSteamWingpack) && (player.motionY < 0.0D) && player.isSneaking() && !player.onGround)
 			{
 				this.consumeSteamFromCanister(player, (byte) (this.steamPerTick / 2));
 				player.motionY /= 1.4D;

@@ -36,7 +36,7 @@ import steamcraft.common.lib.ModInfo;
  */
 public class ItemClockworkWings extends BaseArmor
 {
-	private static final float hungerPerTick = 1F;
+	private static final float hungerPerTick = 100F;
 
 	public ItemClockworkWings(ArmorMaterial mat, int renderIndex, int type)
 	{
@@ -85,7 +85,7 @@ public class ItemClockworkWings extends BaseArmor
 					player.motionY += 0.4D;
 			}
 
-			if ((player.motionY < 0.0D) && player.isSneaking() && player.isAirBorne)
+			if ((player.motionY < 0.0D) && player.isSneaking() && !player.onGround)
 			{
 				player.addExhaustion(hungerPerTick / 6);
 				player.motionY /= 1.4D;
