@@ -268,11 +268,14 @@ Beta 5.0.0:
 
 Beta 5.0.1:
 + Climbable Lattice (metal) and scaffold (wood. Comes with thick and thin varients Far too many of them. New textures pending - warlordjones
-+ Engraved Redstone and Emerald - TheDoctaSoda
++ Engraved Redstone and Emerald - TheDoctorSoda
 * Iron golems drop cast iron when killed by fire. Configurable. - TheDoctorSoda
 * Plating recipes - warlordjones
 * Deeps is now disabled by default due to it being so broken for many users - warlordjones
 * Improvement to pipe extraction. it now has a selection GUI accessible when shift-clicking on pipes with a spanner - decebaldecebal
+* Recipe/function of Spring Heels is temporarily disabled
+# Fix for crash when using latest Boilerplate
+# No longer attempt to generate mushrooms in the Deeps.
 # Lack of recipes for mossy and rusty plating - warlordjones 
 # Fixed metal blocks not being in the ore dictionary - warlordjones
 # Fixed broken oredict on resource items. - warlordjones
