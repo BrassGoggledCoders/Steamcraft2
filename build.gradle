@@ -45,7 +45,7 @@ project.ext {
     mcVersion = "1.7.10"
 }
 
-version = project.ext.mcVersion + "-B5.0.0" + project.ext.buildNum
+version = project.ext.mcVersion + "-B5.0.1" + project.ext.buildNum
 group= "brassgoggledcoders" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "steamcraft2"
 
@@ -55,7 +55,7 @@ minecraft {
 }
 
 dependencies {
-    compile "brassgoggledcoders:boilerplate:1.7.10-6.1.0.+:deobf"
+    compile "brassgoggledcoders:boilerplate:1.7.10-6.1.1.+:deobf"
     compile 'com.mod-buildcraft:buildcraft:6.4.16:dev'
     compile 'net.industrial-craft:industrialcraft-2:2.2.727-experimental:api'
     compile 'Azanor:Thaumcraft:4.2.3.5:deobf@jar'
