@@ -38,6 +38,7 @@ import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.MinecraftForge;
 
 import boilerplate.client.GuiHandler;
+import boilerplate.common.IBoilerplateMod;
 import boilerplate.common.compathandler.FMPCompatHandler;
 import boilerplate.common.utils.handlers.BucketHandler;
 import steamcraft.common.compat.CompatabilityLayer;
@@ -71,7 +72,7 @@ import steamcraft.common.worldgen.structure.StructureUndercityStart;
  * @commentary by Arnold
  */
 @Mod(modid = ModInfo.ID, name = ModInfo.NAME, version = ModInfo.VERSION, guiFactory = ModInfo.CONFIG_GUI, dependencies = "required-after:boilerplate;after:Thaumcraft")
-public class Steamcraft
+public class Steamcraft implements IBoilerplateMod
 {
 	@SidedProxy(clientSide = ModInfo.CLIENT_PROXY, serverSide = ModInfo.COMMON_PROXY)
 	public static CommonProxy proxy;
@@ -109,7 +110,7 @@ public class Steamcraft
 		LoggerSteamcraft.info("Starting Init");
 
 		CompatabilityLayer.init();
-		NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
+		NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler(instance));
 		InitPackets.init();
 
 		InitEntities.init();
@@ -214,5 +215,17 @@ public class Steamcraft
 				}
 			}
 		}
+	}
+
+	@Override
+	public String getModID()
+	{
+		return ModInfo.ID;
+	}
+
+	@Override
+	public Object getInstance()
+	{
+		return instance;
 	}
 }
