@@ -8,7 +8,7 @@ Steamcraft 2 is a Minecraft mod that adds steampunk themed machinery, tools, arm
 
 License:
 ========
-This mod uses the MMPL v1.0. Please read it before doing anything else. Also, please don't just copy and paste massive chunks of code and claim it as your own! In the words of the CoFH team, "Don't be a jerk!"
+See the relevant license files.
 
 Committing Changes:
 ===================
