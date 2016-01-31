@@ -1,6 +1,7 @@
 buildscript {
     repositories {
         mavenCentral()
+        jcenter()
         maven {
             name = "forge"
             url = "http://files.minecraftforge.net/maven"
@@ -11,9 +12,11 @@ buildscript {
         }
     }
     dependencies {
-        classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.1-SNAPSHOT'
     }
 }
+
+apply plugin: 'net.minecraftforge.gradle.forge'
 
 repositories {
     maven {
@@ -25,7 +28,7 @@ repositories {
         url = "http://maven.ic2.player.to/"
     }
     ivy {
-		name = 'ThaumCraft 4 API'
+		name = 'ThaumCraft 4 API'     
 		artifactPattern 'https://dl.dropboxusercontent.com/u/47135879/[module](-[classifier])-1.7.10-[revision](.[ext])'
 	}
     maven {
@@ -38,11 +41,10 @@ repositories {
     }
 }
 
-apply plugin: 'forge'
-
 project.ext {
     buildNum = System.getenv("BUILD_NUMBER")
-    mcVersion = "1.7.10"
+    mcVersion = "1.8.9"
+    forgeVersion = "11.15.0.1698"
 }
 
 version = project.ext.mcVersion + "-B5.0.1" + project.ext.buildNum
@@ -50,22 +52,23 @@ group= "brassgoggledcoders" // http://maven.apache.org/guides/mini/guide-naming-
 archivesBaseName = "steamcraft2"
 
 minecraft {
-    version = "${project.ext.mcVersion}-10.13.4.1490-${project.ext.mcVersion}"
+    version = version = "${project.ext.mcVersion}-${project.ext.forgeVersion}"
     runDir = "eclipse"
+    mappings = "snapshot_20160113"
 }
 
 dependencies {
-    compile "brassgoggledcoders:boilerplate:1.7.10-6.2.1.68:deobf"
-    compile 'com.mod-buildcraft:buildcraft:6.4.16:dev'
-    compile 'net.industrial-craft:industrialcraft-2:2.2.727-experimental:api'
-    compile 'Azanor:Thaumcraft:4.2.3.5:deobf@jar'
-    compile 'team.chisel:Chisel:2.9.0.3:deobf'
-    compile 'team.chisel.ctmlib:CTMLib:MC1.7.10-1.3.0.2:deobf'
-    compile name: "Botania", group: "vazkii.botania", version: "r1.6-190.6", classifier: "deobf"
+    compile "brassgoggledcoders:boilerplate:1.8.9-7.0.0.+:deobf"
+    //compile 'com.mod-buildcraft:buildcraft:6.4.16:dev'
+    //compile 'net.industrial-craft:industrialcraft-2:2.2.727-experimental:api'
+    //compile 'Azanor:Thaumcraft:4.2.3.5:deobf@jar'
+    //compile 'team.chisel:Chisel:2.9.0.3:deobf'
+    //compile 'team.chisel.ctmlib:CTMLib:MC1.7.10-1.3.0.2:deobf'
+    //compile name: "Botania", group: "vazkii.botania", version: "r1.6-190.6", classifier: "deobf"
 
-    compile files("libs/Railcraft_1.7.10-9.7.0.0-dev.jar")
+    //compile files("libs/Railcraft_1.7.10-9.7.0.0-dev.jar")
 
-	runtime 'Azanor:Baubles:1.0.1.10:deobf@jar'
+	//runtime 'Azanor:Baubles:1.0.1.10:deobf@jar'
 }
 
 task getLibraries {
@@ -73,7 +76,7 @@ task getLibraries {
     if (!libsFolder.isDirectory()) {
         libsFolder.mkdirs()
     }
-
+/*
     def railcraftSource = 'https://dl.dropboxusercontent.com/u/38558957/Minecraft/Railcraft/Railcraft_1.7.10-9.7.0.0-dev.jar'
     def railcraftDest = new File('libs', 'Railcraft_1.7.10-9.7.0.0-dev.jar')
 
@@ -81,7 +84,7 @@ task getLibraries {
         railcraftDest.withOutputStream { out ->
             new URL(railcraftSource).withInputStream { from ->  out << from; }
         }
-    }
+    }*/
 }
 
 
