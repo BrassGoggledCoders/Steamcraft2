@@ -1,10 +1,10 @@
-Steamcraft 2 for Minecraft 1.7.10
+Steamcraft 2 for Minecraft 1.8.9
 ================================
-Please read the wiki - http://ftb.gamepedia.com/Steamcraft2 - for articles relating to the features in this mod.
-
 About:
 ======
 Steamcraft 2 is a Minecraft mod that adds steampunk themed machinery, tools, armor, and weapons.
+
+Please read the wiki - http://ftb.gamepedia.com/Steamcraft2 - for articles relating to the features in this mod.
 
 License:
 ========
@@ -28,6 +28,7 @@ _Coders:_
 * warlordjones: leader(ish), author of the mod Steampunkery (which was merged into SC2), programmer; speciality: fancy, items/vanity system and breaking things
 * decebaldecebal: programmer; speciality: complicated tile entities, power systems, GUIs, cleanup
 * domi1918: Core Modular Armor System Author
+* TheDoctorSoda: Chief of Porting.
 
 _Artists:_
 * Falkok15: modeler, texture-artist
@@ -36,8 +37,7 @@ _Artists:_
 * frothiny: texture-artist
 
 _Testers/Other:_
-* Rongmario: support
-* seanvanpelt2: alpha/beta tester
+* modmuss50: Porting assistant
 * The People of the Brass Blocks server: ideas/motivations
 * ClockwerkKaiser: Chief Motivator! :P
 * Some textures are edited versions of textures from the Painterly Pack
@@ -51,10 +51,6 @@ _Open Positions:_
 * We could always do with more coders & texturers too.
 
 Contact at with the below methods to apply
-
-Looking for a Steamcraft2 Server?
-=================================
-The whitelisted Brass Blocks steampunk server, with a small, friendly community would be happy to welcome any steampunk enthusiasts into it's ranks. For more information, go here: http://brassgoggles.co.uk/forum/index.php/topic,40250.0.html Warlordjones is one of the admins of this server, and can be regularly found there, when not modding.
 
 Contact Us
 ==========
