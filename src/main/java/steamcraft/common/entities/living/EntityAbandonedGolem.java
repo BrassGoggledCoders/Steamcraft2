@@ -1,3 +1,4 @@
+
 package steamcraft.common.entities.living;
 
 import net.minecraft.entity.Entity;

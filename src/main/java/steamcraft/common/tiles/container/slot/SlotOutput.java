@@ -1,3 +1,4 @@
+
 package steamcraft.common.tiles.container.slot;
 
 import net.minecraft.inventory.IInventory;

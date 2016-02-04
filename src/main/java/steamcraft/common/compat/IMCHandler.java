@@ -1,3 +1,4 @@
+
 package steamcraft.common.compat;
 
 import net.minecraft.item.ItemStack;

@@ -1,15 +1,4 @@
-/**
- * This class was created by BrassGoggledCoders modding team.
- * This class is available as part of the WhaleOilcraft 2 Mod for Minecraft.
- *
- * WhaleOilcraft 2 is open-source and is distributed under the MMPL v1.0 License.
- * (http://www.mod-buildcraft.com/MMPL-1.0.txt)
- *
- * WhaleOilcraft 2 is based on the original WhaleOilcraft Mod created by Proloe.
- * WhaleOilcraft (c) Proloe 2011
- * (http://www.minecraftforum.net/topic/251532-181-whaleoilcraft-source-code-releasedmlv054wip/)
- *
- */
+
 package steamcraft.common.tiles;
 
 import net.minecraft.entity.player.EntityPlayer;

@@ -1,3 +1,4 @@
+
 package steamcraft.common.compat;
 
 import cpw.mods.fml.common.event.FMLInitializationEvent;

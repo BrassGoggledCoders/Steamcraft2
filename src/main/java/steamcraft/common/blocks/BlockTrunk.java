@@ -1,3 +1,4 @@
+
 package steamcraft.common.blocks;
 
 import net.minecraft.block.BlockChest;
