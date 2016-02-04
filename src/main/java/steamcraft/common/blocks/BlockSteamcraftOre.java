@@ -28,7 +28,6 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 import boilerplate.common.baseclasses.blocks.BaseMetadataBlock;
-import steamcraft.api.block.IHammerable;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.init.InitBlocks;
 import steamcraft.common.init.InitItems;
@@ -38,8 +37,7 @@ import steamcraft.common.lib.ModInfo;
  * @author Surseance
  *
  */
-@SuppressWarnings("deprecation")
-public class BlockSteamcraftOre extends BaseMetadataBlock implements IHammerable
+public class BlockSteamcraftOre extends BaseMetadataBlock
 {
 	private final IIcon[] icon = new IIcon[7];
 
@@ -90,15 +88,6 @@ public class BlockSteamcraftOre extends BaseMetadataBlock implements IHammerable
 	{
 		for (int var4 = 0; var4 < 7; ++var4)
 			l.add(new ItemStack(InitBlocks.blockCustomOre, 1, var4));
-	}
-
-	@Override
-	public ItemStack getOutput(int meta)
-	{
-		if (meta < 4)
-			return new ItemStack(InitItems.itemPowder);
-		else
-			return null;
 	}
 
 	@Override

@@ -60,9 +60,7 @@ import steamcraft.common.blocks.BlockMeltingIce;
 import steamcraft.common.blocks.BlockMetal;
 import steamcraft.common.blocks.BlockMetalLattice;
 import steamcraft.common.blocks.BlockMossyMetal;
-import steamcraft.common.blocks.BlockMotionSensor;
 import steamcraft.common.blocks.BlockMud;
-import steamcraft.common.blocks.BlockPlankStack;
 import steamcraft.common.blocks.BlockPlating;
 import steamcraft.common.blocks.BlockPolishedPlanks;
 import steamcraft.common.blocks.BlockRustyMetal;
@@ -89,14 +87,12 @@ import steamcraft.common.blocks.machines.BlockCharger;
 import steamcraft.common.blocks.machines.BlockCopperPipe;
 import steamcraft.common.blocks.machines.BlockCopperTank;
 import steamcraft.common.blocks.machines.BlockCopperWire;
-import steamcraft.common.blocks.machines.BlockDropHammerAnvil;
 import steamcraft.common.blocks.machines.BlockInjector;
 import steamcraft.common.blocks.machines.BlockIntake;
 import steamcraft.common.blocks.machines.BlockLightningRod;
 import steamcraft.common.blocks.machines.BlockLiquidBoiler;
 import steamcraft.common.blocks.machines.BlockNuclearBoiler;
 import steamcraft.common.blocks.machines.BlockRefinery;
-import steamcraft.common.blocks.machines.BlockSawmill;
 import steamcraft.common.blocks.machines.BlockStasisField;
 import steamcraft.common.blocks.machines.BlockSteamBoiler;
 import steamcraft.common.blocks.machines.BlockSteelPipe;
@@ -342,7 +338,6 @@ public class InitBlocks
 		blockLightningRod = new BlockLightningRod(Material.iron).setBlockName("blockLightningRod");
 		blockTeslaCoil = new BlockTeslaCoil(Material.iron).setBlockName("blockTeslaCoil");
 		blockCharger = new BlockCharger().setBlockName("blockCharger");
-		blockSaw = new BlockSawmill(Material.anvil).setBlockName("blockSawmill");
 
 		RegistryHelper.registerContainerBlockWithDesc(blockTurbine, TileTurbine.class, "BlockTurbine");
 		RegistryHelper.registerContainerBlockWithDesc(blockBattery, TileBattery.class, "BlockBattery");
@@ -350,8 +345,6 @@ public class InitBlocks
 		RegistryHelper.registerContainerBlockWithDesc(blockLightningRod, TileLightningRod.class, "BlockLightningRod");
 		RegistryHelper.registerContainerBlockWithDesc(blockTeslaCoil, TileTeslaCoil.class, "BlockTeslaCoil");
 		RegistryHelper.registerContainerBlockWithDesc(blockCharger, TileCharger.class, "BlockCharger");
-		// RegistryHelper.registerContainerBlockWithDesc(blockSaw,
-		// TileSawmill.class, "BlockSawmill");
 
 		// Bloomery
 		blockBloomery = new BlockBloomery(Material.rock).setBlockName("blockBloomery");
@@ -482,11 +475,6 @@ public class InitBlocks
 
 	private static void initializeOthers()
 	{
-		blockDropHammerAnvil = new BlockDropHammerAnvil(Material.anvil).setBlockName("blockDropHammerAnvil");
-
-		// RegistryHelper.registerContainerBlock(blockDropHammerAnvil,
-		// TileDropHammer.class, "BlockDropHammerAnvil");
-
 		blockTeaPlant = new BlockTeaPlant().setBlockName("blockTeaPlant");
 		registerBlock(blockTeaPlant, "BlockTeaPlant");
 
@@ -499,20 +487,8 @@ public class InitBlocks
 		blockFlesh = new BaseBlock(Material.gourd).setBlockName("blockFlesh").setCreativeTab(Steamcraft.tabSC2);
 		registerBlock(blockFlesh, "BlockFlesh");
 
-		blockPlankStack = new BlockPlankStack(Material.wood).setBlockName("blockPlankStack").setCreativeTab(Steamcraft.tabSC2);
-		// registerBlock(blockPlankStack, BaseItemBlockWithMetadata.class,
-		// "BlockPlankStack");
-
 		blockCongealedSlime = new BlockCongealedSlime(Material.gourd).setBlockName("blockCongealedSlime").setCreativeTab(Steamcraft.tabSC2);
 		registerBlock(blockCongealedSlime, "BlockCongealedSlime");
-
-		blockMotionSensor = new BlockMotionSensor(Material.iron, false).setBlockName("blockMotionSensor");
-		blockMotionSensorOn = new BlockMotionSensor(Material.iron, true).setBlockName("blockMotionSensorOn");
-
-		// RegistryHelper.registerContainerBlock(blockMotionSensor,
-		// TileMotionSensor.class, "BlockMotionSensor");
-		// RegistryHelper.registerContainerBlock(blockMotionSensorOn,
-		// TileMotionSensor.class, "BlockMotionSensorOn");
 
 		// Standard
 		blockStandardSiren = new BlockSiren(Material.redstoneLight, false, "standard").setBlockName("blockStandardSiren");
