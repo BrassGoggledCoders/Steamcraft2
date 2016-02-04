@@ -49,14 +49,11 @@ import steamcraft.common.blocks.BlockCustomSlab;
 import steamcraft.common.blocks.BlockCustomStairs;
 import steamcraft.common.blocks.BlockCustomWall;
 import steamcraft.common.blocks.BlockDynamite;
-import steamcraft.common.blocks.BlockEngravedSolid;
-import steamcraft.common.blocks.BlockEngravedVanilla;
 import steamcraft.common.blocks.BlockFissurePortal;
 import steamcraft.common.blocks.BlockHatch;
 import steamcraft.common.blocks.BlockInfestedDirt;
 import steamcraft.common.blocks.BlockInfestedGrass;
 import steamcraft.common.blocks.BlockInvertedCastIronLamp;
-import steamcraft.common.blocks.BlockLamp;
 import steamcraft.common.blocks.BlockLeafPile;
 import steamcraft.common.blocks.BlockLightSlate;
 import steamcraft.common.blocks.BlockMeltingIce;
@@ -106,6 +103,7 @@ import steamcraft.common.blocks.machines.BlockSteelPipe;
 import steamcraft.common.blocks.machines.BlockSteelWire;
 import steamcraft.common.blocks.machines.BlockTeslaCoil;
 import steamcraft.common.blocks.machines.BlockTurbine;
+import steamcraft.common.compat.brassutils.BlockEngravedSolid;
 import steamcraft.common.tiles.EmptyTiles.TileCastIronLamp;
 import steamcraft.common.tiles.TileArmorEditor;
 import steamcraft.common.tiles.TileBloomery;
@@ -172,7 +170,6 @@ public class InitBlocks
 	public static Block blockFlesh;
 
 	public static Block blockInfestedGrass, blockInfestedDirt;
-	public static Block blockLamp, blockLampOn;
 
 	public static Block blockLightningRod, blockTeslaCoil;
 	public static Block blockMangroveFence, blockMangroveDoor, blockMangroveSlab, blockMangroveDoubleSlab, blockMangroveStairs;
@@ -265,10 +262,6 @@ public class InitBlocks
 	{
 		// Engraved Blocks
 		blockEngraved = new BlockEngravedSolid().setBlockName("blockEngravedSolid");
-		blockEngravedVanilla = new BlockEngravedVanilla().setBlockName("blockEngravedVanilla");
-
-		registerBlock(blockEngraved, BaseItemBlockWithMetadata.class, "BlockEngravedSolid", 10);
-		registerBlock(blockEngravedVanilla, BaseItemBlockWithMetadata.class, "BlockEngravedVanilla", 5);
 
 		// Cast Iron
 		blockCastIronLamp = new BlockCastIronLamp(false).setBlockName("blockCastIronLamp");
@@ -290,12 +283,6 @@ public class InitBlocks
 		registerBlock(blockCastIronFence, "BlockCastIronFence");
 		registerBlock(blockCastIronGate, "BlockCastIronGate");
 		registerBlock(blockCastIronRailing, "BlockCastIronRailing");
-
-		blockLamp = new BlockLamp(false).setBlockName("blockLamp");
-		blockLampOn = new BlockLamp(true).setBlockName("blockLamp");
-
-		registerBlock(blockLamp, "BlockLamp");
-		registerBlock(blockLampOn, "BlockLampOn");
 
 		blockStonebrickWall = new BlockStonebrickWall().setBlockName("blockStonebrickWall");
 		registerBlock(blockStonebrickWall, BaseItemBlockWithMetadata.class, "BlockStonebrickWall", 0);
@@ -715,11 +702,11 @@ public class InitBlocks
 		registerBlock(blockBrassLeaves, "BlockBrassLeaves");
 	}
 
-	private static String[] blacklist = new String[] { "BlockFissurePortal", "BlockLamp", "BlockMotionSensor", "BlockMotionSensorOn",
-			"BlockStandardSirenOn", "BlockStandardSiren", "BlockAllClearSiren", "BlockAllClearSirenOn", "BlockNuclearSiren", "BlockNuclearSirenOn",
-			"BlockIntruderSiren", "BlockIntruderSirenOn", "BlockCopperTank", "BlockInfestedDirt", "BlockInfestedGrass" };
+	private static String[] blacklist = new String[] { "BlockFissurePortal", "BlockMotionSensor", "BlockMotionSensorOn", "BlockStandardSirenOn",
+			"BlockStandardSiren", "BlockAllClearSiren", "BlockAllClearSirenOn", "BlockNuclearSiren", "BlockNuclearSirenOn", "BlockIntruderSiren",
+			"BlockIntruderSirenOn", "BlockCopperTank", "BlockInfestedDirt", "BlockInfestedGrass" };
 
-	private static void registerBlock(Block block, Class<? extends ItemBlock> itemblock, String name, int maxMeta)
+	public static void registerBlock(Block block, Class<? extends ItemBlock> itemblock, String name, int maxMeta)
 	{
 		if (block.isOpaqueCube() && !Arrays.asList(blacklist).contains(name) && !block.hasTileEntity(0))
 			FMPCompatHandler.registerMetaFMP(block, maxMeta);

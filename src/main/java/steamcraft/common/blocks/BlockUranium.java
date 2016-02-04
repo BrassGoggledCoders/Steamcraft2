@@ -21,17 +21,19 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
+import cpw.mods.fml.common.Optional;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 import boilerplate.client.utils.EffectUtils;
-import steamcraft.api.block.IEngravable;
+import brassutils.api.IEngravable;
 import steamcraft.common.init.InitBlocks;
 
 /**
  * @author warlordjones
  *
  */
+@Optional.Interface(iface = "brassutils.api.IEngravable", modid = "brassutils")
 public class BlockUranium extends BaseBlock implements IEngravable
 {
 	public BlockUranium(Material mat)

@@ -27,6 +27,7 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 
+import boilerplate.common.baseclasses.items.BaseItemBlockWithMetadata;
 import boilerplate.common.utils.helpers.IMCHelper;
 import boilerplate.common.utils.helpers.OreDictHelper;
 import steamcraft.common.init.InitBiomes;
@@ -323,6 +324,10 @@ public class CompatabilityLayer
 			 * FluidStack(InitBlocks.moltenBrassFluid, blockLiquidValue), 20 *
 			 * 9);
 			 */
+		}
+		if (Loader.isModLoaded("BrassUtils"))
+		{
+			InitBlocks.registerBlock(InitBlocks.blockEngraved, BaseItemBlockWithMetadata.class, "BlockEngravedSolid", 10);
 		}
 	}
 }

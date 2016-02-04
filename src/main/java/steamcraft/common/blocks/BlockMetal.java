@@ -23,11 +23,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 
+import cpw.mods.fml.common.Optional;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 import boilerplate.common.baseclasses.blocks.BaseMetadataBlock;
-import steamcraft.api.block.IEngravable;
+import brassutils.api.IEngravable;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.init.InitBlocks;
 import steamcraft.common.lib.ModInfo;
@@ -36,6 +37,7 @@ import steamcraft.common.lib.ModInfo;
  * @author warlordjones
  *
  */
+@Optional.Interface(iface = "brassutils.api.IEngravable", modid = "brassutils")
 public class BlockMetal extends BaseMetadataBlock implements IEngravable
 {
 	public IIcon[] icon = new IIcon[8];

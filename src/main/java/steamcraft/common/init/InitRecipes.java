@@ -59,7 +59,7 @@ public class InitRecipes
 		// Gun Parts
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemGunPart, 1, 0), "WWW", " WW", 'W', "plankWood"));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemGunPart, 1, 1), "III", "   ", "III", 'I', "ingotIron"));
-		GameRegistry.addShapelessRecipe(new ItemStack(InitItems.itemGunPart, 1, 2), new ItemStack(InitItems.itemGunPart, 1, 1), InitItems.itemChisel);
+		GameRegistry.addShapelessRecipe(new ItemStack(InitItems.itemGunPart, 1, 2), new ItemStack(InitItems.itemGunPart, 1, 1), Items.flint);
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemGunPart, 1, 3), "  I", " II", 'I', "ingotIron"));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemGunPart, 1, 4), "III", " II", 'I', "ingotBrass"));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemGunPart, 1, 5), " II", " II", "  I", 'I', "ingotCastIron"));
@@ -539,7 +539,6 @@ public class InitRecipes
 				InitBlocks.blockBrickBlueSlateStairs, InitBlocks.blockBrickBlackSlateStairs, InitBlocks.blockBrickRedSlateStairs };
 		for (int i = 0; i < 9; i++)
 			GameRegistry.addRecipe(new ItemStack(stairs[i], 4), "X  ", "XX ", "XXX", 'X', new ItemStack(InitBlocks.blockSlate, 1, i));
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemChisel), " I", " S", 'I', "ingotIron", 'S', "stickWood"));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemWatch), "SPS", "PMP", "SPS", 'P', "paneGlass", 'M',
 				"partClockworkMechanism", 'S', "plateBrass"));
