@@ -10,7 +10,7 @@
  * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
  *
  */
-package steamcraft.common.compat.thaumcraft;
+package steamcraft.common.items.compat;
 
 import java.util.List;
 
