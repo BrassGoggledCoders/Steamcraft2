@@ -60,7 +60,7 @@ import steamcraft.common.worldgen.structure.StructureUndercityStart;
  * @author Surseance
  * @commentary by Arnold
  */
-@Mod(modid = ModInfo.ID, name = ModInfo.NAME, version = ModInfo.VERSION, guiFactory = ModInfo.CONFIG_GUI, dependencies = "required-after:boilerplate;after:Thaumcraft")
+@Mod(modid = ModInfo.ID, name = ModInfo.NAME, version = ModInfo.VERSION, guiFactory = ModInfo.CONFIG_GUI, dependencies = "required-after:boilerplate;after:Thaumcraft;after:BrassUtils")
 public class Steamcraft implements IBoilerplateMod
 {
 	@SidedProxy(clientSide = ModInfo.CLIENT_PROXY, serverSide = ModInfo.COMMON_PROXY)
