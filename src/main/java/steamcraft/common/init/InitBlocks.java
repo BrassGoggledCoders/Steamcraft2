@@ -558,6 +558,7 @@ public class InitBlocks
 		registerBlock(blockMangroveLeaves, "BlockMangroveLeaves");
 
 		blockMangrovePlanks = new BaseBlock(Material.wood).setBlockName("blockMangrovePlanks");
+		registerBlock(blockMangrovePlanks, "BlockMangrovePlanks");
 
 		blockWillowLog = new BlockCustomLog("Willow").setBlockName("blockWillowLog");
 		registerBlock(blockWillowLog, "BlockWillowLog");
@@ -588,21 +589,6 @@ public class InitBlocks
 
 		blockPetrifiedFence = new BlockCustomFence("blockPetrifiedPlanks", Material.wood).setBlockName("blockPetrifiedFence");
 		registerBlock(blockPetrifiedFence, "blockPetrifiedFence");
-
-		/*
-		 * blockRedwoodDoor = new
-		 * BlockCustomDoor("Redwood").setBlockName("blockRedwoodDoor");
-		 * registerBlock(blockRedwoodDoor, "BlockRedwoodDoor");
-		 * blockMangroveDoor = new
-		 * BlockCustomDoor("Mangrove").setBlockName("blockMangroveDoor");
-		 * registerBlock(blockMangroveDoor, "blockMangroveDoor");
-		 * blockWillowDoor = new
-		 * BlockCustomDoor("Willow").setBlockName("blockWillowDoor");
-		 * registerBlock(blockWillowDoor, "blockWillowDoor"); blockPetrifiedDoor
-		 * = new
-		 * BlockCustomDoor("Petrified").setBlockName("blockPetrifiedDoor");
-		 * registerBlock(blockPetrifiedDoor, "blockPetrifiedDoor");
-		 */
 
 		blockRedwoodStairs = new BlockCustomStairs(blockRedwoodPlanks).setBlockName("blockRedwoodStairs");
 		registerBlock(blockRedwoodStairs, "BlockRedwoodStairs");
