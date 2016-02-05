@@ -55,7 +55,7 @@ public class BlockTransparentWithInsideRenderer implements ISimpleBlockRendering
 	@Override
 	public void renderInventoryBlock(Block block, int meta, int modelID, RenderBlocks renderer)
 	{
-		drawBlock(block, meta, renderer);
+		this.drawBlock(block, meta, renderer);
 	}
 
 	@Override

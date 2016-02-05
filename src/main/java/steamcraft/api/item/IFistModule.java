@@ -21,7 +21,8 @@ public interface IFistModule extends IModule
 	enum EnumModuleEffectType
 	{
 		/** The rightclick. */
-		RIGHTCLICK, /** The attack. */
+		RIGHTCLICK,
+		/** The attack. */
 		ATTACK
 	}
 }

@@ -3,13 +3,6 @@ package steamcraft.common.tiles.energy;
 
 import java.util.ArrayList;
 
-import boilerplate.api.IOpenableGUI;
-import cofh.api.energy.EnergyStorage;
-import cofh.api.energy.IEnergyConnection;
-import cofh.api.energy.IEnergyHandler;
-import cofh.api.energy.IEnergyProvider;
-import cofh.api.energy.IEnergyReceiver;
-import cpw.mods.fml.common.network.NetworkRegistry.TargetPoint;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
@@ -18,8 +11,18 @@ import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+
+import cpw.mods.fml.common.network.NetworkRegistry.TargetPoint;
+
 import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.common.util.ForgeDirection;
+
+import boilerplate.api.IOpenableGUI;
+import cofh.api.energy.EnergyStorage;
+import cofh.api.energy.IEnergyConnection;
+import cofh.api.energy.IEnergyHandler;
+import cofh.api.energy.IEnergyProvider;
+import cofh.api.energy.IEnergyReceiver;
 import steamcraft.api.tile.ISpannerTile;
 import steamcraft.client.gui.GuiChangeExtractions;
 import steamcraft.common.init.InitBlocks;
@@ -231,8 +234,7 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler, ISpann
 
 				if ((dir != null) && this.isEnergyHandler(dir))
 				{
-					Coords temp = new Coords(this.xCoord + dir.offsetX, this.yCoord + dir.offsetY,
-						this.zCoord + dir.offsetZ, dir.getOpposite());
+					Coords temp = new Coords(this.xCoord + dir.offsetX, this.yCoord + dir.offsetY, this.zCoord + dir.offsetZ, dir.getOpposite());
 
 					if (this.extractions[i] == null)
 					{
@@ -259,6 +261,7 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler, ISpann
 			this.updateClientConnections();
 		}
 	}
+
 	@Override
 	public void changeExtraction(int dirIndex)
 	{
@@ -268,8 +271,7 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler, ISpann
 
 			if (dir != null)
 			{
-				Coords temp = new Coords(this.xCoord + dir.offsetX, this.yCoord + dir.offsetY,
-					this.zCoord + dir.offsetZ, dir.getOpposite());
+				Coords temp = new Coords(this.xCoord + dir.offsetX, this.yCoord + dir.offsetY, this.zCoord + dir.offsetZ, dir.getOpposite());
 
 				if (this.extractions[dirIndex] == null)
 				{
@@ -300,10 +302,10 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler, ISpann
 	{
 		ForgeDirection[] extractableConnections = new ForgeDirection[6];
 
-		for(int i = 0;i < 6;i++)
+		for (int i = 0; i < 6; i++)
 		{
 			ForgeDirection dir = this.connections[i];
-			if (dir != null && this.isEnergyHandler(dir))
+			if ((dir != null) && this.isEnergyHandler(dir))
 				extractableConnections[i] = dir;
 		}
 
@@ -318,7 +320,7 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler, ISpann
 
 	private void removeConnections(int i)
 	{
-		if (this.connections[i] != null && !this.worldObj.isRemote)
+		if ((this.connections[i] != null) && !this.worldObj.isRemote)
 		{
 			ForgeDirection dir = this.connections[i];
 
@@ -396,14 +398,14 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler, ISpann
 				this.setMaster(this);
 			}
 
-			for (int i = 0;i < 6;i++)
+			for (int i = 0; i < 6; i++)
 			{
 				ForgeDirection dir = this.connections[i];
-				if (dir != null && this.isEnergyHandler(dir))
+				if ((dir != null) && this.isEnergyHandler(dir))
 				{
 					Coords temp = new Coords(this.xCoord + dir.offsetX, this.yCoord + dir.offsetY, this.zCoord + dir.offsetZ, dir.getOpposite());
 
-					if (this.extractions[i] == null && (this.worldObj.getTileEntity(temp.x, temp.y, temp.z) instanceof IEnergyReceiver))
+					if ((this.extractions[i] == null) && (this.worldObj.getTileEntity(temp.x, temp.y, temp.z) instanceof IEnergyReceiver))
 					{
 						if (!this.network.outputs.contains(temp))
 							this.network.outputs.add(temp);
@@ -419,7 +421,7 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler, ISpann
 
 	private void updateClientConnections()
 	{
-		if (this.network != null && !this.worldObj.isRemote)
+		if ((this.network != null) && !this.worldObj.isRemote)
 		{
 			InitPackets.network.sendToAllAround(new WirePacket(this.xCoord, this.yCoord, this.zCoord, this.connections, this.extractions),
 					new TargetPoint(this.worldObj.provider.dimensionId, this.xCoord, this.yCoord, this.zCoord, 100));
@@ -616,7 +618,8 @@ public class TileCopperWire extends TileEntity implements IEnergyHandler, ISpann
 			if (dir == from)
 				return 0;
 
-		if ((this.network != null)) // should actively receive energy from  where it is not actively pulling
+		if ((this.network != null)) // should actively receive energy from where
+									// it is not actively pulling
 		{
 			int amount = Math.min(maxReceive, this.wireTransfer);
 

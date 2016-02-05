@@ -59,7 +59,7 @@ public class TileInjector extends BaseTileWithInventory implements IOpenableGUI,
 		{
 			if (this.inventory[0] != null)
 			{
-				ItemStack stack = FluidUtils.drainFluidContainer(buffer, this.inventory[0]);
+				ItemStack stack = FluidUtils.drainFluidContainer(this.buffer, this.inventory[0]);
 				if ((this.inventory[0] != null) && OreDictionary.itemMatches(this.inventory[0], stack, true))
 					this.inventory[0].stackSize += stack.stackSize;
 				else if (this.inventory[0] == null)
@@ -68,7 +68,7 @@ public class TileInjector extends BaseTileWithInventory implements IOpenableGUI,
 			}
 			if (this.inventory[1] != null)
 			{
-				ItemStack stack = FluidUtils.fillFluidContainer(buffer, this.inventory[1]);
+				ItemStack stack = FluidUtils.fillFluidContainer(this.buffer, this.inventory[1]);
 				if (stack != null)
 				{
 					if ((this.inventory[1] != null) && OreDictionary.itemMatches(this.inventory[1], stack, true))

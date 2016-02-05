@@ -42,6 +42,6 @@ public class GuiArmorEditor extends BaseEntityRenderGUI
 		int x = (this.width - this.xSize) / 2;
 		int y = (this.height - this.ySize) / 2;
 		this.drawTexturedModalRect(x, y, 0, 0, this.xSize, this.ySize);
-		renderEntity(x + 33, y + 75, 30, x + 33 - this.xSizeFloat, (y + 75) - 50 - this.ySizeFloat, this.mc.thePlayer);
+		renderEntity(x + 33, y + 75, 30, (x + 33) - this.xSizeFloat, (y + 75) - 50 - this.ySizeFloat, this.mc.thePlayer);
 	}
 }

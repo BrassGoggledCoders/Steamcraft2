@@ -153,22 +153,22 @@ public class EventHandlerFML
 
 		ItemStack armorPiece = player.getCurrentArmor(0);
 
-		if (!armorWearing && armorPiece != null && armorPiece.getItem() instanceof ItemBrassArmor)
+		if (!armorWearing && (armorPiece != null) && (armorPiece.getItem() instanceof ItemBrassArmor))
 		{
 			armorWearingPlayers.add(player.getGameProfile().getName());
 			FMLLog.warning("E", "E");
 			ItemBrassArmor brassArmor = (ItemBrassArmor) armorPiece.getItem();
 			brassArmor.onArmorEquipped(player.getEntityWorld(), player, armorPiece);
-			prevArmor = brassArmor;
+			this.prevArmor = brassArmor;
 		}
-		if (armorWearing && (armorPiece == null || !(armorPiece.getItem() instanceof ItemBrassArmor)))
+		if (armorWearing && ((armorPiece == null) || !(armorPiece.getItem() instanceof ItemBrassArmor)))
 		{
 			armorWearingPlayers.remove(player.getGameProfile().getName());
 			FMLLog.warning("U", "U");
-			if (prevArmor != null)
+			if (this.prevArmor != null)
 			{
-				prevArmor.onArmorUnequipped(player.getEntityWorld(), player, /* TODO */ new ItemStack(prevArmor));
-				prevArmor = null;
+				this.prevArmor.onArmorUnequipped(player.getEntityWorld(), player, /* TODO */ new ItemStack(this.prevArmor));
+				this.prevArmor = null;
 			}
 		}
 	}

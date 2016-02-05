@@ -4,6 +4,7 @@ package steamcraft.common.init;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import cpw.mods.fml.relauncher.Side;
+
 import steamcraft.common.packets.CopperPipeFluidPacket;
 import steamcraft.common.packets.CopperPipeFluidPacket.FluidNetworkPacketHandler;
 import steamcraft.common.packets.CopperPipePacket;

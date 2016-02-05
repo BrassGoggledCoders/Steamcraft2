@@ -66,7 +66,7 @@ public class EventHandlerForge
 	@SubscribeEvent
 	public void onMobDrops(LivingDropsEvent event)
 	{
-		if (event.entity instanceof EntityIronGolem && event.entity.isBurning() && ConfigGeneral.golemFireDrop)
+		if ((event.entity instanceof EntityIronGolem) && event.entity.isBurning() && ConfigGeneral.golemFireDrop)
 		{
 			event.drops.clear();
 			ItemStack ingot = new ItemStack(InitItems.itemIngot, 3 + this.rand.nextInt(3), 7);

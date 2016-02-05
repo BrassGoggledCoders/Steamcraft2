@@ -1,10 +1,6 @@
 
 package steamcraft.common.items;
 
-import boilerplate.api.IOpenableGUI;
-import cpw.mods.fml.common.Optional;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityMinecart;
@@ -12,6 +8,12 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+
+import cpw.mods.fml.common.Optional;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
+import boilerplate.api.IOpenableGUI;
 import steamcraft.api.item.IUniversalWrench;
 import steamcraft.api.tile.ISpannerTile;
 import steamcraft.client.lib.GuiIDs;
@@ -41,7 +43,7 @@ public class ItemSpanner extends BaseItem implements IUniversalWrench
 			{
 				ISpannerTile spannerTile = (ISpannerTile) tile;
 
-				if (player.isSneaking() && tile instanceof IOpenableGUI)
+				if (player.isSneaking() && (tile instanceof IOpenableGUI))
 					player.openGui(Steamcraft.instance, GuiIDs.PIPES, world, x, y, z);
 				else
 					spannerTile.changeExtraction();

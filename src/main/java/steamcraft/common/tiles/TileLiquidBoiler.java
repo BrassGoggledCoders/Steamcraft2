@@ -150,12 +150,12 @@ public class TileLiquidBoiler extends TileBaseBoiler implements IOpenableGUI
 				}
 			}
 			// Burn fuel
-			if ((this.furnaceBurnTime == 0) && this.fuelTank.getFluid() != null)
+			if ((this.furnaceBurnTime == 0) && (this.fuelTank.getFluid() != null))
 			{
 				this.furnaceBurnTime = this.getFuelBurnTime(this.fuelTank.getFluid().getFluid());
 
 			}
-			if (this.furnaceBurnTime != 0 && (this.waterTank.getFluidAmount() >= waterPerTick)
+			if ((this.furnaceBurnTime != 0) && (this.waterTank.getFluidAmount() >= waterPerTick)
 					&& (this.steamTank.fill(new FluidStack(FluidRegistry.getFluid("steam"), steamPerTick), false) > 0)
 					&& (this.fuelTank.getFluidAmount() >= fuelPerTick))
 				this.fuelTank.drain(fuelPerTick, true);

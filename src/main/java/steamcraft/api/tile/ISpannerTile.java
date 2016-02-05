@@ -10,7 +10,10 @@ import net.minecraftforge.common.util.ForgeDirection;
 public interface ISpannerTile
 {
 	public void changeExtraction();
+
 	public void changeExtraction(int dirIndex);
+
 	public ForgeDirection[] getExtractableConnections();
+
 	public ForgeDirection[] getExtractions();
 }

@@ -1,13 +1,14 @@
 
 package steamcraft.client.gui;
 
-import org.lwjgl.opengl.GL11;
-
-import boilerplate.client.BaseContainerGui;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
+
 import net.minecraftforge.common.util.ForgeDirection;
+
+import boilerplate.client.BaseContainerGui;
+import org.lwjgl.opengl.GL11;
 import steamcraft.api.tile.ISpannerTile;
 import steamcraft.common.init.InitPackets;
 import steamcraft.common.lib.ModInfo;
@@ -21,11 +22,10 @@ import steamcraft.common.tiles.container.ContainerChangeExtractions;
 public class GuiChangeExtractions extends BaseContainerGui
 {
 	private static ResourceLocation guitexture = new ResourceLocation(ModInfo.PREFIX + "textures/gui/changeextractions.png");
-	private static String[] buttonNames = new String[]{"Insert", "Extract"};
+	private static String[] buttonNames = new String[] { "Insert", "Extract" };
 
 	private TileEntity tile;
 	private int worldId;
-
 
 	public GuiChangeExtractions(TileEntity tile, int worldId)
 	{
@@ -63,28 +63,28 @@ public class GuiChangeExtractions extends BaseContainerGui
 	public void initGui()
 	{
 		super.initGui();
-		buttonList.clear();
+		this.buttonList.clear();
 
 		ISpannerTile spannerTile = (ISpannerTile) this.tile;
 
 		ForgeDirection[] connections = spannerTile.getExtractableConnections();
 		ForgeDirection[] extractions = spannerTile.getExtractions();
 
-		GuiButton up = this.createGuiButton(0, guiLeft + 55, guiTop + 20, 44, 20, connections, extractions);
-		GuiButton down = this.createGuiButton(1, guiLeft + 150, guiTop + 20, 44, 20, connections, extractions);
+		GuiButton up = this.createGuiButton(0, this.guiLeft + 55, this.guiTop + 20, 44, 20, connections, extractions);
+		GuiButton down = this.createGuiButton(1, this.guiLeft + 150, this.guiTop + 20, 44, 20, connections, extractions);
 
-		GuiButton north = this.createGuiButton(2, guiLeft + 55, guiTop + 50, 44, 20, connections, extractions);
-		GuiButton south = this.createGuiButton(3, guiLeft + 150, guiTop + 50, 44, 20, connections, extractions);
+		GuiButton north = this.createGuiButton(2, this.guiLeft + 55, this.guiTop + 50, 44, 20, connections, extractions);
+		GuiButton south = this.createGuiButton(3, this.guiLeft + 150, this.guiTop + 50, 44, 20, connections, extractions);
 
-		GuiButton west = this.createGuiButton(4, guiLeft + 55, guiTop + 80, 44, 20, connections, extractions);
-		GuiButton east = this.createGuiButton(5, guiLeft + 150, guiTop + 80, 44, 20, connections, extractions);
+		GuiButton west = this.createGuiButton(4, this.guiLeft + 55, this.guiTop + 80, 44, 20, connections, extractions);
+		GuiButton east = this.createGuiButton(5, this.guiLeft + 150, this.guiTop + 80, 44, 20, connections, extractions);
 
-		buttonList.add(north);
-		buttonList.add(south);
-		buttonList.add(west);
-		buttonList.add(east);
-		buttonList.add(up);
-		buttonList.add(down);
+		this.buttonList.add(north);
+		this.buttonList.add(south);
+		this.buttonList.add(west);
+		this.buttonList.add(east);
+		this.buttonList.add(up);
+		this.buttonList.add(down);
 	}
 
 	private GuiButton createGuiButton(int index, int x, int y, int xx, int yy, ForgeDirection[] connections, ForgeDirection[] extractions)
@@ -102,7 +102,8 @@ public class GuiChangeExtractions extends BaseContainerGui
 	{
 		if (button.enabled)
 		{
-			InitPackets.network.sendToServer(new UpdateExtractionPacket(worldId, this.tile.xCoord, this.tile.yCoord, this.tile.zCoord, button.id));
+			InitPackets.network
+					.sendToServer(new UpdateExtractionPacket(this.worldId, this.tile.xCoord, this.tile.yCoord, this.tile.zCoord, button.id));
 			button.displayString = button.displayString.equals(buttonNames[0]) ? buttonNames[1] : buttonNames[0];
 		}
 	}

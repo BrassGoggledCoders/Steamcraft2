@@ -56,9 +56,9 @@ public class BlockMetalLattice extends BaseMetadataBlock
 	public void registerBlockIcons(final IIconRegister ir)
 	{
 		for (int i = 0; i < 8; i++)
-			this.icon[i] = ir.registerIcon(ModInfo.PREFIX + "frame/" + "block" + LibInfo.metals[i] + "Lattice" + textureSuffix);
+			this.icon[i] = ir.registerIcon(ModInfo.PREFIX + "frame/" + "block" + LibInfo.metals[i] + "Lattice" + this.textureSuffix);
 		for (int i2 = 8; i2 < 16; i2++)
-			this.icon[i2] = ir.registerIcon(ModInfo.PREFIX + "frame/" + "block" + LibInfo.metals[i2 - 8] + "LatticeThin" + textureSuffix);
+			this.icon[i2] = ir.registerIcon(ModInfo.PREFIX + "frame/" + "block" + LibInfo.metals[i2 - 8] + "LatticeThin" + this.textureSuffix);
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })

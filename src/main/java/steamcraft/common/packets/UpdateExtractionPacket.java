@@ -1,12 +1,15 @@
 
 package steamcraft.common.packets;
 
+import net.minecraft.world.World;
+
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
 import cpw.mods.fml.common.network.simpleimpl.MessageContext;
-import io.netty.buffer.ByteBuf;
-import net.minecraft.world.World;
+
 import net.minecraftforge.common.DimensionManager;
+
+import io.netty.buffer.ByteBuf;
 import steamcraft.api.tile.ISpannerTile;
 
 /**
@@ -44,7 +47,7 @@ public class UpdateExtractionPacket implements IMessage
 	@Override
 	public void toBytes(ByteBuf buf)
 	{
-		buf.writeInt(worldId);
+		buf.writeInt(this.worldId);
 		buf.writeInt(this.x);
 		buf.writeInt(this.y);
 		buf.writeInt(this.z);

@@ -36,17 +36,17 @@ public class BlockPlating extends BaseMetadataBlock
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(final Item item, final CreativeTabs tab, final List l)
 	{
-		if (block == InitBlocks.blockMetal)
+		if (this.block == InitBlocks.blockMetal)
 		{
 			for (int var4 = 0; var4 < 8; ++var4)
 				l.add(new ItemStack(InitBlocks.blockMetalPlate, 1, var4));
 		}
-		else if (block == InitBlocks.blockMossyMetal)
+		else if (this.block == InitBlocks.blockMossyMetal)
 		{
 			for (int var4 = 0; var4 < 8; ++var4)
 				l.add(new ItemStack(InitBlocks.blockMossyMetalPlate, 1, var4));
 		}
-		if (block == InitBlocks.blockRustyMetal)
+		if (this.block == InitBlocks.blockRustyMetal)
 		{
 			for (int var4 = 0; var4 < 8; ++var4)
 				l.add(new ItemStack(InitBlocks.blockRustyMetalPlate, 1, var4));
@@ -60,7 +60,7 @@ public class BlockPlating extends BaseMetadataBlock
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(int side, int meta)
 	{
-		return block.getIcon(side, meta);
+		return this.block.getIcon(side, meta);
 	}
 
 	/**

@@ -116,7 +116,7 @@ public class TileRefinery extends BaseTileWithInventory implements IFluidHandler
 			{
 				if (this.inventory[1].getItem() == InitItems.itemWhaleBlubber)
 				{
-					if (this.cookTime < totalCookTime)
+					if (this.cookTime < this.totalCookTime)
 						this.cookTime++;
 					else
 					{

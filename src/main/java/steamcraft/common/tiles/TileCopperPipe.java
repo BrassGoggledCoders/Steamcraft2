@@ -3,10 +3,6 @@ package steamcraft.common.tiles;
 
 import java.util.ArrayList;
 
-import boilerplate.api.IOpenableGUI;
-import cpw.mods.fml.common.network.NetworkRegistry.TargetPoint;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
@@ -15,6 +11,11 @@ import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+
+import cpw.mods.fml.common.network.NetworkRegistry.TargetPoint;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.fluids.Fluid;
@@ -22,6 +23,8 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTank;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
+
+import boilerplate.api.IOpenableGUI;
 import steamcraft.api.tile.ISpannerTile;
 import steamcraft.client.gui.GuiChangeExtractions;
 import steamcraft.common.init.InitBlocks;
@@ -36,7 +39,8 @@ import steamcraft.common.tiles.container.ContainerChangeExtractions;
  */
 public class TileCopperPipe extends TileEntity implements IFluidHandler, ISpannerTile, IOpenableGUI
 {
-	private static int ticksTillFluidUpdate = 200; // update the fluid in pipe every 10 seconds
+	private static int ticksTillFluidUpdate = 200; // update the fluid in pipe
+													// every 10 seconds
 
 	private static int copperPipeCapacity = 500;
 	private static int copperPipeExtract = 50;
@@ -51,7 +55,8 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler, ISpanne
 
 	public Fluid fluidInPipe;
 	public float fluidScaled = 0;
-	private int ticksSinceUpdate = ticksTillFluidUpdate / 2; // first time update faster
+	private int ticksSinceUpdate = ticksTillFluidUpdate / 2; // first time
+																// update faster
 
 	public ForgeDirection[] connections = new ForgeDirection[6];
 	public ForgeDirection[] extractions = new ForgeDirection[6];
@@ -274,8 +279,7 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler, ISpanne
 
 				if ((dir != null) && this.isFluidHandler(dir))
 				{
-					Coords temp = new Coords(this.xCoord + dir.offsetX, this.yCoord + dir.offsetY,
-						this.zCoord + dir.offsetZ, dir.getOpposite());
+					Coords temp = new Coords(this.xCoord + dir.offsetX, this.yCoord + dir.offsetY, this.zCoord + dir.offsetZ, dir.getOpposite());
 
 					if (this.extractions[i] == null)
 					{
@@ -312,8 +316,7 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler, ISpanne
 
 			if (dir != null)
 			{
-				Coords temp = new Coords(this.xCoord + dir.offsetX, this.yCoord + dir.offsetY,
-					this.zCoord + dir.offsetZ, dir.getOpposite());
+				Coords temp = new Coords(this.xCoord + dir.offsetX, this.yCoord + dir.offsetY, this.zCoord + dir.offsetZ, dir.getOpposite());
 
 				if (this.extractions[dirIndex] == null)
 				{
@@ -344,10 +347,10 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler, ISpanne
 	{
 		ForgeDirection[] extractableConnections = new ForgeDirection[6];
 
-		for(int i = 0;i < 6;i++)
+		for (int i = 0; i < 6; i++)
 		{
 			ForgeDirection dir = this.connections[i];
-			if (dir != null && this.isFluidHandler(dir))
+			if ((dir != null) && this.isFluidHandler(dir))
 				extractableConnections[i] = dir;
 		}
 
@@ -453,10 +456,10 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler, ISpanne
 				this.setMaster(this);
 			}
 
-			for (int i = 0;i < 6;i++)
+			for (int i = 0; i < 6; i++)
 			{
 				ForgeDirection dir = this.connections[i];
-				if (dir != null && this.isFluidHandler(dir))
+				if ((dir != null) && this.isFluidHandler(dir))
 				{
 					Coords temp = new Coords(this.xCoord + dir.offsetX, this.yCoord + dir.offsetY, this.zCoord + dir.offsetZ, dir.getOpposite());
 
@@ -714,8 +717,7 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler, ISpanne
 			if (dir == from)
 				return false;
 
-		return (this.network != null)
-				&& ((this.network.tank.getFluid() == null) || (this.network.tank.getFluid().getFluid() == fluid));
+		return (this.network != null) && ((this.network.tank.getFluid() == null) || (this.network.tank.getFluid().getFluid() == fluid));
 	}
 
 	@Override
@@ -725,8 +727,7 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler, ISpanne
 			if (dir == from)
 				return false;
 
-		return (this.network != null)
-				&& ((this.network.tank.getFluid() == null) || (this.network.tank.getFluid().getFluid() == fluid));
+		return (this.network != null) && ((this.network.tank.getFluid() == null) || (this.network.tank.getFluid().getFluid() == fluid));
 	}
 
 	@Override
@@ -736,9 +737,7 @@ public class TileCopperPipe extends TileEntity implements IFluidHandler, ISpanne
 			if (dir == from)
 				return null;
 
-
-		if ((this.network != null) && (this.network.tank.getFluid() != null)
-				&& this.network.tank.getFluid().isFluidEqual(resource))
+		if ((this.network != null) && (this.network.tank.getFluid() != null) && this.network.tank.getFluid().isFluidEqual(resource))
 		{
 			int amount = Math.min(resource.amount, this.pipeTransfer);
 

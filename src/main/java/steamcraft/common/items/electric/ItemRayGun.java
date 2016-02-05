@@ -4,7 +4,6 @@ package steamcraft.common.items.electric;
 import java.awt.Color;
 import java.util.HashMap;
 
-import boilerplate.common.utils.PlayerUtils;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -16,6 +15,8 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
+
+import boilerplate.common.utils.PlayerUtils;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.ModInfo;
 
@@ -24,14 +25,16 @@ import steamcraft.common.lib.ModInfo;
  *
  */
 
-public class ItemRayGun extends ElectricItem {
+public class ItemRayGun extends ElectricItem
+{
 	public static short energyPerUse = 100;
 
 	static HashMap<String, Object> ray = new HashMap<String, Object>();
 	static HashMap<String, Long> soundDelay = new HashMap<String, Long>();
 	static final HashMap<Block, Block> meltables = new HashMap<Block, Block>();
 
-	public ItemRayGun(String raySound, int maxEnergy, int maxReceive) {
+	public ItemRayGun(String raySound, int maxEnergy, int maxReceive)
+	{
 		super(maxEnergy, maxReceive, 0);
 		this.setMaxStackSize(1);
 		this.setFull3D();
@@ -45,8 +48,10 @@ public class ItemRayGun extends ElectricItem {
 
 	@SuppressWarnings("all")
 	@Override
-	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player) {
-		if (this.getEnergyStored(stack) >= ItemRayGun.energyPerUse || player.capabilities.isCreativeMode) {
+	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
+	{
+		if ((this.getEnergyStored(stack) >= ItemRayGun.energyPerUse) || player.capabilities.isCreativeMode)
+		{
 			MovingObjectPosition mop = PlayerUtils.getTargetBlock(world, player, true, 50);
 
 			Vec3 vec3 = player.getLookVec();
@@ -66,15 +71,19 @@ public class ItemRayGun extends ElectricItem {
 			if (soundDelay.get(player) == null)
 				soundDelay.put(player.getCommandSenderName(), Long.valueOf(0L));
 
-			if (!world.isRemote && (soundDelay.get(player.getCommandSenderName()).longValue() < System.currentTimeMillis())) {
+			if (!world.isRemote && (soundDelay.get(player.getCommandSenderName()).longValue() < System.currentTimeMillis()))
+			{
 				world.playSoundEffect(tx, ty, tz, ModInfo.PREFIX + "raygun", 0.35F, 1.0F);
 				soundDelay.put(player.getCommandSenderName(), Long.valueOf(System.currentTimeMillis() + 1200L));
-			} else
+			}
+			else
 				soundDelay.put(player.getCommandSenderName(), Long.valueOf(0L));
 			if (world.isRemote)
-				ray.put(player.getCommandSenderName(), Steamcraft.proxy.rayFX(world, player, tx, ty, tz, 2, false, impact > 0 ? 2.0F : 0.0F, ray.get(player), impact, Color.GREEN));
+				ray.put(player.getCommandSenderName(),
+						Steamcraft.proxy.rayFX(world, player, tx, ty, tz, 2, false, impact > 0 ? 2.0F : 0.0F, ray.get(player), impact, Color.GREEN));
 
-			if ((mop != null) && (mop.typeOfHit == MovingObjectPosition.MovingObjectType.BLOCK)) {
+			if ((mop != null) && (mop.typeOfHit == MovingObjectPosition.MovingObjectType.BLOCK))
+			{
 				int x = mop.blockX;
 				int y = mop.blockY;
 				int z = mop.blockZ;
@@ -82,13 +91,15 @@ public class ItemRayGun extends ElectricItem {
 				if (!world.isRemote && !world.isAirBlock(x, y, z))
 					for (int i = x - Item.itemRand.nextInt(4); i < (x + Item.itemRand.nextInt(4)); i++)
 						for (int j = y - Item.itemRand.nextInt(4); j < (y + Item.itemRand.nextInt(4)); j++)
-							for (int k = z - Item.itemRand.nextInt(4); k < (z + Item.itemRand.nextInt(4)); k++) {
+							for (int k = z - Item.itemRand.nextInt(4); k < (z + Item.itemRand.nextInt(4)); k++)
+							{
 								if (world.isAirBlock(i, j, k))
 									world.setBlock(i, j, k, Blocks.fire);
 								else if (meltables.containsKey(world.getBlock(i, j, k)))
 									world.setBlock(i, j, k, meltables.get(world.getBlock(i, j, k)));
 
-								if (!player.capabilities.isCreativeMode) {
+								if (!player.capabilities.isCreativeMode)
+								{
 									this.setEnergy(stack, this.getEnergyStored(stack) - energyPerUse);
 								}
 
@@ -110,7 +121,8 @@ public class ItemRayGun extends ElectricItem {
 			py += vec3d.yCoord * 0.5D;
 			pz += vec3d.zCoord * 0.5D;
 
-			if ((pointedEntity != null) && ((pointedEntity instanceof EntityLivingBase))) {
+			if ((pointedEntity != null) && ((pointedEntity instanceof EntityLivingBase)))
+			{
 				if (!world.isRemote)
 					pointedEntity.setFire(100);
 			}

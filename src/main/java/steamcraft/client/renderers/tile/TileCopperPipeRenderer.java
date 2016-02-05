@@ -55,7 +55,7 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 		{
 			this.drawCore(pipe);
 
-			for (int i = 0;i < 6;i++)
+			for (int i = 0; i < 6; i++)
 			{
 				ForgeDirection dir = pipe.connections[i];
 				if (dir != null)

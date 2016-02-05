@@ -34,7 +34,7 @@ public class BlockScaffold extends BaseMetadataBlock
 	{
 		super(Material.wood);
 		this.textureSuffixs = suffixs;
-		this.icon = new IIcon[textureSuffixs.length];
+		this.icon = new IIcon[this.textureSuffixs.length];
 		this.setHardness(1.0F);
 		this.setResistance(1.0F);
 		this.setStepSound(Block.soundTypeWood);
@@ -55,8 +55,8 @@ public class BlockScaffold extends BaseMetadataBlock
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(final IIconRegister ir)
 	{
-		for (int i = 0; i < textureSuffixs.length; i++)
-			this.icon[i] = ir.registerIcon(ModInfo.PREFIX + "frame/" + "blockScaffold" + textureSuffixs[i]);
+		for (int i = 0; i < this.textureSuffixs.length; i++)
+			this.icon[i] = ir.registerIcon(ModInfo.PREFIX + "frame/" + "blockScaffold" + this.textureSuffixs[i]);
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })

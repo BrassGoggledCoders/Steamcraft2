@@ -79,7 +79,7 @@ public class ElectricItem extends BaseElectricItem
 		{
 			NBTTagCompound tag = stack.getTagCompound();
 
-			if (tag != null && tag.getBoolean("canCharge"))
+			if ((tag != null) && tag.getBoolean("canCharge"))
 			{
 				EntityPlayer player = (EntityPlayer) entity;
 				if (this.maxSend > 0)
