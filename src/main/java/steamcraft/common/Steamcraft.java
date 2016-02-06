@@ -28,6 +28,7 @@ import net.minecraftforge.common.MinecraftForge;
 
 import boilerplate.client.GuiHandler;
 import boilerplate.common.IBoilerplateMod;
+import boilerplate.common.IModInfo;
 import boilerplate.common.compathandler.FMPCompatHandler;
 import boilerplate.common.utils.handlers.BucketHandler;
 import steamcraft.common.compat.CompatabilityLayer;
@@ -207,14 +208,20 @@ public class Steamcraft implements IBoilerplateMod
 	}
 
 	@Override
-	public String getModID()
+	public IModInfo getModInfo()
 	{
-		return ModInfo.ID;
+		return new ModInfo();
 	}
 
 	@Override
 	public Object getInstance()
 	{
 		return instance;
+	}
+
+	@Override
+	public CreativeTabs getCreativeTab()
+	{
+		return Steamcraft.tabSC2;
 	}
 }

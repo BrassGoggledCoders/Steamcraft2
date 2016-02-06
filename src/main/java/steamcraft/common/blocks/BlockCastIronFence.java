@@ -5,6 +5,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.world.IBlockAccess;
 
+import boilerplate.common.baseclasses.blocks.BlockCustomFence;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.init.InitBlocks;
 
@@ -16,7 +17,7 @@ public class BlockCastIronFence extends BlockCustomFence
 {
 	public BlockCastIronFence()
 	{
-		super("metal/blockCastIron", Material.iron);
+		super("metal/blockCastIron", Material.iron, Steamcraft.instance);
 		this.setHardness(4.5F);
 		this.setResistance(20.0F);
 		this.setStepSound(Block.soundTypeMetal);
