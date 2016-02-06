@@ -8,6 +8,7 @@ import net.minecraft.util.ResourceLocation;
 
 import net.minecraftforge.common.util.ForgeDirection;
 
+import boilerplate.client.utils.RenderUtils;
 import org.lwjgl.opengl.GL11;
 import steamcraft.common.lib.LibInfo;
 import steamcraft.common.lib.ModInfo;
@@ -69,22 +70,7 @@ public class TileCopperWireRenderer extends TileEntitySpecialRenderer
 
 		tess.startDrawingQuads();
 		{
-			GL11.glTranslatef(0.5F, 0.5F, 0.5F);
-			if (dir == ForgeDirection.UP)
-			{
-				// ROTATE
-			}
-			else if (dir == ForgeDirection.DOWN)
-				GL11.glRotatef(180, 1, 0, 0);
-			else if (dir == ForgeDirection.SOUTH)
-				GL11.glRotatef(90, 1, 0, 0);
-			else if (dir == ForgeDirection.NORTH)
-				GL11.glRotatef(270, 1, 0, 0);
-			else if (dir == ForgeDirection.WEST)
-				GL11.glRotatef(90, 0, 0, 1);
-			else if (dir == ForgeDirection.EAST)
-				GL11.glRotatef(270, 0, 0, 1);
-			GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
+			RenderUtils.doWireRenderRotation(dir);
 
 			tess.addVertexWithUV(1 - (12 * pixel), 1 - (12 * pixel), 1 - (12 * pixel), 6 * tPixel, 6 * tPixel);
 			tess.addVertexWithUV(1 - (12 * pixel), 1, 1 - (12 * pixel), 11 * tPixel, 6 * tPixel);
@@ -139,22 +125,7 @@ public class TileCopperWireRenderer extends TileEntitySpecialRenderer
 		}
 		tess.draw();
 
-		GL11.glTranslatef(0.5F, 0.5F, 0.5F);
-		if (dir == ForgeDirection.UP)
-		{
-			// ROTATE
-		}
-		else if (dir == ForgeDirection.DOWN)
-			GL11.glRotatef(-180, 1, 0, 0);
-		else if (dir == ForgeDirection.SOUTH)
-			GL11.glRotatef(-90, 1, 0, 0);
-		else if (dir == ForgeDirection.NORTH)
-			GL11.glRotatef(-270, 1, 0, 0);
-		else if (dir == ForgeDirection.WEST)
-			GL11.glRotatef(-90, 0, 0, 1);
-		else if (dir == ForgeDirection.EAST)
-			GL11.glRotatef(-270, 0, 0, 1);
-		GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
+		RenderUtils.doWireRenderNegRotation(dir);
 	}
 
 	private void drawConnection(ForgeDirection dir, TileCopperWire wire)
@@ -163,22 +134,7 @@ public class TileCopperWireRenderer extends TileEntitySpecialRenderer
 
 		tess.startDrawingQuads();
 		{
-			GL11.glTranslatef(0.5F, 0.5F, 0.5F);
-			if (dir == ForgeDirection.UP)
-			{
-				// ROTATE
-			}
-			else if (dir == ForgeDirection.DOWN)
-				GL11.glRotatef(180, 1, 0, 0);
-			else if (dir == ForgeDirection.SOUTH)
-				GL11.glRotatef(90, 1, 0, 0);
-			else if (dir == ForgeDirection.NORTH)
-				GL11.glRotatef(270, 1, 0, 0);
-			else if (dir == ForgeDirection.WEST)
-				GL11.glRotatef(90, 0, 0, 1);
-			else if (dir == ForgeDirection.EAST)
-				GL11.glRotatef(270, 0, 0, 1);
-			GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
+			RenderUtils.doWireRenderRotation(dir);
 
 			tess.addVertexWithUV(1 - (12 * pixel), 1 - (12 * pixel), 1 - (12 * pixel), 6 * tPixel, 6 * tPixel);
 			tess.addVertexWithUV(1 - (12 * pixel), 1, 1 - (12 * pixel), 11 * tPixel, 6 * tPixel);
@@ -202,22 +158,7 @@ public class TileCopperWireRenderer extends TileEntitySpecialRenderer
 		}
 		tess.draw();
 
-		GL11.glTranslatef(0.5F, 0.5F, 0.5F);
-		if (dir == ForgeDirection.UP)
-		{
-			// ROTATE
-		}
-		else if (dir == ForgeDirection.DOWN)
-			GL11.glRotatef(-180, 1, 0, 0);
-		else if (dir == ForgeDirection.SOUTH)
-			GL11.glRotatef(-90, 1, 0, 0);
-		else if (dir == ForgeDirection.NORTH)
-			GL11.glRotatef(-270, 1, 0, 0);
-		else if (dir == ForgeDirection.WEST)
-			GL11.glRotatef(-90, 0, 0, 1);
-		else if (dir == ForgeDirection.EAST)
-			GL11.glRotatef(-270, 0, 0, 1);
-		GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
+		RenderUtils.doWireRenderNegRotation(dir);
 	}
 
 	private void drawCore(TileCopperWire tile)
