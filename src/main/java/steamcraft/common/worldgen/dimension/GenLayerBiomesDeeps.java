@@ -27,7 +27,7 @@ public class GenLayerBiomesDeeps extends GenLayer
 			for (int dx = 0; dx < width; dx++)
 			{
 				this.initChunkSeed(dx + x, dz + z);
-				dest[(dx + (dz * width))] = WorldChunkManagerDeeps.myBiomesToSpawnIn
+				dest[dx + (dz * width)] = WorldChunkManagerDeeps.myBiomesToSpawnIn
 						.get(this.nextInt(WorldChunkManagerDeeps.myBiomesToSpawnIn.size())).biomeID;
 			}
 		}

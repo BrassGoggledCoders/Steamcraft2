@@ -121,10 +121,10 @@ public class DeepsSkyRenderer extends IRenderHandler
 																										// texture
 																										// path
 		tessellator1.startDrawingQuads();
-		tessellator1.addVertexWithUV((-f10), 100.0D, (-f10), 0.0D, 0.0D);
-		tessellator1.addVertexWithUV(f10, 100.0D, (-f10), 1.0D, 0.0D);
+		tessellator1.addVertexWithUV(-f10, 100.0D, -f10, 0.0D, 0.0D);
+		tessellator1.addVertexWithUV(f10, 100.0D, -f10, 1.0D, 0.0D);
 		tessellator1.addVertexWithUV(f10, 100.0D, f10, 1.0D, 1.0D);
-		tessellator1.addVertexWithUV((-f10), 100.0D, f10, 0.0D, 1.0D);
+		tessellator1.addVertexWithUV(-f10, 100.0D, f10, 0.0D, 1.0D);
 		tessellator1.draw(); // Draw sun
 		GL11.glDisable(GL11.GL_TEXTURE_2D);
 		float f18 = world.getStarBrightness(partialTicks) * f4;
@@ -152,26 +152,26 @@ public class DeepsSkyRenderer extends IRenderHandler
 			f10 = -f8;
 			tessellator1.startDrawingQuads();
 			tessellator1.setColorRGBA_I(0, 255);
-			tessellator1.addVertex((-f8), f9, f8);
+			tessellator1.addVertex(-f8, f9, f8);
 			tessellator1.addVertex(f8, f9, f8);
 			tessellator1.addVertex(f8, f10, f8);
-			tessellator1.addVertex((-f8), f10, f8);
-			tessellator1.addVertex((-f8), f10, (-f8));
-			tessellator1.addVertex(f8, f10, (-f8));
-			tessellator1.addVertex(f8, f9, (-f8));
-			tessellator1.addVertex((-f8), f9, (-f8));
-			tessellator1.addVertex(f8, f10, (-f8));
+			tessellator1.addVertex(-f8, f10, f8);
+			tessellator1.addVertex(-f8, f10, -f8);
+			tessellator1.addVertex(f8, f10, -f8);
+			tessellator1.addVertex(f8, f9, -f8);
+			tessellator1.addVertex(-f8, f9, -f8);
+			tessellator1.addVertex(f8, f10, -f8);
 			tessellator1.addVertex(f8, f10, f8);
 			tessellator1.addVertex(f8, f9, f8);
-			tessellator1.addVertex(f8, f9, (-f8));
-			tessellator1.addVertex((-f8), f9, (-f8));
-			tessellator1.addVertex((-f8), f9, f8);
-			tessellator1.addVertex((-f8), f10, f8);
-			tessellator1.addVertex((-f8), f10, (-f8));
-			tessellator1.addVertex((-f8), f10, (-f8));
-			tessellator1.addVertex((-f8), f10, f8);
+			tessellator1.addVertex(f8, f9, -f8);
+			tessellator1.addVertex(-f8, f9, -f8);
+			tessellator1.addVertex(-f8, f9, f8);
+			tessellator1.addVertex(-f8, f10, f8);
+			tessellator1.addVertex(-f8, f10, -f8);
+			tessellator1.addVertex(-f8, f10, -f8);
+			tessellator1.addVertex(-f8, f10, f8);
 			tessellator1.addVertex(f8, f10, f8);
-			tessellator1.addVertex(f8, f10, (-f8));
+			tessellator1.addVertex(f8, f10, -f8);
 			tessellator1.draw();
 		}
 		if (world.provider.isSkyColored())

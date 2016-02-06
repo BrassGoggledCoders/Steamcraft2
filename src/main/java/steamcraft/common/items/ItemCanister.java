@@ -96,7 +96,7 @@ public class ItemCanister extends BaseItem implements IFluidContainerItem
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean flag)
 	{
-		if ((this.getFluidAmount(stack) > 0))
+		if (this.getFluidAmount(stack) > 0)
 		{
 			String str = this.getFluid(stack).getFluid().getName();
 			int amount = this.getFluidAmount(stack);

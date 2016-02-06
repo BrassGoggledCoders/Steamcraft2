@@ -57,7 +57,7 @@ public class ItemClimbingSpikes extends BaseArmorModule
 
 			if (player.motionX < (-f5))
 			{
-				player.motionX = (-f5);
+				player.motionX = -f5;
 			}
 
 			if (player.motionX > f5)
@@ -67,7 +67,7 @@ public class ItemClimbingSpikes extends BaseArmorModule
 
 			if (player.motionZ < (-f5))
 			{
-				player.motionZ = (-f5);
+				player.motionZ = -f5;
 			}
 
 			if (player.motionZ > f5)

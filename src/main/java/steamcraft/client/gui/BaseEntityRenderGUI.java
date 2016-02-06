@@ -26,7 +26,7 @@ public abstract class BaseEntityRenderGUI extends BaseContainerGui
 		GL11.glEnable(GL11.GL_COLOR_MATERIAL);
 		GL11.glPushMatrix();
 		GL11.glTranslatef(startX, startY, 50.0F);
-		GL11.glScalef((-scale), scale, scale);
+		GL11.glScalef(-scale, scale, scale);
 		GL11.glRotatef(180.0F, 0.0F, 0.0F, 1.0F);
 		float f2 = entityLiving.renderYawOffset;
 		float f3 = entityLiving.rotationYaw;

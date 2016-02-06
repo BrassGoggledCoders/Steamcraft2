@@ -34,18 +34,10 @@ public class WorldGenSteamcraft implements IWorldGenerator
 		int blockChunkX = chunkX * 16;
 		int blockChunkZ = chunkZ * 16;
 
-		if ((world.provider.dimensionId == -1) && ConfigWorldGen.netherGenerationEnabled)
-		{
-			// this.generateNether(world, random, blockChunkX, blockChunkZ);
-		}
-		else if (((world.provider.dimensionId == 0) && ConfigWorldGen.overworldGenerationEnabled)
+		if (((world.provider.dimensionId == 0) && ConfigWorldGen.overworldGenerationEnabled)
 				|| ((world.provider.dimensionId == ConfigGeneral.deepsDimensionID) && ConfigWorldGen.deepsGenerationEnabled))
 		{
 			this.generateSurface(world, random, blockChunkX, blockChunkZ);
-		}
-		else if ((world.provider.dimensionId == 1) && ConfigWorldGen.endGenerationEnabled)
-		{
-			// this.generateEnd(world, random, blockChunkX, blockChunkZ);
 		}
 	}
 

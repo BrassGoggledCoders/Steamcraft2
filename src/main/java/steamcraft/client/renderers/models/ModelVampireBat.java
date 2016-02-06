@@ -81,7 +81,7 @@ public class ModelVampireBat extends ModelBase
 
 		if (EntityVampireBat.getIsBatHanging())
 		{
-			f6 = (180F / (float) Math.PI);
+			f6 = 180F / (float) Math.PI;
 			this.batHead.rotateAngleX = p_78088_6_ / (180F / (float) Math.PI);
 			this.batHead.rotateAngleY = (float) Math.PI - (p_78088_5_ / (180F / (float) Math.PI));
 			this.batHead.rotateAngleZ = (float) Math.PI;
@@ -98,7 +98,7 @@ public class ModelVampireBat extends ModelBase
 		}
 		else
 		{
-			f6 = (180F / (float) Math.PI);
+			f6 = 180F / (float) Math.PI;
 			this.batHead.rotateAngleX = p_78088_6_ / (180F / (float) Math.PI);
 			this.batHead.rotateAngleY = p_78088_5_ / (180F / (float) Math.PI);
 			this.batHead.rotateAngleZ = 0.0F;

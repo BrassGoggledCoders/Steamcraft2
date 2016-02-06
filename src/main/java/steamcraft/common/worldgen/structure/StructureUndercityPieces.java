@@ -137,7 +137,7 @@ public class StructureUndercityPieces
 			super(p_i2035_1_);
 			this.coordBaseMode = p_i2035_4_;
 			this.boundingBox = p_i2035_3_;
-			this.hasSpiders = (p_i2035_2_.nextInt(23) == 0);
+			this.hasSpiders = p_i2035_2_.nextInt(23) == 0;
 
 			if ((this.coordBaseMode != 2) && (this.coordBaseMode != 0))
 			{

@@ -202,11 +202,7 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 		tess.startDrawingQuads();
 		{
 			GL11.glTranslatef(0.5F, 0.5F, 0.5F);
-			if (dir == ForgeDirection.UP)
-			{
-				// ROTATE
-			}
-			else if (dir == ForgeDirection.DOWN)
+			if (dir == ForgeDirection.DOWN)
 			{
 				GL11.glRotatef(180, 1, 0, 0);
 			}
@@ -305,11 +301,7 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 		tess.draw();
 
 		GL11.glTranslatef(0.5F, 0.5F, 0.5F);
-		if (dir == ForgeDirection.UP)
-		{
-			// ROTATE
-		}
-		else if (dir == ForgeDirection.DOWN)
+		if (dir == ForgeDirection.DOWN)
 		{
 			GL11.glRotatef(-180, 1, 0, 0);
 		}
@@ -339,11 +331,7 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 		tess.startDrawingQuads();
 		{
 			GL11.glTranslatef(0.5F, 0.5F, 0.5F);
-			if (dir == ForgeDirection.UP)
-			{
-				// ROTATE
-			}
-			else if (dir == ForgeDirection.DOWN)
+			if (dir == ForgeDirection.DOWN)
 			{
 				GL11.glRotatef(180, 1, 0, 0);
 			}
@@ -535,11 +523,7 @@ public class TileCopperPipeRenderer extends TileEntitySpecialRenderer
 		}
 
 		GL11.glTranslatef(0.5F, 0.5F, 0.5F);
-		if (dir == ForgeDirection.UP)
-		{
-			// ROTATE
-		}
-		else if (dir == ForgeDirection.DOWN)
+		if (dir == ForgeDirection.DOWN)
 		{
 			GL11.glRotatef(-180, 1, 0, 0);
 		}

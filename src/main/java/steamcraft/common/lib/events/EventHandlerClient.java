@@ -87,7 +87,7 @@ public class EventHandlerClient
 		if (event.entityLiving.getActivePotionEffect(Potion.invisibility) != null)
 			return;
 
-		EntityPlayerExtended props = ((EntityPlayerExtended) event.entityPlayer.getExtendedProperties(EntityPlayerExtended.EXT_PROP_NAME));
+		EntityPlayerExtended props = (EntityPlayerExtended) event.entityPlayer.getExtendedProperties(EntityPlayerExtended.EXT_PROP_NAME);
 		InventoryVanity inventory = props.getInventory();
 		for (int i = 0; i < inventory.getSizeInventory(); i++)
 		{

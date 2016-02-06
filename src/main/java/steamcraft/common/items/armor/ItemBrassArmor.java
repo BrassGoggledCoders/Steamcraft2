@@ -251,7 +251,7 @@ public class ItemBrassArmor extends BaseArmor implements ISpecialArmor, IGoggles
 		{
 			IArmorModule module = (IArmorModule) ModuleRegistry.getModule(nbt.getString("module" + i));
 
-			if ((module != null))
+			if (module != null)
 			{
 				module.onArmorEquipped(world, player);
 			}
@@ -266,7 +266,7 @@ public class ItemBrassArmor extends BaseArmor implements ISpecialArmor, IGoggles
 		{
 			IArmorModule module = (IArmorModule) ModuleRegistry.getModule(nbt.getString("module" + i));
 
-			if ((module != null))
+			if (module != null)
 			{
 				module.onArmorUnequipped(world, player);
 			}

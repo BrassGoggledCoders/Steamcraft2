@@ -290,30 +290,6 @@ public class CompatabilityLayer
 			Item thaumometer = GameRegistry.findItem("Thaumcraft", "ItemThaumometer");
 			GameRegistry.addRecipe(new ShapedOreRecipe(InitItems.itemThaumicMonocle, " I ", "ITI", " I ", 'I', "ingotBrass", 'T', thaumometer));
 		}
-		if (Loader.isModLoaded("TConstruct"))
-		{
-			// GameRegistry.registerBlock(InitBlocks.blockMoltenZinc,
-			// "blockMoltenZinc");
-			// GameRegistry.registerBlock(InitBlocks.blockMoltenBrass,
-			// "blockMoltenBrass");
-			/*
-			 * TConstructRegistry.getTableCasting().addCastingRecipe(new
-			 * ItemStack(InitItems.itemIngot, 1, 3), new
-			 * FluidStack(InitBlocks.moltenZincFluid, ingotLiquidValue),
-			 * TConstructRegistry.getItemStack("castingot"), 20);
-			 * TConstructRegistry.getTableCasting().addCastingRecipe(new
-			 * ItemStack(InitItems.itemIngot, 1, 4), new
-			 * FluidStack(InitBlocks.moltenBrassFluid, ingotLiquidValue),
-			 * TConstructRegistry.getItemStack("castingot"), 20);
-			 * TConstructRegistry.getBasinCasting().addCastingRecipe(new
-			 * ItemStack(InitItems.itemIngot, 1, 3), new
-			 * FluidStack(InitBlocks.moltenZincFluid, blockLiquidValue), 20 *
-			 * 9); TConstructRegistry.getBasinCasting().addCastingRecipe(new
-			 * ItemStack(InitItems.itemIngot, 1, 4), new
-			 * FluidStack(InitBlocks.moltenBrassFluid, blockLiquidValue), 20 *
-			 * 9);
-			 */
-		}
 		if (Loader.isModLoaded("BrassUtils"))
 		{
 			InitBlocks.registerBlock(InitBlocks.blockEngraved, BaseItemBlockWithMetadata.class, "BlockEngravedSolid", 10);
