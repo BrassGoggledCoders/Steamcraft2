@@ -61,10 +61,9 @@ public class TileInjector extends BaseTileWithInventory implements IOpenableGUI,
 			{
 				ItemStack stack = FluidUtils.drainFluidContainer(this.buffer, this.inventory[0]);
 				if ((this.inventory[0] != null) && OreDictionary.itemMatches(this.inventory[0], stack, true))
-					this.inventory[0].stackSize += stack.stackSize;
+					this.inventory[0].stackSize -= stack.stackSize;
 				else if (this.inventory[0] == null)
 					this.inventory[0] = stack.copy();
-				this.decrStackSize(0, stack.stackSize);
 			}
 			if (this.inventory[1] != null)
 			{

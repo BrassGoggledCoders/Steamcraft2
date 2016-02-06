@@ -35,8 +35,8 @@ public class ContainerInjector extends BaseContainer
 		this.tileent = tile;
 		this.setTile(this.tileent);
 
-		this.addSlotToContainer(new SlotFluidContainer(tile, 0, 116, 61));
-		this.addSlotToContainer(new SlotFluidContainer(tile, 1, 135, 61));
+		this.addSlotToContainer(new SlotFluidContainer(tile, 0, 22, 41));
+		this.addSlotToContainer(new SlotFluidContainer(tile, 1, 139, 41));
 
 		int var3;
 
