@@ -139,7 +139,6 @@ tile.blockModScaffold.9.name=Polished Thin Scaffold
     
 tile.blockBrassLog.name=Brass Plated Log
 tile.blockBrassLeaves.name=Brass Leaves
-tile.blockLamp.name=Lamp
 tile.blockCastIronFence.name=Cast Iron Fence
 tile.blockCastIronGate.name=Cast Iron Gate
 tile.blockCastIronRailing.name=Cast Iron Railing
@@ -211,7 +210,6 @@ tile.blockMud.name=Mud
 tile.blockLeafPile.name=Leaf Litter
 tile.blockBoulder.name=Boulder
 tile.blockTintedRock.name=Tinted Rock
-tile.blockBoulder.0.desc=Lookout Indy!
 tile.blockSpiderEgg.name=Spider Egg
 tile.blockMoss.name=Moss
 tile.blockMushroom.name=Mushroom
@@ -436,8 +434,9 @@ item.itemElectricJarSmall.0.name=Electric Jar (Copper Electrodes)
 item.itemElectricJarMedium.0.name=Electric Jar (Gold-Plated Electrodes)
 item.itemElectricJarLarge.0.name=Electric Jar (Plated)
 item.itemElectricJarHuge.0.name=Electric Jar (Crystalline Glass)
+
 item.itemHandbook.name=Steampunk's Handbook
-item.itemHandbook.desc=Guidebook to
+item.itemHandbook.desc=Guidebook to the wonderful world of steampunk
 item.itemMonsterSpawner.0.name=Spawn Grub
 item.itemMonsterSpawner.1.name=Spawn Lost Miner
 item.itemMonsterSpawner.2.name=Spawn Boar
@@ -522,10 +521,9 @@ item.itemClockworkRocket.2.desc=Armor-Piercing Shell
 item.itemTimeClock.name=Chronometer of Time Manipulation
 item.itemTimeClock.desc=Manipulate the fabric of time! Right Click to set to day, Shift Right Click to set to night. Consumes one Ender Eye per use.
 item.itemSplashLightningBottle.name=Splash Lightning Bottle
-item.itemSplashLightningBottle.desc=Right click to throw.|On impact it electrocute any entity within a 4 block radius.
+item.itemSplashLightningBottle.desc=Right click to throw.|On impact it electrocutes any entity within a 4 block radius.
 item.itemCanisterSteam.name=Steam Canister
 item.itemReinforcedCanisterSteam.name=Reinforced Steam Canister
-
 
 #Tools
 item.itemDrillCore.name=Drill Core
@@ -718,7 +716,7 @@ biome.steamcraft2.innerearth.swamp.name=Swampy Forest
 biome.steamcraft2.innerearth.scorched.name=Scorched Lands
 
 #Keys
-key.steamcraft.category=
+key.steamcraft.category=Steamcraft2
 key.vanity.desc=Open Vanity Inventory
 
 #Lore Stuff
