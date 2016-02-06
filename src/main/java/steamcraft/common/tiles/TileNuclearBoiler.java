@@ -8,7 +8,7 @@ import net.minecraft.world.World;
 import boilerplate.api.IOpenableGUI;
 import steamcraft.client.gui.GuiNuclearBoiler;
 import steamcraft.common.init.InitItems;
-import steamcraft.common.tiles.container.ContainerNuclearBoiler;
+import steamcraft.common.tiles.container.ContainerBaseBoiler;
 
 /**
  * @author Decebaldecebal
@@ -36,6 +36,6 @@ public class TileNuclearBoiler extends TileBaseBoiler implements IOpenableGUI
 	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
 	{
-		return new ContainerNuclearBoiler(player.inventory, (TileNuclearBoiler) world.getTileEntity(x, y, z));
+		return new ContainerBaseBoiler(player.inventory, (TileNuclearBoiler) world.getTileEntity(x, y, z));
 	}
 }

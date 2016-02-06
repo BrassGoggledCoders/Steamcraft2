@@ -10,7 +10,7 @@ import boilerplate.client.BaseContainerGui;
 import org.lwjgl.opengl.GL11;
 import steamcraft.common.lib.ModInfo;
 import steamcraft.common.tiles.TileNuclearBoiler;
-import steamcraft.common.tiles.container.ContainerNuclearBoiler;
+import steamcraft.common.tiles.container.ContainerBaseBoiler;
 
 /**
  * @author decebaldecebal
@@ -24,7 +24,7 @@ public class GuiNuclearBoiler extends BaseContainerGui
 
 	public GuiNuclearBoiler(InventoryPlayer player, TileNuclearBoiler tile)
 	{
-		super(new ContainerNuclearBoiler(player, tile));
+		super(new ContainerBaseBoiler(player, tile));
 
 		this.boiler = tile;
 	}

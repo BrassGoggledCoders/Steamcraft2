@@ -17,7 +17,7 @@ import net.minecraftforge.fluids.FluidStack;
 
 import boilerplate.common.baseclasses.blocks.BaseContainer;
 import steamcraft.common.items.ItemCanister;
-import steamcraft.common.tiles.TileSteamBoiler;
+import steamcraft.common.tiles.TileBaseBoiler;
 import steamcraft.common.tiles.container.slot.SlotFluidContainer;
 import steamcraft.common.tiles.container.slot.SlotOutput;
 
@@ -25,16 +25,16 @@ import steamcraft.common.tiles.container.slot.SlotOutput;
  * @author Decebaldecebal
  *
  */
-public class ContainerSteamBoiler extends BaseContainer
+public class ContainerBaseBoiler extends BaseContainer
 {
-	private TileSteamBoiler tileent;
+	protected TileBaseBoiler tileent;
 
-	private int lastBurnTime = 0;
-	private int lastItemBurnTime = 0;
-	private int lastSteamLevel = 0;
-	private int lastWaterLevel = 0;
+	protected int lastBurnTime = 0;
+	protected int lastItemBurnTime = 0;
+	protected int lastSteamLevel = 0;
+	protected int lastWaterLevel = 0;
 
-	public ContainerSteamBoiler(InventoryPlayer player, TileSteamBoiler tile)
+	public ContainerBaseBoiler(InventoryPlayer player, TileBaseBoiler tile)
 	{
 		this.tileent = tile;
 		this.setTile(this.tileent);
