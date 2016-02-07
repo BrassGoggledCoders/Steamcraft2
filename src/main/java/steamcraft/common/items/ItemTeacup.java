@@ -24,11 +24,9 @@ import steamcraft.common.lib.ModInfo;
 
 public class ItemTeacup extends BaseMetadataItem
 {
-	IIcon[] itemIcon = new IIcon[2];
-
 	public ItemTeacup()
 	{
-		super(Steamcraft.instance, null);
+		super(Steamcraft.instance, new String[] { "", "" });
 		this.setMaxStackSize(1);
 		this.setNoRepair();
 		this.setFull3D();

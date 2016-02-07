@@ -8,6 +8,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
 import cpw.mods.fml.relauncher.Side;
@@ -21,10 +22,9 @@ import steamcraft.common.lib.ModInfo;
 
 public class ItemTeapot extends BaseMetadataItem
 {
-
 	public ItemTeapot()
 	{
-		super(Steamcraft.instance, null);
+		super(Steamcraft.instance, new String[] { "" });
 		this.setMaxStackSize(1);
 		this.setNoRepair();
 		this.setFull3D();
@@ -35,6 +35,13 @@ public class ItemTeapot extends BaseMetadataItem
 	public void registerIcons(IIconRegister icon)
 	{
 		this.itemIcon[0] = icon.registerIcon(ModInfo.PREFIX + this.getUnlocalizedName().substring(5));
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public IIcon getIconFromDamage(int itemDamage)
+	{
+		return this.itemIcon[0];
 	}
 
 	@Override
