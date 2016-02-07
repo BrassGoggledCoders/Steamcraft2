@@ -6,12 +6,20 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
+import boilerplate.common.baseclasses.items.BaseItem;
+import steamcraft.common.Steamcraft;
+
 /**
  * @author warlordjones
  *
  */
 public class ItemMatch extends BaseItem
 {
+	public ItemMatch()
+	{
+		super(Steamcraft.instance);
+	}
+
 	@Override
 	public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, World par3World, int par4, int par5, int par6, int par7,
 			float par8, float par9, float par10)

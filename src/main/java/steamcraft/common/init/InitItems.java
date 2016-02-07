@@ -14,42 +14,29 @@ import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 
+import boilerplate.common.baseclasses.items.BaseItem;
+import boilerplate.common.baseclasses.items.BaseMetadataItem;
 import boilerplate.common.utils.handlers.BucketHandler;
 import boilerplate.common.utils.helpers.RegistryHelper;
 import steamcraft.common.Steamcraft;
-import steamcraft.common.items.BaseItem;
 import steamcraft.common.items.ItemCanister;
-import steamcraft.common.items.ItemCoin;
 import steamcraft.common.items.ItemCustomBucket;
 import steamcraft.common.items.ItemCustomFood;
 import steamcraft.common.items.ItemDimensionalPocket;
 import steamcraft.common.items.ItemFieldManipulator;
 import steamcraft.common.items.ItemFirearm;
-import steamcraft.common.items.ItemGrappleGun;
-import steamcraft.common.items.ItemGunPart;
 import steamcraft.common.items.ItemHandbook;
-import steamcraft.common.items.ItemIngot;
 import steamcraft.common.items.ItemLoreBook;
-import steamcraft.common.items.ItemMachinePart;
 import steamcraft.common.items.ItemMatch;
-import steamcraft.common.items.ItemMobBottle;
 import steamcraft.common.items.ItemMonsterSpawner;
-import steamcraft.common.items.ItemNugget;
 import steamcraft.common.items.ItemNuggetIron;
-import steamcraft.common.items.ItemParts;
-import steamcraft.common.items.ItemPowder;
-import steamcraft.common.items.ItemResource;
-import steamcraft.common.items.ItemRocket;
 import steamcraft.common.items.ItemRocketLauncher;
-import steamcraft.common.items.ItemSheet;
 import steamcraft.common.items.ItemSpanner;
 import steamcraft.common.items.ItemSplashLightningBottle;
 import steamcraft.common.items.ItemTeaSeed;
 import steamcraft.common.items.ItemTeacup;
 import steamcraft.common.items.ItemTeapot;
 import steamcraft.common.items.ItemTimeClock;
-import steamcraft.common.items.ItemVanillaPowder;
-import steamcraft.common.items.ItemVanillaSheet;
 import steamcraft.common.items.ItemWatch;
 import steamcraft.common.items.ItemWithCraftingDurability;
 import steamcraft.common.items.armor.ItemBrassArmor;
@@ -59,7 +46,6 @@ import steamcraft.common.items.armor.ItemDivingHelmet;
 import steamcraft.common.items.armor.ItemMonocle;
 import steamcraft.common.items.armor.ItemNormalArmor;
 import steamcraft.common.items.armor.ItemSteamJetpack;
-import steamcraft.common.items.compat.ItemSteamcraftCluster;
 import steamcraft.common.items.compat.ItemThaumicMonocle;
 import steamcraft.common.items.electric.ElectricItem;
 import steamcraft.common.items.electric.ItemRayGun;
@@ -92,6 +78,7 @@ import steamcraft.common.items.tools.steam.ItemSteamPickaxe;
 import steamcraft.common.items.tools.steam.ItemSteamShovel;
 import steamcraft.common.items.tools.steam.ItemSteamSword;
 import steamcraft.common.items.vanity.ItemTopHat;
+import steamcraft.common.lib.LibInfo;
 import steamcraft.common.lib.ModInfo;
 
 /**
@@ -240,9 +227,9 @@ public class InitItems
 	private static void initializeGuns()
 	{
 		// Ammo
-		itemMusketBall = new BaseItem().setUnlocalizedName("itemMusketBall");
-		itemRifleBullet = new BaseItem().setUnlocalizedName("itemRifleBullet");
-		itemPercussionCap = new BaseItem().setUnlocalizedName("itemPercussionCap");
+		itemMusketBall = new BaseItem(Steamcraft.instance).setUnlocalizedName("itemMusketBall");
+		itemRifleBullet = new BaseItem(Steamcraft.instance).setUnlocalizedName("itemRifleBullet");
+		itemPercussionCap = new BaseItem(Steamcraft.instance).setUnlocalizedName("itemPercussionCap");
 
 		registerItem(itemMusketBall, "ItemMusketBall");
 		registerItem(itemRifleBullet, "ItemRifleBullet");
@@ -283,9 +270,9 @@ public class InitItems
 
 		registerItem(itemRayGun, "ItemRayGun");
 		registerItem(itemShrinkray, "ItemShrinkray");
-		// registerItem(itemLightningGun, "ItemLightningGun");
 
-		itemRocket = new ItemRocket().setUnlocalizedName("itemClockworkRocket").setCreativeTab(Steamcraft.tabSC2);
+		itemRocket = new BaseMetadataItem(Steamcraft.instance, new String[] { "HE", "HEAT", "AP" }).setUnlocalizedName("itemClockworkRocket")
+				.setCreativeTab(Steamcraft.tabSC2);
 		itemClockworkRocketLauncher = new ItemRocketLauncher(50, itemRocket, "steamcraft:rocket", "steamcraft:reload");
 
 		registerItem(itemRocket, "ItemRocket");
@@ -294,13 +281,14 @@ public class InitItems
 
 	private static void initializeMetals()
 	{
-		itemIngot = new ItemIngot().setUnlocalizedName("itemIngot");
-		itemNugget = new ItemNugget().setUnlocalizedName("itemNugget");
+		itemIngot = new BaseMetadataItem(Steamcraft.instance, "metals/", "Ingot", LibInfo.metals).setUnlocalizedName("itemIngot");
+		itemNugget = new BaseMetadataItem(Steamcraft.instance, "metals/", "Nugget", LibInfo.metals).setUnlocalizedName("itemNugget");
 		itemNuggetIron = new ItemNuggetIron().setUnlocalizedName("itemNuggetIron");
-		itemSheet = new ItemSheet().setUnlocalizedName("itemSheet");
-		itemPowder = new ItemPowder().setUnlocalizedName("itemPowder");
-		itemVanillaPowder = new ItemVanillaPowder().setUnlocalizedName("itemVanillaPowder");
-		itemVanillaSheet = new ItemVanillaSheet().setUnlocalizedName("itemVanillaSheet");
+		itemSheet = new BaseMetadataItem(Steamcraft.instance, "metals/", "Sheet", LibInfo.metals).setUnlocalizedName("itemSheet");
+		itemPowder = new BaseMetadataItem(Steamcraft.instance, "metals/", "Ingot", LibInfo.metals).setUnlocalizedName("itemPowder");
+		itemVanillaPowder = new BaseMetadataItem(Steamcraft.instance, "metals/", "Powder", LibInfo.metalsV)
+				.setUnlocalizedName("itemVanillaPowder");
+		itemVanillaSheet = new BaseMetadataItem(Steamcraft.instance, "metals/", "Sheet", LibInfo.metalsV).setUnlocalizedName("itemVanillaSheet");
 
 		registerItem(itemIngot, "ItemIngot");
 		registerItem(itemNugget, "ItemMetalNugget");
@@ -310,10 +298,12 @@ public class InitItems
 		registerItem(itemVanillaPowder, "ItemVanillaMetalPowder");
 		registerItem(itemVanillaSheet, "ItemVanillaMetalSheet");
 
-		itemMachinePart = new ItemMachinePart().setUnlocalizedName("itemMachinePart");
-		itemGunPart = new ItemGunPart().setUnlocalizedName("itemGunPart");
-		itemIronParts = ((ItemParts) new ItemParts().setUnlocalizedName("itemPartsIron")).setMaterial("Iron");
-		itemSteelParts = ((ItemParts) new ItemParts().setUnlocalizedName("itemPartsSteel")).setMaterial("Steel");
+		itemMachinePart = new BaseMetadataItem(Steamcraft.instance, new String[] { "CastIronRod", "ClockworkMechanism", "Grating", "Magnet",
+				"Generator", "Fan", "WireCoil", "Speaker", "InsulatedSheet", "Capacitor" }).setUnlocalizedName("itemMachinePart");
+		itemGunPart = new BaseMetadataItem(Steamcraft.instance, new String[] { "Stock", "MusketBarrel", "RifleBarrel", "Lock", "BrassGunFrame",
+				"GreenFocus", "BlueFocus", "PowerCore", "OverchargedPowerCore", "PistolBarrel", "ShortStock" }).setUnlocalizedName("itemGunPart");
+		itemIronParts = new BaseMetadataItem(Steamcraft.instance, "parts/", "Iron", LibInfo.parts).setUnlocalizedName("itemPartsIron");
+		itemSteelParts = new BaseMetadataItem(Steamcraft.instance, "parts/", "Steel", LibInfo.parts).setUnlocalizedName("itemPartsSteel");
 
 		registerItem(itemMachinePart, "ItemMachinePart");
 		registerItem(itemGunPart, "ItemGunPart");
@@ -326,7 +316,8 @@ public class InitItems
 		/**
 		 * Registration of these are handled in @link={CompatibilityLayer.class}
 		 */
-		itemSteamcraftCluster = new ItemSteamcraftCluster().setUnlocalizedName("itemSteamcraftCluster");
+		itemSteamcraftCluster = new BaseMetadataItem(Steamcraft.instance, "Cluster", new String[] { "Zinc", "Aluminum" })
+				.setUnlocalizedName("itemSteamcraftCluster");
 
 		itemThaumicMonocle = new ItemThaumicMonocle().setUnlocalizedName("itemThaumicMonocle");
 	}
@@ -355,7 +346,8 @@ public class InitItems
 		registerItem(itemElectricJarHuge, "ItemElectricJarHuge");
 
 		// Others
-		itemResource = new ItemResource().setUnlocalizedName("itemResource");
+		itemResource = new BaseMetadataItem(Steamcraft.instance, new String[] { "Sulphur", "Phosphorus", "SulphuricAcid", "Uranium", "Pellet" })
+				.setUnlocalizedName("itemResource");
 		registerItem(itemResource, "ItemResource");
 
 		itemWatch = new ItemWatch().setUnlocalizedName("itemWatch");
@@ -446,10 +438,10 @@ public class InitItems
 		itemAutofeeder = new ItemAutofeeder().setUnlocalizedName("itemAutofeeder");
 		registerItem(itemAutofeeder, "ItemAutofeeder");
 
-		itemTeaLeaf = new BaseItem().setUnlocalizedName("itemTeaLeaves");
+		itemTeaLeaf = new BaseItem(Steamcraft.instance).setUnlocalizedName("itemTeaLeaves");
 		registerItem(itemTeaLeaf, "ItemTeaLeaf");
 
-		itemSlimeRubber = new BaseItem().setUnlocalizedName("itemSlimeRubber");
+		itemSlimeRubber = new BaseItem(Steamcraft.instance).setUnlocalizedName("itemSlimeRubber");
 		registerItem(itemSlimeRubber, "ItemSlimeRubber");
 
 		itemTeapot = new ItemTeapot().setUnlocalizedName("itemTeapot");
@@ -458,13 +450,14 @@ public class InitItems
 		registerItem(itemTeapot, "ItemTeapot");
 		registerItem(itemTeacup, "ItemTeacup");
 
-		itemGrappleGun = new ItemGrappleGun().setUnlocalizedName("itemGrappleGun");
+		// itemGrappleGun = new
+		// ItemGrappleGun().setUnlocalizedName("itemGrappleGun");
 		// registerItem(itemGrappleGun, "ItemGrappleGun");
 
 		itemHandbook = new ItemHandbook().setUnlocalizedName("itemHandbook");
 		registerItem(itemHandbook, "ItemHandbook");
 
-		itemSpyglass = new BaseItem().setUnlocalizedName("itemSpyglass").setFull3D();
+		itemSpyglass = new BaseItem(Steamcraft.instance).setUnlocalizedName("itemSpyglass").setFull3D();
 		registerItem(itemSpyglass, "ItemSpyglass");
 
 		// TODO Add a version system to allow updates. Check version on right
@@ -514,7 +507,7 @@ public class InitItems
 		BucketHandler.getInstance().bucketMap.put(InitBlocks.blockMoltenBrass, itemMoltenBrassBucket);
 		MinecraftForge.EVENT_BUS.register(BucketHandler.getInstance());
 
-		itemWhalebone = new BaseItem().setUnlocalizedName("itemWhalebone");
+		itemWhalebone = new BaseItem(Steamcraft.instance).setUnlocalizedName("itemWhalebone");
 		registerItem(itemWhalebone, "ItemWhalebone");
 
 		itemWhaleMeat = new ItemCustomFood(3, 0.4F, false).setUnlocalizedName("itemWhaleMeat");
@@ -523,36 +516,31 @@ public class InitItems
 		itemCookedWhaleMeat = new ItemCustomFood(6, 0.8F, true).setUnlocalizedName("itemCookedWhaleMeat");
 		registerItem(itemCookedWhaleMeat, "ItemCookedWhaleMeat");
 
-		itemWhaleBlubber = new BaseItem().setUnlocalizedName("itemWhaleBlubber");
+		itemWhaleBlubber = new BaseItem(Steamcraft.instance).setUnlocalizedName("itemWhaleBlubber");
 		registerItem(itemWhaleBlubber, "ItemWhaleBlubber");
 
-		itemCoin = new ItemCoin().setUnlocalizedName("itemCoin");
+		itemCoin = new BaseMetadataItem(Steamcraft.instance, "Coin", new String[] { "Farthing", "Halfpenny", "Penny", "Tuppence", "Groat",
+				"Thripenny", "Sixpence", "Shilling", "Florin", "HalfCrown", "Crown", "HalfSovereign", "Sovereign" }).setUnlocalizedName("itemCoin");
 		registerItem(itemCoin, "ItemCoin");
 
-		// Also known as a pokkit by some wierdo called Longeye ;)
 		itemDimPocket = new ItemDimensionalPocket().setUnlocalizedName("itemDimPocket");
 		// TODO registerItem(itemDimPocket, "ItemDimPocket");
 
-		itemRedwoodStick = new BaseItem().setUnlocalizedName("itemRedwoodStick");
+		itemRedwoodStick = new BaseItem(Steamcraft.instance).setUnlocalizedName("itemRedwoodStick");
 		registerItem(itemRedwoodStick, "ItemRedwoodStick");
-		itemMangroveStick = new BaseItem().setUnlocalizedName("itemMangroveStick");
+		itemMangroveStick = new BaseItem(Steamcraft.instance).setUnlocalizedName("itemMangroveStick");
 		registerItem(itemMangroveStick, "ItemMangroveStick");
-		itemWillowStick = new BaseItem().setUnlocalizedName("itemWillowStick");
+		itemWillowStick = new BaseItem(Steamcraft.instance).setUnlocalizedName("itemWillowStick");
 		registerItem(itemWillowStick, "ItemWillowStick");
-		itemPetrifiedStick = new BaseItem().setUnlocalizedName("itemPetrifiedStick");
+		itemPetrifiedStick = new BaseItem(Steamcraft.instance).setUnlocalizedName("itemPetrifiedStick");
 		registerItem(itemPetrifiedStick, "ItemPetrifiedStick");
-
-		itemEmptyMobBottle = new BaseItem().setUnlocalizedName("itemEmptyMobBottle");
-		// registerItem(itemEmptyMobBottle, "ItemEmptyMobBottle");
-		itemMobBottle = new ItemMobBottle().setUnlocalizedName("itemMobBottle");
-		// registerItem(itemMobBottle, "ItemMobBottle");
 	}
 
 	private static void initializeTools()
 	{
 		// Drills
-		drillCore = new BaseItem().setUnlocalizedName("itemDrillCore");
-		drillBase = new BaseItem().setUnlocalizedName("itemDrillBase");
+		drillCore = new BaseItem(Steamcraft.instance).setUnlocalizedName("itemDrillCore");
+		drillBase = new BaseItem(Steamcraft.instance).setUnlocalizedName("itemDrillBase");
 
 		drillWood = new ItemElectricDrill(InitMaterials.DRILL_WOOD, 40, 80).setUnlocalizedName("itemDrillWood");
 		drillStone = new ItemElectricDrill(InitMaterials.DRILL_STONE, 80, 80).setUnlocalizedName("itemDrillStone");

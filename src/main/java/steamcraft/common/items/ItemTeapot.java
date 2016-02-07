@@ -13,16 +13,18 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+import boilerplate.common.baseclasses.items.BaseMetadataItem;
 import boilerplate.common.utils.ItemStackUtils;
+import steamcraft.common.Steamcraft;
 import steamcraft.common.init.InitItems;
 import steamcraft.common.lib.ModInfo;
 
-public class ItemTeapot extends BaseItemWithMetadata
+public class ItemTeapot extends BaseMetadataItem
 {
 
 	public ItemTeapot()
 	{
-		super();
+		super(Steamcraft.instance, null);
 		this.setMaxStackSize(1);
 		this.setNoRepair();
 		this.setFull3D();
@@ -32,7 +34,7 @@ public class ItemTeapot extends BaseItemWithMetadata
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister icon)
 	{
-		this.itemIcon = icon.registerIcon(ModInfo.PREFIX + this.getUnlocalizedName().substring(5));
+		this.itemIcon[0] = icon.registerIcon(ModInfo.PREFIX + this.getUnlocalizedName().substring(5));
 	}
 
 	@Override

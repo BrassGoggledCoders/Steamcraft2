@@ -10,6 +10,7 @@ import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 
+import boilerplate.common.baseclasses.items.BaseItem;
 import steamcraft.common.Steamcraft;
 
 /**
@@ -20,6 +21,7 @@ public class ItemWatch extends BaseItem
 {
 	public ItemWatch()
 	{
+		super(Steamcraft.instance);
 		this.setMaxStackSize(1);
 		this.setCreativeTab(Steamcraft.tabSC2);
 	}

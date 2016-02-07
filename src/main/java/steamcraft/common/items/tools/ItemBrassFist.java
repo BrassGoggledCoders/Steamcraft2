@@ -3,13 +3,9 @@ package steamcraft.common.items.tools;
 
 import java.util.List;
 
-import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 import boilerplate.common.baseclasses.items.tools.BaseTool;
 import steamcraft.api.item.IFistModule;
@@ -18,22 +14,14 @@ import steamcraft.common.Steamcraft;
 import steamcraft.common.init.InitItems;
 import steamcraft.common.items.ItemCanister;
 import steamcraft.common.items.electric.ElectricItem;
-import steamcraft.common.lib.ModInfo;
 
 public class ItemBrassFist extends BaseTool
 {
 	public ItemBrassFist(ToolMaterial mat)
 	{
-		super(mat.getDamageVsEntity(), mat, ModInfo.PREFIX);
+		super(mat.getDamageVsEntity(), mat, Steamcraft.instance);
 		this.setMaxStackSize(1);
 		this.setCreativeTab(Steamcraft.tabSC2);
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerIcons(IIconRegister ir)
-	{
-		this.itemIcon = ir.registerIcon(ModInfo.PREFIX + "tools/" + this.getUnlocalizedName().substring(5));
 	}
 
 	@SuppressWarnings("all")

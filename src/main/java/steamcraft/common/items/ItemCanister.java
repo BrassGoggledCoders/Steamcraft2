@@ -18,6 +18,8 @@ import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidContainerItem;
 
+import boilerplate.common.baseclasses.items.BaseItem;
+import steamcraft.common.Steamcraft;
 import steamcraft.common.init.InitItems;
 import steamcraft.common.lib.ModInfo;
 
@@ -34,7 +36,7 @@ public class ItemCanister extends BaseItem implements IFluidContainerItem
 
 	public ItemCanister(int maxSteam, int maxSteamRate)
 	{
-		super();
+		super(Steamcraft.instance);
 		this.maxSteam = maxSteam;
 		this.maxSteamRate = maxSteamRate;
 		this.setMaxStackSize(1);

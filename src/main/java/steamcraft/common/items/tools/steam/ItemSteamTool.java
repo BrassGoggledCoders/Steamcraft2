@@ -21,13 +21,12 @@ import steamcraft.common.Steamcraft;
 import steamcraft.common.init.InitItems;
 import steamcraft.common.init.InitMaterials;
 import steamcraft.common.items.ItemCanister;
-import steamcraft.common.lib.ModInfo;
 
 public class ItemSteamTool extends BaseTool
 {
 	public ItemSteamTool(float damage)
 	{
-		super(damage, InitMaterials.TOOL_STEAM, ModInfo.PREFIX);
+		super(damage, InitMaterials.TOOL_STEAM, Steamcraft.instance);
 		this.setCreativeTab(Steamcraft.tabSC2);
 	}
 

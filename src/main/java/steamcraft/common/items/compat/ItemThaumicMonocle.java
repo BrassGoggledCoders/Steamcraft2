@@ -10,7 +10,6 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 import steamcraft.api.item.ModuleRegistry;
-import steamcraft.common.Steamcraft;
 import steamcraft.common.items.modules.BaseArmorModule;
 import steamcraft.common.lib.ModInfo;
 
@@ -24,8 +23,6 @@ public class ItemThaumicMonocle extends BaseArmorModule
 	{
 		super();
 		ModuleRegistry.registerModule(this);
-		this.setMaxStackSize(1);
-		this.setCreativeTab(Steamcraft.tabSC2);
 	}
 
 	@Override

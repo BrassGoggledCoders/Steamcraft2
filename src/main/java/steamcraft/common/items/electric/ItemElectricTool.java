@@ -13,7 +13,6 @@ import net.minecraft.world.World;
 import boilerplate.api.IEnergyItem;
 import boilerplate.common.baseclasses.items.tools.BaseTool;
 import steamcraft.common.Steamcraft;
-import steamcraft.common.lib.ModInfo;
 
 public class ItemElectricTool extends BaseTool implements IEnergyItem
 {
@@ -23,7 +22,7 @@ public class ItemElectricTool extends BaseTool implements IEnergyItem
 
 	protected ItemElectricTool(float damage, ToolMaterial toolMat, int maxEnergy, int maxReceive)
 	{
-		super(damage, toolMat, ModInfo.PREFIX);
+		super(damage, toolMat, Steamcraft.instance);
 		this.setCreativeTab(Steamcraft.tabSC2);
 		this.maxEnergy = maxEnergy * 1000;
 		this.maxReceive = (short) maxReceive;

@@ -16,17 +16,19 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+import boilerplate.common.baseclasses.items.BaseMetadataItem;
+import steamcraft.common.Steamcraft;
 import steamcraft.common.init.InitAchievements;
 import steamcraft.common.init.InitItems;
 import steamcraft.common.lib.ModInfo;
 
-public class ItemTeacup extends BaseItemWithMetadata
+public class ItemTeacup extends BaseMetadataItem
 {
 	IIcon[] itemIcon = new IIcon[2];
 
 	public ItemTeacup()
 	{
-		super();
+		super(Steamcraft.instance, null);
 		this.setMaxStackSize(1);
 		this.setNoRepair();
 		this.setFull3D();
@@ -61,7 +63,6 @@ public class ItemTeacup extends BaseItemWithMetadata
 	public void getSubItems(Item item, CreativeTabs tab, List l)
 	{
 		l.add(new ItemStack(InitItems.itemTeacup, 1, 0));
-
 		l.add(new ItemStack(InitItems.itemTeacup, 1, 10));
 	}
 

@@ -7,6 +7,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 
+import boilerplate.common.baseclasses.items.BaseItem;
 import steamcraft.common.Steamcraft;
 
 public class ItemCustomFood extends BaseItem
@@ -37,6 +38,7 @@ public class ItemCustomFood extends BaseItem
 
 	public ItemCustomFood(int healAmount, float satModifier, boolean wolfMeat)
 	{
+		super(Steamcraft.instance);
 		this.itemUseDuration = 32;
 		this.healAmount = healAmount;
 		this.isWolfsFavoriteMeat = wolfMeat;

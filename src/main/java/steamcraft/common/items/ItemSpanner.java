@@ -14,6 +14,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 import boilerplate.api.IOpenableGUI;
+import boilerplate.common.baseclasses.items.BaseItem;
 import steamcraft.api.item.IUniversalWrench;
 import steamcraft.api.tile.ISpannerTile;
 import steamcraft.client.lib.GuiIDs;
@@ -28,7 +29,7 @@ public class ItemSpanner extends BaseItem implements IUniversalWrench
 {
 	public ItemSpanner()
 	{
-		super();
+		super(Steamcraft.instance);
 		this.setCreativeTab(Steamcraft.tabSC2);
 	}
 

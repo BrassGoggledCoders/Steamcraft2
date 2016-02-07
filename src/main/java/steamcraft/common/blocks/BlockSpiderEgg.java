@@ -9,7 +9,9 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+import boilerplate.common.baseclasses.blocks.BaseBlock;
 import steamcraft.client.lib.RenderIDs;
+import steamcraft.common.Steamcraft;
 import steamcraft.common.entities.living.EntityGhostSpider;
 import steamcraft.common.entities.living.EntityGiantSpider;
 
@@ -18,7 +20,7 @@ public class BlockSpiderEgg extends BaseBlock
 
 	public BlockSpiderEgg(Material mat)
 	{
-		super(mat);
+		super(mat, Steamcraft.instance);
 		// TODO Auto-generated constructor stub
 	}
 

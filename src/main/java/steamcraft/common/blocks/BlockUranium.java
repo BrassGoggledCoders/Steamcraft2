@@ -15,7 +15,9 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 import boilerplate.client.utils.EffectUtils;
+import boilerplate.common.baseclasses.blocks.BaseBlock;
 import brassutils.api.IEngravable;
+import steamcraft.common.Steamcraft;
 import steamcraft.common.init.InitBlocks;
 
 /**
@@ -27,7 +29,7 @@ public class BlockUranium extends BaseBlock implements IEngravable
 {
 	public BlockUranium(Material mat)
 	{
-		super(mat);
+		super(mat, Steamcraft.instance);
 	}
 
 	@Override

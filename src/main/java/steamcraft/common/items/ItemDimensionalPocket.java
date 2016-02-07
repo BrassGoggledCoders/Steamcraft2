@@ -6,6 +6,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
 import boilerplate.api.IOpenableGUI;
+import boilerplate.common.baseclasses.items.BaseItem;
 import steamcraft.client.gui.GuiPocket;
 import steamcraft.client.lib.GuiIDs;
 import steamcraft.common.Steamcraft;
@@ -15,7 +16,7 @@ public class ItemDimensionalPocket extends BaseItem implements IOpenableGUI
 {
 	public ItemDimensionalPocket()
 	{
-		super();
+		super(Steamcraft.instance);
 		this.setMaxStackSize(1);
 	}
 

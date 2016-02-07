@@ -20,6 +20,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 import boilerplate.api.IOpenableGUI;
+import boilerplate.common.baseclasses.items.BaseItem;
 import steamcraft.client.lib.GuiIDs;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.ModInfo;
@@ -32,7 +33,7 @@ public class ItemLoreBook extends BaseItem implements IOpenableGUI
 
 	public ItemLoreBook(String author, String title, String[] pages)
 	{
-		super();
+		super(Steamcraft.instance);
 		this.setMaxStackSize(1);
 		this.author = author;
 		this.title = title;

@@ -11,6 +11,8 @@ import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.util.ForgeDirection;
 
+import boilerplate.common.baseclasses.items.BaseItem;
+import steamcraft.common.Steamcraft;
 import steamcraft.common.init.InitBlocks;
 
 /**
@@ -21,7 +23,7 @@ public class ItemTeaSeed extends BaseItem implements IPlantable
 {
 	public ItemTeaSeed()
 	{
-		super();
+		super(Steamcraft.instance);
 		this.setMaxStackSize(64);
 		this.setUnlocalizedName("itemTeaSeed");
 	}

@@ -12,6 +12,8 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+import boilerplate.common.baseclasses.items.BaseItem;
+import steamcraft.common.Steamcraft;
 import steamcraft.common.init.InitItems;
 import steamcraft.common.lib.LibInfo;
 
@@ -25,6 +27,7 @@ public class ItemWithCraftingDurability extends BaseItem
 
 	public ItemWithCraftingDurability()
 	{
+		super(Steamcraft.instance);
 		this.setMaxStackSize(1);
 		this.setMaxDamage(ToolMaterial.IRON.getMaxUses());
 		this.setNoRepair();

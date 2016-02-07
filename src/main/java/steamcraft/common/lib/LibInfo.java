@@ -8,6 +8,7 @@ public class LibInfo
 {
 	public static String[] metals = { "Aluminum", "Copper", "Tin", "Zinc", "Brass", "Bronze", "Steel", "CastIron" };
 	public static String[] metalsV = { "Iron", "Gold" };
+	public static String[] parts = { "Gear", "Sprocket", "Spring", "Thread", "Nut", "Bolt", "Washer", "Bearing", "Screw", "Nail" };
 
 	/**
 	 *

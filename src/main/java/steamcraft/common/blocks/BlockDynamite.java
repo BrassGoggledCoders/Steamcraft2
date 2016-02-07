@@ -19,6 +19,8 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+import boilerplate.common.baseclasses.blocks.BaseBlock;
+import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.ModInfo;
 
 public class BlockDynamite extends BaseBlock
@@ -28,7 +30,7 @@ public class BlockDynamite extends BaseBlock
 
 	public BlockDynamite()
 	{
-		super(Material.tnt);
+		super(Material.tnt, Steamcraft.instance);
 	}
 
 	/**

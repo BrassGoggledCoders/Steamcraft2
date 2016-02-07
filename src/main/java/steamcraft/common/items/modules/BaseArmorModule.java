@@ -12,14 +12,16 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 import boilerplate.client.ClientHelper;
-import boilerplate.common.baseclasses.items.RootItem;
+import boilerplate.common.baseclasses.items.BaseItem;
 import steamcraft.api.item.IArmorModule;
 import steamcraft.api.item.ModuleRegistry;
+import steamcraft.common.Steamcraft;
 
-public abstract class BaseArmorModule extends RootItem implements IArmorModule
+public abstract class BaseArmorModule extends BaseItem implements IArmorModule
 {
 	public BaseArmorModule()
 	{
+		super(Steamcraft.instance);
 		ModuleRegistry.setModuleIncompatibilities(this);
 		this.setMaxStackSize(1);
 	}

@@ -31,8 +31,6 @@ import steamcraft.common.config.Config;
 import steamcraft.common.config.ConfigGeneral;
 import steamcraft.common.init.InitAchievements;
 import steamcraft.common.init.InitItems;
-import steamcraft.common.items.ItemIngot;
-import steamcraft.common.items.ItemSheet;
 import steamcraft.common.items.armor.ItemBrassArmor;
 import steamcraft.common.items.armor.ItemClockworkWings;
 import steamcraft.common.items.armor.ItemSteamJetpack;
@@ -65,21 +63,12 @@ public class EventHandlerFML
 			event.player.triggerAchievement(InitAchievements.turbineAchieve);
 		else if (craftingBlock instanceof BlockLightningRod)
 			event.player.triggerAchievement(InitAchievements.rodAchieve);
-		else if (event.crafting.getItem() instanceof ItemSheet)
-			event.player.triggerAchievement(InitAchievements.sheetAchieve);
 		else if (event.crafting.getItem() instanceof ItemClockworkWings)
 			event.player.triggerAchievement(InitAchievements.wingsAchieve);
 		else if (event.crafting.getItem() instanceof ItemSteamJetpack)
 			event.player.triggerAchievement(InitAchievements.jetpackAchieve);
 		else if (event.crafting.getItem().getUnlocalizedName().equals(InitItems.itemSteamWingpack.getUnlocalizedName()))
 			event.player.triggerAchievement(InitAchievements.wingpackAchieve);
-	}
-
-	@SubscribeEvent
-	public void onItemSmelted(PlayerEvent.ItemSmeltedEvent event)
-	{
-		if (event.smelting.getItem() instanceof ItemIngot)
-			event.player.triggerAchievement(InitAchievements.ingotAchieve);
 	}
 
 	@SubscribeEvent

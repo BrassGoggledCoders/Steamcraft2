@@ -26,7 +26,7 @@ public class ItemFirearm extends BaseFirearm
 {
 	public ItemFirearm(int damage, int reloadTime, Item ammo, Item ammo2, String fireSound, String reloadSound)
 	{
-		super(damage, reloadTime, ammo, ammo2, fireSound, reloadSound);
+		super(damage, reloadTime, ammo, ammo2, fireSound, reloadSound, Steamcraft.instance);
 		this.setCreativeTab(Steamcraft.tabSC2);
 	}
 

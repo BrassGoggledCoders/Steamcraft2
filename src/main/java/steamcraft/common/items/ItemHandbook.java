@@ -7,6 +7,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
 import boilerplate.api.IOpenableGUI;
+import boilerplate.common.baseclasses.items.BaseItem;
 import steamcraft.client.gui.GuiHandbook;
 import steamcraft.client.lib.GuiIDs;
 import steamcraft.common.Steamcraft;
@@ -17,7 +18,7 @@ public class ItemHandbook extends BaseItem implements IOpenableGUI
 
 	public ItemHandbook()
 	{
-		super();
+		super(Steamcraft.instance);
 		this.setMaxStackSize(1);
 	}
 

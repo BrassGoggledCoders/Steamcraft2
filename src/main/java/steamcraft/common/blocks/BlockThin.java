@@ -11,11 +11,14 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+import boilerplate.common.baseclasses.blocks.BaseBlock;
+import steamcraft.common.Steamcraft;
+
 public class BlockThin extends BaseBlock
 {
 	public BlockThin(Material mat)
 	{
-		super(mat);
+		super(mat, Steamcraft.instance);
 		this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.0625F, 1.0F);
 		// this.setLightOpacity(255);
 	}

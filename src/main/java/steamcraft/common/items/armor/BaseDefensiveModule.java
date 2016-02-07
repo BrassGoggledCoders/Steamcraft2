@@ -12,11 +12,17 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 import boilerplate.client.ClientHelper;
-import boilerplate.common.baseclasses.items.RootItem;
+import boilerplate.common.baseclasses.items.BaseItem;
 import steamcraft.api.item.IDefensiveArmorModule;
+import steamcraft.common.Steamcraft;
 
-public abstract class BaseDefensiveModule extends RootItem implements IDefensiveArmorModule
+public abstract class BaseDefensiveModule extends BaseItem implements IDefensiveArmorModule
 {
+	public BaseDefensiveModule()
+	{
+		super(Steamcraft.instance);
+	}
+
 	@SuppressWarnings("all")
 	@SideOnly(Side.CLIENT)
 	@Override

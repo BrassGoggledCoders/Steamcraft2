@@ -27,7 +27,7 @@ public class ElectricItem extends BaseElectricItem
 {
 	public ElectricItem(int maxEnergy, int maxReceive, int maxSend)
 	{
-		super(maxEnergy, maxReceive, maxSend);
+		super(maxEnergy, maxReceive, maxSend, Steamcraft.instance);
 		this.setCreativeTab(Steamcraft.tabSC2);
 	}
 
