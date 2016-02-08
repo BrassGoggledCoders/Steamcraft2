@@ -33,7 +33,7 @@ public class ItemLoreBook extends BaseItem implements IOpenableGUI
 
 	public ItemLoreBook(String author, String title, String[] pages)
 	{
-		super(Steamcraft.instance);
+		super();
 		this.setMaxStackSize(1);
 		this.author = author;
 		this.title = title;

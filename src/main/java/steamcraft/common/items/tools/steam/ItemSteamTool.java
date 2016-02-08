@@ -26,7 +26,7 @@ public class ItemSteamTool extends BaseTool
 {
 	public ItemSteamTool(float damage)
 	{
-		super(damage, InitMaterials.TOOL_STEAM, Steamcraft.instance);
+		super(damage, InitMaterials.TOOL_STEAM);
 		this.setCreativeTab(Steamcraft.tabSC2);
 	}
 

@@ -17,7 +17,7 @@ public class BlockCastIronFence extends BlockCustomFence
 {
 	public BlockCastIronFence()
 	{
-		super("metal/blockCastIron", Material.iron, Steamcraft.instance);
+		super("metal/blockCastIron", Material.iron);
 		this.setHardness(4.5F);
 		this.setResistance(20.0F);
 		this.setStepSound(Block.soundTypeMetal);

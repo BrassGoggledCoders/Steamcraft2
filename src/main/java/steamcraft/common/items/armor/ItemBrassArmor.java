@@ -45,7 +45,7 @@ public class ItemBrassArmor extends BaseArmor implements ISpecialArmor, IGoggles
 
 	public ItemBrassArmor(ItemArmor.ArmorMaterial armorMat, int renderIndex, int armorType)
 	{
-		super(armorMat, armorType, "brass", ModInfo.PREFIX);
+		super(armorMat, armorType, "brass");
 		this.setMaxStackSize(1);
 		this.setCreativeTab(Steamcraft.tabSC2);
 	}

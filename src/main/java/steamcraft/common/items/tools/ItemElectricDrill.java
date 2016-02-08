@@ -14,7 +14,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-import steamcraft.common.items.electric.ItemElectricTool;
+import boilerplate.common.baseclasses.items.electric.ItemElectricTool;
 import steamcraft.common.lib.ModInfo;
 
 public class ItemElectricDrill extends ItemElectricTool

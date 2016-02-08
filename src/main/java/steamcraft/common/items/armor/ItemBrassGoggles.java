@@ -28,7 +28,7 @@ public class ItemBrassGoggles extends BaseArmor
 
 	public ItemBrassGoggles(ArmorMaterial mat, int renderIndex, int type)
 	{
-		super(mat, type, "", ModInfo.PREFIX);
+		super(mat, type, "");
 		this.setCreativeTab(Steamcraft.tabSC2);
 	}
 

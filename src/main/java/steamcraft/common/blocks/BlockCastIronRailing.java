@@ -22,7 +22,6 @@ import net.minecraftforge.common.util.ForgeDirection;
 
 import boilerplate.common.baseclasses.blocks.BaseBlock;
 import steamcraft.client.lib.RenderIDs;
-import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.ModInfo;
 
 /**
@@ -33,7 +32,7 @@ public class BlockCastIronRailing extends BaseBlock
 {
 	public BlockCastIronRailing(Material mat)
 	{
-		super(mat, Steamcraft.instance);
+		super(mat);
 	}
 
 	@Override

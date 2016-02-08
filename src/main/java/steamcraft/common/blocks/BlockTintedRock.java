@@ -10,13 +10,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
 import boilerplate.common.baseclasses.blocks.BaseBlock;
-import steamcraft.common.Steamcraft;
 
 public class BlockTintedRock extends BaseBlock
 {
 	public BlockTintedRock(Material mat)
 	{
-		super(mat, Steamcraft.instance);
+		super(mat);
 		this.setHarvestLevel("pickaxe", 0);
 	}
 

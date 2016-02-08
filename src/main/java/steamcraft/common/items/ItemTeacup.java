@@ -17,7 +17,6 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 import boilerplate.common.baseclasses.items.BaseMetadataItem;
-import steamcraft.common.Steamcraft;
 import steamcraft.common.init.InitAchievements;
 import steamcraft.common.init.InitItems;
 import steamcraft.common.lib.ModInfo;
@@ -26,7 +25,7 @@ public class ItemTeacup extends BaseMetadataItem
 {
 	public ItemTeacup()
 	{
-		super(Steamcraft.instance, new String[] { "", "" });
+		super(new String[] { "", "" });
 		this.setMaxStackSize(1);
 		this.setNoRepair();
 		this.setFull3D();

@@ -6,14 +6,13 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
 import boilerplate.common.baseclasses.items.BaseItem;
-import steamcraft.common.Steamcraft;
 import steamcraft.common.entities.projectile.EntitySplashLightningBottle;
 
 public class ItemSplashLightningBottle extends BaseItem
 {
 	public ItemSplashLightningBottle()
 	{
-		super(Steamcraft.instance);
+		super();
 		this.setMaxStackSize(3);
 	}
 

@@ -28,7 +28,6 @@ import net.minecraftforge.common.MinecraftForge;
 
 import boilerplate.client.GuiHandler;
 import boilerplate.common.IBoilerplateMod;
-import boilerplate.common.IModInfo;
 import boilerplate.common.compathandler.FMPCompatHandler;
 import boilerplate.common.utils.handlers.BucketHandler;
 import steamcraft.common.compat.CompatabilityLayer;
@@ -57,10 +56,6 @@ import steamcraft.common.worldgen.structure.MapGenCustomScatteredFeature;
 import steamcraft.common.worldgen.structure.StructureUndercityPieces;
 import steamcraft.common.worldgen.structure.StructureUndercityStart;
 
-/**
- * @author Surseance
- * @commentary by Arnold
- */
 @Mod(modid = ModInfo.ID, name = ModInfo.NAME, version = ModInfo.VERSION, guiFactory = ModInfo.CONFIG_GUI, dependencies = "required-after:boilerplate;after:Thaumcraft;after:BrassUtils")
 public class Steamcraft implements IBoilerplateMod
 {
@@ -84,7 +79,6 @@ public class Steamcraft implements IBoilerplateMod
 
 		InitBlocks.init();
 		InitItems.init();
-		// InitTinkersSupport.init();
 
 		MinecraftForge.EVENT_BUS.register(new BucketHandler());
 
@@ -208,12 +202,6 @@ public class Steamcraft implements IBoilerplateMod
 	}
 
 	@Override
-	public IModInfo getModInfo()
-	{
-		return new ModInfo();
-	}
-
-	@Override
 	public Object getInstance()
 	{
 		return instance;
@@ -223,5 +211,41 @@ public class Steamcraft implements IBoilerplateMod
 	public CreativeTabs getCreativeTab()
 	{
 		return Steamcraft.tabSC2;
+	}
+
+	@Override
+	public String getID()
+	{
+		return ModInfo.ID;
+	}
+
+	@Override
+	public String getName()
+	{
+		return ModInfo.NAME;
+	}
+
+	@Override
+	public String getVersion()
+	{
+		return ModInfo.VERSION;
+	}
+
+	@Override
+	public String getPrefix()
+	{
+		return ModInfo.PREFIX;
+	}
+
+	@Override
+	public String getClientProxyPath()
+	{
+		return ModInfo.CLIENT_PROXY;
+	}
+
+	@Override
+	public String getCommonProxyPath()
+	{
+		return ModInfo.COMMON_PROXY;
 	}
 }

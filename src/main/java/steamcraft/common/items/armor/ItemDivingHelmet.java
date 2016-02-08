@@ -29,7 +29,7 @@ public class ItemDivingHelmet extends BaseArmor
 
 	public ItemDivingHelmet(ArmorMaterial mat, int renderIndex, int type)
 	{
-		super(mat, type, "", ModInfo.PREFIX);
+		super(mat, type, "");
 		this.setCreativeTab(Steamcraft.tabSC2);
 	}
 

@@ -7,14 +7,13 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 
 import boilerplate.common.baseclasses.blocks.BaseBlock;
-import steamcraft.common.Steamcraft;
 
 public class BlockMud extends BaseBlock
 {
 
 	public BlockMud(Material mat)
 	{
-		super(mat, Steamcraft.instance);
+		super(mat);
 	}
 
 	/**

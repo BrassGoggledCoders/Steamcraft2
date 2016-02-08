@@ -34,7 +34,7 @@ public class ItemSteamChisel extends BaseSteamItem implements IChiselItem
 
 	public ItemSteamChisel()
 	{
-		super(32000, Steamcraft.instance);
+		super(32000);
 		this.setCreativeTab(Steamcraft.tabSC2);
 		this.setUnlocalizedName("itemChiselSteam");
 		this.setFull3D();

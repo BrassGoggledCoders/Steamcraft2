@@ -270,9 +270,9 @@ public class InitBlocks
 
 		blockStonebrickWall = new BlockStonebrickWall().setBlockName("blockStonebrickWall");
 		registerBlock(blockStonebrickWall, BaseMetadataItemBlock.class, "BlockStonebrickWall", 0);
-		blockStoneslabWall = new BlockCustomWall(Blocks.stone_slab, 0, Steamcraft.instance).setBlockName("blockStoneslabWall");
+		blockStoneslabWall = new BlockCustomWall(Blocks.stone_slab, 0).setBlockName("blockStoneslabWall");
 		registerBlock(blockStoneslabWall, "BlockStoneslabWall");
-		blockBrickWall = new BlockCustomWall(Blocks.brick_block, 0, Steamcraft.instance).setBlockName("blockBrickWall");
+		blockBrickWall = new BlockCustomWall(Blocks.brick_block, 0).setBlockName("blockBrickWall");
 		registerBlock(blockBrickWall, "BlockBrickWall");
 	}
 
@@ -381,45 +381,42 @@ public class InitBlocks
 		blockSlate = new BlockSlate().setBlockName("blockSlate");
 		blockLightSlate = new BlockLightSlate().setBlockName("blockLightSlate");
 
-		blockRawBlueSlateStairs = new BlockCustomStairs(blockSlate, 0, Steamcraft.instance).setBlockName("blockRawBlueSlateStairs");
+		blockRawBlueSlateStairs = new BlockCustomStairs(blockSlate, 0).setBlockName("blockRawBlueSlateStairs");
 		registerBlock(blockRawBlueSlateStairs, "BlockRawBlueSlateStairs");
-		blockRawBlackSlateStairs = new BlockCustomStairs(blockSlate, 1, Steamcraft.instance).setBlockName("blockRawBlackSlateStairs");
+		blockRawBlackSlateStairs = new BlockCustomStairs(blockSlate, 1).setBlockName("blockRawBlackSlateStairs");
 		registerBlock(blockRawBlackSlateStairs, "BlockRawBlackSlateStairs");
-		blockRawRedSlateStairs = new BlockCustomStairs(blockSlate, 2, Steamcraft.instance).setBlockName("blockRawRedSlateStairs");
+		blockRawRedSlateStairs = new BlockCustomStairs(blockSlate, 2).setBlockName("blockRawRedSlateStairs");
 		registerBlock(blockRawRedSlateStairs, "BlockRawRedSlateStairs");
-		blockCobbleBlueSlateStairs = new BlockCustomStairs(blockSlate, 3, Steamcraft.instance).setBlockName("blockCobbleBlueSlateStairs");
+		blockCobbleBlueSlateStairs = new BlockCustomStairs(blockSlate, 3).setBlockName("blockCobbleBlueSlateStairs");
 		registerBlock(blockCobbleBlueSlateStairs, "BlockCobbleBlueSlateStairs");
-		blockCobbleBlackSlateStairs = new BlockCustomStairs(blockSlate, 4, Steamcraft.instance).setBlockName("blockCobbleBlackSlateStairs");
+		blockCobbleBlackSlateStairs = new BlockCustomStairs(blockSlate, 4).setBlockName("blockCobbleBlackSlateStairs");
 		registerBlock(blockCobbleBlackSlateStairs, "BlockCobbleBlackSlateStairs");
-		blockCobbleRedSlateStairs = new BlockCustomStairs(blockSlate, 5, Steamcraft.instance).setBlockName("blockCobbleRedSlateStairs");
+		blockCobbleRedSlateStairs = new BlockCustomStairs(blockSlate, 5).setBlockName("blockCobbleRedSlateStairs");
 		registerBlock(blockCobbleRedSlateStairs, "BlockCobbleRedSlateStairs");
-		blockBrickBlueSlateStairs = new BlockCustomStairs(blockSlate, 6, Steamcraft.instance).setBlockName("blockBrickBlueSlateStairs");
+		blockBrickBlueSlateStairs = new BlockCustomStairs(blockSlate, 6).setBlockName("blockBrickBlueSlateStairs");
 		registerBlock(blockBrickBlueSlateStairs, "BlockBrickBlueSlateStairs");
-		blockBrickBlackSlateStairs = new BlockCustomStairs(blockSlate, 7, Steamcraft.instance).setBlockName("blockBrickBlackSlateStairs");
+		blockBrickBlackSlateStairs = new BlockCustomStairs(blockSlate, 7).setBlockName("blockBrickBlackSlateStairs");
 		registerBlock(blockBrickBlackSlateStairs, "BlockBrickBlackSlateStairs");
-		blockBrickRedSlateStairs = new BlockCustomStairs(blockSlate, 8, Steamcraft.instance).setBlockName("blockBrickRedSlateStairs");
+		blockBrickRedSlateStairs = new BlockCustomStairs(blockSlate, 8).setBlockName("blockBrickRedSlateStairs");
 		registerBlock(blockBrickRedSlateStairs, "BlockBrickRedSlateStairs");
 
-		blockRawLightBlueSlateStairs = new BlockCustomStairs(blockLightSlate, 0, Steamcraft.instance).setBlockName("blockRawLightBlueSlateStairs");
+		blockRawLightBlueSlateStairs = new BlockCustomStairs(blockLightSlate, 0).setBlockName("blockRawLightBlueSlateStairs");
 		registerBlock(blockRawLightBlueSlateStairs, "BlockRawLightBlueSlateStairs");
-		blockRawGreySlateStairs = new BlockCustomStairs(blockLightSlate, 1, Steamcraft.instance).setBlockName("blockRawGreySlateStairs");
+		blockRawGreySlateStairs = new BlockCustomStairs(blockLightSlate, 1).setBlockName("blockRawGreySlateStairs");
 		registerBlock(blockRawGreySlateStairs, "BlockRawGreySlateStairs");
-		blockRawLightRedSlateStairs = new BlockCustomStairs(blockLightSlate, 2, Steamcraft.instance).setBlockName("blockRawLightRedSlateStairs");
+		blockRawLightRedSlateStairs = new BlockCustomStairs(blockLightSlate, 2).setBlockName("blockRawLightRedSlateStairs");
 		registerBlock(blockRawLightRedSlateStairs, "BlockRawLightRedSlateStairs");
-		blockCobbleLightBlueSlateStairs = new BlockCustomStairs(blockLightSlate, 3, Steamcraft.instance)
-				.setBlockName("blockCobbleLightBlueSlateStairs");
+		blockCobbleLightBlueSlateStairs = new BlockCustomStairs(blockLightSlate, 3).setBlockName("blockCobbleLightBlueSlateStairs");
 		registerBlock(blockCobbleLightBlueSlateStairs, "BlockCobbleLightBlueSlateStairs");
-		blockCobbleGreySlateStairs = new BlockCustomStairs(blockLightSlate, 4, Steamcraft.instance).setBlockName("blockCobbleGreySlateStairs");
+		blockCobbleGreySlateStairs = new BlockCustomStairs(blockLightSlate, 4).setBlockName("blockCobbleGreySlateStairs");
 		registerBlock(blockCobbleGreySlateStairs, "BlockCobbleGreySlateStairs");
-		blockCobbleLightRedSlateStairs = new BlockCustomStairs(blockLightSlate, 5, Steamcraft.instance)
-				.setBlockName("blockCobbleLightRedSlateStairs");
+		blockCobbleLightRedSlateStairs = new BlockCustomStairs(blockLightSlate, 5).setBlockName("blockCobbleLightRedSlateStairs");
 		registerBlock(blockCobbleLightRedSlateStairs, "BlockCobbleLightRedSlateStairs");
-		blockBrickLightBlueSlateStairs = new BlockCustomStairs(blockLightSlate, 6, Steamcraft.instance)
-				.setBlockName("blockBrickLightBlueSlateStairs");
+		blockBrickLightBlueSlateStairs = new BlockCustomStairs(blockLightSlate, 6).setBlockName("blockBrickLightBlueSlateStairs");
 		registerBlock(blockBrickLightBlueSlateStairs, "BlockBrickLightBlueSlateStairs");
-		blockBrickGreySlateStairs = new BlockCustomStairs(blockLightSlate, 7, Steamcraft.instance).setBlockName("blockBrickGreySlateStairs");
+		blockBrickGreySlateStairs = new BlockCustomStairs(blockLightSlate, 7).setBlockName("blockBrickGreySlateStairs");
 		registerBlock(blockBrickGreySlateStairs, "BlockBrickGreySlateStairs");
-		blockBrickLightRedSlateStairs = new BlockCustomStairs(blockLightSlate, 8, Steamcraft.instance).setBlockName("blockBrickLightRedSlateStairs");
+		blockBrickLightRedSlateStairs = new BlockCustomStairs(blockLightSlate, 8).setBlockName("blockBrickLightRedSlateStairs");
 		registerBlock(blockBrickLightRedSlateStairs, "BlockBrickLightRedSlateStairs");
 
 		registerBlock(blockCustomOre, BaseMetadataItemBlock.class, "BlockSteamcraftOre", 7);
@@ -475,7 +472,7 @@ public class InitBlocks
 		blockHatch = new BlockHatch().setBlockName("blockHatch");
 		RegistryHelper.registerContainerBlock(blockHatch, TileHatch.class, "BlockHatch");
 
-		blockFlesh = new BaseBlock(Material.gourd, Steamcraft.instance).setBlockName("blockFlesh").setCreativeTab(Steamcraft.tabSC2);
+		blockFlesh = new BaseBlock(Material.gourd).setBlockName("blockFlesh").setCreativeTab(Steamcraft.tabSC2);
 		registerBlock(blockFlesh, "BlockFlesh");
 
 		blockCongealedSlime = new BlockCongealedSlime(Material.gourd).setBlockName("blockCongealedSlime").setCreativeTab(Steamcraft.tabSC2);
@@ -523,8 +520,7 @@ public class InitBlocks
 		blockFissurePortal = new BlockFissurePortal(Material.rock).setBlockName("blockFissurePortal");
 		registerBlock(blockFissurePortal, "BlockFissurePortal");
 
-		blockCompressedStone = new BaseBlock(Material.rock, Steamcraft.instance).setBlockName("blockCompressedStone").setHardness(2.2F)
-				.setResistance(15.0F);
+		blockCompressedStone = new BaseBlock(Material.rock).setBlockName("blockCompressedStone").setHardness(2.2F).setResistance(15.0F);
 		registerBlock(blockCompressedStone, "BlockCompressedStone");
 
 		blockInfestedGrass = new BlockInfestedGrass(Material.grass).setBlockName("blockInfestedGrass");
@@ -545,96 +541,92 @@ public class InitBlocks
 		blockPolishedPlanks = new BlockPolishedPlanks().setBlockName("blockPolishedPlanks");
 		registerBlock(blockPolishedPlanks, BaseMetadataItemBlock.class, "BlockPolishedPlanks", 3);
 
-		blockRedwoodLog = new BlockCustomLog("Redwood", Steamcraft.instance).setBlockName("blockRedwoodLog");
+		blockRedwoodLog = new BlockCustomLog("Redwood").setBlockName("blockRedwoodLog");
 		registerBlock(blockRedwoodLog, "BlockRedwoodLog");
 
-		blockRedwoodLeaves = new BlockCustomLeaves("Redwood", Steamcraft.instance).setBlockName("blockRedwoodLeaves");
+		blockRedwoodLeaves = new BlockCustomLeaves("Redwood").setBlockName("blockRedwoodLeaves");
 		registerBlock(blockRedwoodLeaves, "BlockRedwoodLeaves");
 
-		blockRedwoodPlanks = new BaseBlock(Material.wood, Steamcraft.instance).setBlockName("blockRedwoodPlanks");
+		blockRedwoodPlanks = new BaseBlock(Material.wood).setBlockName("blockRedwoodPlanks");
 		registerBlock(blockRedwoodPlanks, "BlockRedwoodPlanks");
 
-		blockMangroveLog = new BlockCustomLog("Mangrove", Steamcraft.instance).setBlockName("blockMangroveLog");
+		blockMangroveLog = new BlockCustomLog("Mangrove").setBlockName("blockMangroveLog");
 		registerBlock(blockMangroveLog, "BlockMangroveLog");
 
-		blockMangroveLeaves = new BlockCustomLeaves("Mangrove", Steamcraft.instance).setBlockName("blockMangroveLeaves");
+		blockMangroveLeaves = new BlockCustomLeaves("Mangrove").setBlockName("blockMangroveLeaves");
 		registerBlock(blockMangroveLeaves, "BlockMangroveLeaves");
 
-		blockMangrovePlanks = new BaseBlock(Material.wood, Steamcraft.instance).setBlockName("blockMangrovePlanks");
+		blockMangrovePlanks = new BaseBlock(Material.wood).setBlockName("blockMangrovePlanks");
 		registerBlock(blockMangrovePlanks, "BlockMangrovePlanks");
 
-		blockWillowLog = new BlockCustomLog("Willow", Steamcraft.instance).setBlockName("blockWillowLog");
+		blockWillowLog = new BlockCustomLog("Willow").setBlockName("blockWillowLog");
 		registerBlock(blockWillowLog, "BlockWillowLog");
 
-		blockWillowLeaves = new BlockCustomLeaves("Willow", Steamcraft.instance).setBlockName("blockWillowLeaves");
+		blockWillowLeaves = new BlockCustomLeaves("Willow").setBlockName("blockWillowLeaves");
 		registerBlock(blockWillowLeaves, "BlockWillowLeaves");
 
-		blockWillowPlanks = new BaseBlock(Material.wood, Steamcraft.instance).setBlockName("blockWillowPlanks");
+		blockWillowPlanks = new BaseBlock(Material.wood).setBlockName("blockWillowPlanks");
 		registerBlock(blockWillowPlanks, "BlockWillowPlanks");
 
-		blockPetrifiedLog = new BlockCustomLog("Petrified", Steamcraft.instance).setBlockName("blockPetrifiedLog");
+		blockPetrifiedLog = new BlockCustomLog("Petrified").setBlockName("blockPetrifiedLog");
 		registerBlock(blockPetrifiedLog, "BlockPetrifiedLog");
 
-		blockDeadLeaves = new BlockCustomLeaves("Dead", Steamcraft.instance).setBlockName("blockDeadLeaves");
+		blockDeadLeaves = new BlockCustomLeaves("Dead").setBlockName("blockDeadLeaves");
 		registerBlock(blockDeadLeaves, "BlockDeadLeaves");
 
-		blockPetrifiedPlanks = new BaseBlock(Material.wood, Steamcraft.instance).setBlockName("blockPetrifiedPlanks");
+		blockPetrifiedPlanks = new BaseBlock(Material.wood).setBlockName("blockPetrifiedPlanks");
 		registerBlock(blockPetrifiedPlanks, "BlockPetrifiedPlanks");
 
-		blockRedwoodFence = new BlockCustomFence("blockRedwoodPlanks", Material.wood, Steamcraft.instance).setBlockName("blockRedwoodFence");
+		blockRedwoodFence = new BlockCustomFence("blockRedwoodPlanks", Material.wood).setBlockName("blockRedwoodFence");
 		registerBlock(blockRedwoodFence, "BlockRedwoodFence");
 
-		blockMangroveFence = new BlockCustomFence("blockMangrovePlanks", Material.wood, Steamcraft.instance).setBlockName("blockMangroveFence");
+		blockMangroveFence = new BlockCustomFence("blockMangrovePlanks", Material.wood).setBlockName("blockMangroveFence");
 		registerBlock(blockMangroveFence, "blockMangroveFence");
 
-		blockWillowFence = new BlockCustomFence("blockWillowPlanks", Material.wood, Steamcraft.instance).setBlockName("blockWillowFence");
+		blockWillowFence = new BlockCustomFence("blockWillowPlanks", Material.wood).setBlockName("blockWillowFence");
 		registerBlock(blockWillowFence, "blockWillowFence");
 
-		blockPetrifiedFence = new BlockCustomFence("blockPetrifiedPlanks", Material.wood, Steamcraft.instance).setBlockName("blockPetrifiedFence");
+		blockPetrifiedFence = new BlockCustomFence("blockPetrifiedPlanks", Material.wood).setBlockName("blockPetrifiedFence");
 		registerBlock(blockPetrifiedFence, "blockPetrifiedFence");
 
-		blockRedwoodStairs = new BlockCustomStairs(blockRedwoodPlanks, Steamcraft.instance).setBlockName("blockRedwoodStairs");
+		blockRedwoodStairs = new BlockCustomStairs(blockRedwoodPlanks).setBlockName("blockRedwoodStairs");
 		registerBlock(blockRedwoodStairs, "BlockRedwoodStairs");
 
-		blockMangroveStairs = new BlockCustomStairs(blockMangrovePlanks, Steamcraft.instance).setBlockName("blockMangroveStairs");
+		blockMangroveStairs = new BlockCustomStairs(blockMangrovePlanks).setBlockName("blockMangroveStairs");
 		registerBlock(blockMangroveStairs, "blockMangroveStairs");
 
-		blockWillowStairs = new BlockCustomStairs(blockWillowPlanks, Steamcraft.instance).setBlockName("blockWillowStairs");
+		blockWillowStairs = new BlockCustomStairs(blockWillowPlanks).setBlockName("blockWillowStairs");
 		registerBlock(blockWillowStairs, "blockWillowStairs");
 
-		blockPetrifiedStairs = new BlockCustomStairs(blockPetrifiedPlanks, Steamcraft.instance).setBlockName("blockPetrifiedStairs");
+		blockPetrifiedStairs = new BlockCustomStairs(blockPetrifiedPlanks).setBlockName("blockPetrifiedStairs");
 		registerBlock(blockPetrifiedStairs, "blockPetrifiedStairs");
 
-		blockRedwoodSlab = new BlockCustomSlab("blockRedwoodPlanks", blockRedwoodPlanks, Material.wood, Steamcraft.instance)
-				.setBlockName("blockRedwoodSlab");
+		blockRedwoodSlab = new BlockCustomSlab("blockRedwoodPlanks", blockRedwoodPlanks, Material.wood).setBlockName("blockRedwoodSlab");
 		registerBlock(blockRedwoodSlab, "BlockRedwoodSlab");
 
-		blockMangroveSlab = new BlockCustomSlab("blockMangrovePlanks", blockMangrovePlanks, Material.wood, Steamcraft.instance)
-				.setBlockName("blockMangroveSlab");
+		blockMangroveSlab = new BlockCustomSlab("blockMangrovePlanks", blockMangrovePlanks, Material.wood).setBlockName("blockMangroveSlab");
 		registerBlock(blockMangroveSlab, "blockMangroveSlab");
 
-		blockWillowSlab = new BlockCustomSlab("blockWillowPlanks", blockWillowPlanks, Material.wood, Steamcraft.instance)
-				.setBlockName("blockWillowSlab");
+		blockWillowSlab = new BlockCustomSlab("blockWillowPlanks", blockWillowPlanks, Material.wood).setBlockName("blockWillowSlab");
 		registerBlock(blockWillowSlab, "blockWillowSlab");
 
-		blockPetrifiedSlab = new BlockCustomSlab("blockPetrifiedPlanks", blockPetrifiedPlanks, Material.wood, Steamcraft.instance)
-				.setBlockName("blockPetrifiedSlab");
+		blockPetrifiedSlab = new BlockCustomSlab("blockPetrifiedPlanks", blockPetrifiedPlanks, Material.wood).setBlockName("blockPetrifiedSlab");
 		registerBlock(blockPetrifiedSlab, "blockPetrifiedSlab");
 
-		blockRedwoodDoubleSlab = new BlockCustomDoubleSlab("blockRedwoodPlanks", blockRedwoodPlanks, Material.wood, blockRedwoodSlab,
-				Steamcraft.instance).setBlockName("blockRedwoodDoubleSlab");
+		blockRedwoodDoubleSlab = new BlockCustomDoubleSlab("blockRedwoodPlanks", blockRedwoodPlanks, Material.wood, blockRedwoodSlab)
+				.setBlockName("blockRedwoodDoubleSlab");
 		// registerBlock(blockRedwoodDoubleSlab, "BlockRedwoodDoubleSlab");
 
-		blockMangroveDoubleSlab = new BlockCustomDoubleSlab("blockMangrovePlanks", blockMangrovePlanks, Material.wood, blockMangroveSlab,
-				Steamcraft.instance).setBlockName("blockMangroveDoubleSlab");
+		blockMangroveDoubleSlab = new BlockCustomDoubleSlab("blockMangrovePlanks", blockMangrovePlanks, Material.wood, blockMangroveSlab)
+				.setBlockName("blockMangroveDoubleSlab");
 		// registerBlock(blockMangroveDoubleSlab, "blockMangroveDoubleSlab");
 
-		blockWillowDoubleSlab = new BlockCustomDoubleSlab("blockWillowPlanks", blockWillowPlanks, Material.wood, blockWillowSlab, Steamcraft.instance)
+		blockWillowDoubleSlab = new BlockCustomDoubleSlab("blockWillowPlanks", blockWillowPlanks, Material.wood, blockWillowSlab)
 				.setBlockName("blockWillowDoubleSlab");
 		// registerBlock(blockWillowDoubleSlab, "blockWillowDoubleSlab");
 
-		blockPetrifiedDoubleSlab = new BlockCustomDoubleSlab("blockPetrifiedPlanks", blockPetrifiedPlanks, Material.wood, blockPetrifiedSlab,
-				Steamcraft.instance).setBlockName("blockPetrifiedDoubleSlab");
+		blockPetrifiedDoubleSlab = new BlockCustomDoubleSlab("blockPetrifiedPlanks", blockPetrifiedPlanks, Material.wood, blockPetrifiedSlab)
+				.setBlockName("blockPetrifiedDoubleSlab");
 		// registerBlock(blockPetrifiedDoubleSlab, "blockPetrifiedDoubleSlab");
 
 		blockMud = new BlockMud(Material.ground).setBlockName("blockMud");

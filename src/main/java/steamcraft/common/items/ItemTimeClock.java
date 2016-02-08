@@ -15,7 +15,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 import boilerplate.client.ClientHelper;
 import boilerplate.common.baseclasses.items.BaseItem;
-import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.ModInfo;
 
 /**
@@ -28,7 +27,7 @@ public class ItemTimeClock extends BaseItem
 
 	public ItemTimeClock()
 	{
-		super(Steamcraft.instance);
+		super();
 		this.setMaxStackSize(1);
 	}
 

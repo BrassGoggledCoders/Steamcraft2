@@ -29,7 +29,7 @@ public class ItemSpanner extends BaseItem implements IUniversalWrench
 {
 	public ItemSpanner()
 	{
-		super(Steamcraft.instance);
+		super();
 		this.setCreativeTab(Steamcraft.tabSC2);
 	}
 

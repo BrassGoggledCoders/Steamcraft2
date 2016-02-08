@@ -11,10 +11,10 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 import boilerplate.client.ClientHelper;
+import boilerplate.common.baseclasses.items.electric.BaseElectricStorageItem;
 import steamcraft.api.item.IPoweredModuleHelper;
 import steamcraft.common.init.InitItems;
 import steamcraft.common.items.ItemCanister;
-import steamcraft.common.items.electric.ElectricItem;
 
 public abstract class PoweredArmorModule extends BaseArmorModule implements IPoweredModuleHelper
 {
@@ -112,9 +112,9 @@ public abstract class PoweredArmorModule extends BaseArmorModule implements IPow
 		ItemStack[] mainInv = player.inventory.mainInventory;
 
 		for (ItemStack element : mainInv)
-			if ((element != null) && (element.getItem() instanceof ElectricItem))
+			if ((element != null) && (element.getItem() instanceof BaseElectricStorageItem))
 			{
-				ElectricItem jar = (ElectricItem) element.getItem();
+				BaseElectricStorageItem jar = (BaseElectricStorageItem) element.getItem();
 
 				if (jar.getEnergyStored(element) >= rfToDrain)
 				{
@@ -129,9 +129,9 @@ public abstract class PoweredArmorModule extends BaseArmorModule implements IPow
 
 		for (ItemStack element : mainInv)
 		{
-			if ((element != null) && (element.getItem() instanceof ElectricItem))
+			if ((element != null) && (element.getItem() instanceof BaseElectricStorageItem))
 			{
-				ElectricItem jar = (ElectricItem) element.getItem();
+				BaseElectricStorageItem jar = (BaseElectricStorageItem) element.getItem();
 
 				return jar.getEnergyStored(element) >= rfToDrain;
 			}

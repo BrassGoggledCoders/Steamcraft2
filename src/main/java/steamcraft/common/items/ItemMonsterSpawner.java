@@ -8,7 +8,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
 import boilerplate.common.baseclasses.items.BaseMetadataItem;
-import steamcraft.common.Steamcraft;
 import steamcraft.common.entities.living.EntityAbandonedGolem;
 import steamcraft.common.entities.living.EntityBoar;
 import steamcraft.common.entities.living.EntityGhostSpider;
@@ -25,7 +24,7 @@ public class ItemMonsterSpawner extends BaseMetadataItem
 {
 	public ItemMonsterSpawner()
 	{
-		super(Steamcraft.instance, "MonsterSpawner", new String[13]);
+		super("MonsterSpawner", new String[13]);
 	}
 
 	@Override

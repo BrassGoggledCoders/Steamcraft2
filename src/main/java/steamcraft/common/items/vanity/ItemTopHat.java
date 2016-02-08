@@ -11,7 +11,6 @@ import boilerplate.common.baseclasses.items.BaseItem;
 import steamcraft.api.vanity.EnumVanityType;
 import steamcraft.api.vanity.IVanityItem;
 import steamcraft.client.renderers.models.ModelTopHat;
-import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.ModInfo;
 
 /**
@@ -22,7 +21,7 @@ public class ItemTopHat extends BaseItem implements IVanityItem
 {
 	public ItemTopHat()
 	{
-		super(Steamcraft.instance);
+		super();
 	}
 
 	@Override

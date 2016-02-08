@@ -12,6 +12,7 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 
+import boilerplate.common.baseclasses.items.electric.BaseElectricStorageItem;
 import boilerplate.common.entity.EntityMinedBlock;
 import boilerplate.common.utils.PlayerUtils;
 import boilerplate.common.utils.Utils;
@@ -22,7 +23,7 @@ import steamcraft.common.lib.ModInfo;
  * @author Surseance
  *
  */
-public class ItemShrinkray extends ElectricItem
+public class ItemShrinkray extends BaseElectricStorageItem
 {
 	public static short energyPerUse = 1000;
 

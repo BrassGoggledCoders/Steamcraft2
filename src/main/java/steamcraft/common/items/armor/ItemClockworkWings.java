@@ -29,7 +29,7 @@ public class ItemClockworkWings extends BaseArmor
 
 	public ItemClockworkWings(ArmorMaterial mat, int renderIndex, int type)
 	{
-		super(mat, type, "", ModInfo.PREFIX);
+		super(mat, type, "");
 		this.setMaxDamage(0);
 		this.setCreativeTab(Steamcraft.tabSC2);
 	}

@@ -7,19 +7,19 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
+import boilerplate.common.baseclasses.items.electric.BaseElectricStorageItem;
 import boilerplate.common.baseclasses.items.tools.BaseTool;
 import steamcraft.api.item.IFistModule;
 import steamcraft.api.item.ModuleRegistry;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.init.InitItems;
 import steamcraft.common.items.ItemCanister;
-import steamcraft.common.items.electric.ElectricItem;
 
 public class ItemBrassFist extends BaseTool
 {
 	public ItemBrassFist(ToolMaterial mat)
 	{
-		super(mat.getDamageVsEntity(), mat, Steamcraft.instance);
+		super(mat.getDamageVsEntity(), mat);
 		this.setMaxStackSize(1);
 		this.setCreativeTab(Steamcraft.tabSC2);
 	}
@@ -94,9 +94,9 @@ public class ItemBrassFist extends BaseTool
 		ItemStack[] mainInv = player.inventory.mainInventory;
 
 		for (ItemStack element : mainInv)
-			if ((element != null) && (element.getItem() instanceof ElectricItem))
+			if ((element != null) && (element.getItem() instanceof BaseElectricStorageItem))
 			{
-				ElectricItem jar = (ElectricItem) element.getItem();
+				BaseElectricStorageItem jar = (BaseElectricStorageItem) element.getItem();
 
 				if (jar.getEnergyStored(element) >= rfToDrain)
 				{
@@ -111,9 +111,9 @@ public class ItemBrassFist extends BaseTool
 
 		for (ItemStack element : mainInv)
 		{
-			if ((element != null) && (element.getItem() instanceof ElectricItem))
+			if ((element != null) && (element.getItem() instanceof BaseElectricStorageItem))
 			{
-				ElectricItem jar = (ElectricItem) element.getItem();
+				BaseElectricStorageItem jar = (BaseElectricStorageItem) element.getItem();
 
 				return jar.getEnergyStored(element) >= rfToDrain;
 			}

@@ -18,7 +18,7 @@ public class ItemHandbook extends BaseItem implements IOpenableGUI
 
 	public ItemHandbook()
 	{
-		super(Steamcraft.instance);
+		super();
 		this.setMaxStackSize(1);
 	}
 

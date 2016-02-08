@@ -16,7 +16,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 import boilerplate.common.baseclasses.items.BaseMetadataItem;
 import boilerplate.common.utils.ItemStackUtils;
-import steamcraft.common.Steamcraft;
 import steamcraft.common.init.InitItems;
 import steamcraft.common.lib.ModInfo;
 
@@ -24,7 +23,7 @@ public class ItemTeapot extends BaseMetadataItem
 {
 	public ItemTeapot()
 	{
-		super(Steamcraft.instance, new String[] { "" });
+		super(new String[] { "" });
 		this.setMaxStackSize(1);
 		this.setNoRepair();
 		this.setFull3D();

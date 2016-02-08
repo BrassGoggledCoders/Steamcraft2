@@ -21,7 +21,7 @@ public class ItemWatch extends BaseItem
 {
 	public ItemWatch()
 	{
-		super(Steamcraft.instance);
+		super();
 		this.setMaxStackSize(1);
 		this.setCreativeTab(Steamcraft.tabSC2);
 	}

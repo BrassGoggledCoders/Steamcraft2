@@ -9,7 +9,6 @@ import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 
 import boilerplate.common.baseclasses.blocks.BaseBlock;
-import steamcraft.common.Steamcraft;
 import steamcraft.common.entities.EntityFallingBoulder;
 
 public class BlockBoulder extends BaseBlock
@@ -18,7 +17,7 @@ public class BlockBoulder extends BaseBlock
 
 	public BlockBoulder()
 	{
-		super(Material.rock, Steamcraft.instance);
+		super(Material.rock);
 		this.setHarvestLevel("pickaxe", 2);
 		this.setHardness(2F);
 		this.setResistance(20F);

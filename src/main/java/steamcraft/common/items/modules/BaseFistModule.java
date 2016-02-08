@@ -14,13 +14,12 @@ import boilerplate.client.ClientHelper;
 import boilerplate.common.baseclasses.items.BaseItem;
 import steamcraft.api.item.IFistModule;
 import steamcraft.api.item.ModuleRegistry;
-import steamcraft.common.Steamcraft;
 
 public abstract class BaseFistModule extends BaseItem implements IFistModule
 {
 	public BaseFistModule()
 	{
-		super(Steamcraft.instance);
+		super();
 		ModuleRegistry.setModuleIncompatibilities(this);
 	}
 

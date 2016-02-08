@@ -9,7 +9,6 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldType;
 
 import boilerplate.common.baseclasses.blocks.BaseBlock;
-import steamcraft.common.Steamcraft;
 import steamcraft.common.config.ConfigGeneral;
 import steamcraft.common.worldgen.dimension.util.TeleporterDeeps;
 
@@ -17,7 +16,7 @@ public class BlockFissurePortal extends BaseBlock
 {
 	public BlockFissurePortal(Material mat)
 	{
-		super(mat, Steamcraft.instance);
+		super(mat);
 		this.setBlockUnbreakable();
 		this.setLightLevel(1F);
 	}

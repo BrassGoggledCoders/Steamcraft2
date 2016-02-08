@@ -8,14 +8,13 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
 import boilerplate.common.baseclasses.blocks.BaseBlock;
-import steamcraft.common.Steamcraft;
 import steamcraft.common.init.InitItems;
 
 public class BlockBrassLeaves extends BaseBlock
 {
 	public BlockBrassLeaves(Material mat)
 	{
-		super(mat, Steamcraft.instance);
+		super(mat);
 		this.setHarvestLevel("pickaxe", 2);
 	}
 

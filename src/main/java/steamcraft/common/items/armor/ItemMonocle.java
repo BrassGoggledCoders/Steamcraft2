@@ -20,7 +20,7 @@ public class ItemMonocle extends BaseArmor
 {
 	public ItemMonocle(final ItemArmor.ArmorMaterial armorMat, final int armorType, final int renderIndex)
 	{
-		super(armorMat, armorType, "", ModInfo.PREFIX);
+		super(armorMat, armorType, "");
 		this.setCreativeTab(Steamcraft.tabSC2);
 	}
 

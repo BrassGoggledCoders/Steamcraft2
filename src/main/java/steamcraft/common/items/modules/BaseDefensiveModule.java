@@ -1,5 +1,5 @@
 
-package steamcraft.common.items.armor;
+package steamcraft.common.items.modules;
 
 import java.util.List;
 
@@ -14,13 +14,12 @@ import cpw.mods.fml.relauncher.SideOnly;
 import boilerplate.client.ClientHelper;
 import boilerplate.common.baseclasses.items.BaseItem;
 import steamcraft.api.item.IDefensiveArmorModule;
-import steamcraft.common.Steamcraft;
 
 public abstract class BaseDefensiveModule extends BaseItem implements IDefensiveArmorModule
 {
 	public BaseDefensiveModule()
 	{
-		super(Steamcraft.instance);
+		super();
 	}
 
 	@SuppressWarnings("all")

@@ -16,6 +16,7 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 
+import boilerplate.common.baseclasses.items.electric.BaseElectricStorageItem;
 import boilerplate.common.utils.PlayerUtils;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.ModInfo;
@@ -25,7 +26,7 @@ import steamcraft.common.lib.ModInfo;
  *
  */
 
-public class ItemRayGun extends ElectricItem
+public class ItemRayGun extends BaseElectricStorageItem
 {
 	public static short energyPerUse = 100;
 

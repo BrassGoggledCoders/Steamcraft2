@@ -9,7 +9,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-import steamcraft.common.items.electric.ItemElectricTool;
+import boilerplate.common.baseclasses.items.electric.ItemElectricTool;
 
 /**
  * @author Surseance

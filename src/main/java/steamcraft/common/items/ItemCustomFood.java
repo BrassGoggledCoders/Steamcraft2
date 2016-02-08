@@ -38,7 +38,7 @@ public class ItemCustomFood extends BaseItem
 
 	public ItemCustomFood(int healAmount, float satModifier, boolean wolfMeat)
 	{
-		super(Steamcraft.instance);
+		super();
 		this.itemUseDuration = 32;
 		this.healAmount = healAmount;
 		this.isWolfsFavoriteMeat = wolfMeat;

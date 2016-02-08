@@ -25,7 +25,7 @@ public class ItemRocketLauncher extends BaseFirearm
 {
 	public ItemRocketLauncher(int reloadTime, Item ammo, String fireSound, String reloadSound)
 	{
-		super(0, reloadTime, ammo, null, fireSound, reloadSound, Steamcraft.instance);
+		super(0, reloadTime, ammo, null, fireSound, reloadSound);
 		this.setCreativeTab(Steamcraft.tabSC2);
 		this.setUnlocalizedName("itemClockworkRocketLauncher");
 	}

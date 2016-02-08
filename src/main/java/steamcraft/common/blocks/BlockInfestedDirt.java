@@ -10,14 +10,13 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 import boilerplate.common.baseclasses.blocks.BaseBlock;
-import steamcraft.common.Steamcraft;
 import steamcraft.common.entities.living.EntityGrub;
 
 public class BlockInfestedDirt extends BaseBlock
 {
 	public BlockInfestedDirt(Material mat)
 	{
-		super(mat, Steamcraft.instance);
+		super(mat);
 	}
 
 	/**

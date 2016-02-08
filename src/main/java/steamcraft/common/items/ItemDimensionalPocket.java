@@ -16,7 +16,7 @@ public class ItemDimensionalPocket extends BaseItem implements IOpenableGUI
 {
 	public ItemDimensionalPocket()
 	{
-		super(Steamcraft.instance);
+		super();
 		this.setMaxStackSize(1);
 	}
 
