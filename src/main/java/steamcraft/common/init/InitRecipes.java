@@ -63,7 +63,7 @@ public class InitRecipes
 					new ItemStack(InitItems.itemGunPart, 1, 8), 'N', Items.nether_star);
 		else
 			GameRegistry.addRecipe(new ItemStack(InitItems.itemGunPart, 1, 9), "SPS", "PNP", "SPS", 'S', Blocks.obsidian, 'P',
-					new ItemStack(InitItems.itemGunPart, 1, 8), 'N', Items.nether_star);
+					new ItemStack(InitItems.itemGunPart, 1, 8), 'N', Items.diamond);
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemGunPart, 1, 10), " II", "   ", " II", 'I', "ingotIron"));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(InitItems.itemGunPart, 1, 11), " WW", "  W", 'W', "plankWood"));
 		// Actual Guns

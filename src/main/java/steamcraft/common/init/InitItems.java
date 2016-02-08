@@ -286,8 +286,7 @@ public class InitItems
 		itemNuggetIron = new ItemNuggetIron().setUnlocalizedName("itemNuggetIron");
 		itemSheet = new BaseMetadataItem(Steamcraft.instance, "metals/", "Sheet", LibInfo.metals).setUnlocalizedName("itemSheet");
 		itemPowder = new BaseMetadataItem(Steamcraft.instance, "metals/", "Ingot", LibInfo.metals).setUnlocalizedName("itemPowder");
-		itemVanillaPowder = new BaseMetadataItem(Steamcraft.instance, "metals/", "Powder", LibInfo.metalsV)
-				.setUnlocalizedName("itemVanillaPowder");
+		itemVanillaPowder = new BaseMetadataItem(Steamcraft.instance, "metals/", "Powder", LibInfo.metalsV).setUnlocalizedName("itemVanillaPowder");
 		itemVanillaSheet = new BaseMetadataItem(Steamcraft.instance, "metals/", "Sheet", LibInfo.metalsV).setUnlocalizedName("itemVanillaSheet");
 
 		registerItem(itemIngot, "ItemIngot");
@@ -301,7 +300,8 @@ public class InitItems
 		itemMachinePart = new BaseMetadataItem(Steamcraft.instance, new String[] { "CastIronRod", "ClockworkMechanism", "Grating", "Magnet",
 				"Generator", "Fan", "WireCoil", "Speaker", "InsulatedSheet", "Capacitor" }).setUnlocalizedName("itemMachinePart");
 		itemGunPart = new BaseMetadataItem(Steamcraft.instance, new String[] { "Stock", "MusketBarrel", "RifleBarrel", "Lock", "BrassGunFrame",
-				"GreenFocus", "BlueFocus", "PowerCore", "OverchargedPowerCore", "PistolBarrel", "ShortStock" }).setUnlocalizedName("itemGunPart");
+				"CastIronGunFrame", "GreenFocus", "BlueFocus", "PowerCore", "OverchargedPowerCore", "PistolBarrel", "ShortStock" })
+						.setUnlocalizedName("itemGunPart");
 		itemIronParts = new BaseMetadataItem(Steamcraft.instance, "parts/", "Iron", LibInfo.parts).setUnlocalizedName("itemPartsIron");
 		itemSteelParts = new BaseMetadataItem(Steamcraft.instance, "parts/", "Steel", LibInfo.parts).setUnlocalizedName("itemPartsSteel");
 
