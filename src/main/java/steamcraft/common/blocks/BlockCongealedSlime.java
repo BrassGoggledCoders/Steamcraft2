@@ -11,9 +11,10 @@ import boilerplate.common.baseclasses.blocks.BaseBlock;
 public class BlockCongealedSlime extends BaseBlock
 {
 
-	public BlockCongealedSlime(Material mat)
+	public BlockCongealedSlime()
 	{
-		super(mat);
+		// TODO make this slime in 1.8
+		super(Material.gourd);
 	}
 
 	/**

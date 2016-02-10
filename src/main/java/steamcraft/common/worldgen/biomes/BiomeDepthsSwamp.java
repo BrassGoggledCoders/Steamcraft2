@@ -16,8 +16,8 @@ import net.minecraft.world.gen.feature.WorldGenVines;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+import boilerplate.common.worldgen.WorldGenBlockgroup;
 import steamcraft.common.init.InitBlocks;
-import steamcraft.common.worldgen.WorldGenBlockgroup;
 import steamcraft.common.worldgen.WorldGenLeafPile;
 import steamcraft.common.worldgen.trees.WorldGenDeadTree;
 import steamcraft.common.worldgen.trees.WorldGenMangroveTree;

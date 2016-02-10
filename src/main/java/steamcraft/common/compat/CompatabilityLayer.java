@@ -86,7 +86,7 @@ public class CompatabilityLayer
 
 	private static void sendTiConIMC()
 	{
-		LoggerSteamcraft.info("TiCon Detected, adding Etherium Tool Material");
+		LoggerSteamcraft.getLogger().info("TiCon Detected, adding Etherium Tool Material");
 		// Aluminum, Copper, Tin
 		for (int i = 0; i < 3; i++)
 		{
@@ -141,7 +141,7 @@ public class CompatabilityLayer
 
 	private static void registerOreDictionaryEntries()
 	{
-		LoggerSteamcraft.info("Registering Thingies in OreDictionary");
+		LoggerSteamcraft.getLogger().info("Registering OreDictionary Entries");
 		OreDictHelper.registerOreWithAlts(InitItems.itemIngot, "ingotAluminum", "ingotAluminium");
 		OreDictHelper.registerOre("ingotCopper", InitItems.itemIngot, 1);
 		OreDictHelper.registerOre("ingotTin", InitItems.itemIngot, 2);
@@ -262,7 +262,7 @@ public class CompatabilityLayer
 
 	private static void registerBiomeTypes()
 	{
-		LoggerSteamcraft.info("Registering Biome Dictionary entries");
+		LoggerSteamcraft.getLogger().info("Registering Biome Dictionary entries");
 		BiomeDictionary.registerBiomeType(InitBiomes.biomeDepths, BiomeDictionary.Type.HILLS);
 		BiomeDictionary.registerBiomeType(InitBiomes.biomeDepthsF, BiomeDictionary.Type.HILLS, BiomeDictionary.Type.FOREST);
 		BiomeDictionary.registerBiomeType(InitBiomes.biomeDepthsM, BiomeDictionary.Type.MOUNTAIN);
@@ -280,7 +280,7 @@ public class CompatabilityLayer
 	{
 		if (Loader.isModLoaded("Thaumcraft"))
 		{
-			LoggerSteamcraft.info("Thaumcraft Detected. Loading Wizarding Module");
+			LoggerSteamcraft.getLogger().info("Thaumcraft Detected. Loading Wizarding Module");
 
 			GameRegistry.registerItem(InitItems.itemSteamcraftCluster, "ItemSteamcraftCluster");
 			GameRegistry.addSmelting(new ItemStack(InitItems.itemSteamcraftCluster, 1, 0), new ItemStack(InitItems.itemIngot, 2, 0), 0);

@@ -10,6 +10,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.fluids.IFluidContainerItem;
 
+import boilerplate.common.baseclasses.blocks.BaseContainerBlock;
 import steamcraft.client.lib.RenderIDs;
 import steamcraft.common.tiles.TileCopperTank;
 

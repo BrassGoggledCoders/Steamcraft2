@@ -10,6 +10,7 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
+import boilerplate.common.baseclasses.blocks.BaseContainerBlock;
 import steamcraft.client.lib.RenderIDs;
 import steamcraft.common.init.InitBlocks;
 import steamcraft.common.tiles.TileCopperPipe;

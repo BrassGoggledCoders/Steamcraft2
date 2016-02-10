@@ -75,7 +75,7 @@ public class ConfigGeneral
 					new String[] { "Platinum", "Nickel", "Lead", "Silver", "" }, "");
 		} catch (Exception e)
 		{
-			LoggerSteamcraft.error("Failed to load configuration file:" + e);
+			LoggerSteamcraft.getLogger().error("Failed to load configuration file:" + e);
 		} finally
 		{
 			if (config.hasChanged())

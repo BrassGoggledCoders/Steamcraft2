@@ -22,6 +22,7 @@ import boilerplate.common.baseclasses.blocks.BlockCustomSlab;
 import boilerplate.common.baseclasses.blocks.BlockCustomStairs;
 import boilerplate.common.baseclasses.blocks.BlockCustomWall;
 import boilerplate.common.baseclasses.items.BaseMetadataItemBlock;
+import boilerplate.common.blocks.BlockMeltingIce;
 import boilerplate.common.compathandler.FMPCompatHandler;
 import boilerplate.common.utils.helpers.RegistryHelper;
 import org.apache.commons.lang3.text.WordUtils;
@@ -29,7 +30,6 @@ import steamcraft.client.renderers.tile.TileHatchRenderer.TileHatch;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.blocks.BlockBoulder;
 import steamcraft.common.blocks.BlockBrassLeaves;
-import steamcraft.common.blocks.BlockBrassLog;
 import steamcraft.common.blocks.BlockCastIronFence;
 import steamcraft.common.blocks.BlockCastIronGate;
 import steamcraft.common.blocks.BlockCastIronLamp;
@@ -44,7 +44,6 @@ import steamcraft.common.blocks.BlockInfestedGrass;
 import steamcraft.common.blocks.BlockInvertedCastIronLamp;
 import steamcraft.common.blocks.BlockLeafPile;
 import steamcraft.common.blocks.BlockLightSlate;
-import steamcraft.common.blocks.BlockMeltingIce;
 import steamcraft.common.blocks.BlockMetal;
 import steamcraft.common.blocks.BlockMetalLattice;
 import steamcraft.common.blocks.BlockMossyMetal;
@@ -262,7 +261,7 @@ public class InitBlocks
 
 		blockCastIronFence = new BlockCastIronFence().setBlockName("blockCastIronFence");
 		blockCastIronGate = new BlockCastIronGate().setBlockName("blockCastIronGate");
-		blockCastIronRailing = new BlockCastIronRailing(Material.anvil).setBlockName("blockCastIronRailing");
+		blockCastIronRailing = new BlockCastIronRailing().setBlockName("blockCastIronRailing");
 
 		registerBlock(blockCastIronFence, "BlockCastIronFence");
 		registerBlock(blockCastIronGate, "BlockCastIronGate");
@@ -475,7 +474,7 @@ public class InitBlocks
 		blockFlesh = new BaseBlock(Material.gourd).setBlockName("blockFlesh").setCreativeTab(Steamcraft.tabSC2);
 		registerBlock(blockFlesh, "BlockFlesh");
 
-		blockCongealedSlime = new BlockCongealedSlime(Material.gourd).setBlockName("blockCongealedSlime").setCreativeTab(Steamcraft.tabSC2);
+		blockCongealedSlime = new BlockCongealedSlime().setBlockName("blockCongealedSlime").setCreativeTab(Steamcraft.tabSC2);
 		registerBlock(blockCongealedSlime, "BlockCongealedSlime");
 
 		// Standard
@@ -581,37 +580,37 @@ public class InitBlocks
 		registerBlock(blockRedwoodFence, "BlockRedwoodFence");
 
 		blockMangroveFence = new BlockCustomFence("blockMangrovePlanks", Material.wood).setBlockName("blockMangroveFence");
-		registerBlock(blockMangroveFence, "blockMangroveFence");
+		registerBlock(blockMangroveFence, "BlockMangroveFence");
 
 		blockWillowFence = new BlockCustomFence("blockWillowPlanks", Material.wood).setBlockName("blockWillowFence");
-		registerBlock(blockWillowFence, "blockWillowFence");
+		registerBlock(blockWillowFence, "BlockWillowFence");
 
 		blockPetrifiedFence = new BlockCustomFence("blockPetrifiedPlanks", Material.wood).setBlockName("blockPetrifiedFence");
-		registerBlock(blockPetrifiedFence, "blockPetrifiedFence");
+		registerBlock(blockPetrifiedFence, "BlockPetrifiedFence");
 
 		blockRedwoodStairs = new BlockCustomStairs(blockRedwoodPlanks).setBlockName("blockRedwoodStairs");
 		registerBlock(blockRedwoodStairs, "BlockRedwoodStairs");
 
 		blockMangroveStairs = new BlockCustomStairs(blockMangrovePlanks).setBlockName("blockMangroveStairs");
-		registerBlock(blockMangroveStairs, "blockMangroveStairs");
+		registerBlock(blockMangroveStairs, "BlockMangroveStairs");
 
 		blockWillowStairs = new BlockCustomStairs(blockWillowPlanks).setBlockName("blockWillowStairs");
-		registerBlock(blockWillowStairs, "blockWillowStairs");
+		registerBlock(blockWillowStairs, "BlockWillowStairs");
 
 		blockPetrifiedStairs = new BlockCustomStairs(blockPetrifiedPlanks).setBlockName("blockPetrifiedStairs");
-		registerBlock(blockPetrifiedStairs, "blockPetrifiedStairs");
+		registerBlock(blockPetrifiedStairs, "BlockPetrifiedStairs");
 
 		blockRedwoodSlab = new BlockCustomSlab("blockRedwoodPlanks", blockRedwoodPlanks, Material.wood).setBlockName("blockRedwoodSlab");
 		registerBlock(blockRedwoodSlab, "BlockRedwoodSlab");
 
 		blockMangroveSlab = new BlockCustomSlab("blockMangrovePlanks", blockMangrovePlanks, Material.wood).setBlockName("blockMangroveSlab");
-		registerBlock(blockMangroveSlab, "blockMangroveSlab");
+		registerBlock(blockMangroveSlab, "BlockMangroveSlab");
 
 		blockWillowSlab = new BlockCustomSlab("blockWillowPlanks", blockWillowPlanks, Material.wood).setBlockName("blockWillowSlab");
-		registerBlock(blockWillowSlab, "blockWillowSlab");
+		registerBlock(blockWillowSlab, "BlockWillowSlab");
 
 		blockPetrifiedSlab = new BlockCustomSlab("blockPetrifiedPlanks", blockPetrifiedPlanks, Material.wood).setBlockName("blockPetrifiedSlab");
-		registerBlock(blockPetrifiedSlab, "blockPetrifiedSlab");
+		registerBlock(blockPetrifiedSlab, "BlockPetrifiedSlab");
 
 		blockRedwoodDoubleSlab = new BlockCustomDoubleSlab("blockRedwoodPlanks", blockRedwoodPlanks, Material.wood, blockRedwoodSlab)
 				.setBlockName("blockRedwoodDoubleSlab");
@@ -645,8 +644,9 @@ public class InitBlocks
 		registerBlock(blockTintedRock, "BlockTintedRock");
 
 		// Wood
-		blockBrassLog = new BlockBrassLog(Material.iron).setBlockName("blockBrassLog");
-		blockBrassLeaves = new BlockBrassLeaves(Material.iron).setBlockName("blockBrassLeaves");
+		// TODO
+		blockBrassLog = new BlockCustomLog("Brass").setBlockName("blockBrassLog");
+		blockBrassLeaves = new BlockBrassLeaves().setBlockName("blockBrassLeaves");
 
 		registerBlock(blockBrassLog, "BlockBrassLog");
 		registerBlock(blockBrassLeaves, "BlockBrassLeaves");

@@ -12,9 +12,9 @@ import steamcraft.common.init.InitItems;
 
 public class BlockBrassLeaves extends BaseBlock
 {
-	public BlockBrassLeaves(Material mat)
+	public BlockBrassLeaves()
 	{
-		super(mat);
+		super(Material.iron);
 		this.setHarvestLevel("pickaxe", 2);
 	}
 

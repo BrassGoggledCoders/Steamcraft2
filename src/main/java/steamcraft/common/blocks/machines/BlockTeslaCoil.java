@@ -9,6 +9,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+import boilerplate.common.baseclasses.blocks.BaseContainerBlock;
 import steamcraft.client.lib.RenderIDs;
 import steamcraft.common.lib.ModInfo;
 import steamcraft.common.tiles.energy.TileTeslaCoil;

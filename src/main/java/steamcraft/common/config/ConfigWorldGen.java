@@ -87,7 +87,7 @@ public class ConfigWorldGen
 			slateCluster = config.get(CATEGORY_GEN_CLUSTERS, "Slate", 30).getInt();
 		} catch (Exception e)
 		{
-			LoggerSteamcraft.error("Failed to load configuration file:" + e);
+			LoggerSteamcraft.getLogger().error("Failed to load configuration file:" + e);
 		} finally
 		{
 			if (config.hasChanged())

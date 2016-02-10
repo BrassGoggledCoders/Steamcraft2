@@ -5,6 +5,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
+import boilerplate.common.baseclasses.blocks.BaseContainerBlock;
 import steamcraft.common.tiles.TileIntake;
 
 /**

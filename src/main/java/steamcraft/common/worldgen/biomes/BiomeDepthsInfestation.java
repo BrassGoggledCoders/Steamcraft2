@@ -7,8 +7,8 @@ import net.minecraft.init.Blocks;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 
+import boilerplate.common.worldgen.WorldGenBlockgroup;
 import steamcraft.common.init.InitBlocks;
-import steamcraft.common.worldgen.WorldGenBlockgroup;
 
 public class BiomeDepthsInfestation extends BiomeDepthsBase
 {

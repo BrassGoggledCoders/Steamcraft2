@@ -30,9 +30,9 @@ import steamcraft.common.lib.ModInfo;
  */
 public class BlockCastIronRailing extends BaseBlock
 {
-	public BlockCastIronRailing(Material mat)
+	public BlockCastIronRailing()
 	{
-		super(mat);
+		super(Material.iron);
 	}
 
 	@Override

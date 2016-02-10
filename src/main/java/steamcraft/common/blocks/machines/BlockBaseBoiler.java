@@ -14,6 +14,8 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+import boilerplate.common.baseclasses.blocks.BaseContainerBlock;
+
 /**
  * @author decebaldecebal
  *

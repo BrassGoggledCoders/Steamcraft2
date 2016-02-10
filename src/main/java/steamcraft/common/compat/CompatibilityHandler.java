@@ -33,11 +33,11 @@ public class CompatibilityHandler
 			if (!modCompat.areRequirementsMet() && modCompat.getIsActive())
 			{
 				modCompat.setIsActive(false);
-				LoggerSteamcraft.error("Requirements are not met for " + modCompat.getName() + ". Deactivating");
+				LoggerSteamcraft.getLogger().error("Requirements are not met for " + modCompat.getName() + ". Deactivating");
 			}
 			if (modCompat.getIsActive())
 			{
-				LoggerSteamcraft.info("Loading " + modCompat.getName() + " module");
+				LoggerSteamcraft.getLogger().info("Loading " + modCompat.getName() + " module");
 			}
 		}
 
