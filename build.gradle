@@ -67,7 +67,7 @@ minecraft {
 }
 
 dependencies {
-    compile "brassgoggledcoders:boilerplate:1.8.9-7.0.0.+:deobf"
+    shade "brassgoggledcoders:boilerplate:1.8.9-7.0.2.+:lib"
     //compile 'com.mod-buildcraft:buildcraft:6.4.16:dev'
     //compile 'net.industrial-craft:industrialcraft-2:2.2.727-experimental:api'
     //compile 'Azanor:Thaumcraft:4.2.3.5:deobf@jar'
@@ -119,7 +119,8 @@ processResources
 }
 
 reobfJar { 
-    addExtraSrgLine "PK: me/modmuss50/jsonDestroyer steamcraft/client/jsonDestroyer" 
+    addExtraSrgLine "PK: me/modmuss50/jsonDestroyer steamcraft/client/jsonDestroyer"
+    addExtraSrgLine "PK: xyz/brassgoggledcoders/boilerplate xyz/brassgoggledcoders/steamcraft2/boilerplate"
 }
 
 jar {
