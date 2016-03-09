@@ -53,7 +53,7 @@ configurations {
 project.ext {
     buildNum = System.getenv("BUILD_NUMBER")
     mcVersion = "1.8.9"
-    forgeVersion = "11.15.0.1698"
+    forgeVersion = "11.15.1.1722"
 }
 
 version = project.ext.mcVersion + "-B5.0.1" + project.ext.buildNum
