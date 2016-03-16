@@ -1,5 +1,9 @@
+**PLEASE NOTE: This repository is now deprecated. Steamcraft2 will be rewritten for 1.8.9+ under the name Steam Age Revolution, and with this rewrite comes a new repository as well. [Click here](https://github.com/BrassGoggledCoders/SteamAgeRevolution) for the new repository.**
+
+
 Steamcraft 2 for Minecraft 1.7.10
 ================================
+
 Please read the wiki - http://ftb.gamepedia.com/Steamcraft2 - for articles relating to the features in this mod.
 
 About:
