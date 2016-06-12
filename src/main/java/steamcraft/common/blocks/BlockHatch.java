@@ -16,8 +16,8 @@ import net.minecraft.util.Vec3;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import steamcraft.client.lib.RenderIDs;
-import steamcraft.client.renderers.tile.TileHatchRenderer.TileHatch;
 import steamcraft.common.Steamcraft;
+import steamcraft.common.tiles.TileHatch;
 
 /**
  * @author Surseance
