@@ -91,14 +91,14 @@ public abstract class TileBaseBoiler extends BaseTileWithInventory implements IF
 			{
 				FluidStack liquid = FluidContainerRegistry.getFluidForFilledItem(this.inventory[1]);
 
-				if ((liquid != null) && (liquid.getFluid() == FluidRegistry.WATER))
+				if ((liquid != null) && (liquid.getFluid() == FluidRegistry.WATER) && ((this.waterTank.getCapacity() - this.waterTank.getFluidAmount()) >= liquid.amount))
 				{
 					ItemStack emptyContainer = FluidUtils.drainFluidContainer(this.waterTank, this.inventory[1]);
 					if ((this.inventory[2] != null) && OreDictionary.itemMatches(this.inventory[2], emptyContainer, true))
-						this.inventory[2].stackSize += emptyContainer.stackSize;
+						this.inventory[2].stackSize++;
 					else if (this.inventory[2] == null)
 						this.inventory[2] = emptyContainer.copy();
-					this.decrStackSize(1, emptyContainer.stackSize);
+					decrStackSize(1, 1);
 				}
 			}
 			if ((this.inventory[3] != null))
