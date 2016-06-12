@@ -37,7 +37,7 @@ public class InitMaterials
 
 	private static void initToolMaterials()
 	{
-		TOOL_STEAM = EnumHelper.addToolMaterial("TOOL_STEAM", 2, 1561, 12.0F, 3.0F, 0);
+		TOOL_STEAM = EnumHelper.addToolMaterial("TOOL_STEAM", 2, -1, 12.0F, 3.0F, 0);
 
 		HTOOL_ELEC = EnumHelper.addToolMaterial("HTOOL_ELEC", 0, 375, 0.0F, 7.0F, 0);
 
