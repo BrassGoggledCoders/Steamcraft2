@@ -9,7 +9,7 @@ import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
 import net.minecraft.world.IBlockAccess;
 import steamcraft.client.lib.RenderIDs;
-import steamcraft.client.renderers.tile.TileHatchRenderer.TileHatch;
+import steamcraft.common.tiles.TileHatch;
 
 /**
  * @author Decebaldecebal
