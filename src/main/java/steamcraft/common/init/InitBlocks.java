@@ -8,7 +8,6 @@ import org.apache.commons.lang3.text.WordUtils;
 import boilerplate.common.baseclasses.blocks.BaseBlock;
 import boilerplate.common.baseclasses.blocks.BlockCustomDoubleSlab;
 import boilerplate.common.baseclasses.blocks.BlockCustomFence;
-import boilerplate.common.baseclasses.blocks.BlockCustomLeaves;
 import boilerplate.common.baseclasses.blocks.BlockCustomLog;
 import boilerplate.common.baseclasses.blocks.BlockCustomSlab;
 import boilerplate.common.baseclasses.blocks.BlockCustomStairs;
@@ -32,6 +31,7 @@ import steamcraft.common.blocks.BlockCastIronGate;
 import steamcraft.common.blocks.BlockCastIronLamp;
 import steamcraft.common.blocks.BlockCastIronRailing;
 import steamcraft.common.blocks.BlockCongealedSlime;
+import steamcraft.common.blocks.BlockCustomLeaves2;
 import steamcraft.common.blocks.BlockCustomMushroom;
 import steamcraft.common.blocks.BlockDynamite;
 import steamcraft.common.blocks.BlockFissurePortal;
@@ -90,11 +90,9 @@ import steamcraft.common.tiles.TileBloomery;
 import steamcraft.common.tiles.TileCopperPipe;
 import steamcraft.common.tiles.TileCopperTank;
 import steamcraft.common.tiles.TileHatch;
-import steamcraft.common.tiles.TileInjector;
 import steamcraft.common.tiles.TileIntake;
 import steamcraft.common.tiles.TileLiquidBoiler;
 import steamcraft.common.tiles.TileNuclearBoiler;
-import steamcraft.common.tiles.TileRefinery;
 import steamcraft.common.tiles.TileSteamBoiler;
 import steamcraft.common.tiles.TileSteelPipe;
 import steamcraft.common.tiles.TileTimeBomb;
@@ -314,7 +312,7 @@ public class InitBlocks
 		RegistryHelper.registerContainerBlockWithDesc(blockIntake, TileIntake.class, "BlockIntake");
 
 		blockInjector = new BlockInjector().setBlockName("blockInjector");
-		RegistryHelper.registerContainerBlockWithDesc(blockInjector, TileInjector.class, "BlockInjector");
+		//RegistryHelper.registerContainerBlockWithDesc(blockInjector, TileInjector.class, "BlockInjector");
 
 		// Energy related
 		blockTurbine = new BlockTurbine().setBlockName("blockTurbine");
@@ -365,7 +363,6 @@ public class InitBlocks
 		RegistryHelper.registerContainerBlockWithDesc(blockCopperTank, TileCopperTank.class, "BlockCopperTank");
 
 		blockRefinery = new BlockRefinery().setBlockName("blockRefinery");
-		RegistryHelper.registerContainerBlockWithDesc(blockRefinery, TileRefinery.class, "BlockRefinery");
 
 		blockStasisField = new BlockStasisField().setBlockName("blockStasisField");
 		RegistryHelper.registerContainerBlockWithDesc(blockStasisField, TileStasisField.class, "BlockStasisField");
@@ -541,7 +538,7 @@ public class InitBlocks
 		blockRedwoodLog = new BlockCustomLog("Redwood").setBlockName("blockRedwoodLog");
 		registerBlock(blockRedwoodLog, "BlockRedwoodLog");
 
-		blockRedwoodLeaves = new BlockCustomLeaves("Redwood").setBlockName("blockRedwoodLeaves");
+		blockRedwoodLeaves = new BlockCustomLeaves2("Redwood").setBlockName("blockRedwoodLeaves");
 		registerBlock(blockRedwoodLeaves, "BlockRedwoodLeaves");
 
 		blockRedwoodPlanks = new BaseBlock(Material.wood).setBlockName("blockRedwoodPlanks");
@@ -550,7 +547,7 @@ public class InitBlocks
 		blockMangroveLog = new BlockCustomLog("Mangrove").setBlockName("blockMangroveLog");
 		registerBlock(blockMangroveLog, "BlockMangroveLog");
 
-		blockMangroveLeaves = new BlockCustomLeaves("Mangrove").setBlockName("blockMangroveLeaves");
+		blockMangroveLeaves = new BlockCustomLeaves2("Mangrove").setBlockName("blockMangroveLeaves");
 		registerBlock(blockMangroveLeaves, "BlockMangroveLeaves");
 
 		blockMangrovePlanks = new BaseBlock(Material.wood).setBlockName("blockMangrovePlanks");
@@ -559,7 +556,7 @@ public class InitBlocks
 		blockWillowLog = new BlockCustomLog("Willow").setBlockName("blockWillowLog");
 		registerBlock(blockWillowLog, "BlockWillowLog");
 
-		blockWillowLeaves = new BlockCustomLeaves("Willow").setBlockName("blockWillowLeaves");
+		blockWillowLeaves = new BlockCustomLeaves2("Willow").setBlockName("blockWillowLeaves");
 		registerBlock(blockWillowLeaves, "BlockWillowLeaves");
 
 		blockWillowPlanks = new BaseBlock(Material.wood).setBlockName("blockWillowPlanks");
@@ -568,7 +565,7 @@ public class InitBlocks
 		blockPetrifiedLog = new BlockCustomLog("Petrified").setBlockName("blockPetrifiedLog");
 		registerBlock(blockPetrifiedLog, "BlockPetrifiedLog");
 
-		blockDeadLeaves = new BlockCustomLeaves("Dead").setBlockName("blockDeadLeaves");
+		blockDeadLeaves = new BlockCustomLeaves2("Dead").setBlockName("blockDeadLeaves");
 		registerBlock(blockDeadLeaves, "BlockDeadLeaves");
 
 		blockPetrifiedPlanks = new BaseBlock(Material.wood).setBlockName("blockPetrifiedPlanks");

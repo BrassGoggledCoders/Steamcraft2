@@ -267,7 +267,7 @@ public class InitItems
 		registerItem(itemRayGun, "ItemRayGun");
 		registerItem(itemShrinkray, "ItemShrinkray");
 
-		itemRocket = new BaseMetadataItem(new String[] { "HE", "HEAT", "AP" }).setUnlocalizedName("itemClockworkRocket")
+		itemRocket = new BaseMetadataItem(new String[] { "RocketHE", "RocketHEAT", "RocketAP" }).setUnlocalizedName("itemClockworkRocket")
 				.setCreativeTab(Steamcraft.tabSC2);
 		itemClockworkRocketLauncher = new ItemRocketLauncher(50, itemRocket, "steamcraft:rocket", "steamcraft:reload");
 
@@ -279,7 +279,7 @@ public class InitItems
 	{
 		itemIngot = new BaseMetadataItem("metals/", "Ingot", LibInfo.metals).setUnlocalizedName("itemIngot");
 		itemNugget = new BaseMetadataItem("metals/", "Nugget", LibInfo.metals).setUnlocalizedName("itemNugget");
-		itemNuggetIron = new BaseItem("/metals").setUnlocalizedName("itemNuggetIron");
+		itemNuggetIron = new BaseItem("metals/").setUnlocalizedName("itemNuggetIron");
 		itemSheet = new BaseMetadataItem("metals/", "Sheet", LibInfo.metals).setUnlocalizedName("itemSheet");
 		itemPowder = new BaseMetadataItem("metals/", "Ingot", LibInfo.metals).setUnlocalizedName("itemPowder");
 		itemVanillaPowder = new BaseMetadataItem("metals/", "Powder", LibInfo.metalsV).setUnlocalizedName("itemVanillaPowder");
@@ -373,7 +373,7 @@ public class InitItems
 		registerItem(itemMatch, "ItemMatch");
 
 		itemTopHat = new ItemTopHat().setUnlocalizedName("itemTopHat");
-		registerItem(itemTopHat, "ItemTopHat");
+		//registerItem(itemTopHat, "ItemTopHat");
 
 		itemAqualung = new ItemAqualung().setUnlocalizedName("itemAqualung");
 		registerItem(itemAqualung, "ItemAqualung");
