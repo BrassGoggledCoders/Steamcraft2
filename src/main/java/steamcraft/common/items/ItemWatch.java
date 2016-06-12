@@ -4,13 +4,13 @@ package steamcraft.common.items;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+import boilerplate.common.baseclasses.items.BaseItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 import steamcraft.common.Steamcraft;
-import team.chisel.item.BaseItem;
 
 /**
  * @author Surseance

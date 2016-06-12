@@ -4,6 +4,7 @@ package steamcraft.common.items.modules;
 import java.util.List;
 
 import boilerplate.client.ClientHelper;
+import boilerplate.common.baseclasses.items.BaseItem;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.player.EntityPlayer;
@@ -11,7 +12,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
 import steamcraft.api.item.IFistModule;
 import steamcraft.api.item.ModuleRegistry;
-import team.chisel.item.BaseItem;
 
 public abstract class BaseFistModule extends BaseItem implements IFistModule
 {
@@ -32,7 +32,7 @@ public abstract class BaseFistModule extends BaseItem implements IFistModule
 			if (!StatCollector.translateToLocal(this.getUnlocalizedName() + ".desc").contains("item."))
 			{
 				list.add("Module Effect: ");
-				BaseItem.getWrappedDesc(list, stack);
+				this.getWrappedDesc(list, stack);
 			}
 			/*
 			 * if (this.getEnergyConsumedOnEffect() != 0) list.add(

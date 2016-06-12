@@ -3,9 +3,6 @@ package steamcraft.common.compat.chisel;
 
 import java.util.List;
 
-import com.cricketcraft.chisel.api.IChiselItem;
-import com.cricketcraft.chisel.api.carving.ICarvingVariation;
-
 import boilerplate.common.baseclasses.items.BaseSteamItem;
 import cpw.mods.fml.common.Optional;
 import cpw.mods.fml.relauncher.Side;

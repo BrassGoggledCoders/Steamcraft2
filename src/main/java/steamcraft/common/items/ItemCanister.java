@@ -3,6 +3,7 @@ package steamcraft.common.items;
 
 import java.util.List;
 
+import boilerplate.common.baseclasses.items.BaseItem;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -17,7 +18,6 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidContainerItem;
 import steamcraft.common.init.InitItems;
 import steamcraft.common.lib.ModInfo;
-import team.chisel.item.BaseItem;
 
 /**
  * @author Decebaldecebal & warlordjones

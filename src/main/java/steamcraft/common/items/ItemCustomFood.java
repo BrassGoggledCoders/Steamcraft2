@@ -1,13 +1,13 @@
 
 package steamcraft.common.items;
 
+import boilerplate.common.baseclasses.items.BaseItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 import steamcraft.common.Steamcraft;
-import team.chisel.item.BaseItem;
 
 public class ItemCustomFood extends BaseItem
 {

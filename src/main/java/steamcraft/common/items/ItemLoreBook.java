@@ -4,6 +4,7 @@ package steamcraft.common.items;
 import java.util.List;
 
 import boilerplate.api.IOpenableGUI;
+import boilerplate.common.baseclasses.items.BaseItem;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.gui.GuiScreenBook;
@@ -21,7 +22,6 @@ import net.minecraft.world.World;
 import steamcraft.client.lib.GuiIDs;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.ModInfo;
-import team.chisel.item.BaseItem;
 
 public class ItemLoreBook extends BaseItem implements IOpenableGUI
 {

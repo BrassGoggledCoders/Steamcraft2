@@ -2,6 +2,7 @@
 package steamcraft.common.items;
 
 import boilerplate.api.IOpenableGUI;
+import boilerplate.common.baseclasses.items.BaseItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
@@ -9,7 +10,6 @@ import steamcraft.client.gui.GuiPocket;
 import steamcraft.client.lib.GuiIDs;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.tiles.container.ContainerPocket;
-import team.chisel.item.BaseItem;
 
 public class ItemDimensionalPocket extends BaseItem implements IOpenableGUI
 {

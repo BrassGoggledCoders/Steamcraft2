@@ -1,11 +1,11 @@
 
 package steamcraft.common.items;
 
+import boilerplate.common.baseclasses.items.BaseItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import steamcraft.common.entities.projectile.EntitySplashLightningBottle;
-import team.chisel.item.BaseItem;
 
 public class ItemSplashLightningBottle extends BaseItem
 {

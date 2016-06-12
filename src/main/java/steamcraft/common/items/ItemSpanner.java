@@ -2,6 +2,7 @@
 package steamcraft.common.items;
 
 import boilerplate.api.IOpenableGUI;
+import boilerplate.common.baseclasses.items.BaseItem;
 import cpw.mods.fml.common.Optional;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -17,7 +18,6 @@ import steamcraft.api.tile.ISpannerTile;
 import steamcraft.client.lib.GuiIDs;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.ModInfo;
-import team.chisel.item.BaseItem;
 
 /**
  * @author warlordjones
