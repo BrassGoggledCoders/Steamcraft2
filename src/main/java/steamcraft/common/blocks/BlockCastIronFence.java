@@ -1,11 +1,10 @@
 
 package steamcraft.common.blocks;
 
+import boilerplate.common.baseclasses.blocks.BlockCustomFence;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.world.IBlockAccess;
-
-import boilerplate.common.baseclasses.blocks.BlockCustomFence;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.init.InitBlocks;
 

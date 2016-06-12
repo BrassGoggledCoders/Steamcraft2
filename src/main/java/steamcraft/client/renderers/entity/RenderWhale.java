@@ -4,7 +4,6 @@ package steamcraft.client.renderers.entity;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
-
 import steamcraft.client.renderers.models.ModelWhale;
 import steamcraft.common.lib.ModInfo;
 

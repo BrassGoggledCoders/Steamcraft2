@@ -3,9 +3,10 @@ package steamcraft.common;
 
 import java.io.File;
 
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.world.gen.structure.MapGenStructureIO;
-
+import boilerplate.client.GuiHandler;
+import boilerplate.common.IBoilerplateMod;
+import boilerplate.common.compathandler.FMPCompatHandler;
+import boilerplate.common.utils.handlers.BucketHandler;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
@@ -18,14 +19,10 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
-
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.world.gen.structure.MapGenStructureIO;
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.MinecraftForge;
-
-import boilerplate.client.GuiHandler;
-import boilerplate.common.IBoilerplateMod;
-import boilerplate.common.compathandler.FMPCompatHandler;
-import boilerplate.common.utils.handlers.BucketHandler;
 import steamcraft.common.compat.CompatabilityLayer;
 import steamcraft.common.compat.CompatibilityHandler;
 import steamcraft.common.config.Config;

@@ -1,11 +1,10 @@
 
 package steamcraft.api.vanity;
 
-import net.minecraft.client.model.ModelBase;
-import net.minecraft.util.ResourceLocation;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.client.model.ModelBase;
+import net.minecraft.util.ResourceLocation;
 
 // TODO: Auto-generated Javadoc
 /**

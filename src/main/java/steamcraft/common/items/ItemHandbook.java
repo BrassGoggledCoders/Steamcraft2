@@ -1,16 +1,15 @@
 
 package steamcraft.common.items;
 
+import boilerplate.api.IOpenableGUI;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
-
-import boilerplate.api.IOpenableGUI;
-import boilerplate.common.baseclasses.items.BaseItem;
 import steamcraft.client.gui.GuiHandbook;
 import steamcraft.client.lib.GuiIDs;
 import steamcraft.common.Steamcraft;
+import team.chisel.item.BaseItem;
 
 public class ItemHandbook extends BaseItem implements IOpenableGUI
 {

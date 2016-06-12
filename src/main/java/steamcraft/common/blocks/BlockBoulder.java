@@ -3,12 +3,11 @@ package steamcraft.common.blocks;
 
 import java.util.Random;
 
+import boilerplate.common.baseclasses.blocks.BaseBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
-
-import boilerplate.common.baseclasses.blocks.BaseBlock;
 import steamcraft.common.entities.EntityFallingBoulder;
 
 public class BlockBoulder extends BaseBlock

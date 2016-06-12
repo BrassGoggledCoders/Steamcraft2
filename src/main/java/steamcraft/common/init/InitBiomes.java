@@ -2,7 +2,6 @@
 package steamcraft.common.init;
 
 import net.minecraft.world.biome.BiomeGenBase;
-
 import steamcraft.common.config.ConfigGeneral;
 import steamcraft.common.worldgen.biomes.BiomeDepthsBase;
 import steamcraft.common.worldgen.biomes.BiomeDepthsForest;

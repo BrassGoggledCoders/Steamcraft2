@@ -18,9 +18,7 @@ import net.minecraft.world.gen.structure.MapGenStructureIO;
 import net.minecraft.world.gen.structure.StructureBoundingBox;
 import net.minecraft.world.gen.structure.StructureComponent;
 import net.minecraft.world.gen.structure.StructureMineshaftPieces;
-
 import net.minecraftforge.common.ChestGenHooks;
-
 import steamcraft.common.lib.ModInfo;
 
 public class StructureUndercityPieces

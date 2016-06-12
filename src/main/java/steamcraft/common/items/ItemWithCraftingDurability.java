@@ -3,18 +3,16 @@ package steamcraft.common.items;
 
 import java.util.Arrays;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-
-import boilerplate.common.baseclasses.items.BaseItem;
 import steamcraft.common.init.InitItems;
 import steamcraft.common.lib.LibInfo;
+import team.chisel.item.BaseItem;
 
 /**
  * @author warlordjones

@@ -3,6 +3,10 @@ package steamcraft.common.items.armor;
 
 import java.util.List;
 
+import boilerplate.client.ClientHelper;
+import boilerplate.common.baseclasses.items.BaseArmor;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -10,12 +14,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-
-import boilerplate.client.ClientHelper;
-import boilerplate.common.baseclasses.items.BaseArmor;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.ModInfo;
 

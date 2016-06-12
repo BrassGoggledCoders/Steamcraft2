@@ -11,7 +11,6 @@ import net.minecraft.world.gen.feature.WorldGenBlockBlob;
 import net.minecraft.world.gen.feature.WorldGenMegaPineTree;
 import net.minecraft.world.gen.feature.WorldGenTallGrass;
 import net.minecraft.world.gen.feature.WorldGenerator;
-
 import steamcraft.common.worldgen.trees.WorldGenRedwoodTree;
 
 public class BiomeDepthsTallForest extends BiomeDepthsBase

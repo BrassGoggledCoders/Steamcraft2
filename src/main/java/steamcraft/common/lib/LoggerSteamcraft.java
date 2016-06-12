@@ -1,12 +1,12 @@
 
 package steamcraft.common.lib;
 
-import net.minecraftforge.classloading.FMLForgePlugin;
-
-import boilerplate.common.utils.ILogger;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import boilerplate.common.utils.ILogger;
+import net.minecraftforge.classloading.FMLForgePlugin;
 
 /**
  * @author Surseance

@@ -4,6 +4,15 @@ package steamcraft.client;
 import java.awt.Color;
 import java.util.HashMap;
 
+import org.lwjgl.input.Keyboard;
+
+import boilerplate.client.ClientHelper;
+import boilerplate.client.fx.FXRaygun;
+import boilerplate.client.renderers.block.BlockTESRRenderer;
+import boilerplate.client.renderers.block.RenderMinedBlock;
+import boilerplate.common.entity.EntityMinedBlock;
+import cpw.mods.fml.client.registry.ClientRegistry;
+import cpw.mods.fml.client.registry.RenderingRegistry;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelPig;
 import net.minecraft.client.model.ModelZombie;
@@ -11,16 +20,6 @@ import net.minecraft.client.renderer.entity.RenderSnowball;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
-
-import cpw.mods.fml.client.registry.ClientRegistry;
-import cpw.mods.fml.client.registry.RenderingRegistry;
-
-import boilerplate.client.ClientHelper;
-import boilerplate.client.fx.FXRaygun;
-import boilerplate.client.renderers.block.BlockTESRRenderer;
-import boilerplate.client.renderers.block.RenderMinedBlock;
-import boilerplate.common.entity.EntityMinedBlock;
-import org.lwjgl.input.Keyboard;
 import steamcraft.client.lib.RenderIDs;
 import steamcraft.client.renderers.block.BlockCastIronGateRenderer;
 import steamcraft.client.renderers.block.BlockCastIronLampRenderer;

@@ -8,7 +8,6 @@ import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.structure.ComponentScatteredFeaturePieces;
 import net.minecraft.world.gen.structure.MapGenScatteredFeature;
 import net.minecraft.world.gen.structure.StructureStart;
-
 import steamcraft.common.init.InitBiomes;
 
 public class MapGenCustomScatteredFeature extends MapGenScatteredFeature

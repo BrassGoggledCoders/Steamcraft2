@@ -3,13 +3,12 @@ package steamcraft.common.items.tools;
 
 import java.util.List;
 
+import boilerplate.common.baseclasses.items.electric.ItemElectricTool;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-
-import boilerplate.common.baseclasses.items.electric.ItemElectricTool;
 
 /**
  * @author Surseance

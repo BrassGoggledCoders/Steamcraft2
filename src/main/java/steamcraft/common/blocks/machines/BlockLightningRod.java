@@ -1,15 +1,13 @@
 
 package steamcraft.common.blocks.machines;
 
+import boilerplate.common.baseclasses.blocks.BaseContainerBlock;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-
-import boilerplate.common.baseclasses.blocks.BaseContainerBlock;
 import steamcraft.client.lib.RenderIDs;
 import steamcraft.common.lib.ModInfo;
 import steamcraft.common.tiles.energy.TileLightningRod;

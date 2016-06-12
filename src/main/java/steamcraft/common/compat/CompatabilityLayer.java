@@ -1,24 +1,21 @@
 
 package steamcraft.common.compat;
 
+import boilerplate.common.baseclasses.items.BaseMetadataItemBlock;
+import boilerplate.common.utils.helpers.IMCHelper;
+import boilerplate.common.utils.helpers.OreDictHelper;
+import cpw.mods.fml.common.Loader;
+import cpw.mods.fml.common.event.FMLInterModComms;
+import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-
-import cpw.mods.fml.common.Loader;
-import cpw.mods.fml.common.event.FMLInterModComms;
-import cpw.mods.fml.common.registry.GameRegistry;
-
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.fluids.BlockFluidClassic;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
-
-import boilerplate.common.baseclasses.items.BaseMetadataItemBlock;
-import boilerplate.common.utils.helpers.IMCHelper;
-import boilerplate.common.utils.helpers.OreDictHelper;
 import steamcraft.common.init.InitBiomes;
 import steamcraft.common.init.InitBlocks;
 import steamcraft.common.init.InitItems;

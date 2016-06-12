@@ -1,14 +1,12 @@
 
 package steamcraft.common.items.compat;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-
 import steamcraft.api.item.ModuleRegistry;
 import steamcraft.common.items.modules.BaseArmorModule;
 import steamcraft.common.lib.ModInfo;

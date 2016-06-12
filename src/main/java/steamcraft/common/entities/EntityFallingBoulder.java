@@ -14,7 +14,6 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-
 import steamcraft.common.blocks.BlockBoulder;
 import steamcraft.common.init.InitBlocks;
 import steamcraft.common.lib.DamageSourceHandler;

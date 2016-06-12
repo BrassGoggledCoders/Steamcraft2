@@ -3,6 +3,9 @@ package steamcraft.common.worldgen.biomes;
 
 import java.util.Random;
 
+import boilerplate.common.worldgen.WorldGenBlockgroup;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.monster.EntitySlime;
@@ -12,11 +15,6 @@ import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 import net.minecraft.world.gen.feature.WorldGenVines;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-
-import boilerplate.common.worldgen.WorldGenBlockgroup;
 import steamcraft.common.init.InitBlocks;
 import steamcraft.common.worldgen.WorldGenLeafPile;
 import steamcraft.common.worldgen.trees.WorldGenDeadTree;

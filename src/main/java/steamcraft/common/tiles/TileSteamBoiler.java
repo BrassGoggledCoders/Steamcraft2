@@ -1,12 +1,11 @@
 
 package steamcraft.common.tiles;
 
+import boilerplate.api.IOpenableGUI;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.world.World;
-
-import boilerplate.api.IOpenableGUI;
 import steamcraft.client.gui.GuiSteamBoiler;
 import steamcraft.common.tiles.container.ContainerBaseBoiler;
 

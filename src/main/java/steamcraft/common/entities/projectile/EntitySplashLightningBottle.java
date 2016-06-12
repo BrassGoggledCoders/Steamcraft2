@@ -3,13 +3,12 @@ package steamcraft.common.entities.projectile;
 
 import java.util.List;
 
+import boilerplate.common.baseclasses.BaseThrowableEntity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
-
-import boilerplate.common.baseclasses.BaseThrowableEntity;
 import steamcraft.common.lib.DamageSourceHandler;
 
 public class EntitySplashLightningBottle extends BaseThrowableEntity

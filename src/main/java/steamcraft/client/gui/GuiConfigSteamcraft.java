@@ -1,12 +1,9 @@
 
 package steamcraft.client.gui;
 
-import net.minecraft.client.gui.GuiScreen;
-
 import cpw.mods.fml.client.config.GuiConfig;
-
+import net.minecraft.client.gui.GuiScreen;
 import net.minecraftforge.common.config.ConfigElement;
-
 import steamcraft.common.config.ConfigBalance;
 import steamcraft.common.lib.ModInfo;
 

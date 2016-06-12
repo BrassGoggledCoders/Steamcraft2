@@ -2,7 +2,6 @@
 package steamcraft.common.blocks;
 
 import net.minecraft.block.BlockChest;
-
 import steamcraft.client.lib.RenderIDs;
 import steamcraft.common.Steamcraft;
 

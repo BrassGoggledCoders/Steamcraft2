@@ -4,7 +4,6 @@ package steamcraft.common.tiles.container.slot;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
-
 import steamcraft.api.vanity.IVanityItem;
 
 /**

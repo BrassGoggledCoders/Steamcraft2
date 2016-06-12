@@ -3,12 +3,11 @@ package steamcraft.common.items.tools;
 
 import java.util.List;
 
+import boilerplate.common.baseclasses.items.electric.BaseElectricStorageItem;
+import boilerplate.common.baseclasses.items.tools.BaseTool;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-
-import boilerplate.common.baseclasses.items.electric.BaseElectricStorageItem;
-import boilerplate.common.baseclasses.items.tools.BaseTool;
 import steamcraft.api.item.IFistModule;
 import steamcraft.api.item.ModuleRegistry;
 import steamcraft.common.Steamcraft;

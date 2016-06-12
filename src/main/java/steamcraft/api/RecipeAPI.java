@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import net.minecraft.item.ItemStack;
-
 import net.minecraftforge.fluids.Fluid;
 
 public class RecipeAPI

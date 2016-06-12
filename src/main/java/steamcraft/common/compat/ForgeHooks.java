@@ -3,9 +3,7 @@ package steamcraft.common.compat;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.WeightedRandomFishable;
-
 import net.minecraftforge.common.FishingHooks;
-
 import steamcraft.common.init.InitItems;
 
 public class ForgeHooks

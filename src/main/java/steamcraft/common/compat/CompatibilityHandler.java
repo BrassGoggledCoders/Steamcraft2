@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-
 import steamcraft.common.compat.chisel.ChiselCompat;
 import steamcraft.common.lib.LoggerSteamcraft;
 

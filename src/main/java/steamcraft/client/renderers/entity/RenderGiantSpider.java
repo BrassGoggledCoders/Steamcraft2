@@ -1,6 +1,8 @@
 
 package steamcraft.client.renderers.entity;
 
+import org.lwjgl.opengl.GL11;
+
 import net.minecraft.client.model.ModelSpider;
 import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.entity.RenderLiving;
@@ -8,8 +10,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntitySpider;
 import net.minecraft.util.ResourceLocation;
-
-import org.lwjgl.opengl.GL11;
 import steamcraft.common.lib.ModInfo;
 
 public class RenderGiantSpider extends RenderLiving

@@ -1,13 +1,13 @@
 
 package steamcraft.client.renderers.tile;
 
-import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ResourceLocation;
+import org.lwjgl.opengl.GL11;
 
 import boilerplate.client.ClientHelper;
 import boilerplate.client.renderers.RenderFloatingItem;
-import org.lwjgl.opengl.GL11;
+import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.ResourceLocation;
 import steamcraft.client.renderers.models.ModelArmorEditor;
 import steamcraft.common.lib.ModInfo;
 import steamcraft.common.tiles.TileArmorEditor;

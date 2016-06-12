@@ -3,6 +3,9 @@ package steamcraft.common.blocks;
 
 import java.util.Random;
 
+import boilerplate.common.baseclasses.blocks.BaseBlock;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
@@ -10,11 +13,6 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.EnumSkyBlock;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-
-import boilerplate.common.baseclasses.blocks.BaseBlock;
 
 public class BlockLeafPile extends BaseBlock
 {

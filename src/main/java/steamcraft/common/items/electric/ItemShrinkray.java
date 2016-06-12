@@ -5,17 +5,16 @@ import java.awt.Color;
 import java.util.HashMap;
 import java.util.List;
 
+import boilerplate.common.baseclasses.items.electric.BaseElectricStorageItem;
+import boilerplate.common.entity.EntityMinedBlock;
+import boilerplate.common.utils.PlayerUtils;
+import boilerplate.common.utils.Utils;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
-
-import boilerplate.common.baseclasses.items.electric.BaseElectricStorageItem;
-import boilerplate.common.entity.EntityMinedBlock;
-import boilerplate.common.utils.PlayerUtils;
-import boilerplate.common.utils.Utils;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.ModInfo;
 

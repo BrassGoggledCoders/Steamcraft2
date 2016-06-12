@@ -7,7 +7,6 @@ import java.util.Map.Entry;
 
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-
 import steamcraft.api.RecipeAPI;
 import steamcraft.common.init.InitItems;
 

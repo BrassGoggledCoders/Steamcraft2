@@ -1,13 +1,13 @@
 
 package steamcraft.client.renderers.tile;
 
+import org.lwjgl.opengl.GL11;
+
+import boilerplate.client.ClientHelper;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
-
-import boilerplate.client.ClientHelper;
-import org.lwjgl.opengl.GL11;
 import steamcraft.client.renderers.models.ModelLightningRod;
 import steamcraft.common.lib.ModInfo;
 

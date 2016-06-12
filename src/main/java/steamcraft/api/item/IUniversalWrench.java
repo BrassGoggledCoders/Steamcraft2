@@ -1,11 +1,9 @@
 
 package steamcraft.api.item;
 
-import cpw.mods.fml.common.Optional;
-
 import buildcraft.api.tools.IToolWrench;
-
 import cofh.api.item.IToolHammer;
+import cpw.mods.fml.common.Optional;
 import mods.railcraft.api.core.items.IToolCrowbar;
 
 /**

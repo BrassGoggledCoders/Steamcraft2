@@ -1,17 +1,15 @@
 
 package steamcraft.common.tiles.container;
 
+import boilerplate.api.IEnergyItem;
+import boilerplate.common.baseclasses.blocks.BaseContainer;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-
-import boilerplate.api.IEnergyItem;
-import boilerplate.common.baseclasses.blocks.BaseContainer;
 import steamcraft.common.tiles.container.slot.SlotCharger;
 import steamcraft.common.tiles.energy.TileCharger;
 

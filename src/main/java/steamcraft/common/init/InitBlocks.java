@@ -3,15 +3,7 @@ package steamcraft.common.init;
 
 import java.util.Arrays;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
-import net.minecraft.init.Blocks;
-import net.minecraft.item.ItemBlock;
-
-import cpw.mods.fml.common.registry.GameRegistry;
-
-import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fluids.FluidRegistry;
+import org.apache.commons.lang3.text.WordUtils;
 
 import boilerplate.common.baseclasses.blocks.BaseBlock;
 import boilerplate.common.baseclasses.blocks.BlockCustomDoubleSlab;
@@ -25,7 +17,13 @@ import boilerplate.common.baseclasses.items.BaseMetadataItemBlock;
 import boilerplate.common.blocks.BlockMeltingIce;
 import boilerplate.common.compathandler.FMPCompatHandler;
 import boilerplate.common.utils.helpers.RegistryHelper;
-import org.apache.commons.lang3.text.WordUtils;
+import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemBlock;
+import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidRegistry;
 import steamcraft.client.renderers.tile.TileHatchRenderer.TileHatch;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.blocks.BlockBoulder;

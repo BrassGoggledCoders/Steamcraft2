@@ -1,24 +1,21 @@
 
 package steamcraft.common.init;
 
-import net.minecraft.init.Items;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemArmor;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.StatCollector;
-
-import cpw.mods.fml.common.registry.GameRegistry;
-
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fluids.FluidContainerRegistry;
-import net.minecraftforge.fluids.FluidRegistry;
-import net.minecraftforge.fluids.FluidStack;
-
 import boilerplate.common.baseclasses.items.BaseItem;
 import boilerplate.common.baseclasses.items.BaseMetadataItem;
 import boilerplate.common.baseclasses.items.electric.BaseElectricStorageItem;
 import boilerplate.common.utils.handlers.BucketHandler;
 import boilerplate.common.utils.helpers.RegistryHelper;
+import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraft.init.Items;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemArmor;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.StatCollector;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fluids.FluidContainerRegistry;
+import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.fluids.FluidStack;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.items.ItemCanister;
 import steamcraft.common.items.ItemCustomBucket;

@@ -1,6 +1,9 @@
 
 package steamcraft.common.items;
 
+import boilerplate.client.ClientHelper;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -9,13 +12,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-
-import boilerplate.client.ClientHelper;
-import boilerplate.common.baseclasses.items.BaseItem;
 import steamcraft.common.lib.ModInfo;
+import team.chisel.item.BaseItem;
 
 /**
  * @author warlordjones

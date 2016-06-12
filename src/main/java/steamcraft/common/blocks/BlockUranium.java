@@ -3,28 +3,21 @@ package steamcraft.common.blocks;
 
 import java.util.Random;
 
-import net.minecraft.block.Block;
+import boilerplate.client.utils.EffectUtils;
+import boilerplate.common.baseclasses.blocks.BaseBlock;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-import cpw.mods.fml.common.Optional;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-
-import boilerplate.client.utils.EffectUtils;
-import boilerplate.common.baseclasses.blocks.BaseBlock;
-import brassutils.api.IEngravable;
-import steamcraft.common.init.InitBlocks;
-
 /**
  * @author warlordjones
  *
  */
-@Optional.Interface(iface = "brassutils.api.IEngravable", modid = "brassutils")
-public class BlockUranium extends BaseBlock implements IEngravable
+public class BlockUranium extends BaseBlock
 {
 	public BlockUranium(Material mat)
 	{
@@ -42,18 +35,6 @@ public class BlockUranium extends BaseBlock implements IEngravable
 	public void randomDisplayTick(World world, int x, int y, int z, Random random)
 	{
 		EffectUtils.sparkle(world, x, y, z, "reddust");
-	}
-
-	@Override
-	public Block getChiseledVariant()
-	{
-		return InitBlocks.blockEngraved;
-	}
-
-	@Override
-	public int getChiseledVariantMeta()
-	{
-		return 8;
 	}
 
 	@Override

@@ -4,12 +4,11 @@ package steamcraft.common.tiles;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+import boilerplate.api.IOpenableGUI;
+import boilerplate.common.baseclasses.BaseTileWithInventory;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
-
-import boilerplate.api.IOpenableGUI;
-import boilerplate.common.baseclasses.BaseTileWithInventory;
 import steamcraft.client.gui.GuiTimeBomb;
 import steamcraft.common.entities.EntityTimeBomb;
 import steamcraft.common.tiles.container.ContainerTimeBomb;

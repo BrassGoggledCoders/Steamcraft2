@@ -1,20 +1,17 @@
 
 package steamcraft.common.packets;
 
-import net.minecraft.world.World;
-
+import boilerplate.client.ClientHelper;
 import cpw.mods.fml.common.network.ByteBufUtils;
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
 import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-
+import io.netty.buffer.ByteBuf;
+import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidTank;
-
-import boilerplate.client.ClientHelper;
-import io.netty.buffer.ByteBuf;
 import steamcraft.common.blocks.machines.BlockCopperTank;
 import steamcraft.common.tiles.TileCopperTank;
 

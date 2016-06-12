@@ -1,11 +1,10 @@
 
 package steamcraft.common.tiles.container.slot;
 
+import boilerplate.api.IEnergyItem;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
-
-import boilerplate.api.IEnergyItem;
 
 /**
  * @author decebaldecebal

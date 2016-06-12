@@ -3,15 +3,14 @@ package steamcraft.client.gui;
 
 import java.util.ArrayList;
 
-import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.util.ResourceLocation;
-
-import net.minecraftforge.fluids.FluidRegistry;
-import net.minecraftforge.fluids.FluidTank;
+import org.lwjgl.opengl.GL11;
 
 import boilerplate.client.BaseContainerGui;
 import boilerplate.client.utils.GuiColors;
-import org.lwjgl.opengl.GL11;
+import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.fluids.FluidTank;
 import steamcraft.common.lib.ModInfo;
 import steamcraft.common.tiles.TileRefinery;
 import steamcraft.common.tiles.container.ContainerRefinery;

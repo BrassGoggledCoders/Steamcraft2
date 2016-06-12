@@ -4,7 +4,6 @@ package steamcraft.common.config;
 import java.io.File;
 
 import net.minecraftforge.common.config.Configuration;
-
 import steamcraft.common.lib.LoggerSteamcraft;
 
 public class ConfigWorldGen

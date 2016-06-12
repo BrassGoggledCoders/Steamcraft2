@@ -1,6 +1,7 @@
 
 package steamcraft.common.entities.projectile;
 
+import boilerplate.common.baseclasses.BaseShootableEntity;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -8,8 +9,6 @@ import net.minecraft.init.Blocks;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
-
-import boilerplate.common.baseclasses.BaseShootableEntity;
 import steamcraft.common.lib.DamageSourceHandler;
 import steamcraft.common.lib.ModInfo;
 

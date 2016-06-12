@@ -1,17 +1,16 @@
 
 package steamcraft.client.renderers.tile;
 
+import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL12;
+
+import cpw.mods.fml.common.FMLLog;
 import net.minecraft.block.Block;
 import net.minecraft.client.model.ModelChest;
 import net.minecraft.client.model.ModelLargeChest;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
-
-import cpw.mods.fml.common.FMLLog;
-
-import org.lwjgl.opengl.GL11;
-import org.lwjgl.opengl.GL12;
 import steamcraft.common.blocks.BlockTrunk;
 import steamcraft.common.lib.ModInfo;
 import steamcraft.common.tiles.TileTrunk;

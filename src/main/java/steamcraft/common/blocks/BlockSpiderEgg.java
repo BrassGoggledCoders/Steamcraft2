@@ -1,15 +1,13 @@
 
 package steamcraft.common.blocks;
 
+import boilerplate.common.baseclasses.blocks.BaseBlock;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.monster.EntitySpider;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-
-import boilerplate.common.baseclasses.blocks.BaseBlock;
 import steamcraft.client.lib.RenderIDs;
 import steamcraft.common.entities.living.EntityGhostSpider;
 import steamcraft.common.entities.living.EntityGiantSpider;

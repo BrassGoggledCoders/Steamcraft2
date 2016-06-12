@@ -8,19 +8,16 @@ import static net.minecraftforge.common.util.ForgeDirection.WEST;
 
 import java.util.List;
 
+import boilerplate.common.baseclasses.blocks.BaseBlock;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-
 import net.minecraftforge.common.util.ForgeDirection;
-
-import boilerplate.common.baseclasses.blocks.BaseBlock;
 import steamcraft.client.lib.RenderIDs;
 import steamcraft.common.lib.ModInfo;
 

@@ -1,9 +1,8 @@
 
 package steamcraft.common.tiles.container;
 
-import net.minecraft.entity.player.EntityPlayer;
-
 import boilerplate.common.baseclasses.blocks.BaseContainer;
+import net.minecraft.entity.player.EntityPlayer;
 
 /**
  * @author decebaldecebal

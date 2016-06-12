@@ -1,17 +1,15 @@
 
 package steamcraft.common.items.vanity;
 
-import net.minecraft.client.model.ModelBase;
-import net.minecraft.util.ResourceLocation;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-
-import boilerplate.common.baseclasses.items.BaseItem;
+import net.minecraft.client.model.ModelBase;
+import net.minecraft.util.ResourceLocation;
 import steamcraft.api.vanity.EnumVanityType;
 import steamcraft.api.vanity.IVanityItem;
 import steamcraft.client.renderers.models.ModelTopHat;
 import steamcraft.common.lib.ModInfo;
+import team.chisel.item.BaseItem;
 
 /**
  * @author warlordjones

@@ -4,7 +4,6 @@ package steamcraft.client.renderers.entity;
 import net.minecraft.client.renderer.entity.RenderIronGolem;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
-
 import steamcraft.common.lib.ModInfo;
 
 public class RenderAbandonedGolem extends RenderIronGolem

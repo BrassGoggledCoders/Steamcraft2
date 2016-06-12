@@ -3,6 +3,8 @@ package steamcraft.common.items.tools.steam;
 
 import java.util.List;
 
+import boilerplate.client.ClientHelper;
+import boilerplate.common.utils.PlayerUtils;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -13,9 +15,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
-
-import boilerplate.client.ClientHelper;
-import boilerplate.common.utils.PlayerUtils;
 import steamcraft.common.lib.ModInfo;
 
 /**

@@ -13,7 +13,6 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.ChunkCoordIntPair;
 import net.minecraft.world.Teleporter;
 import net.minecraft.world.WorldServer;
-
 import steamcraft.common.init.InitBlocks;
 import steamcraft.common.worldgen.structure.WorldGenFissurePortal;
 

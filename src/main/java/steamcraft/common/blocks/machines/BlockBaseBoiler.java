@@ -1,6 +1,9 @@
 
 package steamcraft.common.blocks.machines;
 
+import boilerplate.common.baseclasses.blocks.BaseContainerBlock;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.inventory.Container;
@@ -10,11 +13,6 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-
-import boilerplate.common.baseclasses.blocks.BaseContainerBlock;
 
 /**
  * @author decebaldecebal

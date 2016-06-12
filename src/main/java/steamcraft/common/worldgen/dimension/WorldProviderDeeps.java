@@ -4,9 +4,7 @@ package steamcraft.common.worldgen.dimension;
 import net.minecraft.world.WorldProvider;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.IChunkProvider;
-
 import net.minecraftforge.common.DimensionManager;
-
 import steamcraft.common.config.ConfigGeneral;
 
 public class WorldProviderDeeps extends WorldProvider

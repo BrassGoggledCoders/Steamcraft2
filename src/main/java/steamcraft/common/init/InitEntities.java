@@ -1,12 +1,9 @@
 
 package steamcraft.common.init;
 
-import net.minecraft.entity.EnumCreatureType;
-
 import cpw.mods.fml.common.registry.EntityRegistry;
-
+import net.minecraft.entity.EnumCreatureType;
 import net.minecraftforge.common.BiomeDictionary;
-
 import steamcraft.common.Steamcraft;
 import steamcraft.common.entities.EntityFallingBoulder;
 import steamcraft.common.entities.EntityTimeBomb;

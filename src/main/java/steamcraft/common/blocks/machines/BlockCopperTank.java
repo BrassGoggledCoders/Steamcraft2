@@ -1,16 +1,14 @@
 
 package steamcraft.common.blocks.machines;
 
+import boilerplate.common.baseclasses.blocks.BaseContainerBlock;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-
 import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.fluids.IFluidContainerItem;
-
-import boilerplate.common.baseclasses.blocks.BaseContainerBlock;
 import steamcraft.client.lib.RenderIDs;
 import steamcraft.common.tiles.TileCopperTank;
 

@@ -3,11 +3,10 @@ package steamcraft.common.worldgen.biomes;
 
 import java.util.Random;
 
+import boilerplate.common.worldgen.WorldGenBlockgroup;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
-
-import boilerplate.common.worldgen.WorldGenBlockgroup;
 import steamcraft.common.init.InitBlocks;
 
 public class BiomeDepthsInfestation extends BiomeDepthsBase

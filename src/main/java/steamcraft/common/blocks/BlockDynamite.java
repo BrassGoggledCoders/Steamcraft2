@@ -3,6 +3,9 @@ package steamcraft.common.blocks;
 
 import java.util.Random;
 
+import boilerplate.common.baseclasses.blocks.BaseBlock;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -15,11 +18,6 @@ import net.minecraft.init.Items;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-
-import boilerplate.common.baseclasses.blocks.BaseBlock;
 import steamcraft.common.lib.ModInfo;
 
 public class BlockDynamite extends BaseBlock

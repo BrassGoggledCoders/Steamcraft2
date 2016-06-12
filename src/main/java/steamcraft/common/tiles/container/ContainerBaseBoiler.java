@@ -1,21 +1,18 @@
 
 package steamcraft.common.tiles.container;
 
+import boilerplate.common.baseclasses.blocks.BaseContainer;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntityFurnace;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-
 import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
-
-import boilerplate.common.baseclasses.blocks.BaseContainer;
 import steamcraft.common.items.ItemCanister;
 import steamcraft.common.tiles.TileBaseBoiler;
 import steamcraft.common.tiles.container.slot.SlotFluidContainer;

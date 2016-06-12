@@ -3,7 +3,6 @@ package steamcraft.common.init;
 
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
-
 import net.minecraftforge.common.util.EnumHelper;
 
 /**

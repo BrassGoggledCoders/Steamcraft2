@@ -3,6 +3,9 @@ package steamcraft.common.items;
 
 import java.util.List;
 
+import boilerplate.api.IOpenableGUI;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.gui.GuiScreenBook;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
@@ -15,15 +18,10 @@ import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
 import net.minecraft.util.StringUtils;
 import net.minecraft.world.World;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-
-import boilerplate.api.IOpenableGUI;
-import boilerplate.common.baseclasses.items.BaseItem;
 import steamcraft.client.lib.GuiIDs;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.lib.ModInfo;
+import team.chisel.item.BaseItem;
 
 public class ItemLoreBook extends BaseItem implements IOpenableGUI
 {

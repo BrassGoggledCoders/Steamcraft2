@@ -1,6 +1,8 @@
 
 package steamcraft.common.entities.living;
 
+import org.apache.commons.lang3.tuple.ImmutablePair;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSilverfish;
 import net.minecraft.entity.Entity;
@@ -14,8 +16,6 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.EntityDamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-
-import org.apache.commons.lang3.tuple.ImmutablePair;
 import steamcraft.common.init.InitBlocks;
 
 public class EntityGrub extends EntityMob

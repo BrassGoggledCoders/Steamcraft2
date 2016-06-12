@@ -1,12 +1,12 @@
 
 package steamcraft.client.gui;
 
+import org.lwjgl.opengl.GL11;
+
+import boilerplate.client.BaseContainerGui;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
-
-import boilerplate.client.BaseContainerGui;
-import org.lwjgl.opengl.GL11;
 import steamcraft.common.lib.ModInfo;
 import steamcraft.common.tiles.TileBloomery;
 import steamcraft.common.tiles.container.ContainerBloomery;

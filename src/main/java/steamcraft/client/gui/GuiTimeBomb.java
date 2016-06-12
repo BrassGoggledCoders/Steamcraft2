@@ -1,14 +1,14 @@
 
 package steamcraft.client.gui;
 
+import org.lwjgl.input.Keyboard;
+import org.lwjgl.opengl.GL11;
+
+import boilerplate.client.BaseContainerGui;
 import net.minecraft.client.gui.GuiTextField;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
-
-import boilerplate.client.BaseContainerGui;
-import org.lwjgl.input.Keyboard;
-import org.lwjgl.opengl.GL11;
 import steamcraft.common.init.InitPackets;
 import steamcraft.common.lib.ModInfo;
 import steamcraft.common.packets.TimeBombPacket;

@@ -3,6 +3,9 @@ package steamcraft.common.items;
 
 import java.util.List;
 
+import boilerplate.common.baseclasses.items.BaseMetadataItem;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -12,11 +15,6 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-
-import boilerplate.common.baseclasses.items.BaseMetadataItem;
 import steamcraft.common.init.InitAchievements;
 import steamcraft.common.init.InitItems;
 import steamcraft.common.lib.ModInfo;

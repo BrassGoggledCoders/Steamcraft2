@@ -4,7 +4,6 @@ package steamcraft.common.entities.living;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.passive.EntityWaterMob;
 import net.minecraft.world.World;
-
 import steamcraft.common.init.InitItems;
 
 public class EntityWhale extends EntityWaterMob

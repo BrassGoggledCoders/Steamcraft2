@@ -1,12 +1,11 @@
 
 package steamcraft.common.entities.projectile;
 
+import boilerplate.common.baseclasses.BaseThrowableEntity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
-
-import boilerplate.common.baseclasses.BaseThrowableEntity;
 
 public class EntityMobBottle extends BaseThrowableEntity
 {

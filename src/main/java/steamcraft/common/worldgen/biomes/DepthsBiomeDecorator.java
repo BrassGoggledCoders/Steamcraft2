@@ -3,6 +3,8 @@ package steamcraft.common.worldgen.biomes;
 
 import java.util.Random;
 
+import boilerplate.common.worldgen.WorldGenBlockgroup;
+import boilerplate.common.worldgen.WorldGenRandomUnderground;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeDecorator;
@@ -19,11 +21,7 @@ import net.minecraft.world.gen.feature.WorldGenReed;
 import net.minecraft.world.gen.feature.WorldGenSand;
 import net.minecraft.world.gen.feature.WorldGenWaterlily;
 import net.minecraft.world.gen.feature.WorldGenerator;
-
 import net.minecraftforge.event.terraingen.DeferredBiomeDecorator;
-
-import boilerplate.common.worldgen.WorldGenBlockgroup;
-import boilerplate.common.worldgen.WorldGenRandomUnderground;
 import steamcraft.common.init.InitBlocks;
 import steamcraft.common.worldgen.structure.WorldGenUndergroundHouse;
 

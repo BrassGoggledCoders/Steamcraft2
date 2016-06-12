@@ -4,7 +4,6 @@ package steamcraft.common.compat.chisel;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
-
 import steamcraft.common.compat.ModCompat;
 
 /**

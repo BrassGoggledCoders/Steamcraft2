@@ -1,14 +1,13 @@
 
 package steamcraft.client.gui;
 
+import org.lwjgl.opengl.GL11;
+
+import boilerplate.client.BaseContainerGui;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
-
 import net.minecraftforge.common.util.ForgeDirection;
-
-import boilerplate.client.BaseContainerGui;
-import org.lwjgl.opengl.GL11;
 import steamcraft.api.tile.ISpannerTile;
 import steamcraft.common.init.InitPackets;
 import steamcraft.common.lib.ModInfo;

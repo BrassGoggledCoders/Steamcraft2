@@ -1,6 +1,12 @@
 
 package steamcraft.common.items.armor;
 
+import org.lwjgl.opengl.GL11;
+
+import boilerplate.client.ClientHelper;
+import boilerplate.common.baseclasses.items.BaseArmor;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.entity.Entity;
@@ -8,13 +14,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-
-import boilerplate.client.ClientHelper;
-import boilerplate.common.baseclasses.items.BaseArmor;
-import org.lwjgl.opengl.GL11;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.init.InitItems;
 import steamcraft.common.lib.ModInfo;

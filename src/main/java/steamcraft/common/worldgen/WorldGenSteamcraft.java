@@ -3,17 +3,14 @@ package steamcraft.common.worldgen;
 
 import java.util.Random;
 
+import boilerplate.common.utils.WorldGenUtils;
+import cpw.mods.fml.common.IWorldGenerator;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.IChunkProvider;
-
-import cpw.mods.fml.common.IWorldGenerator;
-
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeDictionary.Type;
-
-import boilerplate.common.utils.WorldGenUtils;
 import steamcraft.common.config.ConfigGeneral;
 import steamcraft.common.config.ConfigWorldGen;
 import steamcraft.common.init.InitBlocks;

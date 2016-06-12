@@ -4,16 +4,15 @@ package steamcraft.common.tiles;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import boilerplate.api.IOpenableGUI;
+import boilerplate.common.baseclasses.BaseTileWithInventory;
+import boilerplate.common.tiles.IOnSlotChanged;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-
-import boilerplate.api.IOpenableGUI;
-import boilerplate.common.baseclasses.BaseTileWithInventory;
-import boilerplate.common.tiles.IOnSlotChanged;
 import steamcraft.api.item.IArmorModule;
 import steamcraft.api.item.IModule;
 import steamcraft.api.item.IModuleContainer;

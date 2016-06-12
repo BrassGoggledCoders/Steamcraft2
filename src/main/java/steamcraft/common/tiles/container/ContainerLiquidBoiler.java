@@ -1,15 +1,12 @@
 
 package steamcraft.common.tiles.container;
 
-import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.inventory.ICrafting;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-
+import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.inventory.ICrafting;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
-
 import steamcraft.common.tiles.TileLiquidBoiler;
 import steamcraft.common.tiles.container.slot.SlotFluidContainer;
 

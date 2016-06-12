@@ -3,9 +3,7 @@ package steamcraft.common.init;
 
 import net.minecraft.init.Items;
 import net.minecraft.stats.Achievement;
-
 import net.minecraftforge.common.AchievementPage;
-
 import steamcraft.common.lib.ModInfo;
 
 /**

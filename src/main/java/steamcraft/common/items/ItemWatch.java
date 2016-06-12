@@ -9,9 +9,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
-
-import boilerplate.common.baseclasses.items.BaseItem;
 import steamcraft.common.Steamcraft;
+import team.chisel.item.BaseItem;
 
 /**
  * @author Surseance

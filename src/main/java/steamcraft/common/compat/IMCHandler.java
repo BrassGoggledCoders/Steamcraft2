@@ -1,12 +1,10 @@
 
 package steamcraft.common.compat;
 
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLInterModComms;
-
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import steamcraft.common.tiles.recipes.BloomeryRecipes;
 
 public class IMCHandler

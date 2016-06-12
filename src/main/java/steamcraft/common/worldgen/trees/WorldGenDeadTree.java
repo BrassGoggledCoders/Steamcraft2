@@ -8,7 +8,6 @@ import net.minecraft.init.Blocks;
 import net.minecraft.util.Direction;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenAbstractTree;
-
 import steamcraft.common.init.InitBlocks;
 
 public class WorldGenDeadTree extends WorldGenAbstractTree

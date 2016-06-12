@@ -3,13 +3,13 @@ package steamcraft.common.tiles;
 
 import java.util.HashMap;
 
+import boilerplate.api.IOpenableGUI;
+import boilerplate.common.utils.FluidUtils;
+import cpw.mods.fml.common.FMLLog;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
-
-import cpw.mods.fml.common.FMLLog;
-
 import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidContainerRegistry;
@@ -18,9 +18,6 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTank;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.oredict.OreDictionary;
-
-import boilerplate.api.IOpenableGUI;
-import boilerplate.common.utils.FluidUtils;
 import steamcraft.api.RecipeAPI;
 import steamcraft.client.gui.GuiLiquidBoiler;
 import steamcraft.common.blocks.machines.BlockBaseBoiler;

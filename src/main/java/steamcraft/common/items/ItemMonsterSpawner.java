@@ -1,13 +1,12 @@
 
 package steamcraft.common.items;
 
+import boilerplate.common.baseclasses.items.BaseMetadataItem;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.passive.EntitySheep;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-
-import boilerplate.common.baseclasses.items.BaseMetadataItem;
 import steamcraft.common.entities.living.EntityAbandonedGolem;
 import steamcraft.common.entities.living.EntityBoar;
 import steamcraft.common.entities.living.EntityGhostSpider;

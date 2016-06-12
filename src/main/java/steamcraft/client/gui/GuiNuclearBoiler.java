@@ -1,13 +1,12 @@
 
 package steamcraft.client.gui;
 
-import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.util.ResourceLocation;
-
-import net.minecraftforge.fluids.FluidRegistry;
+import org.lwjgl.opengl.GL11;
 
 import boilerplate.client.BaseContainerGui;
-import org.lwjgl.opengl.GL11;
+import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fluids.FluidRegistry;
 import steamcraft.common.lib.ModInfo;
 import steamcraft.common.tiles.TileNuclearBoiler;
 import steamcraft.common.tiles.container.ContainerBaseBoiler;

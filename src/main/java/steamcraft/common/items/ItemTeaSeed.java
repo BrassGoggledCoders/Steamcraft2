@@ -6,13 +6,11 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-
 import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.util.ForgeDirection;
-
-import boilerplate.common.baseclasses.items.BaseItem;
 import steamcraft.common.init.InitBlocks;
+import team.chisel.item.BaseItem;
 
 /**
  * @author Surseance

@@ -3,18 +3,17 @@ package steamcraft.common.items.modules;
 
 import java.util.List;
 
+import boilerplate.client.ClientHelper;
+import boilerplate.common.baseclasses.items.electric.BaseElectricStorageItem;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-
-import boilerplate.client.ClientHelper;
-import boilerplate.common.baseclasses.items.electric.BaseElectricStorageItem;
 import steamcraft.api.item.IPoweredModuleHelper;
 import steamcraft.common.init.InitItems;
 import steamcraft.common.items.ItemCanister;
+import team.chisel.item.BaseItem;
 
 public abstract class PoweredArmorModule extends BaseArmorModule implements IPoweredModuleHelper
 {
@@ -34,7 +33,7 @@ public abstract class PoweredArmorModule extends BaseArmorModule implements IPow
 			if (!StatCollector.translateToLocal(this.getUnlocalizedName() + ".desc").contains("item."))
 			{
 				list.add("Module Effect: ");
-				this.getWrappedDesc(list, stack);
+				BaseItem.getWrappedDesc(list, stack);
 			}
 			if (this instanceof IPoweredModuleHelper)
 			{

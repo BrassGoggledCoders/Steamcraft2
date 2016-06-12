@@ -3,13 +3,12 @@ package steamcraft.common.blocks;
 
 import java.util.ArrayList;
 
+import boilerplate.common.baseclasses.blocks.BaseBlock;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-
-import boilerplate.common.baseclasses.blocks.BaseBlock;
 
 public class BlockTintedRock extends BaseBlock
 {

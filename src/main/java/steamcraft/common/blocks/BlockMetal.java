@@ -3,6 +3,9 @@ package steamcraft.common.blocks;
 
 import java.util.List;
 
+import boilerplate.common.baseclasses.blocks.BaseMetadataBlock;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -11,13 +14,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
-
-import cpw.mods.fml.common.Optional;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-
-import boilerplate.common.baseclasses.blocks.BaseMetadataBlock;
-import brassutils.api.IEngravable;
 import steamcraft.common.Steamcraft;
 import steamcraft.common.init.InitBlocks;
 import steamcraft.common.lib.ModInfo;
@@ -26,8 +22,7 @@ import steamcraft.common.lib.ModInfo;
  * @author warlordjones
  *
  */
-@Optional.Interface(iface = "brassutils.api.IEngravable", modid = "brassutils")
-public class BlockMetal extends BaseMetadataBlock implements IEngravable
+public class BlockMetal extends BaseMetadataBlock
 {
 	public IIcon[] icon = new IIcon[8];
 
@@ -71,18 +66,6 @@ public class BlockMetal extends BaseMetadataBlock implements IEngravable
 	{
 		for (int var4 = 0; var4 < this.icon.length; ++var4)
 			l.add(new ItemStack(InitBlocks.blockMetal, 1, var4));
-	}
-
-	@Override
-	public Block getChiseledVariant()
-	{
-		return InitBlocks.blockEngraved;
-	}
-
-	@Override
-	public int getChiseledVariantMeta()
-	{
-		return -1;
 	}
 
 	@Override

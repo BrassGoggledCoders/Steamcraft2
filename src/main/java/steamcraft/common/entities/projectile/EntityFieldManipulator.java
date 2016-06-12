@@ -1,15 +1,13 @@
 
 package steamcraft.common.entities.projectile;
 
+import boilerplate.common.baseclasses.BaseThrowableEntity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
-
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.EnderTeleportEvent;
-
-import boilerplate.common.baseclasses.BaseThrowableEntity;
 
 public class EntityFieldManipulator extends BaseThrowableEntity
 {

@@ -4,6 +4,17 @@ package steamcraft.common.lib.events;
 import java.util.Arrays;
 import java.util.HashMap;
 
+import org.apache.commons.lang3.StringUtils;
+import org.lwjgl.opengl.GL11;
+
+import boilerplate.client.ClientHelper;
+import boilerplate.common.baseclasses.BaseTileWithInventory;
+import cofh.api.energy.IEnergyHandler;
+import cpw.mods.fml.common.eventhandler.EventPriority;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.gameevent.InputEvent.KeyInputEvent;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.client.entity.EntityClientPlayerMP;
@@ -24,24 +35,11 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.MovingObjectPosition.MovingObjectType;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
-
-import cpw.mods.fml.common.eventhandler.EventPriority;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.common.gameevent.InputEvent.KeyInputEvent;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-
 import net.minecraftforge.client.event.DrawBlockHighlightEvent;
 import net.minecraftforge.client.event.FOVUpdateEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.common.util.ForgeDirection;
-
-import boilerplate.client.ClientHelper;
-import boilerplate.common.baseclasses.BaseTileWithInventory;
-import cofh.api.energy.IEnergyHandler;
-import org.apache.commons.lang3.StringUtils;
-import org.lwjgl.opengl.GL11;
 import steamcraft.api.vanity.IVanityItem;
 import steamcraft.client.ClientProxy;
 import steamcraft.client.lib.GuiIDs;

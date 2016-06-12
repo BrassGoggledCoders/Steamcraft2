@@ -3,7 +3,6 @@ package steamcraft.common.init;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.WeightedRandomChestContent;
-
 import net.minecraftforge.common.ChestGenHooks;
 
 public class InitMisc

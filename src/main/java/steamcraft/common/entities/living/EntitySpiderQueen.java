@@ -7,7 +7,6 @@ import net.minecraft.entity.monster.EntitySpider;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.IChatComponent;
 import net.minecraft.world.World;
-
 import steamcraft.common.init.InitBlocks;
 
 public class EntitySpiderQueen extends EntitySpider implements IBossDisplayData
