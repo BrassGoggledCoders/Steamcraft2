@@ -6,15 +6,20 @@ import java.util.List;
 import boilerplate.client.ClientHelper;
 import boilerplate.common.utils.PlayerUtils;
 import net.minecraft.block.Block;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.play.client.C07PacketPlayerDigging;
+import net.minecraft.network.play.server.S23PacketBlockChange;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
+import net.minecraftforge.common.ForgeHooks;
+import net.minecraftforge.event.world.BlockEvent;
 import steamcraft.common.lib.ModInfo;
 
 /**
@@ -107,28 +112,93 @@ public class ItemSteamDrill extends ItemSteamTool
 						for (int zPos = z - zRange; zPos <= (z + zRange); zPos++)
 						{
 							Block nblock = world.getBlock(xPos, yPos, zPos);
-
-							if (this.canHarvestBlock(nblock, itemStack))
-							{
-								int meta = world.getBlockMetadata(xPos, yPos, zPos);
-
-								ItemStack result = new ItemStack(nblock.getItemDropped(meta, Item.itemRand, 0),
-										nblock.quantityDropped(meta, 0, Item.itemRand), nblock.damageDropped(meta));
-
-								if (nblock.getBlockHardness(world, xPos, yPos, zPos) != 0.0D)
-									this.consumeSteamFromCanister(player);
-
-								if (!world.isRemote && (result != null) && (nblock.getBlockHardness(world, xPos, yPos, zPos) != -1))
-								{
-									world.setBlockToAir(xPos, yPos, zPos);
-									world.spawnEntityInWorld(new EntityItem(world, xPos + 0.5, yPos + 0.5, zPos + 0.5, result.copy()));
-								}
-							}
+							this.breakExtraBlock(world, xPos, yPos, zRange, mop.sideHit, player, x, y, z, itemStack);
 						}
 		}
 
 		return false;
 	}
+	//Stolen from TConstruct...
+	protected void breakExtraBlock(World world, int x, int y, int z, int sidehit, EntityPlayer playerEntity, int refX, int refY, int refZ, ItemStack stack) {
+        // prevent calling that stuff for air blocks, could lead to unexpected behaviour since it fires events
+        if (world.isAirBlock(x, y, z))
+            return;
+
+        // what?
+        if(!(playerEntity instanceof EntityPlayerMP))
+            return;
+        EntityPlayerMP player = (EntityPlayerMP) playerEntity;
+
+        // check if the block can be broken, since extra block breaks shouldn't instantly break stuff like obsidian
+        // or precious ores you can't harvest while mining stone
+        Block block = world.getBlock(x, y, z);
+        int meta = world.getBlockMetadata(x, y, z);
+
+        // only effective materials
+        if (!this.canHarvestBlock(block, stack))
+            return;
+
+        Block refBlock = world.getBlock(refX, refY, refZ);
+        float refStrength = ForgeHooks.blockStrength(refBlock, player, world, refX, refY, refZ);
+        float strength = ForgeHooks.blockStrength(block, player, world, x,y,z);
+
+        // only harvestable blocks that aren't impossibly slow to harvest
+        if (!ForgeHooks.canHarvestBlock(block, player, meta) || refStrength/strength > 10f)
+            return;
+
+        // send the blockbreak event
+        BlockEvent.BreakEvent event = ForgeHooks.onBlockBreakEvent(world, player.theItemInWorldManager.getGameType(), player, x,y,z);
+        if(event.isCanceled())
+            return;
+
+        if (player.capabilities.isCreativeMode) {
+            block.onBlockHarvested(world, x, y, z, meta, player);
+            if (block.removedByPlayer(world, player, x, y, z, false))
+                block.onBlockDestroyedByPlayer(world, x, y, z, meta);
+
+            // send update to client
+            if (!world.isRemote) {
+                player.playerNetServerHandler.sendPacket(new S23PacketBlockChange(x, y, z, world));
+            }
+            return;
+        }
+
+        // callback to the tool the player uses. Called on both sides. This damages the tool n stuff.
+        player.getCurrentEquippedItem().func_150999_a(world, block, x, y, z, player);
+
+        // server sided handling
+        if (!world.isRemote) {
+            // serverside we reproduce ItemInWorldManager.tryHarvestBlock
+
+            // ItemInWorldManager.removeBlock
+            block.onBlockHarvested(world, x,y,z, meta, player);
+
+            if(block.removedByPlayer(world, player, x,y,z, true)) // boolean is if block can be harvested, checked above
+            {
+                block.onBlockDestroyedByPlayer( world, x,y,z, meta);
+                block.harvestBlock(world, player, x,y,z, meta);
+                block.dropXpOnBlockBreak(world, x,y,z, event.getExpToDrop());
+            }
+
+            // always send block update to client
+            player.playerNetServerHandler.sendPacket(new S23PacketBlockChange(x, y, z, world));
+        }
+        // client sided handling
+        else {
+            //PlayerControllerMP pcmp = Minecraft.getMinecraft().playerController;
+            // clientside we do a "this clock has been clicked on long enough to be broken" call. This should not send any new packets
+            // the code above, executed on the server, sends a block-updates that give us the correct state of the block we destroy.
+
+            // following code can be found in PlayerControllerMP.onPlayerDestroyBlock
+            world.playAuxSFX(2001, x, y, z, Block.getIdFromBlock(block) + (meta << 12));
+            if(block.removedByPlayer(world, player, x,y,z, true))
+            {
+                block.onBlockDestroyedByPlayer(world, x,y,z, meta);
+            }
+            
+            Minecraft.getMinecraft().getNetHandler().addToSendQueue(new C07PacketPlayerDigging(2, x,y,z, Minecraft.getMinecraft().objectMouseOver.sideHit));
+        }
+    }
 
 	@Override
 	public boolean onBlockDestroyed(ItemStack stack, World world, Block p_150894_3_, int x, int y, int z, EntityLivingBase living)
@@ -136,8 +206,6 @@ public class ItemSteamDrill extends ItemSteamTool
 		if (living instanceof EntityPlayer)
 		{
 			this.consumeSteamFromCanister((EntityPlayer) living);
-
-			stack.damageItem(1, living);
 			world.playSoundAtEntity(living, ModInfo.PREFIX + "drill.steam", 0.6F, 1.0F);
 			world.spawnParticle("smoke", x + 0.5, y + 0.5, z + 0.5, Item.itemRand.nextGaussian(), Item.itemRand.nextGaussian(),
 					Item.itemRand.nextGaussian());
