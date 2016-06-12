@@ -85,34 +85,41 @@ public class ItemSteamDrill extends ItemSteamTool
 			if (mop == null)
 				return super.onBlockStartBreak(itemStack, x, y, z, player);
 
-			int xRange = 1;
-			int yRange = 1;
-			int zRange = 1;
-			switch (mop.sideHit)
-			{
-			case 0:
-			case 1:
-				yRange = 0;
-				break;
+			int sideHit = mop.sideHit;
+	        //int sideHit = Minecraft.getMinecraft().objectMouseOver.sideHit;
 
-			case 2:
-			case 3:
-				zRange = 0;
-				break;
+	        // we successfully destroyed a block. time to do AOE!
+			int breakRadius = 1;
+			int breakDepth = 0;
+	        int xRange = breakRadius;
+	        int yRange = breakRadius;
+	        int zRange = breakDepth;
+	        switch (sideHit) {
+	            case 0:
+	            case 1:
+	                yRange = breakDepth;
+	                zRange = breakRadius;
+	                break;
+	            case 2:
+	            case 3:
+	                xRange = breakRadius;
+	                zRange = breakDepth;
+	                break;
+	            case 4:
+	            case 5:
+	                xRange = breakDepth;
+	                zRange = breakRadius;
+	                break;
+	        }
 
-			case 4:
-			case 5:
-				xRange = 0;
-				break;
-			}
-			Block block = world.getBlock(x, y, z);
-			if ((block != null) && (block.getBlockHardness(world, x, y, z) != 0) && this.canHarvestBlock(block, itemStack))
-				for (int xPos = x - xRange; xPos <= (x + xRange); xPos++)
-					for (int yPos = y - yRange; yPos <= (y + yRange); yPos++)
-						for (int zPos = z - zRange; zPos <= (z + zRange); zPos++)
-						{
-							Block nblock = world.getBlock(xPos, yPos, zPos);
-							this.breakExtraBlock(world, xPos, yPos, zRange, mop.sideHit, player, x, y, z, itemStack);
+	        for (int xPos = x - xRange; xPos <= x + xRange; xPos++)
+	            for (int yPos = y - yRange; yPos <= y + yRange; yPos++)
+	                for (int zPos = z - zRange; zPos <= z + zRange; zPos++) {
+
+	                    	if (xPos == x && yPos == y && zPos == z)
+	                    		continue;
+	                    
+							this.breakExtraBlock(world, xPos, yPos, zPos, mop.sideHit, player, x, y, z, itemStack);
 						}
 		}
 
