@@ -281,3 +281,13 @@ Beta 5.0.1:
 # Fixed broken oredict on resource items. - warlordjones
 # Removed BluSunrize - warlordjones
 # Fixed monocle rendering, probably - warlordjones 
+
+Beta 5.0.2:
+* Permenantly disable deeps portal generation.
+# Fix steam tools also taking durability damage. 
+# Fix some incorrect oredict tags on metal blocks
+# Fixed crash on startup when latest Boilerplate was used. 
+# Fix crash related to the Hatch TE
+# Fix oddities with the Steam Drill's AOE
+# Fixed various boiler crashes
+# Fixed some missing textures
