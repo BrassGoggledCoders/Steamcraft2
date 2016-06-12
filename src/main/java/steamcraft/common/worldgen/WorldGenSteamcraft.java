@@ -30,8 +30,7 @@ public class WorldGenSteamcraft implements IWorldGenerator
 		int blockChunkX = chunkX * 16;
 		int blockChunkZ = chunkZ * 16;
 
-		if (((world.provider.dimensionId == 0) && ConfigWorldGen.overworldGenerationEnabled)
-				|| ((world.provider.dimensionId == ConfigGeneral.deepsDimensionID) && ConfigWorldGen.deepsGenerationEnabled))
+		if (((world.provider.dimensionId == 0) && ConfigWorldGen.overworldGenerationEnabled)))
 		{
 			this.generateSurface(world, random, blockChunkX, blockChunkZ);
 		}
@@ -93,14 +92,6 @@ public class WorldGenSteamcraft implements IWorldGenerator
 
 					new WorldGenBrassTree().generate(world, random, X, Y, Z);
 				}
-		}
-
-		if ((random.nextInt(30) == 0) && ConfigWorldGen.deepsPortalGenEnabled)
-		{
-			int X = chunkX + random.nextInt(16);
-			int Z = chunkZ + random.nextInt(16);
-			int Y = random.nextInt(6);
-			new WorldGenFissurePortal().generate(world, random, X, Y, Z);
 		}
 	}
 }
