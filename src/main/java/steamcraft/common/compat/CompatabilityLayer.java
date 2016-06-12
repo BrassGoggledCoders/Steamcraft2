@@ -192,9 +192,9 @@ public class CompatabilityLayer
 		OreDictHelper.registerOre("blockCopper", InitBlocks.blockMetal, 1);
 		OreDictHelper.registerOre("blockTin", InitBlocks.blockMetal, 2);
 		OreDictHelper.registerOre("blockZinc", InitBlocks.blockMetal, 3);
-		OreDictHelper.registerOre("blockUranium", InitBlocks.blockMetal, 4);
-		OreDictHelper.registerOre("blockBrimstone", InitBlocks.blockMetal, 5);
-		OreDictHelper.registerOre("blockPhosphate", InitBlocks.blockMetal, 6);
+        OreDictHelper.registerOre("blockBrass", InitBlocks.blockMetal, 4);
+        OreDictHelper.registerOre("blockBronze", InitBlocks.blockMetal, 5);
+        OreDictHelper.registerOre("blockSteel", InitBlocks.blockMetal, 6);
 
 		OreDictHelper.registerOreWithAlts(InitItems.itemResource, 0, "powderSulfur", "sulfur", "dustSulfur");
 		OreDictHelper.registerOre("powderPhosphorus", InitItems.itemResource, 1);
